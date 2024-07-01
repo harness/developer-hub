@@ -35,7 +35,8 @@ For more information, go to [Ingest Scan Results into an STO Pipeline](/docs/sec
 
 ### Extraction scans in STO
 
-*Extraction scans* are a sub-category of orchestration scans. Instead of running a scan, the step pulls issues from an external source. Specifically, you configure the step to download from the external tool rather than running an orchestration scan. This workflow is supported for scanners such as [Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) and [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) that support downloading results via an API endpoint.
+*Extraction scans* are useful when you're working with SaaS-based scanners such as [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) and [Burp Enterprise](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference), where you can extract scan results from an API endpoint. 
 
 ![](./static/sto-workflows-overview-04.png)
 
+For more information, go to [Extraction mode for SaaS scan tools](/docs/security-testing-orchestration/get-started/key-concepts/extraction-scans).

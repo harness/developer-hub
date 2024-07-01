@@ -6,4 +6,5 @@ description: Cloud Cost Management
 # Cloud Cost Management
 
 - [Onboarding](./onboarding)
-- [Auto Stopping](./autostopping)
+- [AutoStopping](./autostopping)
+- [Best Practices](./best-practices)

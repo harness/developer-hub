@@ -541,6 +541,21 @@ It can test the application's resilience for the different values of file proper
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod IO mistake
+
+Pod IO mistake is a Kubernetes pod-level fault that causes the file to read or write an incorrect value within the mounted volume of the pod.
+
+- It can test the application's resilience to mistakenly writing or reading invalid data from files.
+
+<Accordion color="green">
+<summary>View fault usage</summary>
+It can test the application's resilience to mistakenly writing or reading invalid data from files..
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Time Chaos
 
 Time Chaos is a Kubernetes pod-level fault that introduces controlled time offsets to disrupt the system time of the target pod

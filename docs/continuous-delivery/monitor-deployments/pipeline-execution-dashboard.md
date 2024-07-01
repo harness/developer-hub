@@ -60,12 +60,6 @@ List of dimensions:
 ### Organizations
 This view contains the data related to organizations. 
 
-:::note
-
-This will only show the organizations, which had at least 1 pipeline execution (in any project). It won't display the organizations which didn't contain any pipeline execution.
-
-:::
-
 List of dimensions:
 - Created Time: Creation time of the organization such as Date, Month, Time, Quarter, Week, or Year of creation.
 - Modified Time: Modification time of the organization such as Date, Month, Time, Quarter, Week, or Year of creation.
@@ -74,24 +68,11 @@ List of dimensions:
 ### Pipeline Tags
 This view contains the data related to the pipeline tags. It will contain the real-time tags of the pipeline.
 
-:::note
-
-This will only show the pipelines, which had at least 1 pipeline execution. It won't display the tags for the pipelines which didn't get executed even once.
-
-:::
-
-
 List of dimensions:
 - Pipeline tag: The pipeline tag, it will be displayed as `key:value`. If there are let's say 5 tags in a pipeline, there will be 5 rows having 1 tag(`key:value` pair) in each row.
 
 ### Pipelines
 This view contains the data related to the pipelines. 
-
-:::note
-
-This will only show the pipelines, which had at least 1 execution. It won't display the pipelines which didn't had any execution.
-
-:::
 
 List of dimensions:
 - Created Time: Creation time of the pipeline
@@ -100,12 +81,6 @@ List of dimensions:
 
 ### Projects
 This view contains the data related to the projects. 
-
-:::note
-
-This will only show the projects, which had at least 1 pipeline execution. It won't display the projects which didn't had any pipeline execution.
-
-:::
 
 List of dimensions:
 - Created Time: Creation time of the project

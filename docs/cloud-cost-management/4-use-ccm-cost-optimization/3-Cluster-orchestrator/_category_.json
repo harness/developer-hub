@@ -1,5 +1,5 @@
 {
-    "label": "Cluster Orchestrator for AWS EKS clusters",
+    "label": "Cluster Orchestrator for AWS EKS clusters (Beta)",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",

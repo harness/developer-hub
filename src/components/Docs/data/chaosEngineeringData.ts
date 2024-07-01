@@ -28,12 +28,23 @@ import { MODULES } from "@site/src/constants"
             "Familiarize yourself with chaos engineering terminology.",
           link: "/docs/chaos-engineering/architecture-and-security/architecture/components",
         },
+        {
+          title: "Onboard with HCE",
+          module: MODULES.ce,
+          description:
+            "Onboarding with Harness Chaos Engineering.",
+          link: "/docs/chaos-engineering/onboarding/hce-onboarding",
+        },
   ],
 },
-];
-
+//];
 // Feature highlights
-  export const featureHighlights: CardSections = [
+  //export const featureHighlights: CardSections = [
+{
+    name: "Key features",
+      description:
+        "",
+        list: [
         {
           title: "AWS faults",
           module: MODULES.ce,
@@ -91,11 +102,18 @@ import { MODULES } from "@site/src/constants"
           link: "/docs/chaos-engineering/chaos-faults/kube-resilience/",
         },
         {
-          title: "Kube-resilience chaos faults",
+          title: "Bring Your Own Chaos (BYOC) faults",
           module: MODULES.ce,
           description:
             "Execute kube-resilience chaos faults.",
-          link: "/docs/chaos-engineering/chaos-faults/kube-resilience/",
+          link: "/docs/chaos-engineering/chaos-faults/byoc/",
+        },
+        {
+          title: "Cloud Foundry chaos faults",
+          module: MODULES.ce,
+          description:
+            "Execute kube-resilience chaos faults.",
+          link: "/docs/chaos-engineering/chaos-faults/cloud-foundry/",
         },
         {
           title: "SSH faults",
@@ -111,6 +129,31 @@ import { MODULES } from "@site/src/constants"
             "Execute Linux chaos faults.",
           link: "/docs/chaos-engineering/chaos-faults/linux/",
         },
+    ],
+  },
+//];
+
+  //export const helpandFAQs: CardSections = [
+    {
+      name: "Help and FAQs",
+      description:
+        "",
+      list: [
+        {
+      title: "Troubleshoot HCE",
+      module: MODULES.ce,
+      description:
+        "Troubleshoot HCE.",
+      link: "/docs/chaos-engineering/troubleshooting/",
+    },
+    {
+      title: "HCE FAQs",
+      module: MODULES.ce,
+      description:
+        "HCE FAQs.",
+      link: "/kb/chaos-engineering/chaos-engineering-faq",
+    },
+   ],
+ },
 ];
 
-  /* Define the cards - end */

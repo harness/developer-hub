@@ -1,6 +1,5 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
 const { themes } = require("prism-react-renderer");
 const darkCodeTheme = themes.dracula;
 const path = require("path");
@@ -24,6 +23,9 @@ const config = {
   onBrokenMarkdownLinks: "warn",
   onBrokenAnchors: "ignore",
   favicon: "img/hdh_fav_icon_grey.ico",
+  customFields: {
+    SEGMENT_API_KEY: process.env.SEGMENT_API_KEY,
+  },
 
   //Mermaid Diagram Functionality
   markdown: {
@@ -517,17 +519,6 @@ const config = {
         // ... other options
       },
     ],
-    //[
-    //  path.resolve(__dirname, "./plugins/redirect-plugin"),
-    //  {
-    //    id: "tutorials",
-    //    path: "tutorials",
-    //    routeBasePath: "tutorials",
-    //    exclude: ["**/shared/**", "**/static/**"],
-    //    sidebarPath: require.resolve("./sidebars-tutorials.js"),
-    //    editUrl: "https://github.com/harness/developer-hub/tree/main",
-    //  },
-    //],
     [
       path.resolve(__dirname, "./plugins/redirect-plugin"),
       {

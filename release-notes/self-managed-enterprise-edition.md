@@ -123,6 +123,7 @@ Upon providing your credentials and the release version, the script will proceed
 
 :::
 
+
 ## July 1, 2024, version 0.18.0
 
 This release includes the following Harness module and component versions.
@@ -149,6 +150,7 @@ Some admins might not have Google account access to download air gap bundles. As
 
 ```
 gsutil -m cp \
+
   "gs://smp-airgap-bundles/harness-0.18.0/ccm_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.18.0/cdng_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.18.0/ce_images.tgz" \
@@ -377,6 +379,48 @@ gsutil -m cp \
 - Updated Grype to support repository scans. (STO-7531)
 
 - The addition of auto target detection to Semgrep introduced a bug where the target name and variant fields appear empty for existing pipelines with Semgrep steps. This has been fixed to show the target name and variant. (STO-7471)
+
+## June 29, 2024, patch version 0.14.11
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.14.11](https://github.com/harness/helm-charts/releases/tag/harness-0.14.11) |
+| Air Gap Bundle | [0.14.11](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.11) |
+| NG Manager | 1.24.7 |
+| CI Manager | 1.12.5 |
+| Pipeline Service | 1.61.7 |
+| Platform Service | 1.12.0 |
+| Access Control Service | 1.33.2 |
+| Delegate | 24.02.82203 |
+| Change Data Capture | 1.5.3 |
+| STO Core | 1.83.8 |
+| Test Intelligence Service | 1.8.1 |
+| NG UI | 1.7.6 |
+| LE NG | 1.1.0 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.14.11/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.11/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.11/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.11/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.11/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.11/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.11/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.11/sto_images.tgz" \
+  .
+```
+
+#### Fixed issues
+
+- Pipelines were getting stuck intermittently when the pipeline was executing steps at max concurrency. This issue only affected customers with a large number of concurrent deployments. Harness identified the fix and upgraded the `pipeline-service` from 1.61.5 to 1.61.7 to resolve this issue. (PIPE-20146, ZD-66018)
+
 
 ## June 19, 2024, patch version 0.17.1
 
