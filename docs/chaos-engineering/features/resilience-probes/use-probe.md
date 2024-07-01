@@ -169,9 +169,9 @@ Resilience probe names act as unique identifiers for a probe, which means you ca
 When you want to enter the probe name in the manifest (manually) as a probeRef annotation, follow the below format:
 
 ```
-probeRef: '[{"ID":"probeID","mode":"SOT"}]'
+probeRef: '[{"probeID":"ID","mode":"SOT"}]'
 ```
-Here, `probeID` is the unique ID of your probe.
+Here, `ID` is the unique ID of your probe.
 
 If you use the user interface, this step is not required.
 
