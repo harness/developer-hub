@@ -20,3 +20,7 @@ If, after registering an entity, your're unable to find the same in your catalog
 ###  Can we currently use RBAC to only show workflows to specific usergroups?
 
 We're already inheriting the [pipeline's permission](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples) for the workflows. So if only a specific set of users, groups or roles are added the project where the pipeline lives, only they will be able to trigger the workflow. However, they will still see the workflow on IDP.
+
+
+### How can user extend the AWS token session time in IDP?
+User can add env var to control the timeout expiration of AWS credentials in IDP.

@@ -3199,3 +3199,36 @@ For frequently asked questions about Harness Continuous Verification, go to [Con
 ### GitOps FAQs
 
 For frequently asked questions about Harness GitOps, go to [GitOps FAQs](/docs/continuous-delivery/gitops/gitops-faqs).
+
+
+### Is it possible to swap the template from the other branch that is already used in the pipeline?
+Yes, User can swap the template by changing the branch in the git config of the template.
+
+### How can user skip the steps based on previous step output?
+User can configure the output variable in the previous step and use that variable with the expression in the conditional execution configuration of the step that you want to skip.
+
+### Is user can do the AZURE_VMSS deployment through Harness?
+Yes, user can configure this custom deployment template as suggested in this doc: https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom/custom-deployment-tutorial/#azure-vmss---deployment-template-sample
+
+### How to run the command step only on single server?
+User can run the command step only on single server by using the below repeat looping strategy:
+
+```
+repeat:
+    items: ["0.0.0.0"]
+```
+
+### How can user skip a CI/CD pipeline build through commit?
+You can skip a CI/CD pipeline build by including one of the following keywords anywhere within your commit message:
+
+[skip ci]
+[ci skip]
+[skip pipeline]
+[pipeline skip]
+[no_ci]
+
+### Can the skip keywords be used in any part of the commit message?
+Yes, the skip keywords can be placed anywhere within the commit message, including within sentences or alongside other text. For example, This is a [ci skip] commit.
+
+### Does harness pipeline support triggering GitHub action workflow from the pipeline?
+As per the current design, there's no native step for this but user can write a shell script at the end of execution to trigger the GitHub action workflow.
