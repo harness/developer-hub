@@ -49,12 +49,12 @@ Client and Server SDKs fetch the evaluation details in the same way as they woul
 
 There are various modes for both versions of Relay Proxy. The Relay Proxy V1 supports running in four different modes:
 
- - Offline with in-memory cache
- - Offline with Redis cache
- - Online with in-memory cache
- - Online with Redis cache
+ - **Offline with in-memory cache**
+ - **Offline with Redis cache**
+ - **Online with in-memory cache**
+ - **Online with Redis cache**
 
-Whereas with the Relay Proxy V2, it only supports running in the Online with Redis Cache mode. Operating in this mode requires the following:
+Whereas with the Relay Proxy V2, it only supports running in the **Online with Redis Cache** mode. Operating in this mode requires the following:
 
  - A connection to Harness SaaS.
  - Connectivity to a Redis cache.
