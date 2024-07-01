@@ -7,7 +7,7 @@ redirect_from:
 
 import IOFaultsCaution from './shared/io-faults-caution.md'
 
-Pod IO mistake simulates a scenario where the file system within the mounted volume of the pod reads or writes incorrect values. This helps in testing how the application handles data corruption or errors during file operations, ensuring robustness and stability under adverse conditions.
+Pod IO mistake simulates a scenario where the file system in the mounted volume of the pod reads or writes incorrect values. This fault determines how the application handles data corruption or errors during file operations, ensuring robustness and stability under adverse conditions.
 
 ![Pod IO Mistake](./static/images/pod-io-mistake.png)
 
@@ -147,12 +147,12 @@ permissions:
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
         <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-      </tr>  
+      </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
         <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a>.</td>
-      </tr> 
+      </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds) </td>
