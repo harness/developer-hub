@@ -19,6 +19,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## July 2024
 
+### Java SDK
+
+#### Version 1.6.1
+
+**Fixed issues**:
+ - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11654)
+
 ### Ruby SDK
 
 #### Version 1.3.1
