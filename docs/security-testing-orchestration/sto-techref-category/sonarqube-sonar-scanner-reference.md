@@ -361,17 +361,19 @@ You can set up your pipeline to generate test coverage reports and then get them
 
 Here's an example workflow for generating a Python 3.9 coverage report:
 
-1. Add the **Run** step.
+1. Add a shared path to the stage where you want to save the report. In this example, the report gets saved to `/shared/sonarqube`.
 
-2. Set the **Image** to `python:3.9-alpine`.
+2. Add the **Run** step.
 
-3. Add commands to install `coverage` and any other dependencies required to generate the report.
+3. Set the **Image** to `python:3.9-alpine`.
 
-4. Add a `coverage` command to generate a coverage report. The specific usage depends on the language and platform.
+4. Add commands to install `coverage` and any other dependencies required to generate the report.
 
-5. Add a second `coverage` command to convert the report to a SonarQube-compatible XML report.
+5. Add a `coverage` command to generate a coverage report. The specific usage depends on the language and platform.
 
-6. If the Run step saves the coverage report to a non-default location, add the report path to [Additional CLI Flags](#additional-cli-flags) in your SonarQube scan step. For example: `-Dsonar.python.coverage.reportPaths=/shared/sonarqube/coverage.xml`.
+6. Add a second `coverage` command to convert the report to a SonarQube-compatible XML report.
+
+7. If the Run step saves the coverage report to a non-default location, add the report path to [Additional CLI Flags](#additional-cli-flags) in your SonarQube scan step. For example: `-Dsonar.python.coverage.reportPaths=/shared/sonarqube/coverage.xml`.
 
 Here's what the Run step looks like in YAML:
 
