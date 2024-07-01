@@ -14,7 +14,7 @@ This topic describes the steps you can follow to create and use a resilience pro
 - Go to [probe overview](/docs/chaos-engineering/features/resilience-probes/overview) to get an understanding about probes.
 - Go to [chaos faults](/docs/chaos-engineering/chaos-faults) to understand where probes are used.
 - You should have an active chaos infrastructure where you can schedule the chaos experiment.
-- Enterprise Hub connectivity status should be active
+- Enterprise Hub connectivity status should be active.
 - Read/write access to the chaos experiment to schedule or navigate to the probe addition UI.
 - Read access to the chaos infrastructure to select a chaos infrastructure when creating an experiment.
 - Read access to the chaos hub to select faults from the chaos hub while creating an experiment.
@@ -22,8 +22,8 @@ This topic describes the steps you can follow to create and use a resilience pro
 Once the prerequisites are fulfilled, you can configure and add a probe to your experiment using the following steps.
 
 :::tip
-Currently, resilience probes is behind the feature flag `CHAOS_PROBE_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable it.
-- If you are an existing customer, you will see the old flow of control in resilience probes by default and you have the choice upgrade to the new flow.
+Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable it.
+- If you are an existing customer, you will see the old flow of control in resilience probes by default and you have the choice to upgrade to the new flow.
 - If you are a new customer, the feature flag is turned on by default and you will see the new flow of control in the resilience probes.
 :::
 
@@ -58,7 +58,7 @@ Currently, resilience probes is behind the feature flag `CHAOS_PROBE_ENABLED`. C
   ![setup](./static/use-probe/setup-6.png)
 
 :::tip
-If you are a first time user, you can create a resilience probe directly from Chaos Studio drawer (from within an experiment). For this, you will see an option to add a system probe (which is a health check system probe) as a one click button. This will not be present if you have configured atleast one resilience probe.
+If you are a first-time user, you can create a resilience probe directly from the Chaos Studio drawer (from within an experiment). For this, you will see an option to add a system probe (which is a health check system probe) as a one-click button. This will not be present if you have configured at least one resilience probe.
 :::
 
 ## Edit a resilience probe
@@ -106,7 +106,7 @@ If you are a first time user, you can create a resilience probe directly from Ch
 
 ## Create probe using YAML
 
-The entire manifest is available as a YAML file, which can be accessed by switching over to the YAML view in Chaos Studio. Below is a sample manifest for the pod delete fault.
+The entire manifest is available as a YAML file, which can be accessed by switching to the YAML view in Chaos Studio. Below is a sample manifest for the pod delete fault.
 
 ```yaml
 - name: pod-cpu-hog-dqt
@@ -172,7 +172,7 @@ You can [update (or edit) a probe](/docs/chaos-engineering/features/resilience-p
 Resilience probe names act as unique identifiers for a probe, which means you can't edit them. If you manually add the name of a probe in the manifest, this same name should be entered in the annotation as ID.
 :::
 
-When you wish to enter the probe name in the manifest (manually) as a probeRef annotation, follow the below format:
+When you want to enter the probe name in the manifest (manually) as a probeRef annotation, follow the below format:
 
 ```
 probeRef: '[{"name":"probe-name","mode":"SOT"}]'
@@ -197,8 +197,8 @@ Probe status is the single source of truth when executing a chaos experiment. Th
 
 ## Force delete resilience probes
 
-- When you force delete a probe, it will not be available for use. You will lose history of that probe, but experiment runs that used the probe will contain the history of the probe.
-- Once you delete a probe, information pertaining to the probe reference is also deleted from all the manifest references, that is, the probe is removed from the probeRef annotation. This ensures that the next possible run will not schedule the probe.
+- When you force delete a probe, it will not be available for use. You will lose the history of that probe, but experiment runs that used the probe will contain the history of the probe.
+- Once you delete a probe, information about the probe reference is also deleted from all the manifest references, that is, the probe is removed from the probeRef annotation. This ensures that the next possible run will not schedule the probe.
 Only when you **hard delete** a probe, you can reuse the name of that probe.
 
 ## Resilience probes support
@@ -213,13 +213,13 @@ Resilience probes are supported by the following features:
 ## Default/System resilience probes
 
 - You can create system (default probes) at the project level **only once**.
-- Once you create a default probe, you can't delete or disable or update it.
-- If you have more than one resilience probe in your chaos experiment, you can disable, delete or update the system probe.
+- Once you create a default probe, you can't delete, disable, or update it.
+- If you have more than one resilience probe in your chaos experiment, you can disable, delete, or update the system probe.
 - Default probes are a part of resilience probes and are entered as annotations in the experiment manifest.
 
 ## Image registry support
-- You can configure the image registry to be used with the default probes. If you haven't configured a probe yet, the experiment will use default image registry.
-- HCE doesn't provide image registry support at the moment for default probes.
+- You can configure the image registry to be used with the default probes. If you haven't configured a probe yet, the experiment will use the default image registry.
+- HCE doesn't currently provide image registry support for default probes.
 
 
 :::info notes
@@ -230,7 +230,7 @@ Resilience probes are supported by the following features:
 
 ## License
 
-- Resilience probes are not a part of any subscription, and hence you don't have any limit on the number of probes you can create. With respect to usability, 1,000 probes can be executed in a month.
+- Resilience probes are not a part of any subscription, and hence you don't have any limit on the number of probes you can create. Concerning usability, 1,000 probes can be executed in a month.
 
 ## Next steps
 

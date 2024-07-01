@@ -14,8 +14,8 @@ This section introduces you to the following:
 - [Probe chaining](#probe-chaining).
 
 :::tip
-Currently, resilience probes is behind the feature flag `CHAOS_PROBE_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable it.
-- If you are an existing customer, you will see the old flow of control in resilience probes by default and you have the choice upgrade to the new flow.
+Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable it.
+- If you are an existing customer, you will see the old flow of control in resilience probes by default and you have the choice to upgrade to the new flow.
 - If you are a new customer, the feature flag is turned on by default and you will see the new flow of control in the resilience probes.
 :::
 
@@ -23,11 +23,11 @@ Currently, resilience probes is behind the feature flag `CHAOS_PROBE_ENABLED`. C
 
 The probe mode refers to the way in which a probe checks the system's health during a chaos experiment. The probes can be set up to run in different modes:
 
-- **SoT**: Executed at the Start of Test as a pre-chaos check
-- **EoT**: Executed at the End of Test as a post-chaos check
-- **Edge**: Executed both, before and after the chaos
+- **SoT**: Executed at the Start of Test as a pre-chaos check.
+- **EoT**: Executed at the End of Test as a post-chaos check.
+- **Edge**: Executed both, before and after the chaos.
 - **Continuous**: The probe is executed continuously, with a specified polling interval during the chaos injection.
-- **OnChaos**: The probe is executed continuously, with a specified polling interval strictly for chaos duration of chaos
+- **OnChaos**: The probe is executed continuously, with a specified polling interval strictly for chaos duration of chaos.
 
 ### Default probe
 
@@ -39,16 +39,16 @@ It is mandatory to have at least one probe configured in a Chaos Experiment to v
 
 Some common use cases of probes include:
 
-1. Network partitioning: Testing how an application behaves when network connectivity is lost between different components.
-2. Pod failures: Testing how an application behaves when a pod in a Kubernetes cluster is terminated or becomes unavailable.
-3. Node failures: Testing how an application behaves when a node in a Kubernetes cluster is terminated or becomes unavailable.
-4. Resource exhaustion: Testing how an application behaves when resources such as CPU or memory are exhausted.
-5. Latency injection: Testing how an application behaves when network latency is increased.
-6. Configuration change: Testing how an application behaves when the configuration is changed.
-7. Identifying bottlenecks: Identifying the bottlenecks in the system and making sure that the system can handle such scenarios.
-8. Testing disaster recovery: Testing the disaster recovery plan and making sure that the system can recover from an unexpected failure.
-9. Testing application scalability: Testing the scalability of the application and making sure that the system can handle more traffic.
-10. Testing Kubernetes components: Testing the behavior of Kubernetes components like apiserver, etcd, controller manager and kubelet.
+1. **Network partitioning**: Testing how an application behaves when network connectivity is lost between different components.
+2. **Pod failures**: Testing how an application behaves when a pod in a Kubernetes cluster is terminated or becomes unavailable.
+3. **Node failures**: Testing how an application behaves when a node in a Kubernetes cluster is terminated or becomes unavailable.
+4. **Resource exhaustion**: Testing how an application behaves when resources such as CPU or memory are exhausted.
+5. **Latency injection**: Testing how an application behaves when network latency is increased.
+6. **Configuration change**: Testing how an application behaves when the configuration is changed.
+7. **Identifying bottlenecks**: Identifying the bottlenecks in the system and making sure that the system can handle such scenarios.
+8. **Testing disaster recovery**: Testing the disaster recovery plan and making sure that the system can recover from an unexpected failure.
+9. **Testing application scalability**: Testing the scalability of the application and making sure that the system can handle more traffic.
+10. **Testing Kubernetes components**: Testing the behavior of Kubernetes components like apiserver, etcd, controller manager and kubelet.
 
 These are some of the common use cases where chaos probes can be used but it can also be used in other scenarios as well depending on the requirements of the application and the system.
 
