@@ -123,6 +123,10 @@ Although some images mentioned here are also used by [CI](https://developer.harn
         {
             "field": "IACMTerraformTag",
             "value": "<your_repo>/harness_terraform:latest"
+        },
+        {
+            "field": "IACMOpentofuTag",
+            "value": "<your_repo>/harness_terraform:latest"
         }
     ]
     EOF
@@ -149,6 +153,9 @@ Although some images mentioned here are also used by [CI](https://developer.harn
         },
         {
             "field": "IACMTerraformTag"
+        },
+        {
+            "field": "IACMOpentofuTag"
         }
     ]
     EOF
