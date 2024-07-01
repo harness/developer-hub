@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-06-28T16:19:25
+date: 2024-07-01T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,16 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: June 28, 2024
+#### Last updated: July 1, 2024
+
+## July 2024
+
+### Ruby SDK
+
+#### Version 1.3.1
+
+**Fixed issues**:
+ - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11657)
 
 ## June 2024
 
