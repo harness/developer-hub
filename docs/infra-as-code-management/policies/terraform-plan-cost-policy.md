@@ -6,7 +6,7 @@ description: A guide to show you how to add a terraform plan cost policy
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Policies can be added and assigned to policy sets to add protective steps that run in conjunction with your IaCM pipelines, evaluating changes and either forcing the pipeline to fail or warning you about conditions that have not been met by your IaCM policy set.
+You can add policies and assign them to policy sets to add protective steps that run in conjunction with your IaCM pipelines, evaluating changes and either forcing the pipeline to fail or warning you about conditions that have not been met by your IaCM policy set.
 
 ## Plan Cost Policies
 
@@ -29,7 +29,6 @@ In this example, you can add and configure a built-in `terraform plan cost` poli
 </TabItem>
 <TabItem value="Step-by-step">
 To add a new Terraform Plan Cost policy and assign it to a policy set, follow these steps:
-
 
 ### Add a new policy
 1. Sign in to [app.harness.io](https://app.harness.io), then select **Project Settings**.
@@ -71,17 +70,13 @@ You can review a previously executed plan against a policy after a plan step has
 ></iframe>
 </TabItem>
 <TabItem value="Step-by-step">
- To compare your previously execution Terraform plan step against a policy, follow these steps:
+ To compare your previously executed Terraform plan step against a policy, follow these steps:
 
 1. Select **Policy sets** then select **Policies**.
 2. Select **Policies**, then select the policy you want to review your previously executed plan step against.
 3. Click **Select input**.
-4. Select the **Entity type**, **Organization**, **Project** and **Action** to search for filter your pipeline executions.
+4. Select the **Entity type**, **Organization**, **Project** and **Action** to search for and filter your pipeline executions.
 5. Select **Apply**.
 6. Review your policy TotalMonthlyCost amount against the TotalMonthlyCost of your Terraform plan input.
 </TabItem>
 </Tabs>
-
-## Conclusion
-
-To summarize, you can easily add and customize Harness built-in policies and enforce them so that they run against your execution pipelines. Harness provides convenient test data to run your policy against before saving and enforcing it. After your pipeline is executed, you can review its plan data specifically again a policy.
