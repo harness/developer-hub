@@ -46,7 +46,7 @@ To add a new Terraform Plan Cost policy and assign it to a policy set, follow th
 2. Select **New policy set**.
 3. Name your policy set.
 4. Select **Terraform Plan Cost** from the entity type list.
-5. Select **Continue**
+5. Select **Continue**.
 </TabItem>
 </Tabs>
 
