@@ -52,6 +52,7 @@ resource "google_project_iam_member" "viewer" {
   project = each.value.project_id
   role    = "roles/viewer"
   member  = "serviceAccount:${var.harness_gcp_sa}"
+}
 
 # for editor access
 resource "google_project_iam_member" "editor" {
@@ -60,7 +61,6 @@ resource "google_project_iam_member" "editor" {
   project = each.value.project_id
   role    = "roles/editor"
   member  = "serviceAccount:${var.harness_gcp_sa}"
-}
 }
 ```
 
