@@ -83,4 +83,4 @@ resource "harness_platform_connector_gcp_cloud_cost" "this" {
 
 ## Conclusion
 
-This is a general example of providing either viewer or reditor access for each connector inside of a GCP folder. This example doesn't include setting up the connector for the billing export. This guide assumes there already exists a connector inta a GCP project that has the billing export and an existing connector for the billing data has already registered and imported the Harness service account in the organization.
+This is a general example of providing either viewer or reditor access for each connector inside of a GCP folder. This example doesn't include setting up the connector for the billing export. This guide assumes there already exists a connector in a GCP project that has the billing export and an existing connector for the billing data has already registered and imported the Harness service account in the organization.

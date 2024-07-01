@@ -86,4 +86,4 @@ resource "harness_platform_connector_azure_cloud_cost" "subscription" {
 
 ## Conclusion
 
-This is a general example of providing either reader or contributor access for each connector inside of an Azure tenant. This example doesn't include setting up the connector for the billing export. This guide assumes there already exists a connector into a Azure subscription that has the billing export and an existing connector for the billing data has already registered and imported the Harness app into the tenant.
+This is a general example of providing either reader or contributor access for each connector inside of an Azure tenant. This example doesn't include setting up the connector for the billing export. This guide assumes there already exists a connector in an Azure subscription that has the billing export and an existing connector for the billing data has already registered and imported the Harness app into the tenant.
