@@ -133,9 +133,9 @@ This release includes the following Harness module and component versions.
 | Air Gap Bundle | [0.18.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.18.0) |
 | NG Manager | 1.41.9 |
 | CI Manager | 1.30.2 |
-| Pipeline Service | 1.78.5 |
-| Platform Service | 1.26.2 |
-| Access Control Service | 1.48.2 |
+| Pipeline Service | 1.78.6 |
+| Platform Service | 1.26.3 |
+| Access Control Service | 1.48.3 |
 | Delegate | 24.06.83204 |
 | Change Data Capture | 1.18.0 |
 | STO Core | 1.97.2 |
@@ -167,7 +167,7 @@ gsutil -m cp \
 
 - Harness now lists all pipeline executions including retired and child executions in the Executions page. This feature is behind the feature flag `PIE_SHOW_ALL_EXECUTIONS_FILTER`. Contact [Harness Support](mailto:support@harness.io) to enable it. (PIPE-18492, ZD-64066)
 
-### New Feature and Enhancement
+### New features and enhancements
 
 #### Chaos Engineering
 
@@ -188,6 +188,7 @@ gsutil -m cp \
 - [Video tutorial to upgrade your chaos infrastructure to 1.38.x or higher](https://youtu.be/fAnsGqkcdkc)
 - [Video tutorial to execute an experiment after infrastructure upgrade to 1.38.x or higher](https://youtu.be/xAu1uuaS2Ds)
 - The existing APIs will work as per the norm on old and new chaos infrastructure, whereas new experiments will work only on the updated infrastructure (infrastructure version >= 1.38.0).
+- Go to [frequently asked questions on optimization](/kb/chaos-engineering/chaos-engineering-faq/#kubernetes-v1-experiment-flow-optimization) to learn more.
 
 :::
 
@@ -282,8 +283,8 @@ gsutil -m cp \
 #### Continuous Delivery
 
 - Command-click on an execution name on the **Executions** page in the CD module did not work as expected. While it opens a new page with the relevant execution, it also opens the same execution on the original page. This issue is fixed. (PIPE-19465, ZD-63986)
-- The stage level delegate selector's expression evaluation failed if the expression had references to the service or environment since these were not set up. Now, Harness has introduced an annotator and skipped the expression evaluation for stage level delegate selectors. The expressions are evaluated when they are referenced in a step. This behavior is identical to how stage level variables are processed. (PIPE-14610)
-- Updates made to stage variables did not reflect in the pipeline. When adding a new allowedValue in a template, the changes were not getting propagated to the pipeline as it was getting treated as subset. This issue was caused by a change made in the code to allow subsets of values in allowedValues in a nested pipeline/template. Harness is reverting this change, and will support exact allowedValues in pipeline/template during reconciliation. Some customers may face reconciliation errors if they are using subset allowedValues already. (PIPE-19102, ZD-62929)
+- The stage level delegate selector's expression evaluation failed if the expression had references to the service or environment since these were not set up. Now, Harness has introduced an annotator and skipped the expression evaluation for stage-level delegate selectors. The expressions are evaluated when they are referenced in a step. This behavior is identical to how stage-level variables are processed. (PIPE-14610)
+- Updates made to stage variables did not reflect in the pipeline. When adding a new `allowedValue`` in a template, the changes were not getting propagated to the pipeline as it was getting treated as a subset. This issue was caused by a change made in the code to allow subsets of values in `allowedValues` in a nested pipeline/template. Harness reverted this change, and will support the exact `allowedValues` in the pipeline/template during reconciliation. Some customers might face reconciliation errors if they are using the subset `allowedValues` already. (PIPE-19102, ZD-62929)
 - There was a recent change to the expression resolution fallback logic to call the fallback only for customers who have the feature flag `CDS_DISABLE_FALLBACK_EXPRESSION_ENGINE` set to true. The current value is false for everyone. However, during this change, the fallback was not being called for customers who has set the feature flag to true, causing the expression to fail. This issue is fixed by correctly calling the fallback in case of failures and adding UTs to handle it. (PIPE-19013, ZD-63175, ZD-63194)
 - Fixed an issue where the MS Teams notifications didn't show the event names. Now, the pipeline end event appears as "ended" and the pipeline success event appears as "succeeded" in notifications. (PIPE-18855, ZD-62684)
 - The Resource Constraint pop-up didn't show the ongoing execution details in the pipeline execution console view. This issue is fixed. (PIPE-18831, ZD-62825)
@@ -291,14 +292,14 @@ gsutil -m cp \
 - Fixed an issue where pipelines with IDP stages were not generating the correct pipeline execution URL. (PIPE-18322, ZD-60366)
 - Running a pipeline returned an unclear error message, `Invalid request: Cannot create pipeline entity due to Unexpected token (FIELD_NAME), expected END_OBJECT: expected closing END_OBJECT after type information and deserialized value at [Source: (StringReader); line: 13124, column: 1]`. This issue is fixed by providing a meaningful error message for the `getStageExecutionList` flow. (PIPE-16557, ZD-60649)
 - Null pointer exception occurred when populating instrumentation data for sending events for telemetry. This issue occurred because some JsonNode objects returned null while called using GET method. This issue is resolved by adding null checks for the JsonNode objects. (PIPE-16452)
-- Custom stages were not displaying wait status for the Approval step. Earlier, the stages were not marked as waiting when the steps went into waiting status. Now, the stage nodeExecution is marked as waiting when the step goes into waiting status. And, the stage is resumed when all the steps under that stage are resumed. (PIPE-15829, ZD-61238)
-- Fixed the issue where deleted files from a PCF/TAS manifest path were removed from remote branch but still cached in the Harness side. (CDS-96718, ZD-63179)
+- Custom stages were not displaying the wait status for the Approval step. Earlier, the stages were not marked as waiting when the steps went into waiting status. Now, the stage `nodeExecution` is marked as waiting when the step goes into waiting status. And, the stage is resumed when all the steps under that stage are resumed. (PIPE-15829, ZD-61238)
+- Fixed the issue where deleted files from a PCF/TAS manifest path were removed from the remote branch but still cached on the Harness side. (CDS-96718, ZD-63179)
 - Fixed an issue where the ExpressionInput **disabled** field was not editable. A minor patch version update fixed this issue. (CDS-96282)
 - Support has been added for GAR and GitHub package from Harness UI for Native Helm Deployments. (CDS-96686)
-- The CD license telemetry publisher did not send the data on some days in an edge case. Earlier, Harness checked if it has been "24 hours - 10 mins" from last sent. For example, on 7th May, if we send the event at 11:43PM for an account, we will not try on 8th May as we wait for 24 hrs-10 mins to send again. So, the next report went out on 9th May 12:00 AM. This issue has been resolved. The CD license telemetry publisher now sends the events in this case as per the updated retry logic. (CDS-96792)
+- The CD license telemetry publisher did not send the data on some days in an edge case. Earlier, Harness checked if it had been "24 hours - 10 mins" from the last time it was sent. For example, on May 7, if we send the event at 11:43 PM for an account, we will not try on May 8, as we wait for 24 hrs-10 mins to send it again. So, the next report went out on May 9 at 12:00 AM. This issue has been resolved. The CD license telemetry publisher now sends the events in this case as per the updated retry logic. (CDS-96792)
 - If drift is detected in the services dashboard tile, the **Drift Detected** hover box now displays a detailed error message with the relevant documentation link. (CDS-96911, CDS-96722)
-- Long template names for pipelines were bleeding out of the **Save as new Template** card. This issue is fixed. Now, the text will appear in a single line with ellipsis when the name is lengthy, and a tooltip is also added now. (CDS-97305)
-- The list clusters in the GKE infrastructure did not use OIDC authentication when a delegate selector was used in the connector. This issue occurred due to an incorrect check on when to use Inherit from delegate or OIDC authentication. This issue is fixed. Now, when OIDC authentication is used with delegate selectors, it uses OIDC flow instead of inheriting credentials from delegate. (CDS-97177, ZD-63901)
+- Long template names for pipelines were bleeding out of the **Save as new Template** card. This issue is fixed. Now, the text will appear in a single line with an ellipsis when the name is lengthy, and a tooltip is also available. (CDS-97305)
+- The list clusters in the GKE infrastructure did not use OIDC authentication when a delegate selector was used in the connector. This issue occurred due to an incorrect check on when to use Inherit from delegate or OIDC authentication. This issue is fixed. Now, when OIDC authentication is used with delegate selectors, it uses OIDC flow instead of inheriting credentials from the delegate. (CDS-97177, ZD-63901)
 - Step group templates did not appear when selecting Use Template on an Approval stage. This issue is fixed. You can now create a step group template with the Approval stage, and use them as step entities in the Approval stage. (CDS-96930, ZD-63556)
 - Fixed an issue where users were unable to save YAML changes when creating a new infrastructure definition. (CDS-96396, ZD-62801, ZD-63997)
 - Unable to send `GitEntityFindInfoDTO` for Docker artifact resources. This issue occurred because the Git metadata was not being passed as a query parameter in API calls. This issue is resolved by making backend changes to resolve the YAML. (CDS-96379)
@@ -311,8 +312,8 @@ gsutil -m cp \
 - Trigger activity history cleared when updating trigger. This issue is fixed by changing the Trigger Activity History retention duration to 6 months instead of 7 days. (CDS-95729, ZD-61782)
 - The nav header panel of the Harness UI was not collapsible. The panel is now collapsible and appears when you hover over it. (CDS-95698, ZD-61706, ZD-61707)
 - Artifact builds were not loading if its entities were in a different repository. This issue is fixed.(CDS-95196, ZD-60805)
-- The fixedValue field is mandatory for backend as well now. Earlier, Harness has validations in place to ensure that fixedValue in the UI is not null. This change is implemented in the backend as well for consistency for API contract from backend as well as UI. (CDS-94414)
-- Multiple infrastructure definitions were pointing to the same underlying infrastructure and deployed the same service, and doubled the instance count. This issue is fixed. (CDS-88736)
+- The **fixedValue** field is mandatory for the backend as well now. Earlier, Harness had validations in place to ensure that **fixedValue** in the UI was not null. This change is implemented in the backend as well for consistency for API contracts from the backend as well as the UI. (CDS-94414)
+- Fixed an issue where multiple infrastructure definitions were pointing to the same underlying infrastructure, which deployed the same service and doubled the instance count. (CDS-88736)
   You can run the following API to check duplicate instances in your account.
   ```
   curl --location 'https://app.harness.io/gateway/ng/api/instancestats/duplicates?routingId=&lt;accountId&gt;&accountId=&lt;accountId&gt;&orgIdentifier=&lt;orgId&gt;&#39; \
@@ -343,7 +344,7 @@ gsutil -m cp \
 
 - Invalid user search results were returned when querying from page `2` or higher. Harness updated the search functionality to reset the `pageIndex` to `0` after adding or updating a search query, ensuring accurate search results even when the `pageIndex` is `2` or higher. (PL-50907, ZD-62990)
 
-- Delegate logs were displaying entire bearer tokens when using the IDP Kubernetes connector. Added log sanitization to delegate logs to mask commonly used secret patterns. These patterns can be extended per-use-case by adding them to the `/opt/harness-delegate/sanitize-patterns.txt` file inside the delegate. (PL-50889, ZD-64069)
+- Delegate logs were displaying entire bearer tokens when using the IDP Kubernetes connector. Added log sanitization to delegate logs to mask commonly used secret patterns. These patterns can be extended per use case by adding them to the `/opt/harness-delegate/sanitize-patterns.txt` file inside the delegate. (PL-50889, ZD-64069)
 
 - Due to a bug, users could be added to SCIM-provisioned/externally managed user groups from the Harness UI, even though membership edits for externally managed groups were not allowed. The issue has been fixed, and adding users to externally managed user groups via the Harness UI is no longer supported. (PL-50663)
 
@@ -355,15 +356,15 @@ gsutil -m cp \
 
 - Delegate registration was not failing for inactive accounts. Harness added a check during delegate registration to verify account status. Delegates will now fail to register for accounts marked as `DELETED` or `INACTIVE`. This item requires Harness Delegate version 24.05.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48082)
 
-- The Audit Trail Filter Form did not have a "Force Delete" option. Added a "Force Delete" action to the Audit Trail Filter Form. (PL-51375, ZD-63788)
+- The Audit Trail Filter Form did not have a **Force Delete** option. Added a **Force Delete** action to the Audit Trail Filter Form. (PL-51375, ZD-63788)
 
 - The Product Usage section on the CD dashboard page was not loading, and it was non-functional in SMP installations. The Product Usage dashboard will now be disabled/hidden in SMP installations. (PL-51310)
 
 - Favorites in the Project Selector were not resetting with re-render. Resolved the issue so that the favorite status now resets correctly during project searches. (PL-50906)
 
-- Users were being redirected to the home page instead of the originally intended page after logging in. When accessing NG-UI with old hash-based URLs while not logged in, the user was redirected to the login page without a "returnUrl". This resulted in users being taken to the main dashboard after successful login instead of their intended page. The issue has been resolved by preserving the "returnUrl". Now, after a successful login, users are redirected to the page they initially intended to access. (PL-50581, ZD-62278)
+- Users were being redirected to the home page instead of the originally intended page after logging in. When accessing NG-UI with old hash-based URLs while not logged in, the user was redirected to the login page without a `returnUrl`. This resulted in users being taken to the main dashboard after successful login instead of their intended page. The issue has been resolved by preserving the `returnUrl`. Now, after a successful login, users are redirected to the page they initially intended to access. (PL-50581, ZD-62278)
 
-- High number of errors in the log-service across all production environments. The issue causing high errors in the log-service has been resolved. (PL-50547)
+- Fixed an issue where there were multiple errors in the `log-service` across all production environments. (PL-50547)
 
 - Delegates were not picking up pipelines due to issues in the retry mechanism when making calls from delegate to manager. The retries did not check if the JWT needed refreshing, resulting in sending expired JWTs in some cases. Improved the retry mechanism to check for JWT refresh on each retry attempt, ensuring valid JWTs are sent and resolving the issue with delegates picking up pipelines. (PL-48743, ZD-60766)
 
