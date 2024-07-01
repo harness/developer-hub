@@ -541,7 +541,7 @@ It can test the application's resilience for the different values of file proper
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod IO Mistake
+### Pod IO mistake
 
 Pod IO mistake is a Kubernetes pod-level fault that causes the file to read or write an incorrect value within the mounted volume of the pod.
 

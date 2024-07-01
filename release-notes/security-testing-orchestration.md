@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-06-14T10:00
+date: 2024-06-27T10:00
 sidebar_position: 13
 ---
 
@@ -23,6 +23,15 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 :::
 
 ## June 2024
+
+### Version 1.100.2
+
+#### Fixed issue
+
+- Fixed an issue where an Anchore Enterprise step failed when trying to extract scan results in the following edge case. (STO-7754)
+  1. An Anchore user scanned an image (for example, `sto-plugin.v1.2.3`). 
+  2. An Anchore user then scanned an image with the same digest as `sto-plugin.v1.2.3` but a different name or tag such as `sto-plugin.latest`.  
+  3. In this case, the Anchore step could extract results for `sto-plugin.v1.2.3` but any attempts to extract results for `sto-plugin.latest` failed with the error "Unable to find matching image."
 
 ### Version 1.99.2
 

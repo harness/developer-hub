@@ -3,7 +3,7 @@ You can quickly and securely manage your Harness subscriptions directly through 
 - Upgrading your plan.
 - Managing payment details and billing admins.
 - Viewing license usage data.
-- Viewing Harness Cloud build credit usage data.
+- Viewing Harness Cloud credit usage data.
 
 :::info
 
