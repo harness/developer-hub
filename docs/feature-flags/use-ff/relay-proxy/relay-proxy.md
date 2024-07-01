@@ -45,6 +45,20 @@ When the proxy starts, an embedded Go server SDK retrieves the Feature and Segme
 
 Client and Server SDKs fetch the evaluation details in the same way as they would if they were interacting with the FF Services on ff-server.
 
+### Supported Modes for Relay Proxy
+
+There are various modes for both versions of Relay Proxy. The Relay Proxy V1 supports running in four different modes:
+
+ - Offline with in-memory cache
+ - Offline with Redis cache
+ - Online with in-memory cache
+ - Online with Redis cache
+
+Whereas with the Relay Proxy V2, it only supports running in the Online with Redis Cache mode. Operating in this mode requires the following:
+
+ - A connection to Harness SaaS.
+ - Connectivity to a Redis cache.
+
 ## More information
 
 For more information about the Relay Proxy, go to our blog post [In-Depth: Harness Feature Flags Relay Proxy](https://harness.io/blog/in-depth-feature-flags-relay-proxy/).
