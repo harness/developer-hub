@@ -22,7 +22,7 @@ A Harness GitOps Repository is used for Harness GitOps only. For other Harness f
 
 * [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md)
 * [Harness CD GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md)
-* [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md)
+* [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent.md)
 * [Add a Harness GitOps Repository](add-a-harness-git-ops-repository.md)
 
 ## Limitations
@@ -37,9 +37,9 @@ If you use a GitOps Repository Credentials Template with a GitOps Repository, th
 
 ## Step 1: Create GitOps Repository Credentials Template
 
-In the GitOps Repository Credentials Template setup, you will select the [Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md) to use when synching state. Be sure you have a GitOps Agent set up already.
+In the GitOps Repository Credentials Template setup, you will select the [Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent.md) to use when synching state. Be sure you have a GitOps Agent set up already.
 
-See [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md).
+See [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent.md).
 
 You will also provide the credentials to use when connecting to the Git repository. Ensure you have your credentials available.
 
@@ -52,7 +52,7 @@ You will also provide the credentials to use when connecting to the Git reposito
 
 1. Click **Git**.
 2. In **Repository Name**, enter a name.
-3. In **GitOps Agent**, select or create the Agent you want to use to fetch manifests from this repo. See [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md).
+3. In **GitOps Agent**, select or create the Agent you want to use to fetch manifests from this repo. See [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent.md).
 4. In **Repository URL**, enter the URL to your repo. For example, `https://github.com/argoproj`.
    
    Typically, you will enter the URL to the root of the repo. Harness GitOps Repositories that use this template will use subfolders of that path for their **URL** settings.
@@ -102,7 +102,7 @@ You will also provide the credentials to use when connecting to the Git reposito
 
 1. Click **Helm**.
 2. In **Repository Name**, enter a name.
-3. In **GitOps Agent**, select or create the Agent you want to use to fetch charts from this repo. See [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md).
+3. In **GitOps Agent**, select or create the Agent you want to use to fetch charts from this repo. See [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent.md).
 4. In **Repository URL**, enter the URL to your HTTP Helm Repository. For example, `https://charts.bitnami.com/bitnami`.
 5. Click **Continue**.
 6. In **Credentials**, in **Connection Type**, select **HTTPS** or **SSH**.

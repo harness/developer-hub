@@ -131,7 +131,7 @@ Create a namespace for Harness GitOps Agent in the management cluster using the 
 
 `kubectl create namespace iam`
 
-Go to [Installing a GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md) for a tutorial on how to create a Harness GitOps Agent.
+Go to [Installing a GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent.md) for a tutorial on how to create a Harness GitOps Agent.
 
 ### Patch the GitOps Agent
 

@@ -1,7 +1,9 @@
 ---
 title: Harness Hosted GitOps
 description: Harness Hosted GitOps easily deploys and manages applications on Kubernetes clusters for you. 
-sidebar_position: 3
+sidebar_position: 5
+redirect_from:
+  - /docs/continuous-delivery/gitops/hosted-gitops/
 ---
 
 As an alternative to deploying and managing GitOps agents on your own Kubernetes clusters, you can use Harness Hosted GitOps to host the agents required for application management and deployment.

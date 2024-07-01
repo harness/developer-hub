@@ -1,7 +1,7 @@
 ---
 title: Store and access OCI Helm repository in private Amazon ECR
 description: This topic describes how to store OCI Helm repository in private Amazon ECR, and access them by rotating tokens.
-sidebar_position: 8
+sidebar_position: 800
 redirect_from:
   - /docs/continuous-delivery/gitops/helm-oci-repository-aws-ecr
 ---
