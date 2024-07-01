@@ -95,21 +95,6 @@ HCE allows you to create probes for multiple infrastructures, namely, Kubernetes
 	| Prometheus |           |         |
 	| Kubernetes |           |         |
 
-### Generic run properties for all probes
-
-Listed below are the generic `runProperties` of all probes.
-
-| Property             | Required                                 | Data type                          |
-|----------------------|------------------------------------------|------------------------------------|
-| probeTimeout         | Yes                                      | string with +d[ms][s][m][h] format |
-| interval             | Yes                                      | string with +d[ms][s][m][h] format |
-| retry                | Only available for Kubernetes (optional) |                                    |
-| attempt              | Yes                                      | positive integer                   |
-| probePollingInterval |                                          | string with +d[ms][s][m][h] format |
-| intialDelay          |                                          | string with +d[ms][s][m][h] format |
-| stopOnFailure        |                                          | bool                               |
-| verbosity            | Only available for Kubernetes (optional) | string with "info" or "debug" info |
-
 ## Next steps
 
 * [Use cases of resilience probes](/docs/chaos-engineering/features/resilience-probes/types#common-use-cases)

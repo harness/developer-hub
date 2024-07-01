@@ -11,15 +11,9 @@ This topic describes the steps you can follow to create and use a resilience pro
 
 ## Before you begin
 
-- Go to [probe overview](/docs/chaos-engineering/features/resilience-probes/overview) to get an understanding about probes.
-- Go to [chaos faults](/docs/chaos-engineering/chaos-faults) to understand where probes are used.
-- You should have an active chaos infrastructure where you can schedule the chaos experiment.
-- Enterprise Hub connectivity status should be active.
-- Read/write access to the chaos experiment to schedule or navigate to the probe addition UI.
-- Read access to the chaos infrastructure to select a chaos infrastructure when creating an experiment.
-- Read access to the chaos hub to select faults from the chaos hub while creating an experiment.
-
-Once the prerequisites are fulfilled, you can configure and add a probe to your experiment using the following steps.
+- Go to [probe overview](/docs/chaos-engineering/features/resilience-probes/overview) to understand about probes.
+- Go to [chaos faults](/docs/chaos-engineering/chaos-faults) to understand where you can use resilience probes.
+- Permission to edit a [chaos experiment](/docs/chaos-engineering/features/experiments/edit-chaos-experiment).
 
 :::tip
 Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable it.
@@ -58,7 +52,7 @@ Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. 
   ![setup](./static/use-probe/setup-6.png)
 
 :::tip
-If you are a first-time user, you can create a resilience probe directly from the Chaos Studio drawer (from within an experiment). For this, you will see an option to add a system probe (which is a health check system probe) as a one-click button. This will not be present if you have configured at least one resilience probe.
+If you are a first-time chaos module user or a Platform user who has not used resilience probes, you can create a resilience probe directly from the Chaos Studio drawer (from within an experiment). For this, you will see an option to add a system probe (which is a health check system probe) as a one-click button. This will not be present if you have configured at least one resilience probe.
 :::
 
 ## Edit a resilience probe
@@ -175,9 +169,9 @@ Resilience probe names act as unique identifiers for a probe, which means you ca
 When you want to enter the probe name in the manifest (manually) as a probeRef annotation, follow the below format:
 
 ```
-probeRef: '[{"name":"probe-name","mode":"SOT"}]'
+probeRef: '[{"ID":"probeID","mode":"SOT"}]'
 ```
-Here, `probe-name` is the name of your probe.
+Here, `probeID` is the unique ID of your probe.
 
 If you use the user interface, this step is not required.
 
@@ -224,7 +218,7 @@ Resilience probes are supported by the following features:
 
 :::info notes
 - **Legacy probes support (Backward compatibility)***: Users can still use [legacy probes](/docs/chaos-engineering/features/resilience-probes/cmd-probe).
-- **Audit integration**: There are no audit events for resilience probes.
+- **Audit integration**: Audit events are available for resilience probes.
 - **Access control permissions division**: ACL is mapped to the experiment ACL.
 :::
 
