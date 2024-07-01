@@ -32,6 +32,7 @@ Supported versions EOS and EOL are based on when the delegate image was pushed t
 
 | Image version |Release date | EOS | EOL |
 | --- | --- | --- | --- |
+| 24.07.82905 | July 1, 2024| December 31, 2024 | March 2, 2025 |
 | 24.06.83304 | June 24, 2024| December 24, 2024 | February 23, 2025 |
 | 24.06.83204 | June 20, 2024| December 20, 2024 | February 19, 2025 |
 | 24.06.83004 | June 7, 2024| December 7, 2024 | February 6, 2025 |
