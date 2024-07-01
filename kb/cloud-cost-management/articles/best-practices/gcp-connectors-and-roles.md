@@ -75,7 +75,7 @@ resource "harness_platform_connector_gcp_cloud_cost" "this" {
   identifier = replace(each.value.project_id, "-", "_")
   name       = each.value.name
 
-  features_enabled      = ["VISIBILITY", "OPTIMIZATION", "GOVERNANCE]
+  features_enabled      = ["VISIBILITY", "OPTIMIZATION", "GOVERNANCE"]
   gcp_project_id        = each.value.project_id
   service_account_email = var.harness_gcp_sa
 }
