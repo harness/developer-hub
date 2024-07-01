@@ -67,5 +67,6 @@ When you use the probe in **source mode** in a chaos experiment, you can see tha
 
 ## Known limitations of resilience probes
 
-* Command probes in the **source** mode for Kubernetes is available for both SMP and HCE SAAS.
-* In SMP (self-managed platform), **source** mode of command probe is only available for Kubernetes.
+* Command probes in the **source** mode for Kubernetes is available for both SMP and HCE SaaS.
+* Command probes in the **source** mode is not available for Linux in HCE SaaS.
+* In SMP (self-managed platform), command probe in the **source** mode is only available for Linux.
