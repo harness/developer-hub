@@ -168,7 +168,7 @@ You have now successfully configured a Harness service for your PR pipeline.
 
 :::note
 
-For updating the `config.json` or `config.yaml` values, Harness supports variables in the [Update Release Repo step](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps.md#update-release-repo-step). If you want to enforce common values at the service or environment level of your ApplicationSet, you can use service or environment variables.
+For updating the `config.json` or `config.yaml` values, Harness supports variables in the [Update Release Repo step](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps.md#update-release-repo-step). If you want to enforce common values at the service or environment level of your ApplicationSet, you can use service or environment variables.
 
 Values from the **Update Release Repo** step have a higher priority than service or environment variables.
 
@@ -225,7 +225,7 @@ In **Execution**, Harness automatically adds a few common PR pipeline steps. The
 
 :::note
 
-Harness automatically adds the **Update Release Repo**, **Merge PR** and **Fetch Linked Apps** Steps, which are ready to be run without any configuration. However, to further customize these steps or add other optional steps, please refer to [Harness GitOps pipeline steps](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps.md).
+Harness automatically adds the **Update Release Repo**, **Merge PR** and **Fetch Linked Apps** Steps, which are ready to be run without any configuration. However, to further customize these steps or add other optional steps, please refer to [Harness GitOps pipeline steps](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps.md).
 
 :::
 
@@ -237,7 +237,7 @@ You can also enter variables in this step to update key-value pairs in the confi
 
 If there is a matching variable name in the variables of the Harness service or environment used in this pipeline, the variable entered in this step will override them.
 
-For more information, please refer to [Update Release Repo step](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps.md#update-release-repo-step).
+For more information, please refer to [Update Release Repo step](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps.md#update-release-repo-step).
 
 ![](static/harness-git-ops-application-set-tutorial-56.png)
 
