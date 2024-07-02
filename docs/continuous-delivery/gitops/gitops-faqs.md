@@ -50,7 +50,7 @@ Yes. For more details, go to [Helm OCI repository documentation](https://develop
 
 ### Can one manage Flux applications with Harness GitOps ?
 
-Yes  one can manage Flux applications with Harness GitOps. For more details, go to [Use Flux](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/use-flux/).
+Yes  one can manage Flux applications with Harness GitOps. For more details, go to [Use Flux](/docs/continuous-delivery/gitops/connect-and-manage/use-flux/).
 
 
 ### Does Harness provides drift detection for Kubernetes non-GitOps pipelines ?
