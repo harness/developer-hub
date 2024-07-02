@@ -51,7 +51,6 @@ This topic shows you how to create a Secret Manager Template at the Project scop
    ACCOUNT='<+spec.environmentVariables.ACCOUNT>'
    KIND='variable'
 
-   #IDENTIFIER="cyberark-vault/LOB_prod/T-App-Conjur/Application-CNC-Conjur-Keys-test-secret-cluster.YOUR_CLUSTER.com-admin/username"
    IDENTIFIER='<+spec.environmentVariables.IDENTIFIER>'
 
    #
@@ -69,9 +68,6 @@ This topic shows you how to create a Secret Manager Template at the Project scop
    ACCEPT_HEADER_JSON="Accept: application/json"
 
    secret="$(curl --request GET $RETRIEVAL_URL --header "$AUTH_HEADER" --header "$ACCEPT_HEADER_JSON" | head -n 1)"
-
-   # DEBUG
-   secret=$RETRIEVAL_URL
    ```
 
 12. Select **Configuration**, then Select **Add Input Variable**.
@@ -124,9 +120,6 @@ template:
           ACCOUNT='<+spec.environmentVariables.ACCOUNT>'
           KIND='variable'
 
-          # Secret Identifier in Conjur
-          # Example format: cyberark-vault/LOB_prod/T-App-Conjur/Application-CNC-Conjur-Keys-test-secret-cluster.ORGANIZATION.com-admin/username
-          IDENTIFIER='<+spec.environmentVariables.IDENTIFIER>'
 
           #
           # Authenticate first to get an access token
@@ -144,8 +137,6 @@ template:
           # Set secret variable, which is expected to be set as the value of the secret.
           secret="$(curl --request GET $RETRIEVAL_URL --header "$AUTH_HEADER" --header "$ACCEPT_HEADER_JSON" | head -n 1)"
 
-          # DEBUG
-          # secret=$RETRIEVAL_URL
     environmentVariables:
       - name: CONJUR_APPLIANCE_URL
         type: String
