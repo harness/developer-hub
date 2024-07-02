@@ -127,6 +127,20 @@ If the repository actually exists it will fetch the branch name, if not it will 
 
 ![](./static/repolisting_error.png)
 
+:::info note
+Repo Listing is not supported for Azure Repos.
+:::
+
+### Branch Listing 
+
+:::
+Currently this feature is behind feature flag `CDS_LIST_BRANCH_V2 `. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+
+
+If you are not able to find the branch in the list you have an option to Select branch
+
 
 ### Multiple branch support
 
