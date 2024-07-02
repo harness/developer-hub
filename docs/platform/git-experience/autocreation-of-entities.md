@@ -176,27 +176,29 @@ For example:- `.harness/orgs/test_org/projects/test_project/services/service_dep
 
 File path for storing Environment at Account level should follow the following naming convention:
 
- `.harness/envs/<file_path_name>.yaml`
+ `.harness/envs/<type_of_environment>/<file_path_name>.yaml`
 
-- Folder name should be `envs`.
+- Folder name should be `envs` followed by the type of environment `production` or `pre-production`.
 
-For example:- `.harness/envs/Pre_Prod_qa.yaml`
+For example:- `.harness/envs/pre-production/Pre_Prod_qa.yaml`
 
-- **Environments directory**: `envs`
+- **Environment directory**: `envs`
+- **Environment type**: `pre-production`
 - **Environment File Path name**: `Pre_Prod_qa`
 
 2. **Organization Level**
 
 File path for storing Environment at Organization level should follow the following naming convention:
 
-`.harness/orgs/<org_identifier>/envs/<file_path_name>.yaml`
+`.harness/orgs/<org_identifier>/envs/<type_of_environment>/<file_path_name>.yaml`
 
-For example:- `.harness/orgs/test_org/envs/Pre_Prod_qa_org.yaml`
+For example:- `.harness/orgs/test_org/envs/pre-production/Pre_Prod_qa_org.yaml`
 
 
-- **Organizations directory**: `orgs`
+- **Organization directory**: `orgs`
 - **Organization identifier**: `test_org`
-- **Environments directory**: `envs`
+- **Environment directory**: `envs`
+- **Environment type**: `pre-production`
 - **Environment File Path name**: `Pre_Prod_qa_org`
 
 
@@ -204,15 +206,16 @@ For example:- `.harness/orgs/test_org/envs/Pre_Prod_qa_org.yaml`
 
 File path for storing Environment at Project level should follow the following naming convention:
 
- `.harness/orgs/<org_identifier>/projects/<project_identifier>/envs/<file_path_name>.yaml`
+ `.harness/orgs/<org_identifier>/projects/<project_identifier>/envs/<type_of_environment>/<file_path_name>.yaml`
 
-For example:- `.harness/orgs/test_org/projects/test_project/envs/Pre_Prod_qa_project_level.yaml`
+For example:- `.harness/orgs/test_org/projects/test_project/envs/pre-production/Pre_Prod_qa_project_level.yaml`
 
 - **Organizations directory**: `orgs`
 - **Organization identifier**: `test_org`
 - **Projects directory**: `projects`
 - **Project identifier**: `test_project`
-- **Environments directory**: `envs`
+- **Environment directory**: `envs`
+- **Environment type**: `pre-production`
 - **Environment File Path name**: `Pre_Prod_qa_project_level`
 
 ### Infrastructure 
@@ -221,14 +224,15 @@ For example:- `.harness/orgs/test_org/projects/test_project/envs/Pre_Prod_qa_pro
 
 File path for storing Infrastructure at Account level should follow the following naming convention:
 
- `.harness/envs/<environment_identifier>/infras/<file_path_name>.yaml`
+ `.harness/envs/<type_of_environment>/<environment_identifier>/infras/<file_path_name>.yaml`
 
-- All infrastructures belonging to an environment will reside in the directory of environment identifier.
+- All infrastructures belonging to an environment will reside in the directory of type of environment followed by environment identifier.
 - Folder name should be `infras`
 
-For example:- `.harness/envs/Pre_Prod_qa/infras/infra_account_level.yaml`
+For example:- `.harness/envs/pre-production/Pre_Prod_qa/infras/infra_account_level.yaml`
 
 - **Environments directory**: `envs`
+- **Environment type**: `pre-production`
 - **Environment identifier**: `Pre_Prod_qa`
 - **Infrastructure directory**: `infras`
 - **Infrastructure File Path name**: `infra_account_level`
@@ -238,15 +242,16 @@ For example:- `.harness/envs/Pre_Prod_qa/infras/infra_account_level.yaml`
 
 File path for storing Infrastructure at Project level should follow the following naming convention: 
 
-`.harness/orgs/<org_identifier>/projects/<project_identifier>/envs/<environment_identifier>/infras/<file_path_name>.yaml`
+`.harness/orgs/<org_identifier>/projects/<project_identifier>/envs/<type_of_environment>/<environment_identifier>/infras/<file_path_name>.yaml`
 
-For example:- `.harness/orgs/test_org/projects/test_project/envs/Pre_Prod_qa_project_level/infras/infra_project_level.yaml`
+For example:- `.harness/orgs/test_org/projects/test_project/envs/pre-production/Pre_Prod_qa_project_level/infras/infra_project_level.yaml`
 
 - **Organization directory**: `orgs`
 - **Organization identifier**: `test_org`
 - **Projects directory**: `projects`
 - **Project identifier**: `test_project`
-- **Environments directory**: `envs`
+- **Environment directory**: `envs`
+- **Environment type**: `pre-production`
 - **Environment identifier**: `Pre_Prod_qa_project_level`
 - **Infrastructure directory**: `infras`
 - **Infrastructure File Path name**: `infra_project_level`
