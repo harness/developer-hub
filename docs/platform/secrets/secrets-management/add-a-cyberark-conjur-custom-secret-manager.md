@@ -187,7 +187,24 @@ This topic shows you how to add a Custom Secret Manager in the project scope.
 
 	![](../static/custom-secret-manager-36.png)
 
-9. Select **Fixed** to make the variable values fixed. Harness won't ask you these values when you create Secrets.
+9. Select **Fixed** for the `CONJUR_APPLIANCE_URL`, `HOST_ID`, `AUTHENTICATOR`, `API_KEY_SECRET_ID`, and `ACCOUNT`.
+
+   - The `API_KEY_SECRET_ID` should be an identifier for a Harness Secret, to be used for authenticating with Conjur. Create the secret using any secret manager other than Conjur. Based on where you create the secret, this can be in the format of `account.secretid`, `org.secretid`, or just `secretid`.
+
+   - The following values are used to authenticate with Conjur using this API URL format:
+
+      `$CONJUR_APPLIANCE_URL/$AUTHENTICATOR/$ACCOUNT/$HOST_ID/authenticate`
+
+   - The following values are used to fetch a secret from Conjur using this API URL format:
+
+      `$CONJUR_APPLIANCE_URL/secrets/$ACCOUNT/$KIND/$IDENTIFIER`
+
+   - Set the `IDENTIFIER` to not be **Fixed**, and provide an example secret identifier to be used for testing the connection.
+
+      The `IDENTIFIER` should be in the following format:
+
+      `<vault>/<lob-user>/<safe>/<account>/<property>`
+
 10. Select **Continue**.
 11. In **Delegates Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Select **Save and Continue**.
 12. In **Connection Test**, select **Finish** after your connection is successful.
