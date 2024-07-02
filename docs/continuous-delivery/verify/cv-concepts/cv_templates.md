@@ -1,30 +1,57 @@
 ---
-title: Templates and templatization
+title: Create and use a monitored service template in a verify step
 sidebar_position: 3
 description: Learn about strategies to template out CV workflow items. 
 slug: /continuous-delivery/verify/cv-concepts/templates
 ---
 
-Continuous Verification is achieved by adding a Verify step in the deployment pipeline. The Verify step uses monitored services to figure out what metrics and logs need to be included in the verification. A monitored service definition is associated with a particular service running in the environment. 
+A monitored service in the context of the Harness platform is a combination of a Harness service and environment. This entity can be any workload that can be monitored, including microservices. Environments represent the deployment targets such as QA, production, or any other environment where the workload will be deployed. By connecting a monitored service to change sources and health sources, you can monitor the health of the service. 
 
-When a Verify step is added in a pipeline, it determines the service that is getting deployed and the environment that it the service is getting deployed to for that particular pipeline stage. Based on the service and environment information, the Verify step picks the corresponding monitored service (i.e the monitored service which is mapped to that service & environment) and uses it for verification.
-
-A monitored service entity can contain a set of Health Sources. A Health Source is a collection of either metric or log configurations to be used for verification. Each health source corresponds to one particular source. For example AppDynamics, Splunk, Prometheus, etc. The users can add a combination of log and metric type of health sources in a particular monitored service.
+The following steps explain how to create a monitored service in Harness.
 
 
-## Creating a monitored service template
+## Prerequisites
 
-Creating monitored services for each of the deployed services (service running in a particular environment) is a tedious and repetitive task if it needs to be created for many services. Many of the metric and log configurations only change slightly for each service. To alleviate this problem, you can create a monitored service template for monitoring the deployed services.
+- Ensure that you have installed a delegate and it can communicate with Harness, the health source, and the change source. To learn more about delegates, go to [Get started with delegates](/docs/category/delegate-concepts).
+- Create an organization if you have not already created one. To learn more about organizations in Harness, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization).
 
-While a monitored service entity contains a lot more than a set of health sources, the presence of health sources is sufficient for verification purposes. Hence, a monitored service template can be created only with required health sources. Coupling a monitored service template with services and environments is intentionally kept loose to allow using a template used for deployment for different services.
+## Create a monitored service
 
-You can input the monitored service template as runtime input or expression. This helps in tweaking the template at runtime based on the context of a deployment (for a particular service getting deployed to a particular environment). 
+A monitored service is a logical entity that combines a Harness service and environment. The service could be a microservice or any other workload that can be monitored. Environments represent your deployment targets such as QA, prod, and so on.
 
-For more details on creating a monitored service template, go to [Monitored service template documentation](/docs/service-reliability-management/monitored-service/monitored-service-template-quickstart).
+To create a monitored service:
 
-## Configuring the monitor service template in a Verify step
+1. In your Harness project, navigate to the **Continuous Delivery** module, and then select **Monitored Services** > **+ New Monitored Service**.
 
-Like any other construct of a pipeline (step, stage, pipeline), a step template for a Verify step can also be created. Verify step template can be used in conjunction with other pipeline constructs like pipeline, stage template, etc.
+   ![Navigate to new monitored services page](./static/monitored-service-template-cd.png)
+
+   The **Create new monitored service** page appears.
+
+2. In the **Overview** section, define a service and environment to set up a monitored service for a particular application. 
+    * In **Service**: Do one of the following:
+     
+       * If the service that you want to monitor exists, select it.
+       * If you want to create a service, select **Add New**, enter the following information, and then select **Save**. 
+       
+          *  **Name**: Enter a name for the service. For example, _sample_service_.
+          *  **Description (Optional)**
+          *  **Tag (Optional)** 
+           
+    * In **Environment**: Do one of the following:
+     
+       * If the environment that you want to monitor exists, select it.
+       * If you want to create an environment, select **Add New**, enter the following information, and then select **Save**. 
+       
+          *  **Name**: Enter a name for the environment.
+          *  **Description (Optional)**
+          *  **Tag (Optional)** 
+          *  **Environment Type**: Select an environment type. The available options are **Production** and **Non-Production**.
+
+    Harness automatically populates the **Monitored Service Name** field by combining the service and environment names. This field is not editable.
+
+After creating the monitored service template, you can edit it to add a Health Source of your preference. While a monitored service entity contains a lot more than a set of health sources, the presence of health sources is sufficient for verification purposes. Hence, a monitored service template can be created only with the required health sources. For more details, go to [Monitored service template documentation](/docs/service-reliability-management/monitored-service/monitored-service-template-quickstart).
+
+## Configure the monitored service template in a Verify step
 
 You can configure the monitored service template in the Verify step configuration. You can select whether you want to use Default or Template for verification.
 
@@ -46,7 +73,7 @@ To select a monitored service template, select **Template** under **Monitored Se
 4. Select the **Version Label**.
 5. Select **Use Template**.
 
-![](./static/cv_templates/select-template-fixed-value.png)
+   ![](./static/select-template-fixed-value.png)
 
 ### Select a monitored service template during runtime
 
@@ -58,13 +85,16 @@ To select a monitored service template during runtime, on the Verify step settin
 
 1. Select Template input as a runtime value, and apply changes to the step configuration.
    
-   ![](./static/cv_templates/monitored-service-template-as-runtime-input.png)
+   ![](./static/monitored-service-template-as-runtime-input.png)
+
 2. During run time, in the **Run Pipeline** page's **Execution** > **Step: Verify** > **Monitored service template** section, select **Select Template**.
    
-   ![](./static/cv_templates/monitored-service-template-1.png)
+   ![](./static/monitored-service-template-1.png)
+
 3. In the **Select a Monitored Service Template** page, select a monitored service template.
    
-   ![](./static/cv_templates/select-template-runtime.png)
+   ![](./static/select-template-runtime.png)
+
 4. Select **Apply Selected**.
 
 
