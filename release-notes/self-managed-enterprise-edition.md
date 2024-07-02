@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-07-01T10:00
+date: 2024-07-02T10:00
 sidebar_position: 16
 ---
 
@@ -91,7 +91,7 @@ Starting with version 0.17.0, Harness no longer publishes Looker images to the D
 
 Looker is required for custom dashboards, a feature not enabled by default in Harness Self-Managed Enterprise Edition. To set up custom dashboards, you must contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-**For non-airgapped packages**
+**For non-air gap packages**
 
 If you require custom dashboards, you can request onboarding. Harness will generate an access token, allowing you to pull the Looker image from DockerHub. Subsequently, Harness will provide you with the Looker license key and DockerHub credentials to update your `override.yaml` file.
 
@@ -109,9 +109,9 @@ looker:
 
 For more information about creating the secret, go to [Pull an image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) in the Kubernetes documentation.
 
-**For airgapped packages**
+**For air gap packages**
 
-Harness no longer includes the Looker image in airgapped bundles. You can still request onboarding for custom dashboards. Upon request, Harness will generate an access token for pulling the Looker image from DockerHub. Following this, Harness will provide you with the Looker license key and DockerHub credentials.
+Harness no longer includes the Looker image in air gap bundles. You can still request onboarding for custom dashboards. Upon request, Harness will generate an access token for pulling the Looker image from DockerHub. Following this, Harness will provide you with the Looker license key and DockerHub credentials.
 
 You must replace your Looker license after deployment.
 
@@ -123,8 +123,7 @@ Upon providing your credentials and the release version, the script will proceed
 
 :::
 
-
-## July 1, 2024, version 0.18.0
+## July 2, 2024, version 0.18.0
 
 This release includes the following Harness module and component versions.
 
