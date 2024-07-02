@@ -172,8 +172,8 @@ You can specify a TSL certificate and key for the HTTP step. This enables TLS en
 
 You can use fixed values, expressions, or runtime inputs for these settings. For more information, go to Harness [file secrets](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) and [text secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/).
 
-:::info note
-
+:::information
+Certification validation is disabled for this step.
 :::
 
 ## Delegate proxy
