@@ -49,18 +49,33 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
   </tr>
   <tr>
     <td> destinationIPs </td>
-    <td> List of comma- separated target IPs. Also supports a list of target destination ports for a given IP, that are separated by a pipe (<code>|</code>). For example, <code>1.1.1.1,35.24.108.92|3000|8080</code>. </td>
+    <td> List of comma-separated target IPs. Supports a list of target destination ports for a given IP, that are separated by a pipe (<code>|</code>). For example, <code>1.1.1.1,35.24.108.92|3000|8080</code>. </td>
     <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all host names/domains will be targeted</td>
   </tr>
   <tr>
     <td> latency </td>
-    <td> Amount of latency to added to connection in ms. For example: <code> 2000 </code> </td>
+    <td> Amount of delay added to the connection in ms. For example: <code> 2000 </code> </td>
     <td> Defaults to 2000 </td>
   </tr>
   <tr>
     <td> jitter </td>
-    <td> Amount of jitter to be added in ms. Jitter will define the max randomized deviation from the provided latency value. For example: <code> 100 </code> </td>
+    <td> Amount of jitter to be added in ms. Jitter defines the maximum randomized deviation from the provided latency value. For example: <code> 100 </code> </td>
     <td> Defaults to 0 </td>
+  </tr>
+  <tr>
+    <td> sourcePorts </td>
+    <td> Source ports to be filtered for chaos. For example: <code> 5000,8080 </code>. </td>
+    <td> Alternatively, the ports can be whitelisted, that is, filtered to be exempt from chaos. Prepend a <code>!</code> to the list of ports to be exempted. For example, <code> !5000,8080 </code>. </td>
+  </tr>
+  <tr>
+    <td> destinationPorts </td>
+    <td> Destination ports to be filtered for chaos. For example, <code> 5000,8080 </code>. </td>
+    <td> Alternatively, the ports that can be whitelisted, that is, filtered to be exempt from chaos. Prepend a <code>!</code> to the list of ports to be exempted. For example, <code> !5000,8080 </code>. </td>
+  </tr>
+  <tr>
+    <td> whitelistSSH </td>
+    <td> Specifies whether the SSH connectivity should be retained during the chaos in the target machine.</td>
+    <td> Default: <code>true</code>. Supports one of: <code>true</code>, <code>false</code></td>
   </tr>
   <tr>
     <td> duration </td>
