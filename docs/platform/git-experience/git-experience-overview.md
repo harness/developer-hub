@@ -115,6 +115,34 @@ For more information, go to [Default settings](/docs/platform/settings/default-s
 
 :::
 
+### Repo Listing
+
+For a certain connector you can fetch upto **1000** repositories.
+If you are not able to find the repository in the list you have an option to **+ add repository**.
+
+![](./static/repolisting_add.png)
+
+If the repository actually exists it will fetch the branch name, if not it will throw an error.
+
+![](./static/repolisting_error.png)
+
+:::important
+Repo Listing is not supported for Azure Repos.
+:::
+
+### Branch Listing
+
+:::info note
+Currently this feature is behind feature flag `CDS_LIST_BRANCH_V2 `. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+It allows you to search upto **1000** branches in a given repository while creating remote entitites.
+
+:::important
+1. Branch listing is not supported for Github and Github Apps.
+2. Please note that branch listing is only supported in Git Sync form i.e while creating remote entities.
+:::
+
 
 ### Multiple branch support
 
