@@ -1,7 +1,7 @@
 ---
 title: Add an AWS KMS secret manager
 description: To store and use encrypted secrets (such as access keys), you can add an AWS KMS Secrets Manager.
-sidebar_position: 4
+sidebar_position: 3
 helpdocs_topic_id: pt52h8sb6z
 helpdocs_category_id: 48wnu4u0tj
 helpdocs_is_private: false
@@ -25,13 +25,13 @@ This topic describes how to add an AWS KMS Secret Manager in Harness.
 
 ### Step 1: Add a Secret Manager
 
-This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, go to[Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
 
-You can add a Connector from any module in your Project in Project setup, or in your Organization, or Account Resources.
+You can add a Connector from any module in your Project in Project setup, or in your Organization, or Account Resources.
 
-In **Connectors**, select **Connector**.
+In **Connectors**, select **Connector**.
 
-In **Secret Managers**, select **AWS KMS**. The **AWS Key Management Service** settings appear.
+In **Secret Managers**, select **AWS KMS**. The **AWS Key Management Service** settings appear.
 
 ![](../../secrets/static/add-an-aws-kms-secrets-manager-53.png)
 
@@ -59,10 +59,10 @@ You can select the following options for authenticating with AWS:
 
 Use your AWS IAM user login credentials.
 
-Either from the JSON for the **Key Policy**, or in the AWS **IAM** console, under **Encryption keys,** gather the **AWS Access Key ID**, **AWS Secret Key**, and **Amazon Resource Name (ARN)**.
+Either from the JSON for the **Key Policy**, or in the AWS **IAM** console, under **Encryption keys,** gather the **AWS Access Key ID**, **AWS Secret Key**, and **Amazon Resource Name (ARN)**.
 
 ![](../../secrets/static/add-an-aws-kms-secrets-manager-54.png)
-For more information, go to [Finding the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn) from Amazon.
+For more information, go to [Finding the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn) from Amazon.
 
 #### AWS Access Key ID
 
@@ -86,11 +86,11 @@ As explained above, you can create a new [Secret](/docs/platform/secrets/add-use
 
 ### Option: Assume IAM Role on Delegate
 
-If you select **Assume the IAM Role on Delegate** Harness will authenticate using the IAM role assigned to the AWS host running the Delegate, you select using a Delegate Selector.
+If you select **Assume the IAM Role on Delegate** Harness will authenticate using the IAM role assigned to the AWS host running the Delegate, you select using a Delegate Selector.
 
 ### Option: Assume Role using STS on Delegate
 
-This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature. Typically, you use `AssumeRole` within your account or for AWS cross-account access.
+This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature. Typically, you use `AssumeRole` within your account or for AWS cross-account access.
 
 #### Role ARN
 
@@ -100,15 +100,15 @@ Enter the Amazon Resource Name (ARN) of the role that you want to assume. This i
 
 If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 
-For more information, go to [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) from AWS.
+For more information, go to [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) from AWS.
 
 #### Assume Role Duration (seconds)
 
-This is the AssumeRole Session Duration. Go to Session Duration in the [AssumeRole AWS docs](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html).
+This is the AssumeRole Session Duration. Go to Session Duration in the[AssumeRole AWS docs](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html).
 
 ### Step 3: Setup Delegates
 
-In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Select **Save and Continue**.
+In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Select **Save and Continue**.
 
 ### Step 4: Test Connection
 

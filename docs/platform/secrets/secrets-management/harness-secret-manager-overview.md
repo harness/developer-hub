@@ -11,7 +11,7 @@ helpdocs_is_published: true
 Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness account. Some key points about Secret Management:
 
 * Secrets are always stored in encrypted form and decrypted when they are needed.
-* Harness Manager does not have access to your key management system, and only the Harness Delegate, which sits in your private network, has access to it. Harness never makes secret management accessible publicly. This adds an important layer of security.
+* Harness Manager does not have access to your key management system, and only the Harness Delegate, which sits in your private network, has access to it. Harness never makes secret management accessible publicly. This adds an important layer of security.
 
 import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
 
@@ -24,13 +24,13 @@ import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
 
 ### Visual Summary
 
-You can choose to use your own secret management solution, or the built-in Harness Secret Manager. This diagram shows how Harness handles secrets:
+You can choose to use your own secret management solution, or the built-in Harness Secret Manager. This diagram shows how Harness handles secrets:
 
 ![](../../secrets/static/harness-secret-manager-overview-44.png)
 
 ### Harness Secret Management Process Overview
 
-Harness sends only encrypted data to the Secret Manager, as follows: 
+Harness sends only encrypted data to the Secret Manager, as follows:
 
 1. Your browser sends data over HTTPS to Harness Manager.
 2. Harness Manager relays encrypted data to the Harness Delegate, also over HTTPS.
@@ -49,7 +49,7 @@ You can manage your secrets in Harness by using either a key management service 
 
 Google Cloud Key Management Service is the default Secret Manager in Harness and is named Harness Secret Manager Google KMS.
 
-The Key Management Service (Google Cloud KMS or AWS KMS) only stores the key. Harness uses [envelope encryption](https://cloud.google.com/kms/docs/envelope-encryption) to encrypt and decrypt secrets. The encrypted secret and the encrypted Data Encryption Key (used for envelope encryption) are stored in the Harness database. 
+The Key Management Service (Google Cloud KMS or AWS KMS) only stores the key. Harness uses [envelope encryption](https://cloud.google.com/kms/docs/envelope-encryption) to encrypt and decrypt secrets. The encrypted secret and the encrypted Data Encryption Key (used for envelope encryption) are stored in the Harness database.
 
 
 :::warning
@@ -65,11 +65,11 @@ These Secret Managers store the key, perform encryption and decryption, and also
 
 #### Secrets in Harness Community and Self-Managed Enterprise Edition Accounts
 
-In Community and Self-Managed Enterprise Edition accounts, Harness uses a random-key secrets store as the Harness Secret Manager.
+In Community and Self-Managed Enterprise Edition accounts, Harness uses a random-key secrets store as the Harness Secret Manager.
 
 
 :::info note
-By default, Self-Managed Enterprise Edition installations use the local MongoDB database for the default Harness Secret Manager. Harness does not recommend using the local MongoDB database. Once you have installed Self-Managed Enterprise Edition, [Add a secret manager](/docs/platform/get-started/tutorials/add-secrets-manager.md). 
+By default, Self-Managed Enterprise Edition installations use the local MongoDB database for the default Harness Secret Manager. Harness does not recommend using the local MongoDB database. Once you have installed Self-Managed Enterprise Edition, [Add a secret manager](/docs/platform/get-started/tutorials/add-secrets-manager.md).
 
 :::
 
@@ -88,7 +88,7 @@ When you set up [Harness Git Experience](../../git-experience/git-experience-ove
 * **Connect Through Manager:** Harness SaaS connects to your Git repo whenever you make a change and Git and Harness sync. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
 * **Connect Through Delegate:** Harness makes all connections through a Harness Delegate. This option is used for Self-Managed Enterprise Edition frequently, but it is also used for Harness SaaS. Go to [Harness Self-Managed Enterprise Edition Overview](/docs/self-managed-enterprise-edition/get-started/onboarding-guide).
 
-If you select **Connect Through Manager**, the Harness Manager decrypts the secrets you have set up in the Harness Secret Manager.
+If you select **Connect Through Manager**, the Harness Manager decrypts the secrets you have set up in the Harness Secret Manager.
 
 If you select **Connect Through Delegate**, Harness Delegate, which runs in your private network and therefore has access to your key management system, decrypts the secrets.
 
@@ -104,7 +104,5 @@ Decrypting a secret sometimes requires its metadata. When you edit a secret, its
 
 - The secret is of the reference type: If a secret's reference path is edited, the path is updated in the database. However, the cached value continues to store the older path and fetches the stale secret.
 
-This issue does not occur with secret managers that do not use a KMS. In such secret managers. secrets are inline, and no metadata is used to retrieve the value. 
-
-
+This issue does not occur with secret managers that do not use a KMS. In such secret managers. secrets are inline, and no metadata is used to retrieve the value.
 

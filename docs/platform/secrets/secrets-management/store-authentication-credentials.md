@@ -1,7 +1,7 @@
 ---
 title: Store authentication credentials
 description: This topic explains how Harness stores authentication credentials for secret managers.
-# sidebar_position: 2
+sidebar_position: 13
 ---
 
 Harness uses connectors to external secret managers (for example Google Secret Manager or Hashicorp Vault) to resolve/store secrets used by pipelines and elsewhere in the Harness platform. External secret manager connectors require configuration, including a means to authenticate to the external secret manager.
@@ -16,11 +16,11 @@ Below is further explanation for each type of secret manager Harness currently s
 ### AWS Key Management Service (KMS) and AWS Secrets Manager
 
 Harness supports three authentication methods for AWS Key Management Service (KMS) and AWS Secrets Manager:
-   
+
    - AWS Access Key: Access Key Id, Secrets Access Key, and AWS ARN must be stored in Harness Built-in Secret Manager.
-   
+
    - [Assume IAM role on delegate](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager/#option-assume-iam-role-on-delegate): AWS ARN must be stored in Harness Built-in Secret Manager.
-   
+
    - [Assume Role using STS on delegate](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager/#option-assume-role-using-sts-on-delegate): AWS ARN must be stored in Harness Built-in Secret Manager.
 
 ### Hashicorp Vault
