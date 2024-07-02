@@ -43,4 +43,40 @@ export const experiments: ExperimentDetails[] = [
     tags: ["cf", "cloud-foundry", "app", "network", "duplication"],
     category: "cloud-foundry",
   },
+  {
+    name: "CF app jvm cpu stress",
+    description: "CF app jvm cpu stress injects jvm cpu stress into a Cloud Foundry app instance.",
+    tags: ["cf", "cloud-foundry", "app", "jvm", "cpu"],
+    category: "cloud-foundry",
+  },
+  {
+    name: "CF app jvm memory stress",
+    description: "CF app jvm memory stress injects jvm memory stress into a Cloud Foundry app instance.",
+    tags: ["cf", "cloud-foundry", "app", "jvm", "memory"],
+    category: "cloud-foundry",
+  },
+  {
+    name: "CF app jvm method exception",
+    description: "CF app jvm method exception injects jvm method exception into a Cloud Foundry app instance.",
+    tags: ["cf", "cloud-foundry", "app", "jvm", "exception"],
+    category: "cloud-foundry",
+  },
+  {
+    name: "CF app jvm method latency",
+    description: "CF app jvm method latency injects jvm method latency into a Cloud Foundry app instance.",
+    tags: ["cf", "cloud-foundry", "app", "jvm", "latency"],
+    category: "cloud-foundry",
+  },
+  {
+    name: "CF app jvm modify return",
+    description: "CF app jvm modify return injects jvm modify return into a Cloud Foundry app instance.",
+    tags: ["cf", "cloud-foundry", "app", "jvm", "return"],
+    category: "cloud-foundry",
+  },
+  {
+    name: "CF app jvm trigger gc",
+    description: "CF app jvm trigger gc injects jvm trigger gc into a Cloud Foundry app instance.",
+    tags: ["cf", "cloud-foundry", "app", "jvm", "gc"],
+    category: "cloud-foundry",
+  },
 ];
