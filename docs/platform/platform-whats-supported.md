@@ -224,3 +224,24 @@ Harness includes native TUF support via the following:
 - Enforce the rotation of secrets and key management practices:
   - Harness provides [token key rotation natively](/docs/platform/automation/api/add-and-manage-api-keys#rotate-tokens).
 - Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step).
+
+## Active Platform Feature flags
+
+Some Harness Platform features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience.
+
+The following table describes active feature flags relevant to Harness Platform.
+
+To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
+
+| Flag                                          | Description |
+|-----------------------------------------------|-------------|
+| `PL_UPDATE_EMAILS_VIA_SCIM`                   |             |
+| `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES`        |             |
+| `PL_LDAP_PARALLEL_GROUP_SYNC`                 |             |
+| `PL_NEW_SCIM_STANDARDS`                       |             |
+| `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM` |             |
+| `PL_DELEGATE_TASK_CAPACITY_CHECK`             |             |
+| `PL_FAVORITES`                                |             |
+| `PL_ALLOW_TO_SET_PUBLIC_ACCESS`               |             |
+| `PL_GCP_OIDC_AUTHENTICATION`                  |             |
+| `PL_CENTRAL_NOTIFICATION`                     |             |
