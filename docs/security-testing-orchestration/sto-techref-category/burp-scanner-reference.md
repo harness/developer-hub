@@ -1,21 +1,30 @@
 ---
-title: Burp scanner reference for STO
+title: Burp step configuration
 description: Scan application instances with Burp.
-sidebar_label: Burp scanner reference
+sidebar_label: Burp step configuration
 sidebar_position: 90
 ---
+
+<DocsTag   text="Instance scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#instance-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview/#extraction-scans-in-sto" />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline/" />
+<br/>
+<br/>
+
 
 You can scan your application instances using [Burp Enterprise](https://portswigger.net/burp/enterprise). 
 
 ## Important notes for running Burp scans in STO
 
-### Root access requirements 
+- You need to run the scan step with root access if either of the following apply:
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
+  - You need to run a [Docker-in-Docker background service](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#docker-in-docker-requirements-for-sto).
 
-<StoRootRequirements />
+  - You need to add trusted certificates to your scan images at runtime. 
 
-### For more information
+- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 
@@ -24,7 +33,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Burp step settings for STO scans
 
-The recommended workflow is add a Burp step to a Security Tests or CI Build stage and then configure it as described below.
+The recommended workflow is to add a Burp step to a Security or Build stage and then configure it as described below.
 
 ### Scan
 
@@ -106,13 +115,13 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 #### Domain 
 
-Domain of the application instance to scan. Example: `https://myapp.io/portal/us`
+The fully-qualified URL to the scanner. 
 
 #### Access Token
 
 The access token used to log in to a specific product in the scanner. This is required for some scans. In most cases, this is a password or an API key. 
 
-You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ### Scan Tool
 
@@ -157,7 +166,7 @@ Username to log in to the instance you want to scan.
 
 The access token to log in to the instance you want to scan. In most cases, this is a password or an API key. 
 
-You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 
 ### Ingestion File
@@ -190,97 +199,3 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 <StoSettingFailOnSeverity />
 
-<!-- STO-7187 remove legacy configs for scanners with step palettes
-
-## Security step settings for Burp scans in STO (legacy)
-
-:::note
-You can set up Burp scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Burp step](#burp-step-settings-for-sto-scans) instead.
-:::
-
-#### Target and variant
-
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-<StoLegacyTargetAndVariant />
-
-#### Burp scan settings
-
-* `product_name` = `burp`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `instance`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan`, `dataLoad`, or `ingestionOnly`
-* `product_config_name`
-	+ The following configurations are available. These are [built-in configurations](https://portswigger.net/burp/documentation/scanner/scan-configurations/burp-scanner-built-in-configs) provided by Burp Enterprise.  
-	    -  `default` This is the same as the `Crawl and Audit - Lightweight` built-in configuration.
-		-  `never-stop-crawl-due-to-application-errors`
-		-  `never-stop-audit-due-to-application-errors`
-		-  `minimize-false-positives`
-		-  `minimize-false-negatives`
-		-  `crawl-strategy-most-complete`
-		-  `crawl-strategy-more-complete`
-		-  `crawl-strategy-fastest`
-		-  `crawl-strategy-faster`
-		-  `crawl-limit-60-minutes`
-		-  `crawl-limit-30-minutes`
-		-  `crawl-limit-10-minutes`
-		-  `crawl-and-audit-lightweight`
-		-  `crawl-and-audit-fast`
-		-  `crawl-and-audit-deep`
-		-  `crawl-and-audit-balanced`
-		-  `audit-coverage-thorough`
-		-  `audit-coverage-maximum`
-		-  `audit-checks-medium-active`
-		-  `audit-checks-light-active`
-		-  `audit-checks-critical-issues-only`
-		-  `audit-checks-all-except-time-based-detection-methods`
-		-  `audit-checks-all-except-java-script-analysis`
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-
-
-#### Instance scan settings
-
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
-
-<StoLegacyInstance />
-
-
-#### Orchestration scan settings
-
-import StoLegacyOrch from './shared/legacy/_sto-ref-legacy-orchestrated.md';
-
-<StoLegacyOrch />
-
-
-#### Dataload scan settings
-
-The following settings are required for Security steps where the `policy_type` is `dataLoad`.
-
-* `product_site_id` The Burp enterprise site identifier.
-
-* `product_domain` Domain of the application instance to scan. Example: `https://myapp.io/portal/us`
-
-   You need to specify either the `product_site_id` or the `product_domain`.
-
-*  `product_scan_id` Use this setting to specify a specific scan to ingest. If this is not specified, the pipeline will ingest the most recent scan. 
-
-* `product_access_token` The access token used to log in to a specific product in the scanner. This is required for some scans. In most cases this is a password or an API key. 
-
-  You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
-
-#### Ingestion file
-
-
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
-
-<StoLegacyIngest />
-
-#### Fail on Severity
-
-
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
-
-<StoSettingFailOnSeverity />
-
--->

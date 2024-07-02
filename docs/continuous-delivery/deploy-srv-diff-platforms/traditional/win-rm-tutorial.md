@@ -422,3 +422,8 @@ For Microsoft Azure or AWS:
 * `<+instance.host.publicIp>`
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
+
+## FAQs
+
+For frequently asked questions about traditional deployments in Harness, go to [SSH and WinRM deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-winrm-faqs).
+

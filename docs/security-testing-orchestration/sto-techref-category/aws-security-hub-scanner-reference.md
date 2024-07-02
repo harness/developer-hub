@@ -1,11 +1,18 @@
 ---
-title: AWS Security Hub scanner reference for STO
+title: AWS Security Hub step configuration
 description: Scan configurations with AWS Image scanner.
-sidebar_label: AWS Security Hub scanner reference
+sidebar_label: AWS Security Hub step configuration
 sidebar_position: 50
 ---
 
-You can scan your configurations using [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html), which provides a comprehensive view of your security state in AWS and helps you check your environment against security industry standards and best practices. 
+
+<DocsTag   text="Configuration scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"   link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuration-scanners"  />
+<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview/#extraction-scans-in-sto" />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline/" />
+<br/>
+<br/>
+
+You can scan your configurations and ingest the scan results from [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html). 
 
 ## Important notes for running AWS Security Hub scans in STO
 
@@ -21,6 +28,8 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <StoMoreInfo />
 
 ## AWS Security Hub step configuration
+
+The default workflow is to add an AWS Security Hub step to a Build or Security stage and configure it as described below.
 
 ### Scan
 
@@ -45,8 +54,13 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 #### Type
 
 import StoSettingScanTypeConfig  from './shared/step_palette/target/type/_config.md';
+import StoSettingScanTypeInst    from './shared/step_palette/target/type/_app.md';
 
+
+<StoSettingScanTypeInst />
 <StoSettingScanTypeConfig />
+
+
 
 
 #### Name 
@@ -72,7 +86,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 ### Authentication
 
-You should create [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) with your encrypted access ID and token and access them using the format `<+secrets.getValue("project.my-secret")>`. 
+You should create [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) with your encrypted access ID and token and access them using the format `<+secrets.getValue("my-secret")>`. 
 
 
 #### Access ID 
@@ -98,12 +112,6 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 <StoSettingLogLevel />
 
 
-### Additional CLI flags
-
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
-
-<StoSettingCliFlags />
-
 
 ### Fail on Severity
 
@@ -118,35 +126,3 @@ You can use this to add environment variables to your scan environment. To enabl
  <DocImage path={require('./static/aws-security-hub-session-token.png')} width="70%" height="70%" title="Add AWS_SESSION_TOKEN to enable session-based authentication" />  
 
 
-<!-- STO-7187 remove legacy configs for scanners with step palettes
-
-## Security step settings for AWS Security Hub scans in STO (legacy)
-
-You can set up an AWS Security Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
-
-* `product_name` : `aws-security-hub`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) : `configuration`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) : `dataLoad` or `ingestionOnly`
-* `product_config_name` : `default`
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-
-#### Target and variant
-
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-<StoLegacyTargetAndVariant />
-
-#### Configuration settings
-
-import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
-
-<StoLegacyConfig  />
-
-
-#### Ingestion file
-
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
-<StoLegacyIngest />
-
--->

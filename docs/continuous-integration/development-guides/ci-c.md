@@ -104,9 +104,11 @@ You can use [Background steps](/docs/continuous-integration/use-ci/manage-depend
 ## Cache dependencies
 
 <Tabs>
-<TabItem value="Harness Cloud" default>
+<TabItem value="Cache Intelligence" default>
 
-Cache your C and C++ dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec`.
+Cache your C and C++ dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+
+Add `caching.enabled.true` to your `stage.spec`:
 
 ```yaml
 - stage:
@@ -116,9 +118,9 @@ Cache your C and C++ dependencies with [Cache Intelligence](/docs/continuous-int
 ```
 
 </TabItem>
-<TabItem value="Self-managed">
+<TabItem value="Save and Restore Cache steps">
 
-With self-managed build infrastructures, you can:
+You can use built-in steps to:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -326,4 +328,3 @@ Now that you have created a pipeline that builds and tests a C or C++ app, you c
 - Create [triggers](/docs/category/triggers) to automatically run your pipeline.
 - Add steps to [build and upload artifacts](/docs/category/build-push-upload-download).
 - Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).
-- Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).

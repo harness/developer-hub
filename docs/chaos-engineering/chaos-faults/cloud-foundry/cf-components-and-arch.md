@@ -1,7 +1,7 @@
 ---
 id: CF chaos components and their deployment architecture
 title: CF chaos components and deployment architecture
-sidebar_position: 1
+sidebar_position: 2
 description : Chaos components and their deployment architecture used in CF fault injection
 ---
 
@@ -10,12 +10,12 @@ This section describes the components and their deployment architecture associat
 ## Overview
 
 You can use HCE to test the resilience of your CF-based microservices by executing chaos experiments on various layers of CF, ranging from application processes (supported for JVM-based apps currently) to the underlying host (VMware) infrastructure.
-HCE supports [resilience probes](/docs/chaos-engineering/features/probes/overview.md) which facilitates:
-- Out-of-the-box faults against different target types
-- Automated validation of
-  - Resilience of the services (known as performance metrics)
-  - Status endpoints
-  - Healthcheck scripts
+HCE supports [resilience probes](/docs/chaos-engineering/features/resilience-probes/overview.md) which facilitates:
+- Out-of-the-box faults against different target types.
+- Automated validation of:
+  - Resilience of the services (known as performance metrics);
+  - Status endpoints;
+  - Healthcheck scripts.
 
 You can natively combine custom actions such as load generation when you execute these experiments as a part of Harness pipelines.
 
@@ -55,8 +55,8 @@ When you create a CF chaos experiment, LCI performs the following actions:
 To successfully execute a CF fault, you have to fulfill the following prerequisites:
 
 - Outbound connectivity from the CF VM (where the LCI is installed) to:
-    - Harness control plane
-    - CF cloud controller endpoint
+    - Harness control plane;
+    - CF cloud controller endpoint.
 
 - Cloud Foundry configuration details to identify the app under test. The config details are typically placed in the `/etc/linux-chaos-infrastructure/cf.env` file and include the following attributes:
 
@@ -77,6 +77,23 @@ This is the default deployment mode that is simpler, in which the LCI resides on
 
 ![](./static/images/deployment-model-3.png)
 
+### Run CF infrastructure as native CF app interacting with chaos sidecars
+
+In this model, the CF chaos infrastructure runs as a native CF application that interacts with the chaos sidecars present in the application instances.
+
+The fault injection is achieved using a two-tier agent, with:
+
+1. The first component is a subscriber service that runs as a native CF app (or microservice) that interacts with the Harness control plane, claims the CF fault requests, and performs one of the following:
+    1. Injects the fault, for [purely CF-API driven faults](https://developer.harness.io/docs/chaos-engineering/chaos-faults/cloud-foundry/cf%20chaos%20components%20and%20their%20deployment%20architecture/#purely-cf-api-driven-faults).
+    2. Exposes a task list with every task mapped to a specific app instance, for [application level (or process level faults)](https://developer.harness.io/docs/chaos-engineering/chaos-faults/cloud-foundry/cf%20chaos%20components%20and%20their%20deployment%20architecture/#application-framework-or-process-level-faults).
+
+2. The second component runs as a sidecar process in the app instance that queries the first component for any task directed towards its own app instance ID/container, fetches the task and injects the chaos.
+
+:::note
+The second mode of deployment doesn't involve root privileges, and hence can't execute [application instance (or container level) faults](https://developer.harness.io/docs/chaos-engineering/chaos-faults/cloud-foundry/cf%20chaos%20components%20and%20their%20deployment%20architecture/#application-instance-or-container-level-faults).
+:::
+
+![](./static/images/sidecar.png)
 
 ### Run LCI with Tanzu Ops manager
 

@@ -1,50 +1,130 @@
 ---
-title: Data Theorem scanner reference for STO
+title: Data Theorem step configuration
 description: Scan code repositories with Data Theorem.
-sidebar_label: Data Theorem scanner reference
+sidebar_label: Data Theorem step configuration
 sidebar_position: 140
 ---
 
-You can run repository scans and ingest results from Data Theorem.
+<DocsTag   text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview/#extraction-scans-in-sto" />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline/" />
+<br/>
+<br/>
+
+You can extract and ingest scan results for your code repositories from [Data Theorem](https://www.datatheorem.com/). 
+
+## Workflow descriptions
+
+<details>
+<summary>Ingestion workflows</summary>
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
+
+<details>
+<summary>Orchestration/extraction workflows</summary>
 
 
-## Important notes for running Data Theorem scans in STO
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+
+<CustomScanWorkflowRepo />
+
+</details>
+
+## Custom Scan step settings for Data Theorem scans
+
+### Scanner settings
+
+These settings are required for most scanners. For more information, go to the reference for the scanner integration you're setting up.
+
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
 
 
-### Docker-in-Docker requirements
+#### Product name
 
+The scanner name. This is required for all Custom Scan steps. 
 
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+##### Key
+```
+product_name
+```
 
+##### Value
 
-<StoDinDRequirements />
+```
+data-theorem
+```
 
-### Root access requirements
+#### Scan type
 
+The target type to scan. 
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+##### Key
+```
+scan_type
+```
 
+##### Value
 
-<StoRootRequirements />
+```
+repository
+```
 
-### For more information
+#### Policy type
 
+The [scan mode](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) to use. 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+##### Key
+```
+policy_type
+```
 
+##### Value
 
-<StoMoreInfo />
+Must be one of the following. For supported values, go to the relevant step configuration.
 
-## Security step settings for Data Theorem scans in STO
+```
+ingestionOnly
+```
+```
+dataLoad
+```
+
+#### Product config name
+
+Required for most scanner integrations. 
+
+##### Key
+```
+product_config_name
+```
+
+##### Value
+
+```
+default
+```
 
 ### Target and variant
 
-
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 <StoLegacyTargetAndVariant />
 
+
+### Code repository
+
+import StoLegacyCodeRepository  from './shared/custom-scan/_repo.md';
+
+<StoLegacyCodeRepository />
+
+<!-- 
 ### Data Theorem scan settings
 
 * `product_name` = `data-theorem`
@@ -56,19 +136,31 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 	+ `product_access_token`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+-->
+
 ### Ingestion file
 
-
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
+import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
 
 <StoLegacyIngest />
 
+### Product access
+
+These settings are available to access your Data Theorem SaaS instance when `policy_type` is `dataLoad`. 
+
+You should [create Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your encrypted passwords and tokens and reference them using the format `<+secrets.getValue("my-access-token")>`.
+
+#### Product access keys
+```
+product_app_id
+```
+```
+product_access_token
+```
+
 ### Fail on Severity
 
-
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
+import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 

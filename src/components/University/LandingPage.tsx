@@ -9,7 +9,7 @@ import { university } from "./data/certificationsData";
 import { ilt } from "./data/iltData";
 import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
-const devFeatures = ["Free Plan"];
+const devFeatures = ["Free Plan When Available"];
 const administratorFeatures = ["Enterprise Plan"];
 const adminFeatures = ["Enterprise Plan"];
 
@@ -244,7 +244,7 @@ export default function University() {
                     <h4>Developer</h4>
                     <i className="fa-solid fa-chevron-right"></i>
                   </div>
-                  <p>Validate your knowledge of software delivery concepts.</p>
+                  <p>Validate your knowledge of software delivery concepts on the Harness Platform for your needs.</p>
 
                   <ul>
                     {devFeatures.map((feature) => (
@@ -276,14 +276,25 @@ export default function University() {
                     />
                     <img
                       src={`${baseUrl}img/cert_dev_sto_badge.svg`}
-                      alt="Develop STO Badge"
+                      alt="Developer STO Badge"
                     />
                     <img
                       src={`${baseUrl}img/cert_dev_ce_badge.svg`}
-                      alt="Develop Chaos Badge"
+                      alt="Developer Chaos Badge"
                     />
                   </div>
                   {/* <h5>Coming Soon</h5> */}
+                <h5>Coming Soon</h5>
+                <div className={styles.unAvailableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_dev_sei_badge.svg`}
+                    alt="Developer SEI Badge"
+                  /> 
+                  <img
+                    src={`${baseUrl}img/cert_dev_idp_badge.svg`}
+                    alt="Developer IDP Badge"
+                  /> 
+                </div>
                 </div>
               </div>
               <div className={styles.verticalLine}></div>
@@ -389,7 +400,7 @@ export default function University() {
           <h2>Instructor-Led Training</h2>
           <p>
             Intensive two-day courses are designed for engineers looking to
-            deepen their understanding and expertise in Harness.
+            deepen their understanding and expertise in Harness. Can be delivered in a dedicated or <a href="https://university-registration.harness.io/calendar" target="_blank"> shared virtual </a> format.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
@@ -416,7 +427,7 @@ export default function University() {
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
           <p>
-            Self-paced courses that you can consume on your own time in a webinar style.
+            Free self-paced courses that you can consume on your own time.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
@@ -430,7 +441,7 @@ export default function University() {
               {spt
                 .filter((spt) => {
                   return (
-                    spt.cardType === "SPT" &&
+                    spt.cardType === "FREE" &&
                     spt.tileType === "normal"
                   );
                 })

@@ -1,0 +1,14 @@
+{
+    "label": "Security and compliance",
+    "position": 10,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Security and compliance"
+    },
+    "customProps": {
+        "helpdocs_category_id": "u0gbfyk4p4"
+    }
+}

@@ -26,6 +26,7 @@ With Harness Git Experience, you can easily select the repository and branch fro
 
 The following Git providers are supported for Harness Git Sync:​
 
+* [Harness Code Repository](/docs/code-repository/)
 * GitHub
 * Bitbucket Cloud
 * Bitbucket Server
@@ -49,7 +50,8 @@ You can save the following Harness resources in Git using Harness Git Experience
 * Templates
 * Services
 * Environment 
-* Infrastructure Definitions 
+* Infrastructure Definitions
+* Policies
 
 
 :::info note
@@ -64,10 +66,9 @@ Harness Git Experience lets you choose a Git-First approach for managing Harness
 
 You can do this by creating a resource with the **Remote** option and specifying the Git repo and branch where you want to save your configurations.
 
-
 For example, you can create a pipeline by choosing the **Remote** option and save it in Git by providing the repo name and branch name along with the file path.
 
-![picture 0](static/4bf16b3027a09d352305e9491d2e707d17b4f821aa6f896f671422dd732e9521.png)  
+![picture 0](static/create-pipeline-remote-git-experience.png)  
 
 Harness Git Experience lets you modify the configurations stored in Git through the Harness UI and save it back to Git.
 
@@ -148,6 +149,12 @@ Harness Git Experience helps you do the following:
 
 #### Git connector
 
+:::note
+
+If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repo, you won't need a Git Connector and can skip this step.
+
+:::
+
 A Harness Git Connector is used to sync your Harness Project with your Git repo. You can set up a [Git Connector](/docs/category/code-repo-connectors) first and simply select it when setting up Git Experience, or you can create a Git Connector as part of the Git Experience setup.
 
 You will need a Harness Git Connector to connect with the Git provider and perform operations like generating a webhook. Your Git Connector credentials are used to commit to Git when operations are performed using API.
@@ -156,6 +163,20 @@ You will need a Harness Git Connector to connect with the Git provider and perfo
 :::info note
 **Important:** The Connector must use the **Enable API access** option and **Username and Token** authentication. Harness requires the token to access the Git API. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector. For detailed steps to add a Git Connector, see [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
 
+:::
+
+:::tip
+When using **GitHub Enterprise Cloud** as your Git provider, we recommend utilizing a GitHub App to avoid rate limit issues.
+
+You have multiple options for making API requests:
+
+- **Personal Access Token**: You can use a personal access token to make API requests. These requests count towards your personal rate limit of 5,000 requests per hour.
+
+- **GitHub App**: Authorizing a GitHub App to make API requests on your behalf increases your rate limit. If the GitHub App is owned by a GitHub Enterprise Cloud organization, the rate limit is increased to 15,000 requests per hour.
+
+- **OAuth App**: Similarly, authorizing an OAuth app to make API requests on your behalf also increases your rate limit. If the OAuth app is owned or approved by a GitHub Enterprise Cloud organization, the rate limit is increased to 15,000 requests per hour for members of the organization.
+
+By using a GitHub App or an OAuth app associated with a GitHub Enterprise Cloud organization, you can benefit from a higher rate limit, thus preventing interruptions due to rate limiting.
 :::
 
 #### Repository
@@ -176,4 +197,5 @@ If changes are made in Git, metadata such as id and scope parameters are not val
 * [Harness Git Experience Quickstart](configure-git-experience-for-harness-entities.md)
 * [Manage input sets and Triggers in Git Experience](manage-input-sets-in-simplified-git-experience.md)
 * [Manage a Harness pipeline Repo using Git Experience](manage-a-harness-pipeline-repo-using-git-experience.md)
-
+* [Manage Services using Git Experience](manage-services-using-git-experience.md)
+* [Manage Environment and Infrastructure Definition using Git Experience](manage-environments-infra-definitions.md)

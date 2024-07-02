@@ -1,31 +1,37 @@
 ---
-title: Nikto scanner reference for STO
+title: Nikto step configuration
 description: Scan application instances with Nikto.
-sidebar_label: Nikto scanner reference
+sidebar_label: Nikto step configuration
 sidebar_position: 260
 ---
 
-You can scan your application instances and ingest results from [Nikto](https://cirt.net/Nikto2), an open-source scanner that runs tests against web servers to detect dangerous files/programs, outdated server versions, and problems with specific server releases. 
+<DocsTag   text="Instance scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#instance-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline/" />
+<br/>
+<br/>
+
+You can scan your application instances and ingest results from [Nikto](https://cirt.net/Nikto2). 
 
 ## Important notes for running Nikto scans in STO
 
 
-### Root access requirements 
+- You need to run the scan step with root access if either of the following apply:
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
+  - You need to run a [Docker-in-Docker background service](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#docker-in-docker-requirements-for-sto).
 
-<StoRootRequirements />
+  - You need to add trusted certificates to your scan images at runtime. 
 
-### For more information
+- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
 
 <StoMoreInfo />
 
 ## Nikto step settings for STO scans
 
-The recommended workflow is add a Nikto step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is to add a Nikto step to a Security or Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
 ### Scan
@@ -179,69 +185,17 @@ import StoSettingSettings from './shared/step_palette/all/_settings.md';
 <StoSettingSettings />
 
 
+
 ### Additional Configuration
 
-In the **Additional Configuration** settings, you can use the following options:
+import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
 
-* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
-* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
-* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+<ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-In the **Advanced** settings, you can use the following options:
+import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
-* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+<ScannerRefAdvancedSettings />
 
-<!-- STO-7187 remove legacy configs for scanners with step palettes
-
-## Security step settings for Nikto scans in STO (legacy)
-
-:::note
-You can set up Nikto scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Nikto step](#nikto-step-settings-for-sto-scans) instead.
-:::
-
-#### Target and variant
-
-
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-
-<StoLegacyTargetAndVariant />
-
-#### Nikto scan settings
-
-* `product_name` = `nikto`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `instance`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan` or `ingestionOnly`
-* `product_config_name`
-	+ Accepted values(s):
-		- `default`(Scan the host on port 80)
-		- `nikto-full` (Scan the host on ports 80 and 443 with `-Tuning 9`)
-		- `nikto-full-web` (Scan the host on ports 80 and 443)
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-* `tool_args` — You can use this field to run the [nikto scanner](https://manpages.ubuntu.com/manpages/focal/man1/nikto.1.html) with specific command-line arguments. For example, you can customize the tests that the scanner runs with the `-Tuning` argument. The following example excludes a test from the scan: `tool_args` = `-Tuning x01`
-
-
-#### Instance scan settings
-
-
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
-
-
-<StoLegacyInstance />
-
-#### Ingestion file
-
-
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
-
-<StoLegacyIngest />
-
--->

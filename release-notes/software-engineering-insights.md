@@ -22,7 +22,113 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 :::
 
+## June 2024
+
+### Version 202406.2
+
+<!-- June 27, 2024 -->
+
+In our continued effort to improve the user experience, this release introduces new features that simplify self-service onboarding and improve overall adoption rates. Watch the [release demo](https://www.youtube.com/embed/KMufOcfrNeQ?si=0wfq15tEWdguJjHC) to see the key changes in action.
+
+<DocVideo src="https://www.youtube.com/embed/KMufOcfrNeQ?si=0wfq15tEWdguJjHC" />
+
+* **New Docs and Tutorials:** New Interactive Guides now complement our Step-by-step instructions in the documentation. These guides let you follow the user journey directly in the product while referencing the documentation. Try this out here: [SEI ServiceNow integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow#create-a-client-id-and-client-secret-in-servicenow).
+
+#### Early access features
+
+* We've introduced a new onboarding experience for the **Azure DevOps integration**, with **Personal Access Token (PAT)** authentication alongside the existing OAuth-based method. For step-by-step setup instructions, please refer to the [SEI Azure DevOps integration guide](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops). This feature is currently in BETA and requires the `<SEI_IS_AZURE_ENABLED>` Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable it. (SEI-6221) (ZD-62211)
+
+![](./static/ado-pat.png)
+
+* Added support for configuring filters using **ServiceNow** fields in the reports and the collection definition. To learn more, go to [ServiceNow integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow). This integration is in BETA and requires the `<SEI_SERVICE_NOW>` entitlement. Contact [Harness Support](mailto:support@harness.io) to enable it. (SEI-7169)
+
+#### New features and enhancements
+
+* We have added a new **PR details view** as part of **SCM Diagnostics**. This helps you view a granular level breakdown of the PR activity including event history, commits, cycle time breakdown, code changes, CI pipelines, and PR information such as source branch and author. You can access this feature in the **SCM PR Lead Time by Stage report**, **SCM PR Lead Time by Trend report**, and the **Issues report (via the issue details page)**. (SEI-6734)
+
+* In the **Individual Raw Stats report** the column name for `PRs` has been renamed to `PRs Merged` for better clarity of the metric value displayed. (SEI-7177)
+
+#### Fixed issues
+
+* Fixed an issue where **Sprint Metric Single Stat** reports failed to update data when switching between **Collections**. (SEI-7250)
+
+* Resolved an issue in the **Business Alignment** report where the **Pie Chart** displayed data outside the selected time period. (SEI-7233)
+
+### Version 202406.1
+
+<!-- June 14, 2024 -->
+
+<DocVideo src="https://www.youtube.com/embed/n0o7hRpmf-k?si=iMilox7t5d3GhfgU" />
+
+#### New features and enhancements
+
+* The column names in the **Raw Stats** **report** is now updated to include `(avg)` for improved clarity regarding the displayed metric as the report shows the average values for different metrics that make up the Trellis Scores for each collection. (SEI-2665)
+
+* The calculation for the **Median Lead Time metric** has been updated. Rather than calculating the median using averaged lead times, it now takes into account the total lead time for each individual ticket and then calculates the median value across all tickets. (SEI-6883)
+
+* In the Lead Time widgets, the stages that are configured to be excluded in the widget will no longer impact the overall **Lead Time** metric calculation. (SEI-6923)
+
+* The **SEI Diagnostics** tab now provides support for monitoring and configuring alerts for **SCM activity** related to the **SEI GitHub integration**. (SEI-7044)
+
+#### Early access features
+
+* Added support to calculate alignment metrics for tickets in the **In Progress** status category and those that have been resolved (i.e., **Done** status category) within a specific duration of time. This allows you to measure the actual effort invested for the selected period. The new **Status** column in the drill down now shows the current status of each issue. To learn more, go to [Business Alignment report use cases](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report). (SEI-6833) <br />This feature is currently in **BETA** is accessible behind the Feature Flag `<SEI_NEW_BA_COMBINED_WIDGET>` and `<SEI_BA_INCLUDE_UNRESOLVED_ISSUES>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+* Added support for **OAuth-based** authentication for the **ServiceNow integration**. To learn more, go to [ServiceNow integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow). This feature is currently in **BETA** is accessible behind the Feature Flag `<SEI_SERVICE_NOW>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-6847)
+
+* The **DORA Mean Time to Restore** report can now be used to measure the incident recovery time of incidents from the **ServiceNow platform**.  This feature is currently in **BETA** is accessible behind the Feature Flag `<SEI_SERVICE_NOW>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-6849)
+
+#### Fixed issues
+
+* Fixed the bug in the **SCM Review Collaboration report** that caused the Committer to be displayed also as the PR reviewer. (SEI-6785)
+
+* Resolved the issue that was causing the `Starts with` and `Contains` filters to not function as expected for SCM repositories in the **Collection** definintion. (SEI-6977)
+
+* Resolved the bug that was causing the CSV download of drilldown to omit the ticket summary and ticket count value for the **Business Alignment report**. (SEI-6985)
+
+* The issue that caused instances to not be listed properly for the **Jenkins integration** has been resolved. The integration page now displays a maximum of 300 Jenkins instances. (SEI-7099)
+
 ## May 2024
+
+### Version 202405.2
+
+<!-- May 24, 2024 -->
+
+<DocVideo src="https://www.youtube.com/embed/re7ZcOkXHD4?si=ZGnnl-PQcqF6Hojv" />
+
+#### New features and enhancements
+
+* We have added improvements to the **Collection** definition settings. (SEI-5363)
+  * When adding an integration filter for **GitHub**, **Bitbucket**, and **Gitlab** you can now use the `"Equals"` or `"Does not equal"` operators in the filter to fetch all repositories for which data is ingested in the integration, regardless of activity in the repository.
+  * When using `"Starts with"` or `"Contains"` the filter will apply to all repositories ingested according to the integration configuration.
+
+* Added support for color customization in the **Line Graph** visualizations for **Custom Table Report** widgets. (SEI-6677)
+
+#### Early access features
+
+* Added improvements to the **Drilldown** view in the **Business Alignment report.**
+  * In the report drilldown, the selected **BA** **Category** is now highlighted, and the ticket count will be displayed only for the selected category. (SEI-6818)
+  * Added support to display the list of all assignees for a given ticket under the `Assignee` column in the **Drilldown by Tickets** view.(SEI-6859) <br /><br />This feature is currently in `BETA` is accessible behind the entitlement `<SEI_NEW_BA_COMBINED_WIDGET>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+* The **DORA Lead Time for Change** widget now loads faster than ever before. We have optimized the lead time calculation, significantly reducing the time required to process this metric. This feature is behind the Feature Flag `<VELOCITY_OPTIMIZE_JOINS_FOR_TENANTS>`. Contact [Harness Support](mailto:support@harness.io) for more information. (SEI-6830)
+
+* The **DORA Lead Time for Changes** is now more accurately calculated for the **Median** calculation. The overall median is now computed as the median of the total lead time for individual tickets. This feature is behind the Feature Flag `<AGGREGATE_TOTAL_LEAD_TIME_TENANTS>`. Contact [Harness Support](mailto:support@harness.io) for more information. (SEI-6845)
+
+#### Fixed issues
+
+* Resolved an issue where the number of tickets worked on by the assignee was incorrect in the **Drilldown by Contributors** view of the **Business Alignment report** when configured with **Effort Attribution** as the **Current Assignee**. (SEI-6723)
+
+* Fixed an issue where clicking `View Tickets` in the **Drilldown by Contributors** view of the **Business Alignment report** did not display any data. (SEI-6853)
+
+* Fixed the bug where the **Add Integration** button was not working in the **Collection** **Definition** settings. (SEI-6926)
+
+* Resolved the issue that caused duplicate records to appear on the Diagnostic page when multiple integrations were configured for the same tool. (SEI-6910)
+
+* Fixed an issue where configuring the integration filter with both **Azure DevOps** and any another **SCM** tool in the **Collection** Definition settings caused SCM reports to display incorrect or missing data. (SEI-6722)
+
+* In the **Drilldown by Contributors** view, clicking the `View Tickets` option under the **Number of Tickets Worked On** column will now open a new view with tickets filtered by the selected assignee. (SEI-6720)
+
+* Resolved an issue where the extended view for the **Issue Progress report** displayed inaccurate data. (SEI-6870)
 
 ### Version 202405.1
 
@@ -102,7 +208,6 @@ These release notes describe recent changes to Harness Software Engineering Insi
 * Added support for automatically sending alerts via **Slack** notifications and **Email** when the **Ingestion Satellite** status is `UNHEALTHY`. (SEI-6610)
 
 * The release includes a new integration for the **ServiceNow Platform**.  **ServiceNow** is used to set up systems that define, manage, automate and structure IT services for companies. <br /><br />You can use the **SEI ServiceNow integration** to integrate SEI with **ServiceNow Cloud** and **ServiceNow On-Prem** accounts. To learn more, go to [ServiceNow integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow)<br /><br />This feature is currently in `BETA` is accessible behind the Feature Flag `<SEI_SERVICE_NOW>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
-
 
 #### Fixed issues
 
@@ -354,7 +459,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 #### New features and enhancements
 
 * Added correlation support for mapping Jenkins CI artifacts with Harness CD. Now when configuring stages for a workflow profile, selecting Jenkins as the CI provider now allows you to define Harness CD in the subsequent stage for mapping artifact data. (SEI-2848) (SEI-4623) (SEI-4624) (SEI-4625) (SEI-4626)
-* Optimized the [Sprint Metrics Trend Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics) to update the extended view and display data only when a new filter is applied. (SEI-4739) (SEI-4702) (SEI-4876)
+* Optimized the [Sprint Metrics Trend Report](/docs/category/sprint-metrics) to update the extended view and display data only when a new filter is applied. (SEI-4739) (SEI-4702) (SEI-4876)
 * Added the support for configuring stages and steps as a filter for Azure DevOps pipelines in the Deployment Frequency and Change Failure Rate report settings. (SEI-4814)
 * Improved the ingestion logic for the [HarnessNG Integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng) to support data retrieval for non-container type artifact deployments. (SEI-4912)
 * Enhanced the Lead Time by Time Spent in Stages report to make `ISSUE RESOLVED IN` a mandatory filter when the associated profile in the report settings has a Jira Release stage configured. (SEI-4668)

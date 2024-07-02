@@ -1,6 +1,5 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
 const { themes } = require("prism-react-renderer");
 const darkCodeTheme = themes.dracula;
 const path = require("path");
@@ -24,6 +23,9 @@ const config = {
   onBrokenMarkdownLinks: "warn",
   onBrokenAnchors: "ignore",
   favicon: "img/hdh_fav_icon_grey.ico",
+  customFields: {
+    SEGMENT_API_KEY: process.env.SEGMENT_API_KEY,
+  },
 
   //Mermaid Diagram Functionality
   markdown: {
@@ -91,6 +93,7 @@ const config = {
           content: "https://developer.harness.io/img/hdh-social-card.png",
         },
       ],
+      //src: "/img/logo_dlp.svg",
       navbar: {
         title: "Harness Developer Hub",
         logo: {
@@ -222,8 +225,20 @@ const config = {
                 to: "university/sto",
               },
               {
+                label: "Software Engineering Insights",
+                to: "university/sei",
+              },
+              {
                 label: "Chaos Engineering",
                 to: "university/chaos-engineering",
+              },
+              {
+                label: "Internal Developer Portal",
+                to: "university/idp",
+              },
+              {
+                label: "Virtual Instructor-Led Calendar",
+                to: "https://university-registration.harness.io/calendar",
               },
               {
                 label: "Instructions",
@@ -267,12 +282,12 @@ const config = {
 
           {
             position: "right",
-            html: '<span class="tool" hover-tooltip="Sign into the Harness Platform" tooltip-position="bottom"><button class="button  button--nav">Sign in</button></span>',
+            html: '<span class="tool" hover-tooltip="Sign into the Harness Platform (app.harness.io)" tooltip-position="bottom"><button class="button  button--nav">Sign in</button></span>',
             href: "https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in",
           },
           {
             position: "right",
-            html: '<span  class="tool" hover-tooltip="Sign up for the Harness Platform" tooltip-position="bottom"><button class=" button button--cta">Sign Up</button></span>',
+            html: '<span  class="tool" hover-tooltip="Sign up for the Harness Platform (app.harness.io)" tooltip-position="bottom"><button class=" button button--cta">Sign up</button></span>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
         ],
@@ -375,6 +390,10 @@ const config = {
               {
                 label: "Feature Requests",
                 to: "https://ideas.harness.io",
+              },
+              {
+                label: "Instructor-Led Training",
+                to: "/university?ilt",
               },
             ],
           },
@@ -500,17 +519,6 @@ const config = {
         // ... other options
       },
     ],
-    //[
-    //  path.resolve(__dirname, "./plugins/redirect-plugin"),
-    //  {
-    //    id: "tutorials",
-    //    path: "tutorials",
-    //    routeBasePath: "tutorials",
-    //    exclude: ["**/shared/**", "**/static/**"],
-    //    sidebarPath: require.resolve("./sidebars-tutorials.js"),
-    //    editUrl: "https://github.com/harness/developer-hub/tree/main",
-    //  },
-    //],
     [
       path.resolve(__dirname, "./plugins/redirect-plugin"),
       {
@@ -558,8 +566,8 @@ const config = {
   clientModules: [
     path.join(__dirname, "/client_module/searchBar"),
     path.join(__dirname, "/client_module/iframeEmbed"),
+    path.join(__dirname, "/client_module/chatbot"),
   ],
-  // clientModules: [path.join(__dirname, "/client_module/iframeEmbed")],
 };
 
 module.exports = config;

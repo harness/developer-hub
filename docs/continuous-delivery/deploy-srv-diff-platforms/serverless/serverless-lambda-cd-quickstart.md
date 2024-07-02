@@ -75,6 +75,7 @@ Review [Harness Key Concepts](/docs/platform/get-started/key-concepts) to esta
     - View and copy the API Key and Secret to a temporary place. You'll need them when setting up the Harness AWS Connector later in this quickstart.
     - **Full Admin Access:** click on **Attach existing policies directly**. Search for and select **AdministratorAccess** then click **Next: Review**. Check to make sure everything looks good and click **Create user**.
     - **Limited Access:** click on **Create policy**. Select the **JSON** tab, and add the JSON using the following code from the [Serverless gist](https://gist.github.com/ServerlessBot/7618156b8671840a539f405dea2704c8) IAMCredentials.json:
+- **OIDC-enabled AWS Connector**: Currently, Serverless functions cannot be deployed using an OIDC-enabled AWS Connector.
 
 <details>
 <summary>IAMCredentials.json</summary>
@@ -91,6 +92,7 @@ Review [Harness Key Concepts](/docs/platform/get-started/key-concepts) to esta
         "cloudformation:CreateStack",
         "cloudformation:CreateUploadBucket",
         "cloudformation:DeleteStack",
+        "cloudformation:DeleteChangeSet",
         "cloudformation:Describe*",
         "cloudformation:EstimateTemplateCost",
         "cloudformation:ExecuteChangeSet",
@@ -140,6 +142,7 @@ Review [Harness Key Concepts](/docs/platform/get-started/key-concepts) to esta
         "iam:GetRole",
         "iam:PassRole",
         "iam:PutRolePolicy",
+        "iam:TagRole",
         "iot:CreateTopicRule",
         "iot:DeleteTopicRule",
         "iot:DisableTopicRule",
@@ -202,6 +205,12 @@ The `s3:GetBucketLocation` action is required for a custom S3 bucket only.
 ## Use AWS IRSA for Harness AWS connector credentials
 
 import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
+
+:::note
+
+Currently, Serverless functions can't be deployed with an OIDC-enabled AWS connector.
+
+:::
 
 <IrsaPartial name="aws-irsa" />
 
@@ -293,7 +302,8 @@ You can also use AWS S3 or Harness Local File Store as your manifest provider. F
 
 ![](./static/serverless-lambda-cd-quickstart-112.png)
 
-Here's what the `serverless.yaml` file looks like:
+<details>
+<summary> Here's what the `serverless.yaml` file looks like for Serverless V1 </summary>
 
 ```yaml
 service: <+service.name>
@@ -320,6 +330,41 @@ You can see the [Harness expression](/docs/platform/variables-and-expressions/ha
 The expression `<+service.name>` simply uses the Harness Service name for the deployed service name.
 
 For Docker images, you use the expression `<+artifact.image>`.
+
+</details>
+
+<details>
+<summary> Here's what `serverless.yaml` file looks like for Serverless V2 </summary>
+
+```yaml
+service: {{.Values.serviceName}}
+frameworkVersion: "2 || 3"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /tello
+          method: get
+package:
+  artifact: {{.Values.artifact.path}}
+plugins:
+  - serverless-deployment-bucket@latest
+```
+
+Variables such as `{{.Values.serviceName}}` will be resolved by a corresponding `values.yaml` file that is added in the same place as the manifest. Follow the steps above to add a manifest, but at step 3 select **Values YAML** instead. Here is an example of a `values.yaml` file for the manifest:
+
+```yaml
+serviceName: goldenpipeline
+artifact: 
+  path: /my-artifact
+```
+
+</details>
 
 ## Add the artifact
 
@@ -983,22 +1028,22 @@ Expression support lets you take advantage of runtime inputs and input sets in y
 
 ```yaml
 service: <+service.name>
-frameworkVersion: "2 || 3"
+frameworkVersion: '2 || 3'
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs20.x
 functions:
   hello:
     handler: handler.hello
     events:
       - httpApi:
           path: /tello
-          method: get
+          method: get  
 package:
-  artifact: <+artifact.path>
+  artifact: <+artifact.path>          
 plugins:
-  - <+stage.variables.devplugins>
+  - serverless-deployment-bucket@latest
 ```
 
 See:
@@ -1196,3 +1241,7 @@ functions:
   hello:
     image: <+artifact.image>
 ```
+
+## FAQs
+
+For frequently asked questions about Serverless Lambda deployments in Harness, go to [Serverless Lambda deployments FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-deployment-faqs).

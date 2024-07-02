@@ -1,6 +1,6 @@
 ---
 title: Windows chaos infrastructure management
-sidebar_position: 8
+sidebar_position: 10
 description: Guide to advanced setup with Windows chaos infrastructure
 ---
 This section describes the [advanced setup](#advanced-setup), [logs](#logs), and [resilience probes](#resilience-probes-for-windows) associated with the Windows chaos infrastructure.
@@ -80,4 +80,4 @@ To verify the status of the service, navigate to the command prompt on your Wind
 
 HCE allows you to create the below probes for Windows:
 
-1. [HTTP](/docs/chaos-engineering/features/probes/http-probe)
+1. [HTTP](/docs/chaos-engineering/features/resilience-probes/http-probe)

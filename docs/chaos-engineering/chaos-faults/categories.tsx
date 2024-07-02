@@ -7,11 +7,11 @@ import { experiments as GcpExperiments } from "./gcp/experiments";
 import { experiments as KubeResilienceExperiments } from "./kube-resilience/experiments";
 import { experiments as KubernetesExperiments } from "./kubernetes/experiments";
 import { experiments as LinuxExperiments } from "./linux/experiments";
-import { experiments as SecuritychaosExperiments } from "./security-chaos/experiments";
 import { experiments as SshExperiments } from "./ssh/experiments";
 import { experiments as LoadExperiments } from "./load/experiments";
 import { experiments as VMWareExperiments } from "./vmware/experiments";
 import { experiments as WindowsExperiments } from "./windows/experiments";
+import { experiments as BYOCExperiments } from "./byoc/experiments";
 
 export const categories: FaultCardItem[] = [
   {
@@ -25,6 +25,12 @@ export const categories: FaultCardItem[] = [
     description: <>Chaos faults for Azure </>,
     faults: AzureExperiments.length,
     category: "azure",
+  },
+  {
+    title: "BYOC",
+    description: <>Custom Chaos Faults</>,
+    faults: BYOCExperiments.length,
+    category: "byoc",
   },
   {
     title: "Cloud Foundry",

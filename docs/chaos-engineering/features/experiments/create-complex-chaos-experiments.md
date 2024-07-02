@@ -1,6 +1,6 @@
 ---
 title: Execute serial and parallel faults
-sidebar_position: 30
+sidebar_position: 25
 description: Guide to execute serial and parallel chaos
 redirect_from:
 	- /docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments

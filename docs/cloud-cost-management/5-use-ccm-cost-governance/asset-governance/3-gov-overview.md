@@ -49,8 +49,8 @@ You can see a list of all recommendations offered by Harness for each Cloud prov
 
 | Cloud | Cost Correlation | First Class Region Filter Support | Recommendations | Multi-Policy | Autostopping (EC2/VM/Instance) |
 |-------|------------------|---------------------------------|------------------|--------------|--------------------------------|
-| AWS   | `aws.ec2`, `aws.ebs`, `aws.rds`, `aws.ebs-snapshot`, `aws.elastic-ip`, `aws.elb` | Yes ✅ | Yes ✅ | Yes ✅ | Yes ✅ |
-| GCP   | `gcp.instance`, `gcp.disk`, `gcp.snapshot`, `gcp.sql-instance`, `gcp.image` | No ❌                             | Yes ✅               | Yes ✅         | No ❌ |
+| AWS   | `aws.ec2`, `aws.ebs`, `aws.rds`, `aws.ebs-snapshot`, `aws.elastic-ip`, `aws.elb`, `cache-cluster`, `s3`, `redshift`, `redshift-snapshot`, `aws.log-group`, `aws.rds-snapshot`, `aws.nat-gateway`, `aws.sqs`, `aws.firehose`, `aws.dynamodb-table` | Yes ✅ | Yes ✅ | Yes ✅ | Yes ✅ |
+| GCP   | `gcp.instance`, `gcp.disk`, `gcp.snapshot`, `gcp.sql-instance`, `gcp.image`, `gcp.loadbalancer-address`, `gcp.loadbalancer-forwarding-rule`, `gcp.bucket`, `gcp.gke-cluster`, `gcp.bq-dataset`, `gcp.function`, `gcp.redis`, `gcp.cloud-run-service`, `gcp.dataflow-job` | No ❌                             | Yes ✅               | Yes ✅         | No ❌ |
 | Azure | Every Resource in Billing Report | Yes ✅ | Yes ✅ | Yes ✅ | No ❌ |
 
 ### Cost Correlation Refresh API

@@ -1,28 +1,126 @@
 ---
-title: Nessus scanner reference for STO
+title: Nessus step configuration
 description: Scan application instances with Nessus.
-sidebar_label: Nessus scanner reference
+sidebar_label: Nessus step configuration
 sidebar_position: 240
 ---
 
+<DocsTag   text="Instance scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#instance-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline/" />
+<br/>
+<br/>
+
 You can scan your application instances and ingest results from Nessus.
 
-## For more information
+## Workflow descriptions
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+<details>
+<summary>Orchestration/extraction workflows</summary>
 
-<StoMoreInfo />
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
 
-## Security step settings for Nessus scans in STO
+<CustomScanWorkflowRepo />
+
+</details>
+
+<details>
+<summary>Ingestion workflows</summary>
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
+
+
+## Custom Scan step settings for Nessus scans in STO
+
+### Scanner settings
+
+These settings are required for most scanners. For more information, go to the reference for the scanner integration you're setting up.
+
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
+
+
+
+#### Product name
+
+The scanner name. This is required for all Custom Scan steps. 
+
+##### Key
+```
+product_name
+```
+
+##### Value
+
+```
+nessus
+```
+
+#### Scan type
+
+The target type to scan. 
+
+##### Key
+```
+scan_type
+```
+
+##### Value
+
+```
+instance
+```
+
+
+#### Policy type
+
+The [scan mode](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) to use. 
+
+##### Key
+```
+policy_type
+```
+
+##### Value
+
+
+```
+orchestratedScan
+```
+```
+ingestionOnly
+```
+
+
+#### Product config name
+
+
+##### Key
+```
+product_config_name
+```
+
+##### Value
+
+```
+nessus-web-application
+```
 
 ### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
 
+<!--
 ### Nessus scan settings
 
 * `product_name` = `nessus`
@@ -38,27 +136,55 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `product_config_name` : `nessus-web-application`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+-->
+
 
 ### Instance
 
 
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
+import StoLegacyInstance from './shared/custom-scan/_dast.md';
 
 
 <StoLegacyInstance />
 
+### Product access
+
+These settings are available to access your Nessus instance when `policy_type` is `orchestratedScan`. 
+
+You should [create Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your encrypted passwords/tokens and reference them using the format `<+secrets.getValue("my-access-token")>`.
+
+#### Product access keys
+
+```
+product_domain
+```
+```
+product_access_id
+```
+```
+product_access_token
+```
+```
+product_policy_id
+```
+```
+product_scanner_id
+```
+```
+product_template_uuid
+```
+
 ### Ingestion file
 
 
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
 
 
 <StoLegacyIngest />
 
+
 ### Fail on Severity
 
-
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
+import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />

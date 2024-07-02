@@ -16,9 +16,9 @@ For organizations planning to deploy Harness Self-Managed Enterprise Edition in 
 
 Regardless of the cloud or Kubernetes provider you use, validate the following before you install Harness Self-Managed Enterprise Edition:
 
-- Your provider can meet the infrastructure requirements for our [development environment reference architecture](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/harness-helm-chart/#development-environment-deployment-infrastructure).
+- Your provider can meet the infrastructure requirements for our [development environment reference architecture](/docs/self-managed-enterprise-edition/install/harness-helm-chart/#development-environment-deployment-infrastructure).
 - You utilize a [Supported Kubernetes version](/docs/self-managed-enterprise-edition/smp-supported-platforms/#supported-kubernetes-versions).
-- You have a recent version of kubectl and a [supported Helm client](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga/#helm-client-version-compatibility).
+- You have a recent version of kubectl and a [supported Helm client](/docs/self-managed-enterprise-edition/install/install-using-helm/#helm-client-version-compatibility).
 - You can provision and use Persistent Volumes. This is often taken care of by various block storage drivers within your cloud platform, such as the [EBS CSI Driver](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) for Amazon EKS.
 
 ### Quickstart architecture

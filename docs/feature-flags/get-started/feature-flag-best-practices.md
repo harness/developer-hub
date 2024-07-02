@@ -74,7 +74,7 @@ Determine if the flag needs prerequisite flags and be prepared to add them. For 
 
 ### Rollout rules
 
-Create a set of rules with your team to ensure your rollouts run smoothly. There are a number of Harness Features you can utilize to help with this, such as using [approval steps in pipelines](/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline) or using the [Harness Policy Engine](/docs/feature-flags/harness-policy-engine). When creating roll out rules, it's important to consider:
+Create a set of rules with your team to ensure your rollouts run smoothly. There are a number of Harness Features you can utilize to help with this, such as using [approval steps in pipelines](/docs/feature-flags/use-ff/ff-build-pipeline/build-feature-flag-pipeline) or using the [Harness Policy Engine](/docs/feature-flags/troubleshoot-ff/harness-policy-engine). When creating roll-out rules, it's important to consider:
 
 * Types of roll outs you may run, and the strategy for each.
 * Rules that must be applied for all roll outs, for example, a rule stating that a flag cannot be switched on in your production environment until it has been tested in your QA environment for one week.
@@ -86,7 +86,7 @@ It is likely that you'll use many flags and it's important to keep them organize
 * Flag names should be unique. Although on the Harness Platform, only unique identifiers are enforced, it's good practice to keep your flag names unique too so your team don't confuse them.
 * Make the names user friendly; they should describe what the flag does. For example, EnableVersion2UI describes that the flag enables Version 2 of the user interface.
 * If your flags are specific to a team, consider adding the team to the flag name, for example, `Dev_EnableVersion2UI`.
-* To help with keeping your naming consistent, you could use the [Harness Policy Engine to enforce it](/docs/feature-flags/harness-policy-engine).
+* To help with keeping your naming consistent, you could use the [Harness Policy Engine to enforce it](/docs/feature-flags/troubleshoot-ff/harness-policy-engine).
 * Don't forget to tell your whole team what the naming convention is, so that anyone who creates a flag uses the correct convention.
 
 ### Give flags human-readable names
@@ -99,7 +99,7 @@ As one example, if flags are for user-facing new features, give flags a name tha
 
 However, over time, you'll want to phase out this flag as the features become permanent in production. This one flag alone might flip fifty others all on its own! You can imagine how it would be hard to find this flag to flip the features on, and then to clean it up. Here, it might make more sense to call the flag `Privacy_Features_Europe`.
 
-In the end, the point is to make individual feature flags easier to find, especially so if non-engineering users will be making use of them. With Harness, you can even enforce naming conventions with the use of [global governance policies for feature flags](/docs/feature-flags/harness-policy-engine).
+Your end goal is to make individual feature flags easier to find, espcially for non-engineering users. With Harness, you can even enforce naming conventions with the use of [global governance policies for feature flags](/docs/feature-flags/troubleshoot-ff/harness-policy-engine).
 
 ## Add descriptions to your flags
 
@@ -112,7 +112,7 @@ Add a description to your flag. This is optional on the Harness Platform, but we
 
 ![An example flag description](./static/1-feature-flag-best-practices-04.png)
 
-To help with this, you can use the [Harness Policy Engine to enforce descriptions](/docs/feature-flags/harness-policy-engine) when creating a flag.
+To help with this, you can use the [Harness Policy Engine to enforce descriptions](/docs/feature-flags/troubleshoot-ff/harness-policy-engine) when creating a flag.
 
 ![Example flag description.](./static/1-feature-flag-best-practices-04.png)
 
@@ -142,7 +142,7 @@ The downside is, with many new features and anyone having access to implement fe
 
 We don't believe there is any such thing as too many feature flags, but you want to make sure that you are removing stale, unnecessary, or out-of-date feature flags as you launch new flags for each new feature. This will make it a lot simpler to avoid the downsides that come with bloated feature flag systems and keep reaping the benefits.
 
-Have conversations up front. How often will you remove stale flags? Who is responsible? Are there different owners for different types of flags? Which are permanent feature flags that should never be removed? It's worth knowing that [Harness even brings to your attention the number of stale flags in your system](/docs/feature-flags/ff-creating-flag/filtering-flags-by-state/).
+Have conversations up front. How often will you remove stale flags? Who is responsible? Are there different owners for different types of flags? Which are permanent feature flags that should never be removed? It's worth knowing that [Harness even brings to your attention the number of stale flags in your system](../use-ff/ff-creating-flag/filtering-flags-by-state.md)
 
 Some of the largest enterprises, such as Facebook, Pinterest, and Netflix, regularly make use of feature flags to collect data and deliver the best experience for their user base. These organizations have thousands of flags, and it's imperative that hygiene is appropriately handled to ensure operability at scale.
 

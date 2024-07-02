@@ -11,9 +11,46 @@ Pod API status code is a Kubernetes pod-level chaos fault that change the API re
 
 ## Use cases
 Pod API status code:
-- It can be used to test the error handling capabilities of API and client applications. By changing the API response status code to different error codes, such as 400 (Bad Request) or 500 (Internal Server Error), you can evaluate how well your application handles and responds to various error scenarios. 
+- It can be used to test the error handling capabilities of API and client applications. By changing the API response status code to different error codes, such as 400 (Bad Request) or 500 (Internal Server Error), you can evaluate how well your application handles and responds to various error scenarios.
 - Simulates situations where the API may be temporarily unavailable or rate-limited by returning temporary error codes like 503 (Service Unavailable) or 429 (Too Many Requests).
 - It can be used for content filtering, by selectively filter or block certain responses. For example, you can change the status code to 404 (Not Found) for specific paths or patterns, indicating that the requested resource does not exist.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-api-status-code
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
 
 ### Prerequisites
 - Kubernetes> 1.17
@@ -47,11 +84,6 @@ Pod API status code:
         <td> Modified status code for the api response </td>
         <td> For more information, go to <a href="#status-code">status code </a>. </td>
       </tr>
-      <tr>
-        <td> PATH_FILTER </td>
-        <td> Api path or route used for the filtering </td>
-        <td> For more information, go to <a href="#path-filter">path filter </a>.</td>
-      </tr>
     </table>
 
 ### Optional tunables
@@ -62,6 +94,46 @@ Pod API status code:
         <th> Notes </th>
       </tr>
       <tr>
+        <td> PATH_FILTER </td>
+        <td> API path or route used for the filtering. </td>
+        <td> Targets all paths if not provided. For more information, go to <a href="#path-filter">path filter </a>.</td>
+      </tr>
+      <tr>
+        <td> HEADERS_FILTERS </td>
+        <td> Filters for HTTP request headers accept multiple comma-separated headers in the format <code>key1:value1,key2:value2</code>. </td>
+        <td> For more information, go to <a href="#advanced-filters">header filters</a>.</td>
+      </tr>
+      <tr>
+        <td> METHODS </td>
+        <td> The HTTP request method type accepts comma-separated HTTP methods in upper cases, such as "GET,POST". </td>
+        <td> For more information, go to <a href="#advanced-filters">methods</a>.</td>
+      </tr>
+      <tr>
+        <td> QUERY_PARAMS </td>
+        <td> HTTP request query parameter filters accept multiple comma-separated query parameters in the format of <code>param1:value1,param2:value2</code>. </td>
+        <td> For more information, go to <a href="#advanced-filters">query params</a>.</td>
+      </tr>
+<tr>
+        <td> SOURCE_HOSTS </td>
+        <td> Includes comma-separated source host names as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
+        <td> For more information, go to <a href="#advanced-filters">source hosts</a>.</td>
+      </tr>
+      <tr>
+        <td> SOURCE_IPS </td>
+        <td> This includes comma-separated source IPs as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
+        <td> For more information, go to <a href="#advanced-filters">source ips</a>.</td>
+      </tr>
+      <tr>
+        <td> DESTINATION_HOSTS </td>
+        <td> Comma-separated destination host names are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
+        <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
+      </tr>
+      <tr>
+        <td> DESTINATION_IPS </td>
+        <td> Comma-separated destination IPs are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
+        <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
+      </tr>
+      <tr>
         <td> RESPONSE_BODY </td>
         <td> String body to overwrite the HTTP response body. If not provided it will return the original response body </td>
         <td> Default: empty body. For more information, go to <a href="#advanced-fault-tunables"> response body</a>.</td>
@@ -69,7 +141,7 @@ Pod API status code:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> PROXY_PORT </td>
@@ -187,7 +259,7 @@ spec:
             - name: STATUS_CODE
               value: "500"
             - name: PATH_FILTER
-              value: '/status'   
+              value: '/status'
 ```
 
 ### Status code
@@ -224,7 +296,7 @@ spec:
             - name: TARGET_SERVICE_PORT
               value: "80"
             - name: PATH_FILTER
-              value: '/status'   
+              value: '/status'
 ```
 
 ### Path filter
@@ -262,7 +334,7 @@ spec:
               value: "500"
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"         
+              value: "80"
 ```
 
 ### Destination ports
@@ -307,7 +379,7 @@ spec:
               value: "500"
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"        
+              value: "80"
 ```
 
 ### HTTPS
@@ -333,7 +405,7 @@ For outbound traffic, setting `HTTPS_ENABLED` to `true` is required to enable HT
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]: # "./static/manifests/pod-api-latency/https-enabled.yaml yaml"
+[embedmd]: # "./static/manifests/pod-api-status-code/https-enabled.yaml yaml"
 
 ```yaml
 ## enable https support
@@ -350,7 +422,7 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: pod-api-latency
+    - name: pod-api-status-code
       spec:
         components:
           env:
@@ -364,7 +436,7 @@ spec:
               value: '/status'
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"        
+              value: "80"
 ```
 
 ### Advanced fault tunables
@@ -420,6 +492,63 @@ spec:
             - name: RESPONSE_BODY
               value: '/.+/test'
 
+```
+
+### Advanced filters
+
+- `HEADERS_FILTERS`: The HTTP request headers filters, that accept multiple comma-separated headers in the format of `key1:value1,key2:value2`.
+- `METHODS`: The HTTP request method type filters, that accept comma-separated HTTP methods in upper case, that is, `GET,POST`.
+- `QUERY_PARAMS`: The HTTP request query parameters filter, accepts multiple comma-separated query parameters in the format of `param1:value1,param2:value2`.
+- `SOURCE_HOSTS`: Comma-separated source host names filters, indicating the origin of the HTTP request. This is relevant to the `ingress` type, specified by `SERVICE_DIRECTION` environment variable.
+- `SOURCE_IPS`: Comma-separated source IPs filters, indicating the origin of the HTTP request. This is specifically relevant to the `ingress` type, specified by `SERVICE_DIRECTION` environment variable.
+- `DESTINATION_HOSTS`: Comma-separated destination host names filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `SERVICE_DIRECTION` environment variable.
+- `DESTINATION_IPS`: Comma-separated destination IPs filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `SERVICE_DIRECTION` environment variable.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/pod-api-status-code/advanced-filters.yaml yaml)
+```yaml
+# it injects the api status code fault
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: pod-api-status-code
+      spec:
+        components:
+          env:
+            # provide the headers filters
+            - name: HEADERS_FILTERS
+              value: 'key1:value1,key2:value2'
+            # provide the methods filters
+            - name: METHODS
+              value: 'GET,POST'
+            # provide the query params filters
+            - name: QUERY_PARAMS
+              value: 'param1:value1,param2:value2'
+            # provide the source hosts filters
+            - name: SOURCE_HOSTS
+              value: 'host1,host2'
+            # provide the source ips filters
+            - name: SOURCE_IPS
+              value: 'ip1,ip2'
+            # provide the connection type
+            - name: SERVICE_DIRECTION
+              value: 'ingress'
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
+            - name: STATUS_CODE
+              value: "500"
 ```
 
 ### Container runtime and socket path

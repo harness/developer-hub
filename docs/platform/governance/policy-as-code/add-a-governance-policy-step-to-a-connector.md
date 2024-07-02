@@ -102,4 +102,4 @@ Based on your selection in the Policy Evaluation criteria, you will either recei
 
 ### See also
 
-* [Harness Policy As Code Overview](/docs/feature-flags/harness-policy-engine)
+* [Harness Policy As Code Overview](/docs/feature-flags/troubleshoot-ff/harness-policy-engine)

@@ -13,7 +13,7 @@ You may end up with one to many billing exports depending on your GCP configurat
 
 ## Get Harness Service Account Information
 
-To give Harness access to billing information and resources in your Azure tenant you will need to add a Harness GCP service account to your GCP organization.
+To give Harness access to billing information and resources in your GCP organization, you will need to add a Harness GCP service account to your GCP organization.
 
 The service account you need to add is generated based off your Harness account ID. You need to go to the Harness UI, go to `Account Settings`, `Connectors`, `Create New Connector`, and select `GCP Cloud Costs`. Start filling out the form entering either real or fake information, and when prompted for `Choosing Requirements` select `Cost Visibility`. Finally on the next page you are given a GCP service account email.
 

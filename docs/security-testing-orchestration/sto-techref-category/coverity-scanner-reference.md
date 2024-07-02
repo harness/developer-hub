@@ -1,26 +1,18 @@
 ---
-title: Coverity scanner reference for STO
+title: Coverity step configuration
 description: Scan code repositories with Coverity.
-sidebar_label: Coverity settings reference
+sidebar_label: Coverity step configuration
 sidebar_position: 125
 ---
 
+<DocsTag  text="Code repo scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"  link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline" />
+<br/>
+<br/>
 
-You can ingest scan results from [Coverity Scan](https://scan.coverity.com/), a Synopsis service that scans open-source coding projects for developers that have registered their products with Coverity Scan. 
-
+You can ingest scan results from [Coverity Scan](https://scan.coverity.com/) into Harness STO. 
 
 ## Important notes for running Coverity scans in STO
-
-<!-- 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
--->
 
 ### Root access requirements
 
@@ -45,7 +37,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 The following steps outline the recommended workflow:
 
-1. Add a CI Build or an STO Security stage to your pipeline.
+1. Add a Build or Security stage to your pipeline.
 
 2. Add a Run step to upload your Coverity scan results to the pipeline workspace. 
 

@@ -1,6 +1,6 @@
 ---
 title: Linux chaos infrastructure advanced management
-sidebar_position: 7
+sidebar_position: 9
 description: Guide to advanced setup with Linux chaos infrastructure
 redirect_from:
     - /docs/chaos-engineering/chaos-infrastructure/linux-chaos-infrastructure-advanced-management
@@ -13,7 +13,7 @@ HCE supports executing Linux faults similar to Kubernetes faults.
 ## Before you begin
 * [Connect to Linux infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-2-add-a-chaos-infrastructure)
 * [Disconnect from Linux infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/disconnect-chaos-infrastructure#remove-infrastructure)
-* [Linux execution plane](/docs/chaos-engineering/features/chaos-infrastructure/linux-components.md)
+* [Linux execution plane](/docs/chaos-engineering/architecture-and-security/architecture/components#linux-execution-plane-components)
 
 ## Advanced setup
 A set of mandatory input flags is required for the installation of the chaos infrastructure, including the `infra-id`, `access-key` and the `server-url`. However, certain aspects of the infrastructure can be tuned via the following flags:
@@ -85,10 +85,10 @@ Logs that are generated are stored in the `/var/log/linux-chaos-infrastructure` 
 
 HCE allows you to create the below probes for Linux:
 
-1. [HTTP](/docs/chaos-engineering/features/probes/http-probe)
-2. [Command](/docs/chaos-engineering/features/probes/cmd-probe)
-3. [Datadog](/docs/chaos-engineering/features/probes/datadog-probe)
-4. [Dynatrace](/docs/chaos-engineering/features/probes/dynatrace-probe)
+1. [HTTP](/docs/chaos-engineering/features/resilience-probes/http-probe)
+2. [Command](/docs/chaos-engineering/features/resilience-probes/cmd-probe)
+3. [Datadog](/docs/chaos-engineering/features/resilience-probes/datadog-probe)
+4. [Dynatrace](/docs/chaos-engineering/features/resilience-probes/dynatrace-probe)
 
 When you try to enable or disable a Linux probe, two mandatory fields `type` and `attempt` (with empty values) are added to the probe. Even if you edit these values, they will not reflect in the updated experiment manifest. This is because the final values for the earlier-mentioned mandatory fields are picked from the database associated with the specific probe. Go to [known issues](/docs/chaos-engineering/troubleshooting/known-issues) for more information.
 

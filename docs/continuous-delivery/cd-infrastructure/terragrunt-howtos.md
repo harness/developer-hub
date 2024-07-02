@@ -34,7 +34,7 @@ To see how to set up dynamic provisioning for each deployment type, go to the fo
 - [AWS ECS](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial)
 - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
 - [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
-- [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions)
+- [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions.md)
 - [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart)
 - [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
 - [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)	
@@ -500,15 +500,28 @@ In **Source Module**, you can select **Use Connector credentials** to have Harne
 
 If you do not select **Use Connector credentials**, Terraform will use the credentials that have been set up in the system.
 
-The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.
+The **Use Connector credentials** setting allows Harness Git Connectors using SSH and HTTPS authentication with a token.
 
 When configuring the SSH key for the connector, exporting an SSH key with a passphrase for the module source is not supported. Configure an SSH Key without the passphrase.
 
-Here are some syntax examples to reference the Terraform module using the SSH protocol:
+Here is an example reference the Terraform module using the SSH protocol:
 
 ```bash
 source = "git@github.com:your-username/your-private-module.git"
 ```
+
+Here is an example reference the Terraform module using the HTTPS protocol:
+
+```bash
+source = "git::https://github.com/your-organization/your-private-module.git"
+```
+:::tip
+
+The ability to authenticate with HTTPS is new! Here is a demo on its functionality:
+
+<DocVideo src="https://www.loom.com/share/bb8b9e4996f14bf0a16839849b0b72e4?sid=3befc405-7c4d-4f21-afe0-c36e2962b566" />
+
+:::
 
 ### Module Configuration
 
@@ -933,3 +946,22 @@ If your Docker delegate is set to use a proxy, ensure that the proxy instance al
 - `HTTPS_PROXY=http://proxy.example.com:8080`
 
 If your ECS delegate is set with this environment variable: **AWS_CONTAINER_CREDENTIALS_RELATIVE_URI** and you intend to use AWS ECS container credentials, ensure your delegate has access to all of the required AWS services that need to provide credentials, such as STS, Metadata Service, etc.
+
+## General Terragrunt FAQs
+
+### I am getting "Backend not initialized error" when running terragrunt plan with specific module?
+
+When dealing with specific modules, we don't initiate Terraform init directly; instead, we use the Terragrunt `terragrunt-info` command. 
+To initialize the backend properly, you need to run terraform init, and this initialization process is triggered automatically when you select the "All modules" option.
+
+
+### How do resolve Terragrunt plan returning the error "fork/exec /usr/bin/terraform: argument list too long"?
+
+The "argument list too long" error is typically related to how you are passing variables and configurations to Terraform and Terragrunt. By using configuration files, and reducing the number of arguments you can resolve this issue. 
+ 
+The same can be referred [here] (https://github.com/gruntwork-io/terragrunt/issues/2132).
+
+
+
+
+

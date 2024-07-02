@@ -175,6 +175,10 @@ To address this issue, we suggest using the LIKE operator in your rules. By empl
 
 While the LIKE operator provides flexibility in capturing future instance types, it's important to choose a pattern that uniquely identifies the instances you want to include. Additionally, regular monitoring and adjustments may be necessary if naming conventions change or new patterns emerge for GPU instance types.
 
+### We see some no cluster name fields in our perspective, how can we remove them?
+
+We can remove the no cluster name field, by adding a filter to perspective where Cluster name equals not null.
+
 ## Cost Category
 
 ### If a resource (cost) aligns with rules in different cost category buckets, what happens? Does it go into the highest-priority bucket from the list of buckets for the first match?
@@ -346,6 +350,18 @@ You can only tune nodepod and workload recommendations. You can't tune VM recomm
 
 "Tuning" for VMs is not always available.
 
+### How can we get GCP compute recommenations.
+
+You can get GCP compute recommendations by enabling governance. [Doc Reference](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gcp/gcp-recommendations/#recommendation-stop-underutilized-instances)
+
+### Is there support for GCVE costs and for sole tenant nodes.
+
+Yes, we provide cost tracking for all SKUs, including GCVE and sole tenant nodes. These costs will be visible in perspectives once they are available in the cloud cost report.
+
+### If someone acts on a recommendation but doesn't apply it in Harness, what happens to that recommendation in the next sync cycle?
+
+The recommendation will not appear again because it is no longer valid. Additionally, the savings calculation will be lost since it wasn't marked as applied in Harness.
+
 ## Governance
 
 ### When adding Cloud Governance to a previously created cloud cost connector, do we need to add the cloud-governance IAM permissions to the same role we previously created via the cloudFormation template?
@@ -424,6 +440,10 @@ Cloud Asset Governance evaluations taking longer than three minutes can be due t
 
 To achieve this use case, you can first remove the tags and than add the req tag. For more information, go to the Cloud Custodian documentation on the [Azure tag command](https://cloudcustodian.io/docs/azure/resources/azure-common-actions.html#tag).
 
+### In Azure, How can we list all the appServicePlans with cpu and memory less than 50% using the maximum filter.
+
+We can filter resource based on resource having alerts greater than a threshold value. The policy should target azure.alert-logs to filter through the alert logs.
+
 ## Autostopping
 
 ### If we configure an autostopping rule with multiple instances, but a single routing rule. does the proxy load balance between the instances?
@@ -458,6 +478,21 @@ The AutoStopping savings calculation occurs every 24 hours. For newly created ru
 
 * Ensure that the rule has been accessed at least once, and the 'Last Activity' column is populated.
 * Verify the health of your Cloud/Kubernetes connectors."
+
+### How to rotate certificate on Autostopping Proxy?
+To rotate a certificate on the Autostopping Proxy, follow these steps:
+
+1. Generate new secrets in the cloud provider for the certificate and secret.
+
+2. Navigate to the load balancers page.
+
+3. Locate and select the Autostopping Proxy.
+
+4. Edit the Autostopping Proxy settings.
+
+5. Update the secrets for the certificate and secret with the newly generated ones.
+
+6. Save the changes to the proxy settings.
 
 ### How are we calculating savings for Kubernetes workloads under AutoStopping rules?
 
@@ -503,6 +538,15 @@ While re-enabling the Autostopping rule, Harness adds the ALB rules back. Which 
 ### How to set all paths to trigger on power for Autostopping rule?
 
 Set a wildcard(`*`) on the Path Match in Autostopping rule creation.
+
+### How do we onboard and access RDS instance/cluster to Autostopping?
+To onboard and access an RDS instance/cluster with Autostopping, you have several options:
+
+1. **Access Through Autostopping Proxy**: Connect to the RDS cluster via the Autostopping proxy. Instructions for connecting through the proxy are available on the Autostopping rule details page. As long as users access the RDS cluster through the proxy, Harness ensures the RDS cluster remains running.
+
+2. **Set Uptime Fixed Schedule**: Establish an uptime fixed schedule for the RDS cluster during working hours. Harness ensures the cluster is operational according to this schedule.
+
+3. **Use RDS Autostopping Rule as Dependency**: Employ the RDS Autostopping rule as a dependency for another Autostopping rule, such as one for an EC2 instance. When the parent resource (e.g., EC2) is operational, Harness ensures that the dependent resource (RDS) remains running as well.
 
 ## Dashboards
 
@@ -697,3 +741,31 @@ Yes, users can accomplish this by creating a Yearly budget and selecting the mon
 ### What is FinOps in Harness?
 
 FinOps, short for Financial Operations, in Harness refers to the practice of managing cloud costs effectively within the Harness platform. It involves optimizing cloud spending, budgeting, forecasting, and allocation of resources to ensure efficient utilization of cloud resources while controlling costs.
+
+#### Why is the total savings not displayed for one of my auto-saving rules for RDS in Harness?
+To resolve this, you may need to check the configuration of your auto-saving rule and ensure that it is correctly set up to calculate and display the total savings.
+
+
+#### What should I tag my instances with to be shut down by the stop-after-hours Rule?
+To ensure that your instances are shut down by the "stop-after-hours" Rule, you should tag them with a specific tag that the Rule will recognize. Typically, this tag should be defined in the Rule's configuration, and you should use the exact tag specified there when tagging your instances.
+
+#### What does the "No Cluster Name" entity represent in Cloud Cost Management?
+The "No Cluster Name" entity appears in the visualization when there are costs that cannot be attributed to a specific cluster. This typically occurs with orphaned resources or when costs are associated with a deleted cluster.
+
+#### How can I filter out the "No Cluster Name" entity at the cost category level?
+To filter out the "No Cluster Name" entity, you can create a new cost category and define a rule that excludes costs where the cluster name is "No Cluster Name."
+
+#### What are the steps to create a new cost category and define the rule?
+Navigate to the Cloud Cost Management module and select "Cost Categories" from the left-hand menu.
+Click on the "Create Cost Category" button and provide a name for your cost category.
+Choose the appropriate cloud provider and click on "Add Rule" under the "Rules" section.
+Select "Cluster Name" as the attribute, "is not" as the operator, and enter "No Cluster Name" as the value.
+Click on "Save Rule" and then "Save Cost Category" to finalize the configuration.
+
+#### How can I use the new cost category in my perspective to exclude the "No Cluster Name" entity?
+Once you have created the new cost category, you can use it in your perspective instead of the default cost category. This will automatically exclude the "No Cluster Name" entity from the visualization.
+By following these steps, you can effectively manage and exclude the "No Cluster Name" entity from your Cloud Cost Management visualization, ensuring more accurate cost attribution and analysis.
+
+#### When we set a budget in the CCM module, is there a way to incorporate discounts?
+
+Yes, since budgets are based on Perspectives, we can also incorporate built-in cloud discounts.

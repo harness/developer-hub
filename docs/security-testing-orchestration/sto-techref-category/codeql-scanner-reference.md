@@ -1,15 +1,15 @@
 ---
-title: CodeQL scanner reference for STO
+title: CodeQL step configuration
 description: Scan code repositories with CodeQL.
-sidebar_label: CodeQL scanner reference
+sidebar_label: CodeQL step configuration
 sidebar_position: 120
 ---
 
-<!-- hiding this topic until the integration is ready to GA -->
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline" /><br/>
+<br/>
 
-You can scan your code repositories using [CodeQL](https://codeql.github.com/), an analysis engine used by developers to automate security checks, and by security researchers to perform variant analysis. 
-
-The following steps outline the basic workflow:
+You can ingest scan results from [CodeQL](https://codeql.github.com/) into Harness STO. The following steps outline the basic workflow:
 
 1. Run a CodeQL scan, either externally or as part of a Run step, and publish the results to SARIF.
 
@@ -41,7 +41,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## CodeQL step settings for STO scans
 
-The recommended workflow is to add a CodeQL step to a Security Tests or CI Build stage and then configure it as described below. 
+The recommended workflow is to add a CodeQL step to a Security or Build stage and then configure it as described below. 
 
 ### Scan 
 
@@ -69,7 +69,7 @@ import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 <StoSettingScanTypeRepo />
 
 
-#### Detect target and variant 
+#### Target and Variant Detection 
 
 import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
 import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
@@ -129,24 +129,19 @@ import StoSettingSettings from './shared/step_palette/all/_settings.md';
 <StoSettingSettings />
 
 
+
 ### Additional Configuration
 
-In the **Additional Configuration** settings, you can use the following options:
+import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
 
-* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
-* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
-* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+<ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-In the **Advanced** settings, you can use the following options:
+import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
-* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+<ScannerRefAdvancedSettings />
 
 
 <!-- yaml pipeline example ----------------------------------------------------------------------------- -->

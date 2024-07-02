@@ -172,7 +172,8 @@ For details on supported Helm versions, tooling, limitations, and repositories, 
 
 * [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts)
 * [Deploy using Helm Chart](/docs/continuous-delivery/get-started/cd-tutorials/helm-chart)
-* [General Helm FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-deployment-faqs)
+* [Helm and Native Helm Deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-deployment-faqs)
+  
 
 
 

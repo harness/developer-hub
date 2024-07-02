@@ -66,11 +66,12 @@ Harness includes two [RBAC roles](/docs/platform/role-based-access-control/rbac-
   - Set baselines (such as the `main` branch of `latest` tag) for scan targets
   - View scan results and troubleshoot detected issues
   - Configure scan steps to fail the pipeline if any "show-stopper" vulnerabilities are found
-  - Request exemptions ("ignore rules") to allow a pipeline to proceed even if a scan detects vulnerabilities with a specific severity or higher (Critical, High, Medium, )
+  - Request exemptions ("ignore rules") to allow a pipeline to proceed even if a scan detects vulnerabilities with a specific severity or higher (Critical, High, Medium, etc.)
+
    
 * **SecOps** role — Permissions for Security Operations staff. SecOps users have all Developer permissions, but only SecOps users can approve exemption requests. 
 
-These workflows are covered in [Your first STO pipeline](./your-first-sto-pipeline).
+These workflows are covered in [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline).
 
 :::note
 You need Administrative privileges at the Account level (Account Admin role) to assign these roles.
@@ -86,6 +87,8 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 4. Assign the **Security Testing Developer** role or the **Security Testing SecOps** role to the user profile.
 
 ![](./static/set-up-harness-for-sto-16.png)
+
+
 
 </details>
 
@@ -207,7 +210,7 @@ In this step, you'll create a secret for your GitHub and DockerHub access tokens
 
 ### Create a Docker Hub connector
 
-A Docker Hub connector is required to run a Docker-in-Docker service as described in [Set up the Security Tests stage](#set-up-security-tests-stage) below. It is also required for any pipeline that scans or uploads a built image.
+A Docker Hub connector is required to run a Docker-in-Docker service as described in [Set up the Security stage](#set-up-security-tests-stage) below. It is also required for any pipeline that scans or uploads a built image.
 
 <details>
 <summary>Create a Docker Hub Connector: Default Workflow</summary>
@@ -267,7 +270,7 @@ To do the STO tutorials, point the connector at the following repo: [https://git
 
 Now that you've set up Harness, you're ready to start using STO.
 
-A good next step is to go through [Your first STO pipeline](./your-first-sto-pipeline). This tutorial covers the basic concepts of STO. You'll set up a standalone pipeline with one scanner, run scans, analyze the results, and learn how to investigate and fix detected vulnerabilities.
+A good next step is to go through [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline). This tutorial covers the basic concepts of STO. You'll set up a standalone pipeline with one scanner, run scans, analyze the results, and learn how to investigate and fix detected vulnerabilities.
 
 The [STO tutorials](./tutorials) also include a set of quickstarts and end-to-end workflows that show you how to create pipelines that you can apply to a wide variety of security-related use cases. 
 
@@ -301,7 +304,7 @@ This workflow is covered in [Your first STO pipeline](./sto-tutorials/your-first
   
 		 
 4. In About your Stage:
-	1. Select **Add Stage** and then **Security Tests**.
+	1. Select **Add Stage** and then **Security**.
 	2. Stage Name = **securityTestStage**
 	3. Configure Codebase:
 	   1. Select **Third-party Git provider** (if this option is available)
@@ -313,7 +316,7 @@ This workflow is covered in [Your first STO pipeline](./sto-tutorials/your-first
   
 
 
-### Set up the Security Tests stage
+### Set up the Security stage
 
 1. In the **Overview** tab, under **Shared Paths**, select **Add** and enter the path `/var/run`.
 
@@ -352,7 +355,7 @@ import set_up_harness_26 from './static/configure-bandit-step.png'
 
 
 
-1. In the Execution tab, select **Add Step** > **Security Tests** > **Bandit**.
+1. In the Execution tab, select **Add Step** > **Bandit**.
 2. Configure the step as follows:
 	1. Scan Mode = **`Orchestration`**
 	2. Target Name = `**dvpwa**`

@@ -257,7 +257,7 @@ The following data can be consumed through dashboards:
 | --- | --- | --- | --- | --- | --- |
 |AutoStopping | ✅  | ✅  | ✅  | ✅ \*  | ✅ |
 |Recommendations | ✅  | ✅  | ✅  | ✅ | ✅ |
-|Commitment Orchestrator | EC2 (beta) | |  |  |  |
+|Commitment Orchestrator | EC2 | |  |  |  |
 
 \* - Review the information within the AutoStopping section to access details about supported Kubernetes providers.
 <details>
@@ -470,7 +470,7 @@ The recommendations are computed by analyzing the past utilization of CPU and me
 
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **RBAC Support** |
 | --- | --- | --- | --- | --- | --- |
-|Asset Governance | ✅  | Coming soon | Coming soon |   | ✅ |
+|Asset Governance | ✅  | ✅ | ✅ |   | ✅ |
 |Budgets | ✅  | ✅  | ✅  | ✅ | ✅ |
 
 <details>
@@ -637,7 +637,7 @@ The following table provides the feature support matrix for CCM on Harness Self-
 |Perspective Preferences| ✅ | ❌  | ❌  | ✅ | 
 
 :::note
-- Margin Obfuscation is not supported on Harness SMP.
+- Margin Obfuscation is not supported on Harness SMP. For others, it is behind a feature flag `CCM_MSP`. To enable the feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io)
 - Istio virtual services are available for Azure in strict mode.
 - The cost data for Kubernetes workloads will be derived from the public pricing provided by the respective cloud provider.
 - Tracking recommendation lifescyle through Jira and ServiceNow is not supported in Air-gapped environments.
@@ -645,8 +645,10 @@ The following table provides the feature support matrix for CCM on Harness Self-
 
 ### CCM on air-gapped environment
 
-CCM is supported in [Harness Self-Managed Enterprise Edition installs on an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).
+CCM is supported in [Harness Self-Managed Enterprise Edition installs on an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
 
 CCM leverages AWS APIs that require connectivity from the isolated (air-gapped) instance. To grant access to these AWS APIs, establish VPC endpoints for the respective AWS services. For services lacking VPC endpoints, use a proxy to facilitate access. For more information, go to [Manage AWS costs by using CCM on Harness Self-Managed Enterprise Edition](../get-started/ccm-smp/aws-smp.md).
 
 For a comprehensive list of supported features in other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).
+
+

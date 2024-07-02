@@ -1,29 +1,29 @@
 ---
-title: Sysdig scanner reference for STO
+title: Sysdig step configuration
 description: Scan container images with Sysdig.
-sidebar_label: Sysdig scanner reference
+sidebar_label: Sysdig step configuration
 sidebar_position: 395
 ---
 
-You can scan container images using [Sysdig Vulnerability engine](https://docs.sysdig.com/en/docs/sysdig-secure/vulnerabilities/). Create a CI Build or Security Tests stage, add a Sysdig step, and then add the `setting:value` pairs as specified below.
+<DocsTag   text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline/" />
+<br/>
+<br/>
+
+You can scan container images using [Sysdig Vulnerability engine](https://docs.sysdig.com/en/docs/sysdig-secure/vulnerabilities/). Add a Sysdig step to a Build or Security stage and then configure it as described below. 
+
 
 ## Important notes for running Sysdig scans in STO
 
-### Docker-in-Docker requirements
+- You need to run the scan step with root access if either of the following apply:
 
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+  - You need to run a [Docker-in-Docker background service](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#docker-in-docker-requirements-for-sto).
 
-<StoDinDRequirements />
+  - You need to add trusted certificates to your scan images at runtime. 
 
+- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
-### Root access requirements 
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-<StoRootRequirements />
-
-
-### For more information
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 
@@ -32,7 +32,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Sysdig step settings for STO scans
 
-The recommended workflow is add a Sysdig step to a Security Tests or CI Build stage and then configure it as described below.
+The recommended workflow is to add a Sysdig step to a Security or Build stage and then configure it as described below.
 
 
 ### Scan
@@ -67,7 +67,7 @@ import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md'
 <StoSettingScanTypeCont />
 
 
-#### Detect target and variant 
+#### Target and Variant Detection 
 
 import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
 import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
@@ -174,22 +174,17 @@ You can add a `tool_args` setting to run the scanner with specific command-line 
 
 ### Additional Configuration
 
-In the **Additional Configuration** settings, you can use the following options:
+import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
 
-* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
-* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
-* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+<ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-In the **Advanced** settings, you can use the following options:
+import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
-* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+<ScannerRefAdvancedSettings />
+
 
 ## Sysdig pipeline examples
 

@@ -12,6 +12,7 @@ redirect_from:
   - /docs/get-started/key-concepts
   - /docs/getting-started/harness-platform-architecture
   - /docs/get-started/harness-platform-architecture
+  - /docs/getting-started/learn-harness-key-concepts
 ---
 
 The Harness Platform provides a common framework underlying the Harness modules to help you onboard and enable diverse teams leveraging different modules for different use cases.
@@ -166,7 +167,7 @@ Steps can run sequentially or in parallel. You can also organized related steps 
 
 Usually, a step group is a collection of steps that share the same logic, such as the same rollback strategy.
 
-For more information, go to [Run Steps in a Step Group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/) and [Use step groups to organize CI steps](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups).
+For more information, go to [Run Steps in a Step Group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/) and [Organize steps in step groups](/docs/platform/pipelines/use-step-groups.md).
 
 ### Templates
 

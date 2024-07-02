@@ -1,42 +1,106 @@
 ---
-title: Fortify Static Code Analyzer scanner reference for STO
+title: Fortify Static Code Analyzer step configuration
 description: Ingest Fortify scan results into your pipelines.
-sidebar_label: Fortify Static Code Analyzer scanner reference
+sidebar_label: Fortify Static Code Analyzer step configuration
 sidebar_position: 170
 ---
 
-You can ingest repository scan results from Fortify.
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline" /><br/>
+<br/>
 
-## Important notes for running Fortify scans in STO
+You can ingest repository scan results from [Fortify Static Code Analyzer](https://www.microfocus.com/documentation/fortify-static-code-analyzer-and-tools/). 
 
+## Workflow description
 
-### Root access requirements
+import StoLegacyWorkflowIngestOnly  from './shared/custom-scan/_workflow-ingest-only.md';
 
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-
-<StoRootRequirements />
-
-
-### For more information
+<StoLegacyWorkflowIngestOnly />
 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+## Custom Scan step settings for Fortify scans
 
 
-<StoMoreInfo />
+### Scanner settings
+
+These settings are required for most scanners. For more information, go to the reference for the scanner integration you're setting up.
+
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
 
 
-## Security step settings for Fortify scans in STO
+#### Product name
+
+The scanner name. This is required for all Custom Scan steps. 
+
+##### Key
+
+```
+product_name
+```
+
+##### Value
+
+```
+fortify
+```
+
+#### Scan type
+
+The target type to scan. 
+
+##### Key
+```
+scan_type
+```
+
+##### Value
+
+```
+repository
+```
+
+
+#### Policy type
+
+
+##### Key
+```
+policy_type
+```
+
+##### Value
+
+```
+ingestionOnly
+```
+
+
+#### Product config name
+
+
+##### Key
+```
+product_config_name
+```
+
+##### Value
+
+```
+default
+```
 
 ### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
+
+<!--
 
 ### Fortify scan settings
 
@@ -46,20 +110,21 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `product_config_name` =`default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+-->
+
 ### Ingestion file
 
 
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
 
 
 <StoLegacyIngest />
 
 
+
 ### Fail on Severity
 
-
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
+import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 

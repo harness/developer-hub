@@ -31,22 +31,26 @@ Make sure you have the following set up Before you begin this quickstart:
   - You add the PAT to Harness as a Text Secret and it is encrypted using a Harness Secret Manager.
   - Your Git Personal Access Token is stored in your Harness secret and is a private key to which only you have access. This secret cannot be accessed or referenced by any other user.
 
-    Make sure you configure SSO for your GitHub token when enabling Git provider access via SSO.
+   Make sure you configure SSO for your GitHub token when enabling Git provider access via SSO.
 
   - The PAT must have the following scope:
-    - GitHub:![](./static/configure-git-experience-for-harness-entities-35.png)
+      - GitHub:![](./static/configure-git-experience-for-harness-entities-35.png)
       - Bitbucket:![](./static/configure-git-experience-for-harness-entities-36.png)
   - To enable Git Experience for your resources, make sure that you have Create/Edit permissions for them.​​
 
+:::info note
+If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repository, you won't need a Git Connector or a PAT.
+:::
+
 :::note
 Make sure your repo has at least one branch, such as main or master. For most Git providers, you simply add a README file to the repo, and the branch is created.
-
 :::
 
 ## Supported Git providers
 
 The following section lists the support for Git providers for Harness Git Sync:​
 
+- [Harness Code Repository](/docs/code-repository/)
 - GitHub
 - Bitbucket Cloud
 - Bitbucket Server
@@ -61,18 +65,25 @@ You can store your resources and configurations in Git by selecting the **Remote
 
 For this, you must specify a Harness Git Connector, a repo, branch details, and a file path.
 
+:::info note
+If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repository, you won't need a Git Connector.
+:::
+
 This topic explains how to create a remote pipeline and execute it using Harness Git Experience.
 
 You can also store your configurations in Harness, by selecting the **Inline** option while creating resources. For more information on creating an inline pipeline, see [Pipelines and Stages](/docs/category/pipelines).
 
 ![](./static/configure-git-experience-for-harness-entities-37.png)
 
-You can store configurations of the following resources in Git:
+The following entities are supported in Git Experience:
 
 - Pipelines
 - Input sets
-
-Harness tracks where your configuration is kept and manages the whole lifespan of resources by maintaining metadata for each resource.
+- Templates
+- Services
+- Environment 
+- Infrastructure Definition
+- Policy
 
 ## Enforce Git experience
 
@@ -82,15 +93,20 @@ You can do this by enabling `Enforce git experience for pipelines and templates`
 This setting applies to the following resources:
 
 - Pipelines
+- Input sets
 - Templates
+- Services
+- Environment 
+- Infrastructure Definition
+- Policy
 
 Harness disables inline pipelines and templates, and users can only create remote pipelines and templates after enabling this setting. You can still create inline input sets corresponding to existing inline pipelines.
 
 To enforce Git experience in Harness:
 
-1. Go to **ACCOUNT SETTINGS**, and then select **Account Resources**.
-2. Select **Default Settings**, and then select **Git Experience**.
-3. Enable **Enforce git experience for pipelines and templates**.
+1. Go to **Account Settings**, and then select **Account Resources**.
+2. Select **Account Default Settings**, and then select **Git Experience**.
+3. Enable **Enforce git experience**.
    After you enable this setting, it applies to all the scopes (account, organization, and project) in Harness.
 4. To override this setting in the child scopes, select **Allow Overrides** beside the settings.
    This forces configurations at the account scope to be saved in Git repositories only. Users can, however, still create inline pipelines and templates at the organizational and project levels.
@@ -99,7 +115,7 @@ To enforce Git experience in Harness:
 
 ## Add a remote pipeline
 
-This quickstart explains how to add a pipeline and sync it with your Git repo. This is called the Remote option. To add an inline pipeline, see **Remote** option. To add an inline pipeline, see [Create a Pipeline](../pipelines/add-a-stage.md#step-1-create-a-pipeline).
+This quickstart explains how to add a pipeline and sync it with your Git repo. This is called the Remote option. To add a remote pipeline, see **Remote** option. To add an inline pipeline, see [Create a Pipeline](../pipelines/add-a-stage.md#step-1-create-a-pipeline).
 
 In your Project, click **Pipelines** and then click **Create a Pipeline**. The **Create New Pipeline** settings appear.
 
@@ -111,7 +127,9 @@ Click **Remote**. The additional settings appear to configure Git Experience.
 
 ![](./static/configure-git-experience-for-harness-entities-39.png)
 
-In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
+Here you can choose to use [**Harness Code Repository**](/docs/code-repository/) or a third-party provider. If you choose Harness Code Repository, you won't need to configure a **Git Connector** and can skip to selecting your **Repository** below.
+
+Otherwise, in **Git Connector**, select or create a Git Connector for your project's repo. For steps, go to [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
 
 ![](./static/configure-git-experience-for-harness-entities-40.png)
 
@@ -336,6 +354,33 @@ The parent YAML will include an example of a YAML screenshot if you explicitly s
 The parent YAML will not contain a branch for the child if you do not specify a branch explicitly.
 
 To switch the referring child entity from a feature branch to a default branch, manually remove the field `gitBranch` from the parent YAML.
+
+## Handling references for remote entities
+
+All entities have a **Referenced By** tab where you can view all other entities that use it.
+
+As part of remote entities, Harness only calculates references for the entities stored in the default branch.
+
+#### Let's take an example of a Connector
+
+When you click on **Connectors** there is a **Referenced by** tab which shows the entities that are using that connector including remote entities as well. 
+
+![](./static/referenced_by.png)
+
+For example, if you store your entities—such as Pipelines, Services, Environment, Input Set, or Templates—in the default branch (for example, main or master), they will appear in the **Referenced By** section. If a pipeline is using a connector, the connector will list the pipeline as a reference if the pipeline is stored remotely in the default branch or INLINE. However, if the pipeline is saved in a non-default branch, no reference will be created in the **Referenced By** section.
+
+The primary reason for this approach is to ensure we don't create stale references. We only manage references for stable versions of entities, and we assume that the default branch will always be the right choice for stable versions. Managing references for all branches would create redundant references, which could block deletion operations on the entities.
+
+Calculation of references isn't automatic; it occurs during specific user actions:
+
+- **Reload from Git**: When you perform a **reload from Git** on an entity present in the default branch.
+
+- **Create/Update Entity**: When you **create** or **update** an entity on the Harness UI or via API on the default branch. 
+Note that this scenario is unlikely for most users, as committing directly to the default branch is generally prohibited.
+
+:::info note
+The given option work for users who are not on Bidirectional Sync.
+:::
 
 ## Next steps
 

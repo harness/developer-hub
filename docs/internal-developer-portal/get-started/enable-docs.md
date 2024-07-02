@@ -8,6 +8,14 @@ sidebar_position: 6
 
 Now that you have [added your Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component) in the Catalog, we need to add the documentation. By default, the **Docs** tab in your catalog does not include documentation for a new software component. However, you can quickly publish Markdown documentation to the **Docs** tab.
 
+
+:::info
+
+Techdocs is currently not supported with Harness Code Repo Integration
+
+:::
+
+
 ![](static/docs-empty.png)
 
 
@@ -78,10 +86,25 @@ topics outlined in this example table:
 
 TechDocs uses MkDocs as the static site generator. Visit https://www.mkdocs.org for more information about MkDocs.
 ```
+3. Now add an `mkdocs.yaml` next to where you have the `catalog-info.yaml`, `mkdocs.yml` file is a sibling of `catalog-info.yaml`
 
-3. Edit the `catalog-info.yaml` and add the TechDocs annotation.
+Here's the content for `mkdocs.yaml`:
 
-4. In the `metadata.annotations` field, add `backstage.io/techdocs-ref: dir:.`.
+```YAML
+site_name: 'Example Documentation'
+repo_url: https://github.com/your_org/your_repo
+edit_uri: url to your index.md
+
+nav:
+  - Home: index.md
+
+plugins:
+  - techdocs-core
+```
+
+4. Edit the `catalog-info.yaml` and add the TechDocs annotation.
+
+5. In the `metadata.annotations` field, add `backstage.io/techdocs-ref: dir:.`.
 
 ![](static/techdocs-ref.png)
 

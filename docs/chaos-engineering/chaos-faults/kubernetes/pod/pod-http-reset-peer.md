@@ -9,9 +9,7 @@ Pod HTTP reset peer is a Kubernetes pod-level chaos fault that injects chaos on 
 - Stops the outgoing HTTP requests by resetting the TCP connection. 
 - This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 
-
 ![Pod HTTP Reset Peer](./static/images/pod-http-reset-peer.png)
-
 
 ## Use cases
 Pod HTTP reset peer:
@@ -19,6 +17,42 @@ Pod HTTP reset peer:
 - Simulates premature connection loss that may occur due to firewall issues or other issues between microservices thereby verifying connection timeout.
 - Simulates connection resets due to resource limitations on the server side such as out of memory error, process kills, overload on the server due to high amounts of traffic. 
 
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-http-reset-peer
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16

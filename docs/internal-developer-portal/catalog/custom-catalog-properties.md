@@ -73,6 +73,12 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 
 - **field:** It contains the information on the metadata name to be added, here in the above example it would ingest the `teamLead` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP. 
 
+:::info
+
+We need to add escape character for any field has an additional `DOT` in the path like `metadata.annotation.harness.io/idp-test` , that part needs to be escaped with `\"` like this `metadata.annotations.\"harness.io/idp-test\"`
+
+:::
+
 
 - **filter:** This is used to identify the software components where you want to ingest the new entity, you can filter through `kind`, `type`, `owners`, `lifecycle` and `tags`. **Where `kind`, `type` and `owners` are mandatory fields.** 
     
@@ -295,6 +301,11 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 
 ![](./static/raw-yaml.png)
 
+:::info
+
+We need to add escape character for any field has an additional `DOT` in the path like `metadata.annotation.harness.io/idp-test` , that part needs to be escaped with `\"` like this `metadata.annotations.\"harness.io/idp-test\"`
+
+:::
 
 - **filter:** This is used to identify the software components from where you want to delete the metadata information, you can filter through `kind`, `type`, `owners`, `lifecycle` and `tags`. **Where `kind`, `type` and `owners` are mandatory fields.** 
 

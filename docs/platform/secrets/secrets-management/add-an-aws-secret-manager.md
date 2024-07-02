@@ -117,11 +117,19 @@ For more information, go to [Finding the Key ID and ARN](https://docs.aws.amazon
 
 #### AWS-Access Key ID
 
-Select **Create or Select a Secret**.
+You have two options to provide the AWS Access Key, **Plaintext** or **Encrypted**.
 
-In the secret settings dialog, you can create/select a [Secret](/docs/platform/secrets/add-use-text-secrets) and enter your AWS Access Key as it's value.
+- For **Plaintext**, you can directly add the Access Key under the **AWS - Access Key Id** in plaintext format.
 
-The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to connect to secret manager.
+- For **Encrypted**:
+
+  - Select **Create or Select a Secret**.
+
+  - In the **Create or Select an Existing Secret** dialog, you can create/select a [Secret](/docs/platform/secrets/add-use-text-secrets) and enter your AWS Access Key as its value.
+
+  - The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to connect to the secret manager.
+
+  ![](../../secrets/static/add_aws_sm_plaintext.png)
 
 #### AWS- Secret Access Key
 

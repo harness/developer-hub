@@ -3,7 +3,7 @@ title: Troubleshoot SSL in STO
 description: Troubleshoot certificate issues when running STO scans.
 sidebar_position: 60
 redirect_from:
-- /docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-troubleshooting-in-sto
+  - /docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-troubleshooting-in-sto
 ---
 
 If you're having issues [running STO scans with custom
@@ -17,6 +17,6 @@ SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipeli
 
   -  For information about disabling SSL verification in the scanner, go to the external scanner documentation. If the scanner includes a CLI option for this, you can use `tool_args` in your step to run a scan with this option turned off. For example, you can run a [Black Duck Hub](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference#settings) scan with this setting: `tool_args : --blackduck.trust.cert=TRUE`
  
-  - If you're using a scanner-specific step with a scanner template, such as Aqua Trivy or Mend, uncheck **Enforce SSL** in the configuration palette. 
+  - If you're using a scanner-specific step, such as Aqua Trivy or Mend, uncheck **Enforce SSL** in the configuration palette. 
 
-  - If you're using a Security step without a scanner template, add this setting to the step: `bypass_ssl_check : true`
+  - If you're using a **Custom Scan** step, add this setting: `bypass_ssl_check : true`

@@ -1,48 +1,127 @@
 ---
-title: Docker Content Trust (DCT) scanner reference for STO
+title: Docker Content Trust (DCT) step configuration
 description: Scan container images with Docker Content Trust.
-sidebar_label: Docker Content Trust (DCT) scanner reference
+sidebar_label: Docker Content Trust (DCT) step configuration
 sidebar_position: 150
 ---
 
-You can run container image scans and ingest results from [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/).
+<DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline/" />
+<br/>
+<br/>
 
-## Important notes for running Docker Content Trust scans in STO
+You can run container image scans and ingest results from [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/). 
+
+## Workflow descriptions
+
+<details>
+<summary>Orchestration/extraction workflows</summary>
+
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+
+<CustomScanWorkflowRepo />
+
+</details>
+
+<details>
+<summary>Ingestion workflows</summary>
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
 
 
-### Docker-in-Docker requirements
+## Custom Scan step settings for Docker Content Trust
+
+### Scanner settings
+
+These settings are required for most scanners. For more information, go to the reference for the scanner integration you're setting up.
+
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
 
 
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+
+#### Product name
+
+The scanner name. This is required for all Custom Scan steps. 
+
+##### Key
+```
+product_name
+```
+
+##### Value
+
+```
+docker-content-trust
+```
+
+#### Scan type
+
+The target type to scan. 
+
+##### Key
+```
+scan_type
+```
+
+##### Value
+
+```
+containerImage
+```
 
 
-<StoDinDRequirements />
+#### Policy type
 
-### Root access requirements
+The [scan mode](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) to use. 
 
+##### Key
+```
+policy_type
+```
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+##### Value
 
+Must be one of the following.
 
-<StoRootRequirements />
+```
+orchestratedScan
+```
+```
+ingestionOnly
+```
 
-### For more information
+#### Product config name
 
+Required for most scanner integrations.
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+##### Key
+```
+product_config_name
+```
 
+##### Value
 
-<StoMoreInfo />
-
-## Security step settings for Docker Content Trust scans in STO
+```
+default
+```
 
 ### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
+
+<!-- 
 
 ### Docker Content Trust (DCT) scan settings
 
@@ -52,30 +131,28 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `product_config_name` =`default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-### Container image scan settings
+-->
+
+### Container image
 
 
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
+import StoLegacyContainer  from './shared/custom-scan/_container.md';
 
 
 <StoLegacyContainer />
 
 ### Ingestion file
 
-
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
+import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
 
 <StoLegacyIngest />
 
+
 ### Fail on Severity
 
-
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
+import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
-
 
 <!-- CONTAINERS --------------------------------------------------------------------------- -->
 

@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-05-13T10:00
+date: 2024-07-01T10:00
 sidebar_position: 4
 ---
 
@@ -43,11 +43,77 @@ Harness has updated the delegate expiration policy to 6 months with a 2-month EO
 
 Six months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). Delegates expire if not upgraded 6 months after the image is released. If delegates are past their EOS date, Harness does not support them. Expired delegates might not work as intended. For issues with expired delegates, Harness Support will request that you upgrade your delegate(s).
 
-For more information, go to [Delegate expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-policy).
+For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
 
+## June 2024
+
+### Version 24.07.82905 <!--  July 1, 2024 -->
+
+#### Hotfix
+
+- Reduced the time for missing heartbeats for delegates before the liveness probe fails from 15 mins to 5 mins. (PL-52037)
+
+### Version 24.06.83304 <!--  June 24, 2024 -->
+
+#### Fixed issues
+
+- Kubernetes services were created during the startup of the delegate, causing the IP pool to be exhausted for NAB. The delegate has been updated to prevent the creation of Kubernetes services upon startup, resolving the issue with IP pool exhaustion. (PL-51550)
+
+- Delegates were running out of memory due to frequent connectivity checks. Optimized the connectivity check process to reduce memory usage, preventing the delegate from running out of memory. (PL-51418, ZD-63705)
+
+- When trying to resolve the expressions in the File Store scripts, Harness encountered a self referencing expression. Due to this condition, the resources associated with two Harness services were exhausted. A code change fixed this issue by preventing such pipeline executions. (PIPE-19585, ZD-64579, ZD-64580)
+
+### Version 24.06.83203 <!--  June 11, 2024 -->
+
+#### Fixed issues
+
+- Delegate logs were displaying entire bearer tokens when using the IDP Kubernetes connector. Added log sanitization to delegate logs to mask commonly used secret patterns. These patterns can be extended per-use-case by adding them to the `/opt/harness-delegate/sanitize-patterns.txt` file inside the delegate. (PL-50889, ZD-64069)
+
+### Version 24.06.83004 <!--  June 7, 2024 -->
+
+#### Hotfix
+
+- Secrets were being printed in plain text when using a custom secret manager, exposing sensitive information. Implemented masking of the `script` field in the custom secret manager to prevent logging of secrets used within the script. (PL-51535, ZD-64069)
+
+### Version 24.06.83003 <!--  June 3, 2024 -->
+
+#### Hotfix
+
+- Resolved an issue with missing labels for Karpenter-managed nodes. (CCM-18139)
+
 ## May 2024
+
+### Version 24.05.82711 <!--  May 30, 2024 -->
+
+#### Hotfix
+
+- Resolved an issue where delegates created Kubernetes services when starting up. (PL-51548, PL-51550, ZD-64345)
+
+### Version 24.05.83001 <!--  May 21, 2024 -->
+
+#### New features and enhancements
+
+- Added support for proxies via Secure Connect for GitHub App connectors. (CI-12130, ZD-61883)
+
+### Version 24.05.82904 <!--  May 21, 2024 -->
+
+#### Hotfix
+
+- Tanzu steps will resolve the PCF CLI plugins path by checking the `HOME` environment variable. (CDS-95794, ZD-61882)
+
+### Version 24.05.82205 <!--  May 20, 2024 -->
+
+#### Hotfix
+
+- Delegates will now include memory resource statistics in their logs, providing valuable additional insight for troubleshooting memory-related issues. (PL-51027)
+
+### Version 24.05.82903 <!--  May 16, 2024 -->
+
+#### Hotfix
+
+- Resolved an issue with the Google artifact registry trigger of a pipeline when using a GCP connector with OIDC authentication. (CDS-96627, ZD-62986)
 
 ### Version 24.05.82902 <!--  May 10, 2024 -->
 

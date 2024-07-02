@@ -53,7 +53,7 @@ export default function CE() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness CE helps you find your system’s weak points using
+              Harness CE helps you find your system's weak points using
               controlled systems-level failure experiments, and equips you with
               the information you need to prevent them from happening in the
               future. The result? Increased systems reliability and less

@@ -39,7 +39,7 @@ This guide describes the steps a Harness account admin can take to set up the ID
 
 - Only the following set of connectors are supported
   
-  - Harness Code Repository (Only Enabled for EU Cluster)
+  - Harness Code Repository
   - GitHub
     - GitHub Enterprise
     - GitHub App
@@ -70,11 +70,6 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="Git-Provider">
 <TabItem value="harness-code-repo-enabled" label="Harness Code Repository Enabled">
 
-:::info
-
-Harness Code Repo is only available on EU Cluster
-
-:::
 
 4. In case you are already using Harness Code Repository, a default connector with only **Read Permission** would be available for the code repo set-up under the same account as that of IDP. Note this connector is uneditable and managed by Harness.
 
@@ -106,9 +101,7 @@ Harness Code Repo is only available on EU Cluster
 
 ## Limitations
 
-At present you can't view and edit source for software components added from Harness Code Repository, this will be available on the next upgrade. 
-
-![](static/edit-view-source.png)
+At present we only support [repositories](https://developer.harness.io/docs/code-repository/config-repos/create-repo#create-a-repository) created at **project** [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes), the support for account and organization level repositories will be available in upcoming releases. 
 
 :::
 
@@ -210,11 +203,20 @@ The scope is tied to URL format `https://gitprovider.com/org-name`, so all the G
 
 - **Repo Path** - Go to the Code Repository and under files select **Clone** and copy the repository path. 
 
+:::info
+
+Once you copy the repository path replace the `git.eu.harness.io` with `accounts.eu.harness.io`.
+
+![](static/replace-vanity-url.png)
+
+:::
+
 ![](static/copy-repo-path.png)
+
 
 Validate the permission and the catalog-info.yaml files would be created in your directory in Code repository. 
 
-![](static/validate-permission.png)
+![](static/repo-path-code-repo.png)
 
 </TabItem>
 <TabItem value="other-git-provider-yaml-path" label="Other Git Providers YAML Path">
@@ -265,11 +267,19 @@ https://github.com/sathish-soundarapandian/onboarding-test
 
 - **Repo Path** - Go to the Code Repository and under files select **Clone** and copy the repository path. 
 
+:::info
+
+Once you copy the repository path replace the `git.eu.harness.io` with `accounts.eu.harness.io`.
+
+![](static/replace-vanity-url.png)
+
+:::
+
 ![](static/copy-repo-path.png)
 
 Validate the permission and the catalog-info.yaml files would be created in your directory in Code repository. 
 
-![](static/validate-permission.png)
+![](static/repo-path-code-repo.png)
 
 </TabItem>
 <TabItem value="other-git-provider-yaml-path" label="Other Git Providers YAML Path">

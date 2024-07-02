@@ -4,7 +4,7 @@ title: Prerequisites
 sidebar_position: 1
 ---
 
-Windows chaos faults disrupt the resources of an application running on a Windows virtual machine. To execute these faults, you need to [install a chaos infrastructure in the Windows VM](/docs/chaos-engineering/features/chaos-infrastructure/windows-chaos-infrastructure.md). 
+Windows chaos faults disrupt the resources of an application running on a Windows virtual machine. To execute these faults, you need to [install a chaos infrastructure in the Windows VM](/docs/chaos-engineering/features/chaos-infrastructure/windows-chaos-infrastructure.md).
 
 
 This section describes the interoperability matrix and the prerequisites to execute Windows chaos faults.
@@ -34,7 +34,7 @@ If the command execution is successful, it displays the message
 
 ### Step 2. Verify that the Windows VM has service log on access
 
-If the Windows VM has service log on access, it means the VM has the required permissions to create and manage services. 
+If the Windows VM has service log on access, it means the VM has the required permissions to create and manage services.
 
 1. To verify this, navigate to **Local security policy** -> **Local Policies** -> **User Rights Agreement** -> **Log on as a service**.
 
@@ -44,7 +44,7 @@ If the Windows VM has service log on access, it means the VM has the required pe
 
 ![](./static/images/prerequisites/add-user-2.png)
 
-3. If you don't have the 'Administrator' added, click **Add User or Group**. Add the admin name and click **OK**. 
+3. If you don't have the 'Administrator' added, click **Add User or Group**. Add the admin name and click **OK**.
 
 ![](./static/images/prerequisites/enter-name-3.png)
 
@@ -53,7 +53,7 @@ If the Windows VM has service log on access, it means the VM has the required pe
 ![](./static/images/prerequisites/apply-4.png)
 
 :::tip
-Your Windows chaos infrastructure was installed successfully but it may fail to start because you don't have log on access to the infrastructure service. 
+Your Windows chaos infrastructure was installed successfully but it may fail to start because you don't have log on access to the infrastructure service.
 1. To resolve this, navigate to **Task Manager** from your command prompt (run as admin) and right click **WindowsChaosInfrastructure** and click **Open Services**.
 
 ![](./static/images/prerequisites/alt-1.png)

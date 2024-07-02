@@ -1,24 +1,30 @@
 ---
-title: SonarQube SonarScanner reference for STO
-description: Scan code repositories with SonarQube SonarScanner.
+title: SonarQube step configuration
+description: Scan code repositories with SonarQube.
 sidebar_position: 390
-sidebar_label: SonarScanner scanner reference
+sidebar_label: SonarQube step configuration
 helpdocs_topic_id: 4qe4h3cl28
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
-helpdocs_is_published: true
+helpdocs_is_published: truex
 ---
 
- You can run scans and ingest results from [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
+<br/>
+
+ You can run scans and ingest results from [SonarQube](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
  
 
 ## Important notes for running SonarQube scans in STO
 
-* STO supports repository scanning only for SonarScanner.
-* STO supports all languages supported by SonarScanner.
+* STO supports repository scanning only for SonarQube.
+* STO supports all languages supported by SonarQube.
 * Before you scan your repo, make sure that you perform any prerequisites for the language used in your repo. <!-- Need to confirm this sentece per https://harness.atlassian.net/browse/DOC-3640 If you are scanning a Java repo with more than one Java file, for example, you must compile `.class` files before you run the scan. -->
   For details about specific language requirements, go to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/).
-* By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestration and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube scan step. 
+* By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestration and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube step. 
 * You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
 * You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
@@ -40,7 +46,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 ## SonarQube step settings for STO scans
 
 
-The recommended workflow is to add a SonarQube step to a Security Tests or CI Build stage and then configure it as described below.
+The recommended workflow is to add a SonarQube step to a Security or Build stage and then configure it as described below.
 
 A Docker-in-Docker background step is not required for this workflow.
 
@@ -79,9 +85,16 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 The predefined configuration to use for the scan. 
 
-- **Default**  
-- **Branch Scan**  
-- **Pull Request** 
+- **Default** Extract results for the Main branch defined in SonarQube. SonarQube Community Edition supports extracting scan results for the Main branch only. 
+- **Branch Scan** In Orchestration or Extraction mode, extract results based on how the pipeline is executed:
+  - Manual executions - The branch defined in SonarQube ([Target variant](#variant))
+  - Triggered executions - The pull request defined in SonarQube 
+
+:::note
+
+**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`. Contact [Harness Support](mailto:support@harness.io) to enable this option.
+
+:::
 
 
 ### Target
@@ -94,7 +107,7 @@ import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.
 <StoSettingScanTypeRepo />
 
 
-#### Detect target and variant 
+#### Target and Variant Detection 
 
 import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
 import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
@@ -109,12 +122,16 @@ import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
 <StoSettingTargetName />
 
+If you're running an Extraction scan, this field should match the code repository name in SonarQube. 
+
 
 #### Variant
 
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
+
+If you're running an Extraction scan, this field should match the branch or PR defined in SonarQube.
 
 #### Workspace
 
@@ -143,7 +160,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 #### Domain 
 
-The URL of the SonarQube server. Required for Orchestration and Extraction scans. This value corresponds to the [`sonar.host.url`](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/analysis-parameters/#mandatory-parameters) setting in SonarQube.
+The URL of the SonarQube server. This is required for Orchestration and Extraction scans. This value corresponds to the [`sonar.host.url`](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/analysis-parameters/#mandatory-parameters) setting in SonarQube.
 
 
 import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
@@ -187,6 +204,10 @@ For more information, go to [Generating and using tokens](https://docs.sonarsour
 
 
 ### Scan Tool
+
+#### Project key
+
+The unique key of the SonarQube project to scan.
 
 #### Exclude 
 
@@ -232,7 +253,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. Here are some examples:  
 
-* `-sonar.ws.timeout=300`: Suppose the scan is experiencing timeouts due to long response times from a web service. This flag increases the timeout window.
+* `-Dsonar.ws.timeout=300`: Suppose the scan is experiencing timeouts due to long response times from a web service. This flag increases the timeout window.
 
 * `-Dsonar.projectName=<project_name>`: The project name.
 
@@ -280,52 +301,18 @@ You can add a `tool_args` setting to run the [sonar-scanner binary](https://docs
 
 ### Additional Configuration
 
-In the **Additional Configuration** settings, you can use the following options:
+import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
 
-* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
-* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
-* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+<ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-In the **Advanced** settings, you can use the following options:
+import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
-* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+<ScannerRefAdvancedSettings />
 
-## SonarQube pull-request scan configuration
 
-To implement a SonarQube pull-request scan, include the following arguments in [**Additional CLI flags**](#additional-cli-flags). Use trigger variables for the pull request ID and branch:
-    - `-Dsonar.pullrequest.key=`[`<+codebase.prNumber>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebaseprnumber)
-    - `-Dsonar.pullrequest.branch=`[`<+codebase.sourceBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasesourcebranch)
-    - `-Dsonar.pullrequest.base=YOUR_BASELINE_BRANCH`
-
-      If the target branch in the PR is the baseline, you can use [`<+trigger.targetBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasetargetbranch).
-
-<details>
-<summary>YAML configuration example</summary>
-
-```yaml
-              - step:
-                  type: Sonarqube
-                  # ...
-                  spec:
-                    mode: orchestration
-                    config: default
-                    # ...
-                    advanced:
-                      log:
-                        level: debug
-                      args:
-                        cli: "-Dsonar.pullrequest.key=<+trigger.prNumber> -Dsonar.pullrequest.branch=<+trigger.sourceBranch> -Dsonar.pullrequest.base=<+trigger.targetBranch> "
-                    # ...
-```
-
-</details>
 
 
 ## SonarQube proxy settings
@@ -417,7 +404,7 @@ Here's what the Run step looks like in YAML:
 
 ### Can't generate SonarQube report due to shallow clone
 
-* Error message: `Shallow clone detected, no blame information will be provided. You can convert to non-shallow with 'git fetch --unshallow`
+* Error message: `Shallow clone detected, no blame information will be provided. You can convert to non-shallow with 'git fetch --unshallow'`
 * Cause: If the [depth setting](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
 * Solution: Change the `depth` to `0`.
 
@@ -429,11 +416,10 @@ In your SonarQube step, declare `-Dsonar.projectVersion` under [Additional CLI F
 
 :::info 
 
-Harness introduced a fix in [STO release 1.83.1](/release-notes/security-testing-orchestration#version-1882) to provide better support for orchestrated branch and pull-request scanning with SonarQube Enterprise.
+Harness introduced a fix in [STO release 1.83.1](/release-notes/security-testing-orchestration#version-1831) to provide better support for orchestrated branch and pull-request scanning with SonarQube Enterprise.
 
 - With this fix, the orchestration step always downloads results for the scanned branch or pull request.
-- Branch scans require no additional configuration.
-- To configure pull-request scans, go to [SonarQube pull-request scan configuration](#sonarqube-pull-request-scan-configuration).
+- To scan a branch or pull request, select **Branch Scan** in [Scan Configuration](#scan-configuration). With this option selected, the step scans the branch or pull request specified in the pipeline execution.
 
 :::
 
@@ -443,69 +429,3 @@ One potential solution involves configuring conditional arguments within the Har
 
 This approach ensures proper configuration and execution of SonarQube scans for both main and PR branches within your pipeline.
 
-<!-- STO-7187 remove legacy configs for scanners with step palettes
-
-## Security step settings for SonarQube scans in STO (legacy)
-
-:::note
-You can set up SonarQube scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [SonarQube step](#sonarqube-step-settings-for-sto-scans) instead.
-:::
-
-#### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-<StoDinDRequirements />
-
-#### Scan modes
-
-STO supports the following scan modes for SonarQube:
-
-* `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest method to set up and support scans with default or predefined settings.
-* `dataLoad`  — The pipeline downloads scan results using the [SonarScanner API](https://docs.sonarqube.org/latest/extend/web-api/).
-* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md). 
-
-#### Target and variant
-
-
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-
-<StoLegacyTargetAndVariant />
-
-#### SonarQube SonarScanner settings
-
-* `product_name` = `sonarqube`
-* `scan_type` = `repository`
-* `product_config_name` = `default` — Runs a SonarQube scan with default settings.
-* `policy_type` — Enter one of the following:
-	+ `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest method to set up and support scans with default or predefined settings.
-	+ `dataLoad`  — The pipeline downloads scan results using the [SonarScanner API](https://docs.sonarqube.org/latest/extend/web-api/).
-	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
-* `repository_project` — The repository name. If you want to scan `https://github.com/my-github-account/codebaseAlpha`, for example, you would set this to `codebaseAlpha`.
-* `repository_branch` — The git branch to scan. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference#manual-branch-build-expressions). This sets the branch based on the user input or trigger payload at runtime.
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-* `tool_args` - You can add a `tool_args` setting to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. For example, suppose the scan is experiencing timeouts due to long response times from a web service. You can increase the timeout window like this:  `tool_args` = `-sonar.ws.timeout 300`.
-
-
-#### `ingestionOnly` settings
-
-
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
-
-<StoLegacyIngest />
-
-####  `orchestratedScan` and `dataLoad` settings
-
-* `product_domain` — The URL of the SonarQube server. Use the value of the [`sonar.host.url`](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/analysis-parameters/#mandatory-parameters) parameter in SonarQube.
-* `product_access_token` — The access token to communicate with the SonarQube server. You must create a secret for the token and use the format `<+secrets.getValue("secret_name")>` to reference the secret. This example references a secret created at the project level. For additional details on referencing secrets, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).  
-Go to the [SonarQube docs](https://docs.sonarqube.org/latest/user-guide/user-token/) for information about creating tokens.
-* `product_project_name`—The name of the SonarQube project. This is the also the target name in the Harness UI (Security Tests > Test Targets).
-* `product_project_key` — The unique identifier of the SonarQube project you want to scan. Look for `sonar.projectKey` in the **sonar-project.properties** file.
-* `product_exclude` — If you want to exclude some files from a scan, you can use this setting to configure the `sonar.exclusions` in your SonarQube project. For more information, go to [Narrowing the Focus](https://docs.sonarqube.org/latest/project-administration/narrowing-the-focus/) in the SonarQube docs.
-* `product_java_binaries` — When scanning Java, you need to set the `sonar.java.binaries` key in SonarQube. This is a list of comma-separated paths with the compiled bytecode that correspond to your source files. See [Java](https://docs.sonarqube.org/latest/analysis/languages/java/) in the SonarQube docs.
-* `product_java_libraries` — `sonar.java.binaries` is a comma-separated list of paths to files with third-party libraries (JAR or Zip files) used by your project. See [Java](https://docs.sonarqube.org/latest/analysis/languages/java/) in the SonarQube docs.
-
--->
