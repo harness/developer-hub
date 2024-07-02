@@ -1,5 +1,5 @@
 ---
-title: Create an use a monitored service template in a verify step
+title: Create and use a monitored service template in a verify step
 sidebar_position: 3
 description: Learn about strategies to template out CV workflow items. 
 slug: /continuous-delivery/verify/cv-concepts/templates
@@ -25,9 +25,9 @@ To create a monitored service:
 
    ![Navigate to new monitored services page](./static/monitored-service-template-cd.png)
 
-   The Create new monitored service page appears.
+   The **Create new monitored service** page appears.
 
-2. In the **Overview** section, define a service and environment to set up monitored service for a particular application. 
+2. In the **Overview** section, define a service and environment to set up a monitored service for a particular application. 
     * In **Service**: Do one of the following:
      
        * If the service that you want to monitor exists, select it.
