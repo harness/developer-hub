@@ -85,6 +85,22 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>SEI_SERVICE_NOW</td>
         <td>Integrate SEI with the ServiceNow Platform. This integration is still under development.</td>
     </tr>
+    <tr>
+        <td>SEI_NEW_BA_PROFILES</td>
+        <td>Enable this flag to access the new [Business Alignment profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile).</td>
+    </tr>
+    <tr>
+        <td>SEI_NEW_BA_COMBINED_WIDGET</td>
+        <td>Enable this flag to access the new [Business Alignment report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report).</td>
+    </tr>
+    <tr>
+        <td>SEI_BA_INCLUDE_UNRESOLVED_ISSUES</td>
+        <td>Allows you to use the [Business Alignment report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report) to calculate alignment metrics for tickets that are in the In Progress status category and those that have been resolved (i.e., Done status category) within a specific duration of time.</td>
+    </tr>
+    <tr>
+        <td>SEI_IS_AZURE_NEW_ONB_ENABLED</td>
+        <td>Access the new [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) onboarding with PAT authentication</td>
+    </tr>
 </table>
 
 <!-- missing SHOW_DIAGNOSTIC_TILE. Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite. SEI-5818 -->
