@@ -36,7 +36,7 @@ Enabling the **Visibility** feature allows retrieving recommendations from the A
 The recommendations are computed by analyzing the past CPU utilization. Harness CCM leverages the Azure Advisor recommendations. CCM uses the Azure APIs to retrieve data from the Azure account.
 
 :::note
-Azure Advisor automatically runs in the background to find newly created resources. It can take up to 24 hours to provide recommendations on those resources.
+Azure Advisor automatically runs in the background to find newly created resources. It can take up to 24 hours to provide recommendations on those resources as well as the newly created connectors for existing VMs.
 :::
 
 ### Configure Azure Advisor
