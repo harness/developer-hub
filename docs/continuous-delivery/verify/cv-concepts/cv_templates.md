@@ -5,14 +5,14 @@ description: Learn about strategies to template out CV workflow items.
 slug: /continuous-delivery/verify/cv-concepts/templates
 ---
 
-A monitored service in the context of the Harness platform is a combination of a Harness service and environment. This entity can be any type of workload that is able to be monitored, including microservices. Environments represent the deployment targets such as QA, production, or any other environment where the workload will be deployed. By connecting a monitored service to change sources and health sources, you can monitor the health of the service. 
+A monitored service in the context of the Harness platform is a combination of a Harness service and environment. This entity can be any workload that can be monitored, including microservices. Environments represent the deployment targets such as QA, production, or any other environment where the workload will be deployed. By connecting a monitored service to change sources and health sources, you can monitor the health of the service. 
 
 The following steps explain how to create a monitored service in Harness.
 
 
 ## Prerequisites
 
-- Ensure that you have installed a Delegate and it can communicate with Harness, the health source, and the change source. To learn more about delegates, go to [Get started with delegates](/docs/category/delegate-concepts).
+- Ensure that you have installed a delegate and it can communicate with Harness, the health source, and the change source. To learn more about delegates, go to [Get started with delegates](/docs/category/delegate-concepts).
 - Create an organization if you have not already created one. To learn more about organizations in Harness, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization).
 
 ## Create a monitored service
@@ -31,7 +31,7 @@ To create a monitored service:
     * In **Service**: Do one of the following:
      
        * If the service that you want to monitor exists, select it.
-       * If you want to create a service, select **+ Add New**, enter the following information, and then select **Save**. 
+       * If you want to create a service, select **Add New**, enter the following information, and then select **Save**. 
        
           *  **Name**: Enter a name for the service. For example, _sample_service_.
           *  **Description (Optional)**
@@ -40,7 +40,7 @@ To create a monitored service:
     * In **Environment**: Do one of the following:
      
        * If the environment that you want to monitor exists, select it.
-       * If you want to create an environment, select **+ Add New**, enter the following information, and then select **Save**. 
+       * If you want to create an environment, select **Add New**, enter the following information, and then select **Save**. 
        
           *  **Name**: Enter a name for the environment.
           *  **Description (Optional)**
@@ -49,7 +49,7 @@ To create a monitored service:
 
     Harness automatically populates the **Monitored Service Name** field by combining the service and environment names. This field is not editable.
 
-After creating the monitored service template, you can edit it to add a Health Source of your preference. While a monitored service entity contains a lot more than a set of health sources, the presence of health sources is sufficient for verification purposes. Hence, a monitored service template can be created only with required health sources. For more details, go to [Monitored service template documentation](/docs/service-reliability-management/monitored-service/monitored-service-template-quickstart).
+After creating the monitored service template, you can edit it to add a Health Source of your preference. While a monitored service entity contains a lot more than a set of health sources, the presence of health sources is sufficient for verification purposes. Hence, a monitored service template can be created only with the required health sources. For more details, go to [Monitored service template documentation](/docs/service-reliability-management/monitored-service/monitored-service-template-quickstart).
 
 ## Configure the monitored service template in a Verify step
 
