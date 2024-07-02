@@ -60,7 +60,7 @@ This feature provides users with a detailed list of all components that are part
 
 #### Filter and Search Capabilities:
 
-* **Component-based:** Users can filter components based on their name and version, allowing for targeted searches and focused management.
+* **Component-based:** Users can filter components based on their name and version.
 * **License-based:** Users can define conditions based on license details to display only components that meet specific licensing criteria.
 * **Search by Package Manager:** Enables users to search for components managed by specific package managers.
-* **Search by Supplier:** Allows users to filter and search for components based on supplier information.
+* **Search by Supplier:** Allows users to search for components based on supplier information.
