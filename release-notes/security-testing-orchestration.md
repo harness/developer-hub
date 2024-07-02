@@ -96,6 +96,7 @@ The following features are now generally available:
 #### New features and enhancements
 
 - Harness STO now supports the Anchore v2 API and Anchore Enterprise Server 5.5.0. This change means that the Anchore v2 API and Anchore Enterprise Server v5.0 or higher are required to run orchestration and extraction scans. (STO-7614)
+- You can now run Wiz IaC scans in an **Infrastructure** stage. (STO-7632)
 
 #### Fixed issues
 
