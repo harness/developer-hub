@@ -20,7 +20,7 @@ Any software component can be registered in the catalog by using a YAML file sto
 * [Harness Code Repository (Default)](https://www.harness.io/products/code-repository) 
 * GitHub
 * GitLab
-* Bitbucket(Except [Bitbucket Server](https://www.atlassian.com/migration/assess/journey-to-cloud))
+* Bitbucket
 * Azure Repos
 
 We support multiple connectors with different hostname for a single git provider to fetch `catalog-info.yaml` at once. Eg., Users can  use connectors for both `github.com` and `github enterprise` and fetch entity yaml at the same time.
