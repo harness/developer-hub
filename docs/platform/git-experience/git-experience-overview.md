@@ -127,7 +127,7 @@ If the repository actually exists it will fetch the branch name, if not it will 
 ![](./static/repolisting_error.png)
 
 :::important
-1. Search in repo listing is not supported for Github and Github Apps.
+1. Search in repo listing is not supported for Azure Repos.
 2. Please note that search in repo listing is only available while creating remote entities.
 :::
 
