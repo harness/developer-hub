@@ -187,7 +187,7 @@ This topic shows you how to add a Custom Secret Manager in the project scope.
 
 	![](../static/custom-secret-manager-36.png)
 
-9. Select **Fixed** for the `CONJUR_APPLIANCE_URL`, `HOST_ID`, `AUTHENTICATOR`, `API_KEY_SECRET_ID`, and `ACCOUNT`.
+   - Select **Fixed** for the `CONJUR_APPLIANCE_URL`, `HOST_ID`, `AUTHENTICATOR`, `API_KEY_SECRET_ID`, and `ACCOUNT`.
 
    - The `API_KEY_SECRET_ID` should be an identifier for a Harness Secret, to be used for authenticating with Conjur. Create the secret using any secret manager other than Conjur. Based on where you create the secret, this can be in the format of `account.secretid`, `org.secretid`, or just `secretid`.
 
@@ -214,6 +214,3 @@ This topic shows you how to add a Custom Secret Manager in the project scope.
 Create an Encrypted Text using the Custom Secrets Manager you created earlier. Enter the name and values of all the Input Variables defined while creating the Shell Script Template.
 
 For more information on creating Encrypted Text Secret, go to [Add Encrypted Text](/docs/platform/secrets/add-use-text-secrets).
-
-If you want to create a secret on a Target Host Custom Secrets Manager, you must also select the Connection Attribute.
-
