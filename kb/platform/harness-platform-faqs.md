@@ -410,6 +410,10 @@ Invalid request: Maximum limit has reached
 
 This error indicates that you've reached the maximum amount of API keys available for your user. Harness has a limit of 5 API keys per user. To resolve this error, delete one of your existing API keys or use a service account instead.
 
+### Is there an api call to fetch api-key?
+
+No there is no api to get api-key value as Harness does not store the API token for future reference.
+
 ## Authentication
 
 ### As I migrate from FirstGen to NextGen and use Okta for SCIM, I've noticed our user groups haven't migrated. Is there an additional step I need to take?
@@ -730,6 +734,10 @@ Also, when you create the personal access token, make sure it has the required r
 ### Where is the currently set session inactive timeout value located?
 
 You can find this value on the Authentication page (right below the Overview menu on the left). The field will be at the bottom of the page: ```Session Inactivity Timeout (in minutes)```.
+
+### Ldap sync is not working for some groups, while for other groups it's working fine, and even manual sync is not helping.
+
+The most probable root cause is that there is a difference in query for this user group/user (like DC), so check and confirm and add the corresponding user query.
 
 ## Automation
 
