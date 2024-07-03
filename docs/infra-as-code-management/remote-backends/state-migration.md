@@ -4,7 +4,7 @@ description: Learn how to migrate and import infrastructure state in Harness IaC
 sidebar_position: 20
 ---
 
-Migrate and import your infrastructure state into Harness workspaces with the IaCM migration tool. This allows you to bulk import any local Terraform projects and grant better security, collaboration, and operational convenience with a remote backend. Go to [Remote backend initialization](https://developer.harness.io/docs/infra-as-code-management/remote-backends/init-configuration) to find out how to configure your remote backend.
+This topic describes how you can migrate and import your infrastructure state into Harness workspaces with the IaCM migration tool. Go to [Remote backend initialization](https://developer.harness.io/docs/infra-as-code-management/remote-backends/init-configuration) to find out how to configure your remote backend.
 
 ## Prerequisites
 
@@ -13,7 +13,7 @@ Every workspace you create will be created inside a specified project, so you sh
 - Configure any connectors within that project before passing their values to your migration variables file.
 
 ## Migration phases
-Harness IaCM migration is built on three phases to grant control over your configuration and imported state.
+Harness IaCM migration is built in three phases to grant control over your configuration and imported state.
 
 1. Prepare your configured workspaces locally.
 2. Apply your new workspaces and import them to Harness.
