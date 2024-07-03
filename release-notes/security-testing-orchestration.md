@@ -26,6 +26,8 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Version 1.100.2
 
+<!-- 2024-06-27 -->
+
 #### Fixed issue
 
 - Fixed an issue where an Anchore Enterprise step failed when trying to extract scan results in the following edge case. (STO-7754)
