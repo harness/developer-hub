@@ -1,6 +1,6 @@
 ---
 title: Connectors + Roles For GCP CCM
-description: Automatically Create Harness connectors for projects and IAM roles in each GCP subscription
+description: Automatically create Harness connectors for projects and IAM roles in each GCP subscription
 ---
 
 # Overview
