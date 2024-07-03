@@ -14,7 +14,7 @@ Once you integrate your Harness account with LDAP, you can create a Harness User
 
 ### Important
 
-* Make sure that the FirstGen delegate is active to configure LDAP settings.
+* Make sure that the delegate is active to configure LDAP settings.
 
 ### Lightweight Directory Access Protocol (LDAP) overview
 
