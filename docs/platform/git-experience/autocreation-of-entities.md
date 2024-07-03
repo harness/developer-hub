@@ -178,7 +178,7 @@ File path for storing Environment at Account level should follow the following n
 
  `.harness/envs/<environment_type_name>/<file_path_name>.yaml`
 
-- Folder name should be `envs` followed by the type of environment `production`,`pre-production`, `qa`,`dev` etc.
+- Folder name should be `envs` followed by the type of environment `production`,`pre_production`, `qa`,`dev` etc.
 
 For example:- `.harness/envs/pre_production/Pre_Prod_qa.yaml`
               `.harness/envs/qa/Pre_Prod_qa.yaml`
