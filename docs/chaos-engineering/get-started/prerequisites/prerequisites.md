@@ -9,33 +9,28 @@ redirect_from:
 
 This topic describes the requirements and project-level permissions required to execute chaos experiments on your target environments.
 
-- Obtain the permissions required:
-	- Prepare yourself with the right permissions (`Chaos Resources Role Permissions` in `Access Control`).
-
-			![Permissions](./static/perms.png)
-
-	- Prepare yourself with the right permissions on the cloud account or the [Kubernetes cluster](/docs/category/permissions) or the VM (Kube RBAC, [IAM Roles](/docs/chaos-engineering/chaos-faults/aws/security-configurations/aws-iam-integration)): Depending on the platform where you wish to execute your chaos experiments, you will need specific permissions.
+- Obtain the permissions required and prepare your target system (VM or K8s):
+	- Prepare yourself with the [right permissions](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/) (`Chaos Resources Role Permissions` in `Access Control`). Your target system or application can reside on a VM or a K8s cluster, prepare accordingly.
+	- Prepare yourself with the respective permissions on the cloud account or the [Kubernetes cluster](/docs/category/permissions) or the VM (Kube RBAC, [IAM Roles](/docs/chaos-engineering/chaos-faults/aws/security-configurations/aws-iam-integration)): Depending on the platform where you wish to execute your chaos experiments, you will need specific permissions.
 
 - Enable the necessary Feature Flags (as a general step) and corresponding sanity checks (such as places to click, and entities to see enabled): Some features may be behind a Feature Flag. You can contact [Harness Support](mailto:support@harness.io) to enable the flag feature for your account.
 
-- Prepare the target systems (VMs or K8s): Your target system or application can reside on a VM or a K8s cluster. Based on the application's location, prepare your application.
+- Prepare [**network connectivity**, **firewall rules**](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/) (if any), and identify [**proxy requirements**](/docs/category/configure-proxy-on-self-managed-enterprise-edition),.
 
-- Prepare **network connectivity**, identify [**proxy requirements**](/docs/category/configure-proxy-on-self-managed-enterprise-edition), **firewall rules** (if any).
-
-- Identify application (or infrastructure) steady-state parameters (even if this requires manual effort)- [using APMs](/docs/chaos-engineering/features/resilience-probes/cmd-probe/cmd-probe-newrelic) or logs or other methods: You can use resilience probes to monitor your application and validate the data.
+- Identify application (or infrastructure) steady-state parameters (even if this requires manual effort)- using APMs or logs or other methods: You can use [resilience probes](/docs/chaos-engineering/features/resilience-probes/overview) to monitor your application and validate the data.
 
 - Identify image registry requirements and steps to set up the registry with secrets: Chaos experiments use Docker images that need to be stored in a repository. In HCE, these images are hosted in [image registry](/docs/chaos-engineering/features/image-registry).
 
-- Identify specific needs, especially for Kubernetes. You might need to specify:
+- Identify specific needs, especially for Kubernetes. You might need to specify the following while creating a chaos experiment:
 	- [Namespace quotas](/docs/chaos-engineering/architecture-and-security/security/namespace-considerations): Ensure that you configure the namespace in the right manner to limit the exposure of all services of your application.
 	- Workload-specific labels or annotations
 	- Workload resource limits
 	- [Proxy environments for outbound container](/docs/chaos-engineering/chaos-faults/cloud-foundry/permissions/)
 	- Specific nodes or groups where workloads should reside
 
-- Identify permissions for advanced use cases, which may vary, such as [SCC](/docs/chaos-engineering/architecture-and-security/security/security-templates/openshift-scc), IRSA, etc.: For advanced use cases, you may require the administrator to control the pods in your cluster, that requires security policies, such as [PSP](/docs/chaos-engineering/architecture-and-security/security/security-templates/psp), [Kyverno](/docs/chaos-engineering/architecture-and-security/security/security-templates/kyverno-policies) to enforce runtime security, and so on.
+- Identify permissions for advanced use cases, which may vary, such as [SCC](/docs/chaos-engineering/architecture-and-security/security/security-templates/openshift-scc), [IRSA](/docs/chaos-engineering/chaos-faults/aws/security-configurations/aws-iam-integration#authentication-methods), etc.: For advanced use cases, you may require the administrator to control the pods in your cluster, that requires security policies, such as [PSP](/docs/chaos-engineering/architecture-and-security/security/security-templates/psp), [Kyverno](/docs/chaos-engineering/architecture-and-security/security/security-templates/kyverno-policies) to enforce runtime security, and so on.
 
-- ChaosHub requirements and connectivity to Git sources.
+- [ChaosHub requirements and connectivity to Git sources](/docs/chaos-engineering/features/chaos-hubs/add-chaos-hub): To add custom chaos experiments based on your requirements, you can add a custom ChaosHub.
 
 ## Add users to a project to run chaos experiments
 
