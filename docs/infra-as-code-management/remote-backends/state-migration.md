@@ -4,20 +4,20 @@ description: Learn how to migrate and import infrastructure state in Harness IaC
 sidebar_position: 20
 ---
 
-Migrate and import your infrastructure state into your Harness workspace with the IaCM migration tool. This will allow you to bulk import any local Terraform projects and grant better security, collaboration, and operational convenience with a remote backend. Go to [Remote backend initialization](https://developer.harness.io/docs/infra-as-code-management/remote-backends/init-configuration) to find out how to configure your remote backend.
+Migrate and import your infrastructure state into Harness workspaces with the IaCM migration tool. This allows you to bulk import any local Terraform projects and grant better security, collaboration, and operational convenience with a remote backend. Go to [Remote backend initialization](https://developer.harness.io/docs/infra-as-code-management/remote-backends/init-configuration) to find out how to configure your remote backend.
 
 ## Prerequisites
 
 Every workspace you create will be created inside a specified project, so you should:
 - Ensure you have an existing Harness project.
-- Configure any connectors within that project before passing their values to your migration file.
+- Configure any connectors within that project before passing their values to your migration variables file.
 
 ## Migration phases
 Harness IaCM migration is built on three phases to grant control over your configuration and imported state.
 
 1. Prepare your configured workspaces locally.
 2. Apply your new workspaces and import them to Harness.
-3. Import your infrastructure state into your new workspaces
+3. Import your infrastructure state into your new workspaces.
 
 <details>
   <summary>Sample Terraform file</summary>
@@ -56,11 +56,14 @@ Harness IaCM migration is built on three phases to grant control over your confi
 </details>
 
 ## Prepare your local migration state
-Generate workspace configurations for each Terraform state file in your project and import the configured state by:
+
+The migration tool utilizes a `variables.tf` file to set default variables that can be shared across multiple new workspaces. You can define these variables and list your new workspaces in a list (step 2 below).
+
+Create workspace configurations for each Terraform state file in your project with the following steps:
 
 1. Clone the IaCM migration repository: 
     - `git clone git@github.com:wings-software/iacm-migration.git`.
-2. Create a new `<filename>.tfvars` file in the local repository, see the **Sample tfvars file** below for an example.
+2. Create and new `<filename>.tfvars` file in the local repository, see the **Sample tfvars file** below for an example.
 3. In your terminal, `cd` to your repository directory and run: 
     - `terraform apply -refresh=true -var-file=<filename>.tfvars`.
     - This will run the terraform plan command, list your proposed changes, and ask you to confirm if you want to perform these actions.
@@ -122,7 +125,7 @@ Now that your workspaces and state are confirmed in your local environment:
 
 1. In your terminal, cd to the out folder and export your Harness API key.
     - `export HARNESS_PLATFORM_API_KEY=<your-harness-api-key>`.
-2. Run terraform init, then run terraform apply.
+2. Run `terraform init`, then run `terraform apply`.
 3. Confirm your new resources have been added to your Harness account.
 
 ### Import state
@@ -135,3 +138,4 @@ Now that your workspaces and state are confirmed in your local environment:
 
 4. Navigate to the workspace you ran the migration pipeline against.
 5. Select the State tab and confirm that your state has been imported.
+6. Repeat the import steps for each new workspace.
