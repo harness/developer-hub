@@ -92,6 +92,6 @@ Harness Chaos Engineering is available in **SaaS** and **self-managed** versions
 ## Try Chaos Engineering today
 
 * [Run your first chaos experiment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md)
-* [Executing experiments in a sandbox](/docs/chaos-engineering/certifications/run-experiments-in-sandbox)
+* [Executing experiments in a sandbox](/docs/chaos-engineering/onboarding/certifications/run-experiments-in-sandbox)
 * [Create chaos experiments from scratch](/docs/chaos-engineering/get-started/tutorials/chaos-experiment-from-blank-canvas)
 

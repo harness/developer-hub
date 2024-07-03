@@ -2,6 +2,8 @@
 title: Harness Delegate-driven chaos infrastructure
 sidebar_position: 2
 description: Harness chaos infrastructure that uses Harness Delegate to allow for quick onboarding and optimized chaos execution of experiments.
+redirect_from:
+    - /docs/chaos-engineering/onboarding/harness-infra
 ---
 
 This topic walks you through Harness chaos infrastructure that uses Harness Delegate and how it facilitates quick onboarding and optimizes chaos experiments.
@@ -20,7 +22,7 @@ The schematic diagram below describes how chaos experiments are executed in Harn
 
     ![](./static/ddci-flow.png)
 
-Go to [permissions required](/docs/chaos-engineering/onboarding/harness-infra/permissions) to know the detailed list of permissions to execute DDCR-based Kubernetes faults.
+Go to [permissions required](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/permissions) to know the detailed list of permissions to execute DDCR-based Kubernetes faults.
 
 The diagram below describes the detailed flow of control (step 5 of the earlier diagram), for an example chaos experiment- [pod DNS chaos](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error).
 
