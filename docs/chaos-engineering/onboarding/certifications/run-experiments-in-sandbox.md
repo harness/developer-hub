@@ -1,13 +1,15 @@
 ---
 sidebar_position: 8
-title: Run chaos experiments in sandbox to build resilience
+title: Run chaos experiments in sandbox
 description: Execute chaos experiments to improve the resilience of an app in a sandbox.
+redirect_from:
+	- /docs/chaos-engineering/certifications/run-experiments-in-sandbox
 ---
 
-This tutorial guides you through an interactive tutorial that uses a sample application (**Podtato head**) to execute a chaos experiment and improve the resilience of the application.
+This topic guides you through an interactive tutorial that uses a sample application (**Podtato head**) to execute a chaos experiment and improve the resilience of the application.
 
 ## Prerequisites
-Before you begin the tutorial, you need to have a Harness account. To create one, follow the below-mentioned steps. Refer to [this](/docs/chaos-engineering/certifications/developer-certification#obtaining-developer-certification) diagram to understand the entire flow.
+Before you begin the tutorial, you need to have a Harness account. To create one, follow the below-mentioned steps. Refer to [this](/docs/chaos-engineering/onboarding/certifications/developer-certification#obtaining-developer-certification) diagram to understand the entire flow.
 
 ### Create a Harness account
 
@@ -118,7 +120,7 @@ You can start executing the sandbox again if you run out of time by click **Run*
 
 ![pod network done](./static/sandbox/pod-nw-done.png)
 
-3. You have successfully completed the Chaos hands-on lab, by executing two experiments in the sandbox and improving the resilience of the Podtato head application. Click **Go to Harness University** or follow [this](/docs/chaos-engineering/certifications/developer-certification.md) tutorial to obtain the developer certification.
+3. You have successfully completed the Chaos hands-on lab, by executing two experiments in the sandbox and improving the resilience of the Podtato head application. Click **Go to Harness University** or follow [this](/docs/chaos-engineering/onboarding/certifications/developer-certification.md) tutorial to obtain the developer certification.
 
 ![pod network done](./static/sandbox/go-to-cert.png)
 
@@ -133,4 +135,4 @@ You can start executing the sandbox again if you run out of time by click **Run*
 </Accordion>
 
 ## Next steps
-* [Harness Chaos Engineering Developer Certification](/docs/chaos-engineering/certifications/developer-certification.md)
+* [Harness Chaos Engineering Developer Certification](/docs/chaos-engineering/onboarding/certifications/developer-certification.md)
