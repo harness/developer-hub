@@ -1,6 +1,6 @@
 ---
 title: Connectors + Roles For Azure CCM
-description: Automatically Create Harness connectors for subscriptions and IAM roles in each Azure subscription
+description: Automatically create Harness connectors for subscriptions and IAM roles in each Azure subscription
 ---
 
 # Overview
