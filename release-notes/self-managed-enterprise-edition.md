@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-07-02T10:00
+date: 2024-07-03T10:00
 sidebar_position: 16
 ---
 
@@ -123,7 +123,7 @@ Upon providing your credentials and the release version, the script will proceed
 
 :::
 
-## July 2, 2024, version 0.18.0
+## July 3, 2024, version 0.18.0
 
 This release includes the following Harness module and component versions.
 
