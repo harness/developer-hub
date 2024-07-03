@@ -377,12 +377,12 @@ To skip authorization omit the `-H 'X-Api-Key: sample_api_key'` parameter.
 3. Copy the cURL command for your custom trigger. For example:
 
    ```
-   curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v3?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+   curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
    ```
 4. Replace `sample_api_key` with the API key you created. For example:
    
    ```
-   curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: pat.px7xd_BFRCi-12345.63bc6f8bed8ecc38a51965ba.qybothN6MJv6XETxKQjD' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v3?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+   curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: pat.px7xd_BFRCi-12345.63bc6f8bed8ecc38a51965ba.qybothN6MJv6XETxKQjD' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
    ```
 5. Use the cURL command. A `SUCCESS` status will look something like this:
    
@@ -391,7 +391,7 @@ To skip authorization omit the `-H 'X-Api-Key: sample_api_key'` parameter.
    ```
 
 :::tip
-Using authentication is only supported for `/v3` webhook endpoints. For that reason, all the curl commands in this section use `/v3` endpoints. 
+Adding authorization is only supported for `/v3` webhook endpoints. For that reason, all the curl commands in this section use `/v3` endpoints. 
 :::
 
 ### Enforcing authorization for custom triggers
