@@ -7,9 +7,9 @@ redirect_from:
 description: This section introduces you to the basics of chaos engineering, its importance, and its advantages.
 ---
 
-Welcome to Harness Chaos Engineering (HCE)! This section introduces you to the basics of chaos engineering, its importance, and its advantages.
+Welcome to Harness Chaos Engineering (HCE)! This section introduces you to the [basics of chaos engineering](#what-is-chaos-engineering), [its importance](#why-is-chaos-engineering-important), [its advantages](#benefits-of-hce) and how you can [implement chaos engineering](#how-to-implement-chaos-engineering-to-build-resilient-applications) to improve the resilience of your application.
 
-## Overview
+## Introduction
 Cloud-native applications are highly distributed, elastic, resistant to failure, and loosely coupled. You need to ensure that your application performs as expected under different failure conditions.
 
 Chaos engineering is a technique that is **relevant** to all types of systems, including legacy applications and infrastructure. This is particularly important for cloud-native applications since they carry multiple points of failure due to their distributed, and elastic nature.
