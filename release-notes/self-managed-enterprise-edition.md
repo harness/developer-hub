@@ -133,7 +133,7 @@ This release includes the following Harness module and component versions.
 | Air Gap Bundle | [0.18.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.18.0) |
 | NG Manager | 1.41.9 |
 | CI Manager | 1.30.2 |
-| Pipeline Service | 1.78.6 |
+| Pipeline Service | 1.78.8 |
 | Platform Service | 1.26.3 |
 | Access Control Service | 1.48.3 |
 | Delegate | 24.06.83204 |
