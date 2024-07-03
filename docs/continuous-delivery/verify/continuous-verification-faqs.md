@@ -83,8 +83,6 @@ You can select the services for which you want to apply the metric.
 
 Yes, you can use a multiple-node filter. All of those filters should be applied.
 
-
-
-### How to select the correct Service Instance Identifier (SII )
+### How to select the correct Service Instance Identifier (SII)
 
 It depends upon what kind of metric you want to monitor. For K8S deployments, the best SII selection is typically pod, podname, or containername.
