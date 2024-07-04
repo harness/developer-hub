@@ -20,7 +20,7 @@ Any software component can be registered in the catalog by using a YAML file sto
 * [Harness Code Repository (Default)](https://www.harness.io/products/code-repository) 
 * GitHub
 * GitLab
-* Bitbucket(Except [Bitbucket Server](https://www.atlassian.com/migration/assess/journey-to-cloud))
+* Bitbucket
 * Azure Repos
 
 We support multiple connectors with different hostname for a single git provider to fetch `catalog-info.yaml` at once. Eg., Users can  use connectors for both `github.com` and `github enterprise` and fetch entity yaml at the same time.
@@ -28,6 +28,8 @@ We support multiple connectors with different hostname for a single git provider
 :::warning
 
 Backstage doesn't support SSH auth type for integrations, hence only HTTP connection is supported for all the git provider based connectors in IDP.
+
+API calls in IDP are used to fetch YAML data, last commit SHA, and detect any new changes. SSH authentication cannot be used for making these API calls; it is only used for cloning repositories. Therefore, the main Git connector for IDP Git integration must support API requests, hence HTTP is only supported
 
 :::
 

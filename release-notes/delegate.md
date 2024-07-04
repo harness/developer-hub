@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-06-24T10:00
+date: 2024-07-01T10:00
 sidebar_position: 4
 ---
 
@@ -49,6 +49,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## June 2024
 
+### Version 24.07.82905 <!--  July 1, 2024 -->
+
+#### Hotfix
+
+- Reduced the time for missing heartbeats for delegates before the liveness probe fails from 15 mins to 5 mins. (PL-52037)
+
 ### Version 24.06.83304 <!--  June 24, 2024 -->
 
 #### Fixed issues
@@ -56,6 +62,8 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 - Kubernetes services were created during the startup of the delegate, causing the IP pool to be exhausted for NAB. The delegate has been updated to prevent the creation of Kubernetes services upon startup, resolving the issue with IP pool exhaustion. (PL-51550)
 
 - Delegates were running out of memory due to frequent connectivity checks. Optimized the connectivity check process to reduce memory usage, preventing the delegate from running out of memory. (PL-51418, ZD-63705)
+
+- When trying to resolve the expressions in the File Store scripts, Harness encountered a self referencing expression. Due to this condition, the resources associated with two Harness services were exhausted. A code change fixed this issue by preventing such pipeline executions. (PIPE-19585, ZD-64579, ZD-64580)
 
 ### Version 24.06.83203 <!--  June 11, 2024 -->
 

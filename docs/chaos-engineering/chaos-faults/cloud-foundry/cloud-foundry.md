@@ -152,3 +152,117 @@ CF app network duplication injects network duplication into a Cloud Foundry app 
 </accordion>
 
 </FaultDetailsCard>
+
+<FaultDetailsCard category="cloud-foundry">
+
+### CF app JVM CPU stress
+
+CF app JVM CPU stress injects JVM CPU stress into a Cloud Foundry app instance.
+
+- Checks resilience upon app instance JVM CPU stress.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Checks resilience upon app instance JVM CPU stress.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="cloud-foundry">
+
+### CF app JVM memory stress
+
+CF app JVM memory stress injects JVM memory stress into a Cloud Foundry app instance.
+
+- Checks resilience upon app instance JVM memory stress.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Checks resilience upon app instance JVM memory stress.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="cloud-foundry">
+
+### CF app JVM method exception
+
+CF app JVM method exception injects JVM method exception into a Cloud Foundry app instance.
+
+- Checks resilience upon app instance JVM method exception.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Checks resilience upon app instance JVM method exception.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="cloud-foundry">
+
+### CF app JVM method latency
+
+CF app JVM method latency injects JVM method latency into a Cloud Foundry app instance.
+
+- Checks resilience upon app instance JVM method latency.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Checks resilience upon app instance JVM method latency.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="cloud-foundry">
+
+### CF app JVM modify return
+
+CF app JVM modify return injects JVM modify return into a Cloud Foundry app instance.
+
+- Checks resilience upon app instance JVM modify return.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Checks resilience upon app instance JVM modify return.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="cloud-foundry">
+
+### CF app JVM trigger GC
+
+CF app JVM trigger GC injects JVM trigger GC into a Cloud Foundry app instance.
+
+- Checks resilience upon app instance JVM trigger GC.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Checks resilience upon app instance JVM trigger GC.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+</accordion>
+
+</FaultDetailsCard>

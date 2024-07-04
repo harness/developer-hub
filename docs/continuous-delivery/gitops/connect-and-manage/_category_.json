@@ -1,6 +1,6 @@
 {
   "label": "Connect and manage GitOps providers",
-  "position": "300",
+  "position": "200",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",

@@ -3,7 +3,7 @@ title: Onboarding
 description: Onboarding to Cloud Cost Management
 ---
 
-# Cloud Cost Management
+# Onboarding
 
 - [AWS](./aws.md)
 - [Azure](./azure.md)

@@ -72,6 +72,12 @@ RBAC (Role Based Access Control) is an area lets you control who can access your
  8. The tags assigned to users will control their permissions to toggle flags within Feature Flags. Users under the assigned tags will be restricted based on the permissions you have granted them, such as the ability to toggle flags or make edits within Feature Flags. 
  9. Additionally, it's crucial to add Environments as a Resource Group. Do read the below subsection on *Environments As A Resource Group* to learn more. 
 
+If a user has the resource group ‘Feature Flag by tag’ assigned, the following rules apply:
+
+ - **Toggle Permissions**: Users will not be able to toggle flags that have no tags.
+ - **Edit Config Permissions**: Users will not be able to edit the configuration of flags with no tags.
+ - **Tag-Specific Config Permissions**: Users will only be able to edit the configuration of flags that have the tag(s) defined in their resource group.
+
 ### Environments As A Resource Group
 
 Additionally, it's crucial to add Environments as a Resource Group. This step helps limit the environments in which users can toggle a flag. By assigning tags to users within specific environments, you ensure that they only have access to toggle flags within those designated environments. 

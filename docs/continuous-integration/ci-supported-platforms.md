@@ -50,7 +50,8 @@ For more information about early access features, including early access feature
 | `CI_TI_DASHBOARDS_ENABLED` | [Test report dashboards.](/docs/continuous-integration/use-ci/run-tests/viewing-tests/#test-report-dashboard) | Beta |
 | `CI_INDIRECT_LOG_UPLOAD` | Enables uploading of logs through log service for certain troubleshooting scenarios, for example, if [step logs disappear](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs#step-logs-disappear). | Beta |
 | `CI_INCREASE_DEFAULT_RESOURCES` | Used to adjust [resource allocation limits](/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#override-resource-limits). This feature flag increases maximum CPU to 1000m and maximum memory to 3000Mi. | Beta |
-| `CI_CONSERVATIVE_K8_RESOURCE_LIMITS` | Used to adjust [resource allocation limits](/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#override-resource-limits). This feature flag sets lite engine.
+| `CI_CONSERVATIVE_K8_RESOURCE_LIMITS` | Used to adjust [resource allocation limits](/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#override-resource-limits). This feature flag sets lite engine resource limits to the default minimum (100m CPU and 100Mi memory). | Beta |
+| `CI_USE_BUILDX_ON_K8` | With this flag enabled, a Build and Push step, running on k8s, uses buildx rather than kaniko. You must run buildx on k8s with Privileged mode enabled.  | Beta |
 | `CI_EXTRA_ADDON_RESOURCE` | Used to speed up CI builds by adding more resources for running 'addon`. | Beta |
 
 <!-- In development: CI_YAML_VERSIONING, CI_ENABLE_TTY_LOGS, CIE_ENABLE_RUNTEST_V2, CI_ENABLE_INTELLIGENT_DEFAULTS  -->

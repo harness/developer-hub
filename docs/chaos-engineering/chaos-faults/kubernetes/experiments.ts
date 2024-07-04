@@ -201,6 +201,12 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod IO mistake",
+    description:"Pod IO mistake, causes the file to read or write an incorrect value within the mounted volume of the pod",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
     name: "Time Chaos",
     description:"Time Chaos introduces controlled time offsets to disrupt the system time of the target pod",
     tags: ["pod"],

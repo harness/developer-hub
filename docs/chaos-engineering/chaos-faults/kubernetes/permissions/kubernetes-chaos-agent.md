@@ -7,7 +7,6 @@ description: Kubernetes chaos agent installation access requirements
 
 This topic lists the Kubernetes chaos agent installation access requirement for discovery and all types of faults.
 
-
 <table>
   <tr>
     <th> Resource </th>

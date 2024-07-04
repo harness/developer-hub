@@ -247,7 +247,6 @@ You can use wildcards in the condition's value and you can select **Regex**.
 
 For example, if the build is `todolist-v2.0`:
 
-- With regex not selected, both `todolist*` or `*olist*` will match.
 - With regex selected, the regex `todolist-v\d.\d` will match.
 
 If the regex expression does not result in a match, Harness ignores the value.

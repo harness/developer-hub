@@ -1,6 +1,6 @@
 {
   "label": "Use GitOps",
-  "position": "400",
+  "position": "300",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",

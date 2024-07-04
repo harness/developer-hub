@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 
 ### Important notes for using GitHub Action and Drone Plugin steps in STO 
 
-* GitHub Action security scans are useful primarily for integrated CI/STO pipelines, which require both CI and STO licenses. 
+* You can run GitHub Action security scans in both STO-only pipelines and integrated CI/STO pipelines. 
 
 * You can run scans using [GitHub Action steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie). 
 

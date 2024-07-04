@@ -26,7 +26,6 @@ The Harness modules below can be enabled or disabled conditionally:
 - Harness Security Testing Orchestration (STO)
 - Harness Service Reliability Management (SRM)
 - Harness Feature Flags (FF)
-- Harness Continuous Error Tracking (CET)
 
 For more information, go to [Deploy Harness modules](/docs/self-managed-enterprise-edition/install/install-using-helm#deploy-harness-modules).
 
@@ -35,7 +34,6 @@ For more information, go to [Deploy Harness modules](/docs/self-managed-enterpri
 - [Chaos Engineering](/docs/chaos-engineering/whats-supported)
 - [Cloud Cost Management (Beta)](/docs/cloud-cost-management/get-started/ccm-smp/smp-ccm-roadmap)
 - [Continuous Delivery and GitOps](/docs/continuous-delivery/cd-integrations)
-- [Continuous Error Tracking (Beta)](/docs/continuous-error-tracking/whats-supported)
 - [Continuous Integration](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/#feature-compatibility-matrix)
 - [Custom Dashboards](/docs/platform/dashboards/cdb-whats-supported)
 - [Feature Flags](/docs/feature-flags/ff-supported-platforms)
