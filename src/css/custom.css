@@ -372,7 +372,7 @@ html[data-theme="dark"] .navbar {
 
   --black: #070707;
   /* --white: #070707; */
-
+  --gray-900:var(--gray-200)
   --ifm-navbar-shadow: white !important;
   --ifm-navbar-background-color: var(--black) !important;
   --ifm-background-color: var(--black) !important;

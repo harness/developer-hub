@@ -33,16 +33,13 @@ Harness SEI supports a variety of platforms, repos, tools, and related technolog
 
 * [Azure Boards](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
 * [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration)
-* [Jira Enhanced Integration - BETA](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration)
 * [Rally Software](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally)
 
 ### Source Code Management (SCM)
 
 * [Azure Repos](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
 * [Bitbucket](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket)
-* [GitHub Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)
-* [GitHub Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)
-* [GitHub Enhanced Integration - BETA](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)
+* [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)
 * [GitLab Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab)
 * [GitLab Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab-enterprise)
 * [Perforce Helix Server](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-helix)
