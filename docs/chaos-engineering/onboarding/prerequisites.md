@@ -8,7 +8,7 @@ redirect_from:
 - /docs/chaos-engineering/get-started/prerequisites/
 ---
 
-This topic describes the prerequisites and steps to execute chaos experiments on your target environments.
+This topic describes the [prerequisites](#permissions-required) that you need to fulfill before executing chaos experiments and [steps to execute chaos experiments on your target environments](#steps-to-create-and-execute-a-hce-experiment).
 
 ## Permissions required
 
@@ -39,4 +39,6 @@ You can execute a chaos experiment by:
 5. [Creating a demo application](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#creating-a-demo-application-and-observability-infrastructure): You can either create a demo application or use your application on which you can execute chaos experiments.
 6. [Creating and running a chaos experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md): Once you have set up your application, you can decide which resources to target and execute the chaos experiments on.
 
-The steps mentioned earlier required some reading and exploring, but if you want a head start to your chaos journey, enter [automated onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding) and [guided onboarding](/docs/chaos-engineering/onboarding/guided-onboarding). These onboarding methods will guide you in creating and executing chaos experiments with the click of a button, without the hassle of explicitly creating environment, infrastructure and other entities!
+The steps mentioned earlier required some reading and exploring, but if you want a head start to your chaos journey, enter [automated onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding) and [guided onboarding](/docs/chaos-engineering/onboarding/guided-onboarding).
+
+These onboarding methods will guide you in creating and executing chaos experiments with the click of a button, without the hassle of explicitly creating environment, infrastructure and other entities!
