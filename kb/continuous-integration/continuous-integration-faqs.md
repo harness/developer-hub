@@ -1524,6 +1524,11 @@ set -e; echo "require_relative '/tmp/engine/ruby/harness/ruby-agent/test_intelli
 
 You can. However, Harness doesn't recommend using Test Intelligence with Rails apps using [Spring](https://github.com/rails/spring).
 
+### Test Intelligence fails with error 'Unable to get changed files list'
+
+This error means that Test Intelligence was not able to retrieve the list of changed files because the depth of the clone is too low and the history of the reference commit is not found.
+To fix this please increase the depth in the clone codebase section to a higher number and try again.
+
 ### Test Intelligence fails due to Bazel not installed, but the container image has Bazel
 
 If your [build tool](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-java-kotlin-scala/#build-tool) is Bazel, and you use a [container image](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-java-kotlin-scala/#container-registry-and-image) to provide the Bazel binary to the **Run Tests** step, your build will fail if Bazel isn't already installed in your build infrastructure. This is because the **Run Tests** step calls `bazel query` before pulling the container image.
