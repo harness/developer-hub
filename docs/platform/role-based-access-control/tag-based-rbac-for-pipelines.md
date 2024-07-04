@@ -37,3 +37,16 @@ Now, you can give users the required access by adding users to a user group and 
 ![](./static/User_group_tag_based_access.png)
 
 Learn more about creating [User groups](./add-user-groups.md) in Harness.
+
+
+## Few important things to note
+
+When working with tag-based Resource Groups, the tag used is the one found in the Harness Metadata for the pipeline.
+
+It is important to note the following when pipelines are stored in Git:
+
+1. Different versions of the pipeline stored in different branches may have different tags.
+2. Updating the tag in the pipeline directly in Git does not update it in Harness.
+3. When you save a different branch of the pipeline in the Harness UI, it updates the tags in the Harness system to match the tags from that specific branch.
+
+This behavior can impact tag-based resource groups. Specifically, a pipeline may enter or exit a group based on the last saved branch from the UI.
