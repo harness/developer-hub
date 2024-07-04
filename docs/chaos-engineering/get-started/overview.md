@@ -80,7 +80,7 @@ HCE doesn't simply focus on fault injection, it helps you set up a fully operati
 
 1. Cloud native approach to chaos engineering which supports declarative definition of experiments and [Git-based chaos artifact sources](/docs/chaos-engineering/features/chaos-hubs/add-chaos-hub.md) (chaos-experiments-as-code).
 2. Extensive fault library and robust suite of [ready-to-use experiments](/docs/chaos-engineering/chaos-faults), with support to construct complex custom experiments with [multiple faults](/docs/chaos-engineering/features/experiments/create-complex-chaos-experiments.md) in the desired order.
-3. Centralized control plane that supports a variety of targets (such as [Kubernetes-based microservices](/docs/chaos-engineering/chaos-faults/kubernetes/kubernetes.md), [cloud services such as [AWS](/docs/chaos-engineering/chaos-faults/aws/aws.md), [Azure](/docs/chaos-engineering/chaos-faults/azure/azure.md), [GCP](/docs/chaos-engineering/chaos-faults/gcp/gcp.md), [Cloud Foundry](/docs/chaos-engineering/chaos-faults/cloud-foundry/cloud-foundry.md)], and [VMware infrastructure](/docs/chaos-engineering/chaos-faults/vmware/vmware)).
+3. Centralized control plane that supports a variety of targets (such as [Kubernetes-based microservices](/docs/chaos-engineering/chaos-faults/kubernetes/kubernetes.md), [cloud services such as [AWS](/docs/chaos-engineering/chaos-faults/aws/aws.md), [Azure](/docs/chaos-engineering/chaos-faults/azure/azure.md), [GCP](/docs/chaos-engineering/chaos-faults/gcp/gcp.md), [Cloud Foundry](/docs/chaos-engineering/chaos-faults/cloud-foundry/cloud-foundry.md)], and [VMware infrastructure](/docs/chaos-engineering/chaos-faults/vmware/vmware.md)).
 
 4. Governance enforcement for chaos experimentation using:
 
