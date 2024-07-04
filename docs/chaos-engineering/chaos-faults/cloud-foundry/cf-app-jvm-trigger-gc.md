@@ -86,12 +86,12 @@ CF app JVM trigger GC:
 	</tr>
   <tr>
     <td> boshDeployment </td>
-    <td> The bosh deployment under which the CF components are being managed. </td>
+    <td> The bosh deployment under which the CF components are managed. </td>
     <td> It can be obtained using the BOSH CLI command <code>bosh deployments</code>. For more information, go to <a href="#bosh-deployment"> BOSH deployment</a>. </td>
   </tr>
   <tr>
     <td> faultInjectorLocation </td>
-    <td> Location of the fault injector with respect to the cloud foundry vms. </td>
+    <td> Location of the fault injector with respect to the Cloud Foundry VMs. </td>
     <td> Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#fault-injector-location"> Fault Injector Location</a>. </td>
   </tr>
 </table>
@@ -101,7 +101,7 @@ CF app JVM trigger GC:
 <VSphereSecrets />
 
 ### BOSH deployment
-The `boshDeployment` input determines the BOSH deployment name under which all the CF resources are being managed. It can be obtained using the BOSH CLI command `bosh deployments`.
+The `boshDeployment` input determines the BOSH deployment name under which all the CF resources are managed. You can obtain it using the BOSH CLI command `bosh deployments`.
 
 The following YAML snippet illustrates the use of this input:
 
@@ -150,9 +150,8 @@ spec:
 ```
 
 ### Fault injector location
-The `faultInjectorLocation` input variable determines the location of the fault injector with respect to the infrastructure.
+The `faultInjectorLocation` input determines the location of the fault injector with respect to the infrastructure. It is the location where the fault-injector utility is executed.
 - It can be local, that is, the same environment used by the infrastructure, or a remote machine.
-- It is where the fault-injector utility executes.
 
 The following YAML snippet illustrates the use of this input:
 
@@ -199,7 +198,7 @@ spec:
 ```
 
 ### Fault injector port
-The `faultInjectorPort` input variable determines the port used for the fault-injector local server.
+The `faultInjectorPort` input determines the port used for the fault-injector local server.
 
 The following YAML snippet illustrates the use of this input:
 

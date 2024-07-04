@@ -12,10 +12,10 @@ CF app JVM method latency injects latency into a method of a Java based Cloud Fo
 
 ## Use cases
 CF app JVM method latency:
-- Mimic slow external services to test app behavior under load.
-- Identify performance bottlenecks by introducing controlled delays.
-- Uncover issues caused by tight timeout thresholds during development.
-- Prepare your application to handle increased response times.
+- Mimics slow external services to test app behavior under load.
+- Identifies performance bottlenecks by introducing controlled delays.
+- Uncovers issues caused by tight timeout thresholds during development.
+- Prepares your application to handle increased response times.
 
 ### Mandatory tunables
 <table>
@@ -139,7 +139,7 @@ spec:
 ```
 
 ### BOSH deployment
-The `boshDeployment` input determines the BOSH deployment name under which all the CF resources are being managed. It can be obtained using the BOSH CLI command `bosh deployments`.
+The `boshDeployment` input determines the BOSH deployment name under which all the CF resources are managed. You can obtain it using the BOSH CLI command `bosh deployments`.
 
 The following YAML snippet illustrates the use of this input:
 
@@ -188,9 +188,8 @@ spec:
 ```
 
 ### Fault injector location
-The `faultInjectorLocation` input variable determines the location of the fault injector with respect to the infrastructure.
+The `faultInjectorLocation` input determines the location of the fault injector with respect to the infrastructure. It is the location where the fault-injector utility is executed.
 - It can be local, that is, the same environment used by the infrastructure, or a remote machine.
-- It is where the fault-injector utility executes.
 
 The following YAML snippet illustrates the use of this input:
 
@@ -237,7 +236,7 @@ spec:
 ```
 
 ### Fault injector port
-The `faultInjectorPort` input variable determines the port used for the fault-injector local server.
+The `faultInjectorPort` input determines the port used for the fault-injector local server.
 
 The following YAML snippet illustrates the use of this input:
 
