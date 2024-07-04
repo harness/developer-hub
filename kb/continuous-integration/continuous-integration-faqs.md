@@ -514,6 +514,62 @@ Yes, all the kaniko flags are supported and they can be added as the environment
 
 Adding additional Docker options when starting the container via a background step is not supported
 
+### Why Harness internal container lite-engine is requesting a huge cpu/memory within the build pod?
+
+Lite-engine consumes very minimal compute resource however it reserves the resource for the other step containers. More details about how the resources are allocated within the build pod can be reffered in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/)
+
+### Why the build pod status is showing "not ready" in k8s cluster while the build is running?
+
+Each step container will be terminated as soon the step execution has been completed. Since there could be containers in terminated state while the build is running, k8s would show the pod state as "not ready" which can be ignored.
+
+### We have a run step configured with an image that has few scripts in the container filesystem. Why don’t we see these files when Harness is starting this container during the execution?
+
+This could happen if you are configuring the shared path in the CI stage with the same path or mount any other type of volumes in the build pod at the same path.
+
+### Can we add barriers in CI stage?
+
+No, barrier is not currently supported in CI stage
+
+### How to set the kaniko flag "--reproducible" in the build and push step? 
+
+Kaniko flags can be configured as environment variables in build and push step. More details about the same can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/#environment-variables-plugin-runtime-flags)
+
+### How can we configure the build and push to ECR step to pull the base image configured in dockerfile from a private container registry?
+
+You can configure the base connector in the build and push step and Harness will use the creds configured in this connector to pull the private image during runtime
+
+### Does the output variable configured in the run step get exported even if the step execution fails?
+
+No, the output variable configured in the run step does not get exported if the step execution fails
+
+### Why is the Exporting of output variable from a run step is failing with the error "* stat /tmp/engine/xxxxxxx-output.env: no such file or directory" even after the step executed successfully ?
+
+When an output variable is configured in a run step, Harness adds a command at the end of the script to write the variable's value to a temp file, from which the output variable is processed. The error occurs if you manually exit the script with 'exit 0' before all commands are executed. Avoid calling 'exit 0' in the script if you are exporting an output variable.
+
+### Can we use docker compose to start multiple containers when we run the build in k8s cluster? 
+
+You can use docker compose while running the build in k8s cluster however you need to run the dind as a background step as detailed in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/)
+
+### When we start a container by running docker run command from a run step, does the new container get the environment variables configured in the run step?
+
+No, ENV variables configured in the run step will not be available within the new container, you need to manually pass the required  ENV variable while starting the container
+
+### How can we trigger a CI pipeline from a specific commit?
+
+We can not execute the CI pipeline from a specific commit however you could create a branch or tag based on the required commit and then run the pipeline from the new branch or tag
+
+### How can we use the jfrog docker registry in the build and push step to docker step?
+
+You can configure the docker connector using the jfrog docker registry URL and then use this connector in the build and push to docker step.
+
+### Why is the Build and Push to Docker step configured with the JFrog Docker connector not using the JFrog endpoint while pushing the image, instead defaulting to the Docker endpoint?
+
+This could happen when the docker repository in the build and push step is not configured with the FQN. The repository should be configured with the FQN including the jfrog endpoint.
+
+### Why the execution is getting aborted without any reason and the "applied by" field is showing trigger?
+
+This could happen when the PR/push trigger is configured with the 'Auto-abort Previous Execution' option, which will automatically cancel active builds started by the same trigger when a branch or PR is updated
+
 
 ## Self-signed certificates
 
@@ -1008,6 +1064,10 @@ Depending on your tag naming convention, if it is possible to write a regex that
 
 For manual tag builds, you need to enter the tag manually at runtime.
 
+### How can we set ENV variable for the git clone step as there is no option available in the UI to set the ENV variable for this step?
+
+You could configure the stage variables with the necessary values which will be set as ENV variable in all the steps within that stage.
+
 ## SCM status updates and PR checks
 
 ### Does Harness supports Pull Request status updates?
@@ -1096,6 +1156,26 @@ Harness only sends pipeline statuses to your PRs. You must configure branch prot
 ### Troubleshoot Git event (webhook) triggers
 
 For troubleshooting information for Git event (webhook) triggers, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).
+
+### Can we configure the CI pipeline to send the status check for the entire pipeline instead of sending it for individual stage?
+
+Currently, the status check is sent for each CI stage execution and it can not be configured to send one status check for the entire pipeline when you have multiple CI stages within the pipeline.
+
+### How to create a pull request in github using a CI pipeline?
+
+There isn't a built-in step available to create a PR in Git Hub from a Harness pipeline. We could run a custom script in a shell script step to invoke the GitHub API to create PR. A sample command is given below
+
+```
+curl -X POST -H "Authorization: token YOUR_ACCESS_TOKEN" \
+-H "Accept: application/vnd.github.v3+json" \
+-d '{
+"title": "Pull Request Title",
+"head": "branch-to-merge-from",
+"base": "branch-to-merge-into",
+"body": "Description of the pull request"
+}' https://api.github.com/repos/OWNER/REPOSITORY/pulls
+```
+
 
 ## Pipeline initialization and Harness CI images
 
@@ -1362,6 +1442,18 @@ No. Currently, **Build and Push** steps don't support build secrets.
 
 [You can use the Build and Push to Docker step to build and push to JFrog Docker registries.](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-jfrog)
 
+### Why build and push to ECR step is failing with the error ```failed to create docker config: Username must be specified for registry```?
+
+This could happen when you have the build and push to ECR step with a base connecter which is configured with anonymous auth type. Base connector configured in the build and push to ECR step should be an authenticated connector
+
+### Why is the kaniko flags with the built-in in build and push step is not working when we run the build on Harness cloud?
+
+The build and push step doesn’t use kaniko while running the build on Harness cloud instead it uses drone-docker plugin hence the kaniko flags wont work
+
+### Does Harness have an artifact repository where the artifacts generated in the CI stage can be pushed and then use them in the subsequent CD stages?
+
+Harness currently doesn't provide a hosted artifact repository however you can push the artifact to the other popular artifact repos. More details about the same can be referred in the [doc](https://developer.harness.io/docs/category/uploaddownload-artifacts)
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
@@ -1550,6 +1642,10 @@ If you encounter errors with Python TI, make sure that:
 ### Does Test Intelligence support dynamic code?
 
 Harness doesn't recommend using TI with Ruby projects using dynamically generated code or Python projects using dynamic loading or metaclasses.
+
+### Why is the cache intelligence is not saving the cache from the default yarn location?
+
+This could happen if you have a custom path added in the cache intelligence config. If you want the YARN cache to be picked from the default location, make sure you don’t configure cache intelligence with a custom path
 
 ## Script execution
 
@@ -1896,6 +1992,11 @@ Harness generates a cache key from a hash of the build lock file (such as` pom.x
 ### Is there any API available for Cache Intelligence?
 
 Yes. Go to [Cache Intelligence API](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-intelligence-api).
+
+### Does the execution save the cache in Harness side when the cache intelligence option is configured in the build running in self hosted infra?
+
+No, You need to configure the S3 compatible  object store in your infra to be used as the cache storage. More details about the same can be referred in the [doc](https://developer.harness.io/docs/platform/settings/default-settings/#continuous-integration) 
+
 
 ## Background steps and service dependencies
 
