@@ -1,6 +1,6 @@
 ---
 title: Connectors + Roles For AWS CCM
-description: Automatically Create Harness connectors for accounts and IAM roles in each AWS account
+description: Automatically create Harness connectors for accounts and IAM roles in each AWS account
 ---
 
 # Overview

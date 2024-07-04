@@ -368,7 +368,7 @@ In the above example the the `Project Identifier` field once selected auto popul
 ![](./static/layout.png)
 ![](./static/custom-plugin-view.png)
 
-- Added the support to push code to the existing main branch of git providers in the [Create Repo step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#3-create-repo) under [Developer Portal Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage), this stage is presently behind the feature Flag `IDP_ENABLE_STAGE`. To enable the feature, please reach out to IDP team contact [Harness Support](mailto:support@harness.io). [IDP-1944]
+- Added the support to push code to the existing main branch of git providers in the [Create Repo step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#3-create-repo) under [Developer Portal Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage). To enable the feature, please reach out to IDP team contact [Harness Support](mailto:support@harness.io). [IDP-1944]
 
 #### New features and enhancements
 
@@ -479,7 +479,7 @@ In this release, we're excited to unveil features like the HTTP actions support 
 - Added a [step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#6-register-catalog) to register software components in IDP catalog.[IDP-1438]
 - Added a [step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#3-create-repo) to create a repository in your git provider and push contents along with catalog-info.yaml. [IDP-1436]
 
-This feature is behind the feature flag `IDP_ENABLE_STAGE`, also has dependency on other services which might delay it's releases until those services are on their latest release. To enable the feature, contact [Harness Support](mailto:support@harness.io).
+
 
 #### New features and enhancements
 
