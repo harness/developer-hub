@@ -29,6 +29,8 @@ We support multiple connectors with different hostname for a single git provider
 
 Backstage doesn't support SSH auth type for integrations, hence only HTTP connection is supported for all the git provider based connectors in IDP.
 
+API calls in IDP are used to fetch YAML data, last commit SHA, and detect any new changes. SSH authentication cannot be used for making these API calls; it is only used for cloning repositories. Therefore, the main Git connector for IDP Git integration must support API requests, hence HTTP is only supported
+
 :::
 
 ## CI/CD providers that IDP supports
