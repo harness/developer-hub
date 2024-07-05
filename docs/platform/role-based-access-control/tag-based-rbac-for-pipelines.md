@@ -11,7 +11,7 @@ Let's discuss this with an example:-
 Suppose you manage three pipelines for different environment each i.e Dev, QA, Production and you want specific users in each environment's pipeline to have a particular access. For example, you want Developers to have Pipeline execute access to Dev, QA pipelines or any other relevant pipelines and Devops Admins to have pipeline execute and edit permission or admin permissions to Production related pipelines. You can have multiple pipelines and you don't want to add each pipelines in a resource group and and give permissions to users. 
 
 
-Now, we have pipelines with tag **dev_only** that deploy to Dev rekated environment and you need to provide permission to Developers to these pipelines. Let's see how you can do this with help of tags:-
+Now, we have pipelines with tag **dev_only** that deploy to Dev related environment and you need to provide permission to Developers to these pipelines. Let's see how you can do this with help of tags:-
 
 
 1. Tag your pipelines that deploy to the Dev environment with the tag **dev_only**.
