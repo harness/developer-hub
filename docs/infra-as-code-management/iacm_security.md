@@ -29,7 +29,7 @@ The operational model flow is comprised of three components:
 All executed commands honor your defined backend, which determines where your infrastructure state is stored and how terraform and tofu operations such as `apply` or `destroy` are executed.
 
 :::note default backend
-If no plan file is specified, IaCM will apply its own backend implicitly. For more details, go to [Terraform local backend](https://developer.hashicorp.com/terraform/language/settings/backends/local) or learn how to [initialize your remote backend](https://developer.harness.io/docs/infra-as-code-management/remote-backends/init-configuration).
+If no plan file is specified, IaCM will apply its own backend implicitly.
 :::
 
 </TabItem>
