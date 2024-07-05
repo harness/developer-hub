@@ -35,7 +35,7 @@ README.md @ravilach
 /docs/continuous-integration/ @nofarblue @rustd
 
 # CODE Docs
-/docs/code-repository/ @pwolf-harness @hitesharinga
+/docs/code-repository/ @pwolf-harness @hitesharinga @dewan-ahmed
 
 # STO Docs
 /docs/security-testing-orchestration/ @douglas-j-bothwell
@@ -132,7 +132,7 @@ README.md @ravilach
 /release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed
 
 # CODE Release Notes
-/release-notes/code-repository.md @pwolf-harness @hitesharinga
+/release-notes/code-repository.md @pwolf-harness @hitesharinga @dewan-ahmed
 
 # Delegate Release Notes
 /release-notes/delegate.md @brian-f-harness @saifeemustafaqharness
@@ -211,7 +211,7 @@ src/components/Roadmap/data/cdData.ts @krishi0408 @neelanjan00 @SmritiSatya
 src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed
 
 #Code Roadmap
-src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga
+src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga @dewan-ahmed
 
 #FF Roadmap
 src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
