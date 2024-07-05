@@ -29,7 +29,7 @@ README.md @ravilach
 # Documentation ###
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ @krishi0408 @roshnisarangadharan @SushrutHarness
+/docs/continuous-delivery/ @krishi0408 @SushrutHarness
 
 # Continuous Integration Docs
 /docs/continuous-integration/ @nofarblue @rustd
@@ -77,7 +77,7 @@ README.md @ravilach
 # FirstGen Docs ###
 
 # CD Docs
-/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @roshnisarangadharan
+/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness
 
 # Platform Docs
 /docs/category/platform-firstgen/ @brian-f-harness @saifeemustafaqharness
@@ -91,7 +91,7 @@ README.md @ravilach
 # FAQ Docs ###
 
 # CD FAQs
-/docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness @roshnisarangadharan
+/docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness
 
 # FF FAQs
 /docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos @jenniferopal
@@ -109,7 +109,7 @@ README.md @ravilach
 /docs/faqs/harness-delegate-faqs/ @brian-f-harness @saifeemustafaqharness
 
 # GitEx FAQs
-/docs/faqs/git-exp-vs-config-as-code/ @krishi0408 @SushrutHarness @roshnisarangadharan
+/docs/faqs/git-exp-vs-config-as-code/ @krishi0408 @SushrutHarness
 
 # SMP FAQs
 /docs/faqs/self-managed-ee-faq/ @brian-f-harness @saifeemustafaqharness
@@ -117,7 +117,7 @@ README.md @ravilach
 # Release Notes ###
 
 # CD Release Notes
-/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @roshnisarangadharan
+/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness
 
 # CCM Release Notes
 /release-notes/cloud-cost-management.md @rdsoze
@@ -129,7 +129,7 @@ README.md @ravilach
 /release-notes/continuous-error-tracking.md @M-Tsur
 
 # CI Release Notes
-/release-notes/continuous-integration.md @nofarblue @rustd
+/release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed
 
 # CODE Release Notes
 /release-notes/code-repository.md @pwolf-harness @hitesharinga
@@ -167,10 +167,10 @@ README.md @ravilach
 /kb/ @deepanshuHarness
 
 # CI KB
-/kb/continuous-integration/ @nofarblue @rustd @deepanshuHarness
+/kb/continuous-integration/ @nofarblue @rustd @deepanshuHarness @dewan-ahmed
 
 # CD KB
-/kb/continuous-delivery/ @krishi0408 @SushrutHarness @roshnisarangadharan
+/kb/continuous-delivery/ @krishi0408 @SushrutHarness
 
 #Platform KB
 /kb/platform/ @saifeemustafaqharness @brian-f-harness
@@ -202,13 +202,13 @@ README.md @ravilach
 src/components/Roadmap/data/ccmData.ts @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
 
 #CD Roadmap
-src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @roshnisarangadharan
+src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness
 
 #CE Roadmap
 src/components/Roadmap/data/cdData.ts @krishi0408 @neelanjan00 @SmritiSatya
 
 #CI Roadmap
-src/components/Roadmap/data/ciData.ts @nofarblue @rustd
+src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed
 
 #Code Roadmap
 src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga
