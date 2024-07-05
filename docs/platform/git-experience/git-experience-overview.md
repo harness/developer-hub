@@ -117,8 +117,11 @@ For more information, go to [Default settings](/docs/platform/settings/default-s
 
 ### Repo Listing
 
-For a certain connector you can search upto **1000 repositories** with a support of infinite scroll.
-If you are not able to find the repository in the list you have an option to add the repository.
+:::info note
+Currently this feature is behind feature flag `CDS_LIST_REPO_V2 `. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+For a certain connector, you can now search for repositories with support for infinite scroll. Simply enter any keyword to see related repositories listed. If you can't find the repository you're looking for, you can also add it manually.
 
 ![](./static/repolisting_add.png)
 
@@ -127,8 +130,7 @@ If the repository actually exists it will fetch the branch name, if not it will 
 ![](./static/repolisting_error.png)
 
 :::important
-1. Search in repo listing is not supported for Azure Repos.
-2. Please note that search in repo listing is only available while creating remote entities.
+Search in repo listing is not supported for Azure Repos.
 :::
 
 ### Branch Listing
@@ -137,7 +139,7 @@ If the repository actually exists it will fetch the branch name, if not it will 
 Currently this feature is behind feature flag `CDS_LIST_BRANCH_V2 `. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-It allows you to search upto **1000 branches** in a given repository while creating remote entitites with a support of infinite scroll.
+You can now search for branches in a given repository with support for infinite scroll while creating remote entities. Simply enter any keyword to see related branches listed. If you can't find the branch you're looking for, you can also add it manually.
 
 :::important
 1. Search in branch listing is not supported for Github and Github Apps.
