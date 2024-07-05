@@ -23,6 +23,26 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## June 2024
 
+### Version 1.40.0
+
+#### New features and enhancements
+
+- Adds a new Kubernetes pod fault, [pod IO mistake](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-mistake) that causes files to read or write an incorrect value. (CHAOS-5916)
+
+- Adds proxy support for Windows chaos infrastructure. (CHAOS-5859)
+
+- Adds support to install Windows chaos infrastructure offline. (CHAOS-5833)
+
+- Unifies chaos injection by introducing a dumb agent to invoke user action and pass the results of the chaos experiment to the control plane. (CHAOS-5610)
+
+- Implements AWS FIS generic experiment that helps users execute and monitor any AWS FIS template. (CHAOS-5418)
+
+- Converts the default health check probes to `type:inline` from `type:source` for Kubernetes infrastructure to improve the execution speed of chaos experiments. (CHAOS-4348)
+
+#### Fixed issues
+
+- Fixed an issue where an experiment in the `Error` state would not finish, and be in a state of infinite run timestamp. (CHAOS-5577)
+
 ### Version 1.39.11
 
 #### Fixed issues
