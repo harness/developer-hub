@@ -23,7 +23,7 @@ To use the approval plan step, perform the following steps:
 
 <Tabs>
 <TabItem value="Interactive guide">
-The following example adds an **IaCM Approval** step to a provision pipeline, placing the approval step between `terraform plan` and terraform apply`.
+The following example adds an **IaCM Approval** step to a provision pipeline, placing the approval step between `terraform plan` and `terraform apply`.
 
 <iframe 
     src="https://app.tango.us/app/embed/3efdb37e-0d97-4875-a0b2-91fd4442cbe9" 
