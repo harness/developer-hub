@@ -256,14 +256,9 @@ Deactivating a user removes them from *all provisioned apps*, including Harness.
 
 To reactivate a deactivated user, go to the user's profile, select **More Actions**, and then select **Activate**.
 
-## Setting the Default Experience
-Environment Administrators may wish to set the default generation landing page for their users.  This is to ensure the correct Harness Experience is being provided to each user.  For example, if an administrator would like all users to experience the **Harness Next Generation** interface
+### Set the default experience
 
-1. Go to the **Account Settings**, and select **Settings**
-
-2. Under **Account Details**, there is a field called **Default Experience** that environment administrators can see and change.  Click on Change and select the desired experience and click save.
-
-   ![](./static/defaultexperience.png)
+Environment administrators can set the default Harness generation landing page, FirstGen or NextGen, for their users to ensure the correct Harness Experience is provided to each user. For more information, go to [Account details](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts#account-details).
 
 ## I already have a Harness FirstGen Okta integration
 
