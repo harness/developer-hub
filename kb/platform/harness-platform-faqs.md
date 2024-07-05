@@ -231,7 +231,11 @@ The `parentIdentifier` in the context of creating an API key refers to the Paren
 
 ### How can I get a list of all users and their roles?
 
-You can use the Get aggregated users API. This will provide with complete details of the users including the role they have. For more information, go to [Get aggrgated users](https://apidocs.harness.io/tag/User#operation/getAggregatedUsers) in the API documentation.
+You can use the Get aggregated users API. This will provide with complete details of the users including the role they have. For more information, go to [Get aggregated users](https://apidocs.harness.io/tag/User#operation/getAggregatedUsers) in the API documentation.
+
+### Does Harness have an API that to check deployment status?
+
+Yes, you can use the [Pipeline Execution Details API](https://apidocs.harness.io/tag/Pipeline-Execution-Details).
 
 ### We have hundreds of users that were granted the admin role on the account level as individuals. How can we remove this role?
 
@@ -358,7 +362,7 @@ Harness imposes a rate-limiting policy on API requests to ensure system stabilit
 
 No, Harness doesn't currently support this functionality.
 
-You can use the 'getUsers` API to get a list of users that you can parse to create a CSV file. For more information, go to [Get users](https://apidocs.harness.io/tag/User#operation/getUsers) in the API documentation.
+You can use the `getUsers` API to get a list of users that you can parse to create a CSV file. For more information, go to [Get users](https://apidocs.harness.io/tag/User#operation/getUsers) in the API documentation.
 
 ### How many types of API tokens are there?
 
@@ -991,7 +995,6 @@ gRPC connections are not required for delegate version 23.12.81803 and later.
 
 Harness Delegates do not require root account access. Kubernetes and Docker delegates do, however, run as root by default. If you do not need to install applications during the initialization process (`INIT_SCRIPT`), you can use a non-root account or install the application without the delegate.
 
-
 ### Is the minimal delegate free of critical vulnerabilities?
 
 Harness aims to minimize critical/high vulnerabilities within this image. Achieving complete mitigation isn't always possible due to the continual discovery of vulnerabilities in third-party libraries/tools without immediate remediation.
@@ -1170,6 +1173,10 @@ Yes, you can run all the steps on one specific delegate pod. For more informatio
 ### How do I install a Harness Delegate using Azure ACI?
 
 You can use the following repository as a sample to install it through Terraform. (Terraform Example)[https://gist.github.com/rssnyder/40ebf23bc352a2fbf75005239367abcd].
+
+### How can I restart a delegate?
+
+You can restart a delegate by deleting the pod.
 
 ### How often does Harness upgrade the kubectl binary version within the delegate?
 
@@ -3297,14 +3304,3 @@ The minimum supported screen resolution is 1440x900.
 ### Can I adjust the default width of step logs in the browser GUI? They currently open at around 25% of the screen width.
 
 Currently, there are no settings to modify the default GUI view setup. You can manually expand and adjust it as needed, but it resets to default when you refresh or switch to another execution.
-
-
-### Is user can export the list of all user present in harness?
-Yes, You can use this API to get the whole user list: https://apidocs.harness.io/tag/User#operation/getUsers
-
-### Does Harness have an API that can be used to check the status of the deployment?
-Yes, Harness has an API to check the status of the deployment. You can check here for that: https://apidocs.harness.io/tag/Pipeline-Execution-Details
-
-
-### How can user restart a delegate?
-User can restart the delegate by deleting the pod itself.
