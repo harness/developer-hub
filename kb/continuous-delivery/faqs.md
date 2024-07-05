@@ -3165,6 +3165,26 @@ export INFRA_IDS=$( echo '<+inputSet>'| jq -r '.pipeline.stages[0].parallel[0].s
 
 This is not a permissions issue. Harness does not support viewing account-level or organization-level environments within the project view.
 
+#### In trigger, Does a pull request event occur for a forked repository?
+
+No, pull request events do not occur on the forked repository.
+
+#### How can we create a trigger on a fork event? 
+
+You can create a custom trigger to initiate a pipeline for a fork event. First, enable the Webhook setting to capture the event logs for the fork. Once enabled, you will be able to capture the event logs for every fork on the repository, and based on the payload, trigger conditions can be set.
+
+#### How can we delete Artifactory images from JFrog using Harness?
+
+ You can use Jfrog [API] (https://jfrog.com/help/r/jfrog-rest-apis/delete-item) to delete artifacts. For calling this API you can either use HTTP step or a shell script.
+
+#### In the Build dashboard, We have selected "Builds and Repositories" but do not have the option to add Environment and Service name filters, what could be the issue?
+
+As Environment and Services are not part of the Build stage, they are not shown in the Build and Deployment dashboard. To display Environment and Services, you will need to use the Deployments and Services dashboard.
+
+#### Is there a way to fetch audit event to a CSV or any other format.
+
+You can use [API](https://apidocs.harness.io/tag/Audit#operation/getAuditEventList) to fetch the audit events, which can then be further processed into CSV or other formats.
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
