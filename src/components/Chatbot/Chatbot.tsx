@@ -8,14 +8,25 @@ import {
   getXChatbotKeyCookie,
 } from "./helpers";
 import Tooltip from "rc-tooltip";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { AnalyticsBrowser } from "@segment/analytics-next";
 
 interface IAgent {
   text: string;
   isBot: boolean;
   default?: boolean;
 }
+import { AidaActions, AidaClient } from "../Telemetry/TememetryConstants";
 
 const Chatbot = () => {
+  const {
+    siteConfig: { customFields },
+  } = useDocusaurusContext();
+
+  const analytics = AnalyticsBrowser.load({
+    writeKey: customFields.SEGMENT_API_KEY as string,
+  });
+
   const [show, setShow] = useState(false);
   const [name, setName] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,7 +46,7 @@ const Chatbot = () => {
   ]);
 
   useEffect(() => {
-    const cookie = getXChatbotKeyCookie();  
+    const cookie = getXChatbotKeyCookie();
     const urlParams = new URLSearchParams(window.location.search);
     const chatbot = urlParams.get("chatbot");
     if (chatbot === "true") {
@@ -65,7 +76,7 @@ const Chatbot = () => {
           default: true,
         },
       ]);
-    }else{
+    } else {
       setMessages([
         {
           text: "Accelerate your software delivery with the powerful capabilities of Harness’s Platform.",
@@ -75,7 +86,7 @@ const Chatbot = () => {
           text: "How can I help?",
           isBot: true,
         },
-      ])
+      ]);
     }
   }, [isLoggedIn]);
 
@@ -105,6 +116,12 @@ const Chatbot = () => {
         cookie.token
       );
 
+      if (response) {
+        analytics.track(AidaActions.AnswerReceived, {
+          inputText,
+          answer: response,
+        });
+      }
       setMessages((prevMessages) => [
         ...prevMessages,
         { text: response, isBot: true },
@@ -148,6 +165,11 @@ const Chatbot = () => {
   }
 
   function toggleChatWindow() {
+    if (!show) {
+      analytics.track(AidaActions.AIDAInteractionStarted, {
+        aidaClient: AidaClient.CS_BOT,
+      });
+    }
     setShow(!show);
   }
 
@@ -164,9 +186,7 @@ const Chatbot = () => {
   };
 
   function handleSignIn() {
-    window.location.href =
-      // "http://localhost:5000/sso.html?action=login&src=developerhub&return_to=http://localhost:8888/?chatbot=true";
-    window.location.href =
+    window.location.href = window.location.href =
       "https://app.harness.io/sso.html?action=login&src=developerhub&return_to=https://developer.harness.io/?chatbot=true";
   }
 

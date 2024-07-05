@@ -62,7 +62,6 @@ export default function Home(): JSX.Element {
 
           <HomepageUniversity />
         </div>
-        <Chatbot />
       </Layout>
     </MDXContent>
   );

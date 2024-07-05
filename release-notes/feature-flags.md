@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-06-18T16:19:25
+date: 2024-07-01T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,23 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: June 18, 2024
+#### Last updated: July 1, 2024
+
+## July 2024
+
+### Java SDK
+
+#### Version 1.6.1
+
+**Fixed issues**:
+ - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11654)
+
+### Ruby SDK
+
+#### Version 1.3.1
+
+**Fixed issues**:
+ - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11657)
 
 ## June 2024
 
@@ -48,6 +64,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Fixed an issue on Android where the SDK would crash with the error,
   `java.lang.IllegalStateException: Reply already submitted`, if the SDK was closed and re-initialised multiple times within quick successions. (FFM-11625, ZD-64818)
 
+### Golang SDK
+
+#### Version 0.1.24
+
+**Fixed issues**:
+ - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11653)
+ 
+**New features and enhancements**:
+ - Bumped `go-retryablehttp` from 0.7.4 to 0.7.7.
+
 ### .NET SDK
 
 #### Version 1.7.0
@@ -78,6 +104,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Node.js SDK
 
+#### Version 1.8.2
+
+**Fixed issues**:
+ - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11656)
+
 #### Version 1.8.1
 
 **Fixed issues**:
@@ -89,6 +120,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Global Axios settings are no longer configured by the SDK, which could override Axios settings used elsewhere in an application.  The default timeout is `30s` but can be changed using options within `axiosTimeout`. See: ['Available Options' in the Node.js further reading docs in the GitHub repo](https://github.com/harness/ff-nodejs-server-sdk/blob/main/docs/further_reading.md#available-options). (FFM-9097)
  - Added SDK support for `AND/OR` rules (Please note that this feature is not GA yet). (FFM-11243)
  - The `target-segments v2-rule` parameter has been added and ready to use. (FFM-11364)
+
+### Python SDK
+
+#### Version 1.6.2
+
+**New features and enhancements**:
+ - Bumped `requests` from 2.31.0 to 2.32.0.
+
+**Fixed issues**:
+ - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11656)
+ - Fixed error logging when metrics are processed for targets without any attributes. (FFM-11655)
 
 ## May 2024
 
@@ -618,7 +660,7 @@ This is a major hardening effort of the SDK to improve its overall reliability:
 
  - The React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained. 
 
-We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK, please refer to the [React SDK Documentation](https://developer.harness.io/docs/feature-flags/ff-sdks/client-sdks/react-client/).
+We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK, please refer to the [React SDK Documentation](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/client-sdks/react-client).
 
 ## November 2023
 
@@ -740,7 +782,7 @@ Fixed issues
 
 New features and enhancements
 
-- [Flag cleanup automation](https://developer.harness.io/docs/feature-flags/ff-creating-flag/manage-stale-flags/) beta available to all customers. This feature helps remove stal flags from your code automatically.
+- [Flag cleanup automation](https://developer.harness.io/docs/feature-flags/use-ff/ff-creating-flag/manage-stale-flags) beta available to all customers. This feature helps remove stal flags from your code automatically.
 
 Fixed Issues
 
@@ -750,7 +792,7 @@ Fixed Issues
 
 #### Version 0.1.13
 
- - Added codes to aid in SKD troubleshooting. [More info in the SDK docs.](https://developer.harness.io/docs/feature-flags/ff-sdks/server-sdks/feature-flag-sdks-go-application/#troubleshooting)
+ - Added codes to aid in SKD troubleshooting. [More info in the SDK docs.](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/server-sdks/feature-flag-sdks-go-application#troubleshooting)
  - Enhanced reporting of evaluation errors 
 
 ### Javascript SDK

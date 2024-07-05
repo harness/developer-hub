@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-06-24T10:00
+date: 2024-07-01T10:00
 sidebar_position: 4
 ---
 
@@ -48,6 +48,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## June 2024
+
+### Version 24.07.82905 <!--  July 1, 2024 -->
+
+#### Hotfix
+
+- Reduced the time for missing heartbeats for delegates before the liveness probe fails from 15 mins to 5 mins. (PL-52037)
 
 ### Version 24.06.83304 <!--  June 24, 2024 -->
 

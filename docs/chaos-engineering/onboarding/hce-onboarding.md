@@ -9,7 +9,7 @@ This topic describes the typical steps to execute a chaos experiment, and delves
 ## Before you begin
 
 * [What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
-* [Delegate-driven Harness infrastructure](/docs/chaos-engineering/onboarding/harness-infra/harness-infra.md)
+* [Delegate-driven Harness infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/harness-infra.md)
 * [Key concepts](/docs/chaos-engineering/architecture-and-security/architecture/components)
 
 :::tip
@@ -43,7 +43,7 @@ You can execute chaos experiments without explicitly installing the environment 
 
 :::tip
 - Previously, HCE provided a dedicated chaos infrastructure to execute chaos experiments. With the current updates, the `chaos-runner` is transient and you can execute chaos experiments by installing **Harness delegate**, thereby eliminating the need to install Harness chaos infrastructure and other additional components.
-- Go to [Harness Delegate-driven infrastructure](/docs/chaos-engineering/onboarding/harness-infra/harness-infra.md) to know more.
+- Go to [Harness Delegate-driven infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/harness-infra.md) to know more.
 - Once you have installed Harness delegate, you can reuse it to execute experiments, [discover services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery), [create network maps](/docs/chaos-engineering/features/network-maps/intro-network-map) and so on.
 :::
 

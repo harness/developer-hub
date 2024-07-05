@@ -1,0 +1,13 @@
+{
+  "position": 8,
+  "label": "HCE certification",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"HCE certification"
+   },
+  "customProps": {
+    "description": "HCE certification"
+  }
+}

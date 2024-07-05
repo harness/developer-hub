@@ -41,7 +41,7 @@ Chaos rollback causes all the target resources in an experiment to re-attain the
 - In the rare scenario where the revert of chaos itself also leads to an error, an appropriate error message is logged in the experiment log for the manual intervention of the user.
 
 ## Fault status
-Fault status describes the status of the fault executed as a part of the chaos experiment. A fault can have 0, 1, or more [probes](/docs/chaos-engineering/features/probes/overview) associated with it. Other steps in a chaos experiment include creating and cleaning up resources.
+Fault status describes the status of the fault executed as a part of the chaos experiment. A fault can have 0, 1, or more [probes](/docs/chaos-engineering/features/resilience-probes/overview) associated with it. Other steps in a chaos experiment include creating and cleaning up resources.
 
 The fault status in a chaos experiment can be in 6 different states. The fault goes from being in the **running** or **stopped** or **skipped** state to **completed** or **completed with error** or **error** state.
 

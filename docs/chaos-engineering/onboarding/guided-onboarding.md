@@ -18,7 +18,7 @@ This topic describes the following operations that constitute the guided onboard
 ## Before you begin, review the following:
 
 * [What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
-* [Delegate-driven Harness infrastructure](/docs/chaos-engineering/onboarding/harness-infra/harness-infra.md)
+* [Delegate-driven Harness infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/harness-infra.md)
 * [Onboarding overview](/docs/chaos-engineering/onboarding/hce-onboarding)
 * [HCE automated onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding)
 * [Create infrastructure before onboarding](/docs/chaos-engineering/onboarding/hce-onboarding#prerequisites-to-automated-and-guided-onboarding)
@@ -153,5 +153,5 @@ Congratulations! You have successfully:
 Don't forget to check other walkthroughs! Some of them are listed below.
 
 * [Run your first chaos experiment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md)
-* [Executing experiments in a sandbox](/docs/chaos-engineering/certifications/run-experiments-in-sandbox.md)
+* [Executing experiments in a sandbox](/docs/chaos-engineering/onboarding/certifications/run-experiments-in-sandbox.md)
 * [Create chaos experiments from scratch](/docs/chaos-engineering/get-started/tutorials/chaos-experiment-from-blank-canvas.md)

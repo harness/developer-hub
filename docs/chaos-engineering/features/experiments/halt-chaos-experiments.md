@@ -1,6 +1,6 @@
 ---
 title: Halt chaos experiments
-sidebar_position: 60
+sidebar_position: 50
 description: Guide to halt chaos experiments
 redirect_from:
 	- /docs/chaos-engineering/configure-chaos-experiments/experiments/halt-chaos-experiments
