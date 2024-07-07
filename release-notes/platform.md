@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-06-28:T10:00:30
+date: 2024-07-09:T10:00:30
 sidebar_position: 3
 ---
 
@@ -76,6 +76,30 @@ The following deprecated API endpoints are longer supported:
 - [GET | PUT | POST | DELETE] api/resourcegroup/\{identifier}
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
+
+## July 2024
+
+### Version 1.45.x<!-- July 9, 2024 -->
+
+#### New features and enhancements
+
+The `terminationGracePeriodSeconds` for delegates has been increased from 10 minutes to one hour. This enhancement allows delegate pods to wait up to an hour before being forcibly terminated during regular scale-downs or upgrades, ensuring smoother transitions and minimizing potential disruptions. (PL-51534, ZD-63917)
+
+Added support for Harness Secret Manager decryption for notifications. Harness-managed secrets used in notifications are now decrypted using harness-manager, enhancing security and functionality. (PL-41880)
+
+#### Fixed issues
+
+AWS Secret Manager Connector could be deleted even if it had existing secrets. This issue has been resolved, and now the AWS Secret Manager Connector cannot be deleted if it contains existing secrets. (PL-52067, ZD-65772)
+
+Resource Scope was deleting projects. Searching for a project and then selecting it would remove all previously selected projects. Improved the project selection process in org scope Resource Groups to match the flow of project selection in account scope Resource Groups. This change resolves the issue and ensures previously selected projects remain intact when new ones are added. (PL-51988, ZD-65620)
+
+Public access on resources was not functioning correctly when a project had multiple public resources. Only the first resource type marked as public was registered internally in Access Control. This issue has been resolved. Now, public access is correctly registered for all resource types marked as public within a project, ensuring that every public resource type works as expected. (PL-51797)
+
+During two-factor login, sending an expired JWT to the manager resulted in a 5xx error code. The issue has been addressed so that an expired JWT now triggers a 4xx error code instead of a 5xx error code. (PL-51553)
+
+SSH type deployment errors were not providing clear information, and delegate tasks continued beyond the maximum broadcast rounds. The issue has been resolved by failing the delegate task after the maximum broadcast rounds are completed. A correct error message will now be displayed to improve clarity. (PL-51241)
+
+New users accepting an invitation and landing on the get-started page encountered a 404 error. Resolved an issue where new users added to an account were directed to a non-existent page under the new navigation. New users will now be redirected to the correct page upon accepting an invitation. (PL-51173)
 
 ## June 2024
 
