@@ -99,6 +99,8 @@ During two-factor login, sending an expired JWT to the manager resulted in a 5xx
 
 SSH type deployment errors were not providing clear information, and delegate tasks continued beyond the maximum broadcast rounds. The issue has been resolved by failing the delegate task after the maximum broadcast rounds are completed. A correct error message will now be displayed to improve clarity. (PL-51241)
 
+<!-- PL-49190 - incomplete RN, engineer has provided no text about the issue or the fix here. [DO NOT MERGE WITHOUT THIS] -->
+
 New users accepting an invitation and landing on the get-started page encountered a 404 error. Resolved an issue where new users added to an account were directed to a non-existent page under the new navigation. New users will now be redirected to the correct page upon accepting an invitation. (PL-51173)
 
 ## June 2024
