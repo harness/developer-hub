@@ -79,7 +79,7 @@ The following deprecated API endpoints are longer supported:
 
 ## July 2024
 
-### Version 1.45.x<!-- July 9, 2024 -->
+### Version 1.45.5<!-- July 9, 2024 -->
 
 #### New features and enhancements
 
