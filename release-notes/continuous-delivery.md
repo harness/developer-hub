@@ -45,6 +45,46 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## July 2024
+
+### Version 1.45.x
+
+
+#### Behavior Changes
+
+- Previously, when the verify step failed, and an action was taken based on the failure strategy or manual intervention, the title was always shown as **Manual Intervention**. (CDS-97985, ZD-65113)
+
+
+   Now, the title is updated to reflect the nature of the intervention:
+   - **Intervention** is displayed when the action is performed through the CV failure strategy configuration.
+
+   - **Manual Intervention** is displayed when the action is performed through manual intervention.
+
+#### Fixed Issue
+
+- The left stage/steps was overlapping with the pipeline UI. The issue is fixed now. (PIPE-20028, ZD-65628)
+- The trigger was getting invoked without an artifact push. The issue is fixed now. (PIPE-19806)
+- Changes made to files in Git repository were not reflected in Harness, this issue is fixed now and it is ensured webhooks events are now correctly triggered, enabling accurate bididrectional synchronization. (PIPE-19654, ZD-64687)
+- When a Template was selected and added to a Pipeline, the UI options was not allowing the user to select **Always use Stable Template**, although this was possible through the YAML by removing the template version. This issue has now been fixed and the Template can be set to **Stable version** in the calling Pipeline. (PIPE-16496, ZD-60750)
+- Extra border was appearing on the settings page during extensive scrolling. The issue is fixed now. (CDS-98494, ZD-65368)
+- While clicking on the **View References** button while deleting a Secret was not properly redirecting the user. The issue is fixed now. (CDS-98487)
+- Discrepancy was observed in text box size between HTTP step and HTTP step template. The issue is fixed now by adding conditional width for pipeline input form and template. (CDS-98094, ZD-65420)
+- While updating the **File Usage** in File Store, although the File usage was getting updated it was still throwing an error that file usage cannot be updated. The issue is fixed now. (CDS-98077, ZD-65347,65353)
+- Even though clusters were selected and listed under specific environment, Gitops Sync task was getting an error **Following clusters were skipped either because clusters were not linked to the environment or not present in harness GitOps**. The issue is fixed now. (CDS-98022)
+- Azure App deployments were not working as expected due to recent log changes by Azure. Azure now provides logs for multiple containers, which affected the integration. The issue is fixed now and includes log pattern recognition that mark the pipeline success based on matching specific pattern in the logs. (CDS-98000, ZD-65289)
+- The license trends graph for the SI model was previously inaccurate due to the queries grouping services based on projects. As per the correct definition, all services should be grouped in a single bucket irrespective of the organization or project. As per the correct definition, all services should be grouped in a single bucket irrespective of the organization or project. (CDS-97966)
+- Git Experience for Overrides was not working, Previously UI tried to fetch the overrides always from default branch and hence failing to get call from UI. The issue is fixed now. (CDS-97874)
+- In Custom template, service and Infrastructure is optional and if Infrastructure is fixed and from UI side if there is no value present it was getting set to undefined that was leading to the removal of  infrastructureDefinitions key and if there is no key it will throw an error. The issue is fixed now by adding a check at Custom stage that if value is empty it will send an empty array. (CDS-97815,ZD-64148,64652)
+- Changes to add `metricThresholds` to NewRelic health monitors are causing Terraform to hang while waiting for an updated response. Despite the hang during the first execution, subsequent executions of the pipeline indicate that the resource was successfully updated. The issue is fixed now by changing the error code. (CDS-97793, ZD-65015)
+- When template YAML contained duplicate keys and was linked to a pipeline, the error message only indicated the presence of duplicate keys without identifying the specific template. The error message has been improved to include the template identifier, enabling customers to locate and fix the issue in the relevant template. (CDS-97785, ZD-64989)
+- Selecting the Deployment type **AWS SAM** and toggling the CV button it was throwing an error due to no template being chosen. The issue is fixed now. (CDS-97771)
+- For Winrm deployment with Command step and auth type as Kerberos if the environment variables contains characters `\b, \v, \c, \f, &` the script execution was failing as we parse the response of script execution to xml string and above characters are illegal xml characters. The issue is fixed and now these characters will be eescaped now and this change is behind the FF `CDS_ESCAPE_ENV_VARS_FOR_WINRM_KERBEROS_NG`. (CDS-97690, ZD-55276,58201,66326)
+- While using a connector in Project scope during pre-flight check, if the check fails connector reference hyperlinks to Connectrr URL at account level due to which it routes to a Not Found Page. This was happening because scope details were missing from the api. The issue is fixed now. (CDS-97593, ZD-64673)
+- Logs were not being uploaded for shell script and some other steps in case the step timed out. The issue is fixed now and shell script now uploads the logs on step timeout. (CDS-97521, ZD-64422)
+- Shell script step was not doing a capability check before assigning the tasks to the delegate. The issue is fixed now and shell script step will now have host capibility check. (CDS-97512, ZD-66326,66349)
+- ServiceNow step was not updating the ticket yet was showing successful and no logs was being shown. The issue is fixed now and console logs and debugging help has been added in the ServiceNow steps. (CDS-97033, ZD-63637)
+- When selecting **Use Template** on an Approval Stage, Steps were showing, but Step Group Templates were not. The issue is now fixed, and users will be able to create a step group template with the approval stage type. These templates can be used in approval stages as step entities. (CDS-96930, ZD-63556)
+
 ## June 2024
 
 ### Version 1.43.5
