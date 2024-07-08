@@ -1,216 +1,128 @@
 ---
-id: pod-api-block
-title: Pod API block
-redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-block
+id: linux-api-block
+title: Linux API block
 ---
 
-Pod API block is a Kubernetes pod-level chaos fault that blocks the API requests through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
+import Ossupport from './shared/note-supported-os.md'
+import FaultPermissions from './shared/fault-permissions.md'
 
-![Pod API Block](./static/images/pod-api-block.png)
+Linux API block injects API block fault into a Linux machine for a specific duration through path filtering. This results in the API not being able to send responses for the requests it receives.
+
+![Linux API block](./static/images/linux-api-block.png)
 
 ## Use cases
-Pod API block:
 - Validates how well your system can handle disruptions in API services for a specific pod.
 - Ensures that your load balancer is effectively distributing traffic to healthy pods in the cluster.
 - Checks if your system's failover mechanisms work as expected when one of the pods becomes unresponsive.
 - Evaluates if your system can gracefully degrade performance when a specific component (in this case, a pod) is experiencing issues.
 
-### Permissions required
+<Ossupport />
 
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
-
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: pod-api-block
-spec:
-  definition:
-    scope: Cluster # Supports "Namespaced" mode too
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["replicasets, daemonsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
-    verbs: ["create", "delete", "get", "list", "patch", "update"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-```
-
-### Prerequisites
-- Kubernetes > 1.17
-- The application pods should be running before and after injecting chaos.
-
-
-### Mandatory tunables
-
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TARGET_CONTAINER </td>
-        <td> Name of the container subject to API block. </td>
-        <td> None. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
-      </tr>
-      <tr>
-        <td> TARGET_SERVICE_PORT </td>
-        <td> Port of the target service.</td>
-        <td> Default: port 80. For more information, go to <a href="#target-service-port">target service port</a>.</td>
-      </tr>
-    </table>
+<FaultPermissions />
 
 ### Optional tunables
-  <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> PATH_FILTER </td>
-        <td> API path or route used for the filtering. </td>
-        <td> Targets all paths if not provided. For more information, go to <a href="#path-filter">path filter </a>.</td>
-      </tr>
-      <tr>
-        <td> HEADERS_FILTERS </td>
-        <td> Filters for HTTP request headers accept multiple comma-separated headers in the format <code>key1:value1,key2:value2</code>. </td>
-        <td> For more information, go to <a href="#advanced-filters">header filters</a>.</td>
-      </tr>
-      <tr>
-        <td> METHODS </td>
-        <td> The HTTP request method type accepts comma-separated HTTP methods in upper cases, such as "GET,POST". </td>
-        <td> For more information, go to <a href="#advanced-filters">methods</a>.</td>
-      </tr>
-      <tr>
-        <td> QUERY_PARAMS </td>
-        <td> HTTP request query parameter filters accept multiple comma-separated query parameters in the format of <code>param1:value1,param2:value2</code>. </td>
-        <td> For more information, go to <a href="#advanced-filters">query params</a>.</td>
-      </tr>
-      <tr>
-        <td> SOURCE_HOSTS </td>
-        <td> Includes comma-separated source host names as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
-        <td> For more information, go to <a href="#advanced-filters">source hosts</a>.</td>
-      </tr>
-      <tr>
-        <td> SOURCE_IPS </td>
-        <td> This includes comma-separated source IPs as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
-        <td> For more information, go to <a href="#advanced-filters">source IPs</a>.</td>
-      </tr>
-      <tr>
-        <td> DESTINATION_HOSTS </td>
-        <td> Comma-separated destination host names are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
-        <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
-      </tr>
-      <tr>
-        <td> DESTINATION_IPS </td>
-        <td> Comma-separated destination IPs are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
-        <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
-      </tr>
-      <tr>
-        <td> PROXY_PORT </td>
-        <td> Port where the proxy listens for requests.</td>
-        <td> Default: 20000. For more information, go to <a href="#advanced-fault-tunables">proxy port</a>.</td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to inject chaos. </td>
-        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-      </tr>
-      <tr>
-        <td> SERVICE_DIRECTION </td>
-        <td> Direction of the flow of control, `ingress` or `egress`. </td>
-        <td> Default: `ingress`. For more information, go to <a href="#advanced-fault-tunables">service direction </a>.</td>
-      </tr>
-      <tr>
-        <td> DESTINATION_PORTS </td>
-        <td> Comma-separated list of the destination service or host ports for which `egress` traffic should be affected. </td>
-        <td> Default: 80,8443. For more information, go to <a href="#destination-ports">destination ports</a>. </td>
-      </tr>
-      <tr>
-        <td> HTTPS_ENABLED </td>
-        <td> Facilitate HTTPS support for both incoming and outgoing traffic. </td>
-        <td> Default: false. For more information, go to <a href="#https">HTTPS</a>.</td>
-      </tr>
-      <tr>
-        <td> CUSTOM_CERTIFICATES </td>
-        <td> Provide the custom certificates for the proxy server to serve as intermediate certificates for HTTPS communication. </td>
-        <td> HTTPS communication necessitates its use as intermediate certificates by the proxy server. These certificates should be loaded into the target application. For more information, go to <a href="#https">HTTPS</a></td>
-      </tr>
-      <tr>
-        <td> HTTPS_ROOT_CERT_PATH </td>
-        <td> Provide the root CA certificate directory path. </td>
-        <td> This setting must be configured if the root CA certificate directory differs from /etc/ssl/certs. Go to [root Linux](https://go.dev/src/crypto/x509/root_linux.go) for the default certificate directory based on various Linux distributions. For more information, go to <a href="#https">HTTPS.</a></td>
-      </tr>
-      <tr>
-        <td> HTTPS_ROOT_CERT_FILE_NAME </td>
-        <td> Provide the root CA certificate file name. </td>
-        <td> This setting must be configured if the root CA certificate file name differs from ca-certificates.crt. Go to [root Linux] (https://go.dev/src/crypto/x509/root_linux.go) for the default certificate file names based on various Linux distributions. For more information, go to <a href="#https">HTTPS.</a></td>
-      </tr>
-      <tr>
-        <td> NETWORK_INTERFACE </td>
-        <td> Network interface used for the proxy.</td>
-        <td> Default: `eth0`. For more information, go to <a href="#advanced-fault-tunables">network interface </a>.</td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> Container runtime interface for the cluster. </td>
-        <td> Default: containerd. Support values: docker, containerd, and crio. For more information, go to <a href="#container-runtime-and-socket-path">container runtime </a>. </td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path of the containerd or crio or docker socket file. </td>
-        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path </a>.</td>
-      </tr>
-      <tr>
-        <td> NODE_LABEL </td>
-        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration of chaos injection (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a>.</td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma-separated list of application pod names subject to pod HTTP modify body.</td>
-        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage </a>.</td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
-      </tr>
-    </table>
+<table>
+  <tr>
+    <th> Tunable </th>
+    <th> Description </th>
+    <th> Notes </th>
+  </tr>
+  <tr>
+      <td> networkInterface </td>
+      <td> Network interface used for the proxy when the <code>SERVICE_DIRECTION</code> is ingress.</td>
+      <td> Default: `eth0`. For more information, go to <a href="#advanced-fault-tunables">network interface </a>.</td>
+    </tr>
+  <tr>
+    <td> duration </td>
+    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>30 s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a>. </td>
+  </tr>
+  <tr>
+    <td> rampTime </td>
+    <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>. </td>
+  </tr>
+  <tr>
+      <td> targetServicePort </td>
+      <td> Port of the target service used when the <code>serviceDirection</code> is ingress.</td>
+      <td> Default: 80. For more information, go to <a href="#target-service-port">target service port</a>.</td>
+    </tr>
+  <tr>
+      <td> proxyPort </td>
+      <td> Port where the proxy listens for requests. </td>
+      <td> Default: 20000. For more information, go to <a href="#advanced-fault-tunables">proxy port</a>.</td>
+  </tr>
+  <tr>
+      <td> pathFilter </td>
+      <td> API path or route used for the filtering. </td>
+      <td> Targets all paths if not provided. For more information, go to <a href="#path-filter">path filter </a>.</td>
+  </tr>
+  <tr>
+      <td> serviceDirection </td>
+      <td> Direction of the flow of control, `ingress` or `egress`.</td>
+      <td> Default: `ingress`. For more information, go to <a href="#advanced-fault-tunables">service direction </a>.</td>
+  </tr>
+  <tr>
+      <td> httpsEnabled </td>
+      <td> Facilitate HTTPS support for both incoming and outgoing traffic. </td>
+      <td> Default: false. For more information, go to <a href="#https">HTTPS</a>. </td>
+  </tr>
+  <tr>
+      <td> destinationPorts </td>
+      <td> Comma-separated list of the destination service or host ports for which `egress` traffic should be affected. </td>
+      <td> Default: 80,8443. For more information, go to <a href="#destination-ports">destination ports</a></td>
+  </tr>
+  <tr>
+      <td> httpsRootCertFile </td>
+      <td> Provide the root CA certificate file name. </td>
+      <td> This setting must be configured if the root CA certificate file name differs from ca-certificates.crt. Go to [root Linux] (https://go.dev/src/crypto/x509/root_linux.go) for the default certificate file names based on various Linux distributions. For more information, go to <a href="#https">HTTPS. </a></td>
+  </tr>
+  <tr>
+      <td> customCertificates </td>
+      <td> Provide the custom certificates for the proxy server to serve as intermediate certificates for HTTPS communication. </td>
+      <td> HTTPS communication necessitates its use as intermediate certificates by the proxy server. These certificates should be loaded into the target application. For more information, go to <a href="#https">HTTPS. </a></td>
+  </tr>
+  <tr>
+      <td> headersFilters </td>
+      <td> Filters for HTTP request headers accept multiple comma-separated headers in the format <code>key1:value1,key2:value2</code>.</td>
+      <td> For more information, go to <a href="#advanced-filters">header filters</a>.</td>
+  </tr>
+  <tr>
+      <td> methods </td>
+      <td> The HTTP request method type accepts comma-separated HTTP methods in upper cases, such as "GET,POST". </td>
+      <td> For more information, go to <a href="#advanced-filters">methods</a>.</td>
+  </tr>
+  <tr>
+      <td> queryParams </td>
+      <td> HTTP request query parameter filters accept multiple comma-separated query parameters in the format of <code>param1:value1,param2:value2</code>. </td>
+      <td> For more information, go to <a href="#advanced-filters">query params</a>.</td>
+  </tr>
+  <tr>
+      <td> sourceHosts </td>
+      <td> Includes comma-separated source host names as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
+      <td> For more information, go to <a href="#advanced-filters">source hosts</a>.</td>
+  </tr>
+  <tr>
+      <td> sourceIPs </td>
+      <td> This includes comma-separated source IPs as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
+      <td> For more information, go to <a href="#advanced-filters">source IPs</a>.</td>
+  </tr>
+  <tr>
+      <td> destinationHosts </td>
+      <td> Comma-separated destination host names are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
+      <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
+  </tr>
+  <tr>
+      <td> destinationIPs </td>
+      <td> Comma-separated destination IPs are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type.</td>
+      <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
+  </tr>
+  <tr>
+      <td> statusCode </td>
+      <td> Status code for the API response. </td>
+      <td> When the response is not received, it is generally `404` not found. </td>
+  </tr>
+</table>
 
 ### Target service port
 
@@ -221,7 +133,7 @@ The following YAML snippet illustrates the use of this environment variable:
 [embedmd]: # "./static/manifests/pod-api-block/target-service-port.yaml yaml"
 
 ```yaml
-## provide the port of the targeted service
+## provide the port of the target service
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -239,7 +151,7 @@ spec:
       spec:
         components:
           env:
-            # provide the port of the targeted service
+            # provide the port of the target service
             - name: TARGET_SERVICE_PORT
               value: "80"
             - name: PATH_FILTER
