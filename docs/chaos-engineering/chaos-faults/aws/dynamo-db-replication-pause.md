@@ -15,6 +15,7 @@ Dynamo DB replication pause determines the resilience of the application when da
 ### Prerequisites
 - Kubernetes >= 1.17
 - DynamoDB should be up and running.
+- The derived table name should be a global table.
 - The Kubernetes secret should have AWS access configuration (key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
   ```yaml
   apiVersion: v1
@@ -116,7 +117,7 @@ Below is an example AWS policy to execute the fault.
 
 ### Table names
 
-Name of the DynamoDB global table on which you apply chaos. You can provide multiple table names as comma-separated values. Tune it using the `TABLE_NAMES` environment variable.
+Name of the DynamoDB **global** table on which you apply chaos. You can provide multiple table names as comma-separated values. Tune it using the `TABLE_NAMES` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
