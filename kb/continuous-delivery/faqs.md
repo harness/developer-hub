@@ -3185,6 +3185,38 @@ As Environment and Services are not part of the Build stage, they are not shown 
 
 You can use [API](https://apidocs.harness.io/tag/Audit#operation/getAuditEventList) to fetch the audit events, which can then be further processed into CSV or other formats.
 
+#### What is Input Data Preprocessing in Harness Pipelines?
+
+Input Data Preprocessing in Harness Pipelines involves preparing and transforming input data before it is processed in a pipeline. This ensures that the data is in the correct format and contains the necessary information for successful pipeline execution.
+Please read more on this in the [Documentation](https://developer.harness.io/docs/platform/pipelines/input-data-preprocessing/)
+
+#### What types of Input Data can be preprocessed in Harness Pipelines?
+
+In Harness Pipelines, you can preprocess various types of input data, including JSON, YAML, and plain text. The preprocessing steps can involve tasks such as data validation, transformation, and enrichment to ensure the input data meets the required standards for pipeline execution.
+
+#### How do we configure Harness Pipelines to `save blank fields as empty` strings during data preprocessing?
+
+To configure Harness Pipelines to save blank fields as empty strings during data preprocessing, you need to set the appropriate parameter in your pipeline configuration. This ensures that any fields that are left blank in the input data are treated as empty strings, preventing potential issues or errors during pipeline execution.
+Avail this feature with below configurations : 
+- The feature is behind the feature flag : `CDS_ENABLE_RAW_MODE`
+- Set settings `Show checkbox to Save Blank Fields as Empty String` as true 
+- Set settings `Default value of Blank Fields as Empty String` as true
+
+To read more on this refer to documentation on [Handling empty strings in Input Variable](https://developer.harness.io/docs/platform/pipelines/input-data-preprocessing/)
+
+#### Can customers request the deactivation of the AIDA feature for their account?
+
+Customers can deactivate the AIDA feature themselves without needing to request or create a support ticket. The AIDA setting is available in the default settings of the platform, allowing users to manage this feature directly.
+
+#### Is AIDA definitively enabled on the Harness platform?
+
+AIDA is enabled on the Harness platform by default. To read more on the security impact of this please refer the [Documentation](https://www.harness.io/legal/aida-privacy) 
+
+#### Is there a way to reference a step group variable without knowing the step group ID in Harness Pipelines?
+
+Yes, we can use exported variables to reference a step group variable without knowing the step group ID.
+One can follow the syntax : `<+exportedVariables.getValue("stepGroup.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>` This method allows you to reference the variable by its alias name instead of needing to know the step group ID. For more details, you can refer to the Harness documentation on [Scoping output variables using aliases](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#scoping-output-variables-using-aliases)
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
