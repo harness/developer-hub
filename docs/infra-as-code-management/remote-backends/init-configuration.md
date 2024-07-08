@@ -41,6 +41,12 @@ When initializing an AWS S3 bucket for example, and passing the `bucket`, `key`,
 - `PLUGIN_INIT_BACKEND_CONFIG_KEY`
 - `PLUGIN_INIT_BACKEND_CONFIG_REGION`
 
+To set the same backend values as shown in the example above, you would set the following values:
+
+- `bucket=sample_s3_bucket`
+- `key=terraform.tfstate`
+- `region=us-east-1`
+
 ### Add new environment variables
 To add new environment variables, follow these steps:
 
