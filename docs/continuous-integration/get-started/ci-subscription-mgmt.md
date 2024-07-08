@@ -65,11 +65,11 @@ In the legacy navigation, go to **Account settings** and then select **Billing**
 
 <Invoice />
 
-## License and build credit usage
+## License and cloud credit usage
 
 <License />
 
-## Harness Cloud billing and build credits
+## Harness Cloud billing and cloud credits
 
 This section explains billing and credit consumption for Harness Cloud builds.
 
@@ -96,10 +96,10 @@ Credits for build minutes are calculated based on build execution times (measure
 
 Based on the values in the table above:
 
-* 1000 Linux, 4-core build minutes consumes 2000 build credits.
-* 1000 Windows build minutes consumes 8000 build credits.
-* 1000 macOS build minutes consumes 60000 build credits.
-* Using multiple machines that utilize 500 Linux, 4-core build minutes and 1000 macOS build minutes, a total of 61000 build credits are consumed.
+* 1000 Linux, 4-core build minutes consumes 2000 cloud credits.
+* 1000 Windows build minutes consumes 8000 cloud credits.
+* 1000 macOS build minutes consumes 60000 cloud credits.
+* Using multiple machines that utilize 500 Linux, 4-core build minutes and 1000 macOS build minutes, a total of 61000 cloud credits are consumed.
 
 ### Credit allowance by plan tier
 
@@ -109,7 +109,7 @@ Free plans receive 2000 free credits every month. Any free credits that are unus
 
 Customers on paid (**Team** or **Enterprise**) plans can purchase credits via credit packages. These purchased credits can be rolled over from one month to the next, but generally expire one year from the date the credit package was originally purchased, or, if you have signed an Order Form with Harness, the credits expire on the date stated on your Order Form.
 
-Harness notifies you when you are running low on build credits, and Harness can invoice in arrears for overages. For more information, go to [Credit overages (overuse)](#credit-overages-overuse).
+Harness notifies you when you are running low on cloud credits, and Harness can invoice in arrears for overages. For more information, go to [Credit overages (overuse)](#credit-overages-overuse).
 
 Free plans require credit card validation to use Harness Cloud. If you don't want to provide a credit card, you can use [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
@@ -151,7 +151,7 @@ The limit depends on the plan you are subscribed to:
 
 ### Credit overages (overuse)
 
-As a courtesy, Harness notifies you when you are running low on [build credits](#credit-allowance-by-plan-tier). When you receive such a notification, Harness strongly recommends that you purchase additional credits through your account manager.
+As a courtesy, Harness notifies you when you are running low on [cloud credits](#credit-allowance-by-plan-tier). When you receive such a notification, Harness strongly recommends that you purchase additional credits through your account manager.
 
 To allow you to continually execute your builds, Harness will allow you to continue using Harness Cloud even if you do not have enough credits in your account to cover your total build execution time, but Harness will invoice you in arrears for all credits owed.
 
