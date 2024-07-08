@@ -24,6 +24,10 @@ To create an environment:
 
   ![](./static/connect-chaos-infrastructures/env-2.png)
 
+:::tip
+If you want to delete your environment, remove the environment references, that is, the infrastructure(s) associated with it first.
+:::
+
 ## 2. Add a chaos infrastructure
 
 ### 2.1 Add a Kubernetes infrastructure
