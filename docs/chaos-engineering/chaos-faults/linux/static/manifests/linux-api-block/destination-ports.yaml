@@ -16,7 +16,7 @@ spec:
         components:
           env:
             # provide destination ports
-            - name: destinationHosts
+            - name: destinationPorts
               value: '80,443'
             # provide the api path filter
             - name: pathFilter

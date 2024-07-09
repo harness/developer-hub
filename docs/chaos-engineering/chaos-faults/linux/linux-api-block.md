@@ -193,9 +193,9 @@ spec:
               value: "80"
 ```
 
-### Destination hosts
+### Destination ports
 
-Comma-separated list of the destination service or host ports for which `egress` traffic takes affect as a result of applying chaos on the target application. Tune it by using the `destinationHosts` input variable.
+Comma-separated list of the destination service or host ports for which `egress` traffic takes affect as a result of applying chaos on the target application. Tune it by using the `destinationPorts` input variable.
 
 :::tip
 It is applicable only when `serviceDirection` input variables has the value `egress`.
@@ -203,7 +203,7 @@ It is applicable only when `serviceDirection` input variables has the value `egr
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]: # "./static/manifests/linux-api-block/destination-hosts.yaml yaml"
+[embedmd]: # "./static/manifests/linux-api-block/destination-ports.yaml yaml"
 
 ```yaml
 ## provide destination ports
@@ -225,7 +225,7 @@ spec:
         components:
           env:
             # provide destination ports
-            - name: destinationHosts
+            - name: destinationPorts
               value: '80,443'
             # provide the api path filter
             - name: pathFilter

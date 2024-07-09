@@ -285,8 +285,8 @@ spec:
 
 Comma-separated list of the destination service or host ports for which `egress` traffic should be affected as a result of chaos testing on the target application. Tune it by using the `DESTINATION_PORTS` environment variable.
 
-:::info note
-It is applicable only for the `egress` `SERVICE_DIRECTION`.
+:::tip
+It is applicable only when the `SERVICE_DIRECTION` environment variable is set to `egress` .
 :::
 
 The following YAML snippet illustrates the use of this environment variable:
