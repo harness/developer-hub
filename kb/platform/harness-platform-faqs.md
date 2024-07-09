@@ -122,6 +122,18 @@ No, you can only configure RBAC for the environment based on environment type.
 
 No, Harness doesn't support audit trails for read API requests like GET.
 
+### Why are RBAC checks different for pipelines stored inline vs. Git?
+
+:::note
+Currently, this feature is behind the feature flags `CDS_PIPELINE_ABORT_RBAC_PERMISSION_MIGRATION` and `CDS_PIPELINE_ABORT_RBAC_PERMISSION`. Contact Harness Support to enable the feature.
+:::
+
+By default, before running any pipeline, Harness can check whether the user has access to all of the environments and other resources that the pipeline accesses. This check is run only for inline pipelines, not those stored in Git or other repositories.
+
+Turn off this setting if the check isn't required. Turning this off can cause pipelines to fail partway through execution (since later stages could have permission issues that haven't been checked beforehand).
+
+For more information, go to [Run RBAC Validation before executing Inline Pipelines](/docs/platform/pipelines/pipeline-settings/#run-rbac-validation-before-executing-inline-pipelines).
+
 ### What is the purpose of linkedSsoDisplayName?
 
 `LinkedSsoDisplayName` is the same SSO setting name in Harness. For SAML, the value provided for both `ssoGroupId` and `ssoGroupName` must be the same.
