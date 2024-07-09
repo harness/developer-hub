@@ -85,6 +85,8 @@ The following deprecated API endpoints are longer supported:
 
 The `terminationGracePeriodSeconds` for delegates has been increased from 10 minutes to one hour. This enhancement allows delegate pods to wait up to an hour before being forcibly terminated during regular scale-downs or upgrades, ensuring smoother transitions and minimizing potential disruptions. (PL-51534, ZD-63917)
 
+Added support for Harness Secret Manager decryption for notifications. Harness-managed secrets used in notifications are now decrypted using harness-manager, enhancing security and functionality. (PL-41880)
+
 #### Fixed issues
 
 Connector could be deleted even if it had existing secrets. This issue has been resolved, and now the AWS Secret Manager Connector cannot be deleted if it contains existing secrets. (PL-52067, ZD-65772)
@@ -95,7 +97,7 @@ Public access on resources was not functioning correctly when a project had mult
 
 SSH type deployment errors were not providing clear information, and delegate tasks continued beyond the maximum broadcast rounds. The issue has been resolved by failing the delegate task after the maximum broadcast rounds are completed. A correct error message will now be displayed to improve clarity. (PL-51241)
 
-<!-- PL-49190 - incomplete RN, engineer has provided no text about the issue or the fix here. [DO NOT MERGE WITHOUT THIS] -->
+The "Explore Plans" button failed to redirect to the Plans page. Resolved the button routing issue to ensure the "Explore Plans" button now correctly redirects to the Plans page when clicked. (PL-49190, ZD-62009)
 
 New users accepting an invitation and landing on the get-started page encountered a 404 error. Resolved an issue where new users added to an account were directed to a non-existent page under the new navigation. New users will now be redirected to the correct page upon accepting an invitation. (PL-51173)
 
