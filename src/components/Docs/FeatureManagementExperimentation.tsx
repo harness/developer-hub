@@ -5,10 +5,10 @@ import clsx from "clsx";
 import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
-import { docsCards } from "./data/featureFlagsData";
+import { docsCards } from "./data/featureManagementExperimentationData";
 
 import { useColorMode } from "@docusaurus/theme-common";
-export default function FF() {
+export default function FME() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
