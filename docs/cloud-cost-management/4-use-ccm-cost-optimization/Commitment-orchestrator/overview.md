@@ -118,7 +118,7 @@ Post set-up, you can view your dashboard with all the information required . You
 #### Interactive walkthrough for the same:
  <iframe 
      src="https://app.tango.us/app/embed/845a1973-c350-4d4e-b5cc-51ad3482c0f9" 
-     title="Set up a Git Repository Connector for Harness IaCM" 
+     title="Set up Commitment Orchestrator" 
      style={{minHeight:'640px'}}
      width="100%" 
      height="100%" 
