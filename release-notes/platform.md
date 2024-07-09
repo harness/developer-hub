@@ -99,7 +99,7 @@ SSH type deployment errors were not providing clear information, and delegate ta
 
 The **Explore Plans** button failed to redirect to the Plans page. Resolved the button routing issue to ensure the **Explore Plans** button now correctly redirects to the Plans page. (PL-49190, ZD-62009)
 
-New users accepting an invitation and landing on the get-started page encountered a 404 error. Resolved an issue where new users added to an account were directed to a non-existent page under the new navigation. New users will now be redirected to the correct page upon accepting an invitation. (PL-51173)
+New users accepting an invitation and landing on the get-started page encountered a 404 error. Resolved an issue where new users added to an account were directed to a non-existent page under the new navigation. New users will now be redirected to the correct page upon accepting an invitation. (PL-51173) 
 
 ## June 2024
 
