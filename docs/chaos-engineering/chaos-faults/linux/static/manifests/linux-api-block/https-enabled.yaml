@@ -26,3 +26,5 @@ spec:
             # provide the port of the targeted service
             - name: targetServicePort
               value: "80"
+            - name: statusCode
+              value: "404"

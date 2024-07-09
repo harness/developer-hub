@@ -156,6 +156,8 @@ spec:
               value: "80"
             - name: pathFilter
               value: '/status'
+            - name: statusCode
+              value: "404"
 ```
 
 ### Path filter
@@ -191,6 +193,8 @@ spec:
             # provide the port of the target service
             - name: targetServicePort
               value: "80"
+            - name: statusCode
+              value: "404"
 ```
 
 ### Destination ports
@@ -293,6 +297,8 @@ spec:
             # provide the port of the targeted service
             - name: targetServicePort
               value: "80"
+            - name: statusCode
+              value: "404"
 ```
 
 ### Advanced fault tunables
