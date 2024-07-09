@@ -119,8 +119,8 @@ Linux API block injects API block fault into a Linux machine for a specific dura
   </tr>
   <tr>
       <td> statusCode </td>
-      <td> Status code for the API response. </td>
-      <td> When the response is not received, it is generally `404` not found. </td>
+      <td> Status code received when the API is blocked. </td>
+      <td> When the API is blocked, it throws an error along with the status code. Default: 404. </td>
   </tr>
 </table>
 
