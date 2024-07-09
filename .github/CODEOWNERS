@@ -32,10 +32,10 @@ README.md @ravilach
 /docs/continuous-delivery/ @krishi0408 @SushrutHarness
 
 # Continuous Integration Docs
-/docs/continuous-integration/ @nofarblue @rustd
+/docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed @lkilpatrick-harness
 
 # CODE Docs
-/docs/code-repository/ @pwolf-harness @hitesharinga @dewan-ahmed
+/docs/code-repository/ @pwolf-harness @hitesharinga @dewan-ahmed @lkilpatrick-harness
 
 # STO Docs
 /docs/security-testing-orchestration/ @douglas-j-bothwell
@@ -129,10 +129,10 @@ README.md @ravilach
 /release-notes/continuous-error-tracking.md @M-Tsur
 
 # CI Release Notes
-/release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed
+/release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed @lkilpatrick-harness
 
 # CODE Release Notes
-/release-notes/code-repository.md @pwolf-harness @hitesharinga @dewan-ahmed
+/release-notes/code-repository.md @pwolf-harness @hitesharinga @dewan-ahmed @lkilpatrick-harness
 
 # Delegate Release Notes
 /release-notes/delegate.md @brian-f-harness @saifeemustafaqharness
@@ -170,7 +170,7 @@ README.md @ravilach
 /kb/continuous-integration/drone-faqs.md @jimsheldon
 
 # CI KB
-/kb/continuous-integration/ @nofarblue @rustd @deepanshuHarness @dewan-ahmed
+/kb/continuous-integration/ @nofarblue @rustd @deepanshuHarness @dewan-ahmed @lkilpatrick-harness
 
 # CD KB
 /kb/continuous-delivery/ @krishi0408 @SushrutHarness
@@ -211,10 +211,10 @@ src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness
 src/components/Roadmap/data/cdData.ts @krishi0408 @neelanjan00 @SmritiSatya
 
 #CI Roadmap
-src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed
+src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed @lkilpatrick-harness
 
 #Code Roadmap
-src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga @dewan-ahmed
+src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga @dewan-ahmed @lkilpatrick-harness
 
 #FF Roadmap
 src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
