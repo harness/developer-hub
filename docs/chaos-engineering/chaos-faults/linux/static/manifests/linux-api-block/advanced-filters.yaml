@@ -11,28 +11,28 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: pod-api-block
+    - name: linux-api-block
       spec:
         components:
           env:
             # provide the headers filters
-            - name: HEADERS_FILTERS
+            - name: headersFilters
               value: 'key1:value1,key2:value2'
             # provide the methods filters
-            - name: METHODS
+            - name: methods
               value: 'GET,POST'
             # provide the query params filters
-            - name: QUERY_PARAMS
+            - name: queryParams
               value: 'param1:value1,param2:value2'
             # provide the source hosts filters
-            - name: SOURCE_HOSTS
+            - name: sourceHosts
               value: 'host1,host2'
             # provide the source ips filters
-            - name: SOURCE_IPS
+            - name: sourceIPs
               value: 'ip1,ip2'
             # provide the connection type
-            - name: SERVICE_DIRECTION
+            - name: serviceDirection
               value: 'ingress'
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
+            # provide the port of the target service
+            - name: targetServicePort
               value: "80"

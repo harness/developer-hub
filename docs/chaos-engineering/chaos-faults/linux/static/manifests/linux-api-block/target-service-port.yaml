@@ -11,12 +11,12 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: pod-api-block
+    - name: linux-api-block
       spec:
         components:
           env:
             # provide the port of the target service
-            - name: TARGET_SERVICE_PORT
+            - name: targetServicePort
               value: "80"
-            - name: PATH_FILTER
+            - name: pathFilter
               value: '/status'
