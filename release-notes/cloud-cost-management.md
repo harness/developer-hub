@@ -30,7 +30,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Disabled Enforcements for Accounts without a Valid CCM License: We have disable Enforcements related to accounts that do not have a valid CCM license.
 
 #### Early access features
-- Early access to Commitment Orchestrator for RDS: We have introduced Commitment Orchestrator for RDS with support for Standard RI. Being in the very early stages, it is only available on request. If you would like to test it out, kindly reach out to Harness support](mailto:support@harness.io)
+- Early access to Commitment Orchestrator for RDS: We have introduced Commitment Orchestrator for RDS with support for Standard RI. Being in the very early stages, it is only available on request. If you would like to test it out, kindly reach out to [Harness support](mailto:support@harness.io)
 
 ### Version 1.22.0
 
