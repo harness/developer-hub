@@ -5,7 +5,7 @@ description: Resources required to run chaos experiments on target environments.
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/prerequisites
 - /docs/chaos-engineering/get-started/tutorials/prerequisites
-- /docs/chaos-engineering/get-started/prerequisites/
+- /docs/chaos-engineering/get-started/prerequisites
 ---
 
 This topic describes the [prerequisites](#permissions-required) that you need to fulfill before executing chaos experiments and [steps to execute chaos experiments on your target environments](#steps-to-create-and-execute-a-hce-experiment).

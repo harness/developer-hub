@@ -113,4 +113,13 @@ export const experiments: ExperimentDetails[] = [
     tags: ["linux"],
     category: "linux",
   },
+  {
+    name: "Linux API block",
+    description:
+      "Linux API block injects API block fault into a Linux machine for a specific duration through path filtering. This results in the API not being able to send responses for the requests it receives.",
+    tags: ["linux"],
+    category: "linux",
+  },
 ];
+
+
