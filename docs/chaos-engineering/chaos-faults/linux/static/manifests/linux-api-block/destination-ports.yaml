@@ -23,4 +23,4 @@ spec:
               value: '/status'
             # provide the port of the target service
             - name: targetServicePort
-              value: "80"
+              value: 80

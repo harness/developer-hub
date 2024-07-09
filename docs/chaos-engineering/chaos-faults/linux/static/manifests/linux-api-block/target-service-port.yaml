@@ -17,8 +17,8 @@ spec:
           env:
             # provide the port of the target service
             - name: targetServicePort
-              value: "80"
+              value: 80
             - name: pathFilter
               value: '/status'
             - name: statusCode
-              value: "404"
+              value: 404
