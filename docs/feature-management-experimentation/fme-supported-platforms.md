@@ -1,15 +1,15 @@
 ---
 title: What's supported in Feature Management & Experimentation
 description: Platforms and technologies supported by Harness FME
-sidebar_label: What's supported
+sidebar_label: ★ What's supported
 sidebar_position: 10
 ---
 
 Harness Feature Flags support [client-side and server-side SDKs](/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
 
-import Fme from '/docs/feature-management-experimentation/shared/fme-supported-platforms-shared.md';
+import FmeSuppported from '/docs/feature-management-experimentation/shared/fme-supported-platforms-shared.md';
 
-<Fme />
+<FmeSuppported />
 
 ## Relay Proxy [todo: Localhost mode]
 The [Relay Proxy](/docs/feature-flags/use-ff/relay-proxy/), which allows for offline and hybrid Feature Flags usage, is provided as a Docker image and can be used in any environment where the Docker image can be run. The Relay Proxy can be enhanced with Redis as a cache in environments where this is possible.

@@ -17,7 +17,7 @@ export default function FME() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_ff.svg`} />
-            <h1>Feature Flags</h1>
+            <h1>Feature Management & Experimentation</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/kb/feature-flags">
@@ -39,12 +39,7 @@ export default function FME() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness Feature Management Experimentation (FME) is a
-              feature management solution that lets you manage your software's
-              functionality without deploying new code. 
-              It does this by letting you hide code or behavior
-              without having to ship new versions of the software. A feature
-              flag is like a powerful <i>If</i> statement.
+              Harness Feature Management Experimentation (FME) is a feature management solution that lets you manage your software's functionality without deploying new code. It does this by letting you hide code or behavior without having to ship new versions of the software. A feature flag is like a powerful <b><i>If</i></b> statement.
             </p>
             <div className={styles.illustrationContainer}>
               <img

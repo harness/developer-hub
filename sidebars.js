@@ -115,7 +115,7 @@ const sidebars = {
         // Feature Management Experimentation Landing Page
         {
           type: "category",
-          label: "Feature Management Experimentation",
+          label: "★ Feature Management Experimentation",
           link: {
             type: "doc",
             id: "feature-management-experimentation",
