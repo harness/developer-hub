@@ -49,6 +49,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ### Version 1.45.x
 
+#### New Features and Enhancement
+
+**Bi-Directional Sync Health Status for Git Sync**
+
+We have introduced a Git Sync status page for Harness NG. Once you have synced your Harness entities with your Git repository, you can view bidirectional activity between Harness and your repository using the Bi-Directional Sync Health Status feature. For each entitiy, you can see file path, commit message, status of the last sync as well as the payload. Refer to Harness [Git Sync health Page](/docs/platform/git-experience/git-sync-health-page.md) for more information.
 
 #### Behavior Changes
 
