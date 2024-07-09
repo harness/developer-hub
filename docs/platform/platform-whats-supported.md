@@ -236,12 +236,12 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | Flag                                          | Description |
 |-----------------------------------------------|-------------|
 | `PL_UPDATE_EMAILS_VIA_SCIM`                   |             |
-| `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES`        |             |
-| `PL_LDAP_PARALLEL_GROUP_SYNC`                 |             |
-| `PL_NEW_SCIM_STANDARDS`                       |             |
+| `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES`        | When activated, it prevents sending email invitations to users of accounts using SSO for authentication during onboarding.            |
+| `PL_LDAP_PARALLEL_GROUP_SYNC`                 | Enable User Group sync operation to fetch data from the LDAP server in parallel. Only enable this if the LDAP server can handle the load.            |
+| `PL_NEW_SCIM_STANDARDS`                       | Enabling the `PL_NEW_SCIM_STANDARDS` feature flag ensures compliance with SCIM 2.0 standards by including the meta fields `createdAt`, `lastUpdated`, `version`, and `resourceType in CRUD operation responses on users or user groups.            |
 | `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM` |             |
 | `PL_DELEGATE_TASK_CAPACITY_CHECK`             |             |
 | `PL_FAVORITES`                                |             |
 | `PL_ALLOW_TO_SET_PUBLIC_ACCESS`               |             |
 | `PL_GCP_OIDC_AUTHENTICATION`                  |             |
-| `PL_CENTRAL_NOTIFICATION`                     |             |
+| `PL_CENTRAL_NOTIFICATION`                     | Enable/disable Centralized Notifications Management            |
