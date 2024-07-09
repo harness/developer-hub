@@ -11,10 +11,10 @@ Linux API block injects API block fault into a Linux machine for a specific dura
 ![Linux API block](./static/images/linux-api-block.png)
 
 ## Use cases
-- Validates how well your system can handle disruptions in API services for a specific pod.
-- Ensures that your load balancer is effectively distributing traffic to healthy pods in the cluster.
-- Checks if your system's failover mechanisms work as expected when one of the pods becomes unresponsive.
-- Evaluate if your system can gracefully degrade performance when a specific component (in this case, a pod) is experiencing issues.
+- Validates how well your system can handle API service disruptions for a Linux server.
+- Ensures that your load balancer is effectively distributing traffic to the Linux server.
+- Checks if your system's failover mechanisms work as expected when the Linux server becomes unresponsive.
+- Evaluate if your system can gracefully degrade performance when a specific component (in this case, the Linux server) is experiencing issues.
 
 <Ossupport />
 
@@ -153,11 +153,11 @@ spec:
           env:
             # provide the port of the target service
             - name: targetServicePort
-              value: "80"
+              value: 80
             - name: pathFilter
               value: '/status'
             - name: statusCode
-              value: "404"
+              value: 404
 ```
 
 ### Path filter
@@ -192,9 +192,9 @@ spec:
               value: '/status'
             # provide the port of the target service
             - name: targetServicePort
-              value: "80"
+              value: 80
             - name: statusCode
-              value: "404"
+              value: 404
 ```
 
 ### Destination ports
@@ -236,7 +236,7 @@ spec:
               value: '/status'
             # provide the port of the target service
             - name: targetServicePort
-              value: "80"
+              value: 80
 ```
 
 ### HTTPS
@@ -252,7 +252,7 @@ Set this parameter if the HTTPS URL of the target application includes a port wh
 For outbound traffic, set `httpsEnabled` to `true` to enable HTTPS support for external services. This enables using TLS certificates for the proxy within the target application.
 
 - If the HTTP client in the target application is configured to reload certificates with each API call, set `httpsEnabled` to `true`. You won't need to provide `customCertificates` input variable.
-- However, if the root certificate directory and file name differ from `/etc/ssl/certs` and `ca-certificates.crt` respectively, provide the root CA certificate file name using `httpsRootCertFile` input variable.
+- However, if the root CA certificate file path is not `/etc/ssl/certs/ca-certificates.crt`, provide it using `httpsRootCertFile` input variable.
 - If the HTTP client in the target application isn't configured to reload certificates with each API call, provide the `customCertificates` input variable to the chaos experiment. There is no need to set `httpsRootCertFile` input variable. The same custom certificates should be loaded into the target application.
 - You can generate custom certificates using the following commands:
 
@@ -296,9 +296,9 @@ spec:
               value: '/status'
             # provide the port of the targeted service
             - name: targetServicePort
-              value: "80"
+              value: 80
             - name: statusCode
-              value: "404"
+              value: 404
 ```
 
 ### Advanced fault tunables
@@ -343,7 +343,7 @@ spec:
               value: '/status'
             # provide the port of the target service
             - name: targetServicePort
-              value: "80"
+              value: 80
 ```
 
 ### Advanced filters
@@ -398,5 +398,5 @@ spec:
               value: 'ingress'
             # provide the port of the target service
             - name: targetServicePort
-              value: "80"
+              value: 80
 ```
