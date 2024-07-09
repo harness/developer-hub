@@ -51,6 +51,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 - Fixed an issue where the status in Bitbucket showed the build as in progress even when the build succeeded in Harness CI. (CI-13151, ZD-65593)
 - Improved the error message that gets displayed when an incompatible Docker version causes the pipeline to fail. (CI-12612, ZD-63466)
+- Implemented a fix to ensure that all account-level secret references use the correct format (`<+secrets.getValue("account.MY_SECRET_ID")>`) in all build infrastructures. With this fix, pipelines will fail if account-level secrets are not referenced correctly. (CI-12595, ZD-63260)
 
 ## June 2024
 
@@ -61,7 +62,6 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 #### Fixed issues
 
 - Added a fix to support merge events for Bitbucket Server PR builds with refs as `refs/heads/targetBranch`. (CI-12710, ZD-57511, ZD-65148)
-- Implemented a fix to ensure that all account-level secret references use the correct format (`<+secrets.getValue("account.MY_SECRET_ID")>`) in all build infrastructures. With this fix, pipelines will fail if account-level secrets are not referenced correctly. (CI-12595, ZD-63260)
 - Fixed an issue where pipelines with Docker Layer Caching enabled would fail with the error `Failed to get link with status 400`. (CI-13070)
 
 
