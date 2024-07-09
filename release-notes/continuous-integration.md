@@ -37,7 +37,20 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## June 2024
 
+### Version 1.34
+
+<!-- 2024-06-18 -->
+
+#### Fixed issues
+
+- Added a fix to support merge events for Bitbucket Server PR builds with refs as `refs/heads/targetBranch`. (CI-12710, ZD-57511, ZD-65148)
+- Implemented a fix to ensure that all account-level secret references use the correct format (`<+secrets.getValue("account.MY_SECRET_ID")>`) in all build infrastructures. With this fix, pipelines will fail if account-level secrets are not referenced correctly. (CI-12595, ZD-63260)
+- Fixed an issue where pipelines with Docker Layer Caching enabled would fail with the error `Failed to get link with status 400`. (CI-13070)
+
+
 ### Version 1.33
+
+<!-- 2024-06-18 -->
 
 #### New features
 
