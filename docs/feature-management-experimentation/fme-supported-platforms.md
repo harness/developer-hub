@@ -7,7 +7,7 @@ sidebar_position: 10
 
 Harness Feature Flags support [client-side and server-side SDKs](/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
 
-import Fme from '/docs/feature-management-experimentation/shared/fme-supported-platforms.md';
+import Fme from '/docs/feature-management-experimentation/shared/fme-supported-platforms-shared.md';
 
 <Fme />
 
