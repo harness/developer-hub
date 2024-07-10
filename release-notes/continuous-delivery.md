@@ -55,6 +55,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 We have introduced a Git Sync status page for Harness NG. Once you have synced your Harness entities with your Git repository, you can view bidirectional activity between Harness and your repository using the Bi-Directional Sync Health Status feature. For each entitiy, you can see file path, commit message, status of the last sync as well as the payload. Refer to Harness [Git Sync health Page](/docs/platform/git-experience/git-sync-health-page) for more information. (PIPE-16865)
 
+
+**HTTP support HTTPS Authentication for Terraform and Terragrunt Modules**
+
+You can now fetch modules for Terraform and Terragrunt via HTTPS authentication using GitHub, Bitbucket, and GitLab connectors(CDS-95361)
+
 #### Behavior Changes
 
 - Previously, when the verify step failed, and an action was taken based on the failure strategy or manual intervention, the title was always shown as **Manual Intervention**. (CDS-97985, ZD-65113)
