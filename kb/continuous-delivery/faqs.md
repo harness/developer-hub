@@ -3236,6 +3236,42 @@ AIDA is enabled on the Harness platform by default. To read more on the security
 Yes, we can use exported variables to reference a step group variable without knowing the step group ID.
 One can follow the syntax : `<+exportedVariables.getValue("stepGroup.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>` This method allows you to reference the variable by its alias name instead of needing to know the step group ID. For more details, you can refer to the Harness documentation on [Scoping output variables using aliases](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#scoping-output-variables-using-aliases)
 
+#### Why does the YAML provide for the Harness Delegate default to cluster-admin?
+
+The YAML for the Harness Delegate defaults to cluster-admin to ensure that all necessary actions can be applied without restriction. If you apply restrictions, make sure to account for all the actual manifests and resources that will be deployed to avoid permission issues.
+
+#### What permissions are required for a Kubernetes service account to create entities in the target namespace for Harness?
+
+A Kubernetes service account needs permission to list, get, create, watch, and delete entities in the target namespace. These permissions are essential for fetching pod events and managing the necessary entity types used by Harness. Typically, cluster-admin or namespace admin permissions are sufficient.
+
+#### Can I specify specific resources instead of using resources: ["*"] for the Role in Kubernetes?
+
+Yes, you can specify specific resources instead of using resources: ["*"]. For Harness deployments, at a minimum, you need to grant permissions for configMap, secret, event, deployment, and pod. The exact resources depend on what you are deploying via Harness.
+
+#### Is it necessary to use verbs: ["*"] for the Role in Kubernetes, or can I list specific verbs?
+
+You can list specific verbs instead of using verbs: ["*"]. The required verbs for Harness deployments include create, delete, get, list, patch, update, and watch. This allows you to tailor the permissions more precisely to your needs.
+
+#### What happens if I don't remove the v1 resources managed by resource_harness_platform_environment_service_overrides.${name} when creating new v2 resources?
+
+If you don't remove the v1 resources, Terraform will try to refresh the state and fail. This will result in a change in plan and subsequent failure.
+
+#### What happens if I remove the v1 resources in Terraform?
+
+If you remove the v1 resources, Terraform will identify and delete the v1 resources.
+
+#### Should I script the removal of v1 resources from the state file to avoid considering them after migration? Is there an existing script for this state file cleanup?
+
+Yes, you should script the removal of v1 resources from the state file to ensure they are not considered after the migration. There is no separate state file cleanup utility available. You need to enhance your script to handle both the removal of v1 resources and the creation of v2 resources.
+
+#### Should environment variables and overrides be removed from the YAML of Environment TF resources?
+
+Yes, environment variables and overrides should be removed from the YAML of Environment TF resources. These should be provided in the TF v2 resources.
+
+#### Will I need to import the v2 resources after the migration to ensure Terraform sees them as existing resources rather than creating new ones?
+
+No, explicit import is not needed. The script should be enhanced to handle the removal of v1 resource usage and the creation of v2 resources.
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).

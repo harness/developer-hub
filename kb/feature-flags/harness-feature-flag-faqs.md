@@ -322,6 +322,22 @@ This error occurs if a user is trying to add a target that already exists.
 #### How to retrieve the feature flag state for a specific target via API?
 The best approach today to achieve this usecase is If you want to know what a specific target will get for a specific flag, you can instantiate one of the SDKs, connect with an SDK key and evaluate that target. It’s the most reliable way of doing it since it’s exactly what the target will be doing.
 
+#### How can I query logs for errors in the relay proxy using Splunk?
+To query logs for any errors in the relay proxy, you will want to search for logs where the level key equals error. Here's how you can construct the query in Splunk:
+Open Splunk Search:
+Navigate to the Splunk search bar where you can input your queries.
+Construct the Query:
+Use the following Splunk query to search for error logs in the relay proxy:
+```index=your_index_name "level": "error"```
+Replace your_index_name with the actual name of the index where your relay proxy logs are stored.
+
+#### I wonder if having hundreds or tausend of targets creates any performance issues when querying?
+This won’t cause any issues with performance. Targets are kept in our system and never synced down to your running SDKs so you don’t need to worry about any latency or large downloads here. For context, we have customers with hundreds of millions of targets in the system running without any request latency for their flag evaluations.
+
+#### What are the pros and cons from your perspective of having individual identifiers for each user comparing targeting a user by an attribute and just having one identifier? I can imagine it's easier to target the user by just clicking him in the long list of existing targets, but technically for me, it seems I can archive the same.
+You’re correct that you can achieve the same effect either by using individual targets or a single recycled target identifier and just manually creating include rules within target groups to manage your use case. Both are equally valid, as you say having the targets appear in dropdowns is a quality-of-life feature helping to add targeting rules quickly but it’s not the only method available, adding rules via the target group page will have the same outcome.
+
+
 ## FF On-Premises Deployments
 
 #### How can I resolve the issue where the `ff-service` cannot connect to the database, resulting in the error `FATAL: database 'cf_db'` does not exist (SQLSTATE 3D000)"?
