@@ -53,7 +53,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 #### New features and enhancements
 
-Modified the unique index for delegate token names. The default token name in each scope will now be `default_token` instead of `default_token_org/project`. This change applies only to new projects and organizations; existing projects and organizations will retain their current token names. (PL-51151)
+- Modified the unique index for delegate token names. The default token name in each scope will now be `default_token` instead of `default_token_org/project`. This change applies only to new projects and organizations; existing projects and organizations will retain their current token names. (PL-51151)
 
 ### Version 24.07.83205 <!--  July 9, 2024 -->
 
