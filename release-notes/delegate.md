@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-07-09T10:00
+date: 2024-07-10T10:00
 sidebar_position: 4
 ---
 
@@ -48,6 +48,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## July
+
+### Version 24.07.83404 <!--  July 9, 2024 -->
+
+#### New features and enhancements
+
+Modified the unique index for delegate token names. The default token name in each scope will now be `default_token` instead of `default_token_org/project`. This change applies only to new projects and organizations; existing projects and organizations will retain their current token names. (PL-51151)
 
 ### Version 24.07.83205 <!--  July 9, 2024 -->
 
