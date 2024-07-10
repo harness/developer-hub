@@ -22,7 +22,7 @@ Learn more about adding [tags](/docs/platform/references/tags-reference.md).
 
 Learn more about creating [Resource Groups](./add-resource-groups.md) in Harness.
 
-In our scenario, we want the user to have access to a few Dev pipelines. You have the option to select specified pipelines or use By Tag. If you have multiple pipelines, you don't want to search through the list to select those pipelines individually. This is where **By Tag** comes into use.
+In our scenario, we want the user to have access to a few Dev pipelines. You have the option to select specified pipelines or use By Tag. If you have multiple pipelines, you don't want to search through the list to select those pipelines individually. This is where **By Tag** comes into use. Additionally, if you add new Dev Pipelines in Harness you you wouldn't want to manually include each new pipeline into the resource group you can just add the tag in your pipeline and automatically user will have access to newly added Dev pipelines.
 
 ![](./static/Pipeline_access_resource_group_tag.png)
 
@@ -32,7 +32,7 @@ By using the **By Tag** option, you can efficiently manage permissions for multi
 
 ![](./static/tag_access_example.png)
 
-Now, you can give users the required access by adding users to a user group and assigning permissions to the resource groups. For example, you can create a user group for developers that will have Pipeline Executor access to this Resource group. This will ensure that all users in this group have access to pipelines tagged with **dev_only**.
+Now, you can give users the required access by adding users to a user group and assigning permissions to the resource groups. For example, you can create a user group for developers that will have Pipeline Executor access to this Resource group. This will ensure that all users in this group have access to pipelines tagged with **dev_only**. Also if you want to remove a certain pipeline from the resource group all you need to do is remove the tag and it will automatically get removed from that particular Resource Group without a need to edit the Resource Group.
 
 ![](./static/User_group_tag_based_access.png)
 
