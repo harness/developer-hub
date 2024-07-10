@@ -39,7 +39,7 @@ You can add an encrypted file secrets at the project, organization, and account 
 
   :::warning
 
-   File secrets are only created as Inline secrets. Inline secrets if deleted from Harness will also delete the secrets from the external secrets manager. It is recommended to always take a backup of these secrets.
+   File secrets are only created as Inline secrets. Inline secrets deleted in Harness are also deleted from the external secrets manager. Harness recommends that you always back up these secrets.
 
    :::
 
