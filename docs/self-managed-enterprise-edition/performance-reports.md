@@ -87,7 +87,7 @@ This report details information about the following:
 Each CI pipeline does the following:
 - Initializes a Kubernetes pod and Git clone repo
 - Runs 5 parallel steps (100 sec sleep)
-- Runs template with 2 parallel steps (140sec sleep)
+- Runs template with 2 parallel steps (140 sec sleep)
 
 Projects : 1  
 Pipelines : 3000  
