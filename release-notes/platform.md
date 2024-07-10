@@ -83,25 +83,25 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
-The `terminationGracePeriodSeconds` for delegates has been increased from 10 minutes to one hour. This enhancement allows delegate pods to wait up to an hour before being forcibly terminated during regular scale-downs or upgrades, ensuring smoother transitions and minimizing potential disruptions. (PL-51534, ZD-63917)
+- The `terminationGracePeriodSeconds` for delegates has been increased from 10 minutes to one hour. This enhancement allows delegate pods to wait up to an hour before being forcibly terminated during regular scale-downs or upgrades, ensuring smoother transitions and minimizing potential disruptions. (PL-51534, ZD-63917)
 
-Added support for Harness Secret Manager decryption for notifications. Harness-managed secrets used in notifications are now decrypted using Harness Manager, enhancing security and functionality. (PL-41880)
+- Added support for Harness Secret Manager decryption for notifications. Harness-managed secrets used in notifications are now decrypted using Harness Manager, enhancing security and functionality. (PL-41880)
 
-Modified the unique index for delegate token names. The default token name in each scope will now be `default_token` instead of `default_token_org/project`. This change applies only to new projects and organizations; existing projects and organizations will retain their current token names. This item requires Harness Delegate version 24.07.83404. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-51151)
+- Modified the unique index for delegate token names. The default token name in each scope will now be `default_token` instead of `default_token_org/project`. This change applies only to new projects and organizations; existing projects and organizations will retain their current token names. This item requires Harness Delegate version 24.07.83404. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-51151)
 
 #### Fixed issues
 
-Connectors could be deleted even if they had existing secrets. This issue has been resolved, and now AWS Secret Manager Connectors cannot be deleted if they contain existing secrets. (PL-52067, ZD-65772)
+- Connectors could be deleted even if they had existing secrets. This issue has been resolved, and now AWS Secret Manager Connectors cannot be deleted if they contain existing secrets. (PL-52067, ZD-65772)
 
-Resource Scope was deleting projects. Searching for a project and then selecting it would remove all previously selected projects. Improved the project selection process in org scope Resource Groups to match the flow of project selection in account scope Resource Groups. This change resolves the issue and ensures previously selected projects remain intact when new ones are added. (PL-51988, ZD-65620)
+- Resource Scope was deleting projects. Searching for a project and then selecting it would remove all previously selected projects. Improved the project selection process in org scope Resource Groups to match the flow of project selection in account scope Resource Groups. This change resolves the issue and ensures previously selected projects remain intact when new ones are added. (PL-51988, ZD-65620)
 
-Public access on resources was not functioning correctly when a project had multiple public resource types. Only the first resource type marked as public was registered internally in Access Control. This issue has been resolved. Now, public access is correctly registered for all resource types marked as public within a project, ensuring that every public resource type works as expected. (PL-51797)
+- Public access on resources was not functioning correctly when a project had multiple public resource types. Only the first resource type marked as public was registered internally in Access Control. This issue has been resolved. Now, public access is correctly registered for all resource types marked as public within a project, ensuring that every public resource type works as expected. (PL-51797)
 
-SSH type deployment errors were not providing clear information, and delegate tasks continued beyond the maximum broadcast rounds. The issue has been resolved by failing the delegate task after the maximum broadcast rounds are completed. A correct error message will now be displayed to improve clarity. (PL-51241)
+- SSH type deployment errors were not providing clear information, and delegate tasks continued beyond the maximum broadcast rounds. The issue has been resolved by failing the delegate task after the maximum broadcast rounds are completed. A correct error message will now be displayed to improve clarity. (PL-51241)
 
-The **Explore Plans** button failed to redirect to the Plans page. Resolved the button routing issue to ensure the **Explore Plans** button now correctly redirects to the Plans page. (PL-49190, ZD-62009)
+- The **Explore Plans** button failed to redirect to the Plans page. Resolved the button routing issue to ensure the **Explore Plans** button now correctly redirects to the Plans page. (PL-49190, ZD-62009)
 
-New users accepting an invitation and landing on the Get Started page encountered a 404 error. New users will now be redirected to the correct page upon accepting an invitation. (PL-51173) 
+- New users accepting an invitation and landing on the Get Started page encountered a 404 error. New users will now be redirected to the correct page upon accepting an invitation. (PL-51173) 
 
 ## June 2024
 
