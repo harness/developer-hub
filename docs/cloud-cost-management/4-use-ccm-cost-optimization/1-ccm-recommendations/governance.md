@@ -4,7 +4,7 @@ description: Optimize AWS costs with asset governance recommendations
 # sidebar_position: 2
 ---
 
-# Optimize AWS costs with asset governance recommendations
+# Optimize AWS/Azure/GCP costs with asset governance recommendations
 
 Harness Cloud Asset Governance provides tools to optimize your cloud spend and avoid unnecessary costs. By leveraging these recommendations, you can better control your cloud expenses while ensuring that your cloud infrastructure is optimized for maximum efficiency and cost-effectiveness.
 
@@ -15,25 +15,30 @@ You can view the recommendations for all of your Cloud accounts on the recommend
 
    <DocImage path={require('./static/Overviewpg2.png')} width="90%" height="90%" title="Click to view full size image" />
 
-The following resource types can be utilized optimally by creating governance rules:
+The following resources can be optimized with Asset Governance:
 
-### AWS Resource Coverage (Comprehensive list)
+### AWS Resource Coverage 
 
 - EC2 instances
+- EBS
+- ELB
+- Cache-cluster
 - S3 buckets
 - Lambda functions
 - RDS (Relational Database Service) instances
 - CloudFormation stacks
 
-### Azure Resource Coverage (Comprehensive list)
+### Azure Resource Coverage 
 
 - Virtual Machines (VMs)
 - Storage accounts
 - App services
 - Cosmos DB accounts
+- SQL server
+- PostgreSQL servers
 - Key Vaults
 
-### GCP Resource Coverage (Comprehensive list)
+### GCP Resource Coverage 
 
 - Compute Engine instances
 - Cloud Storage buckets
@@ -65,7 +70,7 @@ The following resource types can be utilized optimally by creating governance ru
 3. There are two tabs present on the window - "Open Recommendations" and "Applied Recommendations". Open Recommendation tab shows all the recommendations that are currently available for applying and the potential monthly savings that the user can achieve if they are applied. On the other hand, Applied Recommendations show all the recommendations that have already been applied and the total savings achieved with their application. 
 4. The recommendations window allows you to put filters on the recommendations to see the result as per convenience. Kindly choose "Governance" in "Recommendation Type" filter for all governance recommendations. Currently, these are filters supported:
 
-  <DocImage path={require('./static/filtersAG.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/filter2.png')} width="60%" height="60%" title="Click to view full size image" />
 
 For more information about Asset Governance in CCM, please refer to the links below:
 - [Governance for AWS](https://developer.harness.io/docs/category/governance-for-aws)
