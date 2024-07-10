@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-07-01T10:00
+date: 2024-07-09T10:00
 sidebar_position: 4
 ---
 
@@ -46,6 +46,16 @@ Six months after a delegate image is released, the delegate reaches End of Suppo
 For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
+
+## July
+
+### Version 24.07.83205 <!--  July 9, 2024 -->
+
+#### Hotfix
+
+- When the feature flag `CDS_PERFORM_SHELL_SCRIPT_HOST_CAPABILITY` is enabled, Shell script steps will perform host capability checks. (CDS-97512, ZD-66326, ZD-66349)
+
+- Script execution was failing during Command step execution for WinRM deployments with a Kerberos auth type when environment variables contained the characters `\v`, `\b`, or `\f`. Now, when the feature flag `CDS_ESCAPE_ENV_VARS_FOR_WINRM_KERBEROS` is enabled, the environment variables will be escaped and script execution will pass. (CDS-97690)
 
 ## June 2024
 
