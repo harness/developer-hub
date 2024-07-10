@@ -49,18 +49,27 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ### Version 1.45.5
 
-#### New Features and Enhancement
+#### New features and enhancements
 
-**Bi-Directional Sync Health Status for Git Sync**
+- **Bi-Directional Sync Health Status for Git Sync**
 
 We have introduced a Git Sync status page for Harness NG. Once you have synced your Harness entities with your Git repository, you can view bidirectional activity between Harness and your repository using the Bi-Directional Sync Health Status feature. For each entitiy, you can see file path, commit message, status of the last sync as well as the payload. Refer to Harness [Git Sync health Page](/docs/platform/git-experience/git-sync-health-page) for more information. (PIPE-16865)
 
 
-**HTTP support HTTPS Authentication for Terraform and Terragrunt Modules**
+- **HTTP support HTTPS Authentication for Terraform and Terragrunt Modules**
 
 You can now fetch modules for Terraform and Terragrunt via HTTPS authentication using GitHub, Bitbucket, and GitLab connectors(CDS-95361)
 
-#### Behavior Changes
+- **API to get execution details along with input yaml that was passed during the execution**
+
+You can fetch a lite version of execution details along with input yaml that was passed during the execution with help of an API.(PIPE-19713)
+
+- Go version has been updated to `1.22.3` for the GitOps Service and GitOps Agent. (CDS-97613)
+
+- ArgoCD version packaged with harness gitops agent has been upgraded to `v2.10.10`. (CDS-97420)
+
+
+#### Behavior changes
 
 - Previously, when the verify step failed, and an action was taken based on the failure strategy or manual intervention, the title was always shown as **Manual Intervention**. (CDS-97985, ZD-65113)
 
@@ -69,7 +78,7 @@ You can now fetch modules for Terraform and Terragrunt via HTTPS authentication 
 
    - **Manual Intervention** is displayed when the action is performed through manual intervention.
 
-#### Fixed Issue
+#### Fixed issues
 
 - The left stage/steps was overlapping with the pipeline UI. The issue is fixed now. (PIPE-20028, ZD-65628)
 - The trigger was getting invoked without an artifact push. The issue is fixed now. (PIPE-19806)
