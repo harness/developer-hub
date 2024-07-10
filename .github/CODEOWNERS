@@ -38,8 +38,8 @@ README.md @ravilach
 /docs/code-repository/ @pwolf-harness @hitesharinga @dewan-ahmed @lkilpatrick-harness
 
 # STO Docs
-/docs/security-testing-orchestration/ @douglas-j-bothwell
-/docs/faqs/security-testing-orchestration/ @douglas-j-bothwell
+/docs/security-testing-orchestration/ @tejakummarikuntla
+/docs/faqs/security-testing-orchestration/ @tejakummarikuntla
 
 # CCM Docs
 /docs/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss @nikunj-badjatya
@@ -100,7 +100,7 @@ README.md @ravilach
 /docs/faqs/cloud-cost-management-faqs/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
 
 # STO FAQs
-/docs/faqs/security-testing-orchestration/ @douglas-j-bothwell
+/docs/faqs/security-testing-orchestration/ @tejakummarikuntla
 
 # Chaos FAQs
 /kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya
@@ -150,7 +150,7 @@ README.md @ravilach
 /release-notes/software-engineering-insights.md @codewdhruv
 
 # STO Release Notes
-/release-notes/security-testing-orchestration.md @douglas-j-bothwell
+/release-notes/security-testing-orchestration.md @tejakummarikuntla
 
 # SMP
 /release-notes/self-managed-enterprise-edition.md @brian-f-harness @saifeemustafaqharness
@@ -194,7 +194,7 @@ README.md @ravilach
 /kb/continuous-error-tracking/ @M-Tsur
 
 #STO KB
-/kb/security-testing-orchestration/ @douglas-j-bothwell
+/kb/security-testing-orchestration/ @tejakummarikuntla
 
 #RA
 /kb/reference-architectures/ @rssnyder @suranc
@@ -238,4 +238,4 @@ src/components/Roadmap/data/srmData.ts @sunilgupta-harness
 src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla
 
 #STO Roadmap
-src/components/Roadmap/data/stoData.ts @douglas-j-bothwell
+src/components/Roadmap/data/stoData.ts @tejakummarikuntla
