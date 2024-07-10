@@ -37,6 +37,12 @@ You can add an encrypted file secrets at the project, organization, and account 
 8. Select **Save**.
 
 
+  :::warning
+
+   File secrets are only created as Inline secrets. Inline secrets deleted in Harness are also deleted from the external secrets manager. Harness recommends that you always back up these secrets.
+
+   :::
+
 ## Reference an encrypted file secret
 
 You can reference a encrypted file secret in any resource that allows files, such as SSH key files for SSH credentials, authentication keys for connectors, and steps in pipelines that ingest files.
