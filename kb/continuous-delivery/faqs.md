@@ -3236,6 +3236,92 @@ AIDA is enabled on the Harness platform by default. To read more on the security
 Yes, we can use exported variables to reference a step group variable without knowing the step group ID.
 One can follow the syntax : `<+exportedVariables.getValue("stepGroup.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>` This method allows you to reference the variable by its alias name instead of needing to know the step group ID. For more details, you can refer to the Harness documentation on [Scoping output variables using aliases](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#scoping-output-variables-using-aliases)
 
+#### How should I execute specific deployment steps on different types of servers within a single environment setup in Harness?
+To execute specific deployment steps on different types of servers within a single environment setup in Harness, you should use the Matrix Looping Strategy. This method allows you to set up a matrix with different server types (like agent servers and WAS servers) and perform tailored deployment steps for each combination. By configuring this matrix correctly, you ensure that each step runs only on the intended server types.
+
+You can customize server configurations in Harness by leveraging the environment infrastructure settings and using templates. This involves dynamically defining server lists based on the environment specifics. By using variable expressions to reference these configurations, your pipeline remains flexible across various environments without requiring manual adjustments each time.
+
+To execute steps on multiple target instances in Harness using expressions, utilize Reference Hosts expressions within your step configurations. This feature allows you to specify exact hosts where each step should execute. For instance, using <+instance.hostName> ensures that specific tasks run only on servers identified by their names. This capability is especially useful in complex deployment scenarios where tasks need precise distribution across different server types.
+
+#### What expressions can I use to conditionally execute steps in a Harness deployment pipeline?
+For conditional step execution in a Harness deployment pipeline, leverage JEXL (Java Expression Language) expressions. Specifically, <+instance.hostName> helps determine which host should execute a particular step. For example, <+instance.hostName> matches 'Test1' will execute the step exclusively on Test1 servers, while <+instance.hostName> matches 'Test2*' confines execution to Test2 servers.
+
+#### Can you provide an example configuration for using the Matrix Looping Strategy in a Harness deployment?
+Certainly! Here’s an example YAML configuration illustrating the Matrix Looping Strategy in action:
+```
+loop:
+  matrix:
+    - name: Test1
+      items:
+        - Test1-server-1
+        - Test1-server-2
+    - name: Test2
+      items:
+        - Test2-server-1
+        - Test2-server-2
+steps:
+  - name: Step 1 - Agent
+    commands:
+      - command: echo "Step 1 - Test1 on <+matrix.Test1>"
+  - name: Step 2 - WAS
+    commands:
+      - command: echo "Step 2 - Test2 on <+matrix.Test2>"
+```
+This configuration defines a matrix with dimensions Test1 and Test2, each listing specific server instances. The steps section outlines actions to be executed on each combination of servers.
+
+#### How do I correctly configure the 'connector_ref' for an org-level 'import template' API request?
+To correctly configure the 'connector_ref' for an organization-level 'import template' API request in Harness, prepend the connector reference with "org.". For example, if your connector is named "connector_github", the correct reference would be "org.connector_github". This prefix ensures the API recognizes the connector as belonging to the organization.
+
+#### How can I trigger a pipeline based on the status of another pipeline in a different project within the same organization?
+Certainly! A Custom Trigger is ideal for this scenario:
+
+Custom Triggers allow you to initiate a pipeline based on the status or output of another pipeline in a different project within the same organization. Configure the trigger to monitor the completion or specific status of the referenced pipeline. Once the condition is met, the desired pipeline will automatically trigger.
+
+Alternatively, consider using pipeline chaining to link multiple pipelines chaining, where the output of one pipeline serves as input for the next. This approach enables orchestration of dependent pipelines in a controlled sequence.
+
+For more details on pipeline chaining, refer to the [Pipeline Chaining](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/).
+
+If you could share more specifics about why custom triggers didn't fit your solution, we might be able to offer more targeted advice. Sometimes, small configuration tweaks can make a significant difference.
+
+#### How do I Stop/Interrupt the execution of a pipeline from a Bash/Shell script?
+Stopping a pipeline directly from a Bash/Shell script isn't feasible. However, you can achieve this using the Harness API by making an API call to interrupt the pipeline. Here's an example using the curl command to execute an Interrupt API call:
+[Execute an Interrupt API](https://apidocs.harness.io/tag/Pipeline-Execute#operation/putHandleInterrupt)
+
+#### How can I enforce a specific stage when another stage is added in a pipeline?
+To enforce a specific stage when adding another stage in a pipeline, you can implement the following policy:
+
+```
+package main
+
+deny[msg] {
+    input.request.object.metadata.labels["stage"] == "production"
+    not input.request.object.metadata.labels["stage"] == "approval"
+    msg := "Production stage requires approval stage"
+}
+```
+This policy ensures that the "approval" stage must be included whenever the "production" stage is added, enforcing necessary approvals in your pipeline.
+
+#### How can I prevent users from creating environment and service overrides?
+To restrict users from creating environment and service overrides, adjust the permissions in the Harness RBAC (Role-Based Access Control):
+
+Configure the permissions to remove the "Create/Edit" privileges for Service and Environment for the specified user or user group. This prevents them from creating new overrides or modifying existing ones.
+
+#### How can I verify if any previous stages in a pipeline have been skipped?
+To ensure no previous stages in a pipeline have been skipped, use this policy:
+
+```
+package main
+
+deny[msg] {
+    input.eventType == "stage" # Check if the event type is a stage
+    input.stage.status == "SKIPPED" # Check if the current stage is skipped
+    input.pipeline.stages[_].status == "SKIPPED" # Check if any previous stage is skipped
+    input.pipeline.stages[_].order < input.stage.order # Check if the previous stage order is less than the current stage order
+    msg := "Previous stage(s) have been skipped"
+}
+```
+This policy denies evaluation if any previous stages have been skipped, ensuring sequential execution in your pipeline.
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
