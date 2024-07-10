@@ -89,11 +89,11 @@ Each CI pipeline does the following:
 - Runs 5 parallel steps (100 sec sleep)
 - Runs template with 2 parallel steps (140 sec sleep)
 
-Projects : 1  
-Pipelines : 3000  
-Stages per pipeline : 1  
-Delegates : 15 (1cpu/4gi)  
-Trigger type : webhook \
+Projects: 1  
+Pipelines: 3000  
+Stages per pipeline: 1  
+Delegates: 15 (1cpu/4gi)  
+Trigger type: webhook \
 Test class: `CI_PIPELINE_WEBHOOK_RUN`
 
 > Result: **PASS**
@@ -108,10 +108,10 @@ Each CD pipeline does the following:
    - Rolling deploy
    - K8s Delete
 
-Projects : 1  
-Pipelines : 2300  
-Stages per pipeline : 1   
-Delegates : 60 (1cpu/4gi)
+Projects: 1  
+Pipelines: 2300  
+Stages per pipeline: 1   
+Delegates: 60 (1cpu/4gi) \
 Test class: `CD_PIPELINE_WEBHOOK_RUN`
 
 > Result: **PASS**
@@ -381,7 +381,7 @@ Projects: 1 \
 Pipelines: 2000 \
 Stages per pipeline: 1 \
 Delegates: 47 (1cpu/4gi) \
-Test class: CD_PIPELINE_RUN
+Test class: `CD_PIPELINE_RUN`
 
 > Result: **PASS**
 Avg Execution Time: **5.20min**
