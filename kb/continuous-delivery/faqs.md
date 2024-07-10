@@ -3272,6 +3272,16 @@ Yes, environment variables and overrides should be removed from the YAML of Envi
 
 No, explicit import is not needed. The script should be enhanced to handle the removal of v1 resource usage and the creation of v2 resources.
 
+#### Is there a way to declare var1, var2, and var3 as single files and reference them out of a single file override?
+
+Currently, Harness does not support declaring variable file overrides. Overrides need to be defined individually. 
+
+#### Why do I sometimes not see pods detected in active service deployment?
+
+There are instances where if the pod name is long, we are not able to detect it as an active service.
+As a first step to unblock you here can you please change the configuration as follows - 
+Use ```release-<+INFRA_KEY_SHORT_ID>``` instead of ```<+release-<+INFRA_KEY>``` in their release name.
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
