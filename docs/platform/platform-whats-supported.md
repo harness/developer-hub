@@ -236,12 +236,12 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | Flag                                          | Description |
 |-----------------------------------------------|-------------|
 | `PL_UPDATE_EMAILS_VIA_SCIM`                   |             |
-| `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES`        | When activated, it prevents sending email invitations to users of accounts using SSO for authentication during onboarding.            |
-| `PL_LDAP_PARALLEL_GROUP_SYNC`                 | Enable User Group sync operation to fetch data from the LDAP server in parallel. Only enable this if the LDAP server can handle the load.            |
-| `PL_NEW_SCIM_STANDARDS`                       | Enabling the `PL_NEW_SCIM_STANDARDS` feature flag ensures compliance with SCIM 2.0 standards by including the meta fields `createdAt`, `lastUpdated`, `version`, and `resourceType in CRUD operation responses on users or user groups.            |
-| `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM` | Enabling this Feature Flag will let you use delegate credentials to access the Google Cloud Platform Secret Manager.            |
+| `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES`        | When activated, it prevents sending email invitations to users of accounts using SSO for authentication during onboarding. |
+| `PL_LDAP_PARALLEL_GROUP_SYNC`                 | Enable User Group sync operation to fetch data from the LDAP server in parallel. Only enable this if the LDAP server can handle the load. |
+| `PL_NEW_SCIM_STANDARDS`                       | Enabling the `PL_NEW_SCIM_STANDARDS` feature flag ensures compliance with SCIM 2.0 standards by including the meta fields `createdAt`, `lastUpdated`, `version`, and `resourceType in CRUD operation responses on users or user groups. |
+| `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM` | Enabling this Feature Flag will let you use delegate credentials to access the Google Cloud Platform Secret Manager. |
 | `PL_DELEGATE_TASK_CAPACITY_CHECK`             |             |
-| `PL_FAVORITES`                                | Allows you to set the frequently accessed projects and connectors as favorites.            |
-| `PL_ALLOW_TO_SET_PUBLIC_ACCESS`               | Allows pipeline executions marked for public view to be accessed without authentication. You can share execution URLs, including console logs, without requiring users to sign in.            |
-| `PL_GCP_OIDC_AUTHENTICATION`                  | Enabling this feature flag allows GCP connectors using OpenID Connect (OIDC) to let Harness communicate directly with GCP through OIDC.            |
-| `PL_CENTRAL_NOTIFICATION`                     | Enable/disable Centralized Notifications Management            |
+| `PL_FAVORITES`                                | Allows you to set the frequently accessed projects and connectors as favorites. |
+| `PL_ALLOW_TO_SET_PUBLIC_ACCESS`               | Allows pipeline executions marked for public view to be accessed without authentication. You can share execution URLs, including console logs, without requiring users to sign in. |
+| `PL_GCP_OIDC_AUTHENTICATION`                  | Enabling this feature flag allows GCP connectors using OpenID Connect (OIDC) to let Harness communicate directly with GCP through OIDC. |
+| `PL_CENTRAL_NOTIFICATION`                     | Enable/disable Centralized Notifications Management. |
