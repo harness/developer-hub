@@ -303,9 +303,9 @@ spec:
 
 ### Advanced fault tunables
 
-- `proxyPort`: Port where the proxy listens for requests and responses.
-- `serviceDirection`: Direction of the flow of control, either `ingress` or `egress`.
-- `networkInterface`: Network interface used for the proxy.
+- **proxyPort**: Port where the proxy listens for requests and responses.
+- **serviceDirection**: Direction of the flow of control, either `ingress` or `egress`.
+- **networkInterface**: Network interface used for the proxy.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -348,13 +348,13 @@ spec:
 
 ### Advanced filters
 
-- `headersFilters`: The HTTP request headers filters, that accept multiple comma-separated headers in the format of `key1:value1,key2:value2`.
-- `methods`: The HTTP request method type filters, that accept comma-separated HTTP methods in upper case, that is, `GET,POST`.
-- `queryParams`: The HTTP request query parameters filter, accepts multiple comma-separated query parameters in the format of `param1:value1,param2:value2`.
-- `sourceHosts`: Comma-separated source host names filters, indicating the origin of the HTTP request. This is relevant to the `ingress` type, specified by `SERVICE_DIRECTION` input variable.
-- `sourceIPs`: Comma-separated source IPs filters, indicating the origin of the HTTP request. This is specifically relevant to the `ingress` type, specified by `serviceDirection` input variable.
-- `destinationHosts`: Comma-separated destination host names filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `serviceDirection` input variable.
-- `destinationIPs`: Comma-separated destination IPs filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `serviceDirection` input variable.
+- **headersFilters**: The HTTP request headers filters, that accept multiple comma-separated headers in the format of `key1:value1,key2:value2`.
+- **methods**: The HTTP request method type filters, that accept comma-separated HTTP methods in upper case, that is, `GET,POST`.
+- **queryParams**: The HTTP request query parameters filter, accepts multiple comma-separated query parameters in the format of `param1:value1,param2:value2`.
+- **sourceHosts**: Comma-separated source host names filters, indicating the origin of the HTTP request. This is relevant to the `ingress` type, specified by `SERVICE_DIRECTION` input variable.
+- **sourceIPs**: Comma-separated source IPs filters, indicating the origin of the HTTP request. This is specifically relevant to the `ingress` type, specified by `serviceDirection` input variable.
+- **destinationHosts**: Comma-separated destination host names filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `serviceDirection` input variable.
+- **destinationIPs**: Comma-separated destination IPs filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `serviceDirection` input variable.
 
 The following YAML snippet illustrates the use of this input variable:
 
