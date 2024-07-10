@@ -3236,6 +3236,15 @@ AIDA is enabled on the Harness platform by default. To read more on the security
 Yes, we can use exported variables to reference a step group variable without knowing the step group ID.
 One can follow the syntax : `<+exportedVariables.getValue("stepGroup.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>` This method allows you to reference the variable by its alias name instead of needing to know the step group ID. For more details, you can refer to the Harness documentation on [Scoping output variables using aliases](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#scoping-output-variables-using-aliases)
 
+#### How to define variable at Env level while using v2
+
+Variables can be created in the Global Environment section of Overrides
+
+#### Which syntax we need to use to refer a service override variable <+serviceVariableOverrides.VARIABLE_NAME> or <+serviceVariables.VARIABLE_NAME>
+
+For referring any override please use <+serviceVariables.VARIABLE_NAME> 
+If you want to Override service variables in step groups then you can use <+serviceVariableOverrides.VARIABLE_NAME> for more details go though the doc https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/#override-service-variables-in-step-groups
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
