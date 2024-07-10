@@ -49,6 +49,16 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## June 2024
 
+### Version 24.07.83205 <!--  July 10, 2024 -->
+
+#### Hotfix
+
+- When the feature flag CDS_PERFORM_SHELL_SCRIPT_HOST_CAPABILITY is enabled Shell script step will perform host capability check (CDS-97512)
+
+- During command step execution with winrm deployment and auth type as Kerberos if enviornment variables contained the charachters [\v, \b, \f] 
+the script execution was failing. When the feature flag CDS_ESCAPE_ENV_VARS_FOR_WINRM_KERBEROS is enabled the enviornment variables would be escaped
+and script execution will pass (CDS-97690)
+
 ### Version 24.07.82905 <!--  July 1, 2024 -->
 
 #### Hotfix
