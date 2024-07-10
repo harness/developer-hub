@@ -81,7 +81,7 @@ permissions:
       </tr>
       <tr>
         <td> STATUS_CODE </td>
-        <td> Modified status code for the api response </td>
+        <td> Modified status code for the API response. </td>
         <td> For more information, go to <a href="#status-code">status code </a>. </td>
       </tr>
     </table>

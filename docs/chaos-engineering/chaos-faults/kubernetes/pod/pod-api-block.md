@@ -113,7 +113,7 @@ permissions:
       <tr>
         <td> SOURCE_IPS </td>
         <td> This includes comma-separated source IPs as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
-        <td> For more information, go to <a href="#advanced-filters">source ips</a>.</td>
+        <td> For more information, go to <a href="#advanced-filters">source IPs</a>.</td>
       </tr>
       <tr>
         <td> DESTINATION_HOSTS </td>
@@ -143,12 +143,12 @@ permissions:
       <tr>
         <td> DESTINATION_PORTS </td>
         <td> Comma-separated list of the destination service or host ports for which `egress` traffic should be affected. </td>
-        <td> Default: 80,8443. For more information, go to <a href="#destination-ports">destination ports</a></td>
+        <td> Default: 80,8443. For more information, go to <a href="#destination-ports">destination ports</a>. </td>
       </tr>
       <tr>
         <td> HTTPS_ENABLED </td>
         <td> Facilitate HTTPS support for both incoming and outgoing traffic. </td>
-        <td> Default: false. For more information, go to <a href="#https">HTTPS</a></td>
+        <td> Default: false. For more information, go to <a href="#https">HTTPS</a>.</td>
       </tr>
       <tr>
         <td> CUSTOM_CERTIFICATES </td>
@@ -158,12 +158,12 @@ permissions:
       <tr>
         <td> HTTPS_ROOT_CERT_PATH </td>
         <td> Provide the root CA certificate directory path. </td>
-        <td> This setting must be configured if the root CA certificate directory differs from /etc/ssl/certs. Go to [root Linux](https://go.dev/src/crypto/x509/root_linux.go) for the default certificate directory based on various Linux distributions. For more information, go to <a href="#https">HTTPS</a></td>
+        <td> This setting must be configured if the root CA certificate directory differs from /etc/ssl/certs. Go to [root Linux](https://go.dev/src/crypto/x509/root_linux.go) for the default certificate directory based on various Linux distributions. For more information, go to <a href="#https">HTTPS.</a></td>
       </tr>
       <tr>
         <td> HTTPS_ROOT_CERT_FILE_NAME </td>
         <td> Provide the root CA certificate file name. </td>
-        <td> This setting must be configured if the root CA certificate file name differs from ca-certificates.crt. Go to [root Linux] (https://go.dev/src/crypto/x509/root_linux.go) for the default certificate file names based on various Linux distributions. For more information, go to <a href="#https">HTTPS</a></td>
+        <td> This setting must be configured if the root CA certificate file name differs from ca-certificates.crt. Go to [root Linux] (https://go.dev/src/crypto/x509/root_linux.go) for the default certificate file names based on various Linux distributions. For more information, go to <a href="#https">HTTPS.</a></td>
       </tr>
       <tr>
         <td> NETWORK_INTERFACE </td>
@@ -285,8 +285,8 @@ spec:
 
 Comma-separated list of the destination service or host ports for which `egress` traffic should be affected as a result of chaos testing on the target application. Tune it by using the `DESTINATION_PORTS` environment variable.
 
-:::info note
-It is applicable only for the `egress` `SERVICE_DIRECTION`.
+:::tip
+It is applicable only when the `SERVICE_DIRECTION` environment variable is set to `egress` .
 :::
 
 The following YAML snippet illustrates the use of this environment variable:

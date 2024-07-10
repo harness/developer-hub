@@ -56,9 +56,11 @@ This is provided behind the `FF: CDS_CONTAINER_STEP_GROUP_AWS_S3_DOWNLOAD`
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/manifest-sources-for-serverless-lambda)
 
 ### Does Harness support the 'serverless-fintch' plugin in native serverless deployment?
+
 Currently, Harness does not support the 'serverless-finch' plugin natively.
 
 ###  How to install poetry on the Harness Serverless image (harnessdev/serverless-package:3.30.1-1.1.0) to avoid "command not found" errors?
+
 While Harness offers a new image (harnessdev/serverless-preparerollback:3.30.1-2.0.0) that installs package.json dependencies, you can build a custom image with poetry using a Dockerfile like this (replace in pipeline): 
 
 FROM harnessdev/serverless-package:3.30.1-1.1.0
@@ -67,3 +69,7 @@ RUN apk add --no-cache py3-pip && pip install poetry
 :::note
 This approach locks you into the pre-installed Python version. Consider using a custom image for specific version control.
 :::
+
+### In a canary deployment, how do we ensure that tests are routed specifically to the canary pods?
+
+By default, canary deployments automatically create the canary pods, and the service defined in the manifest routes traffic to both the canary and stable pods. To ensure that tests are routed specifically to the canary pods, a dedicated service can be set up or specific routing rules can be configured in the load balancer. This method directs a portion of the traffic, particularly the test traffic, exclusively to the canary pods. This approach allows isolation and testing of the canary version without impacting the stable pods.

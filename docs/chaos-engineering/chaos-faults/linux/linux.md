@@ -249,6 +249,23 @@ Linux time chaos injects chaos to change the time of the Linux machine.
 
 <FaultDetailsCard category="linux">
 
+### Linux API block
+
+Linux API block injects API block fault into a Linux machine for a specific duration through path filtering. This results in the API not being able to send responses for the requests it receives.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Validates how well your system can handle disruptions in API services for a specific pod.
+- Ensures that your load balancer is effectively distributing traffic to healthy pods in the cluster.
+- Checks if your system's failover mechanisms work as expected when one of the pods becomes unresponsive.
+- Evaluates if your system can gracefully degrade performance when a specific component (in this case, a pod) is experiencing issues.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
 ### Redis cache limit
 
 Redis cache limit fault limits the amount of memory used by a Redis cache. The original limit is restored after the chaos duration.

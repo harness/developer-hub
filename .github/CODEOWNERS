@@ -32,14 +32,14 @@ README.md @ravilach
 /docs/continuous-delivery/ @krishi0408 @SushrutHarness
 
 # Continuous Integration Docs
-/docs/continuous-integration/ @nofarblue @rustd
+/docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed @lkilpatrick-harness
 
 # CODE Docs
-/docs/code-repository/ @pwolf-harness @hitesharinga @dewan-ahmed
+/docs/code-repository/ @pwolf-harness @hitesharinga @dewan-ahmed @lkilpatrick-harness
 
 # STO Docs
-/docs/security-testing-orchestration/ @douglas-j-bothwell
-/docs/faqs/security-testing-orchestration/ @douglas-j-bothwell
+/docs/security-testing-orchestration/ @tejakummarikuntla
+/docs/faqs/security-testing-orchestration/ @tejakummarikuntla
 
 # CCM Docs
 /docs/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss @nikunj-badjatya
@@ -100,7 +100,7 @@ README.md @ravilach
 /docs/faqs/cloud-cost-management-faqs/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
 
 # STO FAQs
-/docs/faqs/security-testing-orchestration/ @douglas-j-bothwell
+/docs/faqs/security-testing-orchestration/ @tejakummarikuntla
 
 # Chaos FAQs
 /kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya
@@ -129,10 +129,10 @@ README.md @ravilach
 /release-notes/continuous-error-tracking.md @M-Tsur
 
 # CI Release Notes
-/release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed
+/release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed @lkilpatrick-harness
 
 # CODE Release Notes
-/release-notes/code-repository.md @pwolf-harness @hitesharinga @dewan-ahmed
+/release-notes/code-repository.md @pwolf-harness @hitesharinga @dewan-ahmed @lkilpatrick-harness
 
 # Delegate Release Notes
 /release-notes/delegate.md @brian-f-harness @saifeemustafaqharness
@@ -150,7 +150,7 @@ README.md @ravilach
 /release-notes/software-engineering-insights.md @codewdhruv
 
 # STO Release Notes
-/release-notes/security-testing-orchestration.md @douglas-j-bothwell
+/release-notes/security-testing-orchestration.md @tejakummarikuntla
 
 # SMP
 /release-notes/self-managed-enterprise-edition.md @brian-f-harness @saifeemustafaqharness
@@ -166,8 +166,11 @@ README.md @ravilach
 # Overall KB
 /kb/ @deepanshuHarness
 
+# Drone KB
+/kb/continuous-integration/drone-faqs.md @jimsheldon
+
 # CI KB
-/kb/continuous-integration/ @nofarblue @rustd @deepanshuHarness @dewan-ahmed
+/kb/continuous-integration/ @nofarblue @rustd @deepanshuHarness @dewan-ahmed @lkilpatrick-harness
 
 # CD KB
 /kb/continuous-delivery/ @krishi0408 @SushrutHarness
@@ -191,7 +194,7 @@ README.md @ravilach
 /kb/continuous-error-tracking/ @M-Tsur
 
 #STO KB
-/kb/security-testing-orchestration/ @douglas-j-bothwell
+/kb/security-testing-orchestration/ @tejakummarikuntla
 
 #RA
 /kb/reference-architectures/ @rssnyder @suranc
@@ -208,10 +211,10 @@ src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness
 src/components/Roadmap/data/cdData.ts @krishi0408 @neelanjan00 @SmritiSatya
 
 #CI Roadmap
-src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed
+src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed @lkilpatrick-harness
 
 #Code Roadmap
-src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga @dewan-ahmed
+src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga @dewan-ahmed @lkilpatrick-harness
 
 #FF Roadmap
 src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
@@ -235,4 +238,4 @@ src/components/Roadmap/data/srmData.ts @sunilgupta-harness
 src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla
 
 #STO Roadmap
-src/components/Roadmap/data/stoData.ts @douglas-j-bothwell
+src/components/Roadmap/data/stoData.ts @tejakummarikuntla
