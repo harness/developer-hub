@@ -60,7 +60,7 @@ To create a text secret:
 
   :::warning
 
-   Inline secrets of text types if deleted from Harness will also delete the secrets from the external secrets manager. It is recommended to always take a backup of these secrets.
+   Inline secrets of text types deleted in Harness are also deleted from the external secrets manager. Harness recommends that you always back up these secrets.
    :::
    
 
