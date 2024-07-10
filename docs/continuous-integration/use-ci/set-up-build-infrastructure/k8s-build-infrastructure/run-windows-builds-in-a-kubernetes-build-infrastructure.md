@@ -48,7 +48,7 @@ If your build process needs to run Docker commands, [Docker-in-Docker (DinD) wit
 
 :::info
 
-If you use a custom Windows image in a Run step, the container must be based on [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore) version 1809 and must include `netapi32.dll`. To include this in your image, add the following command to the Dockerfile:
+If you use a custom Windows image in a Run step, the base image for the custom image must include the `netapi32.dll` file. To include this file in your image, add the following command to the Dockerfile:
 
 ```
 COPY --from=core /windows/system32/netapi32.dll /windows/system32/netapi32.dll
