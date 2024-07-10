@@ -252,10 +252,10 @@ Linux time chaos injects chaos to change the time of the Linux machine.
 ### Redis cache limit
 
 Redis cache limit fault limits the amount of memory used by a Redis cache. The original limit is restored after the chaos duration.
-  
+
 <Accordion color="green">
 <summary>Use cases</summary>
-  
+
 - Determines the resilience of Redis-dependant applications on frequent cache misses that occur due to a low cache size.
 
 </Accordion>
@@ -269,9 +269,9 @@ Redis cache expire expires a given key (or all keys) for a specific duration. Du
 
 <Accordion color="green">
 <summary>Use cases</summary>
-  
+
 - Determines the resilience of Redis-dependant application when a key expires on a Linux machine.
-  
+
 </Accordion>
 
 </FaultDetailsCard>
@@ -286,6 +286,22 @@ Linux Redis Sentinel stop fault stops the [Redis Sentinel server](https://redis.
 <summary>Use cases</summary>
 
 - Determines the resilience of Redis-dependant applications on frequent cache misses that occur due to a low cache size.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux API latency
+
+Linux API latency injects API request and response latency into a Linux machine by starting proxy server and redirecting the traffic through it. It induces API call latency that adds a time delay before sending a response.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Simulate high-traffic scenarios and test the resilience and performance of an application or API, where the API may experience delays due to heavy load.
+- Simulate situations where an API request takes longer than expected to respond. By introducing latency, you can test how well your application handles timeouts and implements appropriate error-handling mechanisms.
+- Helps test how well the application handles network delays and failures, and if it recovers gracefully when network connectivity is restored.
 
 </Accordion>
 </FaultDetailsCard>

@@ -113,4 +113,11 @@ export const experiments: ExperimentDetails[] = [
     tags: ["linux"],
     category: "linux",
   },
+  {
+    name: "Linux API latency",
+    description:
+      "Linux API latency injects API request and response latency into a Linux machine by starting proxy server and redirecting the traffic through it. It induces API call latency that adds a time delay before sending a response.",
+    tags: ["linux"],
+    category: "linux",
+  },
 ];
