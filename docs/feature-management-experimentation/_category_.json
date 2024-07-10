@@ -1,11 +1,11 @@
 {
-    "label": "Feature Management & Experimentation",
+    "label": "★★ Feature Management & Experimentation",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Feature Management & Experimentation"
+        "title": "★★ Feature Management & Experimentation"
     },
     "customProps": {
         "helpdocs_category_id": "vjolt35atgx",

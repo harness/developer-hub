@@ -11,15 +11,14 @@ import { MODULES } from "@site/src/constants"
   export const docsCards: CardSections = [
     {
       name: "Get started with the basics",
-      description:
-        "",
+      description: "",
       list: [
         {
-          title: "Get started with Feature Management Experimentation",
+          title: "Get started with Feature Management & Experimentation",
           module: MODULES.fme,
           description:
-            "Learn the basics of Harness Feature Management Experimentation.",
-          link: "/docs/category/get-started-with-feature-flags",
+            "Learn the basics of Harness Feature Management & Experimentation.",
+          link: "/docs/category/-get-started-with-fme",
         },
         {
           title: "Create, update, and view Flags",

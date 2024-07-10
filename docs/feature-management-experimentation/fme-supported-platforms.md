@@ -1,7 +1,7 @@
 ---
 title: What's supported in Feature Management & Experimentation
 description: Platforms and technologies supported by Harness FME
-sidebar_label: ★ What's supported
+sidebar_label: ★★ What's supported
 sidebar_position: 10
 ---
 

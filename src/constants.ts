@@ -29,7 +29,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.cd]: 'Continuous Delivery',
     [MODULES.ccm]: 'Cloud Cost Management',
     [MODULES.ff]: 'Feature Flags',
-    [MODULES.fme]: '★ Feature Management & Experimentation',
+    [MODULES.fme]: '★★ Feature Management & Experimentation',
     [MODULES.sto]: 'Security Testing Orchestration',
     [MODULES.srm]: 'Service Reliability Management',
     [MODULES.ce]: 'Chaos Engineering',

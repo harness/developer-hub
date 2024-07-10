@@ -45,6 +45,14 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
+    title: "★★ Feature Management & Experimentation",
+    module: MODULES.fme,
+    icon: "img/icon_ff.svg",
+    description: <>Release new features rapidly and intelligently.</>,
+    link: "docs/category/-get-started-with-fme",
+    type: [docType.Documentation],
+  },
+  {
     title: "Optimize Cloud Costs",
     module: MODULES.ccm,
     icon: "img/icon_ccm.svg",
