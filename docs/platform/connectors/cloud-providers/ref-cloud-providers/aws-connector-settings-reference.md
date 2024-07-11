@@ -476,7 +476,7 @@ These are the current supported deployment swimlanes for AWS OIDC:
 - ECS
 - Kubernetes
 - Terraform
-- Cloudformation
+- CloudFormation
 
 ### Enhanced Subject
 
