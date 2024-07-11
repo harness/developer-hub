@@ -12,6 +12,7 @@ Before you add new content, search for existing FAQs to avoid duplications.
 
 Ensure that your contributions are organized according to the following categories:
 
+- Subscriptions
 - Access Control/RBAC
 - API/Integration
 - Authentication
@@ -37,6 +38,16 @@ Ensure that your contributions are organized according to the following categori
 You can search for a heading, for example, ## Access Control, and add your new FAQ under the category that's appropriate to keep the file's organizational structure.
 
 -->
+
+## Subscriptions
+
+### For Developer 360 subscriptions, how do we remove users who left the company?
+
+Delete the user(s) from the platform. The user will be removed from the Developer license count immediately.
+
+:::note
+This applies to Developer oriented modules: Continuous Integration (CI), Code Repository (CR), Feature Flags (FF), and Internal Developer Portal (IDP). For more information, go to [View and manage subscriptions](/docs/platform/get-started/subscriptions-licenses/subscriptions).
+:::
 
 ## Access Control/RBAC
 
