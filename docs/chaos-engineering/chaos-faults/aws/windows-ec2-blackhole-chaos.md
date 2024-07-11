@@ -5,8 +5,8 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/aws/windows-ec2-blackhole-chaos
 ---
 Windows EC2 blackhole chaos results in loss of access to the given target hosts or IPs by injecting firewall rules. This fault:
-- Degrades the network without marking the EC2 instance as unhealthy (or unworthy) of traffic. This can be resolved by using a middleware that switches the traffic based on certain SLOs (performance parameters). 
-- Limits the impact, that is, blast radius to only the traffic that you wish to test, by specifying the destination hosts or IP addresses. 
+- Degrades the network without marking the EC2 instance as unhealthy (or unworthy) of traffic. This can be resolved by using a middleware that switches the traffic based on certain SLOs (performance parameters).
+- Limits the impact, that is, blast radius to only the traffic that you wish to test, by specifying the destination hosts or IP addresses.
 
 ![Windows EC2 Blackhole Chaos](./static/images/windows-ec2-blackhole.png)
 
@@ -34,7 +34,7 @@ Windows EC2 blackhole chaos determines the performance of the application (or pr
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -54,7 +54,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],
