@@ -26,105 +26,6 @@ Here are AWS faults that you can execute and validate.
 
 <FaultDetailsCard category="aws">
 
-### NLB AZ down
-
-NLB AZ down takes down the access for AZ (Availability Zones) on a target network load balancer for a specific duration. This fault restricts access to certain availability zones for a specific duration.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Tests the application's ability to handle the loss of availability zones and maintain uninterrupted traffic flow.
-- NLB AZ down fault disrupts the traffic routing through the network load balancer, testing the application's resilience to AZ failures.
-- Simulating network failures and verifying the application's ability to recover and redirect traffic appropriately.
-
-</Accordion>
-</FaultDetailsCard>
-
-<FaultDetailsCard category="aws">
-
-### ECS Fargate memory hog
-
-ECS Fargate memory hog generates high memory consumption on a specific container in an ECS Fargate task. This fault:
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Simulates a scenario where a task container consumes excessive memory, causing memory pressure and potential out-of-memory errors.
-- Tests the slowness and allocation capabilities of the ECS Fargate cluster.
-- Testing the ability of the ECS Fargate task to handle memory-intensive workloads and effectively manage memory resources.
-- Evaluating the impact of memory contention on the main container running in the task.
-
-</Accordion>
-</FaultDetailsCard>
-<FaultDetailsCard category="aws">
-
-### Resource access restrict
-
-Resource access restrict restricts access to a specific AWS resource for a specific duration.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Tests the application's resiliency and error handling when access to a critical AWS resource is restricted.
-- Validates the application's ability to handle and recover from temporary resource unavailability.
-- Test the application's response to restricted access to AWS resources, such as ec2, database storage.
-- Evaluate the application's error handling and recovery mechanisms in the face of resource unavailability.
-
-</Accordion>
-</FaultDetailsCard>
-<FaultDetailsCard category="aws">
-
-### ECS container volume detach
-
-ECS container volume detach detaches a volume from a specific container running in an ECS task.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Simulates the detachment of a volume from a task container to test the application's resilience and data management capabilities.
-- Validates the application's ability to handle volume detachment scenarios and recover gracefully.
-- Test the application's response to volume detachment, such as ensuring proper data persistence and handling of volume unavailability.
-- Verifies the application's recovery mechanisms when a volume is detached from a container.
-
-</Accordion>
-</FaultDetailsCard>
-
-<FaultDetailsCard category="aws">
-
-### ECS Fargate CPU Hog
-
-ECS Fargate CPU Hog generates high CPU load on a specific task running in an ECS service.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Simulates a scenario where a task consumes excessive CPU resources, impacting the performance of other main container in the task.
-- Tests the slowness and resource allocation capabilities of the ECS Fargate task.
-- Testing the ability of the ECS Fargate task to handle CPU-intensive workloads and dynamically allocate resources.
-- Evaluating the impact of resource contention on other container running in the task.
-
-</Accordion>
-</FaultDetailsCard>
-
-<FaultDetailsCard category="aws">
-
-### ECS Fargate memory hog
-
-ECS Fargate memory hog generates high CPU load on a specific task running in an ECS service.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Simulates a scenario where a task consumes excessive CPU resources, impacting the performance of other main container in the task.
-- Tests the slowness and resource allocation capabilities of the ECS Fargate task.
-- Testing the ability of the ECS Fargate task to handle CPU-intensive workloads and dynamically allocate resources.
-- Evaluating the impact of resource contention on other container running in the task.
-
-</Accordion>
-</FaultDetailsCard>
-
-<FaultDetailsCard category="aws">
-
 ### ALB AZ down
 
 ALB AZ down takes down the AZ (Availability Zones) on a target application load balancer for a specific duration. This fault restricts access to certain availability zones for a specific duration.
@@ -476,6 +377,74 @@ ECS container CPU hog disrupts the state of infrastructure resources. It induces
 
 <FaultDetailsCard category="aws">
 
+### ECS container HTTP latency
+
+ECS container HTTP latency induces HTTP chaos on containers running in an Amazon ECS (Elastic Container Service) task. This fault introduces latency in the HTTP responses of containers of a specific service using a proxy server, simulating delays in network connectivity or slow responses from the dependent services.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Modifies the HTTP responses of containers in a specified ECS service by starting a proxy server and redirecting traffic through the proxy server.
+- Simulates scenarios where containers experience delays in network connectivity or slow responses from dependent services, which may impact the behavior of your application.
+- Validates the behavior of your application and infrastructure during simulated HTTP latency, such as:
+  - Testing how your application handles delays in network connectivity from containers to dependent services.
+  - Verifying the resilience of your system when containers experience slow responses from dependent services.
+  - Evaluating the impact of HTTP latency on the performance and availability of your application.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS container HTTP modify body
+
+CS container HTTP modify body injects HTTP chaos which affects the request or response by modifying the status code, body, or headers. This is achieved by starting a proxy server and redirecting the traffic through the proxy server.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Tests the application's resilience to erroneous (or incorrect) HTTP response body.
+- Tests the resilience of the ECS application container to erroneous or incorrect HTTP response body.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS container HTTP reset peer
+
+ECS container HTTP reset peer injects HTTP reset on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+
+- It stops the outgoing HTTP requests by resetting the TCP connection for the requests.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- It determines the application's resilience to a lossy (or flaky) HTTP connection.
+- Simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout).
+- Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic).
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS container HTTP status code
+
+ECS container HTTP status code injects HTTP chaos that affects the request (or response) by modifying the status code (or the body or the headers) by starting a proxy server and redirecting the traffic through the proxy server on the target ECS containers.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Tests the ECS task container resilience to erroneous code HTTP responses from the application server.
+- Simulates unavailability of specific API services (503, 404), unavailability of specific APIs for(or from) a given microservice (TBD or Path Filter) (404).
+- Simulates unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x) on ECS task container.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### ECS container IO stress
 
 ECS container IO stress disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.
@@ -558,6 +527,57 @@ This fault helps improve the resilience of the services over time.
 
 <FaultDetailsCard category="aws">
 
+### ECS container volume detach
+
+ECS container volume detach provides a mechanism to detach and remove volumes associated with ECS task containers in an Amazon ECS (Elastic Container Service) task.
+This experiment primarily involves ECS Fargate and doesn't depend on EC2 instances. [They](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Allows you to test and validate the behavior of your ECS tasks when volumes are detached. You can verify the resilience and performance of your application during volume detachment scenarios, ensuring that the containers continue to function as expected.
+- By detaching volumes, you can safely remove the volume associations from the containers without deleting the volumes themselves.
+- By detaching unnecessary volumes, you can optimize the resource utilization within your ECS tasks. This helps to free up storage space and minimize any potential performance impact associated with unused volumes.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS Fargate CPU Hog
+
+ECS Fargate CPU Hog generates high CPU load on a specific task running in an ECS service.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Simulates a scenario where a task consumes excessive CPU resources, impacting the performance of other main container in the task.
+- Tests the slowness and resource allocation capabilities of the ECS Fargate task.
+- Testing the ability of the ECS Fargate task to handle CPU-intensive workloads and dynamically allocate resources.
+- Evaluating the impact of resource contention on other container running in the task.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS Fargate memory hog
+
+ECS Fargate memory hog generates high CPU load on a specific task running in an ECS service.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Simulates a scenario where a task consumes excessive CPU resources, impacting the performance of other main container in the task.
+- Tests the slowness and resource allocation capabilities of the ECS Fargate task.
+- Testing the ability of the ECS Fargate task to handle CPU-intensive workloads and dynamically allocate resources.
+- Evaluating the impact of resource contention on other container running in the task.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### ECS instance stop
 
 ECS instance stop induces stress on an AWS ECS cluster. It derives the instance under chaos from the ECS cluster.
@@ -567,101 +587,6 @@ ECS instance stop induces stress on an AWS ECS cluster. It derives the instance 
 <Accordion color="green">
 <summary>Use cases</summary>
 EC2 instance stop breaks the agent that manages the task container on ECS cluster, thereby impacting its delivery. Killing the EC2 instance disrupts the performance of the task container.
-</Accordion>
-</FaultDetailsCard>
-
-<FaultDetailsCard category="aws">
-
-### ECS task stop
-
-ECS task stop is an AWS fault that injects chaos to stop the ECS tasks based on the services or task replica ID and checks the task availability.
-
-- This fault results in the unavailability of the application running on the tasks.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-This fault determines the resilience of an application when ECS tasks unexpectedly stop due to task being unavailable.
-</Accordion>
-</FaultDetailsCard>
-
-<FaultDetailsCard category="aws">
-
-### ECS task scale
-
-ECS task scale is an AWS fault that injects chaos to scale (up or down) the ECS tasks based on the services and checks the task availability. This fault affects the availability of a task in an ECS cluster.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-ECS task scale affects the availability of a task in a cluster.
-It determines the resilience of an application when ECS tasks are unexpectedly scaled up (or down).
-</Accordion>
-</FaultDetailsCard>
-
-<FaultDetailsCard category="aws">
-
-### ECS container HTTP latency
-
-ECS container HTTP latency induces HTTP chaos on containers running in an Amazon ECS (Elastic Container Service) task. This fault introduces latency in the HTTP responses of containers of a specific service using a proxy server, simulating delays in network connectivity or slow responses from the dependent services.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Modifies the HTTP responses of containers in a specified ECS service by starting a proxy server and redirecting traffic through the proxy server.
-- Simulates scenarios where containers experience delays in network connectivity or slow responses from dependent services, which may impact the behavior of your application.
-- Validates the behavior of your application and infrastructure during simulated HTTP latency, such as:
-  - Testing how your application handles delays in network connectivity from containers to dependent services.
-  - Verifying the resilience of your system when containers experience slow responses from dependent services.
-  - Evaluating the impact of HTTP latency on the performance and availability of your application.
-
-</Accordion>
-</FaultDetailsCard>
-
-<FaultDetailsCard category="aws">
-
-### ECS container HTTP modify body
-
-CS container HTTP modify body injects HTTP chaos which affects the request or response by modifying the status code, body, or headers. This is achieved by starting a proxy server and redirecting the traffic through the proxy server.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Tests the application's resilience to erroneous (or incorrect) HTTP response body.
-- Tests the resilience of the ECS application container to erroneous or incorrect HTTP response body.
-
-</Accordion>
-</FaultDetailsCard>
-
-<FaultDetailsCard category="aws">
-
-### ECS container HTTP reset peer
-
-ECS container HTTP reset peer injects HTTP reset on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
-
-- It stops the outgoing HTTP requests by resetting the TCP connection for the requests.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- It determines the application's resilience to a lossy (or flaky) HTTP connection.
-- Simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout).
-- Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic).
-
-</Accordion>
-</FaultDetailsCard>
-
-<FaultDetailsCard category="aws">
-
-### ECS container HTTP status code
-
-ECS container HTTP status code injects HTTP chaos that affects the request (or response) by modifying the status code (or the body or the headers) by starting a proxy server and redirecting the traffic through the proxy server on the target ECS containers.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Tests the ECS task container resilience to erroneous code HTTP responses from the application server.
-- Simulates unavailability of specific API services (503, 404), unavailability of specific APIs for(or from) a given microservice (TBD or Path Filter) (404).
-- Simulates unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x) on ECS task container.
-
 </Accordion>
 </FaultDetailsCard>
 
@@ -701,6 +626,33 @@ ECS network restrict allows you to restrict the network connectivity of containe
   - Testing the resilience of your system when network access is restricted, including verifying if the containers can communicate with each other or with external resources when certain network restrictions are in place.
   - Validating the performance and availability of your application in a restricted networking environment, including checking if the application can continue to function properly with limited network access.
 
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS task scale
+
+ECS task scale is an AWS fault that injects chaos to scale (up or down) the ECS tasks based on the services and checks the task availability. This fault affects the availability of a task in an ECS cluster.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+ECS task scale affects the availability of a task in a cluster.
+It determines the resilience of an application when ECS tasks are unexpectedly scaled up (or down).
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS task stop
+
+ECS task stop is an AWS fault that injects chaos to stop the ECS tasks based on the services or task replica ID and checks the task availability.
+
+- This fault results in the unavailability of the application running on the tasks.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+This fault determines the resilience of an application when ECS tasks unexpectedly stop due to task being unavailable.
 </Accordion>
 </FaultDetailsCard>
 
@@ -781,6 +733,20 @@ Lambda delete event source mapping removes the event source mapping from an AWS 
 
 <FaultDetailsCard category="aws">
 
+### Lambda delete function concurrency
+
+Lambda delete function concurrency deletes the Lambda function's reserved concurrency, thereby ensuring that the function has adequate unreserved concurrency to run.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Lambda delete function concurrency examines the performance of the running Lambda application, if the Lambda function lacks sufficient concurrency.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### Lambda toggle event mapping state
 
 Lambda toggle event mapping state toggles (or sets) the event source mapping state to `disable` for a Lambda function during a specific duration. Toggling between different states of event source mapping from a Lambda function may lead to failures when updating the database on an event trigger. This can break the service and impact its delivery.
@@ -844,14 +810,16 @@ Lambda update role permission is an AWS fault that modifies the role policies as
 
 <FaultDetailsCard category="aws">
 
-### Lambda delete function concurrency
+### NLB AZ down
 
-Lambda delete function concurrency deletes the Lambda function's reserved concurrency, thereby ensuring that the function has adequate unreserved concurrency to run.
+NLB AZ down takes down the access for AZ (Availability Zones) on a target network load balancer for a specific duration. This fault restricts access to certain availability zones for a specific duration.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Lambda delete function concurrency examines the performance of the running Lambda application, if the Lambda function lacks sufficient concurrency.
+- Tests the application's ability to handle the loss of availability zones and maintain uninterrupted traffic flow.
+- NLB AZ down fault disrupts the traffic routing through the network load balancer, testing the application's resilience to AZ failures.
+- Simulating network failures and verifying the application's ability to recover and redirect traffic appropriately.
 
 </Accordion>
 </FaultDetailsCard>
@@ -889,6 +857,23 @@ RDS instance reboot can induce an RDS instance reboot chaos on AWS RDS cluster. 
 
 <FaultDetailsCard category="aws">
 
+### Resource access restrict
+
+Resource access restrict restricts access to a specific AWS resource for a specific duration.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Tests the application's resiliency and error handling when access to a critical AWS resource is restricted.
+- Validates the application's ability to handle and recover from temporary resource unavailability.
+- Test the application's response to restricted access to AWS resources, such as ec2, database storage.
+- Evaluate the application's error handling and recovery mechanisms in the face of resource unavailability.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### SSM chaos by ID
 
 AWS SSM chaos by ID induces chaos on AWS EC2 instances using the Amazon SSM Run Command.
@@ -900,6 +885,26 @@ AWS SSM chaos by ID induces chaos on AWS EC2 instances using the Amazon SSM Run 
 <summary>Use cases</summary>
 
 AWS SSM chaos by ID:
+- Tests the resilience of an application that uses custom SSM document as input to execute chaos on EC2 instances.
+- Triggers the provided SSM document provided as an input to other AWS chaos.
+- After chaos, this fault cleans up the SSM document provided as an input to the EC2 instance.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### SSM chaos by tag
+
+AWS SSM chaos by tag induces chaos on AWS EC2 instances using the Amazon SSM Run Command.
+- It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed).
+- This SSM document is uploaded beforehand to AWS, whose name is referenced in the faults.
+- It helps execute custom chaos (like stress, network, disk or IO) on AWS EC2 instances for a specific duration using the given tag(s).
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+AWS SSM chaos by tag:
 - Tests the resilience of an application that uses custom SSM document as input to execute chaos on EC2 instances.
 - Triggers the provided SSM document provided as an input to other AWS chaos.
 - After chaos, this fault cleans up the SSM document provided as an input to the EC2 instance.
@@ -954,25 +959,6 @@ Windows EC2 memory hog:
 - Causes memory stress on the target AWS EC2 instance(s).
 - Simulates the situation of memory leaks in the deployment of microservices.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to hogging.
-
-</Accordion>
-</FaultDetailsCard>
-<FaultDetailsCard category="aws">
-
-### SSM chaos by tag
-
-AWS SSM chaos by tag induces chaos on AWS EC2 instances using the Amazon SSM Run Command.
-- It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed).
-- This SSM document is uploaded beforehand to AWS, whose name is referenced in the faults.
-- It helps execute custom chaos (like stress, network, disk or IO) on AWS EC2 instances for a specific duration using the given tag(s).
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-AWS SSM chaos by tag:
-- Tests the resilience of an application that uses custom SSM document as input to execute chaos on EC2 instances.
-- Triggers the provided SSM document provided as an input to other AWS chaos.
-- After chaos, this fault cleans up the SSM document provided as an input to the EC2 instance.
 
 </Accordion>
 </FaultDetailsCard>

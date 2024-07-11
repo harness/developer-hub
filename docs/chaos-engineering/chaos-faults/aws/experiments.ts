@@ -142,6 +142,37 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "ECS container HTTP latency",
+    description:
+      "ECS container HTTP latency induces chaos to inject latency on the target ECS task container.",
+    tags: [],
+    category: "aws",
+  },
+
+  {
+    name: "ECS container HTTP modify body",
+    description:
+      "ECS container HTTP modify body induces chaos to inject faulty response body on the target ECS task container.",
+    tags: [],
+    category: "aws",
+  },
+
+  {
+    name: "ECS container HTTP reset peer",
+    description:
+      "ECS container HTTP reset peer induces chaos to reset the TCP connection on the target ECS task container .",
+    tags: [],
+    category: "aws",
+  },
+
+  {
+    name: "ECS container HTTP status code",
+    description:
+      "ECS container HTTP status code induces chaos to modify the status code from the HTTP response from the target ECS container",
+    tags: [],
+    category: "aws",
+  },
+  {
     name: "ECS container IO stress",
     description:
       "ECS container IO stress disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.",
@@ -170,9 +201,51 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "ECS container volume detach",
+    description:
+      "ECS container volume detach induces chaos to detach the volumes from ECS container for specified service and chaos duration",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "ECS Fargate CPU hog",
+    description:
+      "ECS Fargate CPU hog induces chaos to stress the CPU usage of an ECS task from the specified service",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "ECS Fargate memory hog",
+    description:
+      "ECS Fargate memory Hog induces chaos to hog the memory utilization of an ECS task from the specified service",
+    tags: [],
+    category: "aws",
+  },
+  {
     name: "ECS instance stop",
     description:
       "ECS instance stop induces stress on an AWS ECS cluster. It derives the instance under chaos from the ECS cluster.",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "ECS invalid container image",
+    description:
+      "ECS invalid container image allows you to update the Docker image used by a container in an Amazon ECS (Elastic Container Service) task.",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "ECS network restrict",
+    description:
+      "ECS network restrict induces chaos to inject the access restriction on the target ECS container.",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "ECS task scale",
+    description:
+      "ECS task scale is an AWS fault that injects chaos to scale (up or down) the ECS tasks based on the services and checks the task availability.",
     tags: [],
     category: "aws",
   },
@@ -184,9 +257,23 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
-    name: "ECS task scale",
+    name: "ECS update container resource limit",
     description:
-      "ECS task scale is an AWS fault that injects chaos to scale (up or down) the ECS tasks based on the services and checks the task availability.",
+      "ECS update container resource Limit induces chaos to change the task container CPU and Memory resource limit",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "ECS update container timeout",
+    description:
+      "ECS update container timeout induces chaos to change the target container start and stop timeout values.",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "ECS update task role",
+    description:
+      "ECS update task role induces chaos to update the task role ARN for a specified chaos duration.",
     tags: [],
     category: "aws",
   },
@@ -219,6 +306,13 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "Lambda update function timeout",
+    description:
+      "Lambda update function timeout causes timeout of a Lambda function to be updated to a specified value for a certain duration.",
+    tags: [],
+    category: "aws",
+  },
+  {
     name: "Lambda update role permission",
     description:
       "  Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function.",
@@ -226,9 +320,9 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
-    name: "Lambda update function timeout",
+    name: "NLB AZ down",
     description:
-      "Lambda update function timeout causes timeout of a Lambda function to be updated to a specified value for a certain duration.",
+      "NLB AZ down induces chaos to restrict access to specific availability zones by blocking the subnet ACL for a specified duration",
     tags: [],
     category: "aws",
   },
@@ -243,6 +337,27 @@ export const experiments: ExperimentDetails[] = [
     name: "RDS instance reboot",
     description:
       "RDS instance reboot can induce an RDS instance reboot chaos on AWS RDS cluster. It derives the instance under chaos from RDS cluster.",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "Resource access restrict",
+    description:
+      "Resource access restrict induces chaos to create network access restrictions by selectively blocking incoming or outgoing traffic from a security group",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "SSM chaos by ID",
+    description:
+      "AWS SSM chaos by ID induces chaos on AWS EC2 instances using the Amazon SSM Run Command. It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed). This SSM document is uploaded beforehand to AWS, whose name is referenced as an input to the chaos faults.",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "SSM chaos by tag",
+    description:
+      "AWS SSM chaos by tag induces chaos on AWS EC2 instances using the Amazon SSM Run Command. It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed). This SSM document is uploaded beforehand to AWS, whose name is referenced as an input to the chaos faults.",
     tags: [],
     category: "aws",
   },
@@ -264,126 +379,6 @@ export const experiments: ExperimentDetails[] = [
     name: "Windows EC2 memory hog",
     description:
       "Windows EC2 memory hog induces memory stress on the target AWS Windows EC2 instance using Amazon SSM Run command.",
-    tags: [],
-    category: "aws",
-  },
-  {
-    name: "ECS invalid container image",
-    description:
-      "ECS invalid container image allows you to update the Docker image used by a container in an Amazon ECS (Elastic Container Service) task.",
-    tags: [],
-    category: "aws",
-  },
-
-  {
-    name: "ECS update container timeout",
-    description:
-      "ECS update container timeout induces chaos to change the target container start and stop timeout values.",
-    tags: [],
-    category: "aws",
-  },
-
-  {
-    name: "ECS update container resource limit",
-    description:
-      "ECS update container resource Limit induces chaos to change the task container CPU and Memory resource limit",
-    tags: [],
-    category: "aws",
-  },
-
-  {
-    name: "ECS update task role",
-    description:
-      "ECS update task role induces chaos to update the task role ARN for a specified chaos duration.",
-    tags: [],
-    category: "aws",
-  },
-
-  {
-    name: "ECS network restrict",
-    description:
-      "ECS network restrict induces chaos to inject the access restriction on the target ECS container.",
-    tags: [],
-    category: "aws",
-  },
-
-  {
-    name: "ECS container HTTP latency",
-    description:
-      "ECS container HTTP latency induces chaos to inject latency on the target ECS task container.",
-    tags: [],
-    category: "aws",
-  },
-
-  {
-    name: "ECS container HTTP modify body",
-    description:
-      "ECS container HTTP modify body induces chaos to inject faulty response body on the target ECS task container.",
-    tags: [],
-    category: "aws",
-  },
-
-  {
-    name: "ECS container HTTP reset peer",
-    description:
-      "ECS container HTTP reset peer induces chaos to reset the TCP connection on the target ECS task container .",
-    tags: [],
-    category: "aws",
-  },
-
-  {
-    name: "ECS container HTTP status code",
-    description:
-      "ECS container HTTP status code induces chaos to modify the status code from the HTTP response from the target ECS container",
-    tags: [],
-    category: "aws",
-  },
-  {
-    name: "ECS Fargate memory hog",
-    description:
-      "ECS Fargate memory Hog induces chaos to hog the memory utilization of an ECS task from the specified service",
-    tags: [],
-    category: "aws",
-  },
-  {
-    name: "ECS Fargate CPU hog",
-    description:
-      "ECS Fargate CPU hog induces chaos to stress the CPU usage of an ECS task from the specified service",
-    tags: [],
-    category: "aws",
-  },
-  {
-    name: "ECS container volume detach",
-    description:
-      "ECS container volume detach induces chaos to detach the volumes from ECS container for specified service and chaos duration",
-    tags: [],
-    category: "aws",
-  },
-  {
-    name: "NLB AZ down",
-    description:
-      "NLB AZ down induces chaos to restrict access to specific availability zones by blocking the subnet ACL for a specified duration",
-    tags: [],
-    category: "aws",
-  },
-  {
-    name: "SSM chaos by tag",
-    description:
-      "AWS SSM chaos by tag induces chaos on AWS EC2 instances using the Amazon SSM Run Command. It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed). This SSM document is uploaded beforehand to AWS, whose name is referenced as an input to the chaos faults.",
-    tags: [],
-    category: "aws",
-  },
-  {
-    name: "SSM chaos by ID",
-    description:
-      "AWS SSM chaos by ID induces chaos on AWS EC2 instances using the Amazon SSM Run Command. It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed). This SSM document is uploaded beforehand to AWS, whose name is referenced as an input to the chaos faults.",
-    tags: [],
-    category: "aws",
-  },
-  {
-    name: "Resource access restrict",
-    description:
-      "Resource access restrict induces chaos to create network access restrictions by selectively blocking incoming or outgoing traffic from a security group",
     tags: [],
     category: "aws",
   },
