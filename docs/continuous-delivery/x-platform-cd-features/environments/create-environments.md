@@ -470,9 +470,9 @@ Currently, this feature is behind the feature flag `CDS_SERVICE_ENV_CLONING`. Co
 Currently, this is only being supported for Environments that are stored in Harness (i.e INLINE entities).
 :::
 
-You can clone environment across scopes i.e from one project to another, project to organization, account to project etc.
+You can clone environment across scopes (i.e from one project to another, project to organization, account to project etc.).
 
-Select **More Options** (&vellip;).
+Select **More Options**.
 Select **Clone**
 ![](./static/clone_option_env_inline.png)
 
