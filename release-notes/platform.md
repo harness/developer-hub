@@ -105,7 +105,7 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- Connector could be deleted even if it had existing secrets. This issue has been resolved, and now the AWS Secret Manager Connector cannot be deleted if it contains existing secrets. (PL-52067, ZD-65772)
+- Connector could be deleted even if it had existing secrets. This issue has been resolved, and now the Connector cannot be deleted if it contains existing secrets. (PL-52067, ZD-65772)
 
 - Resource Scope was deleting projects. Searching for a project and then selecting it would remove all previously selected projects. Improved the project selection process in org scope Resource Groups to match the flow of project selection in account scope Resource Groups. This change resolves the issue and ensures previously selected projects remain intact when new ones are added. (PL-51988, ZD-65620)
 
