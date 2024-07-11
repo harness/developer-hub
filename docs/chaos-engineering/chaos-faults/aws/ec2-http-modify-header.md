@@ -5,7 +5,7 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-modify-header
 ---
 
-EC2 HTTP modify header injects HTTP chaos which affects the request (or response) by modifying the status code (or the body or the headers) by starting the proxy server and redirecting the traffic through the proxy server. This fault modifies the headers of requests and responses of the service. 
+EC2 HTTP modify header injects HTTP chaos which affects the request (or response) by modifying the status code (or the body or the headers) by starting the proxy server and redirecting the traffic through the proxy server. This fault modifies the headers of requests and responses of the service.
 
 ![EC2 HTTP Modify Response](./static/images/ec2-http-modify-header.png)
 
@@ -34,7 +34,7 @@ EC2 HTTP modify header tests the resilience of the application to incorrect or i
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -54,7 +54,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],

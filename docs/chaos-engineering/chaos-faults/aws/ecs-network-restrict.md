@@ -5,7 +5,7 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-network-restrict
 ---
 
-ECS network restrict allows you to restrict the network connectivity of containers in an Amazon ECS (Elastic Container Service) task by modifying the container security rules. 
+ECS network restrict allows you to restrict the network connectivity of containers in an Amazon ECS (Elastic Container Service) task by modifying the container security rules.
 This experiment is applicable to both serverless ECS tasks and those backed by EC2 instances. [These experiments](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-and-serverless-faults) generally involve task-level chaos or access restrictions without causing direct in-container or in-VM disruptions.
 
 ![ECS Network restrict](./static/images/ecs-network-restrict.png)
@@ -14,7 +14,7 @@ This experiment is applicable to both serverless ECS tasks and those backed by E
 ECS network restrict:
 - Tests the resilience and performance of your ECS tasks when network access is restricted.
 - Validates the behavior of your application in a restricted networking environment.
-- Restricts the network connectivity of containers by modifying the container security rules associated with the ECS task. 
+- Restricts the network connectivity of containers by modifying the container security rules associated with the ECS task.
 - Simulates scenarios where network access is restricted, which may impact the behavior of your application or infrastructure. For example, you can restrict outgoing internet access from containers to test how your application handles restricted networking environments or to validate the behavior of your application when certain network resources are not accessible.
 - Validates the behavior of your application and infrastructure during simulated network restrictions, such as:
   - Testing the resilience of your system when network access is restricted, including verifying if the containers can communicate with each other or with external resources when certain network restrictions are in place.
@@ -41,7 +41,7 @@ stringData:
 ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -85,12 +85,12 @@ Refer to the [common attributes](/docs/chaos-engineering/chaos-faults/common-tun
           <th> Description </th>
           <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
           <td> CLUSTER_NAME </td>
           <td> Name of the target ECS cluster. </td>
           <td> For example, <code>cluster-1</code>. </td>
         </tr>
-        <tr> 
+        <tr>
           <td> SERVICE_NAMES </td>
           <td> Name of the ECS service under chaos. </td>
           <td> For example, <code>nginx-svc</code>. </td>
@@ -119,32 +119,32 @@ Refer to the [common attributes](/docs/chaos-engineering/chaos-faults/common-tun
         <td> Interval between successive instance terminations (in seconds).</td>
         <td> Default. 30s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> IP_ADDRESS </td>
         <td> Provide the IP address/CIRD range. If no IP/CIRD range is provided then it will remove all the rules from the security group for a specified chaos interval.</td>
         <td> Default: ''. For more information, go to <a href="#ip-address-or-cidr-range"> IP address.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> RULE_TYPE </td>
         <td> Provide the rule type either <code>outbound</code> or <code>inbound</code> rule </td>
         <td> Default: outbound. For more information, go to <a href="#rule-type"> rule type.</a> </td>
       </tr>
-      <tr> 
+      <tr>
         <td> RULE_MODE </td>
         <td> Provide the mode to modify, <code>add</code> means add a new rule and <code>remove</code> means removing the existing rule. To remove a rule please provide the exact rule details. </td>
         <td> Defaults: remove. For more information, go to <a href="#rule-mode"> rule mode.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> PROTOCOL </td>
         <td> Provide the protocol of the rule. </td>
         <td> Default: tcp. For more information, go to <a href="#protocol"> protocol.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> FROM_PORT </td>
         <td> Provide the from port of the rule.</td>
         <td> Default: 80. For more information, go to <a href="#from-port-and-to-port"> from port.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> TO_PORT </td>
         <td> Provide the to port of the rule. </td>
         <td> Default: 80. For more information, go to <a href="#from-port-and-to-port"> to port.</a></td>

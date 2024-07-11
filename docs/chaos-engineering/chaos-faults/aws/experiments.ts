@@ -268,101 +268,101 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
-    name: "ECS Invalid Container image",
+    name: "ECS invalid container image",
     description:
-      "ECS Invalid Container image induces task container miscofiguration chaos on the target ECS task container.",
+      "ECS invalid container image allows you to update the Docker image used by a container in an Amazon ECS (Elastic Container Service) task.",
     tags: [],
     category: "aws",
   },
 
   {
-    name: "ECS Update Container timeout",
+    name: "ECS update container timeout",
     description:
-      "ECS Update Container Timeout induces chaos to change the target container start and stop timeout values.",
+      "ECS update container timeout induces chaos to change the target container start and stop timeout values.",
     tags: [],
     category: "aws",
   },
 
   {
-    name: "ECS Update Container Resource limit",
+    name: "ECS update container resource limit",
     description:
-      "ECS Update Container Resource Limit induces chaos to change the task container CPU and Memory resource limit",
+      "ECS update container resource Limit induces chaos to change the task container CPU and Memory resource limit",
     tags: [],
     category: "aws",
   },
 
   {
-    name: "ECS Update Task role",
+    name: "ECS update task role",
     description:
-      "ECS Update Task Role induces chaos to update the task role ARN for a specified chaos duration.",
+      "ECS update task role induces chaos to update the task role ARN for a specified chaos duration.",
     tags: [],
     category: "aws",
   },
 
   {
-    name: "ECS Network restrict",
+    name: "ECS network restrict",
     description:
-      "ECS Network Restrict induces chaos to inject the access restriction on the target ECS container.",
+      "ECS network restrict induces chaos to inject the access restriction on the target ECS container.",
     tags: [],
     category: "aws",
   },
 
   {
-    name: "ECS Container HTTP latency",
+    name: "ECS container HTTP latency",
     description:
-      "ECS Container HTTP Latency induces chaos to inject latency on the target ECS task container.",
+      "ECS container HTTP latency induces chaos to inject latency on the target ECS task container.",
     tags: [],
     category: "aws",
   },
 
   {
-    name: "ECS Container HTTP Modify body",
+    name: "ECS container HTTP modify body",
     description:
-      "ECS Container HTTP Modify Body induces chaos to inject faulty response body on the target ECS task container.",
+      "ECS container HTTP modify body induces chaos to inject faulty response body on the target ECS task container.",
     tags: [],
     category: "aws",
   },
 
   {
-    name: "ECS Container HTTP Reset peer",
+    name: "ECS container HTTP reset peer",
     description:
-      "ECS Container HTTP Reset Peer induces chaos to reset the TCP connection on the target ECS task container .",
+      "ECS container HTTP reset peer induces chaos to reset the TCP connection on the target ECS task container .",
     tags: [],
     category: "aws",
   },
 
   {
-    name: "ECS Container HTTP Status code",
+    name: "ECS container HTTP status code",
     description:
-      "ECS Container HTTP Status code induces chaos to modify the status code from the HTTP response from the target ECS container",
+      "ECS container HTTP status code induces chaos to modify the status code from the HTTP response from the target ECS container",
     tags: [],
     category: "aws",
   },
   {
-    name: "ECS Fargate Memory hog",
+    name: "ECS Fargate memory hog",
     description:
-      "ECS Fargate Memory Hog induces chaos to hog the memory utilisation of an ECS task from the specified service",
+      "ECS Fargate memory Hog induces chaos to hog the memory utilization of an ECS task from the specified service",
     tags: [],
     category: "aws",
   },
   {
     name: "ECS Fargate CPU hog",
     description:
-      "ECS Fargate CPU Hog induces chaos to stress the CPU usage of an ECS task from the specified service",
+      "ECS Fargate CPU hog induces chaos to stress the CPU usage of an ECS task from the specified service",
     tags: [],
     category: "aws",
   },
   {
-    name: "ECS Container Volume detach",
+    name: "ECS container volume detach",
     description:
-      "ECS Container Volume Detach induces chaos to detach the volumes from ECS container for specified service and chaos duration",
+      "ECS container volume detach induces chaos to detach the volumes from ECS container for specified service and chaos duration",
     tags: [],
     category: "aws",
   },
   {
     name: "NLB AZ down",
     description:
-      "NLB AZ Down induces chaos to restrict access to specific availability zones by blocking the subnet ACL for a specified duration",
+      "NLB AZ down induces chaos to restrict access to specific availability zones by blocking the subnet ACL for a specified duration",
     tags: [],
     category: "aws",
   },
@@ -381,9 +381,9 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
-    name: "Resource Access restrict",
+    name: "Resource access restrict",
     description:
-      "Resource Access Restrict induces chaos to create network access restrictions by selectively blocking incoming or outgoing traffic from a security group",
+      "Resource access restrict induces chaos to create network access restrictions by selectively blocking incoming or outgoing traffic from a security group",
     tags: [],
     category: "aws",
   },
