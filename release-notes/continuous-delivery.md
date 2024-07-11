@@ -45,6 +45,10 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## Deprecation Notice
+
+- Harness has discontinued the ability to update notes after a pipeline execution is complete. 
+
 ## July 2024
 
 ### Version 1.46.0
@@ -52,6 +56,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 #### Behavior changes
 
 - On a re-run of a multi-environment pipeline with multiple deployment stages, skipped stages would not be re-run. Now, skipped stages will be run again when the pipeline is re-run. This is a change of re-run behavior and thus is behind the feature flag `PIPE_RUN_SKIPPED_SPAWNED_STAGES_OR_STEPS_IN_RETRY`. Contact [Harness support](mailto:support@harness.io) to enable it. (PIPE-19746, ZD-64970)
+- Effective immediately, Harness will no longer support the ability to update the notes for an execution after the execution is complete. 
 
 #### Fixed issues
 
