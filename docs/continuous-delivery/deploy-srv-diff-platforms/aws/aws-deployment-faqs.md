@@ -535,11 +535,13 @@ No, Harness does not support conditional displaying input variables based on pre
 
 Yes, you can use allowed values to specify different input options for a variable, though it does not fully cover dynamic input based on previous selections.
 
-### Run step is failing with below error although correct role is attached to delegate 
+### Why is the run step failing with an NullPointerException error even though the correct roles are attached to the delegate 
 ```
 Exception getAmazonEcrAuthToken
 java.lang.NullPointerException: You must specify a value for roleArn and roleSessionName
 ```
 
 Please check the AWS connector used if connectivity test work and also check the service account attached to delegate if that has correct role assigned to access the resource
+
+Check to see if the AWS connector connectivity test passes. Also, check the service account attached to the delegate and see if it has the correct roles assigned to access the resource(s).
 
