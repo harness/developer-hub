@@ -13,19 +13,19 @@ VMware Windows Disk Stress applies stress on the disk resources on Windows OS ba
 ## Use cases
 
 - VMware Windows Disk Stress determines the resilience of an application when stress is applied on the disk resources of a VMware Windows virtual machine.
-- VMware Windows Disk Stress simulates the situation of high disk usage for processes running on the application, which degrades their performance. 
-- It also helps verify the application's ability to handle disk failures and its failover mechanisms. 
+- VMware Windows Disk Stress simulates the situation of high disk usage for processes running on the application, which degrades their performance.
+- It also helps verify the application's ability to handle disk failures and its failover mechanisms.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
-- Execution plane should be connected to vCenter and host vCenter on port 443. 
+- Execution plane should be connected to vCenter and host vCenter on port 443.
 - VMware tool should be installed on the target VM with remote execution enabled.
 - Use built-in Administrator user for the experiment. [Learn how to enable the built-in Administrator user in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
 - The VM should be in a healthy state before and after injecting chaos.
-- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`.
 - Ensure the installation of [Diskspd](https://learn.microsoft.com/en-us/azure-stack/hci/manage/diskspd-overview#quick-start-install-and-run-diskspd), a critical dependency for this experiment. Refer to the linked documentation for installation guidance.
 
-- VM credentials can be passed as secrets or as a chaos enginer environment variable.
+- VM credentials can be passed as secrets or as a chaos engine environment variable.
 
 ```yaml
 apiVersion: v1
@@ -150,7 +150,7 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # Memory consumption in MB
-        - name: MEMORY_CONSUMPTION 
+        - name: MEMORY_CONSUMPTION
           value: '1024'
 ```
 
@@ -179,7 +179,7 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # Block size for disk write in KB
-        - name: BLOCK_SIZE_IN_KILOBYTES 
+        - name: BLOCK_SIZE_IN_KILOBYTES
           value: '128'
 ```
 
@@ -208,7 +208,7 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # Percentage of total disk write
-        - name: WRITE_PERCENTAGE 
+        - name: WRITE_PERCENTAGE
           value: '100'
 ```
 
@@ -236,7 +236,7 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # Number of workers involved in disk write
-        - name: NUMBER_OF_WORKERS 
+        - name: NUMBER_OF_WORKERS
           value: '2'
 ```
 
@@ -264,7 +264,7 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # Path of disk to apply stress
-        - name: DISK_PATH 
+        - name: DISK_PATH
           value: 'C:\\'
 ```
 
@@ -292,6 +292,6 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # Path of the Diskspd tool in the VM
-        - name: PATH_OF_DISKSPD 
+        - name: PATH_OF_DISKSPD
           value: 'C:\\Program Files\\Diskspd\\'
 ```

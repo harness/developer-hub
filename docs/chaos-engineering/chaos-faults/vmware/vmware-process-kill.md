@@ -11,7 +11,7 @@ VMware process kill kills the target processes that are running as a part of a L
 
 ## Use cases
 
-- VMware process kill disrupts critical processes running within the application, such as databases or message queues. 
+- VMware process kill disrupts critical processes running within the application, such as databases or message queues.
 - The services that are disrupted might be running in the VMware VM, and this fault kills their underlying processes or threads. Such faults help determine how efficiently and quickly the VMware instance recovers from the unexpected disruption.
 
 ### Prerequisites
@@ -19,7 +19,7 @@ VMware process kill kills the target processes that are running as a part of a L
 - Execution plane should be connected to vCenter and host vCenter on port 443.
 - The VM should be in a healthy state before and after injecting chaos.
 - VMware tool should be installed on the target VM with remote execution enabled.
-- The target processes should exist within the VM. 
+- The target processes should exist within the VM.
 - Appropriate vCenter permissions should be provided to access the hosts and the VMs.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 

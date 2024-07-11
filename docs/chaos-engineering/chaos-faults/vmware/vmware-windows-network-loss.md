@@ -13,20 +13,20 @@ VMware Windows Network Loss simulates a network loss scenario on Windows OS base
 ## Use cases
 
 - VMware Windows Network Loss determines the resilience of an application when a network loss scenario is simulated on a VMware Windows virtual machine.
-- VMware Windows Network Loss simulates the situation of network loss for processes running on the application, which degrades their performance. 
-- It also helps verify the application's ability to handle network failures and its failover mechanisms. 
+- VMware Windows Network Loss simulates the situation of network loss for processes running on the application, which degrades their performance.
+- It also helps verify the application's ability to handle network failures and its failover mechanisms.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
-- Execution plane should be connected to vCenter and host vCenter on port 443. 
+- Execution plane should be connected to vCenter and host vCenter on port 443.
 - VMware tool should be installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
-- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`.
 - Verify [clumsy](https://jagt.github.io/clumsy/download.html) is installed on the VM, as it's essential for this experiment.
 - Run the fault with a user possessing admin rights, preferably the built-in Administrator, to guarantee permissions for memory stress testing. [See how to enable the built-in Administrator in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
 
-- VM credentials can be passed as secrets or as a chaos enginer environment variable. 
+- VM credentials can be passed as secrets or as a chaos engine environment variable.
 
 ```yaml
 apiVersion: v1
@@ -140,7 +140,7 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # Destination hosts to induce loss
-        - name: DESTINATION_HOSTS 
+        - name: DESTINATION_HOSTS
           value: 'github.com'
 ```
 
@@ -168,7 +168,7 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # Destination IPs to induce loss
-        - name: DESTINATION_IPS 
+        - name: DESTINATION_IPS
           value: '10.0.0.1,10.0.0.2'
 ```
 
@@ -196,7 +196,7 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # Percentage of network packets to lose
-        - name: NETWORK_PACKET_LOSS_PERCENTAGE 
+        - name: NETWORK_PACKET_LOSS_PERCENTAGE
           value: '100'
 ```
 
@@ -224,6 +224,6 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # Path of the Clumsy tool in the VM
-        - name: PATH_OF_CLUMSY 
+        - name: PATH_OF_CLUMSY
           value: 'C:\\Program Files\\Clumsy\\'
 ```
