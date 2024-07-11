@@ -4,7 +4,7 @@ description: Troubleshoot license issues in the on-prem Harness Self-Managed Ent
 sidebar_position: 70
 ---
 
-License issues can occur even after applying the license via a Helm values file. Use the following processes to identify and troubleshoot license issues.
+License issues can occur even after you apply the license via a Helm values file. Use the following processes to identify and troubleshoot license issues.
 
 ## Check for a NextGen license
 
@@ -15,7 +15,7 @@ Follow these steps to confirm that your Harness installation includes a NextGen 
    kubectl get secret -n <namespace> mongodb-replicaset-chart -o jsonpath={.data.mongodb-root-password} | base64 --decode | awk '{print $1}'
    ```
 
-2. Open an Interactive Shell session in the MongoDB container:
+2. Open an interactive Shell session in the MongoDB container:
    ```sh
    kubectl exec -it mongodb-replicaset-chart-0 -n <namespace> -- /bin/sh
    ```
@@ -25,7 +25,7 @@ Follow these steps to confirm that your Harness installation includes a NextGen 
    mongo
    ```
 
-4. Authenticate to the database in the `admin` Role:
+4. Authenticate to the database in the `admin` role:
    ```sh
    use admin
    db.auth('admin', <password>)
@@ -37,7 +37,7 @@ Follow these steps to confirm that your Harness installation includes a NextGen 
    db.moduleLicenses.find({})
    ```
 
-6. If the licenses are present, proceed with refreshing the license.**
+6. If the licenses are present, proceed with refreshing the license.
 
 ## Refresh a NextGen license
 
@@ -45,7 +45,7 @@ Use the following strategies to refresh a NextGen license.
 
 ### Discard the Redis cache for the NextGen license
 
-1. Retrieve Redis master host:
+1. Retrieve the Redis master host:
    ```sh
    kubectl exec -it redis-sentinel-harness-server-0 -n <namespace> -- redis-cli info | grep master_host | cut -c 13-
    ```
@@ -70,11 +70,11 @@ Use the following strategies to refresh a NextGen license.
 ## Additional troubleshooting for "Failed to Retrieve License Information"
 
 ### Step 1: Rule Out Browser Cache Issues
-1. Try logging In through Incognito Mode or a different browser:
+1. Try logging in through Incognito Mode or a different browser:
    - If this resolves the issue, proceed to clear the browser cache.
 2. Hard refresh the page:
    - Press `Cmd+Shift+R` (Mac) or `Ctrl+Shift+R` (Windows/Linux) to perform a hard refresh.
-3. **Clear Browser Cache and Cookies:**
+3. Clear browser cache and cookies:
    - Go to your browser settings and clear the cache and cookies for the affected webpage.
 
 ### Step 2: Verify services status
@@ -83,7 +83,7 @@ Check all services:
      ```sh
      kubectl get pods -n <namespace>
      ```
-   - If any services are in an unhealthy state, it may cause missing data in the database.
+   - If any services are in an unhealthy state, it might cause missing data in the database.
 
 ### Step 3: Delete license cache
 
@@ -98,7 +98,7 @@ You can delete the license keys:
    kubectl rollout restart deploy ng-manager -n <namespace>
    ```
 
-2. **Restart `harness-manager`:**
+2. Restart `harness-manager`:
    ```sh
    kubectl rollout restart deploy harness-manager -n <namespace>
    ```
@@ -107,5 +107,4 @@ You can delete the license keys:
 - Try loading the UI again to check if the issue is resolved.
 
 ### Step 6: Contact Support
-- If the issue persists, generate a support bundle by following the instructions at [Support Bundle Utility](https://developer.harness.io/docs/self-managed-enterprise-edition/support-bundle-utility).
-- Contact Harness Support with the generated support bundle for further assistance.
+- If the issue persists, generate a support bundle and send it to [Harness Support](mailto:support@harness.io). For more information, go to [Support Bundle Utility](https://developer.harness.io/docs/self-managed-enterprise-edition/support-bundle-utility).
