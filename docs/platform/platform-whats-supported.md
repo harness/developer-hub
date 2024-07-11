@@ -240,7 +240,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | `PL_LDAP_PARALLEL_GROUP_SYNC`                 | Enable User Group sync operation to fetch data from the LDAP server in parallel. Only enable this if the LDAP server can handle the load. |
 | `PL_NEW_SCIM_STANDARDS`                       | Enabling the `PL_NEW_SCIM_STANDARDS` feature flag ensures compliance with SCIM 2.0 standards by including the meta fields `createdAt`, `lastUpdated`, `version`, and `resourceType in CRUD operation responses on users or user groups. |
 | `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM` | Enabling this Feature Flag will let you use delegate credentials to access the Google Cloud Platform Secret Manager. |
-| `PL_DELEGATE_TASK_CAPACITY_CHECK`             |             |
+| `PL_DELEGATE_TASK_CAPACITY_CHECK`             | When enabled, tasks of the accounts will be broadcasted until task timeout other wise the default behavior is that tasks will be broadcasted up to 3 times to delegates. |
 | `PL_FAVORITES`                                | Allows you to set the frequently accessed projects and connectors as favorites. |
 | `PL_ALLOW_TO_SET_PUBLIC_ACCESS`               | Allows pipeline executions marked for public view to be accessed without authentication. You can share execution URLs, including console logs, without requiring users to sign in. |
 | `PL_GCP_OIDC_AUTHENTICATION`                  | Enabling this feature flag allows GCP connectors using OpenID Connect (OIDC) to let Harness communicate directly with GCP through OIDC. |
