@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-07-10T10:00
+date: 2024-07-16T10:00
 sidebar_position: 4
 ---
 
@@ -48,6 +48,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## July
+
+### Version 24.07.83500 <!--  July 16, 2024 -->
+
+#### New features and enhancements
+
+- Reduced delegate liveness probe failure time. Previously, delegates had a 15-minute window to send heartbeats before the liveness probe failed, leading to a delegate restart. This time has now been reduced to 5 minutes to ensure quicker detection and response to heartbeat failures.
 
 ### Version 24.07.83404 <!--  July 10, 2024 -->
 
