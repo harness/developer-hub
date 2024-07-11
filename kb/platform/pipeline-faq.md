@@ -286,6 +286,14 @@ You can use the [getExecutionDetailV2 API](https://apidocs.harness.io/tag/Pipeli
 
 To minimize GitHub calls from Harness, enabling the bi-directional Git Experience can significantly reduce the number of requests.
 
+### Can we setup separate failure strategy for individual step in step group
+
+No, Failure strategy applies to all step within step group.
+
+### How to restrict a user with approval if the same user ran the pipeline
+
+You can select the option, 'Disallow the executor from approving the pipeline' option while using Harness Approval step
+
 ## Pipeline triggers
 
 ### How can I obtain the triggered build version value, trigger ID, or trigger URL during pipeline runtime when a pipeline is triggered by a PR?
