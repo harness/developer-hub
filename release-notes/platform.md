@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-07-09:T10:00:30
+date: 2024-07-16:T10:00:30
 sidebar_position: 3
 ---
 
@@ -87,13 +87,13 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- Clicking a role after scrolling distorts the viewport. The issue with viewport distortion on the Roles page has been fixed. (PL-52063, ZD-65768)
+- Clicking a role after scrolling distorted the viewport. The issue with viewport distortion on the Roles page has been fixed. (PL-52063, ZD-65768)
 
-- Tokens could not be created via API from the API Docs because the required fields were missing. Added the necessary required fields to the "Create a Token" page in the API Docs, allowing tokens to be successfully created via the API. (PL-51974, ZD-65569)
+- Tokens could not be created via API from the API Docs because the required fields were missing. Added the necessary required fields to the Create a Token page in the API Docs, allowing tokens to be successfully created via the API. (PL-51974, ZD-65569)
 
-- Inconsistent error messages for the "retrieve a secret" API. The endpoint returned `ENTITY_NOT_FOUND` when the project didn't exist and `RESOURCE_NOT_FOUND` when the secret didn't exist. Standardized error messages for the `getSecret` API. Now, the endpoint consistently returns `ENTITY_NOT_FOUND` for both missing projects and missing secrets. (PL-51911, ZD-64920)
+- Inconsistent error messages were displayed for the Retrieve a Secret API. The endpoint returned `ENTITY_NOT_FOUND` when the project didn't exist and `RESOURCE_NOT_FOUND` when the secret didn't exist. Standardized error messages for the `getSecret` API. Now, the endpoint consistently returns `ENTITY_NOT_FOUND` for both missing projects and missing secrets. (PL-51911, ZD-64920)
 
-- The Cancel button was not working while creating a connector via YAML. Updated the behavior of the Connectors page YAML Editor to match that of other pages. The Discard button on the YAML Editor page now exits back to the previous page. (PL-42928)
+- The **Cancel** button was not working while creating a connector via YAML. Updated the behavior of the Connectors page YAML Editor to match that of other pages. The **Discard** button on the YAML Editor page now exits back to the previous page. (PL-42928)
 
 ### Version 1.45.5<!-- July 9, 2024 -->
 
