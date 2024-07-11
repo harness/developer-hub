@@ -15,7 +15,7 @@ Note that, tags are arbitrary key-value pairs that you can apply to Harness appl
 Some example of tags are:-
 
 1. type: prod
-2. security: high severity
+2. security: high_severity
 3. dev_only
 
 The final tag example above is a key with no value. If assigned to a component, such a tag with no value simply acts like a flag.
