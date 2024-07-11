@@ -176,3 +176,32 @@ You can enable more detailed trace logging with the following configuration para
 ```yaml
 DRONE_LOGS_TRACE=true
 ```
+
+### The drone server is not working over https and failing with an 'error program terminated'.
+
+Check if 'DRONE_SERVER_PROTO' is setup to https and also verify 'DRONE_TLS_CERT , DRONE_TLS_KEY' is pointing to the correct certificate location.
+
+
+### How to convert StarLark to yaml while using drone cli
+
+```yaml
+drone starlark --source drone.star --target drone.new.yaml --format yaml
+```
+
+### How can we use multiple conversion provider
+
+By default, drone can only execute one conversion, we do provide a setting to enable multiple conversions via:
+
+```yaml
+DRONE_CONVERT_MULTI=true
+```
+
+### What is the best way to move Drone logs to S3?
+
+New logs can be set to go to S3 by setting the following, as described in the documentation:
+https://docs.drone.io/server/storage/blob/
+
+### Getting the below error while trying to configure the conversion plugin
+'converter: invalid or missing signature in http.Request'
+
+This error mostly occurs if there is a mismatch between the 'DRONE_SECRET' and 'DRONE_CONVERT_PLUGIN_SECRET' env variables or if there is no hex16 shared secret.
