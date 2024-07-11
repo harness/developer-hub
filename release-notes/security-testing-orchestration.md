@@ -22,6 +22,17 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## July 2024
+
+### Version 1.102.2
+
+<!-- 2024-07-11 -->
+
+#### New features and enhancements
+
+- Branch Scanning in [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#scan-configuration) is now Generally Available(GA), previously behind the `STO_SONARQUBE_BRANCHING` feature flag. Customers can now perform branch scans using the SonarQube step.
+- Added a new setting called `Users can approve their own exemptions.` This setting helps control whether users can approve their own exemptions, and it can be easily enabled or disabled based on their preference. Find this setting under **Exemption settings** on the **Default settings** page. This is available in the project, organization and account level settings.
+
 ## June 2024
 
 ### Version 1.100.2
