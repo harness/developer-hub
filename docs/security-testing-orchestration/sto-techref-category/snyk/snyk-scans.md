@@ -577,8 +577,8 @@ pipeline:
 
                       snyk container test \
                             snykgoof/big-goof-1g:100 -d \
-                            --sarif-file-output=/shared/customer_artifacts/snyk_code_test.sarif  || true
-                      # cat /shared/customer_artifacts/snyk_code_test.sarif
+                            --sarif-file-output=/shared/scan_results/snyk_container_test.sarif  || true
+                      # cat /shared/scan_results/snyk_container_test.sarif
 
                       # snyk monitor
                     privileged: false
@@ -603,7 +603,7 @@ pipeline:
                       runner_tag: develop
                     imagePullPolicy: Always
                     ingestion:
-                      file: /shared/scan_results/snyk_code_test.sarif
+                      file: /shared/scan_results/snyk_container_test.sarif
                   failureStrategies:
                     - onFailure:
                         errors:
