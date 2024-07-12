@@ -21,7 +21,7 @@ To create a Flag, you need to complete the following steps:
 4. [Create a Feature Flag](/docs/feature-flags/use-ff/ff-creating-flag/create-a-feature-flag).
 5. [Connect your application using one of our SDKs](/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks).
 
-You can also follow the Feature Flags Get Started wizard on the Harness Platform or try one of the [Feature Flags tutorials](./tutorials.md).
+You can also follow the Feature Flags Get Started wizard on the Harness Platform or try one of the ☆ Feature Flags tutorials ./tutorials.md ☆.
 
 ![A screenshot of the Harness Platform that highlights the Get Started button on the left navigation.](./static/2-getting-started-with-feature-flags-01.png)
 
