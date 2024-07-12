@@ -49,7 +49,7 @@ export const featureList: CardItem[] = [
     module: MODULES.fme,
     icon: "img/icon_ff.svg",
     description: <>Release new features rapidly and intelligently.</>,
-    link: "docs/category/-get-started-with-fme",
+    link: "docs/category/get-started-with-fme",
     type: [docType.Documentation],
   },
   {

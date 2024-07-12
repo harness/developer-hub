@@ -18,7 +18,7 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.fme,
           description:
             "Learn the basics of Harness Feature Management & Experimentation.",
-          link: "/docs/category/-get-started-with-fme",
+          link: "/docs/category/get-started-with-fme",
         },
         {
           title: "Create, update, and view Flags",
