@@ -42,6 +42,22 @@ Linux API block injects API block fault into a Linux machine for a specific dura
 
 <FaultDetailsCard category="linux">
 
+### Linux API modify header
+
+Linux API modify header injects API fault into a Linux machine for a specific duration to override the header values of API requests and responses with the user-provided values for the given keys. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Simulate different authentication states or test the behavior of your application when using invalid or expired credentials.
+- Validates the caching behavior of your API or client applications. By overriding cache-related headers, such as the "Cache-Control" or "ETag" headers, you can simulate cache validation scenarios.
+- Tests content negotiation capabilities. By modifying the "Accept" header in the API request, you can simulate different content types or formats that the client application can accept.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
 ### Linux CPU stress
 
 Linux CPU stress applies stress on the CPU of the target Linux machines for a certain duration.
