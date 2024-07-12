@@ -6,7 +6,7 @@ redirect_from:
 ---
 
 VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP requests by resetting the TCP connection for the requests.
-- The service whose port is affected is specified using the `TARGET_SERVICE_PORT` environment variable. 
+- The service whose port is affected is specified using the `TARGET_SERVICE_PORT` environment variable.
 - It tests the application's resilience to lossy (or flaky) HTTP connections.
 
 
@@ -14,8 +14,8 @@ VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP req
 
 ## Use cases
 
-- VMware HTTP reset peer determines the resilience of an application to unexpected halts in the outgoing HTTP requests. 
-- It determines how quickly and efficiently an application recovers from these unexpected halts. 
+- VMware HTTP reset peer determines the resilience of an application to unexpected halts in the outgoing HTTP requests.
+- It determines how quickly and efficiently an application recovers from these unexpected halts.
 - It simulates premature connection loss, such as firewall issues, between microservices by verifying connection timeouts.
 - It simulates connection resets due to resource limitations on the server side, such as running out of memory, killing processes, or overloading the server due to high amounts of traffic.
 

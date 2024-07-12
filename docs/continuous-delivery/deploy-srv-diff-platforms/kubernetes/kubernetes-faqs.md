@@ -797,3 +797,5 @@ The safeguard is that no pruning will occur during the first execution or rollba
 #### Is there any feature to alert or approve before pruning happens in Kubernetes within Harness?
 No, currently, there is no feature for providing approvals or alerts before pruning happens as it is built into the Kubernetes steps.
 
+#### Can Kubernetes and NativeHelm Infrastructures be used interchangably?
+No its not possible, as both are treated as separate deployment type to make sure any changes related to that swimlane should not affect other

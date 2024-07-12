@@ -12,8 +12,8 @@ CLB (Classic Load Balancer) AZ (Availability Zones) down takes down the AZ on a 
 ## Use cases
 
 CLB AZ down:
-- Breaks the connectivity of a CLB with the given zones and impacts their delivery. 
-- Detaches the AZ from the classic load balancer thereby disrupting the dependent application's performance. 
+- Breaks the connectivity of a CLB with the given zones and impacts their delivery.
+- Detaches the AZ from the classic load balancer thereby disrupting the dependent application's performance.
 - Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
 ### Prerequisites
@@ -37,7 +37,7 @@ CLB AZ down:
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.

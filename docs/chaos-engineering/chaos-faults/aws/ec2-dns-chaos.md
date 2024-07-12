@@ -5,15 +5,15 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-dns-chaos
 ---
 
-EC2 DNS chaos causes DNS errors such as unavailability or malfunctioning of DNS servers on the specified EC2 instance for a specific duration. 
+EC2 DNS chaos causes DNS errors such as unavailability or malfunctioning of DNS servers on the specified EC2 instance for a specific duration.
 
 ![EC2 DNS Chaos](./static/images/ec2-dns-chaos.png)
 
 ## Use cases
 EC2 DNS chaos:
 - Determines the performance of the application (or process) running on the EC2 instance(s).
-- Simulates the unavailability (or distorted) network connectivity from the VM to the target hosts. 
-- Determines the impact of DNS chaos on the infrastructure and standalone tasks. 
+- Simulates the unavailability (or distorted) network connectivity from the VM to the target hosts.
+- Determines the impact of DNS chaos on the infrastructure and standalone tasks.
 - Simulates unavailability of the DNS server (loss of access to any external domain from a given microservice, access to cloud provider dependencies, and access to specific third party services).
 
 ### Prerequisites
@@ -37,7 +37,7 @@ EC2 DNS chaos:
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -57,7 +57,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],

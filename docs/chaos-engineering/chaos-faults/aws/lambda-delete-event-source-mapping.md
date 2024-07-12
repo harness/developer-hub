@@ -4,7 +4,7 @@ title: Lambda delete event source mapping
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-delete-event-source-mapping
 ---
-Lambda delete event source mapping removes the event source mapping from an AWS Lambda function for a specific duration. Deleting an event source mapping from a Lambda function is critical. It can lead to failure in updating the database on an event trigger, which can break the service. 
+Lambda delete event source mapping removes the event source mapping from an AWS Lambda function for a specific duration. Deleting an event source mapping from a Lambda function is critical. It can lead to failure in updating the database on an event trigger, which can break the service.
 
 ![Lambda Delete Event Source Mapping](./static/images/lambda-delete-event-source-mapping.png)
 
@@ -34,7 +34,7 @@ Lambda delete event source mapping:
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.

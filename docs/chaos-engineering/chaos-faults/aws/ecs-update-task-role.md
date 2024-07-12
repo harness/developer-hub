@@ -6,7 +6,7 @@ redirect_from:
 ---
 
 ECS update task role allows you to modify the IAM task role associated with an Amazon ECS (Elastic Container Service) task.
-This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+This experiment primarily involves ECS Fargate and doesn't depend on EC2 instances. [They](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
 
 
 ![ECS Update Task Role](./static/images/ecs-update-task-role.png)
@@ -15,7 +15,7 @@ This experiment primarily involves ECS Fargate and doesn’t depend on EC2 insta
 ECS update task role:
 - Determines the behavior of your ECS tasks when their IAM role is changed.
 - Verifies the authorization and access permissions of your ECS tasks under different IAM configurations.
-- Modifies the IAM task role associated with a container task by updating the task definition associated with the ECS service or task. 
+- Modifies the IAM task role associated with a container task by updating the task definition associated with the ECS service or task.
 - Simulate scenarios where the IAM role associated with a task is changed, which may impact the authorization and access permissions of the containers running in the task.
 - Validates the behavior of your application and infrastructure during simulated IAM role changes, such as:
   - Testing how your application handles changes in IAM role permissions and access.
@@ -46,7 +46,7 @@ stringData:
 ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -93,12 +93,12 @@ Below is an example AWS policy to execute the fault.
           <th> Description </th>
           <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
           <td> CLUSTER_NAME </td>
           <td> Name of the target ECS cluster. </td>
           <td> For example, <code>cluster-1</code>. </td>
         </tr>
-        <tr> 
+        <tr>
           <td> SERVICE_NAME </td>
           <td> Name of the ECS service under chaos. </td>
           <td> For example, <code>nginx-svc</code>. </td>
@@ -127,12 +127,12 @@ Below is an example AWS policy to execute the fault.
         <td> Interval between successive instance terminations (in seconds).</td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Path to the AWS secret credentials.</td>
         <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
       </tr>
-      <tr> 
+      <tr>
         <td> TASK_ROLE </td>
         <td> Provide a custom chaos role for the ECS Task containers. </td>
         <td> Default: no role. For more information, go to <a href="#task-role-specification"> task role specification.</a> </td>
