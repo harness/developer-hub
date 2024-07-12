@@ -122,7 +122,7 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
   <tr>
       <td> latency </td>
       <td> Delay introduced in the application. </td>
-      <td> Default: 2 s. </td>
+      <td> Default: 2s. </td>
   </tr>
   <tr>
       <td> dataDirection </td>

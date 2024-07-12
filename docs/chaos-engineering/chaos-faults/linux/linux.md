@@ -309,6 +309,23 @@ Linux Redis Sentinel stop fault stops the [Redis Sentinel server](https://redis.
 
 <FaultDetailsCard category="linux">
 
+### Linux API block
+
+Linux API block injects API block fault into a Linux machine for a specific duration through path filtering. This results in the API not being able to send responses for the requests it receives.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Validates how well your system can handle API service disruptions for a Linux server.
+- Ensures that your load balancer is effectively distributing traffic to the Linux server.
+- Checks if your system's failover mechanisms work as expected when the Linux server becomes unresponsive.
+- Evaluate if your system can gracefully degrade performance when a specific component (in this case, the Linux server) is experiencing issues.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
 ### Linux API latency
 
 Linux API latency injects API request and response latency into a Linux machine by starting proxy server and redirecting the traffic through it. It induces API call latency that adds a time delay before sending a response.

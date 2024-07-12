@@ -2,6 +2,20 @@ import { ExperimentDetails } from "@site/src/components/ChaosEngineering/Experim
 
 export const experiments: ExperimentDetails[] = [
   {
+    name: "Linux API block",
+    description:
+      "Linux API block injects API block fault into a Linux machine for a specific duration through path filtering. This results in the API not being able to send responses for the requests it receives.",
+    tags: ["linux", "api", "block"],
+    category: "linux",
+  },
+  {
+    name: "Linux API latency",
+    description:
+      "Linux API latency injects API request and response latency into a Linux machine by starting proxy server and redirecting the traffic through it. It induces API call latency that adds a time delay before sending a response.",
+    tags: ["linux", "api", "latency"],
+    category: "linux",
+  },
+  {
     name: "Linux CPU stress",
     description:
       "Linux CPU stress stresses the CPU of the target Linux machines for a specific duration.",
@@ -110,13 +124,6 @@ export const experiments: ExperimentDetails[] = [
     name: "Redis cache penetration",
     description:
       "Redis cache penetration fault continuously sends cache requests to the Redis database to find the value for a non-existing key. This continuous request reduces the performance of the application.",
-    tags: ["linux"],
-    category: "linux",
-  },
-  {
-    name: "Linux API latency",
-    description:
-      "Linux API latency injects API request and response latency into a Linux machine by starting proxy server and redirecting the traffic through it. It induces API call latency that adds a time delay before sending a response.",
     tags: ["linux"],
     category: "linux",
   },
