@@ -129,7 +129,7 @@ This workflow requires [Security Testing SecOps](/docs/security-testing-orchestr
 
 3. Review the exemption request. The **Issue Details** pane includes a high-level summary of the issue, links to relevant documentation, and a list of all locations in the scanned object where the issue was detected. 
 
-    :::note notes
+    :::note
 
     - The **Issue Details** pane is comprehensive, but might not include all the information you need. You might want to research the issue further before you approve the request.
 
@@ -148,6 +148,11 @@ This workflow requires [Security Testing SecOps](/docs/security-testing-orchestr
     - **Cancel** The request is cancelled and removed from the exemption list. If a user wants an exemption for the issue, they must file a new request. 
 
      ![](../use-sto/static/exemptions-approved.png)
+
+:::note notes
+     You can control whether users can approve or reject their own exemption requests. This setting can be managed by enabling or disabling the `Users can approve their own exemptions` option in the default settings of a project, organization, or account.
+:::
+
  
 
 ## Good practice: Review and update STO exemptions periodically
