@@ -5,27 +5,26 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-cpu-hog
 ---
 
-VMware Windows CPU hog applies stress on the CPU resources on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware Windows VMs.
+VMware Windows CPU hog applies stress on the CPU resources on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs.
 
 ![VMware Windows Cpu Hog](./static/images/vmware-windows-cpu-hog.png)
 
 ## Use cases
-
-- VMware Windows CPU hog determines the resilience of an application when stress is applied on the CPU resources of a VMware Windows virtual machine.
-- VMware Windows CPU hog simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
-- It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition. 
-- It verifies the autopilot functionality of cloud managed clusters.
+VMware Windows CPU hog:
+- Determines the resilience of an application when stress is applied on the CPU resources of a VMware Windows virtual machine.
+- Simulates the situation of lack of CPU for processes running on the application, which degrades their performance.
+- Helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition.
+- Verifies the autopilot functionality of cloud managed clusters.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
-- Execution plane should be connected to vCenter and host vCenter on port 443. 
+- Execution plane should be connected to vCenter and host vCenter on port 443.
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - VMware tool should be installed on the target VM with remote execution enabled.
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`.
 
-- VM credentials can be passed as secrets or as a chaos enginer environment variable. 
+- VM credentials can be passed as secrets or as a chaos engine environment variable.
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -124,6 +123,6 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # CPU cores for stress
-        - name: CPU_CORES 
+        - name: CPU_CORES
           value: '1'
 ```
