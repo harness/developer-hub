@@ -225,9 +225,9 @@ Harness includes native TUF support via the following:
   - Harness provides [token key rotation natively](/docs/platform/automation/api/add-and-manage-api-keys#rotate-tokens).
 - Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step).
 
-## Active Platform Feature flags
+## Active Platform feature flags
 
-Some Harness Platform features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience.
+Some Harness Platform features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience. Feature development statuses are categorized as [Beta, GA, or Limited GA](/docs/platform/get-started/release-status).
 
 The following table describes active feature flags relevant to Harness Platform.
 
@@ -237,10 +237,10 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 |-----------------------------------------------|-------------|
 | `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES`        | When activated, it prevents sending email invitations to users of accounts using SSO for authentication during onboarding. |
 | `PL_LDAP_PARALLEL_GROUP_SYNC`                 | Enable User Group sync operation to fetch data from the LDAP server in parallel. Only enable this if the LDAP server can handle the load. |
-| `PL_NEW_SCIM_STANDARDS`                       | Enabling the `PL_NEW_SCIM_STANDARDS` feature flag ensures compliance with SCIM 2.0 standards by including the meta fields `createdAt`, `lastUpdated`, `version`, and `resourceType in CRUD operation responses on users or user groups. |
+| `PL_NEW_SCIM_STANDARDS`                       | Enabling the `PL_NEW_SCIM_STANDARDS` feature flag ensures compliance with SCIM 2.0 standards by including the meta fields `createdAt`, `lastUpdated`, `version`, and `resourceType` in CRUD operation responses on users or user groups. |
 | `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM` | Enabling this Feature Flag will let you use delegate credentials to access the Google Cloud Platform Secret Manager. |
-| `PL_DELEGATE_TASK_CAPACITY_CHECK`             | When enabled, tasks of the accounts will be broadcasted until task timeout other wise the default behavior is that tasks will be broadcasted up to 3 times to delegates. |
-| `PL_FAVORITES`                                | Allows you to set the frequently accessed projects and connectors as favorites. |
-| `PL_ALLOW_TO_SET_PUBLIC_ACCESS`               | Allows pipeline executions marked for public view to be accessed without authentication. You can share execution URLs, including console logs, without requiring users to sign in. |
-| `PL_GCP_OIDC_AUTHENTICATION`                  | Enabling this feature flag allows GCP connectors using OpenID Connect (OIDC) to let Harness communicate directly with GCP through OIDC. |
-| `PL_CENTRAL_NOTIFICATION`                     | Enable/disable Centralized Notifications Management. |
+| `PL_DELEGATE_TASK_CAPACITY_CHECK`             | When enabled, account tasks will be broadcasted until timeout. The default behavior is to broadcast tasks up to 3 times to delegates. |
+| `PL_FAVORITES`                                | Allows you to set the frequently accessed projects and connectors as favorites. For more information, go to [Set favorites](/docs/platform/favorites/set-favorites/). |
+| `PL_ALLOW_TO_SET_PUBLIC_ACCESS`               | Allows pipeline executions marked for access to public view without authentication. You can share execution URLs, including console logs, without requiring users to sign in. For more information, go to [Allow public access to pipeline executions](/docs/platform/pipelines/executions-and-logs/allow-public-access-to-executions/). |
+| `PL_GCP_OIDC_AUTHENTICATION`                  | Enabling this feature flag allows GCP connectors using OpenID Connect (OIDC) to let Harness communicate directly with GCP through OIDC. For more information, go to [Google Cloud Platform (GCP) connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/). |
+| `PL_CENTRAL_NOTIFICATION`                     | Enable/disable Centralized Notifications Management. For more information, go to [Manage delegate notifications](/docs/platform/notifications/manage-notifications). |
