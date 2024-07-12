@@ -1,20 +1,19 @@
 ---
 id: vmware-windows-network-duplication
-title: VMware Windows Network Duplication
+title: VMware Windows network duplication
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-network-duplication
 ---
 
-VMware Windows Network Duplication simulates a network duplication scenario on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware Windows VMs under network duplication conditions.
+VMware Windows network duplication simulates a network duplication scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under network duplication conditions.
 
 ![VMware Windows Network Duplication](./static/images/vmware-windows-network-duplication.png)
 
 ## Use cases
-
-- VMware Windows Network Duplication determines the resilience of an application when a network duplication scenario is simulated on a VMware Windows virtual machine.
-- VMware Windows Network Duplication simulates the situation of network duplication on the application, which degrades their performance.
-- It also helps verify the application's ability to handle network failures and its failover mechanisms.
+VMware Windows network duplication:
+- Determines the resilience of an application when a network duplication scenario is simulated on a VMware Windows virtual machine.
+- Simulates the situation of network duplication on the application, which degrades their performance.
+- Helps verify the application's ability to handle network failures and its failover mechanisms.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

@@ -5,17 +5,16 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-cpu-hog
 ---
 
-VMware Windows CPU hog applies stress on the CPU resources on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware Windows VMs.
+VMware Windows CPU hog applies stress on the CPU resources on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs.
 
 ![VMware Windows Cpu Hog](./static/images/vmware-windows-cpu-hog.png)
 
 ## Use cases
-
-- VMware Windows CPU hog determines the resilience of an application when stress is applied on the CPU resources of a VMware Windows virtual machine.
-- VMware Windows CPU hog simulates the situation of lack of CPU for processes running on the application, which degrades their performance.
-- It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition.
-- It verifies the autopilot functionality of cloud managed clusters.
+VMware Windows CPU hog:
+- Determines the resilience of an application when stress is applied on the CPU resources of a VMware Windows virtual machine.
+- Simulates the situation of lack of CPU for processes running on the application, which degrades their performance.
+- Helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition.
+- Verifies the autopilot functionality of cloud managed clusters.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

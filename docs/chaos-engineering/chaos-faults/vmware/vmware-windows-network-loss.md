@@ -1,20 +1,19 @@
 ---
 id: vmware-windows-network-loss
-title: VMware Windows Network Loss
+title: VMware Windows network loss
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-network-loss
 ---
 
-VMware Windows Network Loss simulates a network loss scenario on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware Windows VMs under network loss conditions.
+VMware Windows network loss simulates a network loss scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under network loss conditions.
 
 ![VMware Windows Network Loss](./static/images/vmware-windows-network-loss.png)
 
 ## Use cases
-
-- VMware Windows Network Loss determines the resilience of an application when a network loss scenario is simulated on a VMware Windows virtual machine.
-- VMware Windows Network Loss simulates the situation of network loss for processes running on the application, which degrades their performance.
-- It also helps verify the application's ability to handle network failures and its failover mechanisms.
+VMware Windows network loss:
+- Determines the resilience of an application when a network loss scenario is simulated on a VMware Windows virtual machine.
+- Simulates the situation of network loss for processes running on the application, which degrades their performance.
+- Helps verify the application's ability to handle network failures and its failover mechanisms.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

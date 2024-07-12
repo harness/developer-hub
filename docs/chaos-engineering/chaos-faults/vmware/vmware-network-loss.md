@@ -4,10 +4,7 @@ title: VMware network loss
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-network-loss
 ---
-VMware network loss injects network packet loss from the VMware VM(s) into the application (or service).
-- This results in flaky access to the application.
-- It checks the performance of the application (or process) running on the VMware VM(s).
-
+VMware network loss injects network packet loss from the VMware VM(s) into the application (or service). This results in flaky access to the application. It checks the performance of the application (or process) running on the VMware VM(s).
 
 ![VMware Network Loss](./static/images/vmware-network-loss.png)
 

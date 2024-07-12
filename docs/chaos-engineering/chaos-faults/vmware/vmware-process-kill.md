@@ -5,14 +5,14 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-process-kill
 ---
 
-VMware process kill kills the target processes that are running as a part of a Linux OS based VMware VM. It helps determine the resilience of an application (or process) running on the VMware VMs.
+VMware process kill kills the target processes that are running as a part of a Linux OS based VMware VM. The services that are disrupted might be running in the VMware VM, and this fault kills their underlying processes or threads. It helps determine the resilience of an application (or process) running on the VMware VMs.
 
 ![VMware Process kill](./static/images/vmware-process-kill.png)
 
 ## Use cases
-
-- VMware process kill disrupts critical processes running within the application, such as databases or message queues.
-- The services that are disrupted might be running in the VMware VM, and this fault kills their underlying processes or threads. Such faults help determine how efficiently and quickly the VMware instance recovers from the unexpected disruption.
+VMware process kill:
+- Disrupts critical processes running within the application, such as databases or message queues.
+- Determines how efficiently and quickly the VMware instance recovers from the unexpected disruption.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

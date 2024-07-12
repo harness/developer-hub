@@ -1,20 +1,19 @@
 ---
 id: vmware-windows-process-kill
-title: VMware Windows Process Kill
+title: VMware Windows process kill
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-process-kill
 ---
 
-VMware Windows Process Kill simulates a process kill scenario on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware Windows VMs under process kill conditions.
+VMware Windows process kill simulates a process kill scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under process kill conditions.
 
 ![VMware Windows Process Kill](./static/images/vmware-windows-process-kill.png)
 
 ## Use cases
-
-- VMware Windows Process Kill determines the resilience of an application when a process kill scenario is simulated on a VMware Windows virtual machine.
-- VMware Windows Process Kill simulates the situation of process kill for processes running on the application, which degrades their performance.
-- It also helps verify the application's ability to handle process failures and its failover mechanisms.
+VMware Windows process kill:
+- Determines the resilience of an application when a process kill scenario is simulated on a VMware Windows virtual machine.
+- Simulates the situation of process kill for processes running on the application, which degrades their performance.
+- Helps verify the application's ability to handle process failures and its failover mechanisms.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

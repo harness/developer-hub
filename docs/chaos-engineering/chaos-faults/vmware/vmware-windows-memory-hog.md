@@ -1,20 +1,19 @@
 ---
 id: vmware-windows-memory-hog
-title: VMware Windows Memory hog
+title: VMware Windows memory hog
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-memory-hog
 ---
 
-VMware Windows Memory hog applies stress on the Memory resources on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware Windows VMs.
+VMware Windows memory hog applies stress on the Memory resources on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs.
 
 ![VMware Windows Memory Hog](./static/images/vmware-windows-memory-hog.png)
 
 ## Use cases
-
-- VMware Windows Memory hog determines the resilience of an application when stress is applied on the Memory resources of a VMware Windows virtual machine.
-- VMware Windows Memory hog simulates the situation of lack of Memory for processes running on the application, which degrades their performance.
-- It verifies the autopilot functionality of services or application on the VM.
+VMware Windows memory hog:
+- Determines the resilience of an application when stress is applied on the Memory resources of a VMware Windows virtual machine.
+- Simulates the situation of lack of Memory for processes running on the application, which degrades their performance.
+- Verifies the autopilot functionality of services or application on the VM.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

@@ -9,9 +9,9 @@ VMware service stop stops the target system services running on a Linux OS based
 ![VMware ServiceStop](./static/images/vmware-service-stop.png)
 
 ## Use cases
-
-- VMware service stop determines the resilience of an application to random halts.
-- It determines how efficiently an application recovers and restarts the services.
+VMware service stop:
+- Determines the resilience of an application to random halts.
+- Determines how efficiently an application recovers and restarts the services.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

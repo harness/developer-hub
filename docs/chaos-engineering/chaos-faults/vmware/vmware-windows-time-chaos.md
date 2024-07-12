@@ -1,20 +1,19 @@
 ---
 id: vmware-windows-time-chaos
-title: VMware Windows Time Chaos
+title: VMware Windows time chaos
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-time-chaos
 ---
 
-VMware Windows Time Chaos simulates a time skew scenario on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware Windows VMs under time skew conditions.
+VMware Windows time chaos simulates a time skew scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under time skew conditions.
 
 ![VMware Windows Time Chaos](./static/images/vmware-windows-time-chaos.png)
 
 ## Use cases
-
-- VMware Windows Time Chaos determines the resilience of an application when a time skew scenario is simulated on a VMware Windows virtual machine.
-- VMware Windows Time Chaos simulates the situation of time skew for processes running on the application, which degrades their performance.
-- It also helps verify the application's ability to handle time failures and its failover mechanisms.
+VMware Windows time chaos:
+- Determines the resilience of an application when a time skew scenario is simulated on a VMware Windows virtual machine.
+- Simulates the situation of time skew for processes running on the application, which degrades their performance.
+- Helps verify the application's ability to handle time failures and its failover mechanisms.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

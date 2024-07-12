@@ -4,9 +4,7 @@ title: VMware network rate limit
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-network-rate-limit
 ---
-VMware network rate limit fault injects network rate limit from the VMware VM(s) into the application (or service).
-- This results in flaky access to the application.
-- It checks the performance of the application (or process) running on the VMware VM(s).
+VMware network rate limit fault injects network rate limit from the VMware VM(s) into the application (or service). This results in flaky access to the application. It checks the performance of the application (or process) running on the VMware VM(s).
 
 ![VMware Network Rate Limit](./static/images/vmware-network-rate-limit.png)
 

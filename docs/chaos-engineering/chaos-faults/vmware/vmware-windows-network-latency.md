@@ -1,20 +1,19 @@
 ---
 id: vmware-windows-network-latency
-title: VMware Windows Network Latency
+title: VMware Windows network latency
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-network-latency
 ---
 
-VMware Windows Network Latency simulates a network latency scenario on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware Windows VMs under network latency conditions.
+VMware Windows network latency simulates a network latency scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under network latency conditions.
 
 ![VMware Windows Network Latency](./static/images/vmware-windows-network-latency.png)
 
 ## Use cases
-
-- VMware Windows Network Latency determines the resilience of an application when a network latency scenario is simulated on a VMware Windows virtual machine.
-- VMware Windows Network Latency simulates the situation of network latency for processes running on the application, which degrades their performance.
-- It also helps verify the application's ability to handle network failures and its failover mechanisms.
+VMware Windows network latency:
+- Determines the resilience of an application when a network latency scenario is simulated on a VMware Windows virtual machine.
+- Simulates the situation of network latency for processes running on the application, which degrades their performance.
+- Helps verify the application's ability to handle network failures and its failover mechanisms.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

@@ -1,20 +1,19 @@
 ---
 id: vmware-windows-network-corruption
-title: VMware Windows Network Corruption
+title: VMware Windows network corruption
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-network-corruption
 ---
 
-VMware Windows Network Corruption simulates a network corruption scenario on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware Windows VMs under network corruption conditions.
+VMware Windows network corruption simulates a network corruption scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under network corruption conditions.
 
 ![VMware Windows Network Corruption](./static/images/vmware-windows-network-corruption.png)
 
 ## Use cases
-
-- VMware Windows Network Corruption determines the resilience of an application when a network corruption scenario is simulated on a VMware Windows virtual machine.
-- VMware Windows Network Corruption simulates the situation of network corruption on the application, which degrades their performance.
-- It also helps verify the application's ability to handle network failures and its failover mechanisms.
+VMware Windows network corruption:
+- Determines the resilience of an application when a network corruption scenario is simulated on a VMware Windows virtual machine.
+- Simulates the situation of network corruption on the application, which degrades their performance.
+- Helps verify the application's ability to handle network failures and its failover mechanisms.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

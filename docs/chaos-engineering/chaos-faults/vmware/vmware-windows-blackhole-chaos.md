@@ -5,16 +5,15 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-blackhole-chaos
 ---
 
-VMware Windows blackhole chaos simulates a network blackhole scenario on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware Windows VMs under network blackhole conditions.
+VMware Windows blackhole chaos simulates a network blackhole scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under network blackhole conditions.
 
 ![VMware Windows Blackhole Chaos](./static/images/vmware-windows-blackhole-chaos.png)
 
 ## Use cases
-
-- VMware Windows blackhole Chaos determines the resilience of an application when a network blackhole scenario is simulated on a VMware Windows virtual machine.
-- VMware Windows blackhole Chaos simulates the situation of network isolation for processes running on the application, which degrades their performance.
-- It also helps verify the application's ability to handle network failures and its failover mechanisms.
+VMware Windows blackhole chaos
+- Determines the resilience of an application when a network blackhole scenario is simulated on a VMware Windows virtual machine.
+- Simulates the situation of network isolation for processes running on the application, which degrades their performance.
+- Helps verify the application's ability to handle network failures and its failover mechanisms.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

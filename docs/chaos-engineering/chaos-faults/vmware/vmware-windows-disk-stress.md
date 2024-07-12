@@ -5,16 +5,15 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-disk-stress
 ---
 
-VMware Windows Disk Stress applies stress on the disk resources on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware Windows VMs under disk stress conditions.
+VMware Windows disk stress applies stress on the disk resources on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under disk stress conditions.
 
 ![VMware Windows Disk Stress](./static/images/vmware-windows-disk-stress.png)
 
 ## Use cases
-
-- VMware Windows Disk Stress determines the resilience of an application when stress is applied on the disk resources of a VMware Windows virtual machine.
-- VMware Windows Disk Stress simulates the situation of high disk usage for processes running on the application, which degrades their performance.
-- It also helps verify the application's ability to handle disk failures and its failover mechanisms.
+VMware Windows disk stress
+- Determines the resilience of an application when stress is applied on the disk resources of a VMware Windows virtual machine.
+- Simulates the situation of high disk usage for processes running on the application, which degrades their performance.
+- Helps verify the application's ability to handle disk failures and its failover mechanisms.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

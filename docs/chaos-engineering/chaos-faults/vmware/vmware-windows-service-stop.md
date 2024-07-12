@@ -1,20 +1,19 @@
 ---
 id: vmware-windows-service-stop
-title: VMware Windows Service Stop
+title: VMware Windows service stop
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-service-stop
 ---
 
-VMware Windows Service Stop simulates a service stop scenario on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware Windows VMs under service stop conditions.
+VMware Windows service stop simulates a service stop scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under service stop conditions.
 
 ![VMware Windows Service Stop](./static/images/vmware-windows-service-stop.png)
 
 ## Use cases
-
-- VMware Windows Service Stop determines the resilience of an application when a service stop scenario is simulated on a VMware Windows virtual machine.
-- VMware Windows Service Stop simulates the situation of service stop for services running on the application, which degrades their performance.
-- It also helps verify the application's ability to handle service failures and its failover mechanisms.
+VMware Windows service stop:
+- Determines the resilience of an application when a service stop scenario is simulated on a VMware Windows virtual machine.
+- Simulates the situation of service stop for services running on the application, which degrades their performance.
+- Helps verify the application's ability to handle service failures and its failover mechanisms.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

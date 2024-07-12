@@ -5,16 +5,14 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-vm-power-off
 ---
 
-VMware VM power off stops (or powers off) the VMware VMs for a specific duration.
-- After the duration, the VMs are back to original state.
-- It checks the performance of the application running on the VMware VMs.
+VMware VM power off stops (or powers off) the VMware VMs for a specific duration. After the duration, the VMs are back to original state. It checks the performance of the application running on the VMware VMs.
 
 ![VMware VM Power off](./static/images/vmware-vm-poweroff.png)
 
 ## Use cases
-
-- VMware VM power off determines the resilience of an application to random power failures.
-- It determines how efficiently an application recovers and restarts the services.
+VMware VM power off:
+- Determines the resilience of an application to random power failures.
+- Determines how efficiently an application recovers and restarts the services.
 
 ### Prerequisites
 - Kubernetes >= 1.17 is required to execute this fault.
