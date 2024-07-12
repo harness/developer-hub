@@ -12,6 +12,8 @@ helpdocs_is_published: true
 import DocCardList from '@theme/DocCardList';
 import Link from '@docusaurus/Link';
 
-These articles provide **quickstart** guides, **key concepts**, and **architectural overviews** for Feature Management & Experimentation (FME). If you are troubleshooting, you can also check <Link to="/docs/faqs/feature-management-experimentation">FME FAQs</Link>.
+These articles provide **quickstart** guides, **key concepts**, and **architectural overviews** for Feature Management & Experimentation (FME). 
 
 <DocCardList />
+
+If you are troubleshooting, you can also check <Link to="/docs/faqs/feature-management-experimentation">FME FAQs</Link>.
