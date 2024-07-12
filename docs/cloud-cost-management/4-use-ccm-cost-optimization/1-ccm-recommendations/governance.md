@@ -26,6 +26,8 @@ The following resources can be optimized with Asset Governance:
 - RDS (Relational Database Service) instances
 - CloudFormation stacks
 
+To view all the AWS recommendations, please see [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/AWS/AWS-recommendations).
+
 ### Azure Resource Coverage 
 
 - Virtual Machines (VMs)
@@ -36,6 +38,8 @@ The following resources can be optimized with Asset Governance:
 - PostgreSQL servers
 - Key Vaults
 
+To view all the Azure recommendations, please see [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/GCP/gcp-recommendations).
+
 ### GCP Resource Coverage 
 
 - Compute Engine instances
@@ -44,6 +48,7 @@ The following resources can be optimized with Asset Governance:
 - Cloud SQL instances
 - Cloud IAM policies
 
+To view all the GCP recommendations, please see [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/Azure/azure-recommendations).
 
 ## Before you begin
 
@@ -55,11 +60,6 @@ The following resources can be optimized with Asset Governance:
 * To obtain governance recommendations, configure a Harness CCM connector with the **Cloud Governance** feature enabled.
 * Make sure that you have added the required permissions in your Cloud account.
 
-## Types of governance recommendations
-
-- All the AWS recommendations can be found [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/AWS/AWS-recommendations).
-- All the GCP recommendations can be found [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/GCP/gcp-recommendations).
-- All the Azure recommendations can be found [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/Azure/azure-recommendations).
  
 ## View your cost governance recommendations
 
@@ -68,7 +68,7 @@ The following resources can be optimized with Asset Governance:
 3. There are two tabs present on the window - "Open Recommendations" and "Applied Recommendations". Open Recommendation tab shows all the recommendations that are currently available for applying and the potential monthly savings that the user can achieve if they are applied. On the other hand, Applied Recommendations show all the recommendations that have already been applied and the total savings achieved with their application. 
 4. The recommendations window allows you to put filters on the recommendations to see the result as per convenience. Kindly choose "Governance" in "Recommendation Type" filter for all governance recommendations. Currently, these are filters supported:
 
-  <DocImage path={require('./static/filter2.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/filterag3.png')} width="60%" height="60%" title="Click to view full size image" />
 
 For more information about Asset Governance in CCM, please refer to the links below:
 - [Governance for AWS](https://developer.harness.io/docs/category/governance-for-aws)
