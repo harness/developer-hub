@@ -129,7 +129,7 @@ This workflow requires [Security Testing SecOps](/docs/security-testing-orchestr
 
 3. Review the exemption request. The **Issue Details** pane includes a high-level summary of the issue, links to relevant documentation, and a list of all locations in the scanned object where the issue was detected. 
 
-    :::note notes
+    :::note
 
     - The **Issue Details** pane is comprehensive, but might not include all the information you need. You might want to research the issue further before you approve the request.
 

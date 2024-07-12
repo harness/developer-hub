@@ -573,7 +573,9 @@ You can scan your code repositories using [Open Source Vulnerabilities (OSV)](ht
   
 :::note
 
-**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`. Contact [Harness Support](mailto:support@harness.io) to enable this option.
+~~**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`. Contact [Harness Support](mailto:support@harness.io) to enable this option.~~ 
+
+**Update on July 2024:** SonarQube Branch Scan feature, which was previously available in early access, became generally available GA in [Version 1.102.2](#version-11022)
 
 :::
   <!-- 
