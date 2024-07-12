@@ -20,6 +20,21 @@ Linux API modify header:
 
 <FaultPermissions />
 
+### Mandatory tunables
+
+<table>
+  <tr>
+    <th> Tunable </th>
+    <th> Description </th>
+    <th> Notes </th>
+  </tr>
+  <tr>
+    <td> headersMap </td>
+    <td> String body to overwrite the header.</td>
+    <td> If no value is provided, it throws an error. You can either modify the existing header by providing a new value for the key or add a new "key:value" to the header. For more information, go to <a href="#advanced-fault-tunables"> modify header. </a></td>
+  </tr>
+</table>
+
 ### Optional tunables
 <table>
   <tr>
@@ -116,11 +131,6 @@ Linux API modify header:
     <td> destinationIPs </td>
     <td> Comma-separated destination IPs are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type.</td>
     <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
-  </tr>
-  <tr>
-    <td> headersMap </td>
-    <td> String body to overwrite the header.</td>
-    <td> If no value is provided, it throws an error. You can either modify the existing header by providing a new value for the key or add a new "key:value" to the header. For more information, go to <a href="#advanced-fault-tunables"> modify header. </a></td>
   </tr>
   <tr>
     <td> dataDirection </td>
