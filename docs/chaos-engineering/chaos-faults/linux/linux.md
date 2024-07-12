@@ -42,6 +42,22 @@ Linux API block injects API block fault into a Linux machine for a specific dura
 
 <FaultDetailsCard category="linux">
 
+### Linux API status code
+
+Linux API status code changes the API response status code and optionally API  response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Tests the error handling capabilities of API and client applications. By changing the API response status code to different error codes, such as 400 (Bad Request) or 500 (Internal Server Error), you can evaluate how well your application handles and responds to various error scenarios.
+- Simulates situations where the API may be temporarily unavailable or rate-limited by returning temporary error codes like 503 (Service Unavailable) or 429 (Too Many Requests).
+- Used for content filtering, by selectively filter or block certain responses. For example, you can change the status code to 404 (Not Found) for specific paths or patterns, indicating that the requested resource does not exist.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
 ### Linux CPU stress
 
 Linux CPU stress applies stress on the CPU of the target Linux machines for a certain duration.
