@@ -190,7 +190,7 @@ No early access (beta) features are available for the Harness Software Supply Ch
 
 ## STO early access features
 
-The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
+There are no early access (beta) features for the Harness Security Testing Orchestration module at this time.
 
 ## SRM early access features
 
