@@ -19,21 +19,6 @@ Linux API modify body modifies the API request and response body by replacing an
 
 <FaultPermissions />
 
-### Mandatory tunables
-
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
-  <tr>
-    <td> responseBody </td>
-    <td>  String body to overwrite the HTTP response body.</td>
-    <td> If no value is provided, response will be an empty body. Default is an empty body. For more information, go to <a href="#advanced-fault-tunables">response body </a></td>
-  </tr>
-</table>
-
 ### Optional tunables
 <table>
   <tr>
@@ -130,6 +115,11 @@ Linux API modify body modifies the API request and response body by replacing an
     <td> destinationIPs </td>
     <td> Comma-separated destination IPs are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type.</td>
     <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
+  </tr>
+  <tr>
+    <td> responseBody </td>
+    <td>  String body to overwrite the HTTP response body.</td>
+    <td> If no value is provided, response will be an empty body. Default is an empty body. For more information, go to <a href="#advanced-fault-tunables">response body </a></td>
   </tr>
   <tr>
     <td> dataDirection </td>
