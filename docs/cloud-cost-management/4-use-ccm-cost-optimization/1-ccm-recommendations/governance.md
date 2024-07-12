@@ -13,8 +13,6 @@ You can view the recommendations for all of your Cloud accounts on the recommend
    <DocImage path={require('./static/Overviewpg1.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
-   <DocImage path={require('./static/Overviewpg2.png')} width="90%" height="90%" title="Click to view full size image" />
-
 The following resources can be optimized with Asset Governance:
 
 ### AWS Resource Coverage 
