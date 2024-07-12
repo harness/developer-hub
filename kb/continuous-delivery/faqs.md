@@ -3236,6 +3236,42 @@ AIDA is enabled on the Harness platform by default. To read more on the security
 Yes, we can use exported variables to reference a step group variable without knowing the step group ID.
 One can follow the syntax : `<+exportedVariables.getValue("stepGroup.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>` This method allows you to reference the variable by its alias name instead of needing to know the step group ID. For more details, you can refer to the Harness documentation on [Scoping output variables using aliases](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#scoping-output-variables-using-aliases)
 
+#### Are environment level <+input> fields supported when running a pipeline? 
+
+Yes, environment level <+input> fields are supported when running a pipeline. You can set the environment value as a runtime input by going to the stage where you want to set the environment value, clicking on the Environment dropdown, selecting Runtime Input, and then entering a name for the input.
+
+#### Can you have an OPA policy ignore a certain pipeline?
+
+Yes this can be done when you create an exception in the policy. You can use the input object to check the project and pipeline names and apply the exception accordingly.
+
+#### I am seeing error message, “2 validation errors detected: Value null at 'scalableDimension' failed to satisfy constraint: Member must not be null; Value null at 'serviceNamespace' failed to satisfy constraint: Member must not be null”
+
+Check to see if the serviceNamespace and scalableDimension is in camelcase. They may be configured as ServiceNamespace or ScalableDimension.
+
+#### Can you have a OPA policy validation on Terraform Enterprise show in the Pipeline Execution?
+
+No, currently there is no validation on the Harness side to check OPA validations from Terraform Enterprise
+
+#### Is there a variable we can reference for delegates to see where a step and stage is running?
+
+There is the variable delegateSelectors that is set in each pipeline when a delegate is set. Outside of the pipeline itself there are not any other mention to call what delegate was being used other than in the delegate selector logs. The variable will look something like <+pipeline.stages.stage_name.spec.delegateSelectors>
+
+#### Does Harness fetch the status of OPA policy validation inside Terraform Enterprise workspaces?
+
+Harness Terraform Enterprise integration doesn’t support leveraging OPA on Terraform Enterprise side and will not pick up any policies.
+
+#### Can Approval Stage be used with Step Group Templates?
+
+Yes, Step Group templates will show when using “Use Template” on an Approval Stage
+
+#### For each step in command script, Harness is trying to establish the connection to my server. Is this the default behavior of Harness?
+
+Yes this is expected behavior, if you would like to by pass, consolidate the scripts being run to not have the server connect each time. 
+
+#### How can you add wildcard list support for an expression?
+
+You will need to follow JEXL format and add a pipeline, here is an example expression: <+pipeline.properties.ci.codebase.build.spec.branch> =~ "^(main|develop|staging|release|release/.*|project|project/.*|master)$"
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
