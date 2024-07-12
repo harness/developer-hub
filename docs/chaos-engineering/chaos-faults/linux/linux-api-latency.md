@@ -1,24 +1,26 @@
 ---
-id: linux-api-block
-title: Linux API block
+id: linux-api-latency
+title: Linux API latency
 ---
-
 import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 
-Linux API block injects API block fault into a Linux machine for a specific duration through path filtering. This results in the API not being able to send responses for the requests it receives.
+Linux API latency injects API request and response latency into a Linux machine by starting proxy server and redirecting the traffic through it. It induces API call latency that adds a time delay before sending a response.
 
-![Linux API block](./static/images/linux-api-block.png)
+![Linux API Latency](./static/images/linux-api-latency.png)
 
 ## Use cases
-- Validates how well your system can handle API service disruptions for a Linux server.
-- Ensures that your load balancer is effectively distributing traffic to the Linux server.
-- Checks if your system's failover mechanisms work as expected when the Linux server becomes unresponsive.
-- Evaluate if your system can gracefully degrade performance when a specific component (in this case, the Linux server) is experiencing issues.
+Linux API latency:
+- Simulate high-traffic scenarios and test the resilience and performance of an application or API, where the API may experience delays due to heavy load.
+- Simulate situations where an API request takes longer than expected to respond. By introducing latency, you can test how well your application handles timeouts and implements appropriate error-handling mechanisms.
+- Helps test how well the application handles network delays and failures, and if it recovers gracefully when network connectivity is restored.
 
 <Ossupport />
 
 <FaultPermissions />
+
+### External packages
+This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
 
 ### Optional tunables
 <table>
@@ -118,9 +120,14 @@ Linux API block injects API block fault into a Linux machine for a specific dura
       <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
   </tr>
   <tr>
-      <td> statusCode </td>
-      <td> Status code received when the API is blocked. </td>
-      <td> When the API is blocked, it throws an error along with the status code. Default: 404. </td>
+      <td> latency </td>
+      <td> Delay introduced in the application. </td>
+      <td> Default: 2s. </td>
+  </tr>
+  <tr>
+      <td> dataDirection </td>
+      <td> The direction in which the latency is to be injected. </td>
+      <td> Supports values <code>request</code>, <code>response</code> and <code>both</code>. </td>
   </tr>
 </table>
 
@@ -130,7 +137,7 @@ Port of the target service. Tune it by using the `targetServicePort` input varia
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]: # "./static/manifests/linux-api-block/target-service-port.yaml yaml"
+[embedmd]: # "./static/manifests/linux-api-latency/target-service-port.yaml yaml"
 
 ```yaml
 ## provide the port of the target service
@@ -147,7 +154,7 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: linux-api-block
+    - name: linux-api-latency
       spec:
         components:
           env:
@@ -156,8 +163,6 @@ spec:
               value: 80
             - name: pathFilter
               value: '/status'
-            - name: statusCode
-              value: 404
 ```
 
 ### Path filter
@@ -166,7 +171,7 @@ API sub-path (or route) to filter the API calls. Tune it by using the `pathFilte
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]: # "./static/manifests/linux-api-block/path-filter.yaml yaml"
+[embedmd]: # "./static/manifests/linux-api-latency/path-filter.yaml yaml"
 
 ```yaml
 ## provide api path filter
@@ -183,7 +188,7 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: linux-api-block
+    - name: linux-api-latency
       spec:
         components:
           env:
@@ -193,8 +198,6 @@ spec:
             # provide the port of the target service
             - name: targetServicePort
               value: 80
-            - name: statusCode
-              value: 404
 ```
 
 ### Destination ports
@@ -207,7 +210,7 @@ It is applicable only when `serviceDirection` input variables has the value `egr
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]: # "./static/manifests/linux-api-block/destination-ports.yaml yaml"
+[embedmd]: # "./static/manifests/linux-api-latency/destination-ports.yaml yaml"
 
 ```yaml
 ## provide destination ports
@@ -224,7 +227,7 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: linux-api-block
+    - name: linux-api-latency
       spec:
         components:
           env:
@@ -265,7 +268,7 @@ For outbound traffic, set `httpsEnabled` to `true` to enable HTTPS support for e
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]: # "./static/manifests/linux-api-block/https-enabled.yaml yaml"
+[embedmd]: # "./static/manifests/linux-api-latency/https-enabled.yaml yaml"
 
 ```yaml
 ## enable https support
@@ -282,7 +285,7 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: linux-api-block
+    - name: linux-api-latency
       spec:
         components:
           env:
@@ -297,8 +300,6 @@ spec:
             # provide the port of the targeted service
             - name: targetServicePort
               value: 80
-            - name: statusCode
-              value: 404
 ```
 
 ### Advanced fault tunables
@@ -306,10 +307,12 @@ spec:
 - **proxyPort**: Port where the proxy listens for requests and responses.
 - **serviceDirection**: Direction of the flow of control, either `ingress` or `egress`.
 - **networkInterface**: Network interface used for the proxy.
+- **latency**: Delay introduced in the application.
+- **dataDirection**: The direction in which the latency is to be injected. Supports values `request`, `response` and `both`.
 
-The following YAML snippet illustrates the use of this input variable:
+The following YAML snippet illustrates the use of these input variables:
 
-[embedmd]:# (./static/manifests/linux-api-block/advanced-fault-tunables.yaml yaml)
+[embedmd]:# (./static/manifests/linux-api-latency/advanced-fault-tunables.yaml yaml)
 ```yaml
 # it injects the api modify body fault
 apiVersion: litmuschaos.io/v1alpha1
@@ -325,7 +328,7 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: linux-api-block
+    - name: linux-api-latency
       spec:
         components:
           env:
@@ -344,6 +347,10 @@ spec:
             # provide the port of the target service
             - name: targetServicePort
               value: 80
+            - name: latency
+              value: 2
+            - name: dataDirection
+              value: 'both'
 ```
 
 ### Advanced filters
@@ -358,9 +365,9 @@ spec:
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]:# (./static/manifests/linux-api-block/advanced-filters.yaml yaml)
+[embedmd]:# (./static/manifests/linux-api-latency/advanced-filters.yaml yaml)
 ```yaml
-# it injects the api block fault
+# it injects the api latency fault
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -374,7 +381,7 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: linux-api-block
+    - name: linux-api-latency
       spec:
         components:
           env:

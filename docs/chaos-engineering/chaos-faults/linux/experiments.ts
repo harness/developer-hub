@@ -5,7 +5,14 @@ export const experiments: ExperimentDetails[] = [
     name: "Linux API block",
     description:
       "Linux API block injects API block fault into a Linux machine for a specific duration through path filtering. This results in the API not being able to send responses for the requests it receives.",
-    tags: ["linux"],
+    tags: ["linux", "api", "block"],
+    category: "linux",
+  },
+  {
+    name: "Linux API latency",
+    description:
+      "Linux API latency injects API request and response latency into a Linux machine by starting proxy server and redirecting the traffic through it. It induces API call latency that adds a time delay before sending a response.",
+    tags: ["linux", "api", "latency"],
     category: "linux",
   },
   {
