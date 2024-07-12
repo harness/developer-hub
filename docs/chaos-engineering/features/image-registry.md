@@ -36,7 +36,7 @@ Follow the steps below to use [custom values](#custom-values-for-image-registry)
   ![private-registry](./static/image-registry/private-registry.png)
 
 ### Step 3: Save the custom values
-* Click **Save** to save your changes.
+* Select **Save** to save your changes.
 
 In your chaos experiment manifest, the above custom setting will be reflected below.
 
@@ -60,12 +60,12 @@ container:
 
 ## Default values for image registry
 
-### Step 1: Navigate to Image Registry
-* To use a default image, select **Use default values**, and then click **Save**.
+* To use a default image, navigate to image registry, select **Use default values**, and then select **Save**.
 
   ![select-save](./static/image-registry/click-save.png)
 
-In your chaos experiment manifest, the above default setting is reflected as shown below.
+In your chaos experiment manifest, the above default setting will be reflected below.
+
 ```yaml
 container:
   name: ""
