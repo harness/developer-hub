@@ -149,9 +149,10 @@ This workflow requires [Security Testing SecOps](/docs/security-testing-orchestr
 
      ![](../use-sto/static/exemptions-approved.png)
 
-:::note notes
-     You can control whether users can approve or reject their own exemption requests. This setting can be managed by enabling or disabling the `Users can approve their own exemptions` option in the default settings of a project, organization, or account.
-:::
+      You can control whether users can approve or reject their own exemption requests. This setting can be managed by enabling or disabling the **Users can approve their own exemptions** option. Find this setting under **Exemption settings** on the **Default settings** page. This is available in the project, organization and account level settings.
+      :::note
+      This setting is behind the feature flag `STO_EXEMPTION_SETTING`. Contact [Harness Support](mailto:support@harness.io) to enable this setting.
+      :::
 
  
 
