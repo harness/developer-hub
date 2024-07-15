@@ -26,7 +26,7 @@ export const experiments: ExperimentDetails[] = [
     name: "Linux API status code",
     description:
       "Linux API status code changes the API response status code and optionally API  response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.",
-    tags: ["linux", "api", "status"],
+    tags: ["linux", "api", "status-code"],
     category: "linux",
   },
   {

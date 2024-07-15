@@ -6,7 +6,7 @@ title: Linux API status code
 import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 
-Linux API status code changes the API response status code and optionally API  response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
+Linux API status code changes the API response status code and optionally the API response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 
 ![Linux API status code](./static/images/linux-api-status-code.png)
 
@@ -14,7 +14,7 @@ Linux API status code changes the API response status code and optionally API  r
 Linux API status code:
 - Tests the error handling capabilities of API and client applications. By changing the API response status code to different error codes, such as 400 (Bad Request) or 500 (Internal Server Error), you can evaluate how well your application handles and responds to various error scenarios.
 - Simulates situations where the API may be temporarily unavailable or rate-limited by returning temporary error codes like 503 (Service Unavailable) or 429 (Too Many Requests).
-- Used for content filtering, by selectively filter or block certain responses. For example, you can change the status code to 404 (Not Found) for specific paths or patterns, indicating that the requested resource does not exist.
+- Used for content filtering, by selectively filtering or blocking certain responses. For example, you can change the status code to 404 (Not Found) for specific paths or patterns, indicating that the requested resource does not exist.
 
 <Ossupport />
 
@@ -124,7 +124,7 @@ Linux API status code:
   </tr>
   <tr>
       <td> statusCode </td>
-      <td> Status code received when the API is blocked. </td>
+      <td> Received status code received when the API request is sent. </td>
       <td> When the API is blocked, it throws an error along with the status code. Default: 404. </td>
   </tr>
 </table>
