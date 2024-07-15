@@ -49,6 +49,9 @@ Linux API latency injects API request and response latency into a Linux machine 
 <Accordion color="green">
 <summary>Use cases</summary>
 
+- Simulate different authentication states or test the behavior of your application when using invalid or expired credentials.
+- Validates the caching behavior of your API or client applications. By overriding cache-related headers, such as the "Cache-Control" or "ETag" headers, you can simulate cache validation scenarios.
+- Tests content negotiation capabilities. By modifying the "Accept" header in the API request, you can simulate different content types or formats that the client application can accept.
 - Simulate high-traffic scenarios and test the resilience and performance of an application or API, where the API may experience delays due to heavy load.
 - Simulate situations where an API request takes longer than expected to respond. By introducing latency, you can test how well your application handles timeouts and implements appropriate error-handling mechanisms.
 - Helps test how well the application handles network delays and failures, and if it recovers gracefully when network connectivity is restored.
