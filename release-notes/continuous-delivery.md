@@ -106,6 +106,16 @@ You can fetch a lite version of execution details along with input yaml that was
 
 ### Version 1.43.5
 
+#### New features and enhancements
+
+- **Infinite Scroll Support Repo listing**
+
+This feature is currently behind the feature flag, `CDS_LIST_REPO_V2`. Contact [Harness support](mailto:support@harness.io) to enable it.
+
+For a certain connector, you can now search for repositories with support for infinite scroll. Simply enter any keyword to see related repositories listed. If you can't find the repository you're looking for, you can also add it manually.(PIPE-10894)
+
+Refer to following doc for more details on new [repo listing](/docs/platform/git-experience/git-experience-overview.md#repo-listing).
+
 #### Breaking changes
 
 - Harness now supports the serial deployment of environment groups. This feature is currently behind the feature flag, `ENV_GROUP_DEPLOYMENTS_IN_SERIAL`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-97241, ZD-63912)
@@ -114,7 +124,6 @@ You can fetch a lite version of execution details along with input yaml that was
 
 - If drift is detected in the services dashboard tile, the **Drift Detected** hover box now displays a detailed error message with the relevant documentation link. (CDS-96911, CDS-96722)
 - The project level artifact feed was not working for azure web services deployment and the project information was fetched from the wrong object. This issue is now fixed and the project level feed for artifact collection now works as expected. (CDS-97586)
-- API based repository search is now enabled in the Harness UI. Infinite scroll is also added to the repository drop-down now. (PIPE-10894)
 - Fixed an issue where hovering on variables did not work as expected. (PIPE-14668)
 - The GitEx Health page is now updated to include information about GitEx webhook events validation such as event status and status of other related entities. (PIPE-18466)
 - When a Template is selected and added to a Pipeline, the UI options don't allow the user to select **Always use Stable Template**, although this was possible through the YAML by removing the template version. This issue is now fixed and the Template can be set to **Stable version** in the calling Pipeline. (PIPE-16496, ZD-60750)
