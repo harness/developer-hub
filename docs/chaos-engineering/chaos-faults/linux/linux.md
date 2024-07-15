@@ -47,11 +47,46 @@ Linux API block injects API block fault into a Linux machine for a specific dura
 Linux API status code changes the API response status code and optionally API  response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 
 <Accordion color="green">
-<summary>Use cases</summary>
+<summary>Use cases</summary>  
 
 - Tests the error handling capabilities of API and client applications. By changing the API response status code to different error codes, such as 400 (Bad Request) or 500 (Internal Server Error), you can evaluate how well your application handles and responds to various error scenarios.
 - Simulates situations where the API may be temporarily unavailable or rate-limited by returning temporary error codes like 503 (Service Unavailable) or 429 (Too Many Requests).
+- Used for content filtering, by selectively filtering or blocking certain responses. For example, you can change the status code to 404 (Not Found) for specific paths or patterns, indicating that the requested resource does not exist.
+
+  
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux API latency
+
+Linux API latency injects API request and response latency into a Linux machine by starting proxy server and redirecting the traffic through it. It induces API call latency that adds a time delay before sending a response.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Tests the error handling capabilities of API and client applications. By changing the API response status code to different error codes, such as 400 (Bad Request) or 500 (Internal Server Error), you can evaluate how well your application handles and responds to various error scenarios.
 - Used for content filtering, by selectively filter or block certain responses. For example, you can change the status code to 404 (Not Found) for specific paths or patterns, indicating that the requested resource does not exist.
+- Simulate high-traffic scenarios and test the resilience and performance of an application or API, where the API may experience delays due to heavy load.
+- Simulate situations where an API request takes longer than expected to respond. By introducing latency, you can test how well your application handles timeouts and implements appropriate error-handling mechanisms.
+- Helps test how well the application handles network delays and failures, and if it recovers gracefully when network connectivity is restored.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux API modify body
+
+Linux API modify body modifies the API request and response body by replacing any portions that match a specified regular expression with a provided value. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Tests API, by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations.
+- Simulate error conditions and test the error handling capabilities of API by replacing specific patterns in the response body with error messages or custom error codes to test error handling and reporting mechanisms are in place.
+- Obscure or redact personally identifiable information (PII), such as email addresses or phone numbers, before logging or transmitting the data for security and privacy compliance.
 
 </Accordion>
 </FaultDetailsCard>
