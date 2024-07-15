@@ -16,6 +16,13 @@ export const experiments: ExperimentDetails[] = [
     category: "linux",
   },
   {
+    name: "Linux API modify body",
+    description:
+      "Linux API modify body modifies the API request and response body by replacing any portions that match a specified regular expression with a provided value. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.",
+    tags: ["linux", "api", "modify", "body"],
+    category: "linux",
+  },
+  {
     name: "Linux CPU stress",
     description:
       "Linux CPU stress stresses the CPU of the target Linux machines for a specific duration.",

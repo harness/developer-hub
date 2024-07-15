@@ -11,7 +11,8 @@ Linux API modify body modifies the API request and response body by replacing an
 ![Linux API modify body](./static/images/linux-api-modify-body.png)
 
 ## Use cases
-- Used to test API, by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations.
+Linux API modify body:
+- Tests API, by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations.
 - Simulate error conditions and test the error handling capabilities of API by replacing specific patterns in the response body with error messages or custom error codes to test error handling and reporting mechanisms are in place.
 - Obscure or redact personally identifiable information (PII), such as email addresses or phone numbers, before logging or transmitting the data for security and privacy compliance.
 
