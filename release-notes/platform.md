@@ -83,7 +83,7 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
-- Reduced delegate liveness probe failure time. Previously, delegates had a 15-minute window to send heartbeats before the liveness probe failed, leading to a delegate restart. This time has now been reduced to 5 minutes to ensure quicker detection and response to heartbeat failures. This item requires Harness Delegate version 24.06.83500. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-52037)
+- Reduced delegate liveness probe failure time. Previously, delegates had a 15-minute window to send heartbeats before the liveness probe failed, leading to a delegate restart. Harness reduced this time to 5 minutes to ensure quicker detection and response to heartbeat failures. This item requires Harness Delegate version 24.06.83500. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-52037)
 
 #### Fixed issues
 
