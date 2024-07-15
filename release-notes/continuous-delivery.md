@@ -110,7 +110,7 @@ You can fetch a lite version of execution details along with input yaml that was
 
 - **Infinite Scroll Support Repo listing**
 
-This feature is currently behind the feature flag, `CDS_LIST_REPO_V2`. Contact [Harness support](mailto:support@harness.io) to enable it.
+This feature is currently behind the feature flag, `CDS_LIST_REPO_V2`. Please contact [Harness support](mailto:support@harness.io) to enable it.
 
 For a certain connector, you can now search for repositories with support for infinite scroll. Simply enter any keyword to see related repositories listed. If you can't find the repository you're looking for, you can also add it manually.(PIPE-10894)
 
