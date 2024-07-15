@@ -66,12 +66,10 @@ Linux API latency injects API request and response latency into a Linux machine 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Tests the error handling capabilities of API and client applications. By changing the API response status code to different error codes, such as 400 (Bad Request) or 500 (Internal Server Error), you can evaluate how well your application handles and responds to various error scenarios.
-- Used for content filtering, by selectively filter or block certain responses. For example, you can change the status code to 404 (Not Found) for specific paths or patterns, indicating that the requested resource does not exist.
 - Simulate high-traffic scenarios and test the resilience and performance of an application or API, where the API may experience delays due to heavy load.
 - Simulate situations where an API request takes longer than expected to respond. By introducing latency, you can test how well your application handles timeouts and implements appropriate error-handling mechanisms.
 - Helps test how well the application handles network delays and failures, and if it recovers gracefully when network connectivity is restored.
-
+ 
 </Accordion>
 </FaultDetailsCard>
 

@@ -28,6 +28,13 @@ export const experiments: ExperimentDetails[] = [
       "Linux API status code changes the API response status code and optionally API  response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.",
     tags: ["linux", "api", "status-code"],
     category: "linux",
+   },
+   { 
+    name: "Linux API modify header",
+    description:
+      "Linux API modify header injects API fault into a Linux machine for a specific duration to override the header values of API requests and responses with the user-provided values for the given keys. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.",
+    tags: ["linux", "api", "header", "modify"],
+    category: "linux",
   },
   {
     name: "Linux CPU stress",
