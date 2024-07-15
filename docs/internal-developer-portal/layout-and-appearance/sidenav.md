@@ -87,7 +87,7 @@ You can also update existing sidenav links to change the default landing behavio
 
 ## Custom Plugins
 
-If you have built a [Custom Plugin](../plugins/custom-plugins/overview.md) inside IDP and are exporting a full page component, you can link to the plugin from the sidenav as well.
+If you have built a [Custom Plugin](/docs/internal-developer-portal/plugins/custom-plugins/overview) inside IDP and are exporting a full page component, you can link to the plugin from the sidenav as well.
 
 ```yaml
 - name: SidebarItem

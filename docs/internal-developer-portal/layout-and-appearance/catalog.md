@@ -11,9 +11,9 @@ sidebar_position: 10
 
 ## Introduction
 
-Every page that exists in the Software Catalog e.g. service, API, library, system etc. is uniquely designed to show the most relevant information to the developer for the particular type of application they are viewing. The views are powered by out of the box components like the About card, Scorecard as well as the [Plugins](../plugins/) that are configured.
+Every page that exists in the Software Catalog e.g. service, API, library, system etc. is uniquely designed to show the most relevant information to the developer for the particular type of application they are viewing. The views are powered by out of the box components like the About card, Scorecard as well as the [Plugins](/docs/internal-developer-portal/plugins/overview) that are configured.
 
-Once you enable a plugin or create a [custom plugin](../plugins/custom-plugins/), you can decide where to show the components exported the plugin by changing the Layout of the Catalog entity of the particular type. For example, if you enable the Grafana plugin, you might want to add a Tab called "Performance" and render the Grafana plugin in there.
+Once you enable a plugin or create a [custom plugin](/docs/internal-developer-portal/plugins/custom-plugins/overview), you can decide where to show the components exported the plugin by changing the Layout of the Catalog entity of the particular type. For example, if you enable the Grafana plugin, you might want to add a Tab called "Performance" and render the Grafana plugin in there.
 
 Note that when you enable a plugin, we auto-update the default layouts but you can always make changes by looking at what UI components are exported by that particular plugin. You can find this information under each and every plugin's documentation. [See an example for Dynatrace](http://localhost:3000/docs/internal-developer-portal/plugins/available-plugins/dynatrace#layout).
 
@@ -21,7 +21,7 @@ Note that when you enable a plugin, we auto-update the default layouts but you c
 
 ## Understanding Catalog Entity Kinds and Types
 
-Every Catalog Layout is uniquely designed for a particular **Kind** and **Type** of an application. For example, the most common catalog layout is for a microservice and is often represented as `Kind: Component` and `spec.type: service`. You can learn more about the [available kinds in the Catalog YAML docs](../catalog/yaml-file.md) and its [System Model](../catalog/system-model.md) to understand the different use-cases.
+Every Catalog Layout is uniquely designed for a particular **Kind** and **Type** of an application. For example, the most common catalog layout is for a microservice and is often represented as `Kind: Component` and `spec.type: service`. You can learn more about the [available kinds in the Catalog YAML docs](/docs/internal-developer-portal/catalog/yaml-file) and its [System Model](/docs/internal-developer-portal/catalog/system-model) to understand the different use-cases.
 
 The `kind` of entities are fixed to those available out of the box (Component, API, Resource, etc.), however you can create any arbitrary `type` for these kinds of entities. Let's say you use the word "micro-frontends" to represent internal websites in your organization. In order to create this new type of Component, you can use `microfrontend` in the `spec.type` field of the Catalog Definition YAML and then create a unique layout for those types of applications.
 
@@ -70,7 +70,7 @@ spec:
   system: project-x
 ```
 
-Read more on how to [register a Software Component in the Catalog](../get-started/register-a-new-software-component.md).
+Read more on how to [register a Software Component in the Catalog](/docs/internal-developer-portal/get-started/register-a-new-software-component).
 
 ## Layout YAML Reference
 
