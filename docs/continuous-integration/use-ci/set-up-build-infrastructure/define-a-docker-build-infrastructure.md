@@ -21,6 +21,12 @@ You can configure CI build infrastructure on a Linux, macOS, or Windows host by 
 
 Local runner build infrastructure is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
 
+:::note
+
+It is possible to use a [Harness Kubernetes Delegate](/docs/platform/delegates/install-delegates/overview#install-the-default-delegate) instead of a Harness Docker Delegate.
+
+:::
+
 ## Set up a Linux local runner
 
 ### Prepare machines
