@@ -30,8 +30,8 @@ Linux API modify header:
   </tr>
   <tr>
     <td> headersMap </td>
-    <td> String body to overwrite the header.</td>
-    <td> If no value is provided, it throws an error. You can either modify the existing header by providing a new value for the key or add a new "key:value" to the header. For more information, go to <a href="#advanced-fault-tunables"> modify header. </a></td>
+    <td> JSON map in string format that shows comma-separated header keys and values.</td>
+    <td> For Example: <code>{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}</code>. You can either modify the existing header by providing a new value for the key or add a new "key:value" to the header. For more information, go to <a href="#advanced-fault-tunables"> modify header. </a></td>
   </tr>
 </table>
 
