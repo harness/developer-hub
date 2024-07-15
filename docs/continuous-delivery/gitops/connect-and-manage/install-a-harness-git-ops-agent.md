@@ -429,15 +429,10 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 ### What version of GitOps Agent supports what version of Repo server and Redis cache?
 
-GitOps Agent v0.67.4 supports redis:7.0.11-alpine and Repo server [argocd:v2.9.4](http://quay.io/argoproj/argocd:v2.9.4).
-
-GitOps Agent v0.66.0 supports redis:7.0.11-alpine and Repo server [argocd:v2.9.3](http://quay.io/argoproj/argocd:v2.9.3).
-
-GitOps Agent v0.64.0 to v0.65.0 supports redis:7.0.11-alpine and Repo server [argocd:v2.9.0](http://quay.io/argoproj/argocd:v2.9.0).
-
-GitOps Agent v0.60.0 to v0.63.0 supports redis:7.0.8-alpine and Argo CD version [argocd:v2.8.2](http://quay.io/argoproj/argocd:v2.8.2).
-
-GitOps Agent v0.57.0 to v0.59.2 supports Argo CD version [v2.7.8](http://quay.io/argoproj/argocd:v2.7.8).
+| **Agent Version**        | **ArgoCD components versions supported officiall(Repo-server, Application-controller, Appset-controller )** | **Redis versions**    |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------- | --------------------- |
+| **0.77.x**               | v2.8.x - v2.10.x                                                                                            | _redis:7.2.4-alpine_  |
+| **0.64.x** \- **0.76.x** | v2.7.x - v2.9.x                                                                                             | _redis:7.0.11-alpine_ |
 
 ### How long is a GitOps Agent version supported?
 
