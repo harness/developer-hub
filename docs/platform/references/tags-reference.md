@@ -8,16 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
----
-title: Tags reference
-description: You can add tags to Harness entities and then use the tags to search for all matching entities. For example, you can add a tag to a Harness project and then filter the list of projects by tag.
-sidebar_position: 10
-helpdocs_topic_id: i8t053o0sq
-helpdocs_category_id: phddzxsa5y
-helpdocs_is_private: false
-helpdocs_is_published: true
----
-
 You can add tags to Harness entities and then use the tags to search for all matching entities. For example, you can add a tag to a Harness project and then filter the list of projects by tag.
 
 :::info note
