@@ -114,7 +114,7 @@ This feature is currently behind the feature flag, `CDS_LIST_REPO_V2`. Please co
 
 For a certain connector, you can now search for repositories with support for infinite scroll. Simply enter any keyword to see related repositories listed. If you can't find the repository you're looking for, you can also add it manually.(PIPE-10894)
 
-Refer to following doc for more details on new [repo listing](/docs/platform/git-experience/git-experience-overview.md#repo-listing).
+Refer to following doc for more details on new [repo listing](/docs/platform/git-experience/git-experience-overview/#repo-listing).
 
 #### Breaking changes
 
