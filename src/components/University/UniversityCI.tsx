@@ -60,7 +60,7 @@ export default function CertificationsCI() {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-
+    setTab(null);
     if (params.has("lvl")) {
       setActivePage(ActivePage.Certifications);
     } else if (location.search === "?ilt") {
