@@ -17,35 +17,49 @@ import TabItem from '@theme/TabItem';
 
 - To solve this we would recommend you to use the following scripts which would register separate locations for all the matching catalog-info.yaml files and hence would be synchronised separately.
 
+### Download the Script
+
+- A pregenerated/created repo (let's call it chosen_repo) is to be cloned. After opening it on your code editor and from chosen_repo, below commands can be run to first download and then generate and register `catalog-info.yaml` files of all the repos in your org. The `catalog-info.yaml` files will be in - `chosen_repo/services/{repos}/catalog-info.yaml` where repos will be all the repo in your org.
+
+- Command to Download the Script
+
+```sh
+curl -o idp-catalog-wizard-github.py https://raw.githubusercontent.com/harness-community/idp-samples/main/catalog-scripts/idp-catalog-wizard-github.py
+```
+
+```sh
+python3 idp-catalog-wizard-github.py [OPTIONS]
+```
+
+- Case 1: Run command using `--create-yamls` args, then you'll have to manually push the `files - "services/" .....` after which you can run command using `--register-yamls` args to register all the yamls.
+
+- Case 2: Run command using `--run-all` args, all actions will be performed - create, push and register in one go.
+
 ### [Registered Locations](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/idp-catalog-wizard-github.py)
+
+#### Register YAML files using X-API-Key and account name (all given args in command below are required)
+
+```sh
+python3 idp-catalog-wizard-github.py --register-yamls --org org_name --x_api_key your_x_api_key --account your_account
+
+--org ORG_NAME: Github Org name
+--x_api_key X_API_KEY: Refer https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token to generate one
+--account ACCOUNT_NAME: This is your harrness-account id. Ex - https://app.harness.io/ng/account/{Your account}/module/idp/overview
+```
+
+#### Perform all actions: create YAML files, push changes, and register YAML files (all given args in command below are required)
+
+```sh
+python3 idp-catalog-wizard-github.py --run-all --org example-org --token your_token --x_api_key your_x_api_key --account your_account
+```
+
 
 ### [Registered Locations](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/idp-catalog-wizard-github-monorepo.py) - For Monorepos
 
-- Discover `catalog-info.yaml` matching the regex filter and register under the catalog provided in `apiurl`. This would separate locations for all the matching catalog-info.yaml files and hence would be synchronised separately.
+- Discover `catalog-info.yaml` matching the regex filter and register under the catalog provided in `apiurl`. This would separate locations for all the matching catalog-info.yaml files and hence would be synchronized separately.
 
-- To use the script you need to modify the following and run it
-   - On [line 13](https://github.com/harness-community/idp-samples/blob/99647168c0c354ee1b19c0ef34496642c37e2fb6/catalog-scripts/idp-catalog-wizard-github.py#L13) update the `branch`.
-   - For the `YAML` [template](   https://github.com/harness-community/idp-samples/blob/99647168c0c354ee1b19c0ef34496642c37e2fb6/catalog-scripts/idp-catalog-wizard-github.py#L15-L30) given in the script add the placeholders as mentioned below
+- To use the script you need to add the appropriate flags and run it. 
 
-   ```YAML
-   apiVersion: backstage.io/v1alpha1
-   kind: Component
-   metadata:
-   name: <Add the name of the repo you want to create>
-   tags:
-      - auto-generated
-   annotations:
-      backstage.io/source-location: url: <Repo URl eg, https://github.com/harness-community/idp-samples>
-      github.com/project-slug: The value of this annotation is the so-called slug that identifies a repository on GitHub (either the public one, or a private GitHub Enterprise installation) that is related to this entity. It is on the format <organization or owner>/<repository>, and is the same as can be seen in the URL location bar of the browser when viewing that repository.
-   spec:
-   type: service
-   lifecycle: experimental
-   owner: Harness_Account_All_Users
-   system: <Add the GitHub org name>
-   """
-   ```
-   - On [line 36](https://github.com/harness-community/idp-samples/blob/99647168c0c354ee1b19c0ef34496642c37e2fb6/catalog-scripts/idp-catalog-wizard-github.py#L36) add the bearer token that has access to create repos in the org mentioned int eh YAML above. 
-   - For the API call mentioned in the [line 116](https://github.com/harness-community/idp-samples/blob/99647168c0c354ee1b19c0ef34496642c37e2fb6/catalog-scripts/idp-catalog-wizard-github.py#L116-L118) add the Harness PAT and the accountID. 
 
 ### [Create Services](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/create_services.py)
 
@@ -73,12 +87,63 @@ repo
 
 - To solve this we would recommend you to use the following scripts which would register separate locations for all the matching `catalog-info.yaml` files and hence would be synchronised separately.
 
+### Download the Script
+
+- A pregenerated/created repo (let's call it chosen_repo) is to be cloned. After opening it on your code editor and from chosen_repo, below commands can be run to first download and then generate and register `catalog-info.yaml` files of all the repos in your org. The `catalog-info.yaml` files will be in - `chosen_repo/services/{repos}/catalog-info.yaml` where repos will be all the repo in your org.
+
+- Command to Download the Script
+
+```sh
+curl -o idp-catalog-wizard-bitbucket.py https://raw.githubusercontent.com/harness-community/idp-samples/main/catalog-scripts/idp-catalog-wizard-bitbucket.py
+```
+
+```sh
+python3 idp-catalog-wizard-bitbucket.py [OPTIONS]
+```
+
+- Case 1.a: Run command using `--create-yamls` args, then you'll have to manually push the files `- "services/" .....` after which you can run command using `--register-yamls` args to register all the yamls. Scope of this command is your **whole workspace**.
+
+- Case 1.b: Add all args as given for case 1.a example below with `--project_key` which will keep your **scope to project** instead of workspace.
+
+- Case 2.a: Run command using `--run-all` args, all actions will be performed - create, push and register in one go.
+
+- Case 2.b: Add all args as given for case 2.a example below with `--project_key` which will keep your **scope to project** instead of workspace.
+
+#### Example:
+
+**Create YAML files for repositories in the organization "example-org" with the provided token (all given args in command below are required)**
+
+```sh
+python3 idp-catalog-wizard-bitbucket.py --create-yamls --workspace example_workspace --username bitbucket_username --password bitbucket --project_key bitbucket_project_key
+--workspace WORKSPACE NAME: Bitbucket workspace name
+--username APP_PASSWORD: Bitbucket app password
+--project_key PROJECT_KEY: (OPTIONAL) Bitbucket project key
+--repo-pattern REPO_PATTERN: (OPTIONAL) Your repo pattern
+```
+
 ### [Registered Locations](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/idp-catalog-wizard-bitbucket-monorepo.py) - For Monorepos
 
 ### [Registered Locations](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/idp-catalog-wizard-bitbucket.py)
 
+#### Register YAML files using X-API-Key and account name (all given args in command below are required)
 
-- Discover `catalog-info.yaml` matching the regex filter and register under the catalog provided in `apiurl`. This would separate locations for all the matching catalog-info.yaml files and hence would be synchronised separately.
+```sh
+python3 idp-catalog-wizard-bitbucket.py --register-yamls --workspace bitbucket_workspace --x_api_key your_x_api_key --account harness_account
+
+--workspace WORKSPACE NAME: Bitbucket workspace name
+--x_api_key X_API_KEY: Refer https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token to generate one
+--account ACCOUNT_NAME: This is your harrness-account id. Ex - https://app.harness.io/ng/account/{Your account}/module/idp/overview
+```
+
+#### Perform all actions: create YAML files, push changes, and register YAML files (all given args in command below are required)
+
+```sh
+python3 idp-catalog-wizard-bitbucket.py --run-all --workspace example-workspace --password app_password --x_api_key your_x_api_key --account your_account --project_key (optional) project-key
+
+Refer Create YAML and Register YAML for the arg details 
+```
+
+- Discover `catalog-info.yaml` matching the regex filter and register under the catalog provided in `apiurl`. This would separate locations for all the matching catalog-info.yaml files and hence would be synchronized separately.
 
 
 </TabItem>
