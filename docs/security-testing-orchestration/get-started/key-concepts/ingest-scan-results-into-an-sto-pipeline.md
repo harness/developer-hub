@@ -7,6 +7,7 @@ redirect_from:
   - /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data
   - /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline
   - /docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline
+
 helpdocs_topic_id: d24n34qdbk
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false

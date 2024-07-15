@@ -79,7 +79,7 @@ Here's a simple extraction setup for SonarScanner:
 
 #### Authentication/tool settings
 
-   1. [Domain](//docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#domain) The SonarQube instance URL.
+   1. [Domain](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#domain) The SonarQube instance URL.
    2. [Access token](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#access-token) to your SaaS instance.
    3. [SonarQube project key](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#access-token).
 
