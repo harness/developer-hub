@@ -67,7 +67,11 @@ The **Description** is an optional text string.
 
 ### Connector
 
-Select a connector for the source control provider hosting the code repo that you want the step to clone.
+If you're using [Harness Code Repository (Code)](https://developer.harness.io/docs/code-repository/get-started/overview/), you do not need to configure a connector. 
+
+![No connector required for Harness Code Repository](static/harness_code_repository_default.png)
+
+For third-party Git provider, select a connector for the source control provider hosting the code repo that you want the step to clone.
 
 The following topics provide more information about creating code repo connectors:
 
@@ -113,6 +117,41 @@ The default depth varies by build and trigger type:
 * For manually-triggered PR builds and all auto-triggered builds (such as webhook triggers), the default depth is `0`. This means each `git clone` operation fetches all commits from the relevant branch.
 
 For more information, go to the [git clone documentation](https://git-scm.com/docs/git-clone).
+
+#### Fetch Tags
+
+Determines whether to fetch all tags when performing a shallow clone (depth > 0). Setting this to `true` is equivalent to adding the `--tags` flag.
+
+### Pull Request Clone Strategy
+
+When a build is triggered by a pull request, this setting determines the branch to use for the artifact after the build process clones the repo.
+
+- If **Merge Commit** (the default) is selected, the pipeline tries to merge the Pull Request branch with the target branch before building the artifact. The artifact includes all PR and target commits, but builds can take longer and result in build failures.
+- If **Source Branch** is selected, the pipeline builds the artifact from the latest commit in the Pull Request branch. Builds can be faster and less likely to result in build failures, but the artifacts might not include some target-branch commits.
+
+### Download LFS Files
+
+The [Git Large File Storage (LFS)](https://git-lfs.com/) client is an extension for versioning large files, such as audio, video, datasets, and graphics.
+
+Set **Download LFS Files** to `true` to download Git-LFS files. Default is `false`.
+
+### Sparse Checkout
+
+Do a sparse checkout on given patterns. The subset of files is chosen by providing a list of directories in cone mode. Refer to [git documentation](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set) for more details.
+
+### Include Submodules
+
+Determines whether to include submodules in the clone. Default is `false`. Set to `true` to include submodules or recursive to clone submodules recursively. 
+
+### Pre Fetch Command
+
+Specify any additional Git commands to run before fetching the code. This field is for Git commands only; separate each command with a new line.
+
+This could be used, for example, to set additional LFS configurations or clone specific submodules. For example,
+
+```bash
+git config lfs.fetchexclude ".jpg"
+```
 
 ### SSL Verify
 
