@@ -463,6 +463,26 @@ GitOps clusters are used in a PR pipeline. A PR pipeline creates and merges a Gi
 GitOps Clusters are not used in standard CD pipelines. They're used when using GitOps only.
 
 
+## Clone Environments
+
+:::info note
+Currently, this feature is behind the feature flag `CDS_SERVICE_ENV_CLONING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this is only being supported for Environments that are stored in Harness (i.e INLINE entities).
+:::
+
+You can clone environment across scopes (i.e from one project to another, project to organization, account to project etc.).
+
+Select **More Options**.
+Select **Clone**
+![](./static/clone_option_env_inline.png)
+
+Once you click on **Clone**, you will see the **Clone Environment** setting:
+![](./static/clone_env_inline_setting.png)
+
+You can change the **Name**, add tags, or description for this clone environment.
+
+You can modify the destination of your clone environment using the  **Organization** and **Project** fields.
+
 ## Runtime inputs and expressions in environments
 
 If you use runtime inputs in your environments, you will need to provide values for these when they run pipeline using these environments.

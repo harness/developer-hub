@@ -1,20 +1,20 @@
 ---
-id: linux-api-block
-title: Linux API block
+id: linux-api-modify-body
+title: Linux API modify body
 ---
 
 import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 
-Linux API block injects API block fault into a Linux machine for a specific duration through path filtering. This results in the API not being able to send responses for the requests it receives.
+Linux API modify body modifies the API request and response body by replacing any portions that match a specified regular expression with a provided value. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 
-![Linux API block](./static/images/linux-api-block.png)
+![Linux API modify body](./static/images/linux-api-modify-body.png)
 
 ## Use cases
-- Validates how well your system can handle API service disruptions for a Linux server.
-- Ensures that your load balancer is effectively distributing traffic to the Linux server.
-- Checks if your system's failover mechanisms work as expected when the Linux server becomes unresponsive.
-- Evaluate if your system can gracefully degrade performance when a specific component (in this case, the Linux server) is experiencing issues.
+Linux API modify body:
+- Tests API, by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations.
+- Simulate error conditions and test the error handling capabilities of API by replacing specific patterns in the response body with error messages or custom error codes to test error handling and reporting mechanisms are in place.
+- Obscure or redact personally identifiable information (PII), such as email addresses or phone numbers, before logging or transmitting the data for security and privacy compliance.
 
 <Ossupport />
 
@@ -113,14 +113,19 @@ Linux API block injects API block fault into a Linux machine for a specific dura
       <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
   </tr>
   <tr>
-      <td> destinationIPs </td>
-      <td> Comma-separated destination IPs are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type.</td>
-      <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
+    <td> destinationIPs </td>
+    <td> Comma-separated destination IPs are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type.</td>
+    <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
   </tr>
   <tr>
-      <td> statusCode </td>
-      <td> Status code received when the API is blocked. </td>
-      <td> When the API is blocked, it throws an error along with the status code. Default: 404. </td>
+    <td> responseBody </td>
+    <td>  String body to overwrite the HTTP response body.</td>
+    <td> If no value is provided, response will be an empty body. Default is an empty body. For more information, go to <a href="#advanced-fault-tunables">response body </a></td>
+  </tr>
+  <tr>
+    <td> dataDirection </td>
+    <td> The direction in which the API modification is done. </td>
+    <td> Supports values <code>request</code>, <code>response</code> and <code>both</code>. </td>
   </tr>
 </table>
 
@@ -130,7 +135,7 @@ Port of the target service. Tune it by using the `targetServicePort` input varia
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]: # "./static/manifests/linux-api-block/target-service-port.yaml yaml"
+[embedmd]: # "./static/manifests/linux-api-modify-body/target-service-port.yaml yaml"
 
 ```yaml
 ## provide the port of the target service
@@ -147,10 +152,12 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: linux-api-block
+    - name: linux-api-modify-body
       spec:
         components:
           env:
+            - name: responseBody
+              value: "/.+/test"
             # provide the port of the target service
             - name: targetServicePort
               value: 80
@@ -166,7 +173,7 @@ API sub-path (or route) to filter the API calls. Tune it by using the `pathFilte
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]: # "./static/manifests/linux-api-block/path-filter.yaml yaml"
+[embedmd]: # "./static/manifests/linux-api-modify-body/path-filter.yaml yaml"
 
 ```yaml
 ## provide api path filter
@@ -183,10 +190,12 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: linux-api-block
+    - name: linux-api-modify-body
       spec:
         components:
           env:
+            - name: responseBody
+              value: "/.+/test"
             # provide the api path filter
             - name: pathFilter
               value: '/status'
@@ -207,7 +216,7 @@ It is applicable only when `serviceDirection` input variables has the value `egr
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]: # "./static/manifests/linux-api-block/destination-ports.yaml yaml"
+[embedmd]: # "./static/manifests/linux-api-modify-body/destination-ports.yaml yaml"
 
 ```yaml
 ## provide destination ports
@@ -224,10 +233,12 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: linux-api-block
+    - name: linux-api-modify-body
       spec:
         components:
           env:
+            - name: responseBody
+              value: "/.+/test"
             # provide destination ports
             - name: destinationPorts
               value: '80,443'
@@ -265,7 +276,7 @@ For outbound traffic, set `httpsEnabled` to `true` to enable HTTPS support for e
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]: # "./static/manifests/linux-api-block/https-enabled.yaml yaml"
+[embedmd]: # "./static/manifests/linux-api-modify-body/https-enabled.yaml yaml"
 
 ```yaml
 ## enable https support
@@ -282,10 +293,12 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: linux-api-block
+    - name: linux-api-modify-body
       spec:
         components:
           env:
+            - name: responseBody
+              value: "/.+/test"
             # enable https support
             - name: httpsEnabled
               value: 'true'
@@ -306,10 +319,12 @@ spec:
 - **proxyPort**: Port where the proxy listens for requests and responses.
 - **serviceDirection**: Direction of the flow of control, either `ingress` or `egress`.
 - **networkInterface**: Network interface used for the proxy.
+- **responseBody**: String body that overwrites the API request and response body.
+- **dataDirection**: The direction in which the data is to be modified. Supports values `request`, `response` and `both`.
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]:# (./static/manifests/linux-api-block/advanced-fault-tunables.yaml yaml)
+[embedmd]:# (./static/manifests/linux-api-modify-body/advanced-fault-tunables.yaml yaml)
 ```yaml
 # it injects the api modify body fault
 apiVersion: litmuschaos.io/v1alpha1
@@ -325,10 +340,12 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: linux-api-block
+    - name: linux-api-modify-body
       spec:
         components:
           env:
+            - name: responseBody
+              value: "/.+/test"
             # provide the proxy port
             - name: proxyPort
               value: '20000'
@@ -344,6 +361,8 @@ spec:
             # provide the port of the target service
             - name: targetServicePort
               value: 80
+            - name: dataDirection
+              value: "both"
 ```
 
 ### Advanced filters
@@ -358,9 +377,9 @@ spec:
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]:# (./static/manifests/linux-api-block/advanced-filters.yaml yaml)
+[embedmd]:# (./static/manifests/linux-api-modify-body/advanced-filters.yaml yaml)
 ```yaml
-# it injects the api block fault
+# it injects the api modify body fault
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -374,10 +393,12 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: linux-api-block
+    - name: linux-api-modify-body
       spec:
         components:
           env:
+            - name: responseBody
+              value: "/.+/test"
             # provide the headers filters
             - name: headersFilters
               value: 'key1:value1,key2:value2'
