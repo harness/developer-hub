@@ -33,9 +33,9 @@ There are two sources for tags:
 - In the Pipeline YAML.
 - In the Harness Metadata (properties of the Pipeline that Harness stores for fast reference/indexing/filtering).
 
-The Harness Metadata for a Pipeline is synced with the latest values of the Tags whenever the Pipeline is **saved** in Harness. This includes updates made via the Update API.
+The Harness Metadata for a Pipeline is synced with the latest values of the Tags whenever the Pipeline is **saved** in Harness i.e when yaml is stored as Inline. This includes updates made via the Update API.
 
-If you update the Tags in the Pipeline YAML directly, this does not update the Harness Metadata. This can lead to discrepancies in displayed Tags.
+If you update the Tags in the Pipeline YAML directly i.e you go and update the yaml stored in Git, this does not update the Harness Metadata. This can lead to discrepancies in displayed Tags.
 
 ### Tags Display Logic
 
