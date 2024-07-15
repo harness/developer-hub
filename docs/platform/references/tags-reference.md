@@ -37,7 +37,7 @@ The Harness Metadata for a Pipeline is synced with the latest values of the Tags
 
 If you update the Tags in the Pipeline YAML directly, this does not update the Harness Metadata. This can lead to discrepancies in displayed Tags.
 
-#### Tags Display Logic
+### Tags Display Logic
 
 The Tags are displayed on two main pages: the Pipeline List page and the Pipeline Detail page. The Tags are read from different locations for these pages.
 
