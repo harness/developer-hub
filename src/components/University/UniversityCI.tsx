@@ -59,10 +59,15 @@ export default function CertificationsCI() {
   }, [searchKey]);
 
   useEffect(() => {
-    if (location.search === "?ilt") {
+    const params = new URLSearchParams(location.search);
+
+    if (params.has("lvl")) {
+      setActivePage(ActivePage.Certifications);
+    } else if (location.search === "?ilt") {
       setActivePage(ActivePage.InstructorLedTraining);
-    }
-    if (location.search === "?spt") {
+    } else if (location.search === "?spt") {
+      setActivePage(ActivePage.SelfPacedTraning);
+    } else {
       setActivePage(ActivePage.SelfPacedTraning);
     }
   }, []);
@@ -113,24 +118,25 @@ export default function CertificationsCI() {
       </div>
       <div className={styles.btns}>
         <button
-          className={`${styles.certBtn} ${activePage === ActivePage.Certifications ? styles.active : ""
-            }`}
-          onClick={handleCertficationClick}
+          onClick={handleSelfPacedTrainingClick}
+          className={`${styles.InstLedTrainBtn} ${
+            activePage === ActivePage.SelfPacedTraning ? styles.active : ""
+          }`}
         >
-          {activePage !== ActivePage.Certifications ? (
-            <img src="/img/certification_icon_unactive.svg" />
+          {activePage !== ActivePage.SelfPacedTraning ? (
+            <img src="/img/self-paced-training-logo-inactive.svg" />
           ) : (
-            <img src="/img/certification_icon.svg" />
+            <img src="/img/self-paced-training-logo-active.svg" />
           )}
-          Certifications
+          Self-Paced Training
         </button>
-
         <button
           onClick={handleInstLedTrainClick}
-          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.InstructorLedTraining ? styles.active : ""
-            }`}
+          className={`${styles.InstLedTrainBtn} ${
+            activePage === ActivePage.InstructorLedTraining ? styles.active : ""
+          }`}
         >
-          {activePage === ActivePage.InstructorLedTraining ? (
+          {activePage !== ActivePage.InstructorLedTraining ? (
             <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
           ) : (
             <img src="/img/Instructor_led_trainin_logo.svg" />
@@ -138,16 +144,17 @@ export default function CertificationsCI() {
           Instructor-Led Training
         </button>
         <button
-          onClick={handleSelfPacedTrainingClick}
-          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.SelfPacedTraning ? styles.active : ""
-            }`}
+          className={`${styles.certBtn} ${
+            activePage === ActivePage.Certifications ? styles.active : ""
+          }`}
+          onClick={handleCertficationClick}
         >
-          {activePage === ActivePage.SelfPacedTraning ? (
-            <img src="/img/self-paced-training-logo-inactive.svg" />
+          {activePage == ActivePage.Certifications ? (
+            <img src="/img/certification_icon_unactive.svg" />
           ) : (
-            <img src="/img/self-paced-training-logo-active.svg" />
+            <img src="/img/certification_icon.svg" />
           )}
-          Self-Paced Training
+          Certifications
         </button>
       </div>
       {/* Tab Content */}

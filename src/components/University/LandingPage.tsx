@@ -79,10 +79,15 @@ export default function University() {
   }, [searchKey]);
 
   useEffect(() => {
-    if (location.search === "?ilt") {
+    const params = new URLSearchParams(location.search);
+
+    if (params.has("lvl")) {
+      setActivePage(ActivePage.Certifications);
+    } else if (location.search === "?ilt") {
       setActivePage(ActivePage.InstructorLedTraining);
-    }
-    if (location.search === "?spt") {
+    } else if (location.search === "?spt") {
+      setActivePage(ActivePage.SelfPacedTraning);
+    } else {
       setActivePage(ActivePage.SelfPacedTraning);
     }
   }, []);
@@ -123,24 +128,25 @@ export default function University() {
       </div>
       <div className={styles.btns}>
         <button
-          className={`${styles.certBtn} ${activePage === ActivePage.Certifications ? styles.active : ""
-            }`}
-          onClick={handleCertficationClick}
+          onClick={handleSelfPacedTrainingClick}
+          className={`${styles.InstLedTrainBtn} ${
+            activePage === ActivePage.SelfPacedTraning ? styles.active : ""
+          }`}
         >
-          {activePage !== ActivePage.Certifications ? (
-            <img src="/img/certification_icon_unactive.svg" />
+          {activePage !== ActivePage.SelfPacedTraning ? (
+            <img src="/img/self-paced-training-logo-inactive.svg" />
           ) : (
-            <img src="/img/certification_icon.svg" />
+            <img src="/img/self-paced-training-logo-active.svg" />
           )}
-          Certifications
+          Self-Paced Training
         </button>
-
         <button
           onClick={handleInstLedTrainClick}
-          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.InstructorLedTraining ? styles.active : ""
-            }`}
+          className={`${styles.InstLedTrainBtn} ${
+            activePage === ActivePage.InstructorLedTraining ? styles.active : ""
+          }`}
         >
-          {activePage === ActivePage.InstructorLedTraining ? (
+          {activePage !== ActivePage.InstructorLedTraining ? (
             <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
           ) : (
             <img src="/img/Instructor_led_trainin_logo.svg" />
@@ -148,16 +154,17 @@ export default function University() {
           Instructor-Led Training
         </button>
         <button
-          onClick={handleSelfPacedTrainingClick}
-          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.SelfPacedTraning ? styles.active : ""
-            }`}
+          className={`${styles.certBtn} ${
+            activePage === ActivePage.Certifications ? styles.active : ""
+          }`}
+          onClick={handleCertficationClick}
         >
-          {activePage === ActivePage.SelfPacedTraning ? (
-            <img src="/img/self-paced-training-logo-inactive.svg" />
+          {activePage == ActivePage.Certifications ? (
+            <img src="/img/certification_icon_unactive.svg" />
           ) : (
-            <img src="/img/self-paced-training-logo-active.svg" />
+            <img src="/img/certification_icon.svg" />
           )}
-          Self-Paced Training
+          Certifications
         </button>
       </div>
       {activePage === ActivePage.Certifications && (
@@ -244,7 +251,10 @@ export default function University() {
                     <h4>Developer</h4>
                     <i className="fa-solid fa-chevron-right"></i>
                   </div>
-                  <p>Validate your knowledge of software delivery concepts on the Harness Platform for your needs.</p>
+                  <p>
+                    Validate your knowledge of software delivery concepts on the
+                    Harness Platform for your needs.
+                  </p>
 
                   <ul>
                     {devFeatures.map((feature) => (
@@ -284,17 +294,17 @@ export default function University() {
                     />
                   </div>
                   {/* <h5>Coming Soon</h5> */}
-                <h5>Coming Soon</h5>
-                <div className={styles.unAvailableCerts}>
-                  <img
-                    src={`${baseUrl}img/cert_dev_sei_badge.svg`}
-                    alt="Developer SEI Badge"
-                  /> 
-                  <img
-                    src={`${baseUrl}img/cert_dev_idp_badge.svg`}
-                    alt="Developer IDP Badge"
-                  /> 
-                </div>
+                  <h5>Coming Soon</h5>
+                  <div className={styles.unAvailableCerts}>
+                    <img
+                      src={`${baseUrl}img/cert_dev_sei_badge.svg`}
+                      alt="Developer SEI Badge"
+                    />
+                    <img
+                      src={`${baseUrl}img/cert_dev_idp_badge.svg`}
+                      alt="Developer IDP Badge"
+                    />
+                  </div>
                 </div>
               </div>
               <div className={styles.verticalLine}></div>
@@ -400,7 +410,16 @@ export default function University() {
           <h2>Instructor-Led Training</h2>
           <p>
             Intensive two-day courses are designed for engineers looking to
-            deepen their understanding and expertise in Harness. Can be delivered in a dedicated or <a href="https://university-registration.harness.io/calendar" target="_blank"> shared virtual </a> format.
+            deepen their understanding and expertise in Harness. Can be
+            delivered in a dedicated or{" "}
+            <a
+              href="https://university-registration.harness.io/calendar"
+              target="_blank"
+            >
+              {" "}
+              shared virtual{" "}
+            </a>{" "}
+            format.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
@@ -426,9 +445,7 @@ export default function University() {
       {activePage === ActivePage.SelfPacedTraning && (
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
-          <p>
-            Free self-paced courses that you can consume on your own time.
-          </p>
+          <p>Free self-paced courses that you can consume on your own time.</p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
               {spt
@@ -440,10 +457,7 @@ export default function University() {
                 ))}
               {spt
                 .filter((spt) => {
-                  return (
-                    spt.cardType === "FREE" &&
-                    spt.tileType === "normal"
-                  );
+                  return spt.cardType === "FREE" && spt.tileType === "normal";
                 })
                 .map((spt) => (
                   <IltCard {...spt} />
