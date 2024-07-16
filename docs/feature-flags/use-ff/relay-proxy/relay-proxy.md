@@ -54,7 +54,7 @@ There are various modes for both versions of Relay Proxy. The Relay Proxy V1 sup
 
 To learn more about using [Offline Mode in the Harness Relay Proxy](./offline.md), you can find more information in the Harness docs including instructions on how to generate offline configuration and how to run the proxy in offline mode. 
 
-Whereas with the Relay Proxy V2, it only supports running **Online with Redis Cache** or **Online with In-Memory Cache** mode. Operating in this mode requires the following:
+Whereas with the Relay Proxy V2, it only supports running **Online with Redis Cache**. Operating in this mode requires the following:
 
  - A connection to Harness SaaS.
  - Connectivity to a Redis cache.
