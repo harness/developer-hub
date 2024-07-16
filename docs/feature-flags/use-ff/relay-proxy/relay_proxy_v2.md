@@ -39,8 +39,6 @@ If you decide to use the Relay Proxy, make sure it has a good place in your netw
 
 ### Supported Modes for Relay Proxy V2
 
-### Supported Modes for Relay Proxy
-
 There are various modes for both versions of Relay Proxy. The Relay Proxy V2, it only supports running in the **Online with Redis Cache** mode. Operating in this mode requires the following:
 
  - A connection to Harness SaaS.
