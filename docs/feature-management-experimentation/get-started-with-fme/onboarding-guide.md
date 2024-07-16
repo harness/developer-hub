@@ -1,6 +1,6 @@
 ---
-title: Onboarding guide
-description: Upgrade from Harness classic Feature Flags to Harness Feature Management & Experimentation
+title: FME Onboarding guide
+description: Upgrade from Harness classic Feature Flags to Split FME
 sidebar_label: ☆ Onboarding guide
 sidebar_position: 2
 helpdocs_topic_id: 0a2u2ppp8sx
@@ -9,7 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This guide describes the basic steps for getting started with Harness Feature Management & Experimentation.
+This guide describes the basic steps for getting started with Split Feature Management & Experimentation.
 
 ## Basic steps for creating a Feature Flag
 

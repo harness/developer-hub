@@ -17,7 +17,7 @@ import { MODULES } from "@site/src/constants"
           title: "Get started with Feature Management & Experimentation",
           module: MODULES.fme,
           description:
-            "Learn the basics of Harness Feature Management & Experimentation.",
+            "Learn the basics of Split Feature Management & Experimentation.",
           link: "/docs/feature-management-experimentation/get-started-with-fme",
         },
         {

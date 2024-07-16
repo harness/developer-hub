@@ -1,11 +1,11 @@
 ---
-title: What's supported in Feature Management & Experimentation
-description: Platforms and technologies supported by Harness FME
+title: What's supported in Split FME
+description: Platforms and technologies supported by Split FME
 sidebar_label: ★★ What's supported
 sidebar_position: 10
 ---
 
-Harness Feature Flags support [client-side and server-side SDKs](/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
+Split Feature Management & Experimentation supports [client-side and server-side SDKs](/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
 
 import FmeSuppported from '/docs/feature-management-experimentation/shared/fme-supported-platforms-shared.md';
 

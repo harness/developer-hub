@@ -1,12 +1,12 @@
 {
-    "label": "FME Quickstarts",
+    "label": "☆ Tutorials",
     "position": 40,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Feature Management & Experimentation quickstart guides"
+        "title": "FME Tutorials and Quickstart Guides"
     },
     "customProps": {
         "helpdocs_category_id": "kkiqy1f6d7x",

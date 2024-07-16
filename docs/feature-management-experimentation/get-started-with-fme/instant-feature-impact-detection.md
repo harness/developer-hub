@@ -1,7 +1,7 @@
 ---
-title: Split Feature Management & Experimentation (FME) Overview
-sidebar_label: ★★ Overview
-description: How to make Split Feature Management & Experimentation work for you
+title: Instant Feature Impact Detection with Harness FME
+sidebar_label: ★★ Instant Feature Impact Detection
+description: Learn about the power of IFID
 sidebar_position: 1
 helpdocs_topic_id: 7n9433hkc0x
 helpdocs_category_id: tsswat9k6ox

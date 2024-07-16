@@ -1,6 +1,6 @@
 ---
 title: Feature Management & Experimentation (FME) FAQs
-description: This article addresses some frequently asked questions about Harness Feature Management & Experimentation (FME).
+description: This article addresses some frequently asked questions about Feature Management & Experimentation (FME).
 sidebar_label: ★★ Feature Management & Experimentation (FME) FAQs
 sidebar_position: 3
 helpdocs_topic_id: oo05aywiel
@@ -9,7 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This article addresses some frequently asked questions about Harness Feature Management & Experimentation (FME).
+This article addresses some frequently asked questions about Split Feature Management & Experimentation (FME).
 
 In this topic:
 
