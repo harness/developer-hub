@@ -28,7 +28,7 @@ Harness supports the following standards
 
 ### CIS Benchmarks
 
-The following CIS v1.0 rules are supported by Harness for the evaluations, and Harness will continue to add more rules across different entity types. For more detailed information, refer to the official [CIS documentation](https://www.cisecurity.org/cis-benchmarks/) 
+The following CIS v1.0 rules are supported by Harness for the evaluations, and Harness will continue to add more rules across different entity types. For more detailed information, refer to the official [CIS documentation](https://www.cisecurity.org/benchmark/software-supply-chain-security) 
 
 <details>
 <summary>CIS Benchmarks</summary>
@@ -75,7 +75,7 @@ The following CIS v1.0 rules are supported by Harness for the evaluations, and H
 </details>
 
 ### OWASP Top 10 CI/CD Security Risks
-The following rules are supported by Harness to perform evaluations, and Harness will continue to add more rules across different entity types. For more detailed information, refer to the official OWASP documentation.
+The following rules are supported by Harness to perform evaluations, and Harness will continue to add more rules across different entity types. For more detailed information, refer to the official [OWASP documentation](https://owasp.org/www-project-top-10-ci-cd-security-risks/).
 
 <details>
 <summary>OWASP Top 10 CI/CD Security Risks</summary>
