@@ -28,14 +28,20 @@ For example, the tag **docs** has been added to two projects. A search for **doc
 
 ### Tags sources and syncing
 
-There are two sources for tags:
+There are two location from where tags are fetched:
 
 - In the Pipeline YAML.
 - In the Harness Metadata (properties of the Pipeline that Harness stores for fast reference/indexing/filtering).
 
-The Harness Metadata for a Pipeline is synced with the latest values of the Tags whenever the Pipeline is **saved** in Harness i.e when yaml is stored as Inline. This includes updates made via the Update API.
+#### Handling Tag updates in Pipeline YAML 
 
-If you update the Tags in the Pipeline YAML directly i.e you go and update the yaml stored in Git, this does not update the Harness Metadata. This can lead to discrepancies in displayed Tags.
+##### Inline
+
+The Harness Metadata for a Pipeline is synced with the latest values of the Tags whenever the Pipeline is saved in Harness, i.e., when YAML is stored as Inline. This includes updates made via the Update API.
+
+##### Remote
+
+If you update the Tags in the Pipeline YAML directly, i.e., you go and update the YAML stored in Git (when your Pipeline is stored Remotely), this does not update the Harness Metadata. This can lead to discrepancies in displayed Tags.
 
 ### Tags Display Logic
 
