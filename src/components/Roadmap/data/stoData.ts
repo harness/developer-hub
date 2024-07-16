@@ -34,6 +34,21 @@ export const StoData: Horizon = {
         title: "Windows Support",
         description: "Allows STO users to run STO plugin and scanner images on Windows infrastructure to ingest vulnerability results from all supported scanners.",
       },
+      {
+        tag: [{ value: "IACM" }, { value: "Cross Module" }],
+        title: "STO for IACM Module",
+        description: "Extends STO support to the IACM module within the Harness Platform.",
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "IaC" }],
+        title: "IaC Scan Support",
+        description: "Allows STO users to scan infrastructure templates using Wiz (commercial) and Checkov (OSS) scanners.",
+      },
+      {
+        tag: [{ value: "Integration" }],
+        title: "SonarQube Branch Support",
+        description: "Allows the STO users to be able to perform SonarQube branch scan support including for the PRs.",
+      },
     ],
   },
   Now: {
@@ -43,16 +58,6 @@ export const StoData: Horizon = {
         tag: [{ value: "AIDA" }, { value: "Remediation" }],
         title: "Automatic Pull Requests Using AIDA",
         description: "Enables STO users to detect and directly fix issues at the source using AIDA's suggested remediation. STO applies code patches seamlessly, enhancing efficiency and ensuring a more secure codebase.",
-      },
-      {
-        tag: [{ value: "Integration" }, { value: "IaC" }],
-        title: "IaC Scan Support",
-        description: "Allows STO users to scan infrastructure templates using Wiz (commercial) and Checkov (OSS) scanners.",
-      },
-      {
-        tag: [{ value: "IACM" }, { value: "Cross Module" }],
-        title: "STO for IACM Module",
-        description: "Extends STO support to the IACM module within the Harness Platform.",
       },
       {
         tag: [{ value: "Integration" }, { value: "Snyk" }],
@@ -76,8 +81,8 @@ export const StoData: Horizon = {
       },
       {
         tag: [{ value: "Dashboard" }],
-        title: "Security Workbench",
-        description: "Centralized dashboard for DevSecOps, offering insights into the organization's overall security posture, trends, refined prioritized list of issues, and exemption management.",
+        title: "Enhance Performance",
+        description: "Optimizes the dashboard for better performance with large data sets.",
       },
     ],
   },
@@ -85,14 +90,24 @@ export const StoData: Horizon = {
     description: "Q3 2024+, Aug-Oct 2024",
     feature: [
       {
+        tag: [{ value: "Platform" }, { value: "Governance"}],
+        title: "Detection of New Occurrences for Exempted Issues",
+        description: "Allows the new occurrences of the already exempted issues/vulnerabilities to be recognized by the product and seperately handle there governance.",
+      }, 
+      {
+        tag: [{ value: "Ticketing" }, { value: "Integration" }],
+        title: "Jira Integration",
+        description: "Enhances Jira integration to allow closing Jira tickets if the vulnerabilities are remediated in STO and vice versa.",
+      },
+      {
         tag: [{ value: "Exemption Workflow" }],
         title: "Global Exemption Management",
         description: "Allows exempting issues/vulnerabilities at the account and organization levels, in addition to the current pipeline and project levels.",
       },
       {
-        tag: [{ value: "Data Handling" }],
-        title: "Target Deletion",
-        description: "Allows deletion of unwanted targets/artifacts vulnerability data to reduce noise.",
+        tag: [{ value: "Dashboard" }],
+        title: "Security Workbench",
+        description: "Centralized dashboard for DevSecOps, offering insights into the organization's overall security posture, trends, refined prioritized list of issues, and exemption management.",
       },
       {
         tag: [{ value: "Platform" }, { value: "Cross Module" }],
@@ -102,17 +117,22 @@ export const StoData: Horizon = {
       {
         tag: [{ value: "Onboarding" }],
         title: "Get Started",
-        description: "A new Get Started workflow to onboard third-party integrations.",
+        description: "A new Get Started workflow to onboard third-party integrations - Github Actions, Jenkins, GitLab.",
       },
       {
-        tag: [{ value: "Ticketing" }, { value: "Integration" }],
-        title: "Jira Integration",
-        description: "Enhances Jira integration to allow closing Jira tickets if the vulnerabilities are remediated in STO and vice versa.",
+        tag: [{ value: "Governance" }, { value: "Integration" }],
+        title: "Ingest Policy Failures",
+        description: "Ingest the Policy failure data provided by the scanners (CheckMarkx, Anchore, Veracode, etc) and allow the STO users to govern pipelines based on it.",
       },
       {
-        tag: [{ value: "Dashboard" }],
-        title: "Enhance Performance",
-        description: "Optimizes the dashboard for better performance with large data sets.",
+        tag: [ { value: "Integration" }],
+        title: "Native Veracode Support",
+        description: "Natively support the Veracode scanner in the Security Tests module including the sandbox scanning.",
+      },
+      {
+        tag: [ { value: "Integration" }],
+        title: "Native Traceable Support",
+        description: "Natively support the Traceable scanner in the Security Tests module for the API vulnerability management.",
       },
       {
         tag: [{ value: "AI" }, { value: "Remediation" }],
@@ -128,6 +148,11 @@ export const StoData: Horizon = {
         tag: [{ value: "Remediation" }, { value: "Integration" }],
         title: "Remediation Tracker for Vulnerabilities",
         description: "Enhances the remediation workflow to seamlessly integrate with ticketing services and notification channels.",
+      },
+      {
+        tag: [{ value: "Data Handling" }],
+        title: "Target Deletion",
+        description: "Allows deletion of unwanted targets/artifacts vulnerability data to reduce noise.",
       },
       {
         tag: [{ value: "EPSS" }],
