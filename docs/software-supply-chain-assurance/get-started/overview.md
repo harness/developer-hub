@@ -21,7 +21,7 @@ The SSCA module focuses on securing the software supply chain from two critical 
 
 
 
-1. **Risk and Compliance Visibility**: Gain insights into the security posture of code repositories, artifacts, and CI/CD tools concerning risk and compliance standards such as [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks), [OWASP Top 10 CI/CD Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/), and [SLSA](https://slsa.dev/).
+1. **Risk and Compliance Visibility**: Gain insights into the security posture of code repositories, artifacts, and CI/CD tools concerning risk and compliance standards such as [CIS Benchmarks](https://www.cisecurity.org/benchmark/software-supply-chain-security), [OWASP Top 10 CI/CD Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/), and [SLSA](https://slsa.dev/).
 2. **Intelligent Remediation**: Initiate SLAs and track the remediation of all risk and compliance issues, including the removal of non-compliant open-source dependencies, using SBOMs (Software Bill of Materials).
 1. **Governance Policy Enforcement**: Achieve a high level of security by collecting evidence and enforcing supply chain governance policies based on compliance standards and SBOMs.
 
