@@ -39,7 +39,7 @@ From the **Subscriptions** page, you can:
 
 ### Switch or downgrade your plan
 
-You can upgrade from the Free plan to either the Team or Enterprise plan through the Harness Platform.
+You can upgrade from the Free plan to either the Startup or Enterprise plan through the Harness Platform.
 
 If you would like to switch between paid plans or downgrade to the Free plan, you must contact the [Harness Sales team](https://www.harness.io/pricing?module=ci#).
 
@@ -107,7 +107,7 @@ Plan credits can be consumed by all users within the account registered to run b
 
 Free plans receive 2000 free credits every month. Any free credits that are unused at the end of the month expire automatically and do not roll over from one month to the next.
 
-Customers on paid (**Team** or **Enterprise**) plans can purchase credits via credit packages. These purchased credits can be rolled over from one month to the next, but generally expire one year from the date the credit package was originally purchased, or, if you have signed an Order Form with Harness, the credits expire on the date stated on your Order Form.
+Customers on paid (**Startup** or **Enterprise**) plans can purchase credits via credit packages. These purchased credits can be rolled over from one month to the next, but generally expire one year from the date the credit package was originally purchased, or, if you have signed an Order Form with Harness, the credits expire on the date stated on your Order Form.
 
 Harness notifies you when you are running low on cloud credits, and Harness can invoice in arrears for overages. For more information, go to [Credit overages (overuse)](#credit-overages-overuse).
 
@@ -123,7 +123,7 @@ The number of concurrent jobs you can run in your account depends on the plan yo
 
 The following table lists concurrency limits for each OS type and plan tier.
 
-| OS | Free | Team | Enterprise |
+| OS | Free | Startup | Enterprise |
 | -- | ---- | ---- | ---------- |
 | Linux | 20 | 40 | 60 |
 | Windows | 1 | 5 | 5 |
@@ -134,7 +134,7 @@ The following table lists concurrency limits for each OS type and plan tier.
 Harness stores cached data used by [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md) in Harness managed storage. The maximum amount of cache data that you can store depends on the plan you are subscribed to:
 
 * Free: 2 GB
-* Team: 5 GB
+* Startup: 5 GB
 * Enterprise: 10 GB
 
 Harness does not directly limit the number of caches you can store, but once you reach your storage limit, Harness continues to save new caches while automatically evicting old caches.
@@ -146,7 +146,7 @@ The network transfer limit applies to the data transferred from Harness Cloud to
 The limit depends on the plan you are subscribed to:
 
 * Free: 1 GB
-* Team: 5 GB
+* Startup: 5 GB
 * Enterprise: 10 GB
 
 ### Credit overages (overuse)
