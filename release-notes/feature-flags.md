@@ -28,7 +28,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Python SDK
 
-#### Version 1.6.1
+#### Version 1.6.3
 
 **Fixed issues**:
  - Pins `typing_extensions` to latest release compatible with 3.7 to resolve compatibility issues with code brought in from the OAPI Generator. (FFM-11655)
