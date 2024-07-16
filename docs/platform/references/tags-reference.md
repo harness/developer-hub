@@ -28,7 +28,7 @@ For example, the tag **docs** has been added to two projects. A search for **doc
 
 ### Tags sources and syncing
 
-There are two location from where tags are fetched:
+There are two locations where Tags are stored:-
 
 - In the Pipeline YAML.
 - In the Harness Metadata (properties of the Pipeline that Harness stores for fast reference/indexing/filtering).
