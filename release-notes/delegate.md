@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-06-24T10:00
+date: 2024-07-10T10:00
 sidebar_position: 4
 ---
 
@@ -47,7 +47,29 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## July
+
+### Version 24.07.83404 <!--  July 10, 2024 -->
+
+#### New features and enhancements
+
+- Modified the unique index for delegate token names. The default token name in each scope will now be `default_token` instead of `default_token_org/project`. This change applies only to new projects and organizations; existing projects and organizations will retain their current token names. (PL-51151)
+
+### Version 24.07.83205 <!--  July 9, 2024 -->
+
+#### Hotfix
+
+- When the feature flag `CDS_PERFORM_SHELL_SCRIPT_HOST_CAPABILITY` is enabled, Shell script steps will perform host capability checks. (CDS-97512, ZD-66326, ZD-66349)
+
+- Script executions failed during the Command step for WinRM deployments with a Kerberos auth type when environment variables contained the characters `\v`, `\b`, or `\f`. Now, when the feature flag `CDS_ESCAPE_ENV_VARS_FOR_WINRM_KERBEROS` is enabled, the environment variables will be escaped and script execution will pass. (CDS-97690)
+
 ## June 2024
+
+### Version 24.07.82905 <!--  July 1, 2024 -->
+
+#### Hotfix
+
+- Reduced the time for missing heartbeats for delegates before the liveness probe fails from 15 mins to 5 mins. (PL-52037)
 
 ### Version 24.06.83304 <!--  June 24, 2024 -->
 

@@ -22,7 +22,7 @@ If you are new to Harness GitOps, familiarize yourself with the following topics
 
 * [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md)
 * [Harness CD GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md)
-* [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md)
+* [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent.md)
 
 ## Supported platforms
 
@@ -30,9 +30,9 @@ If you are new to Harness GitOps, familiarize yourself with the following topics
 
 ## Add a repository
 
-In the repository setup, you will select the [Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md) to use when synching state. Be sure you have a GitOps Agent set up already.
+In the repository setup, you will select the [Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent.md) to use when synching state. Be sure you have a GitOps Agent set up already.
 
-For details, see [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md).
+For details, see [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent.md).
 
 You will also provide the credentials to use when connecting to the Git repository. Ensure you have your credentials available.
 
@@ -59,7 +59,7 @@ import TabItem from '@theme/TabItem';
 
 1. In **Specify Repository Type**, select **Git**.
 2. In **Repository Name**, enter a name.
-3. In **GitOps Agent**, select or create the Agent you want to use to fetch manifests from this repo. For details, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md).
+3. In **GitOps Agent**, select or create the Agent you want to use to fetch manifests from this repo. For details, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent.md).
 4. In **Repository URL**, enter the URL to your repo. For example, `https://github.com/argoproj/argocd-example-apps.git`.
 5. Select **Continue**.
 6. In **Credentials**, select one of the following:
@@ -122,7 +122,7 @@ import TabItem from '@theme/TabItem';
 
 1. In **Specify Repository Type**, select **Helm**.
 2. In **Repository Name**, enter a name.
-3. In **GitOps Agent**, select or create the Agent you want to use to fetch charts from this repo. See [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md).
+3. In **GitOps Agent**, select or create the Agent you want to use to fetch charts from this repo. See [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent.md).
 4. In **Repository URL**, enter the URL to your HTTP Helm repository. For example, `https://charts.bitnami.com/bitnami`.
 5. Select **Continue**.
 6. In **Credentials**, select one of the following:
@@ -152,7 +152,7 @@ import TabItem from '@theme/TabItem';
 
 1. In **Specify Repository Type**, select **Helm**.
 2. In **Repository Name**, enter a name.
-3. In **GitOps Agent**, select or create the Agent you want to use to fetch charts from this repo. For details, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md).
+3. In **GitOps Agent**, select or create the Agent you want to use to fetch charts from this repo. For details, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent.md).
 4. In **Repository URL**, enter the URL to your OCI Helm repository. For example, `registry-1.docker.io/docker`.
 5. Select **Enable OCI**
 6. Select **Continue**.
@@ -188,7 +188,7 @@ If you intend to establish an HTTPS connection to a repository and plan to use e
 
 1. In **Specify Repository Type**, select **Helm**.
 2. In **Repository Name**, enter a name.
-3. In **GitOps Agent**, select or create the Agent you want to use to fetch charts from this repo. For details, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md).
+3. In **GitOps Agent**, select or create the Agent you want to use to fetch charts from this repo. For details, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent.md).
 4. In **Repository URL**, enter the URL to your OCI Helm repository. For example, `us-east4-docker.pkg.dev/<gcp-project>/<repository>`.
 5. Select **Enable OCI**
 6. Select **Continue**.

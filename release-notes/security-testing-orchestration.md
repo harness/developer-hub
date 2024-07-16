@@ -22,9 +22,26 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## July 2024
+
+### Version 1.102.2
+
+<!-- 2024-07-11 -->
+
+#### New features and enhancements
+
+- Branch Scanning in [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#scan-configuration) is now Generally Available(GA), previously behind the `STO_SONARQUBE_BRANCHING` feature flag. Customers can now perform branch scans using the SonarQube step.
+- Added a new setting called **Users can approve their own exemptions**. This setting helps control whether users can approve their own exemptions, and it can be easily enabled or disabled based on their preference. Find this setting under **Exemption settings** on the **Default settings** page. This is available in the project, organization and account level settings. (STO-7675). 
+
+:::note 
+The setting **Users can approve their own exemptions** is behind the feature flag `STO_EXEMPTION_SETTING`. Contact [Harness Support](mailto:support@harness.io) to enable this setting.
+:::
+
 ## June 2024
 
 ### Version 1.100.2
+
+<!-- 2024-06-27 -->
 
 #### Fixed issue
 
@@ -96,6 +113,7 @@ The following features are now generally available:
 #### New features and enhancements
 
 - Harness STO now supports the Anchore v2 API and Anchore Enterprise Server 5.5.0. This change means that the Anchore v2 API and Anchore Enterprise Server v5.0 or higher are required to run orchestration and extraction scans. (STO-7614)
+- You can now run Wiz IaC scans in an **Infrastructure** stage. (STO-7632)
 
 #### Fixed issues
 
@@ -559,7 +577,9 @@ You can scan your code repositories using [Open Source Vulnerabilities (OSV)](ht
   
 :::note
 
-**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`. Contact [Harness Support](mailto:support@harness.io) to enable this option.
+~~**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`. Contact [Harness Support](mailto:support@harness.io) to enable this option.~~ 
+
+**Update on July 2024:** SonarQube Branch Scan feature, which was previously available in early access, became generally available GA in [Version 1.102.2](#version-11022)
 
 :::
   <!-- 

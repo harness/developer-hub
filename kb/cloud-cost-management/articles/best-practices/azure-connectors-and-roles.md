@@ -1,6 +1,6 @@
 ---
 title: Connectors + Roles For Azure CCM
-description: Automatically Create Harness connectors for subscriptions and IAM roles in each Azure subscription
+description: Automatically create Harness connectors for subscriptions and IAM roles in each Azure subscription
 ---
 
 # Overview
@@ -13,7 +13,7 @@ You will need access to provision IAM roles in Azure and create CCM connectors i
 
 ## Setup Providers
 
-We need to leverage the Azure and Harness Terraform providers. We will use these to create IAM roles and CCM connectors. We also will get all azure subscriptions and set the Harness principal id.
+We need to leverage the Azure and Harness Terraform providers. We will use these to create IAM roles and CCM connectors. We also will get all Azure subscriptions and set the Harness principal id.
 
 ```
 terraform {
@@ -86,4 +86,4 @@ resource "harness_platform_connector_azure_cloud_cost" "subscription" {
 
 ## Conclusion
 
-This is a general example of providing either reader or contributor access for each connector inside of an Azure tenant. This example doesn't include setting up the connector for the billing export. This guide assumes there already exists a connector into the Azure subscription that has the billing export and an existing connector for the billing data has already registered and imported the Harness app into the tenant.
+This is a general example of providing either reader or contributor access for each connector inside of an Azure tenant. This example doesn't include setting up the connector for the billing export. This guide assumes there already exists a connector in an Azure subscription that has the billing export and an existing connector for the billing data has already registered and imported the Harness app into the tenant.

@@ -82,7 +82,7 @@ permissions:
       <tr>
         <td> MAX_SIZE </td>
         <td> Maximum size of the data to be seeded in bytes </td>
-        <td> Defaults to 8. For more information, go to <a href="mistake">max size</a>.</td>
+        <td> Defaults to 8. For more information, go to <a href="#mistake">max size</a>.</td>
       </tr>
       <tr>
         <td> MOUNT_PATH </td>

@@ -16,6 +16,13 @@ These release notes describe recent changes to Harness Software Supply Chain Ass
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+## July 2024
+
+### Version 1.12.0
+
+#### New features and enhancements
+
+- The "Repositories" tab previously located in the [Artifact View](/docs/software-supply-chain-assurance/artifact-view) has been relocated and expanded into a separate section titled "[Code Repositories](https://developer.harness.io/docs/software-supply-chain-assurance/code-repositories-view)". All repository data will now be accessible from the [Code Repositories](https://developer.harness.io/docs/software-supply-chain-assurance/code-repositories-view) section, providing a more streamlined interface for managing repository  information.
 
 ## September 2023
 

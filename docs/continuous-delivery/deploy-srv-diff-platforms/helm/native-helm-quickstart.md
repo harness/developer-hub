@@ -191,7 +191,13 @@ In this example, we're going to use a Rolling [deployment strategy](/docs/contin
 1. Select **Rolling**, and select **Apply**.
 2. The **Helm Deployment** step is added to **Execution**.
 
-That's it. Now you're ready to deploy.
+## Environment Variables
+
+Native Helm Deploy and Native Helm Rollback steps support setting environment variables.
+
+Under **Optional Configuration** for the step, add any environment variables that you would like to set during the deployment.
+
+![](./static/helm_environment_variables.png)
 
 ## Deploy and review
 

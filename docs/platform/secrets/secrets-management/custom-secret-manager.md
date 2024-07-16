@@ -1,7 +1,7 @@
 ---
 title: Add a custom secret manager
 description: This topic explains how to create and use a Custom Secret Manager.
-# sidebar_position: 2
+sidebar_position: 8
 helpdocs_topic_id: mg09uspsx1
 helpdocs_category_id: 48wnu4u0tj
 helpdocs_is_private: false
@@ -41,7 +41,7 @@ The following permissions are required to create a custom secret manager. Howeve
 
 ### Harness Custom Secret Manager Overview
 
-Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Account. 
+Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Account.
 
 Harness integrates with the following third-party Secret Managers along with a built-in Secret Manager:
 
@@ -57,66 +57,67 @@ Your Custom Secret Manager uses a shell script that you can execute either on a 
 
 ### Step 1: Create a Secret Manager Template
 
-You can create a Secret Manager Template at Account, Org, or Project scope.
+You can create a Secret Manager Template at the account, org, or project [scope](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes).
 
 This topic shows you how to create a Secret Manager Template at the Project scope.
 
 1. In your Harness Account, go to your Project.
+2. Select **Project Settings**, then under **Project-level resources**, select **Templates**.
 
-2. In Project Setup, select **Templates**, and then select **New Template**.
-   
    ![](../static/custom-secret-manager-32.png)
 
-3. Select **Secret Manager**. The Secret Manager Template settings appear.
-4. Enter a **Name** for your Secret Manager Template.
-5. Enter a **Version Label**.
-6. Select **Start**.
+3. Select **New Template**, then select **Secret Manager**.
 
    ![](../../secrets/static/custom-secret-manager-33.png)
 
-7. Enter your script in **Script**.
-8. Select **Save**.
+4. Enter a **Name** for your template.
+5. (Optional) In **Description**, select the pencil icon and enter a description.
+6. (Optional) In **Tags**, select the pencil icon and assign a tag.
+7. Enter a **Version Label**.
+8. (Optional) Select the upload icon and upload a **Logo**.
+9.  Under **Save To**, select **Project**, then select **Start**.
+10. Select your **Script Type**, then select your script location.
+11. Enter your script in **Script**, then select **Save**.
 
    For detailed steps to create a Secret Manager Template, go to [Create a Secret Manager Template](../../templates/create-a-secret-manager-template.md).
 
 ### Step 2: Add a Custom Secret Manager
 
-You can add a Custom Secret Manager at Account, Org, and Project scope.
+You can add a Custom Secret Manager at the account, org, and project scope.
 
-To do this, go to Project setup, Organization, or Account Resources.
+To do this, go to Project, Organization, or Account settings.
 
-This topic shows you how to add a Custom Secret Manager in the Project scope.
+This topic shows you how to add a Custom Secret Manager in the project scope.
 
 1. In your Harness Account, go to your Project.
 2. In Project Setup, select **Connectors** and then select **New Connector**.
 3. In **Secret Managers**, select **Custom Secret Manager**. The Custom Secret Manager settings open.
 
    ![](../../secrets/static/custom-secret-manager-34.png)
-   
-   
+
 4. Enter a **Name** for your Custom Secret Manager. Select **Continue**.
 5. Select **Select Template**. The Template Library appears with all the [Secret Manager Templates](../../templates/create-a-secret-manager-template.md) listed.
 6. Select the desired scope and select a Secret Manager Template from the Template Library.
-   
+
    ![](../../secrets/static/custom-secret-manager-35.png)
 
    You can also search for a specific Secret Manager Template by entering its name in **Search**. Once you select the Secret Manager Template, the details are displayed in the Template Studio.
-  
+
 7. Select **Use Template**.
-8. Enter values for the required Input Variables. Harness allows you to use [Fixed Values and Runtime Inputs](../../variables-and-expressions/runtime-inputs).
-	
+8. Enter values for the required Input Variables. Harness allows you to use [Fixed Values and Runtime Inputs](../../variables-and-expressions/runtime-inputs).
+
 	![](../static/custom-secret-manager-36.png)
 
-10. Select **Fixed** to make the variable values fixed. Harness won't ask you these values when you create Secrets.
-11. Select **Continue**.
-12. In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Select **Save and Continue**.
-13. In **Connection Test**, select **Finish** after your connection is successful.
+9. Select **Fixed** to make the variable values fixed. Harness won't ask you these values when you create Secrets.
+10. Select **Continue**.
+11. In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Select **Save and Continue**.
+12. In **Connection Test**, select **Finish** after your connection is successful.
 
 ### Step 3: Use the Custom Secret Manager
 
-Create an Encrypted Text using the Custom Secrets Manager you created earlier. Enter the name and values of all the Input Variables defined while creating the Shell Script Template. 
+Create an Encrypted Text using the Custom Secrets Manager you created earlier. Enter the name and values of all the Input Variables defined while creating the Shell Script Template.
 
-For more information on creating Encrypted Text Secret, go to [Add Encrypted Text](/docs/platform/secrets/add-use-text-secrets).
+For more information on creating Encrypted Text Secret, go to [Add Encrypted Text](/docs/platform/secrets/add-use-text-secrets).
 
 If you want to create a secret on a Target Host Custom Secrets Manager, you must also select the Connection Attribute.
 

@@ -33,16 +33,13 @@ Harness SEI supports a variety of platforms, repos, tools, and related technolog
 
 * [Azure Boards](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
 * [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration)
-* [Jira Enhanced Integration - BETA](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration)
 * [Rally Software](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally)
 
 ### Source Code Management (SCM)
 
 * [Azure Repos](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
 * [Bitbucket](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket)
-* [GitHub Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)
-* [GitHub Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)
-* [GitHub Enhanced Integration - BETA](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)
+* [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)
 * [GitLab Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab)
 * [GitLab Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab-enterprise)
 * [Perforce Helix Server](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-helix)
@@ -120,3 +117,27 @@ This page allows you to monitor the integration's current status, which could be
 
 You can review previous ingestion activities in the **Ingestion Logs** section and view their respective statuses.
 You can also access additional details such as the Ingestion Task Start Time, Time taken to Complete the Ingestion Task, and Number of Retries for the Ingestion Scan.
+
+## Delete an integration
+
+To delete an integration:
+
+* Go to the **Integrations** tab under the **Data Settings** and select **Available Integrations**.
+
+![](./static/delete-integration1.png)
+
+* Click on the delete icon next to the integration you want to remove.
+
+![](./static/delete-integration2.png)
+
+* A confirmation dialog box will appear. Click **Yes** to proceed.
+  
+![](./static/delete-integration3.png)
+
+The integration status will change to Deleting. The deletion process is scheduled, and once complete, the integration will no longer be listed in the **Available Integrations** tab.
+
+![](./static/delete-integration4.png)
+
+:::warning
+Note that deleting an integration will impact all collections and profiles associated with it.
+:::

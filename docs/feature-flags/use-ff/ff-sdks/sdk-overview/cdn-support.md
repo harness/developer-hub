@@ -3,6 +3,8 @@ title: CDN support for server-side SDKs
 sidebar_label: CDN support
 description: This topic describes how the SDKs communicate with Harness Feature Flags to receive flag changes.
 sidebar_position: 25
+redirect_from:
+  - /docs/feature-flags/ff-sdks/sdk-overview/cdn-support
 ---
 
 :::info note

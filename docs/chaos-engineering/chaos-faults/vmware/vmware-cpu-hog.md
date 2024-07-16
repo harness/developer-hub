@@ -12,14 +12,14 @@ VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM. 
 ## Use cases
 
 - VMware CPU hog determines the resilience of an application when stress is applied on the CPU resources of a VMware virtual machine.
-- VMware CPU hog simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
-- It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition. 
-- It verifies the autopilot functionality of cloud managed clusters. 
+- VMware CPU hog simulates the situation of lack of CPU for processes running on the application, which degrades their performance.
+- It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition.
+- It verifies the autopilot functionality of cloud managed clusters.
 - It verifies multi-tenant load issues, that is, when the load on one container increases, it should not cause downtime in other containers.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
-- Execution plane should be connected to vCenter and host vCenter on port 443. 
+- Execution plane should be connected to vCenter and host vCenter on port 443.
 - VMware tool should be installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
@@ -133,7 +133,7 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # CPU cores for stress
-        - name: CPU_CORES 
+        - name: CPU_CORES
           value: '1'
 ```
 

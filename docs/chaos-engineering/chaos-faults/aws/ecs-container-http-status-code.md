@@ -40,7 +40,7 @@ stringData:
 ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -60,7 +60,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],
@@ -130,7 +130,7 @@ Below is an example AWS policy to execute the fault.
     </table>
 
 ### Optional tunables
-  <table>        
+  <table>
     <tr>
             <th> Tunable </th>
             <th> Description </th>
@@ -151,7 +151,7 @@ Below is an example AWS policy to execute the fault.
             <td> Provide the path for aws secret credentials.</td>
             <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
         </tr>
-        <tr> 
+        <tr>
           <td> CLUSTER_NAME </td>
           <td> Name of the target ECS cluster</td>
           <td> Single name supported For example, <code>demo-cluster</code>. For more information, go to <a href="#agent-stop"> cluster name.</a></td>
@@ -326,7 +326,7 @@ spec:
 
 ### Agent stop
 
-Target agent that is stopped for a specific duration. Tune it by using the `CLUSTER_NAME` environment variable. 
+Target agent that is stopped for a specific duration. Tune it by using the `CLUSTER_NAME` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -392,7 +392,7 @@ spec:
 
 ### ECS task replica IDs
 
-Task replicas that have a specific ID which are to be stoppee. Tune it by using the `TASK_REPLICA_ID` environment variable.
+Task replicas that have a specific ID which are to be stopped. Tune it by using the `TASK_REPLICA_ID` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -425,7 +425,7 @@ spec:
 
 ### ECS service name
 
-Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable. 
+Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 

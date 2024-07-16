@@ -33,7 +33,7 @@ To access the Default Settings at the Account scope:
 1. Go to **Account Settings**.
 2. Select **Default Settings**.
 
-![](./static/default-settings-00.png)
+   ![](./static/default-settings-00.png)
 
 </TabItem>
   <TabItem value="orgscope" label="Organization scope" default>

@@ -7,9 +7,13 @@ redirect_from:
 description: This section introduces you to the basics of chaos engineering, its importance, and its advantages.
 ---
 
-Welcome to Harness Chaos Engineering (HCE)! This section introduces you to the basics of chaos engineering, its importance, and its advantages.
+Welcome to Harness Chaos Engineering (HCE)! This section introduces you to the following:
+1. [Basics of chaos engineering](#what-is-chaos-engineering);
+2. [Importance of chaos engineering](#why-is-chaos-engineering-important);
+3. [Advantages of HCE](#benefits-of-hce); and
+4. [Chaos engineering implementation](#how-to-implement-chaos-engineering-to-build-resilient-applications) to improve the resilience of your application.
 
-## Overview
+## Introduction
 Cloud-native applications are highly distributed, elastic, resistant to failure, and loosely coupled. You need to ensure that your application performs as expected under different failure conditions.
 
 Chaos engineering is a technique that is **relevant** to all types of systems, including legacy applications and infrastructure. This is particularly important for cloud-native applications since they carry multiple points of failure due to their distributed, and elastic nature.
@@ -46,7 +50,8 @@ This is accelerated by a need to build confidence in a highly dynamic environmen
 
 ## How to implement chaos engineering to build resilient applications?
 
-You can build resilient applications using the following steps:
+You can build resilient applications by following the steps below:
+
 1. **Choose** or **build** your application;
 2. **Configure** the **chaos control plane**, that is:
     1. Set up an **environment**;
@@ -73,25 +78,35 @@ The standard chaos experimentation flow involves the following steps:
 
 HCE doesn't simply focus on fault injection, it helps you set up a fully operational chaos function that is based on the original [principles of chaos](https://principlesofchaos.org/), and addresses several enterprise needs around its practice, which include:
 
-1. Cloud native approach to chaos engineering which supports declarative definition of experiments and Git-based chaos artifact sources (chaos-experiments-as-code).
+1. Cloud native approach to chaos engineering which supports declarative definition of experiments and [Git-based chaos artifact sources](/docs/chaos-engineering/features/chaos-hubs/add-chaos-hub.md) (chaos-experiments-as-code).
 2. Extensive fault library and robust suite of [ready-to-use experiments](/docs/chaos-engineering/chaos-faults), with support to construct complex custom experiments with [multiple faults](/docs/chaos-engineering/features/experiments/create-complex-chaos-experiments.md) in the desired order.
-3. Centralized control plane that supports varied targets (Kubernetes-based microservices, cloud services, VMware infrastructure).
-4. Governance enforcement for chaos experimentation using dedicated workspaces, chaos teams, and access control.
-5. Native integration with [Harness Continuous Delivery (CD) pipelines](/docs/chaos-engineering/integrations/hce-and-cd/chaos-cd.md).
-6. [Hypothesis validation using probes](/docs/chaos-engineering/features/probes/configure-and-add-probe.md) and SLO management using integration with Harness Continuous Verification (CV).
-7. Guided GameDay execution with detailed analytics and reporting based on experiment execution and application resilience.
-8. Chaos events, metrics, and logs (audit and execution) to aid in the instrumentation of APM dashboards with chaos context.
+3. Centralized control plane that supports a variety of targets (such as [Kubernetes-based microservices](/docs/chaos-engineering/chaos-faults/kubernetes/kubernetes.md), [cloud services such as [AWS](/docs/chaos-engineering/chaos-faults/aws/aws.md), [Azure](/docs/chaos-engineering/chaos-faults/azure/azure.md), [GCP](/docs/chaos-engineering/chaos-faults/gcp/gcp.md), [Cloud Foundry](/docs/chaos-engineering/chaos-faults/cloud-foundry/cloud-foundry.md)], and [VMware infrastructure](/docs/chaos-engineering/chaos-faults/vmware/vmware.md)).
+
+4. Governance enforcement for chaos experimentation using:
+
+    a. Dedicated workspaces that isolate chaos experiments and resources for different teams or projects;
+
+    b. [Additional security enforcement](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md), ChaosGuard that executes a set of conditions before executing the chaos experiment, thereby adding a layer of security to chaos-enabled users;
+
+    c. Chaos teams that indicates a group of users who are authorized to access and execute chaos experiments in a workspace. By using chaos teams, you can control who has access to chaos resources and ensure that only authorized users can execute chaos experiments;
+
+    d. Access control refers to fine grained permissions for chaos resources and actions. This includes controlling access to chaos infrastructure, controlling the types of faults that can be used, and regulating the runtime permissions for experiment execution within the target infrastructure.
+
+5. Native integration with [Harness Continuous Delivery (CD) pipelines](/docs/chaos-engineering/integrations/hce-and-cd/chaos-cd).
+6. [Hypothesis validation using probes](/docs/chaos-engineering/features/resilience-probes/use-probe) and SLO management using integration with Harness Continuous Verification (CV).
+7. [Guided GameDay execution](/docs/chaos-engineering/features/gameday/introduction-to-gameday) with detailed analytics and reporting based on experiment execution and application resilience.
+8. Chaos events, metrics, and logs (audit and execution) to aid in the [instrumentation of APM (Application Performance Monitoring)](/docs/chaos-engineering/integrations/use-chaos-with-srm.md) dashboards with chaos context to monitor the impact of chaos faults on the service/application health.
 
 :::tip
 Harness Chaos Engineering is available in **SaaS** and **self-managed** versions.
 
 1. **SaaS (Software-as-a-service)**: You either sign up or get invited to a specific project. You can also create a project if you have the necessary permissions. HCE helps manage the cluster.
-2. **SMP (Self-managed platform)**: You create, manage and maintain your clusters. You are responsible for providing permissions to projects and handling issues associated with them.
+2. [**SMP (Self-managed platform)**](/docs/chaos-engineering/get-started/ce-on-smp/ce-smp-roadmap.md): You create, manage and maintain your clusters. You are responsible for providing permissions to projects and handling issues associated with them.
 :::
 
 ## Try Chaos Engineering today
 
 * [Run your first chaos experiment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md)
-* [Executing experiments in a sandbox](/docs/chaos-engineering/certifications/run-experiments-in-sandbox)
+* [Executing experiments in a sandbox](/docs/chaos-engineering/onboarding/certifications/run-experiments-in-sandbox)
 * [Create chaos experiments from scratch](/docs/chaos-engineering/get-started/tutorials/chaos-experiment-from-blank-canvas)
 
