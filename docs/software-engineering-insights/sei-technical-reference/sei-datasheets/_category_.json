@@ -1,11 +1,11 @@
 {
-    "label":"DORA Calculations",
-    "position": 10,
+    "label":"Ingestion Datasheet",
+    "position": 5,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"DORA Metrics Calculation"
+       "title":"Ingestion Datasheet"
     }
  }
