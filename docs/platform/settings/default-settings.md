@@ -101,7 +101,8 @@ Pre Flight check includes series of check on the Pipeline YAML such as verifying
 
 ![](./static/skip_pre_flight_check.png)
 
-You can enable Pre flight check by default, you can control this setting by following steps:
+You can enable Pre Flight Check by default by following these steps:
+
 :::info note
 This change is behind the FF `CDS_REMOVE_CONNECTOR_HEARTBEAT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
