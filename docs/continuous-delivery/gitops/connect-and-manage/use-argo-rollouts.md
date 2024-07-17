@@ -6,9 +6,9 @@ sidebar_position: 3
 
 ## Introduction to Argo Rollouts
 
-Argo Rollouts is an enhancement for ArgoCD that brings advanced deployment capabilities, notably Blue-Green and Canary strategies. 
+Argo Rollouts is an enhancement for Argo CD that brings advanced deployment capabilities, notably blue-green and canary strategies. Argo Rollouts adds a layer of sophistication to Kubernetes deployments, providing teams with the tools needed for safer, more controlled updates. By utilizing its capabilities, you can ensure that your application rollouts are smooth and reliable.
 
-Harness GitOps integrates with both ArgoCD and Argo Rollouts to provide a declarative model for progressive deployment strategies that can be used with your Harness GitOps managed deployments. 
+Harness GitOps integrates with Argo CD and Argo Rollouts to provide a declarative model for progressive deployment strategies that can be used with your Harness GitOps-managed deployments. 
 
 Progressive deployment strategies improve the deployment process by enabling safer and more controlled updates, which in turn enhance uptime and user experience.
 
@@ -16,7 +16,7 @@ Progressive deployment strategies improve the deployment process by enabling saf
 
 - **Safer Updates**: Gradual rollouts minimize risks associated with deploying new versions.
 - **Traffic Control**: Provides capabilities to manage and steer traffic between old and new versions effectively.
-- **Advanced Strategies**: Supports sophisticated deployment strategies like Blue-Green and Canary without the need for complex custom scripting.
+- **Advanced Strategies**: Supports sophisticated deployment strategies like blue-green and canary without the need for complex custom scripting.
 
 ## Installation
 
@@ -26,9 +26,9 @@ Progressive deployment strategies improve the deployment process by enabling saf
 - Argo CD instance provided by Harness.
 - kubectl installed and configured.
 
-### Install Argo Rollouts Controller:
+### Install the Argo Rollouts controller
 
-#### From the CLI 
+#### Install using the CLI 
 
 Deploy the Argo Rollouts controller into your Kubernetes cluster to start using its features.
 
@@ -37,9 +37,9 @@ kubectl create namespace argo-rollouts
 kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
 ```
 
-#### From a Helm Chart in ArgoCD
+#### Install from a Helm Chart in Argo CD
 
-First create a new Argo Application. Choose the proper GitOps agent, and optionally add a service and environment.
+First, create a new Argo Application. Choose the proper GitOps agent, and optionally add a service and environment.
 
 ![](./static/use-argo-rollouts-1.png)
 
@@ -47,47 +47,47 @@ On the next screen setup your sync policy:
 
 ![](./static/use-argo-rollouts-2.png)
 
-And on the final screen add the repository:
+On the final screen add the repository:
 
 ![](./static/use-argo-rollouts-3.png)
 
-When defining the source, we will use the upstream helm chart:
+When defining the source, we will use the upstream Helm chart:
 
 ![](./static/use-argo-rollouts-4.png)
 
-Once complete, ArgoCD will begin deploying all the necessary Argo Rollouts components. 
+Once complete, Argo CD will begin deploying all the necessary Argo Rollouts components. 
 
-Navigate to the **GitOps applications** view again and find your new rollouts service with the name you gave it. After a few moments (depending on your cluster's performance), you should see the application enter a synced and healty state.
+Navigate to the **GitOps applications** view again and find your new rollouts service with the name you gave it. After a few moments (depending on your cluster's performance), you should see the application enter a synced and healthy state.
 
 ![](./static/use-argo-rollouts-5.png)
 
 Check the application's resource tab to verify that everything is installed and working before moving on to the next section. 
 
-### Deploying a Canary Deployment
+### Deploy a canary deployment
 
-This guide will use a demo repository to help walk through a canary deployment. To use the demo repo, go to [Harness Rollouts Demo](https://github.com/mansong1/rollouts-demo.git).
+This guide uses a demo repository to help walk through a canary deployment. To use the demo repo, go to [Harness Rollouts Demo](https://github.com/mansong1/rollouts-demo.git).
 
-#### Deploy the Demo Application
+#### Deploy the demo application
 
-First go to github and clone this repo: 
+1. Go to GitHub and clone this repo: 
 
 ```yaml
 repoURL: https://github.com/mansong1/rollouts-demo.git
 ```
 
-Create a new ArgoCD application. Its name and sync options are up to you, but make sure that you are using the same GitOps agent that you installed Argo Rollouts into above.
+2. Create a new Argo CD application. Its name and sync options are up to you, but make sure that you are using the same GitOps agent that you installed Argo Rollouts into above.
 
-Then, use the **Source** setup page to deploy the demo app from the clone you just made. To do so, update the following fields as indicated:
+3. Use the **Source** setup page to deploy the demo app from the clone you just made. To do so, update the following fields:
 
 - **Repository URL**: `https://github.com/mansong1/rollouts-demo.git`
 - **Target Revision**: `master`
 - **Path**: `examples/canary`
 
-Once these are filled, Kustomize options will pop up. You can leave those as is and click **Continue**.
+4. Once these are filled, Kustomize options will pop up. You can leave those as is and click **Continue**.
 
 ![](./static/use-argo-rollouts-6.png)
 
-Next, choose your cluster and an existing namespace.
+5. Choose your cluster and an existing namespace.
 
 ![](./static/use-argo-rollouts-7.png)
 
@@ -95,18 +95,15 @@ Now, you should be able to browse to your application in Harness under **GitOps 
 
 ![](./static/use-argo-rollouts-8.png)
 
-#### Validation and Finalization
+#### Validation and finalization
 
-Clicking into the `canary-demo` application will reveal a page which shows the progress of your deployment. Check this page after the traffic is switched to ensure the new version is stable and performs as expected. Roll back if any issues are detected.
+Clicking into the `canary-demo` application will reveal a page that shows the progress of your deployment. Check this page after the traffic is switched to ensure the new version is stable and performs as expected. Roll back if any issues are detected.
 
 ![](./static/use-argo-rollouts-9.png)
 
-## Best Practices
+## Best practices
 
 - **Regularly Update**: Stay current with the latest versions of Argo Rollouts and its plugins.
 - **Monitor Rollouts**: Continuously observe rollouts to detect and respond to any issues promptly.
-- **Understand Strategy Nuances**: Deeply understand how Blue-Green, Canary, and other strategies work to leverage them effectively.
+- **Understand Strategy Nuances**: Deeply understand how blue-green, canary, and other strategies work to leverage them effectively.
 
-## Conclusion
-
-Argo Rollouts adds a layer of sophistication to Kubernetes deployments, providing teams with the tools needed for safer, more controlled updates. By utilizing its capabilities, you can ensure that your application rollouts are smooth and reliable.
