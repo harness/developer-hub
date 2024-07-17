@@ -41,6 +41,9 @@ export default function CertificationsSTO() {
   const { pathname = "/", search = "" } = location;
   const searchKey = getCertLevel(search);
   const [tab, setTab] = useState("developer");
+  const [activePage, setActivePage] = useState<string>(
+    ActivePage.SelfPacedTraning
+  );
   const handleSwitchTab = (tabKey) => {
     setTab(tabKey);
     if (pathname && tabKey) {
@@ -58,8 +61,9 @@ export default function CertificationsSTO() {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    setTab(null);
+
     if (params.has("lvl")) {
+      setTab(params.get("lvl"));
       setActivePage(ActivePage.Certifications);
     } else if (location.search === "?ilt") {
       setActivePage(ActivePage.InstructorLedTraining);
@@ -69,9 +73,7 @@ export default function CertificationsSTO() {
       setActivePage(ActivePage.SelfPacedTraning);
     }
   }, []);
-  const [activePage, setActivePage] = useState<string>(
-    ActivePage.Certifications
-  );
+
   const handleCertficationClick = () => {
     history.push(`${pathname}?lvl=developer`);
     setActivePage(ActivePage.Certifications);
@@ -86,7 +88,17 @@ export default function CertificationsSTO() {
   };
 
   return (
-    <div className={styles.certificationsSTO}>
+    <div
+      className={`${styles.certificationsSTO} ${
+        activePage === ActivePage.SelfPacedTraning
+          ? styles.SelfPacedTrainingBg
+          : ""
+      } ${
+        activePage === ActivePage.InstructorLedTraining
+          ? styles.InstructorLedTrainingBg
+          : ""
+      }  `}
+    >
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>
@@ -102,14 +114,41 @@ export default function CertificationsSTO() {
             deduplication.
           </div>
         </div>
-        <div className={styles.right}>
-          {certBadges.map((badge) => (
+        <div
+          className={`${styles.right} ${
+            activePage === ActivePage.SelfPacedTraning
+              ? styles.SelfPacedTrainingBg
+              : ""
+          } ${
+            activePage === ActivePage.InstructorLedTraining
+              ? styles.InstructorLedTrainingBg
+              : ""
+          }  `}
+        >
+          {activePage === ActivePage.InstructorLedTraining && (
             <img
-              src={badge.img}
-              alt={badge.alt}
-              className={badge.type === certType[tab] ? styles.active : ""}
+              className={styles.iltimg}
+              src="/img/Instructor-Led Training light.svg"
+              alt=""
             />
-          ))}
+          )}
+          {activePage === ActivePage.SelfPacedTraning && (
+            <img
+              className={styles.sptimg}
+              src="/img/Self-Paced Training light.svg"
+              alt=""
+            />
+          )}
+          {activePage === ActivePage.Certifications &&
+            certBadges.map((badge) => (
+              <img
+                src={badge.img}
+                alt={badge.alt}
+                className={`${
+                  badge.type === certType[tab] ? styles.active : ""
+                } ${styles.certimg}`}
+              />
+            ))}
         </div>
       </div>
       <div className={styles.btns}>

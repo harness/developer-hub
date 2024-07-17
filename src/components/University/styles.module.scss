@@ -14,13 +14,13 @@
   background-position-y: 0;
   background-size: 55%;
   min-height: 400px;
-  padding-top: 72px;
+  // padding-top: 72px;
 
   .hero {
     display: flex;
 
     .left {
-      margin-top: -72px;
+      // margin-top: -72px;
       flex-basis: 45%;
 
       .linkBack {
@@ -794,6 +794,33 @@
   }
 }
 
+.SelfPacedTrainingBg {
+  background: url("/img/Self-Paced Training light.svg") no-repeat;
+  background-position: right;
+  background-position-y: 0;
+  background-size: 55%;
+}
+.InstructorLedTrainingBg {
+  background: url("/img/Instructor-Led Training light.svg") no-repeat;
+  background-position: right;
+  background-position-y: 0;
+  background-size: 55%;
+}
+
+html[data-theme="dark"] .SelfPacedTrainingBg {
+  background: url("/img/Self-Paced Training dark.svg") no-repeat;
+  background-position: right;
+  background-position-y: 0;
+  background-size: 55%;
+}
+
+html[data-theme="dark"] .InstructorLedTrainingBg {
+  background: url("/img/Instructor-Led Training dark.svg") no-repeat;
+  background-position: right;
+  background-position-y: 0;
+  background-size: 55%;
+}
+
 @media screen and (max-width: 1344px) {
   /* for small desktop */
   .certificationsCI,
@@ -872,9 +899,15 @@
     }
   }
 }
-
+.iltimg {
+  display: none;
+}
+.sptimg {
+  display: none;
+}
 @media screen and (max-width: 768px) {
   /* for tablet */
+
   .university {
     .hero {
       display: flex;
@@ -886,7 +919,12 @@
 
       .right {
         flex-basis: unset;
-
+        .iltimg {
+          display: block;
+        }
+        .sptimg {
+          display: block;
+        }
         // margin-top: 36px;
         img {
           width: 100px;
@@ -940,6 +978,30 @@
         }
       }
     }
+  }
+
+  .SelfPacedTrainingBg {
+    background: none;
+  }
+  .InstructorLedTrainingBg {
+    background: none;
+  }
+
+  html[data-theme="dark"] .SelfPacedTrainingBg {
+    background: none;
+  }
+
+  html[data-theme="dark"] .InstructorLedTrainingBg {
+    background: none;
+  }
+
+  .iltimg {
+    display: block;
+    width: 100% !important;
+  }
+  .sptimg {
+    display: block;
+    width: 100% !important;
   }
 }
 
@@ -1096,6 +1158,17 @@
         background-image: url(/img/cert_ce_bg.svg);
       }
     }
+  }
+
+  .hero {
+    
+      .SelfPacedTrainingBg {
+        background-image: none !important;
+      }
+      .InstructorLedTrainingBg {
+        background-image: none !important;
+      }
+    
   }
 }
 

@@ -41,6 +41,9 @@ export default function CertificationsIDP() {
   const { pathname = "/", search = "" } = location;
   const searchKey = getCertLevel(search);
   const [tab, setTab] = useState("developer");
+  const [activePage, setActivePage] = useState<string>(
+    ActivePage.SelfPacedTraning
+  );
   const handleSwitchTab = (tabKey) => {
     setTab(tabKey);
     if (pathname && tabKey) {
@@ -58,8 +61,8 @@ export default function CertificationsIDP() {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    setTab(null);
     if (params.has("lvl")) {
+      setTab(params.get("lvl"));
       setActivePage(ActivePage.Certifications);
     } else if (location.search === "?ilt") {
       setActivePage(ActivePage.InstructorLedTraining);
@@ -70,9 +73,6 @@ export default function CertificationsIDP() {
     }
   }, []);
 
-  const [activePage, setActivePage] = useState<string>(
-    ActivePage.Certifications
-  );
   const handleCertficationClick = () => {
     history.push(`${pathname}?lvl=developer`);
     setActivePage(ActivePage.Certifications);
@@ -87,7 +87,17 @@ export default function CertificationsIDP() {
   };
 
   return (
-    <div className={styles.certificationsIDP}>
+    <div
+      className={`${styles.certificationsIDP} ${
+        activePage === ActivePage.SelfPacedTraning
+          ? styles.SelfPacedTrainingBg
+          : ""
+      } ${
+        activePage === ActivePage.InstructorLedTraining
+          ? styles.InstructorLedTrainingBg
+          : ""
+      }  `}
+    >
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>
@@ -97,18 +107,45 @@ export default function CertificationsIDP() {
           </div>
           <h1>Internal Developer Portal</h1>
           <div>
-            Eliminate cognitive overload by letting developers
-            self-service their flows like new service onboarding.
+            Eliminate cognitive overload by letting developers self-service
+            their flows like new service onboarding.
           </div>
         </div>
-        <div className={styles.right}>
-          {certBadges.map((badge) => (
+        <div
+          className={`${styles.right} ${
+            activePage === ActivePage.SelfPacedTraning
+              ? styles.SelfPacedTrainingBg
+              : ""
+          } ${
+            activePage === ActivePage.InstructorLedTraining
+              ? styles.InstructorLedTrainingBg
+              : ""
+          }  `}
+        >
+          {activePage === ActivePage.InstructorLedTraining && (
             <img
-              src={badge.img}
-              alt={badge.alt}
-              className={badge.type === certType[tab] ? styles.active : ""}
+              className={styles.iltimg}
+              src="/img/Instructor-Led Training light.svg"
+              alt=""
             />
-          ))}
+          )}
+          {activePage === ActivePage.SelfPacedTraning && (
+            <img
+              className={styles.sptimg}
+              src="/img/Self-Paced Training light.svg"
+              alt=""
+            />
+          )}
+          {activePage === ActivePage.Certifications &&
+            certBadges.map((badge) => (
+              <img
+                src={badge.img}
+                alt={badge.alt}
+                className={`${
+                  badge.type === certType[tab] ? styles.active : ""
+                } ${styles.certimg}`}
+              />
+            ))}
         </div>
       </div>
       <div className={styles.btns}>
@@ -194,16 +231,17 @@ export default function CertificationsIDP() {
                 </div>
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
-                    <h2>Internal Developer Portal - Developer (BETA COMING
-                      SOON)</h2>
+                    <h2>
+                      Internal Developer Portal - Developer (BETA COMING SOON)
+                    </h2>
                     <img
                       src={`${baseUrl}img/cert_dev_idp_badge.svg`}
                       alt="Harness Certified Expert - IDP Developer"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDP
-                      Enterprise Plan
+                      <strong>Product version: </strong> Harness IDP Enterprise
+                      Plan
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -227,7 +265,6 @@ export default function CertificationsIDP() {
             </div>
 
             {/* Developer Exam Details */}
-
 
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
@@ -266,7 +303,8 @@ export default function CertificationsIDP() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Internal Developer Portal - Administrator (BETA COMING SOON)
+                      Internal Developer Portal - Administrator (BETA COMING
+                      SOON)
                     </h2>
                     <img
                       src={`${baseUrl}img/cert_adm_idp_badge.svg`}
@@ -274,11 +312,11 @@ export default function CertificationsIDP() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDPEnterprise Plan
+                      <strong>Product version: </strong> Harness IDPEnterprise
+                      Plan
                     </span>
                   </div>
                   <div className={styles.right}>
-
                     {/* <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to implement chaos
@@ -306,7 +344,8 @@ export default function CertificationsIDP() {
 
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
-                      Assesses the fundamental skills to deploy and maintain IDP projects and the overall Harness Platform.
+                      Assesses the fundamental skills to deploy and maintain IDP
+                      projects and the overall Harness Platform.
                     </div>
                   </div>
                 </div>
@@ -328,7 +367,6 @@ export default function CertificationsIDP() {
               </div>
             </div>
           </div> */}
-
           </div>
 
           {/* Architect Tab Content */}
@@ -362,8 +400,8 @@ export default function CertificationsIDP() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDP
-                      Enterprise Plan
+                      <strong>Product version: </strong> Harness IDP Enterprise
+                      Plan
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -385,7 +423,16 @@ export default function CertificationsIDP() {
           <h2>Instructor-Led Training</h2>
           <p>
             Intensive two-day courses are designed for engineers looking to
-            deepen their understanding and expertise in Harness. Can be delivered in a dedicated or <a href="https://university-registration.harness.io/calendar" target="_blank"> shared virtual </a> format.
+            deepen their understanding and expertise in Harness. Can be
+            delivered in a dedicated or{" "}
+            <a
+              href="https://university-registration.harness.io/calendar"
+              target="_blank"
+            >
+              {" "}
+              shared virtual{" "}
+            </a>{" "}
+            format.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
@@ -408,9 +455,7 @@ export default function CertificationsIDP() {
       {activePage === ActivePage.SelfPacedTraning && (
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
-          <p>
-            Free self-paced courses that you can consume on your own time.
-          </p>
+          <p>Free self-paced courses that you can consume on your own time.</p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
               {spt
@@ -423,7 +468,7 @@ export default function CertificationsIDP() {
               {spt
                 .filter((spt) => {
                   return (
-                    spt.module === "idp" && spt.cardType === "FREE" ||
+                    (spt.module === "idp" && spt.cardType === "FREE") ||
                     (spt.module === "idp" && spt.tileType === "comming soon")
                   );
                 })

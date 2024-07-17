@@ -38,6 +38,9 @@ export default function CloudCostManagement() {
   const history = useHistory();
   const { pathname = "/", search = "" } = location;
   const searchKey = getCertLevel(search);
+  const [activePage, setActivePage] = useState<string>(
+    ActivePage.SelfPacedTraning
+  );
   const [tab, setTab] = useState("developer");
   const handleSwitchTab = (tabKey) => {
     setTab(tabKey);
@@ -56,8 +59,8 @@ export default function CloudCostManagement() {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    setTab(null);
     if (params.has("lvl")) {
+      setTab(params.get("lvl"));
       setActivePage(ActivePage.Certifications);
     } else if (location.search === "?ilt") {
       setActivePage(ActivePage.InstructorLedTraining);
@@ -67,10 +70,6 @@ export default function CloudCostManagement() {
       setActivePage(ActivePage.SelfPacedTraning);
     }
   }, []);
-
-  const [activePage, setActivePage] = useState<string>(
-    ActivePage.Certifications
-  );
   const handleCertficationClick = () => {
     history.push(`${pathname}?lvl=developer`);
     setActivePage(ActivePage.Certifications);
@@ -84,7 +83,17 @@ export default function CloudCostManagement() {
     setActivePage(ActivePage.SelfPacedTraning);
   };
   return (
-    <div className={styles.certificationsCCM}>
+    <div
+      className={`${styles.certificationsCCM} ${
+        activePage === ActivePage.SelfPacedTraning
+          ? styles.SelfPacedTrainingBg
+          : ""
+      } ${
+        activePage === ActivePage.InstructorLedTraining
+          ? styles.InstructorLedTrainingBg
+          : ""
+      }  `}
+    >
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>
@@ -100,14 +109,41 @@ export default function CloudCostManagement() {
             a FinOps approach.
           </div>
         </div>
-        <div className={styles.right}>
-          {certBadges.map((badge) => (
+        <div
+          className={`${styles.right} ${
+            activePage === ActivePage.SelfPacedTraning
+              ? styles.SelfPacedTrainingBg
+              : ""
+          } ${
+            activePage === ActivePage.InstructorLedTraining
+              ? styles.InstructorLedTrainingBg
+              : ""
+          }  `}
+        >
+          {activePage === ActivePage.InstructorLedTraining && (
             <img
-              src={badge.img}
-              alt={badge.alt}
-              className={badge.type === certType[tab] ? styles.active : ""}
+              className={styles.iltimg}
+              src="/img/Instructor-Led Training light.svg"
+              alt=""
             />
-          ))}
+          )}
+          {activePage === ActivePage.SelfPacedTraning && (
+            <img
+              className={styles.sptimg}
+              src="/img/Self-Paced Training light.svg"
+              alt=""
+            />
+          )}
+          {activePage === ActivePage.Certifications &&
+            certBadges.map((badge) => (
+              <img
+                src={badge.img}
+                alt={badge.alt}
+                className={`${
+                  badge.type === certType[tab] ? styles.active : ""
+                } ${styles.certimg}`}
+              />
+            ))}
         </div>
       </div>
       <div className={styles.btns}>
@@ -356,7 +392,16 @@ export default function CloudCostManagement() {
           <h2>Instructor-Led Training</h2>
           <p>
             Intensive two-day courses are designed for engineers looking to
-            deepen their understanding and expertise in Harness. Can be delivered in a dedicated or <a href="https://university-registration.harness.io/calendar" target="_blank"> shared virtual </a> format.
+            deepen their understanding and expertise in Harness. Can be
+            delivered in a dedicated or{" "}
+            <a
+              href="https://university-registration.harness.io/calendar"
+              target="_blank"
+            >
+              {" "}
+              shared virtual{" "}
+            </a>{" "}
+            format.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
@@ -385,9 +430,7 @@ export default function CloudCostManagement() {
       {activePage === ActivePage.SelfPacedTraning && (
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
-          <p>
-            Free self-paced courses that you can consume on your own time.
-          </p>
+          <p>Free self-paced courses that you can consume on your own time.</p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
               {spt
@@ -400,7 +443,7 @@ export default function CloudCostManagement() {
               {spt
                 .filter((spt) => {
                   return (
-                    spt.module === "ccm" && spt.cardType === "FREE" ||
+                    (spt.module === "ccm" && spt.cardType === "FREE") ||
                     (spt.module === "ccm" && spt.tileType === "comming soon")
                   );
                 })
