@@ -187,6 +187,23 @@ This fault tests the ephemeral storage limits and determines the resilience of t
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### FS fill
+
+FS fill is a Kubernetes pod-level chaos fault that applies fs stress by filling the pod's ephemeral storage of the pod.
+
+- It evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
+- It tests the ephemeral storage limits and ensures that the parameters are sufficient.
+- It evaluates the application's resilience to disk stress (or replica) evictions.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+This fault tests the ephemeral storage limits and determines the resilience of the application to unexpected storage exhaustions.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod autoscaler
 
 Pod autoscaler is a Kubernetes pod-level chaos fault that determines whether nodes can accomodate multiple replicas of a given application pod.
