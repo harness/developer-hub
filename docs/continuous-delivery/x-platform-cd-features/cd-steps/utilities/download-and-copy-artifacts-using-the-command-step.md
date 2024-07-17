@@ -10,7 +10,7 @@ You can run a script on all hosts, download the deployment artifact, or copy the
 
 You can also use the Command step on deployment template deployments. Since a deployment template can be used on any host type, the Command step can only be run on the delegate.
 
-The command step mandates the use of a [repeat looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#repeat-strategies) even if the user wants to deploy to a single server. 
+The Command step mandates the use of a [repeat looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#repeat-strategies) even if you want to deploy to a single server. 
 
 ## Command step summary
 
@@ -30,7 +30,7 @@ Also, the looping strategy needed to run the Command step on each target host is
 
 :::info Note
 
-The Command step only supports the **Repeat** looping strategy. This includes scenarios where users only want to deploy to a single server. 
+The Command step only supports the **Repeat** looping strategy. This includes scenarios where you only want to deploy to a single server. 
 
 :::
 
