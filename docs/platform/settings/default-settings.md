@@ -95,7 +95,7 @@ These settings are for the Harness CD module.
 
 ### Pre Flight check
 
-Pre Flight check includes a series of check on the Pipeline such as verifying accessibility of connectors, services, secrets and others. 
+Pre Flight check includes a series of check on the Pipeline YAML such as verifying accessibility of connectors, services, secrets and others. 
 
 **Skip Pre Flight** is not checked by default in the Pipeline Run Form that means that the Pre Flight checks do not run by default.
 
