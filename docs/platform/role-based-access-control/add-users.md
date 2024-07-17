@@ -68,6 +68,43 @@ You can add up to 50,000 users in paid plans. Free plans and Harness Community E
 
 6. Select **Apply**. Users receive a verification email at the address(es) you entered. When the user logs into Harness, the user creates a password, the email address is verified, and the user's name attribute is updated.
 
+### Set default landing URL for invited users
+
+:::note
+Currently, this feature is behind the feature flag `PL_PREFERENCE_LANDING_PAGE_URL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+When inviting a new user, you can set a default landing URL to which the user will be directed upon their login. This feature helps guide users to a specific page or dashboard based on their preferences.
+
+1. In the invitation form, enter the email addresses of the users you want to invite.
+
+2. In the **Default Landing URL** field, specify the URL you want the invited user to be redirected to after they accept the invitation. For example, you can set it to `https://app.harness.io/ng/account/<account-id>/module/ssca/projects` for the SSCA homepage.
+
+3. Send the invitation.
+
+After the user accepts the invite and logs in, they will be redirected to the specified URL.
+
+### Update user preferences
+
+:::note
+Currently, this feature is behind the feature flag `PL_PREFERENCE_LANDING_PAGE_URL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Users can update their default landing URL from their profile settings:
+
+1. Sign in as the invited user.
+
+2. Go to the user profile.
+
+3. Select the **Preferences** tab.
+
+4. Update the **Default Landing URL** to the desired page, such as `https://app.harness.io/ng/account/account/<account-id>/module/cf/home/projects` for the Feature Flags homepage.
+
+5. Save the changes.
+
+The next time the user logs in, they will be redirected to the updated URL.
+
+
 ### Invitation emails
 
 When you add a user, Harness checks your [authentication method](/docs/platform/authentication/authentication-overview) and email invite preferences to determine if an email invitation should be sent:

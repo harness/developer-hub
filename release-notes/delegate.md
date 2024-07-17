@@ -49,11 +49,19 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## July
 
+<<<<<<< HEAD
 ### Version 24.07.83503 <!--  July 17, 2024 -->
 
 #### New features and enhancements
 
 - Reduced delegate liveness probe failure time. Previously, delegates had a 15-minute window to send heartbeats before the liveness probe failed, leading to a delegate restart. Harness reduced this time to 5 minutes to ensure quicker detection and response to heartbeat failures. (PL-52037)
+=======
+### Version 24.07.82906 <!--  July 17, 2024 -->
+
+#### Hotfix
+
+- Rollout deployment logs were not available and could not be expanded. Although the deployment was working, the logs were not displaying. The issue has been addressed by ensuring that logs will be shown even on a heavily loaded delegate. (PL-55512, ZD-66330)
+>>>>>>> main
 
 ### Version 24.07.83404 <!--  July 10, 2024 -->
 

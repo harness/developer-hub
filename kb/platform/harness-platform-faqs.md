@@ -254,7 +254,7 @@ The `parentIdentifier` in the context of creating an API key refers to the Paren
 
 ### How can I get a list of all users and their roles?
 
-You can use the Get aggregated users API. This will provide with complete details of the users including the role they have. For more information, go to [Get aggrgated users](https://apidocs.harness.io/tag/User#operation/getAggregatedUsers) in the API documentation.
+You can use the Get aggregated users API. This will provide with complete details of the users including the role they have. For more information, go to [Get aggregated users](https://apidocs.harness.io/tag/User#operation/getAggregatedUsers) in the API documentation.
 
 ### We have hundreds of users that were granted the admin role on the account level as individuals. How can we remove this role?
 
@@ -760,7 +760,7 @@ You can find this value on the Authentication page (right below the Overview men
 
 ### Why is LDAP sync not working for some groups despite working fine for others, and even manual sync isn't helping?
 
-The most probable root cause is that there is a difference in query for this user group/user (like DC), so check and confirm and add the corresponding user query.
+The most probable root cause is that there is a difference in query for this user group/user (like DC), so check and confirm and add the corresponding user query.
 
 ## Automation
 
@@ -1788,7 +1788,7 @@ For more information, go to [Delegates list page](/docs/platform/delegates/secur
 
 ### What is the six-letter account identifier that Harness uses it creates the delegate?
 
-This identifier is required for Harness to link old and new pod lifecycles properly. Without it, they will be treated differently as pod names and IPs change.
+This identifier is required for Harness to link old and new pod life cycles properly. Without it, they will be treated differently as pod names and IPs change.
 
 ### How does Harness prevent tampering of artifacts and instructions? Is TLS used? What is the integrity checking approach to ensure instructions are not altered in-flight?
 
