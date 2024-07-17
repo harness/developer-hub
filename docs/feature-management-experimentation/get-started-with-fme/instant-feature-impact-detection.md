@@ -1,5 +1,5 @@
 ---
-title: Instant Feature Impact Detection with Harness FME
+title: Instant Feature Impact Detection with Split FME
 sidebar_label: ★★ Instant Feature Impact Detection
 description: Learn about the power of IFID
 sidebar_position: 6

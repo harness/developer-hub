@@ -15,5 +15,5 @@ When you pass in a user key in your code, the Split SDK client associates the us
 :::
 
 :::info tip
-You can view the user key associations in Harness by navigating to `/user/your-user-key/`.
+You can view the user key associations in Harness by navigating to `/link/tbd/your-user-key/`.
 :::

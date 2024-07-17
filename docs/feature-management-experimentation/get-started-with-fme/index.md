@@ -10,7 +10,7 @@ helpdocs_is_published: true
 import DocCardList from '@theme/DocCardList'
 import Link from '@docusaurus/Link'
 
- Tutorials and quickstart guides, key concepts, and architectural overviews to help you get started with Split FME.
+ Tutorials and quickstart guides, key concepts, and architectural overviews to help you get started with Split Feature Management & Experimentation.
 
 <DocCardList />
 
