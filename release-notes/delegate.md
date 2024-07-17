@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-07-10T10:00
+date: 2024-07-17T10:00
 sidebar_position: 4
 ---
 
@@ -48,6 +48,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## July
+
+### Version 24.07.82906 <!--  July 17, 2024 -->
+
+#### Hotfix
+
+- Rollout deployment logs were not available and could not be expanded. Although the deployment was working, the logs were not displaying. The issue has been addressed by ensuring that logs will be shown even on a heavily loaded delegate. (PL-55512, ZD-66330)
 
 ### Version 24.07.83404 <!--  July 10, 2024 -->
 
