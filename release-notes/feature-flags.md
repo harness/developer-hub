@@ -19,6 +19,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## July 2024
 
+### Android SDK
+
+#### Version 2.2.2
+
+**Fixed issues**:
+ - Fixed the high initialization latency for large projects. (FFM-11750)
+ - Resolved an issue where using the callback method to initialize the SDK when the device had no connectivity. It would fail to give a `success/failure` result until the device regains connectivity. Now, a failure result is immediately sent and a success callback will be sent when the device is able to reconnect once the SDK initializes successfully. (FFM-11750)
+
 ### Java SDK
 
 #### Version 1.6.1
