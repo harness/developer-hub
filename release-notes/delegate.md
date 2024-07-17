@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-07-16T10:00
+date: 2024-07-17T10:00
 sidebar_position: 4
 ---
 
@@ -49,7 +49,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## July
 
-### Version 24.07.83500 <!--  July 16, 2024 -->
+### Version 24.07.83503 <!--  July 17, 2024 -->
 
 #### New features and enhancements
 
