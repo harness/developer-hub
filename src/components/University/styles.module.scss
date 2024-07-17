@@ -36,8 +36,10 @@
       align-items: center;
       gap: 24px;
       min-height: 210px;
+      position: relative;
 
       img {
+        margin-top: 72px;
         width: 125px;
         height: auto;
         opacity: 0.4;
@@ -50,6 +52,15 @@
           opacity: 1;
         }
       }
+
+      .iltimg {
+        width: 100%;
+        max-height: 210px;
+      }
+      .sptimg {
+        width: 100%;
+        max-height: 210px;
+      }
     }
   }
 
@@ -59,7 +70,7 @@
     flex-wrap: wrap;
     gap: 16px;
 
-    .certBtn {
+    .certBtnDark {
       width: 227px;
       height: 52px;
       padding: 10px 32px 10px 32px;
@@ -91,7 +102,7 @@
       }
     }
 
-    .InstLedTrainBtn {
+    .InstLedTrainBtnDark {
       min-width: 330px;
       height: 52px;
       padding: 10px 32px 10px 32px;
@@ -124,12 +135,86 @@
       }
     }
 
-    .active {
+    .activeDark {
       border: 2px solid var(--primary-9);
       background-color: white;
       color: var(--primary-9);
       &:hover {
         background-color: var(--gray-100);
+      }
+    }
+
+    .certBtnLight {
+      width: 227px;
+      height: 52px;
+      padding: 10px 32px 10px 32px;
+      border-radius: 50px;
+      font-family: Inter;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: 0px;
+      text-align: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid var(--primary-9);
+      background-color: white;
+      color: var(--primary-9);
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--gray-100);
+      }
+
+      img {
+        width: 28px;
+        height: 22.67px;
+        top: 4.67px;
+        left: 2px;
+      }
+    }
+
+    .InstLedTrainBtnLight {
+      min-width: 330px;
+      height: 52px;
+      padding: 10px 32px 10px 32px;
+
+      border-radius: 50px;
+      font-family: Inter;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: 0px;
+      text-align: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid var(--primary-9);
+      background-color: white;
+      color: var(--primary-9);
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--gray-100);
+      }
+
+      img {
+        width: 28px;
+        height: 22.67px;
+        top: 4.67px;
+        left: 2px;
+      }
+    }
+
+    .activeLight {
+      background-color: var(--primary-9);
+      border: 2px solid var(--primary-9);
+      color: white;
+      &:hover {
+        background-color: var(--primary-10);
       }
     }
   }
@@ -794,31 +879,11 @@
   }
 }
 
-.SelfPacedTrainingBg {
-  background: url("/img/Self-Paced Training light.svg") no-repeat;
-  background-position: right;
-  background-position-y: 0;
-  background-size: 55%;
-}
 .InstructorLedTrainingBg {
-  background: url("/img/Instructor-Led Training light.svg") no-repeat;
-  background-position: right;
-  background-position-y: 0;
-  background-size: 55%;
+  background: none !important;
 }
-
-html[data-theme="dark"] .SelfPacedTrainingBg {
-  background: url("/img/Self-Paced Training dark.svg") no-repeat;
-  background-position: right;
-  background-position-y: 0;
-  background-size: 55%;
-}
-
-html[data-theme="dark"] .InstructorLedTrainingBg {
-  background: url("/img/Instructor-Led Training dark.svg") no-repeat;
-  background-position: right;
-  background-position-y: 0;
-  background-size: 55%;
+.SelfPacedTrainingBg {
+  background: none !important;
 }
 
 @media screen and (max-width: 1344px) {
@@ -899,12 +964,7 @@ html[data-theme="dark"] .InstructorLedTrainingBg {
     }
   }
 }
-.iltimg {
-  display: none;
-}
-.sptimg {
-  display: none;
-}
+
 @media screen and (max-width: 768px) {
   /* for tablet */
 
@@ -998,10 +1058,12 @@ html[data-theme="dark"] .InstructorLedTrainingBg {
   .iltimg {
     display: block;
     width: 100% !important;
+    opacity: 1 !important;
   }
   .sptimg {
     display: block;
     width: 100% !important;
+    opacity: 1 !important;
   }
 }
 
@@ -1161,14 +1223,12 @@ html[data-theme="dark"] .InstructorLedTrainingBg {
   }
 
   .hero {
-    
-      .SelfPacedTrainingBg {
-        background-image: none !important;
-      }
-      .InstructorLedTrainingBg {
-        background-image: none !important;
-      }
-    
+    .SelfPacedTrainingBg {
+      background-image: none !important;
+    }
+    .InstructorLedTrainingBg {
+      background-image: none !important;
+    }
   }
 }
 

@@ -52,8 +52,9 @@ export const getCertLevel = (search: string) => {
   }
   return searchKey;
 };
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function University() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const [activePage, setActivePage] = useState<string>(
     ActivePage.SelfPacedTraning
@@ -70,7 +71,6 @@ export default function University() {
       history.push(`${pathname}?lvl=${tabKey}`);
     }
   };
-
   const certBadges = getCertBadges(baseUrl);
 
   useEffect(() => {
@@ -106,8 +106,6 @@ export default function University() {
     setActivePage(ActivePage.SelfPacedTraning);
   };
 
-  console.log(activePage);
-
   return (
     <div
       className={`${styles.university} ${
@@ -140,17 +138,25 @@ export default function University() {
               : ""
           }  `}
         >
-          {activePage === ActivePage.InstructorLedTraining && (
+          {activePage === ActivePage.SelfPacedTraning && (
             <img
               className={styles.iltimg}
-              src="/img/Instructor-Led Training light.svg"
+              src={
+                colorMode == "light"
+                  ? "/img/Instructor-Led Training light.svg"
+                  : "/img/Instructor-Led Training dark.svg"
+              }
               alt=""
             />
           )}
-          {activePage === ActivePage.SelfPacedTraning && (
+          {activePage === ActivePage.InstructorLedTraining && (
             <img
               className={styles.sptimg}
-              src="/img/Self-Paced Training light.svg"
+              src={
+                colorMode == "light"
+                  ? "/img/Self-Paced Training light.svg"
+                  : "/img/Self-Paced Training dark.svg"
+              }
               alt=""
             />
           )}
@@ -161,7 +167,7 @@ export default function University() {
                 alt={badge.alt}
                 className={`${
                   badge.type === certType[tab] ? styles.active : ""
-                } ${styles.certimg}`}
+                } `}
               />
             ))}
         </div>
@@ -169,40 +175,80 @@ export default function University() {
       <div className={styles.btns}>
         <button
           onClick={handleSelfPacedTrainingClick}
-          className={`${styles.InstLedTrainBtn} ${
-            activePage === ActivePage.SelfPacedTraning ? styles.active : ""
+          className={`${
+            colorMode == "light"
+              ? styles.InstLedTrainBtnLight
+              : styles.InstLedTrainBtnDark
+          } ${
+            activePage === ActivePage.SelfPacedTraning
+              ? colorMode == "light"
+                ? styles.activeLight
+                : styles.activeDark
+              : ""
           }`}
         >
-          {activePage !== ActivePage.SelfPacedTraning ? (
-            <img src="/img/self-paced-training-logo-inactive.svg" />
-          ) : (
+          {activePage == ActivePage.SelfPacedTraning ? (
+            colorMode == "light" ? (
+              <img src="/img/self-paced-training-logo-inactive.svg" />
+            ) : (
+              <img src="/img/self-paced-training-logo-active.svg" />
+            )
+          ) : colorMode == "light" ? (
             <img src="/img/self-paced-training-logo-active.svg" />
+          ) : (
+            <img src="/img/self-paced-training-logo-inactive.svg" />
           )}
           Self-Paced Training
         </button>
         <button
           onClick={handleInstLedTrainClick}
-          className={`${styles.InstLedTrainBtn} ${
-            activePage === ActivePage.InstructorLedTraining ? styles.active : ""
+          className={`${
+            colorMode == "light"
+              ? styles.InstLedTrainBtnLight
+              : styles.InstLedTrainBtnDark
+          } ${
+            activePage === ActivePage.InstructorLedTraining
+              ? colorMode == "light"
+                ? styles.activeLight
+                : styles.activeDark
+              : ""
           }`}
         >
-          {activePage !== ActivePage.InstructorLedTraining ? (
-            <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
-          ) : (
+          {activePage == ActivePage.InstructorLedTraining ? (
+            colorMode == "light" ? (
+              <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
+            ) : (
+              <img src="/img/Instructor_led_trainin_logo.svg" />
+            )
+          ) : colorMode == "light" ? (
             <img src="/img/Instructor_led_trainin_logo.svg" />
+          ) : (
+            <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
           )}
           Instructor-Led Training
         </button>
         <button
-          className={`${styles.certBtn} ${
-            activePage === ActivePage.Certifications ? styles.active : ""
+          className={`${
+            colorMode == "light" ? styles.certBtnLight : styles.certBtnDark
+          } ${
+            activePage === ActivePage.Certifications
+              ? colorMode == "light"
+                ? styles.activeLight
+                : styles.activeDark
+              : ""
           }`}
           onClick={handleCertficationClick}
         >
           {activePage == ActivePage.Certifications ? (
-            <img src="/img/certification_icon_unactive.svg" />
-          ) : (
+            colorMode !== "light" ? (
+              <img src="/img/certification_icon_unactive.svg" />
+            ) : (
+              <img src="/img/certification_icon.svg" />
+            )
+          ) : colorMode !== "light" ? (
             <img src="/img/certification_icon.svg" />
+          ) : (
+            <img src="/img/certification_icon_unactive.svg" />
           )}
           Certifications
         </button>
