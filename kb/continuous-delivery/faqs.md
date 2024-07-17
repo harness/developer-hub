@@ -3236,6 +3236,155 @@ AIDA is enabled on the Harness platform by default. To read more on the security
 Yes, we can use exported variables to reference a step group variable without knowing the step group ID.
 One can follow the syntax : `<+exportedVariables.getValue("stepGroup.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>` This method allows you to reference the variable by its alias name instead of needing to know the step group ID. For more details, you can refer to the Harness documentation on [Scoping output variables using aliases](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#scoping-output-variables-using-aliases)
 
+#### Why am I facing issues with the payload condition using <+trigger.payload.push.changes[0].new.type> in JEXL, and how can I fix it?
+
+The word .new is a [Reserved Keyword](https://commons.apache.org/proper/commons-jexl/reference/syntax.html). This can cause unexpected problems when you use it directly in your expressions.
+
+Instead of using:
+<+trigger.payload.push.changes[0].new.type>
+
+Try replacing it with:
+<+trigger.payload.push.changes[0]['new']['type']>
+
+By using square brackets and quotes, you can safely reference the new field without running into keyword conflicts. This small change helps JEXL understand that you're referring to a property, not the Reserved Keyword.
+
+#### How Harness creates default delegate tokens? 
+Yes, there was indeed a recent change. With the release of platform Version 1.45.5, we modified the unique index for delegate token names. Now, the default token name in each scope is simply default_token, instead of the more detailed default_token_org/project format you were used to.
+
+This change aims to streamline the token naming convention and applies only to new projects and organizations. Rest assured, existing projects and organizations will keep their current token names.
+
+We understand that this might affect your onboarding process for new projects, and we’re here to help you navigate this transition smoothly. For more details, you can refer to our [release notes](https://developer.harness.io/release-notes/platform/#version-1455)
+
+#### What happens to the remote resource configuration in the UI if Git connectivity is lost?
+
+If the Git connectivity is lost, the state of the remote resource configuration in the UI won't be updated. This means that any pipeline depending on this remote resource configuration won't be able to run, as it relies on the latest information from GitHub. To avoid disruptions in your pipeline execution, it's important to ensure that your Git connectivity is stable and reliable.
+
+#### If the Harness GitHub Connector is set up with both cloud and on-prem delegates, will the on-prem delegate handle requests if cloud connectivity fails?
+
+Yes, if the Harness GitHub Connector is configured with both a cloud and an on-prem delegate, and the cloud connectivity goes down, Harness will automatically switch to the on-prem delegate to perform the GitHub operations. Delegates are selected based on their availability and capability, so if one is unavailable, the other will take over the task.
+
+To verify this setup, you can create a test pipeline that uses the GitHub connector and specify both delegates in the delegate selector for the pipeline. Then, intentionally disconnect the cloud delegate and observe if the on-prem delegate takes over the task.
+
+For more details, please refer to our documentation on [using delegate selectors](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+
+#### Trying to get an artifact name from Artifactory(S3), but it's returning null. The variable <+artifact.metadata.filename> didn’t work?
+
+For S3 Type Connectors, the expression <+artifact.metadata.filename> isn’t available. Check the AWS S3 Artifact Documentation [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#aws-s3-artifact-expressions).
+
+As a workaround, since the file path is already available, you can extract the filename using the following script:
+```
+$path = "<+pipeline.stages.<StageName>.spec.artifacts.primary.filePath>"
+$filename = Split-Path -Path $path -Leaf
+Write-Output $filename
+```
+
+This script will help you filter out the filename from the provided file path.
+
+#### How can I fetch approver details from a previous stage in one pipeline and print it in a stage in a second pipeline?
+Directly accessing variables or approver details from one pipeline in another isn't possible. However, you can pass output variables or approval details between pipelines using pipeline chaining.
+
+Here’s how you can do it:
+
+- Define Output Variable: In the parent pipeline, define the output variable in the output section of the first stage.
+- Reference Output Variable: In the second stage of the parent pipeline, use the expression <+pipeline.[pipeline_stage_identifier].[output_variable_defined_under_output_section]> to reference the output variable from the first stage.
+- When you run the parent pipeline, the output variable from the first stage will be passed to the second stage as an input variable.
+
+For more details, refer to the [pipeline chaining documentation](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/).
+
+#### Which API data should we look at to calculate median times for the Pipeline?
+To calculate median execution times using the getExecutionDetailV2 Harness API, use the startTs and endTs properties.
+
+- Extract Timestamps: Execution duration = endTs - startTs (in milliseconds).
+- Calculate Median: Gather execution durations, sort them, and select the middle value.
+
+For more details, check the [Harness API documentation](https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2).
+
+#### How do I reference a variable from a different stage in a pipeline?
+For example, in the "pipeline_input" stage, I want to check the service variable for the "deploy_web" stage.
+
+Use the full path (FQN) expression starting from the pipeline. To reference the service variable from the "deploy_web" stage in the "pipeline_input" stage, use:
+```
+<+pipeline.stages.deploy_web.spec.serviceConfig.serviceName>
+```
+
+Remember, the service name is evaluated only after the Deploy stage. For more details, check out this guide on [Fully Qualified Names](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#use-fqns).
+
+#### Why is the Resource Constraint (RC) holding the deployment for two pipelines with different infrastructures but the same service?
+
+The deployment might being held because the infrastructure key is created from the service ID + environment ID + connector ID. Since the connector ID is missing, the infrastructure key remains the same for both pipelines.
+
+To resolve such issues and allow simultaneous deployment, you can:
+
+- Add a Connector: In the "Select Host" field, specify a connector.
+- Change the Secret Identifier: Ensure the secret ID is different for each pipeline.
+
+This approach prevents parallel deployments when a pipeline is triggered both from the API and manually at the same time.
+
+#### Can I group stage templates within a pipeline template into a group?
+Currently, grouping of stages within a pipeline template is not supported. While steps can be grouped under a stage, there isn't an option to group entire stages together.
+
+#### How can I rerun a specific container step multiple times if it fails, allowing other steps to continue in a pipeline?
+You can define a failure strategy on each step to retry it a specified number of times if it fails. This allows other steps to continue executing even if one fails. Check out the documentation on [step failure strategy settings](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings/) for details on configuring [retry counts](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/#retry-count-expression) and intervals.
+
+#### Can I set up and use custom runners with specific hardware requirements in Harness for individual projects or pipelines?
+You can select infrastructure per pipeline in Harness. For Harness Cloud, you can scale resources as needed. Alternatively, if you run builds on your own EKS cluster, you can define CPU and memory requirements within the pipeline.
+
+For more details on setting up build resources in your Kubernetes cluster for Harness builds, refer to [our documentation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/).
+
+#### Does Harness provide an API to read or download secret file information?
+Currently, Harness does not expose API endpoints to retrieve actual secret data or file content, whether it's text secrets or file secrets. While you can retrieve metadata information through APIs, accessing the secret data directly is not supported.
+
+#### How can I consume secret data stored in Harness if there's no API to retrieve it?
+To consume secret data from Harness:
+
+- Retrieve the secret value within a step of your pipeline.
+- Write the value to a local file on the delegate.
+- Use the file contents for consumption in subsequent steps.
+Alternatively, if your secret is managed by a custom secret manager, utilize the APIs provided by your secret manager to access the secret data.
+
+#### What should I consider if I want to save secret file content as a Harness secret?
+When saving secret file content as a Harness secret:
+Ensure the content does not exceed any limitations Harness may have on secret length or size. You can find detailed guidelines on managing file secrets and their limitations in our [documentation](https://developer.harness.io/docs/platform/secrets/add-file-secrets/).
+
+#### How should I handle special characters in secret values when referencing them in scripts?
+When referencing secrets in scripts, especially if the secret value contains special characters like "$":
+Use single quotes around the expression ('<+secrets.getValue("identifier")>') to prevent shell interpretation errors. For more information on handling special characters in secret values, refer to [our documentation](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#line-breaks-and-shell-interpreted-characters).
+
+#### Can I set up a Harness Delegate on AWS EC2 Linux without using Docker?
+Currently, Harness supports two modes for deploying delegates: Docker delegates and Kubernetes delegates. We do not offer any other installation modes for delegates at this time.
+
+#### How can I manage service variable overrides efficiently in Harness?
+When dealing with multiple service variable overrides in Harness, such as var1=Hello, var2=Good, var3=Morning, you can reference them in scripts using the format '<+serviceVariables.var1> <+serviceVariables.var2> <+serviceVariables.var3>', resulting in "Hello Good Morning".
+
+Currently, Harness does not support declaring variables in a single file and referencing them collectively. Each variable override is handled individually at runtime.
+
+#### Can I select multiple artifacts from a service for deployment in Harness?
+Currently, Harness supports selecting multiple artifacts from a service for deployment using sidecar artifacts. Sidecar artifacts follow the same rules as primary artifacts.
+
+To set this up:
+- Configure the artifacts in your Harness Service Definition.
+- Use the expression '<+artifacts.sidecars.[sidecar_identifier].imagePath>:<+artifacts.sidecars.[sidecar_identifier].tag>' in your Values file to reference the sidecar artifact.
+
+For detailed instructions on setting up sidecar artifacts in Harness, refer to [our documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/#sidecar-artifacts).
+
+#### Can I build and upload linux/amd64 and linux/arm64 images simultaneously to ECR using Harness?
+Yes, you can build multi-platform images using Harness CI/CD. The Build and Push to ECR plugin supports building multi-architecture images. However, when using the built-in build and push steps, you'll need to execute separate stages for each architecture.
+
+If you prefer to use Docker buildx for multi-platform builds, you have a couple of options:
+
+- Run Docker-in-Docker (dind) as a background step in a Kubernetes cluster and execute Docker commands in a run step.
+- Run Docker commands directly on the build VM using the Docker daemon in Harness Cloud.
+
+For more details on running Docker-in-Docker in a CI stage, refer to [our documentation](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/).
+
+#### What permissions are required for the Harness Kubernetes Delegate, and how can we configure them to adhere to the Least Privilege Principle?
+To configure permissions for the Harness Kubernetes Delegate while adhering to the Least Privilege Principle, you'll need to define specific rules for the Kubernetes service account associated with the Delegate. Here’s what you need to consider:
+- Ensure the service account has permissions scoped to the target namespace where Harness deploys resources.
+- Required permissions include list, get, create, watch (for pod events), and delete for entities like configMaps, secrets, events, deployments, and pods.
+- Avoid using wildcards (*) in resource and verb definitions. Instead, explicitly list the resources (configMap, secret, etc.) and verbs (create, delete, etc.) needed by Harness.
+
+For detailed guidelines on configuring roles and permissions for the Kubernetes Cluster Connector used by Harness, refer to [our documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/#roles-and-policies-for-the-connector).
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
