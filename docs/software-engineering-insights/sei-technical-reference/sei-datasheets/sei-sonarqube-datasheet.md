@@ -6,8 +6,16 @@ sidebar_position: 20
 ---
 SEI uses Rest APIs to connect to Sonarqube. Using these API calls SEI ingests
 metadata for Sonar issues, analyses, projects, and quality gates. This metadata is
-used to generate engineering metrics and insights. The full details of all the fields are
+used to generate engineering metrics and insights. 
+
+The full details of all the fields are
 mentioned below.
+
+- [Sonar analyses](#sonar-analyses)
+- [Sonar branches](#sonar-branches)
+- [Sonar pull request and issues](#sonar-pull-request-and-issues)
+- [Sonar projects](#sonar-projects)
+- [Sonar quality gates](#sonar-quality-gates)
 
 ### Sonar analyses
 
@@ -71,7 +79,7 @@ mentioned below.
   </tbody>
 </table>
 
-### Sonar pull request issues
+### Sonar pull request and issues
 
 <table>
   <thead>

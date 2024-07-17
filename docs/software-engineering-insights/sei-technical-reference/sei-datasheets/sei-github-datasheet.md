@@ -6,8 +6,17 @@ sidebar_position: 10
 ---
 SEI uses Rest APIs to connect to Github. Using these API calls SEI ingests metadata
 for Github commits, pull requests, issues, repositories, tags, and users. This metadata
-is used to generate engineering metrics and insights. The full details of all the fields
-are mentioned below.
+is used to generate engineering metrics and insights.
+
+The full details of all the fields are mentioned below.
+
+- [Github commits](#github-commits)
+- [Github issues](#github-issues)
+- [Github pull requests](#github-pull-requests)
+- [Github repositories](#github-repositories)
+- [Github tags](#github-tags)
+- [Github users](#github-users)
+- [Github repository events](#github-repository-events)
 
 ### Github commits
 
