@@ -23,7 +23,7 @@ Local runner build infrastructure is recommended for small, limited builds, such
 
 :::note
 
-It is possible to use a [Harness Kubernetes Delegate](/docs/platform/delegates/install-delegates/overview#install-the-default-delegate) instead of a Harness Docker Delegate.
+You can also use a [Harness Kubernetes Delegate](/docs/platform/delegates/install-delegates/overview#install-the-default-delegate) instead of a Harness Docker Delegate.
 
 :::
 
