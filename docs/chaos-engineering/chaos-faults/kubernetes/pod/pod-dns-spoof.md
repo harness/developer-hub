@@ -1,6 +1,6 @@
 ---
 id: pod-dns-spoof
-title: Pod DNS Spoof
+title: Pod DNS spoof
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-dns-spoof
 ---

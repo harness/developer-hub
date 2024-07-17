@@ -37,6 +37,19 @@ If you decide to use the Relay Proxy, make sure it has a good place in your netw
 - Network access to `https://config.ff.harness.io` and `https://events.ff.harness.io`
 - A Harness Relay Proxy Key
 
+### Supported Modes for Relay Proxy V2
+
+There are various modes for both versions of Relay Proxy. The Relay Proxy V2, it only supports running in the **Online with Redis Cache** mode. Operating in this mode requires the following:
+
+ - A connection to Harness SaaS.
+ - Connectivity to a Redis cache.
+
+To learn more about using [Caching Options in the Harness Relay Proxy](./cache_options.md), you can find more information in the Harness docs including common FAQs about the caching options. 
+
+:::info note
+To learn more about the supported modes for **Relay Proxy Version 1**, please go to the [Relay Proxy V1](./relay-proxy.md) page.
+:::
+
 ### Network Traffic Architecture
 
 Here are some diagrams to explain the Network Traffic Architecture for Feature Flag's Relay Proxy V2. These diagrams provide detail on how network requests are made as well as the Protocols used between Harness Saas to the Client SDK or the Server SDK. 

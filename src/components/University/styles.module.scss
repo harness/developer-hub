@@ -74,13 +74,13 @@
       justify-content: center;
       align-items: center;
       gap: 10px;
+      background-color: var(--primary-9);
       border: 2px solid var(--primary-9);
-      background-color: white;
-      color: var(--primary-9);
+      color: white;
 
       &:hover {
         cursor: pointer;
-        background-color: var(--gray-100);
+        background-color: var(--primary-10);
       }
 
       img {
@@ -95,7 +95,7 @@
       min-width: 330px;
       height: 52px;
       padding: 10px 32px 10px 32px;
-      border: 2px solid var(--primary-9);
+
       border-radius: 50px;
       font-family: Inter;
       font-size: 20px;
@@ -107,12 +107,13 @@
       justify-content: center;
       align-items: center;
       gap: 10px;
-      color: var(--primary-9);
-      background-color: white;
+      background-color: var(--primary-9);
+      border: 2px solid var(--primary-9);
+      color: white;
 
       &:hover {
         cursor: pointer;
-        background-color: var(--gray-100);
+        background-color: var(--primary-10);
       }
 
       img {
@@ -124,12 +125,11 @@
     }
 
     .active {
-      background-color: var(--primary-9);
       border: 2px solid var(--primary-9);
-      color: white;
-
+      background-color: white;
+      color: var(--primary-9);
       &:hover {
-        background-color: var(--primary-10);
+        background-color: var(--gray-100);
       }
     }
   }

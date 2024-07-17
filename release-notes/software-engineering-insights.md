@@ -22,6 +22,56 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 :::
 
+## July 2024
+
+### Version 202407.1
+
+<!-- July 15, 2024 -->
+
+Welcome to the first release of July 2024, and in this release we bring you features like the ability to select your Issue Management system while configuring a new Business alignment profile, improved RBAC capabilities, UI support for deleting integrations, and more. Watch the [release demo](https://youtu.be/RaXZhASFCu4) to see the key changes in action.
+
+<DocVideo src="https://www.youtube.com/embed/RaXZhASFCu4?si=lXEAzg5x32f1OlWp" />
+
+<br />
+
+We have added new and improved API documentation for the SEI services now available at [apidocs.harness.io](http://apidocs.harness.io/) - Check it out here.
+
+* [Collection categories](https://apidocs.harness.io/tag/Collection-categories/)
+* [Collections](https://apidocs.harness.io/tag/Collections)
+* [Contributors](https://apidocs.harness.io/tag/Contributors)
+* [DORA](https://apidocs.harness.io/tag/DORA)
+
+Over the coming weeks, we will be moving away from the current static API documentation and referring to the new site ([apidocs.harness.io](https://apidocs.harness.io)). As always let us know any feedback you might have.
+
+* **Blogs:** [Announcing the ServiceNow integration for Harness SEI](https://www.harness.io/blog/announcing-the-servicenow-integration-for-harness-sei), [Engineering Metrics That Matter to Your Bottom Line](https://www.harness.io/blog/engineering-metrics-that-matter-to-your-bottom-line)
+* **New Docs:** [Delete an integration](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#delete-an-integration), [Configure a DORA profile using the ServiceNow integration](/docs/software-engineering-insights/early-access/metrics-reports/mttr-incident-recovery#define-the-dora-profile-for-measuring-incident-recovery-time), [SEI API Reference Overview](/docs/software-engineering-insights/sei-technical-reference/sei-api-reference/sei-api-guide)
+
+#### Early access features
+
+* Users can now select **Jira** or **Azure DevOp**s as the issue management platform when configuring a **Business Alignment profile**. The custom fields for configuring filters will dynamically change based on the selected platform. This feature is currently in BETA and requires the `SEI_NEW_BA_COMBINED_WIDGET` feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.(SEI-7234)
+
+* We have now added support for configuring filters using custom fields that are specific to change requests or incidents in the collection definition and profile settings for the **ServiceNow integration**. When configuring the filters, the custom fields available will dynamically change based on the selected ticket type. This feature is currently in BETA and requires the `SEI_SERVICE_NOW` feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.(SEI-7301)
+
+* The **ServiceNow integration** is now available for **on-prem accounts**. You can use the ingestion satellite to configure the integration. Find the step-by-step instructions on the [ServiceNow integration document](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow#servicenow-on-prem).
+
+* A new instruction page has been added, with a step-by-step guide on setting up Azure DevOps integration using OAuth in the updated integration flow for Azure DevOps. This feature is currently in BETA and requires the `SEI_IS_AZURE_NEW_ONB_ENABLED` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable it. (SEI-7471)
+
+#### New features and enhancements
+
+* Added support for deleting existing configured integrations from the UI. For more information, see [Delete an integration](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#delete-an-integration). (SEI-6257)
+
+* The label **Number of Tickets** has been updated to **Number of Applicable Tickets** in the **Issue Resolution Time report**. Note that tickets with zero resolution time are not included in this report. (SEI-6642)
+
+* In the **SCM PRs report** the label that sets the criteria for measuring comment density is now called **PR Comment Density** in the report settings. (SEI-7317)
+
+* The new PR details page is now available for all the SCM PR related reports. (SEI-7340)
+
+* The PR details page now has a new column **Pipeline Name** that displays the associated CI/CD pipeline or workflow name if any. (SEI-7449)
+
+#### Fixed issues
+
+* Fixed the bug that caused committers data to be displayed in the reviewers column in some cases in the drill down. (SEI-6785)
+
 ## June 2024
 
 ### Version 202406.2
