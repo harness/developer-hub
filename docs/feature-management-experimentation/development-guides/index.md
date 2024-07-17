@@ -12,8 +12,8 @@ import Link from '@docusaurus/Link'
 
 For developers, comprehensive documentation and development guides:
 
-<Link to="./sdk-reference">Split FEM SDK reference</Link>
-<Link to="./optional-infrastructure">Split FME optional infrastructure</Link>
-<Link to="./api-reference">Split FME HTTP API Reference</Link>
+* <Link to="./sdk-reference">Split FME SDK Reference</Link>
+* <Link to="./api-reference">Split FME HTTP API Reference</Link>
+* <Link to="/docs/category/-optional-infrastructure">Split FME optional infrastructure</Link>
 
-If you are troubleshooting, you can also check <Link to="docs/faqs/feature-management-experimentation">FME FAQs</Link>.
+If you are troubleshooting, you can also check <Link to="/docs/faqs/feature-management-experimentation">Split FME FAQs</Link>.

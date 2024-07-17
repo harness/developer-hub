@@ -12,4 +12,4 @@ Learn best practices and helpful tips to get the most out of Split FME.
 
 <DocCardList />
 
-If you are troubleshooting, you can also check <Link to="docs/faqs/feature-management-experimentation">FME FAQs</Link>.
+If you are troubleshooting, you can also check <Link to="/docs/faqs/feature-management-experimentation">Split FME FAQs</Link>.
