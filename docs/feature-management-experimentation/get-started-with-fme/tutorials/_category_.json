@@ -6,10 +6,6 @@
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "FME Tutorials and Quickstart Guides"
-    },
-    "customProps": {
-        "helpdocs_category_id": "kkiqy1f6d7x",
-        "helpdocs_parent_category_id": "iqgyied1c0x"
+        "title": "Split FME Tutorials and Quickstart Guides"
     }
 }

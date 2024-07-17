@@ -3,10 +3,6 @@ title: Split Feature Management & Experimentation (FME) Overview
 sidebar_label: ★★ Overview
 description: How to make Split Feature Management & Experimentation work for you
 sidebar_position: 1
-helpdocs_topic_id: 7n9433hkc0x
-helpdocs_category_id: tsswat9k6ox
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 Split Feature Management & Experimentation (FME) is a feature management solution with smart capabilities, such as GitOps, pipelines, automations, and monitoring.

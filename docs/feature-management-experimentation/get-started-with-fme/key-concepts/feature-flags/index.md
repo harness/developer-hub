@@ -2,11 +2,7 @@
 title: Feature flags
 description: Feature flags you use to serve treatments for your users
 sidebar_label: ★★ Feature flags
-sidebar_position: 15
-helpdocs_topic_id: 1j7pdkqh7j
-helpdocs_category_id: gjyyhm9f9h
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 1
 ---
 import DocCardList from '@theme/DocCardList'
 import Link from '@docusaurus/Link'

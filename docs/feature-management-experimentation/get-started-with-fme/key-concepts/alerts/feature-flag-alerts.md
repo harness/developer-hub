@@ -2,11 +2,6 @@
 title: Feature flag alerts
 description: Alerts that can be activated for your feature flag's key metrics
 sidebar_label: ★★ Feature flag alerts
-sidebar_position: 15
-helpdocs_topic_id: 1j7pdkqh7j
-helpdocs_category_id: gjyyhm9f9h
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 import Link from '@docusaurus/Link'

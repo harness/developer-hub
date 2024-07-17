@@ -1,0 +1,7 @@
+{
+    "label": "☆ Admin settings",
+    "position": 30,
+    "collapsible": true,
+    "collapsed": true,
+    "className": "red"
+}

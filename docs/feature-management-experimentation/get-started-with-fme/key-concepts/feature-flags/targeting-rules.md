@@ -1,12 +1,8 @@
 ---
 title: Targeting rules
 description: The rules that determine the feature flag treatment (variation) that is returned when the feature flag is evaluated
-sidebar_label: ★★ Baseline treatment
-sidebar_position: 15
-helpdocs_topic_id: 1j7pdkqh7j
-helpdocs_category_id: gjyyhm9f9h
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_label: ★★ Targeting rules
+sidebar_position: 20
 ---
 import Link from '@docusaurus/Link'
 

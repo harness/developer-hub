@@ -3,10 +3,6 @@ title: Treatments
 sidebar_label: ★★ Treatments
 description: Variations served by your feature flags
 sidebar_position: 1
-helpdocs_topic_id: 7n9433hkc0x
-helpdocs_category_id: tsswat9k6ox
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 import DocCardList from '@theme/DocCardList'

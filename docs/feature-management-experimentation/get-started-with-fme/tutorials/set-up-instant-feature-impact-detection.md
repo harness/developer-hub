@@ -2,11 +2,7 @@
 title: Set up Instant Feature Impact Detection
 description: Tutorial to set up instant feature impact detection with FME
 sidebar_label: ☆ Set up Instant Feature Impact Detection
-sidebar_position: 15
-helpdocs_topic_id: 1j7pdkqh7j
-helpdocs_category_id: gjyyhm9f9h
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 10
 ---
 
 import var_settings from './static/4-create-a-feature-flag-07.png'

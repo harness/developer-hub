@@ -1,10 +1,8 @@
 ---
 title: Get started with Split FME
-sidebar_label: ★★ Get started
+sidebar_label: ★ Get started
 description: Quickstart guides to make Split Feature Management & Experimentation work for you
 sidebar_position: 1
-helpdocs_topic_id: 7n9433hkc0x
-helpdocs_category_id: tsswat9k6ox
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

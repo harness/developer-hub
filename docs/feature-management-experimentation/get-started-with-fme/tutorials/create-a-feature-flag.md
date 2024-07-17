@@ -2,11 +2,7 @@
 title: Create a feature flag (on/off toggle)
 description: Quickstart to create a basic feature flag (on/off toggle) with FME
 sidebar_label: ☆ Create a feature flag
-sidebar_position: 15
-helpdocs_topic_id: 1j7pdkqh7j
-helpdocs_category_id: gjyyhm9f9h
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 2
 ---
 
 import var_settings from './static/4-create-a-feature-flag-07.png'

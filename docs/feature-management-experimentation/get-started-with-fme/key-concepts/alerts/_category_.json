@@ -1,11 +1,7 @@
 {
     "label": "★★ Alerts",
-    "position": 40,
+    "position": 34,
     "collapsible": true,
     "collapsed": true,
-    "className": "red",
-    "customProps": {
-        "helpdocs_category_id": "iqgyied1c0x",
-        "helpdocs_parent_category_id": "ro04d5mcj1x"
-    }
+    "className": "red"
 }

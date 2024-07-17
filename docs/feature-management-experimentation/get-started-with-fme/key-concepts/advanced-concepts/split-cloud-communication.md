@@ -1,12 +1,8 @@
 ---
-title: Communication with FME Cloud
+title: Communication with Split FME Cloud
 description: Polling & streaming
-sidebar_label: ★★ FME Cloud communication
-sidebar_position: 15
-helpdocs_topic_id: 1j7pdkqh7j
-helpdocs_category_id: gjyyhm9f9h
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_label: ★★ Split FME Cloud communication
 ---
+import Link from '@docusaurus/Link'
 
-The Harness FME SDK downloads feature flag and segment definitions using polling and streaming.
+The Split FME SDK pulls the <Link to="./split-payload">Split payload</Link> from Split FME Cloud using polling and streaming.

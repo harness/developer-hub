@@ -2,11 +2,7 @@
 title: Create an A/B test
 description: Quickstart to create an A/B test with FME
 sidebar_label: ☆ Create an A/B test
-sidebar_position: 15
-helpdocs_topic_id: 1j7pdkqh7j
-helpdocs_category_id: gjyyhm9f9h
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 6
 ---
 
 import var_settings from './static/4-create-a-feature-flag-07.png'

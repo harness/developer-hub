@@ -2,11 +2,7 @@
 title: Set up a conversion rate experiment
 description: Tutorial to set up a conversion rate experiment with FME
 sidebar_label: ☆ Set up a conversion rate experiment
-sidebar_position: 15
-helpdocs_topic_id: 1j7pdkqh7j
-helpdocs_category_id: gjyyhm9f9h
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 8
 ---
 
 import Link              from '@docusaurus/Link'

@@ -2,11 +2,7 @@
 title: Traffic type
 description: The traffic type you define for your users
 sidebar_label: ★★ Traffic type
-sidebar_position: 15
-helpdocs_topic_id: 1j7pdkqh7j
-helpdocs_category_id: gjyyhm9f9h
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 4
 ---
 import Link from '@docusaurus/Link'
 
