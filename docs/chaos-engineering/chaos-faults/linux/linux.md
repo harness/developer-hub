@@ -128,6 +128,23 @@ Linux disk fill fills up the available disk space at a given system path for a s
 
 <FaultDetailsCard category="linux">
 
+### Linux fs fill
+
+Linux fs fill fills up the available fs space at a given system path for a specific duration.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Induces heavy fs usage scenario on the target Linux machines.
+- Simulates a lack of storage space for the underlying applications in the system.
+- Validates application failover and data resiliency in the scenario of low disk space.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
 ### Linux disk IO stress
 
 Linux disk I/O stress applies stress on the disk of the target Linux machines over I/O operations for a specific duration.
