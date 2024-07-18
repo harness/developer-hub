@@ -24,7 +24,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### Version 2.2.3
 
 **Fixed issues**:
- - FixeD an issue where the SDK Client would not be closed correctly if `Close()` or `CloseWithFuture()` was called, and `Streaming` and/or `Polling` requests would continue to be made in the background. (FFM-11779)
+ - Fixed an issue where the SDK Client would not be closed correctly if `Close()` or `CloseWithFuture()` was called, and `Streaming` and/or `Polling` requests would continue to be made in the background. (FFM-11779)
 
 #### Version 2.2.2
 
