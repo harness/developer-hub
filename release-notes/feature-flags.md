@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-07-16T16:19:25
+date: 2024-07-16T18:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,11 +15,16 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: July 16, 2024
+#### Last updated: July 18, 2024
 
 ## July 2024
 
 ### Android SDK
+
+#### Version 2.2.3
+
+**Fixed issues**:
+ - Fixed an issue where the SDK Client would not be closed correctly if `Close()` or `CloseWithFuture()` was called, and `Streaming` and/or `Polling` requests would continue to be made in the background. (FFM-11779)
 
 #### Version 2.2.2
 
