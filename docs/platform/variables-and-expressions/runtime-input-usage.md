@@ -114,11 +114,13 @@ However, there are a few strategies you can use to manage this situation:
 
    For example:
 
-   `<+ if (input("city") != "") { 
+   ```
+     <+ if (input("city") != "") { 
         // Execute steps if a city is selected
      } else { 
         // Execute steps if no city is selected
-     } +>`
+     } +>
+   ```
 
 - **Special Value:** You can designate a specific string like None or Not Applicable as an option in your dropdown to represent the absence of a choice. This allows users to explicitly select that they don't want to provide a value, and you can then handle this value within your pipeline logic.
 
