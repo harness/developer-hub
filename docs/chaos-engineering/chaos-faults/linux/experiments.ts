@@ -51,13 +51,6 @@ export const experiments: ExperimentDetails[] = [
     category: "linux",
   },
   {
-    name: "Linux fs fill",
-    description:
-        "Linux fs fill fills up the available fs space at a given system path for a specific duration.",
-    tags: ["linux", "fs", "disk"],
-    category: "linux",
-  },
-  {
     name: "Linux disk IO stress",
     description:
       "Linux disk I/O Stress fault stresses the disk of the target Linux machines over IO operations for a certain duration.",
@@ -76,6 +69,13 @@ export const experiments: ExperimentDetails[] = [
     description:
       "Linux DNS spoof injects chaos to mimic DNS resolution on the Linux machine.",
     tags: ["linux", "dns"],
+    category: "linux",
+  },
+  {
+    name: "Linux fs fill",
+    description:
+        "Linux fs fill fills up the available fs (file system) space at a given system path for a specific duration.",
+    tags: ["linux", "fs", "disk"],
     category: "linux",
   },
   {
