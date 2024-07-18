@@ -320,31 +320,31 @@ If there's a proxy between your Harness pipeline and your SonarQube server, you 
 - `JVM_NO_PROXY : sonar.myorg.local`
 
 ## View scan results in SonarQube portal
-The scan results for your targets can be accessed in the SonarQube portal. These results are organized under projects titled with your target/repository name. Further, you can view scan results specific to branches, PRs, and tags based on the scans performed in STO.
+You can access scan results for your targets in the SonarQube portal. These results are organized under projects titled with your target/repository name. Further, you can view scan results specific to branches, PRs, and tags based on the scans performed in STO.
 
 
 ### Locate STO scan results in SonarQube portal
 
-1. **_Branch_ scan results:** If you performed a scan for a branch, you can find the results in SonarQube with the same branch name.
-2. **Pull Request scan results:** If you performed a scan for a PR, the results will be located under the name `refs/pull/<PR_NUMBER>`, where `<PR_NUMBER>` is the specific number of the pull request.
-3. **Tag scan results:** If you performed a scan for a tag, the results will be available with the same tag name.
+1. **_Branch_ scan results**: If you scanned a branch, you can find the results in SonarQube with the same branch name.
+2. **Pull Request scan results**: If you scanned a PR, the results are located under the name `refs/pull/<PR_NUMBER>`, where `<PR_NUMBER>` is the specific number of the pull request.
+3. **Tag scan results**: If you scanned a tag, the results are available with the same tag name.
 
 
 ### Set the name for your scans
 
-When using the scan configuration "Branch Scan," you can set the naming of the scan as it will appear in the SonarQube portal. This can be configured as follows:
+When using the scan configuration **Branch Scan**, you can set the naming of the scan as it will appear in the SonarQube portal. This can be configured as follows:
 
 
 
-1. Set the “Analysis Type” to "manual" under the “Scan Tool” section. This brings up a new field called "Branch Name".
-2. In the "Branch Name" field, you can define the desired name for the scan result as it should appear in the SonarQube portal.
+1. Under **Scan Tool**, set the **Analysis Type** to **Manual**.
+2. Set the **Branch Name** to the name you want to use for your scan results in the SonarQube portal.
 
 <DocImage path={require('./static/sonarqube-orchestration-branch-scan.png')} width="30%" height="30%" title="Click to view full size image" />
 <!-- ![alt_text](./static/sonarqube-orchestration-branch-scan.png "image_tooltip") -->
 
 ### Best practices
 
-You can utilize [Harness expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) to automatically populate values from triggers. For example, you can define the "Branch Name" as `<+trigger.sourceBranch>/<+trigger.prNumber>`. This will generate a naming convention in the format SOURCE_BRANCH_NAME/PR_NUMBER, which is particularly useful when triggering scans on a specific PR. 
+You can use [Harness expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) to automatically populate values from triggers. For example, you can define the "Branch Name" as `<+trigger.sourceBranch>/<+trigger.prNumber>`. This will generate a naming convention in the format SOURCE_BRANCH_NAME/PR_NUMBER, which is particularly useful when triggering scans on a specific PR. 
 
 This setup ensures that the scan result name reflects both the branch and the PR, making it easier to identify and manage scan results in the SonarQube portal.
 
