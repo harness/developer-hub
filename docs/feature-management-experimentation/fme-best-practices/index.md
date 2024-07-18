@@ -1,6 +1,6 @@
 ---
 title: Split FME best practices
-sidebar_label: ★ Best practices
+sidebar_label: ☆ Best practices
 description: Best practices for working with Split FME
 sidebar_position: 1
 ---

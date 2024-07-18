@@ -1,5 +1,3 @@
-import GitHubEmbed from "@site/src/components/GitHubEmbed";
-
 ### Evaluation Details
 
 When you receive a value, it may be useful to know how the SDK came to that result. 
@@ -14,5 +12,3 @@ This object contains the following fields:
 - `lcut`: Last Config Update Time - This is the unix timestamp for when **any** configuration in your project changed.
   - **lcut** works as a version number for you project. If it changes, values are deemed out of date and possibly need to be refetched.
 - `receivedAt`: This is the unix timestamp of when the SDK received these values. This can be useful in knowing how old your cache is.
-
-<GitHubEmbed url={props.snippetUrl} />
