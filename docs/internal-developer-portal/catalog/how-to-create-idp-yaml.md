@@ -132,6 +132,22 @@ links:
     type: admin-dashboard
 ```
 
+### Support for Harness Account Variables
+
+You can as well use all the **[custom account variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#define-variables)** and **[account scoped built-in variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-expressions-reference)** in IDP YAML.
+
+```YAML
+...
+annotations:
+    harness.io/pipelines: |
+        Build: https://app.harness.io/ng/account/<+account.identifier>/home/orgs/<+variable.account.orgIdentifier>/projects/<+variable.account.projectIdentifier>/pipelines/Build_IDP_UI_App
+...
+...
+spec:
+  type: <+account.identifier>
+  lifecycle: <+variable.account.orgIdentifier> <+variable.account.projectIdentifier>
+```
+
 ### Specify component details
 
 Under the `spec` section, provide specific details about the component:

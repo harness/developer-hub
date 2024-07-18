@@ -8,6 +8,22 @@ sidebar_label: YAML File Format
 
 In this documentation we describe the YAML format and semantics of catalog entities. Although it's possible to name catalog entity descriptor files however you wish, we recommend that you name them `catalog-info.yaml`. More detailed instructions regarding this can be found in the [Descriptor Format of Catalog Entities](https://backstage.io/docs/features/software-catalog/descriptor-format)
 
+## Support for Harness Account Variables
+
+In the context of Harness IDP you can use all the **[custom account variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#define-variables)** and **[account scoped built-in variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-expressions-reference)** in IDP YAML.
+
+```YAML
+...
+annotations:
+    harness.io/pipelines: |
+        Build: https://app.harness.io/ng/account/<+account.identifier>/home/orgs/<+variable.account.orgIdentifier>/projects/<+variable.account.projectIdentifier>/pipelines/Build_IDP_UI_App
+...
+...
+spec:
+  type: <+account.identifier>
+  lifecycle: <+variable.account.orgIdentifier> <+variable.account.projectIdentifier>
+```
+
 ## Kind: Component
 
 The template given below is an example used for self-service onboarding using the [Harness Custom Field extensions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#harness-specific-custom-actions)
