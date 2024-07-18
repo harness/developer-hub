@@ -69,7 +69,7 @@ export const experiments: ExperimentDetails[] = [
   },
   {
     name: "FS fill",
-    description:"FS fill applies fs stress by filling the pod's ephemeral storage of the target pod",
+    description:"FS fill applies fs stress by filling the pod's ephemeral storage of the target pod.",
     tags: ["pod"],
     category: "kubernetes",
   },

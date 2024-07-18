@@ -191,13 +191,15 @@ This fault tests the ephemeral storage limits and determines the resilience of t
 
 FS fill is a Kubernetes pod-level chaos fault that applies fs stress by filling the pod's ephemeral storage of the pod.
 
-- It evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
-- It tests the ephemeral storage limits and ensures that the parameters are sufficient.
-- It evaluates the application's resilience to disk stress (or replica) evictions.
-
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault tests the ephemeral storage limits and determines the resilience of the application to unexpected storage exhaustions.
+
+- Tests the ephemeral storage limits and ensures that the parameters are sufficient.
+- Determines the resilience of the application to unexpected storage exhaustion.
+- Evaluates the application's resilience to FS stress or replica evictions.
+- Verifies file system performance, and thin-provisioning support.
+- Verifies space reclamation (UNMAP) capabilities on storage.
+
 </Accordion>
 
 </FaultDetailsCard>
