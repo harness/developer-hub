@@ -1,6 +1,6 @@
 ---
 id: vmware-windows-disk-stress
-title: VMware Windows Disk Stress
+title: VMware Windows disk stress
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-disk-stress
 ---
