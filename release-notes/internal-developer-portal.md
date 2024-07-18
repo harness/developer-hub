@@ -23,6 +23,8 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 <!-- July 18, 2024 -->
 
+In this release we have done few upgrades and bug-fixes which are dependant on [Delegate Version](https://developer.harness.io/release-notes/delegate), hence if you are using Delegates within IDP (for Plugin configurations or Git integrations), **please ensure your delegate version is upgraded to 24.07.83404 or beyond**
+
 #### New features and enhancements
 
 - You can now create a new Catalog Layout for your Custom Entity Types in the IDP Software Catalog. This extends our Catalog model beyond services, websites and libraries to track different types of applications such as micro-frontends, llm models, SDKs and more! [Read more](https://developer.harness.io/docs/category/layout--appearance) on how to do it. [IDP-3045]
@@ -46,7 +48,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 #### Bug Fixes
 
-- TechDocs builds were facing issues with Bitbucket and GitHub App authentication when delegate was used in the connector. This is resolved now. [IDP-3120]
+- TechDocs builds were facing issues with Bitbucket and GitHub App authentication when delegate was used in the connector. This is resolved now, ensure to upgrade the delegate version to 24.07.83404 or beyond for the fix. [IDP-3120]
 - UI fix to show the correct count of the selected services in Getting Started. [IDP-3112]
 - UI Bug fix showing a group is selected under IDP Admin Access Control while no group was actually selected. [IDP-3081]
 - Custom plugins - Fixed wrong status showing for custom plugin’s builds. [IDP-3059]
