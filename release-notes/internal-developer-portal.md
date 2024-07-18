@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-06-18T20:00
+date: 2024-07-18T20:00
 sidebar_position: 12
 ---
 
@@ -16,6 +16,48 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## July 2024
+
+### Version 0.29.0
+
+<!-- July 18, 2024 -->
+
+In this release we have done few upgrades and bug-fixes which are dependant on [Delegate Version](https://developer.harness.io/release-notes/delegate), hence if you are using Delegates within IDP (for Plugin configurations or Git integrations), **please ensure your delegate version is upgraded to 24.07.83404 or beyond**
+
+#### New features and enhancements
+
+- You can now create a new Catalog Layout for your Custom Entity Types in the IDP Software Catalog. This extends our Catalog model beyond services, websites and libraries to track different types of applications such as micro-frontends, llm models, SDKs and more! [Read more](https://developer.harness.io/docs/category/layout--appearance) on how to do it. [IDP-3045]
+
+![](./static/layout-new-nav.png)
+
+- Added support for JEXL expressions in [catalog-info.yaml](https://developer.harness.io/docs/internal-developer-portal/catalog/yaml-file#support-for-harness-account-variables) and [template.yaml](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#support-for-harness-account-variables) (any YAML ingested in IDP). [IDP-2843]
+
+- Added support for [graphviz](https://graphviz.org/) and [plantUML](https://plantuml.com/) in TechDocs. [IDP-3072]
+
+- Custom Plugins 
+    * You can now add Headers (e.g. Authentication header) when defining your custom plugin’s config. [Docs](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/add-a-custom-plugin/#configurations)[IDP-3060]
+    * Improved Error Handling, with detailed error messages at each step. 
+
+- UI Framework enhancements with integration of UI Core. [IDP-3055]
+
+- New Plugins
+    * [BugSnag](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/bug-snag) - View and monitor Bugsnag errors. [IDP-3009]
+    * [Harness IaCM plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/harness-iacm) - This plugin provides an overview of all the resources provisioned through information on active workspaces in your account. [IDP-3191]
+
+
+#### Bug Fixes
+
+- TechDocs builds were facing issues with Bitbucket and GitHub App authentication when delegate was used in the connector. This is resolved now, ensure to upgrade the delegate version to 24.07.83404 or beyond for the fix. [IDP-3120]
+- UI fix to show the correct count of the selected services in Getting Started. [IDP-3112]
+- UI Bug fix showing a group is selected under IDP Admin Access Control while no group was actually selected. [IDP-3081]
+- Custom plugins - Fixed wrong status showing for custom plugin’s builds. [IDP-3059]
+- Deleting a disabled custom plugin now updates metadata properly. [IDP-3058]
+- Added more retries to avoid Connection Timeout errors in IDP Workflow Execution. [IDP-2997]
+- Removed banner showing no Git Integration setup while Harness Code was enabled. [IDP-3182]
+- Harness CI/CD plugin was fixed to support both old and new Harness URLs along with vanity URLs. [IDP-3156]
+
+
 
 ## June 2024
 
