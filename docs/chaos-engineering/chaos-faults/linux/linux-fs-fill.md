@@ -1,15 +1,12 @@
 ---
 id: linux-fs-fill
 title: Linux fs fill
-redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-fs-fill
 ---
 
 import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 
-
-Linux fs fill fills up the available fs space at a given system path for a specific duration.
+Linux fs fill fills up the available fs (file system) space at a given system path for a specific duration.
 
 ![Linux fs fill](./static/images/linux-fs-fill.png)
 
@@ -38,7 +35,7 @@ Linux fs fill:
   <tr>
     <td> fillStorage </td>
     <td> Amount of storage to be filled </td>
-    <td> Can be specified in bytes (without unit), kilobytes (k/K/KB), megabytes (m/M/MB), gigabytes (g/G/GB). Example values: <code>100M</code>, <code>1G</code>, etc.</td>
+    <td> You can specify in bytes (without unit), kilobytes (k/K/KB), megabytes (m/M/MB), gigabytes (g/G/GB). Example: <code>100M</code>, <code>1G</code>, etc.</td>
   </tr>
 </table>
 
