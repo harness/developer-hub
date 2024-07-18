@@ -4,6 +4,10 @@ function EmbedFunction() {
   const urlParams = new URLSearchParams(window.location.search);
   const embed = urlParams.get("embed");
   if (Boolean(embed) === true) {
+    const chatbotContainer = document.getElementById("chatbot-container");
+    if (chatbotContainer) {
+      chatbotContainer.style.display = "none";
+    }
     const nav = document.querySelector("nav");
     if (nav) {
       nav.style.display = "none";
