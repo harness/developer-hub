@@ -64,7 +64,6 @@ pipeline:
     ci:
       codebase:
         connectorRef: YOUR_CODEBASE_CONNECTOR_ID
-        repoName: YOUR_GIT_REPO
         build: <+input>
 ```
 

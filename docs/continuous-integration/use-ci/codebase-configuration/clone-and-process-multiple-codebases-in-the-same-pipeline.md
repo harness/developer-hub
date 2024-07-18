@@ -69,7 +69,7 @@ The **Description** is an optional text string.
 
 If you're using [Harness Code Repository (Code)](https://developer.harness.io/docs/code-repository/get-started/overview/), you do not need to configure a connector. 
 
-![No connector required for Harness Code Repository](static/harness_code_repository_default.png)
+<DocImage path={require('./static/harness_code_repository_default.png')} />
 
 For third-party Git provider, select a connector for the source control provider hosting the code repo that you want the step to clone.
 
@@ -124,10 +124,15 @@ Determines whether to fetch all tags when performing a shallow clone (depth > 0)
 
 ### Pull Request Clone Strategy
 
-When a build is triggered by a pull request, this setting determines the branch to use for the artifact after the build process clones the repo.
+When a build is triggered by a pull request, this setting determines the branch to use for the artifact after the repo is cloned.
 
-- If **Merge Commit** (the default) is selected, the pipeline tries to merge the Pull Request branch with the target branch before building the artifact. The artifact includes all PR and target commits, but builds can take longer and result in build failures.
-- If **Source Branch** is selected, the pipeline builds the artifact from the latest commit in the Pull Request branch. Builds can be faster and less likely to result in build failures, but the artifacts might not include some target-branch commits.
+If this is set to **Merge Commit** (which is the default setting), the pipeline tries to merge the pull request branch with the target branch before building the artifact. This guarantees that the artifact includes all commits in both the pull request and the target branch. The disadvantage is that this can take more time and result in build failures: If the merge fails, then the build fails.
+
+![](./static/create-and-configure-a-codebase-04.png)
+
+If this is set to **Source Branch**, the pipeline builds the artifact from the latest commit in the pull request branch. This can be faster and less likely to result in build failures; however, it might not include some commits in the target branch.
+
+![](./static/create-and-configure-a-codebase-05.png)
 
 ### Download LFS Files
 
