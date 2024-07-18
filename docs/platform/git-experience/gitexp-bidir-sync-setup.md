@@ -32,17 +32,39 @@ This topic explains how to set up and use bidirectional sync.
 
 ## Configure bi-directional sync
 
-To set up bi-directional sync, do the following:
+Bidirectional sync is enabled by default for Git Experience.
 
-1. In your Harness account, go to **Account Settings**, and then select **Default Settings**.
-2. Expand **Git Experience**, and then enable the **Enable Bi-Directional Sync** setting.
-   
-   <DocImage path={require('./static/enable-bidirectional-sync.png')} width="60%" height="60%" title="Click to view full size image" />  
-3. Select **Save**.
+:::info note
+Currently default behavior of Bidirectional sync is behind FF `PIE_DISABLE_GITX_BI_DIRECTIONAL_SYNC`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
 
-When you create the webhook in Harness, it is automatically registered in your repo. For webhook registration, ensure that the Harness Git connector you use in the steps below has the necessary credentials. For example, for GitHub, ensure that you use a GitHub user account that is a repo admin and that the Personal Access Token includes all repo, user, and `admin:repo_hook` options for scopes.
+Suppose, you have created a newly remote entitiy in Harness, and that entity does not have bidirectional sync enabled, you will see a banner as shown below in your entity creation page to set up a webhook to sync and track changes made from Git to Harness. Below is the example of a remote pipeline for which bidirectional sync was not enabled. 
 
-You will need a webhook to your repo to use bi-directional sync:
+![](./static/webhook_register_pipelinestudio.png)
+
+All you need to do is click on `Setup Webhook`, automatically webhook will be registered for your repository.
+
+:::info note
+For webhook registration, ensure that the Harness Git connector you use in the steps below has the necessary credentials. For example, for GitHub, ensure that you use a GitHub user account that is a repo admin and that the Personal Access Token includes all repo, user, and `admin:repo_hook` options for scopes.
+:::
+
+If webhook is registered successfully you will see below message:-
+
+![](./static/success_webhook_registered.png)
+
+To see your newly registered webhook go to, **Account Settings** > **Account-level Resources** > **Webhooks** and you will see the webhook registered for your repository.
+
+![](./static/webhook_register_page.png)
+
+You can see the list of Git events in Harness. Learn more about [Git Sync Activity](./git-sync-health-page.md)
+
+### Manully Setup Webhook
+
+You can follow below steps to manually register webhook for your repository for bidirectional sync to be enabled:-
+
+:::info note
+For webhook registration, ensure that the Harness Git connector you use in the steps below has the necessary credentials. For example, for GitHub, ensure that you use a GitHub user account that is a repo admin and that the Personal Access Token includes all repo, user, and `admin:repo_hook` options for scopes.
+:::
 
 4. In Harness, do one the following, depending on the scope at which you want to create a webhook: 
 
