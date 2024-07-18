@@ -21,5 +21,5 @@ Learn about different types of metrics.
 <DocCardList />
 
 :::info traffic types
-Metrics are defined for specific <Link to="./../traffic-type">traffic types</Link>.
+Metrics are defined for specific <Link to="../traffic-type">traffic types</Link>.
 :::

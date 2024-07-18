@@ -1,0 +1,18 @@
+### Prefetching Users During Initialization
+
+If you have multiple user objects and wish to cut down on network calls, you may provide a prefetchUsers array as part of StatsigOptions during initialization.
+
+<div>{props.config}</div>
+
+### Prefetching Users Directly
+
+You may also call the prefetchUsers method at any time after initialization.
+
+<div>{props.methodCall}</div>
+
+These users are evaluated on the Statsig server and the results are returned to the client.
+Later calls to updateUser will not execute a network request if a user is found to be prefetched.
+
+:::info
+The prefetchUsers array is limited to 5 users. If a larger array is given, only the first 5 users will be taken.
+:::

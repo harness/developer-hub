@@ -1,0 +1,24 @@
+import { VersionBadge } from "../../sdks/_VersionBadge.mdx";
+
+### Fetch Mode <VersionBadge version={props.addedInVersion}/>
+
+In some advanced use cases, you may want to limit the number of network requests
+to be fired during updates to the current user.
+
+<>
+  Since version <>{props.addedInVersion}</>, the {props.sdk} SDK supports{" "}
+  <a href="#statsig-options">StatsigOptions.fetchMode</a>. Setting this option
+  will change the bevahior of <code>Statsig.updateUser</code>.
+</>
+
+<br />
+<br />
+
+The supported FetchModes are as follows:
+
+- `network-only` - This is the default behavior. The SDK will always fetch the
+  latest feature gate and experiment values from the Statsig servers when `Statsig.updateUser` is called.
+
+- `cache-or-network` - When set to this mode, the SDK will first check if a cached value exists for
+  the user and was cached during this session (After `Statsig.initialize`).
+  If no valid cache value is found, a network request will be made to fetch the latest values.

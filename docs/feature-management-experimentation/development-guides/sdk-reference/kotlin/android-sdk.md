@@ -1,0 +1,10 @@
+---
+title: Split FME Android SDK
+sidebar_label: ★ Android SDK
+description: Android developer reference for working with Split FME
+---
+
+import AndroidSdk from '../java/android-sdk.mdx';
+
+
+<AndroidSdk />

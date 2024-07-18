@@ -1,0 +1,60 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+import com.statsig.androidsdk.*;
+...
+
+public class MainActivity extends AppCompatActivity implements IStatsigCallback {
+
+    ...
+    StatsigOptions options = new StatsigOptions();
+    options.setTier(Tier.PRODUCTION);
+    StatsigUser user = new StatsigUser("UUID");
+    Statsig.initializeAsync(app, "client-key", user, this, options);
+    ...
+    // SDK is usable, but values will be from the cache or defaults (false for gates, {} for configs)
+    // Once onStatsigInitialize fires, then
+
+
+    @Override
+    public void onStatsigInitialize() {
+        // SDK is initialized and has the most up to date values
+    }
+
+    @Override
+    public void onStatsigUpdateUser() {
+        // User has been updated and values have been refetched for the new user
+    }
+
+}
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+import com.statsig.androidsdk.*
+
+...
+
+async {
+    Statsig.initialize(
+        this.application,
+        "my_client_sdk_key",
+        StatsigUser("user_id"),
+    )
+}.await()
+```
+
+  </TabItem>
+</Tabs>

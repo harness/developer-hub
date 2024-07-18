@@ -1,0 +1,24 @@
+---
+title: Deprecating Non-experiment Group Names
+sidebar_label: Deprecating Non-experiment Group Names
+slug: /sdks/group-name-breaking-change-02-2024
+---
+
+## What
+Removing non-experiment groups from the groupName API across all SDKs
+
+## When
+April 3, 2024 (now live)
+
+## Why
+When we first implemented group name accessors on DynamicConfigs, we did so as metadata about the evaluation, and included many non-experiment groups that get returned from the `getGroupName` API.  We got feedback from a number of customers that the group name was only useful as an experiment group, so we forked the logic on our serverside to support that use case without making a breaking change.
+
+This has lead to confusion amongst customers, and is fragile for anyone depending on the API.  As such, we’ve decided to only return experiment group names from the `getGroupName` API for everyone.
+
+If you were relying on group names for targeting gates, allocation, etc. you can use the rule_id on experiments instead (layerAssignment, targetingGate, override, abandoned, prestart, allocationDuration, and default) ruleIDs are all accessible to explain that group assignment
+
+## How
+This is a server change on our side, it will not be versioned to a particular sdk version.  Callsites that were getting non experiment group names will now just receive null/nil/language specific "null" values. `getGroupName` api should already be nullable, so all callsites across sdk languages should be able to handle a null group name already.  Unfortunately, the `getGroupName` API does not trigger an exposure event, so we are unable to programmatically determine who is relying on this api.
+
+## Get Help
+Please reach out to us [in slack](https://statsig.com/slack) with any further questions, we’d be happy to assist.

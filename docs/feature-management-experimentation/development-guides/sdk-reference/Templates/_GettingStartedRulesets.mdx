@@ -1,0 +1,86 @@
+import Gap from "./_Gap.mdx";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+
+## Getting Started
+
+<span>
+  The following will outline how to get up and running with Statsig for{" "}
+  {props.sdkType}.
+</span>
+
+<>{props.additionalWelcomeMessage}</>
+
+<!--  -->
+
+<Gap />
+
+### Create an Account
+
+To work with the SDK, you will need a Statsig account. If you don't yet have an account, go ahead and [sign up](https://console.statsig.com/sign_up) for a free account now.
+
+You could skip this for now, but you will need an SDK key and some gates/experiments to use with the SDK in just a minute.
+
+<!--  -->
+
+<Gap />
+
+### Installation
+
+<div>{props.install}</div>
+
+<Gap />
+
+### Initialize the SDK
+
+Initialize the SDK using a Client SDK key from the ["API Keys" tab on the Statsig console](https://console.statsig.com/api_keys).  When creating the key, or using an existing key,
+you will need to add the "Allow Download Config Specs" scope.  Client keys, by default, are not able to download the project definition to do on device evaluation.  You must opt in
+to allow your client key to access your full project definition on our cdn.
+
+
+
+
+<Tabs
+  defaultValue="new"
+  values={[
+    {label: 'New SDK Keys', value: 'new'}, 
+    {label: 'Existing SDK Keys', value: 'existing'},
+  ]}>
+
+  <TabItem value="existing">
+
+To add the scope to an existing key, under **Project Settings** > **API Keys** > **Client API Keys**, select **Actions** > **Edit Scopes**, and "Allow Download Config Specs", then **Save**.
+
+<div class="img-center">
+
+![Add DCS Scope to New Key](https://github.com/statsig-io/docs/assets/74584483/362003a4-10bf-4a24-8078-3985406d2f71)
+
+</div>
+
+  </TabItem>
+  <TabItem value="new">
+
+
+When creating a new client key, select "Allow Download Config Specs"
+
+<div class="img-center">
+
+![Add DCS Scope to Existing Key](https://github.com/statsig-io/docs/assets/74584483/ab9081d8-cb28-4eb8-bed9-5ab8413b97b9)
+
+</div>
+
+  </TabItem>
+</Tabs>
+
+
+
+
+
+:::caution
+Do NOT embed a **Server** Secret Key in client side applications.
+:::
+
+<div>{props.initialize}</div>
+
+<Gap />

@@ -1,0 +1,16 @@
+import CodeBlock from "@theme/CodeBlock";
+
+export const GetStableID = () => (
+  <CodeBlock language="kotlin">
+    {`Statsig.getStableID(); 
+`}
+  </CodeBlock>
+);
+
+export const OverrideStableID = () => (
+  <CodeBlock language="kotlin">
+    {`val opts = StatsigOptions(overrideStableID = "my_stable_id")
+Statsig.initialize(app, "client-xyx", options = opts)
+`}
+  </CodeBlock>
+);

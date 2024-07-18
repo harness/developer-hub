@@ -1,0 +1,33 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+StatsigUser newUser = new StatsigUser("new_user_id");
+Statsig.updateUserAsync(newUser, this); // this must implement IStatsigCallback
+
+...
+
+@Override
+public void onStatsigUpdateUser() {
+    // User has been updated and values have been refetched for the new user
+}
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+Statsig.updateUser(StatsigUser("new_user_id"))
+```
+
+  </TabItem>
+</Tabs>

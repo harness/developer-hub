@@ -1,0 +1,14 @@
+## Stable ID
+
+Each client SDK has the notion of StableID, and identifier that is generated
+the first time the SDK is initialized and is stored locally for all future sessions.
+Unless storage is wiped (or app deleted), the StableID will not change.
+This allows us to run device level experiments and experiments when other user identifiable information is unavailable (Logged out users).
+
+You can get the StableID for the current device with:
+
+<div>{props.getSnippet}</div>
+
+If you have your own form of StableID and would prefer to use it instead of the Statsig generated ID, you can override it through StatsigOptions:
+
+<div>{props.overrideSnippet}</div>

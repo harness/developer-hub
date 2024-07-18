@@ -1,0 +1,57 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+// Values via getLayer
+
+Layer layer = Statsig.getLayer("user_promo_experiments")
+String promoTitle = layer.getString("title", "Welcome to Statsig!");
+Double discount = layer.getDouble("discount", 0.1);
+
+// or, via getExperiment
+
+DynamicConfig titleExperiment = Statsig.getExperiment("new_user_promo_title");
+DynamicConfig priceExperiment = Statsig.getExperiment("new_user_promo_price");
+
+String promoTitle = titleExperiment.getString("title", "Welcome to Statsig!");
+Double discount = priceExperiment.getDouble("discount", 0.1);
+
+...
+
+Double price = msrp * (1 - discount);
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// Values via getLayer
+
+val layer = Statsig.getLayer("user_promo_experiments")
+val promoTitle = layer.getString("title", "Welcome to Statsig!")
+val discount = layer.getDouble("discount", 0.1)
+
+// or, via getExperiment
+
+val titleExperiment = Statsig.getExperiment("new_user_promo_title")
+val priceExperiment = Statsig.getExperiment("new_user_promo_price")
+
+val promoTitle = titleExperiment.getString("title", "Welcome to Statsig!")
+val discount = priceExperiment.getDouble("discount", 0.1)
+
+...
+
+val price = msrp * (1 - discount);
+```
+
+  </TabItem>
+</Tabs>

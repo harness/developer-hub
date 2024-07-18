@@ -1,0 +1,30 @@
+## Working with the SDK
+
+<>{props.introduction}</>
+
+<>{props.createUser}</>
+
+### Checking a Gate
+
+Now that your SDK is initialized, let's check a [**Feature Gate**](/feature-flags/working-with). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+
+<div>{props.checkGate}</div>
+
+### Reading a Dynamic Config
+
+Feature Gates can be very useful for simple on/off switches, with optional but advanced user targeting. However, if you want to be able send a different set of values (strings, numbers, and etc.) to your clients based on specific user attributes, e.g. country, **Dynamic Configs** can help you with that. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server and you can fetch typed parameters from it. For example:
+
+<div>{props.getConfig}</div>
+
+### Getting an Layer/Experiment
+
+Then we have **Layers/Experiments**, which you can use to run A/B/n experiments. We offer two APIs, but we recommend the use of [layers](/layers) to enable quicker iterations with parameter reuse.
+
+<div>{props.getExperiment}</div>
+
+### Logging an Event
+
+Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig - simply call the Log Event API for the event, and you can additionally provide some value and/or an object of metadata to be logged together with the event:
+
+<div>{props.logEvent}</div>
+

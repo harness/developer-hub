@@ -11,4 +11,4 @@ Some metrics are created automatically when specific events are recieved by Spli
 
 [todo: put cards for three types of RUM metrics here]
 
-You can edit these automatically created metrics. You can set up <Link to="./../alerts/guardrail-metric-alerts">alerts</Link> or set the metrics as <Link to="./guardrail-metrics">guardrail</Link> or <Link to="./key-metrics">key</Link> metrics.
+You can edit these automatically created metrics. You can set up <Link to="../alerts/guardrail-metric-alerts">alerts</Link> or set the metrics as <Link to="./guardrail-metrics">guardrail</Link> or <Link to="./key-metrics">key</Link> metrics.

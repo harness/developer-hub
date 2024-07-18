@@ -1,0 +1,20 @@
+:::info
+On-device evaluation sdks are for Enterprise and Pro Tier companies only.  If you are trying to follow these instructions but do not meet that criteria, some of the setup steps may not work.
+:::
+
+<div>
+The <code>{props.sdkName}</code> SDK uses a different paradigm then its precomputed counter part (<a href={props.otherSDK.link}>{props.otherSDK.name}</a>). 
+It is a Client SDK that behaves more like a Server SDK. Rather than requiring a user up front, you can check gates/configs/experiments for any set of user properties, because the SDK downloads a complete representation of your project and evaluates checks in real time.
+</div> 
+
+### Pros
+- No need for a network request when changing user properties - just check the gate/config/experiment locally
+- Can bring your own cdn or synchronously initialize with a preloaded project definition
+- Lower latency to download configs cached at the edge, rather than evaluated for a given user (which cannot be cached as much)
+
+### Cons
+- Entire project definition is available client side - the names and configurations of all experiments and feature flags accessible by your client key are exposed.
+- <>Payload size is strictly larger than what is required for the <a href={props.otherSDK.link}>{props.otherSDK.name}</a>.</>
+- Evaluation performance is slightly slower - rather than looking up the value, the SDK must actually evaluate targeting conditions and an allocation decision
+- Does not support ID list segments with > 1000 IDs
+- Does not support IP or User Agent based checks (Browser Version/Name, OS Version/Name, IP, Country)

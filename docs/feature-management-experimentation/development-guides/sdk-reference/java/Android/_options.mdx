@@ -1,0 +1,47 @@
+You can pass in an optional parameter `options` in addition to `sdkKey` and `user` during initialization to customize the Statsig client. Here are the current options and we are always adding more to the list:
+
+
+- **api** - String, default https://api.statsig.com/v1/
+  - The default endpoint to use for all SDK network requests. You should not override this (unless you have another API that implements the Statsig API endpoints)
+
+- **disableCurrentActivityLogging**: Boolean, default `false`
+  - by default, any custom event your application logs with `Statsig.logEvent()` includes the current top-level activity. This is so we can generate user journey funnels for your users. You can set this parameter to true to disable this behavior.
+
+- **disableDiagnosticsLogging**: Boolean, default `false`
+  - Prevent the SDK from sending useful debug information to Statsig
+
+- **initTimeoutMs**: Long, default `3000`
+  - used to decide how long the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
+  - if you always want to wait for the latest values fetched from Statsig server, you should set this to 0 so we do not timeout the network request.
+  - unit is milliseconds.
+
+- **enableAutoValueUpdate**: Boolean, default `false`
+  - by default, Statsig will only fetch the gates/configs for the user when initialize() is called. This ensures a consistent experience for the duration of a session. If you want to override this behavior and have flags/configs update in near real time, pass `true` instead.
+
+- **overrideStableID**: String?, default `null`
+  - overrides the `stableID` in the SDK that is set for the user
+
+- **loadCacheAsync**: Boolean, default `false`
+  - Whether or not the SDK should block on loading saved values from disk.
+
+- **initializeValues**: Map String Any ?, default `null`
+  - Provide the `initialize response` values directly to the Android SDK to synchronously initialize the client. You can generate these values from a Statsig Server SDK like the [NodeJS Server SDK](https://docs.statsig.com/server/nodejsServerSDK#bootstrap)
+
+- **disableHashing**: Boolean?, default `false`
+  - When disabled, the SDK will not hash gate/config/experiment names, instead they will be readable as plain text.
+  - Note: This requires special authorization from Statsig. Reach out to us if you are interested in this feature.
+
+- **customCacheKey**: `((sdkKey: String, user: StatsigUser) -> String)`, default: `{ sdkKey, user -> "${user.getCacheKey()}:$sdkKey" },` v4.26.0+
+  - By default, client SDKs define a "user" for caching as the set of all IDs (the UserID and CustomIDs) and the sdkKey (so multiple instances dont colide)
+  - This can mean that a different set of fields will map to the same cached user.  The intent is to improve cache hit rate, and provide better defaults
+  - If you have critical fields that define a user differently which are not considered IDs, you can override the cache key we generate using this function
+
+
+#### Methods
+
+- **setTier | setEnvironmentParameter | getEnvironment**
+   - used to signal the environment tier the user is currently in. 
+   - `setTier` can be PRODUCTION, STAGING or DEVELOPMENT. e.g. passing in a value of `Tier.STAGING` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
+   - `setEnvironmentParameter` can be used for custom tiers, eg `options.setEnvironmentParameter("tier", "test")`
+
+

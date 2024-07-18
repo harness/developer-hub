@@ -1,0 +1,17 @@
+## Parameter Stores
+
+Parameter Stores hold a set of parameters for your mobile app.  These parameters can be remapped between Statsig entities (Feature Gates, Experiments, and Layers), so you can decouple your code from the configuration in Statsig.
+
+You can read more about the concept [here](/client/concepts/parameter-stores).
+
+### Getting a Parameter Store
+
+To fetch a set of parameters, use the following api:
+
+<>{props.getParameterStore}</>
+
+### Getting a parameter
+
+You can then access parameters like this:
+
+<>{props.getParameter}</>

@@ -6,4 +6,4 @@ sidebar_position: 20
 ---
 import Link from '@docusaurus/Link'
 
-Targeting rules determine the feature flag variation that will be returned for a given <Link to="./../user-key">user key</Link>. Targeting rules are used for <Link to="./evaluating-a-feature-flag">evaluating a feature flag</Link> in your source code.
+Targeting rules determine the feature flag variation that will be returned for a given <Link to="../user-key">user key</Link>. Targeting rules are used for <Link to="./evaluating-a-feature-flag">evaluating a feature flag</Link> in your source code.

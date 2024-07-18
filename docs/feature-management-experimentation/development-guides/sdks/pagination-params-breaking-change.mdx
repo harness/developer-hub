@@ -1,0 +1,38 @@
+---
+title: Requiring Pagination Parameters in API List Endpoints
+sidebar_label: Requiring Pagination Parameters in API List Endpoints
+slug: /sdks/pagination-params-breaking-change-08-2024
+---
+
+## What
+
+Requiring pagination parameters to all console API list endpoints (console/v1/*)
+
+## When
+
+August 1, 2024 (future release)
+
+## Why
+
+In order to improve the efficiency and performance of our console API endpoints, we are requiring pagination parameters to all console API endpoints that return a list. This change will make it easier for our customers to manage and navigate through the data returned by these endpoints. This change will also help us maintain the speed and reliability of our API as our platform continues to grow.
+
+## How
+
+Starting from August 1, 2024, all list requests should include the pagination parameters `page` and `limit`. If no parameters are provided, the request will default to `page=1&limit=100`. This change will affect the following endpoints among others:
+
+- `/gates`
+- `/metrics`
+- `/experiments`
+- `/audit_logs`
+- `/events`
+- `/dynamic_configs`
+- `/autotunes`
+- `/holdouts`
+- `/layers`
+- `/metrics/list`
+
+If you are currently using any of these endpoints without pagination parameters, please update your requests to include these parameters.
+
+## Get Help
+
+If you have any questions or need further clarification, please don't hesitate to reach out to us [in slack](https://statsig.com/slack). Our team is ready to assist you with any issues that may arise due to this change.

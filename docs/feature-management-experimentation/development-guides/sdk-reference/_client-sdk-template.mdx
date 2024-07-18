@@ -1,0 +1,131 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import PrefetchUsersTemplate from "./_client-sdk-prefetch-users-template.mdx";
+
+<div>
+  Statsig client SDK for {props.sdkType} applications. This SDK is{" "}
+  <a href={props.github}>open source and hosted on github</a>.
+</div>
+
+## The Basics {#the-basics}
+
+Get started in a few quick steps.
+
+1. [Create a free account on statsig.com](#step1)
+2. [Install the SDK](#step2)
+3. [Initialize the SDK](#step3)
+4. [Fetch Feature Gates, Dynamic Configs, or Experiments](#step4)
+5. [Log a custom event](#step5)
+
+<a name="step1"></a>
+
+#### Step 1 - Create a free account on [www.statsig.com](https://console.statsig.com/sign_up) {#step-1---create-a-free-account-on-wwwstatsigcom}
+
+You could skip this for now, but you will need an SDK Key and some Feature Gates or Dynamic Configs to use with the SDK in just a minute.
+
+<a name="step2"></a>
+
+#### Step 2 - Install the SDK {#step-2---install-the-sdk}
+
+<div>{props.install}</div>
+
+<a name="step3"></a>
+
+#### Step 3 - Initialize the SDK {#step-3---initialize-the-sdk}
+
+After installation, you will need to initialize the SDK using a Client SDK key from the ["API Keys" tab on the Statsig console](https://console.statsig.com/api_keys).
+
+These Client SDK Keys are intended to be embedded in client side applications. If need be, you can invalidate or create new SDK Keys for other applications/SDK integrations.
+
+:::info
+Do NOT embed your Server Secret Key in client side applications
+:::
+
+In addition to the SDK key, you should also pass in a [Statsig user](#statsig-user) for feature gate targeting and experimentation grouping purposes.
+
+The 3rd parameter is optional and allows you to pass in a [StatsigOptions](#statsig-options) to customize the SDK.
+
+<div>{props.initialize}</div>
+
+<a name="step4"></a>
+
+#### Step 4 - Fetch Feature Gates, Dynamic Configs or Layers/Experiments {#step-4---fetch-values}
+
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/working-with). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+
+<div>{props.checkGate}</div>
+
+---
+
+Feature Gates can be very useful for simple on/off switches, with optional but advanced user targeting. However, if you want to be able send a different set of values (strings, numbers, and etc.) to your clients based on specific user attributes, e.g. country, **Dynamic Configs** can help you with that. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server and you can fetch typed parameters from it. For example:
+
+<div>{props.getConfig}</div>
+
+---
+
+Then we have **Layers/Experiments**, which you can use to run A/B/n experiments. We offer two APIs, but we recommend the use of [layers](/layers) to enable quicker iterations with parameter reuse.
+
+<div>{props.getExperiment}</div>
+
+<a name="step5"></a>
+
+#### Step 5 - Log a custom event {#step-5---log-event}
+
+Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig - simply call the Log Event API for the event, and you can additionally provide some value and/or an object of metadata to be logged together with the event:
+
+<div>{props.logEvent}</div>
+
+## Statsig User {#statsig-user}
+
+You should provide a StatsigUser object whenever possible when initializing the SDK, passing as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks). Most of the time, the `userID` field is needed in order to provide a consistent experience for a given user (see [logged-out experiments](#logged-out-experiments) to understand how to correctly run experiments for logged-out users). If the user is logged out at the SDK init time, you can leave the `userID` out for now, and we will use a stable device ID that we create and store in the local storage for targeting purposes.
+
+Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to create targeting based on them.
+
+Note that in order to update all the evaluations for the gates/configs/experiments/layers for the current user, the SDK needs to make a network request to statsig to get the up to date values.  If you don't wait for this API to complete, you won't be operating on the most up to date values.
+
+<div>{props.updateUser}</div>
+
+#### Have sensitive user PII data that should not be logged? {#private-attributes}
+
+No problem, we have a solution for it! On the StatsigUser object we also have a field called `privateAttributes`, which is a simple object/dictionary that you can use to set private user attributes. Any attribute set in `privateAttributes` will only be used for evaluation/targeting, and removed from any logs before they are sent to Statsig server.
+
+For example, if you have feature gates that should only pass for users with emails ending in "@statsig.com", but do not want to log your users' email addresses to Statsig, you can simply add the key-value pair `{ email: "my_user@statsig.com" }` to `privateAttributes` on the user and that's it!
+
+<div>
+  {props.prefetchUsersMethod && props.prefetchUsersConfig && (
+    <PrefetchUsersTemplate
+      methodCall={props.prefetchUsersMethod}
+      config={props.prefetchUsersConfig}
+    />
+  )}
+</div>
+
+## Statsig Options {#statsig-options}
+
+<div>{props.options ?? "(Coming soon)"}</div>
+
+## Shutting down Statsig
+
+In order to save users' data and battery usage, as well as prevent logged events from being dropped, we keep event logs in client cache and flush periodically. Because of this, some events may not have been sent when your app shuts down. To make sure all logged events are properly flushed or saved locally, you should tell Statsig to flush events when your app is closing:
+
+<div>{props.flush ? props.flush : props.shutdown}</div>
+
+<>{props.manualExposures}</>
+
+## FAQ {#faq}
+
+#### How does the SDK cache locally?
+
+The SDK will cache evaluations fetched from the server locally, so we have default values to use in future sessions in the event the Statsig API is unreachable.  The key for this cache is the userID and set of all customIDs  userID, ...customIDs .  This means that while other attributes may change, if that key remains contstant, the SDK will treat it as the same user.  This means cached values could be shared across different user objects.  Once the SDK is able to download up to date values for the entire user object, they should be up to date with regards to all user properties.
+
+
+#### How do I run experiments for logged out users? {#logged-out-experiments}
+
+See the guide on [device level experiments](/guides/first-device-level-experiment)
+
+#### Is the SDK thread safe (for multi-threaded languages)? {#thread-safety}
+
+Even though we try to make the SDK thread safe whenever we can, we make no guarantees that is always the case.
+Therefore, please make sure to always call Statsig APIs from the same thread.
+
+<div>{props.faqs}</div>

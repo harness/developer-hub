@@ -1,0 +1,48 @@
+## Statsig User
+
+<>{props.isOnDeviceEval && <span>
+You need to provide a StatsigUser object to check/get your configurations. You should pass as much 
+information as possible in order to take advantage of advanced gate and config conditions.
+</span>}</>
+
+<>{!props.isOnDeviceEval && <span>
+You should provide a StatsigUser object whenever possible when initializing the SDK, passing as much 
+information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser 
+level checks).
+</span>}</>
+
+
+Most of the time, the `userID` field is needed in order to provide a consistent experience for a given 
+user (see [logged-out experiments](#logged-out-experiments) to understand how to correctly run experiments for logged-out 
+users). 
+
+<>{!props.isOnDeviceEval && <span>
+If the user is logged out at the SDK init time, you can leave the `userID` out for now, and we will use a stable 
+device ID that we create and store in the local storage for targeting purposes.
+</span>}</>
+
+Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on 
+StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to 
+create targeting based on them.
+
+<>{props.snippet}</>
+
+<>
+{
+  !props.excludeMentionToDirectUpdateUser && <div>
+
+Once the user logs in or has an update/changed, make sure to call `updateUser`
+with the updated `userID` and/or any other updated user attributes:
+
+  </div>
+}
+
+</>
+
+<div>{props.updateUser}</div>
+
+### Private Attributes
+
+Have sensitive user PII data that should not be logged? No problem, we have a solution for it! On the StatsigUser object we also have a field called `privateAttributes`, which is a simple object/dictionary that you can use to set private user attributes. Any attribute set in `privateAttributes` will only be used for evaluation/targeting, and removed from any logs before they are sent to Statsig server.
+
+For example, if you have feature gates that should only pass for users with emails ending in "@statsig.com", but do not want to log your users' email addresses to Statsig, you can simply add the key-value pair `{ email: "my_user@statsig.com" }` to `privateAttributes` on the user and that's it!

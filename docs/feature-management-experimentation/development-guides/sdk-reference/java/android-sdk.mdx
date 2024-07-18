@@ -1,0 +1,87 @@
+---
+title: Split FME Android SDK
+sidebar_label: ★ Android SDK
+description: Android developer reference for working with Split FME
+---
+
+import {
+  SDKDocsBuilder,
+  HOOK__SDKDocUpdate,
+} from "../../sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Repository,
+  GettingStarted,
+  FAQ,
+  WorkingWith,
+  StatsigUser,
+  StatsigOptions,
+  PrefetchUsers,
+  ManualExposures,
+  Shutdown,
+  LocalOverrides,
+  StableID,
+  ParameterStore,
+} from "../Templates/index.mdx";
+
+import Install from "./Android/_install.mdx";
+import Initialize from "./Android/_initialize.mdx";
+import CheckGate from "./Android/_checkGate.mdx";
+import GetConfig from "./Android/_getConfig.mdx";
+import GetExperiment from "./Android/_getExperiment.mdx";
+import LogEvent from "./Android/_logEvent.mdx";
+import UpdateUser from "./Android/_updateUser.mdx";
+import MoreFAQs from "./Android/_faqs.mdx";
+import Options from "./Android/_options.mdx";
+import LocalOverridesSnippet from "./Android/_localOverrides.mdx";
+import ShutdownSnippet from "./Android/_shutdown.mdx";
+import { GetStableID, OverrideStableID } from "./Android/_stableID.mdx";
+import { Snippets as ManualExposureSnippets } from "./Android/_manualExposures.mdx";
+import GetParameterStore from "./Android/_getParameterStore.mdx";
+import GetParameter from "./Android/_getParameter.mdx";
+
+export const Result = SDKDocsBuilder(
+  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
+  [
+    [
+      Repository,
+      {
+        repo: "https://github.com/statsig-io/android-sdk",
+      },
+    ],
+    [
+      GettingStarted,
+      {
+        sdkType: "Android",
+        install: <Install />,
+        initialize: <Initialize />,
+      },
+    ],
+    [
+      WorkingWith,
+      {
+        checkGate: <CheckGate />,
+        getConfig: <GetConfig />,
+        getExperiment: <GetExperiment />,
+        logEvent: <LogEvent />,
+      },
+    ],
+    [
+      ParameterStore,
+      { getParameterStore: <GetParameterStore />, getParameter: <GetParameter /> },
+    ],
+    [StatsigUser, { updateUser: <UpdateUser /> }],
+    [StatsigOptions, { options: <Options /> }],
+    [Shutdown, { shutdown: <ShutdownSnippet /> }],
+    [LocalOverrides, { localOverrides: <LocalOverridesSnippet /> }],
+    [ManualExposures, { addedInVersion: "4.9.0", ...ManualExposureSnippets }],
+    [
+      StableID,
+      { getSnippet: <GetStableID />, overrideSnippet: <OverrideStableID /> },
+    ],
+    [FAQ, { faqs: <MoreFAQs /> }],
+  ],
+  toc
+);
+
+<>{Result}</>

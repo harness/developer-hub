@@ -1,0 +1,39 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  defaultValue="java"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+
+```java
+DynamicConfig config = Statsig.getConfig("awesome_product_details");
+
+// The 2nd parameter is the default value to be used in case the given parameter name does not exist on
+// the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
+// value has not been cached on the client.
+String itemName = config.getString("product_name", "Awesome Product v1");
+Double price = config.getDouble("price", 10.0);
+Boolean shouldDiscount = config.getBoolean("discount", false);
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val config = Statsig.getConfig("awesome_product_details")
+
+// The 2nd parameter is the default value to be used in case the given parameter name does not exist on
+// the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
+// value has not been cached on the client.
+val itemName = config.getString("product_name", "Awesome Product v1")
+val price = config.getDouble("price", 10.0)
+val shouldDiscount = config.getBoolean("discount", false)
+```
+
+  </TabItem>
+</Tabs>
