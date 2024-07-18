@@ -3,6 +3,8 @@ import styles from "./Carousel.module.scss";
 import CertCard from "./CertCard";
 
 const Carousel = ({ certs }) => {
+  
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentDotIndex, setCurrentDotIndex] = useState(0);
 
@@ -34,13 +36,12 @@ const Carousel = ({ certs }) => {
   //for mobile view
   const [mobileCurrentIndex, setMobileCurrentIndex] = useState(0);
 
-
   const handleMobileDotClick = (index, dotIndex) => {
     setMobileCurrentIndex(index);
   };
 
   const handleMobileNext = () => {
-    if (mobileCurrentIndex >= certs.length -1) {
+    if (mobileCurrentIndex >= certs.length - 1) {
       setMobileCurrentIndex(0);
       return;
     }
@@ -49,11 +50,12 @@ const Carousel = ({ certs }) => {
 
   const handleMobilePrev = () => {
     if (mobileCurrentIndex === 0) {
-      setMobileCurrentIndex(certs.length -1);
+      setMobileCurrentIndex(certs.length - 1);
       return;
     }
     setMobileCurrentIndex(mobileCurrentIndex - 1);
   };
+console.log(certs);
 
   return (
     <>

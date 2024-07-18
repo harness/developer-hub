@@ -1,5 +1,6 @@
 .carousel {
   // background-color: tan;
+
   overflow: hidden;
   padding: 8px;
   width: 630px;
@@ -14,6 +15,10 @@
     justify-content: space-between;
     align-items: center;
     transition: transform 0.5s ease;
+    flex: 1;
+  }
+  .twoCards > *:last-child {
+    margin-left: 160px;
   }
   .indicator {
     margin-top: 20px;
@@ -83,5 +88,8 @@
   }
   .carouselMobile {
     display: flex;
+  }
+  .twoCards > *:last-child {
+    margin-left: 0px;
   }
 }
