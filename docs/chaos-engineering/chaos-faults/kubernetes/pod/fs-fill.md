@@ -5,15 +5,15 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/fs-fill
 ---
 
-fs fill is a Kubernetes pod-level chaos fault that applies fs stress by filling the pod's ephemeral storage of a pod. This fault evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
+FS fill is a Kubernetes pod-level chaos fault that applies FS stress by filling the pod's ephemeral storage of a pod. This fault evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
 
 ![FS Fill](./static/images/fs-fill.png)
 
 ## Use cases
-fs fill:
+FS fill:
 - Tests the ephemeral storage limits and ensures that the parameters are sufficient.
 - Determines the resilience of the application to unexpected storage exhaustion.
-- Evaluates the application's resilience to fs stress or replica evictions.
+- Evaluates the application's resilience to FS stress or replica evictions.
 - Verifies file system performance, and thin-provisioning support.
 - Verifies space reclamation (UNMAP) capabilities on storage.
 
@@ -82,7 +82,7 @@ permissions:
       </tr>
       <tr>
         <td> TARGET_CONTAINER </td>
-        <td> Name of the container subject to fs fill </td>
+        <td> Name of the container subject to FS fill </td>
         <td> If it is not provided, the first container in the target pod will be subject to chaos. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/container-kill/#kill-specific-container">kill specific container</a></td>
       </tr>
       <tr>
@@ -97,7 +97,7 @@ permissions:
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma-separated list of application pod names subject to fs fill chaos. </td>
+        <td> Comma-separated list of application pod names subject to FS fill chaos. </td>
         <td> If not provided, the fault selects the target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods">target specific pods</a></td>
       </tr>
       <tr>
@@ -128,7 +128,7 @@ permissions:
     </table>
 
 
-### fill size
+### Fill size
 
 Size of ephemeral storage to be filled inside the target application. Tune it by using the `FILL_SIZE` environment variable.
 
@@ -164,7 +164,7 @@ spec:
 
 ### Container runtime and socket path
 
-The `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
+The `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables set the container runtime and socket file path, respectively.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
 - `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
