@@ -1,24 +1,9 @@
 import Gap from "./_Gap.mdx";
 
-export const HOOK__SDKDocUpdate = "<SDK_DOC_UPDATE_HOOK>";
-
 export const SDKDocsBuilder = (
-  { lastSDKDocsUpdate },
-  sections,
-  toc,
-  appendTOC,
+  sections
 ) => {
-  toc.length = 0;
-  toc.push({
-    value: `<div id="sdk-toc-header" x-last-updated="${lastSDKDocsUpdate}"><div style="min-height: 65px; cursor: default; padding: 10px 20px; background-color: var(--ifm-navbar-background-color); border-radius: 10px; font-size: 12px; margin-bottom: 15px; color: var(--ifm-color-content);">...</div></div>`,
-    id: "0",
-    level: 2,
-  });
-  //
   const result = sections.map(([Section, props], index) => {
-    const tocFilters = Section.tocFilter;
-    const addTOC = Section.toc.filter((entry) => tocFilters?.includes(entry.id) !== true);
-    toc.push(...addTOC);
     return (
       <React.Fragment key={"" + index}>
         <Section.default {...props} />
@@ -26,6 +11,5 @@ export const SDKDocsBuilder = (
       </React.Fragment>
     );
   });
-  toc.push(...(appendTOC ?? []));
   return [ ...result];
 };

@@ -5,8 +5,7 @@ description: Android developer reference for working with Split FME
 ---
 
 import {
-  SDKDocsBuilder,
-  HOOK__SDKDocUpdate,
+  SDKDocsBuilder
 } from "../../sdks/_SDKDocsBuilder.mdx";
 
 import {
@@ -41,7 +40,6 @@ import GetParameterStore from "./Android/_getParameterStore.mdx";
 import GetParameter from "./Android/_getParameter.mdx";
 
 export const Result = SDKDocsBuilder(
-  { lastSDKDocsUpdate: HOOK__SDKDocUpdate },
   [
     [
       Repository,
@@ -80,8 +78,7 @@ export const Result = SDKDocsBuilder(
       { getSnippet: <GetStableID />, overrideSnippet: <OverrideStableID /> },
     ],
     [FAQ, { faqs: <MoreFAQs /> }],
-  ],
-  toc
+  ]
 );
 
 <>{Result}</>
