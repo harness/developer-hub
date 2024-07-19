@@ -172,7 +172,7 @@ gsutil -m cp \
 
 - Enhanced Cost Categories and EDP discounting dashboard data for the AWS model. (CCM-17827)
 
-- Public release notes summary requested in Jira. (CCM-18542)
+- Added dashboard filters for tags and fixed the `ResourceID` value display issue. (CCM-18542)
 
 - Added support for custom applied discounts to dashboards. (CCM-17385)
 
