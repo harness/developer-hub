@@ -545,3 +545,35 @@ Please check the AWS connector used if connectivity test work and also check the
 
 Check to see if the AWS connector connectivity test passes. Also, check the service account attached to the delegate and see if it has the correct roles assigned to access the resource(s).
 
+### How can we add mean duration for prod and non-prod pipelines in dashboards?
+
+To get the mean duration for prod and non-prod pipelines, first create a measure to calculate the mean duration for the non-prod environment. Similarly, create a second measure for the prod environment. Finally, perform a table calculation on both custom measures and add them.
+
+### We need to extract the project tags based on the project name. Is there an API to do it?
+
+You can use : [API](https://apidocs.harness.io/tag/Project#operation/getProject) to get project details including tags.
+
+### What happens when my ECS service tasks repeatedly fail to start?
+When ECS service tasks repeatedly fail to start, they transition from PENDING to STOPPED without reaching the RUNNING state. The ECS service scheduler then throttles the restart attempts, incrementally increasing the time between restarts up to a maximum of 27 minutes. This helps manage the impact on your ECS cluster resources or Fargate infrastructure costs
+
+### Will the ECS service ever stop retrying to start failing tasks?
+No, Amazon ECS does not stop a failing service from retrying. The service will continue to attempt restarts indefinitely, but the time between attempts will increase incrementally if the tasks keep failing.
+
+###  How can we stop my ECS service from being throttled?
+To stop the throttling, you need to update your service to use a new task definition. This action will reset your service to a normal, non-throttled state immediately.
+
+### What should I do if my service tasks are being throttled?
+You should investigate and resolve the underlying issues causing the task failures. Common causes include insufficient resources, issues with pulling the Docker image, and insufficient disk space. Addressing these issues can help your tasks start successfully and avoid throttling.
+
+### Do tasks that stop after reaching the RUNNING state trigger throttling?
+No, tasks that are stopped after reaching the RUNNING state do not trigger the throttle logic or the associated service event message. For example, tasks stopped due to failed Elastic Load Balancing health checks or tasks that exit with a non-zero exit code after moving to the RUNNING state will not cause throttling.
+
+### What can cause insufficient resources for ECS tasks?
+Insufficient resources can be due to a lack of available ports, memory, or CPU units in your cluster. You will see an "insufficient resource" service event message if this is the problem. Ensure your cluster has adequate resources to accommodate your tasks.
+
+### How does Amazon ECS notify me about service throttling?
+If your service initiates the throttle logic, you receive a service event message stating that your service is unable to consistently start tasks successfully. This helps you identify when throttling is occurring so you can take corrective action.
+
+### What are common causes of ECS service tasks failing to start?
+
+Common causes includes Lack of resources (ports, memory, CPU units) in your cluster, Issues with pulling the Docker image due to incorrect image names, tags, or registry authentication problems, and Insufficient disk space on the container instance.
