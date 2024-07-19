@@ -150,9 +150,9 @@ For more information, go to [Automate delegate installation](../platform/delegat
 ### What are the delegate system requirements?
 
 :::danger delegate resources
- Remember that the memory and CPU requirements are for the delegate only. Your delegate host/pod/container will need more computing resources for its operations systems and other services, such as Docker or Kubernetes.
+Memory and CPU requirements are for the delegate only. Your delegate host/pod/container requires additional computing resources for its operating system and other services, such as Docker or Kubernetes.
 
- The resource requirements of the delegate container vary depending on the type of tasks or executions. For instance, CI-only delegates can handle hundreds of parallel pipelines, whereas for CD Terraform tasks, a single task might require a 2Gi container.
+The resource requirements of the delegate container vary depending on the type of tasks or executions. For example, CI-only delegates can handle hundreds of parallel pipelines, whereas, for CD Terraform tasks, a single task might require a 2Gi container.
  :::
 
 One delegate size does not fit all use cases, so Harness lets you pick from several options:
