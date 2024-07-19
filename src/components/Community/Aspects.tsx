@@ -53,7 +53,7 @@ export default function communityAspects() {
               </Tooltip>
             </Link>
             <Link href="/university">
-              <Tooltip placement="top" overlay="University">
+              <Tooltip placement="top" overlay="Harness University">
                 <button className={styles.btn}>
                   <img src={`${baseUrl}img/school.svg`} />
                   Harness University
