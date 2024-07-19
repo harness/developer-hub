@@ -137,7 +137,7 @@ export const university: CardItem[] = [
     module: MODULES.idp,
     type: certType.developer,
     description:
-      "IDP Developer focuses on the fundamental skills to enable developer servicing and reducing cognitive overload.",
+      "IDP Developer focuses on the fundamental skills to enable developer self-servicing and reducing cognitive overload.",
     version: "Harness IDP Enterprise Plan",
     link: "/university/idp?lvl=developer",
     // numberOfCerts: 1,
