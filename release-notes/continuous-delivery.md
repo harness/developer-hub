@@ -320,7 +320,7 @@ Refer to following doc for more details on new [repo listing](/docs/platform/git
    
   For more information, go to [Permissions inheritance logic from containerized step groups to steps](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step/). 
 
-- You can create a multi-phase workflow that progressively deploys your new instances to a new ASG incrementally using the ASG Phased Deploy step when creating a Canary deployment. Currently, this feature is behind the feature flag, ``. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, go to [Canary phased deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment). 
+- You can create a multi-phase workflow that progressively deploys your new instances to a new ASG incrementally using the ASG Phased Deploy step when creating a Canary deployment. For more information, go to [Canary phased deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment). 
 
 #### Limitations
 
