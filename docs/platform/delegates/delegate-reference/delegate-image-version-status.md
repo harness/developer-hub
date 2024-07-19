@@ -92,5 +92,3 @@ Supported versions EOS and EOL are based on when the delegate image was pushed t
 | 23.11.81601 | November 29, 2023| May 30, 2024 | July 30, 2024 |
 | 23.11.81408 | November 22, 2023| May 23, 2024 | July 23, 2024 |
 | 23.11.81406 | November 20, 2023| May 21, 2024 | July 21, 2024 |
-| 23.11.81208 | November 17, 2023| May 18, 2024 | July 18, 2024 |
-| 23.11.81405 | November 17, 2023| May 18, 2024 | July 18, 2024 |
