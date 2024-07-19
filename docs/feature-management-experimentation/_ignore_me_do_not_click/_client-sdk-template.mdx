@@ -51,7 +51,7 @@ The 3rd parameter is optional and allows you to pass in a [StatsigOptions](#stat
 
 #### Step 4 - Fetch Feature Gates, Dynamic Configs or Layers/Experiments {#step-4---fetch-values}
 
-Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/working-with). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/docs/feature-management-experimentation/get-started-with-fme/key-concepts/environments). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
 
 <div>{props.checkGate}</div>
 
@@ -63,7 +63,7 @@ Feature Gates can be very useful for simple on/off switches, with optional but a
 
 ---
 
-Then we have **Layers/Experiments**, which you can use to run A/B/n experiments. We offer two APIs, but we recommend the use of [layers](/layers) to enable quicker iterations with parameter reuse.
+Then we have **Layers/Experiments**, which you can use to run A/B/n experiments. We offer two APIs, but we recommend the use of [layers](/docs/feature-flag-management-experimentation/get-started-with-fme/key-concepts/environments) to enable quicker iterations with parameter reuse.
 
 <div>{props.getExperiment}</div>
 
@@ -121,7 +121,7 @@ The SDK will cache evaluations fetched from the server locally, so we have defau
 
 #### How do I run experiments for logged out users? {#logged-out-experiments}
 
-See the guide on [device level experiments](/guides/first-device-level-experiment)
+See the guide on [device level experiments](/docs/feature-management-experimentation/get-started-with-fme/key-concepts/metrics)
 
 #### Is the SDK thread safe (for multi-threaded languages)? {#thread-safety}
 
