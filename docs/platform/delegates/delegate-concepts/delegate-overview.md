@@ -22,6 +22,12 @@ Harness Delegate connects to Harness Manager over an outbound HTTPS/WSS connecti
 
 The delegate connects to Harness Manager (via SaaS) over a Secure WebSockets channel (WebSockets over TLS). The channel is used to send notifications of delegate task events and to exchange connection heartbeats. The channel is not used to send task data itself.
 
+:::note
+By default Harness delegate makes an outbound call to app.harness.io and stackdriver. When user configures a Harness Connector with providers such as artifact servers, deployment environments, and cloud providers, Harness Delegate will make an outbound call to these artifact servers, deployment environments, and cloud providers.  Harness recommends to install the delegate behind your firewall. The delegate must have access to the artifact servers, deployment environments, and cloud providers it needs.
+
+You can stop delegates from sending delegate logs to Harness by setting the STACK_DRIVER_LOGGING_ENABLED environment variable to false for the delegate. This will disable all remote logging.
+:::
+
 Delegate communication includes the following functions:
 
 - **Heartbeat:** The delegate sends a [heartbeat](<https://en.wikipedia.org/wiki/Heartbeat_(computing)>) to notify Harness Manager that it is running.
