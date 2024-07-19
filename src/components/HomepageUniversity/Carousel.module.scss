@@ -17,9 +17,12 @@
     transition: transform 0.5s ease;
     flex: 1;
   }
-  .twoCards > *:last-child {
-    margin-left: 0px;
+
+  .isEvenCert > *:last-child {
+    margin-left: 160px;
+
   }
+
   .indicator {
     margin-top: 20px;
     display: flex;
@@ -89,7 +92,7 @@
   .carouselMobile {
     display: flex;
   }
-  .twoCards > *:last-child {
-    margin-left: 0px;
-  }
+  // .twoCards > *:last-child {
+  //   margin-left: 0px;
+  // }
 }

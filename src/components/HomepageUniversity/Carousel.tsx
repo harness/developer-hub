@@ -3,11 +3,8 @@ import styles from "./Carousel.module.scss";
 import CertCard from "./CertCard";
 
 const Carousel = ({ certs }) => {
-  
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentDotIndex, setCurrentDotIndex] = useState(0);
-
   const handleDotClick = (index, dotIndex) => {
     setCurrentIndex(index);
     setCurrentDotIndex(dotIndex);
@@ -55,13 +52,14 @@ const Carousel = ({ certs }) => {
     }
     setMobileCurrentIndex(mobileCurrentIndex - 1);
   };
-console.log(certs);
 
   return (
     <>
       <div className={styles.carousel}>
         <div
-          className={styles.twoCards}
+          className={`${styles.twoCards} ${
+            certs.length % 2 != 0 ? styles.isEvenCert : ""
+          }`}
           style={{
             transform: `translateX(${-currentDotIndex * 102.5}%)`,
           }}
