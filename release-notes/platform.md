@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-07-10:T10:00:30
+date: 2024-07-22:T10:00:30
 sidebar_position: 3
 ---
 
@@ -78,6 +78,34 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## July 2024
+
+### Version 1.48.x<!-- July 22, 2024 -->
+
+#### New features and enhancements
+
+- Upgraded PostgreSQL for SMP builds from version 14.9.0-debian-11-r60 to version 14.11.0-debian-11-r17. (PL-51820)
+
+- Upgraded the "io.netty_netty-codec-http" library to address a medium severity issue. The version has been updated from 4.1.101.Final to 4.1.108.Final. (PL-51350)
+
+- Upgraded the "org.apache.cxf_cxf-core" library from version 3.5.5 to 3.5.8 to address medium severity issue CVE-2024-28752. (PL-51348, ZD-66657)
+
+#### Fixed issues
+
+- Clicking a role after scrolling distorted the viewport. The issue with viewport distortion on the Roles page has been fixed. (PL-52063, ZD-65768)
+
+- Tokens could not be created via API from the API Docs because the required fields were missing. Added the necessary required fields to the Create a Token page in the API Docs, allowing tokens to be successfully created via the API. (PL-51974, ZD-65569)
+
+- The **Cancel** button was not working while creating a connector via YAML. Updated the behavior of the Connectors page YAML Editor to match that of other pages. The **Discard** button on the YAML Editor page now exits back to the previous page. (PL-42928)
+
+- Legacy Delegate was unable to download the SCM binary. This issue has been resolved. (PL-55263, ZD-66357, ZD-66361)
+
+- Users were not being created in Harness FirstGen after being provisioned in NextGen. Updated the user provision field to ensure that users are properly created in Harness FirstGen after being provisioned in NextGen. (PL-52142, ZD-65604)
+
+- Users encountered a "Media not found" error when clicking the "+Dashboard" button and in the "About the Dashboard" dialog. Removed missing Dashboard tutorial videos, resolving the "Media not found" error. (PL-50890)
+
+- Stage or step popover content bubbles were sometimes hidden behind other navigation elements. This issue is now fixed. (PIPE-20028, ZD-65628)
+
+- On a re-run of a multi-environment pipeline with multiple deployment stages, skipped stages would not be re-run. Now, skipped stages will be run again when the pipeline is re-run. This is a change of re-run behavior and thus is behind the feature flag `PIPE_RUN_SKIPPED_SPAWNED_STAGES_OR_STEPS_IN_RETRY`. Contact [Harness support](mailto:support@harness.io) to enable it. (PIPE-19746, ZD-64970)
 
 ### Version 1.45.5<!-- July 10, 2024 -->
 
