@@ -1,0 +1,10 @@
+{
+    "label": "★ Java",
+    "collapsible": true,
+    "collapsed": true,
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Java"
+    }
+}

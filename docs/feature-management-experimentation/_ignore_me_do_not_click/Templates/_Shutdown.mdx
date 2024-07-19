@@ -1,0 +1,8 @@
+## Shutting Statsig Down
+
+In order to save users' data and battery usage, as well as prevent logged events from being dropped, we keep event logs in client cache and flush periodically.
+Because of this, some events may not have been sent when your app shuts down.
+
+To make sure all logged events are properly flushed or saved locally, you should tell Statsig to shutdown when your app is closing:
+
+<div>{props.shutdown}</div>

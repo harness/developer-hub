@@ -1,0 +1,11 @@
+{
+    "label": "☆ Tutorials",
+    "position": 40,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Split FME Tutorials and Quickstart Guides"
+    }
+}

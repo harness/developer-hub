@@ -1,0 +1,13 @@
+## Local Overrides
+
+If you want to locally override gates/configs/experiments/layers, there are a set of override APIs as follows.
+
+<>{props.localOverrides}</>
+
+:::note
+
+1. These only apply locally on the device where they are being tested - they do not update definitions in the Statsig console or elsewhere.
+2. These will be persisted to local storage on the device, so overrides will persist across sessions. If you want to clear out the overrides, you can remove them all with `removeAllOverrides` or remove a specific override with `removeOverride`
+3. The local override API is not designed to be a full mock. They are only a convenient way to override the value of the gate/config/etc.
+
+:::

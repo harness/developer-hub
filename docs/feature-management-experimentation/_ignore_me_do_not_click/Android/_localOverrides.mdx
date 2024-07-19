@@ -1,0 +1,24 @@
+```swift
+// Overrides the given gate to the specified value
+overrideGate(gateName: String, value: Boolean)
+
+// Overrides the given config (dynamic config or experiment) to the provided value
+overrideConfig(configName: String, value: Map<String, Any>)
+
+// Removes any overrides associated with the provided gate/config/experiment name
+removeOverride(name: String)
+
+// Removes all overrides
+removeAllOverrides()
+
+// Returns the set of gate and config overrides currently in place on the client
+getAllOverrides(): StatsigOverrides
+
+class StatsigOverrides(
+    @SerializedName("gates")
+    val gates: MutableMap<String, Boolean>,
+
+    @SerializedName("configs")
+    val configs: MutableMap<String, Map<String, Any>>
+    ) {}
+```

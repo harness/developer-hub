@@ -1,0 +1,17 @@
+import { useColorMode } from "@docusaurus/theme-common";
+
+export const LocalModeSnippet = ({type}) => {
+  const finalType = type === "client" ? "client" : "secret";
+  return (
+    <span>
+      Pass true to this option to turn on Local Mode for the SDK, which will stop
+      the SDK from issuing any network requests and make it only operate with only local overrides (If supported) and cache. 
+      <div>
+      <small>
+        Note: Since no network requests will be made, a dummy SDK key starting with "{finalType}-" can be used.
+        (eg <code>"{finalType}-key"</code>)
+      </small>
+      </div>
+    </span>
+  );
+};
