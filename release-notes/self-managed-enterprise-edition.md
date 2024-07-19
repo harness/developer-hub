@@ -159,6 +159,11 @@ gsutil -m cp \
   "gs://smp-airgap-bundles/harness-0.18.1/sto_images.tgz" \
   .
 ```
+### New features and enhancements
+
+- Enhanced Cost Categories and EDP discounting dashboard data for the AWS model. (CCM-17827)
+
+- Added a `skipRepoValidation` to use URLs only when creating applications instead of previously-created Harness repositories.(CDS-98275)
 
 ### Fixed issues
 
@@ -166,16 +171,9 @@ gsutil -m cp \
 
 - During WinRM execution using Kerberos, variables with an absolute path were parsed incorrectly, resulting in a misleading error message(`failure to connect`). Environment variables containing characters `\v`, `\b`, and `\f` are now escaped for WinRm deployment Command steps with Kerberos as an auth type. (CDS-97690)
 
-- Added a `skipRepoValidation` to use URLs only when creating applications instead of previously-created Harness repositories.(CDS-98275)
-
 - Fixed the amortized and net amortized query definitions in the AWS data pipeline. (CCM-18459)
 
-- Enhanced Cost Categories and EDP discounting dashboard data for the AWS model. (CCM-17827)
-
-- Added dashboard filters for tags and fixed the `ResourceID` value display issue. (CCM-18542)
-
-- Added support for custom applied discounts to dashboards. (CCM-17385)
-
+- Fixed labels and `resourceId` value display issue in CCM explores. Added support for cost category in CCM AWS explores. (CCM-18542)
 
 ## July 3, 2024, version 0.18.0
 
