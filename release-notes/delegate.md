@@ -53,7 +53,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
-## July
+## July 2024
 
 ### Version 24.07.83503 <!--  July 17, 2024 -->
 
