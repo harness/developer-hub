@@ -5,7 +5,7 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/fs-fill
 ---
 
-FS fill is a Kubernetes pod-level chaos fault that applies FS stress by filling the pod's ephemeral storage of a pod. This fault evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
+FS fill is a Kubernetes pod-level chaos fault that applies FS stress by filling the pod's ephemeral storage. This fault evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
 
 ![FS Fill](./static/images/fs-fill.png)
 
@@ -68,8 +68,13 @@ permissions:
       </tr>
       <tr>
         <td> FILL_SIZE </td>
-        <td> File system space to be filled in bytes or specify the size unit in KB, MB, GB </td>
-        <td> For more information, go to <a href="#fill-size">fill size</a></td>
+        <td> File system space to be filled in bytes. Specify in bytes (without unit), kilobytes (k/K/KB), megabytes (m/M/MB), gigabytes (g/G/GB). Example: <code>100M</code>, <code>1G</code>, etc </td>
+        <td> For more information, go to <a href="#fs-fill">fill size</a></td>
+      </tr>
+      <tr>
+        <td> FILE_PATH </td>
+        <td> Container path to be filled </td>
+        <td> For more information, go to <a href="#fs-fill">file path</a></td>
       </tr>
     </table>
 
@@ -128,13 +133,14 @@ permissions:
     </table>
 
 
-### Fill size
+### FS fill
 
-Size of ephemeral storage to be filled inside the target application. Tune it by using the `FILL_SIZE` environment variable.
+- `FILL_SIZE`: Size of ephemeral storage to be filled inside the target pod. Specify in bytes (without unit), kilobytes (k/K/KB), megabytes (m/M/MB), gigabytes (g/G/GB). Example: `100M`, `1G`, etc.
+- `FILE_PATH`: Container path to be filled. It should be a valid directory path inside the target container.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]: # "./static/manifests/fs-fill/fill-size.yaml yaml"
+[embedmd]: # "./static/manifests/fs-fill/fs-fill.yaml yaml"
 
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
@@ -155,9 +161,12 @@ spec:
         components:
           env:
             # space to be filled in bytes
-            # or specify the size in KB, MB, GB
+            # or specify the size in K, KB, M, MB, G, GB
             - name: FILL_SIZE
               value: "500M"
+            # container path to be filled
+            - name: FILE_PATH
+              value: "/tmp"
             - name: TOTAL_CHAOS_DURATION
               VALUE: "60"
 ```
@@ -201,4 +210,7 @@ spec:
               value: "/run/containerd/containerd.sock"
             - name: FILL_SIZE
               value: "500M"
+            - name: FILE_PATH
+              value: "/tmp"
+
 ```
