@@ -359,16 +359,6 @@ To address a migrated pipeline, users can take the following steps:
 1.Migrate the current Launch Configuration to Launch Template. AWS provides the steps here: [AWS Launch Templates Migration Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-to-launch-templates.html).
 2. Once this is completed, everything should work seamlessly. However, the current pipeline will not function properly. To resolve this, we can create a new pipeline following the guidelines outlined here: [AWS ASG Tutorial for Canary Phased Deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment). 
 
-:::info note
-Please note that this feature is behind the feature flag CDS_ASG_PHASED_DEPLOY_FEATURE_NG, which needs to be enabled for this feature to take effect.
-:::
-
-
-### How will the feature flag `CDS_ASG_PHASED_DEPLOY_FEATURE_NG` function with my ASG deployment after updating my configuration from Launch Configuration to Launch Template during the migration of a pipeline from FirstGen to NextGen?
-
-Harness has redesigned the NextGen platform to support multiple strategies and accommodate new features provided by AWS like instance refresh, etc. Even though pipelines using Launch Configuration will still work, their design, especially the ASG rolling deploy step, differs from FirstGen. More details about the rolling deploy step can be found here: [ASG Tutorial](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#rolling).
-
-
 
 ### Are there guidelines or recommendations for scaling up VM build infrastructures, such as those hosted on EC2, for individuals managing and configuring their own infrastructure?
 
