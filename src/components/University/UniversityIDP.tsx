@@ -281,7 +281,7 @@ export default function CertificationsIDP() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Internal Developer Portal - Developer (BETA COMING SOON)
+                      Internal Developer Portal - Developer
                     </h2>
                     <img
                       src={`${baseUrl}img/cert_dev_idp_badge.svg`}
@@ -302,7 +302,7 @@ export default function CertificationsIDP() {
                     <DeveloperCertificationReviewGuide />
 
                     <div className={styles.btnContainer}>
-                      <Link href="#">
+                      <Link href="https://university-registration.harness.io/certified-internal-developer-portal-developer">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
@@ -320,7 +320,7 @@ export default function CertificationsIDP() {
               <div className={styles.examDetailsCard}>
                 <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
-                  <Link href="#">
+                  <Link href="https://university-registration.harness.io/certified-internal-developer-portal-developer">
                     <button className={styles.moreDetails}>
                       Register for Exam
                     </button>
