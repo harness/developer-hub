@@ -52,6 +52,14 @@ export default function communityAspects() {
                 </button>
               </Tooltip>
             </Link>
+            <Link href="https://developer.harness.io/university">
+              <Tooltip placement="top" overlay="University">
+                <button className={styles.btn}>
+                  <img src={`${baseUrl}img/school.svg`} />
+                  Harness University
+                </button>
+              </Tooltip>
+            </Link>
           </div>
         </div>
       </div>
