@@ -27,17 +27,9 @@ Note the following important information about delegates:
  :::danger delegate resources
 Memory and CPU requirements are for the delegate only. Your delegate host/pod/container requires additional computing resources for its operating system and other services, such as Docker or Kubernetes.
 
-The resource requirements of the delegate container vary depending on the type of tasks or executions. For example, CI-only delegates can handle hundreds of parallel pipelines, whereas, for CD Terraform tasks, a single task might require a 2Gi container.
+The resource requirements for the delegate container depend on the type of tasks or executions. For instance, CI-only delegates can handle hundreds of parallel pipelines. However, for CD Terraform tasks, a single task might require a 2Gi container due to Terraform's memory requirements. Each Terraform command needs at least 500MB of memory.
  :::
 
-One delegate size does not fit all use cases, so Harness lets you pick from several options:
-
-| Replicas | Required memory / CPU | Maximum parallel deployments and builds across replicas |
-| :--: |  :--: | :--: |
-| 1 | 2 GB / 0.5 CPU | 10 |
-| 2 | 4 GB / 1 CPU | 20 |
-| 4 | 8 GB / 2 CPU | 40 |
-| 8 | 16 GB / 4 CPU | 80 |
   The delegate runs in a Linux/UNIX container.
 
 * The minimum memory for the delegate must be provided in addition to enough memory for the host/node system. For example, an AWS EC2 instance type such as m5a.xlarge has 16GB of RAM; 8 for the delegate and 8 for the remaining operations.
