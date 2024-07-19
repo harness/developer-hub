@@ -4,6 +4,6 @@
 - Any data produced before the execution of the fault is not harmed as a result of its execution.
 :::
 
-::warning
+:::warning
 It is recommended to use "mistake" only for READ and WRITE file system calls. Applying "mistake" to other file system calls can result in unforeseen issues, such as file system damage and program crashes.
 :::

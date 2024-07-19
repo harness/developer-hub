@@ -81,4 +81,13 @@ export const university: CardItem[] = [
     link: "/university/sei",
     SPT_available: true,
   },
+  {
+    title: "Internal Developer Portal",
+    module: MODULES.idp,
+    description:
+      "Eliminate cognitive overload by letting developers self-service their flows like new service onboarding.",
+    link: "/university/idp",
+    numberOfCerts: 1,
+  },
+  
 ];
