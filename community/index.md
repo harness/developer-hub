@@ -13,7 +13,7 @@ Build relationships through knowledge sharing.
 
 ## Join Us
 
-Connect and learn with us on various mediums.
+Connect and learn with us on various mediums and properties.
 
 
 <!-- Custom component -->
