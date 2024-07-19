@@ -1940,7 +1940,7 @@ You can use the API provided by Harness to get a list of pipeline executions. Sp
 
 Yes, if audit events for pipeline executions are enabled (which include events like Pipeline Start, Pipeline End, Stage Start, and Stage End), you can use the [Audit Events API](https://apidocs.harness.io/tag/Audit#operation/getAuditEventList) to list the executions. To enable capturing these events, you must turn on the "Enable Pipeline Execution Audit Events" setting under the pipeline category in the account-level settings.
 
-### What happens when the Connector URL for job execution option is enabled in Jenkins step?
+### What happens when the Connector URL for a job execution option is enabled in Jenkins step?
 
 When the Connector URL for job execution is enabled, the system uses the connector URL for the host part of the API calls. This means that instead of using the internal IP address returned in the first API call to Jenkins, the system will use the predefined connector URL. This approach ensures that the job trigger URL is reachable, avoiding issues caused by internal IP addresses that may not be accessible from your environment.
 

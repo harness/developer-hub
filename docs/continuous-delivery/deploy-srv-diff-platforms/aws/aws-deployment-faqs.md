@@ -551,7 +551,7 @@ To get the mean duration for prod and non-prod pipelines, first create a measure
 
 ### We need to extract the project tags based on the project name. Is there an API to do it?
 
-You can use : [API](https://apidocs.harness.io/tag/Project#operation/getProject) to get project details including tags.
+You can use: [API](https://apidocs.harness.io/tag/Project#operation/getProject) to get project details including tags.
 
 ### What happens when my ECS service tasks repeatedly fail to start?
 When ECS service tasks repeatedly fail to start, they transition from PENDING to STOPPED without reaching the RUNNING state. The ECS service scheduler then throttles the restart attempts, incrementally increasing the time between restarts up to a maximum of 27 minutes. This helps manage the impact on your ECS cluster resources or Fargate infrastructure costs
