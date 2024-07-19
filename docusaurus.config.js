@@ -137,6 +137,10 @@ const config = {
                 to: "docs/feature-flags",
               },
               {
+                label: "★★ Feature Management & Experimentation",
+                to: "docs/feature-management-experimentation",
+              },
+              {
                 label: "Cloud Cost Management",
                 to: "docs/cloud-cost-management",
               },
@@ -540,7 +544,7 @@ const config = {
         sidebarPath: require.resolve("./sidebars.js"),
         editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
-        exclude: ["**/shared/**", "**/static/**"],
+        exclude: ["**/shared/**", "**/static/**", "**/_ignore_me_do_not_click/**"],
         routeBasePath: "docs", //CHANGE HERE
       },
     ],
