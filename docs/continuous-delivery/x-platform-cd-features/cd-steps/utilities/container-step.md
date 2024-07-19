@@ -291,19 +291,19 @@ Let's look at a simple example.
 2. In a later Shell Script step, reference the output variable:
 
     ```
-    echo <+steps.S1.output.outputVariables.myVar>
+    echo <+steps.S1.ContainerStep.output.outputVariables.myVar>
     ```
     
     The syntax for referencing output variables between steps in the same stage looks similar to the example below.
 
     ```
-    <+[stepId].output.outputVariables.[varName]>
+    <+[stepId].ContainerStep.output.outputVariables.[varName]>
     ```
 
     The syntax for referencing output variables between steps in different stages looks similar to the example below.
 
     ```
-    <+stages.[stageID].execution.steps.[stepId].output.outputVariables.[varName]>
+    <+stages.[stageID].execution.steps.[stepId].ContainerStep.output.outputVariables.[varName]>
     ```
 
 ### Environment variables
