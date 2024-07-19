@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-07-03T10:00
+date: 2024-07-22T10:00
 sidebar_position: 16
 ---
 
@@ -123,6 +123,60 @@ Upon providing your credentials and the release version, the script will proceed
 
 :::
 
+## July 22, 2024, patch version 0.18.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.18.1](https://github.com/harness/helm-charts/releases/tag/harness-0.18.1) |
+| Air Gap Bundle | [0.18.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.18.1) |
+| NG Manager | 1.41.10 |
+| CI Manager | 1.30.2 |
+| Pipeline Service | 1.78.8 |
+| Platform Service | 1.26.3 |
+| Access Control Service | 1.48.3 |
+| Delegate | 24.06.83204 |
+| Change Data Capture | 1.18.0 |
+| STO Core | 1.97.2 |
+| Test Intelligence Service | 1.17.0 |
+| NG UI | 1.26.16 |
+| LE NG | 1.3.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.18.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- GitLab connectors with a project ID starting with a number failed compatibility checks. Harness changed URL parsing to correctly parse Git SSH owners with numbers to resolve the issue. (CI-11392, ZD-58162, ZD-64761, ZD-66628)
+
+- During WinRM execution using Kerberos, variables with an absolute path were parsed incorrectly, resulting in a misleading error message(`failure to connect`). Environment variables containing characters `\v`, `\b`, and `\f` are now escaped for WinRm deployment Command steps with Kerberos as an auth type. (CDS-97690)
+
+- Added a `skipRepoValidation` to use URLs only when creating applications instead of previously-created Harness repositories.(CDS-98275)
+
+- Fixed the amortized and net amortized query definitions in the AWS data pipeline. (CCM-18459)
+
+- Enhanced Cost Categories and EDP discounting dashboard data for the AWS model. (CCM-17827)
+
+- Public release notes summary requested in Jira. (CCM-18542)
+
+- Added support for custom applied discounts to dashboards. (CCM-17385)
+
+
 ## July 3, 2024, version 0.18.0
 
 This release includes the following Harness module and component versions.
@@ -160,7 +214,7 @@ gsutil -m cp \
   .
 ```
 
-#### Breaking change
+### Breaking change
 
 - Harness has now disabled the ability to update notes for an execution after it is complete. This functionality is behind the feature flag `PIE_DISABLE_NOTES_UPDATE_AFTER_EXECUTION_COMPLETED`. Contact [Harness Support](mailto:support@harness.io) to enable it. (PIPE-18490)
 
