@@ -198,7 +198,9 @@ For example, a destination path for a stage that deploys **todolist.war** using 
 
 `$HOME/tutorial-service-ssh2/ssh-tutorial-env/todolist.war`
 
-You can use any path on the target hosts you want. Harness will not create the path if it does not exist.
+You can use any path on the target hosts you want. If the parent directory of the path exists, then the sub-directory will be created. However, if the parent directory does not exist, the command will fail. 
+
+For example, if the path given was `/parent-dir/sub-dir`, then it would create `/sub-dir` if `/parent-dir` existed but would fail if `/parent-dir` did not exist. 
 
 Here's an example of the results of a copy artifact command:
 
