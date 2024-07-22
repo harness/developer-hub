@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-07-16T18:19:25
+date: 2024-07-22T18:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: July 18, 2024
+#### Last updated: July 22, 2024
 
 ## July 2024
 
@@ -40,6 +40,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11654)
 
 ### Python SDK
+
+#### Version 1.6.4
+
+**Fixed issues**:
+ - Fixed an issue where SDK dependencies, `tenacity` and `typing_extensions`, were pinned to fixed versions, which could make integration with the SDK impossible if different versions are specified in an application or its dependencies. (FFM-11770, ZD-66342)
 
 #### Version 1.6.3
 
