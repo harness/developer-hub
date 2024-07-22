@@ -16,8 +16,28 @@ This integration allows you to track, manage, and analyze incidents, and change 
 
 ## Requirements
 
-* ServiceNow Account with Admin access
-* ServiceNow Client ID and ServiceNow Client Secret (Only OAuth based authentication)
+### OAuth Credentials
+
+To configure the integration using OAuth-based authentication, you'll need to generate the following credentials in your ServiceNow instance:
+
+* [ServiceNow Client ID](#create-a-client-id-and-client-secret-in-servicenow)
+* [ServiceNow Client Secret](#create-a-client-id-and-client-secret-in-servicenow)
+
+These credentials are essential for secure, token-based authentication between your application and the ServiceNow platform. To generate the credentials, go to [Create a Client ID and Client Secret in ServiceNow](#create-a-client-id-and-client-secret-in-servicenow)
+
+### Required permissions
+
+When configuring the ServiceNow integration, ensure the user has the following roles:
+
+* **itil:** Provides access to IT Service Management (ITSM) functionalities.
+* **oauth_admin:** Required only if using the OAuth flow for creating integrations. This role allows management of OAuth applications.
+* **personalize_choices:** Enables customization of choice lists.
+* **personalize_dictionary:** Allows modification of dictionary entries.
+
+To fetch data for all users within the ServiceNow instance, the following roles are required:
+
+* **user:** Basic role assigned to all ServiceNow users.
+* **user_admin:** Provides administrative capabilities over user accounts.
 
 ### Create a Client ID and Client Secret in ServiceNow
 
@@ -150,7 +170,7 @@ integrations:
 
 ## What data is ingested
 
-The data is updated every hour. The following details are ingested from the ServiceNow platform using this integration.
+The data is updated every hour. The following details are ingested from the ServiceNow platform using this integration. To find the detailed list of the data ingested, go to [ServiceNow integration datasheet](/docs/software-engineering-insights/sei-technical-reference/sei-datasheets/sei-servicenow-datasheet).
 
 ### Incidents
 
