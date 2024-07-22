@@ -55,7 +55,6 @@ const Carousel = ({ certs }) => {
     }
     setMobileCurrentIndex(mobileCurrentIndex - 1);
   };
-console.log(certs);
 
   return (
     <>
