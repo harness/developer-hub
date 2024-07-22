@@ -12,7 +12,7 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "ECR & ACR support",
-        description: "Support to connect with ECR and ACR for SBOM generation and management",
+        description: "Support to connect with ECR and ACR for SBOM generation and management.",
       },
       {
         tag: [],
@@ -32,18 +32,18 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "Support for GitHub",
-        description: "Complete support for GitHub, allowing users to onboard using the GitHub app and perform configuration checks, SBOM generation, and security scans",
+        description: "Complete support for GitHub, allowing users to onboard using the GitHub app and perform configuration checks, SBOM generation, and security scans.",
       },
       {
         tag: [],
         title: "Report Generation",
-        description: "Generate and download reports based on compliance standards such as CIS, OWASP and SLSA",
-      }
+        description: "Generate and download reports based on compliance standards such as CIS, OWASP, and SLSA.",
+      },
       {
         tag: [],
         title: "Artifact Chain of Custody",
-        description: "Auditors can now review an artifact chain of custody - a comprehensive audit trail that serves as a ledger for every artifact built and deployed in a CI/CD pipeline",
-      }
+        description: "Auditors can now review an artifact chain of custody - a comprehensive audit trail that serves as a ledger for every artifact built and deployed in a CI/CD pipeline.",
+      },
     ],
   },
   "Next": {
@@ -52,29 +52,28 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "Code Repo Posture Management",
-        description: "Config check to ensure that your source code repositories, artifacts and CI/CD Tools used in supply chain are appropriately monitored for best practices",
+        description: "Config check to ensure that your source code repositories, artifacts, and CI/CD tools used in the supply chain are appropriately monitored for best practices.",
       },
       {
         tag: [],
         title: "Support for Harness Code for RSPM",
-        description: "Complete support for Harness Code, allowing users to onboard using the GitHub app and perform configuration checks, SBOM generation, and security scans",
-
+        description: "Complete support for Harness Code, allowing users to onboard using the GitHub app and perform configuration checks, SBOM generation, and security scans.",
       },
       {
         tag: [],
-        title: "SBOM & SLSA support with Github Actions and Jenkins Plugins",
-        description: "Generate SBOM and achieve SLSA compliance using GitHub Actions and Jenkins Plugins  ",
+        title: "SBOM & SLSA support with GitHub Actions and Jenkins Plugins",
+        description: "Generate SBOM and achieve SLSA compliance using GitHub Actions and Jenkins Plugins.",
       },
-     {
+      {
         tag: [],
         title: "NIST SP-800, OWASP Top 10 OSS, EO14028 Support",
-        description: "Added Support for NIST SP-800, OWASP Top 10 OSS and EO14028 Complaince Standards.",
-      }
+        description: "Added support for NIST SP-800, OWASP Top 10 OSS, and EO14028 compliance standards.",
+      },
       {
         tag: [],
         title: "OpenSSF Scorecard Integration",
         description: "Assess open source projects for security risks through a series of automated checks.",
-      }
+      },
     ],
   },
   "Later": {
@@ -82,18 +81,18 @@ export const SscaData: Horizon = {
     feature: [
       {
         tag: [],
-        title: "SBOM Risk scoring",
-        description: "Added Support for SBOM scoring aginst risky OSS components.",
+        title: "SBOM Risk Scoring",
+        description: "Added support for SBOM scoring against risky OSS components.",
       },
       {
         tag: [],
         title: "Governance Policies for Compliance Standard",
-        description: "Allow users to enforce governance policies against the supported compliance standards",
+        description: "Allow users to enforce governance policies against the supported compliance standards.",
       },
       {
         tag: [],
-        title: "Remidiation Tracker Support for Compliance Standards violations",
-        description: "Create and manage remidiation trackers for compliance standard violations",
+        title: "Remediation Tracker Support for Compliance Standards Violations",
+        description: "Create and manage remediation trackers for compliance standard violations.",
       },
     ],
   },
