@@ -3160,6 +3160,11 @@ Make sure that the infrastructure Ids are in the format `identifier: id,identifi
 ```
 export INFRA_IDS=$( echo '<+inputSet>'| jq -r '.pipeline.stages[0].parallel[0].stage.spec.environments.values[0].infrastructureDefinitions|map("identifier: "+ .identifier)|join(",")')`
 ```
+#### How can I resolve the error "Invalid request: Expected Pipeline tags in YAML to be [{}], but was [{source=terraform}]" when using the Harness Terraform module?
+
+This error occurs because the tags specified in your Terraform configuration do not match the expected tags in the YAML configuration. To resolve this, ensure that the tags are passed in both the Terraform code and the YAML configuration. The error was previously not encountered because the API did not create the tag, allowing pipelines to be created without the data. This behavior has been corrected to ensure tags are consistently passed as per the contract.
+
+
 #### How can I limit the total number of pipelines running in account?
 
 To limit the total number of pipelines running in the organization, you can set the limit for concurrent pipeline executions at the account level. This setting can be found under Default setting and then "Pipeline" section, and then "Concurrent Active Pipeline Executions."
@@ -3270,3 +3275,4 @@ For frequently asked questions about Harness Continuous Verification, go to [Con
 ### GitOps FAQs
 
 For frequently asked questions about Harness GitOps, go to [GitOps FAQs](/docs/continuous-delivery/gitops/gitops-faqs).
+
