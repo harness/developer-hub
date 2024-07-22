@@ -44,7 +44,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### Version 1.6.4
 
 **Fixed issues**:
- - Fixed an issue where SDK dependencies, `tenacity` and `typing_extensions`, were pinned to fixed versions, which would make integration with the SDK impossible. (FFM-11770, ZD-66342)
+ - Fixed an issue where SDK dependencies, `tenacity` and `typing_extensions`, were pinned to fixed versions, which could make integration with the SDK impossible if different versions are specified in an application or its dependencies. (FFM-11770, ZD-66342)
 
 #### Version 1.6.3
 
