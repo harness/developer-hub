@@ -170,7 +170,7 @@ integrations:
 
 ## What data is ingested
 
-The data is updated every hour. The following details are ingested from the ServiceNow platform using this integration.
+The data is updated every hour. The following details are ingested from the ServiceNow platform using this integration. To find the detailed list of the data ingested, go to [ServiceNow integration datasheet](/docs/software-engineering-insights/sei-technical-reference/sei-datasheets/sei-servicenow-datasheet).
 
 ### Incidents
 
