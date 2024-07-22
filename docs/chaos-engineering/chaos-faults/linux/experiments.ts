@@ -29,7 +29,7 @@ export const experiments: ExperimentDetails[] = [
     tags: ["linux", "api", "status-code"],
     category: "linux",
    },
-   { 
+   {
     name: "Linux API modify header",
     description:
       "Linux API modify header injects API fault into a Linux machine for a specific duration to override the header values of API requests and responses with the user-provided values for the given keys. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.",
@@ -69,6 +69,13 @@ export const experiments: ExperimentDetails[] = [
     description:
       "Linux DNS spoof injects chaos to mimic DNS resolution on the Linux machine.",
     tags: ["linux", "dns"],
+    category: "linux",
+  },
+  {
+    name: "Linux fs fill",
+    description:
+        "Linux fs fill fills up the available fs (file system) space at a given system path for a specific duration.",
+    tags: ["linux", "fs", "disk"],
     category: "linux",
   },
   {
