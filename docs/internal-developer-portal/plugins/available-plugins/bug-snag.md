@@ -24,13 +24,13 @@ proxy:
   '/bugsnag/api':
     target: 'https://api.bugsnag.com'
     headers:
-        Authorization: 'token ${BUGSNAG_PERSONAL_TOKEN}'
+        Authorization: '${BUGSNAG_PERSONAL_TOKEN}'
         X-version: '2'
 ```
 
 ### Secrets
 
-Since the `BUGSNAG_PERSONAL_TOKEN` variable is used in the application configuration, you must generate a Personal Auth Token and set it as the value of `BUGSNAG_PERSONAL_TOKEN`. For instructions on how to create a Personal Auth Token, [read the instructions](https://bugsnagapiv2.docs.apiary.io/#introduction/authentication/personal-auth-tokens-(recommended)).
+Since the `BUGSNAG_PERSONAL_TOKEN` variable is used in the application configuration, you must generate a Personal Auth Token and set it as the value of `token "BUGSNAG_PERSONAL_TOKEN"`, make sure to add the `token` prefix to the PAT. For instructions on how to create a Personal Auth Token, [read the instructions](https://bugsnagapiv2.docs.apiary.io/#introduction/authentication/personal-auth-tokens-(recommended)).
 
 ### Delegate proxy
 

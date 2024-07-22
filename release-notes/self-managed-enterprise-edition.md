@@ -6941,8 +6941,6 @@ This release includes the following Harness module and component versions.
 
 - Harness will remove comments when evaluating commented lines in manifests to avoid rendering failures. (CDS-57721, ZD-41676)
 
-  This functionality is behind a feature flag, `CDS_REMOVE_COMMENTS_FROM_VALUES_YAML`.
-
   Expressions in comments were causing issues for some customers as Harness was trying to evaluate the expressions and this was causing failures.
 
   Harness will remove comments from values.yaml files to prevent expressions in comments from being evaluated and causing failures.
