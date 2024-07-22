@@ -3164,6 +3164,115 @@ export INFRA_IDS=$( echo '<+inputSet>'| jq -r '.pipeline.stages[0].parallel[0].s
 
 This error occurs because the tags specified in your Terraform configuration do not match the expected tags in the YAML configuration. To resolve this, ensure that the tags are passed in both the Terraform code and the YAML configuration. The error was previously not encountered because the API did not create the tag, allowing pipelines to be created without the data. This behavior has been corrected to ensure tags are consistently passed as per the contract.
 
+#### How can I use the --no-cache build-arg as an optional harness-pipeline variable in a Docker build-and-publish step?
+
+To use the --no-cache build-arg as an optional Harness pipeline variable, you can include the variable in your YAML configuration and use it within the build arguments.
+
+#### How can I enable the option to create a template under an organization in Harness when it is greyed out?
+
+To enable the option for a user to create a template under an organization in Harness when it is greyed out, specific permissions need to be granted. The user must have the "Manage Templates" permission at the organization level. To configure this, first ensure that the user’s role includes the Create/Edit permission for templates. Next, update the relevant roles to include these permissions. Additionally, in the resource group set the resource scope to the organization level from the account level.
+
+#### How can I resolve the "infinite loop evaluating expressions" error when using pipeline template variables in Harness?
+
+The "infinite loop evaluating expressions" error occurs when a variable is assigned a value using its own expression within the pipeline template. This creates a circular reference, causing the loop. To resolve this, ensure that you do not use the same variable as both the expression and its value.
+
+####  How can I capture a Bearer Token from the HTTP response headers using the HTTP step in Harness?
+
+To capture a Bearer Token from the HTTP response headers using the HTTP step in Harness, you can add a key-value pair in the HTTP step. Set the key to "Authorization" and the value to "<+httpResponseHeaders.Authorization>". You can then reference this output variable in other steps using "<+pipeline.stages.HTTPStep.spec.execution.steps.Http_1.output.authorization>".
+
+#### How can I update a variable based on the value from a step that doesn't always run, and ensure it overwrites the value regardless?
+
+To handle this scenario in your pipeline, you can use a ternary expression to assign a value to the variable. This allows you to set a default value if the step does not run. Here’s an example: <+pipeline.stages.aa_0.spec.execution.steps.ShellScript_1.output.outputVariables.myvar1> != null ? <+pipeline.stages.aa_0.spec.execution.steps.ShellScript_1.output.outputVariables.myvar1> : "defaultvalue"
+This expression checks if myvar1 from ShellScript_1 is not null. If it’s not null, it assigns its value; otherwise, it assigns "defaultvalue".
+
+#### Does the application limit the length of each user input field and validate the length on the server side? 
+
+Yes, the application limits user input length to 64-128 characters and validates it on the server side.
+
+#### Does the application refrain from using client-provided data (including HTTP headers) to make functional decisions?
+
+Yes, the application relies on server-side parameters and strategically uses client-side data for enhancing user experience, with all critical validations done on the server side.
+
+#### Does the application prevent 'redirect' (i.e., 302 Object moved) when accepting sensitive information from user forms?
+
+Yes, the application uses HTTPS and POST requests to prevent exposure of sensitive data and disallows redirects in case of form submissions.
+
+
+#### Does the application use a common database Functional ID to connect to the database instead of passing through end user credentials?
+
+Yes, the application connects to the database using a single set of credentials rather than individual user credentials.
+
+#### If using a common database Functional ID, does the application conduct authorization checks on user actions for granular user access control?
+
+Yes, the application enforces specific permissions and access control checks at the application level.
+
+
+#### If the application uses frames, is there an XFS (Cross Frame Scripting) prevention solution implemented?
+
+Yes, the application implements the “Content-Security-Policy: frame-ancestors 'none';” directive to prevent XFS attacks.
+
+#### Does the application respond with generic error messages that do not reveal internal sensitive information?
+
+Yes, the application provides generic error messages that do not expose internal details.
+
+#### Are cryptographic keys, passwords, or algorithms hard-coded in the application code? 
+
+No, the application uses an internal STO module to run secret scans against every PR check to ensure no secrets are hard-coded.
+
+#### Does the application filter or escape user-supplied input for SQL characters or parameterize SQL queries to prevent SQL injection vulnerabilities?
+
+Yes, the application uses parameterized SQL queries and conducts SAST scans to prevent SQL injection vulnerabilities.
+
+#### Does the application ensure URL redirects are either relative or validated against a whitelist?
+
+Yes, the application uses relative URLs or known origins and does not use absolute URLs.
+
+#### While switching SSO IdPs from Google to Okta. Can we modify the userName values to match the new IdP emails, or do we need to create new accounts for these users?
+
+The userName field in Harness cannot be edited as it serves as the unique identifier for users. The best approach is to configure multiple Identity Providers (IDPs) side by side, allowing users to select the appropriate IDP until the migration to the new IdP is complete. This enables a smoother transition without the need to create new accounts. If configuring multiple IDPs is not feasible, the alternative is to create new accounts for users with their new email addresses. 
+
+#### How can I ensure that my CI build stages in a pipeline run based on multiple selected services using a multi-select dropdown?
+
+To ensure that your CI build stages run based on the selected services in a multi-select dropdown, you can use the contains method to check if the pipeline variable includes specific service names. First, create a pipeline variable, for example, service, which will hold the selected service values.
+Next, use the contains method in the execution conditions of each stage. This method will evaluate whether the service variable contains the name of the service for that stage. For instance, if your pipeline variable service has the values test, stage, and prod, you can configure the conditions for each stage as follows:
+<+pipeline.variables.service>.contains("test") to run if "test" is selected.
+<+pipeline.variables.service>.contains("stage") to run if "stage" is selected.
+<+pipeline.variables.service>.contains("prod") to run if "prod" is selected.
+When running the pipeline, if you select test and stage from the multi-select dropdown, only the steps with conditions matching test and stage will execute, while others, such as prod, will be skipped. This approach allows you to dynamically control which stages of your CI build run based on the selected services, ensuring a more flexible and efficient pipeline execution.
+
+#### Does Harness support using SSH over HTTPS for GitHub connectors, and how do we configure it for our GHE Cloud migration?
+
+Yes, Harness supports using SSH over HTTPS for GitHub connectors. To configure this for your migration to GitHub Enterprise Cloud (GHE Cloud), you need to set up an RSA key in PEM format. Other ciphers, such as ECDSA or Ed25519, are also supported as long as they are in PEM format. Configure the connection to use port 443 and host ssh.github.com.
+
+#### Can I use secret references like <+secrets.getValue("SECRET_NAME")> when setting environment variables in the Container Step in the CD module, and will these values be sanitized in the logs?
+
+Yes, you can use secret references such as <+secrets.getValue("SECRET_NAME")> when setting environment variables in the Container Step in the Continuous Deployment (CD) module. This allows you to securely inject secret values into your container environment variables. Additionally, any time a secret expression or lookup is performed, the values are sanitized in the logs. This means that the actual secret values will not be exposed in the logs, ensuring that sensitive information remains protected. 
+
+#### Can I commit a Custom Deployment Template (CDT) to Git in Harness, and how can I keep templates in sync across multiple environments?
+
+Currently, committing Custom Deployment Templates (CDT) to Git is not supported by Harness. If you attempt to commit a CDT, you will receive an error message stating that the template type is not Git supported. This is expected behavior as GitHub does not support this template format.
+
+#### How can we resolve SSH key setup issues in our Harness account when the same key works locally but not from Harness?
+
+To resolve SSH key setup issues in your Harness account, ensure that your SSH keys are in the correct format. Harness supports PEM format for SSH keys. If you have an OpenSSH key, you will need to convert it to PEM format. You can use the command ssh-keygen -p -m PEM -f <your-key-file> to convert your existing OpenSSH key to PEM format.
+
+#### Is it possible to have a step reference the log from a previous step in a variable or similar method in Harness?
+
+Currently, Harness does not support directly referencing logs from a previous step in a variable. However, you can use a workaround to achieve a similar result. In the first step, save the logs to a file. Next, encode the log file content in base64 format, assign the base64 encoded value to a variable, and export this variable as an output variable. In the subsequent step, access the output variable, decode the base64 content, and write the decoded content back to a file. This process allows you to pass the log data between steps indirectly.
+
+#### How can I configure an optional Approval step in a pipeline that shows timed-out steps as Success and prevents further execution unless approved?
+
+To configure an optional Approval step in your pipeline that marks timed-out steps as Success and ensures the pipeline does not proceed unless approved, follow these steps. First, add an optional Approval step in your pipeline and configure it to approve, reject, or timeout after a specified period (e.g., 5 minutes). Next, apply the "Mark as Success" failure strategy for the Approval step. This will ensure that if the step times out, it will be marked as successful instead of showing a Timeout status. Then, configure the subsequent steps in your pipeline to only proceed if the Approval step's status is "APPROVE." This can be done using conditional execution settings, such as using a condition like approvalStatus == "APPROVE" to ensure that the next stage only runs if the approval is granted. When the Approval step is pending, the pipeline will show a "Waiting" status. New builds can be triggered and merged into the dev environment without being blocked by the pending approval.
+If the Approval step times out, it will be marked as successful, but the pipeline will not proceed to the next stage unless explicitly approved. This setup allows developers to keep merging to dev and triggering new builds, while ensuring that only approved builds are promoted to higher environments.
+
+
+#### How can I set up permissions to allow users to create Feature Flags without giving them broad edit permissions on environments in Harness?
+
+In Harness, to create a Feature Flag, users must have "Edit" rights on the environment level. This means they will have the ability to edit all environments in the project, which can be problematic for sensitive environments like production. To manage permissions more precisely, follow these steps:
+First, confirm the permissions requirement. You are correct that to create Feature Flags, users need "Edit" rights on the environment level, which allows them to edit all environments within the project.
+Next, create a custom role with limited permissions. This role should include "Create" and "Edit Config" permissions specifically for Feature Flags. Ensure this role does not grant any permissions for environments or other resources.
+To further limit the scope of permissions, use Resource Groups. Create a Resource Group that only includes the Feature Flags resource. Assign the custom role to this Resource Group. This way, users will have the necessary permissions for Feature Flags within the Resource Group without having access to edit other environments or resources in the project.
+
 
 #### How can I limit the total number of pipelines running in account?
 
