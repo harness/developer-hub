@@ -51,8 +51,8 @@ export const SscaData: Horizon = {
     feature: [
       {
         tag: [],
-        title: "Code Repo Posture Management",
-        description: "Config check to ensure that your source code repositories, artifacts, and CI/CD tools used in the supply chain are appropriately monitored for best practices.",
+        title: "CI/CD Security Posture Management",
+        description: "Checks on CI/CD pipelines to detect risky actions and misconfigs",
       },
       {
         tag: [],
