@@ -513,7 +513,7 @@ You can use Amazon Route 53 as the DNS service for your domain, such as example
 
 #### Can I use AutoStoping Rules to manage my resources hosted in the AWS GovCloud?
 
-Currently, the resources hosted in the AWS GovCloud regions cannot be managed using AutoStopping Rules.
+Yes, the resources hosted in the AWS GovCloud regions can be managed using AutoStopping Rules.
 
 #### How AutoStopping Rules can help when I shut down my VMs during non-working hours?
 
