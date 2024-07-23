@@ -79,13 +79,15 @@ The following deprecated API endpoints are longer supported:
 
 ## July 2024
 
-### Version 1.48.x<!-- July 22, 2024 -->
+### Version 1.48.8<!-- July 22, 2024 -->
 
 #### New features and enhancements
 
 - Upgraded the `io.netty_netty-codec-http` library to address a medium-severity issue. The version has been updated from 4.1.101.Final to 4.1.108.Final. (PL-51350)
 
 - Upgraded the `org.apache.cxf_cxf-core` library from version 3.5.5 to 3.5.8 to address a medium-severity issue CVE-2024-28752. (PL-51348, ZD-66657)
+
+- Reduced delegate liveness probe failure time. Previously, delegates had a 15-minute window to send heartbeats before the liveness probe failed, leading to a delegate restart. This time has now been reduced to 5 minutes to ensure quicker detection and response to heartbeat failures. This item requires Harness Delegate version 24.07.83605. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-52037)
 
 #### Fixed issues
 
