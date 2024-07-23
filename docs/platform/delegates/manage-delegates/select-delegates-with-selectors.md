@@ -18,12 +18,6 @@ If no delegate is selected for a CD step's **Delegate Selector** setting, Harnes
 For more information, go to [Which delegate is used during pipeline execution?](/docs/platform/delegates/delegate-concepts/delegate-overview/#which-delegate-is-used-during-pipeline-execution).
 :::
 
-:::warning
-
-For deployments, a delegate determines which cluster is the deployment target if the connector configuration is marked as **Inherit from Delegate**.  This delegate is usually defined in the pipeline's [infrastructure definition](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure). Defining a delegate using a delegate selector in any kubernetes step will *override* any previously selected delegate. This can lead to unexpected behavior, such as deployments to environments not defined in the pipeline. Please be diligent when using delegate selectors in this way.  
-
-:::
-
 ### Delegate tags
 
 A delegate tag with the same name as your delegate is automatically added to your delegate during the configuration process. You can add one or more comma-separated tags on the `helm` command line or in the Kubernetes YAML file, as shown in the following example.
@@ -137,29 +131,29 @@ In each step, in **Advanced**, in the **Delegate Selector** option:
 
 You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
 
-:::warning
+### Delegate selectors usage in deployments
 
-For deployments, a delegate determines which cluster is the deployment target if the connector configuration is marked as **Inherit from Delegate**. This delegate is usually defined in the pipeline's [infrastructure definition](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure). Defining a delegate using a delegate selector in any kubernetes step will *override* any previously selected delegate. This can lead to unexpected behavior, such as deployments to environments not defined in the pipeline. Please be diligent when using delegate selectors in this way.  
+For deployments, a delegate can help determine the deployment target when it's connector configuration is marked as **Inherit from Delegate**. This configuration means the delegate is in the target cluster for the deployment. This delegate is typically defined in the deployment stage's [environment](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) or [infrastructure definition](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure). Specifically, it's defined in the connector that is configured within the infrastructure definition.   
 
-:::
-
-#### Delegate selectors usage in deployments
-
-For deployments, a delegate helps determine the deployment target. This delegate is typically defined in the deployment stage's [environment](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) or [infrastructure definition](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure). 
-
-However, it is also possible to set a delegate at the step level using the **Delegate Selectors** advanced option. Choosing a selector in the method described above will *override* any previously selected delegate. This can lead to unexpected behavior. 
+However, it is also possible to set a delegate at the step level using the **Delegate Selectors** advanced option. Choosing a selector in this method described above will *override* any previously selected delegate selector, including selections from the pipeline, stage, step group or infrastructure definition (via connector). This can lead to unexpected behavior. 
 
 For example, if a delegate for a non-prod environment was selected at the stage level, but a delegate for a prod environment was chosen at the step level, then you face a scenario where a non prod artifact is deployed directly to prod. 
 
-##### When should I use a delegate selector?
+#### When should I not use a delegate selector?
 
-You should use delegate selectors at the step level when delegate permissions need to be separated. 
+You should generally not use delegate selectors in deployment steps because the security boundary for deployments should be at the infrastructure definition and environment level. You should not expose delegaate selectors as inputs for steps unless the intent of exposing the delegate selector to the pipeline executor is clear. 
 
-Examples: 
+#### When should I use a delegate selector?
 
-1. For a job using the **Shell Script Step**, you can override the infrastructure connector's selector to a delegate that has access to perform the job.
-2. For a pipeline using  **Continuous Verification** (CV), you would require two separate delegates; one delegate would perform CV and the other would be used to deploy. The delegate for CV can't do the deployment since it would only be communicating with the CV health provider.  
+Delegate selectors are a powerful tool, but should be used carefully and only when necessary. A good use case for using this advanced setting is to target delegates that have access to a third party systems that you may not want your deployment specific delegates to use.
 
+Examples include:
+- Shell Script Step: Use a delegate selector to choose a delegate that has permissions to perform the job.
+- CV Step Execution: Use a delegate selector to choose a delegate that has access to your CV health provider.
+- Terraform Steps
+- Tanzu Steps
+
+Delegate selectors can also be used with a [custom artifact source](/docs/continuous-delivery/x-platform-cd-features/services/add-a-custom-artifact-source-for-cd). A custom artifact source allows a delegate that has access to an artifact repo to fetch metadata about it. Using a delegate selector allows you to choose the delegate that has access to the artifact repo and then pass the information to the delegate that has the ability to deploy.
 
 ### Modify tags using Harness API
 
