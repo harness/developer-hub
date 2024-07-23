@@ -139,9 +139,15 @@ However, it is also possible to set a delegate at the step level using the **Del
 
 For example, if a delegate for a non-prod environment was selected at the stage level, but a delegate for a prod environment was chosen at the step level, then you face a scenario where a non prod artifact is deployed directly to prod. 
 
-#### When should I not use a delegate selector?
+#### Delegate selector best practices
 
-You should generally not use delegate selectors in deployment steps because the security boundary for deployments should be at the infrastructure definition and environment level. You should not expose delegate selectors as inputs for steps unless the intent of exposing the delegate selector to the pipeline executor is clear. 
+- Do not use delegate selectors in deployment steps because the security boundary for deployments should be at the infrastructure definition and environment level.
+
+- Do not expose delegate selectors as inputs for steps unless the intent of exposing the delegate selector to the pipeline executor is clear. 
+
+- Do not hard code delegate selector selections into templates.
+
+- Make sure to review connector configurations in the infrastructure definition.
 
 #### When should I use a delegate selector?
 
