@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-07-11T10:00
+date: 2024-07-17T10:00
 sidebar_position: 5
 ---
 
@@ -22,6 +22,12 @@ The release notes describe recent changes to Harness Chaos Engineering.
 :::
 
 ## July 2024
+
+### Version 1.41.1
+
+#### Fixed issues
+
+- Fixed the error associated with upgrading a chaos infrastructure by providing relevant permissions for the upgrade agent in the execution plane (user host/cluster). (CHAOS-5980)
 
 ### Version 1.40.1
 
