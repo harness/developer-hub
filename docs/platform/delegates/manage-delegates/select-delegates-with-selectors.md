@@ -141,7 +141,7 @@ For example, if a delegate for a non-prod environment was selected at the stage 
 
 #### When should I not use a delegate selector?
 
-You should generally not use delegate selectors in deployment steps because the security boundary for deployments should be at the infrastructure definition and environment level. You should not expose delegaate selectors as inputs for steps unless the intent of exposing the delegate selector to the pipeline executor is clear. 
+You should generally not use delegate selectors in deployment steps because the security boundary for deployments should be at the infrastructure definition and environment level. You should not expose delegate selectors as inputs for steps unless the intent of exposing the delegate selector to the pipeline executor is clear. 
 
 #### When should I use a delegate selector?
 
