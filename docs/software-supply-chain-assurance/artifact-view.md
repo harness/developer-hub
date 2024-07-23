@@ -36,7 +36,7 @@ The landing page of the Artifacts section provides a comprehensive list of all a
 You can search for a specific artifact or apply filters based on dependencies, licenses, and environment types to quickly find the necessary information.
 
 
-## Digests of your artifact
+## Digests for your artifact
 
 When you select an artifact, you can view the list of all its digests. For each digest, the following details are available:
 
