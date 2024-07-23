@@ -6,6 +6,8 @@ tags:
    - smp
    - self managed
 sidebar_position: 200
+redirect_from:
+  - /docs/feature-flags/smp-ff-roadmap
 ---
 
 # Self-Managed Enterprise Edition - Roadmap and feature availability

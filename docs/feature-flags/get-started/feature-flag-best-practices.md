@@ -9,6 +9,7 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/feature-flags/ff-onboarding/feature-flag-best-practices
   - /tutorials/feature-flags/best-practices
+  - /docs/feature-flags/get-started/feature-flag-best-practices
 ---
 
 <CTABanner

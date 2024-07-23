@@ -2,6 +2,8 @@
 title: Managing rules of your flags
 description: This page discusses using Harness Feature Flags with Cloud Cost Module and how it's used. 
 sidebar_position: 35
+redirect_from:
+  - /docs/feature-flags/ff-creating-flag/editing-rules-and-config
 ---
 
 ## Manage rules of your flags

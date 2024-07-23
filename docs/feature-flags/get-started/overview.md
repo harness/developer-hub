@@ -9,6 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/feature-flags/ff-onboarding/cf-feature-flag-overview
+  - /docs/feature-flags/get-started/overview
 ---
 
 Harness Feature Flags (FF) is a feature management solution with smart capabilities, such as GitOps, pipelines, automations, and monitoring.

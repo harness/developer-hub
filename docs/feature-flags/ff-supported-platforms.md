@@ -3,6 +3,8 @@ title: What's supported in Harness Feature Flags
 description: Platforms and technologies supported by Harness Feature Flags
 sidebar_label: What's supported
 sidebar_position: 10
+redirect_from:
+  - /docs/feature-flags/ff-supported-platforms
 ---
 
 Harness Feature Flags support [client-side and server-side SDKs](/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.

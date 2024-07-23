@@ -4,6 +4,7 @@ description: Ensure flags are refreshed after a mobile web browser gets brought 
 sidebar_position: 7
 redirect_from:
   - /tutorials/feature-flags/mobile-browser-refresh
+  - /docs/feature-flags/get-started/mobile-browser-refresh
 ---
 
 <CTABanner

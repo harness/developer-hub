@@ -6,6 +6,7 @@ redirect_from:
   - /tutorials/feature-flags/trunk-based
   - /tutorials/feature-flags/getting-started/trunk-based-development
   - /tutorials/category/getting-started-with-ff
+  - /docs/feature-flags/get-started/trunk-based-development
 ---
 
 <CTABanner
