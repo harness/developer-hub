@@ -143,6 +143,24 @@ For deployments, a delegate determines which cluster is the deployment target if
 
 :::
 
+#### Delegate selectors usage in deployments
+
+For deployments, a delegate helps determine the deployment target. This delegate is typically defined in the deployment stage's [environment](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) or [infrastructure definition](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure). 
+
+However, it is also possible to set a delegate at the step level using the **Delegate Selectors** advanced option. Choosing a selector in the method described above will *override* any previously selected delegate. This can lead to unexpected behavior. 
+
+For example, if a delegate for a non-prod environment was selected at the stage level, but a delegate for a prod environment was chosen at the step level, then you face a scenario where a non prod artifact is deployed directly to prod. 
+
+##### When should I use a delegate selector?
+
+You should use delegate selectors at the step level when delegate permissions need to be separated. 
+
+Examples: 
+
+1. For a job using the **Shell Script Step**, you can override the infrastructure connector's selector to a delegate that has access to perform the job.
+2. For a pipeline using  **Continuous Verification** (CV), you would require two separate delegates; one delegate would perform CV and the other would be used to deploy. The delegate for CV can't do the deployment since it would only be communicating with the CV health provider.  
+
+
 ### Modify tags using Harness API
 
 Go to [Delegate Group Tags Resource](https://harness.io/docs/api/tag/Delegate-Group-Tags-Resource/).
