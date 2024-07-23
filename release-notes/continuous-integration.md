@@ -52,7 +52,7 @@ This release introduces several highly requested features and improvements to en
 - Clone Path Customization - Exposes the clone path in the codebase section, allowing users to specify a custom clone directory.
 - Additional Pre-Fetch Command - Ability to specify any additional Git commands to run before fetching the code.
 
-For more information, please refer to the [documentation](link). (CI-12952)
+For more information, please refer to the [documentation](https://developer.harness.io/docs/continuous-integration). (CI-12952)
 
 This feature is behind the feature flag `CI_GIT_CLONE_ENHANCED`.
 
