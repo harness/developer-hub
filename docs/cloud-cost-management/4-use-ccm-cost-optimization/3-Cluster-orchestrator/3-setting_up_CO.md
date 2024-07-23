@@ -62,6 +62,19 @@ The overview page shows all the information about:
 
 <DocImage path={require('./static/overview2.png')} width="90%" height="90%" title="Click to view full size image" />
 
+ <iframe 
+     src="https://app.tango.us/app/embed/feb3c2ac-4897-49c7-84fa-e6c36bd1bcd4" 
+     title="Set up Commitment Orchestrator" 
+     style={{minHeight:'640px'}}
+     width="100%" 
+     height="100%" 
+     referrerpolicy="strict-origin-when-cross-origin" 
+     frameborder="0" 
+     webkitallowfullscreen="webkitallowfullscreen" 
+     mozallowfullscreen="mozallowfullscreen" 
+     allowfullscreen="allowfullscreen"></iframe>
+
+
 #### Overview of Workloads in the Cluster
 
 This page contains all the information about the workloads associated with the cluster including their:
@@ -85,3 +98,5 @@ This page contains all the information about the nodes associated with the clust
 
 Additionally, you can see the total cluster spend and the spot savings.
 <DocImage path={require('./static/nodes.png')} width="90%" height="90%" title="Click to view full size image" />
+
+
