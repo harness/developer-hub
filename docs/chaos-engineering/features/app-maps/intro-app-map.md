@@ -1,7 +1,7 @@
 ---
-title: Overview
+title: Application map overview
 sidebar_position: 1
-description: An introduction to application maps and their significance
+description: An introduction to application maps and their significance.
 ---
 
 This topic describes application maps, their significance, and how to create, edit, and delete them.
@@ -31,25 +31,40 @@ You can [create](#create-application-map), [edit](#edit-application-map), and [d
 
 ### Create an application map
 
-1. To create an application map, navigate to **Discovery** and select **Application Maps** tab. Select **Create New Application Map**.
+1. To create an application map, navigate to **Chaos** module, select **Project Settings**, and then select **Discovery**.
 
-    ![](./static/create-nw-1.png)
+    ![](./static/create-agent-1.png)
 
-2. Specify a name, description (optional), and tags (optional). Select **Continue**.
+2. Select one of the discovery agents or [create a new discovery agent](/docs/chaos-engineering/features/service-discovery/service-discovery-usage#customize-discovery-agent).
+
+    ![](./static/select-agent-2.png)
+
+3. Once you select or create a discovery agent, navigate to the **Application Maps** tab and select **New Application Map**.
+
+    ![](./static/navigate-3.png)
+
+4. Specify a name, description (optional), and tags (optional). Select **Continue**.
 
     ![](./static/name-np-2.png)
 
-3. Select one or more discovered services and select **Next**.
+5. Select one or more discovered services and select **Next**.
 
     ![](./static/select-service-3.png)
 
-4. Optionally, add service relationship details and select **Save Changes**.
+6. Optionally, add service relationship details and select **Save Changes**.
 
     ![](./static/service-rel-4.png)
 
-5. Select **Save**.
+7. Select **Save**.
 
     ![](./static/save-nw-5.png)
+
+:::info note
+To view chaos-enabled experiment map, navigate to **Chaos** module and select **Application Maps**.
+
+    ![](./static/create-nw-1.png)
+
+:::
 
 ### Edit application map
 
