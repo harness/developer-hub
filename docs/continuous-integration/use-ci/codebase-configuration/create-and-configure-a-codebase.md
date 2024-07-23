@@ -6,6 +6,8 @@ helpdocs_topic_id: mozd8b49td
 helpdocs_category_id: ojaa8v6fwz
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/continuous-integration/use-ci/codebase-configuration/gitlfs
 ---
 
 CI pipelines build and test code that is pulled from a Git code repository. When you add a Build stage to a CI pipeline, you can select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. This can be referred to as the *default codebase* for the build. This topic explains how to configure codebase settings for CI pipelines and Build stages.

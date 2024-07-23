@@ -21,7 +21,7 @@ In addition to the pipeline's default [codebase](./create-and-configure-a-codeba
 
 :::info Large file storage
 
-If you need to clone LFS-enabled repositories or run `git lfs` commands (such as `git lfs clone`), go to [Git Large File Storage](./gitlfs.md).
+If you need to clone LFS-enabled repositories or run `git lfs` commands (such as `git lfs clone`), go to [Download LFS Files](#download-lfs-files).
 
 :::
 
