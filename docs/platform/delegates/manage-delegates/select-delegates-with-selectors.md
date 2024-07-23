@@ -20,7 +20,7 @@ For more information, go to [Which delegate is used during pipeline execution?](
 
 :::warning
 
-For Kubernetes deployments, a delegate determines which cluster is the deployment target. This delegate is usually defined in the pipeline's [infrastructure definition](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure). Defining a delegate using a delegate selector in any kubernetes step will *override* any previously selected delegate. This can lead to unexpected behavior, such as deployments to environments not defined in the pipeline. Please be diligent when using delegate selectors in this way.  
+For deployments, a delegate determines which cluster is the deployment target if the connector configuration is marked as **Inherit from Delegate**.  This delegate is usually defined in the pipeline's [infrastructure definition](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure). Defining a delegate using a delegate selector in any kubernetes step will *override* any previously selected delegate. This can lead to unexpected behavior, such as deployments to environments not defined in the pipeline. Please be diligent when using delegate selectors in this way.  
 
 :::
 
@@ -136,6 +136,12 @@ In each step, in **Advanced**, in the **Delegate Selector** option:
 ![](./static/select-delegates-with-selectors-26.png)
 
 You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
+
+:::warning
+
+For deployments, a delegate determines which cluster is the deployment target if the connector configuration is marked as **Inherit from Delegate**. This delegate is usually defined in the pipeline's [infrastructure definition](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure). Defining a delegate using a delegate selector in any kubernetes step will *override* any previously selected delegate. This can lead to unexpected behavior, such as deployments to environments not defined in the pipeline. Please be diligent when using delegate selectors in this way.  
+
+:::
 
 ### Modify tags using Harness API
 
