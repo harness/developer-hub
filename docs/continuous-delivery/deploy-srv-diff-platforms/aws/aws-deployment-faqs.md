@@ -567,3 +567,10 @@ If your service initiates the throttle logic, you receive a service event messag
 ### What are common causes of ECS service tasks failing to start?
 
 Common causes includes Lack of resources (ports, memory, CPU units) in your cluster, Issues with pulling the Docker image due to incorrect image names, tags, or registry authentication problems, and Insufficient disk space on the container instance.
+
+### Why am I getting an `Invalid Request: No manifests found` error? 
+```
+Invalid request: No manifests found in stage Deploy_AMI. AsgRollingDeploy step requires a manifest defined in stage service definition
+```
+
+This means that your Launch Template and ASG Configuration are not setup correctly in your service under AWS ASG Configurations.
