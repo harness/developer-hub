@@ -19,7 +19,6 @@ These release notes describe recent changes to Harness Software Supply Chain Ass
 
 ## July 2024
 
-
 ### Version: 1.14.3
 
 <!-- 2024-07-23 -->
@@ -27,7 +26,6 @@ These release notes describe recent changes to Harness Software Supply Chain Ass
 #### **Announcements**
 
 **SSCA is now Generally Available (GA)**. We have moved from Limited GA (since January 2024) to GA. Read more on our [announcement blog](https://www.harness.io/blog/harness-ssca-now-features-repo-security-posture-management-rspm).
-
 
 #### **New features**
 
@@ -47,8 +45,6 @@ These release notes describe recent changes to Harness Software Supply Chain Ass
 #### **Enhancements**
 
 [Artifact view](https://developer.harness.io/docs/software-supply-chain-assurance/artifact-view) will now support the following views
-
-
 
 * [Chain of Custody](https://developer.harness.io/docs/software-supply-chain-assurance/artifact-view/#artifact-overview): Log the artifact's journey throughout the software supply chain.
 * [Artifact Listing](https://developer.harness.io/docs/software-supply-chain-assurance/artifact-view/#digests-for-your-artifact): View all container images, including their digests and tags.
