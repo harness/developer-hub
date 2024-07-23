@@ -63,7 +63,13 @@ export const experiments: ExperimentDetails[] = [
   },
   {
     name: "Disk fill",
-    description:"Disk fill applies disk stress by filling the pod's ephemeral storage on a node.",
+    description:"Disk fill applies disk stress by filling the pod's ephemeral storage of the pod.",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "FS fill",
+    description:"FS fill applies fs stress by filling the pod's ephemeral storage of the target pod.",
     tags: ["pod"],
     category: "kubernetes",
   },

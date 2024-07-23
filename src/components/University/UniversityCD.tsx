@@ -34,7 +34,9 @@ const getCertBadges = (url: string) => [
   },
 ];
 
+import { useColorMode } from "@docusaurus/theme-common";
 export default function CertificationsCD() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   // React router provides the current component's route, even in SSR
   const location = useLocation();
@@ -42,6 +44,10 @@ export default function CertificationsCD() {
   const { pathname = "/", search = "" } = location;
   const searchKey = getCertLevel(search);
   const [tab, setTab] = useState("developer");
+  const [activePage, setActivePage] = useState<string>(
+    ActivePage.SelfPacedTraning
+  );
+
   const handleSwitchTab = (tabKey) => {
     setTab(tabKey);
     if (pathname && tabKey) {
@@ -56,10 +62,11 @@ export default function CertificationsCD() {
       setTab(searchKey);
     }
   }, [searchKey]);
+
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    setTab(null);
     if (params.has("lvl")) {
+      setTab(params.get("lvl"));
       setActivePage(ActivePage.Certifications);
     } else if (location.search === "?ilt") {
       setActivePage(ActivePage.InstructorLedTraining);
@@ -69,10 +76,6 @@ export default function CertificationsCD() {
       setActivePage(ActivePage.SelfPacedTraning);
     }
   }, []);
-
-  const [activePage, setActivePage] = useState<string>(
-    ActivePage.Certifications
-  );
   const handleCertficationClick = () => {
     history.push(`${pathname}?lvl=developer`);
     setActivePage(ActivePage.Certifications);
@@ -86,7 +89,17 @@ export default function CertificationsCD() {
     setActivePage(ActivePage.SelfPacedTraning);
   };
   return (
-    <div className={styles.certificationsCD}>
+    <div
+      className={`${styles.certificationsCD} ${
+        activePage === ActivePage.SelfPacedTraning
+          ? styles.SelfPacedTrainingBg
+          : ""
+      } ${
+        activePage === ActivePage.InstructorLedTraining
+          ? styles.InstructorLedTrainingBg
+          : ""
+      }  `}
+    >
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>
@@ -103,54 +116,130 @@ export default function CertificationsCD() {
             rollback.
           </div>
         </div>
-        <div className={styles.right}>
-          {certBadges.map((badge) => (
+
+        <div
+          className={`${styles.right} ${
+            activePage === ActivePage.SelfPacedTraning
+              ? styles.SelfPacedTrainingBg
+              : ""
+          } ${
+            activePage === ActivePage.InstructorLedTraining
+              ? styles.InstructorLedTrainingBg
+              : ""
+          }  `}
+        >
+          {activePage === ActivePage.SelfPacedTraning && (
             <img
-              src={badge.img}
-              alt={badge.alt}
-              className={badge.type === certType[tab] ? styles.active : ""}
+              className={styles.iltimg}
+              src={
+                colorMode == "light"
+                  ? "/img/Instructor-Led Training light.svg"
+                  : "/img/Instructor-Led Training dark.svg"
+              }
+              alt=""
             />
-          ))}
+          )}
+          {activePage === ActivePage.InstructorLedTraining && (
+            <img
+              className={styles.sptimg}
+              src={
+                colorMode == "light"
+                  ? "/img/Self-Paced Training light.svg"
+                  : "/img/Self-Paced Training dark.svg"
+              }
+              alt=""
+            />
+          )}
+          {activePage === ActivePage.Certifications &&
+            certBadges.map((badge) => (
+              <img
+                src={badge.img}
+                alt={badge.alt}
+                className={`${
+                  badge.type === certType[tab] ? styles.active : ""
+                } ${styles.certimg}`}
+              />
+            ))}
         </div>
       </div>
 
       <div className={styles.btns}>
         <button
           onClick={handleSelfPacedTrainingClick}
-          className={`${styles.InstLedTrainBtn} ${
-            activePage === ActivePage.SelfPacedTraning ? styles.active : ""
+          className={`${
+            colorMode == "light"
+              ? styles.InstLedTrainBtnLight
+              : styles.InstLedTrainBtnDark
+          } ${
+            activePage === ActivePage.SelfPacedTraning
+              ? colorMode == "light"
+                ? styles.activeLight
+                : styles.activeDark
+              : ""
           }`}
         >
-          {activePage !== ActivePage.SelfPacedTraning ? (
-            <img src="/img/self-paced-training-logo-inactive.svg" />
-          ) : (
+          {activePage == ActivePage.SelfPacedTraning ? (
+            colorMode == "light" ? (
+              <img src="/img/self-paced-training-logo-inactive.svg" />
+            ) : (
+              <img src="/img/self-paced-training-logo-active.svg" />
+            )
+          ) : colorMode == "light" ? (
             <img src="/img/self-paced-training-logo-active.svg" />
+          ) : (
+            <img src="/img/self-paced-training-logo-inactive.svg" />
           )}
           Self-Paced Training
         </button>
         <button
           onClick={handleInstLedTrainClick}
-          className={`${styles.InstLedTrainBtn} ${
-            activePage === ActivePage.InstructorLedTraining ? styles.active : ""
+          className={`${
+            colorMode == "light"
+              ? styles.InstLedTrainBtnLight
+              : styles.InstLedTrainBtnDark
+          } ${
+            activePage === ActivePage.InstructorLedTraining
+              ? colorMode == "light"
+                ? styles.activeLight
+                : styles.activeDark
+              : ""
           }`}
         >
-          {activePage !== ActivePage.InstructorLedTraining ? (
-            <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
-          ) : (
+          {activePage == ActivePage.InstructorLedTraining ? (
+            colorMode == "light" ? (
+              <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
+            ) : (
+              <img src="/img/Instructor_led_trainin_logo.svg" />
+            )
+          ) : colorMode == "light" ? (
             <img src="/img/Instructor_led_trainin_logo.svg" />
+          ) : (
+            <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
           )}
           Instructor-Led Training
         </button>
         <button
-          className={`${styles.certBtn} ${
-            activePage === ActivePage.Certifications ? styles.active : ""
+          className={`${
+            colorMode == "light" ? styles.certBtnLight : styles.certBtnDark
+          } ${
+            activePage === ActivePage.Certifications
+              ? colorMode == "light"
+                ? styles.activeLight
+                : styles.activeDark
+              : ""
           }`}
           onClick={handleCertficationClick}
         >
           {activePage == ActivePage.Certifications ? (
-            <img src="/img/certification_icon_unactive.svg" />
-          ) : (
+            colorMode !== "light" ? (
+              <img src="/img/certification_icon_unactive.svg" />
+            ) : (
+              <img src="/img/certification_icon.svg" />
+            )
+          ) : colorMode !== "light" ? (
             <img src="/img/certification_icon.svg" />
+          ) : (
+            <img src="/img/certification_icon_unactive.svg" />
           )}
           Certifications
         </button>

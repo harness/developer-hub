@@ -1,7 +1,7 @@
 ---
 title: Harness Hosted GitOps
 description: Harness Hosted GitOps easily deploys and manages applications on Kubernetes clusters for you. 
-sidebar_position: 5
+sidebar_position: 7
 redirect_from:
   - /docs/continuous-delivery/gitops/hosted-gitops/
 ---

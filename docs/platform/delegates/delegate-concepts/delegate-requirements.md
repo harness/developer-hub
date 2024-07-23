@@ -24,14 +24,11 @@ Note the following important information about delegates:
 
 * The delegate is installed in your network and connects to the Harness Manager.
 
-  The requirements for memory and CPU support only the delegate. The delegate host, pod, and container require additional compute resources to support other operations, systems, and services, such as Docker or Kubernetes.
+ :::danger delegate resources
+Memory and CPU requirements are for the delegate only. Your delegate host/pod/container requires additional computing resources for its operating system and other services, such as Docker or Kubernetes.
 
-  | Replicas | Required memory / CPU | Maximum parallel deployments and builds across replicas |
-  | :--: |  :--: | :--: |
-  | 1 | 2 GB / 0.5 CPU | 10 |
-  | 2 | 4 GB / 1 CPU | 20 |
-  | 4 | 8 GB / 2 CPU | 40 |
-  | 8 | 16 GB / 4 CPU | 80 |
+The resource requirements for the delegate container depend on the type of tasks or executions. For instance, CI-only delegates can handle hundreds of parallel pipelines. However, for CD Terraform tasks, a single task might require a 2Gi container due to Terraform's memory requirements. Each Terraform command needs at least 500MB of memory.
+ :::
 
   The delegate runs in a Linux/UNIX container.
 

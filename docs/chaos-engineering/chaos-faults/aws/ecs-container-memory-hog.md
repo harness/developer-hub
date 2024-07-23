@@ -12,7 +12,7 @@ ECS container memory hog disrupts the state of infrastructure resources. It indu
 - This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
 
 
-![ECS Container Memory Hog](./static/images/ecs-stress-chaos.png)
+![ECS Container Memory Hog](./static/images/ecs-container-memory-hog.png)
 
 ## Use cases
 
