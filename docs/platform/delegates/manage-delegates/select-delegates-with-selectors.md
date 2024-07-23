@@ -18,6 +18,12 @@ If no delegate is selected for a CD step's **Delegate Selector** setting, Harnes
 For more information, go to [Which delegate is used during pipeline execution?](/docs/platform/delegates/delegate-concepts/delegate-overview/#which-delegate-is-used-during-pipeline-execution).
 :::
 
+:::warning
+
+For Kubernetes deployments, a delegate determines which cluster is the deployment target. This delegate is usually defined in the pipeline's [infrastructure definition](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure). Defining a delegate using a delegate selector in any kubernetes step will *override* any previously selected delegate. This can lead to unexpected behavior, such as deployments to environments not defined in the pipeline. Please be diligent when using delegate selectors in this way.  
+
+:::
+
 ### Delegate tags
 
 A delegate tag with the same name as your delegate is automatically added to your delegate during the configuration process. You can add one or more comma-separated tags on the `helm` command line or in the Kubernetes YAML file, as shown in the following example.
