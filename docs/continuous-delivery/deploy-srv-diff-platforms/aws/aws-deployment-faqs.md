@@ -573,4 +573,4 @@ Common causes includes Lack of resources (ports, memory, CPU units) in your clus
 Invalid request: No manifests found in stage Deploy_AMI. AsgRollingDeploy step requires a manifest defined in stage service definition
 ```
 
-This means that your Launch Template and ASG Configuration is not setup correctly in your service under AWS ASG Configurations.
+This means that your Launch Template and ASG Configuration are not setup correctly in your service under AWS ASG Configurations.
