@@ -59,8 +59,8 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Fixed issues
 
-- In a few cases, skipped stages/steps in Pipeline executions were being displayed in blue instead of the grey. The issue is fixed now. (PIPE-20138, ZD-65966)
-- Stage/Step popover hide behinds the Navigation. The issue is fixed now. (PIPE-20028, ZD-65628)
+- In a few cases, skipped stages/steps in Pipeline executions were being displayed in blue instead of grey. The issue is fixed now. (PIPE-20138, ZD-65966)
+- Stage/Step popover was hidden behind the Navigation UI. The issue is fixed now. (PIPE-20028, ZD-65628)
 - When we rerun a pipeline with multi-env deployment stages or stages in a Matrix, the rerun would skip over the stages that were skipped the last time, without re-evaluating the Execution Condition. This is fixed now; the Executional Condition is re-evaluated for previously skipped stages in Matrix during re-run, and if the condition is now true, they are executed. Note, this is only in the case where the execution failed midway within a Matrix or Multi-Env deployment in the pipeline, and we need to rerun the pipeline from that Matrix. (PIPE-19746, ZD-64970)
 - When you scroll to the bottom of the Pipeline Page and click on the last pipeline on the page, if your default view is YAML, the YAML in the Pipeline Studio was previously opening in a scrollable view. This issue has now been fixed. (CDS-98674, ZD65768,66530)
 - Scrolling was not working when the cursor was inside the script step. The issue is fixed now. (CDS-98607)
