@@ -1,5 +1,4 @@
 ---
-id: Fault-wise permissions
 title: Fault-wise permissions
 sidebar_position: 1
 redirect_from:
