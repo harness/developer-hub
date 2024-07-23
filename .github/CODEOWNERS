@@ -176,7 +176,7 @@ README.md @ravilach
 /kb/continuous-delivery/ @krishi0408 @SushrutHarness
 
 #Platform KB
-/kb/platform/ @saifeemustafaqharness @brian-f-harness
+/kb/platform/ @saifeemustafaqharness
 
 #FF KB
 /kb/feature-flags/ @HarnessTheChaos @jenniferopal
@@ -226,7 +226,7 @@ src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness
 src/components/Roadmap/data/idpData.ts @Debanitrkl
 
 #Platform Roadmap
-src/components/Roadmap/data/idpData.ts @brian-f-harness
+src/components/Roadmap/data/platformData.ts @saifeemustafaqharness
 
 #SEI Roadmap
 src/components/Roadmap/data/seiData.ts @codewdhruv
