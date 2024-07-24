@@ -6,6 +6,8 @@ helpdocs_topic_id: wb2nmcpo9x
 helpdocs_category_id: axthyiihah
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-data/view-metrics
 ---
 
 Metrics allow you to view the following details of a feature flag for the selected time period:

@@ -3,7 +3,7 @@ title: Relay Proxy V2 Overview
 description: This topic focuses on version 2 of the Relay Proxy, how to use it and common FAQs on how it's used with Harness Feature Flags (FF). 
 sidebar_position: 10
 redirect_from:
-  - /docs/feature-flags/relay-proxy
+  - /docs/feature-flags/relay-proxy/relay_proxy_v2
 ---
 
 This topic describes the Harness Relay Proxy V2 and how to use it with Feature Flags (FF).
