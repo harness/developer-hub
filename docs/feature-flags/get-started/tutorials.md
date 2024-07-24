@@ -3,6 +3,7 @@ title: Feature Flags tutorials
 sidebar_label: Tutorials
 description: Learn about Harness Feature Flags with these tutorials.
 sidebar_position: 3
+redirect_from:
   - /docs/feature-flags/get-started/tutorials
 ---
 
