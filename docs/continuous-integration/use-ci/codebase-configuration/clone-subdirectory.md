@@ -12,7 +12,7 @@ When you [configure a codebase](./create-and-configure-a-codebase.md), you can s
 
 <DocImage path={require('./static/clone-subdirectory-sparse-checkout-1.png')} />
 
-Similarly, you can use the built-in [git clone step](docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step) to clone a subdirectory instead of the entire repo.
+Similarly, you can use the built-in [git clone step](./git-clone-step) to clone a subdirectory instead of the entire repo.
 
 <DocImage path={require('./static/clone-subdirectory-sparse-checkout-2.png')} />
 
