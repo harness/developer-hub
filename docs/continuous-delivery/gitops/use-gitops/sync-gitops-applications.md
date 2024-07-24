@@ -51,3 +51,9 @@ To sync applications using the **GitOpsSync** step:
 Here is how the resources would look in Harness after the sync process is complete.
 
 ![](./static/harness-git-ops-application-set-tutorial-40.png)
+
+## Terminate Sync
+
+You can terminate an in-progress sync. To do so, go to the application page for the syncing app and find the **Terminate Sync** button in the top right corner of the UI, replacing the **Sync** button when a sync is in progress. 
+
+![](./static/terminate_sync.png)
