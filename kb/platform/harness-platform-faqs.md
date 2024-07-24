@@ -169,6 +169,10 @@ With Harness, users and groups can be created automatically via SCIM. Permission
 
 No, there is no such option currently. To debug permission related issues, check the groups and roles assigned to user.
 
+### Is it possible to provide a secret to a harness template that only the logic within that template can access, but the underlying pipeline cannot invoke, access, or use that same secret?
+
+Harness offers Role Based Access Control or RBAC for security so this is not possible because the pipeline/template is not a user. In order to achieve this, the permissions would have to be scoped to the specific user. For example, `User A` has access to the secret and to the template but does not have access to the pipeline so they aren't able to view/edit/execute the pipeline.
+
 ## API/Integration
 
 ### How can you update a secret file using binary file content through an API request?
