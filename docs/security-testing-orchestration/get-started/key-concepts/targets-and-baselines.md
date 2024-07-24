@@ -48,7 +48,7 @@ import StoConceptBaselines from '/docs/security-testing-orchestration/get-starte
 
 ### Is an issue unique to the variant or common to the baseline? 
 
-Every STO pipeline execution has a [Security Tests tab](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) with separate lists of issues that make it easy to determine
+Every STO pipeline execution has a [Security Tests tab](/docs/security-testing-orchestration/dashboards/view-scan-results) with separate lists of issues that make it easy to determine
 
 - Issues only in the variant.
 - Issues common to the variant and the baseline.

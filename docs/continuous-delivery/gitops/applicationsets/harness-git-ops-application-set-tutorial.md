@@ -12,7 +12,7 @@ This topic walks you through creating a GitOps ApplicationSet in Harness.
 
 To set up an ApplicationSet, you'll need the following:
 
-* Create a [Harness GitOps agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent) to create the ApplicationSet.
+* Create a [Harness GitOps agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent) to create the ApplicationSet.
 * Create 2 target GitOps [clusters](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#step-3-add-a-harness-gitops-cluster). Dev and prod are used to deploy the child applications.
 * GitHub account. You will be cloning the Argo Project's [ApplicationSet repo](https://github.com/argoproj/applicationset) and using one of its examples.
 * Create a [Harness GitOps repository](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#step-2-add-a-harness-gitops-repository) with the Argo Project's ApplicationSet repo. We will be using one of its [examples](https://github.com/argoproj/applicationset/tree/master/examples).

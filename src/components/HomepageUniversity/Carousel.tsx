@@ -5,7 +5,6 @@ import CertCard from "./CertCard";
 const Carousel = ({ certs }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentDotIndex, setCurrentDotIndex] = useState(0);
-
   const handleDotClick = (index, dotIndex) => {
     setCurrentIndex(index);
     setCurrentDotIndex(dotIndex);
@@ -34,13 +33,12 @@ const Carousel = ({ certs }) => {
   //for mobile view
   const [mobileCurrentIndex, setMobileCurrentIndex] = useState(0);
 
-
   const handleMobileDotClick = (index, dotIndex) => {
     setMobileCurrentIndex(index);
   };
 
   const handleMobileNext = () => {
-    if (mobileCurrentIndex >= certs.length -1) {
+    if (mobileCurrentIndex >= certs.length - 1) {
       setMobileCurrentIndex(0);
       return;
     }
@@ -49,7 +47,7 @@ const Carousel = ({ certs }) => {
 
   const handleMobilePrev = () => {
     if (mobileCurrentIndex === 0) {
-      setMobileCurrentIndex(certs.length -1);
+      setMobileCurrentIndex(certs.length - 1);
       return;
     }
     setMobileCurrentIndex(mobileCurrentIndex - 1);
@@ -59,7 +57,9 @@ const Carousel = ({ certs }) => {
     <>
       <div className={styles.carousel}>
         <div
-          className={styles.twoCards}
+          className={`${styles.twoCards} ${
+            certs.length % 2 != 0 ? styles.isEvenCert : ""
+          }`}
           style={{
             transform: `translateX(${-currentDotIndex * 102.5}%)`,
           }}

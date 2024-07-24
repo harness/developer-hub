@@ -8,11 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-# Introduction to Commitment Orchestrator (Beta)
+:::info
 
-:::note
-Currently, Commitment Orchestrator is behind the feature flags `CCM_COMMORCH` and `CCM_COMM_SETUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+To enable Commitment Orchestrator please enable Commitment Orchestrator in the setup window for new connectors. For already established connectors, visit "Account Settings" and choose the connector and select Commitment Orchestrator in the edit window.
 :::
+
+# Introduction to Commitment Orchestrator 
 
 In recent years, organizations leveraging cloud services have witnessed a notable trend - the steady increase in cloud costs. As businesses increasingly migrate their operations to the cloud or expand their existing cloud infrastructure, the expenses associated with cloud infrastructure, storage, and data processing have become a significant portion of their overall expenditures.
 
@@ -82,15 +83,17 @@ Commitment Orchestrator does all of this with the help of its 2 engines: **Utili
 
 
 ## Getting Started
-Commitment Orchestrator can be found on our dashboard under [Cloud Costs module](https://app.harness.io/). Commitment Orchestrator can be easily setup from the dashboard itself by following these steps:
+Commitment Orchestrator can be found on our dashboard under [Cloud Costs module](https://app.harness.io/).   
+     
+Commitment Orchestrator can be easily setup from the dashboard itself by following these steps:
 ### Step 1 : Setting up the master account 
 
 You need to select the master account with the right permissions to be added via connector on which you want to enable orchestration. You can either select an existing connector for your master account or create one. 
 <DocImage path={require('./static/Step1.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
-### Step 2: Exclude Instance types 
-Commitment Orchestrator provides you with an option to choose the instances you would like to exclude when orchestrating instances for Compute Usage.
+### Step 2: Exclude Child Accounts and Instances
+Commitment Orchestrator provides you with an option to choose the child accounts and instances you would like to exclude when orchestrating for Compute Usage.
 <DocImage path={require('./static/Step2.png')} width="80%" height="80%" title="Click to view full size image" />
 
 :::important note 
@@ -109,7 +112,21 @@ After all the set-up steps, you can review and finalise your inputs.
 <DocImage path={require('./static/Step4.png')} width="80%" height="80%" title="Click to view full size image" />
 
 Post set-up, you can view your dashboard with all the information required . You can manipulate the information shown according to the filters such as Instances and Regions and see all the information related to Computer Coverage, Savings, Commitment Utilisation alongwith Log history. This way, the dashboard allows you to easily keep a track of your commitments and make informed decisions.
+
 <DocImage path={require('./static/Dashboard_CO.png')} width="80%" height="80%" title="Click to view full size image" />
+
+#### Interactive walkthrough for the same:
+ <iframe 
+     src="https://app.tango.us/app/embed/845a1973-c350-4d4e-b5cc-51ad3482c0f9" 
+     title="Set up Commitment Orchestrator" 
+     style={{minHeight:'640px'}}
+     width="100%" 
+     height="100%" 
+     referrerpolicy="strict-origin-when-cross-origin" 
+     frameborder="0" 
+     webkitallowfullscreen="webkitallowfullscreen" 
+     mozallowfullscreen="mozallowfullscreen" 
+     allowfullscreen="allowfullscreen"></iframe>
 
 ## Steps to configure:
 
@@ -162,7 +179,7 @@ The Commitment Orchestrator supports six action states currently:
 The Commitment Orchestrator facilitates the following:
 - **SP Purchase Plan**: We send out monthly recommendations for purchasing Compute SP (Savings Plans), provided there isn't an existing SP in place already. Upon receipt, you will have 24 hours to approve the request. If not approved within this timeframe, the recommendation will expire. However, rest assured that our systems will automatically regenerate the recommendation for your consideration.
   
-- **RI Purchase Plan**: Our system generates recommendations for purchasing Convertible Reserved Instances (RIs), multiple times throughout the month. Just like with Standard Purchase (SP) recommendations, you'll have a 24-hour window to approve these recommendations. Should you miss the window, new recommendations will be automatically generated to accommodate any changes in the compute spend. 
+- **RI Purchase Plan**: Our system generates recommendations for purchasing Convertible Reserved Instances (RIs), multiple times throughout the month. Just like with Savings Plands (SP) recommendations, you'll have a 24-hour window to approve these recommendations. Should you miss the window, new recommendations will be automatically generated to accommodate any changes in the compute spend. 
 Additionally, if there are no existing AWS EC2 t3.nano RIs, a seed RI (t3.nano) will be purchased. If any other RI exists, we will leverage it to obtain a t3.nano to ensure that the t3.nano also expires along with the original RI.
 
 - **RI Exchange Plan**: If you're considering exchanging RI, our system provides recommendations that will be generated multiple times daily. Whether you choose to approve individual exchanges or group them, you have the flexibility to manage your resources efficiently. Just like with purchase plans, recommendations may change based on the compute spend variations, and if not acted upon within 24 hours, they will expire and be regenerated automatically.
@@ -181,8 +198,16 @@ You can change and select the mode (either automatic approval or manual approval
 
 <DocImage path={require('./static/native_user_approval.png')} width="100%" height="100%" title="Click to view full size image" />
 
-## Beta features:
-In its Beta phase, the Commitment Orchestrator provides:
+## Savings and Pricing Computation for Commitment Orchestrator
+
+There are two major parts of savings as discussed earlier: Savings Plans (SPs) and Reserved Instances (RIs). If Harness has purchased them for you, those costs will be considered for pricing. We have introduced a new toggle that shows you savings by Harness, indicating how much of the savings were achieved through Harness. The savings achieved by SPs and RIs purchased via Harness are considered for pricing.
+
+- Savings are computed by directly pulling data from AWS and then evaluating what is saved against SPs and RIs.
+
+- For potential savings, the calculation is done as: ```(Ondemand Cost - RI Cost)* 24 * 30 * (Number of instances)```
+
+## Current features:
+
 1. **Enhanced Visibility**: Commitment Orchestrator gives insight into current account status, including detailed breakdowns of savings and resource utilization across all accounts and regions. (Requires visibility permission as part of the master account connector setup).
 2. **Convertible RI Support**: It allows easy purchasing of Convertible Reserved Instances (RI) to optimize cost-efficiency and flexibility in resource allocation.
 3. **Compute SP Purchase Support**: Commitment Orchestrator streamlines the purchase of Compute Savings Plans (SP) to maximize cost savings while maintaining compute coverage.
@@ -198,37 +223,40 @@ In its Beta phase, the Commitment Orchestrator provides:
 | IT Managers | IT Managers need detailed insights into commitments, utilization, and savings across multiple accounts and regions.| Visibility and Reporting: Commitment Orchestrator provides visibility into account breakdowns, savings, and utilization, supporting IT Managers in making informed decisions about cloud commitments and expenditures |
 | Organizations with multiple AWS accounts | Organizations with multiple AWS accounts seek flexibility in commitment management due to the ability to support multiple master accounts and set separate coverage for each of them. | Staggered Purchase to Prevent Overcommitment: Commitment Orchestrator's daily staggered purchases, orchestrated by administrators in multi-account structures, prevent overcommitments, ensuring financial flexibility and optimal resource allocation.|
 
+
 ## FAQs
 1. Which cloud providers are supported at the moment?
 
---> Currently, we support AWS Compute Saving Plans and Convertible RIs for EC2.
+-  Currently, we support AWS Compute Saving Plans and Convertible RIs for EC2.
 
 2. Is Audit trails support available?
 
---> In Beta version of CO, Audit trails are not supported but in upcoming GA release, it will be supported.
+-  Audit trails are supported but only if "Automated Actions with manual Approval" mode is selected when setting up the Commitment Orchestrator.
 
 3. How many Saving Plan purchases happen in a month?
 
---> Only 1 SP purchase happens on a month on the basis of the last rolling 12 months data.
+-  Only 1 SP purchase happens on a month on the basis of the last rolling 12 months data.
 
-4. How many RI purchases happen in a month?
+4. How many exchanges happen in a month?
 
---> It's a daily staggered and recurring purchase, and hence, can happen multiple times.
+- Number of exchanges depends on the requirement of the user.
 
-5. How many exchanges happen in a month?
+5. Where can I see the history of all the actions taken?
 
---> Number of exchanges depends on the requirement of the user.
+- In the visibility section, you can see all the actions under the logs
 
-6. Where can I see the history of all the actions taken?
+6. Is RBAC supported?
 
---> In the visibility section, you can see all the actions under the logs
+-  Yes, there are two permissions : view(Visibility) and edit (Setup)
 
-7. Is RBAC supported?
+7. Can orchestration be setup on any account?
 
---> Yes, as part of Beta there are two permissions : view(Visibility) and edit (Setup)
-8. Can orchestration be setup on any account?
+-  No, only master account with correct permission listed above will be allowed and it can be done for multiple master accounts.
 
---> No, only master account with correct permission listed above will be allowed and at a time only one account can be set up.
+9. When does Harness make RI purchase?
+
+- If the account does not have any RI in a given region.
+
 
 
 

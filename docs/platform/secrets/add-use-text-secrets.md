@@ -58,6 +58,12 @@ To create a text secret:
 
 7. Select **Save**.
 
+  :::warning
+
+   Inline secrets of text types deleted in Harness are also deleted from the external secrets manager. Harness recommends that you always back up these secrets.
+   :::
+   
+
 ### Secret scope
 
 You can add text secrets at the account, organization, or project scope.

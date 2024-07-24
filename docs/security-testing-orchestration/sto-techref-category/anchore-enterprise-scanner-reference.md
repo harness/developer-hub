@@ -1,20 +1,26 @@
 ---
-title: Anchore Enterprise scanner reference for STO
+title: Anchore Enterprise step configuration
 description: Scan container images with Anchore Enterprise.
-sidebar_label: Anchore Enterprise scanner reference
+sidebar_label: Anchore Enterprise step configuration
 sidebar_position: 20
 ---
 
 <DocsTag   text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview/#extraction-scans-in-sto" />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline/" />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/extraction-scans" />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
 You can scan your container images with [Anchore Enterprise](https://docs.anchore.com/current/docs/).
 
 ## Important notes for running Anchore Enterprise scans in STO
+
+### Anchore Enterprise requirements
+
+- You must use the Anchore v2 API and Anchore Enterprise Server v5.0 or higher to run orchestration and extraction scans.
+
+- When you're deploying an Anchore Enterprise server, expose port 8228. This is the port that Harness uses to communicate with the server.
 
 ### All data ingestion methods are supported
 
@@ -185,7 +191,7 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 
 #### Image Name
 
-For Extraction scans, the name of the image that you want to extract from Anchore. 
+The name of the image that you want to extract from Anchore. In Extraction mode, the image to scan must be located on the Anchore server. You should include both the image name and tag, for example, `ubuntu:20.04`.
 
 
 ### Log Level

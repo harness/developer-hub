@@ -11,8 +11,8 @@ Windows CPU stress applies stress on the CPU resources of Windows OS VM.
 ## Use cases
 
 - Windows CPU stress determines the resilience of an application when stress is applied on the CPU resources of Windows VM.
-- Windows CPU stress simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
-- It helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition. 
+- Windows CPU stress simulates the situation of lack of CPU for processes running on the application, which degrades their performance.
+- It helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition.
 - It verifies the autopilot functionality of cloud managed clusters.
 
 ## Prerequisites
@@ -82,7 +82,7 @@ spec:
           fault: windows-cpu-stress
           env:
            # CPU cores for stress
-            - name: CPU_CORES 
+            - name: CPU_CORES
               value: '1'
 ```
 
@@ -110,7 +110,7 @@ spec:
           fault: windows-cpu-stress
           env:
            # CPU cores for stress
-            - name: CPU_PERCENTAGE 
+            - name: CPU_PERCENTAGE
               value: '50'
 ```
 

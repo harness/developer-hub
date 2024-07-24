@@ -79,7 +79,13 @@ To create or edit Business Alignment profiles:
 * Select **Business Alignment** under **Profiles**.
 * To create a profile, select **+New Business Alignment Profile**. To edit an existing profile, select the profile's name in the profiles list.
 
-### Step 2: Add Categories
+### Step 2: Select the Issue Management System
+
+Select your **Issue Management System** as either **Jira** or **Azure DevOps**. The custom fields for configuring filters on the categories will dynamically change based on the selected platform.
+
+![](./static/ba-select-im.png)
+
+### Step 3: Add Categories
 
 To add a custom **Category** to the profile configuration:
 
@@ -94,7 +100,7 @@ Note that for each Category, you can define its own separate set of **Filters** 
 
 For each category, you can define its own set of **Filters** and **Allocation goals**.
 
-### Step 3: Add Filters for Categories
+### Step 4: Add Filters for Categories
 
 For each category, you can define its own set of **Filters** and **Allocation goals**. **Filters** are the criteria that determine what kind of work or tasks fall into each category.
 
@@ -106,7 +112,7 @@ To set up these Filters:
 
 ![](./static/filter-sets.png)
 
-### Step 4: Define the Scope of Fetching Tickets
+### Step 5: Define the Scope of Fetching Tickets
 
 This allows you to define how broadly you gather ticket data based on your Filters. Select one of the following options:
 
@@ -121,13 +127,13 @@ You also have the option to add a combination of multiple **Filter Sets** under 
 
 ![](./static/scope-fetch-tickets-advanced.png)
 
-### Step 5: Define the Allocation Goals
+### Step 6: Define the Allocation Goals
 
 Finally, you will set the allocation goals for each category. This involves deciding how much of your team's time and effort should ideally go into each category.
 
 * Set an ideal resource allocation range as a percentage. This is your target for how much effort should go into each category.
 * You can also customize what is considered an acceptable range. This gives some flexibility while still aligning with your overall objectives.
 
-### Step 6: Save the profile
+### Step 7: Save the profile
 
 Once the profile settings have been configured, you can **Save** the profile. <br /> <br />You can select the newly created Business Alignment profile in the Business Alignment report widget to generate insights which can help you align your engineering work with business goals, ensuring that time and effort are spent where they're most valuable. To learn more about how the Alignement metrics are calculated, go to the [Business Alignment report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report).

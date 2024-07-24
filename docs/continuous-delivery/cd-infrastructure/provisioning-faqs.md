@@ -450,5 +450,7 @@ Harness lets users run AWS CDK Workloads via the Container Based Steps.
 Please follow more on this [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/)
 
 
+### Why isn't my environment variable working in Terraform Plan or Apply?
 
+Some environment variables are exclusive to Terraform Enterprise or Terraform Cloud. For example, `TFE_PARALLLELISM` is a Terraform Enterprise environment variable that is not supported by the Terraform CLI. In order to use these environment variables, please make sure to use either Terraform Enterprise or Terraform Cloud.
 

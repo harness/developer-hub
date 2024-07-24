@@ -10,7 +10,7 @@ RDS instance delete removes an instances from AWS RDS cluster. This makes the cl
 ![RDS Instance Delete](./static/images/rds-instance-delete.png)
 
 ## Use cases
-RDS instance delete determines how quickly an application can recover from an unexpected RDS cluster deletion. 
+RDS instance delete determines how quickly an application can recover from an unexpected RDS cluster deletion.
 
 ### Prerequisites
 - Kubernetes >= 1.17
@@ -32,7 +32,7 @@ RDS instance delete determines how quickly an application can recover from an un
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -69,12 +69,12 @@ Below is an example AWS policy to execute the fault.
         <th> Description </th>
         <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
         <td> CLUSTER_NAME </td>
         <td> Name of the target RDS cluster</td>
         <td> For example, rds-cluster-1. For more information, go to <a href="#rds-cluster-name"> RDS cluster name.</a> </td>
         </tr>
-        <tr> 
+        <tr>
         <td> RDS_INSTANCE_IDENTIFIER </td>
         <td> Name of the target RDS Instances</td>
         <td> For example, rds-cluster-1-instance. For more information, go to <a href="#rds-instance-identifier"> RDS instance identifier.</a></td>
@@ -108,7 +108,7 @@ Below is an example AWS policy to execute the fault.
         <td> It defines sequence of chaos execution for multiple instance</td>
         <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Provide the path for AWS secret credentials</td>
         <td> Default: <code>/tmp/cloud_config.yml</code> </td>
@@ -150,8 +150,8 @@ spec:
         - name: TOTAL_CHAOS_DURATION
           value: '60'
 ```
-### RDS instance identifier 
- 
+### RDS instance identifier
+
 RDS instance name. Tune it by using the `RDS_INSTANCE_IDENTIFIER` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
@@ -172,7 +172,7 @@ spec:
     spec:
       components:
         env:
-        # provide the RDS instance identifier 
+        # provide the RDS instance identifier
         - name: RDS_INSTANCE_IDENTIFIER
           value: 'rds-demo-instance-1,rds-demo-instance-2'
         - name: INSTANCE_AFFECTED_PERC

@@ -394,6 +394,10 @@ Yes, it is possible to do so.
 
 Cloud Asset Governance uses pricing from the customer's CUR to calculate savings generated. Please check if your cloud spend data is available in Cloud Cost Management Perspectives.
 
+### How many spending subscriptions are reported with governance recommendations in Harness CCM?
+
+At present, 15 per cloud are reported.
+
 ### I created custom governance rules, but I haven't seen any recommendations generated for them?
 
 Currently, we don't compute or show savings corresponding to custom asset governance rules. We only show savings corresponding to a few out-of-the-box rules, which we have selected for recommendations.

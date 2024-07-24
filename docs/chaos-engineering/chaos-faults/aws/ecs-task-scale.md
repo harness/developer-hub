@@ -10,7 +10,7 @@ ECS task scale is an AWS fault that injects chaos to scale (up or down) the ECS 
 
 ## Use cases
 ECS task scale:
-- Affects the availability of a task in a cluster. 
+- Affects the availability of a task in a cluster.
 - Determines the resilience of an application when ECS tasks are unexpectedly scaled up (or down).
 
 ### Prerequisites
@@ -34,7 +34,7 @@ stringData:
 ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS permission to help execute the fault.
@@ -70,7 +70,7 @@ Below is an example AWS permission to help execute the fault.
         <th> Description </th>
         <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
         <td> CLUSTER_NAME </td>
         <td> Name of the target ECS cluster.</td>
         <td> For example, <code>cluster-1</code>. For more information, go to <a href="#ecs-service-name"> ECS cluster name.</a></td>
@@ -119,7 +119,7 @@ Below is an example AWS permission to help execute the fault.
 
 ### ECS service name
 
-Comma-separated serice names that derives the task. Tune it by using the `SERVICE_NAMES` environment variable. 
+Comma-separated service names that derives the task. Tune it by using the `SERVICE_NAMES` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 

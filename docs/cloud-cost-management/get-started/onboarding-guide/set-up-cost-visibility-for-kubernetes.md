@@ -64,13 +64,8 @@ You must not rename the cluster. If you're setting up a new connector with this 
 
 #### Delegate size requirements
 
-Your Kubernetes cluster must have unallocated resources required to run the Harness Delegate workload:
+Your Kubernetes cluster must have unallocated resources required to run the Harness Delegate workload.
 
-  - Laptop - 2GB memory, 0.5CPU
-  - Small - 4GB memory, 1CPU
-  - Medium - 8GB memory, 2CPU
-  - Large - 16GB memory, 4CPU
-  - 
 **Baseline Configuration:**
 For clusters with up to 200 nodes and 4000 pods, each delegate should be configured with:
 - 2 vCPUs

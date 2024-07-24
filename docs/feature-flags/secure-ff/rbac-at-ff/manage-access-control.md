@@ -68,7 +68,7 @@ For the Organization level, open the same account settings and proceed to **Orga
 
 To set roles and permissions at the Project level, navigate to the **Project** section from the module navigation bar, and select **Access Control**. Follow similar steps as above to establish the roles and permissions for the project level.
 
-## Creating and Managing Resorce Groups
+## Creating and Managing Resource Groups
 
 Here's how you can create and manage resource groups for the Feature flags and Target Management at the account level. Additionally, you can refer to [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups.md) document to learn more.
 
@@ -79,14 +79,30 @@ Here's how you can create and manage resource groups for the Feature flags and T
  3. Set the "Resource Scope" accordingly if you are creating one.
  4. Within the Resources, select **Feature Flags**, **Proxy Keys**, or both if that's what you require.
 
+## Managing Feature Flags by Tags
+
+Harness allows you to manage Feature Flags more granularly by using tags. By assigning specific tags to users within a Resource Group, you can control which Feature Flags they can interact with. This functionality enhances security and ensures users only have access to relevant Feature Flags.
+
+If a user has the resource group ‘Feature Flag by tag’ assigned, the following rules apply:
+
+ - **Toggle Permissions**: Users will not be able to toggle flags that have no tags.
+ - **Edit Config Permissions**: Users will not be able to edit the configuration of flags with no tags.
+ - **Tag-Specific Config Permissions**: Users will only be able to edit the configuration of flags that have the tag(s) defined in their resource group.
+
+:::info
+If you'd like to learn more about the Tagging Feature, you can head over to the Harness [Tagging Management on Feature Flags](/docs/feature-flags/use-ff/ff-creating-flag/tag_management.md) here.
+:::
+
+By following these steps, you can ensure that users are only able to interact with the Feature Flags that have the specific tags assigned to their resource groups, providing a finer level of access control.
+
 ## See also
 
 The following topics can help you understand how to implement Access Control:
 
-* [Create, Edit And Delete A Feature Flag](../../ff-creating-flag/edit-and-delete-a-feature-flag.md)
+* [Create, Edit And Delete A Feature Flag](../../use-ff/ff-creating-flag/edit-and-delete-a-feature-flag.md)
 * [Roles and Permissions in Feature Flags](../ff-security-compliance/roles-and-permissions.md)
 * [Manage users](/docs/platform/role-based-access-control/add-users)
 * [Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
 * [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups.md)
 * [Manage Roles](/docs/platform/role-based-access-control/add-manage-roles.md)
-
+* [Tagging Management on Feature Flags](/docs/feature-flags/use-ff/ff-creating-flag/tag_management.md)

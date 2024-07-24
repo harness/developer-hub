@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic explains steps to create policies using the Harness Policy As Code and apply them to your pipeline steps. Harness Policy As Code uses the Open Policy Agency (OPA) to store policies on the Harness Platform. For more information, go to [Harness Policy As Code Overview](/docs/feature-flags/harness-policy-engine).
+This topic explains steps to create policies using the Harness Policy As Code and apply them to your pipeline steps. Harness Policy As Code uses the Open Policy Agency (OPA) to store policies on the Harness Platform. For more information, go to [Harness Policy As Code Overview](/docs/feature-flags/troubleshoot-ff/harness-policy-engine).
 
 ## Before you begin
 
-- See [Harness Policy As Code Overview](/docs/feature-flags/harness-policy-engine).
+- See [Harness Policy As Code Overview](/docs/feature-flags/troubleshoot-ff/harness-policy-engine).
 - Make sure you have set up a project and a working pipeline in the Harness platform.
 - Policies use OPA authoring language Rego. For more information, go to:
   - [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).

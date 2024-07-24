@@ -11,11 +11,6 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-:::info
-
-Presently this Feature is behind the Feature Flag `IDP_ENABLE_STAGE`, please contact with [Harness Support](mailto:support@harness.io) to enable it in your Account. 
-
-:::
 
 The self-service flow in IDP is powered by the Harness Pipelines. A stage is a part of a pipeline that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
 
@@ -600,6 +595,77 @@ The Slack Secret Key are the [Bot-tokens](https://api.slack.com/authentication/t
 Read more on [how to create bot-tokens](https://api.slack.com/start/quickstart#scopes). 
 
 1. Now create a new secret and add this as a **Secret** under the **Slack Secret Key**.
+
+### 8. Create Resource
+
+This step in developer portal stage allows you to **execute only OpenTofu (Open Source Terraform) module related to [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs)** to create or update resources. You can use this step to create Harness entities like projects, users, connectors, pipelines, secrets, etc.
+
+<Tabs>
+<TabItem value="YAML" label="YAML">
+
+```YAML
+- step:
+    type: CreateResource
+    name: CreateResource_1
+    identifier: CreateResource_1
+    spec:
+      resourceDefinition: |-
+        resource "harness_platform_pipeline" "pipeline" {
+          identifier = "identifier"
+          org_id     = "orgIdentifier"
+          project_id = "projectIdentifier"
+          name       = "name"
+          yaml = <<-EOT
+            pipeline:
+              name: name
+              identifier: identifier
+              projectIdentifier: projectIdentifier
+              orgIdentifier: orgIdentifier
+              stages:
+                - stage:
+                    name: idp
+                    identifier: idp
+                    description: ""
+                    type: IDP
+                    spec:
+                      platform:
+                        os: Linux
+                        arch: Amd64
+                      runtime:
+                        type: Cloud
+                        spec: {}
+                      execution:
+                        steps:
+                          - step:
+                              type: Run
+                              name: Run_1
+                              identifier: Run_1
+                              description: <+input>
+                              spec:
+                                shell: Sh
+                                command: echo "Hello"
+                    tags: {}
+          EOT
+        }
+      xApiKey: Harness PAT for the account you want to create the pipeline
+```
+This step comes with a sample **Resource Definition** to create a Harness Pipeline with a Run Step. This contains dummy values, hence won't work consider replacing it with the resource definition of yours. Also refer to [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you with Harness Resource definitions.
+
+The `xApiKey` is the [Harness PAT](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/) for the account where you want to create the pipeline.
+
+</TabItem>
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
+
+- You can select the step **Create Resource** from the **Step Library**. 
+
+![](./static/create-resourcesl.png)
+
+- You can add a **Name** to the step followed by adding the **Resource Definition** and create a Harness Entity using Resources supported by our [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs). You'll find an already existing sample **Resource Definition** by default, that can create a Harness Pipeline with a **Run Step**.  
+
+![](./static/create-resource-step.png)
+
+</TabItem>
+</Tabs>
 
 ## Final Pipeline using Developer Portal Stage
 

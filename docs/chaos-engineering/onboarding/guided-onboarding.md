@@ -1,13 +1,13 @@
 ---
 sidebar_position: 7
 title: Guided onboarding
-description: Customize experiment creation in every step with HCE
+description: Customize experiment creation in every step with HCE.
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This topic describes the following operations:
+This topic describes the following operations that constitute the guided onboarding:
 1. [Create an environment.](#select-an-environment)
 2. [Create an infrastructure.](#select-an-infrastructure)
 3. [Automatically discover services on your cluster.](#automatically-create-discovery-agent)
@@ -18,41 +18,40 @@ This topic describes the following operations:
 ## Before you begin, review the following:
 
 * [What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
-* [Delegate driven Harness infrastructure](/docs/chaos-engineering/onboarding/harness-infra/harness-infra.md)
+* [Dedicated Harness infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/harness-infra.md)
 * [Onboarding overview](/docs/chaos-engineering/onboarding/hce-onboarding)
 * [HCE automated onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding)
+* [Create infrastructure before onboarding](/docs/chaos-engineering/onboarding/hce-onboarding#prerequisites-to-automated-and-guided-onboarding)
 
 :::tip
 Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
 :::
 
 ### What is guided onboarding?
-Guided onboarding, as the name suggests, guides you through creating a chaos experiment without the hassle of installing infrastructure, with the click of a button.
+Guided onboarding, as the name suggests, guides you through creating a chaos experiment  with minimal choices for you to make during the process.
 
-For example, you can [click a button to create an environment](/docs/chaos-engineering/onboarding/guided-onboarding#select-an-environment) and HCE creates an environment in the background. On the same lines, you can click a button to install a chaos infrastructure in the environment you created earlier.
+For example, you can [select a button to create an environment](/docs/chaos-engineering/onboarding/guided-onboarding#select-an-environment) and HCE creates an environment in the background. On the same lines, you can click a button to use a chaos infrastructure in the environment you created earlier.
 
 ### Why choose guided onboarding?
 - Guided onboarding gives you multiple options at every step so you know the entire process of creating a chaos experiment and executing it.
 - At every step, you have the option of allowing HCE to create the entity for you or you can choose to customize the entity creation too.
 - The level of granularity is, that HCE will suggest experiments for you based on earlier steps (application maps and so on) and you can create experiments. But to execute them, you have to select the **Run** button.
 
-If you chose to onboard with guidance, follow the steps below.
+### How to onboard with guided onboarding?
+
+If you chose to onboard with guidance, that is, selected **No, I will choose** [here](/docs/chaos-engineering/onboarding/hce-onboarding#automated-and-guided-onboarding), follow the steps below.
 
 ### Select an environment
 
 1. Select an environment from a list of environments and select **Next**. It might take a while to set up the environment.
 
-    ![](./static/guided/select-env-2.png)
+        ![](./static/guided/go-1.png)
 
 ### Select an infrastructure
 
-2. Select an infrastructure from the list and select **Next**.
+2. You can see that the infrastructure says **Already in use**. This means you can't use this infrastructure, and you need to [create a new one](/docs/chaos-engineering/onboarding/hce-onboarding#prerequisites-to-automated-and-guided-onboarding). Now, you can select an infrastructure from the list and select **Apply**.
 
-    ![](./static/guided/select-infra-3.png)
-
-3. The next step verifies some permissions by running pre-configured checks, after which you can select **Next**.
-
-    ![](./static/guided/run-checks-4.png)
+        ![](./static/guided/go-2.png)
 
 ### Automatically create Discovery Agent
 
@@ -112,7 +111,7 @@ This creates application maps and lists them on the UI.
 
     ![](./static/guided/list-map-10.png)
 
-9. You can choose between **Basic**, **Intermediate**, and **Advanced** chaos experiments (categorized based on their blast radius). Select **Create Experiments** to initiate the process.
+9. HCE recommends experiments of different complexity (classified based on blast radius of the experiment). You can choose between **Basic**, **Intermediate**, and **Advanced** chaos experiments (categorized based on their blast radius). Select **Create Experiments** to initiate the process.
 
     ![](./static/guided/choose-exp-17.png)
 
@@ -154,5 +153,5 @@ Congratulations! You have successfully:
 Don't forget to check other walkthroughs! Some of them are listed below.
 
 * [Run your first chaos experiment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md)
-* [Executing experiments in a sandbox](/docs/chaos-engineering/certifications/run-experiments-in-sandbox.md)
+* [Executing experiments in a sandbox](/docs/chaos-engineering/onboarding/certifications/run-experiments-in-sandbox.md)
 * [Create chaos experiments from scratch](/docs/chaos-engineering/get-started/tutorials/chaos-experiment-from-blank-canvas.md)

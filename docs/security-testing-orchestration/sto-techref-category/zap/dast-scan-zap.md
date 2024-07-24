@@ -119,7 +119,7 @@ Add a [**Zap**](/docs/security-testing-orchestration/sto-techref-category/zap/za
   - `name:` A name for the step.
   - `identifier:` A unique step ID.
   - `spec :`
-    - `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview)
+    - `mode :` [`orchestration`](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview)
     - [`config`](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#scan-configuration) `: default # | standard | attack | quick`
       - `target : `
         - `name : https://myorg.org/welcome`
@@ -161,7 +161,7 @@ Here's a YAML example for scanning a [Google Gruyere instance](#set-up-your-app-
 
 1. Run the pipeline and then wait for the execution to finish.
 
-2. Select [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) and examine any issues detected by your scan.
+2. Select [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results) and examine any issues detected by your scan.
 
    ![view scan results](./static/dast-scans-zap/view-dast-scan-results.png)
 

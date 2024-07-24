@@ -9,7 +9,7 @@ redirect_from:
 
 This tutorial shows you how to scan your container images using [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool.
 
-In this tutorial, you'll set up a simple [orchestration workflow](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) with two steps:
+In this tutorial, you'll set up a simple [orchestration workflow](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline) with two steps:
 
 1. A Background step that runs Docker-in-Docker as a service. This is required for any orchestrated or dataload scan of a container image.
 
@@ -24,9 +24,9 @@ In this tutorial, you'll set up a simple [orchestration workflow](/docs/security
   - A Harness account and STO module license.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
   - A basic understanding of key STO concepts and good practices is highly recommended. Here are some good resources: 
-    - [Your first STO pipeline](../../get-started/your-first-sto-pipeline)
+    - [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline)
     - [Key Concepts in STO](/docs/category/key-concepts-in-sto)
-  - A [connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) to the Docker v2-compliant registry with the image you want to scan. 
+  - A [Harness connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) to the Docker v2-compliant registry with the image you want to scan. 
     This tutorial uses an [example image on Docker Hub](https://hub.docker.com/r/snyklabs/goof) that contains known vulnerabilities.
 
 :::
@@ -97,7 +97,7 @@ Add an **Aqua Trivy** step to your pipeline after the DinD background step and c
    *  `name:` A name for the step.
    *  `identifier:` A unique step ID.
    *  `spec :`
-      -  `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step. 
+      -  `mode :` [`orchestration`](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step. 
       -  `config: default`
       - `target : ` 
           - `name : <+input>` 
