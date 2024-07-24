@@ -239,3 +239,6 @@ src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla
 
 #STO Roadmap
 src/components/Roadmap/data/stoData.ts @tejakummarikuntla
+
+#Reference Architectures
+/kb/reference-architectures @RajiKoppala @rssnyder 
