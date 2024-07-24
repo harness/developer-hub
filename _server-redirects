@@ -62,4 +62,59 @@
 # Added by ravilach on 7-11-2024 for Broken FF Category 
 /docs/category/use-feature-flag-sdks /docs/category/use-ff-sdks
 
+# Added by jenniferopal on 7-24-2024 for feature flag missing redirects 
+/docs/feature-flags/connect-monitored-service docs/feature-flags/use-ff/connect-monitored-service
+/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline docs/feature-flags/use-ff/ff-build-pipeline/build-feature-flag-pipeline
+/docs/feature-flags/ff-build-pipeline/default-pipeline-ff docs/feature-flags/use-ff/ff-build-pipeline/default-pipeline-ff
+/docs/feature-flags/add-prerequisites-to-feature-flag docs/feature-flags/use-ff/ff-creating-flag/add-prerequisites-to-feature-flag
+/docs/feature-flags/ff-creating-flag/create-a-feature-flag docs/feature-flags/use-ff/ff-creating-flag/create-a-feature-flag
+/docs/feature-flags/ff-creating-flag/create-a-project docs/feature-flags/use-ff/ff-creating-flag/create-a-project
+/docs/feature-flags/ff-creating-flag/edit-and-delete-a-feature-flag docs/feature-flags/use-ff/ff-creating-flag/edit-and-delete-a-feature-flag
+/docs/feature-flags/ff-creating-flag/editing-rules-and-config docs/feature-flags/use-ff/ff-creating-flag/editing-rules-and-config
+/docs/feature-flags/ff-creating-flag/enable-or-disable-a-feature-flag docs/feature-flags/use-ff/ff-creating-flag/enable-or-disable-a-feature-flag
+/docs/feature-flags/ff-creating-flag/filtering-flags-by-state docs/feature-flags/use-ff/ff-creating-flag/filtering-flags-by-state
+/docs/feature-flags/integrate-feature-flag-with-jira docs/feature-flags/use-ff/ff-creating-flag/integrate-feature-flag-with-jira
+/docs/feature-flags/ff-creating-flag/manage-stale-flags docs/feature-flags/use-ff/ff-creating-flag/manage-stale-flags
+/docs/feature-flags/ff-creating-flag/manage-variations docs/feature-flags/use-ff/ff-creating-flag/manage-variations
+/docs/feature-flags/ff-creating-flag/tag-management docs/feature-flags/use-ff/ff-creating-flag/tag_management
+/docs/feature-flags/ff-creating-flag/using-ff-ccm docs/feature-flags/use-ff/ff-creating-flag/using-ff-ccm
+/docs/feature-flags/ff-data/anonymous-users-maus docs/feature-flags/use-ff/ff-data/anonymous-users-maus
+/docs/feature-flags/ff-data/dashboard docs/feature-flags/use-ff/ff-data/dashboard
+/docs/feature-flags/ff-data/view-activities-of-a-feature-flag docs/feature-flags/use-ff/ff-data/view-activities-of-a-feature-flag
+/docs/feature-flags/ff-data/view-metrics docs/feature-flags/use-ff/ff-data/view-metrics
+/docs/feature-flags/ff-sdks/client-sdks/android-sdk-reference docs/feature-flags/use-ff/ff-sdks/client-sdks/android-sdk-reference
+/docs/feature-flags/ff-sdks/client-sdks/flutter-sdk-reference docs/feature-flags/use-ff/ff-sdks/client-sdks/flutter-sdk-reference
+/docs/feature-flags/ff-sdks/client-sdks/ios-sdk-reference docs/feature-flags/use-ff/ff-sdks/client-sdks/ios-sdk-reference
+/docs/feature-flags/ff-sdks/client-sdks/java-script-sdk-references docs/feature-flags/use-ff/ff-sdks/client-sdks/java-script-sdk-references
+/docs/feature-flags/ff-sdks/client-sdks/react-client docs/feature-flags/use-ff/ff-sdks/client-sdks/react-client
+/docs/feature-flags/ff-sdks/client-sdks/react-native-sdk-reference docs/feature-flags/use-ff/ff-sdks/client-sdks/react-native-sdk-reference
+/docs/feature-flags/ff-sdks/client-sdks/xamarin-sdk-reference docs/feature-flags/use-ff/ff-sdks/client-sdks/xamarin-sdk-reference
+/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks
+/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags docs/feature-flags/use-ff/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags
+/docs/feature-flags/ff-sdks/sdk-overview/sdk-version-policy docs/feature-flags/use-ff/ff-sdks/sdk-overview/sdk-version-policy
+/docs/feature-flags/ff-sdks/server-sdks/apex-sdk-reference docs/feature-flags/use-ff/ff-sdks/server-sdks/apex-sdk-reference
+/docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference docs/feature-flags/use-ff/ff-sdks/server-sdks/erlang-sdk-reference
+/docs/feature-flags/ff-sdks/server-sdks/feature-flag-sdks-go-application docs/feature-flags/use-ff/ff-sdks/server-sdks/feature-flag-sdks-go-application
+/docs/feature-flags/ff-sdks/server-sdks/integrate-feature-flag-with-java-sdk docs/feature-flags/use-ff/ff-sdks/server-sdks/integrate-feature-flag-with-java-sdk
+/docs/feature-flags/ff-sdks/server-sdks/net-sdk-reference docs/feature-flags/use-ff/ff-sdks/server-sdks/net-sdk-reference
+/docs/feature-flags/ff-sdks/server-sdks/node-js-sdk-reference docs/feature-flags/use-ff/ff-sdks/server-sdks/node-js-sdk-reference
+/docs/feature-flags/ff-sdks/server-sdks/php-sdk-reference docs/feature-flags/use-ff/ff-sdks/server-sdks/php-sdk-reference
+/docs/feature-flags/ff-sdks/server-sdks/python-sdk-reference docs/feature-flags/use-ff/ff-sdks/server-sdks/python-sdk-reference
+/docs/feature-flags/ff-sdks/server-sdks/ruby-sdk-reference docs/feature-flags/use-ff/ff-sdks/server-sdks/ruby-sdk-reference
+/docs/feature-flags/ff-using-flags/ff-target-management/add-target-groups docs/feature-flags/use-ff/ff-target-management/add-target-groups
+/docs/feature-flags/ff-using-flags/ff-target-management/add-targets docs/feature-flags/use-ff/ff-target-management/add-targets
+/docs/feature-flags/ff-using-flags/ff-target-management/target-users-with-flag docs/feature-flags/use-ff/ff-target-management/targeting-users-with-flags
+/docs/feature-flags/relay-proxy/cache_options docs/feature-flags/use-ff/relay-proxy/cache_options
+/docs/feature-flags/relay-proxy/configuration docs/feature-flags/use-ff/relay-proxy/configuration
+/docs/feature-flags/relay-proxy/debugging docs/feature-flags/use-ff/relay-proxy/debugging
+/docs/feature-flags/relay-proxy/deploy-relay-proxy docs/feature-flags/use-ff/relay-proxy/deploy-relay-proxy
+/docs/feature-flags/relay-proxy/inbound_endpoints docs/feature-flags/use-ff/relay-proxy/inbound_endpoints
+/docs/feature-flags/relay-proxy/monitoring docs/feature-flags/use-ff/relay-proxy/monitoring
+/docs/feature-flags/relay-proxy/offline docs/feature-flags/use-ff/relay-proxy/offline
+/docs/feature-flags/relay-proxy/outbound_endpoints docs/feature-flags/use-ff/relay-proxy/outbound_endpoints
+/docs/feature-flags/ff-using-flags/relay-proxy/relay-proxy docs/feature-flags/use-ff/relay-proxy/relay-proxy
+/docs/feature-flags/relay-proxy/relay_proxy_v2 docs/feature-flags/use-ff/relay-proxy/relay_proxy_v2
+/docs/feature-flags/relay-proxy/sample_curl_requests docs/feature-flags/use-ff/relay-proxy/sample_curl_requests
+/docs/feature-flags/relay-proxy/tls docs/feature-flags/use-ff/relay-proxy/tls
+
 # Redirects generated from Front Matter [sytem generated goes below here]:
