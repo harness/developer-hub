@@ -1948,13 +1948,28 @@ When the Connector URL for job execution is enabled, the system uses the connect
 
 Enabling the Connector URL option affects the job execution process by modifying the way the job trigger URL is formed. Instead of using the internal IP address from the job URL obtained in the first API call, the system will only take the job identifier details from the response. It then combines these details with the connector URL to form the second API call URL. This ensures that the URL used to trigger the job is correct and reachable, preventing potential failures due to inaccessible internal IP addresses.
 
+### Why is my Rollback step being skipped even though I don't have an Execution Condition?
+
+This can happen if the `If the pipeline executes successfully up to this point (default)` option is selected in the Conditional Execution configuration of the step. If this option is selected, the Rollback Step won't be able to run due to the failure of the pipeline. By default, Rollback steps are only ran if the pipeline deployment fails. When this option is selected for a Rollback step, the pipeline would not have executed successfully causing the step to be skipped.
+
+### Why is my Helm Deployment failing with a `resource name may not be empty` error even though the Helm Template command works fine?
+
+```
+Error INSTALLATION FAILED: rendered manifests contain a resource that already exists. Unable to continue with install: could not get information about the resource Deployment "" in namespace "$NAMESPACE": resource name may not be empty
+```
+
+This issue is caused by a misconfiguration in the Helm Chart files. Either the `values.yaml` file or Helm manifests themselves is not properly formatted or providing a valid value for a resource name. `helm template` does not lint Helm Charts or check for syntax errors. `helm template` only returns the output of the Helm Chart exactly how it is defined. To resolve this, try using `helm lint` on the manifest files and checking if there are any linting issues with the Helm Chart.
 
 
+### Will the ECS deploy feature create new resources based on the service configuration file like service/task/scaling policy/scaling target or do we need to create the infra before ECS deploy?
+
+Yes, ECS Deploy will deploy any files specified in the Service. If a Service/Task/Scaling Policy/Scaling Target are specified, the ECS Deploy stage will deploy all of those. If you only specify a Scaling Target, ECS Deploy will only deploy that single resource. 
 
 
+### Why am I getting a `stageIdentifier` error when creating a trigger through the Harness API?
 
+```
+Failed while Saving Trigger: stageIdentifier can not be blank/missing. artifactRef can not be blank/missing.
+```
 
-
-
-
-
+This error happens when specifying the `withServiceV2` parameter of the API. By default, this value is `false` however, if using ServiceV2, it needs to be set to `true`.
