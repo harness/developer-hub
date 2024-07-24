@@ -456,4 +456,4 @@ Some environment variables are exclusive to Terraform Enterprise or Terraform Cl
 
 ### Does AWS CDK still require feature flags to be set in order to use?
 
-AWS CDK is Globally Available and does not require any Feature Flags to enable and use. For more information, please refer to the [AWS CDK Provisioning](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/) documentation.
+AWS CDK is globally available and does not require any feature flags to enable and use. For more information, please go to [AWS CDK Provisioning](/docs/continuous-delivery/cd-infrastructure/aws-cdk/).
