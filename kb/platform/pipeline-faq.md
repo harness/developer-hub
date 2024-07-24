@@ -681,3 +681,12 @@ The `main.tf` sample file includes a delegate token option, facilitating automat
 ### What are there discrepancies between the user list, access control, and dashboard?
 
 Harness includes user login data in audit history, but it's not structured for analytics purposes. Creating a custom view for this data isn't currently supported.
+
+### Can we setup separate failure strategy for individual step in step group
+
+No, Failure strategy applies to all step within step group.
+
+### How to restrict a user with approval if the same user ran the pipeline
+
+You can select the option, Disallow the executor from approving the pipeline option while using Harness Approval step
+
