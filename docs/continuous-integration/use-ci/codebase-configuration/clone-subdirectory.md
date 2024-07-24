@@ -4,13 +4,27 @@ description: Use a Run step to clone a subdirectory instead of an entire repo.
 sidebar_position: 30
 ---
 
-If you want to clone a subdirectory instead of your entire Git repo, you can disable the pipeline's default codebase and then run your `git` commands in a **Run** step.
+If you want to clone a subdirectory instead of your entire Git repo, you can do a [sparse checkout on given patterns](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set). The subset of files is chosen by providing a list of directories in cone mode.
+
+## Clone a subdirectory using built-in clone codebase functionality or git clone step. 
+
+When you [configure a codebase](./create-and-configure-a-codebase.md), you can specify a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set) to clone a subdirectory instead of the entire repo.
+
+<DocImage path={require('./static/clone-subdirectory-sparse-checkout-1.png')} />
+
+Similarly, you can use the built-in [git clone step](docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step) to clone a subdirectory instead of the entire repo.
+
+<DocImage path={require('./static/clone-subdirectory-sparse-checkout-2.png')} />
+
+## Clone a subdirectory using a Run step
+
+You can disable the pipeline's default codebase and then run your `git` commands in a [Run](../../../continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/) step.
 
 You can also use this pattern if you need to use specific `git clone` arguments to clone your codebase.
 
 :::warning
 
-This topic explains how to use a Run step to run specific `git clone` arguments (such as `--recursive` or `sparse-checkout`) *instead* of using the built-in [clone codebase](./create-and-configure-a-codebase.md) functionality.
+The following section explains how to use a Run step to run specific `git clone` arguments (such as `--recursive` or `sparse-checkout`) *instead* of using the built-in [clone codebase](./create-and-configure-a-codebase.md) or [git clone step](../../../continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step.md) functionality.
 
 Disabling the built-in clone step removes access to some associated functionality, such as PR status updates or resolution of `<+codebase.*>` expressions.
 
@@ -23,7 +37,7 @@ Disabling the built-in clone step removes access to some associated functionalit
 
 ## Add a Run step with git commands
 
-Add a [Run step](../run-step-settings.md) containing your desired `git` commands, such as [`git sparse-checkout`](https://git-scm.com/docs/git-sparse-checkout) to clone a subdirectory instead of an entire repo.
+Add a [Run step](../run-step-settings.md) containing your desired `git` commands, such as `git sparse-checkout` to clone a subdirectory instead of an entire repo.
 
 ```yaml
               - step:
