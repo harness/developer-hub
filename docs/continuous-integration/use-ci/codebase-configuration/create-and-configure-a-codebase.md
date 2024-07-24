@@ -174,12 +174,6 @@ The default depth varies by build and trigger type:
 
 For more information, go to the [git clone documentation](https://git-scm.com/docs/git-clone).
 
-### SSL Verify
-
-If **True**, which is the default value, the pipeline verifies your Git SSL certificates. The build fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your builds anyway.
-
-If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
-
 ### Pull Request Clone Strategy
 
 When a build is triggered by a pull request, this setting determines the branch to use for the artifact after the repo is cloned.
@@ -191,6 +185,46 @@ If this is set to **Merge Commit** (which is the default setting), the pipeline 
 If this is set to **Source Branch**, the pipeline builds the artifact from the latest commit in the pull request branch. This can be faster and less likely to result in build failures; however, it might not include some commits in the target branch.
 
 ![](./static/create-and-configure-a-codebase-05.png)
+
+### Clone Directory
+
+An optional target path in the pipeline workspace where you want to clone the repo.
+
+You can't specify `/harness/` as a target directory for a **Git Clone** step because this folder is reserved for the **Build** stage's codebase. You can specify **Shared Paths** in your [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md) to share data across steps in your **Build** stage.
+
+#### Fetch Tags
+
+Determines whether to fetch all tags when performing a shallow clone (depth > 0). Setting this to `true` is equivalent to adding the `--tags` flag.
+
+### Download LFS Files
+
+The [Git Large File Storage (LFS)](https://git-lfs.com/) client is an extension for versioning large files, such as audio, video, datasets, and graphics.
+
+Set **Download LFS Files** to `true` to download Git-LFS files. Default is `false`.
+
+### Sparse Checkout
+
+Do a sparse checkout on given patterns. The subset of files is chosen by providing a list of directories in cone mode. Refer to [git documentation](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set) for more details.
+
+### Include Submodules
+
+Determines whether to include submodules in the clone. Default is `false`. Set to `true` to include submodules or recursive to clone submodules recursively. 
+
+### Pre Fetch Command
+
+Specify any additional Git commands to run before fetching the code. This field is for Git commands only; separate each command with a new line.
+
+This could be used, for example, to set additional LFS configurations or clone specific submodules. For example,
+
+```bash
+git config lfs.fetchexclude ".jpg"
+```
+
+### SSL Verify
+
+If **True**, which is the default value, the pipeline verifies your Git SSL certificates. The build fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your builds anyway.
+
+If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
 ### Set Container Resources
 
