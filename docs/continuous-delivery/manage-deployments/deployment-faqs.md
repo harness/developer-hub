@@ -1973,3 +1973,31 @@ Failed while Saving Trigger: stageIdentifier can not be blank/missing. artifactR
 ```
 
 This error happens when specifying the `withServiceV2` parameter of the API. By default, this value is `false` however, if using ServiceV2, it needs to be set to `true`.
+
+
+### Why can't I set an output variable in Harness using a python script in a Script Step?
+
+If an environment variable is set in a Python script, it will not be available in the Bash script for consumption. In Unix-like systems, a child process (such as a Python script) cannot directly modify the environment of its parent process (such as the shell that runs the Python script). In order for the Bash script to consume the variable from the child Python Script, the Python Script would have to return that value. For example,
+```
+MY_VARIABLE_HERE=$(python3 my_python_script.py)
+```
+
+The other method would be to write a shell script in the Python script for Bash to consume the variables.
+```
+import os
+
+# Set environment variable
+os.environ["MY_ENV_VAR"] = "test"
+
+# Write the environment variable to a file
+with open("/tmp/env_var.sh", "w") as file:
+    file.write(f"export MY_ENV_VAR={os.environ['MY_ENV_VAR']}\n")
+
+print("Environment variable MY_ENV_VAR set to:", os.environ["MY_ENV_VAR"])
+EOF
+```
+
+### Why did my artifact trigger my pipeline only once?
+If artifacts aren't triggering pipelines even though there were multiple artifacts pushed, it may be due to the `Execute Triggers With All Collected Artifacts or Manifests` configuration option. By default, artifact triggers are configured to only trigger once if more than one artifact or manifest is returned in a 1 minute interval. This configuration option allows triggers to execute for each artifact or manfiest collected regardless of the polling interval. To enable this feature, go to your Harness project/org/account Default Settings, select Pipeline, and then enable Execute Triggers With All Collected Artifacts or Manifests.
+
+More information on this topic can be found in the [Trigger pipelines on a new artifact](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#important-notes) documentation
