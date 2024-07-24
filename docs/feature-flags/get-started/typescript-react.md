@@ -5,7 +5,6 @@ sidebar_position: 8
 redirect_from:
   - /docs/feature-flags/ff-onboarding/tutorials
   - /tutorials/feature-flags/typescript-react
-  - /docs/feature-flags/get-started-typescript-react
 ---
 
 <CTABanner
