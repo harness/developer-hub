@@ -211,7 +211,7 @@ spec:
 
 ## gRPC Docs
 
-We have now added the support for [protoc-gen-doc plugin](https://github.com/backstage/backstage/tree/master/plugins/api-docs-module-protoc-gen-doc), to which contains `ApiDefinitionWidgets` for [grpc-docs](https://github.com/gendocu-com/grpc-docs) enable Swagger UI for gRPC APIs. 
+We have now added the support for [protoc-gen-doc plugin](https://github.com/backstage/backstage/tree/master/plugins/api-docs-module-protoc-gen-doc), which contains `ApiDefinitionWidgets` for [grpc-docs](https://github.com/gendocu-com/grpc-docs)to enable Swagger UI for gRPC APIs. 
 
 Make sure to add the `spec.type` as `grpc` or `grpc-docs`. 
 
