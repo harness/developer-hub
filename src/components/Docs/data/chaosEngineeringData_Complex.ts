@@ -174,11 +174,11 @@ import { MODULES } from "@site/src/constants"
       link: "/docs/category/service-discovery",
     },
     {
-      title: "Network Maps",
+      title: "Application Maps",
       module: MODULES.ce,
       description:
         "Bind multiple interacting discovered services into a single object.",
-      link: "/docs/category/network-maps",
+      link: "/docs/category/application-maps",
     },
   ],
 },
