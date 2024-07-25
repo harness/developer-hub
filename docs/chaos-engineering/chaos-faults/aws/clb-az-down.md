@@ -13,7 +13,7 @@ CLB (Classic Load Balancer) AZ (Availability Zones) down takes down the AZ on a 
 
 CLB AZ down:
 - Breaks the connectivity of a CLB with the given zones and impacts their delivery. 
-- Detaches the AZ from the classic load balancer thereby disrupting the dependent application's performance. 
+- Detaches the AZ from the classic load balancer thereby disrupting the dependent application's performance.
 - Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
 ### Prerequisites

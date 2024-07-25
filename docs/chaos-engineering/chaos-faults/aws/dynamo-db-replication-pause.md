@@ -38,7 +38,38 @@ HCE recommends that you use the same secret name, that is, `cloud-secret`. Other
 Below is an example AWS policy to execute the fault.
 
 ```json
-
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "fis:CreateExperimentTemplate",
+                "fis:StartExperiment",
+                "fis:StopExperiment",
+                "fis:GetExperiment",
+                "fis:ListExperiments"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:DescribeTable"
+            ],
+            "Resource": [
+                "arn:aws:dynamodb:*:*:table/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:DescribeAlarms"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
 ```
 
 :::info note
