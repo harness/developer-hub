@@ -3328,3 +3328,13 @@ The minimum supported screen resolution is 1440x900.
 ### Can I adjust the default width of step logs in the browser GUI? They currently open at around 25% of the screen width.
 
 Currently, there are no settings to modify the default GUI view setup. You can manually expand and adjust it as needed, but it resets to default when you refresh or switch to another execution.
+
+### Is user can export the list of all user present in harness?
+Yes, You can use this API to get the whole user list: https://apidocs.harness.io/tag/User#operation/getUsers
+
+### Does Harness have an API that can be used to check the status of the deployment?
+Yes, Harness has an API to check the status of the deployment. You can check here for that: https://apidocs.harness.io/tag/Pipeline-Execution-Details
+
+
+### How can user restart a delegate?
+User can restart the delegate by deleting the pod itself.
