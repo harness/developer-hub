@@ -127,21 +127,26 @@ Upon providing your credentials and the release version, the script will proceed
 
 This release includes the following Harness module and component versions.
 
-| **Name** | **Version** |
-| :-- | :--: |
-| Helm Chart | [0.18.1](https://github.com/harness/helm-charts/releases/tag/harness-0.18.1) |
-| Air Gap Bundle | [0.18.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.18.1) |
-| NG Manager | 1.41.10 |
-| CI Manager | 1.30.2 |
-| Pipeline Service | 1.78.8 |
-| Platform Service | 1.26.3 |
-| Access Control Service | 1.48.3 |
-| Delegate | 24.06.83205 |
-| Change Data Capture | 1.18.0 |
-| STO Core | 1.102.2 |
-| Test Intelligence Service | 1.17.0 |
-| NG UI | 1.26.16 |
-| LE NG | 1.3.0 |
+Here's the markdown table with adjusted spacing for better visual appeal:
+
+| **Name**                 | **Version**                                                                                     |
+| :----------------------- | :---------------------------------------------------------------------------------------------: |
+| Helm Chart               | [0.18.1](https://github.com/harness/helm-charts/releases/tag/harness-0.18.1)                    |
+| Air Gap Bundle           | [0.18.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.18.1)    |
+| NG Manager               | 1.41.10                                                                                         |
+| CI Manager               | 1.30.2                                                                                          |
+| Pipeline Service         | 1.78.8                                                                                          |
+| Platform Service         | 1.26.3                                                                                          |
+| Access Control Service   | 1.48.3                                                                                          |
+| Delegate                 | 24.06.83205                                                                                     |
+| Change Data Capture      | 1.18.0                                                                                          |
+| STO Core                 | 1.102.2                                                                                         |
+| Test Intelligence Service| 1.17.0                                                                                          |
+| NG UI                    | 1.26.16                                                                                         |
+| LE NG                    | 1.3.0                                                                                           |
+| Harness Manager          | 1.32.10                                                                                         |
+
+This should make the table visually appealing and properly aligned.
 
 #### Alternative air gap bundle download method
 
