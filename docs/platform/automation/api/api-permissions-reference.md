@@ -223,6 +223,15 @@ The following permissions allow an API key to manage IACM workspaces. They are a
 | `iac_workspace_approve` | Approve Infrastructure Workspace |
 | `iac_workspace_accessstate` | Access Infrastructure Workspace State |
 
+The following permissions allow an API key to interact with IAC private registry resources. They are only available at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+
+| Permission ID | Description |
+| --------- | ----------- |
+| `iac_registry_view` | View/Use Private Registry resources |
+| `iac_registry_edit` | Create/Edit Private Registry resources |
+| `iac_registry_delete` | Delete Private Registry resources |
+
+
 ## Internal Developer Portal
 
 The following permissions allow an API key to interact with IDP Admin resources. They are only available at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
