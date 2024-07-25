@@ -12,7 +12,7 @@ This topic walks you through Harness chaos infrastructure that uses Harness Dele
 
 Harness dedicated chaos infrastructure is a beta product in HCE that allows for quick onboarding and optimized chaos execution for microservices-based targets on Kubernetes.
 The features described below help achieve quick onboarding and optimized chaos experiment execution.
-The diagram below describes the high-level flow of how you can [discover services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery) and [create network maps](/docs/chaos-engineering/features/network-maps/intro-network-map).
+The diagram below describes the high-level flow of how you can [discover services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery) and [create application maps](/docs/chaos-engineering/features/app-maps/intro-app-map).
 
     ![](./static/flow-v2.png)
 
@@ -30,13 +30,13 @@ The diagram below describes the detailed flow of control (step 5 of the earlier 
 
 ## Features of Harness dedicated chaos infrastructure
 - Automated Kubernetes [service discovery](/docs/chaos-engineering/features/service-discovery/intro-service-discovery) and workloads with network traffic patterns between them through a transient discovery agent.
-- [Automated](/docs/chaos-engineering/onboarding/guided-onboarding#choose-between-automatic-and-customizable-network-map-creation) and [guided](/docs/chaos-engineering/features/network-maps/intro-network-map#create-a-network-map) creation of network maps that represent a fully functional application within the cluster (which comprises of several constituent microservices).
-- [Chaos experiment auto-creation](#auto-create-experiment) for a given [network map](/docs/chaos-engineering/features/network-maps/intro-network-map) based on the workload specification and its lineage in terms of network traffic.
-- Reuse the Harness Delegate for chaos experiment execution on the user cluster without a separate chaos agent.
-- Application-level and network map level resilience scores.
+- [Automated](/docs/chaos-engineering/onboarding/guided-onboarding#choose-between-automatic-and-customizable-application-map-creation) and [guided](/docs/chaos-engineering/features/app-maps/intro-app-map#create-an-application-map) application map creation that represent a fully functional application within the cluster (which comprises of several constituent microservices).
+- [Chaos experiment auto-creation](#auto-create-experiment) for a given [application map](/docs/chaos-engineering/features/app-maps/intro-app-map) based on the workload specification and its lineage in terms of network traffic.
+- Reuse the Harness Delegate for chaos experiment execution on the user cluster without a dedicated (or separate) chaos agent.
+- Application-level and application map level resilience scores.
 
 ### Auto-create experiment
-Experiments are auto-created based on levels (or categories) you select during automated or guided onboarding. The default setting is that HCE creates all the recommended experiments for the selected network map.
+Experiments are auto-created based on levels (or categories) you select during automated or guided onboarding. The default setting is that HCE creates all the recommended experiments for the selected application map.
 
     ![](./static/exp-rec.png)
 
@@ -64,4 +64,4 @@ The diagram below shows the tunables used in experiments that use Harness dedica
 
 ### Resilience score
 
-Previously, resilience score was measured at the experiment level. With Harness dedicated chaos infrastructure, you can gain insights into an application along with its associated network map. This way, you can view the application-level resilience score and network map level resilience score.
+Previously, resilience score was measured at the experiment level. With Harness DDCI, you can gain insights into an application along with its associated application map. This way, you can view the application-level resilience score and application map level resilience score.
