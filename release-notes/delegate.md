@@ -24,7 +24,7 @@ These release notes describe recent changes to Harness Delegate.
 
 :::info **Delegate Security Update**
 Added a critical security fix in harness secret manager for handling identities with CD workflows.
-If you are running delegates version below 799xx, upgrade to delegate version 799x or above immediately. Go to the [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) to update the delegates.
+If you are running delegates version below 799xx and using Terraform/Terragrunt features, upgrade to delegate version 799x or above immediately. Go to the [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) to update the delegates.
 
 :::
 
