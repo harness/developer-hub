@@ -54,15 +54,15 @@ response=$(curl --silent --request POST \
   --data '{
     "fields": {
         "project": {
-            "key": "'"$PROJECT_KEY"'"
+            "key": "$PROJECT_KEY"
         },
         "components": {
-            "name": "'"$COMPONENT_NAME"'"
+            "name": "$COMPONENT_NAME"
         },
         "issuetype": {
-            "name": "'"$ISSUE_TYPE"'"
+            "name": "$ISSUE_TYPE"
         },
-        "summary": "'"$ISSUE_SUMMARY"'",
+        "summary": "$ISSUE_SUMMARY",
         "description": {
             "version": 1,
             "type": "doc",
@@ -72,14 +72,14 @@ response=$(curl --silent --request POST \
                     "content": [
                         {
                             "type": "text",
-                            "text": "'"$ISSUE_CONTENT"'"
+                            "text": "$ISSUE_CONTENT"
                         }
                     ]
                 }
             ]
         },
         "labels": [
-            "'"$LABELS"'"
+            "$LABELS"
         ]
     }
 }')
@@ -455,6 +455,125 @@ In case you want to display the same information you have ingested on your Overv
 
 ## Create Jira Project
 
+<Tabs queryString="Using RUN Step">
+<TabItem value="using-run-step" label="Using RUN Step">
+
+### Using RUN Step
+
+1. Go to **Admin** in your IDP
+2. Now select the **project** where you you want to **create the pipeline** for the Workflows. 
+3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
+4. Now select the **Developer Portal Stage** and give it a name. 
+5. Add a **RUN** step, name it as **create jira project** and select the **Shell** as `Bash`
+6. Now add the following under the **Command**.
+
+```sh
+
+EMAIL_ID="<+pipeline.variables.emailid>"
+JIRA_TOKEN="<+pipeline.variables.jiratoken>"
+NEW_PROJECT_NAME="<+pipeline.variables.newprojectname>"
+DESCRIPTION="<+pipeline.variables.description>"
+NEW_PROJECT_KEY="<+pipeline.variables.newprojectkey>"
+PROJECT_LEAD_ACCOUNT_ID="<+pipeline.variables.projectleadaccountid>"
+PROJECT_TEMPLATE_KEY="<+pipeline.variables.projecttemplatekey>"
+
+
+# Perform the POST request with curl and capture the response
+response=$(curl --silent --request POST \
+  --url 'https://YOUR_COMPANY.atlassian.net/rest/simplified/latest/project' \
+  --user "$EMAIL_ID:$JIRA_TOKEN" \
+  --header 'Accept: application/json' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "assigneeType": "PROJECT_LEAD",
+    "description": "$DESCRIPTION",
+    "key": "$NEW_PROJECT_KEY",
+    "leadAccountId": "$PROJECT_LEAD_ACCOUNT_ID",
+    "name": "$NEW_PROJECT_NAME",
+    "projectTemplateKey": "$PROJECT_TEMPLATE_KEY",
+}')
+
+# Extract the key from the JSON response using jq
+project_key=$(echo "$response" | jq -r '.key')
+
+# Export the issue key as an environment variable
+export PROJECT_KEY="$project_key"
+
+# Print the issue key (optional)
+echo "The created issue key is: $PROJECT_KEY"
+
+```
+
+The above given request body can create a Jira [project](https://confluence.atlassian.com/jiracoreserver073/creating-a-project-861255642.html)
+
+We have used few pipeline variables in the body, which will be used to take input from the IDP Workflows and for the users to choose project, add the summary, description for the tickets. 
+
+7. Now under **Optional Configuration** add the **Output Variables** as `PROJECT_KEY`.
+8. Apply the Changes.
+9. Go to **Variables** on the right side of the page and add the following variables and have the input type as **Runtime Input**. 
+    - emailid
+    - jiratoken
+    - newprojectname
+    - newprojectkey
+    - projectleadaccountid
+    - projecttemplatekey
+    - usergroup
+
+10. Apply the changes.
+
+![](static/add-variables.png)
+
+### Use Catalog Metadata Ingestion API
+
+11. Start by adding another `RUN` step. 
+12. Name it as **Ingestion API** and select the **Shell** as `Bash`
+13. Now add the following under the **Command**.
+
+```sh
+curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
+--header 'Harness-Account: <+account.identifier>' \
+--header 'Content-Type: application/json' \
+--header 'x-api-key: <+secrets.getValue('account.TOKEN_ID')>' \
+--data '{
+    "properties": [
+        {
+            "field": "metadata.openTicket",
+            "filter": {
+                "kind": "Component",
+                "type": "service",
+                "owners": [
+                    "<+pipeline.variables.usergroup>"
+                ]
+            },
+            "value_overrides": [
+                {
+                    "entity_ref": "YOUR_COMPONENT_LINK",
+                    "override_value": "<+stage.spec.execution.steps.create_jira_project.output.outputVariables.PROJECT_KEY>"
+                }
+            ],
+            "value": "0"
+        }
+    ]
+}'
+
+```
+
+14. Under `header` x-api-key: `<+secrets.getValue('account.TOKEN_ID')>`, add the token ID for your API key. Get your token ID from your Profile
+
+![](static/secret-id.png)
+
+In the above body the openTicket which got created in JIRA will be added, to kind component and type service owned by the `usergroup` selected in the Workflows. Under `entity_ref` add the component link to which you want to add the ticket ID, the unique entity reference could be found using inspect entity for the component in Catalog. 
+
+![](static/inspect-entity-cm.png)
+
+![](static/entityref.png)
+
+15. Now Apply the changes. 
+
+
+</TabItem>
+<TabItem value="using-http-step" label="Using HTTP Step">
+
 1. Go to **Admin** in your IDP
 2. Now select the **project** where you you want to **create the pipeline** for the Workflows. 
 3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
@@ -466,9 +585,10 @@ In case you want to display the same information you have ingested on your Overv
 
 ```json
 {
-    "key": "<+pipeline.variables.projectkey>",
-    "templateKey": "<+pipeline.variables.templatekey>",
-    "name": "<+pipeline.variables.projectname>"
+    "key": "<+pipeline.variables.newprojectkey>",
+    "leadAccountId": "<+pipeline.variables.projectleadaccountid>",
+    "templateKey": "<+pipeline.variables.projecttemplatekey>",
+    "name": "<+pipeline.variables.newprojectname>"
 }
 ```
 
@@ -541,6 +661,9 @@ In the above body the openTicket which got created in JIRA will be added, to kin
 
 22. Now **Apply Changes** and **SAVE** the pipeline. 
 
+</TabItem>
+</Tabs>
+
 ## Create Workflow
 
 Now we have to create a workflow, which takes the input from the user and triggers the pipeline. Here's the workflow YAML
@@ -561,24 +684,39 @@ spec:
   parameters:
     - title: Service Details
       required:
-        - projectkey
-        - projectname
-        - templatekey
+        - emailid
+        - jiratoken
+        - newprojectname
+        - newprojectkey
+        - projectleadaccountid
+        - projecttemplatekey
         - usergroup
       properties:
-        projectkey:
+        newprojectkey:
           title: Jira Project Key
           type: string
           default: DEMO
           description: Your Project will have this key which will appear in the url
-        projectname:
+        newprojectname:
           type: string
           title: Add a project name
           default: demo
-        templatekey:
+        projecttemplatekey:
           type: string
           title: Add the template type
-          desciption: Select and add a template     
+          description: Select and add a template  
+        jiratoken:
+          type: string
+          title: Add the Jira Token
+          ui:widget: password
+        projectleadaccountid:
+          type: string
+          title: Add the account id for your project lead 
+          description: Atlassian Account ID  for the project lead   
+        emailid:
+          type: string
+          tile: Add the Atlassian emailid
+          description: emailid to be used for atlassian login     
         usergroup:
           title: Choose an Owner for the Service
           type: string
@@ -599,10 +737,13 @@ spec:
       input:
         url: "PIPELINE URL"
         inputset:
-          projectkey: ${{ parameters.projectkey }}
-          projectname: ${{ parameters.projectname }}
-          templatekey: ${{ parameters.templatekey }}
+          newprojectkey: ${{ parameters.newprojectkey }}
+          newprojectname: ${{ parameters.newprojectname }}
+          projecttemplatekey: ${{ parameters.projecttemplatekey }}
+          jiratoken: ${{ parameters.jiratoken }} 
           usergroup: ${{ parameters.usergroup }}
+          projectleadaccountid: ${{ parameters.projectleadaccountid }}
+          emailid: ${{ parameters.emailid }}
         apikey: ${{ parameters.token }}
 
   output:

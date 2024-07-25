@@ -6,12 +6,6 @@ redirect_from:
   - /docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart/#blue-green-deployment-support-with-a-configurable-amount-of-tanzu-applications-to-maintain
 ---
 
-:::note
-
-Currently, TAS Blue Green Deployment Support with a configurable amount of application versions to keep is behind the feature flag `CDS_PCF_SUPPORT_BG_WITH_2_APPS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 By default Harness keeps 3 Versions of Tanzu Apps for Blue Green Deployment. The Active, the inactive, and then the 3rd previous deployment as a backup. This behavior is now configurable with the **Existing Version to Keep** option.  If the user says 0, Harness will only maintain 2. The Active and Inactive applications. If the user wishes to maintain 3 they can configure 1 and Harness will maintain Active, Inactive, and third previous successfully deployed version of the application. 
 
 In the PCF BG App Setup step, we have removed the backend validation for existing versions to keep to greater than 0. This made sure we kept more than 2 versions of the applications available for rollback.

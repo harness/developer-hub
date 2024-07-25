@@ -256,6 +256,10 @@ Deactivating a user removes them from *all provisioned apps*, including Harness.
 
 To reactivate a deactivated user, go to the user's profile, select **More Actions**, and then select **Activate**.
 
+### Set the default experience
+
+Environment administrators can set the default Harness generation landing page, FirstGen or NextGen, for their users to ensure the correct Harness Experience is provided to each user. For more information, go to [Account details](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts#account-details).
+
 ## I already have a Harness FirstGen Okta integration
 
 If you currently have a Harness FirstGen App Integration in your IdP, and you want to create one for Harness NextGen, make sure the user information is included in the FirstGen App Integration before attempting to log into Harness NextGen through SSO.

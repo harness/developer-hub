@@ -1,7 +1,7 @@
 ---
-title: Bandit scanner reference for STO
+title: Bandit step configuration
 description: Scan code repositories with with Bandit.
-sidebar_label: Bandit scanner reference
+sidebar_label: Bandit step configuration
 sidebar_position: 60
 helpdocs_topic_id: n3dcx6wzb3
 helpdocs_category_id: m01pu2ubai
@@ -10,8 +10,8 @@ helpdocs_is_published: true
 ---
 
 <DocsTag   text="Code repo scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"  link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 

@@ -137,6 +137,10 @@ For example, you might set up Google as a Harness OAuth 2.0 SSO provider, but yo
 
 To filter domain names in this way, go to the [Authentication overview](../authentication/authentication-overview.md) topic's section on [Restrict email domains](../authentication/authentication-overview.md#restrict-email-domains).
 
+## Set the default experience
+
+Environment administrators can set the default Harness generation landing page, FirstGen or NextGen, for their users to ensure the correct Harness Experience is provided to each user. For more information, go to [Account details](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts#account-details).
+
 ## Next steps
 
 * [Two-Factor Authentication](../authentication/two-factor-authentication.md)

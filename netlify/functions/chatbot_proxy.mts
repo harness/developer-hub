@@ -29,7 +29,6 @@ export default async (req: Request, context: Context) => {
   }
   const token = req.headers.get("x-api-key");
 
-  console.log({ body, token });
 
   if (!token) {
     return new Response(JSON.stringify({ error: "Token is not sent" }), {
@@ -70,10 +69,10 @@ export default async (req: Request, context: Context) => {
     }
 
     const expiryTime = new Date();
-    expiryTime.setMinutes(expiryTime.getMinutes() + 120);
+    expiryTime.setMinutes(expiryTime.getMinutes() + 119);
     context.cookies.set({
       name: "x_chatbot_key",
-      value: token,
+      value: rotatedToken,
       domain: ".harness.io",
       path: "/",
       httpOnly: false,

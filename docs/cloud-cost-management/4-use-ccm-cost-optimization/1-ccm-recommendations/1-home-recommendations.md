@@ -147,6 +147,77 @@ Within a recommendation, select the number of days to compute recommendations ba
 
 You can use this information to optimize your resources to potentially reduce your monthly cloud costs.
 
+#### ServiceNow ticket
+
+<DocImage path={require('./static/servicenow_Example.png')} width="80%" height="80%" title="Click to view full size image" />
+
+The Description field contains relevant information about the recommendation for which this ticket was created. Harness CCM retrieves the following data from ServiceNow:
+
+When a user opens the dialog box to create a ServiceNow ticket, a request is made to obtain all possible ticket types. Here is a sample response:
+
+```json
+{
+    "status": "SUCCESS",
+    "data": [
+        {
+            "key": "asset_reclamation_request",
+            "name": "Asset Reclamation Request"
+        },
+        {
+            "key": "asset_task",
+            "name": "Asset Task"
+        },
+        {
+            "key": "business_app_request",
+            "name": "Business Application Request"
+        }
+    ]
+}
+```
+
+Once the user selects a ticket type, another request retrieves the fields associated with that ticket type to determine the required fields. Here is a sample response:
+
+```json
+{
+    "data": [
+        {
+            "key": "parent",
+            "name": "Parent",
+            "required": false,
+            "schema": {
+                "array": false,
+                "typeStr": "",
+                "type": "unknown",
+                "customType": null,
+                "multilineText": false
+            },
+            "internalType": null,
+            "allowedValues": [],
+            "readOnly": false,
+            "custom": false
+        },
+        {
+            "key": "made_sla",
+            "name": "Made SLA",
+            "required": false,
+            "schema": {
+                "array": false,
+                "typeStr": "boolean",
+                "type": "boolean",
+                "customType": null,
+                "multilineText": false
+            },
+            "internalType": null,
+            "allowedValues": [],
+            "readOnly": false,
+            "custom": false
+        }
+    ]
+}
+```
+
+When the user clicks "Create Ticket," an API call is made to ServiceNow to create the ticket with the provided inputs. Additionally, there is an internal call that periodically checks if the ticket has been closed. Based on this status, the recommendation is moved to the applied state.
+
 ## Export recommendations data
 
 You can export your Recommendations as comma-separated values (CSV) files. Exporting allows you to use the data in other software. Export respects the filters applied by the user in the filter panel.

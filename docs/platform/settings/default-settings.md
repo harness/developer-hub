@@ -33,7 +33,7 @@ To access the Default Settings at the Account scope:
 1. Go to **Account Settings**.
 2. Select **Default Settings**.
 
-![](./static/default-settings-00.png)
+   ![](./static/default-settings-00.png)
 
 </TabItem>
   <TabItem value="orgscope" label="Organization scope" default>
@@ -92,6 +92,26 @@ These settings are for the Harness CD module.
 - **Fetch files from Git using provider-specific APIs:** Utilize provider-specific APIs (works with GitHub, GitLab, Bitbucket, and Azure Repos) for efficient file retrieval from Git, instead of relying on JGit. This approach can encounter API rate limits. Refer to your Git provider's documentation for limit details.
 - **Disable addition of Harness track selector in Kubernetes deployments:** During canary deployments, Harness adds a selector (`harness.io/track: stable`) in deployment objects during the rolling deployment phase. If there are pre-existing deployment objects in the cluster (not deployed by Harness), this can cause an errors. For more information, go to [Skip Harness label selector tracking on Kubernetes deployments](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/skip-harness-label-selector-tracking-on-kubernetes-deployments).
 - **Ignore status code for HTTP connections:** This setting is only relevant for HTTP steps and HTTP Helm repositories. When enabled, Harness only requires a valid response from the target HTTP server and does not verify the response code. This is useful when the Harness Delegate is configured with a proxy, because socket connection tests conducted by Harness from the delegate do not account for proxy details.
+
+### Pre Flight check
+
+Pre Flight check includes a series of check on the Pipeline such as verifying Pipeline YAML, accessibility of connectors, services, secrets and others. 
+
+**Skip Pre Flight** is not checked by default in the Pipeline Run Form that means that the Pre Flight checks do not run by default.
+
+![](./static/skip_pre_flight_check.png)
+
+You can enable Pre Flight Check by default by following these steps:
+
+:::info note
+This change is behind the FF `CDS_REMOVE_CONNECTOR_HEARTBEAT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
+If the FF `CDS_REMOVE_CONNECTOR_HEARTBEAT` is enabled then you will be able to see the default setting **Run Pre Flight checks by Default for Pipeline Execution** in Pipeline settings.
+
+![](./static/prelight_setting.png)
+
+If this setting is enabled **Skip Pre Flight** will be checked by default.
 
 ### Continuous Integration
 

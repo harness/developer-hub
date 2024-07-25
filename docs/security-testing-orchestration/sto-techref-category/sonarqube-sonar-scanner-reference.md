@@ -1,8 +1,8 @@
 ---
-title: SonarQube SonarScanner reference for STO
-description: Scan code repositories with SonarQube SonarScanner.
+title: SonarQube step configuration
+description: Scan code repositories with SonarQube.
 sidebar_position: 390
-sidebar_label: SonarScanner scanner reference
+sidebar_label: SonarQube step configuration
 helpdocs_topic_id: 4qe4h3cl28
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
@@ -10,18 +10,18 @@ helpdocs_is_published: truex
 ---
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
 <br/>
 
- You can run scans and ingest results from [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
+ You can run scans and ingest results from [SonarQube](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
  
 
 ## Important notes for running SonarQube scans in STO
 
-* STO supports repository scanning only for SonarScanner.
-* STO supports all languages supported by SonarScanner.
+* STO supports repository scanning only for SonarQube.
+* STO supports all languages supported by SonarQube.
 * Before you scan your repo, make sure that you perform any prerequisites for the language used in your repo. <!-- Need to confirm this sentece per https://harness.atlassian.net/browse/DOC-3640 If you are scanning a Java repo with more than one Java file, for example, you must compile `.class` files before you run the scan. -->
   For details about specific language requirements, go to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/).
 * By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestration and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube step. 
@@ -85,8 +85,10 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 The predefined configuration to use for the scan. 
 
-- **Default**  
-- **Branch Scan** With this option selected, the step scans the branch or pull request specified in the pipeline execution. 
+- **Default** Extract results for the Main branch defined in SonarQube. SonarQube Community Edition supports extracting scan results for the Main branch only. 
+- **Branch Scan** In Orchestration or Extraction mode, extract results based on how the pipeline is executed:
+  - Manual executions - The branch defined in SonarQube ([Target variant](#variant))
+  - Triggered executions - The pull request defined in SonarQube 
 
 
 ### Target
@@ -114,12 +116,16 @@ import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
 <StoSettingTargetName />
 
+If you're running an Extraction scan, this field should match the code repository name in SonarQube. 
+
 
 #### Variant
 
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
+
+If you're running an Extraction scan, this field should match the branch or PR defined in SonarQube.
 
 #### Workspace
 
@@ -193,6 +199,10 @@ For more information, go to [Generating and using tokens](https://docs.sonarsour
 
 ### Scan Tool
 
+#### Project key
+
+The unique key of the SonarQube project to scan.
+
 #### Exclude 
 
 If you want to exclude some files from a scan, you can use this setting to configure the `sonar.exclusions` in your SonarQube project. For more information, go to [Narrowing the Focus](https://docs.sonarqube.org/latest/project-administration/narrowing-the-focus/) in the SonarQube docs.
@@ -237,7 +247,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. Here are some examples:  
 
-* `-sonar.ws.timeout=300`: Suppose the scan is experiencing timeouts due to long response times from a web service. This flag increases the timeout window.
+* `-Dsonar.ws.timeout=300`: Suppose the scan is experiencing timeouts due to long response times from a web service. This flag increases the timeout window.
 
 * `-Dsonar.projectName=<project_name>`: The project name.
 
@@ -308,6 +318,36 @@ If there's a proxy between your Harness pipeline and your SonarQube server, you 
 - `JVM_HTTPS_PROXY_HOST : my-proxy.ca.myorg.org `
 - `JVM_HTTPS_PROXY_PORT : 3745`
 - `JVM_NO_PROXY : sonar.myorg.local`
+
+## View scan results in SonarQube portal
+You can access scan results for your targets in the SonarQube portal. These results are organized under projects titled with your target/repository name. Further, you can view scan results specific to branches, PRs, and tags based on the scans performed in STO.
+
+
+### Locate STO scan results in SonarQube portal
+
+1. **_Branch_ scan results**: If you scanned a branch, you can find the results in SonarQube with the same branch name.
+2. **Pull Request scan results**: If you scanned a PR, the results are located under the name `refs/pull/<PR_NUMBER>`, where `<PR_NUMBER>` is the specific number of the pull request.
+3. **Tag scan results**: If you scanned a tag, the results are available with the same tag name.
+
+
+### Set the name for your scans
+
+When using the scan configuration **Branch Scan**, you can set the naming of the scan as it will appear in the SonarQube portal. This can be configured as follows:
+
+
+
+1. Under **Scan Tool**, set the **Analysis Type** to **Manual**.
+2. Set the **Branch Name** to the name you want to use for your scan results in the SonarQube portal.
+
+<DocImage path={require('./static/sonarqube-orchestration-branch-scan.png')} width="30%" height="30%" title="Click to view full size image" />
+<!-- ![alt_text](./static/sonarqube-orchestration-branch-scan.png "image_tooltip") -->
+
+### Best practices
+
+You can use [Harness expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) to automatically populate values from triggers. For example, you can define the "Branch Name" as `<+trigger.sourceBranch>/<+trigger.prNumber>`. This will generate a naming convention in the format SOURCE_BRANCH_NAME/PR_NUMBER, which is particularly useful when triggering scans on a specific PR. 
+
+This setup ensures that the scan result name reflects both the branch and the PR, making it easier to identify and manage scan results in the SonarQube portal.
+
 
 ## Generate coverage reports and upload to SonarQube
 

@@ -16,7 +16,7 @@ EC2 stop by tag:
 
 ### Prerequisites
 - Kubernetes >= 1.17
-- Appropriate AWS access to stop and start an EC2 instance. 
+- Appropriate AWS access to stop and start an EC2 instance.
 - The EC2 instances should be in a healthy state.
 - The Kubernetes secret should have the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is the sample secret file.
   ```yaml
@@ -34,7 +34,7 @@ EC2 stop by tag:
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.

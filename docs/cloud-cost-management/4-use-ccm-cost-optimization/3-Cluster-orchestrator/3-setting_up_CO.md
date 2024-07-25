@@ -85,3 +85,5 @@ This page contains all the information about the nodes associated with the clust
 
 Additionally, you can see the total cluster spend and the spot savings.
 <DocImage path={require('./static/nodes.png')} width="90%" height="90%" title="Click to view full size image" />
+
+

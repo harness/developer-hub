@@ -14,7 +14,7 @@ This topic describes the following operations:
 ## Before you begin
 
 * [Overview of HCE onboarding.](/docs/chaos-engineering/onboarding/hce-onboarding.md)
-* [Delegate-driven Harness infrastructure.](/docs/chaos-engineering/onboarding/harness-infra/harness-infra.md)
+* [Dedicated Harness infrastructure.](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/harness-infra.md)
 * [Create infrastructure before onboarding.](/docs/chaos-engineering/onboarding/hce-onboarding#prerequisites-to-automated-and-guided-onboarding)
 
 :::tip

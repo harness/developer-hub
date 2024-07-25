@@ -98,7 +98,7 @@ This fault helps determine how resilient an application is to HTTP latency. It h
 
 ### VMware HTTP modify response
 
-VMware HTTP modify response injects HTTP chaos by modifying the status code, body or the headers, which affects the request (or response).  
+VMware HTTP modify response injects HTTP chaos by modifying the status code, body or the headers, which affects the request (or response).x
 Chaos is injected by starting the proxy server and redirecting the traffic through the proxy server.
 It tests the application's resilience to erroneous (or incorrect) HTTP response body.
 It modifies the headers of the requests and the responses of the service. This helps test the service's resilience towards incorrect or incomplete headers.
@@ -120,7 +120,7 @@ It tests the application's resilience to lossy (or flaky) HTTP connections.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault helps determine how resilient an application is when outgoing HTTP requests are halted unexpectly. It determines how quickly and efficiently an application recovers from these unexpected halts. 
+This fault helps determine how resilient an application is when outgoing HTTP requests are halted unexpectedly. It determines how quickly and efficiently an application recovers from these unexpected halts.
 </Accordion>
 
 </FaultDetailsCard>
@@ -185,6 +185,29 @@ The VM may stall (or get corrupted) while waiting endlessly for a packet. The fa
 
 <FaultDetailsCard category="vmware">
 
+### VMware network rate limit
+
+VMware network rate limit fault injects network rate limit from the VMware VM(s) into the application (or service).
+- This results in flaky access to the application.
+- It checks the performance of the application (or process) running on the VMware VM(s).
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Simulates issues within the VM network (or microservice) communication across services in different hosts.
+- Determines the impact of degradation while accessing a microservice.
+- Simulates network congestion by artificially limiting the available bandwidth to understand how the system behaves under reduced network capacity.
+- Helps assess the impact of network rate limits on the quality of service (QoS) and compliance with service level agreements (SLAs) by observing the system's response time and performance.
+- Validates whether rate-limiting mechanisms in your application or network infrastructure are functioning correctly and effectively.
+- Helps assess how the system performs when network resources are constrained, mimicking real-world scenarios where network connectivity may be compromised during a disaster or outage.
+- Determines how the system prioritizes and handles different types of traffic when network rate limits are in place, ensuring that critical services receive preferential treatment.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="vmware">
+
 ### VMware process kill
 
 VMware process kill kills the target processes that are running as a part of a Linux OS based VMware VM.
@@ -215,13 +238,26 @@ This fault helps determine how resilient an application is to random halts. It d
 
 ### VMware VM power off
 
-VMware VM-poweroff stops (or powers off) the VMware VMs for a specific duration.
+VMware VM power off stops (or powers off) the VMware VMs for a specific duration.
 After the duration, the VMs are back to original state.
 It checks the performance of the application running on the VMware VMs.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 This fault helps determine how resilient an application is to random power failures. It determines how efficiently an application recovers and restarts the services.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="vmware">
+
+### VMware Windows blackhole chaos
+
+VMware Windows blackhole chaos blocks traffic to specified IP addresses on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+This fault helps determine how resilient an application is when network access to certain IP addresses is blocked on a VMware virtual machine.
 </Accordion>
 
 </FaultDetailsCard>
@@ -241,113 +277,9 @@ This fault helps determine how resilient an application is when stress is applie
 
 <FaultDetailsCard category="vmware">
 
-### VMware Windows Memory hog
+### VMware Windows disk stress
 
-VMware Windows Memory hog applies stress on the memory resources on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-This fault helps determine how resilient an application is when stress is applied on the memory resources of a VMware virtual machine.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="vmware">
-
-### VMware Windows Blackhole Chaos
-
-VMware Windows Blackhole Chaos blocks traffic to specified IP addresses on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-This fault helps determine how resilient an application is when network access to certain IP addresses is blocked on a VMware virtual machine.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="vmware">
-
-### VMware Windows Network Latency
-
-VMware Windows Network Latency injects network latency on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-This fault helps determine how resilient an application is when network latency is introduced on a VMware virtual machine.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="vmware">
-
-### VMware Windows Network Loss
-
-VMware Windows Network Loss injects network packet loss on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-This fault helps determine how resilient an application is when network packet loss is introduced on a VMware virtual machine.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="vmware">
-
-### VMware Windows Network Corruption
-
-VMware Windows Network Corruption corrupts network packets on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-This fault helps determine how resilient an application is when network packets are corrupted on a VMware virtual machine.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="vmware">
-
-### VMware Windows Network Duplication
-
-VMware Windows Network Duplication duplicates network packets on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-This fault helps determine how resilient an application is when network packets are duplicated on a VMware virtual machine.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="vmware">
-
-### VMware Windows Service Stop
-
-VMware Windows Service Stop stops a specified service on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-This fault helps determine how resilient an application is when a specific service is stopped on a VMware virtual machine.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="vmware">
-
-### VMware Windows Process Kill
-
-VMware Windows Process Kill kills a specified process on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-This fault helps determine how resilient an application is when a specific process is killed on a VMware virtual machine.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="vmware">
-
-### VMware Windows Disk Stress
-
-VMware Windows Disk Stress fills the disk space on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
+VMware Windows disk stress fills the disk space on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -358,13 +290,120 @@ This fault helps determine how resilient an application is when the disk space i
 
 <FaultDetailsCard category="vmware">
 
-### VMware Windows Time Chaos
+### VMware Windows memory hog
 
-VMware Windows Time Chaos manipulates the system time on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
+VMware Windows memory hog applies stress on the memory resources on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault helps determine how resilient an application is when the system time is manipulated on a VMware virtual machine.
+
+- This fault helps determine how resilient an application is when stress is applied on the memory resources of a VMware virtual machine.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="vmware">
+
+### VMware Windows network corruption
+
+VMware Windows network corruption corrupts network packets on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- This fault helps determine how resilient an application is when network packets are corrupted on a VMware virtual machine.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="vmware">
+
+### VMware Windows network duplication
+
+VMware Windows network duplication duplicates network packets on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- This fault helps determine how resilient an application is when network packets are duplicated on a VMware virtual machine.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="vmware">
+
+### VMware Windows network latency
+
+VMware Windows network latency injects network latency on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- This fault helps determine how resilient an application is when network latency is introduced on a VMware virtual machine.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="vmware">
+
+### VMware Windows network loss
+
+VMware Windows network loss injects network packet loss on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- This fault helps determine how resilient an application is when network packet loss is introduced on a VMware virtual machine.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="vmware">
+
+### VMware Windows service stop
+
+VMware Windows service stop stops a specified service on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- This fault helps determine how resilient an application is when a specific service is stopped on a VMware virtual machine.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="vmware">
+
+### VMware Windows process kill
+
+VMware Windows process kill kills a specified process on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- This fault helps determine how resilient an application is when a specific process is killed on a VMware virtual machine.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="vmware">
+
+### VMware Windows time chaos
+
+VMware Windows time chaos manipulates the system time on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- This fault helps determine how resilient an application is when the system time is manipulated on a VMware virtual machine.
+
 </Accordion>
 
 </FaultDetailsCard>

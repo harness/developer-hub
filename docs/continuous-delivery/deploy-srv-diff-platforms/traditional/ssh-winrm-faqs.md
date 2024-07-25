@@ -72,3 +72,10 @@ Check if port 5985 is opened and test the communication for WinRM.
 
 You can automate creating winrm credential/secret key via our existing API as listed [here](https://apidocs.harness.io/tag/Account-Secret#operation/create-account-scoped-secret).
 
+### How to install artifacts on IIS on a Windows VM?
+You can use the Copy/Download command option by creating a WinRM connection and deploy the artifact to a Windows VM.
+
+### Is it possible to add multiple realms when configuring WinRM using Kerberos?
+
+Currently, you can provide only one realm per WinRM credential. To add more realms, you must create more WinRM credentials. 
+

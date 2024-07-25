@@ -20,7 +20,7 @@ Any software component can be registered in the catalog by using a YAML file sto
 * [Harness Code Repository (Default)](https://www.harness.io/products/code-repository) 
 * GitHub
 * GitLab
-* Bitbucket(Except [Bitbucket Server](https://www.atlassian.com/migration/assess/journey-to-cloud))
+* Bitbucket
 * Azure Repos
 
 We support multiple connectors with different hostname for a single git provider to fetch `catalog-info.yaml` at once. Eg., Users can  use connectors for both `github.com` and `github enterprise` and fetch entity yaml at the same time.
@@ -28,6 +28,8 @@ We support multiple connectors with different hostname for a single git provider
 :::warning
 
 Backstage doesn't support SSH auth type for integrations, hence only HTTP connection is supported for all the git provider based connectors in IDP.
+
+API calls in IDP are used to fetch YAML data, last commit SHA, and detect any new changes. SSH authentication cannot be used for making these API calls; it is only used for cloning repositories. Therefore, the main Git connector for IDP Git integration must support API requests, hence HTTP is only supported
 
 :::
 
@@ -45,7 +47,7 @@ Harness IDP requires some secrets to be set for plugins and external integration
 
 ## Template Actions to Trigger Harness Pipeline
 
-- The template actions currently supports only [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and [codebase disabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) CI stage with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
+- The template actions currently supports only [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)(**Only Available with Harness CD License**) and [codebase disabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) **CI stage(Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
 - All input, except for [pipeline expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be [fixed values](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
 
 :::info

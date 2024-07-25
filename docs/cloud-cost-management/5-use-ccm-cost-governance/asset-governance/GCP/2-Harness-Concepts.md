@@ -210,3 +210,29 @@ You can create filters to view selected rules:
 :::important note
 Number of evaluations for which we can compute cost impact is 1,50,000/ Day.
 :::
+
+
+## Testing Terminal
+
+In the rule editor, a test terminal is present for users to see the output in the terminal itself upon evaluating a Rule. This is done to ensure that users can run the rules and try accordingly to check how the output would look on the selected project. After providing the relevant input, the users can select either to dry run the rule first, run it once or enforce the rule. 
+
+<DocImage path={require('../static/outputTerminalGCP.png')} width="90%" height="90%" title="Click to view full size image" />
+
+After this, the resources identified are shown on the output terminal in JSON format. With this output, users can perform different actions like searching, downloading, filtering, sorting and picking. 
+
+<DocImage path={require('../static/Ouputscreen.png')} width="90%" height="90%" title="Click to view full size image" />
+
+#### Searching in Output Terminal
+After the output is rendered, users can search for any keywords in the output terminal. This streamlines troubleshooting and debugging processes and helps to efficiently locate required information amidst large volumes of output data. 
+
+#### Zip Downloads
+The JSON output can be downloaded in either JSON format or a CSV format(original or flatted) into a single zip archive.
+
+#### JSON Filtering
+The output can be filtered based on the keys present in the JSON output. Currently, filtering on the basis of `==`, `!=`, `<`, `<=`, `>`, `>=` is supported in terms of numeric key values and if the key's value is a string, string matching using `LIKE` is supported. This feature enables users to extract specific fields, filter out irrelevant data, and perform relevant queries on JSON datasets.
+
+#### Sorting
+The output can be sorted based on the keys present in the JSON output in either an `ASCENDING` or `DESCENDING` manner.
+
+#### Pick
+If output needs to be streamlined and only a few keys-value pairs are required, 'Pick' functionality can be used. Using this, users can pick only the required keys and see the data associated with them in the output.

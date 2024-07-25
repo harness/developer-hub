@@ -34,6 +34,15 @@ You will learn how to:
 * You must have **Create/Edit** permissions for secrets.
 * You must have **Create/Edit** permissions for connectors.
 
+### Limitations
+
+* If you want to include Secrets Variable references within the template, the secrets must exist within the Harness Built-In Secrets manager. References to secrets within other managers might cause errors. For example, if you refer to a secret within the AWS Secrets manager, you will encounter the following message.
+
+``` 
+Invalid request: Secret [MySecretName] specified in template is stored in secret manager [aws_secret_manager]. Secrets used in the template should be stored in [Harness Built-in Secret Manager]
+```
+* [The restriction to only allow Harness Built-in Secret Manager](/release-notes/platform/#important-feature-change-notice) to be utilized in templates is to further tighten security and to allow you to be advised of self-referencial loops within your secret logic.  
+
 ### Templates overview
 
 * You can add secret manager templates to template libraries at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).

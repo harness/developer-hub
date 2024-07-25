@@ -1,0 +1,12 @@
+{
+    "label":"Commitment Orchestrator",
+    "position": 4,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Commitment Orchestrator"
+    }
+    }
+ 

@@ -9,7 +9,6 @@ RDS instance reboot derives the instance under chaos from an RDS cluster.
 
 ![RDS Instance Reboot](./static/images/rds-instance-reboot.png)
 
-
 ## Use cases
 RDS instance reboot determines the resilience of an application when an instance under chaos is derived from an RDS cluster.
 
@@ -34,7 +33,7 @@ RDS instance reboot determines the resilience of an application when an instance
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -71,12 +70,12 @@ Below is an example AWS policy to execute the fault.
         <th> Description </th>
         <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
         <td> CLUSTER_NAME </td>
         <td> Name of the target RDS cluster</td>
         <td> For example, rds-cluster-1. For more information, go to <a href="#rds-cluster-name"> RDS cluster name.</a></td>
         </tr>
-        <tr> 
+        <tr>
         <td> RDS_INSTANCE_IDENTIFIER </td>
         <td> Name of the target RDS Instances</td>
         <td> For example, rds-cluster-1-instance. For more information, go to <a href="#rds-instance-identifier"> RDS instance identifier.</a></td>
@@ -110,7 +109,7 @@ Below is an example AWS policy to execute the fault.
         <td> It defines sequence of chaos execution for multiple instance</td>
         <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Provide the path for aws secret credentials</td>
         <td> Default: <code>/tmp/cloud_config.yml</code> </td>
@@ -124,7 +123,7 @@ Below is an example AWS policy to execute the fault.
 
 ### RDS cluster name
 
-Cluster name of the target RDS cluster. Tune it by using the `CLUSTER_NAME` environment variable. If this variable is not provided, the fault selects the Instance Idenfier.
+Cluster name of the target RDS cluster. Tune it by using the `CLUSTER_NAME` environment variable. If this variable is not provided, the fault selects the Instance Identifier.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -152,8 +151,8 @@ spec:
         - name: TOTAL_CHAOS_DURATION
           value: '60'
 ```
-### RDS instance identifier 
- 
+### RDS instance identifier
+
 RDS instance name. Tune it by using the `RDS_INSTANCE_IDENTIFIER` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:

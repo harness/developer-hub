@@ -11,16 +11,14 @@ import TabItem from '@theme/TabItem';
 import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step-setup.md';
 
 <DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
-You can easily set up a Wiz step to run automated scans in a Harness pipeline. This step scans the container image you specify using the Wiz CLI. Then it correlates, deduplicates, and ingests the scan results into STO. You can see your scan results in the [Security Tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) tab of the pipeline execution.
+You can easily set up a Wiz step to run automated scans in a Harness pipeline. This step scans the container image you specify using the Wiz CLI. Then it correlates, deduplicates, and ingests the scan results into STO. You can see your scan results in the [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results) tab of the pipeline execution.
 
-## Important notes for running Wiz scans in STO
-
-- This integration is behind the feature flag `STO_STEP_PALETTE_WIZ`. Contact [Harness Support](mailto:support@harness.io) to enable it.  
+## Important notes for running Wiz scans in STO 
 
 <!--  If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. -->
 
@@ -170,7 +168,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
    - Add a Run step that runs a Wiz scan from the command line and then copies the results to the shared path.
    - Copy results from a Wiz scan that ran outside the pipeline. 
 
-   For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+   For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline).
 
    #### Set up the Wiz scanner
 
@@ -323,7 +321,7 @@ import StoSettingImageAccessToken from '../shared/step_palette/image/_access-tok
 
 ### Ingestion File
 
-The path to your scan results when running an [Ingestion scan](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline), for example `/shared/scan_results/wiz.latest.json`.  
+The path to your scan results when running an [Ingestion scan](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline), for example `/shared/scan_results/wiz.latest.json`.  
 
 - The data file must be in a [supported format](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#supported-ingestion-formats) for the scanner.
 

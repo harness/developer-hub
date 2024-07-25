@@ -6,6 +6,8 @@ helpdocs_topic_id: 4c8wljx60w
 helpdocs_category_id: kkiqy1f6d7
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-sdks/server-sdks/feature-flag-sdks-go-application
 ---
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
@@ -44,8 +46,8 @@ To use this SDK, make sure you:
 - For installation details, please refer to [Golang's official installation guide](https://go.dev/doc/install).
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-golang-server-sdk)
 * Create a Go application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-golang-server-sdk/blob/main/examples/getting_started.go).
-* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
+* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/use-ff/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Create an SDK key and make a copy of it](/docs/feature-flags/use-ff/ff-creating-flag/create-a-project#create-an-sdk-key).
 
 ## Install the SDK
 
@@ -149,7 +151,7 @@ log.Fatalf("client did not initialize in time: %s", err)
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
 </details>
 
-For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
+For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/use-ff/ff-target-management/targeting-users-with-flags).
 
 
 To add a Target, build it and pass in arguments for the following:
@@ -298,7 +300,7 @@ client, err := harness.NewCfClient(sdkKey, harness.WithLogger(logger))
 ```
 ### Use the Relay Proxy
 
-When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/relay-proxy/) you need to change the default URL and events URL to `http://localhost:7000` when initializing the SDK. For example:
+When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/use-ff/relay-proxy/) you need to change the default URL and events URL to `http://localhost:7000` when initializing the SDK. For example:
 
 
 ```

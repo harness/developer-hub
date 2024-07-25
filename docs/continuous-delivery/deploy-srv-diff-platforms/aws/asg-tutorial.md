@@ -815,7 +815,8 @@ To create the ASG infrastructure definition in an environment, do the following:
    
    You can use the same AWS connector you used when adding the AMI artifact in the Harness service. Ensure the AWS IAM user in the AWS connector credentials meets the [AWS policy requirements](#aws-policy-requirements).
 8. In **Region**, select the AWS region where you want the ASG deployed.
-9. Select **Save**.
+9. Optionally, in **Base ASG**, select an existing ASG as the base for new ASG deployments. Harness then clones the base ASG as a template to create a new ASG for the deployment. 
+10. Select **Save**.
 
 The infrastructure definition is added.
 
@@ -1384,12 +1385,6 @@ You can create a multi-phase workflow that progressively deploy your new instanc
 When you select the Canary execution strategy for your pipeline, make sure to select the **Add Multi Phase Canary Steps** to enable phased deployment. 
 
 ![ASG phased execution](./static/asg-phased-execution.png)
-
-
-:::important
-Currently, this feature is behind the feature flag, `CDS_ASG_PHASED_DEPLOY_FEATURE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 
 A phased deployment uses two step groups:  
 1. A Canary phase containing steps that define your ASG, deploy a percentage or partial count of the ASG's instances, and verify this partial deployment. You can add more Canary phases that expand the partial deployment.

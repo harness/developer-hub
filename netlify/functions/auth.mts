@@ -41,7 +41,7 @@ export default async (req: Request, context: Context) => {
   try {
     const { uuid, name } = await getUUID(accountId, accessToken);
     if (!uuid) {
-      return;
+      throw new Error("No uuid");
     }
 
     const token = await CreateChatbotToken(accountId, accessToken, uuid);
@@ -60,7 +60,6 @@ export default async (req: Request, context: Context) => {
       secure: true,
       sameSite: "None",
       expires: expiryTime, // expires in 2 hrs
-      
     });
 
     context.cookies.set({
@@ -74,7 +73,7 @@ export default async (req: Request, context: Context) => {
     });
     context.cookies.set({
       name: "name",
-      value: name,
+      value: name.replace(" ", "-"),
       domain: ".harness.io",
       path: "/",
       httpOnly: false,
@@ -144,7 +143,7 @@ async function deleteExistingToken(
         );
       } catch (error) {
         console.log(error);
-        console.log("Error Deleting Token");
+        throw new Error("deleting token failed");
       }
       // }
     })
@@ -171,6 +170,7 @@ async function getUUID(accountId: string, accessToken: string) {
     return { uuid: data.data.uuid, name: data.data.name };
   } catch (error) {
     console.log(error);
+    throw new Error("Getting UUID failed");
   }
 }
 

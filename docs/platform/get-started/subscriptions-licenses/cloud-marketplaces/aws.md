@@ -8,7 +8,7 @@ redirect_from:
   - /docs/platform/get-started/subscriptions-licenses/cloud-marketplace-integration/aws-marketplace
 ---
 
-Follow these steps to sign up for Harness through the AWS Marketplace:
+This topic describes the workflows supported to purchase Harness modules on the AWS Marketplace. Follow these steps to sign up for Harness through the AWS Marketplace:
 
 1. Go to the [AWS Marketplace](https://aws.amazon.com/marketplace/seller-profile?id=cddecd76-14a6-4b48-98a4-c747994c0cf4) to see a list of available modules.
 2. Select the module you want to purchase.

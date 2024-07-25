@@ -81,7 +81,7 @@ permissions:
       </tr>
       <tr>
         <td> STATUS_CODE </td>
-        <td> Modified status code for the api response </td>
+        <td> Modified status code for the API response. </td>
         <td> For more information, go to <a href="#status-code">status code </a>. </td>
       </tr>
     </table>
@@ -141,7 +141,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> PROXY_PORT </td>

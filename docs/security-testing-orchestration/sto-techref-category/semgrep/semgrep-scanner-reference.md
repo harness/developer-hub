@@ -1,13 +1,13 @@
 ---
-title: Semgrep scanner reference for STO
+title: Semgrep step configuration
 description: Scan code repositories with Semgrep.
-sidebar_label: Semgrep scanner reference
+sidebar_label: Semgrep step configuration
 sidebar_position: 20
 ---
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
@@ -54,12 +54,6 @@ For a quick introduction, go to the [SAST code scans using Semgrep](/docs/securi
 
 <summary>Add a built-in SAST scanner (easiest)</summary>
 
-:::note
-
-This step is behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-
-:::
-
 To scan a code repository, you need [Harness Code Repository](/docs/code-repository) or a [Harness connector](/docs/category/code-repo-connectors) to your Git service. 
 
 
@@ -76,7 +70,7 @@ Do the following:
 4. Select **Semgrep** and then **Add scanner**.
 5. Save your pipeline and then click **Run**. 
 
-   The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
+   The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results).
 
 
 </details>
@@ -116,7 +110,7 @@ Do the following:
 
 Save your pipeline and then select **Run**. 
 
-The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
+The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results).
 
 
 </details>
@@ -140,7 +134,7 @@ There are two primary workflows to do this:
 - Add a Run step that runs a Semgrep scan from the command line and then copies the results to the shared path.
 - Copy results from a Semgrep scan that ran outside the pipeline. 
 
-For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline).
 
 
 #### Set up the Semgrep scanner
@@ -163,7 +157,7 @@ Add a Semgrep step to the stage and set it up as follows.
 
 Save your pipeline and then select **Run**. 
 
-The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
+The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results).
 
 
 </details>
@@ -187,11 +181,8 @@ import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestio
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
+<!-- -->
 
-<StoSettingProductConfigName />
-
-<!-- 
 You can use this setting to select the set of Semgrep rulesets to include in your scan:
 
   - **Default** Include the following rulesets: 
@@ -218,7 +209,7 @@ You can use this setting to select the set of Semgrep rulesets to include in you
     - [security-code-scan](https://semgrep.dev/p/security-code-scan)
   - **Auto and Ported security tools except p/gitleaks** 
 
--->
+
 
 ### Target
 

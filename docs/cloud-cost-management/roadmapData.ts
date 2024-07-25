@@ -217,27 +217,6 @@ export const CcmData: Horizon = {
     feature: [
       {
         tag: [],
-        title: "Cost Category Enhancements",
-        description:
-          "Performance improvements - 2x Query speeds, Support to leverage cost categories across all CCM features: Recommendations, Asset Governance, Budgets",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [],
-        title: "Cost Anomaly Workflows ",
-        description:
-          "Ignore list, support for comments, JIRA/ SNOW integration",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [],
-        title: "Universal Cost Adaptor for External Data Ingestion",
-        description:
-          "Unified way to ingest cost data from any external sources for a unified SaaS + Cloud spend management",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [],
         title: "Cluster Orchestrator for EKS",
         description:
           "Workload-driven intelligent node autoscaling with distributed spot orchestration",
@@ -278,44 +257,38 @@ export const CcmData: Horizon = {
     feature: [
       {
         tag: [],
-        title: "Terraform Support for Perspectives ",
-        description: "Programmatically manage and configure different views",
+        title: "Governance Recommendations enhancements",
+        description:
+          "Recommendations powered by asset governance at the granularity of a combination of cloud account & region also enabling recommendation workflows.",
         backgroundColor: "var(--yellow-100)",
       },
       {
         tag: [],
-        title: "Recommendation Preferences ",
+        title: "Delegate performance improvements ",
         description:
-          "Global preferences to select presets for fine tuning recommendations (Ex. Buffer, instance family etc.)",
+          "Delegate performance improvements to enhance resource utilization and scalability, ensuring optimized efficiency.",
         backgroundColor: "var(--yellow-100)",
       },
       {
         tag: [],
-        title: "AutoStopping Bulk Rule Creation",
+        title: "Azure Perspective Preferences",
         description:
-          "Creation of AutoStopping Rules in bulk based on tags and other resource filtering for faster adoption at scale",
+          "Enables users to connect multiple exports (Amortized and actuals) and set the cost type of choice as a global preference with local overrides.",
         backgroundColor: "var(--yellow-100)",
       },
       {
         tag: [],
-        title: "Smart Advisor for AutoStopping",
+        title: "Tag correlation for cloud recommendations",
         description:
-          "Categorization of short-lived non-production cloud accounts and clusters to track savings potential and progress made",
+          "Filter recommendations by tags, efficiently correlate recommendations with tag metadata.",
         backgroundColor: "var(--yellow-100)",
       },
       {
         tag: [],
-        title: "Workload Bin-packing for EKS Cluster Orchestrator",
+        title: "Cluster Orchestrator Enhancements for EKS",
         description:
-          "Efficient scheduling and placement of containers onto nodes for optimizing node count and utilization",
-        backgroundColor: "var(--yellow-100)",
-      },
-      {
-        tag: [],
-        title: "FinOps Workflows ",
-        description:
-          "Automated workflow to adopt FinOps practices and CCM features at scale",
-        backgroundColor: "var(--yellow-100)",
+          "GPU node support for spot and on-demand. Autoscaling support for deamon sets and jobs.",
+        backgroundColor: "var(--green-100)",
       },
     ],
   },
@@ -324,37 +297,30 @@ export const CcmData: Horizon = {
     feature: [
       {
         tag: [],
-        title: "Cost Anomaly Preferences ",
+        title: "Anomaly Detection Enhancements",
         description:
-          "Global preferences to select percentage deviation, minimum cost thresholds",
+          "Correlation to top resources causing the anomaly, CSV exports and workflows.",
         backgroundColor: "var(--blue-100)",
       },
       {
         tag: [],
-        title: "AutoStopping Enforcement",
+        title: "Smart Advisor for AutoStopping",
         description:
-          "Compliance enforcement to ensure that all target resources have AutoStopping Rules created to manage them and deliver savings during idle windows",
+          "Categorization of short-lived non-production cloud accounts and clusters to track savings potential and progress made",
         backgroundColor: "var(--blue-100)",
       },
       {
         tag: [],
-        title: "Commitment Orchestrator for Azure ",
+        title: "Commitment Orchestrator for RDS",
         description:
           "Automated purchasing and management of commitments to maximize savings, compute coverage and utilization",
         backgroundColor: "var(--blue-100)",
       },
       {
         tag: [],
-        title: "Cluster Orchestrator for AKS ",
+        title: "Workload Bin-packing for EKS Cluster Orchestrator",
         description:
-          "Workload-driven intelligent node autoscaling with distributed spot orchestration",
-        backgroundColor: "var(--blue-100)",
-      },
-      {
-        tag: [],
-        title: "Cloud Asset Governance - IaCM Integration ",
-        description:
-          "Shifting left FinOps-as-code guardrails to prevent leaks at the point of infrastructure provisioning",
+          "Efficient scheduling and placement of containers onto nodes for optimizing node count and utilization",
         backgroundColor: "var(--blue-100)",
       },
     ],
@@ -362,27 +328,6 @@ export const CcmData: Horizon = {
   "Q4 CY'24": {
     description: "Q4 CY'24, Nov-Jan 2025",
     feature: [
-      {
-        tag: [],
-        title: "Conversational FinOps",
-        description:
-          "Natural language prompts to query complex cloud cost analaytics and insights",
-        backgroundColor: "var(--blue-100)",
-      },
-      {
-        tag: [],
-        title: "Cluster Orchestrator for GKE ",
-        description:
-          "Workload-driven intelligent node autoscaling with distributed spot orchestration",
-        backgroundColor: "var(--blue-100)",
-      },
-      {
-        tag: [],
-        title: "Commitment Orchestrator for GCP ",
-        description:
-          "Automated purchasing and management of CUDs to maximize savings, compute coverage and utilization",
-        backgroundColor: "var(--blue-100)",
-      },
       {
         tag: [],
         title: "Cloud Asset Governance - Security & Compliance ",
@@ -395,6 +340,27 @@ export const CcmData: Horizon = {
         title: "Tag Nomalization",
         description:
           "Normalize tag variations effortlessly with AIDA's AI-driven recommendations",
+        backgroundColor: "var(--blue-100)",
+      },
+      {
+        tag: [],
+        title: "Universal Cost Adaptor for External Data Ingestion",
+        description:
+          "Unified way to ingest cost data from any external sources for a unified SaaS + Cloud spend management",
+        backgroundColor: "var(--blue-100)",
+      },
+      {
+        tag: [],
+        title: "Cost Category Enhancements",
+        description:
+          "Performance improvements - 2x Query speeds, Support to leverage cost categories across all CCM features: Recommendations, Asset Governance, Budgets",
+        backgroundColor: "var(--blue-100)",
+      },
+      {
+        tag: [],
+        title: "Recommendation Preferences ",
+        description:
+          "Global preferences to select presets for fine tuning recommendations (Ex. Buffer, instance family etc.)",
         backgroundColor: "var(--blue-100)",
       },
     ],
