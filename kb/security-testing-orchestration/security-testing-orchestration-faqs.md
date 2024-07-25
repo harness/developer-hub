@@ -46,6 +46,25 @@ For more details, go to [What's supported](/docs/security-testing-orchestration/
 ## What are the requirements for STO to ingest scan results in JSON format?
 For STO to successfully ingest your scan results, the ingestion file must adhere to the specific JSON format described here: [Ingest from unsupported scanners](/docs/security-testing-orchestration/custom-scanning/ingesting-issues-from-other-scanners)
 
+## Do user need root access to run Snyk scans in STO?
+If you need to add trusted certificates to your scan images at runtime, you must run the scan step with root access. However, you can configure your STO scan images and pipelines to run scans as non-root and establish trust for your proxies using custom certificates.
+
+## What is the default workspace path for the Scan?
+The default workspace path is /harness. You can override this if you want to scan a subset of the workspace.
+
+## How can user configure authentication for scans?
+Access Token (Orchestration scans): Use a Harness text secret for your encrypted token and reference it in the format <+secrets.getValue("my-access-token")>.
+Ingestion File: Provide the path to your scan results file (e.g., /shared/scan_results/myscan.latest.sarif).
+
+## WHich Snyk products are supported by STO?
+Snyk Open Source, Snyk Code, Snyk Container and Snyk infrastructure as Code
+
+## Is Snyk API is required while scanning iin STO?
+Yes, Snyk API is required for Snyk Code and Snyk Container scans.
+
+## Are there any specific considerations for scanning a code repository?
+You may need to build the project before scanning it. This can be done in a Run step in your Harness pipeline.
+
 ## STO dashboards
 
 ### These is no Test Execution Summary widget in the list of dashboard widgets

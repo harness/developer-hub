@@ -2349,6 +2349,18 @@ curl -X POST -i -H "Authorization: Bearer AUTH_TOKEN" https://<DRONE_SERVER_FQDN
 ### What actions can I take to address the extended runtime of a Docker command, particularly when encountering timeouts during microdnf updates?
 The prolonged runtime of Docker commands, often exacerbated by timeouts during microdnf updates, can be primarily attributed to network issues. To address this, you should verify the connectivity of the repomirror being utilized. Additionally, you could examine and potentially adjust the timeouts configured on the repomirror to enhance performance. These steps can help mitigate the impact of network-related delays and improve the efficiency of Docker operations.
 
+### How can user Spin up a dynamic containers during testing after the build?
+User can use the Background step as suggested in this doc: https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/
+
+### If user have test results as part of a generic Run step with mvn clean deploy, would user be able to slurp those test results over into the test Dashboard still? Or is the Unit Test step the only way to get them on that tab?
+Yes, you can use the Run step to run your maven command, and upload the test results. There is a field for this in the run step (like in the run tests step). Doc for refrence:
+https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/#report-paths 
+The RunTests allow you to not only run your tests, but also to use Test Intelligence to run only unit tests that are relevant to the code changes made, thus cutting down the test cycle time.
+
+
+### Is user can filter which CI builds timed out during Initialize step?
+No, as per the current design it's not possible.
+
 #### What does the error "java. lang.IllegalStateException: Failed to execute ApplicationRunner" mean?
 
 The error `java.lang.IllegalStateException: Failed to execute ApplicationRunner` indicates that there was an issue while trying to execute an ApplicationRunner in a Java application. This could be due to various reasons such as missing dependencies, incorrect configuration, or runtime issues. Examining the stack trace and reviewing the application code further may be necessary to pinpoint the exact cause of the error.

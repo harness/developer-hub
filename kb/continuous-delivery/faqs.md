@@ -3236,6 +3236,24 @@ AIDA is enabled on the Harness platform by default. To read more on the security
 Yes, we can use exported variables to reference a step group variable without knowing the step group ID.
 One can follow the syntax : `<+exportedVariables.getValue("stepGroup.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>` This method allows you to reference the variable by its alias name instead of needing to know the step group ID. For more details, you can refer to the Harness documentation on [Scoping output variables using aliases](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#scoping-output-variables-using-aliases)
 
+#### Can user provide the user group in the Approval step as expression?
+Yes, user can give the expression at the place of user group filed in Approval step.
+
+#### If user re-run the execution from failed stage and the failed stage is configured with the chained pipeline, so the whole child pipeline will re-run or only the specific step inside the child pieline will re-run?
+So if you are re-running the pipeline from the failed stage. So the whole child pipeline will considered as the stage and it will re-run the entire child pipeline.
+
+#### Harness uses which encoding in the copy command step?
+Harness uses UTF-8 encoding in the copy config zommand step.
+
+#### How long are deployment instances tracked in dashboard?
+On the dashboard is limited to active instances from the past 30 days.
+
+#### Can user use the \*.tgz file to do the helm template cli?
+If your tar file is also getting cloned you can uncompress it using service hook and then use it in the helm template. Doc for reference: https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks
+
+#### Can user invoke API from OPA policy and apply the rules based on the output of the API?
+OPA does not support dynamic execution so API cannot be invoke.
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
