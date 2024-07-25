@@ -12,13 +12,13 @@ This topic describes application maps, their significance, and how to create, ed
 
 ### What is an application map?
 
-An application map is a resource on the Harness Platform (also known as the control plane) used to bind multiple interacting [discovered services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery.md) into a single object, thereby allowing the users to act (test, monitor, deploy, and so on) on a group of services.
+An application map is a resource on the Harness Platform (also known as the control plane) used to bind multiple interacting [discovered services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery.md) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
 
 ### Why is an application map required?
 
 Application maps help:
 
-- Test, monitor, and deploy a group of services.
+- Test and monitor a group of services.
 - Determine the resilience coverage and resilience score for the overall application map and its constituent services.
 - Manage experiments associated with them.
 - Perform trend analysis.
