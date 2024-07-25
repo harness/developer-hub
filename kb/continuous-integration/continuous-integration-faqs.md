@@ -324,6 +324,24 @@ Currently, caching build images with Harness CI Cloud isn't supported.
 
 By default, a built-in step runs inside a container within the build VM.
 
+### How can we upgrade .NET7 to .NET8 in Harness cloud windows VM?
+
+If a specific version of the dotnet is not available in the build VM preinstalled, you could add the necessary commands to install it in a run step. For example, if you want to install dotnet 8, you could use the below commands
+
+```
+Invoke-WebRequest -Uri https://download.visualstudio.microsoft.com/download/pr/93961dfb-d1e0-49c8-9230-abcba1ebab5a/811ed1eb63d7652325727720edda26a8/dotnet-sdk-8.0.100-win-x64.exe -OutFile "C:\Users\installer\Downloads\dotnet.exe"
+
+Start-Process -FilePath C:\Users\installer\Downloads\dotnet.exe -ArgumentList "/quiet", "/norestart" -Wait
+```
+
+### Can we configure a custom docker network where the step containers will be attached in cloud VM?
+
+Currently, we wouldn't be able to configure a custom docker network where the step container will be attached
+
+### When we start a container from a run step in Harness cloud build, how can the run step container connect to the application running in the new container?
+
+You could add the flag ```--network drone``` to your command that start the custom container so that it connects the container to the existing network in the cloud VM named ```drone``` where the step containers are already connected. Once the custom container is started, you can access the application at ```<container_name>:<port>``` from the run step
+
 ## Kubernetes clusters
 
 ### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
@@ -569,7 +587,25 @@ This could happen when the docker repository in the build and push step is not c
 ### Why the execution is getting aborted without any reason and the "applied by" field is showing trigger?
 
 This could happen when the PR/push trigger is configured with the 'Auto-abort Previous Execution' option, which will automatically cancel active builds started by the same trigger when a branch or PR is updated
+### Is there a native way to configure the PR trigger not to start the pipeline when there is conflict in the PR?
 
+Merge conflicts are only detected during the git clone step when attempting to merge the PR and it cannot be identified from the incoming payload.
+
+### Why is the build and push step failing with the error "error resolving dockerfile path: copying dockerfile: copying file: write /kaniko/Dockerfile: copy_file_range: is a directory"?
+
+This could happen when we configure a custom dockerfile location in the build and push step however dockerfile name is not included in the path. We need to include the dockerfile name in the path.
+
+### Does the Dockerfile always need to come from the codebase, or can it be created as part of the execution?
+
+The Dockerfile doesn't necessarily need to be present in the codebase. You can create the Dockerfile in a run step during execution before the build and push step is executed.
+
+### How can we upload artifacts to azure storage from a CI stage as there isn't built in step available for this?
+
+We could use the [drone plugin](https://github.com/drone-plugins/drone-azure-storage?tab=readme-ov-file) to achive this.
+
+### While using artifact metadata publisher plugin, how can we have a custom, short name for the link displayed in the Harness CI "Artifacts" tab?
+
+Currently it is not supported and the artifact tab will display the complete URL
 
 ## Self-signed certificates
 
@@ -878,6 +914,10 @@ If your build runs as non-root (meaning you have set `runAsNonRoot: true` in you
 ### When I try to run as non-root, the build fails with "container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root"
 
 This error occurs if you enable **Run as Non-Root** without configuring the default user ID in **Run as User**. For more information, go to [CI Build stage settings - Run as non-root or a specific user](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#run-as-non-root-or-a-specific-user).
+
+### Why is the docker installed on build VM is failing to spin up the containers with the errors "network unreachable" and "overlapping ipv4" as soon as the docker version is upgraded to v27?
+
+This could be due to a [known issue](https://github.com/moby/moby/pull/48089 ) reported with docker version v27 which has already been fixed in the version 27.0.3. Upgrading to the latest Docker version should resolve this issue
 
 ## Codebases
 
@@ -1997,6 +2037,9 @@ Yes. Go to [Cache Intelligence API](https://developer.harness.io/docs/continuous
 
 No, You need to configure the S3 compatible  object store in your infra to be used as the cache storage. More details about the same can be referred in the [doc](https://developer.harness.io/docs/platform/settings/default-settings/#continuous-integration) 
 
+### Why the cache intelligence save cache step in the self hosted infra is failing with the error "unsupported protocol scheme s3"?
+
+This could happen when the account default settings for S3-compatible global object storage configured with the endpoint starting with S3. You need to configure https URL for the s3 compatable storage provider. For example, if your s3 bucket is in ```us-east-2``` region, you could configure the endpoint as ```https://s3.us-east-2.amazonaws.com```. You could also leave the endpoint field blank so that the URL will be formed automatically based on the region and bucket name that you configured.
 
 ## Background steps and service dependencies
 
