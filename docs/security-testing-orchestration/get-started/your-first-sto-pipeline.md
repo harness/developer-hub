@@ -26,7 +26,7 @@ This tutorial shows you how to use the Harness Security Testing Orchestration (S
 In addition to a Harness account, this tutorial requires the following:
 
 - A Harness account and STO module license.
-- You need to have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned to your user profile.
+- You need to have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#add-security-testing-roles) assigned to your user profile.
 - You also need a GitHub account and a [connector](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-a-codebase-connector) to your GitHub account.
   This tutorial uses an [example codebase on GitHub](https://github.com/williamwissemann/dvpwa) that contains known vulnerabilities.
 

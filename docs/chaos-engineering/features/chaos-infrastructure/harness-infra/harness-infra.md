@@ -1,5 +1,5 @@
 ---
-title: Harness Delegate-driven chaos infrastructure
+title: Harness dedicated chaos infrastructure
 sidebar_position: 2
 description: Harness chaos infrastructure that uses Harness Delegate to allow for quick onboarding and optimized chaos execution of experiments.
 redirect_from:
@@ -8,31 +8,31 @@ redirect_from:
 
 This topic walks you through Harness chaos infrastructure that uses Harness Delegate and how it facilitates quick onboarding and optimizes chaos experiments.
 
-## What is Harness DDCI?
+## What is Harness dedicated chaos infrastructure?
 
-Harness Delegate-Driven Chaos Infrastructure (DDCI) is a beta product in HCE that allows for quick onboarding and optimized chaos execution for microservices-based targets on Kubernetes.
+Harness dedicated chaos infrastructure is a beta product in HCE that allows for quick onboarding and optimized chaos execution for microservices-based targets on Kubernetes.
 The features described below help achieve quick onboarding and optimized chaos experiment execution.
 The diagram below describes the high-level flow of how you can [discover services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery) and [create network maps](/docs/chaos-engineering/features/network-maps/intro-network-map).
 
     ![](./static/flow-v2.png)
 
-### Experiment execution using DDCI
+### Experiment execution using dedicated chaos infrastructure
 
-The schematic diagram below describes how chaos experiments are executed in Harness infrastructure using Harness Delegate, that is, using Harness DDCI. It highlights the use of Harness Delegate which eliminates the need for a dedicated chaos agent, which simplifies the experiment orchestration mechanism.
+The schematic diagram below describes how chaos experiments are executed in Harness infrastructure using Harness Delegate, that is, using Harness dedicated chaos infrastructure. It highlights the use of Harness Delegate which eliminates the need for a separate chaos agent, which simplifies the experiment orchestration mechanism.
 
     ![](./static/ddci-flow.png)
 
-Go to [permissions required](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/permissions) to know the detailed list of permissions to execute DDCR-based Kubernetes faults.
+Go to [permissions required](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/permissions) to know the detailed list of permissions to execute Kubernetes faults with a dedicated chaos infrastructure.
 
 The diagram below describes the detailed flow of control (step 5 of the earlier diagram), for an example chaos experiment- [pod DNS chaos](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error).
 
     ![](./static/elaborate.png)
 
-## Features of Harness DDCI
+## Features of Harness dedicated chaos infrastructure
 - Automated Kubernetes [service discovery](/docs/chaos-engineering/features/service-discovery/intro-service-discovery) and workloads with network traffic patterns between them through a transient discovery agent.
 - [Automated](/docs/chaos-engineering/onboarding/guided-onboarding#choose-between-automatic-and-customizable-network-map-creation) and [guided](/docs/chaos-engineering/features/network-maps/intro-network-map#create-a-network-map) creation of network maps that represent a fully functional application within the cluster (which comprises of several constituent microservices).
 - [Chaos experiment auto-creation](#auto-create-experiment) for a given [network map](/docs/chaos-engineering/features/network-maps/intro-network-map) based on the workload specification and its lineage in terms of network traffic.
-- Reuse the Harness Delegate for chaos experiment execution on the user cluster without a dedicated (or separate) chaos agent.
+- Reuse the Harness Delegate for chaos experiment execution on the user cluster without a separate chaos agent.
 - Application-level and network map level resilience scores.
 
 ### Auto-create experiment
@@ -41,27 +41,27 @@ Experiments are auto-created based on levels (or categories) you select during a
     ![](./static/exp-rec.png)
 
 ### Speed of execution
-Previously, chaos experiments would typically take more time (in the order of 4 minutes) whereas with Harness DDCI, you can complete experiment execution in less than half the time (in the order of 1.5 minutes).
+Previously, chaos experiments would typically take more time (in the order of 4 minutes) whereas with Harness dedicated chaos infrastructure, you can complete experiment execution in less than half the time (in the order of 1.5 minutes).
 
 The diagram below shows the execution time for experiments that use legacy Kubernetes infrastructure.
 
     ![](./static/v1-exp.png)
 
-The diagram below shows the execution time for experiments that use Harness DDCI.
+The diagram below shows the execution time for experiments that use Harness dedicated chaos infrastructure.
 
     ![](./static/v2-exp.png)
 
 ### Fault tunables
-The number of tunables to specify in an experiment changes; Harness DDCI gives better control over the experiments since it provides advanced tunables.
+The number of tunables to specify in an experiment changes; Harness dedicated chaos infrastructure gives better control over the experiments since it provides advanced tunables.
 
 The diagram below shows the tunables used in experiments that use legacy Kubernetes infrastructure..
 
     ![](./static//v1-tunables.png)
 
-The diagram below shows the tunables used in experiments that use Harness DDCI.
+The diagram below shows the tunables used in experiments that use Harness dedicated chaos infrastructure.
 
     ![](./static/v2-tunables.png)
 
 ### Resilience score
 
-Previously, resilience score was measured at the experiment level. With Harness DDCI, you can gain insights into an application along with its associated network map. This way, you can view the application-level resilience score and network map level resilience score.
+Previously, resilience score was measured at the experiment level. With Harness dedicated chaos infrastructure, you can gain insights into an application along with its associated network map. This way, you can view the application-level resilience score and network map level resilience score.

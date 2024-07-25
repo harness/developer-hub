@@ -18,6 +18,10 @@ Customers can request migration of their account from one multi-tenant SaaS clus
 
 2. It is only supported for modules running on the Harness NG Platform. This means Harness CD FirstGen accounts cannot be migrated.
 
+3. After account migration, Account ID will remain the same.
+
+4. The entire account has to be migrated at once, there is no capability to migrate portions of the account.
+
 The following steps will be followed by Harness and the customer to ensure a smooth migration.
 
 1. Harness and the customer will ensure that the account has a vanity URL. If no such URL exists, then Harness will first provision a vanity URL in consultation with the customer. Follow the steps to [set up a vanity URL](/docs/platform/authentication/authentication-overview/#set-up-vanity-url).

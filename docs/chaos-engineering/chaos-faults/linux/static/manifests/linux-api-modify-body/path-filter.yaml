@@ -1,0 +1,28 @@
+## provide api path filter
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: linux-api-modify-body
+      spec:
+        components:
+          env:
+            - name: responseBody
+              value: "/.+/test"
+            # provide the api path filter
+            - name: pathFilter
+              value: '/status'
+            # provide the port of the target service
+            - name: targetServicePort
+              value: 80
+            - name: statusCode
+              value: 404

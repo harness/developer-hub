@@ -4,39 +4,14 @@ export const CdData: Horizon = {
     description: "Q2 2024, May - July 2024",
     feature: [
       {
-        tag: [{value: "Kubernetes"}],
-        title: "Native Support for Kubectl Rollout Restart",
-        description: "User’s can restart their kubectl rollouts natively within the Harness UI.",
-      },
-      {
         tag: [{value: "Infra Provisioners"}],
         title: "HTTPS Support for Bitbucket Server when Using Terraform & Terragrunt",
         description: "User’s can connect to the Bitbucket server when using Terraform & Terragrunt module source configuration via HTTPS. ",
       },
       {
-        tag: [{ value: "Spinnaker" }, { value: "Migration" }],
-        title: "Migrator Tool for Spinnaker",
-        description: "User’s can migrate their Spinnaker Pipelines to Harness.",
-      },
-      {
-        tag: [{value: "Helm"}],
-        title: "Native Helm Deployment - Blue Green and Canary Support",
-        description: "User’s can now take their Helm Chart and Harness will orchestrate and manage the deployment via Helm. We leverage kustomize to perform the specific actions to support the Blue Green and Canary behavior along with Helm.",
-      },
-      {
         tag: [{value: "AWS"}, {value: "Serverless"}],
         title: "Multiple Runtimes Support for Serverless.com",
         description: "Users will be able to use multiple new supported runtimes with serverless.com functions.",
-      },
-      {
-        tag: [],
-        title: "Harness Code Support as a Manifest Source",
-        description: "Users can use Harness Code as a manifest source for all Harness CD swimlanes.",
-      },
-      {
-        tag: [{value: "GitOps"}],
-        title: "Support Multiple Repository Sources",
-        description: "Users can reference files in separate sources for their GitOps deployments.",
       },
       {
         tag: [{value: "Continuous Verification"}],
@@ -48,6 +23,21 @@ export const CdData: Horizon = {
   "Next": {
     description: "Q3 2024, Aug-Oct 2024",
     feature: [
+      {
+        tag: [],
+        title: "Harness Code Support as a Manifest Source",
+        description: "Users can use Harness Code as a manifest source for all Harness CD swimlanes.",
+      },
+      {
+        tag: [{value: "GitOps"}],
+        title: "Support Multiple Repository Sources",
+        description: "Users can reference files in separate sources for their GitOps deployments.",
+      },
+      {
+        tag: [{value: "Helm"}],
+        title: "Native Helm Deployment - Blue Green and Canary Support",
+        description: "User’s can now take their Helm Chart and Harness will orchestrate and manage the deployment via Helm. We leverage kustomize to perform the specific actions to support the Blue Green and Canary behavior along with Helm.",
+      },
       {
         tag: [{value: "Continuous Verification"}],
         title: "Continuous Verification using Manifest",
@@ -67,6 +57,11 @@ export const CdData: Horizon = {
         tag: [{value: "Continuous Verification"}],
         title: "Prometheus Default Health Source for Continuous Verification",
         description: "Users can deploy Helm Charts that have CRDs.",
+      },
+      {
+        tag: [{value: "Azure Functions"}],
+        title: "Azure Functions",
+        description: "Users can deploy Azure Functions.",
       },
       {
         tag: [],
@@ -103,6 +98,16 @@ export const CdData: Horizon = {
   "Released": {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Spinnaker" }, { value: "Migration" }],
+        title: "Migrator Tool for Spinnaker",
+        description: "User’s can migrate their Spinnaker Pipelines to Harness.",
+      },
+      {
+        tag: [{value: "Kubernetes"}],
+        title: "Native Support for Kubectl Rollout Restart",
+        description: "User’s can restart their kubectl rollouts natively within the Harness UI.",
+      },
       {
         tag: [{value: "Kubernetes"}],
         title: "Kubernetes Traffic Shifting Support",

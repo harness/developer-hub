@@ -2,6 +2,8 @@
 title: Deploy the relay proxy
 description: This topic describes how to deploy and start the Relay Proxy.
 sidebar_position: 20
+redirect_from:
+  - /docs/feature-flags/relay-proxy/deploy-relay-proxy
 ---
 
 The Relay Proxy enables your apps to connect directly to Feature Flag services without having to make a significant number of outbound connections to FF services. The Relay Proxy establishes a connection to the Feature Flags configuration data and relays that connection to clients in an organization's network.

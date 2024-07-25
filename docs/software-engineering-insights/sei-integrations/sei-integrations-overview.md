@@ -117,3 +117,27 @@ This page allows you to monitor the integration's current status, which could be
 
 You can review previous ingestion activities in the **Ingestion Logs** section and view their respective statuses.
 You can also access additional details such as the Ingestion Task Start Time, Time taken to Complete the Ingestion Task, and Number of Retries for the Ingestion Scan.
+
+## Delete an integration
+
+To delete an integration:
+
+* Go to the **Integrations** tab under the **Data Settings** and select **Available Integrations**.
+
+![](./static/delete-integration1.png)
+
+* Click on the delete icon next to the integration you want to remove.
+
+![](./static/delete-integration2.png)
+
+* A confirmation dialog box will appear. Click **Yes** to proceed.
+  
+![](./static/delete-integration3.png)
+
+The integration status will change to Deleting. The deletion process is scheduled, and once complete, the integration will no longer be listed in the **Available Integrations** tab.
+
+![](./static/delete-integration4.png)
+
+:::warning
+Note that deleting an integration will impact all collections and profiles associated with it.
+:::

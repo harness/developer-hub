@@ -6,6 +6,8 @@ helpdocs_topic_id: hwoxb6x2oe
 helpdocs_category_id: kkiqy1f6d7
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-sdks/server-sdks/python-sdk-reference
 ---
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'

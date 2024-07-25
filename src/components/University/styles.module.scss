@@ -14,13 +14,13 @@
   background-position-y: 0;
   background-size: 55%;
   min-height: 400px;
-  padding-top: 72px;
+  // padding-top: 72px;
 
   .hero {
     display: flex;
 
     .left {
-      margin-top: -72px;
+      // margin-top: -72px;
       flex-basis: 45%;
 
       .linkBack {
@@ -36,8 +36,10 @@
       align-items: center;
       gap: 24px;
       min-height: 210px;
+      position: relative;
 
       img {
+        margin-top: 72px;
         width: 125px;
         height: auto;
         opacity: 0.4;
@@ -50,6 +52,15 @@
           opacity: 1;
         }
       }
+
+      .iltimg {
+        width: 100%;
+        max-height: 210px;
+      }
+      .sptimg {
+        width: 100%;
+        max-height: 210px;
+      }
     }
   }
 
@@ -59,7 +70,81 @@
     flex-wrap: wrap;
     gap: 16px;
 
-    .certBtn {
+    .certBtnDark {
+      width: 227px;
+      height: 52px;
+      padding: 10px 32px 10px 32px;
+      border-radius: 50px;
+      font-family: Inter;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: 0px;
+      text-align: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      background-color: var(--primary-9);
+      border: 2px solid var(--primary-9);
+      color: white;
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--primary-10);
+      }
+
+      img {
+        width: 28px;
+        height: 22.67px;
+        top: 4.67px;
+        left: 2px;
+      }
+    }
+
+    .InstLedTrainBtnDark {
+      min-width: 330px;
+      height: 52px;
+      padding: 10px 32px 10px 32px;
+
+      border-radius: 50px;
+      font-family: Inter;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: 0px;
+      text-align: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      background-color: var(--primary-9);
+      border: 2px solid var(--primary-9);
+      color: white;
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--primary-10);
+      }
+
+      img {
+        width: 28px;
+        height: 22.67px;
+        top: 4.67px;
+        left: 2px;
+      }
+    }
+
+    .activeDark {
+      border: 2px solid var(--primary-9);
+      background-color: white;
+      color: var(--primary-9);
+      &:hover {
+        background-color: var(--gray-100);
+      }
+    }
+
+    .certBtnLight {
       width: 227px;
       height: 52px;
       padding: 10px 32px 10px 32px;
@@ -91,11 +176,11 @@
       }
     }
 
-    .InstLedTrainBtn {
+    .InstLedTrainBtnLight {
       min-width: 330px;
       height: 52px;
       padding: 10px 32px 10px 32px;
-      border: 2px solid var(--primary-9);
+
       border-radius: 50px;
       font-family: Inter;
       font-size: 20px;
@@ -107,8 +192,9 @@
       justify-content: center;
       align-items: center;
       gap: 10px;
-      color: var(--primary-9);
+      border: 2px solid var(--primary-9);
       background-color: white;
+      color: var(--primary-9);
 
       &:hover {
         cursor: pointer;
@@ -123,11 +209,10 @@
       }
     }
 
-    .active {
+    .activeLight {
       background-color: var(--primary-9);
       border: 2px solid var(--primary-9);
       color: white;
-
       &:hover {
         background-color: var(--primary-10);
       }
@@ -368,6 +453,8 @@
     }
 
     .availableCerts {
+      margin-top: 32px;
+
       h4 {
         font-weight: 500;
         font-size: 24px;
@@ -387,8 +474,6 @@
         /* Light/Text/Primary */
         color: var(--ifm-color-content);
       }
-
-      margin-top: 32px;
 
       .availableCertsBox {
         display: flex;
@@ -794,6 +879,13 @@
   }
 }
 
+.InstructorLedTrainingBg {
+  background: none !important;
+}
+.SelfPacedTrainingBg {
+  background: none !important;
+}
+
 @media screen and (max-width: 1344px) {
   /* for small desktop */
   .certificationsCI,
@@ -875,6 +967,7 @@
 
 @media screen and (max-width: 768px) {
   /* for tablet */
+
   .university {
     .hero {
       display: flex;
@@ -886,7 +979,12 @@
 
       .right {
         flex-basis: unset;
-
+        .iltimg {
+          display: block;
+        }
+        .sptimg {
+          display: block;
+        }
         // margin-top: 36px;
         img {
           width: 100px;
@@ -940,6 +1038,32 @@
         }
       }
     }
+  }
+
+  .SelfPacedTrainingBg {
+    background: none;
+  }
+  .InstructorLedTrainingBg {
+    background: none;
+  }
+
+  html[data-theme="dark"] .SelfPacedTrainingBg {
+    background: none;
+  }
+
+  html[data-theme="dark"] .InstructorLedTrainingBg {
+    background: none;
+  }
+
+  .iltimg {
+    display: block;
+    width: 100% !important;
+    opacity: 1 !important;
+  }
+  .sptimg {
+    display: block;
+    width: 100% !important;
+    opacity: 1 !important;
   }
 }
 
@@ -1095,6 +1219,15 @@
       .right {
         background-image: url(/img/cert_ce_bg.svg);
       }
+    }
+  }
+
+  .hero {
+    .SelfPacedTrainingBg {
+      background-image: none !important;
+    }
+    .InstructorLedTrainingBg {
+      background-image: none !important;
     }
   }
 }

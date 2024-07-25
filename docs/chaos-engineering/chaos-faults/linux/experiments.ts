@@ -5,7 +5,35 @@ export const experiments: ExperimentDetails[] = [
     name: "Linux API block",
     description:
       "Linux API block injects API block fault into a Linux machine for a specific duration through path filtering. This results in the API not being able to send responses for the requests it receives.",
-    tags: ["linux"],
+    tags: ["linux", "api", "block"],
+    category: "linux",
+  },
+  {
+    name: "Linux API latency",
+    description:
+      "Linux API latency injects API request and response latency into a Linux machine by starting proxy server and redirecting the traffic through it. It induces API call latency that adds a time delay before sending a response.",
+    tags: ["linux", "api", "latency"],
+    category: "linux",
+  },
+  {
+    name: "Linux API modify body",
+    description:
+      "Linux API modify body modifies the API request and response body by replacing any portions that match a specified regular expression with a provided value. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.",
+    tags: ["linux", "api", "modify", "body"],
+    category: "linux",
+  },
+  {
+    name: "Linux API status code",
+    description:
+      "Linux API status code changes the API response status code and optionally API  response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.",
+    tags: ["linux", "api", "status-code"],
+    category: "linux",
+   },
+   {
+    name: "Linux API modify header",
+    description:
+      "Linux API modify header injects API fault into a Linux machine for a specific duration to override the header values of API requests and responses with the user-provided values for the given keys. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.",
+    tags: ["linux", "api", "header", "modify"],
     category: "linux",
   },
   {
@@ -41,6 +69,13 @@ export const experiments: ExperimentDetails[] = [
     description:
       "Linux DNS spoof injects chaos to mimic DNS resolution on the Linux machine.",
     tags: ["linux", "dns"],
+    category: "linux",
+  },
+  {
+    name: "Linux fs fill",
+    description:
+        "Linux fs fill fills up the available fs (file system) space at a given system path for a specific duration.",
+    tags: ["linux", "fs", "disk"],
     category: "linux",
   },
   {

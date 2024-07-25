@@ -1,41 +1,128 @@
 ---
 title: Artifact view
 description: Track the deployment of your open-source components
-sidebar_position: 70
+sidebar_position: 59
 ---
 
-Artifact view in SSCA provides a centralized interface for tracking the usage of open-source components in your artifacts from build to deployment. When SBOM is generated for an artifact, SSCA module normalizes the SBOM data and associates it with the specific artifact tag to give a detailed view of all the components used in the artifact. Artifact View also provides you the deployment data for each artifact to help you track the usage of components till the environments where they are deployed.
-
-## Landing page
-
-The landing page displays a list of all artifacts, including their versions, associated SBOM, deployment environments, and detected policy violations. This list view offers a snapshot of each artifact's current state in the software supply chain.
-
-<DocImage path={require('./static/artifact-landing-page.png')} />
+The **Artifacts** section in the SSCA module is a centralized hub for viewing all your container images and their details, providing deeper visibility into your artifacts from multiple perspectives within the software supply chain. Here are the key features this section offers:
 
 
-The page utilizes a two-tab interface to manage artifact versions. The **All Versions** tab provides a comprehensive view of all existing versions for each artifact. This is valuable for reference purposes or exploring all the data at one place. The **Latest Version** tab specifically presents the artifacts with version involved in the most recent [SBOM generation](./sbom/generate-sbom.md#add-the-sbom-orchestration-step) process.
 
-### Filters
+* **[Artifact Listing](#view-your-artifacts):** View all container images, including their digests and tags.
+* **[Dependency Visibility](#sbom-tab):** Gain insight into artifact dependencies through SBOM.
+* **[Policy Enforcement](#artifact-overview):** View SBOM policy violations.
+* **[Deployment Tracking](#deployments-tab):** Track artifact deployments across various environments.
+* **[Security Insights](#vulnerabilities-tab):** Access information on security vulnerabilities.
+* **[SLSA Provenance](#artifact-overview):** View the provenance and verification status of artifacts following the SLSA framework.
+* **[Chain of Custody](#artifact-overview):** Log the artifact's journey throughout the software supply chain.
 
-Filters on the landing page allow users to quickly find specific artifacts based on various criteria such as component name and version, license, deployment status, and policy violations. These filters enhance the efficiency of tracking and managing artifacts.
+Any artifacts that go through [SBOM Orchestration](/docs/software-supply-chain-assurance/sbom/generate-sbom.md), [SBOM Policy Enforcement](/docs//software-supply-chain-assurance/sbom-policies/enforce-sbom-policies.md), or [SLSA Provenance](/docs/software-supply-chain-assurance/slsa/generate-slsa.md) will be listed here. Additionally, the Artifacts section integrates with the Harness CD (Continuous Deployment) and STO (Security Testing Orchestration) modules, providing details linked to deployments and security scanning results for images.
 
-## Artifact details page
 
-By selecting any artifact version, you are taken to the Artifact details page. This page provides a thorough overview of the chosen version, encompassing deployment details, SBOM, its score, the build pipeline, and any security vulnerabilities identified during scans. Importantly, the page offers a detailed view of its components and deployments, providing details on artifact's composition and deployment history.
+## View your artifacts
 
-### Component view
+The landing page of the Artifacts section provides a comprehensive list of all artifacts, displaying the following details for each: 
 
-This tab provides information about the components that make up the artifact. It lists each component, its version, associated licenses, package manager, purl, and supplier. This tab is crucial for understanding the artifact's makeup and identifying potential security or compliance issues.
+* **Name**: The name of the artifact. 
+* **Digests**: The number of digests associated with the artifact.
+* **Environments**: The environments where the artifact has been deployed with the count. 
+* **Vulnerabilities**: The vulnerabilities identified in the most recent scan of the digest. 
 
-<DocImage path={require('./static/artifact-view-components-tab.png')} />
+<DocImage path={require('./static/artifacts-section/artifact-level-1.png')} width="100%" height="100%" title="Click to view full size image" />
 
-### Component labels with image layers
-The Artifact view not only enables you to see all the components within your artifact but also accurately identifies the specific image layer each component originates from. For instance, by hovering over the icon next to the component name, you can determine whether it is part of the application image, the base image, or the underlying operating system distribution. This precise labeling provides a deeper insight into the composition of your software, thereby enhancing your ability to effectively address security risks. For more information on this feature, please refer to the [Label components from image](./label-components-from-image.md) document.
 
-<DocImage path={require('./static/artifact-view-components-label.png')} />
+#### Search and filter options
 
-### Deployment view 
+You can search for a specific artifact or apply filters based on dependencies, licenses, and environment types to quickly find the necessary information.
 
-This tab offers details into the environments where the artifact has been deployed and the pipeline utilized for deployment. It also includes details about policy violations and the status of SLSA verification.
 
-<DocImage path={require('./static/artifact-view-deployments-tab.png')} />
+## Digests for your artifact
+
+When you select an artifact, you can view the list of all its digests. For each digest, the following details are available:
+
+* **Tags:** The tags associated with the digest.
+* **SBOM and Score:** The Software Bill of Materials (SBOM) and its quality score, with an option to download it.
+* **Environment:** The count and types of environments (e.g., prod, pre-prod) where the digest has been deployed.
+* **Dependencies:** The total number of dependencies included in the image, as detailed in the SBOM.
+* **Policy Violations:** A list of all policy violations, including both allow-list and deny-list violations.
+* **Vulnerabilities:** The count of vulnerabilities categorized by severity: Critical, High, Medium, and Low.
+
+
+<DocImage path={require('./static/artifacts-section/artifact-level-2.png')} width="100%" height="100%" title="Click to view full size image" />
+
+
+#### Search and filter options:
+
+You can search for a specific digest or apply filters based on dependencies, licenses, policy violations, and environment types to quickly find the required data.
+
+
+## Artifact Overview
+
+
+<DocImage path={require('./static/artifacts-section/artifact-overview.png')} width="100%" height="100%" title="Click to view full size image" />
+
+
+When you select an artifact’s digest, you can view a complete overview. This tab provides general information about the artifact and summarizes the following aspects concisely:
+
+
+
+* **Chain of Custody:** A complete record of the artifact's journey through the supply chain. These log items on the chain of custody include events such as SBOM generation, SLSA Provenance generation/verification, SBOM Policy Enforcement, and deployments to environments etc.,
+* **Deployments:** Displays the count of deployments specific to each environment (e.g., prod, pre-prod).
+* **SBOM:** Shows the total number of dependencies along with the SBOM score. You can also download the SBOM from here.
+* **SBOM Policy Violations:** Lists the SBOM policy violations for both allow-list and deny-list categories.
+* **Vulnerabilities:** Provides a summary of vulnerabilities found from the security scan, categorized by severity: critical, high, medium, and low.
+* **SLSA:** Shows the status of SLSA verification (passed/failed). You can also download the SLSA provenance from here.
+
+
+## SBOM Tab
+
+The SBOM tab presents details of all the dependencies within the artifact, including dependencies from various levels, such as the application level, distribution level, and OS level. With a count of total dependencies at the top, the tab provides the following details:
+
+
+
+* **Dependency Name:** Name of the dependency.
+* **License:** Name of the dependency’s license.
+* **Package Manager:** Tool managing the package.
+* **PURL:** Package URL.
+* **Supplier:** Source of the dependency.
+
+<DocImage path={require('./static/artifacts-section/artifact-sbom.png')} width="100%" height="100%" title="Click to view full size image" />
+
+
+For more information about the levels of image dependencies, refer to the "[Label Components from Image](https://developer.harness.io/docs/software-supply-chain-assurance/label-components-from-image)" documentation.
+
+
+#### Search and filter options
+
+You can search for a package manager and supplier or apply filters based on dependencies, licenses, and image layers to quickly find the required data.
+
+
+## Deployments Tab
+
+The Deployments tab enables you to track the active deployments of your artifact. With a count of active deployments, this tab provides the following details:
+
+
+
+* **Environment:** Name and ID of the environment.
+* **Type:** Environment type (Prod or Pre-prod).
+* **Last Pipeline Execution:** Pipeline that last deployed the artifact.
+* **Policy Violations:** Lists SBOM policy violations (allow-list and deny-list).
+* **SLSA Verification:** Shows SLSA verification status, including both SLSA policy and attestation verification statuses.
+* **Triggered By:** Details about the deployment trigger.
+
+
+<DocImage path={require('./static/artifacts-section/artifact-deployments.png')} width="100%" height="100%" title="Click to view full size image" />
+
+
+#### Search and filter options
+
+You can search for an environment or apply filters based on environment type and policy violations to quickly find the required data.
+
+
+## Vulnerabilities Tab
+
+The Vulnerabilities tab presents the scan results performed on the artifact, consolidating findings from various scanning tools. This view categorizes all identified vulnerabilities by severity and allows filtering based on scanners and other details. The security scanning is facilitated by the Harness STO (Security Testing Orchestration) module.
+
+<DocImage path={require('./static/artifacts-section/artifact-vulnerabilities.png')} width="100%" height="100%" title="Click to view full size image" />
+
+Refer to [view security test results](https://developer.harness.io/docs/category/view-security-test-results) in Harness STO documentation for more detailed information about the view and navigation.

@@ -1,0 +1,11 @@
+{
+  "label": "Layout & Appearance",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 55,
+  "link": {
+    "type": "generated-index",
+    "title": "Layout & Appearance of Harness IDP"
+  },
+  "customProps": {}
+}

@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-07-01T16:19:25
+date: 2024-07-22T18:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,9 +15,22 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: July 1, 2024
+#### Last updated: July 22, 2024
 
 ## July 2024
+
+### Android SDK
+
+#### Version 2.2.3
+
+**Fixed issues**:
+ - Fixed an issue where the SDK Client would not be closed correctly if `Close()` or `CloseWithFuture()` was called, and `Streaming` and/or `Polling` requests would continue to be made in the background. (FFM-11779)
+
+#### Version 2.2.2
+
+**Fixed issues**:
+ - Fixed the high initialization latency for large projects. (FFM-11750)
+ - Resolved an issue where using the callback method to initialize the SDK when the device had no connectivity. It would fail to give a `success/failure` result until the device regains connectivity. Now, a failure result is immediately sent and a success callback will be sent when the device is able to reconnect once the SDK initializes successfully. (FFM-11750)
 
 ### Java SDK
 
@@ -25,6 +38,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 **Fixed issues**:
  - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11654)
+
+### Python SDK
+
+#### Version 1.6.4
+
+**Fixed issues**:
+ - Fixed an issue where SDK dependencies, `tenacity` and `typing_extensions`, were pinned to fixed versions, which could make integration with the SDK impossible if different versions are specified in an application or its dependencies. (FFM-11770, ZD-66342)
+
+#### Version 1.6.3
+
+**Fixed issues**:
+ - Pins `typing_extensions` to latest release compatible with 3.7 to resolve compatibility issues with code brought in from the OAPI Generator. (FFM-11655)
+ - Added a guard around the debug log. The guard being a `None` check on the feature config type before we attempt to log it. (PL-51773)
 
 ### Ruby SDK
 

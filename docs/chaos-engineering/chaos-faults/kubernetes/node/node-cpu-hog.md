@@ -9,7 +9,7 @@ Node CPU hog exhausts the CPU resources on a Kubernetes node.
 - The CPU chaos is injected using a helper pod running the Linux stress tool (a workload generator).
 - The chaos affects the application for a specific duration.
 
-![Node CPU Hog](./static/images/node-stress.png)
+![Node CPU Hog](./static/images/node-cpu-hog.png)
 
 
 ## Use cases
