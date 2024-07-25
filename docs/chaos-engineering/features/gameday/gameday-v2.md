@@ -116,15 +116,15 @@ You can create prerequisites for your GameDay to:
  ![](./static/v2/done-running-28.png)
 :::
 
-## View GameDay report
+## View GameDay run report
 
-To view the GameDay report, navigate to your GameDay run and select **View Report**.
+To view the GameDay run report, navigate to your GameDay run and select **View Report**.
 
     ![](./static/v2/view-report.png)
 
-### Download GameDay report
+### Download GameDay run report
 
-1. To download the report, select **Download Report** on the page where you view the GameDay report.
+1. To download the report, select **Download Report** on the page where you view the GameDay run report.
 
     ![](./static/v2/download-report.png)
 
