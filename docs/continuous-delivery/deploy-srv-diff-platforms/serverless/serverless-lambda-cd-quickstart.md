@@ -225,7 +225,21 @@ Currently, Serverless functions can't be deployed with an OIDC-enabled AWS conne
 
 ### Containerized step images
 
-Currently, for the containerized Serverless steps Harness provides, the base images Harness provides on Docker Hub have Node version 12.20.0 and Serverless version 3.30.1 installed. These are Linux AMD64 images.
+Currently, Harness support multiple runtime images for **nodejs20**, **nodejs18** and **java17**. These are Linux AMD64 images. 
+There are two flavours of images available first with serverless installed and other without serverless installed that you can use.
+
+ Runtimes | With Serverless Installed | Without Serverless Installed
+| --- | --- | --- |
+| nodejs 20 | harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64 | harness/serverless-plugin:nodejs20.x-1.0.0-beta-linux-amd64 |
+| nodejs 18 | harness/serverless-plugin:nodejs18.x-3.39.0-1.0.0-beta-linux-amd64 | harness/serverless-plugin:nodejs18.x-1.0.0-beta-linux-amd64 |
+| java 17 | harness/serverless-plugin:java17-3.39.0-1.0.0-beta-linux-amd64 | harness/serverless-plugin:java17-1.0.0-beta-linux-amd64 |
+
+
+Now, let's understand the runtime image one with serverless installed and one without serverless installed. 
+
+![](./static/multiple-runtime-image-serverless.png)
+
+
 
 ## Create the Deploy stage
 
