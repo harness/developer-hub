@@ -1,0 +1,20 @@
+kind: Workflow
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: fis-dynamodb-replication-pause
+  namespace: hce
+spec:
+  - name: fis-dynamodb-replication-pause
+      components:
+        env:
+          - name: TOTAL_CHAOS_DURATION
+            value: "60"
+          - name: TABLE_NAMES
+            value: "name-1,name-2"
+          - name: REGION
+            value: "us-east"
+          - name: AWS_SHARED_CREDENTIALS_FILE
+            value: /tmp/cloud_config.yml
+        secrets:
+          - name: cloud-secret
+            mountPath: /tmp/
