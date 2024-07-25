@@ -3,7 +3,7 @@ title: Relay Proxy V2 Overview
 description: This topic focuses on version 2 of the Relay Proxy, how to use it and common FAQs on how it's used with Harness Feature Flags (FF). 
 sidebar_position: 10
 redirect_from:
-  - /docs/feature-flags/relay-proxy
+  - /docs/feature-flags/relay-proxy/relay_proxy_v2
 ---
 
 This topic describes the Harness Relay Proxy V2 and how to use it with Feature Flags (FF).
@@ -145,6 +145,7 @@ The below table outlines all of the configuration options that are available for
 | METRICS_STREAM_READ_CONCURRENCY | 10                          | Controls the number of threads running in the Primary that listen for metrics data being sent by replicas                                                                   | 10                                     |
 | AND_RULES              | true                                 | Enables AND rule support for Target Groups in the Proxy                                                                                                                     | false                                  |
 | PROMETHEUS_PORT        | 9091                                 | Port that the prometheus metrics are exposed on, defaults to 8000                                                                                                           | 8000                                   |
+| FORWARD_TARGETS        | false                                 | The Proxy will forward targets sent by Client SDKs to Harness Saas | false                                   |
 
 
 # The Proxy Key V2
@@ -388,4 +389,5 @@ If you decide to use the Relay Proxy, make sure it has a good place in your netw
 
 ## Are there any constraints to the Relay Proxy V2?
 
-At this current time and due to the way Harness implements the authentication tokens, users have a limit of 1000 environments per key. 
+- At this current time and due to the way Harness implements the authentication tokens, users have a limit of 1000 environments per key.
+- When running in HA mode Read replica's will not forward targets on to Harness Saas. This doesn't impact functionality as the Proxy will still add the Targets to the redis cache, it just means you won't see them in the Feature Flags UI.

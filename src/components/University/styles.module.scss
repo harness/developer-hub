@@ -453,6 +453,8 @@
     }
 
     .availableCerts {
+      margin-top: 32px;
+
       h4 {
         font-weight: 500;
         font-size: 24px;
@@ -472,8 +474,6 @@
         /* Light/Text/Primary */
         color: var(--ifm-color-content);
       }
-
-      margin-top: 32px;
 
       .availableCertsBox {
         display: flex;

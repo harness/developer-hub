@@ -6,6 +6,8 @@ helpdocs_topic_id: dbk9uoaid3
 helpdocs_category_id: xw2hz815l8
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-using-flags/ff-target-management/add-targets
 ---
 
 import add_target_1 from './static/1-add-targets-00.png'

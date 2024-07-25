@@ -1,7 +1,7 @@
 ---
 title: Service discovery overview
 sidebar_position: 1
-description: An introduction to service discovery and its significance
+description: An introduction to service discovery and its significance.
 ---
 
 This topic introduces you to **service discovery** for **Kubernetes infrastructure**, its significance, and its purpose.
