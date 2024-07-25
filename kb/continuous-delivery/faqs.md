@@ -3236,6 +3236,34 @@ AIDA is enabled on the Harness platform by default. To read more on the security
 Yes, we can use exported variables to reference a step group variable without knowing the step group ID.
 One can follow the syntax : `<+exportedVariables.getValue("stepGroup.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>` This method allows you to reference the variable by its alias name instead of needing to know the step group ID. For more details, you can refer to the Harness documentation on [Scoping output variables using aliases](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#scoping-output-variables-using-aliases)
 
+
+#### Is it possible to swap the template from the other branch that is already used in the pipeline?
+Yes, User can swap the template by changing the branch in the git config of the template.
+
+#### How can user skip the steps based on previous step output?
+User can configure the output variable in the previous step and use that variable with the expression in the conditional execution configuration of the step that you want to skip.
+
+#### How to run the command step only on single server?
+User can run the command step only on single server by using the below repeat looping strategy:
+```
+repeat:
+    items: ["0.0.0.0"]
+```
+
+#### How can user skip a CI/CD pipeline build through commit?
+You can skip a CI/CD pipeline build by including one of the following keywords anywhere within your commit message:
+[skip ci]
+[ci skip]
+[skip pipeline]
+[pipeline skip]
+[no_ci]
+
+#### Can the skip keywords be used in any part of the commit message?
+Yes, the skip keywords can be placed anywhere within the commit message, including within sentences or alongside other text. For example, This is a [ci skip] commit.
+
+#### Does harness pipeline support triggering GitHub action workflow from the pipeline?
+As per the current design, there's no native step for this but user can write a shell script at the end of execution to trigger the GitHub action workflow.
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
