@@ -2,7 +2,8 @@
 id: pod-http-latency
 title: Pod HTTP latency
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-http-latency
 ---
 
 Pod HTTP latency is a Kubernetes pod-level chaos fault that injects HTTP response latency by starting the proxy server and redirecting the traffic through it. This fault:

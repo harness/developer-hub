@@ -2,7 +2,8 @@
 id: pod-network-rate-limit
 title: Pod network rate limit
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-rate-limit
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-rate-limit
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-rate-limit
 ---
 
 Pod network rate limit is a Kubernetes pod-level chaos fault that generates Traffic Control (tc) rules with Token Bucket Filter (TBF) to assess Kubernetes pod resilience under limited network bandwidth condition.

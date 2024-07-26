@@ -1,6 +1,8 @@
 ---
 id: ssm-chaos-by-id
 title: SSM chaos by ID
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/aws-ssm-chaos-by-id
 ---
 
 AWS SSM chaos by ID induces chaos on AWS EC2 instances using the Amazon SSM Run Command.

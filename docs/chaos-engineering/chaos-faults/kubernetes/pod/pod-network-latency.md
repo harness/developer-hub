@@ -2,7 +2,8 @@
 id: pod-network-latency
 title: Pod network latency
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-latency
 ---
 
 Pod network latency is a Kubernetes pod-level chaos fault that introduces latency (delay) to a specific container. This fault:
