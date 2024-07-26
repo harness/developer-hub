@@ -2,7 +2,8 @@
 id: pod-delete
 title: Pod delete
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-delete
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-delete
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-delete
 ---
 
 Pod delete is a Kubernetes pod-level chaos fault that causes specific (or random) replicas of an application resource to fail forcibly (or gracefully).

@@ -2,7 +2,8 @@
 id: pod-io-mistake
 title: Pod IO mistake
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-mistake
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-mistake
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-io-mistake
 ---
 
 import IOFaultsCaution from './shared/io-faults-caution.md'

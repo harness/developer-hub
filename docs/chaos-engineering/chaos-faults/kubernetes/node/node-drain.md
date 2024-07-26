@@ -2,7 +2,8 @@
 id: node-drain
 title: Node drain
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-drain
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-drain
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-drain
 ---
 
 Node drain drains the node of all its resources running on it. Due to this, services running on the target node should be rescheduled to run on other nodes.

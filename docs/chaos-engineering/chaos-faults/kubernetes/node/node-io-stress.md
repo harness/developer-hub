@@ -2,7 +2,8 @@
 title: Node IO stress
 id: node-io-stress
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-io-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-io-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-io-stress
 ---
 
 Node IO stress causes I/O stress on the Kubernetes node.

@@ -2,7 +2,8 @@
 id: container-kill
 title: Container kill
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/container-kill
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/container-kill
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/container-kill
 ---
 
 Container kill is a Kubernetes pod-level chaos fault that causes container failure on specific or random replicas of an application resource.

@@ -2,7 +2,8 @@
 id: pod-io-attribute-override
 title: Pod IO attribute override
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-attribute-override
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-attribute-override
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-io-attribute-override
 ---
 
 import IOFaultsCaution from './shared/io-faults-caution.md'
