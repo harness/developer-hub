@@ -52,8 +52,8 @@ Here is how the resources would look in Harness after the sync process is comple
 
 ![](./static/harness-git-ops-application-set-tutorial-40.png)
 
-## Terminate Sync
+## Terminate sync
 
-You can terminate an in-progress sync. To do so, go to the application page for the syncing app and find the **Terminate Sync** button in the top right corner of the UI, replacing the **Sync** button when a sync is in progress. 
+To terminate an in-progress sync, go to the application for the syncing app and locate the **Terminate Sync** button in the top right corner of the UI. Replace the **Sync** button when a sync is in progress.
 
 ![](./static/terminate_sync.png)
