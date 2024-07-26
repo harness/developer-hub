@@ -63,6 +63,16 @@ When you use DLC with Harness CI Cloud, the cache is stored in the Harness-manag
 
 
 
-<!-- ## Build Intelligence -->
+## Build Intelligence
 
-<!-- Build Cache feature. Caches outputs (like artifacts) rather than inputs (like Cache Intelligence) or image layers (like DLC). -->
+[Build Cache](../use-ci/build-and-upload-artifacts/build-intelligence.md) is part of the suite of intelligent features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. Build Cache works by storing these outputs locally or remotely and retrieving them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency. 
+
+Build Cache in Harness CI is currently available for **Gradle** and **Bazel** with **Maven** support coming soon.
+
+## Comparing Cache Intelligence, Docker Layer Caching, and Build Cache
+
+| Feature               | Description                                                                                                  | Purpose                                         | Context                      | Additional Details                                                                                     |
+|-----------------------|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------|------------------------------|-------------------------------------------------------------------------------------------------------|
+| **Docker Layer Caching (DLC)**   | Reuses previously built Docker image layers, building only what’s necessary.                               | Speeds up Docker image build and push steps     | Docker images                | Can be used with any build infrastructure; cache stored in Harness-managed environment or S3-compatible storage. |
+| **Cache Intelligence**     | Caches project dependencies (e.g., plugins) downloaded at the start of the build in a specific directory. | Caches dependencies to save download time       | Project dependencies         | Automatically caches and restores dependencies; works with any build infrastructure; stored in Harness-managed or S3-compatible storage. |
+| **Build Cache**            | Caches outputs of cacheable build tasks as identified by the build tool (e.g., Gradle tasks).            | Speeds up overall build process by reusing task outputs | Build outputs                | Available for Gradle and Bazel, with Maven support coming soon; stores outputs locally or remotely.      |
