@@ -10,13 +10,16 @@ The Software Engineering Insights Developer exam tests your knowledge and skills
 Exam Duration: 90 minutes <br/>
 Question Type: Multiple choice
 
-| Covered Domain | Percentage (%) |
-| --- | --- |
-| Understanding SEI Fundamentals | 15.79 |
-| Getting Started with SEI | 10.53 |
-| Configuration and Setup | 21.05 |
-| Insights and Reports | 36.84 |
-| Ingestion Satellite Management | 15.79 |
+
+| Covered Domain                       | Percentage (%) |
+|--------------------------------------|----------------|
+| 1. Understanding SEI Fundamentals    | 26.32          |
+| 2. Getting Started with SEI          | 9.21           |
+| 3. Configuration and Setup           | 15.79          |
+| 4. Insights and Reports              | 18.42          |
+| 5. Ingestion Satellite Management    | 9.21           |
+| 6. Advanced Reporting and Analytics  | 7.89           |
+| 7. Project and Collection Management | 10.53          |
 
 
 <br />
@@ -28,31 +31,41 @@ Question Type: Multiple choice
 
 The following is a detailed list of exam objectives:
 
-| #   | Objectives                                                                            |
-|-----|---------------------------------------------------------------------------------------|
-| 1   | **Understanding SEI Fundamentals**                                                    |
-| 1.1 | Describe the benefits and features of Harness Software Engineering Insights (SEI).    |
-| 1.2 | Explain the integration of SEI with third-party providers.                            |
-| 1.3 | Understand the concepts of Projects and Collections within SEI.                       |
-| 2   | **Getting Started with SEI**                                                          |
-| 2.1 | Learn about the early access program and its benefits.                                |
-| 2.2 | Set up a Harness account and complete the onboarding process.                         |
-| 3   | **Configuration and Setup**                                                           |
-| 3.1 | Configure Single Sign-On for automated user onboarding.                               |
-| 3.2 | Map and manage integrations with SDLC tools.                                          |
-| 3.3 | Organize and manage data using Projects and Collections.                              |
-| 3.4 | Set up Profiles to aggregate data for Trellis Scores, DORA metrics, and more.         |
-| 4   | **Insights and Reports**                                                              |
-| 4.1 | Create and manage Insights dashboards.                                                |
-| 4.2 | Add and configure Reports within Insights.                                            |
-| 4.3 | Generate and interpret Trellis Scores.                                                |
-| 4.4 | Develop Sprint metrics Insights.                                                      |
-| 4.5 | Create Insights to measure DORA metrics and developer metrics such as SCM activity.   |
-| 4.6 | Utilize Propels and Tables for data visualization and reporting.                      |
-| 5   | **Ingestion Satellite Management**                                                    |
-| 5.1 | Integrate on-premise tools and custom integrations using the Ingestion Satellite.     |
-| 5.2 | Install, run, and manage the Ingestion Satellite container using Docker or Kubernetes.|
-| 5.3 | Troubleshoot common issues related to Ingestion Satellite.                            |
+| #   | Objectives |
+|-----|------------|
+| 1   | Understanding SEI Fundamentals |
+| 1.1 | Describe the benefits and features of Harness Software Engineering Insights (SEI). |
+| 1.2 | Explain the integration of SEI with third-party providers. |
+| 1.3 | Understand the concepts of Projects and Collections within SEI. |
+| 1.4 | Discuss the role of Business Alignment in connecting technical tasks to business objectives. |
+| 2   | Getting Started with SEI |
+| 2.1 | Learn about the early access program and its benefits. |
+| 2.2 | Set up a Harness account and complete the onboarding process. |
+| 2.3 | Navigate and utilize the Harness SEI interface effectively. |
+| 3   | Configuration and Setup |
+| 3.1 | Configure Single Sign-On (SSO) for automated user onboarding. |
+| 3.2 | Map and manage integrations with SDLC tools, including cloud and on-premise configurations. |
+| 3.3 | Organize and manage data using Projects and Collections. |
+| 3.4 | Set up and customize Profiles to aggregate data for specific metrics like Trellis Scores and DORA metrics. |
+| 4   | Insights and Reports |
+| 4.1 | Create and manage Insights dashboards tailored to various SEI metrics. |
+| 4.2 | Add and configure Reports within Insights to monitor developer activity and project health. |
+| 4.3 | Generate and interpret Trellis Scores to evaluate team productivity. |
+| 4.4 | Develop Sprint metrics Insights for agile project tracking. |
+| 4.5 | Utilize Propels for data visualization and proactive management of development processes. |
+| 4.6 | Interpret and utilize data from Developer Insights for actionable intelligence. |
+| 5   | Ingestion Satellite Management |
+| 5.1 | Integrate on-premise tools using the Ingestion Satellite. |
+| 5.2 | Install, configure, and manage the Ingestion Satellite container using Docker or Kubernetes. |
+| 5.3 | Troubleshoot common issues related to Ingestion Satellite. |
+| 6   | Advanced Reporting and Analytics |
+| 6.1 | Implement advanced analytical techniques. |
+| 6.2 | Use SCM activity reports to monitor and improve code quality and collaboration. |
+| 6.3 | Apply advanced filtering and aggregation in reports to customize data views according to stakeholder needs. |
+| 7   | Project and Collection Management |
+| 7.1 | Efficiently manage and navigate SEI's hierarchical data structure. |
+| 7.2 | Implement best practices for creating and managing dynamic Collection categories. |
+| 7.3 | Utilize Collections to segment and analyze data at granular levels for precise decision-making. |
 
 
 
