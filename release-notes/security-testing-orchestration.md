@@ -29,9 +29,9 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 <!-- 2024-07-26 -->
 
 #### New features and enhancements
-- You can now override the image that runs the STO step directly from the step configuration. This can be done under the **Additional Configurations** section within the same step configuration (STO-7724)
+- You can now override the image that runs the STO step directly in the scanner step UI. Expand **Additional Configuration** and then set **Container Registry** and **Image Tag**. (STO-7724)
 - The Bandit, Anchor, and Semgrep steps now support [Secure Connect](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect/) within STO. (STO-7666)
-- The dark theme for AIDA is improvised, it will now adapt well with all the other UI components. (STO-7849)
+- The dark theme for AIDA is improved. Its appearance is now consistent with other UI components. (STO-7849)
 
 ### Version 1.103.3
 
