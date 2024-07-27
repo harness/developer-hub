@@ -5,7 +5,7 @@ sidebar_position: 30
 ---
 
 
-## Native Sparse Checkout support with 'Clone Codebase' functionality or 'Git Clone' step. 
+## Sparse Checkout support with 'Clone Codebase' or 'Git Clone' step. 
 
 
 When you [configure a codebase](./create-and-configure-a-codebase.md), you can specify a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set) to clone a subdirectory instead of the entire repo.

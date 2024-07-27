@@ -13,18 +13,18 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-In addition to the pipeline's default [codebase](./create-and-configure-a-codebase.md), you can use **Git Clone**, **Run**, and **Plugin** steps to clone additional code repos into the pipeline's workspace. For example, you can use this to:
+In addition to the pipeline's default [codebase](./create-and-configure-a-codebase.md), you can use **Git Clone** clone additional code repos into the pipeline's workspace.
+
+For example, you can use this to:
 
 * Build multiple artifacts in the same pipeline. For example, suppose you use Packer and Ansible to build artifacts automatically, and you have separate repos for Packer, Ansible, and code. You can clone all three repos into the pipeline's workspace.
 * Pull code from separate code and build repos. For example, if your code files are in a repo managed by the Engineering team and your Dockerfiles are in a different repo managed by the Security team, you can clone both repos into the pipeline's workspace.
 * Clone codebases without using the built-in clone codebase function.
 
 
-## Add a Git Clone or Run step
+## Add a Git Clone
 
-You can use a **Git Clone** or **Run** step to clone an additional repo into a pipeline's workspace.
-
-For example, assume the [default codebase](#configure-the-default-codebase) is a repo that contains app code files, and the Dockerfile necessary to build the app image is in a different repo. You can use a **Git Clone** or **Run** step to clone the second repo into the workspace. Then, you can use a **Build and Push** step to build and push an image using files from both repos.
+Assume the [default codebase](#configure-the-default-codebase) is a repo that contains app code files, and the Dockerfile necessary to build the app image is in a different repo. You can use a [git clone step](./git-clone-step) to clone the second repo into the workspace, or fetch spricifc files/directories. Then, you can use a **Build and Push** step to build and push an image using files from both repos.
 
 
 <Tabs>
@@ -34,58 +34,22 @@ For example, assume the [default codebase](#configure-the-default-codebase) is a
 Add a **Git Clone** step to clone a second repo into the pipeline's workspace.
 
 ```yaml
-              - step:
-                  type: GitClone
-                  name: clone second repo
-                  identifier: clone_second_repo
-                  spec:
-                    connectorRef: account.git2
-                    build:
-                      type: branch
-                      spec:
-                        branch: main
+    - step:
+        type: GitClone
+        name: clone second repo
+        identifier: clone_second_repo
+        spec:
+          connectorRef: account.git
+          repoName: myOrg/mySecondRepo
+          build:
+            type: branch
+            spec:
+              branch: main
 ```
 
-The **Git Clone** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable.
+For more informaiton visit [git clone step](./git-clone-step).
 
-
-
-<Tabs>
-  <TabItem value="Visual" label="Visual">
-
-
-1. In your CI pipeline, select the stage with the **Git Clone** step, and then select the **Overview** tab.
-2. Under **Advanced**, select **New Variable**.
-3. For **Variable Name**, enter `PLUGIN_SSH_KEYSCAN_TIMEOUT`.
-4. Set the **Type** to **String**, and then select **Save**.
-5. Enter the desired timeout limit for the **Value**. This is an integer representing a number of seconds, such as `90`.
-
-
-</TabItem>
-  <TabItem value="YAML" label="YAML" default>
-
-
-```yaml
-    - stage:
-        ...
-        variables:
-          - name: PLUGIN_SSH_KEYSCAN_TIMEOUT
-            type: String
-            description: ""
-            value: 90
-```
-
-
-</TabItem>
-</Tabs>
-
-
-Add this variable to all stages where you need to override the `SSH-keyscan` timeout limit.
-
-
-</TabItem>
-  <TabItem value="run" label="Add a Run step">
-
+## Add a Run step
 
 You can use `git` commands in [Run steps](../run-step-settings.md) to clone multiple repos into a stage. You can also provide arguments to clone subdirectories, clone recursively, and so on.
 
