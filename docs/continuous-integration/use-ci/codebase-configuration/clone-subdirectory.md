@@ -4,17 +4,21 @@ description: Use a Run step to clone a subdirectory instead of an entire repo.
 sidebar_position: 30
 ---
 
-If you want to clone a subdirectory instead of your entire Git repo, you can do a [sparse checkout on given patterns](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set). The subset of files is chosen by providing a list of directories in cone mode.
 
-## Clone a subdirectory using built-in clone codebase functionality or git clone step. 
+## Native Sparse Checkout support with 'Clone Codebase' functionality or 'Git Clone' step. 
+
 
 When you [configure a codebase](./create-and-configure-a-codebase.md), you can specify a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set) to clone a subdirectory instead of the entire repo.
 
-<DocImage path={require('./static/clone-subdirectory-sparse-checkout-1.png')} />
 
 Similarly, you can use the built-in [git clone step](./git-clone-step) to clone a subdirectory instead of the entire repo.
 
-<DocImage path={require('./static/clone-subdirectory-sparse-checkout-2.png')} />
+:::note
+
+The feature is behind feature flag `CI_GIT_CLONE_ENHANCED`. If it is not available in your account, contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+<DocImage path={require('./static/clone-subdirectory-sparse-checkout-1.png')} />
 
 ## Clone a subdirectory using a Run step
 
@@ -30,12 +34,12 @@ Disabling the built-in clone step removes access to some associated functionalit
 
 :::
 
-## Determine if you need to disable Clone Codebase
+### Determine if you need to disable Clone Codebase
 
 * **Clone with my git commands instead of using the built-in clone step:** If **Clone Codebase** is enabled, then the build clones the pipeline's [default codebase](./create-and-configure-a-codebase.md#configure-the-default-codebase) automatically. If you don't want to clone the default codebase, you must [disable Clone Codebase](./create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) so that you can clone the repo with your desired `git` commands.
 * **Clone with my git commands and use the built-in clone step:** If you want to clone files from another repo *in addition to* the default codebase, then *do not* disable **Clone Codebase**. For this pattern, follow the instructions in [Clone multiple code repos in one pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md) and use the **Run** step option.
 
-## Add a Run step with git commands
+### Add a Run step with git commands
 
 Add a [Run step](../run-step-settings.md) containing your desired `git` commands, such as `git sparse-checkout` to clone a subdirectory instead of an entire repo.
 

@@ -8,9 +8,27 @@ sidebar_position: 5
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+
 This topic describes how to use the **Git Clone** step included in Harness Continuous Integration (CI) pipelines. The **Git Clone** step clones a repository into the CI stage's workspace. In addition to the pipeline's default [clone codebase](./create-and-configure-a-codebase.md), you can use **Git Clone**, **Run**, and **Plugin** steps to clone additional code repos into the pipeline's workspace.
 
 For example, assume the default codebase is a repo that contains app code files, and the Dockerfile necessary to build the app image is in a different repo. You can use a **Git Clone** or **Run** step to clone the second repo into the workspace. Then, you can use a **Build and Push** step to build and push an image using files from both repos.
+
+:::note
+
+We've recently enhanced the Git clone operations within Harness, in both the Git Clone step and the native Clone Codebase functionality. Support was added for : 
+
+
+- Git LFS - Allows users to clone repositories with large file storage (LFS) efficiently.
+- Fetch Tags - Enables fetching of tags during the clone operation.
+- Sparse Checkout - Enables cloning specific subdirectories.
+- Clone Submodules - Adds options for including and recursively cloning Git submodules.
+- Clone Path Customization - Exposes the clone path in the codebase section, allowing users to specify a custom clone directory.
+- Additional Pre-Fetch Command - Ability to specify any additional Git commands to run before fetching the code.
+
+
+These capabilites are behind feature flag `CI_GIT_CLONE_ENHANCED`. If it is not available in your account, contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 Add a **Git Clone** step to clone a second repo into the pipeline's workspace.
 
@@ -27,7 +45,7 @@ Add a **Git Clone** step to clone a second repo into the pipeline's workspace.
                         branch: main
 ```
 
-<DocImage path={require('./static/git-clone-step.png')} />
+## Step Settings 
 
 The **Git Clone** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable.
 
@@ -41,7 +59,6 @@ The **Description** is an optional text string.
 
 If you're using [Harness Code Repository (Code)](https://developer.harness.io/docs/code-repository/get-started/overview/), you do not need to configure a connector. 
 
-<DocImage path={require('./static/harness_code_repository_default.png')} />
 
 For third-party Git provider, select a connector for the source control provider hosting the code repo that you want the step to clone.
 
@@ -100,7 +117,7 @@ The default depth varies by build and trigger type:
 
 For more information, go to the [git clone documentation](https://git-scm.com/docs/git-clone).
 
-#### Fetch Tags
+### Fetch Tags
 
 Determines whether to fetch all tags when performing a shallow clone (depth > 0). Setting this to `true` is equivalent to adding the `--tags` flag.
 
@@ -119,7 +136,6 @@ If this is set to **Source Branch**, the pipeline builds the artifact from the l
 ### Download LFS Files
 
 The [Git Large File Storage (LFS)](https://git-lfs.com/) client is an extension for versioning large files, such as audio, video, datasets, and graphics.
-
 Set **Download LFS Files** to `true` to download Git-LFS files. Default is `false`.
 
 ### Sparse Checkout
@@ -170,10 +186,8 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 * [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
-### SSH-keyscan timeout
-
-If your [connector](#connector) uses SSH authentication, you can add a `PLUGIN_SSH_KEYSCAN_TIMEOUT` [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables) to override the `ssh-keyscan` command's timeout limit (the default is `5s`).
-
+## Troubleshooting 
+* **SSH-keyscan timeout:** - If your [connector](#connector) uses SSH authentication, you can add a `PLUGIN_SSH_KEYSCAN_TIMEOUT` [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables) to override the `ssh-keyscan` command's timeout limit (the default is `5s`).
 Stage variables are configured in stage settings, not step settings.
 
 
