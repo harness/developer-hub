@@ -86,3 +86,19 @@ Yes, you can use a multiple-node filter. All of those filters should be applied.
 ### How do you select the correct Service Instance Identifier (SII)?
 
 It depends upon what kind of metric you want to monitor. For K8s deployments, the best SII selection is typically pod, podname, or containername.
+
+### I have setup filaure strategy at timeout and it is not working for verify step, although API calls for cloudwatch are timing out
+
+The failure strategy is for step time timeouts and not for api calls that are being made. You need to set up a failure strategy for all failures in these scenarios.
+
+### Can we use Coralogix as a verification provider?
+
+Yes, you can configure a custom health source and use the query with index.
+
+### How are appdynamics metrics being reported, and why are not all metrics being reported?
+
+So once you select the metric pack (performance and error), we do have some defined metrics that we pull and report on the data.
+
+### How to pull metrics that are not detected automatically for Appdynamics
+
+You can configure a custom query under the health source and need to pass completeMetricPath.
