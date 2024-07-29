@@ -41,21 +41,6 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 <!-- 2024-07-16 -->
 
-#### Early Access feature
-
-This release introduces several highly requested features and improvements to enhance the Git clone operations within Harness, in both the Git Clone step and the native Clone Codebase functionality. With this release, we’re adding support for:
-
-- Git LFS - Allows users to clone repositories with large file storage (LFS) efficiently.
-- Fetch Tags - Enables fetching of tags during the clone operation.
-- Sparse Checkout - Enables cloning specific subdirectories.
-- Clone Submodules - Adds options for including and recursively cloning Git submodules.
-- Clone Path Customization - Exposes the clone path in the codebase section, allowing users to specify a custom clone directory.
-- Additional Pre-Fetch Command - Ability to specify any additional Git commands to run before fetching the code.
-
-For more information, please refer to the [documentation](https://developer.harness.io/docs/continuous-integration). (CI-12952)
-
-This feature is behind the feature flag `CI_GIT_CLONE_ENHANCED`.
-
 #### Fixed issues
 
 - Fixed an issue where the `Build and Push to GCR` step was failing. Buildx plugin version has been upgraded. (CI-13422)
