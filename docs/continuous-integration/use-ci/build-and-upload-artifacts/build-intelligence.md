@@ -50,20 +50,23 @@ buildCache {
         enabled = false
     }
     remote(io.harness.Cache) {
-        accountId = System.getenv('HARNESS_ACCOUNT_ID') // accountId should be populated in CI pipeline
-        token = System.getenv('HARNESS_PAT')            // API token with account admin (or edit) permissions
+        accountId = System.getenv('HARNESS_ACCOUNT_ID') 
+        token = System.getenv('HARNESS_PAT') 
         push = "true"
-        endpoint = System.getenv('HARNESS_CACHE_SERVICE_ENDPOINT') // https://app.harness.io/gateway/cache-service
+        endpoint = System.getenv('HARNESS_CACHE_SERVICE_ENDPOINT') 
     }
 }
-
-// endpoint env variable will be populated if CI_CACHE_ENABLED FF is turned on
 ```
+
+For Build Intelligence, you'll need to turn on `CI_CACHE_ENABLED` FF.
 
 :::note
 
-The **buildCache** part of the above configuration is only required for local builds. For hosted CI builds, the plugin automatically configures the build cache.
+The above configuration is only required for local builds. For hosted CI builds, Harness automatically configures the build cache configuration.
 
+Customers using **prod1** or **prod2** clusters don't need to configure the `endpoint` parameter in the above settings and it'll be populated by the plugin. The default value for this endpoint for **prod1** or **prod2** is `https://app.harness.io/gateway/cache-service`. 
+
+For customers not using **prod1** or **prod2** clusters, they'll need to configure the `endpoint` parameter in the above settings. 
 :::
 
 2. Enable build cache in `gradle.properties` file:
@@ -129,3 +132,6 @@ pipeline:
 ## Build Cache Support for Bazel
 
 [Bazel](bazel.build) is an open-source build and test tool designed for high performance, scalability, and handling large codebases across multiple languages and platforms. Harness CI offers Build Cache support for Bazel to optimize build times by reusing outputs from previous builds.
+
+### How it works?
+
