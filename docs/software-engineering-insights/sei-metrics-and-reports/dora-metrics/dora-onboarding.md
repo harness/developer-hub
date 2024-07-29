@@ -155,6 +155,10 @@ The correlation between CI & CD execution is built on generated artifacts (by CI
 
 You can set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions. To learn more, go to [Github Actions integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions#ingest-artifacts-and-environment-variable-data).
 
+:::info
+SEI currently supports only [HarnessNG integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng) as the CD tool for configuring stages in the Lead Time workflow.
+:::
+
 ### Commits we fetch
 
 SEI facilitates the retrieval of commit data in two ways, each catering to different aspects of version control and collaborative development.
