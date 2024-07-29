@@ -42,7 +42,7 @@ The Trellis Score can be further divided into various metric Categories. Let's s
 </tr>
 <tr>
 <td rowspan="6">Volume</td>
-<td>Number of PRs per month</td>
+<td>Number of PRs merged per month</td>
 <td>4</td>
 <td>5-7.5</td>
 <td rowspan="6">25%</td>
@@ -157,7 +157,7 @@ The **Volume Score** is calculated based on six metrics.
 
 If the Volume factor is given a **Weight** of **25%** in the **Trellis Profile**, and the benchmarks for these metrics are set as per the recommended ranges, the **Volume Score** would be calculated as the average of the individual metric scores multiplied by the weight.
 
-* **Number of PRs per month** = 4 (below benchmark, so score = 80%)
+* **Number of PRs merged per month** = 4 (below benchmark, so score = 80%)
 * **Number of Commits per month** = 8 (below benchmark, so score = 80%)
 * **Lines of Code per month** = 100 (below benchmark, so score = 80%)
 * **Number of Bugs Worked On Per Month** = 2 (within benchmark, so score = 100%)

@@ -88,9 +88,9 @@ To configure this, go to [Configure the Impact Factor in a Trellis profile](/doc
 
 Volume measures the quantity of code that the developer is working on. The default volume score is calculated using the following six metrics:
 
-* **Number of PRs per month:** This is the number of Pull Requests a developer submitted within the selected time frame.
-  * The metric value in the report is normalized to show the average number of pull requests a developer submitted per month.
-  * It is recommended that developers submit between 5 and 7.5 PRs each month.
+* **Number of PRs merged per month:** This metric represents the number of Pull Requests created by a developer that have been merged within the selected time frame.
+  * The metric value in the report is normalized to show the average number of merged pull requests per month for a developer.
+  * It is recommended that developers should have at least between 5 and 7.5 PRs merged each month.
 * **Number of Commits per month:** This is the average number of commits a developer has submitted within the selected time frame.
   * The metric value in the report is normalized to show the average number of commits a developer contributes per month.
   * The industry standard for the number of commits per month is between 10 and 15.
