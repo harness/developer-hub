@@ -234,9 +234,9 @@ Refer to following doc for more details on new [repo listing](/docs/platform/git
 
 #### Security Testing Orchestration
 
-- [WIZ IaC step](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz/) is now available in Infrastructure stage.
+- [WIZ IaC step](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz/) is now available in Infrastructure stage. (STO-7632)
 
-- [Git Clone step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step/) is now available in Security stage.
+- [Git Clone step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step/) is now available in Security stage. (STO-7619)
 
 ### Fixed issues
 
