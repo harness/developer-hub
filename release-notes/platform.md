@@ -83,6 +83,8 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
+- We have added a security check to restrict SAML assertions to a single login. Any attempt to reuse a SAML assertion within its expiry period will now be rejected by Harness during login. (PL-55247, ZD-66114)
+
 #### Fixed issues
 
 - SAML groups were not being picked up by Harness due to a regression introduced with recent changes in syncing users in SAML user groups. Identified and resolved the issue, ensuring that SAML groups are now correctly synced with Harness. (PL-55507, ZD-66567, ZD-66882)
