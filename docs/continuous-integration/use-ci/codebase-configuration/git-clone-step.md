@@ -1,7 +1,7 @@
 ---
 title: Git Clone step in CI
 description: Clone a repository into the CI stage's workspace.
-sidebar_position: 5
+sidebar_position: 10
 ---
 
 

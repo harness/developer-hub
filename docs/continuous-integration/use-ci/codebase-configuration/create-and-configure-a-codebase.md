@@ -1,7 +1,7 @@
 ---
 title: Configure codebase
 description: CI pipelines build and test code that is pulled from Git code repositories.
-sidebar_position: 10
+sidebar_position: 5
 helpdocs_topic_id: mozd8b49td
 helpdocs_category_id: ojaa8v6fwz
 helpdocs_is_private: false

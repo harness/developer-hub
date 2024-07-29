@@ -18,7 +18,51 @@ Similarly, you can use the built-in [git clone step](./git-clone-step) to clone 
 The feature is behind feature flag `CI_GIT_CLONE_ENHANCED`. If it is not available in your account, contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-<DocImage path={require('./static/clone-subdirectory-sparse-checkout-1.png')} />
+The following example shows how to use the `sparseCheckout` option to clone the `docs/continuous-integration` and `docs/code-repository` subdirectories from the [Harness Developer Hub](https://github.com/harness/developer-hub) code repository.
+
+```yaml
+pipeline:
+  name: git_clone_pipeline
+  identifier: git_clone_pipeline
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: clone_subdirectory_example
+        identifier: clone_subdirectory_example
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            paths: []
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: run_step
+                  identifier: run_step
+                  spec:
+                    shell: Sh
+                    command: ls -la docs
+  properties:
+    ci:
+      codebase:
+        connectorRef: github_connector
+        repoName: dewan-ahmed/developer-hub
+        build: <+input>
+        sparseCheckout:
+          - docs/continuous-integration
+          - docs/code-repository
+```
 
 ## Clone a subdirectory using a Run step
 
