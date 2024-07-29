@@ -53,7 +53,7 @@ If you need to add trusted certificates to your scan images at runtime, you must
 The default workspace path is /harness. You can override this if you want to scan a subset of the workspace.
 
 ## How can user configure authentication for scans?
-Access Token (Orchestration scans): Use a Harness text secret for your encrypted token and reference it in the format <+secrets.getValue("myaccesstoken")>.
+Access Token (Orchestration scans): Use a Harness text secret for your encrypted token and reference it in the format `<+secrets.getValue("myaccesstoken")>`.
 Ingestion File: Provide the path to your scan results file (e.g., /shared/scanresults/myscan.latest.sarif).
 
 ## WHich Snyk products are supported by STO?

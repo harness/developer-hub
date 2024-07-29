@@ -3242,13 +3242,13 @@ Yes, user can give the expression at the place of user group filed in Approval s
 #### If user re-run the execution from failed stage and the failed stage is configured with the chained pipeline, so the whole child pipeline will re-run or only the specific step inside the child pieline will re-run?
 So if you are re-running the pipeline from the failed stage. So the whole child pipeline will considered as the stage and it will re-run the entire child pipeline.
 
-#### Harness uses which encoding in the copy command step?
+#### Which encoding in the copy command step in Harness?
 Harness uses UTF-8 encoding in the copy config zommand step.
 
 #### How long are deployment instances tracked in dashboard?
 On the dashboard is limited to active instances from the past 30 days.
 
-#### Can user use the \*.tgz file to do the helm template cli?
+#### Can user use the `\*.tgz` file to do the helm template cli?
 If your tar file is also getting cloned you can uncompress it using service hook and then use it in the helm template. Doc for reference: https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks
 
 #### Can user invoke API from OPA policy and apply the rules based on the output of the API?
