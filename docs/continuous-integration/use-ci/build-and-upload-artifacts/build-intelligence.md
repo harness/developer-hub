@@ -71,3 +71,61 @@ The **buildCache** part of the above configuration is only required for local bu
 ```properties
 org.gradle.caching = true
 ```
+
+### Sample pipeline for build cache for Gradle
+
+```YAML
+pipeline:
+  projectIdentifier: SAMPLE_PROJECT
+  orgIdentifier: SAMPLE_ORG
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: SAMPLE_CONNECTOR_ID
+        build: <+input>
+  stages:
+    - stage:
+        name: Build and Test
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: false
+            paths: []
+          execution:
+            steps:
+              - step:
+                  identifier: SAMPLE_Test
+                  type: Test
+                  name: SAMPLE_Test
+                  spec:
+                    connectorRef: <+input>
+                    image: <+input>
+                    shell: Sh
+                    command: gradle --build-cache unitTest -PmaxParallelForks=16 -PignoreFailures=true --profile
+                    envVariables:
+                      HARNESS_PAT: <+secrets.getValue("HARNESS_API_TOKEN")>
+                      CI: "true"
+                    intelligenceMode: true
+          platform:
+            os: <+input>
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+  identifier: SAMPLE_REPO
+  name: SAMPLE_REPO
+  variables:
+    - name: var1
+      type: String
+      description: ""
+      required: false
+      value: <+input>
+```
+
+## Build Cache Support for Bazel
+
+[Bazel](bazel.build) is an open-source build and test tool designed for high performance, scalability, and handling large codebases across multiple languages and platforms. Harness CI offers Build Cache support for Bazel to optimize build times by reusing outputs from previous builds.
