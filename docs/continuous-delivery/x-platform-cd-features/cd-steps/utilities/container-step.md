@@ -6,6 +6,12 @@ redirect_from:
   - /docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step
 ---
 
+:::warning deprecation notice
+
+Harness is **deprecating** the container step. The new supported method is a [run step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step) in a [containerized step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups). It leverages the new framework and has identical capabilities to our CI offering. The run step in the containerized step group is maintained by Harness. We will no longer provide bug fixes or support to the container step.
+
+:::
+
 The Container step lets you run any Docker container in your Kubernetes cluster as part of your continuous deployment (CD) stage.
 
 Harness orchestrates the container in your cluster as part of your Harness deployment. 
