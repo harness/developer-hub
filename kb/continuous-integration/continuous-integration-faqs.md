@@ -1175,7 +1175,14 @@ curl -X POST -H "Authorization: token YOUR_ACCESS_TOKEN" \
 "body": "Description of the pull request"
 }' https://api.github.com/repos/OWNER/REPOSITORY/pulls
 ```
+### Does the GitHub connector support deleting a branch?
+While Harness doesn't have a direct feature to delete a branch, you can achieve this by using a shell script if you have the necessary permissions set up in GitHub.
 
+### How do we make a PR to a specific branch after pipeline changes in BitBucket?
+After editing your pipeline, click the "Save Pipeline" button. You should see a "Start a pull request to merge" checkbox. Use this to select the branch and raise a PR for your changes.
+
+### How can we update the build status display name in Bitbucket to be more descriptive?
+Currently, you cannot customize the build status display name in Bitbucket to be more descriptive. 
 
 ## Pipeline initialization and Harness CI images
 
@@ -1453,6 +1460,16 @@ The build and push step doesn’t use kaniko while running the build on Harness 
 ### Does Harness have an artifact repository where the artifacts generated in the CI stage can be pushed and then use them in the subsequent CD stages?
 
 Harness currently doesn't provide a hosted artifact repository however you can push the artifact to the other popular artifact repos. More details about the same can be referred in the [doc](https://developer.harness.io/docs/category/uploaddownload-artifacts)
+
+### How can I build and upload linux/amd64 and linux/arm64 images simultaneously to ECR using Harness?
+Yes, you can build multi-platform images using Harness CI/CD. The Build and Push to ECR plugin supports building multi-architecture images. However, when using the built-in build and push steps, you'll need to execute separate stages for each architecture.
+
+If you prefer to use Docker buildx for multi-platform builds, you have a couple of options:
+
+- Run Docker-in-Docker (dind) as a background step in a Kubernetes cluster and execute Docker commands in a run step.
+- Run Docker commands directly on the build VM using the Docker daemon in Harness Cloud.
+
+For more details on running Docker-in-Docker in a CI stage, refer to [our documentation](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/).
 
 ## Upload artifacts
 
