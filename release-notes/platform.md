@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-07-23:T10:00:30
+date: 2024-07-30:T10:00:30
 sidebar_position: 3
 ---
 
@@ -78,6 +78,18 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## July 2024
+
+### Version 1.49.x<!-- July 30, 2024 -->
+
+#### New features and enhancements
+
+#### Fixed issues
+
+- SAML groups were not being picked up by Harness due to a regression introduced with recent changes in syncing users in SAML user groups. Identified and resolved the issue, ensuring that SAML groups are now correctly synced with Harness. (PL-55507, ZD-66567, ZD-66882)
+
+- SCIM sync issues were occurring due to incorrect handling of `orgIdentifier` and `projectIdentifier`. Updated the query to correctly handle cases where `orgIdentifier` and `projectIdentifier` are null. (PL-55444, ZD-66712)
+
+- Users were able to see the enable/disable option for AIDA at the project level, even if AIDA was disabled at the account level. Implemented a change to display an error message when users attempt to enable AIDA at the project level if it is disabled at the account level. (PL-48296)
 
 ### Version 1.48.8<!-- July 23, 2024 -->
 
