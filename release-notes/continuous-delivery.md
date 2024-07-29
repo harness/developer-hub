@@ -51,7 +51,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Fixed issues
 
-- When a user created a new branch based on an existing branch, the user could not view the existing pipelines in Harness, even though the Git sync was successful. This issue is fixed. (PIPE-19521)
 - The deployment status API returns outdated or invalid information. This issue is fixed. (PIPE-19306)
 - Creating a NewRelic health source for a monitored service does not provide a method to select the correct application ID. This issue is fixed. (CDS-98867)
 - Using an expression in the auto-approval for the approval step threw an error. This issue is fixed.(CDS-98842)
