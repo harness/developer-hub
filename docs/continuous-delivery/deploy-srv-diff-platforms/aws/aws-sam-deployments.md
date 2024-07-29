@@ -69,7 +69,7 @@ For more details, go to [Managing resource access and permissions](https://docs.
 
 #### Old Images
 
-Harness supports different images for Prepare, Package and deploy for sereverless deployment. 
+Harness supports different images for Build and Deploy for AWS SAM deployment. 
 
 SAM Build: [`harnessdev/sam-build:1.82.0-latest`](https://hub.docker.com/r/harnessdev/sam-build/tags)
 
