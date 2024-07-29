@@ -903,9 +903,7 @@ No, you can't configure a [failure strategy](https://developer.harness.io/docs/p
 
 ### Can I recursively clone a repo?
 
-Currently, the built-in clone codebase step doesn't support recursive cloning. However, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages), and then add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) with `git clone --recursive`. This is similar to the process you would follow to [clone a subdirectory instead of the entire repo](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
-
-If you want to recursively clone a repo in addition to your default codebase, you can [pull the Git credentials from your code repo connector to use in your Run step](./articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step).
+Yes. You can use **Include Submodules** option under [Configure Codebase](../../docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) or [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step) to clone submodules recursively.
 
 ### Can I clone a specific subdirectory rather than an entire repo?
 
@@ -913,19 +911,16 @@ Yes. For instructions, go to [Clone a subdirectory](https://developer.harness.io
 
 ### Does the built-in clone codebase step fetch all branches? How can I fetch all branches?
 
-The built-in clone codebase step fetches only one or two branches from the repo, depending on the build type (tag, PR, or branch).
-
-If you need to clone all branches in a repo, you can execute the necessary git commands in a Run step.
+You can use **Fetch Tags** option under [Configure Codebase](../../docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) or [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step) to fetch all the new commits, branches, and tags from the remote repository. Setting this to `true` by checking the box is equivalent to adding the `--tags` flag.
 
 ### Can I clone a different branch in different Build stages throughout the pipeline?
 
-You can't do this with the built-in clone codebase functionality, because the codebase configuration is common to the entire pipeline.
-
-However, if you need to do this, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages) for the stages that need a different branch, and then add [Run steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) with Git commands to clone the branch you want those stages.
+Yes. Refer to the [Build Type, Branch Name, and Tag Name](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step#build-type-branch-name-and-tag-name) configuration options for the [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step) to specify a **Branch Name** or **Tag Name** in the stage's settings.
 
 ### Can I clone the default codebase to a different folder than the root?
 
-The built-in clone codebase step always clones your repo to the root of the workspace, `/harness`. If you need to clone elsewhere, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages) and use a [Git Clone or Run step](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step) to clone your codebase to a specific subdirectory.
+Yes. Refer to the **Clone Directory options** under the
+[Configure Codebase](../../docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) or [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step) documentation to enter an optional target path in the stage workspace where you want to clone the repo.
 
 ### What is the default clone depth setting for CI builds?
 
@@ -1022,11 +1017,11 @@ For details about Git Clone step settings, go to:
 
 ### Does Harness CI support Git Large File Storage (git-lfs)?
 
-Yes. For more information, go to the Harness CI documentation on [Git Large File Storage](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
+Yes. Under **Configure Codebase** or **Git Clone** step, Set **Download LFS Files** to `true` to download Git-LFS files.
 
 ### Can I run git commands in a CI Run step?
 
-Yes. You can run any commands in a Run step. With respect to Git, for example, you can use a Run step to [clone multiple code repos in one pipeline](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline), [clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory), or use [Git LFS](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
+Yes. You can run any commands in a Run step. With respect to Git, for example, you can use a Run step to [clone multiple code repos in one pipeline](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline), or [clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
 
 ### How do I handle authentication for git commands in a Run step?
 
@@ -1066,7 +1061,8 @@ For manual tag builds, you need to enter the tag manually at runtime.
 
 ### How can we set ENV variable for the git clone step as there is no option available in the UI to set the ENV variable for this step?
 
-You could configure the stage variables with the necessary values which will be set as ENV variable in all the steps within that stage.
+Yes. Refer to the **Pre Fetch Command** under the
+[Configure Codebase](../../docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#pre-fetch-command) or [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step#pre-fetch-command) documentation to specify any additional Git commands to run before fetching the code.
 
 ## SCM status updates and PR checks
 
