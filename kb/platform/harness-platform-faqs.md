@@ -2761,7 +2761,7 @@ These are APIs to create/update IP allowlists. For more information, go to [Crea
 
 ### How can I capture a Bearer Token from the HTTP response headers using the HTTP step in Harness?
 
-To capture a Bearer Token from the HTTP response headers using the HTTP step in Harness, you can add a key-value pair in the HTTP step. Set the key to "Authorization" and the value to "<+httpResponseHeaders.Authorization>". You can then reference this output variable in other steps using "<+pipeline.stages.HTTPStep.spec.execution.steps.Http_1.output.authorization>".
+To capture a Bearer Token from the HTTP response headers using the HTTP step in Harness, you can add a key-value pair in the HTTP step. Set the key to 'Authorization' and the value to '<+httpResponseHeaders.Authorization>'. You can then reference this output variable in other steps using '<+pipeline.stages.HTTPStep.spec.execution.steps.Http_1.output.authorization>'.
 
 ### Can I use secret references like <+secrets.getValue("SECRET_NAME")> when setting environment variables in the Container Step in the CD module, and will these values be sanitized in the logs?
 
