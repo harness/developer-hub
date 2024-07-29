@@ -71,7 +71,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 **Fixed issues**:
  - Fixed incorrect number variation warning message. (FFM-11759, ZD-66232)
  - Fixed an issue when `client.close()` is called the stream remains connected. The stream now exits correctly and resources are released. (FFM-11801, ZD-66232)
- - if `WaitForInitialzation()` was called and no timeout argument provided, the SDK could block permanetnly on unrecoverable authentication failures.  Now, the SDK will unblock immediately on `40x` errors, and retry up to 10 times on `50x` errors, after which it will unblock. (FFM-11759, ZD-66232)
 
 **New features and enhancements**:
  - Add `FlagsLoaded` Event - see [events](https://github.com/harness/ff-dotnet-server-sdk/blob/main/docs/further_reading.md#listen-on-events). (FFM-11759, ZD-66232)
