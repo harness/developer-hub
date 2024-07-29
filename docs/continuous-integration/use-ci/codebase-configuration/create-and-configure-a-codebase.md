@@ -10,6 +10,8 @@ redirect_from:
   - /docs/continuous-integration/use-ci/codebase-configuration/gitlfs
 ---
 
+import configure_codebase from './static/create-and-configure-a-codebase-00.png'
+
 CI pipelines build and test code that is pulled from a Git code repository. In Harness CI, you can configure a 'Codebase' for your pipeline, to define the Git repository your Build stage(s) will automatically clone during runtime (unless you stage is set to not clone the codebase). When you add a Build stage to a CI pipeline, if not already set, you will have to option to configure your codebase. 
 This topic explains how to configure codebase settings for pipeline to be used by its Build stages.
 
@@ -31,12 +33,7 @@ When you add a **Build** stage to a CI pipeline, you specify where your build co
 
 If you need to change the connector or other default codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration). If you don't want every stage to clone the default codebase, go to [Disable Clone Codebase for specific stages](#disable-clone-codebase-for-specific-stages). You can also [clone multiple repositories in a stage](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
 
-![Configuring the codebase when adding a Build stage.](./static/create-and-configure-a-codebase-00.png)
-
-
-
-
-
+<img src={configure_codebase} alt="Configuring the codebase when adding a Build stage." height="50%" width="50%" />
 
 <details>
 <summary>YAML example: Default codebase configuration</summary>

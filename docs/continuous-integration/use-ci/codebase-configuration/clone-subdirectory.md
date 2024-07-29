@@ -57,7 +57,7 @@ pipeline:
     ci:
       codebase:
         connectorRef: github_connector
-        repoName: dewan-ahmed/developer-hub
+        repoName: harness/developer-hub
         build: <+input>
         sparseCheckout:
           - docs/continuous-integration
