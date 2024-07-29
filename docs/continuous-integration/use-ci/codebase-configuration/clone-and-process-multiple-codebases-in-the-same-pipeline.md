@@ -13,18 +13,17 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-In addition to the pipeline's default [codebase](./create-and-configure-a-codebase.md), you can use **Git Clone** clone additional code repos into the pipeline's workspace.
+In addition to the pipeline's default [codebase](./create-and-configure-a-codebase.md), you can use **Git Clone** step to clone additional code repos into the pipeline's workspace.
 
 For example, you can use this to:
 
-* Build multiple artifacts in the same pipeline. For example, suppose you use Packer and Ansible to build artifacts automatically, and you have separate repos for Packer, Ansible, and code. You can clone all three repos into the pipeline's workspace.
-* Pull code from separate code and build repos. For example, if your code files are in a repo managed by the Engineering team and your Dockerfiles are in a different repo managed by the Security team, you can clone both repos into the pipeline's workspace.
+* Build multiple artifacts in the same pipeline. Suppose you use Packer and Ansible to build artifacts automatically, and you have separate repositories for Packer, Ansible, and code. You can clone all three repositories into the pipeline's workspace.
+* Pull code from separate code and build repositories. For instance, if your code files are in a repository managed by the Engineering team and your Dockerfiles are in a different repository managed by the Security team, you can clone both repositories into the pipeline's workspace.
 * Clone codebases without using the built-in clone codebase function.
 
+## Add a Git Clone step
 
-## Add a Git Clone
-
-Assume the [default codebase](#configure-the-default-codebase) is a repo that contains app code files, and the Dockerfile necessary to build the app image is in a different repo. You can use a [git clone step](./git-clone-step) to clone the second repo into the workspace, or fetch spricifc files/directories. Then, you can use a **Build and Push** step to build and push an image using files from both repos.
+Assume the [default codebase](./create-and-configure-a-codebase#configure-the-default-codebase) is a repo that contains app code files, and the Dockerfile necessary to build the app image is in a different repo. You can use [Git Clone](./git-clone-step) step to clone the second repo into the workspace, or fetch spricifc files/directories. Then, you can use a [Build and Push](../../../category/build-and-push) step to build and push an image using files from both repos.
 
 
 <Tabs>
@@ -47,7 +46,7 @@ Add a **Git Clone** step to clone a second repo into the pipeline's workspace.
               branch: main
 ```
 
-For more informaiton visit [git clone step](./git-clone-step).
+For details, visit the [git clone step](./git-clone-step) page.
 
 ## Add a Run step
 
@@ -72,7 +71,7 @@ To use this command, you would replace:
 * `REPO_NAME` with the name of the GitHub repo to clone.
 * `PERSONAL_ACCESS_TOKEN` with a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. Store the token as a [Harness secret](/docs/category/secrets) and use a variable expression, such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call it.
 
-For information about **Run** step settings, go to [Run scripts](../run-step-settings.md).
+For details about the **Run** step settings, check out the **Run scripts** tab under the [Run step settings](../run-step-settings.md) page.
 
 
 </TabItem>
