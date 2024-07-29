@@ -54,6 +54,7 @@ export const university: CardItem[] = [
       "Save time, reduce effort, and save on your cloud bill with intelligent cloud cost automation.Detect and stop cloud cost anomalies as they occur, to avoid unpleasant billing surprises with a FinOps approach.",
     link: "/university/cloud-cost-management",
     numberOfCerts: 2,
+    SPT_available: true,
   },
   {
     title: "Security Testing Orchestration",
