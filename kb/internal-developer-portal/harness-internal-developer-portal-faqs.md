@@ -33,3 +33,6 @@ harness.io/pipelines: |
 ### How can we import teams to Harness IDP from third-party applications?
 
 The teams/groups in Harness IDP are the same as the platform user groups which can be setup today to [sync from third party sources using the SCIM protocol](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/). 
+
+### How can user extend the AWS token session time in IDP?
+User can add env var to control the timeout expiration of AWS credentials in IDP.
