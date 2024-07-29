@@ -37,6 +37,31 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## July 2024
 
+### Version 1.37
+
+<!-- 2024-07-16 -->
+
+#### Fixed issues
+
+- Fixed an issue where the `Build and Push to GCR` step was failing. Buildx plugin version has been upgraded. (CI-13422)
+
+- UPDATED Upgraded Kaniko version to fix an issue where the `Build and Push to ECR` step did not preserve permissions via chmod. (CI-13200, ZD-65907)
+
+- Fixed an issue where logging for **engine:main** experienced a race condition. Initially, when a **SIGTERM** signal was received, one thread would begin closing the logger while another thread continued uploading logs to **engine:main**, leading to a race condition. This caused incorrect logging of pod eviction during successful executions. The threads have been synchronized to ensure log uploads complete before the logger is closed, accurately recording pod evictions only during errors. (CI-13175, ZD-65545)
+
+This is behind the feature flag: `CI_ENGINE_LOG_UPLOAD_CONCURRENCY`.
+
+- Fixed an issue where, if the base image connector is overridden, the Docker build step does not work. With this fix, Docker-related images now properly gain privilege if the default connector is overridden. `buildx` images are now located [here]  (https://hub.docker.com/search?q=plugins%2Fbuildx). These images are added to the auto-privilege mode. Without this privilege, the image does not run. (CI-12583)
+
+### Version 1.36
+
+<!-- 2024-07-09 -->
+
+#### Fixed issues
+
+- Fixed an issue where the status in Bitbucket showed the build as in progress even though the build succeeded in Harness CI. (CI-13151, ZD-65593)
+- CI - Getting Started Page Visibility: Resolved an issue where the "Getting Started" page for CI was not visible to users without account-level edit permissions. (CI-12510)
+
 ### Version 1.35
 
 <!-- 2024-07-01 -->
