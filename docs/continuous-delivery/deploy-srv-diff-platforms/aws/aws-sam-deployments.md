@@ -367,6 +367,17 @@ Do not remove this command. It is required for the current beta of this feature.
 
 :::
 
+### Pre Execution Command
+
+Pre Execution command will run before your actual SAM Build and Deploy step. You can use this field to install any dependencies needed before the plugin logic executes.
+
+![](./static/pre-execution-command.png)
+
+:::warning
+Pre Execution command will only run with latest [Harness runtime support images](#containerized-step-images).
+:::
+
+
 #### SAM build docker container registry (required for beta)
 
 In **SAM Build Docker Container Registry**, you can use the same Harness Docker Registry connector automatically set up in the **Container Registry** setting or add/select your own connector.
