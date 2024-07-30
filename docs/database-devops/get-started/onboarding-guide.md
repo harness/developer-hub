@@ -25,8 +25,10 @@ Before beginning the walkthroughs in this guide, ensure you have:
  - Credentials configured for your database:
   -- If you are using **Oracle** connecting as the user `sys`, be aware that this is not currently supported. 
   -- credentials need the ability to create/alter/query two tables named ‘DATABASECHANGELOG’, and ‘DATABASECHANGELOGLOCK’ as well as the ability to update all data in these tables. Credentials also need the ability to execute whatever operations are in your SQL changelogs.
- - You must have an Artifact repo configured that can pull these images from Docker hub: 
- -- [plugins/drone-liquibase](https://hub.docker.com/r/plugins/drone-liquibase/tags)
+ - You must have an artifact repo configured that can pull these images from Docker hub: 
+ -- [plugins/drone-liquibase](https://hub.docker.com/r/plugins/drone-liquibase/tags). The tags vary by database. For example:
+  -- if you're deploying to MongoDB, opt to use [`latest-mongo`](https://hub.docker.com/r/plugins/drone-liquibase/tags)
+  -- if you're deploying to any other database, opt to use[`latest`](https://hub.docker.com/r/plugins/drone-liquibase/tags?page=&page_size=&ordering=&name=latest)
  -- [harness/ci-addon](https://hub.docker.com/r/harness/ci-addon)
  -- [harness/ci-lite-engine](https://hub.docker.com/r/harness/ci-lite-engine)
  -- [harness/drone-git](https://hub.docker.com/r/harness/drone-git)
