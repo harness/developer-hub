@@ -1,12 +1,16 @@
 ---
 title: Database DevOps onboarding guide
 description: A self-service onboarding guide for Harness DB DevOps.
-sidebar_position: 4
-sidebar_label: Onboarding guide
+displayed_sidebar: dbdevopsbeta
+# sidebar_position: 4
+# sidebar_label: Onboarding guide
 ---
-
+<!-- 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import BetaIcon from 'img/icon_beta.svg';
+
+<BetaIcon /> -->
 
 # DB DevOps onboarding guide
 
@@ -20,19 +24,19 @@ Before beginning the walkthroughs in this guide, ensure you have:
 
  - Access to a Harness account. 
  - A Kubernetes cluster, connected via a Harness delegate. 
-  -- You **must** ensure that your Kubernetes cluster has network access to the target database, as well as the Git repository containing your changelog. 
-  -- Your cluster must be set us as [build infrastructure](https://developer.harness.io/docs/category/set-up-kubernetes-cluster-build-infrastructures/) which can be tested by running the `git clone` step of a custom sgae. 
+    - You **must** ensure that your Kubernetes cluster has network access to the target database, as well as the Git repository containing your changelog. 
+    - Your cluster must be set us as [build infrastructure](https://developer.harness.io/docs/category/set-up-kubernetes-cluster-build-infrastructures/) which can be tested by running the `git clone` step of a custom sgae. 
  - Credentials configured for your database:
-  -- If you are using **Oracle** connecting as the user `sys`, be aware that this is not currently supported. 
-  -- credentials need the ability to create/alter/query two tables named ‘DATABASECHANGELOG’, and ‘DATABASECHANGELOGLOCK’ as well as the ability to update all data in these tables. Credentials also need the ability to execute whatever operations are in your SQL changelogs.
+    - If you are using **Oracle** connecting as the user `sys`, be aware that this is not currently supported. 
+    - credentials need the ability to create/alter/query two tables named `DATABASECHANGELOG`, and `DATABASECHANGELOGLOCK` as well as the ability to update all data in these tables. Credentials also need the ability to execute whatever operations are in your SQL changelogs.
  - You must have an artifact repo configured that can pull these images from Docker hub: 
- -- [plugins/drone-liquibase](https://hub.docker.com/r/plugins/drone-liquibase/tags). The tags vary by database. For example:
-  -- if you're deploying to MongoDB, opt to use [`latest-mongo`](https://hub.docker.com/r/plugins/drone-liquibase/tags)
-  -- if you're deploying to any other database, opt to use[`latest`](https://hub.docker.com/r/plugins/drone-liquibase/tags?page=&page_size=&ordering=&name=latest)
- -- [harness/ci-addon](https://hub.docker.com/r/harness/ci-addon)
- -- [harness/ci-lite-engine](https://hub.docker.com/r/harness/ci-lite-engine)
- -- [harness/drone-git](https://hub.docker.com/r/harness/drone-git)
- -- [plugins/download-artifactory:latest](https://hub.docker.com/r/plugins/download-artifactory)
+    - [plugins/drone-liquibase](https://hub.docker.com/r/plugins/drone-liquibase/tags). The tags vary by database. For example:
+      - if you're deploying to MongoDB, opt to use [latest-mongo](https://hub.docker.com/r/plugins/drone-liquibase/tags)
+      - if you're deploying to any other database, opt to use [latest](https://hub.docker.com/r/plugins/drone-liquibase/tags?page=&page_size=&ordering=&name=latest)
+    - [harness/ci-addon](https://hub.docker.com/r/harness/ci-addon)
+    - [harness/ci-lite-engine](https://hub.docker.com/r/harness/ci-lite-engine)
+    - [harness/drone-git](https://hub.docker.com/r/harness/drone-git)
+    - [plugins/download-artifactory:latest](https://hub.docker.com/r/plugins/download-artifactory)
  
 ## Create a Liquibase Changelog
 

@@ -1,9 +1,14 @@
 ---
 title: Harness Database DevOps (DB DevOps) Overview
 sidebar_label: Overview
-description: Learn about Harness Database DevOps.
-sidebar_position: 10
+displayed_sidebar: dbdevopsbeta
+# description: Learn about Harness Database DevOps.
+# sidebar_position: 10
 ---
+
+<!-- import BetaIcon from 'img/icon_beta.svg';
+
+<BetaIcon /> -->
 
 Database DevOps (DB DevOps) enables the definition of database schema migration resources through code to help support you to accelerate software delivery and ensure quality code. 
 
