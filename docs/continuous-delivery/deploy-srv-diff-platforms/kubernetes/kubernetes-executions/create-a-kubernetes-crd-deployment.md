@@ -1,7 +1,7 @@
 ---
 title: Deploy Kubernetes Custom Resources using CRDs
 description: Harness supports all Kubernetes default resources, such as Pods, Deployments, StatefulSets, DaemonSets, etc. For these resources, Harness supports steady state checking, versioning, displays instance…
-sidebar_position: 270 
+sidebar_position: 1000 
 helpdocs_topic_id: pmmfqqo1uh
 helpdocs_category_id: n03qfofd5w
 helpdocs_is_private: false
@@ -18,7 +18,7 @@ Harness supports CRDs for both Kubernetes and OpenShift. There is no difference 
 ### Before You Begin
 
 * [Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
-* [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-crd-deployment)
+* [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
 * [Kubernetes Releases and Versioning](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning)
 
 ### Limitations
@@ -94,7 +94,7 @@ In the even of deployment failure, Harness will redeploy the last successful rel
 
 The `<release_name>` must match the **Release Name** in the Harness Infrastructure Definition. See [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure).
 
-You declare the release name in the values.yaml, for example `release:release-${infra.kubernetes.infraId}` , and then reference it in the manifest as `{{.Values.release}}`.
+You declare the release name in the values.yaml, for example `release:release-<+INFRA_KEY_SHORT_ID>` , and then reference it in the manifest as `{{.Values.release}}`.
 
 Here is an example:
 
@@ -226,26 +226,21 @@ For an example of a simple CRD setup, see [sample-controller](https://github.com
 
 You add the manifest for your custom object in a Harness Service, along with the artifact you will deploy. See [Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services).
 
-1. In your Harness Application, click **Services**, and then **Add Service**.
+1. In Harness, click **Services**, and then **Add Service**.
 2. Name your Service.
 3. In **Deployment Type**, select **Kubernetes**.
-4. Click Submit. The new Kubernetes Service appears.
-5. Add an artifact, as described in [Add a Docker Artifact Source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#docker).
-6. Next, you will add the manifest for the custom object In **Manifests**.
+4. Click **Save**. The new Kubernetes Service appears.
+5. Add an artifact, as described in [CD artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#docker).
+6. Next, add the manifest for the custom object In **Manifests**.
 7. You can add your manifest inline, remotely, or by uploading. See [Define Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services#manifests). You can also use [Go templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services#go-templating).
 8. Ensure your manifest has the required annotations and label, as described in [Required Custom Resource Annotations and Labels](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-annotations-and-labels/).
 
-When you are done your Service will look something like this:
-
-![](./static/create-kubernetes-crd-deployments-215.png)
 
 ### Step 3: Define Target Cluster
 
 In the same Harness Application, create your Kubernetes target cluster as described in [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure).
 
 Ensure that the **Release Name** matches the name in the manifest's label, as described in [Review: Required Custom Resource Annotations and Labels](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-annotations-and-labels/):
-
-![](./static/create-kubernetes-crd-deployments-216.png)
 
 ### Step 4: Create Workflow for Custom Resource Deployment
 
