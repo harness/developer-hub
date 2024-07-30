@@ -1,23 +1,23 @@
 ---
 title: Build Intelligence Overview
-description: Learn about the build cache feature in Harness CI.
+description: Learn about the build intelligence feature in Harness CI.
 sidebar_position: 7
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Build Intelligence, or Build Cache, is part of the suite of intelligent features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. BI works by storing these outputs locally or remotely and retrieving them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency.
+Build Intelligence is part of the suite of intelligent features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. BI works by storing these outputs locally or remotely and retrieving them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency.
 
-Build Cache in Harness CI is currently available for **Gradle** and **Bazel** with **Maven** support coming soon.
+Build Intelligence in Harness CI is currently available for **Gradle** and **Bazel** with **Maven** support coming soon.
 
-## Build Cache Support for Gradle
+## Build Intelligence Support for Gradle
 
-[Gradle](https://gradle.org/) is the open source build system of choice for Java, Android, and Kotlin developers. Harness CI offers Build Cache support for Gradle to optimize build times by reusing outputs from previous builds.
+[Gradle](https://gradle.org/) is the open source build system of choice for Java, Android, and Kotlin developers. Harness CI offers Build Intelligence support for Gradle to optimize build times by reusing outputs from previous builds.
 
 ### How it works?
 
-1. **Plugin Integration**: The Build Cache plugin for Gradle is imported into your project. This plugin interacts with Gradle to handle cache pull and push operations.
+1. **Plugin Integration**: The Build Intelligence plugin for Gradle is imported into your project. This plugin interacts with Gradle to handle cache pull and push operations.
 2. **Cache Operations**: At the start of the build, the plugin registers with Gradle to check for cached build outputs. If available, it retrieves and provides them to Gradle, avoiding the need to regenerate them.
 
 The above operation is transparent to you as a user and happens in the background. 
@@ -129,9 +129,9 @@ pipeline:
       value: <+input>
 ```
 
-## Build Cache Support for Bazel
+## Build Intelligence Support for Bazel
 
-[Bazel](bazel.build) is an open-source build and test tool designed for high performance, scalability, and handling large codebases across multiple languages and platforms. Harness CI offers Build Cache support for Bazel to optimize build times by reusing outputs from previous builds.
+[Bazel](bazel.build) is an open-source build and test tool designed for high performance, scalability, and handling large codebases across multiple languages and platforms. Harness CI offers Build Intelligence support for Bazel to optimize build times by reusing outputs from previous builds.
 
 ### How it works?
 
