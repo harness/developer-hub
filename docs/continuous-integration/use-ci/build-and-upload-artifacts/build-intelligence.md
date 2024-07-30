@@ -7,6 +7,8 @@ sidebar_position: 7
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+<DocsTag backgroundColor= "#cbf542" text="Harness CI Beta Feature" textColor="#4e42f5" />
+
 Build Intelligence is part of the suite of intelligent features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. BI works by storing these outputs locally or remotely and retrieving them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency.
 
 Build Intelligence in Harness CI is currently available for **Gradle** and **Bazel** with **Maven** support coming soon.
@@ -24,7 +26,7 @@ The above operation is transparent to you as a user and happens in the backgroun
 
 ### Configuration for Gradle
 
-1. Import the build cache plugin in `settings.gradle` file:
+1. Import the build cache plugin in `settings.gradle` file: Customers using **prod1** or **prod2** clusters don't need to configure the `endpoint` parameter in the settings below and it'll be populated by the plugin. The default value for this endpoint for **prod1** or **prod2** is `https://app.harness.io/gateway/cache-service`. For customers not using **prod1** or **prod2** clusters, they'll need to configure the `endpoint` parameter. 
 
 ```groovy
 // import the plugin
@@ -64,9 +66,6 @@ For Build Intelligence, you'll need to turn on `CI_CACHE_ENABLED` FF.
 
 The above configuration is only required for local builds. For hosted CI builds, Harness automatically configures the build cache configuration.
 
-Customers using **prod1** or **prod2** clusters don't need to configure the `endpoint` parameter in the above settings and it'll be populated by the plugin. The default value for this endpoint for **prod1** or **prod2** is `https://app.harness.io/gateway/cache-service`. 
-
-For customers not using **prod1** or **prod2** clusters, they'll need to configure the `endpoint` parameter in the above settings. 
 :::
 
 2. Enable build cache in `gradle.properties` file:
@@ -75,7 +74,7 @@ For customers not using **prod1** or **prod2** clusters, they'll need to configu
 org.gradle.caching = true
 ```
 
-### Sample pipeline for build cache for Gradle
+### Sample pipeline for build intelligence for Gradle
 
 ```YAML
 pipeline:
@@ -134,4 +133,39 @@ pipeline:
 [Bazel](bazel.build) is an open-source build and test tool designed for high performance, scalability, and handling large codebases across multiple languages and platforms. Harness CI offers Build Intelligence support for Bazel to optimize build times by reusing outputs from previous builds.
 
 ### How it works?
+
+1. Proxy binary: Download the proxy binary from PLACEHOLDER_LINK. Since Bazel does not support writing a custom plugin, the cache proxy exposes the contract. It will talk to cache service to get the pre-signed URLs and upload/download will be done in the cache proxy using those pre-signed URLs.
+2. Start the proxy server before the bazel command. You need to set the following environment variables:
+
+```bash
+HARNESS_CACHE_PROXY_ENABLED=true
+HARNESS_CACHE_SERVER_URL=PLACEHOLDER
+HARNESS_CACHE_SERVER_API_TOKEN=PLACEHOLDER
+```
+
+For `HARNESS_CACHE_SERVER_URL`, you can get the URL from FF or gateway endpoint if using prod1 or prod2 clusters.
+
+For `HARNESS_CACHE_SERVER_API_TOKEN`, create a Harness [Service Account Token](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/#create-service-account-api-keys-and-tokens) with account admin (or edit) permission PLACEHOLDER_LINK.
+
+Here is a sample script:
+
+```bash
+if [[ ! -z "${ENABLE_CI_CACHE// }" ]] && [[ "$ENABLE_CI_CACHE" == "true" ]]
+then
+    # Start the proxy server
+    mkdir -p /tmp/cachebin
+    curl -L -o /tmp/cachebin/harness-cache PLACEHOLDER_LINK
+    chmod +x /tmp/cachebin/harness-cache
+    echo "Starting cache proxy with account $HARNESS_ACCOUNT_ID"
+    /tmp/cachebin/harness-cache server > /tmp/cachebin/server.log 2>&1 &
+```
+
+3. Add the build cache endpoint to the relevant `bazelrc` file: 
+
+```bash
+build --remote_cache=http://$ENDPOINT:$PORT 
+```
+
+The $ENDPOINT:$PORT depends on the cluster you're using. For prod1 or prod2 clusters, the endpoint is PLACEHOLDER_LINK and the port is PLACEHOLDER_LINK.
+
 
