@@ -19,7 +19,8 @@ export enum MODULES {
   platform = 'platform',
   cv = 'cv',
   smp = "smp",
-  aida = "aida"
+  aida = "aida",
+  dbdevops = 'dbdevops',
 }
 
 export const MODULE_DISPLAY_NAME = {
@@ -40,6 +41,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.platform]: 'Harness Platform',
     [MODULES.smp]: 'Harness Self-Managed Enterprise Edition',
     [MODULES.aida]: 'AI Development Assistant',
+    [MODULES.dbdevops]: 'Database DevOps',
 }
 
 export const MODULE_ICON = {
