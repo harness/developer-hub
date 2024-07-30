@@ -798,3 +798,20 @@ No, currently, there is no feature for providing approvals or alerts before prun
 
 #### Can Kubernetes and NativeHelm Infrastructures be used interchangably?
 No its not possible, as both are treated as separate deployment type to make sure any changes related to that swimlane should not affect other
+
+#### Is the shift traffic feature available for EKS (Elastic Kubernetes Service) deployments?
+Yes, Harness does support traffic shifting for EKS deployments.
+It can be implemented in the following ways:
+- Using an ingress controller that supports splitting traffic across services by percentage, such as Istio or Nginx
+- Via a Kubernetes Apply step, which would work with any ingress controller supporting traffic splitting
+
+For more details please refer to the Harness documentation on [Traffic Shifting Step](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step/)
+
+#### Does Harness support traffic-shifting for SpotInst deployments?
+No, the shift traffic feature is not currently available for SpotInst deployments
+
+#### Does Harness support Manual Authentication Configuration for Kubernetes EKS Deployments?
+Yes, Harness does support the manual authentication configurations for Kubernetes EKS deployments. User can pass in the URL to the cluster and any other authentication meta data for Harness to authenticate and deploy to the cluster.
+To use this feature, user should use Harness versions `24.07.83600` or above and must enable the Feature flag : `CDS_AWS_EKS_CLUSTER_MANUAL_CONFIGURATION`.
+
+For more details, please refer to the Harness documentation on [Define your Kubernetes Target Infrastructure](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure#aws-elastic-kubernetes-service-eks)

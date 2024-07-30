@@ -3236,6 +3236,16 @@ AIDA is enabled on the Harness platform by default. To read more on the security
 Yes, we can use exported variables to reference a step group variable without knowing the step group ID.
 One can follow the syntax : `<+exportedVariables.getValue("stepGroup.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>` This method allows you to reference the variable by its alias name instead of needing to know the step group ID. For more details, you can refer to the Harness documentation on [Scoping output variables using aliases](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#scoping-output-variables-using-aliases)
 
+#### Can permissions be set on delegates in Harness?
+
+Yes, permissions can be set on delegates using Harness Role-Based Access Control (RBAC). Under roles one can set permissions to `view`, `create/edit` and `delete` the delegates.
+For more details, refer to the Harness documentation on [Delegate Permissions](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview#delegate-permissions)
+
+#### How can Python be used in CD or Custom stages of Harness?
+
+In CD/Custom Stages, Python can be utilized through the implementation of a Step Group, which allows access to the Run Step that supports Python.
+For more details, refer to the Harness documentation on [Containerized Step Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/)
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
