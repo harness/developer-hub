@@ -17,7 +17,7 @@ The Lead Time for a stage is calculated as the time difference between the start
 
 ### Average
 
-When configured to calculate the Lead Time as the Average across all the stages, the individual lead time for each stage is calculated as the average across all the tickets, The overall lead time is then calculated as the sum of all the stages.
+When configured to calculate the Lead Time as the **Average time in stage**, the individual lead time for each stage is calculated as the average across all the tickets, The overall lead time is then calculated as the sum of all the stages.
 
 ### Median
 
@@ -71,7 +71,7 @@ Overall 90th Percentile Lead Time = p90 Lead Time for Stage 1 + p90 Lead Time fo
 
 ### 95th Percentile
 
-The 90th percentile lead time is the duration within which 95% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays. The calculation of the 95th percentile lead time follows the same steps as the 90th percentile, with the only difference being the percentile value used.
+The 95th percentile lead time is the duration within which 95% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays. The calculation of the 95th percentile lead time follows the same steps as the 90th percentile, with the only difference being the percentile value used.
 
 ```bash
 Overall 95th Percentile Lead Time = p95 Lead Time for Stage 1 + p95 Lead Time for Stage 2 + ... + p95 Lead Time for Stage N
@@ -80,6 +80,8 @@ Overall 95th Percentile Lead Time = p95 Lead Time for Stage 1 + p95 Lead Time fo
 ![](../dora-metrics-calculation/static/code-gen-p90-p95.png)
 
 ## Calculation Examples
+
+The examples below uses the **Average** calculation method across each individual stages in a workflow profile for measuring lead time.
 
 ### Calculation Example 1: One Pull Request associated with a Single Jira Ticket
 
