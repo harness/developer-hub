@@ -6,7 +6,7 @@ sidebar_position: 3
 
 By default, Harness Git Experience syncs unidirectionally, from Harness to your Git repos. You can also have Harness Git Experience sync bidirectionally between Harness and your Git repo.
 
-With bidirectional sync for Git Experience, changes made on either the Git repo or Harness are synched automatically.
+With bidirectional sync for Git Experience, changes made on either the Git repo or Harness are synced automatically.
 
 This topic explains how to set up and use bidirectional sync.
 
