@@ -43,21 +43,21 @@ Overall Median Lead Time = Median Lead Time for Stage 1 + Median Lead Time for S
 
 The 90th percentile lead time is the duration within which 90% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays.
 
-To provide a better understanding of how the 90th percentile lead time is calculated for a stage, here's a step-by-step explanation of the process:
+To provide a better understanding of how the 90th percentile lead time is calculated for a stage, here's a step-by-step explanation of the calculation:
 
-* **Step 1:** The lead times for tickets within a specific stage is firstly sorted from the shortest to the longest. This helps in arrange them in order of completion duration.
+* **Step 1:** The lead time for tickets for a specific stage is firstly sorted and arranged in ascending order.
 
-* **Step 2:** Each sorted lead time is then assigned a unique index. For example, if you have four tickets, each is assigned with indices from 1 to 4.
+* **Step 2:** Each lead time is then assigned a unique index sequentially, starting from 1. For example, if you have four tickets, each is assigned with indices from 1 to 4.
 
-* **Step 3:** The range of indices is divided into 100 equal parts to capture the detailed distribution of lead times. This allows the system to find a precise value for the 90th percentile.
+* **Step 3:** The range of indices is divided into 100 equal parts to represent percentiles. This allows the system to find a precise value for the 90th percentile.
 
-* **Step 4:** To determine the 90th percentile, SEI calculates the position that corresponds to 90% of the sorted lead times. This is done by multiplying 90% by the total number of intervals and adding the result to the starting index.
+* **Step 4:** To determine the 90th percentile, SEI calculates the position that corresponds to 90% of the lead times. This is done by multiplying 90% by the total number of intervals and adding the result to the starting index.
 
 ```bash
 Position = Min Index + (90/100) × (Max Index − Min Index)
 ```
 
-* **Step 5:** SEI then locates the interval where this position falls and use linear interpolation to estimate the lead time at this percentile. Linear interpolation helps us find a value within a range based on two known points. The formula for linear interpolation between two points (x1,y1) and (x2,y2) is given below:
+* **Step 5:** SEI then locates the interval where this position falls and uses linear interpolation to estimate the lead time at that percentile. Linear interpolation helps us find a value within a range based on two known points. The formula for linear interpolation between two points (x1,y1) and (x2,y2) is given below:
 
 ```bash
 y = y1 + [ (x - x1) / (x2 - x1) ] × (y2 - y1)
@@ -65,19 +65,23 @@ y = y1 + [ (x - x1) / (x2 - x1) ] × (y2 - y1)
 
 * **Step 6:** By using the interpolation formula, the system computes the exact lead time for the 90th percentile. This value represents the time within which 90% of tasks or tickets are completed.
 
+The **Overall Lead Time** in this scenario is calculated as the Sum the 90th percentile lead times for all the stages in the workflow.
+
 ```bash
 Overall 90th Percentile Lead Time = p90 Lead Time for Stage 1 + p90 Lead Time for Stage 2 + ... + p90 Lead Time for Stage N
 ```
+
+![](../dora-metrics-calculation/static/code-gen-p90-p95.png)
 
 ### 95th Percentile
 
 The 95th percentile lead time is the duration within which 95% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays. The calculation of the 95th percentile lead time follows the same steps as the 90th percentile, with the only difference being the percentile value used.
 
+The **Overall Lead Time** in this scenario is calculated as the Sum the 95th percentile lead times for all the stages in the workflow.
+
 ```bash
 Overall 95th Percentile Lead Time = p95 Lead Time for Stage 1 + p95 Lead Time for Stage 2 + ... + p95 Lead Time for Stage N
 ```
-
-![](../dora-metrics-calculation/static/code-gen-p90-p95.png)
 
 ## Calculation Examples
 
