@@ -321,3 +321,9 @@ This is expected behaviour as we start background step and will immedeatly move 
 #### How can we configure a step/stage/pipeline to fail/pass based on the % of test cases failure/success?
 
 We wouldn't be able to natively configure a stage/pipeline to fail/pass depending the % of test cases failure/success. To achieve this use case, we would need to manually parse the test result which will be created after the test step execution and have few variables exported from the test step which will have the  % of test cases failure/success and then the value of this variable can decide the status of the stage/pipeline.
+
+
+#### An issue is reported where cloned pipelines after being updated to fetch a different key for cache are fetching the new key as well as the original key of which gives a 404/failure as expected because it does not exist.  How do we circumvent this?
+
+To prevent a failure due to different keys being fetched and using from cache, introduce a new stage variable in the restore step via PLUGIN_ENABLE_SEPARATOR = true. 
+This would enable the pipeline to use cache keys with same prefix without fetching other pipelines cache. If one does not wish to use the stage variable, one will have to make sure that any two pipelines do not have cache-keys with exact same prefix.
