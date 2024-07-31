@@ -762,6 +762,14 @@ You can find this value on the Authentication page (right below the Overview men
 
 The most probable root cause is that there is a difference in query for this user group/user (like DC), so check and confirm and add the corresponding user query.
 
+### Okta Scim provisioned user is not being added to Group
+
+Check in Okta if you are using user group provisioning; otherwise, if only users are provisioned, you will need to assign them manually to the group in Harness.
+
+### Why do I need to login again while trying to switch accounts?
+
+Different accounts can have different authentication mechanisms enforced (saml, 2FA, etc.), so while trying to switch, you need to re-authenticate as per the target account.
+
 ## Automation
 
 ### How can I use Harness CD with Google Cloud Functions?
@@ -1789,6 +1797,14 @@ For more information, go to [Delegates list page](/docs/platform/delegates/secur
 ### What is the six-letter account identifier that Harness uses it creates the delegate?
 
 This identifier is required for Harness to link old and new pod life cycles properly. Without it, they will be treated differently as pod names and IPs change.
+
+### How to check and compare the delegate used for pipeline executions
+
+As pipelines have different stages and steps, more than one delegate can be used, so you can go to the respective step in both executions and see the delegate used.
+
+### Delegates are running in the same environment, but the git connector test is working with one but failing with the other
+
+If both are hosted within the same network, then compare the proxy applied to those, as there are chances that both are not using the same proxy.
 
 ### How does Harness prevent tampering of artifacts and instructions? Is TLS used? What is the integrity checking approach to ensure instructions are not altered in-flight?
 
