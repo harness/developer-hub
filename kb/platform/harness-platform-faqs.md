@@ -612,3 +612,308 @@ No, we don't support that feature currently.
 
 
 
+#### What is the best way to confirm if a delegate has root access?
+
+To check if the delegate has root access, check the delegate manifest file for the following:
+spec:
+    containers:
+    - image: harness/delegate:ng
+      imagePullPolicy: Always
+      name: harness-delegate-instance
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsUser: 0
+		
+This confirms that the delegate has root access.
+
+
+
+#### Does a code repository connector with type: platform (SCM git operations done by Harness platform service) require a delegate to be installed in my Harness account for any type of Git/SCM operation?
+
+No, only when the delegate connector type is selected would the delegate be required, Harness platform code repo connector handles all operations so long as your repository does not filter any of the IP addresses listed here: https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/#harness-manager
+
+
+
+
+#### I have a variable named this-var and have assigned a value to this variable.  However, when attemtping to use the variable, the value always returns null even though I confirmed the value was assigned to the variable through the Harness UI.  Why is a null value being returned for my this-var variable?
+
+Harness recommends not using hyphens/dashes (-) in variable names because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software.
+
+However, if you need to reference a custom variable that includes a period or hyphen/dash in the name, you must wrap the variable name in double quotes and use the get() method in the expression, such as .get("some-var").
+
+For example: <+pipeline.variables.get("this-var")>
+
+
+
+
+#### How can I use an output variable from one step and use it towards a different step in another stage within the same pipeline?
+
+One can consider using the expression <+exportedVariables.getValue("OUTPUT_VARIABLE"> where OUTPUT_VARIABLE is the output variable being assigned from the corresponding step.
+
+1. Assign an Output alias within the step where the output variable is needed.
+	- Select the step and click on Optional Configuration.
+	- Under Output alias (optional) section, assign the following items:
+		- Publish Variable Names (alias): the name of the variable we will reference in other sections of the pipeline.
+		- Scope: Select the scope of where this variable will need access to.
+		- Execution Target: Select On Delegate.
+
+2. Move to the stage/step where the output variable will need to be utilized.
+	- Utilize the expression where it is needed to be referenced.
+		- <+exportedVariables.getValue("pipeline.OUTPUT_VARIABLE.STEP_VARIABLE"> where STEP_VARIABLE is the variable being used inside the step we are looking to grab the value for.
+		
+		
+		
+#### There is a list of servers and need to only run commands in a pipeline to a specific servers configured in an environment.  What would be the best approach?
+
+Use the <+input> command to obtain the server name from the user at runtime.  Then, utilize a different stage to confirm that the server is part of the list of available servers, and can note to the user if the server does not exist.
+
+One can also define allowed values by appending the .allowedValues() method to <+input>. For example: <+input>.allowedValues(server1, server2).  This way, the user can select the server at runtime based on the values available to them.
+
+
+
+
+#### I cannot push a commit to a specific file via the Harness UI. I switched branch to a branch that already exists in the git repository, and forced it to reload from git. When trying to add a branch definition to this stage template, it infinitely loops with the error, "There is a new version of this branch."
+
+In order to correct the error, "There is a new version of this branch," perform the following tasks:
+- Refresh the cache and reload the entities from Git by selecting the Reload from Git option.
+- A pop-up appears to confirm reload of the entities from Git.  Select Confirm.
+
+If these steps still do not fix the issue, try a dummy commit on GIT and let the Harness UI update via webhook. Then, once it's updated, you can try and commit anything on Harness UI and it should work as expected.
+
+If these steps fail, please contact Harness support and provide them a HAR file from your browser.
+
+
+
+
+#### How can we customize the manual approval step so that the timeout can be adjusted based on the amount of time the user needs before running out of time to approve the request?
+
+Within the pipeline, update the timeout field within the manual approval step to <+input>.
+Once the user runs the pipeline, the user will be prompted to enter the timeout length to give enough time for the approver to approve the request.  The execution will be paused until the step is approved or denied.
+
+
+
+#### We have a pipeline where there are multiple stages.  Is there a way to set up for each stage be accessible by a particular group?
+
+A pipeline admin can place approvals as the first step in each stage.  This way, the people/groups that need to have the work done for this stage must approve the step in order for the stage to continue processing its execution.
+ 
+Here's a link to read about how to add a manual approval step/stage: https://developer.harness.io/docs/platform/approvals/adding-harness-approval-stages/
+
+
+
+#### User is attempting to use the Bitbucket connector, but is getting the error message: When performing an edit, the authenticated user must have an e-mail address.
+
+Check the service account being used to sync between Bitbucket and Harness.  Bitbucket may have removed the service account's email address.  Bitbucket forces users to have an email address, so this will cause an error on the Harness side if the email address is not present.
+
+
+
+#### Is there any circumstance where a task from a pipeline execution will be sent to a delegate that is terminated due to a recent shut down?
+
+There is no way a terminated delegate pod can pick up any task. This is due to the task allocation being done when the delegate is reaching out to Harness indicating that the delegate is available to execute task.
+ 
+If the delegate accepted the task then it will finish even if a shut down is initiated. It is guarded by graceful shutdown.
+
+
+
+
+#### What is the best way to confirm if a delegate is up and running from the Harness UI?
+
+The Harness UI shows the connectivity status based on the heartbeat check which happens every 5 minutes.  One can access the delegate section either in the admin, org, or project level settings to confirm if the delegate is up and running.
+
+
+
+#### Will Just-in-time (JIT) provisioning work for the local Harness login instead of using SAML SSO?
+
+JIT can work only for IdP-initiated login. Please make sure the account ID is set up correctly in the IdP to direct the user to go to correct account.
+
+
+
+#### Will setting up Just-in-time (JIT) provisioning work out of the box once the IdP is configured for it?
+
+A feature flag is required on the account in order for JIT to work on a Harness account.  Please contact support to enable PL_ENABLE_JIT_USER_PROVISION on the account in order for JIT provisioning to work successfully.
+
+
+
+#### What is required from Harness when configuring SCIM provisioning?
+
+Requirement to configure SCIM provisioning within Harness is as follows:
+- Admin access to the IdP
+- Account Admin access to Harness
+- Harness API key (API keys inherit permissions from the user they are associated with)
+- Unexpired token that has all Users and User Groups permissions
+
+NOTE: If the API key being used is from a service account from the IdP, please ensure the service account has all Users and User Groups permissions.
+
+
+
+#### What are the pros and cons of utilizing Kubernetes Helm charts managed by Harness?
+
+The pros for using Kubernetes Helm charts managed by Harness are as follows:
+- Harness can orchestrate the Helm chart deployment in a Canary and Blue Green strategy.
+- Helm is now focused to package your resources, not deploy your resources. How you deploy and roll out your resources is now sequenced and managed by Harness.
+- Versioning: Harness Kubernetes deployments version all objects, such as ConfigMaps and Secrets.
+- Rollback: In the event of deployment failure, Harness Kubernetes deployments will roll back to the last successful version via the versioned ConfigMap generated by Harness.
+
+The cons for using Kubernetes Helm charts managed by Harness are as follows:
+- Helm Hooks are not supported. You might want to split the Helm hooks into jobs.
+
+
+
+#### What are the pros and cons of utilizing Native Helm charts managed by Harness?
+
+The pros for using Native Helm charts managed by Harness are as follows:
+- Rollback: Harness does not perform rollback. Instead, Harness uses Helm's native rollback functionality. This approach works well if you want to use your existing setup.
+- Harness will honor the user's pre and post install hooks configured in the Helm chart.
+
+The cons for using Native Helm charts managed by Harness are as follows:
+- Versioning: Native Helm does not version deployments.
+- No progressive deployment support. Also, Blue/Green or Canary deployment types are not supported (coming soon).
+
+
+#### Will notifications be sent when the configuration already exists but the notification channel is disabled?
+
+No notifications will be sent for that channel if that notification channel is in a disabled state even if the configuration already exists.  Once the channel is re-enabled, notifications will be sent once again.
+
+
+#### How can we temporarily disable a notification channel without removing the configuration settings.
+
+To disable a given notification channel, in Harness, go to Account Settings > Account Resources > Default Settings > Notifications, and then turn off the corresponding toggle.
+
+
+#### Is there a way to disable notifications for a specific org or project without affecting the account level settings?
+
+By default, all notification channels are enabled on an account.  Organizations and projects in the account inherit the account-level settings.  To disable, go to the org or project level settings, access resources, then go to the Notifications section to disable the corresponding notification in question.
+
+
+#### What kind of notifications will we receive after notification configuration is completed for delegate events?
+
+The following notitfications are configurable for delegate events:
+- A delegate disconnects from Harness
+- A delegate expires
+- A delegate is going to expire in 1, 2, 3, or 4 weeks prior
+
+
+
+#### Delegate notifications are not available by default.  How can we enable this feature?
+
+Please reach out to Harness support and ask to enable the feature flag PL_CENTRAL_NOTIFICATIONS to manage notifications for delegates.
+
+
+#### A delegate event notification was created, however, they are not being triggered.  Why are the delegate event notifications not being triggered?
+
+Delegate event notification rules can be created, however, they will not work if they are not enabled.
+
+To enable a delegate event notification rule:
+- In Harness, go to Account Settings, Organization Settings, or Project Settings, depending on the scope at which you want to enable notification rules.
+- Under General, select Notifications Management. The Notification Management page opens to the Rules tab by default.
+- Locate the rule you want to enable and enable the Status toggle. Harness confirms that you enabled the rule.
+
+
+#### How can I temporarily disable a delegate event notification rule?
+
+To disable a delegate event notification rule:
+- In Harness, go to Account Settings, Organization Settings, or Project Settings, depending on the scope at which you want to disable a delegate event notification rule.
+- Under General, select Notifications Management. The Notification Management page opens to the Rules tab by default.
+- Locate the rule you want to disable and disable the Status toggle. Harness confirms that you disabled the rule.
+
+
+#### How can I make changes to a delegate event notification rule?
+
+To edit a delegate event notification rule:
+- In Harness, go to Account Settings, Organization Settings, or Project Settings, depending on the scope at which you want to edit notifications.
+- Under General, select Notifications Management. The Notification Management page opens to the Rules tab by default.
+- Select More Options (⋮) for the notification you want to update, and then select Edit. The Edit Notification Setup wizard opens.
+- Edit your notification information on the necessary screen, selecting Continue to step through the wizard until you reach the Set Channels screen, then select Submit to save your changes.
+
+
+#### How can I delete a delegate event notification rule?
+
+To delete a delegate event notification rule:
+- In Harness, go to Account Settings, Organization Settings, or Project Settings, depending on the scope at which you want to delete an event notification.
+- Under General, select Notifications Management. The Notification Management page opens to the Rules tab by default.
+- Select More Options (⋮) corresponding to the notification you want to delete, and then select Delete. A confirmation dialog opens.
+- Select Delete.
+
+
+#### How can we use a repeating strategy to iterate over a list of values?
+
+In order to to repeat a strategy for each value in a list, use 'items' to iterate over the list of values.  Use the expression <+repeat.item> in your stage/step settings to access values in the list.
+
+
+
+#### How can we use a repeating strategy using multiple target hosts?
+
+To run steps on multiple target hosts, use <+repeat.item> with the expression <+stage.output.hosts> to reference all of the hosts/pods/instances.
+
+
+#### Is there a way to use a custom label for repeat stages and steps for repeating strategies?
+
+Users can use the keyword nodeName when specifying your repeat items to define your stage and step naming convention.  Expressions are supported, which means users can customize the name as required.
+
+
+
+#### Is there a way to configure looping strategies as runtime input?
+
+Users can configure stage, step, and step group looping strategies as runtime input in your pipelines and templates.  To do this, users can go to the Looping Strategy settings to configure the looping strategy to be specified at runtime, select the Thumbtack icon, and change the input type to Runtime Input.
+
+
+
+#### How can we setup a looping strategy expression to count iterations for each value?
+
+Users can utilize a looping strategy expression to access the index values for each iteration of a step/stage produced by a looping strategy.
+
+- <+strategy.iteration>: Current count within the loop.  Starts at zero.
+- <+strategy.iterations>: Total number of iterations produced by the loop.
+
+
+
+#### How can one get around to using indexed identifiers in looping strategies?
+
+The index value of the iteration count is appended to the base stage/step identifier to create unique identifiers for each stage/step instance created by the looping strategy.  This is the reason why stages and steps cannot have the same identifier.  Users must use an expression that references the identifier of a stage/step instance in a looping strategy and use the identifier with the appended index value.
+
+Example:
+A stage with the identifier my_build_stage has a looping strategy applied.  The expression <+pipeline.stages.my_build_stage.variables> will not work. Instead, you must append the index value to the identifier in the expression, such as <+pipeline.stages.my_build_stage_0.variables>.
+
+
+
+#### Is there a way to rename child nodes of a stages/steps/step groups looping strategy?
+
+The identifierPostFix is a postfix added to the identifiers of nodes (stage/step/step group) during execution when the node is a child of the looping strategy. This ensures that all children of the looping strategy have unique identifiers.
+
+
+#### In a looping strategy, what expression can be used to retrieve the identifierPostFix of the current node or parent node of the child of a looping strategy?
+
+The expression <+strategy.identifierPostFix> retrieves the identifierPostFix of the current node or any parent node that is a child of the looping strategy.
+
+
+#### In a looping strategy, what expression can be used to retrieve the identifierPostFix of the current step when the step is a child of a looping strategy?
+
+The expression <+step.identifierPostFix> returns the identifierPostFix of the current step when the step is a child of a looping strategy.
+
+
+#### In a looping strategy, what expression can be used to retrieve the identifierPostFix of a stage when the current node's stage is a child of a looping strategy?
+
+The expression <+stage.identifierPostFix> retrieves the identifierPostFix of the stage when the current node's stage is a child of a looping strategy.
+
+
+#### In a looping strategy, what expression can be used to return the identifierPostFix of the step group when the current node is under the step group?
+
+The expression <+stepGroup.identifierPostFix> returns the identifierPostFix of the step group when the current node is under the step group, or when the current node is the step group itself, and that step group is a child of a looping strategy.
+
+
+#### In a looping strategy, what expression can be used to retrieve the identifierPostFix for the node that is the child of a looping strategy from a specific identifier?
+
+The expression <+strategy.node.STRATEGY_NODE_IDENTIFIER.identifierPostFix> retrieves the identifierPostFix for the node that is the child of a looping strategy with the identifier STRATEGY_NODE_IDENTIFIER.
+
+
+#### In a looping strategy, what expression can be used to retrieve the values of any strategy expression associated with looping strategies at various levels?
+
+Using the format <+strategy.node.STRATEGY_NODE_IDENTIFIER.*>, you can retrieve the values of any strategy expressions associated with looping strategies at various levels. This is useful when looping strategies are configured within nested levels.
+
+
+#### What are the statuses of stages with looping strategies?
+
+The status of a stage with looping strategy is based on the highest priority execution status among its child stages:
+- Negative statuses takes precedence over positive status.
+- If any one child stage has negative status, then the parent stage takes that negative status.
+- If multiple child stages have negative statuses, the parent stage takes the negative status with the highest priority.
+- If all child stages have a positive status, the parent stage takes the positive status with the highest priority.
