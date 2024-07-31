@@ -24,6 +24,32 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## July 2024
 
+### Version 1.104.3
+
+<!-- 2024-07-26 -->
+
+#### New features and enhancements
+- You can now override the image that runs the STO step directly in the scanner step UI. Expand **Additional Configuration** and then set **Container Registry** and **Image Tag**. (STO-7724)
+- The Bandit, Anchor, and Semgrep steps now support [Secure Connect](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect/) within STO. (STO-7666)
+- The dark theme for AIDA is improved. Its appearance is now consistent with other UI components. (STO-7849)
+
+### Version 1.103.3
+
+<!-- 2024-07-19 -->
+
+#### New features and enhancements
+- In the [Checkmarx step](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) under the **Scan Tool**, the fields **Team Name** and **Project Name** are now mandatory for step configuration. Previously, these fields were optional. (STO-7681)
+- We now track the number of occurrences for a given issue/scan combination independently of the associated occurrence IDs. Newly created issues will only store up to 1,000 occurrences, with the total number of occurrences being stored separately. Occurrences are stored based on severity, with higher-severity occurrences given priority. (STO-5979)
+
+  These following endpoints now include `numOccurrences` at the issue level, showing the total number of occurrences for the issues:
+    - `GET api/v2/issues/{issueId}`
+    - `GET api/v2/scans/{scanId}/issue/{issueId}`
+    - `GET api/v2/scans/{scanId}/issues`
+
+  Also, the following endpoints now accept an optional payload parameter `numOccurrences`, representing the total number of occurrences associated with the issue:
+    - `POST api/v2/issues`
+    - `PUT api/v2/issues/{issueId}`
+
 ### Version 1.102.2
 
 <!-- 2024-07-11 -->
@@ -31,7 +57,11 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 #### New features and enhancements
 
 - Branch Scanning in [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#scan-configuration) is now Generally Available(GA), previously behind the `STO_SONARQUBE_BRANCHING` feature flag. Customers can now perform branch scans using the SonarQube step.
-- Added a new setting called **Users can approve their own exemptions**. This setting helps control whether users can approve their own exemptions, and it can be easily enabled or disabled based on their preference. Find this setting under **Exemption settings** on the **Default settings** page. This is available in the project, organization and account level settings. (STO-7675)
+- Added a new setting called **Users can approve their own exemptions**. This setting helps control whether users can approve their own exemptions, and it can be easily enabled or disabled based on their preference. Find this setting under **Exemption settings** on the **Default settings** page. This is available in the project, organization and account level settings. (STO-7675). 
+
+:::note 
+The setting **Users can approve their own exemptions** is behind the feature flag `STO_EXEMPTION_SETTING`. Contact [Harness Support](mailto:support@harness.io) to enable this setting.
+:::
 
 ## June 2024
 

@@ -123,6 +123,54 @@ Upon providing your credentials and the release version, the script will proceed
 
 :::
 
+## July 23, 2024, patch version 0.18.1
+
+This release includes the following Harness module and component versions.
+
+Here's the markdown table with adjusted spacing for better visual appeal:
+
+| **Name**                 | **Version**                                                                                     |
+| :----------------------- | :---------------------------------------------------------------------------------------------: |
+| Helm Chart               | [0.18.1](https://github.com/harness/helm-charts/releases/tag/harness-0.18.1)                    |
+| Air Gap Bundle           | [0.18.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.18.1)    |
+| NG Manager               | 1.41.10                                                                                         |
+| CI Manager               | 1.30.2                                                                                          |
+| Pipeline Service         | 1.78.8                                                                                          |
+| Platform Service         | 1.26.3                                                                                          |
+| Access Control Service   | 1.48.3                                                                                          |
+| Delegate                 | 24.06.83205                                                                                     |
+| Change Data Capture      | 1.18.0                                                                                          |
+| STO Core                 | 1.102.2                                                                                         |
+| Test Intelligence Service| 1.17.0                                                                                          |
+| NG UI                    | 1.26.16                                                                                         |
+| LE NG                    | 1.3.0                                                                                           |
+| Harness Manager          | 1.32.10                                                                                         |
+
+This should make the table visually appealing and properly aligned.
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.18.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/sto_images.tgz" \
+  .
+```
+
+#### Fixed issues
+
+- For Winrm deployment with Command step and auth type as Kerberos if the environment variables contains characters `\b, \v, \c, \f, &` the script execution was failing as we parse the response of script execution to xml string and above characters are illegal xml characters. The issue is fixed and now and these characters will be escaped. This change is behind the FF `CDS_ESCAPE_ENV_VARS_FOR_WINRM_KERBEROS_NG`. (CDS-97690, ZD-55276,58201,66326)
+
+- GitLab connectors using the SSH connection type no longer fail if the GitLab project name starts with a number. (CI-11392, ZD-58162)
+
 ## July 3, 2024, version 0.18.0
 
 This release includes the following Harness module and component versions.
@@ -6940,8 +6988,6 @@ This release includes the following Harness module and component versions.
   ```
 
 - Harness will remove comments when evaluating commented lines in manifests to avoid rendering failures. (CDS-57721, ZD-41676)
-
-  This functionality is behind a feature flag, `CDS_REMOVE_COMMENTS_FROM_VALUES_YAML`.
 
   Expressions in comments were causing issues for some customers as Harness was trying to evaluate the expressions and this was causing failures.
 

@@ -11,7 +11,7 @@ ECS container IO stress disrupts the state of infrastructure resources. It induc
 - It tests the ECS task sanity (service availability) and recovery of the task containers subject to I/O stress.
 - This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
 
-![ECS Container IO Stress](./static/images/ecs-stress-chaos.png)
+![ECS Container IO Stress](./static/images/ecs-container-io-stress.png)
 
 ## Use cases
 ECS container IO stress:

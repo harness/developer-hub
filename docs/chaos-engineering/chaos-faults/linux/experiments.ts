@@ -16,6 +16,27 @@ export const experiments: ExperimentDetails[] = [
     category: "linux",
   },
   {
+    name: "Linux API modify body",
+    description:
+      "Linux API modify body modifies the API request and response body by replacing any portions that match a specified regular expression with a provided value. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.",
+    tags: ["linux", "api", "modify", "body"],
+    category: "linux",
+  },
+  {
+    name: "Linux API status code",
+    description:
+      "Linux API status code changes the API response status code and optionally API  response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.",
+    tags: ["linux", "api", "status-code"],
+    category: "linux",
+   },
+   {
+    name: "Linux API modify header",
+    description:
+      "Linux API modify header injects API fault into a Linux machine for a specific duration to override the header values of API requests and responses with the user-provided values for the given keys. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.",
+    tags: ["linux", "api", "header", "modify"],
+    category: "linux",
+  },
+  {
     name: "Linux CPU stress",
     description:
       "Linux CPU stress stresses the CPU of the target Linux machines for a specific duration.",
@@ -48,6 +69,13 @@ export const experiments: ExperimentDetails[] = [
     description:
       "Linux DNS spoof injects chaos to mimic DNS resolution on the Linux machine.",
     tags: ["linux", "dns"],
+    category: "linux",
+  },
+  {
+    name: "Linux fs fill",
+    description:
+        "Linux fs fill fills up the available fs (file system) space at a given system path for a specific duration.",
+    tags: ["linux", "fs", "disk"],
     category: "linux",
   },
   {

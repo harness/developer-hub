@@ -34,19 +34,19 @@ When you edit a Cron trigger later, you can type or paste in a Cron expression.
 
 The Cron expression will be evaluated against UTC time.
 
-There are two types of supported cron expressions, QUARTZ and UNIX. 
+There are two types of supported cron expressions, QUARTZ and UNIX.
 
 Following are the QUARTZ and UNIX expression formatting samples:
 
 QUARTZ Expression
 ```
-0 0 4 7 ? 2014  
-| | | |   | |  
-| | | |   | \------- YEAR (2014)  
-| | | |   \--------- DAY_OF_WEEK (NOT_SPECIFIED)  
-| | | \------------- MONTH (JULY)  
-| | \--------------- DAY_OF_MONTH (4th)  
-| \----------------- HOUR (0- MIDNIGHT LOCAL TIME)  
+0 0 4 7 ? 2014
+| | | |   | |
+| | | |   | \------- YEAR (2014)
+| | | |   \--------- DAY_OF_WEEK (NOT_SPECIFIED)
+| | | \------------- MONTH (JULY)
+| | \--------------- DAY_OF_MONTH (4th)
+| \----------------- HOUR (0- MIDNIGHT LOCAL TIME)
 \------------------- MINUTE (0)
 ```
 

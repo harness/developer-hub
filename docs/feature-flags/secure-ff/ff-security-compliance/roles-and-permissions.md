@@ -4,7 +4,6 @@ description: This topic explains the roles and permissions within Harness Featur
 sidebar_position: 35
 redirects from:
   - /docs/feature-flags/ff-security-compliance/roles-and-permissions
-
 ---
 
 ## Overview

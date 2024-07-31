@@ -521,5 +521,33 @@ Here are a few key differences between Native Helm Deployment in FirstGen and Ne
 * Helm 3: Harness NextGen supports Helm 3. Harness FirstGen supports both Helm 2 and Helm 3.
 
 #### Is the "Enable Native Helm steady state for jobs" option a default setting for the steady state check?
+
 This selection is solely for verifying the steady state of a Kubernetes Job deployed via the Helm chart.
+
+### What is the CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG flag?
+
+The CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG is a Harness-specific implementation designed to wait for native Helm deployments until the pods have come up and are ready. This implementation also logs events from clusters, providing more detailed information about the deployment status.
+
+### How does CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG differ from using the --wait flag in Helm?
+
+Event Logging: The key difference is that CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG logs events from the cluster, giving detailed insights into the deployment process, whereas the --wait flag does not provide any events.
+
+Functionality: Both methods effectively wait for the pods to become ready, but the Harness flag provides additional logging information.
+
+### Is there any configuration required on the user side to enable CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG?
+
+No, there is no need to add any annotations in the deployment YAML to enable CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG. It is a built-in feature that can be utilized without additional configuration.
+
+### If my native Helm deployment fails, will the rollback delete resources created during the failed install/upgrade that are not in the rollback revision?
+
+Yes, the Helm rollback will restore the previous release version. This means only the resources from the last successful release will exist after the rollback. Any new resources created during the failed install/upgrade will be deleted if they are not part of the previous successful release.
+
+### How does Harness handle Helm chart hooks?
+
+Harness don’t handle helm hooks from our side in any way.
+
+### What happens if a deployment doesn't reach a steady state with CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG enabled?
+
+If a deployment doesn't reach a steady state, CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG will log the events and errors that occur, helping you diagnose and resolve the issues that prevented the deployment from completing successfully.
+
 

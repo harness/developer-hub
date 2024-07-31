@@ -24,7 +24,7 @@ Yes, the feature `Artifact Bundle Support with Tanzu Application Deployments` as
 
 ### Can one configure how many versions of the Tanzu apps required to be maintained for Blue-Green Deployments ?
 
-Yes, Users can now configure how many versions of the Tanzu apps that they want Harness to maintain for Blue Green Deployments with enabling Feature Flag: `CDS_PCF_SUPPORT_BG_WITH_2_APPS_NG`. Currently we maintain 3 (Active, Inactive, and Most recent Successful deployment). With this feature we now manage Active and Inactive more inline with the industry standard Blue Green Deployment. For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart/#blue-green-deployment-support-with-a-configurable-amount-of-tanzu-applications-to-maintain).
+Yes, Users can now configure how many versions of the Tanzu apps that they want Harness to maintain for Blue Green Deployments. Currently we maintain 3 (Active, Inactive, and Most recent Successful deployment). With this feature we now manage Active and Inactive more inline with the industry standard Blue Green Deployment. For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart/#blue-green-deployment-support-with-a-configurable-amount-of-tanzu-applications-to-maintain).
 
 ### Is it possible to deploy multiple TAS applications using a single manifest?
 As of now, we don't support or certify deploying multiple applications using a single manifest.

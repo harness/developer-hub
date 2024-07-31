@@ -10,6 +10,8 @@ helpdocs_topic_id: 4r53zx73pv
 helpdocs_category_id: fsgwbaegql
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline
 ---
 
 import ff_pipeline from './static/1-build-feature-flag-pipeline-07.png'

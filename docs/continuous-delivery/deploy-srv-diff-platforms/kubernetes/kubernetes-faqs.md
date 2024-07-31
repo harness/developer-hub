@@ -618,7 +618,6 @@ Yes, Kubernetes Traffic Shifting Support for Istio and other Open Source Service
 - One can perform traffic shifting for Blue Green and Canary Deployments
 - One generate the configuration for traffic shifting on the fly or you can bring your own traffic shifting definition
 
-This feature is provided behind the `FF: CDS_K8S_TRAFFIC_ROUTING_NG`
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step/).
 
 ### What is the impact on Kubernetes deployments when it comes to the immutability of labels?

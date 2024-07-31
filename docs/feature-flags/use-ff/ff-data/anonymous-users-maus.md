@@ -6,6 +6,8 @@ helpdocs_topic_id: 1ne3nozg3d
 helpdocs_category_id: axthyiihah
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-data/anonymous-users-maus
 ---
 
 This topic defines anonymous users, how their data is handled in Harness Feature Flags, and how they relate to the Monthly Active Users (MAUs) count.

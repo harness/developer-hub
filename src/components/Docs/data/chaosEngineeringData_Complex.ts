@@ -41,7 +41,7 @@ import { MODULES } from "@site/src/constants"
 // Feature highlights
   //export const featureHighlights: CardSections = [
 {
-    name: "Key features",
+    name: "Chaos faults",
       description:
         "",
         list: [
@@ -105,7 +105,7 @@ import { MODULES } from "@site/src/constants"
           title: "Bring Your Own Chaos (BYOC) faults",
           module: MODULES.ce,
           description:
-            "Execute kube-resilience chaos faults.",
+            "Bring your own chaos faults and execute them.",
           link: "/docs/chaos-engineering/chaos-faults/byoc/",
         },
         {
@@ -132,6 +132,56 @@ import { MODULES } from "@site/src/constants"
     ],
   },
 //];
+
+{
+  name: "Key features",
+    description:
+      "",
+      list: [
+      {
+        title: "GameDay",
+        module: MODULES.ce,
+        description:
+          "Execute chaos experiments in the application during a specific period..",
+        link: "/docs/category/gameday",
+      },
+      {
+        title: "ChaosGuard",
+        module: MODULES.ce,
+        description:
+          "Additional layer of security to minimize blast radius and mitigate potential security threats. ",
+        link: "/docs/category/chaosguard",
+      },
+      {
+        title: "Chaos dashboard",
+        module: MODULES.ce,
+        description:
+          "Visualize important metrics and data associated with your experiment runs.",
+        link: "/docs/category/chaos-dashboard",
+      },
+    {
+      title: "Resilience Probes",
+      module: MODULES.ce,
+      description:
+        "Monitor your application's health before, during, and after executing a chaos experiment.",
+      link: "/docs/category/resilience-probes",
+    },
+    {
+      title: "Service Discovery",
+      module: MODULES.ce,
+      description:
+        "Determine connections made to and from your Kubernetes cluster. ",
+      link: "/docs/category/service-discovery",
+    },
+    {
+      title: "Application Maps",
+      module: MODULES.ce,
+      description:
+        "Bind multiple interacting discovered services into a single object.",
+      link: "/docs/category/application-maps",
+    },
+  ],
+},
 
   //export const helpandFAQs: CardSections = [
     {

@@ -54,7 +54,7 @@ README.md @ravilach
 /docs/chaos-engineering/ @neelanjan00 @SmritiSatya
 
 # Platform Docs
-/docs/platform/ @brian-f-harness @saifeemustafaqharness
+/docs/platform/ @saifeemustafaqharness
 
 # IDP Docs
 /docs/internal-developer-portal/ @Debanitrkl
@@ -80,10 +80,10 @@ README.md @ravilach
 /docs/category/continuous-delivery/ @krishi0408 @SushrutHarness
 
 # Platform Docs
-/docs/category/platform-firstgen/ @brian-f-harness @saifeemustafaqharness
+/docs/category/platform-firstgen/ @saifeemustafaqharness
 
 # SMP Docs
-/docs/category/self-managed-enterprise-edition-fg/ @brian-f-harness @saifeemustafaqharness
+/docs/category/self-managed-enterprise-edition-fg/ @saifeemustafaqharness
 
 # CCM Docs
 /docs/category/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
@@ -106,13 +106,13 @@ README.md @ravilach
 /kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya
 
 # Delegate FAQs
-/docs/faqs/harness-delegate-faqs/ @brian-f-harness @saifeemustafaqharness
+/docs/faqs/harness-delegate-faqs/ @saifeemustafaqharness
 
 # GitEx FAQs
 /docs/faqs/git-exp-vs-config-as-code/ @krishi0408 @SushrutHarness
 
 # SMP FAQs
-/docs/faqs/self-managed-ee-faq/ @brian-f-harness @saifeemustafaqharness
+/docs/faqs/self-managed-ee-faq/ @saifeemustafaqharness
 
 # Release Notes ###
 
@@ -135,7 +135,7 @@ README.md @ravilach
 /release-notes/code-repository.md @pwolf-harness @hitesharinga @dewan-ahmed @lkilpatrick-harness
 
 # Delegate Release Notes
-/release-notes/delegate.md @brian-f-harness @saifeemustafaqharness
+/release-notes/delegate.md @saifeemustafaqharness
 
 # FF Release Notes
 /release-notes/feature-flags.md @HarnessTheChaos @jenniferopal
@@ -144,7 +144,7 @@ README.md @ravilach
 /release-notes/internal-developer-portal.md @Debanitrkl
 
 # Platform Release Notes
-/release-notes/platform.md @brian-f-harness @saifeemustafaqharness
+/release-notes/platform.md @saifeemustafaqharness
 
 # SEI Release Notes
 /release-notes/software-engineering-insights.md @codewdhruv
@@ -153,7 +153,7 @@ README.md @ravilach
 /release-notes/security-testing-orchestration.md @tejakummarikuntla
 
 # SMP
-/release-notes/self-managed-enterprise-edition.md @brian-f-harness @saifeemustafaqharness
+/release-notes/self-managed-enterprise-edition.md @saifeemustafaqharness
 
 # SRM Release Notes
 /release-notes/service-reliability-management.md @sunilgupta-harness
@@ -176,7 +176,7 @@ README.md @ravilach
 /kb/continuous-delivery/ @krishi0408 @SushrutHarness
 
 #Platform KB
-/kb/platform/ @saifeemustafaqharness @brian-f-harness
+/kb/platform/ @saifeemustafaqharness
 
 #FF KB
 /kb/feature-flags/ @HarnessTheChaos @jenniferopal
@@ -226,7 +226,7 @@ src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness
 src/components/Roadmap/data/idpData.ts @Debanitrkl
 
 #Platform Roadmap
-src/components/Roadmap/data/idpData.ts @brian-f-harness
+src/components/Roadmap/data/platformData.ts @saifeemustafaqharness
 
 #SEI Roadmap
 src/components/Roadmap/data/seiData.ts @codewdhruv
@@ -239,3 +239,6 @@ src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla
 
 #STO Roadmap
 src/components/Roadmap/data/stoData.ts @tejakummarikuntla
+
+#Reference Architectures
+/kb/reference-architectures @RajiKoppala @rssnyder 

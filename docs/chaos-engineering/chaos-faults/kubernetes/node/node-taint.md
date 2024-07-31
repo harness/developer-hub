@@ -2,10 +2,11 @@
 id: node-taint
 title: Node taint
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-taint
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-taint
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-taint
 ---
 
-Node taint taints the node by applying the desired effect. Only the resources that contain the corresponding tolerations can bypass the taints.
+Node taint taints the node by applying the desired effect. Only the resources that contain the corresponding toleration can bypass the taints.
 
 ![Node Taint](./static/images/node-taint.png)
 

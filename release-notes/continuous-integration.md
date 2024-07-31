@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 
-date: 2024-06-24T10:00
+date: 2024-07-05T10:00
 sidebar_position: 10
 ---
 
@@ -35,9 +35,64 @@ You will be impacted by this deprecation if:
 
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
+## July 2024
+
+### Version 1.37
+
+<!-- 2024-07-16 -->
+
+#### Fixed issues
+
+- Fixed an issue where the `Build and Push to GCR` step was failing. Buildx plugin version has been upgraded. (CI-13422)
+
+- UPDATED Upgraded Kaniko version to fix an issue where the `Build and Push to ECR` step did not preserve permissions via chmod. (CI-13200, ZD-65907)
+
+- Fixed an issue where logging for **engine:main** experienced a race condition. Initially, when a **SIGTERM** signal was received, one thread would begin closing the logger while another thread continued uploading logs to **engine:main**, leading to a race condition. This caused incorrect logging of pod eviction during successful executions. The threads have been synchronized to ensure log uploads complete before the logger is closed, accurately recording pod evictions only during errors. (CI-13175, ZD-65545)
+
+This is behind the feature flag: `CI_ENGINE_LOG_UPLOAD_CONCURRENCY`.
+
+- Fixed an issue where, if the base image connector is overridden, the Docker build step does not work. With this fix, Docker-related images now properly gain privilege if the default connector is overridden. `buildx` images are now located [here]  (https://hub.docker.com/search?q=plugins%2Fbuildx). These images are added to the auto-privilege mode. Without this privilege, the image does not run. (CI-12583)
+
+### Version 1.36
+
+<!-- 2024-07-09 -->
+
+#### Fixed issues
+
+- Fixed an issue where the status in Bitbucket showed the build as in progress even though the build succeeded in Harness CI. (CI-13151, ZD-65593)
+- CI - Getting Started Page Visibility: Resolved an issue where the "Getting Started" page for CI was not visible to users without account-level edit permissions. (CI-12510)
+
+### Version 1.35
+
+<!-- 2024-07-01 -->
+
+#### Early Access feature
+
+- When you include a step that uses a private Docker registry, the step now uses the URI specified in the Docker connector. This means that you no longer need to specify the Fully Qualified Name in the Image field. This change applies to the following steps: **Plugin**, **Background**, **Run**, **Run Tests**, and **Test Intelligence**. (CI-10500, ZD-64406, ZD-64735, ZD-65011, ZD-66227)
+
+  This is an [early access feature](/docs/continuous-integration/ci-supported-platforms#harness-ci-early-access-features) behind the feature flag `CI_REMOVE_FQN_DEPENDENCY`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+#### Fixed issues
+
+- Fixed an issue where the status in Bitbucket showed the build as in progress even when the build succeeded in Harness CI. (CI-13151, ZD-65593)
+- Improved the error message that gets displayed when an incompatible Docker version causes the pipeline to fail. (CI-12612, ZD-63466)
+- Implemented a fix to ensure that all account-level secret references use the correct format (`<+secrets.getValue("account.MY_SECRET_ID")>`) in all build infrastructures. With this fix, pipelines will fail if account-level secrets are not referenced correctly. (CI-12595, ZD-63260)
+
 ## June 2024
 
+### Version 1.34
+
+<!-- 2024-06-24 -->
+
+#### Fixed issues
+
+- Added a fix to support merge events for Bitbucket Server PR builds with refs as `refs/heads/targetBranch`. (CI-12710, ZD-57511, ZD-65148)
+- Fixed an issue where pipelines with Docker Layer Caching enabled would fail with the error `Failed to get link with status 400`. (CI-13070)
+
+
 ### Version 1.33
+
+<!-- 2024-06-18 -->
 
 #### New features
 

@@ -26,11 +26,11 @@ This topic describes the steps you need to do to set up STO in your pipeline.
 
 The entire setup should take about 30 minutes.
 
-## STO Requirements 
+## STO requirements 
 
 Make sure you meet the following requirements before you do the [STO Setup Procedures](#sto-setup-procedures) steps described below.
 
-### External Requirements
+### External requirements
 
 Before you create your first Harness pipeline, you must have the following:
 
@@ -60,7 +60,7 @@ The following sections describe the workflow for setting up STO. Once you comple
 
 Harness includes two [RBAC roles](/docs/platform/role-based-access-control/rbac-in-harness/) specifically for STO users:
 
-* **Developer** role — Permissions for developer workflows: 
+* **Security Testing Developer** role — Permissions for developer workflows: 
 
   - Configure and run scans
   - Set baselines (such as the `main` branch of `latest` tag) for scan targets
@@ -69,7 +69,7 @@ Harness includes two [RBAC roles](/docs/platform/role-based-access-control/rbac-
   - Request exemptions ("ignore rules") to allow a pipeline to proceed even if a scan detects vulnerabilities with a specific severity or higher (Critical, High, Medium, etc.)
 
    
-* **SecOps** role — Permissions for Security Operations staff. SecOps users have all Developer permissions, but only SecOps users can approve exemption requests. 
+* **Security Testing SecOps** role — Permissions for Security Operations staff. SecOps users have all Developer permissions, but only SecOps users can approve exemption requests. 
 
 These workflows are covered in [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline).
 
@@ -231,7 +231,7 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 
 </details>
 
-### Create a Codebase Connector
+### Create a Codebase connector
 
 You'll need a GitHub account to do the [STO Tutorials](./tutorials). 
 
@@ -245,7 +245,7 @@ You also need a Git repo connector for any STO pipeline that scans a codebase. Y
 To do the STO tutorials, point the connector at the following repo: [https://github.com/williamwissemann/dvpwa](https://github.com/williamwissemann/dvpwa)
 
 <details>
-<summary>Create a Codebase Connector: Default Workflow</summary>
+<summary>Create a Codebase connector: default workflow</summary>
 
 1. Go to the **Account Settings** > **Account Resources** page and select **Connectors**.
 2. Under Code Repositories, choose **GitHub**.
