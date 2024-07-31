@@ -44,3 +44,6 @@ For more details, go to [Documentation](https://developer.harness.io/docs/contin
 Yes ,Elastic Beanstalk Deployment template is used for deployment template will help users deploy Elastic Beanstalk services.
 For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#elastic-beanstalk---sample).
 
+#### Can we specify a harness expression as a string in shell step?
+Any expression in harness pipeline will be evaluated and hence currently it is not possible to pass the expression as part of the shell step as astring as it gets evaluated as well.
+
