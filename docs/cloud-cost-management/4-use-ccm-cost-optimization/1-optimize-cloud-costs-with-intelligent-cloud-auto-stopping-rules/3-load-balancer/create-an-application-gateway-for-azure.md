@@ -49,7 +49,6 @@ Perform the following steps to create a new Application Gateway in Azure.
 
   ![](./static/create-an-application-gateway-for-azure-06.png)
 
-
 14. Click **Continue**.
 
 15.  Select region from the drop-down list to install the Access Point.
