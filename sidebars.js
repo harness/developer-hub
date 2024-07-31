@@ -15,9 +15,11 @@ const sidebars = {
       collapsed: true,
       items: [
         // Platform Landing Page
+    
         {
           type: "category",
           label: "Platform",
+          className:"sidebar-platform",
           link: {
             type: "doc",
             id: "platform",
@@ -38,6 +40,7 @@ const sidebars = {
         {
           type: "category",
           label: "Code Repository",
+          className:"sidebar-cr",
           link: {
             type: "doc",
             id: "code-repository",
@@ -52,6 +55,7 @@ const sidebars = {
         {
           type: "category",
           label: "Continuous Integration",
+          className:"sidebar-ci",
           link: {
             type: "doc",
             id: "continuous-integration",
@@ -67,6 +71,7 @@ const sidebars = {
         {
           type: "category",
           label: "Continuous Delivery & GitOps",
+          className:"sidebar-cd",
           link: {
             type: "doc",
             id: "continuous-delivery",
@@ -81,6 +86,7 @@ const sidebars = {
         {
           type: "category",
           label: "Infrastructure as Code Management",
+          className:"sidebar-iacm",
           link: {
             type: "doc",
             id: "infrastructure-as-code-management",
@@ -101,6 +107,7 @@ const sidebars = {
         {
           type: "category",
           label: "Feature Flags",
+          className:"sidebar-ff",
           link: {
             type: "doc",
             id: "feature-flags",
@@ -116,6 +123,7 @@ const sidebars = {
         {
           type: "category",
           label: "Cloud Cost Management",
+          className:"sidebar-ccm",
           link: {
             type: "doc",
             id: "cloud-cost-management",
@@ -129,6 +137,7 @@ const sidebars = {
         {
           type: "category",
           label: "Security Testing Orchestration",
+          className:"sidebar-sto",
           link: {
             type: "doc",
             id: "security-testing-orchestration",
@@ -148,6 +157,7 @@ const sidebars = {
         {
           type: "category",
           label: "Software Supply Chain Assurance",
+          className:"sidebar-ssca",
           link: {
             type: "doc",
             id: "software-supply-chain-assurance",
@@ -162,6 +172,7 @@ const sidebars = {
         {
           type: "category",
           label: "Chaos Engineering",
+          className:"sidebar-ce",
           link: {
             type: "doc",
             id: "chaos-engineering",
@@ -183,6 +194,7 @@ const sidebars = {
          {
           type: "category",
           label: "Service Reliability Management",
+          className:"sidebar-srm",
           link: {
             type: "doc",
             id: "service-reliability-management",
@@ -203,6 +215,7 @@ const sidebars = {
         {
           type: "category",
           label: "Continuous Error Tracking",
+          className:"sidebar-cet",
           link: {
             type: "doc",
             id: "continuous-error-tracking",
@@ -222,6 +235,7 @@ const sidebars = {
         {
           type: "category",
           label: "Internal Developer Portal",
+          className:"sidebar-idp",
           link: {
             type: "doc",
             id: "internal-developer-portal",
@@ -242,6 +256,7 @@ const sidebars = {
         {
           type: "category",
           label: "Software Engineering Insights",
+          className:"sidebar-sei",
           link: {
             type: "doc",
             id: "software-engineering-insights",
@@ -261,6 +276,7 @@ const sidebars = {
         {
           type: "category",
           label: "Self-Managed Enterprise Edition",
+          className:"sidebar-smp",
           link: {
             type: "doc",
             id: "self-managed-enterprise-edition",

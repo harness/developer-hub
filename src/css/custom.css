@@ -990,3 +990,145 @@ figure p {
 }
 
 /******************* chatbot css variables end *************/
+
+
+ /*******************sidebar logo css start*******************/
+
+.sidebar-platform > div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/logo.svg");
+  background-size: cover;
+}
+.sidebar-cr > div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_code.svg");
+  background-size: cover;
+}
+.sidebar-ci > div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_ci.svg");
+  background-size: cover;
+}
+.sidebar-cd > div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_cd.svg");
+  background-size: cover;
+}
+.sidebar-iacm > div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_iacm.svg");
+  background-size: cover;
+}
+.sidebar-ff div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_ff.svg");
+  background-size: cover;
+}
+.sidebar-ccm > div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_ccm.svg");
+  background-size: cover;
+}
+.sidebar-sto > div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_sto.svg");
+  background-size: cover;
+}
+.sidebar-ssca > div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_ssca.svg");
+  background-size: cover;
+}
+.sidebar-ce > div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_ce.svg");
+  background-size: cover;
+}
+.sidebar-srm > div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_srm.svg");
+  background-size: cover;
+}
+.sidebar-cet > div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_cet.svg");
+  background-size: cover;
+}
+.sidebar-idp > div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+ min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/icon_idp.svg");
+  background-size: cover;
+}
+.sidebar-sei > div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/icon_sei.svg");
+  background-size: cover;
+}
+.sidebar-smp > div > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/logo.svg");
+  background-size: cover;
+}
+
+
+/*******************sidebar logo css end*******************/
