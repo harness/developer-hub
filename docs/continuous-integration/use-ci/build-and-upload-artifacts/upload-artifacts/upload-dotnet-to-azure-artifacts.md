@@ -2,16 +2,9 @@
 title: Build, Push, and Deploy .NET Packages
 description: Add steps to build, push, and deploy .NET packages using Harness CI pipelines.
 sidebar_position: 13
-helpdocs_topic_id: abcdef123456
-helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false
 helpdocs_is_published: true
-redirect_from:
-  - /docs/continuous-integration/use-ci/build-and-deploy-net-packages
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 Use the **Build, Push, and Deploy .NET Packages** steps in your CI pipelines to build, push, and deploy .NET packages to Azure Artifacts. 
 
@@ -19,11 +12,17 @@ To configure these steps, you need access to an Azure DevOps account with the ne
 
 ## Prepare to build and push .NET packages
 
-Ensure your [CI pipeline](../../prep-ci-pipeline-components.md) includes steps to build, package, and push .NET packages. The steps outlined below will guide you through adding these actions to your pipeline.
+- **Obtain Azure DevOps personal access token with repo permissions.** - To configure, you need access to an Azure DevOps account with the necessary permissions to push packages to the feed. For steps, go to the Azure DevOps documentation on creating a [personal access token](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows).
 
 ## Add the Build, Push, and Deploy steps
 
-Add the **Build and Package .NET**, **Push .NET Package**, and **Download .NET Package** steps to your pipeline's [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md).
+- Log into [Harness](https://app.harness.io).
+- Select your CI Project, and then click on `Pipelines`.
+- Click `+ Create a Pipeline` and give it a name.
+- Add the **Build and Package .NET**, **Push .NET Package**, and **Download .NET Package** be referring the below steps to your pipeline's Build stage.
+  - You can also swtich to YAML editor and copy paste the below yaml to your Pipeline.
+- `Run Steps` in the pipeline uses `mcr.microsoft.com/dotnet/sdk:8.0` image, ensuring build environment has the .NET SDK 8.0 binaries. You can specify the required .NET SDK version available in [docker-dotnet](https://hub.docker.com/r/microsoft/dotnet-sdk).
+- Finally, create a secret with identifier `Azure_DevOps_PAT` to store the obtained Azure DevOps Pat. If you already created a secret, update `NUGET_PAT="<+secrets.getValue("Azure_DevOps_PAT")>"` line in the pipeline with the secret identifier.
 
 ```yaml
 identifier: BuildPushDeploy_NET_Packages
@@ -70,7 +69,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       # Add Azure Artifacts Feed Nuget Source
-                      NUGET_PAT="AZURE_DEVOPS_PAT_TOKEN"
+                      NUGET_PAT="<+secrets.getValue("Azure_DevOps_PAT")>"
                       NUGET_SOURCE="https://pkgs.dev.azure.com/AZURE_ORGANIZATION/_packaging/AZURE_ARTIFACTS_FEED/nuget/v3/index.json"
 
                       dotnet nuget add source $NUGET_SOURCE -n azuresource -u user -p $NUGET_PAT --store-password-in-clear-text
@@ -98,8 +97,6 @@ pipeline:
 > **Example Pipeline Notice:** This is an example pipeline, and the `dotnet new console` command is used here to create a `.csproj` file. In a production scenario, you may already have the `.csproj` file present, so this step may not be necessary.
 
 The Build, Push, and Deploy .NET Packages steps have the following settings. Depending on the build infrastructure, some settings might be unavailable or optional.
-
-View build logs
 
 When you run the pipeline, you can observe the step logs on the [build details page](../../viewing-builds.md).
 
