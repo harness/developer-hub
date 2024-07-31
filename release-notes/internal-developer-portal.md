@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-07-18T20:00
+date: 2024-07-13T20:00
 sidebar_position: 12
 ---
 
@@ -18,6 +18,35 @@ Review the notes below for details about recent changes to Harness Internal Deve
 :::
 
 ## July 2024
+
+### Version 0.30.0
+
+<!-- July 31, 2024 -->
+
+- **New Videos:** [Harness IDP Scorecard Checks using Custom Data Source - Deep Dive ](https://youtu.be/23hlHjhhYsQ)
+
+#### New features and enhancements
+
+- You can now use any custom secret manager to manage secrets in Harness IDP. [IDP-3245]  
+- Added audit trails support for entity `kind` and `type`. [IDP-3274]
+- You can now fetch images from private artifactory hub, for developer portal stages. [IDP-3258]
+- In [Bitbucket data source](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#bitbucket) for [File Exist data point](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#url-priority-for-branch-name-field-6), we will use the **default branch** for the repository used in source-location, as the default `branchName`. [IDP-3236]
+- New Plugins: Add [gRPC playground plugin](https://github.com/zalopay-oss/backstage-grpc-playground) to enhance [gRPC API](https://developer.harness.io/docs/internal-developer-portal/techdocs/add-api-docs/#grpc-docs) view. [IDP-3199]
+
+![](./static/json-format.png)
+
+- You can now ingest [user-group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) as an entity YAML in Harness IDP.
+
+- Added support to trigger workflows using Harness Pipelines with [git experience](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/) in [`trigger:harness-custom-pipeline`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline) custom action. [IDP-3304]. 
+
+#### Bug Fixes
+
+- Fixed the issue with GitLab rate-limiting, by configuring the catalog refresh processing interval as per account requirements. [IDP-3279]
+- Fixed the issue with [pull and run images from private artifactory storage in your pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#pull-images), for developer portal stages. [IDP-3258]
+- Fixed the issue regarding the use of templates in IDP Stage. [IDP-3121]
+- Fixed the issue with "no git integration added banner" showing even when git integration is in place. [IDP-3157]
+- Fixed the issue with max projects fetched by [`HarnessProjectPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#3-harnessprojectpicker) UI Picker [IDP-3331]. 
+
 
 ### Version 0.29.0
 
