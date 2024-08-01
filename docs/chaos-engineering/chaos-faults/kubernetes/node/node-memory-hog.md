@@ -2,13 +2,14 @@
 id: node-memory-hog
 title: Node memory hog
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-memory-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-memory-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-memory-hog
 ---
 Node memory hog causes memory resource exhaustion on the Kubernetes node.
 - It is injected using a helper pod running the Linux stress-ng tool (a workload generator).
 - The chaos affects the application for a specific duration.
 
-![Node Memory Hog](./static/images/node-stress.png)
+![Node Memory Hog](./static/images/node-memory-hog.png)
 
 ## Use cases
 
@@ -97,7 +98,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to run the stress command. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> MEMORY_CONSUMPTION_PERCENTAGE </td>

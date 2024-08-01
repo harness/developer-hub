@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-06-18T16:19:25
+date: 2024-07-30T18:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,9 +15,102 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: June 18, 2024
+#### Last updated: July 30, 2024
+
+## July 2024
+
+### Relay Proxy
+
+#### Version 2.0.2
+
+**Fixed Issues**
+ - Fixed an issue where username & password auth for redis wasn't working
+ - Fixes an issue where the Proxy didn't validate the environment in the request matched the environment in the token claims
+ - Explicitly makes `REDIS_ADDR` a required environment variable. A connection to redis is required for the Proxy to function but the `REDIS_ADDR` wasn't explicitly requried in the code which could lead to vauge startup errors if you forgot to set it.
+ - Reduces excessive memory usage from having an excessive amount of labels on prometheus metrics. This required is to remove the following labels from the following metrics
+  - Removed the `key` label from the following metrics
+    - `ff_proxy_redis_cache_scan_duration`
+    - `ff_proxy_redis_cache_write_count`
+    - `ff_proxy_redis_cache_read_count`
+    - `ff_proxy_redis_cache_remove_count`
+    - `ff_proxy_redis_cache_scan_count`
+  - Removed the `method` label from the `ff_proxy_http_requests_total` metric
+  - Removed the `envID` label from the `ff_proxy_http_requests_duration` metric
+  - Removed the `url` and `envID` label from the `ff_http_requests_content_length_histogram` metric
+
+**Enhancements**
+
+- Optimises memory by reducing the number of memory allocations
+- Adds support for using the `Harness-Target` header to perform evaluations. This means that if you're using an SDK that sends the Target in the `Harness-Target` the Proxy will use it to perform the evaluation rather than having to fetch the target from redis to perform the evaluation.
+- Cleans up unecessary error logs
+
+### Android SDK
+
+#### Version 2.2.3
+
+**Fixed issues**:
+ - Fixed an issue where the SDK Client would not be closed correctly if `Close()` or `CloseWithFuture()` was called, and `Streaming` and/or `Polling` requests would continue to be made in the background. (FFM-11779)
+
+#### Version 2.2.2
+
+**Fixed issues**:
+ - Fixed the high initialization latency for large projects. (FFM-11750)
+ - Resolved an issue where using the callback method to initialize the SDK when the device had no connectivity. It would fail to give a `success/failure` result until the device regains connectivity. Now, a failure result is immediately sent and a success callback will be sent when the device is able to reconnect once the SDK initializes successfully. (FFM-11750)
+
+### Java SDK
+
+#### Version 1.6.1
+
+**Fixed issues**:
+ - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11654)
+
+### .NET SDK
+
+#### Version 1.7.1
+
+**Fixed issues**:
+ - Fixed incorrect number variation warning message. (FFM-11759, ZD-66232)
+ - Fixed an issue when `client.close()` is called the stream remains connected. The stream now exits correctly and resources are released. (FFM-11801, ZD-66232)
+ - If `WaitForInitialization()` was called and no timeout argument provided, the SDK could block permanently on unrecoverable authentication failures.  Now, the SDK will unblock immediately on `40x` errors, and retry up to 10 times on `50x` errors, after which it will unblock. (FFM-11759, ZD-66232)
+
+**New features and enhancements**:
+ - Add `FlagsLoaded` Event - see [events](https://github.com/harness/ff-dotnet-server-sdk/blob/main/docs/further_reading.md#listen-on-events). (FFM-11759, ZD-66232)
+
+### Python SDK
+
+#### Version 1.6.4
+
+**Fixed issues**:
+ - Fixed an issue where SDK dependencies, `tenacity` and `typing_extensions`, were pinned to fixed versions, which could make integration with the SDK impossible if different versions are specified in an application or its dependencies. (FFM-11770, ZD-66342)
+
+#### Version 1.6.3
+
+**Fixed issues**:
+ - Pins `typing_extensions` to latest release compatible with 3.7 to resolve compatibility issues with code brought in from the OAPI Generator. (FFM-11655)
+ - Added a guard around the debug log. The guard being a `None` check on the feature config type before we attempt to log it. (PL-51773)
+
+### Ruby SDK
+
+#### Version 1.3.1
+
+**Fixed issues**:
+ - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11657)
 
 ## June 2024
+
+### Relay Proxy
+
+#### Version 2.0.1
+
+**New features and enhancements**:
+- Beta support added to support AND rules in Harness Saas. To opt in to this feature you need to configure your Proxy to set the `AND_RULES` environment variable to `true`
+- Adds the same validation that Harness Saas uses on Targets in the `/client/auth` path. This prevents the Proxy from accepting invalid targets from SDKs and logging out an error when it tries to forward them to Saas
+
+**Bug Fixes**:
+- This fixes a bug where the Proxy metric aggregation wouldn't work properly with certain SDKs (Java, .NET)
+- Fixes an issue where the context could time out and prevent connect/disconnect stream events from being published to redis.
+- Fixes an issue introduced in `2.0.0` that caused read replicas to not close streams with SDKs properly
+- There was an issue with how the Proxy handled redis URLs prefixed with `redis://`. This fixes that issue so that all of the below options work for configuring the redis URL
 
 ### Android SDK
 
@@ -33,6 +126,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 **Fixed issues**:
  - Fixed an issue on Android where the SDK would crash with the error,
   `java.lang.IllegalStateException: Reply already submitted`, if the SDK was closed and re-initialised multiple times within quick successions. (FFM-11625, ZD-64818)
+
+### Golang SDK
+
+#### Version 0.1.24
+
+**Fixed issues**:
+ - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11653)
+ 
+**New features and enhancements**:
+ - Bumped `go-retryablehttp` from 0.7.4 to 0.7.7.
 
 ### .NET SDK
 
@@ -64,6 +167,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Node.js SDK
 
+#### Version 1.8.2
+
+**Fixed issues**:
+ - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11656)
+
 #### Version 1.8.1
 
 **Fixed issues**:
@@ -75,6 +183,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Global Axios settings are no longer configured by the SDK, which could override Axios settings used elsewhere in an application.  The default timeout is `30s` but can be changed using options within `axiosTimeout`. See: ['Available Options' in the Node.js further reading docs in the GitHub repo](https://github.com/harness/ff-nodejs-server-sdk/blob/main/docs/further_reading.md#available-options). (FFM-9097)
  - Added SDK support for `AND/OR` rules (Please note that this feature is not GA yet). (FFM-11243)
  - The `target-segments v2-rule` parameter has been added and ready to use. (FFM-11364)
+
+### Python SDK
+
+#### Version 1.6.2
+
+**New features and enhancements**:
+ - Bumped `requests` from 2.31.0 to 2.32.0.
+
+**Fixed issues**:
+ - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11656)
+ - Fixed error logging when metrics are processed for targets without any attributes. (FFM-11655)
 
 ## May 2024
 
@@ -604,7 +723,7 @@ This is a major hardening effort of the SDK to improve its overall reliability:
 
  - The React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained. 
 
-We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK, please refer to the [React SDK Documentation](https://developer.harness.io/docs/feature-flags/ff-sdks/client-sdks/react-client/).
+We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK, please refer to the [React SDK Documentation](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/client-sdks/react-client).
 
 ## November 2023
 
@@ -726,7 +845,7 @@ Fixed issues
 
 New features and enhancements
 
-- [Flag cleanup automation](https://developer.harness.io/docs/feature-flags/ff-creating-flag/manage-stale-flags/) beta available to all customers. This feature helps remove stal flags from your code automatically.
+- [Flag cleanup automation](https://developer.harness.io/docs/feature-flags/use-ff/ff-creating-flag/manage-stale-flags) beta available to all customers. This feature helps remove stal flags from your code automatically.
 
 Fixed Issues
 
@@ -736,7 +855,7 @@ Fixed Issues
 
 #### Version 0.1.13
 
- - Added codes to aid in SKD troubleshooting. [More info in the SDK docs.](https://developer.harness.io/docs/feature-flags/ff-sdks/server-sdks/feature-flag-sdks-go-application/#troubleshooting)
+ - Added codes to aid in SKD troubleshooting. [More info in the SDK docs.](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/server-sdks/feature-flag-sdks-go-application#troubleshooting)
  - Enhanced reporting of evaluation errors 
 
 ### Javascript SDK
@@ -1307,7 +1426,7 @@ Troubleshooting.
 
 ##### Version 1.979.0
 
- - Before this update, targets never expired. Now, targets expire if they have not been updated for 60 days, except when used in flag rule, or when part of a target group's include/exclude lists. For more information, go to [How targets expire](/docs/feature-flags/ff-target-management/add-targets#how-targets-expire).
+ - Before this update, targets never expired. Now, targets expire if they have not been updated for 60 days, except when used in flag rule, or when part of a target group's include/exclude lists. For more information, go to [How targets expire](/docs/feature-flags/use-ff/ff-target-management/add-targets#how-targets-expire).
 
 ##### Version 1.968.0
 
@@ -2006,7 +2125,7 @@ The .NET SDK has been updated to version 1.1.3. Fixes in this update include:
 
 * The proxy had a dependency on a JWT package that is no longer maintained. This fix updated the JWT dependency to a package that is maintained. (FFM-3867)
 * The proxy had a dependency on ff-server, which is in a private repository. This fix removed the dependency on ff-server. (FFM-3965)
-* Harness provided a tool to generate offline config files. For details, go to [Run the Relay Proxy in offline mode](/docs/feature-flags/relay-proxy/deploy-relay-proxy#run-the-relay-proxy-in-offline-mode) (FFM-3772)
+* Harness provided a tool to generate offline config files. For details, go to [Run the Relay Proxy in offline mode](/docs/feature-flags/use-ff/relay-proxy/deploy-relay-proxy#run-the-relay-proxy-in-offline-mode) (FFM-3772)
 
 #### August 18, 2022
 

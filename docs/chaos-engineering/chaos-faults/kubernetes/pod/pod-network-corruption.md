@@ -2,7 +2,8 @@
 id: pod-network-corruption
 title: Pod network corruption
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-corruption
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-corruption
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-corruption
 ---
 
 Pod network corruption is a Kubernetes pod-level chaos fault that injects corrupted packets of data into the specified container. This is achieved by starting a traffic control (tc) process with netem rules to add egress packet corruption.
@@ -137,7 +138,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

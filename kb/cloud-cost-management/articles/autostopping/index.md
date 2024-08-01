@@ -1,9 +1,9 @@
 ---
-title: Autostopping
-description: Onboarding to Cloud Cost Management Autostopping
+title: AutoStopping
+description: Onboarding to Cloud Cost Management AutoStopping
 ---
 
-# Cloud Cost Management
+# AutoStopping
 
 - [AWS](./aws.md)
 - [Azure](./azure.md)

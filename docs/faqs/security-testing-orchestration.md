@@ -85,9 +85,9 @@ The following table specifies where the target to be tested is located.
 
 ## Can I use STO with custom or unsupported scanners?
 
-Yes. You can easily ingest [Static Analysis Results Interchange Format (SARIF)](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) data from any tool that supports this format. SARIF is an open data format supported by many scan tools, especially tools available as GitHub Actions.
+Yes. You can easily ingest [Static Analysis Results Interchange Format (SARIF)](/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data) data from any tool that supports this format. SARIF is an open data format supported by many scan tools, especially tools available as GitHub Actions.
 
-STO also supports a [generic JSON format](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners) for ingesting results from custom or unsupported scanners.
+STO also supports a [generic JSON format](/docs/security-testing-orchestration/custom-scanning/ingesting-issues-from-other-scanners) for ingesting results from custom or unsupported scanners.
 
 By ingesting your custom issues, you can benefit from STO's refinement, deduplication, and correlation features. Harness handles your issue data the same way as data from supported scanners.
 
@@ -151,7 +151,7 @@ Here's an example. See also the [Checkmarx scanner reference](/docs/security-tes
 
 ## What is the purpose of the **Exemptions** page in STO?
 
-The page (or tab) exists to grant and manage security exemptions. For more information, go to [Exemptions to override Fail on Severity thresholds for specific issues in STO](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows).
+The page (or tab) exists to grant and manage security exemptions. For more information, go to [Exemptions to override Fail on Severity thresholds for specific issues in STO](/docs/security-testing-orchestration/exemptions/exemption-workflows).
 
 ## What open-source scanner integrations does STO support?
 
@@ -161,7 +161,7 @@ For detailed information about supported scanners, both open-source and commerci
 
 In Harness NextGen, there are no hard distinctions between CI, CD, and STO pipelines. You can create integrated pipelines that implement any mix of CI, CD, and STO use cases. Harness platform components are generic to all three modules: you can use and reuse delegates, connectors, secrets, and other components across across multiple stages and pipelines.
 
-You can easily include scans in CI workflows. To run a scan, you add a standalone Security stage or a Security step to a CI Build stage. The pipeline uses the same platform components to build code and run scans. For an example of this type of workflow, go to [Create a build-scan-push pipeline (STO and CI)](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-sto-ci).
+You can easily include scans in CI workflows. To run a scan, you add a standalone Security stage or a Security step to a CI Build stage. The pipeline uses the same platform components to build code and run scans. For an example of this type of workflow, go to [Create a build-scan-push pipeline (STO and CI)](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-workflows/build-scan-push-sto-ci).
 
 For CD workflows, Harness recommends that you add a standalone Security stage (for static scans) before the deployment and another stage (for dynamic scans) after the deployment.
 
@@ -197,7 +197,7 @@ To get started, go to [Get started with STO](/docs/category/get-started-with-sto
 
 ## Why don't I see results from specific scans in the Security Testing Dashboard?
 
-The most likely reason is that the scanned target does not have a baseline defined. The [Security Testing Dashboard](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard.md) is intended to show vulnerabilities that potentially affect production-ready artifacts. For this reason, the dashboard shows detected vulnerabilities for targets that have baselines defined.
+The most likely reason is that the scanned target does not have a baseline defined. The [Security Testing Dashboard](/docs/security-testing-orchestration/dashboards/security-testing-dashboard.md) is intended to show vulnerabilities that potentially affect production-ready artifacts. For this reason, the dashboard shows detected vulnerabilities for targets that have baselines defined.
 
 ## How does STO ensure High Availability and data protection for my scan data and vulnerability information?
 

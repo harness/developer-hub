@@ -4,7 +4,7 @@ description: You can pass data in the cURL command used to initiate a Custom tri
 sidebar_position: 9
 ---
 
-Various stages of a pipeline might require input data or parameters to function properly. You can set runtime inputs in your Harness pipelines and provide their values when executing the pipeline manually or you can pass in this data when the pipeline execution is triggered automatically. 
+Various stages of a pipeline might require input data or parameters to function properly. You can set runtime inputs in your Harness pipelines and provide their values when executing the pipeline manually or you can pass in this data when the pipeline execution is triggered automatically.
 
 Passing variables and parameters to a pipeline when triggering it can help streamline the pipeline execution based on the specific needs of each run.
 
@@ -20,7 +20,7 @@ Once you create a custom trigger, Harness provides the Webhook URL and cURL comm
 
 For information on creating Custom triggers, go to [Trigger pipelines using custom triggers](/docs/platform/triggers/trigger-deployments-using-custom-triggers).
 
-You can use the Custom trigger cURL command to initiate the trigger and pass in data. 
+You can use the Custom trigger cURL command to initiate the trigger and pass in data.
 
 The cURL command will look something like this:
 
@@ -58,7 +58,7 @@ Let's look at an example where we pass a source pipeline's artifact location exp
 
 In the target pipeline, copy its Custom trigger cuRL command.
 
-In the source pipeline, use a Shell Script step to run the cURL command. 
+In the source pipeline, use a Shell Script step to run the cURL command.
 
 In the command, use the Harness `<+artifact.image>` expression to reference the source pipeline's deployment artifact.
 
@@ -95,7 +95,7 @@ In the target pipeline, simply create a pipeline variable that references `<+tri
 
 ### Passing matrix axes
 
-Harness stages and steps include looping strategies. These strategies enable you to run a stage or step multiple times without the need to copy the same stage or step. 
+Harness stages and steps include looping strategies. These strategies enable you to run a stage or step multiple times without the need to copy the same stage or step.
 
 Let's look at an example where we pass multiple values in the cURL command, use the split() method in our target pipeline variable to get each value, and then use the matrix strategy to use each value in the same step.
 
@@ -110,8 +110,7 @@ In the target pipeline, create a pipeline variable named `emailIds` that uses th
 
 <DocImage path={require('./static/661fd1dfa533e57b3683394807348789b37fc463d0af62c1637ce302bdabbe1e.png')} width="60%" height="60%" title="Click to view full size image" />
 
-In the Email step, in **Advanced**, in **Looping Strategy**, select **Matrix** and enter the 
-following.
+In the Email step, in **Advanced**, in **Looping Strategy**, select **Matrix** and enter the following.
 
 ```
 matrix:
@@ -124,4 +123,3 @@ You can see the split() method is used to parse the email addresses in the JSON 
 In the **To** setting of the Email step, you can reference the matrix using `<+matrix.emaild>`.
 
 Now the Email step is run for each address in the matrix.
-

@@ -2,7 +2,8 @@
 id: pod-cpu-hog-exec
 title: Pod CPU hog exec
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog-exec
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog-exec
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-cpu-hog-exec
 ---
 
 Pod CPU hog exec is a Kubernetes pod-level chaos fault that consumes excess CPU resources of the application container. This fault applies stress on the target pods by simulating a lack of CPU for processes running on the Kubernetes application. This degrades the performance of the application.
@@ -118,7 +119,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

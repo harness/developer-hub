@@ -2,7 +2,8 @@
 id: pod-io-attribute-override
 title: Pod IO attribute override
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-attribute-override
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-attribute-override
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-io-attribute-override
 ---
 
 import IOFaultsCaution from './shared/io-faults-caution.md'
@@ -131,7 +132,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>

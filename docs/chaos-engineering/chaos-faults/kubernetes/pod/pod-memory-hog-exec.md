@@ -2,7 +2,8 @@
 id: pod-memory-hog-exec
 title: Pod memory hog exec
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-memory-hog-exec
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-memory-hog-exec
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-memory-hog-exec
 ---
 
 Pod memory hog exec is a Kubernetes pod-level chaos fault that consumes excessive memory resources on the application container. Since this fault stresses the target container, the primary process within the container may consume the available system memory on the node.
@@ -116,7 +117,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

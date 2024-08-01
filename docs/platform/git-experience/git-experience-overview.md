@@ -115,6 +115,37 @@ For more information, go to [Default settings](/docs/platform/settings/default-s
 
 :::
 
+### Repo Listing
+
+:::info note
+Currently this feature is behind feature flag `CDS_LIST_REPO_V2 `. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+For a certain connector, you can now search for repositories with support for infinite scroll. Simply enter any keyword to see related repositories listed. If you can't find the repository you're looking for, you can also add it manually.
+
+![](./static/repolisting_add.png)
+
+If the repository actually exists it will fetch the branch name, if not it will throw an error.
+
+![](./static/repolisting_error.png)
+
+:::important
+Search in repo listing is not supported for Azure Repos.
+:::
+
+### Branch Listing
+
+:::info note
+Currently this feature is behind feature flag `CDS_LIST_BRANCH_V2 `. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can now search for branches in a given repository with support for infinite scroll while creating remote entities. Simply enter any keyword to see related branches listed. If you can't find the branch you're looking for, you can also add it manually.
+
+:::important
+1. Search in branch listing is not supported for Github and Github Apps.
+2. Please note that search in branch listing is only available while creating remote entities.
+:::
+
 
 ### Multiple branch support
 

@@ -29,7 +29,6 @@ export default async (req: Request, context: Context) => {
   }
   const token = req.headers.get("x-api-key");
 
-  console.log({ body, token });
 
   if (!token) {
     return new Response(JSON.stringify({ error: "Token is not sent" }), {
@@ -38,7 +37,7 @@ export default async (req: Request, context: Context) => {
   }
   try {
     const response = await fetch(
-      "https://qa.harness.io/gateway/notifications/api/notifications/harness-bot?routingId=" +
+      "https://app.harness.io/gateway/notifications/api/notifications/harness-bot?routingId=" +
         body.account_id,
       {
         method: "POST",
@@ -70,10 +69,10 @@ export default async (req: Request, context: Context) => {
     }
 
     const expiryTime = new Date();
-    expiryTime.setMinutes(expiryTime.getMinutes() + 120);
+    expiryTime.setMinutes(expiryTime.getMinutes() + 119);
     context.cookies.set({
       name: "x_chatbot_key",
-      value: token,
+      value: rotatedToken,
       domain: ".harness.io",
       path: "/",
       httpOnly: false,
@@ -105,7 +104,7 @@ async function RotateToken(accountId: string, token: string, uuid: string) {
     const currentGMTTimeInMillis = now.getTime() + 7200000;
 
     const response = await fetch(
-      `https://qa.harness.io/ng/api/token/rotate/x_chatbot_key?accountIdentifier=${accountId}&apiKeyType=USER&parentIdentifier=${uuid}&apiKeyIdentifier=x_api_key_chatbot&rotateTimestamp=${currentGMTTimeInMillis}`,
+      `https://app.harness.io/ng/api/token/rotate/x_chatbot_key?accountIdentifier=${accountId}&apiKeyType=USER&parentIdentifier=${uuid}&apiKeyIdentifier=x_api_key_chatbot&rotateTimestamp=${currentGMTTimeInMillis}`,
       {
         headers: {
           "x-api-key": token,
@@ -141,7 +140,7 @@ async function deleteExistingToken(
   uuid: string
 ) {
   const listTokenResponse = await fetch(
-    `https://qa.harness.io/ng/api/token/aggregate?accountIdentifier=${accountId}&apiKeyType=USER`,
+    `https://app.harness.io/ng/api/token/aggregate?accountIdentifier=${accountId}&apiKeyType=USER`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -179,7 +178,7 @@ async function deleteExistingToken(
 
       try {
         await fetch(
-          `https://qa.harness.io/ng/api/token/${token.token.identifier}?accountIdentifier=${accountId}&apiKeyType=${token.token.apiKeyType}&parentIdentifier=${uuid}&apiKeyIdentifier=${token.token.apiKeyIdentifier}`,
+          `https://app.harness.io/ng/api/token/${token.token.identifier}?accountIdentifier=${accountId}&apiKeyType=${token.token.apiKeyType}&parentIdentifier=${uuid}&apiKeyIdentifier=${token.token.apiKeyIdentifier}`,
           {
             method: "DELETE",
             headers: {
@@ -199,7 +198,7 @@ async function deleteExistingToken(
 async function getUUID(accountId: string, token: string) {
   try {
     const response = await fetch(
-      `https://qa.harness.io/gateway/ng/api/user/currentUser?accountIdentifier=${accountId}`,
+      `https://app.harness.io/gateway/ng/api/user/currentUser?accountIdentifier=${accountId}`,
       {
         headers: {
           "x-api-key": token,

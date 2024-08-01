@@ -8,12 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to create policies using the Harness Policy As Code and apply them to your Feature Flags. Harness Policy As Code uses the Open Policy Agency (OPA) to store policies on the Harness platform. For more information about how OPA and Harness Policy As Code work, see [Harness Policy As Code Overview](/docs/feature-flags/harness-policy-engine).
+This topic describes how to create policies using the Harness Policy As Code and apply them to your Feature Flags. Harness Policy As Code uses the Open Policy Agency (OPA) to store policies on the Harness platform. For more information about how OPA and Harness Policy As Code work, see [Harness Policy As Code Overview](/docs/feature-flags/troubleshoot-ff/harness-policy-engine).
 
 ### Before you begin
 
-* Ensure you have read and understood [Harness Policy As Code Overview](/docs/feature-flags/harness-policy-engine).
-* Ensure you have [created your project and environment](/docs/feature-flags/ff-creating-flag/create-a-feature-flag) in the Harness platform.
+* Ensure you have read and understood [Harness Policy As Code Overview](/docs/feature-flags/troubleshoot-ff/harness-policy-engine).
+* Ensure you have [created your project and environment](/docs/feature-flags/use-ff/ff-creating-flag/create-a-feature-flag) in the Harness platform.
 * Policies use OPA authoring language Rego. New to Rego? Use the following resources to learn it:
 	+ Free online course on Rego from Styra founder and OPA co-creator Tim Hendricks: [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
 	+ See [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) from OPA. The [Rego Cheat Sheet](https://dboles-opa-docs.netlify.app/docs/v0.10.7/rego-cheatsheet/) is also helpful to have on hand.
@@ -31,7 +31,7 @@ The first step of using policies with your Feature Flags is creating a policy.
 2. In **Project Setup**, click **Policies**.
 
 :::note
-You can view an overview of your policies and how many times they have been evaluated on the [Overview](/docs/feature-flags/harness-policy-engine) page.
+You can view an overview of your policies and how many times they have been evaluated on the [Overview](/docs/feature-flags/troubleshoot-ff/harness-policy-engine) page.
 
 :::
 
@@ -161,7 +161,7 @@ After you have created your Policy Set and added your policies to it, apply the 
 
 1. In Harness Platform, click **Feature Flags**.
 2. Click **+ Flag**.
-3. [Create a new Feature Flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). Make sure the flag [adheres to the policy you are testing](/docs/platform/governance/policy-as-code/using-harness-policy-engine-for-feature-flags.md#step-1-create-a-policy).
+3. [Create a new Feature Flag](/docs/feature-flags/use-ff/ff-creating-flag/create-a-feature-flag). Make sure the flag [adheres to the policy you are testing](/docs/platform/governance/policy-as-code/using-harness-policy-engine-for-feature-flags.md#step-1-create-a-policy).
 4. Click **Save and Close**. The result is one of the following:
 * **Success**: When you save the flag, the policy rule is evaluated, returns Flag created, and the flag is saved.
 * **Failure**:
@@ -237,5 +237,5 @@ You can view all failures, warnings, and successes of evaluations for each of yo
 
 ### See also
 
-* [Harness Policy As Code Overview](/docs/feature-flags/harness-policy-engine)
+* [Harness Policy As Code Overview](/docs/feature-flags/troubleshoot-ff/harness-policy-engine)
 

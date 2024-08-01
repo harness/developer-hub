@@ -1,8 +1,9 @@
 ---
 id: pod-dns-spoof
-title: Pod DNS Spoof
+title: Pod DNS spoof
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-dns-spoof
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-dns-spoof
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-dns-spoof
 ---
 
 Pod DNS spoof is a Kubernetes pod-level chaos fault that injects chaos into pods to mimic DNS resolution. This fault resolves DNS target host names or domains to other IPs as specified in the `SPOOF_MAP` environment variable in the chaos engine configuration.
@@ -107,7 +108,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

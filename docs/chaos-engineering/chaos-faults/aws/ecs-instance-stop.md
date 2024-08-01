@@ -37,7 +37,7 @@ stringData:
 ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -90,7 +90,7 @@ Below is an example AWS policy to execute the fault.
         <th> Description </th>
         <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
         <td> CLUSTER_NAME </td>
         <td> Name of the target ECS cluster</td>
         <td> For example, cluster-1 </td>
@@ -119,12 +119,12 @@ Below is an example AWS policy to execute the fault.
         <td> The interval (in sec) between successive instance termination.</td>
         <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Provide the path for aws secret credentials</td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
       </tr>
-      <tr> 
+      <tr>
         <td> EC2_INSTANCE_ID </td>
         <td> Provide the target instance ID from ECS cluster</td>
         <td> If not provided will select randomly </td>

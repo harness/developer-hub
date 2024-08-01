@@ -1,7 +1,7 @@
 ---
 title: Using custom dashboards to monitor CD deployments
 description: Monitor CD deployments using the explores that work best for you.
-sidebar_position: 1
+sidebar_position: 2
 helpdocs_topic_id: phiv0zaoex
 helpdocs_category_id: 0gyfk4938x
 helpdocs_is_private: false
@@ -82,7 +82,7 @@ This view contains the data related to pipeline execution tags. It will contain 
 
 
 List of dimensions:
-1. Execution tag: The execution tag, it will be displayed as `key:value`. If there are let's say 5 tags in a pipeline, there will be 5 rows having 1 tag(`key:value` pair) in each row
+1. Execution tag: The execution tag, it will be displayed as `key:value`. If there are let's say 5 tags in a pipeline, there will be 5 rows having 1 tag(`key:value` pair) in each row.
 
 ### Organization Tags
 This view contains the data related to the organization tags. It will contain the real-time tags of the organization.
@@ -454,7 +454,7 @@ This view contains the data related to the organization tags. It will contain th
 
 
 List of dimensions:
-1. Organization tag: The organization tag, it will be displayed as `key:value`. If there are let's say 5 tags in an organization, there will be 5 rows having 1 tag(`key:value` pair) in each row
+1. Organization tag: The organization tag, it will be displayed as `key:value`. If there are let's say 5 tags in an organization, there will be 5 rows having 1 tag(`key:value` pair) in each row.
 
 
 ### Organizations
@@ -462,7 +462,7 @@ This view contains the data related to organizations.
 
 :::note
 
-This will only show the organizations, which had atleast 1 pipeline execution(in any project). It won't display the organizations which didn't contain any pipeline execution.
+This will only show the organizations, which had at least 1 pipeline execution(in any project). It won't display the organizations which didn't contain any pipeline execution.
 
 :::
 
@@ -470,7 +470,7 @@ This will only show the organizations, which had atleast 1 pipeline execution(in
 
 
 List of dimensions:
-1. Organization tag: The organization tag, it will be displayed as `key:value`. If there are let's say 5 tags in an organization, there will be 5 rows having 1 tag(`key:value` pair) in each row
+1. Organization Name: The name of the organization where the pipeline execution happened. 
 
 
 ### Pipeline Tags
@@ -478,7 +478,7 @@ This view contains the data related to the pipeline tags. It will contain the re
 
 :::note
 
-This will only show the pipelines, which had atleast 1 pipeline execution. It won't display the tags for the pipelines which didn't get executed even once.
+This will only show the pipelines, which had at least 1 pipeline execution. It won't display the tags for the pipelines which didn't get executed even once.
 
 :::
 
@@ -486,7 +486,7 @@ This will only show the pipelines, which had atleast 1 pipeline execution. It wo
 
 
 List of dimensions:
-1. Pipeline tag: The pipeline tag, it will be displayed as `key:value`. If there are let's say 5 tags in a pipeline, there will be 5 rows having 1 tag(`key:value` pair) in each row
+1. Pipeline tag: The pipeline tag, it will be displayed as `key:value`. If there are let's say 5 tags in a pipeline, there will be 5 rows having 1 tag(`key:value` pair) in each row.
 
 
 ### Service Tags
@@ -525,7 +525,7 @@ This view contains the data related to the pipelines.
 
 :::note
 
-This will only show the pipelines, which had atleast 1 execution. It won't display the pipelines which didn't had any execution.
+This will only show the pipelines, which had at least 1 execution. It won't display the pipelines which didn't had any execution.
 
 :::
 
@@ -551,7 +551,7 @@ List of dimensions:
 4. Store Type: Indicates whether Service as INLINE OR REMOTE.
 
 
-### Envrionments
+### Environments
 This view contains the data related to the environment.
 
 <DocImage path={require('./static/using-cd-custom-dashboards-28.png')} width="60%" height="60%" title="Click to view full size image" />
@@ -563,13 +563,13 @@ List of dimensions:
 2. Modified Name: Modification time of the environment
 3. Environment Name: Name of the environment
 4. Store Type: Indicates whether environment as INLINE OR REMOTE.
-5. 
+   
 ### Projects
 This view contains the data related to the projects. 
 
 :::note
 
-This will only show the projects, which had atleast 1 pipeline execution. It won't display the projects which didn't had any pipeline execution.
+This will only show the projects, which had at least 1 pipeline execution. It won't display the projects which didn't had any pipeline execution.
 
 :::
 
@@ -687,7 +687,7 @@ This view contains the data related to the users.
 
 :::note
 
-This will only show the users, which have triggered atleast 1 pipeline execution. It won't display the users which didn't trigger any pipeline execution.
+This will only show the users, which have triggered at least 1 pipeline execution. It won't display the users which didn't trigger any pipeline execution.
 
 :::
 

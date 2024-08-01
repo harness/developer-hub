@@ -2,7 +2,8 @@
 id: node-restart
 title: Node restart
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-restart
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-restart
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-restart
 ---
 Node restart disrupts the state of the node by restarting it.
 
@@ -119,7 +120,7 @@ permissions:
        <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to run the stress command. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SSH_USER </td>

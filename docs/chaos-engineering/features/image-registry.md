@@ -6,26 +6,20 @@ redirect_from:
   - /docs/chaos-engineering/configure-chaos-experiments/image-registry
 ---
 
+This topic describes using an image registry within a chaos experiment.
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+### What is an image registry?
 
-
-This section describes how you can use an image registry within a chaos experiment.
-
-Image registry is a repository that hosts container images which are used by chaos experiments. Registries can be **public** or **private**. HCE allows you to use custom image registries for chaos experiments.
+An image registry is a repository that hosts container images that are used by chaos experiments. Registries can be **public** or **private**. HCE allows you to use custom image registries for chaos experiments.
 
 :::tip
 - You can configure the image registry to be used with the default probes. If you haven't configured a probe yet, the experiment will use the default image registry.
 - HCE doesn't provide image registry support at the moment for default probes.
 :::
 
-Follow the steps mentioned below to use default or custom values of the image registry in your chaos experiment.
+Follow the steps below to use [custom values](#custom-values-for-image-registry) or [default values](#default-values-for-image-registry) of the image registry in your chaos experiment.
 
-<Tabs>
- <TabItem value="Custom values">
-
-## Custom image registry
+## Custom values for image registry
 ### Step 1: Navigate to Image Registry
 
 * To use a custom image, go to **Image Registry** on the left-hand side, and select **Use custom values**.
@@ -42,9 +36,9 @@ Follow the steps mentioned below to use default or custom values of the image re
   ![private-registry](./static/image-registry/private-registry.png)
 
 ### Step 3: Save the custom values
-* Click **Save** to save your changes.
+* Select **Save** to save your changes.
 
-In your chaos experiment manifest, the above custom setting will be reflected as shown below.
+In your chaos experiment manifest, the above custom setting will be reflected below.
 
 ```yaml
 container:
@@ -64,17 +58,14 @@ container:
 * If you use an image from an internal registry without providing `imagePullSecret`, the workflow facilitates a default command that you can use to determine the entry point of litmus-checker.
 :::
 
-</TabItem>
- <TabItem value="Default values">
+## Default values for image registry
 
-## Default image registry
-
-### Step 1: Navigate to Image Registry
-* To use a default image, select **Use default values**, and then click **Save**.
+* To use a default image, navigate to image registry, select **Use default values**, and then select **Save**.
 
   ![select-save](./static/image-registry/click-save.png)
 
-In your chaos experiment manifest, the above default setting is reflected as shown below.
+In your chaos experiment manifest, the above default setting will be reflected below.
+
 ```yaml
 container:
   name: ""
@@ -85,6 +76,3 @@ container:
   args:
     - kubectl apply -f /tmp/ -n {{workflow.parameters.adminModeNamespace}} && sleep 30
 ```
-
-</TabItem>
-</Tabs>

@@ -5,6 +5,7 @@ The Software Supply Chain Assurance (SSCA) module is available on the following 
 - [Harness Self-Managed Enterprise Edition in Air-gapped/Offline Environments](#air-gapped-environment)
 
 ### SSCA on Harness SaaS
+- Repository Security Posture Management - [RSPM](../repository-security-posture-management-rspm.md)
 - [Generate](../sbom/generate-sbom.md) or [ingest](../sbom/ingest-sbom-data.md) SBOM, followed by SBOM drift detection and scoring.
 - [Enforce OSS usage with SBOM governance policies](../sbom-policies/enforce-sbom-policies.md).
 - Generate [SLSA](../slsa/overview.md) provenance and achieve Build [Levels 1](../slsa/overview.md#how-to-comply-with-slsa-level-1), [2](../slsa/overview.md#how-to-comply-with-slsa-level-2), and [3](../slsa/overview.md#how-to-comply-with-slsa-level-3).
@@ -24,6 +25,7 @@ All features of '[SSCA on Harness SaaS](#ssca-on-harness-saas)' are available in
 #### Air-gapped Environment
 All features of '[SSCA on Harness SaaS](#ssca-on-harness-saas)' are available in an air-gapped or offline environment, with the following exceptions:
 
+- Repository Security Posture Management is not supported in air-gapped environments.
 - In the generated SBOMs, the license data for certain dependencies will be marked as "NOASSERTION", leading to a reduced [SBOM quality score](../sbom/sbom-score.md). However, this does not impact the SBOM generation or any other features of [SBOM Orchestration](../sbom/generate-sbom.md).
 - Logging the attestation record in the Sigstore public [Rekor](https://docs.sigstore.dev/logging/overview/) will not be performed during the SBOM and SLSA Provenance attestation process, but this will not impact the attestation itself.
 - Creating a Remediation tracker will require manually adding the CVE details as auto-population is linked with STO module. However, if you are using Harness STO SMP, this limitation does not apply.

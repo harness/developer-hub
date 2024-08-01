@@ -2,7 +2,8 @@
 id: node-network-latency
 title: Node network latency
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-network-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-network-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-network-latency
 ---
 
 Node network latency is a Kubernetes node-level chaos fault that induces packet latency across the entire node. Similar to pod network latency, this fault uses traffic control (tc) along with netem rules to inject network latency.
@@ -90,11 +91,6 @@ permissions:
             <td>CONTAINER_RUNTIME</td>
             <td>Container runtime interface for the cluster.</td>
             <td>Default: containerd. Supports docker, containerd, and crio. For more information, go to <a href = "#container-runtime-and-socket-path"> container runtime.</a></td>
-        </tr>
-        <tr>
-            <td>TC_IMAGE</td>
-            <td>Image used for traffic control.</td>
-            <td>Default image is used if not specified.</td>
         </tr>
         <tr>
             <td>DESTINATION_HOSTS</td>

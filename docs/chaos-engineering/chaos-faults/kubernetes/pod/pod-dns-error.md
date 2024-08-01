@@ -2,7 +2,8 @@
 id: pod-dns-error
 title: Pod DNS error
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-dns-error
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-dns-error
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-dns-error
 ---
 
 Pod DNS error is a Kubernetes pod-level chaos fault that injects chaos to disrupt DNS resolution in pods. It removes access to services by blocking the DNS resolution of host names or domains.
@@ -120,7 +121,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

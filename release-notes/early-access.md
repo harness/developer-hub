@@ -187,52 +187,17 @@ For information about early access (beta) features for Harness Software Engineer
 
 No early access (beta) features are available for the Harness Software Supply Chain Assurance module. -->
 
+
 ## STO early access features
 
-The following early access (beta) features are available for the Harness Security Testing Orchestration module.
+The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
 
-### Built-in scanners
-
-* **Release date:** March 2024
-* **Issue number:** STO-6738
-* **Feature flags:** `STO_ONE_CLICK`
+#### Default Setting: Users can approve their own exemptions
+* **Release date:** July 2024
+* **Release version:** [Version 1.102.2](/release-notes/security-testing-orchestration#version-11022)
+* **Issue number:** STO-7675
+* **Feature flags:** `STO_EXEMPTION_SETTING`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-This release introduces a new set of built-in steps for adding scans to your pipelines quickly and with minimal configuration. The scanners used in these steps are free to STO users and are ready to run as soon as you add them to your pipeline. 
-
-### Default regular expressions for target baselines
-
-* **Release date:** March 2024
-* **Issue number:** STO-7127
-* **Feature flag:** `STO_BASELINE_DEFAULTING`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected.
-
-
-### Wiz integration
-
-* **Release date:** March 2024
-* **Issue number:** STO-6035
-* **Feature flags:** `STO_STEP_PALETTE_WIZ`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets.
-
-Harness currently supports the following: 
-
-1. Orchestrated Wiz scans for container images
-2. Ingestion of Wiz scan reports ( JSON/SARIF format ) generated for container images, repositories, and directories
-
-
-### STO Jira integration
-
-* **Release date:** March 2023
-* **Issue number:** STO-5467
-* **Feature flag:** `STO_JIRA_INTEGRATION`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-STO includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations).
 
 ## SRM early access features
 
@@ -267,7 +232,7 @@ Following are some key benefits of Harness AIDA:
 
 - Asset governance: The asset governance feature assists you in drafting rules that are based on your requirements and aligned with your governance goals. Harness AIDA governance support also offers detailed descriptions of built-in rules. When you are creating policies, this feature facilitates informed decision-making by clarifying the purpose, scope, and implications of each rule. For more information, go to [Asset governance with AIDA](/docs/category/harness-aida-for-asset-governance).
 
-- Security: Harness AI identifies security vulnerabilities, describes them, and suggests remediation. For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+- Security: Harness AI identifies security vulnerabilities, describes them, and suggests remediation. For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/remediations/ai-based-remediations).
 
 Review the following information for details about data privacy and terms of use:
 
@@ -276,7 +241,7 @@ Review the following information for details about data privacy and terms of use
 
 **Update (October 2023):** AIDA for CI is now generally available. For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida).
 
-**Update (November 2023):** AIDA for STO is now generally available. For more information, go to [Use AI to fix security issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+**Update (November 2023):** AIDA for STO is now generally available. For more information, go to [Use AI to fix security issues](/docs/security-testing-orchestration/remediations/ai-based-remediations).
 
 **Update (January 2024):** Most AIDA functionalities are generally available. For more information, go to the [AIDA overview](/docs/platform/harness-aida/aida-overview).
 
@@ -378,6 +343,62 @@ No information available. -->
 
 ### STO features promoted to GA
 
+#### SonarQube branch scanning
+
+* **Release date:** July 2024
+* **Early access release date:** February 2024
+* **Early access Release version:** [Version 1.83.1](../release-notes/security-testing-orchestration.md#version-1831)
+* **Feature flags:** `STO_SONARQUBE_BRANCHING`
+
+You an use SonarQube to perform Branch Scanning in Harness STO.
+
+#### Built-in SAST scanners
+
+* **Release date:** June 2024
+* **Early access release date:** April 2024
+* **Early access Release version:** UI update 1.15.0
+* **Feature flag:** `STO_ONE_CLICK_SAST`
+
+STO includes a built-in SAST step that adds a preconfigured Semgrep step that's ready to run as soon as you add it.
+
+#### Built-in scanners
+
+* **Release date:** June 2024
+* **Early access release date:** March 2024
+* **Early access Release version:** 1.88.2
+* **Feature flag:** `STO_ONE_CLICK`
+
+STO includes a set of built-in steps for adding scans to your pipelines quickly and with minimal configuration. The scanners used in these steps are free to STO users and are ready to run as soon as you add them to your pipeline. 
+
+#### Wiz integration
+
+* **Release date:** June 2024
+* **Early access release date:** March 2024
+* **Early access Release version:** 1.88.2
+* **Feature flag:** `STO_STEP_PALETTE_WIZ`
+
+You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets.
+
+
+#### Default regular expressions for target baselines
+
+* **Release date:** June 2024
+* **Early access release date:** March 2024
+* **Early access Release version:** 1.86.1
+* **Feature flag:** `STO_BASELINE_DEFAULTING`
+
+You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected.
+
+#### STO Jira integration
+
+* **Release date:** June 2024
+* **Early access release date:** March 2023
+* **Early access Release version:** 1.34.0
+* **Feature flag:** `STO_JIRA_INTEGRATION`
+
+STO includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/jira-integrations).
+
+
 #### Auto-detect option for targets and variants
 
 * **Release date:** March 2024
@@ -421,7 +442,7 @@ You can specify a time limit when you request an exemption. The **Exemptions** t
 * **Feature flag:** `STO_DATA_OPA`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
+You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/policies/create-opa-policies#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
 
 #### Aqua Security integration
 

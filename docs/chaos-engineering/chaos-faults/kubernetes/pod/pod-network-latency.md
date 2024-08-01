@@ -2,7 +2,8 @@
 id: pod-network-latency
 title: Pod network latency
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-latency
 ---
 
 Pod network latency is a Kubernetes pod-level chaos fault that introduces latency (delay) to a specific container. This fault:
@@ -150,7 +151,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

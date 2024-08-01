@@ -2,7 +2,8 @@
 title: Node IO stress
 id: node-io-stress
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-io-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-io-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-io-stress
 ---
 
 Node IO stress causes I/O stress on the Kubernetes node.
@@ -119,7 +120,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to run the stress command. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>

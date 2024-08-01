@@ -9,7 +9,7 @@ The Harness Delegate for Kubernetes and Helm supports automatic upgrades. Harnes
 Delegate upgrades do not affect pipelines unless the shutdown timeout is reached. Before an upgrade is performed, the delegate finishes the tasks that are underway. The delegate then shuts down. As part of the shutdown process, there is a 10 minute timeout by default. You can configure this setting. For more information, go to [Graceful delegate shutdown](/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process/).
 
 :::info
-The automatic upgrade feature is enabled by default for the Kubernetes manifest and Helm installation options. However, it is disabled by default for the Terraform and Docker installation options.
+The automatic upgrade feature is enabled by default for the Kubernetes manifest, Terraform, and Helm installation options. However, the automatic upgrade feature is not supported for the Docker installation option.
 :::
 
 ## How automatic upgrade works in the Kubernetes manifest
@@ -19,6 +19,10 @@ The Kubernetes manifest has a component called `upgrader`. The `upgrader` is a c
 To prevent the installation of the automatic upgrade feature, remove the `CronJob` section before you apply the manifest.
 
 You can also change the time when the upgrade cron job runs by updating the `schedule`. For configuration details, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
+
+:::info
+User information is not propagated when a delegate is started from external sources. All delegate operations are recorded under the SYSTEM user in the audit trail, especially during the scale-up and scale-down processes. The **Action** column displays actions when a delegate is created, updated, or upserted. For more information about the audit trail, go to [View audit trail](/docs/platform/governance/audit-trail/).
+:::
 
 <details>
 <summary>Example Kubernetes manifest</summary>
@@ -132,7 +136,7 @@ spec:
 
 When a delegate is installed, it may take up to an hour by default to determine if the `upgrader` was removed during installation. During that time, the delegate shows a status of **DETECTING**.
 
-Harness updates the status when `upgrader` makes it's first API call to the Harness platform. The default schedule is one hour, but the schedule is configurable. If Harness doesn't detect the upgrader API call within 90 minutes, the upgrade status is updated from **DETECTING** to **AUTO UPGRADE: OFF**.
+Harness updates the status when `upgrader` makes its first API call to the Harness platform. The default schedule is one hour, but the schedule is configurable. If Harness doesn't detect the upgrader API call within 90 minutes, the upgrade status is updated from **DETECTING** to **AUTO UPGRADE: OFF**.
 
 Let's say the `upgrader` schedule is configured to two hours. The upgrade status would change from **AUTO UPGRADE: OFF** to **AUTO UPGRADE: ON** and back to **AUTO UPGRADE: OFF**. Every 90 minutes that Harness doesn't detect the API call, the status is set to **AUTO UPGRADE: OFF**. As soon as Harness detects it again, the status is set to **AUTO UPGRADE: ON**. Harness recommends a default schedule of 60 minutes. For more information, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
 

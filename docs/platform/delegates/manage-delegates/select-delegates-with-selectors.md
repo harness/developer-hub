@@ -131,6 +131,36 @@ In each step, in **Advanced**, in the **Delegate Selector** option:
 
 You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
 
+### Delegate selectors usage in deployments
+
+For deployments, a delegate can help determine the deployment target when it's connector configuration is marked as **Inherit from Delegate**. This configuration means the delegate is in the target cluster for the deployment. This delegate is typically defined in the deployment stage's [environment](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) or [infrastructure definition](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure). Specifically, it's defined in the connector that is configured within the infrastructure definition.   
+
+However, it is also possible to set a delegate at the step level using the **Delegate Selectors** advanced option. Choosing a selector in this method described above will *override* any previously selected delegate selector, including selections from the pipeline, stage, step group or infrastructure definition (via connector). This can lead to unexpected behavior. 
+
+For example, if a delegate for a non-prod environment was selected at the stage level, but a delegate for a prod environment was chosen at the step level, then you face a scenario where a non prod artifact is deployed directly to prod. 
+
+#### Delegate selector best practices
+
+- Do not use delegate selectors in deployment steps because the security boundary for deployments should be at the infrastructure definition and environment level.
+
+- Do not expose delegate selectors as inputs for steps unless the intent of exposing the delegate selector to the pipeline executor is clear. 
+
+- Do not hard code delegate selector selections into templates.
+
+- Make sure to review connector configurations in the infrastructure definition.
+
+#### When should I use a delegate selector?
+
+Delegate selectors are a powerful tool, but should be used carefully and only when necessary. A good use case for using this advanced setting is to target delegates that have access to a third party systems that you may not want your deployment specific delegates to use.
+
+Examples include:
+- Shell Script Step: Use a delegate selector to choose a delegate that has permissions to perform the job.
+- CV Step Execution: Use a delegate selector to choose a delegate that has access to your CV health provider.
+- Terraform Steps
+- Tanzu Steps
+
+Delegate selectors can also be used with a [custom artifact source](/docs/continuous-delivery/x-platform-cd-features/services/add-a-custom-artifact-source-for-cd). A custom artifact source allows a delegate that has access to an artifact repo to fetch metadata about it. Using a delegate selector allows you to choose the delegate that has access to the artifact repo and then pass the information to the delegate that has the ability to deploy.
+
 ### Modify tags using Harness API
 
 Go to [Delegate Group Tags Resource](https://harness.io/docs/api/tag/Delegate-Group-Tags-Resource/).

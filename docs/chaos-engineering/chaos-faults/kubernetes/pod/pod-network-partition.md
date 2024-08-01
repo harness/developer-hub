@@ -2,7 +2,8 @@
 id: pod-network-partition
 title: Pod network partition
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-partition
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-partition
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-partition
 ---
 
 Pod network partition is a Kubernetes pod-level fault that blocks 100 percent ingress and egress traffic of the target application by creating a network policy.
@@ -108,7 +109,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>

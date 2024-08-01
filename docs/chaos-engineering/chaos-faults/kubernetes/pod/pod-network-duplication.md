@@ -2,7 +2,8 @@
 id: pod-network-duplication
 title: Pod network duplication
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-duplication
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-duplication
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-duplication
 ---
 
 Pod network duplication is a Kubernetes pod-level chaos fault that injects chaos to disrupt the network connectivity to Kubernetes pods. This fault injects chaos on the specific container by starting a traffic control (tc) process with netem rules to add egress delays.
@@ -137,7 +138,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

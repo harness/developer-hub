@@ -815,7 +815,8 @@ To create the ASG infrastructure definition in an environment, do the following:
    
    You can use the same AWS connector you used when adding the AMI artifact in the Harness service. Ensure the AWS IAM user in the AWS connector credentials meets the [AWS policy requirements](#aws-policy-requirements).
 8. In **Region**, select the AWS region where you want the ASG deployed.
-9. Select **Save**.
+9. Optionally, in **Base ASG**, select an existing ASG as the base for new ASG deployments. Harness then clones the base ASG as a template to create a new ASG for the deployment. 
+10. Select **Save**.
 
 The infrastructure definition is added.
 
@@ -1385,12 +1386,6 @@ When you select the Canary execution strategy for your pipeline, make sure to se
 
 ![ASG phased execution](./static/asg-phased-execution.png)
 
-
-:::important
-Currently, this feature is behind the feature flag, `CDS_ASG_PHASED_DEPLOY_FEATURE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-
 A phased deployment uses two step groups:  
 1. A Canary phase containing steps that define your ASG, deploy a percentage or partial count of the ASG's instances, and verify this partial deployment. You can add more Canary phases that expand the partial deployment.
 2. A Primary phase that deploys your image to the full count of instances defined in your ASG.
@@ -1571,10 +1566,10 @@ The ASG Blue Green Deploy step has the following settings:
 - **Same as already running Instances** or **Fixed**:
   - Select **Fixed** to enforce a Max, Min, and Desired number of instances.Select **Same as already running Instances** to use scaling settings on the last ASG deployed by this Harness pipeline. If this is the first deployment and you select **Same as already running Instances**, Harness uses a default of Min 0, Desired 6, and Max 10. Harness does not use the Min, Max, and Desired settings of the base ASG.
 - **Load Balancer:** select the load balancer(s) to use.
-- **Prod Listener:** select the listener to use for prod traffic.
-- **Prod Listener Rule ARN:** select the ARN for the prod listener rule. 
-- **Stage Listener:** select the listener to use for stage traffic.
-- **Stage Listener Rule ARN:** select the ARN for the stage listener rule.
+- **Prod Listener:** provide the ARN for the listener to be used for prod traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]]`)
+- **Prod Listener Rule ARN:** provide the ARN for the listener rule to be used for prod traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]/[ruleref]]`)
+- **Stage Listener:** provide the ARN for the listener to be used for staging traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]]`)
+- **Stage Listener Rule ARN:** provide the ARN for the listener rule to be used for staging traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]/[ruleref]]`)
   
   :::important
   There is only one listener rule for both target groups (stage and prod), and one listener ARN for a listener rule. Go to [AWS requirements](#aws-requirements) for more information.

@@ -11,12 +11,13 @@ ECS container IO stress disrupts the state of infrastructure resources. It induc
 - It tests the ECS task sanity (service availability) and recovery of the task containers subject to I/O stress.
 - This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
 
-![ECS Container IO Stress](./static/images/ecs-stress-chaos.png)
+![ECS Container IO Stress](./static/images/ecs-container-io-stress.png)
 
 ## Use cases
-ECS container IO stress determines how a container recovers from a memory exhaustion.
-File system read and write evicts the application (task container) and impacts its delivery. These issues are also known as noisy-neighbour problems.
-Injecting a rogue process into a target container starves the main microservice process (typically pid 1) of the resources allocated to it (where the limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all task containers.
+ECS container IO stress:
+- Determines how a container recovers from a memory exhaustion.
+- File system read and write evicts the application (task container) and impacts its delivery. These issues are also known as noisy-neighbour problems.
+- Injecting a rogue process into a target container starves the main microservice process (typically pid 1) of the resources allocated to it (where the limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all task containers.
 
 ### Prerequisites
 - Kubernetes >= 1.17
@@ -39,7 +40,7 @@ stringData:
 ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -74,7 +75,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],
@@ -107,7 +108,7 @@ Below is an example AWS policy to execute the fault.
 
 :::info note
 - The ECS container instance should be in a healthy state.
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes.
 - Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
 - Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 - Refer to the [common attributes](/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults.md) and [AWS-specific tunables](./aws-fault-tunables.md) to tune the common tunables for all faults and aws specific tunables.
@@ -120,7 +121,7 @@ Below is an example AWS policy to execute the fault.
         <th> Description </th>
         <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
         <td> CLUSTER_NAME </td>
         <td> Name of the target ECS cluster. </td>
         <td> For example, <code>cluster-1</code>. </td>
@@ -131,7 +132,7 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
         </tr>
     </table>
-    
+
 ### Optional tunables
   <table>
     <tr>
@@ -148,8 +149,8 @@ Below is an example AWS policy to execute the fault.
         <td> CHAOS_INTERVAL </td>
         <td> Interval between successive instance terminations (in seconds).</td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-      </tr> 
-    <tr> 
+      </tr>
+    <tr>
       <td> AWS_SHARED_CREDENTIALS_FILE </td>
       <td> Path to the AWS secret credentials.</td>
       <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
@@ -159,22 +160,22 @@ Below is an example AWS policy to execute the fault.
           <td> Target ECS service name. </td>
           <td> For example, <code>app-svc</code>. For more information, go to <a href="#ecs-service-name"> ECS service name.</a></td>
         </tr>
-    <tr> 
+    <tr>
       <td> FILESYSTEM_UTILIZATION_BYTES </td>
       <td> Memory consumed during I/O stress (in GB). </td>
       <td> Default: 1. For more information, go to <a href="#file-system-utilization-bytes"> file system utilization in bytes.</a></td>
     </tr>
-    <tr> 
+    <tr>
       <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
       <td> Memory consumed during I/O stress (in percentage). </td>
       <td> Default: 10. For more information, go to <a href="#file-system-utilization-percentage"> file system utilization in percentage.</a></td>
     </tr>
-    <tr> 
+    <tr>
       <td> VOLUME_MOUNT_PATH </td>
       <td> Location that points to the volume mount path used in I/O stress.</td>
       <td> Default: <code>/tmp</code>. For more information, go to <a href="#mount-path"> volume mount path.</a></td>
     </tr>
-    <tr> 
+    <tr>
       <td> NUMBER_OF_WORKERS </td>
       <td> Number of workers for memory stress.</td>
       <td> Default: 1. For more information, go to <a href="#workers-for-stress"> workers.</a></td>
@@ -199,7 +200,7 @@ The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-stress-chaos/filesystem-utilization-percentage.yaml yaml)
 ```yaml
-# stress the i/o of the targeted pod with FILESYSTEM_UTILIZATION_PERCENTAGE of total free space 
+# stress the i/o of the targeted pod with FILESYSTEM_UTILIZATION_PERCENTAGE of total free space
 # it is mutually exclusive with the FILESYSTEM_UTILIZATION_BYTES.
 # if both are provided then it will use FILESYSTEM_UTILIZATION_PERCENTAGE for stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -226,13 +227,13 @@ spec:
 
 Amount of free space available in the ECS container (in gigabytes). Tune it by using the  `FILESYSTEM_UTILIZATION_BYTES` environment variable.
 
-The `FILESYSTEM_UTILIZATION_BYTES` and `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variables are mutually exclusive. If values for both variables are provided, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes precedence. 
+The `FILESYSTEM_UTILIZATION_BYTES` and `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variables are mutually exclusive. If values for both variables are provided, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes precedence.
 
 The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-stress-chaos/filesystem-utilization-bytes.yaml yaml)
 ```yaml
-# stress the i/o of the targeted pod with FILESYSTEM_UTILIZATION_PERCENTAGE of total free space 
+# stress the i/o of the targeted pod with FILESYSTEM_UTILIZATION_PERCENTAGE of total free space
 # it is mutually exclusive with the FILESYSTEM_UTILIZATION_BYTES.
 # if both are provided then it will use FILESYSTEM_UTILIZATION_PERCENTAGE for stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -306,7 +307,7 @@ spec:
     spec:
       components:
         env:
-        # number of io workers 
+        # number of io workers
         - name: NUMBER_OF_WORKERS
           value: '4'
         - name: TOTAL_CHAOS_DURATION
@@ -315,7 +316,7 @@ spec:
 
 ### ECS service name
 
-Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable. 
+Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 

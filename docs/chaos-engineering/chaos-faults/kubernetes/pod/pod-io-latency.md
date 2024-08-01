@@ -2,7 +2,8 @@
 id: pod-io-latency
 title: Pod IO latency
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-io-latency
 ---
 
 import IOFaultsCaution from './shared/io-faults-caution.md'
@@ -127,7 +128,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>

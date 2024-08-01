@@ -245,10 +245,6 @@ When the report is configured with the Average Time in Stage metric the report e
 
 #### Median Time in Stage
 
-When the report is configured with the **Median Time in Stage** metric the report essentially calculates the median of the lead time across for all issues or pull requests in each stage of the workflow. The Overall Lead Time displayed in the report is the sum of these median lead times across all stages.
-
-#### 90th Percentile in Stage
-
 When the report is configured with the 90th Percentile Time in Stage metric the report essentially calculates the 90th of the lead time across all tickets for each stage. The overall lead time in report is displayed as the sum of the 90th percentile of the lead time across all the stages in the workflow.
 
 #### 95th Percentile in Stage

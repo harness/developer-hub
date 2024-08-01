@@ -409,6 +409,10 @@ trigger:
                 branch: <+trigger.branch>
 ```
 
+:::info note
+For UI to render the branch name at the top of the pipeline executions, we must configure codebase in the pipeline. The codebase is responsible for rendering the branch name, PR message and PR link on the UI. In the UI, the PR link, PR message and branch are displayed for Harness Builds(CI) and it is not applicable for other modules.
+![](./static/build_info_triggers.png)
+:::
 
 ## Troubleshoot Git event triggers
 

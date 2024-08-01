@@ -2,14 +2,16 @@
 id: node-cpu-hog
 title: Node CPU hog
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-cpu-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-cpu-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-cpu-hog
+
 ---
 
 Node CPU hog exhausts the CPU resources on a Kubernetes node.
 - The CPU chaos is injected using a helper pod running the Linux stress tool (a workload generator).
 - The chaos affects the application for a specific duration.
 
-![Node CPU Hog](./static/images/node-stress.png)
+![Node CPU Hog](./static/images/node-cpu-hog.png)
 
 
 ## Use cases
@@ -98,7 +100,7 @@ permissions:
         <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject stress. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>

@@ -2,7 +2,8 @@
 id: pod-network-loss
 title: Pod network loss
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-loss
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-loss
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-loss
 ---
 
 Pod network loss is a Kubernetes pod-level chaos fault that causes packet loss in a specific container by starting a traffic control (tc) process with netem rules to add egress (or ingress) loss.
@@ -139,7 +140,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

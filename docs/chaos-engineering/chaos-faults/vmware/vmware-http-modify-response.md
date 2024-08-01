@@ -2,9 +2,10 @@
 id: vmware-http-modify-response
 title: VMware HTTP modify response
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-http-modify-response
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-http-modify-response
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-http-response-modify
 ---
-VMware HTTP modify response injects HTTP chaos by modifying the status code, body or the headers, which affects the request (or response).  
+VMware HTTP modify response injects HTTP chaos by modifying the status code, body or the headers, which affects the request (or response).
 - Chaos is injected by starting the proxy server and redirecting the traffic through the proxy server.
 - It tests the application's resilience to erroneous (or incorrect) HTTP response body.
 - It modifies the headers of the requests and the responses of the service. This helps test the service's resilience towards incorrect or incomplete headers.
@@ -14,7 +15,7 @@ VMware HTTP modify response injects HTTP chaos by modifying the status code, bod
 
 ## Use cases
 
-- VMware HTTP modify response determines the resilience of an application to modifications in the status code or body or header of the request (or response). 
+- VMware HTTP modify response determines the resilience of an application to modifications in the status code or body or header of the request (or response).
 - It measures how accurately the application spots incorrect HTTP response body.
 
 ### Prerequisites

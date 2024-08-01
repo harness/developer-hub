@@ -122,6 +122,8 @@ The response will immediately sync the mentioned component in the entity ref wit
 
 ## Catalog Entities Delete API
 
+### Delete Using Location ID
+
 ### Endpoint
 
 Delete Software Component from Harness Catalog.
@@ -182,6 +184,77 @@ curl --location --request DELETE 'https://idp.harness.io/{ACCOUNT_ID}/idp/api/ca
 ```
 ### Response:
 The response will remove the software component along the with the locations from your IDP catalog as defined in the location provided.
+
+
+### Delete Using `metadata.uid` for Orphaned Entities
+
+### Endpoint
+
+Deletes an entity by its `metadata.uid` field value. 
+
+### HTTP Method
+
+`DELETE`
+
+### URL 
+
+```bash
+https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/entities/by-uid/{uid}
+```
+### URL Parameters
+
+`ACCOUNT_IDENTIFIER`: Your Harness account ID.
+
+You can find your account ID in any Harness URL, for example:
+
+```bash
+https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
+```
+
+`udi`: To get the uid, use the cURL command given below to fetch all the Locations for the account and `grep` your component name and the `metadata.uid` mentioned there is the `uid` to be used.
+
+```cURL
+curl --location 'https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/entities/by-query?filter=kind=location' \
+--header 'x-api-key: {X_API_KEY}' \
+--header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
+```
+
+The Response of the above cURL would be as shown below and the `metadata.uid` mentioned is the **uid**, search for the component name in the response and pick the `uid`
+
+```json
+[
+...
+
+    "metadata": {
+        "namespace": "default",
+        "annotations": {
+            "backstage.io/managed-by-location": "url:https://github.com/catalog.yaml",
+            "backstage.io/managed-by-origin-location": "url:https://github.com/catalog.yaml",
+            "backstage.io/view-url": "https://github.com/blob/catalog.yaml",
+            "backstage.io/edit-url": "https://github.com/edit/BT-5923-1/catalog.yaml",
+            "backstage.io/source-location": "url:https://github.com/BT-5923-1/"
+        },
+        "name": "generated-655f8beb6a07f85e045",
+        "uid": "0a-f27c-43-bd29-492975453",
+        "etag": "054f1b3204b3965e741"
+    }
+...
+]
+```
+
+### Headers
+- `x-api-key`: Your Harness API token.
+- `Harness-Account`: Your Harness account ID.
+
+### cURL Example
+
+```cURL
+curl --location --request DELETE 'https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/entities/by-uid/{uid}' \
+--header 'x-api-key: <API-KEY>' \
+--header 'Harness-Account: {ACCOUNT_ID}'
+```
+### Response:
+The response will remove the locations from your IDP catalog as defined in the `uid`.
 
 
 ## Catalog Entities API

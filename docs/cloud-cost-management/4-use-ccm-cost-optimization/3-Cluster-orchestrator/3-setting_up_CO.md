@@ -40,12 +40,23 @@ For a given cluster, click on the enable option, which will take you to the enab
 You will be asked to run a shell script in your terminal and verify the connection. Upon successfully establishing the connection, click on the next step to configure.
 <DocImage path={require('./static/stepA.png')} width="90%" height="90%" title="Click to view full size image" />
 
-
 #### Step B: Configuration
 
 Cluster Orchestrator allows you to choose a **Base On-Demand Capacity**, which can be further split into percentages to determine how much should be used by Spot and On-Demand instances. You can also choose the distribution strategy between **Least-Interrupted** or **Cost-optimized**. Once all the details are filled in, you can see the potential savings and click on the **"Complete Enablement"** button to enable Cluster Orchestrator for the cluster.
 
 <DocImage path={require('./static/stepB.png')} width="110%" height="110%" title="Click to view full size image" />
+
+ <iframe 
+     src="https://app.tango.us/app/embed/feb3c2ac-4897-49c7-84fa-e6c36bd1bcd4" 
+     title="Set up Commitment Orchestrator" 
+     style={{minHeight:'640px'}}
+     width="100%" 
+     height="100%" 
+     referrerpolicy="strict-origin-when-cross-origin" 
+     frameborder="0" 
+     webkitallowfullscreen="webkitallowfullscreen" 
+     mozallowfullscreen="mozallowfullscreen" 
+     allowfullscreen="allowfullscreen"></iframe>
 
 After the setup is complete, Cluster Orchestrator supports three screens to show information about your cluster:
 
@@ -85,3 +96,5 @@ This page contains all the information about the nodes associated with the clust
 
 Additionally, you can see the total cluster spend and the spot savings.
 <DocImage path={require('./static/nodes.png')} width="90%" height="90%" title="Click to view full size image" />
+
+

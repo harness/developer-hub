@@ -2,7 +2,9 @@
 id: kubelet-service-kill
 title: Kubelet service kill
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/kubelet-service-kill
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/kubelet-service-kill
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/kubelet-service-kill
+
 ---
 
 Kubelet service kill makes the application unreachable on the account of the node turning unschedulable (in **NotReady** state).
@@ -94,7 +96,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>

@@ -5,8 +5,8 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-fargate-memory-hog
 ---
 
-The ECS Fargate memory Hog experiment enables you to intentionally increase the memory usage of an ECS task container for a defined period, allowing you to assess and test the container's performance under high memory utilization conditions or latency caused due to it.
-This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+The ECS Fargate memory hog experiment enables you to intentionally increase the memory usage of an ECS task container for a defined period, allowing you to assess and test the container's performance under high memory utilization conditions or latency caused due to it.
+This experiment primarily involves ECS Fargate and doesn't depend on EC2 instances. [They](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
 
 ![ECS Fargate Memory Hog](./static/images/ecs-fargate-memory-hog.png)
 
@@ -37,7 +37,7 @@ stringData:
 ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -83,12 +83,12 @@ Refer to the [common attributes](/docs/chaos-engineering/chaos-faults/common-tun
           <th> Description </th>
           <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
           <td> CLUSTER_NAME </td>
           <td> Name of the target ECS cluster </td>
           <td> For example, <code>cluster-1</code>. </td>
         </tr>
-        <tr> 
+        <tr>
           <td> SERVICE_NAME </td>
           <td> Name of the ECS service under chaos </td>
           <td> For example, <code>nginx-svc</code>. </td>
@@ -117,17 +117,17 @@ Refer to the [common attributes](/docs/chaos-engineering/chaos-faults/common-tun
         <td> Interval between successive instance terminations (in seconds)</td>
         <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Path to the AWS secret credentials</td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
       </tr>
-      <tr> 
+      <tr>
         <td> MEMORY_IN_MEGABYTE </td>
         <td> Provide the memory in Megabytes to stress the ECS task. </td>
         <td> Default: 500. For more information, go to <a href="#memory-consumed-in-megabytes"> memory consumed in MB.</a> </td>
       </tr>
-      <tr> 
+      <tr>
         <td> CONTAINER_IMAGE </td>
         <td> Provide stress image for the sidecar container. </td>
         <td> Default: nginx. For more information, go to <a href="#stress-container-image"> stress container image.</a> </td>

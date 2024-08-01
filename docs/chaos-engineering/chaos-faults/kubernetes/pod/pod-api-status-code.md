@@ -2,7 +2,8 @@
 id: pod-api-status-code
 title: Pod API status code
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-status-code
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-status-code
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-api-status-code
 ---
 
 Pod API status code is a Kubernetes pod-level chaos fault that change the API response status code and optionally api response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
@@ -81,7 +82,7 @@ permissions:
       </tr>
       <tr>
         <td> STATUS_CODE </td>
-        <td> Modified status code for the api response </td>
+        <td> Modified status code for the API response. </td>
         <td> For more information, go to <a href="#status-code">status code </a>. </td>
       </tr>
     </table>
@@ -141,7 +142,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> PROXY_PORT </td>

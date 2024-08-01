@@ -2,7 +2,8 @@
 id: pod-io-stress
 title: Pod IO stress
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-io-stress
 ---
 Pod I/O stress is a Kubernetes pod-level chaos fault that causes I/O stress on the application pod by increasing the number of input and output requests. Applying stress on the disk with continuous and heavy I/O degrades the reads and writes with respect to the microservices. Scratch space consumed on a node may lead to lack of memory for new containers to be scheduled. All these aspects increase resilience to stress.
 
@@ -110,7 +111,7 @@ permissions:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
