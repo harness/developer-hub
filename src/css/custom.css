@@ -994,6 +994,10 @@ figure p {
 
  /*******************sidebar logo css start*******************/
 
+ .menu__list-item-collapsible > a{
+  height: 52px;
+ }
+
 .sidebar-platform > div > a::before{
   content: " ";
   display: inline-block;
@@ -1001,7 +1005,8 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/logo.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .sidebar-cr > div > a::before{
   content: " ";
@@ -1010,7 +1015,8 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_code.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .sidebar-ci > div > a::before{
   content: " ";
@@ -1019,7 +1025,8 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_ci.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .sidebar-cd > div > a::before{
   content: " ";
@@ -1028,16 +1035,18 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_cd.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .sidebar-iacm > div > a::before{
   content: " ";
   display: inline-block;
-  height: 24px;
+  min-height: 24px;
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_iacm.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .sidebar-ff div > a::before{
   content: " ";
@@ -1046,7 +1055,8 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_ff.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .sidebar-ccm > div > a::before{
   content: " ";
@@ -1055,7 +1065,8 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_ccm.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .sidebar-sto > div > a::before{
   content: " ";
@@ -1064,7 +1075,8 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_sto.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .sidebar-ssca > div > a::before{
   content: " ";
@@ -1073,7 +1085,8 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_ssca.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .sidebar-ce > div > a::before{
   content: " ";
@@ -1082,7 +1095,8 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_ce.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .sidebar-srm > div > a::before{
   content: " ";
@@ -1091,7 +1105,8 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_srm.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .sidebar-cet > div > a::before{
   content: " ";
@@ -1100,7 +1115,8 @@ figure p {
   min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_cet.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .sidebar-idp > div > a::before{
   content: " ";
@@ -1109,7 +1125,8 @@ figure p {
  min-width: 24px;
   margin-right: 16px;
   background-image: url("/img/icon_idp.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .sidebar-sei > div > a::before{
   content: " ";
@@ -1118,7 +1135,8 @@ figure p {
   min-width: 24px;
   margin-right: 16px;
   background-image: url("/img/icon_sei.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .sidebar-smp > div > a::before{
   content: " ";
@@ -1127,7 +1145,8 @@ figure p {
   min-width: 24px;
   margin-right: 16px;
   background-image: url("/img/logo.svg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 
