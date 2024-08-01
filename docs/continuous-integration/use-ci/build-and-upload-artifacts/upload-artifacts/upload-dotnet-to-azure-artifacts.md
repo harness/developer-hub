@@ -103,8 +103,6 @@ pipeline:
 This is a sample pipeline, and the `dotnet new console` command is used here to create a `.csproj` file. In a production scenario, you may already have the `.csproj` file present, so this step may not be necessary.
 :::
 
-The Build, Package, and Push .NET Packages steps have the following settings. Depending on the build infrastructure, some settings might be unavailable or optional.
-
 When you run the pipeline, you can observe the step logs on the [build details page](../../viewing-builds.md).
 
 If the steps succeed, you can find the package in your Azure Artifacts feed.
