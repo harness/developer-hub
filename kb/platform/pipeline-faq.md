@@ -486,6 +486,9 @@ It is a scheduled task designed to clean up dashboards that have no tiles. This 
 
 Check if the Harness Delegate was recently updated, and also confirm the version of Ansible being executed.
 
+### Can user extract the dowloaded log zip file through Windows Explorer?
+No, currently windows explorer is not supported to extract the logs zip file. User needs to user the Winrar, 7zip, etc.
+
 ## Pipeline templates
 
 ### What is the frequency that we need to reconcile pipeline template changes?

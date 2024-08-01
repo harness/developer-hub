@@ -3328,3 +3328,16 @@ The minimum supported screen resolution is 1440x900.
 ### Can I adjust the default width of step logs in the browser GUI? They currently open at around 25% of the screen width.
 
 Currently, there are no settings to modify the default GUI view setup. You can manually expand and adjust it as needed, but it resets to default when you refresh or switch to another execution.
+
+### How can user install the go template in the delegate?
+User should install the go template in harness through the INIT script as commands suggetsed here: https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-required-sdks/#kubernetes
+
+### Is user can list the secret through Harness CLI?
+Currently we only support creating/updating the secret through Harness CLI.
+If you want to list the secret, you can use the Harness API as suggested here: https://apidocs.harness.io/tag/Project-Secret#operation/get-project-scoped-secrets
+
+### Is there any specfic port is required to open for the delegate that is intsalled in th EKS cluster to connect with manager?
+Only the 443 port is required to open in the security groups for the delegate to the conncetion with manager.
+
+### Is user can stop/start and pause audit logs?
+No, it is not supported to start, stop, or pause of the audit logs.
