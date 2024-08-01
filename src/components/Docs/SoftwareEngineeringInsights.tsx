@@ -19,12 +19,10 @@ export default function SEI() {
 
   // <Telemetry event ="event2" property_w ="property_w" property_y ="property_y" /
 
-    // Track page view on component mount
     useEffect(() => {
       <Telemetry event={SEIActions.SEIPageView} page="SoftwareEngineeringInsights" />;
     }, []);
   
-    // Function to handle button click and track event
     const handleReleaseNotesClick = () => {
       <Telemetry event={SEIActions.SEIReleaseNotes} button="ReleaseNotes" />;
     };

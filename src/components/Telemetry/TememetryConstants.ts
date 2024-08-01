@@ -19,5 +19,4 @@ export enum AidaClient {
 export enum SEIActions {
   SEIPageView = "SEI Page View",
   SEIReleaseNotes = "SEI Release Notes",
-  // Add more SEI-specific actions here
 }
