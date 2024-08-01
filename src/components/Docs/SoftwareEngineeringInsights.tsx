@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 
 
 
-export default function CI() {
+export default function SEI() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
 
