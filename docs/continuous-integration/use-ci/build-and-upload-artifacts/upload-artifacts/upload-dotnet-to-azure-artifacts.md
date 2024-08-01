@@ -19,7 +19,7 @@ This article will guide you through the following steps:
 - **Obtain Azure DevOps personal access token (PAT) with repo permissions:** To configure, you need access to an Azure DevOps account with the necessary permissions to push packages to Azure Artifacts. For steps, refer to the documentation on creating an [Azure DevOps PAT](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows).
 
 - **Store the Azure DevOps PAT as a Harness Secret**
-Create a [Harness secret]((https://developer.harness.io/docs/platform/secrets/add-use-text-secrets)) to store the obtained Azure DevOps PAT. In the example below, a secret with the identifier `Azure_DevOps_PAT` is used. If you have already created a secret, update the `NUGET_PAT="<+secrets.getValue('Azure_DevOps_PAT')>"` line in the pipeline with the secret identifier.
+Create a [Harness secret](../../../../platform/secrets/add-use-text-secrets.md) to store the obtained Azure DevOps PAT. In the example below, a secret with the identifier `Azure_DevOps_PAT` is used. If you have already created a secret, update the `NUGET_PAT="<+secrets.getValue('Azure_DevOps_PAT')>"` line in the pipeline with the secret identifier.
 
 ## Add the Build, Package, and Push steps to your pipeline
 
