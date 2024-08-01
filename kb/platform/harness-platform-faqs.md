@@ -2149,6 +2149,27 @@ Harness Delegates are primarily configured through variables, which can be adjus
 
 These approaches offer flexibility and reliability in ensuring that Harness delegates are configured correctly to meet your needs.
 
+### What is the difference between Connectivity Mode Harness Platform, and Delegate while trying to create a git connector?
+
+So basically, the call to git will be initiated via Harness SaaS if you use the Harness platform, and the same call will go via Harness Delegate if you use another option.
+
+### Getting an error while trying to install Docker Delegate while using the minimal Delegate Image and using the groupadd command
+```
+ERROR: failed to solve: process "/bin/sh -c groupadd docker" did not complete successfully: exit code: 127
+```
+
+By default, the groupadd command is not present.  you can install shadow-utils and then try the command
+```
+microdnf install shadow-utils
+```
+
+### Getting an error while trying to install Docker Delegate while using the command USER harness
+```
+docker: Error response from daemon: unable to find user harness: no matching entries in passwd file.
+```
+
+There is no harness user, so you need to remove this command or add a user manually.
+
 ## Dashboards
 
 ### Why isn't my project's Overview page showing deployments?
