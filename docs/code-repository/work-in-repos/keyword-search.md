@@ -46,9 +46,9 @@ Use `file:KEYWORD` to search for a keyword in file names. For example, `file:REA
 
 ### Search Scope
 
-If you start a search within a specific repository, your search is automatically scoped to the current reposiory. If you want to search more than one repository at a time you can navigate to a [Harness project, organization, or account](/docs/platform/get-started/key-concepts.md) and recursively search all of the repositories within that scope.
+If you start a search within a specific repository, your search is automatically scoped to the current repository. If you want to search more than one repository at a time, you can navigate to a [Harness project, organization, or account](/docs/platform/get-started/key-concepts.md) and recursively search all of the repositories within that scope.
 
-For example, if you search from the organization view it will search all repositories at the organization level as well as all repositories within every project in that organization. If you search from the account it will search every repository in the account, every repository in every organization, and every project in every organization.
+For example, if you search from the organization view, it will search all repositories at the organization level and all repositories within every project in that organization. If you search from the account view, it will search every repository across the entire account and all organizations.
 
 You can use the **Repository** [search results filter](#search-results-filters) to limit results to specific repositories in the current scope.
 
