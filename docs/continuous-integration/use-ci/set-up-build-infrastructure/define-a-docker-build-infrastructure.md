@@ -21,6 +21,12 @@ You can configure CI build infrastructure on a Linux, macOS, or Windows host by 
 
 Local runner build infrastructure is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
 
+:::note
+
+You can also use a [Kubernetes delegate](/docs/platform/delegates/install-delegates/overview#install-the-default-delegate) instead of a Docker delegate.
+
+:::
+
 ## Set up a Linux local runner
 
 ### Prepare machines
@@ -81,7 +87,7 @@ For more information about delegates and delegate installation, go to [Delegate 
 The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
 
 1. Download a [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases) corresponding to your build farm's OS and architecture.
-2. (Optional) To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`:
+2. (Optional) To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source;path/to/destination`:
 
    ```
    export CI_MOUNT_VOLUMES="path/to/local/cert;/etc/ssl/certs/ca-certificates.crt,path/to/local/cert2;/etc/ssl/certs/cacerts.pem"

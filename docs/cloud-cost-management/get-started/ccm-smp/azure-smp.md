@@ -396,3 +396,48 @@ At this point, your "staging area" for future Microsoft Azure Billing Exports is
 - Use [Azure connector setup](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure) to set up Azure Billing Exports and push them to our configured destination storage account.
 - Use [Kubernetes connector setup](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes#create-ccm-connector) to expand visibility and reporting for Azure Kubernetes and other Kubernetes clusters hosted in Azure.
 
+### Troubleshooting
+
+If in case the K8s secrets expire, the secrets will have to be set again. First you would have to update the secrets in respective `secret.yaml` and then delete the pod. We recommend to `kubectl delete`` the following pods:
+
+- `batch-processing`
+- `ce-nextgen`
+- `cloud-info`
+
+and then follow the [same steps](https://developer.harness.io/docs/cloud-cost-management/get-started/ccm-smp/azure-smp#handling-kubernetes-secrets) to set the keys. After the new keys are set, verify the changes by looking at the `configs` for the pods. Please refer to the steps below for a faster execution.
+
+- batch-processing: ```kubectl exec -it -n <namespace> batch-processing cat batch-processing-config.yml | grep -E 'awsAccessKey|awsSecretKey```
+
+```
+awsAccessKey: Updated Access Key
+awsSecretKey: Updated Secret Key
+
+```
+
+- cloud-info: 
+
+``` kubectl exec -it -n <namespace> cloud-info cat config/config.toml | grep -E 'accessKey|secretKey' ```
+
+```
+accessKey = "Updated Access Key"
+secretKey = "Updated Secret Key"
+accessKey = "You can ignore this"
+secretKey = "You can ignore this"
+accessKey = "You can ignore this"
+secretKey = "You can ignore this"
+
+```
+
+- nextgen-ce: ```kubectl exec -it -n <namespace> nextgen-ce cat config.yml | grep -E 'accessKey|secretKey|harnessAwsAccountId|destinationBucket:|awsConnectorTemplate'```
+
+```
+accessKey: Updated Access Key
+secretKey: Updated Secret Key
+destinationBucket: Updated Destination Bucket
+harnessAwsAccountId: Updated AWS Account Id
+awsConnectorTemplate: Updated AWS Template URL
+accessKey: You can ignore this
+secretKey: You can ignore this
+harnessAwsAccountId: You can ignore this
+awsConnectorTemplate: You can ignore this
+```

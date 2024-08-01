@@ -79,12 +79,12 @@ You can disable Local Login using the feature flag `DISABLE_LOCAL_LOGIN`. Contac
 
 To set up OAuth 2.0 SSO, do the following:
 
-1. Sign in to Harness using a Harness User account that is a member of the Administrator User Group with Create/Edit, Delete permissions for Authentication Settings. For information on Harness RBAC, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).  
-  
+1. Sign in to Harness using a Harness User account that is a member of the Administrator User Group with Create/Edit, Delete permissions for Authentication Settings. For information on Harness RBAC, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
+
    The email address used to log into Harness should also be registered with the OAuth 2.0 providers you intend to enable for Harness SSO.
 
 2. Select **Home**, select **Account Setup**, and then select **Access Control**. The **Access Control** page opens.
-   
+
    ![](./static/single-sign-on-sso-with-oauth-122.png)
 
 3. In the **Users** tab, we can see the list of all the **Active Users** and their **Email**.
@@ -94,7 +94,6 @@ To set up OAuth 2.0 SSO, do the following:
 7. Enable each public OAuth 2.0 provider you want to use for SSO.
 
    ![](./static/single-sign-on-sso-with-oauth-123.png)
-
 
 ## Log in with an OAuth 2.0 provider
 
@@ -137,6 +136,10 @@ By default, any member invited to Harness by a Harness Administrator can log in 
 For example, you might set up Google as a Harness OAuth 2.0 SSO provider, but you want only users who have **example.io** in their (login) email address to be able to log in via Google.
 
 To filter domain names in this way, go to the [Authentication overview](../authentication/authentication-overview.md) topic's section on [Restrict email domains](../authentication/authentication-overview.md#restrict-email-domains).
+
+## Set the default experience
+
+Environment administrators can set the default Harness generation landing page, FirstGen or NextGen, for their users to ensure the correct Harness Experience is provided to each user. For more information, go to [Account details](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts#account-details).
 
 ## Next steps
 

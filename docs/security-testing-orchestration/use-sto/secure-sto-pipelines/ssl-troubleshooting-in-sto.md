@@ -3,7 +3,7 @@ title: Troubleshoot SSL in STO
 description: Troubleshoot certificate issues when running STO scans.
 sidebar_position: 60
 redirect_from:
-- /docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-troubleshooting-in-sto
+  - /docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-troubleshooting-in-sto
 ---
 
 If you're having issues [running STO scans with custom

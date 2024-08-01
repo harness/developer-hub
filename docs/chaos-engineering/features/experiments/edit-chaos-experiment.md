@@ -1,12 +1,10 @@
 ---
 title: Edit and update chaos experiments
-sidebar_position: 40
+sidebar_position: 30
 description: Guide to edit and update chaos experiments
 redirect_from:
   - /docs/chaos-engineering/configure-chaos-experiments/experiments/edit-chaos-experiment
 ---
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 You can edit an existing chaos experiment to update the experiment's metadata, faults, schedule, etc. This section describes three actions:
 1. Editing an experiment
@@ -133,24 +131,19 @@ Select one or more experiments that you wish to reschedule or enable/disable.
 
 ### Step 3: Perform the bulk update on selected experiments
 
-Based on your choice between rescheduling or enabling (or disabling) a cron schedule, you will see one of the screens.
+You can choose between [rescheduling](#reschedule-a-cron-schedule) or [enabling (or disabling)](#enable-or-disable-a-cron-schedule) a cron schedule.
 
-<Tabs>
-  <TabItem value="Reschedule">
+#### Reschedule a cron schedule
 
 You can change the schedule of the experiments by changing the values, and click **Confirm**.
 
 ![reschedule](./static/edit-experiment/reschedule-confirm.png)
 
- </TabItem>
-  <TabItem value="Enable/disable">
+#### Enable or disable a cron schedule
 
 You can select one of the options (enable cron or disable cron), and click **Confirm**.
 
 ![enable](./static/edit-experiment/enable-or-disable-cron.png)
-
-</TabItem>
-</Tabs>
 
 ### Step 4: Click close
 

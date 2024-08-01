@@ -74,4 +74,28 @@ For more information and discussion on this Gradle error, go to:
 
 ## Gradle version not compatible with Test Intelligence.
 
-For information about Gradle compatibility with TI and how to modify `build.gradle` for TI, go to [Enable TI for Java, Kotlin, or Scala - Build Tool - Java Gradle compatibility](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#build-tool).
+If you use Java with Gradle, Test Intelligence assumes `./gradlew` is present in the root of your project. If not, TI falls back to the Gradle tool to run the tests. As long as your Gradle version has test filtering support, it is compatible with Test Intelligence.
+
+Add the following to your `build.gradle` to make it compatible with Test Intelligence:
+
+```
+// This adds HARNESS_JAVA_AGENT to the testing command if it's
+// provided through the command line.
+// Local builds will still remain same as it only adds if the
+// parameter is provided.
+tasks.withType(Test) {
+  if(System.getProperty("HARNESS_JAVA_AGENT")) {
+    jvmArgs += [System.getProperty("HARNESS_JAVA_AGENT")]
+  }
+}
+
+// This makes sure that any test tasks for subprojects don't
+// fail in case the test filter does not match.
+gradle.projectsEvaluated {
+        tasks.withType(Test) {
+            filter {
+                setFailOnNoMatchingTests(false)
+            }
+        }
+}
+```

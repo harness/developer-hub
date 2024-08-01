@@ -9,8 +9,7 @@ sidebar_position: 6
 In this tutorial we will create a self service onboarding flow to create a new service using cookiecutter template and add it Harness IDP software catalog as a software component using the `catalog-info.yaml` followed by provisioning a Deployment Pipeline for the newly created service, using the [Harness Terraform Provider](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider/). 
 
 ## Pre-Requisite:
-
-- Make sure you have `IDP_ENABLE_STAGE` Feature Flag enabled on your account. 
+ 
 - Make sure you are assigned the [IDP Admin Role](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin) or another role that has full access to all IDP resources. 
 - Create a **GitHub** connector named `democonnector` at the account scope. This connector should be configured for a GitHub organization (personal accounts are currently not supported by this tutorial). 
 - [Delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/) with [Terraform Installed on it](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step#important-install-terraform-on-delegates)

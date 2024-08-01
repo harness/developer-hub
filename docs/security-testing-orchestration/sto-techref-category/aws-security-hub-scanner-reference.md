@@ -1,14 +1,14 @@
 ---
-title: AWS Security Hub scanner reference for STO
+title: AWS Security Hub step configuration
 description: Scan configurations with AWS Image scanner.
-sidebar_label: AWS Security Hub scanner reference
+sidebar_label: AWS Security Hub step configuration
 sidebar_position: 50
 ---
 
 
 <DocsTag   text="Configuration scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"   link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuration-scanners"  />
-<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview/#extraction-scans-in-sto" />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline/" />
+<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/extraction-scans" />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
@@ -86,7 +86,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 ### Authentication
 
-You should create [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) with your encrypted access ID and token and access them using the format `<+secrets.getValue("project.my-secret")>`. 
+You should create [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) with your encrypted access ID and token and access them using the format `<+secrets.getValue("my-secret")>`. 
 
 
 #### Access ID 
@@ -111,12 +111,6 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
-
-### Additional CLI flags
-
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
-
-<StoSettingCliFlags />
 
 
 ### Fail on Severity

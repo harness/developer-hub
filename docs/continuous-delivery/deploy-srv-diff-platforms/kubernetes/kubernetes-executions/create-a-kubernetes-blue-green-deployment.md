@@ -257,11 +257,6 @@ If this were the second deployment, Harness would also swap the stage service to
 
 For information on how to configure traffic routing for Blue Green deployments, see [Traffic Routing Step Reference](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step.md).
 
-:::note
-
-Currently, this feature is behind the feature flag `CDS_K8S_TRAFFIC_ROUTING_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 ## Swap primary with stage step
 

@@ -64,7 +64,7 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
 
 The `workers` input variable utilizes a specific number of workers during the disk I/O stress.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-disk-io-stress/workers.yaml yaml)
 ```yaml
@@ -85,7 +85,7 @@ spec:
 
 The `fileSystemUtilisation` input variable utilizes a specific amount of file system disk space or bandwidth as a part of the disk I/O operations in bytes.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-disk-io-stress/file-system-utilisation.yaml yaml)
 ```yaml
@@ -105,7 +105,7 @@ spec:
 ### Volume mount path
 The `volumeMountPath` input variable utilizes the volume mount path where the disk I/O operations are performed.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-disk-io-stress/volume-mount-path.yaml yaml)
 ```yaml

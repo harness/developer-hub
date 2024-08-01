@@ -63,7 +63,7 @@ A code scanner can detect one or more of the following issue types in your sourc
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Open Source</a> Orchestration, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference">Veracode</a> Orchestration, Extraction, Ingestion</li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference">Wiz</a> Ingestion  </li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz">Wiz</a> Orchestration, Ingestion  </li>
          </ul>
      </td>
    </tr>
@@ -102,7 +102,7 @@ An artifact scanner can detect one or more of the following issue types in your 
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Container</a> Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/sysdig-scanner-reference">Sysdig</a> Orchestration, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io</a> Orchestration, Ingestion  </li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference">Wiz</a> Orchestration, Ingestion  </li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz">Wiz</a> Orchestration, Ingestion  </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/xray-scanner-reference">JFrog Xray</a> Ingestion </li>
          </ul>
      </td>
@@ -172,6 +172,6 @@ The following scanners detect misconfigurations in your cloud environment that c
 
 If you use a scanner that isn't listed above, you can still ingest your scan results into STO.
 
-- If your scanner can publish to SARIF format, go to [Ingest SARIF scan results into STO](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
+- If your scanner can publish to SARIF format, go to [Ingest SARIF scan results into STO](/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data).
 
-- For other scanners, go to [Ingest results from unsupported scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md).
+- For other scanners, go to [Ingest results from unsupported scanners](/docs/security-testing-orchestration/custom-scanning/ingesting-issues-from-other-scanners.md).

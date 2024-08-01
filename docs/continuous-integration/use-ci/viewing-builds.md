@@ -60,43 +60,12 @@ This tab provides a list of commits that triggered the build, along with source 
 
 ### Tests tab
 
-This tab presents test results from **Run** or **Run Tests** steps. For more information, go to [View tests](./run-tests/viewing-tests.md).
+This tab presents test results from **Run** or **Test** steps. For more information, go to [View tests](./run-tests/viewing-tests.md).
 
 ### Other tabs
 
-The **Policy Evaluations**, **Security Tests**, and **Error Tracking** tabs report [Error Tracking](#error-tracking-run-tests-step) information and information from other Harness modules and features, such as [Harness Policy As Code](/docs/platform/governance/policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.
+The **Policy Evaluations** and **Security Tests** tabs report information from other Harness modules and features, such as [Harness Policy As Code](/docs/platform/governance/policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.
 
 ## Dashboards
 
 For information about Harness dashboards, go to the Platform documentation on [Dashboards](/docs/platform/dashboards/dashboards-overview).
-
-## Error Tracking (Run Tests step)
-
-If you [enabled error tracking in the Run Tests step](./run-tests/test-intelligence/ti-for-java-kotlin-scala.md#do-you-want-to-enable-error-tracking), a list of code error events are reported on the **Error Tracking** tab. For each event, the following are reported:
-
-* Event **Type** and **Description**.
-* **Location** in the code.
-* Impact (**Count**) in terms of volume and spread across your application.
-
-<!-- ![](./static/ci-builds-et.png) -->
-
-<DocImage path={require('./static/ci-builds-et.png')} />
-
-The following event types are reported:
-
-* Caught Exception: Exceptions that were captured and resolved by the application.
-* Uncaught Exception: Exceptions that were not captured by the application.
-* Swallowed Exception: Exceptions that were captured but ignored by the application.
-* Log Error: Events logged as errors in the application.
-* Log Warnings: Events logged as warnings in the application.
-* HTTP Errors: HTTP communication errors.
-
-:::tip
-
-Select the event's **Location** to open the [Automated Root Cause Analysis (ARC) page](/docs/continuous-error-tracking/get-started/cet-arc) where you can view the source code, stack, variable state, and log statements leading to the error. This helps you analyze, troubleshoot, and remediate errors faster.
-
-<!-- ![](./static/ci-builds-et-arc.png) -->
-
-<DocImage path={require('./static/ci-builds-et-arc.png')} />
-
-:::

@@ -11,7 +11,6 @@ You can use this step to add a built-in Zed Attack Proxy (ZAP) scan to detect vu
 
 :::note notes
 
-- This step is currently behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 
 - Currently only [Zed Attack Proxy (ZAP)](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference) scans are available for this step. 
 

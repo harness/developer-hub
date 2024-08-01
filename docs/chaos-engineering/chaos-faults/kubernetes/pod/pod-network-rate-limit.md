@@ -2,7 +2,8 @@
 id: pod-network-rate-limit
 title: Pod network rate limit
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-rate-limit
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-rate-limit
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-rate-limit
 ---
 
 Pod network rate limit is a Kubernetes pod-level chaos fault that generates Traffic Control (tc) rules with Token Bucket Filter (TBF) to assess Kubernetes pod resilience under limited network bandwidth condition.
@@ -15,6 +16,43 @@ Pod network rate limit:
 - Ensure that critical services receive the necessary network bandwidth allocation while non-essential services are appropriately limited to maintain overall system stability.
 - Evaluate the impact of network rate limits on security-related functions such as DDoS mitigation or intrusion detection, and assessing whether the system can withstand such scenarios.
 - Determine the optimal network bandwidth allocation for different pods and applications to effectively plan resource usage and accommodate growth without degradation in performance.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-network-rate-limit
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16 
@@ -97,22 +135,22 @@ Pod network rate limit:
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to pod network corruption. </td>
         <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
-      </tr> 
+      </tr>
       <tr>
         <td> DESTINATION_IPS </td>
         <td> Comma-separated IP addresses and ports of the services or pods or the CIDR blocks (range of IPs) whose accessibility is impacted. Comma-separated IPs or CIDRs can be provided. </td>
         <td> If the values are not provided, the fault induces network chaos for all IPs or destinations. For more information, go to <a href="#destination-ips-and-destination-hosts">destination IPs</a>.</td>
-      </tr>  
+      </tr>
       <tr>
         <td> DESTINATION_HOSTS </td>
         <td> DNS names or FQDN names of the services and ports whose accessibility is impacted. </td>
         <td> If the values are not provided, the fault induces network chaos for all IPs or destinations or <code>DESTINATION_IPS</code> if already defined. For more information, go to <a href="#destination-ips-and-destination-hosts">destination hosts</a>.</td>
-      </tr>  
+      </tr>
       <tr>
         <td> SOURCE_PORTS </td>
         <td> Ports of the target application, the accessibility to which is impacted </td>
         <td> Comma separated port(s) can be provided. If not provided, it will induce network chaos for all ports. For more information, go to <a href="#source-and-destination-ports">source ports.</a></td>
-      </tr>  
+      </tr>
       <tr>
         <td> DESTINATION_PORTS </td>
         <td> Ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
@@ -122,7 +160,7 @@ Pod network rate limit:
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
         <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a>.</td>
-      </tr> 
+      </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
@@ -131,7 +169,7 @@ Pod network rate limit:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -154,7 +192,7 @@ The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/pod-network-rate-limit/rate-limit.yaml yaml)
 ```yaml
-# it injects the network rate limit 
+# it injects the network rate limit
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -347,7 +385,7 @@ spec:
           value: "32kb"
         - name: LIMIT
           value: "2mb"
-        # name of the network interface 
+        # name of the network interface
         - name: NETWORK_INTERFACE
           value: 'eth0'
         - name: TOTAL_CHAOS_DURATION
@@ -388,7 +426,7 @@ spec:
         - name: BURST
           value: "32kb"
         - name: LIMIT
-          value: "2mb" 
+          value: "2mb"
         # runtime for the container
         # supports docker, containerd, crio
         - name: CONTAINER_RUNTIME

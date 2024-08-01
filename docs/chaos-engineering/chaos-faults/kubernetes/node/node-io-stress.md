@@ -2,20 +2,57 @@
 title: Node IO stress
 id: node-io-stress
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-io-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-io-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-io-stress
 ---
 
-Node IO stress causes I/O stress on the Kubernetes node. 
+Node IO stress causes I/O stress on the Kubernetes node.
 
 ![Node CPU Hog](./static/images/node-stress.png)
-
 
 ## Use cases
 - Node IO stress fault verifies the resilience of applications that share the disk resource for ephemeral or persistent storage during high disk I/O usage.
 - It tests application resilience on replica evictions that occur due to I/O stress on the available disk space.
-- It simulates slower disk operations by the application and noisy neighbour problems by hogging the disk bandwidth. 
-- It also verifies the disk performance on increasing I/O threads and varying I/O block sizes. 
-- It checks if the application functions under high disk latency conditions. when I/O traffic is very high and includes large I/O blocks, and when other services monopolize the I/O disks. 
+- It simulates slower disk operations by the application and noisy neighbour problems by hogging the disk bandwidth.
+- It also verifies the disk performance on increasing I/O threads and varying I/O block sizes.
+- It checks if the application functions under high disk latency conditions. when I/O traffic is very high and includes large I/O blocks, and when other services monopolize the I/O disks.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: node-io-stress
+spec:
+  definition:
+    scope: Cluster
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/exec"]
+    verbs: ["get", "list", "create"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16
@@ -69,21 +106,21 @@ Node IO stress causes I/O stress on the Kubernetes node.
         <td> CPU </td>
         <td> Number of cores of the CPU that will be used. </td>
         <td> Default: 1. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/vmware/vmware-cpu-hog/#cpu_cores"> CPU cores.</a></td>
-      </tr>    
+      </tr>
       <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of I/O workers involved in I/O stress. </td>
         <td> Default: 4. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress/#workers-for-stress"> workers for stress.</a></td>
-      </tr> 
+      </tr>
       <tr>
         <td> VM_WORKERS </td>
         <td> Number of VM workers involved in I/O stress. </td>
         <td> Default: 1. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress/#workers-for-stress"> workers for stress.</a></td>
-      </tr> 
-      <tr>    
+      </tr>
+      <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to run the stress command. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
@@ -94,7 +131,7 @@ Node IO stress causes I/O stress on the Kubernetes node.
         <td> NODES_AFFECTED_PERC </td>
         <td> Percentage of the total nodes to target. It takes numeric values only. </td>
         <td> Default: 0 (corresponds to 1 node). For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#node-affected-percentage">node affected percentage.</a></td>
-      </tr> 
+      </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods.</td>
@@ -105,13 +142,13 @@ Node IO stress causes I/O stress on the Kubernetes node.
 
 ### File system utilization percentage
 
-Free space available on the node (in percentage). Tune it by using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable. 
+Free space available on the node (in percentage). Tune it by using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/node-io-stress/filesystem-utilization-percentage.yaml yaml)
 ```yaml
-# stress the I/O of the targeted node with FILESYSTEM_UTILIZATION_PERCENTAGE of total free space 
+# stress the I/O of the targeted node with FILESYSTEM_UTILIZATION_PERCENTAGE of total free space
 # it is mutually exclusive with the FILESYSTEM_UTILIZATION_BYTES.
 # if both are provided then it will use FILESYSTEM_UTILIZATION_PERCENTAGE for stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -189,14 +226,14 @@ spec:
         env:
         # number of CPU cores to be stressed
         - name: CPU
-          value: '1' 
+          value: '1'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```
 
 ### Workers for stress
 
-Number of I/O and VM workers for the stress. Tune it by using the `NUMBER_OF_WORKERS` and `VM_WORKERS` environment variables, respectively. 
+Number of I/O and VM workers for the stress. Tune it by using the `NUMBER_OF_WORKERS` and `VM_WORKERS` environment variables, respectively.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -218,7 +255,7 @@ spec:
         env:
         # total number of io workers involved in stress
         - name: NUMBER_OF_WORKERS
-          value: '4' 
+          value: '4'
           # total number of vm workers involved in stress
         - name: VM_WORKERS
           value: '1'

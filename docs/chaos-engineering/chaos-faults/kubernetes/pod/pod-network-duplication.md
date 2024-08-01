@@ -2,10 +2,11 @@
 id: pod-network-duplication
 title: Pod network duplication
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-duplication
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-duplication
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-duplication
 ---
 
-Pod network duplication is a Kubernetes pod-level chaos fault that injects chaos to disrupt the network connectivity to Kubernetes pods. This fault injects chaos on the specific container by starting a traffic control (tc) process with netem rules to add egress delays. 
+Pod network duplication is a Kubernetes pod-level chaos fault that injects chaos to disrupt the network connectivity to Kubernetes pods. This fault injects chaos on the specific container by starting a traffic control (tc) process with netem rules to add egress delays.
 
 ![Pod Network Duplication](./static/images/pod-network-duplication.png)
 
@@ -16,8 +17,45 @@ Pod network duplication:
 - Simulates a degraded network with varied percentages of dropped packets between microservices (dropped at the destination).
 
 ### Prerequisites
-- Kubernetes > 1.16 
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-network-duplication
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
 
 ### Optional tunables
 
@@ -61,7 +99,7 @@ Pod network duplication:
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to pod network corruption.</td>
         <td> If the values are not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
-      </tr> 
+      </tr>
       <tr>
         <td> NODE_LABEL </td>
         <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
@@ -71,7 +109,7 @@ Pod network duplication:
         <td> DESTINATION_IPS </td>
         <td> Comma-separated IP addresses and ports of the services or pods or the CIDR blocks (range of IPs) whose accessibility is impacted. Comma-separated IPs or CIDRs can be provided. </td>
         <td> If these values are not provided, the fault induces network chaos for all IPs or destinations. For more information, go to <a href="#destination-ips-and-destination-hosts">destination IPs </a>.</td>
-      </tr>  
+      </tr>
       <tr>
         <td> DESTINATION_HOSTS </td>
         <td> DNS names or FQDN names of the services and ports whose accessibility is impacted. </td>
@@ -81,7 +119,7 @@ Pod network duplication:
         <td> SOURCE_PORTS </td>
         <td> Ports of the target application, the accessibility to which is impacted </td>
         <td> Comma separated port(s) can be provided. If not provided, it will induce network chaos for all ports. For more information, go to <a href="#source-and-destination-ports">source ports</a>.</td>
-      </tr>  
+      </tr>
       <tr>
         <td> DESTINATION_PORTS </td>
         <td> Ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
@@ -91,7 +129,7 @@ Pod network duplication:
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of the total pods to target. Provide numeric values. </td>
         <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a>.</td>
-      </tr> 
+      </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
@@ -100,7 +138,7 @@ Pod network duplication:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -149,7 +187,7 @@ spec:
 
 ### Destination IPs and destination hosts
 
-Default IPs and hosts whose traffic is interrupted due to the network faults. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variabes, respectively.
+Default IPs and hosts whose traffic is interrupted due to the network faults. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
 
 - `DESTINATION_IPS`: It contains the IP addresses and ports of the services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
 - `DESTINATION_HOSTS`: It contains the DNS names or FQDN names of the services and ports whose accessibility is impacted.
@@ -191,7 +229,7 @@ spec:
 
 ### Source and destination ports
 
-By default, the network experiments disrupt traffic for all the source and destination ports. The interruption of specific port(s) can be tuned via `SOURCE_PORTS` and `DESTINATION_PORTS` ENV.
+By default, the network experiments disrupt traffic for all the source and destination ports. The interruption of specific port(s) can be tuned via `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables.
 
 - `SOURCE_PORTS`: It contains ports of the target application, the accessibility to which is impacted
 - `DESTINATION_PORTS`: It contains the ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted
@@ -230,7 +268,7 @@ spec:
 
 ### Ignore source and destination ports
 
-By default, the network experiments disrupt traffic for all the source and destination ports. The specific ports can be ignored via `SOURCE_PORTS` and `DESTINATION_PORTS` ENV.
+By default, the network experiments disrupt traffic for all the source and destination ports. The specific ports can be ignored via `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables.
 
 - `SOURCE_PORTS`: Provide the comma separated source ports preceded by `!`, that you'd like to ignore from the chaos.
 - `DESTINATION_PORTS`: Provide the comma separated destination ports preceded by `!` , that you'd like to ignore from the chaos.
@@ -305,7 +343,7 @@ spec:
 
 The `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
 
-- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
+- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtime. The default value is `containerd`.
 - `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
 
 The following YAML snippet illustrates the use of these environment variables:

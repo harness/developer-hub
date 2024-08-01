@@ -2,24 +2,63 @@
 id: node-cpu-hog
 title: Node CPU hog
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-cpu-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-cpu-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-cpu-hog
+
 ---
 
-Node CPU hog exhausts the CPU resources on a Kubernetes node. 
-- The CPU chaos is injected using a helper pod running the Linux stress tool (a workload generator). 
-- The chaos affects the application for a specific duration. 
+Node CPU hog exhausts the CPU resources on a Kubernetes node.
+- The CPU chaos is injected using a helper pod running the Linux stress tool (a workload generator).
+- The chaos affects the application for a specific duration.
 
-![Node CPU Hog](./static/images/node-stress.png)
+![Node CPU Hog](./static/images/node-cpu-hog.png)
 
 
 ## Use cases
 - Node CPU hog fault helps verify the resilience of applications whose replicas get evicted on the account of the nodes turning unschedulable (in **NotReady** state) or new replicas unable to be scheduled due to a lack of CPU resources.
-- It causes CPU stress on the target node(s). 
-- It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
-- It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition. 
-- It helps scalability of nodes based on growth beyond budgeted pods. 
-- It verifies the autopilot functionality of cloud managed clusters. 
-- It also verifies multi-tenant load issues; that is, when the load increases on one container, it does not cause downtime in other containers. 
+- It causes CPU stress on the target node(s).
+- It simulates the situation of lack of CPU for processes running on the application, which degrades their performance.
+- It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition.
+- It helps scalability of nodes based on growth beyond budgeted pods.
+- It verifies the autopilot functionality of cloud managed clusters.
+- It also verifies multi-tenant load issues; that is, when the load increases on one container, it does not cause downtime in other containers.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: node-cpu-hog
+spec:
+  definition:
+    scope: Cluster
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/exec"]
+    verbs: ["get", "list", "create"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
@@ -61,7 +100,7 @@ Node CPU hog exhausts the CPU resources on a Kubernetes node.
         <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject stress. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
@@ -73,12 +112,12 @@ Node CPU hog exhausts the CPU resources on a Kubernetes node.
         <td> NODE_CPU_CORE </td>
         <td> Number of cores of the CPU to be consumed. </td>
         <td> Default: <code>2</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-cpu-hog#node-cpu-cores">node CPU cores.</a></td>
-      </tr>  
+      </tr>
         <tr>
             <td> NODES_AFFECTED_PERC </td>
             <td> Percentage of total nodes to target, that takes numeric values only. </td>
             <td> Default: 0 (corresponds to 1 node). For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#node-affected-percentage">node affected percentage.</a></td>
-        </tr> 
+        </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple target pods. </td>

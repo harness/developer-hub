@@ -2,21 +2,59 @@
 id: pod-cpu-hog
 title: Pod CPU hog
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-cpu-hog
 ---
 
-Pod CPU hog is a Kubernetes pod-level chaos fault that excessively consumes CPU resources, resulting in a significant increase in the CPU resource usage of a pod. This fault applies stress on the target pods by smimulating lack of CPU for processes running on the Kubernetes application. This degrades the performance of the application. 
+Pod CPU hog is a Kubernetes pod-level chaos fault that excessively consumes CPU resources, resulting in a significant increase in the CPU resource usage of a pod. This fault applies stress on the target pods by simulating lack of CPU for processes running on the Kubernetes application. This degrades the performance of the application.
 
 ![Pod CPU Hog](./static/images/pod-cpu-hog.png)
 
 ## Use cases
 
-CPU hog: 
+CPU hog:
 - Simulates a situation where the application's CPU resource usage unexpectedly increases.
-- Verifies metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition. 
-- Facilitates scalability of the nodes based on the growth beyond budgeted pods. 
-- Verifies the autopilot functionality of cloud managed clusters. 
-- Verifies multi-tenant load issues, that is, when the load increases on one container, this does not cause downtime in other containers. 
+- Verifies metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition.
+- Facilitates scalability of the nodes based on the growth beyond budgeted pods.
+- Verifies the autopilot functionality of cloud managed clusters.
+- Verifies multi-tenant load issues, that is, when the load increases on one container, this does not cause downtime in other containers.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-cpu-hog
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16
@@ -55,12 +93,12 @@ CPU hog:
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to pod CPU hog.</td>
         <td> If this value is not provided, the fault selects the target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods">target specific pods</a></td>
-      </tr> 
-      <tr> 
+      </tr>
+      <tr>
         <td> TARGET_CONTAINER </td>
         <td> Name of the target container under stress. </td>
         <td> If this value is not provided, the fault selects the first container of the target pod. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
-      </tr> 
+      </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
@@ -75,7 +113,7 @@ CPU hog:
         <td> SOCKET_PATH </td>
         <td> Path of the containerd or crio or docker socket file. </td>
         <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path</a> </td>
-      </tr> 
+      </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injecting chaos (in seconds). </td>
@@ -84,7 +122,7 @@ CPU hog:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -96,7 +134,7 @@ CPU hog:
 
 ### CPU cores
 
-Number of CPU cores to target. Tune it by using the `CPU_CORE` environment variable. 
+Number of CPU cores to target. Tune it by using the `CPU_CORE` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 

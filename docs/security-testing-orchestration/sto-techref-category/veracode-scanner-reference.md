@@ -1,7 +1,7 @@
 ---
-title: Veracode scanner reference for STO
+title: Veracode step configuration
 description: Scan code repositories with Veracode.
-sidebar_label: Veracode scanner reference
+sidebar_label: Veracode step configuration
 sidebar_position: 410
 helpdocs_topic_id: cy0deg32w9
 helpdocs_category_id: m01pu2ubai
@@ -10,9 +10,9 @@ helpdocs_is_published: true
 ---
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview#extraction-scans-in-sto" />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
@@ -102,7 +102,7 @@ repository
 
 #### Policy type
 
-The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
+The [scan mode](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) to use. 
 
 ##### Key
 ```
@@ -142,8 +142,8 @@ To set up a Veracode scan, add a Custom Scan step to your pipeline and add the f
 * `product_name` = `veracode`
 * `scan_type` = `repository`
 * `policy_type` — STO supports the following scan policy types for Veracode:
-	+ `orchestratedScan`  — A Custom Scan step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings. See [Run an Orchestration Scan in an STO Pipeline](../use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md).
-	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
+	+ `orchestratedScan`  — A Custom Scan step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings. See [Run an Orchestration Scan in an STO Pipeline](/docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto).
+	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline.md).
 	+ `dataLoad` — A Custom Scan step downloads and ingests results from an external scanner.
 * `product_config_name` = `default`
 * `repository_project` — The name of the repo that gets scanned as shown in the Veracode UI. You use the [Codebase Config object](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) in the Harness pipeline to determine the URL of the repo to scan.  
@@ -179,7 +179,7 @@ import StoLegacyRepo from './shared/custom-scan/_repo.md';
 
 These settings are available to access your Veracode instance when `policy_type` is `orchestratedScan` or `dataLoad`. 
 
-You should [create Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your encrypted passwords/tokens and reference them using the format `<+secrets.getValue("project.my-access-token")>`.
+You should [create Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your encrypted passwords/tokens and reference them using the format `<+secrets.getValue("my-access-token")>`.
 
 #### Product authorization type
 
@@ -265,7 +265,7 @@ The following pipeline example illustrates a dataLoad workflow to ingest data fr
 
 1. A Background step that runs a Docker-in-Docker service (required if you're using a Custom Scan step to configure your integration). 
 
-2. A [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step that specifies the information needed to ingest the scan results from the Veracode server.
+2. A [Custom Ingest](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) step that specifies the information needed to ingest the scan results from the Veracode server.
 
 ![](./static/veracode-pipeline-example.png)
 

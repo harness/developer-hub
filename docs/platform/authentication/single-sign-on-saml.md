@@ -25,6 +25,10 @@ When integrating users through any SAML provider, it is important to note that u
 
 :::
 
+:::tip
+    The **Users** column in the Harness UI is based on the `displayname` in the assertion. If you see an email address in the **Users** column, update the `displayname` with the user's first and last name.
+:::
+
 ## Use System for Cross-domain Identity Management (SCIM) protocol
 
 To ensure continuous and real-time synchronization of user group bindings and access controls, Harness recommends that you utilize the System for Cross-domain Identity Management (SCIM) protocol. SCIM enables real-time syncing of user additions with Harness user groups, ensuring that user permissions and access rights are consistently applied and maintained.
@@ -142,7 +146,7 @@ Sometimes users might have mixed case email addresses in Okta. In these situatio
 
 11. Select **Next**, and then select **Finish**.
 
-### Okta SAML Metadata File
+### Okta SAML metadata file
 
 Download the **Identity Provider metadata** XML from your Okta app and upload it into Harness.
 
@@ -390,7 +394,7 @@ The following App registration permissions are required to configure the optiona
 You must set the above for both Delegated permissions and Application permissions.
 :::
 
-### Azure User Accounts
+### Azure user accounts
 
 The Harness User accounts and their corresponding Azure user accounts must have the same email addresses.
 
@@ -501,7 +505,7 @@ To test Azure SSO using Harness, do the following:
 
 1. In **Harness**, in **ACCOUNT SETUP**->**Authentication**, select **Login via SAML**, to enable SAML SSO using the Azure provider.
 2. Open a new Chrome Incognito window to test the SSO login using a Harness User account other than the one you are currently logged in with.
-3. Using one of the user account email addresses that are shared by Harness and Azure, log into Harness. When you log into Harness, you are prompted with the Microsoft Sign in dialog.
+3. Sign into Harness using one of the user account email addresses shared by Harness and Azure. When you sign into Harness, you are prompted with the Microsoft Sign in dialog.
 4. Enter the Azure user name for the user (most often, the email address), enter the Azure password, and click **Sign in**.
 
 ### SAML authorization with Azure
@@ -608,7 +612,7 @@ To get this information, do the following:
 
 To set up OneLogin as a SAML SSO provider on Harness, you exchange the necessary information between the OneLogin Harness application and Harness. The following sections cover Authentication steps, followed by Authorization steps.
 
-### OneLogin Authentication on Harness
+### OneLogin authentication on Harness
 
 Enabling OneLogin authentication on Harness requires configuration on both platforms, as described in these sections:
 
@@ -639,7 +643,7 @@ Enabling OneLogin authentication on Harness requires configuration on both platf
 
 10. From the resulting dialog, download the .xml authentication file that you'll need to upload to Harness.
 
-#### Assign Users to Roles
+#### Assign users to roles
 
 1. In OneLogin, select **Users** > **Users**.
 
@@ -657,7 +661,7 @@ Enabling OneLogin authentication on Harness requires configuration on both platf
 6. Select the Application, then click **Continue**.
 7. Repeat this section for other users (or groups) that you want to add to Harness.
 
-#### Enable OneLogin as a Harness SSO Provider
+#### Enable OneLogin as a Harness SSO provider
 
 1. In **Home**, click **Authentication** under **ACCOUNT SETUP**. **The Authentication: Configuration** page appears.
 2. Click to expand the **Login via SAML** section.
@@ -676,11 +680,11 @@ Enabling OneLogin authentication on Harness requires configuration on both platf
 
 10. Once the test is successful, click **Confirm** to finish setting up OneLogin authentication.
 
-### OneLogin Authorization on Harness
+### OneLogin authorization on Harness
 
 Once you've enabled OneLogin authentication on Harness, refer to the below sections to enable authorization between the two platforms:
 
-#### Assign Roles to Users
+#### Assign roles to users
 
 Harness' SAML authorization replicates OneLogin Roles as Harness User Groups. Here is how to begin mapping between these entities.
 
@@ -691,7 +695,7 @@ Harness' SAML authorization replicates OneLogin Roles as Harness User Groups. He
 5. Click **Save User** at the upper right.
 6. Repeat this section for other users to whom you want to assign Roles.
 
-#### Define Parameters
+#### Define parameters
 
 1. Select **Applications** > **Parameters**, then select the `+` button to add a new Parameter.
 2. In the resulting **New Field** dialog, assign a **Field name** (for example **Groups**).
@@ -706,7 +710,7 @@ Harness' SAML authorization replicates OneLogin Roles as Harness User Groups. He
 
 6. Select **Save** again at the **Parameters** page's upper right.
 
-#### Sync Users in Harness
+#### Sync users in Harness
 
 1. In **Home**, click **Authentication** under **ACCOUNT SETUP**. **The Authentication: Configuration** page appears.
 2. Click to expand the **Login via SAML** section.
@@ -727,7 +731,7 @@ Harness' SAML authorization replicates OneLogin Roles as Harness User Groups. He
 11. In the **Group Name**, enter the name of the Field Group you configured in OneLogin.
 12. Click **Save**.
 
-#### Test the Integration
+#### Test the integration
 
 After you've synced Users between OneLogin and Harness, users will be assigned to the designated Harness User Group upon your next login to Harness. To test whether OneLogin authentication and authorization on Harness are fully functional do the following:
 
@@ -751,7 +755,7 @@ Harness supports configuration with or without [Just-In-Time (JIT) user provisio
 
 With JIT, you add users to Keycloak, and they will automatically be added to Harness upon first login.
 
-### Set Up a Client in Keycloak
+### Set up a client in Keycloak
 
 1. Log in to your Keycloak account.
 2. Switch to your target Realm, then select **Clients**.
@@ -856,7 +860,7 @@ If the account uses a vanity URL, then use the vanity URL in your SAML setup. Fo
 4. In **Upload the Identity Provider metadata XML downloaded from your app**, select **Upload**, then select the XML file you added when you set your Keycloak configuration steps.
 5. Select **Add**. The new SSO provider is displayed under **Login via SAML**. You might need to expand this section using the arrow on the right-hand side of the screen.
 
-### Enable and Test SSO with Keycloak
+### Enable and test SSO with Keycloak
 
 Now that Keycloak is set up in Harness as a SAML SSO provider, you can enable and test it.
 
@@ -892,3 +896,6 @@ To download your encryption certificate and upload it to your IdP settings, do t
 
 When you sign in to Harness via SAML, the operation is completed using encrypted assertions.
 
+## Set the default experience
+
+Environment administrators can set the default Harness generation landing page, FirstGen or NextGen, for their users to ensure the correct Harness Experience is provided to each user. For more information, go to [Account details](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts#account-details).

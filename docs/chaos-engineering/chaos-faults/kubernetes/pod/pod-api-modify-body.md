@@ -2,7 +2,8 @@
 id: pod-api-modify-body
 title: Pod API modify body
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-api-modify-body
 ---
 
 Pod API modify body is a Kubernetes pod-level chaos fault that modifies the api request and response body by replacing any portions that match a specified regular expression with a provided value. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
@@ -14,6 +15,43 @@ Pod API modify body:
 - It can be used for API testing, by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations.
 - Simulate error conditions and test the error handling capabilities of API by replacing specific patterns in the response body with error messages or custom error codes to test error handling and reporting mechanisms are in place.
 - It can be useful for obscuring or redacting personally identifiable information (PII), such as email addresses or phone numbers, before logging or transmitting the data for security and privacy compliance.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-api-modify-body
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
 
 ### Prerequisites
 - Kubernetes> 1.17
@@ -47,11 +85,6 @@ Pod API modify body:
         <td> String body to overwrite the HTTP response body.</td>
         <td> If no value is provided, response will be an empty body. Defaults to empty body. For more information, go to <a href="#response-body">response body </a></td>
       </tr>
-      <tr>
-        <td> PATH_FILTER </td>
-        <td> Api path or route used for the filtering </td>
-        <td> For more information, go to <a href="#path-filter">path filter </a></td>
-      </tr>
     </table>
 
 ### Optional tunables
@@ -62,6 +95,46 @@ Pod API modify body:
         <th> Notes </th>
       </tr>
       <tr>
+        <td> PATH_FILTER </td>
+        <td> API path or route used for the filtering. </td>
+        <td> Targets all paths if not provided. For more information, go to <a href="#path-filter">path filter </a>.</td>
+      </tr>
+      <tr>
+        <td> HEADERS_FILTERS </td>
+        <td> Filters for HTTP request headers accept multiple comma-separated headers in the format <code>key1:value1,key2:value2</code>. </td>
+        <td> For more information, go to <a href="#advanced-filters">header filters</a>.</td>
+      </tr>
+      <tr>
+        <td> METHODS </td>
+        <td> The HTTP request method type accepts comma-separated HTTP methods in upper cases, such as "GET,POST". </td>
+        <td> For more information, go to <a href="#advanced-filters">methods</a>.</td>
+      </tr>
+      <tr>
+        <td> QUERY_PARAMS </td>
+        <td> HTTP request query parameter filters accept multiple comma-separated query parameters in the format of <code>param1:value1,param2:value2</code>. </td>
+        <td> For more information, go to <a href="#advanced-filters">query params</a>.</td>
+      </tr>
+<tr>
+        <td> SOURCE_HOSTS </td>
+        <td> Includes comma-separated source host names as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
+        <td> For more information, go to <a href="#advanced-filters">source hosts</a>.</td>
+      </tr>
+      <tr>
+        <td> SOURCE_IPS </td>
+        <td> This includes comma-separated source IPs as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
+        <td> For more information, go to <a href="#advanced-filters">source ips</a>.</td>
+      </tr>
+      <tr>
+        <td> DESTINATION_HOSTS </td>
+        <td> Comma-separated destination host names are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
+        <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
+      </tr>
+      <tr>
+        <td> DESTINATION_IPS </td>
+        <td> Comma-separated destination IPs are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
+        <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
+      </tr>
+      <tr>
         <td> PROXY_PORT </td>
         <td> Port where the proxy listens for requests.</td>
         <td> Default: 20000. For more information, go to <a href="#advanced-fault-tunables">proxy port</a></td>
@@ -69,7 +142,7 @@ Pod API modify body:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SERVICE_DIRECTION </td>
@@ -326,7 +399,7 @@ For outbound traffic, setting `HTTPS_ENABLED` to `true` is required to enable HT
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]: # "./static/manifests/pod-api-latency/https-enabled.yaml yaml"
+[embedmd]: # "./static/manifests/pod-api-modify-body/https-enabled.yaml yaml"
 
 ```yaml
 ## enable https support
@@ -343,7 +416,7 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: pod-api-latency
+    - name: pod-api-modify-body
       spec:
         components:
           env:
@@ -404,6 +477,63 @@ spec:
             # provide the api path filter
             - name: PATH_FILTER
               value: '/status'
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
+            - name: RESPONSE_BODY
+              value: "/.+/test"
+```
+
+### Advanced filters
+
+- `HEADERS_FILTERS`: The HTTP request headers filters, that accept multiple comma-separated headers in the format of `key1:value1,key2:value2`.
+- `METHODS`: The HTTP request method type filters, that accept comma-separated HTTP methods in upper case, that is, `GET,POST`.
+- `QUERY_PARAMS`: The HTTP request query parameters filter, accepts multiple comma-separated query parameters in the format of `param1:value1,param2:value2`.
+- `SOURCE_HOSTS`: Comma-separated source host names filters, indicating the origin of the HTTP request. This is relevant to the `ingress` type, specified by `SERVICE_DIRECTION` environment variable.
+- `SOURCE_IPS`: Comma-separated source IPs filters, indicating the origin of the HTTP request. This is specifically relevant to the `ingress` type, specified by `SERVICE_DIRECTION` environment variable.
+- `DESTINATION_HOSTS`: Comma-separated destination host names filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `SERVICE_DIRECTION` environment variable.
+- `DESTINATION_IPS`: Comma-separated destination IPs filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `SERVICE_DIRECTION` environment variable.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/pod-api-modify-body/advanced-filters.yaml yaml)
+```yaml
+# it injects the api modify body fault
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: pod-api-modify-body
+      spec:
+        components:
+          env:
+            # provide the headers filters
+            - name: HEADERS_FILTERS
+              value: 'key1:value1,key2:value2'
+            # provide the methods filters
+            - name: METHODS
+              value: 'GET,POST'
+            # provide the query params filters
+            - name: QUERY_PARAMS
+              value: 'param1:value1,param2:value2'
+            # provide the source hosts filters
+            - name: SOURCE_HOSTS
+              value: 'host1,host2'
+            # provide the source ips filters
+            - name: SOURCE_IPS
+              value: 'ip1,ip2'
+            # provide the connection type
+            - name: SERVICE_DIRECTION
+              value: 'ingress'
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
               value: "80"

@@ -113,6 +113,31 @@ Harness doesn't have a variable like `<+currentuser.role>` that returns the role
 
 You can also set the first step of the pipeline to call the [Get aggregated user](https://apidocs.harness.io/tag/User#operation/getAggregatedUser) endpoint, which lists all roles assigned to the user, and then configure a [conditional execution](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings) that only allows the pipeline to proceed if the roles pass a JEXL condition.
 
+### Can Harness NextGen sync projects, connectors, etc., to GitHub in addition to pipelines, InputSets, and templates?
+
+No, Harness NextGen Git Experience only supports syncing pipelines, input sets, and templates to Git repositories. Other entities such as projects and connectors cannot be synced to Git repositories using Harness NextGen Git Experience.
+
+### How can we trigger a Lambda function from Harness and pass variables such as credentials (username and password) during the trigger?
+
+To trigger a Lambda function from Harness and pass variables such as credentials, you can use the below steps:
+
+- In the Payload section, you can pass in any variables or data you want to send to the Lambda function. For example, you can pass in credentials as environment variables or as part of the payload data.
+- Save and run the pipeline to trigger the Lambda function with the specified payload.
+
+You can use Harness trigger functionality to trigger the AWS Lambda pipeline execution based on your requirements. You can use Cron-based Triggers, Trigger pipelines on a new artifact or Webhook triggers.
+
+### What happens if a test pipeline is triggered from the deployment pipeline?
+
+The triggered test pipeline will run independently and will not be part of the original deployment pipeline. It will have its stages and steps, separate from the deployment pipeline.
+
+### How can we handle test failures if the test pipeline is triggered independently?
+
+If the test pipeline fails, you can utilize the rollback feature to revert the deployment. However, this rollback functionality depends on having a previous successful execution to revert to.
+
+#### Is there a way to integrate the triggered test pipeline within the original deployment pipeline?
+
+No, currently there is no way to fully integrate a triggered test pipeline within the original deployment pipeline. The test pipeline will always operate as a separate entity.
+
 ## API
 
 ### Can I run pipelines through the API or CLI?
@@ -261,6 +286,13 @@ You can use the [getExecutionDetailV2 API](https://apidocs.harness.io/tag/Pipeli
 
 To minimize GitHub calls from Harness, enabling the bi-directional Git Experience can significantly reduce the number of requests.
 
+### Can we set up separate failure strategies for individual steps in a step group?
+
+No, failure strategies apply to all steps within a step group.
+
+### How can I restrict approval for the user who ran the pipeline?
+
+You can select the **Disallow the executor from approving the pipeline** option in the Approval step.
 ## Pipeline triggers
 
 ### How can I obtain the triggered build version value, trigger ID, or trigger URL during pipeline runtime when a pipeline is triggered by a PR?
@@ -490,6 +522,10 @@ When Harness APIs detect pipeline template changes that require reconciliation, 
 
 For more information, go to [Reconcile pipeline template changes](/docs/platform/templates/reconcile-pipeline-templates/).
 
+### Can we initiate a test pipeline from our deployment pipeline template?
+
+No, triggering another pipeline from a custom webhook trigger will not integrate the triggered pipeline within the original pipeline. The triggered pipeline will operate independently with its stages and steps.
+
 ## Pipeline notifications
 
 ### How do I make a pipeline report to Slack?
@@ -632,13 +668,16 @@ You can utilize the expression `<+pipeline.stages.STAGE_ID.executionId>` to retr
 
 Currently there is no support for notifications when a status check fails.
 
-#### Why did updating the app ID in NextGen to the new Microsoft Entra ID app cause a conflict with FirstGen mapping in SAML authentication, despite them being considered separate instances?
+### Why did updating the app ID in NextGen to the new Microsoft Entra ID app cause a conflict with FirstGen mapping in SAML authentication, despite them being considered separate instances?
+
 When creating a new SAML app integration in NextGen, it automatically inherits the settings from the existing FirstGen app integration. Consequently, any modifications made to the SAML app integration in NextGen will also impact the integration in FirstGen.
 
 This occurs because the SAML app integration settings are stored at the account level, affecting all instances associated with that account. To prevent conflicts between the SAML app integrations in FirstGen and NextGen, ensure that the email addresses used in both instances match.
 
-#### How can I create a delegate with Terraform?
+### How can I create a delegate with Terraform?
+
 The `main.tf` sample file includes a delegate token option, facilitating automatic delegate registration at the token's scope upon installation. For instance, a project token automatically registers the delegate at the project scope. To locate the listed delegate, navigate to the project where the token was generated.
 
-#### What are there discrepancies between the user list, access control, and dashboard?
+### What are there discrepancies between the user list, access control, and dashboard?
+
 Harness includes user login data in audit history, but it's not structured for analytics purposes. Creating a custom view for this data isn't currently supported.

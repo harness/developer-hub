@@ -86,10 +86,25 @@ topics outlined in this example table:
 
 TechDocs uses MkDocs as the static site generator. Visit https://www.mkdocs.org for more information about MkDocs.
 ```
+3. Now add an `mkdocs.yaml` next to where you have the `catalog-info.yaml`, `mkdocs.yml` file is a sibling of `catalog-info.yaml`
 
-3. Edit the `catalog-info.yaml` and add the TechDocs annotation.
+Here's the content for `mkdocs.yaml`:
 
-4. In the `metadata.annotations` field, add `backstage.io/techdocs-ref: dir:.`.
+```YAML
+site_name: 'Example Documentation'
+repo_url: https://github.com/your_org/your_repo
+edit_uri: url to your index.md
+
+nav:
+  - Home: index.md
+
+plugins:
+  - techdocs-core
+```
+
+4. Edit the `catalog-info.yaml` and add the TechDocs annotation.
+
+5. In the `metadata.annotations` field, add `backstage.io/techdocs-ref: dir:.`.
 
 ![](static/techdocs-ref.png)
 

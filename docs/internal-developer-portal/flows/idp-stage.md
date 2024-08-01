@@ -11,11 +11,6 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-:::info
-
-Presently this Feature is behind the Feature Flag `IDP_ENABLE_STAGE`, please contact with [Harness Support](mailto:support@harness.io) to enable it in your Account. 
-
-:::
 
 The self-service flow in IDP is powered by the Harness Pipelines. A stage is a part of a pipeline that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
 
@@ -601,6 +596,77 @@ Read more on [how to create bot-tokens](https://api.slack.com/start/quickstart#s
 
 1. Now create a new secret and add this as a **Secret** under the **Slack Secret Key**.
 
+### 8. Create Resource
+
+This step in developer portal stage allows you to **execute only OpenTofu (Open Source Terraform) module related to [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs)** to create or update resources. You can use this step to create Harness entities like projects, users, connectors, pipelines, secrets, etc.
+
+<Tabs>
+<TabItem value="YAML" label="YAML">
+
+```YAML
+- step:
+    type: CreateResource
+    name: CreateResource_1
+    identifier: CreateResource_1
+    spec:
+      resourceDefinition: |-
+        resource "harness_platform_pipeline" "pipeline" {
+          identifier = "identifier"
+          org_id     = "orgIdentifier"
+          project_id = "projectIdentifier"
+          name       = "name"
+          yaml = <<-EOT
+            pipeline:
+              name: name
+              identifier: identifier
+              projectIdentifier: projectIdentifier
+              orgIdentifier: orgIdentifier
+              stages:
+                - stage:
+                    name: idp
+                    identifier: idp
+                    description: ""
+                    type: IDP
+                    spec:
+                      platform:
+                        os: Linux
+                        arch: Amd64
+                      runtime:
+                        type: Cloud
+                        spec: {}
+                      execution:
+                        steps:
+                          - step:
+                              type: Run
+                              name: Run_1
+                              identifier: Run_1
+                              description: <+input>
+                              spec:
+                                shell: Sh
+                                command: echo "Hello"
+                    tags: {}
+          EOT
+        }
+      xApiKey: Harness PAT for the account you want to create the pipeline
+```
+This step comes with a sample **Resource Definition** to create a Harness Pipeline with a Run Step. This contains dummy values, hence won't work consider replacing it with the resource definition of yours. Also refer to [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you with Harness Resource definitions.
+
+The `xApiKey` is the [Harness PAT](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/) for the account where you want to create the pipeline.
+
+</TabItem>
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
+
+- You can select the step **Create Resource** from the **Step Library**. 
+
+![](./static/create-resourcesl.png)
+
+- You can add a **Name** to the step followed by adding the **Resource Definition** and create a Harness Entity using Resources supported by our [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs). You'll find an already existing sample **Resource Definition** by default, that can create a Harness Pipeline with a **Run Step**.  
+
+![](./static/create-resource-step.png)
+
+</TabItem>
+</Tabs>
+
 ## Final Pipeline using Developer Portal Stage
 
 :::info
@@ -807,3 +873,93 @@ pipeline:
 </TabItem>
 </Tabs>
 
+## Specify the Harness IDP images used in your pipelines
+
+You can use the Harness IDP `execution-config` API to specify or update the Harness IDP images used in your infrastructure by specifying image tags.
+
+:::info
+
+Certain steps are common across different stages in Harness Pipeline but the images used in each of them is specific to the stage they are part of, like `Run Step`.
+
+:::
+
+API key authentication is required. For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). For more information about authentication, go to the [Harness API documentation](https://apidocs.harness.io/#section/Introduction/Authentication).
+
+1. Send a `get-default-config` request to get a list of the latest Harness IDP worklfows excuted. You can use the `infra` parameter to get `k8` images or `VM` images.
+
+   ```json
+   curl --location --request GET "https://app.harness.io/gateway/idp/execution-config/get-default-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
+   --header 'X-API-KEY: $API_KEY'
+   ```
+
+   The response payload shows the latest supported images and their tags, for example:
+
+   ```json
+   {
+    "status": "SUCCESS",
+     "data": {
+        "cookieCutter": "harness/cookiecutter:1.9.1",
+        "createRepo": "harness/createrepo:1.9.0",
+        "directPush": "harness/directpush:1.9.0",
+        "registerCatalog": "harness/registercatalog:1.9.0",
+        "createCatalog": "harness/createcatalog:1.9.0",
+        "slackNotify": "harness/slacknotify:1.9.0",
+        "createOrganisation": "harness/createorganisation:1.9.0",
+        "createProject": "harness/createproject:1.9.0"
+     },
+     "metaData": null,
+     "correlationId": "08919155-a6d6-4bd3-8401-6b86318c85ca"
+   }
+   ```
+
+2. Send a `get-customer-config` request to get the build images that your IDP pipelines currently use. When `overridesOnly` is `true`, which is the default value, this endpoint returns the non-default images that your pipeline uses.
+
+   ```json
+   curl --location --request GET "https://app.harness.io/gateway/idp/execution-config/get-customer-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8&overridesOnly=true" \
+   --header 'X-API-KEY: $API_KEY'
+   ```
+
+   If the response contains `null`, your pipeline is using all default images, for example:
+
+   ```json
+   {
+       "status": "SUCCESS",
+       "data": {},
+       "metaData": null,
+       "correlationId": "11ce1bc8-b337-4687-9ab9-e13d553ae82f"
+   }
+   ```
+
+3. Send an `update-config` (POST) request with a list of the images you want to update and the new tags to apply.
+
+   ```json
+   curl --location --request POST "https://app.harness.io/gateway/idp/execution-config/update-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
+   --header 'X-API-KEY: $API_KEY' \
+   --header 'Content-Type: application/json' \
+   --data-raw '[
+       {
+           "field": "registerCatalog",
+           "value": "harness/registercatalog:1.9.0"
+       },
+       {
+           "field": "slackNotify",
+           "value": "harness/slacknotify:1.9.0"
+       }
+   ]'
+   ```
+
+4. To reset one or more images to their defaults, send a `reset-config` (POST) request with a list of the images to reset.
+
+   ```json
+   curl --location --request POST "https://app.harness.io/gateway/idp/execution-config/reset-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
+   --header 'X-API-KEY: $API_KEY' \
+   --header 'Content-Type: application/json' \
+   --data-raw '[
+       {
+           "field": "registerCatalog"
+       },
+       {
+           "field": "createRepo"
+       }
+   ]'
+   ```

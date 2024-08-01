@@ -5,6 +5,7 @@ sidebar_position: 90
 sidebar_label: GitHub
 redirect_from:
   - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration
+  - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github
 ---
 
 GitHub provides hosting for software development and version control using Git.
@@ -101,7 +102,7 @@ To create a GitHub personal access token to configure the SEI GitHub integration
 2. Select **Available Integrations**, locate the **GitHub integration**, and select **Install**.
 3. Select **GitHub Cloud** as the ~~i~~ntegration type.
 4. Select the **Using Access Token** tile to set up the connection with GitHub.
-5.  Configure the integration settings and authentication:&#x20;
+5.  Configure the integration settings and authentication: 
 
     * **Integration Name:** Name for your integration.
     * **Description (optional):** Add a description for the integration.

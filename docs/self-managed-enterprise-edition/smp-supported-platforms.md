@@ -20,7 +20,6 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 * [Chaos Engineering](/docs/chaos-engineering/whats-supported)
 * [Cloud Cost Management (Beta)](/docs/cloud-cost-management/get-started/ccm-smp/smp-ccm-roadmap)
 * [Continuous Delivery and GitOps](/docs/continuous-delivery/cd-integrations)
-* [Continuous Error Tracking (Beta)](/docs/continuous-error-tracking/whats-supported)
 * [Continuous Integration](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/#feature-compatibility-matrix)
 * [Custom Dashboards](/docs/platform/dashboards/cdb-whats-supported)
 * [Feature Flags](/docs/feature-flags/ff-supported-platforms)
@@ -56,8 +55,8 @@ The following permissions are required:
 * Contact [Harness Support](mailto:support@harness.io) for license information.
 
 ## Supported functionality
-* [Self-signed certificates](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga/#use-self-signed-certificates-with-helm-based-installations)
-* [Air-gap mode](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/)
+* [Self-signed certificates](/docs/self-managed-enterprise-edition/install/install-using-helm/#use-self-signed-certificates-with-helm-based-installations)
+* [Air-gap mode](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment)
 * [Infrastructure monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem)
 * [Backup and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
 * [External Database](./advanced-configurations/external-db/configure-external-databases)

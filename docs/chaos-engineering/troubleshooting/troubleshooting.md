@@ -12,7 +12,7 @@ This section walks you through some common pain points and their workarounds.
 
 ### Unable to connect to Kubernetes infrastructure server
 
-Most times, chaos infrastructure errors are a result of issues with the chaos infrastructure setup.
+Most times, chaos infrastructure errors are due to issues with the chaos infrastructure setup.
 
 #### Workaround
 
@@ -27,7 +27,7 @@ If you are unable to connect to the Kubernetes infrastructure server, try the fo
 
 ### Connection to Kubernetes infrastructure fails after setting up the namespace and pods
 
-When you set up the namespace and pods but when you connect to the Kubernetes infrastructure, it fails to connect, you can execute the commands mentioned below.
+When you set up the namespace and pods and connect to the Kubernetes infrastructure, it fails to connect. Execute the commands mentioned below:
 
 #### Debug
 
@@ -48,20 +48,20 @@ When you set up the namespace and pods but when you connect to the Kubernetes in
           ```
 Check the logs of all pods in the namespace.
 
-### Cluster in GCP has unschedulable pods
+### Cluster in GCP has un-schedulable pods
 
-GCP may throw an error stating that a cluster has unschedulable pods. This may occur if you don't have sufficient space in your Kubernetes cluster.
+GCP might throw an error stating that a cluster has pods that can't be scheduled. This may occur if you don't have sufficient space in your Kubernetes cluster.
 
 ![](./static/images/troubleshooting-nextgen-00.png)
 
 #### Workaround
 
-If your Kubernetes cluster isn't big enough and doesn't have [autoscaling](https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps#autoscaling_deployments) enabled, it can't run the delegate (remote component that helps access your k8s cluster and inject faults).
+If your Kubernetes cluster isn't big enough and doesn't have [autoscaling](https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps#autoscaling_deployments) enabled, it can't run the delegate (the remote component that helps access your K8s cluster and inject faults).
 To fix this issue, perform the following steps:
 1. Add more space or turn on autoscaling
 2. Wait for the cluster to restart
 3. Reconnect to the cluster
-4. Now rerun the following command:
+4. Now re-run the following command:
 
 ```
 $ kubectl apply -f harness-chaos-enable.yml
@@ -71,7 +71,7 @@ $ kubectl apply -f harness-chaos-enable.yml
 
 ### Environment variable and secret usage references in source mode of command probe
 
-You can use secrets and environment variables in the [**source mode**](/docs/chaos-engineering/features/probes/cmd-probe#source-mode) of the command probe using the manifest in the following manner:
+You can use secrets and environment variables in the [**source mode**](/docs/chaos-engineering/features/resilience-probes/cmd-probe#source-mode) of the command probe using the manifest in the following manner:
 
 ```yaml
 source:
@@ -132,14 +132,14 @@ spec:
 ```
 
 :::tip
-The `--vm-populate` in the above manifest populates the memory, thereby stressing it. This is an example to demonstrate how the `stressNGFlags` flag attribute can be utilized.
+The `--vm-populate` in the above manifest populates the memory, thereby stressing it. It is an example to demonstrate how you can utilize the `stressNGFlags` flag attribute.
 :::
 
-### Executing an experiment moves it to QUEUED state
+### Executing an experiment moves it to a QUEUED state
 
 When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/components#20-chaos-manager) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/architecture-and-security/architecture/components#components-common-to-all-chaos-infrastructure).
 
-This could be due to a variety of reasons, such as:
+It could be due to a variety of reasons, such as:
 
 1. The chaos manager couldn't create the task for experiment creation.
 2. Kubernetes IFS couldn't fetch the task for experiment creation.
@@ -150,14 +150,14 @@ This could be due to a variety of reasons, such as:
 1. Check the subscriber's health; if the subscriber isn't active, it can't fetch the tasks to create the experiment. In such a case, check the logs of the subscriber and restart the subscriber pod.
 2. Check the logs of the control plane components, such as Chaos Manager and Kubernetes IFS.
 
-### While executing an experiment, it directly moves to ERROR state and the execution data for the run is absent
+### While executing an experiment, it directly moves to the ERROR state and the execution data for the run is absent
 
 If you execute a chaos experiment but it directly moves to the ERROR state without providing any execution data, it means that the experiment was successfully sent to the subscriber, but the subscriber failed to start the experiment.
 
-This could be due to a variety of reasons, such as:
+It could be due to a variety of reasons, such as:
 
 1. Lack of relevant permissions for the subscriber while creating the experiment on the Kubernetes cluster.
-2. The name of the experiment is too long, and it can't be applied to the Kubernetes cluster due to the need to adhere to certain Kubernetes policies.
+2. The experiment name is too long, and it can't be applied to the Kubernetes cluster due to the need to adhere to certain Kubernetes policies.
 3. Incorrect syntax of the chaos experiment may not allow the subscriber to start the experiment.
 
 #### Debug
@@ -173,17 +173,17 @@ To verify the earlier statement:
 
     ![navigate to page](./static/images/navigate-1.png)
 
-2. Click the `⋮` icon and click **View runs**. Navigate to the specific run and click the `⋮` icon and click **View Run Report**.
+2. Select the `⋮` icon and select **View runs**. Navigate to the specific run, select the `⋮` icon, and then select **View Run Report**.
 
     ![view runs](./static/images/view-report-2.png)
 
 3. If you don't see the **experiment run ID** in the **Run details**, it means the experiment run couldn't start, since an ID is generated after an experiment run begins.
 
-This could be due to a variety of reasons, such as:
+It could be due to a variety of reasons, such as:
 
-1. The experiment name is too long, and when the workflow controller tries to create a run for it by adding a hash to it, the name exceeds the threshold value.
+1. The experiment name is too long, and when the workflow controller tries to create a run for it by adding a hash, the name exceeds the threshold value.
 2. The experiment doesn't have a label as an instance ID.
-3. Workflow has a label instance ID, but it doesn't match the instance ID available in the workflow controller configmap.
+3. Workflow has a label instance ID but doesn't match the instance ID available in the workflow controller ConfigMap.
 
 #### Debug
 
@@ -192,7 +192,7 @@ This could be due to a variety of reasons, such as:
     1. If the logs suggest that the experiment run name exceeds the limit, change/reduce the length of the experiment name.
 
 2. If the experiment doesn't have a label as an instance ID (aka infrastructure ID), check if you deployed the experiment manually or generated it from the UI (frontend).
-    1. The manifest generated from the UI will always have a label associated with it. If you don't see a label, use the infrastructure ID of the chaos infrastructure on which you are running the experiment. Also report the issue to [Harness support](mailto:support@harness.io).
+    1. The manifest generated from the UI will always have a label with it. If you don't see a label, use the infrastructure ID of the chaos infrastructure on which you run the experiment. Also report the issue to [Harness Support](mailto:support@harness.io).
     2. If you are using an API to generate the manifest, check the manifest for any erroneous values.
 
 3. If the workflow has a label instance ID but it doesn't match the instance ID available in the workflow controller configmap:
@@ -217,7 +217,7 @@ kubectl describe pod <pod-name> -n <namespace>
 
 The events section of the result of executing the earlier command will help determine whether the issue is related to memory/CPU. If so, you can free the required memory/CPU.
 
-### After injecting chaos, experiment aborts and probes fail continuously, how can this be addressed?
+### After injecting chaos, the experiment aborts, and probes fail continuously, how can this be addressed?
 
 If you inject chaos into your application, but the experiment gets aborted due to continuous probe failure, you can:
 
@@ -225,7 +225,7 @@ If you inject chaos into your application, but the experiment gets aborted due t
 1. Add 1 to 2 s of initial delay (**Initial Delay** is the field name while configuring the resilience probes); and
 2. Provide multiple attempts (**Attempt** is the field name in resilience probes).
 
-### Live logs of my experiment run are not showing up, throws error instead.
+### Live logs of an experiment result in an error
 
 #### Debug
 If you try to access the live logs of your experiment run but you receive an error instead or nothing shows up:
@@ -234,7 +234,7 @@ If you try to access the live logs of your experiment run but you receive an err
 
 ## Windows chaos infrastructure troubleshooting
 
-### While installing Windows chaos infrastructure, service created but in Stopped state
+### While installing Windows chaos infrastructure, service was created but in the Stopped state
 
 **Error Message:**
 Service 'WindowsChaosInfrastructure' cannot be started due to the following error: Cannot start service WindowsChaosInfrastructure on computer '.'.
@@ -267,7 +267,7 @@ Check Logs: If the issue persists, refer to the log file at `C:\\HCE\Logs` for m
 
 **(Method-2) Grant Logon as a Service Permission:**
 
-If the Windows Chaos Infrastructure service is created but fails to start due to login permission issues for the user account, you can resolve this by manually granting logon permissions:
+If the Windows Chaos Infrastructure service is created but fails to start due to login permission issues for the user account, you can resolve this by manually granting login permissions:
 
 1. Open Task Manager.
 
@@ -294,13 +294,9 @@ If the Windows Chaos Infrastructure service is created but fails to start due to
     ![provide user creds](./static/images/task-manager-service-logon.png)
 
   - Enter the credentials of the user account that should run the service.
-  - Click "Apply". You should receive a confirmation that the account has been granted logon as a service rights.
+  - Select **Apply**. You should receive a confirmation that the account has been granted logon as a service right.
 
-5. Start the Service:
-
-Apply the changes and start the service. The service should now enter a running state.
-
-By following these steps, you can manually grant the necessary permissions for the service to start successfully.
+5. Start the Service: Apply the changes and start the service. The service should now enter a running state.
 
 ### Windows chaos infrastructure installation failed with "The Specified Service Already Exists"
 
@@ -331,9 +327,7 @@ The account name is invalid or does not exist, or the password is invalid for th
 
 **Check Windows version:** The error indicates incompatibility with the Windows version. Currently, only 64-bit versions are supported. Support for 32-bit versions is planned for future releases.
 
-
 ### Windows infrastructure default command fails with "Could not create SSL/TLS secure channel"
-
 
 #### Solution
 
@@ -351,4 +345,4 @@ powershell -Command "& { [Net.ServicePointManager]::SecurityProtocol = [Net.Secu
 
 This modification forces PowerShell to use TLS 1.2 for secure connections, thereby resolving the SSL/TLS issue.
 
-For further assistance, please refer to the [documentation](/docs/chaos-engineering/chaos-faults/windows) or contact [Harness support](mailto:support@harness.io).
+For further assistance, please refer to the [documentation](/docs/chaos-engineering/chaos-faults/windows) or contact [Harness Support](mailto:support@harness.io).

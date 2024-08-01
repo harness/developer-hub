@@ -50,7 +50,8 @@ You can save the following Harness resources in Git using Harness Git Experience
 * Templates
 * Services
 * Environment 
-* Infrastructure Definitions 
+* Infrastructure Definitions
+* Policies
 
 
 :::info note
@@ -114,6 +115,37 @@ For more information, go to [Default settings](/docs/platform/settings/default-s
 
 :::
 
+### Repo Listing
+
+:::info note
+Currently this feature is behind feature flag `CDS_LIST_REPO_V2 `. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+For a certain connector, you can now search for repositories with support for infinite scroll. Simply enter any keyword to see related repositories listed. If you can't find the repository you're looking for, you can also add it manually.
+
+![](./static/repolisting_add.png)
+
+If the repository actually exists it will fetch the branch name, if not it will throw an error.
+
+![](./static/repolisting_error.png)
+
+:::important
+Search in repo listing is not supported for Azure Repos.
+:::
+
+### Branch Listing
+
+:::info note
+Currently this feature is behind feature flag `CDS_LIST_BRANCH_V2 `. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can now search for branches in a given repository with support for infinite scroll while creating remote entities. Simply enter any keyword to see related branches listed. If you can't find the branch you're looking for, you can also add it manually.
+
+:::important
+1. Search in branch listing is not supported for Github and Github Apps.
+2. Please note that search in branch listing is only available while creating remote entities.
+:::
+
 
 ### Multiple branch support
 
@@ -164,6 +196,20 @@ You will need a Harness Git Connector to connect with the Git provider and perfo
 
 :::
 
+:::tip
+When using **GitHub Enterprise Cloud** as your Git provider, we recommend utilizing a GitHub App to avoid rate limit issues.
+
+You have multiple options for making API requests:
+
+- **Personal Access Token**: You can use a personal access token to make API requests. These requests count towards your personal rate limit of 5,000 requests per hour.
+
+- **GitHub App**: Authorizing a GitHub App to make API requests on your behalf increases your rate limit. If the GitHub App is owned by a GitHub Enterprise Cloud organization, the rate limit is increased to 15,000 requests per hour.
+
+- **OAuth App**: Similarly, authorizing an OAuth app to make API requests on your behalf also increases your rate limit. If the OAuth app is owned or approved by a GitHub Enterprise Cloud organization, the rate limit is increased to 15,000 requests per hour for members of the organization.
+
+By using a GitHub App or an OAuth app associated with a GitHub Enterprise Cloud organization, you can benefit from a higher rate limit, thus preventing interruptions due to rate limiting.
+:::
+
 #### Repository
 
 Harness configurations are stored in repositories. These configuration files can be kept in the same repository as the code, or they can be kept separate. You can map your resources and configurations to multiple repositories.
@@ -182,4 +228,5 @@ If changes are made in Git, metadata such as id and scope parameters are not val
 * [Harness Git Experience Quickstart](configure-git-experience-for-harness-entities.md)
 * [Manage input sets and Triggers in Git Experience](manage-input-sets-in-simplified-git-experience.md)
 * [Manage a Harness pipeline Repo using Git Experience](manage-a-harness-pipeline-repo-using-git-experience.md)
-
+* [Manage Services using Git Experience](manage-services-using-git-experience.md)
+* [Manage Environment and Infrastructure Definition using Git Experience](manage-environments-infra-definitions.md)

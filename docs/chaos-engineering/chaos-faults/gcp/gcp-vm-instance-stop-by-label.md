@@ -80,7 +80,7 @@ stringData:
       </tr>
       <tr>
         <td> MANAGED_INSTANCE_GROUP </td>
-        <td> It is set to <code>enable</code> if the target instance is a part of the managed instance group. The fault doesn't start the VM instances after the duration when this variable is set. Instead, the fault checks the instance group for new instances.</td> 
+        <td> It is set to <code>enable</code> if the target instance is a part of the managed instance group. The fault doesn't start the VM instances after the duration when this variable is set. Instead, the fault checks the instance group for new instances.</td>
         <td> Defaults to <code>disable</code>. For more information, go to <a href="#managed-instance-group">managed instance group. </a></td>
       </tr>
       <tr>
@@ -103,7 +103,15 @@ stringData:
       <td>Determines if you wish to run the default health check which is present inside the fault. </td>
       <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
       </tr>
-    </table> 
+    </table>
+
+### IAM permissions
+
+Listed below are the IAM permissions leveraged by the fault:
+- `compute.instances.list`
+- `compute.instances.get`
+- `compute.instances.stop`
+- `compute.instances.start`
 
 ### Target GCP instances
 

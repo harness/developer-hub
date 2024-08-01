@@ -191,7 +191,13 @@ In this example, we're going to use a Rolling [deployment strategy](/docs/contin
 1. Select **Rolling**, and select **Apply**.
 2. The **Helm Deployment** step is added to **Execution**.
 
-That's it. Now you're ready to deploy.
+## Environment Variables
+
+Native Helm Deploy and Native Helm Rollback steps support setting environment variables.
+
+Under **Optional Configuration** for the step, add any environment variables that you would like to set during the deployment.
+
+![](./static/helm_environment_variables.png)
 
 ## Deploy and review
 
@@ -205,6 +211,12 @@ That's it. Now you're ready to deploy.
    ![](./static/native-helm-quickstart-153.png)
 
 5. Select the **Helm Deployment** step and expand **Wait for Steady State**.
+
+
+:::important
+Enable the feature flag `CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG` to enable steady state check for Native Helm deployments on Kubernetes clusters using 1.16 or higher. There is a behavior change in how Harness tracks managed workloads for rollback. We are not using ConfigMap anymore to match the deployed resources' release name to track managed workloads for rollback. We use `helm get manifest` to retrieve the workloads from a Helm release. For steady-state checks of the kubernetes jobs, we provide an option in account/org/project settings. This is not enabled by default. For customer's who didn't have this feature flag enabled before, they may start seeing that the Wait for steady state check is not skipped and won't need to configure it.
+:::
+
 
 You can see `Status : quickstart-quickstart deployment "quickstart-quickstart" successfully rolled out.`
 
@@ -299,16 +311,6 @@ When you want to deploy a commodity Helm Chart (ElasticSearch, Prometheus, etc.)
 Harness is able to track the deployed Helm Chart in the Services dashboard. All chart information is also available to view in the Services dashboard. 
 
 This feature will be available for users on delegate version 810xx. Please ensure the delegate is up to date before opting into this feature.
-
-
-## Skipping chart tests
-
-If your charts contain [Helm charts tests](https://helm.sh/docs/topics/chart_tests/) and you want to skip these tests during deployment, you can add the `--skip-tests` command flag to the manifest details of the Helm chart.
-
-1. In the Harness Native Helm service, in **Manifests**, edit the chart.
-2. In **Manifest Details**, select **Advanced**.
-3. In **Command Type**, select **Template**.
-4. In **Flag**, enter `--skip-tests`. 
 
 ## Native Helm notes
 

@@ -10,16 +10,16 @@ ECS container CPU hog disrupts the state of infrastructure resources. It induces
 - This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
 
 
-![ECS Container CPU Hog](./static/images/ecs-stress-chaos.png)
+![ECS Container CPU Hog](./static/images/ecs-container-cpu-hog.png)
 
 ## Use cases
 ECS Container CPU hog:
-- Evicts the application (task container) thereby impacting its delivery. These issues are known as noisy neighbour problems. 
-- Simulates a lack of CPU for processes running on the application, which degrades their performance. 
-- Verifies metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand-based CPU addition. 
-- Scales the nodes based on growth beyond budgeted pods. 
+- Evicts the application (task container) thereby impacting its delivery. These issues are known as noisy neighbour problems.
+- Simulates a lack of CPU for processes running on the application, which degrades their performance.
+- Verifies metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand-based CPU addition.
+- Scales the nodes based on growth beyond budgeted pods.
 - Verifies the autopilot functionality of (cloud) managed clusters.
-- Verifies multi-tenant load issue, wherein when the load increases on one container, it does not cause downtime in other containers. 
+- Verifies multi-tenant load issue, wherein when the load increases on one container, it does not cause downtime in other containers.
 - Tests the ECS task sanity (service availability) and recovery of the task containers subject to CPU stress.
 
 
@@ -44,7 +44,7 @@ ECS Container CPU hog:
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -79,7 +79,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],
@@ -122,7 +122,7 @@ Below is an example AWS policy to execute the fault.
         <th> Description </th>
         <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
         <td> CLUSTER_NAME </td>
         <td> Name of the target ECS cluster. </td>
         <td> For example, <code>cluster-1</code>. </td>
@@ -152,7 +152,7 @@ Below is an example AWS policy to execute the fault.
         <td> Interval between successive instance terminations (in seconds).</td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Path to the AWS secret credentials.</td>
         <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
@@ -162,12 +162,12 @@ Below is an example AWS policy to execute the fault.
           <td> Target ECS service name. </td>
           <td> For example, <code>app-svc</code>. For more information, go to <a href="#ecs-service-name"> ECS service name.</a></td>
         </tr>
-      <tr> 
+      <tr>
         <td> CPU_CORE </td>
         <td> Number of CPU cores to consume.</td>
         <td> Default: 0. For more information, go to <a href="#cpu-cores"> CPU core.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> CPU_LOAD </td>
         <td> Percentage of the CPU to consume.</td>
         <td> Default: 100. For more information, go to <a href="#cpu-load"> CPU load.</a></td>
@@ -249,7 +249,7 @@ spec:
 
 ### ECS service name
 
-Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable. 
+Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 

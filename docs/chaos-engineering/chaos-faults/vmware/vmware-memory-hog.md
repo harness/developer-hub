@@ -5,7 +5,7 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-memory-hog
 ---
 
-VMware memory hog fault consumes excessive memory resources on Linux OS based VMware VMs. It determines the performance of the application running on the VMware VMs. This fault allocates and maps a specific amount of virtual address space and keeps rewriting to that same memory space for the chaos duration before unmapping it.
+VMware memory hog fault consumes excessive memory resources on Linux OS based VMware VMs. It determines the performance of the application running on the VMware VMs. This fault allocates and maps a specific amount of virtual address space and keeps rewriting to that same memory space for the chaos duration before un-mapping it.
 
 ![VMware Memory Hog](./static/images/vmware-memory-hog.png)
 
@@ -14,9 +14,9 @@ VMware memory hog fault consumes excessive memory resources on Linux OS based VM
 - VMware memory hog determines the resilience of an application to unexpected consumption of excessive memory by application resources.
 - It simulates the situation of memory leaks in the deployment of microservices.
 - It simulates application slowness due to memory starvation.
-- It also simulates noisy neighbour problems due to hogging. 
-- It verifies pod priority and QoS setting for eviction purposes. 
-- It also verifies application restarts on OOM (out of memory) kills. 
+- It also simulates noisy neighbour problems due to hogging.
+- It verifies pod priority and QoS setting for eviction purposes.
+- It also verifies application restarts on OOM (out of memory) kills.
 
 :::tip
 The mapped memory space is unmapped only after the chaos duration; the same memory space is used to write data into memory in an iterative manner. This way, constant memory is consumed throughout the fault duration.
@@ -124,7 +124,7 @@ It specifies the memory consumed by the target VM (in percentage). Tune it by us
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-memconsumptionperc.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-mem-consumption-perc.yaml yaml)
 ```yaml
 # Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -148,11 +148,11 @@ spec:
 ```
 
 ### Memory consumption in mebibytes
-It specifies the memory consumed by the target VM in mebibytes (MiB). Tune it by using the `MEMORY_CONSUMPTION_MEBIBYTES` environment variable.
+It specifies the memory consumed by the target VM in mebi bytes (MiB). Tune it by using the `MEMORY_CONSUMPTION_MEBIBYTES` environment variable.
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-memoryconsumption.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-memory-consumption.yaml yaml)
 ```yaml
 # Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1

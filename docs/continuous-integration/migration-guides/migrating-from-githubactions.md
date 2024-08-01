@@ -12,7 +12,7 @@ Harness does not require scripting, and configurations are passed to pipelines s
 
 Harness CI provides proprietary technologies, like Cache Intelligence and Test Intelligence, that make Harness CI [four times faster](https://harness.io/blog/fastest-ci-tool) than other leading CI tools.
 
-* Harness [Test Intelligence (TI)](../use-ci/run-tests/test-intelligence/set-up-test-intelligence) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With TI, it's possible to reduce build cycle times by up to 90% without compromising application quality.
+* Harness [Test Intelligence (TI)](../use-ci/run-tests/ti-overview.md) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With TI, it's possible to reduce build cycle times by up to 90% without compromising application quality.
 * Harness [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md) is a proprietary technology that reduces pipeline execution time by automatically caching well-known directories for languages like Java and Node.js.
 
 Harness CI is part of The [Harness Platform](/docs/platform/get-started/key-concepts.md), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
@@ -37,7 +37,7 @@ Harness CI offers the following additional advantages over GitHub Actions:
 
 Both Harness CI and GitHub Actions use workflows to organize builds. In Harness CI, these workflows are called pipelines. In both products, workflows are divided into major segments, which are called *stages* in Harness CI and *jobs* in GitHub Actions. Each stage or job includes one or more steps or individual commands.
 
-In GitHub Actions, if a job has a lot of steps, those steps might be organized into groups, which are called *stages*. Similarly, in Harness CI, you can use [step groups](../use-ci/optimize-and-more/group-ci-steps-using-step-groups.md) to group steps within a stage.
+In GitHub Actions, if a job has a lot of steps, those steps might be organized into groups, which are called *stages*. Similarly, in Harness CI, you can [use step groups](/docs/platform/pipelines/use-step-groups.md) to group steps within a stage.
 
 The following truncated examples provide a simple comparison of stage and step structure in GitLab CI and Harness CI.
 
@@ -649,5 +649,5 @@ Review the following information before proceeding with migration:
 
 * [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md)
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
-* [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
+* [Split tests in Run steps](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
 * [Harness Platform documentation](/docs/platform)

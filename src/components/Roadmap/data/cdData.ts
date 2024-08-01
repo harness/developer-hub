@@ -1,98 +1,28 @@
 import { Horizon } from "./roadmapData";
 export const CdData: Horizon = {
   "Now": {
-    description: "Q1 2024, Feb-Apr 2024",
+    description: "Q2 2024, May - July 2024",
     feature: [
       {
-        tag: [{ value: "AWS" }],
-        title: "Lambda Deployments with Canary and traffic shifting",
-        description: "Users can now perform Lambda Deployments with Canary",
-      },
-      {
-        tag: [{ value: "Pipelines" }],
-        title: "Support for configuring Service and Environment at the pipeline level",
-        description: "Enable users to seamlessly define for Services and Environment at the pipeline level and refer these at individual stages",
-      },
-      {
-        tag: [],
-        title: "Overrides V2 YAML Editor ",
-        description: "Define overrides using YAML Editor",
-      },
-      {
-        tag: [],
-        title: "Selective Infrastructure configuration in Environment propagation",
-        description: "Infrastructures can be selectively configured during environment propagation",
-      },
-      {
-        tag: [],
-        title: "RBAC for Overrides",
-        description: "Granular permissions for Overrides",
-      },
-      {
-        tag: [{ value: "Kubernetes" }],
-        title: "Application Preview for Kubernetes Service",
-        description: "After Harness deploys a service, users can preview the new version of the Application",
-      },
-      {
-        tag: [{ value: "Kubernetes" }],
-        title: "Kubernetes Canary Deployment 2.0. Contained Experimentation.",
-        description: "User’s can now have 2 separate copies of the deployed canary. Harness will deploy a canary and compare it to a separate copy of the current service.",
-      },
-      {
-        tag: [{ value: "Spinnaker" }, { value: "Migration" }],
-        title: "Migrator tool for Spinnaker",
-        description: "User’s can migrate their Spinnaker Pipelines to Harness",
-      },
-      {
-        tag: [{value: "Continuous Verification"}],
-        title: "Continuous Verification using Manifest",
-        description: "Users can now initiate a CV step using a manifest. This allows service owners to define the key metrics to be validated in CV during service definition.",
-      },
-      {
-        tag: [{ value: "GitOps" }],
-        title: "GitOps Advanced RBAC",
-        description: "Extending GitOps RBAC to handle more granular permissions.",
-      },
-    ],
-  },
-  "Next": {
-    description: "Q2 2024, May-Jul 2024",
-    feature: [
-      {
-        tag: [],
-        title: "Native Helm Deployment - Blue Green and Canary Support",
-        description: "User’s can now take their Helm Chart and Harness will orchestrate and manage the deployment via Helm. We leverage kustomize to perform the specific actions to support the Blue Green and Canary behavior along with Helm.",
-      },
-      {
-        tag: [{ value: "Azure" }],
-        title: "Azure Functions Support",
-        description: "Users can deploy Azure Functions via Harness. Harness will support Basic and Blue Green Deployment Strategy.",
-      },
-      {
-        tag: [],
-        title: "Helm Deployment with CRDs",
-        description: "Users can deploy Helm Charts that have CRDs.",
-      },
-      {
-        tag: [],
-        title: "Step and Feature Usage Metrics and Reports",
-        description: "User’s can get data about the steps and features they are leveraging within Harness and figure out how to maximize their usage of the product.",
-      },
-      {
-        tag: [],
-        title: "Prometheus Default Health Source for Continuous Verification",
-        description: "Users can deploy Helm Charts that have CRDs.",
-      },
-      {
-        tag: [],
-        title: "Prometheus Default Health Source for Continuous Verification",
-        description: "Users can deploy Helm Charts that have CRDs.",
+        tag: [{value: "Infra Provisioners"}],
+        title: "HTTPS Support for Bitbucket Server when Using Terraform & Terragrunt",
+        description: "User’s can connect to the Bitbucket server when using Terraform & Terragrunt module source configuration via HTTPS. ",
       },
       {
         tag: [{value: "AWS"}, {value: "Serverless"}],
         title: "Multiple Runtimes Support for Serverless.com",
         description: "Users will be able to use multiple new supported runtimes with serverless.com functions.",
       },
+      {
+        tag: [{value: "Continuous Verification"}],
+        title: "Add Google Big Query as a New Health Source",
+        description: "Users will be able to select Google Big Query as their health source for Continuous Verification.",
+      },
+    ],
+  },
+  "Next": {
+    description: "Q3 2024, Aug-Oct 2024",
+    feature: [
       {
         tag: [],
         title: "Harness Code Support as a Manifest Source",
@@ -104,27 +34,42 @@ export const CdData: Horizon = {
         description: "Users can reference files in separate sources for their GitOps deployments.",
       },
       {
-        tag: [{value: "Continuous Verification"}],
-        title: "Add Google Big Query as a New Health Source",
-        description: "Users will be able to select Google Big Query as their health source for Continuous Verification.",
+        tag: [{value: "Helm"}],
+        title: "Native Helm Deployment - Blue Green and Canary Support",
+        description: "User’s can now take their Helm Chart and Harness will orchestrate and manage the deployment via Helm. We leverage kustomize to perform the specific actions to support the Blue Green and Canary behavior along with Helm.",
       },
+      {
+        tag: [{value: "Continuous Verification"}],
+        title: "Continuous Verification using Manifest",
+        description: "Users can now initiate a CV step using a manifest. This allows service owners to define the key metrics to be validated in CV during service definition.",
+      }, 
       {
         tag: [{value: "Continuous Verification"}],
         title: "Health Source as a Part of a Service Entity",
         description: "Users can definte the CV analysis requirements in the service manifest.",
       },
-      {
-        tag: [{value: "OPA"}],
-        title: "Governance 2.0: Simplified Configuration Experience",
-        description: "Users can use a policy-as-code approach to define their operational policies.",
-      }
     ],
   },
   "Later": {
-    description: "Q3 2024+, Aug 2024 & beyond",
+    description: "Q4 2024+, Nov 2024 & Beyond",
     feature: [
       {
+        tag: [{value: "Continuous Verification"}],
+        title: "Prometheus Default Health Source for Continuous Verification",
+        description: "Users can deploy Helm Charts that have CRDs.",
+      },
+      {
+        tag: [{value: "Azure Functions"}],
+        title: "Azure Functions",
+        description: "Users can deploy Azure Functions.",
+      },
+      {
         tag: [],
+        title: "Step and Feature Usage Metrics and Reports",
+        description: "User’s can get data about the steps and features they are leveraging within Harness and figure out how to maximize their usage of the product.",
+      },
+      {
+        tag: [{value: "Serverless"}],
         title: "Serverless Dashboards",
         description: "Harness can help users visualize their serverless application endpoints and their failures, success, and metrics.",
       },
@@ -134,12 +79,12 @@ export const CdData: Horizon = {
         description: "Using Harness AIDA, Harness will help generate and deploy pipelines.",
       },
       {
-        tag: [],
+        tag: [{value: "Continuous Verification"}],
         title: "Continuous Verification Support for Traffic Shifting Offerings",
         description: "Users can use verify step with Harness Deployment workflows that use traffic shifting.",
       },
       {
-        tag: [],
+        tag: [{value: "Continuous Verification"}, {value: "Serverless"}],
         title: "Continuous Verification Support for Serverless Lambda",
         description: "Users can use verify step for Serverless deployments with the ability to validate the Cloudwatch alarms.",
       },
@@ -154,7 +99,17 @@ export const CdData: Horizon = {
     description: "What has been released",
     feature: [
       {
-        tag: [],
+        tag: [{ value: "Spinnaker" }, { value: "Migration" }],
+        title: "Migrator Tool for Spinnaker",
+        description: "User’s can migrate their Spinnaker Pipelines to Harness.",
+      },
+      {
+        tag: [{value: "Kubernetes"}],
+        title: "Native Support for Kubectl Rollout Restart",
+        description: "User’s can restart their kubectl rollouts natively within the Harness UI.",
+      },
+      {
+        tag: [{value: "Kubernetes"}],
         title: "Kubernetes Traffic Shifting Support",
         description: "User’s can now integrate with Istio or any Service Mesh Interface and Harness can route traffic to specific endpoints for the deployed service.",
       },
@@ -167,6 +122,16 @@ export const CdData: Horizon = {
         tag: [{ value: "GCP" }],
         title: "GCP OIDC Support for Deployments",
         description: "All GCP Deployment Types now can leverage OIDC to authenticate and Harness can perform deployments via ODIC",
+      },
+      {
+        tag: [],
+        title: "Overrides V2 YAML Editor ",
+        description: "Define overrides using YAML Editor",
+      },
+      {
+        tag: [{value: "Infra Provisioners"}],
+        title: "Selective Infrastructure configuration in Environment propagation",
+        description: "Infrastructures can be selectively configured during environment propagation",
       },
     ]
   }

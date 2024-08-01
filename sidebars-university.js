@@ -46,11 +46,29 @@ const sidebars = {
           label: "Security Testing Orchestration",
           id: "sto",
         },
+        //sei
+        {
+          type: "doc",
+          label: "Software Engineering Insights",
+          id: "sei",
+        },
         //ce
         {
           type: "doc",
           label: "Chaos Engineering",
           id: "chaos-engineering",
+        },
+        //ce
+        {
+          type: "doc",
+          label: "Internal Developer Portal",
+          id: "idp",
+        },
+        //vILT
+        {
+          type: "link",
+          label: "Virtual Instructor-Led Calendar",
+          href: "https://university-registration.harness.io/calendar",
         },
         // Instructions
         {

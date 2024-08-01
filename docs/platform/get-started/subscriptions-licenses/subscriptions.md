@@ -9,42 +9,45 @@ redirect_from:
 
 import Manage from '/docs/platform/shared/subscription-manage.md';
 import View from '/docs/platform/shared/subscription-view-subscriptions.md';
+import Cloud from '/docs/platform/shared/subscription-cloud-credits.md';
 
-You can view and manage module subscription and license information within your Harness account.
+You can view and manage module subscription details as well as license information directly within your Harness account. This includes monitoring current subscriptions, reviewing license allocations, and adjusting as necessary to meet your organizational needs.
 
 ## Developer 360 subscriptions
 
-You can subscribe to Harness modules using the [Developer 360](https://www.harness.io/pricing) subscription model.
+You can subscribe to Harness modules using the [Developer 360](https://www.harness.io/pricing) subscription model. The Developer 360 subscription offers three plans: **Free**, **Startup**, and **Enterprise**. All plans include [Harness AIDA](/docs/category/harness-aida), our AI Development Assistant.
 
+:::info
 This model spans all modules except Cloud Cost Management, which is on a *Cloud Spend* model.
+:::
 
 The following sections explain how this subscription model works across the various modules on the platform.
 
 ### Who is a developer?
 
-"Developer" means each person who contributes to code development, deployment, security, maintenance, optimization or any other technical activities related to software code, that is managed with Harness.
+A **Developer**  contributes to code development, deployment, security, maintenance, optimization, or all other technical activities related to software code that is managed with Harness.
 
-These users use Harness to create code repositories, build software, test and secure software, deploy software, run chaos experiments, manage SLOs, manage feature flags and more.
+These users leverage Harness to create code repositories, build, test, secure, and deploy software, conduct chaos experiments, manage SLOs, handle feature flags, and more.
 
-The definition of a developer (and the consumption entitlements, if any) remain the same for all plans, namely Free, Startup, and Enterprise.
+The definition of a **Developer** (and any associated consumption entitlements) remains consistent across all plans: **Free**, **Startup**, and **Enterprise**.
 
 ### Modules with direct developer tracking
 
-The following Harness modules are directly involved in a developer's day-to-day workflow. These modules consume a developer license for every developer involved.
+The following Harness modules are integral to a **Developer's** daily workflow. Each module requires a separate developer license for every user involved.
 
-- **Code Repository (CODE):** All users on the Harness Platform, who have permission to access Harness CODE module are considered CODE Developers and consume a license.
-- **Continuous Integration (CI):** All users on the Harness Platform, who have permission to access Harness CI module are considered CI Developers and consume a license.
-- **Internal Developer Portal (IDP):** All users on the Harness Platform, who have permission to access Harness IDP module are considered IDP Developers and consume a license.
-- **Feature Flags (FF):** All Users on the Harness Platform, who have permission to create / update / delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered FF Developers and consume a license.
-- **Software Engineering Insights (SEI):** All users read from a configured SCM (Source Code Management) tool are considered SEI Developers and consume a license.
+- **Code Repository (CODE):** All users on the Harness Platform who have permission to access Harness CODE module are considered as **CODE Developers** and consume a license.
+- **Continuous Integration (CI):** All users on the Harness Platform who have permission to access Harness CI module are considered as **CI Developers** and consume a license.
+- **Internal Developer Portal (IDP):** All users on the Harness Platform who have permission to access Harness IDP module are considered as **IDP Developers** and consume a license.
+- **Feature Flags (FF):** All users on the Harness Platform who have permission to create / update / delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered as **FF Developers** and consume a license.
+- **Software Engineering Insights (SEI):** All users who read from a configured SCM (Source Code Management) tool are considered as **SEI Developers** and consume a license.
 
 ### Modules with no direct developer tracking (consumption entitlements)
 
-All other Harness modules (except CCM) are indirectly involved in a developer's day-to-day workflow, and they track an indirect unit instead of a developer. Harness refers to these indirect units as *Consumption Entitlements*.
+All other Harness modules (except CCM) are indirectly involved in a **Developer's** day-to-day workflow, and they track an indirect unit instead of a **Developer** license. Harness refers to these indirect units as **Consumption Entitlements**.
 
-In these cases, the developer license acts as a proxy for granting a predetermined set of consumption entitlements, as explained below.
+In these cases, the **Developer** license acts as a proxy for granting a predetermined set of consumption entitlements, as explained below.
 
-You can subscribe to more consumption entitlements, if needed, at an additional cost.
+You have the option to subscribe to additional **Consumption Entitlements** as needed, with an associated additional cost.
 
 <details>
 <summary>Continuous Delivery and GitOps (CD) Services</summary>
@@ -52,11 +55,11 @@ You can subscribe to more consumption entitlements, if needed, at an additional 
 CD deploys software services onto infrastructure platforms spanning traditional VMs, Kubernetes, public cloud platforms, serverless functions, and other custom deployment targets. A **Service** is an independent unit of software you track and manage through Harness CD and GitOps. This typically maps to:
 
 - A service in Kubernetes.
-- A containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine).
+- A containerized service on a cloud (such as AWS ECS, Azure ACS, or Google Container Engine).
 - A VM in the traditional VM-based apps.
 - Five serverless functions in serverless environments.
 
-CD tracks **Service** license consumption instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window. For a detailed understanding of CD services and how they are tracked, go to [Service licensing for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/).
+CD tracks **Service** license consumption instead of **Developers**. All **Service** licenses are tracked over a *last 30 days* active window. For more information about CD services and how they are tracked, go to [Service licensing for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/).
 
 </details>
 
@@ -65,7 +68,7 @@ CD tracks **Service** license consumption instead of **Developers**. All Service
 
 Harness Feature Flags is a feature flag rollout and management module that tracks **Developers** and **MAU** (Monthly Active Users) for license consumption.
 
-All Users on the Harness Platform, who have permission to create / update / delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered **FF Developers** and consume a license.
+All users on the Harness Platform who have permission to create, update, or delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered **FF Developers** and consume a license.
 **Monthly Active Users (MAUs)** represent the unique users seen every month from one or more client-side applications that evaluate various flags managed by Harness.
 
 </details>
@@ -87,10 +90,10 @@ SRM tracks **Service** license consumption, instead of **Developers**. All Servi
 <details>
 <summary>Chaos Engineering (CE) Services</summary>
 
-CE helps run chaos experiments across various services in an R&D organization, towards the goal of making them resilient . A **Service** is an independent unit of software you track & manage through Harness CD & GitOps. This typically maps to:
+Chaos Engineering (CE) makes it easy to run chaos experiments across diverse services within an R&D organization, aimed at enhancing their resilience. A **Service** represents an autonomous software unit managed and tracked through Harness CD and GitOps. This typically maps to:
 
 - A service in Kubernetes.
-- A containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine).
+- A containerized service on a cloud (such as AWS ECS, Azure ACS, or Google Container Engine).
 - A VM in the traditional VM-based apps.
 - Five serverless functions in serverless environments.
 
@@ -108,20 +111,20 @@ IACM tracks **Executions** license consumption, instead of **Developers**.
 </details>
 
 <details>
-<summary>Security Test Orchestration (STO) Security Scans</summary>
+<summary>Security Testing Orchestration (STO) Security Scans</summary>
 
-A **Security Scan** is defined as the execution of the STO step within a pipeline. This involves scanning an artifact (referred to as the Target), which can be a Repository, Docker image, or a live application, for security vulnerabilities.
+A **Security Scan** is defined as the execution of the Security Testing Orchestration (STO) step within a pipeline. This involves scanning a **Target** for security vulnerabilities. A target can be a repository, container image, configuration, or live application.
 
-STO tracks **Security Scans** license consumption, instead of **Developers**. Security Scans are tracked over a *last 30 days* active window.
+STO tracks **Security Scans** license consumption, instead of **Developers**. **Security Scans** are tracked over a *last 30 days* active window.
 
 </details>
 
 <details>
 <summary>Software Supply Chain Assurance (SSCA) Supply Chain Executions</summary>
 
-A **Supply Chain Execution** is defined as the execution of the SSCA step in a pipeline. Generating SBOMs, enforcing SBOM policies, generating SLSA provenance or verifying SLSA provenance are all counted as unique SSCA steps.
+A **Supply Chain Execution** is defined as the execution of the Software Supply Chain Assurance (SSCA) step in a pipeline. Generating SBOMs, enforcing SBOM policies, generating SLSA provenance, or verifying SLSA provenance are all counted as unique SSCA steps.
 
-SSCA tracks **Supply Chain Executions** license consumption, instead of **Developers**. Supply Chain Executions are tracked over a *last 30 days* active window.
+SSCA tracks **Supply Chain Executions** license consumption, instead of **Developers**. **Supply Chain Executions** are tracked over a *last 30 days* active window.
 
 </details>
 
@@ -131,23 +134,23 @@ The Developer 360 subscription model includes module-specific consumption entitl
 
 This means every developer license for a module includes a corresponding consumption entitlement, where applicable.
 
-Additionally, you always have the flexibility to purchase add-on consumption entitlements, as needed.
+You can always acquire additional consumption entitlements as needed through add-on purchases.
 
 #### Included consumption entitlements
 
 | Harness Module | Included Consumption Entitlement |
 |----------------|----------------------------------|
-| Code Repository | Not applicable since Developers are tracked directly|
-| Continuous Integration | Not applicable since Developers are tracked directly|
-| Continuous Delivery & GitOps | 1 Service for every 3 Developers |
-| Feature Flags | 10K MAUs per Developer per Month|
-| Service Reliability Management | 1 Service for every 3 Developers |
-| Chaos Engineering | 1 Service for every 3 Developers |
-| Infrastructure as Code Management | 120 Executions per Developer per Year|
-| Software Engineering Insights | Not applicable since Developers are tracked directly |
-| Internal Developer Portal | Not applicable since Developers are tracked directly|
-| Security Testing Orchestration | 100 Security Scans per Developer per Month |
-| Software Supply Chain Assurance | 100 Supply Chain Executions per Developer per Month|
+| **Code Repository** | Not applicable since **Developers** are tracked directly|
+| **Continuous Integration** | Not applicable since **Developers** are tracked directly|
+| **Continuous Delivery & GitOps** | 1 Service for every 3 **Developers** |
+| **Feature Flags** | 10K MAUs per **Developer** per month|
+| **Service Reliability Management** | 1 Service for every 3 **Developers** |
+| **Chaos Engineering** | 1 Service for every 3 **Developers** |
+| **Infrastructure as Code Management** | 120 Executions per **Developer** per year|
+| **Software Engineering Insights** | Not applicable since **Developers** are tracked directly |
+| **Internal Developer Portal** | Not applicable since **Developers** are tracked directly|
+| **Security Testing Orchestration** | 100 Security Scans per **Developers** per month |
+| **Software Supply Chain Assurance** | 100 Supply Chain Executions per **Developers** per month|
 
 #### Add-on consumption entitlements
 
@@ -173,6 +176,10 @@ You can view and manage your Harness module subscriptions in your Harness **Acco
 
 <View />
 
+## Cloud credits
+
+<Cloud />
+
 ## Manage subscriptions
 
 <Manage />
@@ -183,7 +190,7 @@ For more information about specific module subscriptions and licenses, go to:
 
 - [CI Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt/)
 - [CD Service-based licensing and usage](/docs/continuous-delivery/get-started/service-licensing-for-cd)
-- [FF Subscriptions](/docs/category/subscribe-to-feature-flags)
+- [FF Subscriptions](/docs/feature-flags/subscribe-ff/subscriptions-overview.md)
 - [SRM subscriptions and licenses](/docs/service-reliability-management/get-started/srm-subscription-licensing)
 
 ## Cloud Marketplace offerings

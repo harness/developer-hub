@@ -5,8 +5,7 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-toggle-event-mapping-state
 ---
 
-Lambda toggle event mapping state toggles (or sets) the event source mapping state to `disable` for a Lambda function during a specific duration. Toggling between different states of event source mapping from a Lambda function may lead to failures when updating the database on an event trigger. This can break the service and impact its delivery. 
-
+Lambda toggle event mapping state toggles (or sets) the event source mapping state to `disable` for a Lambda function during a specific duration. Toggling between different states of event source mapping from a Lambda function may lead to failures when updating the database on an event trigger. This can break the service and impact its delivery.
 
 ![Lambda Toggle Event Mapping State](./static/images/lambda-toggle-event-mapping-state.png)
 
@@ -14,7 +13,6 @@ Lambda toggle event mapping state toggles (or sets) the event source mapping sta
 Lambda toggle event mapping:
 - Checks the performance of the running application when the event source mapping is not enabled. This may cause missing entries in a database.
 - Determines if the application has proper error handling or auto recovery actions configured.
-
 
 ### Prerequisites
 - Kubernetes >= 1.17
@@ -35,7 +33,7 @@ Lambda toggle event mapping:
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.

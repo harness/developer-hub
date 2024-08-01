@@ -13,7 +13,7 @@ You can set up Zap scans using a Security step, but this is a legacy functionali
 STO supports the following scan policy types for ZAP:
 
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is easier to set up and supports scans with default or predefined settings.
-* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
+* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline.md).
 
 #### Target and variant
 
@@ -72,7 +72,7 @@ To configure an Anchore Enterprise scan in a Security step, add the following to
 	+ `product_domain` : The fully-qualified URL to the scanner API, for example `https://anchore.company.io/api` or `http://192.0.2.1:8228`.
 	+ `product_access_id` : Username to log in to the scanner.
 	+ `product_access_token` : The access token to log in to the scanner. In most cases this is a password or an API key. 
-	  You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+	  You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `dataLoad`:
 	+ `product_image_name` : The name of the image that you want to extract from Anchore.
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan`:
@@ -83,7 +83,7 @@ To configure an Anchore Enterprise scan in a Security step, add the following to
 	You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, add `tool_args` : `--force` to reset the image analysis status to `not_analyzed`.  
 
 
-### Artifacts (required)
+### Container image (required)
 
 * `container_type`
 	+ accepted value(s): `local_image`, `docker_v2`, `jfrog_artifactory`, `aws_ecr`
@@ -286,7 +286,7 @@ You can set up Grype scans using a Security step, but this is a legacy functiona
 #### Important Notes
 
 * STO supports Grype scans of containers and repositories.
-* STO supports [orchestrationscans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
+* STO supports [orchestrationscans](/docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
 
 #### Target and variant
 
@@ -609,7 +609,7 @@ You can set up Bandit scans using a Security step, but this is a legacy function
 STO supports the following `policy_type` settings for Bandit:
 
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
-* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline).
 
 
 #### Target and variant
@@ -669,7 +669,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 
-#### Artifacts scan settings
+#### Container image scan settings
 
 import StoLegacyContainer  from './shared/custom-scan/_container.md';
 
@@ -799,7 +799,7 @@ The following settings are required for Security steps where the `policy_type` i
 
 * `product_access_token` The access token used to log in to a specific product in the scanner. This is required for some scans. In most cases this is a password or an API key. 
 
-  You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+  You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 #### Ingestion file
 
@@ -1004,7 +1004,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 		- `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-#### Artifacts scan settings
+#### Container image scan settings
 
 
 import StoLegacyContainer  from './shared/custom-scan/_container.md';
@@ -1107,7 +1107,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 * `policy_type` — Enter one of the following:
 	+ `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest method to set up and support scans with default or predefined settings.
 	+ `dataLoad`  — The pipeline downloads scan results using the [SonarScanner API](https://docs.sonarqube.org/latest/extend/web-api/).
-	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline).
 * `repository_project` — The repository name. If you want to scan `https://github.com/my-github-account/codebaseAlpha`, for example, you would set this to `codebaseAlpha`.
 * `repository_branch` — The git branch to scan. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference#manual-branch-build-expressions). This sets the branch based on the user input or trigger payload at runtime.
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).

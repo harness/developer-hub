@@ -2,6 +2,8 @@
 title: CI pipeline creation overview
 description: An overview of CI pipeline components and Build stage settings
 sidebar_position: 10
+redirect_from:
+  - /docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times
 ---
 
 This topic provides an overview of CI pipeline creation and configuration, including common components, such as stages, steps, and codebases, as well as advanced settings.
@@ -33,7 +35,7 @@ You can also [import pipelines from Git](/docs/platform/git-experience/import-a-
 
 ### Pipeline settings
 
-In addition to a [default codebase](#codebases), the following settings are configurable at the pipeline level:
+In addition to a [default codebase](#codebases), you can configure the following settings at the pipeline level:
 
 * [Input sets and overlays](/docs/platform/pipelines/input-sets)
 * [Triggers](/docs/category/triggers)
@@ -41,7 +43,7 @@ In addition to a [default codebase](#codebases), the following settings are conf
 * [Notifications](/docs/category/notifications)
 * [Flow Control: Synchronization barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers)
 * [Policy Sets](/docs/platform/governance/policy-as-code/harness-governance-overview)
-* Advanced Options: Pipeline Timeout Settings, [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* Advanced Options: Pipeline [Timeout Settings](/docs/platform/pipelines/failure-handling/timeout-settings.md), [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
 
 :::tip
 
@@ -51,17 +53,30 @@ With input sets and overlays, you can use the same pipeline for multiple scenari
 
 :::
 
+### Visual and YAML editors
+
+Harness CI provides two interchangeable modes for creating pipelines: The **Visual** editor and the **YAML** editor.
+
+* The **Visual** editor provides a GUI experience where you can easily configure settings, add and remove steps and stages, and drag-and-drop steps and stages to rearrange them, organize them in parallel, or add or remove them from step groups.
+* The **YAML** editor provides a text editor experience for creating pipelines.
+
+You can freely switch between the two editors. When editing a pipeline in Harness, use the selector at the top of the **Pipeline Studio** to switch between the **Visual** and **YAML** editors.
+
+![](./static/harness-yaml-quickstart-21.png)
+
+For more information about Harness YAML, go to [Write pipelines in YAML](/docs/platform/pipelines/harness-yaml-quickstart).
+
 ## Stages
 
 A CI stage is a subset of a pipeline that contains one major segment of the CI workflow. All stages have stage settings and one or more steps.
 
 To [add a stage to a pipeline](/docs/platform/pipelines/add-a-stage/), select **Add Stage** in the Pipeline Studio. The most essential stage for CI pipelines is the **Build** stage, which includes [steps](#steps) that test code, build and push images, and upload artifacts, among other steps.
 
-[CI Build stage settings](./set-up-build-infrastructure/ci-stage-settings.md) include [codebase configuration](#codebases), [build infrastructure](#build-infrastructure), [shared paths](#shared-paths), and other [advanced settings](#advanced-stage-and-step-settings).
+[CI Build stage settings](./set-up-build-infrastructure/ci-stage-settings.md) include [codebase configuration](#codebases), [build infrastructure](#build-infrastructure), [shared paths](#shared-paths), and other [advanced settings](#advanced-settings).
 
 :::tip
 
-To make pipelines more versatile, you can create [templates](/docs/category/templates), use [stage variables](/docs/platform/pipelines/add-a-stage.md#stage-variables), and create [custom stages](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage), among other [optimization techniques](./optimize-and-more/optimizing-ci-build-times.md).
+To make pipelines more versatile, you can create [templates](/docs/category/templates), use [stage variables](/docs/platform/pipelines/add-a-stage.md#stage-variables), and create [custom stages](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage), among other [optimization strategies](#optimization-strategies).
 
 :::
 
@@ -106,7 +121,15 @@ A stage contains one or more steps. Each step is a series of commands that perfo
 * [Use plugins](/docs/category/use-plugins)
 * [Security step (Harness STO)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)
 
-## Advanced stage and step settings
+:::tip
+
+Use [step groups](/docs/platform/pipelines/use-step-groups.md) to organize complex stages that have many steps.
+
+Use [templates](/docs/category/templates/) to share and utilize pre-built pipelines, stages, and steps.
+
+:::
+
+## Advanced settings
 
 Stages and steps have advanced settings you can use to control the flow of operations.
 
@@ -118,10 +141,11 @@ You can specify conditional execution settings for an entire stage and for indiv
 
 ### Looping Strategies
 
-For information about looping strategies to go:
+[Looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) enable you to run a stage or step multiple times with different inputs. This eliminates the need to copy the same stage or step for each variation you need. It also makes the pipeline more organized, clean, and easy to maintain. Looping strategies enable use cases such as:
 
-* [Looping strategies - matrix, repeat, parallelism](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Optimize and enhance CI pipelines](/docs/category/optimize-and-enhance)
+* You want to test a UI feature in multiple browsers and platforms. You can define a matrix that specifies the browsers and platforms to test.
+* You want to build artifacts for multiple JDK versions in the same Build Stage.
+* You have a Build Pipeline with 20 unit tests. To speed up execution, you want to run the tests in parallel across 4 jobs that run 5 tests each.
 
 ### Failure Strategies
 
@@ -134,25 +158,46 @@ Each failure strategy is comprised of the following:
 
 Failure strategies are a critical pipeline design component that determine what causes a stage or step to fail and what to do when a failure occurs.
 
-See also:
+## Optimization strategies
 
-* [Retry failed executions](/docs/platform/pipelines/failure-handling/resume-pipeline-deployments)
+You can optimize your CI pipelines to make them faster, more efficient, and more versatile. For example:
 
-### Environment variables
+### Dependencies
 
-Steps can produce or assign values to environment variables, and some steps require or allow environment variables as input.
+* [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md)
+* [Caching and data sharing](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md)
+* [Dependency management strategies](/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies.md)
 
-There are also a variety of environment variables related to pipeline, stage, and step metadata. For more information, go to the [CI environment variables reference](./optimize-and-more/ci-env-var.md).
+### Variables
 
-## Visual and YAML editors
+Expressions and runtime inputs make your pipelines more dynamic.
 
-Harness CI provides two interchangeable modes for creating pipelines: The **Visual** editor and the **YAML** editor.
+* [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs)
+* [Variables and expressions](/docs/category/variables-and-expressions)
+* [CI environment variables](/docs/continuous-integration/troubleshoot-ci/ci-env-var.md)
+* [Input sets and overlays](/docs/platform/pipelines/input-sets)
 
-* The **Visual** editor provides a GUI experience where you can easily configure settings, add and remove steps and stages, and drag-and-drop steps and stages to rearrange them, organize them in parallel, or add or remove them from step groups.
-* The **YAML** editor provides a text editor experience for creating pipelines.
+### Automation
 
-You can freely switch between the two editors. When editing a pipeline in Harness, use the selector at the top of the **Pipeline Studio** to switch between the **Visual** and **YAML** editors.
+Strategies to automate and manage build sequences include:
 
-![](./static/harness-yaml-quickstart-21.png)
+* [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining.md)
+* [Failure strategies](#failure-strategies)
+* [Conditional executions](#conditional-executions)
+* [Looping strategies](#looping-strategies)
+* [Triggers](/docs/category/triggers)
 
-For more information about Harness YAML, go to [Write pipelines in YAML](/docs/platform/pipelines/harness-yaml-quickstart).
+### Integration
+
+There are many ways you can incorporate third party tools and services in your CI pipelines, including:
+
+* [Plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins.md)
+* [Secrets Managers](/docs/platform/get-started/tutorials/add-secrets-manager)
+* [Notifications](/docs/category/notifications)
+* [Branch protection and status checks](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks.md)
+
+### Resource consumption
+
+* Understand [resource allocation](/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits.md).
+* [Enforce pipeline concurrency limits.](/docs/platform/pipelines/pipeline-settings.md)
+* Use [Queue Intelligence](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#queue-intelligence).

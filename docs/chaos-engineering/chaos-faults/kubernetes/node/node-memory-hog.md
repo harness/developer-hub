@@ -2,27 +2,64 @@
 id: node-memory-hog
 title: Node memory hog
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-memory-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-memory-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-memory-hog
 ---
-Node memory hog causes memory resource exhaustion on the Kubernetes node. 
+Node memory hog causes memory resource exhaustion on the Kubernetes node.
 - It is injected using a helper pod running the Linux stress-ng tool (a workload generator).
 - The chaos affects the application for a specific duration.
 
-![Node Memory Hog](./static/images/node-stress.png)
-
+![Node Memory Hog](./static/images/node-memory-hog.png)
 
 ## Use cases
 
-- Node memory hog fault causes memory resource exhaustion on the Kubernetes node. 
+- Node memory hog fault causes memory resource exhaustion on the Kubernetes node.
 - It aims to verify resilience of applications whose replicas may be evicted on account on nodes becoming unschedulable (in **NotReady** state) due to lack of memory resources.
 - It simulates the situation of memory leaks in the deployment of microservices.
 - It simulates application slowness due to memory starvation.
-- It simulates noisy neighbour problems due to hogging. 
-- It verifies pod priority and QoS setting for eviction purposes. 
-- It also verifies application restarts on OOM kills. 
+- It simulates noisy neighbour problems due to hogging.
+- It verifies pod priority and QoS setting for eviction purposes.
+- It also verifies application restarts on OOM kills.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: node-memory-hog
+spec:
+  definition:
+    scope: Cluster
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/exec"]
+    verbs: ["get", "list", "create"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list"]
+```
 
 ### Prerequisites
-- Kubernetes > 1.16 
+- Kubernetes > 1.16
 - The target nodes should be in the ready state before and after injecting chaos.
 
 ### Mandatory tunables
@@ -58,10 +95,10 @@ Node memory hog causes memory resource exhaustion on the Kubernetes node.
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
         <td> Default: 120 s. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
       </tr>
-      <tr>    
+      <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to run the stress command. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> MEMORY_CONSUMPTION_PERCENTAGE </td>
@@ -72,12 +109,12 @@ Node memory hog causes memory resource exhaustion on the Kubernetes node.
         <td> MEMORY_CONSUMPTION_MEBIBYTES </td>
         <td> Amount of the total available memory (in mebibytes). It is mutually exclusive with <code>MEMORY_CONSUMPTION_PERCENTAGE</code>. </td>
         <td> For example, 256. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-memory-hog/#memory-consumption-mebibytes"> memory consumption bytes.</a></td>
-      </tr>  
+      </tr>
       <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of VM workers involved in the stress. </td>
         <td> Default: 1. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress/#workers-for-stress"> workers for stress.</a></td>
-      </tr> 
+      </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
@@ -87,7 +124,7 @@ Node memory hog causes memory resource exhaustion on the Kubernetes node.
         <td> NODES_AFFECTED_PERC </td>
         <td> Percentage of the total nodes to target. It takes numeric values only. </td>
         <td> Default: 0 (corresponds to 1 node). For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#node-affected-percentage">node affected percentage.</a></td>
-      </tr> 
+      </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods.</td>
@@ -182,7 +219,7 @@ spec:
         env:
         # total number of workers involved in stress
         - name: NUMBER_OF_WORKERS
-          value: '1' 
+          value: '1'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```

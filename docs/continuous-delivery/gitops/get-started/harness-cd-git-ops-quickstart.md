@@ -1,7 +1,7 @@
 ---
 title: Harness CD GitOps tutorial
 description: This topic describes how to use Harness GitOps to deploy services by syncing the Kubernetes manifests in your source repos with your target clusters.
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: pptv7t53i9
 helpdocs_category_id: 013h04sxex
 helpdocs_is_private: false
@@ -28,7 +28,7 @@ This example shows you how to set up Harness GitOps using one of your Kubernetes
 
 You'll learn how to:
 
-* Install a Harness GitOps Agent in your target cluster. You can skip this if you are using [Hosted GitOps](/docs/continuous-delivery/gitops/hosted-gitops/).
+* Install a Harness GitOps Agent in your target cluster. You can skip this if you are using [Hosted GitOps](/docs/continuous-delivery/gitops/connect-and-manage/hosted-gitops).
 * Set up a Harness GitOps Cluster to points to the target cluster.
 * Set up a Harness GitOps Repository that points to the source manifest repo.
 * Set up a Harness GitOps Application that collects the Agent Cluster, and Repository, and defines the sync policy for GitOps.
@@ -84,14 +84,14 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 4. Select **New GitOps Agent**. The Agent creation wizard appears.
 
    You can choose to install a Harness GitOps Agent with or without an existing Argo CD instance. 
-5. For this example, select **No** and select **Start**. If you already have an existing ArgoCD instance, create the agent as described in [these steps](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/#harness-gitops-agent-with-existing-argo-cd-project).
+5. For this example, select **No** and select **Start**. If you already have an existing ArgoCD instance, create the agent as described in [these steps](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent#harness-gitops-agent-with-existing-argo-cd-project).
 
    ![](./static/harness-cd-git-ops-quickstart-04.png)
 6. In **Name**, enter the name **example**.
 7. Set **GitOps Operator** to one of the following:
 
    * **Argo**. Uses Argo CD as the GitOps reconciler.
-   * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/use-gitops/use-flux).
+   * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
 
 8. Set **Namespace** to the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment. For this example, we use **default**.
 9. Select **Continue**. The **Review YAML** settings appear.
@@ -346,7 +346,7 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
 3. In **GitOps Operator**, select the GitOps operator you selected when installing the example agent:
   
     * **Argo**. Uses Argo CD as the GitOps reconciler.
-    * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/use-gitops/use-flux).
+    * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
 
 4. In **GitOps Agent**, select the Agent you added earlier.
 5. In **Service**, select **New Service**, and name the Service **guestbook**.
