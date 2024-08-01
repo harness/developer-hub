@@ -28,7 +28,7 @@ create a secret to store the obtained Azure DevOps Pat. In the example below, a 
 - Add `Run` steps to build, package and push packages, per example below.
   - You can also switch to YAML editor and copy paste the below yaml to your Pipeline.
   - `Run Steps` in the pipeline uses `mcr.microsoft.com/dotnet/sdk:8.0` image, ensuring build  environment has the .NET SDK 8.0 binaries. You can specify the required .NET SDK version available in [docker-dotnet](https://hub.docker.com/r/microsoft/dotnet-sdk).
-
+  - Lastly, create a secret named `Azure_DevOps_PAT` to store the acquired Azure DevOps PAT. If you have already created a secret, update the line `NUGET_PAT="<+secrets.getValue("Azure_DevOps_PAT")>"` in the pipeline YAML file with the secret identifier you created. For instructions on creating a secret, click [here](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets).
 
 ```yaml
 identifier: BuildPackagePush_NET_Packages
