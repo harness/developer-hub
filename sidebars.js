@@ -312,24 +312,6 @@ const sidebars = {
             },
           ],
         },
-        // Release Notes
-        {
-          type: "link",
-          label: "Release Notes",
-          href: "/release-notes",
-          customProps: {
-            description: "Learn about recent changes to Harness products.",
-          },
-        },
-        // Roadmap
-        {
-          type: "link",
-          label: "Roadmap",
-          href: "/roadmap",
-          customProps: {
-            description: "Learn about upcoming/proposed changes to Harness products.",
-          },
-        },
         {
           type: "category",
           label: "FAQs",
@@ -384,6 +366,24 @@ const sidebars = {
               dirName: "harness-cloud-operations",
             },
           ],
+        },
+         // Release Notes
+         {
+          type: "link",
+          label: "Release Notes",
+          href: "/release-notes",
+          customProps: {
+            description: "Learn about recent changes to Harness products.",
+          },
+        },
+        // API Docs
+        {
+          type: "link",
+          label: "API Refrence",
+          href: "https://apidocs.harness.io/",
+          customProps: {
+            description: "Harness API Docs.",
+          },
         },
       ],
     },
