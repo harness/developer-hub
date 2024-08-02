@@ -131,7 +131,7 @@ The report displays the breakdown of the base values that contribute to the Trel
 <tbody>
 <tr>
 <td>PRs Merged</td>
-<td>Total number of pull requests that are merged by the contributor in the selected time range.</td>
+<td>Total number of Pull Requests created by a developer that has been merged within the selected time frame.</td>
 </tr>
 <tr>
 <td>Commits</td>

@@ -1,13 +1,13 @@
 {
   "position": 6,
-  "label": "Harness dedicated infrastructure",
+  "label": "Harness Delegate",
   "collapsible": true,
   "collapsed": true,
   "link":{
       "type":"generated-index",
-      "title":"Harness dedicated infrastructure"
+      "title":"Harness Delegate"
    },
   "customProps": {
-    "description": "Harness dedicated infrastructure allows for quick onboarding and optimized chaos execution of experiments."
+    "description": "Harness Delegate allows for quick onboarding and optimized chaos execution of experiments."
   }
 }

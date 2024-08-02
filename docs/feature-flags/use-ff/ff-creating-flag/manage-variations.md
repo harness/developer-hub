@@ -10,6 +10,8 @@ helpdocs_topic_id: 8bf3us11kz
 helpdocs_category_id: skrwlcueml
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-creating-flag/manage-variations
 ---
 
 When you create a Feature Flag, it has default Variations that are served when the Flag is toggled `ON` or `OFF`. You can accept these default Variations or you can change them. 

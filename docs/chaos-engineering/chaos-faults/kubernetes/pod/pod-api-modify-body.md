@@ -2,7 +2,8 @@
 id: pod-api-modify-body
 title: Pod API modify body
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-api-modify-body
 ---
 
 Pod API modify body is a Kubernetes pod-level chaos fault that modifies the api request and response body by replacing any portions that match a specified regular expression with a provided value. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.

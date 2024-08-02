@@ -2,6 +2,8 @@
 title: Configuration reference
 description: This topic describes how to configure the Relay Proxy.
 sidebar_position: 30
+redirect_from:
+  - /docs/feature-flags/relay-proxy/configuration
 ---
 
 ## General configuration guidelines

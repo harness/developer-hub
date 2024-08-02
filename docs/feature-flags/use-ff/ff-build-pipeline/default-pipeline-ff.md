@@ -6,6 +6,8 @@ helpdocs_topic_id: sjzsn4etz9
 helpdocs_category_id: fsgwbaegql
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-build-pipeline/default-pipeline-ff
 ---
 
 :::info note

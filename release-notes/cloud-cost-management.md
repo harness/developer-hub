@@ -18,6 +18,24 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
+## July 2024
+
+### Version 1.23.0
+
+#### New features and enhancements
+- Policy YAML Validation Enhancement in Asset Governance: Previously, we were not enabling the Dry Run and Run Once buttons if there were issues with policy YAML validation. This should now be resolved, allowing users to proceed with these actions even if there are validation issues. [CCM-18754]
+
+- Regions Filter for Recommendations Page: We have added a Regions filter in the Recommendations Filter Panel on the Recommendations Page, enhancing the ability to filter recommendations by specific regions. [CCM-18591]
+
+- Load Balancer Pagination Fixes: Some improvements have been made to the load balancer pagination:
+      - The page index on the URL now matches the page in the list.
+      - The first column is now wider based on the available space.
+      - The last activity column now reads the updated_at value instead of calling a separate API. [CCM-18585]
+  
+#### Fixed issues
+
+- Governance Evaluations List Page Pagination: Previously, on the Governance Evaluations List page, the page number was not resetting when changing the time filter, causing the current page to match the filters incorrectly and resulting in no results. This issue has now been resolved. [CCM-18571]
+
 ## June 2024
 
 ### Version 1.23.0

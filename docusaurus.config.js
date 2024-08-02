@@ -173,10 +173,6 @@ const config = {
                 to: "docs/first-gen",
               },
               {
-                label: "Release Notes",
-                href: "/release-notes",
-              },
-              {
                 label: "FAQs",
                 to: "docs/faqs",
               },
@@ -187,6 +183,10 @@ const config = {
               {
                 label: "Harness Cloud Operations",
                 to: "docs/harness-cloud-operations",
+              },
+              {
+                label: "Release Notes",
+                href: "/release-notes",
               },
               {
                 label: "API Reference",

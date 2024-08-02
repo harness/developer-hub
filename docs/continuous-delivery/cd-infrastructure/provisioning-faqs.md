@@ -454,3 +454,16 @@ Please follow more on this [Documentation](https://developer.harness.io/docs/con
 
 Some environment variables are exclusive to Terraform Enterprise or Terraform Cloud. For example, `TFE_PARALLLELISM` is a Terraform Enterprise environment variable that is not supported by the Terraform CLI. In order to use these environment variables, please make sure to use either Terraform Enterprise or Terraform Cloud.
 
+### Does AWS CDK still require feature flags to be set in order to use?
+
+AWS CDK is globally available and does not require any feature flags to enable and use. For more information, please go to [AWS CDK Provisioning](/docs/continuous-delivery/cd-infrastructure/aws-cdk/).
+
+### Why is my CloudFormation create stack operation failing with the error **Exception: Invalid request: Parameter 'InsufficientDataHealthStatus' must be one of AllowedValues (Service: AmazonCloudFormation; Status Code: 400; Error Code: ValidationError; Request ID: ...; Proxy: null) while creating stack: HarnessStack-route53**?
+
+So it looks like the parameter value InsufficientDataHealthStatus is not below the allowed values as per the Amazon document:
+```
+Healthy: Route 53 considers the health check to be healthy.
+Unhealthy: Route 53 considers the health check to be unhealthy.
+LastKnownStatus: Route 53 uses the status of the health check from the last time that CloudWatch had sufficient data to determine the alarm state. For new health checks that have no last known status, the default status for the health check is healthy.
+```
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-healthcheck-healthcheckconfig.html﻿

@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-07-22T18:19:25
+date: 2024-07-30T18:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,9 +15,34 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: July 22, 2024
+#### Last updated: July 30, 2024
 
 ## July 2024
+
+### Relay Proxy
+
+#### Version 2.0.2
+
+**Fixed Issues**
+ - Fixed an issue where username & password auth for redis wasn't working
+ - Fixes an issue where the Proxy didn't validate the environment in the request matched the environment in the token claims
+ - Explicitly makes `REDIS_ADDR` a required environment variable. A connection to redis is required for the Proxy to function but the `REDIS_ADDR` wasn't explicitly requried in the code which could lead to vauge startup errors if you forgot to set it.
+ - Reduces excessive memory usage from having an excessive amount of labels on prometheus metrics. This required is to remove the following labels from the following metrics
+  - Removed the `key` label from the following metrics
+    - `ff_proxy_redis_cache_scan_duration`
+    - `ff_proxy_redis_cache_write_count`
+    - `ff_proxy_redis_cache_read_count`
+    - `ff_proxy_redis_cache_remove_count`
+    - `ff_proxy_redis_cache_scan_count`
+  - Removed the `method` label from the `ff_proxy_http_requests_total` metric
+  - Removed the `envID` label from the `ff_proxy_http_requests_duration` metric
+  - Removed the `url` and `envID` label from the `ff_http_requests_content_length_histogram` metric
+
+**Enhancements**
+
+- Optimises memory by reducing the number of memory allocations
+- Adds support for using the `Harness-Target` header to perform evaluations. This means that if you're using an SDK that sends the Target in the `Harness-Target` the Proxy will use it to perform the evaluation rather than having to fetch the target from redis to perform the evaluation.
+- Cleans up unecessary error logs
 
 ### Android SDK
 
@@ -38,6 +63,18 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 **Fixed issues**:
  - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11654)
+
+### .NET SDK
+
+#### Version 1.7.1
+
+**Fixed issues**:
+ - Fixed incorrect number variation warning message. (FFM-11759, ZD-66232)
+ - Fixed an issue when `client.close()` is called the stream remains connected. The stream now exits correctly and resources are released. (FFM-11801, ZD-66232)
+ - If `WaitForInitialization()` was called and no timeout argument provided, the SDK could block permanently on unrecoverable authentication failures.  Now, the SDK will unblock immediately on `40x` errors, and retry up to 10 times on `50x` errors, after which it will unblock. (FFM-11759, ZD-66232)
+
+**New features and enhancements**:
+ - Add `FlagsLoaded` Event - see [events](https://github.com/harness/ff-dotnet-server-sdk/blob/main/docs/further_reading.md#listen-on-events). (FFM-11759, ZD-66232)
 
 ### Python SDK
 

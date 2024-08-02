@@ -142,6 +142,11 @@ To ensure the accuracy of SEI calculations, it is necessary to maintain Issue Hy
 
 It's important to note that certain use cases like the Lead Time calculations, offer valuable insights only after the work has been completed and merged. Consequently, when assessing these metrics in SEI, configure the Workflow Profile based on the final code changes rather than individual contributions before merging.
 
+:::info
+Note that by default, a new Jira integration ingests data for the past 365 days, while the GitHub integration ingests data for the past 14 days. In this scenario if the PRs or commits are older than 14 days, the correlation will fail when calculating the DORA metrics.
+SEI has the capability to ingest historical data. Once your integration is successfully configured, you can contact [Harness Support](mailto:support@harness.io) and specify the time duration for the historical data you may need.
+:::
+
 ### CI to CD Correlations
 
 SEI can connect to one or more CI/CD integrations. The jobs and executions are normalized and can be correlated across multiple sources. For example, you could be using GitHub Actions as your CI platform, and Harness as the CD.
@@ -149,6 +154,10 @@ SEI can connect to one or more CI/CD integrations. The jobs and executions are n
 The correlation between CI & CD execution is built on generated artifacts (by CI execution) and consumed artifacts (by CD execution). At this time, only container image-type artifacts are supported.
 
 You can set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions. To learn more, go to [Github Actions integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions#ingest-artifacts-and-environment-variable-data).
+
+:::info
+SEI currently supports only [HarnessNG integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng) as the CD tool for configuring stages in the Lead Time workflow.
+:::
 
 ### Commits we fetch
 

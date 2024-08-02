@@ -2,6 +2,8 @@
 title: Inbound endpoints
 description: This topic provides an overview of the endpoints SDKs use when connecting to the Proxy.
 sidebar_position: 55
+redirect_from:
+  - /docs/feature-flags/relay-proxy/inbound_endpoints
 ---
 
 These are the endpoints requested by SDKs when they communicate with the Relay Proxy. These differ depending on whether a client or server SDK is used.
