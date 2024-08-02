@@ -18,7 +18,7 @@ This topic describes the following operations that constitute the guided onboard
 ## Before you begin, review the following:
 
 * [What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
-* [Dedicated Harness infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/harness-infra.md)
+* [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/)
 * [Onboarding overview](/docs/chaos-engineering/onboarding/hce-onboarding)
 * [HCE automated onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding)
 * [Create infrastructure before onboarding](/docs/chaos-engineering/onboarding/hce-onboarding#prerequisites-to-automated-and-guided-onboarding)
