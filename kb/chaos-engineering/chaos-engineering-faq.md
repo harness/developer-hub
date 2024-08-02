@@ -166,11 +166,11 @@ Yes, you can [schedule](https://developer.harness.io/docs/chaos-engineering/feat
 
 #### Will the existing chaos experiments execute as usual without any changes?
 
-- Yes, you can execute all the existing chaos experiments even if no changes are made to the manifest and even if chaos infrastructure is not upgraded.
+Yes, you can execute all the existing chaos experiments even if no changes are made to the manifest and even if chaos infrastructure is not upgraded.
 
 #### Will the existing Kubernetes chaos infrastructure (< 1.38.0) have to be mandatorily upgraded?
 
-- No, the existing infrastructures will continue to function as usual, but HCE recommends you upgrade to version 1.38.0 or the latest version for optimized performance.
+No, the existing infrastructures will continue to function as usual, but HCE recommends you upgrade to version 1.38.0 or the latest version for optimized performance.
 
 #### I can't see older infrastructures (< 1.38.0) while constructing a new experiment?
 
