@@ -7,8 +7,6 @@ sidebar_position: 7
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<DocsTag backgroundColor= "#cbf542" text="Harness CI Beta Feature" textColor="#4e42f5" />
-
 Build Intelligence is part of the suite of intelligent features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. BI works by storing these outputs locally or remotely and retrieving them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency.
 
 Build Intelligence in Harness CI is currently available for **Gradle** and **Bazel** with **Maven** support coming soon.
@@ -134,18 +132,26 @@ pipeline:
 
 ### How it works?
 
-1. Proxy binary: Download the proxy binary from PLACEHOLDER_LINK. Since Bazel does not support writing a custom plugin, the cache proxy exposes the contract. It will talk to cache service to get the pre-signed URLs and upload/download will be done in the cache proxy using those pre-signed URLs.
+1. Proxy binary: Download the proxy binary from `https://app.harness.io/storage/harness-download/harness-ti/cache-proxy/OS/ARCH/cache-proxy`. Replace **OS/ARCH** in the URL with one of the following options:
+
+- linux/amd64
+- linux/arm
+- mac/amd64
+- mac/arm
+- windows/amd64
+
+Since Bazel does not support writing a custom plugin, the cache proxy exposes the contract. It will talk to cache service to get the pre-signed URLs and upload/download will be done in the cache proxy using those pre-signed URLs.
 2. Start the proxy server before the bazel command. You need to set the following environment variables:
 
 ```bash
 HARNESS_CACHE_PROXY_ENABLED=true
-HARNESS_CACHE_SERVER_URL=PLACEHOLDER
+HARNESS_CACHE_SERVER_URL=FROM_FF_OR_GATEWAY_ENDPOINT
 HARNESS_CACHE_SERVER_API_TOKEN=PLACEHOLDER
 ```
 
 For `HARNESS_CACHE_SERVER_URL`, you can get the URL from FF or gateway endpoint if using prod1 or prod2 clusters.
 
-For `HARNESS_CACHE_SERVER_API_TOKEN`, create a Harness [Service Account Token](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/#create-service-account-api-keys-and-tokens) with account admin (or edit) permission PLACEHOLDER_LINK.
+For `HARNESS_CACHE_SERVER_API_TOKEN`, create a Harness [Personal Access Token or Service Account Token](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys) with `core_account_edit` permission.
 
 Here is a sample script:
 
