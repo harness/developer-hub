@@ -7,9 +7,21 @@ import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
 import { docsCards } from "./data/softwareEngineeringInsightsData";
 import { useColorMode } from "@docusaurus/theme-common";
-export default function CI() {
+import { SEIActions } from "../Telemetry/TememetryConstants";
+import Telemetry from "../Telemetry";
+
+
+
+export default function SEI() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
+
+  // <Telemetry event ="event2" property_w ="property_w" property_y ="property_y" /
+  
+    const handleReleaseNotesClick = () => {
+      <Telemetry event={SEIActions.SEIReleaseNotes} button="ReleaseNotes" />;
+    };
+
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -20,7 +32,7 @@ export default function CI() {
           </div>
           <div className={styles.btnContainer}>
             <Link href="/release-notes/software-engineering-insights">
-              <button className={styles.btn}>
+              <button className={styles.btn} onClick={handleReleaseNotesClick}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />
                 Release Notes
