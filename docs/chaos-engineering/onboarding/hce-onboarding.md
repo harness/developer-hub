@@ -9,7 +9,7 @@ This topic describes the typical steps to execute a chaos experiment, and delves
 ## Before you begin
 
 * [What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
-* [Dedicated Harness infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/harness-infra.md)
+* [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/)
 * [Key concepts](/docs/chaos-engineering/architecture-and-security/architecture/components)
 
 :::tip

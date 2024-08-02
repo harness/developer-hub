@@ -89,7 +89,7 @@ Once you execute your chaos experiments, you can download the reports that descr
 ## Harness Delegate
 
 :::tip
-The FAQs below are based on HCE entities using [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/harness-infra.md).
+The FAQs below are based on HCE entities using [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/).
 :::
 
 #### Do you support On-Premise Harness Control Plane?
@@ -102,7 +102,7 @@ HCE uses the Harness Delegate to execute chaos experiments, which you can levera
 - Better control over chaos experiments by facilitating advanced tunables.
 - Gain insights into application-level resilience scores.
 
-Go to [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/harness-infra.md) for more information.
+Go to [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/) for more information.
 
 #### Do you have dedicated agents across target types (Linux, Windows, Kubernetes, Cloud)?
 Yes, HCE has dedicated agents for different target types such as Linux, Windows, Kubernetes, and Cloud platforms (AWS, Azure, GCP, Cloud Foundry).

@@ -13,9 +13,9 @@ This topic describes the following operations:
 
 ## Before you begin
 
-* [Overview of HCE onboarding.](/docs/chaos-engineering/onboarding/hce-onboarding.md)
-* [Dedicated Harness infrastructure.](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/harness-infra.md)
-* [Create infrastructure before onboarding.](/docs/chaos-engineering/onboarding/hce-onboarding#prerequisites-to-automated-and-guided-onboarding)
+* [Overview of HCE onboarding](/docs/chaos-engineering/onboarding/hce-onboarding.md)
+* [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/)
+* [Create infrastructure before onboarding](/docs/chaos-engineering/onboarding/hce-onboarding#prerequisites-to-automated-and-guided-onboarding)
 
 :::tip
 Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
