@@ -9,7 +9,6 @@ import { docsCards } from "./data/softwareEngineeringInsightsData";
 import { useColorMode } from "@docusaurus/theme-common";
 import { SEIActions } from "../Telemetry/TememetryConstants";
 import Telemetry from "../Telemetry";
-import { useEffect } from 'react';
 
 
 
@@ -18,10 +17,6 @@ export default function SEI() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
 
   // <Telemetry event ="event2" property_w ="property_w" property_y ="property_y" /
-
-    useEffect(() => {
-      <Telemetry event={SEIActions.SEIPageView} page="SoftwareEngineeringInsights" />;
-    }, []);
   
     const handleReleaseNotesClick = () => {
       <Telemetry event={SEIActions.SEIReleaseNotes} button="ReleaseNotes" />;
