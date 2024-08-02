@@ -160,7 +160,7 @@ if [[ ! -z "${ENABLE_CI_CACHE// }" ]] && [[ "$ENABLE_CI_CACHE" == "true" ]]
 then
     # Start the proxy server
     mkdir -p /tmp/cachebin
-    curl -L -o /tmp/cachebin/harness-cache PLACEHOLDER_LINK
+    curl -L -o /tmp/cachebin/harness-cache $HARNESS_CACHE_SERVER_URL
     chmod +x /tmp/cachebin/harness-cache
     echo "Starting cache proxy with account $HARNESS_ACCOUNT_ID"
     /tmp/cachebin/harness-cache server > /tmp/cachebin/server.log 2>&1 &
@@ -169,9 +169,8 @@ then
 3. Add the build cache endpoint to the relevant `bazelrc` file: 
 
 ```bash
-build --remote_cache=http://$ENDPOINT:$PORT 
+build --remote_cache=http://$HARNESS_CACHE_SERVER_URL:$PORT 
 ```
 
-The $ENDPOINT:$PORT depends on the cluster you're using. For prod1 or prod2 clusters, the endpoint is PLACEHOLDER_LINK and the port is PLACEHOLDER_LINK.
 
 
