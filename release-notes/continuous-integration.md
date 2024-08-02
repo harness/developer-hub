@@ -81,7 +81,7 @@ This feature is behind the feature flag `CI_GIT_CLONE_ENHANCED`.
 
 - Fixed an issue where the plugin image path was incorrect when the registry endpoint had a port configured. This issue occurred because everything after : was being considered as the tag of the image, leading to an invalid Fully Qualified Name (FQN) and causing the Initialize step to fail in the Kubernetes flow. The fix ensures that the FQN is properly considered when the registry endpoint includes a port number. (CI-13455, ZD-66772)
 
-- Fixed an issue where the **Docker build and push** steps using Docker Layer Caching (DLC) might fail while downloading the cache if the feature flag `CI_DLC_SIGNED_URL` is turned on. The bug was caused by the `getReader` utility returning a closed `io.ReadCloser`, leading to an error when the caller tried to read from it. The issue has been resolved by ensuring the `io.ReadCloser` is not closed prematurely in the new product-specific implementation of the interface for buildkit cache. (CI-13508, ZD-66950)
+- Fixed an issue where the **Docker build and push** steps using Docker Layer Caching (DLC) might fail while downloading the cache if the feature flag `CI_DLC_SIGNED_URL` is turned on. (CI-13508, ZD-66950)
 
 ### Version 1.37
 
