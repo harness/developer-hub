@@ -97,7 +97,7 @@ Create an ECS cluster. Use an EC2 instance type with networking. For more inform
     }
    ```
 
-2. Copy and paste the above JSON into task definition on AWS ECS console. Refer the image below:
+2. Copy and paste the above JSON into task definition on Amazon ECS console. Refer the image below:
 
    ![](./static/ecs-task-definition.png)
 
