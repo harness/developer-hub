@@ -104,13 +104,6 @@ HCE uses the Harness Delegate to execute chaos experiments, which you can levera
 
 Go to [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/) for more information.
 
-#### Do you have dedicated agents across target types (Linux, Windows, Kubernetes, Cloud)?
-Yes, HCE has dedicated agents for different target types such as Linux, Windows, Kubernetes, and Cloud platforms (AWS, Azure, GCP, Cloud Foundry).
-The agents are:
-- Deployed centrally on Kubernetes to inject faults on K8s microservices;
-- Native agents for VMware using system service inside target machine;
-- Remote chaos agents to execute targets outside clusters for cloud resources.
-
 #### What ports are necessary to be opened in the org's firewall rules to access the Harness Control Plane from the user environment?
 You can access the Harness control plane from the user environment with outbound connectivity over HTTPS using port 443.
 Go to [permissions and ports](https://developer.harness.io/docs/platform/references/permissions-and-ports-for-harness-connections) and [FAQs](https://developer.harness.io/kb/chaos-engineering/chaos-engineering-faq ) for more details.
@@ -130,6 +123,18 @@ HCE doesn't store any user data with respect to the chaos experiments. The detai
 Yes, with cloud-based faults, chaos pods can be mapped to specific IAM roles. You have to create the IAM role on the cloud account and map it to the appropriate policy. The user's credentials should be embedded in a K8s secret before executing the faults.
 You can also create [a superset AWS policy](https://developer.harness.io/docs/chaos-engineering/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to allow executing all fault types.
 For more information, go to [AWS switch profile](https://developer.harness.io/docs/chaos-engineering/chaos-faults/aws/security-configurations/aws-switch-profile) and [workload identity setup for GCP](/docs/chaos-engineering/chaos-faults/gcp/gcp-iam-integration).
+
+## Deployment model
+
+#### Do you support execution of chaos across clusters from a single agent?
+Yes. With Harness Delegate, we support executing chaos across clusters from a single agent. You need to deploy your delegate in one cluster and then you can create connectors by provide master URL and access token of the other cluster and assign the same delegate to inject chaos.
+
+#### Do you have dedicated agents across target types (Linux, Windows, Kubernetes, Cloud)?
+Yes, HCE has dedicated agents for different target types such as Linux, Windows, Kubernetes, and Cloud platforms (AWS, Azure, GCP, Cloud Foundry).
+The agents are:
+- Deployed centrally on Kubernetes to inject faults on K8s microservices;
+- Native agents for VMware using system service inside target machine;
+- Remote chaos agents to execute targets outside clusters for cloud resources.
 
 ## Operations
 
