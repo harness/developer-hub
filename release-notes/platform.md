@@ -75,7 +75,23 @@ Below is further explanation for each type of secret manager Harness currently s
 The following deprecated API endpoints are longer supported:
 - [GET | PUT | POST | DELETE] api/resourcegroup/\{identifier}
 - POST api/resourcegroup/filter
-- GET api/resourcegroup
+- GET api/resourc
+
+## August 2024
+
+### Version 1.49.x<!-- August 13, 2024 -->
+
+#### New features and enhancements
+
+- Upgraded PostgreSQL for SMP builds from version 14.9.0-debian-11-r60 to version 14.11.0-debian-11-r17. (PL-51820)
+
+- Upgraded the "io.netty_netty-codec-http" library to address a medium severity issue. The version has been updated from 4.1.101.Final to 4.1.108.Final. (PL-51350)
+
+#### Fixed issues
+
+- Legacy Delegate was unable to download the SCM binary. This issue has been resolved. (PL-55263, ZD-66357, ZD-66361)
+
+- Users were not being created in Harness FirstGen after being provisioned in NextGen. Updated the user provision field to ensure that users are properly created in Harness FirstGen after being provisioned in NextGen. (PL-52142, ZD-65604)
 
 ## July 2024
 
