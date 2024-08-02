@@ -3328,3 +3328,42 @@ The minimum supported screen resolution is 1440x900.
 ### Can I adjust the default width of step logs in the browser GUI? They currently open at around 25% of the screen width.
 
 Currently, there are no settings to modify the default GUI view setup. You can manually expand and adjust it as needed, but it resets to default when you refresh or switch to another execution.
+
+### SMP Help setup licence updation. 
+
+ You can update the overrides file with the new licence key under : 
+ ```
+license:
+    # -- Insert NG License String to enable NG license
+    ng: 'new licence key here'
+```
+Once thsi is update , you will need to run the helm upgrade :
+```
+$ helm upgrade my-release harness/harness -n <namespace> -f override.yaml
+```
+
+### SMP Helm upgrade failing with error that no repo found.
+
+When you try to run a fresh install or upgrade and you get error about the repo not found. 
+Make sure the repo exists. 
+
+Run : 
+```
+helm repo list -n <namespace>
+```
+
+Now run : 
+```
+helm repo add harness https://harness.github.io/helm-charts
+```
+Now when you run the list it should show you the repo and you should be good to run the further commands now for upgrade or install. 
+
+### Stream error when running upgrade in SMP Helm setup. 
+
+You might see the below error when running helm upgrade. 
+```
+stream error: stream ID 1; NO_ERROR; received from peer
+```
+This error is mostly as your server running the smp doesnt have access to the outside network to be able to download the chart required to upgrade from github. 
+You can have the chart download locally to your server and then run the upgrade pointing to the local chart location. 
+```helm upgrade my-release <pathToLocalHelmChart> -f overrides.yaml -n <namespace>```
