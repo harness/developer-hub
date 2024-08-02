@@ -145,8 +145,8 @@ Since Bazel does not support writing a custom plugin, the cache proxy exposes th
 
 ```bash
 HARNESS_CACHE_PROXY_ENABLED=true
-HARNESS_CACHE_SERVER_URL=FROM_FF_OR_GATEWAY_ENDPOINT
-HARNESS_CACHE_SERVER_API_TOKEN=PLACEHOLDER
+HARNESS_CACHE_SERVER_URL=
+HARNESS_CACHE_SERVER_API_TOKEN=
 ```
 
 For `HARNESS_CACHE_SERVER_URL`, you can get the URL from FF or gateway endpoint if using prod1 or prod2 clusters.
