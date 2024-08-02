@@ -37,41 +37,9 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## July 2024
 
-### Version 1.39
-
-<!-- 2024-07-29 -->
-
-#### Fixed issues
-
-- Fixed an issue where the Harness Build URL could exceed 255 characters if the projectId, orgId, or PipelineId identifiers were too long. Changes have been made to remove stageExecId from the Build URL to reduce the URL length in the case of non-matrix stages. (CI-13402, ZD-66211)
-
-- Fixed an issue where SSH account-level Git connectors were failing during the connection test and status checks due to using an incorrect port. (CI-13578, ZD-67248,67266)
-
 ### Version 1.38
 
 <!-- 2024-07-22 -->
-
-#### Early Access feature
-
-This release introduces several highly requested features and improvements to enhance the Git clone operations within Harness, in both the Git Clone step and the native Clone Codebase functionality. With this release, we’re adding support for:
-
-- Git LFS - Allows users to clone repositories with large file storage (LFS) efficiently.
-
-- Fetch Tags - Enables fetching of tags during the clone operation.
-
-- Sparse Checkout - Enables cloning specific subdirectories.
-
-- Clone Submodules - Adds options for including and recursively cloning Git submodules.
-
-- Clone Path Customization - Exposes the clone path in the codebase section, allowing users to specify a custom clone directory.
-
-- Additional Pre-Fetch Command - Ability to specify any additional Git commands to run before fetching the code.
-
-- UI Changes - Have added additional configurations (LFS, fetch tags, clone directory, sparse checkout, submodule strategy, prefetch command) while cloning the codebase in the UI editor. These fields can be accessed in both the clone codebase dialog from the right navigation bar and in the Git clone step.
-
-For more information, please refer to the [documentation](../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step). (CI-12952, CI-13239)
-
-This feature is behind the feature flag `CI_GIT_CLONE_ENHANCED`.
 
 #### Fixed issues
 
