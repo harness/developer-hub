@@ -61,5 +61,5 @@ export const MODULE_ICON = {
     [MODULES.platform]: 'img/icon_harness.svg',
     [MODULES.smp]: 'img/icon_harness.svg',
     [MODULES.aida]: 'img/icon_aida.svg',
-    [MODULES.dbdevops]: 'img/icon_dbdevops'
+    [MODULES.dbdevops]: 'img/icon_dbdevops.svg'
 }
