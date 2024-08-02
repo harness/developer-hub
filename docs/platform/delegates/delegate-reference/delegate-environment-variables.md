@@ -73,6 +73,15 @@ To configure the delegate resource threshold, set the `DELEGATE_CPU_THRESHOLD` e
           value: "80"
    ```
 
+### MEMORY_USAGE_THRESHOLD
+
+To configure the delegate resource threshold on memory usage, set the `MEMORY_USAGE_THRESHOLD` env variable to the CPU threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks. For more information, go to [Configure delegate metrics and auto scale](/docs/platform/delegates/manage-delegates/delegate-metrics).
+
+   ```yaml
+        - name: MEMORY_USAGE_THRESHOLD
+          value: "80"
+   ```
+
 ### DELEGATE_TASK_CAPACITY
 
 Harness enables you to configure a maximum number of tasks for each delegate. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it.
@@ -124,6 +133,15 @@ Use this variable to specify the endpoint for your log service in Harness NextGe
 ```yaml
         - name: LOG_STREAMING_SERVICE_URL
           value: "YOUR_MANAGER_ENDPOINT/log-service/"
+```
+
+### BLOCK_SHELL_TASK
+
+Use this variable to enforce non execution of shell script on delegate. When this variable is set to true, the delegate will not acquire a task of type shell script
+
+```yaml
+        - name: BLOCK_SHELL_TASK
+          value: "true"
 ```
 
 ### MANAGER_HOST_AND_PORT
