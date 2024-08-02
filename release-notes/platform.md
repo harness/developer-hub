@@ -83,7 +83,7 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
-- Upgraded PostgreSQL for SMP builds from version 14.9.0-debian-11-r60 to version 14.11.0-debian-11-r17. (PL-51820)
+- Upgraded PostgreSQL for SMP builds from version 15.20.533-debian-11-l60 to version 14.11.0-debian-11-r17. (PL-51820)
 
 - Upgraded the "io.netty_netty-codec-http" library to address a medium severity issue. The version has been updated from 4.1.101.Final to 4.1.108.Final. (PL-51350)
 
