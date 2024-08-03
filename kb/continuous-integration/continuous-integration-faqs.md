@@ -28,7 +28,7 @@ Yes, each stage can have a different build infrastructure. Additionally, dependi
 
 No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes pre-installed versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS development guide](https://developer.harness.io/docs/continuous-integration/development-guides/ci-ios).
 
-### What's the difference between `CI_MOUNT_VOLUMES`, `ADDITIONAL_CERTS_PATH`, and `DESTINATION_CA_PATH`?
+### What's the difference between CI_MOUNT_VOLUMES, ADDITIONAL_CERTS_PATH, and DESTINATION_CA_PATH?
 
 `CI_MOUNT_VOLUMES` - An environment variable used for CI Build Stages. This variable should be set to a comma-separated list of `source:destination` mappings for certificates where source is the certificate path on the delegate, and destination is the path where you want to expose the certificates on the build containers. For example,
 
