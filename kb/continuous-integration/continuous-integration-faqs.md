@@ -49,7 +49,7 @@ No. Your build infrastructure can be configured to use whichever tools you like.
   value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
 ```
 
-`ADDTIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES` work in tandem to ensure certificates are mounted on the Kubernetes Build Infrastructure where as `DESTINATION_CA_PATH` does not require other environment variables to mount certificates. Instead, `DESTINATION_CA_PATH` relies on the certificate being mounted at `/opt/harness-delegate/ca-bundle` in order to copy the certificate to the provided comma-separated list of file paths.
+`ADDTIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES` work in tandem to ensure certificates are mounted on the Kubernetes Build Infrastructure, whereas `DESTINATION_CA_PATH` does not require other environment variables to mount certificates. Instead, `DESTINATION_CA_PATH` relies on the certificate being mounted at `/opt/harness-delegate/ca-bundle` in order to copy the certificate to the provided comma-separated list of file paths.
 
 `DESTINATION_CA_PATH` and `ADDTIONAL_CERTS_PATH`/`CI_MOUNT_VOLUMES` both perform the same operation of mounting certificates to Kubernetes Build Infrastructure. Harness recommends `DESTINATION_CA_PATH` over `ADDTIONAL_CERTS_PATH`/`CI_MOUNT_VOLUMES` however, if both are defined, `DESTINATION_CA_PATH` will be consumed over `ADDTIONAL_CERTS_PATH`/`CI_MOUNT_VOLUMES`.
 
