@@ -47,26 +47,230 @@ async function config() {
       locales: ["en"],
     },
 
-    presets: [
-      [
-        "classic",
-        /** @type {import('@docusaurus/preset-classic').Options} */
-        ({
-          // docs: {
-          //   path: "docs",
-          //   sidebarPath: require.resolve("./sidebars.js"),
-          //   editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
-          //   // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
-          //   exclude: ["**/shared/**", "**/static/**"],
-          //   routeBasePath: "docs", //CHANGE HERE
-          // },
-          docs: false,
-          sitemap: {
-            // changefreq: 'weekly',
-            // priority: 0.5,
-            ignorePatterns: [
-              "/docs/infra-as-code-management",
-              "/docs/infra-as-code-management/**",
+
+  presets: [
+    [
+      "classic",
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
+        // docs: {
+        //   path: "docs",
+        //   sidebarPath: require.resolve("./sidebars.js"),
+        //   editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
+        //   // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
+        //   exclude: ["**/shared/**", "**/static/**"],
+        //   routeBasePath: "docs", //CHANGE HERE
+        // },
+        docs: false,
+        sitemap: {
+          // changefreq: 'weekly',
+          // priority: 0.5,
+          ignorePatterns: [
+            "/docs/infra-as-code-management",
+            "/docs/infra-as-code-management/**",
+          ],
+          // filename: 'sitemap.xml',
+        },
+        theme: {
+          customCss: require.resolve("./src/css/custom.css"), // we could also use scss here
+        },
+        // gtag: { // use GTM instead
+        //   trackingID: 'G-46758J5H8P',
+        //   anonymizeIP: false,
+        // },
+        googleTagManager: {
+          containerId: "GTM-MJB7HPB",
+        },
+      }),
+    ],
+  ],
+
+  // themes: ["@docusaurus/theme-search-algolia"],
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      metadata: [
+        {
+          name: "og:image",
+          content: "https://developer.harness.io/img/hdh-social-card.png",
+        },
+      ],
+      //src: "/img/logo_dlp.svg",
+      navbar: {
+        title: "Harness Developer Hub",
+        logo: {
+          alt: "Harness Developer Hub",
+          src: "/img/logo_dlp.svg",
+        },
+        items: [
+          /*{
+            position: "left",
+            html: `<img src='${BASE_URL}img/icon_beta.svg' alt='BETA' width='39' height='19' />`,
+            href: "#",
+          },*/
+          {
+            position: "right",
+            type: "dropdown",
+            label: "Documentation",
+            to: "docs",
+            items: [
+              {
+                label: "Platform",
+                to: "docs/platform",
+              },
+              {
+                label: "Code Repository",
+                to: "docs/code-repository",
+              },
+              {
+                label: "Continuous Integration",
+                to: "docs/continuous-integration",
+              },
+              {
+                label: "Continuous Delivery & GitOps",
+                to: "docs/continuous-delivery",
+              },
+              {
+                label: "Infrastructure as Code Management",
+                to: "docs/infrastructure-as-code-management",
+              },
+              {
+                label: "Feature Flags",
+                to: "docs/feature-flags",
+              },
+              {
+                label: "Cloud Cost Management",
+                to: "docs/cloud-cost-management",
+              },
+              {
+                label: "Security Testing Orchestration",
+                to: "docs/security-testing-orchestration",
+              },
+              {
+                label: "Software Supply Chain Assurance",
+                to: "docs/software-supply-chain-assurance",
+              },
+              {
+                label: "Chaos Engineering",
+                to: "docs/chaos-engineering",
+              },
+              {
+                label: "Service Reliability Management",
+                to: "docs/service-reliability-management",
+              },
+              {
+                label: "Internal Developer Portal",
+                to: "docs/internal-developer-portal",
+              },
+              {
+                label: "Software Engineering Insights",
+                to: "docs/software-engineering-insights",
+              },
+              {
+                label: "Self-Managed Enterprise Edition",
+                to: "docs/self-managed-enterprise-edition",
+              },
+              {
+                label: "FirstGen",
+                to: "docs/first-gen",
+              },
+              {
+                label: "FAQs",
+                to: "docs/faqs",
+              },
+              {
+                label: "Troubleshooting",
+                to: "docs/troubleshooting",
+              },
+              {
+                label: "Harness Cloud Operations",
+                to: "docs/harness-cloud-operations",
+              },
+              {
+                label: "Release Notes",
+                href: "/release-notes",
+              },
+              {
+                label: "API Reference",
+                to: "https://apidocs.harness.io/",
+              },
+            ],
+          },
+          {
+            label: "University",
+            position: "right",
+            type: "dropdown",
+            to: "university",
+            items: [
+              {
+                label: "Learn Harness from Experts",
+                to: "university",
+              },
+              {
+                label: "Continuous Integration",
+                to: "university/continuous-integration",
+              },
+              {
+                label: "Continuous Delivery & GitOps",
+                to: "university/continuous-delivery",
+              },
+              {
+                label: "Feature Flags",
+                to: "university/feature-flags",
+              },
+              {
+                label: "Cloud Cost Management",
+                to: "university/cloud-cost-management",
+              },
+              {
+                label: "Security Testing Orchestration",
+                to: "university/sto",
+              },
+              {
+                label: "Software Engineering Insights",
+                to: "university/sei",
+              },
+              {
+                label: "Chaos Engineering",
+                to: "university/chaos-engineering",
+              },
+              {
+                label: "Internal Developer Portal",
+                to: "university/idp",
+              },
+              {
+                label: "Virtual Instructor-Led Calendar",
+                to: "https://university-registration.harness.io/calendar",
+              },
+              {
+                label: "Instructions",
+                to: "university/instructions",
+              },
+              {
+                label: "FAQs",
+                to: "university/faqs",
+              },
+            ],
+          },
+          {
+            label: "Knowledge Base",
+            position: "right",
+            type: "dropdown",
+            to: "kb",
+            items: [
+              {
+                to: "kb",
+                label: "Knowledge Base",
+              },
+              {
+                to: "kb/reference-architectures",
+                label: "Reference Architectures",
+              },
+              {
+                to: "community",
+                label: "Community",
+              },
+
             ],
             // filename: 'sitemap.xml',
           },
