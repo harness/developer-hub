@@ -3328,3 +3328,83 @@ The minimum supported screen resolution is 1440x900.
 ### Can I adjust the default width of step logs in the browser GUI? They currently open at around 25% of the screen width.
 
 Currently, there are no settings to modify the default GUI view setup. You can manually expand and adjust it as needed, but it resets to default when you refresh or switch to another execution.
+
+### Need to run pipeline with a single delegate
+Yes you can specify the delegate selector on the pipeline level. 
+Go to pipeline , the advanced Options section on thr right and here add the selector.
+
+### Where to see a delegate version?
+
+You can see the delegate version on Harness UI under delegate tab where it list all the delegate it shows the version of the delegate as well. 
+The image tag format is yy.mm.xxxxx, ex: 24.07.83605 here 24 is te year, 7 is the month and 83605 is the delegate version
+
+### Can Harness access customer delegates?
+
+No Harness can't access customer delegates as customer delegate are running securely in customer infrastructure, But The delegate does sends the logs to Harness Manager and that can also be restricted. 
+
+### Our company emails are getting updated, how will affect our SCIM/SAMl Setup.
+
+If you have SCIM, then once the emails are updated at your SCIM Provider end, it will automatically sync with Harness. 
+
+### How to configure a local user in Harness, we are currently using OKTA.
+
+An Admin can help create a local user in Harness. It can be created from the UI, under Users page +New User. This user can also be given admin roles if in case there is any issue with login authentication, The local user or any admin user can user the local login method and get into Harness. 
+
+### We created a customer SM with script running ,we used a secret from this SM created a k8 connetor for infra and deployed a service. We updated the scripot but still see older script running with a perpetual task
+
+As there is an active service instance deployed , there is a perpetual task running so Harness knows if the instance is still up. As a part of this perpetual task it shows in logs the contents of the older script. 
+You can make a dummy change and resave the SM and it should clear the perpetual task. 
+
+### Update notification emails for a SCIM provisioned User group.
+
+You can use the below API : 
+
+```
+curl 'https://app.harness.io/gateway/ng/api/user-groups?routingId=account_id_here&accountIdentifier=account_id_here' \
+  -X 'PUT' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: api-key-here' \
+  --data-raw '{"accountIdentifier":"account-id-here","identifier":"usergroup-id-here","name":"usergroup-name-here","users":["xxxxxxxxxxxxx","xxxxxxxxxxxx","dP-oXxxxxxxxxxxxD_aBQ"],"notificationConfigs":[{"type":"EMAIL","groupEmail":"test@harness.io","sendEmailToAllUsers":true}],"externallyManaged":true,"description":"","tags":{},"harnessManaged":false,"ssoLinked":false}'
+```
+
+### We have master pipeline which chains different pipelines like build and deploy. In between pipelines we have manual approval step. when we check the execution. history or logs, we dont see who has approved it - approver's name or email id.
+
+For a pipeline with an approval step, once the step runs and has not expired. Then it shows in the step execution on who approved or rejected it. 
+
+### For approval step , Cannot access to Jira, 400 code response shows for project on onprem jira server
+
+In case the jira server version is 9 and above, Contact Harness Support to enable FF SPG_USE_NEW_METADATA. 
+https://developer.harness.io/docs/platform/platform-whats-supported/
+
+### Invalid authorisation code for 2fa, unable to login
+
+You can reset the 2FA code, by asking the account admin to help reset it, Once reset it will send you an email with new QR code, or secret key for resetting the 2FA in your authenticator app. 
+
+### Not receiving new user invite email
+
+There could be several reasons for this. The most common one being if the email has bounced. You can contact Harness Support to get the email cleared from the bounce list. 
+
+### We received an alert from the Harness side indicating that some delegates are out of Harness support policy and need to be upgraded.
+
+Yes in case your delegate are very OLD, Harness does send a reminder to upgrade your delegate. 
+It is for security reason that your delegate might be vulnerable to several risks. 
+
+### What is linked_sso_id and where do i get it?
+
+The linkedSSoid is the id for the sso saml provider you add on the authentication in Harness. 
+You can get this id from using the list api for the SAML Provider : https://apidocs.harness.io/tag/Authentication-Settings#operation/getAuthenticationSettingsV2
+
+### If we’re setting up a user group using Terraform. Would the sso_group_id and sso_group_name be the id of the group in Azure AD or the name? 
+
+sso_group_id            = "sso_group_name" // When sso linked type is saml sso_group_id is same as sso_group_name
+ 
+so its the group name from the sso end which will be the id/name. 
+Also in case of azure when you setup the group claim attribute in that source attribute as group id then the object id you see in azure end is the group name/id.  
+
+### Which events are coming as a part of logs in audit trails in next gen harness. 
+
+You can see details and events types here from our API docs : https://apidocs.harness.io/tag/Audit#operation/getAuditEventList, 
+
+### How is Harness k8s connector still working with expired delegate?
+
+We do not stop the working with expired delegate . They may still continue to work however our recommendation is to keep the delegate upgarded because with the new releases we only ensure backward compatibility till the expiry limit. So any existing functionality may or may not work.
