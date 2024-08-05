@@ -33,27 +33,29 @@ These experiments induce chaos within a container and depend on an EC2 instance.
 
 Faults that belong to this category are listed below:
 
-1. [AWS ECS Agent Stop](./ecs-agent-stop.md)
+1. [AWS ECS Agent Stop](/docs/chaos-engineering/chaos-faults/aws/ecs-agent-stop.md)
 
-2. [AWS ECS Container CPU Hog](./ecs-container-cpu-hog.md)
+2. [AWS ECS Container CPU Hog](/docs/chaos-engineering/chaos-faults/aws/ecs-container-cpu-hog.md)
 
-3. [AWS ECS Container HTTP Latency](./ecs-container-http-latency.md)
+3. [AWS ECS Container HTTP Latency](/docs/chaos-engineering/chaos-faults/aws/ecs-container-http-latency.md)
 
-4. [AWS ECS Container HTTP Modify Body](./ecs-container-http-modify-body.md)
+4. [AWS ECS Container HTTP Modify Body](/docs/chaos-engineering/chaos-faults/aws/ecs-container-http-modify-body.md)
 
-5. [AWS ECS Container HTTP Reset Peer](./ecs-container-http-reset-peer.md)
+5. [AWS ECS Container HTTP Modify Header](/docs/chaos-engineering/chaos-faults/aws/ecs-container-http-modify-header.md)
 
-6. [AWS ECS Container HTTP Status Code](./ecs-container-http-status-code.md)
+6. [AWS ECS Container HTTP Reset Peer](/docs/chaos-engineering/chaos-faults/aws/ecs-container-http-reset-peer.md)
 
-7. [AWS ECS Container IO Stress](./ecs-container-io-stress.md)
+7. [AWS ECS Container HTTP Status Code](/docs/chaos-engineering/chaos-faults/aws/ecs-container-http-status-code.md)
 
-8. [AWS ECS Container Memory Hog](./ecs-container-memory-hog.md)
+8. [AWS ECS Container IO Stress](/docs/chaos-engineering/chaos-faults/aws/ecs-container-io-stress.md)
 
-9. [AWS ECS Container Network Latency](./ecs-container-network-latency.md)
+9. [AWS ECS Container Memory Hog](/docs/chaos-engineering/chaos-faults/aws/ecs-container-memory-hog.md)
 
-10. [AWS ECS Container Network Loss](./ecs-container-network-loss.md)
+10. [AWS ECS Container Network Latency](/docs/chaos-engineering/chaos-faults/aws/ecs-container-network-latency.md)
 
-11. [AWS ECS Instance Stop](./ecs-instance-stop.md)
+11. [AWS ECS Container Network Loss](/docs/chaos-engineering/chaos-faults/aws/ecs-container-network-loss.md)
+
+12. [AWS ECS Instance Stop](/docs/chaos-engineering/chaos-faults/aws/ecs-instance-stop.md)
 
 ## EC2-backed and serverless faults
 
@@ -61,9 +63,9 @@ These experiments are versatile and are applicable to both serverless ECS tasks 
 
 Faults that belong to this category are listed below:
 
-1. [AWS ECS Task Stop](./ecs-task-stop.md)
+1. [AWS ECS Task Stop](/docs/chaos-engineering/chaos-faults/aws/ecs-task-stop.md)
 
-2. [AWS ECS Task Scale](./ecs-task-scale.md)
+2. [AWS ECS Task Scale](/docs/chaos-engineering/chaos-faults/aws/ecs-task-scale.md)
 
-3. [AWS ECS Network Restrict](./ecs-network-restrict.md)
+3. [AWS ECS Network Restrict](/docs/chaos-engineering/chaos-faults/aws/ecs-network-restrict.md)
 
