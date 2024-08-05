@@ -68,4 +68,6 @@ Harness does not currently support Google Cloud Source Repository for Google Clo
 Harness supports deploying Google Functions 1st gen and 2nd gen. But for Google Cloud Functions 2nd gen, Harness does not support Google Cloud Source Repository at this time. Only Google Cloud Storage is supported. For Google Cloud Functions 1st gen, Harness supports both Google Cloud Storage and Google Cloud Source.
 For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/#supported-versions).
 
+### Does Harness support using the GCP connector configured to inherit permissions for making additional calls to the registry?
 
+While the GCP connector inheriting permissions from the delegate can pull images, additional configurations may be needed to fetch the entry point. Also Harness uses the node pool's authentication configuration while pulling the image. Also Harness can't extract the secret and mount it under `imagePullSecrets` in this case. For more details, go to [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference#gcp-connector-settings)
