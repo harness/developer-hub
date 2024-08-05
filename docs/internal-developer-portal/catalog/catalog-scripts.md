@@ -53,7 +53,7 @@ python3 idp-catalog-wizard-github.py --register-yamls --org org_name --x_api_key
 
 - `org` : Github Org name
 - `x_api_key`: Refer https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token to generate one
-- -`account` : This is your harrness-account id. Ex - `https://app.harness.io/ng/account/{Your account}/module/idp/overview`
+- -`account` : This is your Harness Account ID. You can get it from the URL e.g. - `https://app.harness.io/ng/account/{Your account ID}/module/idp/overview`
 
 
 #### Perform all actions: create YAML files, push changes, and register YAML files (all given args in command below are required)
@@ -137,12 +137,15 @@ Bitbucket `username` isn't same as your email address, rather follow this [docs]
 :::
 
 ```sh
-python3 idp-catalog-wizard-bitbucket.py --create-yamls --username bitbucket_username \ 
---workspace WORKSPACE NAME: Bitbucket workspace name \
---password APP_PASSWORD: Bitbucket app password \
---project_key PROJECT_KEY: (OPTIONAL) Bitbucket project key \
---repo-pattern REPO_PATTERN: (OPTIONAL) Your repo pattern \
+python3 idp-catalog-wizard-bitbucket.py --create-yamls --workspace example_workspace --username bitbucket_username --password bitbucket --project_key bitbucket_project_key
 ```
+
+- `workspace`: Bitbucket workspace name
+- `username` : [Bitbucket Username](https://community.atlassian.com/t5/Bitbucket-questions/HOW-TO-FIND-MY-BIT-BUCKET-USERNAME/qaq-p/1081960)
+- `password` : [Bitbucket app password](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/)
+- `project_key` : (OPTIONAL) Bitbucket project key
+- `repo-pattern` : (OPTIONAL) Your repo pattern 
+
 
 ### [Registered Locations](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/idp-catalog-wizard-bitbucket-monorepo.py) - For Monorepos
 
@@ -151,11 +154,13 @@ python3 idp-catalog-wizard-bitbucket.py --create-yamls --username bitbucket_user
 #### Register YAML files using X-API-Key and account name (all given args in command below are required)
 
 ```sh
-python3 idp-catalog-wizard-bitbucket.py --register-yamls \
---workspace WORKSPACE NAME: Bitbucket workspace name \
---x_api_key X_API_KEY: Refer https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token to generate one \
---account ACCOUNT_NAME: This is your harrness-account id. Ex - https://app.harness.io/ng/account/{Your account}/module/idp/overview
+python3 idp-catalog-wizard-bitbucket.py --register-yamls --workspace bitbucket_workspace --x_api_key your_x_api_key --account harness_account
 ```
+
+- `workspace` : Bitbucket workspace name 
+- `x_api_key` : Refer [docs](https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token ) to generate one. 
+- `account` : This is your Harness Account ID. You can get it from the URL e.g. - `https://app.harness.io/ng/account/{Your account ID}/module/idp/overview`
+
 
 #### Perform all actions: create YAML files, push changes, and register YAML files (all given args in command below are required)
 
