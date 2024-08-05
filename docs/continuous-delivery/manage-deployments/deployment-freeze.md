@@ -10,6 +10,7 @@ This topic covers the Harness deployment freeze feature, including how to set up
 
 - Deployment freeze does not apply to [Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial.md).
 - You cannot edit enabled deployment freeze windows. If the deployment freeze window you want to change is enabled, you must first disable it, make your changes, then enable it again.
+- Account admins are always able to bypass deployment freeze windows.
 
 ## Deployment freeze summary
 
