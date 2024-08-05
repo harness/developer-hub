@@ -102,3 +102,16 @@ So once you select the metric pack (performance and error), we do have some defi
 ### How to pull metrics that are not detected automatically for Appdynamics?
 
 You can configure a custom query under the health source and need to pass completeMetricPath.
+
+### In this custom verification of logs, I see it shows known, unknown, and unexpected frequencies. However, I want to define what is known, as some logs are expected, and I want to ignore them. 
+
+You can change the log preference and mark (not a risk) once you select Update event preference.
+
+### Why the verification graph looks different for metric vs log analysis.
+
+Log analysis uses a radar chart, while for metric analysis, a linear chart is used, and that’s why we see differences in the chart.
+
+### What is the group used for in the case of CV? I do not see an option to configure while using Appdynmaics as APM.
+
+Group is used to show the metric as per the defined group. For Appdynamics, New Relic, and Dynatrace, metrics are automatically grouped based on transactions.
+You will be able to select the group for the custom query that you configure.
