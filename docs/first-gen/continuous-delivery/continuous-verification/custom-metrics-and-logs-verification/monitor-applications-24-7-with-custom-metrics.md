@@ -15,7 +15,7 @@ While Harness supports  [all of the common metrics tools](/docs/category/contin
 This section assumes you have a Harness Application set up, containing a Service and Environment. For steps on setting up a Harness Application, see  [Application Components](../../model-cd-pipeline/applications/application-configuration.md).
 
 
-### Before You Begin
+### Before You 
 
 * See [Custom Verification Overview](custom-verification-overview.md).
 * See [Connect to Custom Verification for Custom Metrics](connect-to-custom-verification-for-custom-metrics.md).
@@ -187,7 +187,7 @@ Specify the value for the event count. This is used to filter and aggregate data
 
    ![](./static/monitor-applications-24-7-with-custom-metrics-85.png)
 	 
-	 The Metrics URL Collection is based on the query you entered in the **Metric Collection URL field** earlier. The **$\{host}** field refers to the `${host}` variable in your query.
+	 The Metrics URL Collection is based on the query you entered in the **Metric Collection URL field** earlier. The `**${host}**` field refers to the `${host}` variable in your query.
 	 
 2. Specify a time range using the `${startTime}` and `${endTime}`.
 3. Click **Send**. The query is executed and the JSON is returned.  
