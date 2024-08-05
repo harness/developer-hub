@@ -15,7 +15,7 @@ Let's consider the following data for a developer, John Doe, during the last qua
 <th>Value</th>
 </tr>
 <tr>
-<td>PRs</td>
+<td>PRs Merged</td>
 <td>12</td>
 </tr>
 <tr>
@@ -72,11 +72,11 @@ In this example, the **Individual Raw Stats** report for **John Doe** would disp
 
 Here's how each metric is calculated:
 
-### **PRs**
+### **PRs Merged**
 
-Total number of pull requests contributed by the contributor in the selected time range.
+Total number of pull requests created by the contributor that were merged in the selected time range.
 
-**Example:** Let's say John Doe created the following PRs during Q1 2023:
+**Example:** Let's say John Doe had the following PRs merged during Q1 2023:
 
 * PR #123 on March 1st
 * PR #456 on March 10th
