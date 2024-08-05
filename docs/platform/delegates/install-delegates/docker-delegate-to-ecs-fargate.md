@@ -97,7 +97,11 @@ Create an ECS cluster. Use an EC2 instance type with networking. For more inform
     }
    ```
 
-2. Enter the fields of the task definition as follows:
+2. Copy and paste the above JSON into task definition on Amazon ECS console. Refer the image below:
+
+   ![](./static/ecs-task-definition.png)
+
+3. Enter the fields of the task definition as follows:
 
    | **Field** | **Description** |
    | :-- | :-- |
@@ -108,7 +112,6 @@ Create an ECS cluster. Use an EC2 instance type with networking. For more inform
    | `DELEGATE_NAME` | The name you gave your delegate. This is usually the name you specified during delegate installation. |
    | `IMAGE` | Use the most recent delegate image from https://hub.docker.com/r/harness/delegate/tags. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.xxxxx`. |
 
-
 ### Create your services
 
 Use the following steps to create a service.
@@ -116,7 +119,7 @@ Use the following steps to create a service.
 1. Open AWS CLI. Use the following instruction to create your AWS services:
 
    ```
-   ecs create-service --service-name <SERVICE_NAME> --task-definition
+   aws ecs create-service --service-name <SERVICE_NAME> --task-definition harness-delegate-task-spec --cluster <CLUSTER_NAME> --desired-count 1
    ```
 
    Replace `service-name` with the unique name of your service. Replace `task-definition` with the task definition that the service runs. For information on the specification of ECS service parameters, go to [`create-service`](https://docs.aws.amazon.com/cli/latest/reference/ecs/create-service.html).
