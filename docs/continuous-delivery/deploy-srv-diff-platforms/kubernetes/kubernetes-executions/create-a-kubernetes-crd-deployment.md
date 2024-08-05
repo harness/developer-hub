@@ -15,9 +15,9 @@ In addition, Harness provides many of the same features for Kubernetes [custom r
 Harness supports CRDs for both Kubernetes and OpenShift. There is no difference in their custom resource implementation.
 
 
-### Before You Begin
+### Before you begin
 
-* [Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+* [Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 * [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
 * [Kubernetes Releases and Versioning](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning)
 
@@ -29,7 +29,7 @@ Harness only performs rollback for the default Kubernetes objects. For failures 
 
 Harness redeploys using the last successful release that matches the `release-name` label value (`harness.io/release-name: <release_name>`), described below.
 
-#### Rolling Deployment Only
+#### Rolling deployment only
 
 Blue/Green and Canary deployments are not supported at this time. See [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment).
 
@@ -41,7 +41,7 @@ ConfigMap and Secrets are not versioned.
 
 To use a custom resource in Harness, you need to add the following annotations to its manifest:
 
-#### managed-workload
+#### Custom resource: managed-workload
 
 `harness.io/managed-workload`: when you set this annotation to `true`, it informs Harness that this is a custom resource.
 
@@ -52,7 +52,7 @@ Here is an example:
     "harness.io/managed-workload": "true"  
 ...
 ```
-#### steadyStateCondition
+#### Custom resource: steadyStateCondition
 
 `harness.io/steadyStateCondition`: since the resource is not a native Kubernetes resource, Harness needs a way to check its steady state.
 
@@ -84,7 +84,7 @@ If the `steadyStateCondition` fails, Harness logs the following error message:
 ```
 Status check for resources in namespace [[namespace]] failed.
 ```
-#### release-name
+#### Custom resource: release-name
 
 `harness.io/release-name: <release_name>` in labels: this is required for Harness to track any pods for the custom resource.
 
@@ -105,7 +105,7 @@ Here is an example:
     "harness.io/release-name": "{{.Values.release}}"  
 ...
 ```
-#### Controller Must Add Release Name to Pods
+#### Controller must add release name to pods
 
 The CRD controller must add the `harness.io/release-name` label and value from the custom resource manifest to all the pods created for the custom resource. This process sets the label on the resource so Harness can track its releases.
 
@@ -157,7 +157,7 @@ func newDeployment(foo *samplev1alpha1.Foo) *appsv1.Deployment {
   }  
 }
 ```
-#### Example Manifest
+#### Example manifest
 
 Here is an example manifest:
 
@@ -180,7 +180,7 @@ spec:
 ```
 As you can see in this example, steady state status is checked by verifying the replicas and name of the deployed custom resource.
 
-### Step 1: Prepare Target Cluster
+### Step 1: Prepare target cluster
 
 In most cases, the target deployment cluster will have the CustomResourceDefinition object already created. For example:
 
@@ -222,7 +222,7 @@ Ensure your target cluster has the CRD for the custom resource object you will c
 
 For an example of a simple CRD setup, see [sample-controller](https://github.com/kubernetes/sample-controller) and [Extend the Kubernetes API with CustomResourceDefinitions](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) from Kubernetes.
 
-### Step 2: Define Custom Resource in Harness
+### Step 2: Define custom resources in Harness
 
 You add the manifest for your custom object in a Harness Service, along with the artifact you will deploy. See [Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services).
 
@@ -236,13 +236,13 @@ You add the manifest for your custom object in a Harness Service, along with the
 8. Ensure your manifest has the required annotations and label, as described in [Required Custom Resource Annotations and Labels](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-annotations-and-labels/).
 
 
-### Step 3: Define Target Cluster
+### Step 3: Define target cluster
 
 In the same Harness Application, create your Kubernetes target cluster as described in [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure).
 
 Ensure that the **Release Name** matches the name in the manifest's label, as described in [Review: Required Custom Resource Annotations and Labels](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-annotations-and-labels/):
 
-### Step 4: Create Workflow for Custom Resource Deployment
+### Step 4: Create a pipeline for custom resource deployment
 
 Only the Kubernetes Rolling deployment method is supported for CRDs. See [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment).
 
@@ -258,7 +258,7 @@ There is nothing to configure in this pipeline unless you want to add additional
 
 You might want to run a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step to display additional Kubernetes information. See [Harness Variables and Expressions](/docs/category/variables-and-expressions) for expressions you can use.
 
-### Step 5: Deploy Custom Resource
+### Step 5: Deploy custom resource
 
 Let's take a look at the logs from a CRD deployment.
 
@@ -348,7 +348,7 @@ Done.
 ```
 As this is the first deployment, the new object is identified as **configured**.
 
-#### Wait for Steady State
+#### Wait for steady state
 
 This stage performs a [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) to display status about the custom resource.
 
@@ -393,7 +393,7 @@ Status : example-foo-demo   }
   
 Done.
 ```
-#### Wrap Up
+#### Wrap up
 
 Finally, the Wrap Up stage shows the deployed custom object:
 
@@ -429,13 +429,13 @@ Events:
   
 Done.
 ```
-### See Also
+### See also
 
 * [Delete Kubernetes Resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources/)
 * [Deploy Manifests Separately using Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step)
 * [Scale Kubernetes Pods](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas)
 
-### Configure As Code
+### Configure as code
 
 To see how to configure the settings in this topic using YAML, configure the settings in the UI first, and then click the **YAML** editor button.
 
