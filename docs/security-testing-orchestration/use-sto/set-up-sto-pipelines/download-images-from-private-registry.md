@@ -1,8 +1,10 @@
 ---
-title: Store STO images in a private registry
+title: Configure pipeline to use STO images from private registry
 description: Store your scanner images in a private registry. Useful for air-gapped environments.
-sidebar_label: Store images in a private registry
+sidebar_label: Use STO images from private registry
 sidebar_position: 30
+redirect_from:
+    - /docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry
 ---
 
 Harness maintains its own set of scan images for [STO-supported scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach). By default, a Harness pipeline pulls scan images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
@@ -80,7 +82,7 @@ USER 1000
 
 You need a Docker connector that points to your private container registry. For more information, go to [Docker Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 
-## Configure the pipeline to download images from your registry
+## Configure your pipeline to use images from your registry
 
 1. Download the scan images you need from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), test and validate the images, and store them in your private registry.
 
@@ -92,64 +94,101 @@ You need a Docker connector that points to your private container registry. For 
 
 2. If your registry automatically downloads the latest images from the public Harness registry, you might want to [specify the images to use in your pipelines](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md#specify-the-harness-ci-images-used-in-your-pipelines). This ensures that your pipelines use specific image versions. You must update this specification when you want to adopt a new version of an image.
 
-3. Set up your pipeline to download the images from your private registry. Configuration requirements depend on the type of step you're using to run your scans:
+3. Set up your pipeline to use the images from your private registry. This can be done at both the stage level and the step level for Scanner steps(Blackduck, Semgrep etc.,) and Custom Scanner steps. Below are the detailed steps and configurations required for each scenario.
 
-   - [Scanner-specific step](#scanner-template-setup)
-   - [Custom Scan step](#security-step-setup)
+    - [Override Security Test Images for Scanner Steps](#override-security-test-images-for-scanner-steps)
+      - [Stage Level Override](#stage-level-override)
+      - [Step Level Override](#step-level-override)
+    - [Override Security Test Images for Custom Scanner Steps](#override-security-test-images-for-custom-scanner-steps)
+      - [Scanner Image Override with default sto-image](#scanner-image-override-with-default-sto-image)
+      - [Override Scanner Image and sto-plugin](#override-scanner-image-and-sto-plugin)
 
-### Scanner step setup
+### **Override Security Test Images for Scanner Steps**
 
-Do the following if you're using a scanner step such as [**Black Duck Hub**](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference) or [**Snyk**](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#snyk-step-configuration) rather than a generic **Custom Scan** step. 
+#### **Stage Level Override**
 
-1. In the stage where you're setting up the step, go to the **Infrastructure** tab. 
+If you want to use your private images for all steps within a stage, follow these steps:
 
-2. Under **Advanced**, go to **Override Image Connector (optional)** and select the connector to your private registry. You might need to scroll down to see this option.
+1. Navigate to the **Infrastructure** section in your stage.
+2. Go to the **Advanced** section.
+3. Configure your private registry under the **Override Image Connector** section.
 
-   ![](../static/override-image-connector.png)
+<DocImage path={require('./static/custom-image-stage-level.png')} width="50%" height="50%" title="Click to view full size image" />
 
-3. If you specified a `USER` in the Dockerfile for your scan image, configure the scan step to run as the user:
+
+:::note
+Do not modify the names of the images in your private registry. STO will automatically look for the exact name(`harness/<SCANNER_NAME>`) based on the step added to the pipeline.
+:::
+
+
+#### **Step Level Override**
+
+If you want to override the image for a specific step within a stage, follow these steps:
+
+1. Navigate to the specific STO step in the pipeline.
+2. Go to the **Additional Configuration** section in the step configuration.
+3. Set your private registry and tag under **Override Security Test Image** section. By default, the step will look for the `latest` tag if no tag is provided.
+
+<DocImage path={require('./static/custom-image-scanner-step.png')} width="50%" height="50%" title="Click to view full size image" />
+
+:::note
+Do not modify the names of the images in your private registry. STO will automatically look for the exact name(`harness/<SCANNER_NAME>`) based on the step added to the pipeline.
+:::
+
+
+### **Override Security Test Images for Custom Scanner Steps**
+
+The custom scan step uses the sto-plugin to launch the appropriate scanner image based on the step configuration. Depending on your requirements, you can either proceed with the default sto-plugin configuration or choose to override the sto-plugin image as well. Below are the detailed steps and configurations for each scenario:
+
+
+#### **Scanner Image Override with default sto-image**
+
+To override the scanner image in a custom scan step, configure the following settings in the **Additional Configuration** section of the custom scan step:
+
+
+
+* <strong><code>runner_registry_domain</code></strong>: The URL of the registry where the images are stored. The supported format is `<_domain_>/<_directory_>` (such as, gcr.io/gcr-prod). Do not include the scheme (such as http:// or https://).
+* <strong><code>runner_registry_image_prefix</code></strong>: set this to `harness` (Do not change this setting)
+* <strong><code>runner_registry_username</code></strong>: The username of your registry
+* <strong><code>runner_registry_token</code></strong>: The token to access your registry
+* <strong><code>runner_tag: </code></strong>The image tag 
+
+
+#### Override Scanner Image and sto-plugin
+
+If you want to override the sto-plugin image as well, you can do this in two ways:
+
+**Stage Level Configuration**
+
+This configuration will override the sto-plugin for your custom scan steps, as well as the images for all other STO steps within the stage.
+
+1. Navigate to the **Infrastructure** section in your stage.
+2. Go to the **Advanced** section.
+3. Configure your private registry under the **Override Image Connector** section.
+
+
+<DocImage path={require('./static/custom-image-stage-level.png')} width="50%" height="50%" title="Click to view full size image" />
+
+
+**Step Level Configuration**
+
+This configuration will override the sto-plugin image and the scanner image for the specific custom scan step.
+
+1. Navigate to the custom scan step in the pipeline.
+2. Go to the **Additional Configuration** section in the step configuration.
+3. Set your private registry and tag under **Override Security Test Image** section. By default, the step will look for the `latest` tag if no tag is provided. Also, make sure you have the runner variables configured in the settings.
+
+
+<DocImage path={require('./static/custom-image-custom-scan-step.png')} width="50%" height="50%" title="Click to view full size image" />
+
+
+
+:::info
+If you specified a `USER` in the Dockerfile for your scan image, configure the scan step to run as the user:
 
    1. Open the scanner step and expand **Additional Configuration**. 
-   
    2. Set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
-
-### Custom Scan step setup 
-
-Do the following if you're using a generic [**Custom Scan**](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) step for your scan:
-
-1. Open the step and add these settings: 
-
-   * `runner_registry_domain`  —  The URL of the registry where the images are stored. 
-     
-     The supported format is `<_domain_>/<_directory_>` (such as, `gcr.io/gcr-prod`). 
-     
-     Do not include the scheme (such as `http://` or `https://`).
-
-   * `runner_registry_image_prefix : harness` — Do not change this setting. 
-
-   * `runner_registry_username`  — As needed
-
-   * `runner_registry_token`  — As needed
-
-  :::note
-
-  These settings are supported by the **Custom Scan** step only. They are not supported by scanner-specific steps such as **Semgrep** or **Trivy**.
-
-  :::
-
-2. If you need to use a proxy server, you must also specify the following: 
-
-   * `http_proxy`  —  The hostname and port to use for proxied HTTP requests
-  
-   * `https_proxy`  —  The hostname and port to use for proxied HTTPS requests
-
-   * `no_proxy`  — A comma-separated list of hosts to bypass the proxy
-
-3. If you specified a `USER` in the Dockerfile for your scan image, configure the scan step to run as the user:
-
-   1. Open the scanner step and expand **Additional Configuration**. 
-
-   2. Set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
+:::
 
 <!-- 
 ## YAML example for configuring STO to download images from a private registry
