@@ -94,7 +94,7 @@ You need to enter Dataset Name in Harness.
 
    <img src={dataset_name} alt="Entering the dataset name." height="50%" width="50%" />
 
-10. Next, you need to enter the table name in Harness. From the GCP console, copy the table name where the billing export is available. In your BigQuery dataset, the table is named `gcp_billing_export_v1_\<BILLING_ACCOUNT_ID>`.
+10. Next, you need to enter the table name in Harness. From the GCP console, copy the table name where the billing export is available. In your BigQuery dataset, the table is named `gcp_billing_export_v1_*`.
 11. Once the billing account is selected, open the navigation menu>Billing export>BigQuery export. In BigQuery Export section, user needs to setup "Detailed usage cost". When setting up your dataset, it is recommended to choose the United States (US) as the dataset location.
 12. From the Project list, choose the project that contains your BigQuery dataset. You’ll be requested to establish a BigQuery dataset if you don’t already have one. 
 13. To create a dataset, if you don’t have one
