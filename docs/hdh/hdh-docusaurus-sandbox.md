@@ -300,3 +300,17 @@ $$
 $$
 I = \int_0^{2\pi} \sin(x)\,dx
 $$
+
+### Escaping Dollar Signs
+Leveraging `$` as plane text now needs to be escaped. 
+
+```
+#Safe
+`**${host}**`
+
+#Safe
+`${host}`
+
+#Not Safe
+${host}
+```
