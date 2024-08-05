@@ -28,6 +28,34 @@ Yes, each stage can have a different build infrastructure. Additionally, dependi
 
 No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes pre-installed versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS development guide](https://developer.harness.io/docs/continuous-integration/development-guides/ci-ios).
 
+### What's the difference between CI_MOUNT_VOLUMES, ADDITIONAL_CERTS_PATH, and DESTINATION_CA_PATH?
+
+`CI_MOUNT_VOLUMES` - An environment variable used for CI Build Stages. This variable should be set to a comma-separated list of `source:destination` mappings for certificates where source is the certificate path on the delegate, and destination is the path where you want to expose the certificates on the build containers. For example,
+
+```
+- name: CI_MOUNT_VOLUMES
+  value: "/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
+```
+
+`ADDITIONAL_CERTS_PATH` - An environment variable used for CI Build Stages. This variable should be set to the path where the certificates exist in the delegate. For example,
+```
+- name: ADDITIONAL_CERTS_PATH
+  value: "/tmp/ca.bundle"
+```
+
+`DESTINATION_CA_PATH` - An environment variable used for CI Build Stages. This variable should be set to a comma-separated list of files where the certificate should be mounted. For example,
+```
+- name: DESTINATION_CA_PATH
+  value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
+```
+
+`ADDTIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES` work in tandem to ensure certificates are mounted on the Kubernetes Build Infrastructure, whereas `DESTINATION_CA_PATH` does not require other environment variables to mount certificates. Instead, `DESTINATION_CA_PATH` relies on the certificate being mounted at `/opt/harness-delegate/ca-bundle` in order to copy the certificate to the provided comma-separated list of file paths.
+
+`DESTINATION_CA_PATH` and `ADDTIONAL_CERTS_PATH`/`CI_MOUNT_VOLUMES` both perform the same operation of mounting certificates to Kubernetes Build Infrastructure. Harness recommends `DESTINATION_CA_PATH` over `ADDTIONAL_CERTS_PATH`/`CI_MOUNT_VOLUMES` however, if both are defined, `DESTINATION_CA_PATH` will be consumed over `ADDTIONAL_CERTS_PATH`/`CI_MOUNT_VOLUMES`.
+
+For more information and instructions on how to mount certificates, please visit the [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/) documentation.
+
+
 ## Local runner build infrastructure
 
 ### Can I run builds locally? Can I run builds directly on my computer?

@@ -54,7 +54,9 @@ You can use the **Repository** [search results filter](#search-results-filters) 
 
 Within an account or organization keyword search you may also disable recursive search and only search the repositories within the respective account or organization itself.  
 
+
 :::note
+
 You can only search for code in repositories that you have permission to access.
 :::
 
