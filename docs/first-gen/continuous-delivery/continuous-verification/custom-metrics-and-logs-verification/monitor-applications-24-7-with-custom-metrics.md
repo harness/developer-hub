@@ -15,7 +15,7 @@ While Harness supports  [all of the common metrics tools](/docs/category/contin
 This section assumes you have a Harness Application set up, containing a Service and Environment. For steps on setting up a Harness Application, see  [Application Components](../../model-cd-pipeline/applications/application-configuration.md).
 
 
-### Before You 
+### Before You Begin
 
 * See [Custom Verification Overview](custom-verification-overview.md).
 * See [Connect to Custom Verification for Custom Metrics](connect-to-custom-verification-for-custom-metrics.md).
