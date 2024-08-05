@@ -2,7 +2,8 @@
 id: pod-io-latency
 title: Pod IO latency
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-io-latency
 ---
 
 import IOFaultsCaution from './shared/io-faults-caution.md'

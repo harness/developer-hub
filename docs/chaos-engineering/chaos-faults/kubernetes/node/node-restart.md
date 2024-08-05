@@ -2,7 +2,8 @@
 id: node-restart
 title: Node restart
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-restart
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-restart
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-restart
 ---
 Node restart disrupts the state of the node by restarting it.
 

@@ -6,6 +6,12 @@ redirect_from:
   - /docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step
 ---
 
+:::warning deprecation notice
+
+Harness is **deprecating** the container step. The new supported method is a [run step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step) in a [containerized step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups). It leverages the new framework and has identical capabilities to our CI offering. The run step in the containerized step group is maintained by Harness. We will no longer provide bug fixes or support to the container step.
+
+:::
+
 The Container step lets you run any Docker container in your Kubernetes cluster as part of your continuous deployment (CD) stage.
 
 Harness orchestrates the container in your cluster as part of your Harness deployment. 
@@ -291,19 +297,19 @@ Let's look at a simple example.
 2. In a later Shell Script step, reference the output variable:
 
     ```
-    echo <+steps.S1.output.outputVariables.myVar>
+    echo <+steps.S1.ContainerStep.output.outputVariables.myVar>
     ```
     
     The syntax for referencing output variables between steps in the same stage looks similar to the example below.
 
     ```
-    <+[stepId].output.outputVariables.[varName]>
+    <+[stepId].ContainerStep.output.outputVariables.[varName]>
     ```
 
     The syntax for referencing output variables between steps in different stages looks similar to the example below.
 
     ```
-    <+stages.[stageID].execution.steps.[stepId].output.outputVariables.[varName]>
+    <+stages.[stageID].execution.steps.[stepId].ContainerStep.output.outputVariables.[varName]>
     ```
 
 ### Environment variables

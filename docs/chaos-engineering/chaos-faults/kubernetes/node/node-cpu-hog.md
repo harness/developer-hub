@@ -2,7 +2,9 @@
 id: node-cpu-hog
 title: Node CPU hog
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-cpu-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-cpu-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-cpu-hog
+
 ---
 
 Node CPU hog exhausts the CPU resources on a Kubernetes node.

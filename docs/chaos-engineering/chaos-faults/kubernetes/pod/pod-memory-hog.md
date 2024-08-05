@@ -2,7 +2,8 @@
 id: pod-memory-hog
 title: Pod memory hog
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-memory-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-memory-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-memory-hog
 ---
 
 Pod memory hog is a Kubernetes pod-level chaos fault that consumes excessive memory resources on the application container. Since this fault stresses the target container, the primary process within the container may consume the available system memory on the node.

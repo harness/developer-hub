@@ -2,7 +2,8 @@
 id: vmware-process-kill
 title: VMware process kill
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-process-kill
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-process-kill
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/process-kill
 ---
 
 VMware process kill kills the target processes that are running as a part of a Linux OS based VMware VM. The services that are disrupted might be running in the VMware VM, and this fault kills their underlying processes or threads. It helps determine the resilience of an application (or process) running on the VMware VMs.

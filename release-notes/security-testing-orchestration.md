@@ -24,21 +24,30 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## July 2024
 
+### Version 1.104.3
+
+<!-- 2024-07-26 -->
+
+#### New features and enhancements
+- You can now override the image that runs the STO step directly in the scanner step UI. Expand **Additional Configuration** and then set **Container Registry** and **Image Tag**. (STO-7724)
+- The Bandit, Anchor, and Semgrep steps now support [Secure Connect](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect/) within STO. (STO-7666)
+- The dark theme for AIDA is improved. Its appearance is now consistent with other UI components. (STO-7849)
+
 ### Version 1.103.3
 
 <!-- 2024-07-19 -->
 
 #### New features and enhancements
 - In the [Checkmarx step](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) under the **Scan Tool**, the fields **Team Name** and **Project Name** are now mandatory for step configuration. Previously, these fields were optional. (STO-7681)
-- We now track the number of occurrences for a given issue/scan combination independently of the associated occurrence IDs. Newly created issues will only store up to 1,000 occurrences, with the total number of occurrences being stored separately. Occurrences are stored based on severity, with higher-severity issues given priority. (STO-5979)
+- We now track the number of occurrences for a given issue/scan combination independently of the associated occurrence IDs. Newly created issues will only store up to 1,000 occurrences, with the total number of occurrences being stored separately. Occurrences are stored based on severity, with higher-severity occurrences given priority. (STO-5979)
 
-  These following endpoints now include `numOccurrences` at the issue level, showing the total number of occurrences for the issue/scan:
+  These following endpoints now include `numOccurrences` at the issue level, showing the total number of occurrences for the issues:
     - `GET api/v2/issues/{issueId}`
     - `GET api/v2/scans/{scanId}/issue/{issueId}`
     - `GET api/v2/scans/{scanId}/issues`
 
-  Also, the following endpoints now accept an optional payload parameter `numOccurrences`, representing the total number of occurrences associated with the issue/scan:
-    - `POST api/v2/issues/{issueId}`
+  Also, the following endpoints now accept an optional payload parameter `numOccurrences`, representing the total number of occurrences associated with the issue:
+    - `POST api/v2/issues`
     - `PUT api/v2/issues/{issueId}`
 
 ### Version 1.102.2

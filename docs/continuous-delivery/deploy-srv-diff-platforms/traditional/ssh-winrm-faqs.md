@@ -79,3 +79,10 @@ You can use the Copy/Download command option by creating a WinRM connection and 
 
 Currently, you can provide only one realm per WinRM credential. To add more realms, you must create more WinRM credentials. 
 
+### Winrm execution is failing with the below error:
+```
+Command execution failed. Error: HTTP response '403: URLBlocked' when communicating with <<host>>
+```
+
+Need to check if the Windows machine is behind proxy and the same needs to be configured on the delegate host
+

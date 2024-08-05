@@ -147,11 +147,6 @@ export const platformData: Horizon = {
         description: "Display custom banners in the Harness UI",
       },
       {
-        tag: [{ value: "Delegate" }],
-        title: "Restrict delegate usage",
-        description: "Ability to restrict delegate usage across Accounts/Orgs/Projects and Environments",
-      },
-      {
         tag: [],
         title: "Console log line limit",
         description: "Ability to increase the console log line limits",
