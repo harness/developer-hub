@@ -1,15 +1,17 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
+
+
 const { themes } = require("prism-react-renderer");
 const darkCodeTheme = themes.dracula;
 const path = require("path");
 
 const BASE_URL = process.env.BASE_URL || "/";
+
 function hideIndexFromSidebarItems(items) {
-  const result = items.filter((item) => {
+  return items.filter((item) => {
     return !(item.type === "doc" && item.id === "index");
   });
-  return result;
 }
 
 // /** @type {import('@docusaurus/types').Config} */
@@ -546,8 +548,6 @@ async function config() {
           // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
           exclude: ["**/shared/**", "**/static/**"],
           routeBasePath: "docs", //CHANGE HERE
-          remarkPlugins: [(await import("remark-math")).default],
-          rehypePlugins: [(await import("rehype-katex")).default],
         },
       ],
       [
@@ -573,15 +573,6 @@ async function config() {
       path.join(__dirname, "/client_module/searchBar"),
       path.join(__dirname, "/client_module/iframeEmbed"),
       path.join(__dirname, "/client_module/chatbot"),
-    ],
-    stylesheets: [
-      {
-        href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
-        type: "text/css",
-        integrity:
-          "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
-        crossorigin: "anonymous",
-      },
     ],
   };
 }
