@@ -191,6 +191,19 @@ gsutil -m cp \
 
 ### New features and enhancements
 
+#### Cloud Cost Management
+
+- Load Balancer Pagination Fixes: Some improvements have been made to the load balancer pagination:
+     - The page index on the URL now matches the page in the list.
+     - The first column is now wider based on the available space.
+     - The last activity column now reads the updated_at value instead of calling a separate API. (CCM-18585)
+
+- Memory Metrics Tooltip for EC2 Recommendations: Added a tooltip to EC2 recommendations to give more information on memory metrics. This tooltip provides documentation on what users need to do to enable memory metrics, ensuring they understand how to gather necessary data for accurate recommendations, especially for memory-optimized instance families.
+
+- Disabled Enforcements for Accounts without a Valid CCM License: We have disable Enforcements related to accounts that do not have a valid CCM license.
+
+- Azure Data Sync Frequency Update: The Azure data sync frequency has been changed from 1 day to 1 hour. This enhancement will allow data to flow faster for Azure customers, reducing wait times and improving data availability (CCM-18014)
+
 #### Continuous Integration
 
 - Added support for AWS connectors to assume external roles to STS (Security Token Service) credentials for cache plugins.
