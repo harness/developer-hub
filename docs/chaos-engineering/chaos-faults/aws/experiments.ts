@@ -18,7 +18,7 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "DynamoDB replication pause",
     description:
-      "Dynamo DB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.",
+      "DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.",
     tags: ['replication', 'pause', "dynamodb"],
     category: "aws",
   },

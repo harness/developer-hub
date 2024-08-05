@@ -60,14 +60,14 @@ CLB AZ down takes down the AZ (Availability Zones) on a target CLB for a specifi
 
 ### DynamoDB replication pause
 
-Dynamo DB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.
+DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.
 - When chaos experiment is being executed, any changes to the DynamoDB table will not be replicated in different regions, thereby making the data in the DynamoDB inconsistent.
 - You can execute this fault on a DynamoDB table that is global, that is, there should be more than one replica of the table.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-Dynamo DB replication pause determines the resilience of the application when data (in a database) that needs to be constantly updated is disrupted.
+DynamoDB replication pause determines the resilience of the application when data (in a database) that needs to be constantly updated is disrupted.
 
 </Accordion>
 </FaultDetailsCard>
