@@ -1,0 +1,26 @@
+kind: Workflow
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: fis-chaos
+  namespace: litmus
+spec:
+  templates:
+    - name: fis-chaos
+      spec:
+        components:
+          env:
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
+            - name: CHAOS_INTERVAL
+              value: "60"
+            - name: REGION
+              value: ""
+            - name: EXPERIMENT_TEMPLATE_ID
+              value: ''
+            - name: RAMP_TIME
+              value: ""
+            - name: AWS_SHARED_CREDENTIALS_FILE
+              value: /tmp/cloud_config.yml
+          secrets:
+            - name: cloud-secret
+              mountPath: /tmp/
