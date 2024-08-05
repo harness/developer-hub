@@ -41,7 +41,7 @@ H5 Heading
 
 Details are toggle elements.
 
-As of Late 2023 we have a [Set Focus](https://github.com/harness/developer-hub/blob/main/plugins/focusOnAnchor-plugin/index.js) feature that will process which detail the link is on and expand the appropriate section if a detail. 
+As of Late 2023 we have a [Set Focus](https://github.com/harness/developer-hub/blob/main/plugins/focusOnAnchor-plugin/index.js) feature that will process which detail the link is on and expand the appropriate section if a detail.
 
 - https://developer.harness.io/docs/hdh/hdh-docusaurus-sandbox#second-level-detail-heading
 
@@ -49,12 +49,14 @@ As of Late 2023 we have a [Set Focus](https://github.com/harness/developer-hub/b
 <summary>First Level Detail</summary>
 
 ### First Level Detail Heading
+
 Some first level text
 
 <details>
 <summary>Second Level Detail</summary>
 
 ### Second Level Detail Heading
+
 Some second level text
 
 </details>
@@ -107,7 +109,7 @@ e.g deeper linking:
 Can see what the tab value ='s then the anchor tab there in combination and for nested tabs can continue.
 `?pipeline=uicdpipe&gitops-cli-os=windowsgitops&deploymentcli=helmrollingcli#create-a-service-3`
 
-As of Late 2023 we have a [Set Focus](https://github.com/harness/developer-hub/blob/main/plugins/focusOnAnchor-plugin/index.js) feature that will process which tab the link is on and expand the appropriate section if a detail. 
+As of Late 2023 we have a [Set Focus](https://github.com/harness/developer-hub/blob/main/plugins/focusOnAnchor-plugin/index.js) feature that will process which tab the link is on and expand the appropriate section if a detail.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -123,7 +125,9 @@ This is an `TabItem` 1.
 <summary>Details in Tab One </summary>
 
 #### Header inside Details Tab One
-Detail text tab 1. 
+
+Detail text tab 1.
+
 </details>
 
 </TabItem>
@@ -137,7 +141,9 @@ This is an `TabItem` 2.
 <summary>Details in Tab Two </summary>
 
 #### Header inside Details Tab Two
-Detail text tab 2. 
+
+Detail text tab 2.
+
 </details>
 
 </TabItem>
@@ -253,13 +259,44 @@ clicked and hoovered. Though pills can contain links also.
 <DocsTag icon = "fa-solid fa-hand-dots"  backgroundColor= "#cbe2f9"   textColor="#0b5cad" iconColor="#6938c0" text="Community" link="/docs/security-testing-orchestration"  />
 
 ## Embed Mode
+
 If needing to embed HDH externally, can use the embed request parameter e.g `embed=true`. Below
-is an example of an iframe. 
+is an example of an iframe.
 
 ```
 <iframe src="https://developer.harness.io/docs/platform/get-started/onboarding-guide?embed=true" title="HDH Embed Example" height="600" width="940"></iframe>
- ```
+```
 
- #### Iframe Render
+#### Iframe Render
 
 <iframe src="https://developer.harness.io/docs/platform/get-started/onboarding-guide?embed=true" title="HDH Embed Example" height="600" width="940"></iframe>
+
+## Math Equations
+
+### Inline
+
+Write inline math equations by wrapping LaTeX equations between $:
+
+```
+Let $f\colon[a,b]\to\R$ be Riemann integrable. Let $F\colon[a,b]\to\R$ be
+$F(x)=\int_{a}^{x} f(t)\,dt$. Then $F$ is continuous, and at all $x$ such that
+$f$ is continuous at $x$, $F$ is differentiable at $x$ with $F'(x)=f(x)$.
+```
+
+Let $f\colon[a,b]\to\R$ be Riemann integrable. Let $F\colon[a,b]\to\R$ be
+$F(x)=\int_{a}^{x} f(t)\,dt$. Then $F$ is continuous, and at all $x$ such that
+$f$ is continuous at $x$, $F$ is differentiable at $x$ with $F'(x)=f(x)$.
+
+### Blocks
+
+For equation block or display mode, use line breaks and $$:
+
+```
+$$
+I = \int_0^{2\pi} \sin(x)\,dx
+$$
+```
+
+$$
+I = \int_0^{2\pi} \sin(x)\,dx
+$$
