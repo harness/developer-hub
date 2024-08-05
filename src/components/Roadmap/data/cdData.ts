@@ -1,3 +1,4 @@
+import routesChunkNames from "@generated/routesChunkNames";
 import { Horizon } from "./roadmapData";
 export const CdData: Horizon = {
   "Now": {
@@ -58,6 +59,21 @@ export const CdData: Horizon = {
         title: "Harness Code Support as a Manifest Source",
         description: "Users can use Harness Code as a manifest source for all Harness CD swimlanes.",
       },
+      {
+        tag: [],
+        title: "Allow Use of Approvals API with a Service Account",
+        description: "Users can use the approvals API with a service account.",
+      },
+      {
+        tag: [{value: "Swimlanes"}],
+        title: "Google Cloud Run Support",
+        description: "Users can deploy to Google Cloud Run.",
+      },
+      {
+        tag: [],
+        title: "Post Production Rollback Support for Account and Organization Level Services",
+        description: "Users can rollback pipelines that have account or organization scoped services.",
+      },
     ],
   },
   "Next": {
@@ -73,6 +89,11 @@ export const CdData: Horizon = {
         title: "Prometheus Default Health Source for Continuous Verification",
         description: "Users can deploy Helm Charts that have CRDs.",
       },
+      {
+        tag: [{value: "Release Management"}],
+        title: "Release Management",
+        description: "Users can create and orchestrate a release process using a collection of requirements and existing pipelines.",
+      }
     ],
   },
   "Later": {
