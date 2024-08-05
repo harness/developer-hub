@@ -20,6 +20,7 @@ const sidebars = {
           type: "doc",
           label: "Continuous Integration",
           id: "continuous-integration",
+          className: "sidebar-ci",
         },
         // CD
         {
