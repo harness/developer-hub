@@ -78,7 +78,7 @@ Before we can deploy our Database Schema, we need to connect a database instance
  3. Configure your DB Connector. A DB Connector is a set of credentials used to talk to a running database server.
  4. Click **Select Connector** followed by **New Connector**.
  5. Enter a name for the database to which we will deploy. Click **Continue**. 
- 6. Enter a JDBC url that we can use to conenct to the database. 
+ 6. Enter a JDBC url that we can use to connect to the database. 
  7. Enter a username and password for the database. The user *must* have the permissions covered in the [Prerequisites](#prerequisites) section. 
  8. Click **Continue**.
  9. Choose a [delegate](../../platform/delegates/delegate-concepts/delegate-overview.md) to connect to the database. This delegate must have network access to the database server. Click **Save and continue**.
