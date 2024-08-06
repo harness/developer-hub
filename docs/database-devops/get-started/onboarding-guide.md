@@ -36,7 +36,7 @@ Before beginning the walkthroughs in this guide, ensure you have:
     - [harness/drone-git](https://hub.docker.com/r/harness/drone-git)
     - [plugins/download-artifactory:latest](https://hub.docker.com/r/plugins/download-artifactory)
  
-## Create a Liquibase Changelog
+## Create a Liquibase changelog
 
 Database DevOps currently supports deploying sql changes through a liquibase changelog. If you already use liquibase, you can skip to the section ‘Configuring Your DB Schema’. If you do not already use liquibase, we will walk you through creating a liquibase changelog. 
 
