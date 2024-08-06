@@ -34,7 +34,7 @@ harness.io/pipelines: |
 
 The teams/groups in Harness IDP are the same as the platform user groups which can be setup today to [sync from third party sources using the SCIM protocol](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/). 
 
-### As a user how would you get rid of entities that are orphaned or doesn't have a valid source location?
+### As a user how can I rid of Catalog entities for which there is no valid YAML file location a.k.a orphaned entities?
 
 During onboarding into IDP we mass onboard all the services using a `catalog-info.yaml` for each of them and add it to the catalog as an entity. But when we get rid of multiple of those services together or the location where we stored the `catalog-info.yaml` changes for multiple of these entities, it becomes a daunting task to [delete](https://developer.harness.io/docs/internal-developer-portal/get-started/register-a-new-software-component/#deleteunregister-software-components) all of these entities individually. To make it easy for users we recommend you to use the catalog deletion API to get rid of such entities. 
 
