@@ -51,7 +51,7 @@ databaseChangeLog:
       path: sql
 ```
 
-## Configuring your Database Schema
+## Configure your database schema
 
 The database schema defines a set of SQL changes that can be deployed to one or more database instances. Here is how we will configure it:
 
