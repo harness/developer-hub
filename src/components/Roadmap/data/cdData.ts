@@ -87,7 +87,7 @@ export const CdData: Horizon = {
       {
         tag: [{value: "Continuous Verification"}],
         title: "Prometheus Default Health Source for Continuous Verification",
-        description: "Users can deploy Helm Charts that have CRDs.",
+        description: "Users can deploy with continuous verification using prometheus as a built-in default health source.",
       },
       {
         tag: [{value: "Release Management"}],
