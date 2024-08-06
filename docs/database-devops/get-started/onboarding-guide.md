@@ -16,8 +16,6 @@ import BetaIcon from 'img/icon_beta.svg';
 
 Welcome to the Harness Database DevOps (DB DevOps) onboarding guide. This topic introduces you to the powerful capabilities of DB DevOps using Harness and guides you through key functionalities that streamline and secure your database management tasks.  
 
-## What is DB DevOps?
-
 ### Prerequisites
 
 Before beginning the walkthroughs in this guide, ensure you have:
