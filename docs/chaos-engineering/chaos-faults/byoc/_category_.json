@@ -1,9 +1,0 @@
-{
-  "position": 4,
-  "label": "BYOC",
-  "collapsible": true,
-  "collapsed": true,
-  "customProps": {
-    "description": "BYOC faults documentation"
-  }
-}

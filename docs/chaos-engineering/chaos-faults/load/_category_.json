@@ -1,9 +1,0 @@
-{
-  "position": 10,
-  "label": "Load",
-  "collapsible": true,
-  "collapsed": true,
-  "customProps": {
-    "description": "Load faults documentation"
-  }
-}

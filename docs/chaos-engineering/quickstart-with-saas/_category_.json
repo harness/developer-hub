@@ -1,0 +1,13 @@
+{
+  "position": 4,
+  "label": "Quick start with HCE SaaS",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link":{
+      "type":"generated-index",
+      "title":"Quick start with HCE SaaS"
+   },
+  "customProps": {
+    "description": "Quick start with HCE SaaS"
+  }
+}
