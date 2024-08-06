@@ -37,6 +37,36 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## July 2024
 
+### Version 1.39
+
+<!-- 2024-07-29 -->
+
+#### Early Access feature
+
+This release introduces several highly requested features and improvements to enhance the Git clone operations within Harness, in both the Git Clone step and the native Clone Codebase functionality. With this release, we’re adding support for:
+
+- Git LFS - Allows users to clone repositories with large file storage (LFS) efficiently.
+
+- Fetch Tags - Enables fetching of tags during the clone operation.
+
+- Sparse Checkout - Enables cloning specific subdirectories.
+
+- Clone Submodules - Adds options for including and recursively cloning Git submodules.
+
+- Clone Path Customization - Exposes the clone path in the codebase section, allowing users to specify a custom clone directory.
+
+- Additional Pre-Fetch Command - Ability to specify any additional Git commands to run before fetching the code.
+
+For more information, please refer to the [documentation](../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step). (CI-12952, CI-13239)
+
+This feature is behind the feature flag `CI_GIT_CLONE_ENHANCED`.
+
+#### Fixed issues
+
+- Fixed an issue where the Harness Build URL could exceed 255 characters if the projectId, orgId, or PipelineId identifiers were too long. Changes have been made to remove stageExecId from the Build URL to reduce the URL length in the case of non-matrix stages. (CI-13402, ZD-66211)
+
+- Fixed an issue where SSH account-level Git connectors were failing during the connection test and status checks due to using an incorrect port. (CI-13578, ZD-67248,67266)
+
 ### Version 1.38
 
 <!-- 2024-07-22 -->
@@ -50,6 +80,8 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 - Fixed an issue where the plugin image path was incorrect when the registry endpoint had a port configured. This issue occurred because everything after : was being considered as the tag of the image, leading to an invalid Fully Qualified Name (FQN) and causing the Initialize step to fail in the Kubernetes flow. The fix ensures that the FQN is properly considered when the registry endpoint includes a port number. (CI-13455, ZD-66772)
 
 - Fixed an issue where the **Docker build and push** steps using Docker Layer Caching (DLC) might fail while downloading the cache if the feature flag `CI_DLC_SIGNED_URL` is turned on. (CI-13508, ZD-66950)
+
+- Removed OIDC token logging from error messages to prevent potential exposure of sensitive information. (CI-13515)
 
 ### Version 1.37
 
