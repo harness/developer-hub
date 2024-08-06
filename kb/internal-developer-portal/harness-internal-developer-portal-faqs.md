@@ -42,6 +42,6 @@ During onboarding into IDP we mass onboard all the services using a `catalog-inf
 
 2. In case the entities are already **orphaned**, you can use the `metadata.uid` to [delete](https://developer.harness.io/docs/internal-developer-portal/api-refernces/public-api#delete-using-metadatauid-for-orphaned-entities) them.  
 
-3. In some cases the entities just get into the has error state, how do you know wether an entity is in orphaned state or has error, by checking for the **Processing Status** dropdown in catalog page.
+3. In some cases the entities get into the `hasError` state. You can know whether the entity is in orphaned state or `hasError` state, by checking for the **Processing Status** dropdown on the Catalog page
 
-4. Here's an example of [script](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/identify-and-delete-orphan-entity.py) that finds and delete all the entities that has `NotFoundError`, because the `source-location` for these entities are no more valid. 
+4. Additionally, here is an example [script](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/identify-and-delete-orphan-entity.py) that finds and delete all the entities that has `NotFoundError`, because the `source-location` for these entities are no more valid (YAML files moved or renamed). 
