@@ -23,7 +23,7 @@ Before beginning the walkthroughs in this guide, ensure you have:
  - Access to a Harness account. 
  - A Kubernetes cluster, connected via a Harness delegate. 
     - You **must** ensure that your Kubernetes cluster has network access to the target database, as well as the Git repository containing your changelog. 
-    - Your cluster must be set us as [build infrastructure](https://developer.harness.io/docs/category/set-up-kubernetes-cluster-build-infrastructures/) which can be tested by running the `git clone` step of a custom sgae. 
+    - Your cluster must be set us as [build infrastructure](https://developer.harness.io/docs/category/set-up-kubernetes-cluster-build-infrastructures/) which can be tested by running the `git clone` step of a custom stage. 
  - Credentials configured for your database:
     - If you are using **Oracle** connecting as the user `sys`, be aware that this is not currently supported. 
     - credentials need the ability to create/alter/query two tables named `DATABASECHANGELOG`, and `DATABASECHANGELOGLOCK` as well as the ability to update all data in these tables. Credentials also need the ability to execute whatever operations are in your SQL changelogs.
