@@ -113,9 +113,6 @@ To test your pipeline:
 
 ## Configure your pipeline to automatically deploy when Git changes
 
-
-KNOWN ISSUE: currently triggers can not be opened from inside Harness DAtabasse DevOps
-
  1. Open the **Continuous Delivery & GitOps** module within Harness.
  2. Open **Pipelines** then choose your pipeline.
  3. Click **Triggers**, followed by **New Trigger**.
