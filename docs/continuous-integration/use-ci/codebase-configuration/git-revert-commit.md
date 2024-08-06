@@ -26,7 +26,7 @@ The following example shows how to use a run step to revert a git commit introdu
                         protocol=https
                         host=github.com
                         username="GIT_USER_ID"
-                        password=<+secrets.getValue("github_pat")>
+                        password=<+secrets.getValue("YOUR_HARNESS_GITHUB_PAT")>
                       eof
                       git pull origin main
                       echo "Last Commit"
