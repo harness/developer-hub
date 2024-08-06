@@ -101,9 +101,9 @@ You need a Docker connector that points to your private container registry. For 
       - [Step Level Override](#step-level-override)
     - [Override Security Test Images for Custom Scan Steps](#override-security-test-images-for-custom-scan-steps)
 
-### **Override Security Test Images for Scanner Steps**
+### **Override security test images for scanner steps**
 
-#### **Stage Level Override**
+#### **Stage level override**
 
 If you want to use your private images for all steps within a stage, follow these steps:
 
@@ -119,7 +119,7 @@ Do not modify the names of the images in your private registry. STO will automat
 :::
 
 
-#### **Step Level Override**
+#### **Step level override**
 
 If you want to override the image for a specific step within a stage, follow these steps:
 
@@ -134,7 +134,7 @@ Do not modify the names of the images in your private registry. STO will automat
 :::
 
 
-### **Override Security Test Images for Custom Scan Steps**
+### **Override security test images for custom scan steps**
 
 The custom scan step uses the `sto-plugin` image to launch the appropriate scanner image based on the step configuration. You have the option to either override both the `sto-plugin` image and the scanner image, or simply override the scanner image while keeping the `sto-plugin` image unchanged.
 
