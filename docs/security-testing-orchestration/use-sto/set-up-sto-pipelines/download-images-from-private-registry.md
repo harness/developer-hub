@@ -7,7 +7,7 @@ redirect_from:
     - /docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry
 ---
 
-Harness maintains its own set of scan images for [STO-supported scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach). By default, a Harness pipeline pulls scan images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
+Harness maintains its own set of scan images for [STO-supported scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach). By default, a Harness pipeline pulls scan images from the [Harness DockerHub](https://hub.docker.com/u/harness).
 
 This topic describes how to override the default image pull behavior and use your own private registry instead of pulling directly from the public Harness GCR project. You can download the scan images you need, perform your own security checks on the images, upload them to a private registry, and then set up your STO steps to download images from your private registry.
 
@@ -88,7 +88,7 @@ You need a Docker connector that points to your private container registry. For 
 
    :::warning
 
-   Do not change the image names in your private registry. The image names must match the names specified by Harness.
+   Do not change the image names in your private registry. The image names must match the names specified by Harness; this includes the `harness/` prefix.
 
    :::
 
@@ -144,7 +144,7 @@ To override the scanner image in a custom scan step, add the following settings 
 * <strong><code>runner_registry_image_prefix</code></strong>: set this to `harness` (Do not change this setting)
 * <strong><code>runner_registry_username</code></strong>: The username of your registry
 * <strong><code>runner_registry_token</code></strong>: The token to access your registry
-* <strong><code>runner_tag </code></strong>: The image tag 
+* <strong><code>runner_tag</code></strong>: The image tag
 
 <DocImage path={require('./static/custom-image-custom-scan-settings.png')} width="50%" height="50%" title="Click to view full size image" />
 
