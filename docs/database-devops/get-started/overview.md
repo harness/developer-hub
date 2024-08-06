@@ -2,7 +2,7 @@
 title: Harness Database DevOps (DB DevOps) Overview
 sidebar_label: Overview
 displayed_sidebar: dbdevopsbeta
-# description: Learn about Harness Database DevOps.
+description: Learn about Harness Database DevOps.
 # sidebar_position: 10
 ---
 
