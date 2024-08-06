@@ -96,10 +96,10 @@ You need a Docker connector that points to your private container registry. For 
 
 3. Set up your pipeline to use the images from your private registry. This can be done at both the stage level and the step level for **scanner steps(Blackduck, Semgrep etc.,)** and **Custom Scan** steps. Below are the detailed steps and configurations required for each scenario.
 
-    - Override Security Test Images for Scanner Steps:
-      - [Stage Level Override](#stage-level-override)
-      - [Step Level Override](#step-level-override)
-    - [Override Security Test Images for Custom Scan Steps](#override-security-test-images-for-custom-scan-steps)
+    - Override security test images for scanner steps:
+      - [Stage level override](#stage-level-override)
+      - [Step level override](#step-level-override)
+    - [Override security test images for Custom Scan steps](#override-security-test-images-for-custom-scan-steps)
 
 ### **Override security test images for scanner steps**
 
