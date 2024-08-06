@@ -57,8 +57,6 @@ This release introduces several highly requested features and improvements to en
 
 - Additional Pre-Fetch Command - Ability to specify any additional Git commands to run before fetching the code.
 
-- UI Changes - Have added additional configurations (LFS, fetch tags, clone directory, sparse checkout, submodule strategy, prefetch command) while cloning the codebase in the UI editor. These fields can be accessed in both the clone codebase dialog from the right navigation bar and in the Git clone step.
-
 For more information, please refer to the [documentation](../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step). (CI-12952, CI-13239)
 
 This feature is behind the feature flag `CI_GIT_CLONE_ENHANCED`.
