@@ -113,7 +113,7 @@ import {
             module: MODULES.ci,
             description:
               "",
-            link: "/kb/software-engineering-insights",
+            link: "/kb/sei",
           },
         ],
       },
