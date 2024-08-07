@@ -17,7 +17,7 @@ For detailed information on available integrations and setup instructions, go to
 Please note that after adding or updating an integration, it may take up to 24 hours for the data to be fully reflected in SEI. Widgets and insights will update once synchronization is complete.
 :::
 
-### Step 2: Manually update the contributors list for missing details.
+### Step 2: Update the contributors list for missing details (Optional)
 
 When you configure new integrations, SEI automatically detects user identities in your integrations and creates contributors from those identities. However, there are several reasons you might need to modify contributors, such as:
 
