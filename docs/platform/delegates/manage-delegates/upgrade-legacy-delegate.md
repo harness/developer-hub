@@ -18,11 +18,12 @@ End of Support means the following:
 
 **Follow the below steps to upgrade Delegate-Legacy to Delegate image**
 
-1. Download new yaml from Harness by keeping the same name as the previous delegate
-2. Check if the existing delegate has any tags/selector, if yes then add them in DELEGATE_TAGS
-3. Compare the permissions given to the legacy delegate in their yaml and give the same permissions to new delegates
-4. Check if custom image is used, if yes then build a new image with immutable delegate as base image and override the account setting to point to that image
-5. Ensure that auto upgrade is enabled for Kubernetes delegates
-6. The delegate yaml ships with default HPA of min and max replicas to be 1, adjust the desired number of replicas in HPA
-7. Deploy the new yaml and see new replicas coming under the same delegate
-8. Scale down the old stateful set and verify that everything is correct
+1. Download new yaml from Harness by keeping the same name as the previous delegate.
+2. Check if the existing delegate has any tags/selector, if yes then add them in DELEGATE_TAGS.
+3. Compare the permissions given to the legacy delegate in their yaml and give the same permissions to new delegates.
+4. Check if custom image is used, if yes then build a new image with immutable delegate as base image and override the account setting to point to that image.
+5. Ensure that auto upgrade is enabled for Kubernetes delegates.
+6. The delegate yaml ships with default HPA of min and max replicas to be 1, adjust the desired number of replicas in HPA.
+7. Deploy the new yaml and see new replicas coming under the same delegate.
+8. Scale down the old stateful set and verify that everything is correct.
+9. Contact [Harness Support](mailto:support@harness.io) if you need any assistance with upgrading of Delegate-Legacy.
