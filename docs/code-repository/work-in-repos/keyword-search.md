@@ -30,7 +30,7 @@ By default, keyword search is case *insensitive*. If you want to enable case sen
 
 ### Regular Expressions (Regex)
 
-Keyword search has some support for simple regex, but for more complex expressions you need to explicitly enable regular regex search by clicking on the `.*` to the right of the search box. This will treat all search patterns as regular expressions.   
+Keyword search has some support for simple patterns and substrings, but for more complex expressions you need to explicitly enable regular regex search by clicking on the `.*` to the right of the search box. This will treat all search patterns as regular expressions.   
 
 We support [RE2 syntax](https://github.com/google/re2/wiki/Syntax).
 
