@@ -62,6 +62,36 @@ You can use DLC with any [build infrastructure](/docs/continuous-integration/use
 When you use DLC with Harness CI Cloud, the cache is stored in the Harness-managed environment. When running builds in self-managed infrastructures, [configure S3-compatible  default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
 
 
+## Intelligence Savings 
+
+Harness Intelligence helps you optimize your Build stages by reducing execution times and providing insights into where time savings are achieved. This section explains how the time savings are calculated and displayed, helping you understand the benefits of using Harness Intelligence features.
+:::note
+This feature is currently in beta, and is available with `CI_PARSE_SAVINGS` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+
+
+
+Below is a screen shot showing time saving for a Build stage using Cache Intelligence and Test Intelligence. 
+
+![](./static/ci_stage_savings.png)
+
+
+
+### How is Build stage time saving calculated 
+
+Harness calculates time savings by comparing the duration of the Build stage before and after Harness intelligence time savings are observed. When you first run your pipeline with Harness Intelligence features, a full run is executed, creating a baseline duration for the Build stage without any smart optimizations.
+
+When Build stages are optimized with Intelligence features and savings are observed, the savings are shown compared to the baseline. A baseline can also be updated in subsequent runs where intelligence features are enabled but a full run (non-optimized) is executed. For example, depending on the code change, Test Intelligence may choose to run all tests, generating a new baseline.
+
+Time savings data may be less accurate if step parallelism is used within the Build stage. Additionally, any changes in the stage logic, such as adding or removing steps, can impact the accuracy of time savings calculations.
+
+
+
+
+
+
+
 
 <!-- ## Build Intelligence -->
 
