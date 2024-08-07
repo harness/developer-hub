@@ -20,12 +20,16 @@ SEI achieves this by looking at different facets of the SDLC process where bottl
 
 SEI also helps your teams drive continuous improvement by leveraging best practices and adopting a data-driven engineering mindset.
 
+![](./static/sei-overview.gif)
+
 ## Get started with SEI
 
 To start using SEI, configure the following:
 
-* [Collections](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview)
 * [Integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview)
+* [Contributors](/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors)
+* [Projects](/docs/platform/organizations-and-projects/projects-and-organizations)
+* [Collections](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview)
 * [Profiles](/docs/category/profiles)
 * [Insights](../insights/sei-insights.md)
 * [Metrics and reports](/docs/category/metrics-and-reports)
@@ -38,8 +42,9 @@ Use [Propels](/docs/category/propels-and-tables) to add human-in-the-loop automa
 
 ## See also
 
-* [Onboarding Guide](/docs/software-engineering-insights/get-started/sei-key-concepts)
 * [Get started with Harness](/docs/category/get-started-with-harness)
+* [SEI Key Concepts](/docs/software-engineering-insights/get-started/sei-key-concepts)
+* [SEI Onboarding Guide](/docs/software-engineering-insights/get-started/sei-onboarding-guide)
 * [Supported platforms and technologies](/docs/platform/platform-whats-supported.md)
 * [Propelo and Harness](/docs/software-engineering-insights/get-started/propelo-and-harness)
 * [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-troubleshooting-faqs)

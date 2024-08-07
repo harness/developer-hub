@@ -18,6 +18,8 @@ By default, a **Project** consists of two top-level Collection categories: **Tea
 
 For more information, Go to [Projects and Collections](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview)
 
+![](../../platform/organizations-and-projects/static/projects-and-organizations-06.png)
+
 ## Collections & Collection Categories
 
 Collection categories are broad classifications that serve as containers for Collections but are not, themselves, Collections. By default, each Collection category has one root, or All, Collection node. For example, the Teams category automatically has an All Teams Collection. Under the root node, you can create any number of Collections and Collection levels.
@@ -28,12 +30,16 @@ To learn more about the Collection heirarchy refer the below resources.
 
 * [Manage Collection Categories](/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat)
 * [Manage Collections](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections)
-  
+
+![](./static/collections-overview.png)
+
 ## Insights
 
 Insights in SEI provide a visual representation of key metrics and KPIs, enabling engineering teams to monitor their performance and identify areas for improvement. To create a Insight in SEI, users can utilize pre-built reports that are specifically designed to display relevant data points. These reports can be customized and arranged on the insight canvas to create a comprehensive view of team performance.
 
-For more information, go to [Insights](../insights/sei-insights).
+For more information, Go to [Insights](../insights/sei-insights).
+
+![](./static/sei-insights.png)
 
 ## Ingestion Satellite
 
@@ -56,6 +62,8 @@ Harness SEI offers many types of integrations, including:
 * [Other integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#others)
 * [Custom CI/CD integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#custom-cicd-integrations)
 
+![](./static/sei-integrations.png)
+
 ## Profiles
 
 A **Profile** in SEI represents an entity where users define a specific set of metrics, criteria, and parameters that are used to assess and evaluate different aspects of software engineering processes, performance, and productivity.
@@ -72,4 +80,4 @@ SEI provides 3 different types of profiles:
 
 Metrics and Reports in SEI refer to various key performance indicators and data-driven insights that are used to assess and improve a software development team's performance and productivity. Reports are predefined widgets which can be customized and used for generating insights on tracking, analyzing, and optimizing different aspects of the development process.
 
-For more information, go to [Metrics & Reports](/docs/category/metrics-and-reports)
+For more information, Go to [Metrics & Reports](/docs/category/metrics-and-reports)

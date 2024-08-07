@@ -6,7 +6,7 @@ sidebar_label: Trellis Factors
 ---
 
 :::info
-The Trellis Factors feature is currently in BETA and is behind the Feature Flag `SEI_SHOW_TRELIS_NEW_INTERVAL` and `SEI_TRELLIS_BY_JOB_ROLES`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+The Trellis Factors feature is currently in BETA and is behind the Feature Flag SEI_SHOW_TRELIS_NEW_INTERVAL and SEI_TRELLIS_BY_JOB_ROLES. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 The Trellis Central Profile is where you customize the factors and weights used to calculate the Trellis Scores in the SEI module. The Trellis Scores feature provides a proprietary scoring mechanism to evaluate and understand your engineering team's productivity based on factors such as code quality, code volume, speed, impact, proficiency, and collaboration. In the Trellis Central Profile, you can adjust the weight assigned to each factor when calculating the overall Trellis Scores.

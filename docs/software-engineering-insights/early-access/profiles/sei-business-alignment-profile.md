@@ -5,13 +5,13 @@ sidebar_position: 10
 sidebar_label: Business Alignment profile
 ---
 
+:::info
+The Business Alignment profile feature is currently in BETA and requires the SEI_NEW_BA_PROFILES feature flag. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
 Business Alignment metrics help you understand where engineers are allocating their time through effort investment metrics. It is one of the most critical components of engineering metrics that connects your engineering to the business value.
 
 The **Business Alignment profile** acts as the single source of truth for the Business Alignment metrics calculations where you can create and manage the Investment Categories using Filter Sets and adjust the threshold of each of these categories using Allocation Goals.
-
-:::info
-The Business Alignment profile feature is currently in BETA. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
 
 <DocVideo src="https://www.youtube.com/embed/f3fLqermTGo?si=qFF0PVof8Q36kkr3" />
 
@@ -91,6 +91,9 @@ To add a custom **Category** to the profile configuration:
 
 * Go to the **Business Alignment profile** settings.
 * Select **+New Category** under the **RANKED CATEGORIES** section.
+
+![](./static/ba-new-category.png)
+
 * Add a **Name**, then click on **Save** to save the Category.
 * Define the **Filter Sets**, **Ticket Fetching Criteria** and **Allocation Goals** for the newly created custom category.
 
@@ -133,6 +136,8 @@ Finally, you will set the allocation goals for each category. This involves deci
 
 * Set an ideal resource allocation range as a percentage. This is your target for how much effort should go into each category.
 * You can also customize what is considered an acceptable range. This gives some flexibility while still aligning with your overall objectives.
+
+![](./static/ba-allocation-goals.png)
 
 ### Step 7: Save the profile
 

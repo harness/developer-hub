@@ -101,6 +101,10 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>SEI_IS_AZURE_NEW_ONB_ENABLED</td>
         <td>Access the new [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) onboarding with PAT authentication</td>
     </tr>
+    <tr>
+        <td>SEI_ENABLE_TOPICS_SUPPORT_FOR_GITHUB</td>
+        <td>Configure Github Topics as an integration filter in the Collection definition</td>
+    </tr>
 </table>
 
 <!-- missing SHOW_DIAGNOSTIC_TILE. Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite. SEI-5818 -->
