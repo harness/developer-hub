@@ -994,7 +994,7 @@ figure p {
 
  /*******************sidebar logo css start*******************/
 
- .menu__list-item-collapsible > a{
+ .menu__list-item-collapsible > a,.menu__link{
   height: 52px;
  }
 
@@ -1048,7 +1048,7 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-ff div > a::before,.sidebar-ff > a::before{
+.sidebar-ff > div > a::before,.sidebar-ff > a::before{
   content: " ";
   display: inline-block;
   height: 24px;
@@ -1062,7 +1062,7 @@ figure p {
   content: " ";
   display: inline-block;
   height: 24px;
-   min-width: 24px;
+  min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_ccm.svg");
   background-size: contain;
