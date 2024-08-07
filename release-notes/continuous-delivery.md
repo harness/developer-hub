@@ -271,6 +271,7 @@ Refer to following doc for more details on new [repo listing](/docs/platform/git
 - Queries in `harness-prod2-cvng.verificationJobInstances` were scanning too many documents and raising the CPU utilization. This issue is fixed by adding more `verificationJobInstances` indexes. (CDS-95840)
 - Fixed an issue where the drop-down capability for the **Region** field in the AWS Serverless Lambda **Infrastructure Details** page was missing. (CDS-95726)
 - Unable to add tags to pipelines in Terraform. This issue is fixed by updating the tags description in the pipeline CRUD API Terraform docs to highlight that the value passed in tags should match the value passed in YAML. (PIPE-18705, ZD-62221, ZD-62415, ZD-63124)
+-  The child steps of a retried step group were not being marked as retried. As a result, the status of these retried child steps was incorrectly considered in the final status calculation of the pipeline. The issue is fixed now to correctly mark the child steps of a retried step group as retried. With this change, only the latest node executions for children of step groups with the retry step group failure strategy will be considered in the final pipeline status calculation. (PIPE-16925, ZD-61196,68060)
 
 ## April 2024
 
