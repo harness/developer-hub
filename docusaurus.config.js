@@ -27,18 +27,18 @@ async function config() {
     customFields: {
       SEGMENT_API_KEY: process.env.SEGMENT_API_KEY,
     },
-  
+
     //Mermaid Diagram Functionality
     markdown: {
       mermaid: true,
     },
     themes: ["@docusaurus/theme-mermaid"],
-  
+
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
     organizationName: "harness", // Usually your GitHub org/user name.
     projectName: "developer-hub", // Usually your repo name.
-  
+
     // Even if you don't use internalization, you can use this field to set useful
     // metadata like html lang. For example, if your site is Chinese, you may want
     // to replace "en" with "zh-Hans".
@@ -46,7 +46,7 @@ async function config() {
       defaultLocale: "en",
       locales: ["en"],
     },
-  
+
     presets: [
       [
         "classic",
@@ -83,7 +83,7 @@ async function config() {
         }),
       ],
     ],
-  
+
     // themes: ["@docusaurus/theme-search-algolia"],
     themeConfig:
       /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -280,7 +280,7 @@ async function config() {
               type: "custom-coveo-search",
               position: "right",
             },
-  
+
             {
               position: "right",
               html: '<span class="tool" hover-tooltip="Sign into the Harness Platform (app.harness.io)" tooltip-position="bottom"><button class="button  button--nav">Sign in</button></span>',
@@ -485,7 +485,10 @@ async function config() {
           exclude: ["**/shared/**", "**/static/**"],
           sidebarPath: require.resolve("./sidebars-release-notes.js"),
           editUrl: "https://github.com/harness/developer-hub/tree/main",
-          async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
+          async sidebarItemsGenerator({
+            defaultSidebarItemsGenerator,
+            ...args
+          }) {
             const sidebarItems = await defaultSidebarItemsGenerator(args);
             const sidebarItemsWithoutIndex =
               hideIndexFromSidebarItems(sidebarItems);
@@ -496,7 +499,7 @@ async function config() {
       // redirect plugin start
       [
         path.resolve(__dirname, "./plugins/redirect-plugin"),
-  
+
         {
           id: "university",
           path: "university",
@@ -509,7 +512,7 @@ async function config() {
       ],
       [
         path.resolve(__dirname, "./plugins/redirect-plugin"),
-  
+
         {
           id: "community",
           path: "community",
@@ -532,7 +535,7 @@ async function config() {
           // ... other options
         },
       ],
-  
+
       [
         path.resolve(__dirname, "./plugins/redirect-plugin"),
         {
@@ -543,8 +546,24 @@ async function config() {
           // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
           exclude: ["**/shared/**", "**/static/**"],
           routeBasePath: "docs", //CHANGE HERE
-          remarkPlugins: [(await import('remark-math')).default],
-            rehypePlugins: [(await import('rehype-katex')).default],
+          remarkPlugins: [
+            [
+              (await import("remark-math")).default,
+              {
+               
+                strict: false,
+              },
+            ],
+          ],
+          rehypePlugins: [
+            [
+              (await import("rehype-katex")).default,
+              {
+              
+                strict: false,
+              },
+            ],
+          ],
         },
       ],
       [
@@ -559,7 +578,7 @@ async function config() {
           routeBasePath: "roadmap", //CHANGE HERE
         },
       ],
-  
+
       "docusaurus-plugin-sass",
       path.join(__dirname, "/plugins/utmcookie-plugin"),
       path.join(__dirname, "/plugins/feedback-plugin"),
@@ -573,14 +592,14 @@ async function config() {
     ],
     stylesheets: [
       {
-        href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-        type: 'text/css',
+        href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+        type: "text/css",
         integrity:
-          'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-        crossorigin: 'anonymous',
+          "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+        crossorigin: "anonymous",
       },
     ],
-  }
-};
+  };
+}
 
 module.exports = config;
