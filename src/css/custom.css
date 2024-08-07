@@ -1048,7 +1048,7 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-ff div > a::before,.sidebar-ff > a::before{
+.sidebar-ff > div > a::before,.sidebar-ff > a::before{
   content: " ";
   display: inline-block;
   height: 24px;
