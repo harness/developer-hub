@@ -209,7 +209,7 @@ Refer to following doc for more details on new [repo listing](/docs/platform/git
 
 #### Fixed issues
 
-- Fixed an issue where the MS Teams notifications didn't show the event names. Now, the pipeline end event appears as "ended" and the pipeline success event appears as "succeeded" in notifications. (PIPE-18855, ZD-62684)
+- Fixed an issue where notifications didn't show the event names properly across all notification methods. Now, the pipeline end event appears as **ended** and the pipeline success event appears as **succeeded** in notifications. (PIPE-18855, ZD-62684)
 - For a pipeline with bidirectional sync enabled, the file name change in GitHub was not properly reflected in the Harness UI. This issue is fixed by enhancing the cache handling for files. (PIPE-18828, ZD62791)
 - Step group templates did not appear when selecting Use Template on an Approval stage. This issue is fixed. You can now create a step group template with the Approval stage, and use them as step entities in the Approval stage. (CDS-96930, ZD-63556)
 - The HTTP step's Request Body field stretched horizontally to fit lengthy expressions. This issue is fixed. (CDS-96839, ZD-63344)
