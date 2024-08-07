@@ -108,6 +108,13 @@ import {
               "",
             link: "/docs/software-engineering-insights/sei-troubleshooting-faqs",
           },
+          {
+            title: "SEI Knowledge Base",
+            module: MODULES.ci,
+            description:
+              "",
+            link: "/kb/software-engineering-insights",
+          },
         ],
       },
     ];
