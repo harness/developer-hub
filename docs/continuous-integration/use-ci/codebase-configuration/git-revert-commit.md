@@ -4,9 +4,7 @@ description: Use a run step to revert git commit(s).
 sidebar_position: 35
 ---
 
-At times, you might want to undo changes introduced by a pull request (PR) in a Git repository. This can happen for various reasons, such as if the changes introduced by the PR are found to be problematic, introduce bugs, or if they are no longer needed. 
-
-The following example shows how to use a run step to revert a git commit introduced by a PR:
+The following example shows how to use a run step to revert a git commit:
 
 ```yaml
             - step:
@@ -14,7 +12,7 @@ The following example shows how to use a run step to revert a git commit introdu
                   name: rollback
                   identifier: rollback
                   spec:
-                    connectorRef: docker_connector
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
                     image: alpine/git
                     shell: Sh
                     command: |-
@@ -24,9 +22,9 @@ The following example shows how to use a run step to revert a git commit introdu
                       git config --global credential.helper 'cache --timeout 600'
                       << eof tr -d ' ' | git credential-cache store 
                         protocol=https
-                        host=github.com
+                        host=GIT_HOST_URL
                         username="GIT_USER_ID"
-                        password=<+secrets.getValue("YOUR_HARNESS_GITHUB_PAT")>
+                        password=<+secrets.getValue("YOUR_HARNESS_GIT_PAT_SECRET")>
                       eof
                       git pull origin main
                       echo "Last Commit"
@@ -39,6 +37,12 @@ The following example shows how to use a run step to revert a git commit introdu
                     stageStatus: Failure
 ```
 
+:::note
+- The Git PAT should have read/write permissions to the repository and webhook creation.
+- For `host`, you can use **github.com** for GitHub, **git.harness.io** for Harness Code Repository, **gitlab.com** for GitLab, etc.
+- The above example shows a single Git commit revert. If you want to revert multiple commits, you need to modify the script.
+:::
+
 This **Run** step, named `rollback`, runs when a previous step fails. It uses the `alpine/git` Docker image to configure Git, pull the latest changes from the `main` branch, revert the latest commit, and push the changes back to the `main` branch.
 
-The above is an example showing GitHub but you can modify the code for your choice of SCM provider.
+[This guide](../../development-guides/security/git_revert_from_pr) shows how to use a similar script to revert a commit from a PR based on security scan results.
