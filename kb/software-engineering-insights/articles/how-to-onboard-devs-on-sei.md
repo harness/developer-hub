@@ -3,11 +3,15 @@ title: How to onboard 1000+ developers on SEI
 ---
 This guide outlines the process for efficiently onboarding a large number of contributors to Harness Software Engineering Insights (SEI). Contributors include developers and team members whose actions contribute to your SEI metrics and insights.
 
+:::note Onboarding Plan
+Contact [Harness Support](mailto:support@harness.io) to request a personalized, end-to-end onboarding plan for your organization. Specify your team size, timeline, and key objectives to receive a simplified experience that ensures smooth adoption of the Harness SEI module.
+:::
+
 ### Step 1: Use integrations to fetch contributors data from a third party tool
 
 Configure integrations with third-party tools. SEI automatically detects user identities and creates contributor profiles.
 
-For detailed information on available integrations and setup instructions, go to [SEI Integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview).
+For detailed information on available integrations and setup instructions, go to [SEI Integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview). 
 
 :::info
 Please note that after adding or updating an integration, it may take up to 24 hours for the data to be fully reflected in SEI. Widgets and insights will update once synchronization is complete.
