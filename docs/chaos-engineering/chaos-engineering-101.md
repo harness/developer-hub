@@ -1,7 +1,7 @@
 ---
-title: Harness Chaos Engineering (HCE) overview
-sidebar_label: Introduction
-sidebar_position: 1
+title: Introduction
+sidebar_label: Chaos engineering 101
+sidebar_position: 2
 redirect_from:
 - /docs/chaos-engineering/get-started/introduction-to-chaos-module
 - /docs/chaos-engineering/get-started/overview
