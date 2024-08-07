@@ -24,7 +24,7 @@ When you click on **Deploy to multiple Environments or Infrastructures** you see
 
 ### Expected Scenario
 
-#### Sequential Deployment in Multi Services and Sequential Multi-Infrastructure
+1. Sequential Deployment in Multi Services and Sequential Multi-Infrastructure
 
 For example:
 
@@ -36,12 +36,12 @@ Each service is sequentially deployed in collection of Infrastructure ordered in
 
 Each service is deployed in one infrastructure first and then followed by the second infrastructure.
 
-
 ![](./static/service_infra_sequence.png)
 
+The deployment sequence is as follows:
 **`S1 I1, S2 I1, S1 I2, S2 I2`**
 
-#### Parallel Deployment in Multi-Services and Sequential Multi-Infrastructure
+2. Parallel Deployment in Multi-Services and Sequential Multi-Infrastructure
 
 For example:
 
@@ -49,13 +49,17 @@ For example:
 - **Environment**: E1
 - **Infrastructure**: I1, I2
 
-Each service is deployed in parallel in the Infrastructure. Infrastructure takes precedence.
+Each service will be deployed parallelly in different infrastructure.
 
 ![](./static/service_parallel_infra_seq.png)
+
+The deployment sequence is as follows:
+
+Here, 1 and 2 will be deployed parallelly and 3 and 4 will be deployed parallelly i.e same services are deployed parallelly in the different infrastructure. 1 and 3 will deployed sequentially and 2 and 4 will be deployed sequentially i.e different service in same infrastructure will deployed sequentially.
 
 ![](./static/Parallel_service_seq_infra.png)
 
-#### Sequential Deployment in Multi-Services and Parallel Multi-Infrastructure
+3. Sequential Deployment in Multi-Services and Parallel Multi-Infrastructure
 
 For example:
 
@@ -66,20 +70,28 @@ For example:
 
 ![](./static/service_parallel_infra_seq.png)
 
+Each service is deployed sequentially, but the infrastructures are deployed in parallel.
+
+The deployment sequence is as follows:
+
+Here, 1 and 2 will be deployed parallelly and 3 and 4 will be deployed parallelly i.e different services are deployed parallelly in the same infrastructure. 1 and 3 will deployed sequentially and 2 and 4 will be deployed sequentially i.e same service will be deployed in different infrastructure sequentially.
+
 ![](./static/seq_service_parallel_infra.png)
 
-#### Multi Service in Parallel and Multi Infrastructure in Parallel
+4. Multi Service in Parallel and Multi Infrastructure in Parallel
 
 - **Services**: S1, S2
 - **Environment**: E1
 - **Infrastructure**: I1, I2
 
+Both services and infrastructure are deployed in parallel.
 
+The deployment sequence is as follows:
 **`S1 I1, S2 I1, S1 I2, S2 I2`**
 
 ![](./static/service_parallel_infra_parallel.png)
 
-#### Multi service in parallel and multi environment and multi Infrastructure in sequential 
+5. Multi service in parallel and multi environment and multi Infrastructure in sequential 
 
 - **Services**: S1, S2
 - **Environment_1_Infrastructure_1**: I1, I2
@@ -87,9 +99,12 @@ For example:
 
 ![](./static/multi_service_parallel_multi_env_infra_seq.png)
 
+Services are deployed in parallel, but the environments and infrastructures are deployed sequentially.
+
+The deployment sequence is as follows:
 **`S1 I1, S2 I1, S1 I2, S2 I2, S1 K82, S2 K81, S2 K82, S2 K81`**
 
-#### Multi service in sequential and multi environment and multi Infrastructure in parallel
+6. Multi service in sequential and multi environment and multi Infrastructure in parallel
 
 - **Services**: S1, S2
 - **Environment_1_Infrastructure_1**: I1, I2
@@ -97,6 +112,9 @@ For example:
 
 ![](./static/multi_service_sequence_multi_env_multi_infra_parallel.png)
 
+Services are deployed sequentially, but the environments and infrastructures are deployed in parallel.
+
+The deployment sequence is as follows:
 **`S1 I1 ,S1 I2 , S1 K82 , S1 K81, S2 I1 ,S2 I2 , S2 K82 , S2 K81`**
 
 Infrastructure takes precedence, and all Infrastructure gets one Service followed by other Services.
