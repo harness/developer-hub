@@ -9,9 +9,10 @@ sidebar_label: Trellis Factors
 The Trellis Factors feature is currently in BETA and is behind the Feature Flag SEI_SHOW_TRELIS_NEW_INTERVAL and SEI_TRELLIS_BY_JOB_ROLES. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
-The Trellis Central Profile is where you customize the factors and weights used to calculate the Trellis Scores in the SEI module. The Trellis Scores feature provides a proprietary scoring mechanism to evaluate and understand your engineering team's productivity based on factors such as code quality, code volume, speed, impact, proficiency, and collaboration. In the Trellis Central Profile, you can adjust the weight assigned to each factor when calculating the overall Trellis Scores.
+Trellis Factors are used to define the threshold for Trellis Metrics calculations in Harness SEI. 
+The Trellis Scores feature provides a proprietary scoring mechanism to evaluate and understand your engineering team's productivity based on factors such as code quality, code volume, speed, impact, proficiency, and collaboration. 
 
-This topic explains the improved user experience for configuring and managing Trellis Central Profile, customizing Trellis Groups, and defining thresholds for the factors included in the profile to calculate Trellis Scores.
+In the Trellis Factors settings, you can adjust the weight assigned to each factor when calculating the overall Trellis Scores.
 
 :::info CRITERIA TO CONFIGURE THE TRELLIS FACTORS
 
@@ -23,20 +24,24 @@ The following permissions are needed to customize the Trellis Central Profile or
 
 :::
 
-The two main components while configuring the Trellis Factors are:
+## Key concepts
 
-* [Trellis Central Profile](#trellis-central-profile)
-* [Trellis Groups](#trellis-groups)
+### Trellis Factors at Account Level
 
-## Important concepts
+**Trellis Factors at the Account Level** serve as the primary configuration for measuring Trellis Scores in your Harness account. It acts as the default template for all collections defined across all projects within your account. It provides a centralized location for defining shared standards and thresholds and allows the account administrators to set baseline expectations for Trellis Scores. 
 
-### Trellis Central Profile
-
-The **Trellis Central Profile** allows you to personalize the shared standards and thresholds for determining the Trellis Score across all teams within your account. You can further customize these standards at the Collection level, creating new Trellis sub-profiles. These customized sub-profiles will be automatically associated with their respective Collections. Note that customizing the sub-profiles does not change the original Trellis Central Profile settings.
-
-Every newly created Collection is automatically associated with the Trellis Central Profile by default. This means the Trellis Profile settings are enabled for both the new Collection and the Root Collection created during initial project setup.
+This ensures consistency for measuring Trellis Scores across the organization while still allowing for collection-specific customizations
 
 ![](../static/trellis-central-profile.png)
+
+### Trellis Factors at Collection Level
+
+Trellis Factors at Collection Level are customized versions of the account-level factors, defined for specific collections. These collection-level factors:
+
+* Inherit the initial configuration from the Account Level Trellis Factors
+* Can be adjusted to reflect the unique needs and goals of individual teams or projects
+* Allow for more granular control over Trellis Score calculations within a particular collection
+* Provide flexibility without compromising the overall organizational standards
 
 ### Trellis Groups
 
