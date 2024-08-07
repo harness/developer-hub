@@ -1,7 +1,7 @@
 ---
 title: Catalog Metadata Ingestion API
 description: Update catalog Metadata using APIs
-sidebar_position: 5
+sidebar_position: 6
 sidebar_label: Catalog Metadata Ingestion APIs
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Additional Info Card in Overview Page
 description: Detailed description on how to create and add information on Additional Info Card in Overview age of software components
-sidebar_position: 5
+sidebar_position: 8
 sidebar_label: Additional Info Card
 ---
 
