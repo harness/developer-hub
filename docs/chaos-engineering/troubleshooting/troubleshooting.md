@@ -71,7 +71,7 @@ $ kubectl apply -f harness-chaos-enable.yml
 
 ### Environment variable and secret usage references in source mode of command probe
 
-You can use secrets and environment variables in the [**source mode**](/docs/chaos-engineering/features/resilience-probes/cmd-probe#source-mode) of the command probe using the manifest in the following manner:
+You can use secrets and environment variables in the [**source mode**](TO-DO) of the command probe using the manifest in the following manner:
 
 ```yaml
 source:
@@ -91,7 +91,7 @@ source:
 
 ### Memory stress fault stressng flag usage
 
-When a memory stress fault (such as [Linux memory stress](/docs/chaos-engineering/chaos-faults/linux/linux-memory-stress) or [Linux CPU stress](/docs/chaos-engineering/chaos-faults/linux/linux-cpu-stress)) is executed, the fault utilizes all of the available resources in the target system, thereby simulating an out of memory scenario.
+When a memory stress fault (such as [Linux memory stress](TO-DO) or [Linux CPU stress](TO_DO)) is executed, the fault utilizes all of the available resources in the target system, thereby simulating an out of memory scenario.
 You can use another fault parameter, `stressNGFlags` to provide flexibility in the parameters passed to the VM.
 
 #### Workaround
@@ -137,7 +137,7 @@ The `--vm-populate` in the above manifest populates the memory, thereby stressin
 
 ### Executing an experiment moves it to a QUEUED state
 
-When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/components#20-chaos-manager) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/architecture-and-security/architecture/components#components-common-to-all-chaos-infrastructure).
+When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](TO_DO) was unable to send the experiment to the [subscriber](TO_DO).
 
 It could be due to a variety of reasons, such as:
 
@@ -195,9 +195,9 @@ It could be due to a variety of reasons, such as:
     1. The manifest generated from the UI will always have a label with it. If you don't see a label, use the infrastructure ID of the chaos infrastructure on which you run the experiment. Also report the issue to [Harness Support](mailto:support@harness.io).
     2. If you are using an API to generate the manifest, check the manifest for any erroneous values.
 
-3. If the workflow has a label instance ID but it doesn't match the instance ID available in the workflow controller configmap:
-    1. Compare both the instance IDs of the experiment and the configmap. If they don't match:
-      1. Verify that the instance ID from the configmap is correct. The instance ID and the infra ID should match.
+3. If the workflow has a label instance ID but it doesn't match the instance ID available in the workflow controller ConfigMap:
+    1. Compare both the instance IDs of the experiment and the ConfigMap. If they don't match:
+      1. Verify that the instance ID from the ConfigMap is correct. The instance ID and the infra ID should match.
         1. If they don't match, it means you have not applied the Kubernetes infrastructure manifest correctly.
         2. If the instance ID matches the infra ID, it means the experiment has the wrong label. In such a case, you can update the label instance ID with the infrastructure ID.
 
@@ -345,4 +345,4 @@ powershell -Command "& { [Net.ServicePointManager]::SecurityProtocol = [Net.Secu
 
 This modification forces PowerShell to use TLS 1.2 for secure connections, thereby resolving the SSL/TLS issue.
 
-For further assistance, please refer to the [documentation](/docs/chaos-engineering/chaos-faults/windows) or contact [Harness Support](mailto:support@harness.io).
+For further assistance, please refer to the [documentation](TO_DO) or contact [Harness Support](mailto:support@harness.io).
