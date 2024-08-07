@@ -402,7 +402,7 @@ You can require that all custom triggers in this Harness account use API key tok
 3. Select **Default Settings**.
 4. In **Pipeline**, set **Mandate Authorization for Custom Webhook Triggers** to **true**.
 
-Now all custom triggers in this account must use an API key token or an authorization error is thrown when the cURL command is run.
+Now ALL custom webhook triggers in this account must use an API key token in the header or the following authorization error is thrown when the webhook is used.
 
 ```
 {"status":"ERROR","code":"INVALID_REQUEST","message":"Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request","correlationId":"465d6463-152b-4211-8cb5-6bcc2538afa8","detailedMessage":null,"responseMessages":[{"code":"INVALID_REQUEST","level":"ERROR","message":"Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request","exception":null,"failureTypes":[]}],"metadata":null}
