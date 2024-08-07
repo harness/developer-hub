@@ -8,7 +8,6 @@
       "title":"Explore features"
    },
   "customProps": {
-    "icon": './static/icon-ce.svg',
     "description": "Explore the features of Harness Chaos Engineering"
   }
 }
