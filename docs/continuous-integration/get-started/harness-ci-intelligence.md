@@ -69,7 +69,7 @@ Harness Intelligence optimizes your build stages by reducing execution times and
 This feature is currently in beta, and is available with `CI_PARSE_SAVINGS` feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-Below is a screen shot showing time saving for a Build stage using Cache Intelligence and Test Intelligence. 
+Below is a screenshot demonstrating the time savings for a **Build** stage using Cache Intelligence and Test Intelligence.
 
 ![](./static/ci_stage_savings.png)
 
