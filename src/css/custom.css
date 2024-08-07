@@ -997,7 +997,12 @@ figure p {
  .menu__list-item-collapsible > a,.menu__link{
   height: 52px;
  }
-
+ .menu {
+  margin-bottom: 0px !important;
+ }
+.collapseSidebarButton_PEFL{
+  width: 100% !important;
+}
 .sidebar-platform > div > a::before{
   content: " ";
   display: inline-block;
