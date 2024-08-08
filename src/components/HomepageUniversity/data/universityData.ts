@@ -82,6 +82,7 @@ export const university: CardItem[] = [
     link: "/university/sei",
     SPT_available: true,
     ILT_available: true,
+    numberOfCerts: 1,
   },
   {
     title: "Internal Developer Portal",
