@@ -1,10 +1,9 @@
 ---
-title: Catalog Metadata Ingestion API
-description: Update catalog Metadata using APIs
+title: Catalog Ingestion API
+description: Update Catalog Metadata using Ingestion APIs
 sidebar_position: 5
-sidebar_label: Catalog Metadata Ingestion APIs
+sidebar_label: Ingestion API
 ---
-
 
 <DocVideo src="https://www.youtube.com/embed/mI_KIuMpnBM?si=2SfPcO-JpFvAMJrT" />
 
@@ -12,7 +11,10 @@ sidebar_label: Catalog Metadata Ingestion APIs
 
 With the introduction of Catalog Metadata Ingestion APIs, users now have the capability to append or update arbitrary metadata associated with catalog entities such as services, libraries, websites, etc without manually adding it to the `catalog-info.yaml`. This feature facilitates the integration of metadata sourced from internal systems such as cost trackers, service health checkers, security scans, or even from simple spreadsheets tracking personnel details.
 
+Also see - [Scorecards using Custom Data Sources](../scorecards/custom-data-source.md)
+
 ## Key Features
+
 - **Custom Property Support**: The metadata field in the catalog supports custom properties, enabling users to add tailored metadata to catalog entities.
 
 - **Scalability**: Using the APIs, users can now automate the process for adding custom properties at scale, streamlining the customization of catalog entities.
@@ -27,19 +29,20 @@ With the introduction of Catalog Metadata Ingestion APIs, users now have the cap
 
 ### Endpoint
 
-Adds a metadata in the already existing software component on IDP Catalog. 
+Adds a metadata in the already existing software component on IDP Catalog.
 
 ### HTTP Method
 
 `POST`
 
-### URL 
+### URL
 
 ```bash
 https://app.harness.io/gateway/v1/catalog/custom-properties
 ```
 
 ### Headers
+
 - `x-api-key`: Your Harness API token.
 - `Harness-Account`: Your Harness account ID.
 
@@ -55,23 +58,21 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 
 ```json
 {
-    "properties": [
-        {
-            "field": "metadata.teamLead",
-            "filter": {
-                "kind": "Component",
-                "type": "service",
-                "owners": [
-                    "Product_Engineering"
-                ]
-            },
-            "value": "Jane Doe"
-        }
-    ]
+  "properties": [
+    {
+      "field": "metadata.teamLead",
+      "filter": {
+        "kind": "Component",
+        "type": "service",
+        "owners": ["Product_Engineering"]
+      },
+      "value": "Jane Doe"
+    }
+  ]
 }
 ```
 
-- **field:** It contains the information on the metadata name to be added, here in the above example it would ingest the `teamLead` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP. 
+- **field:** It contains the information on the metadata name to be added, here in the above example it would ingest the `teamLead` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP.
 
 :::info
 
@@ -79,17 +80,15 @@ We need to add escape character for any field has an additional `DOT` in the pat
 
 :::
 
+- **filter:** This is used to identify the software components where you want to ingest the new entity, you can filter through `kind`, `type`, `owners`, `lifecycle` and `tags`. **Where `kind`, `type` and `owners` are mandatory fields.**
 
-- **filter:** This is used to identify the software components where you want to ingest the new entity, you can filter through `kind`, `type`, `owners`, `lifecycle` and `tags`. **Where `kind`, `type` and `owners` are mandatory fields.** 
-    
-:::info 
+:::info
 
 **Error Handling**: We validate the body of the API and certain fields like `kind`, `metadata`, `metadata.name`, `metadata.namespace`, are uneditable and if you try to change these, the endpoint returns an Error Code 400. Also make sure your metadata updates adhere to the [backstage schema](https://github.com/backstage/backstage/tree/master/packages/catalog-model/src/schema)
 
 :::
 
-- **value:** This field contains the value of the entity added under `field`. 
-
+- **value:** This field contains the value of the entity added under `field`.
 
 ![](./static/inspect-entity.png)
 
@@ -109,14 +108,13 @@ metadata:
 ...
 ```
 
-
 ### How to assign metadata value for an individual software component?
 
 - value_overrides: This field is used when you want to assign multiple values against a single metadata for different `filter.type` or `filter.kind`. Here's an Example of the Request Body with `value_overrides`:
 
 ```JSON
 {
-    "properties": [        
+    "properties": [
         {
             "field": "metadata.teamLead",
             "filter": {
@@ -138,40 +136,42 @@ metadata:
 }
 ```
 
-In the above example, we assign the team lead for `location_service` of type `service` as `Jane Harris` instead of `Jane Doe`. So `value_overrides` helps you to assign metadata values to individual software components.  
+In the above example, we assign the team lead for `location_service` of type `service` as `Jane Harris` instead of `Jane Doe`. So `value_overrides` helps you to assign metadata values to individual software components.
 
 ### How to check for which metadata and entities are affected?
 
-Using **dry_run** users can check for all the metadata and components getting affected by the **Catalog Metadata Ingestion API**, dry_run won't apply any change rather will provide a preview of all the changes as shown in the example below. 
+Using **dry_run** users can check for all the metadata and components getting affected by the **Catalog Metadata Ingestion API**, dry_run won't apply any change rather will provide a preview of all the changes as shown in the example below.
 
 ```json
 [
-    {
-        "field": "metadata.offShoreTeamLead",
-        "entities_with_additions": {
-            "count": 0,
-            "entity_refs": []
-        },
-        "entities_with_updates": {
-            "count": 2,
-            "entity_refs": [
-                "component:default/order-service",
-                "component:default/foodservice"
-            ]
-        }
+  {
+    "field": "metadata.offShoreTeamLead",
+    "entities_with_additions": {
+      "count": 0,
+      "entity_refs": []
+    },
+    "entities_with_updates": {
+      "count": 2,
+      "entity_refs": [
+        "component:default/order-service",
+        "component:default/foodservice"
+      ]
     }
+  }
 ]
 ```
+
 As you could see in the example above we display the affected software components under `entity_refs`.
 
-To use **dry_run**  you need to add `?dry_run=true` in the URL
+To use **dry_run** you need to add `?dry_run=true` in the URL
 
 ```bash
 https://app.harness.io/gateway/v1/catalog/custom-properties?dry_run=true
 ```
+
 ### cURL Example
 
-The endpoint could also be used to **replace** value for an already existing metadata. 
+The endpoint could also be used to **replace** value for an already existing metadata.
 
 ```cURL
 curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
@@ -204,7 +204,7 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
 }'
 ```
 
-You can **append** an `array` data type using this API as shown in the example below by using `mode: append` 
+You can **append** an `array` data type using this API as shown in the example below by using `mode: append`
 
 ```cURL
 curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
@@ -237,34 +237,36 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
                 {"prod2": "1.5.6"},
                 {"prod3": "1.5.6"},
             ],
-            // "value": ["tag2", "tag3"], #array 
-            "mode": "append" 
+            // "value": ["tag2", "tag3"], #array
+            "mode": "append"
         }
     ]
 }'
 
 ```
-### Response:
-The response will update/append a metadata in the desired software component in your IDP catalog.
 
+### Response:
+
+The response will update/append a metadata in the desired software component in your IDP catalog.
 
 ## Catalog Metadata Deletion API
 
 ### Endpoint
 
-Delete a metadata in the already existing software component on IDP Catalog. 
+Delete a metadata in the already existing software component on IDP Catalog.
 
 ### HTTP Method
 
 `DELETE`
 
-### URL 
+### URL
 
 ```bash
 https://app.harness.io/v1/catalog/custom-properties
 ```
 
 ### Headers
+
 - `x-api-key`: Your Harness API token.
 - `Harness-Account`: Your Harness account ID.
 
@@ -280,22 +282,20 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 
 ```json
 {
-    "properties": [   
-        {
-            "field": "metadata.teamLead",
-            "filter": {
-                "kind": "Component",
-                "type": "service",
-                "owners": [
-                    "Product_Engineering"
-                ]
-            }
-        }
-    ]
+  "properties": [
+    {
+      "field": "metadata.teamLead",
+      "filter": {
+        "kind": "Component",
+        "type": "service",
+        "owners": ["Product_Engineering"]
+      }
+    }
+  ]
 }
 ```
 
-- **field:** It contains the information on the metadata name to be deleted, here in the above example it would delete the `teamLead` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP. 
+- **field:** It contains the information on the metadata name to be deleted, here in the above example it would delete the `teamLead` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP.
 
 ![](./static/inspect-entity.png)
 
@@ -307,7 +307,7 @@ We need to add escape character for any field has an additional `DOT` in the pat
 
 :::
 
-- **filter:** This is used to identify the software components from where you want to delete the metadata information, you can filter through `kind`, `type`, `owners`, `lifecycle` and `tags`. **Where `kind`, `type` and `owners` are mandatory fields.** 
+- **filter:** This is used to identify the software components from where you want to delete the metadata information, you can filter through `kind`, `type`, `owners`, `lifecycle` and `tags`. **Where `kind`, `type` and `owners` are mandatory fields.**
 
 ### cURL Example
 
@@ -340,5 +340,7 @@ curl --location --request DELETE 'https://app.harness.io/gateway/v1/catalog/cust
     ]
 }'
 ```
+
 ### Response:
+
 The response will delete a metadata in the desired software component in your IDP catalog.
