@@ -420,19 +420,7 @@ const sidebars = {
 
     //Additional Items in this parent can go here.
   ],
-
-
-
-
-
-
-
-
-
   //   individual module page sidebar start
-
-
-  
   coderepository: [
     {
       type: "category",
@@ -503,7 +491,7 @@ const sidebars = {
     {
       type: "link",
       label: "Release Notes",
-      href: "/release-notes/code-repository",
+      href: "/release-notes/platform",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -512,7 +500,7 @@ const sidebars = {
     {
       type: "link",
       label: "API Refrence",
-      href: "https://apidocs.harness.io/tag/repository/",
+      href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
       },
@@ -546,7 +534,7 @@ const sidebars = {
     {
       type: "link",
       label: "Release Notes",
-      href: "/release-notes/code-repository",
+      href: "/release-notes/continuous-integration",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -555,7 +543,7 @@ const sidebars = {
     {
       type: "link",
       label: "API Refrence",
-      href: "https://apidocs.harness.io/tag/repository/",
+      href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
       },
@@ -589,7 +577,7 @@ const sidebars = {
     {
       type: "link",
       label: "Release Notes",
-      href: "/release-notes/code-repository",
+      href: "/release-notes/continuous-delivery",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -598,7 +586,7 @@ const sidebars = {
     {
       type: "link",
       label: "API Refrence",
-      href: "https://apidocs.harness.io/tag/repository/",
+      href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
       },
@@ -637,7 +625,7 @@ const sidebars = {
     {
       type: "link",
       label: "Release Notes",
-      href: "/release-notes/code-repository",
+      href: "/release-notes/infrastructure-as-code-management",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -646,7 +634,7 @@ const sidebars = {
     {
       type: "link",
       label: "API Refrence",
-      href: "https://apidocs.harness.io/tag/repository/",
+      href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
       },
@@ -681,7 +669,7 @@ const sidebars = {
     {
       type: "link",
       label: "Release Notes",
-      href: "/release-notes/code-repository",
+      href: "/release-notes/feature-flags",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -724,7 +712,7 @@ const sidebars = {
     {
       type: "link",
       label: "Release Notes",
-      href: "/release-notes/code-repository",
+      href: "/release-notes/cloud-cost-management",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -733,7 +721,7 @@ const sidebars = {
     {
       type: "link",
       label: "API Refrence",
-      href: "https://apidocs.harness.io/tag/repository/",
+      href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
       },
@@ -771,7 +759,7 @@ const sidebars = {
     {
       type: "link",
       label: "Release Notes",
-      href: "/release-notes/code-repository",
+      href: "/release-notes/security-testing-orchestration",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -780,7 +768,7 @@ const sidebars = {
     {
       type: "link",
       label: "API Refrence",
-      href: "https://apidocs.harness.io/tag/repository/",
+      href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
       },
@@ -818,7 +806,7 @@ const sidebars = {
     {
       type: "link",
       label: "Release Notes",
-      href: "/release-notes/code-repository",
+      href: "/release-notes/software-supply-chain-assurance",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -827,7 +815,7 @@ const sidebars = {
     {
       type: "link",
       label: "API Refrence",
-      href: "https://apidocs.harness.io/tag/repository/",
+      href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
       },
@@ -865,7 +853,7 @@ const sidebars = {
     {
       type: "link",
       label: "Release Notes",
-      href: "/release-notes/code-repository",
+      href: "/release-notes/chaos-engineering",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -874,7 +862,7 @@ const sidebars = {
     {
       type: "link",
       label: "API Refrence",
-      href: "https://apidocs.harness.io/tag/repository/",
+      href: "https://apidocs.harness.io/chaos.html",
       customProps: {
         description: "Harness API Docs.",
       },
@@ -914,7 +902,7 @@ const sidebars = {
     {
       type: "link",
       label: "Release Notes",
-      href: "/release-notes/code-repository",
+      href: "/release-notes/service-reliability-management",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -923,7 +911,7 @@ const sidebars = {
     {
       type: "link",
       label: "API Refrence",
-      href: "https://apidocs.harness.io/tag/repository/",
+      href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
       },
@@ -963,7 +951,7 @@ const sidebars = {
     {
       type: "link",
       label: "Release Notes",
-      href: "/release-notes/code-repository",
+      href: "/release-notes/continuous-error-tracking",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -972,7 +960,7 @@ const sidebars = {
     {
       type: "link",
       label: "API Refrence",
-      href: "https://apidocs.harness.io/tag/repository/",
+      href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
       },
@@ -1010,7 +998,7 @@ const sidebars = {
     {
       type: "link",
       label: "Release Notes",
-      href: "/release-notes/code-repository",
+      href: "/release-notes/internal-developer-portal",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -1019,7 +1007,7 @@ const sidebars = {
     {
       type: "link",
       label: "API Refrence",
-      href: "https://apidocs.harness.io/tag/repository/",
+      href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
       },
@@ -1058,7 +1046,7 @@ const sidebars = {
     {
       type: "link",
       label: "Release Notes",
-      href: "/release-notes/code-repository",
+      href: "/release-notes/software-engineering-insights",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -1067,7 +1055,7 @@ const sidebars = {
     {
       type: "link",
       label: "API Refrence",
-      href: "https://apidocs.harness.io/tag/repository/",
+      href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
       },
@@ -1106,7 +1094,7 @@ const sidebars = {
     {
       type: "link",
       label: "Release Notes",
-      href: "/release-notes/code-repository",
+      href: "/release-notes/self-managed-enterprise-edition",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -1115,7 +1103,7 @@ const sidebars = {
     {
       type: "link",
       label: "API Refrence",
-      href: "https://apidocs.harness.io/tag/repository/",
+      href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
       },

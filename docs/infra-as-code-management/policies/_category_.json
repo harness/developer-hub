@@ -6,8 +6,7 @@
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Policies & Governance",
-       "slug":"/category/iacm-policies"
+       "title":"Policies & Governance"
     },
     "customProps":{
        "helpdocs_category_id":""
