@@ -7,13 +7,13 @@ redirect_from:
   - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-rally
 ---
 
-Rally is a web-based platform for managing and tracking the entire application development lifecycle, including project management, release planning, iteration planning, and defect tracking.
-
-Use the **SEI Rally integration** to integrate SEI with the Rally Software. The primary purpose of this rally integration is to ensure that SEI can track, manage, and analyze user stories, tasks, and defects in real time, leading to improved efficiency and enhanced productivity.
-
 :::info
 The SEI Rally integration is currently in BETA and is accessible behind the Feature Flag `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
+
+Rally is a web-based platform for managing and tracking the entire application development lifecycle, including project management, release planning, iteration planning, and defect tracking.
+
+Use the **SEI Rally integration** to integrate SEI with the Rally Software. The primary purpose of this rally integration is to ensure that SEI can track, manage, and analyze user stories, tasks, and defects in real time, leading to improved efficiency and enhanced productivity.
 
 ## Requirements
 
@@ -34,7 +34,7 @@ Before you configure the SEI Rally integration, you must generate a **Rally Pers
 
 * Add the **URL** of your Rally integration instance, for example, `https://rally1.rallydev.com`. Make sure it's a valid URL.
 * Provide the **API KEY** that you previously generated within your Rally account.
-* Choose the **Fields** you wish to exclude from ingestion. You might exclude fields containing sensitive information such as `Summary`, `Description`, and `Comments`. Excluded fields will not be evaluated for hygiene or adherence to best practices.
+* Choose the **Fields** you wish to exclude from ingestion. You might exclude fields containing sensitive information such as **Summary**, **Description**, and **Comments**. Excluded fields will not be evaluated for hygiene or adherence to best practices.
 * Click on the **Next**.
 
 ### Step 3: Define and save the integration
