@@ -1002,7 +1002,7 @@ figure p {
 .collapseSidebarButton_PEFL{
   width: 100% !important;
 }
-.sidebar-platform > div > a::before{
+.sidebar-platform > div > a::before,.sidebar-platform > a::before{
   content: " ";
   display: inline-block;
   height: 24px;
