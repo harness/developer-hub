@@ -52,7 +52,7 @@ Here's and example of how a group is displayed as a Team page in IDP.
 
 :::info
 
-In case there's an user-group already present with the same metadata.name while you're registering through your catalog or adding it to the platform, always the user-group added through platform will take precedence. 
+In case there's an user-group already present with the same `metadata.name` while you're registering through your catalog or adding it to the platform, there would be no overwrite of the user-group if it's already present. 
 
 :::
 
