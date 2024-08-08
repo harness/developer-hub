@@ -563,7 +563,7 @@ const sidebars = {
     {
       type: "link",
       label: "API Refrence",
-      href: "https://apidocs.harness.io/tag/repository/",
+      href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
       },
