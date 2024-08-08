@@ -43,6 +43,8 @@
     "react-markdown": "^9.0.1",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.21.1",
+    "rehype-katex": "7",
+    "remark-math": "6",
     "sass": "^1.69.5",
     "update-notifier": "^7.0.0"
   },

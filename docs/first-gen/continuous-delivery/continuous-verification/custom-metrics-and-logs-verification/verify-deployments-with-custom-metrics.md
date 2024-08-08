@@ -136,7 +136,7 @@ This is the JSON label for identifying a transaction name. In the case of our ex
    
    The Metrics URL Collection is based on the query you entered in the **Metric Collection URL field** earlier.
    
-2. In **$\{host}**, select a host to query. Click the query next to **GET** to see how the host you selected replaces the `${host}` placeholder in your query.
+2. In `**${host}**`, select a host to query. Click the query next to **GET** to see how the host you selected replaces the `${host}` placeholder in your query.
 3. Click **SEND**. The query is executed and the JSON is returned.
 4. Locate the field name that is used to identify transactions. In our New Relic Insights query, it is the **facets.name** field.  
    If no metrics are found, you will see a `METRIC DATA NOT FOUND` error.  
@@ -163,7 +163,7 @@ For example `(name:(.*),)` or `(?<=:).*(?=,)`.
 Specify the value for the event count. This is used to filter and aggregate data returned in a SELECT statement. To find the correct label for the value, do the following:
 
 1. Click **Guide from an example**. The example popover appears.  
-The Metrics URL Collection is based on the query you entered in the **Metric Collection URL field** earlier. The **$\{host}** field refers to the `${host}` variable in your query.
+The Metrics URL Collection is based on the query you entered in the **Metric Collection URL field** earlier. The `**${host}**` field refers to the `${host}` variable in your query.
 2. Click **Submit**. The query is executed and the JSON is returned.  
 If no metrics are found, you will see a `METRIC DATA NOT FOUND` error.
 3. Locate the field name that is used to count events. In our New Relic Insights query, it is the **facets.timeSeries.results.count** field.  
@@ -222,7 +222,7 @@ In deployment, where a Fast-Fail Hint moves a Workflow to a failed state, the Wo
 
 ### Step 15: Expression for Host/Container
 
-The expression entered here should resolve to a host/container name in your deployment environment. By default, the expression is **$\{instance.host.hostName}**.
+The expression entered here should resolve to a host/container name in your deployment environment. By default, the expression is `**${instance.host.hostName}**`.
 
 ### Step 16: Analysis Time Duration
 

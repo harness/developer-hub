@@ -21,7 +21,40 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 
 :::
 
+## June 2024
+
+### Version 1.17.0
+<!-- Released on 04 June 2024 -->
+
+#### New features and enhancements
+- **Support for commit SHA:** Introduced the ability to add commit SHA options to configuration and Terraform variable files. (IAC-1961)
+- **Workspace expression:** Enabled setting expressions for workspace values within an IACM stage. (IAC-2002)
+
+### Version 1.15.0
+<!-- Released on 04 June 2024 -->
+
+#### New features and enhancements
+- **Filter persistence:** Enhanced filtering capabilities by ensuring the persistence of filter values. (IAC-1938)
+
+#### Fixed issues
+- **Workspace type setting:** Corrected default values to accurately set the workspace type. (IAC-1970)
+
+## May 2024
+
+### Version 1.10.0
+<!-- Released on 02 May 2024 -->
+
+#### New features and enhancements
+- **Cost estimation breakdown:** Added the option to select multiple workspaces with associated costs in the cost estimation breakdown screen. (IAC-1835)
+
 ## April 2024
+
+### Version 0.186.0
+<!-- Released on 18 April 2024 -->
+#### New features and enhancements
+- **Copy resource values:** Improved the user experience of the resource review screen and added the ability to copy resource values. (IAC-589)
+- **Approval screen - actioned by:** Displayed the user who actioned the approval in the IACM approval step when viewing and executing it. (IAC-1699)
+- **Provider check for var file:** Implemented a provider check when editing a var file to ensure access to repositories and branches. (IAC-1701)
 
 ### Version 0.181.0
 <!-- Released on: 04 April 2024 -->

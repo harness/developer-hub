@@ -2,7 +2,7 @@ Harness CI supports a variety of platforms, repos, registries, and related techn
 
 ### Source Code Management (SCM)
 
-In addition to [built-in codebase cloning](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) and support for Git functionality like [Git LFS](/docs/continuous-integration/use-ci/codebase-configuration/gitlfs), [subdirectory cloning](/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory), and [PR status checks](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks), Harness CI supports these SCM providers:
+In addition to [built-in codebase cloning](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) and support for Git functionality like [Git LFS](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase), [subdirectory cloning](/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory), and [PR status checks](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks), Harness CI supports these SCM providers:
 
 * [AWS CodeCommit](/docs/platform/connectors/code-repositories/connect-to-code-repo)
 * [Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)

@@ -24,6 +24,56 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## July 2024
 
+### Version 202407.2
+
+<!-- July 25, 2024 -->
+
+This release includes several new enhancements such as the improved SEI Diagnostics for faster Jira and SEI data validation, a simplified contributor data management experience, and various other enhancements. Watch the [release demo](https://youtu.be/F1E-Kfp\_nok) to see the key changes in action.
+
+<DocVideo src="https://www.youtube.com/embed/F1E-Kfp_nok?si=FwXusmx1IEWT8KL4" />
+
+<br />
+
+#### Early access features
+
+* We now support using **GitHub Topics** as filters in **Collection** definitions for the **GitHub integration**. This filtering option is only available at the Collection level. This feature is currently in BETA and requires the `SEI_ENABLE_TOPICS_SUPPORT_FOR_GITHUB` feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable this feature (SEI-6863) (ZD-61715)
+
+* In the **Business Alignment report**, users can now switch between profiles configured with different Issue Management Systems directly in the report settings. This feature is currently in `BETA` and requires the `SEI_NEW_BA_COMBINED_WIDGET` feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-7501)
+
+#### New features and enhancements
+
+* We've significantly improved the user experience for uploading and updating contributor data. (SEI-7414) (SEI-7365) (ZD-66033)
+  * Added a confirmation step before starting the upload.
+  * Added a progress bar to track the upload status.
+  * Other contributor actions will now be temporarily disabled during the update to prevent conflicts.
+  * The contributor data will now switch to the newer version automatically if all users are uploaded successfully.
+
+* **Activity Logs** can now track **Collection** activities in detail. This allows users to view records of when Collections are created or modified. (SEI-4238)
+
+* The ability to add **Additional Done Statuses** is now available in the report settings for all sprint metric reports when using **Azure DevOps integration**. (SEI-7489)
+
+* We've significantly improved the **Integration Status** page in **SEI Diagnostics** with the following updates. (SEI-7364)
+  * Added more granular filtering options and sorting capabilities for the integrations list.
+  * Implemented a search feature to quickly find specific integration information.
+  * Improved the view for the **Jira integration** to provide more detailed insights on **Jira tickets** across **sprints** and **projects**.
+  * The **Run Spot Check** feature now allows you to search for specific Jira ticket keys and retrieve detailed information for cross-platform validation.&#x20;
+
+:::info
+Note that the Integration Status page update is currently available only for the Jira integration.
+:::
+
+#### Fixed issues
+
+* Fixed the bug in the `satellite.yml` file for the **GitLab integration**. Now the access token is added correctly instead of the string `apikey`. (SEI-6518)
+
+* Jira ticket links now work correctly in SEI report drilldowns when using the Jira Connect App. (SEI-7414)
+
+* Fixed a bug that was displaying `null` for **GitHub** users in all **SCM reports**. (SEI-7248)
+
+* Resolved an issue where some **Azure pipeline stages** were not being ingested into the system (SEI-7361) (ZD-65982)
+
+* Fixed the issue that caused inconsistency across the data displayed in the **Trellis Score report** and the **Trellis Scorecard**. (SEI-7592)
+
 ### Version 202407.1
 
 <!-- July 15, 2024 -->

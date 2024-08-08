@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-07-23:T10:00:30
+date: 2024-07-30:T10:00:30
 sidebar_position: 3
 ---
 
@@ -79,7 +79,21 @@ The following deprecated API endpoints are longer supported:
 
 ## July 2024
 
-### Version 1.48.8<!-- July 23, 2024 -->
+### Version 1.49.x<!-- July 30, 2024 -->
+
+#### New features and enhancements
+
+- We have added a security check to restrict SAML assertions to a single login. Any attempt to reuse a SAML assertion within its expiry period will now be rejected by Harness during login. Currently, this feature is behind the feature flag `PL_ENABLE_SAML_ASSERTION_CACHE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (PL-55247, ZD-66114)
+
+#### Fixed issues
+
+- SAML groups were not being picked up by Harness due to a regression introduced with recent changes in syncing users in SAML user groups. Identified and resolved the issue, ensuring that SAML groups are now correctly synced with Harness. (PL-55507, ZD-66567, ZD-66882)
+
+- SCIM sync issues were occurring due to incorrect handling of `orgIdentifier` and `projectIdentifier`. Updated the query to correctly handle cases where `orgIdentifier` and `projectIdentifier` are null. (PL-55444, ZD-66712)
+
+- Users were able to see the enable/disable option for AIDA at the project level, even if AIDA was disabled at the account level. Implemented a change to display an error message when users attempt to enable AIDA at the project level if it is disabled at the account level. (PL-48296)
+
+### Version 1.48.11<!-- August 02, 2024 -->
 
 #### New features and enhancements
 

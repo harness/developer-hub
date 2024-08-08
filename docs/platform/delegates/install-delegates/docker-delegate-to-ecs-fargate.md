@@ -6,15 +6,7 @@ sidebar_position: 5
 
 Harness Delegate carries out the tasks in your Continuous Integration (CI) and Continuous Delivery (CD) pipelines. The delegate is a software component that installs in your environment and registers with Harness Manager. The delegate connects to Harness Manager for the assignment and completion of CI/CD tasks.
 
-You can use Harness NextGen to deploy a Docker delegate to Amazon Elastic Container Service (ECS) or AWS Fargate.
-
-:::info
-Delegate scope for a delegate for Amazon ECS is based on the token you use.
-:::
-
-import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
-
-<Addperm />
+You can use Harness to deploy a Docker delegate to Amazon Elastic Container Service (ECS) or AWS Fargate.
 
 ## Considerations before using ECS-configured Docker delegates
 
@@ -43,80 +35,82 @@ Create an ECS cluster. Use an EC2 instance type with networking. For more inform
 1. Copy the following task `spec` into a file. Save the file as `task-spec.json`.
 
    ```json
-     {
-       "containerDefinitions": [
-         {
-           "cpu": 1,
-           "environment": [
-             {
-               "name": "ACCOUNT_ID",
-               "value": "<ACCOUNT_ID>"
-             },
-             {
-               "name": "DELEGATE_TOKEN",
-               "value": "<DELEGATE_TOKEN>"
-             },
-             {
-               "name": "DELEGATE_TYPE",
-               "value": "DOCKER"
-             },
-             {
-               "name": "INIT_SCRIPT",
-               "value": ""
-             },
-             {
-               "name": "DEPLOY_MODE",
-               "value": "KUBERNETES"
-             },
-             {
-               "name": "MANAGER_HOST_AND_PORT",
-               "value": "<MANAGER_HOST_AND_PORT>"
-             },
-             {
-               "name": "DELEGATE_NAME",
-               "value": "<DELEGATE_NAME>"
-             },
-             {
-               "name": "LOG_STREAMING_SERVICE_URL",
-               "value": "<LOG_STREAMING_SERVICE_URL>"
-             },
+    {
+      "containerDefinitions": [
+        {
+          "cpu": 1,
+          "environment": [
             {
-               "name": "DELEGATE_TAGS",
-               "value": ""
-             },
-
-             {
-               "name": "NEXT_GEN",
-               "value": "true"
-             }
-            ],
-           "memory": 2048,
-           "image": "harness/delegate:22.12.77802",
-           "essential": true,
-           "hostname": "<DELEGATE_HOST>",
-           "name": "<DELEGATE_NAME>"
-         }
-       ],
-         "memory": "2048",
-         "requiresCompatibilities": [
-         "EC2"
-       ],
-
-       "cpu": "1024",
-       "family": "harness-delegate-task-spec"
-     }
+              "name": "ACCOUNT_ID",
+              "value": "<ACCOUNT_ID>"
+            },
+            {
+              "name": "DELEGATE_TOKEN",
+              "value": "<DELEGATE_TOKEN>"
+            },
+            {
+              "name": "MANAGER_HOST_AND_PORT",
+              "value": "<MANAGER_HOST_AND_PORT>"
+            },
+            {
+              "name": "LOG_STREAMING_SERVICE_URL",
+              "value": "<LOG_STREAMING_SERVICE_URL>"
+            },            
+            {
+              "name": "DELEGATE_NAME",
+              "value": "<DELEGATE_NAME>"
+            },            
+            {
+              "name": "DELEGATE_TAGS",
+              "value": ""
+            },
+            {
+              "name": "INIT_SCRIPT",
+              "value": ""
+            },
+            {
+              "name": "DEPLOY_MODE",
+              "value": "KUBERNETES"
+            },
+            {
+              "name": "DELEGATE_TYPE",
+              "value": "DOCKER"
+            },
+            {
+              "name": "NEXT_GEN",
+              "value": "true"
+            }
+          ],
+          "memory": 2048,
+          "image": "<IMAGE>",
+          "essential": true,
+          "hostname": "<DELEGATE_HOST>",
+          "name": "<DELEGATE_NAME>"
+        }
+      ],
+      "memory": "2048",
+      "requiresCompatibilities": [
+        "EC2"
+      ],
+      "cpu": "1024",
+      "family": "harness-delegate-task-spec"
+    }
    ```
 
-2. Enter the fields of the task definition as follows:
+2. Copy and paste the above JSON into task definition on Amazon ECS console. Refer the image below:
+
+   ![](./static/ecs-task-definition.png)
+
+3. Enter the fields of the task definition as follows:
 
    | **Field** | **Description** |
    | :-- | :-- |
    | `ACCOUNT_ID` | Your Harness account ID. |
    | `DELEGATE_TOKEN` | The delegate token stored in your Harness account. |
    | `MANAGER_HOST_AND_PORT` | Information about your manager host. This depends on the Harness production cluster you use: Prod1: https://app.harness.io, Prod2: https://app.harness.io/gratis, or Prod3: https://app3.harness.io. |
-   | `DELEGATE_NAME` | The name you gave your delegate. This is usually the name you specified during delegate installation. |
-   | `IMAGE` | Use the most recent delegate image from [Docker Hub](https://hub.docker.com/r/harness/delegate/tags). The correct image uses an image tag in the following format: `harness/delegate:yy.mm.verno`. |
    | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: MANAGER_HOST_AND_PORT/log-service/ |
+   | `DELEGATE_NAME` | The name you gave your delegate. This is usually the name you specified during delegate installation. |
+   | `IMAGE` | Use the most recent delegate image from https://hub.docker.com/r/harness/delegate/tags. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.xxxxx`. |
 
 ### Create your services
 
@@ -125,7 +119,7 @@ Use the following steps to create a service.
 1. Open AWS CLI. Use the following instruction to create your AWS services:
 
    ```
-   ecs create-service --service-name <SERVICE_NAME> --task-definition
+   aws ecs create-service --service-name <SERVICE_NAME> --task-definition harness-delegate-task-spec --cluster <CLUSTER_NAME> --desired-count 1
    ```
 
    Replace `service-name` with the unique name of your service. Replace `task-definition` with the task definition that the service runs. For information on the specification of ECS service parameters, go to [`create-service`](https://docs.aws.amazon.com/cli/latest/reference/ecs/create-service.html).
@@ -156,7 +150,7 @@ Use the following steps to create a task definition. For information about task 
         {
           "cpu": 1,
           "environment": [
-           {
+            {
               "name": "ACCOUNT_ID",
               "value": "<ACCOUNT_ID>"
             },
@@ -165,13 +159,17 @@ Use the following steps to create a task definition. For information about task 
               "value": "<DELEGATE_TOKEN>"
             },
             {
-              "name": "DELEGATE_TYPE",
-              "value": "DOCKER"
+              "name": "MANAGER_HOST_AND_PORT",
+              "value": "<MANAGER_HOST_AND_PORT>"
             },
             {
               "name": "LOG_STREAMING_SERVICE_URL",
               "value": "<LOG_STREAMING_SERVICE_URL>"
-            },
+            },            
+            {
+              "name": "DELEGATE_NAME",
+              "value": "<DELEGATE_NAME>"
+            },            
             {
               "name": "DELEGATE_TAGS",
               "value": ""
@@ -185,25 +183,21 @@ Use the following steps to create a task definition. For information about task 
               "value": "KUBERNETES"
             },
             {
-              "name": "MANAGER_HOST_AND_PORT",
-              "value": "<HOST>"
-            },
-            {
-              "name": "DELEGATE_NAME",
-              "value": "<DELEGATE_NAME>"
+              "name": "DELEGATE_TYPE",
+              "value": "DOCKER"
             },
             {
               "name": "NEXT_GEN",
               "value": "true"
             }
           ],
-         "memory": 2048,
-         "image": "harness/delegate:24.04.82804",
-         "essential": true,
-         "name": "ecs-delegate-im"
+          "memory": 2048,
+          "image": "<IMAGE>",
+          "essential": true,
+          "name": "ecs-delegate-im"
         }
       ],
-      "executionRoleArn": "arn:aws:iam::<ACC_ID>:role/ecsTaskExecutionRole",
+      "executionRoleArn": "arn:aws:iam::<AWS_ACCOUNT_ID>:role/ecsTaskExecutionRole",
       "memory": "6144",
       "requiresCompatibilities": [
         "FARGATE"
@@ -221,9 +215,10 @@ Use the following steps to create a task definition. For information about task 
    | `ACCOUNT_ID` | Your Harness account ID. |
    | `DELEGATE_TOKEN` | The delegate token stored in your Harness account. |
    | `MANAGER_HOST_AND_PORT` | Information about your manager host. This depends on the Harness production cluster you use: Prod1: https://app.harness.io, Prod2: https://app.harness.io/gratis, or Prod3: https://app3.harness.io. |
-   | `DELEGATE_NAME` | The name you gave your delegate. This is usually the name you specified during delegate installation. |
-   | `IMAGE` | Use the most recent delegate image from `https://hub.docker.com/r/harness/delegate/tags`. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.verno`. |
    | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: MANAGER_HOST_AND_PORT/log-service/ |
+   | `DELEGATE_NAME` | The name you gave your delegate. This is usually the name you specified during delegate installation. |
+   | `IMAGE` | Use the most recent delegate image from https://hub.docker.com/r/harness/delegate/tags. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.xxxxx`. |
+   | `AWS_ACCOUNT_ID` | Your AWS account ID. |
 
 ### Create the service
 
@@ -337,3 +332,4 @@ resource "aws_iam_policy" "delegate_aws_access" {
 EOF
 }
 ```
+

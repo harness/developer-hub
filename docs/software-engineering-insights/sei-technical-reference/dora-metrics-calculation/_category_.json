@@ -3,7 +3,7 @@
     "position": 10,
     "collapsible":"true",
     "collapsed":"true",
-    "className":"red",
+    "className":"default",
     "link":{
        "type":"generated-index",
        "title":"DORA Metrics Calculation"

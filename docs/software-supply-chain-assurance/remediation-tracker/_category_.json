@@ -3,7 +3,7 @@
    "position": 58,
    "collapsible":"true",
    "collapsed":"true",
-   "className":"red",
+   "className":"default",
    "link":{
       "type":"generated-index",
       "title":"Get started with Remediation Tracker in Harness SSCA"

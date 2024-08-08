@@ -2,27 +2,38 @@ import { Horizon } from "./roadmapData";
 
 export const CiData: Horizon = {
   Now: {
-    description: "Q2 2024, May-July 2024",
+    description: "Q3 2024, Aug-Oct 2024",
     feature: [
       {
         tag: [{ value: "Fast" }],
-        title: "Build Cache for Gradle",
-        description: "Build Cache accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
+        title: "Build Intelligence for Gradle - Self Hosted",
+        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. Support for cloud is already available, this work is to extend support for self-hosted build infrastructure.",
       },
       {
         tag: [{ value: "Fast" }],
-        title: "Build Cache for Bazel",
-        description: "Build Cache accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
+        title: "Build Intelligence for Bazel- Self Hosted",
+        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. Support for cloud is already available, this work is to extend support for self-hosted build infrastructure.",
       },
       {
         tag: [{ value: "Fast" }],
-        title: "Build Cache for Maven",
-        description: "Build Cache accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
+        title: "Build Intelligence for Maven",
+        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
       },
       {
         tag: [{ value: "Cloud" }],
-        title: "Credits usage consumption by pipeline report",
+        title: "Cloud Credits Breakdown report",
         description: "Gain insights into how Harness Cloud build credits are consumed by different pipelines, helping you manage and optimize your CI resource allocation.",
+      },
+      {
+        tag: [{ value: "Cloud" }],
+        title: "Linux Hardware Acceleration in Harness Cloud",
+        description: "This enhancement allows leveraging hardware acceleration to speed up computational tasks, improving performance for resource-intensive builds, when running on Linux Cloud machines.",
+      },
+
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Docker build secrets",
+        description: "Ability to use Docker build secrets in Build and Push steps.",
       },
       {
         tag: [{ value: "Integrations" }],
@@ -31,24 +42,25 @@ export const CiData: Horizon = {
       },    
       {
         tag: [{ value: "Fast" }],
-        title: "Test Intelligence for .Net Core 7",
+        title: "Test Intelligence for .Net Core",
         description: "Accelerate testing cycles of Python applications with Test Intelligence, selectively running only tests that cover the code changes made.",
       },  
       {
-        tag: [{ value: "Secure" }],
-        title: "OpenID Connect (OIDC) - AWS",
-        description: "Securely connect to Amazon Web Services (AWS) through OIDC, for accessing public cloud resources without secrets or credentials.",
+        tag: [{ value: "Fast" }, { value: "Cloud" }],
+        title: "Simplify usage of Build Intelligence",
+        description: "Support for automatically using Build Intelligence on Cloud, eliminating the need for user configuration and making it easier for teams to speed up their builds.",
       },
-      {
-        tag: [{ value: "Fast" }],
-        title: "Simplify usage of Cache Intelligence",
-        description: "Simplify the configuration and utilization of Cache Intelligence, making it easier for teams to speed up their builds.",
-      },
+      
     ],
   },
   Next: {
-    description: "Q3 2024, Aug-Oct 2024",
+    description: "Q4 2024, Nov-Jan 2025",
     feature: [
+      {
+        tag: [{ value: "Fast" }],
+        title: "Test Intelligence for JavaScript-based languages and tools",
+        description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related the code changes made.",
+      },
       {
         tag: [{ value: "Fast" }],
         title: "Test Intelligence for all test types",
@@ -59,16 +71,7 @@ export const CiData: Horizon = {
         title: "Flaky tests management",
         description: "Identify, track, and manage flaky tests, improving test reliability and build stability.",
       },
-      {
-        tag: [{ value: "Fast" }],
-        title: "Simplify usage of Build Cache",
-        description: "Simplify the configuration and utilization of Build Cache, making it easier for teams to speed up their builds.",
-      },
-      {
-        tag: [{ value: "Fast" }],
-        title: "Build Cache for Go",
-        description: "Build Cache accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
-      },
+
       {
         tag: [{ value: "Secure" }],
         title: "OpenID Connect (OIDC) - Azure",
@@ -77,24 +80,35 @@ export const CiData: Horizon = {
     ],
   },
   Later: {
-    description: "Q4 2024+, Nov 2024 & beyond",
+    description: "Q1 2025+, Feb 2025 & beyond",
     feature: [
 
-      {
-        tag: [{ value: "Fast" }],
-        title: "Test Intelligence for JavaScript-based languages and tools",
-        description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related the code changes made.",
-      },
       {
         tag: [{ value: "Artifact Management" }],
         title: "Hosted Artifacts Management",
         description: "Manage your build artifacts with ease using hosted artifacts management, providing a secure, scalable solution for storing and accessing your CI/CD artifacts.",
       },
+      {
+        tag: [{ value: "Fast" }],
+        title: "Build Intelligence for Go",
+        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
+      },
+
     ],
   },
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Fast" },{ value: "Cloud" } ,{ value: "Beta" }],
+        title: "Build Intelligence for Gradle",
+        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. Available for Cloud, with support for self-hosted coming soon. ",
+      },
+      {
+        tag: [{ value: "Fast"} ,{ value: "Cloud" }, { value: "Beta" }],
+        title: "Build Intelligence for Bazel",
+        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. . Available for Cloud, with support for self-hosted coming soon. ",
+      },
       {
         tag: [{ value: "Secure" }, { value: "Beta" }],
         title: "Secure Tunnel support for Harness CI cloud",
@@ -113,7 +127,7 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Fast" }, { value: "Beta" }],
         title: "Simplify usage of Test Intelligence with new Test step",
-        description: "Simplify the configuration and utilization of Test Intelligence, making it easier for teams to speed up their builds.",
+        description: "Simplify the configuration and utilization of Test Intelligence with, making it easier for teams to speed up their builds.",
       },
       {
         tag: [{ value: "Cloud" }, { value: "Beta" }],
@@ -121,14 +135,9 @@ export const CiData: Horizon = {
         description: "Choose the appropriate compute size for your builds and monitor credit usage by resource type, improving build efficiency and resource management.",
       },
       {
-        tag: [{ value: "Fast" }, { value: "Beta" }],
-        title: "Test Intelligence for Python",
-        description: "Accelerate testing cycles of Python applications with Test Intelligence, selectively running only tests that cover the code changes made.",
-      },
-      {
-        tag: [{ value: "Fast" }, { value: "GA" }],
-        title: "Test Intelligence for Ruby",
-        description: "Accelerate testing cycles of Ruby applications with Test Intelligence, selectively running only tests that cover the code changes made.",
+        tag: [{ value: "Secure" }],
+        title: "OpenID Connect (OIDC) - AWS",
+        description: "Securely connect to Amazon Web Services (AWS) through OIDC, for accessing public cloud resources without secrets or credentials.",
       },
       {
         tag: [{ value: "Secure" }],

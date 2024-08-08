@@ -2,7 +2,8 @@
 id: pod-api-status-code
 title: Pod API status code
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-status-code
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-status-code
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-api-status-code
 ---
 
 Pod API status code is a Kubernetes pod-level chaos fault that change the API response status code and optionally api response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
