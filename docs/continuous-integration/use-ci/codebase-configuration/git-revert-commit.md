@@ -4,7 +4,7 @@ description: Use a run step to revert git commit(s).
 sidebar_position: 35
 ---
 
-The following example shows how to use a run step to revert a git commit:
+You might need to revert a pull request in a Git repository if the changes cause problems, introduce bugs, or become unnecessary. The following example shows how to use a **Run** step to revert a git commit:
 
 ```yaml
             - step:
