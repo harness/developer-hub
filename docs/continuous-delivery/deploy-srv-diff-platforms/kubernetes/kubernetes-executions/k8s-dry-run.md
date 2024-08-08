@@ -136,6 +136,11 @@ echo "K8s manifest diff:"
 kubectl -n <+env.variables.DEPLOY_ENV> diff -f manifest.yaml || (st=$?; if [ $st = 1 ]; then exit 0; else echo $st; exit $st; fi)
 ```
 
+:::warning
+If you do not quote the ('`EOM`'), any variables and commands within the block will be substituted.
+:::
+
+
 You can enter the expression in subsequent steps such as the [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) or [Approval](/docs/category/approvals/) steps.
 
 

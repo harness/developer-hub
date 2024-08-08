@@ -22,14 +22,15 @@ This plugin requires a backend proxy configuration to make calls to Opsgenie wit
 ```yaml
 # app-config.yaml
 proxy:
-  '/opsgenie/api':
-    # Use "target: https://api.eu.opsgenie.com" for an EU account
-    target: https://api.eu.opsgenie.com
-    headers:
-      Authorization: GenieKey ${OPSGENIE_API_KEY}
-
+    endpoints:
+      '/opsgenie/api':
+        target: https://api.eu.opsgenie.com
+        pathRewrite:
+          /api/proxy/opsgenie/api/?: /
+        headers:
+          Authorization: GenieKey ${OPSGENIE_TOKEN}
+  
 opsgenie:
-  # Use "domain: https://myorganization.app.eu.opsgenie.com/" for an EU account
   domain: https://myorganization.app.opsgenie.com/
 ```
 

@@ -1566,10 +1566,10 @@ The ASG Blue Green Deploy step has the following settings:
 - **Same as already running Instances** or **Fixed**:
   - Select **Fixed** to enforce a Max, Min, and Desired number of instances.Select **Same as already running Instances** to use scaling settings on the last ASG deployed by this Harness pipeline. If this is the first deployment and you select **Same as already running Instances**, Harness uses a default of Min 0, Desired 6, and Max 10. Harness does not use the Min, Max, and Desired settings of the base ASG.
 - **Load Balancer:** select the load balancer(s) to use.
-- **Prod Listener:** select the listener to use for prod traffic.
-- **Prod Listener Rule ARN:** select the ARN for the prod listener rule. 
-- **Stage Listener:** select the listener to use for stage traffic.
-- **Stage Listener Rule ARN:** select the ARN for the stage listener rule.
+- **Prod Listener:** provide the ARN for the listener to be used for prod traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]]`)
+- **Prod Listener Rule ARN:** provide the ARN for the listener rule to be used for prod traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]/[ruleref]]`)
+- **Stage Listener:** provide the ARN for the listener to be used for staging traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]]`)
+- **Stage Listener Rule ARN:** provide the ARN for the listener rule to be used for staging traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]/[ruleref]]`)
   
   :::important
   There is only one listener rule for both target groups (stage and prod), and one listener ARN for a listener rule. Go to [AWS requirements](#aws-requirements) for more information.

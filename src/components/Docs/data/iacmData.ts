@@ -10,7 +10,13 @@ export const docsCards: CardSections = [
     description: "",
     list: [
       {
-        title: "IaCM Overview",
+        title: "Onboarding",
+        module: MODULES.iacm,
+        description: "Get onboarded with Harness Infrastructure as Code Management.",
+        link: "/docs/infra-as-code-management/get-started/onboarding-guide",
+      },
+      {
+        title: "Overview",
         module: MODULES.iacm,
         description: "Learn about Harness Infrastructure as Code Management.",
         link: "/docs/infra-as-code-management/get-started/overview",

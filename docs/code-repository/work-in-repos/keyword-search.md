@@ -44,15 +44,19 @@ To limit your search to a specific source code language, you can use the **Langu
 
 Use `file:KEYWORD` to search for a keyword in file names. For example, `file:README` returns results for file names containing `README`.
 
-### Repository search
+### Search Scope
 
-If you start a search within a specific repository, your search is automatically scoped to the current repo.
+If you start a search within a specific repository, your search is automatically scoped to the current repository. If you want to search more than one repository at a time, you can navigate to a [Harness project, organization, or account](/docs/platform/get-started/key-concepts.md) and recursively search all of the repositories within that scope.
 
-If you search at the project level (from the **Repositories** list), you can use the **Repository** [search results filter](#search-results-filters) to limit results to a specific repo in the current project.
+For example, if you search from the organization view, it will search all repositories at the organization level and all repositories within every project in that organization. If you search from the account view, it will search every repository across the entire account and all organizations.
 
-You can only search repos that you can access.
+You can use the **Repository** [search results filter](#search-results-filters) to limit results to specific repositories in the current scope.
 
-Currently, keyword search can't search across an entire organization or account at once.
+Within an account or organization keyword search you may also disable recursive search and only search the repositories within the respective account or organization itself.  
+
+::: Note
+You can only search for code in repositories that you have permission to access.
+:::
 
 ### Simple regex
 

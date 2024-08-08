@@ -93,7 +93,7 @@ The following deprecated API endpoints are longer supported:
 
 - Users were able to see the enable/disable option for AIDA at the project level, even if AIDA was disabled at the account level. Implemented a change to display an error message when users attempt to enable AIDA at the project level if it is disabled at the account level. (PL-48296)
 
-### Version 1.48.8<!-- July 23, 2024 -->
+### Version 1.48.11<!-- August 02, 2024 -->
 
 #### New features and enhancements
 

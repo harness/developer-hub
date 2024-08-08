@@ -45,9 +45,20 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## August 2024
+
+### Version 1.49.7
+
+#### Fixed issues
+
+- The deployment status API returns outdated or invalid information. This issue is fixed and we've added a new Deployment Status API, which honours permissions, and returns a correct 200 response with a QUEUED status, for Triggers which are in queued state. This will replace the existing API which behaved incorrectly in some situations, and will be deprecated.. (PIPE-19306, ZD-62849)
+- Creating a NewRelic health source for a monitored service does not provide a method to select the correct application ID. This issue is fixed now and system collects and shows all the Application Ids from NewRelic.(CDS-98867, ZD-66434)
+- Using an expression in the auto-approval for the approval step threw an error. This issue is fixed.(CDS-98842, ZD-66329)
+- When a user tried to fetch a payload file from Bitbucket, it threw an invalid payload format and the HTTP capability check returned a 501 status code, indicating Bitbucket connectivity problems. This issue is fixed now.(CDS-98500, ZD-65594)
+
 ## July 2024
 
-### Version 1.48.8
+### Version 1.48.11
 
 #### New features and enhancements
 
@@ -200,7 +211,7 @@ Refer to following doc for more details on new [repo listing](/docs/platform/git
 
 #### Fixed issues
 
-- Fixed an issue where the MS Teams notifications didn't show the event names. Now, the pipeline end event appears as "ended" and the pipeline success event appears as "succeeded" in notifications. (PIPE-18855, ZD-62684)
+- Fixed an issue where notifications didn't show the event names properly across all notification methods. Now, the pipeline end event appears as **ended** and the pipeline success event appears as **succeeded** in notifications. (PIPE-18855, ZD-62684)
 - For a pipeline with bidirectional sync enabled, the file name change in GitHub was not properly reflected in the Harness UI. This issue is fixed by enhancing the cache handling for files. (PIPE-18828, ZD62791)
 - Step group templates did not appear when selecting Use Template on an Approval stage. This issue is fixed. You can now create a step group template with the Approval stage, and use them as step entities in the Approval stage. (CDS-96930, ZD-63556)
 - The HTTP step's Request Body field stretched horizontally to fit lengthy expressions. This issue is fixed. (CDS-96839, ZD-63344)
@@ -262,6 +273,7 @@ Refer to following doc for more details on new [repo listing](/docs/platform/git
 - Queries in `harness-prod2-cvng.verificationJobInstances` were scanning too many documents and raising the CPU utilization. This issue is fixed by adding more `verificationJobInstances` indexes. (CDS-95840)
 - Fixed an issue where the drop-down capability for the **Region** field in the AWS Serverless Lambda **Infrastructure Details** page was missing. (CDS-95726)
 - Unable to add tags to pipelines in Terraform. This issue is fixed by updating the tags description in the pipeline CRUD API Terraform docs to highlight that the value passed in tags should match the value passed in YAML. (PIPE-18705, ZD-62221, ZD-62415, ZD-63124)
+-  The child steps of a retried step group were not being marked as retried. As a result, the status of these retried child steps was incorrectly considered in the final status calculation of the pipeline. The issue is fixed now to correctly mark the child steps of a retried step group as retried. With this change, only the latest node executions for children of step groups with the retry step group failure strategy will be considered in the final pipeline status calculation. (PIPE-16925, ZD-61196,68060)
 
 ## April 2024
 

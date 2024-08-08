@@ -147,6 +147,7 @@ const Roadmap = () => {
                           title={feature.title}
                           description={feature.description}
                           link={feature.link}
+                          backgroundColorCard={feature.backgroundColor}
                         />
                       ))}
                   </div>
@@ -176,6 +177,7 @@ const Roadmap = () => {
                       title={feature.title}
                       description={feature.description}
                       link={feature.link}
+                      backgroundColorCard={feature.backgroundColor}
                     />
                   ))}
               </div>
