@@ -62,10 +62,6 @@ HCE currently offers [GameDay](/docs/chaos-engineering/features/gameday/introduc
 
 Currently, Windows chaos experiments do not support scheduled or cron-based executions; you can't set experiments to run automatically at specified intervals. Once implemented, this will enable you to automate their chaos experiments, allowing for more consistent and efficient testing of system resilience over time.
 
-## Support for Windows Server 32-bit
-
-The Windows Chaos infrastructure tool is currently compatible only with 64-bit versions of Windows. There are plans to extend support to 32-bit Windows Server editions in upcoming releases.
-
 ## Auto upgrade support
 
 The Windows Chaos infrastructure currently doesn't support auto-upgrades. Hence, for every upgrade, you need to manually upgrade. This involves uninstalling the current infrastructure first, using the provided uninstallation script, and then re-installing it with the desired infrastructure version.
