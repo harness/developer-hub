@@ -3,7 +3,7 @@
    "position": 29,
    "collapsible":"true",
    "collapsed":"true",
-   "className":"red",
+   "className":"default",
    "link":{
       "type":"generated-index",
       "title":"Manage the risk and compliance posture of your software supply chian"
