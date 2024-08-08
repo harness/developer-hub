@@ -125,7 +125,9 @@ metadata:
     grafana/tag-selector: "my-tag"
 ```
 
-[Read more](https://github.com/K-Phoen/backstage-plugin-grafana/blob/main/docs/dashboards-on-component-page.md)
+The aforementioned annotations are suitable for [displaying dashboards on a component page](https://github.com/K-Phoen/backstage-plugin-grafana/blob/main/docs/dashboards-on-component-page.md), you can as well [display alerts on a component page](https://github.com/K-Phoen/backstage-plugin-grafana/blob/main/docs/alerts-on-component-page.md) and [embed dashboards on a page](https://github.com/K-Phoen/backstage-plugin-grafana/blob/main/docs/embed-dashboards-on-page.md).
+
+[Read More](https://github.com/K-Phoen/backstage-plugin-grafana/blob/main/docs/index.md)
 
 ## Support
 
