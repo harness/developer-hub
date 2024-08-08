@@ -4,27 +4,27 @@ description: How you can do sequential and parallel deployments with multi-servi
 sidebar_position: 300
 ---
 
-Pipelines can be executed with multiple Services and Environments. These Services and Environments are combined into a Service & Environment (infrastructure) in a stage for execution.
+Pipelines can be executed with multiple services and environments. These services and environments are combined into a service & environment (infrastructure) in a stage for execution.
 
 ### Execution Sequence
 
 Users can configure the sequence of deployment as Sequential or Parallel.
 
-When you click on **Deploy multiple Services** you see an option for **Deploy Services in Parallel?**. When you check that it will allow you to deploy your services parallelly.
+When you click on **Deploy multiple Services** you see an option for **Deploy Services in Parallel?**. When you check that it will allow you to deploy your services in parallel.
 
 ![](./static/service_parallel.png)
 
 :::important note
-By default, the execution sequence is the parallel deployment for Services.
+By default, the execution sequence is parallel deployment for services.
 :::
 
-When you click on **Deploy to multiple Environments or Infrastructures** you see an option for **Deploy to Environments or Infrastructures in parallel?**. When you check that it will allow you to deploy your infrastructure and environment parallelly.
+When you click on **Deploy to multiple Environments or Infrastructures** you see an option for **Deploy to Environments or Infrastructures in parallel?**. When you check that it will allow you to deploy your infrastructure and environment in parallel.
 
 ![](./static/environment_infrastructure.png)
 
-### Expected Scenario
+### Expected Scenarios
 
-1. Sequential Deployment in Multi Services and Sequential Multi-Infrastructure
+#### Sequential Deployment in Multi Services and Sequential Multi-Infrastructure
 
 For example:
 
@@ -32,7 +32,7 @@ For example:
 - **Environment**: E1
 - **Infrastructure**: I1, I2
 
-Each service is sequentially deployed in collection of Infrastructure ordered in the YAML.
+Each service is sequentially deployed in a collection of Infrastructure instructed by the YAML.
 
 Each service is deployed in one infrastructure first and then followed by the second infrastructure.
 
@@ -55,7 +55,7 @@ Each service will be deployed parallelly in different infrastructure.
 
 The deployment sequence is as follows:
 
-Here, 1 and 2 will be deployed parallelly and 3 and 4 will be deployed parallelly i.e same services are deployed parallelly in the different infrastructure. 1 and 3 will deployed sequentially and 2 and 4 will be deployed sequentially i.e different service in same infrastructure will deployed sequentially.
+Here, 1 and 2 will be deployed in parallel and 3 and 4 will be deployed in parallel i.e the same services are deployed in parallel in each infrastructure. 1 and 3 will deployed sequentially and 2 and 4 will be deployed sequentially i.e different service in same infrastructure will deployed sequentially.
 
 ![](./static/Parallel_service_seq_infra.png)
 
