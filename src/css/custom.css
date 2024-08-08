@@ -991,14 +991,18 @@ figure p {
 
 /******************* chatbot css variables end *************/
 
+/*******************sidebar logo css start*******************/
 
- /*******************sidebar logo css start*******************/
-
- .menu__list-item-collapsible > a{
+ .menu__list-item-collapsible > a,.menu__link{
   height: 52px;
  }
-
-.sidebar-platform > div > a::before{
+ .menu {
+  margin-bottom: 0px !important;
+ }
+.collapseSidebarButton_PEFL{
+  width: 100% !important;
+}
+.sidebar-platform > div > a::before,.sidebar-platform > a::before{
   content: " ";
   display: inline-block;
   height: 24px;
@@ -1062,7 +1066,7 @@ figure p {
   content: " ";
   display: inline-block;
   height: 24px;
-   min-width: 24px;
+  min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_ccm.svg");
   background-size: contain;
@@ -1151,3 +1155,48 @@ figure p {
 
 
 /*******************sidebar logo css end*******************/
+
+
+.continuous-delivery--gitops:hover {
+  border-color: var(--mod-cd-200) !important;
+}
+.continuous-integration:hover {
+  border-color: var(--mod-ci-200) !important;
+}
+.feature-flags:hover {
+  border-color: var(--mod-ff-200) !important;
+}
+.cloud-cost-management:hover {
+  border-color: var(--mod-ccm-200) !important;
+}
+.service-reliability-management:hover {
+  border-color: var(--mod-srm-200) !important;
+}
+.security-testing-orchestration:hover {
+  border-color: var(--mod-sto-200) !important;
+}
+.chaos-engineering:hover {
+  border-color: var(--mod-ce-200) !important;
+}
+.platform:hover {
+  border-color: var(--primary) !important;
+}
+.code-repository:hover {
+  border-color: var(--mod-code-200) !important;
+}
+.software-supply-chain-assurance:hover {
+  border-color: var(--mod-ssca-200) !important;
+}
+.continuous-error-tracking:hover {
+  border-color: var(--mod-cet-200) !important;
+}
+.internal-developer-portal:hover {
+  border-color: var(--mod-idp-200) !important;
+}
+.software-engineering-insights:hover {
+  border-color: var(--mod-sei-200) !important;
+}
+
+
+
+
