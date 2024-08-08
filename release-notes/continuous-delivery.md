@@ -45,7 +45,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
-## July 2024
+## August 2024
 
 ### Version 1.49.7
 
@@ -56,7 +56,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Using an expression in the auto-approval for the approval step threw an error. This issue is fixed.(CDS-98842)
 - When a user tried to fetch a payload file from Bitbucket, it threw an invalid format error. This issue is fixed. (CDS-98500)
 
-### Version 1.48.8
+## July 2024
+
+### Version 1.48.11
 
 #### New features and enhancements
 
