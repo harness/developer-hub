@@ -2,57 +2,42 @@ import { Horizon } from "./roadmapData";
 
 export const CeData: Horizon = {
   Now: {
-    description: "Q1 2024, Feb-Apr 2024",
+    description: "Q3 2024, Aug-Oct 2024",
     feature: [
       {
-        tag: [{ value: "Chaos faults" }],
-        title: "App instance faults for PCF",
-        description: "Introduce chaos natively to applications running on PCF using the Cloud Foundry APIs.",
+        tag: [{ value: "Chaos platform" }],
+        title: "Centralised execution plane for Kubernetes",
+        description: "Run chaos experiments on all private kubernetes clusters through a single Harness Delegate.",
       },
       {
-        tag: [{ value: "Chaos faults" }],
-        title: "Container chaos on Linux",
-        description: "Introduce chaos directly onto the resources of container engines such as Docker.",
+        tag: [{ value: "Chaos Faults" }],
+        title: "JVM Faults for Kubernetes",
+        description: "Run chaos faults on kuberntes applications.",
+      },
+      {
+        tag: [{ value: "Security" }],
+        title: "Run-With-ServiceAccount for Kubernetes chaos experiments",
+        description: "Prevent unwanted users from running chaos experiments by strict enforcement of service account configurion.",
       },
       {
         tag: [{ value: "Chaos platform" }],
-        title: "Run chaos experiments using Harness Delegate",
-        description: "Delegate runs the chaos experiments without the need for the dedicated chaos infrastructure.",
+        title: "Bulk Run chaos experiments",
+        description: "Schedule a bunch of chaos experiments at once for staggered running.",
       },
       {
         tag: [{ value: "Chaos platform" }],
-        title: "Auto detect target services",
-        description: "Discover the Kubernetes services on a cluster along with the traffic flows and enable them to cause chaos.",
+        title: "Introduce Recommendations",
+        description: "Provide recommendations on what experiments to create, what experiments to run and how to fix discovered issues.",
       },
       {
         tag: [{ value: "Chaos platform" }],
-        title: "Auto create chaos experiments on Kubernetes",
-        description: "Create chaos experiments automatically for the discovered services",
-      },
-      {
-        tag: [{ value: "Chaos platform" }],
-        title: "Chaos dashboards for resilience probes",
-        description: "Create resilience insights around the observed steady states",
-      },
-      {
-        tag: [{ value: "Chaos platform" }],
-        title: "Auto create resilience probes using Prometheus",
-        description: "Deploy prometheus exporters for basic observability and create resilience probes around them",
-      },
-      {
-        tag: [{ value: "Chaos platform" }],
-        title: "Chaos dashboards for chaos governance",
-        description: "Create resilience insights around the governance rules and their adherence",
-      },
-      {
-        tag: [{ value: "Chaos integrations" }],
-        title: "Resilience probe for NewRelic",
-        description: "Score chaos experiments based on the monitors setup inside NewRelic.",
+        title: "Timeline view of chaos execution",
+        description: "Provide a timeline view of the execution of chaos experiments including the resilience probes.",
       },
     ],
   },
   Next: {
-    description: "Q2 2024, May-Jul 2024",
+    description: "Q4 2024, Nov 2024 -Jan 2025",
     feature: [
       {
         tag: [{ value: "Chaos faults" }],
@@ -60,39 +45,34 @@ export const CeData: Horizon = {
         description: "Provide SDK for developers to insert chaos code for generating application chaos.",
       },
       {
+        tag: [{ value: "Chaos platform" }],
+        title: "Recommendations on what to fix",
+        description: "Add more parameters around the recommendations on what to be fixed.",
+      },
+      {
+        tag: [{ value: "Chaos platform" }],
+        title: "Discovery support for AWS",
+        description: "Discover AWS resources and auto create chaos experiments around them.",
+      },
+      {
+        tag: [{ value: "Chaos platform" }],
+        title: "Golden Signals for services",
+        description: "Provide the integrated monitoring around golden signals for those services that undergo chaos experimentation.",
+      },
+      {
+        tag: [{ value: "Chaos integrations" }],
+        title: "Resilience probes for Splunk and AppDynamics",
+        description: "Score chaos experiments based on the monitors setup inside Splunk and AppDynamics.",
+      },
+      {
         tag: [{ value: "Chaos faults" }],
-        title: "Chaos faults for JVM",
-        description: "Introduce chaos using JVM parameters such as memory and threads.",
-      },
-      {
-        tag: [{ value: "Chaos platform" }],
-        title: "Auto recommend chaos experiments",
-        description: "Recommend additional chaos experiments to be created and/or run based on observed states.",
-      },
-      {
-        tag: [{ value: "Chaos platform" }],
-        title: "Recommend resilience coverage",
-        description: "Recommend additional chaos experiments to be run to increase the resilience coverage.",
-      },
-      {
-        tag: [{ value: "Chaos platform" }],
-        title: "Timeline view of chaos execution",
-        description: "Provide a timeline view of the execution of chaos experiments including the resilience probes.",
-      },
-      {
-        tag: [{ value: "Chaos integrations" }],
-        title: "Resilience probe for Splunk",
-        description: "Score chaos experiments based on the monitors setup inside Splunk.",
-      },
-      {
-        tag: [{ value: "Chaos integrations" }],
-        title: "Resilience probe for AppDynamics",
-        description: "Score chaos experiments based on the monitors setup inside AppDynamics.",
+        title: "Application Chaos Faults for Kafka and Redis on Kubernetes ",
+        description: "Application specific faults for Kafka and Redis on the Kubernetes platform.",
       },
     ],
   },
   Later: {
-    description: "Q3 2024+, Aug 2024 & beyond",
+    description: "Q4 2024+, Q1 2025 and beyond ",
     feature: [
       {
         tag: [{ value: "Chaos faults" }],
@@ -130,74 +110,44 @@ export const CeData: Horizon = {
     description: "What has been released",
     feature: [
       {
-        tag: [{ value: "Chaos faults" }],
-        title: "Kubernetes, VMware, Linux, Windows chaos",
-        description: "Chaos faults related to stress, network, HTTP API, time and more.",
-      },
-      {
-        tag: [{ value: "Chaos faults" }],
-        title: "AWS chaos",
-        description: "Chaos faults for EC2, ECS, serverless and other AWS resources.",
+        tag: [{ value: "Chaos platform" }],
+        title: "Application Maps and Resilience Coverage",
+        description: "Create application maps around the discovered Kubernetes micro services and measure resilience coverage on them.",
       },
       {
         tag: [{ value: "Chaos faults" }],
-        title: "Basic Azure and GCP chaos",
-        description: "Chaos faults for Azure VMs and GCP VMs respectively.",
-      },
-      {
-        tag: [{ value: "Chaos faults" }],
-        title: "PCF chaos",
-        description: "Basic PCF native faults related to stress.",
-      },
-       {
-        tag: [{ value: "Chaos platform" }],
-        title: "GameDay portal",
-        description: "Create, orchestrate and monitor GameDays for SREs.",
+        title: "JVM Faults for Linux targets",
+        description: "JVM faults to perform application chaos on Linux targets.",
       },
       {
         tag: [{ value: "Chaos platform" }],
-        title: "Chaos RBAC",
-        description: "RBACs for creating chaos infrastructure, GameDays and chaos experiments.",
+        title: "Updated GameDay portal",
+        description: "Create, orchestrate and monitor GameDays for SREs. Do postmortems too.",
       },
       {
         tag: [{ value: "Chaos platform" }],
-        title: "ChaosGuard",
-        description: "Deep ACL policies for governing who can run what chaos faults on which targets during what time window.",
+        title: "Pipelines in Chaos Module",
+        description: "Add approval steps, run parallel chaos experiments and send notifications using the native pipeline steps.",
       },
-       {
+      {
         tag: [{ value: "Chaos platform" }],
-        title: "Resilience Probes",
-        description: "Status check templates for scoring the resilience of target systems during chaos experiments.",
+        title: "Windows Native Agent for Chaos",
+        description: "Run chaos experiments on Windows machines from a native Windows Chaos Agentor Infrastructure.",
       },
       {
         tag: [{ value: "Chaos integrations" }],
-        title: "Chaos step for Harness CD pipelines",
-        description: "A native pipeline step inside Harness CD to auto chaos experiments .",
+        title: "Add resilience probe templates to ChaosHub",
+        description: "Export and import the resilience probes from chaoshubs.",
       },
       {
         tag: [{ value: "Chaos integrations" }],
-        title: "Chaos step for Jenkins pipelines",
-        description: "Integration to run chaos experiments inside Jenkins pipelines.",
+        title: "Chaos Plugin for IDP",
+        description: "List and run chaos experiments directly from Harness IDP.",
       },
       {
         tag: [{ value: "Chaos integrations" }],
-        title: "Chaos step for Gitlab pipelines",
-        description: "Integration to run chaos experiments inside GitLab pipelines.",
-      },
-      {
-        tag: [{ value: "Chaos integrations" }],
-        title: "Resilience probe for SRM",
-        description: "Score chaos experiments based on the SLIs of services during chaos.",
-      },
-      {
-        tag: [{ value: "Chaos integrations" }],
-        title: "Resilience probe for Datadog",
-        description: "Score chaos experiments based on the monitors setup inside Datadog.",
-      },
-      {
-        tag: [{ value: "Chaos integrations" }],
-        title: "Resilience probe for Dynatrace",
-        description: "Score chaos experiments based on the monitors setup inside Dynatrace.",
+        title: "Dashboard support for Resilience Probes",
+        description: "Configure custom dashboard for insights around resilience probes.",
       },
     ],
   },
