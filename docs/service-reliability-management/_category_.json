@@ -2,7 +2,7 @@
    "label":"Service Reliability Management",
    "collapsible":"true",
    "collapsed":"true",
-   "className":"red",
+   "className":"default",
    "link":{
       "type":"generated-index",
       "title":"Service Reliability Management"

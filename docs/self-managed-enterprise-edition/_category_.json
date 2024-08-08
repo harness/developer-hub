@@ -2,7 +2,7 @@
     "label":"Self-Managed Enterprise Edition",
     "collapsible":"true",
     "collapsed":"true",
-    "className":"red",
+    "className":"default",
     "link":{
        "type":"generated-index",
        "title":"Self-Managed Enterprise Edition"
