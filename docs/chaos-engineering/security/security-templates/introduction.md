@@ -19,6 +19,6 @@ To enable the execution of such experiments, Harness recommends the security pol
 
 ## Next steps
 
-* [Openshift Security Context Constraint](/docs/chaos-engineering/security/security-templates/openshift-scc)
-* [Pod Security Policy](/docs/chaos-engineering/security/security-templates/psp)
-* [Kyverno policies](/docs/chaos-engineering/security/security-templates/kyverno-policies)
+- [Openshift Security Context Constraint](/docs/chaos-engineering/security/security-templates/openshift-scc)
+- [Pod Security Policy](/docs/chaos-engineering/security/security-templates/psp)
+- [Kyverno policies](/docs/chaos-engineering/security/security-templates/kyverno-policies)

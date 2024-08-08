@@ -91,7 +91,7 @@ source:
 
 ### Memory stress fault stressng flag usage
 
-When a memory stress fault (such as [Linux memory stress](TO-DO) or [Linux CPU stress](TO_DO)) is executed, the fault utilizes all of the available resources in the target system, thereby simulating an out of memory scenario.
+When a memory stress fault (such as Linux memory stress or Linux CPU stress) is executed, the fault utilizes all of the available resources in the target system, thereby simulating an out of memory scenario.
 You can use another fault parameter, `stressNGFlags` to provide flexibility in the parameters passed to the VM.
 
 #### Workaround
@@ -137,7 +137,7 @@ The `--vm-populate` in the above manifest populates the memory, thereby stressin
 
 ### Executing an experiment moves it to a QUEUED state
 
-When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](TO_DO) was unable to send the experiment to the [subscriber](TO_DO).
+When you execute an experiment but it moves to the `Queued` state, it means the Chaos manager was unable to send the experiment to the subscriber.
 
 It could be due to a variety of reasons, such as:
 
@@ -345,4 +345,4 @@ powershell -Command "& { [Net.ServicePointManager]::SecurityProtocol = [Net.Secu
 
 This modification forces PowerShell to use TLS 1.2 for secure connections, thereby resolving the SSL/TLS issue.
 
-For further assistance, please refer to the [documentation](TO_DO) or contact [Harness Support](mailto:support@harness.io).
+For further assistance, please refer to the documentation or contact [Harness Support](mailto:support@harness.io).
