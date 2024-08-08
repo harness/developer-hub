@@ -7,9 +7,13 @@ sidebar_position: 7
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Build Intelligence is part of the suite of intelligent features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. BI works by storing these outputs locally or remotely and retrieving them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency.
+Build Intelligence is part of [Harness CI Intelligence](../../get-started/harness-ci-intelligence), a suite of features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. BI works by storing these outputs locally or remotely and retrieving them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency.
 
-Build Intelligence in Harness CI is currently available for **Gradle** and **Bazel** with **Maven** support coming soon.
+:::note
+Build Intelligence is currently only offered to Harness Cloud, with support for self hosted coming soon. This feature is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Build Intelligence in Harness CI is currently available for Gradle and Bazel with Maven support coming soon. Regardless of the programing language used in your projects, as long as you're building with a supported build tool, you can take advantage of Build Intelligence to optimize your builds.
 
 ## Build Intelligence Support for Gradle
 
@@ -60,11 +64,13 @@ buildCache {
 
 For Build Intelligence, you'll need to turn on `CI_CACHE_ENABLED` FF.
 
+<!--
 :::note
 
 The above configuration is only required for local builds. For hosted CI builds, Harness automatically configures the build cache configuration.
 
 :::
+-->
 
 2. Enable build cache in `gradle.properties` file:
 
@@ -106,10 +112,6 @@ pipeline:
                     image: <+input>
                     shell: Sh
                     command: gradle --build-cache unitTest -PmaxParallelForks=16 -PignoreFailures=true --profile
-                    envVariables:
-                      HARNESS_PAT: <+secrets.getValue("HARNESS_API_TOKEN")>
-                      CI: "true"
-                    intelligenceMode: true
           platform:
             os: <+input>
             arch: Amd64
@@ -140,7 +142,8 @@ pipeline:
 - mac/arm
 - windows/amd64
 
-Since Bazel does not support writing a custom plugin, the cache proxy exposes the contract. It will talk to cache service to get the pre-signed URLs and upload/download will be done in the cache proxy using those pre-signed URLs.
+The cache proxy facilitates secure uploading and downloading of cache blobs by interacting with the cache service to obtain necessary access URLs.
+
 2. Start the proxy server before the bazel command. You need to set the following environment variables:
 
 ```bash
@@ -164,13 +167,18 @@ then
     chmod +x /tmp/cachebin/harness-cache
     echo "Starting cache proxy with account $HARNESS_ACCOUNT_ID"
     /tmp/cachebin/harness-cache server > /tmp/cachebin/server.log 2>&1 &
+fi    
 ```
 
 3. Add the build cache endpoint to the relevant `bazelrc` file: 
 
 ```bash
-build --remote_cache=http://$HARNESS_CACHE_SERVER_URL:$PORT 
+build --remote_cache=http://localhost:8082/cache/bazel 
 ```
 
+You can also use a build command without rc files:
 
+```bash
+bazel build --remote_cache=http://localhost:8082/cache/bazel //...
+```
 
