@@ -112,7 +112,13 @@ Later in the pipeline, you can use the same expression to pull the tagged image,
 :::
 
 ### Base Image Connector
-Select an authenticated connector to download base images from a Docker-compliant registry. If you do not specify a Base Image Connector, the step downloads base images without authentication. Specifying a Base Image Connector is recommended because unauthenticated downloads generally have a lower rate limit than authenticated downloads.
+
+Select an authenticated connector to download base images from a Docker-compliant registry. If you do not specify a **Base Image Connector**, the step downloads base images without authentication. Specifying a **Base Image Connector** is recommended because unauthenticated downloads generally have a lower rate limit than authenticated downloads.
+
+:::tip
+When using base image connector, pushing to or pulling from multiple Docker registries with the same URL prefix (e.g., https://index.docker.io) is not supported. This limitation occurs because the second registry's credentials overwrite the first in the Docker config file. This issue doesn't affect registries with completely unique URLs, such as separate JFrog instances. 
+This limitation does not apply to following build and push steps only on K8 - ACR, GAR, ECR.
+:::
 
 ### Optimize
 
