@@ -291,6 +291,66 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 
 `<+pipeline.stages.Shell_Script.spec.execution.steps.Harness_Approval_Step.output.approverInputs.foo> == 1`
 
+You can provide the input as a list of values that you can select from during runtime.
+
+Here's an example YAML.
+
+#### YAML Example
+
+```yaml
+- stage:
+        name: Approval
+        identifier: Approval
+        description: ""
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: Harness Approval
+                  identifier: Harness_Approval
+                  type: HarnessApproval
+                  timeout: 1d
+                  spec:
+                    approvalMessage: |-
+                      Please review the following information
+                      and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                      userGroups: <+input>
+                    isAutoRejectEnabled: false
+                    approverInputs:
+                      - name: Name
+                        defaultValue: <+stage.variables.name>
+                      - name: ID
+                        defaultValue: <+stage.variables.approve_id>
+                      - name: Test
+                        defaultValue: <+stage.variables.test>
+        tags: {}
+        variables:
+          - name: name
+            type: String
+            description: ""
+            required: false
+            value: <+input>.allowedValues(name1,name2,name3)
+          - name: approver_id
+            type: String
+            description: ""
+            required: false
+            value: <+input>.allowedValues(id1,id2,id3)
+          - name: test
+            type: String
+            description: ""
+            required: false
+            value: <+input>
+```            
+
+This is how it would look while running the pipeline. You will be able to select more than one input values for both **name** and **approver_id** options.
+
+![list of input values during rumtime](./static/Approval-Input-value-of%20-calues.png)
+
 ### User groups as expressions
 
 In **User Groups**, select **Expression** as the type of value.
