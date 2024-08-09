@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-07-23T10:00
+date: 2024-08-05T10:00
 sidebar_position: 5
 ---
 
@@ -20,6 +20,38 @@ The release notes describe recent changes to Harness Chaos Engineering.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## August 2024
+
+### Version 1.42.0
+
+#### New features and enhancements
+
+- Adds a new Linux fault, [filesystem fill](/docs/chaos-engineering/chaos-faults/linux/linux-fs-fill) that fills the filesystem storage. (CHAOS-6153)
+
+- Adds a new Kubernetes pod fault, [filesystem fill](/docs/chaos-engineering/chaos-faults/kubernetes/pod/fs-fill) that fills the filesystem storage. (CHAOS-6133)
+
+- Adds the ability to stop a chaos fault and a chaos experiment based on the "Stop on failure" flag in the probe properties. (CHAOS-6104)
+
+#### Fixed issues
+
+- Fixed an issue where renaming a resilience probe that contained old executions of the experiment would empty the recent experiment execution data. (CHAOS-6128)
+
+- Fixed an issue where the **stop all runs** button wouldn't stop a chaos experiment created using Harness Delegate as the infrastructure (in contrast to a dedicated chaos infrastructure). (CHAOS-6095)
+
+- Fixed an issue where the Linux chaos infrastructure (LCI) push pipeline would fail. (CHAOS-6074)
+
+- Fixed an issue where the application map stated that "no services are eligible for experiment creation" even though services were available. (CHAOS-6006)
+
+- Fixed an issue where the screen stated that it listed only those application maps that had experiments whereas the screen listed application maps with 0 chaos experiments too. (CHAOS-6005)
+
+- Fixed an issue in Chaos Studio where experiments created using Harness Delegate as the infrastructure couldn't be stopped. (CHAOS-6002)
+
+- Fixed an issue in the guided onboarding screen where the **Targeted service(s)** section was not displaying any service. (CHAOS-5997)
+
+- Fixed an issue in the automated onboarding screen where the **Stop all experiments** button was not working. (CHAOS-5990)
+
+- Fixed an issue where the timestamps under **View Cluster Resilience** modal were being stripped off from the right side. (CHAOS-5983)
 
 ## July 2024
 
