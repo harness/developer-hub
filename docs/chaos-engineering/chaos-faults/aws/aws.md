@@ -398,13 +398,29 @@ ECS container HTTP latency induces HTTP chaos on containers running in an Amazon
 
 ### ECS container HTTP modify body
 
-CS container HTTP modify body injects HTTP chaos which affects the request or response by modifying the status code, body, or headers. This is achieved by starting a proxy server and redirecting the traffic through the proxy server.
+ECS container HTTP modify body injects HTTP chaos which affects the request or response by modifying the status code, body, or headers. This is achieved by starting a proxy server and redirecting the traffic through the proxy server.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
 - Tests the application's resilience to erroneous (or incorrect) HTTP response body.
 - Tests the resilience of the ECS application container to erroneous or incorrect HTTP response body.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS container HTTP modify header
+
+ECS container HTTP modify header injects HTTP chaos which modifies the headers of the request or response of the service.
+- This is achieved by starting a proxy server and redirecting the traffic through the proxy server.
+- This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+ECS container HTTP modify header tests the resilience of the ECS application container to erroneous or incorrect HTTP header of the request or response body.
 
 </Accordion>
 </FaultDetailsCard>

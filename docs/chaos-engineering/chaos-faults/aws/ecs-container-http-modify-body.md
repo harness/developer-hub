@@ -12,9 +12,7 @@ This experiment induces chaos within a container and depends on an EC2 instance.
 ![ECS Container HTTP Modify Response](./static/images/ecs-container-http-modify-body.png)
 
 ## Use cases
-ECS container HTTP modify body:
-- Tests the application's resilience to erroneous (or incorrect) HTTP response body.
-- Tests the resilience of the ECS application container to erroneous or incorrect HTTP response body.
+ECS container HTTP modify body tests the resilience of the ECS application container to erroneous or incorrect HTTP response body.
 
 
 ### Prerequisites
