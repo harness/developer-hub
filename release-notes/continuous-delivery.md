@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-07-23:T10:00:00
+date: 2024-08-12:T10:00:00
 sidebar_position: 8
 ---
 
@@ -47,7 +47,23 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## August 2024
 
-### Version 1.49.7
+### Version 1.51.x
+
+#### Behavior changes
+
+- In pipeline chaining, if the child pipeline was in a wait step, the child pipeline status would show as **Waiting** state whereas the parent pipeline status would show as **Running** state. This behavior is changed to show both parent and child pipeline status to show as **Waiting** state.(PIPE-20448, ZD-66154,66618,67697)  
+
+#### Fixed Issues
+
+- The output tab on the pipeline console showed incorrect details for retries when viewed on console mode. This issue is fixed now. Pass correct step id for retry steps in console view to see correct details in the output tab.(PIPE-20648, ZD-67024)
+- While cinnecting to the Git sync service, a connection error was being thrown. This issue is resolved by increasing the number of connection retries from 1 to 3. (PIPE-20589, ZD-67247,67488)
+- The test class `io.harness.pcf.cfsdk.CfSdkClientImplTest` was failing. The failing test classes have been fixed now. (CDS-99557)
+- The pipeline deployed using the rolling deployment method threw a `NotificationTargetARN` error. This issue is resolved now with support for adding lifecycle hooks with different notificationARNs and roles at the time of creation of ASG. (CDS-99460, ZD-67371)
+- The customers were unable to delete service. This issue is resolved now by adding a functionality to support deletion of services that were soft deleted from service Dashboard page. (CDS-99344, ZD-67225).
+- While ranaming the file by adding an extension to the file name on Harness File Store would delete the contents of the file. This issue is fixed to maintain file content when updating file metadata in File Store. (CDS-99202,ZD-66962)
+- When a customer tried to provide input as a run-time input for the K8s manifest connector, they were unable to see the input field in the run pipeline form. This issue has been fixed. (CDS-99171, ZD-66902)
+
+### Version 1.49.5
 
 #### Fixed issues
 
