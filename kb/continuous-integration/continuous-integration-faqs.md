@@ -1485,17 +1485,7 @@ docker config would look like:
       https://index.docker.io/***: { auth}
 }
 ```
-In other cases with a docker compatible jfrog registry, this limitation is not present. 
-If the URLs are fully unique the docker config map can have 2 separate entries for the authentication, as opposed to getting 1 entry as listed above.
-
-
-docker config would look like:
-```
-{
-infacloud-ct-docker.jfrog.io : {auth},
-ct-dockerhub.artifacts.cloudtrust.rocks: {auth}
-}
-```
+But fully unique docker compliant registry URLs are not affected by this limitation.
 
 ### What is the default build context when using Build and Push steps?
 
