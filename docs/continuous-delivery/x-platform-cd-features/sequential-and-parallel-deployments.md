@@ -6,7 +6,7 @@ sidebar_position: 300
 
 Pipelines can be executed with multiple services and environments. These services and environments are combined into a service & environment (infrastructure) in a stage for execution.
 
-### Execution Sequence
+## Execution Sequence
 
 Users can configure the sequence of deployment as Sequential or Parallel.
 
@@ -22,9 +22,9 @@ When you click on **Deploy to multiple Environments or Infrastructures** you see
 
 ![](./static/environment_infrastructure.png)
 
-### Expected Scenarios
+## Expected Scenarios
 
-#### Sequential Deployment in Multi Services and Sequential Multi-Infrastructure
+### Sequential Deployment in Multi Services and Sequential Multi-Infrastructure
 
 For example:
 
@@ -41,7 +41,7 @@ Each service is deployed in one infrastructure first and then followed by the se
 The deployment sequence is as follows:
 **`S1 I1, S2 I1, S1 I2, S2 I2`**
 
-2. Parallel Deployment in Multi-Services and Sequential Multi-Infrastructure
+### Parallel Deployment in Multi-Services and Sequential Multi-Infrastructure
 
 For example:
 
@@ -59,7 +59,7 @@ Here, 1 and 2 will be deployed in parallel and 3 and 4 will be deployed in paral
 
 ![](./static/Parallel_service_seq_infra.png)
 
-3. Sequential Deployment in Multi-Services and Parallel Multi-Infrastructure
+### Sequential Deployment in Multi-Services and Parallel Multi-Infrastructure
 
 For example:
 
@@ -78,7 +78,7 @@ Here, 1 and 2 will be deployed parallelly and 3 and 4 will be deployed parallell
 
 ![](./static/seq_service_parallel_infra.png)
 
-4. Multi Service in Parallel and Multi Infrastructure in Parallel
+### Multi Service in Parallel and Multi Infrastructure in Parallel
 
 - **Services**: S1, S2
 - **Environment**: E1
@@ -91,7 +91,7 @@ The deployment sequence is as follows:
 
 ![](./static/service_parallel_infra_parallel.png)
 
-5. Multi service in parallel and multi environment and multi Infrastructure in sequential 
+### Multi service in parallel and multi environment and multi Infrastructure in sequential 
 
 - **Services**: S1, S2
 - **Environment_1_Infrastructure_1**: I1, I2
@@ -104,7 +104,7 @@ Services are deployed in parallel, but the environments and infrastructures are 
 The deployment sequence is as follows:
 **`S1 I1, S2 I1, S1 I2, S2 I2, S1 K82, S2 K81, S2 K82, S2 K81`**
 
-6. Multi service in sequential and multi environment and multi Infrastructure in parallel
+### Multi service in sequential and multi environment and multi Infrastructure in parallel
 
 - **Services**: S1, S2
 - **Environment_1_Infrastructure_1**: I1, I2
@@ -122,3 +122,7 @@ Infrastructure takes precedence, and all Infrastructure gets one Service followe
 ### Deployment and Concurrency
 
 Concurrency is set based on the parallel deployment configuration, either based on the Infrastructure.
+
+* If you select **Deploy services in parallel**, Max concurrency is equal to the number of services.
+* If you select **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of environments or infrastructures.
+* If you select **Deploy services in parallel** and **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of services multiplied by the number of environments.
