@@ -291,6 +291,8 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 
 `<+pipeline.stages.Shell_Script.spec.execution.steps.Harness_Approval_Step.output.approverInputs.foo> == 1`
 
+### Support for allowed values for custom approval inputs
+
 You can provide the input as a list of values that you can select from during runtime.
 
 Here's an example YAML.
