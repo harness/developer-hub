@@ -829,6 +829,11 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more 
         <td>❌</td>
         <td>✅</td>
     </tr>
+    <tr>
+        <td>DynamoDB replication pause</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
      <tr>
         <td>NLB AZ down</td>
         <td>❌</td>

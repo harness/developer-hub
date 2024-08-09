@@ -1,16 +1,16 @@
 ---
-id: dynamo-db-replication-pause
-title: Dynamo DB replication pause
+id: dynamodb-replication-pause
+title: DynamoDB replication pause
 ---
 
-Dynamo DB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.
+DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.
 - When chaos experiment is being executed, any changes to the DynamoDB table will not be replicated in different regions, thereby making the data in the DynamoDB inconsistent.
 - You can execute this fault on a DynamoDB table that is global, that is, there should be more than one replica of the table.
 
-![Dynamo DB replication pause](./static/images/dynamo-db-replication-pause.png)
+![DynamoDB replication pause](./static/images/dynamodb-replication-pause.png)
 
 ## Use cases
-Dynamo DB replication pause determines the resilience of the application when data (in a database) that needs to be constantly updated is disrupted.
+DynamoDB replication pause determines the resilience of the application when data (in a database) that needs to be constantly updated is disrupted.
 
 ### Prerequisites
 - Kubernetes >= 1.17
@@ -152,7 +152,7 @@ Name of the DynamoDB **global** table on which you apply chaos. You can provide 
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/dynamo-db-replication-pause/table-names.yaml yaml)
+[embedmd]:# (./static/manifests/dynamodb-replication-pause/table-names.yaml yaml)
 ```yaml
 kind: Workflow
 apiVersion: argoproj.io/v1alpha1
@@ -182,7 +182,7 @@ Number of iterations of the chaos experiment to execute. The DynamoDB replicatio
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/dynamo-db-replication-pause/count.yaml yaml)
+[embedmd]:# (./static/manifests/dynamodb-replication-pause/count.yaml yaml)
 ```yaml
 kind: Workflow
 apiVersion: argoproj.io/v1alpha1
@@ -210,7 +210,7 @@ Comma-separated ARN (Amazon Resource Names) of the cloudwatch alarm that is used
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/dynamo-db-replication-pause/stop-conditions.yaml yaml)
+[embedmd]:# (./static/manifests/dynamodb-replication-pause/stop-conditions.yaml yaml)
 ```yaml
 kind: Workflow
 apiVersion: argoproj.io/v1alpha1
@@ -239,7 +239,7 @@ spec:
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/dynamo-db-replication-pause/fis-details.yaml yaml)
+[embedmd]:# (./static/manifests/dynamodb-replication-pause/fis-details.yaml yaml)
 ```yaml
 kind: Workflow
 apiVersion: argoproj.io/v1alpha1
