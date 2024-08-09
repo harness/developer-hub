@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-07-30:T10:00:30
+date: 2024-08-09:T10:00:30
 sidebar_position: 3
 ---
 
@@ -76,6 +76,30 @@ The following deprecated API endpoints are longer supported:
 - [GET | PUT | POST | DELETE] api/resourcegroup/\{identifier}
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
+
+## August 2024
+
+### Version 1.51.x<!-- August 9, 2024 -->
+
+#### New features and enhancements
+
+- Improved delegate cache to reduce cache misses and optimize performance. This update ensures more reliable and efficient caching, addressing issues identified in recent incidents. (PL-55626)
+
+- Introduced a new feature in the Connector details Page that supports favorites. You can now mark connectors as `favorites`, making it easier to filter and manage your preferred connectors for a more streamlined experience. (PL-55460)
+
+- Enhanced AppRole token cache for HashiCorp Vault: Updated the cache key calculation to include secretId and approleId. This change fixes a problem where tokens were not being refreshed correctly. Now, the cache accurately reflects the latest credentials, ensuring secure and reliable token management. This item requires Harness Delegate version 24.07.83605. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55567, ZD-65493)
+
+- Added proxy configuration support for external notification channels in SMP. To address issues faced by customers who operate in air-gapped environments, we've introduced proxy settings for the platform service. By updating the override file with proxy details, notifications via MS Teams and Slack will now function correctly even when behind a proxy. This feature is available in SMP version 0.19.0. This item requires Harness Delegate version 24.07.83605. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48415, ZD-59707, ZD-62139)
+
+#### Fixed issues
+
+- Enhanced validation on the User Group Form to provide accurate notifications when no users are selected or if only a search query is entered. This change improves user experience and form accuracy. (PL-55793)
+
+- Fixed issue with delegate creation scope where delegates were being created at the account level instead of the project level. The resolution ensures that delegates are correctly installed in the intended scope, particularly when creating new orgs or projects and installing Kubernetes delegates via YAML. (PL-55615)
+
+- Optimized query performance for `delegateConnectionResults`. Added a new index based on delegateId and criteria to improve query efficiency and reduced CPU usage. Updated cache keys to include accountId for better indexing and cache utilization. This change addresses high query volume and CPU spikes previously observed. (PL-52071)
+
+- Resolved issue with Rollout deployment logs where logs were not available or expandable. This problem, caused by a race condition between stream closure and log dispatching, has been fixed. Logs will now display correctly even under heavy load. This item requires Harness Delegate version 24.07.83605. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55512, ZD-66330)
 
 ## July 2024
 
