@@ -1,9 +1,0 @@
-{
-  "position": 8,
-  "label": "Kubernetes",
-  "collapsible": true,
-  "collapsed": true,
-  "customProps": {
-    "description": "Kubernetes faults documentation"
-  }
-}

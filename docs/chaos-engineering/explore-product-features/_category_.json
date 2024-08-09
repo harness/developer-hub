@@ -1,0 +1,13 @@
+{
+  "position": 3,
+  "label": "Explore features",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link":{
+      "type":"generated-index",
+      "title":"Explore features"
+   },
+  "customProps": {
+    "description": "Explore the features of Harness Chaos Engineering"
+  }
+}

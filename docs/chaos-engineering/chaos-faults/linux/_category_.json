@@ -1,9 +1,0 @@
-{
-    "position": 9,
-    "label": "Linux",
-    "collapsible": true,
-    "collapsed": true,
-    "customProps": {
-      "description": "Linux faults documentation"
-    }
-  }

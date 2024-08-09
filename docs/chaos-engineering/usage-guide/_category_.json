@@ -1,0 +1,13 @@
+{
+  "position": 7,
+  "label": "Usage guide",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link":{
+      "type":"generated-index",
+      "title":"Usage guide"
+   },
+  "customProps": {
+    "description": "Usage guide"
+  }
+}

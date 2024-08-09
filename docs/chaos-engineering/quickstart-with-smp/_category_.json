@@ -1,0 +1,13 @@
+{
+  "position": 5,
+  "label": "Quick start with SMP",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link":{
+      "type":"generated-index",
+      "title":"Quick start with SMP"
+   },
+  "customProps": {
+    "description": "Quick start with SMP"
+  }
+}

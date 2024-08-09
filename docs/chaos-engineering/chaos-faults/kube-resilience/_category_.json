@@ -1,9 +1,0 @@
-{
-  "position": 7,
-  "label": "Kube Resilience",
-  "collapsible": true,
-  "collapsed": true,
-  "customProps": {
-    "description": "Kube resilience faults documentation"
-  }
-}
