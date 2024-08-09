@@ -59,20 +59,6 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
-## August 2024
-
-### Version 24.07.83605<!-- August 9, 2024 -->
-
-#### New features and enhancements
-
-- Enhanced AppRole token cache for HashiCorp Vault: Updated the cache key calculation to include secretId and approleId. This change fixes a problem where tokens were not being refreshed correctly. Now, the cache accurately reflects the latest credentials, ensuring secure and reliable token management. (PL-55567, ZD-65493)
-
-- Added proxy configuration support for external notification channels in SMP. To address issues faced by customers who operate in air-gapped environments, we've introduced proxy settings for the platform service. By updating the override file with proxy details, notifications via MS Teams and Slack will now function correctly even when behind a proxy. This feature is available in SMP version 0.19.0. (PL-48415, ZD-59707, ZD-62139)
-
-#### Fixed issues
-
-- Resolved issue with Rollout deployment logs where logs were not available or expandable. This problem, caused by a race condition between stream closure and log dispatching, has been fixed. Logs will now display correctly even under heavy load. (PL-55512, ZD-66330)
-
 ## July 2024
 
 ### Version 24.07.83503 <!--  July 17, 2024 -->
