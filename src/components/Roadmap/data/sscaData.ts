@@ -6,6 +6,21 @@ export const SscaData: Horizon = {
     feature: [
       {
         tag: [],
+        title: "Repo Security Posture Management",
+        description: "Configuration checks to ensure that your source code repositories used in the supply chain are appropriately monitored for best security practices, including SBOM generation and security tests such as SAST, SCA, and secrets scanning.",
+      },
+      {
+        tag: [],
+        title: "Support for GitHub",
+        description: "Complete support for GitHub, allowing users to onboard using the GitHub app and perform configuration checks, SBOM generation, and security scans.",
+      },
+      {
+        tag: [],
+        title: "Artifact Chain of Custody",
+        description: "Auditors can now review an artifact chain of custody - a comprehensive audit trail that serves as a ledger for every artifact built and deployed in a CI/CD pipeline.",
+      },
+      {
+        tag: [],
         title: "Unified Security View",
         description: "A unified view on OSS dependencies, vulnerabilities, and deployment details for artifacts all in one place.",
       },
@@ -22,33 +37,13 @@ export const SscaData: Horizon = {
     ],
   },
   "Now": {
-    description: "Q2 2024, May-Jul 2024",
+    description: "Q3 2024, Aug-Oct 2024",
     feature: [
-      {
-        tag: [],
-        title: "Repo Security Posture Management",
-        description: "Configuration checks to ensure that your source code repositories used in the supply chain are appropriately monitored for best security practices, including SBOM generation and security tests such as SAST, SCA, and secrets scanning.",
-      },
-      {
-        tag: [],
-        title: "Support for GitHub",
-        description: "Complete support for GitHub, allowing users to onboard using the GitHub app and perform configuration checks, SBOM generation, and security scans.",
-      },
       {
         tag: [],
         title: "Report Generation",
-        description: "Generate and download reports based on compliance standards such as CIS, OWASP, and SLSA.",
+        description: "Generate and download reports based on compliance standards such as CIS, OWASP, and more.",
       },
-      {
-        tag: [],
-        title: "Artifact Chain of Custody",
-        description: "Auditors can now review an artifact chain of custody - a comprehensive audit trail that serves as a ledger for every artifact built and deployed in a CI/CD pipeline.",
-      },
-    ],
-  },
-  "Next": {
-    description: "Q3 2024, Aug-Oct 2024",
-    feature: [
       {
         tag: [],
         title: "CI/CD Security Posture Management",
@@ -66,19 +61,44 @@ export const SscaData: Horizon = {
       },
       {
         tag: [],
-        title: "NIST SP-800, OWASP Top 10 OSS, EO14028 Support",
-        description: "Added support for NIST SP-800, OWASP Top 10 OSS, and EO14028 compliance standards.",
+        title: "Vault Support for SBOM & SLSA attestation and verification",
+        description: "Cosign interacts with Vault's transient engine to directly handle SBOM and SLSA attestation and verification, eliminating the need for storing secrets with Harness.",
+      },
+    ],
+  },
+  "Next": {
+    description: "Q4 2024, Nov 2024-Jan 2025",
+    feature: [
+      {
+        tag: [],
+        title: "OpenSSF, OWASP Top 10 OSS, EO14028 Support",
+        description: "Added support for OpenSSF, OWASP Top 10 OSS, and EO14028 compliance standards.",
       },
       {
         tag: [],
-        title: "OpenSSF Scorecard Integration",
-        description: "Assess open source projects for security risks through a series of automated checks.",
+        title: "Remediation Tracker Support for Compliance Standards Violations",
+        description: "Create and manage remediation trackers for compliance standard violations.",
+      },
+      {
+        tag: [],
+        title: "Governance Policies for Compliance Standard",
+        description: "Allow users to enforce governance policies against the supported compliance standards.",
       },
     ],
   },
   "Later": {
-    description: "Q4 2024+, Nov 2024 & beyond",
+    description: "Q1 2025+, Feb 2025 & beyond",
     feature: [
+      {
+        tag: [],
+        title: "Support for Gitlab",
+        description: "Complete support for Gitlab, allowing users to onboard gitlab repositories and perform configuration checks, SBOM generation, and security scans.",
+      },
+      {
+        tag: [],
+        title: "Support for CircleCI",
+        description: "Onboard CircleCI pipelines to check for Risk & Compliance Issues and misconfigurations.",
+      },
       {
         tag: [],
         title: "SBOM Risk Scoring",
@@ -86,13 +106,13 @@ export const SscaData: Horizon = {
       },
       {
         tag: [],
-        title: "Governance Policies for Compliance Standard",
-        description: "Allow users to enforce governance policies against the supported compliance standards.",
+        title: "OpenSSF Scorecard Integration",
+        description: "Assess open source projects for security risks through a series of automated checks.",
       },
       {
         tag: [],
-        title: "Remediation Tracker Support for Compliance Standards Violations",
-        description: "Create and manage remediation trackers for compliance standard violations.",
+        title: "NIST SP800-204D Support",
+        description: "Added support for NIST SP800-204D compliance standard.",
       },
     ],
   },
