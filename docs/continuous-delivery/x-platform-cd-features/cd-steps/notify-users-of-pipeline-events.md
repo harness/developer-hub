@@ -253,6 +253,13 @@ For example, a Slack notification when the pipeline completes as well as when it
 ![](./static/pipeline_notification_end_complete.png)
 
 The webhook call is made as a POST request, and includes a JSON object containing the properties of the triggered event.
+
+If you are using a custom webhook trigger in webhook notification method and if your Pipeline setting **Mandate Authorization for Custom Webhook Triggers** is **true** then you need to pass the API key in the header.
+
+![](./static/mandate_auth_custom.png)
+
+
+
 ### JSON for webhook notifications
 
 <details>
