@@ -16,3 +16,91 @@ Similarly you can add a inject block in the stage template at any position betwe
 
 ![](./static/step_inject.png)
 
+Structure of the yaml with an inject step would look like:-
+
+```yaml
+template:
+  name: injectTesing
+  identifier: injectTesing
+  versionLabel: v1
+  type: Pipeline
+  projectIdentifier: cxsa
+  orgIdentifier: ljik
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: cdxd
+          identifier: cdxd
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    type: Wait
+                    name: Wait_1
+                    identifier: Wait_1
+                    spec:
+                      duration: 10s
+                - inject:
+                    identifier: inject12
+                    name: inject12
+                    steps: <+input>
+                - step:
+                    type: ShellScript
+                    name: ShellScript_1
+                    identifier: ShellScript_1
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: exit 1
+                      environmentVariables: []
+                      outputVariables: []
+                    timeout: 10m
+                    failureStrategies:
+                      - onFailure:
+                          errors:
+                            - AllErrors
+                          action:
+                            type: Ignore
+          tags: {}
+      - inject:
+          name: inject
+          identifier: inject
+          stages: <+input>
+      - stage:
+          name: try
+          identifier: try
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    type: ShellScript
+                    name: ShellScript_1
+                    identifier: ShellScript_1
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: dfg
+                      environmentVariables: []
+                      outputVariables: []
+                    timeout: 10m
+                    failureStrategies:
+                      - onFailure:
+                          errors:
+                            - AllErrors
+                          action:
+                            type: Ignore
+          tags: {}
+```
+
+
