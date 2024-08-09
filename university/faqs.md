@@ -11,10 +11,12 @@ redirect_from:
 This FAQ page is designed to assist customers who are experiencing common issues while attempting to complete Harness certifications on our platform. From resolving exam glitches to managing time during the hands-on exam, this guide aims to provide quick and effective solutions beyond our [Instructions](/university/instructions) section.
 
 ## Table of Contents
+
 - [Exam gets "Stuck"](#exam-gets-stuck)
 - [Trouble with the Hands-On Exam](#trouble-with-the-hands-on-exam)
 - [Running out of time in Hands-On Exam](#running-out-of-time-in-hands-on-exam)
 - [Issues with Course Registration](#issues-with-course-registration)
+- [Requesting Accommodations for Exams ](#requesting-accommodations-for-exams)
 - [Inquires about Instructor-Led Training ](#inquiries-about-instructor-led-training)
 - [Contact Information](#contact-information)
 
@@ -81,6 +83,17 @@ For the Admin and Architect level exams, we allow for up to two retakes on paid 
 
 ---
 
+## Requesting Accommodations for Exams
+
+Testing accommodations are considered on a case-by-case basis. Our exams include retakes per the tier and the exams are not proctored [exams can be taken at any time]. Developer level certifications which are free have five retakes and Admin/Architect which are paid level certifications have two retakes per payment. Due to current platform restrictions, we can only provide limited accommodations at this time. Please reach out to us at [certifications@harness.io](mailto:certifications@harness.io) prior to attempting an exam if accommodations are needed. 
+
+### List of Technology in Exams
+
+* Caveon Scorpion for knowledge questions. 
+* Instruqt for hands-on portions. 
+
+---
+
 ## Inquiries about Instructor-Led Training
 
 ### What formats are Instructor-Led Trainings available in?
@@ -88,6 +101,18 @@ Instructor-Led Trainings [e.g ILTs] are available in the following formats:
 * Dedicated. Either virtual or on-site. 
 * Shared-Virtual [e.g vILT]. This is per a [shared virtual calendar](https://university-registration.harness.io/calendar). 
 
+### Minimum Enrollment Requirement
+To ensure a productive and engaging learning environment, we require a minimum number of students to enroll in each shared vILT course. If the minimum enrollment is not met, the following steps will be taken:
+
+* Notification of Cancellation: Registered participants will receive a notification if the course is canceled due to insufficient enrollment.
+* Alternative Session Registration: Participants will be provided with options to register for another session that meets the minimum enrollment criteria.
+* Notification of Cancellation: If a course does not meet the minimum enrollment requirement you will be notified via email at least 5 business days before the scheduled start date of the course and the notification will include instructions on how to register for an alternative session.
+
+### vILT Rescheduling Options
+In the event of a course cancellation:
+* Alternative Sessions: You will have the option to register for any upcoming session of the same course- you can view the available sessions [here](https://university-registration.harness.io/calendar).
+* Priority Enrollment: Participants from a canceled session will receive priority enrollment for rescheduled sessions.
+  
 ### What is the cost for ILT
 Instructor-Led Training has tiers of costs depending on format. All ILTs has access to the 
 [Platform Pre-Req Course](https://university-registration.harness.io/introduction-to-the-harness-platform). 
@@ -97,6 +122,8 @@ Instructor-Led Training has tiers of costs depending on format. All ILTs has acc
 
 You can leverage your [Harness Service Catalog Dollars](https://www.harness.io/legal/service-catalog-dollars) for payment
 of ILTs or purchase via SKU or for virutal online via SkillJar. 
+
+---
 
 ## Contact Information
 

@@ -1,7 +1,7 @@
 ---
 title: View tests
 description: View the results from CI tests.
-sidebar_position: 60
+sidebar_position: 40
 helpdocs_topic_id: sof7n3qjap
 helpdocs_category_id: flam7377aq
 helpdocs_is_private: false
@@ -15,7 +15,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-Your CI pipelines can run tests in [Run steps](../run-step-settings.md) and [Run Tests steps](./test-intelligence/set-up-test-intelligence.md). In Harness, test results can be published to the [Build details page](../viewing-builds.md) on either the **Tests** tab or the **Artifacts** tab.
+Your CI pipelines can run tests in [Run steps](../run-step-settings.md) and [Test steps](./tests-v2.md). In Harness, test results can be published to the [Build details page](../viewing-builds.md) on either the **Tests** tab or the **Artifacts** tab.
 
 ## Publish reports to the Tests tab
 
@@ -23,7 +23,7 @@ To publish test results and view them in Harness, you must produce [test reports
 
 ```yaml
               - step:
-                  type: Run ## Run or Run Tests
+                  type: Run
                   name: Tests
                   identifier: tests
                   ...
@@ -36,7 +36,7 @@ To publish test results and view them in Harness, you must produce [test reports
 
 The **Tests** tab can show tests only if your test reports are in JUnit XML format, because Harness parses test reports that are in JUnit XML format only. For information about formatting unit test reports, go to [Format test reports](./test-report-ref.md).
 
-After a build runs, you can review test reports on the **Tests** tab on the [Build details page](../viewing-builds.md). The content differs for **Run** and **Run Tests** steps.
+After a build runs, you can review test reports on the **Tests** tab on the [Build details page](../viewing-builds.md). The content differs for **Run** and **Test** steps.
 
 ### Results from Run steps
 
@@ -46,15 +46,15 @@ If you ran tests in multiple steps/stages, or parallel steps/stages, use the **S
 
 ![](./static/run-a-script-in-a-ci-stage-529.png)
 
-### Results from Run Tests steps (Test Intelligence)
+### Results from Test steps with Test Intelligence
 
-If you are using [Test Intelligence for your unit tests](./test-intelligence/set-up-test-intelligence.md), the **Tests** tab contains information unique to Test Intelligence. In addition to the test results, you can also get information about which tests were selected by Test Intelligence and why Test Intelligence selected those tests.
+If you are using [Test Intelligence for your unit tests](./ti-overview.md), the **Tests** tab contains information unique to Test Intelligence. In addition to the test results, you can also get information about which tests were selected by Test Intelligence and why Test Intelligence selected those tests.
 
 :::info
 
 The first run with TI *doesn't* include test selection, because Harness must establish a baseline for comparison in future runs. On subsequent runs, Harness can use the baseline to select relevant tests based on the content of the code changes.
 
-Your first TI run won't report selected tests. Subsequent runs can report selected tests, if any are selected. For more information, go to [Enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md#enable-test-intelligence).
+Your first TI run won't report selected tests. Subsequent runs can report selected tests, if any are selected. For more information, go to [Enable Test Intelligence](./ti-overview.md#enable-test-intelligence).
 
 :::
 
@@ -114,7 +114,7 @@ The call graph can be empty if:
 * You just enabled Test Intelligence. Your first TI run won't report selected tests. Subsequent runs can report selected tests, if any are selected. The first run with TI *doesn't* include test selection, because Harness must establish a baseline for comparison in future runs. On subsequent runs, Harness can use the baseline to select relevant tests based on the content of the code changes.
 * TI selected all tests. Lots of code changes and changes to certain files cause TI to select all tests. In this case, no call graph is generated because it would be too large and not useful.
 
-For more information about how and when TI selects tests, go to [Enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md#enable-test-intelligence).
+For more information about how and when TI selects tests, go to [Enable Test Intelligence](./ti-overview.md#enable-test-intelligence).
 
 </details>
 
@@ -122,10 +122,8 @@ For more information about how and when TI selects tests, go to [Enable Test Int
 
 For reports that can't be published to the **Tests** tab, you can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish reports to the **Artifacts** tab on the [Build details page](../viewing-builds.md). You can [publish any URL to the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab).
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
 
 To publish a test report to the **Artifacts** tab, you must:
 
@@ -143,10 +141,8 @@ To publish a test report to the **Artifacts** tab, you must:
       * `file_urls`: Provide the URL to the artifact that was uploaded in the **Upload Artifacts** step. If you uploaded multiple artifacts, you can provide a list of URLs.
       * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 1. Include steps in your pipeline that run tests and produce test reports.
 2. Add a step to upload the report artifact to cloud storage, such as:
@@ -169,10 +165,8 @@ To publish a test report to the **Artifacts** tab, you must:
                          artifact_file: artifact.txt ## Provide any '.txt' file name. Harness uses this to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
    ```
 
-
 </TabItem>
 </Tabs>
-
 
 ## Test report dashboard
 

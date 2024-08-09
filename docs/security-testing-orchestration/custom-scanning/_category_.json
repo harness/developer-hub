@@ -1,0 +1,11 @@
+{
+    "label": "Custom scanning and ingestion",
+    "position": 50,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+       "type": "generated-index",
+       "title": "Custom scanning and ingestion"
+    }
+ }

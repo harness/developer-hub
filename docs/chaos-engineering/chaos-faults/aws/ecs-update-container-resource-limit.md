@@ -6,7 +6,7 @@ redirect_from:
 ---
 
 ECS update container resource limits allows you to modify the CPU and memory resources of containers in an Amazon ECS (Elastic Container Service) task.
-This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+This experiment primarily involves ECS Fargate and doesn't depend on EC2 instances. [They](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
 
 ![ECS Update Container Resource Limit](./static/images/ecs-update-container-resource-limit.png)
 
@@ -45,7 +45,7 @@ stringData:
 ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -92,12 +92,12 @@ Below is an example AWS policy to execute the fault.
           <th> Description </th>
           <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
           <td> CLUSTER_NAME </td>
           <td> Name of the target ECS cluster. </td>
           <td> For example, <code>cluster-1</code>. </td>
         </tr>
-        <tr> 
+        <tr>
           <td> SERVICE_NAME </td>
           <td> Name of the ECS service under chaos. </td>
           <td> For example, <code>nginx-svc</code>. </td>
@@ -126,17 +126,17 @@ Below is an example AWS policy to execute the fault.
         <td> Interval between successive instance terminations (in seconds).</td>
         <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Path to the AWS secret credentials.</td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
       </tr>
-      <tr> 
+      <tr>
         <td> CPU </td>
         <td> CPU resouce set of the target ECS container. </td>
         <td> Default: 256. For more information, go to <a href="#cpu-and-memory-resource-limit"> CPU limit.</a> </td>
       </tr>
-      <tr> 
+      <tr>
         <td> Memory </td>
         <td> Memory resouce set of the target ECS container</td>
         <td> Default: 256. For more information, go to <a href="#cpu-and-memory-resource-limit"> memory limit.</a> </td>

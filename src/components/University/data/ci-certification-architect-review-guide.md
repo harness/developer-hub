@@ -5,16 +5,16 @@
 | Implement and troubleshoot networking and connectivity issues  | [Troubleshoot CI](/docs/category/troubleshoot-ci) |
 | **2. Managing Build Environments and Dependencies** | |
 | Navigate and solve issues in Docker-in-Docker build environments  | [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage) |
-| Implement and troubleshoot dependency caching mechanisms | [Cache Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/)|
+| Implement and troubleshoot dependency caching mechanisms | [Cache Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence)|
 | **3. Implementing and Managing CI Pipelines**  ||
 | Develop and troubleshoot pipeline triggers | [Troubleshoot failed triggers](https://developer.harness.io/docs/platform/triggers/troubleshoot-registered-triggers/)|
-| Optimize CI pipeline efficiency and speed| [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/)  |
+| Optimize CI pipeline efficiency and speed | [Optimization strategies](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components/#optimization-strategies) |
 | **4. Ensuring Security and Compliance in CI Pipelines**  | |
 | Implement secrets management and ensure secure build processes  | [Use secrets managers](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager)|
 | Adhere to the Principle of Least Privilege (PoLP) in CI/CD | [Roles and resource groups work together](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/#roles-and-resource-groups-work-together) |
 | **5. Utilizing Test Intelligence in CI**   | |
-| Implement and manage Test Intelligence for optimizing testing | [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence)|
-| Understand and troubleshoot test visualization and metrics                               | [View test reports and test selection](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/viewing-tests/#results-from-run-tests-steps-test-intelligence)                                           |
+| Implement and manage Test Intelligence for optimizing testing | [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview)|
+| Understand and troubleshoot test visualization and metrics                               | [View test reports and test selection](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/viewing-tests/#results-from-test-steps-with-test-intelligence)                                           |
 | **6. Managing and Troubleshooting Custom Build Tools and Binaries**                         | |
 | Navigate issues with custom binary installations on Delegates                            | [Install a delegate with third-party tool custom binaries](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/)  |
 | Manage custom build tools and dependencies | [Dependency management strategies](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies/) |

@@ -2,7 +2,7 @@
 title: DORA Reports
 description: DORA metrics are key metrics for describing a software development team's performance.
 sidebar_position: 10
-sidebar_label: DORA reports
+sidebar_label: DORA Reports
 ---
 
 DORA (DevOps Research Assessment) identified the following key metrics that describe a software development team's performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, Time to Restore service (MTTR), and Reliability (MTBF).
@@ -22,6 +22,8 @@ Harness SEI provides the following reports for DORA metrics reporting:
 
 ## Deployment Frequency
 
+### Definition
+
 The Deployment Frequency report represents how often an organization successfully releases software to production.
 
 To monitor Deployment Frequency, you must create a [DORA type Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile) and add the **Deployment Frequency** widget to your Insights.
@@ -34,13 +36,17 @@ Workflow profiles determine the integrations to track, the events that mark depl
 
 To add the **Deployment Frequency** widget to Insights:
 
-1. Go to the Insight where you want to add the widget. Make sure you are in the correct project.
-2. Select **Settings**, and then select **Add Widget**.
-3. Select the **Deployment Frequency** widget.
+#### Step 1: Add the widget
+
+* Go to the Insight where you want to add the widget. Make sure you are in the correct project.
+* Select **Settings**, and then select **Add Widget**.
+* Select the **Deployment Frequency** widget.
 
 ![](./static/df-1.png)
 
-4. Configure the widget settings as desired, such as the enable/disable **DORA grading** and **Collection Level Filters**.
+#### Step 2: Configure the widget settings
+
+* Configure the widget settings as desired, such as the enable/disable **DORA grading** and **Collection Level Filters**.
 
 ![](./static/df-2.png)
 
@@ -48,7 +54,9 @@ To add the **Deployment Frequency** widget to Insights:
 Editing the Collection Level Filters will reflect the changes in the Collection Settings.
 :::
 
-5. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
+#### Step 3: Save the widget
+
+* Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
 ![](./static/df-3.png)
 
@@ -108,6 +116,8 @@ Assuming there are 24 tickets in **Done** status in the last 91 days, then the D
 
 ## Lead Time for Changes
 
+### Definition
+
 This report displays the time taken by an issue to go from code committed to code successfully running in production. DORA calculation for Lead Time is similar to how lead time, in general, is calculated, with the difference being the ability to associate a Collection while defining the DORA profile, i.e., at the profile level.
 
 This report represents the amount of time it takes a commit to get into production.
@@ -132,18 +142,23 @@ The **Lead Time for Changes** widget aggregates lead time across your issue mana
 
 To add the **Lead Time for Changes** widget to Insights:
 
-1. Go to the **Insight** where you want to add the widget. Make sure you are in the correct project.
-2. Select **Settings**, and then select **Add Widget**.
-3. Select the **Lead Time for Changes** widget.
+#### Step 1: Add the widget
+
+* Go to the **Insight** where you want to add the widget. Make sure you are in the correct project.
+* Select **Settings**, and then select **Add Widget**.
+* Select the **Lead Time for Changes** widget.
 
 ![](./static/leadtime-1.png)
 
-4. Configure the **Filters** for the widget (e.g., `Issue Resolved In` for the Last Quarter)
-5. Select the metric you want to measure under the **Metrics** tab. For example: `Average Time in the Stage` measures the average time spent in each stage.
-6. Under the **Settings** tab, specify the associated **Workflow profile**.
-7. Select **Next: Place Widget**, place the widget on the Insight and then select **Save Layout**.
-8. On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile).
-9.  Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
+#### Step 2: Configure the widget settings
+
+* Configure the **Filters** for the widget (e.g., `Issue Resolved In` for the Last Quarter)
+* Select the metric you want to measure under the **Metrics** tab. For example: `Average Time in the Stage` measures the average time spent in each stage.
+* Under the **Settings** tab, specify the associated **Workflow profile**.
+
+#### Step 3: Save the widget
+
+* Select **Next: Place Widget**, place the widget on the Insight and then select **Save Layout**.
 
 For information about other Lead Time reports, go to [Lead time reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports).
 
@@ -218,9 +233,27 @@ Overall lead time is the sum of the time spent in each stage in a workflow, such
 
 The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#workflow-profiles-for-lead-time). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the a, then the *time to comment* is zero.
 
-To learn more, go to [DORA Lead Time calculation](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation).
+### Average
 
-The following examples demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default configuration for a PR-based DORA type Workflow profile, which has four stages: PR Creation Time, Time to Comment, Approval Time, and Merge Time.
+When configured to calculate the Lead Time as the **Average time in stage**, the individual lead time for each stage is calculated as the average across all the tickets or commits or both depending on the profile configuration, The overall lead time is then calculated as the sum of all the stages.
+
+### Median
+
+The [median lead time](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation#median) is the duration by which half of the tasks or tickets are completed. It gives you idea about the typical completion time by showing the point where half of the tickets are resolved faster and the other half take longer.
+
+### 90th Percentile
+
+The [90th percentile lead time](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation#90th-percentile) is the duration within which 90% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays.
+
+### 95th Percentile
+
+The [95th percentile lead time](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation#95th-percentile) is the duration within which 95% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays. The calculation of the 95th percentile lead time follows the same steps as the 90th percentile, with the only difference being the percentile value used.
+
+If you want to learn more about the calculations behind these metrics, you can check out the [DORA Lead Time calculations](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation).
+
+### Example
+
+The following example demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default configuration for a PR-based DORA type Workflow profile, which has four stages: PR Creation Time, Time to Comment, Approval Time, and Merge Time.
 
 When reviewing these examples, consider the following:
 
@@ -253,6 +286,8 @@ Merge Time = Time for the first approval - Time to the PR creation (Default)
 
 ## Change Failure Rate
 
+### Definition
+
 Change Failure Rate represents the percentage of deployments that cause a failure in production.
 
 To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile), and then add the **Change Failure Rate** widget to Insights.
@@ -261,23 +296,28 @@ To measure the Change Failure Rate accurately, define your workflow profile conf
 
 ### Add the Change Failure Rate report
 
-1. Go to **Settings** and select **Workflow Profiles**.
-2. Select **Add Profile** or select an existing profile to modify.
-3. If this is a new profile, on the **Workflow Profile Configuration** page, enter a name for the profile.
-4. Select **Change Failure Rate**, and select the [SEI integration](/docs/category/sei-integrations) to use. Configuration details vary by SEI integration type. Default values are pre-populated, and you can change them, if desired. For example:
+#### Step 1: Define the Change Failure Rate on the DORA profile
 
-   * Select factors to use to calculate failed deployments.
-   * Select factors to use to calculate total deployments.
-   * Select whether the failed deployment calculation should be based on items that were *updated/ended* or *created/started* within the Insight time range. *Insight time* is the time range selected by the user when viewing the Insight.
+* Go to **Settings** and select **Workflow Profiles**.
+* Select **Add Profile** or select an existing profile to modify.
+* If this is a new profile, on the **Workflow Profile Configuration** page, enter a name for the profile.
+* Select **Change Failure Rate**, and select the [SEI integration](/docs/category/sei-integrations) to use. Configuration details vary by SEI integration type. Default values are pre-populated, and you can change them, if desired. For example:
+  * Select factors to use to calculate failed deployments.
+  * Select factors to use to calculate total deployments.
+  * Select whether the failed deployment calculation should be based on items that were *updated/ended* or *created/started* within the Insight time range. *Insight time* is the time range selected by the user when viewing the Insight. <br /><br />Here you can also select **Show absolute value** if you would rather get the absolute value than the rate (percentage).
 
-   Here you can also select **Show absolute value** if you would rather get the absolute value than the rate (percentage).
+* If you want to view or change the projects and Collections associated with the profile, select **Associations**. Projects and Collections are automatically derived from the SEI integration you chose for **Change Failure Rate**. For more information, go to [Collections](/docs/category/projects-and-collections).
+* Select **Save** to save the profile.
 
-5. If you want to view or change the projects and Collections associated with the profile, select **Associations**. Projects and Collections are automatically derived from the SEI integration you chose for **Change Failure Rate**. For more information, go to [Collections](/docs/category/projects-and-collections).
-6. Select **Save** to save the profile.
-7. Go to the Insight where you want to add the Change Failure Rate widget. Make sure you are in the correct project.
-8. Select **Settings**, and then select **Add Widget**.
-9. Select the **Change Failure Rate** widget.
-10. Select **Next: Place Widget**, select where you want to place the widget on the Insight, and then select **Save Layout**.
+#### Step 2: Add the widget
+
+* Go to the Insight where you want to add the Change Failure Rate widget. Make sure you are in the correct project.
+* Select **Settings**, and then select **Add Widget**.
+* Select the **Change Failure Rate** widget.
+
+#### Step 3: Save the widget
+
+* Select **Next: Place Widget**, select where you want to place the widget on the Insight, and then select **Save Layout**.
 
 The Change Failure Rate widget is now part of your Insight.
 
@@ -333,6 +373,8 @@ Change Failure Rate = 50%
 
 ## Mean Time To Restore (MTTR)
 
+### Definition
+
 Mean Time To Restore/Recover (MTTR), or Time to Restore Service, indicates how long it takes an organization to recover from a failure in production.
 
 MTTR is a good metric for assessing the speed of your recovery process across several areas of technology. The overall time can be analyzed stage by stage over the organization's failure recovery workflow.
@@ -351,9 +393,17 @@ To learn more, go to [DORA MTTR calculation](/docs/software-engineering-insights
 
 To add the **DORA Mean Time To Restore** report to the Insight:
 
-1. Select **Settings**, and then select **Add Widget**.
-2. Select the **Mean Time To Restore** widget.
-3. Customize the widget by configuring **Filters**. This step allows you to specify conditions (such as `Issue Created In`/`Resolved In`) that contribute to the overall calculations.
-4. Select the metric you want to measure under the **Metrics** tab. For example: `Average Time in the Stage` measures the average time spent in each stage.
-5. On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile).
-6. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
+#### Step 1: Add the widget
+
+* Select **Settings**, and then select **Add Widget**.
+* Select the **Mean Time To Restore** widget.
+
+#### Step 2: Configure the widget settings
+
+* Customize the widget by configuring **Filters**. This step allows you to specify conditions (such as `Issue Created In`/`Resolved In`) that contribute to the overall calculations.
+* Select the metric you want to measure under the **Metrics** tab. For example: `Average Time in the Stage` measures the average time spent in each stage.
+* On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile).
+
+#### Step 3: Save the widget
+
+* Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.

@@ -30,7 +30,7 @@ By using the `.netrc` file, you can execute Git commands within the run step wit
 
    :::info
 
-   These `DRONE_` variables are [CI environment variables](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var).
+   These `DRONE_` variables are [CI environment variables](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/ci-env-var).
 
    :::
 

@@ -171,6 +171,58 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 
 You can add one or more Health Sources for each APM or logging provider.
 
+### Sample Dynatrace queries
+
+#### Latency
+
+- Latency trend over time: `timeseries(avg(response.time))`
+- Latency distribution: `histogram(response.time)`  
+- Latency by application version: `avg(response.time) by application.version`  
+- Latency by geographical region: `avg(response.time) by geoip.country_name`
+- Latency spike detection: `spike(response.time)`
+- Latency comparison between environments: `avg(response.time) by environment`  
+- Latency by HTTP method: `avg(response.time) by http.method`  
+- Latency by service: `avg(response.time) by service.name`  
+- Latency anomaly detection: `anomaly(response.time)`
+- Latency percentiles: `percentile(response.time, 50)`, `percentile(response.time, 90)`, `percentile(response.time, 99)`
+
+#### Traffic
+
+- Requests per minute trend: `timeseries(count(request) / 60)`
+- Requests by HTTP status code: `count(request) by http.status_code`
+- Requests by user agent: `count(request) by useragent.name`
+- Requests by endpoint and HTTP method: `count(request) by endpoint, http.method`
+- Requests by response time range: `histogram(response.time)`
+- Requests by geo-location: `count(request) by geoip.country_name`
+- Slow endpoint detection: `top(avg(response.time), 10, endpoint)`
+- Requests by hostname: `count(request) by hostname`
+- Requests by service: `count(request) by service.name`
+- Requests by HTTP version: `count(request) by http.version` 
+
+#### Errors
+
+- Error rate trend over time: `timeseries(count(error) / count(request) * 100)`
+- Top error types: `count(error) by errorType`
+- Error rate by geographical region: `count(error) by geoip.country_name`
+- Error rate by application version: `count(error) by application.version`
+- Error rate by HTTP status code: `count(error) by http.status_code`
+- Error rate by service: `count(error) by service.name`
+- Error rate by user agent: `count(error) by useragent.name`
+- Error spike detection: `spike(count(error))`
+- Error anomaly detection: `anomaly(count(error))`
+
+#### Saturation
+
+- CPU utilization across hosts: `avg(cpu.usage) by host`
+- Memory utilization across hosts: `avg(memory.usage) by host`
+- Disk utilization across hosts: `avg(disk.usage) by host`
+- Network utilization across hosts: `avg(network.usage) by host`
+- CPU utilization by geographical region: `avg(cpu.usage) by geoip.country_name`
+- Memory utilization by geographical region: `avg(memory.usage) by geoip.country_name`
+- Disk utilization by geographical region: `avg(disk.usage) by geoip.country_name`
+- Network utilization by geographical region: `avg(network.usage) by geoip.country_name`
+
+
 ## Step 6: Select Sensitivity
 
 1. In **Sensitivity**, select **High**, **Medium**, or **Low** based on the risk level used as failure criteria during the deployment.

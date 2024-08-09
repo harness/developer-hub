@@ -8,4 +8,3 @@ The production environment requires the following resources.
 | STO | 4 | 3 | 7 | 0 |
 | FF | 3 | 3 | 6 | 0 |
 | Chaos | 15 | 12 | 24 | 50 |
-| CET | 10 | 12 | 28 | 0 |

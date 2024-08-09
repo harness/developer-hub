@@ -2,11 +2,12 @@
 id: pod-delete
 title: Pod delete
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-delete
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-delete
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-delete
 ---
 
-Pod delete is a Kubernetes pod-level chaos fault that causes specific (or random) replicas of an application resource to fail forcibly (or gracefully). 
-- To ensure smooth usage, applications must have a minimum number of available replicas. 
+Pod delete is a Kubernetes pod-level chaos fault that causes specific (or random) replicas of an application resource to fail forcibly (or gracefully).
+- To ensure smooth usage, applications must have a minimum number of available replicas.
 - When the pressure on other replicas increases, the horizontal pod autoscaler scales based on the observed resource utilization.
 
 ![Pod Delete](./static/images/pod-delete.png)
@@ -18,7 +19,7 @@ Pod delete:
 - Can be used to verify:
   - Disk (or volume) re-attachment times in stateful applications.
   - Application start-up times, and readiness probe configuration (health endpoints and delays).
-  - Adherence to topology constraints (node selectors, tolerations, zone distribution, and affinity (or anti-affinity) policies).
+  - Adherence to topology constraints (node selectors, toleration, zone distribution, and affinity (or anti-affinity) policies).
   - Proxy registration times in service-mesh environments.
   - Post (lifecycle) hooks and termination seconds configuration for the microservices (under active load)- that is, graceful termination handling.
   - Resource budgeting on cluster nodes (whether request or limit settings are honored on available nodes for successful schedule).
@@ -26,6 +27,43 @@ Pod delete:
   - Graceful delete, or rescheduling, of pods as a result of upgrades.
   - Forced deletion of pods as a result of eviction.
   - Leader-election in complex applications.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-delete
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16

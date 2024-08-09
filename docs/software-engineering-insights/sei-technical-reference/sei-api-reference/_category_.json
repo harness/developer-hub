@@ -1,11 +1,11 @@
 {
-    "label":"API reference",
+    "label":"API Reference",
     "position": 1,
     "collapsible":"true",
     "collapsed":"true",
-    "className":"red",
+    "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"API reference"
+       "title":"API Reference"
     }
  }

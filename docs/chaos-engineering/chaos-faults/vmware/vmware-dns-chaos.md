@@ -11,8 +11,8 @@ VMware DNS chaos causes DNS errors in the VMware VMs which results in the DNS se
 
 ## Use cases
 
-- VMware DNS chaos causes DNS errors on the target VMs which results in unavailability (or distorted) network connectivity from the VM to the target hosts. 
-- It provides a hypothesis wherein certain services of an application could be unreachable from the VM. 
+- VMware DNS chaos causes DNS errors on the target VMs which results in unavailability (or distorted) network connectivity from the VM to the target hosts.
+- It provides a hypothesis wherein certain services of an application could be unreachable from the VM.
 - It determines how DNS errors impact the infrastructure and standalone tasks in the application.
 - It simulates unavailability of DNS server, that is, loss of access to any external domain from a given microservice.
 - It simulates malfunctioning of DNS server, that is, loss of access to specific domains from a given microservice, loss of access to cloud provider dependencies, and loss of access to specific third party services.
@@ -20,7 +20,7 @@ VMware DNS chaos causes DNS errors in the VMware VMs which results in the DNS se
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
-- Execution plane should be connected to vCenter and host vCenter on port 443. 
+- Execution plane should be connected to vCenter and host vCenter on port 443.
 - VMware tool should be installed on the target VM with remote execution enabled.
 - The VM should be in a healthy state before and after injecting chaos.
 - Appropriate vCenter permissions should be provided to access the hosts and the VMs.
@@ -37,7 +37,7 @@ stringData:
     VCENTERSERVER: XXXXXXXXXXX
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
-``` 
+```
 
 ### Mandatory tunables
 

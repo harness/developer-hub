@@ -1,0 +1,11 @@
+{
+    "label":"Trellis Scores",
+    "position": 20,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Trellis Scores"
+    }
+ }

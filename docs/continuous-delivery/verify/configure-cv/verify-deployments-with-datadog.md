@@ -180,6 +180,22 @@ In the example above, 'a' and 'b' represent the respective queries:
 
 You can use multiple queries represented by alphabetical variables (example: a, b, c, and so on) in the final formula, but only one formula is allowed per query.
 
+### Commonly used Datadog queries
+
+#### Performance
+
+- P90: `synthetics.http.response.time.distrib{availability_zone:*}, pod=~"harness-dummy-.*"}[5m])) by (le))`
+- P50: `synthetics.http.response.time.distrib{availability_zone:*}`
+
+#### API
+
+- 5xx response: `sum:synthetics.http.response{status_code_class:5xx}.as_rate() , sum:synthetics.http.response{status_code:502}.as_rate()`
+- 4xx response: `sum:synthetics.http.response{status_code_class:4xx}.as_rate() , sum:synthetics.http.response{status_code:401}.as_rate()`  
+
+#### Infrastructure
+
+- CPU: `per_minute(sum:container.cpu.usage{cluster_name:del-play-* cluster-location:us-*}) , system.cpu.num_cores{*} ; Final Value: a/b * 100`
+- Memory: `per_minute(sum:container.cpu.usage{cluster_name:del-**, cluster-location:us-**})`   
 
 ## Option: Cloud Logs
 

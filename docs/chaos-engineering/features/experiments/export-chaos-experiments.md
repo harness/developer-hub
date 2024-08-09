@@ -1,6 +1,6 @@
 ---
 title: Export chaos experiments
-sidebar_position: 50
+sidebar_position: 35
 description: Guide to export chaos experiments for later use
 redirect_from:
 	- /docs/chaos-engineering/configure-chaos-experiments/experiments/export-chaos-experiments

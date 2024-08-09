@@ -2,23 +2,24 @@
 id: vmware-service-stop
 title: VMware service stop
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-service-stop
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-service-stop
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/service-stop
 ---
 VMware service stop stops the target system services running on a Linux OS based VMware VM. It determines the performance and resilience of the application (or service) running on the VMware VMs.
 
 ![VMware ServiceStop](./static/images/vmware-service-stop.png)
 
 ## Use cases
-
-- VMware service stop determines the resilience of an application to random halts. 
-- It determines how efficiently an application recovers and restarts the services.
+VMware service stop:
+- Determines the resilience of an application to random halts.
+- Determines how efficiently an application recovers and restarts the services.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443.
-- The VM should be in a healthy state before and after injecting chaos. 
+- The VM should be in a healthy state before and after injecting chaos.
 - VMware tool should be installed on the target VM with remote execution enabled.
-- The target processes should exist within the VM. 
+- The target processes should exist within the VM.
 - Appropriate vCenter permissions should be provided to access the hosts and the VMs.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
@@ -106,7 +107,7 @@ stringData:
     </table>
 
 ### Self-healing services
-It specifies whether the target service has the ability to self-heal. It is self-healing if it is set to `enable`. Its default value is `disable`. Tune it by using the `SELF_HEALING_SERVICES` environment variable. 
+It specifies whether the target service has the ability to self-heal. It is self-healing if it is set to `enable`. Its default value is `disable`. Tune it by using the `SELF_HEALING_SERVICES` environment variable.
 
 Use the following example to tune this:
 
@@ -137,7 +138,7 @@ spec:
 ```
 
 ### Service name
-It specifies the name of the target service running on a particular VM. Tune it by using the `SERVICE_NAME` environment variable. 
+It specifies the name of the target service running on a particular VM. Tune it by using the `SERVICE_NAME` environment variable.
 
 Use the following example to tune this:
 

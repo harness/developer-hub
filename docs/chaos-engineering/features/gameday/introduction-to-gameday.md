@@ -7,7 +7,10 @@ redirect_from:
 ---
 This section describes what a GameDay is, why it is essential, how a typical GameDay is run, and its outcomes.
 
-GameDay is a methodology to execute chaos experiments in your application during a specific period. It is a template to schedule and execute one or more chaos experiments within your application.
+### What is a GameDay?
+
+GameDay is a methodology used by teams to practice chaos engineering. These teams execute chaos experiments in the application during a specific period. It is a template to schedule and execute one or more chaos experiments across your applications.
+It determines the incident response process, that is, how well your application responds/behaves during an outage, and how quickly and effectively it returns to normalcy.
 
 ### Why is a GameDay important?
 In general, GameDays helps apply a fatal scenario to your application in a safe environment, thereby determining the application's resilience and verifying the system at scale.
@@ -39,6 +42,25 @@ Running a GameDay using HCE's GameDay feature involves the following steps:
 Once you create a GameDay in HCE, you can run it multiple times. HCE saves information about every run, which includes the date, summary, and any notes you add.
 :::
 
+### Prerequisites to execute a GameDay
+
+1. HCE account
+2. Access to a cluster
+
+### Plan your GameDay
+
+Address the following questions before proceeding to run a GameDay:
+
+1. Which services should I test?
+2. What is the goal of the GameDay?
+3. What should I verify or determine by the end of the GameDay?
+
+Once these questions have a viable answer, you can proceed to create a GameDay.
+
+Creating a GameDay involves two steps:
+
+1. Specifying details about the GameDay,
+2. Adding chaos experiments to the GameDay.
+
 ## Next steps
-* [Run GameDay(V1)](/docs/chaos-engineering/features/gameday/run-gameday.md)
-* [Run GameDay (V2)](/docs/chaos-engineering/features/gameday/gameday-v2.md)
+* [Run GameDay](/docs/chaos-engineering/features/gameday/gameday-v2)

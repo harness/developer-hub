@@ -454,7 +454,24 @@ The step group's **Command** is overwritten the image's default entrypoint, if i
 
 If you want to run the entrypoint in addition to other commands, make sure the image doesn't have a default entry point, and then execute all the commands in the step group's **Command**.
 
+### Does Harness's Slack integration notify on JIRA events awaiting approval?
+
+No, the current Slack integration for Harness does not support notifications for JIRA approval events. It only works on specific pipeline events, which are available while configuring. None of these events are related to approval notifications.
+
+Alternatively, you can set up a custom webhook trigger or configure a step group with two parallel stages (one with shell and one with approval). Once the process reaches the approval stage, the Shell step can contain the cURL call the webhook for notification.
+
+### The Git Clone step is only available within a containerized step group that requires Kubernetes clusters. Is this the only way to use the Git Clone step?
+
+The Git Clone step uses a containerized step group. If you are not using Kubernetes or similar infrastructure, then you can setup a shell script and clone it manually by using the Git CLI command.
 
 
 
+## Jenkins Build step
 
+### Why is my Jenkins job failing with a `500` error?
+```
+Error occurred while starting Jenkins task
+org.apache.http.client.HttpResponseException: status code: 500, reason phrase: Server Error
+```
+
+This can happen if the Jenkins Job is parameterized but no parameters are being passed. The reverse, where the Jenkins Job is not parameterized but parameters are being passed, can also cause this issue. To fix this, please make sure that the proper parameters are being passed to Jenkins.

@@ -84,7 +84,7 @@ import {
             module: MODULES.sei,
             description:
               "Trellis Scores are a proprietary scoring mechanism that helps you understand your team's productivity.",
-            link: "/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score",
+            link: "/docs/category/trellis-scores",
           },
         ],
       },
@@ -107,6 +107,13 @@ import {
             description:
               "",
             link: "/docs/software-engineering-insights/sei-troubleshooting-faqs",
+          },
+          {
+            title: "SEI Knowledge Base",
+            module: MODULES.ci,
+            description:
+              "",
+            link: "/kb/sei",
           },
         ],
       },

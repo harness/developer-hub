@@ -25,13 +25,13 @@ Yes, Harness offers a powerful Git-based workflow for FF management, providing f
 - **Git Experience with Feature Flags:** You can manage your Feature Flags directly from a YAML file in your Git repository. This approach allows you to leverage Git for FF management alongside the Harness Platform.
 - **Two-Way Synchronization:** With Git Experience enabled, any changes you make to FF on the Harness Platform are committed to Git automatically. Similarly, any commits made in Git for FF are reflected in the Harness Platform. This two-way synchronization ensures that you can work on FF entirely within Git, within the Harness Platform, or even both simultaneously. Your changes are kept in sync across both platforms.
 
-For instructions and more information, go to [Manage Feature Flags in Git Repositories](https://developer.harness.io/docs/feature-flags/manage-featureflags-in-git-repos).
+For instructions and more information, go to [Manage Feature Flags in Git Repositories](https://developer.harness.io/docs/feature-flags/use-ff/ff-creating-flag/manage-featureflags-in-git-repos).
 
 If you have any further questions or need assistance, contact [Harness Support](mailto:support@harness.io) for additional guidance.
 
 ### How do I add a Feature Flags SDK to my project?
 
-For an example of adding an SDK to a project, go to [Get started with an SDK](https://developer.harness.io/docs/feature-flags/get-started/java-quickstart).
+For an example of adding an SDK to a project, go to [Get started with an SDK](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/java-quickstart).
 
 ### How do I configure the source code for feature flags?
 
@@ -93,7 +93,7 @@ The SDK is initialized for a specific target, enabling personalized flag evaluat
 
 ### I am looking for an explanation of the behavior after an SDK's feature flag changes.
 
-You can find a detailed overview of how Harness Feature Flags' SDKs behave after a flag change in the following table: [Communication loop between Harness and the SDKs](https://developer.harness.io/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags/#polling).
+You can find a detailed overview of how Harness Feature Flags' SDKs behave after a flag change in the following table: [Communication loop between Harness and the SDKs](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags#polling).
 
 ### CanI call initialize more than once to update attributes?
 
@@ -111,7 +111,7 @@ When the SDK performs authentication, it receives a JWT. By signing this JWT wit
 
 ### Do I have to use a secret manager to configuring the auth-secret?
 
-Yes, you must [set up a secret manager](/docs/feature-flags/relay-proxy/configuration/#auth) to configure the auth-secret. The secret manager ensures that sensitive information, like the authentication secret, is securely stored and managed.
+Yes, you must [set up a secret manager](/docs/feature-flags/use-ff/relay-proxy/configuration/#auth) to configure the auth-secret. The secret manager ensures that sensitive information, like the authentication secret, is securely stored and managed.
 
 ## FF Jira integration
 
@@ -271,7 +271,7 @@ This setup allows you to use ``lastUpdated`` and ``host`` in creating group rule
 
 ### Is it secure to store the client-sdk-key in session storage?
 
-Yes, it is secure. Read [SDK Types documentation](https://developer.harness.io/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks/#sdk-types) for more information.
+Yes, it is secure. Read [SDK Types documentation](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks#sdk-types) for more information.
 
 ### What can a client do with client-sdk-key besides evaluating feature flags?
 
@@ -322,6 +322,18 @@ This error occurs if a user is trying to add a target that already exists.
 #### How to retrieve the feature flag state for a specific target via API?
 The best approach today to achieve this usecase is If you want to know what a specific target will get for a specific flag, you can instantiate one of the SDKs, connect with an SDK key and evaluate that target. It’s the most reliable way of doing it since it’s exactly what the target will be doing.
 
+
 #### What does warning NU1701 mean
 
 The warning NU1701 is a common issue encountered in .NET projects when there are compatibility problems between the project and the NuGet packages it depends on. This warning typically indicates that a referenced package was restored using a target framework that does not fully support the target framework of the project.
+
+#### How can I resolve the issue where the `ff-service` cannot connect to the database, resulting in the error `FATAL: database 'cf_db'` does not exist (SQLSTATE 3D000)"?
+
+In the event that the `ff-service` is unable to connect to the database due to this error, it is likely due to the migration failing. You can resolve this issue by following these steps:
+
+ 1. Delete the Migration Job:
+
+ - Identify and delete the migration job that was created during the initial setup. This can usually be done through your Kubernetes management tool or command line interface.
+ 2. Reinstall the Helm Chart:
+
+ - Reinstalling the Helm chart will re-trigger the migration and setup process, ensuring that the database is created correctly. By deleting the failed migration job and reinstalling the Helm chart, you can resolve the database connection issue and ensure the ff-service connects to the newly created database.

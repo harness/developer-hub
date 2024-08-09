@@ -4,7 +4,7 @@ export const platformData: Horizon = {
     description: "What has been released",
 
     feature: [
-         {
+      {
         tag: [{ value: "Secure" }],
         title: "OIDC Support for GCP",
         description:
@@ -26,7 +26,7 @@ export const platformData: Horizon = {
         tag: [{ value: "Session Management" }],
         title: "Absolute session timeout",
         description:
-          "For enhanced security users can be logged out of their account after the configured timeout, regardless of any activity",
+          "For enhanced security, users can be logged out of their account after the configured timeout, regardless of any activity",
       },
       {
         tag: [{ value: "SMP" }],
@@ -47,39 +47,10 @@ export const platformData: Horizon = {
           "Setup a disaster recovery (DR) cluster for better node failure tolerance",
       },
       {
-        tag: [{ value: "SMP" }],
-        title: "External Database",
-        description:
-          "Configure external databases as a self-managed solution",
-      },
-    ],
-  },
-  Now: {
-    description: "Q2 2024, May-July 2024",
-    feature: [
-      {
-        title: "List UI Improvements",
-        description:
-          "Revamping and optimizing the list view feature in our application's user interface across all modules",
-        tag: [{ value: "UI" }],
-      },
-      {
-        tag: [],
-        title: "Pipeline Data Retention",
-        description:
-          "Extended Data Retention, Data Archiving and Compliance capabilites ",
-      },
-      {
         tag: [{ value: "Secure" }],
         title: "OIDC Support for AWS",
         description:
           "Use OpenID Connect (OIDC) to allow Harness to communicate directly with your AWS resources without secrets or credentials",
-      },
-      {
-        tag: [],
-        title: "Account Migration",
-        description:
-          "Customers can request to be migrated to a different SaaS cluster",
       },
       {
         tag: [{ value: "Notify" }],
@@ -96,35 +67,51 @@ export const platformData: Horizon = {
         tag: [{ value: "Scale" }],
         title: "Test Account Cluster",
         description:
-          "Customers can be onboarded in a new cluser for their test accounts",
-      },
-      {
-        tag: [{ value: "Resource Management" }],
-        title: "Project movement across organization",
-        description:
-          "",
-      },
-      {
-        tag: [],
-        title: "Multi-tenant SaaS in EU",
-        description:
-          "Customers can request to be onboarded to a multi-tenant Harness SaaS cluster in the EU region",
+          "Customers can be onboarded in a new cluster for their test accounts",
       },
       {
         tag: [{ value: "SMP" }],
-        title: "Multi-tenant SMP",
+        title: "External Database",
         description:
-          "Support creation of multiple accounts on Harness Self-Managed Enterprise Edition",
+          "Configure external databases as a self-managed solution",
       },
     ],
   },
-  Next: {
+  Now: {
     description: "Q3 2024, Aug-Oct 2024",
     feature: [
+      {
+        title: "List UI Improvements",
+        description:
+          "Revamping and optimizing the list view feature in our application's user interface across all modules",
+        tag: [{ value: "UI" }],
+      },
+      {
+        tag: [],
+        title: "Account Migration",
+        description:
+          "Customers can request to be migrated to a different SaaS cluster",
+      },
+      {
+        tag: [{value: "Pipeline"}],
+        title: "Pipeline Data Retention",
+        description:
+          "Extended Data Retention, Data Archiving, and Compliance capabilities",
+      },
       {
         tag: [{ value: "Pipeline" }, { value: "Template" }],
         title: "Template Library",
         description: "Open Source repository for Pipeline Templates",
+      },
+      {
+        tag: [{value: "Pipeline"}],
+        title: "Flexible Templates that Support User-Injected Steps",
+        description: "Users can pull a template into their pipeline and inject a step into it.",
+      },
+      {
+        tag: [{value: "Pipeline"}],
+        title: "Bulk Reconciliation when a User Update a Template ",
+        description: "When a user updates a template, they can now bulk update each pipeline referring to the template.",
       },
       {
         tag: [{ value: "Pipeline" }],
@@ -137,11 +124,6 @@ export const platformData: Horizon = {
         description: "Display custom banners in the Harness UI",
       },
       {
-        tag: [{ value: "Delegate" }],
-        title: "Restrict delegate usage",
-        description: "Ability to restrict delegate usage across Accounts/Orgs/Projects and Environments",
-      },
-      {
         tag: [],
         title: "Console log line limit",
         description: "Ability to increase the console log line limits",
@@ -149,12 +131,12 @@ export const platformData: Horizon = {
       {
         tag: [],
         title: "Auto Discovery of Entities in Git",
-        description: "When an entity is created in git it is created in Harness as well.",
+        description: "When an entity is created in Git it is created in Harness as well.",
       },
       {
         tag: [],
         title: "GitX for Triggers",
-        description: "Ability to configure triggers as code in a git provider."
+        description: "Ability to configure triggers as code in a Git provider."
       },
     ],
   },
@@ -167,8 +149,14 @@ export const platformData: Horizon = {
         description: "",
       },
       {
+        tag: [],
+        title: "Multi-tenant SaaS in EU",
+        description:
+          "Customers can request to be onboarded to a multi-tenant Harness SaaS cluster in the EU region",
+      },
+      {
         tag: [{ value: "Pipeline" }],
-        title: " DAG Support For Pipeline",
+        title: "DAG Support For Pipeline",
         description:
           "Enable complex flows such as parallel execution, stage grouping, etc.",
       },
@@ -195,7 +183,7 @@ export const platformData: Horizon = {
         title: "Customized notification body text",
         description:
           "Create and manage customized notification body text",
-      },
+      },    
       {
         tag: [{ value: "SMP" }],
         title: "Supported modules",

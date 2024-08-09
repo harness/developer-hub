@@ -43,7 +43,7 @@ curl -i -X POST \
   -H 'x-api-key: <yourpattoken>' \
   -d '{
     "action": "APPROVE",
-    "approverInputs": [
+    "approver_inputs": [
       {
         "name": "example_input1",
         "value": "value1"

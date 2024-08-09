@@ -2,7 +2,8 @@
 id: node-restart
 title: Node restart
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-restart
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-restart
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-restart
 ---
 Node restart disrupts the state of the node by restarting it.
 
@@ -10,14 +11,54 @@ Node restart disrupts the state of the node by restarting it.
 
 
 ## Use cases
-- Node restart fault determines the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod in the event of an unexpected node restart. 
-- It simulates loss of critical services (or node-crash). 
+- Node restart fault determines the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod in the event of an unexpected node restart.
+- It simulates loss of critical services (or node-crash).
 - It verifies resource budgeting on cluster nodes (whether request(or limit) settings honored on available nodes).
 - It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity or anti-affinity policies) or not.
 
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: node-restart
+spec:
+  definition:
+    scope: Cluster
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/exec"]
+    verbs: ["get", "list", "create"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "list"]
+```
+
 ### Prerequisites
 - Kubernetes > 1.16
-- Create a Kubernetes secret named `id-rsa` where the fault will be executed. The contents of the secret will be the private SSH key for `SSH_USER` that will be used to connect to the node that hosts the target pod in the secret field `ssh-privatekey`. 
+- Create a Kubernetes secret named `id-rsa` where the fault will be executed. The contents of the secret will be the private SSH key for `SSH_USER` that will be used to connect to the node that hosts the target pod in the secret field `ssh-privatekey`.
   - Below is a sample secret file:
 
     ```yaml
@@ -32,8 +73,8 @@ Node restart disrupts the state of the node by restarting it.
     ```
 
     Creating the RSA key pair for remote SSH access for those who are already familiar with an SSH client, has been summarized below.
-            
-    1. Create a new key pair and store the keys in a file named `my-id-rsa-key` and `my-id-rsa-key.pub` for the private and public keys respectively: 
+
+    1. Create a new key pair and store the keys in a file named `my-id-rsa-key` and `my-id-rsa-key.pub` for the private and public keys respectively:
     ```
     ssh-keygen -f ~/my-id-rsa-key -t rsa -b 4096
     ```
@@ -41,7 +82,7 @@ Node restart disrupts the state of the node by restarting it.
     ```
     ssh-copy-id -i my-id-rsa-key user@node
     ```
-            
+
     For further details, refer to [this](https://www.ssh.com/ssh/keygen/) documentation. After copying the public key to all nodes and creating the secret, you are all set to execute the fault.
 
 - The target nodes should be in the ready state before and after injecting chaos.
@@ -76,10 +117,10 @@ Node restart disrupts the state of the node by restarting it.
         <th> Description </th>
         <th> Notes </th>
       </tr>
-       <tr>    
+       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to run the stress command. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SSH_USER </td>
@@ -140,7 +181,7 @@ spec:
           VALUE: '60'
 ```
 
-### SSH user 
+### SSH user
 
 Name of the SSH user for the target node. Tune it by using the `SSH_USER` environment variable.
 

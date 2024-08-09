@@ -139,7 +139,7 @@ For information about output variables produced by plugins, go to [Plugin step s
 
 #### Environment variables
 
-Harness CI supports `DRONE_` environment variables. For more information, go to the [CI environment variables reference](../optimize-and-more/ci-env-var.md).
+Harness CI supports `DRONE_` environment variables. For more information, go to the [CI environment variables reference](/docs/continuous-integration/troubleshoot-ci/ci-env-var.md).
 
 ### Plugin configuration examples
 

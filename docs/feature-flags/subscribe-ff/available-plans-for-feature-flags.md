@@ -25,7 +25,7 @@ Below is an overview of the features of each plan. For a full list of all featur
 | 25,000 client monthly active users (MAUs) | 100,000 client monthly active users (MAUs) included, with more available for purchase if needed | 1 million client monthly active users (MAUs) included, with more available for purchase if needed |
 | Unlimited Feature Flags and Environments | Unlimited Feature Flags and Environments | Unlimited Feature Flags and Environments |
 | A Feature Flag dashboard | CI/CD Pipelines for rolling out your Flags | CI/CD Pipelines for rolling out your Flags |
-| CI/CD Pipelines for rolling out your Flags | [Automated progressive delivery](/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline) | [Automated progressive delivery](/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline) |
+| CI/CD Pipelines for rolling out your Flags | [Automated progressive delivery](/docs/feature-flags/use-ff/ff-build-pipeline/build-feature-flag-pipeline) | [Automated progressive delivery](/docs/feature-flags/use-ff/ff-build-pipeline/build-feature-flag-pipeline) |
 |  | External integrations | External integrations |
 |  | SLA guarantee | SLA guarantee |
 |  | Harness Standard Support\*, with the option to purchase Premier Support | Harness Standard Support\*, with the option to purchase Premier Support |

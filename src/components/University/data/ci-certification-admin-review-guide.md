@@ -16,8 +16,8 @@
 | Delve into Harness Connectors: configuration of Git, DockerHub, and more | [Connectors](/docs/category/connectors) |
 | **4. Harness CI Pipelines and Advanced Features** ||
 | Master Codebase configuration, shared paths, and step library, including plugin configurations | [Configure codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) |
-| Understand and set up advanced features like caching intelligence, test intelligence, and flow control | [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/) |
-| Configure pipeline features, including triggers, input sets, failure strategies, looping, and notifications | [Input sets and overlays](/docs/platform/pipelines/input-sets) |
+| Understand and set up advanced features like caching intelligence, test intelligence, and flow control | [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence) |
+| Configure pipeline features, including triggers, input sets, failure strategies, looping, and notifications | [Pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) |
 | **5. Pipeline Execution Strategies** ||
 | Get to grips with execution environments: running steps on host vs. containers | [Stage and step conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings/) |
 | Manage outputs, PR status updates, and understand chained pipelines | [Output variables with chained pipeline](https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables/) |

@@ -1,6 +1,8 @@
 ---
 id: ssm-chaos-by-id
 title: SSM chaos by ID
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/aws-ssm-chaos-by-id
 ---
 
 AWS SSM chaos by ID induces chaos on AWS EC2 instances using the Amazon SSM Run Command.
@@ -18,7 +20,7 @@ AWS SSM chaos by ID:
 ### Prerequisites
 - Kubernetes >= 1.17
 - The SSM document should be available in AWS.
-- Authentication is done using [IRSA](/docs/chaos-engineering/chaos-faults/aws/aws-iam-integration#set-up-your-target-accounts-for-irsa) or secret. For secret-based authentication, create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- Authentication is done using [IRSA](/docs/chaos-engineering/chaos-faults/aws/security-configurations/aws-iam-integration#set-up-your-target-accounts-for-irsa) or secret. For secret-based authentication, create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1

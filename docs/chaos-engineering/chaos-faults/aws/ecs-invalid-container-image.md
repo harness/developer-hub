@@ -5,15 +5,17 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-invalid-container-image
 ---
 
-ECS invalid container image allows you to update the Docker image used by a container in an Amazon ECS (Elastic Container Service) task. 
-This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+ECS invalid container image allows you to update the Docker image used by a container in an Amazon ECS (Elastic Container Service) task.
+It induces incorrect configuration in the task container on the target ECS task container.
+
+This experiment primarily involves ECS Fargate and doesn't depend on EC2 instances. [They](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
 
 ![ECS Invalid Container Image](./static/images/ecs-invalid-container-image.png)
 
 ## Use cases
 ECS invalid container image:
 - Tests the behavior of your ECS tasks when the container images are updated, and validates the resilience and performance of your ECS tasks during image updates.
-- Updates the Docker image of a container by modifying the task definition associated with the ECS service or task. 
+- Updates the Docker image of a container by modifying the task definition associated with the ECS service or task.
 - Simulates scenarios where container images are updated, that may impact the behavior of your application or infrastructure. For example, you can update the Docker image of a container to a newer version or a different image to test how your application handles image updates.
 - Validates the behavior of your application and infrastructure during simulated container image updates, such as:
   - Testing the resilience of your system during image updates, including verifying if the updated image is pulled successfully and if the container starts with the new image.
@@ -39,7 +41,7 @@ stringData:
 ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -85,12 +87,12 @@ Refer to the [common attributes](/docs/chaos-engineering/chaos-faults/common-tun
           <th> Description </th>
           <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
           <td> CLUSTER_NAME </td>
           <td> Name of the target ECS cluster. </td>
           <td> For example, <code>cluster-1</code>. </td>
         </tr>
-        <tr> 
+        <tr>
           <td> SERVICE_NAME </td>
           <td> Name of the ECS service under chaos. </td>
           <td> For example, <code>nginx-svc</code>. </td>
@@ -119,12 +121,12 @@ Refer to the [common attributes](/docs/chaos-engineering/chaos-faults/common-tun
         <td> Interval between successive instance terminations (in seconds).</td>
         <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Path to the AWS secret credentials.</td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
       </tr>
-      <tr> 
+      <tr>
         <td> IMAGE </td>
         <td> Provide the invalid image to be updated in the ECS container. </td>
         <td> Default: nginx. For more information, go to <a href="#invalid-ecs-container-image"> invalid ECS container image.</a></td>

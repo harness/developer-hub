@@ -60,5 +60,58 @@ A groupName is an identifier used to logically group metrics. To add a groupName
 
 Yes, You can deploy to selective stages.
 
+### I am trying to implement Continuous Verification in Harness, but I am not able to see the Continuous Verification or Verify option.
+
+Can you check and confirm the type of stage where you are trying to add the Verify step, as this option is only available with the CD (Deploy) stage.
 
 
+### Do I need to create a monitored service before running the execution?
+
+Monitored services will be created automatically after the execution of the service/environment combination. However, you have to setup the health source after that. If you have already created and configured the health source, you will be able to see the verification result in the first run itself.
+
+
+
+### Verification is getting skipped though there is monitored service configured for service+env combination.
+```
+No monitoredServiceRef is defined for service <servicename> and env <envename>
+```
+
+Can you check if Continuous Verification is selected for the configured monitored service health source under **Assign**.
+You can select the services for which you want to apply the metric.
+
+### Can we add multiple node filters while using Prometheus?
+
+Yes, you can use a multiple-node filter. All of those filters should be applied.
+
+### How do you select the correct Service Instance Identifier (SII)?
+
+It depends upon what kind of metric you want to monitor. For K8s deployments, the best SII selection is typically pod, podname, or containername.
+
+### I have set up a failure strategy at timeout, but it is not working for the verify step. Despite this, API calls for CloudWatch are still timing out. How can I resolve this issue?
+
+The failure strategy is for step time timeouts and not for api calls that are being made. You need to set up a failure strategy for all failures in these scenarios.
+
+### Can we use Coralogix as a verification provider?
+
+Yes, you can configure a custom health source and use the query with index.
+
+### How are appdynamics metrics being reported, and why are not all metrics being reported?
+
+So once you select the metric pack (performance and error), we do have some defined metrics that we pull and report on the data.
+
+### How to pull metrics that are not detected automatically for Appdynamics?
+
+You can configure a custom query under the health source and need to pass completeMetricPath.
+
+### In this custom verification of logs, I see it shows known, unknown, and unexpected frequencies. However, I want to define what is known, as some logs are expected, and I want to ignore them. 
+
+You can change the log preference and mark (not a risk) once you select Update event preference.
+
+### Why the verification graph looks different for metric vs log analysis.
+
+Log analysis uses a radar chart, while for metric analysis, a linear chart is used, and that’s why we see differences in the chart.
+
+### What is the group used for in the case of CV? I do not see an option to configure while using Appdynmaics as APM.
+
+Group is used to show the metric as per the defined group. For Appdynamics, New Relic, and Dynatrace, metrics are automatically grouped based on transactions.
+You will be able to select the group for the custom query that you configure.

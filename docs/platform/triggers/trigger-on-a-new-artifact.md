@@ -42,8 +42,10 @@ import Variables from '/docs/platform/shared/variables-not-supported.md'
 You can use the following artifact providers to triggers pipelines:
 
 - ACR (Azure Container Registry)
+- Amazon Machine Image (AMI)
 - Amazon S3
 - Artifactory Registry
+- Azure Artifacts
 - Bamboo
 - Custom Artifact
 - Docker Registry
@@ -52,18 +54,8 @@ You can use the following artifact providers to triggers pipelines:
 - Github Package Registry
 - Google Artifact Registry
 - Google Cloud Storage
-
-:::note
-The following artifact providers are supported behind the feature flag `CD_TRIGGER_V2`:
-
 - Jenkins
-- Azure Artifacts
 - Nexus3 Registry
-- Amazon Machine Image (AMI)
-
-Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 ## Important notes
 
@@ -76,7 +68,7 @@ Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
   :::
 
-- **Trigger based on file name:** The trigger is executed based on *file names* and not metadata changes.
+- **Trigger based on file name:** The trigger is executed based on *file names* and not metadata changes.
 - Do not trigger on the **latest** tag of an artifact, such as a Docker image. With latest, Harness only has metadata, such as the tag name, which has not changed, and so Harness does not know if anything has changed. The trigger will not be executed.
 - In Harness, you can select who is able to create and use triggers within Harness, but you must use your repository's RBAC to control who can add the artifacts or initiate the events that start the Harness trigger.
 - Whenever you create a trigger for the first time, Harness recommends submitting a tag or pushing an artifact to verify its functionality. By doing this, the trigger will execute and the pipeline will run as expected when subsequent tags are pushed.
@@ -86,7 +78,7 @@ Contact [Harness Support](mailto:support@harness.io) to enable the feature.
   When you link a Docker repository to a trigger, the trigger status will remain `pending` until there are available tags. After the first artifact push, the trigger status changes to `success` because of new tags, but this alone will not activate the pipeline. **The pipeline will only be triggered after a second push to Docker.**
 
   :::
-  
+
 - Whenever a trigger is created or updated, it takes about five to ten minutes for the polling job to start, and for the trigger to be in a working state. Harness recommends that you wait for five to ten minutes after a trigger is created or updated to push the artifact.
 - The polling stops when you disable a trigger. Artifact polling restarts after reenabling the trigger. Harness recommends that you submit a tag or push an artifact and verify the flow as this is treated as a new polling job.
 - Due to a Docker API limitation, image build numbers/tags are always listed in lexical order. To ensure that executions are triggered with the image pushed last, a best practice is to create build numbers or tags that can be sorted lexically using their creation date. Using this method, higher build numbers are assigned for higher creation dates. This ensures that the image pushed last is used when more than one image is pushed over a short period of time, such as less than 5 minutes.
@@ -158,7 +150,7 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 
 5. Select **Continue**.
 
-   In your Docker Registry connector, to connect to a public Docker registry like Docker Hub, use `https://registry.hub.docker.com/v2/`. To connect to a private Docker registry, use `https://index.docker.io/v2/`.
+   In your Docker Registry connector, to connect to a public Docker registry like Docker Hub, use `https://registry.hub.docker.com/v2/`. To connect to a private Docker registry, use `https://index.docker.io/v2/`.
 
 </TabItem>
 <TabItem value="GCR Artifacts" label="GCR Artifacts">
@@ -234,7 +226,7 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 4. In **Artifact Details**, specify the plan name, artifact paths, and builds to monitor.
 5. Select **Continue**.
 
-</TabItem>    
+</TabItem>
 </Tabs>
 
 ## Set conditions
@@ -247,7 +239,6 @@ You can use wildcards in the condition's value and you can select **Regex**.
 
 For example, if the build is `todolist-v2.0`:
 
-- With regex not selected, both `todolist*` or `*olist*` will match.
 - With regex selected, the regex `todolist-v\d.\d` will match.
 
 If the regex expression does not result in a match, Harness ignores the value.
@@ -372,7 +363,7 @@ You can use the following expressions:
 <+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.groupId>
 ```
 
-</TabItem>  
+</TabItem>
 </Tabs>
 
 ## Define multi-region artifact source

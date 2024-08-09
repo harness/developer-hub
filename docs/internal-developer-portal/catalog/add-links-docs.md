@@ -1,7 +1,7 @@
 ---
 title: How to add Links in Software Components
 description: Steps to add various links associated with the component.
-sidebar_position: 80
+sidebar_position: 9
 redirect_from:
   - /docs/internal-developer-portal/getting-started/add-links-docs
 ---

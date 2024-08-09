@@ -5,19 +5,19 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-io-stress
 ---
 
-VMware IO stress causes disk stress on the target VMware VMs. It aims to verify the resilience of applications that share this disk resource with the VM. 
+VMware IO stress causes disk stress on the target VMware VMs. It aims to verify the resilience of applications that share this disk resource with the VM.
 
 ![VMware IO Stress](./static/images/vmware-io-stress.png)
 
 ## Use cases
 
-- VMware IO stress determines the resilience of an application to unexpected spikes in resources. 
+- VMware IO stress determines the resilience of an application to unexpected spikes in resources.
 - It determines how well an application handles unexpected I/O stress.
 - It simulates slower disk operations by the application.
-- It simulates noisy neighbour problems by hogging the disk bandwidth. 
+- It simulates noisy neighbour problems by hogging the disk bandwidth.
 - It verifies the disk performance on increasing I/O threads and varying I/O block sizes.
 - It checks whether the application functions well under high disk latency conditions.
-- It checks for high I/O traffic that includes large I/O blocks, and in what cases other services monopolize the I/O disks. 
+- It checks for high I/O traffic that includes large I/O blocks, and in what cases other services monopolize the I/O disks.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
@@ -77,12 +77,12 @@ stringData:
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
         <td> Specify the size as a percentage of free space on the file system. </td>
         <td> For example, <code>40</code>. For more information, go to <a href="#filesystem-utilization-percentage"> file system utilization percentage.</a></td>
-      </tr>   
+      </tr>
        <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size in gigabytes(GB). FILESYSTEM_UTILIZATION_PERCENTAGE and FILESYSTEM_UTILIZATION_BYTES environment variables are mutually exclusive. If both are provided, FILESYSTEM_UTILIZATION_PERCENTAGE takes precedence. </td>
         <td> For example, <code>100</code>. For more information, go to <a href="#filesystem-utilization-bytes"> file system utilization bytes. </a></td>
-      </tr>  
+      </tr>
        <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of I/O workers involved in I/O disk stress. </td>
@@ -92,7 +92,7 @@ stringData:
         <td> VOLUME_MOUNT_PATH </td>
         <td> Location that points to the volume mount path used in I/O stress. </td>
         <td> For example, <code>/Users/admin/disk-02</code>. For more information, go to <a href="#mount-path"> mount path.</a></td>
-      </tr>   
+      </tr>
       <tr>
         <td> CPU_CORES </td>
         <td> Number of CPU cores that are subject to CPU stress.</td>
@@ -127,7 +127,7 @@ stringData:
 
 
 ### Filesystem utilization percentage
-It specifes the size as a percentage of free space on the file system. Tune it by using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable. 
+It specifies the size as a percentage of free space on the file system. Tune it by using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable.
 
 Use the following example to tune it:
 
@@ -155,7 +155,7 @@ spec:
 ```
 
 ### Filesystem utilization bytes
-It specifies the amount of free space on the file system in gigabytes(GB). Tune it by using the `FILESYSTEM_UTILIZATION_BYTES` environment variable. `FILESYSTEM_UTILIZATION_BYTES` is mutually exclusive with the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable. If both `FILESYSTEM_UTILIZATION_PERCENTAGE` and `FILESYSTEM_UTILIZATION_BYTES` environment variables are set, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes precendence.
+It specifies the amount of free space on the file system in gigabytes(GB). Tune it by using the `FILESYSTEM_UTILIZATION_BYTES` environment variable. `FILESYSTEM_UTILIZATION_BYTES` is mutually exclusive with the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable. If both `FILESYSTEM_UTILIZATION_PERCENTAGE` and `FILESYSTEM_UTILIZATION_BYTES` environment variables are set, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes precedence.
 
 Use the following example to tune it:
 

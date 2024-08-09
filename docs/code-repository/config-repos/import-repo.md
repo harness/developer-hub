@@ -41,6 +41,7 @@ You can [create repositories directly in Harness Code](./create-repo.md) or impo
    * To import a Bitbucket Server repository, your [BitBucket Server personal access token](https://confluence.atlassian.com/bitbucketserver072/personal-access-tokens-1005335924.html) must have repository `Read` permissions.
    * To import a GitHub repository, your [GitHub classic personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#personal-access-tokens-classic) must have `repo` and `read:org` [permissions](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes).
    * To import a GitLab repository, your [GitLab personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token) must have `read_api` and `read_repository` [scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes).
+   * To import an Azure DevOps repository, your [Azure DevOps personal access token](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) must have `Code (read)` scope.
 
 7. Select your preference for visibility (**Public** or **Private**).
 8. Select **Import Repository** or **Import Repositories**.

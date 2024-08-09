@@ -90,7 +90,9 @@ You can use [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variab
 
 The built-in **Upload Artifacts to JFrog Artifactory** step uses the [Artifactory Drone plugin](https://github.com/harness/drone-artifactory). If you don't (or can't) use the built-in step, you can also run this plugin directly in a [Plugin step](../../use-drone-plugins/plugin-step-settings-reference). You might need to do this if there is a particular configuration or flag that is not supported by the way the plugin is used in the built-in step.
 
-The settings are declared slightly differently when using a Plugin step, but you can still pass the `--build-name` and `--build-number` flags when using a Plugin step. For example:
+The settings are declared slightly differently when using a Plugin step, but you can still pass the `--build-name` and `--build-number` flags when using a Plugin step.
+
+To enable the publication of build information, you must set the `publish_build_info` to `true`. This feature requires both `build_name` and `build_number` to be specified, as they are essential for tracking and organizing builds in Artifactory. For example:
 
 ```yaml
               - step:
@@ -105,10 +107,12 @@ The settings are declared slightly differently when using a Plugin step, but you
                       url: YOUR_JFROG_ARTIFACTORY_URL
                       source: /path/to/source
                       target: /path/to/target
-                      build_name: <+pipeline.name> # You can use an expression or a fixed value.
-                      build_number: <+pipeline.executionID> # You can use an expression or a fixed value.
+                      build_name: <+pipeline.identifier> # You can use an expression or a fixed value.
+                      build_number: <+pipeline.sequenceId> # You can use an expression or a fixed value.
+                      publish_build_info: true
                       targetProps: key1=123;projectName=ExampleApp # Optional metadata/properties
 ```
+When publish_build_info is set to true, the plugin will publish detailed build information to the specified Artifactory, linking the uploaded artifacts with the provided build identifiers. 
 
 </details>
 

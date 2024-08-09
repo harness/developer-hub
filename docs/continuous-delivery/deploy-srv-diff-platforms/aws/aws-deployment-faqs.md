@@ -203,7 +203,7 @@ Please read more on this in the following [Documentation](https://developer.harn
 For First-Gen reference read the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/aws-deployments/ecs-deployment/ecs-blue-green-workflows/#ecs-bluegreen-using-dns)
 
 
-### How to create an AWS connector using `aws-iam-authenticator` on EKS Cluster with webIdentityToken?
+### How to create an AWS connector using aws-iam-authenticator on EKS Cluster with webIdentityToken?
 
 Please read how to set AWS connector on EKS Cluster in this [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-elastic-kubernetes-service-eks)
 Also, to align with AWS changes, it's important to note that the previous method of accomplishing this task has been deprecated in `kubectl version 1.21`. To address this, when utilizing the `Iam-authenticator plugin`, it is necessary to create a `Fargate profile` as part of the updated procedure.
@@ -359,16 +359,6 @@ To address a migrated pipeline, users can take the following steps:
 1.Migrate the current Launch Configuration to Launch Template. AWS provides the steps here: [AWS Launch Templates Migration Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-to-launch-templates.html).
 2. Once this is completed, everything should work seamlessly. However, the current pipeline will not function properly. To resolve this, we can create a new pipeline following the guidelines outlined here: [AWS ASG Tutorial for Canary Phased Deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment). 
 
-:::info note
-Please note that this feature is behind the feature flag CDS_ASG_PHASED_DEPLOY_FEATURE_NG, which needs to be enabled for this feature to take effect.
-:::
-
-
-### How will the feature flag `CDS_ASG_PHASED_DEPLOY_FEATURE_NG` function with my ASG deployment after updating my configuration from Launch Configuration to Launch Template during the migration of a pipeline from FirstGen to NextGen?
-
-Harness has redesigned the NextGen platform to support multiple strategies and accommodate new features provided by AWS like instance refresh, etc. Even though pipelines using Launch Configuration will still work, their design, especially the ASG rolling deploy step, differs from FirstGen. More details about the rolling deploy step can be found here: [ASG Tutorial](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#rolling).
-
-
 
 ### Are there guidelines or recommendations for scaling up VM build infrastructures, such as those hosted on EC2, for individuals managing and configuring their own infrastructure?
 
@@ -485,4 +475,102 @@ Yes. By default, deployments aren't forced. You can use the **Force new deployme
 
 '''
 
+### Does Harness support viewing the rendered launch template for ASG deployments after all the Harness expressions have been evaluated?
 
+No, Harness does not store the rendered launch template as an output variable, nor does it display the rendered launch templates in the console logs. We only indicate that the ASG configuration is created. For more details, go to [Harness ASG services](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#harness-asg-services).
+
+
+### IRSA Kubernetes deployment fails with an error: java.lang.IllegalStateException: Not a JSON Object: null.
+
+For EKS cluster deployments through an AWS connector that uses IRSA-based authentication, if the above error is seen during the initialization of the Kubernetes Rollout step, execute into the delegate to check if the `aws-iam-authenticator` being used is compatible with the CPU architecture of the node where the delegate is running.
+
+### How to validate if the aws-iam-authenticator installed on the delegate is correct and works as expected?
+
+The `aws-iam-authenticator` generates a token that `kubectl` uses to authenticate with the target cluster. The Harness delegate runs the following command to generate a token in JSON format:
+
+```
+aws-iam-authenticator token -i <eks-cluster-name> --role arn:aws:iam::12345678:role/CrossAccountEKSRole
+```
+
+### When configuring the EKS infrastructure, the clusters are listed. However, when trying to deploy a service to the cluster, the Kubernetes deployment fails. Why does this happen?
+
+When configuring the infrastructure, the AWS connector uses the AWS APIs to query the cluster. However, during the Kubernetes deployment, the deployment uses `kubectl` to communicate with the Kubernetes API server's endpoint to deploy the Kubernetes manifest. For the deployment to be successful, there must be network connectivity from the delegate to the Kubernetes API server endpoint. This connectivity might not exist if the cluster is private, so the delegate must reside in the same VPC as the cluster. For more details, go to [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#modify-endpoint-access).
+
+### How is the kubeconfig file generated for Kubernetes deployments with cross-account STS IRSA-based connectors?
+
+During the Kubernetes Rollout stage, the Harness Delegate generates the `kubeconfig` file using details from the infrastructure configured on the stage. The authentication token is generated using the `aws-iam-authenticator` command available on the delegate by passing the cross-account role and the cluster name.
+
+### Will the kubeconfig file continue to exist on the delegate pods?
+
+The `kubeconfig` generation process during deployment happens on the fly. The file is kept in a temporary location for the duration of the Kubernetes Rollout step, and is cleaned up once the step completes or fails.
+
+### Does Harness support using IRSA with ECS for deployment?
+
+No, IRSA is not used with ECS. Instead, ECS tasks get their own task roles, which is set up similar to IRSA. A delegate runs in ECS with a base role, and STS is used to assume a secondary role.
+
+### Does Harness support using Serverless CLI on a delegate?
+
+Yes, using the Serverless CLI on the delegate ensures that the delegate has the necessary permissions and environment setup. This includes adding node, Serverless, or AWS CLI to the delegate INIT script and managing STS/trust configurations appropriately for each environment and service role.
+
+### Does Harness support conditional input variables based on previous selections?
+
+No, currently Harness does not support dynamically showing different input variables based on previous selections during pipeline execution.
+For more details, go to [Stage and step conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings/#and-execute-this-stage-only-if-the-following-jexl-condition-evaluates-to-true).
+
+### Does Harness support displaying inputs only related to selected values in a pipeline?
+
+No, Harness does not support conditional displaying input variables based on previous selections.
+
+### Does Harness support using allowed values for dynamic input options?
+
+Yes, you can use allowed values to specify different input options for a variable, though it does not fully cover dynamic input based on previous selections.
+
+### Why is the run step failing with an NullPointerException error even though the correct roles are attached to the delegate 
+```
+Exception getAmazonEcrAuthToken
+java.lang.NullPointerException: You must specify a value for roleArn and roleSessionName
+```
+
+Please check the AWS connector used if connectivity test work and also check the service account attached to delegate if that has correct role assigned to access the resource
+
+Check to see if the AWS connector connectivity test passes. Also, check the service account attached to the delegate and see if it has the correct roles assigned to access the resource(s).
+
+### How can we add mean duration for prod and non-prod pipelines in dashboards?
+
+To get the mean duration for prod and non-prod pipelines, first create a measure to calculate the mean duration for the non-prod environment. Similarly, create a second measure for the prod environment. Finally, perform a table calculation on both custom measures and add them.
+
+### We need to extract the project tags based on the project name. Is there an API to do it?
+
+You can use: [API](https://apidocs.harness.io/tag/Project#operation/getProject) to get project details including tags.
+
+### What happens when my ECS service tasks repeatedly fail to start?
+When ECS service tasks repeatedly fail to start, they transition from PENDING to STOPPED without reaching the RUNNING state. The ECS service scheduler then throttles the restart attempts, incrementally increasing the time between restarts up to a maximum of 27 minutes. This helps manage the impact on your ECS cluster resources or Fargate infrastructure costs
+
+### Will the ECS service ever stop retrying to start failing tasks?
+No, Amazon ECS does not stop a failing service from retrying. The service will continue to attempt restarts indefinitely, but the time between attempts will increase incrementally if the tasks keep failing.
+
+###  How can we stop my ECS service from being throttled?
+To stop the throttling, you need to update your service to use a new task definition. This action will reset your service to a normal, non-throttled state immediately.
+
+### What should I do if my service tasks are being throttled?
+You should investigate and resolve the underlying issues causing the task failures. Common causes include insufficient resources, issues with pulling the Docker image, and insufficient disk space. Addressing these issues can help your tasks start successfully and avoid throttling.
+
+### Do tasks that stop after reaching the RUNNING state trigger throttling?
+No, tasks that are stopped after reaching the RUNNING state do not trigger the throttle logic or the associated service event message. For example, tasks stopped due to failed Elastic Load Balancing health checks or tasks that exit with a non-zero exit code after moving to the RUNNING state will not cause throttling.
+
+### What can cause insufficient resources for ECS tasks?
+Insufficient resources can be due to a lack of available ports, memory, or CPU units in your cluster. You will see an "insufficient resource" service event message if this is the problem. Ensure your cluster has adequate resources to accommodate your tasks.
+
+### How does Amazon ECS notify me about service throttling?
+If your service initiates the throttle logic, you receive a service event message stating that your service is unable to consistently start tasks successfully. This helps you identify when throttling is occurring so you can take corrective action.
+
+### What are common causes of ECS service tasks failing to start?
+
+Common causes includes Lack of resources (ports, memory, CPU units) in your cluster, Issues with pulling the Docker image due to incorrect image names, tags, or registry authentication problems, and Insufficient disk space on the container instance.
+
+### Why am I getting an `Invalid Request: No manifests found` error? 
+```
+Invalid request: No manifests found in stage Deploy_AMI. AsgRollingDeploy step requires a manifest defined in stage service definition
+```
+
+This means that your Launch Template and ASG Configuration are not setup correctly in your service under AWS ASG Configurations.

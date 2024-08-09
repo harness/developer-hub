@@ -1,5 +1,5 @@
 ---
-title: Terraform Plugins
+title: Terraform plugin commands
 description: Explore how to use Terraform commands within your pipelines effectively.
 sidebar_position: 10
 ---
@@ -27,7 +27,7 @@ The supported commands include:
 
 ### Initialize
 The `terraform init` command prepares a working directory containing Terraform configuration files, performing key functions like:
-- **Backend Initialization**: Sets up the backend for Terraform state management.
+- **Backend Initialization**: Sets up the backend for Terraform state management. Go to [Terraform backend initialization](https://developer.harness.io/docs/infra-as-code-management/remote-backends/init-configuration) for more information on how to use environment variables to initialize your infrastructure dynamically.
 - **Provider Installation**: Downloads and installs necessary provider plugins to interact with service provider APIs.
 - **Module Installation**: Downloads and sets up modules included in the configuration within the `.terraform` directory.
 

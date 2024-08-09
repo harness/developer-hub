@@ -6,6 +6,12 @@ sidebar_position: 20
 
 [Bullseye](https://www.bullseye.com/) is a C++ code coverage tool. You can use the Bullseye reports in SEI to analyze code coverage trends or identify code areas with poor test coverage.
 
+:::info
+The Bullseye reports are currently not available in Harness SEI. Contact Harness Support(mailto:support@harness.io) for more information.
+:::
+
+<!--
+
 ## Analyze Bullseye reports in SEI
 
 1. In your Harness project, go to the SEI module, and select **Account**.

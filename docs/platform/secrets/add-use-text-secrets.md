@@ -36,6 +36,10 @@ To create a text secret:
 
 5. Enter a **Name** for your secret. **Description** and **Tags** are optional.
 
+    :::note
+   Harness recommends not using hyphens/dashes (-) in variable and property names, because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software.
+   :::
+
    Harness automatically creates an **Id** based on the name. You can use the **Secret Name** and **Id** to [reference this secret elsewhere in Harness](#reference-the-secret-by-identifier).
 
    ![](../secrets/static/add-use-text-secrets-50.png)
@@ -53,6 +57,12 @@ To create a text secret:
    ![](../secrets/static/test-secret-reference-path.png)
 
 7. Select **Save**.
+
+  :::warning
+
+   Inline secrets of text types deleted in Harness are also deleted from the external secrets manager. Harness recommends that you always back up these secrets.
+   :::
+   
 
 ### Secret scope
 

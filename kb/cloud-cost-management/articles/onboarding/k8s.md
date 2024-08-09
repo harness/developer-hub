@@ -37,7 +37,17 @@ There a several ways to deploy the delegate [documented here](https://developer.
 
 When using Helm to deploy the delegate, you can provide the value `ccm.visibility: true` to provision a ClusterRole and Binding that includes the necessary permissions for the delegate to use the metrics server to gather usage data on the cluster.
 
-If you are not using this delegate to deploy or run builds in the cluster, or you want to prevent the delegate from being used for such activities, you need to be sure and set the value `k8sPermissionType: CLUSTER_VIEWER`. By default the delegate is deployed with `CLUSTER_ADMIN`.
+If you are not using this delegate to deploy or run builds in the cluster, or you want to prevent the delegate from being used for such activities, you need to be sure and set the value `k8sPermissionType: CLUSTER_VIEWER`. By default the delegate is deployed with `CLUSTER_ADMIN`. You can also set the environment variable `BLOCK_SHELL_TASK` to stop people from executing shell steps in pipelines on this delegate.
+
+An example `values.yaml` for a helm chart deployment is as follows:
+```
+k8sPermissionType: CLUSTER_VIEWER
+ccm:
+  visibility: true
+custom_envs:
+  - name: BLOCK_SHELL_TASK
+    value: "true"
+```
 
 When deploying a delegate, it is recommended that you name the delegate either the same as the cluster name or something very similar that makes it obvious what cluster the delegate is deployed into.
 
@@ -154,13 +164,15 @@ Once you have the CCM Kubernetes connector up and running you should start to re
 
 If you want to perform auto stopping in a Kubernetes cluster you will need to deploy the Harness auto stopping controller and router into your cluster.
 
-To get the deployment manifest for both components navigate to CCM in the Harness UI, under `Setup`,  `Cloud Integration`, and view your current connectors under `Kubernetes Clusters`. Find your connector in the list and select the three dots on the right and select `Edit Cost Access Features`.
+[There is a helm chart for deploying the controller and router here](https://github.com/rssnyder/harness-ccm-autostopping).
+
+Otherwise, to get the deployment manifest for both components navigate to CCM in the Harness UI, under `Setup`,  `Cloud Integration`, and view your current connectors under `Kubernetes Clusters`. Find your connector in the list and select the three dots on the right and select `Edit Cost Access Features`.
 
 Click `continue` through the menus until you land on the `Enable auto stopping` page. At this point you will be directed to do the following:
 
 - Create a `harness-auto stopping` namespace
-- Create a FirstGen API token
-  - You may not have access in FirstGen, but the SE for the customer probably does, and you can get them to give the customer access
+- Create a Harness API token
+  - The API token will need `CCM Admin` permissions
 - Create a secret in the namespace with the API token
 
 On the next page you are given a deployment yaml that encompasses the auto stopping controller, router, CRDs, and supporting infrastructure. This needs to be deployed directly into the cluster where you want to auto stop resources.

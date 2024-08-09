@@ -5,11 +5,6 @@ export const SeiData: Horizon = {
     description: "Q2, 2024, May-Jul 2024",
     feature: [
       {
-        tag: [{ value: "Enhanced Insigths" }],
-        title: "Panorama Insight Dashboards",
-        description: "Provide organization-wide and holistic insights for executives to have a comprehensive view of productivity, efficiency, and developer experience."
-      },
-      {
         tag: [{ value: "Data Accuracy" }],
         title: "Built-in Data Ingestion Monitoring and Validation",
         description: "Monitor and validate data ingestion inside the product, allowing customers to monitor the data ingestion, proactively notify potential issues, and run spot checks for specific data points.",
@@ -41,9 +36,9 @@ export const SeiData: Horizon = {
         description: "Provide a consistent look and feel with the rest of Harness modules and leverage Harness platform capabilities, such as user authentication and authorization, and account and license management.",
       },
       {
-        tag: [{ value: "DX Survey" }],
-        title: "Advanced Developer Experience Survey Beta",
-        description: "Measure developer experience through customizable survey templates and benchmark the result across your organization and industry. The results, combined with quantitative insights generated from the SDLC tools, give leaders a comprehensive picture of developer productivity and delivery efficiency.",
+        tag: [{ value: "Enhanced Insigths" }],
+        title: "Panorama Insight Dashboards",
+        description: "Provide organization-wide and holistic insights for executives to have a comprehensive view of productivity, efficiency, and developer experience."
       },
       {
         tag: [{ value: "Easy Adoption" }],
@@ -65,6 +60,11 @@ export const SeiData: Horizon = {
         tag: [{ value: "Enhanced Insights" }, { value: "AIDA"}],
         title: "Personalized Team Recommendations",
         description: "Offer recommendations for improving productivity, removing bottlenecks, enhancing developer experience based on qualitative and quantitative insights, powered by Harness AIDA.",
+      },
+      {
+        tag: [{ value: "DX Survey" }],
+        title: "Advanced Developer Experience Survey Beta",
+        description: "Measure developer experience through customizable survey templates and benchmark the result across your organization and industry. The results, combined with quantitative insights generated from the SDLC tools, give leaders a comprehensive picture of developer productivity and delivery efficiency.",
       },
       {
         tag: [{ value: "Enhanced Insights" }],

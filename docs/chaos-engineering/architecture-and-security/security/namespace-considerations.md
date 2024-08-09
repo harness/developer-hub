@@ -15,7 +15,7 @@ If your application fails, the above-mentioned technique also helps pin-point th
 
 ### Step 1. Install CE in cluster mode
 
-- Install CE in cluster mode with the given installation manifest. 
+- Install CE in cluster mode with the given installation manifest.
 - Restrict `hce` service account to certain target namespaces.
 
 ### Step 2. Delete `hce` ClusterRole and ClusterRoleBinding
@@ -39,7 +39,7 @@ clusterrolebinding.rbac.authorization.k8s.io "hce" deleted
 
 ### Step 3. Create Role and RoleBinding in all target namespaces
 
-This allows specific namespaces for chaos operations. Create Role and RoleBinding in these specific namespaces (say `namespaceA` and `namespaceB`). 
+This allows specific namespaces for chaos operations. Create Role and RoleBinding in these specific namespaces (say `namespaceA` and `namespaceB`).
 
 The manifest for `role-1.yaml` in `namespaceA` will look as shown below.
 
@@ -57,7 +57,7 @@ rules:
   - apiGroups: [""]
     resources: ["pods"]
     verbs: ["create","delete","get","list","patch","update", "deletecollection"]
-  # Performs CRUD operations on the events inside chaosengine and chaosresult
+  # Performs CRUD operations on the events inside chaos engine and chaos result
   - apiGroups: [""]
     resources: ["events"]
     verbs: ["create","get","list","patch","update"]
@@ -65,7 +65,7 @@ rules:
   - apiGroups: [""]
     resources: ["configmaps"]
     verbs: ["get","list",]
-  # Track and get the runner, experiment, and helper pods log 
+  # Track and get the runner, experiment, and helper pods log
   - apiGroups: [""]
     resources: ["pods/log"]
     verbs: ["get","list","watch"]
@@ -73,7 +73,7 @@ rules:
   - apiGroups: [""]
     resources: ["services"]
     verbs: ["create", "get", "list"]
-  # for creating and managing to execute comands inside target container
+  # for creating and managing to execute commands inside target container
   - apiGroups: [""]
     resources: ["pods/exec", "pods/eviction", "replicationcontrollers"]
     verbs: ["get", "list", "create"]
@@ -81,7 +81,7 @@ rules:
   - apiGroups: ["apps"]
     resources: ["deployments", "statefulsets"]
     verbs: ["list", "get", "patch", "update"]
-  # deriving the parent/owner details of the pod(if parent is deploymentConfig)  
+  # deriving the parent/owner details of the pod(if parent is deploymentConfig)
   - apiGroups: ["apps.openshift.io"]
     resources: ["deploymentconfigs"]
     verbs: ["list","get"]
@@ -144,7 +144,7 @@ rules:
   - apiGroups: [""]
     resources: ["pods"]
     verbs: ["create","delete","get","list","patch","update", "deletecollection"]
-  # Performs CRUD operations on the events inside chaosengine and chaosresult
+  # Performs CRUD operations on the events inside chaos engine and chaos result
   - apiGroups: [""]
     resources: ["events"]
     verbs: ["create","get","list","patch","update"]
@@ -152,7 +152,7 @@ rules:
   - apiGroups: [""]
     resources: ["configmaps"]
     verbs: ["get","list",]
-  # Track and get the runner, experiment, and helper pods log 
+  # Track and get the runner, experiment, and helper pods log
   - apiGroups: [""]
     resources: ["pods/log"]
     verbs: ["get","list","watch"]
@@ -160,7 +160,7 @@ rules:
   - apiGroups: [""]
     resources: ["services"]
     verbs: ["create", "get", "list"]
-  # for creating and managing to execute comands inside target container
+  # for creating and managing to execute commands inside target container
   - apiGroups: [""]
     resources: ["pods/exec", "pods/eviction", "replicationcontrollers"]
     verbs: ["get", "list", "create"]
@@ -168,7 +168,7 @@ rules:
   - apiGroups: ["apps"]
     resources: ["deployments", "statefulsets"]
     verbs: ["list", "get", "patch", "update"]
-  # deriving the parent/owner details of the pod(if parent is deploymentConfig)  
+  # deriving the parent/owner details of the pod(if parent is deploymentConfig)
   - apiGroups: ["apps.openshift.io"]
     resources: ["deploymentconfigs"]
     verbs: ["list","get"]
@@ -237,7 +237,7 @@ $> kubectl apply -f role-2.yaml
 
 ### Step 4. Create Role and RoleBinding in all target namespaces
 
-Create a Role and RoleBinding in the chaos namespace as well. This will be used by chaos runner pod to launch experiment. 
+Create a Role and RoleBinding in the chaos namespace as well. This will be used by chaos runner pod to launch experiment.
 
 ### Step 5. Verify the chaos execution on different namespaces
 

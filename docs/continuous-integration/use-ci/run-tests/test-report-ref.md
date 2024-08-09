@@ -1,17 +1,15 @@
 ---
 title: Format test reports
 description: Test reports must be in JUnit XML format to appear on the Tests tab.
-sidebar_position: 50
+sidebar_position: 30
 redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/test-report-ref
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-Results on the [Tests tab](./viewing-tests.md) are parsed from test reports specified in the **Report Paths** setting in **Run** and **Run Tests** steps. Test reports must be in [JUnit XML format](https://llg.cubic.org/docs/junit/) to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only.
+Results on the [Tests tab](./viewing-tests.md) are parsed from test reports specified in the **Report Paths** setting in **Run** and **Test** steps. Test reports must be in [JUnit XML format](https://llg.cubic.org/docs/junit/) to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only.
 
 For optimal rendering in the Harness UI, there is a limit of 8,000 characters per field. If a field in your XML file contains more than 8,000 characters, the output might render incorrectly on the **Tests** tab.
 
@@ -59,24 +57,38 @@ You can use the [--output-junit](https://cmake.org/cmake/help/latest/manual/ctes
 <details>
 <summary>Gradle</summary>
 
-This example runs Gradle with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md). You can also run Java tests in [Run steps](./run-tests-in-ci.md).
+Run step:
 
 ```yaml
               - step:
-                  type: RunTests
-                  identifier: Run_Tests_with_Intelligence
-                  name: Run Tests with Intelligence
+                  type: Run
+                  ...
                   spec:
-                    args: test --tests
-                    buildTool: Gradle
-                    enableTestSplitting: true
-                    language: Java
+                    shell: Sh
+                    command: |-
+                     test --tests
+                    ...
                     reports:
+                      type: JUnit
                       spec:
                         paths:
                           - "/harness/results.xml"
                       type: JUnit
-                    runOnlySelectedTests: true
+```
+
+Test step:
+
+```yaml
+              - step:
+                  type: Test
+                  name: Intelligent Tests
+                  identifier: test
+                  spec:
+                    command: test --tests
+                    shell: Sh
+                    ...
+                    reports:
+                      - "/harness/results.xml"
 ```
 
 </details>
@@ -141,31 +153,28 @@ If you use [test splitting](./speed-up-ci-test-pipelines-using-parallelism) with
 </details>
 
 <details>
-<summary>Pytest with Test Intelligence (Run Tests step)</summary>
+<summary>Pytest with Test Intelligence (Test step)</summary>
 
-This example runs pytest with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
+This example runs pytest with [Test Intelligence](./ti-overview.md).
 
 ```yaml
               - step:
-                  type: RunTests
-                  name: Run Python Tests
-                  identifier: Run_Python_Tests
+                  type: Test
+                  name: Intelligent Tests
+                  identifier: test
                   spec:
-                    language: Python
-                    buildTool: Pytest
-                    args: "--junitxml=out_report.xml"
-                    runOnlySelectedTests: true
-                    preCommand: |
+                    command: |-
                       python3 -m venv .venv
                       . .venv/bin/activate
 
                       python3 -m pip install -r requirements/test.txt
                       python3 -m pip install -e .
+
+                      pytest --junitxml=out_report.xml
+                    shell: Python
+                    ...
                     reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - out_report.xml*
+                      - out_report.xml*
 ```
 
 </details>
@@ -230,43 +239,6 @@ If your test tool doesn't automatically produce test results in JUnit XML format
                           - UnitTestResults.xml
 ```
 
-<!-- Framework example
-The following example runs tests with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
-
-```yaml
-                  - step:
-                      type: RunTests
-                      name: runTests
-                      identifier: runTest
-                      spec:
-                        language: Csharp
-                        buildEnvironment: Framework
-                        frameworkVersion: "5.0"
-                        buildTool: Nunitconsole
-                        args: . "C:/Program Files (x86)/NUnit.org/nunit-console/nunit3-console.exe" dotnet-agent/TestProject1/bin/Debug/net48/TestProject1.dll --result="UnitTestResults.xml;transform=nunit3-junit.xslt"
-                        packages: TestProject1
-                        namespaces: TestProject1
-                        runOnlySelectedTests: true
-                        preCommand: |-
-                          wget https://github.com/nunit/nunit-console/releases/download/3.13/NUnit.Console-3.13.0.msi -o nunit.msi
-                          ./nunit.msi
-                          git status
-                          cd dotnet-agent/TestProject1
-                          wget -UseBasicParsing https://dot.net/v1/dotnet-install.ps1 -o dotnet-install.ps1
-                          .\dotnet-install.ps1
-                          dotnet build
-                          cd ..
-                          cd ..
-                          wget https://raw.githubusercontent.com/nunit/nunit-transforms/master/nunit3-junit/nunit3-junit.xslt -o nunit3-junit.xslt
-                        reports:
-                          type: JUnit
-                          spec:
-                            paths:
-                              - UnitTestResults.xml
-                        shell: Powershell
-```
--->
-
 </details>
 
 ### Clojure
@@ -306,24 +278,40 @@ You can use the [go-junit-report](https://github.com/jstemmer/go-junit-report) t
 <details>
 <summary>Maven Surefire Plugin</summary>
 
-This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs tests with Maven and [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
+This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/).
+
+Run step:
 
 ```yaml
               - step:
-                  type: RunTests
-                  identifier: Run_Tests_with_Intelligence
-                  name: Run Tests with Intelligence
+                  type: Run
+                  ...
                   spec:
-                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
-                    buildTool: Maven
-                    enableTestSplitting: true
-                    language: Java
+                    shell: Sh
+                    command: |-
+                     test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+                    ...
                     reports:
+                      type: JUnit
                       spec:
                         paths:
                           - "target/surefire-reports/*.xml"
                       type: JUnit
-                    runOnlySelectedTests: true
+```
+
+Test step:
+
+```yaml
+              - step:
+                  type: Test
+                  name: Intelligent Tests
+                  identifier: test
+                  spec:
+                    command: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+                    shell: Sh
+                    ...
+                    reports:
+                      - "target/surefire-reports/*.xml"
 ```
 
 </details>

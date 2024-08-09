@@ -26,16 +26,14 @@ The Harness modules below can be enabled or disabled conditionally:
 - Harness Security Testing Orchestration (STO)
 - Harness Service Reliability Management (SRM)
 - Harness Feature Flags (FF)
-- Harness Continuous Error Tracking (CET)
 
-For more information, go to [Deploy Harness modules](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga#deploy-harness-modules).
+For more information, go to [Deploy Harness modules](/docs/self-managed-enterprise-edition/install/install-using-helm#deploy-harness-modules).
 
 ## Which Harness modules are supported?
 
 - [Chaos Engineering](/docs/chaos-engineering/whats-supported)
 - [Cloud Cost Management (Beta)](/docs/cloud-cost-management/get-started/ccm-smp/smp-ccm-roadmap)
 - [Continuous Delivery and GitOps](/docs/continuous-delivery/cd-integrations)
-- [Continuous Error Tracking (Beta)](/docs/continuous-error-tracking/whats-supported)
 - [Continuous Integration](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/#feature-compatibility-matrix)
 - [Custom Dashboards](/docs/platform/dashboards/cdb-whats-supported)
 - [Feature Flags](/docs/feature-flags/ff-supported-platforms)
@@ -57,15 +55,15 @@ For more information, go to [Configure Harness Self-Managed Enterprise Edition t
 
 ## Can I use self-signed certificates?
 
-Yes. There are additional steps that you must take to configure self-signed certificates. For more information, go to [Use self-signed certificates](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga#use-self-signed-certificates-with-helm-based-installations).
+Yes. There are additional steps that you must take to configure self-signed certificates. For more information, go to [Use self-signed certificates](/docs/self-managed-enterprise-edition/install/install-using-helm#use-self-signed-certificates-with-helm-based-installations).
 
 ## How do I manage feature flags?
 
-You update Feature Flags using the `override.yaml` file for the Helm chart of your base installation. You can also update the `values.yaml` file for your Kubernetes delegate. For more information, go to [Manage Feature Flags](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/manage-feature-flags).
+You update Feature Flags using the `override.yaml` file for the Helm chart of your base installation. You can also update the `values.yaml` file for your Kubernetes delegate. For more information, go to [Manage Feature Flags](/docs/self-managed-enterprise-edition/install/manage-feature-flags).
 
 ## Can I install Harness Self-Managed Enterprise Edition in an air-gapped environment?
 
-Yes. For more information, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment).
+Yes. For more information, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
 
 ## How can I upgrade volumes created during Helm installation from gp2 to gp3?
 

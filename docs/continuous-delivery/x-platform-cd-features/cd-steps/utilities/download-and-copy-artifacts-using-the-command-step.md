@@ -10,6 +10,8 @@ You can run a script on all hosts, download the deployment artifact, or copy the
 
 You can also use the Command step on deployment template deployments. Since a deployment template can be used on any host type, the Command step can only be run on the delegate.
 
+The Command step mandates the use of a [repeat looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#repeat-strategies) even if you want to deploy to a single server. 
+
 ## Command step summary
 
 Let's review the details of the Command step.
@@ -28,7 +30,7 @@ Also, the looping strategy needed to run the Command step on each target host is
 
 :::info Note
 
-The Command step supports only the **Repeat** looping strategy.
+The Command step only supports the **Repeat** looping strategy. This includes scenarios where you only want to deploy to a single server. 
 
 :::
 
@@ -53,6 +55,20 @@ repeat:
 ```
 
 ![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-06.png)
+
+If you want to deploy to a single server, you can: 
+
+Specify your host explicitly:
+```yaml
+repeat:
+  items: ["0.0.0.0"]
+```
+
+Or with runtime values:
+```yaml
+repeat:
+  items: <+pipeline.variables.test123>.split(",")
+```
 
 For the download artifact and copy the artifact/config commands, you do not need the looping strategy. These commands should be run once on the delegate. These commands will download the artifact and copy the artifact/config to the delegate only, not the target hosts.
 
@@ -182,7 +198,9 @@ For example, a destination path for a stage that deploys **todolist.war** using 
 
 `$HOME/tutorial-service-ssh2/ssh-tutorial-env/todolist.war`
 
-You can use any path on the target hosts you want. Harness will not create the path if it does not exist.
+You can use any path on the target hosts you want. If the parent directory of the path exists, then the sub-directory will be created. However, if the parent directory does not exist, the command will fail. 
+
+For example, if the path given was `/parent-dir/sub-dir`, then it would create `/sub-dir` if `/parent-dir` existed but would fail if `/parent-dir` did not exist. 
 
 Here's an example of the results of a copy artifact command:
 
@@ -301,12 +319,26 @@ Since a deployment template can be used on any host type, the Command step can o
 To run the Command step on all the target hosts, you must use the repeat [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) and expression `<+stage.output.hosts>`:
 
 
-```
+```yaml
 repeat:  
   items: <+stage.output.hosts>
 ```
 
 ![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-16.png)
+
+If you want to deploy to a single server, you can: 
+
+Specify your host explicitly:
+```yaml
+repeat:
+  items: ["0.0.0.0"]
+```
+
+Or with runtime values:
+```yaml
+repeat:
+  items: <+pipeline.variables.test123>.split(",")
+```
 
 When you run the pipeline, you will see the Command step run on each host. For example, here is an SSH deployment where download, copy artifact, and copy config Command steps are run using the looping strategy:
 

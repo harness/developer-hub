@@ -24,7 +24,9 @@ There are several options for handling `settings.xml` in Harness CI:
 You can use expressions to reference secrets in step commands, such as:
 
 ```
-echo '<+secrets.getValue("account.[settingsXMLSecretID]")>' > settings.xml
+cat > settings.xml <<- EOM
+<+secrets.getValue("account.[settingsXMLSecretID]")>
+EOM
 ```
 
 If you need to share `settings.xml` with multiple steps in the same stage, declare it in **Shared Paths**. For more information, go to [Share data between steps in a stage](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/).
@@ -50,27 +52,31 @@ You need permissions to create, edit, and view secrets at the account scope to b
 
 ## Transcribe the text secret into settings.xml
 
-Create a new `settings.xml` file in the Harness working directory (`/harness`) and include a command in your pipeline to assign the value of your settings XML text secret to that file. To do this, modify the [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) or [Run Tests step](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) where your Maven tests run.
+Create a new `settings.xml` file in the Harness working directory (`/harness`) and include a command in your pipeline to assign the value of your settings XML text secret to that file. To do this, modify the [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) or [Test step](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2) where your Maven tests run.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-  <TabItem value="run" label="Run step" default>
+  <TabItem value="run" label="Run or Test step" default>
 
-If your Maven tests run in a **Run** step, add the following to the **Command**:
+If your Maven tests run in a **Run** or **Test** step, add the following to the **Command**:
 
 ```
-echo '<+secrets.getValue("account.settingsXML")>' > settings.xml
+cat > settings.xml <<- EOM
+<+secrets.getValue("account.settingsXML")>
+EOM
 ```
 
 </TabItem>
-  <TabItem value="run-tests" label="Run Tests step">
+  <TabItem value="run-tests" label="Run Tests step (deprecated)">
 
 If your Maven tests run in a **Run Tests** step, add the following to the **Pre-Command**:
 
 ```
-echo '<+secrets.getValue("account.settingsXML")>' > settings.xml
+cat > settings.xml <<- EOM
+<+secrets.getValue("account.settingsXML")>
+EOM
 ```
 
 </TabItem>
@@ -91,7 +97,9 @@ If your `settings.xml` file is in the `~/.m2/` directory, Maven can read the sec
 For example, if you can use the following command to transcribe the [settings.xml text secret](#transcribe-the-text-secret-into-settingsxml) to `~/.m2/`:
 
 ```
-echo '<+secrets.getValue("account.settingsXML")>' > ~/.m2/settings.xml
+cat > ~/.m2/settings.xml <<- EOM
+<+secrets.getValue("account.settingsXML")>
+EOM
 ```
 
 And then you only need `mvn test` to run the test.

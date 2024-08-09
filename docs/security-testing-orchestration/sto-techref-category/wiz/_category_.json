@@ -1,0 +1,11 @@
+{
+    "label": "Wiz",
+    "position": 415,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+       "type": "generated-index",
+       "title": "Wiz"
+    }
+ }

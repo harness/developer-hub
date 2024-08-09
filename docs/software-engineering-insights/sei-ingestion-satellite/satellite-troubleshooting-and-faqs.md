@@ -251,7 +251,7 @@ Example:
 
 #### **Step 3: Disable SSL Validation (Optional)** <a href="#step-3-disable-ssl-validation-optional" id="step-3-disable-ssl-validation-optional"></a>
 
-If you encounter issues related to SSL certificates, consider disabling SSL validation temporarily. Add `allow_unsafe_ssl: true` under the jira section in the root section of the YAML file.&#x20;
+If you encounter issues related to SSL certificates, consider disabling SSL validation temporarily. Add `allow_unsafe_ssl: true` under the jira section in the root section of the YAML file. 
 
 ```
 jira:

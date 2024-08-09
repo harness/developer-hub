@@ -35,7 +35,7 @@ stringData:
 ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to help execute the fault.
@@ -73,7 +73,7 @@ Below is an example AWS policy to help execute the fault.
         <th> Description </th>
         <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
         <td> CLUSTER_NAME </td>
         <td> Name of the target ECS cluster.</td>
         <td> For example, <code>cluster-1</code>. </td>
@@ -128,7 +128,7 @@ Below is an example AWS policy to help execute the fault.
         <td> Period to wait before and after injecting chaos (in seconds).</td>
         <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Path to the AWS secret credentials. </td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
@@ -138,7 +138,7 @@ Below is an example AWS policy to help execute the fault.
 
 ### ECS service name
 
-Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable. 
+Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -171,7 +171,7 @@ spec:
 
 ### ECS task replica IDs
 
-Task replicas that have a specific ID which are to be stoppee. Tune it by using the `TASK_REPLICA_ID` environment variable.
+Task replicas that have a specific ID which are to be stopped. Tune it by using the `TASK_REPLICA_ID` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 

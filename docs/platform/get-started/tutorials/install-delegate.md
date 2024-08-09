@@ -23,7 +23,7 @@ import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
 
 ### Create a new delegate token
 
-You can install delegates from the Account, Project, or Org scope. In this example, we'll install create a new token in the Account scope.
+You can install delegates from the Account, Project, or Org scope. In this example, we'll create a new token in the Account scope.
 
 To create a new delegate token, do the following:
 
@@ -163,7 +163,7 @@ To install a Helm delegate for Harness Self-Managed Enterprise Edition in an air
 helm repo add harness-delegate --ca-file <.PEM_FILE_PATH> <HELM_CHART_URL_FROM_UI>
 ```
 
-For more information on requirements for air-gapped environments, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment).
+For more information on requirements for air-gapped environments, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
 
 :::
 

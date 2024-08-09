@@ -9,143 +9,109 @@ import TabItem from '@theme/TabItem';
 
 Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
-There are several ways to configure caching in Harness CI, such as Cache Intelligence, Save and Restore Cache steps, and mounting volumes. Save and Restore Cache steps and mounted volumes require you to manage the cache. With Cache Intelligence, Harness automatically caches and restores common dependencies. Cache Intelligence doesn't require you to bring your own storage, because the cache is stored in the Harness-managed environment, Harness Cloud.
 
-<DocVideo src="https://www.loom.com/share/20703014b50042b5972e14cefea87f49?sid=d87d4bad-6482-44f2-a379-0b843c399a26" />
+With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) feature, Harness automatically caches and restores software dependencies to speed up your builds - hassle free.
 
-## Prerequisites
+You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
-Review these requirements for using Cache Intelligence.
+:::note
+Cache intelligence for self-managed build infrastructure is an early access feature and is behind the feature flag `CI_ENABLE_CACHE_INTEL_SELF_HOSTED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
-### Supported build infrastructures
 
-Currently, Cache Intelligence is only available for Linux and Windows platforms on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), the Harness-managed build environment.
+## Supported tools and paths
 
-For other build infrastructures, you can use Save and Restore Cache steps, such as [Save and Restore Cache from S3](./saving-cache.md), to include caching in your CI pipelines.
+Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, and **Node** build tools, as long as default cache paths are used. 
 
-### Supported tools and paths
+For other build tools or non-default cache locations, you use Cache Intelligence with [custom cache paths](#customize-cache-paths).
 
-Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, and **Node** build tools, _if the dependencies are stored in the default location for that tool_.
+## Cache storage
 
-For other build tools or non-default cache locations, you can leverage Harness Cloud's cache storage by [enabling Cache Intelligence](#enable-cache-intelligence) and providing [custom cache paths](#customize-cache-paths).
+When you use Cache Intelligence with Harness CI Cloud, the cache is stored in the Harness-managed environment. When running builds on self-managed infrastructure, you will need to provide your own storage. 
 
-### Cache storage
+<Tabs>
+<TabItem value="cloud" label="Harness Cloud" default>
 
-Cache Intelligence also doesn't require you to bring your own storage, because the cache is stored in the Harness-managed environment, Harness Cloud.
+When you use Cache Intelligence with [Harness CI Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you don't need to bring your own storage, because the cache is stored in Harness-managed Harness Cloud storage.
 
-Harness Cloud allows up to 2GB of cache storage per account. All pipelines in the account use the same cache storage, and each build tool has a unique cache key that is used to restore the appropriate cache data at runtime.
+All pipelines in the account use the same cache storage, and each build tool has a unique cache key that is used to restore the appropriate cache data at runtime.
 
-The cache retention window is 15 days, which resets whenever the cache is updated.
+The cache storage limit depends on your subscription plan type:
+
+* Free: 2 GB
+* Team: 5 GB
+* Enterprise: 10 GB
+
+Harness doesn't limit the number of caches you can store, but, once you reach your storage limit, Harness continues to save new caches by automatically evicting old caches.
+
+The cache retention window is 15 days, which resets whenever a cache is updated.
+
+</TabItem>
+<TabItem value="sm" label="Self-managed build infrastructures">
+
+When running builds in self-managed infrastructures, [configure S3-compatible  default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
+
+We suggest that you consider setting bucket level retention policy for efficient cache management. 
+
+</TabItem>
+</Tabs>
+
 
 ## Enable Cache Intelligence
 
-<Tabs>
-  <TabItem value="Visual" label="Visual">
+1. If you're *not* using Harness Cloud build infrastructure, you must [configure S3-compatible global object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to store and manage caches.
 
-:::note
+   This is not required for Harness Cloud build infrastructure. For more information, go to [Cache storage](#cache-storage).
 
-Currently, the Cache Intelligence Visual Editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+2. Enable Cache Intelligence in each applicable stage in your pipeline.
 
-:::
+   To do this in the Visual editor, select a **Build** stage, select the stage's **Overview** tab, and then select **Enable Cache Intelligence**.
 
-1. Edit the pipeline, and select the **Build** stage where you want to enable Cache Intelligence.
-2. On the stage's **Overview** tab, select **Enable Cache Intelligence**.
-3. If you're using an unsupported build tool, a non-default cache location, or a Windows platform, then you must add [custom cache paths](#customize-cache-paths). For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
+   To do this in the YAML editor, add the following to your pipeline's `stage.spec`:
+
+      ```yaml
+      caching:
+        enabled: true
+      ```
+
+3. Add [custom cache paths](#customize-cache-paths) if you're using an unsupported build tool, a non-default cache location, or a Windows platform. For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
+
 4. You can also:
 
    * [Add custom cache keys.](#customize-cache-keys)
    * [Define the cache policy.](#define-cache-policy)
    * [Enable cache override.](#enable-cache-override)
 
-</TabItem>
-  <TabItem value="YAML" label="YAML" default>
-
-1. To enable Cache Intelligence in the YAML editor, add the following lines to the `stage.spec`:
-
-   ```yaml
-   caching:
-     enabled: true
-   ```
-
-2. If you're using an unsupported build tool, a non-default cache location, or a Windows platform, you must add [custom cache paths](#customize-cache-paths). For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
-
-3. You can also:
-
-   * [Add custom cache keys.](#customize-cache-keys)
-   * [Define the cache policy.](#define-cache-policy)
-   * [Enable cache override.](#enable-cache-override)
-
-Here's a YAML example with Cache Intelligence enabled (`enabled: true`) and the cache policy and cache override settings configured:
-
-```yaml
-- stage:
-    name: Build
-    identifier: Build
-    type: CI
-    spec:
-      caching:
-        enabled: true
-        policy: pull-push
-        override: true
-      cloneCodebase: true
-```
-
-</TabItem>
-</Tabs>
-
-### Customize cache paths
+## Customize cache paths
 
 Cache Intelligence stores the data to be cached in the `/harness` directory by default. You can use `paths` to specify a list of locations to be cached. This is useful if:
 
-- Cache Intelligence is not supported for your build tool.
+- You're *not* using a [fully supported build tool](#supported-tools-and-paths).
 - You have customized cache locations, such as with `yarn config set cache-folder`.
 - You're using a Windows platform.
 
 <Tabs>
-  <TabItem value="Visual" label="Visual">
+<TabItem value="Visual" label="Visual editor">
 
-:::note
+1. In the same stage where you enabled Cache Intelligence, go to the **Overview** tab, and make sure **Enable Cache Intelligence** is selected.
+2. In **Paths**, specify cache paths.
 
-Currently, the Cache Intelligence Visual Editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-1. Edit the pipeline, and select the **Build** stage where you want to enable Cache Intelligence.
-2. Select the **Overview** tab for the stage.
-3. Make sure **Enable Cache Intelligence** is selected.
-4. Add **Paths** to cache.
-
-   Note that on Windows platforms, you might need to specify the cache path from `C:`, such as `C:\harness\node_modules`.
+   On Windows platforms, you might need to specify the cache path from `C:`, such as `C:\harness\node_modules`.
 
    <!-- ![](./static/cache_int_paths.png) -->
 
    <DocImage path={require('./static/cache_int_paths.png')} />
 
-5. If a cache path is outside the `/harness` directory, you must _also_ specify this in **[Shared Paths](../set-up-build-infrastructure/ci-stage-settings.md#shared-paths)**.
+3. Cache paths outside the `/harness` directory must _also_ be declared in **[Shared Paths](../set-up-build-infrastructure/ci-stage-settings.md#shared-paths)**.
 
    <!-- ![](./static/cache_int_shared_paths.png) -->
 
    <DocImage path={require('./static/cache_int_shared_paths.png')} />
 
 </TabItem>
-  <TabItem value="YAML" label="YAML" default>
+<TabItem value="YAML" label="YAML editor" default>
 
-In the YAML editor, add a list of `paths` to cache under `stage.spec.caching`, for example:
-
-```yaml
-- stage:
-    name: Build
-    identifier: Build
-    type: CI
-    spec:
-      caching:
-        enabled: true
-        paths:
-          - /harness/node_modules ## On a Windows platform, the path would be 'C:\harness\node_modules'.
-      cloneCodebase: true
-```
-
-If a cache path is outside the `/harness` directory, you must _also_ specify this as a [shared path](../set-up-build-infrastructure/ci-stage-settings.md#shared-paths). In the YAML editor, add a list of `sharedPaths` under `stage.spec`, for example:
+In the same stage where you enabled Cache Intelligence, add a list of `paths` to cache under `stage.spec.caching`. For example:
 
 ```yaml
 - stage:
@@ -157,51 +123,12 @@ If a cache path is outside the `/harness` directory, you must _also_ specify thi
         enabled: true
         paths:
           - /harness/node_modules
-          - /my_cache_directory/module_cache1
       cloneCodebase: true
-      platform:
-        os: Linux
-        arch: Amd64
-      runtime:
-        type: Cloud
-        spec: {}
-      sharedPaths:
-        - /my_cache_directory/module_cache1
 ```
 
-</TabItem>
-</Tabs>
+On Windows platforms, you might need to specify the cache path from `C:`, such as `C:\harness\node_modules`.
 
-### Customize cache keys
-
-Harness generates a cache key from a hash of the build lock file (such as `pom.xml`, `build.gradle`, or `package.json`) that Harness detects. If Harness detects multiple tools or multiple lock files, Harness combines the hashes to create the cache key.
-
-You can define custom cache keys if you don't want to use the default cache key naming behavior or in scenarios that require defining custom cache keys, such as [caching in parallel stages](#cache-intelligence-in-parallel-stages).
-
-<Tabs>
-  <TabItem value="Visual" label="Visual">
-
-:::note
-
-Currently, the Cache Intelligence Visual Editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-1. Edit the pipeline, and select the **Build** stage where you want to enable Cache Intelligence.
-2. Select the **Overview** tab for the stage.
-3. Make sure **Enable Cache Intelligence** is selected.
-4. Enter the custom key value in **Key**. You can use [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs) for the key value.
-
-   <!-- ![](./static/cache_int_custom_key.png) -->
-
-   <DocImage path={require('./static/cache_int_custom_key.png')} />
-
-</TabItem>
-  <TabItem value="YAML" label="YAML" default>
-
-To customize the cache key in the YAML editor, add `key: CUSTOM_KEY_VALUE` under `stage.spec.caching`. You can use [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs) for the key value.
-
-The following YAML example uses runtime input (`<+input>`), which prompts the user to supply a cache key value at runtime.
+Cache paths outside the `/harness` directory must _also_ be declared in [shared paths](../set-up-build-infrastructure/ci-stage-settings.md#shared-paths). Add the list of `sharedPaths` under `stage.spec`, for example:
 
 ```yaml
 - stage:
@@ -211,12 +138,60 @@ The following YAML example uses runtime input (`<+input>`), which prompts the us
     spec:
       caching:
         enabled: true
-        key: <+input>
+        paths: # All custom cache paths.
+          - /harness/node_modules # Custom cache path within /harness directory.
+          - /my_cache_directory/module_cache1 # Custom cache path outside /harness directory.
+      cloneCodebase: true
+      platform:
+        os: Linux
+        arch: Amd64
+      runtime:
+        type: Cloud
+        spec: {}
+      sharedPaths: # All shared paths outside /harness directory. These can be cache paths or other shared paths for your pipeline.
+        - /my_cache_directory/module_cache1 # Custom cache path outside /harness directory.
+```
+
+</TabItem>
+</Tabs>
+
+## Customize cache keys
+
+Harness generates a cache key from a hash of the build lock file (such as `pom.xml`, `build.gradle`, or `package.json`) that Harness detects. If Harness detects multiple tools or multiple lock files, Harness combines the hashes to create the cache key.
+
+You can define custom cache keys if you don't want to use the default cache key naming behavior or you have a use case that requires defining custom cache keys, such as [caching in parallel stages](#cache-intelligence-in-parallel-stages).
+
+<Tabs>
+<TabItem value="Visual" label="Visual">
+
+1. In the same stage where you enabled Cache Intelligence, go to the **Overview** tab, and make sure **Enable Cache Intelligence** is selected.
+2. Enter the custom key value in **Key**.
+
+   <!-- ![](./static/cache_int_custom_key.png) -->
+
+   <DocImage path={require('./static/cache_int_custom_key.png')} />
+
+</TabItem>
+<TabItem value="YAML" label="YAML" default>
+
+To customize the cache key in the YAML editor, add `key: CUSTOM_KEY_VALUE` under `stage.spec.caching` in the same stage where you enabled Cache Intelligence.
+
+```yaml
+- stage:
+    name: Build
+    identifier: Build
+    type: CI
+    spec:
+      caching:
+        enabled: true
+        key: <+input> # This example uses runtime input so that the user specifies the cache key at runtime.
       cloneCodebase: true
 ```
 
 </TabItem>
 </Tabs>
+
+You can use [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs) for the key value.
 
 ### Cache Intelligence in parallel stages
 
@@ -224,13 +199,11 @@ If you have multiple stages that run in parallel, you must use [custom cache key
 
 If your stage uses a matrix or repeat [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) that generates multiple stage instances, you can use a [Harness expression](/docs/platform/variables-and-expressions/harness-variables) to generate unique cache keys, such as `key: cachekey-<+strategy.iteration>`. The `<+strategy.iteration>` expressions references the stage's iteration index. Each instance of the stage generated by the matrix/repeat strategy has a different iteration index, starting from `0`.
 
-### Define cache policy
+## Define cache policy
 
 The cache policy defines how you use caching in a stage.
 
 For example, if your pipeline has two stages, you might want to restore the cache in the first stage and then save the cache in the second stage, rather than both saving and restoring the cache in both stages.
-
-Currently, you can configure Cache Intelligence cache policies in the YAML editor only.
 
 To configure the cache policy, add `policy: pull | push | pull-push` to `stage.spec.caching`.
 
@@ -257,7 +230,7 @@ For example, here is a pipeline with two Build (`CI`) stages using Cache Intelli
             spec: {}
           caching:
             enabled: true
-            policy: pull
+            policy: pull # Define cache policy.
           execution:
             steps:
               ...
@@ -276,17 +249,15 @@ For example, here is a pipeline with two Build (`CI`) stages using Cache Intelli
             spec: {}
           caching:
             enabled: true
-            policy: push
+            policy: push # Define cache policy.
           execution:
             steps:
               ...
 ```
 
-### Enable cache override
+## Enable cache override
 
 The cache override allows you to force push the cache even if the cache key hasn't changed.
-
-Currently, you can configure Cache Intelligence cache override in the YAML editor only.
 
 To configure the cache override, add `override: true | false` to `stage.spec.caching`.
 
@@ -303,7 +274,7 @@ For example:
     spec:
       caching:
         enabled: true
-        override: false
+        override: false # Define cache override.
       cloneCodebase: true
 ```
 
@@ -340,5 +311,4 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/kb/continuous-integration/continuous-integration-faqs/#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)
 * [How can I use an artifact in a different stage from where it was created?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
 * [How can I check if the cache was restored?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-check-if-the-cache-was-restored)
-* [Why can't I enable Cache Intelligence in my CI pipeline?](/kb/continuous-integration/continuous-integration-faqs/#why-cant-i-enable-cache-intelligence-in-my-ci-pipeline)
 * [What is the Cache Intelligence cache storage limit?](/kb/continuous-integration/continuous-integration-faqs/#what-is-the-cache-intelligence-cache-storage-limit)

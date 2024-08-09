@@ -1,12 +1,12 @@
 ---
-title: Qualys Web Application Scanning (WAS) scanner reference for STO
+title: Qualys Web Application Scanning (WAS) step configuration
 description: Scan application instances with Qualys WAS.
-sidebar_label: Qualys Web Application Scanning (WAS) scanner reference
+sidebar_label: Qualys Web Application Scanning (WAS) step configuration
 sidebar_position: 320
 ---
 
 <DocsTag   text="Instance scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#instance-scanners"  />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" /><br/>
 <br/>
 
 You can ingest your application scan results from Qualys Web Application Scanning (WAS) into STO.
@@ -64,7 +64,7 @@ instance
 
 #### Policy type
 
-The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
+The [scan mode](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) to use. 
 
 ##### Key
 ```

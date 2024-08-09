@@ -1,0 +1,13 @@
+{
+  "position": 2,
+  "label": "Permissions",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Permissions"
+   },
+  "customProps": {
+    "description": "Permissions required to execute Kubernetes faults"
+  }
+}

@@ -1,7 +1,7 @@
 ---
 title: Introduction
 sidebar_position: 1
-description: Introduction to security configuration 
+description: Introduction to security configuration
 ---
 This section describes how different users are managed to perform AWS API calls.
 

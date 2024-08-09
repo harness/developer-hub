@@ -33,7 +33,7 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.ff,
           description:
             "Choose the right SDK for your application from our numerous client and server SDKs, and then configure it to monitor your flags.",
-          link: "/docs/category/use-feature-flag-sdks",
+          link: "/docs/category/use-ff-sdks",
         },
       ],
     },
@@ -55,21 +55,21 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.ff,
           description:
             "Add a flag as dependency to another flag.",
-          link: "/docs/feature-flags/add-prerequisites-to-feature-flag",
+          link: "/docs/feature-flags/use-ff/ff-creating-flag/add-prerequisites-to-feature-flag",
         },
         {
           title: "Manage flags using Git Experience",
           module: MODULES.ff,
           description:
             "Manage flags using a YAML file in your Git repository.",
-          link: "/docs/feature-flags/manage-featureflags-in-git-repos",
+          link: "/docs/feature-flags/use-ff/ff-creating-flag/manage-featureflags-in-git-repos",
         },
         {
           title: "Integrate flags with Jira",
           module: MODULES.ff,
           description:
             "Link flags to Jira issues so you and your team can easily see the associations, jump to creating a flag from a jira ticket, and see a list of jira tickets linked to a flag.",
-          link: "/docs/feature-flags/integrate-feature-flag-with-jira",
+          link: "/docs/feature-flags/use-ff/ff-creating-flag/integrate-feature-flag-with-jira",
         },
         {
           title: "Get data on your flags",
@@ -91,28 +91,28 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.ff,
           description:
             "When you connect Feature Flags to monitored services you can be notified when there are service issues related to flag changes.",
-          link: "/docs/feature-flags/connect-monitored-service",
+          link: "/docs/feature-flags/use-ff/connect-monitored-service",
         },
         {
           title: "Use pipelines with Feature Flags",
           module: MODULES.ff,
           description:
             "Use pipelines to combine a flag with other actions like adding Jira issues, creating notifications, and adding approvals.",
-          link: "/docs/category/use-pipelines-with-flags",
+          link: "/docs/category/use-pipelines-with-ff",
         },
         {
           title: "Use the Harness Relay Proxy",
           module: MODULES.ff,
           description:
             "The relay proxy lets your app connect directly to Feature Flag services without having to make a significant number of outbound connections.",
-          link: "/docs/category/use-the-harness-relay-proxy",
+          link: "/docs/category/use-the-relay-proxy-with-ff",
         },
         {
           title: "Add policies for a flag",
           module: MODULES.ff,
           description:
             "This topic gives you an overview of Harness Policy Engine and includes an example for how to add a policy for a flag.",
-          link: "/docs/category/use-pipelines-with-flags",
+          link: "/docs/category/use-pipelines-with-ff",
         },
       ],
     },

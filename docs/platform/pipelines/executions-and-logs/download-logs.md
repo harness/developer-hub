@@ -20,6 +20,12 @@ After you download the execution log files, you can view the JSON logs.
 The extracted files have many levels of nested directories. To locate specific log files, you might need to navigate through several levels.
 :::
 
+## Important notes
+
+* You might encounter the error message `Prefix Key Exceeds Maximum Download Limit` if your execution exceeds the maximum number of log files.
+   * Log files are stored in chunks for optimization purposes.
+   * There is a hard limit of 2000 log files per execution. Contact [Harness Support](mailto:support@harness.io) if this limitation causes issues for you.
+
 ## Download pipeline log files
 
 To download pipeline log files, do the following:

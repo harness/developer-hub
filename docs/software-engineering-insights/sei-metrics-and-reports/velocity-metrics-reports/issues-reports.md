@@ -15,28 +15,53 @@ Issue count reports are versatile reports that you can use to examine metrics re
 * **Issues Single Stat:** Show a [single stat](#issue-single-stats).
 * **Issue First Assignee Report:** This is an [initial response and assignment time report](#initial-response-and-assignment-time-reports).
 
-### Configure the Issues Report
+## Issues Report
+
+### Definition
 
 Use the **Issues Report** to examine metrics related to issues in your issue management system. The report aggregates data based on selected attributes, such as priority, status, labels, components, or any other field. This report helps you create comparisons based on various fields and draw conclusions to make decisions.
 
+![](./static/issues-report.png)
+
+### Add the report
+
+To configure the **Issue Hygiene report**, follow these steps:
+
+#### Step 1: Add the widget
+
+* Go to the [Insight](/docs/software-engineering-insights/insights/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Choose the **Issues Report** widget.
+
 The following settings are available to configure the Issues Report:
 
-* **Filters:** Select attributes that you want to use to filter the data, and then select filter values and operators. Depending on the selected attribute, you can select one or more filter values, select values to exclude, or use pattern matching rather than strict values. If you add multiple filters, they are inherently combined by `AND` operators.
-   * **Dependency Analysis:** Use this option to include dependent or linked issues in the data.
-   * **Status:** Select specific issue statuses to include in the data.
-   * **Projects:** Select specific projects to include in the data.
-* **Metrics:** Select a metric to use for the Y-axis. You can select either **Number of Tickets** or **Sum of Story Points**.
-* **Aggregations:**
-   * **X-axis:** Select the attribute to use for the X-axis. For example, if you selected the **Number of Tickets** metric for the Y-axis, you could select **Issues Resolved by week** for the X-axis. Additional examples of X-axis dimensional attributes include **Project**, **Assignee**, **Labels**, **Priority**, and so on.
-   * **Stacks:** Select how you want to group data in each X-axis dimension. For example, if you select **Priority** for the X-axis and stack by **Status Category**, then data in each X-axis column are grouped by status.
-* **Settings:**
-   * Select the issue management system to use for this widget. Available options are based on your [SEI integrations](/docs/category/sei-integrations).
-   * Select how you want to sort X-axis data, such as ascending or descending.
-   * Select the maximum number of values to show on the X-axis.
-   * Select the visualization style for the widget, such as bar chart, donut chart, multi-line chart, or percentage-stacked bar chart.
-   * Select the date format.
+#### Step 2: Configure the Filters for the widget
 
-![](./static/issues-report.png)
+Select attributes that you want to use to filter the data, and then select filter values and operators. Depending on the selected attribute, you can select one or more filter values, select values to exclude, or use pattern matching rather than strict values. If you add multiple filters, they are inherently combined by `AND` operators.
+
+* **Dependency Analysis:** Use this option to include dependent or linked issues in the data.
+* **Status:** Select specific issue statuses to include in the data.
+* **Projects:** Select specific projects to include in the data.
+
+#### Step 3: Select the Metrics to measure on the widget
+
+Select a metric to use for the Y-axis. You can select either **Number of Tickets** or **Sum of Story Points**.
+
+#### Step 4: Configure the Aggregations for the widget
+
+* **X-axis:** Select the attribute to use for the X-axis. For example, if you selected the **Number of Tickets** metric for the Y-axis, you could select **Issues Resolved by week** for the X-axis. Additional examples of X-axis dimensional attributes include **Project**, **Assignee**, **Labels**, **Priority**, and so on.
+* **Stacks:** Select how you want to group data in each X-axis dimension. For example, if you select **Priority** for the X-axis and stack by **Status Category**, then data in each X-axis column are grouped by status.
+  
+#### Step 5: Configure the Settings
+
+* Select the issue management system to use for this widget. Available options are based on your [SEI integrations](/docs/category/sei-integrations).
+* Select how you want to sort X-axis data, such as ascending or descending.
+* Select the maximum number of values to show on the X-axis.
+* Select the visualization style for the widget, such as bar chart, donut chart, multi-line chart, or percentage-stacked bar chart.
+* Select the date format.
+
+#### Step 6: Save the widget
+
+Complete the widget settings and select **Next: Place Widget**, place the widget on Insight and then select **Save Layout**.
 
 ### Issues Report use cases
 
@@ -117,7 +142,11 @@ Mean Time To Recover (MTTR) and Mean Time Between Failures (MTBF) are [DORA metr
 
 :::
 
-### Configure the Issue Resolution Time Report
+## Issue Resolution Time Report
+
+### Definition
+
+The **Issue Resolution Time** report helps you understand how long tickets remain open, including cycle time and lead time metrics. The report displays a configurable **Bar Graph** showing the number of tickets closed along with the average time it took to close those tickets, based on the time the tickets were created.
 
 The **Issue Resolution Time Report** can help answer questions like:
 
@@ -130,19 +159,38 @@ The **Issue Resolution Time Report** can help answer questions like:
   alt="Example banner" height="50%" width="100%" border="1"
 />
 
+### Add the report
+
+#### Step 1: Add the widget
+
+To configure the **Issue Resolution Time report**, follow these steps:
+
+* Go to the [Insight](/docs/software-engineering-insights/insights/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Choose the **Issue Resolution Time report** widget.
+
+#### Step 2: Configure the Filters on the widget
+
 By default, the Issue Resolution Time Report is filtered by issues closed (**Last Closed Date**) within a selected time range. Usually, the time range is set to **Use Insight time**, which allows the user to select a time range when viewing Insights.
 
 <!-- img .gitbook/assets/image (56).png - issue resolution time report widget config - filters tab - last closed date and Insight time -->
 
+#### Step 3: Configure the Aggregations for the widget
+
 On the **Aggregations** tab, you can select the dimension, from your issue management system, to use for the X-axis, such as **Assignee**, **Story Points**, **Ticket Category**, **Issue Closed Last Time Period**, and so on. This determines what you want the widget to focus on. For example, focusing on **Category** or **Component** can show you the issue resolution time for different work areas; whereas, focusing on **Assignee** can show you issue resolution time by developer.
 
 <!-- img .gitbook/assets/image (59).png - issue resolution time report widget config - aggregations tab - x axis dropdown -->
+
+#### Step 4: Configure the Settings
 
 On the **Settings** tab, you can:
 
 * Select the issue management system to use for this widget. Available options are based on your configured [SEI integrations](/docs/category/sei-integrations).
 * Select how you want to sort X-axis data, such as ascending or descending.
 * Select the maximum number of unique values to show on the X-axis.
+
+#### Step 5: Save the widget
+
+Complete the widget settings and select **Next: Place Widget**, place the widget on Insight and then select **Save Layout**.
 
 ### Issue Resolution Time Report use cases
 
@@ -225,7 +273,13 @@ This configuration produces a bar graph showing the median resolution time to cl
 
 </details>
 
-### Configure the Jira Releases Report
+## Issue Backlog Trend Report
+
+The **Issue Backlog Trend report** allows you to analyze the historical data of your current issues. This report can help you answer questions about your backlog. To learn more, go to [Issue Backlog Trend Report](/docs/software-engineering-insights/early-access/metrics-reports/issue-backlog-trend-report).
+
+## Jira Releases Report
+
+### Definition
 
 Use the **Jira Releases Report** to analyze your team's release pattern by understanding the average time elapsed between issue creation and release.
 
@@ -242,7 +296,36 @@ The benefits of the **Jira Releases Report** include:
   alt="Example banner" height="50%" width="100%" border="1"
 />
 
-#### Best practices
+### Add the report
+
+To configure the **Jira Releases report**, follow these steps:
+
+#### Step 1: Add the report
+
+* Go to the [Insight](/docs/software-engineering-insights/insights/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Choose the **Jira Releases report** widget.
+
+#### Step 2: Configure the Filters for the widget
+
+This widget requires both the **Release Dat**e and **Resolution Time** of issues as mandatory inputs. This is because the deployment process can only include tickets that have reached the **Resolved** status.
+
+You can select any attributes, such as priority, status, labels, components, or any other field, to precisely refine this report according to your release process. Available options are based on your SEI integrations. If you add multiple filters, they are inherently combined by `AND` operators.
+
+#### Step 3: Configure the Settings
+
+Select the **Jira-based Velocity Lead Time profile** for this report. Since this report measures only the Jira releases thus the widget can only be associated with the **Jira-based Velocity Lead Time profile.**
+
+#### Step 4: Save the widget
+
+Complete the widget settings and select **Next: Place Widget**, place the widget on Insight and then select **Save Layout**.
+
+:::tip
+
+Use the **Jira Releases Report** along with the **[Lead Time by Time Spent in Stages Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports)**, which can show you a breakdown of stages that contribute to the average lead time value present in your **Jira Releases Report**.
+
+:::
+
+### Best practices
 
 To get the most benefit from this report, the following best practices are recommended:
 
@@ -250,18 +333,6 @@ To get the most benefit from this report, the following best practices are recom
 * Whenever possible, map issues to a single version, rather than multiple versions.
 * Make sure all **Done** issues are eventually moved to the **Resolved** status (Ideally, moved to completion from the development and testing perspective).
 * Perform releases only after all linked issues are in the **Resolved** status.
-
-#### Configuration requirements
-
-This widget requires both the release time and resolution time of issues as mandatory inputs. This is because the deployment process can only include tickets that have reached the **Resolved** status.
-
-You can select any attributes, such as priority, status, labels, components, or any other field, to precisely refine this report according to your release process. Available options are based on your [SEI integrations](/docs/category/sei-integrations). If you add multiple filters, they are inherently combined by `AND` operators.
-
-:::tip
-
-Use the **Jira Releases Report** along with the **[Lead Time by Time Spent in Stages Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports)**, which can show you a breakdown of stages that contribute to the average lead time value present in your **Jira Releases Report**.
-
-:::
 
 ## Initial response and assignment time reports
 
@@ -297,7 +368,7 @@ For details about issues that are in the backlog or sitting with one assignee fo
 <figcaption>The Issue Backlog Trend Report. The bars show the number of issues in the backlog at a specific point in time. The line tracks the median age of issues over time.</figcaption>
 </figure>
 
-## Issue bounce reports
+## Bounce reports
 
 _Bounce_ describes tickets that are reassigned to a previous assignee or return to a previous stage. Bounce can occur if an issue isn't triaged correctly initially, or if the issue doesn't have enough information to be assigned correctly. Excessive bounce can potentially cause missed SLAs and unnecessary resource utilization.
 
@@ -307,15 +378,13 @@ _Bounce_ describes tickets that are reassigned to a previous assignee or return 
 * **Stage Bounce:** Analyze the number of times issues bounced between stages.
 * **Stage Bounce Single Stat:** Show a [single stat](#issue-single-stats) related to stage bounce.
 
-### Configure the Issue Bounce Report
+## Issue Bounce Report
+
+### Definition
+
+This report shows the number of times a ticket `"bounced"` between assignees. Instances of reassignment to new assignees are captured by the issue hops reports.
 
 The **Issue Bounce Report** can highlight issues that are being excessively bounced around to different resources. You can then inspect those issues in your issue management system and determine why they are being bounced so much.
-
-This report is usually configured to observe the median number of bounces by component, project, or initiative. To do this, set the **X-Axis** to **Component**, **Project**, or **Initiative**.
-
-If you only want the report to track active tickets, include a **Status** filter, and set it to exclude inactive or closed statuses, such as **Done** and **Won't Do**.
-
-If you want to observe bounce for tickets that have been open for a long time, set **Issue Created In** to a long time range, such as 90 or 180 days. This can provide insight into why the tickets have been open so long.
 
 <figure>
 
@@ -323,6 +392,36 @@ If you want to observe bounce for tickets that have been open for a long time, s
 
 <figcaption>Issue Bounce Report</figcaption>
 </figure>
+
+### Add the report
+
+To configure the **Issue Bounce report**, follow these steps:
+
+#### Step 1: Add the widget
+
+* Go to the [Insight](/docs/software-engineering-insights/insights/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Choose the **Issue Bounce report** widget.
+
+#### Step 2: Configure the Filters for the widget
+
+* Add additional conditions to specify what data feeds into the widget by creating inclusive and exclusive filters.
+* If you include multiple filters, they are inherently combined with an `AND` operator.
+* If you want to observe bounce for tickets that have been open for a long time, set the **Issue Created In** filter to a long time range, such as 90 or 180 days. This can provide insight into why the tickets have been open so long.
+
+#### Step 3: Configure the Aggregations for the widget
+
+This report is usually configured to observe the median number of bounces by component, project, or initiative. To do this, set the **X-Axis** to **Component**, **Project**, or **Initiative**.
+
+If you only want the report to track active tickets, include a **Status** filter, and set it to exclude inactive or closed statuses, such as **Done** and **Won't Do**.
+
+#### Step 4: Configure the Settings
+
+* Select how you want to sort X-axis data, such as ascending or descending.
+* Select the maximum number of values to show on the X-axis.
+
+#### Step 5: Save the widget
+
+Complete the widget settings and select **Next: Place Widget**, place the widget on Insight and then select **Save Layout**.
 
 ## Issue hops reports
 
@@ -332,15 +431,13 @@ _Hops_ describes the number of times a ticket is reassigned to a new assignee (s
 * **Issue Hops Trends Report:** Analyze changes over time in issue hops.
 * **Issue Hops Single Stat:** Show a [single stat](#issue-single-stats) related to issue hops.
 
-### Configure the Issue Hops Report
+## Issue Hops Report
+
+### Definition
+
+This report shows the number of times tickets `"hopped"` to new assignees. Instances of reassignment to a previous assignee are captured by the issue bounce reports.
 
 The **Issue Hops Report** can highlight issues that are being reassigned excessively. You can then inspect those issues in your issue management system and determine why they are hopping so much.
-
-This report is usually configured to observe the median number of hops by component, project, or initiative. To do this, set the **X-Axis** to **Component**, **Project**, or **Initiative**.
-
-If you only want the report to track active tickets, include a **Status** filter, and set it to exclude inactive or closed statuses, such as **Done** and **Won't Do**.
-
-If you want to observe hops for tickets that have been open for a long time, set **Issue Created In** to a long time range, such as 90 or 180 days. This can provide insight into why the tickets have been open so long.
 
 <figure>
 
@@ -348,6 +445,36 @@ If you want to observe hops for tickets that have been open for a long time, set
 
 <figcaption>Issue Hops Report</figcaption>
 </figure>
+
+### Add the report
+
+To configure the **Issue Bounce report**, follow these steps:
+
+#### Step 1: Add the widget
+
+* Go to the [Insight](/docs/software-engineering-insights/insights/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Choose the **Issue Hops Report** widget.
+
+#### Step 2: Configure the Filters for the widget
+
+* Add additional conditions to specify what data feeds into the widget by creating inclusive and exclusive filters.
+* If you include multiple filters, they are inherently combined with an `AND` operator.
+* If you want to observe hops for tickets that have been open for a long time, set **Issue Created In** to a long time range, such as 90 or 180 days. This can provide insight into why the tickets have been open so long.
+
+#### Step 3: Configure the Aggregations for the widget
+
+This report is usually configured to observe the median number of hops by component, project, or initiative. To do this, set the **X-Axis** to **Component**, **Project**, or **Initiative**.
+
+If you only want the report to track active tickets, include a **Status** filter, and set it to exclude inactive or closed statuses, such as **Done** and **Won't Do**.
+
+#### Step 4: Configure the Settings
+
+* Select how you want to sort X-axis data, such as ascending or descending.
+* Select the maximum number of values to show on the X-axis.
+
+#### Step 5: Save the widget
+
+Complete the widget settings and select **Next: Place Widget**, place the widget on Insight and then select **Save Layout**.
 
 ## Issue hygiene reports
 
@@ -376,5 +503,5 @@ You might want to set the time range to **Use Insight time**, which allows the u
 ## Other issues reports
 
 * **Issue Hotspots Report:** Determine code hotspots most often result in issues being created in your issue management system. This can help you identify code areas that need better test coverage.
-* **Issue Progress Report:** Analyze progress on [effort investment categories](/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics-reports/effort-investment-metrics).
+* **Issue Progress Report:** Analyze progress on [effort investment categories](/docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-overview).
 * **SCM issues:** For information about reports that track SCM issues, go to [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).

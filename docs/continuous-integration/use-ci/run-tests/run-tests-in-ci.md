@@ -1,7 +1,7 @@
 ---
 title: Run tests in CI pipelines
-description: Use Run and Run Tests steps to run tests in CI pipelines.
-sidebar_position: 10
+description: Use Run and Test steps to run tests in CI pipelines.
+sidebar_position: 1
 redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci
   - /tutorials/ci-pipelines/test/
@@ -9,7 +9,7 @@ redirect_from:
 
 You can run all types of tests in CI pipeline, including integration tests, functional tests, mutation tests, unit tests, and more.
 
-To run tests in CI pipelines, you can use **Run** or **Run Tests** steps.
+To run tests in CI pipelines, you can use **Run** steps or **Test Intelligence** steps (also known as **Test** steps).
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -46,33 +46,30 @@ Harness supports [code coverage](./code-coverage.md) in **Run** steps.
 :::
 
 </TabItem>
-  <TabItem value="runtests" label="Run Tests step">
+  <TabItem value="test" label="Test step">
 
-The **Run Tests** step is required to [enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md). You can use **Run Tests** steps with or without Test Intelligence; however, the **Run Tests** step is limited to [supported codebases](./test-intelligence/set-up-test-intelligence.md#supported-codebases-for-test-intelligence).
+The **Test** step is required to [enable Test Intelligence](./ti-overview.md). You can use **Test** steps with or without Test Intelligence; however, the **Test** step doesn't support all languages yet.
 
 This example runs tests with Maven and Test Intelligence, and it produces a test report in JUnit XML format.
 
 ```yaml
               - step:
-                  type: RunTests
-                  name: runTestsWithIntelligence
-                  identifier: runTestsWithIntelligence
+                  type: Test
+                  name: RunTestsWithIntelligence
+                  identifier: RunTestsWithIntelligence
                   spec:
-                    connectorRef: account.GCR
-                    image: maven:3-openjdk-8
-                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
-                    buildTool: Maven
-                    language: Java
-                    packages: org.apache.dubbo,com.alibaba.dubbo
-                    runOnlySelectedTests: true ## Set to false if you don't want to use Test Intelligence.
+                    command: |-
+                      mvn test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+                      mvn package -DskipTests
+                    shell: Sh
+                    connectorRef: account.harnessImage
+                    image: maven:3.8-jdk-11
+                    intelligenceMode: true
                     reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "target/surefire-reports/*.xml"
+                      - "target/surefire-reports/*.xml"
 ```
 
-For more information about configuring **Run Tests** steps and Test Intelligence, go to [Test Intelligence overview](./test-intelligence/set-up-test-intelligence.md).
+For more information about configuring **Test** steps and Test Intelligence, go to [Test Intelligence overview](./ti-overview.md).
 
 </TabItem>
 </Tabs>
@@ -81,9 +78,9 @@ For more information about configuring **Run Tests** steps and Test Intelligence
 
 These Harness CI features can improve test times:
 
-* **Test Intelligence:** Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You must use the **Run Tests** step to [enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
-* **Test splitting (parallelism):** You can use parallelism with either the **Run** or **Run Tests** steps to speed up test times. For more information, go to [Split tests in Run steps](./speed-up-ci-test-pipelines-using-parallelism.md) or [Split tests with Test Intelligence](./test-intelligence/ti-test-splitting.md).
-* **Step groups:** You can use [step groups](/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups.md) to organize and condense pipelines that run a lot of tests.
+* **Test Intelligence:** Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You must [use the **Test** step to enable Test Intelligence](./tests-v2.md).
+* **Test splitting (parallelism):** You can use parallelism with either the **Run** or **Test** steps to speed up test times. For more information, go to [Split tests in Run steps](./speed-up-ci-test-pipelines-using-parallelism.md) or [Split tests in Test steps](/docs/continuous-integration/use-ci/run-tests/tests-v2.md#parallelism-test-splitting).
+* **Step groups:** You can [use step groups](/docs/platform/pipelines/use-step-groups.md) to organize and condense pipelines that run a lot of tests.
 
 You might also try these test optimization practices:
 

@@ -19,7 +19,7 @@ redirect_from:
 
 This topic provides an architecture overview, installation links, and the basics on how to create a Harness account and your first project. Perform these tasks soon after you install Harness Self-Managed Enterprise Edition, before you move on to other configuration tasks.
 
-To install Harness Self-Managed Enterprise Edition in a Kubernetes cluster with Helm, go to [Install Harness Self-Managed Enterprise Edition Using Helm](../self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga.md).
+To install Harness Self-Managed Enterprise Edition in a Kubernetes cluster with Helm, go to [Install Harness Self-Managed Enterprise Edition Using Helm](/docs/self-managed-enterprise-edition/install/install-using-helm).
 
 ## Architecture overview
 You can install Harness Self-Managed Enterprise Edition in a Kubernetes cluster or on virtual machines.
@@ -75,7 +75,6 @@ To create a project, do the following:
 To get started with Harness Self-Managed Enterprise Edition, go to the following Harness module topics:
 
 * Harness CCM: [Cloud Cost Management (CCM) overview](/docs/cloud-cost-management/get-started/overview).
-* Harness CET: [Continuous Error Tracking (CET) onboarding guide](/docs/continuous-error-tracking/get-started/onboarding-guide).
 * Harness CI: [Continuous Integration (CI) overview](/docs/continuous-integration/get-started/overview).
 * Harness CD: [Continuous Delivery (CD) key concepts](../../continuous-delivery/get-started/key-concepts.md).
 * Harness FF: [Feature Flag (FF) onboarding guide](/docs/feature-flags/get-started/onboarding-guide).

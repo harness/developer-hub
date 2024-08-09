@@ -22,6 +22,12 @@ Harness Delegate connects to Harness Manager over an outbound HTTPS/WSS connecti
 
 The delegate connects to Harness Manager (via SaaS) over a Secure WebSockets channel (WebSockets over TLS). The channel is used to send notifications of delegate task events and to exchange connection heartbeats. The channel is not used to send task data itself.
 
+:::note
+By default Harness delegate makes an outbound call to app.harness.io and stackdriver. When you configure a Harness Connector with providers such as artifact servers, deployment environments, and cloud providers, Harness Delegate will make an outbound call to these providers.  Harness recommends installing the delegate behind your firewall. The delegate must have access to the artifact servers, deployment environments, and cloud providers it needs.
+
+You can stop delegates from sending delegate logs to Harness by setting the `STACK_DRIVER_LOGGING_ENABLED` environment variable to `false` for the delegate. This will disable all remote logging.
+:::
+
 Delegate communication includes the following functions:
 
 - **Heartbeat:** The delegate sends a [heartbeat](<https://en.wikipedia.org/wiki/Heartbeat_(computing)>) to notify Harness Manager that it is running.
@@ -58,6 +64,12 @@ For advanced installation topics, go to the following:
 
 ### Delegate sizes
 
+:::danger delegate resources
+Memory and CPU requirements are for the delegate only. Your delegate host/pod/container requires additional computing resources for its operating system and other services, such as Docker or Kubernetes.
+
+The resource requirements for the delegate container depend on the type of tasks or executions. For instance, CI-only delegates can handle hundreds of parallel pipelines. However, for CD Terraform tasks, a single task might require a 2Gi container due to Terraform's memory requirements. Each Terraform command needs at least 500MB of memory.
+ :::
+
 One delegate size does not fit all use cases, so Harness lets you pick from several options:
 
 | Replicas | Required memory / CPU | Maximum parallel deployments and builds across replicas |
@@ -68,6 +80,17 @@ One delegate size does not fit all use cases, so Harness lets you pick from seve
 |    8     |     16 GB / 4 CPU     |                           80                            |
 
 Remember that the memory and CPU requirements are for the delegate only. Your delegate host/pod/container will need more computing resources for its operations systems and other services, such as Docker or Kubernetes.
+
+Harness recommends adhering to the below guidelines when using the delegate with Harness Cloud Cost Management (CCM).
+
+**Baseline Configuration:** For clusters with up to 200 nodes and 4000 pods, each delegate should be configured with 2 vCPUs and 8 GB of memory.
+
+**Incremental Scaling:** For every additional 50 nodes and 1000 pods, the delegate capacity should be increased by 0.5 vCPUs and 2 GB of memory. This scaling ensures that the delegate can handle the increased load and continue to collect metrics efficiently.
+
+**Single replica requirement:**
+
+All specified resource requirements pertain to a single replica of the delegate.
+Instead of utilizing Horizontal Pod Autoscaler (HPA) to increase the number of smaller-sized replicas Harness recommends provisioning each delegate with the necessary resources to handle the specified number of nodes and pods.
 
 ### Delegates list page
 

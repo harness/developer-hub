@@ -6,14 +6,14 @@ redirect_from:
 ---
 
 ECS container volume detach provides a mechanism to detach and remove volumes associated with ECS task containers in an Amazon ECS (Elastic Container Service) task.
-This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+This experiment primarily involves ECS Fargate and doesn't depend on EC2 instances. [They](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
 
 ![ECS Container Volume Detach](./static/images/ecs-container-volume-detach.png)
 
 ## Use cases
 ECS container volume detach:
 - Allows you to test and validate the behavior of your ECS tasks when volumes are detached. You can verify the resilience and performance of your application during volume detachment scenarios, ensuring that the containers continue to function as expected.
-- By detaching volumes, you can safely remove the volume associations from the containers without deleting the volumes themselves. 
+- By detaching volumes, you can safely remove the volume associations from the containers without deleting the volumes themselves.
 - By detaching unnecessary volumes, you can optimize the resource utilization within your ECS tasks. This helps to free up storage space and minimize any potential performance impact associated with unused volumes.
 
 ### Prerequisites
@@ -36,7 +36,7 @@ stringData:
 ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -83,12 +83,12 @@ Refer to the [common attributes](/docs/chaos-engineering/chaos-faults/common-tun
           <th> Description </th>
           <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
           <td> CLUSTER_NAME </td>
           <td> Name of the target ECS cluster </td>
           <td> For example, <code>cluster-1</code>. For more information, go to <a href="#ecs-container-volume-detach"> cluster name.</a></td>
         </tr>
-        <tr> 
+        <tr>
           <td> SERVICE_NAME </td>
           <td> Name of the ECS service under chaos </td>
           <td> For example, <code>nginx-svc</code>. For more information, go to <a href="#ecs-container-volume-detach"> service name.</a></td>
@@ -99,7 +99,7 @@ Refer to the [common attributes](/docs/chaos-engineering/chaos-faults/common-tun
           <td> For example, <code>us-east-1</code>. </td>
         </tr>
     </table>
- 
+
 ### Optional tunables
   <table>
       <tr>
@@ -122,7 +122,7 @@ Refer to the [common attributes](/docs/chaos-engineering/chaos-faults/common-tun
         <td> Interval between successive instance terminations (in seconds)</td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Path to the AWS secret credentials</td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>

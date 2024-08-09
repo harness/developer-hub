@@ -23,14 +23,6 @@ You can explore Harness through various dimensions:
 
 ## Harness navigation version 2.0
 
-:::note
-
-Currently, Harness navigation version 2.0 is behind the feature flag `CDS_NAV_2_0`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-While navigation 2.0 is in beta, you can select your profile to swap between navigation 1.0 and 2.0. Note that some links, such as pipeline or project links, aren't able to redirect between navigation 1.0 and 2.0.
-
-:::
-
 Harness navigation 2.0 brings an overhauled navigation experience that caters to different personas, addresses their unique needs, and ultimately reduces task completion time.
 
 Once enabled on your account, you'll notices changes to the left and top navigation, while most of the central page experience remains consistent with navigation 1.0.

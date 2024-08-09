@@ -7,7 +7,7 @@ redirect_from:
 
 EC2 network latency causes flaky access to the application (or services) by injecting network packet latency to EC2 instance(s). This fault:
 - Degrades the network without marking the EC2 instance as unhealthy (or unworthy) of traffic, which is resolved using a middleware that switches traffic based on SLOs (performance parameters).
-- May stall the EC2 instance or get corrupted waiting endlessly for a packet. 
+- May stall the EC2 instance or get corrupted waiting endlessly for a packet.
 - Limits the impact (blast radius) to the traffic that you wish to test, by specifying the IP addresses.
 
 ![EC2 Network Latency](./static/images/ec2-network-latency.png)
@@ -15,9 +15,9 @@ EC2 network latency causes flaky access to the application (or services) by inje
 ## Use cases
 EC2 network latency:
 - Determines the performance of the application (or process) running on the EC2 instances.
-- Simulates a consistently slow network connection between microservices (for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network). 
+- Simulates a consistently slow network connection between microservices (for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network).
 - Simulates jittery connection with transient latency spikes between microservices.
-- Simulates a slow response on specific third party (or dependent) components (or services), and degraded data-plane of service-mesh infrastructure.  
+- Simulates a slow response on specific third party (or dependent) components (or services), and degraded data-plane of service-mesh infrastructure.
 
 ### Prerequisites
 - Kubernetes >= 1.17
@@ -39,7 +39,7 @@ EC2 network latency:
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -59,7 +59,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],

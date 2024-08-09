@@ -32,11 +32,11 @@ Increasing the CPU will enable the DinD to pull images from the registry more qu
 
  If you're scanning the same target with multiple scanners, try running the scan steps in parallel rather than sequentially.
 
-In this example, the stage scans an image target using Aqua Trivy and Prisma Cloud. The two steps run in parallel within a [step group](/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups). 
+In this example, the stage scans an image target using Aqua Trivy and Prisma Cloud. The two steps run in parallel within a [step group](/docs/platform/pipelines/use-step-groups.md).
 
 :::warning
 
-The stage must have enough memory and CPU to run all parallel steps at the same time. If the stage lacks resources, running the steps in parallel could [cause your pipeline executions to fail](/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups#parallelism-impacts-resource-consumption).
+[Parallelism and step groups impact resource consumption](/docs/platform/pipelines/use-step-groups.md#parallelism-impacts-resource-consumption). The stage must have enough memory and CPU to run all parallel steps at the same time. If the stage lacks resources, running the steps in parallel could cause your pipeline executions to fail.
 
 :::
 

@@ -19,7 +19,116 @@ The recommended memory for one container is 4GB to 6GB.
 
 
 <Tabs>
-  <TabItem value="docker" label="Docker" default>
+  <TabItem value="k8s" label="Kubernetes" default>
+
+
+1. Requirements:
+
+   * A running Kubernetes cluster.
+   * `kubectl` command-line tool configured to communicate with your cluster.
+   * Access to the `levelops/ingestion-satellite` Docker image.
+
+2. Use the following template to prepare the Kubernetes deployment.
+
+    ```yaml
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: levelops-satellite
+    subjects:
+      - kind: ServiceAccount
+        name: levelops-satellite
+        namespace: default
+        apiGroup: ""
+    roleRef:
+      kind: ClusterRole
+      name: edit
+      apiGroup: rbac.authorization.k8s.io
+    ---
+    apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: levelops-satellite
+      namespace: default ## It is recommended to change this.
+      labels:
+        app: levelops
+    ---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: levelops-satellite
+      namespace: default ## It is recommended to change this.
+    spec:
+      selector:
+        matchLabels:
+          app: levelops-satellite
+      template:
+        metadata:
+          labels:
+            app: levelops-satellite
+        spec:
+          serviceAccountName: levelops-satellite
+          containers:
+            - name: levelops-satellite
+              image: levelops/ingestion-satellite
+              imagePullPolicy: Always
+              resources:
+                limits:
+                  memory: "5Gi"
+                  cpu: "1000m"
+              volumeMounts:
+                - name: config-volume
+                  mountPath: /levelops/config.yml
+                  subPath: config.yml
+          volumes:
+          - name: config-volume
+            configMap:
+              name: levelops-satellite-config
+    ---
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: levelops-satellite-config
+      namespace: default ## It is recommended to change this.
+    data: ## This section comes from satellite.yml. If you copy and paste this section, you must fix the indentation.
+      config.yml: |
+        satellite:
+          tenant: <TENANT>
+          api_key: <API_KEY>
+          url: <URL>
+        integrations:
+          - id: '<ID>'
+    ```
+
+3. Apply the deployment to your cluster.
+
+   ```bash
+   kubectl apply --namespace=your-name-space -f satellite.yml
+   ```
+
+4. Make sure the satellite is running correctly. You should see heartbeats being sent.
+
+   ```bash
+   kubectl get pods --namespace=your-name-space ## Use this to find the pod.
+   kubectl logs <satellite pod> -f --namespace=your-name-space
+   ```
+
+5. Because the template configured the deployment with `imagePullPolicy: Always`, you get the latest updates when the pod is restarted.
+
+   ```bash
+   kubectl rollout restart deployment levelops-satellite
+   ```
+   To force a pod restart and get the latest updates, use the following command:
+   
+   ```bash
+   kubectl rollout restart deployment levelops-satellite
+   ```
+   
+   This ensures that your Satellite container stays up to date with the latest changes. Make sure to monitor the logs regularly to ensure the proper functioning of the container.
+
+
+</TabItem>
+  <TabItem value="docker" label="Docker">
 
 
 1. Download and install Docker Desktop.
@@ -149,125 +258,4 @@ docker rm <ID>
 
 
 </TabItem>
-  <TabItem value="k8s" label="Kubernetes">
-
-
-1. Requirements:
-
-   * A running Kubernetes cluster.
-   * `kubectl` command-line tool configured to communicate with your cluster.
-   * Access to the `levelops/ingestion-satellite` Docker image.
-
-2. Use the following template to prepare the Kubernetes deployment.
-
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: levelops-satellite
-subjects:
-  - kind: ServiceAccount
-    name: levelops-satellite
-    namespace: default
-    apiGroup: ""
-roleRef:
-  kind: ClusterRole
-  name: edit
-  apiGroup: rbac.authorization.k8s.io
-```
-
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: levelops-satellite
-  namespace: default ## It is recommended to change this.
-  labels:
-    app: levelops
-```
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: levelops-satellite
-  namespace: default ## It is recommended to change this.
-spec:
-  selector:
-    matchLabels:
-    app: levelops-satellite
-template:
-  metadata:
-    labels:
-      app: levelops-satellite
-    spec:
-      serviceAccountName: levelops-satellite
-      containers:
-        - name: levelops-satellite
-        image: levelops/ingestion-satellite
-        imagePullPolicy: Always
-        resources:
-          limits:
-          memory: "5Gi"
-          cpu: "1000m"
-        volumeMounts:
-          - name: config-volume
-            mountPath: /levelops/config.yml
-            subPath: config.yml
-      volumes:
-      - name: config-volume
-      configMap:name: levelops-satellite-config
-```
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: levelops-satellite-config
-  namespace: default ## It is recommended to change this.
-data: ## This section comes from satellite.yml. If you copy and paste this section, you must fix the indentation.
-  config.yml: |
-    levelops:
-      tenant: <TENANT>
-      api_key: <API_KEY>
-    integrations:
-      - id: '<ID>'
-      application: custom
-```
-
-3. Apply the deployment to your cluster.
-
-   ```bash
-   kubectl apply --namespace=your-name-space -f deployment.yml
-   ```
-
-4. Make sure the satellite is running correctly. You should see heartbeats being sent.
-
-   ```bash
-   kubectl get pods --namespace=your-name-space ## Use this to find the pod.
-   kubectl logs <satellite pod> -f --namespace=your-name-space
-   ```
-
-5. Because the template configured the deployment with `imagePullPolicy: Always`, you get the latest updates when the pod is restarted.
-
-   ```bash
-   kubectl rollout restart deployment levelops-satellite
-   ```
-   To force a pod restart and get the latest updates, use the following command:
-   
-   ```bash
-   kubectl rollout restart deployment levelops-satellite
-   ```
-   
-   This ensures that your Satellite container stays up to date with the latest changes. Make sure to monitor the logs regularly to ensure the proper functioning of the container.
-
-
-</TabItem>
 </Tabs>
-
-
-:::tip
-
-In addition to Ingestion Satellites and other [integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview), you can [import CSV files](/docs/software-engineering-insights/sei-propels-scripts/tables) and display the data in [Table reports](/docs/software-engineering-insights/sei-propels-scripts/table-reports).
-
-:::

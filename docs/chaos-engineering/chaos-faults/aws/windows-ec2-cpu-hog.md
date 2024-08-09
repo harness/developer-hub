@@ -4,14 +4,14 @@ title: Windows EC2 CPU hog
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/aws/windows-ec2-cpu-hog
 ---
-EC2 windows CPU hog induces CPU stress on the AWS Windows EC2 instances using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault.
+EC2 Windows CPU hog induces CPU stress on the AWS Windows EC2 instances using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault.
 
 ![Windows EC2 CPU hog](./static/images/windows-ec2-cpu-hog.png)
 
 ## Use cases
 
-EC2 windows CPU hog:
-- Simulates the situation of a lack of CPU for processes running on the instance, which degrades their performance. 
+EC2 Windows CPU hog:
+- Simulates the situation of a lack of CPU for processes running on the instance, which degrades their performance.
 - Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the instance.
 
 ### Prerequisites
@@ -35,7 +35,7 @@ EC2 windows CPU hog:
     ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -55,7 +55,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],
@@ -205,7 +205,7 @@ spec:
           fault: windows-cpu-stress
           env:
            # CPU cores for stress
-            - name: CPU_PERCENTAGE 
+            - name: CPU_PERCENTAGE
               value: '50'
 ```
 

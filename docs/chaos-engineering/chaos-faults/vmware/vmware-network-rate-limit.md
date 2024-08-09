@@ -4,9 +4,7 @@ title: VMware network rate limit
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-network-rate-limit
 ---
-VMware network rate limit fault injects network rate limit from the VMware VM(s) into the application (or service).
-- This results in flaky access to the application.
-- It checks the performance of the application (or process) running on the VMware VM(s).
+VMware network rate limit fault injects network rate limit from the VMware VM(s) into the application (or service). This results in flaky access to the application. It checks the performance of the application (or process) running on the VMware VM(s).
 
 ![VMware Network Rate Limit](./static/images/vmware-network-rate-limit.png)
 
@@ -142,7 +140,7 @@ stringData:
 If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
 :::
 
-### Secret tunables 
+### Secret tunables
    <table>
       <tr>
         <th> Tunable </th>
@@ -271,7 +269,7 @@ spec:
 
 The IPs/hosts that interrupt traffic by default. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
 
-`DESTINATION_IPS`: IP addresses of the services or the CIDR blocks (range of IPs) whose accessibility is impacted. 
+`DESTINATION_IPS`: IP addresses of the services or the CIDR blocks (range of IPs) whose accessibility is impacted.
 `DESTINATION_HOSTS`: DNS names of the services whose accessibility is impacted.
 
 Following YAML snippet illustrates the use of this input variable.

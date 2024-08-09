@@ -1932,9 +1932,21 @@ In Harness, you can freeze deployments at different levels such as project, envi
 
 Yes, you can use the [Update Trigger endpoint](https://apidocs.Harness.io/tag/Triggers/#operation/updateTrigger) and pass the entirety of the updated trigger YAML (including the updated cron expression) in the body.
 
+### How can I access the list of pipeline executions from the last 24 hours?
 
+You can use the API provided by Harness to get a list of pipeline executions. Specifically, the Pipeline [Execution Details API](https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getListOfExecutions) allows you to retrieve the list of executions. You will need to process the API response to filter the results by date to get executions from the last 24 hours.
 
+### Is there an alternative way to list pipeline executions if audit events are enabled?
 
+Yes, if audit events for pipeline executions are enabled (which include events like Pipeline Start, Pipeline End, Stage Start, and Stage End), you can use the [Audit Events API](https://apidocs.harness.io/tag/Audit#operation/getAuditEventList) to list the executions. To enable capturing these events, you must turn on the "Enable Pipeline Execution Audit Events" setting under the pipeline category in the account-level settings.
+
+### What happens when the Connector URL for a job execution option is enabled in Jenkins step?
+
+When the Connector URL for job execution is enabled, the system uses the connector URL for the host part of the API calls. This means that instead of using the internal IP address returned in the first API call to Jenkins, the system will use the predefined connector URL. This approach ensures that the job trigger URL is reachable, avoiding issues caused by internal IP addresses that may not be accessible from your environment.
+
+### How does enabling the Connector URL option affect the job execution process in Jenkins?
+
+Enabling the Connector URL option affects the job execution process by modifying the way the job trigger URL is formed. Instead of using the internal IP address from the job URL obtained in the first API call, the system will only take the job identifier details from the response. It then combines these details with the connector URL to form the second API call URL. This ensures that the URL used to trigger the job is correct and reachable, preventing potential failures due to inaccessible internal IP addresses.
 
 
 

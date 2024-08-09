@@ -618,7 +618,6 @@ Yes, Kubernetes Traffic Shifting Support for Istio and other Open Source Service
 - One can perform traffic shifting for Blue Green and Canary Deployments
 - One generate the configuration for traffic shifting on the fly or you can bring your own traffic shifting definition
 
-This feature is provided behind the `FF: CDS_K8S_TRAFFIC_ROUTING_NG`
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step/).
 
 ### What is the impact on Kubernetes deployments when it comes to the immutability of labels?
@@ -763,4 +762,56 @@ deployment spelling-grammar-llm-service-deployment exceeded its progress deadlin
  
 Therefore, we also consider it a failure and fail the pipeline as soon as Kubernetes throws the above error. You will need to check the application log for the pods on why they are not coming up within the specified threshold.
 
+### The release files are created in OpenShift under the configMap section every time a pipeline executes (this is expected as we’re versioning the deployment). Will cleaning up and deleting older release files in prod and lower environments cause any issues during rollback?
 
+Deleting older ConfigMaps won’t impact deployments. However, the n-1 version is needed for a proper rollback. We recommend that you keep the last 2 ConfigMaps at least.
+
+#### What is the concern regarding Kubernetes pruning if the manifest length exceeds 0.5 MB?
+If the manifest length exceeds 0.5 MB, it affects manifest handling since it is stored in secrets for declarative rollback.
+
+#### How does Harness handle large manifests in Kubernetes?
+Harness compresses the manifest using gzip at level 9 before storing it in secrets. If any service violates this size limit, the execution fails because release secrets are critical for performing automated rollbacks.
+
+#### Is there a way to determine which services have a manifest size greater than 0.5 MB?
+Currently, there is no way to check which services have a manifest size greater than 0.5 MB.
+
+#### What happens when pruning is enabled for the first time?
+When pruning is enabled for the first time, there will be no pruning during execution or rollback because the previous release was run with pruning disabled, safeguarding against unintended pruning.
+
+#### Can approval be added if pruning is going to occur in Kubernetes?
+No, adding approval for pruning is not supported. Pruning is integrated within the Kubernetes steps.
+
+#### Why are release secrets critical in Harness?
+Release secrets are critical because they store the compressed manifest and are essential for performing automated rollbacks in case of a failure.
+
+#### What does Harness use for declarative rollback in Kubernetes?
+Harness uses the entire manifest stored in secrets to perform declarative rollbacks.
+
+#### What compression method does Harness use for manifests?
+Harness uses gzip compression at level 9 to compress the manifest before storing it in secrets.
+
+#### What safeguard is in place when enabling pruning for the first time?
+The safeguard is that no pruning will occur during the first execution or rollback when pruning is initially enabled, preventing unintended pruning of resources.
+
+#### Is there any feature to alert or approve before pruning happens in Kubernetes within Harness?
+No, currently, there is no feature for providing approvals or alerts before pruning happens as it is built into the Kubernetes steps.
+
+#### Can Kubernetes and NativeHelm Infrastructures be used interchangably?
+No its not possible, as both are treated as separate deployment type to make sure any changes related to that swimlane should not affect other
+
+#### Is the shift traffic feature available for EKS (Elastic Kubernetes Service) deployments?
+Yes, Harness does support traffic shifting for EKS deployments.
+It can be implemented in the following ways:
+- Using an ingress controller that supports splitting traffic across services by percentage, such as Istio or Nginx
+- Via a Kubernetes Apply step, which would work with any ingress controller supporting traffic splitting
+
+For more details please refer to the Harness documentation on [Traffic Shifting Step](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step/)
+
+#### Does Harness support traffic-shifting for SpotInst deployments?
+No, the shift traffic feature is not currently available for SpotInst deployments
+
+#### Does Harness support Manual Authentication Configuration for Kubernetes EKS Deployments?
+Yes, Harness does support the manual authentication configurations for Kubernetes EKS deployments. User can pass in the URL to the cluster and any other authentication meta data for Harness to authenticate and deploy to the cluster.
+To use this feature, user should use Harness versions `24.07.83600` or above and must enable the Feature flag : `CDS_AWS_EKS_CLUSTER_MANUAL_CONFIGURATION`.
+
+For more details, please refer to the Harness documentation on [Define your Kubernetes Target Infrastructure](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure#aws-elastic-kubernetes-service-eks)

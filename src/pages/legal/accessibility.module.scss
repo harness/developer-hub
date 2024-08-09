@@ -10,15 +10,14 @@
   }
   p {
     text-align: justify;
-    color: #0b0b0d;
+    color: var(--gray-900);
     font-size: 16px;
     line-height: 26px;
   }
 
   .link {
     text-decoration: underline;
-    color: #0b0b0d;
-    
+    color: var(--gray-900);
   }
 
   .goals {
@@ -36,7 +35,7 @@
       }
       p {
         font-size: 13px;
-        color: #0b0b0d;
+        color: var(--gray-900);
         line-height: 18px;
       }
     }

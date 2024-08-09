@@ -1,7 +1,7 @@
 ---
 title: Tutorial - Test a FastAPI project
 description: Use Harness CI to automatically test a FastAPI project.
-sidebar_position: 70
+sidebar_position: 90
 redirect_from:
   - /tutorials/ci-pipelines/test/fastapi
 ---

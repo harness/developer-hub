@@ -14,11 +14,12 @@ import allModuleAnimationDark from "./assets/hdh_hero-dark.json";
 import styles from "./index.module.scss";
 
 import { useColorMode } from "@docusaurus/theme-common";
+import Chatbot from "../components/Chatbot/Chatbot";
 function HomepageHeader() {
   const { colorMode } = useColorMode();
   const { siteConfig } = useDocusaurusContext();
   return (
-    <>
+    <div style={{ position: "relative" }}>
       <header className={clsx("container", styles.heroBanner)}>
         <div className={styles.heroContainer}>
           <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
@@ -34,7 +35,7 @@ function HomepageHeader() {
         />
         {/* <Lottie animationData={allModuleAnimationDark} loop={true} /> */}
       </div>
-    </>
+    </div>
   );
 }
 

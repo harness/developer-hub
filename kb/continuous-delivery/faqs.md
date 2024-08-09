@@ -3117,6 +3117,135 @@ Harness keeps data retention for CD NG - 6 months (execution data) and audit tra
 Please read more on this on our Pricing webpage - [here](https://www.harness.io/pricing?module=cd#).
 Also follow more on this in the following [Documentation](https://developer.harness.io/docs/platform/references/data-retention/).
 
+#### Does Harness support to resolve secrets using Harness expressions directly in Terraform code?
+
+Harness does not support this use case where a non-Harness entity is able to get the secret value bypassing Harness entirely.
+
+#### Missing Execution Id under Executions for a pipeline.
+You might see that for a pipeline under Executions, you may see that the execution Id is 32 and then next execution Id 34, and 33 seems to be missing. This happens when you re-run a pipeline from the last failed stage or a specific stage. To access the failed execution, you can go the pipeline and click on the Execution History on the top right corner. 
+
+#### Favorite Project Marking in Harness UI.
+You can mark projects as Favourites, so that you can filter your favourite projects from the long list of projects faster. 
+
+Go to the Projects page, and then on the project, click the star icon to mark them as favourite. 
+
+#### Adding artifact source in a service using API.
+You can make use of the update service API with the artifact source added in the YAML in the body. For details, go to [Harness API documentation](https://apidocs.harness.io/tag/Project-Services#operation/update-service).
+
+#### API to list all secret managers in an account.
+You can use the [list connectors API](https://apidocs.harness.io/tag/Connectors#operation/getConnectorListV2) filter in the account.  You can use SECRET_MANAGER to list all secret mangers from the account. 
+
+#### How to pass multiple environments and infrastructures as expressions?
+
+You can use the following sample YAML:  
+
+```yaml
+name: Stage2 
+identifier: Stage2 
+description: "" 
+type: Deployment 
+spec: 
+  deploymentType: Kubernetes 
+  environments: 
+    metadata: 
+      parallel: true 
+    values: 
+      - environmentRef: <+exportedVariables.getValue("pipeline.ENV_INFO.ENV_ID")> 
+        deployToAll: false 
+        infrastructureDefinitions: <+<+exportedVariables.getValue("pipeline.ENV_INFO.INFRA_IDS")>.split(",")>
+```
+
+Make sure that the infrastructure Ids are in the format `identifier: id,identifier: id2` as shown below:
+
+```
+export INFRA_IDS=$( echo '<+inputSet>'| jq -r '.pipeline.stages[0].parallel[0].stage.spec.environments.values[0].infrastructureDefinitions|map("identifier: "+ .identifier)|join(",")')`
+```
+#### How can I limit the total number of pipelines running in account?
+
+To limit the total number of pipelines running in the organization, you can set the limit for concurrent pipeline executions at the account level. This setting can be found under Default setting and then "Pipeline" section, and then "Concurrent Active Pipeline Executions."
+
+#### How to export connector list?
+
+You can use API to export connector list [API](https://apidocs.harness.io/tag/Connectors#operation/getConnectorCatalogue)
+
+#### How to find pending harness approvals?
+
+You can create a deployment dashboard and use field Harness aprroval and filter on status as pending.
+
+#### What is a potential issue when running multiple pipelines in parallel using bash script steps?
+
+When running multiple pipelines in parallel that use bash script steps, they can affect each other if they hit the same delegate instance. This occurs because the pipelines run in the same user context and environment, potentially causing interference between two completely different pipelines, which isn't always obvious.
+
+#### We are executing a OPA policy but while executing the policy the tags are coming as empty.
+
+ The tags are based on key-value pair, you need to provide them as key-value based to appear in policy.
+
+#### What permissions are needed to view account-level environments in a project?
+
+This is not a permissions issue. Harness does not support viewing account-level or organization-level environments within the project view.
+
+#### In trigger, Does a pull request event occur for a forked repository?
+
+No, pull request events do not occur on the forked repository.
+
+#### How can we create a trigger on a fork event? 
+
+You can create a custom trigger to initiate a pipeline for a fork event. First, enable the Webhook setting to capture the event logs for the fork. Once enabled, you will be able to capture the event logs for every fork on the repository, and based on the payload, trigger conditions can be set.
+
+#### How can we delete Artifactory images from JFrog using Harness?
+
+ You can use Jfrog [API] (https://jfrog.com/help/r/jfrog-rest-apis/delete-item) to delete artifacts. For calling this API you can either use HTTP step or a shell script.
+
+#### In the Build dashboard, We have selected "Builds and Repositories" but do not have the option to add Environment and Service name filters, what could be the issue?
+
+As Environment and Services are not part of the Build stage, they are not shown in the Build and Deployment dashboard. To display Environment and Services, you will need to use the Deployments and Services dashboard.
+
+#### Is there a way to fetch audit event to a CSV or any other format.
+
+You can use [API](https://apidocs.harness.io/tag/Audit#operation/getAuditEventList) to fetch the audit events, which can then be further processed into CSV or other formats.
+
+#### What is Input Data Preprocessing in Harness Pipelines?
+
+Input Data Preprocessing in Harness Pipelines involves preparing and transforming input data before it is processed in a pipeline. This ensures that the data is in the correct format and contains the necessary information for successful pipeline execution.
+Please read more on this in the [Documentation](https://developer.harness.io/docs/platform/pipelines/input-data-preprocessing/)
+
+#### What types of Input Data can be preprocessed in Harness Pipelines?
+
+In Harness Pipelines, you can preprocess various types of input data, including JSON, YAML, and plain text. The preprocessing steps can involve tasks such as data validation, transformation, and enrichment to ensure the input data meets the required standards for pipeline execution.
+
+#### How do we configure Harness Pipelines to `save blank fields as empty` strings during data preprocessing?
+
+To configure Harness Pipelines to save blank fields as empty strings during data preprocessing, you need to set the appropriate parameter in your pipeline configuration. This ensures that any fields that are left blank in the input data are treated as empty strings, preventing potential issues or errors during pipeline execution.
+Avail this feature with below configurations : 
+- The feature is behind the feature flag : `CDS_ENABLE_RAW_MODE`
+- Set settings `Show checkbox to Save Blank Fields as Empty String` as true 
+- Set settings `Default value of Blank Fields as Empty String` as true
+
+To read more on this refer to documentation on [Handling empty strings in Input Variable](https://developer.harness.io/docs/platform/pipelines/input-data-preprocessing/)
+
+#### Can customers request the deactivation of the AIDA feature for their account?
+
+Customers can deactivate the AIDA feature themselves without needing to request or create a support ticket. The AIDA setting is available in the default settings of the platform, allowing users to manage this feature directly.
+
+#### Is AIDA definitively enabled on the Harness platform?
+
+AIDA is enabled on the Harness platform by default. To read more on the security impact of this please refer the [Documentation](https://www.harness.io/legal/aida-privacy) 
+
+#### Is there a way to reference a step group variable without knowing the step group ID in Harness Pipelines?
+
+Yes, we can use exported variables to reference a step group variable without knowing the step group ID.
+One can follow the syntax : `<+exportedVariables.getValue("stepGroup.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>` This method allows you to reference the variable by its alias name instead of needing to know the step group ID. For more details, you can refer to the Harness documentation on [Scoping output variables using aliases](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#scoping-output-variables-using-aliases)
+
+#### Can permissions be set on delegates in Harness?
+
+Yes, permissions can be set on delegates using Harness Role-Based Access Control (RBAC). Under roles one can set permissions to `view`, `create/edit` and `delete` the delegates.
+For more details, refer to the Harness documentation on [Delegate Permissions](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview#delegate-permissions)
+
+#### How can Python be used in CD or Custom stages of Harness?
+
+In CD/Custom Stages, Python can be utilized through the implementation of a Step Group, which allows access to the Run Step that supports Python.
+For more details, refer to the Harness documentation on [Containerized Step Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/)
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).

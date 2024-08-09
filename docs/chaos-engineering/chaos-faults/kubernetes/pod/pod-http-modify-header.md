@@ -2,22 +2,58 @@
 id: pod-http-modify-header
 title: Pod HTTP modify header
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-modify-header
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-modify-header
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-http-modify-header
 ---
 
-Pod HTTP modify header is a Kubernetes pod-level chaos fault that injects chaos on the service whose port is provided using the `TARGET_SERVICE_PORT` environment variable. This is done by starting the proxy server and redirecting the traffic through the proxy server. This fault modifies headers of the requests and responses of the service. 
+Pod HTTP modify header is a Kubernetes pod-level chaos fault that injects chaos on the service whose port is provided using the `TARGET_SERVICE_PORT` environment variable. This is done by starting the proxy server and redirecting the traffic through the proxy server. This fault modifies headers of the requests and responses of the service.
 
 ![Pod HTTP Modify Header](./static/images/pod-http-modify-header.png)
-
 
 ## Use cases
 
 Pod HTTP modify header can be used to test resilience towards incorrect or incomplete headers in application services.
 
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-http-modify-header
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
+
 ### Prerequisites
 - Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
-
 
 ### Mandatory tunables
    <table>

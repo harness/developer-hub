@@ -248,6 +248,268 @@ policies:
 
 ---
 
+### Recommendation: gcp-idle-gke-clusters
+**Description:** List GCP Idle GKE Clusters Recommendations
+
+**Policy Used:** 
+```yaml
+policies:
+  - name: gcp-idle-gke-clusters
+    description: |
+      List GCP Idle GKE Clusters Recommendations
+    resource: gcp.gke-cluster
+    filters:
+      - type: recommend
+        id: google.container.DiagnosisRecommender
+    actions:
+      - type: delete
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
+
+**Permissions Required:** 
+- Dry Run:
+  - `recommender.containerDiagnosisInsights.list`
+  - `container.clusters.list`
+
+- Run Once:
+  - `recommender.containerDiagnosisInsights.list`
+  - `container.clusters.list`
+  - `container.clusters.delete`
+
+---
+### Recommendation: gcp-cloud-run-cpu-allocation
+**Description:** 
+
+**Policy Used:** 
+```yaml
+policies:
+  - name: gcp-cloud-run-cpu-allocation
+    resource: gcp.cloud-run-service
+    description: |
+      List Cloud Run CPU Allocation Recommendations
+    filters:
+      - type: recommend
+        id: google.run.service.CostRecommender      
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
+
+**Permissions Required:** 
+- Dry Run:
+  - `recommender.runServiceCostRecommendations.list`
+  - `run.services.list`
+
+- Run Once:
+  - `recommender.runServiceCostRecommendations.list`
+  - `run.services.list`
+
+---
+### Recommendation: gcp-list-unused-bq-datasets
+**Description:** List BigQuery datasets that haven't been accessed in the last 7 days.
+
+**Policy Used:** 
+```yaml
+policies:
+  - name: gcp-list-unused-bq-datasets
+    resource: gcp.bq-dataset
+    description: |
+      List BigQuery datasets that haven't been accessed in the last 7 days.
+    filters:
+      - type: value
+        key: lastModifiedTime
+        op: less-than
+        value_type: age
+        value: 7
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for the last 30 days.
+
+**Permissions Required:** 
+- Dry Run:
+  - `bigquery.datasets.get`
+
+- Run Once:
+  - `bigquery.datasets.get`
+
+---
+### Recommendation: gcp-delete-unused-cloud-functions
+**Description:** Delete Cloud Functions that haven't been invoked in the last 7 days to reduce costs.
+
+**Policy Used:** 
+```yaml
+policies:
+  - name: gcp-delete-unused-cloud-functions
+    resource: gcp.function
+    description: >
+      Delete Cloud Functions that haven't been invoked in the last 7 days to
+      reduce costs.
+    filters:
+      - type: metrics
+        name: cloudfunctions.googleapis.com/function/execution_count
+        metric-key: resource.labels.function_name
+        days: 7
+        value: 0
+        op: eq
+    actions:
+      - type: delete
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
+**Permissions Required:** 
+- Dry Run:
+  - `monitoring.timeSeries.list`
+  - `cloudfunctions.functions.list`
+
+- Run Once:
+  - `monitoring.timeSeries.list`
+  - `cloudfunctions.functions.list`
+  - `cloudfunctions.functions.delete`
+
+---
+### Recommendation: gcp-list-low-utilized-bucket
+**Description:** List low utilized gcp buckets in last 7 days.
+
+**Policy Used:** 
+```yaml
+policies:
+  - name: gcp-list-low-utilized-bucket
+    description: |
+      List low utilized gcp buckets in last 7 days.
+    resource: gcp.bucket
+    filters:
+      - type: metrics
+        name: storage.googleapis.com/network/sent_bytes_count
+        aligner: ALIGN_COUNT
+        days: 7
+        value: 1024
+        op: less-than
+        missing-value: 0
+      - type: metrics
+        name: storage.googleapis.com/network/received_bytes_count
+        aligner: ALIGN_COUNT
+        days: 7
+        value: 1024
+        op: less-than
+        missing-value: 0   
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for last 30 days.
+
+**Permissions Required:** 
+- Dry Run:
+  - `monitoring.timeSeries.list`
+  - `storage.buckets.list`
+
+- Run Once:
+  - `monitoring.timeSeries.list`
+  - `storage.buckets.list`
+
+---
+### Recommendation: gcp-list-hanged-dataflow-jobs
+**Description:** List Dataflow jobs that have been in an hanged state for more than 1 day.
+
+**Policy Used:** 
+```yaml
+policies:
+  - name: gcp-list-hanged-dataflow-jobs
+    resource: gcp.dataflow-job
+    description: List Dataflow jobs that have been in an hanged state for more than 1 day.
+    filters:
+      - type: value
+        key: startTime
+        op: greater-than
+        value_type: age
+        value: 1
+      - type: value
+        key: currentState
+        value:
+          - JOB_STATE_RUNNING
+          - JOB_STATE_DRAINING
+          - JOB_STATE_CANCELLING
+      
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
+**Permissions Required:** 
+- Dry Run:
+  - `dataflow.jobs.list`
+
+- Run Once:
+  - `dataflow.jobs.list`
+
+---
+### Recommendation: gcp-delete-low-utilized-load-balancers
+**Description:** Delete all load balancers with low utilizations, where packet count is less than 1000 in the last 72 hours.
+
+**Policy Used:** 
+```yaml
+policies:
+  - name: gcp-delete-low-utilized-load-balancers
+    resource: gcp.loadbalancer-address
+    description: >
+      Delete all low utilized load balancers where packet count is less than
+      1000 in last 72 hours
+    filters:
+      - type: metrics
+        name: compute.googleapis.com/instance/network/received_packets_count
+        metric-key: metric.labels.instance_name
+        aligner: ALIGN_COUNT
+        days: 3
+        value: 1000
+        op: le
+    actions:
+      - type: delete
+      
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
+
+**Permissions Required:** 
+- Dry Run:
+  - `monitoring.timeSeries.list`
+  - `compute.addresses.list`
+
+- Run Once:
+  - `monitoring.timeSeries.list`
+  - `compute.addresses.list`
+  - `compute.addresses.delete`
+
+---
+### Recommendation: gcp-list-unused-redis-instances
+**Description:** List Redis instances with less than 5% CPU utilization over the last 7 days.
+
+**Policy Used:** 
+```yaml
+policies:
+  - name: gcp-list-unused-redis-instances
+    resource: gcp.redis
+    description: List Redis instances with less than 5% CPU utilization in last 7 days
+    filters:
+      - type: metrics
+        name: redis.googleapis.com/stats/cpu_utilization
+        metric-key: resource.labels.instance_id
+        days: 7
+        value: 0.05
+        op: lte
+      
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for the last 30 days.
+
+**Permissions Required:** 
+- Dry Run:
+  - `monitoring.timeSeries.list`
+  - `redis.instances.list`
+
+- Run Once:
+  - `monitoring.timeSeries.list`
+  - `redis.instances.list`
+
+---
+
 ## Custom Policies
 
 1. Check if an SSL Certificate is About to Expire:

@@ -11,7 +11,7 @@ GCP VM disk loss disrupts the state of GCP persistent disk volume using the disk
 ## Use cases
 
 GCP VM disk loss fault :
-- Determines the resilience of the GKE infrastructure. 
+- Determines the resilience of the GKE infrastructure.
 - Determines how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
 
 ### Prerequisites
@@ -98,6 +98,13 @@ stringData:
       </tr>
     </table>
 
+### IAM permissions
+
+Listed below are the IAM permissions leveraged by the fault:
+- `compute.disks.get`
+- `compute.instances.attachDisk`
+- `compute.instances.detachDisk`
+- `compute.instances.get`
 
 ### Detach volumes by names
 

@@ -33,6 +33,7 @@ export type Feature = {
   title: string;
   description: string;
   link?: string;
+  backgroundColor?: string;
 };
 export interface Horizon {
   [key: string]: {
@@ -81,7 +82,7 @@ const ModuleData: ModuleData[] = [
   },
   {
     title: "Software Supply Chain Assurance",
-    description: "SaaS release status: Limited GA, SMP release status: On Roadmap",
+    description: "SaaS release status: GA, SMP release status: BETA",
     module: MODULES.ssca,
     horizon: SscaData,
   },

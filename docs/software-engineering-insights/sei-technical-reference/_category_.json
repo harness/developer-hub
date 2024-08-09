@@ -1,11 +1,11 @@
 {
-    "label":"SEI technical reference",
+    "label":"SEI Technical Reference",
     "position": 80,
     "collapsible":"true",
     "collapsed":"true",
-    "className":"red",
+    "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"SEI technical reference"
+       "title":"SEI Technical Reference"
     }
  }

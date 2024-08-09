@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-05-22T10:00
+date: 2024-06-27T10:00
 sidebar_position: 13
 ---
 
@@ -22,13 +22,210 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## August 2024
+
+### Version 1.104.3
+
+<!-- 2024-08-05 -->
+
+#### New features and enhancements
+
+- The [Veracode scan step](/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference) in STO now ignores issues mitigated on the Veracode side, so the scan results exclude any mitigated issues.
+- The STO dashboard now includes a new graph to view the **Top 5 Vulnerable Targets**, showing code repositories, artifacts, instances, and configurations across the account.
+- You can now override the security testing scanner image at the step level. Learn more about [configuring your pipeline to use images from your registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry#configure-your-pipeline-to-use-images-from-your-registry).
+
+
+## July 2024
+
+### Version 1.104.3
+
+<!-- 2024-07-26 -->
+
+#### New features and enhancements
+- You can now override the image that runs the STO step directly in the scanner step UI. Expand **Additional Configuration** and then set **Container Registry** and **Image Tag**. (STO-7724)
+- The Bandit, Anchor, and Semgrep steps now support [Secure Connect](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect/) within STO. (STO-7666)
+- The dark theme for AIDA is improved. Its appearance is now consistent with other UI components. (STO-7849)
+
+### Version 1.103.3
+
+<!-- 2024-07-19 -->
+
+#### New features and enhancements
+- In the [Checkmarx step](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) under the **Scan Tool**, the fields **Team Name** and **Project Name** are now mandatory for step configuration. Previously, these fields were optional. (STO-7681)
+- We now track the number of occurrences for a given issue/scan combination independently of the associated occurrence IDs. Newly created issues will only store up to 1,000 occurrences, with the total number of occurrences being stored separately. Occurrences are stored based on severity, with higher-severity occurrences given priority. (STO-5979)
+
+  These following endpoints now include `numOccurrences` at the issue level, showing the total number of occurrences for the issues:
+    - `GET api/v2/issues/{issueId}`
+    - `GET api/v2/scans/{scanId}/issue/{issueId}`
+    - `GET api/v2/scans/{scanId}/issues`
+
+  Also, the following endpoints now accept an optional payload parameter `numOccurrences`, representing the total number of occurrences associated with the issue:
+    - `POST api/v2/issues`
+    - `PUT api/v2/issues/{issueId}`
+
+### Version 1.102.2
+
+<!-- 2024-07-11 -->
+
+#### New features and enhancements
+
+- Branch Scanning in [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#scan-configuration) is now Generally Available(GA), previously behind the `STO_SONARQUBE_BRANCHING` feature flag. Customers can now perform branch scans using the SonarQube step.
+- Added a new setting called **Users can approve their own exemptions**. This setting helps control whether users can approve their own exemptions, and it can be easily enabled or disabled based on their preference. Find this setting under **Exemption settings** on the **Default settings** page. This is available in the project, organization and account level settings. (STO-7675). 
+
+:::note 
+The setting **Users can approve their own exemptions** is behind the feature flag `STO_EXEMPTION_SETTING`. Contact [Harness Support](mailto:support@harness.io) to enable this setting.
+:::
+
+## June 2024
+
+### Version 1.100.2
+
+<!-- 2024-06-27 -->
+
+#### Fixed issue
+
+- Fixed an issue where an Anchore Enterprise step failed when trying to extract scan results in the following edge case. (STO-7754)
+  1. An Anchore user scanned an image (for example, `sto-plugin.v1.2.3`). 
+  2. An Anchore user then scanned an image with the same digest as `sto-plugin.v1.2.3` but a different name or tag such as `sto-plugin.latest`.  
+  3. In this case, the Anchore step could extract results for `sto-plugin.v1.2.3` but any attempts to extract results for `sto-plugin.latest` failed with the error "Unable to find matching image."
+
+### Version 1.99.2
+
+<!-- 2024-06-20 -->
+
+#### Features that are no longer behind feature flags
+
+The following features are now generally available:
+
+- Built-in scans:
+  - [SAST](/docs/security-testing-orchestration/sto-techref-category/built-in/sast)
+  - [SCA](/docs/security-testing-orchestration/sto-techref-category/built-in/sca)
+  - [Secret Detection](/docs/security-testing-orchestration/sto-techref-category/built-in/secrets)
+  - [Container](/docs/security-testing-orchestration/sto-techref-category/built-in/containers)
+  - [DAST](/docs/security-testing-orchestration/sto-techref-category/built-in/dast)
+- [Default baselines based on regular expressions](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-baselines-based-on-regular-expressions)
+- [Jira tickets for detected vulnerabilities](/docs/security-testing-orchestration/jira-integrations)
+- Wiz support for scanning [artifacts](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz), [code repositories](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz), and [IaC repositories](/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz)
+
+#### New feature
+
+- The Semgrep scan step now supports a set of new **Scan Configuration** settings that enable you to select the set of Semgrep rulesets to include in your scan. (STO-7599)
+
+  The following configurations are supported:
+
+  - **Default** Include the following rulesets: 
+    - [auto](https://semgrep.dev/p/bandit)
+    - [bandit](https://semgrep.dev/p/bandit)
+    - [brakeman](https://semgrep.dev/p/brakeman)
+    - [eslint](https://semgrep.dev/p/eslint)
+    - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+    - [flawfinder](https://semgrep.dev/p/flawfinder)
+    - [gosec](https://semgrep.dev/p/gosec)
+    - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+    - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+  - **No default CLI flags** Run the `semgrep` scanner with no additional CLI flags. This setting is useful if you want to specify a custom set of rulesets in **Additional CLI flags**.
+  - **p/default** Run the scan with the [default ruleset](https://semgrep.dev/p/default) configured for the Semgrep scanner.
+  - **Auto only** Run the scan with the [recommended rulesets specific to your project](https://semgrep.dev/p/auto).
+  - **Auto and Ported security tools** Include the following rulesets: 
+    - [auto](https://semgrep.dev/p/auto)
+    - [brakeman](https://semgrep.dev/p/brakeman)
+    - [eslint](https://semgrep.dev/p/eslint)
+    - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+    - [flawfinder](https://semgrep.dev/p/flawfinder)
+    - [gitleaks](https://semgrep.dev/p/gitleaks)
+    - [gosec](https://semgrep.dev/p/gosec)
+    - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+    - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+  - **Auto and Ported security tools except p/gitleaks**
+
+#### Fixed issues
+
+<!-- - Fixed an Anchore Enterprise issue where the connection between the Anchore step and the SaaS instance would fail with TLS  errors. (STO-7704, ZD-65026) -->
+
+- Audit trails for STO targets and exemptions now display user-friendly resource names instead of IDs. (STO-5717)
+
+
+### Version 1.98.7
+
+<!-- 2024-06-14 -->
+
+#### New features and enhancements
+
+- Harness STO now supports the Anchore v2 API and Anchore Enterprise Server 5.5.0. This change means that the Anchore v2 API and Anchore Enterprise Server v5.0 or higher are required to run orchestration and extraction scans. (STO-7614)
+- You can now run Wiz IaC scans in an **Infrastructure** stage. (STO-7632)
+
+#### Fixed issues
+
+- Fixed an issue where Burp scans failed when trying to ingest base64 data that included zero byte and “Symbol Other” UTF-8 characters. (STO-7714)
+- Updates to Burp Enterprise orchestration to resolve multiple issues. (STO-7635, ZD-64154)
+  1) Added another API call to resolve a Burp schedule item iD to its corresponding latest Burp scan ID.
+  2) Added logic to perform updates on matching Burp sites rather than trying to create a new Burp site with the same name.
+  3) Removed default port from being set by runner and will only set port if user specifies in the step.
+
+
+### Version 1.97
+
+#### New feature
+
+- The STO API is now generally available and publicly documented. For more information, go to [STO](https://apidocs.harness.io/tag/Exemptions) in the Harness API documentation. (STO-5281)
+
+<!--
+
+- The Semgrep scan step now supports a set of new **Scan Configuration** settings that enable you to select the set of Semgrep rulesets to include in your scan. (STO-7599)
+
+  The following configurations are supported:
+
+  - **Default** Include the following rulesets: 
+    - [auto](https://semgrep.dev/p/bandit)
+    - [bandit](https://semgrep.dev/p/bandit)
+    - [brakeman](https://semgrep.dev/p/brakeman)
+    - [eslint](https://semgrep.dev/p/eslint)
+    - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+    - [flawfinder](https://semgrep.dev/p/flawfinder)
+    - [gosec](https://semgrep.dev/p/gosec)
+    - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+    - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+  - **No default CLI flags** Run the `semgrep` scanner with no additional CLI flags. This setting is useful if you want to specify a custom set of rulesets in **Additional CLI flags**.
+  - **p/default** Run the scan with the [default ruleset](https://semgrep.dev/p/default) configured for the Semgrep scanner.
+  - **Auto only** Run the scan with the [recommended rulesets specific to your project](https://semgrep.dev/p/auto).
+  - **Auto and Ported security tools** Include the following rulesets: 
+    - [auto](https://semgrep.dev/p/auto)
+    - [brakeman](https://semgrep.dev/p/brakeman)
+    - [eslint](https://semgrep.dev/p/eslint)
+    - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+    - [flawfinder](https://semgrep.dev/p/flawfinder)
+    - [gitleaks](https://semgrep.dev/p/gitleaks)
+    - [gosec](https://semgrep.dev/p/gosec)
+    - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+    - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+  - **Auto and Ported security tools except p/gitleaks**
+
+-->
+
+#### Fixed issues
+
+- Updates to Burp Enterprise orchestration to resolve multiple issues. (STO-7635, ZD-64154)
+  - Added another API call to resolve a Burp schedule item iD to its corresponding latest Burp scan ID.
+  - Added logic to perform updates on matching Burp sites rather than trying to create a new Burp site with the same name.
+  - Removed default port from being set by runner and will only set port if user specifies in the step.
+
+- Fixed an issue where a updated runner image caused repository scans to fail in some cases. (STO-7634, ZD-64116)
+
+- Implemented a fix to improve data processing times for certain edge cases. (STO-7521, ZD-62602, ZD-62694)
+
 ## May 2024
 
 ### Version 1.96.2
 
 <!-- 2024-05-22 -->
 
+#### Breaking change
+
+Harness introduced a back-end dashboard change to support features that are currently in development. As a result, you must re-create any custom dashboards cloned from the Security Testing Dashboard before this change was introduced. If the cloned dashboard has scheduling enabled, you must also re-create the schedule. (STO-7199)
+
 #### Fixed issues
+
+- Fixed an issue where running an orchestrated Burp scan resulted in the runtime error `No matching scan configurations`. (STO-7585, ZD-63508)
 
 - Fixed a Jira integration issue that allowed tickets to be created for issues that were not in a target baseline. When the **Ticket Summary** page was viewed from these tickets, they produced a vague error page. This fix prevents the creation of new non-baseline tickets and improves the error messages shown for existing tickets. (STO-7394, ZD-60778)
 
@@ -41,8 +238,9 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 #### New features and enhancements
 
-- The default behavior for Semgrep orchestration scans has changed. Semgrep steps now include the following rule packs. (STO-7560)
+- The default behavior for Semgrep orchestration scans has changed. Semgrep steps now include the following rulesets. (STO-7560)
 
+  - [auto](https://semgrep.dev/p/auto)
   - [bandit](https://semgrep.dev/p/bandit)
   - [brakeman](https://semgrep.dev/p/brakeman)
   - [eslint](https://semgrep.dev/p/eslint)
@@ -85,16 +283,21 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 
 ## April 2024
-
+ 
 ### UI update 1.15.0
 
-#### Early access feature: Built-in SAST scans
+#### New feature: Built-in SAST scans
 
 This release introduces a new [built-in SAST step](/docs/security-testing-orchestration/sto-techref-category/built-in/sast) that adds a preconfigured [Semgrep step](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) that's ready to run as soon as you add it. (STO-7180) 
 
+<!--
 This step is behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 
+-->
+
 <DocImage path={require('/docs/security-testing-orchestration/sto-techref-category/semgrep/static/add-built-in-sast-scanner.png')} width="50%" height="50%" title="Add built-in SAST scan step" /> 
+
+-->
 
 #### New feature: Orchestrated Semgrep scans
 
@@ -189,17 +392,20 @@ The following features are now generally available:
 
 <!-- 2024-03-20 -->
 
-#### Early access feature: built-in scanners
+#### New feature: built-in scanners
 
-- This release introduces a new set of built-in steps for adding scans to your pipelines quickly and with minimal configuration. The scanners used in these steps are free to STO users and are ready to run as soon as you add them to your pipeline. (STO-6738)
+- This release introduces a new set of built-in steps for adding scans to your pipelines quickly and with minimal configuration. The scanners used in these steps are free to STO users and are ready to run as soon as you add them to your pipeline. (STO-6935)
 
   ![](./static/built-in-scan-steps.png)
 
+<!--
   :::note
 
   These steps are behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](mailto:support@harness.io) to enable these steps. 
 
   :::
+
+-->
 
   You can add built-in scanners for the following scan types:
 
@@ -216,16 +422,20 @@ The following features are now generally available:
 
     - [**DAST**](/docs/security-testing-orchestration/sto-techref-category/built-in/dast) Add a Zed Attack Proxy (ZAP) scan to detect vulnerabilities in your application instances.
 
-#### Early Access feature: Wiz scanner integration
+#### New feature: Wiz scanner integration
 
-You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets. (STO-6035)
+You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets. (STO-6035)
+
+<!--
 
 Harness currently supports the following: 
 
 1. Orchestrated Wiz scans for container images
 2. Ingestion of Wiz scan reports ( JSON/SARIF format ) generated for container images, repositories, and directories
-
+ 
 This integration is behind the feature flag `STO_STEP_PALETTE_WIZ`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
+
+-->
 
 #### Fixed issues
 
@@ -251,8 +461,8 @@ The Aqua Security step also publishes a new output variable, `EXTERNAL_POLICY_FA
 
 For more information, go to:
 
-- [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
-- [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
+- [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/policies/create-opa-policies)
+- [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/policies/create-opa-policies#exclude-vulnerabilities-using-sto-output-variables)
 
 
 #### New feature: AIDA remediations for STO stage failures
@@ -283,9 +493,13 @@ For more information, go to:
 
 You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected. (STO-7127)
 
+<!-- 
+
 :::note
 Currently, this feature is behind the Feature Flag `STO_BASELINE_DEFAULTING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
+
+-->
 
 For more information, go to [Default RegEx baselines by target type](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-regex-baselines-by-target-type).
 
@@ -310,7 +524,7 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 
 #### New feature: OPA policies for Security Test results
 
-You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
+You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/dashboards/view-scan-results), and stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
 
 This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). 
 
@@ -326,7 +540,7 @@ This release includes a set of security test policy samples, which make it easy 
 
 - A security test cannot include any issues in a list of reference IDs such as CWE-78 or CVE-2023-52138.
 
-For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
+For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/policies/create-opa-policies).
 
 #### New feature: Open Source Vulnerabilities (OSV) scanner integration
 
@@ -366,17 +580,13 @@ You can scan your code repositories using [Open Source Vulnerabilities (OSV)](ht
 
   - Previous behavior:
   
-    When [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) showed scan results, it categorized issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant to the baseline specified at the time the page was loaded.
+    When [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results) showed scan results, it categorized issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant to the baseline specified at the time the page was loaded.
 
   - New behavior: 
   
     The baseline for a scan is fixed when STO ingests the results. **Only in \<_target_>:\<_variant_>** and **Remediated** issues are based on the baseline specified at the time of the scan.
 
    Harness has introduced this behavior to avoid ambiguous or unexpected results when a target baseline changes. This can happen automatically when a pipeline uses [dynamic baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#specify-dynamic-baselines-using-regular-expressions) based on regular expressions. This new behavior also ensures that the  **Security Tests** UI for a given pipeline execution always uses the same criteria to categorize issues as **Only in \<_target_>:\<_variant_>** and **Remediated**.
-
-
-
-
 
 
 ### Version 1.83.1 
@@ -398,11 +608,23 @@ You can scan your code repositories using [Open Source Vulnerabilities (OSV)](ht
 
 - Fixed a UI issue where the Exemptions page would show the incorrect severity of an issue if that severity was overridden after the original scan. (STO-7069)
 
+
 - The SonarQube integration includes better support for orchestrated branch and pull-request scanning with SonarQube Enterprise. (STO-7122, STO-6840, STO-6857, ZD-58021, ZD-55282, ZD-55592)
   - Previously, the orchestration scan step downloaded results for the main or master branch regardless of the branch specified in the runtime input or the pull request.
   - With this enhancement, the orchestration step always downloads results for the scanned branch or pull request.
-  - Branch scans require no additional configuration.
+  - When **Branch Scan** is selected in the [Scan Configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#scan-configuration), the step scans the branch or pull request specified in the pipeline execution.
+  
+:::note
+
+~~**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`. Contact [Harness Support](mailto:support@harness.io) to enable this option.~~ 
+
+**Update on July 2024:** SonarQube Branch Scan feature, which was previously available in early access, became generally available GA in [Version 1.102.2](#version-11022)
+
+:::
+  <!-- 
   - To configure pull-request scans, go to [SonarQube pull-request scan configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-pull-request-scan-configuration).
+
+<!-- -->
 
 ## January 2024 
 
@@ -846,7 +1068,7 @@ Harness AI Development Assistant (AIDA) uses state-of-the-art AI technology to s
 
 Harness AIDA reduces developer toil by streamlining and simplifying the process of fixing vulnerabilities. It enables developers and security personnel to manage security-issue backlogs and address critical issues promptly. Harness AIDA can dramatically reduce your TTR, speed up your software delivery lifecycle, and improve the security posture of your applications and services. (STO-5882)
 
-For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/remediations/ai-based-remediations).
 
 ###### Fixed issues
 
@@ -886,7 +1108,7 @@ For more information, go to [Remediations with AIDA](/docs/security-testing-orch
   * [AWS ECR](/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference)
   * [AWS Security Hub](/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference)
   * [Brakeman](/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference)
-  * [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference)
+  * [Custom Ingest](/docs/security-testing-orchestration/custom-scanning/custom-ingest-reference)
   * [Nikto](/docs/security-testing-orchestration/sto-techref-category/nikto-scanner-reference)
   * [Nmap](/docs/security-testing-orchestration/sto-techref-category/nmap-scanner-reference)
   * [OWASP](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference)
@@ -937,7 +1159,7 @@ For more information, go to [Remediations with AIDA](/docs/security-testing-orch
 
 * STO now supports [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) for Security Tests stages. (STO-5726)
 
-* You can now select a high-level reason when you [request an exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for a detected issue. The **Request Exemption for Issue** dialog box includes a new **Reason** pull-down menu with a set of common reasons for exempting an issue. (STO-5730)
+* You can now select a high-level reason when you [request an exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows) for a detected issue. The **Request Exemption for Issue** dialog box includes a new **Reason** pull-down menu with a set of common reasons for exempting an issue. (STO-5730)
 
    ![](./static/sto-exemption-reason-pulldown.gif)
 
@@ -1010,7 +1232,7 @@ This update includes the following fixed issues:
 
 ###### Early access 
 
-* This release includes the following enhancements to the [Jira integration](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations):
+* This release includes the following enhancements to the [Jira integration](/docs/security-testing-orchestration/jira-integrations):
    * After you create a new ticket, **Issue Details** replaces the **Create Ticket** button with a link to the new ticket and the ticket status. (STO-5518)
 
      Before:
@@ -1075,7 +1297,7 @@ The following security steps are now generally available:
 
 ###### Early access 
 
-* The new [Jira integration](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, **Issue Details** now shows the ticket status along with the number. (STO-5491)
+* The new [Jira integration](/docs/security-testing-orchestration/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, **Issue Details** now shows the ticket status along with the number. (STO-5491)
 
 ###### Fixed issues
 
@@ -1132,7 +1354,7 @@ The following security steps are now generally available:
 </details>
 
 
-- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations). (STO-5467)
+- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/jira-integrations). (STO-5467)
 
 ###### Fixed issues
 

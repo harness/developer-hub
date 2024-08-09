@@ -18,6 +18,7 @@ You can [configure Default Settings](/docs/platform/settings/default-settings.md
 These are the Default Settings for Pipelines.
 
 ### Pipeline triggers settings
+
 - **Mandate pipeline create and edit permission to create and edit triggers:** If enabled, users must have permission to create/edit pipelines to create/edit triggers for those pipelines. If disabled, users with permission to create/edit triggers can create/edit triggers regardless of their access to create/edit the pipelines associated with the triggers.
 - **Webhook Polling For Triggers**
 - **Mandate Authorization for Custom Webhook Triggers:** Enable this setting to require that all custom triggers in this Harness account use API key tokens. For more information, go to [Enforcing authorization for custom triggers](/docs/platform/triggers/trigger-deployments-using-custom-triggers/#enforcing-authorization-for-custom-triggers).
@@ -29,8 +30,17 @@ These are the Default Settings for Pipelines.
 By default, the pipeline execution audit events such as Pipeline Start, Pipeline End, Stage Start, and Stage End are not displayed in the [Audit Trail](/docs/platform/governance/audit-trail/#step-view-an-audit-trail). Enable this setting to display these events.
 
 ### Run RBAC Validation before executing Inline Pipelines
+:::note
+Currently, this feature is behind the feature flags `CDS_PIPELINE_ABORT_RBAC_PERMISSION_MIGRATION` and `CDS_PIPELINE_ABORT_RBAC_PERMISSION`. Contact Harness Support to enable the feature.
+:::
 
-By default, before running any pipeline, Harness checks whether the user has access to all of the environments and other resources that the pipeline accesses. This check is run only for inline pipelines, not those stored in Git or other repositories. Turn off this setting if the check isn't required. Turning this off can cause pipelines to fail partway through execution (since later stages could have permission issues that haven't been checked beforehand).
+By default, before running any pipeline, Harness checks whether the user has access to all of the environments and other resources that the pipeline accesses. This check is run only for inline pipelines, not those stored in Git or other repositories. 
+
+Turn off this setting if the check isn't required. Turning this off can cause pipelines to fail partway through execution (since later stages could have permission issues that haven't been checked beforehand).
+
+The **Run RBAC Validation before executing Inline Pipelines** setting is available in the account-level default settings.
+
+   ![](./static/rbac_pipeline.png)
 
 ### Do Not Delete Pipeline Execution Details
 
@@ -71,6 +81,12 @@ The concurrency limits are as follows for each plan tier:
 | Editable | No | Yes | Yes |
 | Scope | Account | Account | Account |
 
+:::warning
+
+These concurrency limits are *account wide* and NOT per pipeline. 
+
+:::
+
 This setting can only be edited in Team and Enterprise plans. You can set it at the account scope only. You can configure the limit anywhere between 2 and the maximum. 
 
 ### Pipeline Timeout and Stage Timeout (execution time limits)
@@ -108,7 +124,6 @@ For example, with a Free plan, you can add a maximum of 10 parallel stages in a 
 
 Even if you specify a `maxConcurrency` limit of 5 or 10, the moment you do the looping repeat strategy, Harness will already compute the total number of potential stages, if the list generates more than 256 items we will fail there before even running any of the stages and honoring the `maxconcurrency`. 
 
-
 ### Resolved YAML size limit
 
 **Compiled YAML cannot exceed the Harness-enforced limit of 3 MB.**
@@ -127,14 +142,14 @@ For example, assume a pipeline tries to run 25 stages concurrently, and each sta
 
 Once it reaches the concurrency + queued limit of 20 stages, additional stages fail. In this example, five stages would fail by default of the concurrency and queue limit being full.
 
-
 ## Individual pipeline and module-specific pipeline settings
 
 For individual pipeline settings, such as stage and step settings, pipeline triggers, and so on, go to the documentation for the topic of your choice. For example:
 
-* [CD documentation](/docs/continuous-delivery)
-* [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
-* [Triggers documentation](/docs/category/triggers)
+* [Harness CD](/docs/continuous-delivery)
+* [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
+* [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md)
+* [Triggers](/docs/category/triggers)
 * [Pipeline failure handling, timeout limits, and retries](/docs/category/failure-handling)
 * [Conditional executions](/docs/platform/pipelines/step-skip-condition-settings)
 * [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining)

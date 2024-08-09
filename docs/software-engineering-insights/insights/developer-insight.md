@@ -170,7 +170,7 @@ To add the **SCM Commits Single Stat Report** widget to Insights:
 Similarly you can also configure the other Single Stat reports.
 Some other SCM related reports which are frequently used are
 
-* [SCM Rework Report](/docs/software-engineering-insights/sei-technical-reference/scm-metrics-calculation/scm-rework): The Rework report measures the refactoring of code, which involves making modifications to the existing codebase or rewriting it entirely.
+* [SCM Rework Report](/docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-reports-calculation/scm-rework-report ): The Rework report measures the refactoring of code, which involves making modifications to the existing codebase or rewriting it entirely.
 * [SCM Committers Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-committers-report): This report analyzes the volume of code changes by committer.
 * [SCM Issues Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-issues-reports): This report analyzes the number of issues in your SCM tool by time, label, or other categories.
 * [SCM Issues Count Single Stat](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-issues-reports): This report displays a single stat related to the number of issues in your SCM tool.

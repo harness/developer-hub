@@ -64,12 +64,19 @@ You must not rename the cluster. If you're setting up a new connector with this 
 
 #### Delegate size requirements
 
-Your Kubernetes cluster must have unallocated resources required to run the Harness Delegate workload:
+Your Kubernetes cluster must have unallocated resources required to run the Harness Delegate workload.
 
-  - Laptop - 2GB memory, 0.5CPU
-  - Small - 4GB memory, 1CPU
-  - Medium - 8GB memory, 2CPU
-  - Large - 16GB memory, 4CPU
+**Baseline Configuration:**
+For clusters with up to 200 nodes and 4000 pods, each delegate should be configured with:
+- 2 vCPUs
+- 8 GB of memory
+  
+**Incremental Scaling:** For every additional 50 nodes and 1000 pods, the delegate capacity should be increased by 0.5 vCPUs and 2 GB of memory
+This scaling ensures that the delegate can handle the increased load and continue to collect metrics efficiently.
+
+**Single replica requirement:**
+- All specified resource requirements pertain to a single replica of the delegate.
+- Instead of utilizing Horizontal Pod Autoscaler (HPA) to increase the number of smaller-sized replicas Harness recommends provisioning each delegate with the necessary resources to handle the specified number of nodes and pods.
 
 :::warning
 
@@ -246,7 +253,9 @@ You need to provide different permissions depending on the features that you ena
 
 :::note
 
-For [AWS](set-up-cost-visibility-for-aws.md) and [Azure](set-up-cost-visibility-for-azure.md), if the cloud connectors are set up, then the cost will be trued-up to the pricing received from the CUR/billing export. However, for [GCP](set-up-cost-visibility-for-gcp.md) the list pricing is used.
+- For [AWS](set-up-cost-visibility-for-aws.md) and [Azure](set-up-cost-visibility-for-azure.md), if the cloud connectors are set up, then the cost will be trued-up to the pricing received from the CUR/billing export. However, for [GCP](set-up-cost-visibility-for-gcp.md) the list pricing is used.
+
+- CCM supports Karpenter for AWS starting from version 0.37 and later. However, it is currently not supported for GCP and Azure.
 
 :::
 

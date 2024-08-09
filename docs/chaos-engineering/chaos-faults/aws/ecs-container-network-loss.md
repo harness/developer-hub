@@ -5,7 +5,7 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-network-loss
 ---
 
-ECS container network loss disrupts the state of infrastructure resources. 
+ECS container network loss disrupts the state of infrastructure resources.
 - The fault induces chaos on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs that comes in-built in the fault.
 - It causes network disruption on containers of the ECS task in the cluster name.
 - To select the Task Under Chaos (TUC), use the service name associated with the task. If you provide the service name along with cluster name, all the tasks associated with the given service will be selected as chaos targets.
@@ -20,9 +20,9 @@ ECS container network loss disrupts the state of infrastructure resources.
 - This fault degrades the network of the task container without the container being marked as unhealthy/ (or unworthy) of traffic. It simulates issues within the ECS task network or communication across services in different availability zones (or regions).
   - This can be resolved using middleware that switches traffic based on certain SLOs (or performance parameters).
   - This can also be resolved by highlighting the degradation using notifications (or alerts).
-- It also determines the impact of the fault on the microservice. 
-The task may stall or get corrupted while waiting endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you wish to test by specifying the service to find TUC (Task Under Chaos). 
-- It simulates degraded network with varied percentages of dropped packets between microservices, loss of access to specific third party (or dependent) services (or components), blackhole against traffic to a given AZ (failure simulation of availability zones), and network partitions (split-brain) between peer replicas for a stateful application. 
+- It also determines the impact of the fault on the microservice.
+The task may stall or get corrupted while waiting endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you wish to test by specifying the service to find TUC (Task Under Chaos).
+- It simulates degraded network with varied percentages of dropped packets between microservices, loss of access to specific third party (or dependent) services (or components), blackhole against traffic to a given AZ (failure simulation of availability zones), and network partitions (split-brain) between peer replicas for a stateful application.
 - This fault helps improve the resilience of the services over time.
 
 ### Prerequisites
@@ -46,7 +46,7 @@ stringData:
 ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -81,7 +81,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],
@@ -125,7 +125,7 @@ Below is an example AWS policy to execute the fault.
         <th> Description </th>
         <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
         <td> CLUSTER_NAME </td>
         <td> Name of the target ECS cluster</td>
         <td> For example, cluster-1 </td>
@@ -154,22 +154,22 @@ Below is an example AWS policy to execute the fault.
         <td> The interval (in sec) between successive instance termination.</td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Provide the path for aws secret credentials</td>
         <td> Default: <code>/tmp/cloud_config.yml</code> </td>
       </tr>
-      <tr> 
+      <tr>
         <td> NETWORK_PACKET_LOSS_PERCENTAGE </td>
         <td> Provide the value of loss in percentage	</td>
         <td> Default: 100. For more information, go to <a href="#network-loss"> network loss.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> DESTINATION_IPS </td>
         <td> IP addresses of the services or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
         <td> Comma-separated IP(S) or CIDR(S). If not provided, network chaos is induced for all IPs/destinations. For more information, go to <a href="#destination-ips-and-destination-hosts"> destination IPs.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> DESTINATION_HOSTS </td>
         <td> DNS Names of the services, the accessibility to which, is impacted </td>
         <td> If not provided, network chaos is induced for all IPs/destinations or DESTINATION_IPS if already defined. For more information, go to <a href="#destination-ips-and-destination-hosts"> destination hosts.</a></td>

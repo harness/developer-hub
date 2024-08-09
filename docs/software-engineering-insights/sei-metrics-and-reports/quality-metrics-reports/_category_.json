@@ -1,9 +1,9 @@
 {
    "label":"Quality",
-   "position": 40,
+   "position": 30,
    "collapsible":"true",
    "collapsed":"true",
-   "className":"red",
+   "className":"default",
    "link":{
       "type":"generated-index",
       "title":"Quality"

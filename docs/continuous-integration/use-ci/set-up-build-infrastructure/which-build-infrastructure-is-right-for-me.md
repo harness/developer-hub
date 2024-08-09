@@ -88,7 +88,7 @@ The following table shows the supported operating systems and architectures for 
 | Linux | arm64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | macOS | arm64 (M1) | ✅ Supported & Recommended | ✅ Supported | ❌ Not supported | 🔸 Supported, not recommended |
 | Windows | amd64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| Windows | arm64 | ❌ Not supported | ❌ Not supported | ❌ Not supported | ❌ Not supported |
+| Windows | arm64 | ✅ Supported | ❌ Not supported | ❌ Not supported | ❌ Not supported |
 
 :::info
 
@@ -106,12 +106,12 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 
 | Feature | Harness Cloud | Self-managed local runner | Self-managed Kubernetes cluster | Self-managed AWS/GCP/Azure VMs |
 | - | - | - | - | - |
-| [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
+| [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Test splitting](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) | <ul><li>✅ Supported - Linux, Windows</li><li>❌ Not supported - macOS</li></ul>| ❌ Not supported | ❌ Not supported | ❌ Not supported |
+| [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Cache to S3/GCS](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Multilayer caching](/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) in Build and Push steps | ✅ Supported | ❌ Not supported | ✅ Supported | ❌ Not supported |
+| [Harness-managed Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) | 🔸 Not applicable | ✅ Supported - Pipeline and stage delegate selectors | ✅ Supported - Pipeline, stage, and connector delegate selectors | ❌ Not supported |
 | [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Bring-your-own secret manager](/docs/platform/get-started/tutorials/add-secrets-manager) | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
@@ -123,4 +123,4 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | Plugin output variables | ✅ Supported | ❌ Not supported | ✅ Supported | ✅ Supported |
 | [Build details - Artifacts tab](/docs/continuous-integration/use-ci/viewing-builds#build-details) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [IP Allowlisting](/docs/platform/security/add-manage-ip-allowlist) | ✅ Supported for Mac, Linux, Windows | ✅ Supported | ✅ Supported | ✅ Supported |
-| [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) | ✅ Supported - Linux<br/>🔸 Planned - macOS/Windows (Use [IP allowlisting](/docs/platform/security/add-manage-ip-allowlist) | ❌ Not supported | ❌ Not supported | ❌ Not supported |
+| [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) | ✅ Supported - Linux<br/>🔸 Planned - macOS/Windows (Use [IP allowlisting](/docs/platform/security/add-manage-ip-allowlist)) | ❌ Not supported | ❌ Not supported | ❌ Not supported |

@@ -1,7 +1,7 @@
 ---
-title: Ingest artifacts data
+title: Ingest Artifacts Data
 description: API to ingest artifacts data into SEI
-sidebar_label: Ingest artifacts data
+sidebar_label: Ingest Artifacts Data
 sidebar_position: 20
 ---
 

@@ -116,7 +116,7 @@ The delegate is key to enabling Harness to perform tasks on your behalf, but you
 
 The Harness GitOps Agent is similar to the Harness Delegate, but it handles GitOps based workflows and management. 
 
-GitOps is part of Harness CD. For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/) and [Delegate and GitOps Agent strategy](https://www.harness.io/blog/delegates-and-agents-onramp-to-scale-with-harness).
+GitOps is part of Harness CD. For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent) and [Delegate and GitOps Agent strategy](https://www.harness.io/blog/delegates-and-agents-onramp-to-scale-with-harness).
 
 This video describes the Harness Delegate and GitOps Agent Strategy.
 
@@ -167,7 +167,7 @@ Steps can run sequentially or in parallel. You can also organized related steps 
 
 Usually, a step group is a collection of steps that share the same logic, such as the same rollback strategy.
 
-For more information, go to [Run Steps in a Step Group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/) and [Use step groups to organize CI steps](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups).
+For more information, go to [Run Steps in a Step Group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/) and [Organize steps in step groups](/docs/platform/pipelines/use-step-groups.md).
 
 ### Templates
 

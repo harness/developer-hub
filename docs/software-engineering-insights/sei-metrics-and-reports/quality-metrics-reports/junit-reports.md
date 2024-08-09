@@ -10,3 +10,7 @@ You can use SEI to analyze JUnit test data.
 * **JUnit Test Trend Report**
 * **JUnit Duration Report:** Analyze test duration to help you speed up your unit tests.
 * **JUnit Duration Trend Report:** Analyze changes over time in test duration.
+
+:::info
+The Bullseye reports are currently not available in Harness SEI. Contact Harness Support(mailto:support@harness.io) for more information.
+:::

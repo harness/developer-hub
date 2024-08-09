@@ -85,4 +85,4 @@ instance_password
 
 ##### Value
 
-You should create a Harness text secret with your encrypted password and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets).
+You should create a Harness text secret with your encrypted password and reference the secret using the format `<+secrets.getValue("container-access-id")>`. For more information, go to [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets).

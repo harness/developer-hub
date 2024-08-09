@@ -48,7 +48,7 @@ Use the index value to get information from different Approval steps in the same
 For information about variables and expressions relevant to Harness CI, go to:
 
 - [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
-- [CI environment variables reference](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var.md)
+- [CI environment variables reference](/docs/continuous-integration/troubleshoot-ci/ci-env-var.md)
 
 ### Custom variables
 
@@ -402,6 +402,10 @@ Use these expressions to get artifact identifiers, tags, and labels.
    <DocImage path={require('./static/harness-variables-41.png')} width="60%" height="60%" title="Click to view full size image" />
 
 * `<+artifacts.primary.tag>`: The tags on the pushed, pulled, or deployed artifact, such as AMI tags. For example, if you deployed the Docker image `nginx:stable-perl`, the `<+artifacts.primary.tag>` is `stable-perl`. This expression has no relationship to [Harness tags](/docs/platform/references/tags-reference.md).
+
+:::info note
+GAR(Google Artifact Registry) does not have a tag field but a rather a version which can be fetched using `<+artifacts.primary.version>`
+:::
 
 * `<+<+artifacts.primary.label>.get("")>`: This expression uses the `get()` method to extract Docker labels from a Docker image artifact. Specify the label key in `get()`. For example `<+<+artifacts.primary.label>.get("maintainer")>` pulls the maintainer tag, such as `maintainer=dev@someproject.org`.
 

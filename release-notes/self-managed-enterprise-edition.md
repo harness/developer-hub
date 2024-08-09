@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-05-13T10:00
+date: 2024-07-03T10:00
 sidebar_position: 16
 ---
 
@@ -41,7 +41,7 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
    ```
     env | grep MINIO_ROOT_PASSWORD
    ```
-   
+
 3. Run the following commands.
 
    ```
@@ -82,6 +82,691 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, FirstGen Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+### Breaking change - Looker images
+
+:::danger important changes to looker images
+
+Starting with version 0.17.0, Harness no longer publishes Looker images to the DockerHub public repository. The repository has been transitioned to private.
+
+Looker is required for custom dashboards, a feature not enabled by default in Harness Self-Managed Enterprise Edition. To set up custom dashboards, you must contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+**For non-air gap packages**
+
+If you require custom dashboards, you can request onboarding. Harness will generate an access token, allowing you to pull the Looker image from DockerHub. Subsequently, Harness will provide you with the Looker license key and DockerHub credentials to update your `override.yaml` file.
+
+You must replace your Looker license after deployment.
+
+Create a new secret and replace `<YOUR_SECRET_NAME>` in the YAML.
+
+```yaml
+looker:
+    # -- replace looker license at runtime (after deployment)
+    # -- reach out to the SMP team
+    image:
+      imagePullSecrets: [<YOUR_SECRET_NAME>]
+```
+
+For more information about creating the secret, go to [Pull an image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) in the Kubernetes documentation.
+
+**For air gap packages**
+
+Harness no longer includes the Looker image in air gap bundles. You can still request onboarding for custom dashboards. Upon request, Harness will generate an access token for pulling the Looker image from DockerHub. Following this, Harness will provide you with the Looker license key and DockerHub credentials.
+
+You must replace your Looker license after deployment.
+
+Harness has implemented updates to the `harness-airgap-images.sh` shell script in the Helm chart repository. These changes facilitate the utilization of the access token for pushing the Looker image to your private repository. Now, the script will inquire whether you wish to install custom dashboards (`ng-dashboard`). If you respond affirmatively, it will then prompt you to provide your DockerHub credentials and image details.
+
+To acquire the necessary `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD`, contact [Harness Support](mailto:support@harness.io). When prompted for the `RELEASE_VERSION`, input the desired version of the Helm chart, such as `0.17.0`.
+
+Upon providing your credentials and the release version, the script will proceed to push the Looker image to your private repository.
+
+:::
+
+## July 23, 2024, patch version 0.18.1
+
+This release includes the following Harness module and component versions.
+
+Here's the markdown table with adjusted spacing for better visual appeal:
+
+| **Name**                 | **Version**                                                                                     |
+| :----------------------- | :---------------------------------------------------------------------------------------------: |
+| Helm Chart               | [0.18.1](https://github.com/harness/helm-charts/releases/tag/harness-0.18.1)                    |
+| Air Gap Bundle           | [0.18.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.18.1)    |
+| NG Manager               | 1.41.10                                                                                         |
+| CI Manager               | 1.30.2                                                                                          |
+| Pipeline Service         | 1.78.8                                                                                          |
+| Platform Service         | 1.26.3                                                                                          |
+| Access Control Service   | 1.48.3                                                                                          |
+| Delegate                 | 24.06.83205                                                                                     |
+| Change Data Capture      | 1.18.0                                                                                          |
+| STO Core                 | 1.102.2                                                                                         |
+| Test Intelligence Service| 1.17.0                                                                                          |
+| NG UI                    | 1.26.16                                                                                         |
+| LE NG                    | 1.3.0                                                                                           |
+| Harness Manager          | 1.32.10                                                                                         |
+
+This should make the table visually appealing and properly aligned.
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.18.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.1/sto_images.tgz" \
+  .
+```
+
+#### Fixed issues
+
+- For Winrm deployment with Command step and auth type as Kerberos if the environment variables contains characters `\b, \v, \c, \f, &` the script execution was failing as we parse the response of script execution to xml string and above characters are illegal xml characters. The issue is fixed and now and these characters will be escaped. This change is behind the FF `CDS_ESCAPE_ENV_VARS_FOR_WINRM_KERBEROS_NG`. (CDS-97690, ZD-55276,58201,66326)
+
+- GitLab connectors using the SSH connection type no longer fail if the GitLab project name starts with a number. (CI-11392, ZD-58162)
+
+## July 3, 2024, version 0.18.0
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.18.0](https://github.com/harness/helm-charts/releases/tag/harness-0.18.0) |
+| Air Gap Bundle | [0.18.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.18.0) |
+| NG Manager | 1.41.9 |
+| CI Manager | 1.30.2 |
+| Pipeline Service | 1.78.8 |
+| Platform Service | 1.26.3 |
+| Access Control Service | 1.48.3 |
+| Delegate | 24.06.83204 |
+| Change Data Capture | 1.18.0 |
+| STO Core | 1.97.2 |
+| Test Intelligence Service | 1.17.0 |
+| NG UI | 1.26.16 |
+| LE NG | 1.3.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.18.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.0/sto_images.tgz" \
+  .
+```
+
+#### Breaking change
+
+- Harness has now disabled the ability to update notes for an execution after it is complete. This functionality is behind the feature flag `PIE_DISABLE_NOTES_UPDATE_AFTER_EXECUTION_COMPLETED`. Contact [Harness Support](mailto:support@harness.io) to enable it. (PIPE-18490)
+
+### Early access
+
+- Harness now lists all pipeline executions including retired and child executions in the Executions page. This feature is behind the feature flag `PIE_SHOW_ALL_EXECUTIONS_FILTER`. Contact [Harness Support](mailto:support@harness.io) to enable it. (PIPE-18492, ZD-64066)
+
+### New features and enhancements
+
+#### Chaos Engineering
+
+- This release improves the advanced filter support for "headers", "methods", "queryParams", "destination_IPS", and "destination_Hosts" in the API faults. (CHAOS-5381)
+
+- Adds the unit support (milliseconds, seconds, minutes and hours) for latency parameters in the [pod API latency](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-block) faults. (CHAOS-5378)
+
+- Adds backend to GameDay V2. (CHAOS-5138)
+- Adds the following JVM chaos faults for Linux that target the JVM of a given Java process running on a Linux machine to inject faults.
+    - [JVM CPU stress](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-cpu-stress)
+    - [JVM memory stress](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-memory-stress)
+    - [JVM method latency](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-latency)
+    - [JVM method exception](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-exception)
+    - [JVM modify return](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-modify-return)
+    - [JVM trigger GC](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-trigger-gc) (CHAOS-4675)
+
+:::danger important upgrade instructions for chaos infrastructure
+- [Video tutorial to upgrade your chaos infrastructure to 1.38.x or higher](https://youtu.be/fAnsGqkcdkc)
+- [Video tutorial to execute an experiment after infrastructure upgrade to 1.38.x or higher](https://youtu.be/xAu1uuaS2Ds)
+- The existing APIs will work as per the norm on old and new chaos infrastructure, whereas new experiments will work only on the updated infrastructure (infrastructure version >= 1.38.0).
+- Go to [frequently asked questions on optimization](/kb/chaos-engineering/chaos-engineering-faq/#kubernetes-v1-experiment-flow-optimization) to learn more.
+
+:::
+
+- This release optimizes the experiment flow by:
+    - Reading environment variables from the chaos engine.
+    - Eliminating the experiment's custom resources and the corresponding steps for new experiments.
+    - Eliminating the **install experiment** step.
+    - Reducing the length of the YAML manifest.
+    - Increasing the speed of execution of the experiment.
+    - Adding all the overrides to the chaos engine.
+    - Enhancing the list filter, compatible only with the new experiment template. (CHAOS-5122)
+
+#### Cloud Cost Management
+
+- Anomaly Drilldown Support: Harness has introduced support for Anomaly drilldown, allowing users to precisely view anomalies on the Anomaly List Page that were visible on the Perspective Details Page. (CCM-17137)
+
+- Perspective List Page Enhancement: We have added a minor change on the Perspective List Page of removing the total cost and changing the default view to list format. (CCM-17380)
+
+- Cloud Perspective Recommendation Display: Recommendations along with their total potential savings is now be displayed on the cloud perspective, providing users with actionable insights directly within their Perspectives overview page. (CCM-17639)
+
+- Time Filter Options for Recommendations: We have introduced UI changes to support time filter options for the last 60 days and 90 days in recommendations. This enhancement provides users with greater flexibility in analyzing recommendations over specific time periods. (CCM-17725)
+
+- Email Validation Enhancement: We've introduced better validation for email addresses in the recipients list for perspectives report. This enhancement ensures that only correctly formatted email addresses are accepted in the recipients list, enhancing data integrity and security. (CCM-17850, ZD-63324)
+
+- Node New K8s Labelling: We have added support for the new K8s labels starting from K8s v1.17 for Instance Type, Operating System, Region, and Zone respectively. We use these labels to get the public pricing data for a given cloud provider. (CCM-17979)
+
+- Azure VM Inventory Duplicate Entries Enhancement: Duplicate entries within AzureVMInventory will now be handled better after this fix, ensuring appropriate data is displayed on the dashboards. (CCM-17313)
+
+#### Continuous Delivery
+
+- Harness UI will permanently switch to the new navigation experience, Nav 2.0 on June 03, 2024. Users will not be able to switch back to the old UI after that. This feature is behind the feature flag `CDS_NAV_PREFS`. Contact [Harness Support](mailto:support@harness.io) to enable it. (CDS-96833)
+
+#### Continuous Integration
+
+- Enabled Secure Connect support for Mac and Windows OS runners. (CI-12596)
+
+- You can now specify the image pull policy for a CI Build stage in the Pipeline Editor: go to Infrastructure > Advanced > Image Pull Policy. (CI-12512, ZD-62987)
+
+- Added a validation to Git Clone steps to ensure that a Git connector and repository is selected before applying changes. (CI-12477)
+
+- Added baseCommitSha in codebase for GitLab PR builds. (STO-12179, ZD-62144)
+
+- Added support for proxies via Secure Connect for Github App connectors. This item requires Harness Delegate version 24.05.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-12130, ZD-61883)
+
+- This release adds support for CI resource classes, which you can use to allocate the build machines you want to use in Harness Cloud. This item requires Harness Delegate version 24.05.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10509)
+
+#### Harness Platform
+
+- Service Account name and email fields are now exposed in the Role Assignment filter API, enhancing visibility and management. For more information, go to [List Role Assignments by scope filter](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList). (PL-50613)
+
+- Users were receiving an invite email instead of a notification email when added to an account with OAuth and the `AUTO_ACCEPT_SAML_ACCOUNT_INVITES` feature flag enabled. This required users to set a password before logging in, even though OAuth was enabled. When auto acceptance is enabled for an account with OAuth, users will now receive only a notification email, not an invite email. Since OAuth is enabled, setting a password is optional. If needed, users can set their password by selecting **Forgot password?** on the sign in page. (PL-41670)
+
+- A banner has been added to the Delegate page to inform users about the change in the Harness support policy for delegates. The banner displays the updated policy, which includes 6 months of support followed by a 2-month upgrade period, totaling 8 months. For more information, go to [Delegate expiration support policy](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#delegate-expiration-support-policy). (PL-49301)
+
+#### Security Testing Orchestration
+
+- Github Action and Plugin steps are now available in Security stages. (STO-7442)
+
+- You can now add Built-in scanner steps between existing steps. (STO-7470)
+
+- The SonarQube step has a new Scan configuration option. When Branch scan is selected in Extraction mode, the scan extracts results for the branch defined in SonarQube (for manual executions) or the pull request defined in SonarQube (for triggered executions). (STO-5799)
+
+### Fixed issues
+
+#### Chaos Engineering
+
+- Fixed an issue where the compatibility check was enabled for other infrastructure types too. The overview form now preserves the state while switching between different infrastructures. (CHAOS-5614)
+
+- Fixed an issue where ChaosGuard list APIs was not returning the **updated_by** and **created_by** fields. (CHAOS-5596)
+
+- Fixed an issue where a user could not connect to a ChaosHub if its secret had a '-' symbol (after the deployment of ng-manager 1.33). (CHAOS-5112)
+
+- Fixed the rendering of the **View Onboarding Progress** page. (CHAOS-5583)
+
+- Fixed an issue where the user could not set up or create a Datadog probe. (CHAOS-5440)
+
+- Fixed an issue where the [pod IO stress](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress) experiment incorrectly applied stress on the helper pod instead of the target container. (CHAOS-5416)
+
+- Fixed the issue where the sample data wasn't rendered in sorted timestamp while setting up custom health source. (CHAOS-5473)
+- Improved the efficiency of Mongo queries by adding a compound index. (CHAOS-5280, CHAOS-5279)
+
+#### Cloud Cost Management
+
+- SMP Overview Screen Total Cost: We have updated the query used to retrieve active spend on the overview page for SMP to ensure accurate data representation. This fix ensures alignment between the total cost displayed on the SMP Overview Screen and the data presented in perspectives. (CCM-17380)
+
+- Perspective Dashboard Optimization: As part of this fix, we have disabled redundant parentheses from BigQuery SQL query to optimize the perspective and cost category queries, enhancing query efficiency and performance.
+
+- Azure Data Fix: Resolved an issue where adding a perspective rule with Azure subscription ID set to null resulted in no data being displayed. (CCM-17414)
+
+- Azure perspectives: Previously, only fields in "group by" with available data were displayed in Azure perspectives, leading to incomplete views and unnecessary errors. With this update, all relevant fields, including those without data, will now be visible. This eliminates any unnecessary errors arising from missing data at the source level. (CCM-17573, ZD-62691)
+
+#### Continuous Delivery
+
+- Command-click on an execution name on the **Executions** page in the CD module did not work as expected. While it opens a new page with the relevant execution, it also opens the same execution on the original page. This issue is fixed. (PIPE-19465, ZD-63986)
+- The stage level delegate selector's expression evaluation failed if the expression had references to the service or environment since these were not set up. Now, Harness has introduced an annotator and skipped the expression evaluation for stage-level delegate selectors. The expressions are evaluated when they are referenced in a step. This behavior is identical to how stage-level variables are processed. (PIPE-14610)
+- Updates made to stage variables did not reflect in the pipeline. When adding a new `allowedValue`` in a template, the changes were not getting propagated to the pipeline as it was getting treated as a subset. This issue was caused by a change made in the code to allow subsets of values in `allowedValues` in a nested pipeline/template. Harness reverted this change, and will support the exact `allowedValues` in the pipeline/template during reconciliation. Some customers might face reconciliation errors if they are using the subset `allowedValues` already. (PIPE-19102, ZD-62929)
+- There was a recent change to the expression resolution fallback logic to call the fallback only for customers who have the feature flag `CDS_DISABLE_FALLBACK_EXPRESSION_ENGINE` set to true. The current value is false for everyone. However, during this change, the fallback was not being called for customers who has set the feature flag to true, causing the expression to fail. This issue is fixed by correctly calling the fallback in case of failures and adding UTs to handle it. (PIPE-19013, ZD-63175, ZD-63194)
+- Fixed an issue where the MS Teams notifications didn't show the event names. Now, the pipeline end event appears as "ended" and the pipeline success event appears as "succeeded" in notifications. (PIPE-18855, ZD-62684)
+- The Resource Constraint pop-up didn't show the ongoing execution details in the pipeline execution console view. This issue is fixed. (PIPE-18831, ZD-62825)
+- For a pipeline with bidirectional sync enabled, the file name change in GitHub was not properly reflected in the Harness UI. This issue is fixed by enhancing the cache handling for files. (PIPE-18828, ZD62791)
+- Fixed an issue where pipelines with IDP stages were not generating the correct pipeline execution URL. (PIPE-18322, ZD-60366)
+- Running a pipeline returned an unclear error message, `Invalid request: Cannot create pipeline entity due to Unexpected token (FIELD_NAME), expected END_OBJECT: expected closing END_OBJECT after type information and deserialized value at [Source: (StringReader); line: 13124, column: 1]`. This issue is fixed by providing a meaningful error message for the `getStageExecutionList` flow. (PIPE-16557, ZD-60649)
+- Null pointer exception occurred when populating instrumentation data for sending events for telemetry. This issue occurred because some JsonNode objects returned null while called using GET method. This issue is resolved by adding null checks for the JsonNode objects. (PIPE-16452)
+- Custom stages were not displaying the wait status for the Approval step. Earlier, the stages were not marked as waiting when the steps went into waiting status. Now, the stage `nodeExecution` is marked as waiting when the step goes into waiting status. And, the stage is resumed when all the steps under that stage are resumed. (PIPE-15829, ZD-61238)
+- Fixed the issue where deleted files from a PCF/TAS manifest path were removed from the remote branch but still cached on the Harness side. (CDS-96718, ZD-63179)
+- Fixed an issue where the ExpressionInput **disabled** field was not editable. A minor patch version update fixed this issue. (CDS-96282)
+- Support has been added for GAR and GitHub package from Harness UI for Native Helm Deployments. (CDS-96686)
+- The CD license telemetry publisher did not send the data on some days in an edge case. Earlier, Harness checked if it had been "24 hours - 10 mins" from the last time it was sent. For example, on May 7, if we send the event at 11:43 PM for an account, we will not try on May 8, as we wait for 24 hrs-10 mins to send it again. So, the next report went out on May 9 at 12:00 AM. This issue has been resolved. The CD license telemetry publisher now sends the events in this case as per the updated retry logic. (CDS-96792)
+- If drift is detected in the services dashboard tile, the **Drift Detected** hover box now displays a detailed error message with the relevant documentation link. (CDS-96911, CDS-96722)
+- Long template names for pipelines were bleeding out of the **Save as new Template** card. This issue is fixed. Now, the text will appear in a single line with an ellipsis when the name is lengthy, and a tooltip is also available. (CDS-97305)
+- The list clusters in the GKE infrastructure did not use OIDC authentication when a delegate selector was used in the connector. This issue occurred due to an incorrect check on when to use Inherit from delegate or OIDC authentication. This issue is fixed. Now, when OIDC authentication is used with delegate selectors, it uses OIDC flow instead of inheriting credentials from the delegate. (CDS-97177, ZD-63901)
+- Step group templates did not appear when selecting Use Template on an Approval stage. This issue is fixed. You can now create a step group template with the Approval stage, and use them as step entities in the Approval stage. (CDS-96930, ZD-63556)
+- Fixed an issue where users were unable to save YAML changes when creating a new infrastructure definition. (CDS-96396, ZD-62801, ZD-63997)
+- Unable to send `GitEntityFindInfoDTO` for Docker artifact resources. This issue occurred because the Git metadata was not being passed as a query parameter in API calls. This issue is resolved by making backend changes to resolve the YAML. (CDS-96379)
+- Terraform configuration for a monitored service returned the `500` response code. This issue occurred due to incorrect un-marshalling of Terraform configuration to the JSON object for the API request. This led to backend validations failing and causing the `500` response code. This issue is fixed by adding more validations/null checks in the backend. (CDS-96374, ZD-62737)
+- The error that appeared when a pipeline was missing a reference to Harness resources like service, environment, etc, appeared only for a small amount of time and didn't allow users to see necessary details. This issue is fixed. The error message now stays until users close it manually. (CDS-96302, ZD-62677)
+- The TerraformCloud Run step did not fail if the Terraform Apply step failed. This issue occurred because we were not checking the status of Terraform Apply after streaming logs. If Apply started, the step passed even if the Apply step did not complete. The step failed only when the Apply step failed to start, but not if it failed midway. This issue is fixed. The TerraformCloud Run step now fails if the Apply step fails midway, allowing users to use appropriate failure strategies. (CDS-96089, ZD-62254, ZD-63371)
+- Fixed an issue where runtime expressions and values were not supported for Helm Values files in the Update GitOps Apps step. (CDS-96005)
+- Fixed an issue where users were not able to configure **Job Parameters** for a Jenkins job. (CDS-95864, ZD-61927)
+- The **Feed** field in the Artifact Details page for Azure artifacts threw a null pointer exception error. This issue occurred due to the presence of a whitespace in the Azure project name due to which Harness was not able to parse the URL as an URI object. This issue is fixed by encoding the URL to convert the whitespace in the project name to `%20` as per the UTF-8 standard to avoid the null pointer exception. (CDS-95752, ZD-61696)
+- Trigger activity history cleared when updating trigger. This issue is fixed by changing the Trigger Activity History retention duration to 6 months instead of 7 days. (CDS-95729, ZD-61782)
+- The nav header panel of the Harness UI was not collapsible. The panel is now collapsible and appears when you hover over it. (CDS-95698, ZD-61706, ZD-61707)
+- Artifact builds were not loading if its entities were in a different repository. This issue is fixed.(CDS-95196, ZD-60805)
+- The **fixedValue** field is mandatory for the backend as well now. Earlier, Harness had validations in place to ensure that **fixedValue** in the UI was not null. This change is implemented in the backend as well for consistency for API contracts from the backend as well as the UI. (CDS-94414)
+- Fixed an issue where multiple infrastructure definitions were pointing to the same underlying infrastructure, which deployed the same service and doubled the instance count. (CDS-88736)
+  You can run the following API to check duplicate instances in your account.
+  ```
+  curl --location 'https://app.harness.io/gateway/ng/api/instancestats/duplicates?routingId=&lt;accountId&gt;&accountId=&lt;accountId&gt;&orgIdentifier=&lt;orgId&gt;&#39; \
+  --header 'Authorization: Bearer <token>'
+  ```
+
+  You can refer to `instanceKey` to identify the duplicate instance. For example, for Kubernetes, the format is `K8sInstanceInfoDTO_<podName>_<namespace>_<imageName>`.
+
+#### Continuous Integration
+
+- Fixed an issue where, if the base image connector was overridden, the Docker build step did not work. With this fix, Docker-related images now properly gain privilege if the default connector is overridden. `buildx` images are now located [here] (https://hub.docker.com/search?q=plugins%2Fbuildx). These images are added to the auto-privilege mode. Without this privilege, the image does not run. (CI-12583)
+
+- Harness Code explicit git clones are now supported on Kubernetes build infrastructures. (CI-11952, ZD-60998)
+
+- Fixed an issue where running a pipeline in debug throws an error saying it is not allowed to be run in this pipeline. (CI-12094, ZD-61519)
+
+- Fixed a UI issue where the Pipeline Execution UI didn't update the stage selector (left) correctly if the pipeline used a parallelism or matrix strategy. As a result, users could not see artifacts properly. (CI-12047)
+
+- Fixed an issue where the CI Getting Started page made multiple fetch calls to fetch Harness Code repositories. This occurred whenever the page was updated or the Git connector was updated. With this fix, the Getting Started page makes one fetch call only when it needs to fetch the list of repositories. (CI-10770)
+
+#### Harness Platform
+
+- Keyboard navigation was not functioning for the **Add Users** list when adding a new member to a user group, and uncontrolled form submission occurred when pressing Enter. Updated the **Add Users** list to support keyboard navigation. Additionally, the form now properly handles uncontrolled submissions when the Enter key is pressed, allowing users to select items using the keyboard without unintended form submissions. (PL-51168, ZD-62169)
+
+- Harness recently made to allow hyphens in the secret identifier. However, the internal validation in the pipeline was not updated, which caused an error when the secret identifier was passed in the pipeline. This issue has been resolved to ensure the internal validation as well for secret identifiers containing a hyphen. (PL-51073)
+
+- Incorrect filters were displayed for the `includeScopes` field in Resource Groups in the Harness UI. While it was possible to add only project-level resources to a Resource Group via API, this option was not available through the UI. An **Include Org-level resources** option is now available in the UI. Users can now uncheck this option to include only project-level resources in a Resource Group, without including Org-level resources, addressing the previously unsupported use case. (PL-50969, ZD-62817)
+
+- Invalid user search results were returned when querying from page `2` or higher. Harness updated the search functionality to reset the `pageIndex` to `0` after adding or updating a search query, ensuring accurate search results even when the `pageIndex` is `2` or higher. (PL-50907, ZD-62990)
+
+- Delegate logs were displaying entire bearer tokens when using the IDP Kubernetes connector. Added log sanitization to delegate logs to mask commonly used secret patterns. These patterns can be extended per use case by adding them to the `/opt/harness-delegate/sanitize-patterns.txt` file inside the delegate. (PL-50889, ZD-64069)
+
+- Due to a bug, users could be added to SCIM-provisioned/externally managed user groups from the Harness UI, even though membership edits for externally managed groups were not allowed. The issue has been fixed, and adding users to externally managed user groups via the Harness UI is no longer supported. (PL-50663)
+
+- An `UUID may not be empty` error occurred when configuring LDAP settings. This was due to the LDAP identifier being sent as an empty string instead of null if it didn't already exist. The issue has been resolved, and the identifier is now correctly sent as null, preventing the error. (PL-50657)
+
+- Pod Disruption Budgets (PDBs) in the Harness namespace caused issues during patching cycles due to incorrectly targeted rules. Harness updated PDB rules for the `cloud-info`, `anomaly-detection`, `gateway`, and `next-gen-ui` services to select the correct pods, ensuring smooth operations during maintenance activities. (PL-49350, ZD-62353)
+
+- Login issues occurred in NextGen when FirstGen delegates were scaled down because the LDAP Authentication task was initially sent to FirstGen Delegates. If a FirstGen delegate wasn't available, the task would expire before being sent to a NextGen delegate. Compounding the issue, the timer at the Gateway was set to expire before the delegate task, leading to failed login attempts. We have implemented a solution that prioritizes sending the LDAP Authentication task to NextGen delegates first if the feature flag `PL_USE_NG_DELEGATE_LDAP_AUTH` is enabled, thereby enhancing the reliability of login processes in NextGen environments. (PL-48541, ZD-60437)
+
+- Delegate registration was not failing for inactive accounts. Harness added a check during delegate registration to verify account status. Delegates will now fail to register for accounts marked as `DELETED` or `INACTIVE`. This item requires Harness Delegate version 24.05.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48082)
+
+- The Audit Trail Filter Form did not have a **Force Delete** option. Added a **Force Delete** action to the Audit Trail Filter Form. (PL-51375, ZD-63788)
+
+- The Product Usage section on the CD dashboard page was not loading, and it was non-functional in SMP installations. The Product Usage dashboard will now be disabled/hidden in SMP installations. (PL-51310)
+
+- Favorites in the Project Selector were not resetting with re-render. Resolved the issue so that the favorite status now resets correctly during project searches. (PL-50906)
+
+- Users were being redirected to the home page instead of the originally intended page after logging in. When accessing NG-UI with old hash-based URLs while not logged in, the user was redirected to the login page without a `returnUrl`. This resulted in users being taken to the main dashboard after successful login instead of their intended page. The issue has been resolved by preserving the `returnUrl`. Now, after a successful login, users are redirected to the page they initially intended to access. (PL-50581, ZD-62278)
+
+- Fixed an issue where there were multiple errors in the `log-service` across all production environments. (PL-50547)
+
+- Delegates were not picking up pipelines due to issues in the retry mechanism when making calls from delegate to manager. The retries did not check if the JWT needed refreshing, resulting in sending expired JWTs in some cases. Improved the retry mechanism to check for JWT refresh on each retry attempt, ensuring valid JWTs are sent and resolving the issue with delegates picking up pipelines. (PL-48743, ZD-60766)
+
+#### Security Testing Orchestration
+
+- Fixed STO DAST (ZAP, Burp, Nike & Map) Step template creation via the Template Studio. (STO-7603)
+
+- The SonarQube step has a new Scan configuration option. When Branch scan is selected in Orchestration or Extraction mode, the scan extracts results for the branch defined in SonarQube (for manual executions) or the pull request defined in SonarQube (for triggered executions). (STO-5799, ZD-42661)
+
+- Updated Grype to support repository scans. (STO-7531)
+
+- The addition of auto target detection to Semgrep introduced a bug where the target name and variant fields appear empty for existing pipelines with Semgrep steps. This has been fixed to show the target name and variant. (STO-7471)
+
+## June 29, 2024, patch version 0.14.11
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.14.11](https://github.com/harness/helm-charts/releases/tag/harness-0.14.11) |
+| Air Gap Bundle | [0.14.11](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.11) |
+| NG Manager | 1.24.7 |
+| CI Manager | 1.12.5 |
+| Pipeline Service | 1.61.7 |
+| Platform Service | 1.12.0 |
+| Access Control Service | 1.33.2 |
+| Delegate | 24.02.82203 |
+| Change Data Capture | 1.5.3 |
+| STO Core | 1.83.8 |
+| Test Intelligence Service | 1.8.1 |
+| NG UI | 1.7.6 |
+| LE NG | 1.1.0 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.14.11/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.11/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.11/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.11/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.11/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.11/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.11/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.11/sto_images.tgz" \
+  .
+```
+
+#### Fixed issues
+
+- Pipelines were getting stuck intermittently when the pipeline was executing steps at max concurrency. This issue only affected customers with a large number of concurrent deployments. Harness identified the fix and upgraded the `pipeline-service` from 1.61.5 to 1.61.7 to resolve this issue. (PIPE-20146, ZD-66018)
+
+
+## June 19, 2024, patch version 0.17.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.17.1](https://github.com/harness/helm-charts/releases/tag/harness-0.17.1) |
+| Air Gap Bundle | [0.17.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.17.1) |
+| NG Manager | 1.36.10 |
+| CI Manager | 1.26.5 |
+| Pipeline Service | 1.73.4 |
+| Platform Service | 1.23.2 |
+| Access Control Service | 1.45.1 |
+| Delegate | 24.04.82901 |
+| Change Data Capture | 1.17.0 |
+| STO Core | 1.94.7 |
+| Test Intelligence Service | 1.17.0 |
+| NG UI | 1.21.6 |
+| LE NG | 1.3.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.17.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.1/sto_images.tgz" \
+  .
+```
+
+#### Fixed issues
+
+:::danger OPA service enabled by default
+Harness enabled the OPA service as the default setting. OPA supports multiple entities in Harness and is a critical service. Therefore, starting from SMP 0.17.1, the OPA service will be available in the default configuration. If you have the OPA service set to `false` in your `override.yaml` file, you must update it to `true`. (PL-51635, ZD-64628)
+:::
+
+## May 31, 2024, version 0.17.0
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.17.0](https://github.com/harness/helm-charts/releases/tag/harness-0.17.0) |
+| Air Gap Bundle | [0.17.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.17.0) |
+| NG Manager | 1.36.10 |
+| CI Manager | 1.26.5 |
+| Pipeline Service | 1.73.4 |
+| Platform Service | 1.23.2 |
+| Access Control Service | 1.45.1 |
+| Delegate | 24.04.82901 |
+| Change Data Capture | 1.17.0 |
+| STO Core | 1.94.5 |
+| Test Intelligence Service | 1.17.0 |
+| NG UI | 1.21.6 |
+| LE NG | 1.3.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.17.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.0/sto_images.tgz" \
+  .
+```
+
+### Breaking changes
+
+#### Continuous Delivery
+
+- The RepoName, FilePath, and ConnectorRef parameters are marked as required in the Git import APIs for pipelines, templates, input sets, services, environments, infrastructure definitions, and service overrides. These parameters were optional before but are mandatory now as the APIs require these to work. (CDS-94245)
+
+### Early access feature
+
+#### Continuous Delivery
+
+- Harness UI now supports  pipeline rollback failure strategy in CI, STO, Approval, Custom, FF stage, step, and step group. This functionality is behind the feature flag, `CDS_ALLOW_EXPRESSION_RESOLUTION_PIPELINE_ROLLBACK`. To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io). (PIPE-15903)
+
+#### Continuous Integration
+
+- This release includes new default settings that enable you to configure s3-compatible caching in self-hosted build infrastructures. You can configure the endpoint URL, region, bucket name, access key, and secret key. These options are behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` (for Docker layer caching) and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED` (for Cache Intelligence). Contact [Harness Support](mailto:support@harness.io) to enable them. (CI-11953)
+
+- If you need to allow empty environment variables in your CI pipelines, you can enable the feature flag `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` by contacting [Harness Support](mailto:support@harness.io). (CI-11882, CI-11305, CI-11672, ZD-57626)
+
+### New features and enhancements
+
+#### Self-Managed Enterprise Edition
+
+- Harness added v1 API support for `template-service`, `ng-manager`, `platform-service`, and `pipeline-service` for Istio >= 0.19.0 version. If you are running Istio >= 1.19.0, add the following override in your `override.yaml` file to enable the support. (PL-50528, ZD-62230, ZD-62846)
+
+   ```yaml
+   global:
+     istio:
+       enableRegexRoutes: true
+   ```
+
+- The MongoDB major version has been upgraded from 4.4 to 5.0.24. Harness recommends that you back up your current instance of MongoDB before upgrading to 0.17.0. (PL-41607)
+
+- Upgraded MinIO from `2023.10.7-debian-11-r2` to `2024.3.30-debian-12-r3`. Harness recommends that you back up your current instance of MinIO before upgrading to 0.17.0. (PL-49015)
+
+- Upgraded Curl from 8.1.2 to 8.7.1. (PL-49016)
+
+- Upgraded Redis to 6.2.14-alpine in bootstrap to address vulnerabilities.(PL-50701)
+
+#### Cloud Cost Management
+
+- Introduction of Anomaly Workflows: We have added Anomaly Workflows to enhance anomaly management within the CCM platform. With this feature, when a user marks an anomaly as a False Anomaly, it will be automatically moved to the Ignore list within the Anomaly Settings drawer. Furthermore, users now have the option to undo this action directly from the Anomaly Settings drawer, providing greater flexibility and control over anomaly management processes. (CCM-17311)
+
+- Multi-Select Cloud Providers Filter: We have enhanced the Recommendations Evaluations filter panel by adding a multi-select Cloud Providers filter. This addition allows users to select multiple cloud providers simultaneously. (CCM-17150)
+
+- Pagination for Budgets: We have added pagination for our Budgets page. This allows users to navigate through multiple pages of budget entries, improving the overall user experience by making it easier to manage and access information efficiently. (CCM-16978)
+
+#### Harness Platform
+
+- AWS Secret Manager connectors now support both plain text and encrypted type Access Key Ids. (PL-48420)
+
+### Fixed issues
+
+#### Chaos Engineering
+
+- Fixed an issue where accounts that started with an underscore could not execute a Linux chaos experiment. (CHAOS-5185)
+
+- Fixed an issue where a chaos experiment failed when two chaos faults had the same probe (legacy) name. (CHAOS-5064)
+
+- Fixed an issue where editing the SLO probe evaluation window resulted in an `Internal server error`. (CHAOS-5022)
+
+- Fixed an issue in the UI where chaos experiments with the toggle option to enable (or disable) cloud secret was enabled automatically after saving the experiment. (CHAOS-4987)
+
+#### Cloud Cost Management
+
+- Granularity Adjustment for Cluster Data Retrieval: With this fix, we have ensured that data retrieval aligns with the specified granularity settings: fetching from the daily data table for DAILY granularity and from the hourly table for HOURLY granularity. (CCM-16061)
+
+- Improved Precision in Perspective Reports: Previously, when choosing the current month during perspective setup, the report would present data from the past 7 days. We have promptly added a fix so that it accurately portrays data for the entire current month. (CCM-17100)
+
+#### Continuous Delivery
+
+- Fixed an issue where the Harness NextGen UI was unable to hide the **Launch FirstGen** button. (CDS-95845, ZD-61778)
+- Fixed an issue where the expressions field did not render properly. Harness now supports multi-line text fields for expressions. (CDS-95843)
+- Queries in `harness-prod2-cvng.verificationJobInstances` were scanning too many documents and raising the CPU utilization. This issue is fixed by adding more `verificationJobInstances` indexes. (CDS-95840)
+- Fixed an issue where the drop-down menu for the **Region** field in the AWS Serverless Lambda **Infrastructure Details** page was missing. (CDS-95726)
+- The create trigger API response was updated to a new version without notice. This issue is fixed by updating the field `stagesToExecuteV2` back to `stagesToExecute` in the create trigger API response. (CDS-95526, ZD-61419)
+- The fetch tag to fetch the repository for the Artifactory repository type expired after 90000 milliseconds. This timeout occurred because the fetch task has a hardcoded timeout limit of 90000 milliseconds. This issue is fixed now. Earlier, while fetching the repositories for Artifactory, to fetch the package type Harness made API calls to each repository to get the package type. With this change, if the API response has package type, we avoid the extra API call. (CDS-95485, ZD-60868)
+- The expression, `<+lastPublished.tag>` did not fetch the latest artifact version for Nexus3 repository. Nexus3 artifact sources with `<+lastPublishedTag>` were relying on lexical ordering instead of the order of tags causing this issue. This issue is fixed by honoring the order of tags. (CDS-95312, ZD-61173)
+- User profile appears at the new navigation in the Harness UI allowing users to create keys at an organization and project level. This issue is fixed by removing the project and org identifiers from the API payload when creating API keys. (CDS-95250, ZD-61325)
+- Fixed an issue where the snapshot build was failing due to erroneous changes in Continuous Verification (CV). The GRPC registration from IDP, IACM, and CV services now include server interceptor class bindings from the application itself. (CDS-95241)
+- Queries in `harness-prod2-cvng.verificationJobInstances` scanned 35K+ documents but returned none. This issue is fixed by adding more query indexes for `VerificationJobInstances`. (CDS-95219)
+- Harness CV has reclassified the `javax.ws.rs.NotFoundException` from error to warning. (CDS-95136)
+- Fixed an issue where users were unable to create Zendesk tickets for the Platform module. (CDS-95061, ZD-60650, ZD-60734)
+- Continuous Verification (CV) telemetry failed if any one of the publish data failed. This occurred because all telemetry information is present in the same try catch block. This issue is fixed by separating telemetry publish events in different try catch blocks. (CDS-94962)
+- Fixed an issue where notification for the Verify step failure was having unresolved variable in error details. (CDS-94886, ZD-60617)
+- Fields from multiple manifests other than the primary manifest appeared in the pipeline when using multiple Helm charts. This issue is fixed. Now, only fields of the primary manifest appear in the run pipeline form. If a primary manifest is not selected in the pipeline, Harness will prompt you to select the primary manifest in the run pipeline form. (CDS-94460, ZD-59994)
+- Fixed an issue where the Nexus 2 artifactory registry drop-down listed duplicate group IDs. (CDS-94376, ZD-60041)
+- Terraform deployment failed when using AWS connectors (IRSA credential type with assume cross account role) in Terraform steps. This issue occurred when the Terraform Apply step was trying to assume a different role from the AWS backend configuration. The default duration for assuming the role in the `aws-java-sdk` is 15 minutes. When the Terraform Apply step exceeded 15 minutes, the Terraform output threw an error. This issue is resolved by introducing a new Harness variable, `HARNESS_AWS_ASSUME_ROLE_DURATION`. In Terraform steps, you can now set the environment variable value to override the default duration to assume AWS roles. This item requires Harness Delegate version 01.04.82700. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CDS-94355, ZD-60095)
+- Fixed an issue where infrastructure did not appear as a runtime input for chained pipelines in the run pipeline form. (CDS-94272)
+- New Relic verification did not work as expected. The last null entry was leading to an error when decoding the response object. A code enhancement to ignore any null entry fixed this issue. (CDS-94113, ZD-59612)
+- Unable to load the AWS resources during an Amazon ECS Blue Green deployment. The API call for fetching elastic load balancer call was not being made in the stage causing this issue. This issue is fixed now. (CDS-94084, ZD-59734)
+- Fixed a UI issue where breadcrumbs in the Pipeline Studio pages overlapped. (CDS-93678)
+- Fixed an issue where service inputs did not appear in template inputs for nested templates where the service was fixed inside the nested template. (CDS-92836)
+- Updated the behavior of the Scale step to publish all workload pods as new pods after step run as the Scale step is used to scale pods as well as change traffic on the pod itself. (CDS-91534, ZD-54319)
+- IDP and other new modules did not appear in the default module list. This issue is fixed. If a feature flag is turned on for a module, it will now appear in the module selector in the new navigation experience. (CDS-85185, ZD-59478)
+- Evaluating expressions for Kubernetes service variables returned an error. This issue is fixed by using expression concatenation with equal operator. (PIPE-18652)
+- Branch protection error messages were unclear. This issue is fixed by adding better explanation and hint message for branch protection rule violations in case of `409` response. (PIPE-16923)
+- Templates were showing old data. This issue occurred due to stale cache when failing to fetch files from Git on webhook events. This issue is fixed by clearing the cache for the failed files to ensure that there isn't any stale cache within Harness. The cache gets auto-populated from Git whenever any entity is found missing in cache while its used in any executions. (PIPE-16893)
+- Fixed an issue where multi-select for variable values was behind a feature flag and didn't update during reconciliation. (PIPE-16866)
+- Fixed an issue where user route redirects were missing. (CDS-95967)
+- Fixed CD Subscription V2 issues by adding search to GitOps Agent and GitOps applications filters and adding sorting to the execution column. (CDS-95481)
+- Fixed new Nav CSS issues and added scroll shadows. (CDS-95365)
+- The option to roll back pipelines appear when a CV step fails even if rollback is not supported for CV steps. This issue is fixed by removing pipeline rollback failure strategy from CV and Chaos steps. (CDS-95209)
+- Fixed an issue where the service name was not updated due to a missing API call during service update. (CDS-94937)
+- Fixed an issue where labels for fields in form templates were not visible. (CDS-94801)
+- Fixed an issue where creating a template in account scope in a module was rendering a blank UI. (CDS-94707)
+- Pipeline analytics were part of the executions listing page. This issue is fixed. Pipeline analytics will now be available in a separate tab on the Pipeline details page. (CDS-94368)
+- Account Overview dashboard now defaults to 7 days time period. Options for 6 months, 9 months and 12 months are removed. (CDS-94366)
+- In pre-existing pipelines, when multi-service or multi-environment deployments were selected, parallel deployment was enabled by default. This issue is fixed. Now, default parallel deployment is disabled. However, when a new pipeline or stage is created and enabled with multi-deployment, then parallel deployment will be enabled by default. This behavior is applicable to pipelines, pipeline templates, and stage templates. (CDS-94042)
+- IF expression value was set to multi-type checkbox field that resolved to false string, the string was taken as true in boolean in the Harness UI representation. This issue is fixed. (CDS-93931)
+- Fixed an issue where the Jenkins Job Parameters field was disabled in the UI in the Template Input view. (CDS-92633)
+- The **Add Job Parameter** link appeared for Jenkins job in pipelines when a stage template with Jenkins was linked. This issue is fixed by disabling the Add Job Parameter button as it is not needed if job parameters are set at template stage. (CDS-91077)
+
+#### Continuous Integration
+
+- The built-in clone codebase step now works on Windows platforms for LFS-enabled Git repos. (CI-12038)
+
+- Fixed an issue where pod cleanups could be missed due to duplicate data. (CI-11995)
+
+- Fixed an issue where references to deleted/nonexistent secrets sometimes caused pipelines to time out at the initialize step without any logs. (CI-11891, ZD-60575)
+
+- Empty expressions were not evaluated correctly in an environment variable. The fix is behind the feature flag CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS. Contact Harness Support to enable it. (CI-11882, ZD-57626)
+
+- In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-ruby), test globs starting with `/` are correctly treated as absolute paths. (CI-11819, ZD-57661, ZD-61493)
+
+- Added a fix to trim long environment variables, such as the commit message and PR title, during pod creation in stage initialization. This is currently an opt-in fix for affected customers. If you're using a Kubernetes cluster build infrastructure and experiencing initialization timeout with an error message like `rpc error: code = ResourceExhausted desc = trying to send message larger than max`, contact [Harness Support](mailto:support@harness.io) to enable this fix in your account. (CI-11709, ZD-59521)
+
+- Builds triggered by Bitbucket Server push events now have correct date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. This change requires Harness Delegate version 24.04.82707 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-11556, ZD-58798)
+
+- Resolved an issue where expressions could unexpectedly/incorrectly resolve as `null` if those expressions were supplied as environment variables in steps that were in step group templates or other looping strategies. (CI-11305, ZD-57626)
+
+- This release includes a new release of the `Harness/godotenv` library, which fixes an issue in the current library where `-` characters were not supported in key names. This new `godotenv` release is behind the feature flag `CI_NEW_VERSION_GODOTENV`. Contact [Harness Support](mailto:support@harness.io) to enable it.  (CI-11792, ZD-59062)
+
+#### Harness Platform
+
+- When adding users to a User Group, the search string persisted in the input field even after a user was selected. We have updated the User Group Form page to automatically clear the search query once a user is selected, enhancing usability. (PL-49256, ZD-62169)
+
+- 2FA reset emails failed to display the QR code properly due to the recent deprecation of Google APIs. The method for generating QR codes has been updated, resolving the issue and ensuring QR codes are now correctly included in 2FA reset emails. This item requires Harness Delegate version 24.04.82804. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate) (PL-48980, ZD-61314, ZD-61420, ZD-61486)
+
+- The link to Slack on the UI Help section was not functioning. The community link has been updated to ensure it works correctly. (PL-48948, ZD-61203)
+
+- Delegates with mTLS enabled were able to send a heartbeat to Harness Manager despite being configured with a non-agent endpoint. Resolved this by ensuring the `isNg` flag is correctly propagated when delegates send heartbeats to Harness Manager. This item requires Harness Delegate version 24.04.82901. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48891, ZD-60974)
+
+- When a new pipeline for approval was created, but the approval email was not being sent, preventing testing of the link within the approval email. Resolved this issue that prevented notifications from being sent to multiple emails configured in a user group for email notifications. (PL-48854, ZD-60366, ZD-61333)
+
+- Users experienced authentication issues when switching the OAuth type from SAML, leading to incorrect OAuth authentication status displays. Implemented changes to accurately reflect the status (enabled or disabled) of OAuth authentication for users. (PL-48788, ZD-60869)
+
+- Delegate utilization metrics failed to decrease below a set threshold, even when rejecting all tasks. To solve this, memory-based threshold checks have been removed from the delegate due to functional discrepancies. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48781, ZD-60713)
+
+- The feature flag subscription indicated it was expired, and the license was not updating automatically. Users had to manually pay each invoice after the billing cycle was completed. Users can now view the correct billing due date on their subscription page. Additionally, the system has been updated to automatically charge the credit card on file when an invoice is generated. (PL-48671, ZD-57836)
+
+- The audit trail filter did not include an option for the **Token** resource type, hindering the ability to filter for API token updates. Added a **Token** filter option to the audit trail, enabling users to specifically filter for Token & API Key updates through a dropdown menu. (PL-48606)
+
+- Email steps were failing due to the system's inability to find users with emails containing uppercase letters, as Harness converts and stores all emails in lowercase. (PL-48532, ZD-60291)
+
+- The delegate task rejection metric was designed to reflect tasks rejected by a delegate due to system-related reasons (such as lack of resources or exceeding the limit of parallel tasks) but did not include specific details like task type or task ID. Enhanced the task rejection metrics by adding `taskType` and `taskId` labels. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48488)
+
+- Intermittent socket timeout exceptions occurred in running pipelines due to secret decryption failures, triggering unnecessary re-broadcasts on the delegate side. Resolved the issue of intermittent secret decryption failures within pipelines, ensuring stable and uninterrupted pipeline execution. This item requires Harness Delegate version 24.04.82901. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47940, ZD-58006)
+
+- Slack channel notifications failed due to an error related to explicitly setting the "Host" header as "hooks.slack.com". We have removed the explicit "Host" header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue in this version. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47914)
+
+- Users were being logged out when testing a Git connector with invalid credentials due to the Git client's 401 response being propagated to the UI. Implemented error handling to convert a 401 response from the test connection step to a 400, while preserving the original error message, preventing unintended user logouts. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47753, ZD-58629)
+
+- Local login was failing for users assigned admin permissions via a user group. The method to verify if a user is an account admin only considered direct user assignments and did not account for user group roles. Revised the validation process to include both user and user group assignments when checking for admin status. Now, to be recognized as an admin, users must have the specific role assignments outlined below; assigning the `_account_admin` role alone is no longer sufficient for admin rights. (PL-47632)
+   - Role: `_account_admin`.
+   - Resource-group: `_all_resources_including_child_scopes`, `_all_account_level_resources`.
+
+- In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47614)
+
+- Account admins, with permissions to assign roles, could assign any available role to any user, group, or service account, leading to concerns over control and governance. We have introduced a new feature flag, `PL_HIDE_ACCOUNT_LEVEL_MANAGED_ROLE`, which, when enabled, restricts the visibility of account-level Harness-managed roles. This flag is disabled by default to maintain existing permissions structures across all accounts. (PL-43907)
+
+- Pipeline executions were missing from the dashboard widget, resulting in a significant mismatch between the displayed builds and deployments and the actual count. We have resolved the data sync issue. (PL-50453)
+
+#### Security Testing Orchestration
+
+- Implemented UI updates to support ingestion of Wiz scan results. (STO-7350)
+- The Zap **Context Name** field now works as intended. (STO-7287)
+- Introduced a fix to ensure that Git-triggered pipelines run correctly when the Repository Name is specified as a runtime input. (STO-7029, ZD-55622)
+
+## May 29, 2024, patch version 0.16.2
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.16.2](https://github.com/harness/helm-charts/releases/tag/harness-0.16.2) |
+| Air Gap Bundle | [0.16.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.16.2) |
+| NG Manager | 1.31.8 |
+| CI Manager | 1.21.5 |
+| Pipeline Service | 1.68.2 |
+| Platform Service | 1.17.2 |
+| Access Control Service | 1.39.1 |
+| Delegate | 24.03.82600 |
+| Change Data Capture | 1.5.4 |
+| STO Core | 1.90.1 |
+| Test Intelligence Service | 1.13.1 |
+| NG UI | 1.14.5 |
+| LE NG | 1.1.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.16.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed issues with the StatefulSet YAML template for the `audit-streaming-service`. (PL-51401, ZD-63850)
+
+- Chart upgrades failed with some versions of Kubernetes for platform and access-control services. The `config.yaml` file now defaults to an empty string when no value is provided to resolve the issue. (CODE-1921, ZD-61619, ZD-61737, ZD-63237)
 
 ## May 13, 2024, patch version 0.14.10
 
@@ -130,7 +815,7 @@ gsutil -m cp \
 
    You can now change this behavior for artifact and manifest triggers to guarantee that a trigger is activated only once per collected build. Even if the build is deleted and subsequently pushed again, the trigger will not fire a second time. This option is behind the feature flag `CDS_DISABLE_POLLED_KEYS_EVICTION_FOR_ARTIFACT_TRIGGER_POLLING_DOCUMENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (PIPE-18763)
 
-## May 8, 2024, version 0.16.1
+## May 8, 2024, patch version 0.16.1
 
 This release includes the following Harness module and component versions.
 
@@ -351,7 +1036,7 @@ gsutil -m cp \
 
 #### Continuous Integration
 
-- In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby), the default test globs pattern is now `**/spec/**/*_spec.rb`. Now, by default, TI detects `spec` directories anywhere in the stage workspace. You can use the Test Globs setting to override the default test globs pattern if you want change this behavior, for example to limit it to directories at the root level or at a certain path. (CI-11272, ZD-57661)
+- In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-ruby), the default test globs pattern is now `**/spec/**/*_spec.rb`. Now, by default, TI detects `spec` directories anywhere in the stage workspace. You can use the Test Globs setting to override the default test globs pattern if you want change this behavior, for example to limit it to directories at the root level or at a certain path. (CI-11272, ZD-57661)
 
 - You can enable separators for GCS and AWS cache keys to prevent pulling incorrect caches from cloned pipelines. (CI-11185, ZD-57012, ZD-57319)
    - When you clone a pipeline that has [Save/Restore Cache steps](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/#use-caching-to-reduce-build-time), cache keys generated by the cloned pipeline use the original pipeline's cache key as a prefix. For example, if the original pipeline's cache key is `some-cache-key`, the cloned pipeline's cache key is `some-cache-key2`. This causes problems when the Restore Cache step in the original pipeline looks for caches with the matching cache key prefix and pulls the caches for both pipelines.
@@ -380,8 +1065,8 @@ gsutil -m cp \
 
 - For more information, go to:
 
-  - [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
-  - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
+  - [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/policies/create-opa-policies)
+  - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/policies/create-opa-policies#exclude-vulnerabilities-using-sto-output-variables)
 
 ### Fixed issues
 
@@ -871,7 +1556,7 @@ gsutil -m cp \
 
 #### Continuous Integration
 
-- Added null handling for empty runtime input for the [Post-Command in a Run Tests step](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#pre-command-post-command-and-shell). Previously, if you configured Post-Command as [runtime input](/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and left the field blank at runtime, it would fail the pipeline by supplying `null` as the Post-Command, rather than an empty field. (CI-11365, ZD-58254)
+- Added null handling for empty runtime input for the [Post-Command in a Run Tests step](/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-java-kotlin-scala/#pre-command-post-command-and-shell). Previously, if you configured Post-Command as [runtime input](/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and left the field blank at runtime, it would fail the pipeline by supplying `null` as the Post-Command, rather than an empty field. (CI-11365, ZD-58254)
 - When creating step group templates, you can now configure the **Run as User** setting for steps that allow this setting. Previously, this setting wasn't shown when creating step group templates. (CI-11332, ZD-58044)
 - Fixed an issue where the YAML for build stage [input sets](/docs/platform/pipelines/input-sets) could have an invalid default value for [codebase advanced settings](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#edit-the-default-codebase-configuration). (CI-11291)
 - Addressed a security vulnerability in some CI APIs. (CI-11244, ZD-57445)
@@ -1298,7 +1983,7 @@ gsutil -m cp \
 
 - Added indexing to handle a `IncorrectResultSizeDataAccessException` error that rarely occurred in builds with [matrix looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) if some non-unique values were assigned. (CI-10884, ZD-55815)
 
-- Fixed a `NullPointerException` error that occurred if you provided no `args` when configuring [Test Intelligence for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby). (CI-10847, ZD-55658)
+- Fixed a `NullPointerException` error that occurred if you provided no `args` when configuring [Test Intelligence for Ruby](/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-ruby). (CI-10847, ZD-55658)
 
 - Fixed an issue where pod creation failed in Kubernetes cluster build infrastructures if the pod volume mount key exceeded 63 characters. This change requires Harness Delegate version 24.01.82108 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10789, ZD-55265)
 
@@ -2501,7 +3186,7 @@ Harness updated the Nginx ingress controller to version 1.3.0. With this upgrade
 
 ##### Continuous Integration
 
-- You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting) in the Visual editor as well as the YAML editor. (CI-9618)
+- You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-test-splitting) in the Visual editor as well as the YAML editor. (CI-9618)
 
 - When you [configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates), you can now use `DESTINATION_CA_PATH` instead of `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`. (CI-9707)
   - For `DESTINATION_CA_PATH`, provide a comma-separated list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`.
@@ -3100,9 +3785,9 @@ gsutil -m cp \
 
 - You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3) with buckets with [disabled ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html). (CI-8371, ZD-45677)
 
-- [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) now supports manual branch builds (the **Git Branch** build type). This is in addition to existing support for manual PR builds, as well as PR and push webhook triggers. When you [enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence#enable-test-intelligence), you can use a manual branch build to generate the initial call graph and for subsequent pipeline runs. (CI-8932)
+- [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview) now supports manual branch builds (the **Git Branch** build type). This is in addition to existing support for manual PR builds, as well as PR and push webhook triggers. When you [enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview), you can use a manual branch build to generate the initial call graph and for subsequent pipeline runs. (CI-8932)
 
-- When you [enable Test Intelligence for Scala or Kotlin](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala), the **Packages** and **Test Annotations** fields are now available in the Visual editor. (CI-9589)
+- When you [enable Test Intelligence for Scala or Kotlin](/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-java-kotlin-scala), the **Packages** and **Test Annotations** fields are now available in the Visual editor. (CI-9589)
 
 ##### Harness Delegate
 
@@ -3578,7 +4263,7 @@ gsutil -m cp \
 
 - Upgraded `io.netty:netty*` to version `4.1.94.final` to address vulnerabilities. This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-8971, ZD-48488)
 
-- Improved the way [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) handles tests that call more tests. Previously, this rarely caused inaccurate renderings in the call graph visualization for Java-based tests. (CI-9053)
+- Improved the way [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview) handles tests that call more tests. Previously, this rarely caused inaccurate renderings in the call graph visualization for Java-based tests. (CI-9053)
 
 - Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. This fix requires Harness Delegate version 803xx or later. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate). (CI-9122)
 
@@ -3598,9 +4283,9 @@ gsutil -m cp \
 
 - Fixed an issue with UI rendering of error messages related to Test Intelligence call graph visualizations. (CI-9198)
 
-- To avoid conflicts with user-provided loggers for .NET builds, Harness installs and injects the default logger only if a logger is not specified in the [Run Tests step's Build Arguments](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence). (CI-9240)
+- To avoid conflicts with user-provided loggers for .NET builds, Harness installs and injects the default logger only if a logger is not specified in the [Run Tests step's Build Arguments](/docs/continuous-integration/use-ci/run-tests/ti-overview). (CI-9240)
 
-- Removed the `DRONE_WORKSPACE` environment variable from the local runner build infrastructure because it overwrote the working directory. This variable is equivalent to [`HARNESS_WORKSPACE`](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var/#harness_workspace), which doesn't incorrectly overwrite the working directory. (CI-9303)
+- Removed the `DRONE_WORKSPACE` [environment variable](/docs/continuous-integration/troubleshoot-ci/ci-env-var) from the local runner build infrastructure because it overwrote the working directory. This variable is equivalent to the `HARNESS_WORKSPACE` environment variable, which doesn't incorrectly overwrite the working directory. (CI-9303)
 
 - Filtering the [build list](/docs/continuous-integration/use-ci/viewing-builds) by **Build Type: Branch** now correctly excludes PR builds. (CI-9322, ZD-48837, ZD-49619)
 
@@ -4124,11 +4809,11 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 - Enable Cache Intelligence in the Visual editor. (CI-8571)
 
-  - The **Enable Cache Intelligence** UI field is behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+  - The **Enable Cache Intelligence** UI field is behind the feature flag `CI_CACHE_INTELLIGENCE`.
   - You can enable [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to the Harness Cloud build infrastructure.
 
 - Enable and configure Cache Intelligence in the Visual editor. (CI-8917)
-  - The Cache Intelligence visual editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+  - The Cache Intelligence visual editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`.
   - You can enable and configure [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to the Harness Cloud build infrastructure.
 
 #### Fixed issues
@@ -4389,7 +5074,7 @@ This item requires Harness Delegate version 23.08.80104. For information about f
 
 - The [Builds page](/docs/continuous-integration/use-ci/viewing-builds) now shows the correct user's avatar for manual builds. For scheduled builds, it now shows the schedule trigger name, instead of the latest commit author's name. (CI-8531, ZD-46409)
 
-- [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence/) now reads packages from files for all changed files, instead of relying on the file path to determine the package. This fixes an issue where tests were missed due to the test package not following the order of folders, because Test Intelligence previously determined the package from the class path. (CI-8692)
+- [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview) now reads packages from files for all changed files, instead of relying on the file path to determine the package. This fixes an issue where tests were missed due to the test package not following the order of folders, because Test Intelligence previously determined the package from the class path. (CI-8692)
 
 - Fixed an issue with handling of newline characters in [GitHub App private key files](/docs/platform/connectors/code-repositories/git-hub-app-support) generated on Windows machines. This fix requires Harness Delegate version 80104 or later. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate). (CI-8708)
 
@@ -4819,7 +5504,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
   1.  If you have user management permissions, you can list all the Personal Access Tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
   2.  If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
-- The delegate JRE has been upgraded to version 11.0.19_7. This upgrade might result in disconnection for delegates with self-signed certificates. For instructions on setting up delegates with custom certificates, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/) and [Use self-signed certificates with Helm-based installations](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga/#use-self-signed-certificates-with-helm-based-installations). (PL-37994, SMP-1696)
+- The delegate JRE has been upgraded to version 11.0.19_7. This upgrade might result in disconnection for delegates with self-signed certificates. For instructions on setting up delegates with custom certificates, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/) and [Use self-signed certificates with Helm-based installations](/docs/self-managed-enterprise-edition/install/install-using-helm/#use-self-signed-certificates-with-helm-based-installations). (PL-37994, SMP-1696)
 
 ##### Harness Platform
 
@@ -5099,7 +5784,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 - BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect status updates in PRs due to some statuses failing to send. If you encounter this issue with BitBucket Cloud, contact [Harness Support](mailto:support@harness.io) to troubleshoot this issue by enabling a feature flag, `CI_BITBUCKET_STATUS_KEY_HASH`. (CI-8302, ZD-45441)
 
-- Fixed an issue where Artifactory connector credentials weren't correctly passed to [Upload Artifacts to JFrog Artifactory steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) in nested [step groups](/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups). (CI-8351, ZD-45611)
+- Fixed an issue where Artifactory connector credentials weren't correctly passed to [Upload Artifacts to JFrog Artifactory steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) in nested [step groups](/docs/platform/pipelines/use-step-groups). (CI-8351, ZD-45611)
 
 ##### Feature Flags
 
@@ -6168,13 +6853,13 @@ This release includes the following Harness module and component versions.
 - The following features are now generally available. These were enabled by default for all users, but they were behind features flags until they were deemed stable. (CI-6537)
 
   - `CI_LE_STATUS_REST_ENABLED`: All CI steps send status updates to the Harness Manager directly by HTTP rather than through a Delegate.
-  - `CI_DISABLE_GIT_SAFEDIR`: To facilitate `git config` operations, [Run](/docs/continuous-integration/use-ci/run-step-settings) and [Run Tests](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence/#add-the-run-tests-step) steps automatically run a [Git safe.directory](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory) script.
+  - `CI_DISABLE_GIT_SAFEDIR`: To facilitate `git config` operations, [Run](/docs/continuous-integration/use-ci/run-step-settings) and [Run Tests](/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-java-kotlin-scala) steps automatically run a [Git safe.directory](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory) script.
 
 - [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) is now generally available. With Cache Intelligence, Harness automatically caches and restores common dependencies. You don't need to bring your own storage because Harness stores the cache in the Harness-managed environment, Harness Cloud. (CI-7127)
 
 - Added validations for pipelines that use the [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) macOS build infrastructure, which doesn't support containerized steps. The new validations produce an error message if any applicable steps, such as [Run steps](/docs/continuous-integration/use-ci/run-step-settings), have the **Image** and either **Container Registry** or **Connector** fields populated. (CI-7221)
 
-- The **Run as User** setting is now available for [Run steps](/docs/continuous-integration/use-ci/run-step-settings), [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence/#add-the-run-tests-step), and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) in stages that use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). This setting allows you to specify a user ID to use for processes running in containerized steps. (CI-7493)
+- The **Run as User** setting is now available for [Run steps](/docs/continuous-integration/use-ci/run-step-settings), [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-java-kotlin-scala), and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) in stages that use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). This setting allows you to specify a user ID to use for processes running in containerized steps. (CI-7493)
 
 - The CI Getting Started workflow now saves the pipeline remotely (in your Git repository) by default. Previously, the pipeline was stored inline (in Harness) unless you manually selected remote storage. The Getting Started workflow also automatically creates two [input sets](/docs/platform/pipelines/input-sets) for [Git event triggers](/docs/platform/triggers/triggering-pipelines): one for a PR trigger and one for a Push trigger. (CI-7602)
 
@@ -6303,8 +6988,6 @@ This release includes the following Harness module and component versions.
   ```
 
 - Harness will remove comments when evaluating commented lines in manifests to avoid rendering failures. (CDS-57721, ZD-41676)
-
-  This functionality is behind a feature flag, `CDS_REMOVE_COMMENTS_FROM_VALUES_YAML`.
 
   Expressions in comments were causing issues for some customers as Harness was trying to evaluate the expressions and this was causing failures.
 
@@ -6651,7 +7334,7 @@ This release includes the following Harness module and component versions.
 
 #### Fixed issues
 
-- You can now deploy the delegate-minimal image in an air-gapped environment using `useMinimalDelegate` in your `overrides.yaml` file. For more information, got to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/). (SMP-1130)
+- You can now deploy the delegate-minimal image in an air-gapped environment using `useMinimalDelegate` in your `overrides.yaml` file. For more information, got to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment). (SMP-1130)
 
 - The `nodeSelector` in Harness services failed for Redis and was missing in other services. (SMP-1180)
 
@@ -6755,7 +7438,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
 - You now have the option to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment. This process ensures secure and seamless deployment of the Harness Self-Managed Platform in restricted, offline environments. (SMP-1201, SMP-1147, SMP-1146, SMP-1142, SMP-1100)
 
-  For more information, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).
+  For more information, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
 
 - You can now disable Postgres installations. (SMP-1196)
 

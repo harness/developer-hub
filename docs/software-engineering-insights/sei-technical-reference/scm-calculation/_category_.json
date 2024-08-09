@@ -1,0 +1,11 @@
+{
+    "label":"SCM Calculations",
+    "position": 20,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"SCM Metrics and Reports Calculation"
+    }
+ }

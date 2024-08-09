@@ -10,7 +10,7 @@ To analyze your SonarQube data in SEI, set up a [SonarQube SEI integration](/doc
 
 The data is collected from all the branches available in the project and is not restricted only to the main or master branch. Currently, the data is fetched from SonarQube for the last year.
 
-### Available Reports
+## Available Reports
 
 * **SonarQube Code Complexity Report:** Analyze code complexity scores using the Cognitive & Cyclomatic complexity metrics.
 * **SonarQube Code Complexity Trend Report:** Analyze changes over time in code complexity scores.
@@ -29,7 +29,9 @@ Drill-down functionality in the reports, allows users to access detailed informa
 
 The Drill Down support is currently available for the SonarQube Issues Report, SonarQube Issues Reports Trend, SonarQube Effort Report, and SonarQube Effort Report Trends. All the other reports currently do not support the drill-down feature.
 
-### SonarQube Issues Report
+## SonarQube Issues Report
+
+### Definition
 
 This report provides a detailed analysis on the number of code issues, including Bugs, Vulnerabilities, and Code Smells. It allows users to examine issues on a per-project, per-branch, and per-pull request basis. 
 
@@ -44,7 +46,40 @@ By default, this report displays issues for all projects. The report supports dr
 Note: Please note that there might be a count mismatch due to real-time updates in the repository, as SEI compares the data with the snapshot captured during ingestion.
 :::
 
-### SonarQube Issues Trend Report
+### Add the report
+
+To configure the **SonarQube Issues report**, follow these steps:
+
+#### Step 1: Add the widget
+
+* Select **Settings**, then **Add Widget**.
+* Choose the **SonarQube Issues report** widget.
+
+#### Step 2: Configure the Filters on the widget
+
+* Select the **SonarQube Project** for which you want to display the data
+* .Add additional conditions to specify what data feeds into the widget by creating inclusive and exclusive filters.
+* If you include multiple filters, they are inherently combined with an `AND` operator.
+
+#### Step 3: Select the Metrics to measure on the widget
+
+To customize the **Bar Chart** for displaying data based on the selected filter criteria, you can choose the appropriate **Stack**. The available filter criteria include **Author**, **Organization**, **Project**, **Severity**, **Status**, and **Type**.
+
+#### Step 4: Configure the Aggregations for the widget
+
+Select the type of data you want to display on the **X-axis** of the widget. The available filter criteria include **Author**, **Organization**, **Project**, **Severity**, **Status**, and **Type**.
+
+#### Step 5: Configure the Settings
+
+Select the maximum number of items that you want to display on the **X-axis**. You can choose to display up to 100 items.
+
+#### Step 6: Save the widget
+
+Select the **Place Widget** button and place the widget in the **Insight** by dragging it to the desired location within the dashboard. Click on the **Save Layout** button to save your configuration.
+
+## SonarQube Issues Trend Report
+
+### Definition
 
 The SonarQube Issues Trend Report provides a trend line that displays the number of issues per day. This report helps track changes in issue volume over time. The report initially displays issues for all projects. The report supports metric stacking & drill down.
 
@@ -53,7 +88,31 @@ The SonarQube Issues Trend Report provides a trend line that displays the number
   alt="Example banner" height="50%" width="70%" border="1"
 />
 
-### SonarQube Metrics Report
+By default, the report displays the issues for all projects. Users can leverage the following features to customize and analyze the report:
+
+1. **Metric Stacking**: The report supports the stacking of metrics, allowing users to compare the trends of different issue types (e.g., Bugs, Vulnerabilities, Code Smells) simultaneously.
+2. **Drill-down Functionality**: The report supports drill-down functionality, enabling users to access more detailed information about the issues, such as Issue ID, Effort, Status, Severity, Organization, Author, Type, and Project.
+
+### Add the report
+
+To configure the **SonarQube Issues Report Trends** report, follow these steps:
+
+#### Step 1: Add the widget
+
+* Select **Settings**, then **Add Widget**.
+* Choose the **SonarQube Issues Report Trends** widget.
+
+#### Step 2: Configure the Filters for the widget
+
+Add conditions to specify what data feeds into the widget by creating inclusive and exclusive filters. For example: You can add the **Type** filter to display the data for a particular issue type such as **BUGS**.
+
+You can stack multiple metrics by adding more reports.
+
+#### Step 3: Save the widget
+
+Complete the widget settings and select **Next: Place Widget**, place the widget on Insight and then select **Save Layout**.
+
+## SonarQube Metrics Report
 
 The SonarQube Metrics Report provides an overview of the overall code coverage for projects. It is designed to help users assess the quality of code coverage in their software projects. Initially, the report displays metrics for all projects. Users can apply project-specific filters at the widget and collection level to narrow down the data.
 
@@ -72,7 +131,7 @@ The SonarQube Metrics Report provides an overview of the overall code coverage f
 
 </details>
 
-### Code Complexity Report
+## Code Complexity Report
 
 For the Code Complexity reports SEI provides two metrics: Cognitive Complexity and Cyclomatic Complexity to help users analyze code quality, track issue trends, and assess code coverage in their projects.
 

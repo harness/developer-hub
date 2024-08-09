@@ -24,14 +24,6 @@ This topics provides a quick overview or some options and steps when using Kuber
 
 You cannot use [Harness variables](/docs/platform/variables-and-expressions/harness-variables) in Kubernetes manifests. You can only use Harness variables in Values YAML files. Harness support Go templating, so you can use variables in Values YAML files and have the manifests reference those variables/values.
 
-## Visual summary on using Kubernetes manifests
-
-Here's a quick video that show how to add Kubernetes manifests and Values YAML files:
-
-<!-- Video:
-https://www.youtube.com/watch?v=dVk6-8tfwJc-->
-<DocVideo src="https://www.youtube.com/watch?v=dVk6-8tfwJc" />
-
 ## Artifacts and Kubernetes manifests in Harness
 
 If a public Docker image location is hardcoded in your Kubernetes manifest or values YAML file (for example, `image: nginx:1.14.2`) then you can simply add the manifest or values YAML to Harness and the Harness Delegate will pull the image during deployment.

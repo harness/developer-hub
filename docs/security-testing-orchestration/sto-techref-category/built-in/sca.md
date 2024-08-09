@@ -11,8 +11,6 @@ You can use this step to add an built-in OWASP Dependency Check and/or OSV step 
 
 :::note notes
 
-- This step is currently behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-
 - Currently [OWASP Dependency Check](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference) and [OSV](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference) scans are available for this step.
 
 - If you choose to add both scanners, you might see the same vulnerability listed twice — detected once by OWASP and again by OSV — in your scan results.

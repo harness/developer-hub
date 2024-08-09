@@ -12,7 +12,7 @@ This section describes how to save and manage experiments in your custom chaoshu
 
 ## View ChaosHubs
 
-The experiments you see in various ChaosHubs are actually templates from which you can launch the experiments after specifying some details. 
+The experiments you see in various ChaosHubs are actually templates from which you can launch the experiments after specifying some details.
 
 To view the default and custom ChaosHub:
 
@@ -23,7 +23,7 @@ To view the default and custom ChaosHub:
 	![ChaosHubs page with default and custom hubs highlighted](./static/manage-hub/custom-default-chaoshubs.png)
 
 1. Select the ChaosHub you want to view.
-	
+
 	The experiments below are in a custom hub. All experiments are displayed by default. You can select a tag (circled below) to see experiments with that tag applied.
 
 	![Viewing experiments in a ChaosHub, with an experiment tag/filter circled](./static/manage-hub/view-chaos-hub.png)
@@ -46,7 +46,7 @@ To add an experiment to a custom ChaosHub:
 
 	![More options menu, showing **Add to ChaosHub** for an experiment](./static/manage-hub/menu-add-to-chaos-hub.png)
 
-1. In the Save to ChaosHub screen, verify the **Name**, **Description** and **Experiment Category Tag**. 
+1. In the Save to ChaosHub screen, verify the **Name**, **Description** and **Experiment Category Tag**.
 
 	To add a new tag, type its name and then press the Enter/Return key.
 
@@ -54,7 +54,7 @@ To add an experiment to a custom ChaosHub:
 
 	:::tip
 	Including **Experiment Category Tag(s)** helps organize your experiments. When you [view](#view-chaos-hubs) the custom ChaosHub, you can see all experiments as well as experiments grouped by tag.
-	::: 
+	:::
 
 1. Select the **Hub** field, choose the custom ChaosHub you want to add the experiment to, and then select **Apply**.
 

@@ -15,7 +15,7 @@ The Business Alignment report feature is currently in BETA. Contact [Harness Sup
 
 <br />
 
-The report shows the effort invested for each category as a percentage, along with a label (`Ideal`, `Poor`, `Acceptable`) on the **Pie Chart**. The Trend Section displays the breakdown of the score over time in a **Stacked Bar Chart** format, based on the defined  Categories and their associated Allocation Goals in the [Business Alignment Profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile). The Bar Chart breaks down the metric value into time intervals as configured under the widget settings.
+The report displays the effort invested for each category as a percentage, along with a label (`Ideal`, `Poor`, `Acceptable`) on the **Pie Chart**. The Trend Section displays the breakdown of the score over time in a **Stacked Bar Chart** format, based on the defined  Categories and their associated Allocation Goals in the [Business Alignment Profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile). The Bar Chart breaks down the metric value into time intervals as configured under the widget settings.
 
 ![](./static/ba-report.png)
 
@@ -49,6 +49,119 @@ The data is represented in tabular format. Both the drill-down options support s
 :::info
 Please note that the **Drilldown by Contributor** option is available only if the widget is configured to calculate effort by engineer (FTE).
 :::
+
+## Add the report
+
+### Step 1: Add the widget
+
+* Go to the Insight where you want to add the widget. Make sure you are in the correct project.
+
+* Select **Settings**, and then select **Add Widget**.
+
+* Select the **Business Alignment Report** widget.
+
+### Step 2: Configure the Filters on the widget
+
+* Define the **Issue Resolved In** filter as either in `relative` or `absolute` time frame. You can also enable the **Use Insight Time** option to consider the data as per the active date configured on the Insight.
+
+* You can add more conditions to specify what data feeds into the widget by creating inclusive and exclusive filters (For example: Project etc)
+
+* If you include multiple filters, they are inherently combined with an `AND` operator.
+
+### Step 3: Configure the widget settings
+
+* Select the **Business Alignment Profile** that you want to use in the metric calculation for the widget.
+
+* Select the **Effort Attribution** as either **Only use current assignee** or **Use current and previous assignee**
+  * **Only use current assignee:** This option considers only the current assignee of a ticket when calculating effort.
+  * **Use current and previous assignee:** This option considers both the current and previous assignees of a ticket when calculating effort.
+
+* Select the **Effort Unit** as either **Ticket count**, **Story points** or **Ticket time spent**. This essentially defines how you want to calculate the effort for your alignment metric calculations.
+  * **Ticket count:** The effort is calculated based on the number of tickets worked on.
+  * **Story points:** The effort is calculated based on the sum of story points assigned to the tickets.
+  * **Ticket time spent:** The effort is calculated based on the amount of time spent on tickets while they were in the **In Progress** status category.
+
+* Select the **Effort Calculation** as either **Absolute (By ticket)** or **FTE (By engineer)**. 
+  * **Absolute (By Ticket):** This considers the total number of tickets assigned within a specific category.
+  * **FTE (By Engineer):** This option considers the relative effort invested by the engineer across all the tickets that belong to different categories.
+
+:::info
+
+If the engineer has worked on 5 tickets, belonging to 3 different categories, their effort is distributed across the 3 categories based on the Effort Unit and Effort Attribution selected.
+
+:::
+
+* Select the interval for the widget to display the data. This option allows you to choose the time interval for which the widget should display the data, such as **Weekly**, **Bi-weekly**, **Monthly** or **Quarterly**.
+
+### Step 4: Save the widget
+
+Complete the widget settings and select **Next: Place Widget**, place the widget on Insight and then select **Save Layout**.
+
+## Business Alignment Report Use Cases
+
+<details>
+<summary>Measure the actual effort invested for a specific time period (BETA)</summary>
+
+The Business Alignment report can be used to calculate alignment metrics for tickets that are in the **In Progress status category** and those that have been resolved (i.e., **Done status category**) within a specific duration of time. This helps you analyze the effort invested in both ongoing and completed work within a specific time frame.
+
+This feature is behind the Feature Flag `<NEW_BA_COMBINED_WIDGET>` and `<BA_INCLUDE_UNRESOLVED_ISSUES>` . Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+#### Step 1: Add the Business Alignment report
+
+* Select **Settings**, and then select **Add Widget**.
+
+* Select the **Business Alignment Report** widget.
+
+#### Step 2: Configure the report filters to measure the active effort investment
+
+* Under the **Filters** tab, enable the **Include Unresolved Issues** option. By selecting this option, tickets that are in the **In Progress status category** will be included in the metric calculation. If you only want to include only resolved tickets, leave this option unchecked.
+
+<img
+  src={require('./static/unresolved-issues.png').default}
+  alt="Example banner" height="50%" width="50%" border="1"
+/>
+  
+* Specify the time period or date range for which you want to include tickets in the calculation and display within the widget.
+
+<img
+  src={require('./static/inprogress-time-period.png').default}
+  alt="Example banner" height="50%" width="70%" border="1"
+/>
+
+#### Step 3: Configure the report settings
+
+* Select the **Business Alignment Profile** that you want to use in the metric calculation for the widget.
+
+* The **Effort Attribution** will automatically be selected as **Only use current assignee**
+
+<img
+  src={require('./static/effort-attribution.png').default}
+  alt="Example banner" height="50%" width="50%" border="1"
+/>
+
+* In this case, **Ticket Time Spent** is the only supported **Effort Unit** and not **Story Points** or **Ticket Count**.
+
+<img
+  src={require('./static/effort-unit.png').default}
+  alt="Example banner" height="50%" width="50%" border="1"
+/>
+
+* Select the unresolved ticket statuses that represent the **In Progress status category**, as the report calculates effort based on time spent on tickets in those statuses.
+
+* The **Effort Calculation** will automatically be selected as **Absolute (By ticket)**.
+
+<img
+  src={require('./static/effort-calculation.png').default}
+  alt="Example banner" height="50%" width="50%" border="1"
+/>
+
+* Select the interval for the widget to display the data. This option allows you to choose the time interval for which the widget should display the data, such as **Weekly**, **Bi-weekly**, **Monthly** or **Quarterly**.
+
+#### Step 4: Save the report
+
+Complete the widget settings and select **Next: Place Widget**, place the widget on Insight and then select **Save Layout**.
+
+</details>
 
 ## Calculation Example
 

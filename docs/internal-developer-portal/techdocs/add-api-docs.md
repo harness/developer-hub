@@ -208,3 +208,61 @@ spec:
     $text: ./petstore.oas.yaml
 
 ```
+
+## gRPC Docs
+
+We have now added the support for [protoc-gen-doc plugin](https://github.com/backstage/backstage/tree/master/plugins/api-docs-module-protoc-gen-doc), which contains `ApiDefinitionWidgets` for [grpc-docs](https://github.com/gendocu-com/grpc-docs)to enable Swagger UI for gRPC APIs. 
+
+Make sure to add the `spec.type` as `grpc` or `grpc-docs`. 
+
+## proto file Format
+
+```YAML
+## Example
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: helloworld-unary-api
+  description: helloworld unary gRPC
+  
+spec:
+  type: grpc
+  lifecycle: production
+  owner: zalopay-oss
+  definition:
+    $text: https://github.com/zalopay-oss/backstage-grpc-playground/blob/main/examples/unary/helloworld.proto
+  files:
+    - file_name: helloworld.proto
+      file_path: examples/unary/helloworld.proto
+      url: https://github.com/zalopay-oss/backstage-grpc-playground/blob/main/examples/unary/helloworld.proto
+      
+  targets:
+    dev:
+      host: 0.0.0.0
+      port: 8084
+```
+
+### Rendered Output for proto file
+
+![](./static/non-json-render.png)
+
+
+## JSON Format
+
+```YAML
+##Example
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: grpc-docs-test-1
+spec:
+  type: grpc
+  lifecycle: production
+  owner: group:engineering
+  definition:
+    $text: https://github.com/pseudomuto/protoc-gen-doc/blob/master/examples/doc/example.json
+```
+
+### Rendered Output for JSON Format
+
+![](./static/json-format.png)

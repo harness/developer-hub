@@ -2,9 +2,10 @@
 id: pod-io-stress
 title: Pod IO stress
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-io-stress
 ---
-Pod I/O stress is a Kubernetes pod-level chaos fault that causes I/O stress on the application pod by increasing the number of input and output requests. Applying stress on the disk with continuous and heavy I/O degrades the reads and writes with respect to the microservices. Scratch space consumed on a node may lead to lack of memory for new containers to be scheduled. All these aspects increase resilience to stress. 
+Pod I/O stress is a Kubernetes pod-level chaos fault that causes I/O stress on the application pod by increasing the number of input and output requests. Applying stress on the disk with continuous and heavy I/O degrades the reads and writes with respect to the microservices. Scratch space consumed on a node may lead to lack of memory for new containers to be scheduled. All these aspects increase resilience to stress.
 
 ![Pod IO Stress](./static/images/pod-io-stress.png)
 
@@ -14,9 +15,46 @@ Pod IO stress:
 - Aims to verify the resilience of applications that share the disk resource for ephemeral (or persistent) storage.
 - Simulates slower disk operations by the application.
 - Simulates noisy neighbour problems by hogging the disk bandwidth.
-- Verifies the disk performance on increasing I/O threads and varying I/O block sizes. 
+- Verifies the disk performance on increasing I/O threads and varying I/O block sizes.
 - Checks how the application functions under high disk latency conditions and when I/O traffic is very high.
-- Checks how the application functions under large I/O blocks, and when other services monopolize the I/O disks. 
+- Checks how the application functions under large I/O blocks, and when other services monopolize the I/O disks.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-io-stress
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16
@@ -44,7 +82,7 @@ Pod IO stress:
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of IO workers involved in IO disk stress. </td>
         <td> Default: 4. For more information, go to <a href="#workers-for-stress">workers for stress</a></td>
-      </tr> 
+      </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration for which to insert chaos (in seconds). </td>
@@ -59,12 +97,12 @@ Pod IO stress:
         <td> VOLUME_MOUNT_PATH </td>
         <td> Fill the given volume mount path. </td>
         <td> For more information, go to <a href="#mount-path"> mount path</a></td>
-      </tr> 
+      </tr>
       <tr>
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to pod IO stress. </td>
         <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a></td>
-      </tr>  
+      </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
@@ -73,7 +111,7 @@ Pod IO stress:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
@@ -84,7 +122,7 @@ Pod IO stress:
         <td> SOCKET_PATH </td>
         <td> Path of the containerd or crio or docker socket file. </td>
         <td> Default: <code>/run/containerd/containerd.sock</code> For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">socket path</a></td>
-      </tr>    
+      </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>

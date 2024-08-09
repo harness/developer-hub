@@ -350,7 +350,7 @@ To integrate Coveralls in your Harness CI pipelines, follow the Coveralls docume
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
 
-Add `envVariables` to the `step.spec` for the relevant `Run` or `RunTests` step.
+Add `envVariables` to the `step.spec` for the relevant `Run` or `Test` step.
 
 ```yaml
               - step:

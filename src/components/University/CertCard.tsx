@@ -17,7 +17,11 @@ const stars = {
   [certType.administrator]: 2,
   [certType.architect]: 3,
 };
-
+export enum cardTag {
+  Architects = "PAID",
+  Administrators = "PAID",
+  Developers = "FREE",
+}
 export type CardItem = {
   title: string;
   module: MODULES;
@@ -49,7 +53,7 @@ export default function CertCard({
       })}
     >
       <div className={styles.Topright}>
-        <img src="/img/certification_icon.svg" alt="" />
+        <p>{cardTag[type]}</p>
       </div>
       <div>
         <div className={styles.moduleLine}>
@@ -79,19 +83,3 @@ export default function CertCard({
     </Link>
   );
 }
-
-/*
-export default function TutorialCard(props): JSX.Element {
-  return (
-    <div className={styles.spaceBetween}>
-      {props.featuredCard
-        ? props.FeatureList.map((props, idx) => (
-            <Card key={idx} {...props} featuredCard={true} />
-          ))
-        : props.FeatureList.map((props, idx) => (
-            <Card key={idx} {...props} featuredCard={false} />
-          ))}
-    </div>
-  );
-}
-*/

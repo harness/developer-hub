@@ -18,6 +18,7 @@ Post deployment rollback initiates a rollback of your most recent successful dep
   - Native Helm
 
     Harness anticipates expanding this feature to other deployment types in the future.
+* Alternatively, for unsupported deployment types like **SSH deployments**, users can get the previous version and create a new forward deployment with the required version of the artifact and the manifest.
 * You can rollback successful pipelines only. The rollback option is not available for failed pipelines.
 * Only the rollback steps that are part of the stage can be used during rollback.
 * You cannot roll back the same pipeline multiple times. You can perform rollback if the pipeline is executed again.
@@ -26,6 +27,7 @@ Post deployment rollback initiates a rollback of your most recent successful dep
 * The stages should roll back in reverse order when  deployment rollback is triggered.
 * Rolling back to a previous post-production deployment is only possible for executions that occurred within the past 30 days.
 * You cannot roll back an execution if it is marked successful by the ignore failures failure strategy.
+
 
 ## Roll back deployments
 
@@ -68,3 +70,17 @@ A user will be allowed to execute rollbacks on any instance only if they possess
 
 ![](./static/permissions_post_rollback.png)
 :::
+
+## Obtaining instance key and infrastructure mapping Id to roll back specific services using APIs
+
+You can use APIs to trigger rollback for specific services. For more details, go to [Trigger rollback](https://apidocs.harness.io/tag/Rollback/#operation/triggerRollback). 
+Note that you need `instanceKey` and `infrastructureMappingId` of the service instance for rollback. You can obtain these parameters using a cURL command. 
+
+Here's a sample cURL request:
+
+```
+curl --location 'https://https://app.harness.io/ng/api/dashboard/getInstancesDetails?routingId=<Account_Identifier>accountIdentifier=<Account_Identifier>orgIdentifier=<Org_Name>&projectIdentifier=<Project_Name>&serviceId=<Service_Id>&envId=<Environment_Id>&infraIdentifier=<Infrastructure>&buildId=null' \
+--header 'x-api-key: <KEY>'
+```
+
+From the response, you can obtain `infrastructureMappingId` and `instanceKey`. 

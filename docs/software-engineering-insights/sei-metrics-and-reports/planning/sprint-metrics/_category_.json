@@ -1,0 +1,11 @@
+{
+    "label":"Sprint Metrics",
+    "position": 80,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Sprint Metrics"
+    }
+ }

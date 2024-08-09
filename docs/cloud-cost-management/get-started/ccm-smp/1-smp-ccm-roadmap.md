@@ -19,14 +19,18 @@ The table below outlines the current features availale on the Harness Self-Manag
 |Perspectives | ✅  | ✅ | ✅ | ✅ |
 |Cost categories | ✅  | ✅ | ✅ | ✅ | 
 |Budgets | ✅ | ✅ | ✅ | ✅ | ✅ |
-|BI dashboards |✅  | ✅ | ✅ | ✅ | 
+|BI dashboards |✅ | ✅ | ✅ | ✅ | 
 |Anomaly detection  | ✅ | ✅ | ✅ | ✅ |
 |Currency standardization | ❌ | ❌ | ❌ | ❌ | 
 |Recommendations |✅ | ✅ | ✅ | ✅ | 
 |AutoStopping | ❌ | ❌ | ❌ | ❌ | 
 |Asset governance | ❌ | ❌ | ❌ | ❌ | 
 |Perspective Preferences| ✅ | ✅ | ✅ | ✅ |
+|Resource Inventory| ❌ | ❌ | ❌ | ❌ |
 
+:::info
+On SMP, four of the OOTB BI dashboards: AWS Cost Dashboard, GCP Cost Dashboard, Azure Cost Dashboard and Cluster Cost Dashboard are available. 
+:::
 
 ## Air-gapped environment
 
@@ -42,3 +46,4 @@ The table below outlines the current features availale on the Harness Self-Manag
 |AutoStopping | ❌ | ❌ | ❌ | ❌ | 
 |Asset governance | ❌ | ❌ | ❌ | ❌ | 
 |Perspective Preferences| ✅ | ❌  | ❌  | ✅ | 
+|Resource Inventory| ❌ | ❌ | ❌ | ❌ |

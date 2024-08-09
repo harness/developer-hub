@@ -5,7 +5,7 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-network-latency
 ---
 VMware network latency injects network packet latency from the VMware VM(s) into the application (or service).
-- It results in flaky access to the application. 
+- It results in flaky access to the application.
 - It causes network degradation without the VM being marked as unhealthy (or unworthy) of traffic.
 - It checks the performance of the application (or process) running on the VMware VM(s).
 
@@ -14,9 +14,9 @@ VMware network latency injects network packet latency from the VMware VM(s) into
 ## Use cases
 VMware network latency:
 - Simulates issues within the VM network (or microservice) communication across services in different hosts.
-- Determines the impact of degradation while accessing a microservice. 
-- Limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses, if the VM stalls or gets corrupted while waiting endlessly for a packet. 
-- Simulates a consistently slow network connection between microservices, for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network. 
+- Determines the impact of degradation while accessing a microservice.
+- Limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses, if the VM stalls or gets corrupted while waiting endlessly for a packet.
+- Simulates a consistently slow network connection between microservices, for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network.
 - Simulates jittery connection with transient latency spikes between microservices.
 - Simulates slow response on specific third party (or dependent) components (or services).
 - Simulates degraded data-plane of service-mesh infrastructure.
