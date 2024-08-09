@@ -152,6 +152,22 @@ This is behind the feature flag: `CI_ENGINE_LOG_UPLOAD_CONCURRENCY`.
 - Fixed an issue where certain keywords in a script could cause the step to fail with an "Invalid step" error. (CI-12708, ZD-63932)
 - Fixed an issue where the Docker LABEL set in a Build and Push step does not override the LABEL configured in the Dockerfile. With this fix, you can now use buildx rather than kaniko to build your container images. You must run buildx on k8s with Privileged mode enabled. This fix is behind the feature flag CI_USE_BUILDX_ON_K8. Contact Harness Support to enable this fix. (CI-12548, ZD-63222)
 
+### Version 1.32
+
+#### Fixed issues
+
+- CI builds were running slowly in some cases. This release includes the following fixes to address this issue. (CI-10042, ZD-52559)
+
+  - Added extra resources for running `addon`. This feature is behind the feature flag `CI_EXTRA_ADDON_RESOURCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+  - Updated LE to addon communication to retry every 300ms 30 times, for a total of 9 seconds.
+
+  - Disabled resource consumption logs for addon. 
+
+- Fixed an issue where pipelines failed intermittently due to delegate selection and task distribution problems when multiple delegates are configured with the same selector tag. (CI-12788, ZD-64246)
+- Running `unittest` in a Run step resulted in the error `sh: unittest not found in some cases`. With this fix, pipelines now run `python unittest -m` which supports more image types. (CI-12795)
+- In some cases, the **Image Pull Policy** setting didn't work as intended when running builds in Docker and VM build infrastructures. (CI-11703) 
+
 ### Version 1.30
 
 #### New features and enhancements
