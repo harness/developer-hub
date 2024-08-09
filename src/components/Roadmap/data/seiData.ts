@@ -2,8 +2,18 @@ import { Horizon } from "./roadmapData";
 
 export const SeiData: Horizon = {
   Now: {
-    description: "Q2, 2024, May-Jul 2024",
+    description: "Q3, 2024, Aug - Oct 2024",
     feature: [
+      {
+      tag: [{ value: "Enhanced Insigths" }],
+      title: "Panorama Insight Dashboards (Beta)",
+      description: "Provide organization-wide and holistic insights for executives to have a comprehensive view of productivity, efficiency, and developer experience."
+      },
+      {
+      tag: [{ value: "Enhanced Insigths" }],
+      title: "AI Productivity Insights (Beta)",
+      description: "Measure the impact of AI code assistant tools on developers' velocity and code quality."
+      },
       {
         tag: [{ value: "Data Accuracy" }],
         title: "Built-in Data Ingestion Monitoring and Validation",
@@ -14,48 +24,34 @@ export const SeiData: Horizon = {
         title: "Automated Identity Consolidation",
         description: "Streamline management of identities from integrations and contributors in SEI. This new flow reduces the integration onboarding time and simplifies the complexity for customers to manage the identity to contributor matches.",
       },
-      {
-        tag: [{ value: "Enhanced Insights" }],
-        title: "DORA Enhancement",
-        description: "Enhance the correlation in DORA.",
-      },
-      {
-        tag: [{ value: "Integrations" }],
-        title: "Enhanced ServiceNow Integration",
-        description: "Support collection definition and DORA metrics.",
-      },
     ],
   },
 
   Next: {
-    description: "Q3, 2024, Aug-Oct 2024",
+    description: "Q4, 2024, Nov 2024 - Jan 2025",
     feature: [
-      {
-        tag: [{ value: "Platform" }],
-        title: "SEI on Harness GA",
-        description: "Provide a consistent look and feel with the rest of Harness modules and leverage Harness platform capabilities, such as user authentication and authorization, and account and license management.",
-      },
-      {
-        tag: [{ value: "Enhanced Insigths" }],
-        title: "Panorama Insight Dashboards",
-        description: "Provide organization-wide and holistic insights for executives to have a comprehensive view of productivity, efficiency, and developer experience."
-      },
       {
         tag: [{ value: "Easy Adoption" }],
         title: "Automated Collection Builder",
         description: "Automate and accelerate collection creation and simplify collection maintenance.",
       },
-     ],
-  },
-  
-  Later: {
-    description: "Q4 2024+, Nov 2024 & beyond",
-    feature: [
       {
         tag: [{ value: "Enhanced Insights" }],
         title: "Team Transformation and OKR Tracking",
         description: "Track transformation and OKR for each team, providing a clear view of progress and identifying areas to improve.",
       },
+      {
+        tag: [{ value: "Enhanced Insights" }],
+        title: "DORA Enhancement",
+        description: "Enhance the correlation in DORA.",
+      },
+	  
+     ],
+  },
+  
+  Later: {
+    description: "Q1 2025+, Feb 2025 & beyond",
+    feature: [
       {
         tag: [{ value: "Enhanced Insights" }, { value: "AIDA"}],
         title: "Personalized Team Recommendations",
