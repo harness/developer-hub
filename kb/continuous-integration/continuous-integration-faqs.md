@@ -1457,7 +1457,7 @@ If you want to include the volume content in the image layers, consider using `C
 
 ### Can I use images from multiple Azure Container Registries (ACRs)?
 
-Yes. Go to [Use images from multiple ACRs](./articles/using-images-from-multiple-ACRs).
+Yes. Go to [Use images from multiple ACRs](/kb/continuous-integration/articles/using-images-from-multiple-ACRs).
 
 ### Is remote caching supported in Build and Push steps?
 
@@ -1465,7 +1465,36 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 
 ### Build and Push to Docker fails with kaniko container runtime error
 
-Go to the [Kaniko container runtime error article](./articles/kaniko_container_runtime_error).
+Go to the [Kaniko container runtime error article](/kb/continuous-integration/articles/kaniko_container_runtime_error).
+
+### Can I push and pull from two different docker registries that have same prefix for registry URL ?
+
+No, this is currently not supported in docker.
+
+If two registry URLs begin with same prefix, for example https://index.docker.io it will result in the second registry credentials getting over-ridden in the docker config file when a docker login is attempted 
+
+As an example, this would fail as the orefix URLs are not unique.
+https://index.docker.io/v1/abc/test-private
+https://index.docker.io/v1/xyz/test2
+
+docker config would look like:
+```
+{
+
+      https://index.docker.io/***: { auth}
+}
+```
+In other cases with a docker compatible jfrog registry, this limitation is not present. 
+If the URLs are fully unique the docker config map can have 2 separate entries for the authentication, as opposed to getting 1 entry as listed above.
+
+```
+docker config would look like:
+{
+
+infacloud-ct-docker.jfrog.io : {auth},
+ct-dockerhub.artifacts.cloudtrust.rocks: {auth}
+}
+```
 
 ### What is the default build context when using Build and Push steps?
 
