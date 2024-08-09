@@ -48,7 +48,7 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Search" }],
         title: "Recursive Code Search",
-        description: "Extend keyword search to find code across all repositories in all Projects and Orgs within your Account.",
+        description: "Extend keyword search to find code across all repositories in all projects and orgs within your account.",
       },
     ],
   },
