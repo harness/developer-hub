@@ -53,7 +53,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - In pipeline chaining, if the child pipeline was in a wait step, the child pipeline status would show as **Waiting** state whereas the parent pipeline status would show as **Running** state. This behavior is changed to show both parent and child pipeline status to show as **Waiting** state.(PIPE-20448, ZD-66154,66618,67697)  
 
-#### Fixed Issues
+#### Fixed issues
 
 - The output tab on the pipeline console showed incorrect details for retries when viewed on console mode. This issue is fixed now. Pass correct step id for retry steps in console view to see correct details in the output tab.(PIPE-20648, ZD-67024)
 - While cinnecting to the Git sync service, a connection error was being thrown. This issue is resolved by increasing the number of connection retries from 1 to 3. (PIPE-20589, ZD-67247,67488)
