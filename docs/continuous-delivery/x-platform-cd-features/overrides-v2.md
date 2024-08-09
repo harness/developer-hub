@@ -207,7 +207,9 @@ You can store overrides remotely in a repository. The steps below explains how t
 7. Harness Git Experience auto-populates the **YAML Path** based on the scope where overrides are configured, for example, ``{scope}/overrides/harnessdevenv.yaml``.
 9. Select **Save**.
 
-
 :::info note
-Overrides also support [Bidirectional Sync](/docs/platform/git-experience/gitexp-bidir-sync-setup.md).
+1. Overrides also support [Bidirectional Sync](/docs/platform/git-experience/gitexp-bidir-sync-setup.md).
+2. When moving overrides to Git, the corresponding Environment must also be in Git.
+3. Similar to environments, for Service-specific remote overrides, the Service must be remote.
+4. For infrastructure specific overrides the Infrastructure must be remote for the overrides to be moved to Git successfully.
 :::
