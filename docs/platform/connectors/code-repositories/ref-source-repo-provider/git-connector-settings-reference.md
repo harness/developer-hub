@@ -59,6 +59,10 @@ The URL format depends on the Git provider and **Connection Type**:
 * HTTP format: `https://<git-provider>.com/USERNAME`
 * SSH format: `git@<git-provider>.com:USERNAME`
 
+:::warning
+For SSH format, the URL is valid only if it starts with the prefix **git@**.
+:::
+
 ### Test Repository
 
 This field is only required if the **URL Type** is **Account**. Provide the name of a repo in your Git account that Harness can use to test the connector. Harness uses this repo path to validate the connection only. When you use this connector in a pipeline, you'll specify a true code repo in your pipeline configuration or at runtime.
@@ -72,6 +76,10 @@ The URL format depends on the Git provider and **Connection Type**:
 
 * HTTP format: `https://<git-provider>.com/USERNAME/REPO_NAME`
 * SSH format: `git@<git-provider>.com:USERNAME/REPO_NAME`
+
+:::warning
+For SSH format, the URL is valid only if it starts with the prefix **git@**.
+:::
 
 </TabItem>
 </Tabs>
