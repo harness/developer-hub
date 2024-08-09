@@ -681,3 +681,13 @@ The `main.tf` sample file includes a delegate token option, facilitating automat
 ### What are there discrepancies between the user list, access control, and dashboard?
 
 Harness includes user login data in audit history, but it's not structured for analytics purposes. Creating a custom view for this data isn't currently supported.
+
+### How do I check from where the delegate selector originated?
+
+You can check the delegate selection logs, and you will be able to see more details like:
+Selector(s) originated from connector, task, or step.
+
+### We have updated the template, and while reconciling, its trying to remove some variables that were added in the last commit in git.
+
+Most probably, these variables are added to the upper level template (pipeline), and these variables also need to be added to the lower-level template, which is being referred to.
+So suppose you have added these variables to the pipeline template under the section where the step template was referred, so you need to first add them to the step template.
