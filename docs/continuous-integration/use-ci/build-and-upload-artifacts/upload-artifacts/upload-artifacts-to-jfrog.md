@@ -84,7 +84,17 @@ You can use [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variab
                required: false
                value: <+pipeline.executionID> # You can use an expression or a fixed value.
    ```
+   
+- `JFROG_CLI_HOME_DIR`: to change the folder in which .jfrog will be created, to a path that is writable by the user running the container.
 
+   ```yaml
+           variables:
+             - name: JFROG_CLI_HOME_DIR
+               type: String
+               description: "Change the path of where the JFrog is to a writable directory"
+               required: false
+               value: <+directory> # the path to the directory that is writable.
+   ```
 <details>
 <summary>Use the Artifactory Drone plugin</summary>
 

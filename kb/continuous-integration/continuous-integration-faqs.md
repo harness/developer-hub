@@ -1589,6 +1589,11 @@ No. The jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://de
 
 With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) must run as root. If you set **Run as User** to anything other than `1000`, the step fails with `mkdir /.jfrog: permission denied`.
 
+### Why does Upload Artifacts fail when using JFrog as non-root?
+The jfrog commands in the [Upload Artifacts to to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) by default, creates a .jfrog folder at the root level of the stage workspace, which fails if you use a non-root user.
+
+To work around this Users can set a Stage variable JFROG_CLI_HOME_DIR to change the folder in which .jfrog will be created, to a path that is writable by the user running the container.
+
 ### What is PLUGIN_USERNAME and PLUGIN_PASSWORD used in the Upload Artifacts to JFrog Artifactory step?
 
 These are derived from your [Artifactory connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog#artifactory-connector).
