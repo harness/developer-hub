@@ -17,10 +17,6 @@ This topic describes the following operations:
 * [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/)
 * [Create infrastructure before onboarding](/docs/chaos-engineering/onboarding/hce-onboarding#prerequisites-to-automated-and-guided-onboarding)
 
-:::tip
-Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
-:::
-
 ### What is automated onboarding?
 Automated onboarding, as the name suggests, automates the entire process of creating and executing a chaos experiment. You can click a button and HCE creates an environment, uses an infrastructure, and other components in the background, executes the experiment, and displays the resilience score for the sample application.
 

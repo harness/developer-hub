@@ -12,10 +12,6 @@ This topic describes the typical steps to execute a chaos experiment, and delves
 * [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/)
 * [Key concepts](/docs/chaos-engineering/architecture-and-security/architecture/components)
 
-:::tip
-Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
-:::
-
 ## Automated and guided onboarding
 
 You can execute chaos experiments without explicitly installing the environment or infrastructure or creating an experiment by specifying tunables.
