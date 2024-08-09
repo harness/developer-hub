@@ -1473,24 +1473,25 @@ No, this is currently not supported in docker.
 
 If two registry URLs begin with same prefix, for example https://index.docker.io it will result in the second registry credentials getting over-ridden in the docker config file when a docker login is attempted 
 
-As an example, this would fail as the orefix URLs are not unique.
+As an example, this would fail as the prefix URLs are not unique.
+
 https://index.docker.io/v1/abc/test-private
+
 https://index.docker.io/v1/xyz/test2
 
 docker config would look like:
 ```
 {
-
       https://index.docker.io/***: { auth}
 }
 ```
 In other cases with a docker compatible jfrog registry, this limitation is not present. 
 If the URLs are fully unique the docker config map can have 2 separate entries for the authentication, as opposed to getting 1 entry as listed above.
 
-```
-docker config would look like:
-{
 
+docker config would look like:
+```
+{
 infacloud-ct-docker.jfrog.io : {auth},
 ct-dockerhub.artifacts.cloudtrust.rocks: {auth}
 }
