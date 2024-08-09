@@ -21,20 +21,6 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
-## Deprecation notice: app.harness Docker registry
-
-<!-- Move to February section at end of May -->
-
-[Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci) are available on Docker Hub and the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness is deprecating the Harness-hosted `app.harness` Docker registry effective 15 February 2024.
-
-You will be impacted by this deprecation if:
-
-* Your built-in Harness Docker connector (`account.harnessImage`) is configured to the `app.harness` Docker registry. To avoid errors when the deprecation takes place, [configure the built-in Docker connector to use credentialed access to Docker Hub or the Harness project on GCR](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#configure-harness-to-always-use-credentials-to-pull-harness-images).
-* You [pull Harness images from a private registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#pull-harness-images-from-a-private-registry), and you are currently pulling the latest images from the `app.harness` Docker registry. To avoid errors when the deprecation takes place, make sure you are pulling images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
-* You have other Docker connectors configured to the `app.harness` Docker registry. Edit these connectors to use `https://registry.hub.docker.com` instead.
-
-Contact [Harness Support](mailto:support@harness.io) if you have any questions.
-
 ## July 2024
 
 ### Version 1.39
@@ -91,7 +77,7 @@ This feature is behind the feature flag `CI_GIT_CLONE_ENHANCED`.
 
 - Fixed an issue where the `Build and Push to GCR` step was failing. Buildx plugin version has been upgraded. (CI-13422)
 
-- UPDATED Upgraded Kaniko version to fix an issue where the `Build and Push to ECR` step did not preserve permissions via chmod. (CI-13200, ZD-65907)
+- Upgraded Kaniko version to fix an issue where the `Build and Push to ECR` step did not preserve permissions via chmod. (CI-13200, ZD-65907)
 
 - Fixed an issue where logging for **engine:main** experienced a race condition. Initially, when a **SIGTERM** signal was received, one thread would begin closing the logger while another thread continued uploading logs to **engine:main**, leading to a race condition. This caused incorrect logging of pod eviction during successful executions. The threads have been synchronized to ensure log uploads complete before the logger is closed, accurately recording pod evictions only during errors. (CI-13175, ZD-65545)
 
@@ -406,6 +392,18 @@ Fixed an issue where the Get Started wizard failed to generate some pipeline YAM
 * A version of CI was briefly released that contained a bug in the Harness `plancreator` service that caused multiple pipeline failures. That version was rolled back and the issue has been fixed in this version. (CI-11497, ZD-58699, ZD-58745)
 
 ## February 2024
+
+## Deprecation notice: app.harness Docker registry
+
+[Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci) are available on Docker Hub and the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness is deprecating the Harness-hosted `app.harness` Docker registry effective 15 February 2024.
+
+You will be impacted by this deprecation if:
+
+* Your built-in Harness Docker connector (`account.harnessImage`) is configured to the `app.harness` Docker registry. To avoid errors when the deprecation takes place, [configure the built-in Docker connector to use credentialed access to Docker Hub or the Harness project on GCR](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#configure-harness-to-always-use-credentials-to-pull-harness-images).
+* You [pull Harness images from a private registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#pull-harness-images-from-a-private-registry), and you are currently pulling the latest images from the `app.harness` Docker registry. To avoid errors when the deprecation takes place, make sure you are pulling images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
+* You have other Docker connectors configured to the `app.harness` Docker registry. Edit these connectors to use `https://registry.hub.docker.com` instead.
+
+Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ### Version 1.13.1
 
