@@ -63,7 +63,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - While ranaming the file by adding an extension to the file name on Harness File Store would delete the contents of the file. This issue is fixed to maintain file content when updating file metadata in File Store. (CDS-99202,ZD-66962)
 - When a customer tried to provide input as a run-time input for the K8s manifest connector, they were unable to see the input field in the run pipeline form. This issue has been fixed. (CDS-99171, ZD-66902)
 
-### Version 1.49.5
+### Version 1.49.7
 
 #### Fixed issues
 
