@@ -228,6 +228,12 @@ To use this authentication method, you need to create and install a GitHub App, 
    ![](../../static/git-hub-app-support-59.png)
 
 4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/secrets/add-file-secrets).
+:::tip
+Ensure your private key is in the correct format. For detailed steps, refer to [Generate a private key](/docs/platform/connectors/code-repositories/git-hub-app-support/#generate-a-private-key).
+
+Using an incorrect format will result in errors such as:  __Invalid request: Failed to generate token__
+
+:::
 
 </TabItem>
 </Tabs>
