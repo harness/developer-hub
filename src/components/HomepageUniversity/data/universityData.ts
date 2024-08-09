@@ -55,6 +55,7 @@ export const university: CardItem[] = [
     link: "/university/cloud-cost-management",
     numberOfCerts: 2,
     SPT_available: true,
+    ILT_available: true,
   },
   {
     title: "Security Testing Orchestration",
