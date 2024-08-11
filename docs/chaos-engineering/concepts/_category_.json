@@ -1,0 +1,13 @@
+{
+  "position": 2,
+  "label": "Concepts and Features",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Security"
+   },
+  "customProps": {
+    "description": "Understand the general concepts of Chaos Engineering, concepts in Harness Chaos Engineering, it's architecture & explore it's features"
+  }
+}

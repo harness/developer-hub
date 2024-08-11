@@ -1,0 +1,13 @@
+	{
+  "position": 12,
+  "label": "Training and Certification",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Training and Certification in Harness CE"
+   },
+  "customProps": {
+    "description": "Training and Certification in Harness CE."
+  }
+}

@@ -1,13 +1,13 @@
 {
   "position": 3,
-  "label": "Explore features",
+  "label": "Chaos Experiments",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Explore features"
+      "title":"Using Harness CE"
    },
   "customProps": {
-    "description": "Explore the features of Harness Chaos Engineering"
+    "description": "Using Harness CE"
   }
 }

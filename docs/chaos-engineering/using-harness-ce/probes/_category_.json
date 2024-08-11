@@ -1,13 +1,13 @@
 {
   "position": 4,
-  "label": "Quick start with HCE SaaS",
+  "label": "Resilience Probes",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Quick start with HCE SaaS"
+      "title":"Resilience Probes"
    },
   "customProps": {
-    "description": "Quick start with HCE SaaS"
+    "description": "Resilience Probes"
   }
 }

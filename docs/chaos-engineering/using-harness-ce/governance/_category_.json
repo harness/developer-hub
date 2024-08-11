@@ -1,13 +1,13 @@
 {
   "position": 5,
-  "label": "Quick start with SMP",
+  "label": "Governance",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Quick start with SMP"
+      "title":"Governance in Harness CE"
    },
   "customProps": {
-    "description": "Quick start with SMP"
+    "description": "Governance in Harness CE"
   }
 }
