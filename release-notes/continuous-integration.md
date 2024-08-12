@@ -35,7 +35,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 - Implemented server-side sorting by duration for unit test results in the Tests tab. (CI-13115,11642, ZD-59178)
 
-- Removed the CI onboarding flow for new projects on SMP environments, where users were previously directed to a **Get Started** page that could fail due to `clientSecret` setup for Stripe. Now, customers will be directed to the **Overview** page instead. Upcoming releases will include changes to completely remove the **Get Started** option from the side navigation for SMP customers, ensuring it is no longer visible. (CI-13687)
+- Removed the CI onboarding flow for new projects on SMP environments, where users were previously directed to a 'Get Started' page that could fail due to `clientSecret` setup for Stripe. Now, customers will be directed to the Overview page instead. Upcoming releases will include changes to completely remove the Get Started option from the side navigation for SMP customers, ensuring it is no longer visible. (CI-13687)
 
 - Fixed an issue where external endpoints were used for internal communication with logs service, causing token authentication failures and 401 errors. The issue was resolved by ensuring internal communication for the services. (CI-13686)
 
