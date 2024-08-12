@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-07-30T18:19:25
+date: 2024-08-12T18:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,18 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: July 30, 2024
+#### Last updated: August 12, 2024
+
+## August 2024
+
+### Javascript SDK
+
+#### Version 1.26.3
+
+**Fixed issues**:
+ - The following CVEs have been patched:
+    - [ws](https://github.com/advisories/GHSA-3h5v-q93c-6h6q)
+    - [braces](https://github.com/advisories/GHSA-grv7-fg5c-xmjg)
 
 ## July 2024
 
