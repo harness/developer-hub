@@ -41,6 +41,8 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 - Fixed issues where the Git status update was not being sent to PRs and the PR link in the execution pipeline was incorrect, redirecting back to the same execution link. The PR link redirect was not working for the input expression `<+trigger.payload.pull_req.number>`, so support for this expression has been added. (CI-11759)
 
+- Implemented server-side sorting by duration for unit test results in the Tests tab. (CI-13115,11642, ZD-59178)
+
 ## July 2024
 
 ### Version 1.39
