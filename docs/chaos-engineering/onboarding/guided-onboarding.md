@@ -23,9 +23,6 @@ This topic describes the following operations that constitute the guided onboard
 * [HCE automated onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding)
 * [Create infrastructure before onboarding](/docs/chaos-engineering/onboarding/hce-onboarding#prerequisites-to-automated-and-guided-onboarding)
 
-:::tip
-Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
-:::
 
 ### What is guided onboarding?
 Guided onboarding, as the name suggests, guides you through creating a chaos experiment  with minimal choices for you to make during the process.
