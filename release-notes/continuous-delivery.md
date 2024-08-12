@@ -51,13 +51,12 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Behavior changes
 
-- Previously, in pipeline chaining, if the child pipeline was in a wait step, the child pipeline status would show as **Waiting** state whereas the parent pipeline status would show as **Running** state. This behavior is changed to show both parent and child pipeline status to show as **Waiting** state.(PIPE-20448, ZD-66154,66618,67697)  
+- Previously, in pipeline chaining, if the child pipeline was in a wait step, the child pipeline status would show as **Waiting** state whereas the parent pipeline status would show as **Running** state. This behavior is changed to show both parent and child pipeline status to show as **Waiting** state. Currently this feature is behind the Feature Flag `PIPE_MARK_PARENT_PIPELINE_STATUS_WAITING_AS_CHILD`. Contact [Harness support](mailto:support@harness.io) to enable it. (PIPE-20448, ZD-66154,66618,67697)  
 
 #### Fixed issues
 
 - The output tab in the pipeline console previously displayed incorrect details for retries when viewed in console mode. This issue has been resolved by ensuring that the correct step ID is passed for retry steps, allowing accurate details to be shown in the output tab.(PIPE-20648, ZD-67024)
 - While connecting to the Git sync service, a connection error was being thrown. This issue is fixed by increasing the retry policy from 1 to 3. (PIPE-20589, ZD-67247,67488)
-- There was inconsistent behavior between child and parent pipelines, where the parent pipeline status did not correctly reflect the child pipeline's execution status. This issue has been resolved, and in cases of pipeline chaining, the parent pipeline will now accurately display a status of **waiting** if the child pipeline is in a **waiting** state. (PIPE-20448, ZD-66154, ZD-66618,ZD-67697)
 - The pipeline deployed using the rolling deployment were encountering a `NotificationTargetARN` error. This issue is resolved now with support for adding lifecycle hooks with different notificationARNs and roles during the time of creation of ASG. (CDS-99460, ZD-67371)
 - Users were unable to delete services that had been soft deleted from the service dashboard page. This issue has been resolved by adding functionality to support the deletion of these services. (CDS-99344, ZD-67225)
 - When renaming a file by adding an extension to the file name in the Harness File Store, the file's content was previously deleted. This issue has been fixed to ensure that file content is maintained when updating file metadata in the File Store. (CDS-99202, ZD-66962)
