@@ -44,7 +44,7 @@ This tutorial explains how you can create chaos experiments using Harness Chaos 
 3. Insert chaos experiments into `.gitlab-ci.yaml`. You can include the above-mentioned launch script in the GitLab pipeline as a stage or a step. In the `script` section, add the scripts for **launching**, **monitoring** and **retrieving** results. For example:
 
    ```
-   # Insert a chaos stage where each chaos experiment is inserted as a launch script. 
+   # Insert a chaos stage where each chaos experiment is inserted as a launch script.
 
    chaos-job:      # This job runs in the deploy stage.
      stage: chaos  # It only runs when *both* jobs in the test stage complete successfully.
@@ -52,22 +52,22 @@ This tutorial explains how you can create chaos experiments using Harness Chaos 
      variables:
        WORKFLOW_ID: "d7c9d243-0219-4f7c-84c2-3004e59e4505"
        EXPECTED_RESILIENCE_SCORE: 100
-     before_script: 
+     before_script:
        - apt-get update; apt-get -y install jq
      script:
        - echo "Launching Chaos Experiment.."; EXPERIMENT_NOTIFY_ID=$(sh scripts/launch-chaos.sh)
        - echo "Monitoring Chaos Experiment.."; sh scripts/monitor-chaos.sh ${EXPERIMENT_NOTIFY_ID}
        - echo "Deriving Resilience Score.."; ACTUAL_RESILIENCE_SCORE=$(sh scripts/verify-rr.sh ${EXPERIMENT_NOTIFY_ID} | tr -d '"')
-       - echo "Obtained Resilience Score is ${ACTUAL_RESILIENCE_SCORE}" 
+       - echo "Obtained Resilience Score is ${ACTUAL_RESILIENCE_SCORE}"
        - if [ ${ACTUAL_RESILIENCE_SCORE} -lt ${EXPECTED_RESILIENCE_SCORE} ]; then exit 1; fi
 
    rollback-job:
      stage: rollback
      environment: production
-     image: 
+     image:
        name: bitnami/kubectl:latest
        entrypoint: ['']
-     script: 
+     script:
        - *prepare_kubecontext
        - echo "Attempting Rollback.."; sh scripts/rollback-deploy.sh  #write your own rollback logic here
      needs: ["chaos-job"]
@@ -83,7 +83,7 @@ This tutorial explains how you can create chaos experiments using Harness Chaos 
    ```
    #!/bin/bash
 
-   set -e 
+   set -e
 
    curl -sL https://app.harness.io/public/shared/tools/chaos/hce-cli/0.0.1/hce-cli-0.0.1-linux-amd64 -o hce-cli
 

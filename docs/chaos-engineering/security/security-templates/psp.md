@@ -91,7 +91,7 @@ This `PodSecurityPolicy` is a sample configuration that works for a majority of 
 
 ### Subscribe to the created PSP
 Subscribe to the created PSP in the experiment RBAC (or in the [admin-mode](https://v1-docs.litmuschaos.io/docs/admin-mode/#prepare-rbac-manifest) RBAC), as applicable.
-The [pod delete](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete.md) experiment RBAC instrumented with the PSP is shown below:
+The pod delete experiment RBAC instrumented with the PSP is shown below:
 
 [embedmd]:# (https://raw.githubusercontent.com/harness/developer-hub/ed4773f7428e593c93a0cf7aa5a31e6e9c8128f8/docs/chaos-engineering/static/overview/manifest/psp/rbac-psp.yaml yaml)
 ```yaml

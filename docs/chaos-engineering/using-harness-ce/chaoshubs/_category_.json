@@ -1,13 +1,14 @@
 {
-  "position": 7,
-  "label": "Usage guide",
+  "position": 2,
+  "label": "ChaosHubs",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Usage guide"
+      "title":"How to use Chaos Hubs"
    },
   "customProps": {
-    "description": "Usage guide"
+    "description": "How to use Chaos Hubs"
   }
 }
+

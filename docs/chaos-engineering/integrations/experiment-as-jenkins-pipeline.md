@@ -36,7 +36,7 @@ This tutorial describes how to create chaos experiments using Harness Chaos Engi
 
    :::tip Demo
 
-   Go to [Jenkins demo](https://github.com/ksatchit/hce-jenkins-integration-demo) for a sample configuration of the chaos launch script. You can include this script in the Jenkins configuration file. 
+   Go to [Jenkins demo](https://github.com/ksatchit/hce-jenkins-integration-demo) for a sample configuration of the chaos launch script. You can include this script in the Jenkins configuration file.
    This is a sample to include one single chaos experiment, but the same can be repeated so as to be included in multiple chaos experiments.
 
    :::
@@ -51,10 +51,10 @@ This tutorial describes how to create chaos experiments using Harness Chaos Engi
                     '''
                     script {
                         env.notify_id = sh(returnStdout: true, script: 'cat n_id.txt').trim()
-                    }   
-               }   
+                    }
+               }
            }
-        
+
            stage('Monitor Chaos Experiment') {
                steps {
                    sh '''
@@ -62,7 +62,7 @@ This tutorial describes how to create chaos experiments using Harness Chaos Engi
                    '''
                }
            }
-        
+
            stage('Verify Resilience Score') {
                steps {
                    sh '''
@@ -73,7 +73,7 @@ This tutorial describes how to create chaos experiments using Harness Chaos Engi
                     }
                }
            }
-        
+
            stage('Take Rollback Decision') {
                steps {
                    sh '''
@@ -93,7 +93,7 @@ This tutorial describes how to create chaos experiments using Harness Chaos Engi
    ```
    #!/bin/bash
 
-   set -e 
+   set -e
 
    curl -sL https://storage.googleapis.com/hce-api/hce-api-linux-amd64 -o hce-api-saas
 

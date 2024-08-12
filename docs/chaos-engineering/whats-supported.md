@@ -64,10 +64,10 @@ The following table shows available fault types and where they are supported. Fo
 
 Chaos Engineering on Harness Self-Managed Enterprise Edition is in feature parity with Harness SaaS with the following limitations:
 * Harness Enterprise ChaosHub is not connected by default.
-  * Contact [Harness Support](mailto:support@harness.io) for access to the Harness Enterprise ChaosHub. Once you have access, you can add the Enterprise ChaosHub as a [custom ChaosHub](/docs/chaos-engineering/features/chaos-hubs/add-chaos-hub.md).
+  * Contact [Harness Support](mailto:support@harness.io) for access to the Harness Enterprise ChaosHub. Once you have access, you can add the Enterprise ChaosHub as a custom ChaosHub.
 * Harness AI Development Assistant (AIDA™) for CE
 
-For more information, go to [Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition) and [CE on SMP](/docs/chaos-engineering/get-started/ce-on-smp/ce-smp-roadmap).
+For more information, go to Self-Managed Enterprise Edition and CE on SMP.
 
 ## Harness Self-Managed Enterprise Edition In Offline Environments
 
