@@ -145,9 +145,15 @@ The deployment sequence is as follows:
 
 Infrastructure takes precedence, and all Infrastructure gets one Service followed by other Services.
 
-### Deployment and Concurrency
+## Deployment and Concurrency
 
-Concurrency is set based on the parallel deployment configuration, either based on the Infrastructure.
+### Max Concurrency
+
+When you view a multi service or environment deployment, you can see **Max Concurrency**:
+
+![](./static/max_concurrency.png)
+
+Max concurrency changes based on the following:
 
 * If you select **Deploy services in parallel**, Max concurrency is equal to the number of services.
 * If you select **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of environments or infrastructures.
