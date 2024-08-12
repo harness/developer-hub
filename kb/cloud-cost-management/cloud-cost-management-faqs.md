@@ -552,11 +552,11 @@ To onboard and access an RDS instance/cluster with Autostopping, you have severa
 
 3. **Use RDS Autostopping Rule as Dependency**: Employ the RDS Autostopping rule as a dependency for another Autostopping rule, such as one for an EC2 instance. When the parent resource (e.g., EC2) is operational, Harness ensures that the dependent resource (RDS) remains running as well.
 
-### We see the error "Failed to obtain VM with name xxxx of resource group" in autostopping rule logs. What does this mean
+### We see the error "Failed to obtain VM with name xxxx of resource group" in autostopping rule logs. What does this mean?
 
 The error is thrown as part of the periodic state sync job from Autostopping. This doesn’t disrupt the functionality of the resource. If there’s a timeout during a scheduled start/stop operation, a retry will be executed to correct it. The state sync job, which runs every 10 minutes, also corrects any state change in the resource.
 
-### How to clone autostopping rules
+### How do you clone autostopping rules?
 
 To clone an autostopping rule, click on the three dots on the rule on the overview page, click Clone, select all the required elements to be cloned, and clone the rule.
 
@@ -648,7 +648,7 @@ Under 1.5 hrs. Once data is available at source, CCM should be able to show in u
 
 AWS by itself may ingest data at "source" bucket 4 times a day.
 
-### In AWS dashboard, what does the dimension "AWS Usage Amount" mean
+### In an AWS dashboard, what does the dimension "AWS Usage Amount" mean?
 
 This field indicates the quantity of the resource or service used. For instance, for EC2 instances, this could be the number of hours the instance was running; for S3 storage, it might be the number of gigabytes stored.
 
@@ -782,8 +782,7 @@ Click on "Save Rule" and then "Save Cost Category" to finalize the configuration
 Once you have created the new cost category, you can use it in your perspective instead of the default cost category. This will automatically exclude the "No Cluster Name" entity from the visualization.
 By following these steps, you can effectively manage and exclude the "No Cluster Name" entity from your Cloud Cost Management visualization, ensuring more accurate cost attribution and analysis.
 
-
-#### How do we create an annual budget with a monthly breakdown
+#### How do we create an annual budget with a monthly breakdown?
 
 To create an annual budget with a monthly breakdown, you need to select the budget breakdown as Monthly while creating the budget. There is a budget breakdown option which you have to select as Monthly while creating the budget. Otherwise, the monthly breakdown won’t be available.
 
