@@ -181,7 +181,7 @@ gsutil -m cp \
 
   Script: [update-setting-parentUniqueId.sh](https://github.com/harness/helm-charts/blob/main/src/harness/scripts/update-setting-parentUniqueId.sh)
 
-  For assistance, please contact [Harness Support](mailto:support@harness.io).
+  For assistance, please contact [Harness Support](mailto:support@harness.io). (PL-56034)
 
 ### New features and enhancements
 
