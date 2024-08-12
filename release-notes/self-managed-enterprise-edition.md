@@ -178,11 +178,19 @@ gsutil -m cp \
 
 - Fixed an issue where external endpoints were used for internal service communication, causing token authentication failures and 401 errors. The issue was resolved by ensuring internal communication for the services. (CI-13686)
 
-- Updated the CI onboarding process to handle environments where the `clientSecret` API does not work, such as SMP. The dependency on `clientSecret` has been removed, and local infrastructure setup will be shown instead. (CI-13687)
+- Previously, when creating a new project and selecting CI, customers were directed to the "Get Started" page. However, this page encountered a failure related to the `clientSecret` setup for Stripe. To address this issue, we have modified the onboarding flow for SMP. Now, customers will be taken directly to the Overview page instead. (CI-13687)
 
 #### Harness Platform
 
-- We identified an issue in the User Settings migration process affecting SMP environments, causing incorrect Account Settings data. This has been resolved in versions 0.17.3 and 0.18.2. If you're upgrading from versions 0.17.0–0.18.1, please run the provided script to correct the data. Upgrades from 0.16.x or earlier directly to 0.17.3 or 0.18.2 will not encounter this issue. For assistance, please contact [Harness Support](mailto:support@harness.io).
+- We discovered an issue where the User Settings migration process in SMP environments incorrectly identifies values for Account Settings, leading to incorrect data population for existing settings.
+
+  This issue has been resolved in versions 0.17.3 and 0.18.2. If you are upgrading from version 0.16.x or any lower version, you will not encounter this problem.
+
+  However, if you have upgraded to any of the following versions: 0.17.0, 0.17.1, 0.17.2, 0.18.0, or 0.18.1, you will need to run the provided script to correct the data:
+
+  Script: [update-setting-parentUniqueId.sh](https://github.com/harness/helm-charts/blob/main/src/harness/scripts/update-setting-parentUniqueId.sh)
+
+  For assistance, please contact Harness Support.
 
 ### New features and enhancements
 
@@ -232,7 +240,15 @@ gsutil -m cp \
 
 #### Harness Platform
 
-- We identified an issue in the User Settings migration process affecting SMP environments, causing incorrect Account Settings data. This has been resolved in versions 0.17.3 and 0.18.2. If you're upgrading from versions 0.17.0–0.18.1, please run the provided script to correct the data. Upgrades from 0.16.x or earlier directly to 0.17.3 or 0.18.2 will not encounter this issue. For assistance, please contact [Harness Support](mailto:support@harness.io).
+- We discovered an issue where the User Settings migration process in SMP environments incorrectly identifies values for Account Settings, leading to incorrect data population for existing settings.
+
+  This issue has been resolved in versions 0.17.3 and 0.18.2. If you are upgrading from version 0.16.x or any lower version, you will not encounter this problem.
+
+  However, if you have upgraded to any of the following versions: 0.17.0, 0.17.1, 0.17.2, 0.18.0, or 0.18.1, you will need to run the provided script to correct the data:
+
+  Script: [update-setting-parentUniqueId.sh](https://github.com/harness/helm-charts/blob/main/src/harness/scripts/update-setting-parentUniqueId.sh)
+
+  For assistance, please contact Harness Support.
 
 ## July 23, 2024, patch version 0.18.1
 
