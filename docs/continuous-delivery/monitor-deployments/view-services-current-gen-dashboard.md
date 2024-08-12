@@ -1,7 +1,7 @@
 ---
 title: View services dashboard (FirstGen)
 description: This topic describes how to view the Services (FirstGen) Dashboard and get more information about that data.
-sidebar_position: 3
+sidebar_position: 6
 helpdocs_topic_id: yt3qj8tqfk
 helpdocs_category_id: 0gyfk4938x
 helpdocs_is_private: false

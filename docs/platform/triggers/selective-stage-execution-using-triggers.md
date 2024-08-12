@@ -4,7 +4,7 @@ description: Execute specific stages of a pipeline using webhook triggers
 sidebar_position: 8
 ---
 
-You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](/docs/platform/pipelines/run-specific-stage-in-pipeline/) option. 
+You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](/docs/platform/pipelines/run-specific-stage-in-pipeline/) option.
 
 import Variables from '/docs/platform/shared/variables-not-supported.md'
 
@@ -20,15 +20,15 @@ Make sure that you have met the following requirements:
 
 1. Select a pipeline whose stage you want to execute using triggers.
 2. Make sure that the **Selective Execution Settings>** **[Allow selective stage(s) executions?](/docs/platform/pipelines/run-specific-stage-in-pipeline/)** in **Advanced Options** of the pipeline is set to **Yes**.
-   
+
     ![](./static/selective-stage-execution.png)
 
 3. When you create a trigger, in the **Configuration** tab, select the stages you want to execute.
-   
+
    ![](./static/select-stage-to-execute.png)
-  
-  Here is a sample trigger YAML: 
-  
+
+  Here is a sample trigger YAML:
+
   ```yaml
   trigger:
   name: stage3Trigger
@@ -61,3 +61,4 @@ Make sure that you have met the following requirements:
                 value: stage3Var
 
   ```
+  

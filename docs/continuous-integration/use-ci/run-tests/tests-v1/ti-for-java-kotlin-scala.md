@@ -423,59 +423,6 @@ This setting is located under **Additional Configuration** in the Visual editor,
 testAnnotations: annotation1, annotation2, annotation3
 ```
 
-### Do you want to enable Error Tracking?
-
-:::info
-
-This setting available for Java only, and it requires the [CET module](/docs/continuous-error-tracking/get-started/overview). This setting is configurable in the Visual editor only (not YAML).
-
-:::
-
-Error tracking helps you be more proactive at discovering and remediating errors early in the software delivery lifecycle. It helps you more easily discover issues and assess the quality of code before it reaches production.
-
-Select **Yes** to enable error tracking. When enabled, a set of commands are auto-populated in the [Pre-Command](#pre-command-post-command-and-shell). Review these commands to ensure that they are compatible with your build. The auto-populated commands are enclosed in `#ET-SETUP-BEGIN` and `#ET-SETUP-END`.
-
-<details>
-<summary>CET Java Error Tracking Pre-command example</summary>
-
-```shell
-#ET-SETUP-BEGIN
-PROJ_DIR=$PWD
-cd /opt
-arch=`uname -m`
-if [ $arch = "x86_64" ]; then
-  if cat /etc/os-release | grep -iq alpine ; then
-    wget -qO- https://get.et.harness.io/releases/latest/alpine/harness-et-agent.tar.gz | tar -xz
-  else
-    wget -qO- https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz | tar -xz
-  fi
-elif [ $arch = "aarch64" ]; then
-  wget -qO- https://get.et.harness.io/releases/latest/arm/harness-et-agent.tar.gz | tar -xz
-fi
-export ET_COLLECTOR_URL=https://app.harness.io/<cluster_value>/et-collector
-export ET_APPLICATION_NAME=$HARNESS_PIPELINE_ID
-export ET_ENV_ID=_INTERNAL_ET_CI
-export ET_DEPLOYMENT_NAME=$HARNESS_BUILD_ID
-export ET_ACCOUNT_ID=$HARNESS_ACCOUNT_ID
-export ET_ORG_ID=$HARNESS_ORG_ID
-export ET_PROJECT_ID=$HARNESS_PROJECT_ID
-# export ET_SHUTDOWN_GRACETIME=30000
-export JAVA_TOOL_OPTIONS="-agentpath:/opt/harness/lib/libETAgent.so"
-# Uncomment the line below if using Java version 10 or above
-# export JAVA_TOOL_OPTIONS="-Xshare:off -XX:-UseTypeSpeculation -XX:ReservedCodeCacheSize=512m -agentpath:/opt/harness/lib/libETAgent.so"
-cd $PROJ_DIR
-#ET-SETUP-END
-```
-
-</details>
-
-<!--You might need to modify the `ET_COLLECTOR_URL` depending on the cluster your account is on:
-
-* For Prod 1 Harness accounts: `https://app.harness.io/prod1/et-collector`
-* For Prod 2 Harness accounts: `https://app.harness.io/gratis/et-collector`-->
-
-Error tracking output is reported on the [Error Tracking tab](../../viewing-builds.md) when the pipeline runs.
-
 ### Environment Variables
 
 You can inject environment variables into the step container and use them in the step's commands. You must input a **Name** and **Value** for each variable.
@@ -538,3 +485,4 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
 * [If the Run Tests step fails, does the Post-Command script run?](/kb/continuous-integration/continuous-integration-faqs/#if-the-run-tests-step-fails-does-the-post-command-script-run)
 * [Test Intelligence fails due to Bazel not installed, but the container image has Bazel.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-due-to-bazel-not-installed-but-the-container-image-has-bazel)
+* [Test Intelligence fails with error 'Unable to get changed files list'.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-with-error-unable-to-get-changed-files-list)

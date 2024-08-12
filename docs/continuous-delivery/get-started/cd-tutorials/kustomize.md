@@ -53,7 +53,7 @@ Whether you're new to GitOps or have already used Argo CD, this guide will assis
 Verify the following:
 
 1. **A Kubernetes cluster**. We recommend [K3D](https://k3d.io/v5.5.1/) for installing the Harness GitOps Agent and deploying a sample application in a local development environment.
-   - Check [Harness GitOps Agent Requirements](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/#requirements).
+   - Check [Harness GitOps Agent Requirements](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent#requirements).
 2. Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub web interface.
    - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 

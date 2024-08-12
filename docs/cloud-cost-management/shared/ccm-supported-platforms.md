@@ -257,7 +257,7 @@ The following data can be consumed through dashboards:
 | --- | --- | --- | --- | --- | --- |
 |AutoStopping | ✅  | ✅  | ✅  | ✅ \*  | ✅ |
 |Recommendations | ✅  | ✅  | ✅  | ✅ | ✅ |
-|Commitment Orchestrator | EC2 (beta) | |  |  |  |
+|Commitment Orchestrator | EC2 | |  |  |  |
 
 \* - Review the information within the AutoStopping section to access details about supported Kubernetes providers.
 <details>
@@ -470,7 +470,7 @@ The recommendations are computed by analyzing the past utilization of CPU and me
 
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **RBAC Support** |
 | --- | --- | --- | --- | --- | --- |
-|Asset Governance | ✅  | Coming soon | Coming soon |   | ✅ |
+|Asset Governance | ✅  | ✅ | ✅ |   | ✅ |
 |Budgets | ✅  | ✅  | ✅  | ✅ | ✅ |
 
 <details>

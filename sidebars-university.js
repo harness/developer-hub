@@ -20,12 +20,14 @@ const sidebars = {
           type: "doc",
           label: "Continuous Integration",
           id: "continuous-integration",
+          className: "sidebar-ci",
         },
         // CD
         {
           type: "doc",
           label: "Continuous Delivery & GitOps",
           id: "continuous-delivery",
+          className: "sidebar-cd",
         },
 
         //ff
@@ -33,30 +35,42 @@ const sidebars = {
           type: "doc",
           label: "Feature Flags",
           id: "feature-flags",
+          className: "sidebar-ff",
         },
         //CCM
         {
           type: "doc",
           label: "Cloud Cost Management",
           id: "cloud-cost-management",
+           className:"sidebar-ccm"
         },
         //sto
         {
           type: "doc",
           label: "Security Testing Orchestration",
           id: "sto",
+           className:"sidebar-sto"
         },
         //sei
         {
           type: "doc",
           label: "Software Engineering Insights",
           id: "sei",
+           className:"sidebar-sei"
         },
         //ce
         {
           type: "doc",
           label: "Chaos Engineering",
           id: "chaos-engineering",
+           className:"sidebar-ce"
+        },
+        //idp
+        {
+          type: "doc",
+          label: "Internal Developer Portal",
+          id: "idp",
+           className:"sidebar-idp"
         },
         //vILT
         {
@@ -82,5 +96,3 @@ const sidebars = {
 };
 
 module.exports = sidebars;
-
-

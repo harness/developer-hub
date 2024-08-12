@@ -16,11 +16,15 @@ If you want to customize the discovery agent, follow the steps below.
 
 ### Customize discovery agent
 
-1. To customize the discovery agent, navigate to **Chaos** and select **Discovery**. Click **New Discovery Agent**.
+1. To customize the discovery agent, navigate to **Chaos**, select **Project Settings** and select **Discovery**.
 
     ![](./static/usage/discovery.png)
 
-2. Select an **environment**, **infrastructure**, **Discovery Agent Name** and **namespace**. The next step (optional) requires information such as node selector, blacklisted namespaces, and period of detecting the services. Select **Create New Discovery Agent**.
+2. Click **New Discovery Agent**.
+
+    ![](./static/usage/select-agent.png)
+
+3. Select an **environment**, **infrastructure**, **Discovery Agent Name** and **namespace**. The next step (optional) requires information such as node selector, blacklisted namespaces, and period of detecting the services. Select **Create New Discovery Agent**.
 
     ![](./static/usage/add-details-discovery.png)
 

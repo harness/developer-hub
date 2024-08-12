@@ -14,7 +14,7 @@ In this tutorial, you will create and run chaos experiments on Kubernetes using 
 ## Before you begin, review the following:
 
 - [HCE overview](/docs/chaos-engineering/get-started/overview.md)
-- [HCE prerequisites](/docs/chaos-engineering/get-started/tutorials/prerequisites.md)
+- [HCE prerequisites](/docs/chaos-engineering/onboarding/prerequisites.md)
 - [Execute your first chaos experiment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md)
 
 ### Create a project (or be added to a project)
@@ -662,7 +662,7 @@ Below is a description of the parameters in the **Probes** configuration.
 
 * A probe named **http-cartservice-probe** is defined which validates the availability of the **/cart** URL endpoint when the pod delete fault is executed.
 * You can see that the probe type is **HTTP** and it is executed in a **Continuous** mode throughout the fault execution.
-* In the probe details section, you can see that the URL is [http://frontend/cart](http://frontend/cart) and the response timeout is set to **15** milliseconds.
+* In the probe details section, you can see that the URL is `http://frontend/cart` and the response timeout is set to **15** milliseconds.
 * Probe execution makes **GET** requests to the specified URL. If no HTTP response is obtained within **15** milliseconds, it indicates probe failure.
 * If all the probe executions pass, this indicates that the probe passed.
 

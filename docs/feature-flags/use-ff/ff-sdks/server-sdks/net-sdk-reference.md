@@ -6,6 +6,8 @@ helpdocs_topic_id: c86rasy39v
 helpdocs_category_id: kkiqy1f6d7
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-sdks/server-sdks/net-sdk-reference 
 ---
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
@@ -52,8 +54,8 @@ To use this SDK, make sure you:  
 The library is packaged as multi-target and supports the netstandard 2.0 set of API's as well as  net461 for older frameworks.* 
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-dotnet-server-sdk)
 * Create a .NET application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-dotnet-server-sdk).
-* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create a server SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key)
+* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/use-ff/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Create a server SDK key and make a copy of it](/docs/feature-flags/use-ff/ff-creating-flag/create-a-project#create-an-sdk-key)
 
 ## Install the SDK
 
@@ -94,7 +96,7 @@ Targets are used to control which users see which Variation of a Feature Flag, f
 
 </details>
 
-For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
+For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/use-ff/ff-target-management/targeting-users-with-flags).
 
 To add a Target, build it and pass in arguments for the following:
 
@@ -338,7 +340,7 @@ Log.Logger = new LoggerConfiguration()
 
 ### Use the Relay Proxy
 
-When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/relay-proxy/) you need to change the default ConfigURL and EventURL that we use. You can pass the URLs in when initializing the SDK, for example: 
+When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/use-ff/relay-proxy/) you need to change the default ConfigURL and EventURL that we use. You can pass the URLs in when initializing the SDK, for example: 
 
 
 ```

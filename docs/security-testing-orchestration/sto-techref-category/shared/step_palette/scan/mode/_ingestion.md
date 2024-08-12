@@ -1,1 +1,1 @@
-* **Ingestion** Configure the step to [read scan results from a data file](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) and then ingest, normalize, and deduplicate the data. 
+* **Ingestion** Configure the step to [read scan results from a data file](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline) and then ingest, normalize, and deduplicate the data. 

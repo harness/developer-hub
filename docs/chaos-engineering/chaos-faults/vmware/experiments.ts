@@ -5,21 +5,21 @@ export const experiments: ExperimentDetails[] = [
     name: "VMware CPU hog",
     description:
       "VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM.",
-    tags: ["CPU"],
+    tags: ["CPU", "stress"],
     category: "vmware",
   },
   {
     name: "VMware disk loss",
     description:
       "VMware disk loss detaches the disks that are attached to a Linux OS based VMware VM.",
-    tags: ["disk-loss"],
+    tags: ["disk", "loss"],
     category: "vmware",
   },
   {
     name: "VMware DNS chaos",
     description:
       "VMware DNS chaos causes DNS errors in the VMware VMs for a specific duration.",
-    tags: ["DNS"],
+    tags: ["DNS", "stress"],
     category: "vmware",
   },
   {
@@ -40,140 +40,147 @@ export const experiments: ExperimentDetails[] = [
     name: "VMware HTTP modify response",
     description:
       "VMware HTTP modify response injects HTTP chaos by modifying the status code, body or the headers, which affects the request (or response).",
-    tags: ["http"],
+    tags: ["http", "modify", "response"],
     category: "vmware",
   },
   {
     name: "VMware HTTP reset peer",
     description:
       "VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP requests by resetting the TCP connection for the requests.",
-    tags: ["http"],
+    tags: ["http", "reset", '"peer'],
     category: "vmware",
   },
   {
     name: "VMware IO stress",
     description:
       "VMware IO stress causes disk stress on the target VMware VMs. It aims to verify the resilience of applications that share this disk resource with the VM.",
-    tags: ["io-stress"],
+    tags: ["io", "stress"],
     category: "vmware",
   },
   {
     name: "VMware memory hog",
     description:
       "VMware memory hog fault consumes excessive memory resources on Linux OS based VMware VMs.",
-    tags: ["memory"],
+    tags: ["memory", "stress"],
     category: "vmware",
   },
   {
     name: "VMware network latency",
     description:
       "VMware network latency injects network packet latency from the VMware VM(s) into the application (or service).",
-    tags: ["network"],
+    tags: ["network", "latency"],
     category: "vmware",
   },
   {
     name: "VMware network loss",
     description:
       "VMware network loss injects network packet loss from the VMware VM(s) into the application (or service).",
-    tags: ["network"],
+    tags: ["network", "loss"],
+    category: "vmware",
+  },
+  {
+    name: "VMware network rate limit",
+    description:
+      "VMware network rate limit fault injects network rate limit from the VMware VM(s) into the application (or service).",
+    tags: ["network", "rate", "limit"],
     category: "vmware",
   },
   {
     name: "VMware process kill",
     description:
       "VMware process kill kills the target processes that are running as a part of a Linux OS based VMware VM.",
-    tags: ["kill"],
+    tags: ["kill", "process"],
     category: "vmware",
   },
   {
     name: "VMware service stop",
     description:
       "VMware service stop stops the target system services running on a Linux OS based VMware VM.",
-    tags: ["stop"],
+    tags: ["stop", "service"],
     category: "vmware",
   },
   {
     name: "VMware VM power off",
     description:
-      "VMware VM poweroff stops (or powers off) the VMware VMs for a specific duration.",
-    tags: [],
+      "VMware VM power off stops (or powers off) the VMware VMs for a specific duration.",
+    tags: ["power", "off"],
     category: "vmware",
   },
   {
-    name: "VMware Windows CPU Hog",
+    name: "VMware Windows blackhole chaos",
     description:
-      "VMware Windows CPU Hog simulates a CPU hog scenario on Windows OS based VMware VM.",
-    tags: ["cpu"],
+      "VMware Windows blackhole chaos simulates a network blackhole scenario on Windows OS based VMware VM.",
+    tags: ["blackhole", "network"],
     category: "vmware",
   },
   {
-    name: "VMware Windows Memory Hog",
+    name: "VMware Windows CPU hog",
     description:
-      "VMware Windows Memory Hog simulates a memory hog scenario on Windows OS based VMware VM.",
-    tags: ["memory"],
+      "VMware Windows CPU hog simulates a CPU hog scenario on Windows OS based VMware VM.",
+    tags: ["cpu", "windows", "stress"],
     category: "vmware",
   },
   {
-    name: "VMware Windows Blackhole Chaos",
+    name: "VMware Windows disk stress",
     description:
-      "VMware Windows Blackhole Chaos simulates a network blackhole scenario on Windows OS based VMware VM.",
-    tags: ["network"],
+      "VMware Windows disk stress fills the disk space on Windows OS based VMware VM.",
+    tags: ["disk", "windows", "stress"],
     category: "vmware",
   },
   {
-    name: "VMware Windows Network Latency",
+    name: "VMware Windows memory hog",
     description:
-      "VMware Windows Network Latency injects network latency on Windows OS based VMware VM.",
-    tags: ["network"],
+      "VMware Windows memory hog simulates a memory hog scenario on Windows OS based VMware VM.",
+    tags: ["memory", "windows", "stress"],
     category: "vmware",
   },
   {
-    name: "VMware Windows Network Loss",
+    name: "VMware Windows network corruption",
     description:
-      "VMware Windows Network Loss injects network packet loss on Windows OS based VMware VM.",
-    tags: ["network"],
+      "VMware Windows network corruption corrupts network packets on Windows OS based VMware VM.",
+    tags: ["network", "windows", "corruption"],
     category: "vmware",
   },
   {
-    name: "VMware Windows Network Corruption",
+    name: "VMware Windows network duplication",
     description:
-      "VMware Windows Network Corruption corrupts network packets on Windows OS based VMware VM.",
-    tags: ["network"],
+      "VMware Windows network duplication duplicates network packets on Windows OS based VMware VM.",
+    tags: ["network", "windows", "duplication"],
     category: "vmware",
   },
   {
-    name: "VMware Windows Network Duplication",
+    name: "VMware Windows network latency",
     description:
-      "VMware Windows Network Duplication duplicates network packets on Windows OS based VMware VM.",
-    tags: ["network"],
+      "VMware Windows network latency injects network latency on Windows OS based VMware VM.",
+    tags: ["network", "windows", "latency"],
     category: "vmware",
   },
   {
-    name: "VMware Windows Service Stop",
+    name: "VMware Windows network loss",
     description:
-      "VMware Windows Service Stop stops the target system services running on a Windows OS based VMware VM.",
-    tags: ["stop"],
+      "VMware Windows network loss injects network packet loss on Windows OS based VMware VM.",
+    tags: ["network", "loss", "windows"],
     category: "vmware",
   },
   {
-    name: "VMware Windows Process Kill",
+    name: "VMware Windows process kill",
     description:
-      "VMware Windows Process Kill kills the target processes that are running as a part of a Windows OS based VMware VM.",
-    tags: ["kill"],
+      "VMware Windows process kill kills the target processes that are running as a part of a Windows OS based VMware VM.",
+    tags: ["kill", "windows", "process"],
     category: "vmware",
   },
   {
-    name: "VMware Windows Disk Stress",
+    name: "VMware Windows service stop",
     description:
-      "VMware Windows Disk Stress fills the disk space on Windows OS based VMware VM.",
-    tags: ["disk"],
+      "VMware Windows service stop stops the target system services running on a Windows OS based VMware VM.",
+    tags: ["stop", "service", "windows"],
     category: "vmware",
   },
   {
-    name: "VMware Windows Time Chaos",
+    name: "VMware Windows time chaos",
     description:
-      "VMware Windows Time Chaos simulates a time skew scenario on Windows OS based VMware VM.",
-    tags: ["time"],
+      "VMware Windows time chaos simulates a time skew scenario on Windows OS based VMware VM.",
+    tags: ["time", "windows"],
     category: "vmware",
   },
 ];

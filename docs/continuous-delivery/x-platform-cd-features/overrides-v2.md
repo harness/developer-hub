@@ -33,6 +33,14 @@ Here are the override types and the permissions you require for each type:
 
 - Runtime inputs are not supported for **Infrastructure Specific** and **Service & Infrastructure Specific** variables.
 
+## Important notes
+
+- Overrides V2 are supported for infrastructure entities, infrastructure and services combinations additionally, and can be visualized in a separate Overrides V2 section under Project, Org, and Account scopes.
+- With the new Overrides V2 experience, environment variables can be created only in the **Global Environment** variables section. It cannot be done in the **Environment** section anymore.
+- If you continue to use Terraform scripts with Overrides V1 (without migrating to V2 scripts) but with Overrides V2 feature flag enabled, there will be changes in the Terraform plan and you may encounter errors while executing the V1 Terraform scripts.
+- When overrides as part of remote environments are migrated, the overrides are created as inline overrides with Overrides V2. Inline overrides can be moved as remote entities using [APIs](https://apidocs.harness.io/tag/ServiceOverrides/#operation/serviceOverrideMoveConfigs).
+
+
 ## Migration notice for existing Harness customers: Overrides V2
 
 Dear valued customers,
@@ -129,14 +137,14 @@ You can override **Application Settings** and **Connection Strings** from **Glob
 
 ## Override service, environment, and infrastructure settings
 
-To override one or more settings for all services, environments, and infrastructures at the project, organization, or account level, do the following.
+To override one or more settings for all services, environments, and infrastructures at the project, organization, or account level, do the following. 
 
 1. In **Deployments**, select your project, and then select **Overrides**.
 
    ![](./static/overrides-v2-1.png)
 
 2. Select an override method:
-   - **Global Environment**
+   - **Global Environment** 
    - **Service Specific**
    - **Infrastructure Specific**
    - **Service & Infrastructure Specific**
@@ -199,7 +207,9 @@ You can store overrides remotely in a repository. The steps below explains how t
 7. Harness Git Experience auto-populates the **YAML Path** based on the scope where overrides are configured, for example, ``{scope}/overrides/harnessdevenv.yaml``.
 9. Select **Save**.
 
-
 :::info note
-Overrides also support [Bidirectional Sync](/docs/platform/git-experience/gitexp-bidir-sync-setup.md).
+1. Overrides also support [Bidirectional Sync](/docs/platform/git-experience/gitexp-bidir-sync-setup.md).
+2. When moving overrides to Git, the corresponding Environment must also be in Git.
+3. Similar to environments, for Service-specific remote overrides, the Service must be remote.
+4. For infrastructure specific overrides the Infrastructure must be remote for the overrides to be moved to Git successfully.
 :::

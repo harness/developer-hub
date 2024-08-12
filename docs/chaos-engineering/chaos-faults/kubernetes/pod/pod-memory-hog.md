@@ -2,13 +2,14 @@
 id: pod-memory-hog
 title: Pod memory hog
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-memory-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-memory-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-memory-hog
 ---
 
-Pod memory hog is a Kubernetes pod-level chaos fault that consumes excessive memory resources on the application container. Since this fault stresses the target container, the primary process within the container may consume the available system memory on the node. 
-- Memory usage within containers is subject to various constraints in Kubernetes. 
-- When specification mentions the resource limits, exceeding these limits results in termination of the container due to OOM kill. 
-- For containers that have no resource limits, the blast radius is high which results in the node being killed based on the `oom_score`. 
+Pod memory hog is a Kubernetes pod-level chaos fault that consumes excessive memory resources on the application container. Since this fault stresses the target container, the primary process within the container may consume the available system memory on the node.
+- Memory usage within containers is subject to various constraints in Kubernetes.
+- When specification mentions the resource limits, exceeding these limits results in termination of the container due to OOM kill.
+- For containers that have no resource limits, the blast radius is high which results in the node being killed based on the `oom_score`.
 
 ![Pod Memory Hog](./static/images/pod-memory-hog.png)
 
@@ -16,13 +17,50 @@ Pod memory hog is a Kubernetes pod-level chaos fault that consumes excessive mem
 Pod memory hog exec:
 - Simulates conditions where the application pods experience memory spikes either due to expected or undesired processes.
 - Simulates the situation of memory leaks in the deployment of microservices.
-- Simulates application slowness due to memory starvation, and noisy neighbour problems due to hogging. 
-- Verifies pod priority and QoS setting for eviction purposes. 
-- Verifies application restarts on OOM (out of memory) kills. 
+- Simulates application slowness due to memory starvation, and noisy neighbour problems due to hogging.
+- Verifies pod priority and QoS setting for eviction purposes.
+- Verifies application restarts on OOM (out of memory) kills.
 - Tests how the overall application stack behaves when such a situation occurs.
 
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-memory-hog
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
+
 ### Prerequisites
-- Kubernetes > 1.16 
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
 
 ### Optional tunables
@@ -42,7 +80,7 @@ Pod memory hog exec:
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of workers used to run the stress process. </td>
         <td> Default: 1. For more information, go to <a href="#workers-for-stress"> workers for stress</a></td>
-      </tr>  
+      </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration for which to insert chaos (in seconds). </td>
@@ -57,12 +95,12 @@ Pod memory hog exec:
         <td> TARGET_CONTAINER </td>
         <td> Name of the target container.</td>
         <td> If this value is not provided, the fault selects the first container of the target pod. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container"> target specific container</a></td>
-      </tr>  
+      </tr>
       <tr>
         <td> NODE_LABEL </td>
         <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
         <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-      </tr> 
+      </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> Container runtime interface for the cluster. </td>
@@ -72,7 +110,7 @@ Pod memory hog exec:
         <td> SOCKET_PATH </td>
         <td> Path of the containerd or crio or docker socket file. </td>
         <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-memory-hog#container-runtime-and-socket-path"> socket path</a></td>
-      </tr>        
+      </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
@@ -86,7 +124,7 @@ Pod memory hog exec:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

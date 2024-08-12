@@ -1,22 +1,22 @@
 ---
-title: Aqua Security scanner reference for STO
+title: Aqua Security step configuration
 description: Scan container images with Aqua Security.
-sidebar_label: Aqua Security scanner reference
+sidebar_label: Aqua Security step configuration
 sidebar_position: 25
 ---
 
 <DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
-<!-- DocsTag  text="Orchestration" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline/" / -->
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline/" />
+<!-- DocsTag  text="Orchestration" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline/" / -->
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
 
 You can scan your container images and ingest scan results from [Aqua Security Enterprise](https://www.aquasec.com/solutions/docker-container-security/). 
 
-The Aqua Security step can also ingest assurance policy violations. These violations appear as INFO-level issues in [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
+The Aqua Security step can also ingest assurance policy violations. These violations appear as INFO-level issues in [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results).
 
 <DocImage path={require('./static/sto-7164-aquasec-external-policies.png')} width="70%" height="70%" title="Select policy sample" />
 

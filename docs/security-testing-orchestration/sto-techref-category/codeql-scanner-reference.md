@@ -1,12 +1,12 @@
 ---
-title: CodeQL scanner reference for STO
+title: CodeQL step configuration
 description: Scan code repositories with CodeQL.
-sidebar_label: CodeQL scanner reference
+sidebar_label: CodeQL step configuration
 sidebar_position: 120
 ---
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" /><br/>
 <br/>
 
 You can ingest scan results from [CodeQL](https://codeql.github.com/) into Harness STO. The following steps outline the basic workflow:

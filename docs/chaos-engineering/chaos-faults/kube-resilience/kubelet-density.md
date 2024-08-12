@@ -6,11 +6,51 @@ redirect_from:
 ---
 
 Kubelet density determines the resilience of the kubelet by creating pods on a specific node.
-- In distributed systems like Kube resilience, application replicas might not be sufficient to manage the traffic (indicated by SLIs) during system (or application) failures. 
+- In distributed systems like Kube resilience, application replicas might not be sufficient to manage the traffic (indicated by SLIs) during system (or application) failures.
 - A common application failure occurs when the pressure on other replicas increases, and the horizontal pod autoscaler (HPA) scales based on the observed resource utilization, and the amount of time it takes the persistent volume to mount on rescheduling.
 - In case of failures, the application needs to meet the SLOs (service level objectives) by making a minimum number of replicas available.
 
 ![Kubelet Density](./static/images/kubelet-density.png)
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: kubelet-density
+spec:
+  definition:
+    scope: Namespaced # Supports Cluster mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["configMaps"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "list"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list"]
+```
 
 ## Use cases
 

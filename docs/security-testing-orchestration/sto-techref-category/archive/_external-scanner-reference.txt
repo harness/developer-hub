@@ -7,7 +7,7 @@ sidebar_position: 160
 
 You can ingest custom issues from any scanner, even if it's not currently supported. 
 
-- [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) is an open data format supported by many scan tools. If your scanner supports this format, publish your results to SARIF. For more information, go to [Ingest SARIF results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
+- [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) is an open data format supported by many scan tools. If your scanner supports this format, publish your results to SARIF. For more information, go to [Ingest SARIF results](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-sarif-data).
 
 - STO also supports a generic JSON format for ingesting data from unsupported scanners that cannot publish to SARIF. For more information, go to [Ingesting issues from other scanners](../use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md).
 

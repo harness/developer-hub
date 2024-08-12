@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-06-04T10:00
+date: 2024-07-23T10:00
 sidebar_position: 5
 ---
 
@@ -20,6 +20,44 @@ The release notes describe recent changes to Harness Chaos Engineering.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## July 2024
+
+### Version 1.41.1
+
+#### Fixed issues
+
+- Fixed the error associated with upgrading a chaos infrastructure by providing relevant permissions for the upgrade agent in the execution plane (user host/cluster). (CHAOS-5980)
+
+### Version 1.40.1
+
+#### New features and enhancements
+
+- Adds a new Kubernetes pod fault, [pod IO mistake](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-mistake) that causes files to read or write an incorrect value. (CHAOS-5916)
+
+- Adds proxy support for Windows chaos infrastructure. (CHAOS-5859)
+
+- Adds support to install Windows chaos infrastructure offline. (CHAOS-5833)
+
+- Unifies chaos injection by introducing a dumb agent to invoke user action and pass the results of the chaos experiment to the control plane. (CHAOS-5610)
+
+- Implements AWS FIS generic experiment that helps users execute and monitor any AWS FIS template. (CHAOS-5418)
+
+- Converts the default health check probes to `type:inline` from `type:source` for Kubernetes infrastructure to improve the execution speed of chaos experiments. (CHAOS-4348)
+
+#### Fixed issues
+
+- Fixed an issue where an experiment in the `Error` state would not finish, and be in a state of infinite run timestamp. (CHAOS-5577)
+
+### Version 1.39.11
+
+#### Fixed issues
+
+- Fixed an issue wherein trying to add a pre-defined experiment in Windows infrastructure was unsuccessful. (CHAOS-5863)
+
+- Fixed an issue where the **Edit ChaosHub** action was not working with non-account type connectors. (CHAOS-5820)
+
+- Fixed an issue where the **Linux restart** chaos fault could not parse string values. (CHAOS-5616)
 
 ## May 2024
 
@@ -44,7 +82,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 - [Video tutorial to upgrade your chaos infrastructure to 1.38.x or higher](https://youtu.be/fAnsGqkcdkc)
 - [Video tutorial to execute an experiment after infrastructure upgrade to 1.38.x or higher](https://youtu.be/xAu1uuaS2Ds)
 - The existing APIs will work as per the norm on old and new chaos infrastructure, whereas new experiments will work only on the updated infrastructure (infrastructure version >= 1.38.0).
-- Go to [frequently asked questions on optimization](/docs/faqs/chaos-engineering-faq#kubernetes-v1-experiment-flow-optimization) to know more.
+- Go to [frequently asked questions on optimization](/kb/chaos-engineering/chaos-engineering-faq/#kubernetes-v1-experiment-flow-optimization) to know more.
 :::
 
 - This release optimizes the experiment flow by:

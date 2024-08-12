@@ -5,7 +5,7 @@ import clsx from "clsx";
 import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
-import { docsCards, featureHighlights } from "./data/chaosEngineeringData";
+import { docsCards} from "./data/chaosEngineeringData";
 import { useColorMode } from "@docusaurus/theme-common";
 export default function CE() {
   const { colorMode } = useColorMode();
@@ -63,8 +63,6 @@ export default function CE() {
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
       <div className={styles.subSection}>
-        <h3>Feature highlights</h3>
-        <TutorialCard FeatureList={featureHighlights} />
       </div>
     </div>
     // </Layout>

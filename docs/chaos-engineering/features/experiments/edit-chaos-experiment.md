@@ -1,6 +1,6 @@
 ---
 title: Edit and update chaos experiments
-sidebar_position: 40
+sidebar_position: 30
 description: Guide to edit and update chaos experiments
 redirect_from:
   - /docs/chaos-engineering/configure-chaos-experiments/experiments/edit-chaos-experiment

@@ -84,3 +84,11 @@ Go to [Code coverage in Harness CI](https://developer.harness.io/docs/continuous
 Yes, it is possible to use a JIRA ticket as an approval gate for all environments in a Harness pipeline. The ticket's status or an update to a specific field can be used to control whether Harness allows the deployment to proceed to the next environment.
 
 For more details, go to [Adding Jira approval stages and steps](https://developer.harness.io/docs/platform/approvals/adding-jira-approval-stages/).
+
+### How can one implement a workflow that requires additional approval gates based on pipeline results?
+
+One method is to use conditional execution on an approval stage. Use a JEXL expression to check the scan results, e.g., `<+scanResults.criticals> != 0`. For high severity issues, route the approval to both the team and higher-level approvers. For low severity issues, route it to the team only. This allows for dynamic approval processes based on scan results. Please follow more on this in the documentation on [Stage and step conditional execution settings](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings/)
+
+### How does Harness integrate with Tetrate or Gloo for deployments?
+
+Harness supports traffic shifting with any SMI compliant Service Mesh, including Tetrate (built on Istio) and Gloo. One can configure traffic routing steps in your pipelines using Harness, ensuring smooth deployment workflows.

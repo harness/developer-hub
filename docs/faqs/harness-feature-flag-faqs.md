@@ -29,7 +29,7 @@ Target is an entity in your application domain on which you want to make a flag 
 
 Target group is a collection of targets. For example, Beta Customers, Premium Customers, US Users, and so on.
 
-For more information, see [Add targets](/docs/feature-flags/ff-target-management/add-targets) and [Manage target groups](/docs/feature-flags/ff-target-management/add-target-groups).
+For more information, see [Add targets](/docs/feature-flags/use-ff/ff-target-management/add-targets) and [Manage target groups](/docs/feature-flags/use-ff/ff-target-management/add-target-groups).
 
 ## Do I need to add targets in Harness manually?
 
@@ -47,7 +47,7 @@ No. Targets are auto-discovered as they are used in the Applications when evalua
             cfClient.boolVariation("toggle", target, false);  
         log.info("Boolean variation is " + result);
 ```
-For more information, see [Java SDK reference](/docs/feature-flags/use-ff/ff-sdks/server-sdks/integrate-feature-flag-with-java-sdk.md) and [Add targets](/docs/feature-flags/ff-target-management/add-targets).
+For more information, see [Java SDK reference](/docs/feature-flags/use-ff/ff-sdks/server-sdks/integrate-feature-flag-with-java-sdk.md) and [Add targets](/docs/feature-flags/use-ff/ff-target-management/add-targets).
 
 ## What is the difference between client-side and server-side SDKs?
 

@@ -29,10 +29,10 @@ Yes. For instructions and information about customizing your STO images, go to:
 Public APIs for this functionality are on the [STO roadmap](https://developer.harness.io/roadmap/#sto).
 
 #### Does Harness STO support ingesting scan results from non-native scanners?
-STO supports a generic JSON format for ingesting data from unsupported scanners that cannot publish to SARIF. This means that you can ingest custom issues from any scanning tool, even those that do not have direct integration with STO. For more information, go to [Ingest from unsupported scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners).
+STO supports a generic JSON format for ingesting data from unsupported scanners that cannot publish to SARIF. This means that you can ingest custom issues from any scanning tool, even those that do not have direct integration with STO. For more information, go to [Ingest from unsupported scanners](/docs/security-testing-orchestration/custom-scanning/ingesting-issues-from-other-scanners).
 
 #### What is SARIF, and how does it relate to scanning tools and STO?
-SARIF (Static Analysis Results Interchange Format) is an open data format supported by many scanning tools. If your scanner supports SARIF, Harness recommends publishing your results in this format. For more information, go to [Ingest SARIF scan results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
+SARIF (Static Analysis Results Interchange Format) is an open data format supported by many scanning tools. If your scanner supports SARIF, Harness recommends publishing your results in this format. For more information, go to [Ingest SARIF scan results](/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data).
 
 ## Which scanners are supported natively with Harness STO?
 1. SAST (Static Application Security Testing) 
@@ -44,7 +44,7 @@ For more details, go to [What's supported](/docs/security-testing-orchestration/
 
 
 ## What are the requirements for STO to ingest scan results in JSON format?
-For STO to successfully ingest your scan results, the ingestion file must adhere to the specific JSON format described here: [Ingest from unsupported scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners)
+For STO to successfully ingest your scan results, the ingestion file must adhere to the specific JSON format described here: [Ingest from unsupported scanners](/docs/security-testing-orchestration/custom-scanning/ingesting-issues-from-other-scanners)
 
 ## STO dashboards
 
@@ -125,10 +125,7 @@ This error ocurrs if there's no scan target in the Scanner configuration. To fix
 
 #### How does the SonarQube integration work when attempting to perform a branch scan with SonarQube Enterprise?
 
-An enhancement has been made to ensure the orchestration step always downloads results for the branch specified in the step, instead of downloading results only for main or master branches. For more information, go to:
-
-- [SonarQube pull-request scan configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-pull-request-scan-configuration)
-- STO release notes > [Version 1.83.1](https://developer.harness.io/release-notes/security-testing-orchestration#version-1831)
+An enhancement has been made to ensure the orchestration step always downloads results for the branch specified in the step, instead of downloading results only for main or master branches. For more information, go to the [STO 1.83.1 release notes](https://developer.harness.io/release-notes/security-testing-orchestration#version-1831).
 
 
 

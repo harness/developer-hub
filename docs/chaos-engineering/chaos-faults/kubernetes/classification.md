@@ -1,6 +1,6 @@
 ---
-title: Kubernetes-based fault classification
-sidebar_position: 3
+title: Classification of Kubernetes faults
+sidebar_position: 1
 ---
 This topic describes the following:
 - Classification of Kubernetes-based faults.
@@ -12,9 +12,9 @@ This topic describes the following:
 - [Deployment modes](#deployment-modes-of-kubernetes-chaos-infrastructure)
 
 HCE supports three categories of faults that you can execute using the Kubernetes chaos agent. They are listed below.
-1. **Pod faults** (also known as microservices-based faults)
-2. **Node faults** (also known as infrastructure-based faults)
-3. **Cloud-based faults**
+1. **[Pod faults](#pod-faults-microservices-based-faults)** (also known as microservices-based faults)
+2. **[Node faults](#node-faults-infrastructure-based-faults)** (also known as infrastructure-based faults)
+3. **[Cloud-based faults](#cloud-based-faults-aws-gcp-azure)**
 
 Each of these categories is discussed in detail below.
 
@@ -73,7 +73,7 @@ They help determine the overall system resilience (for example, [node drain](/do
 
 Most of these faults use only the Kubernetes API.
 
-## Cloud-based faults (AWS, GCP, Azure)
+## Cloud-based faults ([AWS](/docs/chaos-engineering/chaos-faults/aws/), [GCP](/docs/chaos-engineering/chaos-faults/gcp/), [Azure](/docs/chaos-engineering/chaos-faults/azure/))
 
 These faults disrupt the state of cloud resources, deprive resources, or manipulate the network settings of cloud resources. These cloud resources are either self-managed infrastructure components such as compute instances, storage volumes (for example, ec2 shutdown, ebs detach, and so on) or managed services such as ECS, RDS, Lambda, and so on (for example, task scale, rds failover, Lambda timeout, az-loss, and so on).
 
@@ -91,7 +91,7 @@ You can deploy the Kubernetes chaos infrastructure (or agent) in two modes:
 
 ### Cluster scope mode
 
-In this mode, the [subscriber](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#subscriber), [controllers](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#custom-controllers) and the [transient chaos pods](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#transient-chaos-pods) use the service accounts that are mapped to ClusterRoles.
+In this mode, the [subscriber](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi/tkgi-deployment#subscriber), [controllers](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi/tkgi-deployment#custom-controllers) and the [transient chaos pods](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi/tkgi-deployment#transient-chaos-pods) use the service accounts that are mapped to ClusterRoles.
 
 This allows the following:
 
@@ -101,7 +101,7 @@ This allows the following:
 
 ### Namespace scope mode
 
-In this mode, the [subscriber](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#subscriber), [controllers](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#custom-controllers) and the [transient chaos pods](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#transient-chaos-pods) use the service accounts that are mapped to a NamespacedRole.
+In this mode, the [subscriber](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi/tkgi-deployment#subscriber), [controllers](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi/tkgi-deployment#custom-controllers) and the [transient chaos pods](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi/tkgi-deployment#transient-chaos-pods) use the service accounts that are mapped to a NamespacedRole.
 
 This allows the following:
 - The subscriber discovers assets only within the agent installation namespace.

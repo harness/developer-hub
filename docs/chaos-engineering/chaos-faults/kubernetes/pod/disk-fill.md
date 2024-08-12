@@ -2,7 +2,8 @@
 id: disk-fill
 title: Disk fill
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/disk-fill
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/disk-fill
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/disk-fill
 ---
 
 Disk fill is a Kubernetes pod-level chaos fault that applies disk stress by filling the pod's ephemeral storage on a node. This fault evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
@@ -12,11 +13,48 @@ Disk fill is a Kubernetes pod-level chaos fault that applies disk stress by fill
 ## Use cases
 Disk fill:
 - Tests the ephemeral storage limits and ensures that the parameters are sufficient.
-- Determines the resilience of the application to unexpected storage exhaustions. 
+- Determines the resilience of the application to unexpected storage exhaustion.
 - Evaluates the application's resilience to disk stress or replica evictions.
 - Simulates the filled data mount points.
 - Verifies file system performance, and thin-provisioning support.
-- Verifies space reclamation (UNMAP) capabilities on storage. 
+- Verifies space reclamation (UNMAP) capabilities on storage.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: disk-fill
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16
@@ -98,7 +136,7 @@ Disk fill:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to run the stress command. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>

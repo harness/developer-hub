@@ -2,13 +2,13 @@
 title: Node IO stress
 id: node-io-stress
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-io-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-io-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-io-stress
 ---
 
 Node IO stress causes I/O stress on the Kubernetes node.
 
 ![Node CPU Hog](./static/images/node-stress.png)
-
 
 ## Use cases
 - Node IO stress fault verifies the resilience of applications that share the disk resource for ephemeral or persistent storage during high disk I/O usage.
@@ -16,6 +16,43 @@ Node IO stress causes I/O stress on the Kubernetes node.
 - It simulates slower disk operations by the application and noisy neighbour problems by hogging the disk bandwidth.
 - It also verifies the disk performance on increasing I/O threads and varying I/O block sizes.
 - It checks if the application functions under high disk latency conditions. when I/O traffic is very high and includes large I/O blocks, and when other services monopolize the I/O disks.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: node-io-stress
+spec:
+  definition:
+    scope: Cluster
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/exec"]
+    verbs: ["get", "list", "create"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16
@@ -83,7 +120,7 @@ Node IO stress causes I/O stress on the Kubernetes node.
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to run the stress command. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>

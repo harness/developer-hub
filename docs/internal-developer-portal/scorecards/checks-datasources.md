@@ -449,6 +449,40 @@ In case you mention the `branchName` field as a check config other than what's p
 
 ![](./static/match-github.png)
 
+2. **File Existence**
+- *Objective:* Verify the existence of a specified file in the repository.
+- *Calculation Method:* Use the `backstage.io/source-location` annotation to locate the repository and check for the file’s presence. Make sure to mention the filename with extension or relative path from the root folder (Eg: README.md or docs/README.md) in the conditional input field.
+
+### URL priority for branch name field
+
+In some of the data points we take `branchName` as input, and it's an optional field. It is suggested to give a `branchName` in case you want to use the same for all the repositories, otherwise we use the **default branch** for the repository mentioned in `source-location`.
+
+![](./static/source-location.png)
+
+In case you mention the `branchName` field as a check config other than what's present in the `source-location` the priority order conditions could be found below. 
+
+1. If it’s in both, the check configuration will take precedence.
+2. If it’s in only one, we’ll use that value.
+3. **If it’s in neither, then we will use the default branch for the repository used in `source-location`.**
+
+![](./static/checks-field.png)
+
+:::
+
+**Example YAML**
+
+```
+kind: "Component"
+apiVersion: "backstage.io/v1alpha1"
+metadata:
+  name: order-service
+  annotations:
+    backstage.io/source-location: 'url:https://gitlab.com/kubernetes/kubernetes/tree/master'
+    ...
+spec:
+    ...
+```
+
 ## Harness 
 
 ### Pre-Requisites

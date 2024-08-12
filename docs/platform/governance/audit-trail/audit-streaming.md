@@ -116,6 +116,18 @@ To configure the Splunk streaming connector:
 
    The streaming destination gets configured and appears in the list of destinations under **Audit Log Streaming**. By default the destination is inactive.
 
+:::info troubleshoot HEC configurations
+At times, you might experience issues with the HEC connector. Here are some troubleshooting steps you can take to resolve common issues.
+
+- You should set HEC connectors without a declared `SourceType`. Although the data will be JSON-formatted, it is not declared as such. Setting a `SourceType` as `JSON` might filter data from the stream.
+
+   ![](../../governance/audit-trail/static/hec_connector_notype.png)
+
+- Harness utilizes the following [standard endpoints](https://docs.splunk.com/Documentation/Splunk/9.2.1/Data/HECRESTendpoints) and appends them automatically to the customer's URL. They are not customizable.
+   - `/services/collector/event`
+   - `/services/collector/health`
+   - `/services/server/info`
+:::
 </TabItem>
 </Tabs>
 

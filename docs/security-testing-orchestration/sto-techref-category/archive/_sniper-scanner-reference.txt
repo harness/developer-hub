@@ -1,7 +1,7 @@
 ---
-title: Sniper scanner reference for STO
+title: Sniper step configuration
 description: Scan application instances with Sniper.
-sidebar_label: Sniper scanner reference 
+sidebar_label: Sniper step configuration 
 sidebar_position: 370
 ---
 

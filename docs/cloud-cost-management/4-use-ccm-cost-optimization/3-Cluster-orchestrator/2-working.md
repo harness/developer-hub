@@ -88,3 +88,22 @@ EKS EC2 Nodes: 10
 - 81% Spot savings over On-Demand for m4.xlarge running in US East (Ohio) on Linux
 - 70% Spot nodes, 30% On-Demand nodes
 
+## Saving Computation for Cluster Orchestrator
+
+With Cluster Orchestrator, the savings are realized from the spot utilization of the connected EKS cluster. 
+
+- n: Total number of nodes running
+- x: Number of on-demand nodes
+- y: Number of spot nodes
+- n = x + y
+
+The **Potential Cost** of the cluster is the amount the cluster would have cost if all n nodes were running as on-demand nodes. 
+
+The **Actual Cost** of the cluster is the combined price of x on-demand nodes and y spot nodes. 
+
+Hence, the **Actual Savings** is the difference between these two values.
+
+`Actual Savings** = Potential Cost - Actual Cost`
+
+The Cluster Orchestrator has an inbuilt algorithm for computing the potential cost and actual cost, and thus the actual savings are derived from these two costs.
+

@@ -2,7 +2,8 @@
 id: pod-api-status-code
 title: Pod API status code
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-status-code
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-status-code
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-api-status-code
 ---
 
 Pod API status code is a Kubernetes pod-level chaos fault that change the API response status code and optionally api response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
@@ -14,6 +15,43 @@ Pod API status code:
 - It can be used to test the error handling capabilities of API and client applications. By changing the API response status code to different error codes, such as 400 (Bad Request) or 500 (Internal Server Error), you can evaluate how well your application handles and responds to various error scenarios.
 - Simulates situations where the API may be temporarily unavailable or rate-limited by returning temporary error codes like 503 (Service Unavailable) or 429 (Too Many Requests).
 - It can be used for content filtering, by selectively filter or block certain responses. For example, you can change the status code to 404 (Not Found) for specific paths or patterns, indicating that the requested resource does not exist.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-api-status-code
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
 
 ### Prerequisites
 - Kubernetes> 1.17
@@ -44,7 +82,7 @@ Pod API status code:
       </tr>
       <tr>
         <td> STATUS_CODE </td>
-        <td> Modified status code for the api response </td>
+        <td> Modified status code for the API response. </td>
         <td> For more information, go to <a href="#status-code">status code </a>. </td>
       </tr>
     </table>
@@ -104,7 +142,7 @@ Pod API status code:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> PROXY_PORT </td>

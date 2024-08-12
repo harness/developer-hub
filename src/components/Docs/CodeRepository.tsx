@@ -25,7 +25,7 @@ export default function Code() {
                 Knowledge Base
               </button>
             </Link>
-            <Link href="/release-notes">
+            <Link href="/release-notes/code-repository">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />
@@ -38,7 +38,13 @@ export default function Code() {
           <div className={styles.content}>
             <p>
               Learn how you can accelerate development with security at scale.
-            </p>
+            </p>{" "}
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={`${baseUrl}img/Code_Repo_Landing_Page.svg`}
+              />
+            </div>
           </div>
         </div>
       </div>

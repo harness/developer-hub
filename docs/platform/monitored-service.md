@@ -16,14 +16,14 @@ A Harness monitored service functions as a unified logical entity across three m
 ## Create a monitored service at project level
 
 :::note
-Currently, this feature is behind the feature flag `SRM_COMMON_MONITORED_SERVICE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `SRM_COMMON_MONITORED_SERVICE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 When you create a monitored service at the Project Level, it becomes accessible across all three modules: CD, SRM, and CET.
 
 To create a monitored service at the project level:
 
-1. In Harness, select **Project** > **Monitored Services** > **+ New Monitored Service**.  
+1. In Harness, select **Project** > **Monitored Services** > **+ New Monitored Service**.
     The **Create new monitored service** dialog appears.
 
    <DocImage path={require('./static/create-monitored-service-project-level.png')} />
@@ -81,14 +81,14 @@ To view the monitored service details within a specific module:
 ## Monitored service within the Continuous Delivery (CD) module
 
 :::note
-Currently, this feature is behind the feature flag `SRM_COMMON_MONITORED_SERVICE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `SRM_COMMON_MONITORED_SERVICE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 In the CD module, when you're using the Verify Step for Continuous Verification (CV), the system automatically generates a monitored service. This happens by combining the names of the service and the environment. This monitored service is readily available within the CD module.
 
 To view the monitored service list from the CD module:
 
-1. In Harness, select **Deployment** > **Monitored Services**.  
+1. In Harness, select **Deployment** > **Monitored Services**.
    A list of monitored services is displayed. The list also displays the number of health sources configured for each monitored service.
 
 <DocImage path={require('./static/view-monitored-service-cd-level.png')} />
@@ -110,7 +110,7 @@ You can [create a monitored service](../service-reliability-management/monitored
 ## Monitored service within the Continuous Error Tracking (CET) module
 
 :::note
-Currently, this feature is behind the feature flag `CET_PLATFORM_MONITORED_SERVICE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `CET_PLATFORM_MONITORED_SERVICE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 You DocImage and create monitored services from the CET module.

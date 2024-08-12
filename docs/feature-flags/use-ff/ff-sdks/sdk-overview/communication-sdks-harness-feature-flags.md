@@ -6,6 +6,8 @@ helpdocs_topic_id: 7ikyqtmjce
 helpdocs_category_id: eyzngtupao
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags
 ---
 
 This topic describes how the Feature Flags SDKs communicate with Harness Feature Flags to receive flag changes.

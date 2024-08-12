@@ -92,6 +92,7 @@ Review [Harness Key Concepts](/docs/platform/get-started/key-concepts) to esta
         "cloudformation:CreateStack",
         "cloudformation:CreateUploadBucket",
         "cloudformation:DeleteStack",
+        "cloudformation:DeleteChangeSet",
         "cloudformation:Describe*",
         "cloudformation:EstimateTemplateCost",
         "cloudformation:ExecuteChangeSet",
@@ -141,6 +142,7 @@ Review [Harness Key Concepts](/docs/platform/get-started/key-concepts) to esta
         "iam:GetRole",
         "iam:PassRole",
         "iam:PutRolePolicy",
+        "iam:TagRole",
         "iot:CreateTopicRule",
         "iot:DeleteTopicRule",
         "iot:DisableTopicRule",
@@ -223,7 +225,47 @@ Currently, Serverless functions can't be deployed with an OIDC-enabled AWS conne
 
 ### Containerized step images
 
-Currently, for the containerized Serverless steps Harness provides, the base images Harness provides on Docker Hub have Node version 12.20.0 and Serverless version 3.30.1 installed. These are Linux AMD64 images.
+#### Old Images
+
+Harness supports different images for Prepare, Package and deploy for sereverless deployment. 
+
+Prepare Rollback:- [`harnessdev/serverless-preparerollback:<LATEST_TAG>`](https://hub.docker.com/r/harnessdev/serverless-preparerollback)
+
+Package:- [`harnessdev/serverless-package:<LATEST_TAG>`](https://hub.docker.com/r/harnessdev/serverless-package)
+
+Deploy:- [`harnessdev/serverless-deploy:<LATEST_TAG>`](https://hub.docker.com/r/harnessdev/serverless-deploy)
+
+Rollback:- [`harnessdev/serverless-rollback:LATEST_TAG`](https://hub.docker.com/r/harnessdev/serverless-rollback)
+
+
+We recommend you to use the new images that we have introduced with multiple runtime support.
+
+#### New Images
+
+Harness support [multiple runtime images](https://hub.docker.com/r/harness/serverless-plugin/tags) for **nodejs20**, **nodejs18** and **java17**. These are Linux AMD64 images. 
+
+Unlike old images, in new images a single image has the capabiliity of handling all the serverless steps.
+
+There are two flavours of images available first with serverless installed and other without serverless installed that you can use.
+
+ Runtimes | With Serverless Installed | Without Serverless Installed
+| --- | --- | --- |
+| nodejs 20 | harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64 | harness/serverless-plugin:nodejs20.x-1.0.0-beta-linux-amd64 |
+| nodejs 18 | harness/serverless-plugin:nodejs18.x-3.39.0-1.0.0-beta-linux-amd64 | harness/serverless-plugin:nodejs18.x-1.0.0-beta-linux-amd64 |
+| java 17 | harness/serverless-plugin:java17-3.39.0-1.0.0-beta-linux-amd64 | harness/serverless-plugin:java17-1.0.0-beta-linux-amd64 |
+
+
+Now, let's understand the runtime image one with serverless installed and one without serverless installed. 
+
+![](./static/multiple-runtime-image-serverless.png)
+
+:::important note
+These images can only be used in [containerized step](#containerized-steps).
+:::
+
+:::note
+If you are using images that don't have serverless installed and you wish to install it during the execution, you need to provide us the path where you will be installing your serverless package. You can set the path using environment variable `PLUGIN_SERVERLESS_EXECUTABLE_PATH` in your serverless step.
+:::
 
 ## Create the Deploy stage
 
@@ -300,7 +342,8 @@ You can also use AWS S3 or Harness Local File Store as your manifest provider. F
 
 ![](./static/serverless-lambda-cd-quickstart-112.png)
 
-Here's what the `serverless.yaml` file looks like:
+<details>
+<summary> Here's what the `serverless.yaml` file looks like for Serverless V1 </summary>
 
 ```yaml
 service: <+service.name>
@@ -327,6 +370,45 @@ You can see the [Harness expression](/docs/platform/variables-and-expressions/ha
 The expression `<+service.name>` simply uses the Harness Service name for the deployed service name.
 
 For Docker images, you use the expression `<+artifact.image>`.
+
+</details>
+
+<details>
+<summary> Here's what `serverless.yaml` file looks like for Serverless V2 </summary>
+
+```yaml
+service: {{.Values.serviceName}}
+frameworkVersion: "2 || 3"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /tello
+          method: get
+package:
+  artifact: {{.Values.artifact.path}}
+plugins:
+  - serverless-deployment-bucket@latest
+```
+
+Variables such as `{{.Values.serviceName}}` will be resolved by a corresponding `values.yaml` file that is added in the same place as the manifest. Follow the steps above to add a manifest, but at step 3 select **Values YAML** instead. Here is an example of a `values.yaml` file for the manifest:
+
+```yaml
+serviceName: goldenpipeline
+artifact: 
+  path: /my-artifact
+```
+
+</details>
+
+:::note
+By default, the values will be resolved for the manifest in each serverless step. If you don't want it to get resolved in each step you can use the environment variable `PLUGIN_RESOLVE_WITH_VALUES_MANIFEST`  and set it to `false`.
+:::
 
 ## Add the artifact
 
@@ -725,6 +807,10 @@ branch 'main' set up to track 'origin/main'.
 
 </details>
 
+:::important note
+Download artifact will happen at each step, and it is `true` by default for all the steps. You wish to not download it in each serverless step you can set it `false` using the environment variable `PLUGIN_DOWNLOAD_ARTIFACT` in your serverless steps.
+:::
+
 #### Serverless directory path
 
 After the Download Manifest step, you can access the directly where the manifest has been downloaded using the expression `<+serverlessV2.serverlessDirectoryPath>`.
@@ -737,17 +823,24 @@ pwd
 exit 1
 ```
 
+:::important note
+Since it is a containerized step and each step acts like a pod, the path of the directory where your manifest will be downloaded would look like :
+`/harness/Manifest identifier/Folder Path`
+Suppose your manifest name is m1 in your Service YAML, you can use the following expression:-`<+manifests.m1.identifier>` to access your manifest identifier.
+You can access your folder path that you have defined in your Manifest via expression : `<+manifests.m1.store.folderPath>`
+:::
+
 ### Serverless Prepare Rollback step
 
 The Serverless Prepare Rollback step describes the CloudFormation stack and gets its current state. This information is stored and passed to the Serverless Rollback Step, and used in the case of rollback.
 
-We recommend that you use the latest Harness image: [`harnessdev/serverless-preparerollback:<LATEST_TAG>`](https://hub.docker.com/r/harnessdev/serverless-preparerollback). You can use another image, hosted in your own Docker registry.
+We recommend that you use the latest Harness image that supports [multiple runtime](#containerized-step-images). You can use another image, hosted in your own Docker registry.
 
 To configure the Serverless Prepare Rollback step, do the following:
 
 1. Open the Serverless Prepare Rollback step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
-3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, you can specify: [`harnessdev/serverless-preparerollback:<LATEST_TAG>`](https://hub.docker.com/r/harnessdev/serverless-preparerollback).
+3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, you can specify: [`harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64`](https://hub.docker.com/r/harness/serverless-plugin/tags).
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -755,13 +848,14 @@ For information on the remaining settings, go to [Common settings for all steps]
 
 This step performs the Serverless [package command](https://www.serverless.com/framework/docs/providers/aws/cli-reference/package).
 
-By default, this step is configured to use the latest Harness image: [`harnessdev/serverless-package:<LATEST_TAG>`](https://hub.docker.com/r/harnessdev/serverless-package). You can use another image, hosted in your own Docker registry.
+You can use latest Harness image that supports [multiple runtime](#containerized-step-images). You can use another image, hosted in your own Docker registry.
 
 To configure the Serverless Package step, do the following:
 
 1. Open the Serverless Package step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
-3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example: [`harnessdev/serverless-package:LATEST_TAG'](https://hub.docker.com/r/harnessdev/serverless-package).
+3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example: [`harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64`](https://hub.docker.com/r/harness/serverless-plugin/tags).
+
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -802,19 +896,20 @@ Serverless Package Command succeeded
 
 </details>
 
+
 ### Serverless Deploy step
 
 This step performs the Serverless [deploy command](https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy).
 
 The Serverless stage and AWS region are taken from the Harness Infrastructure Definition configured in the Harness pipeline stage's **Environment** section.
 
-By default, this step is configured to use the latest Harness image: [`harnessdev/serverless-deploy:LATEST_TAG`](https://hub.docker.com/r/harnessdev/serverless-deploy). You can use another image, hosted in your own Docker registry.
+You can use latest Harness image that supports [multiple runtime](#containerized-step-images). You can use another image, hosted in your own Docker registry.
 
 To configure the Serverless Deploy step, do the following:
 
 1. Open the Serverless Deploy step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
-3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example: [`harnessdev/serverless-deploy:LATEST_TAG`](https://hub.docker.com/r/harnessdev/serverless-deploy).
+3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example: [`harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64`](https://hub.docker.com/r/harness/serverless-plugin/tags).
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -859,13 +954,13 @@ Toggle the **Execution**/**Rollback** setting in **Execution** to see the Server
 
 The Serverless Rollback step reads the CloudFormation stack name and state generated by the Serverless Prepare Rollback step and performs rollback, if needed.
 
-By default, this step is configured to use the latest Harness image: [`harnessdev/serverless-rollback:LATEST_TAG`](https://hub.docker.com/r/harnessdev/serverless-rollback). You can use another image, hosted in your own Docker registry.
+You can use latest Harness image that supports [multiple runtime](#containerized-step-images). You can use another image, hosted in your own Docker registry.
 
 To configure the Serverless Rollback step, do the following:
 
 1. Open the Serverless Rollback step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
-3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example: [`harnessdev/serverless-rollback:LATEST_TAG`](https://hub.docker.com/r/harnessdev/serverless-rollback).
+3. In **Image**, enter the path, image, and tag for the image you want to run in this step.  For example: [`harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64`](https://hub.docker.com/r/harness/serverless-plugin/tags).
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -881,6 +976,12 @@ All of the containerized steps include the following settings:
   - When this setting is enabled, it grants the container elevated privileges within the underlying host environment. This means that the container has access to all Linux kernel capabilities and devices, similar to running processes outside the container. It effectively removes the isolation provided by the container runtime and can potentially pose security risks if not used carefully.
 - **Environment Variables:** You can inject environment variables into a container and use them in the **Command** script. You must input a **Name** and **Value** for each variable.
   - You can reference environment variables in the **Command** script by their name. For example, a Bash script would use `$var_name` or `${var_name}`, and a Windows PowerShell script would use `$Env:varName`.
+
+- **Pre Execution Command:** Pre Execution command will run before your actual serverless step. You can use this field to install any dependencies needed before the plugin logic executes. For example you can use this field to install any package spec via npm.
+
+:::warning
+Pre Execution command will only run with latest [Harness runtime support images](#containerized-step-images).
+:::
 
 ## Non-containerized steps
 
@@ -990,22 +1091,22 @@ Expression support lets you take advantage of runtime inputs and input sets in y
 
 ```yaml
 service: <+service.name>
-frameworkVersion: "2 || 3"
+frameworkVersion: '2 || 3'
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs20.x
 functions:
   hello:
     handler: handler.hello
     events:
       - httpApi:
           path: /tello
-          method: get
+          method: get  
 package:
-  artifact: <+artifact.path>
+  artifact: <+artifact.path>          
 plugins:
-  - <+stage.variables.devplugins>
+  - serverless-deployment-bucket@latest
 ```
 
 See:

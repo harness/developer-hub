@@ -294,6 +294,17 @@ Review the following resources to learn more about defining and managing access 
 
 Find the list of demos for the latest Harness SEI features.
 
+### Get started
+
+| **Topic** | **Video** | **Documentation** |
+| - | - | - |
+| Insights on Harness SEI |<a href="https://youtu.be/gJ1gLT6ldGs">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/sei-insights) |
+| Role-Based Access Control on Harness SEI |<a href="https://youtu.be/7GProEXyB9c">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/access-control/sei-roles-and-permissions) |
+| Account Level Settings on Harness SEI |<a href="https://youtu.be/NCzw--puYmY">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights) |
+| Project Level Settings on Harness SEI |<a href="https://youtu.be/Jbza13xRnMU?si=80HvIXvaqE9Uf7hD">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/) |
+
+### Set up integrations
+
 | **Topic** | **Video** | **Documentation** |
 | - | - | - |
 | Insights on Harness SEI |<a href="https://youtu.be/gJ1gLT6ldGs">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/sei-insights) |

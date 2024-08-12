@@ -204,10 +204,27 @@ The **Use Connector credentials** setting is limited to Harness Git Connectors u
 
 When configuring the SSH key for the connector, exporting an SSH key with a passphrase for the module source is not supported. Configure an SSH Key without the passphrase.
 
-Here are some syntax examples to reference the Terraform module using the SSH protocol:
+Here is a syntax example to reference the Terraform module using the SSH protocol:
 
 ```bash
 source = "git@github.com:your-username/your-private-module.git"
+```
+
+Here is a syntax example to reference the Terraform module using the HTTPS protocol:
+
+```bash
+source = "git::https://github.com/your-organization/your-private-module.git"
+```
+
+:::tip
+
+The ability to authenticate with HTTPS is new! Here is a demo on its functionality:
+
+<DocVideo src="https://www.loom.com/share/bb8b9e4996f14bf0a16839849b0b72e4?sid=3befc405-7c4d-4f21-afe0-c36e2962b566" />
+
+:::
+
+
 ## Workspace
 
 Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.

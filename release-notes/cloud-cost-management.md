@@ -18,7 +18,53 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
+## July 2024
+
+### Version 1.23.0
+
+#### New features and enhancements
+- Policy YAML Validation Enhancement in Asset Governance: Previously, we were not enabling the Dry Run and Run Once buttons if there were issues with policy YAML validation. This should now be resolved, allowing users to proceed with these actions even if there are validation issues. [CCM-18754]
+
+- Regions Filter for Recommendations Page: We have added a Regions filter in the Recommendations Filter Panel on the Recommendations Page, enhancing the ability to filter recommendations by specific regions. [CCM-18591]
+
+- Load Balancer Pagination Fixes: Some improvements have been made to the load balancer pagination:
+      - The page index on the URL now matches the page in the list.
+      - The first column is now wider based on the available space.
+      - The last activity column now reads the updated_at value instead of calling a separate API. [CCM-18585]
+  
+#### Fixed issues
+
+- Governance Evaluations List Page Pagination: Previously, on the Governance Evaluations List page, the page number was not resetting when changing the time filter, causing the current page to match the filters incorrectly and resulting in no results. This issue has now been resolved. [CCM-18571]
+
 ## June 2024
+
+### Version 1.23.0
+
+#### New features and enhancements
+- Asset Governance Recommendations page enhancements: Previously, Governance Recommendations were grouped by Account and Region for AWS, Subscription and Region for Azure and Project for GCP. Now, each Account-Region pair, Subscription-Region pair and Project will have individual recommendations listed in the Recommendations Overview page. This would allow users to create individual Jira/ServiceNow tickets per pair and "Recommended Action" now shows the rule name that is recommended.
+
+- Memory Metrics Tooltip for EC2 Recommendations: Added a tooltip to EC2 recommendations to give more information on memory metrics. This tooltip provides documentation on what users need to do to enable memory metrics, ensuring they understand how to gather necessary data for accurate recommendations, especially for memory-optimized instance families.
+
+- Disabled Enforcements for Accounts without a Valid CCM License: We have disable Enforcements related to accounts that do not have a valid CCM license.
+
+#### Early access features
+- Early access to Commitment Orchestrator for RDS: We have introduced Commitment Orchestrator for RDS with support for Standard RI. Being in the very early stages, it is only available on request. If you would like to test it out, kindly reach out to [Harness support](mailto:support@harness.io)
+
+### Version 1.22.0
+
+#### New features and enhancements
+- **Azure Data Sync Frequency Update:** The Azure data sync frequency has been changed from 1 day to 1 hour. This enhancement will allow data to flow faster for Azure customers, reducing wait times and improving data availability [CCM-18014]
+
+### Version 1.21.0
+
+#### New features and enhancements
+
+- **Savings by Harness Integration Enhancement**: Last release we added "Savings by Harness" integration on Commitment Orchestrator. This release, we have added a minor enhancement with a loading state for savings and utilization widgets. [CCM-18212]
+
+- **Azure VM Inventory Duplicate Entries Enhancement**: Duplicate entries within AzureVMInventory will now be handled better after this fix, ensuring appropriate data is displayed on the dashboards. [CCM-17313]
+
+- **Autostopping Rule Search by VM ID**: Previously, users could not search their rule by VM ID. Now, users will be able to search their rule in the rule list using the ID of any VM managed by the rule. [CCM-16437]
+
 ### Version 1.20.3
 
 #### New features and enhancements

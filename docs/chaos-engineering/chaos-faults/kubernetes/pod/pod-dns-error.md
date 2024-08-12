@@ -2,22 +2,59 @@
 id: pod-dns-error
 title: Pod DNS error
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-dns-error
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-dns-error
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-dns-error
 ---
 
 Pod DNS error is a Kubernetes pod-level chaos fault that injects chaos to disrupt DNS resolution in pods. It removes access to services by blocking the DNS resolution of host names or domains.
 
 ![Pod DNS Error](./static/images/dns-chaos.png)
 
-
 ## Use cases
 
 Pod DNS error:
 - Determines the resilience of an application to DNS errors.
-- Determines how quickly an application can resolve the host names and recover from the failure. 
+- Determines how quickly an application can resolve the host names and recover from the failure.
 - Simulates unavailability of DNS server (loss of access to any external domain from a given microservice).
-- Simulates malfunctioning of DNS server (loss of access to specific domains from a given microservice.
+- Simulates malfunctioning of DNS server (loss of access to specific domains from a given microservice).
 - Simulates access to the cloud provider dependencies, and access to specific third party services.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-dns-error
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16
@@ -84,7 +121,7 @@ Pod DNS error:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -123,7 +160,7 @@ spec:
 
 ### Target host names
 
-Comma-separated names of the target hosts. Tune it by using the `TARGET_HOSTNAMES` environment variable. If `TARGET_HOSTNAMES` is not provided, all host names or domains will be targeted. 
+Comma-separated names of the target hosts. Tune it by using the `TARGET_HOSTNAMES` environment variable. If `TARGET_HOSTNAMES` is not provided, all host names or domains will be targeted.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -157,7 +194,7 @@ spec:
 
 ### Match scheme
 
-Specifies whether the DNS query should exactly match one of the targets or can have any of the targets as a substring. It supports `exact` or `substring` values. Tune it by using the `MATCH_SCHEME` environment variable. 
+Specifies whether the DNS query should exactly match one of the targets or can have any of the targets as a substring. It supports `exact` or `substring` values. Tune it by using the `MATCH_SCHEME` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -183,7 +220,7 @@ spec:
         env:
         ## it supports 'exact' and 'substring' values
         - name: MATCH_SCHEME
-          value: 'exact' 
+          value: 'exact'
         - name: TOTAL_CHAOS_DURATION
           value: '60'
 ```

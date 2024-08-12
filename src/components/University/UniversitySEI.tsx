@@ -7,8 +7,8 @@ import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
 // import AdminCertificationExamDetails from "./data/sei-certification-admin-exam-details.md";
 // import AdminCertificationReviewDetails from "./data/sei-certification-admin-review-guide.md";
-// import DeveloperCertificationExamDetails from "./data/sei-certification-developer-exam-details.md";
-// import DeveloperCertificationReviewGuide from "./data/sei-certification-developer-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/sei-certification-developer-exam-details.md";
+import DeveloperCertificationReviewGuide from "./data/sei-certification-developer-review-guide.md";
 // import ArchitectCertificationReviewDetails from "./data/sei-certification-architect-review-guide.md";
 // import ArchitectCertificationExamDetails from "./data/sei-certification-architect-exam-details.md";
 import IltCard from "./Card";
@@ -32,8 +32,9 @@ const getCertBadges = (url: string) => [
     type: certType.architect,
   },
 ];
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function CertificationsSEI() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   // React router provides the current component's route, even in SSR
   const location = useLocation();
@@ -41,6 +42,10 @@ export default function CertificationsSEI() {
   const { pathname = "/", search = "" } = location;
   const searchKey = getCertLevel(search);
   const [tab, setTab] = useState("developer");
+  const [activePage, setActivePage] = useState<string>(
+    ActivePage.SelfPacedTraning
+  );
+
   const handleSwitchTab = (tabKey) => {
     setTab(tabKey);
     if (pathname && tabKey) {
@@ -57,17 +62,19 @@ export default function CertificationsSEI() {
   }, [searchKey]);
 
   useEffect(() => {
-    if (location.search === "?ilt") {
+    const params = new URLSearchParams(location.search);
+    if (params.has("lvl")) {
+      setTab(params.get("lvl"));
+      setActivePage(ActivePage.Certifications);
+    } else if (location.search === "?ilt") {
       setActivePage(ActivePage.InstructorLedTraining);
-    }
-    if (location.search === "?spt") {
+    } else if (location.search === "?spt") {
+      setActivePage(ActivePage.SelfPacedTraning);
+    } else {
       setActivePage(ActivePage.SelfPacedTraning);
     }
   }, []);
 
-  const [activePage, setActivePage] = useState<string>(
-    ActivePage.Certifications
-  );
   const handleCertficationClick = () => {
     history.push(`${pathname}?lvl=developer`);
     setActivePage(ActivePage.Certifications);
@@ -82,7 +89,17 @@ export default function CertificationsSEI() {
   };
 
   return (
-    <div className={styles.certificationsSEI}>
+    <div
+      className={`${styles.certificationsSEI} ${
+        activePage === ActivePage.SelfPacedTraning
+          ? styles.SelfPacedTrainingBg
+          : ""
+      } ${
+        activePage === ActivePage.InstructorLedTraining
+          ? styles.InstructorLedTrainingBg
+          : ""
+      }  `}
+    >
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>
@@ -92,57 +109,134 @@ export default function CertificationsSEI() {
           </div>
           <h1>Software Engineering Insights</h1>
           <div>
-            Discover SDLC bottlenecks, assess team productivity,
-            and improve developer experience guided by data and insights.
+            Discover SDLC bottlenecks, assess team productivity, and improve
+            developer experience guided by data and insights.
           </div>
         </div>
-        <div className={styles.right}>
-          {certBadges.map((badge) => (
+        <div
+          className={`${styles.right} ${
+            activePage === ActivePage.SelfPacedTraning
+              ? styles.SelfPacedTrainingBg
+              : ""
+          } ${
+            activePage === ActivePage.InstructorLedTraining
+              ? styles.InstructorLedTrainingBg
+              : ""
+          }  `}
+        >
+          {activePage === ActivePage.SelfPacedTraning && (
             <img
-              src={badge.img}
-              alt={badge.alt}
-              className={badge.type === certType[tab] ? styles.active : ""}
+              className={styles.iltimg}
+              src={
+                colorMode == "light"
+                  ? "/img/Instructor-Led Training light.svg"
+                  : "/img/Instructor-Led Training dark.svg"
+              }
+              alt=""
             />
-          ))}
+          )}
+          {activePage === ActivePage.InstructorLedTraining && (
+            <img
+              className={styles.sptimg}
+              src={
+                colorMode == "light"
+                  ? "/img/Self-Paced Training light.svg"
+                  : "/img/Self-Paced Training dark.svg"
+              }
+              alt=""
+            />
+          )}
+          {activePage === ActivePage.Certifications &&
+            certBadges.map((badge) => (
+              <img
+                src={badge.img}
+                alt={badge.alt}
+                className={`${
+                  badge.type === certType[tab] ? styles.active : ""
+                } ${styles.certimg}`}
+              />
+            ))}
         </div>
       </div>
       <div className={styles.btns}>
         <button
-          className={`${styles.certBtn} ${activePage === ActivePage.Certifications ? styles.active : ""
-            }`}
-          onClick={handleCertficationClick}
+          onClick={handleSelfPacedTrainingClick}
+          className={`${
+            colorMode == "light"
+              ? styles.InstLedTrainBtnLight
+              : styles.InstLedTrainBtnDark
+          } ${
+            activePage === ActivePage.SelfPacedTraning
+              ? colorMode == "light"
+                ? styles.activeLight
+                : styles.activeDark
+              : ""
+          }`}
         >
-          {activePage !== ActivePage.Certifications ? (
-            <img src="/img/certification_icon_unactive.svg" />
+          {activePage == ActivePage.SelfPacedTraning ? (
+            colorMode == "light" ? (
+              <img src="/img/self-paced-training-logo-inactive.svg" />
+            ) : (
+              <img src="/img/self-paced-training-logo-active.svg" />
+            )
+          ) : colorMode == "light" ? (
+            <img src="/img/self-paced-training-logo-active.svg" />
           ) : (
-            <img src="/img/certification_icon.svg" />
+            <img src="/img/self-paced-training-logo-inactive.svg" />
           )}
-          Certifications
+          Self-Paced Training
         </button>
-
         <button
           onClick={handleInstLedTrainClick}
-          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.InstructorLedTraining ? styles.active : ""
-            }`}
+          className={`${
+            colorMode == "light"
+              ? styles.InstLedTrainBtnLight
+              : styles.InstLedTrainBtnDark
+          } ${
+            activePage === ActivePage.InstructorLedTraining
+              ? colorMode == "light"
+                ? styles.activeLight
+                : styles.activeDark
+              : ""
+          }`}
         >
-          {activePage === ActivePage.InstructorLedTraining ? (
-            <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
-          ) : (
+          {activePage == ActivePage.InstructorLedTraining ? (
+            colorMode == "light" ? (
+              <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
+            ) : (
+              <img src="/img/Instructor_led_trainin_logo.svg" />
+            )
+          ) : colorMode == "light" ? (
             <img src="/img/Instructor_led_trainin_logo.svg" />
+          ) : (
+            <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
           )}
           Instructor-Led Training
         </button>
         <button
-          onClick={handleSelfPacedTrainingClick}
-          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.SelfPacedTraning ? styles.active : ""
-            }`}
+          className={`${
+            colorMode == "light" ? styles.certBtnLight : styles.certBtnDark
+          } ${
+            activePage === ActivePage.Certifications
+              ? colorMode == "light"
+                ? styles.activeLight
+                : styles.activeDark
+              : ""
+          }`}
+          onClick={handleCertficationClick}
         >
-          {activePage === ActivePage.SelfPacedTraning ? (
-            <img src="/img/self-paced-training-logo-inactive.svg" />
+          {activePage == ActivePage.Certifications ? (
+            colorMode !== "light" ? (
+              <img src="/img/certification_icon_unactive.svg" />
+            ) : (
+              <img src="/img/certification_icon.svg" />
+            )
+          ) : colorMode !== "light" ? (
+            <img src="/img/certification_icon.svg" />
           ) : (
-            <img src="/img/self-paced-training-logo-active.svg" />
+            <img src="/img/certification_icon_unactive.svg" />
           )}
-          Self-Paced Training
+          Certifications
         </button>
       </div>
 
@@ -187,33 +281,34 @@ export default function CertificationsSEI() {
                 </div>
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
-                    <h2>Software Engineering Insights - Developer (BETA COMING
-                      SOON)</h2>
+                    <h2>
+                      Software Engineering Insights - Developer
+                    </h2>
                     <img
                       src={`${baseUrl}img/cert_dev_sei_badge.svg`}
                       alt="Harness Certified Expert - SEI Developer"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Software Engineering Insights
-                      Enterprise Plan
+                      <strong>Product version: </strong> Harness SEI Enterprise
+                      Plan
                     </span>
                   </div>
                   <div className={styles.right}>
-                    <h3>Coming Soon...</h3>
+                    <h3>Review Study Guide</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to deploy your
                       applications with SEI projects.
                     </div>
-                    {/* <DeveloperCertificationReviewGuide /> */}
-                    {/*
+                    <DeveloperCertificationReviewGuide />
+
                     <div className={styles.btnContainer}>
-                      <Link href="#">
+                      <Link href="https://university-registration.harness.io/certified-software-engineering-insights-developer">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
                       </Link>
-                    </div> */}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -221,20 +316,19 @@ export default function CertificationsSEI() {
 
             {/* Developer Exam Details */}
 
-            {/*
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
               <div className={styles.examDetailsCard}>
                 <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
-                  <Link href="#">
+                  <Link href="https://university-registration.harness.io/certified-software-engineering-insights-developer">
                     <button className={styles.moreDetails}>
                       Register for Exam
                     </button>
                   </Link>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
 
           {/* Administrator Tab Content */}
@@ -259,7 +353,8 @@ export default function CertificationsSEI() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Software Engineering Insights - Administrator (BETA COMING SOON)
+                      Software Engineering Insights - Administrator (BETA COMING
+                      SOON)
                     </h2>
                     <img
                       src={`${baseUrl}img/cert_adm_sei_badge.svg`}
@@ -267,11 +362,11 @@ export default function CertificationsSEI() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness Sortware Engineering Insights Enterprise Plan
+                      <strong>Product version: </strong> Harness SEI Enterprise
+                      Plan
                     </span>
                   </div>
                   <div className={styles.right}>
-
                     {/* <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to implement chaos
@@ -299,7 +394,8 @@ export default function CertificationsSEI() {
 
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
-                      Assesses the fundamental skills to deploy and maintain SEI projects and the overall Harness Platform.
+                      Assesses the fundamental skills to deploy and maintain SEI
+                      projects and the overall Harness Platform.
                     </div>
                   </div>
                 </div>
@@ -321,7 +417,6 @@ export default function CertificationsSEI() {
               </div>
             </div>
           </div> */}
-
           </div>
 
           {/* Architect Tab Content */}
@@ -355,8 +450,8 @@ export default function CertificationsSEI() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Software Engineering Insights
-                      Enterprise Plan
+                      <strong>Product version: </strong> Harness SEI Enterprise
+                      Plan
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -378,7 +473,16 @@ export default function CertificationsSEI() {
           <h2>Instructor-Led Training</h2>
           <p>
             Intensive two-day courses are designed for engineers looking to
-            deepen their understanding and expertise in Harness. Can be delivered in a dedicated or <a href="https://university-registration.harness.io/calendar" target="_blank"> shared virtual </a> format.
+            deepen their understanding and expertise in Harness. Can be
+            delivered in a dedicated or{" "}
+            <a
+              href="https://university-registration.harness.io/calendar"
+              target="_blank"
+            >
+              {" "}
+              shared virtual{" "}
+            </a>{" "}
+            format.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
@@ -401,9 +505,7 @@ export default function CertificationsSEI() {
       {activePage === ActivePage.SelfPacedTraning && (
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
-          <p>
-            Free self-paced courses that you can consume on your own time.
-          </p>
+          <p>Free self-paced courses that you can consume on your own time.</p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
               {spt
@@ -416,7 +518,7 @@ export default function CertificationsSEI() {
               {spt
                 .filter((spt) => {
                   return (
-                    spt.module === "sei" && spt.cardType === "FREE" ||
+                    (spt.module === "sei" && spt.cardType === "FREE") ||
                     (spt.module === "sei" && spt.tileType === "comming soon")
                   );
                 })

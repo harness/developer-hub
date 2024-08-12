@@ -1,6 +1,6 @@
 
 
-The Harness Policy Library includes the following [policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case) that make it easy to [create security test policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#workflow-description) and enforce them against your scan results. 
+The Harness Policy Library includes the following [policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case) that make it easy to [create security test policies](/docs/security-testing-orchestration/policies/create-opa-policies#workflow-description) and enforce them against your scan results. 
 
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
@@ -25,7 +25,7 @@ The Harness Policy Library includes the following [policy samples](/docs/platfor
 
 Apply a policy to a scan step to warn or block on any vulnerabilities with the specified severity. 
 
-You must copy the entire sample code from the OPA policy library, as described in [Create a new Security Tests OPA policy](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#create-a-new-security-tests-opa-policy).
+You must copy the entire sample code from the OPA policy library, as described in [Create a new Security Tests OPA policy](/docs/security-testing-orchestration/policies/create-opa-policies#create-a-new-security-tests-opa-policy).
 
 Here is a sample policy that you can evaluate using the **On Step** event for a scan step. 
 
@@ -60,7 +60,7 @@ deny_list := fill_defaults([
 
 Apply a policy to a scan step to warn or block on any vulnerabilities in a specific list of CVEs or CWEs. 
 
-You must copy the entire sample code from the OPA policy library, as described in [Create a new Security Tests OPA policy](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#create-a-new-security-tests-opa-policy).
+You must copy the entire sample code from the OPA policy library, as described in [Create a new Security Tests OPA policy](/docs/security-testing-orchestration/policies/create-opa-policies#create-a-new-security-tests-opa-policy).
 
 Here is a sample policy that you can evaluate using the **On Step** event for a scan step.
 
@@ -103,7 +103,7 @@ deny_list := fill_defaults([
 
 Apply a policy to a scan step to warn or block on any vulnerabilities in a specific list of issue titles. 
 
-You must copy the entire sample code from the OPA policy library, as described in [Create a new Security Tests OPA policy](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#create-a-new-security-tests-opa-policy).
+You must copy the entire sample code from the OPA policy library, as described in [Create a new Security Tests OPA policy](/docs/security-testing-orchestration/policies/create-opa-policies#create-a-new-security-tests-opa-policy).
 
 You can use the `~` operator to find titles based on [Python regular expressions](https://docs.python.org/3/library/re.html). 
 
@@ -134,7 +134,7 @@ deny_list := fill_defaults([
 
 Apply a policy to a scan step to warn or block vulnerabilities based on a set of titles and the maximum allowed number of occurrences for each vulnerability. 
 
-You must copy the entire sample code from the OPA policy library, as described in [Create a new Security Tests OPA policy](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#create-a-new-security-tests-opa-policy).
+You must copy the entire sample code from the OPA policy library, as described in [Create a new Security Tests OPA policy](/docs/security-testing-orchestration/policies/create-opa-policies#create-a-new-security-tests-opa-policy).
 
 You can use the `~` operator to find titles based on [Python regular expressions](https://docs.python.org/3/library/re.html). 
 
@@ -167,7 +167,7 @@ deny_list := fill_defaults([
 
 Apply a policy to a scan step to warn or block vulnerabilities based on CVEs by severity and age. 
 
-You must copy the entire sample code from the OPA policy library, as described in [Create a new Security Tests OPA policy](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#create-a-new-security-tests-opa-policy).
+You must copy the entire sample code from the OPA policy library, as described in [Create a new Security Tests OPA policy](/docs/security-testing-orchestration/policies/create-opa-policies#create-a-new-security-tests-opa-policy).
 
 Here is a sample policy that you can evaluate using the **On Step** event for a scan step.
 

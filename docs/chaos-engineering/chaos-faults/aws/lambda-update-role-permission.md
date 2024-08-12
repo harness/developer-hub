@@ -33,7 +33,7 @@ Lambda updated role permission:
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault when `ROLE_ARN` environment variable is set.
@@ -169,16 +169,16 @@ spec:
     spec:
       components:
         env:
-        # provide the role arn 
+        # provide the role arn
         - name: ROLE_ARN
           value: 'arn:aws:iam::ACCOUNT_ID:role/service-role/chaos-role'
-        # provide the function name 
+        # provide the function name
         - name: FUNCTION_NAME
-          value: 'chaos-function' 
+          value: 'chaos-function'
 ```
 ### Policy ARN
 
-Detaches the policies attached to the role of Lambda function. Tune it by using the `POLICY_ARN` environment variable. 
+Detaches the policies attached to the role of Lambda function. Tune it by using the `POLICY_ARN` environment variable.
 Setting the `ROLE_ARN` environment variable updates the role attached to the Lambda function. Otherwise, the policy is detached using the `POLICY_ARN` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
@@ -198,10 +198,10 @@ spec:
     spec:
       components:
         env:
-        # provide the policy arn 
+        # provide the policy arn
         - name: POLICY_ARN
           value: 'arn:aws:iam::ACCOUNT_ID:policy/service-role/chaos-policy'
-        # provide the function name 
+        # provide the function name
         - name: FUNCTION_NAME
           value: 'chaos-function'
 ```

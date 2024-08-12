@@ -1,7 +1,8 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2024-05-21T10:00
+
+date: 2024-07-05T10:00
 sidebar_position: 10
 ---
 
@@ -20,23 +21,182 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
-## Deprecation notice: app.harness Docker registry
+## July 2024
 
-<!-- Move to February section at end of May -->
+### Version 1.39
 
-[Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci) are available on Docker Hub and the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness is deprecating the Harness-hosted `app.harness` Docker registry effective 15 February 2024.
+<!-- 2024-07-29 -->
 
-You will be impacted by this deprecation if:
+#### Early Access feature
 
-* Your built-in Harness Docker connector (`account.harnessImage`) is configured to the `app.harness` Docker registry. To avoid errors when the deprecation takes place, [configure the built-in Docker connector to use credentialed access to Docker Hub or the Harness project on GCR](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#configure-harness-to-always-use-credentials-to-pull-harness-images).
-* You [pull Harness images from a private registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#pull-harness-images-from-a-private-registry), and you are currently pulling the latest images from the `app.harness` Docker registry. To avoid errors when the deprecation takes place, make sure you are pulling images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
-* You have other Docker connectors configured to the `app.harness` Docker registry. Edit these connectors to use `https://registry.hub.docker.com` instead.
+This release introduces several highly requested features and improvements to enhance the Git clone operations within Harness, in both the Git Clone step and the native Clone Codebase functionality. With this release, we’re adding support for:
 
-Contact [Harness Support](mailto:support@harness.io) if you have any questions.
+- Git LFS - Allows users to clone repositories with large file storage (LFS) efficiently.
+
+- Fetch Tags - Enables fetching of tags during the clone operation.
+
+- Sparse Checkout - Enables cloning specific subdirectories.
+
+- Clone Submodules - Adds options for including and recursively cloning Git submodules.
+
+- Clone Path Customization - Exposes the clone path in the codebase section, allowing users to specify a custom clone directory.
+
+- Additional Pre-Fetch Command - Ability to specify any additional Git commands to run before fetching the code.
+
+For more information, please refer to the [documentation](../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step). (CI-12952, CI-13239)
+
+This feature is behind the feature flag `CI_GIT_CLONE_ENHANCED`.
+
+#### Fixed issues
+
+- Fixed an issue where the Harness Build URL could exceed 255 characters if the projectId, orgId, or PipelineId identifiers were too long. Changes have been made to remove stageExecId from the Build URL to reduce the URL length in the case of non-matrix stages. (CI-13402, ZD-66211)
+
+- Fixed an issue where SSH account-level Git connectors were failing during the connection test and status checks due to using an incorrect port. (CI-13578, ZD-67248,67266)
+
+### Version 1.38
+
+<!-- 2024-07-22 -->
+
+#### Fixed issues
+
+- Fixed issues where the Git status update was not being sent to PRs and the PR link in the execution pipeline was incorrect, redirecting back to the same execution link. The PR link redirect was not working for the input expression `<+trigger.payload.pull_req.number>`, so support for this expression has been added. (CI-11759)
+
+- Fixed an issue where customers could not change the Build configuration from Runtime Input to an expression when setting up the CI Build stage. This fix allows customers to set an expression for the Build configuration of the CodeBase, enabling uniform build names across multiple child pipelines. Customers can now set the Build Type to a fixed value from Runtime Input and then set the branch/tag/pr as an expression, related to chained pipelines. (CI-13268, ZD-66080)
+
+- Fixed an issue where the plugin image path was incorrect when the registry endpoint had a port configured. This issue occurred because everything after : was being considered as the tag of the image, leading to an invalid Fully Qualified Name (FQN) and causing the Initialize step to fail in the Kubernetes flow. The fix ensures that the FQN is properly considered when the registry endpoint includes a port number. (CI-13455, ZD-66772)
+
+- Fixed an issue where the **Docker build and push** steps using Docker Layer Caching (DLC) might fail while downloading the cache if the feature flag `CI_DLC_SIGNED_URL` is turned on. (CI-13508, ZD-66950)
+
+- Removed OIDC token logging from error messages to prevent potential exposure of sensitive information. (CI-13515)
+
+### Version 1.37
+
+<!-- 2024-07-16 -->
+
+#### Fixed issues
+
+- Fixed an issue where the `Build and Push to GCR` step was failing. Buildx plugin version has been upgraded. (CI-13422)
+
+- Upgraded Kaniko version to fix an issue where the `Build and Push to ECR` step did not preserve permissions via chmod. (CI-13200, ZD-65907)
+
+- Fixed an issue where logging for **engine:main** experienced a race condition. Initially, when a **SIGTERM** signal was received, one thread would begin closing the logger while another thread continued uploading logs to **engine:main**, leading to a race condition. This caused incorrect logging of pod eviction during successful executions. The threads have been synchronized to ensure log uploads complete before the logger is closed, accurately recording pod evictions only during errors. (CI-13175, ZD-65545)
+
+This is behind the feature flag: `CI_ENGINE_LOG_UPLOAD_CONCURRENCY`.
+
+- Fixed an issue where, if the base image connector is overridden, the Docker build step does not work. With this fix, Docker-related images now properly gain privilege if the default connector is overridden. `buildx` images are now located [here]  (https://hub.docker.com/search?q=plugins%2Fbuildx). These images are added to the auto-privilege mode. Without this privilege, the image does not run. (CI-12583)
+
+### Version 1.36
+
+<!-- 2024-07-09 -->
+
+#### Fixed issues
+
+- Fixed an issue where the status in Bitbucket showed the build as in progress even though the build succeeded in Harness CI. (CI-13151, ZD-65593)
+- CI - Getting Started Page Visibility: Resolved an issue where the "Getting Started" page for CI was not visible to users without account-level edit permissions. (CI-12510)
+
+### Version 1.35
+
+<!-- 2024-07-01 -->
+
+#### Early Access feature
+
+- When you include a step that uses a private Docker registry, the step now uses the URI specified in the Docker connector. This means that you no longer need to specify the Fully Qualified Name in the Image field. This change applies to the following steps: **Plugin**, **Background**, **Run**, **Run Tests**, and **Test Intelligence**. (CI-10500, ZD-64406, ZD-64735, ZD-65011, ZD-66227)
+
+  This is an [early access feature](/docs/continuous-integration/ci-supported-platforms#harness-ci-early-access-features) behind the feature flag `CI_REMOVE_FQN_DEPENDENCY`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+#### Fixed issues
+
+- Fixed an issue where the status in Bitbucket showed the build as in progress even when the build succeeded in Harness CI. (CI-13151, ZD-65593)
+- Improved the error message that gets displayed when an incompatible Docker version causes the pipeline to fail. (CI-12612, ZD-63466)
+- Implemented a fix to ensure that all account-level secret references use the correct format (`<+secrets.getValue("account.MY_SECRET_ID")>`) in all build infrastructures. With this fix, pipelines will fail if account-level secrets are not referenced correctly. (CI-12595, ZD-63260)
+
+## June 2024
+
+### Version 1.34
+
+<!-- 2024-06-24 -->
+
+#### Fixed issues
+
+- Added a fix to support merge events for Bitbucket Server PR builds with refs as `refs/heads/targetBranch`. (CI-12710, ZD-57511, ZD-65148)
+- Fixed an issue where pipelines with Docker Layer Caching enabled would fail with the error `Failed to get link with status 400`. (CI-13070)
+
+
+### Version 1.33
+
+<!-- 2024-06-18 -->
+
+#### New features
+
+- Added support for AWS connectors to assume external roles to STS (Security Token Service) credentials for cache plugins. (CI-12851)
+
+#### Fixed issues
+
+- Fixed an issue where default values were not populated when entering runtime inputs for environment variables in a Run step. (CI-12906, ZD-64897)
+- Fixed a UI issue where the Codebase icon (right menu) showed the status as not valid, even when the provider was chosen as Harness code repo and the repository was selected. (CI-12750)
+- Fixed an issue where the YAML editor allowed saving invalid environment variables in a Run step. (CI-12730)
+- Fixed an issue where certain keywords in a script could cause the step to fail with an "Invalid step" error. (CI-12708, ZD-63932)
+- Fixed an issue where the Docker LABEL set in a Build and Push step does not override the LABEL configured in the Dockerfile. With this fix, you can now use buildx rather than kaniko to build your container images. You must run buildx on k8s with Privileged mode enabled. This fix is behind the feature flag CI_USE_BUILDX_ON_K8. Contact Harness Support to enable this fix. (CI-12548, ZD-63222)
+
+### Version 1.32
+
+#### Fixed issues
+
+- CI builds were running slowly in some cases. This release includes the following fixes to address this issue. (CI-10042, ZD-52559)
+
+  - Added extra resources for running `addon`. This feature is behind the feature flag `CI_EXTRA_ADDON_RESOURCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+  - Updated LE to addon communication to retry every 300ms 30 times, for a total of 9 seconds.
+
+  - Disabled resource consumption logs for addon. 
+
+- Fixed an issue where pipelines failed intermittently due to delegate selection and task distribution problems when multiple delegates are configured with the same selector tag. (CI-12788, ZD-64246)
+- Running `unittest` in a Run step resulted in the error `sh: unittest not found in some cases`. With this fix, pipelines now run `python unittest -m` which supports more image types. (CI-12795)
+- In some cases, the **Image Pull Policy** setting didn't work as intended when running builds in Docker and VM build infrastructures. (CI-11703) 
+
+### Version 1.30
+
+#### New features and enhancements
+
+- Enabled Secure Connect support for Mac and Windows build infrastructures. (CI-12596)
+
+- Added baseCommitSha in codebase for GitLab PR builds. (CI-12179, ZD-62144)
+
+#### Fixed issues
+
+- Fixed an issue where pipelines fail intermittently due to delegate selection and task distribution problems when multiple delegates are configured with the same selector tag. (CI-12788, ZD-64246)
+
+- Fixed an issue where running a pipeline in debug throws an error saying it is not allowed to be run in this pipeline. (CI-12094, ZD-61519)
+
+- Fixed a user test that was failing intermittently due to a port-availability issue. (CI-12596)
 
 
 ## May 2024
 
+
+### Version 1.29
+
+<!-- 2024-05-28 -->
+
+#### New features and enhancements
+
+- [Harness Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) and [Harness-managed Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) are available for Harness CI Cloud build infrastructure. For other build infrastructures, these features are available in [early access](/release-notes/early-access). 
+
+- You can now specify the image pull policy in the Pipeline Editor when running builds in Kubernetes. To configure image pull policy go to **Infrastructure** > **Advanced** > **Image Pull Policy**. (CI-12512, ZD-62987)
+
+#### Early access features
+
+- You can use [Harness Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) and [Harness-managed Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) with self-managed build infrastructures. These are [early access features](/release-notes/early-access) behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED`. Contact [Harness Support](mailto:support@harness.io) to enable the features. (CI-11953) 
+
+- Use the new [**Test Intelligence** step](/docs/continuous-integration/use-ci/run-tests/tests-v2) to easily speed up unit testing of Python, Ruby, and Java applications. Test Intelligence accelerates test cycles with smart selection of unit tests, executing only tests impacted by code changes without compromising quality. With this complete step redesign, it is now optimized for ease of use, and Test Intelligence effortlessly integrates into the regular test commands — so no tweaks required from the user. These is an [early access features](/release-notes/early-access) behind the feature flag `CIE_ENABLE_RUNTEST_V2`.
+
+#### Fixed issues
+
+- Fixed an issue where cloning a codebase results in an error `/var/run/docker.sock: socket: too many open files`. (CI-12505, ZD-63043)
+
+- Fixed an issue where running a pipeline in debug throws an error saying it is not allowed to be run in this pipeline. (CI-12094, ZD-61519)
+
+- Fixed an issue where, if the base image connector is overridden, the Docker build step does not work. With this fix, Docker-related images now properly gain privilege if the default connector is overridden. `buildx` images are now located [here](https://hub.docker.com/search?q=plugins%2Fbuildx). These images are added to the auto-privilege mode. Without this privilege, the image does not run. (CI-12583)
 
 <!-- Version ?.??.? -->
 
@@ -248,6 +408,18 @@ Fixed an issue where the Get Started wizard failed to generate some pipeline YAM
 * A version of CI was briefly released that contained a bug in the Harness `plancreator` service that caused multiple pipeline failures. That version was rolled back and the issue has been fixed in this version. (CI-11497, ZD-58699, ZD-58745)
 
 ## February 2024
+
+## Deprecation notice: app.harness Docker registry
+
+[Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci) are available on Docker Hub and the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness is deprecating the Harness-hosted `app.harness` Docker registry effective 15 February 2024.
+
+You will be impacted by this deprecation if:
+
+* Your built-in Harness Docker connector (`account.harnessImage`) is configured to the `app.harness` Docker registry. To avoid errors when the deprecation takes place, [configure the built-in Docker connector to use credentialed access to Docker Hub or the Harness project on GCR](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#configure-harness-to-always-use-credentials-to-pull-harness-images).
+* You [pull Harness images from a private registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#pull-harness-images-from-a-private-registry), and you are currently pulling the latest images from the `app.harness` Docker registry. To avoid errors when the deprecation takes place, make sure you are pulling images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
+* You have other Docker connectors configured to the `app.harness` Docker registry. Edit these connectors to use `https://registry.hub.docker.com` instead.
+
+Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ### Version 1.13.1
 

@@ -6,6 +6,8 @@ helpdocs_topic_id: rvqprvbq8f
 helpdocs_category_id: eyzngtupao
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks
 ---
 
 import sdk_arch from './static/1-client-side-and-server-side-sdks-00.png'

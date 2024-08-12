@@ -59,4 +59,7 @@
 # Added by roshnisarangadharan on April 2024 for bringing Native Helm and Helm deployments under one folder
 /docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart /docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart
 
+# Added by ravilach on 7-11-2024 for Broken FF Category 
+/docs/category/use-feature-flag-sdks /docs/category/use-ff-sdks
+
 # Redirects generated from Front Matter [sytem generated goes below here]:

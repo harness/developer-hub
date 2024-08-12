@@ -46,13 +46,13 @@ Every target needs a baseline to enable the full suite of STO features. Here's w
 
   - For developers, it’s critical to distinguish between security issues in the baseline vs. issues in the variant you’re working on. You want to detect and resolve issues in your downstream branch (the variant) before merging, so you don’t introduce them into the main branch (the baseline). 
 
-  - When your target has a baseline defined, the [Security Tests tab](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) divides your issues into two lists:
+  - When your target has a baseline defined, the [Security Tests tab](/docs/security-testing-orchestration/dashboards/view-scan-results) divides your issues into two lists:
 
     - **Only in \<_target_>:\<_variant_>** Issues detected in the scanned variant only.
 
     - **Common to \<_target_>:\<_baseline_>** Issues also detected in the target baseline.
 
-  - While the **Security Tests** tab highlights downstream issues, the [STO Overview](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview) and [Security Testing Dashboard](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard) only show baseline issues. These views enable security personnel and other non-developers to monitor, investigate, and address issues in production-ready targets and view vulnerability trends over time.  
+  - While the **Security Tests** tab highlights downstream issues, the [STO Overview](/docs/security-testing-orchestration/dashboards/sto-overview) and [Security Testing Dashboard](/docs/security-testing-orchestration/dashboards/security-testing-dashboard) only show baseline issues. These views enable security personnel and other non-developers to monitor, investigate, and address issues in production-ready targets and view vulnerability trends over time.  
 
   - In short, baselines make it easy for developers to drill down into “shift-left” issues in the variants they're currently working on, and security personnel to monitor the security posture of production targets.
   
@@ -118,14 +118,7 @@ Harness recommends that you test your regular expression thoroughly before you a
 
 
 
-## Default RegEx baselines by target type
-
-:::note notes
-- Currently, this feature is behind the Feature Flag `STO_BASELINE_DEFAULTING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-- Harness recommends that you test your regular expression thoroughly before you apply it to Regex target default. For more information, go to:
-  - [RegEx baselines: important notes](#regex-baselines-important-notes)
-  - [Regex baseline examples](#regex-baseline-examples)
-:::
+## Default baselines based on regular expressions
 
 You can specify default baselines for specific target types: code repositories, container images, web/API instances, and infrastructure configurations. STO includes a set of predefined defaults for repository and container image targets.
 
@@ -136,6 +129,13 @@ You can specify default baselines for specific target types: code repositories, 
   - `v1.15.4` 
 
 - STO does not include predefined default RegEx baselines for application instances and configurations. 
+
+:::note notes
+
+- Harness recommends that you test your regular expression thoroughly before you apply it to Regex target default. For more information, go to:
+  - [RegEx baselines: important notes](#regex-baselines-important-notes)
+  - [Regex baseline examples](#regex-baseline-examples)
+:::
 
 To specify default RegExes:
 

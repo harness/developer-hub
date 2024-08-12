@@ -1,0 +1,26 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: linux-api-latency
+      spec:
+        components:
+          env:
+            # provide destination ports
+            - name: destinationPorts
+              value: '80,443'
+            # provide the api path filter
+            - name: pathFilter
+              value: '/status'
+            # provide the port of the target service
+            - name: targetServicePort
+              value: 80

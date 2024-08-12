@@ -2,6 +2,8 @@
 title: Erlang SDK reference
 description: This topic describes how to use the Harness Feature Flags Erlang SDK. For getting started quickly, you can use our sample code from the Erlang SDK README.
 sidebar_position: 15
+redirect_from:
+  - /docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference
 ---
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
@@ -49,8 +51,8 @@ Latest SDK version can be found on [GitHub Release Page](https://github.com/harn
 
 To follow along with our test code sample, make sure you:
 
-* [Create a Feature Flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag) on the Harness Platform called `harnessappdemodarkmode`.
-* [Create a server SDK key](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key) and made a copy of it.
+* [Create a Feature Flag](/docs/feature-flags/use-ff/ff-creating-flag/create-a-feature-flag) on the Harness Platform called `harnessappdemodarkmode`.
+* [Create a server SDK key](/docs/feature-flags/use-ff/ff-creating-flag/create-a-project#create-an-sdk-key) and made a copy of it.
 
 ## Install the SDK
 
@@ -156,7 +158,7 @@ To initialize the Erlang SDK:
 Targets are used to control which users see which variation of a Feature Flag. For example, if you want to do internal testing, you can enable the flag for some users but not others. When creating a target, you give it a name and a unique identifier. Targets are often users, but you can create a target from anything that can be uniquely identified, such as an app or a machine.
 </details>
 
-For more information about targets, go to [Target Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
+For more information about targets, go to [Target Users With Flags](/docs/feature-flags/use-ff/ff-target-management/targeting-users-with-flags).
 
 To create a target, create a map and add the following keys:
 
@@ -396,7 +398,7 @@ This will only affect evaluation log statements. The `log_level` you set applies
 
 The SDK by default starts up a single instance called `default` which is configured with your project API key.
 If different parts of your application need to use 
-specific [projects](/docs/feature-flags/ff-creating-flag/create-a-project/), you can start up additional client instances using by defining additional configuration for each unique project.
+specific [projects](/docs/feature-flags/use-ff/ff-creating-flag/create-a-project/), you can start up additional client instances using by defining additional configuration for each unique project.
 
 :::info note
 If the default instance fails to start, for example, due to an authentication error with the API key, then the SDK fails to boot and any additional instances do not start. To prevent the default instance from starting, 
@@ -624,7 +626,7 @@ go to [Erlang project config](#erlang-project-config) and [Elixir project config
 
 ### Use the Relay Proxy
 
-When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/relay-proxy/deploy-relay-proxy) you must change the default URL and events URL to `http://localhost:7000` when initializing the SDK. 
+When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/use-ff/relay-proxy/deploy-relay-proxy) you must change the default URL and events URL to `http://localhost:7000` when initializing the SDK. 
 
 To do this, pass the new URLs in when initializing the SDK, as shown below.
 

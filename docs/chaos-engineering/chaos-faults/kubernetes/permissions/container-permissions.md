@@ -1,6 +1,6 @@
 ---
 title: Fault container permissions
-sidebar_position: 3
+sidebar_position: 4
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/security-considerations/container-permissions
 - /docs/chaos-engineering/chaos-faults/kubernetes/security-considerations/container-permissions

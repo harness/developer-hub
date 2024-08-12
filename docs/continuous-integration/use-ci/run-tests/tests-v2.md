@@ -19,7 +19,6 @@ Currently, the Test step is behind the feature flag `CIE_ENABLE_RUNTEST_V2`. If 
 
 
 <!-- Doesn't include C#, Kotlin, or Scala yet. -->
-<!-- Will not include java error tracking (deprecated). -->
 
 ## Configure the Test step
 

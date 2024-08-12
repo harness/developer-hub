@@ -46,7 +46,7 @@ To use CE with CD using a selected experiment (though you can use many experimen
 
 * [Create a chaos experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md) and run it to make sure it runs to completion.
 
-* In the example below, the relevant [probes](/docs/chaos-engineering/features/probes/configure-and-add-probe.md) are added to avoid a false positive or false negative scenario around the resilience score.
+* In the example below, the relevant [probes](/docs/chaos-engineering/features/resilience-probes/use-probe.md) are added to avoid a false positive or false negative scenario around the resilience score.
 
 	![Completed chaos experiments with probes shown](./static/exp-run-complete-with-probes.png)
 

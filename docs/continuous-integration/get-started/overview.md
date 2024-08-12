@@ -22,7 +22,7 @@ For information about general Harness Platform concepts and features, go to [Har
 
 In Harness CI, you model your build and test workflows in pipelines. Within pipelines, work is divided into stages. Each stage can include steps that build and test code, upload artifacts, send notifications, and more. You can run pipelines manually or set up automated triggers.
 
-CI pipeline steps run as containers, making it language-agnostic. Containers are lightweight abstractions of the host operating system that can package code and dependencies independently of the steps. You can specify a container in the pipeline itself, and the agent will fetch and start the container where the job runs. Because all of the steps run in containers, and plugins have their own containers, you don't need to worry about dependencies.
+CI pipeline steps run as containers, making it language-agnostic. Containers are lightweight abstractions of the host operating system that can package code and dependencies independently of the steps. You can specify a container in the pipeline itself, and the agent will fetch and start the container where the job runs. Because all the steps run in containers, and plugins have their own containers, you don't need to worry about dependencies.
 
 <details>
 <summary>Video: Introduction to Harness CI</summary>

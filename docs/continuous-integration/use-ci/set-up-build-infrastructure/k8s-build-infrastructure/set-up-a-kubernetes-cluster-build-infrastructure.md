@@ -58,6 +58,7 @@ Make sure your Kubernetes cluster meets the following requirements:
 * The cluster has the [roles and policies required for builds](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#roles-and-policies-for-the-connector).
 * If required for your builds, the cluster supports [privileged mode for Docker-in-Docker](#docker-in-docker-requires-privileged-mode) and allows [root access for Build and Push steps](#build-and-push-steps-require-root-access).
 * If you use Istio MTLS Strict mode, you [added a headless service](#create-headless-service-for-istio-mtls-strict-mode).
+* Port 20001 needs to be open on the Kubernetes infrastructure because the Harness delegate communicates with the Lite Engine using this port.
 
 ### Docker-in-Docker requires privileged mode
 

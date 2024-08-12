@@ -49,8 +49,13 @@ This guide describes the steps a Harness account admin can take to set up the ID
     - Bitbucket Server
   - Azure Repository
 
-- Only HTTP mode is supported. SSH connection type is not supported.
 - API access is needed in the connector for the IDP catalog setup.
+
+- Only HTTP mode is supported. SSH connection type is not supported.
+
+Backstage doesn't support SSH auth type for integrations, hence only HTTP connection is supported for all the git provider based connectors in IDP.
+
+API calls in IDP are used to fetch YAML data, last commit SHA, and detect any new changes. SSH authentication cannot be used for making these API calls; it is only used for cloning repositories. Therefore, the main Git connector for IDP Git integration must support API requests, hence HTTP is only supported
 
 :::
 
@@ -101,9 +106,7 @@ import TabItem from '@theme/TabItem';
 
 ## Limitations
 
-At present you can't view and edit source for software components added from Harness Code Repository, this will be available on the next upgrade. 
-
-![](static/edit-view-source.png)
+At present we only support [repositories](https://developer.harness.io/docs/code-repository/config-repos/create-repo#create-a-repository) created at **project** [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes), the support for account and organization level repositories will be available in upcoming releases. 
 
 :::
 

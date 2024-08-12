@@ -130,8 +130,8 @@ The report displays the breakdown of the base values that contribute to the Trel
 </thead>
 <tbody>
 <tr>
-<td>PRs</td>
-<td>Total number of pull requests contributed by the contributor in the selected time range.</td>
+<td>PRs Merged</td>
+<td>Total number of Pull Requests created by a developer that has been merged within the selected time frame.</td>
 </tr>
 <tr>
 <td>Commits</td>
@@ -215,7 +215,7 @@ Complete the widget settings and select **Next: Place Widget**, place the widget
 
 ### Calculation
 
-The report displays the breakdown of the base values that contribute to the Trellis Score calculation for each Collection. The following metrics are included:
+The report displays the breakdown of the base values as average that contribute to the Trellis Score calculation for each Collection. The following metrics are included:
 
 <table>
 <tr>
@@ -223,8 +223,8 @@ The report displays the breakdown of the base values that contribute to the Trel
 <td><b>Description</b></td>
 </tr>
 <tr>
-<td>PRs</td>
-<td>Average number of pull requests contributed by all the contributors under the respective Collection in the selected time range.</td>
+<td>PRs Merged</td>
+<td>The average number of pull requests merged by all the contributors under the respective Collection in the selected time range.</td>
 </tr>
 <tr>
 <td>Commits</td>

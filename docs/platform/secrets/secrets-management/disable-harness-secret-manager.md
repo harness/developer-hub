@@ -1,7 +1,7 @@
 ---
 title: Disable built-in secret manager
 description: Disable Harness built-in Secret Manager.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: p8rcsfra01
 helpdocs_category_id: 48wnu4u0tj
 helpdocs_is_private: false
@@ -19,8 +19,8 @@ This topic explains how to disable the built-in Harness Secret Manager.
 * [Harness Secret Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
 * [Add a Secret Manager](/docs/platform/get-started/tutorials/add-secrets-manager.md)
 * [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
-* Make sure you have Account Admin permissions to disable the built-in Secret Manager.  
-For more information, go to [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference).
+* Make sure you have Account Admin permissions to disable the built-in Secret Manager.
+For more information, go to [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference).
 
 ### Important notes
 
@@ -33,7 +33,7 @@ Harness always stores secrets in encrypted form and decrypts them when they are 
 
 By default, Harness provides a built-in Secret Manager that you can use to store your secrets or you can create your own Secret Manager and use that instead. Every new organization or project that you create comes with a built-in Secret Manager by default. The default Secret Manager in Harness is Google Cloud Key Management Service, which is called Harness Built-in Secret Manager.
 
-The Key Management Service only stores the key. Harness uses [envelope encryption](https://cloud.google.com/kms/docs/envelope-encryption) to encrypt and decrypt secrets. The encrypted secret and the encrypted Data Encryption Key (used for envelope encryption) are stored in the Harness database. 
+The Key Management Service only stores the key. Harness uses [envelope encryption](https://cloud.google.com/kms/docs/envelope-encryption) to encrypt and decrypt secrets. The encrypted secret and the encrypted Data Encryption Key (used for envelope encryption) are stored in the Harness database.
 
 ### Disable Harness Built-in Secret Manager
 

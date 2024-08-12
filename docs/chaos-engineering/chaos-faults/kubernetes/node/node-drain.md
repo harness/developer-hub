@@ -2,7 +2,8 @@
 id: node-drain
 title: Node drain
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-drain
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-drain
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-drain
 ---
 
 Node drain drains the node of all its resources running on it. Due to this, services running on the target node should be rescheduled to run on other nodes.
@@ -17,6 +18,46 @@ Node drain drains the node of all its resources running on it. Due to this, serv
 - It simulates node maintenance activity (hardware refresh, OS patching, Kubernetes upgrade).
 - It verifies resource budgeting on cluster nodes (whether request (or limit) settings are honored on available nodes).
 - It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: node-drain
+spec:
+  definition:
+    scope: Cluster
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/exec"]
+    verbs: ["get", "list", "create"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pod eviction"]
+    verbs: ["get", "list", "create]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16
@@ -59,9 +100,14 @@ Node drain drains the node of all its resources running on it. Due to this, serv
         <td> Default: 60 s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
       </tr>
       <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+        <td> NODES_AFFECTED_PERC </td>
+        <td> Percentage of total nodes to target, that takes numeric values only. </td>
+        <td> Default: 0 (corresponds to 1 node). For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#node-affected-percentage">node affected percentage.</a></td>
+      </tr>
+      <tr>
+        <td> SEQUENCE </td>
+        <td> Sequence of chaos execution for multiple target pods. </td>
+        <td> Default: parallel. Supports serial sequence as well. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
     </table>
 

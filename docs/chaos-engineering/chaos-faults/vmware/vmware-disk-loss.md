@@ -17,7 +17,7 @@ VMware disk loss detaches the disks that are attached to a Linux OS based VMware
 - Kubernetes > 1.16 is required to execute this fault.
 - The VM should be in a healthy state before and after injecting chaos.
 - The target disks should be attached to the VM.
-- Execution plane should be connected to vCenter and host vCenter on port 443. 
+- Execution plane should be connected to vCenter and host vCenter on port 443.
 - VMware tool should be installed on the target VM with remote execution enabled.
 - Appropriate vCenter permissions should be provided to access the hosts and the VMs.
 - Create a Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:

@@ -71,7 +71,7 @@ $ kubectl apply -f harness-chaos-enable.yml
 
 ### Environment variable and secret usage references in source mode of command probe
 
-You can use secrets and environment variables in the [**source mode**](/docs/chaos-engineering/features/probes/cmd-probe#source-mode) of the command probe using the manifest in the following manner:
+You can use secrets and environment variables in the [**source mode**](/docs/chaos-engineering/features/resilience-probes/cmd-probe#source-mode) of the command probe using the manifest in the following manner:
 
 ```yaml
 source:

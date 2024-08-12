@@ -201,10 +201,26 @@ The **Use Connector credentials** setting is limited to Harness Git Connectors u
 
 When configuring the SSH key for the connector, exporting an SSH key with a passphrase for the module source is not supported. Configure an SSH Key without the passphrase.
 
-Here are some syntax examples to reference the Terraform module using the SSH protocol:
+Here is a syntax example to reference the Terraform module using the SSH protocol:
 
 ```bash
 source = "git@github.com:your-username/your-private-module.git"
+```
+
+Here is a syntax example to reference the Terraform module using the HTTPS protocol:
+
+```bash
+source = "git::https://github.com/your-organization/your-private-module.git"
+```
+
+:::tip
+
+The ability to authenticate with HTTPS is new! Here is a demo on its functionality:
+
+<DocVideo src="https://www.loom.com/share/bb8b9e4996f14bf0a16839849b0b72e4?sid=3befc405-7c4d-4f21-afe0-c36e2962b566" />
+
+:::
+
 ## Workspace
 
 Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
@@ -214,7 +230,6 @@ Workspaces are useful when testing changes before moving to a production infrast
 A workspace is really a different state file. Each workspace isolates its state from other workspaces. For more information, see [When to use Multiple Workspaces](https://www.terraform.io/docs/state/workspaces.html#when-to-use-multiple-workspaces) from Hashicorp.
 
 Here's an example script where a local value names two workspaces, **default** and **production**, and associates different instance counts with each:
-
 
 ```json
 locals {  
@@ -233,6 +248,8 @@ resource "aws_instance" "my_service" {
     }  
 }
 ```
+
+
 In the workspace interpolation sequence, you can see the count is assigned by applying it to the Terraform workspace variable (`terraform.workspace`) and that the tag is applied using the variable also.
 
 Harness will pass the workspace name you provide to the `terraform.workspace` variable, thus determining the count. If you provide the name **production**, the count will be **3**.
@@ -489,9 +506,9 @@ Once you enable this option and run a CD stage with the Terraform Plan step, you
 
 The format for the expression is:
 - **humanReadableFilePath**:
-  - `<+terraformPlanHumanReadable."pipeline.stages.[stage Id].spec.execution.steps.[step Id].tf_planHumanReadable">`
+  - `<+terraformPlanHumanReadable."pipeline.stages.[stage Id].spec.execution.steps.[step Id].[Provisioner Identifier]_planHumanReadable">`
 
-For example, if the Terraform Plan stage and step Ids are `tf` then you would get the following expressions:
+For example, if the Terraform Plan stage, step Ids, and Terraform provisioner identifier are `tf` then you would get the following expressions:
 
 - **humanReadableFilePath**:
   - `<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">`
