@@ -1,5 +1,5 @@
 ---
-title: Run Snyk scans and ingest results
+title: Run Snyk scans and ingest results (will be removed while merging)
 description: Procedures and examples for running Snyk scans and ingesting results.
 sidebar_position: 20
 redirect_from: /docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans
