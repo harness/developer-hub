@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-07-23:T10:00:00
+date: 2024-08-12:T10:00:00
 sidebar_position: 8
 ---
 
@@ -46,6 +46,21 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 ## August 2024
+
+### Version 1.51.5
+
+#### Behavior changes
+
+- Previously, in pipeline chaining, if the child pipeline was in a wait step, the child pipeline status would show as **Waiting** state whereas the parent pipeline status would show as **Running** state. This behavior is changed to show both parent and child pipeline status to show as **Waiting** state. Currently this feature is behind the Feature Flag `PIPE_MARK_PARENT_PIPELINE_STATUS_WAITING_AS_CHILD`. Contact [Harness support](mailto:support@harness.io) to enable it. (PIPE-20448, ZD-66154,66618,67697)  
+
+#### Fixed issues
+
+- The output tab in the pipeline console previously displayed incorrect details for retries when viewed in console mode. This issue has been resolved by ensuring that the correct step ID is passed for retry steps, allowing accurate details to be shown in the output tab.(PIPE-20648, ZD-67024)
+- While connecting to the Git sync service, a connection error was being thrown. This issue is fixed by increasing the retry policy from 1 to 3. (PIPE-20589, ZD-67247,67488)
+- The pipeline deployed using the rolling deployment were encountering a `NotificationTargetARN` error. This issue is resolved now with support for adding lifecycle hooks with different notificationARNs and roles during the time of creation of ASG. (CDS-99460, ZD-67371)
+- Users were unable to delete services that had been soft deleted from the service dashboard page. This issue has been resolved by adding functionality to support the deletion of these services. (CDS-99344, ZD-67225)
+- When renaming a file by adding an extension to the file name in the Harness File Store, the file's content was previously deleted. This issue has been fixed to ensure that file content is maintained when updating file metadata in the File Store. (CDS-99202, ZD-66962)
+- The K8s manifest connector runtime field was not visible in the run pipeline form. This issue has been resolved, and the runtime field is now visible in both the run pipeline form and the input set form. (CDS-99171, ZD-66902)
 
 ### Version 1.49.7
 
