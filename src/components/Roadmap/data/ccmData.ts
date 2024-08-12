@@ -312,6 +312,20 @@ export const CcmData: Horizon = {
     feature: [
       {
         tag: [],
+        title: "Anomaly Detection 2.0",
+        description:
+          "Enhanced anomaly detection capabilities with drill-down analysis. Includes support for cost category anomalies, customizable workflows, and preferences for setting percentage deviations and minimum cost thresholds. ",
+        backgroundColor: "var(--blue-100)",
+      },
+      {
+        tag: [],
+        title: "Inventory Management for all resource types on-demand in Asset Governance ",
+        description:
+          "Real-time visibility and control over assets integrated with Asset Governance to ensure compliance and optimize resource utilization.",
+        backgroundColor: "var(--blue-100)",
+      },
+      {
+        tag: [],
         title: "Cost Anomaly Preferences ",
         description:
           "Global preferences to select percentage deviation, minimum cost thresholds",
@@ -338,16 +352,9 @@ export const CcmData: Horizon = {
           "Workload-driven intelligent node autoscaling with distributed spot orchestration",
         backgroundColor: "var(--blue-100)",
       },
-      {
-        tag: [],
-        title: "Cloud Asset Governance - IaCM Integration ",
-        description:
-          "Shifting left FinOps-as-code guardrails to prevent leaks at the point of infrastructure provisioning",
-        backgroundColor: "var(--blue-100)",
-      },
     ],
   },
-  "Next": {
+  "Q4 CY'24": {
     description: "Q4 CY'24, Nov-Jan 2025",
     feature: [
       {
