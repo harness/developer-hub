@@ -136,7 +136,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.78.8 |
 | Platform Service | 1.26.3 |
 | Access Control Service | 1.48.3 |
-| Delegate | 24.06.83204 |
+| Delegate | 24.06.83205 |
 | Change Data Capture | 1.18.0 |
 | STO Core | 1.97.2 |
 | Test Intelligence Service | 1.17.0 |
