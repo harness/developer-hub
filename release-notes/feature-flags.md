@@ -21,6 +21,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Javascript SDK
 
+#### Version 1.27.0-rc.0
+
+**Fixed issues**:
+ - Added `maxStreamRetries` config option. (FFM-11788, ZD-66828)
+ - If retries are exhausted, one of these two states would occur:
+    1. If polling is enabled, the SDK would remain in polling mode and no further streaming reconnection attempts would be made. The default polling option, if not supplied, is whatever the `streamingEnabled` value is or,
+    2. If polling is disabled, the SDK would not get any further evaluation updates for the remainder of the SDK client instance's life. The SDK would need re-initialised, e.g the app being restarted, to get new evaluations in this state.
+
 #### Version 1.26.3
 
 **Fixed issues**:
