@@ -132,9 +132,12 @@
   margin-top: 2em;
 }
 .illustrationContainer {
-  width: 80%;
+  width: 100%;
+  background-color: #0278d5;
+  display: flex;
+  justify-content: center;
   .illustration {
-    width: 100%;
+    width: 80%;
     // height: 500px;
   }
 }

@@ -38,7 +38,13 @@ export default function Code() {
           <div className={styles.content}>
             <p>
               Learn how you can accelerate development with security at scale.
-            </p>
+            </p>{" "}
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={`${baseUrl}img/Code_Repo_Landing_Page.svg`}
+              />
+            </div>
           </div>
         </div>
       </div>
