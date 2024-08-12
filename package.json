@@ -1,6 +1,6 @@
 {
   "name": "harness-developer-hub",
-  "version": "3.4.0",
+  "version": "3.5.1",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -19,16 +19,16 @@
     "test": "npm run lint:ci"
   },
   "dependencies": {
-    "@docusaurus/core": "3.4.0",
-    "@docusaurus/cssnano-preset": "3.4.0",
-    "@docusaurus/plugin-client-redirects": "3.4.0",
-    "@docusaurus/plugin-debug": "3.4.0",
-    "@docusaurus/plugin-google-analytics": "3.4.0",
-    "@docusaurus/plugin-google-gtag": "3.4.0",
-    "@docusaurus/plugin-sitemap": "3.4.0",
-    "@docusaurus/preset-classic": "3.4.0",
-    "@docusaurus/theme-classic": "3.4.0",
-    "@docusaurus/theme-mermaid": "3.4.0",
+    "@docusaurus/core": "3.5.1",
+    "@docusaurus/cssnano-preset": "3.5.1",
+    "@docusaurus/plugin-client-redirects": "3.5.1",
+    "@docusaurus/plugin-debug": "3.5.1",
+    "@docusaurus/plugin-google-analytics": "3.5.1",
+    "@docusaurus/plugin-google-gtag": "3.5.1",
+    "@docusaurus/plugin-sitemap": "3.5.1",
+    "@docusaurus/preset-classic": "3.5.1",
+    "@docusaurus/theme-classic": "3.5.1",
+    "@docusaurus/theme-mermaid": "3.5.1",
     "@mdx-js/react": "^3.0.0",
     "@netlify/functions": "^2.7.0",
     "@segment/analytics-next": "^1.70.0",
@@ -42,19 +42,19 @@
     "react-dom": "^18.2.0",
     "react-markdown": "^9.0.1",
     "react-modal": "^3.16.1",
-    "react-router-dom": "^6.21.1",
+    "react-router-dom": "^6.26.0",
     "rehype-katex": "7",
     "remark-math": "6",
     "sass": "^1.69.5",
-    "update-notifier": "^7.0.0"
+    "update-notifier": "^7.2.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.4.0",
-    "@docusaurus/tsconfig": "3.4.0",
+    "@docusaurus/module-type-aliases": "3.5.1",
+    "@docusaurus/tsconfig": "3.5.1",
     "dictionary-en": "^4.0.0",
-    "eslint": "^8.56.0",
+    "eslint": "^9.9.0",
     "eslint-plugin-react": "^7.33.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.5.4"
   },
   "browserslist": {
     "production": [
