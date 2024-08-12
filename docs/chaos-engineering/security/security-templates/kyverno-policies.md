@@ -12,7 +12,7 @@ This section describes Kyverno policies that enforce runtime security.
 [Kyverno policies](https://kyverno.io/policies/pod-security/) block configurations that don't match a policy (enforce mode) or can generate policy violations (audit mode). It scans existing configurations and reports violations in the cluster.
 CE recommends using the provided policy configuration to enable the execution of all supported (out-of-the-box) experiments listed in the Enterprise ChaosHub. This is only a recommendation and is left to user discretion depending on the experiments desired.
 
-The details listed here are expected to aid users of Kyverno. To use alternate means to enforce runtime security, such as native Kubernetes PSPs (pod security policies), use [PSP](/docs/chaos-engineering/security/security-templates/psp).
+The details listed here are expected to aid users of Kyverno. To use alternate means to enforce runtime security, such as native Kubernetes PSPs (pod security policies), use PSP.
 
 ## Policies in HCE
 

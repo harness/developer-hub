@@ -15,10 +15,10 @@ The deployments that comprise the chaos infrastructure and the transient experim
 
 Pod network fault and stress faults require container-runtime-specific operations like entering the network and pid namespaces. The operations require privilege escalation, manipulating the cgroup, and so on. In these cases, some of the pods are designed to run with privileged containers and root users. These pods also mount the runtime-specific socket files from the underlying host. However, note that such pods are short-lived (they exist for the duration of chaos) and can be run only if the users equip the service accounts with access to the right security policy.
 
-To enable the execution of such experiments, Harness recommends the security policy templates ([PSP](/docs/chaos-engineering/security/security-templates/psp), [OpenShift SCC](/docs/chaos-engineering/security/security-templates/openshift-scc), and [Kyverno](/docs/chaos-engineering/security/security-templates/kyverno-policies)).
+To enable the execution of such experiments, Harness recommends the security policy templates (PSP, OpenShift SCC, and Kyverno).
 
 ## Next steps
 
-- [Openshift Security Context Constraint](/docs/chaos-engineering/security/security-templates/openshift-scc)
-- [Pod Security Policy](/docs/chaos-engineering/security/security-templates/psp)
-- [Kyverno policies](/docs/chaos-engineering/security/security-templates/kyverno-policies)
+- Openshift Security Context Constraint
+- Pod Security Policy
+- Kyverno policies
