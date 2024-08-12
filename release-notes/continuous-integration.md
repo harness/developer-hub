@@ -21,6 +21,26 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+## August 2024
+
+### Version 1.41
+
+<!-- 2024-08-05 -->
+
+#### Fixed issues
+
+- Removed the CI onboarding flow for new projects on SMP environments, where users were previously directed to a **Get Started** page that could fail due to `clientSecret` setup for Stripe. Now, customers will be directed to the **Overview** page instead. Upcoming releases will include changes to completely remove the **Get Started** option from the side navigation for SMP customers, ensuring it is no longer visible. (CI-13687)
+
+- Fixed an issue where external endpoints were used for internal service communication, causing token authentication failures and 401 errors. The issue was resolved by ensuring internal communication for the services. (CI-13686)
+
+- Introduced the `CI_PR_MERGE_STRATEGY_BRANCH` flag to enable the **Merge Commit Strategy** for Git clone, addressing previous issues with the GitHub API. Additionally, a stage variable `PR_MERGE_STRATEGY_BRANCH` has been added. Both the **Merge Commit** and **Source Branch** strategies now function as expected. (CI-13625, ZD-67476)
+
+- Improved error message for anonymous base image connector. (CI-13562)
+
+- Fixed an issue where pipelines were getting queued when running concurrently. The fix ensures that the flush API log lines are sanitized to be less than 4MB, avoiding grpc `ResourceExhausted` failures. (CI-12879, ZD-64595)
+
+- Fixed issues where the Git status update was not being sent to PRs and the PR link in the execution pipeline was incorrect, redirecting back to the same execution link. The PR link redirect was not working for the input expression `<+trigger.payload.pull_req.number>`, so support for this expression has been added. (CI-11759)
+
 ## July 2024
 
 ### Version 1.39
