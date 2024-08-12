@@ -2253,7 +2253,7 @@ To enable debug logging, set the environment variable to `DEBUG=true`. For more 
 
 #### An issue is reported where cloned pipelines after being updated to fetch a different key for cache are fetching the new key as well as the original key of which gives a 404/failure as expected because it does not exist.  How do we circumvent this?
 
-To prevent a failure due to different keys being fetched and using from cache, introduce a new stage variable in the restore step viz PLUGIN_ENABLE_SEPARATOR = true. 
+To prevent a failure due to different keys being fetched and using from cache, introduce a new stage variable in the restore step via `PLUGIN_ENABLE_SEPARATOR = true`. 
 This would enable the pipeline to use cache keys with same prefix without fetching other pipelines cache. If one does not wish to use the stage variable, one will have to make sure that any two pipelines do not have cache-keys with exact same prefix.
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
