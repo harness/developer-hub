@@ -25,8 +25,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 **Fixed issues**:
  - The following CVEs have been patched:
-    - [ws(npm)](https://github.com/advisories/GHSA-3h5v-q93c-6h6q)
-    - [braces(npm)](https://github.com/advisories/GHSA-grv7-fg5c-xmjg)
+    - [ws](https://github.com/advisories/GHSA-3h5v-q93c-6h6q)
+    - [braces](https://github.com/advisories/GHSA-grv7-fg5c-xmjg)
 
 ## July 2024
 
