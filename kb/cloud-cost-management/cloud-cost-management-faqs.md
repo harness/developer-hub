@@ -179,6 +179,10 @@ While the LIKE operator provides flexibility in capturing future instance types,
 
 We can remove the no cluster name field, by adding a filter to perspective where Cluster name equals not null.
 
+### Perspective creation governed by RBAC?
+
+Yes, we can control it through folders.
+
 ## Cost Category
 
 ### If a resource (cost) aligns with rules in different cost category buckets, what happens? Does it go into the highest-priority bucket from the list of buckets for the first match?
@@ -448,6 +452,18 @@ To achieve this use case, you can first remove the tags and than add the req tag
 
 We can filter resource based on resource having alerts greater than a threshold value. The policy should target azure.alert-logs to filter through the alert logs.
 
+### Why am I receiving [azure.core.exceptions.HttpResponseError: (AuthorizationFailed)] when setting up tags in Azure?
+
+This error may occur if the Tag Contributor role is not assigned at the correct scope or if there are deny assignments or policies blocking the action. Ensure the role is assigned at the appropriate scope
+
+### How can I ensure the Tag Contributor role is effective for setting up tags in Azure?
+
+To ensure the Tag Contributor role is effective, verify that it is assigned at the correct scope covering the necessary resource group and ensure there are no deny assignments or policies blocking the required actions. This will enable proper tagging of resources in your Azure environment.
+
+### How do I check for deny assignments or policies that might be causing the authorization error in Azure?
+
+To check for deny assignments or policies, navigate to the Azure portal, select the relevant subscription/resource group, and review the Access Control (IAM) section. Look for any deny assignments or policies that explicitly prevent the required actions. Remove or adjust these as needed to resolve the authorization issue.
+
 ## Autostopping
 
 ### If we configure an autostopping rule with multiple instances, but a single routing rule. does the proxy load balance between the instances?
@@ -551,6 +567,10 @@ To onboard and access an RDS instance/cluster with Autostopping, you have severa
 2. **Set Uptime Fixed Schedule**: Establish an uptime fixed schedule for the RDS cluster during working hours. Harness ensures the cluster is operational according to this schedule.
 
 3. **Use RDS Autostopping Rule as Dependency**: Employ the RDS Autostopping rule as a dependency for another Autostopping rule, such as one for an EC2 instance. When the parent resource (e.g., EC2) is operational, Harness ensures that the dependent resource (RDS) remains running as well.
+
+### Can we schedule several VMs to stop in order via an autostopping rule?
+
+You can configure dependencies for the rule in this case: [Doc](https://developer.harness.io/kb/cloud-cost-management/articles/autostopping/aws/#dependencies) You can define a dependency on another autostopping rule, ensuring that the dependent rule is active when the rule with the configured dependency is active.
 
 ### We see the error "Failed to obtain VM with name xxxx of resource group" in autostopping rule logs. What does this mean?
 
