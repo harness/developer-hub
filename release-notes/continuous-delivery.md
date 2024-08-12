@@ -62,7 +62,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Users were unable to delete services that had been soft deleted from the service dashboard page. This issue has been resolved by adding functionality to support the deletion of these services. (CDS-99344, ZD-67225)
 - When renaming a file by adding an extension to the file name in the Harness File Store, the file's content was previously deleted. This issue has been fixed to ensure that file content is maintained when updating file metadata in the File Store. (CDS-99202, ZD-66962)
 - The K8s manifest connector runtime field was not visible in the run pipeline form. This issue has been resolved, and the runtime field is now visible in both the run pipeline form and the input set form. (CDS-99171, ZD-66902)
-- 
 
 ### Version 1.49.7
 
