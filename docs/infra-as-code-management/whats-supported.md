@@ -68,3 +68,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables the creation of a new project with default configuration </td>
     </tr>
 </table>
+
+## Supported plugins
+
+IaCM supports external plugins to enhance its usability and security. 
+- [Wiz Scans](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz) to check your proposed infrastructure changes for security vulnerabilities.

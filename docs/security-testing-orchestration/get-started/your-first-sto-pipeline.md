@@ -1,7 +1,7 @@
 ---
 title: Your first STO pipeline
 description: Set up a simple pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
-sidebar_position: 20
+sidebar_position: 30
 redirect_from:
   - /tutorials/security-tests/standalone-pipeline
   - /tutorials/security-tests/cicd-integrated-pipeline
@@ -26,7 +26,7 @@ This tutorial shows you how to use the Harness Security Testing Orchestration (S
 In addition to a Harness account, this tutorial requires the following:
 
 - A Harness account and STO module license.
-- You need to have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned to your user profile.
+- You need to have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#add-security-testing-roles) assigned to your user profile.
 - You also need a GitHub account and a [connector](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-a-codebase-connector) to your GitHub account.
   This tutorial uses an [example codebase on GitHub](https://github.com/williamwissemann/dvpwa) that contains known vulnerabilities.
 
@@ -104,7 +104,7 @@ Every STO scan has a specific [target name and variant](/docs/security-testing-o
 
 </details>
 
-import set_up_harness_26 from './static/configure-bandit-step.png'
+import set_up_harness_26 from './static/your-first-pipeline/configure-bandit-step.png'
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -118,7 +118,7 @@ import TabItem from '@theme/TabItem';
 
    1. Scan Mode = **Orchestration**
 
-      Indicates that this is an [orchestrated scan](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) that runs the scan and ingests the results in one step.
+      Indicates that this is an [orchestrated scan](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) that runs the scan and ingests the results in one step.
 
    2. Target name — Click the value-type selector (tack button to the right of the input field) and select **Runtime input**. You'll specify this and other values when you run the pipeline.
 
@@ -135,7 +135,7 @@ Add a `Bandit` step to your `SecurityTests` stage and configure it as follows.
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`
-  - `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
+  - `mode :` [`orchestration`](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
   - `config: default`
     - `target : `
       - `name : <+input>`
@@ -296,7 +296,7 @@ Here's an example of a container image vulnerability detected by a paid version 
 
 Harness AIDA™ uses state-of-the-art AI technology to streamline the process of triaging and fixing security vulnerabilities. Harness AIDA is based on large, well-trained language models. It learns continuously based on feedback and the latest public knowledge. Optionally, you can regenerate advice with additional context and thereby optimize your results.
 
-For more information, go to [Fix issues using AI-enhanced remediation steps](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+For more information, go to [Fix issues using AI-enhanced remediation steps](/docs/security-testing-orchestration/remediations/ai-based-remediations).
 
 ### Fail pipelines on severity
 
@@ -430,7 +430,11 @@ You've now learned the core STO features and workflows. Here are the next steps 
 
 You know how to implement pipelines when scanners detect security issues, and how to create Ignore Rules for specific issues. Once you set up your Security Test steps, baselines, and exemptions, you can add more stages and steps to implement your CI/CD workflows.
 
-For some examples of integrated workflows, go to [Build/scan/push workflows for container images in STO](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-workflows).
+For some examples of integrated workflows, go to:
+
+- [(STO license) Create a build-scan-push pipeline](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-workflows/build-scan-push-sto-only)
+
+- [(STO/CI licenses) Create a build-scan-push pipeline](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-workflows/build-scan-push-sto-ci)
 
 ### Add more scanner steps
 

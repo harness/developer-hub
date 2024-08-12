@@ -17,54 +17,89 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 :::
 
+### Azure DevOps Integration: New Onboarding
+
+* **Release date:** June 2024
+* **Issue number:** SEI-6838
+* **Feature flag:** SEI_IS_AZURE_NEW_ONB_ENABLED
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Access the new PAT-based authentication option for Azure DevOps integration.
+
+[Go To Documentation](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
+
+### Business Alignment: Active Work Measurement
+
+* **Release date:** June 2024
+* **Issue number:** SEI-6838
+* **Feature flag:** SEI_BA_INCLUDE_UNRESOLVED_ISSUES
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Allows you to use the Business Alignment report to calculate alignment metrics for tickets that are in the In Progress status category and those that have been resolved (i.e., Done status category) within a specific duration of time.
+
+[Go To Documentation](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report)
+
+### Business Alignment
+
+* **Release date:** June 2024
+* **Issue number:** SEI-6838
+* **Feature flag:** SEI_NEW_BA_PROFILES, SEI_NEW_BA_COMBINED_WIDGET
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enable this flag to access the new [Business Alignment profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile) and the associated [Business Alignment report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report).
+
+[Go To Documentation](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile)
+
 ### ServiceNow integration
 
 * **Release date:** May 2024
 * **Issue number:** SEI-6838
-* **Feature flag:** `SEI_SERVICE_NOW`
+* **Feature flag:** SEI_SERVICE_NOW
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Integrate SEI with the ServiceNow Platform. This integration is still under development.
+Integrate SEI with the ServiceNow Platform.
 
-### New Sprint Metrics
+[Go To Documentation](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow)
+
+### Expanded Sprint Metrics
 
 * **Release date:** April 2024
 * **Issue number:** SEI-6066
 * **Feature flag:** `SEI_SHOW_ALL_METRICS`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Allows you to configure the Sprint Metrics Percentage Trend report using the new Sprint metrics.
+Adds new metrics to Sprint Metrics Percentage Trend report.
 
-### Issue Backlog Trend Report (Display historical data for the current issues)
+### Issue Backlog Trend: Historical Data
 
 * **Release date:** April 2024
 * **Issue number:** SEI-6369
 * **Feature flag:** `SEI_SHOW_HISTORICAL_FILTERS`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Allows you to configure the Issue Backlog Trend report to display historical data for the current issues.
+Shows historical data for current issues in Issue Backlog Trend report.
 
 [Go To Documentation](/docs/software-engineering-insights/early-access/metrics-reports/issue-backlog-trend-report)
 
-### Support for the Themes filter on the DORA profile
+### PagerDuty Themes Filter
 
 * **Release date:** April 2024
 * **Issue number:** SEI-6442
 * **Feature flag:** `SEI_THEME_BASED_DORA`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Enables you to configure the DORA profile to establish a theme-based correlation between Pull Requests and Deployments.
+Allows theme-based correlation between PRs and Deployments in DORA profile.
 
 [Go To Documentation](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile)
 
-### Use the PagerDuty integration to generate the DORA MTTR report
+### PagerDuty: DORA MTTR Report
 
 * **Release date:** March 2024
 * **Issue number:** ECOE-118
 * **Feature flag:** `SEI_MTTR_PAGERDUTY_ENABLED`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Enables you to measure the incident recovery time using the DORA MTTR report for the PagerDuty integration.
+Measures incident recovery time using DORA MTTR report for PagerDuty integration.
 
 [Go To Documentation](/docs/software-engineering-insights/early-access/metrics-reports/mttr-incident-recovery)
 
@@ -97,7 +132,7 @@ Enable this Feature Flag if you want to use the new user experience for Collecti
 * **Feature flag:** `SEI_SHOW_TRELIS_NEW_INTERVAL`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Enables the Trellis Profile configuration using Trellis Factors at the Central Profile. This feature is in BETA.
+Enables the Trellis Profile configuration using Trellis Factors at the Central Profile.
 
 [Go To Documentation](/docs/software-engineering-insights/early-access/profiles/sei-trellis-factors)
 

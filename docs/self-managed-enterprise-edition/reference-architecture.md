@@ -46,7 +46,7 @@ Override files are available in the Harness [Helm chart repo](https://github.com
 
 #### Example installation and upgrade commands
 
-You can use the following commands to upgrade/install via Helm for each profile. For complete Helm installation instructions, go to [Install using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga).
+You can use the following commands to upgrade/install via Helm for each profile. For complete Helm installation instructions, go to [Install using Helm](/docs/self-managed-enterprise-edition/install/install-using-helm).
 
 ##### Demo
 

@@ -28,7 +28,7 @@ A list of all registered custom actions can be found under
 
 ### 1. `trigger:harness-custom-pipeline`
 
-This custom action requires **pipeline variables**(`<+pipeline.variables.VARIABLE_IDENTIFIER>`) as input along with the pipeline url, and then trigger the pipeline based in the inputset obtained from the user. 
+This custom action requires **pipeline variables**(`<+pipeline.variables.VARIABLE_IDENTIFIER>`) as input along with the **pipeline url**(for pipelines using [Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview) make sure your url includes `branch` and `repoIdentfier`), and then trigger the pipeline based in the `inputset` obtained from the user. 
 
 ```YAML
 ...

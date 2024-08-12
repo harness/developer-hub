@@ -22,6 +22,12 @@ Harness Delegate connects to Harness Manager over an outbound HTTPS/WSS connecti
 
 The delegate connects to Harness Manager (via SaaS) over a Secure WebSockets channel (WebSockets over TLS). The channel is used to send notifications of delegate task events and to exchange connection heartbeats. The channel is not used to send task data itself.
 
+:::note
+By default Harness delegate makes an outbound call to app.harness.io and stackdriver. When you configure a Harness Connector with providers such as artifact servers, deployment environments, and cloud providers, Harness Delegate will make an outbound call to these providers.  Harness recommends installing the delegate behind your firewall. The delegate must have access to the artifact servers, deployment environments, and cloud providers it needs.
+
+You can stop delegates from sending delegate logs to Harness by setting the `STACK_DRIVER_LOGGING_ENABLED` environment variable to `false` for the delegate. This will disable all remote logging.
+:::
+
 Delegate communication includes the following functions:
 
 - **Heartbeat:** The delegate sends a [heartbeat](<https://en.wikipedia.org/wiki/Heartbeat_(computing)>) to notify Harness Manager that it is running.
@@ -57,6 +63,12 @@ For advanced installation topics, go to the following:
 - [Install a delegate with third-party custom tool binaries](../install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md)
 
 ### Delegate sizes
+
+:::danger delegate resources
+Memory and CPU requirements are for the delegate only. Your delegate host/pod/container requires additional computing resources for its operating system and other services, such as Docker or Kubernetes.
+
+The resource requirements for the delegate container depend on the type of tasks or executions. For instance, CI-only delegates can handle hundreds of parallel pipelines. However, for CD Terraform tasks, a single task might require a 2Gi container due to Terraform's memory requirements. Each Terraform command needs at least 500MB of memory.
+ :::
 
 One delegate size does not fit all use cases, so Harness lets you pick from several options:
 

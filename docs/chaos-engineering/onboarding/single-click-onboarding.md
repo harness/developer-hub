@@ -13,22 +13,21 @@ This topic describes the following operations:
 
 ## Before you begin
 
-* [Overview of HCE onboarding.](/docs/chaos-engineering/onboarding/hce-onboarding.md)
-* [Delegate driven Harness infrastructure](/docs/chaos-engineering/onboarding/harness-infra/harness-infra.md)
-
-:::tip
-Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
-:::
+* [Overview of HCE onboarding](/docs/chaos-engineering/onboarding/hce-onboarding.md)
+* [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/)
+* [Create infrastructure before onboarding](/docs/chaos-engineering/onboarding/hce-onboarding#prerequisites-to-automated-and-guided-onboarding)
 
 ### What is automated onboarding?
-Automated onboarding, as the name suggests, automates the entire process of creating and executing a chaos experiment. You can click a button and HCE creates an environment, an infrastructure, and other components in the background, executes the experiment, and displays the resilience score for the sample application.
+Automated onboarding, as the name suggests, automates the entire process of creating and executing a chaos experiment. You can click a button and HCE creates an environment, uses an infrastructure, and other components in the background, executes the experiment, and displays the resilience score for the sample application.
 
 ### Why choose automated onboarding?
 - If you want to quickly start with executing chaos experiments and expect HCE to perform most (or all) steps in the background, this is the guide for you.
-- It takes less time to execute.
+- It takes minimal time to execute.
 - Select an environment and infrastructure, and you are done. HCE discovers the services, creates the experiments, chooses the experiments with less blast radius to execute, and displays experiment progress and resilience score.
 
-If you chose to onboard automatically, follow the steps below.
+### How to onboard automatically?
+
+If you chose to onboard automatically, that is, selected **Yes, in a single step** [here](/docs/chaos-engineering/onboarding/hce-onboarding#automated-and-guided-onboarding), follow the steps below.
 
 ### Select an environment
 
@@ -38,7 +37,7 @@ If you chose to onboard automatically, follow the steps below.
 
 ### Select an infrastructure
 
-2. Select the target infrastructure on which you want to execute the chaos experiments. Select **Apply**.
+2. Select the target infrastructure on which you want to execute the chaos experiments. Select **Apply**. As you can see, the infrastructure listed are **Available**, this means you can use one of them.
 
     ![select infrastructure](./static/single-click/select-infra-3.png)
 

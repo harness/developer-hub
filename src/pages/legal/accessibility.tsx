@@ -151,7 +151,48 @@ export default function AccessibilityPage() {
                   Harness Platform VPAT Report
                 </Link>
               </li>
+              <li>
+                <Link
+                  to={`${baseUrl}/doc/Harness_IaCM_VPAT_Report.pdf`}
+                  className={styles.link}
+                >
+                  Harness IaCM VPAT Report
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={`${baseUrl}/doc/Harness_IDP_VPAT_Report.pdf`}
+                  className={styles.link}
+                >
+                  Harness IDP VPAT Report
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={`${baseUrl}/doc/Harness_Code_VPAT_Report.pdf`}
+                  className={styles.link}
+                >
+                  Harness Code VPAT Report
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={`${baseUrl}/doc/Harness_SEI_VPAT_Report.pdf`}
+                  className={styles.link}
+                >
+                  Harness SEI VPAT Report
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={`${baseUrl}/doc/Harness_SSCA_VPAT_Report.pdf`}
+                  className={styles.link}
+                >
+                  Harness SSCA VPAT Report
+                </Link>
+              </li>
             </ul>
+            
           </main>
         </Layout>
       </MDXContent>

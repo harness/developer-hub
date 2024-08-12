@@ -1,6 +1,6 @@
 ---
-description: KB - Resolving Gti Sync issues with Input Sets.
-title: Gti Sync issues with Input Sets
+description: KB - Resolving Git Sync issues with Input Sets.
+title: Git Sync issues with Input Sets
 ---
 # Introduction
 

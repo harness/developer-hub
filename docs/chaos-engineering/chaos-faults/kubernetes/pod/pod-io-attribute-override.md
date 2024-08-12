@@ -2,16 +2,16 @@
 id: pod-io-attribute-override
 title: Pod IO attribute override
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-attribute-override
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-attribute-override
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-io-attribute-override
 ---
 
 import IOFaultsCaution from './shared/io-faults-caution.md'
 
-Pod IO attribute override modifies the properties of files located within the mounted volume of the pod. 
+Pod IO attribute override modifies the properties of files located within the mounted volume of the pod.
 This fault should be used as a sanity test for validating your application's failover capability against unexpected changes in file attributes, such as permissions, ownership, or timestamps.
 
 ![Pod IO Attribute Override](./static/images/pod-io-attribute-override.png)
-
 
 ## Use cases
 Pod IO attribute override:
@@ -21,6 +21,43 @@ Pod IO attribute override:
 - Tests whether your change management process is able to detect and respond to unexpected changes in file attributes, which can help you ensure that your system remains stable and secure.
 
 <IOFaultsCaution />
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-io-attribute-override
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16
@@ -95,7 +132,7 @@ Pod IO attribute override:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>

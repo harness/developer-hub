@@ -13,28 +13,23 @@ This section describes how to set up each of the external scanners supported by 
 
 For more information about STO support, go to [What's supported in STO](/docs/security-testing-orchestration/whats-supported).
 
-<!-- 
-### Scanner categories supported by STO
 
+### Scanner categories supported by STO
 
 import StoSupportedCategories from './shared/_sto-supported-categories.md';
 
-
 <StoSupportedCategories />
 
-
+<!-- 
 ### Data ingestion methods supported by STO
 
-
 import StoSupportedMethods from './shared/_sto-supported-methods.md';
-
 
 <StoSupportedMethods />
 
 The scanner, targets, and scan approach combinations are covered in the next section.
 
 -->
-
 
 ### Scanners supported by STO
 
@@ -71,17 +66,19 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-
+<!-- 
 ### Scanner binaries used in STO container images
 
 import StoSupportedBinaries from './shared/_sto-supported-binaries.md';
 
 <StoSupportedBinaries />
 
+-->
+
 
 ### Security steps and scanner templates in STO
 
-The Step library includes a [**Custom Scan**](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**. 
+The Step library includes a [**Custom Scan**](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**. 
 
 Some scanners also have their own steps with simplified UIs that simplify the setup process.
 

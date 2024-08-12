@@ -116,7 +116,7 @@ The delegate is key to enabling Harness to perform tasks on your behalf, but you
 
 The Harness GitOps Agent is similar to the Harness Delegate, but it handles GitOps based workflows and management. 
 
-GitOps is part of Harness CD. For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/) and [Delegate and GitOps Agent strategy](https://www.harness.io/blog/delegates-and-agents-onramp-to-scale-with-harness).
+GitOps is part of Harness CD. For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent) and [Delegate and GitOps Agent strategy](https://www.harness.io/blog/delegates-and-agents-onramp-to-scale-with-harness).
 
 This video describes the Harness Delegate and GitOps Agent Strategy.
 

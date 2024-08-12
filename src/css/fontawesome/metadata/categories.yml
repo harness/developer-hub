@@ -1,6 +1,7 @@
 accessibility:
   icons:
     - accessible-icon
+    - address-card
     - audio-description
     - braille
     - circle-info
@@ -38,6 +39,7 @@ alert:
 alphabet:
   icons:
     - a
+    - address-card
     - b
     - c
     - circle-h
@@ -218,6 +220,7 @@ arrows:
   label: Arrows
 astronomy:
   icons:
+    - binoculars
     - globe
     - meteor
     - moon
@@ -506,6 +509,7 @@ charts-diagrams:
     - chart-line
     - chart-pie
     - chart-simple
+    - circle-half-stroke
     - diagram-next
     - diagram-predecessor
     - diagram-project
@@ -584,6 +588,7 @@ coding:
     - folder
     - folder-open
     - font-awesome
+    - gear
     - gears
     - keyboard
     - laptop-code
@@ -598,6 +603,7 @@ coding:
     - sitemap
     - terminal
     - user-secret
+    - web-awesome
     - window-maximize
     - window-minimize
     - window-restore
@@ -762,6 +768,7 @@ design:
     - vector-square
     - wand-magic
     - wand-magic-sparkles
+    - web-awesome
   label: Design
 devices-hardware:
   icons:
@@ -868,6 +875,7 @@ editing:
     - ellipsis-vertical
     - eye-dropper
     - eye-slash
+    - gear
     - grip
     - grip-lines
     - grip-lines-vertical
@@ -1781,6 +1789,7 @@ maps:
     - location-pin-lock
     - magnet
     - magnifying-glass
+    - magnifying-glass-location
     - magnifying-glass-minus
     - magnifying-glass-plus
     - map
@@ -1788,6 +1797,7 @@ maps:
     - martini-glass-empty
     - money-bill
     - money-bill-1
+    - monument
     - motorcycle
     - mountain-sun
     - mug-saucer
@@ -1984,6 +1994,8 @@ medical-health:
     - crutch
     - disease
     - dna
+    - droplet
+    - droplet-slash
     - eye
     - eye-dropper
     - file-medical
@@ -1993,6 +2005,7 @@ medical-health:
     - flask
     - flask-vial
     - hand-dots
+    - hand-holding-droplet
     - hand-holding-medical
     - head-side-cough
     - head-side-cough-slash
@@ -2056,6 +2069,7 @@ medical-health:
     - teeth-open
     - thermometer
     - tooth
+    - truck-droplet
     - truck-medical
     - user-doctor
     - user-nurse
@@ -2192,6 +2206,7 @@ music-audio:
     - volume-low
     - volume-off
     - volume-xmark
+    - wave-square
   label: Music + Audio
 nature:
   icons:
@@ -2586,6 +2601,9 @@ social:
   label: Social
 spinners:
   icons:
+    - arrow-rotate-left
+    - arrow-rotate-right
+    - arrows-rotate
     - arrows-spin
     - asterisk
     - atom
@@ -2603,6 +2621,8 @@ spinners:
     - palette
     - ring
     - rotate
+    - rotate-left
+    - rotate-right
     - slash
     - snowflake
     - spinner
@@ -2681,7 +2701,9 @@ text-formatting:
     - superscript
     - table
     - table-cells
+    - table-cells-column-lock
     - table-cells-large
+    - table-cells-row-lock
     - table-columns
     - table-list
     - text-height

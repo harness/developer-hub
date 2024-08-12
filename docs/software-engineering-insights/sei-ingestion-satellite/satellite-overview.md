@@ -58,3 +58,9 @@ satellite:
 ```
 
 Please note that when using HTTPS with your proxy, a valid SSL certificate is required. If you are utilizing a self-signed certificate, you must provide the certificate to the Satellite for secure communication.
+
+:::info
+The Ingestion Satellite requires whitelisting certain Harness IP addresses in order to allow communication between the Harness Platform and your on-premises systems/tools. If the necessary IPs are not whitelisted, the Satellite may fail to authenticate or sync data properly.
+
+To ensure your Ingestion Satellite can work correctly, please refer to the list of [Harness Platform IPs](/docs/platform/references/allowlist-harness-domains-and-ips) that need to be whitelisted in your firewall for the Satellite to function.
+:::

@@ -2,13 +2,11 @@
     "label": "Feature Flags",
     "collapsible": "true",
     "collapsed": "true",
-    "className": "red",
     "link": {
         "type": "generated-index",
         "title": "Feature Flags"
     },
     "customProps": {
-        "position": "To position the category, enter a number and move this to the root level.",
         "helpdocs_category_id": "vjolt35atg",
         "helpdocs_parent_category_id": ""
     }

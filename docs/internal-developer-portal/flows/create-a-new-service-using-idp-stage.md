@@ -34,7 +34,18 @@ You can also create a new project for the service onboarding pipelines. Eventual
 
 ![](./static/add-a-pipeline.png)
 
-3. The YAML below defines an IDP Stage with a number of steps ([as described here](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage/#execution-steps)) that will perform the actions to onboard the new service. Copy the YAML below, then in the Harness Pipeline Studio go to the YAML view and paste below the existing YAML.
+3. Go to the variables and create all the variables whose values you're going to provide as runtime inputs using the workflows. Here's the list of variables you need to create, make sure you name them exactly the same as mentioned below as we use the same names in the workflows. 
+
+- organization
+- public_cookiecutter_template_url
+- repository_type
+- repository_description
+- repository_default_branch
+- direct_push_branch
+
+![](./static/how-to-create-variables.png)
+
+4. The YAML below defines an IDP Stage with a number of steps ([as described here](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage/#execution-steps)) that will perform the actions to onboard the new service. Copy the YAML below, then in the Harness Pipeline Studio go to the YAML view and paste below the existing YAML.
 
 :::info
 

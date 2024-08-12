@@ -244,6 +244,65 @@ Currently, Harness supports only Elasticsearch logs. The **ElasticSearch Logs** 
    
    Sample logs are displayed that help you verify if the query you built is correct.
 
+### Query syntax
+
+| **Query type** | **Syntax** | **Description** |
+| --- | --- | --- |
+| Match | `message:error` | This query matches documents containing the term `error` in the `message` field. |
+| Wildcard | `message:connect*` | This query matches documents where the `message` field contains words starting with `connect`. |
+| Range | `@timestamp:[2022-01-01 TO 2022-01-10]` | This query matches documents with timestamps between January 1, 2022, and January 10, 2022. |
+| Boolean | `message:(error AND timeout)` | This query matches documents containing both `error` and `timeout` in the `message` field. |
+| Phrase | `message:"out of memory"` | This query matches documents containing the phrase `out of memory` in the `message` field. |
+| Fuzzy | `message:warning~` | This query matches documents containing terms similar to `warning` in the `message` field. |
+| Field Existence | `_exists_:status` | This query matches documents where the field `status` exists. |
+| Wildcard Field | `res*` | This query matches documents where the field starts with `res`. |
+
+#### Sample queries used to find errors
+
+| **Error query type** | **Syntax** | **Description** |
+| --- | --- | --- |
+| Simple Error Search | `message:error` | Find documents where the message field contains the term `error`. |
+| Search for Specific Error Types | `message:"404 Not Found"` <br/> `message:"500 Internal Server Error"` | Find documents where the message field contains specific error types, such as `404 Not Found` or `500 Internal Server Error`. |
+| Search for Errors in a Specific Component | `message:(error AND database)` | Find documents where the message field contains the term `error` and another term specifying the component, for example, `database`. |
+| Search for Critical Errors | `message:(fatal OR crash OR unrecoverable)` | Find documents where the message field contains terms indicating critical errors, such as `fatal`, `crash`, or `unrecoverable`. |
+| Search for Errors with Specific Response Codes | `message:(500 OR 503)` | Find documents where the message field contains terms indicating errors with specific HTTP response codes, such as `500` or `503`. |
+| Search for Errors in a Time Range | `message:error AND @timestamp:[2022-01-01 TO 2022-01-10]` | Find documents with errors that occurred within a specific time range, for example, between January 1, 2022, and January 10, 2022. |
+| Search for Errors with Specific Keywords | `message:(exception OR failed OR "unable to")` | Find documents where the message field contains specific keywords associated with errors, such as `exception`, `failed`, or `unable to`. |
+| Search for Errors with Stack Traces | `message:(at OR "caused by")` | Find documents where the message field contains terms indicative of stack traces, such as `at` or `caused by`. |
+
+#### Infrastructure error queries
+
+- Search for server errors: `message:(error OR "server error" OR "internal server error")`
+- Search for network issues: `message:(timeout OR "network error" OR "connection refused")`
+- Search for database errors: `message:(database OR SQL OR "query error" OR "database connection")`
+- Search for disk space issues: `message:(disk OR "disk space" OR "disk error" OR "disk full")`
+- Search for infrastructure configuration errors: `message:(configuration OR "config error" OR "invalid configuration")`
+- Search for hardware failures: `message:(hardware OR "hardware error" OR "device failure")`
+- Search for service unavailability: `message:(unavailable OR "service down" OR "service unavailable")`
+- Search for performance issues: `message:(performance OR "slow response" OR "high latency")`
+
+#### API error queries
+
+- Search for HTTP status codes indicating errors: `message:(404 OR 500 OR 503 OR 403)`
+- Search for API response error messages: `message:(error OR failed OR "unable to")`
+- Search for specific API error codes: `message:(API_ERROR_CODE1 OR API_ERROR_CODE2)`
+- Search for timeout errors: `message:(timeout OR "connection timed out" OR "request timeout")`
+- Search for rate limit exceeded errors: `message:(rate OR "rate limit" OR "rate exceeded")`
+- Search for authentication errors: `message:(unauthorized OR "authentication failed")`
+- Search for API input validation errors: `message:(invalid OR "validation error")`
+- Search for API gateway errors: `message:(gateway OR "proxy error" OR "gateway error")`
+
+#### Performance error queries
+
+- Search for slow requests: `message:(slow OR "slow response" OR "long duration")`
+- Search for high latency: `message:(latency OR "high latency" OR "latency exceeded threshold")`
+- Search for memory leaks: `message:(memory OR "out of memory" OR "memory exhausted")`
+- Search for CPU usage errors: `message:(cpu OR "high CPU usage" OR "CPU overload")`
+- Search for disk I/O issues: `message:(disk OR "disk I/O error" OR "slow disk I/O")`
+- Search for database query performance issues: `message:(database OR "slow query" OR "database bottleneck")`
+- Search for network latency: `message:(network OR "network latency" OR "network bottleneck")`
+- Search for resource starvation: `message:(resource OR "resource starvation" OR "resource exhaustion")`
+
 
 ### Save the health source settings
 

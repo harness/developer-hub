@@ -18,7 +18,7 @@ Also, whenever new entities are created in the mapped Argo CD projects, they are
 
 With a standard Harness GitOps Agent installation (non-BYOA), Harness can install and manage Argo CD for you. This scenario is different from a BYOA where you are importing an existing Argo CD configuration into Harness GitOps.
 
-For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent).
+For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent).
 
 ### Mapping existing Argo CD projects across different Harness scopes
 
@@ -46,7 +46,7 @@ The following steps show you how to install a GitOps Agent into an existing Argo
 6. In **GitOps Operator**, select one of the following:
 
    * **Argo**. Uses Argo CD as the GitOps reconciler.
-   * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/use-gitops/use-flux).
+   * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
 
 7. In **Namespace**, enter the namespace where Argo CD is hosted. The default is `argocd`.
    

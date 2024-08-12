@@ -1,5 +1,5 @@
 ---
-title: Fortify on Demand scanner reference for STO
+title: Fortify on Demand step configuration
 description: Repository scans with Fortify on Demand
 sidebar_position: 150
 ---

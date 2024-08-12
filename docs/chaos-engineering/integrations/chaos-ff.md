@@ -6,13 +6,13 @@ redirect_from:
 	- /tutorials/chaos-experiments/chaos-ff
 ---
 
-You can add chaos experiments to Harness Feature Flags (FF) pipelines as part of the process to control release of new software. An [FF pipeline](/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline) runs every time a feature flag changes, and lets you specify actions to take before the flag change takes effect. For example, you might want to have an approval step for all flag changes, or run a chaos experiment as part of the pipeline.
+You can add chaos experiments to Harness Feature Flags (FF) pipelines as part of the process to control release of new software. An [FF pipeline](/docs/feature-flags/use-ff/ff-build-pipeline/build-feature-flag-pipeline) runs every time a feature flag changes, and lets you specify actions to take before the flag change takes effect. For example, you might want to have an approval step for all flag changes, or run a chaos experiment as part of the pipeline.
 
 When you add a chaos experiment as a step in an FF pipeline, the experiment runs as part of that pipeline whenever you change a feature flag. For example, if you put a new feature behind a feature flag, you might want to run a chaos experiment on the target application affected by the new code. In this way, you can see how the application responds to chaos faults before changing the flag to release the new feature to users.
 
 For more information, go to:
-* [Build a Feature Flag pipeline](/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline)
-* [Add a default pipeline for flag changes](/docs/feature-flags/ff-build-pipeline/default-pipeline-ff)
+* [Build a Feature Flag pipeline](/docs/feature-flags/use-ff/ff-build-pipeline/build-feature-flag-pipeline)
+* [Add a default pipeline for flag changes](/docs/feature-flags/use-ff/ff-build-pipeline/default-pipeline-ff)
 * [Harness pipelines](/docs/category/pipelines)
 
 ## Add a chaos experiment to an FF pipeline

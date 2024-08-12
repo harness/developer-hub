@@ -2,7 +2,8 @@
 id: pod-http-status-code
 title: Pod HTTP status code
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-status-code
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-status-code
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-http-status-code
 ---
 
 Pod HTTP status code is a Kubernetes pod-level fault that injects chaos inside the pod by modifying the status code of the response from the application server to the desired status code provided by the user. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
@@ -15,6 +16,43 @@ Pod HTTP status code:
 - Simulates unavailability of specific API services (503, 404).
 - Simulates unavailability of specific APIs for (or from) a given microservice.
 - Simulates unauthorized requests for third party services (401 or 403), and API malfunction, that is internal server error (50x). 
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-http-status-code
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16

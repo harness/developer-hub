@@ -16,7 +16,7 @@ EC2 HTTP latency disrupts the state of infrastructure resources. This fault indu
 EC2 HTTP latency:
 - Delays the network connectivity from the VM to the target hosts.
 - Simulates latency to specific API services for (or from) a given microservice.
-- Simulates a slow response on specific third party (or dependent) components (or services). 
+- Simulates a slow response on specific third party (or dependent) components (or services).
 
 ### Prerequisites
 - Kubernetes >= 1.17
@@ -39,7 +39,7 @@ EC2 HTTP latency:
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -59,7 +59,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],

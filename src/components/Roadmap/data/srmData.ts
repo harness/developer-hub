@@ -2,7 +2,7 @@ import { Horizon } from "./roadmapData";
 
 export const SrmData: Horizon = {
   Now: {
-    description: "Q1 2024, Feb-Apr 2024",
+    description: "Q3 2024, Aug-Oct 2024",
     feature: [
       {
         tag: [{ value: "Reliability platform" }],
@@ -27,7 +27,7 @@ export const SrmData: Horizon = {
     ],
   },
   Next: {
-    description: "Q2 2024, May-Jul 2024",
+    description: "Q4 2024, Nov 2024 - Jan 2025",
     feature: [
 {
         tag: [{ value: "Reliability platform" }],
@@ -52,12 +52,12 @@ export const SrmData: Horizon = {
     ],
   },
   Later: {
-    description: "Q3 2024+, Aug 2024 & beyond",
+    description: "Q1 2025+, Q2 2025 & beyond",
     feature: [
       {
         tag: [{ value: "Reliability platform" }],
-        title: "Developer readiness reports for incidents",
-        description: "Proactively generate useful reports for responding to incidents.",
+        title: "Incident Management",
+        description: "Create, manage and respond to the incidents in the lower environment as well as in production.",
       },
       {
         tag: [{ value: "Reliability platform" }],

@@ -30,8 +30,17 @@ These are the Default Settings for Pipelines.
 By default, the pipeline execution audit events such as Pipeline Start, Pipeline End, Stage Start, and Stage End are not displayed in the [Audit Trail](/docs/platform/governance/audit-trail/#step-view-an-audit-trail). Enable this setting to display these events.
 
 ### Run RBAC Validation before executing Inline Pipelines
+:::note
+Currently, this feature is behind the feature flags `CDS_PIPELINE_ABORT_RBAC_PERMISSION_MIGRATION` and `CDS_PIPELINE_ABORT_RBAC_PERMISSION`. Contact Harness Support to enable the feature.
+:::
 
-By default, before running any pipeline, Harness checks whether the user has access to all of the environments and other resources that the pipeline accesses. This check is run only for inline pipelines, not those stored in Git or other repositories. Turn off this setting if the check isn't required. Turning this off can cause pipelines to fail partway through execution (since later stages could have permission issues that haven't been checked beforehand).
+By default, before running any pipeline, Harness checks whether the user has access to all of the environments and other resources that the pipeline accesses. This check is run only for inline pipelines, not those stored in Git or other repositories. 
+
+Turn off this setting if the check isn't required. Turning this off can cause pipelines to fail partway through execution (since later stages could have permission issues that haven't been checked beforehand).
+
+The **Run RBAC Validation before executing Inline Pipelines** setting is available in the account-level default settings.
+
+   ![](./static/rbac_pipeline.png)
 
 ### Do Not Delete Pipeline Execution Details
 
@@ -71,6 +80,12 @@ The concurrency limits are as follows for each plan tier:
 | Maximum | 2 | 500 | 1000 |
 | Editable | No | Yes | Yes |
 | Scope | Account | Account | Account |
+
+:::warning
+
+These concurrency limits are *account wide* and NOT per pipeline. 
+
+:::
 
 This setting can only be edited in Team and Enterprise plans. You can set it at the account scope only. You can configure the limit anywhere between 2 and the maximum. 
 

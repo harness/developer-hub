@@ -30,7 +30,7 @@ function Feature({ title, icon, description, type, module, link }: CardItem) {
           <div>
             <ul className={styles.docTypes}>
               {type.map((props, idx) => (
-                <li>
+                <li key={idx}>
                   <Tooltip placement="top" overlay={props}>
                     <img
                       src={`${baseUrl}img/icon_doctype_${props}.svg`}

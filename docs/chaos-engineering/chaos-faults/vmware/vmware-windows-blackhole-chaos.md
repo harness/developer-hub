@@ -1,30 +1,29 @@
 ---
 id: vmware-windows-blackhole-chaos
-title: VMware Windows Blackhole Chaos
+title: VMware Windows blackhole chaos
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-blackhole-chaos
 ---
 
-VMware Windows Blackhole Chaos simulates a network blackhole scenario on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware Windows VMs under network blackhole conditions.
+VMware Windows blackhole chaos simulates a network blackhole scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under network blackhole conditions.
 
 ![VMware Windows Blackhole Chaos](./static/images/vmware-windows-blackhole-chaos.png)
 
 ## Use cases
-
-- VMware Windows Blackhole Chaos determines the resilience of an application when a network blackhole scenario is simulated on a VMware Windows virtual machine.
-- VMware Windows Blackhole Chaos simulates the situation of network isolation for processes running on the application, which degrades their performance.
-- It also helps verify the application's ability to handle network failures and its failover mechanisms. 
+VMware Windows blackhole chaos
+- Determines the resilience of an application when a network blackhole scenario is simulated on a VMware Windows virtual machine.
+- Simulates the situation of network isolation for processes running on the application, which degrades their performance.
+- Helps verify the application's ability to handle network failures and its failover mechanisms.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
-- Execution plane should be connected to vCenter and host vCenter on port 443. 
+- Execution plane should be connected to vCenter and host vCenter on port 443.
 - VMware tool should be installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - Ensure the firewall is active and permissions to modify its rules are granted. Consider using the built-in Administrator user. [Learn how to enable it in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
 - The VM should be in a healthy state before and after injecting chaos.
-- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
-- VM credentials can be passed as secrets or as a chaos enginer environment variable.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`.
+- VM credentials can be passed as secrets or as a chaos engine environment variable.
 
 ```yaml
 apiVersion: v1
@@ -127,7 +126,7 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # Destination hosts to block
-        - name: DESTINATION_HOSTS 
+        - name: DESTINATION_HOSTS
           value: 'github.com'
 ```
 
@@ -155,6 +154,6 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # IP addresses to block
-        - name: IP_ADDRESSES 
+        - name: IP_ADDRESSES
           value: '10.0.0.1,10.0.0.2'
 ```

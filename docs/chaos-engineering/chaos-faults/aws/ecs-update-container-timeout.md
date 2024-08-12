@@ -6,7 +6,7 @@ redirect_from:
 ---
 
 ECS update container timeout modifies the start and stop timeouts for ECS containers in Amazon ECS clusters. The fault allows you to specify the duration for which the containers should be allowed to start or stop before they are considered failed.
-This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+This experiment primarily involves ECS Fargate and doesn't depend on EC2 instances. [They](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
 
 ![ECS Update Container Timeout](./static/images/ecs-update-container-timeout.png)
 
@@ -15,7 +15,7 @@ This experiment primarily involves ECS Fargate and doesn’t depend on EC2 insta
 ECS update container timeout:
 - Tests the resilience of ECS tasks and their containers to timeouts during updates or deployments.
 - Verifies the behavior of ECS tasks and their containers when the start or stop timeout is exceeded during updates or deployments.
-- Tests the recovery mechanisms of the ECS service and container instances in case of timeouts. 
+- Tests the recovery mechanisms of the ECS service and container instances in case of timeouts.
 - Simulates scenarios where containers take longer than expected to start or stop. 
 - Evaluates the impact of above-mentioned scenarios on the overall application availability and performance.
 
@@ -40,7 +40,7 @@ stringData:
 ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -87,12 +87,12 @@ Below is an example AWS policy to execute the fault.
           <th> Description </th>
           <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
           <td> CLUSTER_NAME </td>
           <td> Name of the target ECS cluster. </td>
           <td> For example, <code>cluster-1</code>. </td>
         </tr>
-        <tr> 
+        <tr>
           <td> SERVICE_NAME </td>
           <td> Name of the ECS service under chaos. </td>
           <td> For example, <code>nginx-svc</code>. </td>
@@ -121,17 +121,17 @@ Below is an example AWS policy to execute the fault.
         <td> Interval between successive instance terminations (in seconds).</td>
         <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Path to the AWS secret credentials.</td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
       </tr>
-      <tr> 
+      <tr>
         <td> START_TIMEOUT </td>
         <td> Maximum amount of time that ECS allows for a container to start successfully. If the container fails to start within this timeout period, ECS marks the task as failed and may trigger a restart or rescheduling of the task.</td>
         <td> Specified in seconds. Default: 3,600 s. For more information, go to <a href="#start-and-stop-timeout"> start timeout.</a> </td>
       </tr>
-      <tr> 
+      <tr>
         <td> STOP_TIMEOUT </td>
         <td> Maximum amount of time that ECS allows for a container to stop gracefully. If the container does not stop within the <code>STOP_TIMEOUT</code> period, ECS forcefully terminates the container, which may result in data loss or other undesirable consequen</td>
         <td> Specified in seconds. Default: 3,600. For more information, go to <a href="#start-and-stop-timeout"> stop timeout.</a> </td>

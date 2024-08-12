@@ -32,6 +32,14 @@ Supported versions EOS and EOL are based on when the delegate image was pushed t
 
 | Image version |Release date | EOS | EOL |
 | --- | --- | --- | --- |
+| 24.07.83503 | July 17, 2024| January 16, 2025 | March 18, 2025 |
+| 24.07.82906 | July 17, 2024| January 16, 2025 | March 18, 2025 |
+| 24.07.83404 | July 10, 2024| January 9, 2025 | March 11, 2025 |
+| 24.07.83205 | July 9, 2024| January 8, 2025 | March 10, 2025 |
+| 24.07.82905 | July 1, 2024| December 31, 2024 | March 2, 2025 |
+| 24.06.83304 | June 24, 2024| December 24, 2024 | February 23, 2025 |
+| 24.06.83204 | June 20, 2024| December 20, 2024 | February 19, 2025 |
+| 24.06.83004 | June 7, 2024| December 7, 2024 | February 6, 2025 |
 | 24.06.83003 | June 3, 2024| December 3, 2024 | February 2, 2025 |
 | 24.05.82711 | May 30, 2024| November 29, 2024 | January 29, 2025 |
 | 24.05.82904 | May 21, 2024| November 20, 2024 | January 20, 2025 |
@@ -84,10 +92,3 @@ Supported versions EOS and EOL are based on when the delegate image was pushed t
 | 23.11.81601 | November 29, 2023| May 30, 2024 | July 30, 2024 |
 | 23.11.81408 | November 22, 2023| May 23, 2024 | July 23, 2024 |
 | 23.11.81406 | November 20, 2023| May 21, 2024 | July 21, 2024 |
-| 23.11.81208 | November 17, 2023| May 18, 2024 | July 18, 2024 |
-| 23.11.81405 | November 17, 2023| May 18, 2024 | July 18, 2024 |
-| 23.10.81203 | November 9, 2023| May 10, 2024 | July 10, 2024 |
-| 23.11.81015 | November 1, 2023| May 2, 2024 | July 2, 2024 |
-| 23.10.81202 | October 27, 2023| April 27, 2024 | June 27, 2024 |
-| 23.10.80116 | October 24, 2023| April 24, 2024 | June 24, 2024 |
-

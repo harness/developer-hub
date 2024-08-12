@@ -2,7 +2,7 @@
     "label":"Software Supply Chain Assurance",
     "collapsible":"true",
     "collapsed":"true",
-    "className":"red",
+    "className":"default",
     "link":{
        "type":"generated-index",
        "title":"Software Supply Chain Assurance"

@@ -47,6 +47,7 @@ We support the following `regex operators` as Operators for all the Data Points.
 
 ![](./static/regex-operators.png)
 
+
 ### Support for `catalog-info.yaml` metadata as inputs.
 
 Users can now use all of the entity definition from the `catalog-info.yaml` or from additional properties [ingested using APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties) as input variable(JEXL format) in Scorecard Checks. For example, `<+metadata.testCoverageScore>`, `<+metadata.annotations['backstage.io/techdocs-ref']>`. Checks eg., `<+metadata.harnessData.name>` will fetch the value for the branch in the following YAML as `catalog-info.yaml`.
@@ -183,6 +184,25 @@ spec:
 12. **Extract string from a file**
 - *Objective:* Gets the string matching the pattern from given file from the branch.
 - *Calculation Method:* If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field, **also the filename can be provided as a regex pattern**, example for a file path `/backstage/blob/master/scripts/log-20240105.anyextension` the regex would be `/backstage/blob/master/scripts/log-20240105\..*`. After fetching the file, the designated pattern is then searched within the file contents and it's value is extracted and returned.
+
+:::info
+
+### URL priority for branch name field
+
+In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
+
+![](./static/source-location.png)
+
+In case you mention the `branchName` field as a check config other than what's present in the `source-location` the priority order conditions could be found below. 
+
+1. If it’s in both, the check configuration will take precedence.
+2. If it’s in only one, we’ll use that value.
+3. If it’s in neither, the check will fail.
+
+![](./static/checks-field.png)
+
+:::
+
 - *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
 
 ![](./static/extract-github.png)
@@ -190,6 +210,24 @@ spec:
 13. **Match string in a file**
 - *Objective:* Matches the pattern in the given file from the branch.
 - *Calculation Method:* If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the contents are examined to find the pattern. Returns true/false based on whether the pattern was found or not.
+
+:::info
+
+### URL priority for branch name field
+
+In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
+![](./static/source-location.png)
+
+In case you mention the `branchName` field as a check config other than what's present in the `source-location` the priority order conditions could be found below. 
+
+1. If it’s in both, the check configuration will take precedence.
+2. If it’s in only one, we’ll use that value.
+3. If it’s in neither, the check will fail.
+
+![](./static/checks-field.png)
+
+:::
+
 - *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
 
 ![](./static/match-github.png)
@@ -264,6 +302,25 @@ spec:
 4. **Extract string from a file**
 - *Objective:* Gets the string matching the pattern from given file from the branch.
 - *Calculation Method:* If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the designated pattern is then searched within the file contents and it's value is extracted and returned.
+
+:::info
+
+### URL priority for branch name field
+
+In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
+
+![](./static/source-location.png)
+
+In case you mention the `branchName` field as a check config other than what's present in the `source-location` the priority order conditions could be found below. 
+
+1. If it’s in both, the check configuration will take precedence.
+2. If it’s in only one, we’ll use that value.
+3. If it’s in neither, the check will fail.
+
+![](./static/checks-field.png)
+
+:::
+
 - *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
 
 ![](./static/extract-github.png)
@@ -271,6 +328,25 @@ spec:
 5. **Match string in a file**
 - *Objective:* Matches the pattern in the given file from the branch.
 - *Calculation Method:* If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the contents are examined to find the pattern. Returns true/false based on whether the pattern was found or not.
+
+:::info
+
+### URL priority for branch name field
+
+In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
+
+![](./static/source-location.png)
+
+In case you mention the `branchName` field as a check config other than what's present in the `source-location` the priority order conditions could be found below. 
+
+1. If it’s in both, the check configuration will take precedence.
+2. If it’s in only one, we’ll use that value.
+3. If it’s in neither, the check will fail.
+
+![](./static/checks-field.png)
+
+:::
+
 - *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
 
 ![](./static/match-github.png)
@@ -324,6 +400,25 @@ spec:
 3. **Extract string from a file**
 - *Objective:* Gets the string matching the pattern from given file from the branch.
 - *Calculation Method:* If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the designated pattern is then searched within the file contents and it's value is extracted and returned.
+
+:::info
+
+### URL priority for branch name field
+
+In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
+
+![](./static/source-location.png)
+
+In case you mention the `branchName` field as a check config other than what's present in the `source-location` the priority order conditions could be found below. 
+
+1. If it’s in both, the check configuration will take precedence.
+2. If it’s in only one, we’ll use that value.
+3. If it’s in neither, the check will fail.
+
+![](./static/checks-field.png)
+
+:::
+
 - *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
 
 ![](./static/extract-github.png)
@@ -331,9 +426,62 @@ spec:
 4. **Match string in a file**
 - *Objective:* Matches the pattern in the given file from the branch.
 - *Calculation Method:* If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the contents are examined to find the pattern. Returns true/false based on whether the pattern was found or not.
+
+:::info
+
+### URL priority for branch name field
+
+In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
+
+![](./static/source-location.png)
+
+In case you mention the `branchName` field as a check config other than what's present in the `source-location` the priority order conditions could be found below. 
+
+1. If it’s in both, the check configuration will take precedence.
+2. If it’s in only one, we’ll use that value.
+3. If it’s in neither, the check will fail.
+
+![](./static/checks-field.png)
+
+:::
+
 - *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
 
 ![](./static/match-github.png)
+
+2. **File Existence**
+- *Objective:* Verify the existence of a specified file in the repository.
+- *Calculation Method:* Use the `backstage.io/source-location` annotation to locate the repository and check for the file’s presence. Make sure to mention the filename with extension or relative path from the root folder (Eg: README.md or docs/README.md) in the conditional input field.
+
+### URL priority for branch name field
+
+In some of the data points we take `branchName` as input, and it's an optional field. It is suggested to give a `branchName` in case you want to use the same for all the repositories, otherwise we use the **default branch** for the repository mentioned in `source-location`.
+
+![](./static/source-location.png)
+
+In case you mention the `branchName` field as a check config other than what's present in the `source-location` the priority order conditions could be found below. 
+
+1. If it’s in both, the check configuration will take precedence.
+2. If it’s in only one, we’ll use that value.
+3. **If it’s in neither, then we will use the default branch for the repository used in `source-location`.**
+
+![](./static/checks-field.png)
+
+:::
+
+**Example YAML**
+
+```
+kind: "Component"
+apiVersion: "backstage.io/v1alpha1"
+metadata:
+  name: order-service
+  annotations:
+    backstage.io/source-location: 'url:https://gitlab.com/kubernetes/kubernetes/tree/master'
+    ...
+spec:
+    ...
+```
 
 ## Harness 
 

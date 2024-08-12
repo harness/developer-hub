@@ -2,7 +2,8 @@
 id: pod-network-partition
 title: Pod network partition
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-partition
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-partition
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-partition
 ---
 
 Pod network partition is a Kubernetes pod-level fault that blocks 100 percent ingress and egress traffic of the target application by creating a network policy.
@@ -13,8 +14,48 @@ Pod network partition is a Kubernetes pod-level fault that blocks 100 percent in
 
 Pod network partition tests the application's resilience to lossy or flaky network.
 
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-network-partition
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["networkpolicies"]
+    verbs: ["create", "delete", "get", "list"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
+
 ### Prerequisites
-- Kubernetes > 1.16 
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
 
 ### Optional tunables
@@ -59,7 +100,7 @@ Pod network partition tests the application's resilience to lossy or flaky netwo
         <td> DESTINATION_IPS </td>
         <td> IP addresses of the services or pods or the CIDR blocks (range of IPs) whose accessibility impacted. Comma-separated IPs or CIDRs can be provided.</td>
         <td> If values are not provided, the fault induces network chaos on all IPs or destinations. For more information, go to <a href="#destination-ips-and-destination-hosts">destination IPs</a></td>
-      </tr>  
+      </tr>
       <tr>
         <td> DESTINATION_HOSTS </td>
         <td> DNS names or FQDN names of the services whose accessibility is impacted. </td>
@@ -68,9 +109,9 @@ Pod network partition tests the application's resilience to lossy or flaky netwo
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-      </tr> 
-      <tr>   
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+      </tr>
+      <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
         <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
@@ -83,7 +124,7 @@ If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left e
 
 ### Destination IPs and destination hosts
 
-Default IPs and hosts whose traffic is interrupted due to the network faults. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variabes, respectively.
+Default IPs and hosts whose traffic is interrupted due to the network faults. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
 
 - `DESTINATION_IPS`: It contains the IP addresses of the services or pods or the CIDR blocks (range of IPs) whose accessibility is impacted.
 - `DESTINATION_HOSTS`: It contains the DNS names or FQDN names of the services whose accessibility is impacted.

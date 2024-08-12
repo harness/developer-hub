@@ -12,6 +12,7 @@ Before you add new content, search for existing FAQs to avoid duplications.
 
 Ensure that your contributions are organized according to the following categories:
 
+- Subscriptions
 - Access Control/RBAC
 - API/Integration
 - Authentication
@@ -37,6 +38,16 @@ Ensure that your contributions are organized according to the following categori
 You can search for a heading, for example, ## Access Control, and add your new FAQ under the category that's appropriate to keep the file's organizational structure.
 
 -->
+
+## Subscriptions
+
+### For Developer 360 subscriptions, how do we remove users who left the company?
+
+Delete the user(s) from the platform. The user will be removed from the Developer license count immediately.
+
+:::note
+This applies to Developer oriented modules: Continuous Integration (CI), Code Repository (CR), Feature Flags (FF), and Internal Developer Portal (IDP). For more information, go to [View and manage subscriptions](/docs/platform/get-started/subscriptions-licenses/subscriptions).
+:::
 
 ## Access Control/RBAC
 
@@ -121,6 +132,18 @@ No, you can only configure RBAC for the environment based on environment type.
 ### Does Harness log GET Calls in the audit logs?
 
 No, Harness doesn't support audit trails for read API requests like GET.
+
+### Why are RBAC checks different for pipelines stored inline vs. Git?
+
+You can set Harness to by default, before running any pipeline, check whether the user has access to all of the environments and other resources that the pipeline accesses. This check is run only for inline pipelines, not those stored in Git or other repositories.
+
+:::note
+Currently, this feature is behind the feature flags `CDS_PIPELINE_ABORT_RBAC_PERMISSION_MIGRATION` and `CDS_PIPELINE_ABORT_RBAC_PERMISSION`. Contact Harness Support to enable the feature.
+:::
+
+Turn off this setting if the check isn't required. Turning this off can cause pipelines to fail partway through execution (since later stages could have permission issues that haven't been checked beforehand).
+
+For more information, go to [Run RBAC Validation before executing Inline Pipelines](/docs/platform/pipelines/pipeline-settings/#run-rbac-validation-before-executing-inline-pipelines).
 
 ### What is the purpose of linkedSsoDisplayName?
 
@@ -231,7 +254,7 @@ The `parentIdentifier` in the context of creating an API key refers to the Paren
 
 ### How can I get a list of all users and their roles?
 
-You can use the Get aggregated users API. This will provide with complete details of the users including the role they have. For more information, go to [Get aggrgated users](https://apidocs.harness.io/tag/User#operation/getAggregatedUsers) in the API documentation.
+You can use the Get aggregated users API. This will provide with complete details of the users including the role they have. For more information, go to [Get aggregated users](https://apidocs.harness.io/tag/User#operation/getAggregatedUsers) in the API documentation.
 
 ### We have hundreds of users that were granted the admin role on the account level as individuals. How can we remove this role?
 
@@ -409,6 +432,10 @@ Invalid request: Maximum limit has reached
 ```
 
 This error indicates that you've reached the maximum amount of API keys available for your user. Harness has a limit of 5 API keys per user. To resolve this error, delete one of your existing API keys or use a service account instead.
+
+### Is there an API call to fetch an API key?
+
+There's no API to get an api-key value as Harness does not store the API token for future reference.
 
 ## Authentication
 
@@ -731,6 +758,10 @@ Also, when you create the personal access token, make sure it has the required r
 
 You can find this value on the Authentication page (right below the Overview menu on the left). The field will be at the bottom of the page: ```Session Inactivity Timeout (in minutes)```.
 
+### Why is LDAP sync not working for some groups despite working fine for others, and even manual sync isn't helping?
+
+The most probable root cause is that there is a difference in query for this user group/user (like DC), so check and confirm and add the corresponding user query.
+
 ## Automation
 
 ### How can I use Harness CD with Google Cloud Functions?
@@ -903,6 +934,10 @@ To resolve the issue:
 - Identify the cause: The error indicates an invalid CPU resource request, possibly exceeding the container's CPU limit.
 - Check Helm chart modifications: If modifications were made to the Helm chart locally, they might have caused discrepancies in deployed values. Utilize the Helm template to inspect YAML values for debugging.
 - Adjust namespace limits: If applicable, ensure that there are no namespace limits conflicting with the Helm delegate installation. If found, consider changing the namespace to resolve the issue.
+
+### How can I check the current customized version of a delegate using APIs, and how does the delegate upgrader access custom images?
+
+Harness an API to get the latest delegate version for an account and one to override the latest for the upgrader. Currently, there isn't an externally exposed API to retrieve custom images. However, the delegate upgrader accesses a specific API to fetch the custom image when needed.
 
 ### Can I use an earlier Harness Delegate version?
 
@@ -1753,7 +1788,7 @@ For more information, go to [Delegates list page](/docs/platform/delegates/secur
 
 ### What is the six-letter account identifier that Harness uses it creates the delegate?
 
-This identifier is required for Harness to link old and new pod lifecycles properly. Without it, they will be treated differently as pod names and IPs change.
+This identifier is required for Harness to link old and new pod life cycles properly. Without it, they will be treated differently as pod names and IPs change.
 
 ### How does Harness prevent tampering of artifacts and instructions? Is TLS used? What is the integrity checking approach to ensure instructions are not altered in-flight?
 
@@ -2560,7 +2595,7 @@ The naming convention for all identifiers in Harness is case sensitive. Identifi
 
 ### Are there docs for the infrastructure requirements to install Harness Self-Managed Enterprise Edition?
 
-Yes, for more information, go to [Production environment deployment infrastructure](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/harness-helm-chart#production-environment-deployment-infrastructure).
+Yes, for more information, go to [Production environment deployment infrastructure](/docs/self-managed-enterprise-edition/install/harness-helm-chart#production-environment-deployment-infrastructure).
 
 ### Is there documentation for network setup or Harness Deployment Architecture?
 
@@ -3024,7 +3059,7 @@ Dashboards are a licensed functionality. If you don't have a current license, da
 
 ### Is there documentation on installing and upgrading the Harness Self-Managed Enterprise Edition cluster?
 
-Yes. For more information, go to [Install using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga) and [Upgrade the Helm chart](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/upgrade-helm-chart).
+Yes. For more information, go to [Install using Helm](/docs/self-managed-enterprise-edition/install/install-using-helm) and [Upgrade the Helm chart](/docs/self-managed-enterprise-edition/install/upgrade-helm-chart).
 
 ## Terraform
 

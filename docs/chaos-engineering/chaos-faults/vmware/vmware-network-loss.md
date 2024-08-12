@@ -4,22 +4,19 @@ title: VMware network loss
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-network-loss
 ---
-VMware network loss injects network packet loss from the VMware VM(s) into the application (or service).
-- This results in flaky access to the application. 
-- It checks the performance of the application (or process) running on the VMware VM(s).
-
+VMware network loss injects network packet loss from the VMware VM(s) into the application (or service). This results in flaky access to the application. It checks the performance of the application (or process) running on the VMware VM(s).
 
 ![VMware Network Loss](./static/images/vmware-network-loss.png)
 
 ## Use cases
 VMware network loss:
 - Simulates issues within the VM network (or microservice) communication across services in different hosts.
-- Determines the impact of degradation while accessing a microservice. 
-- Limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses, if the VM stalls or gets corrupted while waiting endlessly for a packet. 
+- Determines the impact of degradation while accessing a microservice.
+- Limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses, if the VM stalls or gets corrupted while waiting endlessly for a packet.
 - Simulates degraded network with varied percentages of dropped packets between microservices.
 - Simulates loss of access to specific third party (or dependent) services (or components).
-- Simulates blackhole against traffic to a given availability zone, that is, failure simulation of availability zones. 
-- Simulates network partitions (split-brain) between peer replicas for a stateful application. 
+- Simulates blackhole against traffic to a given availability zone, that is, failure simulation of availability zones.
+- Simulates network partitions (split-brain) between peer replicas for a stateful application.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

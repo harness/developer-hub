@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { tag } from "../data/roadmapData";
 import Link from "@docusaurus/Link";
 
-const HorizonCard = ({ title, description, tag, module, link }) => {
+const HorizonCard = ({ title, description, tag, module, link, backgroundColorCard }) => {
   const colorMap = new Map([
     [
       "red",
@@ -44,21 +44,21 @@ const HorizonCard = ({ title, description, tag, module, link }) => {
   ]);
 
   return (
-    <Link to={link} className={clsx(styles.card, styles[module])}>
+    <Link to={link} className={clsx(styles.card, styles[module])} style={{backgroundColor: backgroundColorCard}}>
       <div className={styles.tag}>
         {tag.length > 0 &&
           tag.map((tagItem: tag) => {
             const colorSet = colorMap.get(tagItem.color);
 
             //if  colorSet doesnot exists then it means the colors are hex code custom color and not predefined colors
-            const textColor = colorSet ? colorSet.textColor : tagItem.textColor;
-            const backgroundColor = colorSet ? colorSet.color : tagItem.color;
+            const textColorTag = colorSet ? colorSet.textColor : tagItem.textColor;
+            const backgroundColorTag = colorSet ? colorSet.color : tagItem.color;
 
             return (
               <p
                 style={{
-                  color: textColor,
-                  backgroundColor: backgroundColor,
+                  color: textColorTag,
+                  backgroundColor: backgroundColorTag,
                 }}
               >
                 {tagItem.value}

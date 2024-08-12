@@ -12,9 +12,10 @@ VMware HTTP latency injects HTTP response latency into the service of a specific
 
 ## Use cases
 
-- VMware HTTP latency determines the resilience of an application to HTTP latency. 
-- It determines how the system recovers or fetches the responses when there is a delay in accessing the service. - It simulates latency to specific API services for (or from) a given microservice. 
-- It also simulates a slow response on specific third party (or dependent) components (or services). 
+- VMware HTTP latency determines the resilience of an application to HTTP latency.
+- It determines how the system recovers or fetches the responses when there is a delay in accessing the service.
+- It simulates latency to specific API services for (or from) a given microservice.
+- It also simulates a slow response on specific third party (or dependent) components (or services).
 
 ### Prerequisites
 - Kubernetes >= 1.17 is required to execute this fault.

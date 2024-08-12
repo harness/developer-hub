@@ -46,4 +46,26 @@ export const spt: IltCardItem[] = [
      tileType: tileType.normal,
      cardType: cardType.SPT,
    },
+   {
+    title: "Software Engineering Insights",
+    module: MODULES.sei,
+     type: type.user,
+     description:
+       "Self-paced video course introducing Harness Software Engineering Insights.",
+     version: "Harness SEI Enterprise Plan",
+     link: "https://university-registration.harness.io/self-paced-training-harness-software-engineering-insights",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
+   {
+    title: "Cloud Cost Management",
+    module: MODULES.ccm,
+     type: type.user,
+     description:
+       "Self-paced video course introducing Harness Cloud Cost Management.",
+     version: "Harness CCM Free/Team Plans",
+     link: "https://university-registration.harness.io/self-paced-training-harness-cloud-cost-management",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
 ];

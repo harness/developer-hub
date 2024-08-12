@@ -500,15 +500,28 @@ In **Source Module**, you can select **Use Connector credentials** to have Harne
 
 If you do not select **Use Connector credentials**, Terraform will use the credentials that have been set up in the system.
 
-The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.
+The **Use Connector credentials** setting allows Harness Git Connectors using SSH and HTTPS authentication with a token.
 
 When configuring the SSH key for the connector, exporting an SSH key with a passphrase for the module source is not supported. Configure an SSH Key without the passphrase.
 
-Here are some syntax examples to reference the Terraform module using the SSH protocol:
+Here is a syntax example to reference the Terraform module using the SSH protocol:
 
 ```bash
 source = "git@github.com:your-username/your-private-module.git"
 ```
+
+Here is a syntax example to reference the Terraform module using the HTTPS protocol:
+
+```bash
+source = "git::https://github.com/your-organization/your-private-module.git"
+```
+:::tip
+
+The ability to authenticate with HTTPS is new! Here is a demo on its functionality:
+
+<DocVideo src="https://www.loom.com/share/bb8b9e4996f14bf0a16839849b0b72e4?sid=3befc405-7c4d-4f21-afe0-c36e2962b566" />
+
+:::
 
 ### Module Configuration
 

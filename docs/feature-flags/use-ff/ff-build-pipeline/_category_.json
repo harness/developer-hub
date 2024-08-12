@@ -1,0 +1,14 @@
+{
+    "label": "Use pipelines with FF",
+    "position": 10,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Use Pipelines with FF"
+    },
+    "customProps": {
+        "helpdocs_category_id": "fsgwbaegql"
+    }
+}

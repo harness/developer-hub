@@ -1,0 +1,10 @@
+{
+    "label":"Cloud Cost Management",
+    "position": 1,
+    "collapsible":"true",
+    "collapsed":"true",
+    "link":{
+       "type":"generated-index",
+       "title":"Cloud Cost Management"
+    }
+}

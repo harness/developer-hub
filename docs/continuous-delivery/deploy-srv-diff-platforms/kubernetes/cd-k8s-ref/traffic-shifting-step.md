@@ -4,11 +4,6 @@ description: This topic describes how to route traffic in pipelines using the tr
 sidebar_position: 6
 ---
 
-:::note
-
-Currently, this feature is behind the feature flag `CDS_K8S_TRAFFIC_ROUTING_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 This topic describes the Kubernetes Traffic Routing step. These configuration options can also be found as part of the Blue Green (BG) Deployment step as well as the Canary Deployment step. 
 

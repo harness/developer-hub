@@ -2,7 +2,9 @@
 id: kubelet-service-kill
 title: Kubelet service kill
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/kubelet-service-kill
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/kubelet-service-kill
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/kubelet-service-kill
+
 ---
 
 Kubelet service kill makes the application unreachable on the account of the node turning unschedulable (in **NotReady** state).
@@ -14,6 +16,43 @@ Kubelet service kill makes the application unreachable on the account of the nod
 
 ## Use cases
 Kubelet service kill fault determines the resilience of an application when a node becomes unschedulable, that is, **NotReady** state.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: kubelet-service-kill
+spec:
+  definition:
+    scope: Namespaced # Supports Cluster mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/exec"]
+    verbs: ["get", "list", "create"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
@@ -57,7 +96,7 @@ Kubelet service kill fault determines the resilience of an application when a no
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>

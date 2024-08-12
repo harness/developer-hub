@@ -1,7 +1,7 @@
 ---
 id: alb-az-down
 title: ALB AZ down
-redirect_from: 
+redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/aws/alb-az-down
 ---
 ALB (Application Load Balancer) AZ (Availability Zones) down takes down the AZ on a target application load balancer for a specific duration thereby impacting the delivery. This fault restricts access to certain availability zones for a specific duration.
@@ -11,7 +11,7 @@ ALB (Application Load Balancer) AZ (Availability Zones) down takes down the AZ o
 ## Use cases
 
 ALB AZ down:
-- Detaches the AZ from the application load balancer thereby disrupting the application's performance. 
+- Detaches the AZ from the application load balancer thereby disrupting the application's performance.
 - Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
 ### Prerequisites
@@ -88,7 +88,7 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
       </tr>
     </table>
-    
+
 ### Optional tunables
 
    <table>

@@ -1,0 +1,415 @@
+---
+title: SonarQube step configuration
+description: Scan code repositories with SonarQube.
+sidebar_position: 390
+sidebar_label: SonarQube step configuration
+helpdocs_topic_id: 4qe4h3cl28
+helpdocs_category_id: m01pu2ubai
+helpdocs_is_private: false
+helpdocs_is_published: truex
+---
+
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview#extraction-scans-in-sto" />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" /><br/>
+<br/>
+
+ You can run scans and ingest results from [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
+ 
+
+## Important notes for running SonarQube scans in STO
+
+* STO supports repository scanning only for SonarScanner.
+* STO supports all languages supported by SonarScanner.
+* Before you scan your repo, make sure that you perform any prerequisites for the language used in your repo. <!-- Need to confirm this sentece per https://harness.atlassian.net/browse/DOC-3640 If you are scanning a Java repo with more than one Java file, for example, you must compile `.class` files before you run the scan. -->
+  For details about specific language requirements, go to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/).
+* By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestration and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube step. 
+* You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
+* You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+
+### Root access requirements 
+
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
+
+<StoRootRequirements />
+
+
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
+
+## SonarQube step settings for STO scans
+
+
+The recommended workflow is to add a SonarQube step to a Security or Build stage and then configure it as described below.
+
+A Docker-in-Docker background step is not required for this workflow.
+
+<!--
+
+
+
+
+
+-->
+
+### Scan
+
+
+<a name="scan-mode"></a>
+
+#### Scan Mode
+
+
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+
+import StoSettingScanModeOrch  from './shared/step_palette/scan/mode/_orchestration.md';
+
+import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+
+
+
+<!-- StoSettingScanMode / -->
+<StoSettingScanModeOrch />
+<StoSettingScanModeData />
+<StoSettingScanModeIngest />
+
+
+#### Scan Configuration
+
+The predefined configuration to use for the scan. 
+
+- **Default**  
+- **Branch Scan** With this option selected, the step scans the branch or pull request specified in the pipeline execution. 
+
+
+### Target
+
+
+#### Type
+
+import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
+
+<StoSettingScanTypeRepo />
+
+
+#### Target and Variant Detection 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/>
+
+
+#### Name 
+
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
+
+<StoSettingTargetName />
+
+
+#### Variant
+
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+
+<StoSettingTargetVariant  />
+
+#### Workspace
+
+
+import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+
+
+
+<StoSettingTargetWorkspace  />
+
+
+### Ingestion File
+
+
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
+
+
+<StoSettingIngestionFile  />
+
+
+### Authentication
+
+<!-- ============================================================================= -->
+<a name="auth-domain"></a>
+
+#### Domain 
+
+The URL of the SonarQube server. This is required for Orchestration and Extraction scans. This value corresponds to the [`sonar.host.url`](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/analysis-parameters/#mandatory-parameters) setting in SonarQube.
+
+
+import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
+
+
+
+<StoSettingAuthDomain />
+
+<!-- ============================================================================= -->
+<a name="auth-enforce-ssl"></a>
+
+#### Enforce SSL
+
+
+import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
+
+
+
+<StoSettingProductSSL />
+
+
+#### Access Token
+
+
+
+import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
+
+
+
+<StoSettingAuthAccessToken />
+
+:::info note
+
+Harness recommends that you use a SonarQube **user** token that includes permissions to run scans and to create projects.
+
+If you use a **project** token, you must have access to the SonarQube project that you want to scan. 
+
+For more information, go to [Generating and using tokens](https://docs.sonarsource.com/sonarqube/latest/user-guide/user-account/generating-and-using-tokens/) in the SonarQube documentation. 
+
+:::
+
+
+### Scan Tool
+
+#### Exclude 
+
+If you want to exclude some files from a scan, you can use this setting to configure the `sonar.exclusions` in your SonarQube project. For more information, go to [Narrowing the Focus](https://docs.sonarqube.org/latest/project-administration/narrowing-the-focus/) in the SonarQube docs.
+
+#### Java Libraries
+
+A comma-separated list of paths to files with third-party libraries used by your tests. For SonarQube scans, this corresponds to the `sonar.java.libraries` parameter.  
+
+<!-- 
+
+import StoSettingTooJavaLibraries from './shared/step_palette/tool/java/_libraries.md';
+
+
+
+<StoSettingTooJavaLibraries  />
+
+-->
+
+
+#### Java Binaries
+
+A comma-separated list of paths to the folders with the bytecode files you want to scan. For SonarQube scans, this corresponds to the `sonar.java.binaries` parameter. 
+
+<!--
+
+import StoSettingToolJavaBinaries from './shared/step_palette/tool/java/_binaries.md';
+
+
+<StoSettingToolJavaBinaries  />
+-->
+
+### Log Level
+
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
+
+<StoSettingLogLevel />
+
+
+
+### Additional CLI flags
+
+You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. Here are some examples:  
+
+* `-sonar.ws.timeout=300`: Suppose the scan is experiencing timeouts due to long response times from a web service. This flag increases the timeout window.
+
+* `-Dsonar.projectName=<project_name>`: The project name.
+
+* `-Dsonar.projectVersion=<version_number>`: The project version to scan.
+
+* `-Dsonar.projectKey=<project_key>`: The unique key of the project to scan.
+
+* `-Dsonar.test.exclusions=**src/test/**/*.*`: The test files to exclude from the scan.
+
+
+##### YAML example
+
+```yaml
+              - step:
+                  type: Sonarqube
+                  spec:
+                    advanced:
+                      args:
+                        cli: "-Dsonar.projectVersion=1.2.3"
+```
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
+
+### Fail on Severity
+
+
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
+
+<StoSettingFailOnSeverity />
+
+
+### Settings
+
+Use this field to add environment variables to your SonarQube scans. For example, you can add [proxy settings](#sonarqube-proxy-settings) if your SonarQube instance is behind a proxy. 
+
+<!--
+### Settings
+
+You can add a `tool_args` setting to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. For example, suppose the scan is experiencing timeouts due to long response times from a web service. You can increase the timeout window like this:  `tool_args` = `-sonar.ws.timeout 300`.
+
+-->
+
+### Additional Configuration
+
+import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+
+<ScannerRefAdditionalConfigs />
+
+
+### Advanced settings
+
+import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+
+<ScannerRefAdvancedSettings />
+
+
+
+
+## SonarQube proxy settings
+
+If there's a proxy between your Harness pipeline and your SonarQube server, you can add your proxy settings under [Settings](#settings). For example:
+
+- `JVM_HTTP_PROXY_HOST : my-proxy.ca.myorg.org`
+- `JVM_HTTP_PROXY_PORT : 3735`
+- `JVM_HTTPS_PROXY_HOST : my-proxy.ca.myorg.org `
+- `JVM_HTTPS_PROXY_PORT : 3745`
+- `JVM_NO_PROXY : sonar.myorg.local`
+
+## Generate coverage reports and upload to SonarQube
+
+You can set up your pipeline to generate test coverage reports and then get them pushed up to your SonarQube instance. To do this:
+
+1. Add a **Run** step to your pipeline before the SonarQube step.
+
+2. Set the **Image** field to a base image that's compatible with the repo you're scanning.
+
+3. Add commands to install the binary and any other dependencies required to generate the coverage report. 
+
+3. Add the commands necessary to generate the report.
+
+4. Add a [failure strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/) to the Run step and configure it to ignore all failures.
+
+   This step is required if you want the pipeline to proceed even if it can't generate a coverage report. 
+
+4. Update your SonarQube step with the path to the coverage report.
+
+   - This step is required only if you saved your report to a non-default folder and/or filename.
+
+   - To specify the report path, add the CLI argument for the report path to [Additional CLI Flags](#additional-cli-flags) in your SonarQube scan step. 
+
+:::note important notes
+
+- You must ensure that you generate reports that `sonar-cli` can find and upload, and that your SonarQube instance can ingest.
+
+- For more information, go to [Test Coverage](https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/test-coverage/overview/) in the SonarQube documentation.
+
+- Carefully review the specific language reference to make sure that you install the required binaries and dependencies, and that you publish your reports in the correct format.
+
+:::
+
+#### Example: generate a Python coverage report
+
+Here's an example workflow for generating a Python 3.9 coverage report:
+
+1. Add the **Run** step.
+
+2. Set the **Image** to `python:3.9-alpine`.
+
+3. Add commands to install `coverage` and any other dependencies required to generate the report.
+
+4. Add a `coverage` command to generate a coverage report. The specific usage depends on the language and platform.
+
+5. Add a second `coverage` command to convert the report to a SonarQube-compatible XML report.
+
+6. If the Run step saves the coverage report to a non-default location, add the report path to [Additional CLI Flags](#additional-cli-flags) in your SonarQube scan step. For example: `-Dsonar.python.coverage.reportPaths=/shared/sonarqube/coverage.xml`.
+
+Here's what the Run step looks like in YAML:
+
+```yaml
+
+- step:
+    type: Run
+    name: Run_Tests
+    identifier: generate_python_coverage_report
+    spec:
+      connectorRef: account.harnessImage
+      image: python:3.9-alpine
+      shell: Sh
+      command: |-
+        # Install coverage and other
+        # dependencies required by the code repo.
+        pip install pytest-django pytest-cov 
+        python3 -m pip install coverage
+        pip install -r requirements.txt
+
+        # Run coverage commands to generate a report
+        # and then convert the report to XML.
+        # This method ensures that SonarQube can ingest the resulting report.
+        coverage run -m pytest **/tests 
+        coverage xml
+
+```
+
+## Troubleshoot Sonar Scans
+
+### Can't generate SonarQube report due to shallow clone
+
+* Error message: `Shallow clone detected, no blame information will be provided. You can convert to non-shallow with 'git fetch --unshallow'`
+* Cause: If the [depth setting](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
+* Solution: Change the `depth` to `0`.
+
+### Add the sonar.projectVersion to a Harness pipeline
+
+In your SonarQube step, declare `-Dsonar.projectVersion` under [Additional CLI Flags](#additional-cli-flags).
+
+### SonarQube doesn't scan the main branch and pull request branches in the same pipeline
+
+:::info 
+
+Harness introduced a fix in [STO release 1.83.1](/release-notes/security-testing-orchestration#version-1831) to provide better support for orchestrated branch and pull-request scanning with SonarQube Enterprise.
+
+- With this fix, the orchestration step always downloads results for the scanned branch or pull request.
+- To scan a branch or pull request, select **Branch Scan** in [Scan Configuration](#scan-configuration). With this option selected, the step scans the branch or pull request specified in the pipeline execution.
+
+:::
+
+If SonarQube doesn't scan both the main branch and pull request (PR) branches within the same pipeline, it might indicate an issue with the pull request setup in SonarQube.
+
+One potential solution involves configuring conditional arguments within the Harness Platform to handle PR and branch scan requests separately. To implement this solution, you can use [conditional executions](/docs/platform/pipelines/step-skip-condition-settings) to run specific steps based on whether it's a PR scan request or a branch scan request. For example, your conditional executions could use JEXL expressions with [codebase variables](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) like `<+codebase.build.type>=="branch"` or `<+codebase.build.type>=="pr"`.
+
+This approach ensures proper configuration and execution of SonarQube scans for both main and PR branches within your pipeline.
+

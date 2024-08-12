@@ -2,7 +2,8 @@
 id: pod-http-latency
 title: Pod HTTP latency
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-http-latency
 ---
 
 Pod HTTP latency is a Kubernetes pod-level chaos fault that injects HTTP response latency by starting the proxy server and redirecting the traffic through it. This fault:
@@ -13,10 +14,46 @@ Pod HTTP latency is a Kubernetes pod-level chaos fault that injects HTTP respons
 
 ## Use cases
 Pod HTTP latency:
-- Evaluates the application's resilience to lossy or flaky HTTP responses. 
+- Evaluates the application's resilience to lossy or flaky HTTP responses.
 - Simulates latency to specific API services for (or from) a given microservice.
-- Simulates a slow response on specific third-party or dependent components or services. 
+- Simulates a slow response on specific third-party or dependent components or services.
 
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-http-latency
+spec:
+  definition:
+    scope: Cluster # Supports "Namespaced" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["replicasets, daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16

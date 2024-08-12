@@ -12,14 +12,14 @@ ECS container memory hog disrupts the state of infrastructure resources. It indu
 - This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
 
 
-![ECS Container Memory Hog](./static/images/ecs-stress-chaos.png)
+![ECS Container Memory Hog](./static/images/ecs-container-memory-hog.png)
 
 ## Use cases
 
 Memory usage inside containers is subject to constraints. If the limits are specified, exceeding them can result in termination of the container (due to OOMKill of the primary process, often pid 1).
 The container is restarted, depending on the policy specified.
-When there are no limits on the memory consumption of containers, containers on the instance can be killed based on their oom_score, which extends to all the task containers running on the instance. This results in a bigger blast radius.  
-This fault launches a stress process within the target container, that causes the primary process in the container to have constraints based on resources or eat up the available system memory on the instance when limits on resources are not specified. 
+When there are no limits on the memory consumption of containers, containers on the instance can be killed based on their oom_score, which extends to all the task containers running on the instance. This results in a bigger blast radius.
+This fault launches a stress process within the target container, that causes the primary process in the container to have constraints based on resources or eat up the available system memory on the instance when limits on resources are not specified.
 
 
 ### Prerequisites
@@ -43,7 +43,7 @@ stringData:
 ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -78,7 +78,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],
@@ -123,7 +123,7 @@ Below is an example AWS policy to execute the fault.
         <th> Description </th>
         <th> Notes </th>
         </tr>
-        <tr> 
+        <tr>
         <td> CLUSTER_NAME </td>
         <td> Name of the target ECS cluster.</td>
         <td> For example, <code>cluster-1</code>. </td>
@@ -157,22 +157,22 @@ Below is an example AWS policy to execute the fault.
           <td> Target ECS service name. </td>
           <td> For example, <code>app-svc</code>. For more information, go to <a href="#ecs-service-name"> ECS service name.</a></td>
         </tr>
-      <tr> 
+      <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Path to the AWS secret credentials.</td>
       <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
       </tr>
-      <tr> 
+      <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of workers on which stress is applied.</td>
         <td> For more information, go to <a href="#number-of-workers"> number of workers.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> MEMORY_CONSUMPTION </td>
         <td> Memory consumed (in mebibytes).</td>
         <td> Default: 100. For more information, go to <a href="#memory-consumption"> memory consumed in mebibytes.</a></td>
       </tr>
-      <tr> 
+      <tr>
         <td> MEMORY_PERCENTAGE </td>
         <td> Memory consumed (in percentage).	</td>
         <td> Default: 0. For more information, go to <a href="#memory-percentage"> memory consumed in percentage.</a></td>
@@ -190,7 +190,7 @@ Below is an example AWS policy to execute the fault.
     </table>
 
 ### Memory percentage
-Memory consumed by the target container (in terms of percenage) for a duration specified by `TOTAL_CHAOS_DURATION` environment variable. Tune it by using the `MEMORY_PERCENTAGE` environment variable.
+Memory consumed by the target container (in terms of percentage) for a duration specified by `TOTAL_CHAOS_DURATION` environment variable. Tune it by using the `MEMORY_PERCENTAGE` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -218,7 +218,7 @@ spec:
 ```
 
 ### Memory consumption
-Memory consumed by the target container (in terms of mebibytes) for a duration specified by `TOTAL_CHAOS_DURATION` environment variable. Tune it by using the `MEMORY_CONSUMPTION` environment variable. 
+Memory consumed by the target container (in terms of mebi bytes) for a duration specified by `TOTAL_CHAOS_DURATION` environment variable. Tune it by using the `MEMORY_CONSUMPTION` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -276,7 +276,7 @@ spec:
 
 ### ECS service name
 
-Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable. 
+Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 

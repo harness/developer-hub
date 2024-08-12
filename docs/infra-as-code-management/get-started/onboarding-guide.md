@@ -70,7 +70,7 @@ To configure your connectors before you create a Workspace, go to the following 
 <Tabs>
 <TabItem value="Cloud Provider connector">
   <iframe 
-    src="https://app.tango.us/app/embed/8ad0b6f5-6258-47c1-8014-140ac0919e12" 
+    src="https://app.tango.us/app/embed/3d7ee504-7664-4805-a93c-5796b3db939b" 
     title="Set up a Cloud Provider Connector for Harness IaCM" 
     style={{minHeight:'640px'}}
     width="100%" 
@@ -83,7 +83,7 @@ To configure your connectors before you create a Workspace, go to the following 
 </TabItem>
 <TabItem value="Git repository connector">
   <iframe 
-    src="https://app.tango.us/app/embed/22085f72-df71-48cb-860d-b329f2aa43ca" 
+    src="https://app.tango.us/app/embed/33ce65a9-69bb-418d-9328-cd5198dcf6e5" 
     title="Set up a Git Repository Connector for Harness IaCM" 
     style={{minHeight:'640px'}}
     width="100%" 
@@ -155,6 +155,10 @@ Go to the **Use OIDC** tab [Cloud platform connectors reference](https://develop
 :::
 ---
 
+:::tip migrate existing projects
+For first-time use, use our [migration tool](https://developer.harness.io/docs/infra-as-code-management/remote-backends/state-migration) to create new workspaces and import your existing Terraform projects into the Harness Platform.
+:::
+
 ## Add a new workspace
 
 Once you have configured your connectors, you can create a Workspace and select them in the New Workspace panel:
@@ -209,7 +213,7 @@ You can include cost estimation as part of the workspace setup and in conjunctio
 <Tabs>
   <TabItem value="Interactive guide">
     <iframe 
-      src="https://app.tango.us/app/embed/82daee54-d0e5-4e07-bce1-cc8c6be850e7" 
+      src="https://app.tango.us/app/embed/ca925494-e35b-4ddc-af6f-a881197da980" 
       title="Creating an IaCM Provision Pipeline" 
       style={{minHeight:'640px'}}
       width="100%" 

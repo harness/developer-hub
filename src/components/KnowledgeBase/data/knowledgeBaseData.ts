@@ -3,7 +3,7 @@ import { MODULES } from "../../../constants";
 export type CardItem = {
   title: string;
   /*
-  MODULES.ci | MODULES.cd | MODULES.ff | MODULES.ccm | MODULES.idp |
+  MODULES.ci | MODULES.cd | MODULES.ff | MODULES.ccm | MODULES.idp | MODULES.sei |
   MODULES.sto | MODULES.srm | MODULES.ce | MODULES.platform |
   */
   module: MODULES;
@@ -14,11 +14,17 @@ export type CardItem = {
 
 export const knowledgeBaseList: CardItem[] = [
   {
-    title: "Using a String List in Repeat Strategy",
+    title: "Use the HTTP step to set unsupported fields when creating Jira issues",
     module: MODULES.cd,
-    date: "Oct 19, 2023",
-    link: "/kb/continuous-delivery/articles/repeat-strategy",
+    date: "May 14, 2024",
+    link: "/kb/continuous-delivery/articles/create-cascading-fields-jira",
   },
+  {
+    title: "ServiceNow create, update, and approval API permissions",
+    module: MODULES.cd,
+    date: "April 22, 2024",
+    link: "/kb/continuous-delivery/articles/servicenow-api-permission",
+  },  
   {
     title: "Send Dashboard Reports to Slack Channel",
     module: MODULES.ccm,

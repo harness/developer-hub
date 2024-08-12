@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-05-28:T10:00:15
+date: 2024-07-23:T10:00:00
 sidebar_position: 8
 ---
 
@@ -45,21 +45,180 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## August 2024
+
+### Version 1.49.7
+
+#### Fixed issues
+
+- The deployment status API returns outdated or invalid information. This issue is fixed and we've added a new Deployment Status API, which honours permissions, and returns a correct 200 response with a QUEUED status, for Triggers which are in queued state. This will replace the existing API which behaved incorrectly in some situations, and will be deprecated. (PIPE-19306, ZD-62849)
+- Creating a NewRelic health source for a monitored service does not provide a method to select the correct application ID. This issue is fixed now and system collects and shows all the Application Ids from NewRelic.(CDS-98867, ZD-66434)
+- Using an expression in the auto-approval for the approval step threw an error. This issue is fixed.(CDS-98842, ZD-66329)
+- When a user tried to fetch a payload file from Bitbucket, it threw an invalid payload format and the HTTP capability check returned a 501 status code, indicating Bitbucket connectivity problems. This issue is fixed now.(CDS-98500, ZD-65594)
+
+## July 2024
+
+### Version 1.48.11
+
+#### New features and enhancements
+
+- The Verify step was not appearing in Continuous Deployment (CD) for SMP version 1.19.10. This was because the Verify step was initially part of the Service Reliability Management (SRM) module. Users who did not have the SRM module enabled could not see the Verify step. Now, as Continuous Verification (CV) has been moved to CD, this step will be available for all users who have CD enabled. (CDS-98542, ZD-65452)
+
+- In the GitOps Application page, a new button to terminate an ongoing Application Sync has been introduced. This feature is helpful for long-running or stuck sync situations. The button is visible on the top right of the screen, replacing the Sync button when a sync is ongoing. (CDS-97563)
+
+![](./static/terminate_sync.png)
+
+#### Early access
+
+- When deploying to Amazon's EKS, a new option to manually configure the connection to the cluster is available. Previously, you could only connect through an AWS Connector. Now, you can provide the cluster endpoint and optionally provide a CA cert. This feature is behind the feature flag `CDS_AWS_EKS_CLUSTER_MANUAL_CONFIGURATION`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-91561)
+
+#### Fixed issues
+
+- In a few cases, skipped stages/steps in Pipeline executions were being displayed in blue instead of grey. The issue is fixed now. (PIPE-20138, ZD-65966)
+- Stage/Step popover was hidden behind the Navigation UI. The issue is fixed now. (PIPE-20028, ZD-65628)
+- When we rerun a pipeline with multi-env deployment stages or stages in a Matrix, the rerun would skip over the stages that were skipped the last time, without re-evaluating the Execution Condition. This is fixed now; the Executional Condition is re-evaluated for previously skipped stages in Matrix during re-run, and if the condition is now true, they are executed. Note, this is only in the case where the execution failed midway within a Matrix or Multi-Env deployment in the pipeline, and we need to rerun the pipeline from that Matrix. (PIPE-19746, ZD-64970)
+- When you scroll to the bottom of the Pipeline Page and click on the last pipeline on the page, if your default view is YAML, the YAML in the Pipeline Studio was previously opening in a scrollable view. This issue has now been fixed. (CDS-98674, ZD65768,66530)
+- Scrolling was not working when the cursor was inside the script step. The issue is fixed now. (CDS-98607)
+- Previously, when trying to edit an existing Values YAML Manifest in the overrides section, users had to click a pencil icon on the far right. After clicking this pencil icon, another pencil icon, which was mostly hidden, appeared on top of the LOCATION section. This caused confusion as users were not seeing the second pencil icon. This issue has now been fixed. (CDS-98565, ZD-65892)
+- GitOps instances on Harness service were out of sync with applications that did not have project mappings but were part of the agent. The issue is fixed now. (CDS-96719, ZD-63203)
+- Incorrect unmarshalling of Terraform configuration to a JSON object for the API request caused backend validations to fail, resulting in a 500 response code. The issue is fixed now by adding more validation and null checks in the backend. (CDS-96374, ZD-62737)
+- In certain cases, the execution order and failure handling in pipelines were inconsistent. For example, if the last stage in a failed, the deployment continued instead of stopping. Additionally, steps within a step group sometimes executed even if previous steps had failed, causing confusion about the conditional execution logic and maximum concurrent executions not being honored. The issue is fixed now and StepGroup combinations will now be marked as skipped if one of the steps in the StepGroup fails and rollback happens during Pipeline Execution. (PIPE-19763, ZD-65041)
+
+### Version 1.45.5
+
+#### New features and enhancements
+
+- **Bi-Directional Sync Health Status for Git Sync**
+
+We have introduced a Git Sync status page for Harness NG. Once you have synced your Harness entities with your Git repository, you can view bidirectional activity between Harness and your repository using the Bi-Directional Sync Health Status feature. For each entitiy, you can see file path, commit message, status of the last sync as well as the payload. Refer to Harness [Git Sync health Page](/docs/platform/git-experience/git-sync-health-page) for more information. (PIPE-16865)
+
+- **HTTP support HTTPS Authentication for Terraform and Terragrunt Modules**
+
+You can now fetch modules for Terraform and Terragrunt via HTTPS authentication using GitHub, Bitbucket, and GitLab connectors(CDS-95361)
+
+- **API to get execution details along with input yaml that was passed during the execution**
+
+You can fetch a lite version of execution details along with input yaml that was passed during the execution with help of an API.(PIPE-19713)
+
+- Go version has been updated to `1.22.3` for the GitOps Service and GitOps Agent. (CDS-97613)
+
+- ArgoCD version packaged with harness gitops agent has been upgraded to `v2.10.10`. (CDS-97420)
+
+
+#### Behavior changes
+
+- Previously, when the verify step failed, and an action was taken based on the failure strategy or manual intervention, the title was always shown as **Manual Intervention**. (CDS-97985, ZD-65113)
+
+   Now, the title is updated to reflect the nature of the intervention:
+   - **Intervention** is displayed when the action is performed through the CV failure strategy configuration.
+
+   - **Manual Intervention** is displayed when the action is performed through manual intervention.
+
+#### Fixed issues
+
+- The left stage/steps was overlapping with the pipeline UI. The issue is fixed now. (PIPE-20028, ZD-65628)
+- The trigger was getting invoked without an artifact push. The issue is fixed now. (PIPE-19806)
+- Changes made to files in Git repository were not reflected in Harness. The issue is fixed now and it is ensured webhooks events are now correctly triggered, enabling accurate bididrectional synchronization. (PIPE-19654, ZD-64687)
+- When a Template was selected and added to a Pipeline, the UI options was not allowing the user to select **Always use Stable Template**, although this was possible through the YAML by removing the template version. This issue has now been fixed and the Template can be set to **Stable version** in the calling Pipeline. (PIPE-16496, ZD-60750)
+- Extra border was appearing on the settings page during extensive scrolling. The issue is fixed now. (CDS-98494, ZD-65368)
+- While clicking on the **View References** button while deleting a Secret was not properly redirecting the user. The issue is fixed now. (CDS-98487)
+- Discrepancy was observed in text box size between HTTP step and HTTP step template. The issue is fixed now by adding conditional width for pipeline input form and template. (CDS-98094, ZD-65420)
+- When updating the **File Usage** in File Store, an error was being thrown that the file usage could not be updated, even though it was being updated properly. The issue is fixed now. (CDS-98077, ZD-65347,65353)
+- Even though clusters were selected and listed under a specific environment, the Gitops Sync task was getting an error **Following clusters were skipped either because clusters were not linked to the environment or not present in Harness GitOps**. The issue is fixed now. (CDS-98022)
+- Azure App deployments were not working as expected due to recent log changes by Azure. Azure now provides logs for multiple containers, which affected the integration. The issue is fixed now and includes log pattern recognition that mark the pipeline success based on matching specific patterns in the logs. (CDS-98000, ZD-65289)
+- The license trends graph for the SI model was previously inaccurate due to the queries grouping services based on projects. As per the correct definition, all services should be grouped in a single bucket irrespective of the organization or project. The issue is fixed now and the queries have been updated to accurately reflect the current license count on the license trend graph for the SI model. (CDS-97966)
+- Git Experience for Overrides was not working. Previously, the UI tried to always fetch the overrides from the default branch failing the get call from the UI. The issue is fixed now. (CDS-97874)
+- In Custom template, service and Infrastructure is optional and if Infrastructure is fixed and from UI side and if there is no value present it was getting set to undefined that was leading to the removal of  **infrastructureDefinitions** key and if there is no key it will throw an error. The issue is fixed now. (CDS-97815,ZD-64148,64652)
+- Changes to add `metricThresholds` to NewRelic health monitors are causing Terraform to hang while waiting for an updated response. Despite the hang during the first execution, subsequent executions of the pipeline indicate that the resource was successfully updated. The issue is fixed now by changing the error code. (CDS-97793, ZD-65015)
+- When a template YAML contained duplicate keys and was linked to a pipeline, the error message only indicated the presence of duplicate keys without identifying the specific template. The error message has been improved to include the template identifier, enabling users to locate and fix the issue in the relevant template. (CDS-97785, ZD-64989)
+- While selecting the Deployment type **AWS SAM** and toggling the CV button it was throwing an error due to no template being chosen. The issue is fixed now. (CDS-97771)
+- For Winrm deployment with Command step and auth type as Kerberos if the environment variables contains characters `\b, \v, \c, \f, &` the script execution was failing as we parse the response of script execution to xml string and above characters are illegal xml characters. The issue is fixed and now and these characters will be escaped. This change is behind the FF `CDS_ESCAPE_ENV_VARS_FOR_WINRM_KERBEROS_NG`. (CDS-97690, ZD-55276,58201,66326)
+- When using a connector at a project scope, the preflight check fails when the connector reference links to the connector url stored or created at an account level due to an incorrect routing to a `Not Found` page. This was because, scope details were missing from the API. The issue is now fixed.  (CDS-97593, ZD-64673)
+- Logs were not being uploaded for shell script step and some other steps in case the step timed out. The issue is fixed and the shell script step now uploads the logs on step timeout. (CDS-97521, ZD-64422)
+- The shell script step was not doing a capability check before assigning the tasks to the delegate. The issue is fixed and the shell script step will now have a host capability check. (CDS-97512, ZD-66326,66349)
+- The ServiceNow step was not updating the ticket but was showing successful with no logs being shown. The issue is now fixed and console logs and debugging help has been added in the ServiceNow steps. (CDS-97033, ZD-63637)
+- When selecting **Use Template** on an Approval Stage, Steps were showing, but Step Group Templates were not. The issue is now fixed, and users will be able to create a step group template with the approval stage type. These templates can be used in approval stages as step entities. (CDS-96930, ZD-63556)
+
+## June 2024
+
+### Version 1.43.5
+
+#### New features and enhancements
+
+- **Infinite Scroll Support Repo listing**
+
+This feature is currently behind the feature flag, `CDS_LIST_REPO_V2`. Please contact [Harness support](mailto:support@harness.io) to enable it.
+
+For a certain connector, you can now search for repositories with support for infinite scroll. Simply enter any keyword to see related repositories listed. If you can't find the repository you're looking for, you can also add it manually.(PIPE-10894)
+
+Refer to following doc for more details on new [repo listing](/docs/platform/git-experience/git-experience-overview/#repo-listing).
+
+#### Breaking changes
+
+- Harness now supports the serial deployment of environment groups. This feature is currently behind the feature flag, `ENV_GROUP_DEPLOYMENTS_IN_SERIAL`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-97241, ZD-63912)
+
+#### Fixed issues
+
+- If drift is detected in the services dashboard tile, the **Drift Detected** hover box now displays a detailed error message with the relevant documentation link. (CDS-96911, CDS-96722)
+- The project level artifact feed was not working for azure web services deployment and the project information was fetched from the wrong object. This issue is now fixed and the project level feed for artifact collection now works as expected. (CDS-97586)
+- Fixed an issue where hovering on variables did not work as expected. (PIPE-14668)
+- The GitEx Health page is now updated to include information about GitEx webhook events validation such as event status and status of other related entities. (PIPE-18466)
+- When a Template is selected and added to a Pipeline, the UI options don't allow the user to select **Always use Stable Template**, although this was possible through the YAML by removing the template version. This issue is now fixed and the Template can be set to **Stable version** in the calling Pipeline. (PIPE-16496, ZD-60750)
+
+
+### Version 1.42.4
+
+#### Breaking changes
+
+- Validations have been added to override variable names. Now, a new variable name cannot be saved if it starts or ends with a space. Also, validations have been added for special characters. This is a breaking change for the already saved invalid variable names. Hence, this change is enabled behind the feature flag, `CDS_OVERRIDES_VARIABLE_NAME_VALIDATIONS`. After enabling the feature flag, you can see that the variable names are being validated when creating or updating overrides. (CDS-97386, ZD-62711)
+
+
+#### Fixed issues
+
+- Validation for the pipelines with templates imported from Git failed. Typically, schema validation is done in the pipeline Get, Create, or Update calls. However, schema validation for pipelines imported from Git (with templates) is done without resolving the templates because it's an expensive operation. Therefore, schema validation in the async validate call to identify any schema errors causing validation failure. Note that the issue only happens with imported pipelines with templates from Git currently. (PIPE-18537, ZD-61841)
+- Null Pointer Exception occurred in the Verify step. Added null point checks to avoid this error in the future.  (CDS-97388)
+- Pipeline execution showed inconsistencies. This issue is fixed by fixing a retry bug with the delegate's Git client where it did not retry on specific errors. (CDS-96877, ZD-63321)
+- Service failed intermittently when fetching the `ECR_ARTIFACT_TASK_NG` artifact. This issue is fixed by optimizing ECR calls by reducing the number of client creation calls and reusing the clients by passing them and eventually using them to make calls instead of creating clients every time. (CDS-96861, ZD-63061)
+- The Execution History page broke when numbers were used in the Tags field. This issue is fixed by converting the string holding the number to string type before applying string methods on the variable. (CDS-96636)
+- When trying to resolve the expressions in the File Store scripts, Harness encountered a self referencing expression. Due to this condition, the resources associated with two Harness services were exhausted. A code change fixed this issue by preventing such pipeline executions. This item requires Harness Delegate version 24.06.83304. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PIPE-19585, ZD-64579, ZD-64580)
+
+
+### Version 1.41.6
+
+
+#### Usability enhancement
+
+- Harness Approval step usability has been enhanced. Earlier, during pipeline execution with the Harness Approval step, the approval actions, Approve and Reject had low visibility in the Executions view. This has been enhanced to match with the Console view where the Approve and Reject actions are available in the top section. You must now provide the Approval inputs upon clicking **Approve or Reject**.
+
+![](./static/approval1.png)
+
+![](./static/approval.png)
+
+#### Early access
+- Harness now lists all pipeline executions including retired and child executions in the Executions page. This feature is behind the feature flag, `PIE_SHOW_ALL_EXECUTIONS_FILTER`. Contact [Harness support](mailto:support@harness.io) to enable it. (PIPE-18492, ZD-64066)
+
+#### Fixed issues
+- Updates made to stage variables did not reflect in the pipeline. When adding a new allowedValue in a template, the changes were not getting propagated to the pipeline as it was getting treated as subset. This issue was caused by a change made in the code to allow subsets of values in allowedValues in a nested pipeline/template. Harness is reverting this change, and will support exact allowedValues in pipeline/template during reconciliation. Some customers may face reconciliation errors if they are using subset allowedValues already. (PIPE-19102, ZD-62929)
+- Running a pipeline returned an unclear error message, `Invalid request: Cannot create pipeline entity due to Unexpected token (FIELD_NAME), expected END_OBJECT: expected closing END_OBJECT after type information and deserialized value at [Source: (StringReader); line: 13124, column: 1]`. This issue is fixed by providing a meaningful error message for the `getStageExecutionList` flow. (PIPE-16557, ZD-60649)
+- Null pointer exception occurred when populating instrumentation data for sending events for telemetry. This issue occurred because some JsonNode objects returned null while called using GET method. This issue is resolved by adding null checks for the JsonNode objects. (PIPE-16452)
+- Service steps failed intermittently when fetching the ECR_ARTIFACT_TASK_NG artifact. This issue is fixed by optimizing ECR calls by reducing the number of client creation calls and reusing the clients by passing them and eventually using it to make calls instead of creating clients every time. (CDS-96861, ZD-63061)
+- Terraform configuration for a monitored service returned the `500` response code. This issue occurred due to incorrect un-marshalling of Terraform configuration to the JSON object for the API request. This led to backend validations failing and causing the `500` response code. This issue is fixed by adding more validations/null checks in the backend. (CDS-96374, ZD-62737)
+
+
 ## May 2024
 
 ### Version 1.39.4
 
 #### Fixed issues
 
-- Fixed an issue where the MS Teams notifications didn't show the event names. Now, the pipeline end event appears as "ended" and the pipeline success event appears as "succeeded" in notifications. (PIPE-18855, ZD-62684)
+- Fixed an issue where notifications didn't show the event names properly across all notification methods. Now, the pipeline end event appears as **ended** and the pipeline success event appears as **succeeded** in notifications. (PIPE-18855, ZD-62684)
 - For a pipeline with bidirectional sync enabled, the file name change in GitHub was not properly reflected in the Harness UI. This issue is fixed by enhancing the cache handling for files. (PIPE-18828, ZD62791)
 - Step group templates did not appear when selecting Use Template on an Approval stage. This issue is fixed. You can now create a step group template with the Approval stage, and use them as step entities in the Approval stage. (CDS-96930, ZD-63556)
 - The HTTP step's Request Body field stretched horizontally to fit lengthy expressions. This issue is fixed. (CDS-96839, ZD-63344)
 - Fixed an issue where users were unable to save YAML changes when creating a new infrastructure definition. (CDS-96396, ZD-62801, ZD-63997)
-- Terraform configuration for a monitored service returned the `500` response code. This issue occurred due to incorrect un-marshalling of Terraform configuration to the JSON object for the API request. This led to backend validations failing and causing the `500` response code. This issue is fixed by adding more validations/null checks in the backend. (CDS-96374, ZD-62737)
 - The TerraformCloud Run step did not fail if the Terraform Apply step failed. This issue occurred because we were not checking the status of Terraform Apply after streaming logs. If Apply started, the step passed even if the Apply step did not complete. The step failed only when the Apply step failed to start, but not if it failed midway. This issue is fixed. The TerraformCloud Run step now fails if the Apply step fails midway, allowing users to use appropriate failure strategies. (CDS-96089, ZD-62254, ZD-63371)
 - Fixed an issue where runtime expressions and values were not supported for Helm Values files in the Update GitOps Apps step. (CDS-96005)
-- The Resource Constraint pop-up didn't show the ongoing execution details in the pipeline execution console view. This issue is fixed. (CDS-18831, ZD-62825)
+- The Resource Constraint pop-up didn't show the ongoing execution details in the pipeline execution console view. This issue is fixed. (PIPE-18831, ZD-62825)
 
 ### Version 1.38.2
 
@@ -77,7 +236,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Fixed an issue where pipelines with IDP stages were not generating the correct pipeline execution URL. (PIPE-18322, ZD-60366)
 - Custom stages were not displaying wait status for the Approval step. Earlier, the stages were not marked as waiting when the steps went into waiting status. Now, the stage nodeExecution is marked as waiting when the step goes into waiting status. And, the stage is resumed when all the steps under that stage are resumed. (PIPE-15829, ZD-61238)
 - Input sets displayed wrong path even when the correct path exist. This issue is fixed. Now, selecting an infrastructure definition from a repository that is different from the parent input set's repository will no longer return an error. (CDS-96589, ZD-62984)
-- Unable to send `GitEntityFindInfoDTO` for Docker artifact resources. This issue occurred because the Git metadata was not being passed as a query parameter in API calls. This issue is resolved by making backend changes to resolve the YAML. (CDS-96589)
+- Unable to send `GitEntityFindInfoDTO` for Docker artifact resources. This issue occurred because the Git metadata was not being passed as a query parameter in API calls. This issue is resolved by making backend changes to resolve the YAML. (CDS-96379)
 - The error that appeared when a pipeline was missing a reference to Harness resources like service, environment, etc, appeared only for a small amount of time and didn't allow users to see necessary details. This issue is fixed. The error message now stays until users close it manually. (CDS-96302, ZD-62677)
 - Trigger activity history cleared when updating trigger. This issue is fixed by changing the Trigger Activity History retention duration to 6 months instead of 7 days. (CDS-95729, ZD-61782)
 - The nav header panel of the Harness UI was not collapsible. The panel is now collapsible and appears when you hover over it. (CDS-95698, ZD-61706, ZD-61707)
@@ -114,6 +273,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Queries in `harness-prod2-cvng.verificationJobInstances` were scanning too many documents and raising the CPU utilization. This issue is fixed by adding more `verificationJobInstances` indexes. (CDS-95840)
 - Fixed an issue where the drop-down capability for the **Region** field in the AWS Serverless Lambda **Infrastructure Details** page was missing. (CDS-95726)
 - Unable to add tags to pipelines in Terraform. This issue is fixed by updating the tags description in the pipeline CRUD API Terraform docs to highlight that the value passed in tags should match the value passed in YAML. (PIPE-18705, ZD-62221, ZD-62415, ZD-63124)
+-  The child steps of a retried step group were not being marked as retried. As a result, the status of these retried child steps was incorrectly considered in the final status calculation of the pipeline. The issue is fixed now to correctly mark the child steps of a retried step group as retried. With this change, only the latest node executions for children of step groups with the retry step group failure strategy will be considered in the final pipeline status calculation. (PIPE-16925, ZD-61196,68060)
 
 ## April 2024
 
@@ -198,7 +358,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
    
   For more information, go to [Permissions inheritance logic from containerized step groups to steps](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step/). 
 
-- You can create a multi-phase workflow that progressively deploys your new instances to a new ASG incrementally using the ASG Phased Deploy step when creating a Canary deployment. Currently, this feature is behind the feature flag, `CDS_ASG_PHASED_DEPLOY_FEATURE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, go to [Canary phased deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment). 
+- You can create a multi-phase workflow that progressively deploys your new instances to a new ASG incrementally using the ASG Phased Deploy step when creating a Canary deployment. For more information, go to [Canary phased deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment). 
 
 #### Limitations
 
@@ -227,7 +387,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Early access
 
-- You can select a different infrastructure when propagating an environment from a previous stage. Currently, this feature is behind the feature flag `CDS_SUPPORT_DIFFERENT_INFRA_DURING_ENV_PROPAGATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, go to [CD documentation](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments#select-a-different-infrastructure-when-propagating-environment-from-a-previous-stage). (CDS-85143)
+- You can select a different infrastructure when propagating an environment from a previous stage. For more information, go to [CD documentation](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments#select-a-different-infrastructure-when-propagating-environment-from-a-previous-stage). (CDS-85143)
 - A **Metrics** tab is added to the individual service dashboard to provide details of the selected service's deployments, failure rate, deployment frequency, active service instances, the underlying environment and infrastructure for the service instance, and a summary of instances over a selected period. Currently, this feature is behind the feature flag `CDC_SERVICE_DASHBOARD_REVAMP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, go to [Individual service dashboards](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#individual-service-dashboards). (CDS-88414)
 - Harness now displays the execution context for each step in the Execution Details page along with the inputs and outputs of the step. This enhancement helps debug pipeline executions. Currently, this feature is behind the feature flag `CDS_SAVE_EXECUTION_EXPRESSIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-91921)
 - Harness has now decoupled pipeline execute and pipeline abort permissions. For every pipeline, Harness permits two type of users, one can execute the pipeline and the other abort the pipeline. These two users can overlap if required. Currently, this feature is behind the feature flag `CDS_PIPELINE_ABORT_RBAC_PERMISSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, go to [Permissions required to abort pipeline](https://developer.harness.io/docs/platform/pipelines/failure-handling/abort-pipeline/#required-permissions). (CDS-86459)
@@ -3337,8 +3497,6 @@ The store app is only certified to be used with Incident, Problem, Change Reques
 The custom table being used should allow access to this table via web services.
 
 - Harness will remove comments when evaluating commented lines in manifests to avoid rendering failures. (CDS-57721, ZD-41676)
-
-  This functionality is behind a feature flag, `CDS_REMOVE_COMMENTS_FROM_VALUES_YAML`.
 
   Expressions in comments were causing issues for some customers as Harness was trying to evaluate the expressions and this was causing failures.
 

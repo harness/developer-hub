@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-06-03T10:00
+date: 2024-07-18T10:00
 sidebar_position: 4
 ---
 
@@ -19,6 +19,18 @@ These release notes describe recent changes to Harness Delegate.
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
+
+:::
+
+:::info **Delegate Security Update**
+Added a critical security fix in harness secret manager for handling identities with CD workflows.
+If you are running delegates version below 799xx and using Terraform/Terragrunt features, upgrade to delegate version 799x or above immediately. Go to the [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) to update the delegates.
+
+:::
+
+:::danger Stackdriver logs notice
+
+If you have blocked Stackdriver logs using firewall rules, upgrade your delegates to version 24.06.83304 or later.
 
 :::
 
@@ -47,7 +59,63 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## July 2024
+
+### Version 24.07.83503 <!--  July 17, 2024 -->
+
+#### New features and enhancements
+
+- Reduced delegate liveness probe failure time. Previously, delegates had a 15-minute window to send heartbeats before the liveness probe failed, leading to a delegate restart. Harness reduced this time to 5 minutes to ensure quicker detection and response to heartbeat failures. (PL-52037)
+
+### Version 24.07.82906 <!--  July 17, 2024 -->
+
+#### Hotfix
+
+- Rollout deployment logs were not available and could not be expanded. Although the deployment was working, the logs were not displaying. The issue has been addressed by ensuring that logs will be shown even on a heavily loaded delegate. (PL-55512, ZD-66330)
+
+### Version 24.07.83404 <!--  July 10, 2024 -->
+
+#### New features and enhancements
+
+- Modified the unique index for delegate token names. The default token name in each scope will now be `default_token` instead of `default_token_org/project`. This change applies only to new projects and organizations; existing projects and organizations will retain their current token names. (PL-51151)
+
+### Version 24.07.83205 <!--  July 9, 2024 -->
+
+#### Hotfix
+
+- When the feature flag `CDS_PERFORM_SHELL_SCRIPT_HOST_CAPABILITY` is enabled, Shell script steps will perform host capability checks. (CDS-97512, ZD-66326, ZD-66349)
+
+- Script executions failed during the Command step for WinRM deployments with a Kerberos auth type when environment variables contained the characters `\v`, `\b`, or `\f`. Now, when the feature flag `CDS_ESCAPE_ENV_VARS_FOR_WINRM_KERBEROS` is enabled, the environment variables will be escaped and script execution will pass. (CDS-97690)
+
 ## June 2024
+
+### Version 24.07.82905 <!--  July 1, 2024 -->
+
+#### Hotfix
+
+- Reduced the time for missing heartbeats for delegates before the liveness probe fails from 15 mins to 5 mins. (PL-52037)
+
+### Version 24.06.83304 <!--  June 24, 2024 -->
+
+#### Fixed issues
+
+- Kubernetes services were created during the startup of the delegate, causing the IP pool to be exhausted for NAB. The delegate has been updated to prevent the creation of Kubernetes services upon startup, resolving the issue with IP pool exhaustion. (PL-51550)
+
+- Delegates were running out of memory due to frequent connectivity checks. Optimized the connectivity check process to reduce memory usage, preventing the delegate from running out of memory. (PL-51418, ZD-63705)
+
+- When trying to resolve the expressions in the File Store scripts, Harness encountered a self referencing expression. Due to this condition, the resources associated with two Harness services were exhausted. A code change fixed this issue by preventing such pipeline executions. (PIPE-19585, ZD-64579, ZD-64580)
+
+### Version 24.06.83203 <!--  June 11, 2024 -->
+
+#### Fixed issues
+
+- Delegate logs were displaying entire bearer tokens when using the IDP Kubernetes connector. Added log sanitization to delegate logs to mask commonly used secret patterns. These patterns can be extended per-use-case by adding them to the `/opt/harness-delegate/sanitize-patterns.txt` file inside the delegate. (PL-50889, ZD-64069)
+
+### Version 24.06.83004 <!--  June 7, 2024 -->
+
+#### Hotfix
+
+- Secrets were being printed in plain text when using a custom secret manager, exposing sensitive information. Implemented masking of the `script` field in the custom secret manager to prevent logging of secrets used within the script. (PL-51535, ZD-64069)
 
 ### Version 24.06.83003 <!--  June 3, 2024 -->
 

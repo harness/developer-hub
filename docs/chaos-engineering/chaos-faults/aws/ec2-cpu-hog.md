@@ -11,8 +11,8 @@ EC2 CPU hog induces stress on the AWS EC2 instances using the Amazon SSM Run com
 ## Use cases
 
 EC2 CPU hog:
-- Induces CPU stress on the target AWS EC2 instance(s). 
-- Simulates a lack of CPU for processes running on the application, which degrades their performance. 
+- Induces CPU stress on the target AWS EC2 instance(s).
+- Simulates a lack of CPU for processes running on the application, which degrades their performance.
 - Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the instance.
 
 ### Prerequisites
@@ -56,7 +56,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],

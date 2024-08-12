@@ -2,14 +2,16 @@
 id: node-cpu-hog
 title: Node CPU hog
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-cpu-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-cpu-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-cpu-hog
+
 ---
 
 Node CPU hog exhausts the CPU resources on a Kubernetes node.
 - The CPU chaos is injected using a helper pod running the Linux stress tool (a workload generator).
 - The chaos affects the application for a specific duration.
 
-![Node CPU Hog](./static/images/node-stress.png)
+![Node CPU Hog](./static/images/node-cpu-hog.png)
 
 
 ## Use cases
@@ -20,6 +22,43 @@ Node CPU hog exhausts the CPU resources on a Kubernetes node.
 - It helps scalability of nodes based on growth beyond budgeted pods.
 - It verifies the autopilot functionality of cloud managed clusters.
 - It also verifies multi-tenant load issues; that is, when the load increases on one container, it does not cause downtime in other containers.
+
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: node-cpu-hog
+spec:
+  definition:
+    scope: Cluster
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/exec"]
+    verbs: ["get", "list", "create"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
@@ -61,7 +100,7 @@ Node CPU hog exhausts the CPU resources on a Kubernetes node.
         <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject stress. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>

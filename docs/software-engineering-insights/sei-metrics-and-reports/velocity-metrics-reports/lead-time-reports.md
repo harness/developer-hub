@@ -102,11 +102,31 @@ This metric can be defined as either:
 
 -->
 
-### Lead time calculation
+## Lead time calculation
 
 Overall lead time is the sum of the time spent in each stage in a workflow, such as commit-to-deployment time for a change, open-to-merge time for PRs, or the issue workflow for issues in your issue management system. Lead time can help identify where a team is spending time and if the amount of time spent in each stage falls in an acceptable range.
 
 The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](#workflow-profiles-for-lead-time). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the pull request, then the *time to comment* is zero.
+
+### Average
+
+When configured to calculate the Lead Time as the **Average time in stage**, the individual lead time for each stage is calculated as the average across all the tickets or commits or both depending on the profile configuration, The overall lead time is then calculated as the sum of all the stages.
+
+### Median
+
+The [median lead time](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation#median) is the duration by which half of the tasks or tickets are completed. It gives you idea about the typical completion time by showing the point where half of the tickets are resolved faster and the other half take longer.
+
+### 90th Percentile
+
+The [90th percentile lead time](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation#90th-percentile) is the duration within which 90% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays.
+
+### 95th Percentile
+
+The [95th percentile lead time](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation#95th-percentile) is the duration within which 95% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays. The calculation of the 95th percentile lead time follows the same steps as the 90th percentile, with the only difference being the percentile value used.
+
+If you want to learn more about the calculations behind these metrics, you can check out the [DORA Lead Time calculations](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation).
+
+### Examples
 
 The following examples demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default configuration for a PR-based Workflow profile, which has four stages: PR Creation Time, Time to Comment, Approval Time, and Merge Time.
 
@@ -116,14 +136,6 @@ When reviewing these examples, consider the following:
 * There are two ways to track the time taken for a PR approval:
 * **Default Approval Time configuration:** The overall approval time, starting from PR creation.
 * **Approval Time minus Time to Comment:** Time spent in the review cycle when an active reviewer is involved.
-
-Harness SEI provides support for both the **Issue Lead Time by Stage report** and **SCM PR Lead Time by Stage report**. By default, the widget will display data for all contributors as defined under the given collection to which Insight is associated.
-
-To consider the [Issue Lead Time by Stages](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports) report, the start event should be `Ticket Created`. 
-
-Similarly, for the **SCM PR Lead Time by Stages report**, the start event should be `Commit Created`. However, since the start event is commit-created, we cannot add stages before the development stages, as the calculation starts with a commit-created event. 
-
-The major difference between the **Issue Lead Time by Stage report** and the **SCM PR Lead Time by Stage report** is in the drill-down view. The former displays the number of issues and timelines, while the latter displays data associated SCM pull requests.
 
 <details>
 <summary>PR Lead Time calculation example #1</summary>
@@ -185,6 +197,15 @@ To learn more about how SCM Commits are ingested on Harness SEI, go to [Technica
 
 It's important to note that certain usecases like the Lead Time calculations, offer valuable insights only after the work has been completed and merged. Consequently, when assessing these metrics in SEI, make sure to configure the Workflow Profile based on the final code changes rather than individual contributions before merging.
 
+## Lead Time reports
+
+Harness SEI provides two different reports i.e. **Issue Lead Time by Stage report** and **SCM PR Lead Time by Stage report** for measuring lead time across Issue Management System and Source Code Manager. By default, the report will display data for all contributors as defined under the given collection to which Insight is associated.
+
+To consider the [Issue Lead Time by Stages](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports) report, the start event should be `Ticket Created`. 
+
+Similarly, for the **SCM PR Lead Time by Stages report**, the start event should be `Commit Created`. However in this case you cannot add custom stages before the development stages, as the calculation starts with a Commit Created event.
+
+The only difference between the **Issue Lead Time by Stage report** and the **SCM PR Lead Time by Stage report** is in the drill-down view. The former displays the number of issues and timelines, while the latter displays data associated SCM pull requests.
 
 ## Lead Time by Time Spent in Stages Report
 

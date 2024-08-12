@@ -5,3 +5,4 @@ The following list shows the scan types that STO supports:
 * **Secret Scanning** scans a code repository and identifies all secrets such as access keys and passwords.
 * **DAST (Dynamic Application Security Testing)** scans a running application for vulnerabilties by simulating a malicious external actor exploiting known vulnerabilties. 
 * **Container Scanning** identifies vulnerabilities in container images.
+* **IaC** identifies vulnerabilities in Infrastructure as Code scripts that automatically provision and configure infrastructures.

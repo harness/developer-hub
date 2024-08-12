@@ -132,4 +132,24 @@ export const university: CardItem[] = [
     link: "/university/chaos-engineering?lvl=developer",
     // numberOfCerts: 1,
   },
+  {
+    title: "Internal Developer Portal  - Developer",
+    module: MODULES.idp,
+    type: certType.developer,
+    description:
+      "IDP Developer focuses on the fundamental skills to enable developer self-servicing and reducing cognitive overload.",
+    version: "Harness IDP Enterprise Plan",
+    link: "/university/idp?lvl=developer",
+    // numberOfCerts: 1,
+  },
+  {
+    title: "Software Engineering Insights  - Developer",
+    module: MODULES.sei,
+    type: certType.developer,
+    description:
+      "SEI Developer focuses on the fundamental skills to discover SDLC bottlenecks and improve developer experience with data.",
+    version: "Harness SEI Enterprise Plan",
+    link: "/university/sei?lvl=developer",
+    // numberOfCerts: 1,
+  },
 ];

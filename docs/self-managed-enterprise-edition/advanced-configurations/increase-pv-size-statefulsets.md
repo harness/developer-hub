@@ -7,7 +7,7 @@ sidebar_position: 4
 
 You can manually update the Persistent Volume (PV) size associated with a StatefulSet in your Kubernetes clusters. This topic describes how to increase the PV size for StatefulSets in your Kubernetes clusters during a Helm upgrade.
 
-For more information on Helm upgrades, go to [Upgrade the Helm chart](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/upgrade-helm-chart).
+For more information on Helm upgrades, go to [Upgrade the Helm chart](/docs/self-managed-enterprise-edition/install/upgrade-helm-chart).
 
 :::info Important
 This is only applicable to storage file systems that support dynamic provisioning. For more information, go to [Resizing Persistent Volumes using Kubernetes](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/).

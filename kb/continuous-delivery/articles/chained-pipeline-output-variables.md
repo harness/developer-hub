@@ -11,12 +11,20 @@ More details on this here: /docs/platform/pipelines/pipeline-chaining/
 
 ## Problem statement
 
-How to get output variables from the previous stage in a chained pipeline from another stage.
+How to pass variables from a chained/child pipeline to the main/parent pipeline through output variables. 
 
 ## Steps to achieve this usecase
 
-At the parent pipeline level in the output section, the User can provide the expression of the output variable for the chained pipeline. 
+At the **parent pipeline** level of the **pipeline reference stage**, head to the **output definitions section**.  The User can define the Harness expression for the output variable for the chained pipeline. 
+
+![](../static/pipelineOutputs.png)
+
+You can define the outputs utlizing the Harness Expressions reference utility, as references within a chained pipeline can become complicated.  
+
+For example, a variable referenced within the chained pipeline such as `<+serviceVariables.SampleVariable>` will need to be referred as `<+pipeline.stages.[ChildStageName].spec.serviceVariables.SampleVariable>`
  
+### Sample Pipeline
+
 In the below-shared pipeline yaml the first stage is the pipeline stage, In the output section We have defined the expression of the child pipeline which we want to use in the parent pipeline. 
  
 The same variable defined in the output section can be used by the further stage with the expression - \<+pipeline.[pipeline_stage_identifier].[output_variable_defined_under_output_section]>.
@@ -70,5 +78,8 @@ pipeline:
 ```
 
 
-This is how you can use an output variable from a previous stage in a chained pipeline from another stage.
- 
+Once the variable is defined, the subsequent stages can utilize the output variable from a previous stage in a chained (child) pipeline.
+
+::: Note
+Outputs from a Chained Pipeline stage cannot be referenced until after the stage has been completed.  The output data must exist, before it can be referenced.
+:::

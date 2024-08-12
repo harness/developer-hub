@@ -193,6 +193,10 @@ DORA Profile is a type of Workflow Profile that allows you to define the thresho
    
 ![](./static/dora-8.png)
 
+:::info
+SEI currently supports only [HarnessNG integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng) as the CD tool for configuring stages in the Lead Time workflow.
+:::
+
 * Set acceptable time limits and target times (e.g., IDEAL TIME, ACCEPTABLE TIME) for the custom stage and save it.
    
 ![](./static/dora-9.png)
@@ -326,6 +330,10 @@ In this section, you'll define the settings for Stages, New Features, Deployment
 * Define the **Stage Definition** by selecting the trigger event (options include Issue Management, Other CI/CD tools, Harness CI) and set the event parameters.
   
 ![](./static/velocity-9.png)
+
+:::info
+SEI currently supports only [HarnessNG integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng) as the CD tool for configuring stages in the Lead Time workflow.
+:::
   
 * Define the acceptable time limits and target times (e.g., IDEAL TIME, ACCEPTABLE TIME) for the custom stage and save it.
    

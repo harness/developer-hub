@@ -331,7 +331,7 @@ JSON Example:
       "memoryReservation": 128,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "<+primary.artifact.image>",
+      "image": "<+artifacts.primary.image>",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -394,7 +394,7 @@ containerDefinitions:
  memoryReservation: 128
  volumesFrom: []
  stopTimeout:
- image: <+primary.artifact.image>
+ image: <+artifacts.primary.image>
  startTimeout:
  firelensConfiguration:
  dependsOn:
@@ -427,7 +427,7 @@ proxyConfiguration:
 volumes: []
 ```
 
-The `image: <+primary.artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+primary.artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/variables-and-expressions/harness-variables) for the value that resolves to an image name at runtime. For this example, we will use `image: <+primary.artifact.image>` and an artifact.
+The `image: <+artifacts.primary.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+artifacts.primary.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/variables-and-expressions/harness-variables) for the value that resolves to an image name at runtime. For this example, we will use `image: <+artifacts.primary.image>` and an artifact.
 
 The Task Definition is added to the Service.
 
@@ -1112,7 +1112,7 @@ containerDefinitions:
     memoryReservation: 128
     volumesFrom: []
     stopTimeout:
-    image: <+primary.artifact.image>
+    image: <+artifacts.primary.image>
     startTimeout:
     firelensConfiguration:
     dependsOn:
@@ -1145,7 +1145,7 @@ proxyConfiguration:
 volumes: []
 ```
 
-The `image: <+primary.artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+primary.artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/variables-and-expressions/harness-variables) for the value that resolves to an image name at runtime.ECS Service Definition:
+The `image: <+artifacts.primary.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+artifacts.primary.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/variables-and-expressions/harness-variables) for the value that resolves to an image name at runtime.ECS Service Definition:
 
 Replace `<Security Group Id>` and `<Subnet Id>` with the Ids from the ECS instances for your target ECS cluster.
 
@@ -1345,7 +1345,7 @@ containerDefinitions:
     memoryReservation: 128
     volumesFrom: []
     stopTimeout:
-    image: <+primary.artifact.image>
+    image: <+artifacts.primary.image>
     startTimeout:
     firelensConfiguration:
     dependsOn:

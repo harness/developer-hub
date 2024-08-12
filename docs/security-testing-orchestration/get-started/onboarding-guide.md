@@ -26,11 +26,11 @@ This topic describes the steps you need to do to set up STO in your pipeline.
 
 The entire setup should take about 30 minutes.
 
-## STO Requirements 
+## STO requirements 
 
 Make sure you meet the following requirements before you do the [STO Setup Procedures](#sto-setup-procedures) steps described below.
 
-### External Requirements
+### External requirements
 
 Before you create your first Harness pipeline, you must have the following:
 
@@ -60,17 +60,18 @@ The following sections describe the workflow for setting up STO. Once you comple
 
 Harness includes two [RBAC roles](/docs/platform/role-based-access-control/rbac-in-harness/) specifically for STO users:
 
-* **Developer** role — Permissions for developer workflows: 
+* **Security Testing Developer** role — Permissions for developer workflows: 
 
   - Configure and run scans
   - Set baselines (such as the `main` branch of `latest` tag) for scan targets
   - View scan results and troubleshoot detected issues
   - Configure scan steps to fail the pipeline if any "show-stopper" vulnerabilities are found
   - Request exemptions ("ignore rules") to allow a pipeline to proceed even if a scan detects vulnerabilities with a specific severity or higher (Critical, High, Medium, etc.)
-   
-* **SecOps** role — Permissions for Security Operations staff. SecOps users have all Developer permissions, but only SecOps users can approve exemption requests. 
 
-These workflows are covered in [Your first STO pipeline](./your-first-sto-pipeline).
+   
+* **Security Testing SecOps** role — Permissions for Security Operations staff. SecOps users have all Developer permissions, but only SecOps users can approve exemption requests. 
+
+These workflows are covered in [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline).
 
 :::note
 You need Administrative privileges at the Account level (Account Admin role) to assign these roles.
@@ -86,6 +87,8 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 4. Assign the **Security Testing Developer** role or the **Security Testing SecOps** role to the user profile.
 
 ![](./static/set-up-harness-for-sto-16.png)
+
+
 
 </details>
 
@@ -228,7 +231,7 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 
 </details>
 
-### Create a Codebase Connector
+### Create a Codebase connector
 
 You'll need a GitHub account to do the [STO Tutorials](./tutorials). 
 
@@ -242,7 +245,7 @@ You also need a Git repo connector for any STO pipeline that scans a codebase. Y
 To do the STO tutorials, point the connector at the following repo: [https://github.com/williamwissemann/dvpwa](https://github.com/williamwissemann/dvpwa)
 
 <details>
-<summary>Create a Codebase Connector: Default Workflow</summary>
+<summary>Create a Codebase connector: default workflow</summary>
 
 1. Go to the **Account Settings** > **Account Resources** page and select **Connectors**.
 2. Under Code Repositories, choose **GitHub**.
@@ -267,7 +270,7 @@ To do the STO tutorials, point the connector at the following repo: [https://git
 
 Now that you've set up Harness, you're ready to start using STO.
 
-A good next step is to go through [Your first STO pipeline](./your-first-sto-pipeline). This tutorial covers the basic concepts of STO. You'll set up a standalone pipeline with one scanner, run scans, analyze the results, and learn how to investigate and fix detected vulnerabilities.
+A good next step is to go through [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline). This tutorial covers the basic concepts of STO. You'll set up a standalone pipeline with one scanner, run scans, analyze the results, and learn how to investigate and fix detected vulnerabilities.
 
 The [STO tutorials](./tutorials) also include a set of quickstarts and end-to-end workflows that show you how to create pipelines that you can apply to a wide variety of security-related use cases. 
 

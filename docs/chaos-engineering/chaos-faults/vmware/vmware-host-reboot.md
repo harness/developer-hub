@@ -12,13 +12,13 @@ VMware host reboot reboots a VMware host that is attached to the Vcenter.
 
 ## Use cases
 
-- VMware host reboot has a high blast radius due to which all the VMs under the target host are disrupted. 
-- It measures the impact of the host reboot on the VMs and its underlying applications. 
+- VMware host reboot has a high blast radius due to which all the VMs under the target host are disrupted.
+- It measures the impact of the host reboot on the VMs and its underlying applications.
 - It also measures the effectiveness of a HA cluster.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
-- Execution plane should be connected to vCenter and host vCenter on port 443. 
+- Execution plane should be connected to vCenter and host vCenter on port 443.
 - The VM should be in a healthy state before and after injecting chaos.
 - VMware tool should be installed on the target VM with remote execution enabled.
 - Appropriate vCenter permissions should be provided to access the hosts and the VMs.
@@ -111,7 +111,7 @@ spec:
 ```
 
 ### HA cluster
-It specifies whether to reboot a vCenter host which is a part of a high availability cluster. Tune it by using the `HIGH_AVAILABILITY_CLUSTER` environment variable. 
+It specifies whether to reboot a vCenter host which is a part of a high availability cluster. Tune it by using the `HIGH_AVAILABILITY_CLUSTER` environment variable.
 
 Use the following example to tune it:
 

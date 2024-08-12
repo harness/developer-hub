@@ -1,0 +1,14 @@
+{
+    "label":"Install",
+    "position": 15,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Install Harness Self-Managed Enterprise Edition"
+    },
+    "customProps":{
+       "helpdocs_category_id":"66qbyn7ugu"
+    }
+ }

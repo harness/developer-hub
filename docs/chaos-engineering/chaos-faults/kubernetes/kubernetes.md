@@ -187,6 +187,25 @@ This fault tests the ephemeral storage limits and determines the resilience of t
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### FS fill
+
+FS fill is a Kubernetes pod-level chaos fault that applies fs stress by filling the pod's ephemeral storage of the pod.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Tests the ephemeral storage limits and ensures that the parameters are sufficient.
+- Determines the resilience of the application to unexpected storage exhaustion.
+- Evaluates the application's resilience to FS stress or replica evictions.
+- Verifies file system performance, and thin-provisioning support.
+- Verifies space reclamation (UNMAP) capabilities on storage.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod autoscaler
 
 Pod autoscaler is a Kubernetes pod-level chaos fault that determines whether nodes can accomodate multiple replicas of a given application pod.
@@ -535,6 +554,21 @@ Pod IO attribute override is a Kubernetes pod-level fault that modify the proper
 <Accordion color="green">
 <summary>View fault usage</summary>
 It can test the application's resilience for the different values of file properties.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod IO mistake
+
+Pod IO mistake is a Kubernetes pod-level fault that causes the file to read or write an incorrect value within the mounted volume of the pod.
+
+- It can test the application's resilience to mistakenly writing or reading invalid data from files.
+
+<Accordion color="green">
+<summary>View fault usage</summary>
+It can test the application's resilience to mistakenly writing or reading invalid data from files..
 </Accordion>
 
 </FaultDetailsCard>

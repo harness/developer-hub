@@ -111,6 +111,7 @@ Payload is an object with required and optional fields.
 | `execution_id` | string | Unique identifier for the specific job execution |
 | `cfr_status` | boolean | Status of the CFR stage |
 | `themes` | list of string | List of the theme names |
+| `web_url` | URL | Contains the pipeline execution URL |
 
 Here is an example payload:
 
@@ -166,7 +167,12 @@ Here is an example payload:
         }
     ],
     "cfr_status": true
-    "themes":["themex","themey","themex/themey"]
+    "themes":[
+        "themex",
+        "themey",
+        "themex/themey"
+    ],
+    "web_url": "http://somelink-updated.com"
     
 }
 ```

@@ -1,4 +1,4 @@
-This setting applies to Custom Scan steps when the `policy_type` is [`ingestionOnly`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+This setting applies to Custom Scan steps when the `policy_type` is [`ingestionOnly`](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline).
 
 ##### Key
 
@@ -8,7 +8,7 @@ ingestion_file
 
 ##### Value
 
-The path to your scan results when running an [Ingestion scan](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline), for example `/shared/scan_results/myscan.latest.sarif`.  
+The path to your scan results when running an [Ingestion scan](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline), for example `/shared/scan_results/myscan.latest.sarif`.  
 
 - The data file must be in a [supported format](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#supported-ingestion-formats) for the scanner.
 

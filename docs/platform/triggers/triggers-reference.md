@@ -22,47 +22,47 @@ There is a YAML editor for triggers. When creating or editing a trigger, switch 
 Here's an example of the YAML for a GitLab webhook trigger.
 
 ```yaml
-trigger:  
-    name: GitlabNewTrigger  
-    identifier: GitlabNewTrigger  
-    enabled: true  
-    description: ""  
-    tags: {}  
-    orgIdentifier: default  
-    projectIdentifier: NewProject  
-    pipelineIdentifier: testpp  
-    source:  
-        type: Webhook  
-        spec:  
-            type: Gitlab  
-            spec:  
-                type: MergeRequest  
-                spec:  
-                    connectorRef: gitlab  
-                    autoAbortPreviousExecutions: true  
-                    payloadConditions:  
-                        - key: <+trigger.payload.user.username>  
-                          operator: In  
-                          value: john, doe.john  
-                    headerConditions:  
-                        - key: <+trigger.header['X-Gitlab-Event']>  
-                          operator: Equals  
-                          value: Merge Request Hook  
-                    jexlCondition: (<+trigger.payload.user.username> == "doe" || <+trigger.payload.user.username> == "doe.john") && <+trigger.header['X-Gitlab-Event']> == "Merge Request Hook"  
-                    actions: []  
-    inputYaml: |  
-        pipeline:  
-            identifier: testpp  
-            properties:  
-                ci:  
-                    codebase:  
-                        build:  
-                            type: branch  
-                            spec:  
-                                branch: <+trigger.branch>  
-            variables:  
-                - name: testVar  
-                  type: String  
+trigger:
+    name: GitlabNewTrigger
+    identifier: GitlabNewTrigger
+    enabled: true
+    description: ""
+    tags: {}
+    orgIdentifier: default
+    projectIdentifier: NewProject
+    pipelineIdentifier: testpp
+    source:
+        type: Webhook
+        spec:
+            type: Gitlab
+            spec:
+                type: MergeRequest
+                spec:
+                    connectorRef: gitlab
+                    autoAbortPreviousExecutions: true
+                    payloadConditions:
+                        - key: <+trigger.payload.user.username>
+                          operator: In
+                          value: john, doe.john
+                    headerConditions:
+                        - key: <+trigger.header['X-Gitlab-Event']>
+                          operator: Equals
+                          value: Merge Request Hook
+                    jexlCondition: (<+trigger.payload.user.username> == "doe" || <+trigger.payload.user.username> == "doe.john") && <+trigger.header['X-Gitlab-Event']> == "Merge Request Hook"
+                    actions: []
+    inputYaml: |
+        pipeline:
+            identifier: testpp
+            properties:
+                ci:
+                    codebase:
+                        build:
+                            type: branch
+                            spec:
+                                branch: <+trigger.branch>
+            variables:
+                - name: testVar
+                  type: String
                   value: alpine
 ```
 
@@ -81,6 +81,10 @@ trigger:
 Either **Custom** or a Git provider: **Harness Code**, **Azure**, **GitHub**, **Bitbucket**, **GitLab**.
 
 For the **Custom** payload type, you must create a secure token and add it to your custom Git provider. Whenever you regenerate a secure token, any preceding tokens become invalid, and you must update your Git provider with the new token.
+
+:::important
+The size of the payload supported by Harness for Free, Team, and Enterprise accounts are 16MB.
+:::
 
 ### Connector
 
@@ -408,7 +412,7 @@ The JEXL `in` operator is not supported in the **JEXL Condition** field.
 
 ## Pipeline Input
 
-When executing pipelines using triggers, you can select stages and provide input sets dynamically. 
+When executing pipelines using triggers, you can select stages and provide input sets dynamically.
 
 Select **Pipeline Stages** to execute pipelines using triggers. This can be a fixed value or an expression.
 
@@ -416,7 +420,7 @@ Select **Pipeline Stages** to execute pipelines using triggers. This can be a fi
 
 If you select fixed value for pipeline stages, all stages in the pipeline are dispalyed. Select a stage or all stages that you want to execute using the trigger.
 
-For input sets, in **Pipeline Input**, select or create the input set to use when the trigger executes the pipeline. 
+For input sets, in **Pipeline Input**, select or create the input set to use when the trigger executes the pipeline.
 
 ### Select pipeline stages and input sets using expressions
 
@@ -426,7 +430,7 @@ In **Pipeline Input**, select or create the input set using expressions. Here's 
 
 ![](./static/create-input-set.png)
 
-Here's is a sample trigger YAML:  
+Here's is a sample trigger YAML:
 
 ```yaml
 trigger:
@@ -463,7 +467,7 @@ trigger:
   inputSetRefs: <+<+trigger.payload.input_set_refs>.split(",")>
 
 ```
-Here's a sample trigger payload:   
+Here's a sample trigger payload:
 
 
 ```yaml
@@ -477,7 +481,7 @@ Here's a sample trigger payload:
 ### Important notes when using expressions
 
 * If the value provided for the input set YAML reference is an expression, Harness checks for the key `input_set_refs` in the trigger payload and uses the value provided there.
-* RBAC for input sets cannot be considered in pipelines executed by triggers as Harness won't know which user executed the pipeline using triggers. 
+* RBAC for input sets cannot be considered in pipelines executed by triggers as Harness won't know which user executed the pipeline using triggers.
 * Limitation: You cannot pass the stages or inputRefs as an expression in the trigger payload.
 
 

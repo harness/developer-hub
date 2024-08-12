@@ -163,7 +163,7 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 
 You can add one or more Health Sources for each APM or logging provider.
 
-#### **Add Amazon Managed Service for Prometheus as health source**
+### **Add Amazon Managed Service for Prometheus as health source**
 
 Harness now supports Amazon Managed Service for Prometheus as health source. To select Amazon Managed Service for Prometheus as health source:
 
@@ -176,16 +176,35 @@ The Add New Health Source settings appear.
    ![](./static/verify-deployment-with-prometheus-82.png)
 
 5. Under **Connect Health Source**, click **Select Connector**.
-6. In **Connector** settings, you can either choose an existing connector or click **New Connector.**
+6. In **Connector** settings, you can either choose an existing connector or click **New Connector**.
 7. In the **Select Feature** field, select the Prometheus feature that you want to use.
 8. In the **Select AWS Region** field, select the appropriate region.
 9.  In the **Select Workplace Id** field, select the appropriate workplace id.
 10. Click **Next**. The **Customize Health Source** settings appear.  
-You can customize the metrics to map the Harness Service to the monitored environment in **Query Specifications and Mapping** settings.The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. Click **Map Queries to Harness Services** drop down.
+    
+    You can customize the metrics to map the Harness Service to the monitored environment in **Query Specifications and Mapping** settings.The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. Click **Map Queries to Harness Services** drop down.
+
 1.  Click **Add Metric**.
 2.  Enter a name for the query in **Name your Query**.
 3.  Click **Select Query** to select a saved query. This is an optional step. You can also enter the query manually in the **Query** field.
 4.  Click **Fetch Records** to retrieve the details. The results are displayed under **Records.**
+
+### Commonly used Prometheus queries
+
+#### Performance
+
+- P90: `histogram_quantile(0.90, sum(rate(flask_http_request_duration_seconds_bucket{datacenter="preprod", status=~"2.*", pod=~"harness-dummy-.*"}[5m])) by (le))`
+- P50: `histogram_quantile(0.50, sum(rate(flask_http_request_duration_seconds_bucket{datacenter="preprod", status=~"2.*", pod=~"harness-dummy-.*"}[5m])) by (le))`
+
+#### API
+
+- 5xx response: `sum(rate(flask_http_request_total{datacenter="preprod", status=~"5.*", pod=~"harness-dummy-.*"})) by (le)`
+- 4xx response: `sum(rate(flask_http_request_total{datacenter="preprod", status=~"4.*", pod=~"harness-dummy-.*"})) by (le)`  
+
+#### Infrastructure
+
+- CPU: `(sum(rate(container_cpu_usage_seconds_total{namespace="<namespace_name>",pod=~"dummy-.*",source_cluster="<cluster_name>",image!='',container!='POD'}[1m])) by (le) / sum(kube_pod_container_resource_requests_cpu_cores{}) by (le)) * 100`
+- Memory: `(sum(container_memory_usage_bytes{namespace="<namespace_name>",pod=~"harness-dummy-.*",source_cluster="<cluster_name>",  container!="POD", container!=""}) by (le) / sum(kube_pod_container_resource_requests_memory_bytes{}) by (le)) * 100`   
 
 ## Step 6: Select Sensitivity
 

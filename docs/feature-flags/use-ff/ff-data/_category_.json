@@ -1,0 +1,14 @@
+{
+    "label": "Get data on your flags",
+    "position": 30,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Get Data on Your Feature Flags"
+    },
+    "customProps": {
+        "helpdocs_category_id": "axthyiihah"
+    }
+}

@@ -1,21 +1,21 @@
 ---
-title: Checkmarx scanner reference for STO
+title: Checkmarx step configuration
 description: Scan code repositories with Checkmarx.
-sidebar_label: Checkmarx scanner reference
+sidebar_label: Checkmarx step configuration
 sidebar_position: 100
 ---
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview/#extraction-scans-in-sto" />
-<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/extraction-scans" />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
 With Harness STO, you can do the following:
 - Run local SAST scans using the [CxConsole CLI](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) (orchestration mode).
 - Extract results from a [Checkmarx SAST](https://checkmarx.com/resource/documents/en/34965-44074-checkmarx-sast.html) server (extraction mode).
-- [Ingest results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) from any Checkmarx scanner that can publish to SARIF.
+- [Ingest results](/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data) from any Checkmarx scanner that can publish to SARIF.
 
 ## Important notes for running Checkmarx scans in STO
 
@@ -29,7 +29,7 @@ With Harness STO, you can do the following:
 
   - Ingestion mode — The Checkmarx step can ingest results from any Checkmarx scanner that can publish results in [SARIF format](https://docs.oasis-open.org/sarif/sarif/v2.0/sarif-v2.0.html). 
 
-    - A common and very flexible workflow is to run your Checkmarx scan using a [GitHub Action or Drone Plugin step](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-actions/) and then ingest your scan results using a Checkmarx step.  
+    - A common and very flexible workflow is to run your Checkmarx scan using a [GitHub Action or Drone Plugin step](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/run-scans-using-github-actions) and then ingest your scan results using a Checkmarx step.  
 
     - For Checkmarx SAST (CxSAST), Checkmarx SCA (CxSCA), and Checkmarx Flow (CxFlow) scans, you can use a [Checkmarx CxFlow Github Action](https://github.com/checkmarx-ts/checkmarx-cxflow-github-action).
 
@@ -39,7 +39,7 @@ With Harness STO, you can do the following:
 
     - Review the documentation for the [Checkmarx CxFlow](https://github.com/checkmarx-ts/checkmarx-cxflow-github-action) or [Checkmark One](https://github.com/Checkmarx/ast-github-action) action thoroughly and verify that you’ve configured it correctly in Harness.
 
-    - For a general description and example of an end-to-end ingestion pipeline, go to [Run an ingestion scan in an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+    - For a general description and example of an end-to-end ingestion pipeline, go to [Run an ingestion scan in an STO Pipeline](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline).
 
     - If you want to generate multiple results files in one scan, add a separate Checkmarx step to ingest each results file. 
 

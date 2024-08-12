@@ -1,6 +1,6 @@
 ---
-title: Kubernetes Rollout step
-description: Define the Kubernetes Rollout step.
+title: Kubernetes Rollout Deploy step
+description: Define the Kubernetes Rollout Deploy step.
 sidebar_position: 2
 helpdocs_topic_id: 2bwlugh9gi
 helpdocs_category_id: 85tr1q4hin
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the Kubernetes Rollout Deployment step.
+This topic provides settings and permissions for the Kubernetes Rollout Deployment step. In Pipeline Studio, the step is labeled **Rollout Deployment**. On inspection, the step is labeled **K8s Rollout Deploy**. 
 
 ## Rollout Deployments
 
