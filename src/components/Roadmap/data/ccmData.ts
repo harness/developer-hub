@@ -307,7 +307,7 @@ export const CcmData: Horizon = {
       },
     ],
   },
-  "Q3 CY'24": {
+  "Now": {
     description: "Q3 CY'24, Aug-Oct 2024",
     feature: [
       {
@@ -347,7 +347,7 @@ export const CcmData: Horizon = {
       },
     ],
   },
-  "Q4 CY'24": {
+  "Next": {
     description: "Q4 CY'24, Nov-Jan 2025",
     feature: [
       {
