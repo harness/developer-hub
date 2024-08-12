@@ -29,7 +29,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### New features and enhancements
 
-- Added stage savings data and additional information for intelligence steps in the **Execution View**. (CI-13252)
+- Harness Intelligence features optimize your Build stages by reducing execution time through advanced caching caapbilities and Test Intelligence. With this release we've added stage savings data to stage summary of Build stages where saving is observed, as well as further insight into the optimization on the step level. To learn more visit [Documentation](https://developer.harness.io/docs/continuous-integration/get-started/harness-ci-intelligence#intelligence-savings) (CI-13252)
 
 #### Fixed issues
 
