@@ -313,6 +313,7 @@ target segment not found%!(EXTRA string-some-target-here)
 This error occurs if a user is trying to add a target group that does not exist as a target to a Feature Flag.
 
 #### Why am I getting a target not created error?
+
 ```
 target not created 'target'
 ```
@@ -321,6 +322,25 @@ This error occurs if a user is trying to add a target that already exists.
 
 #### How to retrieve the feature flag state for a specific target via API?
 The best approach today to achieve this usecase is if you want to know what a specific target will get for a specific flag, you can instantiate one of the SDKs, connect with an SDK key and evaluate that target. It’s the most reliable way of doing it since it’s exactly what the target will be doing.
+
+#### How does the client SDK handle target creation when a service restarts and authenticates?
+
+When a service restarts and authenticates, it must supply the target information itself. The SDK does not store or manage targets on the Harness side. Therefore, the customer's application is responsible for providing the target and its associated data during authentication. Typically, this information would be retrieved from a session if it pertains to a user, or fetched from a user store. This ensures that the service has the necessary target data upon restarting and re-authenticating.
+
+#### Does deleting a Flag in one environment delete it from all other environments?
+
+Yes, deleting a flag in one environment does delete it from all environments.
+
+#### Why weren't delete actions included in the Feature Flag Admin role?
+
+Deleting a flag can lead to catastrophic consequences. To safeguard against this, we want our users to think carefully about permissions. The Feature Flag Admin role can do almost everything except delete to prevent accidental or unintended deletions.
+
+#### How can I grant delete permissions to a user if the Feature Flag Admin role does not include it?
+
+If you need to grant delete permissions to a user, you have two options:
+
+1. Use one of the out-of-the-box roles: Project Admin, Org Admin, or Account Admin. All of these roles include the delete flag permission and allow users to perform all necessary actions.
+2. Create a specific role that includes the delete permission and assign that role to your users. This way, you can tailor permissions to your exact needs while maintaining control over potentially destructive actions.
 
 #### What does warning NU1701 mean?
 
