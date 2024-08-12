@@ -268,7 +268,7 @@ const sidebars = {
         // API Docs
         {
           type: "link",
-          label: "API Refrence",
+          label: "API Reference",
           href: "https://apidocs.harness.io/",
           customProps: {
             description: "Harness API Docs.",
@@ -334,7 +334,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/tag/repository/",
       customProps: {
         description: "Harness API Docs.",
@@ -384,7 +384,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
@@ -427,7 +427,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
@@ -470,7 +470,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
@@ -518,7 +518,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
@@ -562,7 +562,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
@@ -605,7 +605,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
@@ -652,7 +652,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
@@ -699,7 +699,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
@@ -746,7 +746,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/chaos.html",
       customProps: {
         description: "Harness API Docs.",
@@ -795,7 +795,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
@@ -844,7 +844,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
@@ -891,7 +891,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
@@ -939,7 +939,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
@@ -987,7 +987,7 @@ const sidebars = {
     // API Docs
     {
       type: "link",
-      label: "API Refrence",
+      label: "API Reference",
       href: "https://apidocs.harness.io/",
       customProps: {
         description: "Harness API Docs.",
