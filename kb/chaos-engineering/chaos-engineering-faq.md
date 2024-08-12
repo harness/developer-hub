@@ -86,6 +86,18 @@ No, HCE helps identify the failures in your application by injecting failures in
 #### What kind of Reporting is provided by the tool?
 Once you execute your chaos experiments, you can download the reports that describe the experiment details such as runs, infrastructure, resilience score, and so on. For more information, go to [resilience probes](/docs/chaos-engineering/features/resilience-probes/overview), [alerts](https://developer.harness.io/docs/chaos-engineering/features/experiments/alert-integration) and [chaos dashboard](https://developer.harness.io/docs/chaos-engineering/features/chaos-dashboard/overview).
 
+
+#### Can I deploy chaos infrastructure on an Openshift Cluster?
+Yes, you can deploy chaos infrastructure on OpenShift clusters and run chaos experiments using the SCCs that we provide.
+
+#### Can we disrupt connection/network between any service in a cluster and an external service only & keep other connections intact without actually disrupting external service?
+Yes, you can use set the `DESTINATION_IPS` or `DESTINATION_HOSTS` tunabls in all network level chaos experiments.
+For example, to execute the network loss fault,
+- Between the target app and cloud SQL, you can specify `DESTINATION_HOSTS` as **sqladmin.googleapis.com**.
+- Between the target app and storage/GCS, you can specify `DESTINATION_HOSTS` as **storage.googleapis.com**.
+- Between the target app and composer, you can specify `DESTINATION_HOSTS` as **composer.googleapis.com**.
+
+
 ## Harness Delegate
 
 :::tip
