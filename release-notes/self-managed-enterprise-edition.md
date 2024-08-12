@@ -187,8 +187,7 @@ gsutil -m cp \
 
 #### Continuous Delivery
 
-- Harness GitOps now allow users to create applications using just repository URLs without requiring a pre-defined repository object, similar to Argo CD. This feature enables authentication via repository credentials and will automatically link a repository if a matching entity is later created. It also retains protection against repository deletion if it's in use by any applications.
-(CDS-98275)
+- Harness GitOps now allow users to create applications using just repository URLs without requiring a pre-defined repository object, similar to Argo CD. This feature enables authentication via repository credentials and will automatically link a repository if a matching entity is later created. It also retains protection against repository deletion if it's in use by any applications. (CDS-98275)
 
 ## August 12, 2024, patch version 0.17.3
 
