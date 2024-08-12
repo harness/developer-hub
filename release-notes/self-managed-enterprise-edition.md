@@ -153,7 +153,7 @@ gsutil -m cp \
 
 #### Harness Platform
 
-- We discovered an issue where the User Settings migration process in SMP environments incorrectly identifies values for Account Settings, leading to incorrect data population for existing settings. This issue has been resolved in versions `0.17.3` and `0.18.2`. If you are upgrading from version `0.16.x` or any lower version, you will not encounter this problem. However, if you have upgraded to any of the following versions: `0.17.0`, `0.17.1`, `0.17.2`, `0.18.0`, or `0.18.1`, you will need to run the provided script to correct the data:
+- We discovered an issue where the User Settings migration process in SMP environments incorrectly identifies values for Account Settings, leading to incorrect data population for existing settings. This issue has been resolved in versions `0.17.3`. If you have upgraded to any of the following versions: `0.17.0`, `0.17.1`, or `0.17.2`, you will need to run the provided script to correct the data:
 
   Script: [update-setting-parentUniqueId.sh](https://github.com/harness/helm-charts/blob/main/src/harness/scripts/update-setting-parentUniqueId.sh)
 
