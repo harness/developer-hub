@@ -123,6 +123,118 @@ Upon providing your credentials and the release version, the script will proceed
 
 :::
 
+## August 12, 2024, patch version 0.18.2
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.18.2](https://github.com/harness/helm-charts/releases/tag/harness-0.18.2) |
+| Air Gap Bundle | [0.18.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.18.2) |
+| NG Manager | 1.41.11 |
+| CI Manager | 1.30.4 |
+| Pipeline Service | 1.78.8 |
+| Platform Service | 1.26.3 |
+| Access Control Service | 1.48.3 |
+| Delegate | 24.06.83204 |
+| Change Data Capture | 1.18.0 |
+| STO Core | 1.97.2 |
+| Test Intelligence Service | 1.17.0 |
+| NG UI | 1.26.17 |
+| LE NG | 1.3.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.18.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.2/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Cloud Cost Management
+
+- **AWS SMP Query Fix**: Corrected the definitions for amortized and net amortized queries to ensure accurate reporting for AWS Savings Plans and Reservations Management. Additionally, new columns have been added to the unified table for enhanced data clarity. (CCM-18459)
+
+- **AWS Tag Filters**: We've added AWS tag sections that were missing and ensured that ResourceID values are correctly displayed. Additionally, support for cost categories in AWS CCM explores has been added to provide better visibility and management. (CCM-18542)
+
+
+#### Continuous Delivery
+
+- For Winrm deployment with Command step and auth type as Kerberos if the environment variables contains characters `\b, \v, \c, \f, &` the script execution was failing as we parse the response of script execution to xml string and above characters are illegal xml characters. The issue is fixed and now and these characters will be escaped. This change is behind the FF `CDS_ESCAPE_ENV_VARS_FOR_WINRM_KERBEROS_NG`. (CDS-97690, ZD-55276,58201,66326)
+
+#### Continuous Integration
+
+- Changed the URL parsing logic for GitLab SSH connections to correctly interpret project IDs starting with a number, preventing capability check failures. (CI-11392, ZD-58162, ZD-64761, ZD-66628)
+
+- Fixed an issue where external endpoints were used for internal service communication, causing token authentication failures and 401 errors. The issue was resolved by ensuring internal communication for the services. (CI-13686)
+
+- Updated the CI onboarding process to handle environments where the `clientSecret` API does not work, such as SMP. The dependency on `clientSecret` has been removed, and local infrastructure setup will be shown instead. (CI-13687)
+
+#### Harness Platform
+
+- We identified an issue in the User Settings migration process affecting SMP environments, causing incorrect Account Settings data. This has been resolved in versions 0.17.3 and 0.18.2. If you're upgrading from versions 0.17.0–0.18.1, please run the provided script to correct the data. Upgrades from 0.16.x or earlier directly to 0.17.3 or 0.18.2 will not encounter this issue. For assistance, please contact [Harness Support](mailto:support@harness.io).
+
+### New features and enhancements
+
+#### Continuous Delivery
+
+- Harness GitOps now allow users to create applications using just repository URLs without requiring a pre-defined repository object, similar to Argo CD. This feature enables authentication via repository credentials and will automatically link a repository if a matching entity is later created. It also retains protection against repository deletion if it's in use by any applications.
+(CDS-98275)
+
+## August 12, 2024, patch version 0.17.3
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.17.3](https://github.com/harness/helm-charts/releases/tag/harness-0.17.3) |
+| Air Gap Bundle | [0.17.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.17.3) |
+| NG Manager | 1.36.10 |
+| CI Manager | 1.26.5 |
+| Pipeline Service | 1.73.4 |
+| Platform Service | 1.23.2 |
+| Access Control Service | 1.45.1 |
+| Delegate | 24.04.82901 |
+| Change Data Capture | 1.17.0 |
+| STO Core | 1.94.7 |
+| Test Intelligence Service | 1.17.0 |
+| NG UI | 1.21.6 |
+| LE NG | 1.3.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.17.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.3/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- We identified an issue in the User Settings migration process affecting SMP environments, causing incorrect Account Settings data. This has been resolved in versions 0.17.3 and 0.18.2. If you're upgrading from versions 0.17.0–0.18.1, please run the provided script to correct the data. Upgrades from 0.16.x or earlier directly to 0.17.3 or 0.18.2 will not encounter this issue. For assistance, please contact [Harness Support](mailto:support@harness.io).
+
 ## July 23, 2024, patch version 0.18.1
 
 This release includes the following Harness module and component versions.
