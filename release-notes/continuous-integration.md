@@ -29,7 +29,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### New features and enhancements
 
-- Harness Intelligence features optimize your Build stages by reducing execution time through advanced caching caapbilities and Test Intelligence. With this release we've added stage savings data to stage summary of Build stages where saving is observed, as well as further insight into the optimization on the step level. To learn more visit [Documentation](https://developer.harness.io/docs/continuous-integration/get-started/harness-ci-intelligence#intelligence-savings) (CI-13252)
+- Harness Intelligence features optimize your 'Build' stages by reducing execution time through advanced caching caapbilities and Test Intelligence. With this release, we've added stage savings data to stage summary of 'Build' stages where saving is observed, as well as further insight into the optimization on the step level. To learn more, visit [Intelligence Savings Documentation](../docs/continuous-integration/get-started/harness-ci-intelligence#intelligence-savings) (CI-13252)
 
 #### Fixed issues
 
@@ -39,7 +39,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 - Fixed an issue where external endpoints were used for internal communication with logs service, causing token authentication failures and 401 errors. The issue was resolved by ensuring internal communication for the services. (CI-13686)
 
-- Introduced the `CI_PR_MERGE_STRATEGY_BRANCH` flag to enable the **Merge Commit Strategy** for Git clone, addressing previous issues with the GitHub API. Additionally, a stage variable `PR_MERGE_STRATEGY_BRANCH` has been added. Both the **Merge Commit** and **Source Branch** strategies now function as expected. (CI-13625, ZD-67476)
+- Validated the `CI_PR_MERGE_STRATEGY_BRANCH` flag to enable the **Merge Commit Strategy** for codebase clone, addressing previous issues with the GitHub API. Additionally, a stage variable `PR_MERGE_STRATEGY_BRANCH` has been validated. Both the **Merge Commit** and **Source Branch** strategies now function as expected. (CI-13625, ZD-67476)
 
 - Improved error message for anonymous base image connector option in the 'Build and Push' steps. (CI-13562)
 
