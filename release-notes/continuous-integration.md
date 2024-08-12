@@ -27,6 +27,10 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 <!-- 2024-08-05 -->
 
+#### New features and enhancements
+
+- Added stage savings data and additional information for intelligence steps in the **Execution View**. (CI-13252)
+
 #### Fixed issues
 
 - Removed the CI onboarding flow for new projects on SMP environments, where users were previously directed to a **Get Started** page that could fail due to `clientSecret` setup for Stripe. Now, customers will be directed to the **Overview** page instead. Upcoming releases will include changes to completely remove the **Get Started** option from the side navigation for SMP customers, ensuring it is no longer visible. (CI-13687)
