@@ -164,10 +164,9 @@ gsutil -m cp \
 
 #### Cloud Cost Management
 
-- **AWS SMP Query Fix**: Corrected the definitions for amortized and net amortized queries to ensure accurate reporting for AWS Savings Plans and Reservations Management. Additionally, new columns have been added to the unified table for enhanced data clarity. (CCM-18459)
+- **AWS SMP Query Fix**: Corrected the definitions for amortized and net amortized queries to ensure accurate reporting for AWS billing data. (CCM-18459)
 
-- **AWS Tag Filters**: We've added AWS tag sections that were missing and ensured that ResourceID values are correctly displayed. Additionally, support for cost categories in AWS CCM explores has been added to provide better visibility and management. (CCM-18542)
-
+- **AWS Dashboard Fix**: We've fixed AWS tag and ResourceID dimensions that were not working earlier in the dashboard. Additionally, support for cost categories in AWS CCM explores has been added to provide better visibility and management. (CCM-18542)
 
 #### Continuous Delivery
 
