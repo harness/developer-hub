@@ -29,7 +29,7 @@ The following steps describe the high-level workflow.
          * Key = `JAVA_TOOL_OPTIONS`
          * Value = `-Xmx2g -Xms1g`
    
-   3. If you want to store your binaries outside the local repo, go to the Build stage > Overview tab > Shared Paths and specify the folder -- for example, `java-binaries`.
+   3. If you want to store your binaries outside the local repo, go to the **Build** stage > **Overview** tab > **Shared Paths** and specify the folder -- for example, `java-binaries`.
       
       The step should compile or copy the binaries to a folder that does not contain any source files.
 

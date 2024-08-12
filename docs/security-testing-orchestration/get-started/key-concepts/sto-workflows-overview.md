@@ -4,6 +4,7 @@ description: Ingest results using orchestration, ingestion, and extraction.
 sidebar_position: 60
 redirect_from: 
   - docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview
+  - docs/category/orchestrate-scans-and-ingest-data
 helpdocs_topic_id: cjqnd71y07
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false

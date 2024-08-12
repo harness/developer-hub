@@ -12,14 +12,14 @@ EC2 HTTP reset peer injects HTTP reset on the service whose port is specified us
 ## Use cases
 EC2 HTTP reset peer:
 - Verifies connection timeout by simulating premature connection loss (firewall issues or other issues) between microservices.
-- Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
+- Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic).
 - Determines the application's resilience to a lossy (or flaky) HTTP connection.
 
 ### Prerequisites
 - Kubernetes >= 1.17
 - The EC2 instance should be in a healthy state.
 - SSM agent is installed and running in the target EC2 instance.
-- You can pass the VM credentials as secrets or as an chaosengine environment variable.
+- You can pass the VM credentials as secrets or as an chaos engine environment variable.
 - The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
   ```yaml
   apiVersion: v1
@@ -36,7 +36,7 @@ EC2 HTTP reset peer:
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -56,7 +56,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],

@@ -12,7 +12,6 @@ EC2 process kill fault kills the target processes running on an EC2 instance. Th
 ## Use cases
 EC2 process kill determines the resilience of applications when processes on EC2 instances are unexpectedly killed (or disrupted).
 
-
 ### Prerequisites
 - Kubernetes >= 1.17
 - The EC2 instance should be in healthy state
@@ -34,7 +33,7 @@ EC2 process kill determines the resilience of applications when processes on EC2
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -54,7 +53,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],

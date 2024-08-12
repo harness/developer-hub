@@ -2,13 +2,14 @@
 id: node-memory-hog
 title: Node memory hog
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-memory-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-memory-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-memory-hog
 ---
 Node memory hog causes memory resource exhaustion on the Kubernetes node.
 - It is injected using a helper pod running the Linux stress-ng tool (a workload generator).
 - The chaos affects the application for a specific duration.
 
-![Node Memory Hog](./static/images/node-stress.png)
+![Node Memory Hog](./static/images/node-memory-hog.png)
 
 ## Use cases
 

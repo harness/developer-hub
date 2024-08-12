@@ -4,76 +4,73 @@ description: Optimize AWS costs with asset governance recommendations
 # sidebar_position: 2
 ---
 
-# Optimize AWS costs with asset governance recommendations
+# Optimize AWS/Azure/GCP costs with asset governance recommendations
 
-Harness Cloud Asset Governance provides tools to optimize your cloud spend and avoid unnecessary costs. The asset governance recommendations work by rightsizing resources and decommissioning unused instances. By leveraging these recommendations, you can better control your cloud expenses while ensuring that your cloud infrastructure is optimized for maximum efficiency and cost-effectiveness.
+Harness Cloud Asset Governance provides tools to optimize your cloud spend and avoid unnecessary costs. By leveraging these recommendations, you can better control your cloud expenses while ensuring that your cloud infrastructure is optimized for maximum efficiency and cost-effectiveness.
 
-You can view the recommendations for all of your AWS accounts on the recommendations page.
+You can view the recommendations for all of your Cloud accounts on the recommendations page.
 
-   <DocImage path={require('./static/governance.png')} width="50%" height="50%" title="Click to view full size image" />
+   <DocImage path={require('./static/Overviewpg1.png')} width="90%" height="90%" title="Click to view full size image" />
 
-The following resource types can be utilized optimally by creating governance rules to rightsize the resources:
+
+The following resources can be optimized with Asset Governance:
+
+### AWS Resource Coverage 
 
 - EC2 instances
+- EBS
+- ELB
+- Cache-cluster
+- S3 buckets
+- Lambda functions
+- RDS (Relational Database Service) instances
+- CloudFormation stacks
 
-- RDS instances 
+To view all the AWS recommendations, please see [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/AWS/AWS-recommendations).
 
-- EBS Volumes 
+### Azure Resource Coverage 
 
-:::note
-Before using recommendations in your environment, ensure that you evaluate their impact thoroughly. The person reviewing the recommendations should be able to understand the impacts identified in the recommendations, as well as the impact on the infrastructure and business.
+- Virtual Machines (VMs)
+- Storage accounts
+- App services
+- Cosmos DB accounts
+- SQL server
+- PostgreSQL servers
+- Key Vaults
 
-Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.
-:::
+To view all the Azure recommendations, please see [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/GCP/gcp-recommendations).
+
+### GCP Resource Coverage 
+
+- Compute Engine instances
+- Cloud Storage buckets
+- App Engine applications
+- Cloud SQL instances
+- Cloud IAM policies
+
+To view all the GCP recommendations, please see [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/Azure/azure-recommendations).
 
 ## Before you begin
 
-* Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md).
-* To obtain governance recommendations, configure a Harness AWS CCM connector with the **Cloud Governance** feature enabled.
-* Make sure that you have added the required permissions in your AWS account. Go to [AWS access permissions for Cloud asset governance](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#cloud-asset-governance-rules).
-* To add missing permissions, go to [Add permissions](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#add-permissions).
+* Connect your cloud account in Harness and set up CCM for cost management. For more information:
+      - For AWS, go to: [Set up cost visibility for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
+      - For GCP, go to: [Set up cost visibility for GCP](../../get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md)
+      - For Azure, go to: [Set up cost visibility for Azure](../../get-started/onboarding-guide/set-up-cost-visibility-for-azure.md)
 
+* To obtain governance recommendations, configure a Harness CCM connector with the **Cloud Governance** feature enabled.
+* Make sure that you have added the required permissions in your Cloud account.
 
-## Types of governance recommendations
-
-Harness CCM provides two types of recommendations to optimize utilization of your AWS resources:
-
-* **Instance resizing**: In this type of recommendation, CCM recommends resizing your instances that are over-provisioned or underutilized. For information about the different instance families in AWS, go to [Available instance types](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html#AvailableInstanceTypes). 
-
-* **Decommissioning**: In this type of recommendation, the instance is terminated or decommissioned if not in use for a long time. For example, for EBS service, the recommendations are computed based on the following criteria:
-
-  - Identify the EBS volumes that are orphaned
-  - Identify the EBS volumes which are not in use or low utilization
-  - Save costs by migrating to latest EBS volume type 
-  - Delete orphaned snapshots over post deletion of the volume
  
 ## View your cost governance recommendations
 
 1. In **Harness**, go to the **Cloud Costs** module.
 2. Click **Recommendations**.
-3. Click the filter icon.
-4. In the **Recommendation Type** dropdown list, select **Governance**.
-5. Click **Apply**. 
+3. There are two tabs present on the window - "Open Recommendations" and "Applied Recommendations". Open Recommendation tab shows all the recommendations that are currently available for applying and the potential monthly savings that the user can achieve if they are applied. On the other hand, Applied Recommendations show all the recommendations that have already been applied and the total savings achieved with their application. 
+4. The recommendations window allows you to put filters on the recommendations to see the result as per convenience. Kindly choose "Governance" in "Recommendation Type" filter for all governance recommendations. Currently, these are filters supported:
 
-  All the governance recommendations are displayed.   
+  <DocImage path={require('./static/filterag3.png')} width="60%" height="60%" title="Click to view full size image" />
 
-## Apply a recommendation
-
-1. On the **Recommendations** page, select the recommendation row that you want to enforce. The following page appears.
-
-    <DocImage path={require('./static/enforce-governance-recom.png')} width="50%" height="50%" title="Click to view full size image" />
-
-    * **Potential Monthly Savings** — Monthly cost savings that can be realized if the recommendations are applied.
-    * **Total Accounts** — The total number of AWS accounts on which the rules can be enforced.
-    * **Total Resources** — The total number of resources that would be impacted.
-2. Select the AWS account to which you want to apply the recommendation.
-3. Select Enforce.
-4. Enter a name for the Rule enforcement.
-5. The rules are pre-selected.
-6. Select **Continue**.
-7. Set the frequency from **Hourly**, **Daily**, or **Weekly** options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
-8. Toggle the **Dry Run** mode if you do not want to take action immediately.
-9. Click **Finish**. 
-   
-If you wish to modify any of these Out-of-the-box rules, select **Open in Rule Editor**.
-  The rule is cloned and opened in a new tab.
+For more information about Asset Governance in CCM, please refer to the links below:
+- [Governance for AWS](https://developer.harness.io/docs/category/governance-for-aws)
+- [Governance for GCP](https://developer.harness.io/docs/category/governance-for-gcp)
+- [Governance for Azure](https://developer.harness.io/docs/category/governance-for-azure)

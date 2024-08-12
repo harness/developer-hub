@@ -5,6 +5,7 @@ sidebar_position: 10
 sidebar_label: "View scan results - Security Tests tab"
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results
+  - /docs/category/view-and-troubleshoot-vulnerabilities
 ---
 
 In the **Security Testing Orchestration** left-hand menu, go to **Executions**. Then go to the pipeline execution and select **Security Tests**. This tab enables you to navigate, analyze, and remediate all issues detected by the pipeline execution. 

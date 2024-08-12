@@ -8,7 +8,7 @@ import VSphereSecrets from './shared/vsphere-secrets.md';
 
 CF app JVM trigger GC causes the GC to be triggered for a Java based Cloud Foundry app's JVM.
 
-<!-- ![CF App JVM Trigger GC](./static/images/cf-app-jvm-trigger-gc.png) -->
+![CF App JVM Trigger GC](./static/images/cf-app-jvm-trigger-gc.png)
 
 ## Use cases
 CF app JVM trigger GC:

@@ -6,6 +6,8 @@ helpdocs_topic_id: 1j7pdkqh7j
 helpdocs_category_id: gjyyhm9f9h
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-creating-flag/create-a-feature-flag
 ---
 
 import var_settings from './static/4-create-a-feature-flag-07.png'

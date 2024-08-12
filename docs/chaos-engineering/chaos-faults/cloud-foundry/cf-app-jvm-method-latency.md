@@ -8,7 +8,7 @@ import VSphereSecrets from './shared/vsphere-secrets.md';
 
 CF app JVM method latency injects latency into a method of a Java based Cloud Foundry app.
 
-<!-- ![CF App JVM Method Latency](./static/images/cf-app-jvm-method-latency.png) -->
+![CF App JVM Method Latency](./static/images/cf-app-jvm-method-latency.png)
 
 ## Use cases
 CF app JVM method latency:

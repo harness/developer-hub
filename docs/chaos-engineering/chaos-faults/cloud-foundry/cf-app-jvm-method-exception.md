@@ -8,7 +8,7 @@ import VSphereSecrets from './shared/vsphere-secrets.md';
 
 CF app JVM method exception causes a Java based Cloud Foundry app's method to throw a given exception.
 
-<!-- ![CF App JVM Method Exception](./static/images/cf-app-jvm-method-exception.png) -->
+![CF App JVM Method Exception](./static/images/cf-app-jvm-method-exception.png)
 
 ## Use cases
 CF app JVM method exception:

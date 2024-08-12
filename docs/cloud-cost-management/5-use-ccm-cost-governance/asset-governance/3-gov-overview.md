@@ -57,5 +57,6 @@ You can see a list of all recommendations offered by Harness for each Cloud prov
 This API is used to refresh or update the cost of all resources in the evaluation. It is exposed to resolve cases where the cost for any resource is not yet part of CUR, Billing Report, or Billing Data (due to newly deployed resources, etc.).You can hit the refresh cost button only once every 30 minutes for any evaluation.
 
 :::note
-Cost co-relation for GCP would work only if detailed billing export is setup.
+- Cost co-relation for GCP would work only if detailed billing export is setup.
+- Changes made to "Perspective Preferences" in Account Settings of Cloud Cost Management will be now applied to Asset Governance. In case of AWS, previously, costs were taken as "Unblended". Now, users can select it to be Blended, Net-Amortised, Amortised, Effective or Unblended. Kindly note, it might take up to 30 minutes for costs to be refreshed after changes are applied.
 :::

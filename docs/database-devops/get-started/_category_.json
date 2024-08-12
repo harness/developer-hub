@@ -1,0 +1,11 @@
+{
+    "label":"Get Started with Database DevOps",
+    "collapsible":"true",
+    "collapsed":"true",
+    "link":{
+       "type":"generated-index",
+       "title":"Get Started with Database DevOps"
+    },
+    "customProps":{
+    }
+ }

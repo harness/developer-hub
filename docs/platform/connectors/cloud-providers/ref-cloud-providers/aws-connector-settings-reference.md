@@ -469,6 +469,15 @@ Use the following Harness OIDC provider endpoint and OIDC audience settings to c
 * Harness OIDC provider endpoint: `https://app.harness.io/ng/api/oidc/account/<ACCOUNT_ID>`
 * OIDC audience: `sts.amazonaws.com`
 
+### Supported Swimlanes
+
+These are the current supported deployment swimlanes for AWS OIDC:
+
+- ECS
+- Kubernetes
+- Terraform
+- CloudFormation
+
 ### Enhanced Subject
 
 :::info

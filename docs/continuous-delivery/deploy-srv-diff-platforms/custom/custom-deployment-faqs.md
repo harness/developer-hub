@@ -44,3 +44,6 @@ For more details, go to [Documentation](https://developer.harness.io/docs/contin
 Yes ,Elastic Beanstalk Deployment template is used for deployment template will help users deploy Elastic Beanstalk services.
 For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#elastic-beanstalk---sample).
 
+### Does Harness support deployment template to access variables such as a project variable?
+
+Yes, when using a custom deployment template in the infrastructure, one can use variables inside that. Project-level variables can be fetched using the `<+project.variableName>` syntax in the deployment template.

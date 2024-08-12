@@ -4,7 +4,7 @@ These settings apply to Custom Scan steps when both of these conditions are true
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
-- [Repository name](#repository-name)
+- [Repository project](#repository-project)
 - [Repository branch](#variant)
 
 <!-- TOC end -->

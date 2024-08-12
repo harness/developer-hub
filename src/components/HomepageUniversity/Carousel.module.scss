@@ -1,5 +1,6 @@
 .carousel {
   // background-color: tan;
+
   overflow: hidden;
   padding: 8px;
   width: 630px;
@@ -14,7 +15,14 @@
     justify-content: space-between;
     align-items: center;
     transition: transform 0.5s ease;
+    flex: 1;
   }
+
+  .isEvenCert > *:last-child {
+    margin-left: 160px;
+
+  }
+
   .indicator {
     margin-top: 20px;
     display: flex;
@@ -84,4 +92,7 @@
   .carouselMobile {
     display: flex;
   }
+  // .twoCards > *:last-child {
+  //   margin-left: 0px;
+  // }
 }

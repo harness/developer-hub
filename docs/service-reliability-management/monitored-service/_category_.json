@@ -3,7 +3,7 @@
    "position": 50,
    "collapsible":"true",
    "collapsed":"true",
-   "className":"red",
+   "className":"default",
    "link":{
       "type":"generated-index",
       "title":"Monitored service"

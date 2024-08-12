@@ -8,7 +8,7 @@ import VSphereSecrets from './shared/vsphere-secrets.md';
 
 CF app JVM memory stress injects memory stress into a Java based Cloud Foundry app's JVM.
 
-<!-- ![CF App JVM Memory Stress](./static/images/cf-app-jvm-memory-stress.png) -->
+![CF App JVM Memory Stress](./static/images/cf-app-jvm-memory-stress.png)
 
 ## Use cases
 CF app JVM memory stress applies memory stress to:

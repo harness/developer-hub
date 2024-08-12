@@ -40,9 +40,10 @@ HCE module has the following additional capabilities:
 9. [Load chaos faults](/docs/chaos-engineering/chaos-faults/load)
 10. [SSH chaos faults](/docs/chaos-engineering/chaos-faults/ssh)
 11. [Kubernetes chaos faults](/docs/chaos-engineering/chaos-faults/kubernetes)
-12. Teaming around ChaosHubs
-13. Resilience probes ([Dynatrace](/docs/chaos-engineering/features/resilience-probes/datadog-probe.md) and [Datadog](/docs/chaos-engineering/features/resilience-probes/dynatrace-probe.md))
-14. [ChaosGuard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md)
+12. [Bring Your Own Chaos](/docs/chaos-engineering/chaos-faults/byoc/)
+13. Teaming around ChaosHubs
+14. Resilience probes ([Dynatrace](/docs/chaos-engineering/features/resilience-probes/datadog-probe.md) and [Datadog](/docs/chaos-engineering/features/resilience-probes/dynatrace-probe.md))
+15. [ChaosGuard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md)
 
 ## Integrations with other Harness modules
 
@@ -65,7 +66,7 @@ The HCE free plan replaces [cloud.chaosnative.com](https://cloud.chaosnative.com
 
 This section describes the differences between Harness Chaos Engineering (HCE) and the open-source CNCF incubation project, LitmusChaos.
 
-### Chaos management - Basic
+### Chaos orchestration
 <table>
     <tr>
         <td><b>Feature</b></td>
@@ -74,6 +75,11 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
     </tr>
    <tr>
         <td>Centralized chaos portal</td>
+        <td>✅</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Support for resilience probes</td>
         <td>✅</td>
         <td>✅</td>
     </tr>
@@ -87,13 +93,18 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
         <td>✅</td>
         <td>✅</td>
     </tr>
+     <tr>
+        <td>Launch chaos experiments directly from the ChaosHub </td>
+        <td>✅</td>
+        <td>✅ </td>
+    </tr>
     <tr>
         <td>YAML-based support for chaos experiments</td>
         <td>✅</td>
         <td>✅</td>
     </tr>
     <tr>
-        <td>Run chaos faults in parallel</td>
+        <td>Run chaos faults in parallel in a chaos experiment </td>
         <td>✅</td>
         <td>✅</td>
     </tr>
@@ -108,7 +119,12 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
         <td>✅ (via Harness webhooks)</td>
     </tr>
     <tr>
-        <td>Ability to halt all ongoing chaos experiments using the <b>halt</b> button</td>
+        <td>Ready-to-use chaos experiment templates</td>
+        <td>❌</td>
+        <td>✅ (via Harness webhooks)</td>
+    </tr>
+    <tr>
+        <td>Halt an ongoing chaos experiments using the <b>halt</b> button</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -117,6 +133,56 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
         <td>✅</td>
         <td>✅</td>
     </tr>
+    <tr>
+        <td>Tagging support in the UI for selecting chaos targets</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Chaos experiment for targeting across Kubernetes clusters</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+</table>
+
+### Deployment modes and agents
+
+<table>
+  <tr>
+    <td><b>Feature</b></td>
+    <td><b>Litmus</b></td>
+    <td><b>HCE</b></td>
+ </tr>
+ <tr>
+    <td><b>SaaS</b></td>
+    <td><b>❌</b></td>
+    <td><b>✅</b></td>
+ </tr>
+ <tr>
+    <td><b>On-Prem (Self-managed platform)</b></td>
+    <td><b>✅</b></td>
+    <td><b>✅</b></td>
+ </tr>
+ <tr>
+    <td><b>Kubernetes native chaos agent</b></td>
+    <td><b>❌</b></td>
+    <td><b>✅</b></td>
+ </tr>
+ <tr>
+    <td><b>Linux native chaos agent</b></td>
+    <td><b>❌</b></td>
+    <td><b>✅</b></td>
+ </tr>
+ <tr>
+    <td><b>Windows native chaos agent</b></td>
+    <td><b>❌</b></td>
+    <td><b>✅</b></td>
+ </tr>
+ <tr>
+    <td><b>Scope-based isolation for Kubernetes (Cluster and namespace modes)</b></td>
+    <td><b>✅</b></td>
+    <td><b>✅</b></td>
+ </tr>
 </table>
 
 ### Chaos management - Advanced
@@ -128,8 +194,8 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
         <td><b>HCE (SaaS)</b></td>
     </tr>
   <tr>
-        <td>Chaos experiments CRUD</td>
-        <td>Partial</td>
+        <td>UI support for chaos experiments CRUD</td>
+        <td>✅</td>
         <td>✅</td>
     </tr>
     <tr>
@@ -148,12 +214,12 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
         <td>✅</td>
     </tr>
     <tr>
-        <td>OOTB API templates for chaos experiments</td>
+        <td>Ready to use chaos experiment templates</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
     <tr>
-        <td>Export chaos experiments to chaos hubs</td>
+        <td>Export chaos experiments to ChaosHubs </td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -163,7 +229,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
         <td>✅</td>
     </tr>
     <tr>
-        <td>GameDay portal</td>
+        <td>Chaos GameDay portal</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -228,16 +294,146 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
     </tr>
 </table>
 
+### Authentication and authorization
+
+<table>
+  <tr>
+    <td><b>Feature</b></td>
+    <td><b>Litmus</b></td>
+    <td><b>HCE (SaaS)</b></td>
+  </tr>
+  <tr>
+    <td><b>Username-based authentication</b></td>
+    <td>✅</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td><b>LDAP provider</b></td>
+    <td>❌</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td><b>SAML provider</b></td>
+    <td>❌</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td><b>Public OAuth providers</b></td>
+    <td>❌</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td><b>RBAC (Role-based access control) </b></td>
+    <td>✅</td>
+    <td>✅</td>
+  </tr>
+</table>
+
+### Chaos discovery, auto-creation, and recommendations
+
+<table>
+  <tr>
+    <td><b>Feature</b></td>
+    <td><b>Litmus</b></td>
+    <td><b>HCE (SaaS)</b></td>
+  </tr>
+    <tr>
+        <td>Auto discover the target services with relationship on Kubernetes</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Auto create the possible chaos experiments</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Recommend chaos experiments to run- Manual</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Recommend chaos experiments to run - Based on traffic</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+</table>
+
+### Chaos governance
+
+<table>
+  <tr>
+    <td><b>Feature</b></td>
+    <td><b>Litmus</b></td>
+    <td><b>HCE (SaaS)</b></td>
+  </tr>
+    <tr>
+        <td>RBACs around ChaosHub</td>
+        <td>✅</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>RBACs around Chaos Infrastructure </td>
+        <td>✅</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>RBACs around Chaos Experiments CRUD</td>
+        <td>✅</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>RBACs around Chaos GameDays </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>RBACs for running chaos experiments against specific targets</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>RBACs for running chaos experiments with specific faults</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>RBACs for running chaos experiments by specific users</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>RBACs for running chaos experiments in a particular time window</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>RBACs for running chaos experiments with a specific serviceaccount</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+</table>
+
 ### Security
 <table>
   <tr>
-        <td><b>Feature</b></td>
-        <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
-    </tr>
+    <td><b>Feature</b></td>
+    <td><b>Litmus</b></td>
+    <td><b>HCE (SaaS)</b></td>
+  </tr>
     <tr>
         <td>Two-factor authentication</td>
         <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Support for Kubernetes local secrets</td>
+        <td>✅</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Support for external secrets managers</td>
+        <td>✅</td>
         <td>✅</td>
     </tr>
     <tr>
@@ -304,6 +500,56 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
         <td>❌</td>
         <td>✅</td>
     </tr>
+    <tr>
+        <td>Integration with Native Resilience Probe for Harness SRM</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Create custom faults through SDK</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Install, create and orchestrate chaos through API</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Postman Provider for chaos orchestration</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Terraform Provider to install, create and orchestrate chaos </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+</table>
+
+### APM integrations
+
+<table>
+  <tr>
+        <td><b>Feature</b></td>
+        <td><b>Litmus</b></td>
+        <td><b>HCE (SaaS)</b></td>
+    </tr>
+     <tr>
+        <td>Native resilience probe for Prometheus </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Native resilience probe for Datadog </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Native resilience probe for Dynatrace </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
 </table>
 
 ### Kubernetes pod-level chaos faults
@@ -325,8 +571,13 @@ Go to [Pod faults](/docs/category/pod) for more information.
         <td>✅</td>
         <td>✅</td>
     </tr>
- <tr>
-        <td>Pod API block kill</td>
+    <tr>
+        <td>fs fill</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Pod API block </td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -335,7 +586,7 @@ Go to [Pod faults](/docs/category/pod) for more information.
         <td>❌</td>
         <td>✅</td>
     </tr>
- <tr>
+    <tr>
         <td>Pod API modify body</td>
         <td>❌</td>
         <td>✅</td>
@@ -391,6 +642,11 @@ Go to [Pod faults](/docs/category/pod) for more information.
         <td>✅</td>
     </tr>
     <tr>
+        <td>Pod I/O attribute override</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
         <td>Pod HTTP modify body</td>
         <td>✅</td>
         <td>✅</td>
@@ -406,11 +662,6 @@ Go to [Pod faults](/docs/category/pod) for more information.
         <td>✅</td>
     </tr>
 <tr>
-        <td>Pod I/O attribute override</td>
-        <td>❌</td>
-        <td>✅</td>
-    </tr>
-<tr>
         <td>Pod I/O error </td>
         <td>❌</td>
         <td>✅</td>
@@ -423,6 +674,11 @@ Go to [Pod faults](/docs/category/pod) for more information.
  <tr>
         <td>Pod I/O stress</td>
         <td>✅</td>
+        <td>✅</td>
+    </tr>
+<tr>
+        <td>Pod I/O mistake</td>
+        <td>❌</td>
         <td>✅</td>
     </tr>
  <tr>
@@ -534,6 +790,26 @@ Go to [Node faults](/docs/category/node) for more information.
     </tr>
   </table>
 
+### Kubernetes advanced faults
+
+<table>
+  <tr>
+        <td><b>Feature</b></td>
+        <td><b>Litmus</b></td>
+        <td><b>HCE (SaaS)</b></td>
+    </tr>
+    <tr>
+        <td>HTTP API faults with URL filters </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Filesystem IO chaos</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+</table>
+
 ### AWS chaos faults
 
 Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more information.
@@ -604,7 +880,7 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more 
         <td>✅</td>
     </tr>
     <tr>
-        <td>EC2 stop by Id</td>
+        <td>EC2 stop by ID</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -1155,6 +1431,61 @@ Go to [Chaos faults for Linux](/docs/chaos-engineering/chaos-faults/linux) for m
         <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
+        <td>Linux API block </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux API latency </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux API modify body </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux API modify header </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux API status code </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux JVM CPU stress </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux JVM memory stress </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux JVM method exception </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux JVM method latency </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux JVM modify return </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux JVM trigger GC </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
         <td>Linux CPU stress </td>
         <td>❌</td>
         <td>✅</td>
@@ -1224,6 +1555,31 @@ Go to [Chaos faults for Linux](/docs/chaos-engineering/chaos-faults/linux) for m
         <td>❌</td>
         <td>✅</td>
     </tr>
+    <tr>
+        <td>Linux fs fill </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Redis cache expire </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Redis cache limit </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Redis cache penetration </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Redis Sentinel stop </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
 </table>
 
 ### Windows chaos faults
@@ -1263,6 +1619,36 @@ Go to [Chaos faults for Linux](/docs/chaos-engineering/chaos-faults/cloud-foundr
     </tr>
     <tr>
         <td>CF app container kill </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>CF app JVM CPU stress </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>CF app JVM memory stress </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>CF app JVM method exception </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>CF app JVM method latency </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>CF app JVM modify return </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>CF app JVM trigger GC </td>
         <td>❌</td>
         <td>✅</td>
     </tr>

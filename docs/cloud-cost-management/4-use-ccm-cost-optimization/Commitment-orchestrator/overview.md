@@ -83,15 +83,17 @@ Commitment Orchestrator does all of this with the help of its 2 engines: **Utili
 
 
 ## Getting Started
-Commitment Orchestrator can be found on our dashboard under [Cloud Costs module](https://app.harness.io/). Commitment Orchestrator can be easily setup from the dashboard itself by following these steps:
+Commitment Orchestrator can be found on our dashboard under [Cloud Costs module](https://app.harness.io/).   
+     
+Commitment Orchestrator can be easily setup from the dashboard itself by following these steps:
 ### Step 1 : Setting up the master account 
 
 You need to select the master account with the right permissions to be added via connector on which you want to enable orchestration. You can either select an existing connector for your master account or create one. 
 <DocImage path={require('./static/Step1.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
-### Step 2: Exclude Instance types 
-Commitment Orchestrator provides you with an option to choose the instances you would like to exclude when orchestrating instances for Compute Usage.
+### Step 2: Exclude Child Accounts and Instances
+Commitment Orchestrator provides you with an option to choose the child accounts and instances you would like to exclude when orchestrating for Compute Usage.
 <DocImage path={require('./static/Step2.png')} width="80%" height="80%" title="Click to view full size image" />
 
 :::important note 
@@ -110,7 +112,21 @@ After all the set-up steps, you can review and finalise your inputs.
 <DocImage path={require('./static/Step4.png')} width="80%" height="80%" title="Click to view full size image" />
 
 Post set-up, you can view your dashboard with all the information required . You can manipulate the information shown according to the filters such as Instances and Regions and see all the information related to Computer Coverage, Savings, Commitment Utilisation alongwith Log history. This way, the dashboard allows you to easily keep a track of your commitments and make informed decisions.
+
 <DocImage path={require('./static/Dashboard_CO.png')} width="80%" height="80%" title="Click to view full size image" />
+
+#### Interactive walkthrough for the same:
+ <iframe 
+     src="https://app.tango.us/app/embed/845a1973-c350-4d4e-b5cc-51ad3482c0f9" 
+     title="Set up Commitment Orchestrator" 
+     style={{minHeight:'640px'}}
+     width="100%" 
+     height="100%" 
+     referrerpolicy="strict-origin-when-cross-origin" 
+     frameborder="0" 
+     webkitallowfullscreen="webkitallowfullscreen" 
+     mozallowfullscreen="mozallowfullscreen" 
+     allowfullscreen="allowfullscreen"></iframe>
 
 ## Steps to configure:
 

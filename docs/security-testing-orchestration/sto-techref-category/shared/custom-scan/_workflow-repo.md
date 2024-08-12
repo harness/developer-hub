@@ -1,8 +1,8 @@
 1. Add a Build or Security stage to your pipeline.
 
-1. If you're setting up an [`orchestratedScan`](/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto) or a [`dataLoad`](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview/#extraction-scans-in-sto) scan of a code repository, set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/).
+1. If you're setting up an [`orchestratedScan`](/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto) or a [`dataLoad`](/docs/security-testing-orchestration/get-started/key-concepts/extraction-scans) scan of a code repository, set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/).
 
-1. If you're setting up an [`ingestionOnly`](/docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto/) scan, add a Run step and set it up to save your scan results to a shared folder. 
+1. If you're setting up an [`ingestionOnly`](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline) scan, add a Run step and set it up to save your scan results to a shared folder. 
 
    The step might run the scan locally, download results from an external source, or copy results from another location in the workspace into the shared folder.
 

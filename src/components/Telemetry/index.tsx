@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { AnalyticsBrowser } from "@segment/analytics-next";
 
@@ -12,11 +12,12 @@ const Telemetry: React.FC<TelemetryProps> = ({ event, ...props }) => {
     siteConfig: { customFields },
   } = useDocusaurusContext();
 
+useEffect(() => {
   const analytics = AnalyticsBrowser.load({
     writeKey: customFields.SEGMENT_API_KEY as string,
   });
   analytics.track(event, props);
-
+}, [event, props]);
   return <></>;
 };
 

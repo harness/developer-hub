@@ -2,7 +2,8 @@
 id: pod-http-modify-body
 title: Pod HTTP modify body
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-modify-body
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-modify-body
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-http-modify-body
 ---
 
 Pod HTTP modify body is a Kubernetes pod-level chaos fault that injects chaos on the service whose port is provided using the `TARGET_SERVICE_PORT` environment variable. This is achieved by starting the proxy server and redirecting the traffic through the proxy server. This fault can be used to overwrite the HTTP response body by providing the new body value as `RESPONSE_BODY`.

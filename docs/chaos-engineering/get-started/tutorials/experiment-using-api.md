@@ -14,7 +14,7 @@ In this tutorial, you will create and run chaos experiments on Kubernetes using 
 ## Before you begin, review the following:
 
 - [HCE overview](/docs/chaos-engineering/get-started/overview.md)
-- [HCE prerequisites](/docs/chaos-engineering/get-started/prerequisites/prerequisites.md)
+- [HCE prerequisites](/docs/chaos-engineering/onboarding/prerequisites.md)
 - [Execute your first chaos experiment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md)
 
 ### Create a project (or be added to a project)

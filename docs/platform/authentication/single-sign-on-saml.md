@@ -25,6 +25,10 @@ When integrating users through any SAML provider, it is important to note that u
 
 :::
 
+:::tip
+    The **Users** column in the Harness UI is based on the `displayname` in the assertion. If you see an email address in the **Users** column, update the `displayname` with the user's first and last name.
+:::
+
 ## Use System for Cross-domain Identity Management (SCIM) protocol
 
 To ensure continuous and real-time synchronization of user group bindings and access controls, Harness recommends that you utilize the System for Cross-domain Identity Management (SCIM) protocol. SCIM enables real-time syncing of user additions with Harness user groups, ensuring that user permissions and access rights are consistently applied and maintained.
@@ -892,3 +896,6 @@ To download your encryption certificate and upload it to your IdP settings, do t
 
 When you sign in to Harness via SAML, the operation is completed using encrypted assertions.
 
+## Set the default experience
+
+Environment administrators can set the default Harness generation landing page, FirstGen or NextGen, for their users to ensure the correct Harness Experience is provided to each user. For more information, go to [Account details](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts#account-details).

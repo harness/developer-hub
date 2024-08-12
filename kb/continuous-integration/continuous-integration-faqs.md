@@ -28,6 +28,34 @@ Yes, each stage can have a different build infrastructure. Additionally, dependi
 
 No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes pre-installed versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS development guide](https://developer.harness.io/docs/continuous-integration/development-guides/ci-ios).
 
+### What's the difference between CI_MOUNT_VOLUMES, ADDITIONAL_CERTS_PATH, and DESTINATION_CA_PATH?
+
+`CI_MOUNT_VOLUMES` - An environment variable used for CI Build Stages. This variable should be set to a comma-separated list of `source:destination` mappings for certificates where source is the certificate path on the delegate, and destination is the path where you want to expose the certificates on the build containers. For example,
+
+```
+- name: CI_MOUNT_VOLUMES
+  value: "/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
+```
+
+`ADDITIONAL_CERTS_PATH` - An environment variable used for CI Build Stages. This variable should be set to the path where the certificates exist in the delegate. For example,
+```
+- name: ADDITIONAL_CERTS_PATH
+  value: "/tmp/ca.bundle"
+```
+
+`DESTINATION_CA_PATH` - An environment variable used for CI Build Stages. This variable should be set to a comma-separated list of files where the certificate should be mounted. For example,
+```
+- name: DESTINATION_CA_PATH
+  value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
+```
+
+`ADDTIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES` work in tandem to ensure certificates are mounted on the Kubernetes Build Infrastructure, whereas `DESTINATION_CA_PATH` does not require other environment variables to mount certificates. Instead, `DESTINATION_CA_PATH` relies on the certificate being mounted at `/opt/harness-delegate/ca-bundle` in order to copy the certificate to the provided comma-separated list of file paths.
+
+`DESTINATION_CA_PATH` and `ADDTIONAL_CERTS_PATH`/`CI_MOUNT_VOLUMES` both perform the same operation of mounting certificates to Kubernetes Build Infrastructure. Harness recommends `DESTINATION_CA_PATH` over `ADDTIONAL_CERTS_PATH`/`CI_MOUNT_VOLUMES` however, if both are defined, `DESTINATION_CA_PATH` will be consumed over `ADDTIONAL_CERTS_PATH`/`CI_MOUNT_VOLUMES`.
+
+For more information and instructions on how to mount certificates, please visit the [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/) documentation.
+
+
 ## Local runner build infrastructure
 
 ### Can I run builds locally? Can I run builds directly on my computer?
@@ -324,6 +352,10 @@ Currently, caching build images with Harness CI Cloud isn't supported.
 
 By default, a built-in step runs inside a container within the build VM.
 
+###  How to fix the docker rate limiting errors while pulling the Harness internal images when the build is running on Harness cloud?
+
+You could update the deafult docker connector ```harnessImage``` and point it to the Harness internal GAR/ECR as mentioned in the [doc](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
+
 ## Kubernetes clusters
 
 ### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
@@ -570,6 +602,33 @@ This could happen when the docker repository in the build and push step is not c
 
 This could happen when the PR/push trigger is configured with the 'Auto-abort Previous Execution' option, which will automatically cancel active builds started by the same trigger when a branch or PR is updated
 
+### Can we add the config "topologySpreadConstraints" in the build pod which will help CI pod to spread across different AZs?
+
+Currently, we do not support adding "topologySpreadConstraints" to the build pod
+
+### Why the docker commands in the run step is failing with the error "Cannot connect to the Docker daemon at unix:///var/run/docker.sock?" even after the dind background step logs shows that the docker daemon has been initialized?
+
+This could happen if the folders ```/var/lib/docker``` and ```/var/run```  are not added under the shared path in the CI stage. More details about the dind config can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/) 
+
+### Why the build using dind is failing with out of memory error even after enough memory is configured in the run step where the docker commands are running?
+
+When dind is used, the build will run on the dind container instead of the step container where Docker commands are executed. Therefore, if an out-of-memory error occurs during the build on dind, the resources on the dind container need to be updated
+
+### Why the docker commands are failing on the run step with the error "command not found: docker" even if we have the dind running as background step?
+
+This happens when the step container configured in the run step doesnt have docker cli installed
+
+### How can we use buildx while running the build in k8s build infra?
+
+The built-in build and push step use kaniko to perform the build in k8s build infra. We can configure dind build to use buildx while running the build in k8s infra
+More details about the dind config can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/)
+
+### Do we need to have both ARM and AMD build infrastructure to build multiarch images using built-in build and push step in k8s infra?  
+
+Yes, we need to have one stage running on ARM and another stage running on AMD to build both ARM and AMD images using the built-in build and push step in k8s infra. More details including a sample pipeline can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-multi-arch/)
+
+### Does Harness CI support AKS 1.28.3 version?
+Yes
 
 ## Self-signed certificates
 
@@ -903,9 +962,7 @@ No, you can't configure a [failure strategy](https://developer.harness.io/docs/p
 
 ### Can I recursively clone a repo?
 
-Currently, the built-in clone codebase step doesn't support recursive cloning. However, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages), and then add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) with `git clone --recursive`. This is similar to the process you would follow to [clone a subdirectory instead of the entire repo](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
-
-If you want to recursively clone a repo in addition to your default codebase, you can [pull the Git credentials from your code repo connector to use in your Run step](./articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step).
+Yes. You can use **Include Submodules** option under [Configure Codebase](../../docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) or [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step) to clone submodules recursively.
 
 ### Can I clone a specific subdirectory rather than an entire repo?
 
@@ -913,19 +970,16 @@ Yes. For instructions, go to [Clone a subdirectory](https://developer.harness.io
 
 ### Does the built-in clone codebase step fetch all branches? How can I fetch all branches?
 
-The built-in clone codebase step fetches only one or two branches from the repo, depending on the build type (tag, PR, or branch).
-
-If you need to clone all branches in a repo, you can execute the necessary git commands in a Run step.
+You can use **Fetch Tags** option under [Configure Codebase](../../docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) or [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step) to fetch all the new commits, branches, and tags from the remote repository. Setting this to `true` by checking the box is equivalent to adding the `--tags` flag.
 
 ### Can I clone a different branch in different Build stages throughout the pipeline?
 
-You can't do this with the built-in clone codebase functionality, because the codebase configuration is common to the entire pipeline.
-
-However, if you need to do this, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages) for the stages that need a different branch, and then add [Run steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) with Git commands to clone the branch you want those stages.
+Yes. Refer to the [Build Type, Branch Name, and Tag Name](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step#build-type-branch-name-and-tag-name) configuration options for the [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step) to specify a **Branch Name** or **Tag Name** in the stage's settings.
 
 ### Can I clone the default codebase to a different folder than the root?
 
-The built-in clone codebase step always clones your repo to the root of the workspace, `/harness`. If you need to clone elsewhere, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages) and use a [Git Clone or Run step](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step) to clone your codebase to a specific subdirectory.
+Yes. Refer to the **Clone Directory options** under the
+[Configure Codebase](../../docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) or [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step) documentation to enter an optional target path in the stage workspace where you want to clone the repo.
 
 ### What is the default clone depth setting for CI builds?
 
@@ -1022,11 +1076,11 @@ For details about Git Clone step settings, go to:
 
 ### Does Harness CI support Git Large File Storage (git-lfs)?
 
-Yes. For more information, go to the Harness CI documentation on [Git Large File Storage](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
+Yes. Under **Configure Codebase** or **Git Clone** step, Set **Download LFS Files** to `true` to download Git-LFS files.
 
 ### Can I run git commands in a CI Run step?
 
-Yes. You can run any commands in a Run step. With respect to Git, for example, you can use a Run step to [clone multiple code repos in one pipeline](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline), [clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory), or use [Git LFS](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
+Yes. You can run any commands in a Run step. With respect to Git, for example, you can use a Run step to [clone multiple code repos in one pipeline](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline), or [clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
 
 ### How do I handle authentication for git commands in a Run step?
 
@@ -1066,7 +1120,8 @@ For manual tag builds, you need to enter the tag manually at runtime.
 
 ### How can we set ENV variable for the git clone step as there is no option available in the UI to set the ENV variable for this step?
 
-You could configure the stage variables with the necessary values which will be set as ENV variable in all the steps within that stage.
+Yes. Refer to the **Pre Fetch Command** under the
+[Configure Codebase](../../docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#pre-fetch-command) or [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step#pre-fetch-command) documentation to specify any additional Git commands to run before fetching the code.
 
 ## SCM status updates and PR checks
 
@@ -1402,7 +1457,7 @@ If you want to include the volume content in the image layers, consider using `C
 
 ### Can I use images from multiple Azure Container Registries (ACRs)?
 
-Yes. Go to [Use images from multiple ACRs](./articles/using-images-from-multiple-ACRs).
+Yes. Go to [Use images from multiple ACRs](/kb/continuous-integration/articles/using-images-from-multiple-ACRs).
 
 ### Is remote caching supported in Build and Push steps?
 
@@ -1410,7 +1465,27 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 
 ### Build and Push to Docker fails with kaniko container runtime error
 
-Go to the [Kaniko container runtime error article](./articles/kaniko_container_runtime_error).
+Go to the [Kaniko container runtime error article](/kb/continuous-integration/articles/kaniko_container_runtime_error).
+
+### Can I push and pull from two different docker registries that have same prefix for registry URL ?
+
+No, this is currently not supported in docker.
+
+If two registry URLs begin with same prefix, for example https://index.docker.io it will result in the second registry credentials getting over-ridden in the docker config file when a docker login is attempted 
+
+As an example, this would fail as the prefix URLs are not unique.
+
+https://index.docker.io/v1/abc/test-private
+
+https://index.docker.io/v1/xyz/test2
+
+docker config would look like:
+```
+{
+      https://index.docker.io/***: { auth}
+}
+```
+But fully unique docker compliant registry URLs are not affected by this limitation.
 
 ### What is the default build context when using Build and Push steps?
 
@@ -1875,6 +1950,10 @@ Docker-in-Docker is not required to be run as a background step because the GHA 
 ### How do we configure the stage variable ```PLUGIN_STRIP_PREFIX``` if we have 2 upload to s3 steps that needs to trim different keywords from the file path?
 
 Since this stage variable accessible to all the steps, currently it is not supported to trim the different keywords from the file path if both the Upload to s3 steps are part of the same CI stage. 
+
+### How can we upload all the files including the directory when using the upload artifacts to jfrog antifactory step?
+
+You could append the directory name in the target path which should create a folder with the same name in the artifactory and the files will be uploaded inside this directory
 
 ## Workspaces, shared volumes, and shared paths
 

@@ -1,38 +1,22 @@
 ---
 title: Configure codebase
 description: CI pipelines build and test code that is pulled from Git code repositories.
-sidebar_position: 10
+sidebar_position: 5
 helpdocs_topic_id: mozd8b49td
 helpdocs_category_id: ojaa8v6fwz
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/continuous-integration/use-ci/codebase-configuration/gitlfs
 ---
 
-CI pipelines build and test code that is pulled from a Git code repository. When you add a Build stage to a CI pipeline, you can select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. This can be referred to as the *default codebase* for the build. This topic explains how to configure codebase settings for CI pipelines and Build stages.
+import configure_codebase from './static/create-and-configure-a-codebase-00.png'
+
+CI pipelines build and test code that is pulled from a Git code repository. In Harness CI, you can configure a 'Codebase' for your pipeline, to define the Git repository your Build stage(s) will automatically clone during runtime (unless you stage is set to not clone the codebase). When you add a Build stage to a CI pipeline, if not already set, you will have to option to configure your codebase. 
+This topic explains how to configure codebase settings for pipeline to be used by its Build stages.
 
 This topic assumes you have an understanding of the [CI pipeline creation process](../prep-ci-pipeline-components.md).
 
-## Code repo connectors
-
-Harness uses code repo connectors to connect to third-party Git providers, such as Bitbucket, GitHub, GitLab, and others.
-
-**You don't need a code repo connector for repositories in the [Harness Code Repository module](/docs/code-repository).**
-
-For third-party SCM providers, you can create code repo connectors for entire accounts or specific repositories. You can create connectors at the account, organization, or project [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
-
-The following topics provide more information about creating code repo connectors:
-
-* [Connect to Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
-* [Bitbucket Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-* [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-* [GitLab Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-* [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
-* Other Git providers: [Provider-agnostic Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
-* [Harness Code Repository](/docs/code-repository): Built-in connectivity through the Harness Platform. No code repo connector required.
-
-The CodeCommit, Azure, Bitbucket, GitHub, and GitLab connectors have authorization settings as required by their respective providers. The provider-agnostic Git connector can connect with any provider using basic authentication over HTTPS.
-
-If you prefer to use the YAML editor, you can [create connectors in YAML](/docs/platform/connectors/create-a-connector-using-yaml.md).
 
 ## Configure the default codebase
 
@@ -43,12 +27,13 @@ When you add a **Build** stage to a CI pipeline, you specify where your build co
 3. Make sure **Clone Codebase** is enabled. This tells Harness to clone the codebase into the build environment before running the steps in the stage.
 4. Configure your codebase connection.
    * To clone a repo from the [Harness Code Repository module](/docs/code-repository), select **Harness Code Repository**, and then select the repo to clone.
-   * To clone a repo from a third-party Git provider, select **Third-party Git provider**, select the relevant [code repo connector](#code-repo-connectors), and enter the name of the repo to clone, if **Repository Name** is not automatically populated.
+   * To clone a repo from a third-party Git provider, select **Third-party Git provider**, select the relevant [code repo connector](/docs/category/code-repositories), and enter the name of the repo to clone, if **Repository Name** is not automatically populated.
 5. Select **Set Up Stage**.
+
 
 If you need to change the connector or other default codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration). If you don't want every stage to clone the default codebase, go to [Disable Clone Codebase for specific stages](#disable-clone-codebase-for-specific-stages). You can also [clone multiple repositories in a stage](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
 
-![Configuring the codebase when adding a Build stage.](./static/create-and-configure-a-codebase-00.png)
+<img src={configure_codebase} alt="Configuring the codebase when adding a Build stage." height="50%" width="50%" />
 
 <details>
 <summary>YAML example: Default codebase configuration</summary>
@@ -64,7 +49,6 @@ pipeline:
     ci:
       codebase:
         connectorRef: YOUR_CODEBASE_CONNECTOR_ID
-        repoName: YOUR_GIT_REPO
         build: <+input>
 ```
 
@@ -119,6 +103,23 @@ For more information about Build stage settings, go to [CI Build stage settings]
 
 ## Edit the default codebase configuration
 
+:::note
+
+We've recently enhanced the Git clone operations within Harness, in both the Git Clone step and the native Clone Codebase functionality. Support was added for : 
+
+
+- Git LFS - Allows users to clone repositories with large file storage (LFS) efficiently.
+- Fetch Tags - Enables fetching of tags during the clone operation.
+- Sparse Checkout - Enables cloning specific subdirectories.
+- Clone Submodules - Adds options for including and recursively cloning Git submodules.
+- Clone Path Customization - Exposes the clone path in the codebase section, allowing users to specify a custom clone directory.
+- Additional Pre-Fetch Command - Ability to specify any additional Git commands to run before fetching the code.
+
+
+These capabilites are behind feature flag `CI_GIT_CLONE_ENHANCED`. If it is not available in your account, contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -151,10 +152,7 @@ pipeline:
         depth: 0
         sslVerify: true
         prCloneStrategy: MergeCommit
-        resources:
-          limits:
-            memory: 500Mi
-            cpu: 400m
+
 ```
 
 </TabItem>
@@ -173,12 +171,6 @@ The default depth varies by build and trigger type:
 
 For more information, go to the [git clone documentation](https://git-scm.com/docs/git-clone).
 
-### SSL Verify
-
-If **True**, which is the default value, the pipeline verifies your Git SSL certificates. The build fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your builds anyway.
-
-If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
-
 ### Pull Request Clone Strategy
 
 When a build is triggered by a pull request, this setting determines the branch to use for the artifact after the repo is cloned.
@@ -191,6 +183,46 @@ If this is set to **Source Branch**, the pipeline builds the artifact from the l
 
 ![](./static/create-and-configure-a-codebase-05.png)
 
+### Clone Directory
+
+An optional target path in the pipeline workspace where you want to clone the repo.
+
+You can't specify `/harness/` as a target directory for a **Git Clone** step because this folder is reserved for the **Build** stage's codebase. You can specify **Shared Paths** in your [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md) to share data across steps in your **Build** stage.
+
+### Fetch Tags
+
+Determines whether to fetch all tags when performing a shallow clone (depth > 0). Setting this to `true` is equivalent to adding the `--tags` flag.
+
+### Download LFS Files
+
+The [Git Large File Storage (LFS)](https://git-lfs.com/) client is an extension for versioning large files, such as audio, video, datasets, and graphics.
+
+Set **Download LFS Files** to `true` to download Git-LFS files. Default is `false`.
+
+### Sparse Checkout
+
+Do a sparse checkout on given patterns. The subset of files is chosen by providing a list of directories in cone mode. Refer to [git documentation](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set) for more details.
+
+### Include Submodules
+
+Determines whether to include submodules in the clone. Default is `false`. Set to `true` to include submodules or recursive to clone submodules recursively. 
+
+### Pre Fetch Command
+
+Specify any additional Git commands to run before fetching the code. This field is for Git commands only; separate each command with a new line.
+
+This could be used, for example, to set additional LFS configurations or clone specific submodules. For example,
+
+```bash
+git config lfs.fetchexclude ".jpg"
+```
+
+### SSL Verify
+
+If **True**, which is the default value, the pipeline verifies your Git SSL certificates. The build fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your builds anyway.
+
+If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
+
 ### Set Container Resources
 
 Set maximum resource limits for the containers that clone the codebase at runtime:
@@ -198,9 +230,6 @@ Set maximum resource limits for the containers that clone the codebase at runtim
 * **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
 * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-### Toggle Clone Codebase
-
-If you want to disable cloning the default codebase for any stage in a pipeline, go to [Disable Clone Codebase for specific stages](#disable-clone-codebase-for-specific-stages).
 
 ## Troubleshoot codebases
 

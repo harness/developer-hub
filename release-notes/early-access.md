@@ -192,14 +192,12 @@ No early access (beta) features are available for the Harness Software Supply Ch
 
 The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
 
-### SonarQube branch scanning
-
-* **Release date:** February 2024
-* **Issue number:** STO-7122, STO-6840, STO-6857
-* **Feature flags:** `STO_SONARQUBE_BRANCHING`
+#### Default Setting: Users can approve their own exemptions
+* **Release date:** July 2024
+* **Release version:** [Version 1.102.2](/release-notes/security-testing-orchestration#version-11022)
+* **Issue number:** STO-7675
+* **Feature flags:** `STO_EXEMPTION_SETTING`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-This release includes a **Branch Scan** option for SonarQube scans. When this is selected in [Scan Configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#scan-configuration), the step scans the branch or pull request specified in the pipeline execution.
 
 ## SRM early access features
 
@@ -344,6 +342,15 @@ For information about early access (beta) features for Harness Software Engineer
 No information available. -->
 
 ### STO features promoted to GA
+
+#### SonarQube branch scanning
+
+* **Release date:** July 2024
+* **Early access release date:** February 2024
+* **Early access Release version:** [Version 1.83.1](../release-notes/security-testing-orchestration.md#version-1831)
+* **Feature flags:** `STO_SONARQUBE_BRANCHING`
+
+You an use SonarQube to perform Branch Scanning in Harness STO.
 
 #### Built-in SAST scanners
 

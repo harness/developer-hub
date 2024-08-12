@@ -3,7 +3,7 @@
     "position": 2,
     "collapsible":"true",
     "collapsed":"true",
-    "className":"red",
+    "className":"default",
     "link":{
        "type":"generated-index",
        "title":"External databases"

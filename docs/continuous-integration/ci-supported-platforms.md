@@ -54,6 +54,7 @@ For more information about early access features, including early access feature
 | `CI_USE_BUILDX_ON_K8` | With this flag enabled, a Build and Push step, running on k8s, uses buildx rather than kaniko. You must run buildx on k8s with Privileged mode enabled.  | Beta |
 | `CI_EXTRA_ADDON_RESOURCE` | Used to speed up CI builds by adding more resources for running 'addon`. | Beta |
 
+
 <!-- In development: CI_YAML_VERSIONING, CI_ENABLE_TTY_LOGS, CIE_ENABLE_RUNTEST_V2, CI_ENABLE_INTELLIGENT_DEFAULTS  -->
 
 <!-- Beta but not listed in table: CI_PIPELINE_VARIABLES_IN_STEPS (build & push env vars?), CI_VM_CONTAINERLESS_RUN_ASUSER

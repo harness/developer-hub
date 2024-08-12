@@ -2,7 +2,8 @@
 id: locust-loadgen
 title: Locust loadgen
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen
+- /docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen
+- /docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen-chaos
 ---
 Locust loadgen fault simulates load generation on the target hosts for a specific chaos duration. This fault:
 - Slows down or makes the target host unavailable due to heavy load.
@@ -11,13 +12,13 @@ Locust loadgen fault simulates load generation on the target hosts for a specifi
 ![Locust Loadgen Chaos](./static/images/locust-loadgen-chaos.png)
 
 ## Use cases
-- Locust loadgen fault determines the resilience of an application under heavy load. 
-- It determines how quickly the target application recovers from such a failure. 
+- Locust loadgen fault determines the resilience of an application under heavy load.
+- It determines how quickly the target application recovers from such a failure.
 
 ### Prerequisites
 - Kubernetes > 1.17 is required to execute this fault.
 - The target host should be accessible.
-- Kubernetes configmap that contains the `config.py` file is required. This file is used as a locustfile to generate load in the `CHAOS_NAMESPACE`. Below is a sample configmap:
+- Kubernetes ConfigMap that contains the `config.py` file is required. This file is used as a locustfile to generate load in the `CHAOS_NAMESPACE`. Below is a sample ConfigMap:
 
 ```yaml
 apiVersion: v1

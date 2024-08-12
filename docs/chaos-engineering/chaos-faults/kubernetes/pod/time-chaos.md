@@ -2,7 +2,8 @@
 id: time-chaos
 title: Time chaos
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/time-chaos
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/time-chaos
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/time-chaos
 ---
 
 Time chaos is a Kubernetes pod-level fault that introduces controlled time offsets to disrupt the system time of the target pod.

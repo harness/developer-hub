@@ -2,6 +2,8 @@
 title: Relay Proxy V1 overview
 description: This topic describes what is Relay Proxy and how to use it with Harness Feature Flags (FF).
 sidebar_position: 10
+redirect_from:
+  - /docs/feature-flags/ff-using-flags/relay-proxy/relay-proxy
 ---
 
 This topic describes the Harness Relay Proxy V1 and how to use it with Feature Flags (FF).
@@ -44,6 +46,24 @@ When the proxy starts, an embedded Go server SDK retrieves the Feature and Segme
 ### How the Relay Proxy V1 fetches client and server SDK configuration details
 
 Client and Server SDKs fetch the evaluation details in the same way as they would if they were interacting with the FF Services on ff-server.
+
+### Supported Modes for Relay Proxy
+
+There are various modes for both versions of Relay Proxy. The Relay Proxy V1 supports running in two different modes:
+
+ - **Offline with in-memory cache**
+ - **Offline with Redis cache**
+ - **Online with in-memory cache**
+ - **Online with Redis cache**
+
+To learn more about using [Offline Mode in the Harness Relay Proxy](./offline.md), you can find more information in the Harness docs including instructions on how to generate offline configuration and how to run the proxy in offline mode. 
+
+Whereas with the Relay Proxy V2, it only supports running **Online with Redis Cache**. Operating in this mode requires the following:
+
+ - A connection to Harness SaaS.
+ - Connectivity to a Redis cache.
+
+To learn more about using [Caching Options in the Harness Relay Proxy](./cache_options.md), you can find more information in the Harness docs including common FAQs about the caching options. 
 
 ## More information
 

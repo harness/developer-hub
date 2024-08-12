@@ -3,7 +3,6 @@
     "label": "Linux",
     "collapsible": true,
     "collapsed": true,
-    
     "customProps": {
       "description": "Linux faults documentation"
     }

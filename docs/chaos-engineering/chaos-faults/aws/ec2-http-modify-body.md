@@ -7,7 +7,6 @@ redirect_from:
 
 EC2 HTTP modify body injects HTTP chaos which affects the request or response by modifying the status code or the body or the headers by starting proxy server and redirecting the traffic through the proxy server.
 
-
 ![EC2 HTTP Modify Response](./static/images/ec2-http-modify-body.png)
 
 ## Use cases
@@ -34,7 +33,7 @@ EC2 HTTP modify body determines the application's resilience to erroneous (or in
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -54,7 +53,7 @@ Below is an example AWS policy to execute the fault.
                 "ssm:CancelCommand",
                 "ssm:CreateDocument",
                 "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",          
+                "ssm:GetCommandInvocation",
                 "ssm:UpdateInstanceInformation",
                 "ssm:DescribeInstanceInformation"
             ],
@@ -203,7 +202,7 @@ spec:
 
 ### Modifying the response body
 
-Body string to modify the response body. Tune it by using the `RESPONSE_BODY` environment variable. 
+Body string to modify the response body. Tune it by using the `RESPONSE_BODY` environment variable.
 
 :::tip
 `HTTP_CHAOS_TYPE` should be provided as `body`.

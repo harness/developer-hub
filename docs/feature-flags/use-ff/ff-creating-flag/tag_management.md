@@ -2,6 +2,8 @@
 title: Manage tags for feature flags
 description: This topic focuses on tagging and its uses within Feature Flags.
 sidebar_position: 45
+redirect_from:
+  - /docs/feature-flags/ff-creating-flag/tag-management
 ---
 
 # Tagging Management Overview

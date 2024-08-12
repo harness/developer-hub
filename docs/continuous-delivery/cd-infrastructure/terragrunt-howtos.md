@@ -504,13 +504,13 @@ The **Use Connector credentials** setting allows Harness Git Connectors using SS
 
 When configuring the SSH key for the connector, exporting an SSH key with a passphrase for the module source is not supported. Configure an SSH Key without the passphrase.
 
-Here is an example reference the Terraform module using the SSH protocol:
+Here is a syntax example to reference the Terraform module using the SSH protocol:
 
 ```bash
 source = "git@github.com:your-username/your-private-module.git"
 ```
 
-Here is an example reference the Terraform module using the HTTPS protocol:
+Here is a syntax example to reference the Terraform module using the HTTPS protocol:
 
 ```bash
 source = "git::https://github.com/your-organization/your-private-module.git"

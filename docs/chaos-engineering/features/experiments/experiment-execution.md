@@ -3,8 +3,38 @@ title: Flow of control in a chaos experiment
 sidebar_position: 10
 description: Flow of control in a chaos experiment
 redirect_from:
-   - /docs/chaos-engineering/configure-chaos-experiments/experiments/experiment-execution
+- /docs/chaos-engineering/configure-chaos-experiments/experiments/experiment-execution
+- /docs/chaos-engineering/get-started/prerequisites/#add-users-to-a-project-to-run-chaos-experiments
+- /docs/chaos-engineering/get-started/prerequisites/#requirements-for-individual-chaos-faults
 ---
+
+## Add users to a project to run chaos experiments
+
+You must have at least one user in a project, and set up permissions such that the user can perform chaos experiments. The following steps generate an email invitation to the new user(s) to add themselves to the project.
+
+To add a new user to a project:
+
+1. In Harness, select a project.
+
+2. Expand the **Project setup** menu, and select **Access Control**.
+
+	This page lists all the users added to the current project.
+
+3. Select **New User**, and then:
+
+	a. In **New User(s)**, add the email(s) of the user(s) you want to add.
+
+	b. In **User Groups**, select any of the existing user groups to which you can add the user.
+
+	c. Add the roles for the user(s) to enforce their access permissions.
+
+	![Add New User](./static/experiment-execution/add-new-user.png)
+
+4. Select **Apply**.
+
+## Requirements for individual chaos faults
+
+In the [chaos faults reference](/docs/chaos-engineering/chaos-faults/), you'll find fault-specific requirements listed in the **Use cases** section of each fault, as shown, for example, in the use cases for the [Kubelet service kill](/docs/chaos-engineering/chaos-faults/kubernetes/node/kubelet-service-kill#use-cases) fault.
 
 ## Experiment execution
 

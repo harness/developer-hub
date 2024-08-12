@@ -1,7 +1,7 @@
 ---
 title: How to write the IDP YAML
 description: Detailed information on how to write the ipd YAML or the catalog-info.yaml
-sidebar_position: 7
+sidebar_position: 3
 ---
 
 ## Create an IDP YAML or `catalog-info.yaml`
@@ -130,6 +130,22 @@ links:
   - url: https://admin.example-org.com
     title: Admin Dashboard
     type: admin-dashboard
+```
+
+### Support for Harness Account Variables
+
+You can as well use all the **[custom account variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#define-variables)** and **[account scoped built-in variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-expressions-reference)** in IDP YAML.
+
+```YAML
+...
+annotations:
+    harness.io/pipelines: |
+        Build: https://app.harness.io/ng/account/<+account.identifier>/home/orgs/<+variable.account.orgIdentifier>/projects/<+variable.account.projectIdentifier>/pipelines/Build_IDP_UI_App
+...
+...
+spec:
+  type: <+account.identifier>
+  lifecycle: <+variable.account.orgIdentifier> <+variable.account.projectIdentifier>
 ```
 
 ### Specify component details

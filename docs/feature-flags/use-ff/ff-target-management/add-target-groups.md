@@ -6,6 +6,8 @@ helpdocs_topic_id: 5qz1qrugyk
 helpdocs_category_id: xw2hz815l8
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-using-flags/ff-target-management/add-target-groups
 ---
 
 import target_group_1 from './static/2-add-target-groups-06.png'

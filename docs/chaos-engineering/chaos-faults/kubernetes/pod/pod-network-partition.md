@@ -2,7 +2,8 @@
 id: pod-network-partition
 title: Pod network partition
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-partition
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-partition
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-partition
 ---
 
 Pod network partition is a Kubernetes pod-level fault that blocks 100 percent ingress and egress traffic of the target application by creating a network policy.

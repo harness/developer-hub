@@ -8,7 +8,7 @@ import VSphereSecrets from './shared/vsphere-secrets.md';
 
 CF app JVM CPU stress injects CPU stress into a Java based Cloud Foundry app's JVM.
 
-<!-- ![CF App JVM CPU Stress](./static/images/cf-app-jvm-cpu-stress.png) -->
+![CF App JVM CPU Stress](./static/images/cf-app-jvm-cpu-stress.png)
 
 ## Use cases
 CF app JVM CPU stress applies CPU stress to:

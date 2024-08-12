@@ -5,6 +5,7 @@ sidebar_label: Ingest from unsupported scanners
 sidebar_position: 40
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners
+  - /docs/security-testing-orchestration/orchestrate-and-ingest/ingesting-issues-from-other-scanners
 helpdocs_topic_id: ymkcm5lypf
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false

@@ -1,31 +1,30 @@
 ---
 id: vmware-windows-memory-hog
-title: VMware Windows Memory hog
+title: VMware Windows memory hog
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-memory-hog
 ---
 
-VMware Windows Memory hog applies stress on the Memory resources on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware Windows VMs.
+VMware Windows memory hog applies stress on the Memory resources on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs.
 
 ![VMware Windows Memory Hog](./static/images/vmware-windows-memory-hog.png)
 
 ## Use cases
-
-- VMware Windows Memory hog determines the resilience of an application when stress is applied on the Memory resources of a VMware Windows virtual machine.
-- VMware Windows Memory hog simulates the situation of lack of Memory for processes running on the application, which degrades their performance. 
-- It verifies the autopilot functionality of services or application on the VM.
+VMware Windows memory hog:
+- Determines the resilience of an application when stress is applied on the Memory resources of a VMware Windows virtual machine.
+- Simulates the situation of lack of Memory for processes running on the application, which degrades their performance.
+- Verifies the autopilot functionality of services or application on the VM.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
-- Execution plane should be connected to vCenter and host vCenter on port 443. 
+- Execution plane should be connected to vCenter and host vCenter on port 443.
 - VMware tool should be installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
-- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`.
 - Ensure installation of [Testlimit](https://learn.microsoft.com/en-us/sysinternals/downloads/testlimit) on the target VM, a prerequisite for this experiment. Execute the fault using the built-in Administrator user to ensure permissions for memory stress testing. [Instructions to enable the built-in Administrator in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
 
-- VM credentials can be passed as secrets or as a chaos enginer environment variable.
+- VM credentials can be passed as secrets or as a chaos engine environment variable.
 
 ```yaml
 apiVersion: v1
@@ -104,7 +103,7 @@ stringData:
       </tr>
       <tr>
       <td>PATH_OF_TESTLIMIT</td>
-      <td>Path of “testlimit” binary (location of its download)</td>
+      <td>Path of "testlimit" binary (location of its download). </td>
       <td> </td>
       </tr>
     </table>
@@ -132,7 +131,7 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # Memory consumption in MB
-        - name: MEMORY_CONSUMPTION 
+        - name: MEMORY_CONSUMPTION
           value: '1024'
 ```
 
@@ -160,6 +159,6 @@ spec:
         - name: VM_NAME
           value: 'test-vm-01'
        # Memory percentage to consume
-        - name: MEMORY_PERCENTAGE 
+        - name: MEMORY_PERCENTAGE
           value: '50'
 ```

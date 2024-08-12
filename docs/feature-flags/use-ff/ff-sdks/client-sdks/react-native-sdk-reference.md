@@ -6,6 +6,8 @@ helpdocs_topic_id: z2w6uj9mzb
 helpdocs_category_id: y1oewjcb0q
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-sdks/client-sdks/react-native-sdk-reference
 ---
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'

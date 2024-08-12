@@ -8,7 +8,7 @@ import VSphereSecrets from './shared/vsphere-secrets.md';
 
 CF app JVM modify return causes a Java based Cloud Foundry app's method to return a given value.
 
-<!-- ![CF App JVM Method Exception](./static/images/cf-app-jvm-method-exception.png) -->
+![CF App JVM Method Exception](./static/images/cf-app-jvm-method-exception.png)
 
 ## Use cases
 CF app JVM modify return:

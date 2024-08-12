@@ -12,6 +12,7 @@ Before you add new content, search for existing FAQs to avoid duplications.
 
 Ensure that your contributions are organized according to the following categories:
 
+- Subscriptions
 - Access Control/RBAC
 - API/Integration
 - Authentication
@@ -37,6 +38,16 @@ Ensure that your contributions are organized according to the following categori
 You can search for a heading, for example, ## Access Control, and add your new FAQ under the category that's appropriate to keep the file's organizational structure.
 
 -->
+
+## Subscriptions
+
+### For Developer 360 subscriptions, how do we remove users who left the company?
+
+Delete the user(s) from the platform. The user will be removed from the Developer license count immediately.
+
+:::note
+This applies to Developer oriented modules: Continuous Integration (CI), Code Repository (CR), Feature Flags (FF), and Internal Developer Portal (IDP). For more information, go to [View and manage subscriptions](/docs/platform/get-started/subscriptions-licenses/subscriptions).
+:::
 
 ## Access Control/RBAC
 
@@ -121,6 +132,18 @@ No, you can only configure RBAC for the environment based on environment type.
 ### Does Harness log GET Calls in the audit logs?
 
 No, Harness doesn't support audit trails for read API requests like GET.
+
+### Why are RBAC checks different for pipelines stored inline vs. Git?
+
+You can set Harness to by default, before running any pipeline, check whether the user has access to all of the environments and other resources that the pipeline accesses. This check is run only for inline pipelines, not those stored in Git or other repositories.
+
+:::note
+Currently, this feature is behind the feature flags `CDS_PIPELINE_ABORT_RBAC_PERMISSION_MIGRATION` and `CDS_PIPELINE_ABORT_RBAC_PERMISSION`. Contact Harness Support to enable the feature.
+:::
+
+Turn off this setting if the check isn't required. Turning this off can cause pipelines to fail partway through execution (since later stages could have permission issues that haven't been checked beforehand).
+
+For more information, go to [Run RBAC Validation before executing Inline Pipelines](/docs/platform/pipelines/pipeline-settings/#run-rbac-validation-before-executing-inline-pipelines).
 
 ### What is the purpose of linkedSsoDisplayName?
 
@@ -231,7 +254,7 @@ The `parentIdentifier` in the context of creating an API key refers to the Paren
 
 ### How can I get a list of all users and their roles?
 
-You can use the Get aggregated users API. This will provide with complete details of the users including the role they have. For more information, go to [Get aggrgated users](https://apidocs.harness.io/tag/User#operation/getAggregatedUsers) in the API documentation.
+You can use the Get aggregated users API. This will provide with complete details of the users including the role they have. For more information, go to [Get aggregated users](https://apidocs.harness.io/tag/User#operation/getAggregatedUsers) in the API documentation.
 
 ### We have hundreds of users that were granted the admin role on the account level as individuals. How can we remove this role?
 
@@ -737,7 +760,7 @@ You can find this value on the Authentication page (right below the Overview men
 
 ### Why is LDAP sync not working for some groups despite working fine for others, and even manual sync isn't helping?
 
-The most probable root cause is that there is a difference in query for this user group/user (like DC), so check and confirm and add the corresponding user query.
+The most probable root cause is that there is a difference in query for this user group/user (like DC), so check and confirm and add the corresponding user query.
 
 ## Automation
 
@@ -1765,7 +1788,7 @@ For more information, go to [Delegates list page](/docs/platform/delegates/secur
 
 ### What is the six-letter account identifier that Harness uses it creates the delegate?
 
-This identifier is required for Harness to link old and new pod lifecycles properly. Without it, they will be treated differently as pod names and IPs change.
+This identifier is required for Harness to link old and new pod life cycles properly. Without it, they will be treated differently as pod names and IPs change.
 
 ### How does Harness prevent tampering of artifacts and instructions? Is TLS used? What is the integrity checking approach to ensure instructions are not altered in-flight?
 

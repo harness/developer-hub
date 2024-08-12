@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-07-01T10:00
+date: 2024-07-18T10:00
 sidebar_position: 4
 ---
 
@@ -19,6 +19,18 @@ These release notes describe recent changes to Harness Delegate.
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
+
+:::
+
+:::info **Delegate Security Update**
+Added a critical security fix in harness secret manager for handling identities with CD workflows.
+If you are running delegates version below 799xx and using Terraform/Terragrunt features, upgrade to delegate version 799x or above immediately. Go to the [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) to update the delegates.
+
+:::
+
+:::danger Stackdriver logs notice
+
+If you have blocked Stackdriver logs using firewall rules, upgrade your delegates to version 24.06.83304 or later.
 
 :::
 
@@ -46,6 +58,34 @@ Six months after a delegate image is released, the delegate reaches End of Suppo
 For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
+
+## July 2024
+
+### Version 24.07.83503 <!--  July 17, 2024 -->
+
+#### New features and enhancements
+
+- Reduced delegate liveness probe failure time. Previously, delegates had a 15-minute window to send heartbeats before the liveness probe failed, leading to a delegate restart. Harness reduced this time to 5 minutes to ensure quicker detection and response to heartbeat failures. (PL-52037)
+
+### Version 24.07.82906 <!--  July 17, 2024 -->
+
+#### Hotfix
+
+- Rollout deployment logs were not available and could not be expanded. Although the deployment was working, the logs were not displaying. The issue has been addressed by ensuring that logs will be shown even on a heavily loaded delegate. (PL-55512, ZD-66330)
+
+### Version 24.07.83404 <!--  July 10, 2024 -->
+
+#### New features and enhancements
+
+- Modified the unique index for delegate token names. The default token name in each scope will now be `default_token` instead of `default_token_org/project`. This change applies only to new projects and organizations; existing projects and organizations will retain their current token names. (PL-51151)
+
+### Version 24.07.83205 <!--  July 9, 2024 -->
+
+#### Hotfix
+
+- When the feature flag `CDS_PERFORM_SHELL_SCRIPT_HOST_CAPABILITY` is enabled, Shell script steps will perform host capability checks. (CDS-97512, ZD-66326, ZD-66349)
+
+- Script executions failed during the Command step for WinRM deployments with a Kerberos auth type when environment variables contained the characters `\v`, `\b`, or `\f`. Now, when the feature flag `CDS_ESCAPE_ENV_VARS_FOR_WINRM_KERBEROS` is enabled, the environment variables will be escaped and script execution will pass. (CDS-97690)
 
 ## June 2024
 

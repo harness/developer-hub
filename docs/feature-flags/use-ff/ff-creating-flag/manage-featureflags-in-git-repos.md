@@ -11,6 +11,8 @@ helpdocs_topic_id: 6f5eylg819
 helpdocs_category_id: 77l6flntwl
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/manage-featureflags-in-git-repos
 ---
 
 import git_1 from './static/5-manage-featureflags-in-git-repos-04.png'

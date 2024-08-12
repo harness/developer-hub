@@ -90,7 +90,7 @@ Once the apply command completes, an out folder is generated within your reposit
     workspaces = [
         {
             identifier = "workspace_demo_1"
-            repository = "<local-repo-directory>"
+            repository = "<repo-directory>"
             repository_path = "migration-demo-1"
             repository_branch = "<repo-branch>"
             terraform_variables = [
@@ -103,7 +103,7 @@ Once the apply command completes, an out folder is generated within your reposit
         },
         {
             identifier = "workspace_demo_2"
-            repository = "<local-repo-directory>"
+            repository = "<repo-directory>"
             repository_path = "migration-demo-2"
             repository_branch = "<repo-branch>"
             terraform_variables = [

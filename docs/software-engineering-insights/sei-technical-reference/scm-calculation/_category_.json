@@ -1,9 +1,9 @@
 {
     "label":"SCM Calculations",
-    "position": 10,
+    "position": 20,
     "collapsible":"true",
     "collapsed":"true",
-    "className":"red",
+    "className":"default",
     "link":{
        "type":"generated-index",
        "title":"SCM Metrics and Reports Calculation"

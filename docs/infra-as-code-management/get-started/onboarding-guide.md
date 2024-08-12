@@ -155,6 +155,10 @@ Go to the **Use OIDC** tab [Cloud platform connectors reference](https://develop
 :::
 ---
 
+:::tip migrate existing projects
+For first-time use, use our [migration tool](https://developer.harness.io/docs/infra-as-code-management/remote-backends/state-migration) to create new workspaces and import your existing Terraform projects into the Harness Platform.
+:::
+
 ## Add a new workspace
 
 Once you have configured your connectors, you can create a Workspace and select them in the New Workspace panel:

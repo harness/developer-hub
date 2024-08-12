@@ -1,6 +1,8 @@
 ---
 id: ssm-chaos-by-tag
 title: SSM chaos by tag
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/aws-ssm-chaos-by-tag
 ---
 
 AWS SSM chaos by tag induces chaos on AWS EC2 instances using the Amazon SSM Run Command.

@@ -1,5 +1,5 @@
 ---
-title: Create OPA policies stop STO pipelines automatically 
+title: Create OPA policies to stop STO pipelines automatically 
 description: Create OPA policies to stop pipelines automatically.
 sidebar_label: Create OPA policies
 sidebar_position: 10

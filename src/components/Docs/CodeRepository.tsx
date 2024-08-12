@@ -25,7 +25,7 @@ export default function Code() {
                 Knowledge Base
               </button>
             </Link>
-            <Link href="/release-notes">
+            <Link href="/release-notes/code-repository">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />

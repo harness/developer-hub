@@ -6,6 +6,8 @@ helpdocs_topic_id: bmlvsxhp13
 helpdocs_category_id: y1oewjcb0q
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-sdks/client-sdks/java-script-sdk-references
 ---
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'

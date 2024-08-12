@@ -5,6 +5,7 @@ sidebar_label: Orchestration mode
 sidebar_position: 70
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto
+  - /docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto
 helpdocs_topic_id: wk018r6x3g
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false

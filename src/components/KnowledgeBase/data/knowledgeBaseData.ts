@@ -3,7 +3,7 @@ import { MODULES } from "../../../constants";
 export type CardItem = {
   title: string;
   /*
-  MODULES.ci | MODULES.cd | MODULES.ff | MODULES.ccm | MODULES.idp |
+  MODULES.ci | MODULES.cd | MODULES.ff | MODULES.ccm | MODULES.idp | MODULES.sei |
   MODULES.sto | MODULES.srm | MODULES.ce | MODULES.platform |
   */
   module: MODULES;

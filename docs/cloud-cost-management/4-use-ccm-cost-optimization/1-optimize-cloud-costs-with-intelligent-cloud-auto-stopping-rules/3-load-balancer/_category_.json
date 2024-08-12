@@ -3,7 +3,7 @@
     "position": 30,
     "collapsible":"true",
     "collapsed":"true",
-    "className":"red",
+    "className":"default",
     "link":{
        "type":"generated-index",
        "title":"Add Load Balancers for AutoStopping Rules"

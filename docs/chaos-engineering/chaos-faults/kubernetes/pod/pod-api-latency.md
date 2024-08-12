@@ -2,7 +2,8 @@
 id: pod-api-latency
 title: Pod API latency
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-api-latency
 ---
 
 Pod API latency is a Kubernetes pod-level chaos fault that injects api request and response latency by starting proxy server and redirecting the traffic through it.

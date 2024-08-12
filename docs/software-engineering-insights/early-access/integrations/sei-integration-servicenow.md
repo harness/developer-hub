@@ -16,8 +16,28 @@ This integration allows you to track, manage, and analyze incidents, and change 
 
 ## Requirements
 
-* ServiceNow Account with Admin access
-* ServiceNow Client ID and ServiceNow Client Secret (Only OAuth based authentication)
+### OAuth Credentials
+
+To configure the integration using OAuth-based authentication, you'll need to generate the following credentials in your ServiceNow instance:
+
+* [ServiceNow Client ID](#create-a-client-id-and-client-secret-in-servicenow)
+* [ServiceNow Client Secret](#create-a-client-id-and-client-secret-in-servicenow)
+
+These credentials are essential for secure, token-based authentication between your application and the ServiceNow platform. To generate the credentials, go to [Create a Client ID and Client Secret in ServiceNow](#create-a-client-id-and-client-secret-in-servicenow)
+
+### Required permissions
+
+When configuring the ServiceNow integration, ensure the user has the following roles:
+
+* **itil:** Provides access to IT Service Management (ITSM) functionalities.
+* **oauth_admin:** Required only if using the OAuth flow for creating integrations. This role allows management of OAuth applications.
+* **personalize_choices:** Enables customization of choice lists.
+* **personalize_dictionary:** Allows modification of dictionary entries.
+
+To fetch data for all users within the ServiceNow instance, the following roles are required:
+
+* **user:** Basic role assigned to all ServiceNow users.
+* **user_admin:** Provides administrative capabilities over user accounts.
 
 ### Create a Client ID and Client Secret in ServiceNow
 
@@ -111,9 +131,46 @@ The ServiceNow integration can set up the authentication either by using Usernam
 </TabItem>
 </Tabs>
 
+## ServiceNow On-Prem
+
+### Step 1: Select the integration
+
+* In your **Harness project**, go to the **SEI module**, and select **Account**.
+* Select **Integrations** under **Integration and Data Settings**.
+* Select **Available Integrations**, locate the **ServiceNow integration** under the **Others** **integration** tab and select **Install**.
+
+### Step 2: Choose the Type of ServiceNow setup
+
+Select the type of ServiceNow setup as ServiceNow On-Prem
+
+### Step 3: Configure the integration
+
+The ServiceNow on-prem integration can set up the authentication only using the ServiceNow account's Username and Password.
+
+* Add the **Name** for the integration, which is mandatory. You can add **Description** and **Tags** (Optional).
+* Add the **URL** of your **ServiceNow application instance**, for example, "`https://xyz.service-now.com`". Make sure it's a valid URL.
+* Add the **Username** and **Password** for your **ServiceNow account**.
+* Click on **Download YAML File** to download the `satellite.yml` file.
+* Click on the **Done** button and the integration will be successfully saved. Once you have downloaded the `satellite.yml` file update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
+
+Here’s a sample `satellite.yml` file:
+
+```yaml
+satellite:
+  tenant: <ACCOUNT_NAME>
+  api_key: <SEI_API_KEY>
+  url: <SEI_ENV_URL>
+integrations:
+  - id: <INTEGRATION_ID>
+    url: <SERVICENOW_URL>
+    username: <SERVICENOW_USERNAME>
+    application: servicenow
+    api_key: <SERVICENOW_PASSWORD>
+```
+
 ## What data is ingested
 
-The data is updated every hour. The following details are ingested from the ServiceNow platform using this integration.
+The data is updated every hour. The following details are ingested from the ServiceNow platform using this integration. To find the detailed list of the data ingested, go to [ServiceNow integration datasheet](/docs/software-engineering-insights/sei-technical-reference/sei-datasheets/sei-servicenow-datasheet).
 
 ### Incidents
 

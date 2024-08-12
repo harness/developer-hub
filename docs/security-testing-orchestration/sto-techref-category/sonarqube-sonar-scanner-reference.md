@@ -10,7 +10,7 @@ helpdocs_is_published: truex
 ---
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
 <br/>
@@ -89,12 +89,6 @@ The predefined configuration to use for the scan.
 - **Branch Scan** In Orchestration or Extraction mode, extract results based on how the pipeline is executed:
   - Manual executions - The branch defined in SonarQube ([Target variant](#variant))
   - Triggered executions - The pull request defined in SonarQube 
-
-:::note
-
-**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`. Contact [Harness Support](mailto:support@harness.io) to enable this option.
-
-:::
 
 
 ### Target
@@ -324,6 +318,36 @@ If there's a proxy between your Harness pipeline and your SonarQube server, you 
 - `JVM_HTTPS_PROXY_HOST : my-proxy.ca.myorg.org `
 - `JVM_HTTPS_PROXY_PORT : 3745`
 - `JVM_NO_PROXY : sonar.myorg.local`
+
+## View scan results in SonarQube portal
+You can access scan results for your targets in the SonarQube portal. These results are organized under projects titled with your target/repository name. Further, you can view scan results specific to branches, PRs, and tags based on the scans performed in STO.
+
+
+### Locate STO scan results in SonarQube portal
+
+1. **_Branch_ scan results**: If you scanned a branch, you can find the results in SonarQube with the same branch name.
+2. **Pull Request scan results**: If you scanned a PR, the results are located under the name `refs/pull/<PR_NUMBER>`, where `<PR_NUMBER>` is the specific number of the pull request.
+3. **Tag scan results**: If you scanned a tag, the results are available with the same tag name.
+
+
+### Set the name for your scans
+
+When using the scan configuration **Branch Scan**, you can set the naming of the scan as it will appear in the SonarQube portal. This can be configured as follows:
+
+
+
+1. Under **Scan Tool**, set the **Analysis Type** to **Manual**.
+2. Set the **Branch Name** to the name you want to use for your scan results in the SonarQube portal.
+
+<DocImage path={require('./static/sonarqube-orchestration-branch-scan.png')} width="30%" height="30%" title="Click to view full size image" />
+<!-- ![alt_text](./static/sonarqube-orchestration-branch-scan.png "image_tooltip") -->
+
+### Best practices
+
+You can use [Harness expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) to automatically populate values from triggers. For example, you can define the "Branch Name" as `<+trigger.sourceBranch>/<+trigger.prNumber>`. This will generate a naming convention in the format SOURCE_BRANCH_NAME/PR_NUMBER, which is particularly useful when triggering scans on a specific PR. 
+
+This setup ensures that the scan result name reflects both the branch and the PR, making it easier to identify and manage scan results in the SonarQube portal.
+
 
 ## Generate coverage reports and upload to SonarQube
 

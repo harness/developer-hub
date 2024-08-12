@@ -359,16 +359,6 @@ To address a migrated pipeline, users can take the following steps:
 1.Migrate the current Launch Configuration to Launch Template. AWS provides the steps here: [AWS Launch Templates Migration Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-to-launch-templates.html).
 2. Once this is completed, everything should work seamlessly. However, the current pipeline will not function properly. To resolve this, we can create a new pipeline following the guidelines outlined here: [AWS ASG Tutorial for Canary Phased Deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment). 
 
-:::info note
-Please note that this feature is behind the feature flag CDS_ASG_PHASED_DEPLOY_FEATURE_NG, which needs to be enabled for this feature to take effect.
-:::
-
-
-### How will the feature flag `CDS_ASG_PHASED_DEPLOY_FEATURE_NG` function with my ASG deployment after updating my configuration from Launch Configuration to Launch Template during the migration of a pipeline from FirstGen to NextGen?
-
-Harness has redesigned the NextGen platform to support multiple strategies and accommodate new features provided by AWS like instance refresh, etc. Even though pipelines using Launch Configuration will still work, their design, especially the ASG rolling deploy step, differs from FirstGen. More details about the rolling deploy step can be found here: [ASG Tutorial](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#rolling).
-
-
 
 ### Are there guidelines or recommendations for scaling up VM build infrastructures, such as those hosted on EC2, for individuals managing and configuring their own infrastructure?
 
@@ -535,3 +525,52 @@ No, Harness does not support conditional displaying input variables based on pre
 
 Yes, you can use allowed values to specify different input options for a variable, though it does not fully cover dynamic input based on previous selections.
 
+### Why is the run step failing with an NullPointerException error even though the correct roles are attached to the delegate 
+```
+Exception getAmazonEcrAuthToken
+java.lang.NullPointerException: You must specify a value for roleArn and roleSessionName
+```
+
+Please check the AWS connector used if connectivity test work and also check the service account attached to delegate if that has correct role assigned to access the resource
+
+Check to see if the AWS connector connectivity test passes. Also, check the service account attached to the delegate and see if it has the correct roles assigned to access the resource(s).
+
+### How can we add mean duration for prod and non-prod pipelines in dashboards?
+
+To get the mean duration for prod and non-prod pipelines, first create a measure to calculate the mean duration for the non-prod environment. Similarly, create a second measure for the prod environment. Finally, perform a table calculation on both custom measures and add them.
+
+### We need to extract the project tags based on the project name. Is there an API to do it?
+
+You can use: [API](https://apidocs.harness.io/tag/Project#operation/getProject) to get project details including tags.
+
+### What happens when my ECS service tasks repeatedly fail to start?
+When ECS service tasks repeatedly fail to start, they transition from PENDING to STOPPED without reaching the RUNNING state. The ECS service scheduler then throttles the restart attempts, incrementally increasing the time between restarts up to a maximum of 27 minutes. This helps manage the impact on your ECS cluster resources or Fargate infrastructure costs
+
+### Will the ECS service ever stop retrying to start failing tasks?
+No, Amazon ECS does not stop a failing service from retrying. The service will continue to attempt restarts indefinitely, but the time between attempts will increase incrementally if the tasks keep failing.
+
+###  How can we stop my ECS service from being throttled?
+To stop the throttling, you need to update your service to use a new task definition. This action will reset your service to a normal, non-throttled state immediately.
+
+### What should I do if my service tasks are being throttled?
+You should investigate and resolve the underlying issues causing the task failures. Common causes include insufficient resources, issues with pulling the Docker image, and insufficient disk space. Addressing these issues can help your tasks start successfully and avoid throttling.
+
+### Do tasks that stop after reaching the RUNNING state trigger throttling?
+No, tasks that are stopped after reaching the RUNNING state do not trigger the throttle logic or the associated service event message. For example, tasks stopped due to failed Elastic Load Balancing health checks or tasks that exit with a non-zero exit code after moving to the RUNNING state will not cause throttling.
+
+### What can cause insufficient resources for ECS tasks?
+Insufficient resources can be due to a lack of available ports, memory, or CPU units in your cluster. You will see an "insufficient resource" service event message if this is the problem. Ensure your cluster has adequate resources to accommodate your tasks.
+
+### How does Amazon ECS notify me about service throttling?
+If your service initiates the throttle logic, you receive a service event message stating that your service is unable to consistently start tasks successfully. This helps you identify when throttling is occurring so you can take corrective action.
+
+### What are common causes of ECS service tasks failing to start?
+
+Common causes includes Lack of resources (ports, memory, CPU units) in your cluster, Issues with pulling the Docker image due to incorrect image names, tags, or registry authentication problems, and Insufficient disk space on the container instance.
+
+### Why am I getting an `Invalid Request: No manifests found` error? 
+```
+Invalid request: No manifests found in stage Deploy_AMI. AsgRollingDeploy step requires a manifest defined in stage service definition
+```
+
+This means that your Launch Template and ASG Configuration are not setup correctly in your service under AWS ASG Configurations.

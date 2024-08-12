@@ -1,0 +1,29 @@
+## enable https support
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: linux-api-modify-header
+      spec:
+        components:
+          env:
+            # enable https support
+            - name: httpsEnabled
+              value: 'true'
+            - name: customCertificates
+              value: 'Y3VzdG9tIGNlcnRpZmljYXRlcwo='
+            # provide the api path filter
+            - name: pathFilter
+              value: '/status'
+            # provide the port of the targeted service
+            - name: targetServicePort
+              value: 80
