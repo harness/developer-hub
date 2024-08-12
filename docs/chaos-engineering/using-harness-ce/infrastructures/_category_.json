@@ -1,0 +1,13 @@
+{
+  "position": 1,
+  "label": "Infrastructures",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link":{
+      "type":"generated-index",
+      "title":"Using Harness CE"
+   },
+  "customProps": {
+    "description": "Using Harness CE"
+  }
+}
