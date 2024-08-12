@@ -55,8 +55,8 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Fixed issues
 
-- The output tab on the pipeline console showed incorrect details for retries when viewed on console mode. This issue is fixed now. Pass correct step id for retry steps in console view to see correct details in the output tab.(PIPE-20648, ZD-67024)
-- While cinnecting to the Git sync service, a connection error was being thrown. This issue is resolved by increasing the number of connection retries from 1 to 3. (PIPE-20589, ZD-67247,67488)
+- The output tab in the pipeline console previously displayed incorrect details for retries when viewed in console mode. This issue has been resolved by ensuring that the correct step ID is passed for retry steps, allowing accurate details to be shown in the output tab.(PIPE-20648, ZD-67024)
+- While connecting to the Git sync service, a connection error was being thrown. This issue is fixed by increasing the retry policy from 1 to 3. (PIPE-20589, ZD-67247,67488)
 - The test class `io.harness.pcf.cfsdk.CfSdkClientImplTest` was failing. The failing test classes have been fixed now. (CDS-99557)
 - The pipeline deployed using the rolling deployment method threw a `NotificationTargetARN` error. This issue is resolved now with support for adding lifecycle hooks with different notificationARNs and roles at the time of creation of ASG. (CDS-99460, ZD-67371)
 - The customers were unable to delete service. This issue is resolved now by adding a functionality to support deletion of services that were soft deleted from service Dashboard page. (CDS-99344, ZD-67225).
