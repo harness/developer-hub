@@ -3246,6 +3246,27 @@ For more details, refer to the Harness documentation on [Delegate Permissions](h
 In CD/Custom Stages, Python can be utilized through the implementation of a Step Group, which allows access to the Run Step that supports Python.
 For more details, refer to the Harness documentation on [Containerized Step Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/)
 
+### What does the error "no values.yaml found for manifest" mean, and how can it be resolved?
+The issue "no values.yaml found for manifest" typically indicates that Helm or Kubernetes is unable to locate the values.yaml file in the expected location when deploying or processing a Helm chart.
+
+### Which deployment types currently support post deployment rollback?
+Post deployment rollback is supported for Kubernetes, AWS Auto Scale Group (ASG), Tanzu Application Services (TAS), Amazon Elastic Container Service (ECS), and Native Helm. Support for additional deployment types is anticipated in the future.
+
+### Can I roll back a failed pipeline using Post deployment rollback feature?
+No, you can only roll back successful pipelines. The rollback option is not available for pipelines that have failed.
+
+### Can I perform multiple rollbacks on the same pipeline using Post deployment rollback feature?
+No, you cannot roll back the same pipeline multiple times. However, you can perform a rollback if the pipeline is executed again.
+
+### Can a trigger be created from a specific directory within a Git repository?
+Trigger cannot be created from a specific directory however you can create a trigger for a repository and then use a condition in your trigger such as starts with or Changed Files option to achieve your usecase.
+
+### What happens if the pipeline configuration changes between executions and we use Post deployment rollback feature ?
+If the pipeline configuration has changed, the rollback will use the YAML from the previous execution as a reference.
+
+### In what order do stages roll back during a deployment rollback?
+Stages should roll back in reverse order when a deployment rollback is triggered.
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
