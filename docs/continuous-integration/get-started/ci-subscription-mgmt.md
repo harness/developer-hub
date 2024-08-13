@@ -39,7 +39,7 @@ From the **Subscriptions** page, you can:
 
 ### Switch or downgrade your plan
 
-You can upgrade from the Free plan to either the Team or Enterprise plan through the Harness Platform.
+You can upgrade from the Free plan to paid plan through the Harness Platform.
 
 If you would like to switch between paid plans or downgrade to the Free plan, you must contact the [Harness Sales team](https://www.harness.io/pricing?module=ci#).
 
@@ -83,14 +83,22 @@ Each build minute consumes credits. The rate per build minute, and the resulting
 
 The following table shows the applicable rates for each OS type as of August 2023.
 
-| OS | Cores | Minute multiplier |
-| -- | ----- | ----------------- |
-| Linux | 4 | 2 |
-| Linux | 8 | 5 |
-| Linux | 16 | 10 |
-| Linux | 30 | 20 |
-| Windows | 4 | 8 |
-| macOS | 6 | 60 |
+
+| **Resource Class**  | **Number of Cores** | **Minute Multiplier** |
+|------------|-----------|-----------------------|
+| **Linux**  |           |                       |
+| flex (default) | 4 cores or more    | 2                     |
+| small      | 4 cores    | 2                     |
+| medium     | 8 cores    | 5                     |
+| large      | 16 cores   | 10                    |
+| xlarge     | 30 cores   | 20                    |
+| **macOS**    |           |                       |
+| flex (default)| 6 cores    | 60                    |
+| **Windows**|           |                       |
+| flex (default)| 4 cores    | 8                     |
+
+
+When using **Flex** resource class Harness will allocate machines with higher CPU higher than 4 cores, based capacity available in Harness cloud. we recommend using **Flex** resource class , unless large or xlarge machines are required. 
 
 Credits for build minutes are calculated based on build execution times (measured in minutes) by infrastructure resource class. Minimum cores guaranteed based on user's selection. Rates in the table above are current as of August 2023. For more information, contact Harness Sales or your account manager.
 
@@ -101,17 +109,17 @@ Based on the values in the table above:
 * 1000 macOS build minutes consumes 60000 cloud credits.
 * Using multiple machines that utilize 500 Linux, 4-core build minutes and 1000 macOS build minutes, a total of 61000 cloud credits are consumed.
 
+To learn how to change resource class, please see [Using resource classes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#using-resource-classes)
+
 ### Credit allowance by plan tier
 
 Plan credits can be consumed by all users within the account registered to run builds on Harness Cloud.
 
-Free plans receive 2000 free credits every month. Any free credits that are unused at the end of the month expire automatically and do not roll over from one month to the next.
-
-Customers on paid (**Team** or **Enterprise**) plans can purchase credits via credit packages. These purchased credits can be rolled over from one month to the next, but generally expire one year from the date the credit package was originally purchased, or, if you have signed an Order Form with Harness, the credits expire on the date stated on your Order Form.
+Customers on paid plans can purchase credits via credit packages. These purchased credits can be rolled over from one month to the next, but generally expire one year from purchase, unless specified otherwise in signed an Order Form with Harness.
 
 Harness notifies you when you are running low on cloud credits, and Harness can invoice in arrears for overages. For more information, go to [Credit overages (overuse)](#credit-overages-overuse).
 
-Free plans require credit card validation to use Harness Cloud. If you don't want to provide a credit card, you can use [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
+Free plans may require credit card validation to use Harness Cloud. If you don't want to provide a credit card, you can use [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) with your free plan.
 
 ### Usage limits
 

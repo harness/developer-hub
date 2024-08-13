@@ -31,9 +31,10 @@ The steps in each stage execute on the stage's dedicated VM. This allows the sta
 
 ## Billing and build credits
 
-Free plans get 2000 free build credits each month. If you're on a Team or Enterprise plan, build credit allowances are factored into your plan, and you can purchase additional build credit packages.
+Free plans get 2000 free build credits each month. 
+If you're using a paid CI plan, you can purchase build credit packages.
 
-Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
+Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md##harness-cloud-billing-and-cloud-credits).
 
 Free plans require credit card validation to use Harness Cloud. If you don't want to provide a credit card, consider using [local runner build infrastructure](./define-a-docker-build-infrastructure).
 
@@ -146,6 +147,27 @@ pipeline:
 Currently, macOS platforms for Harness Cloud are behind a feature flag with limited availability. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
 
 :::
+
+### Using Resource Classes
+You can use the yaml editor to change the cloud machine size, in case you would like to take advantage of larger machines. 
+
+:::info
+
+Currently, specifying machine size is behind a feature flag CI_ENABLE_RESOURCE_CLASSES. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
+:::
+
+To select a resource class size, please modify the CI stge cloud infrastructure runtime setting accordingly: 
+
+```yaml
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: 
+              size: xlarge # large | xlarge
+```
+To learn more about all available resource classes in Harness Cloud, please visit [Harness Cloud billing and cloud credits](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-cloud-credits).
 
 ### Harness Cloud best practices
 
