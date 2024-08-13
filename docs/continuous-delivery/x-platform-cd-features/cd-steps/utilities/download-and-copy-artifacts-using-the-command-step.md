@@ -128,7 +128,7 @@ Using the **Download** command type, you can download the deployment artifact on
 
 You can set where you want to download the artifact in **Destination Path**.
 
-:::warning
+:::note
 Ensure the directory mentioned in the **Destination Path** exists before executing the step to avoid step failure.
 :::
 
