@@ -123,6 +123,42 @@ Upon providing your credentials and the release version, the script will proceed
 
 :::
 
+## August 12, 2024, patch version 0.17.3
+
+This release includes the following Harness module and component versions.
+
+| **Name**                 | **Version**                                                                                     |
+| :----------------------- | :---------------------------------------------------------------------------------------------: |
+| Helm Chart               | [0.17.3](https://github.com/harness/helm-charts/releases/tag/harness-0.17.3)                    |
+| Air Gap Bundle           | [0.17.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.17.3)    |
+| NG Manager               | 1.36.12                                                                                         |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.17.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.3/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- We discovered an issue where the User Settings migration process in SMP environments incorrectly identifies values for Account Settings, leading to incorrect data population for existing settings. This issue has been resolved in versions `0.17.3`. If you have upgraded to any of the following versions: `0.17.0`, `0.17.1`, or `0.17.2`, you will need to run the provided script to correct the data:
+
+  Script: [update-setting-parentUniqueId.sh](https://github.com/harness/helm-charts/blob/main/src/harness/scripts/update-setting-parentUniqueId.sh)
+
+  For assistance, please contact [Harness Support](mailto:support@harness.io). (PL-56034)
+
 ## July 23, 2024, patch version 0.18.1
 
 This release includes the following Harness module and component versions.
