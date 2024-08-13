@@ -10,11 +10,11 @@ This section walks you through some common pain points and their workarounds.
 
 ## Kubernetes infrastructure troubleshooting
 
-#### Unable to connect to Kubernetes infrastructure server
+### Unable to connect to Kubernetes infrastructure server
 
 Most times, chaos infrastructure errors are due to issues with the chaos infrastructure setup.
 
-##### Workaround
+#### Workaround
 
 If you are unable to connect to the Kubernetes infrastructure server, try the following:
 
@@ -25,13 +25,11 @@ If you are unable to connect to the Kubernetes infrastructure server, try the fo
 * Check for local network issues, such as proxy errors or NAT license limits.
 * For some cloud platforms, like AWS EC2, ensure that the security groups allow outbound traffic on HTTPS 443.
 
-#### Connection to Kubernetes infrastructure fails after applying the manifest
+### Connection to Kubernetes infrastructure fails after setting up the namespace and pods
 
-After you apply the manifest, and try to connect to the Kubernetes infrastructure, it fails to connect (that is, the status is **PENDING**). In this case, one of the following may be the cause of the failure:
-1. Unable to connect to the Kubernetes infrastructure server (that is, app.harness.io): Refer to [unable to connect](#unable-to-connect-to-kubernetes-infrastructure-server) to resolve the issue.
-2. One of the infrastructure pods (one of **subscriber** or **chaos-exporter** or **workflow-controller** or **chaos-operator-ce** pods) is not yet in the **RUNNING** state: In this case, follow the commands mentioned below:
+When you set up the namespace and pods and connect to the Kubernetes infrastructure, it fails to connect. Execute the commands mentioned below:
 
-##### Debug
+#### Debug
 
 1. Check the status of your chaos infrastructure on your cluster
 
@@ -49,6 +47,25 @@ After you apply the manifest, and try to connect to the Kubernetes infrastructur
           kubectl describe pods <pod-name> -n <namespace_name>
           ```
 Check the logs of all pods in the namespace.
+
+### Cluster in GCP has un-schedulable pods
+
+GCP might throw an error stating that a cluster has pods that can't be scheduled. This may occur if you don't have sufficient space in your Kubernetes cluster.
+
+![](./static/images/troubleshooting-nextgen-00.png)
+
+#### Workaround
+
+If your Kubernetes cluster isn't big enough and doesn't have [autoscaling](https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps#autoscaling_deployments) enabled, it can't run the delegate (the remote component that helps access your K8s cluster and inject faults).
+To fix this issue, perform the following steps:
+1. Add more space or turn on autoscaling
+2. Wait for the cluster to restart
+3. Reconnect to the cluster
+4. Now re-run the following command:
+
+```
+$ kubectl apply -f harness-chaos-enable.yml
+```
 
 ## Probe related troubleshooting
 
@@ -74,7 +91,7 @@ source:
 
 ### Memory stress fault stressng flag usage
 
-When a memory stress fault (such as [Linux memory stress](TO-DO) or [Linux CPU stress](TO_DO)) is executed, the fault utilizes all of the available resources in the target system, thereby simulating an out of memory scenario.
+When a memory stress fault (such as [Linux memory stress](/docs/chaos-engineering/chaos-faults/linux/linux-memory-stress) or [Linux CPU stress](/docs/chaos-engineering/chaos-faults/linux/linux-cpu-stress)) is executed, the fault utilizes all of the available resources in the target system, thereby simulating an out of memory scenario.
 You can use another fault parameter, `stressNGFlags` to provide flexibility in the parameters passed to the VM.
 
 #### Workaround
@@ -120,18 +137,18 @@ The `--vm-populate` in the above manifest populates the memory, thereby stressin
 
 ### Executing an experiment moves it to a QUEUED state
 
-When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](TO_DO) was unable to send the experiment to the [subscriber](TO_DO).
+When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/components#20-chaos-manager) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/architecture-and-security/architecture/components#components-common-to-all-chaos-infrastructure).
 
 It could be due to a variety of reasons, such as:
 
-1. The subscriber is unable to reach the chaos control plane (chaos K8s IFS).
-2. The chaos control plane components (chaos-manager and chaos K8s IFS) were unable to create the experiment.
+1. The chaos manager couldn't create the task for experiment creation.
+2. Kubernetes IFS couldn't fetch the task for experiment creation.
+3. The subscriber is unable to reach the Kubernetes IFS.
 
 #### Debug
 
 1. Check the subscriber's health; if the subscriber isn't active, it can't fetch the tasks to create the experiment. In such a case, check the logs of the subscriber and restart the subscriber pod.
-2. In case you are using SMP (self-managed platform), check the logs of the control plane components, such as Chaos Manager and chaos K8s IFS.
-3. If you are a SaaS customer, contact [Harness support](mailto:support@harness.io).
+2. Check the logs of the control plane components, such as Chaos Manager and Kubernetes IFS.
 
 ### While executing an experiment, it directly moves to the ERROR state and the execution data for the run is absent
 
@@ -145,19 +162,7 @@ It could be due to a variety of reasons, such as:
 
 #### Debug
 
-- Check the logs of the subscriber, which will display the actual issue/error.
-- Check the logs of workflow-controller to identify any errors.
-- Execute the following commands that elaborates on the error events:
-
-  ```
-  kubectl get workflow -n namespace
-  ```
-
-  - Fetch the workflow that is in the **FAILED** state. Next, execute the below command:
-
-  ```
-  kubectl describe workflow <workflow_name> -n namespace
-  ```
+Check the logs of the subscriber, which will display the actual issue/error.
 
 ### Executed an experiment, but the UI shows one run without any state for it. (similar to a pending workflow)
 
@@ -340,4 +345,4 @@ powershell -Command "& { [Net.ServicePointManager]::SecurityProtocol = [Net.Secu
 
 This modification forces PowerShell to use TLS 1.2 for secure connections, thereby resolving the SSL/TLS issue.
 
-For further assistance, please refer to the [documentation](TO_DO) or contact [Harness Support](mailto:support@harness.io).
+For further assistance, please refer to the [documentation](/docs/chaos-engineering/chaos-faults/windows) or contact [Harness Support](mailto:support@harness.io).

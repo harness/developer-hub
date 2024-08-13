@@ -1,3 +1,4 @@
+
 ---
 title: Known issues
 description: HCE known issues
@@ -14,7 +15,7 @@ If you try to access the Harness Self-Managed Enterprise Edition (SMP)  portal o
 
 ## Status timeout check issue
 
-For faults such as node network loss, kubelet service kill, the default status check timeout is 180 seconds. If you have specified your chaos experiment duration to be less than 180 seconds, the chaos experiment can fetch the status of the helper pod once the duration is complete, and this will be within the timeout threshold. If the duration of the experiment is more than 180 seconds, the status check times out even before the fault completes, and results in the fault erroring out. Experiments will fail to fetch the status of the helper pods in this case.
+For faults such as [node network loss](/docs/chaos-engineering/chaos-faults/kubernetes/node/node-network-loss), [kubelet service kill](/docs/chaos-engineering/chaos-faults/kubernetes/node/kubelet-service-kill), the [default status check timeout](/docs/chaos-engineering/architecture-and-security/component-specification/chaos-engine/#experiment-status-check-timeout) is 180 seconds. If you have specified your chaos experiment duration to be less than 180 seconds, the chaos experiment can fetch the status of the helper pod once the duration is complete, and this will be within the timeout threshold. If the duration of the experiment is more than 180 seconds, the status check times out even before the fault completes, and results in the fault erroring out. Experiments will fail to fetch the status of the helper pods in this case.
 
 You can fix this by increasing the status check timeout duration so that the experiment completes and then fetching the status of helper pods.
 
@@ -52,19 +53,15 @@ The HCE platform provides native integration for chaos experiments with the CD m
 
 ## GameDay support
 
-HCE currently offers GameDay support for orchestrating and running multiple Kubernetes experiments across various infrastructures in a coordinated manner. This feature allows teams to simulate real-world scenarios and assess the resilience of applications or microservices across different environments. However, GameDay support for Windows chaos experiments is not yet available. Once implemented, this feature will enable users to conduct comprehensive GameDay exercises involving Windows chaos experiments, providing a more holistic view of system resilience and facilitating targeted improvements.
+HCE currently offers [GameDay](/docs/chaos-engineering/features/gameday/introduction-to-gameday.md) support for orchestrating and running multiple Kubernetes experiments across various infrastructures in a coordinated manner. This feature allows teams to simulate real-world scenarios and assess the resilience of applications or microservices across different environments. However, GameDay support for Windows chaos experiments is not yet available. Once implemented, this feature will enable users to conduct comprehensive GameDay exercises involving Windows chaos experiments, providing a more holistic view of system resilience and facilitating targeted improvements.
 
 ## Inclusion in ChaosGuard policies
 
-ChaosGuard is an HCE feature that enhances the security and control of chaos experiments. It allows you to create policies that define who can execute which experiments, when, and from which Chaos Hub and is based on customized security standards. Currently, ChaosGuard policies don't support Windows chaos experiments. Once implemented, it will provide a more robust and secure framework for managing Windows chaos experiments.
+[ChaosGuard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md) is an HCE feature that enhances the security and control of chaos experiments. It allows you to create policies that define who can execute which experiments, when, and from which Chaos Hub and is based on customized security standards. Currently, ChaosGuard policies don't support Windows chaos experiments. Once implemented, it will provide a more robust and secure framework for managing Windows chaos experiments.
 
 ## Scheduled or Cron experiments
 
 Currently, Windows chaos experiments do not support scheduled or cron-based executions; you can't set experiments to run automatically at specified intervals. Once implemented, this will enable you to automate their chaos experiments, allowing for more consistent and efficient testing of system resilience over time.
-
-## Support for Windows Server 32-bit
-
-The Windows Chaos infrastructure tool is currently compatible only with 64-bit versions of Windows. There are plans to extend support to 32-bit Windows Server editions in upcoming releases.
 
 ## Auto upgrade support
 
