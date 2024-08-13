@@ -86,8 +86,8 @@ Harness console does not support rendering image files.
 #### How can I copy an input set from one pipeline to another if there is no export option available when selecting the input set I want to copy?
 Harness does not support built-in functionality for this use case. However, you can manually copy the content from the Inputset YAML and create a new Inputset YAML in the desired project or pipeline, making sure to update the metadata accordingly.
 
-#### What does this expression do <+secrets.getValue("")> syntax in a pipeline?
-You can retrieve a secret value, such as `GitHub_PAT`, using the `<+secrets.getValue("")>` syntax in a pipeline. If the secret is at the project level, use `<+secrets.getValue("GitHub_PAT")>`. For an organization-level secret, use `<+secrets.getValue("org.GitHub_PAT")>`, and for an account-level secret, use `<+secrets.getValue("account.GitHub_PAT")>`.
+#### What does this expression do ```<+secrets.getValue("")>```syntax in a pipeline?
+You can retrieve a secret value, such as `GitHub_PAT`, using the `<+secrets.getValue("")>` syntax in a pipeline. If the secret is at the project level, use `<+secrets.getValue("GitHub_PAT")>`. For an organization-level secret, use `<+secrets.getValue("org.GitHub_PAT")>`, and for an account-level secret, use `<+secrets.getValue("account.GitHub_PAT")>`
 
 ## Pipeline access control
 
