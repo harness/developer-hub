@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-07-03T10:00
+date: 2024-08-14T10:00
 sidebar_position: 16
 ---
 
@@ -122,6 +122,72 @@ To acquire the necessary `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD`, contact 
 Upon providing your credentials and the release version, the script will proceed to push the Looker image to your private repository.
 
 :::
+
+## August 12, 2024, patch version 0.18.2
+
+This release includes the following Harness module and component versions.
+
+| **Name**                 | **Version**                                                                                     |
+| :----------------------- | :---------------------------------------------------------------------------------------------: |
+| Helm Chart               | [0.18.2](https://github.com/harness/helm-charts/releases/tag/harness-0.18.2)                    |
+| Air Gap Bundle           | [0.18.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.18.2)    |
+| NG Manager               | 1.41.11                                                                                         |
+| Batch Processing         | 1.19.2                                                                                          |
+| CE Nextgen               | 1.20.5                                                                                          |
+| Looker                   | 1.1.0                                                                                           |
+| Gitops                   | 1.11.8                                                                                          |
+| CI Manager               | 1.30.4                                                                                          |
+| NG UI                    | 1.26.17                                                                                         |          
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.18.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.18.2/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Cloud Cost Management
+
+- **AWS SMP Query Fix**: Corrected the definitions for amortized and net amortized queries to ensure accurate reporting for AWS billing data. (CCM-18459)
+
+- **AWS Dashboard Fix**: We've fixed AWS tag and ResourceID dimensions that were not working earlier in the dashboard. Additionally, support for cost categories in AWS CCM explores has been added to provide better visibility and management. (CCM-18542)
+
+#### Continuous Delivery
+
+- For Winrm deployment with Command step and auth type as Kerberos if the environment variables contains characters `\b, \v, \c, \f, &` the script execution was failing as we parse the response of script execution to xml string and above characters are illegal xml characters. The issue is fixed and now and these characters will be escaped. This change is behind the FF `CDS_ESCAPE_ENV_VARS_FOR_WINRM_KERBEROS_NG`. (CDS-97690, ZD-55276,58201,66326)
+
+#### Continuous Integration
+
+- Changed the URL parsing logic for GitLab SSH connections to correctly interpret project IDs starting with a number, preventing capability check failures. (CI-11392, ZD-58162, ZD-64761, ZD-66628)
+
+- Fixed an issue where external endpoints were used for internal service communication, causing token authentication failures and 401 errors. The issue was resolved by ensuring internal communication for the services. (CI-13686)
+
+- Previously, when creating a new project and selecting CI, customers were directed to the "Get Started" page. However, this page encountered a failure related to the `clientSecret` setup for Stripe. To address this issue, we have modified the onboarding flow for SMP. Now, customers will be taken directly to the Overview page instead. (CI-13687)
+
+#### Harness Platform
+
+- We discovered an issue where the User Settings migration process in SMP environments incorrectly identifies values for Account Settings, leading to incorrect data population for existing settings. This issue has been resolved in versions `0.18.2`. If you have upgraded to any of the following versions: `0.18.0`, or `0.18.1`, you will need to run the provided script to correct the data:
+
+  Script: [update-setting-parentUniqueId.sh](https://github.com/harness/helm-charts/blob/main/src/harness/scripts/update-setting-parentUniqueId.sh)
+
+  For assistance, please contact [Harness Support](mailto:support@harness.io). (PL-56034)
+
+### New features and enhancements
+
+#### Continuous Delivery
+
+- Harness GitOps now allow users to create applications using just repository URLs without requiring a pre-defined repository object, similar to Argo CD. This feature enables authentication via repository credentials and will automatically link a repository if a matching entity is later created. It also retains protection against repository deletion if it's in use by any applications. (CDS-98275)
 
 ## August 12, 2024, patch version 0.17.3
 
