@@ -109,7 +109,7 @@ Based on the values in the table above:
 * 1000 macOS build minutes consumes 60000 cloud credits.
 * Using multiple machines that utilize 500 Linux, 4-core build minutes and 1000 macOS build minutes, a total of 61000 cloud credits are consumed.
 
-To learn how to change resource class, please see [Using resource classes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#using-resource-classes)
+To learn how to select a resource class, please see [Using resource classes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#using-resource-classes)
 
 ### Credit allowance by plan tier
 

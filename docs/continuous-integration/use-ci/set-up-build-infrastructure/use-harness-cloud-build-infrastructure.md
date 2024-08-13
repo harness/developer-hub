@@ -153,7 +153,7 @@ You can use the yaml editor to change the cloud machine size, in case you would 
 
 :::info
 
-Currently, specifying machine size is behind a feature flag CI_ENABLE_RESOURCE_CLASSES. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
+Currently, specifying machine size is behind the feature flag CI_ENABLE_RESOURCE_CLASSES. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
 :::
 
 To select a resource class size, please modify the CI stge cloud infrastructure runtime setting accordingly: 
