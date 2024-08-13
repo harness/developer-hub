@@ -302,7 +302,8 @@ I = \int_0^{2\pi} \sin(x)\,dx
 $$
 
 ### Escaping Dollar Signs
-Leveraging `$` as plain text now needs to be escaped. 
+
+Leveraging `$` as plain text now needs to be escaped.
 
 ```
 #Safe
@@ -314,3 +315,41 @@ Leveraging `$` as plain text now needs to be escaped.
 #Not Safe
 ${host}
 ```
+
+## HDH API CALL
+
+### Usuage
+
+```js
+<HarnessApiData
+  query="https://app.harness.io/ng/api/organizations/default"
+  accountIdentifier
+  token
+  fallback="harness fallback"
+  parse="data.status"
+/>
+```
+
+### Result
+
+#### Success
+
+<HarnessApiData  query="https://app.harness.io/ng/api/organizations/default" accountIdentifier token fallback="harness fallback" parse="data.status"/>
+
+
+#### Failure
+
+<HarnessApiData  query="https://app.harness.io/ng/api/organizations/default"  fallback="harness fallback"/>
+
+
+
+### Usuage
+
+```js
+<HarnessApiData query="https://jsonplaceholder.typicode.com/todos/1" 
+fallback="API call fallback" parse="userId"/>
+```
+
+### Result
+
+<HarnessApiData query="https://jsonplaceholder.typicode.com/todos/1" fallback="API call fallback" parse="userId"/>
