@@ -59,6 +59,26 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## August 2024
+
+### Version 24.08.83306 <!--  August 13, 2024 -->
+
+#### Hotfix
+
+- Sensitive secrets were logged in plain text in `delegate.log` due to the use of `secrets.getValue` in environment variables. The logging level for these events has been changed from `error` to `debug` to prevent exposure of secrets. (CI-13785, ZD-68120)
+
+### Version 24.07.83607 <!--  August 13, 2024 -->
+
+#### Hotfix
+
+- Sensitive secrets were logged in plain text in `delegate.log` due to the use of `secrets.getValue` in environment variables. The logging level for these events has been changed from `error` to `debug` to prevent exposure of secrets. (CI-13785, ZD-68120)
+
+### Version 24.07.83406 <!--  August 13, 2024 -->
+
+#### Hotfix
+
+- Sensitive secrets were logged in plain text in `delegate.log` due to the use of `secrets.getValue` in environment variables. The logging level for these events has been changed from `error` to `debug` to prevent exposure of secrets. (CI-13785, ZD-68120)
+
 ## July 2024
 
 ### Version 24.07.83503 <!--  July 17, 2024 -->
