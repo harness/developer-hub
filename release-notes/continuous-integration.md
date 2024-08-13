@@ -21,6 +21,33 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+## August 2024
+
+### Version 1.41
+
+<!-- 2024-08-05 -->
+
+#### New features and enhancements
+
+- Harness Intelligence features optimize your 'Build' stages by reducing execution time through advanced caching caapbilities and Test Intelligence. With this release, we've added stage savings data to stage summary of 'Build' stages where saving is observed, as well as further insight into the optimization on the step level. To learn more, visit [Intelligence Savings Documentation](../docs/continuous-integration/get-started/harness-ci-intelligence#intelligence-savings) (CI-13252)
+
+#### Fixed issues
+
+- Implemented server-side sorting by duration for unit test results in the Tests tab. (CI-13115,11642, ZD-59178)
+
+- Removed the CI onboarding flow for new projects on SMP environments, where users were previously directed to a 'Get Started' page that could fail due to `clientSecret` setup for Stripe. Now, customers will be directed to the Overview page instead. Upcoming releases will include changes to completely remove the Get Started option from the side navigation for SMP customers, ensuring it is no longer visible. (CI-13687)
+
+- Fixed an issue where external endpoints were used for internal communication with logs service, causing token authentication failures and 401 errors. The issue was resolved by ensuring internal communication for the services. (CI-13686)
+
+<!-- The following item will be added back in when the current discussion is resolved. 
+
+- Validated the `CI_PR_MERGE_STRATEGY_BRANCH` flag to enable the **Merge Commit Strategy** for codebase clone, addressing previous issues with the GitHub API. Additionally, a stage variable `PR_MERGE_STRATEGY_BRANCH` has been validated. Both the **Merge Commit** and **Source Branch** strategies now function as expected. (CI-13625, ZD-67476)
+-->
+- Improved error message for anonymous base image connector option in the 'Build and Push' steps. (CI-13562)
+
+- Fixed an issue where pipelines were getting queued when running concurrently. The fix ensures that the flush API log lines are sanitized to be less than 4MB, avoiding grpc `ResourceExhausted` failures. (CI-12879, ZD-64595)
+
+
 ## July 2024
 
 ### Version 1.39
@@ -53,6 +80,8 @@ This feature is behind the feature flag `CI_GIT_CLONE_ENHANCED`.
 
 - Fixed an issue where SSH account-level Git connectors were failing during the connection test and status checks due to using an incorrect port. (CI-13578, ZD-67248,67266)
 
+- Fixed an issue where the **Docker build and push** steps using Docker Layer Caching (DLC) might fail while downloading the cache if the feature flag `CI_DLC_SIGNED_URL` is turned on. (CI-13508, ZD-66950)
+
 ### Version 1.38
 
 <!-- 2024-07-22 -->
@@ -64,8 +93,6 @@ This feature is behind the feature flag `CI_GIT_CLONE_ENHANCED`.
 - Fixed an issue where customers could not change the Build configuration from Runtime Input to an expression when setting up the CI Build stage. This fix allows customers to set an expression for the Build configuration of the CodeBase, enabling uniform build names across multiple child pipelines. Customers can now set the Build Type to a fixed value from Runtime Input and then set the branch/tag/pr as an expression, related to chained pipelines. (CI-13268, ZD-66080)
 
 - Fixed an issue where the plugin image path was incorrect when the registry endpoint had a port configured. This issue occurred because everything after : was being considered as the tag of the image, leading to an invalid Fully Qualified Name (FQN) and causing the Initialize step to fail in the Kubernetes flow. The fix ensures that the FQN is properly considered when the registry endpoint includes a port number. (CI-13455, ZD-66772)
-
-- Fixed an issue where the **Docker build and push** steps using Docker Layer Caching (DLC) might fail while downloading the cache if the feature flag `CI_DLC_SIGNED_URL` is turned on. (CI-13508, ZD-66950)
 
 - Removed OIDC token logging from error messages to prevent potential exposure of sensitive information. (CI-13515)
 
