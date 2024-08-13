@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-08-12T18:19:25
+date: 2024-08-13T18:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,11 +15,20 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: August 12, 2024
+#### Last updated: August 13, 2024
 
 ## August 2024
 
 ### Javascript SDK
+
+#### Version 1.27.0
+
+**Fixed issues**:
+ - Added `maxStreamRetries` config option. (FFM-11788, ZD-66828)
+ - If retries are exhausted, one of these two states would occur:
+    1. If polling is enabled, the SDK would remain in polling mode and no further streaming reconnection attempts would be made. The default polling option, if not supplied, is whatever the `streamingEnabled` value is or,
+    2. If polling is disabled, the SDK would not get any further evaluation updates for the remainder of the SDK client instance's life. The SDK would need re-initialised, e.g the app being restarted, to get new evaluations in this state.
+ - Fixed an edge case where if the stream disconnects and resumes during a request made by the fallback poller (60 seconds later), the fallback poller will not be disabled and will continue polling for the lifetime of the SDK instance. (FFM-11852, ZD-68087)
 
 #### Version 1.26.3
 
