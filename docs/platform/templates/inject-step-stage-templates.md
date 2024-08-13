@@ -4,6 +4,10 @@ description: It allows you to inject step and stage in existing templates wihtho
 sidebar_position: 7
 ---
 
+:::info note
+Currently this feature is behind the feature flag `PIE_FLEXIBLE_TEMPLATES`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+:::
+
 Inject blocks provide a way to customize pipelines without affecting the main template. 
 
 Steps and stages included in the inject block will behave the same as normal steps and stages in the pipeline.
