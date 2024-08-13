@@ -4,10 +4,8 @@ description: Clone a repository into the CI stage's workspace.
 sidebar_position: 10
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 This topic describes how to use the **Git Clone** step included in Harness Continuous Integration (CI) pipelines. The **Git Clone** step clones a repository into the CI stage's workspace. In addition to the pipeline's default [clone codebase](./create-and-configure-a-codebase.md), you can use **Git Clone**, **Run**, and **Plugin** steps to clone additional code repos into the pipeline's workspace.
 
@@ -132,6 +130,10 @@ If this is set to **Merge Commit** (which is the default setting), the pipeline 
 If this is set to **Source Branch**, the pipeline builds the artifact from the latest commit in the pull request branch. This can be faster and less likely to result in build failures; however, it might not include some commits in the target branch.
 
 ![](./static/create-and-configure-a-codebase-05.png)
+
+:::tip
+If you're using the GitHub API, use the stage variable `PR_MERGE_STRATEGY_BRANCH` along with the `CI_PR_MERGE_STRATEGY_BRANCH` flag to enable the **Merge Commit Strategy** for codebase cloning.
+:::
 
 ### Download LFS Files
 
