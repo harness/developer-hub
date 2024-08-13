@@ -163,7 +163,7 @@ if [[ ! -z "${ENABLE_CI_CACHE// }" ]] && [[ "$ENABLE_CI_CACHE" == "true" ]]
 then
     # Start the proxy server
     mkdir -p /tmp/cachebin
-    curl -L -o /tmp/cachebin/harness-cache $HARNESS_CACHE_SERVER_URL
+    curl -L -o /tmp/cachebin/harness-cache https://app.harness.io/storage/harness-download/harness-ti/cache-proxy/OS/ARCH/cache-proxy # Replace **OS/ARCH** in the URL
     chmod +x /tmp/cachebin/harness-cache
     echo "Starting cache proxy with account $HARNESS_ACCOUNT_ID"
     /tmp/cachebin/harness-cache server > /tmp/cachebin/server.log 2>&1 &
