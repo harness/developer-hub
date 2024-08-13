@@ -53,7 +53,7 @@ const sidebars = {
           type: "link",
           label: "Continuous Delivery & GitOps",
           className: "sidebar-cd",
-          href: "/docs/continuous-integration",
+          href: "/docs/continuous-delivery",
           customProps: {
             description:
               "Learn how to make your software releases more efficient and reliable.",
