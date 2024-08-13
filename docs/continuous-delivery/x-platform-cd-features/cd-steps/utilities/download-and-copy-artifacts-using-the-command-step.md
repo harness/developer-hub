@@ -128,6 +128,10 @@ Using the **Download** command type, you can download the deployment artifact on
 
 You can set where you want to download the artifact in **Destination Path**.
 
+:::warning
+Ensure the directory mentioned in the **Destination Path** exists before executing the step to avoid step failure.
+:::
+
 For SSH or WinRM deployments, the path `$HOME/<+service.name>/<+env.name>` is added automatically when you select the execution strategy for the stage.
 
 For example, a destination path for a stage that deploys **todolist.war** using a service named **tutorial-service-ssh2** to an environment named **ssh-tutorial-env** will look like this:
