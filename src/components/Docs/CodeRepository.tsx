@@ -42,7 +42,7 @@ export default function Code() {
             <div className={styles.illustrationContainer}>
               <img
                 className={styles.illustration}
-                src={`${baseUrl}img/Code_Repo_Landing_Page.svg`}
+                src={`${baseUrl}img/Code_Repo_Landing_Page.png`}
               />
             </div>
           </div>
