@@ -24,6 +24,10 @@ Harness Canary and Blue Green strategies only support Kubernetes Deployment work
 
 See [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes).
 
+:::warning
+In Blue Green deployment, only one deployment workload is supported. Having multiple workloads in service manifests will result in deployment failure.
+:::
+
 ## Harness Blue Green deployments
 
 Here's a quick summary of how Harness performs Blue Green deployments.
