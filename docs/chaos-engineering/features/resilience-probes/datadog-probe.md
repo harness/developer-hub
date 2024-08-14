@@ -303,7 +303,7 @@ Listed below is the Datadog Probe schema with common properties shared across al
    <td>Flags to hold the stop or continue the experiment on probe failure </td>
    <td>Optional</td>
    <td>N/A <code>type: boolean</code></td>
-   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails</td>
+   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails. When the experiment is stopped and the probe fails, the experiment along with the associated faults are aborted. This is applicable only for chaos experiments that use a Kubernetes infrastructure (dedicated infrastructure or Harness Delegate). </td>
   </tr>
 </table>
 
