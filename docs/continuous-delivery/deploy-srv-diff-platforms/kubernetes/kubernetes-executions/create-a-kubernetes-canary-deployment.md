@@ -28,6 +28,10 @@ The [Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/
 
 In Harness, a workload is a Deployment, StatefulSet, or DaemonSet object deployed and managed to steady state.
 
+:::warning
+In Canary deployment, only one deployment workload is supported. Having multiple workloads in service manifests will result in deployment failure.
+:::
+
 ## Multiple managed workloads
 
 With the Rolling Deployment step, you can deploy multiple managed workloads.
