@@ -19,6 +19,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## August 2024
 
+### Node.js SDK
+
+#### Version 1.8.3
+
+**Fixed issues**:
+ - Patched Axios CVE: `CVE-2024-39338`. (FFM-11888)
+
 ### Javascript SDK
 
 #### Version 1.27.0
