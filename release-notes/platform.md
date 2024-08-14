@@ -79,6 +79,18 @@ The following deprecated API endpoints are longer supported:
 
 ## August 2024
 
+### Version 1.52.x<!-- August 19, 2024 -->
+
+#### New features and enhancements
+
+- The BouncyCastle library has been upgraded from version `1.76` to `1.78` to address several medium-severity CVEs (CVE-2024-29857, CVE-2024-30171, CVE-2024-30172) and enhance overall system security. (PL-51346)
+
+#### Fixed issues
+
+- The `displayname` attribute from SAML assertions is now honored for new JIT-provisioned users logging in via SAML. This ensures that usernames are correctly updated to reflect the displayname attribute, addressing inconsistencies in user names. (PL-55616)
+
+- The delegate initialization process has been moved from a background thread to the start of application. This change addresses issues with health check failures during startup by ensuring that delegate registration, websocket establishment, and heartbeat scheduling are completed before health checks are performed. This item requires Harness Delegate version 24.08.83700. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55905, ZD-67667)
+
 ### Version 1.51.x<!-- August 9, 2024 -->
 
 #### New features and enhancements
