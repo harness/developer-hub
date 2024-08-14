@@ -284,7 +284,8 @@ Now when we will run the pipeline the execution will look like:-
 If you will check the compiled YAML it will show the steps input as empty and thus will not fail the pipeline as well with a null error. 
 
 :::info note
-Inject block can not be output of any step. it has to be provided 
+1. Inject block can not be output of any step, it has to be provided.
+2. Nested inject blocks are not allowed.
 :::
 
 ## Expressions
