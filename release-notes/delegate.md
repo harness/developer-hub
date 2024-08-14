@@ -61,6 +61,10 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## August 2024
 
+### Version 24.07.83608 <!--  August 14, 2024 -->
+
+- Separated the LDAP settings between CG and NG. With this feature, the CG LDAP upgrade to NG LDAP, and CG and NG LDAP settings now operate independently. This feature is behind the feature flag `PL_ENABLE_NG_LDAP_SETTINGS`. To enable this feature, please contact [Harness Support](mailto:support@harness.io). (PL-56167)
+
 ### Version 24.08.83306 <!--  August 13, 2024 -->
 
 #### Hotfix
