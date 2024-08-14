@@ -293,29 +293,6 @@ If we intend to utilize expressions for the properties within the inject, it wil
 
 Example: `<+execution.steps.inject1.steps.ShellScript_1.description>`
 
-
-## What's Supported 
-
-1. **Retry Failed Pipeline**
-
-Retry from an injected stage will be supported. So basically when 2 or more stages are injected in the Pipeline-template by the inject block. And the 2nd stage(or any later) of the inject block has failed then we will allow to retry the failed execution from the 2nd stage or 1st stage of inject.
-
-Let say We have a pipeline template with stages `stage_1`, `inject_1`(inject wrapper) and `stage_2`. And while referencing the template in pipeline, 2 stages `injected_stage_1` and `injected_stage_2` are injected in the template. So when the execution fails at stage `injected_stage_2`(or stage_2)  then users will have an option to retry the failed execution from `injected_stage_2` or `injected_stage_1`.
-
-2. Selective stage execution
-
-Users can select any individual stage of the inject wrapper to execute in the selective stage execution. 
-
-Example: We have a pipeline-template with stages `stage_1`, `inject_1` and `stage_2`. And 2 more stages `injected_stage_1` and `injected_stage_2` have been injected in the template while referencing the template in the pipeline. So users will have an option to select any of the `injected_stage_1` or `injected_stage_2`(or both) for selective stage execution.
-
-3. Rerun Single Stage 
-
-Rerun of any of the injected stages during the rerun is allowed.
-
-4. OPA Policy
-
-OPA Policy is supported for Inject steps and stages.
-
 ## RBAC required 
 
 * Users must possess the **Template Create/Edit** Permission in order to insert an inject block into the template at any desired location.
