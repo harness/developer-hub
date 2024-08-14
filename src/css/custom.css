@@ -1213,6 +1213,17 @@ figure p {
   background-repeat: no-repeat;
 }
 
+.sidebar-all_docs > div > a::before,.sidebar-all_docs> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/All_Docs_Logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 
 /*******************sidebar logo css end*******************/
 
