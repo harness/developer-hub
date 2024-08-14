@@ -1152,6 +1152,66 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.sidebar-harness-firstGen > div > a::before,.sidebar-harness-firstGen> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/Harness_FirstGen_Logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-troubleshooting > div > a::before,.sidebar-troubleshooting> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/Troubleshooting_Logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-API_Reference > div > a::before,.sidebar-API_Reference> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/API_Reference_Logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-Release_Notes > div > a::before,.sidebar-Release_Notes> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/Release_Notes_Logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-Cloud_Operations > div > a::before,.sidebar-Cloud_Operations> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/Cloud_Operations_Logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-faqs > div > a::before,.sidebar-faqs> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/faqs_Logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
 
 /*******************sidebar logo css end*******************/
