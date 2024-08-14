@@ -186,6 +186,7 @@ const sidebars = {
         {
           type: "category",
           label: "Harness FirstGen",
+          className:"sidebar-harness-firstGen",
           link: {
             type: "generated-index",
             slug: "/first-gen",
@@ -208,6 +209,7 @@ const sidebars = {
             type: "generated-index",
             slug: "/faqs",
           },
+          className:"sidebar-faqs",
           customProps: {
             description: "Find answers to frequently asked questions.",
           },
@@ -226,6 +228,7 @@ const sidebars = {
             type: "generated-index",
             slug: "/troubleshooting",
           },
+          className:"sidebar-troubleshooting",
           customProps: {
             description:
               "Find details about common error messages, what causes them, and solutions.",
@@ -245,6 +248,7 @@ const sidebars = {
             type: "generated-index",
             slug: "/harness-cloud-operations",
           },
+          className:"sidebar-Cloud_Operations",
           customProps: {
             description: "Information on how the Harness SaaS is managed.",
           },
@@ -261,6 +265,7 @@ const sidebars = {
           type: "link",
           label: "Release Notes",
           href: "/release-notes",
+          className:"sidebar-Release_Notes",
           customProps: {
             description: "Learn about recent changes to Harness products.",
           },
@@ -270,6 +275,7 @@ const sidebars = {
           type: "link",
           label: "API Reference",
           href: "https://apidocs.harness.io/",
+          className:"sidebar-API_Reference",
           customProps: {
             description: "Harness API Docs.",
           },
