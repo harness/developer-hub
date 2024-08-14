@@ -260,7 +260,7 @@ Refer to following doc for more details on new [repo listing](/docs/platform/git
 
 - Improved the error message that gets displayed when an incompatible Docker version causes the pipeline to fail. (CI-12612, ZD-63466)
 
-- Implemented a fix to ensure that all account-level secret references use the correct format (<+secrets.getValue("account.MY_SECRET_ID")>) in all build infrastructures. With this fix, pipelines will fail if account-level secrets are not referenced correctly. (CI-12595, ZD-63260)
+- Implemented a fix to ensure that all account-level secret references use the correct format `(<+secrets.getValue("account.MY_SECRET_ID")>)` in all build infrastructures. With this fix, pipelines will fail if account-level secrets are not referenced correctly. (CI-12595, ZD-63260)
 
 - Fixed an issue where the Docker LABEL set in a Build and Push step does not override the LABEL configured in the Dockerfile. With this fix, you can now use buildx rather than kaniko to build your container images. You must run buildx on k8s with Privileged mode enabled. This fix is behind the feature flag CI_USE_BUILDX_ON_K8. Contact Harness Support to enable this fix. (CI-12548, ZD-63222)
 
