@@ -152,7 +152,7 @@ HARNESS_CACHE_SERVER_URL=
 HARNESS_CACHE_SERVER_API_TOKEN=
 ```
 
-Use **https://app.harness.io/gateway/cache-service** for `HARNESS_CACHE_SERVER_URL` for prod1 or prod2 clusters.
+Use `https://app.harness.io/gateway/cache-service` for `HARNESS_CACHE_SERVER_URL` for prod1 or prod2 clusters.
 
 For `HARNESS_CACHE_SERVER_API_TOKEN`, create a Harness [Personal Access Token or Service Account Token](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys) with `core_account_edit` permission.
 
