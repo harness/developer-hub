@@ -1,13 +1,13 @@
 {
   "position": 7,
-  "label": "Using Harness CE",
+  "label": "Use Harness CE",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Using Harness CE"
+      "title":"Use Harness CE"
    },
   "customProps": {
-    "description": "Using Harness CE"
+    "description": "Use Harness CE"
   }
 }
