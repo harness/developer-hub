@@ -5,9 +5,10 @@
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Using Harness CE"
+      "title":"Chaos Experiments",
+      "description": "This sections describes how you can use chaos experiments, that is, create, execute, analyze, schedule, edit, export, halt, delete, and get alerts."
    },
   "customProps": {
-    "description": "Using Harness CE"
+    "description": "Chaos Experiments"
   }
 }

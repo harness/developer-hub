@@ -5,7 +5,8 @@
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"How to use Chaos Hubs"
+      "title":"How to use Chaos Hubs",
+      "description": "This section describes how you can connect to a ChaosHub and how you can manage your ChaosHub. Connecting to a ChaosHub discusses the prerequisites and steps to add a custom hub. Managing a ChaosHub discusses how you can add experiments to a ChaosHub, Sync Harness with a ChaosHub Git repository, and launch an experiment from a ChaosHub."
    },
   "customProps": {
     "description": "How to use Chaos Hubs"
