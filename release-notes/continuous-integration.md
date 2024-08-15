@@ -27,11 +27,11 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 <!-- 2024-08-12 -->
 
-#### Early Access feature
-
-#### New features and enhancements
-
 #### Fixed issues
+
+- The Intelligence Baseline popup was re-running the pipeline, even when the close button was clicked on. Fixed so that the close button dismissed properly as expected. (CI-13779, ZD-68120)
+
+- In certain circumstances, when a delegate fails to spin up, the log event could contain secrets in plain text. In order to not reveal the secrets, we are changing log type from error to debug. (CI-13785)
 
 ### Version 1.41
 
