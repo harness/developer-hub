@@ -9,4 +9,3 @@ description: Using Target Paths with Artifactory.
 # Using Target Paths with Artifactory
 
 Welcome to the Harness Database DevOps (DB DevOps) onboarding guide. This topic introduces you to the powerful capabilities of DB DevOps using Harness and guides you through key functionalities that streamline and secure your database management tasks.
-
