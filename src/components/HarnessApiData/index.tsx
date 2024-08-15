@@ -8,6 +8,7 @@ interface IHarnessApiData {
   token?: boolean;
   fallback: string;
   parse?: string;
+  listPosition?: number;
 }
 const HarnessApiData: React.FC<IHarnessApiData> = ({
   query,
@@ -15,6 +16,7 @@ const HarnessApiData: React.FC<IHarnessApiData> = ({
   accountIdentifier,
   token,
   parse,
+  listPosition = -1,
 }) => {
   return (
     <BrowserOnly fallback={<div>Loading...</div>}>
@@ -25,7 +27,7 @@ const HarnessApiData: React.FC<IHarnessApiData> = ({
           async function FetchData() {
             try {
               const response = await fetch(
-                "https://developer.harness.io/api/api_proxy",
+                "http://localhost:8888/api/api_proxy",
                 {
                   method: "POST",
                   body: JSON.stringify({
@@ -49,9 +51,17 @@ const HarnessApiData: React.FC<IHarnessApiData> = ({
               }
               const data = await response.json();
 
-              const parsedData = parse
-                ? parse.split(".").reduce((o, i) => o?.[i], data)
-                : data;
+              // Handle arrays and get specific item based on listPosition
+              let parsedData = data;
+              if (Array.isArray(parsedData)) {
+                if (listPosition === -1) {
+                  parsedData = parsedData[parsedData.length - 1]; // Last item
+                } else if (listPosition < parsedData.length) {
+                  parsedData = parsedData[listPosition];
+                } else {
+                  parsedData = fallback; // If listPosition is out of bounds
+                }
+              }
 
               setResponse(parsedData);
             } catch (error) {

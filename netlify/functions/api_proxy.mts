@@ -5,35 +5,35 @@ interface Body {
   token?: string;
 }
 export default async (req: Request, context: Context) => {
-  // context.cookies.set({
-  //   name: "account_id",
-  //   value: "JPCeP2ujSwqNcwD7WhYeBw",
-  //   domain: "localhost",
-  //   path: "/",
-  //   httpOnly: false,
-  //   secure: true,
-  //   sameSite: "None",
-  // });
-  // context.cookies.set({
-  //   name: "x_chatbot_key",
-  //   value:
-  //     "pat.JPCeP2ujSwqNcwD7WhYeBw.66ba01a6b989754944fb09f7.UROYQRP2piNQHih715kr",
-  //   domain: "localhost",
-  //   path: "/",
-  //   httpOnly: false,
-  //   secure: true,
-  //   sameSite: "None",
-  // });
-  // context.cookies.set({
-  //   name: "name",
-  //   value:
-  //     "pat.JPCeP2ujSwqNcwD7WhYeBw.66b967fa86fdf44551cc81a5.IIHqfwjU27pnOTULIOKV",
-  //   domain: "localhost",
-  //   path: "/",
-  //   httpOnly: false,
-  //   secure: true,
-  //   sameSite: "None",
-  // });
+  context.cookies.set({
+    name: "account_id",
+    value: "l7HREAyVTnyfUsfUtPZUow",
+    domain: "localhost",
+    path: "/",
+    httpOnly: false,
+    secure: true,
+    sameSite: "None",
+  });
+  context.cookies.set({
+    name: "x_chatbot_key",
+    value:
+      "pat.l7HREAyVTnyfUsfUtPZUow.6643481aa563dd1210288381.fdCC2C9M6ECix6YpWPYM",
+    domain: "localhost",
+    path: "/",
+    httpOnly: false,
+    secure: true,
+    sameSite: "None",
+  });
+  context.cookies.set({
+    name: "name",
+    value:
+      "Richard-Black",
+    domain: "localhost",
+    path: "/",
+    httpOnly: false,
+    secure: true,
+    sameSite: "None",
+  });
   // if (req.method === "OPTIONS") {
   //   return new Response("ok", {
   //     status: 200,

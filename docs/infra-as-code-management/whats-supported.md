@@ -5,6 +5,8 @@ sidebar_label: What's supported
 sidebar_position: 1
 ---
 
+import { LatestTerraformVersion, LatestOpenTofuVersion } from './components/versionData';
+
 This page describes supported platforms and technologies for Harness IaCM specifically.
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](https://developer.harness.io/docs/platform/platform-whats-supported/).
@@ -32,7 +34,7 @@ Harness IaCM supports the following source providers for seamless code managemen
 Git options include `Latest from Branch` (specifying a branch) and `Git Tag` fetch types. Users can set a configuration file path, such as a terraform (.tf) file.
 
 ## Supported IaC Frameworks
-Harness IaCM currently supports integration with **Terraform** and **OpenTofu** frameworks.
+Harness IaCM currently supports integration with **Terraform** (up to v<LatestTerraformVersion/>) and **OpenTofu** (up to v<LatestOpenTofuVersion/>) frameworks.
 
 ## IaCM Feature Flags
 Some Harness IaCM features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience.
