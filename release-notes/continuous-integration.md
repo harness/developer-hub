@@ -23,6 +23,16 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## August 2024
 
+### Version 1.42
+
+<!-- 2024-08-12 -->
+
+#### Early Access feature
+
+#### New features and enhancements
+
+#### Fixed issues
+
 ### Version 1.41
 
 <!-- 2024-08-05 -->
