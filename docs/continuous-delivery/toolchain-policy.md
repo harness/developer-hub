@@ -54,7 +54,7 @@ As of Date: 08.16.2024
 
 #### What exactly does it mean to ‘support’ a Kubernetes version?
 
-- Ensure that we do not introduce changes that will break compatibility with that new stable version. For example, using a v1.30 feature that will not work in v1.16.
+- Ensure that we do not introduce changes that will break compatibility with that new stable version. For example, we will not introduce a change that utilizes a v1.30 feature if it breaks compatibility with v1.28. However, when v1.31 releases, we will no longer be able to guarantee that new changes are compatible with v1.28
 - If a customer is running an unsupported Kubernetes version and encounters a problem that is related to an incompatibility, they are required to upgrade their cluster.  We will not issue a patch to support their older unsupported Kubernetes version.
 
 ### Integration FAQs
