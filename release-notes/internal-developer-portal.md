@@ -25,7 +25,19 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 #### New features and enhancements
 
-- All
+- You can now see an out of the box [**Adoption Dashboard**](/docs/internal-developer-portal/get-started/how-to-track-adoption) under the platform Dashboards showing a quick insight into the adoption of IDP across different areas. Executive Buyers can now subscribe to this and get a weekly/monthly report.
+- New plugins added to the marketplace
+  - [Harness Chaos Engineering](/docs/internal-developer-portal/plugins/available-plugins/harness-chaos)
+  - [Synk](https://github.com/snyk-tech-services/backstage-plugin-snyk/blob/main/README.md)
+  - [New Relic](https://github.com/backstage/community-plugins/blob/main/workspaces/newrelic/plugins/newrelic-dashboard/README.md)
+- IDP Pipeline steps now support Harness Code as a git provider. [IDP-3232]
+- Secrets stored in customer's infrastructure now also supports GitHub and Google OAuth configurations. [IDP-3364]
+- [Harness Projects and Orgs Picker](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions/) in Workflows now shows up to a maximum of 750 items in the list. Previously the limit was set to 500. [IDP-3331]
+- You can now use periods `.` in the `tags` field of Catalog entities. [IDP-3330]
+
+#### Bug fixes
+
+- Issue with enabling OpsGenie plugin has now been resolved. Please see the [new configuration](/docs/internal-developer-portal/plugins/available-plugins/opsgenie/) of the plugin if you are still facing the issue. [IDP-3334]
 
 ## July 2024
 
