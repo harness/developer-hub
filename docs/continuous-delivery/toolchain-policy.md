@@ -61,7 +61,7 @@ As of Date: 08.16.2024
 
 ##### Does Harness use SDKs for the Cloud Vendors? 
 
-- Yes, the sdks we use are the aws sdk, google-cloud sdk, and azure sdk for our deployment swimlanes
+- Yes, we use the AWS SDK, Google Cloud SDK, and Azure SDK for our deployment swimlanes.
 
 
 ## Benefits of Routine Updates
