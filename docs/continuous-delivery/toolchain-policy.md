@@ -40,7 +40,7 @@ Below is a table that shows the current state of our integrations, demonstrating
 
 As of Date: 08.16.2024
 
-- Harness will officially support will support 2 previous versions from the least stable release.
+- Harness will officially support 2 previous versions from the least stable release.
 - This means we will support `1.30`, `1.29`, `1.28` in line with the cloud vendors
 - We will do quarterly maintenance on the Kubernetes and Helm integrations as provide updates more frequently as they change the most often.
 
