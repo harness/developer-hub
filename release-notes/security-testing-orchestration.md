@@ -22,6 +22,19 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## August 2024
+
+### Version 1.104.3
+
+<!-- 2024-08-05 -->
+
+#### New features and enhancements
+
+- The [Veracode scan step](/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference) in STO now ignores issues mitigated on the Veracode side, so the scan results exclude any mitigated issues.
+- The STO dashboard now includes a new graph to view the **Top 5 Vulnerable Targets**, showing code repositories, artifacts, instances, and configurations across the account.
+- You can now override the security testing scanner image at the step level. Learn more about [configuring your pipeline to use images from your registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry#configure-your-pipeline-to-use-images-from-your-registry).
+
+
 ## July 2024
 
 ### Version 1.104.3
@@ -39,15 +52,15 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 #### New features and enhancements
 - In the [Checkmarx step](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) under the **Scan Tool**, the fields **Team Name** and **Project Name** are now mandatory for step configuration. Previously, these fields were optional. (STO-7681)
-- We now track the number of occurrences for a given issue/scan combination independently of the associated occurrence IDs. Newly created issues will only store up to 1,000 occurrences, with the total number of occurrences being stored separately. Occurrences are stored based on severity, with higher-severity issues given priority. (STO-5979)
+- We now track the number of occurrences for a given issue/scan combination independently of the associated occurrence IDs. Newly created issues will only store up to 1,000 occurrences, with the total number of occurrences being stored separately. Occurrences are stored based on severity, with higher-severity occurrences given priority. (STO-5979)
 
-  These following endpoints now include `numOccurrences` at the issue level, showing the total number of occurrences for the issue/scan:
+  These following endpoints now include `numOccurrences` at the issue level, showing the total number of occurrences for the issues:
     - `GET api/v2/issues/{issueId}`
     - `GET api/v2/scans/{scanId}/issue/{issueId}`
     - `GET api/v2/scans/{scanId}/issues`
 
-  Also, the following endpoints now accept an optional payload parameter `numOccurrences`, representing the total number of occurrences associated with the issue/scan:
-    - `POST api/v2/issues/{issueId}`
+  Also, the following endpoints now accept an optional payload parameter `numOccurrences`, representing the total number of occurrences associated with the issue:
+    - `POST api/v2/issues`
     - `PUT api/v2/issues/{issueId}`
 
 ### Version 1.102.2

@@ -2,7 +2,7 @@
    "label":"Continuous Error Tracking",
    "collapsible":"true",
    "collapsed":"true",
-   "className":"red",
+   "className":"default",
    "link":{
       "type":"generated-index",
       "title":"Continuous Error Tracking"

@@ -9,9 +9,9 @@ import React, { type ReactNode } from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import {
-  findFirstSidebarItemLink,
   useDocById,
-} from "@docusaurus/theme-common/internal";
+  findFirstSidebarItemLink,
+} from '@docusaurus/plugin-content-docs/client';
 import isInternalUrl from "@docusaurus/isInternalUrl";
 import { translate } from "@docusaurus/Translate";
 import type { Props } from "@theme/DocCard";
@@ -24,15 +24,24 @@ import type {
 
 function CardContainer({
   href,
+  title,
   children,
 }: {
+  title: string;
   href: string;
   children: ReactNode;
 }): JSX.Element {
+  const cardTitleClass = title
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]/g, "")
+    .toLowerCase();
+
+  
+
   return (
     <Link
       href={href}
-      className={clsx("card padding--lg", styles.cardContainer)}
+      className={clsx("card padding--lg", styles.cardContainer, cardTitleClass)}
     >
       {children}
     </Link>
@@ -51,7 +60,7 @@ function CardLayout({
   description?: string;
 }): JSX.Element {
   return (
-    <CardContainer href={href}>
+    <CardContainer href={href} title={title}>
       <h2 className={clsx("text--truncate", styles.cardTitle)} title={title}>
         {icon} {title}
       </h2>

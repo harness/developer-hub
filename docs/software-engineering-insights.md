@@ -7,8 +7,10 @@ title: Software Engineering Insights
 
 <!-- # Software Engineering Insights -->
 
-<!-- Custom component -->
-
 import SoftwareEngineeringInsights from '@site/src/components/Docs/SoftwareEngineeringInsights';
+import Telemetry from '@site/src/components/Telemetry';
+import { SEIActions } from '@site/src/components/Telemetry/TememetryConstants';
+
+<Telemetry event={SEIActions.SEIPageView} page="SoftwareEngineeringInsights" />
 
 <SoftwareEngineeringInsights />

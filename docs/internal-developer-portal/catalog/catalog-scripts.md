@@ -2,7 +2,7 @@
 title: Service Onboarding using Scripts on Catalog
 description: Detailed documentation of the Service Onboarding Scripts 
 sidebar_label: Service Onboarding Scripts
-sidebar_position: 180
+sidebar_position: 10
 ---
 
 ## Scripts to create new services, register new services 
@@ -10,12 +10,19 @@ sidebar_position: 180
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<Tabs queryString="GitHub">
+<Tabs queryString="Catalog-Scripts">
 <TabItem value="github" label="GitHub">
 
 - The GitHub Catalog Discovery plugin registers one location per repository. This might not be a good idea when there are many (3000+ in this case) as any error in fetching one `catalog-yaml` would mark the whole location as failed and create trouble with the entity sync.
 
 - To solve this we would recommend you to use the following scripts which would register separate locations for all the matching catalog-info.yaml files and hence would be synchronised separately.
+
+### Pre-Requisites to Use the Script
+
+- Harness API Key - [Docs](https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token)
+- GitHub Token - [Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+- A Repository to store all the IDP Config YAMLs
+- [Python 3](https://www.python.org/downloads/) installed on your machine where you're trying to execute the code along with [requests](https://pypi.org/project/requests/) library. 
 
 ### Download the Script
 
@@ -24,7 +31,7 @@ import TabItem from '@theme/TabItem';
 - Command to Download the Script
 
 ```sh
-curl -o idp-catalog-wizard-github.py https://raw.githubusercontent.com/harness-community/idp-samples/main/catalog-scripts/idp-catalog-wizard-github.py
+curl -o idp-catalog-wizard-github.py https://github.com/harness-community/idp-samples/main/catalog-scripts/idp-catalog-wizard-github.py
 ```
 
 ```sh
@@ -42,10 +49,12 @@ python3 idp-catalog-wizard-github.py [OPTIONS]
 ```sh
 python3 idp-catalog-wizard-github.py --register-yamls --org org_name --x_api_key your_x_api_key --account your_account
 
---org ORG_NAME: Github Org name
---x_api_key X_API_KEY: Refer https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token to generate one
---account ACCOUNT_NAME: This is your harrness-account id. Ex - https://app.harness.io/ng/account/{Your account}/module/idp/overview
 ```
+
+- `org` : Github Org name
+- `x_api_key`: Refer https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token to generate one
+- -`account` : This is your Harness Account ID. You can get it from the URL e.g. - `https://app.harness.io/ng/account/{Your account ID}/module/idp/overview`
+
 
 #### Perform all actions: create YAML files, push changes, and register YAML files (all given args in command below are required)
 
@@ -87,6 +96,14 @@ repo
 
 - To solve this we would recommend you to use the following scripts which would register separate locations for all the matching `catalog-info.yaml` files and hence would be synchronised separately.
 
+
+### Pre-Requisites to Use the Script
+
+- Harness API Key - [Docs](https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token)
+- Bitbucket App Password - [Docs](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/)
+- A Repository to store all the IDP Config YAMLs
+- [Python 3](https://www.python.org/downloads/) installed on your machine where you're trying to execute the code along with [requests](https://pypi.org/project/requests/) library. 
+
 ### Download the Script
 
 - A pregenerated/created repo (let's call it chosen_repo) is to be cloned. After opening it on your code editor and from chosen_repo, below commands can be run to first download and then generate and register `catalog-info.yaml` files of all the repos in your org. The `catalog-info.yaml` files will be in - `chosen_repo/services/{repos}/catalog-info.yaml` where repos will be all the repo in your org.
@@ -94,7 +111,7 @@ repo
 - Command to Download the Script
 
 ```sh
-curl -o idp-catalog-wizard-bitbucket.py https://raw.githubusercontent.com/harness-community/idp-samples/main/catalog-scripts/idp-catalog-wizard-bitbucket.py
+curl -o idp-catalog-wizard-bitbucket.py https://github.com/harness-community/idp-samples/main/catalog-scripts/idp-catalog-wizard-bitbucket.py
 ```
 
 ```sh
@@ -113,13 +130,22 @@ python3 idp-catalog-wizard-bitbucket.py [OPTIONS]
 
 **Create YAML files for repositories in the organization "example-org" with the provided token (all given args in command below are required)**
 
+:::info
+
+Bitbucket `username` isn't same as your email address, rather follow this [docs](https://community.atlassian.com/t5/Bitbucket-questions/HOW-TO-FIND-MY-BIT-BUCKET-USERNAME/qaq-p/1081960), to find your username. 
+
+:::
+
 ```sh
 python3 idp-catalog-wizard-bitbucket.py --create-yamls --workspace example_workspace --username bitbucket_username --password bitbucket --project_key bitbucket_project_key
---workspace WORKSPACE NAME: Bitbucket workspace name
---username APP_PASSWORD: Bitbucket app password
---project_key PROJECT_KEY: (OPTIONAL) Bitbucket project key
---repo-pattern REPO_PATTERN: (OPTIONAL) Your repo pattern
 ```
+
+- `workspace`: Bitbucket workspace name
+- `username` : [Bitbucket Username](https://community.atlassian.com/t5/Bitbucket-questions/HOW-TO-FIND-MY-BIT-BUCKET-USERNAME/qaq-p/1081960)
+- `password` : [Bitbucket app password](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/)
+- `project_key` : (OPTIONAL) Bitbucket project key
+- `repo-pattern` : (OPTIONAL) Your repo pattern 
+
 
 ### [Registered Locations](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/idp-catalog-wizard-bitbucket-monorepo.py) - For Monorepos
 
@@ -129,11 +155,12 @@ python3 idp-catalog-wizard-bitbucket.py --create-yamls --workspace example_works
 
 ```sh
 python3 idp-catalog-wizard-bitbucket.py --register-yamls --workspace bitbucket_workspace --x_api_key your_x_api_key --account harness_account
-
---workspace WORKSPACE NAME: Bitbucket workspace name
---x_api_key X_API_KEY: Refer https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token to generate one
---account ACCOUNT_NAME: This is your harrness-account id. Ex - https://app.harness.io/ng/account/{Your account}/module/idp/overview
 ```
+
+- `workspace` : Bitbucket workspace name 
+- `x_api_key` : Refer [docs](https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token ) to generate one. 
+- `account` : This is your Harness Account ID. You can get it from the URL e.g. - `https://app.harness.io/ng/account/{Your account ID}/module/idp/overview`
+
 
 #### Perform all actions: create YAML files, push changes, and register YAML files (all given args in command below are required)
 

@@ -2,7 +2,7 @@
    "label":"Harness subscriptions and licenses",
    "collapsible":"true",
    "collapsed":"true",
-   "className":"red",
+   "className":"default",
    "link":{
       "type":"generated-index",
       "title":"Harness subscriptions and licenses"

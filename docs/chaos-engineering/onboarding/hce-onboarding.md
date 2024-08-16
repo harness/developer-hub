@@ -9,12 +9,8 @@ This topic describes the typical steps to execute a chaos experiment, and delves
 ## Before you begin
 
 * [What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
-* [Dedicated Harness infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/harness-infra.md)
+* [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/)
 * [Key concepts](/docs/chaos-engineering/architecture-and-security/architecture/components)
-
-:::tip
-Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
-:::
 
 ## Automated and guided onboarding
 

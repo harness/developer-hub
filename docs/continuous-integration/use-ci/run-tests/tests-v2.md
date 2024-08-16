@@ -16,6 +16,11 @@ Currently, the Test step is behind the feature flag `CIE_ENABLE_RUNTEST_V2`. If 
 
 :::
 
+:::info
+
+To use TI for Python, your codebase must be Python 3.
+
+:::
 
 
 <!-- Doesn't include C#, Kotlin, or Scala yet. -->

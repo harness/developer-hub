@@ -15,3 +15,8 @@ export enum AidaClient {
   CODE_SEMANTIC_SEARCH = "CODE_SEMANTIC_SEARCH",
   CODE_PR_SUMMARY = "CODE_PR_SUMMARY",
 }
+
+export enum SEIActions {
+  SEIPageView = "SEI Page View",
+  SEIReleaseNotes = "SEI Release Notes",
+}

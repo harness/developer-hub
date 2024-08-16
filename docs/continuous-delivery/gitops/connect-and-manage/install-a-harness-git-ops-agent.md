@@ -281,6 +281,17 @@ For steps on setting up the mapping and import, go to [Map existing Argo project
 
 The Harness GitOps Agent can work on environments where traffic is routed through a proxy. 
 
+To do so, add your proxy settings to your GitOps agent when creating your agent.
+
+1. Expand the **Advanced** dropdown menu in the **Overview** page. 
+2. Find the **Proxy Settings** as seen below and fill in the relevant fields for your proxy.
+
+![](./static/add-a-proxy.png)
+
+<details>
+<summary>
+Manually configure proxy support (DEPRECATED)
+</summary>
 To enable proxy support for the Harness GitOps Agent in environments where traffic is routed through a proxy, configuration is required for two key components: the `agent itself and the argocd-repo-server. Follow these steps to set up proxy support for both components.
 
 1. **Agent:** Add a property/config `HTTPS_PROXY`, and add proxy details, such as URL, port, and auth details as its value in the ConfigMap `gitops-agent`. For example, `HTTPS_PROXY: "http://squid.proxy-test:3128"`.
@@ -342,7 +353,7 @@ spec:
 
    .. rest of agent YAML ...
 ```
-  
+
 ### Proxy setup for testing
 
 Use the following YAML example to install proxy in any other environment.
@@ -421,7 +432,8 @@ spec:
     app.kubernetes.io/name: squid
 ---
 ```
-   
+
+</details>
 
 ## GitOps Agent FAQs
 

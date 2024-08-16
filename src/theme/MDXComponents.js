@@ -8,6 +8,7 @@ import Accordion from "@site/src/components/ChaosEngineering/Accordion";
 import DocsButton from "../components/DocsButton";
 import DocsTag from "../components/DocsTag";
 import Telemetry from "../components/Telemetry";
+import HarnessApiData from "../components/HarnessApiData";
 
 export default {
   // Re-use the default mapping
@@ -21,4 +22,5 @@ export default {
   DocsButton: DocsButton,
   DocsTag: DocsTag,
   Telemetry: Telemetry,
+  HarnessApiData: HarnessApiData,
 };

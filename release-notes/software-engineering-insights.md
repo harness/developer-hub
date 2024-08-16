@@ -22,6 +22,32 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 :::
 
+## August 2024
+
+### Version 202407.2.2
+
+<!-- August 09, 2024 -->
+
+#### Hotfixes
+
+* Added support for configuring the **Bitbucket Cloud** integration using multiple usernames and passwords. (SEI-7491)
+
+* Resolved the issue where PR links in the drilldown view for SCM reports were redirecting incorrectly. (SEI-7804)
+
+* You can now use the **Configuration Item** field from **ServiceNow** as a filter across the application. (SEI-782
+
+### Version 202407.2.1
+
+<!-- August 09, 2024 -->
+
+#### Hotfixes
+
+* Added support for using both the Contains filter and the Exclude toggle option together in Sprint reports. (SEI-6349)
+
+* Resolved the issue where the quick link was broken for **Azure Board** tickets in the drill down. (SEI-7490)
+
+* Fixed the bug that caused the sorting functionality in the drill-down view to not work properly for the **Lead Time** column. (SEI-7490)
+
 ## July 2024
 
 ### Version 202407.2

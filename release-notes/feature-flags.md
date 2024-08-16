@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-07-22T18:19:25
+date: 2024-08-14T18:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,44 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: July 26, 2024
+#### Last updated: August 14, 2024
+
+## August 2024
+
+### Node.js SDK
+
+#### Version 1.8.3
+
+**Fixed issues**:
+ - Patched Axios CVE: `CVE-2024-39338`. (FFM-11888)
+
+### Relay Proxy
+
+#### Version 2.0.3
+
+**Fixed Issues**
+
+- Cached data from old Proxy Keys is now removed from redis. There was an issue where if you configured a Proxy with Proxy Key A, then reconfigured it with Proxy Key B and restarted the service you would end up with config for Proxy Key A & B in Redis when there should only be config for Proxy Key B.
+- Fixes a race condition where concurrent map access could happen in the Primary Proxy when it's aggregating metrics data.
+- Cleans up error logs that shouldn't have been logged
+
+### Javascript SDK
+
+#### Version 1.27.0
+
+**Fixed issues**:
+ - Added `maxStreamRetries` config option. (FFM-11788, ZD-66828)
+ - If retries are exhausted, one of these two states would occur:
+    1. If polling is enabled, the SDK would remain in polling mode and no further streaming reconnection attempts would be made. The default polling option, if not supplied, is whatever the `streamingEnabled` value is or,
+    2. If polling is disabled, the SDK would not get any further evaluation updates for the remainder of the SDK client instance's life. The SDK would need re-initialised, e.g the app being restarted, to get new evaluations in this state.
+ - Fixed an edge case where if the stream disconnects and resumes during a request made by the fallback poller (60 seconds later), the fallback poller will not be disabled and will continue polling for the lifetime of the SDK instance. (FFM-11852, ZD-68087)
+
+#### Version 1.26.3
+
+**Fixed issues**:
+ - The following CVEs have been patched:
+    - [ws](https://github.com/advisories/GHSA-3h5v-q93c-6h6q)
+    - [braces](https://github.com/advisories/GHSA-grv7-fg5c-xmjg)
 
 ## July 2024
 
@@ -29,11 +66,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Explicitly makes `REDIS_ADDR` a required environment variable. A connection to redis is required for the Proxy to function but the `REDIS_ADDR` wasn't explicitly requried in the code which could lead to vauge startup errors if you forgot to set it.
  - Reduces excessive memory usage from having an excessive amount of labels on prometheus metrics. This required is to remove the following labels from the following metrics
   - Removed the `key` label from the following metrics
-    - ff_proxy_redis_cache_scan_duration
-    - ff_proxy_redis_cache_write_count
-    - ff_proxy_redis_cache_read_count
-    - ff_proxy_redis_cache_remove_count
-    - ff_proxy_redis_cache_scan_count
+    - `ff_proxy_redis_cache_scan_duration`
+    - `ff_proxy_redis_cache_write_count`
+    - `ff_proxy_redis_cache_read_count`
+    - `ff_proxy_redis_cache_remove_count`
+    - `ff_proxy_redis_cache_scan_count`
   - Removed the `method` label from the `ff_proxy_http_requests_total` metric
   - Removed the `envID` label from the `ff_proxy_http_requests_duration` metric
   - Removed the `url` and `envID` label from the `ff_http_requests_content_length_histogram` metric
@@ -63,6 +100,18 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 **Fixed issues**:
  - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11654)
+
+### .NET SDK
+
+#### Version 1.7.1
+
+**Fixed issues**:
+ - Fixed incorrect number variation warning message. (FFM-11759, ZD-66232)
+ - Fixed an issue when `client.close()` is called the stream remains connected. The stream now exits correctly and resources are released. (FFM-11801, ZD-66232)
+ - If `WaitForInitialization()` was called and no timeout argument provided, the SDK could block permanently on unrecoverable authentication failures.  Now, the SDK will unblock immediately on `40x` errors, and retry up to 10 times on `50x` errors, after which it will unblock. (FFM-11759, ZD-66232)
+
+**New features and enhancements**:
+ - Add `FlagsLoaded` Event - see [events](https://github.com/harness/ff-dotnet-server-sdk/blob/main/docs/further_reading.md#listen-on-events). (FFM-11759, ZD-66232)
 
 ### Python SDK
 

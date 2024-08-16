@@ -8,7 +8,7 @@ redirect_from:
 
 Chaos infrastructure is a service that runs in your target environment and aids Harness Chaos Engineering (HCE) in accessing and injecting chaos at a cloud-native scale. There are different types of chaos infrastructure based on the target environments, such as **Kubernetes**, **Linux VMs**, and so on.
 
-These chaos infrastructures can be installed as a Kubernetes service, as a Linux daemon, and so on, based on their type. All the chaos infrastructure services adhere to the **principle of least privilege**, where the services execute with the minimum required permissions.
+These chaos infrastructures can be installed as a Kubernetes service, as a Linux daemon, or as a Windows agent, based on their type. All the chaos infrastructure services adhere to the **principle of least privilege**, where the services execute with the minimum required permissions.
 
 ## 1. Create an environment
 
@@ -321,4 +321,4 @@ After adding chaos infrastructure, Harness takes some time to set up all the cha
 
 ![](./static/windows-infrastructure/confirm-3.png)
 
-That's it! Now you're all set to inject chaos into your infrastructure.
+That's it! Now you have a dedicated chaos infrastructure and you're all set to inject chaos into your infrastructure.
