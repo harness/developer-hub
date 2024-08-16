@@ -58,8 +58,28 @@ DELETE FROM Employees WHERE ID = 1;
 
 ### SQL (Structured Query Lanaguage)
 
-SQL (Structured Query Language) databases are relational databases that use a structured query language to define and manipulate data. They are designed to store data in tables with fixed schemas, where each table consists of rows and columns. The relationships between tables are defined through foreign keys. 
+SQL (Structured Query Language) databases are relational databases that use a structured query language to define and manipulate data. They are designed to store data in tables with fixed schemas, where each table consists of rows and columns. The relationships between tables are defined through foreign keys. Liquibase can define changes via SQL scripts, or via yaml changesets that are compiled at runtime into SQL.
 
 ### NO-SQL (Not Only SQL)
 
-NoSQL (Not Only SQL) databases, on the other hand, are non-relational databases designed to store and retrieve data in ways that are different from traditional relational databases. They are schema-less, meaning they can store unstructured, semi-structured, or structured data without requiring a predefined schema. 
+NoSQL (Not Only SQL) databases, on the other hand, are non-relational databases designed to store and retrieve data in ways that are different from traditional relational databases. They are schema-less, meaning they can store unstructured, semi-structured, or structured data without requiring a predefined schema. An example of this is MongoDB.
+
+### Rollback 
+
+A rollback in the context of deployment refers to the process of reverting an application or system to a previous stable state after a new deployment has failed or introduced critical issues. This action is taken to minimize downtime and restore the application to its last known good configuration.
+
+### Liquibase
+
+An open source database change control CLI tool that is heavily used by Harness DB DevOps.
+
+### Changelog
+
+A collection of database changes that can be applied to a database. It includes detailed entries for each release or update, listing new features, bug fixes, improvements, and any other modifications. 
+
+### Changeset
+
+A single set of changes that are deployed and collback together. It refers to a collection of changes made to a codebase in a single commit or transaction in a version control system (VCS) like Git, Mercurial, or Subversion. 
+
+### Change
+
+An individual change as part of a changeset.
