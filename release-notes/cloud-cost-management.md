@@ -18,6 +18,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
+## August 2024
+
+### Version 1.27.2
+
+#### Fixed issues
+
+- Filtered Output Reset: Previously, when a user re-ran a rule with a filtered output, the output was not reset. This issue has now been fixed, ensuring accurate output after each rule execution. [CCM-18859]
+- Spot and On-Demand Split Validation: Previously, no error was shown when the split ratio between Spot and On-Demand did not equal 100%. Now, if a user attempts to complete enablement in Commitment Orchestrator with an incorrect split ratio, an error message will be displayed, ensuring proper configuration. [CCM-18857]
+- Commitment Orchestrator Tooltip Accuracy: Enhanced the chart re-rendering after applying filters, hence ensuring accurate tooltips. [CCM-18739]
+
 ## July 2024
 
 ### Version 1.23.0
