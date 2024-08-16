@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-08-13T18:19:25
+date: 2024-08-14T18:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -18,6 +18,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### Last updated: August 14, 2024
 
 ## August 2024
+
+### Node.js SDK
+
+#### Version 1.8.3
+
+**Fixed issues**:
+ - Patched Axios CVE: `CVE-2024-39338`. (FFM-11888)
 
 ### Relay Proxy
 
