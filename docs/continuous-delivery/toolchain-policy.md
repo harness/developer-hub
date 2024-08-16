@@ -49,7 +49,7 @@ As of Date: 08.16.2024
 - Any other versions of Kubernetes the customer is using we will support on a best effort basis
 - This includes older versions of kubernetes such as `1.27`, `1.26` - `1.22`.
 - For customers who have older than `1.22`, we will try to ensure our integrations are backwards compatible with older Kubernetes cluster versions. However, we cannot guarantee any impact due to the nature of Kubernetes and its frequent updates. We will not introduce any patches to remediate the issue around the older Kubernetes version, the only path forward is to upgrade.
-- Harness will introduce Installation/upgrade pre-flight checks during deployment that should warn users if the Kubernetes version that is out of compliance with our policy.
+- Harness will introduce installation/upgrade pre-flight checks during deployment that should warn users if the Kubernetes version is out of compliance with our policy.
 
 
 #### What exactly does it mean to ‘support’ a Kubernetes version?
