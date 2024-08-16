@@ -44,7 +44,7 @@ As of Date: 08.16.2024
 - This means we will support `1.30`, `1.29`, `1.28` in line with the cloud vendors
 - We will do quarterly maintenance on the Kubernetes and Helm integrations as provide updates more frequently as they change the most often.
 
-#### What about Kubernetes Clusters that are managed on-prem and are self-maintained by customers? 
+#### What about Kubernetes clusters that are managed on-prem and are self-maintained by customers? 
 
 - Any other versions of Kubernetes the customer is using we will support on a best effort basis
 - This includes older versions of kubernetes such as `1.27`, `1.26` - `1.22`.
