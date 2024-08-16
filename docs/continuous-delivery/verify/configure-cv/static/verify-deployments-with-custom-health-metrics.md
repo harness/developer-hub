@@ -6,6 +6,7 @@ helpdocs_topic_id: n67y68fopr
 helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false
 helpdocs_is_published: true
+draft: true
 ---
 
 This topic covers how to add and configure Custom Health as a Health Source for the Verify step.
