@@ -6,7 +6,7 @@ redirect_from:
   - /tutorials/chaos-experiments/chaos-experiments-on-gitlab
 ---
 
-This tutorial explains how you can create chaos experiments using Harness Chaos Engineering (HCE) and run them as GitLab pipelines. Chaos experiments in Harness are created the same way in the chaos engineering module, irrespective of where they are invoked from.
+This tutorial explains how you can create chaos experiments using Harness CE and run them as GitLab pipelines. Chaos experiments in Harness are created the same way in the chaos engineering module, irrespective of where they are invoked from.
 
 1. [Create a chaos experiment in the Harness Chaos Engineering module](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments). Execute this experiment to verify the configuration and ensure that the resilience probes are working as expected. The experiment ID and resilience score determined from this experiment run will be used to integrate the experiment with GitLab.
 
@@ -21,13 +21,16 @@ https://app.harness.io/ng/#/account/**JxE3EzyXSmWugTiJV48n6K**/chaos/orgs/defaul
 
 - The strings marked in asterisk are the account ID, project ID, and chaos experiment IDs respectively.
 
+:::tip
+- To set variables in GitLab CI, go to [set variables for a project](https://docs.gitlab.com/ee/ci/variables/?_gl=1*ysqeh0*_ga*MTc2NzQ4NTYwLjE2NjQ4MDQ0NjI.*_ga_ENFH3X7M5Y*MTY4MDE0MTE5NC42LjEuMTY4MDE0NDgxNS4wLjAuMA..#for-a-project).
+- For example, make sure the `API_KEY` is set as `protected`,  `masked`, and as a `secret` variable.
+:::
+
 - From your account profile page, generate an API key and copy it to a safe location (you will need it further).
 
 2. Create a launch script. HCE APIs are used to invoke or launch a chaos experiment from the pipeline.
 
    To simplify creating an API call with the required secure parameters and data, a [CLI tool](https://app.harness.io/public/shared/tools/chaos/hce-cli/0.0.4/hce-cli-0.0.4-linux-amd64) is provided. Use this tool to create an appropriate API command to include in the pipeline script.
-
-   To set variables in GitLab CI, go to [set variables for a project](https://docs.gitlab.com/ee/ci/variables/?_gl=1*ysqeh0*_ga*MTc2NzQ4NTYwLjE2NjQ4MDQ0NjI.*_ga_ENFH3X7M5Y*MTY4MDE0MTE5NC42LjEuMTY4MDE0NDgxNS4wLjAuMA..#for-a-project).
 
    Below is a sample launch script.
 
@@ -103,7 +106,7 @@ https://app.harness.io/ng/#/account/**JxE3EzyXSmWugTiJV48n6K**/chaos/orgs/defaul
 
    chmod +x hce-cli
 
-   resiliencyScore=$(./hce-api-saas generate --api validate-resilience-score  --account-id=${ACCOUNT_ID} \
+   resiliencyScore=$(./hce-cli generate --api validate-resilience-score  --account-id=${ACCOUNT_ID} \
    --project-id ${PROJECT_ID} --notify-id=$1  \
    --api-key ${API_KEY} --file-name hce-api.sh)
 
