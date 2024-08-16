@@ -14,7 +14,7 @@ A database is an organized collection of structured information, or data, that i
 
 ### Database Schemas
 
-A database schema is a Liquibase changelog, checked into a Git repository. It defines a set of DDL and/or DML changes to a database and typically includes definitions for tables, columns, data types, indexes, and relationships between tables.
+A database schema is the structure of a database, e.g. what tables and columns and indexes exist. In the context of Harness DB DevOps, there is an entity called a 'schema’ that is a collection of DDL or DML changes that can be applied to a database. Today this collection is in the form of a liquibase changelog checked into git or artifactory.
 
 ### Database Instances 
 
@@ -22,7 +22,7 @@ A database instance associates a database schema to a database connection. It re
 
 ### Database Connection
 
-A database connection is the specific parameters and credentials used to establish a secure link between the Harness platform and an individual database server. This connection is done through a JDBC (Java Database Connectivity) URL, which specifies the location of the database server, and is authenticated using a username and password. The database connection enables Harness to execute SQL scripts, orchestrate database changes, and manage schema versions as part of the CI/CD pipeline.
+A database connection refers to the specific parameters and credentials used to establish a secure link between the Harness platform and an individual database server. This connection is done through a JDBC (Java Database Connectivity) URL, which specifies the location of the database server, and is authenticated using a username and password. The connection is made via a Harness Delegate, which allows secure access to the database, even when the database instance is not internet-accessible. This setup enables Harness to execute SQL scripts, orchestrate database changes, and manage schema versions as part of the CI/CD pipeline, all while adhering to security best practices. 
 
 ### Data Definition Language (DDL)
 
@@ -55,3 +55,11 @@ UPDATE Employees SET Salary = 60000 WHERE ID = 1;
 ```
 DELETE FROM Employees WHERE ID = 1;
 ```
+
+### SQL (Structured Query Lanaguage)
+
+SQL (Structured Query Language) databases are relational databases that use a structured query language to define and manipulate data. They are designed to store data in tables with fixed schemas, where each table consists of rows and columns. The relationships between tables are defined through foreign keys. 
+
+### NO-SQL (Not Only SQL)
+
+NoSQL (Not Only SQL) databases, on the other hand, are non-relational databases designed to store and retrieve data in ways that are different from traditional relational databases. They are schema-less, meaning they can store unstructured, semi-structured, or structured data without requiring a predefined schema. 
