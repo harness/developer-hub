@@ -51,12 +51,12 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Fixed issues
 
-- Previously, the error title **Intervention** was displayed when the verification step failed. This title is now updated to **Verification Failure**.(CDS-99671,ZD-65113)
-- The Queries in `verificationJobInstances` were scanning too many documents and raising CPU utilization. The issue is resolved now by adding more `verificationJobInstances` indexes.(CDS-99540)
-- The run-time input was shown even on fixed values selection in templates monitored services. This issue is resolved now as `defaultValueToReset` field is passed to the MultiTypeService & MultiTypeEnvironment fields.(CDS-99518) 
-- Previously, on the services page, the deployment type icon did not consistently appear. This issue is resolved now.(CDS-99331, ZD-66892)
-- The GitOps deployment were not tracked for multiple projects as the Harness Gitops instances service was out of sync with applications without project mappings. This issue is resolved now.(CDS-98989, ZD-63203)
-- The error message related to GitHub Connector parameters was unclear. This issue is resolved by improving the response message for missing parameters in GitHub Connector(CDS-97760)
+- The error title **Intervention** was displayed when the verification step failed. The title is now updated to **Verification Failure**. (CDS-99671,ZD-65113)
+- The Queries in `verificationJobInstances` scanned too many documents and raised the CPU utilization. This issue has been resolved now by adding more `verificationJobInstances` indexes. (CDS-99540)
+- The runtime input was displayed even when a **fixed values** was selected from the templates in the monitored services. This issue has been resolved since `defaultValueToReset` field is passed to the MultiTypeService and MultiTypeEnvironment fields. (CDS-99518) 
+- On the services page, the deployment type icon did not consistently appear. This issue has been resolved. (CDS-99331, ZD-66892)
+- The GitOps deployment were not tracked for multiple projects as the Harness Gitops instances service was out of sync with the applications without the project mappings. This issue has been resolved. (CDS-98989, ZD-63203)
+- The error message associated with the GitHub Connector parameters was ambiguous. This issue was resolved by improving the response message for missing parameters in GitHub Connector. (CDS-97760)
 
 ### Version 1.51.5
 
