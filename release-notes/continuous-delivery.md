@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-08-12:T10:00:00
+date: 2024-08-19:T10:00:00
 sidebar_position: 8
 ---
 
@@ -46,6 +46,17 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 ## August 2024
+
+### Version 1.52.4
+
+#### Fixed issues
+
+- Previously, the error title **Intervention** was displayed when the verification step failed. This title is now updated to **Verification Failure**.(CDS-99671,ZD-65113)
+- The Queries in `verificationJobInstances` were scanning too many documents and raising CPU utilization. The issue is resolved now by adding more `verificationJobInstances` indexes.(CDS-99540)
+- The run-time input was shown even on fixed values selection in templates monitored services. This issue is resolved now as `defaultValueToReset` field is passed to the MultiTypeService & MultiTypeEnvironment fields.(CDS-99518) 
+- Previously, on the services page, the deployment type icon did not consistently appear. This issue is resolved now.(CDS-99331, ZD-66892)
+- The GitOps deployment were not tracked for multiple projects as the Harness Gitops instances service was out of sync with applications without project mappings. This issue is resolved now.(CDS-98989, ZD-63203)
+- The error message related to GitHub Connector parameters was unclear. This issue is resolved by improving the response message for missing parameters in GitHub Connector(CDS-97760)
 
 ### Version 1.51.5
 
