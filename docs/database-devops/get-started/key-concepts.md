@@ -42,7 +42,7 @@ TRUNCATE TABLE Employees;
 
 ### Data Manipulation Language (DML)
 
-DML refers to SQL commands used for managing data within the database objects defined by DDL, such as tables. DML operaitons allow users to insert, update, delete, and retrieve data stored in the database. Some examples include the following:
+DML refers to SQL commands used for managing data within the database objects defined by DDL, such as tables. DML operations allow users to insert, update, delete, and retrieve data stored in the database. Some examples include the following:
 
 ```
 INSERT INTO Employees (ID, Name, Department) VALUES (1, 'Jane Doe', 'HR');
@@ -62,7 +62,7 @@ SQL (Structured Query Language) databases are relational databases that use a st
 
 ### NO-SQL (Not Only SQL)
 
-NoSQL (Not Only SQL) databases, on the other hand, are non-relational databases designed to store and retrieve data in ways that are different from traditional relational databases. They are schema-less, meaning they can store unstructured, semi-structured, or structured data without requiring a predefined schema. An example of this is MongoDB.
+NoSQL (Not Only SQL) databases, on the other hand, are non-relational databases designed to store and retrieve data in ways that are different from traditional relational databases. They can store unstructured, semi-structured, or structured data without requiring a predefined schema. An example of this is MongoDB.
 
 ### Rollback 
 
@@ -70,7 +70,7 @@ A rollback in the context of deployment refers to the process of reverting an ap
 
 ### Liquibase
 
-An open source database change control CLI tool that is heavily used by Harness DB DevOps.
+An open source database change control CLI tool that is leveraged used by Harness DB DevOps.
 
 ### Changelog
 
@@ -78,7 +78,7 @@ A collection of database changes that can be applied to a database. It includes 
 
 ### Changeset
 
-A single set of changes that are deployed and collback together. It refers to a collection of changes made to a codebase in a single commit or transaction in a version control system (VCS) like Git, Mercurial, or Subversion. 
+A single set of changes that are deployed and rollback together. It refers to a collection of changes made to a codebase in a single commit or transaction in a version control system (VCS) like Git, Mercurial, or Subversion. 
 
 ### Change
 
