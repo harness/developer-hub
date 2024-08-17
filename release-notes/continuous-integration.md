@@ -29,9 +29,9 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### Fixed issues
 
-- The Intelligence Baseline popup was re-running the pipeline, even when the close button was clicked on. Fixed so that the close button dismissed properly as expected. (CI-13779, ZD-68120)
+- The Intelligence Baseline popup was re-running the pipeline even when the close button was clicked. This has been fixed so that the close button now dismisses the popup as expected. (CI-13779, ZD-68120)
 
-- In certain circumstances, when a delegate fails to spin up, the log event could contain secrets in plain text. In order to not reveal the secrets, we are changing log type from error to debug. (CI-13785)
+- On pipeline failure at init step entire pod yaml/object was being logged as error log for debugging as a result if any environment variables in a container referencing secrets present were also getting logged in delegate logs. Issue is resolved by changing the log type from error to debug type to remove visibility and added an extra log without logging entire object. (CI-13785)
 
 ### Version 1.41
 
