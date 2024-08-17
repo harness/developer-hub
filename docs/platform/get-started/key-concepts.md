@@ -178,7 +178,6 @@ For more information, go to [Run Steps in a Step Group](/docs/continuous-deliver
 Harness offers several approaches for automating management of Harness entities in your account:
 
 - [Terraform Provider](/docs/category/terraform-provider)
-- [Harness CLI](/docs/category/cli)
 - [Harness API](/docs/category/api)
 
 ## Harness Manager

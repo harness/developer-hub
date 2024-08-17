@@ -19,7 +19,7 @@ You should review and complete the following prerequisites.
 - [Supported integrations](/docs/continuous-delivery/cd-integrations)
 
 ## Step 2. Create your first CD pipeline
-We recommend you use either the [Harness UI](/docs/platform/get-started/harness-ui-overview) or the [Harness CLI](/docs/category/cli) for learning how to create pipelines as well as for creating your first pipeline. Additionally, you should use a Harness-provided sample app here so that you can see how the basic features work. The tutorials below are all based on a sample app. You will onboard your own app in the next step.
+We recommend you use the [Harness UI](/docs/platform/get-started/harness-ui-overview) for learning how to create pipelines as well as for creating your first pipeline. Additionally, you should use a Harness-provided sample app here so that you can see how the basic features work. The tutorials below are all based on a sample app. You will onboard your own app in the next step.
 
 - [All CD & GitOps tutorials](/docs/category/cd-and-gitops-tutorials)
 - [Kubernetes pipelines & GitOps workflows](/docs/continuous-delivery/get-started/cd-tutorials/manifest)
