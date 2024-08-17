@@ -69,40 +69,50 @@ In the legacy navigation, go to **Account settings** and then select **Billing**
 
 <License />
 
-## Harness Cloud billing and cloud credits
+## Harness Cloud billing and Cloud credits
 
-This section explains billing and credit consumption for Harness Cloud builds.
-
-* **What is a Harness Cloud build?:** A *build on Harness Cloud* occurs when a user runs a pipeline that uses [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
-* **What is build execution time?:** The *build execution time* is the number of minutes that a build takes to complete, counted by the number of minutes used per machine type, and totaled across all machines and machine types used to complete the build.
-* **What is a build minute?:** A *build minute* is one minute of build execution time. Each build minute [consumes credits](#credit-consumption).
+Harness Cloud provides Harness-managed VMs for executing various tasks, such as builds, and security tests. This section explains billing and credit consumption for Harness Cloud.
+[Learn more about Harness Cloud](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
 
 ### Credit consumption
 
-Each build minute consumes credits. The rate per build minute, and the resulting credits consumption, depends on the target environment (such as OS type, machine resources, and so on) that you use for the Harness Cloud build.
+Each minute of execution on Harness Cloud consumes credits. The rate per Cloud minute, and the resulting credits consumption, depends on the target environment (such as OS type, machine resources, and so on) that you use for the Harness Cloud build.
 
-The following table shows the applicable rates for each OS type as of August 2023.
+Users can choose between two models: **Flex** and **Custom**.
 
+**Flex Model**: When using the Flex resource class, Harness provides the maximum available resources based on current capacity in Harness Cloud.
 
-| **Resource Class**  | **Number of Cores** | **Minute Multiplier** |
+**Custom Model**: Users can select specific resource classes tailored to their needs, with defined CPU allocations.
+
+#### Rate Tables
+The following tables outline the minute multipliers for each model as of August 2023:
+
+##### Flex Model 
+| **Resource Class**  | **CPU** | **Minute Multiplier** |
 |------------|-----------|-----------------------|
 | **Linux**  |           |                       |
-| flex (default) | 4 cores or more    | 2                     |
-| small      | 4 cores    | 2                     |
-| medium     | 8 cores    | 5                     |
-| large      | 16 cores   | 10                    |
-| xlarge     | 30 cores   | 20                    |
-| **macOS**    |           |                       |
-| flex (default)| 6 cores    | 60                    |
+| flex | max per capacity    | 2                     |
 | **Windows**|           |                       |
-| flex (default)| 4 cores    | 8                     |
+| flex | max per capacity    | 8                     |
+| **macOS**    |           |                       |
+| flex | max per capacity    | 60                    |
+##### Custom Model 
 
+| **Resource Class**  | **CPU** | **Minute Multiplier** |
+|------------|-----------|-----------------------|
+| **Linux**  |           |                       |
+| small      | 4     | 2                     |
+| medium     | 8     | 5                     |
+| large      | 16    | 10                    |
+| xlarge     | 30    | 20                    |
+| **Windows**|           |                       |
+| small| 4     | 8                     |
+| **macOS**    |           |                       |
+| small | 6     | 60                    |
 
-When using **Flex** resource class Harness will allocate machines with higher CPU higher than 4 cores, based capacity available in Harness cloud. we recommend using **Flex** resource class , unless large or xlarge machines are required. 
+Credits for Cloud minutes are calculated by multiplying the execution time (measured in minutes, rounded to the nearest minute) by the minute multiplier of the selected resource class.
 
-Credits for build minutes are calculated based on build execution times (measured in minutes) by infrastructure resource class. Minimum cores guaranteed based on user's selection. Rates in the table above are current as of August 2023. For more information, contact Harness Sales or your account manager.
-
-Based on the values in the table above:
+Examples for credit consumption, based on the values in the table above:
 
 * 1000 Linux, 4-core build minutes consumes 2000 cloud credits.
 * 1000 Windows build minutes consumes 8000 cloud credits.
@@ -113,13 +123,16 @@ To learn how to select a resource class, please see [Using resource classes](/do
 
 ### Credit allowance by plan tier
 
-Plan credits can be consumed by all users within the account registered to run builds on Harness Cloud.
+**Free plans** receive 2000 free credits every month. Any free credits that are unused at the end of the month expire automatically and do not roll over from one month to the next.
 
-Customers on paid plans can purchase credits via credit packages. These purchased credits can be rolled over from one month to the next, but generally expire one year from purchase, unless specified otherwise in signed an Order Form with Harness.
+Customers on **paid plans** can purchase Harness Cloud credits. These purchased credits can be rolled over from one month to the next, but generally expire one year from purchase, unless specified otherwise in signed an Order Form with Harness.
 
 Harness notifies you when you are running low on cloud credits, and Harness can invoice in arrears for overages. For more information, go to [Credit overages (overuse)](#credit-overages-overuse).
 
 Free plans may require credit card validation to use Harness Cloud. If you don't want to provide a credit card, you can use [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) with your free plan.
+
+Cloud credits can be consumed by all users within the account registered to run pipelines on Harness Cloud.
+
 
 ### Usage limits
 

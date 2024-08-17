@@ -12,7 +12,7 @@ With Harness Cloud, you can run builds in isolation on Harness-managed VMs that 
 
 Harness Cloud provides the following advantages:
 
-* Use build credits to run builds on Harness-managed machines. No need to set up you own machines.
+* Use Cloud credits to run builds on Harness-managed machines. No need to set up you own machines.
 * Starter pipelines for different programming languages.
 * Blazing fast builds on Linux, macOS, and Windows.
 * Get the latest features first. Harness may enable features for Harness Cloud before rolling them out to other build infrastructure options.
@@ -29,12 +29,12 @@ The steps in each stage execute on the stage's dedicated VM. This allows the sta
 
 :::
 
-## Billing and build credits
+## Billing and Cloud Credits
 
-Free plans get 2000 free build credits each month. 
+Free plans get 2000 free Harness Cloud credits each month. 
 If you're using a paid CI plan, you can purchase build credit packages.
 
-Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md##harness-cloud-billing-and-cloud-credits).
+Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-cloud-credits).
 
 Free plans require credit card validation to use Harness Cloud. If you don't want to provide a credit card, consider using [local runner build infrastructure](./define-a-docker-build-infrastructure).
 
@@ -149,7 +149,7 @@ Currently, macOS platforms for Harness Cloud are behind a feature flag with limi
 :::
 
 ### Using Resource Classes
-You can use the yaml editor to change the cloud machine size, in case you would like to take advantage of larger machines. 
+You can use the yaml editor to change the cloud machine size. 
 
 :::info
 
