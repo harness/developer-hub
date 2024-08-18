@@ -275,7 +275,6 @@ const sidebars = {
       label: "Reference Architectures",
       // className: "sidebar-all_docs",
       href: "/kb/reference-architectures/",
-      
     },
   ],
   ReferenceArchitectures: [
@@ -284,7 +283,8 @@ const sidebars = {
       label: "Reference Architectures",
       link: {
         type: "doc",
-        id: "reference-architectures/index",
+        id: "reference-architectures",
+        
       },
       collapsed: true,
       items: [
@@ -293,6 +293,7 @@ const sidebars = {
           dirName: "reference-architectures",
         },
       ],
+  
     },
   ],
 };

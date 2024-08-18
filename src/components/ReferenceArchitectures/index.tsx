@@ -1,9 +1,14 @@
 import React from "react";
 
-import { useColorMode, useCurrentSidebarCategory } from "@docusaurus/theme-common";
+import {
+  useColorMode,
+  useCurrentSidebarCategory,
+} from "@docusaurus/theme-common";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import DocCardList from "@theme/DocCardList";
+import { TutorialCards } from "../LandingPage/TutorialCard";
 import styles from "./styles.module.scss";
+
+import { ReferenceArchitecturesCards } from "./data/referenceArchitecture";
 const ReferenceArchitectures = () => {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -11,9 +16,6 @@ const ReferenceArchitectures = () => {
   return (
     <div className="container">
       <h1>Reference Architectures</h1>
-      <article className="margin-top--lg">
-        <DocCardList items={category.items} />
-      </article>
       <div className={styles.illustrationContainer}>
         <img
           className={styles.illustration}
@@ -24,6 +26,10 @@ const ReferenceArchitectures = () => {
           }
         />
       </div>
+      <TutorialCards
+        data={ReferenceArchitecturesCards}
+        sectionClass={styles.subSection}
+      />
     </div>
   );
 };
