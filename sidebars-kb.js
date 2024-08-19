@@ -265,18 +265,26 @@ const sidebars = {
             },
           ],
         },
-
       ],
     },
     /*
       Reference Architecture Section
      */
     {
+      type: "link",
+      label: "Reference Architectures",
+      // className: "sidebar-all_docs",
+      href: "/kb/reference-architectures/",
+    },
+  ],
+  ReferenceArchitectures: [
+    {
       type: "category",
       label: "Reference Architectures",
       link: {
-        type: "generated-index",
-        slug: "reference-architectures",
+        type: "doc",
+        id: "reference-architectures",
+        
       },
       collapsed: true,
       items: [
@@ -285,8 +293,8 @@ const sidebars = {
           dirName: "reference-architectures",
         },
       ],
+  
     },
-
   ],
 };
 

@@ -33,6 +33,37 @@ Below is a table that shows the current state of our integrations, demonstrating
 | NaN         | ArgoCD               | 2.8.x             | 2.12.x         | Quarterly     |
 | AWS         | AWS SAM              | 1.84.0            | 1.121.0        | Quarterly     |
 
+
+### Kubernetes Maintenance FAQ
+
+#### What versions will Harness support in the future? How will it be maintained?
+
+As of Date: 08.16.2024
+
+- Harness will officially support 2 previous versions from the least stable release.
+- This means we will support `1.30`, `1.29`, `1.28` in line with the cloud vendors
+- We will do quarterly maintenance on the Kubernetes and Helm integrations as provide updates more frequently as they change the most often.
+
+#### What about Kubernetes clusters that are managed on-prem and are self-maintained by customers? 
+
+- Any other versions of Kubernetes the customer is using we will support on a best effort basis.
+- This includes older versions of kubernetes such as `1.27`, `1.26` - `1.22`.
+- For customers who have older than `1.22`, we will try to ensure our integrations are backwards compatible with older Kubernetes cluster versions. However, we cannot guarantee any impact due to the nature of Kubernetes and its frequent updates. We will not introduce any patches to remediate the issue around the older Kubernetes version, the only path forward is to upgrade.
+- Harness will introduce installation/upgrade pre-flight checks during deployment that should warn users if the Kubernetes version is out of compliance with our policy.
+
+
+#### What exactly does it mean to ‘support’ a Kubernetes version?
+
+- Ensure that we do not introduce changes that will break compatibility with that new stable version. For example, we will not introduce a change that utilizes a `v1.30` feature if it breaks compatibility with `v1.28`. However, when `v1.31` releases, we will no longer be able to guarantee that new changes are compatible with `v1.28`.
+- If a customer is running an unsupported Kubernetes version and encounters a problem that is related to an incompatibility, they are required to upgrade their cluster.  We will not issue a patch to support their older unsupported Kubernetes version.
+
+### Integration FAQs
+
+##### Does Harness use SDKs for the cloud vendors? 
+
+- Yes, we use the AWS SDK, Google Cloud SDK, and Azure SDK for our deployment swimlanes.
+
+
 ## Benefits of Routine Updates
 
 - **Enhanced Capabilities:** By staying current with the latest releases, Harness ensures that users have access to cutting-edge features and enhancements. This allows you to take full advantage of the powerful functionalities provided by the integrated tools.
