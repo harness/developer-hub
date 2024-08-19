@@ -11,11 +11,12 @@ redirect_from:
 - /docs/chaos-engineering/architecture-and-security/architecture/control-plane
 ---
 
-## Before you begin, review the following:
+
+## Before you begin, review the following
 
 - [All about chaos engineering](/docs/chaos-engineering/concepts/chaos101)
 
-## System architecture overview
+## System Architecture Overview
 
 To determine and improve the resilience of an application, you need to execute certain steps (known as chaos experiments) on your cluster. This involves two essential components interacting with each other:
 
@@ -36,68 +37,11 @@ From the diagram, you can infer the following at a high level:
 
 For detailed steps on this interaction, refer to [interaction between the control plane and execution plane](#interaction-between-the-execution-plane-and-the-control-plane).
 
-## Component description
-
-The components specified in the diagram earlier are described below.
-
-- **Chaos experiment**: It injects one or more chaos faults into a specified chaos infrastructure and summarizes the result of the chaos execution. You can define the experiment using the Chaos Studio through the guided UI or by uploading the workflow CR (custom resource) manifest.
-
-- **Chaos fault**: Also known as a **fault**, refers to the failures injected into the chaos infrastructure as part of a chaos experiment. Every fault is scoped to a particular target resource, and you can customize the fault using the fault tunables, which you can define as part of the Chaos Experiment CR and Chaos Engine CR. Optionally, you can define one or more probes as part of a chaos fault.
-
-- **ChaosHub**: A collection of experiment templates (defined as workflow CRs) and faults (defined as ChaosExperiment CR and ChaosEngine CR) that help create and execute new chaos experiments against your target resources. Apart from the Enterprise ChaosHub, which is present by default, you can add custom ChaosHub to manage and distribute custom experiment templates and faults.
-
-	- **Enterprise ChaosHub**: Also known as Enterprise hub, it comes out-of-the-box with HCE and consists of pre-built manifests (YAML files) and chaos experiment templates. It is a prebuilt ChaosHub that represents the existing experiments and chaos faults. You can use faults from multiple categories to create chaos experiments in the Enterprise ChaosHub.
-
-- **Chaos infrastructure**: It represents the individual components of a deployment environment. It is a service that runs within your target environment to help HCE access the target resources and inject chaos at a cloud-native scale.
-
-- **Environment**: It represents your deployment environment such as `Dev`, `QA`, `Staging`, `Production`, etc. Each environment may contain multiple chaos infrastructures. It helps isolate the various environments that the engineering, product owners, QA, and automation teams use under a single Harness project. This allows for better segregation of mission-critical infrastructures with several attached dependencies from dev and staging infrastructures for their safety.
-
-- **Chaos Studio**: It is used to create new chaos experiments using various chaos faults and templates from ChaosHub, probes, and custom action steps. You can create new experiments using the guided UI or by using the experiment manifest represented by the workflow CR.
-
-- **Resilience score**: It is a quantitative measure of how resilient the target application is to a chaos experiment. You can [calculate](/docs/chaos-engineering/features/experiments/resilience-score) this value based on the priority set for every fault in the experiment and the probe success percentage of the faults (if the probes are defined).
-
-- **Chaos Engine Custom Resource (CR)**: It is the user-facing chaos Kubernetes CR which connects a target resource instance with a chaos fault to orchestrate the steps of chaos execution. You can specify run-level details such as overriding fault defaults, providing new environment variables and volumes, deleting or retaining experiment pods, defining probes, and updating the status of the fault execution.
-
-- **Chaos Experiment Custom Resource (CR)**: It contains the low-level execution information for the execution of a chaos fault. The CR holds granular details of a fault such as the container image, library, necessary permissions, and chaos parameters. Most of the chaos experiment CR parameters are tunables that you can override from the chaos engine CR.
-
-- **Workflow Custom Resource (CR)**: It is used to define the number of operations that are coupled together in a specific sequence to achieve a desired chaos impact. These operations are chaos faults or any custom action associated with the experiment, such as load generation.
-
-- **Chaos manager**: A GraphQL-based Golang microservice that serves the requests received from the chaos infrastructure either by querying MongoDB for relevant information.
-
-:::tip
-A NoSQL MongoDB **database** microservice accountable for storing users' information, past chaos experiments, saved chaos experiment templates, user projects, ChaosHubs, and GitOps details, among other information.
-:::
-
-- **Chaos Exporter**: An optional constituent that exposes monitoring metrics such as QPS and others present on the cluster to the frontend.
-It facilitates external observability in HCE. You can achieve this by exporting the chaos metrics generated (during the chaos injection as time-series data) to the Prometheus database for processing and analysis.
-
-### Components common to all chaos infrastructure
-
-Some of the components common to all chaos infrastructures include:
-
-- **Workflow controller**: Helps execute chaos experiments by:
-	- Searching for the experiment on the cluster.
-	- Identifying the experiment.
-	- Triggering the experiment.
-
-- **Subscriber**: Serves as a bridge between the execution plane and control plane. It also performs other tasks required to orchestrate the chaos experiment executions, such as:
-	- Installing a new chaos experiment on the cluster.
-	- Sending the experiment metadata (after completing the execution) to the control plane.
-	- Performing health checks on all the components in the chaos execution plane.
-	- Creating a chaos experiment CR from a chaos experiment template.
-	- Monitoring the events associated with the chaos experiment during its execution.
-
-#### Kubernetes execution plane
+#### Kubernetes Execution Plane
 
 The Kubernetes execution plane consists of chaos infrastructure components like [workflow controllers, and subscribers](/docs/chaos-engineering/concepts/deployment-architecture#components-common-to-all-chaos-infrastructure) that are described earlier, and backend execution infrastructure components like [ChaosExperiment CR](/docs/chaos-engineering/concepts/deployment-architecture#component-description), [ChaosEngine CR](/docs/chaos-engineering/concepts/deployment-architecture#component-description), etc.
 
-#### Chaos operator
-Leverages the Kubernetes operator pattern to interpret the fault configuration, execute the individual faults in an experiment, execute the fault and its probes (if they have been defined), and populate the result after the execution.
-
-#### Chaos exporter
-Optional component that facilitates external observability in HCE. This is achieved by exporting the chaos metrics generated during the chaos injection as time-series data to the Prometheus database for processing and analysis.
-
-#### Linux execution plane
+#### Linux Execution Plane
 The Linux execution plane consists of only the Linux chaos infrastructure daemon service.
 
 Linux chaos infrastructure daemon service is a **Systemd** service responsible for injecting faults into a Linux machine as a part of a chaos experiment.
@@ -111,7 +55,7 @@ Linux chaos infrastructure daemon service is a **Systemd** service responsible f
     3. Stream experiment logs
     4. Send experiment execution result
 
-#### Compatibility with Linux distribution
+#### Compatibility with Linux Distribution
 The chaos infrastructure has been tested for compatibility in the following Linux OS distributions:
 1. Ubuntu 16+
 2. Debian 10+
@@ -161,7 +105,7 @@ Here's how the interaction unfolds when you schedule an experiment:
 4. The operator searches for the chaos faults within the experiment and initiates their execution.
 5. Once the experiment completes, data (such as the experiment name, faults, probes, etc.) is sent back to the workflow controller by the subscriber.
 
-### Resource utilization matrix
+### Resource Utilization Matrix
 The resource utilization matrix for execution plane components is summarized below. These components are installed in the target cluster as a part of the Kubernetes-based chaos infrastructure.
 
 :::tip

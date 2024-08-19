@@ -88,13 +88,9 @@ Launching an experiment from a hub is different from running one directly from t
 
 To launch an experiment from a ChaosHub:
 
-1. In Harness, go to **Chaos > ChaosHubs**.
+1. In Harness, go to **Chaos > ChaosHubs**. Select the hub from which you want to launch an experiment.
 
 	![navigate](./static/manage-hub/new-hub.png)
-
-1. Select the hub fro which you want to launch an experiment.
-
-	![Select hub](./static/manage-hub/select.png)
 
 1. Find the experiment you want to launch, and then select **Launch Experiment**.
 
@@ -117,3 +113,7 @@ You can also save your customized experiment as a template in a ChaosHub by sele
 
 	![](./static/manage-hub/save-changes.png)
 :::
+
+## Next steps
+
+- Chaos Dashboard

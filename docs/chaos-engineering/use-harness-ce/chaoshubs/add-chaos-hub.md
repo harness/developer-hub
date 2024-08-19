@@ -6,6 +6,8 @@ redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub
 - /docs/chaos-engineering/features/chaos-hubs/add-chaos-hub
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 This topic describes how to add and connect a custom ChaosHub.
 
@@ -22,6 +24,9 @@ This topic describes how to add and connect a custom ChaosHub.
 
 ## Add a Custom ChaosHub
 
+<Tabs>
+  <TabItem value="Interactive guide">
+
 <iframe
 	src="https://app.tango.us/app/embed/a8a0fd9f-46ba-47f6-ab36-9fb1a446caa6"
 	style={{minHeight:'640px'}}
@@ -33,7 +38,9 @@ This topic describes how to add and connect a custom ChaosHub.
 	frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"
 	allowfullscreen="allowfullscreen"></iframe>
 
-To add a custom ChaosHub:
+</TabItem>
+
+<TabItem value="Step-by-step guide">
 
 1. In your Harness project, navigate to the **Chaos > ChaosHubs**, and then select **+ New ChaosHub**.
 
@@ -120,9 +127,13 @@ To add a custom ChaosHub:
 
 	Your new custom ChaosHub appears on the **ChaosHubs** page.
 
+</TabItem>
+</Tabs>
+
 :::info note
 To share your custom ChaosHub with another Harness project, add the hub to the other project by following the same procedure.
 :::
+
 
 ## Next steps
 
