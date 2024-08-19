@@ -82,7 +82,7 @@ Harness supported Health Sources:
 * AWS CloudWatch
 * Loki
 
-Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
+Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](/docs/continuous-delivery/verify/configure-cv/health-sources/custom-health-metrics) lets you customize APMs of your choice.
 
 ### Change Source
 

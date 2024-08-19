@@ -4,7 +4,7 @@ description: Learn how to verify deployments.
 sidebar_position: 1
 ---
 
-Harness Continuous Verification (CV) integrates with [various health sources](/docs//continuous-delivery/verify/configure-cv/health-sources/) to:
+Harness Continuous Verification (CV) integrates with [various health sources](/docs/category/health-sources) to:
 
 - Verify that the deployed service is running safely.
 - Perform automatic rollbacks.

@@ -43,7 +43,7 @@ The Service Instance Identifier (SII) is a feature used in Harness Continuous Ve
 
 ### Use SII in Harness Continuous Verification NextGen
 
-Here's an example of how to set up Harness Continuous Verification NextGen with a 5-minute analysis window using a [Prometheus Health Source](/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-prometheus) for a rolling deployment to a Kubernetes endpoint. This example also demonstrates using SII to filter and identify specific deployments.
+Here's an example of how to set up Harness Continuous Verification NextGen with a 5-minute analysis window using a [Prometheus Health Source](/docs/continuous-delivery/verify/configure-cv/health-sources/prometheus) for a rolling deployment to a Kubernetes endpoint. This example also demonstrates using SII to filter and identify specific deployments.
 
 PromQL:
 
