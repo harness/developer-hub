@@ -35,37 +35,18 @@ There are two scenarios when you need to add a Delegate Proxy when configuring a
 
 In this case, the Plugin connects directly to a third party provider without using either Backend Proxy or a Delegate Proxy. This is rare since most third party providers require authenticated requests.
 
-Image edit notes (remove me):
-
-- Remove the Platform Eng user journey.
-- Move the Cloud Service at the top. Skip harness backend infra.
-
 <DocImage path={require('./static/without-delegate-proxy.png')} />
 
 ### Backend Proxy used to access a public system. No Delegate Proxy needed.
 
 In this case the user is trying to display data in the plugin, that is fetched using an API that requires authenticated calls. This is a common use-case.
 
-## Image edit notes (remove me):
-
-- Remove the Platform Eng user journey.
-- Plugin makes request to Backend Proxy.
-- Backend Proxy directly makes request to Cloud Service (Pagerduty)
-- Remove delegate, http interceptor, and anything that's not used.
 
 <DocImage path={require('./static/backend-proxy.png')} />
 
 ### Backend Proxy used to access an internal system using a Delegate Proxy
 
-In this case, the plugin connects to an internal system using both Backend Proxy as well as a Delegate Proxy.
-
-## Image edit notes (remove me):
-
-- Remove the Platform Eng user journey.
-- Plugin makes request to Backend Proxy.
-- Outgoing request from Backend Proxy is intercepted. And forward to Delegate.
-- Delegate makes request to "my internal service" and delegate responds back.
-- Remove cloud service to avoid confusion. and anything else that is not used.
+In this case, the plugin connects to an internal system using both Backend Proxy as well as a Delegate Proxy. The request to delegate proxy goes through an interceptor which checks for the host as it is required by the delegate proxy. 
 
 <DocImage path={require('./static/del-back-proxy.png')} />
 
