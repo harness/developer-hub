@@ -22,6 +22,19 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## August 2024
+
+### Version 1.104.3
+
+<!-- 2024-08-05 -->
+
+#### New features and enhancements
+
+- The [Veracode scan step](/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference) in STO now ignores issues mitigated on the Veracode side, so the scan results exclude any mitigated issues.
+- The STO dashboard now includes a new graph to view the **Top 5 Vulnerable Targets**, showing code repositories, artifacts, instances, and configurations across the account.
+- You can now override the security testing scanner image at the step level. Learn more about [configuring your pipeline to use images from your registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry#configure-your-pipeline-to-use-images-from-your-registry).
+
+
 ## July 2024
 
 ### Version 1.104.3

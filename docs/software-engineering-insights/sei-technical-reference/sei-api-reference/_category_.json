@@ -3,7 +3,7 @@
     "position": 1,
     "collapsible":"true",
     "collapsed":"true",
-    "className":"red",
+    "className":"default",
     "link":{
        "type":"generated-index",
        "title":"API Reference"

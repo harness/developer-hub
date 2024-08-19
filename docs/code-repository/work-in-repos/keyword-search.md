@@ -28,6 +28,12 @@ If searching for the literal words `or` or `not`, wrap your keywords in quotatio
 
 By default, keyword search is case *insensitive*. If you want to enable case sensitivity, include `case:yes`. For example, `class Button case:yes` searches for files containing `class` and `Button` with case sensitivity.
 
+### Regular Expressions (Regex)
+
+Keyword search has some support for simple patterns and substrings, but for more complex expressions you need to explicitly enable regular regex search by clicking on the `.*` to the right of the search box. This will treat all search patterns as regular expressions.   
+
+We support [RE2 syntax](https://github.com/google/re2/wiki/Syntax).
+
 ### Special characters
 
 Search engines and regex use certain characters to trigger specific query functionality, such as asterisks for wildcards. If your keyword strings contain these characters, you must escape them with backslash (`\`) so the search interprets them literally as part of your search phrase.
@@ -57,10 +63,6 @@ Within an account or organization keyword search you may also disable recursive 
 ::: Note
 You can only search for code in repositories that you have permission to access.
 :::
-
-### Simple regex
-
-Keyword search has some support for simple regex, but more complex expressions might not function as expected.
 
 ## Search results
 

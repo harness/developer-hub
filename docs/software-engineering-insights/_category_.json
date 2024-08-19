@@ -2,7 +2,7 @@
    "label":"Software Engineering Insights",
    "collapsible":"true",
    "collapsed":"true",
-   "className":"red",
+   "className":"default",
    "link":{
       "type":"generated-index",
       "title":"Software Engineering Insights"

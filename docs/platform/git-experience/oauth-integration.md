@@ -13,7 +13,6 @@ When you integrate OAuth with Git Experience, the credentials are stored in your
 Harness will continue to use the user name corresponding to the account if you don't integrate OAuth with Git Experience.
 :::
 
-
 This topic explains how to configure OAuth for Git Experience in Harness.
 
 ## Configure OAuth for Git provider
@@ -70,3 +69,7 @@ To commit changes to Git using the configured OAuth token:
    ![](./static/commit-without-oauth.png)
 
 4. Go to your branch in the Git repository. It now displays the author details beside the commit.
+   
+:::info note
+We currently do not support OAuth authentication for Git providers that use vanity URLs.
+:::

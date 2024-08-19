@@ -382,15 +382,19 @@ export default function University() {
                       src={`${baseUrl}img/cert_dev_idp_badge.svg`}
                       alt="Developer IDP Badge"
                     />
-                  </div>
-                  {/* <h5>Coming Soon</h5> */}
-                  <h5>Coming Soon</h5>
-                  <div className={styles.unAvailableCerts}>
                     <img
                       src={`${baseUrl}img/cert_dev_sei_badge.svg`}
                       alt="Developer SEI Badge"
                     />
                   </div>
+            {/* <h5>Coming Soon</h5> 
+                <h5>Coming Soon</h5>
+                <div className={styles.unAvailableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
+                    alt="Administrator CCM Badge"
+                  /> 
+                </div> */}
                 </div>
               </div>
               <div className={styles.verticalLine}></div>

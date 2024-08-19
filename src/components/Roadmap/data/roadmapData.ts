@@ -33,6 +33,7 @@ export type Feature = {
   title: string;
   description: string;
   link?: string;
+  backgroundColor?: string;
 };
 export interface Horizon {
   [key: string]: {

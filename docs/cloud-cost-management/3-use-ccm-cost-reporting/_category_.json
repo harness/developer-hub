@@ -3,7 +3,7 @@
     "position": 3,
     "collapsible":"true",
     "collapsed":"true",
-    "className":"red",
+    "className":"default",
     "link":{
        "type":"generated-index",
        "title":"Cost reporting"

@@ -352,6 +352,10 @@ Currently, caching build images with Harness CI Cloud isn't supported.
 
 By default, a built-in step runs inside a container within the build VM.
 
+###  How to fix the docker rate limiting errors while pulling the Harness internal images when the build is running on Harness cloud?
+
+You could update the deafult docker connector ```harnessImage``` and point it to the Harness internal GAR/ECR as mentioned in the [doc](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
+
 ## Kubernetes clusters
 
 ### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
@@ -598,6 +602,33 @@ This could happen when the docker repository in the build and push step is not c
 
 This could happen when the PR/push trigger is configured with the 'Auto-abort Previous Execution' option, which will automatically cancel active builds started by the same trigger when a branch or PR is updated
 
+### Can we add the config "topologySpreadConstraints" in the build pod which will help CI pod to spread across different AZs?
+
+Currently, we do not support adding "topologySpreadConstraints" to the build pod
+
+### Why the docker commands in the run step is failing with the error "Cannot connect to the Docker daemon at unix:///var/run/docker.sock?" even after the dind background step logs shows that the docker daemon has been initialized?
+
+This could happen if the folders ```/var/lib/docker``` and ```/var/run```  are not added under the shared path in the CI stage. More details about the dind config can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/) 
+
+### Why the build using dind is failing with out of memory error even after enough memory is configured in the run step where the docker commands are running?
+
+When dind is used, the build will run on the dind container instead of the step container where Docker commands are executed. Therefore, if an out-of-memory error occurs during the build on dind, the resources on the dind container need to be updated
+
+### Why the docker commands are failing on the run step with the error "command not found: docker" even if we have the dind running as background step?
+
+This happens when the step container configured in the run step doesnt have docker cli installed
+
+### How can we use buildx while running the build in k8s build infra?
+
+The built-in build and push step use kaniko to perform the build in k8s build infra. We can configure dind build to use buildx while running the build in k8s infra
+More details about the dind config can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/)
+
+### Do we need to have both ARM and AMD build infrastructure to build multiarch images using built-in build and push step in k8s infra?  
+
+Yes, we need to have one stage running on ARM and another stage running on AMD to build both ARM and AMD images using the built-in build and push step in k8s infra. More details including a sample pipeline can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-multi-arch/)
+
+### Does Harness CI support AKS 1.28.3 version?
+Yes
 
 ## Self-signed certificates
 
@@ -1426,7 +1457,7 @@ If you want to include the volume content in the image layers, consider using `C
 
 ### Can I use images from multiple Azure Container Registries (ACRs)?
 
-Yes. Go to [Use images from multiple ACRs](./articles/using-images-from-multiple-ACRs).
+Yes. Go to [Use images from multiple ACRs](/kb/continuous-integration/articles/using-images-from-multiple-ACRs).
 
 ### Is remote caching supported in Build and Push steps?
 
@@ -1434,7 +1465,27 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 
 ### Build and Push to Docker fails with kaniko container runtime error
 
-Go to the [Kaniko container runtime error article](./articles/kaniko_container_runtime_error).
+Go to the [Kaniko container runtime error article](/kb/continuous-integration/articles/kaniko_container_runtime_error).
+
+### Can I push and pull from two different docker registries that have same prefix for registry URL ?
+
+No, this is currently not supported in docker.
+
+If two registry URLs begin with same prefix, for example https://index.docker.io it will result in the second registry credentials getting over-ridden in the docker config file when a docker login is attempted 
+
+As an example, this would fail as the prefix URLs are not unique.
+
+https://index.docker.io/v1/abc/test-private
+
+https://index.docker.io/v1/xyz/test2
+
+docker config would look like:
+```
+{
+      https://index.docker.io/***: { auth}
+}
+```
+But fully unique docker compliant registry URLs are not affected by this limitation.
 
 ### What is the default build context when using Build and Push steps?
 
@@ -1899,6 +1950,10 @@ Docker-in-Docker is not required to be run as a background step because the GHA 
 ### How do we configure the stage variable ```PLUGIN_STRIP_PREFIX``` if we have 2 upload to s3 steps that needs to trim different keywords from the file path?
 
 Since this stage variable accessible to all the steps, currently it is not supported to trim the different keywords from the file path if both the Upload to s3 steps are part of the same CI stage. 
+
+### How can we upload all the files including the directory when using the upload artifacts to jfrog antifactory step?
+
+You could append the directory name in the target path which should create a folder with the same name in the artifactory and the files will be uploaded inside this directory
 
 ## Workspaces, shared volumes, and shared paths
 

@@ -1,8 +1,8 @@
 ---
-title: Usage of Catalog Metadata Ingestion APIs 
-description: Steps to use APIs to ingest metadata and use the information on catalog overview and workflows
+title: Usage of Catalog Ingestion APIs
+description: Steps to use Catalog Ingestion API to ingest metadata and use the information on catalog overview and workflows
 sidebar_position: 7
-sidebar_label: Usage of Catalog Metadata Ingestion APIs
+sidebar_label: Usage of Catalog Ingestion API
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
@@ -17,9 +17,9 @@ In this tutorial we will be using the catalog metadata ingestion APIs to add add
 
 ## Pre-requisites
 
-1. You must have components registered in your software catalog. If you don't have any components registered, follow this [tutorial](/docs/internal-developer-portal/catalog/register-software-component) to register one. We recommend you to register [this software component](https://github.com/harness-community/idp-samples/blob/main/example-catalog-info/cataog-info-ccp.yaml) for this tutorial. 
+1. You must have components registered in your software catalog. If you don't have any components registered, follow this [tutorial](/docs/internal-developer-portal/catalog/register-software-component) to register one. We recommend you to register [this software component](https://github.com/harness-community/idp-samples/blob/main/example-catalog-info/cataog-info-ccp.yaml) for this tutorial.
 
-## Add a new metadata 
+## Add a new metadata
 
 1. Now using the following cURL command add a new metadata `onShoreTeamLead` in all your software component of type `services` and using the tag `java`
 
@@ -58,9 +58,9 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="Use the Metadata Information ">
 <TabItem value="display-additional-info-card" label="Additional Info Card">
 
-In case you want to display the same information you have ingested on your Overview page as an additional card, follow the steps below. 
+In case you want to display the same information you have ingested on your Overview page as an additional card, follow the steps below.
 
-1. Go to the **Layout Page** and under **Admin** and add the following for **Services** and **Save** it. 
+1. Go to the **Layout Page** and under **Admin** and add the following for **Services** and **Save** it.
 
 ```YAML
 - component: EntityAdditionalInfoCard
@@ -97,9 +97,9 @@ We had already added the `offShoreTeamLead` in the [`catalog-info.yaml`](https:/
 </TabItem>
 <TabItem value="use-value-in-workflows" label="Workflows UI Picker">
 
-In case you need to use the data present in your catalog as an input for the workflows, you can do so by using the [EntityFieldPicker](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#entityfieldpicker). 
+In case you need to use the data present in your catalog as an input for the workflows, you can do so by using the [EntityFieldPicker](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#entityfieldpicker).
 
-Here's an example workflow template that uses the `onShoreTeamLead` as Owner for the new service being created. 
+Here's an example workflow template that uses the `onShoreTeamLead` as Owner for the new service being created.
 
 ```YAML
 ## Example template.yaml
@@ -112,13 +112,13 @@ owner:
     ui:displayField: metadata.additionalInfo.onShoreTeamLead
     ui:options:
         catalogFilter:
-            kind: 
+            kind:
             - Component
             - Service
 ...
 ```
 
-The `ui:displayField` fetches all the `onShoreTeamLead` names from the catalog. 
+The `ui:displayField` fetches all the `onShoreTeamLead` names from the catalog.
 
 ```YAML
 ### Complete Example of a service onboarding template.yaml
@@ -152,7 +152,7 @@ spec:
         public_template_url:
           title: Give a Public template URL
           type: string
-          description: Give a Public Cookiecutter Template  
+          description: Give a Public Cookiecutter Template
         owner:
             title: Owner
             type: string
@@ -161,7 +161,7 @@ spec:
             ui:displayField: metadata.additionalInfo.onShoreTeamLead
             ui:options:
                 catalogFilter:
-                    kind: 
+                    kind:
                     - Component
                     - Service
         # This field is hidden but needed to authenticate the request to trigger the pipeline
@@ -194,4 +194,4 @@ spec:
 
 ## Conclusion
 
-Using the Catalog Metadata Ingestion API, you can source information into your catalog from internal systems such as cost trackers, service health checkers, security scans, or even from simple spreadsheets tracking personnel details and use them to just display the information to users as wells as use them as an input for workflows. 
+Using the Catalog Metadata Ingestion API, you can source information into your catalog from internal systems such as cost trackers, service health checkers, security scans, or even from simple spreadsheets tracking personnel details and use them to just display the information to users as wells as use them as an input for workflows.

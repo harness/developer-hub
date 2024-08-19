@@ -2,7 +2,7 @@
    "label":"Cloud marketplace offerings",
    "collapsible":"true",
    "collapsed":"true",
-   "className":"red",
+   "className":"default",
    "link":{
       "type":"generated-index",
       "title":"Cloud marketplace offerings"
