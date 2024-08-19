@@ -35,7 +35,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   - Fixes a race condition where concurrent map access could happen in the Primary Proxy when it's aggregating metrics data.
   - Cleans up error logs that shouldn't have been logged.
 
-### Javascript SDK
+### Java SDK
 
 #### Version 1.7.0
 
