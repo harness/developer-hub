@@ -1,5 +1,5 @@
 ---
-title: Get started on On-Premise(SMP) 
+title: On-Premise (SMP)
 sidebar_position: 2
 ---
 
