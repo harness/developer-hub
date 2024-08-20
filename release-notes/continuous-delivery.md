@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-08-19:T10:00:00
+date: 2024-08-20:T10:00:00
 sidebar_position: 8
 ---
 
