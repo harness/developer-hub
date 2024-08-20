@@ -52,7 +52,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 #### Fixed issues
 
 - The error title **Intervention** was displayed when the verification step failed. The title is now updated to **Verification Failure**. (CDS-99671,ZD-65113)
-- The runtime input was displayed even when **fixed values** was selected from the templates in the monitored services. This issue has been resolved since `defaultValueToReset` field is passed to the MultiTypeService and MultiTypeEnvironment fields. (CDS-99518) 
+- The runtime input symbol was getting displayed even when **fixed values** was selected from the templates in the monitored services. This issue has been resolved. (CDS-99518) 
 - On the services page, the deployment type icon did not consistently appear. This issue has been resolved. (CDS-99331, ZD-66892)
 - GitOps deployments were not tracked for multiple projects because the Harness Gitops instances service was out of sync with applications without project mappings. This issue has been resolved. (CDS-98989, ZD-63203)
 - An error message associated with missing parameters in the GitHub Connector was ambiguous. This issue was resolved. (CDS-97760)
