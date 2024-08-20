@@ -1,7 +1,7 @@
 ---
 title: Drone FAQs
 description: This article addresses some frequently asked questions about Drone.
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 ## Licenses, installation, and initial setup
