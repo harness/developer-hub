@@ -24,6 +24,38 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## August 2024
 
+### Version 202408.1
+
+<!-- August 14, 2024 -->
+
+This release introduces enhanced SEI Diagnostics for monitoring SCM integration statuses, Custom fields support in the Business Alignment report, and many more. Watch the [release demo](https://youtu.be/Z\_RDkXFxvK4) to see the key changes in action.
+
+<DocVideo src="https://www.youtube.com/embed/Z_RDkXFxvK4?si=1K_aFQvEoQJX7DYe" />
+
+**New Docs:** [SEI Diagnostics](/docs/software-engineering-insights/sei-diagnostics), [SEI API Guide](/docs/software-engineering-insights/sei-technical-reference/sei-api-reference/sei-api-guide), [Subscriptions and Licenses](/docs/software-engineering-insights/get-started/sei-subscription-and-licensing)
+
+#### Generally Available
+
+The new experience for the [Azure Devops integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) is now **Generally Available**! Find the step-by-step instructions for configuring the integration on the [Azure Devops integration topic](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops).
+
+#### Early access features
+
+* You can now add filters using custom fields from **Azure Devops** and **Jira** in the **Business Alignment report**. This feature is currently in **BETA** and requires the `SEI_NEW_BA_COMBINED_WIDGET` feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-7622)
+
+* You can now use the **Configuration Item** field from **ServiceNow** as a filter across the application. This feature is currently in **BETA** and requires the `SEI_SERVICE_NOW` feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-7827)
+
+#### New features and enhancements
+
+* In the **SEI Diagnostics** added support for monitoring integration statuses across the **SCM integrations**. To learn more, go to [SEI Diagnostics](/docs/software-engineering-insights/sei-diagnostics). (SEI-7749)
+
+* In the **SCM Rework report**, clicking on the commit message now redirects you to the corresponding **SCM commit**, making it easier to validate data across the SCM tool and SEI. (SEI-7840)
+
+#### Fixed issues
+
+* Fixed the bug for the **Harness SEI Jenkins Plugin** that caused the integration to return errors due to the **BlueOcean** dependency. (SEI-7025)
+
+* Resolved the issue that caused a few of the single stat reports to display no values. (SEI-7772)
+
 ### Version 202407.2.2
 
 <!-- August 09, 2024 -->
