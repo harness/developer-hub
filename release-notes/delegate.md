@@ -75,6 +75,10 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Resolved issue with Rollout deployment logs where logs were not available or expandable. This problem, caused by a race condition between stream closure and log dispatching, has been fixed. Logs will now display correctly even under heavy load. (PL-55512, ZD-66330)
 
+### Version 24.07.83608 <!--  August 14, 2024 -->
+
+- Separated the LDAP settings between CG and NG. With this feature, the CG LDAP upgrade to NG LDAP, and CG and NG LDAP settings now operate independently. This feature is behind the feature flag `PL_ENABLE_NG_LDAP_SETTINGS`. To enable this feature, please contact [Harness Support](mailto:support@harness.io). (PL-56167)
+
 ### Version 24.08.83306 <!--  August 13, 2024 -->
 
 #### Hotfix
