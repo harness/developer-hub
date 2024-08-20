@@ -1467,24 +1467,12 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 
 Go to the [Kaniko container runtime error article](/kb/continuous-integration/articles/kaniko_container_runtime_error).
 
-### Can I push and pull from two different docker registries that have same prefix for registry URL ?
+### When using 'Build ans Push' steps with Base Image connector, Can I pull and push from two different docker registries that have same prefix for registry URL ?
 
-No, this is currently not supported in docker.
+No, when using base image connector, ensure the prefix of the url use for pulling is different than the prefix of the url in the connector used for pushing. 
 
-If two registry URLs begin with same prefix, for example https://index.docker.io it will result in the second registry credentials getting over-ridden in the docker config file when a docker login is attempted 
+If two registry URLs begin with same prefix(e.g. https://index.docker.io) it will result in the second registry credentials getting over-ridden in the docker config file when a docker login is attempted 
 
-As an example, this would fail as the prefix URLs are not unique.
-
-https://index.docker.io/v1/abc/test-private
-
-https://index.docker.io/v1/xyz/test2
-
-docker config would look like:
-```
-{
-      https://index.docker.io/***: { auth}
-}
-```
 In other cases with a docker compatible jfrog registry, this limitation is not present. 
 If the URLs are fully unique the docker config map can have 2 separate entries for the authentication, as opposed to getting 1 entry as listed above.
 
