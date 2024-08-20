@@ -39,7 +39,7 @@ From the **Subscriptions** page, you can:
 
 ### Switch or downgrade your plan
 
-You can upgrade from the Free plan to paid plan through the Harness Platform.
+You can upgrade from the Free plan to [Paid plans](https://www.harness.io/pricing) through the Harness Platform.
 
 If you would like to switch between paid plans or downgrade to the Free plan, you must contact the [Harness Sales team](https://www.harness.io/pricing?module=ci#).
 
@@ -72,11 +72,13 @@ In the legacy navigation, go to **Account settings** and then select **Billing**
 ## Harness Cloud billing and Cloud credits
 
 Harness Cloud provides Harness-managed VMs for executing various tasks, such as builds, and security tests. This section explains billing and credit consumption for Harness Cloud.
+
 [Learn more about Harness Cloud](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
+
 
 ### Credit consumption
 
-Each minute of execution on Harness Cloud consumes credits. The rate per Cloud minute, and the resulting credits consumption, depends on the target environment (such as OS type, machine resources, and so on) that you use for the Harness Cloud build.
+Each minute of execution on Harness Cloud consumes credits. The rate per minute, and the resulting credits consumption, depends on the target environment (such as OS type, machine resources, and so on) that you use for the Harness Cloud execution.
 
 Users can choose between two models: **Flex** and **Custom**.
 
