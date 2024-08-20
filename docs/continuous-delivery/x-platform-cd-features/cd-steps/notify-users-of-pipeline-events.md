@@ -236,7 +236,7 @@ notificationRules:
       notificationMethod:
         type: Webhook
         spec:
-          webhookUrl: https://app.harness.io/gateway/ng/api/projects/Quality_Assurence?accountIdentifier=vpCkHKsDSxK9_KYfjCTMKA&orgIdentifier=QE_Team
+          webhookUrl: https://app.harness.io/gateway/ng/api/projects/Quality_Assurence?accountIdentifier=ACCOUNT_ID&orgIdentifier=QE_Team
           headers:
             accept: "*/*"
             authorization: <+pipeline.variables.sv1>
@@ -272,20 +272,20 @@ If you are using a custom webhook trigger in webhook notification method and if 
 ```json
 {
   "eventData": {
-    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "accountIdentifier": "ACCOUNT_ID",
     "orgIdentifier": "default",
-    "projectIdentifier": "Krishika_CD_Samples",
-    "pipelineIdentifier": "create_pipeline_harness",
-    "pipelineName": "create_pipeline_harness",
-    "planExecutionId": "qbZ0AEmvT72JCDXrdYKmCA",
-    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/qbZ0AEmvT72JCDXrdYKmCA/pipeline",
-    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "projectIdentifier": "PROJECT_ID",
+    "pipelineIdentifier": "PIPELINE_ID",
+    "pipelineName": "PIPELINE_NAME",
+    "planExecutionId": "PIPELINE_EXECUTION_ID",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/PIPELINE_EXECUTION_ID/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
     "eventType": "PipelineStart",
     "nodeStatus": "started",
     "triggeredBy": {
       "triggerType": "MANUAL",
-      "name": "Krishika Singh",
-      "email": "krishika.singh@harness.io"
+      "name": "NAME",
+      "email": "EMAIL_ID"
     },
     "moduleInfo": {},
     "startTime": "Tue Aug 20 08:14:46 GMT 2024",
@@ -299,20 +299,20 @@ If you are using a custom webhook trigger in webhook notification method and if 
 ```json
 {
   "eventData": {
-    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "accountIdentifier": "ACCOUNT_ID",
     "orgIdentifier": "default",
-    "projectIdentifier": "Krishika_CD_Samples",
-    "pipelineIdentifier": "create_pipeline_harness",
-    "pipelineName": "create_pipeline_harness",
-    "planExecutionId": "V7Pxt91rQCK9EuIhZIMoDA",
-    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/V7Pxt91rQCK9EuIhZIMoDA/pipeline",
-    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "projectIdentifier": "PROJECT_ID",
+    "pipelineIdentifier": "PIPELINE_ID",
+    "pipelineName": "PIPELINE_NAME",
+    "planExecutionId": "PIPELINE_EXECUTION_ID",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/PIPELINE_EXECUTION_ID/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
     "eventType": "PipelineEnd",
     "nodeStatus": "completed",
     "triggeredBy": {
       "triggerType": "MANUAL",
-      "name": "Krishika Singh",
-      "email": "krishika.singh@harness.io"
+      "name": "NAME",
+      "email": "EMAIL_ID"
     },
     "moduleInfo": {},
     "startTime": "Tue Aug 20 08:19:31 GMT 2024",
@@ -329,20 +329,20 @@ If you are using a custom webhook trigger in webhook notification method and if 
 ```json
 {
   "eventData": {
-    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "accountIdentifier": "ACCOUNT_ID",
     "orgIdentifier": "default",
-    "projectIdentifier": "Krishika_CD_Samples",
-    "pipelineIdentifier": "create_pipeline_harness",
-    "pipelineName": "create_pipeline_harness",
-    "planExecutionId": "eMJ79mUmReaUvhDB75s3PA",
-    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/eMJ79mUmReaUvhDB75s3PA/pipeline",
-    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "projectIdentifier": "PROJECT_ID",
+    "pipelineIdentifier": "PIPELINE_ID",
+    "pipelineName": "PIPELINE_NAME",
+    "planExecutionId": "PIPELINE_EXECUTION_ID",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/PIPELINE_EXECUTION_ID/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
     "eventType": "PipelineSuccess",
     "nodeStatus": "completed",
     "triggeredBy": {
       "triggerType": "MANUAL",
-      "name": "Krishika Singh",
-      "email": "krishika.singh@harness.io"
+      "name": "NAME",
+      "email": "EMAIL_ID"
     },
     "moduleInfo": {},
     "startTime": "Tue Aug 20 08:22:42 GMT 2024",
@@ -359,20 +359,20 @@ If you are using a custom webhook trigger in webhook notification method and if 
 ```json
 {
   "eventData": {
-    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "accountIdentifier": "ACCOUNT_ID",
     "orgIdentifier": "default",
-    "projectIdentifier": "Krishika_CD_Samples",
-    "pipelineIdentifier": "create_pipeline_harness",
-    "pipelineName": "create_pipeline_harness",
-    "planExecutionId": "BRelJXp_SGSFyg8tUHzWhA",
-    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/BRelJXp_SGSFyg8tUHzWhA/pipeline",
-    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "projectIdentifier": "PROJECT_ID",
+    "pipelineIdentifier": "PIPELINE_ID",
+    "pipelineName": "PIPELINE_NAME",
+    "planExecutionId": "PIPELINE_EXECUTION_ID",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/PIPELINE_EXECUTION_ID/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
     "eventType": "PipelineFailed",
     "nodeStatus": "failed",
     "triggeredBy": {
       "triggerType": "MANUAL",
-      "name": "Krishika Singh",
-      "email": "krishika.singh@harness.io"
+      "name": "NAME",
+      "email": "EMAIL_ID"
     },
     "moduleInfo": {},
     "startTime": "Tue Aug 20 08:25:04 GMT 2024",
@@ -390,23 +390,23 @@ If you are using a custom webhook trigger in webhook notification method and if 
 ```json
 {
   "eventData": {
-    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "accountIdentifier": "ACCOUNT_ID",
     "orgIdentifier": "default",
-    "projectIdentifier": "Krishika_CD_Samples",
-    "pipelineIdentifier": "create_pipeline_harness",
-    "pipelineName": "create_pipeline_harness",
-    "planExecutionId": "oTm27lEXTYi-yM75fxGg5g",
+    "projectIdentifier": "PROJECT_ID",
+    "pipelineIdentifier": "PIPELINE_ID",
+    "pipelineName": "PIPELINE_NAME",
+    "planExecutionId": "PIPELINE_EXECUTION_ID",
     "stageIdentifier": "qq",
-    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/oTm27lEXTYi-yM75fxGg5g/pipeline",
-    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/PIPELINE_EXECUTION_ID/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
     "stepName": "qq",
     "stageName": "qq",
     "eventType": "StageFailed",
     "nodeStatus": "failed",
     "triggeredBy": {
       "triggerType": "MANUAL",
-      "name": "Krishika Singh",
-      "email": "krishika.singh@harness.io"
+      "name": "NAME",
+      "email": "EMAIL_ID"
     },
     "startTime": "Tue Aug 20 08:28:13 GMT 2024",
     "startTs": 1724142493,
@@ -427,23 +427,23 @@ The above JSON is for a specific stage, If you choose all stages three times the
 ```json
 {
   "eventData": {
-    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "accountIdentifier": "ACCOUNT_ID",
     "orgIdentifier": "default",
-    "projectIdentifier": "Krishika_CD_Samples",
-    "pipelineIdentifier": "create_pipeline_harness",
-    "pipelineName": "create_pipeline_harness",
-    "planExecutionId": "I6b9dE8YS8KGiYLEz3ilMg",
+    "projectIdentifier": "PROJECT_NAME",
+    "pipelineIdentifier": "PIPELINE_NAME",
+    "pipelineName": "PIPELINE_NAME",
+    "planExecutionId": "PIPELINE_EXECUTION_ID",
     "stageIdentifier": "qq",
-    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/I6b9dE8YS8KGiYLEz3ilMg/pipeline",
-    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/PIPELINE_EXECUTION_ID/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
     "stepName": "qq",
     "stageName": "qq",
     "eventType": "StageSuccess",
     "nodeStatus": "completed",
     "triggeredBy": {
       "triggerType": "MANUAL",
-      "name": "Krishika Singh",
-      "email": "krishika.singh@harness.io"
+      "name": "NAME",
+      "email": "EMAIL_ID"
     },
     "startTime": "Tue Aug 20 08:38:40 GMT 2024",
     "startTs": 1724143120,
@@ -463,23 +463,23 @@ The above JSON is for a specific stage, If you choose all stages three times the
 ```json
 {
   "eventData": {
-    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "accountIdentifier": "ACCOUNT_ID",
     "orgIdentifier": "default",
-    "projectIdentifier": "Krishika_CD_Samples",
-    "pipelineIdentifier": "create_pipeline_harness",
-    "pipelineName": "create_pipeline_harness",
+    "projectIdentifier": "PROJECT_NAME",
+    "pipelineIdentifier": "PIPELINE_NAME",
+    "pipelineName": "PIPELINE_NAME",
     "planExecutionId": "DRWqd-imSA2wi8xPmoaOjQ",
     "stageIdentifier": "qs",
-    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/DRWqd-imSA2wi8xPmoaOjQ/pipeline",
-    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/DRWqd-imSA2wi8xPmoaOjQ/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
     "stepName": "qs",
     "stageName": "qs",
     "eventType": "StageStart",
     "nodeStatus": "started",
     "triggeredBy": {
       "triggerType": "MANUAL",
-      "name": "Krishika Singh",
-      "email": "krishika.singh@harness.io"
+      "name": "NAME",
+      "email": "EMAIL_ID"
     },
     "moduleInfo": {},
     "startTime": "Tue Aug 20 09:03:09 GMT 2024",
@@ -498,23 +498,23 @@ The above JSON is for a specific stage, If you choose all stages three times the
 ```json
 {
   "eventData": {
-    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "accountIdentifier": "ACCOUNT_ID",
     "orgIdentifier": "default",
-    "projectIdentifier": "Krishika_CD_Samples",
-    "pipelineIdentifier": "create_pipeline_harness",
-    "pipelineName": "create_pipeline_harness",
+    "projectIdentifier": "PROJECT_NAME",
+    "pipelineIdentifier": "PIPELINE_NAME",
+    "pipelineName": "PIPELINE_NAME",
     "planExecutionId": "OmbdztM2Qvqh7ZwM06FY4A",
     "stageIdentifier": "qq",
     "stepIdentifier": "ShellScript_1",
-    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/OmbdztM2Qvqh7ZwM06FY4A/pipeline",
-    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/OmbdztM2Qvqh7ZwM06FY4A/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
     "stepName": "ShellScript_1",
     "eventType": "StepFailed",
     "nodeStatus": "failed",
     "triggeredBy": {
       "triggerType": "MANUAL",
-      "name": "Krishika Singh",
-      "email": "krishika.singh@harness.io"
+      "name": "NAME",
+      "email": "EMAIL_ID"
     },
     "startTime": "Tue Aug 20 09:12:09 GMT 2024",
     "startTs": 1724145129,
