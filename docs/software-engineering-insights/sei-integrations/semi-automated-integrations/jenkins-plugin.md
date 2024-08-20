@@ -125,7 +125,7 @@ tool:
 
 ```
 
-* Specify the `applicationType` based on the environment:
+* Specify the **applicationType** based on the environment:
   * **Prod 1:** `SEI_HARNESS_PROD_1`
   * **Prod 2:** `SEI_HARNESS_PROD_2`
   * **Prod 3:** `SEI_HARNESS_PROD_3`
