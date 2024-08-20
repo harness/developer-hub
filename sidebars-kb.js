@@ -253,6 +253,7 @@ const sidebars = {
           */
           type: "category",
           label: "Armory",
+          className: "sidebar-armory",
           link: {
             type: "generated-index",
             slug: "/armory",
