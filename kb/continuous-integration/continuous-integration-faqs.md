@@ -1583,9 +1583,9 @@ If you get a `certificate signed by unknown authority` error with the [Upload Ar
 
 ### Can I run the Upload Artifacts to JFrog Artifactory step with a non-root user?
 
-No. The jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
+Yes. By default, the jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
 
-To work around this Users can set a Stage variable JFROG_CLI_HOME_DIR to change the folder in which .jfrog will be created, to a path that is writable by the user running the container.
+Set JFROG_CLI_HOME_DIR as Stage variable to change the folder in which .jfrog will be created, to a path you have write access. 
 
 ### mkdir permission denied when running Upload Artifacts to JFrog as non-root
 
