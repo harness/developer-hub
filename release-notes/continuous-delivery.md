@@ -51,7 +51,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### New features and enhancements
 
-- We have introduced cloning of services and environments entities for a pipeline. Currently this feature is behind the Feature Flag `CDS_SERVICE_ENV_CLONING`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-97315, CDS-98426)
+- You can clone [Services](/docs/continuous-delivery/x-platform-cd-features/services/services-overview#clone-services) across scopes i.e from one project to another, project to organization, account to project etc. and [Environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments#clone-environments) scopes (i.e from one project to another, project to organization, account to project etc.). Currently this feature is behind the Feature Flag `CDS_SERVICE_ENV_CLONING`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-97315, CDS-98426)
 
 #### Fixed issues
 
