@@ -1,34 +1,34 @@
 ---
-title: Harness CI Cloud FAQs
-description: This article addresses some frequently asked questions about Harness CI Cloud/Harness' hosted infrastructure.
+title: Harness Cloud FAQs
+description: This article addresses some frequently asked questions about Harness Cloud/Harness' hosted infrastructure.
 sidebar_position: 3
 ---
 
 ## **Security**
 
-### Can I trust Harness CI Cloud with my intellectual property (source code, artifacts, and so on)? 
+### Can I trust Harness Cloud with my intellectual property (source code, artifacts, and so on)? 
 
-Yes. Harness CI Cloud **doesn't** retain your data after running a build. ([link to docs](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect/))
+Yes. Harness Cloud **doesn't** retain your data after running a build. ([link to docs](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect/))
 
-### Can Harness CI Cloud securely connect to my complex and private firewalled infrastructure? 
+### Can Harness Cloud securely connect to my complex and private firewalled infrastructure? 
 
-Yes. You can use [Secure Connect](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect/) for Harness CI Cloud to connect to your private assets through a secure tunnel.
+Yes. You can use [Secure Connect](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect/) for Harness Cloud to connect to your private assets through a secure tunnel.
 
 * Extension of your existing private infrastructure  
 * Dedicated infrastructure  
 * Encryption at rest and in transit  
-* Passwords are stored using OIDC  
+* Password-less access using OIDC  
 * No customer assets stored in Harness
 
 <!--   <DocImage path={require('static/harness-cloud-faqs-1-secure-connect.png')} width="60%" height="60%" title="Click to view full size image" />
 -->
 ![secure connect image](static/harness-cloud-faqs-1-secure-connect.png)
 
-### Can I prove that Harness CI Cloud is secure so I can get it approved quickly by the required stakeholders (security team, DevOps platform team, infrastructure teams, and so on)? 
+### Can I prove that Harness Cloud is secure so I can get it approved quickly by the required stakeholders (security team, DevOps platform team, infrastructure teams, and so on)? 
 
-Yes. Harness CI Cloud has been penetration tested by external experts, and it is [ISO and SOC2](https://trust.harness.io/) certified. If you're already using Harness CI Cloud, additional approval isn't needed to enable Secure Connect to connect to your firewalled assets.
+Yes. Harness Cloud has been penetration tested by external experts, and it is [ISO and SOC2](https://trust.harness.io/) certified. If you're already using Harness Cloud, additional approval isn't needed to enable Secure Connect to connect to your firewalled assets.
 
-### What is SLSA and why do I need it?
+### What is SLSA, and why do I need it?
 
 **SLSA** (Supply-chain Levels for Software Artifacts) is a security framework designed to ensure the integrity of software supply chains. It provides a set of standards and practices that organizations can adopt to mitigate the risks associated with software development and deployment, particularly those related to the integrity and security of software artifacts.
 
@@ -36,7 +36,7 @@ Companies can benefit from SLSA in the following ways:
 
 **Supply Chain Security**:
 
-* **Preventing Tampering**: SLSA helps in preventing unauthorized changes to software artifacts at various stages of the supply chain.  
+* **Preventing Tampering**: SLSA helps prevent unauthorized changes to software artifacts at various stages of the supply chain.  
 * **Reducing Risks of Compromise**: By following SLSA guidelines, companies can reduce the risk of supply chain attacks, where malicious actors might try to inject vulnerabilities or backdoors into software during its development or distribution.
 
 **Compliance and Assurance**:
@@ -46,7 +46,7 @@ Companies can benefit from SLSA in the following ways:
 
 **Incident Response and Forensics**:
 
-* **Traceability**: SLSA helps in maintaining detailed records of software changes and their origins, which is crucial for incident response and forensic investigations in the event of a security breach.
+* **Traceability**: SLSA helps maintain detailed records of software changes and their origins, which is crucial for incident response and forensic investigations in the event of a security breach.
 
 ### How is SLSA v1.0 different from SLSA v0.1?
 
@@ -87,7 +87,7 @@ SLSA v1.0 builds on the foundation laid by SLSA v0.1, offering a more comprehens
 
 SLSA (Supply-chain Levels for Software Artifacts) v1.0 Level 3 (L3) represents a comprehensive set of practices and requirements aimed at ensuring a high level of security and integrity for software supply chains. SLSA defines different levels of compliance, with each higher level providing stronger guarantees. Level 3, in particular, focuses on tamper resistance, non-falsifiable provenance, and build integrity.
 
-The Harness CI Cloud environment is designed to isolate build processes, preventing any potential influence between runs. The hosted containerized step in Harness CI restricts build steps to access the provenance key information in compliance with SLSA specifications. ([link to blog post](https://www.harness.io/blog/an-in-depth-look-at-achieving-slsa-level-3-compliance-with-harness))  
+The Harness Cloud environment is designed to isolate build processes, preventing any potential influence between runs. The hosted containerized step in Harness CI restricts build steps to access the provenance key information in compliance with SLSA specifications. ([link to blog post](https://www.harness.io/blog/an-in-depth-look-at-achieving-slsa-level-3-compliance-with-harness))  
 
 ![Harness Cloud SLSA attestation](static/harness-cloud-faqs-2-slsa.png)
 
@@ -111,7 +111,7 @@ RisingWave’s build time was reduced by half after moving from GitHub runners \
 A global employment solutions company improved their build times by 3x after moving from GitHub-based runners to Harness Cloud.
 
 **Jenkins**  
-Qrvey accelerated their builds by 8x and reduced their build times from 90 minutes to 12 minutes. They also freed by a couple of developer’s time that was spent on maintaining self-managed infrastructure before moving to Harness. ([link to case study](https://www.harness.io/case-studies/qrvey-saves-hours-on-build-time-leading-to-happy-engineers))
+Qrvey accelerated their builds by 8x and reduced their build times from 90 minutes to 12 minutes. They also freed a couple of developers’ time that was spent on maintaining self-managed infrastructure before moving to Harness. ([link to case study](https://www.harness.io/case-studies/qrvey-saves-hours-on-build-time-leading-to-happy-engineers))
 
 ## **Overview**
 
