@@ -28,6 +28,12 @@ If you are running delegates version below 799xx and using Terraform/Terragrunt 
 
 :::
 
+:::danger ARM64 Architecture Impact on Delegate Versions
+
+Certain delegate versions (`24.07.83608`, `24.07.83608.minimal`, `24.07.83607`, `24.07.83607.minimal`, `24.07.83606`, `24.07.83606.minimal`, `24.07.83605`, `24.07.83605.minimal`) are affected due to baked-in AMD64 client binaries, despite building a multiarch image. If you are using any of these versions, please upgrade to version `24.07.83609` or `24.07.83609.minimal` to resolve the issue.
+
+:::
+
 :::danger Stackdriver logs notice
 
 If you have blocked Stackdriver logs using firewall rules, upgrade your delegates to version 24.06.83304 or later.
