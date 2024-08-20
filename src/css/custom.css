@@ -1224,6 +1224,27 @@ figure p {
   background-repeat: no-repeat;
 }
 
+.sidebar-armory > div > a::before,.sidebar-armory> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/armory.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-reference-arch > div > a::before,.sidebar-reference-arch> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/reference-arch.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
 /*******************sidebar logo css end*******************/
 
