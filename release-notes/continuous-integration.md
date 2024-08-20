@@ -23,13 +23,15 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## August 2024
 
+
+
 ### Version 1.42
 
 <!-- 2024-08-12 -->
 
 #### Fixed issues
 
-- On pipeline failure at init step entire pod yaml/object was being logged as error log for debugging as a result if any environment variables in a container referencing secrets present were also getting logged in delegate logs. Issue is resolved by changing the log type from error to debug type to remove visibility and added an extra log without logging entire object. (CI-13785)
+- Fixed an issue where pipeline failures at the initialization step resulted in the entire pod YAML, including environment variables with secrets, being logged as an error. The log level has been changed to debug to prevent sensitive data exposure, and a new log has been added to capture essential details without including the full object. (CI-13785)
 
 ### Version 1.41
 
