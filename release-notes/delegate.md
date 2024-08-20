@@ -61,6 +61,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## August 2024
 
+### Version 24.07.83609 <!--  August 20, 2024 -->
+
+#### Hotfix
+
+- Modified the default value handling for built-in Docker environment variables for `TARGETPLATFORM`
+
 ### Version 24.07.83608 <!--  August 14, 2024 -->
 
 - Separated the LDAP settings between CG and NG. With this feature, the CG LDAP upgrade to NG LDAP, and CG and NG LDAP settings now operate independently. This feature is behind the feature flag `PL_ENABLE_NG_LDAP_SETTINGS`. To enable this feature, please contact [Harness Support](mailto:support@harness.io). (PL-56167)
