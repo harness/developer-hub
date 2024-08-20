@@ -1,4 +1,4 @@
-<!-- ---
+---
 title: Manage delegate notifications
 description: This topic describes how to manage notifications for Harness Delegate.
 keywords: [Notification Settings, Slack notifications, Microsoft Teams notifications, webhook notifications, PagerDuty notifications, Harness Delegate]
@@ -130,4 +130,4 @@ To edit a channel, do the following:
 3. Select **Channels**.
 4. Select **More Options** (&vellip;) corresponding to the channel you want to update, and then select **Edit**. The **Edit Channel** dialog opens.
 5. Update your channel settings, then select **Apply** to save your changes.
- -->
+
