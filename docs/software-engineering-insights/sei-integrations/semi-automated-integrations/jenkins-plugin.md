@@ -63,8 +63,8 @@ It does not do any periodic push. It gathers info about job stages and steps. If
 
 #### Requirements
 
-* Jenkins version should be higher then **2.426.3**.
-* Use the plugin version **1.0.33** of SEI Job Reporter Jenkins plugin.
+* Jenkins version should be **2.426.3** or higher.
+* Use the plugin version **1.0.33** or higher of SEI Job Reporter Jenkins plugin.
 
 #### Step-by-step instructions
 
