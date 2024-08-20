@@ -58,3 +58,80 @@ It does not do any periodic push. It gathers info about job stages and steps. If
 | HTML Publisher                         | Indirect                              | 1.23    | [https://plugins.jenkins.io/htmlpublisher](https://plugins.jenkins.io/htmlpublisher)                             |
 | Dashboard for Blue Ocean               | Direct                                | 1.23.2  | [https://plugins.jenkins.io/blueocean-dashboard](https://plugins.jenkins.io/blueocean-dashboard)                 |
 | Pub-Sub "light" Bus                    | Indirect                              | 1.13    | [https://plugins.jenkins.io/pubsub-light](https://plugins.jenkins.io/pubsub-light)                               |
+
+### Configuration as Code
+
+#### Requirements
+
+* Jenkins version should be higher then **2.426.3**.
+* Use the plugin version **1.0.33** of SEI Job Reporter Jenkins plugin.
+
+#### Step-by-step instructions
+
+To configure the SEI Job Reporter plugin in Jenkins using Configuration as Code (JCasC), follow the instructions below:
+
+* Locate the `jenkins.yaml` configuration file and insert the following configuration under the `unclassified` section of the `jenkins.yaml` file:
+
+```yaml
+propelo-job-reporter:
+    levelOpsApiKey: "<SEI_API_KEY>"
+    levelOpsPluginPath: "<PLUGIN_PATH>"
+    trustAllCertificates: "true" or "false"
+    jenkinsInstanceName: "<INSTANCE_NAME>"
+    jenkinsUserName: "<USERNAME>" # For Blue Ocean Plugin
+    jenkinsUserToken: "<USER_TOKEN>" # For Blue Ocean Plugin
+    applicationType: <APPLICATION_TYPE> # eg. SEI_LEGACY
+    jenkinsBaseUrl: <BASE_URL_OF_INSTANCE> # eg. https://jenkins-instance.harness.io
+```
+
+Here's an example `jenkins.yaml` file
+
+```yaml
+jenkins:
+  nodeMonitors:
+  - "architecture"
+  - "clock"
+  - diskSpace:
+      freeSpaceThreshold: "1GiB"
+      freeSpaceWarningThreshold: "2GiB"
+  - "swapSpace"
+  - tmpSpace:
+      freeSpaceThreshold: "1GiB"
+      freeSpaceWarningThreshold: "2GiB"
+  - "responseTime"
+  numExecutors: 2
+globalCredentialsConfiguration:
+appearance:
+security:
+unclassified:
+  mailer:
+  propelo-job-reporter:
+    levelOpsApiKey: "<SEI_API_KEY>"
+    levelOpsPluginPath: "<PLUGIN_PATH>"
+    trustAllCertificates: "true" or "false"
+    jenkinsInstanceName: "<INSTANCE_NAME>"
+    jenkinsUserName: "<USERNAME>" # For Blue Ocean Plugin <OPTIONAL>
+    jenkinsUserToken: "<USER_TOKEN>" # For Blue Ocean Plugin <OPTIONAL>
+    applicationType: <APPLICATION_TYPE> # eg. SEI_LEGACY
+    jenkinsBaseUrl: <BASE_URL_OF_INSTANCE> # eg. https://jenkins-instance.harness.io
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  mavenGlobalConfig:
+    globalSettingsProvider: "standard"
+    settingsProvider: "standard"
+
+```
+
+* Specify the `applicationType` based on the environment:
+  * **Prod 1:** `SEI_HARNESS_PROD_1`
+  * **Prod 2:** `SEI_HARNESS_PROD_2`
+  * **Prod 3:** `SEI_HARNESS_PROD_3`
+
+:::info warning
+Note that the **SEI Job Reporter plugin** installation is not supported directly by JCasC itself. For more details, refer to the official [Jenkins Configuration as Code documentation](https://github.com/jenkinsci/configuration-as-code-plugin/tree/master#installing-plugins).
+:::
+
+By following these steps, you can properly configure the **SEI Job Reporter plugin** using **Jenkins Configuration as Code**. Make sure to replace placeholder values like `<SEI_API_KEY>`, `<PLUGIN_PATH>`, `<INSTANCE_NAME>`, etc with actual data relevant to your Jenkins environment.
