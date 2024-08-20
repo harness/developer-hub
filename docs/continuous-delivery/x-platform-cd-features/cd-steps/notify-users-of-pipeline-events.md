@@ -4,6 +4,10 @@ description: Notify users of different pipeline events.
 sidebar_position: 3
 ---
 
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This topic describes how to notify users of different pipeline events using popular notification methods.
 
 You can send pipeline event notifications using email and popular communication and incident management platforms.
@@ -262,118 +266,272 @@ If you are using a custom webhook trigger in webhook notification method and if 
 
 ### JSON for webhook notifications
 
-<details>
-<summary>Here's the JSON Harness posts to your webhook endpoint.</summary>
+<Tabs>
+<TabItem value="Pipeline Start">
 
 ```json
 {
-  "type": "object",
-  "properties": {
-    "accountIdentifier": {
-      "type": "string"
-    },
-    "orgIdentifier": {
-      "type": "string"
-    },
-    "projectIdentifier": {
-      "type": "string"
-    },
-    "pipelineIdentifier": {
-      "type": "string"
-    },
-    "planExecutionId": {
-      "type": "string"
-    },
-    "stageIdentifier": {
-      "type": "string"
-    },
-    "stepIdentifier": {
-      "type": "string"
-    },
-    "executionUrl": {
-      "type": "string"
-    },
-    "pipelineUrl": {
-      "type": "string"
-    },
-    "eventType": {
-      "type": "string",
-      "enum": [
-        "AllEvents",
-        "PipelineStart",
-        "PipelineSuccess",
-        "PipelineFailed",
-        "PipelineEnd",
-        "PipelinePaused",
-        "StageSuccess",
-        "StageFailed",
-        "StageStart",
-        "StepFailed"
-      ]
-    },
-    "nodeStatus": {
-      "type": "string"
-    },
+  "eventData": {
+    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "orgIdentifier": "default",
+    "projectIdentifier": "Krishika_CD_Samples",
+    "pipelineIdentifier": "create_pipeline_harness",
+    "pipelineName": "create_pipeline_harness",
+    "planExecutionId": "qbZ0AEmvT72JCDXrdYKmCA",
+    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/qbZ0AEmvT72JCDXrdYKmCA/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "eventType": "PipelineStart",
+    "nodeStatus": "started",
     "triggeredBy": {
-      "type": "object",
-      "properties": {
-        "triggerType": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        }
-      }
+      "triggerType": "MANUAL",
+      "name": "Krishika Singh",
+      "email": "krishika.singh@harness.io"
     },
-    "moduleInfo": {
-      "type": "object",
-      "properties": {
-        "services": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "environments": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "envGroups": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "infrastructures": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
+    "moduleInfo": {},
+    "startTime": "Tue Aug 20 08:14:46 GMT 2024",
+    "startTs": 1724141686
+  }
+}
+```
+</TabItem>
+<TabItem value="Pipeline End">
+
+```json
+{
+  "eventData": {
+    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "orgIdentifier": "default",
+    "projectIdentifier": "Krishika_CD_Samples",
+    "pipelineIdentifier": "create_pipeline_harness",
+    "pipelineName": "create_pipeline_harness",
+    "planExecutionId": "V7Pxt91rQCK9EuIhZIMoDA",
+    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/V7Pxt91rQCK9EuIhZIMoDA/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "eventType": "PipelineEnd",
+    "nodeStatus": "completed",
+    "triggeredBy": {
+      "triggerType": "MANUAL",
+      "name": "Krishika Singh",
+      "email": "krishika.singh@harness.io"
     },
-    "startTime": {
-      "type": "string"
-    },
-    "startTs": {
-      "type": "integer"
-    },
-    "endTime": {
-      "type": "string"
-    },
-    "endTs": {
-      "type": "integer"
-    }
+    "moduleInfo": {},
+    "startTime": "Tue Aug 20 08:19:31 GMT 2024",
+    "startTs": 1724141971,
+    "endTime": "Tue Aug 20 08:19:42 GMT 2024",
+    "endTs": 1724141982
   }
 }
 ```
 
-</details>
+</TabItem>
+<TabItem value="Pipeline Success">
+
+```json
+{
+  "eventData": {
+    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "orgIdentifier": "default",
+    "projectIdentifier": "Krishika_CD_Samples",
+    "pipelineIdentifier": "create_pipeline_harness",
+    "pipelineName": "create_pipeline_harness",
+    "planExecutionId": "eMJ79mUmReaUvhDB75s3PA",
+    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/eMJ79mUmReaUvhDB75s3PA/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "eventType": "PipelineSuccess",
+    "nodeStatus": "completed",
+    "triggeredBy": {
+      "triggerType": "MANUAL",
+      "name": "Krishika Singh",
+      "email": "krishika.singh@harness.io"
+    },
+    "moduleInfo": {},
+    "startTime": "Tue Aug 20 08:22:42 GMT 2024",
+    "startTs": 1724142162,
+    "endTime": "Tue Aug 20 08:22:53 GMT 2024",
+    "endTs": 1724142173
+  }
+}
+```
+
+</TabItem>
+<TabItem value="Pipeline Failed">
+
+```json
+{
+  "eventData": {
+    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "orgIdentifier": "default",
+    "projectIdentifier": "Krishika_CD_Samples",
+    "pipelineIdentifier": "create_pipeline_harness",
+    "pipelineName": "create_pipeline_harness",
+    "planExecutionId": "BRelJXp_SGSFyg8tUHzWhA",
+    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/BRelJXp_SGSFyg8tUHzWhA/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "eventType": "PipelineFailed",
+    "nodeStatus": "failed",
+    "triggeredBy": {
+      "triggerType": "MANUAL",
+      "name": "Krishika Singh",
+      "email": "krishika.singh@harness.io"
+    },
+    "moduleInfo": {},
+    "startTime": "Tue Aug 20 08:25:04 GMT 2024",
+    "startTs": 1724142304,
+    "endTime": "Tue Aug 20 08:25:18 GMT 2024",
+    "errorMessage": "Shell Script execution failed. Please check execution logs.",
+    "endTs": 1724142318
+  }
+}
+```
+
+</TabItem>
+<TabItem value="Stage Failed ">
+
+```json
+{
+  "eventData": {
+    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "orgIdentifier": "default",
+    "projectIdentifier": "Krishika_CD_Samples",
+    "pipelineIdentifier": "create_pipeline_harness",
+    "pipelineName": "create_pipeline_harness",
+    "planExecutionId": "oTm27lEXTYi-yM75fxGg5g",
+    "stageIdentifier": "qq",
+    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/oTm27lEXTYi-yM75fxGg5g/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "stepName": "qq",
+    "stageName": "qq",
+    "eventType": "StageFailed",
+    "nodeStatus": "failed",
+    "triggeredBy": {
+      "triggerType": "MANUAL",
+      "name": "Krishika Singh",
+      "email": "krishika.singh@harness.io"
+    },
+    "startTime": "Tue Aug 20 08:28:13 GMT 2024",
+    "startTs": 1724142493,
+    "endTime": "Tue Aug 20 08:28:23 GMT 2024",
+    "errorMessage": "Shell Script execution failed. Please check execution logs.",
+    "endTs": 1724142503
+  }
+}
+```
+
+The above JSON is for a specific stage, If you choose all stages three times the webhook will be triggered. In this case we have two stages qq and qs and both failed and two times the notification was triggered. 
+
+
+</TabItem>
+
+<TabItem value="Stage success">
+
+```json
+{
+  "eventData": {
+    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "orgIdentifier": "default",
+    "projectIdentifier": "Krishika_CD_Samples",
+    "pipelineIdentifier": "create_pipeline_harness",
+    "pipelineName": "create_pipeline_harness",
+    "planExecutionId": "I6b9dE8YS8KGiYLEz3ilMg",
+    "stageIdentifier": "qq",
+    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/I6b9dE8YS8KGiYLEz3ilMg/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "stepName": "qq",
+    "stageName": "qq",
+    "eventType": "StageSuccess",
+    "nodeStatus": "completed",
+    "triggeredBy": {
+      "triggerType": "MANUAL",
+      "name": "Krishika Singh",
+      "email": "krishika.singh@harness.io"
+    },
+    "startTime": "Tue Aug 20 08:38:40 GMT 2024",
+    "startTs": 1724143120,
+    "endTime": "Tue Aug 20 08:38:44 GMT 2024",
+    "endTs": 1724143124
+  }
+}
+```
+
+The above JSON is for a specific stage, If you choose all stages three times the webhook will be triggered. In this case we have two stages qq and qs and both are passed successfully and two times the notification was triggered. 
+
+
+</TabItem>
+
+<TabItem value="Stage Started">
+
+```json
+{
+  "eventData": {
+    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "orgIdentifier": "default",
+    "projectIdentifier": "Krishika_CD_Samples",
+    "pipelineIdentifier": "create_pipeline_harness",
+    "pipelineName": "create_pipeline_harness",
+    "planExecutionId": "DRWqd-imSA2wi8xPmoaOjQ",
+    "stageIdentifier": "qs",
+    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/DRWqd-imSA2wi8xPmoaOjQ/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "stepName": "qs",
+    "stageName": "qs",
+    "eventType": "StageStart",
+    "nodeStatus": "started",
+    "triggeredBy": {
+      "triggerType": "MANUAL",
+      "name": "Krishika Singh",
+      "email": "krishika.singh@harness.io"
+    },
+    "moduleInfo": {},
+    "startTime": "Tue Aug 20 09:03:09 GMT 2024",
+    "startTs": 1724144589
+  }
+}
+```
+
+The above JSON is for a specific stage, If you choose all stages three times the webhook will be triggered. In this case we have two stages qq and qs and both stages started so two times the notification was triggered. 
+
+
+</TabItem>
+
+<TabItem value="Step Failed">
+
+```json
+{
+  "eventData": {
+    "accountIdentifier": "vpCkHKsDSxK9_KYfjCTMKA",
+    "orgIdentifier": "default",
+    "projectIdentifier": "Krishika_CD_Samples",
+    "pipelineIdentifier": "create_pipeline_harness",
+    "pipelineName": "create_pipeline_harness",
+    "planExecutionId": "OmbdztM2Qvqh7ZwM06FY4A",
+    "stageIdentifier": "qq",
+    "stepIdentifier": "ShellScript_1",
+    "executionUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/executions/OmbdztM2Qvqh7ZwM06FY4A/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/Krishika_CD_Samples/pipelines/create_pipeline_harness/pipeline-studio",
+    "stepName": "ShellScript_1",
+    "eventType": "StepFailed",
+    "nodeStatus": "failed",
+    "triggeredBy": {
+      "triggerType": "MANUAL",
+      "name": "Krishika Singh",
+      "email": "krishika.singh@harness.io"
+    },
+    "startTime": "Tue Aug 20 09:12:09 GMT 2024",
+    "startTs": 1724145129,
+    "endTime": "Tue Aug 20 09:12:10 GMT 2024",
+    "errorMessage": "Shell Script execution failed. Please check execution logs.",
+    "endTs": 1724145130
+  }
+}
+```
+
+The above JSON is for a specific stage, If you choose all stages three times the webhook will be triggered. In this case we have two stages qq and qs and both stages started so two times the notification was triggered. 
+
+
+</TabItem>
+
+</Tabs>
+
 
 ## Notify Slack channels in user groups
 
