@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-07-18T10:00
+date: 2024-08-21T10:00
 sidebar_position: 4
 ---
 
@@ -72,6 +72,20 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 #### Hotfix
 
 - Modified the default value handling for built-in Docker environment variables for `TARGETPLATFORM`
+
+### Version 24.08.83701 <!--  August 14, 2024 -->
+
+#### New features and enhancements
+
+- Enhanced AppRole token cache for HashiCorp Vault: Updated the cache key calculation to include secretId and approleId. This change fixes a problem where tokens were not being refreshed correctly. Now, the cache accurately reflects the latest credentials, ensuring secure and reliable token management. (PL-55567, ZD-65493)
+
+- Added proxy configuration support for external notification channels in SMP. To address issues faced by customers who operate in air-gapped environments, we've introduced proxy settings for the platform service. By updating the override file with proxy details, notifications via MS Teams and Slack will now function correctly even when behind a proxy. This feature is available in SMP version 0.19.0. (PL-48415, ZD-59707, ZD-62139)
+
+#### Fixed issues
+
+- The delegate initialization process has been moved from a background thread to the start of application. This change addresses issues with health check failures during startup by ensuring that delegate registration, websocket establishment, and heartbeat scheduling are completed before health checks are performed. (PL-55905, ZD-67667)
+
+- Resolved issue with Rollout deployment logs where logs were not available or expandable. This problem, caused by a race condition between stream closure and log dispatching, has been fixed. Logs will now display correctly even under heavy load. (PL-55512, ZD-66330)
 
 ### Version 24.07.83608 <!--  August 14, 2024 -->
 
