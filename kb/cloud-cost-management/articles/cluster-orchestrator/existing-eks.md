@@ -80,14 +80,6 @@ json_payload='{
   "k8s_connector_id": "<harness ccm k8s connector id>"
 }'
 
-json_payload='{
-  "name": "rssnyder",
-  "user_config": {
-    "cluster_endpoint": "https://FF829873F81C68D89AC355597D83CD47.gr7.us-west-2.eks.amazonaws.com"
-  },
-  "k8s_connector_id": "rssnyder_sales_eks_ccm"
-}'
-
 curl -s -X POST "$url" \
   -H "Content-Type: application/json"  \
   -H "x-api-key: $HARNESS_PLATFORM_API_KEY" \
