@@ -1,12 +1,12 @@
 {
-    "label":"Reporting & Insights",
+    "label":"Project Setup",
     "position": 40,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Workspace Reporting and insights"
+       "title":"Setup"
     },
     "customProps":{
        "helpdocs_category_id":""
