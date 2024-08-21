@@ -1246,6 +1246,17 @@ figure p {
   background-repeat: no-repeat;
 }
 
+.sidebar-gitness > div > a::before,.sidebar-gitness> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/icon_gitness.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 /*******************sidebar logo css end*******************/
 
 
