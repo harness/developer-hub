@@ -168,7 +168,7 @@ This step fetches the details and status of your application.
 
 Enter your application name in the **Application** field. Currently, this field does not support Harness expressions. 
 
-If **Hard Refresh** is enabled, the application status will be hard refreshed when retreiving the information. 
+If **Hard Refresh** is enabled, the application status will be hard refreshed when retrieving the information. 
 
 The data will be returned as a JSON payload that will be parsed by the step. The response can be referenced using Harness expressions in subsequent steps. 
 
