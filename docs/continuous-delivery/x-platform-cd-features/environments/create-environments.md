@@ -491,7 +491,7 @@ You can choose between **Inline** and **Remote** to set up your environment.
 
 Choose **Inline** when you want your environments to be stored in Harness.
 
-Choose **Remote** when storing your environment in Third-party Git repository or Harness Code Repository. You must specify the Connector, Repository, branch details, YAML Path details.
+Choose **Remote** when storing your environment in Third-party Git repository or Harness Code Repository. You must specify the Connector, Repository, branch and YAML Path details.
 
 ## Runtime inputs and expressions in environments
 
