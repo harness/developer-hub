@@ -173,6 +173,9 @@ Go to the [Harness CI Knowledge Base](/kb/continuous-integration/continuous-inte
 * [Failed pipelines don't block PR merges.](/kb/continuous-integration/continuous-integration-faqs/#failed-pipelines-dont-block-pr-merges)
 * [Pipeline status updates aren't sent to PRs.](/kb/continuous-integration/continuous-integration-faqs/#pipeline-status-updates-arent-sent-to-prs)
 * [Build statuses don't show on my PRs, even though the code base connector's token has all repo permissions.](/kb/continuous-integration/continuous-integration-faqs/#build-statuses-dont-show-on-my-prs-even-though-the-code-base-connectors-token-has-all-repo-permissions)
-* [Why does the status check for my GitHub PR redirect to a different PR's build in Harness CI?](/kb/continuous-integration/continuous-integration-faqs/#why-does-the-status-check-for-my-gitHub-pr-redirect-to-a-different-prs-build-in-Harness-ci)
+* [Why does the status check for my GitHub PR redirect to a different PR's build in Harness CI?](/kb/continuous-integration/continuous-integration-faqs/#why-does-the-status-check-for-my-pr-redirect-to-a-different-prs-build-harness) 
+
+
+
 
 For troubleshooting information for Git event (webhook) triggers, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).
