@@ -2,7 +2,7 @@
 title: Service Onboarding using Scripts on Catalog
 description: Detailed documentation of the Service Onboarding Scripts 
 sidebar_label: Service Onboarding Scripts
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 ## Scripts to create new services, register new services 
@@ -31,8 +31,8 @@ import TabItem from '@theme/TabItem';
 - Command to Download the Script
 
 ```sh
-curl -o idp-catalog-wizard-github.py https://github.com/harness-community/idp-samples/main/catalog-scripts/idp-catalog-wizard-github.py
-```
+curl -o idp-catalog-wizard-github.py https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/idp-catalog-wizard-github.py
+``` 
 
 ```sh
 python3 idp-catalog-wizard-github.py [OPTIONS]
@@ -111,7 +111,7 @@ repo
 - Command to Download the Script
 
 ```sh
-curl -o idp-catalog-wizard-bitbucket.py https://github.com/harness-community/idp-samples/main/catalog-scripts/idp-catalog-wizard-bitbucket.py
+curl -o idp-catalog-wizard-bitbucket.py https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/idp-catalog-wizard-bitbucket.py
 ```
 
 ```sh
