@@ -123,6 +123,51 @@ Upon providing your credentials and the release version, the script will proceed
 
 :::
 
+## August 21, 2024, patch version 0.19.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.19.1](https://github.com/harness/helm-charts/releases/tag/harness-0.19.1) |
+| Air Gap Bundle | [0.19.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.19.1) |
+| NG Manager | 1.45.11 |
+| CI Manager | 1.35.10 |
+| Pipeline Service | 1.83.1 |
+| Platform Service | 1.30.3 |
+| Access Control Service | 1.52.4 |
+| Delegate | 24.07.83404 |
+| Change Data Capture | 1.24.0 |
+| STO Core | 1.102.2 |
+| Test Intelligence Service | 1.17.0 |
+| NG UI | 1.30.4 |
+| LE NG | 1.3.0 |
+| Bootstrap | 1.6.1 |
+
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.19.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.19.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.19.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.19.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.19.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.19.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.19.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed an issue where installing or upgrading SMP to version 0.19.0 would fail when `harness-secrets` was disabled. This issue was due to a version inconsistency in the common chart used by Helm, which has now been resolved by adjusting the chart hierarchy. (PL-56179)
+
 ## August 13, 2024, version 0.19.0
 
 This release includes the following Harness module and component versions.
