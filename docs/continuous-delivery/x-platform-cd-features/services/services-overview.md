@@ -43,12 +43,11 @@ You can change the **Organization** and **Project** as well where you want to cl
 
 ![](./static/clone_option_service_remote.png)
 
-You have an option to choose between **Inline** and **Remote** to set up your environment.
+You can choose between **Inline** and **Remote** to set up your environment.
 
-Choose **Inline** when you want your environments to be stored in Harness.
+Choose **Inline** when you want your environments to be stored in Harness.
 
-Choose **Remote** when you want to store your environment in Third-party Git repository or Harness Code Repository. You also have to specify the Connector, Repository, exixting or new branch, YAML Path details.
-
+Choose **Remote** when storing your environment in Third-party Git repository or Harness Code Repository. You must specify the Connector, Repository,   branch details, YAML Path details.
 
 ## Services RBAC
 
