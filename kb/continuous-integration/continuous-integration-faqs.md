@@ -1152,7 +1152,7 @@ If the user account used to generate the token doesn't have repository write per
 For repos under organizations or projects, check the role/permissions assigned to the user in the target repository. For example, a user in a GitHub organization can have some permissions at the organization level, but they might not have those permissions at the individual repository level.
 
 
-### Why does the build check for my GitHub PR redirect to a different PR's build in Harness CI?
+### Why does the status check for my GitHub PR redirect to a different PR's build in Harness CI?
 This issue occurs when two PRs share the same commit ID. Harness CI associates builds with commits rather than specific PRs. If multiple PRs share the same commit, the latest build will replace the previous one, causing the build check on the earlier PR to redirect to the newer PR’s build.
 To resolve this, push a new commit to the affected PR and rebuild it. This creates a unique commit, ensuring the build check redirects to the correct PR.
 
