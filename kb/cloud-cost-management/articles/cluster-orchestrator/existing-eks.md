@@ -13,8 +13,8 @@ description: Cluster Orchestrator - Using existing EKS cluster
 
 The subnet(s) your nodegroups are using must be tagged with the following key/value pair:
 
-- key: harness.io/<cluster name>
-- value: owned
+- key: `harness.io/<cluster name>`
+- value: `owned`
 
 If you are using the [aws vpc terraform module](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest) you can set these via the `private_subnet_tags` input:
 ```
@@ -27,8 +27,8 @@ If you are using the [aws vpc terraform module](https://registry.terraform.io/mo
 
 The security group(s) your nodegroups are using must be tagged with the following key/value pair:
 
-- key: harness.io/<cluster name>
-- value: owned
+- key: `harness.io/<cluster name>`
+- value: `owned`
 
 If you are using the [aws eks terraform module](https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest) you can set these via the `node_security_group_tags` input:
 ```
