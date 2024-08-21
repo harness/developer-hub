@@ -24,7 +24,6 @@ For more information, go to [create services](/docs/continuous-delivery/x-platfo
 
 :::info note
 Currently, this feature is behind the feature flag `CDS_SERVICE_ENV_CLONING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-This is currently being supported only for Services which is stored in Harness i.e INLINE entity.
 :::
 
 You can clone services across scopes i.e from one project to another, project to organization, account to project etc.
@@ -40,7 +39,16 @@ Once you click on **Clone**, you will see **Clone Service** setting:-
 
 You can change the **Name** add tags and description as well for this clone environment.
 
-You can change the **Organization** and **Project** as well where you want to clone the environment. 
+You can change the **Organization** and **Project** as well where you want to clone the environment.
+
+![](./static/clone_option_service_remote.png)
+
+You have an option to choose between **Inline** and **Remote** to set up your environment.
+
+Choose **Inline** when you want your environments to be stored in Harness.
+
+Choose **Remote** when you want to store your environment in Third-party Git repository or Harness Code Repository. You also have to specify the Connector, Repository, exixting or new branch, YAML Path details.
+
 
 ## Services RBAC
 

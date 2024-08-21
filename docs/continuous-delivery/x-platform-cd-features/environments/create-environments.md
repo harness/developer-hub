@@ -467,7 +467,6 @@ GitOps Clusters are not used in standard CD pipelines. They're used when using G
 
 :::info note
 Currently, this feature is behind the feature flag `CDS_SERVICE_ENV_CLONING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-Currently, this is only being supported for Environments that are stored in Harness (i.e INLINE entities).
 :::
 
 You can clone environment across scopes (i.e from one project to another, project to organization, account to project etc.).
@@ -477,11 +476,22 @@ Select **Clone**
 ![](./static/clone_option_env_inline.png)
 
 Once you click on **Clone**, you will see the **Clone Environment** setting:
+
 ![](./static/clone_env_inline_setting.png)
 
 You can change the **Name**, add tags, or description for this clone environment.
 
 You can modify the destination of your clone environment using the  **Organization** and **Project** fields.
+
+You can also clone the infrastructures of the environment by selecting the checkbox **Do you want to clone infrastructures?**.
+
+![](./static/clone_env_remote_settings.png)
+
+You can choose between **Inline** and **Remote** to set up your environment.
+
+Choose **Inline** when you want your environments to be stored in Harness.
+
+Choose **Remote** when storing your environment in Third-party Git repository or Harness Code Repository. You must specify the Connector, Repository, existing or new branch, YAML Path details.
 
 ## Runtime inputs and expressions in environments
 
