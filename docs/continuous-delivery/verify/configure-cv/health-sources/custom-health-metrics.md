@@ -24,7 +24,7 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 ![](./static/verify-deployments-with-custom-health-metrics-90.png)
 
 1. In **Select health source type**, select **Custom Health**.
-2. In **Health Source Name**, enter a name for the Health Source. For example Quickstart.
+2. In **Health Source Name**, enter a name for the health source. For example, `Quickstart`.
 3. In **Connect Health Source**, click **Select Connector**.
 4. In **Connector** settings, you can either choose an existing connector or click **New Connector.**
 5. Click **Apply Selected**. The Connector is added to the Health Source.
@@ -72,7 +72,7 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
    ![](./static/verify-deployments-with-custom-health-metrics-92.png)
 
 2. Click **Query specifications and mapping**.
-3. In **Query Name**, enter a name for the query. For example Custom Log Query.
+3. In **Query Name**, enter a name for the query. For example, `Custom Log Query`.
 4. In **Request Method**, you can select **GET** or **POST**. If you select POST, you need to define the body format.
 5. In **Path**, enter the complete path of the metric. For example,`v2/logs/events/search`.
 6. In **Start and End Time Placeholders**, enter the following:
