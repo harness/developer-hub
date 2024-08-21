@@ -144,7 +144,6 @@ This release includes the following Harness module and component versions.
 | LE NG | 1.3.0 |
 | Bootstrap | 1.6.1 |
 
-
 #### Alternative air gap bundle download method
 
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
