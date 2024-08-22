@@ -8,19 +8,19 @@ sidebar_position: 1
 
 Role-based access control ([RBAC](https://www.harness.io/blog/rbac)) lets you control who can access your resources and what actions they can perform on the resources. 
 
-## RBAC in Catalog
+## Access Control for Software Catalog
 
 ### Edit Access
 
-Catalog contains the software components whose metadata is stored in the form of an YAML on your git-provider and you can restrict the control of the software components to the owners only and disable the delete permission for all users this can also be controlled through the RBAC of your git-provider, if an individual doesn't have write permission for the repository your `catalog-info.yaml` file is stored, he/she can't update or delete the entities.
+Every entity in the Software Catalog has a corresponding [`catalog-info.yaml` definition file](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component) stored in one of your Git repositories. You can restrict the edit access of the component definition by controlling who has access to the corresponding git repository. Ideally the YAML should live in the same repository as the code base so that the owners working on the application can keep their Catalog YAML up to date.
 
 ### View Access
 
-Catalog is central to Harness IDP, and each and every user having access to your account can view the catalo entities. However you can control the ability to delete the components using the **Catalog Access Policies**.  
+Catalog is central to Harness IDP, and each and every user having access to your account can view the catalog entities. However you can control the ability to delete the components using the **Catalog Access Policies** as described below.
 
 ### Catalog Access Policies
 
-These policies are available apart from the above platform level RBAC, and can be used to overwrite the platform level RBAC for Catalog Entities. These are available under **Access Control** in **ADMIN** tab.
+These policies can be used to determine the access on Catalog components based on the Owners. These are available under **Access Control** in side **IDP ADMIN** section.
 
 ![](./static/access-control.png)
 
@@ -48,15 +48,19 @@ spec:
   owner: team-a
 ```
 
-## RBAC in Workflows
+## Access Control for Self Service Workflows
 
 ### View Access
 
-Every user in the account will have view access to the workflows.
+Every user in the account has view access to all the Workflows in IDP. There is an upcoming [feature request](https://developer.harness.io/roadmap/#idp) to remove view access if the user does not have view access of the pipelines powering up the Workflow.
 
-### Edit and Run Access
+### Execute Access
 
-The permission to run and edit [IDP Self Service Workflows](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines) is inherited from the [access to the pipeline](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples) used to power them, i.e., if a user has permissions to `Run` a pipeline then only they can trigger a workflow.
+The permission to run [IDP Self Service Workflows](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines) is inherited from the [access to the pipeline](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples) used to power them, i.e., if a user has permissions to `Run` a pipeline then only they can trigger a workflow.
+
+### Edit Access
+
+Self Service Workflows being a catalog entity has a corresponding [`catalog-info.yaml` definition file](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component) stored in one of your Git repositories. You can restrict the edit access of the component definition by controlling who has access to the corresponding git repository. Ideally the YAML should live in the same repository as the code base so that the owners working on the application can keep their Catalog YAML up to date.
 
 ### Hide Workflows
 
