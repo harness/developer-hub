@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-08-09:T10:00:30
+date: 2024-08-23:T10:00:30
 sidebar_position: 3
 ---
 
@@ -79,21 +79,17 @@ The following deprecated API endpoints are longer supported:
 
 ## August 2024
 
-### Version 1.53.x<!-- August 21, 2024 -->
+### Version 1.53.x<!-- August 23, 2024 -->
 
 #### New features and enhancements
 
-- Added support for the SSCA module in Legacy Dashboards. (PL-56177)
-
 - Upgraded the org.apache.cxf:cxf-core library from version 3.5.8 to 3.5.9 to address a security vulnerability (CVE-2024-32007). This upgrade enhances the security and stability of the application. (PL-55722, ZD-63383)
-
-- Enabled Horizontal Pod Autoscaling (HPA) for the Harness Ingress Controller to ensure it can automatically scale based on system load, improving performance and reliability under increased traffic. Additionally, Redis is now always present in the log-service, ensuring consistent availability and functionality. (PL-55527)
-
-- The 'Synchronize User Groups' action in the UI now requires users to have the core_usergroup_manage permission in addition to the existing core_authsetting_edit permission. If a user lacks the required permissions, the button will be disabled, and a "missing permission" tooltip will be displayed. (PL-42623)
 
 #### Fixed issues
 
 - Resolved an issue where not all user groups were visible in search results when inherited groups exceeded 1000. The search now displays up to 2000 inherited user groups, ensuring comprehensive visibility for all user groups across your organization. (PL-56021, ZD-68131)
+
+- Fixed an issue where installing or upgrading SMP to version 0.19.0 would fail when `harness-secrets` was disabled. This issue was due to a version inconsistency in the common chart used by Helm, which has now been resolved by adjusting the chart hierarchy. (PL-56179)
 
 ### Version 1.52.x<!-- August 19, 2024 -->
 
