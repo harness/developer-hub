@@ -1,12 +1,12 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import HarnessApiData from '../../../src/components/HarnessApiData/index.tsx';
-
-let terraformVersion = "";
-let openTofuVersion = "";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 // Component for fetching and displaying the latest Terraform version
 export const LatestSupportedTerraformVersion = () => {
-  const [terraformVersion, setTerraformVersion] = useState('');
+    const { siteConfig } = useDocusaurusContext();
+    const apiKey = siteConfig.customFields.REACT_APP_HARNESS_GENERIC_READ_ONLY_KEY;
+    const [terraformVersion, setTerraformVersion] = useState('');
 
   return (
     <HarnessApiData
@@ -29,7 +29,9 @@ export const LatestSupportedTerraformVersion = () => {
 
 // Component for fetching and displaying the latest OpenTofu version
 export const LatestSupportedOpenTofuVersion = () => {
-  const [openTofuVersion, setOpenTofuVersion] = useState('');
+    const { siteConfig } = useDocusaurusContext();
+    const apiKey = siteConfig.customFields.REACT_APP_HARNESS_GENERIC_READ_ONLY_KEY;
+    const [openTofuVersion, setOpenTofuVersion] = useState('');
 
   return (
     <HarnessApiData
