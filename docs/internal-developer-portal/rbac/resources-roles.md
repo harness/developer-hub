@@ -6,7 +6,66 @@ sidebar_position: 1
 
 ## Introduction
 
-Role-based access control ([RBAC](https://www.harness.io/blog/rbac)) lets you control who can access your resources and what actions they can perform on the resources. To do this Harness provides a logical structure comprising of **Account**, **Organization** and **Project** that naturally aligns with how most organizations are structured and **Harness IDP is an Account Level module**.
+Role-based access control ([RBAC](https://www.harness.io/blog/rbac)) lets you control who can access your resources and what actions they can perform on the resources. 
+
+## RBAC in Catalog
+
+### Edit Access
+
+Catalog contains the software components whose metadata is stored in the form of an YAML on your git-provider and you can restrict the control of the software components to the owners only and disable the delete permission for all users this can also be controlled through the RBAC of your git-provider, if an individual doesn't have write permission for the repository your `catalog-info.yaml` file is stored, he/she can't update or delete the entities.
+
+### View Access
+
+Catalog is central to Harness IDP, and each and every user having access to your account can view the catalo entities. However you can control the ability to delete the components using the **Catalog Access Policies**.  
+
+### Catalog Access Policies
+
+These policies are available apart from the above platform level RBAC, and can be used to overwrite the platform level RBAC for Catalog Entities. These are available under **Access Control** in **ADMIN** tab.
+
+![](./static/access-control.png)
+
+#### Use cases:
+
+1. In case you want to restrict the creation and management of workflows for a specific user group, you can do so by selecting the specific user group name from the dropdown followed by the disabling the **Create** under **Software Catalog permissions for all users to Create entity**.
+
+![](./static/rbac-admin-usecase.png)
+
+### Hide Catalog Entities
+
+Catalog Entities can be hidden from the users, except for the owner user-group by using either one of the `hidden`,`secrets` or `private` tag as shown in the example below.
+
+```YAML
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-new-service
+  description: Description of my new service
+  tags:
+    - hidden
+spec:
+  type: service
+  lifecycle: production
+  owner: team-a
+```
+
+## RBAC in Workflows
+
+### View Access
+
+Every user in the account will have view access to the workflows.
+
+### Edit and Run Access
+
+The permission to run and edit [IDP Self Service Workflows](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines) is inherited from the [access to the pipeline](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples) used to power them, i.e., if a user has permissions to `Run` a pipeline then only they can trigger a workflow.
+
+### Hide Workflows
+
+You can hide the workflows, suggested to use while the workflow is in development phase, by using the same tags used to [hide catalog entities](/docs/internal-developer-portal/rbac/resources-roles#hide-catalog-entities). 
+
+
+## Platform Level RBAC 
+
+To do this Harness provides a logical structure comprising of **Account**, **Organization** and **Project** that naturally aligns with how most organizations are structured and **Harness IDP is an Account Level module**.
 
 1. **Account:** Account is the topmost entity that can exercise control and has visibility over the entire platform. It is your Harness account and it encompasses all the resources within your Harness subscription. It provides a way to manage billing, user authentication, and global settings for all the organizations and projects within the account. Users with account-level permissions can manage the account-level settings, including billing, subscription, and SSO configuration. Resources, such as connectors, created at the account scope are available for use in all the organizations and projects within that account.
 
@@ -145,38 +204,3 @@ Enable or Disable an IDP Plugin
 
 Delete a Plugin
 
-## Catalog Access Policies
-
-These policies are available apart from the above platform level RBAC, and can be used to overwrite the platform level RBAC for Catalog Entities. These are available under **Access Control** in **ADMIN** tab.
-
-![](./static/access-control.png)
-
-### Use cases:
-
-1. In case you want to restrict the creation and management of workflows for a specific user group, you can do so by selecting the specific user group name from the dropdown followed by the disabling the **Create** under **Software Catalog permissions for all users to Create entity**.
-
-2. Also you can restrict the control of the software components to the owners only and disable the delete permission for all users this can also be controlled through the RBAC of your git-provider, if an individual doesn't have write permission for the repository your `catalog-info.yaml` file is stored, he/she can't update or delete the entities.
-
-![](./static/rbac-admin-usecase.png)
-
-### Hide Catalog Entities
-
-Catalog Entities can be hidden from the users, except for the owner user-group by using either one of the `hidden`,`secrets` or `private` tag as shown in the example below.
-
-```YAML
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: my-new-service
-  description: Description of my new service
-  tags:
-    - hidden
-spec:
-  type: service
-  lifecycle: production
-  owner: team-a
-```
-
-## Workflow Access
-
-Access to [IDP Self Service Workflows](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines) is inherited by the [access to the pipeline](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples) used to power them, i.e., if a user has permissions to `Run` a pipeline then only they can trigger a workflow.
