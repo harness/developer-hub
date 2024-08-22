@@ -1,0 +1,42 @@
+---
+title: Automated Rollback for Database Schemas
+description: Automated Rollback for Database Schemas.
+displayed_sidebar: dbdevopsbeta
+# sidebar_position: 4
+---
+
+This topic describes how Harness Database DevOps rolls back to the last successful version of your database schema workload.
+
+## Accelerate Innovation Velocity
+
+Harness DB DevOps is a powerful tool that helps accelerate innovation velocity, particularly in the context of managing and evolving database schemas. By using DB DevOps, development teams can introduce new features, improve existing ones, and deploy updates more rapidly and safely. 
+
+By integrating DB DevOps into your development workflow, teams can accelerate their innovation velocity by automating and streamlining database schema changes. DB DevOps reduces the friction associated with database updates, allowing teams to focus on delivering new features and improvements faster and with greater confidence. This, in turn, enhances the overall agility of the development process, enabling organizations to stay competitive and responsive to market demands.
+
+## Built in failure strategies including rollback
+
+When managing database schema changes, it’s crucial to have mechanisms in place to handle failures gracefully. Built-in failure strategies, including rollback, are designed to protect your application and data by providing automated responses when something goes wrong during a database update.
+
+Rollback is the process of undoing changes that were made to the database if an error occurs during an update. This ensures that the database is returned to its previous state, preventing partial updates that could lead to inconsistencies or application crashes.
+
+This reduces the risk of downtime or data corruption and allows teams to quickly address issues without having to manually intervene.
+
+## Automated Rollback for Database Schema Changes
+
+When managing database schema changes, the risk of something going wrong is always present. With Harness DB DevOps, you can help mitigate this risk by providing an automated rollback feature. This feature ensures that if a schema change fails, the database can be quickly and automatically restored to its previous state, maintaining stability and data integrity.
+
+### What is Automated Rollback?
+
+Automated rollback is a feature that automatically reverses database changes if an error occurs during a deployment. This prevents partial or inconsistent updates that could disrupt your application or lead to data corruption.
+
+### What are tags? 
+
+A tag is a marker or label assigned to a specific point in a repository's history. Tags are typically used to denote important milestones, such as releases, versions, or significant updates.
+
+Tags help developers and users easily identify and reference specific versions of the codebase. For example, a tag might be used to mark the release of version 1.0 of a software application. Unlike branches, tags are immutable, meaning they do not change over time and serve as a permanent record of a particular state of the code.
+
+### What are versioning? 
+
+Versioning is the practice of assigning unique version numbers to different states or iterations of a software project, database schema, API, or document. These version numbers help track changes, manage updates, and ensure compatibility between different parts of a system.
+
+Versioning is critical for maintaining order and clarity in the development process. It allows teams to differentiate between different stages of a product, such as beta releases, minor updates, or major overhauls. Version numbers typically follow a semantic format, such as "major.minor.patch" (e.g., 2.3.1), where each segment indicates the level and significance of changes made.
