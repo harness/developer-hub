@@ -164,7 +164,7 @@ gsutil -m cp \
 
 #### Continuous Delivery
 
-- We’ve introduced support for tag-based RBAC for GitOps Applications. Now, you can include GitOps Applications in Resource Groups based on the tags assigned to them. This allows you to easily add or remove Applications from Resource Groups by simply updating the tags, making access control more dynamic and flexible. (CDS-97914)
+- We’ve introduced support for tag-based RBAC for GitOps Applications. Now, you can include GitOps Applications in Resource Groups based on the tags assigned to them. This allows you to easily add or remove Applications from Resource Groups by simply updating the tags, making access control more dynamic and flexible. This feature is currently behind the feature flag, `CDS_GITOPS_LABELS_BASED_ACCESS_TO_APPS`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-97914)
 
 ### Fixed issues
 
