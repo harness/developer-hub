@@ -256,12 +256,13 @@ A testing pipeline should be setup to the template being developed which can be 
 
 Once everything is done and checks out good, merge the feature branch to main, which will push the update to all the consumers of the template with no intervention.  Changes can be rolled back by reverting the commit in git in the event of any issue.
 
-A test pipeline should be setup to use the new version as well as feature branch in order to test the new version as it’s developed. Prior to release, ideally a test pipeline should also be migrated from the original version to the latest in order to test the user experience.
-Then major changes are released by having developers pull down the latest version into their pipelines built from the template, and make the necessary adjustments needed. Developers can optionally do this by also using GitX for their own pipelines, and make this update on a branch they run first.
-
 ### Releasing Template Updates
 
-When following the above flow, template updates for non breaking changes are released out to users automatically with no intervention once the update is merged.  For breaking changes, users should be notified when the new version becomes available so they can update their pipelines to consume the new version. An end of life date should be set for the old version, by which all template consumers should complete moving over to the new version. Pipelines in scope can be determined by using the "Referenced By" tab when viewing the template in the templates menu.
+When following the above flow, template updates for non breaking changes are released out to users automatically with no intervention once the update is merged.  
+
+For breaking changes, users should be notified when the new version becomes available so they can update their pipelines to consume the new version. An end of life date should be set for the old version, by which all template consumers should complete moving over to the new version. Pipelines in scope can be determined by using the "Referenced By" tab when viewing the template in the templates menu.
+
+Template consumers incorporating new versions containing breaking changes should make their updates on a feature branch, to avoid impacting their users.  Like templates, this is accomplished by using the GitX feature to remotely track the pipeline or template in a git repository.  Saving the changes to a new feature branch, and selecting this branch when running the pipeline to test the change.  Once the changes are tested with a successful pipeline run, merge the feature branch into `main` to roll the change out to the production pipeline.
 
 ## Conclusion
 
