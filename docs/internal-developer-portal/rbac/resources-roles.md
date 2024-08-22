@@ -52,15 +52,15 @@ spec:
 
 ### View Access
 
-Every user in the account has view access to all the Workflows in IDP. There is an upcoming [feature request](https://developer.harness.io/roadmap/#idp) to remove view access if the user does not have view access of the pipelines powering up the Workflow.
+Every user in the account has view access to all the Workflows in IDP. There is an upcoming [feature request](https://developer.harness.io/roadmap/#idp) to remove view access if the user does not have view access of the pipelines configured in the Workflow definition. Although even if the user can view workflows, they will not be able to execute them if they do not have access to the pipeline as described below.
 
 ### Execute Access
 
-The permission to run [IDP Self Service Workflows](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines) is inherited from the [access to the pipeline](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples) used to power them, i.e., if a user has permissions to `Run` a pipeline then only they can trigger a workflow.
+The permission to execute [IDP Self Service Workflows](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines) is inherited from the [access to the pipeline](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples) used to configure them. If a user has permissions to `Run` a pipeline then only they can trigger the corresponding IDP Workflow.
 
 ### Edit Access
 
-Self Service Workflows being a catalog entity has a corresponding [`catalog-info.yaml` definition file](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component) stored in one of your Git repositories. You can restrict the edit access of the component definition by controlling who has access to the corresponding git repository. Ideally the YAML should live in the same repository as the code base so that the owners working on the application can keep their Catalog YAML up to date.
+Workflows being a catalog entity has a corresponding `workflow.yaml` or `template.yaml` definition file as well stored in one of your Git repositories. You can restrict the edit access of the workflow definition by controlling who has access to the corresponding Git repository.
 
 ### Hide Workflows
 
