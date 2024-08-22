@@ -346,3 +346,12 @@ powershell -Command "& { [Net.ServicePointManager]::SecurityProtocol = [Net.Secu
 This modification forces PowerShell to use TLS 1.2 for secure connections, thereby resolving the SSL/TLS issue.
 
 For further assistance, please refer to the [documentation](/docs/chaos-engineering/chaos-faults/windows) or contact [Harness Support](mailto:support@harness.io).
+
+## SMP-related
+
+### What steps should I take to ensure that the change are reflected when I change the endpoint from HTTP to HTTPS?
+
+#### Solution
+
+`ALLOWED_ORIGINS` key in set in chaos-manager-config ConfigMap and the chaos-manager pod is restarted automatically. When you newly install SMP, the load balancer URL is added to the `ALLOWED_ORIGINS` key.
+After this, execute the `helm upgrade` command to make sure that all the changes are reflected.
