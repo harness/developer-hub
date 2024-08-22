@@ -228,27 +228,27 @@ For details on advanced settings, go to:
 
 ## Template Development and Release Lifecycle
 
-Harness templates provide many different options for how to manage versions and control releases.  As well as different ways those changes can be tracked, such as through versioning and using git branches in Remote backed templates.
+Harness templates provide many different options for managing versions and controlling releases, as well as different ways those changes can be tracked, such as through versioning and using git branches in remote backed templates.
 
-Both should be used in order to best manage developing changes in a safe way, while also releasing those changes to the consuming piplines with minimal effort. The following template setup recommendations provide a best practice way to use these and apply them into a template development lifecycle.
+Both should be used in order to effectively manage developing changes safely while releasing those changes to the consuming pipelines with minimal effort. The following template setup recommendations offers best practices for incorporating these strategies into a template development lifecycle.
 
 ### Versioning Templates
 
-Template versioning should be used, which are created by the template maintainer and what template consumers will chose when deciding what version to use. Templates should also be Remote tracked in git, with consumers using the default branch (typically `main`) and the latest integer version.  While the "Stable" label may be used, it is not recommended for centrally managed templates as multiple versions may be supported (and thus considered "stable") for some amount of time.
+Template versioning should be utilized, with versions created by the template maintainer for template consumers to select based on their needs. Templates should also be tracked remotely in Git, with consumers typically using the default branch (usually `main`) and the latest integer version. While the **Stable** label may be used, it is not recommended for centrally managed templates, as multiple versions may be supported (and thus considered "stable") for some amount of time.
 
-Integer based “semantic versioning” should be used for the version, where the version only contains the major version component. So a new template will have a version of `v1` and will be checked into `main`.
+Integer based “semantic versioning” should be used, where the version includes only the major version component. So a new template will have a version of `v1` and will be checked into `main`.
 
 ### Developing Updates
 
-All changes made to a template should be done against a feature branch, to prevent in progress changes from breaking the pipelines consuming that version.  The version used to release the changes will be determined by the type of changes the template developer is looking to introduce.  This can be broken down into two parts.
+All changes made to a template should be done against a feature branch, to prevent in-progress changes from breaking the pipelines consuming that version. The version used to release the changes will depend on the nature of the changes the template developer intends to introduce. This can be broken down into two parts.
 
 #### Non-Breaking Changes, aka patches and minor releases
 
-Non breaking changes, such as bug fixes or functionality improvements existing users can use with no intervention, should be released as an update to the current template version.  So these types of changes should be saved on a feature branch off of `main`, saving them under the template version the changes are be developed on (typically the latest, such as `v1` in our example above).  
+Non breaking changes, such as bug fixes or functionality improvements that existing users can use without intervention, should be released as an update to the current template version. These types of changes should be saved on a feature branch off of `main`, saving them under the template version the changes are be developed on (typically the latest, such as `v1` in our example above).  
 
 #### Breaking Changes, aka Major releases
 
-Breaking changes are any changes to runtime inputs, defaults on runtime inputs, or any other change in behavior that requires manual human intervention.  Updates which include breaking changes should be developed on a feature branch, but also under a new major version.  So in our `v1` example, this update will be saved under a new version `v2`.
+Breaking changes are any changes to runtime inputs, defaults on runtime inputs, or any other change in behavior that requires manual intervention. Updates that include breaking changes should be developed on a feature branch, but also under a new major version.  So in our `v1` example, this update will be saved under a new version `v2`.
 
 ### Testing Template Changes
 
@@ -256,12 +256,12 @@ A testing pipeline should be setup to the template being developed which can be 
 
 Once everything is done and checks out good, merge the feature branch to main, which will push the update to all the consumers of the template with no intervention.  Changes can be rolled back by reverting the commit in git in the event of any issue.
 
-A test pipeline should be setup to use the new version as well as feature branch in order to test the new version as it’s developed.  Prior to release, ideally a test pipeline should also be migrated from the original version to the latest in order to test the user experience.
-Then major changes are released by having developers pull down the latest version into their pipelines built from the template, and make the necessary adjustments needed.  Developers can optionally do this by also using GitX for their own pipelines, and make this update on a branch they run first.
+A test pipeline should be setup to use the new version as well as feature branch in order to test the new version as it’s developed. Prior to release, ideally a test pipeline should also be migrated from the original version to the latest in order to test the user experience.
+Then major changes are released by having developers pull down the latest version into their pipelines built from the template, and make the necessary adjustments needed. Developers can optionally do this by also using GitX for their own pipelines, and make this update on a branch they run first.
 
 ### Releasing Template Updates
 
-When following the above flow, template updates for non breaking changes are released out to users automatically with no intervention once the update is merged.  For breaking changes, users should be notified when the new version becomes available so they can update their pipelines to consume this new version.  Then an end of life date should be set for the old version, by which all template consumers should complete moving over to the new version.  Pipelines in scope can be determined by using the "Referenced By" tab when viewing the template in the templates menu.
+When following the above flow, template updates for non breaking changes are released out to users automatically with no intervention once the update is merged.  For breaking changes, users should be notified when the new version becomes available so they can update their pipelines to consume the new version. An end of life date should be set for the old version, by which all template consumers should complete moving over to the new version. Pipelines in scope can be determined by using the "Referenced By" tab when viewing the template in the templates menu.
 
 ## Conclusion
 
