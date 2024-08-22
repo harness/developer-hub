@@ -29,25 +29,25 @@ Currently, this feature is behind the feature flag `CDS_SERVICE_ENV_CLONING`. Co
 You can clone services across scopes i.e from one project to another, project to organization, account to project etc.
 
 Select **More Options** (&vellip;).
-Select **Clone**
+Select **Clone**.
 
 ![](./static/clone_option_service_inline.png)
 
 Once you click on **Clone**, you will see **Clone Service** setting:-
 
-![](./static/clone_option_service_inline_setting.png)
+You can change the **Name** add tags and description as well for this clone service.
 
-You can change the **Name** add tags and description as well for this clone environment.
+You can change the **Organization** and **Project** as well where you want to clone the service.
 
-You can change the **Organization** and **Project** as well where you want to clone the environment.
+You can choose between **Inline** and **Remote** to set up your service. Choose **Inline** when you want your service to be stored in Harness. Choose **Remote** when storing your service in a Third-party Git repository or Harness Code Repository.
+
+For cloning an inline service or remote service to an inline service, you have to specify the source repository name in case of a remote service.
+
+![](./static/clone_service_remote_to_inline.png)
+
+For cloning an inline service or remote service to a remote service, you must specify the target repository, Harness Code Repository, to store the service in the Harness repository or Third-party Git provider, to store the service in a third party Git provider, define the Git Connector if Third-party Git provider. Specify the Repository name, the YAML path, and the commit message.
 
 ![](./static/clone_option_service_remote.png)
-
-You can choose between **Inline** and **Remote** to set up your environment.
-
-Choose **Inline** when you want your environments to be stored in Harness.
-
-Choose **Remote** when storing your environment in Third-party Git repository or Harness Code Repository. You must specify the Connector, Repository,   branch and YAML Path details.
 
 ## Services RBAC
 

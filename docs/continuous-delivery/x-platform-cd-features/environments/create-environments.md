@@ -477,21 +477,21 @@ Select **Clone**
 
 Once you click on **Clone**, you will see the **Clone Environment** setting:
 
-![](./static/clone_env_inline_setting.png)
-
-You can change the **Name**, add tags, or description for this clone environment.
+You can change the **Name**, and add tags, or descriptions for this clone environment.
 
 You can modify the destination of your clone environment using the  **Organization** and **Project** fields.
 
-You can also clone the infrastructures of the environment by selecting the checkbox **Do you want to clone infrastructures?**.
+The checkbox **Do you want to clone infrastructures?** is checked by default. The infrastructures in the environment will be cloned as inline by default, regardless of the destination being remote or inline environment. Uncheck the checkbox if you do not want to clone all the infrastructures in the environment.
+
+You can choose between **Inline** and **Remote** to set up your environment. Choose **Inline** when you want your environments to be stored in Harness. Choose **Remote** when storing your environment in a Third-party Git repository or Harness Code Repository.
+
+For cloning an inline environment or remote environment to an inline environment, you have to specify the source repository name in case of a remote environment.
+
+![](./static/clone_env_inline_settings.png)
+
+For cloning an inline environment or remote environment to a remote environment, you must specify the target repository, Harness Code Repository, to store the environment in the Harness repository or Third-party Git provider, to store the environment in a third party Git provider, define the Git Connector if Third-party Git provider. Specify the Repository name, the YAML path, and the commit message.
 
 ![](./static/clone_env_remote_settings.png)
-
-You can choose between **Inline** and **Remote** to set up your environment.
-
-Choose **Inline** when you want your environments to be stored in Harness.
-
-Choose **Remote** when storing your environment in Third-party Git repository or Harness Code Repository. You must specify the Connector, Repository, branch and YAML Path details.
 
 ## Runtime inputs and expressions in environments
 
