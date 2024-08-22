@@ -1,6 +1,6 @@
 ---
-description: KB - API to get list of plaExecutionIDs and all execution details
-title: API to get list of plaExecutionIDs and all execution details in one call
+description: KB - API to get list of planExecutionIDs and all execution details
+title: Fetch a lite version of execution details along with the input YAML that was passed during the execution via API
 ---
 
 ## Overview
@@ -24,8 +24,8 @@ The API response follows this structure:
 ```
 - **content**: The array containing the requested execution details.
 - **currentSize**: The number of records returned in the current page.
-- **lastSeenExecutionI**: A cursor indicating the last execution ID seen. Use this for the next page request.
-- **lastSeenStartTime**: A cursor indicating the start time of the last execution seen. Use this for the next page request.
+- **lastSeenExecutionId**: A reference point to the last execution ID seen. Use this for the next page request.
+- **lastSeenStartTime**: A reference point to the start time of the last execution seen. This field should be used if the response has multiple pages.
 - **hasMore**: A boolean flag that indicates whether more data is available.
 
 ## Pagination Workflow
@@ -83,6 +83,6 @@ curl --location 'https://app.harness.io/gateway/pipeline/api/pipelines/execution
 ## Key Notes
 - Pagination Fields:
   - **hasMore**: Indicates if more data is available.
-  - **lastSeenStartTime** and **lastSeenExecutionId**: Used as cursors for subsequent requests. These should only be passed after the first API call.
+  - **lastSeenStartTime** and **lastSeenExecutionId**: Used as reference points for subsequent requests. These should only be passed after the first API call.
 - Behavioral Considerations:
   - When the number of records fetched equals the page size, the API might set `hasMore` to true even if no additional data exists. In such cases, an extra API call will return no data, and hasMore will be false.
