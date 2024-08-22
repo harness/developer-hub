@@ -152,7 +152,7 @@ spec:
       components:
         env:
         - name: CHAOS_PARAMETER
-          value: "{\"paramaters\":[{\"placeholder\":\"destination_ip\",
+          value: "{\"parameters\":[{\"placeholder\":\"destination_ip\",
                     \"data_type\":\"string\",\"value\":\"HOST_IP\"},
                     {\"placeholder\":\"port\",\"data_type\":\"int\",
                       \"value\":\"3258\"}]}"
@@ -179,7 +179,7 @@ spec:
       components:
         env:
         - name: ABORT_PARAMETER
-          value: "{\"paramaters\":[{\"placeholder\":\"destination_ip\",
+          value: "{\"parameters\":[{\"placeholder\":\"destination_ip\",
                     \"data_type\":\"string\",\"value\":\"HOST_IP\"},
                     {\"placeholder\":\"port\",\"data_type\":\"int\",
                       \"value\":\"3258\"}]}"
@@ -206,7 +206,7 @@ Input parameters can be specified in different formats.
 ```
 :::
 
-### Indicator types 
+### Indicator types
 
 Comma-separated indicator types that allow for the customisation of parameter indicators. This customisation enhances the flexibility of parameter specification. Tune it by using the `INDICATOR_TYPES` environment variable.
 Customisable indicators include:
