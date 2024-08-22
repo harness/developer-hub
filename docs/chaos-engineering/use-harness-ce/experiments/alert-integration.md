@@ -1,5 +1,5 @@
 ---
-title: Alerts for chaos experiments
+title: Alerts for chaos experiment
 sidebar_position: 60
 description: Configure rules to receive alerts for your chaos experiments.
 redirect_from:
@@ -8,57 +8,56 @@ redirect_from:
 
 This topic describes how you can create email alerts for your chaos experiments.
 
-## What are alerts?
-Alerts are a form of communication that provide updates about your experiment runs. These alerts are provided in the form of email updates that describe your chaos experiments that started, stopped, and completed (depending on which type of experiment events you have configured to receive the alerts for).
+## Experiment Alerts
 
-## Why are they required?
-Alerts provide the status of the chaos experiments and other details (such as run details, fault configurations, probes used, and so on) that might be required when making important business decisions. You can also use alerts as historical data for the earlier chaos experiment runs.
+Alerts provide crucial updates about your experiment runs, keeping you informed about  the start, stop, and completion of your chaos experiments based on the experiment event you have configured to receive the alerts for).
 
-## How to create and use alerts?
-You can create an alert by [creating a channel](#create-a-channel) and [creating conditions](#create-a-condition). You can [apply these conditions](#select-channel-for-alerts) to a rule.
+### Importance of Alerts
+
+Alerts provide the status of the chaos experiments and other details, including run details, fault configurations, probes used, and so on). These updates can be valuable for making informed business decisions and serve as historical data for previous experiment runs.
+
+### Create and Use Alerts
+
+You can setup alerts by [creating a channel](#create-a-channel) and [defining conditions](#create-a-condition). Once setup, you can [apply these conditions](#select-channel-for-alerts) to a rule.
 
 :::note
 This feature is currently behind the feature flag `PL_CENTRAL_NOTIFICATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 :::tip
-- Ensure that you have SMTP configured on your account. HCE configures SMTP for you as a part of the basic setup for your application.
-- To configure SMTP, ensure your account is connected to one delegate (irrespective of the scope).
+- Ensure that SMTP is configured on your account. HCE configures SMTP for you as a part of the basic setup for your application.
+- To configure SMTP, ensure your account is connected to at least one delegate, regardless of the scope.
 :::
 
-### Ensure SMTP is configured
+### Ensure SMTP is Configured
 
-1. To ensure that SMTP is configured for your account, navigate to **Administrative Settings**.
+1. To verify SMTP configuration for your account, navigate to **Administrative Settings**.
 
     ![](./static/alert-integration/admin-set-1.png)
 
-2. Validate if **SMTP Configuration** shows the status as **Configured**.
+2. Check if **SMTP Configuration** is marked as **Configured**.
 
     ![](./static/alert-integration/setup-done-3.png)
 
-### Create a channel
+### Create a Channel
 
-1. Navigate to **Chaos Engineering** module.
-
-    ![](./static/alert-integration/chaos-mod-4.png)
-
-2. Select **Project Settings** and then **Notifications Management**.
+1. Navigate to **Chaos Engineering** module. Select **Project Settings** and then **Notifications Management**.
 
     ![](./static/alert-integration/notification-5.png)
 
 :::tip
-The notification management should be configured at the project settings in the **chaos engineering** module only. This is because HCE currently supports chaos experiments which is a project-level entity, thereby making the rule a project-level entity.
+Notification management should be configured at the project settings level within the **Chaos Engineering** module. This is because HCE supports chaos experiments as a project-level entity, making the rule a project-level entity.
 :::
 
-3. Select **Channels** and **+ New Channel**.
+2. Select **Channels** and then **+ New Channel**.
 
     ![](./static/alert-integration/channel-6.png)
 
-4. Provide a **Channel Name**, **Channel Type** (currently supports email only), and associated value for channel type (email in this case). Select **Apply**.
+3. Enter a **Channel Name**, select **Channel Type** (currently supports email only), and provide the associated value for channel type (email in this case). Select **Apply**.
 
     ![](./static/alert-integration/create-channel-7.png)
 
-This creates a new channel for you.
+This creates a new channel.
 
     ![](./static/alert-integration/see-channel-8.png)
 
@@ -66,69 +65,62 @@ This creates a new channel for you.
 Ensure you create a channel before creating a rule because a channel decides which method (email, slack, and so on) you wish to receive the alerts.
 :::
 
-### Create a rule
+### Create a Rule
 
 1. To create a new rule, select **+ New Notification**.
 
     ![](./static/alert-integration/notification-8-2.png)
 
-2. Provide a **Notification Name** and select **Continue**.
-
-    ![](./static/alert-integration/rule-9.png)
-
-3. Select the **Resource Type** as **Chaos Experiments**, because HCE currently supports alerting for chaos experiments only. Select **Continue**.
+2. Enter a **Notification Name** and select **Continue**. Select **Chaos Experiments** as **Resource Type** because HCE currently supports alerting for chaos experiments only. Click **Continue**.
 
     ![](./static/alert-integration/resources-10.png)
 
 :::tip
-HCE currently supports selecting resource types as chaos experiments from Kubernetes and Linux chaos experiments.
+HCE currently supports selecting resource types as chaos experiments for both Kubernetes and Linux chaos experiments.
 :::
 
-4. You can associate a rule with one or more conditions. select **+ Add Condition**. In this modal, you can either create a condition or select one or more conditions that you created earlier. Select **Continue**.
+4. You can associate a rule with one or more conditions. Select **+ Add Condition**. In the modal that appears, you can either create a condition or select one or more existing conditions. Select **Continue**.
 
-    ![](./static/alert-integration/condition-11.png)
+### Create a Condition
 
-### Create a condition
-
-1. Provide the **Condition Name**, events (such as chaos experiment started, stopped, or completed) for which you wish to receive the alerts. Select **Apply**.
+1. Provide a **Condition Name**, select the events (such as chaos experiment started, stopped, or completed) for which you want to receive the alerts. Select **Apply**.
 
     ![](./static/alert-integration/create-12.png)
 
-2. You can see some conditions configured for your rule. Select **Continue**.
+2. Review the conditions configured for your rule and click **Continue**.
 
-    ![](./static/alert-integration/set-13.png)
+### Select Channel for Alerts
 
-### Select channel for alerts
+1. Click **Select Channels**. Choose channel/s that you configured earlier and select **Apply Selected**. To create a new channel, select **New Channel**.
 
-1. Select **Select Channels**.
+    ![](./static/alert-integration/apply-15-1.png)
 
-    ![](./static/alert-integration/set-channel-14-2.png)
+2. Select **Apply Selected**.
 
-2. Select one of the channel/s that you configured earlier and select **Apply Selected**. To create a new channel, select **New Channel**.
+    ![](./static/alert-integration/apply-15-2.png)
 
-    ![](./static/alert-integration/apply-15.png)
 
-3. You can **Enable** or disable the rule based on whether you select or de-select the radio button. By default, it is **Enable on Save**. Select **Submit**.
+3. You can **Enable** or disable the rule based by selecting or deselecting the radio button. By default, it is set to **Enable on Save**. Select **Submit**.
 
     ![](./static/alert-integration/submit-16.png)
 
 :::tip
-If you try to create multiple rules on the same chaos experiment, you can seamlessly do so, and this results in you receiving multiple alerts (one per rule) for the same chaos experiment.
+You can create multiple rules on the same chaos experiment, which will result in receiving multiple alerts (one per rule) for that experiment.
 :::
 
-### Sample run report
+## Sample Run report
 
-Once you set up your email to receive alerts for chaos experiments that are completed events as a part of [creating conditions](#create-a-condition) and the feature flag is enabled, you should receive a run report as an attachment similar to the below report. This report will describe the run details, fault details, and so on.
+Once you've set up your email to receive alerts for completed chaos experiments (as part of [creating conditions](#create-a-condition)) and the feature flag is enabled, you'll receive a run report as an attachment. This report will include details like run information, fault details, and more.
 
     ![](./static/alert-integration/sample-report-17.png)
 
 :::tip
-Currently, you will receive the report if and only if you configure a condition to receive alerts for chaos experiments that are **Completed**. You can't choose to not receive an alert for completed chaos experiments.
+Currently, you will only receive the report if you've configured a condition to receive alerts for **Completed** chaos experiments. You can't opt-out of receiving alerts for completed experiments.
 :::
 
-### Delete a rule
+## Delete a Rule
 
-Select the rule and select **Delete**. Select **Delete** to confirm.
+Select the rule and click **Delete**. Confirm by selecting **Delete**.
 
     ![](./static/alert-integration/delete-18.png)
 

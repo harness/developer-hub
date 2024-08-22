@@ -1,5 +1,5 @@
 ---
-title: Create experiments
+title: Create experiment
 sidebar_position: 1
 ---
 
@@ -12,7 +12,7 @@ This topic describes how you can create chaos experiments and execute them to bu
 - What are resilience probes?
 - How to create a resilience probe?
 
-### Create a chaos experiment
+### Create a Chaos Experiment
 
 You can add one or more chaos faults to a chaos experiment and execute it. Follow the interactive guide below to create a chaos experiment with one chaos fault, namely, pod delete, which has one resilience probe associated with it.
 
@@ -111,7 +111,7 @@ After constructing the chaos experiment using one of the three options, save the
 	* Click **Save** to save the experiment to the Chaos Experiments page. You can add it to a [ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub) later.
 	* Select **Add Experiment to ChaosHub** to save this experiment as a template in a selected [ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub).
 
-## Run or schedule the experiment
+## Run or Schedule the Experiment
 
 You can choose to run the experiment immediately by clicking the **Run** button, or schedule it to run at a specific time by selecting the **Schedule** tab.
 
@@ -178,7 +178,6 @@ Specify the group ID to start all the processes in the experiment pod containers
 This option allows privileged or restricted access for experiment pods.
 
 	![runAsGroup](./static/create-experiments/run-as-group.png)
-
 
 
 ## Add serial and parallel faults

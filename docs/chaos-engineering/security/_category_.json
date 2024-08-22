@@ -5,7 +5,8 @@
   "collapsed": true,
   "link":{
       "type":"generated-index",
-      "title":"Security"
+      "title":"Security",
+      "description": "Harness provides several controls to ensure the safe execution of chaos experiments on your infrastructure. This section explains security considerations and associated features across administrative and runtime environments."
    },
   "customProps": {
     "description": "Security considerations and features across administrative and runtime environments"

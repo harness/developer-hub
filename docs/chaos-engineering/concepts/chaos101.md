@@ -113,7 +113,12 @@ The components specified in the diagram earlier are described below.
 
 The diagram below describes the flow of control in a chaos experiment.
 
+<details>
+<summary> Flow of control </summary>
+
 ![](./static/architecture/experiment-sequence.png)
+
+</details>
 
 Below is the detailed description of the steps above.
 
@@ -148,7 +153,7 @@ Below is the detailed description of the steps above.
 
 #### **Experiment Status**
 
-	Experiment status describes the overall status of the experiment that depends on the status of the probe and the fault. The experiment status in a chaos experiment can be in 7 different states.
+Experiment status describes the overall status of the experiment that depends on the status of the probe and the fault. The experiment status in a chaos experiment can be in 7 different states.
 
 	- **Completed**: The fault and the probes associated with every fault were completed successfully.
 	- **Completed with Error**: All the faults complete execution, and none of them show **error** status, but one of the faults may show **Completed with error** if the probe associated with the fault fails.
@@ -175,103 +180,6 @@ Below is the detailed description of the steps above.
 	- **Completed with Error**: When the fault completes execution with at least one **failed** probe status but no **N/A** probe status, it is considered to be **completed with error**.
 	- **Error**: When the fault completes execution with at least one **N/A** probe status, it is considered to be **error** because you can't determine if the probe status was **passed** or **failed**. A fault is considered to be in an **error** state when it has 0 probes because there are no health checks to validate the sanity of the chaos experiment.
 
-#### **ChaosHub**
-
-	A collection of experiment templates (defined as workflow CRs) and faults (defined as ChaosExperiment CR and ChaosEngine CR) that help create and execute new chaos experiments against your target resources. Apart from the Enterprise ChaosHub, which is present by default, you can add custom ChaosHub to manage and distribute custom experiment templates and faults.
-
-	- **Enterprise ChaosHub**: Also known as Enterprise hub, it comes out-of-the-box with HCE and consists of pre-built manifests (YAML files) and chaos experiment templates. It is a prebuilt ChaosHub that represents the existing experiments and chaos faults. You can use faults from multiple categories to create chaos experiments in the Enterprise ChaosHub.
-
-		#### Reason for adding custom ChaosHub
-
-		* Add custom experiments suited to specific needs in your organization.
-		* Share your experiments with others in your Harness project or in other Harness projects—you can add the same custom hub(s) to many projects.
-		* Maintain and upgrade experiments in one place so those you share your hubs with always have the latest version.
-		* Provide secure access to your custom experiments.
-
-#### Chaos Infrastructure
-
-	It represents the individual components of a deployment environment. It is a service that runs within your target environment to help HCE access the target resources and inject chaos at a cloud-native scale.
-
-<Accordion color="pink">
-<summary> Types of infrastructure </summary>
-
-There are different types of chaos infrastructure such as Kubernetes, Linux, and Windows. You can choose to execute experiments on these infrastructures based on different environments, such as Kubernetes, Linux VMs, AWS cloud, VMware, and so on.
-
-Based on the target environments, you can install chaos infrastructure as a Kubernetes service, a Linux daemon or a Windows agent.
-
-:::tip
-Chaos experiments associated with Cloud Foundry are executed using Linux chaos infrastructure, and experiments with AWS, GCP, Azure, VMware, and Bare metal are executed on Kubernetes infrastructure.
-:::
-
-All the chaos infrastructure services adhere to the **principle of least privilege**, where the services execute with the minimum number of permissions.
-
-<Tabs>
-<TabItem value="Linux infrastructure">
-
-A set of mandatory input flags is required to install chaos infrastructure, including the `infra-id`, `access-key` and the `server-url`. However, certain aspects of the infrastructure can be tuned via the following flags:
-1. **log-directory**: Custom log directory to store the log files. By default, the logs are stored at `/var/log/linux-chaos-infrastructure`.
-2. **task-poll-interval-seconds**: Interval between subsequent poll queries to the server for a new experiment. The default value is **5 seconds**.
-3. **task-update-interval-seconds**: Duration between subsequent status updates of an active fault to the server. The default value is **5 seconds**.
-4. **update-retries**: Maximum number of retries in case of a failure while sending a fault status or result.
-
-    * If the retry count is breached while sending the status, the active fault is aborted after logging the error during each attempts and the result is then attempted to be sent.
-
-    * If the retry count is breached while sending the result, no result is sent by the infrastructure but the error during the attempts are logged.
-
-    The default value is **5**.
-
-5. **update-retry-interval-seconds**: Interval between the subsequent attempts to send a fault status or result, in case of a failure. The default value for it is **5 seconds**.
-6. **chaos-infra-liveness-update-interval-seconds**: Interval between the chaos infrastructure liveness heartbeats. The default value is **5 seconds**.
-7. **chaos-infra-log-file-max-size-mb**: Maximum size limit for the chaos infrastructure log file rotation. Upon breaching the size limit, a new log file is created to store the logs and the old log file is retired as a backup archive. The default value is **5 MB**.
-8. **chaos-infra-log-file-max-backups**: Maximum number of backup archives to be retained at any given time. The oldest archive is deleted when a new log file is created. The default value is **2**.
-9. **experiment-log-file-max-age-days**: Number of days after which the experiment log files will be deleted. The default value is **30**.
-10. **custom-tls-certificate**: TLS certificate used to communicate with the control plane.
-11. **http-proxy**: HTTP proxy URL used to communicate with the control plane.
-12. **http-client-timeout**: HTTP client timeout for communicating with the control plane. The default value is **30s**.
-
-:::info note
-LCI does not currently support:
-1. Cron schedules
-2. [GameDays](/docs/chaos-engineering/features/gameday/introduction-to-gameday.md)
-3. Executing [parallel faults](/docs/chaos-engineering/features/experiments/create-complex-chaos-experiments.md) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI)
-:::
-
-#### Infrastructure service
-The Linux chaos infrastructure is installed as an executable binary on your Linux machine. This infrastructure is managed as a `Systemd` service.
-- The service starts automatically when the system starts.
-- If the service stops unexpectedly, it automatically attempts to restart after a cool down period of 5 seconds.
-- By default, the service ensures that the chaos infrastructure process is owned by the root user.
-
-To check if the infrastructure service is active and running, use the following command:
-```
-systemctl status linux-chaos-infrastructure.service
-```
-![Terminal](./static/chaos101/terminal.png)
-
-Any status other than the `active` status would indicate an issue with the infrastructure.
-
-#### Logs
-Logs that are generated are stored in the `/var/log/linux-chaos-infrastructure` directory by default. There are two types of logs:
-1. **Infrastructure logs:** Infrastructure logs are generated as a result of any infrastructure operation that is not directly related to the execution of an experiment. For example:
-    - Start of execution of an experiment
-    - End of execution of an experiment
-    - Error during the creation of an experiment log file
-    - Error while querying for an experiment
-    - Error while sending the experiment status or result, etc.
-
-    By default, this log file is located at `/var/log/linux-chaos-infrastructure/linux-chaos-infrastructure.log` and can be used for troubleshooting the infrastructure.
-
-:::info
-- The file is rotated based on its size; when the file size is a specified size, it is archived in a separate file with the timestamp of rotation suffixed to the file name. By default, this value is **5 MB**.
-- Eventually, the old archives will be deleted. The maximum number of most recent archives that are retained at any given time can be specified. By default, this value is **2**.
-:::
-
-2. **Experiment logs:** Experiment logs are stored in separate files, which are scoped to the faults of the experiment. It contains information about the various steps of the execution of that fault, including any errors caused during the execution of the fault. The files use the unique fault name mentioned in the experiment as their filename.
-
-:::info
-- These files are rotated based on their age; where files older than a specific number of days are removed. By default, this value is **30 days**.
-:::
-
 #### Resilience probes for Linux
 
 HCE allows you to create the below probes for Linux:
@@ -283,255 +191,32 @@ HCE allows you to create the below probes for Linux:
 
 When you try to enable or disable a Linux probe, two mandatory fields `type` and `attempt` (with empty values) are added to the probe. Even if you edit these values, they will not reflect in the updated experiment manifest. This is because the final values for the earlier-mentioned mandatory fields are picked from the database associated with the specific probe. Go to [known issues](/docs/chaos-engineering/troubleshooting/known-issues) for more information.
 
-</TabItem>
 
-<TabItem value="OpenShift infrastructure">
-
-**Step 1. Create or identify the target namespace and install the service accounts**
-
-Create or identify the target chaos namespace in which you will deploy the chaos infrastructure.
-You will use the `hce` namespace in this case.
-
-```bash
-kubectl create ns hce
-```
-
-You can create the service account in the cluster mode or the namespace mode.
-
-To install in the **cluster mode**, create the service accounts using the [cluster-mode-sa.yaml](./static/openshift/cluster-sa.yaml) file. You can download the file and apply it.
-
-To install in the **namespace mode**, create the service accounts using the [namespace-mode-sa.yaml](./static/openshift/namespace-sa.yaml) file. You can download the file and apply it.
-
-If you have a different namespace, replace the namespace with `<your-namespace>` in the manifest.
-
-```bash
-kubectl create cluster-mode-sa.yaml -n  hce
-```
-
-__Output__
-
-```bash
-$> kubectl apply -f cluster-mdoe-sa.yaml -n hce
-serviceaccount/litmus-admin created
-serviceaccount/hce created
-serviceaccount/argo-chaos created
-serviceaccount/argo created
-serviceaccount/litmus-cluster-scope created
-```
-
-**Step 2. Create Litmus Security Context Constraint (SCC) and authenticate it with the service account**
-
-To create the litmus SCC,
-- Copy the contents of the [litmus SCC manifest](./static/openshift/litmus-scc.yaml) to `litmus-scc.yaml` file.
-- Apply this manifest to your chaos infrastructure.
-
-  ```bash
-  kubectl apply -f litmus-scc.yaml
-  ```
-
-__Output__
-
-```bash
-$> kubectl apply -f litmus-scc.yaml
-securitycontextconstraints.security.openshift.io/litmus-scc created
-```
-- Authenticate all `hce` service accounts with `litmus-scc`:
-
-  ```bash
-  oc adm policy add-scc-to-user litmus-scc -z <SERVICE-ACCOUNT-NAME> --as system:admin -n <CHAOS-NAMESPACE>
-  ```
-
-:::note
-- Replace `<CHAOS-NAMESPACE>` with the namespace where litmus is installed. (Here litmus)
-- Replace `<SERVICE-ACCOUNT-NAME>` with the name of hce service accounts.
-:::
-
-
-In this case, the exact command is:
-```bash
-oc adm policy add-scc-to-user litmus-scc -z litmus-admin,argo-chaos,argo,litmus-cluster-scope,default,hce --as system:admin -n hce
-```
-
-__Output__
-
-```bash
-clusterrole.rbac.authorization.k8s.io/system:openshift:scc:litmus-scc added: ["litmus-admin" "argo-chaos" "argo" "litmus-cluster-scope" "default" "hce"]
-```
-
-:::tip
-To learn more about SCC, go to [SCC documentation](/docs/chaos-engineering/architecture-and-security/security/security-templates/openshift-scc).
-:::
-
-**Step 3. Get the manifest to install chaos infrastructure**
-
-After [connecting to a chaos infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures.md), select the installation mode (cluster scope or namespace scope).
-
-![configure-chaos-infra](https://user-images.githubusercontent.com/35391335/226420643-6490d8bc-90fc-438e-92cc-f90a736ab374.png)
-
-
-:::note
-Provide the namespace and the service account name. To use a service account other than `hce`, create a new service account and authenticate it with litmus-scc by following steps 1 and 2.
-:::
-
-**Step 4. Verify the installation**
-
-Verify if all the pods are in `Running` state (optional).
-
-```bash
-$> kubectl get pods -n hce
-
-
-NAME                                   READY   STATUS    RESTARTS   AGE
-chaos-exporter-6c4b6d6c48-cht2d        1/1     Running   0          23s
-chaos-operator-ce-57f5f7ccdb-m7g7f     1/1     Running   0          24s
-subscriber-57798b696b-69vtr            1/1     Running   0          14s
-workflow-controller-67b87685fb-h6k5b   1/1     Running   0          29s
-```
-
-Ensure that the state of the chaos infrastructure is `CONNECTED`.
-
-![verify-chaos-infra-state](https://user-images.githubusercontent.com/35391335/226423314-b00555de-c999-42f5-97cb-deea51a81e95.png)
-
-**Step 5. Run chaos experiments**
-
-To run Kubernetes experiments, you need to tune the parameters associated with the fault. You can update or add the below mentioned environment variables while tuning the faults.
-
-```yaml
-- name: CONTAINER_RUNTIME
-  value: crio
-- name: SOCKET_PATH
-  value: /run/crio/crio.sock
-- name: SET_HELPER_DATA
-  value: false
-```
-
-
-</TabItem>
-
-<TabItem value="Windows infrastructure">
-
-The diagram represents a high-level architecture of the interaction between the Windows execution plane and control plane components.
-
-![](./static/windows-infrastructure/detailed-architecture.png)
-
-#### Advanced setup
-
-The mandatory input required for the installation of the chaos infrastructure is the `name`.
-You can tune the other flags of the infrastructure with the following flags:
-
-1. **admin user**: Administrator used to execute commands on the terminal to install and manage the Windows chaos infrastructure. By default, the logs are stored at `C:\\HCE\logs`.
-
-2. **task poll interval**: Interval between subsequent poll queries to the server for a new experiment. The default value is **5 seconds**.
-
-3. **task update interval**: Duration between subsequent status updates of an active fault to the server. The default value is **5 seconds**.
-
-4. **infrastructure liveness update interval**: Interval between the chaos infrastructure liveness heartbeats. The default value is **5**.
-
-5. **update retries**: Number of retries before the service fails.
-
-6. **update retries interval seconds**: Interval between the subsequent attempts to send a fault status or result, in case of a failure. The default value for it is **5 seconds**.
-
-7. **log file max size**: Maximum size limit for the chaos infrastructure log file rotation. Upon breaching the size limit, a new log file is created to store the logs and the old log file is retired as a backup archive. The default value is **5 MB**.
-
-8. **log file max backups**: Maximum number of backup archives to be retained at any given time. The oldest archive is deleted when a new log file is created. The default value is **2**.
-
-9. **experiment log file max age**: Number of days after which the experiment log files will be deleted. The default value is **30**.
-
-10. **http proxy**: HTTP proxy URL used to communicate with the control plane.
-
-11. **http client timeout**: HTTP client timeout for communicating with the control plane. The default value is **30s**.
-
-#### Infrastructure service
-The Windows chaos infrastructure is installed as an executable binary on your Windows VM. The service binary is present in `C:\\HCE\windows-chaos-infrastructure.exe` path. The config file is present in `C:\\HCE\config.yaml` path.
-
-#### Logs
-Logs that are generated are stored in the `C:\\HCE\logs` directory by default.
-
-There are two types of logs:
-1. **Infrastructure logs:** Infrastructure logs are generated as a result of any infrastructure operation that is not directly related to the execution of an experiment. Every experiment run has a new log folder with all connectivity logs.
-
-:::info
-- The file is rotated based on its size; when the file size is a specified size, it is archived in a separate file with the timestamp of rotation suffixed to the file name. By default, this value is **5 MB**.
-- Eventually, the old archives will be deleted. The maximum number of most recent archives that are retained at any given time can be specified. By default, this value is **2**.
-:::
-
-2. **Experiment logs:** Experiment logs are stored in separate files, which are scoped to the faults of the experiment. It contains information about the various steps of the execution of that fault, including any errors caused during the execution of the fault. The files use the unique fault name mentioned in the experiment as their filename.
-
-:::info
-- These files are rotated based on their age; where files older than a specific number of days are removed. By default, this value is **30 days**.
-:::
-
-#### Verify Windows infrastructure service status
-
-To verify the status of the service, navigate to the command prompt on your Windows. Search for **Task Manager**, select **More details** and check the status of **WindowsChaosInfrastructure**.
-
-1. If the status reads **Running**, it means the windows infrastructure is up and running.
-
-![](./static/windows-infrastructure/add-pwd-1.png)
-
-
-2. If it reads **Stopped**, right click and select **Start**.
-
-![](./static/windows-infrastructure/start-service-2.png)
-
-3. Any other status will be associated with logs which you can troubleshoot using our [troubleshooting guide](/docs/chaos-engineering/troubleshooting/troubleshooting.md)
-
-#### Resilience probes for Windows
-
-HCE allows you to create the below probes for Windows:
-
-1. [HTTP](/docs/chaos-engineering/features/resilience-probes/http-probe)
-
-</TabItem>
-</Tabs>
-
-</Accordion>
-
-<Accordion color="pink">
-<summary> Importance of infrastructure </summary>
-
-Chaos infrastructure helps facilitate the chaos fault injection and hypothesis validation thereby enabling chaos automation for target resources.
-
-</Accordion>
-
-<Accordion color="pink">
-<summary> Using a infrastructure </summary>
-
-You can [connect to an infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures), [disconnect from it](/docs/chaos-engineering/features/chaos-infrastructure/disconnect-chaos-infrastructure), and [upgrade it](/docs/chaos-engineering/features/chaos-infrastructure/upgrade-infra).
-You can install an infrastructure as a part of creating an experiment. This infrastructure is installed on the target Kubernetes cluster and helps inject chaos into applications, thereby executing the chaos experiments.
-Go to [flow of control](/docs/chaos-engineering/chaos-faults/kubernetes/classification#flow-of-control-in-kubernetes-based-faults) to understand the flow of control of Kubernetes faults.
-
-:::tip
-- You can add multiple chaos infrastructures as part of an environment.
-- You can set up a chaos infrastructure in **cluster-wide** access scope or in a **namespace** scope.
-:::
-</Accordion>
-
-- **Environment**
+#### Environment
 
 	It represents your deployment environment such as `Dev`, `QA`, `Staging`, `Production`, etc. Each environment may contain multiple chaos infrastructures. It helps isolate the various environments that the engineering, product owners, QA, and automation teams use under a single Harness project. This allows for better segregation of mission-critical infrastructures with several attached dependencies from dev and staging infrastructures for their safety.
 
-- **Chaos Studio**
+#### Chaos Studio
 
 	It is used to create new chaos experiments using various chaos faults and templates from ChaosHub, probes, and custom action steps. You can create new experiments using the guided UI or by using the experiment manifest represented by the workflow CR.
 
-- **Resilience Score**
+#### Resilience Score
 
 	It is a quantitative measure of how resilient the target application is to a chaos experiment. You can [calculate](/docs/chaos-engineering/features/experiments/resilience-score) this value based on the priority set for every fault in the experiment and the probe success percentage of the faults (if the probes are defined).
 
-- **Chaos Engine Custom Resource (CR)**
+#### Chaos Engine Custom Resource (CR)
 
 	It is the user-facing chaos Kubernetes CR which connects a target resource instance with a chaos fault to orchestrate the steps of chaos execution. You can specify run-level details such as overriding fault defaults, providing new environment variables and volumes, deleting or retaining experiment pods, defining probes, and updating the status of the fault execution.
 
-- **Chaos Experiment Custom Resource (CR)**
+#### Chaos Experiment Custom Resource (CR)
 
 	It contains the low-level execution information for the execution of a chaos fault. The CR holds granular details of a fault such as the container image, library, necessary permissions, and chaos parameters. Most of the chaos experiment CR parameters are tunables that you can override from the chaos engine CR.
 
-- **Workflow Custom Resource (CR)**
+#### Workflow Custom Resource (CR)
 
 	It is used to define the number of operations that are coupled together in a specific sequence to achieve a desired chaos impact. These operations are chaos faults or any custom action associated with the experiment, such as load generation.
 
-- **Chaos Manager**
+#### Chaos Manager
 
 	A GraphQL-based Golang microservice that serves the requests received from the chaos infrastructure either by querying MongoDB for relevant information.
 
@@ -539,7 +224,7 @@ Go to [flow of control](/docs/chaos-engineering/chaos-faults/kubernetes/classifi
 A NoSQL MongoDB **database** microservice accountable for storing users' information, past chaos experiments, saved chaos experiment templates, user projects, ChaosHubs, and GitOps details, among other information.
 :::
 
-- **Chaos Exporter**
+#### Chaos Exporter
 
 	An optional constituent that exposes monitoring metrics such as QPS and others present on the cluster to the frontend.
 	It facilitates external observability in HCE. You can achieve this by exporting the chaos metrics generated (during the chaos injection as time-series data) to the Prometheus database for processing and analysis.

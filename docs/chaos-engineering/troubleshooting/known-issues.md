@@ -1,10 +1,9 @@
-
 ---
 title: Known issues
 description: HCE known issues
 sidebar_position: 2
 redirect_from:
-  - /docs/troubleshooting/chaos-engineering/known-issues
+- /docs/troubleshooting/chaos-engineering/known-issues
 ---
 
 This topic walks you through the known issues in HCE.
@@ -66,3 +65,9 @@ Currently, Windows chaos experiments do not support scheduled or cron-based exec
 ## Auto upgrade support
 
 The Windows Chaos infrastructure currently doesn't support auto-upgrades. Hence, for every upgrade, you need to manually upgrade. This involves uninstalling the current infrastructure first, using the provided uninstallation script, and then re-installing it with the desired infrastructure version.
+
+## Known limitations of resilience probes
+
+* Command probes in the **source** mode for Kubernetes is available for both SMP and HCE SaaS.
+* Command probes in the **source** mode is not available for Linux in HCE SaaS.
+* In SMP (self-managed platform), command probe in the **source** mode is only available for Linux.

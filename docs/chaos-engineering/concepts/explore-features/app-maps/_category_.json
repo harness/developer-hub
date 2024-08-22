@@ -1,0 +1,9 @@
+{
+  "position": 6,
+  "label": "Application Map",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Application Map documentation"
+  }
+}

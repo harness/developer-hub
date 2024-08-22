@@ -5,9 +5,10 @@
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Use Harness CE"
+      "title":"Use Harness CE",
+      "description":"This section describes how you can Harness CE to improve the resilience of your application, by enabling a chaos infrastructure, creating a chaos experiment, adding resilience probes to it, and so on."
    },
   "customProps": {
-    "description": "Use Harness CE"
+    "description": "This section describes how you can Harness CE to improve the resilience of your application."
   }
 }

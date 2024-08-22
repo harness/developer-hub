@@ -1,31 +1,26 @@
 ---
-title: Edit and update chaos experiments
+title: Edit and update chaos experiment
 sidebar_position: 20
-description: Guide to edit and update chaos experiments
+description: Guide to edit and update chaos experiment
 redirect_from:
   - /docs/chaos-engineering/configure-chaos-experiments/experiments/edit-chaos-experiment
 ---
 
 You can edit an existing chaos experiment to update the experiment's metadata, faults, schedule, etc. This section describes three actions:
-1. Editing an experiment
-2. Update old experiment manifests
-3. Bulk updating cron schedules
+1. [Editing an experiment](#edit-a-chaos-experiment)
+2. [Update old experiment manifests](#update-old-experiment-manifests)
+3. [Bulk updating cron schedules](#bulk-update-cron-schedules)
 
-## Edit a chaos experiment
+## Edit a Chaos Experiment
 
-Described below are the steps to edit a chaos experiment.
 
-### Step 1: Click Edit experiment
+1. On the **Chaos Experiments** page, select the **`⋮`** icon against the name of the experiment you want to edit and select **Edit Experiment**.
 
-On the **Chaos Experiments** page, select the **`⋮`** icon against the name of the experiment you want to edit and select **Edit Experiment**.
+    ![Edit Experiment](./static/edit-experiment/edit-experiment.png)
 
-![Edit Experiment](./static/edit-experiment/edit-experiment.png)
+2. You can either update the changes to the same experiment and save it or create a copy of the experiment and then apply the changes to it.
 
-### Step 2: Make changes and save
-
-You can either update the changes to the same experiment and save it or create a copy of the experiment and then apply the changes to it.
-
-![save](./static/edit-experiment/save-after-edit.png)
+    ![save](./static/edit-experiment/save-after-edit.png)
 
 ## Execute experiment with advanced options
 
@@ -37,23 +32,18 @@ You can execute the chaos experiment with advanced security options: **runAsUser
 
 To select one of the options,
 
-### Step 1: Navigate to your experiment
+1. Click **Experiment builder** tab. Click **Advanced Options** on the right side of the screen.
 
-* Click **Experiment builder** tab. Click **Advanced Options** on the right side of the screen.
+    ![run as user group](./static/edit-experiment/advanced-1.png)
 
-  ![run as user group](./static/edit-experiment/advanced-1.png)
+2. Click **Security** tab and select/unselect one or both the options.
 
-### Step 2: Select the option and save
+    ![advanced](./static/edit-experiment/advanced-2.png)
 
-* Click **Security** tab and select/unselect one or both the options.
 
-  ![advanced](./static/edit-experiment/advanced-2.png)
+3. Click **Save**.
 
-### Step 3: Save the changes
-
-* Click **Save**.
-
-  ![save changes](./static/edit-experiment/save-3.png)
+    ![save changes](./static/edit-experiment/save-3.png)
 
 ## Update old experiment manifests
 
@@ -67,31 +57,23 @@ To determine the latest version of images, navigate to Enterprise Chaos Hub, and
 
 To update the experiment manifest, follow the steps below.
 
-### Step 1: Navigate to Chaos Experiments page and select experiment
+1. Select the experiment whose manifest you wish to update, and click the **Experiment Builder** tab.
 
-* Select the experiment whose manifest you wish to update, and click the **Experiment Builder** tab.
+    ![select](./static/edit-experiment/exp-builder-2.png)
 
-  ![select](./static/edit-experiment/exp-builder-2.png)
+2. The **VISUAL** is usually displayed, click the **YAML** to edit it. Click **Edit Yaml**.
 
-### Step 2: Click YAML to edit
+    ![save](./static/edit-experiment/yaml-3.png)
 
-* The **VISUAL** is usually displayed, click the **YAML** to edit it. Click **Edit Yaml**.
+    ![save](./static/edit-experiment/edit-4.png)
 
-  ![save](./static/edit-experiment/yaml-3.png)
+3. Find **chaos-go-runner** in the manifest and replace the corresponding version with the latest version.
 
-  ![save](./static/edit-experiment/edit-4.png)
+    ![save](./static/edit-experiment/find-5.png)
 
-### Step 3: Search instances of chaos-go-runner
+4. Once you update the images, click **Save** at the top right.
 
-* Find **chaos-go-runner** in the manifest and replace the corresponding version with the latest version.
-
-  ![save](./static/edit-experiment/find-5.png)
-
-### Step 4: Click Save
-
-* Once you update the images, click **Save** at the top right.
-
-  ![save](./static/edit-experiment/save-6.png)
+    ![save](./static/edit-experiment/save-6.png)
 
 :::tip
 When you create a new experiment, the images in the experiment manifest are configured to match the images in the Enterprise Chaos Hub.
@@ -109,44 +91,26 @@ You can:
 
 To enable/disable a cron schedule,
 
-### Step 1: Click Bulk update
+1. Click **Bulk update** at the top right of the **Chaos Experiments** page and choose one of the following options:
+  1. Reschedule cron
+  2. Enable/disable cron
 
-Once you click **Bulk update** at the top right of the **Chaos Experiments** page, you will see two options:
-1. Reschedule cron
-2. Enable/disable cron
-
-Select one of the above based on your requirements.
-
-![bulk update](./static/edit-experiment/bulk-update.png)
+2. Select one of the above based on your requirements.
 
 :::tip
 You can bulk update (reschedule or enable/disable) not more than 20 experiments in one go.
 :::
 
-### Step 2: Select experiments
+3. Select one or more experiments that you wish to reschedule or enable/disable. Click **Next**.
 
-Select one or more experiments that you wish to reschedule or enable/disable.
+4. You can choose between [rescheduling](#reschedule-a-cron-schedule) or [enabling (or disabling)](#enable-or-disable-a-cron-schedule) a cron schedule.
 
-![click next](./static/edit-experiment/click-next.png)
-
-### Step 3: Perform the bulk update on selected experiments
-
-You can choose between [rescheduling](#reschedule-a-cron-schedule) or [enabling (or disabling)](#enable-or-disable-a-cron-schedule) a cron schedule.
-
-#### Reschedule a cron schedule
+### Reschedule a cron schedule
 
 You can change the schedule of the experiments by changing the values, and click **Confirm**.
 
-![reschedule](./static/edit-experiment/reschedule-confirm.png)
+### Enable or disable a cron schedule
 
-#### Enable or disable a cron schedule
+1. You can select one of the options (enable cron or disable cron), and click **Confirm**.
 
-You can select one of the options (enable cron or disable cron), and click **Confirm**.
-
-![enable](./static/edit-experiment/enable-or-disable-cron.png)
-
-### Step 4: Click close
-
-You will see a confirmation message on your screen about the updated schedule. Click **Close**.
-
-![close](./static/edit-experiment/close.png)
+2. You will see a confirmation message on your screen about the updated schedule. Click **Close**.

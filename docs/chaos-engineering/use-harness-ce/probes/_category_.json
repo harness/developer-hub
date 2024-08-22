@@ -1,13 +1,13 @@
 {
   "position": 4,
-  "label": "Resilience Probes",
+  "label": "Resilience Probe",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Resilience Probes"
+      "title":"Resilience Probe"
    },
   "customProps": {
-    "description": "Resilience Probes"
+    "description": "Resilience Probe"
   }
 }

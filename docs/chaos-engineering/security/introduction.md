@@ -6,7 +6,6 @@ redirect_from:
 - /docs/chaos-engineering/technical-reference/security/introduction
 - /docs/chaos-engineering/architecture-and-security/security/introduction
 ---
-This section introduces you to various security aspects of executing chaos experiments on your infrastructure.
 
 Harness provides several controls to ensure the safe execution of chaos experiments on your infrastructure. This section explains security considerations and associated features across administrative and runtime environments, including:
 

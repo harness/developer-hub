@@ -1,14 +1,14 @@
 {
-  "position": 3,
-  "label": "Chaos Experiments",
+  "position": 2,
+  "label": "Chaos Experiment",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Chaos Experiments",
-      "description": "This sections describes how you can use chaos experiments, that is, create, execute, analyze, schedule, edit, export, halt, delete, and get alerts."
+      "title":"Chaos Experiment",
+      "description": "This sections describes how you can create, execute, analyze, schedule, edit, export, halt, delete, and get alerts for chaos experiment."
    },
   "customProps": {
-    "description": "Chaos Experiments"
+    "description": "Chaos Experiment"
   }
 }

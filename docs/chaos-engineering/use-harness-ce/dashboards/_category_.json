@@ -1,13 +1,13 @@
 {
   "position": 6,
-  "label": "Chaos Dashboards",
+  "label": "Chaos Dashboard",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Resilience Insights through Chaos Dashboards"
+      "title":"Resilience Insights through Chaos Dashboard"
    },
   "customProps": {
-    "description": "Resilience Insights through Chaos Dashboards"
+    "description": "Resilience Insights through Chaos Dashboard"
   }
 }

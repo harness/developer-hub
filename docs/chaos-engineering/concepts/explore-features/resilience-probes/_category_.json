@@ -1,0 +1,16 @@
+{
+  "position": 35,
+  "label": "Resilience Probes",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Resilience Probes",
+      "description":
+        "Resilience probes"
+      },
+  "customProps": {
+    "description": "Resilience Probes"
+  }
+}
+
