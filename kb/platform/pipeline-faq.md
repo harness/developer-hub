@@ -690,3 +690,6 @@ Harness does not support built-in functionality for this use case. However, you 
 
 #### What does this expression do ```<+secrets.getValue("")>```syntax in a pipeline?
 You can retrieve a secret value, such as `GitHub_PAT`, using the `<+secrets.getValue("")>` syntax in a pipeline. If the secret is at the project level, use `<+secrets.getValue("GitHub_PAT")>`. For an organization-level secret, use `<+secrets.getValue("org.GitHub_PAT")>`, and for an account-level secret, use `<+secrets.getValue("account.GitHub_PAT")>`.
+
+### Can a trigger be created from a specific directory within a Git repository?
+Trigger cannot be created from a specific directory however you can create a trigger for a repository and then use a condition in your trigger such as starts with or Changed Files option to achieve your usecase.
