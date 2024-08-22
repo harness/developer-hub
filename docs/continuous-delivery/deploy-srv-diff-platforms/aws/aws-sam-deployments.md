@@ -91,9 +91,9 @@ Unlike old images, in new images a single image has the capabiliity of handling 
 
  Runtimes | Images |
 | --- | --- |
-| nodejs 20 | harness/aws-sam-plugin:nodejs20.x-1.120.0-1.0.0-beta-linux-amd64 |
-| nodejs 18 | harness/aws-sam-plugin:nodejs18.x-1.120.0-1.0.0-beta-linux-amd64 |
-| java 17   |	harness/aws-sam-plugin:java17-1.120.0-1.0.0-beta-linux-amd64 |
+| nodejs 20 | harness/aws-sam-plugin:nodejs20.x-1.120.0-1.0.1-beta-linux-amd64 |
+| nodejs 18 | harness/aws-sam-plugin:nodejs18.x-1.120.0-1.0.1-beta-linux-amd64 |
+| java 17   | harness/aws-sam-plugin:java17-1.120.0-1.0.1-beta-linux-amd64 |
 
 Now, let's understand the runtime image:-
 ![](./static/multiple-runtime-sam.png)
