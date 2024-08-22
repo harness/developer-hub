@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import HarnessApiData from '/Users/richardblack/repos/developer-hub/src/components/HarnessApiData/index';
+import HarnessApiData from '../../../src/components/HarnessApiData/index.tsx';
 
 let terraformVersion = "";
 let openTofuVersion = "";
