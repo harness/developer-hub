@@ -5,9 +5,7 @@ sidebar_label: What's supported
 sidebar_position: 1
 ---
 
-
 import {LatestSupportedTerraformVersion, LatestSupportedOpenTofuVersion} from "./components/latestSupportedVersionData"
-
 
 This page describes supported platforms and technologies for Harness IaCM specifically.
 
