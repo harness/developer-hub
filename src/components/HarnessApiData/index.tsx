@@ -7,22 +7,24 @@ interface IHarnessApiData {
   accountIdentifier?: boolean;
   token?: boolean;
   fallback: string;
-  parse?: string;
-  listPosition?: number;
+  showLatest?: boolean;  // Add a showLatest prop
+  parse?: (data: any) => any;  // Add a parse function prop
 }
+
 const HarnessApiData: React.FC<IHarnessApiData> = ({
   query,
   fallback,
   accountIdentifier,
   token,
-  parse,
-  listPosition = -1,
+  showLatest = false, // Default to true, returning the latest item
+  parse, // Receive the parse function
 }) => {
   return (
     <BrowserOnly fallback={<div>Loading...</div>}>
       {() => {
         const cookie = getXChatbotKeyCookie();
         const [response, setResponse] = useState("");
+        
         useEffect(() => {
           async function FetchData() {
             try {
@@ -51,17 +53,14 @@ const HarnessApiData: React.FC<IHarnessApiData> = ({
               }
               const data = await response.json();
 
-              // Handle arrays and get specific item based on listPosition
+              // Check if data is an array or list and return the last item
               let parsedData = data;
-              if (Array.isArray(parsedData)) {
-                if (listPosition === -1) {
-                  parsedData = parsedData[parsedData.length - 1]; // Last item
-                } else if (listPosition < parsedData.length) {
-                  parsedData = parsedData[listPosition];
-                } else {
-                  parsedData = fallback; // If listPosition is out of bounds
-                }
+              if (showLatest && Array.isArray(data)) {
+                parsedData = data[data.length - 1];
               }
+
+              // Use the parse function if provided
+              parsedData = parse ? parse(parsedData) : parsedData;
 
               setResponse(parsedData);
             } catch (error) {
@@ -70,7 +69,7 @@ const HarnessApiData: React.FC<IHarnessApiData> = ({
             }
           }
           FetchData();
-        }, [query, fallback, accountIdentifier, token, parse]);
+        }, [query, fallback, accountIdentifier, token, showLatest, parse]);
 
         return <>{response}</>;
       }}
