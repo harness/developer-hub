@@ -485,16 +485,16 @@ The checkbox **Do you want to clone infrastructures?** is checked by default. Th
 
 You can choose between **Inline** and **Remote** to set up your environment. Choose **Inline** when you want your environments to be stored in Harness. Choose **Remote** when storing your environment in a Third-party Git repository or Harness Code Repository.
 
-For cloning an inline environment or remote environment to an inline environment, you have to specify the source repository name in case of a remote environment.
+To clone a remote environment to an inline environment, you have to specify the source branch where the remote environment is stored.
 
 ![](./static/clone_env_inline_settings.png)
 
-For cloning an inline environment or remote environment to a remote environment, you must specify the target repository, Harness Code Repository, to store the environment in the Harness repository or Third-party Git provider, to store the environment in a third party Git provider, define the Git Connector if Third-party Git provider. Specify the Repository name, the YAML path, and the commit message.
+To clone an inline environment or remote environment to a remote environment, you must specify the target repository, Harness Code Repository, to store the environment in the Harness repository or Third-party Git provider, to store the environment in a third party Git provider, define the Git Connector if Third-party Git provider. Specify the Repository name, the YAML path, and the commit message.
 
 ![](./static/clone_env_remote_settings.png)
 
 :::info note
-When you clone an environment from a different organization, the connector referenced in the infrastructure doesn't get cloned and must be created explicitly.
+When you clone an environment from a different organization or project, the connector referenced in the infrastructure doesn't get cloned and must be explicitly created.
 :::
 
 
