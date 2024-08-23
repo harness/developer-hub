@@ -41,13 +41,17 @@ You can change the **Organization** and **Project** as well where you want to cl
 
 You can choose between **Inline** and **Remote** to set up your service. Choose **Inline** when you want your service to be stored in Harness. Choose **Remote** when storing your service in a Third-party Git repository or Harness Code Repository.
 
-For cloning an inline service or remote service to an inline service, you have to specify the source repository name in case of a remote service.
+To close a remote service to an inline service, you have to specify the source branch where the remote service is stored.
 
 ![](./static/clone_service_remote_to_inline.png)
 
-For cloning an inline service or remote service to a remote service, you must specify the target repository, Harness Code Repository, to store the service in the Harness repository or Third-party Git provider, to store the service in a third party Git provider, define the Git Connector if Third-party Git provider. Specify the Repository name, the YAML path, and the commit message.
+To Clone an inline service or remote service to a remote service, you must specify the target repository, Harness Code Repository, to store the service in the Harness repository or Third-party Git provider, to store the service in a third party Git provider, define the Git Connector if Third-party Git provider. Specify the Repository name, the YAML path, and the commit message.
 
 ![](./static/clone_option_service_remote.png)
+
+:::info note
+When you clone a service from a different organization or project, the connector referenced in the service doesn't get cloned and must be explicitly created.
+:::
 
 ## Services RBAC
 
