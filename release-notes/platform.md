@@ -87,7 +87,7 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- Resolved an issue where not all user groups were visible in search results when inherited groups exceeded 1000. The search now displays up to 2000 inherited user groups, ensuring comprehensive visibility for all user groups across your organization. (PL-56021, ZD-68131)
+- Resolved an issue where not all user groups were visible in search results when inherited groups exceeded 1000. The search now displays a higher number of inherited user groups, ensuring comprehensive visibility for all user groups across your organization. (PL-56021, ZD-68131)
 
 - Fixed an issue where installing or upgrading SMP to version 0.19.0 would fail when `harness-secrets` was disabled. This issue was due to a version inconsistency in the common chart used by Helm, which has now been resolved by adjusting the chart hierarchy. (PL-56179)
 
