@@ -681,3 +681,15 @@ The `main.tf` sample file includes a delegate token option, facilitating automat
 ### What are there discrepancies between the user list, access control, and dashboard?
 
 Harness includes user login data in audit history, but it's not structured for analytics purposes. Creating a custom view for this data isn't currently supported.
+
+#### How to import multiple template versions with terraform provider?
+As of today only one template can be imported at a time. For every version of the template, a new resource is maintained. This applies to all entities regardless of version. Terraform (TF) helps manage these resources/entities, with each version of the template being treated as a separate entity.
+
+#### How can I copy an input set from one pipeline to another if there is no export option available when selecting the input set I want to copy?
+Harness does not support built-in functionality for this use case. However, you can manually copy the content from the Inputset YAML and create a new Inputset YAML in the desired project or pipeline, making sure to update the metadata accordingly.
+
+#### What does this expression do ```<+secrets.getValue("")>```syntax in a pipeline?
+You can retrieve a secret value, such as `GitHub_PAT`, using the `<+secrets.getValue("")>` syntax in a pipeline. If the secret is at the project level, use `<+secrets.getValue("GitHub_PAT")>`. For an organization-level secret, use `<+secrets.getValue("org.GitHub_PAT")>`, and for an account-level secret, use `<+secrets.getValue("account.GitHub_PAT")>`.
+
+### Can a trigger be created from a specific directory within a Git repository?
+Trigger cannot be created from a specific directory however you can create a trigger for a repository and then use a condition in your trigger such as starts with or Changed Files option to achieve your usecase.
