@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-08-09:T10:00:30
+date: 2024-08-23:T10:00:30
 sidebar_position: 3
 ---
 
@@ -78,6 +78,18 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## August 2024
+
+### Version 1.53.x<!-- August 23, 2024 -->
+
+#### New features and enhancements
+
+- Upgraded the org.apache.cxf:cxf-core library from version 3.5.8 to 3.5.9 to address a security vulnerability (CVE-2024-32007). This upgrade enhances the security and stability of the application. (PL-55722, ZD-63383)
+
+#### Fixed issues
+
+- Resolved an issue where not all user groups were visible in search results when inherited groups exceeded 1000. The search now displays a higher number of inherited user groups, ensuring comprehensive visibility for all user groups across your organization. (PL-56021, ZD-68131)
+
+- Fixed an issue where installing or upgrading SMP to version 0.19.0 would fail when `harness-secrets` was disabled. This issue was due to a version inconsistency in the common chart used by Helm, which has now been resolved by adjusting the chart hierarchy. (PL-56179)
 
 ### Version 1.52.x<!-- August 19, 2024 -->
 
