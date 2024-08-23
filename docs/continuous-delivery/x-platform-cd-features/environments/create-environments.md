@@ -493,6 +493,11 @@ For cloning an inline environment or remote environment to a remote environment,
 
 ![](./static/clone_env_remote_settings.png)
 
+:::info note
+When you clone an environment from a different organization, the connector referenced in the infrastructure doesn't get cloned and must be created explicitly.
+:::
+
+
 ## Runtime inputs and expressions in environments
 
 If you use runtime inputs in your environments, you will need to provide values for these when they run pipeline using these environments.
