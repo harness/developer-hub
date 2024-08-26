@@ -51,7 +51,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Fixed issues
 
-- Previously, Git Experience intermittently encountered errors when pushing changes to a new branch. The issue is resolved. We replaced the `/` in the gitx webhook identifier with `_` in the identifier field. From now on, you cannot create webhook identifiers with a `/`. (PIPE-20973, ZD-681420)
+- Earlier, Git Experience intermittently encountered errors when pushing changes to a new branch. The issue is resolved. The `/` in the gitx webhook identifier was replaced with `_` in the identifier field. Henceforth, you can't create webhook identifiers with a `/`. (PIPE-20973, ZD-681420)
 
 ### Version 1.52.4
 
