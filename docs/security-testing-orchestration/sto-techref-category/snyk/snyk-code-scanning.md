@@ -5,7 +5,7 @@ sidebar_position: 15
 # redirect_from:
 ---
 
-The Snyk step in Harness STO allows you to scan your code for security vulnerabilities using source code analysis.This document helps you to configure Snyk step in your pipeline to perform [Snyk Code](https://docs.snyk.io/scan-using-snyk/snyk-code) scanning either through orchestration or ingestion scan modes in STO.
+The Snyk step in Harness STO allows you to scan your code for security vulnerabilities using source code analysis. This document helps you to configure the Snyk step in your pipeline to perform [Snyk Code](https://docs.snyk.io/scan-using-snyk/snyk-code) scanning either through orchestration or ingestion scan modes in STO.
 
 - [**Orchestration mode**](#snyk-code-scan---orchestration-mode): In this mode, the Snyk step [runs the scan](/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto), then normalizes and deduplicates the results.
 - [**Ingestion mode**](#snyk-code-scan---ingestion-mode): In this mode, the Snyk step [reads scan results](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline) from a data file, normalizes the data, and deduplicates it.
@@ -31,7 +31,7 @@ To perform Snyk Code scanning with orchestration scan mode, follow the below ste
 
     <DocImage path={require('./static/code-orchestration.png')} width="40%" height="40%" title="Click to view full size image" />
 
-Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and the their configurations.
+Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and their configurations.
 
 ## Snyk Code scan - Ingestion mode
 
@@ -46,7 +46,7 @@ In the Ingestion scan mode, the Snyk step reads data from a file, normalizes it,
 ### Requirements
 
 1. Configure your code repository in your stage, you can do it in the **Build** stage or **Security** stage
-2. Go to the **Overview** tab of the stage. Under **Shared Paths**, enter the following path: `/shared/scan_results`, this will be the location where the Run step will save the scan results.
+2. Go to the **Overview** tab of the stage. Under **Shared Paths**, enter the following path: `/shared/scan_results`. This will be the location where the Run step will save the scan results.
 
 
 ### Configure Run step
@@ -54,7 +54,7 @@ In the Ingestion scan mode, the Snyk step reads data from a file, normalizes it,
 2. In the **Container Registry** section, set your DockerHub connector. Snyk images will be pulled from their DockerHub account.
 3. For **Image**, select the appropriate [Snyk image](https://hub.docker.com/r/snyk/snyk) based on your codebase. For example, use `snyk/snyk:node` for a Node.js project.
 4. Set the **Shell** field to `sh`
-5. In the **Command** filed, enter the following command.
+5. In the **Command** field, enter the following command.
 
         ```
         snyk code test \ --file=SubSolution.sln  \ --sarif-file-output=/shared/scan_results/snyk_scan_results.sarif || true
