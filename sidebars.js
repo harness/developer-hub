@@ -182,6 +182,17 @@ const sidebars = {
               "Learn how to use this end-to-end solution for continuous, self-managed delivery.",
           },
         },
+        // Harness Open Source
+        {
+          type: "link",
+          href: "https://docs.gitness.com/",
+          label: "Gitness",
+          className: "sidebar-gitness",
+          customProps: {
+            description:
+              "Learn about the latest open source offerings from Harness.",
+          },
+        },
         {
           type: "category",
           label: "Harness FirstGen",

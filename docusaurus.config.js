@@ -170,6 +170,10 @@ async function config() {
                   to: "docs/self-managed-enterprise-edition",
                 },
                 {
+                  label: "Open Source",
+                  href: "https://docs.gitness.com/",
+                },
+                {
                   label: "FirstGen",
                   to: "docs/first-gen",
                 },
@@ -250,6 +254,11 @@ async function config() {
                   to: "university/faqs",
                 },
               ],
+            },
+            {
+              label: "Open Source",
+              position: "right",
+              href: "https://docs.gitness.com/",
             },
             {
               label: "Knowledge Base",
