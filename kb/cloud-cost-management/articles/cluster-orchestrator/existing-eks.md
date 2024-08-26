@@ -62,6 +62,103 @@ If you are using the [aws eks terraform module](https://registry.terraform.io/mo
 ```
 The first three policies mentioend above come default in node groups created via this module, so those are left out.
 
+## IRSA role for cluster orchestrator
+
+The controller deployed into your cluster that orchestrates nodes needs some baseline AWS access.
+
+```
+ec2:CreateLaunchTemplate
+ec2:CreateFleet
+ec2:RunInstances
+ec2:CreateTags
+iam:PassRole
+ec2:TerminateInstances
+ec2:DeleteLaunchTemplate
+ec2:DescribeLaunchTemplates
+ec2:DescribeInstances
+ec2:DescribeSecurityGroups
+ec2:DescribeSubnets
+ec2:DescribeInstanceTypes
+ec2:DescribeInstanceTypeOfferings
+ec2:DescribeAvailabilityZones
+ssm:GetParameter
+pricing:GetProducts
+ec2:DescribeSpotPriceHistory
+ec2:DescribeImages
+```
+
+You will need to create an IRSA role for the controller to use to gain this access.
+
+An example how to create such a role in Terraform is below:
+
+```
+variable "oidc_provider_arn" {
+  type = string
+}
+
+data "aws_iam_policy_document" "ccm_comm_orch_controller_assume" {
+  statement {
+    principals {
+      type = "Federated"
+      identifiers = [
+        var.oidc_provider_arn
+      ]
+    }
+
+    actions = [
+      "sts:AssumeRole",
+      "sts:AssumeRoleWithWebIdentity"
+    ]
+  }
+}
+
+resource "aws_iam_role" "ccm_comm_orch_controller" {
+  name                 = "ccm_comm_orch_controller"
+  assume_role_policy   = data.aws_iam_policy_document.ccm_comm_orch_controller_assume.json
+  max_session_duration = 28800
+}
+
+data "aws_iam_policy_document" "ccm_comm_orch_controller" {
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "ec2:CreateLaunchTemplate",
+      "ec2:CreateFleet",
+      "ec2:RunInstances",
+      "ec2:CreateTags",
+      "iam:PassRole",
+      "ec2:TerminateInstances",
+      "ec2:DeleteLaunchTemplate",
+      "ec2:DescribeLaunchTemplates",
+      "ec2:DescribeInstances",
+      "ec2:DescribeSecurityGroups",
+      "ec2:DescribeSubnets",
+      "ec2:DescribeInstanceTypes",
+      "ec2:DescribeInstanceTypeOfferings",
+      "ec2:DescribeAvailabilityZones",
+      "ssm:GetParameter",
+      "pricing:GetProducts",
+      "ec2:DescribeSpotPriceHistory",
+      "ec2:DescribeImages"
+    ]
+
+    resources = ["*"]
+  }
+}
+
+resource "aws_iam_policy" "ccm_comm_orch_controller" {
+  name        = "ccm_comm_orch_controller"
+  description = "access needed for ccm commitment orchestrator"
+  policy      = data.aws_iam_policy_document.ccm_comm_orch_controller.json
+}
+
+resource "aws_iam_role_policy_attachment" "ccm_comm_orch_controller" {
+  role       = aws_iam_role.ccm_comm_orch_controller.name
+  policy_arn = aws_iam_policy.ccm_comm_orch_controller.arn
+}
+```
+
 # Creating an orchestrator for your cluster
 
 Next we need to create an orchestrator in the CCM tool for your cluster. This is done with the following API call:
@@ -90,7 +187,23 @@ The API call will return JSON, in the payload we need to extract the key under `
 
 # Deploy the orchestrator operator
 
+At this point we can finally deploy the orchestrator into the cluster.
 
+There is a [helm chart provided here](https://github.com/rssnyder/charts/tree/main/charts/harness-ccm-autostopping).
+
+The following values are needed for the deployment:
+
+- clusterName: the name of the EKS cluster as it appears in AWS
+- clusterRegion: the AWS region the cluster is deployed in
+- remoteAccountID: the Harness account id where you are configuring the orchestrator
+- connectorID: the Harness CCM K8s connector id for the cluster
+- clusterID: the Harness CCM orchestrator id, this is from the response JSON in the API call made above
+- harnessAPI: the Harness URL for your account, `https://app.harness.io/lw/api` if your account is in prod-1, `https://app.harness.io/gratis/lw/api` if prod-2, and `https://app3.harness.io/lw/api` if prod-3
+- clusterEndpoint: the EKS cluster endpoint
+- awsDefaultInstanceProfile: the instance profile used in your EKS nodegroups
+- awsNodeRoleARN: the ARN for the node role to use for orchestrated instances
+- controllerRoleArn: the ARN for the role created for the controller
+- apiToken: a Harness API token with account:admin
 
 # Configure cluster orchestration
 
