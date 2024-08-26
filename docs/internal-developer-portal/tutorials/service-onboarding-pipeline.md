@@ -245,7 +245,7 @@ spec:
           type: string
           description: This will be the name of Repository on Github
         isPublish:
-          title: Do you wish to publish the artificat the internal registry?
+          title: Do you wish to publish the artifact to the internal registry?
           type: boolean
     - title: Service Infrastructure Details
       required:
@@ -332,7 +332,7 @@ spec:
           type: string
           description: This will be the name of Repository on GitLab
         isPublish:
-          title: Do you wish to publish the artifact the internal registry?
+          title: Do you wish to publish the artifact to the internal registry?
           type: boolean
     - title: Service Infrastructure Details
       required:
