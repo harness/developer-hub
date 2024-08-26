@@ -15,7 +15,7 @@ The Harness Delegate requires write access to specific directories to function c
 
 - Working Directory (default: /opt/harness-delegate/)
 
-When deploying the delegate on a read-only file system, writable alternatives must be provided for these directories. The most common solution is to mount writable volumes in these locations.
+When deploying the delegate on a read-only file system, neither of these two locations is writable, so writable alternatives must be provided for these directories. The most common solution is to mount writable volumes in these locations, /tmp can be mounted directly, but the working directory needs to mount to a non-existing location and configure WORKING_DIR to point to that location. 
 
 :::info note
 
