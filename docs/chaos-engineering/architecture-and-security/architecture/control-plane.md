@@ -79,10 +79,10 @@ You can install the execution plane components through the chaos infrastructure 
 Below are the steps that take place in the background when you schedule an experiment.
 
 1. After you schedule the experiment, the control plane sends the experiment to the execution plane.
-2. The subscriber installs the chaos experiment on the cluster.
+2. The subscriber (part of execution plane) installs the chaos experiment on the cluster.
 3. When the subscriber installs a new experiment, the workflow controller identifies the experiment and triggers it.
 4. The operator searches for the chaos faults (present inside the chaos experiment) on the cluster and triggers the execution of these faults.
-5. Once the experiment completes execution, experiment data (such as the name of the experiment, faults, probes, and so on) is sent back to the workflow controller by the subscriber.
+5. Once the experiment completes execution, experiment data (such as the name of the experiment, faults, probes, and so on) is sent back to the Kubernetes infrastructure server by the execution plane.
 
 ### Resource utilization matrix
 The resource utilization matrix for execution plane components is summarized below. These components are installed in the target cluster as a part of the Kubernetes-based chaos infrastructure.

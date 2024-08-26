@@ -12,9 +12,11 @@ Allow: /
 Sitemap: https://developer.harness.io/sitemap.xml
 
 # For alpha or hidden modules, add to this file to exclude from search engines
-User-Agent: *
+# User-Agent: *
 # Disallow: /docs/infra-as-code-management
 # Disallow: /docs/infra-as-code-management/
 
+User-Agent: *
 Disallow: /docs/database-devops/
+Disallow: /docs/database-devops
 

@@ -321,35 +321,36 @@ ${host}
 ### Usuage
 
 ```js
-<HarnessApiData
-  query="https://app.harness.io/ng/api/organizations/default"
-  accountIdentifier
-  token
-  fallback="harness fallback"
-  parse="data.status"
+<HarnessApiData  
+query="https://app.harness.io/ng/api/organizations/default" 
+accountIdentifier 
+token 
+fallback="harness fallback" 
+parse=".data.organization.description"
+/>
+```
+
+### Result
+<HarnessApiData  query="https://app.harness.io/ng/api/organizations/default" accountIdentifier token fallback="harness fallback" parse=".data.organization.description"/>
+
+
+
+
+
+
+
+
+### Usuage
+```js
+<HarnessApiData 
+query="https://jsonplaceholder.typicode.com/todos/1"
+fallback="Failed to load data." 
+parse=".title" 
 />
 ```
 
 ### Result
 
-#### Success
 
-<HarnessApiData  query="https://app.harness.io/ng/api/organizations/default" accountIdentifier token fallback="harness fallback" parse="data.status"/>
+<HarnessApiData query="https://jsonplaceholder.typicode.com/todos/1" fallback="Failed to load data." parse=".title" />
 
-
-#### Failure
-
-<HarnessApiData  query="https://app.harness.io/ng/api/organizations/default"  fallback="harness fallback"/>
-
-
-
-### Usuage
-
-```js
-<HarnessApiData query="https://jsonplaceholder.typicode.com/todos/1" 
-fallback="API call fallback" parse="userId"/>
-```
-
-### Result
-
-<HarnessApiData query="https://jsonplaceholder.typicode.com/todos/1" fallback="API call fallback" parse="userId"/>

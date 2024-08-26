@@ -595,3 +595,13 @@ On the list of triggers for a pipeline, you can see when each trigger was last a
 **Activation** means the trigger was able to *request* pipeline execution; it doesn't mean that the webhook didn't work.
 
 **Failed** usually means the pipeline has a configuration issue that prevented the trigger from initiating a pipeline.
+
+## Executions
+
+:::important note
+Currently this feature is behing the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+:::
+
+ **My Executions** filter on the listing page displays both manual executions and those triggered automatically by custom trigger i.e execution executed by custom trigger/curl command and manually execution pipeline execution will appear in the My Execution list. 
+ 
+But to display execution triggered by custom webhook trigger it must have a authorization i.e X-API-key should be present

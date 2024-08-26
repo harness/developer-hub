@@ -391,6 +391,23 @@
 	color: var(--mod-code-300);
 }
 
+// Database DevOps
+.harness-search-module .CoveoFieldValue.CoveoFieldValueDBDevOps {
+	background: var(--mod-cd-100);
+	border: 1px solid var(--mod-cd-200);
+	color: var(--mod-cd-300);
+	&::before {
+		content: url('/img/icon_dbdevops_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueDBDevOps .coveo-clickable {
+	color: var(--mod-cd-300);
+}
+
 .harness-search-module .CoveoFieldValue.CoveoFieldValuePlatform {
     &::before {
         content: url('/img/icon_harness_s.svg');
@@ -779,6 +796,13 @@
     }
 	&[title="Code Repository"]::before {
         content: url('/img/icon_code_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+    &[title="Database DevOps"]::before {
+        content: url('/img/icon_dbdevops_s.svg');
         display: inline-block;
         width: 16px;
         height: 16px;

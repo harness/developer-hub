@@ -815,3 +815,9 @@ Yes, Harness does support the manual authentication configurations for Kubernete
 To use this feature, user should use Harness versions `24.07.83600` or above and must enable the Feature flag : `CDS_AWS_EKS_CLUSTER_MANUAL_CONFIGURATION`.
 
 For more details, please refer to the Harness documentation on [Define your Kubernetes Target Infrastructure](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure#aws-elastic-kubernetes-service-eks)
+
+### What does the error "no values.yaml found for manifest" mean, and how can it be resolved?
+The issue "no values.yaml found for manifest" typically indicates that Helm or Kubernetes is unable to locate the values.yaml file in the expected location when deploying or processing a Helm chart.
+
+### Which deployment types currently support post deployment rollback?
+Post deployment rollback is supported for Kubernetes, AWS Auto Scale Group (ASG), Tanzu Application Services (TAS), Amazon Elastic Container Service (ECS), and Native Helm. Support for additional deployment types is anticipated in the future.
