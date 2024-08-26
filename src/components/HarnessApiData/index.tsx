@@ -27,7 +27,7 @@ const HarnessApiData: React.FC<IHarnessApiData> = ({
           async function FetchData() {
             try {
               const fetchResponse = await fetch(
-                "http://localhost:8888/api/api_proxy",
+                "https://developer.harness.io/api/api_proxy",
                 {
                   method: "POST",
                   body: JSON.stringify({
@@ -52,7 +52,7 @@ const HarnessApiData: React.FC<IHarnessApiData> = ({
               }
 
               const data = await fetchResponse.json();
-              console.log(data);
+             
               setResponse(JSON.stringify(data));
             } catch (error) {
               console.log(error);
