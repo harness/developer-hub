@@ -282,4 +282,4 @@ Kubernetes mounts /tmp inside RAM memory as tmpfs by default. It is recommended 
 :::
 
 </TabItem>
-
+</Tabs>
