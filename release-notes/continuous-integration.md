@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 
-date: 2024-08-19T10:00
+date: 2024-08-26T10:00
 sidebar_position: 10
 ---
 
@@ -23,7 +23,15 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## August 2024
 
+### Version 1.43
 
+<!-- 2024-08-19 -->
+
+#### Fixed issues
+
+- Fixed `NodeSelector` field label visibility. The reference for the node selector string has been corrected to ensure the label is properly populated. (CI-13867)
+
+- Runtime-input options were not showing for environment variables in run-step while using it as template. Corrected by adding a check to see if the step is a template to allow for its proper usage. (CI-13640, ZD-67460)
 
 ### Version 1.42
 
