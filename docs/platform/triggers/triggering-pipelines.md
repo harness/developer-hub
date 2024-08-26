@@ -420,13 +420,15 @@ For UI to render the branch name at the top of the pipeline executions, we must 
 Currently this feature is behing the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
 :::
 
-The **My Executions** filter on the listing page displays both manual executions and those triggered automatically by Git pull requests (PRs) i.e execution executed by their Githib PRs as well as manually execution pipeline execution will appear in the My Execution list. 
+The **My Executions** filter on the listing page displays both manual executions and those triggered automatically by Git events (PRs, Push, Issue Comments) i.e execution executed by their Git events as well as manually execution pipeline execution will appear in the My Execution list. 
 
 ### Pre-Requisite 
 
-In order to list the execution triggered by Github PRs, user must be link their Github Provider Account in the User Profile Page.
+In order to list the execution triggered by Git events(such as push, pull request, Issue comment, etc), user must be link their Git Provider Account in the User Profile Page.
 
 ![](./static/github_provide_page.png)
+
+In this example, we are configuring it for Github, similarly it can be done for Gitlab and BitBucket.
 
 1. Select **Github** and click on the **Connect** button.
 ![](./static/connect_provider.png)
@@ -436,8 +438,11 @@ In order to list the execution triggered by Github PRs, user must be link their 
 Once done you will see **Oauth Configured successfully** in the profile page along with your Github account username under **Access token for Git Providers**
 ![](./static/oauth_success_profile_page.png)
 
-Once done, when you execute your pipeline via a Github trigger that is triggered by Github PR you will see executions listed under **My Execution** in the Execution Page.
+Once done, when pipeline gets triggered via Git event, you will see the executions listed under **My Execution** in the Execution Page.
 
+:::important note
+This feature is supported for Github, Gitlab and Bitbucket.
+:::
 
 ## Troubleshoot Git event triggers
 
