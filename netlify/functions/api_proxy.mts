@@ -80,7 +80,7 @@ export default async (req: Request, context: Context) => {
       output: "json",
     });
 
-    console.log({ json: JSON.stringify(jqResponse), jqResponse });
+    // console.log({ json: JSON.stringify(jqResponse), jqResponse });
 
     return new Response(JSON.stringify(jqResponse), {
       status: 200,

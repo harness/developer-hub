@@ -341,7 +341,6 @@ parse=".data.organization.description"
 
 
 ### Usuage
-
 ```js
 <HarnessApiData 
 query="https://jsonplaceholder.typicode.com/todos/1"
