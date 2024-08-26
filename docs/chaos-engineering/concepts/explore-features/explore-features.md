@@ -17,7 +17,7 @@ import FeatureCard from '@site/src/components/ChaosEngineering/FeatureCard';
 
 ## Deployment Options
 
-<FeatureCard title="On-prem Deployment" description="" link="on-prem-deployment/" />
+<FeatureCard title="On-prem Deployment" description="" link="/docs/chaos-engineering/getting-started/smp/" />
 <FeatureCard title="SaaS Deployment" description="" link="saas-deployment/" />
 
 ## Chaos Platform Features

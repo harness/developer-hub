@@ -74,7 +74,7 @@ Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for y
 
 HCE doesn't just focus on fault injection; it helps you set up a fully operational chaos function that is based on the original [principles of chaos](https://principlesofchaos.org/), and addresses several enterprise needs, including:
 
-- **Cloud-Native Approach**: HCE supports a declarative definition of experiments and [Git-based chaos artifact sources]((/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub)) (chaos-experiments-as-code).
+- **Cloud-Native Approach**: HCE supports a declarative definition of experiments and [Git-based chaos artifact sources](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub) (chaos-experiments-as-code).
 
 - **Extensive Fault Library**: HCE offers a robust suite of ready-to-use experiments and supports constructing complex custom experiments with multiple faults executed in the desired order.
 
@@ -110,36 +110,6 @@ The components specified in the diagram earlier are described below.
 #### **Chaos Experiment**
 
 	It is composed of chaos faults that are arranged in a specific order to create a failure scenario. One or more chaos faults is injected into a specified chaos infrastructure and the result of the chaos execution is summarized. The chaos faults target various aspects of an application, including the constituent microservices and underlying infrastructure. You can tune the parameters associated with these faults to impart the desired chaos behavior.You can define the experiment using the Chaos Studio through the guided UI or by uploading the workflow CR (custom resource) manifest.
-
-The diagram below describes the flow of control in a chaos experiment.
-
-<details>
-<summary> Flow of control </summary>
-
-![](./static/architecture/experiment-sequence.png)
-
-</details>
-
-Below is the detailed description of the steps above.
-
-1. The user initiates the creation of a new chaos experiment in the Chaos Control Plane.
-2. The Control plane prompts the user to input the necessary information for creating the experiment, including:
-
-   * **Chaos Infrastructure:** Specify the chaos infrastructure that will be targeted during the experiment.
-   * **Fault and Fault Tunables:** Select fault templates from any connected chaos hubs and modify the tunables as needed. You can add multiple faults in any desired order.
-   * **Fault Probes:** Optionally, define additional probes on top of the default health check probe to validate custom hypothesis during the experiment.
-   * **Fault Weights:** Assign fault weights to indicate the importance of each fault relative to others in the experiment. These weights contribute to calculating the experiment's [**resilience score**](/docs/chaos-engineering/features/experiments/resilience-score), a quantitative measure of the target environment's resilience when the experiment is performed.
-
-	Once all information is provided, the experiment is created and ready for execution.
-
-3. When the user runs the experiment, the Control Plane transmits the experiment data to the target chaos infrastructure. The infrastructure handles four key responsibilities during execution:
-
-   * **Inject Faults:** The infrastructure interprets the received faults and injects them into the target resource. Multiple faults may be injected simultaneously, depending on the experiment.
-   * **Execute Probes:** The infrastructure executes the respective fault probes as the faults are injected, storing the results.
-   * **Stream Logs:** Real-time logs of the experiment execution are streamed and can be retrieved as needed. These logs are accessible in the Chaos Control Plane.
-   * **Send Results:** Finally, the infrastructure sends the experiment execution results, including the probe results, back to the Chaos Control Plane.
-
-   The chaos experiment execution is then concluded.
 
 #### **Chaos Rollback**
 

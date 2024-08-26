@@ -1,13 +1,13 @@
 {
-  "position": 7,
-  "label": "HCE tutorials",
+  "position": 1,
+  "label": "SaaS",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"HCE tutorials"
+      "title":"SaaS"
    },
   "customProps": {
-    "description": "Step-by-step guide to various HCE experiments"
+    "description": "HCE SaaS"
   }
 }

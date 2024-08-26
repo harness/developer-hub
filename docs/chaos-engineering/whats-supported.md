@@ -6,7 +6,7 @@ redirect_from:
 ---
 
 This topic lists the platforms and technologies that Harness Chaos Engineering (HCE) supports for deploying chaos infrastructure.
-To learn more about chaos infrastructure, go to [Chaos infrastructure](/docs/chaos-engineering/architecture-and-security/architecture/control-plane).
+To learn more about chaos infrastructure, go to [Chaos infrastructure](/docs/chaos-engineering/concepts/explore-features/infrastructure).
 
 Harness Chaos Engineering is supported on the following platforms:
 - [Harness SaaS](#harness-saas)
@@ -38,7 +38,7 @@ The following table shows the supported operating systems and distributions for 
 
 ### Kubernetes
 
-#### Container runtimes
+#### Container runtime
 
 The supported container runtimes are as follows:
 
@@ -48,7 +48,7 @@ The supported container runtimes are as follows:
 
 ### Chaos fault types
 
-The following table shows available fault types and where they are supported. For a complete list and detailed information, go to [Chaos faults](/docs/chaos-engineering/chaos-faults/).
+The following table shows available fault types and where they are supported. For a complete list and detailed information, go to [Chaos faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/).
 
 | Fault type | Linux | K8s | Windows | VMware | AWS | GCP | Azure |
 |------------|-------|-----|---------|--------|-----|-----|-------|

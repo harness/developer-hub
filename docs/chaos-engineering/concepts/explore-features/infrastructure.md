@@ -98,7 +98,7 @@ To check if the infrastructure service is active and running, use the following 
 ```
 systemctl status linux-chaos-infrastructure.service
 ```
-![Terminal](./static/chaos101/terminal.png)
+![Terminal](./static/infrastructure/terminal.png)
 
 Any status other than the `active` status would indicate an issue with the infrastructure.
 
@@ -253,7 +253,7 @@ To run Kubernetes experiments, you need to tune the parameters associated with t
 
 The diagram represents a high-level architecture of the interaction between the Windows execution plane and control plane components.
 
-![](./static/windows-infrastructure/detailed-architecture.png)
+![](./static/infrastructure/windows-infrastructure/detailed-architecture.png)
 
 #### Advanced setup
 
@@ -308,12 +308,12 @@ To verify the status of the service, navigate to the command prompt on your Wind
 
 1. If the status reads **Running**, it means the windows infrastructure is up and running.
 
-![](./static/windows-infrastructure/add-pwd-1.png)
+![](./static/infrastructure/windows-infrastructure/add-pwd-1.png)
 
 
 2. If it reads **Stopped**, right click and select **Start**.
 
-![](./static/windows-infrastructure/start-service-2.png)
+![](./static/infrastructure/windows-infrastructure/start-service-2.png)
 
 3. Any other status will be associated with logs which you can troubleshoot using our [troubleshooting guide](/docs/chaos-engineering/troubleshooting/troubleshooting.md)
 
