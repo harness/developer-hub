@@ -34,3 +34,19 @@ This fault determines the resilience of the application under a generated load. 
 </Accordion>
 
 </FaultDetailsCard>
+
+<FaultDetailsCard category="load">
+
+### K6 loadgen
+
+K6 loadgen fault simulates load generation on the target hosts for a specific chaos duration. This fault:
+
+- Slows down or makes the target host unavailable due to heavy load.
+- Checks the performance of the application or process running on the instance.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+This fault determines the resilience of the application under a generated load. It determines how quickly the application scales or recovers to avoid such failure. 
+</Accordion>
+
+</FaultDetailsCard>
