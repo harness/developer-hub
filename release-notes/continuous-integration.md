@@ -31,7 +31,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 - Resolved an issue where artifacts did not appear in the artifacts tab of the CI stage when using the 'build and push' steps with Buildx instead of Kaniko. (CI-13576, ZD-63222,65912)
 
-- Fixed `NodeSelector` field label visibility. The reference for the node selector string has been corrected to ensure the label is properly populated. (CI-13867)
+- Corrected the visibility of the `NodeSelector` field label in the CI stage infrastructure tab when using Kubernetes infrastructure. The reference for the node selector string has been fixed to ensure the label is properly populated. (CI-13867)
 
 - Runtime-input options were not showing for environment variables in run-step while using it as template. Corrected by adding a check to see if the step is a template to allow for its proper usage. (CI-13640, ZD-67460)
 
