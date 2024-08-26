@@ -41,11 +41,11 @@ If you are using the [aws eks terraform module](https://registry.terraform.io/mo
 
 The following IAM policies must be attached to the IAM role you are using for your node instance profiles:
 
-- AmazonEC2ContainerRegistryReadOnly
-- AmazonEKS_CNI_Policy
-- AmazonEKSWorkerNodePolicy
-- AmazonEKSClusterPolicy
-- AmazonSSMManagedInstanceCore
+- [AmazonEC2ContainerRegistryReadOnly](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2ContainerRegistryReadOnly.html)
+- [AmazonEKS_CNI_Policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKS_CNI_Policy.html)
+- [AmazonEKSWorkerNodePolicy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKSWorkerNodePolicy.html)
+- [AmazonEKSClusterPolicy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKSClusterPolicy.html)
+- [AmazonSSMManagedInstanceCore](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonSSMManagedInstanceCore.html)
 
 If you are using the [aws eks terraform module](https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest) you can set these via the `iam_role_additional_policies` value in your `eks_managed_node_groups`:
 ```
@@ -60,7 +60,7 @@ If you are using the [aws eks terraform module](https://registry.terraform.io/mo
     }
   }
 ```
-The first three policies mentioend above come default in node groups created via this module, so those are left out.
+The first three policies mentioned above come default in node groups created via this module, so those are left out.
 
 ## IRSA role for cluster orchestrator
 
@@ -183,6 +183,8 @@ curl -s -X POST "$url" \
   -d "$json_payload"
 ```
 
+You will need an [API key](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/) with CCM:admin permissions.
+
 The API call will return JSON, in the payload we need to extract the key under `response.id` which should be in the format `orch-xxx`
 
 # Deploy the orchestrator operator
@@ -203,11 +205,11 @@ The following values are needed for the deployment:
 - awsDefaultInstanceProfile: the instance profile used in your EKS nodegroups
 - awsNodeRoleARN: the ARN for the node role to use for orchestrated instances
 - controllerRoleArn: the ARN for the role created for the controller
-- apiToken: a Harness API token with account:admin
+- apiToken: a Harness API token with account:admin, you should use a [service account](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-service-account/) for this
 
 # Configure cluster orchestration
 
-Once your cluster has been set up with all Orchestrator components you can enable orchestration in the UI.
+Once your cluster has been set up with all orchestrator components you can enable orchestration in the UI.
 
 Navigate to the CCM module, and select `Cluster Orchestrator` from the side menu. You should see a list of clusters that have been set up or are pending. Find the cluster you are onboarding and click `Resume Setup`.
 
