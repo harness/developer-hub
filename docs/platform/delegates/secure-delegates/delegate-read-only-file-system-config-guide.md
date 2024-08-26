@@ -93,7 +93,7 @@ To configure the delegate in a Docker container with a read-only file system, fo
 
     After running the Docker container, verify that the delegate is functioning correctly:
 
-    - Check the logs using docker logs <container_id>.
+    - Check the logs using `docker logs <container_id>`.
 
     - Ensure there are no permission errors related to the read-only file system.
 
