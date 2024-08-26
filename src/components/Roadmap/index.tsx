@@ -16,6 +16,7 @@ const Roadmap = () => {
     { value: "cd", name: "Continuous Delivery & GitOps" },
     { value: "iacm", name: "Infrastructure as Code Management" },
     { value: "ff", name: "Feature Flags" },
+    { value: "fme", name: "Feature Mgmt & Experimentation" },
     { value: "ccm", name: "Cloud Cost Management" },
     { value: "sto", name: "Security Testing Orchestration" },
     { value: "ssca", name: "Sofware Supply Chain Assurance" },
