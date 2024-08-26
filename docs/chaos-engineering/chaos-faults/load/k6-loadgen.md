@@ -1,17 +1,14 @@
 ---
 id: k6-loadgen
 title: K6 loadgen
-redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/load/k6-loadgen
-- /docs/chaos-engineering/technical-reference/chaos-faults/load/k6-loadgen-chaos
 ---
 
-k6 loadgen fault simulates load generation on the target hosts for a specific chaos duration. This fault:
+K6 loadgen fault simulates load generation on the target hosts for a specific chaos duration. This fault:
 - Slows down or makes the target host unavailable due to heavy load.
 - Checks the performance of the application or process running on the instance.
 - Supports [various](https://grafana.com/docs/k6/latest/testing-guides/test-types/) types of load testing (ex. spike, smoke, stress)
 
-![k6 Loadgen Chaos](./static/images/k6-loadgen-chaos.png)
+![k6 Loadgen Chaos](./static/images/k6-loadgen.png)
 
 ## Use cases
 - Simulate high traffic to test the performance and reliability of RESTful APIs.
