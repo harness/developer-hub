@@ -156,9 +156,16 @@ Actual Cost refers to the real-time, pay-as-you-go pricing for Azure resources a
 
 Amortized Cost offers a predictable, averaged representation of costs over a specified period, typically on a monthly basis. This approach spreads the upfront payments or commitments of Reserved Instances (RIs) over their term, which can be either one or three years. Amortized costs are particularly useful for evenly distributing expenses over reservation terms, aiding in financial projections and budgeting by providing a stable cost structure.
 
-To accommodate the diverse needs of different teams,CCM supports the setup of both Actual and Amortized cost exports within the same connector. Users have to simply  Users can view and toggle between these costs on their perspectives.
+To accommodate the diverse needs of different teams,CCM supports the setup of both Actual and Amortized cost exports within the same connector. Users can view and toggle between these costs on their perspectives.
 
 :::note
-In order to accurately track costs, ensure that your connector has one billing type set to "Actual." If not set, your costs will be recorded as zero.
+- In order to accurately track costs, ensure that your connector has one billing type set to "Actual." If not set while creating the connector, the creation will fail and for existing connectors, update the connectors such that one of the billing type should be "Actual" otherwise connector test connection would fail.
+
+- Billing type will be set to "Actual" in billing export in places where billing type was not present before this feature launch.
+
+- CCM will maintain data with the Azure cost type set to "Actual." All cost computations will be based on this setting.
+
+- For Active Spend and License-Util APIs, Costs will be queried assuming Azure cost type "Actual".
+
 :::
 
