@@ -1,9 +1,10 @@
 import type { Context } from "@netlify/functions";
 interface Body {
   query: string;
-  account_id?: string;
   token?: string;
+  parse: string;
 }
+const jq = require("node-jq");
 export default async (req: Request, context: Context) => {
   // context.cookies.set({
   //   name: "account_id",
@@ -17,7 +18,7 @@ export default async (req: Request, context: Context) => {
   // context.cookies.set({
   //   name: "x_chatbot_key",
   //   value:
-  //     "pat.JPCeP2ujSwqNcwD7WhYeBw.66ba01a6b989754944fb09f7.UROYQRP2piNQHih715kr",
+  //     "pat.JPCeP2ujSwqNcwD7WhYeBw.66cad3d7e6447636d4eb17ba.ylUUGEWNUKXoa5rIa5jh",
   //   domain: "localhost",
   //   path: "/",
   //   httpOnly: false,
@@ -34,15 +35,16 @@ export default async (req: Request, context: Context) => {
   //   secure: true,
   //   sameSite: "None",
   // });
-  // if (req.method === "OPTIONS") {
-  //   return new Response("ok", {
-  //     status: 200,
-  //     headers: {
-  //       "Access-Control-Allow-Methods": "POST,OPTIONS",
-  //       "Access-Control-Allow-Headers": "Content-Type,Authorization",
-  //     },
-  //   });
-  // }
+
+  if (req.method === "OPTIONS") {
+    return new Response("ok", {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Methods": "POST,OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type,Authorization",
+      },
+    });
+  }
 
   if (req.method !== "POST") {
     return new Response("Not Implemented", {
@@ -51,8 +53,9 @@ export default async (req: Request, context: Context) => {
   }
 
   const body: Body = await req.json();
+  // console.log(body);
 
-  if (!body.query) {
+  if (!body.query || !body.parse) {
     return new Response(JSON.stringify({ error: "Please send all fields" }), {
       status: 400,
     });
@@ -72,12 +75,18 @@ export default async (req: Request, context: Context) => {
     }
 
     const responseData = await response.json();
+    const jqResponse = await jq.run(body.parse, responseData, {
+      input: "json",
+      output: "json",
+    });
 
-    return new Response(JSON.stringify(responseData), {
+    // console.log({ json: JSON.stringify(jqResponse), jqResponse });
+
+    return new Response(JSON.stringify(jqResponse), {
       status: 200,
       headers: {
-        "Access-Control-Allow-Methods": "POST,OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type,Authorization",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
       },
     });
   } catch (error) {
