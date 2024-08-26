@@ -7,8 +7,9 @@ interface IHarnessApiData {
   accountIdentifier?: boolean;
   token?: boolean;
   fallback: string;
-  parse?: string;
+  parse: string;
 }
+
 const HarnessApiData: React.FC<IHarnessApiData> = ({
   query,
   fallback,
@@ -21,44 +22,44 @@ const HarnessApiData: React.FC<IHarnessApiData> = ({
       {() => {
         const cookie = getXChatbotKeyCookie();
         const [response, setResponse] = useState("");
+
         useEffect(() => {
           async function FetchData() {
             try {
-              const response = await fetch(
-                "https://developer.harness.io/api/api_proxy",
+              const fetchResponse = await fetch(
+                "http://localhost:8888/api/api_proxy",
                 {
                   method: "POST",
                   body: JSON.stringify({
                     ...(query.includes("app.harness.io")
                       ? {
-                          token: token ? cookie.token : null,
+                          token: token ? cookie?.token : null,
+                          parse,
                           query:
                             query +
                             `?${
                               accountIdentifier
-                                ? `accountIdentifier=${cookie.id}`
+                                ? `accountIdentifier=${cookie?.id}`
                                 : ""
                             }`,
                         }
-                      : { query }),
+                      : { query, parse }),
                   }),
                 }
               );
-              if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+              if (!fetchResponse.ok) {
+                throw new Error(`HTTP error! status: ${fetchResponse.status}`);
               }
-              const data = await response.json();
 
-              const parsedData = parse
-                ? parse.split(".").reduce((o, i) => o?.[i], data)
-                : data;
-
-              setResponse(parsedData);
+              const data = await fetchResponse.json();
+              console.log(data);
+              setResponse(JSON.stringify(data));
             } catch (error) {
               console.log(error);
               setResponse(fallback);
             }
           }
+
           FetchData();
         }, [query, fallback, accountIdentifier, token, parse]);
 
