@@ -49,6 +49,16 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ### Version 1.53.4
 
+#### New features and enhancements
+
+- **Service Failure Strategy**
+
+We have introduced a failure strategy for the service, where the service step will, by default, inherit the failure strategy from the stage. (CDS-96876, ZD-63199, ZD-64391, ZD-64465, ZD-66720)
+
+- **Infrastructure UI Select**
+
+We have sorted the list of infrastructures in alphabetical order to make searching easier. The field is now searchable, allowing users to start typing and see results as they type. (CDS-94529)
+
 #### Fixed issues
 
 - Earlier, Git Experience intermittently encountered errors when pushing changes to a new branch. The issue is resolved. The `/` in the gitx webhook identifier was replaced with `_` in the identifier field. Henceforth, you can't create webhook identifiers with a `/`. (PIPE-20973, ZD-681420)
