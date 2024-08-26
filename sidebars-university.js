@@ -81,7 +81,7 @@ const sidebars = {
         // Instructions
         {
           type: "doc",
-          label: "Hands-on Instructions",
+          label: "Instructions",
           id: "instructions",
         },
         // FAQs

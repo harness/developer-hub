@@ -20,8 +20,7 @@ export enum MODULES {
   cv = 'cv',
   smp = "smp",
   aida = "aida",
-  dbdevops = "dbdevops",
-  gitness = "gitness"
+  dbdevops = "dbdevops"
 }
 
 export const MODULE_DISPLAY_NAME = {
@@ -42,8 +41,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.platform]: 'Harness Platform',
     [MODULES.smp]: 'Harness Self-Managed Enterprise Edition',
     [MODULES.aida]: 'AI Development Assistant',
-    [MODULES.dbdevops]: 'Database DevOps',
-    [MODULES.gitness]: 'Gitness'
+    [MODULES.dbdevops]: 'Database DevOps'
 }
 
 export const MODULE_ICON = {
@@ -63,6 +61,5 @@ export const MODULE_ICON = {
     [MODULES.platform]: 'img/icon_harness.svg',
     [MODULES.smp]: 'img/icon_harness.svg',
     [MODULES.aida]: 'img/icon_aida.svg',
-    [MODULES.dbdevops]: 'img/icon_dbdevops.svg',
-    [MODULES.gitness]: 'img/icon_gitness.svg'
+    [MODULES.dbdevops]: 'img/icon_dbdevops.svg'
 }

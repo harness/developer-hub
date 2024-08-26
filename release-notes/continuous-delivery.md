@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-08-20:T10:00:00
+date: 2024-08-12:T10:00:00
 sidebar_position: 8
 ---
 
@@ -46,21 +46,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 ## August 2024
-
-### Version 1.52.4
-
-#### New features and enhancements
-
-- You can clone [Services](/docs/continuous-delivery/x-platform-cd-features/services/services-overview#clone-services) across scopes i.e from one project to another, project to organization, account to project etc. and [Environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments#clone-environments) scopes (i.e from one project to another, project to organization, account to project etc.). Currently this feature is behind the Feature Flag `CDS_SERVICE_ENV_CLONING`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-97315, CDS-98426)
-
-#### Fixed issues
-
-- The error title **Intervention** was displayed when the verification step failed. The title is now updated to **Verification Failure**. (CDS-99671,ZD-65113)
-- The runtime input symbol was getting displayed even when **fixed values** was selected from the templates in the monitored services. This issue has been resolved. (CDS-99518) 
-- On the services page, the deployment type icon did not consistently appear. This issue has been resolved. (CDS-99331, ZD-66892)
-- GitOps deployments were not tracked for multiple projects because the Harness Gitops instances service was out of sync with applications without project mappings. This issue has been resolved. (CDS-98989, ZD-63203)
-- An error message associated with missing parameters in the GitHub Connector was ambiguous. This issue was resolved. (CDS-97760)
-- Previously, when a Pipeline Execution was aborted due to a Deployment Freeze, the details of the Freeze were not accessible from the Execution Console view. This issue was resolved by adding the details to the Console View. (PIPE-20658)
 
 ### Version 1.51.5
 

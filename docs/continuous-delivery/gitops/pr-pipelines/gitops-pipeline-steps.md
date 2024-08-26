@@ -162,14 +162,4 @@ After selecting this step, in **Advanced Configuration**, select the application
 
 The sync options provided are the same options you receive while syncing an application in GitOps directly.
 
-### GitOps Get App Details step
-
-This step fetches the details and status of your application. 
-
-Enter your application name in the **Application** field. Currently, this field does not support Harness expressions. 
-
-If **Hard Refresh** is enabled, the application status will be hard refreshed when retrieving the information. 
-
-The data will be returned as a JSON payload that will be parsed by the step. The response can be referenced using Harness expressions in subsequent steps. 
-
 This completes all the configurable steps for GitOps in Harness pipelines. Happy Deploying!

@@ -208,6 +208,13 @@ The scope is tied to URL format `https://gitprovider.com/org-name`, so all the G
 
 - **Repo Path** - Go to the Code Repository and under files select **Clone** and copy the repository path. 
 
+:::info
+
+Once you copy the repository path replace the `git.eu.harness.io` with `accounts.eu.harness.io`.
+
+![](static/replace-vanity-url.png)
+
+:::
 
 ![](static/copy-repo-path.png)
 

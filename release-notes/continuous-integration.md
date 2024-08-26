@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 
-date: 2024-08-19T10:00
+date: 2024-07-05T10:00
 sidebar_position: 10
 ---
 
@@ -22,16 +22,6 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## August 2024
-
-
-
-### Version 1.42
-
-<!-- 2024-08-12 -->
-
-#### Fixed issues
-
-- Fixed an issue where pipeline failures at the initialization step resulted in the entire pod YAML, including environment variables with secrets, being logged as an error. The log level has been changed to debug to prevent sensitive data exposure, and a new log has been added to capture essential details without including the full object. (CI-13785)
 
 ### Version 1.41
 

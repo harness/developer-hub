@@ -242,7 +242,7 @@ async function config() {
                   to: "https://university-registration.harness.io/calendar",
                 },
                 {
-                  label: "Hands-on Instructions",
+                  label: "Instructions",
                   to: "university/instructions",
                 },
                 {

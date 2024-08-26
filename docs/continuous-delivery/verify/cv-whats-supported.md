@@ -20,14 +20,6 @@ When configuring an APM tool or a log management tool in Harness CV and construc
 - The query response should be a single time series.
 :::
 
-:::warning
-When using Datadog as a health source in Harness CV, be aware that the default DataDog rate limit is 360 API calls per hour, which translates to 6 API calls per minute. Since Continuous Verification (CV) steps in Harness make 1 API call per pod, this effectively restricts the maximum number of pods or instances to 6.
-
-For example, if you test a deployment with just 1 instance (replica), the CV step will work as expected. However, if you run the same workflow in a production or staging environment where the replica count exceeds 20, the CV step is likely to fail due to the API rate limit.
-
-If needed, you can request an increase in the rate limit from DataDog to accommodate larger deployments.
-:::
-
 To learn how to add a health source, go to [Configure CV](/docs/category/configure-cv).
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
