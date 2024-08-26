@@ -415,3 +415,13 @@ When the **Allow Overrides** box is selected at the account level, Harness users
 In a project, in **Default Settings** > **Pipeline**, you can set a different value for **Mandate Authorization for Custom Webhook Triggers**.
 
 If **Allow Overrides** is unchecked, then the value of the setting is propagated to all projects in the account.
+
+## Executions
+
+:::important note
+Currently this feature is behing the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+:::
+
+ **My Executions** filter on the listing page displays both manual executions and those triggered automatically by custom trigger i.e execution executed by custom trigger/curl command and manually execution pipeline execution will appear in the My Execution list. 
+ 
+But to display execution triggered by custom webhook trigger it must have a authorization i.e X-API-key should be present
