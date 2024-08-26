@@ -201,7 +201,7 @@ export const CcmData: Horizon = {
     ],
   },
   "Q1 CY'24": {
-    description: "Q1 CY'23, Feb-Apr 2024",
+    description: "Q1 CY'24, Feb-Apr 2024",
     feature: [
       {
         tag: [],
@@ -262,48 +262,34 @@ export const CcmData: Horizon = {
     ],
   },
   "Q2 CY'24": {
-    description: "Q4 CY'24, May-Jul 2024",
+    description: "Q2 CY'24, May-Jul 2024",
     feature: [
       {
         tag: [],
-        title: "Terraform Support for Perspectives ",
-        description: "Programmatically manage and configure different views",
-        backgroundColor: "var(--yellow-100)",
+        title: "Azure preferences",
+        description: "Support between Actual and Amortized cost in Azure Preferences.",
+        backgroundColor: "var(--blue-100)",
       },
       {
         tag: [],
-        title: "Recommendation Preferences ",
+        title: "Tags support for Recommendations ",
         description:
-          "Global preferences to select presets for fine tuning recommendations (Ex. Buffer, instance family etc.)",
-        backgroundColor: "var(--yellow-100)",
+          "Tags are supported for recommendations and filtering is allowed.",
+        backgroundColor: "var(--blue-100)",
       },
       {
         tag: [],
-        title: "AutoStopping Bulk Rule Creation",
+        title: "Governance Cost Correlation support for new resources",
         description:
-          "Creation of AutoStopping Rules in bulk based on tags and other resource filtering for faster adoption at scale",
-        backgroundColor: "var(--yellow-100)",
-      },
-      {
-        tag: [],
-        title: "Smart Advisor for AutoStopping",
-        description:
-          "Categorization of short-lived non-production cloud accounts and clusters to track savings potential and progress made",
-        backgroundColor: "var(--yellow-100)",
+          "New resources added for all three clouds for Cost Correlation.",
+        backgroundColor: "var(--blue-100)",
       },
       {
         tag: [],
         title: "Workload Bin-packing for EKS Cluster Orchestrator",
         description:
           "Efficient scheduling and placement of containers onto nodes for optimizing node count and utilization",
-        backgroundColor: "var(--yellow-100)",
-      },
-      {
-        tag: [],
-        title: "FinOps Workflows ",
-        description:
-          "Automated workflow to adopt FinOps practices and CCM features at scale",
-        backgroundColor: "var(--yellow-100)",
+        backgroundColor: "var(--blue-100)",
       },
     ],
   },
@@ -312,38 +298,38 @@ export const CcmData: Horizon = {
     feature: [
       {
         tag: [],
-        title: "Cost Anomaly Preferences ",
+        title: "Custom Recommendations powered by Governance ",
         description:
-          "Global preferences to select percentage deviation, minimum cost thresholds",
-        backgroundColor: "var(--blue-100)",
+          "Allows users to generate recommendations for all the type of resources supported for Cost Correlation. ",
+        backgroundColor: "var(--yellow-100)",
       },
       {
         tag: [],
-        title: "AutoStopping Enforcement",
+        title: "Inventory Management powered by Governance",
         description:
-          "Compliance enforcement to ensure that all target resources have AutoStopping Rules created to manage them and deliver savings during idle windows",
-        backgroundColor: "var(--blue-100)",
+          "Allows users to generate inventory details for any type of resource.",
+        backgroundColor: "var(--yellow-100)",
       },
       {
         tag: [],
-        title: "Commitment Orchestrator for Azure ",
+        title: "Anomaly Detection 2.0",
         description:
-          "Automated purchasing and management of commitments to maximize savings, compute coverage and utilization",
-        backgroundColor: "var(--blue-100)",
+          "Enhanced anomaly detection capabilities with drill-down analysis. Includes support for cost category anomalies, customizable workflows, and preferences for setting percentage deviations and minimum cost thresholds.",
+        backgroundColor: "var(--yellow-100)",
       },
       {
         tag: [],
-        title: "Cluster Orchestrator for AKS ",
+        title: "Recommendations RBAC enhancements",
         description:
-          "Workload-driven intelligent node autoscaling with distributed spot orchestration",
-        backgroundColor: "var(--blue-100)",
+          "",
+        backgroundColor: "var(--yellow-100)",
       },
       {
         tag: [],
-        title: "Cloud Asset Governance - IaCM Integration ",
+        title: "Commitment Orchestrator for RDS (Beta) ",
         description:
-          "Shifting left FinOps-as-code guardrails to prevent leaks at the point of infrastructure provisioning",
-        backgroundColor: "var(--blue-100)",
+          "",
+        backgroundColor: "var(--yellow-100)",
       },
     ],
   },
