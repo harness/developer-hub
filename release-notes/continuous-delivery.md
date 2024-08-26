@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-08-20:T10:00:00
+date: 2024-08-27:T10:00:00
 sidebar_position: 8
 ---
 
@@ -46,6 +46,12 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 ## August 2024
+
+### Version 1.53.x
+
+#### Fixed issues
+
+- Previously, Git Experience intermittently encountered errors when pushing changes to a new branch. The issue is resolved. We replaced the `/` in the gitx webhook identifier with `_` in the identifier field. From now on, you cannot create webhook identifiers with a `/`. (PIPE-20973, ZD-681420)
 
 ### Version 1.52.4
 
