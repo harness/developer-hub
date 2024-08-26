@@ -47,7 +47,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## August 2024
 
-### Version 1.53.x
+### Version 1.53.4
 
 #### Fixed issues
 
