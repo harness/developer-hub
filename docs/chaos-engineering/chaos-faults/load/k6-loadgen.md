@@ -21,6 +21,20 @@ K6 loadgen fault simulates load generation on the target hosts for a specific ch
 - The target host should be accessible.
 - Ensure to create a Kubernetes secret that contains the JS script file within the Chaos Infrastructure's namespace. The easiest way to create a secret object is as follows::
 
+An example of the JS script file is as follows:
+```javascript
+import http from 'k6/http';
+import { check, sleep } from 'k6';
+
+export default function () {
+  let res = http.get('https://google.com');
+
+  check(res, { 'status is 200': (r) => r.status === 200 });
+
+  sleep(0.3);
+}
+```
+
 ```bash
 kubectl create secret generic k6-script \
 --from-file=<<script-path>> -n <<chaos_infrastructure_namespace>>
