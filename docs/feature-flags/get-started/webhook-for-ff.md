@@ -8,7 +8,9 @@ Webhooks are automated, real-time communication mechanisms that allow applicatio
 
 By leveraging webhooks, Harness can now respond to Git updates almost immediately, ensuring that feature flag configurations are always up-to-date and aligned with the latest code changes. 
 
-[Set up bi-directional sync for Git Experience](../../platform/git-experience/gitexp-bidir-sync-setup.md)
+:::info
+If you'd like to learn more about the Git experience at Harness, you can refer to the doc, [Set up bi-directional sync for Git Experience](../../platform/git-experience/gitexp-bidir-sync-setup.md) for more info.
+:::
 
 This document outlines the process of implementing webhooks for Feature Flag functionality within Harness' Git Sync system. The webhook callback enhances the existing git-to-harness synchronization process, providing near-real-time updates for changes made to remote files.
 
