@@ -26,6 +26,7 @@ async function config() {
     favicon: "img/hdh_fav_icon_grey.ico",
     customFields: {
       SEGMENT_API_KEY: process.env.SEGMENT_API_KEY,
+      HARNESS_GENERIC_READ_ONLY_KEY: process.env.HARNESS_GENERIC_READ_ONLY_KEY,
     },
 
     //Mermaid Diagram Functionality
@@ -255,11 +256,11 @@ async function config() {
                 },
               ],
             },
-            {
-              label: "Open Source",
-              position: "right",
-              href: "https://docs.gitness.com/",
-            },
+            //{
+            // label: "Open Source",
+            // position: "right",
+            // href: "https://docs.gitness.com/",
+            //},
             {
               label: "Knowledge Base",
               position: "right",
@@ -379,7 +380,7 @@ async function config() {
                 },
                 {
                   label: "Open Source",
-                  to: "https://www.harness.io/open-source",
+                  to: "https://docs.gitness.com/",
                 },
                 {
                   label: "YouTube",
