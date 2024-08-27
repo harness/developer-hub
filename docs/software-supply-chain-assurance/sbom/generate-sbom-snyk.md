@@ -9,7 +9,7 @@ import CosignKeyGeneration from '/docs/software-supply-chain-assurance/shared/ge
 This workflow describes how to ingest Snyk scan results into a Harness pipeline. STO supports the following scan approaches for the following Snyk products:
 
 - Snyk Container SBOM via an ingestion workflow
-- Snyk Open Source SBOM via [STO Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans#snyk-repository-orchestration-example)
+- Snyk Open Source SBOM via [STO Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning)
 
 
 ## Generating and ingesting a Snyk Container SBOM
