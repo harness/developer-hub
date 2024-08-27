@@ -1402,5 +1402,11 @@ html[data-theme="dark"] .sidebar-gitness > a::before {
   font-size: 16px;
 }
 .navbar__item{
-  padding: 0 6px;
+  padding: 0 8px;
+}
+
+@media screen and (max-width: 1299px) {
+  .navbar__items{
+    font-size: 15px;
+  }
 }

@@ -1,6 +1,6 @@
 /* --- Coveo style overwritten ---- */
 #searchBoxCoveo {
-    width: 300px;
+    width: 250px;
     // width: calc(100vw - 1080px);
 	margin-left: 10px;
 }
@@ -836,7 +836,7 @@
 /* TBD: needs a better design/solution for the responsiveness of the navbar */
 @media screen and (max-width: 1499px) {
     #searchBoxCoveo {
-		width: 250px;
+		width: 200px;
     }
 }
 
