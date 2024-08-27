@@ -55,7 +55,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 We have introduced a failure strategy for the service, where the service step will, by default, inherit the failure strategy from the stage. (CDS-96876, ZD-63199, ZD-64391, ZD-64465, ZD-66720)
 
-- **Infrastructure UI Select**
+- **Infrastructure Scope Selector**
 
 We have introduced the scope for infrastructure selection. The infrastructures will be viewed in the Account scope. One can select all the infractures in the environment by selecting the checkbox `All Infrastructures`. The field is now searchable, allowing users to start typing and see results as they type.(CDS-94529)
 
