@@ -560,7 +560,6 @@ async function config() {
             [
               (await import("remark-math")).default,
               {
-               
                 strict: false,
               },
             ],
@@ -569,7 +568,6 @@ async function config() {
             [
               (await import("rehype-katex")).default,
               {
-              
                 strict: false,
               },
             ],
