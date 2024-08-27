@@ -23,7 +23,7 @@ The **Platform Admins** can customize the homepage under Layouts for 3 different
 - You can leave the header text static such as - `Welcome to Harness IDP!`
     - You can make it personalized such as - Welcome `<+first_name>!`
     - If your users have names of the format "last name, first name", then you can use Welcome `<+last_name>`, `<+first_name>`! Or you can name the portal a unique product name such as - `Welcome to MyPortal!` (maybe, a bit more creative than MyPortal).
-    - There is a special variable called `<+greetings>` which resolves to Good Morning, Good Evening, etc. depending upon the timezone of the user. e.g. <+greetings> <+first_name>
+    - There is a special variable called `<+greetings>` which resolves to Good Morning, Good Evening, etc. depending upon the timezone of the user. e.g. `<+greetings> <+first_name>`
 
 - For Quick links you can upload a Custom Icon **(Recommended Size: 128x128px and file size: 200KB)** along with a name and a link. You can also drag and re-arrange the order of the links. It's ideal to add a few links to some central documents that you want your users to go to when they come to your Developer Portal. e.g. Onboarding Docs, Link to Slack, etc.
 
