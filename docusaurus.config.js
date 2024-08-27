@@ -256,11 +256,7 @@ async function config() {
                 },
               ],
             },
-            //{
-            // label: "Open Source",
-            // position: "right",
-            // href: "https://docs.gitness.com/",
-            //},
+
             {
               label: "Knowledge Base",
               position: "right",
@@ -285,6 +281,11 @@ async function config() {
               label: "Roadmap",
               position: "right",
               href: "/roadmap",
+            },
+            {
+            label: "Open Source",
+            position: "right",
+            href: "https://docs.gitness.com/",
             },
             {
               type: "custom-coveo-search",
@@ -560,7 +561,6 @@ async function config() {
             [
               (await import("remark-math")).default,
               {
-               
                 strict: false,
               },
             ],
@@ -569,7 +569,6 @@ async function config() {
             [
               (await import("rehype-katex")).default,
               {
-              
                 strict: false,
               },
             ],

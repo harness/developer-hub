@@ -480,7 +480,7 @@ h2 {
 .navbar__item img[alt="BETA"] {
   margin-left: -0.25rem;
   margin-top: 10px;
-  width: 36px;
+  width: 24px;
   height: auto;
 }
 
@@ -799,6 +799,7 @@ figure p {
   .searchBar .DocSearch-Button {
     width: 100%;
   }
+ 
 }
 
 @media screen and (max-width: 1199px) {
@@ -814,6 +815,10 @@ figure p {
   }
   .searchBar {
     display: none;
+  }
+  
+  .navbar__logo{
+    width: 200px;
   }
 }
 
@@ -1390,3 +1395,12 @@ html[data-theme="dark"] .sidebar-gitness > a::before {
 
 
 
+/***********************   navbar css ***********/
+
+
+.navbar__items{
+  font-size: 16px;
+}
+.navbar__item{
+  padding: 0 6px;
+}
