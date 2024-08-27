@@ -47,7 +47,7 @@ const HarnessApiData: React.FC<IHarnessApiData> = ({
                   ? cookie?.token
                   : null;
               const fetchResponse = await fetch(
-                "developer.harness.io/api/api_proxy",
+                "https://developer.harness.io/api/api_proxy",
                 {
                   method: "POST",
                   headers: {
