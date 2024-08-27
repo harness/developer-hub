@@ -40,6 +40,8 @@ To scope an infrastructure definition to specific services, do the following:
 
 4. Select **Apply Selected**. The **Select Services** option displayed the number of selected services.
 
+The list of infrastructures is searchable and sorted alphabetically to make the search easier.
+
 ## Creating a stage using services scoped to an infrastructure
 
 When you create a CD stage that will use an infrastructure with the **Scope to Specific Services** option enabled, in **Service**, you must select a service that is scoped to that infrastructure.
