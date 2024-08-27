@@ -256,11 +256,7 @@ async function config() {
                 },
               ],
             },
-            //{
-            // label: "Open Source",
-            // position: "right",
-            // href: "https://docs.gitness.com/",
-            //},
+
             {
               label: "Knowledge Base",
               position: "right",
@@ -285,6 +281,11 @@ async function config() {
               label: "Roadmap",
               position: "right",
               href: "/roadmap",
+            },
+            {
+            label: "Open Source",
+            position: "right",
+            href: "https://docs.gitness.com/",
             },
             {
               type: "custom-coveo-search",
