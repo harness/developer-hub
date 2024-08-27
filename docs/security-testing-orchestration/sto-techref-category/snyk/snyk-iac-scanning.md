@@ -53,7 +53,7 @@ To perform Snyk IaC scan with ingestion scan mode, you will need to have two ste
 
 1. Add the **Run** step to the pipeline and open the step configuration.
 2. In the **Container Registry** section, set your DockerHub connector. Snyk images will be pulled from their DockerHub account.
-3. For **Image**, use use a supported [Snyk image](https://hub.docker.com/r/snyk/snyk) based on the type of code in your codebase
+3. For **Image**, use a supported [Snyk image](https://hub.docker.com/r/snyk/snyk) based on your project type and language.
 4. Set the **Shell** field to `sh`
 5. In the **Command** field, enter the following command.
 

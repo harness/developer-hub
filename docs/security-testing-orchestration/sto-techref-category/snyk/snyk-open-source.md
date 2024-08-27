@@ -17,7 +17,7 @@ Depending on your project type and requirements, you may need to build your proj
 
 Refer to the table below to determine whether your project requires a build for successful scanning. For Orchestration mode, If a build is necessary, continue from the section [Build your project using the Run step](#build-your-project-using-run-step). If not, you can skip that section and proceed directly to [Configure the Snyk step for Open Source scanning](#configure-snyk-step-for-open-source-scanning).
 
-<details>
+<details open>
 
 
 <summary>Build requirements for Snyk Open Source scanning</summary>
@@ -54,11 +54,11 @@ Depending on your project type, you can use a Run step to build your project. Re
 1. Add the **Run** step to your pipeline.
 2. Set the **Shell** field to `sh`.
 3. In the **Command** field, enter the command to build your project. This will vary based on your project type. For example, use `npm install` or `yarn install` for JavaScript projects.
-4. Configure the container registry and select the appropriate image for the build process. Under Optional Configuration:
+4. Under **Optional Configuration**, configure your container registry and the image that facilitates your project build.
     1. Set the **Container Registry** using Harness connectors.
-    2. Enter the **Image** name need to facilitate the build process.
+    2. Enter the **Image** name needed for the build process.
 5. Apply the changes and save the pipeline.
-6. You can now configure the Snyk step to perform the Snyk Open Source scan.
+6. You can now configure the **Snyk** step to perform the Snyk Open Source scan.
 
 <DocImage path={require('./static/snyk-os-orchestration-build-with-run.png')} width="40%" height="40%" title="Click to view full size image" />
 
@@ -97,7 +97,7 @@ In the Ingestion scan mode, the Snyk step reads data from a file, normalizes it,
 ### Configure Run step
 1. Add the **Run** step to the pipeline and open the step configuration.
 2. In the **Container Registry** section, set your DockerHub connector. Snyk images will be pulled from their DockerHub account.
-3. For **Image**, select the appropriate [Snyk image](https://hub.docker.com/r/snyk/snyk) based on your codebase. For example, use `snyk/snyk:node` for a Node.js project.
+3. For **Image**, use a supported [Snyk image](https://hub.docker.com/r/snyk/snyk) based on your project type and language. For example, use `snyk/snyk:node` for a Node.js project.
 4. Set the **Shell** field to `sh`
 5. In the **Command** field, enter the following command.
 
