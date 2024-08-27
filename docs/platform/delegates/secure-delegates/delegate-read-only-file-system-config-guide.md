@@ -27,7 +27,7 @@ This setup requires specific configurations in both Kubernetes and Docker deploy
 
 Before configuring the delegate to run on a read-only file system, ensure that you meet the following prerequisites:
 
-- **Delegate Version**: You are using a delegate version that supports running on a read-only file system.
+- **Delegate Version**: You are using a delegate version that supports running on a read-only file system. This functionality is available in versions >= `24.08.83702` and `24.08.83702.minimal`.
 
 - **Writable Directories**: You have identified the directories that must remain writable, such as `/tmp` and the working directory.
 
