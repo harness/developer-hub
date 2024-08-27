@@ -8,6 +8,7 @@ Customers may find the Armory Agent fails to connect to its partner Kubernetes c
 ```time="2021-06-03T15:38:06Z" level=error msg="...-agent is unreachable" error="dial tcp ...: connect: connection timed out"```
 
 Utilizing the command directly in the Agent, customers will find the following:
+
 ```
 ....
 * SSL certificate problem: unable to get local issuer certificate
@@ -16,6 +17,7 @@ curl: (60) SSL certificate problem: unable to get local issuer certificate
 More details here: https://curl.haxx.se/docs/sslcerts.html
 ...
 ```
+
 Agent logs further show the following:
 ```
 time="2021-06-08T17:10:35Z" level=info msg="connecting to spin-clouddriver-........."

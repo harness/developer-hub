@@ -14,6 +14,7 @@ time="2023-08-28T01:03:06Z" level=info msg="log level set to: INFO" agentId=spin
 
 Close attention should be paid to the first message: ```"Not config file provided, using defaults; could not find config directory"```, which indicates that the agent always loads the default settings.
 Other signs that you are running into this issue could be a SIGSEGV error similar to the one below:
+
 ````
 time="2023-07-11T16:09:29Z" level=error msg="Notifying account discovery error for example-account-1: error getting server version for account 'example-account-1': Get \"https://EXAMPLEEKSACCTID.gr7.us-west-2.eks.amazonaws.com/version\": dial tcp: lookup EXAMPLEEKSACCTID.gr7.us-west-2.eks.amazonaws.com on 172.0.0.11:53: no such host" account=example-account-1 agentId=spin-armory-agent-xxxxxxxxxx-xxxxx error="error getting server version for account 'example-account-1': Get \"https://EXAMPLEEKSACCTID.gr7.us-west-2.eks.amazonaws.com/version\": dial tcp: lookup EXAMPLEEKSACCTID.gr7.us-west-2.eks.amazonaws.com on 172.0.0.11:53: no such host"
 time="2023-07-11T16:09:29Z" level=info msg="Account discovery result received: account=example-account-1, namespaces=0, kinds =0, errors=error getting server version for account 'example-account-1': Get \"https://EXAMPLEEKSACCTID.gr7.us-west-2.eks.amazonaws.com/version\": dial tcp: lookup EXAMPLEEKSACCTID.gr7.us-west-2.eks.amazonaws.com on 172.0.0.11:53: no such host" account=example-account-1 agentId=spin-armory-agent-xxxxxxxxxx-xxxxx
