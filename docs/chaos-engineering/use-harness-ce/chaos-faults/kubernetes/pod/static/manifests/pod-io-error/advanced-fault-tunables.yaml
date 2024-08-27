@@ -1,0 +1,33 @@
+# it injects io error in the file system calls
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: pod-io-error
+      spec:
+        components:
+          env:
+            # filter the target files
+            - name: FILE_PATH
+              value: '/etc/config/file.txt'
+            # percentage of i/o calls
+            - name: PERCENTAGE
+              value: '50'
+            # names of the io methods
+            - name: METHOD_TYPES
+              value: '["read","write"]'
+            - name: ERROR_CODE
+              value: '5'
+            - name: MOUNT_PATH
+              value: '/etc/config'
+            - name: TOTAL_CHAOS_DURATION
+              value: '60'

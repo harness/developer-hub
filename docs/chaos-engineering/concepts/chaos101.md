@@ -105,7 +105,7 @@ You can define steps (chaos experiment) using which you can inject different kin
 
 ## Component Description
 
-The components specified in the diagram earlier are described below.
+The components involved in chaos engineering are described below.
 
 #### **Chaos Experiment**
 
@@ -220,6 +220,7 @@ Leverages the Kubernetes operator pattern to interpret the fault configuration, 
 
 #### Chaos Exporter
 Optional component that facilitates external observability in HCE. This is achieved by exporting the chaos metrics generated during the chaos injection as time-series data to the Prometheus database for processing and analysis.
+
 ## Conclusion
 
 Chaos engineering is a technique you can implement with all types of systems, including legacy applications and infrastructure. It is especially significant for cloud-native applications, which often have multiple points of failure due to their distributed and elastic nature.
@@ -228,6 +229,6 @@ By embracing chaos engineering, you can better prepare your applications to with
 
 ## Try Chaos Engineering today
 
-* Run your first chaos experiment
-* Executing experiments in a sandbox
-* Create chaos experiments from scratch
+* [Run your first chaos experiment](/docs/chaos-engineering/getting-started/saas/first-experiment)
+* [Executing experiments in a sandbox](/docs/chaos-engineering/training/sandbox)
+* [Create chaos experiments from scratch](/docs/chaos-engineering/getting-started/saas/chaos-experiment-from-blank-canvas)

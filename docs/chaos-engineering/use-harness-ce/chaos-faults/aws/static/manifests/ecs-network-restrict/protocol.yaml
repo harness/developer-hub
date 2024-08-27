@@ -1,0 +1,20 @@
+# Set container protocol for the target ECS task
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: aws-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-network-restrict
+    spec:
+      components:
+        env:
+        - name: PROTOCOL
+          value: 'tcp'
+        - name: REGION
+          value: 'us-east-2'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'

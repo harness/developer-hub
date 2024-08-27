@@ -1,0 +1,19 @@
+# contains the timeout value for the lambda function
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: lambda-update-function-timeout
+    spec:
+      components:
+        env:
+        # provide the function timeout for 10seconds
+        - name: FUNCTION_TIMEOUT
+          value: '10'
+        # provide the function name for timeout chaos
+        - name: FUNCTION_NAME
+          value: 'chaos-function'

@@ -18,7 +18,7 @@ import FeatureCard from '@site/src/components/ChaosEngineering/FeatureCard';
 ## Deployment Options
 
 <FeatureCard title="On-prem Deployment" description="" link="/docs/chaos-engineering/getting-started/smp/" />
-<FeatureCard title="SaaS Deployment" description="" link="saas-deployment/" />
+<FeatureCard title="SaaS Deployment" description="" link="/docs/category/saas" />
 
 ## Chaos Platform Features
 
@@ -28,7 +28,7 @@ import FeatureCard from '@site/src/components/ChaosEngineering/FeatureCard';
 
 <FeatureCard title="Service Discovery" description="" link="service-discovery/" />
 
-<FeatureCard title="Resilience Probes" description="" link="resilience-probes/" />
+<FeatureCard title="Resilience Probes" description="" link="/docs/category/resilience-probes" />
 
 <FeatureCard title="Experiment logs" description="" link="saas-deployment/" />
 
@@ -52,11 +52,11 @@ import FeatureCard from '@site/src/components/ChaosEngineering/FeatureCard';
 
 <FeatureCard title="Run Experiments" description="" link="/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#run-or-schedule-the-experiment" />
 
-<FeatureCard title="Chaos Studio" description="" link="saas-deployment/" />
+<FeatureCard title="Chaos Studio" description="" link="/docs/chaos-engineering/concepts/chaos101#chaos-studio" />
 
 ## Chaos Faults
 
-<FeatureCard title="Out-of-the-box Faults" description="" link="saas-deployment/" />
+<FeatureCard title="Out-of-the-box Faults" description="" link="/docs/chaos-engineering/use-harness-ce/chaos-faults/" />
 
 <FeatureCard title="Create Custom Faults" description="" link="saas-deployment/" />
 

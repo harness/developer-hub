@@ -1,0 +1,22 @@
+# internal ip of the targeted node
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: node-restart
+    spec:
+      components:
+        env:
+        # internal ip of the targeted node
+        - name: TARGET_NODE_IP
+          value: '10.0.170.92'
+        # name of the target node
+        - name: TARGET_NODE
+          value: 'node01'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'

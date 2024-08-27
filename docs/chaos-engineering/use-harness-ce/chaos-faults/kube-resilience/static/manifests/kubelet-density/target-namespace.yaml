@@ -1,0 +1,19 @@
+# defines pod namespace
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: kubelet-density
+    spec:
+      components:
+        env:
+        # namespace where pods need to be created
+        - name: TARGET_NAMESPACE
+          value: 'litmus'
+        - name: TARGET_NODE
+          value: 'node1'

@@ -1,0 +1,19 @@
+# injects network loss for a certain chaos duration
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-container-network-loss
+    spec:
+      components:
+        env:
+        # network loss to be injected
+        - name: NETWORK_PACKET_LOSS_PERCENTAGE
+          value: '100' #in ms
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'

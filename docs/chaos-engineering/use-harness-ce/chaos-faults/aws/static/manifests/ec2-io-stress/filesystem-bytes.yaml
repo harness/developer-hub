@@ -1,0 +1,21 @@
+# filesystem bytes to utilize
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ec2-io-stress
+    spec:
+      components:
+        env:
+        - name: FILESYSTEM_UTILIZATION_BYTES
+          value: '1024'
+        # ID of the EC2 instance
+        - name: EC2_INSTANCE_ID
+          value: 'instance-1'
+        # region for the EC2 instance
+        - name: REGION
+          value: 'us-east-1'

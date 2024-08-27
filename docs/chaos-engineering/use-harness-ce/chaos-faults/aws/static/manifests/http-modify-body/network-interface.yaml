@@ -1,0 +1,19 @@
+## provide the network interface for proxy
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ec2-http-modify-body
+    spec:
+      components:
+        env:
+        # provide the network interface for proxy
+        - name: NETWORK_INTERFACE
+          value: "eth0"
+        # provide the port of the targeted service
+        - name: TARGET_SERVICE_PORT
+          value: '80'

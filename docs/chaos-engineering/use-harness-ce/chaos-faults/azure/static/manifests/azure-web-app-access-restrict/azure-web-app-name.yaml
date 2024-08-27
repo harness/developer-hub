@@ -1,0 +1,22 @@
+# access restrict on target web app by their names
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: azure-web-access-restrict
+    spec:
+      components:
+        env:
+        # comma separated names of the target web apps
+        - name: AZURE_WEB_APP_NAMES
+          value: 'webApp-01,webApp-02'
+        # name of the resource group
+        - name: RESOURCE_GROUP
+          value: 'chaos-rg'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'

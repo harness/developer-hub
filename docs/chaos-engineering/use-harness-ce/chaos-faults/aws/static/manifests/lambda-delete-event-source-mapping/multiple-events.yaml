@@ -1,0 +1,19 @@
+# contains the removal of multiple event source mapping
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: lambda-delete-event-source-mapping
+    spec:
+      components:
+        env:
+        # provide UUIDS of event source mapping
+        - name: EVENT_UUIDS
+          value: 'id1,id2'
+        # provide the function name for the chaos
+        - name: FUNCTION_NAME
+          value: 'chaos-function'

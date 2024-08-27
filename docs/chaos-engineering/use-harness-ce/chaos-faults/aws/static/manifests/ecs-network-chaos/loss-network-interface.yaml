@@ -1,0 +1,19 @@
+# provide the network interface
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-container-network-loss
+    spec:
+      components:
+        env:
+        # name of the network interface
+        - name: NETWORK_INTERFACE
+          value: 'eth0'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'

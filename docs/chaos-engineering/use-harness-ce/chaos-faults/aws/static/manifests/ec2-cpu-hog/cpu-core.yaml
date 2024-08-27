@@ -1,0 +1,21 @@
+# CPU cores to utilize
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ec2-cpu-hog
+    spec:
+      components:
+        env:
+        - name: CPU_CORE
+          value: '2'
+        # ID of the EC2 instance
+        - name: EC2_INSTANCE_ID
+          value: 'instance-1'
+        # region for the EC2 instance
+        - name: REGION
+          value: 'us-east-1'

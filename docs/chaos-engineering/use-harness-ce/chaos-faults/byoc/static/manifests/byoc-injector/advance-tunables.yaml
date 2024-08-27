@@ -1,0 +1,67 @@
+# provide advanced tunables for the byoc-injector experiment
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: active
+  terminationGracePeriodSeconds: 30
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: byoc-injector
+      imagePullPolicy: Always
+      args:
+        - -c
+        - ./experiments -name byoc-injector
+      command:
+        - /bin/bash
+      spec:
+        components:
+          # node selector to target a specific node
+          nodeSelector:
+            chaos-enabled: "true"
+          # tolerations to target master nodes
+          tolerations:
+            - key: "node-role.kubernetes.io/master"
+              operator: "Exists"
+              effect: "NoSchedule"
+          # hostPID to enable the hostPID
+          hostPID: true
+          # mounted configMaps
+          configMaps:
+            - name: chaos-script
+              mountPath: /etc/config
+          # mounted secrets
+          secrets:
+            - name: aws-secret
+              mountPath: /etc/secret
+          # hostFileVolumes to mount the host file
+          hostFileVolumes:
+            - mountPath: /run/containerd/containerd.sock
+              name: socketPath
+              nodePath: /run/containerd/containerd.sock
+          # provide the security context
+          securityContext:
+            # pod security context to run the pod as root user
+            podSecurityContext:
+              runAsUser: 0
+            # container security context to run the container in privileged mode
+            containerSecurityContext:
+              privileged: true
+          env:
+            - name: SSH_USER
+              value: "ec2-user"
+            - name: SSH_HOST
+              value: "ec2-host.us-east-2.compute.amazonaws.com"
+            - name: SSH_KEY
+              value: "/etc/secret/key.pem"
+            - name: INTERVAL
+              value: "2"
+            - name: DURATION
+              value: "120"
+            - name: LIB_IMAGE
+              value: "<lib image with ssh binary>"
+            - name: COMMAND
+              value: "/bin/sh"
+            - name: ARGS
+              value: "-c,sh /etc/config/script.sh"
