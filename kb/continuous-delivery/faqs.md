@@ -16,6 +16,15 @@ For an overview of Harness concepts, see [Learn Harness' key concepts](/docs/pla
 
 ### General FAQs
 
+#### Where can one find instanceKey and infrastructureMappingId values in Trigger Rollback API?
+
+The Instance Key is a combination of the Infrastructure Key and the instance information available in the Instances Table.
+Infrastructure key can be found as part of the infrastructure output variables.
+Instance information can be found in the Instances Table.
+
+Note that the infrastructureMappingId is not exposed as part of the Infrastructure.
+
+
 #### How does Harness calculate pricing for CD?
 
 See [Service-based licensing and usage for CD](/docs/continuous-delivery/get-started/service-licensing-for-cd/)
