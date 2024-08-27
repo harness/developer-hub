@@ -59,6 +59,8 @@ We have introduced a failure strategy for the service, where the service step wi
 
 We have sorted the list of infrastructures in alphabetical order to make searching easier. The field is now searchable, allowing users to start typing and see results as they type. (CDS-94529)
 
+- The [My Executions](/docs/platform/triggers/triggering-pipelines.md) filter on the listing page displays both manual executions and those triggered automatically by Git pull requests (PRs) i.e execution executed by their Githib PRs as well as manually execution pipeline execution will appear in the My Execution list. Currently this feature is behing the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
 #### Fixed issues
 
 - Earlier, Git Experience intermittently encountered errors when pushing changes to a new branch. The issue is resolved. The `/` in the gitx webhook identifier was replaced with `_` in the identifier field. Henceforth, you can't create webhook identifiers with a `/`. (PIPE-20973, ZD-681420)
