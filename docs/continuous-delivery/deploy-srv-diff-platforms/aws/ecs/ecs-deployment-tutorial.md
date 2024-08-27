@@ -829,7 +829,7 @@ See the following sections for information on other deployment strategies and st
 
 ### Harness supports JSON and YAML for all ECS manifests
 
-You can use both JSON and YAML for your task and service definitions.
+You can use both JSON and YAML for your task and service definitions. Note that fields are denoted in lower camel case rather than pascal case, i.e. `scalableDimension` vs `ScalableDimension`.
 
 ### ECS manifest examples
 
@@ -868,9 +868,20 @@ To configure Auto Scaling in Harness, you use **Scalable Target** and **Scaling 
 
 The Scalable Target setting in the Harness Service specifies a resource that AWS Application Auto Scaling can scale. For more information, see [ScalableTarget](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalabletarget.html) from AWS.
 
-Example:
+JSON Example:
+```json
+{
+  "resourceId": "service/<ECS cluster name>/<ECS service name>",
+  "scalableDimension": "ecs:service:DesiredCount",
+  "serviceNamespace": "ecs",
+  "minCapacity": 1,
+  "maxCapacity": 3
+}
+```
 
+YAML Example:
 ```yaml
+resourceId: service/<ECS cluster name>/<ECS service name>
 serviceNamespace: ecs
 scalableDimension: ecs:service:DesiredCount
 minCapacity: 1
@@ -881,8 +892,25 @@ maxCapacity: 3
 
 The Scaling Policy setting in the Harness Service defines a scaling policy that Application Auto Scaling uses to adjust your application resources. For more information, see [ScalingPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html) from AWS.
 
-Example:
+JSON Example:
+```json
+{
+  "scalableDimension": "ecs:service:DesiredCount",
+  "serviceNamespace": "ecs", 
+  "policyName": "P1",
+  "policyType": "TargetTrackingScaling",
+  "targetTrackingScalingPolicyConfiguration": {
+    "targetValue": 60,
+    "predefinedMetricSpecification": {
+      "predefinedMetricType": "ECSServiceAverageCPUUtilization"
+    },
+    "scaleInCooldown": 300,
+    "scaleOutCooldown": 300
+  }
+}
+```
 
+YAML Example:
 ```yaml
 scalableDimension: ecs:service:DesiredCount
 serviceNamespace: ecs
