@@ -26,6 +26,7 @@ async function config() {
     favicon: "img/hdh_fav_icon_grey.ico",
     customFields: {
       SEGMENT_API_KEY: process.env.SEGMENT_API_KEY,
+      HARNESS_GENERIC_READ_ONLY_KEY: process.env.HARNESS_GENERIC_READ_ONLY_KEY,
     },
 
     //Mermaid Diagram Functionality
@@ -559,7 +560,6 @@ async function config() {
             [
               (await import("remark-math")).default,
               {
-               
                 strict: false,
               },
             ],
@@ -568,7 +568,6 @@ async function config() {
             [
               (await import("rehype-katex")).default,
               {
-              
                 strict: false,
               },
             ],
