@@ -1262,9 +1262,17 @@ figure p {
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/icon_gitness.svg");
   background-size: contain;
   background-repeat: no-repeat;
+}
+html[data-theme="light"] .sidebar-gitness > div > a::before,
+html[data-theme="light"] .sidebar-gitness > a::before {
+  background-image: url("/img/icon_gitness.svg");
+}
+
+html[data-theme="dark"] .sidebar-gitness > div > a::before,
+html[data-theme="dark"] .sidebar-gitness > a::before {
+  background-image: url("/img/icon_gitness_light.svg");
 }
 
 .sidebar-roadmap > div > a::before,.sidebar-roadmap> a::before{
