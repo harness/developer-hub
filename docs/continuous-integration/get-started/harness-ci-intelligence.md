@@ -8,7 +8,7 @@ Harness Continuous Integration (CI) Intelligence features are designed to smartl
 
 ## Build Intelligence
 
-[Build Intelligence](../use-ci/build-and-upload-artifacts/build-intelligence.md) is part of the suite of intelligent features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. Build Intelligence works by storing these outputs locally or remotely and retrieving them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency. 
+[Build Intelligence](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence.md) is part of the suite of intelligent features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. Build Intelligence works by storing these outputs locally or remotely and retrieving them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency. 
 
 Build Intelligence in Harness CI is currently available for **Gradle** and **Bazel** with **Maven** support coming soon.
 
