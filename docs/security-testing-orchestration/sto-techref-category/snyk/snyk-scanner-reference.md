@@ -46,7 +46,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Snyk step settings for STO
 
-The recommended workflow is to add a Snyk step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+It is recommended to add a Snyk step to the **Security** or **Build** stage and configure it as described below.
 
 
 ### Scan
