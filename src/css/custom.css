@@ -1251,7 +1251,7 @@ figure p {
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/reference-arch.svg");
+  background-image: url("/img/reference_architectures_icon.svg");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1263,6 +1263,72 @@ figure p {
   min-width: 24px;
   margin-right: 16px;
   background-image: url("/img/icon_gitness.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-roadmap > div > a::before,.sidebar-roadmap> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/roadmap_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-ilt-instructions > div > a::before,.sidebar-ilt-instructions> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/ilt_instructions_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-vilt-cal > div > a::before,.sidebar-vilt-cal> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/virtual_instructor_led_calendar_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-back > div > a::before,.sidebar-back> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/back_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-allkb > div > a::before,.sidebar-allkb> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/show_all_kb_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-univ > div > a::before,.sidebar-univ> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/university_icon.svg");
   background-size: contain;
   background-repeat: no-repeat;
 }

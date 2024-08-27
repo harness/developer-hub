@@ -61,7 +61,9 @@ const HarnessApiData: React.FC<IHarnessApiData> = ({
               }
 
               const data = await fetchResponse.json();
+
               setResponse(data);
+
             } catch (error) {
               console.log(error);
               setResponse(fallback);
