@@ -52,8 +52,8 @@ const HarnessApiData: React.FC<IHarnessApiData> = ({
               }
 
               const data = await fetchResponse.json();
-             
-              setResponse(JSON.stringify(data));
+              // Assuming data contains the version info, and we want to ensure it's not wrapped in quotes
+              setResponse(typeof data === 'string' ? data : JSON.stringify(data));
             } catch (error) {
               console.log(error);
               setResponse(fallback);
