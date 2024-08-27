@@ -77,4 +77,4 @@ SNYK_TOKEN = `<+secrets.getValue("snyk_api_token")>`
 
 <DocImage path={require('./static/code-ingest-snyk-step.png')} width="50%" height="50%" title="Click to view full size image" />
 
-Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and the their configurations.
+Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and their configurations.

@@ -31,7 +31,7 @@ To perform Snyk Container scanning with orchestration scan mode, follow the belo
 
     <DocImage path={require('./static/container-orchestration.png')} width="40%" height="40%" title="Click to view full size image" />
 
-Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and the their configurations.
+Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and their configurations.
 
 ## Snyk Container scan - Ingestion mode
 
@@ -53,7 +53,7 @@ Go to the **Overview** tab of the stage. Under **Shared Paths**, enter the follo
 2. In the **Container Registry** section, set your DockerHub connector. Snyk images will be pulled from their DockerHub account.
 3. For **Image**, use `snyk/snyk:docker`
 4. Set the **Shell** field to `sh`
-5. In the **Command** filed, enter the following command.
+5. In the **Command** field, enter the following command.
 
         ```
         snyk container test \ snykgoof/big-goof-1g:100 -d \ --sarif-file-output=/shared/scan_results/snyk_container_scan.sarif  || true
@@ -78,4 +78,4 @@ SNYK_TOKEN = `<secrets.getValue("snyk_api_token")>`
 
 <DocImage path={require('./static/container-ingest-snyk-step.png')} width="40%" height="40%" title="Click to view full size image" />
 
-Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and the their configurations.
+Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and their configurations.

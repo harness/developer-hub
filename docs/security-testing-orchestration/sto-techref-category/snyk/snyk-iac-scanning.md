@@ -10,7 +10,7 @@ The Snyk step in Harness STO allows you to secure cloud infrastructure configura
 - [**Orchestration mode**](#snyk-container-scan---orchestration-mode): In this mode, the Snyk step [runs the scan](/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto), then normalizes and deduplicates the results.
 - [**Ingestion mode**](#snyk-container-scan---ingestion-mode): In this mode, the Snyk step [reads scan results](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline) from a data file, normalizes the data, and deduplicates it.
 
-Refer to the [Snyk step configuration](./snyk-scanner-reference) document xto learn more about the fields in the Snyk step and how to configure them.
+Refer to the [Snyk step configuration](./snyk-scanner-reference) document to learn more about the fields in the Snyk step and how to configure them.
 
 
 ## Snyk IaC scan - Orchestration mode
@@ -32,7 +32,7 @@ You can scan a specific file in your repository by entering its path in the **Wo
 
 <DocImage path={require('./static/iac-orchestration.png')} width="40%" height="40%" title="Click to view full size image" />
 
-Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and the their configurations.
+Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and their configurations.
 
 ## Snyk IaC scan - Ingestion mode
 
@@ -55,7 +55,7 @@ To perform Snyk IaC scan with ingestion scan mode, you will need to have two ste
 2. In the **Container Registry** section, set your DockerHub connector. Snyk images will be pulled from their DockerHub account.
 3. For **Image**, use use a supported [Snyk image](https://hub.docker.com/r/snyk/snyk) based on the type of code in your codebase
 4. Set the **Shell** field to `sh`
-5. In the **Command** filed, enter the following command.
+5. In the **Command** field, enter the following command.
 
         ```
         snyk iac test --sarif --sarif-file-output=/shared/scan_results/snyk_iac.json /harness || true cat /shared/scan_results/snyk_iac.json
@@ -79,4 +79,4 @@ SNYK_TOKEN = `<+secrets.getValue("snyk_api_token")>`
 
 <DocImage path={require('./static/iac-ingest-snyk-step.png')} width="50%" height="50%" title="Click to view full size image" />
 
-Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and the their configurations.
+Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and their configurations.

@@ -77,7 +77,7 @@ To perform Snyk Open Source scanning with orchestration scan mode, follow the be
 
 <DocImage path={require('./static/snyk-os-orchestration-step.png')} width="40%" height="40%" title="Click to view full size image" />
 
-Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and the their configurations.
+Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and their configurations.
 
 ## Snyk Open Source scan - Ingestion mode
 
@@ -99,7 +99,7 @@ In the Ingestion scan mode, the Snyk step reads data from a file, normalizes it,
 2. In the **Container Registry** section, set your DockerHub connector. Snyk images will be pulled from their DockerHub account.
 3. For **Image**, select the appropriate [Snyk image](https://hub.docker.com/r/snyk/snyk) based on your codebase. For example, use `snyk/snyk:node` for a Node.js project.
 4. Set the **Shell** field to `sh`
-5. In the **Command** filed, enter the following command.
+5. In the **Command** field, enter the following command.
 
         ```
         # Build the project
@@ -128,4 +128,4 @@ SNYK_TOKEN = `<+secrets.getValue("snyk_api_token")>`
 
 <DocImage path={require('./static/snyk-os-Ingestion-step.png')} width="50%" height="50%" title="Click to view full size image" />
 
-Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and the their configurations.
+Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to learn more about all the fields and their configurations.

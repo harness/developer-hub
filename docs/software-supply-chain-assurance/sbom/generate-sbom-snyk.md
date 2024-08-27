@@ -65,7 +65,7 @@ Here's how to set these keys if you choose to enable signing
 
 ### Configure the STO scan step to generate SBOM
 
-Configure the [Snyk STO scanner step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans#snyk-repository-orchestration-example), and make sure you select **Generate SBOM** and the **SBOM Format**.
+Configure the [Snyk STO scanner step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning#snyk-code-scan---orchestration-mode), and make sure you select **Generate SBOM** and the **SBOM Format**.
 
 <DocImage path={require('../static/generate-sbom-blackduck-00.png')} width="60%" height="60%" title="Click to view full size image" />
 
