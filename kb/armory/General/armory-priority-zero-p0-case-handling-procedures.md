@@ -14,7 +14,7 @@ Armory Customers with a Support Service agreement may be required to open a case
 * [How can a Customer Escalate a non-P0 Case to a P0 Status?](#mcetoc_1h50f58lv57)
 
 
-When should a Priority Zero case be opened?
+### When should a Priority Zero case be opened?
 A P0 case should be opened if the environment has
 * A Production system critical outage for an Armory product (Armory CD Self Hosted, Armory CD-as-a-Service, Spinnaker OSS, etc.)
 * A security incident that requires immediate resolution
