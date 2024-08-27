@@ -8,6 +8,7 @@ const sidebars = {
     {
       type: "category",
       label: "Knowledge Base",
+      className: "sidebar-allkb",
       link: {
         type: "doc",
         id: "kb",
@@ -302,7 +303,7 @@ const sidebars = {
     {
       type: "link",
       label: "Show All Knowledge Base",
-      className: "sidebar-all_docs",
+      className: "sidebar-allkb",
       href: "/kb",
       customProps: {
         description: "All KB.",
