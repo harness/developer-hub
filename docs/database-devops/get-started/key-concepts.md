@@ -83,3 +83,15 @@ A single set of changes that are deployed and rollback together. It refers to a 
 ### Change
 
 An individual change as part of a changeset.
+
+### CI/CD 
+
+Continuous Integration/Continuous Deployment
+
+### DBA
+
+Database Adminstrator
+
+### GitOps
+
+A way of implementing Continuous Deployment for cloud native applications.
