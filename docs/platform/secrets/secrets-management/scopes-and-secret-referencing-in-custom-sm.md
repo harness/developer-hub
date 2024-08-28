@@ -68,7 +68,7 @@ When using the Custom Secret Manager, you need to specify the identifier of the 
 
 - **Organization-Level Secret**: `org.secretIdentifier`
 
-- **Project-Level Secret**: secretIdentifier (No prefix is required for project-level secrets)
+- **Project-Level Secret**: `secretIdentifier` (No prefix is required for project-level secrets)
 
 **Key Rule:**
 
