@@ -37,7 +37,7 @@ export const IacmData: Horizon = {
       {
         tag: [{ value: "Developer Experience" }],
         title: "PR Automation",
-        description: "IaCM support PR Automation that populates plan and cost data to the PR process, helping users to reduce testing time on Terraform changes",
+        description: "IaCM support PR Automation that populates plan and cost data to the PR process, helping you to reduce testing time on Terraform changes",
       },
     ],
   },
