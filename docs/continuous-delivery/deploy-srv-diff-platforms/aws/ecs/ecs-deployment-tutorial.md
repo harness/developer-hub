@@ -127,75 +127,68 @@ The Harness Delegate is a software service you install in your environment. It c
 #### Sample ECS Fargate Delegate Task Definition JSON
 
 ```JSON
-  {
-    "containerDefinitions": [
-      {
-        "portMappings": [
-          {
-            "hostPort": 8080,
-            "protocol": "tcp",
-            "containerPort": 8080
-          }
-        ],
-        "cpu": 1,
-        "environment": [
-          {
-            "name": "ACCOUNT_ID",
-            "value": "<ACCOUNT_ID>"
-          },
-          {
-            "name": "DELEGATE_TOKEN",
-            "value": "<DELEGATE_TOKEN>"
-          },
-          {
-            "name": "DELEGATE_TYPE",
-            "value": "DOCKER"
-          },
-          {
-            "name": "INIT_SCRIPT",
-            "value": ""
-          },
-          {
-            "name": "DEPLOY_MODE",
-            "value": "KUBERNETES"
-          },
-          {
-            "name": "MANAGER_HOST_AND_PORT",
-            "value": "<MANAGER_HOST_AND_PORT>"
-          },
-          {
-            "name": "DELEGATE_NAME",
-            "value": "<DELEGATE_NAME>"
-          },
-          {
-            "name": "LOG_STREAMING_SERVICE_URL",
-            "value": "<LOG_STREAMING_SERVICE_URL>"
-          },
+ {
+   "containerDefinitions": [
+     {
+       "cpu": 1,
+       "healthCheck": { "command": [ "CMD-SHELL", "curl -f http://localhost:3460/api/health || exit 1" ]},
+       "environment": [
          {
-            "name": "DELEGATE_TAGS",
-            "value": ""
-          },
-
-          {
-            "name": "NEXT_GEN",
-            "value": "true"
-          }
-         ],
-        "memory": 2048,
-        "image": "harness/delegate:22.12.77802",
-        "essential": true,
-        "hostname": "<DELEGATE_HOST>",
-        "name": "<DELEGATE_NAME>"
-      }
-    ],
-      "memory": "2048",
-      "requiresCompatibilities": [
-      "EC2"
-    ],
-
-    "cpu": "1024",
-    "family": "harness-delegate-task-spec"
-  }
+           "name": "ACCOUNT_ID",
+           "value": "<ACCOUNT_ID>"
+         },
+         {
+           "name": "DELEGATE_TOKEN",
+           "value": "<DELEGATE_TOKEN>"
+         },
+         {
+           "name": "MANAGER_HOST_AND_PORT",
+           "value": "<MANAGER_HOST_AND_PORT>"
+         },
+         {
+           "name": "LOG_STREAMING_SERVICE_URL",
+           "value": "<LOG_STREAMING_SERVICE_URL>"
+         },            
+         {
+           "name": "DELEGATE_NAME",
+           "value": "<DELEGATE_NAME>"
+         },            
+         {
+           "name": "DELEGATE_TAGS",
+           "value": ""
+         },
+         {
+           "name": "INIT_SCRIPT",
+           "value": ""
+         },
+         {
+           "name": "DEPLOY_MODE",
+           "value": "KUBERNETES"
+         },
+         {
+           "name": "DELEGATE_TYPE",
+           "value": "DOCKER"
+         },
+         {
+           "name": "NEXT_GEN",
+           "value": "true"
+         }
+       ],
+       "memory": 2048,
+       "image": "<IMAGE>",
+       "essential": true,
+       "name": "ecs-delegate-im"
+     }
+   ],
+   "executionRoleArn": "arn:aws:iam::<AWS_ACCOUNT_ID>:role/ecsTaskExecutionRole",
+   "memory": "6144",
+   "requiresCompatibilities": [
+     "FARGATE"
+   ],
+   "networkMode": "awsvpc",
+   "cpu": "1024",
+   "family": "harness-delegate-task-spec"
+ }
 ```
 
 #### Sample ECS Fargate Delegate Service Definition JSON
