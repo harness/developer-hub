@@ -191,7 +191,7 @@ You can also specify [different values](/docs/chaos-engineering/concepts/chaos10
 <TabItem value="Windows">
 
 :::important
-Ensure that you have fulfilled the [prerequisites](/docs/chaos-engineering/chaos-faults/windows/prerequisites.md) before connecting to a Windows chaos infrastructure.
+Ensure that you have fulfilled the [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/prerequisites.md) before connecting to a Windows chaos infrastructure.
 :::
 
 1. Go to **Environments** and click **Windows**. click **Enable chaos**.
@@ -200,7 +200,7 @@ Ensure that you have fulfilled the [prerequisites](/docs/chaos-engineering/chaos
 
 2. Add name (mandatory), and an admin user ("Administrator"). Select **Next**.
 
-3. Copy the command generated. The [prerequisites](/docs/chaos-engineering/chaos-faults/windows/prerequisites.md) discusses how you can configure a password. If you have a password, replace it in the `<your-password>` placeholder. Execute this command on your terminal (remember to open the command prompt as an admin if you are not an admin by default). Click **Done** once you finish the execution.
+3. Copy the command generated. The [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/prerequisites.md) discusses how you can configure a password. If you have a password, replace it in the `<your-password>` placeholder. Execute this command on your terminal (remember to open the command prompt as an admin if you are not an admin by default). Click **Done** once you finish the execution.
 
     ![](./static/enable-disable/copy-command-3.png)
 

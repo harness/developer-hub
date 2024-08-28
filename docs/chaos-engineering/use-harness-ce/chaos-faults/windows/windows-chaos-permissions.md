@@ -4,7 +4,8 @@ sidebar_position: 1
 description: Requirements to fulfill and security considerations to execute Windows chaos experiments.
 redirect_from:
 - /docs/chaos-engineering/chaos-faults/windows/security-considerations/windows-chaos-permissions
-- /docs/chaos-engineering/chaos-faults/vmware/permissions.md
+- /docs/chaos-engineering/chaos-faults/vmware/permissions
+- /docs/chaos-engineering/chaos-faults/windows/prerequisites
 ---
 
 ## On-premise VMs (VMware VMs)
@@ -35,7 +36,7 @@ This section outlines the permissions required for installing the Windows infras
 <tr>
 	<th> Access requirements for agent install </th>
 	<td><ul><li> Install agent as an administrator user. </li></ul></td>
-    <td><ul><li>Install agent as a cluster-admin or as a user mapped to cluster role with <a href="/docs/chaos-engineering/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements"> these </a> permissions. </li></ul></td>
+    <td><ul><li>Install agent as a cluster-admin or as a user mapped to cluster role with <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements"> these </a> permissions. </li></ul></td>
 </tr>
 
 <tr>

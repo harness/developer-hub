@@ -4,6 +4,7 @@ title: Node taint
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-taint
 - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-taint
+- /docs/chaos-engineering/chaos-faults/kubernetes/node-taint
 ---
 
 Node taint taints the node by applying the desired effect. Only the resources that contain the corresponding toleration can bypass the taints.
@@ -76,12 +77,12 @@ permissions:
       <tr>
         <td> TARGET_NODE </td>
         <td> Name of the node to be tainted. </td>
-        <td> For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node">target node.</a></td>
+        <td> For more information, go to <a href = "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node">target node.</a></td>
       </tr>
       <tr>
          <td> NODE_LABEL </td>
         <td> It contains node label, which will be used to filter the target nodes if <code>TARGET_NODES</code> ENV is not set </td>
-        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, the fault uses the <code>TARGET_NODES</code>. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, the fault uses the <code>TARGET_NODES</code>. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> TAINT_LABEL </td>
@@ -102,12 +103,12 @@ permissions:
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
+        <td> Default: 60 s. For more information, go to <a href = "/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+        <td> For example, 30 s. For more information, go to <a href = "/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
     </table>
 

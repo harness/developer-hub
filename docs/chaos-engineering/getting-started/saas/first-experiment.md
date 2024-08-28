@@ -4,16 +4,16 @@ description: Run a chaos experiment on Kubernetes for the first time.
 sidebar_position: 2
 redirect_from:
 - /tutorials/chaos-experiments/first-chaos-engineering
-- /docs/chaos-engineering/get-started/tutorials/first-chaos-engineering
+- /docs/chaos-engineering/getting-started/saas/first-experiment
 ---
 
 In this tutorial, you will apply chaos on a sample boutique application on Kubernetes.
 
 ## Before you begin
 
-* [What is chaos engineering?](/docs/chaos-engineering/get-started/overview.md)
+* [What is chaos engineering?](/docs/chaos-engineering/concepts/chaos101)
 * [Key concepts](/docs/chaos-engineering/architecture-and-security/architecture/components)
-* [Prerequisites to execute chaos experiments](/docs/chaos-engineering/onboarding/prerequisites.md)
+* [Prerequisites to execute chaos experiments](/docs/chaos-engineering/getting-started/onboarding/prerequisites)
 
 ## Step 1: Create a project
 
@@ -63,7 +63,7 @@ The **Cluster-wide access** installation mode allows you to target resources acr
 
 ### Step 4: Create a demo application and observability infrastructure
 
-Once you are all ready to target our Kubernetes resources, you can execute the simplest fault, [**Pod Delete**](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete.md). The "pod delete" chaos fault deletes the pods of a deployment, StatefulSet, DaemonSet, etc, to validate the resiliency of a microservice application.
+Once you are all ready to target our Kubernetes resources, you can execute the simplest fault, [**Pod Delete**](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-delete). The "pod delete" chaos fault deletes the pods of a deployment, StatefulSet, DaemonSet, etc, to validate the resiliency of a microservice application.
 
 9. You can use your application as a target, however, in this tutorial, use the [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo) microservices demo application as the target.
 
@@ -264,4 +264,4 @@ You can see that the value expected and the value obtained don't match. Hence, t
 Congratulations on running your first chaos experiment! Want to know how to remediate the application so as to pass the experiment run and probe checks? Increase the experiment pods to at least two so that at least one deployment pod survives the pod delete fault and helps the application stay afloat. Try running it on your own!
 
 Here are some recommendations:
-- [Create chaos experiments from scratch](/docs/chaos-engineering/get-started/tutorials/chaos-experiment-from-blank-canvas.md)
+- [Create chaos experiments from scratch](/docs/chaos-engineering/getting-started/saas/chaos-experiment-from-blank-canvas.md)

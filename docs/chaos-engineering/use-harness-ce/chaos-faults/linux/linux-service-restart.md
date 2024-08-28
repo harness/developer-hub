@@ -2,7 +2,8 @@
 id: linux-service-restart
 title: Linux service restart
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-service-restart
+- /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-service-restart
+- /docs/chaos-engineering/chaos-faults/linux/linux-service-restart
 ---
 
 import Ossupport from './shared/note-supported-os.md'

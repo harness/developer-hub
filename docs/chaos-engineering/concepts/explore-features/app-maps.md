@@ -10,11 +10,11 @@ This topic describes application maps, their significance, and how to create, ed
 
 ### Before you begin
 
-- [Service discovery](/docs/chaos-engineering/features/service-discovery/intro-service-discovery.md)
+- [Service discovery](/docs/chaos-engineering/concepts/explore-features/service-discovery)
 
 ### What is an application map?
 
-An application map is a resource on the Harness Platform (also known as the control plane) used to bind multiple interacting [discovered services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery.md) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
+An application map is a resource on the Harness Platform (also known as the control plane) used to bind multiple interacting [discovered services](/docs/chaos-engineering/concepts/explore-features/service-discovery) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
 
 ### Why is an application map required?
 
@@ -27,7 +27,7 @@ Application maps help:
 
 ### How is an application map used?
 
-Once you have a list of discovered services, HCE creates an application map (using [auto-suggestion or manual service selection](/docs/chaos-engineering/onboarding/guided-onboarding#create-application-maps)) based on your requirements. You can refer to the real-time topology view to get the connectivity representation.
+Once you have a list of discovered services, HCE creates an application map (using [auto-suggestion or manual service selection](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding#create-application-maps)) based on your requirements. You can refer to the real-time topology view to get the connectivity representation.
 
 You can [create](#create-application-map), [edit](#edit-application-map), and [delete](#delete-application-map) application maps.
 

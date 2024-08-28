@@ -2,35 +2,36 @@
 id: prerequisites
 title: Prerequisites
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/ssh/prerequisites
+- /docs/chaos-engineering/technical-reference/chaos-faults/ssh/prerequisites
+- /docs/chaos-engineering/chaos-faults/ssh/prerequisites
 ---
 
 Before executing the chaos experiment, ensure that you have the following set-up ready.
 
-## Create configmap and secret
+## Create ConfigMap and secret
 
 ### 1. Create ConfigMap from scripts
-The scripts used to create ConfigMap are **Chaos script** and **Abort script**. 
+The scripts used to create ConfigMap are **Chaos script** and **Abort script**.
 **Chaos script** contains the chaos logic, and **abort script** contains the logic to restore the system to its original state if the chaos script fails prematurely.
 
 a. To create the ConfigMap from the chaos scripts, use the following command:
 ```
 kubectl create configmap chaos-script --from-file=script.sh -n <INFRA-NAMESPACE>
 ```
-Here, `chaos-script` is the name of the ConfigMap for chaos script, `script.sh` is the bash script that contains the chaos logic, and `<INFRA-NAMESPACE>` is the namespace where the chaos infrastructure is installed. 
+Here, `chaos-script` is the name of the ConfigMap for chaos script, `script.sh` is the bash script that contains the chaos logic, and `<INFRA-NAMESPACE>` is the namespace where the chaos infrastructure is installed.
 
 b. To create the ConfigMap from the abort script, use the following command:
 ```
 kubectl create configmap abort-script --from-file=abort-script.sh -n<INFRA-NAMESPACE>
 ```
-Here, `abort-script` is the name of the ConfigMap for abort script, and `abort-script.sh` is the bash script that contains the abort logic. 
+Here, `abort-script` is the name of the ConfigMap for abort script, and `abort-script.sh` is the bash script that contains the abort logic.
 
 :::tip
 After executing both commands, verify if the ConfigMaps have been created using the following command:
 ```
 kubectl get configmap -n <INFRA-NAMESPACE>
 ```
-If the names of the configmaps appear, this indicates the successful creation of the ConfigMaps. 
+If the names of the configmaps appear, this indicates the successful creation of the ConfigMaps.
 :::
 
 ### 2. Create a secret for SSH
@@ -65,7 +66,7 @@ For secure password transmission, create a secret with the password and pass it 
       password: "mypassword"
     ```
   The key is `password` and the value is the actual password string `mypassword`.
-    
+
   * Apply the secret to the specific namespace using the following command:
     ```
     kubectl apply -f my-secret.yaml -n <INFRA-NAMESPACE>
@@ -139,7 +140,7 @@ The output would look like:
 
 #### Advantages of declarative parameter definition
 * It enables data validation for each parameter thereby enhancing experiment reliability.
-* It prevents script execution with invalid parameters with the help of pre-check validations. 
+* It prevents script execution with invalid parameters with the help of pre-check validations.
 
 #### Disadvantages of declarative parameter definition
 * This method requires you to prepare the JSON string for each parameter.
@@ -165,7 +166,7 @@ You can specify the values of the parameters in a single environment variable, `
             "placeholder": "destination_target",
             "data_type": "env",
             "value": "PARAM_VALS"
-        } 
+        }
     ]
 }
 ```

@@ -2,7 +2,7 @@
 title: Fault injection on Tanzu Kubernetes Grid-based infrastructure
 sidebar_position: 2
 redirect_from:
-	- /docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment
+	- /docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/tkgi-deployment
 ---
 
 This topic describes HCE's fault injection approach on [Tanzu Kubernetes Grid-based](https://tanzu.vmware.com/kubernetes-grid)(TKGi) infrastructure. It describes the chaos components installed in the cluster, their deployment architecture, and various deployment modes of the Kubernetes chaos infrastructure.
@@ -27,7 +27,7 @@ You will learn about the Kubernetes chaos infrastructure components involved in 
 You will also learn how the components mentioned earlier can be leveraged to inject faults into cloud-based infrastructure and managed services.
 
 :::tip
-Components involved in chaos against the TKGi control plane, that is, the VMs, are the same ones as described in [deployment model for Cloud Foundry chaos](/docs/chaos-engineering/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-in-diego-cells-hosting-the-app-instances).
+Components involved in chaos against the TKGi control plane, that is, the VMs, are the same ones as described in [deployment model for Cloud Foundry chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-in-diego-cells-hosting-the-app-instances).
 :::
 
 #### Subscriber

@@ -2,7 +2,8 @@
 id: vmware-host-reboot
 title: VMware host reboot
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-host-reboot
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-host-reboot
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-host-reboot
 ---
 VMware host reboot reboots a VMware host that is attached to the Vcenter.
 - It helps determine the VMware infrastructure resilience when the host reboots.
@@ -71,12 +72,12 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).</td>
-        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
       </tr>
       <tr>
       <td>DEFAULT_HEALTH_CHECK</td>
       <td>Determines if you wish to run the default health check which is present inside the fault. </td>
-      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
       </tr>
     </table>
 

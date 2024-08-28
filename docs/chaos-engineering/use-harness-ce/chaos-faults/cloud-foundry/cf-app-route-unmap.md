@@ -2,7 +2,8 @@
 id: cf-app-route-unmap
 title: CF app route unmap
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/cloud-foundry/cf-app-route-unmap
+- /docs/chaos-engineering/technical-reference/chaos-faults/cloud-foundry/cf-app-route-unmap
+- /docs/chaos-engineering/chaos-faults/cloud-foundry/cf-app-route-unmap
 ---
 
 import CFSecrets from './shared/cf-secrets.md';
@@ -76,7 +77,7 @@ CF app route unmap:
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> chaos duration.</a> </td>
+    <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> chaos duration.</a> </td>
   </tr>
   <tr>
     <td> skipSSLValidation </td>
@@ -86,7 +87,7 @@ CF app route unmap:
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a> </td>
+    <td> Default: 0s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a> </td>
   </tr>
 </table>
 

@@ -3,7 +3,8 @@ title: Run chaos experiments as Jenkins pipelines
 sidebar_position: 34
 description: Guide to run a chaos experiment as a Jenkins pipeline
 redirect_from:
-    - /tutorials/chaos-experiments/chaos-experiments-on-jenkins
+- /tutorials/chaos-experiments/chaos-experiments-on-jenkins
+- /docs/chaos-engineering/integrations/experiment-as-jenkins-pipeline
 ---
 
 This tutorial describes how to create chaos experiments using Harness Chaos Engineering (HCE) and run them in Jenkins pipelines. Chaos experiments in Harness are created the same way in the chaos engineering module, irrespective of where they are invoked from.

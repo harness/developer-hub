@@ -25,11 +25,11 @@ Chaos infrastructure helps facilitate the chaos fault injection and hypothesis v
 
 All the chaos infrastructure services adhere to the **principle of least privilege**, where the services execute with the minimum number of permissions.
 
-Go to [enable or disable an infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures) and [upgrade it](/docs/chaos-engineering/features/chaos-infrastructure/upgrade-infra) to get a hands-on experience.
+Go to [enable or disable an infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable) and [upgrade it](/docs/chaos-engineering/features/chaos-infrastructure/upgrade-infra) to get a hands-on experience.
 
 You can install an infrastructure as a part of creating an experiment. This infrastructure is installed on the target Kubernetes cluster and helps inject chaos into applications, thereby executing the chaos experiments.
 
-Go to [flow of control](/docs/chaos-engineering/chaos-faults/kubernetes/classification#flow-of-control-in-kubernetes-based-faults) to understand the flow of control of Kubernetes faults.
+Go to [flow of control](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/classification#flow-of-control-in-kubernetes-based-faults) to understand the flow of control of Kubernetes faults.
 
 :::tip
 - You can add multiple chaos infrastructures as part of an environment.
@@ -84,8 +84,8 @@ A set of mandatory input flags is required to install chaos infrastructure, incl
 :::info note
 LCI does not currently support:
 1. Cron schedules
-2. [GameDays](/docs/chaos-engineering/features/gameday/introduction-to-gameday.md)
-3. Executing [parallel faults](/docs/chaos-engineering/features/experiments/create-complex-chaos-experiments.md) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI)
+2. [GameDays](/docs/chaos-engineering/concepts/explore-features/gameday)
+3. Executing [parallel faults](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI)
 :::
 
 #### Infrastructure service
@@ -205,7 +205,7 @@ To learn more about SCC, go to [SCC documentation](/docs/chaos-engineering/secur
 
 **Step 3. Get the manifest to install chaos infrastructure**
 
-After [connecting to a chaos infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures.md), select the installation mode (cluster scope or namespace scope).
+After [connecting to a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable), select the installation mode (cluster scope or namespace scope).
 
 ![configure-chaos-infra](https://user-images.githubusercontent.com/35391335/226420643-6490d8bc-90fc-438e-92cc-f90a736ab374.png)
 

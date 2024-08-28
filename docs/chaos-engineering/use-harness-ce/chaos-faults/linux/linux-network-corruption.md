@@ -2,7 +2,8 @@
 id: linux-network-corruption
 title: Linux network corruption
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-network-corruption
+- /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-network-corruption
+- /docs/chaos-engineering/chaos-faults/linux/linux-network-corruption
 ---
 
 import Ossupport from './shared/note-supported-os.md'

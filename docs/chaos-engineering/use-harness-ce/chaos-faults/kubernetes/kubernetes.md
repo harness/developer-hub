@@ -2,7 +2,8 @@
 id: kubernetes
 title: Chaos Faults for Kubernetes
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes
+- /docs/chaos-engineering/chaos-faults/kubernetes
 ---
 
 <!-- Import statement for Custom Components -->

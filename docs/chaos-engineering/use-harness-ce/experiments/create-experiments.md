@@ -1,6 +1,9 @@
 ---
 title: Create experiment
 sidebar_position: 1
+redirect_from:
+- /docs/chaos-engineering/features/experiments/create-complex-chaos-experiments
+- /docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments
 ---
 
 This topic describes how you can create chaos experiments that consist of chaos faults and execute them to build and improve the resilience of your application.

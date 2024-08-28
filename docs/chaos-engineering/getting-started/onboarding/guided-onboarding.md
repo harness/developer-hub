@@ -2,6 +2,8 @@
 sidebar_position: 12
 title: Guided onboarding
 description: Customize experiment creation in every step with HCE.
+redirect_from:
+    - /docs/chaos-engineering/onboarding/guided-onboarding
 ---
 
 import Tabs from '@theme/Tabs';

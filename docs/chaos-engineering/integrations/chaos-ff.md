@@ -3,7 +3,8 @@ title: Use HCE with Feature Flags
 sidebar_position: 1
 description: Integrate HCE with FF
 redirect_from:
-	- /tutorials/chaos-experiments/chaos-ff
+- /tutorials/chaos-experiments/chaos-ff
+- /docs/chaos-engineering/integrations/chaos-ff
 ---
 
 You can add chaos experiments to Harness Feature Flags (FF) pipelines as part of the process to control release of new software. An [FF pipeline](/docs/feature-flags/use-ff/ff-build-pipeline/build-feature-flag-pipeline) runs every time a feature flag changes, and lets you specify actions to take before the flag change takes effect. For example, you might want to have an approval step for all flag changes, or run a chaos experiment as part of the pipeline.

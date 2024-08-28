@@ -50,84 +50,84 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.ce,
           description:
             "Execute AWS chaos faults.",
-          link: "/docs/chaos-engineering/chaos-faults/aws/",
+          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/",
         },
         {
           title: "Kubernetes faults",
           module: MODULES.ce,
           description:
             "Execute Kubernetes chaos faults. ",
-          link: "/docs/chaos-engineering/chaos-faults/kubernetes/",
+          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/",
         },
         {
           title: "Azure faults",
           module: MODULES.ce,
           description:
             "Execute Azure chaos faults.",
-          link: "/docs/chaos-engineering/chaos-faults/azure/",
+          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/",
         },
         {
           title: "GCP faults",
           module: MODULES.ce,
           description:
             "Execute GCP chaos faults",
-          link: "/docs/chaos-engineering/chaos-faults/gcp/",
+          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/",
         },
         {
           title: "VMware faults",
           module: MODULES.ce,
           description:
             "Execute VMware chaos faults.",
-          link: "/docs/chaos-engineering/chaos-faults/vmware/",
+          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/",
         },
         {
           title: "Windows faults",
           module: MODULES.ce,
           description:
             "Execute Windows chaos faults.",
-          link: "/docs/chaos-engineering/chaos-faults/windows/",
+          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/",
         },
         {
           title: "Load faults",
           module: MODULES.ce,
           description:
             "Execute load chaos faults.",
-          link: "/docs/chaos-engineering/chaos-faults/load/",
+          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/load/",
         },
         {
           title: "Kube-resilience faults",
           module: MODULES.ce,
           description:
             "Execute kube-resilience chaos faults.",
-          link: "/docs/chaos-engineering/chaos-faults/kube-resilience/",
+          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kube-resilience/",
         },
         {
           title: "Bring Your Own Chaos (BYOC) faults",
           module: MODULES.ce,
           description:
             "Bring your own chaos faults and execute them.",
-          link: "/docs/chaos-engineering/chaos-faults/byoc/",
+          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/byoc/",
         },
         {
           title: "Cloud Foundry chaos faults",
           module: MODULES.ce,
           description:
             "Execute kube-resilience chaos faults.",
-          link: "/docs/chaos-engineering/chaos-faults/cloud-foundry/",
+          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/",
         },
         {
           title: "SSH faults",
           module: MODULES.ce,
           description:
             "Execute SSH chaos faults.",
-          link: "/docs/chaos-engineering/chaos-faults/ssh/",
+          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/",
         },
         {
           title: "Linux chaos faults",
           module: MODULES.ce,
           description:
             "Execute Linux chaos faults.",
-          link: "/docs/chaos-engineering/chaos-faults/linux/",
+          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/",
         },
     ],
   },

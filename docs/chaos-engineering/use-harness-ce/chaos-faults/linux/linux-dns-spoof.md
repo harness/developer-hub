@@ -2,7 +2,8 @@
 id: linux-dns-spoof
 title: Linux DNS spoof
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-dns-spoof
+- /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-dns-spoof
+- /docs/chaos-engineering/chaos-faults/linux/linux-dns-spoof
 ---
 
 import Ossupport from './shared/note-supported-os.md'

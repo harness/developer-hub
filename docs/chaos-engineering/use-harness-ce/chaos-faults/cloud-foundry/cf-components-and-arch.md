@@ -2,6 +2,8 @@
 id: CF chaos components and their deployment architecture
 title: CF chaos components and deployment architecture
 sidebar_position: 2
+redirect_from:
+    - /docs/chaos-engineering/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture
 description : Chaos components and their deployment architecture used in CF fault injection
 ---
 
@@ -10,7 +12,7 @@ This section describes the components and their deployment architecture associat
 ## Overview
 
 You can use HCE to test the resilience of your CF-based microservices by executing chaos experiments on various layers of CF, ranging from application processes (supported for JVM-based apps currently) to the underlying host (VMware) infrastructure.
-HCE supports [resilience probes](/docs/chaos-engineering/features/resilience-probes/overview.md) which facilitates:
+HCE supports [resilience probes](/docs/chaos-engineering/concepts/explore-features/resilience-probes/resilience-probes.md) which facilitates:
 - Out-of-the-box faults against different target types.
 - Automated validation of:
   - Resilience of the services (known as performance metrics);
@@ -84,13 +86,13 @@ In this model, the CF chaos infrastructure runs as a native CF application that 
 The fault injection is achieved using a two-tier agent, with:
 
 1. The first component is a subscriber service that runs as a native CF app (or microservice) that interacts with the Harness control plane, claims the CF fault requests, and performs one of the following:
-    1. Injects the fault, for [purely CF-API driven faults](https://developer.harness.io/docs/chaos-engineering/chaos-faults/cloud-foundry/cf%20chaos%20components%20and%20their%20deployment%20architecture/#purely-cf-api-driven-faults).
-    2. Exposes a task list with every task mapped to a specific app instance, for [application level (or process level faults)](https://developer.harness.io/docs/chaos-engineering/chaos-faults/cloud-foundry/cf%20chaos%20components%20and%20their%20deployment%20architecture/#application-framework-or-process-level-faults).
+    1. Injects the fault, for [purely CF-API driven faults](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/cf%20chaos%20components%20and%20their%20deployment%20architecture/#purely-cf-api-driven-faults).
+    2. Exposes a task list with every task mapped to a specific app instance, for [application level (or process level faults)](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/cf%20chaos%20components%20and%20their%20deployment%20architecture/#application-framework-or-process-level-faults).
 
 2. The second component runs as a sidecar process in the app instance that queries the first component for any task directed towards its own app instance ID/container, fetches the task and injects the chaos.
 
 :::note
-The second mode of deployment doesn't involve root privileges, and hence can't execute [application instance (or container level) faults](https://developer.harness.io/docs/chaos-engineering/chaos-faults/cloud-foundry/cf%20chaos%20components%20and%20their%20deployment%20architecture/#application-instance-or-container-level-faults).
+The second mode of deployment doesn't involve root privileges, and hence can't execute [application instance (or container level) faults](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/cf%20chaos%20components%20and%20their%20deployment%20architecture/#application-instance-or-container-level-faults).
 :::
 
 ![](./static/images/sidecar.png)
@@ -109,11 +111,11 @@ HCE supports three broad categories of native faults for CF applications.
 
 ### Purely CF-API driven faults
 
-These faults involve out-of-band state manipulation of the apps that are deployed in the CF environment using only the Cloud Foundry APIs exposed by the CF cloud controller. For example, [app stop](/docs/chaos-engineering/chaos-faults/cloud-foundry/cf-app-stop.md), app delete, [app route unmap](/docs/chaos-engineering/chaos-faults/cloud-foundry/cf-app-route-unmap.md), app service unbind.
+These faults involve out-of-band state manipulation of the apps that are deployed in the CF environment using only the Cloud Foundry APIs exposed by the CF cloud controller. For example, [app stop](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/cf-app-stop.md), app delete, [app route unmap](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/cf-app-route-unmap.md), app service unbind.
 
 ### Application instance (or container) level faults
 
-These faults involve in-machine actions that impact the individual application instances that run as containers in the Diego cells. CF APIs are leveraged to extract the instance metadata (such as location, and container IDs) after which the instances are either killed ([app instance kill](/docs/chaos-engineering/chaos-faults/cloud-foundry/cf-app-container-kill.md)) or subjected to network, stress or I/O based fault injection.
+These faults involve in-machine actions that impact the individual application instances that run as containers in the Diego cells. CF APIs are leveraged to extract the instance metadata (such as location, and container IDs) after which the instances are either killed ([app instance kill](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/cf-app-container-kill.md)) or subjected to network, stress or I/O based fault injection.
 
 ### Application framework (or process) level faults
 

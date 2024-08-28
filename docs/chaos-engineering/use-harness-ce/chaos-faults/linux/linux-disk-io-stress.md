@@ -2,7 +2,8 @@
 id: linux-disk-io-stress
 title: Linux disk IO stress
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-disk-io-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-disk-io-stress
+- /docs/chaos-engineering/chaos-faults/linux/linux-disk-io-stress
 ---
 
 import Ossupport from './shared/note-supported-os.md'

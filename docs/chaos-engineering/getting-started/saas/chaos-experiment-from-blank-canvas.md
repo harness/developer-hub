@@ -4,12 +4,12 @@ description: Create a chaos experiment from scratch.
 sidebar_position: 3
 redirect_from:
 - /tutorials/chaos-experiments/chaos-experiment-from-blank-canvas
-- /docs/chaos-engineering/get-started/tutorials/chaos-experiment-from-blank-canvas
+- /docs/chaos-engineering/getting-started/saas/chaos-experiment-from-blank-canvas
 ---
 
 In this tutorial, you will create chaos experiments from scratch and execute them on the sample boutique application.
 
-This experiment follows the same steps of [your first chaos experiment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md) by creating a chaos environment and infrastructure and using the same boutique application by targeting the pods of the `cart` microservice, except the way you create an experiment. Creating a chaos experiment involves the following steps:
+This experiment follows the same steps of [your first chaos experiment](/docs/chaos-engineering/getting-started/saas/first-experiment) by creating a chaos environment and infrastructure and using the same boutique application by targeting the pods of the `cart` microservice, except the way you create an experiment. Creating a chaos experiment involves the following steps:
 
 1. Create a project/receiving an invite for a project with relevant access;
 2. Create an environment;
@@ -20,13 +20,13 @@ In the last step, instead of choosing a pre-defined experiment, you will choose 
 
 ## Before you begin
 
-* [What is chaos engineering?](/docs/chaos-engineering/get-started/overview.md)
-* [Prerequisites to execute chaos experiments](/docs/chaos-engineering/onboarding/prerequisites.md)
-* [Execute your first chaos experiment using a template](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md)
+* [What is chaos engineering?](/docs/chaos-engineering/concepts/chaos101)
+* [Prerequisites to execute chaos experiments](/docs/chaos-engineering/getting-started/onboarding/prerequisites)
+* [Execute your first chaos experiment using a template](/docs/chaos-engineering/getting-started/saas/first-experiment)
 
 ### Step 1: Set up environment and infrastructure
 
-1. Follow the steps to set up [your environment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-2-add-a-chaos-environment) and [chaos infrastructure](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-3-add-a-chaos-infrastructure).
+1. Follow the steps to set up [your environment](/docs/chaos-engineering/getting-started/saas/first-experiment#step-2-add-a-chaos-environment) and [chaos infrastructure](/docs/chaos-engineering/getting-started/saas/first-experiment#step-3-add-a-chaos-infrastructure).
 
 ### Step 2: Construct a chaos experiment from a blank canvas
 
@@ -162,11 +162,11 @@ The output on the terminal indicates that the cart pod was terminated and a new 
 
     ![Webpage Unavailable](./static/chaos-experiment-from-blank-canvas/webpage-unavailable.png)
 
-24. You can [validate the behavior](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-6-observing-chaos-execution) of the application and [evaluate the experiment run](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-7-evaluate-the-experiment-run).
+24. You can [validate the behavior](/docs/chaos-engineering/getting-started/saas/first-experiment#step-6-observing-chaos-execution) of the application and [evaluate the experiment run](/docs/chaos-engineering/getting-started/saas/first-experiment#step-7-evaluate-the-experiment-run).
 
 ## Conclusion
 
 With that, you have successfully created and executed a chaos experiment from scratch!
 
 Here are some recommendations:
-- [Execute a chaos experiment using API](/docs/chaos-engineering/get-started/tutorials/experiment-using-api.md).
+- [Execute a chaos experiment using API](/docs/chaos-engineering/getting-started/saas/experiment-using-api).

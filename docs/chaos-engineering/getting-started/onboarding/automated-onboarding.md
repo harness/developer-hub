@@ -2,6 +2,8 @@
 sidebar_position: 6
 title: Automated onboarding
 description: Set up infrastructure with a single click and execute chaos experiments.
+redirect_from:
+    - /docs/chaos-engineering/onboarding/single-click-onboarding
 ---
 
 This topic describes the following operations:
@@ -74,4 +76,4 @@ If you chose automated onboarding by selecting **Yes, in a single step** [here](
     ![cluster view](./static/automated/cluster-view-10.png)
 
 ## Conclusion
-Congratulations! You completed the automated HCE onboarding. Now you are all set to [explore the chaos faults](/docs/chaos-engineering/chaos-faults/) and build resilient applications.
+Congratulations! You completed the automated HCE onboarding. Now you are all set to [explore the chaos faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/) and build resilient applications.

@@ -3,6 +3,8 @@ id: Kubernetes chaos agent installation access requirements
 sidebar_position : 2
 title: Chaos agent installation access requirements
 description: Kubernetes chaos agent installation access requirements
+redirect_from:
+  - /docs/chaos-engineering/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements
 ---
 
 This topic lists the Kubernetes chaos agent installation access requirement for discovery and all types of faults.

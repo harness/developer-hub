@@ -2,6 +2,8 @@
 title: Requirements
 sidebar_position: 1
 description: Requirements to fulfill before executing Cloud Foundry chaos experiments.
+redirect_from:
+	- /docs/chaos-engineering/chaos-faults/cloud-foundry/permissions
 ---
 
 This topic describes the permissions required to execute chaos experiments on the Cloud Foundry platform.
@@ -54,10 +56,10 @@ This topic describes the permissions required to execute chaos experiments on th
   </tr>
 <tr>
 	<th> Chaos deployment and architecture details </th>
-	<td><ul><li> Go to <a href="/docs/chaos-engineering/chaos-faults/cloud-foundry/cf%20chaos%20components%20and%20their%20deployment%20architecture/#run-lci-in-diego-cells-hosting-the-app-instances"> HCE CF chaos approach and deployment architecture> for more information. </a></li>
+	<td><ul><li> Go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/cf%20chaos%20components%20and%20their%20deployment%20architecture/#run-lci-in-diego-cells-hosting-the-app-instances"> HCE CF chaos approach and deployment architecture> for more information. </a></li>
 <li>Go to <a href="https://hce-docs.github.io/platform-wise-chaos-info/PCF/pcf-chaos-faqs.html"> FAQ </a> to understand how this model compares with the other deployment models and why the agent runs with root user.</li></ul></td>
-<td>Go to <a href="/docs/chaos-engineering/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-cf-infrastructure-as-native-cf-app-interacting-with-chaos-sidecars"> CF chaos approach and deployment architecture.</a> </td>
-<td>Go to <a href="/docs/chaos-engineering/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-with-tanzu-ops-manager"> CF chaos approach and deployment architecture.</a> </td>
+<td>Go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-cf-infrastructure-as-native-cf-app-interacting-with-chaos-sidecars"> CF chaos approach and deployment architecture.</a> </td>
+<td>Go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-with-tanzu-ops-manager"> CF chaos approach and deployment architecture.</a> </td>
 </tr>
 <tr>
 	<th> Supported chaos faults	</th>

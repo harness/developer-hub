@@ -2,7 +2,8 @@
 id: vmware
 title: Chaos faults for VMware
 redirect_from:
-	- /docs/chaos-engineering/technical-reference/chaos-faults/vmware
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware
+- /docs/chaos-engineering/chaos-faults/vmware
 ---
 
 <!-- Import statement for Custom Components -->

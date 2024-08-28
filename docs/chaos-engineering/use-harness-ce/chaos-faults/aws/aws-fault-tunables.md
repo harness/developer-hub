@@ -2,7 +2,8 @@
 title: Common AWS fault tunables
 sidebar_position: 2
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/aws-fault-tunables
+- /docs/chaos-engineering/technical-reference/chaos-faults/aws/aws-fault-tunables
+- /docs/chaos-engineering/chaos-faults/aws/aws-fault-tunables
 ---
 This section describes the common AWS-specific fault tunables.
 

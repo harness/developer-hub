@@ -116,5 +116,5 @@ probe:
 
 ## Next steps
 
-* [Configure and add a probe](/docs/chaos-engineering/features/resilience-probes/use-probe.md)
-* [Using command probe in different modes](/docs/chaos-engineering/features/resilience-probes/cmd-probe/cmd-probe-usage.md)
+* [Configure and add a probe](/docs/chaos-engineering/use-harness-ce/probes/use-probe)
+* [Using command probe in different modes](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-usage)

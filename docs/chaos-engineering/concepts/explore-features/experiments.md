@@ -3,7 +3,7 @@ id: experiments
 sidebar_position: 4
 title: Chaos Experiments
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/azure
+- /docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments
 ---
 
 Harness Chaos Engineering (HCE) gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios against which you can validate your applications. At the same time, the chaos experiments are declarative and you can construct them using the Chaos Studio user interface with no programmatic intervention.

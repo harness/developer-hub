@@ -2,7 +2,8 @@
 id: cloud-foundry
 title: Chaos Faults for Cloud Foundry
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/cloud-foundry
+- /docs/chaos-engineering/technical-reference/chaos-faults/cloud-foundry
+- /docs/chaos-engineering/chaos-faults/cloud-foundry
 ---
 
 <!-- Import statement for Custom Components -->

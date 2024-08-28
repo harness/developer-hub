@@ -1,6 +1,8 @@
 ---
 id: windows-cpu-stress
 title: Windows CPU stress
+redirect_from:
+  - /docs/chaos-engineering/chaos-faults/windows/windows-cpu-stress
 ---
 
 Windows CPU stress applies stress on the CPU resources of Windows OS VM.
@@ -16,7 +18,7 @@ Windows CPU stress applies stress on the CPU resources of Windows OS VM.
 - It verifies the autopilot functionality of cloud managed clusters.
 
 ## Prerequisites
-- Ensure that the [prerequisites](/docs/chaos-engineering/chaos-faults/windows/prerequisites) are fulfilled before executing the experiment.
+- Ensure that the [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/prerequisites) are fulfilled before executing the experiment.
 
 ### Mandatory tunables
 
@@ -39,7 +41,7 @@ Windows CPU stress applies stress on the CPU resources of Windows OS VM.
      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
+        <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
       </tr>
     </table>
 
@@ -53,7 +55,7 @@ Windows CPU stress applies stress on the CPU resources of Windows OS VM.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

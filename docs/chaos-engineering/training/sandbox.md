@@ -4,7 +4,7 @@ description: Get trained in running Harness Chaos Experiments using the sandbox
 sidebar_position: 1
 redirect_from:
 - /docs/chaos-engineering/certifications/run-experiments-in-sandbox
-- /docs/chaos-engineering/onboarding/certifications/run-experiments-in-sandbox
+- /docs/chaos-engineering/training/sandbox
 ---
 
 This tutorial guides you through an interactive session where you'll use the sample application **Podtato head** to execute a chaos experiment and enhance the application's resilience.

@@ -2,7 +2,8 @@
 id: linux-cpu-stress
 title: Linux CPU stress
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-cpu-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-cpu-stress
+- /docs/chaos-engineering/chaos-faults/linux/linux-cpu-stress
 ---
 
 import Ossupport from './shared/note-supported-os.md'

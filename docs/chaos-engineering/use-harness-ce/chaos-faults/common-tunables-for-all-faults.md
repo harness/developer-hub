@@ -1,7 +1,8 @@
 ---
 title: Common tunables for all faults
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults
+- /docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults
+- /docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults
 ---
 Fault tunables common to all the faults are provided at `.spec.experiment[*].spec.components.env` in the chaosengine.
 

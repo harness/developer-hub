@@ -3,7 +3,8 @@ title: Use HCE with Continuous Delivery
 sidebar_position: 1
 description: Integrate HCE with CD
 redirect_from:
-  - /tutorials/chaos-experiments/integration-with-harness-cd
+- /tutorials/chaos-experiments/integration-with-harness-cd
+- /docs/chaos-engineering/integrations/hce-and-cd/chaos-cd
 ---
 
 You can add chaos experiments to [Harness Continuous Delivery (CD)](https://harness.io/products/continuous-delivery) pipelines as part of your deployment process. This ensures that you validate your system resiliency with every new deployment. Some benefits include:

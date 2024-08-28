@@ -2,7 +2,8 @@
 id: windows-ec2-memory-hog
 title: Windows EC2 memory hog
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/windows-ec2-memory-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/aws/windows-ec2-memory-hog
+- /docs/chaos-engineering/chaos-faults/aws/windows-ec2-memory-hog
 ---
 
 Windows EC2 memory hog induces memory stress on the target AWS Windows EC2 instance using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault. This fault causes memory exhaustion on the target Windows EC2 instance for a specific duration.
@@ -90,7 +91,7 @@ Below is an example AWS policy to execute the fault.
 ```
 
 :::info note
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+- Go to [AWS named profile for chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults.
 :::
 
 
@@ -123,7 +124,7 @@ Below is an example AWS policy to execute the fault.
     <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+        <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
     </tr>
     <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -148,12 +149,12 @@ Below is an example AWS policy to execute the fault.
     <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances.</td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
     </tr>
     <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
     </tr>
 </table>
 

@@ -24,7 +24,7 @@ This topic describes the HCE platform requires to execute chaos experiments.
 </tr>
 <tr>
 	<th> Access requirements for agent install </th>
-	<td> Install agent as a cluster-admin or as a user mapped to cluster role with <a href="/docs/chaos-engineering/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements">these</a> permissions. </td>
+	<td> Install agent as a cluster-admin or as a user mapped to cluster role with <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements">these</a> permissions. </td>
 </tr>
 
 <tr>
@@ -40,7 +40,7 @@ This topic describes the HCE platform requires to execute chaos experiments.
 </tr>
 <tr>
 		<th> Chaos deployment and architecture details </th>
-        <td><ul><li> Refer to <a href="/docs/chaos-engineering/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-in-diego-cells-hosting-the-app-instances"> TKGi approach </a> and <a href="/docs/chaos-engineering/chaos-faults/kubernetes/classification#namespace-scope-mode"> namespace-scoped cluster mode. </a></li></ul></td>
+        <td><ul><li> Refer to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-in-diego-cells-hosting-the-app-instances"> TKGi approach </a> and <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/classification#namespace-scope-mode"> namespace-scoped cluster mode. </a></li></ul></td>
 </tr>
 <tr>
 		<th> Supported chaos faults	</th>

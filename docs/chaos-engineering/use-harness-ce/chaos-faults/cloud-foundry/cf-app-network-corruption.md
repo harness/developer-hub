@@ -1,6 +1,8 @@
 ---
 id: cf-app-network-corruption
 title: CF app network corruption
+redirect_from:
+  - /docs/chaos-engineering/chaos-faults/cloud-foundry/cf-app-network-corruption
 ---
 
 import CFAndBOSHSecrets from './shared/cf-and-bosh-secrets.md';
@@ -99,7 +101,7 @@ CF app network corruption:
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> chaos duration</a>. </td>
+    <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> chaos duration</a>. </td>
   </tr>
   <tr>
     <td> skipSSLValidation </td>

@@ -1,6 +1,8 @@
 ---
 id: linux-jvm-memory-stress
 title: Linux JVM memory stress
+redirect_from:
+  - /docs/chaos-engineering/chaos-faults/linux/linux-jvm-memory-stress
 ---
 
 import Ossupport from './shared/note-supported-os.md'

@@ -1,6 +1,8 @@
 ---
 id: linux-fs-fill
 title: Linux fs fill
+redirect_from:
+  - /docs/chaos-engineering/chaos-faults/linux/linux-fs-fill
 ---
 
 import Ossupport from './shared/note-supported-os.md'

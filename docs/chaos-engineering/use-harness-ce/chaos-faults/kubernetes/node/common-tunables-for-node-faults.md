@@ -1,7 +1,8 @@
 ---
 title: Common node fault tunables
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults
+- /docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults
 ---
 Fault tunables which are common to all the node faults are described here. These tunables can be provided at `.spec.experiment[*].spec.components.env` in the chaosengine.
 

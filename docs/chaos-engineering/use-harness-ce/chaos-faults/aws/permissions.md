@@ -2,6 +2,8 @@
 title: Requirements
 sidebar_position: 1
 description: Requirements to fulfill before executing AWS chaos experiments.
+redirect_from:
+	- /docs/chaos-engineering/chaos-faults/aws/permissions
 ---
 
 This topic describes the AWS platform permissions required to execute chaos experiments on your target environments.

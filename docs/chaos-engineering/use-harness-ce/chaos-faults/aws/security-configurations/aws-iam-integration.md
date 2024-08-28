@@ -98,7 +98,7 @@ To create an OIDC provider for your EKS cluster:
   ```
 
 :::tip
-* By default, chaos infrastructure associated with your chaos experiment has `litmus-admin` as a chaos service account. Based on the chaos experiment you wish to execute, you can configure the policy and attach the policy to a role, and go to [step 2](#associate-the-iam-role-with-the-experiment-service-account). Refer to [AWS superset policy](/docs/chaos-engineering/chaos-faults/aws/security-configurations/policy-for-all-aws-faults.md) to know more.
+* By default, chaos infrastructure associated with your chaos experiment has `litmus-admin` as a chaos service account. Based on the chaos experiment you wish to execute, you can configure the policy and attach the policy to a role, and go to [step 2](#associate-the-iam-role-with-the-experiment-service-account). Refer to [AWS superset policy](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to know more.
 * If you wish to create a custom service account, you can create one and configure the policy and attach the policy with a role.
 * For more information, go to [AWS IAM documentation](https://docs.aws.amazon.com/transfer/latest/userguide/requirements-roles.html).
 :::

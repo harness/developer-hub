@@ -2,7 +2,8 @@
 id: linux-network-rate-limit
 title: Linux network rate limit
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-network-rate-limit
+- /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-network-rate-limit
+- /docs/chaos-engineering/chaos-faults/linux/linux-network-rate-limit
 ---
 
 import Ossupport from './shared/note-supported-os.md'

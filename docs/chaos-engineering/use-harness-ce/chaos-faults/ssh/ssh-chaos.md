@@ -2,7 +2,8 @@
 id: ssh-chaos
 title: SSH chaos
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/ssh/ssh-chaos
+- /docs/chaos-engineering/technical-reference/chaos-faults/ssh/ssh-chaos
+- /docs/chaos-engineering/chaos-faults/ssh/ssh-chaos
 ---
 SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a ConfigMap. These scripts are executed using SSH credentials, which are securely referenced in the ConfigMap. This enables direct fault injection on the target host. This experiment offers customisation for the chaos injection logic, providing flexibility and control over chaos experiments.
 
@@ -15,7 +16,7 @@ SSH chaos can be used with custom chaos logic and transferred to a target VM (to
 - This framework can be used to roll back to the original state of an abort event.
 
 ## Executing the SSH chaos experiment
-Before executing the SSH chaos experiment, ensure that you follow the steps in the [prerequisites](/docs/chaos-engineering/chaos-faults/ssh/prerequisites.md) section. This generates two experiment YAML files, namely `ssh-chaos-with-key.yaml` and `ssh-chaos-with-pass.yaml`. You can use one of them based on the authentication method you choose.
+Before executing the SSH chaos experiment, ensure that you follow the steps in the [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/prerequisites) section. This generates two experiment YAML files, namely `ssh-chaos-with-key.yaml` and `ssh-chaos-with-pass.yaml`. You can use one of them based on the authentication method you choose.
 
 * Use `ssh-chaos-with-key.yaml` for private key authentication. This file references secrets in its YAML view. The `PASSWORD` environment variable should be empty.
 

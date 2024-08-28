@@ -1,7 +1,9 @@
 ---
 title: Connect chaos infrastructure via proxy
 sidebar_position: 1
-description: Connect chaos infrastructure to the control plane via proxy
+description: Connect chaos infrastructure to the control plane via proxy.
+redirect_from:
+    - /docs/chaos-engineering/get-started/ce-on-smp/configure-proxy/connect-infrastructure
 ---
 
 This topic describes the method to connect your chaos infrastructure to the control plane on [app.harness.io](https://app.harness.io) or Self-Managed Platform (SMP) via proxy.

@@ -1,9 +1,11 @@
 ---
 title: Overview
 sidebar_position: 3
+redirect_from:
+    - /docs/chaos-engineering/onboarding/hce-onboarding
 ---
 
-This topic describes the typical steps for executing a chaos experiment and explains how to deploy the HCE application in two different modes: [Automated onboarding](/docs/chaos-engineering/getting-started/onboarding/single-click-onboarding) and [guided onboarding](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding).
+This topic describes the typical steps for executing a chaos experiment and explains how to deploy the HCE application in two different modes: [Automated onboarding](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding) and [guided onboarding](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding).
 
 ## Before you begin, review the following:
 

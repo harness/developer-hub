@@ -2,7 +2,8 @@
 id: linux-memory-stress
 title: Linux memory stress
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-memory-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-memory-stress
+- /docs/chaos-engineering/chaos-faults/linux/linux-memory-stress
 ---
 
 import Ossupport from './shared/note-supported-os.md'

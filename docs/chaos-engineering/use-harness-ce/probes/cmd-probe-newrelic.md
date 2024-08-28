@@ -12,9 +12,9 @@ This topic guides you through steps to use the **command probe** in **source mod
 
 ## Before you begin, review the following
 
-* [Command probe](/docs/chaos-engineering/features/resilience-probes/cmd-probe/cmd-probe.md)
-* [Create a command probe](/docs/chaos-engineering/features/resilience-probes/use-probe#create-a-resilience-probe)
-* [Command probe in source mode](/docs/chaos-engineering/features/resilience-probes/cmd-probe/cmd-probe-usage#command-probe-in-source-mode)
+* [Command probe](/docs/chaos-engineering/explore-features/resilience-probes/cmd-probe.md)
+* [Create a command probe](/docs/chaos-engineering/use-harness-ce/probes/use-probe#create-a-resilience-probe)
+* [Command probe in source mode](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-usage#command-probe-in-source-mode)
 
 When you execute a command probe in the source mode, it allows you to provide a custom image, environment variables, and secrets to execute the command.
 

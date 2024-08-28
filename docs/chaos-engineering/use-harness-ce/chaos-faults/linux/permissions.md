@@ -2,6 +2,8 @@
 title: Requirements
 sidebar_position: 1
 description: Requirements to fulfill before executing chaos experiments on Linux OS.
+redirect_from:
+	- /docs/chaos-engineering/chaos-faults/linux/permissions
 ---
 
 This topic describes the [resource permissions](#resource-consumption), [fault compatibility matrix](#fault-compatibility-matrix), and the [permissions](#on-premise-vms-vmware-vms) required to execute Linux chaos experiments.
@@ -54,7 +56,7 @@ The faults have been tested for compatibility in the following Linux OS distribu
 <tr>
 	<th> Access requirements for agent install </th>
 	<td> <ul><li>Install agent as root user. </li></ul> </td>
-	<td><ul><li>Install agent as a cluster-admin or as a user mapped to cluster role with <a href="/docs/chaos-engineering/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements"> these</a> permissions. </li></ul></td>
+	<td><ul><li>Install agent as a cluster-admin or as a user mapped to cluster role with <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements"> these</a> permissions. </li></ul></td>
 </tr>
 <tr>
 	<th> Access requirements for basic chaos experiments </th>

@@ -1,6 +1,8 @@
 ---
 id: windows-memory-stress
-title: Windows Memory stress 
+title: Windows Memory stress
+redirect_from:
+  - /docs/chaos-engineering/chaos-faults/windows/windows-memory-stress
 ---
 
 Windows memory stress applies stress on the memory resources of a Windows OS based VM.
@@ -15,7 +17,7 @@ Windows memory stress applies stress on the memory resources of a Windows OS bas
 - It verifies the autopilot functionality of services or application on the VM.
 
 ### Prerequisites
-- Ensure that the [prerequisites](/docs/chaos-engineering/chaos-faults/windows/prerequisites) are fulfilled before executing the experiment.
+- Ensure that the [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/prerequisites) are fulfilled before executing the experiment.
 
 ### External packages
 This fault uses [Testlimit](https://learn.microsoft.com/en-us/sysinternals/downloads/testlimit), which is installed as part of the infrastructure installation.
@@ -41,7 +43,7 @@ This fault uses [Testlimit](https://learn.microsoft.com/en-us/sysinternals/downl
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+        <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
     </table>
 
@@ -55,7 +57,7 @@ This fault uses [Testlimit](https://learn.microsoft.com/en-us/sysinternals/downl
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

@@ -4,7 +4,7 @@ sidebar_position: 4
 description: Guide to creating and executing custom chaos experiments using API.
 redirect_from:
 - /tutorials/chaos-experiments/first-chaos-experiment-via-api
-- /docs/chaos-engineering/get-started/tutorials/experiment-using-api
+- /docs/chaos-engineering/getting-started/saas/experiment-using-api
 ---
 
 import Tabs from '@theme/Tabs';
@@ -14,9 +14,9 @@ In this tutorial, you will create and run chaos experiments on Kubernetes using 
 
 ## Before you begin, review the following:
 
-- [HCE overview](/docs/chaos-engineering/get-started/overview.md)
-- [HCE prerequisites](/docs/chaos-engineering/onboarding/prerequisites.md)
-- [Execute your first chaos experiment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md)
+- [All about chaos engineering](/docs/chaos-engineering/concepts/chaos101)
+- [Prerequisites to execute your experiment](/docs/chaos-engineering/getting-started/saas/prerequisites)
+- [Execute your first chaos experiment](/docs/chaos-engineering/getting-started/saas/first-experiment)
 
 ### Create a project (or be added to a project)
 
@@ -80,7 +80,7 @@ To work with the HCE Postman collection, fork it under your Postman account and 
 
 #### Step 1: Create and register chaos infrastructure using APIs
 
-1. [Create (or register) a chaos infrastructure](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-3-create-an-infrastructure) (Kubernetes infrastructure) to inject faults into the application.
+1. [Create (or register) a chaos infrastructure](/docs/chaos-engineering/getting-started/saas/first-chaos-engineering#step-3-create-an-infrastructure) (Kubernetes infrastructure) to inject faults into the application.
 
 2. Select **Cluster Wide** installation mode so that you can target resources across all the namespaces in your cluster (**Namespace Mode** installation restricts injecting chaos to a certain namespace where infrastructure is installed).
 
@@ -305,7 +305,7 @@ Check the value of the `isActive` field and ensure it is set to `true`. This mea
 ❯ kubectl apply -f https://raw.githubusercontent.com/chaosnative/harness-chaos-demo/main/boutique-app-manifests/manifest/monitoring.yaml -n hce
 ```
 
-- You are all set to inject chaos into your Kubernetes resources. You will execute one of the most popular faults, [**Pod Delete**](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete.md). This fault deletes the pods of a deployment (or a StatefulSet or a DaemonSet) to determine the resilience of a microservice.
+- You are all set to inject chaos into your Kubernetes resources. You will execute one of the most popular faults, [**Pod Delete**](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-delete). This fault deletes the pods of a deployment (or a StatefulSet or a DaemonSet) to determine the resilience of a microservice.
 
 - The resources will be deployed in the existing `hce` namespace.
 
@@ -382,7 +382,7 @@ workflow-controller-metrics ClusterIP 10.106.97.173 <none> 9090/TCP 15m
 
 ### Construct a chaos experiment using APIs
 
-You have successfully created and deployed the target application. You can now target the pods of the cart microservice using the [pod delete](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete.md) fault.
+You have successfully created and deployed the target application. You can now target the pods of the cart microservice using the [pod delete](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-delete.md) fault.
 
 Before injecting chaos, the cart page will be accessible from the frontend, as seen at the `/cart` route.
 
@@ -390,9 +390,9 @@ Before injecting chaos, the cart page will be accessible from the frontend, as s
 
 #### Create the chaos experiment and workflow using APIs
 
-- [Create the chaos experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md) and specify the infrastructure ID that you created earlier.
+- [Create the chaos experiment](/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults) and specify the infrastructure ID that you created earlier.
 
-- This allows you to create your chaos experiment with the [pod delete fault](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete.md) that is configured to target the online boutique application.
+- This allows you to create your chaos experiment with the [pod delete fault](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-delete.md) that is configured to target the online boutique application.
 
 - You can use the **createChaosWorkFlow** API to create the above chaos experiment.
 

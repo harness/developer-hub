@@ -2,7 +2,8 @@
 id: ssh
 title: Chaos faults for SSH
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/ssh
+- /docs/chaos-engineering/technical-reference/chaos-faults/ssh
+- /docs/chaos-engineering/chaos-faults/ssh
 ---
 
 <!-- Import statement for Custom Components -->

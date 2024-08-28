@@ -1,6 +1,8 @@
 ---
 id: byoc
 title: Bring Your Own Custom Chaos Faults
+redirect_from:
+    - /docs/chaos-engineering/chaos-faults/byoc/byoc-injector
 ---
 
 ## Introduction

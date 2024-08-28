@@ -2,7 +2,8 @@
 id: chaos-faults
 title: Chaos faults
 redirect_from:
-	- /docs/chaos-engineering/technical-reference/chaos-faults/
+- /docs/chaos-engineering/technical-reference/chaos-faults/
+- /docs/chaos-engineering/chaos-faults/
 ---
 
 
