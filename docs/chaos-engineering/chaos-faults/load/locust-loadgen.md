@@ -18,7 +18,7 @@ Locust loadgen fault simulates load generation on the target hosts for a specifi
 ### Prerequisites
 - Kubernetes > 1.17 is required to execute this fault.
 - The target host should be accessible.
-- Kubernetes ConfigMap that contains the `config.py` file is required. This file is used as a locustfile to generate load in the `CHAOS_NAMESPACE`. Below is a sample ConfigMap:
+- Kubernetes ConfigMap that contains the `config.py` file is required. This file is used as a locust file to generate load in the `CHAOS_NAMESPACE`. Below is a sample ConfigMap:
 
 ```yaml
 apiVersion: v1
