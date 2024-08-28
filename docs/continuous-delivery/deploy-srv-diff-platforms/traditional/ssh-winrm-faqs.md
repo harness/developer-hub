@@ -86,3 +86,5 @@ Command execution failed. Error: HTTP response '403: URLBlocked' when communicat
 
 Need to check if the Windows machine is behind proxy and the same needs to be configured on the delegate host
 
+### Do we create the target directory for config file copy or artifact download if they do not exist?
+We do not create the directory if they do not exist, hence we need to ensure the path that we provide do exist on the target host.

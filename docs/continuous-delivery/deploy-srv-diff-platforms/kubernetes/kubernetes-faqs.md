@@ -821,3 +821,36 @@ The issue "no values.yaml found for manifest" typically indicates that Helm or K
 
 ### Which deployment types currently support post deployment rollback?
 Post deployment rollback is supported for Kubernetes, AWS Auto Scale Group (ASG), Tanzu Application Services (TAS), Amazon Elastic Container Service (ECS), and Native Helm. Support for additional deployment types is anticipated in the future.
+
+### What does the below warn message signify in k8 deployment ?
+```
+Use tokens from the TokenRequest API or manually created secret-based tokens instead of auto-generated secret-based tokens.
+```
+
+This error is thrown by the kubernetes api server. Kubernetes release higher than 1.24 no longer automatically generates service account tokens for every service account. For more reference below here is the doc link:
+https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/#generate-the-service-account-token
+
+
+### How to pass the manifest yaml to a shell step?
+
+The manifest from previous step can be very big and if you pass this as input variable we will see failure like below:
+
+```
+Could not start process:
+java.io.IOException: Cannot run program "/bin/bash" (in directory "/tmp"): error=7, Argument list too long at java.base/java.lang.ProcessBuilder.start(Unknown Source) at java.base/java.lang.ProcessBuilder.start(Unknown Source) at org.zeroturnaround.exec.ProcessExecutor.invokeStart(ProcessExecutor.java:977) at
+```
+
+We have this avaialble as manifest expression so directly assign it within the step like below:
+
+`mymanifestvar=<+execution.steps.render_helm_chart_templates.k8s.manifestDryRun>`
+
+
+### Can we create resource in a differnt namespace than what is defined in the infrastructure?
+It is not possible. All the resource being created as part of the deployment should be in the same namespace as defined in the infrastructure.
+
+### Can I deploy two services with the same manifest and different values yaml?
+Kuberenetes does not allow creating two resources with same name. Even if the service spec type is different still only one instance of the service can exist. For example if the same manifest is used to deploy a node port and a load balancer using different values.yaml, one iteration of the deployment will create only one instance of the resource.
+If we use the same service to deploy a different service type it will overwrite the pre existing one as they have the same name.
+
+### Is it possible to provide delegate selector for service hooks?
+We can not provide delegate selectors for service hook. They execute on the same delegate where the corresponding task is getting executed.
