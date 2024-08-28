@@ -40,8 +40,16 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 <!-- Released on 27 August 2024 -->
 #### New features and enhancements
 - **Sensitive data removal:** IACM now supports a feature flag that will remove all sensitive data from your plan and state. This can only be used in conjunction with an OpenTofu/Terraform remote backend and offers advanced security with reduced feature set. We recommend contacting Harness support if you are interested in trying this functionality. (IAC-2281)
-- **Workspace expression:**  Enhanced the usage and readability of our workspace expressions (IAC-2187)
-  - For example, setting a workspace identifier has been update from _insert old expression_ to `<+workspace.identifier>`
+- **Workspace expression:**  Enhanced the usage and readability of workspace expressions (IAC-2187)
+  - For example, referencing a terraform or OpenTofu variable can be done at workspace level.
+
+  ```bash
+  // OLD
+  <+pipeline.stages.s1.spec.execution.steps.init.spec.envVariables.PLUGIN_WS_TF_VAR_OPEN_TOFU_VAR>
+
+  // NEW
+  <+workspace.variables.OPEN_TOFU_VAR>
+  ```
 
 ## June 2024
 ### Version IAC-Server: 1.17.0
