@@ -11,7 +11,7 @@ import BeforeYouBegin from '/docs/continuous-delivery/verify/configure-cv/health
 
 <BeforeYouBegin />
 
-- [Add Google Cloud Operations as a verification provider](/docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems)
+- [Add Google Cloud Operations as a verification provider](/docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems#add-google-cloud-operations-formerly-stackdriver)
 
 - To configure GCP metrics as a health source in Harness, you should first create a GCP dashboard and then import it.
 
@@ -30,7 +30,8 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 
 2. In **Health Source Name**, enter a name for the Health Source.
 3. Under **Connect Health Source**, click **Select Connector**.
-4. In **Connector** settings, you can either choose an existing connector Gcp connector or click **New Connector.**
+4. In **Connector** settings, you can either choose an existing connector GCP connector or click **New Connector.**
+
    ![](./static/verify-deployments-with-google-cloud-operations-125.png)
 
 5. Click **Apply Selected**. The Connector is added to the Health Source.
