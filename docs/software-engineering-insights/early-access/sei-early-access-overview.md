@@ -17,28 +17,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 :::
 
-### Github Topics Filter
-
-* **Release date:** June 2024
-* **Issue number:** (SEI-6863) (ZD-61715)
-* **Feature flag:** SEI_ENABLE_TOPICS_SUPPORT_FOR_GITHUB
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Configure Github Topics as an integration filter in the Collection definition.
-
-[Go To Documentation](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
-
-### Azure DevOps Integration: New Onboarding
-
-* **Release date:** June 2024
-* **Issue number:** SEI-6838
-* **Feature flag:** SEI_IS_AZURE_NEW_ONB_ENABLED
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-A new PAT-based authentication option for Azure DevOps integration.
-
-[Go To Documentation](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
-
 ### Business Alignment: Active Work Measurement
 
 * **Release date:** June 2024

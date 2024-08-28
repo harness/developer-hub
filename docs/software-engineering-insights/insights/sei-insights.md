@@ -21,11 +21,11 @@ The primary way to access Insights is through the **Insights** tab.
 
 ![](./static/manage-insight.png)
 
-   Select **Manage Insights** to view all the Insights. The Insights available for each Collection depend on the [Insight associations](#manage-insights-associations). The **Default** label indicates the Collection's default Insight.
+Select **Manage Insights** to view all the Insights. The Insights available for each Collection depend on the [Insight associations](#manage-insights-associations). The **Default** label indicates the Collection's default Insight.
 
-   To switch projects or Collections, use the **Project** and **Collection** options on the navigation menu. You can also use the breadcrumbs in the Insights header to navigate up through the [Collection hierarchy](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
+To switch projects or Collections, use the **Project** and **Collection** options on the navigation menu. You can also use the breadcrumbs in the Insights header to navigate up through the [Collection hierarchy](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
 
-   If integration monitoring is enabled, you can view the integration status in the Insights header.
+If integration monitoring is enabled, you can view the integration status in the Insights header.
 
 ### Explore data
 
@@ -91,11 +91,11 @@ Reports (also known as *widgets*) are the parts of your Insights that contain da
 
 To add reports to Insights:
 
-1. Go to the Insight where you want to add the widget. Make sure you are in the correct project.
+1. Go to the Insight where you want to add the report.
 2. Select **Settings**, and then select **Add Widget**.
-3. Select the widget that you want to add.
-4. Configure the widget settings. For information about configuring specific widgets go to [Metrics and reports](/docs/category/metrics-and-reports).
-5. Select **Next: Place Widget** and arrange the widget on the Insight.
+3. Select the report that you want to add.
+4. Configure the report settings. For information about configuring specific reports go to [Metrics and reports](/docs/category/metrics-and-reports).
+5. Select **Next: Place Widget** and arrange the report on the Insight.
 6. Select **Save Layout**.
 
 ![](./static/sample-report.png)
@@ -103,7 +103,7 @@ To add reports to Insights:
 
 :::info Where does the data in reports come from?
 
-Reports get data from [integrations](/docs/category/sei-integrations), which are inherited from the [Collections associated with Insights](#manage-insights-associations). In turn, Collections inherit integrations from their associated Harness project, because integrations are configured at the project level. For more information about this hierarchy and configuring Collections, go to [Collections](/docs/category/projects-and-collections).
+Reports get data from [integrations](/docs/category/sei-integrations), which are inherited from the [Collections associated with Insights](#manage-insights-associations). In turn, Collections inherit integrations from their associated Harness project, because integrations are mapped at the project level. For more information about this hierarchy and configuring Collections, go to [Collections](/docs/category/projects-and-collections).
 
 You can also configure individual metrics and reports to specify what data is used in calculations, how data is presented, and other criteria. For more information, go to [Metrics and reports](/docs/category/metrics-and-reports).
 
@@ -112,17 +112,6 @@ You can also configure individual metrics and reports to specify what data is us
 ### Manage Insights associations
 
 You can manage the Collections associated with Insights from the **Edit Collection** page, edit the **Insights** settings. For more information about this option, go to **Managing Insights associations** in [Manage Collections](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections#manage-insights-associations).
-
-### Change the color scheme
-
-You can change the colors for values on bar charts and pie charts. The color scheme applies to all Insights.
-
-1. In your Harness project, go to the SEI module.
-2. Select **Account**.
-3. Select **Customize**.
-4. Select the desired color for the highest and lowest values on bar charts and pie charts.
-5. Select **Add Label** to configure colors for other values.
-6. Select **Save**.
 
 ### Visibility and sharing
 

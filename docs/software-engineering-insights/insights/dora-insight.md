@@ -6,11 +6,14 @@ redirect_from:
   - /tutorials/software-engineering-insights/dora-insight
 ---
 
-Enhancing the efficiency of software delivery is paramount for the success of your engineering team. However, achieving this without a clear understanding of the key performance indicators (KPIs) associated with the software delivery process is not easy. Without the right data, it becomes challenging to make well-informed decisions on optimizing workflows and communicating progress and achievements to stakeholders becomes equally difficult.
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-That's where DORA metrics come in handy. By using Harness SEI, you can streamline the process of identifying bottlenecks, get teams working together better, accelerate delivery speed, and articulate your team's accomplishments effectively.
+This tutorial will walk you through the process of setting up a DORA metrics Insight on Harness SEI. To get started, please ensure that you have a DORA profile configured and associated with your Collection. If you haven't done so already, please set up your DORA profile before proceeding.
 
-This tutorial explains how to set up a DORA metrics Insight on Harness SEI, ensuring a smoother and simpler software delivery process for your engineering team.
+In this tutorial, we will cover two key topics:
+
+* **Configuring the DORA Profile definition:** We will show you how to set up a DORA profile definition using integrations with Jira, GitHub, and Harness NG.
+* **Creating a DORA Insight:** We will demonstrate how to create a DORA insight using a combination of available DORA metrics reports.
 
 ## Prerequisites
 
@@ -19,54 +22,59 @@ This tutorial explains how to set up a DORA metrics Insight on Harness SEI, ensu
 * Setup and configure the Integrations for your Issue Management Platform, Source Code Manager and Deployment Manager.
 * DORA Profile (DORA type Workflow Profile)
 
+:::info
+If you're using ServiceNow or PagerDuty as your incident management platform, you can configure the integration for it to measure the DORA MTTR metric.
+:::
+
 ## DORA Profile
 
-DORA metrics are vital for evaluating and enhancing engineering team performance. The available DORA metrics are Lead Time for Changes, Deployment Frequency, Mean Time to Restore, and Change Failure Rate. You can adjust the threshold and definition for each of this Metric in the associated DORA Profile which acts as the single source of truth for your DORA Metrics calculations.
+The DORA metrics - Lead Time for Changes, Deployment Frequency, Mean Time to Restore, and Change Failure Rate - are calculated based on the software delivery process defined in your DORA profile. This profile serves as the single source of truth for your DORA metrics calculations, allowing you to adjust thresholds and definitions for each metric to suit your organization's needs.
 
-To create or edit a **DORA type Workflow profile**:
-
-* In your **Harness project**, go to the **SEI** module.
-* Select **Account**.
-* Select **Workflow** under **Profiles**.
-* To create a profile, select **+New Workflow Profile** and select the **DORA profile**. To edit an existing DORA type workflow profile, select the profile's name in the profiles list.
+To edit an existing DORA profile or create a new one, follow the step-by-step guide for configuring a [DORA type Workflow Profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#dora-profile).
 
 :::info
 To calculate the DORA Metrics, this profile must be associated with the collection under which your DORA Insight is configured.
 :::
 
-To learn more about customizing an existing DORA profile or creating a new profile, go to [DORA type Workflow Profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#dora-profile).
+## DORA Profile Configuration
 
-## Set up your project, integration and collection
+In this section, we will walk you through the process of configuring your DORA profile. Please note that this is an example configuration, and the actual implementation may vary based on your organization's software delivery process.
 
-Begin by creating a project and collection.
+### Lead Time for Changes
 
-1. In the sidebar of the Harness application, select the **SEI module** from the module selection.
-2. Select **Projects** and choose an existing project or create a new one. For information about creating a project, go to [Create organizations and projects](/docs/platform/organizations-and-projects/projects-and-organizations).
+The Lead Time for Changes defines the settings for measuring the DORA Lead Time metric, which represents the amount of time it takes for a task to get into production.
 
-:::info
-A user can create multiple projects and be part of multiple projects.
-:::
+#### Step 1: Select the Tool
 
-Once your project is created, you can set up and map integrations as an admin and set up the collection hierarchy.
+Which tool do you use to track tasks in your team? Note that a task could be a new feature, story, epic, etc. The Lead Time metric is expected to map the time from which a task/ticket was created in the Issue Management System until the time it was actually deployed into production.
 
-## Integration Mapping
+For this example, select Jira as the tool.
 
-**Integration Mapping** is the process of associating available or new integrations with your current project. As an admin, you can set up and map integrations in your project. For more information, go to [Integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview).
+#### Step 2: Configure Stages
 
-1. Go to the **Integration Mapping** tab within the SEI module.
-2. Click **Map Integrations** and select existing integrations or create new ones as needed.
-3. Ensure you associate the integrations with your current project.
-4. Now for configuring a DORA Metrics insight, you'll need to map the [Jira integration (Issue Management Tool)](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration), [Github integration (Source Code Manager)](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration), [Harness NG integration (CI/CD Platform)](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng).
+In the Stages configuration, you essentially select the Starting event that will trigger the Lead Time calculation. This can be configured as ticket created, commit created, or any other API event. For this example, we will set this as Ticket Created, considering we are trying to map the exact lead time without missing any stages.
 
-:::info
-You can also use [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) as the Issue Management tool.
-:::
+Next, add the stages and replicate your software delivery process for measuring lead time.
 
-You can also create new integrations and associate the integration with the current project by mapping them.
+#### Ideal Lead Time Profile Workflow
 
-* To create a new Jira integration, go to [Jira integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration).
-* To create a new GitHub integration, go to [GitHub integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration).
-* To create a new Harness NG integration, go to [Harness NG integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng).
+A typical lead time workflow might include the following stages:
+
+1. **Ticket Created:** This is the starting event that triggers the lead time calculation.
+2. **To-Do Stage:** The task is moved to the To-Do status, indicating that it's ready for development.
+3. **In-Progress Stage:** The task is moved to the In-Progress status, indicating that development has started.
+4. **SCM Stages:** The task goes through various SCM stages, such as:
+   1. **First Commit:** The first commit is made to the code repository.
+   2. **PR Creation:** A pull request is created to review the code changes.
+   3. **First Comment on PR:** The first comment is made on the pull request.
+   4. **PR Approval:** The pull request is approved, indicating that the code changes are ready for merge.
+   5. **PR Merge:** Indicated that the pull request is merged.
+5. **CI Build Stage:** The code changes are built and the artifact is generated as part of the continuous integration (CI) process.
+6. **CD Stage:** The built artifact is deployed to production as part of the continuous deployment (CD) process.
+
+Keep in mind that this is just a typical example, and you may need to customize your lead time profile to fit your specific software delivery process. You can add or remove stages as needed to ensure that you're accurately measuring the lead time for changes.
+
+For more information on configuring stages for the lead time workflow, refer to the DORA profile configuration documentation. This will provide you with detailed instructions and guidance on setting up your lead time profile.
 
 ## Create the Insight
 

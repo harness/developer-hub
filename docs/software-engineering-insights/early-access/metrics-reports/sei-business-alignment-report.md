@@ -8,7 +8,7 @@ sidebar_label: Business Alignment report
 The Business Alignment Report helps you visualize where your teams are investing the majority of their effort and assist them in prioritizing their time effectively. This report displays your investment efforts across the categories outlined in the corresponding Business Alignment Profile.
 
 :::info
-The Business Alignment report feature is currently in BETA. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+The Business Alignment report is currently in BETA and requires the `<SEI_NEW_BA_COMBINED_WIDGET>` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 <DocVideo src="https://www.youtube.com/embed/f3fLqermTGo?si=qFF0PVof8Q36kkr3" />
@@ -104,7 +104,7 @@ Complete the widget settings and select **Next: Place Widget**, place the widget
 
 The Business Alignment report can be used to calculate alignment metrics for tickets that are in the **In Progress status category** and those that have been resolved (i.e., **Done status category**) within a specific duration of time. This helps you analyze the effort invested in both ongoing and completed work within a specific time frame.
 
-This feature is behind the Feature Flag `<NEW_BA_COMBINED_WIDGET>` and `<BA_INCLUDE_UNRESOLVED_ISSUES>` . Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+This feature is behind the Feature Flag `<SEI_NEW_BA_COMBINED_WIDGET>` and `<SEI_BA_INCLUDE_UNRESOLVED_ISSUES>` . Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 #### Step 1: Add the Business Alignment report
 

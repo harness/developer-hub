@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 :::info
-The SEI Rally integration is currently in BETA and is accessible behind the Feature Flag `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+The SEI Rally integration is currently in BETA and is accessible behind the Feature Flag `<SEI_RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 Rally is a web-based platform for managing and tracking the entire application development lifecycle, including project management, release planning, iteration planning, and defect tracking.

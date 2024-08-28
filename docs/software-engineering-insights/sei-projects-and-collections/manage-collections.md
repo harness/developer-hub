@@ -4,6 +4,9 @@ description: Create and edit Collections.
 sidebar_position: 40
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Collections are groupings representing subdivisions of a [Collection category](/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat). By default, each Collection category has one root, or **All**, Collection. For example, the **Teams** category automatically has an **All Teams** Collection. Under the root Collection, you can create any number of Collections and Collection levels.
 
 ![](./static/collections.png)
@@ -84,6 +87,11 @@ Options for editing Collections are only available on **Flat List** view.
 
 ## Add and edit Collections
 
+<Tabs>
+<TabItem value="Asset Based">
+
+Follow the steps to define an Asset Based Collection.
+
 1. In your Harness project, go to the SEI module, select your **Project**, and then select **Collections**.
 2. Select the tab for the Collection category where you want to add or edit a Collection. This page shows only **Collection categories** and **Collections** relevant to the current project. Make sure you are in the correct project before creating or editing Collections.
 3. To edit an existing Collection, select the Collection in the **Name** column. To add a Collection, select **+ [Collection Category]**. For example, in the **Teams** category, select **+ Teams**.
@@ -103,25 +111,53 @@ Options for editing Collections are only available on **Flat List** view.
 
 6. Use the **Definition** settings to define [integrations](/docs/category/integrations) associated with the Collection. By default, if you don't specify any integrations, the Collection automatically inherits integrations from the associated project.
 
-7. Follow the steps to define an Asset Based Collection. To learn more, go to [Asset Based Collections](#asset-based-collections)
-   * In the **Collection Definition** settings, add the relevant [Integration](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview) to define the digital asset. <br />
+7. In the **Collection Definition** settings, add the relevant [Integration](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview) to define the digital asset. <br />
 
 ![](./static/integration-add-collection.png)
 
-   * Add the **Integration Filters** to determine the criteria to associate Contributors with the Collection.<br />
+8. Add the **Integration Filters** to determine the criteria to associate Contributors with the Collection.<br />
 
 ![](./static/integration-filters-collection.png)
 
-8. Follow the steps to define an People Based Collection. To learn more, go to [People Based Collections](#people-based-collections).
-   * In the **Collection Definition** settings, Select the **Configure Attribute** option under the **Collections** section. <br /> 
+9. Once you’ve configured the **Collection Definition** and **Insight Association** settings, click on **Save** to create the new Collection.
+
+</TabItem>
+
+<TabItem value="People Based">
+
+Follow the steps to define an People Based Collection.
+
+1. In your Harness project, go to the SEI module, select your **Project**, and then select **Collections**.
+2. Select the tab for the Collection category where you want to add or edit a Collection. This page shows only **Collection categories** and **Collections** relevant to the current project. Make sure you are in the correct project before creating or editing Collections.
+3. To edit an existing Collection, select the Collection in the **Name** column. To add a Collection, select **+ [Collection Category]**. For example, in the **Teams** category, select **+ Teams**.
+
+![](./static/collection-step1.png)
+
+4. In the **Basic Info** settings, you can:
+
+   * Enter the **Name**, **Description**, and **Tags**. Note that Collection names must be unique within each project.
+   * Identify the hierarchy position at which the new **Collection** should be created and then define the Collection's position in the hierarchy by customizing the **Parent Collection** field.
+
+![](./static/collecion-step2.png)
+
+5. Use the **Insights** settings to [manage Insights associations](#manage-insights-associations). By default, child Collections automatically inherit Insights associations from their ancestor Collections.
+
+![](./static/collection-step3.png)
+
+6. Use the **Definition** settings to define [integrations](/docs/category/integrations) associated with the Collection. By default, if you don't specify any integrations, the Collection automatically inherits integrations from the associated project.
+
+7. In the **Collection Definition** settings, Select the **Configure Attribute** option under the **Collections** section. <br /> 
 
 ![](./static/people-based-collection-filters.png)
 
-   * Add **Filters** using the custom attributes to define the criteria to associate contributors with the Collection. <br />
+8. Add **Filters** using the custom attributes to define the criteria to associate contributors with the Collection. <br />
 
 ![](./static/people-based-collections.png)
 
 9. Once you’ve configured the **Collection Definition** and **Insight Association** settings, click on **Save** to create the new Collection.
+
+</TabItem>
+</Tabs>
 
 ## Manage Insights associations
 
