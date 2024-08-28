@@ -255,8 +255,8 @@ If you want to learn more about the calculations behind these metrics, you can c
 
 The overall lead time can be categorized into three labels: Good, Acceptable, and Low.
 
-**Total Ideal Time:** The sum of all ideal times for each stage in the workflow.
-**Total Acceptable Time:** The sum of all acceptable times for each stage in the workflow.
+* **Total Ideal Time:** The sum of all ideal times for each stage in the workflow.
+* **Total Acceptable Time:** The sum of all acceptable times for each stage in the workflow.
 
 The lead time performance is ranked on the following grading scale:
 
