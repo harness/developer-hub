@@ -3286,6 +3286,11 @@ Yes, the skip keywords can be placed anywhere within the commit message, includi
 #### Does harness pipeline support triggering GitHub action workflow from the pipeline?
 As per the current design, there's no native step for this but user can write a shell script at the end of execution to trigger the GitHub action workflow.
 
+### Does Harness support to configure a repository for Python packages in Nexus Artifact Source?
+Nexus Artifact Source does not support Python (PyPi) package types. It only supports deployment of Zip, Tar, or container-based packages. For Python packages, consider using a different repository type or configuring a custom artifact source.
+
+#### Does Harness truncating logs?
+Yes, Harness does truncate logs. Please read more on this in Harness [Documentation](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations/)
 
 ### Infrastructure provisioning FAQs
 
