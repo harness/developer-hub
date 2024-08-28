@@ -62,7 +62,7 @@ To configure the delegate in a Docker container with a read-only file system, fo
     -e DELEGATE_TOKEN=<token> \
     -e DELEGATE_TAGS="" \
     -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
-    -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:24.08.83704.minimal
+    -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:24.08.83702.minimal
     ```
 
     **Explanation:**
@@ -136,7 +136,7 @@ To configure the delegate in a Kubernetes cluster with a read-only file system, 
         terminationGracePeriodSeconds: 600
         restartPolicy: Always
         containers:
-        - image: harness/delegate:24.08.83704.minimal
+        - image: harness/delegate:24.08.83702.minimal
             imagePullPolicy: Always
             name: delegate
             securityContext:
@@ -173,7 +173,7 @@ To configure the delegate in a Kubernetes cluster with a read-only file system, 
                 name: k8s-ro-account-token
             env:
             - name: WORKING_DIR
-            value: "/opt/harness-delegate/writeable/"
+            value: "/opt/harness-delegate/writable/"
             - name: JAVA_OPTS
             value: "-Xms64M"
             - name: ACCOUNT_ID
@@ -202,7 +202,7 @@ To configure the delegate in a Kubernetes cluster with a read-only file system, 
             value: "https://app.harness.io/log-service/"
             volumeMounts:
             - name: work-dir
-            mountPath: /opt/harness-delegate/writeable/
+            mountPath: /opt/harness-delegate/writable/
             - name: tmp-dir
             mountPath: /tmp
         volumes:
@@ -235,7 +235,7 @@ To configure the delegate in a Kubernetes cluster with a read-only file system, 
     ```yaml
     volumeMounts:
     - name: work-dir
-    mountPath: /opt/harness-delegate/writeable/
+    mountPath: /opt/harness-delegate/writable/
     - name: tmp-dir
     mountPath: /tmp
     volumes:
