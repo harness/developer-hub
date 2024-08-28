@@ -223,6 +223,21 @@ If you needed the allowed values to include quotes, such as `{"x": "y"}`, then y
 
 :::
 
+
+:::info note
+
+When using `allowedValues` with runtime inputs in array-type fields (e.g., file paths), errors may occur during deployment as the system might not correctly process these inputs.
+
+Fields like paths in ECS Task Definitions and valuesPaths in Kubernetes services do not support runtime inputs in array format. Expressions like `<+input>.allowedValues(<+variable1>, <+variable2>)` can lead to deployment failures
+
+**Workaround:-**
+Define a variable (e.g., FILE_PATH_VAR) at the pipeline or service level, assign it a value using `allowedValues`, and reference this variable in the configuration. This approach ensures the input is treated as a string.
+
+**Recommendation:-**
+Avoid using `allowedValues` with runtime inputs in list fields and use the suggested workaround to ensure proper functionality
+
+:::
+
 ## Allow multiple selection
 
 :::note
