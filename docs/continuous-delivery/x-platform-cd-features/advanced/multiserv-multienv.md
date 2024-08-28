@@ -57,7 +57,7 @@ Make sure that the feature flag `CDS_SPECIFY_INFRASTRUCTURES` is enabled to sele
 
 :::
 
-    ![](./static/infrastructure_scope_selector.png)
+    ![](./static/Infrastructure_scope_selector.png)
 
    For details on **Deploy to Environments or Infrastructures in parallel?**, go to [deploying in parallel or serial](#deploying-in-parallel-or-serial) below.
 
