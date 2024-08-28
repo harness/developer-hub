@@ -22,7 +22,7 @@ export const IacmData: Horizon = {
       {
         tag: [{ value: "Security" }],
         title: "State management",
-        description: "IaCM supports hosted backend, allowing users to store state securely",
+        description: "IaCM supports hosted backend, allowing you to store state securely",
       },
       {
         tag: [{ value: "Security" }],
