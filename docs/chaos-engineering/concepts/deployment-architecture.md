@@ -11,7 +11,6 @@ redirect_from:
 - /docs/chaos-engineering/architecture-and-security/architecture/control-plane
 ---
 
-
 ## Before you begin, review the following
 
 - [All about chaos engineering](/docs/chaos-engineering/concepts/chaos101)

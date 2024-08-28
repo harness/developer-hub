@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 
-date: 2024-07-05T10:00
+date: 2024-08-26T10:00
 sidebar_position: 10
 ---
 
@@ -22,6 +22,26 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## August 2024
+
+### Version 1.43
+
+<!-- 2024-08-19 -->
+
+#### Fixed issues
+
+- Resolved an issue where artifacts did not appear in the artifacts tab of the CI stage when using the 'build and push' steps with Buildx instead of Kaniko. (CI-13576, ZD-63222,65912)
+
+- Corrected the visibility of the `NodeSelector` field label in the CI stage infrastructure tab when using Kubernetes infrastructure. The reference for the node selector string has been fixed to ensure the label is properly populated. (CI-13867)
+
+- Runtime-input options were not showing for environment variables in run-step while using it as template. Corrected by adding a check to see if the step is a template to allow for its proper usage. (CI-13640, ZD-67460)
+
+### Version 1.42
+
+<!-- 2024-08-12 -->
+
+#### Fixed issues
+
+- Fixed an issue where pipeline failures at the initialization step resulted in the entire pod YAML, including environment variables with secrets, being logged as an error. The log level has been changed to debug to prevent sensitive data exposure, and a new log has been added to capture essential details without including the full object. (CI-13785)
 
 ### Version 1.41
 

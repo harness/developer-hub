@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-08-12:T10:00:00
+date: 2024-08-20:T10:00:00
 sidebar_position: 8
 ---
 
@@ -46,6 +46,39 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 ## August 2024
+
+### Version 1.53.5
+
+#### New features and enhancements
+
+- **Service Failure Strategy**
+
+We have introduced a failure strategy for the service, where the service step will, by default, inherit the failure strategy from the stage. (CDS-96876, ZD-63199, ZD-64391, ZD-64465, ZD-66720)
+
+- **Infrastructure Scope Selector**
+
+We have introduced the scope for infrastructure selection. The infrastructures will be viewed in the Account scope. The field is now searchable, allowing users to start typing and see results as they type. One can select all the infractures in the environment by selecting the checkbox `All Infrastructures`. Currently this feature is behing the Feature Flag `CDS_SPECIFY_INFRASTRUCTURES`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-94529)
+
+- The [My Executions](/docs/platform/triggers/triggering-pipelines#executions) filter on the listing page displays both manual executions and those triggered automatically by Git pull requests (PRs) i.e execution executed by their Githib PRs as well as manually execution pipeline execution will appear in the My Execution list. Currently this feature is behing the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (PIPE-13755)
+
+#### Fixed issues
+
+- Earlier, Git Experience intermittently encountered errors when pushing changes to a new branch. The issue is resolved. The `/` in the gitx webhook identifier was replaced with `_` in the identifier field. Henceforth, you can't create webhook identifiers with a `/`. (PIPE-20973, ZD-681420)
+
+### Version 1.52.4
+
+#### New features and enhancements
+
+- You can clone [Services](/docs/continuous-delivery/x-platform-cd-features/services/services-overview#clone-services) across scopes i.e from one project to another, project to organization, account to project etc. and [Environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments#clone-environments) scopes (i.e from one project to another, project to organization, account to project etc.). Currently this feature is behind the Feature Flag `CDS_SERVICE_ENV_CLONING`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-97315, CDS-98426)
+
+#### Fixed issues
+
+- The error title **Intervention** was displayed when the verification step failed. The title is now updated to **Verification Failure**. (CDS-99671,ZD-65113)
+- The runtime input symbol was getting displayed even when **fixed values** was selected from the templates in the monitored services. This issue has been resolved. (CDS-99518) 
+- On the services page, the deployment type icon did not consistently appear. This issue has been resolved. (CDS-99331, ZD-66892)
+- GitOps deployments were not tracked for multiple projects because the Harness Gitops instances service was out of sync with applications without project mappings. This issue has been resolved. (CDS-98989, ZD-63203)
+- An error message associated with missing parameters in the GitHub Connector was ambiguous. This issue was resolved. (CDS-97760)
+- Previously, when a Pipeline Execution was aborted due to a Deployment Freeze, the details of the Freeze were not accessible from the Execution Console view. This issue was resolved by adding the details to the Console View. (PIPE-20658)
 
 ### Version 1.51.5
 

@@ -1,6 +1,6 @@
 ---
 title: HTTP probe
-sidebar_position: 3
+sidebar_position: 30
 description: Features and specification of the HTTP probe
 redirect_from:
 - /docs/chaos-engineering/technical-reference/probes/http-probe

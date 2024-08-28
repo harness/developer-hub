@@ -1,6 +1,6 @@
 ---
 title: SLO probe
-sidebar_position: 7
+sidebar_position: 60
 description: Features and specification of the SLO probe
 redirect_from:
 - /docs/chaos-engineering/technical-reference/probes/slo-probe
@@ -68,7 +68,7 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
   </tr>
   <tr>
     <td>platformEndpoint</td>
-    <td>Flag to hold the platfrom endpoint</td>
+    <td>Flag to hold the platform endpoint</td>
     <td>Mandatory</td>
     <td>N/A<code>type: string</code></td>
     <td>The <code>platformEndpoint</code> stores the value of NG manager platform endpoint. For example, <code>https://app.harness.io/gateway/cv/api</code></td>

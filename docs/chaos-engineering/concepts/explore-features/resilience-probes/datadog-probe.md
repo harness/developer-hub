@@ -1,6 +1,6 @@
 ---
 title: Datadog probe
-sidebar_position: 8
+sidebar_position: 10
 description: Features and specification of the Datadog probe
 redirect_from:
 - /docs/chaos-engineering/technical-reference/probes/datadog-probe

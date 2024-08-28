@@ -1,9 +1,9 @@
 ---
 id: resilience-probes
-sidebar_position: 40
+sidebar_position: 1
 title: Resilience Probes
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/ssh
+- /docs/chaos-engineering/features/resilience-probes/overview
 ---
 
 This topic introduces you to resilience probes, their importance, types, and generic properties.
@@ -14,11 +14,15 @@ Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. 
 
 ## What is a resilience probe?
 
-Resilience probes (or probes) are pluggable health checkers defined within the chaos engine for any chaos experiment. Resilience probes do the following:
+Resilience probes (or probes) are pluggable health checkers defined within the chaos engine for any chaos experiment. They are declarative checks that determine the outcome of a fault. Probes are scoped to the faults, and you can define as many probes as required as part of each fault. They (not limited to) perform the following:
 - Monitors your application's health **before**, **during** and **after** a chaos experiment.
 - Explore the behavior of a system in a chaotic or unpredictable manner.
 - Help understand the underlying patterns and laws that govern the behavior of these systems, and to use that understanding to predict or control their behavior.
 - Help validate the [declarative hypothesis](#declarative-hypothesis) set by the user.
+
+### Resilience Score
+
+It is a quantitative measure of how resilient the target application is to a chaos experiment. You can [calculate](/docs/chaos-engineering/explore-features/resilience-probes/determine-score) this value based on the priority set for every fault in the experiment and the probe success percentage of the faults (if the probes are defined).
 
 :::tip
 - If you are an existing customer, you will see the old flow of control in resilience probes by default and you have the choice to upgrade to the new flow.
@@ -29,7 +33,7 @@ The probe is triggered by a chaos runner when the chaos engine begins execution.
 Depending on the type of probe, probes can:
 * Run `cmd` commands for innumerable validations,
 * Run the Kubernetes commands, send HTTP requests, check for a label or field selector missing, and assert if the resource is absent or not,
-* Execute PromQL queries, perform conditional validation on QPS or probe success percentages,
+* Execute PromQL queries, perform conditional validation on QPS or probe success percentages (percentage of probes that have been successfully evaluated out of the total number of probes),
 * Validate your error budget (SLO probe),
 * Connect with the APM tool and assert metrics (Datadog probe).
 
@@ -98,6 +102,62 @@ HCE allows you to create probes for multiple infrastructures, namely, Kubernetes
 	| Prometheus |           |         |
 	| Kubernetes |           |         |
 
+:::tip
+- When you try to enable or disable a Linux probe, two mandatory fields `type` and `attempt` (with empty values) are added to the probe. Even if you edit these values, they will not reflect in the updated experiment manifest. This is because the final values for the earlier-mentioned mandatory fields are picked from the database associated with the specific probe.
+- Go to [known issues](/docs/chaos-engineering/troubleshooting/known-issues) for more information.
+:::
+
+## Resilience probes status matrix
+
+Probe status is the single source of truth when executing a chaos experiment. The probe status in a chaos experiment can be in 4 different states.
+
+- **AWAITED**: A probe status is in 'awaited' state until the fault is being executed, that is, the fault is still running. Once it has completed execution, it can be in the 'passed', 'failed' or 'N/A' state.
+- **PASSED**: A probe status is considered 'passed' when the success criteria is met.
+- **FAILED**: A probe status is considered 'failed' when the success criteria is not met.
+- **RUNNING**: A probe status is considered 'running' when the probe is currently in execution.
+- **N/A**: A probe status is in the 'N/A' state when the result of the fault could not be determined.
+
+:::info notes
+- ChaosHub support for resilience probes is not available yet.
+:::
+
+### Force delete resilience probes
+
+- When you force delete a probe, it will not be available for use. You will lose the history of that probe, but experiment runs that used the probe will contain the history of the probe.
+- Once you delete a probe, information about the probe reference is also deleted from all the manifest references, that is, the probe is removed from the probeRef annotation. This ensures that the next possible run will not schedule the probe.
+Only when you **hard delete** a probe, you can reuse the name of that probe.
+
+### Resilience probes support
+Resilience probes are supported by the following features:
+- Resilience Tab
+- Chaos Studio
+- Experiments/Run Reports
+- Linux and Kubernetes experiments
+- GameDays
+- Sandbox environment
+
+### Default/System resilience probes
+
+- You can create system (default probes) at the project level **only once**.
+- Once you create a default probe, you can't delete, disable, or update it.
+- If you have more than one resilience probe in your chaos experiment, you can disable, delete, or update the system probe.
+- Default probes are a part of resilience probes and are entered as annotations in the experiment manifest.
+
+### Image registry support
+- You can configure the image registry to be used with the default probes. If you haven't configured a probe yet, the experiment will use the default image registry.
+- HCE doesn't currently provide image registry support for default probes.
+
+
+:::info notes
+- **Legacy probes support (Backward compatibility)***: Users can still use [legacy probes](/docs/chaos-engineering/features/resilience-probes/cmd-probe).
+- **Audit integration**: Audit events are available for resilience probes.
+- **Access control permissions division**: ACL is mapped to the experiment ACL.
+:::
+
+### License
+
+Resilience probes are not a part of any subscription, and hence you don't have any limit on the number of probes you can create. Concerning usability, 1,000 probes can be executed in a month.
+
 ## Next steps
 
-* [Use cases of resilience probes](/docs/chaos-engineering/features/resilience-probes/types#common-use-cases)
+* [Use cases of resilience probes](/docs/chaos-engineering/explore-features/resilience-probes/types#common-use-cases)

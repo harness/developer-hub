@@ -1,6 +1,6 @@
 ---
 title: Prometheus probe
-sidebar_position: 6
+sidebar_position: 50
 description: Features and specification of the Prometheus probe
 redirect_from:
 - /docs/chaos-engineering/technical-reference/probes/prom-probe

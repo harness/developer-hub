@@ -1,6 +1,6 @@
 ---
 title: Kubernetes probe
-sidebar_position: 5
+sidebar_position: 40
 description: Features and specification of the Kubernetes probe
 redirect_from:
 - /docs/chaos-engineering/technical-reference/probes/k8s-probe

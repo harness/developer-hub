@@ -3,18 +3,35 @@ title: Create experiment
 sidebar_position: 1
 ---
 
-This topic describes how you can create chaos experiments and execute them to build and improve the resilience of your application.
+This topic describes how you can create chaos experiments that consist of chaos faults and execute them to build and improve the resilience of your application.
 
 ## Before you begin
 
-- What is a chaos experiment?
-- What are chaos faults?
-- What are resilience probes?
-- How to create a resilience probe?
+- [What is a chaos experiment?](/docs/chaos-engineering/concepts/chaos101)
+- [What are chaos faults?](/docs/chaos-engineering/concepts/explore-features/experiments#chaos-fault)
+- [What are resilience probes?](/docs/chaos-engineering/concepts/explore-features/resilience-probes/resilience-probes)
+- [How to create a resilience probe?](/docs/chaos-engineering/use-harness-ce/probes/use-probe)
 
+### Create Environment
+
+Before you create an experiment, you need to create an environment where you have to [enable a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable).
+
+1. To create an environment, go to **Chaos** module, and click **Environments**. Select **New Environment**.
+
+	![](./static/create-experiments/create-env-1.png)
+
+2. Provide a name, and click **Create**. This creates an environment.
+
+	![](./static/create-experiments/name-2.png)
+
+:::info note
+To edit or delete the environment, select the **`⋮`** icon against the name of the environment.
+
+	![](./static/create-experiments/edit-3.png)
+:::
 ### Create a Chaos Experiment
 
-You can add one or more chaos faults to a chaos experiment and execute it. Follow the interactive guide below to create a chaos experiment with one chaos fault, namely, pod delete, which has one resilience probe associated with it.
+You can add one or more chaos faults to a chaos experiment and execute it. Follow the interactive guide or the [step-by-step](#step-by-step-guide) guide below create a chaos experiment with one chaos fault, namely, pod delete, which has one resilience probe associated with it.
 
 <iframe
   src="https://app.tango.us/app/embed/898a3ef8-968d-4882-a465-6376479f752e"
@@ -28,7 +45,7 @@ You can add one or more chaos faults to a chaos experiment and execute it. Follo
   mozallowfullscreen="mozallowfullscreen"
   allowfullscreen="allowfullscreen"></iframe>
 
-## Construct a Chaos Experiment
+#### Step-by-step guide
 
 To add a chaos experiment:
 
@@ -51,7 +68,7 @@ For more information on infrastructure, see [Connect chaos infrastructures](/doc
 4. Choose how you want to build the experiment. The options, explained later, are:
 
 	* **[Blank Canvas](#using-blank-canvas)** - Lets you build the experiment from scratch, adding the specific faults you want.
-	* **[Templates from ChaosHubs](#using-templates-from-chaoshubs)** - Lets you preview and select and experiment from pre-curated experiment templates available in [ChaosHubs](/docs/chaos-engineering/features/chaos-hubs/introduction.md).
+	* **[Templates from ChaosHubs](#using-templates-from-chaoshubs)** - Lets you preview and select and experiment from pre-curated experiment templates available in [ChaosHubs](/docs/chaos-engineering/features/chaos-hubs/introduction).
 	* **[Upload YAML](#upload-yaml)** - Lets you upload an experiment manifest YAML file.
 
 	These options are explained below.

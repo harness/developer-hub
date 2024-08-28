@@ -1,6 +1,6 @@
 ---
 title: Modes and use cases of resilience probes
-sidebar_position: 1
+sidebar_position: 2
 description: Modes and use cases of resilience probes
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/probes/overview

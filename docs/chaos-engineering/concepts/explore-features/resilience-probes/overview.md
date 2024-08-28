@@ -17,6 +17,7 @@ Resilience probes (or probes) are pluggable health checkers defined within the c
 - Help understand the underlying patterns and laws that govern the behavior of these systems, and to use that understanding to predict or control their behavior.
 - Help validate the [declarative hypothesis](#declarative-hypothesis) set by the user.
 
+
 :::tip
 - If you are an existing customer, you will see the old flow of control in resilience probes by default and you have the choice to upgrade to the new flow.
 - If you are a new customer, the feature flag is turned on by default and you will see the new flow of control in the resilience probes.

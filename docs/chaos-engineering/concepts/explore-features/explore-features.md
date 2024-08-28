@@ -58,7 +58,7 @@ import FeatureCard from '@site/src/components/ChaosEngineering/FeatureCard';
 
 <FeatureCard title="Out-of-the-box Faults" description="" link="/docs/chaos-engineering/use-harness-ce/chaos-faults/" />
 
-<FeatureCard title="Create Custom Faults" description="" link="saas-deployment/" />
+<FeatureCard title="Create Custom Faults" description="" link="/docs/chaos-engineering/use-harness-ce/experiments/create-experiments" />
 
 ## Security and Governance
 
