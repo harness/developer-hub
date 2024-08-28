@@ -68,7 +68,7 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
   </tr>
   <tr>
     <td>platformEndpoint</td>
-    <td>Flag to hold the platfrom endpoint</td>
+    <td>Flag to hold the platform endpoint</td>
     <td>Mandatory</td>
     <td>N/A<code>type: string</code></td>
     <td>The <code>platformEndpoint</code> stores the value of NG manager platform endpoint. For example, <code>https://app.harness.io/gateway/cv/api</code></td>
@@ -249,7 +249,7 @@ probe:
         apiTokenSecret: "<api-token>"
         scope:
           accountIdentifier: "<account-identifier>"
-          orgIdentifier: "<org-idetifier>"
+          orgIdentifier: "<org-identifier>"
           projectIdentifier: "<project-identifier>"
         comparator:
           type: float
