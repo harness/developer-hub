@@ -1,6 +1,6 @@
 ---
 id: Requirements
-title: Requirements to fulfill before executing chaos faults on TKGi.
+title: Prerequisites before executing faults on TKGi
 sidebar_position: 1
 ---
 
@@ -24,7 +24,7 @@ This topic describes the HCE platform requires to execute chaos experiments.
 </tr>
 <tr>
 	<th> Access requirements for agent install </th>
-	<td> Install agent as a cluster-admin or as a user mapped to cluster role with <a href="/docs/chaos-engineering/chaos-faults/kubernetes/permissions/kubernetes-chaos-agent.md"> these </a> permissions. </td>
+	<td> Install agent as a cluster-admin or as a user mapped to cluster role with <a href="/docs/chaos-engineering/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements">these</a> permissions. </td>
 </tr>
 
 <tr>
