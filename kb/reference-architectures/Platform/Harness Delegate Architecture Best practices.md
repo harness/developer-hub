@@ -1,24 +1,6 @@
-## 
-
-[**Design considerations for choosing the right Delegate Architecture**](\#design-considerations-for-choosing-the-right-delegate-architecture:):
-
-**C[ommon patterns adapted for Delegate Architecture, pros and cons](\#common-patterns-adapted-for-delegate-architecture,-pros-and-cons:)**:	[**1**](\#design-considerations-for-choosing-the-right-delegate-architecture:)
-
-[**Delegate Architecture Best Practices(Applicable to All modules CI/CD/CCM):	2**](\#delegate-architecture-best-practices(applicable-to-all-modules-ci/cd/ccm/sto/iacm):)
-
-[**CI Delegate Architecture \- Lloyds Banking Group:	3**](\#heading=h.izkh847s71g)
-
-[**CI Delegate Architecture Best Practices:	3**](\#ci-delegate-architecture-best-practices:)
-
-[**CD Delegate Architecture :	4**](\#heading=h.6vlxgijdqd4u)
-
-[**CD Delegate Architecture Best Practices:	5**](\#cd-delegate-architecture-best-practices:)
-
-## 
-
 ## [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/)
 
-## Design considerations for choosing the right Delegate Architecture: {#design-considerations-for-choosing-the-right-delegate-architecture:}
+## Design considerations for choosing the right Delegate Architecture:
 
 * Ownership and Team structure  
   * Ownership of teams over Infrastructure decisions is the most important design consideration.   
@@ -34,13 +16,13 @@
 * Cost  
   * Some patterns allow efficient cost optimization strategies than others . 
 
-## Common patterns adapted for Delegate Architecture, pros and cons: {#common-patterns-adapted-for-delegate-architecture,-pros-and-cons:}
+## Common patterns adapted for Delegate Architecture, pros and cons:
 
 ![][image1]
 
 ## 
 
-## Delegate Architecture Best Practices(Applicable to All modules CI/CD/CCM/STO/IACM): {#delegate-architecture-best-practices(applicable-to-all-modules-ci/cd/ccm/sto/iacm):}
+## Delegate Architecture Best Practices(Applicable to All modules CI/CD/CCM/STO/IACM):
 
 1. Create a separate Application Identifier for Harness Delegate hosting Infrastructure in CMDB and Tag each Delegate with App identifier. This is extremely important and useful for efficient operations and telemetry   
 2. Naming standardization is crucial for efficient Delegate Onboarding and Governance automation  
@@ -58,13 +40,13 @@
  
 
 
-##  CI Delegate Architecture Best Practices: {#ci-delegate-architecture-best-practices:}
+##  CI Delegate Architecture Best Practices:
 
 1. Single Kubernetes Cluster is recommended for hosting CI delegates since CI Delegate is a mere orchestrator. Build steps are executed as Kubernetes Jobs  
 2. Same pool of Delegates can be used for all Applications in any size of Enterprise given that artifactory is cloud agnostic, auto scaling is set up  
 3. If capturing cost incurred by each Application is a requirement and hindering from using common set of delegates for , Running CI Delegates in common namespace and moving Build step execution jobs to App Specific namespaces is a tip that provides optimal usage of Delegates and required insights 
 
-## CD Delegate Architecture Best Practices: {#cd-delegate-architecture-best-practices:}
+## CD Delegate Architecture Best Practices:
 
 1. Always use separate set of Delegates for Non-prod and Prod Deployments  
 2. Highly recommend to host Non-prod & Prod Delegates on different clusters adhering to the network and firewall compliance requirements  
