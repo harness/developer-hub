@@ -51,9 +51,9 @@ You can deploy one service to multiple environments.
  
 :::note
 
-The UI component is updated to make list of infrastructure searchable and is also sorted based on creation time. You can also select all the infrastructures in the environment by choosing the `All Infrastructures` checkbox.
+The UI component is updated to make the list of infrastructure searchable and sorted based on creation time. You can also select all the infrastructures in the environment by choosing the `All Infrastructures` checkbox.
 
-Make sure that the feature flag `CDS_SPECIFY_INFRASTRUCTURES` is enabled the new component. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Make sure the feature flag `CDS_SPECIFY_INFRASTRUCTURES` is enabled for the new component. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
    ![](./static/Infrastructure_scope_selector.png)
 :::
