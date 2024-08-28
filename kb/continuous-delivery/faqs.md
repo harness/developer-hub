@@ -3255,6 +3255,10 @@ For more details, refer to the Harness documentation on [Delegate Permissions](h
 In CD/Custom Stages, Python can be utilized through the implementation of a Step Group, which allows access to the Run Step that supports Python.
 For more details, refer to the Harness documentation on [Containerized Step Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/)
 
+#### What is the API endpoint and the required details to create Global Environment overrides?
+
+You can use the API: https://apidocs.harness.io/tag/ServiceOverrides/#operation/createServiceOverride to create Global Environment overrides
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
