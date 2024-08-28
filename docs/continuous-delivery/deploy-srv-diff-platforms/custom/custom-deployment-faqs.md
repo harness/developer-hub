@@ -47,3 +47,6 @@ For more details, go to [Documentation](https://developer.harness.io/docs/contin
 ### Does Harness support deployment template to access variables such as a project variable?
 
 Yes, when using a custom deployment template in the infrastructure, one can use variables inside that. Project-level variables can be fetched using the `<+project.variableName>` syntax in the deployment template.
+
+### Can we specify a harness expression as a string in shell step?
+Any expression in harness pipeline will be evaluated and hence currently it is not possible to pass the expression as part of the shell step as astring as it gets evaluated as well.
