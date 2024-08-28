@@ -715,3 +715,17 @@ To access variables in the the Service, Infrastructure and Environment. You can 
 
 ### Could you please explain how delegate selection is handled in both Service and Infrastructure steps?
 The service will use the connector delegate selector during the artifact fetch task. The connector will employ a delegate or delegate selector as specified, and the same delegate will be used if no delegate selector is defined at the step, stage, or pipeline level. 
+
+### Why does the pipeline name (or other fields) appear differently in Pipeline Studio compared to the Pipeline Listing Page?
+
+The difference in pipeline names and other fields between the Pipeline Studio and the Pipeline Listing Page occurs because these interfaces pull data from different sources:
+
+1. **Pipeline Studio**: This interface displays information directly from the YAML file in your Git repository, showing the values as they currently exist in the branch you're working on.
+
+2. **Pipeline Listing Page**: This interface retrieves information from the Harness Database (DB), reflecting the last updates made via the Harness UI or API.
+
+Discrepancies arise when the YAML file in any Git branch has different values compared to what's stored in the Harness DB. For example, if the pipeline name in the Git YAML file does not match the name stored in the Harness DB, you’ll see different names in the two interfaces.
+
+When you make updates to the pipeline via the Harness UI, these changes are saved both to the Harness DB and to the YAML file in the selected Git branch. However, other branches in your repository may still carry outdated YAML files with old values.
+
+To maintain consistency across all branches and interfaces, ensure that any manual changes to the YAML in Git are synchronized with updates made in the Harness UI. It’s also a good practice to regularly update all relevant branches to keep them aligned with the Harness DB.
