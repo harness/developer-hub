@@ -63,7 +63,7 @@ For detailed information about a plugin's settings, go to the plugin's page on t
 
 Not all plugins write output variables.
 
-Support for plugin output variables is unpredictable with [self-managed VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
+Output variable, that use special characters ( e.g. '.' ',' '/' ) in their key or value, may not work when executed on [self-managed VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
 
 :::
 
