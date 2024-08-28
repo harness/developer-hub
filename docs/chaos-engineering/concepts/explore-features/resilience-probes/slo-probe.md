@@ -249,7 +249,7 @@ probe:
         apiTokenSecret: "<api-token>"
         scope:
           accountIdentifier: "<account-identifier>"
-          orgIdentifier: "<org-idetifier>"
+          orgIdentifier: "<org-identifier>"
           projectIdentifier: "<project-identifier>"
         comparator:
           type: float

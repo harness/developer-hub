@@ -30,7 +30,7 @@ Locust loadgen fault simulates load generation on the target hosts for a specifi
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault determines the resilience of the application under a generated load. It determines how quickly the application scales or recovers to avoid such failure.
+This fault determines the resilience of the application under a generated load. It determines how quickly the application scales or recovers to avoid such failure. 
 </Accordion>
 
 </FaultDetailsCard>
@@ -46,7 +46,7 @@ K6 loadgen fault simulates load generation on the target hosts for a specific ch
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault determines the resilience of the application under a generated load. It determines how quickly the application scales or recovers to avoid such failure.
+This fault determines the resilience of the application under a generated load. It determines how quickly the application scales or recovers to avoid such failure. 
 </Accordion>
 
 </FaultDetailsCard>

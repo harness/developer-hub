@@ -26,6 +26,7 @@ async function config() {
     favicon: "img/hdh_fav_icon_grey.ico",
     customFields: {
       SEGMENT_API_KEY: process.env.SEGMENT_API_KEY,
+      HARNESS_GENERIC_READ_ONLY_KEY: process.env.HARNESS_GENERIC_READ_ONLY_KEY,
     },
 
     //Mermaid Diagram Functionality
@@ -170,6 +171,10 @@ async function config() {
                   to: "docs/self-managed-enterprise-edition",
                 },
                 {
+                  label: "Open Source",
+                  href: "https://docs.gitness.com/",
+                },
+                {
                   label: "FirstGen",
                   to: "docs/first-gen",
                 },
@@ -251,6 +256,7 @@ async function config() {
                 },
               ],
             },
+
             {
               label: "Knowledge Base",
               position: "right",
@@ -275,6 +281,11 @@ async function config() {
               label: "Roadmap",
               position: "right",
               href: "/roadmap",
+            },
+            {
+            label: "Open Source",
+            position: "right",
+            href: "https://docs.gitness.com/",
             },
             {
               type: "custom-coveo-search",
@@ -370,7 +381,7 @@ async function config() {
                 },
                 {
                   label: "Open Source",
-                  to: "https://www.harness.io/open-source",
+                  to: "https://docs.gitness.com/",
                 },
                 {
                   label: "YouTube",
@@ -550,7 +561,6 @@ async function config() {
             [
               (await import("remark-math")).default,
               {
-               
                 strict: false,
               },
             ],
@@ -559,7 +569,6 @@ async function config() {
             [
               (await import("rehype-katex")).default,
               {
-              
                 strict: false,
               },
             ],

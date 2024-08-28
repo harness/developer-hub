@@ -8,6 +8,7 @@ const sidebars = {
     {
       type: "category",
       label: "University",
+      className: "sidebar-univ",
       link: {
         type: "doc",
         id: "university-home",
@@ -77,18 +78,21 @@ const sidebars = {
           type: "link",
           label: "Virtual Instructor-Led Calendar",
           href: "https://university-registration.harness.io/calendar",
+          className: "sidebar-vilt-cal",
         },
         // Instructions
         {
           type: "doc",
           label: "Instructions",
           id: "instructions",
+          className: "sidebar-ilt-instructions",
         },
         // FAQs
         {
           type: "doc",
           label: "FAQs",
           id: "faqs",
+          className: "sidebar-faqs",
         },
       ],
     },

@@ -29,7 +29,7 @@ Below is a table that shows the current state of our integrations, demonstrating
 | Terraform   | NaN                  | 1.3.5             | 1.9.4          | Quarterly     |
 | Terragrunt  | NaN                  | 0.40.x            | 0.66.4         | Quarterly     |
 | NaN         | Serverless.com       | 3.x               | 4.x            | Quarterly     |
-| Jenkins     | Jenkins Build Step   | 2.432             | 2.471          | Quarterly     |
+| Jenkins     | Jenkins Build Step   | 2.440             | 2.471          | Quarterly     |
 | NaN         | ArgoCD               | 2.8.x             | 2.12.x         | Quarterly     |
 | AWS         | AWS SAM              | 1.84.0            | 1.121.0        | Quarterly     |
 

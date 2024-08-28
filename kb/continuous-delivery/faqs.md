@@ -16,6 +16,15 @@ For an overview of Harness concepts, see [Learn Harness' key concepts](/docs/pla
 
 ### General FAQs
 
+#### Where can one find instanceKey and infrastructureMappingId values in Trigger Rollback API?
+
+The Instance Key is a combination of the Infrastructure Key and the instance information available in the Instances Table.
+Infrastructure key can be found as part of the infrastructure output variables.
+Instance information can be found in the Instances Table.
+
+Note that the infrastructureMappingId is not exposed as part of the Infrastructure.
+
+
 #### How does Harness calculate pricing for CD?
 
 See [Service-based licensing and usage for CD](/docs/continuous-delivery/get-started/service-licensing-for-cd/)
@@ -3245,6 +3254,10 @@ For more details, refer to the Harness documentation on [Delegate Permissions](h
 
 In CD/Custom Stages, Python can be utilized through the implementation of a Step Group, which allows access to the Run Step that supports Python.
 For more details, refer to the Harness documentation on [Containerized Step Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/)
+
+#### What is the API endpoint and the required details to create Global Environment overrides?
+
+You can use the API: https://apidocs.harness.io/tag/ServiceOverrides/#operation/createServiceOverride to create Global Environment overrides
 
 ### Infrastructure provisioning FAQs
 

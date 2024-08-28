@@ -8,6 +8,7 @@ const sidebars = {
     {
       type: "category",
       label: "Documentation",
+      className: "sidebar-all_docs",
       link: {
         type: "doc",
         id: "index",
@@ -182,6 +183,17 @@ const sidebars = {
               "Learn how to use this end-to-end solution for continuous, self-managed delivery.",
           },
         },
+        // Harness Open Source
+        {
+          type: "link",
+          href: "https://docs.gitness.com/",
+          label: "Gitness",
+          className: "sidebar-gitness",
+          customProps: {
+            description:
+              "Learn about the latest open source offerings from Harness.",
+          },
+        },
         {
           type: "category",
           label: "Harness FirstGen",
@@ -339,6 +351,16 @@ const sidebars = {
         description: "Learn about recent changes to Harness products.",
       },
     },
+     // Roadmap
+     {
+      type: "link",
+      label: "Roadmap",
+      className: "sidebar-roadmap",
+      href: "/roadmap/#code",
+      customProps: {
+        description: "Learn about recent changes to Harness products.",
+      },
+    },
     // API Docs
     {
       type: "link",
@@ -392,6 +414,16 @@ const sidebars = {
         description: "Learn about recent changes to Harness products.",
       },
     },
+     // Roadmap
+     {
+      type: "link",
+      label: "Roadmap",
+      className: "sidebar-roadmap",
+      href: "/roadmap/#platform",
+      customProps: {
+        description: "Learn about recent changes to Harness products.",
+      },
+    },
     // API Docs
     {
       type: "link",
@@ -438,6 +470,16 @@ const sidebars = {
         description: "Learn about recent changes to Harness products.",
       },
     },
+     // Roadmap
+     {
+      type: "link",
+      label: "Roadmap",
+      className: "sidebar-roadmap",
+      href: "/roadmap/#ci",
+      customProps: {
+        description: "Learn about recent changes to Harness products.",
+      },
+    },
     // API Docs
     {
       type: "link",
@@ -480,6 +522,16 @@ const sidebars = {
       label: "Release Notes",
       className: "sidebar-Release_Notes",
       href: "/release-notes/continuous-delivery",
+      customProps: {
+        description: "Learn about recent changes to Harness products.",
+      },
+    },
+     // Roadmap
+     {
+      type: "link",
+      label: "Roadmap",
+      className: "sidebar-roadmap",
+      href: "/roadmap/#cd",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -535,6 +587,16 @@ const sidebars = {
         description: "Learn about recent changes to Harness products.",
       },
     },
+     // Roadmap
+     {
+      type: "link",
+      label: "Roadmap",
+      className: "sidebar-roadmap",
+      href: "/roadmap/#iacm",
+      customProps: {
+        description: "Learn about recent changes to Harness products.",
+      },
+    },
     // API Docs
     {
       type: "link",
@@ -582,6 +644,16 @@ const sidebars = {
         description: "Learn about recent changes to Harness products.",
       },
     },
+     // Roadmap
+     {
+      type: "link",
+      label: "Roadmap",
+      className: "sidebar-roadmap",
+      href: "/roadmap/#ff",
+      customProps: {
+        description: "Learn about recent changes to Harness products.",
+      },
+    },
     // API Docs
     {
       type: "link",
@@ -624,6 +696,16 @@ const sidebars = {
       label: "Release Notes",
       className: "sidebar-Release_Notes",
       href: "/release-notes/cloud-cost-management",
+      customProps: {
+        description: "Learn about recent changes to Harness products.",
+      },
+    },
+     // Roadmap
+     {
+      type: "link",
+      label: "Roadmap",
+      className: "sidebar-roadmap",
+      href: "/roadmap/#ccm",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -678,6 +760,16 @@ const sidebars = {
         description: "Learn about recent changes to Harness products.",
       },
     },
+     // Roadmap
+     {
+      type: "link",
+      label: "Roadmap",
+      className: "sidebar-roadmap",
+      href: "/roadmap/#sto",
+      customProps: {
+        description: "Learn about recent changes to Harness products.",
+      },
+    },
     // API Docs
     {
       type: "link",
@@ -724,6 +816,16 @@ const sidebars = {
       label: "Release Notes",
       className: "sidebar-Release_Notes",
       href: "/release-notes/software-supply-chain-assurance",
+      customProps: {
+        description: "Learn about recent changes to Harness products.",
+      },
+    },
+     // Roadmap
+     {
+      type: "link",
+      label: "Roadmap",
+      className: "sidebar-roadmap",
+      href: "/roadmap/#ssca",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -778,6 +880,16 @@ const sidebars = {
         description: "Learn about recent changes to Harness products.",
       },
     },
+     // Roadmap
+     {
+      type: "link",
+      label: "Roadmap",
+      className: "sidebar-roadmap",
+      href: "/roadmap/#ce",
+      customProps: {
+        description: "Learn about recent changes to Harness products.",
+      },
+    },
     // API Docs
     {
       type: "link",
@@ -826,6 +938,16 @@ const sidebars = {
       label: "Release Notes",
       className: "sidebar-Release_Notes",
       href: "/release-notes/service-reliability-management",
+      customProps: {
+        description: "Learn about recent changes to Harness products.",
+      },
+    },
+     // Roadmap
+     {
+      type: "link",
+      label: "Roadmap",
+      className: "sidebar-roadmap",
+      href: "/roadmap/#srm",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
@@ -932,6 +1054,16 @@ const sidebars = {
         description: "Learn about recent changes to Harness products.",
       },
     },
+     // Roadmap
+     {
+      type: "link",
+      label: "Roadmap",
+      className: "sidebar-roadmap",
+      href: "/roadmap/#idp",
+      customProps: {
+        description: "Learn about recent changes to Harness products.",
+      },
+    },
     // API Docs
     {
       type: "link",
@@ -979,6 +1111,16 @@ const sidebars = {
       label: "Release Notes",
       className: "sidebar-Release_Notes",
       href: "/release-notes/software-engineering-insights",
+      customProps: {
+        description: "Learn about recent changes to Harness products.",
+      },
+    },
+     // Roadmap
+     {
+      type: "link",
+      label: "Roadmap",
+      className: "sidebar-roadmap",
+      href: "/roadmap/#sei",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },

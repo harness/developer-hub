@@ -3328,3 +3328,22 @@ The minimum supported screen resolution is 1440x900.
 ### Can I adjust the default width of step logs in the browser GUI? They currently open at around 25% of the screen width.
 
 Currently, there are no settings to modify the default GUI view setup. You can manually expand and adjust it as needed, but it resets to default when you refresh or switch to another execution.
+
+
+### How to revoke an account token in Harness?
+
+You can revoke an account token by going to the Access Control section in Harness and selecting the token you want to revoke.
+
+
+### Is it possible to extend the expiration date of a token that has already expired?
+No, you cannot extend the expiration date of an expired token. You will need to create a new token with a new expiration date or rotate the token.
+
+
+### What time zone is used to determine the expiration time of a token?
+The token expiration time zone will be UTC.
+
+### If I have a service account token like ```sat.w8EaJoerQcqqkZwcb*****************mqXIHzgFq```, is there any way to identify which service account it is associated with?
+No, there is no way to find out which service account is associated with a service account token just by looking at the token itself. 
+
+### How can I restrict a Harness secret so that it can only be accessed and used by a specific pipeline?
+You can use our RBAC and create a resource group and role so it can be used only in the required pipeline https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/#create-a-resource-group

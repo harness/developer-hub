@@ -326,30 +326,46 @@ ${host}
   accountIdentifier
   token
   fallback="harness fallback"
-  parse="data.status"
+  parse=".data.organization.description"
 />
 ```
 
 ### Result
 
-#### Success
-
-<HarnessApiData  query="https://app.harness.io/ng/api/organizations/default" accountIdentifier token fallback="harness fallback" parse="data.status"/>
-
-
-#### Failure
-
-<HarnessApiData  query="https://app.harness.io/ng/api/organizations/default"  fallback="harness fallback"/>
-
-
+<HarnessApiData  query="https://app.harness.io/ng/api/organizations/default" accountIdentifier token fallback="harness fallback" parse=".data.organization.description"/>
 
 ### Usuage
 
 ```js
-<HarnessApiData query="https://jsonplaceholder.typicode.com/todos/1" 
-fallback="API call fallback" parse="userId"/>
+<HarnessApiData
+  query="https://app.harness.io/gateway/iacm/api/provisioners/supported/terraform"
+  token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
+  fallback="error"
+  parse='.[-1] | "(up to v\(.))"'
+></HarnessApiData>
 ```
 
 ### Result
 
-<HarnessApiData query="https://jsonplaceholder.typicode.com/todos/1" fallback="API call fallback" parse="userId"/>
+<HarnessApiData
+    query="https://app.harness.io/gateway/iacm/api/provisioners/supported/terraform"
+    token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
+    fallback="error"
+    parse='.[-1] | "(up to v\(.))"'>
+</HarnessApiData>
+
+### Usuage
+
+```js
+<HarnessApiData
+  query="https://jsonplaceholder.typicode.com/todos/1"
+  fallback="Failed to load data."
+  parse=".title"
+/>
+```
+
+### Result
+
+<HarnessApiData query="https://jsonplaceholder.typicode.com/todos/1" fallback="Failed to load data." parse=".title"
+
+/>
