@@ -7,7 +7,7 @@ export const IacmData: Horizon = {
       {
         tag: [{ value: "Simplify Onboarding" }],
         title: "Customized pipeline",
-        description: "IaCM supports highly customized pipelines that allow users to create advanced workflow, add 3rd party plugins, run steps in parallel, and more.",
+        description: "IaCM supports highly customized pipelines that allows you to create advanced workflow, add 3rd party plugins, run steps in parallel, and more.",
       },
       {
         tag: [{ value: "Security" }],
