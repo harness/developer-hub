@@ -32,9 +32,13 @@ To add custom attributes:
 
 1. Select the **Settings** (wrench) icon.
 2. Select **Add Custom Attribute**.
+
+![](./static/contributor-attributes.png)
+
 3. Enter a **Title** for the custom attribute category.
 4. Select the **Type**.
 5. In the **Description** column, define where the attribute's values come from.
+6. Click on Save to add the attribute to the contributor records.
 
 <!-- image .gitbook/assets/Screen Shot 2022-12-01 at 2.26.31 PM.png - Configure User Attributes dialog -->
 
@@ -70,3 +74,27 @@ To modify contributors, you must export a CSV file, edit it, and then import the
 ### Manually add contributors
 
 SEI automatically detects user identities in your [integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview). If you need to manually add a contributor, follow the steps to [Modify contributors](#modify-contributors-export-and-import), and add a row for each new contributor. At minimum, you must provide a name and email for the contributor to be valid.
+
+## Merge contributors
+
+When you fetch data from multiple integrations, there can be a scenario where you create multiple contributor profiles for each integration. This can lead to missing tickets, commits, or pull request data in SEI reports. To avoid such incidents, it is recommended to merge any existing duplicate contributor profiles.
+
+1. Identify the duplicate contributor profiles. For example: A contributor with the **Harness Code integration** and an associated email and the same contributor with the **Jira integration** but without an associated email.
+
+![](./static/merge-contributors-step1.png)
+
+2. Select both contributors for the merge operation. Once both contributors are selected, an option for **Merge Contributors** will appear in the top-right corner of the screen.
+
+3. Click on the **Merge Contributors** option
+
+4. After clicking **Merge Contributors** you will be redirected to a screen where you can review the merge details. Review the merge details, ensuring that the correct users are selected for merging.
+
+![](./static/merge-contributors-step3.png)
+
+5. Click on the **Merge button** to initiate the merge operation.
+
+![](./static/merge-contributors-step4.png)
+
+6. After clicking **Merge** you will be redirected to a screen showing the merged user. Click on the **Save** button to confirm the merge.
+
+7. After clicking **Save** a pop-up confirmation window will appear. Click on the **Proceed** button to confirm the merge.
