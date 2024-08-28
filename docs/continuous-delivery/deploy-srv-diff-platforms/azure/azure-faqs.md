@@ -157,5 +157,5 @@ Verify that the artifact is of a supported type (e.g., Maven or Nuget) and follo
 One can modify the `pom.xml` file to configure the mvn publish command to push to the desired artifact feed. This might involve changing the repository settings in the `pom.xml` to point to the correct artifact feed.
 
 
-### Is user can do the AZURE_VMSS deployment through Harness?
+### Can I do an AZURE_VMSS deployment through Harness?
 Yes, user can configure this custom deployment template as suggested in this doc: https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom/custom-deployment-tutorial/#azure-vmss---deployment-template-sample
