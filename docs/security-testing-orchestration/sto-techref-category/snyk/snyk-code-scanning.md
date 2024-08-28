@@ -37,7 +37,7 @@ Refer to [Snyk step configuration](./snyk-scanner-reference.md) document to lear
 
 In the Ingestion scan mode, the Snyk step reads data from a file, normalizes it, and deduplicates it. To perform a Snyk Code scan using the Ingestion scan mode, we will use two steps:
 
-1. **Run step**: Scan the repository with Snyk CLI and save the output to a shared folder. You can also install the dependencies if required.
+1. **Run step**: Scan the repository with Snyk CLI and save the output to a shared folder.
 2. **Snyk step**: To ingest the scan results from the output.
 
 
