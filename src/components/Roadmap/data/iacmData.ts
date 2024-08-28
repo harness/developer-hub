@@ -12,7 +12,7 @@ export const IacmData: Horizon = {
       {
         tag: [{ value: "Security" }],
         title: "OPA integration",
-        description: "IaCM natively integrates with OPA, allowing users to define rules that can be enforced at design and runtime, eliminating policy violations and reducing the risks of security and unplanned cost",
+        description: "IaCM natively integrates with OPA, allowing you to define rules that can be enforced at design and runtime, eliminating policy violations and reducing the risks of security and unplanned cost",
       },
       {
         tag: [],
