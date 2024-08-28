@@ -22,7 +22,7 @@ Pod IO mistake:
 <IOFaultsCaution />
 
 :::warning
-It is recommended to use "mistake" only for READ file system calls. Applying "mistake" to other file system calls can result in unforeseen issues, such as file system damage, corrupted writes and program crashes.
+It is recommended to use "mistake" for READ file system calls only. Applying "mistake" to other file system calls can result in unforeseen issues, such as file system damage, corrupted writes and program crashes.
 :::
 
 ### Permissions required

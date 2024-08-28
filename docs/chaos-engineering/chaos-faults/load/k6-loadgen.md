@@ -19,9 +19,9 @@ K6 loadgen fault simulates load generation on the target hosts for a specific ch
 ### Prerequisites
 - Kubernetes > 1.17 is required to execute this fault.
 - The target host should be accessible.
-- Ensure to create a Kubernetes secret that contains the JS script file within the Chaos Infrastructure's namespace. The easiest way to create a secret object is as follows::
+- Ensure to create a Kubernetes secret that contains the javascript (JS) file within the Chaos Infrastructure's namespace. The easiest way to create a secret object is as follows::
 
-An example of the JS script file is as follows:
+An example of the JS file is as follows:
 ```javascript
 import http from 'k6/http';
 import { check, sleep } from 'k6';
