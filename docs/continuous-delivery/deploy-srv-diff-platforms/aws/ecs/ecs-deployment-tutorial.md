@@ -1546,11 +1546,11 @@ To attach your AWS CloudWatch alarms to a scaling policy, simply add a Harness S
 
 // to fetch scaling policy arn, run this
 
-aws application-autoscaling describe-scaling-policies --service-namespace ecs --resource-id service/<+infra.cluster>/<+execution.steps.ECS_DEPLOY_STEP_ID.output.serviceName> --region <+infra.region>
+scaling_policy=$(aws application-autoscaling describe-scaling-policies --service-namespace ecs --resource-id service/${cluster}/${serviceName})
 
 // to attach cloud watch alarm to scaling policy.
 
-aws cloudwatch put-metric-alarm --alarm-name ALARM_NAME --alarm-actions SCALING_POLICY_ARN
+aws cloudwatch put-metric-alarm --alarm-name $ALARM_Up --alarm-actions "$policy" --evaluation-periods 1 --comparison-operator GreaterThanOrEqualToThreshold --metric-name CPUUtilization --period 60 --namespace "AWS/ECS" --statistic Average --threshold 80 --unit Percent --dimensions Name=ClusterName,Value=$cluster Name=ServiceName,Value=$serviceName
 ```
 
 ## See also
