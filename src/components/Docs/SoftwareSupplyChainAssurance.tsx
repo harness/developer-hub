@@ -37,13 +37,20 @@ export default function SSCA() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            The Harness Software Supply Chain Assurance (SSCA) module addresses the
-            challenges of securing your software supply chain. The SSCA module aims
-            to help you establish trust in the software supply chain, manage open-source
-            components, ensure policy compliance, identify security vulnerabilities,
-            and enable rapid responses to new threats. Learn how you can set up your
-            pipelines to secure your software supply chain.
+              The Harness Software Supply Chain Assurance (SSCA) module
+              addresses the challenges of securing your software supply chain.
+              The SSCA module aims to help you establish trust in the software
+              supply chain, manage open-source components, ensure policy
+              compliance, identify security vulnerabilities, and enable rapid
+              responses to new threats. Learn how you can set up your pipelines
+              to secure your software supply chain.
             </p>
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={`${baseUrl}img/ssca_Landing_Page.svg`}
+              />
+            </div>
           </div>
         </div>
       </div>

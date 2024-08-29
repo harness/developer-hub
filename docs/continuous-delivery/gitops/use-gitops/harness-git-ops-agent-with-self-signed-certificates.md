@@ -6,7 +6,7 @@ redirect_from:
   - /docs/continuous-delivery/gitops/harness-git-ops-agent-with-self-signed-certificates
 ---
 
-Harness Self-Managed Enterprise Edition supports self-signed certificates. This topic describes how to install and configure Harness GitOps Agent to connect to Self-Managed Harness using self-signed certificates.
+Harness supports self-signed certificates. This topic describes how to install and configure a Harness GitOps Agent to connect to Harness using self-signed certificates.
 
 In this topic we will do the following:
 
@@ -60,6 +60,8 @@ In this topic we will do the following:
 
 ## Modify the GitOps Agent YAML
 
+If using a Kubernetes Manifest,
+
 1. Open the `gitops-agent.yml` file in your editor.
 2. In the `{ GitopsAgentName }-agent` ConfigMap, set the value of `GITOPS_SERVICE_HTTP_TLS_ENABLED` config to `true`.
 
@@ -73,3 +75,71 @@ In this topic we will do the following:
    ```
    kubectl apply -f gitops-agent.yml -n {agent-namespace}
    ```
+
+If using a Helm Chart,
+
+1. Modify the `values.yaml` file and add the `volumes` and `volumeMounts` section to the agent field.
+
+Agent:
+```
+agent:
+  volumeMounts:
+  - mountPath: /tmp/ca.bundle
+    name: certs-vol
+  volumes:
+  - name: certs-vol
+    secretName: addcerts
+    optional: true
+    items:
+      - key: ca.bundle
+        path: ca.bundle
+```
+
+2. Change the `GITOPS_SERVICE_HTTP_TLS_ENABLED` flag to `true` by setting the `harness.configMap.http.tlsEnabled` option in the `values.yaml` file to `true`
+
+```
+harness:
+  nameOverride: harness
+  configMap:
+    http:
+      tlsEnabled: true
+      certPath: "/tmp/ca.bundle"
+```
+
+
+If certificates are required to be mounted onto the Argo CD Repo Server and Application Controller, mount them using the following configurations in the `values.yaml` file.
+
+Repo Server:
+```
+repoServer:
+  name: repo-server
+  serviceAccount:
+    create: true
+  volumeMounts:
+  - mountPath: /tmp/ca.bundle
+    name: certs-vol
+  volumes:
+  - name: certs-vol
+    secretName: addcerts
+    optional: true
+    items:
+      - key: ca.bundle
+        path: ca.bundle
+```
+Application Controller:
+```
+controller:
+  name: application-controller
+  serviceAccount:
+    create: true
+  volumeMounts:
+  - mountPath: /tmp/ca.bundle
+    name: certs-vol
+  volumes:
+  - name: certs-vol
+    secretName: addcerts
+    optional: true
+    items:
+      - key: ca.bundle
+        path: ca.bundle
+```

@@ -571,7 +571,12 @@ Go to [Pod faults](/docs/category/pod) for more information.
         <td>✅</td>
         <td>✅</td>
     </tr>
- <tr>
+    <tr>
+        <td>fs fill</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
         <td>Pod API block </td>
         <td>❌</td>
         <td>✅</td>
@@ -581,7 +586,7 @@ Go to [Pod faults](/docs/category/pod) for more information.
         <td>❌</td>
         <td>✅</td>
     </tr>
- <tr>
+    <tr>
         <td>Pod API modify body</td>
         <td>❌</td>
         <td>✅</td>
@@ -1547,6 +1552,11 @@ Go to [Chaos faults for Linux](/docs/chaos-engineering/chaos-faults/linux) for m
     </tr>
     <tr>
         <td>Linux time chaos </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux fs fill </td>
         <td>❌</td>
         <td>✅</td>
     </tr>

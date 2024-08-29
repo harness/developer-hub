@@ -65,6 +65,44 @@ For more details, go to [Managing resource access and permissions](https://docs.
 
 </details>
 
+## Containerized step images
+
+#### Old Images
+
+Harness supports different images for Build and Deploy for AWS SAM deployment. 
+
+SAM Build: [`harnessdev/sam-build:1.82.0-latest`](https://hub.docker.com/r/harnessdev/sam-build/tags)
+
+SAM Deploy: [`harnessdev/sam-deploy:1.82.0-latest`](https://hub.docker.com/r/harnessdev/sam-deploy/tags)
+
+:::warning
+If you are using Harness SAM build or deploy image, please check the [`harnessdev/sam-build`](https://hub.docker.com/r/harnessdev/sam-build/tags)
+and  [`harnessdev/sam-deploy`](https://hub.docker.com/r/harnessdev/sam-deploy/tags) DockerHub repository for the newest one. Be warned, the image bearing the latest tag may not be newest image.
+:::
+
+
+We recommend you to use the new images that we have introduced with multiple runtime support.
+
+#### New Images
+
+Harness support [multiple runtime images](https://hub.docker.com/r/harness/aws-sam-plugin/tags) for **nodejs20**, **nodejs18** and **java17**. These are Linux AMD64 images. 
+
+Unlike old images, in new images a single image has the capabiliity of handling all the SAM steps.
+
+ Runtimes | Images |
+| --- | --- |
+| nodejs 20 | harness/aws-sam-plugin:nodejs20.x-1.120.0-1.0.1-beta-linux-amd64 |
+| nodejs 18 | harness/aws-sam-plugin:nodejs18.x-1.120.0-1.0.1-beta-linux-amd64 |
+| java 17   | harness/aws-sam-plugin:java17-1.120.0-1.0.1-beta-linux-amd64 |
+
+Now, let's understand the runtime image:-
+![](./static/multiple-runtime-sam.png)
+
+:::important note
+These images can only be used in containerized step.
+:::
+
+
 ## Use AWS IRSA for Harness AWS connector credentials
 
 The **Use IRSA** option allows you to use a service account with a specific IAM role when making authenticated requests to resources. In order for it work in this case you will need to create a service account in the namespace where the step group will be run that has the releveant IAM role with IRSA. In this case it is the step group pod that makes the relevant API calls and hence needs the IRSA service account setup. 
@@ -160,6 +198,9 @@ Your values.yaml file can use standard Go formatting, like this:
 ```yaml
 runtime: nodejs18.x
 ```
+:::note
+By default, the values will be resolved for the manifest in both SAM build and deploy step. If you don't want it to get resolved in each step you can use the environment variable `PLUGIN_RESOLVE_WITH_VALUES_MANIFEST` and set it to `false`.
+:::
 
 Your template references the values.yaml file using the format `{{.Values.KEY}}`. Here's an example using `{{.Values.runtime}}`:
 
@@ -283,6 +324,11 @@ Let's review the SAM deployment's use of the DinD Background step:
 
    The remaining settings on optional.
 
+:::info note
+If you don't want docker to run in background you can set the environment variable `PLUGIN_WAIT_FOR_DOCKER_RUN` to `false` in your SAM steps.
+:::
+
+
 ### Download manifests step
 
 The Download Manifests step fetches the SAM template in the Harness service you selected for this stage. This step does not require configuration.
@@ -294,6 +340,13 @@ Here's an example of the step tasks:
 3. **Fetching remote branches:** The command `git fetch --depth=50 origin +refs/heads/main:` is executed to fetch the remote branches from the origin.
 4. **Checking out main branch:** The command `git checkout -b main origin/main` is executed to create and switch to a new branch named `main` based on the remote branch `origin/main`.
 
+:::important note
+Since it is a containerized step and each step acts like a pod, the path of the directory where your manifest will be downloaded would look like :
+`/harness/Manifest identifier/Folder Path`
+Suppose your manifest name is m1 in your Service YAML, you can use the following expression:-`<+manifests.m1.identifier>` to access your manifest identifier.
+You can access your folder path that you have defined in your Manifest via expression : `<+manifests.m1.store.folderPath>`
+:::
+
 ### SAM Build step
 
 The SAM Build step performs a standard [SAM build](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html) as well as setting up the container environment, resolving expressions in the SAM template, and building the SAM application using the specified dependencies and Docker container image.
@@ -302,13 +355,7 @@ To configure the SAM Build step, do the following:
 
 1. Open the SAM Build step.
 2. In **Container Registry**, you can see that the Harness Docker Registry connector is already set up.
-3. In **Image**, you can see a SAM build image is already set up. For example, `harnessdev/sam-build:1.82.0-latest`. Harness will automatically populate this setting, but you can use a different image.
-
-:::warning
-
-If you are using Harness' SAM build image, please check the [harnessdev/sam-build](https://hub.docker.com/r/harnessdev/sam-build/tags) DockerHub repository for the newest one. Be warned, the image bearing the `latest` tag may not be newest image.
-
-:::
+3. In **Image**, you can use the latest Harness images that support [multiple runtimes](#containerized-step-images). For example: [harness/aws-sam-plugin:nodejs20.x-1.120.0-1.0.0-beta-linux-amd64](https://hub.docker.com/r/harness/aws-sam-plugin/tags). You can use a different image as well as per your need.
 
 #### AWS SAM build command options (required)
 
@@ -319,6 +366,17 @@ The [--use-container](https://docs.aws.amazon.com/serverless-application-model/l
 Do not remove this command. It is required for the current beta of this feature. It will be optional in future releases.
 
 :::
+
+### Pre Execution Command
+
+Pre Execution command will run before your actual SAM Build and Deploy step. You can use this field to install any dependencies needed before the plugin logic executes.
+
+![](./static/pre-execution-command.png)
+
+:::warning
+Pre Execution command will only run with latest [Harness runtime support images](#containerized-step-images).
+:::
+
 
 #### SAM build docker container registry (required for beta)
 
@@ -359,14 +417,9 @@ To configure the SAM Deploy step, do the following:
 
 1. Open the SAM Deploy step.
 2. In **Container Registry**, you can see that the Harness Docker Registry connector is already set up.
-3. In **Image**, you can see a SAM deploy image is already set up. For example, `harnessdev/sam-build:1.82.0-latest`. Harness will automatically populate this setting, but you can use a different image.
+3. In **Image**, you can use the latest Harness images that support [multiple runtimes](#containerized-step-images). For example: [harness/aws-sam-plugin:nodejs20.x-1.120.0-1.0.0-beta-linux-amd64](https://hub.docker.com/r/harness/aws-sam-plugin/tags). You can use a different image as well as per your need.
 4. In Stake Name, enter the name of the CloudFormation stack that will be created or updated as part of the deployment process.
 
-:::warning
-
-If you are using Harness' SAM deploy image, please check the [harnessdev/sam-deploy](https://hub.docker.com/r/harnessdev/sam-deploy/tags) DockerHub repository for the newest one. Be warned, the image bearing the `latest` tag may not be newest image.
-
-:::
 
 Here's a summary of the step's tasks that you will see in the step log once its run:
 

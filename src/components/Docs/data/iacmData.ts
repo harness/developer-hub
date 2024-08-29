@@ -10,7 +10,13 @@ export const docsCards: CardSections = [
     description: "",
     list: [
       {
-        title: "IaCM Overview",
+        title: "Onboarding",
+        module: MODULES.iacm,
+        description: "Get onboarded with Harness Infrastructure as Code Management.",
+        link: "/docs/infra-as-code-management/get-started/onboarding-guide",
+      },
+      {
+        title: "Overview",
         module: MODULES.iacm,
         description: "Learn about Harness Infrastructure as Code Management.",
         link: "/docs/infra-as-code-management/get-started/overview",
@@ -43,7 +49,7 @@ export const docsCards: CardSections = [
         title: "Review workspace resources, states, and execution history",
         description: "Explore the details of a workspace.",
         module: MODULES.iacm,
-        link: "/docs/infra-as-code-management/workspaces/reports-insights/review-workspace"
+        link: "/docs/infra-as-code-management/reports-insights/review-workspace"
       }
     ]
   },
@@ -73,7 +79,7 @@ export const docsCards: CardSections = [
         title: "Using OPA Policies with IaCM",
         module: MODULES.iacm,
         description: "Learn how to use OPA to add security and governance to your IaCM pipeline.",
-        link: "/docs/infra-as-code-management/workspaces/project-setup/opa-workspace",
+        link: "/docs/infra-as-code-management/project-setup/opa-workspace",
       },
       {
         title: "Drift Detection",
@@ -86,7 +92,7 @@ export const docsCards: CardSections = [
         module: MODULES.iacm,
         description:
           "Learn how to apply permissions and access controls on Workspaces",
-        link: "/docs/infra-as-code-management/workspaces/project-setup/workspace-rbac",
+        link: "/docs/infra-as-code-management/project-setup/workspace-rbac",
       }
     ]
   },
@@ -98,13 +104,13 @@ export const docsCards: CardSections = [
         title: "Using output parameter",
         description: "Learn how to use Terraform output variables in the pipeline",
         module: MODULES.iacm,
-        link: "/docs/infra-as-code-management/workspaces/reports-insights/output-variables",
+        link: "/docs/infra-as-code-management/reports-insights/output-variables",
       },
       {
         title: "Use the Harness Delegate with IaCM",
         description: "Learn how the Harness Delegate works with IaCM.",
         module: MODULES.iacm,
-        link: "/docs/infra-as-code-management/workspaces/project-setup/use-delegates-with-iacm",
+        link: "/docs/infra-as-code-management/project-setup/use-delegates-with-iacm",
       }
     ]
   }

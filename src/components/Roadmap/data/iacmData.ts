@@ -1,28 +1,28 @@
 import { Horizon } from "./roadmapData";
 
 export const IacmData: Horizon = {
-  Now: {
-    description: "Q1 2024, Feb-Apr 2024",
+    Released: {
+    description: "What has been released",
     feature: [
       {
         tag: [{ value: "Simplify Onboarding" }],
         title: "Customized pipeline",
-        description: "IaCM supports highly customized pipelines that allow users to create advanced workflow, add 3rd party plugins, run steps in parallel, and more.",
+        description: "IaCM supports highly customized pipelines that allows you to create advanced workflow, add 3rd party plugins, run steps in parallel, and more.",
       },
       {
         tag: [{ value: "Security" }],
         title: "OPA integration",
-        description: "IaCM natively integrates with OPA, allowing users to define rules that can be enforced at design and runtime, eliminating policy violations and reducing the risks of security and unplanned cost",
+        description: "IaCM natively integrates with OPA, allowing you to define rules that can be enforced at design and runtime, eliminating policy violations and reducing the risks of security and unplanned cost",
       },
       {
         tag: [],
         title: "Cost estimation",
-        description: "Using Infracost, IaCM provides cost estimation on resource changes, allowing users to understand how cloud bill will be changed, based on resource changes",
+        description: "Using Infracost, IaCM provides cost estimation on resource changes, allowing you to understand how your cloud bill will be changed, based on resource changes",
       },
       {
         tag: [{ value: "Security" }],
         title: "State management",
-        description: "IaCM supports hosted backend, allowing users to store state securely",
+        description: "IaCM supports hosted backend, allowing you to store state securely",
       },
       {
         tag: [{ value: "Security" }],
@@ -37,22 +37,17 @@ export const IacmData: Horizon = {
       {
         tag: [{ value: "Developer Experience" }],
         title: "PR Automation",
-        description: "IaCM support PR Automation that populates plan and cost data to the PR process, helping users to reduce testing time on Terraform changes",
+        description: "IaCM support PR Automation that populates plan and cost data to the PR process, helping you to reduce testing time on Terraform changes",
       },
     ],
   },
-  Next: {
-    description: "Q2 2024, May-Jul 2024",
+  Now: {
+    description: "Q3 2024, Aug-Oct 2024",
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
         title: "Module Registry",
         description: "Private module Registry to test and publish approved modules",
-      },
-      {
-        tag: [{ value: "Security" }],
-        title: "Security Plugins",
-        description: "Plugins for tfsec, tflint, and checkov that can be added to the IaCM pipeline to find security vulnerabilities and misconfiguration",
       },
       {
         tag: [{ value: "Simplify Onboarding" }],
@@ -64,16 +59,36 @@ export const IacmData: Horizon = {
         title: "Custom arguments support",
         description: "Users will have the flexibility to modify which arguments will be used during execution, allowing additional customization",
       },
-    ],
-  },
-  Later: {
-    description: "Q3 2024+, Aug 2024 & beyond",
-    feature: [
-     {
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Default Pipelines",
+        description: "Users will have the ability to assign pipelines to different Terraform/OpenTofu operations, making it easier to control the automation for each Workspace update",
+      },
+      {
         tag: [{ value: "Security" },{ value: "Enterprise" }],
         title: "SMP (on-prem)",
         description: "Supporting implementing IaCM in private environments",
       },
+    ],
+  },
+  Next: {
+    description: "Q4 2024, Nov 2024-Jan 2025",
+    feature: [
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "CLI Integration",
+        description: "Having the ability to run Workspace-related pipelines directly from CLI",
+      },
+      {
+        tag: [],
+        title: "Native Ansible Support",
+        description: "Supporting Ansible as an IaC provider",
+      },
+    ],
+  },
+  Later: {
+    description: "Q1 2025+  & beyond",
+    feature: [
       {
         tag: [],
         title: "Harness CD integration",
@@ -98,11 +113,6 @@ export const IacmData: Horizon = {
         tag: [{ value: "Developer Experience" }],
         title: "Ephemeral environments",
         description: "Users will be able to control the TTL configuration of each managed Workspace",
-      },
-      {
-        tag: [],
-        title: "Native Ansible Support",
-        description: "Supporting Ansible as an IaC provider",
       },
       {
         tag: [],

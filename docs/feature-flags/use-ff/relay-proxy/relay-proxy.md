@@ -2,6 +2,8 @@
 title: Relay Proxy V1 overview
 description: This topic describes what is Relay Proxy and how to use it with Harness Feature Flags (FF).
 sidebar_position: 10
+redirect_from:
+  - /docs/feature-flags/ff-using-flags/relay-proxy/relay-proxy
 ---
 
 This topic describes the Harness Relay Proxy V1 and how to use it with Feature Flags (FF).

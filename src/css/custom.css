@@ -271,11 +271,17 @@
   --mod-iacm-200: #5fb34e;
   --mod-iacm-100: #f6fff2;
 
-  /* Module Colors/Code (Gitness) */
+  /* Module Colors/Code  */
   --mod-code-300: #0672b6;
   --mod-code-200: #2bb1f2;
   --mod-code-100: #e2f5ff;
 
+    /* Module Colors/Gitness */
+    --mod-gitness-300: #b0b1c4;
+    --mod-gitness-200: #d9dae5;
+    --mod-gitness-100: #f3f3fa;
+
+  
   /* ----- */
   --ifm-link-decoration: none;
 
@@ -474,7 +480,7 @@ h2 {
 .navbar__item img[alt="BETA"] {
   margin-left: -0.25rem;
   margin-top: 10px;
-  width: 36px;
+  width: 24px;
   height: auto;
 }
 
@@ -586,6 +592,10 @@ details summary::before {
 
 .color-iacm {
   color: var(--mod-iacm-200);
+}
+
+.color-gitness {
+  color: var(--mod-gitness-200);
 }
 
 .table-of-contents ul li span[class*="color-"] {
@@ -789,6 +799,7 @@ figure p {
   .searchBar .DocSearch-Button {
     width: 100%;
   }
+ 
 }
 
 @media screen and (max-width: 1199px) {
@@ -804,6 +815,10 @@ figure p {
   }
   .searchBar {
     display: none;
+  }
+  
+  .navbar__logo{
+    width: 200px;
   }
 }
 
@@ -990,3 +1005,408 @@ figure p {
 }
 
 /******************* chatbot css variables end *************/
+
+/*******************sidebar logo css start*******************/
+
+ .menu__list-item-collapsible > a,.menu__link{
+  height: 52px;
+ }
+ .menu {
+  margin-bottom: 0px !important;
+ }
+.collapseSidebarButton_PEFL{
+  width: 100% !important;
+}
+.sidebar-platform > div > a::before,.sidebar-platform > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-cr > div > a::before,.sidebar-cr > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_code.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-ci > div > a::before,.sidebar-ci > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_ci.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-cd > div > a::before,.sidebar-cd > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_cd.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-iacm > div > a::before,.sidebar-iacm > a::before{
+  content: " ";
+  display: inline-block;
+  min-height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_iacm.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-ff > div > a::before,.sidebar-ff > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_ff.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-ccm > div > a::before,.sidebar-ccm > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_ccm.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-sto > div > a::before,.sidebar-sto > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_sto.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-ssca > div > a::before,.sidebar-ssca > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_ssca.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-ce > div > a::before,.sidebar-ce > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_ce.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-srm > div > a::before,.sidebar-srm > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_srm.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-cet > div > a::before,.sidebar-cet > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_cet.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-idp > div > a::before,.sidebar-idp > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+ min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/icon_idp.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-sei > div > a::before,.sidebar-sei > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/icon_sei.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-smp > div > a::before,.sidebar-smp> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-harness-firstGen > div > a::before,.sidebar-harness-firstGen> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/Harness_FirstGen_Logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-troubleshooting > div > a::before,.sidebar-troubleshooting> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/Troubleshooting_Logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-API_Reference > div > a::before,.sidebar-API_Reference> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/API_Reference_Logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-Release_Notes > div > a::before,.sidebar-Release_Notes> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/Release_Notes_Logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-Cloud_Operations > div > a::before,.sidebar-Cloud_Operations> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/Cloud_Operations_Logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-faqs > div > a::before,.sidebar-faqs> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/faqs_Logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-all_docs > div > a::before,.sidebar-all_docs> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/All_Docs_Logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-armory > div > a::before,.sidebar-armory> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/armory.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-reference-arch > div > a::before,.sidebar-reference-arch> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/reference_architectures_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-gitness > div > a::before,.sidebar-gitness> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+html[data-theme="light"] .sidebar-gitness > div > a::before,
+html[data-theme="light"] .sidebar-gitness > a::before {
+  background-image: url("/img/icon_gitness.svg");
+}
+
+html[data-theme="dark"] .sidebar-gitness > div > a::before,
+html[data-theme="dark"] .sidebar-gitness > a::before {
+  background-image: url("/img/icon_gitness_light.svg");
+}
+
+.sidebar-roadmap > div > a::before,.sidebar-roadmap> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/roadmap_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-ilt-instructions > div > a::before,.sidebar-ilt-instructions> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/ilt_instructions_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-vilt-cal > div > a::before,.sidebar-vilt-cal> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/virtual_instructor_led_calendar_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-back > div > a::before,.sidebar-back> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/back_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-allkb > div > a::before,.sidebar-allkb> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/show_all_kb_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar-univ > div > a::before,.sidebar-univ> a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url("/img/university_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/*******************sidebar logo css end*******************/
+
+
+.continuous-delivery--gitops:hover {
+  border-color: var(--mod-cd-200) !important;
+}
+.continuous-integration:hover {
+  border-color: var(--mod-ci-200) !important;
+}
+.feature-flags:hover {
+  border-color: var(--mod-ff-200) !important;
+}
+.cloud-cost-management:hover {
+  border-color: var(--mod-ccm-200) !important;
+}
+.service-reliability-management:hover {
+  border-color: var(--mod-srm-200) !important;
+}
+.security-testing-orchestration:hover {
+  border-color: var(--mod-sto-200) !important;
+}
+.chaos-engineering:hover {
+  border-color: var(--mod-ce-200) !important;
+}
+.platform:hover {
+  border-color: var(--primary) !important;
+}
+.code-repository:hover {
+  border-color: var(--mod-code-200) !important;
+}
+.software-supply-chain-assurance:hover {
+  border-color: var(--mod-ssca-200) !important;
+}
+.continuous-error-tracking:hover {
+  border-color: var(--mod-cet-200) !important;
+}
+.internal-developer-portal:hover {
+  border-color: var(--mod-idp-200) !important;
+}
+.software-engineering-insights:hover {
+  border-color: var(--mod-sei-200) !important;
+}
+.gitness:hover {
+  border-color: var(--mod-gitness-200) !important;
+}
+
+
+
+
+/***********************   navbar css ***********/
+
+
+.navbar__items{
+  font-size: 16px;
+}
+.navbar__item{
+  padding: 0 8px;
+}
+
+@media screen and (max-width: 1299px) {
+  .navbar__items{
+    font-size: 15px;
+  }
+}

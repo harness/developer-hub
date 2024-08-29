@@ -2,7 +2,8 @@
 id: pod-io-latency
 title: Pod IO latency
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-io-latency
 ---
 
 import IOFaultsCaution from './shared/io-faults-caution.md'
@@ -112,7 +113,7 @@ permissions:
       <tr>
         <td> METHOD_TYPES </td>
         <td> This contains the file system call or methods. </td>
-        <td> For more information, go to <a href="#advanced-fault-tunables">percentage</a>. </td>
+        <td> For more information, go to <a href="#advanced-fault-tunables">method types</a>. </td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
@@ -132,7 +133,7 @@ permissions:
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration to inject chaos (in seconds) </td>
-        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>. </td>
+        <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>. </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
@@ -147,7 +148,7 @@ permissions:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds) </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -230,7 +231,7 @@ spec:
 
 - `FILE_PATH`: The path for injecting faults can be specified as either a single file or a wildcard. By default it targets all the files present inside the mount path.
 - `PERCENTAGE`: The likelihood of failure per operation, expressed as a percentage. Default is 100%.
-- `METHOD_TYPES`: This contains the file system call or methods. By default it targets all the methods.
+- `METHOD_TYPES`: This contains the file system call or methods. By default it targets all the methods. For all supported methods, refer to the [Methods](https://docs.rs/fuser/0.7.0/fuser/trait.Filesystem.html)
 
 The following YAML snippet illustrates the use of this environment variable:
 

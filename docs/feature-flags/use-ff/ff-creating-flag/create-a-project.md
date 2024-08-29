@@ -6,6 +6,8 @@ helpdocs_topic_id: 47fkt1ric5
 helpdocs_category_id: gjyyhm9f9h
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-creating-flag/create-a-project
 ---
 
 

@@ -1948,6 +1948,18 @@ When the Connector URL for job execution is enabled, the system uses the connect
 
 Enabling the Connector URL option affects the job execution process by modifying the way the job trigger URL is formed. Instead of using the internal IP address from the job URL obtained in the first API call, the system will only take the job identifier details from the response. It then combines these details with the connector URL to form the second API call URL. This ensures that the URL used to trigger the job is correct and reachable, preventing potential failures due to inaccessible internal IP addresses.
 
+### Can I roll back a failed pipeline using Post deployment rollback feature?
+No, you can only roll back successful pipelines. The rollback option is not available for pipelines that have failed.
+
+### Can I perform multiple rollbacks on the same pipeline using Post deployment rollback feature?
+No, you cannot roll back the same pipeline multiple times. However, you can perform a rollback if the pipeline is executed again.
+
+### In what order do stages roll back during a deployment rollback?
+Stages should roll back in reverse order when a deployment rollback is triggered.
+
+### What happens if the pipeline configuration changes between executions and we use Post deployment rollback feature ?
+If the pipeline configuration has changed, the rollback will use the YAML from the previous execution as a reference.
+
 ### Why is my rollback step being skipped even though I don't have an execution condition?
 
 This can happen if the `If the pipeline executes successfully up to this point (default)` option is selected in the **Conditional Execution** configuration of the step. If this option is selected, the rollback step won't be able to run due to the failure of the pipeline. By default, rollback steps are only run if the pipeline deployment fails. When this option is selected for a rollback step, the pipeline would not have executed successfully causing the step to be skipped.

@@ -3,6 +3,8 @@ title: Monitor the proxy using Prometheus
 sidebar_label: Monitor the proxy
 description: This topic contains information on how to use Prometheus metrics
 sidebar_position: 75
+redirect_from:
+  - /docs/feature-flags/relay-proxy/monitoring
 ---
 
 The proxy uses [Prometheus](https://prometheus.io/docs/introduction/overview/) for recording metrics that can be used to understand how the proxy is behaving and performing. You can view and scrape these metrics by hitting the proxy's `/metrics` endpoint. For example, if you're running the proxy locally on port 7000, you can view the metrics it exposes by making the following request:

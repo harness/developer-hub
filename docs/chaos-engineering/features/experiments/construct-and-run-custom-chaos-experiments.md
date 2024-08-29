@@ -5,13 +5,35 @@ description: Guide to create and execute chaos experiments
 redirect_from:
 	- /docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Harness Chaos Engineering (HCE) gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios against which you can validate your applications. At the same time, the chaos experiments are declarative and you can construct them using the Chaos Studio user interface with no programmatic intervention.
 
 A chaos experiment is composed of chaos faults that are arranged in a specific order to create a failure scenario. The chaos faults target various aspects of an application, including the constituent microservices and underlying infrastructure. You can tune the parameters associated with these faults to impart the desired chaos behavior.
 
 For more information, go to [flow of control in a chaos experiment](/docs/chaos-engineering/features/experiments/experiment-execution.md).
 
-## Construct a chaos experiment
+<Tabs>
+  <TabItem value="Interactive guide">
+
+Here is a interactive guide you can use to understand how to create a chaos experiment with a fault, pod-delete.
+
+<iframe src="https://app.tango.us/app/embed/9ae940fc-dc97-4fb8-aaa9-ab4d373c6ec6"
+style={{minHeight:'640px'}}
+sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
+title="Creating and Running a Chaos Experiment in Harness"
+width="100%"
+height="100%"
+referrerpolicy="strict-origin-when-cross-origin"
+frameborder="0"
+webkitallowfullscreen="webkitallowfullscreen"
+mozallowfullscreen="mozallowfullscreen"
+allowfullscreen="allowfullscreen"></iframe>
+
+</TabItem>
+  <TabItem value="Step-by-step">
 
 To add a chaos experiment:
 
@@ -101,6 +123,9 @@ Now, you can choose to either run the experiment right away by selecting the **R
 Select **Non-Cron(Single run)** and select **Save**. Now select **Run** to execute the experiment.
 
 	![Schedule experiment](./static/construct-and-run-custom-chaos-experiments/schedule.png)
+
+</TabItem>
+</Tabs>
 
 ### Execute experiment on a schedule
 1. To schedule the experiment run for specific periods, select **Cron(Recurring run)**, enter the values based on what you select among **Minutes** or **Hourly** or **Daily** or **Monthly** or **Yearly**. The **Cron Expression** is automatically generated based on how you schedule to run the experiment.

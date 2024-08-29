@@ -9,12 +9,8 @@ This topic describes the typical steps to execute a chaos experiment, and delves
 ## Before you begin
 
 * [What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
-* [Dedicated Harness infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/harness-infra.md)
+* [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/)
 * [Key concepts](/docs/chaos-engineering/architecture-and-security/architecture/components)
-
-:::tip
-Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
-:::
 
 ## Automated and guided onboarding
 
@@ -30,8 +26,7 @@ You can execute chaos experiments without explicitly installing the environment 
 
 :::tip
 - Previously, HCE provided a dedicated chaos infrastructure to execute chaos experiments. With the current updates, the `chaos-runner` is transient and you can execute chaos experiments by installing **Harness delegate**, thereby eliminating the need to install Harness chaos infrastructure and other additional components.
-- Go to [Harness dedicated infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/harness-infra.md) to know more.
-- Once you have installed Harness delegate, you can reuse it to execute experiments, [discover services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery), [create network maps](/docs/chaos-engineering/features/network-maps/intro-network-map) and so on.
+- Once you have installed Harness delegate, you can reuse it to execute experiments, [discover services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery), [create application maps](/docs/chaos-engineering/features/app-maps/intro-app-map) and so on.
 :::
 
 ## Prerequisites to automated and guided onboarding

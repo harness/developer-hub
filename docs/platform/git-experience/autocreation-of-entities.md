@@ -3,7 +3,9 @@ title: Autocreation of Entities in Harness
 description: This Page talks about auto creation of Harness entities
 ---
 
-Autocreation is a feature that allows you to automatically create entities in Harness when files are added remotely.
+Autocreation is a feature that allows you to automatically create entities in Harness when files are added remotely within your Git Repository.  The files, in this case, are created within Git, so the object is initiated and created within your repository in the [correct directory](#file-path-convention).  
+
+This differs from [moving inline entities to Git](https://developer.harness.io/docs/platform/git-experience/move-inline-entities-to-git/) and [enabling bidirectional sync](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup/) as for this case, customers would be initially creating objects from the Harness UI rather than initiating from Git, and do not have to follow a directory structure for the objects being saved in the Git Repo.
 
 :::info note
 Currently this feature is behind the feature flag `PIE_GITX_AUTOCREATION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
@@ -12,11 +14,12 @@ Currently this feature is behind the feature flag `PIE_GITX_AUTOCREATION`. Pleas
 ## Pre-requisites of Autocreation
 
 - Register the webhook for your repository where you are adding your files remotely. The scope of the webhook should match the entity it's trying to create. For example, a project-level webhook can only create entities within the same project, whereas an account-level webhook can create entities across multiple projects and the organizations.
-- Added files should follow a specific file path convention based on the entity type. 
+- Added files should follow a [specific file path convention based on the entity type](#file-path-convention). The file paths would be created manually and can be created on an as-needed-basis.
 
 :::info note
 Files that are added only in the default branch(main, master etc) of the Git Repo are autocreated.
 :::
+
 
 ## File Path Convention
 

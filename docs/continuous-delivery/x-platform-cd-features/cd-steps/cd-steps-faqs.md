@@ -466,6 +466,12 @@ The Git Clone step uses a containerized step group. If you are not using Kuberne
 
 
 
+## Jenkins Build step
 
+### Why is my Jenkins job failing with a `500` error?
+```
+Error occurred while starting Jenkins task
+org.apache.http.client.HttpResponseException: status code: 500, reason phrase: Server Error
+```
 
-
+This can happen if the Jenkins Job is parameterized but no parameters are being passed. The reverse, where the Jenkins Job is not parameterized but parameters are being passed, can also cause this issue. To fix this, please make sure that the proper parameters are being passed to Jenkins.

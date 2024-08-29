@@ -6,6 +6,8 @@ helpdocs_topic_id: gr5hyn1gv5
 helpdocs_category_id: eyzngtupao
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-sdks/sdk-overview/sdk-version-policy
 ---
 
 The Harness Feature Flags versioning policy is based on the semantic versioning standard (also referred to as [SemVer](https://semver.org/)). This topic describes the versioning policy for SDKs.

@@ -9,7 +9,7 @@ import CosignKeyGeneration from '/docs/software-supply-chain-assurance/shared/ge
 This workflow describes how to ingest Snyk scan results into a Harness pipeline. STO supports the following scan approaches for the following Snyk products:
 
 - Snyk Container SBOM via an ingestion workflow
-- Snyk Open Source SBOM via [STO Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans#snyk-repository-orchestration-example)
+- Snyk Open Source SBOM via [STO Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning)
 
 
 ## Generating and ingesting a Snyk Container SBOM
@@ -65,7 +65,7 @@ Here's how to set these keys if you choose to enable signing
 
 ### Configure the STO scan step to generate SBOM
 
-Configure the [Snyk STO scanner step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans#snyk-repository-orchestration-example), and make sure you select **Generate SBOM** and the **SBOM Format**.
+Configure the [Snyk STO scanner step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning#snyk-code-scan---orchestration-mode), and make sure you select **Generate SBOM** and the **SBOM Format**.
 
 <DocImage path={require('../static/generate-sbom-blackduck-00.png')} width="60%" height="60%" title="Click to view full size image" />
 

@@ -10,6 +10,8 @@ helpdocs_topic_id: 0tlih9lee5
 helpdocs_category_id: skrwlcueml
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-creating-flag/enable-or-disable-a-feature-flag
 ---
 
 This topic describes how to turn a Feature Flag `on` or `off`. Flags you create are available in all environments, but the state of the flag is independent, which means the same flag can be turned on in `Environment_A` and turned off in `Environment_B`.

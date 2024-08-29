@@ -116,6 +116,22 @@ You can create prerequisites for your GameDay to:
  ![](./static/v2/done-running-28.png)
 :::
 
+## View GameDay run report
+
+To view the GameDay run report, navigate to your GameDay run and select **View Report**.
+
+    ![](./static/v2/view-report.png)
+
+### Download GameDay run report
+
+1. To download the report, select **Download Report** on the page where you view the GameDay run report.
+
+    ![](./static/v2/download-report.png)
+
+2. Select **Save** and specify a name for the file (or use the default name provided).
+
+    ![](./static/v2/save-report.png)
+
 ## Conclusion
 
 Congratulations on scheduling (or running) your GameDay! Based on the results, you can take steps to improve the resilience of your application.

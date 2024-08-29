@@ -1,26 +1,26 @@
 ---
 sidebar_position: 7
-description: Hands On Labs Instructions
-title: Hands on Labs instructions
+description: Hands-on Labs Instructions
+title: Hands on Exam/Training Instructions
 redirect_from:
   - /certifications/instructions
 ---
 
-# Instructions
+# Hands-on Exam/Training Instructions
 
 :::info
 
-These instructions are in support of our Admin and Architect level certification exams.
+These instructions are in support of our Admin and Architect level certification exams and Instructor-Led Training.
 
 :::
 
-## Video of Lab Experience
+## Video of Exam Experience
 
-Video of your expected experience is available here.
+Video of your expected Harness Certification Hands-on Exam experience.
 
 <DocVideo src="https://www.youtube.com/watch?v=v8kOnhNopkc" />
 
-## Accessing your Hands-On Exam
+## Accessing your Hands-on Exam
 
 1. After registering for the administrator or architect level exam, the final question will be the hands-on exam.
 
@@ -28,15 +28,15 @@ Video of your expected experience is available here.
 
    ![New Tab](./static/new-tab.png)
 
-3. Follow the instructions provided within the hands-on labs to complete the exercises. Make sure to finish all the labs. Once you have completed all the labs, a secret password will be displayed which will be used for credit.
+3. Follow the instructions provided within the hands-on exam to complete the exercises. Make sure to finish all the exercises. Once you have completed all the exercises, a secret password will be displayed which will be used for credit.
 
-4. At this point, return to the main exam window and answer the question related to the secret password. This step ensures that you have finished all the labs.
+4. At this point, return to the main exam window and answer the question related to the secret password. This step ensures that you have finished all the exercises.
 
 By following these steps, you will be able to access and complete the hands-on exam using Instruqt. Good luck!
 
-## Admin/Architect Cloud Shell- Navigating Instruqt Exam
+## Admin/Architect Certifications Cloud Shell- Navigating Hands-on Exam
 
-For our hands on labs, we are using a cloud shell provider, Instruqt.
+For our hands on exams, we are using a cloud shell provider, Instruqt.
 
 Below is a picture of the cloud shell you will see during an exam.
 ![Instruqt Screen](./static/instruqt-screen.png)
@@ -48,13 +48,12 @@ Below is a picture of the cloud shell you will see during an exam.
 5. Follow the instructions provided within the lab environment to complete the hands-on exercises. The instructions will guide you through the necessary steps and provide any additional information or resources you may need.
 6. As you progress through the lab, make sure to read the instructions carefully and perform the tasks as directed.
 
-## Paid Exam Retakes
-
-For the Admin and Architect level exams, we allow for up to two retakes on paid exams.
-
-- If you have purchased an exam [not via coupon code] and need to retake,  please e-mail [certifications@harness.io](mailto:certifications@harness.io) so we can provide a retake coupon code.
-- If you redeemed a coupon code, please re-apply the coupon code when retaking.
-
 ## Troubleshooting
 
 Please see our [FAQ](/university/faqs) section for troubleshooting tips. You can also email our certification team at [certifications@harness.io](mailto:certifications@harness.io).
+
+## Video of Instructor-Led Training Experience
+
+Video of your expected Harness Instructor-Led Traing experience. For our Instructor-Led Training, we are using a cloud shell provider, Instruqt.
+
+<DocVideo src="https://www.youtube.com/watch?v=-OwM3l5HYgs" />

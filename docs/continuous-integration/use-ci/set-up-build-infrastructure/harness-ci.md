@@ -72,7 +72,7 @@ API key authentication is required. For more information about API keys, go to [
 
    ```json
    curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-default-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
-   --header 'X-API-KEY: $API_KEY'
+   --header "X-API-KEY: $API_KEY"
    ```
 
    The response payload shows the latest supported images and their tags, for example:
@@ -103,7 +103,7 @@ API key authentication is required. For more information about API keys, go to [
 
    ```json
    curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-customer-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8&overridesOnly=true" \
-   --header 'X-API-KEY: $API_KEY'
+   --header "X-API-KEY: $API_KEY"
    ```
 
    If the response contains `null`, your pipeline is using all default images, for example:
@@ -121,7 +121,7 @@ API key authentication is required. For more information about API keys, go to [
 
    ```json
    curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/update-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
-   --header 'X-API-KEY: $API_KEY' \
+   --header "X-API-KEY: $API_KEY" \
    --header 'Content-Type: application/json' \
    --data-raw '[
        {
@@ -139,7 +139,7 @@ API key authentication is required. For more information about API keys, go to [
 
    ```json
    curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/reset-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
-   --header 'X-API-KEY: $API_KEY' \
+   --header "X-API-KEY: $API_KEY" \
    --header 'Content-Type: application/json' \
    --data-raw '[
        {

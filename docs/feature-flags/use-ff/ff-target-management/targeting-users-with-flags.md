@@ -6,6 +6,8 @@ helpdocs_topic_id: xf3hmxbaji
 helpdocs_category_id: xw2hz815l8
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-using-flags/ff-target-management/target-users-with-flags
 ---
 
 Feature Flag targeting allows you to serve a particular Variation of a flag to specific target when the flag is enabled. Targets are anything that can be uniquely identified, we refer to these Targets as users, but they could also be apps, machines, resources, emails etc. 

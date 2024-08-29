@@ -13,7 +13,7 @@ This experiment induces chaos within a container and depends on an EC2 instance.
 ## Use cases
 
 ECS container HTTP latency:
-- Modifies the HTTP responses of containers in a specified ECS service by starting a proxy server and redirecting traffic through the proxy server. 
+- Modifies the HTTP responses of containers in a specified ECS service by starting a proxy server and redirecting traffic through the proxy server.
 - Simulates scenarios where containers experience delays in network connectivity or slow responses from dependent services, which may impact the behavior of your application.
 - Validates the behavior of your application and infrastructure during simulated HTTP latency, such as:
   - Testing how your application handles delays in network connectivity from containers to dependent services.

@@ -32,13 +32,28 @@ To view and access dashboards, select **DASHBOARDS** from the left navigation in
 
 ### Out of the Box Dashboards
 
-At present we provide 4 out of the box dashboards for IDP. 
+At present we provide 3 out of the box dashboards for IDP. 
 
-1. Dashboard describing the state of catalog, which includes, Number of registered entities, catalog kind and type. 
+1. Adoption Dashboard: Track how Developers are using IDP, you get to know **active users** during the selected **Aggregation Period** along with insights on each of the key features 
+
+  - Software Catalog
+  
+  ![](./static/software-catalog.png)
+
+  - Self Service Workflows 
+
+  ![](./static/flows.png)
+
+  - Scorecards
+
+  ![](./static/scorecards.png)
+
+
+2. Dashboard describing the state of catalog, which includes, Number of registered entities, catalog kind and type. 
 
 ![](./static/catalog-dashboard.png)
 
-2. Dashboard describing the Workflow Execution details
+3. Dashboard describing the Workflow Execution details
 
 ![](./static/workflows-dashboard.png)
 

@@ -9,6 +9,8 @@ helpdocs_topic_id: iijdahygdm
 helpdocs_category_id: jqfkw27d3u
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/add-prerequisites-to-feature-flag
 ---
 
 import pre_req_1 from './static/3-add-prerequisites-to-feature-flag-02.png'

@@ -148,7 +148,6 @@ export const experiments: ExperimentDetails[] = [
     tags: ['container', 'http', 'latency'],
     category: "aws",
   },
-
   {
     name: "ECS container HTTP modify body",
     description:
@@ -156,7 +155,13 @@ export const experiments: ExperimentDetails[] = [
     tags: ['container', 'http', 'modify', 'body'],
     category: "aws",
   },
-
+  {
+    name: "ECS container HTTP modify header",
+    description:
+      "ECS container HTTP modify header injects HTTP chaos which modifies the headers of the request or response of the service.",
+    tags: ['container', 'http', 'modify', 'header'],
+    category: "aws",
+  },
   {
     name: "ECS container HTTP reset peer",
     description:
@@ -164,7 +169,6 @@ export const experiments: ExperimentDetails[] = [
     tags: ['container', 'http', 'reset', 'peer'],
     category: "aws",
   },
-
   {
     name: "ECS container HTTP status code",
     description:

@@ -2,6 +2,7 @@ import { MODULES } from "../../../constants";
 import { CdData } from "./cdData";
 import { CiData } from "./ciData";
 import { FfData } from "./ffData";
+import { FmeData } from "./fmeData";
 import { CcmData } from "./ccmData";
 import { StoData } from "./stoData";
 import { SscaData } from "./sscaData";
@@ -33,6 +34,7 @@ export type Feature = {
   title: string;
   description: string;
   link?: string;
+  backgroundColor?: string;
 };
 export interface Horizon {
   [key: string]: {
@@ -66,6 +68,12 @@ const ModuleData: ModuleData[] = [
     description: "SaaS release status: GA, SMP release status: GA",
     module: MODULES.ff,
     horizon: FfData,
+  },
+  {
+    title: "Feature Management & Experimentation",
+    description: "SaaS release status: GA, SMP release status: Not yet planned",
+    module: MODULES.fme,
+    horizon: FmeData,
   },
   {
     title: "Cloud Cost Management",

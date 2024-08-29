@@ -16,6 +16,15 @@ For an overview of Harness concepts, see [Learn Harness' key concepts](/docs/pla
 
 ### General FAQs
 
+#### Where can one find instanceKey and infrastructureMappingId values in Trigger Rollback API?
+
+The Instance Key is a combination of the Infrastructure Key and the instance information available in the Instances Table.
+Infrastructure key can be found as part of the infrastructure output variables.
+Instance information can be found in the Instances Table.
+
+Note that the infrastructureMappingId is not exposed as part of the Infrastructure.
+
+
 #### How does Harness calculate pricing for CD?
 
 See [Service-based licensing and usage for CD](/docs/continuous-delivery/get-started/service-licensing-for-cd/)
@@ -3235,6 +3244,48 @@ AIDA is enabled on the Harness platform by default. To read more on the security
 
 Yes, we can use exported variables to reference a step group variable without knowing the step group ID.
 One can follow the syntax : `<+exportedVariables.getValue("stepGroup.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>` This method allows you to reference the variable by its alias name instead of needing to know the step group ID. For more details, you can refer to the Harness documentation on [Scoping output variables using aliases](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#scoping-output-variables-using-aliases)
+
+#### Can permissions be set on delegates in Harness?
+
+Yes, permissions can be set on delegates using Harness Role-Based Access Control (RBAC). Under roles one can set permissions to `view`, `create/edit` and `delete` the delegates.
+For more details, refer to the Harness documentation on [Delegate Permissions](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview#delegate-permissions)
+
+#### How can Python be used in CD or Custom stages of Harness?
+
+In CD/Custom Stages, Python can be utilized through the implementation of a Step Group, which allows access to the Run Step that supports Python.
+For more details, refer to the Harness documentation on [Containerized Step Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/)
+
+#### What is the API endpoint and the required details to create Global Environment overrides?
+
+You can use the API: https://apidocs.harness.io/tag/ServiceOverrides/#operation/createServiceOverride to create Global Environment overrides.
+
+#### Is it possible to swap the template from the other branch that is already used in the pipeline?
+Yes, User can swap the template by changing the branch in the git config of the template.
+
+#### How can user skip the steps based on previous step output?
+User can configure the output variable in the previous step and use that variable with the expression in the conditional execution configuration of the step that you want to skip.
+
+#### How to run the command step only on single server?
+User can run the command step only on single server by using the below repeat looping strategy:
+```
+repeat:
+    items: ["0.0.0.0"]
+```
+#### How can user skip a CI/CD pipeline build through commit?
+You can skip a CI/CD pipeline build by including one of the following keywords anywhere within your commit message:
+[skip ci]
+[ci skip]
+[skip pipeline]
+[pipeline skip]
+[no_ci]
+
+#### Can the skip keywords be used in any part of the commit message?
+
+Yes, the skip keywords can be placed anywhere within the commit message, including within sentences or alongside other text. For example, This is a [ci skip] commit.
+
+#### Does harness pipeline support triggering GitHub action workflow from the pipeline?
+As per the current design, there's no native step for this but user can write a shell script at the end of execution to trigger the GitHub action workflow.
+
 
 ### Infrastructure provisioning FAQs
 

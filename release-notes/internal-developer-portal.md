@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-07-18T20:00
+date: 2024-07-13T20:00
 sidebar_position: 12
 ---
 
@@ -17,7 +17,57 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 :::
 
+## August 2024
+
+### Version 0.31.0
+
+<!-- August 16, 2024 -->
+
+#### New features and enhancements
+
+- You can now see an out of the box [**Adoption Dashboard**](/docs/internal-developer-portal/get-started/how-to-track-adoption) under the platform Dashboards showing a quick insight into the adoption of IDP across different areas. Executive Buyers can now subscribe to this and get a weekly/monthly report.
+- New plugins added to the marketplace
+  - [Harness Chaos Engineering](/docs/internal-developer-portal/plugins/available-plugins/harness-chaos)
+  - [Synk](https://github.com/snyk-tech-services/backstage-plugin-snyk/blob/main/README.md)
+  - [New Relic](https://github.com/backstage/community-plugins/blob/main/workspaces/newrelic/plugins/newrelic-dashboard/README.md)
+- IDP Pipeline steps now support Harness Code as a git provider. [IDP-3232]
+- Secrets stored in customer's infrastructure now also supports GitHub and Google OAuth configurations. [IDP-3364]
+- [Harness Projects and Orgs Picker](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions/) in Workflows now shows up to a maximum of 750 items in the list. Previously the limit was set to 500. [IDP-3331]
+- You can now use periods `.` in the `tags` field of Catalog entities. [IDP-3330]
+
+#### Bug fixes
+
+- Issue with enabling OpsGenie plugin has now been resolved. Please see the [new configuration](/docs/internal-developer-portal/plugins/available-plugins/opsgenie/) of the plugin if you are still facing the issue. [IDP-3334]
+
 ## July 2024
+
+### Version 0.30.0
+
+<!-- July 31, 2024 -->
+
+- **New Videos:** [Harness IDP Scorecard Checks using Custom Data Source - Deep Dive ](https://youtu.be/23hlHjhhYsQ)
+
+#### New features and enhancements
+
+- You can now use any custom secret manager to manage secrets in Harness IDP. [IDP-3245]
+- Added audit trails support for entity `kind` and `type`. [IDP-3274]
+- You can now fetch images from private artifactory hub, for developer portal stages. [IDP-3258]
+- In [Bitbucket data source](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#bitbucket) for [File Exist data point](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#url-priority-for-branch-name-field-6), we will use the **default branch** for the repository used in source-location, as the default `branchName`. [IDP-3236]
+- New Plugins: Add [gRPC playground plugin](https://github.com/zalopay-oss/backstage-grpc-playground) to enhance [gRPC API](https://developer.harness.io/docs/internal-developer-portal/techdocs/add-api-docs/#grpc-docs) view. [IDP-3199]
+
+![](./static/json-format.png)
+
+- You can now ingest [user-group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) as an entity YAML in Harness IDP.
+
+- Added support to trigger workflows using Harness Pipelines with [git experience](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/) in [`trigger:harness-custom-pipeline`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline) custom action. [IDP-3304].
+
+#### Bug Fixes
+
+- Fixed the issue with GitLab rate-limiting, by configuring the catalog refresh processing interval as per account requirements. [IDP-3279]
+- Fixed the issue with [pull and run images from private artifactory storage in your pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#pull-images), for developer portal stages. [IDP-3258]
+- Fixed the issue regarding the use of templates in IDP Stage. [IDP-3121]
+- Fixed the issue with "no git integration added banner" showing even when git integration is in place. [IDP-3157]
+- Fixed the issue with max projects fetched by [`HarnessProjectPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#3-harnessprojectpicker) UI Picker [IDP-3331].
 
 ### Version 0.29.0
 
@@ -35,16 +85,16 @@ In this release we have done few upgrades and bug-fixes which are dependant on [
 
 - Added support for [graphviz](https://graphviz.org/) and [plantUML](https://plantuml.com/) in TechDocs. [IDP-3072]
 
-- Custom Plugins 
-    * You can now add Headers (e.g. Authentication header) when defining your custom plugin’s config. [Docs](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/add-a-custom-plugin/#configurations)[IDP-3060]
-    * Improved Error Handling, with detailed error messages at each step. 
+- Custom Plugins
+
+  - You can now add Headers (e.g. Authentication header) when defining your custom plugin’s config. [Docs](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/add-a-custom-plugin/#configurations)[IDP-3060]
+  - Improved Error Handling, with detailed error messages at each step.
 
 - UI Framework enhancements with integration of UI Core. [IDP-3055]
 
 - New Plugins
-    * [BugSnag](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/bug-snag) - View and monitor Bugsnag errors. [IDP-3009]
-    * [Harness IaCM plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/harness-iacm) - This plugin provides an overview of all the resources provisioned through information on active workspaces in your account. [IDP-3191]
-
+  - [BugSnag](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/bug-snag) - View and monitor Bugsnag errors. [IDP-3009]
+  - [Harness IaCM plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/harness-iacm) - This plugin provides an overview of all the resources provisioned through information on active workspaces in your account. [IDP-3191]
 
 #### Bug Fixes
 
@@ -56,8 +106,6 @@ In this release we have done few upgrades and bug-fixes which are dependant on [
 - Added more retries to avoid Connection Timeout errors in IDP Workflow Execution. [IDP-2997]
 - Removed banner showing no Git Integration setup while Harness Code was enabled. [IDP-3182]
 - Harness CI/CD plugin was fixed to support both old and new Harness URLs along with vanity URLs. [IDP-3156]
-
-
 
 ## June 2024
 

@@ -2,6 +2,8 @@
 title: Debugging
 description: This topic contains information on how to debug common issues with the Proxy
 sidebar_position: 70
+redirect_from:
+  - /docs/feature-flags/relay-proxy/debugging
 ---
 
 # Debugging

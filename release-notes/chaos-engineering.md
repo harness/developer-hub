@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-07-17T10:00
+date: 2024-07-23T10:00
 sidebar_position: 5
 ---
 
@@ -22,6 +22,34 @@ The release notes describe recent changes to Harness Chaos Engineering.
 :::
 
 ## July 2024
+
+### Version 1.43.3
+
+#### New features and enhancements
+
+- Crictl binary is upgraded from 1.29.0 to 1.31.0 to fix 3 vulnerabilities. (CHAOS-6357)
+
+- Updated the status code in the `experiment-stats` page to return status code 403 instead of 401 due to the changes around support groups. 401 status code indicates that a user logged out whereas to display an error, status code 403 is used. (CHAOS-6322)
+
+- Adds support for live logs for Linux and Windows. (CHAOS-6137)
+
+- Adds **Probe Properties** tab on the UI in ChaosHub to show details about the probe selected. (CHAOS-6132)
+
+#### Fixed issues
+
+- Fixed issue where GameDay was not available to users at the project level but was available at the account/organization level who had administrator access. (CHAOS-6349)
+
+- Fixed the Windows memory hog experiment when installed using the offline installer. (CHAOS-6363)
+
+- Fixed an issue where the Resilience Probes page showed **internal system error** in prod1. (CHAOS-6360)
+
+- Fixed an issue where the Resilience Probe index was out of bound for GameDay experiments that did not have any probes. (CHAOS-6330)
+
+- Fixed the issue where Cloud Foundry app JVM CPU stress fault didn't have YAML validation in Linux. (CHAOS-6312)
+
+- Fixed an issue where the documents were being updated even though no changes were needed. (CHAOS-6296)
+
+- Fixed an incorrect syntax in the `kubectl watch` command in the UI. (CHAOS-5968)
 
 ### Version 1.41.1
 
