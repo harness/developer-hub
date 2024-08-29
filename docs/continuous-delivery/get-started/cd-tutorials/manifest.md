@@ -65,118 +65,6 @@ Verify that you have the following:
 ## Getting Started with Harness GitOps
 
 <Tabs queryString="iac">
-<TabItem value="cli" label="CLI">
-
-1. Refer [Install and Configure Harness CLI](https://developer.harness.io/docs/platform/automation/cli/install) doc to setup and configure Harness CLI.
-
-2. Clone the Forked **harnessed-example-apps** repo and change directory.
-
-   ```bash
-   git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
-   cd harnesscd-example-apps
-   ```
-
-   :::note
-
-   Replace `GITHUB_ACCOUNTNAME` with your GitHub Account name.
-
-   :::
-
-3. Select **Deployments**, and then select **GitOps**.
-
-### GitOps Agent
-
-<details open>
-<summary>What is a GitOps Agent?</summary>
-    
-A Harness GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness, and performs all the GitOps tasks you request in Harness.
-
-</details>
-
-1. Select **Settings**, and then select **GitOps Agents**.
-   - Select **New GitOps Agent**.
-   - When are prompted with **Do you have any existing Argo CD instances?**, select **Yes** if you already have a Argo CD Instance, or else choose **No** to install the **Harness GitOps Agent**.
-
-<Tabs>
-<TabItem value="Harness GitOps Agent Fresh Install">
-
-- Select **No**, and then select **Start**.
-- In **Name**, enter the name for the new Agent.
-- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
-  - For this tutorial, let's use the `default` namespace to install the Agent and deploy applications.
-- Select **Continue**. The **Review YAML** settings appear.
-- This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.
-
-  ```
-  kubectl apply -f gitops-agent.yml -n default
-  ```
-
-- Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
-
-</TabItem>
-<TabItem value="Harness GitOps Agent with existing Argo CD instance">
-
-- Select **Yes**, and then select **Start**.
-- In **Name**, enter the name for the existing Argo CD project.
-- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
-- Select **Next**. The **Review YAML** settings appear.
-- This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.
-
-  ```yaml
-  kubectl apply -f gitops-agent.yml -n default
-  ```
-
-- Once you have installed the Agent, Harness will start importing all the entities from the existing Argo CD Project.
-
-</TabItem>
-</Tabs>
-
-4. Before proceeding, store the Agent Identifier value as an environment variable for use in the subsequent commands:
-
-   ```bash
-   export AGENT_NAME=GITOPS_AGENT_IDENTIFIER
-   ```
-
-   > Note: Replace `GITOPS_AGENT_IDENTIFIER` with GitOps Agent Identifier.
-
-5. Create a **GitOps Repository**.
-
-   ```bash
-   harness gitops-repository --file guestbook/harness-gitops/repository.yml apply --agent-identifier $AGENT_NAME
-   ```
-
-6. Create a **GitOps Cluster**.
-
-   ```bash
-   harness gitops-cluster --file guestbook/harness-gitops/cluster.yml apply --agent-identifier $AGENT_NAME
-   ```
-
-7. Create a **GitOps Application**.
-
-   ```bash
-   harness gitops-application --file guestbook/harness-gitops/application.yml apply --agent-identifier $AGENT_NAME
-   ```
-
-8. At last, it's time to synchronize the application with your Kubernetes setup.
-
-- Navigate to Harness UI > Default Project > GitOps > Applications, then click on gitops-application. Choose Sync, followed by Synchronize to kick off the application deployment.
-
-  - Observe the Sync state as Harness synchronizes the workload under `Resource View` tab.
-    ![Harness GitOps Sync Success](./static/k8s-manifest-tutorial/gitops.png)
-
-  - After a successful execution, you can check the deployment in your Kubernetes cluster using the following command:
-
-  ```bash
-  kubectl get pods -n default
-  ```
-
-  - To access the Guestbook application deployed via the Harness pipeline, port forward the service and access it at [http://localhost:8080](http://localhost:8080):
-
-  ```bash
-  kubectl port-forward svc/kustomize-guestbook-ui 8080:80
-  ```
-
-</TabItem>
 <TabItem value="ui" label="UI">
 
 1. Login to [Harness](https://app.harness.io/).
@@ -515,6 +403,118 @@ terraform destroy
 kubectl delete deployment guestbook-ui -n default
 kubectl delete service guestbook-ui -n default
 ```
+
+</TabItem>
+<TabItem value="cli" label="CLI">
+
+1. Refer [Install and Configure Harness CLI](https://developer.harness.io/docs/platform/automation/cli/install) doc to setup and configure Harness CLI.
+
+2. Clone the Forked **harnessed-example-apps** repo and change directory.
+
+   ```bash
+   git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
+   cd harnesscd-example-apps
+   ```
+
+   :::note
+
+   Replace `GITHUB_ACCOUNTNAME` with your GitHub Account name.
+
+   :::
+
+3. Select **Deployments**, and then select **GitOps**.
+
+### GitOps Agent
+
+<details open>
+<summary>What is a GitOps Agent?</summary>
+    
+A Harness GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness, and performs all the GitOps tasks you request in Harness.
+
+</details>
+
+1. Select **Settings**, and then select **GitOps Agents**.
+   - Select **New GitOps Agent**.
+   - When are prompted with **Do you have any existing Argo CD instances?**, select **Yes** if you already have a Argo CD Instance, or else choose **No** to install the **Harness GitOps Agent**.
+
+<Tabs>
+<TabItem value="Harness GitOps Agent Fresh Install">
+
+- Select **No**, and then select **Start**.
+- In **Name**, enter the name for the new Agent.
+- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
+  - For this tutorial, let's use the `default` namespace to install the Agent and deploy applications.
+- Select **Continue**. The **Review YAML** settings appear.
+- This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.
+
+  ```
+  kubectl apply -f gitops-agent.yml -n default
+  ```
+
+- Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
+
+</TabItem>
+<TabItem value="Harness GitOps Agent with existing Argo CD instance">
+
+- Select **Yes**, and then select **Start**.
+- In **Name**, enter the name for the existing Argo CD project.
+- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
+- Select **Next**. The **Review YAML** settings appear.
+- This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.
+
+  ```yaml
+  kubectl apply -f gitops-agent.yml -n default
+  ```
+
+- Once you have installed the Agent, Harness will start importing all the entities from the existing Argo CD Project.
+
+</TabItem>
+</Tabs>
+
+4. Before proceeding, store the Agent Identifier value as an environment variable for use in the subsequent commands:
+
+   ```bash
+   export AGENT_NAME=GITOPS_AGENT_IDENTIFIER
+   ```
+
+   > Note: Replace `GITOPS_AGENT_IDENTIFIER` with GitOps Agent Identifier.
+
+5. Create a **GitOps Repository**.
+
+   ```bash
+   harness gitops-repository --file guestbook/harness-gitops/repository.yml apply --agent-identifier $AGENT_NAME
+   ```
+
+6. Create a **GitOps Cluster**.
+
+   ```bash
+   harness gitops-cluster --file guestbook/harness-gitops/cluster.yml apply --agent-identifier $AGENT_NAME
+   ```
+
+7. Create a **GitOps Application**.
+
+   ```bash
+   harness gitops-application --file guestbook/harness-gitops/application.yml apply --agent-identifier $AGENT_NAME
+   ```
+
+8. At last, it's time to synchronize the application with your Kubernetes setup.
+
+- Navigate to Harness UI > Default Project > GitOps > Applications, then click on gitops-application. Choose Sync, followed by Synchronize to kick off the application deployment.
+
+  - Observe the Sync state as Harness synchronizes the workload under `Resource View` tab.
+    ![Harness GitOps Sync Success](./static/k8s-manifest-tutorial/gitops.png)
+
+  - After a successful execution, you can check the deployment in your Kubernetes cluster using the following command:
+
+  ```bash
+  kubectl get pods -n default
+  ```
+
+  - To access the Guestbook application deployed via the Harness pipeline, port forward the service and access it at [http://localhost:8080](http://localhost:8080):
+
+  ```bash
+  kubectl port-forward svc/kustomize-guestbook-ui 8080:80
+  ```
 
 </TabItem>
 </Tabs>

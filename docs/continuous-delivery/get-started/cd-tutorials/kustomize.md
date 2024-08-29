@@ -211,9 +211,193 @@ Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeli
 </TabItem>
 <TabItem value="cd-pipeline" label="CD pipeline" queryString="pipeline">
 
-You can choose to proceed with the tutorial either by using the command-line interface (Harness CLI) or the user interface (Harness UI).
+You can choose to proceed with the tutorial either by using the user interface (Harness UI) or command-line interface (Harness CLI) .
 
 <Tabs queryString="interface">
+<TabItem value="ui" label="UI">
+
+## Before you begin
+
+Verify the following:
+
+1. **Obtain GitHub personal access token with repo permissions**. For steps, go to the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
+2. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness Delegates and deploying a sample application in a local development environment.
+   - Check [delegate System and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
+3. **Install [Helm CLI](https://helm.sh/docs/intro/install/)**.
+4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
+   - For details on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
+
+## Getting Started with Harness CD
+
+1. Log into [Harness](https://app.harness.io/).
+
+2. Select **Projects**, and then select **Default Project**.
+
+:::warning
+
+For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
+
+:::
+
+### Delegate
+
+The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifact registries, cloud platforms, etc. The delegate is installed in the target infrastructure (Kubernetes cluster) and performs operations including deployment and integration. To learn more about the delegate, go to [delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
+
+3. In **Project Setup**, select **Delegates**.
+
+   - Select **Tokens**.
+     - Select **New Token**.
+     - Enter the named `delegate_token`.
+     - Select **Apply**.
+     - Copy the token value by selecting the copy icon and store the token somewhere.
+     - Select **Close**.
+   - Select **Delegates**.
+
+     - Select **Install delegate**. For this tutorial, let's explore how to install the delegate using Helm.
+     - Add the Harness Helm chart repo to your local Helm registry.
+
+     ```bash
+     helm repo add harness-delegate https://app.harness.io/storage/harness-download/delegate-helm-chart/
+     ```
+
+     ```bash
+     helm repo update harness-delegate
+     ```
+
+     - In the command provided, `ACCOUNT_ID`, `MANAGER_ENDPOINT` and `DELEGATE_TOKEN` are auto-populated values that you can obtain from the delegate Installation wizard.
+
+       ```bash
+       helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
+       harness-delegate/harness-delegate-ng \
+        --set delegateName=helm-delegate \
+        --set accountId=ACCOUNT_ID \
+        --set managerEndpoint=MANAGER_ENDPOINT \
+        --set delegateDockerImage=harness/delegate:23.03.78904 \
+        --set replicas=1 --set upgrader.enabled=false \
+        --set delegateToken=DELEGATE_TOKEN
+       ```
+
+   - Verify that the delegate is installed successfully and can connect to the Harness Manager.
+   - You can also follow the [Install Harness Delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate) steps to install the delegate using the Terraform Helm Provider or Kubernetes manifest.
+
+### Secrets
+
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness Delegate has access to the key management system. You can also integrate your own secret management solution. To learn more about secrets in Harness, go to [Secrets Management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
+
+4. In **Project Setup**, select **Secrets**.
+   - Select **New Secret** > **Text**.
+   - Enter the secret name `harness_gitpat`.
+   - For the secret value, paste in the GitHub Personal Access Token.
+   - Select **Save**.
+
+### Connectors
+
+Connectors in Harness enable integration with 3rd party tools, providing connection and authentication at deployment runtime. For example, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. To learn more about connectors, go to [Connectors](/docs/category/connectors).
+
+5. Create a **GitHub connector**.
+
+   - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/github-connector.yml).
+   - In Harness, in **Project Setup**, select **Connectors**.
+   - Select **Create via YAML Builder** and paste the copied YAML.
+   - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository as mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML wherever required.
+   - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
+   - Finally, select **Test** under **CONNECTIVITY STATUS** to ensure the connection is successful.
+
+6. Create **Kubernetes connector**.
+   - Copy the contents of [kubernetes-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/kubernetes-connector.yml).
+   - In Harness, in **Project Setup**, select **Connectors**.
+   - Select **Create via YAML Builder** and paste in the copied YAML.
+   - In the YAML, replace **DELEGATE_NAME** with the installed delegate name. To obtain the delegate name, navigate to **Default Project** > **Project Setup** > **Delegates**.
+   - Select **Save Changes** and verify that the new connector named **harness_k8sconnector** is successfully created.
+   - Finally, select **Test** under **CONNECTIVITY STATUS** to verify the connection is successful.
+
+### Environment
+
+Environments determine the deployment location, categorized as **Production** and **Pre-Production**. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or target infrastructures. To learn more about environments, go to [Environment Overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
+
+7. In **Default Project**, select **Environments**.
+   - Select **New Environment** and toggle to **YAML** to use the YAML editor.
+   - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/environment.yml) and paste it into the YAML editor and select **Save**.
+   - In **Infrastructure Definitions**, select **Infrastructure Definition** and select **Edit YAML**.
+   - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/infrastructure-definition.yml) and paste it into the YAML editor.
+   - Select **Save** and verify that the environment and infrastructure definition is created successfully.
+
+### Services
+
+In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, and artifacts. The Services dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services Overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
+
+8. In **Default Project**, select **Services**.
+   - Select **New Service**.
+   - Name the service `harnessguestbook`.
+   - Select **Save**, and then in the **Configuration** tab, toggle to **YAML** to use the YAML editor.
+   - Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/service.yml) and paste it into the YAML editor.
+   - Select **Save** and verify that the Service **harness_guestbook** is successfully created.
+
+### Pipeline
+
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
+
+<Tabs queryString="deploymentcdpipeline">
+<TabItem value="canary" label="Canary">
+
+A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
+
+- In **Default Project**, select **Pipelines**.
+
+  - Select **New Pipeline**.
+  - Enter the name `guestbook_canary_pipeline`.
+  - Select **Inline** to store the pipeline in Harness.
+  - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
+  - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
+
+- Copy the contents of [canary-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/canary-pipeline.yml) and paste it into the YAML editor.
+- Select **Save**.
+- You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
+
+![Canary](./static/kustomize-tutorial/canary.png)
+
+</TabItem>
+<TabItem value="bg" label="Blue Green">
+
+Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a new service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
+
+- In **Default Project**, select **Pipelines**.
+
+  - Select **New Pipeline**.
+  - Enter the name `guestbook_bluegreen_pipeline`.
+  - Select **Inline** to store the pipeline in Harness.
+  - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
+  - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
+
+- Copy the contents of [bluegreen-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/bluegreen-pipeline.yml) and paste it into the YAML editor.
+- Select **Save**.
+- You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
+
+![Blue Green](./static/kustomize-tutorial/bluegreen.png)
+
+</TabItem>
+<TabItem value="rolling" label="Rolling">
+
+Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
+
+- In **Default Project**, select **Pipelines**.
+
+  - Select **New Pipeline**.
+  - Enter the name `guestbook_rolling_pipeline`.
+  - Select **Inline** to store the pipeline in Harness.
+  - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
+  - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
+
+- Copy the contents of [rolling-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/rolling-pipeline.yml) and paste it into the YAML editor.
+- Select **Save**.
+- You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
+
+![Rolling](./static/kustomize-tutorial/rolling.png)
+
+</TabItem>
+</Tabs>
+
+</TabItem>
 <TabItem value="cli" label="CLI">
 
 ## Before you begin
@@ -447,190 +631,7 @@ harness pipeline --file kustomize-guestbook/harnesscd-pipeline/rolling-pipeline.
 </Tabs>
 
 </TabItem>
-<TabItem value="ui" label="UI">
 
-## Before you begin
-
-Verify the following:
-
-1. **Obtain GitHub personal access token with repo permissions**. For steps, go to the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
-2. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness Delegates and deploying a sample application in a local development environment.
-   - Check [delegate System and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
-3. **Install [Helm CLI](https://helm.sh/docs/intro/install/)**.
-4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
-   - For details on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
-
-## Getting Started with Harness CD
-
-1. Log into [Harness](https://app.harness.io/).
-
-2. Select **Projects**, and then select **Default Project**.
-
-:::warning
-
-For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
-
-:::
-
-### Delegate
-
-The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifact registries, cloud platforms, etc. The delegate is installed in the target infrastructure (Kubernetes cluster) and performs operations including deployment and integration. To learn more about the delegate, go to [delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
-
-3. In **Project Setup**, select **Delegates**.
-
-   - Select **Tokens**.
-     - Select **New Token**.
-     - Enter the named `delegate_token`.
-     - Select **Apply**.
-     - Copy the token value by selecting the copy icon and store the token somewhere.
-     - Select **Close**.
-   - Select **Delegates**.
-
-     - Select **Install delegate**. For this tutorial, let's explore how to install the delegate using Helm.
-     - Add the Harness Helm chart repo to your local Helm registry.
-
-     ```bash
-     helm repo add harness-delegate https://app.harness.io/storage/harness-download/delegate-helm-chart/
-     ```
-
-     ```bash
-     helm repo update harness-delegate
-     ```
-
-     - In the command provided, `ACCOUNT_ID`, `MANAGER_ENDPOINT` and `DELEGATE_TOKEN` are auto-populated values that you can obtain from the delegate Installation wizard.
-
-       ```bash
-       helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
-       harness-delegate/harness-delegate-ng \
-        --set delegateName=helm-delegate \
-        --set accountId=ACCOUNT_ID \
-        --set managerEndpoint=MANAGER_ENDPOINT \
-        --set delegateDockerImage=harness/delegate:23.03.78904 \
-        --set replicas=1 --set upgrader.enabled=false \
-        --set delegateToken=DELEGATE_TOKEN
-       ```
-
-   - Verify that the delegate is installed successfully and can connect to the Harness Manager.
-   - You can also follow the [Install Harness Delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate) steps to install the delegate using the Terraform Helm Provider or Kubernetes manifest.
-
-### Secrets
-
-Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness Delegate has access to the key management system. You can also integrate your own secret management solution. To learn more about secrets in Harness, go to [Secrets Management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
-
-4. In **Project Setup**, select **Secrets**.
-   - Select **New Secret** > **Text**.
-   - Enter the secret name `harness_gitpat`.
-   - For the secret value, paste in the GitHub Personal Access Token.
-   - Select **Save**.
-
-### Connectors
-
-Connectors in Harness enable integration with 3rd party tools, providing connection and authentication at deployment runtime. For example, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. To learn more about connectors, go to [Connectors](/docs/category/connectors).
-
-5. Create a **GitHub connector**.
-
-   - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/github-connector.yml).
-   - In Harness, in **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and paste the copied YAML.
-   - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository as mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML wherever required.
-   - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
-   - Finally, select **Test** under **CONNECTIVITY STATUS** to ensure the connection is successful.
-
-6. Create **Kubernetes connector**.
-   - Copy the contents of [kubernetes-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/kubernetes-connector.yml).
-   - In Harness, in **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and paste in the copied YAML.
-   - In the YAML, replace **DELEGATE_NAME** with the installed delegate name. To obtain the delegate name, navigate to **Default Project** > **Project Setup** > **Delegates**.
-   - Select **Save Changes** and verify that the new connector named **harness_k8sconnector** is successfully created.
-   - Finally, select **Test** under **CONNECTIVITY STATUS** to verify the connection is successful.
-
-### Environment
-
-Environments determine the deployment location, categorized as **Production** and **Pre-Production**. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or target infrastructures. To learn more about environments, go to [Environment Overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
-
-7. In **Default Project**, select **Environments**.
-   - Select **New Environment** and toggle to **YAML** to use the YAML editor.
-   - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/environment.yml) and paste it into the YAML editor and select **Save**.
-   - In **Infrastructure Definitions**, select **Infrastructure Definition** and select **Edit YAML**.
-   - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/infrastructure-definition.yml) and paste it into the YAML editor.
-   - Select **Save** and verify that the environment and infrastructure definition is created successfully.
-
-### Services
-
-In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, and artifacts. The Services dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services Overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
-
-8. In **Default Project**, select **Services**.
-   - Select **New Service**.
-   - Name the service `harnessguestbook`.
-   - Select **Save**, and then in the **Configuration** tab, toggle to **YAML** to use the YAML editor.
-   - Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/service.yml) and paste it into the YAML editor.
-   - Select **Save** and verify that the Service **harness_guestbook** is successfully created.
-
-### Pipeline
-
-A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
-
-<Tabs queryString="deploymentcdpipeline">
-<TabItem value="canary" label="Canary">
-
-A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
-
-- In **Default Project**, select **Pipelines**.
-
-  - Select **New Pipeline**.
-  - Enter the name `guestbook_canary_pipeline`.
-  - Select **Inline** to store the pipeline in Harness.
-  - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
-  - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
-
-- Copy the contents of [canary-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/canary-pipeline.yml) and paste it into the YAML editor.
-- Select **Save**.
-- You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
-
-![Canary](./static/kustomize-tutorial/canary.png)
-
-</TabItem>
-<TabItem value="bg" label="Blue Green">
-
-Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a new service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
-
-- In **Default Project**, select **Pipelines**.
-
-  - Select **New Pipeline**.
-  - Enter the name `guestbook_bluegreen_pipeline`.
-  - Select **Inline** to store the pipeline in Harness.
-  - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
-  - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
-
-- Copy the contents of [bluegreen-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/bluegreen-pipeline.yml) and paste it into the YAML editor.
-- Select **Save**.
-- You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
-
-![Blue Green](./static/kustomize-tutorial/bluegreen.png)
-
-</TabItem>
-<TabItem value="rolling" label="Rolling">
-
-Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
-
-- In **Default Project**, select **Pipelines**.
-
-  - Select **New Pipeline**.
-  - Enter the name `guestbook_rolling_pipeline`.
-  - Select **Inline** to store the pipeline in Harness.
-  - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
-  - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
-
-- Copy the contents of [rolling-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/rolling-pipeline.yml) and paste it into the YAML editor.
-- Select **Save**.
-- You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
-
-![Rolling](./static/kustomize-tutorial/rolling.png)
-
-</TabItem>
-</Tabs>
-
-</TabItem>
 </Tabs>
 
 - Finally, it's time to execute the pipeline. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
