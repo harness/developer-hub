@@ -151,6 +151,8 @@ To revoke tokens, do the following:
 
 2. Select **Revoke**. The token is revoked. The Harness Manager will not accept connections from any delegates using this revoked token.
 
+3. Once the delegate token is revoked, and it is expired the delegate token will not be showing up in the delegate token list.
+
 ## Option: Rotate tokens
 
 You can rotate and store your delegate tokens in a third-party secret manager and reference them as needed.
