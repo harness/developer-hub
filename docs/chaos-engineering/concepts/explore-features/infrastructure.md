@@ -1,6 +1,6 @@
 ---
 id: infrastructure
-sidebar_position: 3
+sidebar_position: 14
 title: Chaos Infrastructure
 redirect_from:
 - /docs/chaos-engineering/technical-reference/architecture/kubernetes
@@ -98,7 +98,7 @@ To check if the infrastructure service is active and running, use the following 
 ```
 systemctl status linux-chaos-infrastructure.service
 ```
-![Terminal](./static/terminal.png)
+![Terminal](./static/infrastructure/terminal.png)
 
 Any status other than the `active` status would indicate an issue with the infrastructure.
 
@@ -163,7 +163,7 @@ serviceaccount/litmus-cluster-scope created
 **Step 2. Create Litmus Security Context Constraint (SCC) and authenticate it with the service account**
 
 To create the litmus SCC,
-- Copy the contents of the [litmus SCC manifest](./static/openshift/litmus-scc.yaml) to `litmus-scc.yaml` file.
+- Copy the contents of the [litmus SCC manifest](/docs/chaos-engineering/concepts/explore-features/infrastructures/static/openshift/litmus-scc.yaml) to `litmus-scc.yaml` file.
 - Apply this manifest to your chaos infrastructure.
 
   ```bash

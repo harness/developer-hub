@@ -52,7 +52,7 @@ The HCE platform provides native integration for chaos experiments with the CD m
 
 ## GameDay support
 
-HCE currently offers [GameDay](/docs/chaos-engineering/concepts/explore-features/gameday) support for orchestrating and running multiple Kubernetes experiments across various infrastructures in a coordinated manner. This feature allows teams to simulate real-world scenarios and assess the resilience of applications or microservices across different environments. However, GameDay support for Windows chaos experiments is not yet available. Once implemented, this feature will enable users to conduct comprehensive GameDay exercises involving Windows chaos experiments, providing a more holistic view of system resilience and facilitating targeted improvements.
+HCE currently offers [GameDay](/docs/chaos-engineering/concepts/explore-features/GameDay) support for orchestrating and running multiple Kubernetes experiments across various infrastructures in a coordinated manner. This feature allows teams to simulate real-world scenarios and assess the resilience of applications or microservices across different environments. However, GameDay support for Windows chaos experiments is not yet available. Once implemented, this feature will enable users to conduct comprehensive GameDay exercises involving Windows chaos experiments, providing a more holistic view of system resilience and facilitating targeted improvements.
 
 ## Inclusion in ChaosGuard policies
 
