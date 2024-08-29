@@ -67,6 +67,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## August 2024
 
+### Version 24.07.83703 <!--  August 29, 2024 -->
+
+#### Hotfix
+
+- Fixed a bug with secrets not being resolved correctly in the K8s manifests.
+
 ### Version 24.07.83609 <!--  August 20, 2024 -->
 
 #### Hotfix
