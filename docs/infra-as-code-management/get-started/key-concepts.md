@@ -12,14 +12,14 @@ Infrastructure as Code (IaC) is the ability to define cloud resources as code de
 
 ## Workspace
 
-A workspace is a logical grouping of infrastructure resources. It integrates IaC code, variables, cloud provider connections, state files, and workflows. In Terraform, each workspace has its own state file, which tracks the status of its managed resources.
+Your workspace is a container for your infrastructure resources. It integrates IaC code, variables, cloud provider connections, state files, and workflows. In Terraform, each workspace has its own state file, which tracks the status of its managed resources.
 
 ## Operations
 
 Operations are actions taken to manage and maintain your infrastructure using IaC tools.
 
--	**Provision:** The process of applying infrastructure configuration to a cloud provider to create cloud resources. For example, executing terraform apply with a main.tf file will provision the defined resources.
--	**Destroy:** The process of removing all resources that were provisioned by the IaC code. This action is also referred to as “Destroy.”
+-	**Provision:** The process of applying infrastructure configuration to a cloud provider to create cloud resources. For example, executing `terraform apply` with a terraform file will provision the defined resources.
+-	**Destroy:** The process of removing all resources that were provisioned by the IaC code.
 -	**Drift**: Occurs when the actual state of your infrastructure deviates from the state defined by your IaC code. This often happens when changes are made directly through the cloud provider’s console or API, bypassing the IaC tool.
 - **Drift Detection:** The process of identifying discrepancies between the infrastructure defined in your IaC code and the actual running infrastructure. This is typically done by comparing the state file with the current state of the resources.
 
