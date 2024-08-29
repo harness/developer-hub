@@ -65,4 +65,7 @@
 #Added by ravilach temp on 8-26-2024 for Unscripted
 /unscripted https://play.instruqt.com/harness/invite/odjkrnp3nbcz
 
+# Added by sushrutharness on 8-29-2024 for broken AWS category
+/docs/continuous-delivery/deploy-srv-diff-platforms/aws /docs/category/aws
+
 # Redirects generated from Front Matter [sytem generated goes below here]:
