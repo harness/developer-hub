@@ -854,3 +854,10 @@ If we use the same service to deploy a different service type it will overwrite 
 
 ### Is it possible to provide delegate selector for service hooks?
 We can not provide delegate selectors for service hook. They execute on the same delegate where the corresponding task is getting executed.
+
+### How can we access the data from the Artifacts tab in a pipeline execution?
+The artifacts data can be accessed through the execution details API, but only when the request parameter `renderFullBottomGraph=true` is included. One would need to iterate through the steps that have `stepArtifacts` within `data.executionGraph.nodeMap.*.outcomes.*.stepArtifacts`.
+
+### Is there a public API available to retrieve the contents of the Tests tabs in a pipeline execution?
+Harness does not have a public API for retrieving the data from the Tests tab yet. One can view the network calls to `/ti-service` in the browser's network tab when loading the Tests page to access this information. However, this is not a public API, and using it requires obtaining a token from the UI, which is not recommended due to its frequent expiration and lack of backward compatibility.
+
