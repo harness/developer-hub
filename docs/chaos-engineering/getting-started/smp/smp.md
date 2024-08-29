@@ -1,6 +1,7 @@
 ---
 title: On-Premise (SMP)
 sidebar_position: 2
+description: Understand the features facilitated by SMP.
 redirect_from:
     - /docs/chaos-engineering/get-started/ce-on-smp/ce-smp-roadmap
 ---

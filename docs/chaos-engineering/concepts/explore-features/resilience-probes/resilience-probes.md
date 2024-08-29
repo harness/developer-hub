@@ -1,7 +1,7 @@
 ---
 id: resilience-probes
 sidebar_position: 1
-title: Resilience Probes
+title: Overview
 redirect_from:
 - /docs/chaos-engineering/features/resilience-probes/overview
 ---

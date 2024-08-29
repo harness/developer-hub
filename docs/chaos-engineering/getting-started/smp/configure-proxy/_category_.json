@@ -5,9 +5,11 @@
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Configure proxy on Self-Managed Enterprise Edition"
+      "title":"Configure proxy on Self-Managed Enterprise Edition",
+      "description": "This sections guides you to perform two operations: Connect chaos infrastructure to the control plane via proxy, and connect Enterprise ChaosHub in an air-gapped setup via proxy."
    },
   "customProps": {
     "description": "Guide to configure proxy on Self-Managed Enterprise Edition"
   }
 }
+

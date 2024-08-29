@@ -9,7 +9,7 @@ description: Explore all the capabilities of Harness Chaos Engineering
 
 </div>
 
-Listed below are features with links for easy navigation.
+Listed below are HCE features with links for easy navigation.
 
 <!-- Custom component -->
 
@@ -58,7 +58,7 @@ import FeatureCard from '@site/src/components/ChaosEngineering/FeatureCard';
 
 <FeatureCard title="Out-of-the-box Faults" description="" link="/docs/chaos-engineering/use-harness-ce/chaos-faults/" />
 
-<FeatureCard title="Create Custom Faults" description="" link="/docs/chaos-engineering/use-harness-ce/experiments/create-experiments" />
+<FeatureCard title="Create Custom Faults" description="" link="/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#using-blank-canvas" />
 
 ## Security and Governance
 

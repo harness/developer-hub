@@ -5,7 +5,8 @@
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Getting started with Harness Chaos Engineering"
+      "title":"Getting started with Harness Chaos Engineering",
+      "description":"Get hands-on experience executing your first chaos experiment on HCE SaaS, understand SMP (self-managed platform), automated and guided onboarding."
    },
   "customProps": {
     "description": "Getting started with Harness Chaos Engineering"

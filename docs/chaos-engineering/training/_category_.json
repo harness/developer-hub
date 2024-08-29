@@ -5,7 +5,8 @@
   "collapsed": true,
   "link":{
       "type":"generated-index",
-      "title":"Training and Certification in Harness CE"
+      "title":"Training and Certification in Harness CE",
+      "description": "This section describes how you can get the Harness Chaos Developer Certification by getting hands-on with sandbox."
    },
   "customProps": {
     "description": "Training and Certification in Harness CE."

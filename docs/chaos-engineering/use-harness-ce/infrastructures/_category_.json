@@ -5,7 +5,8 @@
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Using Harness CE"
+      "title":"Using Harness CE",
+      "description": "Chaos infrastructure represents the individual components of a deployment environment used to inject chaos at a cloud-native scale. This section describes how you can enable, upgrade and disable a chaos infrastructure."
    },
   "customProps": {
     "description": "Using Harness CE"
