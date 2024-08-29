@@ -1,17 +1,17 @@
 ---
-title: Scheduled Autostopping using Terraform
-description: Creating schedule based autostopping rules using Terraform
+title: Scheduled EC2/RDS Autostopping using Terraform
+description: Creating schedule based autostopping rules for EC2 and RDS using Terraform
 ---
 
 # Overview
 
-When creating autostopping rules by hand in the harness UI, scale can be a real problem. With many aws accounts and many instances to manage we need to lean on infrastructure as code to create these rules and schedules automatically.
+When creating autostopping rules by hand in the Harness UI, scale can be a real problem. With many AWS accounts and many instances to manage we need to lean on infrastructure as code to create these rules and schedules automatically.
 
 To do this we can leverage the AWS and Harness Terraform providers to query for instances to stop and create the rules/schedules accordingly.
 
 ## Setup
 
-First initialize both the AWS and Harness terraform providers.
+First initialize both the AWS and Harness Terraform providers.
 
 ```
 terraform {
@@ -28,7 +28,7 @@ terraform {
 
 You can read the [AWS provider documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) for all the ways to set up authentication.
 
-For the Harness provider, you can set the following enviornment variables:
+For the Harness provider, you can set the following environment variables:
 
 - `HARNESS_ACCOUNT_ID`: your harness account identifier
 - `HARNESS_PLATFORM_API_KEY`: a harness api key, with ccm:autostopping-rule:create
@@ -134,4 +134,4 @@ When creating autostopping rules for instances that do not have a way to measure
 
 With the above we have autostopping rules and a schedule created for each instance that has our target tag and value. You can repeat this for every schedule type you want to support, across all accounts and regions.
 
-If instances are deleted, or the tags removed, rerunning the terraform will result in the rule being deleted and the instance no longer being stopped by Harness. Because of this it is suggested that you set this terraform ro tun on a schedule.
+If instances are deleted, or the tags removed, rerunning the terraform will result in the rule being deleted and the instance no longer being stopped by Harness. Because of this it is suggested that you set this Terraform ro tun on a schedule.
