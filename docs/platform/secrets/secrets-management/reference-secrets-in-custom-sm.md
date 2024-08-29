@@ -1,10 +1,10 @@
 ---
-title: Referencing Secret in Custom Secret Manager
-description: Learn about referencing secrets within the Custom Secret Manager
+title: Reference Secret in Custom Secret Manager
+description: Learn about how to reference secrets within the Custom Secret Manager
 sidebar_position: 11
 ---
 
-This document provides a detailed explanation of guidelines on referencing secrets within the Custom Secret Manager, including specific examples and constraints.
+This topic provides a detailed explanation of guidelines on how to reference secrets within the Custom Secret Manager, including specific examples and constraints.
 
 ### Scopes in Harness
 
@@ -16,7 +16,7 @@ Currently, we have three scopes: Account, Organization, and Project. These scope
 
 This means that an Account can contain multiple Organizations, and each Organization can contain multiple Projects.
 
-### Referencing Secrets
+### Reference Secrets
 
 When referencing secrets in Harness, the following rules apply:
 
@@ -26,7 +26,7 @@ When referencing secrets in Harness, the following rules apply:
 
 - **Project Scope**: Can reference secrets from its own scope, its parent Organization scope, and the Account scope.
 
-### Referencing Secrets in Custom Secret Manager
+### Reference Secrets in Custom Secret Manager
 
 When using the Custom Secret Manager, you need to specify the identifier of the secret along with the scope where it is available:
 
