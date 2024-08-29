@@ -28,6 +28,10 @@ If you are running delegates version below 799xx and using Terraform/Terragrunt 
 
 :::
 
+:::danger Kubernetes Manifest impact on Delegate
+Delegate version 24.08.83702 is affected due to rendering logic of Kubernetes Manifest in certain cases only. If you are using this version, please upgrade to version 24.08.83704 to resolve the issue
+:::
+
 :::danger ARM64 Architecture Impact on Delegate Versions
 
 Certain delegate versions (`24.07.83608`, `24.07.83607`, `24.07.83606`, `24.07.83605`) are affected due to baked-in AMD64 client binaries on ARM64 architecture, despite building a multiarch image. If you are using any of these versions on ARM64 architecture, please upgrade to version `24.07.83609` or `24.07.83609.minimal` to resolve the issue.
