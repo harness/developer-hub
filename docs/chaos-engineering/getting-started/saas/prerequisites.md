@@ -19,7 +19,7 @@ This topic describes the [prerequisites](#required-permissions) to fulfill befor
 
 - Enable the necessary Feature Flags (as a general step) and corresponding sanity checks (such as places to click, and entities to see enabled): Some features may be behind a Feature Flag. You can contact [Harness Support](mailto:support@harness.io) to enable the flag feature for your account.
 
-- Prepare [network connectivity, firewall rules](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/) (if any), and identify [proxy requirements](/docs/category/configure-proxy-on-self-managed-enterprise-edition),.
+- Prepare [network connectivity, firewall rules](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/) (if any), and identify [proxy requirements](/docs/category/smp),.
 
 - Identify application (or infrastructure) steady-state parameters (even if this requires manual effort)- using APMs or logs or other methods: You can use [resilience probes](/docs/chaos-engineering/concepts/explore-features/resilience-probes/) to monitor your application and validate the data.
 

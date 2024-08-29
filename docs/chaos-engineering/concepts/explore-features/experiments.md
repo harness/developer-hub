@@ -10,7 +10,7 @@ redirect_from:
 
 Harness Chaos Engineering (HCE) gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios against which you can validate your applications. At the same time, the chaos experiments are declarative and you can construct them using the Chaos Studio user interface with no programmatic intervention.
 
-A **chaos experiment** is composed of chaos faults that are arranged in a specific order to create a failure scenario. The chaos faults target various aspects of an application, including the constituent microservices and underlying infrastructure. You can tune the parameters associated with these faults to impart the desired chaos behavior.
+A **chaos experiment** is composed of chaos faults that are arranged in a specific order to create a failure scenario. The [chaos faults](#chaos-fault) target various aspects of an application, including the constituent microservices and underlying infrastructure. You can tune the parameters associated with these faults to impart the desired chaos behavior.
 
 You can define the experiment using the Chaos Studio, that helps create new experiments using the guided UI or by uploading the workflow CR (custom resource) manifest.
 

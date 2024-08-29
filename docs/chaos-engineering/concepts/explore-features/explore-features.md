@@ -17,7 +17,7 @@ import FeatureCard from '@site/src/components/ChaosEngineering/FeatureCard';
 
 ## Deployment Options
 
-<FeatureCard title="On-prem Deployment" description="" link="/docs/chaos-engineering/getting-started/smp/" />
+<FeatureCard title="On-prem Deployment" description="" link="/docs/category/smp" />
 <FeatureCard title="SaaS Deployment" description="" link="/docs/category/saas" />
 
 ## Chaos Platform Features
@@ -83,12 +83,12 @@ import FeatureCard from '@site/src/components/ChaosEngineering/FeatureCard';
 
 <FeatureCard title="Resilience Coverage" description="" link="/docs/chaos-engineering/concepts/explore-features/app-maps" />
 
-<FeatureCard title="Prometheus Chaos Metrics" description="" link="" />
+<FeatureCard title="Prometheus Chaos Metrics" description="" link="/docs/chaos-engineering/concepts/explore-features/resilience-probes/prom-probe" />
 
-<FeatureCard title="Resilience Insights" description="" link="" />
+<FeatureCard title="Resilience Insights" description="" link="/docs/chaos-engineering/concepts/explore-features/dashboard" />
 
 <FeatureCard title="Out-of-the-box Chaos Dashboards" description="" link="/docs/chaos-engineering/concepts/explore-features/dashboard" />
 
 <FeatureCard title="Creating Custom Dashboards" description="" link="/docs/chaos-engineering/use-harness-ce/dashboards/create-new" />
 
-<FeatureCard title="Reporting" description="" link="" />
+<FeatureCard title="Reporting" description="" link="/docs/chaos-engineering/use-harness-ce/experiments/alert-integration#sample-run-report" />

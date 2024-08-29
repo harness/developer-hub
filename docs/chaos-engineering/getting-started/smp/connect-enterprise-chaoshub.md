@@ -6,6 +6,10 @@ description: Connect Enterprise ChaosHub in an air-gapped setup via proxy
 
 This topic describes the method to connect Enterprise ChaosHub (https://github.com/) in an air-gapped setup via proxy
 
+:::tip
+To know about new feature releases, enhancements, and fixed issues, go to [SMP release notes](/release-notes/self-managed-enterprise-edition).
+:::
+
 If you don't have access to [GitHub](https://github.com/), you will not be able to deploy Harness SMP in an air-gapped cluster completely. As a consequence, the Enterprise ChaosHub will be in a `DISCONNECTED` state.
 
 To address this,

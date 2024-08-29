@@ -8,6 +8,10 @@ redirect_from:
 
 This topic describes the method to connect your chaos infrastructure to the control plane on [app.harness.io](https://app.harness.io) or Self-Managed Platform (SMP) via proxy.
 
+:::tip
+To know about new feature releases, enhancements, and fixed issues, go to [SMP release notes](/release-notes/self-managed-enterprise-edition).
+:::
+
 If you want to deploy a chaos infrastructure in an air-gapped cluster that accesses [app.harness.io](https://app.harness.io) or SMP control plane via proxy, you need to add `HTTP_PROXY` , `HTTPS_PROXY`, and `NO_PROXY` environment variables for the subscriber, where:
 
 - `HTTP_PROXY` is set if you deploy the SMP control plane over HTTP.

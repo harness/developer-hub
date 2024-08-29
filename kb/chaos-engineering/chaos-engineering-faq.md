@@ -105,7 +105,7 @@ The FAQs below are based on HCE entities using [Harness Delegate](/docs/chaos-en
 :::
 
 #### Do you support On-Premise Harness Control Plane?
-Yes, HCE supports the self-managed enterprise edition (SME, also known as self-managed platform or SMP). Depending on the version of HCE (SaaS or Self-Managed Platform), the control plane is hosted by Harness (for SaaS) or within your domain (for example, harness.your-domain.io). Go to [SMP](/docs/chaos-engineering/getting-started/smp/) for more information.
+Yes, HCE supports the self-managed enterprise edition (SME, also known as self-managed platform or SMP). Depending on the version of HCE (SaaS or Self-Managed Platform), the control plane is hosted by Harness (for SaaS) or within your domain (for example, harness.your-domain.io). Go to [SMP](/docs/category/smp) for more information.
 
 #### Does chaos use the Harness Delegate or does it need a separate agent?
 HCE uses the Harness Delegate to execute chaos experiments, which you can leverage to:

@@ -9,6 +9,6 @@
       "description":"Dashboards provide a powerful way to visualize key metrics and data from your experiment runs. This section describes how you can view the default dashboard and create a new one with custom fields."
    },
   "customProps": {
-    "description": "Resilience Insights through Chaos Dashboard"
+    "description": "Resilience Insights by visualizing key metrics and data from your experiment runs."
   }
 }

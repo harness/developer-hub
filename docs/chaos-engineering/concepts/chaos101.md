@@ -43,7 +43,7 @@ Chaos engineering isn't the same as software testing (manual or automated) which
 
 In the current landscape of fast-paced technology, system failures have a significant impact on businesses, customers, and stakeholders. Chaos engineering is a way to identify potential issues before they become major problems, helping organizations minimize downtime, mitigate risks, and improve reliability.
 
-Chaos engineering targets a steady-state system and simulates conditions that might cause failures in components such as infrastructure, networks, and services. For example, a chaos experiment might terminate a pod in a functional Kubernetes cluster, shut down a working load balancer to validate failover, or induce CPU spikes on a server, and then observe how the system responds.
+Chaos engineering targets a steady-state system and simulates conditions that might cause failures in components such as infrastructure, networks, and services. For example, a [chaos experiment](/docs/chaos-engineering/concepts/explore-features/experiments) might terminate a pod in a functional Kubernetes cluster, shut down a working load balancer to validate failover, or induce CPU spikes on a server, and then observe how the system responds.
 
 ### Shift left chaos engineering
 
@@ -64,7 +64,7 @@ You can build resilient applications by following the steps below:
 4. **Execute** the chaos experiments;
 5. **Analyze** the result.
 
-This suggests that chaos experiments require an appropriate observability infrastructure to validate the hypotheses about the steady state. The practice of chaos engineering involves repeatedly performing experiments by injecting various potential failures, known as **chaos faults**, to simulate real-world failure conditions against different resources, referred to as **targets**.
+This suggests that [chaos experiments](/docs/chaos-engineering/concepts/explore-features/experiments) require an appropriate observability infrastructure to validate the hypotheses about the steady state. The practice of chaos engineering involves repeatedly performing experiments by injecting various potential failures, known as [**chaos faults**](/docs/chaos-engineering/concepts/explore-features/experiments#chaos-fault), to simulate real-world failure conditions against different resources, referred to as **targets**.
 
 Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for your organization. The diagram below outlines the steps you can take to introduce chaos into an application.
 
@@ -99,7 +99,7 @@ HCE doesn't just focus on fault injection; it helps you set up a fully operation
 
 - **Hypothesis Validation and SLO Management**: Validate hypotheses using [probes](/docs/category/resilience-probes) and manage SLOs through integration with Harness Continuous Verification (CV).
 
-- **Guided GameDay Execution**: Detailed analytics and reporting based on experiment execution and application resilience.
+- [**Guided GameDay Execution**](/docs/chaos-engineering/concepts/explore-features/GameDay): Detailed analytics and reporting based on experiment execution and application resilience.
 
 - **Chaos Events, Metrics, and Logs**: Instrument APM (Application Performance Monitoring) [dashboards](/docs/chaos-engineering/concepts/explore-features/dashboard) with chaos context to monitor the impact of chaos faults on service/application health.
 
