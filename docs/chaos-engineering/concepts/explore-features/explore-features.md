@@ -42,7 +42,7 @@ import FeatureCard from '@site/src/components/ChaosEngineering/FeatureCard';
 
 <FeatureCard title="ChaosHubs" description="" link="chaoshub/" />
 
-<FeatureCard title="GameDays" description="" link="/docs/chaos-engineering/concepts/explore-features/GameDay" />
+<FeatureCard title="GameDays" description="" link="/docs/chaos-engineering/concepts/explore-features/gameday" />
 
 <FeatureCard title="Auto create chaos experiments" description="" link="/docs/chaos-engineering/getting-started/onboarding/automated-onboarding" />
 

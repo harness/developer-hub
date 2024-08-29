@@ -23,7 +23,7 @@ The schematic diagram below describes how chaos experiments are executed in Harn
 
     ![](./static/ddci-flow.png)
 
-Go to [permissions required](/docs/chaos-engineering/use-harness-ce/infrastructures/delegate/permissions) to know the detailed list of permissions to execute Kubernetes faults with a Delegate.
+Go to [permissions required](/docs/chaos-engineering/concepts/explore-features/infrastructures/delegate/permissions) to know the detailed list of permissions to execute Kubernetes faults with a Delegate.
 
 The diagram below describes the detailed flow of control (step 5 of the earlier diagram), for an example chaos experiment- [pod DNS chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-dns-error).
 

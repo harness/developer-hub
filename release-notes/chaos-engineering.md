@@ -784,7 +784,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ##### New features and enhancements
 
-* [GameDay](/docs/chaos-engineering/concepts/explore-features/GameDay) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
+* [GameDay](/docs/chaos-engineering/concepts/explore-features/gameday) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
 * The CE [integration](/docs/chaos-engineering/integrations/use-chaos-with-srm) with Harness Service Reliability Management (SRM) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 

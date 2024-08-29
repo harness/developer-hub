@@ -7,7 +7,7 @@ redirect_from:
 ---
 
 ECS network restrict allows you to restrict the network connectivity of containers in an Amazon ECS (Elastic Container Service) task by modifying the container security rules.
-This experiment is applicable to both serverless ECS tasks and those backed by EC2 instances. [These experiments](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-and-serverless-faults) generally involve task-level chaos or access restrictions without causing direct in-container or in-VM disruptions.
+This experiment is applicable to both serverless ECS tasks and those backed by EC2 instances. [These experiments](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-and-serverless-faults) generally involve task-level chaos or access restrictions without causing direct in-container or in-VM disruptions.
 
 ![ECS Network restrict](./static/images/ecs-network-restrict.png)
 

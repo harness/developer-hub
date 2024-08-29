@@ -136,21 +136,21 @@ import { MODULES } from "@site/src/constants"
         module: MODULES.ce,
         description:
           "Execute chaos experiments in the application during a specific period..",
-        link: "/docs/category/gameday",
+        link: "/docs/chaos-engineering/concepts/explore-features/GameDay",
       },
       {
         title: "ChaosGuard",
         module: MODULES.ce,
         description:
           "Additional layer of security to minimize blast radius and mitigate potential security threats. ",
-        link: "/docs/category/chaosguard",
+        link: "/docs/chaos-engineering/concepts/explore-features/chaosguard",
       },
       {
         title: "Chaos dashboard",
         module: MODULES.ce,
         description:
           "Visualize important metrics and data associated with your experiment runs.",
-        link: "/docs/category/chaos-dashboard",
+        link: "/docs/chaos-engineering/concepts/explore-features/dashboard",
       },
     {
       title: "Resilience Probes",
@@ -164,14 +164,14 @@ import { MODULES } from "@site/src/constants"
       module: MODULES.ce,
       description:
         "Determine connections made to and from your Kubernetes cluster. ",
-      link: "/docs/category/service-discovery",
+      link: "/docs/chaos-engineering/concepts/explore-features/service-discovery",
     },
     {
       title: "Application Maps",
       module: MODULES.ce,
       description:
         "Bind multiple interacting discovered services into a single object.",
-      link: "/docs/category/application-maps",
+      link: "/docs/chaos-engineering/concepts/explore-features/app-maps",
     },
   ],
 },

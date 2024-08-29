@@ -7,7 +7,7 @@ redirect_from:
 ---
 ECS task stop is an AWS fault that injects chaos to stop the ECS tasks based on the services or task replica ID and checks the task availability.
 - This fault results in the unavailability of the application running on the tasks.
-- This experiment is applicable to both serverless ECS tasks and those backed by EC2 instances. [These experiments](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-and-serverless-faults) generally involve task-level chaos or access restrictions without causing direct in-container or in-VM disruptions.
+- This experiment is applicable to both serverless ECS tasks and those backed by EC2 instances. [These experiments](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-and-serverless-faults) generally involve task-level chaos or access restrictions without causing direct in-container or in-VM disruptions.
 
 ![ECS Task Stop](./static/images/ecs-task-stop.png)
 

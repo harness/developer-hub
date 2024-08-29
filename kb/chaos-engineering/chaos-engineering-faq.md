@@ -101,11 +101,11 @@ For example, to execute the network loss fault,
 ## Harness Delegate
 
 :::tip
-The FAQs below are based on HCE entities using [Harness Delegate](/docs/chaos-engineering/concepts/exlore-features/chaos-infrastructure/harness-infra/).
+The FAQs below are based on HCE entities using [Harness Delegate](/docs/chaos-engineering/concepts/explore-features/infrastructures/delegate/).
 :::
 
 #### Do you support On-Premise Harness Control Plane?
-Yes, HCE supports the self-managed enterprise edition (SME, also known as self-managed platform or SMP). Depending on the version of HCE (SaaS or Self-Managed Platform), the control plane is hosted by Harness (for SaaS) or within your domain (for example, harness.your-domain.io). Go to [SMP](https://developer.harness.io/docs/category/ce-on-harness-self-managed-enterprise-edition) for more information.
+Yes, HCE supports the self-managed enterprise edition (SME, also known as self-managed platform or SMP). Depending on the version of HCE (SaaS or Self-Managed Platform), the control plane is hosted by Harness (for SaaS) or within your domain (for example, harness.your-domain.io). Go to [SMP](/docs/chaos-engineering/getting-started/smp/) for more information.
 
 #### Does chaos use the Harness Delegate or does it need a separate agent?
 HCE uses the Harness Delegate to execute chaos experiments, which you can leverage to:
@@ -114,7 +114,7 @@ HCE uses the Harness Delegate to execute chaos experiments, which you can levera
 - Better control over chaos experiments by facilitating advanced tunables.
 - Gain insights into application-level resilience scores.
 
-Go to [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/) for more information.
+Go to [Harness Delegate](/docs/chaos-engineering/concepts/explore-features/infrastructures/delegate/delegate) for more information.
 
 #### What ports are necessary to be opened in the org's firewall rules to access the Harness Control Plane from the user environment?
 You can access the Harness control plane from the user environment with outbound connectivity over HTTPS using port 443.
