@@ -195,6 +195,47 @@ You can find the following settings on the **Advanced** tab in the step settings
 * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps): Control what happens to your pipeline when a step fails.
 * [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism): Define a matrix, repeat, or parallelism strategy for an individual step.
 
+
+## Publish Build metadata to a Docker image in JFrog Docker Registry
+
+Use Harness plugin to publish build metadata to a JFrog Artifactory Docker Registry. It's useful for tracking and managing Docker builds in Artifactory, ensuring that all relevant build information is stored alongside your images.
+
+
+
+For example:
+
+```yaml
+    - step:
+        identifier: metadata
+        name: Artifactory - Publish build info to JFrog Docker Registry
+        type: Plugin
+        spec:
+          connectorRef: account.ArtifactoryDocker
+          image: plugins/artifactory-publish-docker-buildinfo
+          settings:
+            access_token: <+secrets.getValue("org.artifactory_token")>
+            url: https://artifactory.customer.com/artifactory/
+            build_name: <+pipeline.name>
+            build_number: <+pipeline.executionId>
+            build_url: <+pipeline.executionUrl>
+            docker_image: artifactory.customer.com/base-images/nodejs:20.9.1
+```
+### Plugin specification 
+* **connectorRef**: Harness Connector for the container registry where the plugin image is located.
+* **image:** The Docker image containing the plugin to publish build info. For this example, it's `plugins/artifactory-publish-docker-buildinfo`.
+
+Settings: 
+* **access_token**: The access token for authenticating with Artifactory. In the example above it's retrieved from Harness secrets manager.
+* **url**: The URL of the Artifactory instance where the build info will be published.
+* **build_name**: The name of the build, typically set to the pipeline name.
+* **build_number**: The build number, typically set to the pipeline execution ID.
+* **build_url**: The URL to the pipeline execution in Harness, allowing quick access to the build details.
+* **docker_image**: The Docker image for which to attach the build metadata, including its tag.
+
+
+[Plugin on Dockerhub](https://hub.docker.com/r/plugins/artifactory-publish-docker-buildinfo/tags)
+
+
 ## Troubleshoot Build and Push steps
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to building and pushing images, such as:
