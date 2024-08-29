@@ -22,24 +22,6 @@ The primary purpose of implementing webhook callbacks is to:
  - Provide a more responsive synchronization mechanism alongside the existing polling system.
  - Allow users to leverage automatic, near-instant updates without manual intervention.
 
-## Implementation Details
-
-The implementation of webhooks for Feature Flag Git synchronization involves a series of interconnected processes and data streams.  Understanding these details is crucial for developers and system administrators who need to configure, troubleshoot, or optimize the webhook implementation for their Feature Flag management workflow. Here's some information about the different areas regarding implementation of webhooks using Feature Flags:
-
-### Event Publishing and Consumption
-
- 1. NG Manager publishes webhook events through the `git_push_event_stream`.
- 2. The Feature Flag service consumes the entire stream and filters relevant events.
- 3. Captured events are extracted and passed to the `cf_git_sync_webhook_events` stream for internal service use.
- 4. The Poller service uses this second stream to determine if the message is associated with any monitored repositories.
-
-### Event Processing
-
- 1. Incoming messages are marshalled into a data structure.
- 2. Invalid messages are discarded.
- 3. Since the message doesn't contain the name of the modified file, association with repositories is determined based on the previous commit ID.
- 4. If the previous commit ID matches the current ID in our system, the sync process is initiated.
-
 ## Configuration
 
 To set up webhook for Feature Flag implementation:
