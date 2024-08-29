@@ -71,7 +71,7 @@ $ kubectl apply -f harness-chaos-enable.yml
 
 ### Environment variable and secret usage references in source mode of command probe
 
-You can use secrets and environment variables in the [**source mode**](/docs/chaos-engineering/features/resilience-probes/cmd-probe#source-mode) of the command probe using the manifest in the following manner:
+You can use secrets and environment variables in the [**source mode**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/cmd-probe) of the command probe using the manifest in the following manner:
 
 ```yaml
 source:
@@ -137,7 +137,7 @@ The `--vm-populate` in the above manifest populates the memory, thereby stressin
 
 ### Executing an experiment moves it to a QUEUED state
 
-When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/components#20-chaos-manager) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/architecture-and-security/architecture/components#components-common-to-all-chaos-infrastructure).
+When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/concepts/chaos101#chaos-manager) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/concepts/chaos101#components-common-to-all-chaos-infrastructure).
 
 It could be due to a variety of reasons, such as:
 

@@ -1,0 +1,9 @@
+{
+  "position": 32,
+  "label": "Infrastructure",
+  "collapsible": "true",
+  "collapsed": "true",
+  "customProps": {
+    "description": "Explore infrastructure used for Harness Chaos Engineering"
+  }
+}

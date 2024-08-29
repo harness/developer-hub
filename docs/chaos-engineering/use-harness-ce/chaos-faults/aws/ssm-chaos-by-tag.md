@@ -23,7 +23,7 @@ AWS SSM chaos by tag:
 - Kubernetes >= 1.17
 - The SSM document should be available in AWS.
 - EC2 service update and deployment concepts.
-- Authentication is done using [IRSA](/docs/chaos-engineering/chaos-faults/aws/security-configurations/aws-iam-integration#set-up-your-target-accounts-for-irsa) or secret. For secret-based authentication, create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- Authentication is done using [IRSA](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-iam-integration#set-up-your-target-accounts-for-irsa) or secret. For secret-based authentication, create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -73,7 +73,7 @@ Below is an example AWS policy to execute the fault.
 :::info note
 - Refer to [AWS named profile for chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults.
 - The EC2 instance should be in a healthy state before and after introducing chaos.
-- Refer to the [common attributes](/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults) and [AWS-specific tunables](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+- Refer to the [common attributes](/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults) and [AWS-specific tunables](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
 - Refer to the [superset permission/policy](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
 :::
 

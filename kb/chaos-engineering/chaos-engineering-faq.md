@@ -84,7 +84,7 @@ Yes, you can use [SSH chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults
 No, HCE helps identify the failures in your application by injecting failures intentionally. This way, you can identify the failures and use other methods to address the issues identified using HCE.
 
 #### What kind of Reporting is provided by the tool?
-Once you execute your chaos experiments, you can download the reports that describe the experiment details such as runs, infrastructure, resilience score, and so on. For more information, go to [resilience probes](/docs/chaos-engineering/features/resilience-probes/overview), [alerts](https://developer.harness.io/docs/chaos-engineering/features/experiments/alert-integration) and [chaos dashboard](https://developer.harness.io/docs/chaos-engineering/features/chaos-dashboard/overview).
+Once you execute your chaos experiments, you can download the reports that describe the experiment details such as runs, infrastructure, resilience score, and so on. For more information, go to [resilience probes](/docs/chaos-engineering/concepts/explore-features/resilience-probes/), [alerts](/docs/chaos-engineering/use-harness-ce/experiments/alert-integration) and [chaos dashboard](/docs/chaos-engineering/concepts/explore-features/dashboard).
 
 
 #### Can I deploy chaos infrastructure on an Openshift Cluster?
@@ -101,7 +101,7 @@ For example, to execute the network loss fault,
 ## Harness Delegate
 
 :::tip
-The FAQs below are based on HCE entities using [Harness Delegate](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/).
+The FAQs below are based on HCE entities using [Harness Delegate](/docs/chaos-engineering/concepts/exlore-features/chaos-infrastructure/harness-infra/).
 :::
 
 #### Do you support On-Premise Harness Control Plane?
@@ -152,7 +152,7 @@ The agents are:
 
 #### What are the prerequisites to setup/onboard Harness Chaos Engineering?
 
-Go to [prerequisites](/docs/chaos-engineering/onboarding/prerequisites) to fulfill the requirements before onboarding. Once all the prerequisites are fulfilled, you can explore[sandbox](/docs/chaos-engineering/training/sandbox) or execute [your first chaos experiment](/docs/chaos-engineering/getting-started/saas/first-experiment).
+Go to [prerequisites](/docs/chaos-engineering/getting-started/saas/prerequisites) to fulfill the requirements before onboarding. Once all the prerequisites are fulfilled, you can explore[sandbox](/docs/chaos-engineering/training/sandbox) or execute [your first chaos experiment](/docs/chaos-engineering/getting-started/saas/first-experiment).
 **OR**
 If you want a head start to your journey with HCE, you can onboard HCE in two ways:
 - [Automated onboarding](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding); and
@@ -317,7 +317,7 @@ This is applicable on HCE entities that use a dedicated infrastructure rather th
 ## Integration
 
 #### Can Harness Chaos Agents be installed via Helm Charts?
-Yes, [chaos dedicated infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#use-helm-template-to-install-chaos-infrastructure) as well as [Harness Delegate](https://www.harness.io/blog/delegate-installation-via-helm) can be installed using Helm charts.
+Yes, [chaos dedicated infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#use-helm-template-to-install-chaos-infrastructure) as well as [Harness Delegate](https://www.harness.io/blog/delegate-installation-via-helm) can be installed using Helm charts.
 
 #### Can chaos experiments be triggered from [X] pipeline (Harness, Jenkins, Gitlab, Azure DevOps)?
 Yes, HCE provides integration with many tools, such as [Gitlab pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-gitlab-pipeline), [Jenkins pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-jenkins-pipeline), with [Harness CD](https://developer.harness.io/docs/category/integrate-hce-with-harness-cd), [Harness Feature Flags](https://developer.harness.io/docs/chaos-engineering/integrations/chaos-ff), and [SRM](https://developer.harness.io/docs/chaos-engineering/integrations/use-chaos-with-srm).

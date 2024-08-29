@@ -1,6 +1,6 @@
 ---
 id: infrastructure
-sidebar_position: 14
+sidebar_position: 3
 title: Chaos Infrastructure
 redirect_from:
 - /docs/chaos-engineering/technical-reference/architecture/kubernetes
@@ -25,7 +25,7 @@ Chaos infrastructure helps facilitate the chaos fault injection and hypothesis v
 
 All the chaos infrastructure services adhere to the **principle of least privilege**, where the services execute with the minimum number of permissions.
 
-Go to [enable or disable an infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable) and [upgrade it](/docs/chaos-engineering/features/chaos-infrastructure/upgrade-infra) to get a hands-on experience.
+Go to [enable or disable an infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable) and [upgrade it](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra) to get a hands-on experience.
 
 You can install an infrastructure as a part of creating an experiment. This infrastructure is installed on the target Kubernetes cluster and helps inject chaos into applications, thereby executing the chaos experiments.
 
@@ -84,7 +84,7 @@ A set of mandatory input flags is required to install chaos infrastructure, incl
 :::info note
 LCI does not currently support:
 1. Cron schedules
-2. [GameDays](/docs/chaos-engineering/concepts/explore-features/gameday)
+2. [GameDays](/docs/chaos-engineering/concepts/explore-features/GameDay)
 3. Executing [parallel faults](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI)
 :::
 
@@ -98,7 +98,7 @@ To check if the infrastructure service is active and running, use the following 
 ```
 systemctl status linux-chaos-infrastructure.service
 ```
-![Terminal](./static/infrastructure/terminal.png)
+![Terminal](./static/terminal.png)
 
 Any status other than the `active` status would indicate an issue with the infrastructure.
 
@@ -139,9 +139,9 @@ kubectl create ns hce
 
 You can create the service account in the cluster mode or the namespace mode.
 
-To install in the **cluster mode**, create the service accounts using the [cluster-mode-sa.yaml](./static/openshift/cluster-sa.yaml) file. You can download the file and apply it.
+To install in the **cluster mode**, create the service accounts using the [cluster-mode-sa.yaml](/docs/chaos-engineering/concepts/explore-features/infrastructures/static/openshift/cluster-sa.yaml) file. You can download the file and apply it.
 
-To install in the **namespace mode**, create the service accounts using the [namespace-mode-sa.yaml](./static/openshift/namespace-sa.yaml) file. You can download the file and apply it.
+To install in the **namespace mode**, create the service accounts using the [namespace-mode-sa.yaml](/docs/chaos-engineering/concepts/explore-features/infrastructures/static/openshift/namespace-sa.yaml) file. You can download the file and apply it.
 
 If you have a different namespace, replace the namespace with `<your-namespace>` in the manifest.
 
@@ -163,7 +163,7 @@ serviceaccount/litmus-cluster-scope created
 **Step 2. Create Litmus Security Context Constraint (SCC) and authenticate it with the service account**
 
 To create the litmus SCC,
-- Copy the contents of the [litmus SCC manifest](./static/openshift/litmus-scc.yaml) to `litmus-scc.yaml` file.
+- Copy the contents of the [litmus SCC manifest](/docs/chaos-engineering/concepts/explore-features/infrastructures/static/openshift/litmus-scc.yaml) to `litmus-scc.yaml` file.
 - Apply this manifest to your chaos infrastructure.
 
   ```bash
@@ -253,7 +253,7 @@ To run Kubernetes experiments, you need to tune the parameters associated with t
 
 The diagram represents a high-level architecture of the interaction between the Windows execution plane and control plane components.
 
-![](./static/infrastructure/windows-infrastructure/detailed-architecture.png)
+![](./static/windows-infrastructure/detailed-architecture.png)
 
 #### Advanced setup
 
@@ -308,12 +308,12 @@ To verify the status of the service, navigate to the command prompt on your Wind
 
 1. If the status reads **Running**, it means the windows infrastructure is up and running.
 
-![](./static/infrastructure/windows-infrastructure/add-pwd-1.png)
+![](./static/windows-infrastructure/add-pwd-1.png)
 
 
 2. If it reads **Stopped**, right click and select **Start**.
 
-![](./static/infrastructure/windows-infrastructure/start-service-2.png)
+![](./static/windows-infrastructure/start-service-2.png)
 
 3. Any other status will be associated with logs which you can troubleshoot using our [troubleshooting guide](/docs/chaos-engineering/troubleshooting/troubleshooting.md)
 
@@ -321,7 +321,7 @@ To verify the status of the service, navigate to the command prompt on your Wind
 
 HCE allows you to create the below probes for Windows:
 
-1. [HTTP](/docs/chaos-engineering/features/resilience-probes/http-probe)
+1. [HTTP](/docs/chaos-engineering/concepts/explore-features/resilience-probes/http-probe)
 
 </TabItem>
 </Tabs>

@@ -137,4 +137,4 @@ To share your custom ChaosHub with another Harness project, add the hub to the o
 
 ## Next steps
 
-You can add and launch experiments in your custom ChaosHub, or add YAML fault and experiment definitions directly in your ChaosHub GitHub repository, and then sync it with Harness. For more details, go to [Manage ChaosHub](/docs/chaos-engineering/features/chaos-hubs/manage-hub).
+You can add and launch experiments in your custom ChaosHub, or add YAML fault and experiment definitions directly in your ChaosHub GitHub repository, and then sync it with Harness. For more details, go to [Manage ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/manage-hub).

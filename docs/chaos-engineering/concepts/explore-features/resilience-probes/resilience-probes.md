@@ -22,7 +22,7 @@ Resilience probes (or probes) are pluggable health checkers defined within the c
 
 ### Resilience Score
 
-It is a quantitative measure of how resilient the target application is to a chaos experiment. You can [calculate](/docs/chaos-engineering/concepts/explore-features/resilience-probes/determine-score) this value based on the priority set for every fault in the experiment and the probe success percentage of the faults (if the probes are defined).
+It is a quantitative measure of how resilient the target application is to a chaos experiment. You can [calculate](/docs/chaos-engineering/concepts/explore-features/experiments#determine-the-resilience-of-target-environment-using-resilience-score) this value based on the priority set for every fault in the experiment and the probe success percentage of the faults (if the probes are defined).
 
 :::tip
 - If you are an existing customer, you will see the old flow of control in resilience probes by default and you have the choice to upgrade to the new flow.
@@ -77,7 +77,7 @@ This is also in accordance with how HCE pans out:
 HCE facilitates 7 types of resilience probes listed below. Click each probe to navigate to details such as probe property, definition, schema, authentication, methods, and so on.
 
 - [**HTTP probe**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/http-probe): To query health/downstream URIs.
-- [**Command probe**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/cmd-probe/cmd-probe): To execute any user-desired health-check function implemented as a shell command.
+- [**Command probe**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/cmd-probe): To execute any user-desired health-check function implemented as a shell command.
 - [**Kubernetes probe**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/k8s-probe): To perform CRUD operations against native and custom Kubernetes resources.
 - [**Prometheus probe**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/prom-probe): To execute PromQL queries and match Prometheus metrics for specific criteria.
 - [**Datadog probe**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/datadog-probe): To query a [Datadog Synthetic](https://docs.datadoghq.com/synthetics/) test and use its results to evaluate the probe outcome.
@@ -149,7 +149,7 @@ Resilience probes are supported by the following features:
 
 
 :::info notes
-- **Legacy probes support (Backward compatibility)***: Users can still use [legacy probes](/docs/chaos-engineering/concepts/explore-features/resilience-probes/cmd-probe).
+- **Legacy probes support (Backward compatibility)***: Users can still use legacy probes.
 - **Audit integration**: Audit events are available for resilience probes.
 - **Access control permissions division**: ACL is mapped to the experiment ACL.
 :::

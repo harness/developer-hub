@@ -144,7 +144,7 @@ In addition to executing **pod delete** and **pod network loss** experiments, yo
 
 	![exp exec](./static/sandbox/other-exp.png)
 
-- Select **New experiment** and follow the steps to [create an experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments).
+- Select **New experiment** and follow the steps to [create an experiment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments).
 
 ## Next steps
 * [Harness Chaos Engineering Developer Certification](/docs/chaos-engineering/training/certification)

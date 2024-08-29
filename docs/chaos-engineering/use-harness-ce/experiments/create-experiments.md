@@ -12,7 +12,7 @@ This topic describes how you can create chaos experiments that consist of chaos 
 
 - [What is a chaos experiment?](/docs/chaos-engineering/concepts/chaos101)
 - [What are chaos faults?](/docs/chaos-engineering/concepts/explore-features/experiments#chaos-fault)
-- [What are resilience probes?](/docs/chaos-engineering/concepts/explore-features/resilience-probes/resilience-probes)
+- [What are resilience probes?](/docs/chaos-engineering/concepts/explore-features/resilience-probes/)
 - [How to create a resilience probe?](/docs/chaos-engineering/use-harness-ce/probes/use-probe)
 
 ### Create Environment
@@ -61,7 +61,7 @@ To add a chaos experiment:
 	![Experiment Overview](./static/create-experiments/experiment-overview.png)
 
 :::tip
-For more information on infrastructure, see [Connect chaos infrastructures](/docs/chaos-engineering/use-harness-ce/infrastructures/connect-chaos-infrastructures).
+For more information on infrastructure, see [Connect chaos infrastructures](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable).
 :::
 
 3. This takes you to the **Experiment Builder** tab, where you can start building your experiment.
@@ -71,7 +71,7 @@ For more information on infrastructure, see [Connect chaos infrastructures](/doc
 4. Choose how you want to build the experiment. The options, explained later, are:
 
 	* **[Blank Canvas](#using-blank-canvas)** - Lets you build the experiment from scratch, adding the specific faults you want.
-	* **[Templates from ChaosHubs](#using-templates-from-chaoshubs)** - Lets you preview and select and experiment from pre-curated experiment templates available in [ChaosHubs](/docs/chaos-engineering/features/chaos-hubs/introduction).
+	* **[Templates from ChaosHubs](#using-templates-from-chaoshubs)** - Lets you preview and select and experiment from pre-curated experiment templates available in [ChaosHubs](/docs/chaos-engineering/concepts/explore-features/chaoshub).
 	* **[Upload YAML](#upload-yaml)** - Lets you upload an experiment manifest YAML file.
 
 	These options are explained below.
@@ -96,7 +96,7 @@ For more information on infrastructure, see [Connect chaos infrastructures](/doc
 
 		* **Tune fault parameters:** Each fault has a set of common parameters, like **chaos duration** and **ramp time**, and unique parameters that you can customize as needed.
 
-		* **Add chaos probes:** (Optional) On the **Probes** tab, add chaos [probes](/docs/chaos-engineering/use-harness-ce/probes/overview) to automate the chaos hypothesis checks for a fault during the experiment execution. Probes are declarative checks that validate specific criteria, that help determine if an experiment **passed**.
+		* **Add chaos probes:** (Optional) On the **Probes** tab, add [resilience probes](/docs/chaos-engineering/use-harness-ce/probes/use-probe) to automate the chaos hypothesis checks for a fault during the experiment execution. Probes are declarative checks that validate specific criteria, that help determine if an experiment **passed**.
 
     * **Tune Fault Weightage**: Set the weight for the fault, which determines its importance relative to other faults in the experiment. This weight is used to calculate the experiment's resilience score.
 
@@ -227,7 +227,7 @@ You can observe the status of execution of fault/s of a chaos experiment during 
 
 ![Experiment Executing](./static/analyze-experiment/experiment-executing.png)
 
-When the experiment completes execution, it displays the [**Resilience Score**](/docs/chaos-engineering/features/experiments/resilience-score). This score describes how resilient your application is to unplanned failures.
+When the experiment completes execution, it displays the [**Resilience Score**](/docs/chaos-engineering/concepts/explore-features/experiments#determine-the-resilience-of-target-environment-using-resilience-score). This score describes how resilient your application is to unplanned failures.
 The **probe success percentage** helps determine the outcome of every fault in the chaos experiment. Probes (if any) associated with the experiment are used to understand how the application fared.
 
 ![Experiment Failed](./static/analyze-experiment/experiment-failed.png)

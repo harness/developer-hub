@@ -30,11 +30,11 @@ import FeatureCard from '@site/src/components/ChaosEngineering/FeatureCard';
 
 <FeatureCard title="Resilience Probes" description="" link="/docs/category/resilience-probes" />
 
-<FeatureCard title="Experiment logs" description="" link="saas-deployment/" />
+<FeatureCard title="Experiment logs" description="" link="/docs/chaos-engineering/concepts/explore-features/infrastructures/infrastructure#logs" />
 
 <FeatureCard title="Application Maps" description="" link="app-maps/" />
 
-<FeatureCard title="Audit logs" description="" link="saas-deployment/" />
+<FeatureCard title="Audit logs" description="" link="/docs/chaos-engineering/concepts/explore-features/infrastructures/infrastructure#logs" />
 
 <FeatureCard title="Custom Image Registry" description="" link="image-registry/" />
 
@@ -42,9 +42,9 @@ import FeatureCard from '@site/src/components/ChaosEngineering/FeatureCard';
 
 <FeatureCard title="ChaosHubs" description="" link="chaoshub/" />
 
-<FeatureCard title="GameDays" description="" link="gameday/" />
+<FeatureCard title="GameDays" description="" link="/docs/chaos-engineering/concepts/explore-features/GameDay" />
 
-<FeatureCard title="Auto create chaos experiments" description="" link="saas-deployment/" />
+<FeatureCard title="Auto create chaos experiments" description="" link="/docs/chaos-engineering/getting-started/onboarding/automated-onboarding" />
 
 <FeatureCard title="Schedule Experiments" description="" link="/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#execute-experiment-on-a-schedule" />
 
@@ -62,7 +62,7 @@ import FeatureCard from '@site/src/components/ChaosEngineering/FeatureCard';
 
 ## Security and Governance
 
-<FeatureCard title="Chaos RBACs" description="" link="saas-deployment/" />
+<FeatureCard title="Chaos RBACs" description="" link="/docs/chaos-engineering/security/introduction#user-authorization-and-role-based-access-control" />
 
 <FeatureCard title="ChaosGuard" description="" link="chaosguard/" />
 
@@ -79,15 +79,15 @@ import FeatureCard from '@site/src/components/ChaosEngineering/FeatureCard';
 
 ## Chaos Metrics
 
-<FeatureCard title="Resilience Score" description="" link="" />
+<FeatureCard title="Resilience Score" description="" link="/docs/chaos-engineering/concepts/explore-features/resilience-probes/#resilience-score" />
 
-<FeatureCard title="Resilience Coverage" description="" link="" />
+<FeatureCard title="Resilience Coverage" description="" link="/docs/chaos-engineering/concepts/explore-features/app-maps" />
 
 <FeatureCard title="Prometheus Chaos Metrics" description="" link="" />
 
 <FeatureCard title="Resilience Insights" description="" link="" />
 
-<FeatureCard title="Out-of-the-box Chaos Dashboards" description="" link="" />
+<FeatureCard title="Out-of-the-box Chaos Dashboards" description="" link="/docs/chaos-engineering/concepts/explore-features/dashboard" />
 
 <FeatureCard title="Creating Custom Dashboards" description="" link="/docs/chaos-engineering/use-harness-ce/dashboards/create-new" />
 

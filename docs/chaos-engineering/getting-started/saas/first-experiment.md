@@ -12,8 +12,7 @@ In this tutorial, you will apply chaos on a sample boutique application on Kuber
 ## Before you begin
 
 * [What is chaos engineering?](/docs/chaos-engineering/concepts/chaos101)
-* [Key concepts](/docs/chaos-engineering/architecture-and-security/architecture/components)
-* [Prerequisites to execute chaos experiments](/docs/chaos-engineering/getting-started/onboarding/prerequisites)
+* [Prerequisites to execute chaos experiments](/docs/chaos-engineering/getting-started/saas/prerequisites)
 
 ## Step 1: Create a project
 

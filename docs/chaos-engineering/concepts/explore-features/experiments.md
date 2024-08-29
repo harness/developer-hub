@@ -1,16 +1,16 @@
 ---
 id: experiments
 sidebar_position: 4
-title: Chaos Experiments
+title: Chaos Experiment
 redirect_from:
 - /docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments
+- /docs/chaos-engineering/configure-chaos-experiments/experiments/resilience-score
+- /docs/chaos-engineering/features/experiments/resilience-score/
 ---
 
 Harness Chaos Engineering (HCE) gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios against which you can validate your applications. At the same time, the chaos experiments are declarative and you can construct them using the Chaos Studio user interface with no programmatic intervention.
 
-### Chaos experiment
-
-A chaos experiment is composed of chaos faults that are arranged in a specific order to create a failure scenario. The chaos faults target various aspects of an application, including the constituent microservices and underlying infrastructure. You can tune the parameters associated with these faults to impart the desired chaos behavior.
+A **chaos experiment** is composed of chaos faults that are arranged in a specific order to create a failure scenario. The chaos faults target various aspects of an application, including the constituent microservices and underlying infrastructure. You can tune the parameters associated with these faults to impart the desired chaos behavior.
 
 You can define the experiment using the Chaos Studio, that helps create new experiments using the guided UI or by uploading the workflow CR (custom resource) manifest.
 
@@ -63,7 +63,7 @@ It is the failures injected into the chaos infrastructure as part of a chaos exp
 
 #### Fault Status
 
-	Fault status indicates the current status of the fault executed as a part of the chaos experiment. A fault can have 0, 1, or more associated [probes](/docs/chaos-engineering/features/resilience-probes/overview). Other steps in a chaos experiment include resource creation and cleanup.
+	Fault status indicates the current status of the fault executed as a part of the chaos experiment. A fault can have 0, 1, or more associated [probes](/docs/chaos-engineering/concepts/explore-features/resilience-probes/). Other steps in a chaos experiment include resource creation and cleanup.
 
 	In a chaos experiment, a fault can be in one of six different states. It transitions from **running**, **stopped** or **skipped** to **completed**, **completed with error** or **error** state.
 
@@ -91,7 +91,7 @@ Below is the detailed description of the steps above.
    * **Chaos Infrastructure:** Specify the chaos infrastructure that will be targeted during the experiment.
    * **Fault and Fault Tunables:** Select fault templates from any connected chaos hubs and modify the tunables as needed. You can add multiple faults in any desired order.
    * **Fault Probes:** Optionally, define additional probes on top of the default health check probe to validate custom hypothesis during the experiment.
-   * **Fault Weights:** Assign fault weights to indicate the importance of each fault relative to others in the experiment. These weights contribute to calculating the experiment's [**resilience score**](/docs/chaos-engineering/features/experiments/resilience-score), a quantitative measure of the target environment's resilience when the experiment is performed.
+   * **Fault Weights:** Assign fault weights to indicate the importance of each fault relative to others in the experiment. These weights contribute to calculating the experiment's [**resilience score**](/docs/chaos-engineering/concepts/explore-features/experiments ), a quantitative measure of the target environment's resilience when the experiment is performed.
 
 	Once all information is provided, the experiment is created and ready for execution.
 
@@ -105,3 +105,52 @@ Below is the detailed description of the steps above.
    The chaos experiment execution is then concluded.
 
 To get a hands-on experience, follow the respective links to [create](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments), [edit](/docs/chaos-engineering/use-harness-ce/experiments/edit-chaos-experiment), [halt and delete](/docs/chaos-engineering/use-harness-ce/experiments/halt-delete-experiments), [export](/docs/chaos-engineering/use-harness-ce/experiments/export-chaos-experiments) and [create alerts for experiment runs](/docs/chaos-engineering/use-harness-ce/experiments/alert-integration).
+
+## Determine the resilience of target environment using resilience score
+
+The **resilience score** is a quantitative measure obtained when you run a chaos experiment. This score represents how resilient the target environment is when you run that chaos experiment on it.
+
+The score is calculated based on:
+
+* The weight you give each fault in the experiment.
+* The success rate of the probes in each fault.
+
+This topic explains these elements, and gives an example resilience calculation.
+
+### Fault Weight
+
+While creating a chaos experiment, you can assign a weight between 1 - 10 to each fault. This represents the priority/importance of the respective fault. The higher the weight, the more significant the fault is.
+
+For example:
+
+- Low Priority: 0 - 3
+- Medium Priority: 4 - 6
+- High Priority: 7 - 10
+
+### Probe Success Percentage
+
+The **probe success percentage** for a fault is the ratio of successful probes to total probes. For example, if a fault has 4 probes and only 2 of them are successful, then the probe success percentage for this fault is 50%.
+
+### Resilience Calculation
+
+Based on fault weights and probe success rates, you can calculate two types of resilience score (represented as a percentage):
+
+* **A fault's resilience** = fault weight * probe success percentage<br />
+* **The experiment's total resilience** = sum of all fault resilience / sum of all fault weights of the experiments
+
+Here's an example:
+
+* **Experiment A** runs, and includes 3 faults. Fault weights, number of probes, and probe success rates are as follows.
+
+   | Fault | Weight | Number<br />of probes | Probes<br />succeeded | Fault<br />resilience |
+   |:----:|:---:|:---:|:-------:|:-------:|
+   | Fault1 | 2 | 1 | 0 (or 0%) | 0%    |
+   | Fault2 | 4 | 2 | 2 (or 100%) | 400%  |
+   | Fault3 | 8 | 4 | 3 (or 75%) | 600%   |
+   |        | **Sum: 14** |  |    | **Sum: 1000%**   |
+<br />
+* **Experiment A's total resilience score**
+
+   Divide the sum of all fault resilience by the sum of all fault weights:
+
+   **1000% / 14 = 71%**

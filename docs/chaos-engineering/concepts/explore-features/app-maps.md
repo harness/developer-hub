@@ -37,7 +37,7 @@ You can [create](#create-application-map), [edit](#edit-application-map), and [d
 
     ![](./static/app-maps/create-agent-1.png)
 
-2. Select one of the discovery agents or [create a new discovery agent](/docs/chaos-engineering/features/service-discovery/service-discovery-usage#customize-discovery-agent).
+2. Select one of the discovery agents or [create a new discovery agent](/docs/chaos-engineering/concepts/explore-features/service-discovery#customize-discovery-agent).
 
     ![](./static/app-maps/select-agent-2.png)
 

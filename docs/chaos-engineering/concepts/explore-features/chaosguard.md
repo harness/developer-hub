@@ -4,7 +4,7 @@ sidebar_position: 5
 title: ChaosGuard
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/chaosguard/introduction-to-chaosguard
-- /docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard
+- /docs/chaos-engineering/concepts/explore-features/chaosguard
 - /docs/chaos-engineering/features/chaosguard/chaosguard-concepts
 ---
 
@@ -33,7 +33,7 @@ The table below elaborates on the regulatory requirements required for advanced 
 | Who        | Users who are subjected to the above conditions                                                | Harness DB or Identity store      | Selective application of conditions to users (for example, contractors, other team members) |
 | When       | The time window in which chaos is allowed to be executed                                       | User Input or Harness DB          | Minimize windows for disruptive activity, upon approval/authorization                       |
 
-With ChaosGuard, each experiment run consists of a security step wherein one or more [rules](./chaosguard-concepts#2-rule) are evaluated before execution. Each rule contains one or more [conditions](/docs/chaos-engineering/concepts/explore-features/chaosguard#condition) describing the constraints specified in the table above. The experiment can proceed only upon a successful evaluation of all the rules.
+With ChaosGuard, each experiment run consists of a security step wherein one or more [rules](/docs/chaos-engineering/concepts/explore-features/chaosguard#rule) are evaluated before execution. Each rule contains one or more [conditions](/docs/chaos-engineering/concepts/explore-features/chaosguard#condition) describing the constraints specified in the table above. The experiment can proceed only upon a successful evaluation of all the rules.
 
 ## RBAC at different levels
 
@@ -45,7 +45,7 @@ Harness allows users to exercise fine-grained control, which is sufficient for e
 
 3. View/Add (by selecting fault templates and providing app data)/Edit (fault tunables, validation/probe constraints, execution properties)/Execute (run saved experiments)/Delete the chaos experiments ([Chaos Experiment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments)).
 
-4. View/Add (by selecting one or more experiments against one or more target infrastructures)/Edit (objectives, descriptions, tags, selected experiments)/Delete [chaos gamedays](/docs/chaos-engineering/concepts/explore-features/gameday).
+4. View/Add (by selecting one or more experiments against one or more target infrastructures)/Edit (objectives, descriptions, tags, selected experiments)/Delete [chaos gamedays](/docs/chaos-engineering/concepts/explore-features/GameDay).
 
     ![fine-grain control](./static/chaosguard/fine-grain-control.png)
 
@@ -54,7 +54,7 @@ The Harness project admin persona can create a custom role by selecting the desi
 ![new-user](./static/chaosguard/new-user-entry.png)
 
 
-[Harness RBAC functionality](/docs/chaos-engineering/security/introduction) acts as a first-level security check (or deterrent) that you can leverage to prevent config-time security issues. It is a platform-wide, generic framework that counts resources from other Harness modules (such as CI/CD/Cloud Cost/Service Reliability, etc.) under its purview. However, chaos has additional requirements to enforce [execution-time security restrictions](/docs/chaos-engineering/concepts/featureschaosguard).
+[Harness RBAC functionality](/docs/chaos-engineering/security/introduction) acts as a first-level security check (or deterrent) that you can leverage to prevent config-time security issues. It is a platform-wide, generic framework that counts resources from other Harness modules (such as CI/CD/Cloud Cost/Service Reliability, etc.) under its purview. However, chaos has additional requirements to enforce [execution-time security restrictions](/docs/chaos-engineering/concepts/explore-features/chaosguard).
 
 ## ChaosGuard concepts
 

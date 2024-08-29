@@ -784,7 +784,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ##### New features and enhancements
 
-* [GameDay](/docs/chaos-engineering/concepts/featuresGameDay) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
+* [GameDay](/docs/chaos-engineering/concepts/explore-features/GameDay) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
 * The CE [integration](/docs/chaos-engineering/integrations/use-chaos-with-srm) with Harness Service Reliability Management (SRM) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
@@ -890,7 +890,7 @@ To upgrade chaos infrastructures and experiments:
 
 ##### Early access features
 
-* Introduction of [Chaos dashboards](/docs/chaos-engineering/concepts/featureschaos-dashboard). (CHAOS-719)
+* Introduction of [Chaos dashboards](/docs/chaos-engineering/concepts/explore-features/dashboard). (CHAOS-719)
     * Two new dashboards include number of experiments and number of infrastructures by user, as well as statistics of the chaos faults that were executed.
     * This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
 

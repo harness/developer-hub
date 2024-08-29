@@ -80,7 +80,7 @@ To work with the HCE Postman collection, fork it under your Postman account and 
 
 #### Step 1: Create and register chaos infrastructure using APIs
 
-1. [Create (or register) a chaos infrastructure](/docs/chaos-engineering/getting-started/saas/first-chaos-engineering#step-3-create-an-infrastructure) (Kubernetes infrastructure) to inject faults into the application.
+1. [Create (or register) a chaos infrastructure](/docs/chaos-engineering/getting-started/saas/first-experiment#step-3-create-an-infrastructure) (Kubernetes infrastructure) to inject faults into the application.
 
 2. Select **Cluster Wide** installation mode so that you can target resources across all the namespaces in your cluster (**Namespace Mode** installation restricts injecting chaos to a certain namespace where infrastructure is installed).
 

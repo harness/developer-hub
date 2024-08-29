@@ -6,7 +6,7 @@ redirect_from:
 ---
 
 This topic lists the platforms and technologies that Harness Chaos Engineering (HCE) supports for deploying chaos infrastructure.
-To learn more about chaos infrastructure, go to [Chaos infrastructure](/docs/chaos-engineering/concepts/explore-features/infrastructure).
+To learn more about chaos infrastructure, go to [Chaos infrastructure](/docs/chaos-engineering/concepts/explore-features/infrastructures/infrastructure).
 
 Harness Chaos Engineering is supported on the following platforms:
 - [Harness SaaS](#harness-saas)
