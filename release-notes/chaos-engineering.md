@@ -911,7 +911,7 @@ To upgrade chaos infrastructures and experiments:
 ##### New features and enhancements
 
 * Introduction of GameDays in HCE Module. (CHAOS-643)
-    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/concepts/featuresGameDay).
+    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/concepts/explore-features/gameday).
 
 * Allow saving of experiment with inactive infrastructure. (CHAOS-1573)
     * HCE now allows you to save an experiment if the infrastructure is inactive, with the saveExperiment API.

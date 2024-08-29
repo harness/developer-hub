@@ -163,7 +163,7 @@ serviceaccount/litmus-cluster-scope created
 **Step 2. Create Litmus Security Context Constraint (SCC) and authenticate it with the service account**
 
 To create the litmus SCC,
-- Copy the contents of the [litmus SCC manifest](./static/static/openshift/litmus-scc.yaml) to `litmus-scc.yaml` file.
+- Copy the contents of the [litmus SCC manifest](./static/openshift/litmus-scc.yaml) to `litmus-scc.yaml` file.
 - Apply this manifest to your chaos infrastructure.
 
   ```bash
