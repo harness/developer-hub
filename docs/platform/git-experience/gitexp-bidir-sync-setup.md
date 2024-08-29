@@ -62,7 +62,7 @@ You can see the list of Git events in Harness. Learn more about [Git Sync Activi
 
 If you want to setup webhook manually refer to the below. 
 
-### Manully Setup Webhook
+### Manually Setup Webhook
 
 You can follow below steps to manually register webhook for your entity if you do not want to do it via banner automatically:-
 
