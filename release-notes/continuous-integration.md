@@ -33,7 +33,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### Fixed issues
 
-- Due to Docker rate limiting, CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR must be enabled whenever a base image connector is used (CI-13924, ZD-68737)
+- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` must be enabled whenever a base image connector is used (CI-13924, ZD-68737)
 
 - For SMP customers the getting started purchase flow for CI has been removed from the side navigation as it is not relevant for SMP customers. (CI-13821)
 
