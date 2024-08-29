@@ -1,0 +1,14 @@
+{
+  "position": 1,
+  "label": "SMP",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link":{
+      "type":"generated-index",
+      "title":"SMP",
+      "description":"Feature availability on HCE SaaS and SMP are on par, with minor timeline changes in the SMP feature releases. This section describes how you can connect infrastructure to the control plane and how you can connect to Enterprise ChaosHub."
+   },
+  "customProps": {
+    "description":"Feature availability on HCE SaaS and SMP are on par, with minor timeline changes in the SMP feature releases."
+  }
+}

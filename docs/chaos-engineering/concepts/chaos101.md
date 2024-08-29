@@ -84,24 +84,24 @@ HCE doesn't just focus on fault injection; it helps you set up a fully operation
 
 - **Cloud-Native Approach**: HCE supports a declarative definition of experiments and [Git-based chaos artifact sources](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub) (chaos-experiments-as-code).
 
-- **Extensive Fault Library**: HCE offers a robust suite of ready-to-use experiments and supports constructing complex custom experiments with multiple faults executed in the desired order.
+- **Extensive Fault Library**: HCE offers a robust suite of ready-to-use experiments and supports constructing complex custom experiments with [multiple faults](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#add-serial-and-parallel-faults) executed in the desired order.
 
-- **Centralized Control Plane**: The platform supports a variety of targets, including Kubernetes-based microservices, cloud services like AWS, Azure, GCP, Cloud Foundry, and VMware infrastructure.
+- **Centralized Control Plane**: The platform supports a variety of targets, including [Kubernetes-based microservices](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/), cloud services like [AWS](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/), [Azure](/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/), [GCP](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/), [Cloud Foundry](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/), and [VMware](/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/) infrastructure.
 
 - **Governance Enforcement**: HCE provides several mechanisms for governance:
 
     - **Dedicated Workspaces**: Isolate chaos experiments and resources for different teams or projects.
-    - **ChaosGuard**: Adds an additional security layer by executing a set of conditions before running chaos experiments.
+    - [**ChaosGuard**](/docs/chaos-engineering/concepts/explore-features/chaosguard): Adds an additional security layer by executing a set of conditions before running chaos experiments.
     - **Chaos Teams**: Allows control over who can access and execute chaos experiments, ensuring that only authorized users interact with chaos resources.
-    - **Access Control**: Fine-grained permissions manage access to chaos infrastructure, the types of faults used, and the runtime permissions for executing experiments within target environments.
+    - **Access Control**: [Fine-grained permissions](/docs/chaos-engineering/security/introduction#user-authorization-and-role-based-access-control) manage access to chaos infrastructure, the types of faults used, and the runtime permissions for executing experiments within target environments.
 
-- **Native Integration with Harness Continuous Delivery (CD) Pipelines**: Streamline chaos engineering into your CI/CD workflows.
+- **Native Integration with Harness Continuous Delivery (CD) Pipelines**: [Streamline chaos engineering into your CI/CD workflows](/docs/category/integrate-hce-with-harness-cd).
 
-- **Hypothesis Validation and SLO Management**: Validate hypotheses using probes and manage SLOs through integration with Harness Continuous Verification (CV).
+- **Hypothesis Validation and SLO Management**: Validate hypotheses using [probes](/docs/category/resilience-probes) and manage SLOs through integration with Harness Continuous Verification (CV).
 
 - **Guided GameDay Execution**: Detailed analytics and reporting based on experiment execution and application resilience.
 
-- **Chaos Events, Metrics, and Logs**: Instrument APM (Application Performance Monitoring) dashboards with chaos context to monitor the impact of chaos faults on service/application health.
+- **Chaos Events, Metrics, and Logs**: Instrument APM (Application Performance Monitoring) [dashboards](/docs/chaos-engineering/concepts/explore-features/dashboard) with chaos context to monitor the impact of chaos faults on service/application health.
 
 #### Workflow Custom Resource (CR)
 
