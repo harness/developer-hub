@@ -9,13 +9,13 @@ With perspective preferences, you have the flexibility to tailor the cost data p
 ## Default settings for perspective preferences
 You can configure perspective preferences in the **Cloud Costs** > **Setup** > **Default Settings** page. You can override these settings at the perspective level if needed. The following table provides the default values of perspective preferences:  
 
-| **General** | **AWS** | **GCP** |
-| --- | --- | --- |
-| Show Anomalies - Enabled | Include Discounts - Enabled | Include Discounts - Disabled |
-| Show Others - Disabled | Include Credit - Enabled | Include Taxes - Enabled |
-| Show Unallocated cost in Clusters - Disabled | Include Refunds - Enabled | - |
-| - | Include Taxes - Enabled | - |
-| - | Show costs as:<ul><li>Amortised</li><li>Net-amortised</li><li>Unblended</li><li>Blended</li><li>Effective</li></ul>Default value: Unblended | - |
+| **General** | **AWS** | **GCP** | **Azure** |
+| --- | --- | --- | --- |
+| Show Anomalies - Enabled | Include Discounts - Enabled | Include Discounts - Disabled | Show costs as - Actual |
+| Show Others - Disabled | Include Credit - Enabled | Include Taxes - Enabled | - |
+| Show Unallocated cost in Clusters - Disabled | Include Refunds - Enabled | - | - |
+| - | Include Taxes - Enabled | - | - |
+| - | Show costs as:<ul><li>Amortised</li><li>Net-amortised</li><li>Unblended</li><li>Blended</li><li>Effective</li></ul>Default value: Unblended | - | - |
 
 
 <DocImage path={require('./static/default-preferences-settings.png')} width="60%" height="60%" title="Click to view full size image" />
