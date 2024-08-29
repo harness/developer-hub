@@ -32,7 +32,7 @@ This topic describes the [prerequisites](#required-permissions) to fulfill befor
 	- [Proxy environments for outbound container](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/permissions/)
 	- Specific nodes or groups where workloads should reside
 
-- Identify permissions for advanced use cases, which may vary, such as [SCC](/docs/chaos-engineering/security/security-templates/openshift-scc), [IRSA](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-iam-integration#authentication-methods), etc.: For advanced use cases, you may require the administrator to control the pods in your cluster, that requires security policies, such as [PSP](/docs/chaos-engineering/security/security-templates/psp), [Kyverno](/docs/chaos-engineering/security/security-templates/kyverno-policies) to enforce runtime security, and so on.
+- Identify permissions for advanced use cases, which may vary, such as [SCC](/docs/chaos-engineering/use-harness-ce/governance/governance-create/openshift-scc), [IRSA](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-iam-integration#authentication-methods), etc.: For advanced use cases, you may require the administrator to control the pods in your cluster, that requires security policies, such as [PSP](/docs/chaos-engineering/use-harness-ce/governance/governance-create/psp), [Kyverno](/docs/chaos-engineering/use-harness-ce/governance/governance-create/kyverno-policies) to enforce runtime security, and so on.
 
 - [ChaosHub requirements and connectivity to Git sources](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub): To add custom chaos experiments based on your requirements, you can add a custom ChaosHub.
 
