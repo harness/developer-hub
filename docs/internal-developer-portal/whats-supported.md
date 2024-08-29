@@ -57,3 +57,14 @@ Workflows in IDP use Harness Pipelines as Orchestrator, so any secret requiremen
 You can use Harness Secret Manager as well for the above described function. 
 
 :::
+
+## Miscellaneous
+
+| **What do we Support?**              | **Links**                                                                                                                                                                                                                                                        |
+|----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Custom PLugins                   | We support only [Frontend Backstage Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/build-a-frontend-plugin) as [Custom Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview)   |
+| Scorecard Data Sources            | These are the list of available Scorecard [Data Sources](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources)                                                                                                           |
+| Backstage Plugins                | [Available Backstage Plugins](https://developer.harness.io/docs/category/available-plugins)                                                                                                                                                                  |
+| Custom Theming And Branding      | Not supported.                                                                                                                                                                                                                                         |
+| Developer Homepage Customisation | You can customize the Homepage for a personalized experience.                                                                                                                                                                                                |
+| API support to update entities   | We support [Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties) to update entities in the catalog.                                                                                           |
