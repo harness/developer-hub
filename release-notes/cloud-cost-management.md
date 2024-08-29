@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2024-06-06T10:00
+date: 2024-08-29T22:00
 sidebar_position: 6
 ---
 
@@ -19,6 +19,23 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 ## August 2024
+### Version 1.28.7
+
+#### New features and enhancements
+
+- **Custom Recommendations in Cloud Asset Governance**: We have introduced custom recommendations in Cloud Asset Governance, allowing users to create, manage, and operationalize their own policies. A new custom recommendations page has been added where users can view, manage, and drill down into their custom recommendations based on various filters. [CCM-18955]
+
+- **Support for Multi-Status in Governance Evaluation**: We've added support for multiple statuses within a single Governance Evaluation, enabling more detailed policy evaluations. [CCM-18942]
+
+- **GCP Data Sync Migration to Gen2**: We have successfully migrated our GCP data sync Cloud Function from Gen1 to Gen2, significantly increasing the timeout from 9 minutes to 60 minutes, enhancing the reliability and performance of GCP data sync. [CCM-13672]
+
+#### Fixed issues
+
+- **Budget Percentage Display Issue**: Previously, when a budget amount was set to 0, the percentage spend comparison displayed as "Infinity." This has been fixed. [CCM-]
+
+- **Cluster Data Query Optimisation**:  We've started using Mongo hint to optimize the cluster billing calculation query, ensuring accurate data display. [CCM-19140]
+
+- **Cost Category Name Updates**: There was an issue with cost category name updates that affected the rules in perspectives where the cost category was referenced. This issue has now been fixed. [CCM-18977]
 
 ### Version 1.27.2
 
