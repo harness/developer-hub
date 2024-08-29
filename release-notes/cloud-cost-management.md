@@ -33,7 +33,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - **Budget Percentage Display Issue**: Previously, when a budget amount was set to 0, the percentage spend comparison displayed as "Infinity." This has been fixed. [CCM-]
 
-- **Cluster Data Query Optimisation**:  We've started using Mongo hint to optimize the cluster billing calculation query, ensuring accurate data display. [CCM-19140]
+- **Cluster Data Query Optimisation**:  We've started using Mongo hint to optimize the cluster billing calculation query, ensuring much faster calculation. [CCM-19140]
 
 - **Cost Category Name Updates**: There was an issue with cost category name updates that affected the rules in perspectives where the cost category was referenced. This issue has now been fixed. [CCM-18977]
 
