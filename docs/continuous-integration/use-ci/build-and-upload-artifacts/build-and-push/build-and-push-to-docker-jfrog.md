@@ -198,7 +198,7 @@ You can find the following settings on the **Advanced** tab in the step settings
 
 ## Publish Build metadata to a Docker image in JFrog Docker Registry
 
-Use Harness plugin to publish build metadata to a JFrog Artifactory Docker Registry. It's useful for tracking and managing Docker builds in Artifactory, ensuring that all relevant build information is stored alongside your images.
+Use the Harness plugin to publish build metadata to a Docker image in the JFrog Docker Registry. It's useful for tracking and managing Docker builds in Artifactory, ensuring that all relevant build information is stored alongside your images.
 
 
 
