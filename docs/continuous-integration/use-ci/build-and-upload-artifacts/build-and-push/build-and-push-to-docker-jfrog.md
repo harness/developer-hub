@@ -18,13 +18,18 @@ You need:
 * A [CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md).
 * A Harness [Docker connector](#docker-connector) configured to your JFrog instance.
 
-## Kubernetes cluster build infrastructures require root access
 
-With Kubernetes cluster build infrastructures, **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md). Kaniko requires root access to build the Docker image. It doesn't support non-root users.
+:::note
+
+With Kubernetes cluster build infrastructures, **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md) by default. Kaniko requires root access to build the Docker image. It doesn't support non-root users.
 
 If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
 
 If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
+
+:::
+
+
 
 ## Build and push to JFrog Docker registries
 
@@ -55,15 +60,15 @@ You can also:
 
 :::
 
-## Build and Push to Docker step settings for JFrog Docker registries
+### Step settings
 
 These sections explain how to configure the **Build and Push an image to Docker Registry** step settings for JFrog. Depending on the build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
 
-### Name
+#### Name
 
 Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the step is saved. Once save, the **Id** can't be changed.
 
-### Docker Connector
+#### Docker Connector
 
 Specify a [Harness Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for JFrog.
 
@@ -89,11 +94,11 @@ For more information, go to the JFrog documentation on [Repository Management](h
 
 :::
 
-### Docker Repository
+#### Docker Repository
 
 The repo where you want to store the image and the image name, for example, `mycompany.jfrog.io/REPO_NAME/IMAGE_NAME`.
 
-### Tags
+#### Tags
 
 Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag). This is equivalent to the `-t` flag.
 
@@ -119,17 +124,17 @@ You can use the same expression to pull the tagged image, such as `namespace/myi
 
 :::
 
-### Optimize
+#### Optimize
 
 With Kubernetes cluster build infrastructures, select this option to enable `--snapshotMode=redo`. This setting causes file metadata to be considered when creating snapshots, and it can reduce the time it takes to create snapshots. For more information, go to the kaniko documentation for the [snapshotMode flag](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#flag---snapshotmode).
 
 For information about setting other kaniko runtime flags, go to [Environment variables](#environment-variables-plugin-runtime-flags).
 
-### Dockerfile
+#### Dockerfile
 
 The name of the Dockerfile. If you don't provide a name, Harness assumes that the Dockerfile is in the root folder of the codebase.
 
-### Context
+#### Context
 
 Enter a path to a directory containing files that make up the [build's context](https://docs.docker.com/engine/reference/commandline/build/#description). When the pipeline runs, the build process can refer to any files found in the context. For example, a Dockerfile can use a `COPY` instruction to reference a file in the context.
 
@@ -143,17 +148,17 @@ If your security policy doesn't allow running as root, go to [Build and push wit
 
 :::
 
-### Labels
+#### Labels
 
 Specify [Docker object labels](https://docs.docker.com/config/labels-custom-metadata/) to add metadata to the Docker image.
 
-### Build Arguments
+#### Build Arguments
 
 The [Docker build-time variables](https://docs.docker.com/engine/reference/commandline/build/#build-arg). This is equivalent to the `--build-arg` flag.
 
 ![](../static/build-and-push-to-docker-hub-step-settings-11.png)
 
-### Target
+#### Target
 
 The [Docker target build stage](https://docs.docker.com/engine/reference/commandline/build/#target), equivalent to the `--target` flag, such as `build-env`.
 
@@ -161,11 +166,11 @@ The [Docker target build stage](https://docs.docker.com/engine/reference/command
 There are two ways in which you can leverage Docker Layer Caching: 
  **Enable Docker layer caching** (_'caching'_ property) or **Remote cache image** (_'remoteCacheRepo'_ property). Refer to [Enable Docker layer caching for your build](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) to learn more.
 
-### Environment Variables (plugin runtime flags)
+#### Environment Variables (plugin runtime flags)
 
 <Flags />
 
-### Run as User
+#### Run as User
 
 With Kubernetes cluster build infrastructures, you can specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
@@ -173,14 +178,14 @@ This step requires root access. You can use the **Run as User** setting if your 
 
 If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
 
-### Set Container Resources
+#### Set Container Resources
 
 Set maximum resource limits for the resources used by the container at runtime:
 
 * **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
 * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-### Timeout
+#### Timeout
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
@@ -200,8 +205,6 @@ You can find the following settings on the **Advanced** tab in the step settings
 
 Use the Harness plugin to publish build metadata to a Docker image in the JFrog Docker Registry. It's useful for tracking and managing Docker builds in Artifactory, ensuring that all relevant build information is stored alongside your images.
 
-
-
 For example:
 
 ```yaml
@@ -220,6 +223,8 @@ For example:
             build_url: <+pipeline.executionUrl>
             docker_image: artifactory.customer.com/DOCKER_REPO/IMAGE_NAME:TAG_NAME
 ```
+
+
 ### Plugin specification 
 * **connectorRef**: Harness Connector for the container registry where the plugin image is located.
 * **image:** The Docker image containing the plugin to publish build info. For this example, it's `plugins/artifactory-publish-docker-buildinfo`.
