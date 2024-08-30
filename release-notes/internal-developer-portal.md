@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-07-13T20:00
+date: 2024-08-30T20:00
 sidebar_position: 12
 ---
 
@@ -18,6 +18,23 @@ Review the notes below for details about recent changes to Harness Internal Deve
 :::
 
 ## August 2024
+
+### Version 0.32.0
+
+<!-- August 30, 2024 -->
+
+#### New features and enhancements
+
+- Added Support for Harness Code Repository in Direct Push and Create Repo step under IDP stage.[IDP-3400]
+- Added a new [Dynamic Workflow Picker](https://developer.harness.io/docs/internal-developer-portal/flows/dynamic-picker), for fetching values from a third party endpoint. [IDP-3531] 
+- Added support for [homepage customization](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/home-page-customization), wherein you can personalize the cards, banners and headers for your homepage. [IDP-2890]
+- [JFrog artifactory Plugin](https://github.com/Vity01/backstage-jfrog-artifactory-libs) and [Container Image Registry for JFrog Artifactory Plugin](https://janus-idp.io/plugins/jfrog-artifactory/) added to the marketplace. 
+
+#### Bug fixes
+
+- Fixed issue with fetching data for services, created using gitsync, in the Harness CI/CD Plugin.[IDP-3566]
+- Fixed issue with Jenkins Plugin delegate proxy framework.[IDP-3511]
+- Updated the Schema Validation for Custom Plugin.[IDP-3391]
 
 ### Version 0.31.0
 
