@@ -42,7 +42,19 @@ This plugin does not require a delegate proxy to be set up.
 
 ## Layout
 
-This plugin exports a UI tab that you can use as a new Feature Flags tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in a new **Feature Flags** section:
+_No action required_
+
+This plugin exports a UI tab that you can use as a new Feature Flags tab for a service or for any other layout page. The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
+
+```yaml
+- name: feature-flags
+  path: /feature-flags
+  title: Feature Flags
+  contents:
+    - component: EntityHarnessFeatureFlagContent
+```
+
+Also you could add a conditional like `isHarnessFeatureFlagAvailable` which is met when the `harness.io/project-url` annotation is present in the software components's `catalog-info.yaml` definition file.
 
 ```yaml
 - name: feature-flags
@@ -56,8 +68,6 @@ This plugin exports a UI tab that you can use as a new Feature Flags tab for a s
             content:
               component: EntityHarnessFeatureFlagContent
 ```
-
-The `isHarnessFeatureFlagAvailable` condition is met when the `harness.io/project-url` annotation is present in the software components's `catalog-info.yaml` definition file.
 
 ## Annotations
 
