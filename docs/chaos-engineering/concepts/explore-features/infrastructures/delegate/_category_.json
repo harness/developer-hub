@@ -3,10 +3,6 @@
   "label": "Delegate",
   "collapsible": true,
   "collapsed": true,
-  "link":{
-      "type":"generated-index",
-      "title":"Delegate"
-   },
   "customProps": {
     "description": "Harness Delegate allows for quick onboarding and optimized chaos execution of experiments."
   }

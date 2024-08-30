@@ -15,7 +15,7 @@ In this tutorial, you will create and run chaos experiments on Kubernetes using 
 ## Before you begin, review the following:
 
 - [All about chaos engineering](/docs/chaos-engineering/concepts/chaos101)
-- [Prerequisites to execute your experiment](/docs/chaos-engineering/getting-started/saas/prerequisites)
+- [Prerequisites to execute your experiment](/docs/chaos-engineering/getting-started/saas/saas)
 - [Execute your first chaos experiment](/docs/chaos-engineering/getting-started/saas/first-experiment)
 
 ### Create a project (or be added to a project)

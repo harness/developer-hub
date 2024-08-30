@@ -3,11 +3,6 @@
   "label": "Chaos Experiment",
   "collapsible": "true",
   "collapsed": "true",
-  "link":{
-      "type":"generated-index",
-      "title":"Chaos Experiment",
-      "description": "This sections describes how you can create, execute, analyze, schedule, edit, export, halt, delete, and get alerts for chaos experiment."
-   },
   "customProps": {
     "description": "Composed of chaos faults arranged in a specific order to create a failure scenario."
   }

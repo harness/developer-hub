@@ -11,7 +11,7 @@ This topic describes how you can create chaos experiments that consist of chaos 
 ## Before you begin
 
 - [What is a chaos experiment?](/docs/chaos-engineering/concepts/chaos101)
-- [What are chaos faults?](/docs/chaos-engineering/concepts/explore-features/experiments#chaos-fault)
+- [What are chaos faults?](/docs/chaos-engineering/use-harness-ce/experiments/#chaos-fault)
 - [What are resilience probes?](/docs/chaos-engineering/concepts/explore-features/resilience-probes/)
 - [How to create a resilience probe?](/docs/chaos-engineering/use-harness-ce/probes/use-probe)
 
@@ -227,7 +227,7 @@ You can observe the status of execution of fault/s of a chaos experiment during 
 
 ![Experiment Executing](./static/analyze-experiment/experiment-executing.png)
 
-When the experiment completes execution, it displays the [**Resilience Score**](/docs/chaos-engineering/concepts/explore-features/experiments#determine-the-resilience-of-target-environment-using-resilience-score). This score describes how resilient your application is to unplanned failures.
+When the experiment completes execution, it displays the [**Resilience Score**](/docs/chaos-engineering/use-harness-ce/experiments/#determine-the-resilience-of-target-environment-using-resilience-score). This score describes how resilient your application is to unplanned failures.
 The **probe success percentage** helps determine the outcome of every fault in the chaos experiment. Probes (if any) associated with the experiment are used to understand how the application fared.
 
 ![Experiment Failed](./static/analyze-experiment/experiment-failed.png)

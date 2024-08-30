@@ -5,17 +5,21 @@ redirect_from:
     - /docs/chaos-engineering/onboarding/hce-onboarding
 ---
 
-This topic describes the typical steps for executing a chaos experiment and explains how to deploy the HCE application in two different modes: [Automated onboarding](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding) and [guided onboarding](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding).
+This topic describes how you can get a hands-on experience executing chaos experiments without fulfilling the [prerequisites for HCE SaaS](/docs/chaos-engineering/getting-started/saas/).
 
 ## Before you begin, review the following:
 
-* [All about chaos engineering](/docs/chaos-engineering/concepts/chaos101)
+- [All about chaos engineering](/docs/chaos-engineering/concepts/chaos101)
+- [Explore features](/docs/chaos-engineering/concepts/explore-features/explore-features)
+- [Get Started With HCE](/docs/chaos-engineering/getting-started/)
 
-## Onboarding
+## Introduction
 
-You can execute chaos experiments without explicitly installing the environment or infrastructure or creating an experiment by specifying tunables.
+You can get hands-on experience executing chaos experiments without fulfilling the prerequisites. You can achieve this in two ways:
+- [Automated Onboarding](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding)
+- [Guided onboarding](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding)
 
-1. To get hands-on experience, navigate to the **Chaos** module and select **Overview**. Select **Select a cluster**, where you can choose between [automated](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding) and [guided](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding) onboarding.
+1. Go to the **Chaos** module and select **Overview**. Select **Select a cluster**, where you can choose between [automated](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding) and [guided](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding) onboarding.
 
     ![](./static/intro/onboard-1.png)
 
@@ -28,15 +32,15 @@ You can execute chaos experiments without explicitly installing the environment 
 - Once you have installed Harness delegate, you can reuse it to execute experiments, discover services, create application maps and so on.
 :::
 
-## Prerequisites to automated and guided onboarding
+## Prerequisites to Onboarding
 
-HCE requires that you install a chaos infrastructure in your environment before using one of the onboarding methods (guided or automated). While using one of the onboarding methods, you can simply select the infrastructure (you installed earlier) for use by the chaos experiment.
+HCE requires that you install a chaos infrastructure in your environment before using one of the onboarding methods. While using one of the onboarding methods, you can simply select the infrastructure (you installed earlier) for use by the chaos experiment.
 
 :::tip
 Once you use a chaos infrastructure for one of the onboarding methods, you need to create a new infrastructure for the second onboarding method. You can't use the same infrastructure more than once. The UI shows whether the infrastructure is already in use, if so, create a new one.
 :::
 
-### Steps to create an infrastructure for onboarding
+### Steps to Create an Infrastructure for Onboarding
 
 1. Navigate to **Continuous Delivery & GitOps** module and select **Environments**.
 
@@ -62,5 +66,5 @@ This creates a new infrastructure in the environment you specify.
 
 ## Next steps
 
-* [Automated onboarding](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding)
-* [Guided onboarding](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding)
+* [Automated Onboarding](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding)
+* [Guided Onboarding](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding)

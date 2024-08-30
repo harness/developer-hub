@@ -1,7 +1,7 @@
 ---
-id: experiments
-sidebar_position: 4
-title: Chaos Experiment
+title: Chaos Experiments
+sidebar_position: 1
+description: Configure rules to receive alerts for your chaos experiments.
 redirect_from:
 - /docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments
 - /docs/chaos-engineering/configure-chaos-experiments/experiments/resilience-score
@@ -18,6 +18,22 @@ You can define the experiment using the Chaos Studio, that helps create new expe
 - To create a chaos experiment, you need to [enable a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable). To enable an infrastructure, you need to [create an environment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#create-environment).
 - An environment represents your deployment scenario, wherein each environment may contain multiple chaos infrastructures. It helps isolate the various environments that the engineering, product owners, QA, and automation teams use under a single Harness project. - This allows for better segregation of mission-critical infrastructures with several attached dependencies from dev and staging infrastructures for their safety.
 :::
+
+## Steps to Execute a HCE Experiment
+
+You can execute a chaos experiment by:
+
+1. [Fulfilling the resource requirements](/docs/chaos-engineering/getting-started/saas/saas): In this step, you can create resources or get the required permissions to create the necessary resources.
+
+2. [Adding an environment](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#create-environment): A chaos experiment is performed within a chaos environment that houses the necessary infrastructure.
+
+3. [Enabling a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#enable-chaos): The required chaos infrastructure is enabled within a chaos environment.
+
+4. [Validating the chaos infrastructure installation](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#validate-chaos-infrastructure-installation): Once you create your chaos infrastructure, ensure that it has been created in the right manner.
+
+5. [Creating an application](/docs/chaos-engineering/getting-started/saas/first-experiment#creating-a-demo-application-and-observability-infrastructure): You can either create an application or use your application or the demo application on which you can execute chaos experiments.
+
+6. [Creating and running a chaos experiment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments): Once you have set up your application, you can decide which resources to target and execute the chaos experiments on.
 
 #### Experiment Templates
 
@@ -91,7 +107,7 @@ Below is the detailed description of the steps above.
    * **Chaos Infrastructure:** Specify the chaos infrastructure that will be targeted during the experiment.
    * **Fault and Fault Tunables:** Select fault templates from any connected chaos hubs and modify the tunables as needed. You can add multiple faults in any desired order.
    * **Fault Probes:** Optionally, define additional probes on top of the default health check probe to validate custom hypothesis during the experiment.
-   * **Fault Weights:** Assign fault weights to indicate the importance of each fault relative to others in the experiment. These weights contribute to calculating the experiment's [**resilience score**](/docs/chaos-engineering/concepts/explore-features/experiments ), a quantitative measure of the target environment's resilience when the experiment is performed.
+   * **Fault Weights:** Assign fault weights to indicate the importance of each fault relative to others in the experiment. These weights contribute to calculating the experiment's [**resilience score**](/docs/chaos-engineering/use-harness-ce/experiments/ ), a quantitative measure of the target environment's resilience when the experiment is performed.
 
 	Once all information is provided, the experiment is created and ready for execution.
 

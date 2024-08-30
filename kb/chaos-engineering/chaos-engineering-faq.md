@@ -152,7 +152,7 @@ The agents are:
 
 #### What are the prerequisites to setup/onboard Harness Chaos Engineering?
 
-Go to [prerequisites](/docs/chaos-engineering/getting-started/saas/prerequisites) to fulfill the requirements before onboarding. Once all the prerequisites are fulfilled, you can explore[sandbox](/docs/chaos-engineering/training/sandbox) or execute [your first chaos experiment](/docs/chaos-engineering/getting-started/saas/first-experiment).
+Go to [prerequisites](/docs/chaos-engineering/getting-started/saas/saas) to fulfill the requirements before onboarding. Once all the prerequisites are fulfilled, you can explore[sandbox](/docs/chaos-engineering/training/sandbox) or execute [your first chaos experiment](/docs/chaos-engineering/getting-started/saas/first-experiment).
 **OR**
 If you want a head start to your journey with HCE, you can onboard HCE in two ways:
 - [Automated onboarding](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding); and
@@ -228,7 +228,7 @@ The chaos infrastructure connects to the Harness control plane through outbound 
 
 #### What are the permissions and privileges required to deploy and run the chaos infrastructure?
 
-The chaos infrastructure setup involves the creation of CRDs and RBAC resources. This setup typically needs cluster-admin intervention. To learn more, go to [Kubernetes roles for the chaos infrastructure](/docs/chaos-engineering/security/introduction#kubernetes-roles-for-chaos-infrastructure).
+The chaos infrastructure setup involves the creation of CRDs and RBAC resources. This setup typically needs cluster-admin intervention. To learn more, go to [Kubernetes roles for the chaos infrastructure](/docs/chaos-engineering/security/security#kubernetes-roles-for-chaos-infrastructure).
 
 #### Can you run multiple cluster-scoped chaos infrastructures on same clusters?
 
@@ -240,17 +240,17 @@ A chaos infrastructure could be inactive due to a variety of reasons. When you t
 
 #### How do I control user actions in a given environment in Harness Chaos?
 
-The scope of a user's access to chaos resources added to a given Harness account or project can be controlled by assigning them a predefined or custom role. To learn more, go to [chaos access control](/docs/chaos-engineering/security/introduction#user-authorization-and-role-based-access-control).
+The scope of a user's access to chaos resources added to a given Harness account or project can be controlled by assigning them a predefined or custom role. To learn more, go to [chaos access control](/docs/chaos-engineering/security/security#user-authorization-and-role-based-access-control).
 
 #### How do I control the security blast radius in terms of access to application microservices and infrastructure resources in a user environment?
 
 The chaos infrastructure can be installed in a cluster-wide scope (with the ability to discover and inject chaos on microservices across namespaces and infrastructure components such as nodes and volumes) as well as in a namespace-specific scope (where discovery and chaos injection are limited to resources within a specific namespace).
 
-In addition, users can provide a custom service account to carry out experiments, thereby limiting the fault types in the user environment. To learn more, go to [blast radius control using permissions](/docs/chaos-engineering/security/introduction#blast-radius-control-using-permissions).
+In addition, users can provide a custom service account to carry out experiments, thereby limiting the fault types in the user environment. To learn more, go to [blast radius control using permissions](/docs/chaos-engineering/security/security#blast-radius-control-using-permissions).
 
 #### How does Harness Chaos access cloud resources in the users' environment?
 
-Harness Chaos experiment pods consume Kubernetes secrets that contain access credentials, which are leveraged to make provider-specific API calls to the cloud platform to inject chaos. To learn more, go to [Secrets management](/docs/chaos-engineering/security/introduction#secrets-management).
+Harness Chaos experiment pods consume Kubernetes secrets that contain access credentials, which are leveraged to make provider-specific API calls to the cloud platform to inject chaos. To learn more, go to [Secrets management](/docs/chaos-engineering/security/security#secrets-management).
 
 #### Can cloud service accounts be used instead of user credentials to access cloud resources?
 

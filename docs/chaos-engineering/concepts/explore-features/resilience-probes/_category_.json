@@ -3,14 +3,7 @@
   "label": "Resilience Probes",
   "collapsible": true,
   "collapsed": true,
-  "link":{
-      "type":"generated-index",
-      "title":"Resilience Probes",
-      "description":
-        "Resilience probes (or probes) are pluggable health checkers defined within the chaos engine for any chaos experiment. This section describes the modes, use cases, and different types of probes available in HCE."
-      },
   "customProps": {
     "description": "Resilience Probes"
   }
 }
-

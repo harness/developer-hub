@@ -3,11 +3,6 @@
   "label": "Resilience Probe",
   "collapsible": "true",
   "collapsed": "true",
-  "link":{
-      "type":"generated-index",
-      "title":"Resilience Probe",
-      "description":"Resilience probes are pluggable health checkers defined inside the chaos engine. This section describes how you can create a resilience probe and use it in different ways."
-   },
   "customProps": {
     "description":"Pluggable health checkers defined inside the chaos engine. Create a resilience probe and use it in different ways."
   }

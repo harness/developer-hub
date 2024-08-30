@@ -3,11 +3,6 @@
   "label": "SaaS",
   "collapsible": "true",
   "collapsed": "true",
-  "link":{
-      "type":"generated-index",
-      "title":"SaaS",
-      "description":"Fulfill the prerequisites, and get hands-on experience in executing your first experiment on HCE SaaS in various ways."
-   },
   "customProps": {
     "description":"Fulfill the prerequisites, and get hands-on experience in executing your first experiment on HCE SaaS in various ways."
   }

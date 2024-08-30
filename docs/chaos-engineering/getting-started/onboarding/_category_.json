@@ -3,11 +3,6 @@
   "label": "Onboard with Harness CE",
   "collapsible": "true",
   "collapsed": "true",
-  "link":{
-      "type":"generated-index",
-      "title":"Onboard with Harness Chaos Engineering",
-      "description": "In this section, you will understand two ways of onboarding: Automated and guided onboarding. These are quick ways to get started and execute chaos experiments and understand how they work. You will also understand see how resilience scores can be improved by provisioning the right amount of resources."
-   },
   "customProps": {
     "description": "Onboard with Harness Chaos Engineering"
   }

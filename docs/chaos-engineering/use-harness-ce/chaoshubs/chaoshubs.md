@@ -20,7 +20,6 @@ HCE provides a default Enterprise ChaosHub that includes a wide array of experim
 ### Enterprise ChaosHub
 It is a ChaosHub with additional security and teaming features for better collaboration around chaos scenarios. It is a private GitHub repository that you can access using a special key.
 
-
 Also known as Enterprise hub, it comes out-of-the-box with HCE and consists of pre-built manifests (YAML files) and chaos experiment templates. It is a prebuilt ChaosHub that represents the existing experiments and chaos faults. You can use faults from multiple categories to create chaos experiments in the Enterprise ChaosHub.
 
 #### Use cases of ChaosHubs

@@ -9,7 +9,12 @@ redirect_from:
 - /docs/chaos-engineering/onboarding/prerequisites
 ---
 
-This topic describes the [prerequisites](#required-permissions) to fulfill before executing chaos experiments and the [steps to execute a chaos experiment](#steps-to-create-and-execute-a-hce-experiment).
+This topic describes the [prerequisites](#permissions-required) to fulfill before executing chaos experiments on HCE SaaS and the [steps to execute a chaos experiment](#steps-to-execute-a-hce-experiment).
+
+## Before you begin, review the following:
+
+- [All about Chaos Engineering](/docs/chaos-engineering/concepts/chaos101)
+- [Get Started with HCE SaaS](/docs/chaos-engineering/getting-started/)
 
 ## Permissions Required
 
@@ -32,26 +37,12 @@ This topic describes the [prerequisites](#required-permissions) to fulfill befor
 	- [Proxy environments for outbound container](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/permissions/)
 	- Specific nodes or groups where workloads should reside
 
-- Identify permissions for advanced use cases, which may vary, such as [SCC](/docs/chaos-engineering/use-harness-ce/governance/governance-create/openshift-scc), [IRSA](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-iam-integration#authentication-methods), etc.: For advanced use cases, you may require the administrator to control the pods in your cluster, that requires security policies, such as [PSP](/docs/chaos-engineering/use-harness-ce/governance/governance-create/psp), [Kyverno](/docs/chaos-engineering/use-harness-ce/governance/governance-create/kyverno-policies) to enforce runtime security, and so on.
+- Identify permissions for advanced use cases, which may vary, such as [SCC](/docs/chaos-engineering/use-harness-ce/security/security-templates/openshift-scc), [IRSA](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-iam-integration#authentication-methods), etc.: For advanced use cases, you may require the administrator to control the pods in your cluster, that requires security policies, such as [PSP](/docs/chaos-engineering/use-harness-ce/security/security-templates/psp), [Kyverno](/docs/chaos-engineering/use-harness-ce/security/security-templates/kyverno-policies) to enforce runtime security, and so on.
 
 - [ChaosHub requirements and connectivity to Git sources](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub): To add custom chaos experiments based on your requirements, you can add a custom ChaosHub.
 
-## Steps to Execute a HCE Experiment
+## Next steps
 
-You can execute a chaos experiment by:
-
-1. [Fulfilling the resource requirements](/docs/chaos-engineering/getting-started/saas/prerequisites): In this step, you can create resources or get the required permissions to create the necessary resources.
-
-2. [Adding an environment](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#create-environment): A chaos experiment is performed within a chaos environment that houses the necessary infrastructure.
-
-3. [Adding a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#enable-chaos): The required chaos infrastructure is created within a chaos environment.
-
-4. [Validating the chaos infrastructure installation](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#validate-chaos-infrastructure-installation): Once you create your chaos infrastructure, ensure that it has been created in the right manner.
-
-5. [Creating a demo application](/docs/chaos-engineering/getting-started/saas/first-experiment#creating-a-demo-application-and-observability-infrastructure): You can either create a demo application or use your application on which you can execute chaos experiments.
-
-6. [Creating and running a chaos experiment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments): Once you have set up your application, you can decide which resources to target and execute the chaos experiments on.
-
-The steps mentioned earlier required some reading and exploring, but if you want a head start to your chaos journey, enter [automated onboarding](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding) and [guided onboarding](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding).
-
-These onboarding methods will guide you in creating and executing chaos experiments with the click of a button, without the hassle of explicitly creating environment, infrastructure and other entities!
+- [Execute your first Chaos Experiment](/docs/chaos-engineering/getting-started/saas/first-experiment)
+- [Execute Chaos Experiment from Blank Canvas](/docs/chaos-engineering/getting-started/saas/chaos-experiment-from-blank-canvas)
+- [Execute Chaos Experiment using API](/docs/chaos-engineering/getting-started/saas/experiment-using-api)

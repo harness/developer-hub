@@ -1,7 +1,7 @@
 ---
 id: dashboard
 sidebar_position: 15
-title: Dashboard
+title: Chaos Dashboard
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/overview
 - /docs/chaos-engineering/features/chaos-dashboard/overview

@@ -21,7 +21,7 @@ In the last step, instead of choosing a pre-defined experiment, you will choose 
 ## Before you begin
 
 * [What is chaos engineering?](/docs/chaos-engineering/concepts/chaos101)
-* [Prerequisites to execute chaos experiments](/docs/chaos-engineering/getting-started/saas/prerequisites)
+* [Prerequisites to execute chaos experiments](/docs/chaos-engineering/getting-started/saas/saas)
 * [Execute your first chaos experiment using a template](/docs/chaos-engineering/getting-started/saas/first-experiment)
 
 ### Step 1: Set up environment and infrastructure

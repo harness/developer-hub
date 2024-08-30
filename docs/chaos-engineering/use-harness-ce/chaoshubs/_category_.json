@@ -3,11 +3,6 @@
   "label": "ChaosHub",
   "collapsible": "true",
   "collapsed": "true",
-  "link":{
-      "type":"generated-index",
-      "title":"How to use Chaos Hub",
-      "description": "This section describes how you can connect to a ChaosHub and how you can manage your ChaosHub. Connecting to a ChaosHub discusses the prerequisites and steps to add a custom hub. Managing a ChaosHub discusses how you can add experiments to a ChaosHub, Sync Harness with a ChaosHub Git repository, and launch an experiment from a ChaosHub."
-   },
   "customProps": {
     "description": "Collection of experiment templates (defined as workflow CRs) and faults (defined as ChaosExperiment CR and ChaosEngine CR) that help create and execute new chaos experiments against your target resources."
   }

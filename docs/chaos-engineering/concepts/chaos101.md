@@ -43,7 +43,7 @@ Chaos engineering isn't the same as software testing (manual or automated) which
 
 In the current landscape of fast-paced technology, system failures have a significant impact on businesses, customers, and stakeholders. Chaos engineering is a way to identify potential issues before they become major problems, helping organizations minimize downtime, mitigate risks, and improve reliability.
 
-Chaos engineering targets a steady-state system and simulates conditions that might cause failures in components such as infrastructure, networks, and services. For example, a [chaos experiment](/docs/chaos-engineering/concepts/explore-features/experiments) might terminate a pod in a functional Kubernetes cluster, shut down a working load balancer to validate failover, or induce CPU spikes on a server, and then observe how the system responds.
+Chaos engineering targets a steady-state system and simulates conditions that might cause failures in components such as infrastructure, networks, and services. For example, a [chaos experiment](/docs/chaos-engineering/use-harness-ce/experiments/) might terminate a pod in a functional Kubernetes cluster, shut down a working load balancer to validate failover, or induce CPU spikes on a server, and then observe how the system responds.
 
 ### Shift left chaos engineering
 
@@ -64,7 +64,7 @@ You can build resilient applications by following the steps below:
 4. **Execute** the chaos experiments;
 5. **Analyze** the result.
 
-This suggests that [chaos experiments](/docs/chaos-engineering/concepts/explore-features/experiments) require an appropriate observability infrastructure to validate the hypotheses about the steady state. The practice of chaos engineering involves repeatedly performing experiments by injecting various potential failures, known as [**chaos faults**](/docs/chaos-engineering/concepts/explore-features/experiments#chaos-fault), to simulate real-world failure conditions against different resources, referred to as **targets**.
+The practice of chaos engineering involves repeatedly performing experiments by injecting various potential failures, known as [chaos faults](/docs/chaos-engineering/use-harness-ce/experiments/#chaos-fault), to simulate real-world failure conditions against different resources, referred to as **targets**.
 
 Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for your organization. The diagram below outlines the steps you can take to introduce chaos into an application.
 
@@ -72,7 +72,7 @@ Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for y
 
 ## Chaos engineering flow of control
 
-You can define steps (chaos experiment) using which you can inject different kinds of failures into your application. The standard flow involves the following steps:
+You can define the steps through which you inject different kinds of failures into your application. The standard flow involves the following steps:
 1. Identify the steady state of the system or application under test and specify its service-level objectives (SLOs);
 2. Hypothesize around the impact a particular fault or failure would cause;
 3. Inject this failure (or chaos fault) in a controlled manner (with a pre-determined and minimal blast radius);
@@ -93,7 +93,7 @@ HCE doesn't just focus on fault injection; it helps you set up a fully operation
     - **Dedicated Workspaces**: Isolate chaos experiments and resources for different teams or projects.
     - [**ChaosGuard**](/docs/chaos-engineering/concepts/explore-features/chaosguard): Adds an additional security layer by executing a set of conditions before running chaos experiments.
     - **Chaos Teams**: Allows control over who can access and execute chaos experiments, ensuring that only authorized users interact with chaos resources.
-    - **Access Control**: [Fine-grained permissions](/docs/chaos-engineering/security/introduction#user-authorization-and-role-based-access-control) manage access to chaos infrastructure, the types of faults used, and the runtime permissions for executing experiments within target environments.
+    - **Access Control**: [Fine-grained permissions](/docs/chaos-engineering/security/security#user-authorization-and-role-based-access-control) manage access to chaos infrastructure, the types of faults used, and the runtime permissions for executing experiments within target environments.
 
 - **Native Integration with Harness Continuous Delivery (CD) Pipelines**: [Streamline chaos engineering into your CI/CD workflows](/docs/category/integrate-hce-with-harness-cd).
 

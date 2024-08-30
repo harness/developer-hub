@@ -22,7 +22,7 @@ Resilience probes (or probes) are pluggable health checkers defined within the c
 
 ### Resilience Score
 
-It is a quantitative measure of how resilient the target application is to a chaos experiment. You can [calculate](/docs/chaos-engineering/concepts/explore-features/experiments#determine-the-resilience-of-target-environment-using-resilience-score) this value based on the priority set for every fault in the experiment and the probe success percentage of the faults (if the probes are defined).
+It is a quantitative measure of how resilient the target application is to a chaos experiment. You can [calculate](/docs/chaos-engineering/use-harness-ce/experiments/#determine-the-resilience-of-target-environment-using-resilience-score) this value based on the priority set for every fault in the experiment and the probe success percentage of the faults (if the probes are defined).
 
 :::tip
 - If you are an existing customer, you will see the old flow of control in resilience probes by default and you have the choice to upgrade to the new flow.

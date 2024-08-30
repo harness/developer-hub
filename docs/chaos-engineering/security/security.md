@@ -116,6 +116,6 @@ Every fault in the Enterprise chaos hub publishes the permissions that you need 
 ## Next steps
 
 * [Namespace considerations](/docs/chaos-engineering/security/namespace-considerations)
-* [Openshift security policies](/docs/chaos-engineering/use-harness-ce/governance/governance-create/openshift-scc)
-* [Pod security policy](/docs/chaos-engineering/use-harness-ce/governance/governance-create/psp)
-* [Kyverno policy](/docs/chaos-engineering/use-harness-ce/governance/governance-create/kyverno-policies)
+* [Openshift security policies](/docs/chaos-engineering/use-harness-ce/security/security-templates/openshift-scc)
+* [Pod security policy](/docs/chaos-engineering/use-harness-ce/security/security-templates/psp)
+* [Kyverno policy](/docs/chaos-engineering/use-harness-ce/security/security-templates/kyverno-policies)
