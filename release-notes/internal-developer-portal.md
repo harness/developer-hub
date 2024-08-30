@@ -25,16 +25,19 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 #### New features and enhancements
 
-- Added Support for Harness Code Repository in Direct Push and Create Repo step under IDP stage.[IDP-3400]
-- Added a new [Dynamic Workflow Picker](https://developer.harness.io/docs/internal-developer-portal/flows/dynamic-picker), for fetching values from a third party endpoint. [IDP-3531] 
-- Added support for [homepage customization](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/home-page-customization), wherein you can personalize the cards, banners and headers for your homepage. [IDP-2890]
-- [JFrog artifactory Plugin](https://github.com/Vity01/backstage-jfrog-artifactory-libs) and [Container Image Registry for JFrog Artifactory Plugin](https://janus-idp.io/plugins/jfrog-artifactory/) added to the marketplace. 
+- You can now create API response based [**Dynamic Workflow Pickers**](https://developer.harness.io/docs/internal-developer-portal/flows/dynamic-picker) for fetching values from a third party APIs and show it to the user. You can use it to provide a pick list of available repositories, projects or integrate with your other data sources. [IDP-3531]
+- **IDP Homepage is now customizable!** You can personalize the cards, banners and headers for your homepage. We have also added a new Toolbox card to organize the handy tools that your developers need to see, especially if they are new. Read more about [homepage customization](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/home-page-customization). [IDP-2890]
+- Harness Code Integration now supports registering components from Account, Org and Project level repositories. Previously this was limited to only project level repositories. [IDP-3390]
+- Harness Code is now available in the Direct Push and Create Repo step under IDP pipeline stage. [IDP-3400]
+- New plugins added to the marketplace.
+  - [JFrog artifactory Plugin](https://github.com/Vity01/backstage-jfrog-artifactory-libs)
+  - [Container Image Registry for JFrog Artifactory Plugin](https://janus-idp.io/plugins/jfrog-artifactory/).
 
 #### Bug fixes
 
-- Fixed issue with fetching data for services, created using gitsync, in the Harness CI/CD Plugin.[IDP-3566]
-- Fixed issue with Jenkins Plugin delegate proxy framework.[IDP-3511]
-- Updated the Schema Validation for Custom Plugin.[IDP-3391]
+- Fixed issue with Jenkins Plugin not working with delegate proxy. [IDP-3511]
+- Updated the Schema Validation for Custom Plugin to support fields like `credentials`, `allowedHeaders` and `pathRewrite` under the Backend Proxy definition. [IDP-3391]
+- Fixed issue with fetching data for services, created using Git Sync, in the Harness CI/CD Plugin. [IDP-3566]
 
 ### Version 0.31.0
 
