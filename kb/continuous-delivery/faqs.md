@@ -3286,6 +3286,34 @@ Yes, the skip keywords can be placed anywhere within the commit message, includi
 #### Does harness pipeline support triggering GitHub action workflow from the pipeline?
 As per the current design, there's no native step for this but user can write a shell script at the end of execution to trigger the GitHub action workflow.
 
+#### Getting this error: sweepingOutputSecrets.obtain, what does it mean?
+
+If you are using a secret as an output variable in the run step and encountering this error, you need to enable the following setting to reference the variable type as a secret : [Reference an output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#reference-an-output-variable)
+
+#### How can I trigger a pipeline upon the completion of another pipeline?
+
+Currently, there is no direct way to achieve this, but you can use the following methods:
+
+[Pipeline Chaining](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/)
+Shell Script Step: Use a shell script as the last step of a pipeline to call another pipeline via [API](https://apidocs.harness.io/tag/Pipeline-Execution#operation/execute-pipeline).
+
+#### Can a trigger be created for a specific directory in a Git repo?
+
+Triggers are created for a specific repository. You can set up a trigger for a specific repository and then modify the trigger condition to activate only when there is a change in a particular file.
+
+#### How can I see all currently running pipelines from all projects?
+
+You can create a dashboard that includes the following fields: project name, pipeline name, and status (running).
+
+#### Where is the source code for Policy Management?
+
+Harness Policy As Code uses Open Policy Agent [OPA]https://www.openpolicyagent.org/ as the central service to store and enforce policies for the different entities and processes across the Harness platform.
+
+#### How to check YAML of the Overrides?
+
+You can check YAML of the overrides using : 
+1. You can use [API](https://apidocs.harness.io/tag/ServiceOverrides#operation/getServiceOverrides)
+2. Store overrides in [GIT](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/overrides-v2/#manage-overrides-using-git-experience)
 
 ### Infrastructure provisioning FAQs
 
