@@ -17,7 +17,7 @@ Before you can use the IaCM Default Pipelines, ensure that:
 2. The project has IaCM enabled.
 3. The Default Pipelines have been configured or generated for your project. `How is this done`
 
-### Configuring Default Pipelines `Interactive guide`
+### Configuring Default Pipelines
 
 <Tabs>
 <TabItem value="Interactive guide">
@@ -48,7 +48,7 @@ Before you can use the IaCM Default Pipelines, ensure that:
 </Tabs>
 
 
-### Using Default Pipelines in Workspaces `interactive guide`
+### Using Default Pipelines in Workspaces
 
 <Tabs>
 <TabItem value="Interactive guide">
