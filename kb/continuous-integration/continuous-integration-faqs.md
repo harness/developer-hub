@@ -631,6 +631,35 @@ Yes, we need to have one stage running on ARM and another stage running on AMD t
 ### Does Harness CI support AKS 1.28.3 version?
 Yes
 
+### How can we keep a step running throughout the entire execution of a CI stage?
+
+We could run the necessary container as a background step so that the container will be started in detached mode and it will be running until the stage execution gets completed. More details about background step can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/)
+
+### Which endpoint we need to use to connect to a service started using CI background step when executing the build in a Kubernetes cluster?
+
+We can access the service started using background step via ```localhost:<port> ```
+
+### Why few containers within the build pod is showing as terminated while the build is running?
+
+The step containers will be terminated as soon as the corresponding step execution has been completed hence it is expected to see few step containers in terminated status while the build is running
+
+### Why the run step with python shell is failing with the error "TypeError: can only concatenate str (not "NoneType") to str" when adding an output variable in the step?
+
+It could happen when the output variable is configured in the run step but this variable is not configured in the python script used in the run step
+
+### How can we set the value for a variable in python script within a run step so that it can be exported as an output variable?
+
+Below is an example to set a variable within python script. This variable can be configured as an output variable under optional configuration in the run step
+
+```
+import os
+os.environ['var1'] = 'test'
+```
+
+### Why is the file created under /root folder in one run step is not accessible in the subsequent step within the same stage?
+
+By default /harness will be mounted on all the step containers and if we need to make any other folders to be shared across the step containers within a CI stage, it needs to be added as shared path
+
 ## Self-signed certificates
 
 ### Can I mount internal CA certs on the CI build pod?
@@ -1535,6 +1564,10 @@ The build and push step doesn’t use kaniko while running the build on Harness 
 
 Harness currently doesn't provide a hosted artifact repository however you can push the artifact to the other popular artifact repos. More details about the same can be referred in the [doc](https://developer.harness.io/docs/category/uploaddownload-artifacts)
 
+### Why the build and push step is connecting to the docker public endpoint even though the docker connector used in the step is pointing to an internal container registry endpoint?
+
+It could happen when the docker repository in the build and push step is not configured with the FQN. We need to configure the Fully qualified repo name when using private docker registry
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
@@ -1960,6 +1993,14 @@ Since this stage variable accessible to all the steps, currently it is not suppo
 ### How can we upload all the files including the directory when using the upload artifacts to jfrog antifactory step?
 
 You could append the directory name in the target path which should create a folder with the same name in the artifactory and the files will be uploaded inside this directory
+
+### Does the artifact metadata publisher plugin display the content of a file in the artifact tab similar to what we can see in the tests tab?
+
+No, artifact metadata publisher plugin publish the hyperlink of the file/artifact under the artifact tab which can be used to download the file
+
+### Does the artifact metadata publisher plugin validates the file URL configured within the step?
+
+The plugin will publish the URL and makes it available under the artifacts tab without performing the URL validation
 
 ## Workspaces, shared volumes, and shared paths
 
