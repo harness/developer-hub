@@ -218,7 +218,7 @@ For example:
             build_name: <+pipeline.name>
             build_number: <+pipeline.executionId>
             build_url: <+pipeline.executionUrl>
-            docker_image: artifactory.customer.com/base-images/nodejs:20.9.1
+            docker_image: artifactory.customer.com/DOCKER_REPO/IMAGE_NAME:TAG_NAME
 ```
 ### Plugin specification 
 * **connectorRef**: Harness Connector for the container registry where the plugin image is located.
