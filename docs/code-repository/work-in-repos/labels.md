@@ -44,7 +44,7 @@ All values added by users are added to the label definition and become available
 
 # Apply a label to a pull request.
 
-Labels are applied to pull requests when creating or editing a pull request. Any user who has permission to create or review a pull request may add, remove or update labels and values on a pull request. Any change to a label or value will be recorded in the activyt of the pull request.
+Labels are applied to pull requests when creating or editing them. Any user who has permission to create or review a pull request may add, remove, or update labels and values on a pull request. Any change to a label or value will be recorded in the pull request's activity.
 
 For simple labels, start typing and select the desired label.  For labels with several values, find the desired label and choose the appropriate value. Only one value for a specific label can be applied to a pull request.
 
