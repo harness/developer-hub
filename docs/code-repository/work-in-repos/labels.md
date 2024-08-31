@@ -13,7 +13,7 @@ Labels are a way to categorize and filter Pull Requests in Harness Code. Labels 
 
 ## Types of Labels
 
-All labels in Harness Code are customizable and can be created or modified to fit the specific needs of your project or team. Labels may be a simple text value such as `Do not Merge` or include enumerated values like `status: in progress`, `status: completed`, or `status: blocked`. The list of values for a label may be limited to a pre-defined set or users may be allowed to add new values as needed.
+All labels in Harness Code are customizable and can be created or modified to fit the specific needs of your project or team. Labels may be simple text values such as `Do not Merge` or include enumerated values like `status: in progress`, `status: completed`, or `status: blocked`. The list of values for a label may be limited to a pre-defined set, or users may be allowed to add new values as needed.
 
 # Create a label
 
