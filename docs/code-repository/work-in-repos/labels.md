@@ -34,7 +34,7 @@ Ensure that you have create/edit permission for Harness Code at the repository, 
 
 ## Add a value to a label
 
-When creating a label, you can optionally define a list of allowed values that users can select from when applying the label. Each value can have a different color to help visually distinguish them. E.g. Red for `priority: urgent` and green for `priority: low`.
+When creating a label, you can optionally define a list of allowed values that users can select from when applying the label. Each value can be a different color to help visually distinguish it, e.g., red for `priority: urgent` and green for `priority: low`.
 
 ## Allow users to add values
 
