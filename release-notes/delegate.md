@@ -71,13 +71,18 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## August 2024
 
+### Version 24.07.86311, 24.08.83705, 24.08.83802 <!--  August 30, 2024 -->
+
+#### Hotfix
+
+- Removed unnecessary env expansion and added url_encoding to encode special characters from proxy when curl connectivity pre-check is enabled (PL-56623).
+  
 ### Version 24.08.83704 <!--  August 29, 2024 -->
 
 #### Hotfixes
 
 - Ensure kubernetes secrets are typecasted to Java strings internally before log sanitization. Earlier this was causing ClassCastException for some kubernetes manifests (CDS-100389).
 - Updated sensitive log in WinRM deployment to DEBUG level to ensure sensitive data is not leaked (CDS-100046).
-
 
 ### Version 24.07.83609 <!--  August 20, 2024 -->
 
