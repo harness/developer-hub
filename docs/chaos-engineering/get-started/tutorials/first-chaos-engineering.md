@@ -167,17 +167,29 @@ Since the target application has been deployed, you can now create a chaos exper
 
     ![Tune Fault Config](./static/first-chaos/tune-fault-config.png)
 
-20. Navigate to the **Probes** tab. Here, you can either create a probe or select a pre-defined probe. Click **Select or Add new probes**. In this tutorial, you can select a pre-defined probe and add it to your chaos fault.
+20. Navigate to the **Probes** tab. Here, you can either create a probe or select a pre-defined probe. Click **Select or Add new probes**. In this tutorial, you can create a probe. Select **+New Probe** and select **HTTP** and enter the following details in the respective fields:
+
+    ```
+    name: "infy-http-cartservice-probe"
+    probeTimeout: "10s"
+    interval: "5s"
+    retry: 2
+    attempt: 2
+    probePollingInterval: "1s"
+    url: "http://frontend/cart"
+    method: GET
+    Select "Compare Response Code"
+    criteria: "=="
+    responseCode: 200
+    ```
 
     ![Probes Config](./static/first-chaos/probes-config.png)
 
-21. To add a pre-defined probe to your chaos experiment, click the filter button and search for `http-cartservice`. This `cartservice` validates the availability of the `/cart` URL endpoint when you execute the pod delete fault.
+:::tip
+Go to [create a probe](/docs/chaos-engineering/features/resilience-probes/use-probe) to understand the steps in detail.
+:::
 
-    ![Probes Config 2](./static/first-chaos/probes-config-2.png)
-
-    ![Probes Config 3](./static/first-chaos/probes-config-3.png)
-
-22. Click **Add to Fault**.
+21. Click **Add to Fault**.
 
     ![Probes Config 4](./static/first-chaos/probes-config-4.png)
 
@@ -185,29 +197,29 @@ Since the target application has been deployed, you can now create a chaos exper
 Under probe details, you can see that the URL is `http://frontend/cart` and the response timeout is 15 ms. As a part of the probe execution, `GET` requests are made to the specified URL. If no HTTP response is found within 15 ms, the probe status is considered as 'failed'. If all the probe executions pass, then the probe status is considered as 'passed'. You can find other probe details in the properties field.
 :::
 
-23. Select mode as **Continuous**. Click **Apply changes**.
+22. Select mode as **Continuous**. Click **Apply changes**.
 
     ![Probes Config 5](./static/first-chaos/continuous-mode.png)
 
-24. This will close the probes tab, and now, you can click **Apply changes** to apply the configuration to the chaos experiment.
+23. This will close the probes tab, and now, you can click **Apply changes** to apply the configuration to the chaos experiment.
 
     ![Probes Config 6](./static/first-chaos/apply-changes.png)
 
 ### Step 6: Observing chaos execution
 
-25. To execute the chaos experiment, click **Save**, and then **Run**.
+24. To execute the chaos experiment, click **Save**, and then **Run**.
 
     ![Run and save](./static/first-chaos/run-n-save.png)
 
-26. You can see that once you click **Run**, an experiment run is scheduled. You can see the status of every step in the tab.
+25. You can see that once you click **Run**, an experiment run is scheduled. You can see the status of every step in the tab.
 
     ![Exp running](./static/first-chaos/exp-running.png)
 
-27. Select **Recent experiment runs** to view the runs of an experiment. The latest experiment is displayed in the last bar with the status as `RUNNING`.
+26. Select **Recent experiment runs** to view the runs of an experiment. The latest experiment is displayed in the last bar with the status as `RUNNING`.
 
     ![Exp status](./static/first-chaos/exp-status.png)
 
-28. To check the status of the cart deployment pod, execute the command below. The pod delete fault terminates the cart pod and replaces it with a new pod, for which a container is yet to be created.
+27. To check the status of the cart deployment pod, execute the command below. The pod delete fault terminates the cart pod and replaces it with a new pod, for which a container is yet to be created.
 
     ```
     ❯ kubectl get pods -n hce
@@ -234,21 +246,21 @@ Under probe details, you can see that the URL is `http://frontend/cart` and the 
     workflow-controller-6d5d75dc7c-v9vqc           1/1     Running   0              5h41m
     ```
 
-29. As a consequence, if you try to access the frontend cart page, you will encounter the following error which indicates that the application is now unreachable.
+28. As a consequence, if you try to access the frontend cart page, you will encounter the following error which indicates that the application is now unreachable.
 
     ![Webpage Unavailable](./static/first-chaos/webpage-unavailable.png)
 
-30. You can validate this behavior using the application metrics dashboard too. The probe success percentage for website availability (200 response code) decreases steeply along with the 99th percentile (green line) queries per second (QPS) and access duration for the application microservices. Also, the mean QPS (yellow line) steeply increases. This is because no pod is available at the moment to service the query requests.
+29. You can validate this behavior using the application metrics dashboard too. The probe success percentage for website availability (200 response code) decreases steeply along with the 99th percentile (green line) queries per second (QPS) and access duration for the application microservices. Also, the mean QPS (yellow line) steeply increases. This is because no pod is available at the moment to service the query requests.
 
     ![Application Down Dashboard](./static/first-chaos/application-down-dashboard.png)
 
 ### Step 7: Evaluate the experiment run
 
-31. When the experiment execution concludes, you get a resilience score of 0 %. You will observe that the pod delete fault step failed. Before analyzing the experiment result, you can validate that the application is now again accessible, without any errors. You can validate this from the Grafana dashboard metrics that indicate the app returning to normal as the chaos duration is over.
+30. When the experiment execution concludes, you get a resilience score of 0 %. You will observe that the pod delete fault step failed. Before analyzing the experiment result, you can validate that the application is now again accessible, without any errors. You can validate this from the Grafana dashboard metrics that indicate the app returning to normal as the chaos duration is over.
 
     ![App Metrics Normalizing](./static/first-chaos/app-metrics-normalizing.png)
 
-32. You can check the chaos result that shows the pod delete as **Failed**. This is because the 'http-cart-service' probe failed. The failure is due to the unavailability of the cart pod and therefore the `/cart` endpoint, due to injecting the "pod delete" fault.
+31. You can check the chaos result that shows the pod delete as **Failed**. This is because the 'http-cart-service' probe failed. The failure is due to the unavailability of the cart pod and therefore the `/cart` endpoint, due to injecting the "pod delete" fault.
 
     ![Experiment Failed Probe](./static/first-chaos/pod-delete-fail.png)
 
