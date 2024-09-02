@@ -39,11 +39,11 @@ To generate a new token, do the following:
 
    The new token is created and its value is copied to your system clipboard. The new token also appears in the list using the name you gave it.
 
-2. Save the new token value. You cannot retrieve the token value after this.
+4. Save the new token value. You cannot retrieve the token value after this.
 
    Now you can update the delegate(s) with the new token.
 
-3. In **Delegate Tokens**, select the new token.
+5. In **Delegate Tokens**, select the new token.
 
 ### Generate a token without creating a delegate
 
@@ -151,7 +151,7 @@ To revoke tokens, do the following:
 
 2. Select **Revoke**. The token is revoked. The Harness Manager will not accept connections from any delegates using this revoked token.
 
-3. Once the delegate token is revoked, and it is expired the delegate token will not be showing up in the delegate token list.
+3. Once revoked and expired, the delegate token will no longer appear in the delegate token list.
 
 ## Option: Rotate tokens
 
