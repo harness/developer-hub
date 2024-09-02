@@ -220,7 +220,7 @@ This feature is currently behind the feature flag, `CI_GIT_CLONE_ENHANCED`. Cont
 
 - Upgraded the `yq` base image version 4.44.2 to address a Go CVE. (PL-55549)
 
-- Added support for a custom authentication path in the HashiCorp Vault integration for AppRole authentication. Users can now specify a custom path if needed, enhancing flexibility in meeting security requirements. (PL-51859)
+- Added support for a custom authentication path in the HashiCorp Vault integration for AppRole authentication. Users can now specify a custom path if needed, enhancing flexibility in meeting security requirements. Currently, this feature is behind the feature flag `PL_APPROLE_CUSTOM_PATH` and requires Harness Delegate version >= 24.07.836xx. Contact [Harness Support](mailto:support@harness.io) to enable the feature and for information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).(PL-51859)
 
 - Upgraded PostgreSQL from version `14.9.0-debian-11-r60` to `14.11.0-debian-11-r17` to address multiple high-severity CVEs. (PL-51820)
 
