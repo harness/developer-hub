@@ -238,7 +238,11 @@ This feature is currently behind the feature flag, `CI_GIT_CLONE_ENHANCED`. Cont
 
 #### Cloud Cost Management
 
-- Jira Operations for On-Premise Jira: We have added support for Jira operations corresponding to CCM recommendations for on-prem Jira installations, ensuring smoother integration and functionality. (CCM-18315)
+- Jira Operations for On-Premise Jira: We have added support for Jira operations corresponding to CCM recommendations for on-prem Jira installations, ensuring smoother integration and functionality. [CCM-18315]
+
+- Azure Data Sync Frequency Update: The Azure data sync frequency has been changed from 1 day to 1 hour. This enhancement will allow data to flow faster for Azure customers, reducing wait times and improving data availability [CCM-18014]
+
+- Changes to K8s delegate YAML: We have modified the default K8s delegate YAML, in the [Quick Create flow](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes/) for creating Kubernetes connector. This ensures that new configurations are utilised for creation of delegate. [CCM-18577]
 
 #### Continuous Delivery
 
