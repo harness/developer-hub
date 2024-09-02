@@ -16,7 +16,11 @@ Here is an in-depth explanation of the Overview page and the information it disp
   - **Total Active Enforcements** — The total number of active enforcements created to date.
   - **Total Savings** —  The total cost savings achieved from day one to date.
   - **Savings in Timeframe** — The total cost savings achieved in the timeframe selected.
-  - **Evaluations in Timeframe** — The total number of evaluations in the timeframe selected.
+  - **Evaluations in Timeframe** — Harness supports multiple statuses for Evaluations. The overview page now displays a detailed breakdown of evaluation counts by status.
+        - Total Evaluations: The total number of evaluations in the timeframe selected. 
+        - Success Evaluations: Total number of evaluations with status as "Successful".
+        - Failure Evaluations: Total number of evaluations with status as "Failure".
+        - Partial Success Evaluations: Total number of evaluations with status as "Partial Success".
   - **Savings Breakdown** — A granular graph that shows savings breakdown across different cloud providers and resources. You can see savings broken down by:
     - **Cloud Provider**:  This shows total cost savings for each cloud provider.
     - **Resource Type**: This shows total cost savings by resource type .
@@ -46,16 +50,16 @@ You can see a list of all recommendations offered by Harness for each Cloud prov
 
 ### Custom Recommendations
 
-Harness CCM's Cloud Asset Governance provides recommendations out of the box for management of cloud resources. Now, recommendations come with customization according to different needs of the users. 
+Harness CCM's Cloud Asset Governance provides recommendations out of the box for management of cloud resources. Harness CCM now offers the ability to customize these recommendations.
 
-Custom recommendations allow customers to create personalized policies that  integrate with the existing CCM recommendation engine.
+Custom recommendations allow users to create personalized policies that integrate with the existing CCM recommendation engine.
 These custom recommendations not only show up in the recommendation section but also leverage features like the Ignore list, state management, and ticketing integration.
   <DocImage path={require('./static/create-custom.png')} width="120%" height="120%" title="Click to view full size image" />
   <DocImage path={require('./static/custom-tab.png')} width="120%" height="120%" title="Click to view full size image" />
-
   
 :::note
-Currently, per account, a maximum of 10 custom recommendations can be created.
+- Currently, per account, a maximum of 10 custom recommendations can be created.
+- Custom Recommendations can only be created for the resources supported by the cost correlation API as listed below.
 :::
 
 ## Cost Correlation
