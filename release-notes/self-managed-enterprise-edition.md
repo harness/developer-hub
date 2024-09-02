@@ -344,6 +344,10 @@ This feature is currently behind the feature flag, `CI_GIT_CLONE_ENHANCED`. Cont
 
 - Harness has improved the sorting functionality for the User Group List API. Previously, sorting was based exclusively on the `lastModifiedAt` timestamp, managed by Spring, with millisecond precision. This approach assumed that no two entities would share the same `lastModifiedAt` timestamp. Harness has introduced a secondary sort field to act as a tiebreaker. This adjustment ensures a consistent and reliable order across queries, improving the overall stability and accuracy of paginated results. (PL-48886, ZD-61135)
 
+#### Software Supply Chain Assurance
+
+- The SLSA Provenance was not being generated when the "Build and Push" step was either added as a parallel step or placed within a step group in a pipeline. This issue has now been resolved (SSCA-2265).
+
 ## August 21, 2024, patch version 0.19.2
 
 This release includes the following Harness module and component versions.
