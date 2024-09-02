@@ -202,7 +202,7 @@ This feature is currently behind the feature flag, `CI_GIT_CLONE_ENHANCED`. Cont
 
 - Converts the default health check probes to `type:inline` from `type:source` for Kubernetes infrastructure to improve the execution speed of chaos experiments. (CHAOS-4348)
 
-#### CODE
+#### Code Repository
 
 - Added handlers for more error status code scenarios. (CODE-2113)	
 
