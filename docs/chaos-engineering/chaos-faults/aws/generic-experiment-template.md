@@ -1,12 +1,11 @@
 ---
 id: generic-experiment-template
-title: Generic experiment template
+title: Generic FIS experiment template
 ---
 
-Generic experiment template provides a template to natively inject faults using FIS for different services, such as EC2, EBS, DynamoDB, and so on.
-- You need to create an FIS template and store it.
-- Provide parameters to the pre-created FIS templates and execute experiments.
-- You can specify the template ID and region on Harness to execute the experiments using these FIS templates.
+Generic FIS experiment template provides a template to natively inject faults using FIS for different services, such as EC2, EBS, DynamoDB, and so on.
+- You need to configure and prepare an FIS template.
+- You can specify the template ID, region, and parameters to the pre-created FIS templates on HCE and execute the chaos experiments using these FIS templates.
 - You can monitor and report the results of executing the experiment from these FIS templates.
 
 ![Generic experiment template](./static/images/generic-experiment-template.png)
@@ -14,7 +13,7 @@ Generic experiment template provides a template to natively inject faults using 
 ## Use cases
 - Inject faults natively using FIS services.
 - Monitor and report the results of executing the experiment from the FIS templates.
-- Build chaos experiments with pre-defined templates or build experiments from scratch using FIS service.
+- Build chaos experiments with pre-defined templates.
 
 ### Prerequisites
 - Kubernetes >= 1.17
@@ -113,6 +112,11 @@ Below is an example AWS policy to execute the fault.
       <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
     </tr>
     <tr>
+      <td> PARAMETERS </td>
+      <td> Parameters used in the FIS template. </td>
+      <td> </td>
+      </tr>
+    <tr>
       <td> AWS_SHARED_CREDENTIALS_FILE </td>
       <td> Path to the AWS secret credentials. </td>
       <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
@@ -121,7 +125,7 @@ Below is an example AWS policy to execute the fault.
 
 ### Experiment template ID
 
-The template ID that is used to inject chaos. Select the template, fill in the values and reference its ID in the tunables. Tune it using the `EXPERIMENT_TEMPLATE_ID` environment variable.
+The template ID that is used to inject chaos. Select the template, fill in the values and reference the template ID in the tunables. Tune it using the `EXPERIMENT_TEMPLATE_ID` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -138,18 +142,8 @@ spec:
       spec:
         components:
           env:
-            - name: TOTAL_CHAOS_DURATION
-              value: "60"
-            - name: CHAOS_INTERVAL
-              value: "60"
-            - name: REGION
-              value: ""
             - name: EXPERIMENT_TEMPLATE_ID
               value: ''
-            - name: RAMP_TIME
-              value: ""
-            - name: AWS_SHARED_CREDENTIALS_FILE
-              value: /tmp/cloud_config.yml
           secrets:
             - name: cloud-secret
               mountPath: /tmp/
