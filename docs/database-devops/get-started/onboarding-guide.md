@@ -37,7 +37,7 @@ Before beginning the walkthroughs in this guide, ensure you have:
     - [plugins/download-artifactory:latest](https://hub.docker.com/r/plugins/download-artifactory)
 
 :::warning
-When using DB DevOps, it is essential that you ensure that the `CDS_CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE` Feature Flag is enabled to avoid any impact to your Database DevOps environments. To enable the feature flag, please contact [Harness Support](support@harness.io).
+When using DB DevOps, it is essential that you ensure that the `CDS_CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE` Feature Flag is enabled to avoid any impact to your Database DevOps environments. To enable the feature flag, please contact [Harness Support](mailto:support@harness.io).
 :::
  
 ## Create a Liquibase changelog
