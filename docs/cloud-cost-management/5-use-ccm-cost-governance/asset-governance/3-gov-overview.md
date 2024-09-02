@@ -35,11 +35,6 @@ Here is an in-depth explanation of the Overview page and the information it disp
     - Option to **view details** about the recommendation like which Account (in case of Azure, AWS)/ Project (in case of GCP), resource (AWS, Azure) the recommendation was applied to, the enforcements, etc.
     - **Custom Recommendations**: All Custom Recommendations show up with a "Custom" badge after successful creation.
 
-:::important note
-- Number of targets considered for Recommendations: Top 15
-- Number of regions considered for Recommendations: Top 5 in case of AWS
-:::
-
 To apply a recommendation, select the row. The recommendation opens on the **Recommendations** page. To learn how to enforce this recommendation, go to [Governance recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/governance).
 
 You can see a list of all recommendations offered by Harness for each Cloud provider here:
