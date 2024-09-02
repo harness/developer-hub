@@ -1,7 +1,6 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 const { themes } = require('prism-react-renderer');
-const darkCodeTheme = themes.dracula;
 const path = require('path');
 
 const BASE_URL = process.env.BASE_URL || '/';
@@ -434,8 +433,9 @@ async function config() {
           copyright: `Copyright © ${new Date().getFullYear()} Harness Inc.`,
         },
         prism: {
-          theme: darkCodeTheme, // lightCodeTheme,
-          darkTheme: darkCodeTheme,
+          theme: themes.github,
+          darkTheme: themes.vsDark,
+          additionalLanguages: ["yaml", "json", "bash", "python", "git"]
         },
         colorMode: {
           defaultMode: 'light',
