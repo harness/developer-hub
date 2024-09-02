@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-09-04T10:00
+date: 2024-09-03T10:00
 sidebar_position: 16
 ---
 
@@ -123,7 +123,7 @@ Upon providing your credentials and the release version, the script will proceed
 
 :::
 
-## September 3, 2024, version 0.20.0
+## September 2, 2024, version 0.20.0
 
 This release includes the following Harness module and component versions.
 
@@ -343,6 +343,8 @@ This feature is currently behind the feature flag, `CI_GIT_CLONE_ENHANCED`. Cont
 - The **Cancel** button was not working while creating a connector via YAML. Updated the behavior of the Connectors page YAML editor to match that of other pages. The **Discard** button on the YAML editor page now exits back to the previous page. (PL-42928)
 
 - Harness has improved the sorting functionality for the User Group List API. Previously, sorting was based exclusively on the `lastModifiedAt` timestamp, managed by Spring, with millisecond precision. This approach assumed that no two entities would share the same `lastModifiedAt` timestamp. Harness has introduced a secondary sort field to act as a tiebreaker. This adjustment ensures a consistent and reliable order across queries, improving the overall stability and accuracy of paginated results. (PL-48886, ZD-61135)
+
+- Removed unnecessary env expansion and added url_encoding to encode special characters from proxy when curl connectivity pre-check is enabled. This item requires Harness Delegate version `24.07.83611` or `24.08.83705`. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56623)
 
 #### Software Supply Chain Assurance
 
