@@ -167,16 +167,15 @@ Since the target application has been deployed, you can now create a chaos exper
 
     ![Tune Fault Config](./static/first-chaos/tune-fault-config.png)
 
-20. Navigate to the **Probes** tab. Here, you can either create a probe or select a pre-defined probe. Click **Select or Add new probes**. In this tutorial, you can create a probe. Select **+New Probe** and select **HTTP** and enter the following details in the respective fields:
+20. Navigate to the **Probes** tab. Here, you can either create a probe or select a pre-defined probe. Click **Select or Add new probes**. In this tutorial, you can create a probe. Select **+New Probe**, select **HTTP** and enter the following details in the respective fields:
 
     ```
-    name: "infy-http-cartservice-probe"
+    name: "http-cartservice"
     probeTimeout: "10s"
     interval: "5s"
-    retry: 2
     attempt: 2
     probePollingInterval: "1s"
-    url: "http://frontend/cart"
+    url: "http://service-of-the-user.namespace.svc.cluster-domain.example"
     method: GET
     Select "Compare Response Code"
     criteria: "=="
@@ -186,10 +185,12 @@ Since the target application has been deployed, you can now create a chaos exper
     ![Probes Config](./static/first-chaos/probes-config.png)
 
 :::tip
-Go to [create a probe](/docs/chaos-engineering/features/resilience-probes/use-probe) to understand the steps in detail.
+- You can given any name and ensure you use the same when referencing or using the probe in other places.
+- You can provide your own URL in the `url` field. The format is provided in the above example. For example, if your application targets the "cart-service", your `url` would be `http://cartservice.hce.svc.cluster.local/cart`.
+- Go to [create a probe](/docs/chaos-engineering/features/resilience-probes/use-probe) to understand the steps in detail.
 :::
 
-21. Click **Add to Fault**.
+21. Once you create the probe, it will be listed in the probe listing section on the left side of the page, as shown below. Select the probe to view the probe details. Click **Add to Fault**.
 
     ![Probes Config 4](./static/first-chaos/probes-config-4.png)
 
