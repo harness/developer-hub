@@ -202,10 +202,6 @@ This feature is currently behind the feature flag, `CI_GIT_CLONE_ENHANCED`. Cont
 
 - Added handlers for more error status code scenarios. (CODE-2113)	
 
-#### Continuous Delivery
-
-- We’ve introduced support for tag-based RBAC for GitOps Applications. Now, you can include GitOps Applications in Resource Groups based on the tags assigned to them. This allows you to easily add or remove Applications from Resource Groups by simply updating the tags, making access control more dynamic and flexible. This feature is currently behind the feature flag, `CDS_GITOPS_LABELS_BASED_ACCESS_TO_APPS`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-97914)
-
 #### Harness Platform
 
 - Improved delegate cache to reduce cache misses and optimize performance. This update ensures more reliable and efficient caching, addressing issues identified in recent incidents. (PL-55626)
@@ -235,10 +231,6 @@ This feature is currently behind the feature flag, `CI_GIT_CLONE_ENHANCED`. Cont
 #### Chaos Engineering
 
 - Fixed an issue where an experiment in the `Error` state would not finish, and be in a state of infinite run timestamp. (CHAOS-5577)
-
-#### Continuous Delivery
-
-- We have resolved an issue where GitOps Applications were inconsistently appearing and disappearing in Harness projects. This was caused by mapping a single ArgoCD instance to multiple Harness organizations and projects. The issue has been fixed, ensuring that GitOps Applications now display correctly and consistently in your projects. (CDS-96409, ZD-62852)
 
 #### Continuous Integration
 
