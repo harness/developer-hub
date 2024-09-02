@@ -1,8 +1,8 @@
 ---
-title: IaC scans with Wiz
-description: Scan Infrastructure as Code repositories with Wiz. Orchestration and Ingestion modes supported.
-sidebar_label: Wiz IaC scanning
-sidebar_position: 30
+title: Checkov IaC scanning
+description: Scan Infrastructure as Code repositories with Checkov. Orchestration and Ingestion modes supported.
+sidebar_label: Checkov IaC scanning
+sidebar_position: 105
 ---
 
 import Tabs from '@theme/Tabs';
@@ -16,9 +16,9 @@ import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-cat
 <br/>
 <br/>
 
-You can easily set up a Wiz step to run automated scans in your Harness pipeline. This step scans the IaC repository you specify using the Wiz CLI. Then it correlates, deduplicates, and ingests the scan results into Harness. You can see your scan results in the [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results) tab of the pipeline execution.  
+You can easily set up a Checkov step to run automated scans in your Harness pipeline. This step scans the IaC repository you specify using the Checkov CLI. Then it correlates, deduplicates, and ingests the scan results into Harness. You can see your scan results in the [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results) tab of the pipeline execution.  
 
-## Important notes for running Wiz scans in STO 
+## Important notes for running Checkov scans in STO 
 
 <!--  If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. -->
 
@@ -42,30 +42,25 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
     - You can run STO scans in [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), which requires no setup. You can also use a [Kubernetes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
 
 	
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` to authenticate with the Wiz CLI 
+	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` to authenticate with the Checkov CLI 
 
 <br/>
 
-   #### Add the Wiz scanner
+   #### Add the Checkov scanner
 
 	Do the following:
 
 	1. Add a Security, Build, or Infrastructure stage to your pipeline.
-	2. Add a Wiz step to the stage.
+	2. Add a Checkov step to the stage.
 
 <br/>
 
-   #### Set up the Wiz scanner
+   #### Set up the Checkov step
 	
    ##### Required settings
 
 		1. [Scan mode](#scan-mode) = **Orchestration**
-		2. [Scan configuration](#scan-configuration) = **Wiz IaC**
-      3. [Target type](#type) = **Repository**
-		4. [Target and Variant Detection](#detect-target-and-variant) = **Auto**
-		5. Authentication:
-			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` to authenticate with the Wiz CLI.
-			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` to authenticate with the Wiz CLI.
+		2. [Target and Variant Detection](#detect-target-and-variant) = **Auto**
 	
    ##### Optional settings
 
@@ -82,7 +77,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 :::note
 
-Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends publishing to JSON because this format includes more detailed information.
+Harness STO can ingest both JSON and SARIF data from Checkov, but Harness recommends publishing to JSON because this format includes more detailed information.
 
 :::
 
@@ -95,25 +90,23 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
    There are two primary workflows to do this:
 
-   - Add a Run step that runs a Wiz scan from the command line and then copies the results to the shared path.
-   - Copy results from a Wiz scan that ran outside the pipeline. 
+   - Add a Run step that runs a Checkov scan from the command line and then copies the results to the shared path.
+   - Copy results from a Checkov scan that ran outside the pipeline. 
 
      For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline).
 
 
 
-   #### Set up the Wiz scanner
+   #### Set up the Checkov scanner
 
-   Add a Wiz step to the stage and set it up as follows.
+   Add a Checkov step to the stage and set it up as follows.
 	
    ##### Required settings
 
 	1. [Scan mode](#scan-mode) = **Ingestion**
-   2. [Scan configuration](#scan-configuration) = **Wiz IaC**
-	3. [Target type](#type) = **Repository**
-	4. [Target name](#name) — Usually the repo name
-	5. [Target variant](#name) — Usually the scanned branch. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the branch at runtime.
-	6. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-iac-scan.json`
+	2. [Target name](#name) — Usually the repo name
+	3. [Target variant](#name) — Usually the scanned branch. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the branch at runtime.
+	6. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/checkov-iac-scan.json`
 
 
    ##### Optional settings
@@ -125,15 +118,15 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
 <!-- --------------------------------------------------------------------->
 
-## Wiz step settings reference
+## Checkov step settings reference
 
 
 ### Scan
 
 #### Scan Mode
 
-import StoSettingScanModeOrch from '../shared/step_palette/scan/mode/_orchestration.md';
-import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeOrch from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeIngest from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/scan/mode/_ingestion.md';
 
 <!-- For container images: -->
 
@@ -146,27 +139,20 @@ For code repositories:
 
 -->
 
-
-<a name="scan-config"></a>
-
-#### Scan Configuration
-
-Select **Wiz IaC**.
-
 ### Target
 
 
 #### Type
 
-import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md';
+import StoSettingScanTypeRepo from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
 
 
 #### Target and Variant Detection 
 
-import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/target/auto-detect/_note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectNote/>
@@ -182,14 +168,14 @@ It is good practice to [specify a baseline](/docs/security-testing-orchestration
 
 #### Variant
 
-import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
 
 #### Workspace
 
-import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
 
@@ -197,7 +183,7 @@ import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.
 ### Ingestion File
 
 
-The path to your scan results when running an [Ingestion scan](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline), for example `/shared/scan_results/wiz.latest.json`.  
+The path to your scan results when running an [Ingestion scan](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline), for example `/shared/scan_results/checkov.sarif`.  
 
 - The data file must be in a [supported format](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#supported-ingestion-formats) for the scanner.
 
@@ -211,30 +197,16 @@ The path to your scan results when running an [Ingestion scan](/docs/security-te
   ``` 
 
 
-### Authentication
-
-#### Access ID
-
-This is your `client-id` to authenticate with the Wiz CLI.
-
-#### Access Token
-
-This is your `client-secret` to authenticate with the Wiz CLI.
-
-You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("my-access-token")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
-
-
-
 ### Log Level
 
-import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
 ### Additional CLI flags
 
-import StoSettingCliFlags from '../shared/step_palette/all/_cli-flags.md';
+import StoSettingCliFlags from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags.md';
 
 <StoSettingCliFlags />
 
@@ -246,7 +218,7 @@ Passing CLI flags is an advanced feature. Some flags might not work in the conte
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
@@ -256,13 +228,13 @@ You can add more settings to the scan step as needed.
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from '/docs/security-testing-orchestration/sto-techref-category/shared/_additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from '/docs/security-testing-orchestration/sto-techref-category/shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
