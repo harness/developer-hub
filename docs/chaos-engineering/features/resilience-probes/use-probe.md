@@ -39,7 +39,7 @@ Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. 
 
   ![select](./static/use-probe/select-3.png)
 
-* Based on the probe type you choose, the fields will vary. You can find details about every probe in their respective documentation. After you enter the details, click **Configure properties**.
+* Based on the probe type you choose, the fields will vary. You can find details about every probe in their respective documentation ([Command](/docs/chaos-engineering/features/resilience-probes/cmd-probe), [Datadog](/docs/chaos-engineering/features/resilience-probes/datadog-probe), [Dynatrace](/docs/chaos-engineering/features/resilience-probes/dynatrace-probe), [HTTP](/docs/chaos-engineering/features/resilience-probes/http-probe), [Kubernetes](/docs/chaos-engineering/features/resilience-probes/k8s-probe), [Prometheus](/docs/chaos-engineering/features/resilience-probes/prom-probe), and [SLO](/docs/chaos-engineering/features/resilience-probes/slo-probe)). After you enter the details, click **Configure properties**.
 
   ![details](./static/use-probe/details-4.png)
 
