@@ -10,7 +10,7 @@ The **Overview** page offers a consolidated summary of your organization's gover
 ## Asset Governance Overview 
 Here is an in-depth explanation of the Overview page and the information it displays for the users:
 
-  <DocImage path={require('./static/AG5.png')} width="120%" height="120%" title="Click to view full size image" />
+  <DocImage path={require('./static/AG6.png')} width="120%" height="120%" title="Click to view full size image" />
 
   - **Total Evaluations** — The total number of evaluations performed to date.
   - **Total Active Enforcements** — The total number of active enforcements created to date.
@@ -29,6 +29,7 @@ Here is an in-depth explanation of the Overview page and the information it disp
     - **Resource Count**: Number of resources to which the recommendation will be applied.
     - **Ignored list tag** if the recommendation is added to the "Ignored list".
     - Option to **view details** about the recommendation like which Account (in case of Azure, AWS)/ Project (in case of GCP), resource (AWS, Azure) the recommendation was applied to, the enforcements, etc.
+    - **Custom Recommendations**: All Custom Recommendations show up with a "Custom" badge after successful creation.
 
 :::important note
 - Number of targets considered for Recommendations: Top 15
@@ -42,6 +43,20 @@ You can see a list of all recommendations offered by Harness for each Cloud prov
 - [Asset Governance recommendations for AWS](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/AWS/AWS-recommendations)
 - [Asset Governance recommendations for Azure](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/Azure/azure-recommendations)
 - [Asset Governance recommendations for GCP](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/GCP/gcp-recommendations)
+
+### Custom Recommendations
+
+Harness CCM's Cloud Asset Governance provides recommendations out of the box for management of cloud resources. Now, recommendations come with customization according to different needs of the users. 
+
+Custom recommendations allow customers to create personalized policies that  integrate with the existing CCM recommendation engine.
+These custom recommendations not only show up in the recommendation section but also leverage features like the Ignore list, state management, and ticketing integration.
+  <DocImage path={require('./static/create-custom.png')} width="120%" height="120%" title="Click to view full size image" />
+  <DocImage path={require('./static/custom-tab.png')} width="120%" height="120%" title="Click to view full size image" />
+
+  
+:::note
+Currently, per account, a maximum of 10 custom recommendations can be created.
+:::
 
 ## Cost Correlation
 
