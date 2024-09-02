@@ -10,7 +10,7 @@ The **Overview** page offers a consolidated summary of your organization's gover
 ## Asset Governance Overview 
 Here is an in-depth explanation of the Overview page and the information it displays for the users:
 
-  <DocImage path={require('./static/AG6.png')} width="120%" height="120%" title="Click to view full size image" />
+  <DocImage path={require('./static/AG7.png')} width="120%" height="120%" title="Click to view full size image" />
 
   - **Total Evaluations** — The total number of evaluations performed to date.
   - **Total Active Enforcements** — The total number of active enforcements created to date.
@@ -33,7 +33,7 @@ Here is an in-depth explanation of the Overview page and the information it disp
     - **Resource Count**: Number of resources to which the recommendation will be applied.
     - **Ignored list tag** if the recommendation is added to the "Ignored list".
     - Option to **view details** about the recommendation like which Account (in case of Azure, AWS)/ Project (in case of GCP), resource (AWS, Azure) the recommendation was applied to, the enforcements, etc.
-    - **Custom Recommendations**: All Custom Recommendations show up with a "Custom" badge after successful creation.
+    - **Custom Recommendations**: All Custom Recommendations show up with a "Custom" badge after successful creation. 
 
 To apply a recommendation, select the row. The recommendation opens on the **Recommendations** page. To learn how to enforce this recommendation, go to [Governance recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/governance).
 
@@ -54,7 +54,7 @@ These custom recommendations not only show up in the recommendation section but 
   
 :::note
 - Currently, per account, a maximum of 10 custom recommendations can be created.
-- Custom Recommendations can only be created for the resources supported by the cost correlation API as listed below.
+- Custom Recommendations can only be created for the resources supported for cost correlation as listed below. In addition to that, multi-policy rules cannot be converted into Custom Recommendations.
 :::
 
 ## Cost Correlation
