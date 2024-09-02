@@ -89,13 +89,11 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- Added an index to the AuditEvents collection to optimize query performance, reduce CPU usage, and improve overall system efficiency. (PL-55486)
+- Added an index for Audit Logs to improve query performance and reduce CPU usage (PL-55486)
 
 - Fixed an issue where users without account-level access could still use account-level delegates when creating connectors at the org or project level. The delegate listing now respects RBAC permissions at each scope, ensuring proper access control. This item requires Harness Delegate version 24.08.83800. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55748, ZD-67385)
 
-- Reverted the legacy delegate to the previous version (1.0.83404) after identifying an issue with non-root users. The default working directory for shell script delegates has been reset to the current directory, ensuring compatibility. This item requires Harness Delegate version 24.08.83800. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55792)
-
-- Fixed an issue where adding a new tag using the mouse click in the Tags input box wasn't working. Users can now create tags using both mouse clicks and the ENTER key. (PL-56098)
+- Fixed an issue where adding a new tag using the mouse click in the Tags input box on Default Settings Page wasn't working. Users can now create tags using both mouse clicks and the ENTER key. (PL-56098)
 
 - Updated the delegate expiration logic to align with the 6-month support and 2-month upgrade policy. This ensures that delegates maintain compatibility and support within the specified time frame. This item requires Harness Delegate version 24.08.83800. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56193, ZD-68597, ZD-69188, ZD-69266)
 
