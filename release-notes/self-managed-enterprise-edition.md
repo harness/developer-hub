@@ -162,6 +162,10 @@ gsutil -m cp \
 
 ### Early access features
 
+#### Continuous Delivery
+
+- When deploying to Amazon's EKS, a new option to manually configure the connection to the cluster is available. Previously, you could only connect through an AWS Connector. Now, you can provide the cluster endpoint and optionally provide a CA cert. This feature is behind the feature flag `CDS_AWS_EKS_CLUSTER_MANUAL_CONFIGURATION`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-91561)
+
 #### Continuous Integration
 
 This release introduces several highly requested features and improvements to enhance the Git clone operations within Harness, in both the Git Clone step and the native Clone Codebase functionality. With this release, we’re adding support for:
@@ -231,6 +235,56 @@ This feature is currently behind the feature flag, `CI_GIT_CLONE_ENHANCED`. Cont
 #### Chaos Engineering
 
 - Fixed an issue where an experiment in the `Error` state would not finish, and be in a state of infinite run timestamp. (CHAOS-5577)
+
+#### Continuous Delivery
+
+-  When the Git provider was set to Harness Code, additional unnecessary list-repos and list-branches API calls were made, even when the default connector was already configured in the settings. The issue is fixed now. (PIPE-20665)
+
+- The Output tab failed to display correct details when viewing retry steps with the console view toggle enabled. This was due to the incorrect step ID being passed for retry steps. The issue is fixed now. (PIPE-20648, ZD-67024)
+
+- While connecting to the Git sync service, a connection error was being thrown. This issue is fixed by increasing the retry policy from 1 to 3. (PIPE-20589, ZD-67247,67488)
+
+- The input set search feature did not return correct results when searching from pages other than the first page. For example, when searching for an input set from page 3 or 4, no results were displayed, even if matching input sets existed. The issue is fixed now to ensures that the search operation covers all input sets, providing accurate results regardless of the page the user is on. (PIPE-20209)
+
+- In a few cases, skipped stages/steps in Pipeline executions were being displayed in blue instead of grey. The issue is fixed now. (PIPE-20138, ZD-65966)
+
+- Stage/Step popover was hidden behind the Navigation UI. The issue is fixed now. (PIPE-20028, ZD-65628)
+
+- The pipeline clone API was failing when attempting to clone a pipeline from the default branch to a non-default branch within the same repository. This failure occurred because the API incorrectly tried to locate the existing pipeline in the non-default branch instead of the default branch. The issue is fixed now. (PIPE-19847)
+
+- In certain cases, the execution order and failure handling in pipelines were inconsistent. For example, if the last stage in a failed, the deployment continued instead of stopping. Additionally, steps within a step group sometimes executed even if previous steps had failed, causing confusion about the conditional execution logic and maximum concurrent executions not being honored. The issue is fixed now and StepGroup combinations will now be marked as skipped if one of the steps in the StepGroup fails and rollback happens during Pipeline Execution. (PIPE-19763, ZD-65041)
+
+- When we rerun a pipeline with multi-env deployment stages or stages in a Matrix, the rerun would skip over the stages that were skipped the last time, without re-evaluating the Execution Condition. This is fixed now; the Executional Condition is re-evaluated for previously skipped stages in Matrix during re-run, and if the condition is now true, they are executed. Note, this is only in the case where the execution failed midway within a Matrix or Multi-Env deployment in the pipeline, and we need to rerun the pipeline from that Matrix. (PIPE-19746, ZD-64970)
+
+- The deployment status API returns outdated or invalid information. This issue is fixed and we've added a new Deployment Status API, which honours permissions, and returns a correct 200 response with a QUEUED status, for Triggers which are in queued state. This will replace the existing API which behaved incorrectly in some situations, and will be deprecated. (PIPE-19306, ZD-62849)
+
+- There was an issue with the EKS cluster field (initialValues) when using manual configuration. The issue is fixed now. (CDS-99535)
+
+- The pipeline deployed using the rolling deployment were encountering a `NotificationTargetARN` error. This issue is resolved now with support for adding lifecycle hooks with different notificationARNs and roles during the time of creation of ASG. (CDS-99460, ZD-67371)
+
+- When renaming a file by adding an extension to the file name in the Harness File Store, the file's content was previously deleted. This issue has been fixed to ensure that file content is maintained when updating file metadata in the File Store. (CDS-99202, ZD-66962)
+
+- Users were unable to delete services that had been soft deleted from the service dashboard page. This issue has been resolved by adding functionality to support the deletion of these services. (CDS-99344, ZD-67225)
+
+- The K8s manifest connector runtime field was not visible in the run pipeline form. This issue has been resolved, and the runtime field is now visible in both the run pipeline form and the input set form. (CDS-99171, ZD-66902)
+
+- Creating a NewRelic health source for a monitored service does not provide a method to select the correct application ID. This issue is fixed now and system collects and shows all the Application Ids from NewRelic.(CDS-98867, ZD-66434)
+
+- Using an expression in the auto-approval for the approval step threw an error. This issue is fixed.(CDS-98842, ZD-66329)
+
+- When you scroll to the bottom of the Pipeline Page and click on the last pipeline on the page, if your default view is YAML, the YAML in the Pipeline Studio was previously opening in a scrollable view. This issue has now been fixed. (CDS-98674, ZD-65768,66530)
+
+- Scrolling was not working when the cursor was inside the script step. The issue is fixed now. (CDS-98607)
+
+- Previously, when trying to edit an existing Values YAML Manifest in the overrides section, users had to click a pencil icon on the far right. After clicking this pencil icon, another pencil icon, which was mostly hidden, appeared on top of the LOCATION section. This caused confusion as users were not seeing the second pencil icon. This issue has now been fixed. (CDS-98565, ZD-65892)
+
+- The Verify step was not appearing in Continuous Deployment (CD) for SMP version 1.19.10. This was because the Verify step was initially part of the Service Reliability Management (SRM) module. Users who did not have the SRM module enabled could not see the Verify step. Now, as Continuous Verification (CV) has been moved to CD, this step will be available for all users who have CD enabled. (CDS-98542, ZD-65452)
+
+- When a user tried to fetch a payload file from Bitbucket, it threw an invalid payload format and the HTTP capability check returned a 501 status code, indicating Bitbucket connectivity problems. This issue is fixed now.(CDS-98500, ZD-65594)
+
+- GitOps instances on Harness service were out of sync with applications that did not have project mappings but were part of the agent. The issue is fixed now. (CDS-96719, ZD-63203)
+
+- Terraform configuration for a monitored service returned the `500` response code. This issue occurred due to incorrect un-marshalling of Terraform configuration to the JSON object for the API request. This led to backend validations failing and causing the `500` response code. This issue is fixed by adding more validations/null checks in the backend. (CDS-96374, ZD-62737)
 
 #### Continuous Integration
 
