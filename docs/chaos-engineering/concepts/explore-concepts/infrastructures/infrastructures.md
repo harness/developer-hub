@@ -84,7 +84,7 @@ A set of mandatory input flags is required to install chaos infrastructure, incl
 :::info note
 LCI does not currently support:
 1. Cron schedules
-2. [GameDays](/docs/chaos-engineering/concepts/explore-features/GameDay)
+2. [GameDays](/docs/chaos-engineering/concepts/explore-concepts/GameDay)
 3. Executing [parallel faults](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI)
 :::
 
@@ -321,7 +321,7 @@ To verify the status of the service, navigate to the command prompt on your Wind
 
 HCE allows you to create the below probes for Windows:
 
-1. [HTTP](/docs/chaos-engineering/concepts/explore-features/resilience-probes/http-probe)
+1. [HTTP](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/http-probe)
 
 </TabItem>
 </Tabs>

@@ -10,7 +10,7 @@ redirect_from:
 This tutorial will guide you through the process of registering for and completing the Harness Chaos Developer exam certification.
 
 Before you start, make sure to review the following resources:
-- [Chaos Engineering overview](/docs/chaos-engineering/getting-started/onboarding/onboarding)
+- [Chaos Engineering overview](/docs/chaos-engineering/getting-started/onboarding/)
 - [Run chaos experiments in sandbox](/docs/chaos-engineering/training/sandbox)
 
 ## Obtaining Developer Certification

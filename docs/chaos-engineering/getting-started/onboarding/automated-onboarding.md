@@ -15,8 +15,8 @@ This topic describes the following operations:
 
 ## Before you begin, review the following
 
-* [Overview of HCE onboarding](/docs/chaos-engineering/getting-started/onboarding/onboarding#prerequisites-to-automated-and-guided-onboarding)
-* [Create infrastructure before onboarding](/docs/chaos-engineering/getting-started/onboarding/onboarding#steps-to-create-an-infrastructure-for-onboarding)
+* [Overview of HCE onboarding](/docs/chaos-engineering/getting-started/onboarding/#prerequisites-to-automated-and-guided-onboarding)
+* [Create infrastructure before onboarding](/docs/chaos-engineering/getting-started/onboarding/#steps-to-create-an-infrastructure-for-onboarding)
 
 ### What is Automated Onboarding?
 
@@ -29,7 +29,7 @@ Automated onboarding simplifies the process by automatically creating and execut
 
 ### How to Onboard Automatically?
 
-If you chose automated onboarding by selecting **Yes, in a single step** [here](/docs/chaos-engineering/getting-started/onboarding/onboarding#onboarding), follow these steps.
+If you chose automated onboarding by selecting **Yes, in a single step** [here](/docs/chaos-engineering/getting-started/onboarding/#onboarding), follow these steps.
 
 ### Select an Environment
 

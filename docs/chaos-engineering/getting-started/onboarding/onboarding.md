@@ -10,7 +10,7 @@ This topic describes how you can get a hands-on experience executing chaos exper
 ## Before you begin, review the following:
 
 - [All about chaos engineering](/docs/chaos-engineering/concepts/chaos101)
-- [Explore features](/docs/chaos-engineering/concepts/explore-features/explore-features)
+- [Explore features](/docs/chaos-engineering/concepts/explore-features)
 - [Get Started With HCE](/docs/chaos-engineering/getting-started/)
 
 ## Introduction

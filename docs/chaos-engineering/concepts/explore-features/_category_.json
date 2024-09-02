@@ -1,9 +1,0 @@
-{
-  "position": 7,
-  "label": "Explore Features",
-  "collapsible": "true",
-  "collapsed": "true",
-  "customProps": {
-    "description": "Explore all the capabilities of Harness Chaos Engineering"
-  }
-}

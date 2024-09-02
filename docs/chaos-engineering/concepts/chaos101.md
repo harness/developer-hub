@@ -91,17 +91,17 @@ HCE doesn't just focus on fault injection; it helps you set up a fully operation
 - **Governance Enforcement**: HCE provides several mechanisms for governance:
 
     - **Dedicated Workspaces**: Isolate chaos experiments and resources for different teams or projects.
-    - [**ChaosGuard**](/docs/chaos-engineering/concepts/explore-features/chaosguard): Adds an additional security layer by executing a set of conditions before running chaos experiments.
+    - [**ChaosGuard**](/docs/chaos-engineering/concepts/explore-concepts/chaosguard): Adds an additional security layer by executing a set of conditions before running chaos experiments.
     - **Chaos Teams**: Allows control over who can access and execute chaos experiments, ensuring that only authorized users interact with chaos resources.
-    - **Access Control**: [Fine-grained permissions](/docs/chaos-engineering/security/security#user-authorization-and-role-based-access-control) manage access to chaos infrastructure, the types of faults used, and the runtime permissions for executing experiments within target environments.
+    - **Access Control**: [Fine-grained permissions](/docs/chaos-engineering/security/#user-authorization-and-role-based-access-control) manage access to chaos infrastructure, the types of faults used, and the runtime permissions for executing experiments within target environments.
 
 - **Native Integration with Harness Continuous Delivery (CD) Pipelines**: [Streamline chaos engineering into your CI/CD workflows](/docs/category/integrate-hce-with-harness-cd).
 
-- **Hypothesis Validation and SLO Management**: Validate hypotheses using [probes](/docs/category/resilience-probes) and manage SLOs through integration with Harness Continuous Verification (CV).
+- **Hypothesis Validation and SLO Management**: Validate hypotheses using [probes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/) and manage SLOs through integration with Harness Continuous Verification (CV).
 
-- [**Guided GameDay Execution**](/docs/chaos-engineering/concepts/explore-features/GameDay): Detailed analytics and reporting based on experiment execution and application resilience.
+- [**Guided GameDay Execution**](/docs/chaos-engineering/concepts/explore-concepts/GameDay): Detailed analytics and reporting based on experiment execution and application resilience.
 
-- **Chaos Events, Metrics, and Logs**: Instrument APM (Application Performance Monitoring) [dashboards](/docs/chaos-engineering/concepts/explore-features/dashboard) with chaos context to monitor the impact of chaos faults on service/application health.
+- **Chaos Events, Metrics, and Logs**: Instrument APM (Application Performance Monitoring) [dashboards](/docs/chaos-engineering/use-harness-ce/dashboards/) with chaos context to monitor the impact of chaos faults on service/application health.
 
 #### Workflow Custom Resource (CR)
 

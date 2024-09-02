@@ -8,7 +8,7 @@ redirect_from:
 - /docs/chaos-engineering/features/experiments/resilience-score/
 ---
 
-Harness Chaos Engineering (HCE) gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios against which you can validate your applications. At the same time, the chaos experiments are declarative and you can construct them using the Chaos Studio user interface with no programmatic intervention.
+Harness Chaos Engineering (HCE) gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios against which you can validate your applications.
 
 A **chaos experiment** is composed of chaos faults that are arranged in a specific order to create a failure scenario. The [chaos faults](#chaos-fault) target various aspects of an application, including the constituent microservices and underlying infrastructure. You can tune the parameters associated with these faults to impart the desired chaos behavior.
 
@@ -23,7 +23,7 @@ You can define the experiment using the Chaos Studio, that helps create new expe
 
 You can execute a chaos experiment by:
 
-1. [Fulfilling the resource requirements](/docs/chaos-engineering/getting-started/saas/saas): In this step, you can create resources or get the required permissions to create the necessary resources.
+1. [Fulfilling the resource requirements](/docs/chaos-engineering/getting-started/saas/): In this step, you can create resources or get the required permissions to create the necessary resources.
 
 2. [Adding an environment](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#create-environment): A chaos experiment is performed within a chaos environment that houses the necessary infrastructure.
 
@@ -35,17 +35,9 @@ You can execute a chaos experiment by:
 
 6. [Creating and running a chaos experiment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments): Once you have set up your application, you can decide which resources to target and execute the chaos experiments on.
 
-#### Experiment Templates
-
-They are stored as part of the ChaosHub, which you can use to create new chaos experiments. You can edit the templates by making changes to the existing fault configuration or by adding new faults. You can store new experiments in ChaosHub as templates.
-
-#### Result Fail Step
-
+:::info note
 When an experiment fails, the failed step specifies the exact cause of failure for the experiment run. It contains an error code for the classification of the error, a phase to specify the execution phase during which the error occurred, and finally, the reason which is a user-friendly description of the error.
-
-#### Result Phase
-
-Phase determines the status of the overall experiment execution. It may be `Awaited`, `Running`, `Completed`, or `Aborted`, depending on the experiment outcome.
+:::
 
 ### Experiment Status
 
@@ -68,27 +60,6 @@ Chaos rollback ensures that all target resources in an experiment return to thei
 	- If the chaos infrastructure process exits abruptly during an experiment, the daemon service reverts the chaos before restarting the process.
 	- In the event of an abrupt machine reboot, the daemon service checks for and reverts any inconsistencies from the prior chaos execution before starting the chaos infrastructure process.
 	- In the rare scenario where the chaos rollback itself encounters an error, an appropriate error message is logged in the experiment log, prompting the user for manual intervention.
-
-#### Tunables
-
-You can customize a fault execution by changing the tunables (or parameters) it accepts. While some of the tunables are common across all the faults (for example, **chaos duration**), every fault has its own set of tunables: default and mandatory ones. You can update the default tunables when required and always provide values for mandatory tunables (as the name suggests).
-
-### Chaos Fault
-
-It is the failures injected into the chaos infrastructure as part of a chaos experiment. Every fault is scoped to a particular target resource, and you can customize the fault using the fault tunables, which you can define as part of the Chaos Experiment CR and Chaos Engine CR. Optionally, you can define one or more probes as part of a chaos fault.
-
-#### Fault Status
-
-	Fault status indicates the current status of the fault executed as a part of the chaos experiment. A fault can have 0, 1, or more associated [probes](/docs/chaos-engineering/concepts/explore-features/resilience-probes/). Other steps in a chaos experiment include resource creation and cleanup.
-
-	In a chaos experiment, a fault can be in one of six different states. It transitions from **running**, **stopped** or **skipped** to **completed**, **completed with error** or **error** state.
-
-	- **Running**: The fault is currently being executed.
-	- **Stopped**: The fault stopped after running for some time.
-	- **Skipped**: The fault skipped, that is, the fault is not executed.
-	- **Completed**: The fault completes execution without any **failed** or **N/A** probe statuses.
-	- **Completed with Error**: When the fault completes execution with at least one **failed** probe status but no **N/A** probe status, it is considered to be **completed with error**.
-	- **Error**: When the fault completes execution with at least one **N/A** probe status, it is considered to be **error** because you can't determine if the probe status was **passed** or **failed**. A fault is considered to be in an **error** state when it has 0 probes because there are no health checks to validate the sanity of the chaos experiment.
 
 The diagram below describes the flow of control in a chaos experiment.
 

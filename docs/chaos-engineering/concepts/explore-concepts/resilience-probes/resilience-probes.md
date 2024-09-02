@@ -18,7 +18,7 @@ Resilience probes (or probes) are pluggable health checkers defined within the c
 - Monitors your application's health **before**, **during** and **after** a chaos experiment.
 - Explore the behavior of a system in a chaotic or unpredictable manner.
 - Help understand the underlying patterns and laws that govern the behavior of these systems, and to use that understanding to predict or control their behavior.
-- Help validate the [declarative hypothesis](#declarative-hypothesis) set by the user.
+- Validate the [declarative hypothesis](#declarative-hypothesis) set by the user.
 
 ### Resilience Score
 
@@ -76,13 +76,13 @@ This is also in accordance with how HCE pans out:
 
 HCE facilitates 7 types of resilience probes listed below. Click each probe to navigate to details such as probe property, definition, schema, authentication, methods, and so on.
 
-- [**HTTP probe**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/http-probe): To query health/downstream URIs.
-- [**Command probe**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/cmd-probe): To execute any user-desired health-check function implemented as a shell command.
-- [**Kubernetes probe**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/k8s-probe): To perform CRUD operations against native and custom Kubernetes resources.
-- [**Prometheus probe**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/prom-probe): To execute PromQL queries and match Prometheus metrics for specific criteria.
-- [**Datadog probe**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/datadog-probe): To query a [Datadog Synthetic](https://docs.datadoghq.com/synthetics/) test and use its results to evaluate the probe outcome.
-- [**SLO probe**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/slo-probe): To allow you to validate the error budget for a given SLO when the corresponding application is subject to chaos and determine the verdict based on the percentage change in the error budget.
-- [**Dynatrace probe**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/dynatrace-probe): Determines the health of your application by examining the entry or exit criteria.
+- [**HTTP probe**](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/http-probe): To query health/downstream URIs.
+- [**Command probe**](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/cmd-probe): To execute any user-desired health-check function implemented as a shell command.
+- [**Kubernetes probe**](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/k8s-probe): To perform CRUD operations against native and custom Kubernetes resources.
+- [**Prometheus probe**](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/prom-probe): To execute PromQL queries and match Prometheus metrics for specific criteria.
+- [**Datadog probe**](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/datadog-probe): To query a [Datadog Synthetic](https://docs.datadoghq.com/synthetics/) test and use its results to evaluate the probe outcome.
+- [**SLO probe**](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/slo-probe): To allow you to validate the error budget for a given SLO when the corresponding application is subject to chaos and determine the verdict based on the percentage change in the error budget.
+- [**Dynatrace probe**](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/dynatrace-probe): Determines the health of your application by examining the entry or exit criteria.
 
 
 :::info note
@@ -160,4 +160,4 @@ Resilience probes are not a part of any subscription, and hence you don't have a
 
 ## Next steps
 
-* [Use cases of resilience probes](/docs/chaos-engineering/concepts/explore-features/resilience-probes/types#common-use-cases)
+* [Use cases of resilience probes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/types#common-use-cases)

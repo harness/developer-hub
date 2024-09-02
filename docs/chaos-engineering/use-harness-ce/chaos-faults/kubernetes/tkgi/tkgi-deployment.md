@@ -10,7 +10,7 @@ This topic describes HCE's fault injection approach on [Tanzu Kubernetes Grid-ba
 ## Overview
 You can execute chaos experiments on various layers of your infrastructure to determine the resilience of your TKGi-based microservices. You can start from the application process layer (supported for JVM-based apps currently) and move down to the underlying host infrastructure.
 
-Harness provides out-of-the-box faults for different target types as well as automatically validates the resilience of the services with performance metrics, status endpoints, health check scripts, and so on using [**resilience probes**](/docs/chaos-engineering/concepts/explore-features/resilience-probes/).
+Harness provides out-of-the-box faults for different target types as well as automatically validates the resilience of the services with performance metrics, status endpoints, health check scripts, and so on using [**resilience probes**](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/).
 
 You can combine the chaos experiments with custom actions such as load generation when you execute these experiments as part of the Harness pipelines.
 

@@ -13,7 +13,7 @@ This topic walks you through Harness chaos infrastructure that uses Harness Dele
 
 Harness Delegate is a beta product in HCE that allows for quick onboarding and optimized chaos execution for microservices-based targets on Kubernetes.
 The features described below help achieve quick onboarding and optimized chaos experiment execution.
-The diagram below describes the high-level flow of how you can [discover services](/docs/chaos-engineering/concepts/explore-features/service-discovery) and [create application maps](/docs/chaos-engineering/concepts/explore-features/app-maps).
+The diagram below describes the high-level flow of how you can [discover services](/docs/chaos-engineering/concepts/explore-concepts/service-discovery) and [create application maps](/docs/chaos-engineering/concepts/explore-concepts/app-maps).
 
     ![](./static/flow-v2.png)
 
@@ -23,16 +23,16 @@ The schematic diagram below describes how chaos experiments are executed in Harn
 
     ![](./static/ddci-flow.png)
 
-Go to [permissions required](/docs/chaos-engineering/concepts/explore-features/infrastructures/delegate/permissions) to know the detailed list of permissions to execute Kubernetes faults with a Delegate.
+Go to [permissions required](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/permissions) to know the detailed list of permissions to execute Kubernetes faults with a Delegate.
 
 The diagram below describes the detailed flow of control (step 5 of the earlier diagram), for an example chaos experiment- [pod DNS chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-dns-error).
 
     ![](./static/elaborate.png)
 
 ## Features of Harness Delegate
-- Automated Kubernetes [service discovery](/docs/chaos-engineering/concepts/explore-features/service-discovery) and workloads with network traffic patterns between them through a transient discovery agent.
-- [Automated](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding#choose-between-automatic-and-customizable-application-map-creation) and [guided](/docs/chaos-engineering/concepts/explore-features/app-maps#create-an-application-map) application map creation that represent a fully functional application within the cluster (which comprises of several constituent microservices).
-- [Chaos experiment auto-creation](#auto-create-experiment) for a given [application map](/docs/chaos-engineering/concepts/explore-features/app-maps) based on the workload specification and its lineage in terms of network traffic.
+- Automated Kubernetes [service discovery](/docs/chaos-engineering/concepts/explore-concepts/service-discovery) and workloads with network traffic patterns between them through a transient discovery agent.
+- [Automated](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding#choose-between-automatic-and-customizable-application-map-creation) and [guided](/docs/chaos-engineering/concepts/explore-concepts/app-maps#create-an-application-map) application map creation that represent a fully functional application within the cluster (which comprises of several constituent microservices).
+- [Chaos experiment auto-creation](#auto-create-experiment) for a given [application map](/docs/chaos-engineering/concepts/explore-concepts/app-maps) based on the workload specification and its lineage in terms of network traffic.
 - Reuse the Harness Delegate for chaos experiment execution on the user cluster without a dedicated (or separate) chaos agent.
 - Application-level and application map level resilience scores.
 

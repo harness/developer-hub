@@ -24,7 +24,7 @@ To determine and improve the resilience of an application, you need to execute c
 
 Depending on the version of HCE (SaaS or Self-Managed Platform), the control plane is [hosted](https://app.harness.io) by Harness (for SaaS) or within your domain (for example, `harness.your-domain.io`).
 
-The diagram below illustrates the relationship between HCE SaaS (the control plane) and your host or cluster (the execution plane), demonstrating how experiments are conducted using HCE.
+The diagram below illustrates the relationship between HCE SaaS (the control plane) and its components (such as chaos experiments, ChaosHub, database, and so on) interact with your host or cluster (the execution plane components such as Kubernetes or Linux infrastructure), demonstrating how experiments are conducted using HCE.
 
 ![Architecture](./static/architecture/hce-architecture.png)
 
@@ -78,8 +78,6 @@ You can sign in (or receive an invitation) to the Harness Platform and use the i
 
 #### Why is a Control Plane Required?
 The control plane helps **create**, **schedule**, and **monitor** chaos experiments. It includes chaos faults that achieve the desired chaos impact on target resources.
-
-The diagram below illustrates how the control plane (Harness SaaS) and its components (such as chaos experiments, ChaosHub, database, etc.) interact with the execution plane components like Kubernetes or Linux infrastructure.
 
 ### Execution Plane
 The Harness execution plane contains components responsible for orchestrating chaos injection into target resources. These components include:

@@ -26,7 +26,7 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.ce,
           description:
             "Onboarding with Harness Chaos Engineering.",
-          link: "/docs/chaos-engineering/getting-started/onboarding/introduction",
+          link: "/docs/chaos-engineering/getting-started/onboarding/",
         },
   ],
 },
@@ -136,42 +136,42 @@ import { MODULES } from "@site/src/constants"
         module: MODULES.ce,
         description:
           "Execute chaos experiments in the application during a specific period..",
-        link: "/docs/chaos-engineering/concepts/explore-features/GameDay",
+        link: "/docs/chaos-engineering/concepts/explore-concepts/GameDay",
       },
       {
         title: "ChaosGuard",
         module: MODULES.ce,
         description:
           "Additional layer of security to minimize blast radius and mitigate potential security threats. ",
-        link: "/docs/chaos-engineering/concepts/explore-features/chaosguard",
+        link: "/docs/chaos-engineering/concepts/explore-concepts/chaosguard",
       },
       {
         title: "Chaos dashboard",
         module: MODULES.ce,
         description:
           "Visualize important metrics and data associated with your experiment runs.",
-        link: "/docs/chaos-engineering/concepts/explore-features/dashboard",
+        link: "/docs/chaos-engineering/use-harness-ce/dashboards/",
       },
     {
       title: "Resilience Probes",
       module: MODULES.ce,
       description:
         "Monitor your application's health before, during, and after executing a chaos experiment.",
-      link: "/docs/category/resilience-probes",
+      link: "/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/",
     },
     {
       title: "Service Discovery",
       module: MODULES.ce,
       description:
         "Determine connections made to and from your Kubernetes cluster. ",
-      link: "/docs/chaos-engineering/concepts/explore-features/service-discovery",
+      link: "/docs/chaos-engineering/concepts/explore-concepts/service-discovery",
     },
     {
       title: "Application Maps",
       module: MODULES.ce,
       description:
         "Bind multiple interacting discovered services into a single object.",
-      link: "/docs/chaos-engineering/concepts/explore-features/app-maps",
+      link: "/docs/chaos-engineering/concepts/explore-concepts/app-maps",
     },
   ],
 },

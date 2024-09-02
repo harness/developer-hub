@@ -20,8 +20,8 @@ This topic describes the following operations that constitute the guided onboard
 ## Before you begin, review the following
 
 * [All about chaos engineering](/docs/chaos-engineering/concepts/chaos101)
-* [Onboarding overview](/docs/chaos-engineering/getting-started/onboarding/onboarding)
-* [Create infrastructure before onboarding](/docs/chaos-engineering/getting-started/onboarding/onboarding#prerequisites-to-automated-and-guided-onboarding)
+* [Onboarding overview](/docs/chaos-engineering/getting-started/onboarding/)
+* [Create infrastructure before onboarding](/docs/chaos-engineering/getting-started/onboarding/#prerequisites-to-automated-and-guided-onboarding)
 
 
 ### What is Guided Onboarding?
@@ -37,7 +37,7 @@ For example, when you [select a button to create an environment](/docs/chaos-eng
 
 ### How to Onboard with Guided Onboarding?
 
-If you chose guided onboarding by selecting **No, I will choose** [here](/docs/chaos-engineering/getting-started/onboarding/onboarding#onboarding), follow these steps:
+If you chose guided onboarding by selecting **No, I will choose** [here](/docs/chaos-engineering/getting-started/onboarding/#onboarding), follow these steps:
 
 ### Select an Environment
 

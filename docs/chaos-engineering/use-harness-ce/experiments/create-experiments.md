@@ -12,7 +12,7 @@ This topic describes how you can create chaos experiments that consist of chaos 
 
 - [What is a chaos experiment?](/docs/chaos-engineering/concepts/chaos101)
 - [What are chaos faults?](/docs/chaos-engineering/use-harness-ce/experiments/#chaos-fault)
-- [What are resilience probes?](/docs/chaos-engineering/concepts/explore-features/resilience-probes/)
+- [What are resilience probes?](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/)
 - [How to create a resilience probe?](/docs/chaos-engineering/use-harness-ce/probes/use-probe)
 
 ### Create Environment
@@ -71,7 +71,7 @@ For more information on infrastructure, see [Connect chaos infrastructures](/doc
 4. Choose how you want to build the experiment. The options, explained later, are:
 
 	* **[Blank Canvas](#using-blank-canvas)** - Lets you build the experiment from scratch, adding the specific faults you want.
-	* **[Templates from ChaosHubs](#using-templates-from-chaoshubs)** - Lets you preview and select and experiment from pre-curated experiment templates available in [ChaosHubs](/docs/chaos-engineering/concepts/explore-features/chaoshub).
+	* **[Templates from ChaosHubs](#using-templates-from-chaoshubs)** - Lets you preview and select and experiment from pre-curated experiment templates available in [ChaosHubs](/docs/chaos-engineering/use-harness-ce/chaoshubs/).
 	* **[Upload YAML](#upload-yaml)** - Lets you upload an experiment manifest YAML file.
 
 	These options are explained below.

@@ -12,7 +12,7 @@ This topic guides you through steps to use the **command probe** in **source mod
 
 ## Before you begin, review the following
 
-* [Command probe](/docs/chaos-engineering/concepts/explore-features/resilience-probes/cmd-probe)
+* [Command probe](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/cmd-probe)
 * [Create a command probe](/docs/chaos-engineering/use-harness-ce/probes/use-probe#create-a-resilience-probe)
 * [Command probe in source mode](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-usage#command-probe-in-source-mode)
 

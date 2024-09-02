@@ -17,6 +17,6 @@ Pod network fault and stress faults require container-runtime-specific operation
 
 ## Next steps
 
-- Openshift Security Context Constraint
-- Pod Security Policy
-- Kyverno policies
+- [Openshift security policies](/docs/chaos-engineering/security/security-templates/openshift-scc)
+- [Pod security policy](/docs/chaos-engineering/security/security-templates/psp)
+- [Kyverno policy](/docs/chaos-engineering/security/security-templates/kyverno-policies)

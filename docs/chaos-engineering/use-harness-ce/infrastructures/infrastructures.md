@@ -9,7 +9,7 @@ This section describes how you can enable chaos infrastructures to execute chaos
 
 All the chaos infrastructure services adhere to the **principle of least privilege**, where the services execute with the minimum number of permissions.
 
-Go to [chaos infrastructures](/docs/chaos-engineering/concepts/explore-features/infrastructures/infrastructures) to learn more about infrastructures, their importance, and their types. Go to [Delegate](/docs/chaos-engineering/concepts/explore-features/infrastructures/delegate/delegate) to know about Harness Delegate.
+Go to [chaos infrastructures](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/) to learn more about infrastructures, their importance, and their types. Go to [Delegate](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/) to know about Harness Delegate.
 
 Go to [enable or disable an infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable) and [upgrade it](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra) to get a hands-on experience.
 

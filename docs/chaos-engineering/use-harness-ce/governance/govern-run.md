@@ -3,7 +3,7 @@ title: Governance in Execution
 sidebar_position: 2
 ---
 
-This topic describes how HCE governs chaos experiments during execution. You can add an additional layer of security that is executed before running a chaos experiment. This layer is known as [ChaosGuard](/docs/chaos-engineering/concepts/explore-features/chaosguard).
+This topic describes how HCE governs chaos experiments during execution. You can add an additional layer of security that is executed before running a chaos experiment. This layer is known as [ChaosGuard](/docs/chaos-engineering/concepts/explore-concepts/chaosguard).
 
 ## Configure conditions
 Conditions describe a set of constraints that are applied to an execution context. You can use both **'EQUAL'** and **'NOT EQUAL TO'** operators in conditions. You can also use wildcards within the condition entities, which offers flexibility and control in defining conditions.
