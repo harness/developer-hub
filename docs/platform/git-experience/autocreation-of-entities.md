@@ -260,7 +260,7 @@ For example:- `.harness/orgs/test_org/projects/test_project/envs/pre_production/
 - **Infrastructure File Path name**: `infra_project_level`
 
 ### Overrides
-Overrides allow for specific configurations at different levels such as account, organization, project, environment, service, and infrastructure. The file path conventions for overrides vary depending on the scope level (Account, Organization, Project).
+Overrides allow for specific configurations at different scope levels, such as Account, Organization, and Project, for various Harness entities like Environment, Service, and Infrastructure. The file path conventions for these overrides vary depending on the scope level.
 
 #### Global Environment Overrides
 
@@ -268,7 +268,7 @@ Overrides allow for specific configurations at different levels such as account,
 
 To create a global environment override at the account level, use the following file path convention:
 
-`.harness/overrides/[ENV_REF]/overrides.yaml`
+`.harness/overrides/[ENV_REF]/<file_path_name>.yaml`
 
 For example:- `.harness/overrides/account.pre_production/overrides.yaml`
 
@@ -277,11 +277,11 @@ For example:- `.harness/overrides/account.pre_production/overrides.yaml`
 - **ENV_REF**: `account.pre_production`
 - **Overrides File Path name**: `overrides`
 
-2. **Orgnanization Level**
+2. **Organization Level**
 
 To create a global environment override at the organization level, use the following file path convention:
 
-`.harness/orgs/<org_identifier>/overrides/[ENV_REF]/overrides.yaml`
+`.harness/orgs/<org_identifier>/overrides/[ENV_REF]/<file_path_name>.yaml`
 
 For example:- `.harness/orgs/test_org/overrides/org.pre_prod/overrides.yaml`
 
@@ -295,7 +295,7 @@ For example:- `.harness/orgs/test_org/overrides/org.pre_prod/overrides.yaml`
 
 To create a global environment override at the project level, use the following file path convention:
 
-`.harness/orgs/<org_identifier>/projects/<project_identifier>/overrides/[ENV_REF]/overrides.yaml`
+`.harness/orgs/<org_identifier>/projects/<project_identifier>/overrides/[ENV_REF]/<file_path_name>.yaml`
 
 For example:- `.harness/orgs/test_org/projects/test_project/overrides/test_environment/overrides.yaml`
 
@@ -312,9 +312,9 @@ For example:- `.harness/orgs/test_org/projects/test_project/overrides/test_envir
 
 1. **Account Level**
 
-To create a Services and Environment Overrides at the project level, use the following file path convention:
+To create a Services and Environment Overrides at the Account level, use the following file path convention:
 
-`.harness/overrides/[ENV_REF]/services/[SERVICE_REF]/overrides.yaml `
+`.harness/overrides/[ENV_REF]/services/[SERVICE_REF]/<file_path_name>.yaml `
 
 For example:- `.harness/overrides/account.pre_production/services/account.test_demo/overrides.yaml`
 
@@ -324,11 +324,11 @@ For example:- `.harness/overrides/account.pre_production/services/account.test_d
 - **SERVICE_REF**: `account.test_demo`
 - **Overrides File Path name**: `overrides`
 
-2. **Orgnanization Level**
+2. **Organization Level**
 
 To create a Services and Environment Overrides override at the organization level, use the following file path convention:
 
-`.harness/orgs/<org_identifier>/overrides/[ENV_REF]/services/[SERVICE_REF]/overrides.yaml`
+`.harness/orgs/<org_identifier>/overrides/[ENV_REF]/services/[SERVICE_REF]/<file_path_name>.yaml`
 
 For example:- `.harness/orgs/test_org/overrides/org.pre_prod/services/org.test_demo/overrides.yaml`
 
@@ -340,11 +340,15 @@ For example:- `.harness/orgs/test_org/overrides/org.pre_prod/services/org.test_d
 - **SERVICE_REF**: `org.test_demo`
 - **Overrides File Path name**: `overrides`
 
+:::important note
+In this example, both the service `(org.test_demo)` and environment `(org.pre_prod)` are from the organization level. However, the path can represent different combinations, such as an organization-level service with an account-level environment or vice versa
+:::
+
 3. **Project level**
 
 To create a Services and Environment Overrides override at the project level, use the following file path convention:
 
-`.harness/orgs/<org_identifier>/projects/test_project/overrides/test_environment/services/[SERVICE_REF]/overrides.yaml`
+`.harness/orgs/<org_identifier>/projects/test_project/overrides/test_environment/services/[SERVICE_REF]/<file_path_name>.yaml`
 
 For example:- `.harness/orgs/test_org/projects/<project_identifier>/overrides/[ENV_REF]/services/test_demo/overrides.yaml`
 
@@ -365,7 +369,7 @@ For example:- `.harness/orgs/test_org/projects/<project_identifier>/overrides/[E
 
 To create an Environment and Infrastructure Overrides at the Account Level, use the following file path convention:
 
-`.harness/overrides/[ENV_REF]/infras/[INFRA_ID]/overrides.yaml`
+`.harness/overrides/[ENV_REF]/infras/[INFRA_ID]/<file_path_name>.yaml`
 
 For example:-`.harness/overrides/account.pre_production/infras/infra_test/overrides.yaml`
 
@@ -379,7 +383,7 @@ For example:-`.harness/overrides/account.pre_production/infras/infra_test/overri
 
 To create an Environment and Infrastructure Overrides at the Organization level, use the following file path convention:
 
-`.harness/orgs/<org_identifier>/overrides/[ENV_REF]/infras/[INFRA_ID]/overrides.yaml`
+`.harness/orgs/<org_identifier>/overrides/[ENV_REF]/infras/[INFRA_ID]/<file_path_name>.yaml`
 
 For example:-`.harness/orgs/test_org/overrides/org.pre_production/infras/infra_test/overrides.yaml`
 
@@ -395,7 +399,7 @@ For example:-`.harness/orgs/test_org/overrides/org.pre_production/infras/infra_t
 
 To create an Environment and Infrastructure Overrides at the Project level, use the following file path convention:
 
-`.harness/orgs/<org_identifier>/projects/<project_identifier>/overrides/[ENV_REF]/infras/[INFRA_ID]/overrides.yaml`
+`.harness/orgs/<org_identifier>/projects/<project_identifier>/overrides/[ENV_REF]/infras/[INFRA_ID]/<file_path_name>.yaml`
 
 For example:- `.harness/orgs/test_org/projects/test_project/overrides/pre_production/infras/infra_test/overrides.yaml`
 
@@ -416,9 +420,9 @@ For example:- `.harness/orgs/test_org/projects/test_project/overrides/pre_produc
 
 To create a Service and Infrastructure Overrides at the Account Level, use the following file path convention:
 
-`.harness/overrides/[ENV_REF]/services/[SERVICE_REF]/infras/[INFRA_ID]/overrides.yaml`
+`.harness/overrides/[ENV_REF]/services/[SERVICE_REF]/infras/[INFRA_ID]/<file_path_name>.yaml`
 
-For example:- `harness/overrides/account.pre_production/services/account.test_demo/infras/infra_test/overrides.yaml`
+For example:- `.harness/overrides/account.pre_production/services/account.test_demo/infras/infra_test/overrides.yaml`
 
 - **Overrides directory**: `overrides`
 - **ENV_REF**: `account.pre_production`
@@ -432,7 +436,7 @@ For example:- `harness/overrides/account.pre_production/services/account.test_de
 
 To create a Service and Infrastructure Overrides at the Organization Level, use the following file path convention:
 
-`.harness/orgs/<org_identifier>/overrides/[ENV_REF]/services/[SERVICE_REF]/infras/[INFRA_ID]/overrides.yaml`
+`.harness/orgs/<org_identifier>/overrides/[ENV_REF]/services/[SERVICE_REF]/infras/[INFRA_ID]/<file_path_name>.yaml`
 
 For example:- `.harness/orgs/test_org/overrides/org.pre_production/services/org.test_demo/infras/infra_test/overrides.yaml`
 
@@ -451,7 +455,7 @@ For example:- `.harness/orgs/test_org/overrides/org.pre_production/services/org.
 
 To create a Service and Infrastructure Overrides at the Project Level, use the following file path convention:
 
-`.harness/orgs/<org_identifier>/projects/<project_identifier>/overrides/[ENV_REF]/infras/[INFRA_ID]/overrides.yaml`
+`.harness/orgs/<org_identifier>/projects/<project_identifier>/overrides/[ENV_REF]/infras/[INFRA_ID]/<file_path_name>.yaml`
 
 For example:- `.harness/orgs/test_org/projects/test_project/overrides/pre_production/infras/infra_test/overrides.yaml`
 
