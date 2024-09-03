@@ -230,6 +230,14 @@ This feature is currently behind the feature flag, `CI_GIT_CLONE_ENHANCED`. Cont
 
 - Disabled the ability to add users to externally managed or SSO-linked user groups. The checkbox for these groups is now grayed out, with a hover message explaining the restriction. (PL-51216)
 
+#### Security Testing Orchestration
+
+- If you add parallel steps at the end of the pipeline and then attempt to add another set of parallel steps at the top level, only the first step gets added. This issue has been fixed (STO-7783).
+
+- The error causing STO steps not to run in the CI stage has now been fixed (STO-7887).
+
+- You can now override the security testing scanner image at the step level. Learn more about [configuring your pipeline to use images from your registry](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry#configure-your-pipeline-to-use-images-from-your-registry). (STO-7724)
+
 ### Fixed issues
 
 #### Chaos Engineering
