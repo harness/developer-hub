@@ -43,7 +43,6 @@ Harness IaCM supports resource targeting and replacement, allowing you to specif
 
 For example, set `PLUGIN_PLAN_TARGET_1=tfcode.bucket1` to target a specific resource.
 
-
 ### Apply
 The `terraform apply` executes the proposed plan to modify the infrastructure state:
 - **Executing Plan**: Implements the changes outlined in the plan to modify resource states.
