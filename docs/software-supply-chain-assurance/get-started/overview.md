@@ -15,7 +15,7 @@ High-profile breaches, like those experienced by Log4j, SolarWinds and Codecov, 
 To address these challenges, the Harness Supply Chain Security (SCS) module is designed to secure the software supply chain, ensuring a layer of security that extends beyond conventional measures.
 
 
-## Software Supply Chain Assurance Objectives
+## Supply Chain Security Objectives
 
 The SCS module focuses on securing the software supply chain from two critical perspectives: dependency attacks and exploits from the DevOps toolchain. It ensures that the software remains secure throughout the entire delivery process by addressing risks from both sides. The SCS module helps you to achieve the following objectives
 
@@ -28,7 +28,7 @@ The SCS module focuses on securing the software supply chain from two critical p
 This comprehensive approach helps organizations maintain a secure and compliant software supply chain, mitigating risks from dependencies and ensuring robust protection against potential attacks from the DevOps toolchain.
 
 
-## Software Supply Chain Assurance Features
+## Supply Chain Security Features
 
 To realize the objectives, the SCS module offers the following features:
 
