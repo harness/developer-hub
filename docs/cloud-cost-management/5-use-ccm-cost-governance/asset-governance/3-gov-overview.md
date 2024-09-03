@@ -62,7 +62,7 @@ These custom recommendations not only show up in the recommendation section but 
 - It can take up to 24 hours for a custom recommendation to appear.
 - In case of AWS and Azure, Account/ Subscription and region combination with greater than 300$ of monthly spend are considered for recommendations.
 - In case of GCP, Project with greater than 300$ of monthly spend is considered for recommendations.
-- Azure Preferences set in Account Settings will now also be honored for generating custom recommendations.
+
 :::
 
 ## Cost Correlation
@@ -81,4 +81,5 @@ This API is used to refresh or update the cost of all resources in the evaluatio
 :::note
 - Cost co-relation for GCP would work only if detailed billing export is setup.
 - Changes made to "Perspective Preferences" in Account Settings of Cloud Cost Management will be now applied to Asset Governance. In case of AWS, previously, costs were taken as "Unblended". Now, users can select it to be Blended, Net-Amortised, Amortised, Effective or Unblended. Kindly note, it might take up to 30 minutes for costs to be refreshed after changes are applied.
+- Azure Preferences set in Account Settings will now also be honored for generating custom recommendations.
 :::
