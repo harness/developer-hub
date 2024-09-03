@@ -14,6 +14,15 @@ import delete_project from './static/delete-project.png'
 
 These release notes describe recent changes to Harness Self-Managed Enterprise Edition, NextGen.
 
+:::info About Harness Release Notes
+
+- **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+- **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, FirstGen Self-Managed Enterprise Edition, and FirstGen release notes.
+
+:::
+
+### Breaking change - Ingress
+
 :::danger important upgrade instructions for versions 0.17.x and above
 
 When upgrading to SMP versions 0.17.x and above, the installation may fail if you have any admission webhooks configured for Ingress that do not permit Ingress objects with different names but identical paths. To prevent installation issues, please follow these steps before proceeding with the upgrade:
@@ -30,6 +39,8 @@ You can find the script in the Harness 0.20.0 release charts at `scripts/update-
 
 Note: Ensure you have access to the Kubernetes cluster where Harness is running and have the necessary permissions to GET, DELETE, and APPLY Ingress objects.
 :::
+
+### Breaking change - Minio
 
 :::danger important upgrade instructions for patch releases 0.15.1, 0.14.6, 0.13.4, and 0.12.1
 
@@ -93,12 +104,7 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
-:::info About Harness Release Notes
 
-- **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
-- **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, FirstGen Self-Managed Enterprise Edition, and FirstGen release notes.
-
-:::
 
 ### Breaking change - Looker images
 
