@@ -234,4 +234,13 @@ If you encounter certificate errors with a vanity URL (`*.harness.io`) that was 
 2. **Mount the Certificates:**
    - Use the [Harness documentation](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates) to mount the certificates in your Kubernetes build infrastructure.
 
+3. **Override Configuration in Delegate YAML:**
+   - Update the delegate YAML to override `MANAGER_HOST_AND_PORT` and `LOG_STREAMING_SERVICE_URL` for vanity URLs:
+     
+     ```yaml
+     MANAGER_HOST_AND_PORT: https://YOUR_SUBDOMAIN.harness.io/gratis
+     LOG_STREAMING_SERVICE_URL: https://YOUR_SUBDOMAIN.harness.io/gratis/log-service/
+     ```
+   - Ensure that the delegate is restarted after making these changes to apply the new configuration.
+
 Following these steps should resolve the certificate errors with your vanity URL.
