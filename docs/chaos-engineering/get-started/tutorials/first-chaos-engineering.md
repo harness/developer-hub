@@ -195,7 +195,7 @@ Since the target application has been deployed, you can now create a chaos exper
     ![Probes Config 4](./static/first-chaos/probes-config-4.png)
 
 :::info note
-Under probe details, you can see that the URL is `http://service-of-the-user.namespace.svc.cluster-domain.example` and the interval is 5s. As a part of the probe execution, `GET` requests are made to the specified URL. If no HTTP response is found within 5s, the probe status is considered as 'failed'. If all the probe executions pass, then the probe status is considered as 'passed'. You can find other probe details in the properties field.
+Under probe details, you can see that the URL is `http://cartservice.hce.svc.cluster.local/cart` and the interval is 5s. As a part of the probe execution, `GET` requests are made to the specified URL. If no HTTP response is found within 5s, the probe status is considered as 'failed'. If all the probe executions pass, then the probe status is considered as 'passed'. You can find other probe details in the properties field.
 :::
 
 22. Select mode as **Continuous**. Click **Apply changes**.
