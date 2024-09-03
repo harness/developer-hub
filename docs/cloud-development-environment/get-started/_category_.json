@@ -1,11 +1,11 @@
 {
-    "label": "Get started with IDP",
+    "label": "Get started with CDE",
     "collapsible": "true",
     "collapsed": "true",
     "position": 10,
     "link": {
       "type": "generated-index",
-      "title": "Get started with Harness Internal Developer Portal"
+      "title": "Get started with Harness Cloud Development Environment"
     },
     "customProps": {}
   }
