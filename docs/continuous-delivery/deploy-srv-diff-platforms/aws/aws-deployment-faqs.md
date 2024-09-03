@@ -6,7 +6,7 @@ sidebar_position: 100
 
 This article addresses some frequently asked questions about AWS deployments in Harness.
 
-### ### How are the number of service instances calculated for Lambda Deployments?
+### How are the number of service instances calculated for Lambda Deployments?
 
 The number of service instances for Lambda Deployments is determined by the number of concurrent executions of the Lambda function. Harness will automatically scale the number of service instances based on the traffic to the function.
 
