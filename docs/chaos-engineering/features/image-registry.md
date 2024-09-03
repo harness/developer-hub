@@ -19,6 +19,10 @@ An image registry is a repository that hosts container images that are used by c
 
 Follow the steps below to use [custom values](#custom-values-for-image-registry) or [default values](#default-values-for-image-registry) of the image registry in your chaos experiment.
 
+### Why use an Image Registry?
+
+When the image you need to use for your chaos experiment is not public, and the chaos experiments are required for internal consumption, you can configure image registry to use custom values, which allows you to choose a private image registry.
+
 ## Custom values for image registry
 ### Step 1: Navigate to Image Registry
 
