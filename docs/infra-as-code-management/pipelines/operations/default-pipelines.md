@@ -16,14 +16,9 @@ A pipeline containing the `destroy` command will remove all saved infrastructure
 :::
 
 ### Prerequisites
-
-Before you can use the IaCM Default Pipelines, ensure that:
-
-1. You have the necessary permissions to view and execute pipelines in your project. `e.g. RBAC via the API`
-2. You have created pipelines to Provision, Plan and Destroy and Check for drift to be assigned as defaults.
+- You have created pipelines to Provision, Plan and Destroy and Check for drift to be assigned as defaults.
 
 ### Configure and run default pipelines
-
 <Tabs>
 <TabItem value="Interactive guide">
 <iframe 
