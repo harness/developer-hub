@@ -16,9 +16,11 @@ A pipeline containing the `destroy` command will remove all saved infrastructure
 :::
 
 ### Prerequisites
+
 - You have created pipelines to Provision, Plan and Destroy and Check for drift to be assigned as defaults.
 
 ### Configure and run default pipelines
+
 <Tabs>
 <TabItem value="Interactive guide">
 <iframe 
@@ -35,15 +37,22 @@ A pipeline containing the `destroy` command will remove all saved infrastructure
 ></iframe>
 </TabItem>
 <TabItem value="Step-by-step">
-1. **Access the Default Settings:** Navigate to the 'Default Settings' section under IaCM in your project.
-2. **Define Default Pipelines:** You can either select existing pipelines or generate OOTB default pipelines for the following operations:
-    - **Provision:** Pipeline for initializing, planning, approving, and applying changes.
-    - **Destroy:** Pipeline for initializing, planning, approving, and destroying infrastructure.
-    - **Detect Drift:** Pipeline for detecting configuration drifts.
-    - **Plan:** Pipeline for running the plan phase only.
-3. **Validate Pipelines:** Ensure the selected or generated pipelines meet the criteria:
-    - Contains at least one IaCM stage.
-    - Workspace is set as a runtime input.
+
+### Set your project-level default pipelines
+1. In your IaCM module, select **Project settings**, then select **IaCM Defaults**.
+2. Select the appropriate pipelines for your default categories and frameworks (OpenTofu / Terraform):
+   - **Plan:** Pipeline for running the plan phase only.
+   - **Provision:** Pipeline for initializing, planning, approving, and applying changes.
+   - **Detect Drift:** Pipeline for detecting configuration drifts.
+   - **Destroy:** Pipeline for initializing, planning, approving, and destroying infrastructure.
+
+### Review your default pipelines in your workspace
+3. Select **Workspaces**, then select one of your workspaces to run your defaults pipelines for.
+4. Select the **Configuration** tab and scroll down to **Default pipelines** to inspect or override your default pipelines at the selected workspace-level (this will not override the project-level default pipelines).
+
+### Run your default pipelines in your workspace
+5. While in your workspace, run your default pipelines against it with the `Plan`, `Provision` and `Check for Drift` buttons.
+
 </TabItem>
 </Tabs>
 
