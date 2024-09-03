@@ -142,7 +142,7 @@ async function config() {
                   to: 'docs/security-testing-orchestration',
                 },
                 {
-                  label: 'Software Supply Chain Assurance',
+                  label: 'Supply Chain Security',
                   to: 'docs/software-supply-chain-assurance',
                 },
                 {
@@ -338,7 +338,7 @@ async function config() {
                   to: 'https://harness.io/products/security-testing-orchestration',
                 },
                 {
-                  label: 'Software Supply Chain Assurance',
+                  label: 'Supply Chain Security',
                   to: 'https://www.harness.io/products/software-supply-chain-assurance',
                 },
                 {

@@ -16,12 +16,12 @@ Upon the completion of your pipeline execution, the outcomes derived from the SS
 * Check the SLSA verification status.
 
 
-![Pipeline execution SSCA tab](./static/pipeline-execution-artifacts-tab-.png "pipeline-execution-artifacts-tab")
+![Pipeline execution Supply Chain tab](./static/pipeline-execution-artifacts-tab-.png "pipeline-execution-artifacts-tab")
 
 
 ## View SBOM and Drift analysis
 
-The **SBOM Orchestration step** in your pipeline leads to the creation of the SBOM and drift analysis report. You can view these details specific to your artifact or repository in the Supply Chain Assurance tab. Additionally, this tab provides an overview of the total number of components and licenses detected from your SBOM drift report.
+The **SBOM Orchestration step** in your pipeline leads to the creation of the SBOM and drift analysis report. You can view these details specific to your artifact or repository in the Supply Chain tab. Additionally, this tab provides an overview of the total number of components and licenses detected from your SBOM drift report.
 
 
 
