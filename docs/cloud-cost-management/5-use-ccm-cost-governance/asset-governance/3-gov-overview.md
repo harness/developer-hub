@@ -34,6 +34,10 @@ Here is an in-depth explanation of the Overview page and the information it disp
     - **Ignored list tag** if the recommendation is added to the "Ignored list".
     - Option to **view details** about the recommendation like which Account (in case of Azure, AWS)/ Project (in case of GCP), resource (AWS, Azure) the recommendation was applied to, the enforcements, etc.
     - **Custom Recommendations**: All Custom Recommendations show up with a "Custom" badge after successful creation. 
+:::important note
+  - In case of AWS and Azure, Account/ Subscription and region combination with greater than 300$ of monthly spend are considered for recommendations.
+  - In case of GCP, Project with greater than 300$ of monthly spend is considered for recommendations.
+:::
 
 To apply a recommendation, select the row. The recommendation opens on the **Recommendations** page. To learn how to enforce this recommendation, go to [Governance recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/governance).
 
@@ -55,6 +59,9 @@ These custom recommendations not only show up in the recommendation section but 
 :::note
 - Currently, per account, a maximum of 10 custom recommendations can be created.
 - Custom Recommendations can only be created for the resources supported for cost correlation as listed below. In addition to that, multi-policy rules cannot be converted into Custom Recommendations.
+- It can take up to 24 hours for a custom recommendation to appear.
+- In case of AWS and Azure, Account/ Subscription and region combination with greater than 300$ of monthly spend are considered for recommendations.
+- In case of GCP, Project with greater than 300$ of monthly spend is considered for recommendations.
 :::
 
 ## Cost Correlation
