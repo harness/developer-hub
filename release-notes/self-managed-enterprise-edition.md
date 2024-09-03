@@ -14,6 +14,23 @@ import delete_project from './static/delete-project.png'
 
 These release notes describe recent changes to Harness Self-Managed Enterprise Edition, NextGen.
 
+:::danger important upgrade instructions for versions 0.17.x and above
+
+When upgrading to SMP versions 0.17.x and above, the installation may fail if you have any admission webhooks configured for Ingress that do not permit Ingress objects with different names but identical paths. To prevent installation issues, please follow these steps before proceeding with the upgrade:
+	
+  1.	Run the `update-ingress-objects.sh` script.
+	
+  2.	The script will prompt you to enter the namespace where Harness is installed.
+	
+  3.	You will then be asked to provide the version you are upgrading to. For instance, if you are upgrading to Harness 0.20.0, you should input 0.20.0.
+	
+  4.	The script will automatically update the Ingress objects as needed.
+
+You can find the script in the Harness 0.20.0 release charts at `scripts/update-ingress-objects.sh`, or you can run it directly from this URL: [update-ingress-objects.sh](https://raw.githubusercontent.com/harness/helm-charts/main/src/harness/scripts/update-ingress-objects.sh).
+
+Note: Ensure you have access to the Kubernetes cluster where Harness is running and have the necessary permissions to GET, DELETE, and APPLY Ingress objects.
+:::
+
 :::danger important upgrade instructions for patch releases 0.15.1, 0.14.6, 0.13.4, and 0.12.1
 
 If you are currently on version 0.12.0, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.12.1.
