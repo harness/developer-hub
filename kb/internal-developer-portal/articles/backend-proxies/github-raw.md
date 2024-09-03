@@ -1,11 +1,11 @@
 ---
 title: GitHub Raw Files
-description: Retrieve raw JSON files from github repositories
+description: Retrieve raw JSON files from GitHub repositories
 ---
 
 # Overview
 
-Instead of using an API to retrieve JSON data with a backend proxy, we can store JSON files in github and use an HTTP call to get the raw file back as pure JSON.
+Instead of using an API to retrieve JSON data with a backend proxy, we can store JSON files in GitHub and use an HTTP call to get the raw file back as pure JSON.
 
 ## Setup
 
@@ -30,10 +30,10 @@ What we are doing here is:
 
 1. Declaring a proxy called `github-raw`
 2. Targeting a base URL of `https://raw.githubusercontent.com`
-3. Rewriting any request to `/api/proxy/github-raw/+` to `https://raw.githubusercontent.com/+`
+3. Rewriting any request from `/api/proxy/github-raw/` to `https://raw.githubusercontent.com/` and appending anything after `github-raw/` to the `githubusercontent.com/` URL
 4. Passing an authentication header using the variable `PROXY_GITHUB_TOKEN`
 
-We will need to create a variable below called `PROXY_GITHUB_TOKEN` and select the Harness account secret that holds the value. This need to be a GitHub PAT that can resolve files from your target repositories.
+We will need to create a variable below called `PROXY_GITHUB_TOKEN` and select the Harness account secret that holds the value. This needs to be a GitHub PAT that can resolve files from your target repositories.
 
 After configuring the above your plugin configuration should look like this:
 
