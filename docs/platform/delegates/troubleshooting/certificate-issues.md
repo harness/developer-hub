@@ -222,3 +222,16 @@ To divide a CA bundle file into individual files, run the command below.
 csplit -z ca-bundle.crt /#/ '{*}'.     # split to multiple files\
 sed -i '/^$/d' xx*                     # remove blank lines
 ```
+
+## Certificate issues when using vanity URLs
+
+If you encounter certificate errors with a vanity URL (`*.harness.io`) that was working fine with `app.harness.io`, follow these steps:
+
+1. **Generate Certificates for the Vanity URL:**
+   - Generate SSL/TLS certificates for the specific vanity URL (`*.harness.io`).
+   - Ensure they are correctly signed by a trusted Certificate Authority (CA) or configured as trusted if self-signed.
+
+2. **Mount the Certificates:**
+   - Use the [Harness documentation](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates) to mount the certificates in your Kubernetes build infrastructure.
+
+Following these steps should resolve the certificate errors with your vanity URL.
