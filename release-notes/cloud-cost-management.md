@@ -47,6 +47,18 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## July 2024
 
+### Version 1.25.0
+
+#### New features and enhancements
+
+- **Dry Run and Run Once Buttons**: Resolved an issue where the "Dry Run" and "Run Once" buttons were not enabled if there were issues with policy YAML validation. [CCM-18754]
+- **Regions Filter**: Added a new Regions filter in the Recommendations Filter Panel to allow more granular filtering. [CCM-18591]
+- **Autostopping UI Changes**: Improved the UI for Autostopping, including updates to the page index on the URL to match the page in the list, a wider first column based on available space, and the "Last Activity" column now reads the `updated_at` value directly instead of calling a separate API. [CCM-18585]
+
+#### Fixed issues
+
+- **Governance Evaluations List**: Resolved an issue where the page number was not resetting when changing the time filter on the Governance Evaluations List page, which resulted in retrieving the incorrect page with no results. [CCM-18571]
+
 ### Version 1.23.0
 
 #### New features and enhancements
