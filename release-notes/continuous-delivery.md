@@ -49,6 +49,10 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ### Version 1.54.2
 
+#### Early access features
+
+- Previously, users could not retry or re-execute the service step. This could result in a failed pipeline execution with no way to retry, or re-execute this “pre-condition” step. Now, failure strategy options have been added to the pipeline service configuration. This feature is behind the feature flag `CDS_SERVICE_INFRA_FAILURE_STRATEGY`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
 #### Fixed issues
 
 - The Helm chart deployments failed when the `values` YAML file contained double quotes. This issue is resolved. (CDS-100174, ZD-68747, ZD-68940)
