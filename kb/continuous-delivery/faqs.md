@@ -16,6 +16,10 @@ For an overview of Harness concepts, see [Learn Harness' key concepts](/docs/pla
 
 ### General FAQs
 
+#### How can I ensure the state file is properly saved in the Terraform Enterprise (TFE) workspace when running a Terraform apply script locally on the Harness delegate?
+
+One thing to check is whether the Harness delegate has the necessary permissions to write to the `dev-workflow-aws-harness` workspace. If the delegate lacks the required permissions, the state file won't be uploaded to the TFE workspace.
+
 #### Where can one find instanceKey and infrastructureMappingId values in Trigger Rollback API?
 
 The Instance Key is a combination of the Infrastructure Key and the instance information available in the Instances Table.
