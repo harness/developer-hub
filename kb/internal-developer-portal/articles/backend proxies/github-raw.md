@@ -45,6 +45,16 @@ Now that we have the proxy defined, we can use it in a workflow definition to re
 
 Before, you might have had a parameter with the following hard-coded list of options:
 
+```
+properties:
+  some-property:
+    type: string
+    title: Some Property
+    enum:
+      - item1
+      - item2
+```
+
 Now with our custom backend for GitHub raw files, we can query GitHub to get our JSON and pull out the relevant keys to show as options in our picker:
 
 ```
@@ -53,9 +63,9 @@ properties:
     type: string
     ui:field: SelectFieldFromApi
     ui:options:
-    title: Some Property
-    description: An input for users to select
-    path: "proxy/github-raw/<org name>/<repo name>/<branch name>/<path to JSON file>"
+      title: Some Property
+      description: An input for users to select
+      path: "proxy/github-raw/<org name>/<repo name>/<branch name>/<path to JSON file>"
 ```
 
 The above is if your JSON is a simple list of values:
