@@ -58,6 +58,22 @@ CLB AZ down takes down the AZ (Availability Zones) on a target CLB for a specifi
 
 <FaultDetailsCard category="aws">
 
+### DynamoDB replication pause
+
+DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.
+- When chaos experiment is being executed, any changes to the DynamoDB table will not be replicated in different regions, thereby making the data in the DynamoDB inconsistent.
+- You can execute this fault on a DynamoDB table that is global, that is, there should be more than one replica of the table.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+DynamoDB replication pause determines the resilience of the application when data (in a database) that needs to be constantly updated is disrupted.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### EBS loss by ID
 
 EBS loss by ID disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration.
@@ -728,6 +744,26 @@ ECS update task role allows you to modify the IAM task role associated with an A
   - Testing how your application handles changes in IAM role permissions and access.
   - Verifying the authorization settings of your system when the IAM role is updated.
   - Evaluating the impact of changes in IAM roles on the security and compliance of your application.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### Generic experiment template
+
+Generic experiment template provides a template to natively inject faults using FIS for different services, such as EC2, EBS, DynamoDB, and so on.
+- You need to create an FIS template and store it.
+- Provide parameters to the pre-created FIS templates and execute experiments.
+- You can specify the template ID and region on Harness to execute the experiments using these FIS templates.
+- You can monitor and report the results of executing the experiment from these FIS templates.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Inject faults natively using FIS services.
+- Monitor and report the results of executing the experiment from the FIS templates.
+- Build chaos experiments with pre-defined templates or build experiments from scratch using FIS service.
 
 </Accordion>
 </FaultDetailsCard>
