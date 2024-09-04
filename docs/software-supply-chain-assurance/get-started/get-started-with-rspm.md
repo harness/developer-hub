@@ -1,7 +1,7 @@
 ---
 title: Get started with RSPM
 sidebar_label: Get started with RSPM
-description: Get started with RSPM Onboarding in Harness SSCA
+description: Get started with RSPM Onboarding in Harness SCS
 sidebar_position: 4
 ---
 
@@ -15,7 +15,7 @@ The current onboarding process supports only GitHub. Support for other integrati
 
 ## Configure Your Integrations
 
-Navigate to the “Get Started” section in the SSCA module. The process happens in two steps, which you can initiate by clicking on “Get Started.”
+Navigate to the “Get Started” section in the SCS module. The process happens in two steps, which you can initiate by clicking on “Get Started.”
 
 
 <DocImage path={require('./static/get-started-step-1.png')} width="100%" height="100%" title="Click to view full size image" />
@@ -28,16 +28,16 @@ Navigate to the “Get Started” section in the SSCA module. The process happen
 
 <DocImage path={require('./static/get-started-step-2.png')} width="100%" height="100%" title="Click to view full size image" />
 
-You will be redirected to the Harness-SSCA GitHub app to configure the app for connection with Harness SSCA.
+You will be redirected to the Harness-SCS GitHub app to configure the app for connection with Harness SCS.
 
 
-### Configuring the GitHub App: Harness-SSCA
+### Configuring the GitHub App: Harness-SCS
 
-Configuring the Harness-SSCA app allows SSCA to connect with your GitHub and fetch necessary information for setting up repository posture management.
+Configuring the Harness-SCS app allows SCS to connect with your GitHub and fetch necessary information for setting up repository posture management.
 
 
 
-1. Visit the [Harness-SSCA GitHub app](https://github.com/apps/harness-ssca) and click the ‘Configure’ button.
+1. Visit the [Harness-SCS GitHub app](https://github.com/apps/harness-ssca) and click the ‘Configure’ button.
 
 <DocImage path={require('./static/get-started-step-3.png')} width="70%" height="70%" title="Click to view full size image" />
 
