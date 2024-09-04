@@ -61,7 +61,7 @@ For more information on importance and types of probes, go to [Resilience Probes
 
 Experiment log refers to metadata generated when a chaos experiment is in progress. These logs are stored in separate files, which are bound to the faults of the experiment. They contain information such as the steps of execution of the fault, errors caused during the execution of the fault, and so on. The log files are named based on the unique fault name mentioned in the experiment.
 
-For more information on infrastructure logs, go to [Infrastructure Logs]](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/#logs).
+For more information on infrastructure logs, go to [Infrastructure Logs](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/#logs).
 
 ### Application Map
 
