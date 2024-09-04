@@ -160,6 +160,8 @@ This release includes the following Harness module and component versions.
 | Platform Service | 1.34.2 |
 | Access Control Service | 1.56.1 |
 | Delegate | 24.07.83611 |
+| Gitops Service | 1.15.2 |
+| Gitops Agent | 0.78.0 |
 | Change Data Capture | 1.25.1 |
 | STO Core | 1.106.0 |
 | Test Intelligence Service | 1.27.0 |
