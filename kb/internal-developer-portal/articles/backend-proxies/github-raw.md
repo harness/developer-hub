@@ -76,6 +76,58 @@ The above is if your JSON is a simple list of values:
 
 If you have complex JSON you can follow the usage pattern [described here](https://developer.harness.io/docs/internal-developer-portal/flows/dynamic-picker/#parsing-api-response-using-filters).
 
+## Alternative Configurations
+
+If you don't want to have to pass the organization and project identifier in every workflow, or you want to lock the proxy down to a specific org or repo, we can just add more of the URL to the proxy config, and pass less in the picker path.
+
+### Organization specific
+
+Proxy config:
+
+```
+proxy:
+  endpoints:
+    /github-raw:
+      target: https://raw.githubusercontent.com/<org name>/
+```
+
+Usage:
+
+```
+properties:
+  some-property:
+    type: string
+    ui:field: SelectFieldFromApi
+    ui:options:
+      title: Some Property
+      description: An input for users to select
+      path: "proxy/github-raw/<repo name>/<branch name>/<path to JSON file>"
+```
+
+### Repository specific
+
+Proxy config:
+
+```
+proxy:
+  endpoints:
+    /github-raw:
+      target: https://raw.githubusercontent.com/<org name>/<repo name>/<branch name>
+```
+
+Usage:
+
+```
+properties:
+  some-property:
+    type: string
+    ui:field: SelectFieldFromApi
+    ui:options:
+      title: Some Property
+      description: An input for users to select
+      path: "proxy/github-raw/<path to JSON file>"
+```
+
 # Conclusion
 
-With the above backend proxy, you can store raw JSON in git and reference it across your IDP workflows. This is especially useful if you have common sets of inputs you need to use across many workflows and want to have a single source of truth.
+With the above backend proxy, you can store raw JSON in GitHub and reference it across your IDP workflows. This is especially useful if you have common sets of inputs you need to use across many workflows and want to have a single source of truth.
