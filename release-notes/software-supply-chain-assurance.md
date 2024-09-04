@@ -7,7 +7,7 @@ sidebar_position: 15
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/software-supply-chain-assurance/rss.xml" />
 
-These release notes describe recent changes to Harness Software Supply Chain Assurance.
+These release notes describe recent changes to Harness Supply Chain Security.
 
 :::info About Harness Release Notes
 
