@@ -69,6 +69,8 @@ Let us go through the flow of creating a CDE for our sample application, which i
 
 8. After clicking on **Create Gitspace**, you’ll be redirected to the Gitspace Details page, where you can view the events and logs as the Gitspace is being created. Once it is ready, you can open the Gitspace by clicking the **Open VS Code Online** or **Open VS Code Desktop** button at the top right of the page.
 
+![](./static/gitspaces-starting.png)
+
 8. This will open the **Gitspace**. Click on **Yes, I trust the authors** and **Mark Done** to get started. You can then start coding in the IDE as you normally would.
 
 ## Develop in the Gitspace
@@ -142,15 +144,30 @@ git config --global user.name "Your Name"
 
 1. To save on compute you can stop a Gitspace when not in use and start it again at a later time. You will not lose any uncommitted changes across Gitspace restarts. 
 
-2. On the Gitspaces Page click on the 3 dots and select Stop Gitspace.
+2. On the Gitspaces Page click on the 3 dots and select **Stop Gitspace**.
+
+![](./static/three-dots-stop-gitspace.png)
+
+![](./static/stop-gitspace.png)
+
+3. On the Gitspace Details Page under **More Actions**, there's option to **Stop Gitspace**.
+
+![](./static/stop-gitspace-gs-details.png)
+
 
 There are three ways of **starting the Gitspace**: 
 
 1. On the Gitspaces Page click on the 3 dots and select Start Gitspace.
 
+![](./static/three-dots-start-gitspace.png)
+
+![](./static/start-gitspaces.png)
+
 2. Click on a stopped Gitspace and you’ll see the Start Gitspace button in the popup. 
 
 3. On the Gitspace Details page, Start Gitspace is available in the More Options menu.
+
+![](./static/start-gitspaces-gs-details.png)
 
 ## Delete a Gitspace
 
