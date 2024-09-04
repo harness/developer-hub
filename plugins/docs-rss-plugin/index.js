@@ -75,22 +75,6 @@ async function docsPluginEnhanced(context, options) {
             description,
             // },
           } = post;
-          let newDate;
-
-          if (!date) {
-            newDate = new Date();
-          } else {
-            newDate = new Date(date);
-          }
-
-          if (isNaN(newDate.getTime())) {
-            newDate = new Date();
-          }
-          // else {
-          //   newDate = newDate.toDateString();
-          // }
-
-          // console.log(new Date(newDate), newDate);
 
           const content = await readOutputHTMLFile(
             permalink.replace(siteConfig.baseUrl, ""),
@@ -104,7 +88,7 @@ async function docsPluginEnhanced(context, options) {
             id,
             guid: normalizeUrl([siteUrl, permalink]), ///added later
             link: normalizeUrl([siteUrl, permalink]),
-            date: newDate,
+            date: new Date(date),
             description,
             // Atom feed demands the "term", while other feeds use "name"
             category: tags
