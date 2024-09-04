@@ -1,7 +1,7 @@
 ---
 title: Use HCE with Service Reliability Management (SRM)
 sidebar_label: Use HCE with Service Reliability Management
-sidebar_position: 35
+sidebar_position: 38
 description: Integrating HCE with SRM
 redirect_from:
 - /docs/chaos-engineering/integrations/use-chaos-with-srm
