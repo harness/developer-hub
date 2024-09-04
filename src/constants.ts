@@ -12,7 +12,7 @@ export enum MODULES {
   ce = 'ce',
   sei = 'sei',
   cet = 'cet',
-  ssca = 'scs',
+  ssca = 'ssca',
   idp = 'idp',
   iacm = 'iacm',
   code = 'code',

@@ -1,6 +1,6 @@
 ---
-title: Software Supply Chain Assurance release notes
-sidebar_label: Software Supply Chain Assurance
+title: Supply Chain Security release notes
+sidebar_label: Supply Chain Security
 date: 2023-09-18T10:00
 sidebar_position: 15
 ---
