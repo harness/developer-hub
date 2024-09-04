@@ -15,7 +15,17 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: August 29, 2024
+#### Last updated: September 04, 2024
+
+## September 2024
+
+### Relay Proxy
+
+#### Version 2.0.4
+
+**Fixed Issues**
+
+- Fixes an issue where the Proxy could send SSE events with truncated flag identifiers if the flag identifiers contained an underscore e.g. `HELLO_WORLD`. When the Primary Proxy starts up it pulls down config from Saas, compares it with the config in redis and generates SSE events to make sure SDKs don't miss out on changes. However in this scenario if the flag identifier contained an underscore e.g. `HELLO_WORLD` the SSE event would indicate a change for the flag `HELLO`.
 
 ## August 2024
 
