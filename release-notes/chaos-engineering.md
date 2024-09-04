@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-07-23T10:00
+date: 2024-08-30T10:00
 sidebar_position: 5
 ---
 
@@ -20,6 +20,14 @@ The release notes describe recent changes to Harness Chaos Engineering.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## August 2023
+
+### Version 1.44.3
+
+#### New features and enhancements
+
+- Enables the global blackhole chaos to block inbound traffic. (CHAOS-6381)
 
 ## July 2024
 

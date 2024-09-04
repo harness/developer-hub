@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2024-06-06T10:00
+date: 2024-08-29T22:00
 sidebar_position: 6
 ---
 
@@ -19,6 +19,23 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 ## August 2024
+### Version 1.28.7
+
+#### New features and enhancements
+
+- **Custom Recommendations in Cloud Asset Governance**: We have introduced custom recommendations in Cloud Asset Governance, allowing users to create, manage, and operationalize their own policies. A new custom recommendations page has been added where users can view, manage, and drill down into their custom recommendations based on various filters. [CCM-18955]
+
+- **Support for Multi-Status in Governance Evaluation**: We've added support for multiple statuses within a single Governance Evaluation, enabling more detailed policy evaluations. [CCM-18942]
+
+- **GCP Data Sync Migration to Gen2**: We have successfully migrated our GCP data sync Cloud Function from Gen1 to Gen2, significantly increasing the timeout from 9 minutes to 60 minutes, enhancing the reliability and performance of GCP data sync. [CCM-13672]
+
+#### Fixed issues
+
+- **Budget Percentage Display Issue**: Previously, when a budget amount was set to 0, the percentage spend comparison displayed as "Infinity." This has been fixed. [CCM-]
+
+- **Cluster Data Query Optimisation**:  We've started using Mongo hint to optimize the cluster billing calculation query, ensuring much faster calculation. [CCM-19140]
+
+- **Cost Category Name Updates**: There was an issue with cost category name updates that affected the rules in perspectives where the cost category was referenced. This issue has now been fixed. [CCM-18977]
 
 ### Version 1.27.2
 
@@ -29,6 +46,18 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Commitment Orchestrator Tooltip Accuracy: Enhanced the chart re-rendering after applying filters, hence ensuring accurate tooltips. [CCM-18739]
 
 ## July 2024
+
+### Version 1.25.0
+
+#### New features and enhancements
+
+- **Dry Run and Run Once Buttons**: Resolved an issue where the "Dry Run" and "Run Once" buttons were not enabled if there were issues with policy YAML validation. [CCM-18754]
+- **Regions Filter**: Added a new Regions filter in the Recommendations Filter Panel to allow more granular filtering. [CCM-18591]
+- **Autostopping UI Changes**: Improved the UI for Autostopping, including updates to the page index on the URL to match the page in the list, a wider first column based on available space, and the "Last Activity" column now reads the `updated_at` value directly instead of calling a separate API. [CCM-18585]
+
+#### Fixed issues
+
+- **Governance Evaluations List**: Resolved an issue where the page number was not resetting when changing the time filter on the Governance Evaluations List page, which resulted in retrieving the incorrect page with no results. [CCM-18571]
 
 ### Version 1.23.0
 

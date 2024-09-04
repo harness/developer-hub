@@ -38,6 +38,3 @@ The Following SDKs **do _not_ currently support** Self-Managed Enterprise Editio
 - Apex
 - Erlang
 - .Net
-
-**Note** that we support SDKs for self-managed platform on an as-needed basis. Just notify your account team and we will work with you to support the necessary SDKs.
-
