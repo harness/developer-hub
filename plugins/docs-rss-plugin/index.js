@@ -76,6 +76,12 @@ async function docsPluginEnhanced(context, options) {
             // },
           } = post;
 
+          if (date !== undefined && isNaN(new Date(date).getTime())) {
+            console.log(
+              `Invalid Date in markdown: ${JSON.stringify(post.frontMatter)}`
+            );
+          }
+
           const content = await readOutputHTMLFile(
             permalink.replace(siteConfig.baseUrl, ""),
             outDir,
