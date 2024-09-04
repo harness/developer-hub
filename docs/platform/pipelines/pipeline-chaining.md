@@ -179,6 +179,10 @@ pipeline:
 ```
 </details>
 
+## Re-running Failed Stages in Chained Pipelines
+
+If you re-run the execution from a failed stage, and that stage is configured with a chained pipeline, the entire child pipeline will re-run, not just the specific stage within the child pipeline.
+
 ## Considerations when executing remote chained pipelines
 
 Consider the following points for executing remote (stored in SCM) chained pipelines:
