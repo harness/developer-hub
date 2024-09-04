@@ -12,6 +12,17 @@ This section discusses Openshift Security Context Constraint that allows adminis
 Security context constraints allow administrators to control permissions for pods in a cluster. A service account provides an identity for processes that run in a pod.
 The <code>default</code> service account is used to run applications within a project. You can run other applications in the same project, but if you don't want to override the privileges used for all applications, create a new service account and grant special rights to the project where the application is run.
 
+:::tip
+You can leverage all the [permissions mentioned](#run-service-account-as-a-cluster-admin) later for fault execution as well as [service discovery](/docs/chaos-engineering/features/service-discovery/user-defined-service-account). The SCC described below is a superset, which means only some of them are required for service discovery.
+:::
+
+we are leeraging permsisions for
+discovery
+fault exec
+disc- uses some of these capabilities
+fault exec- all cap are need
+create scc will
+
 ### Create a new service account
 
 Execute the below commands:

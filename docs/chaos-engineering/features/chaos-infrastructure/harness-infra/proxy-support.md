@@ -1,28 +1,14 @@
 ---
-title: Agent Proxy Installation
+title: Agent Proxy
 sidebar_position: 3
-description: Agent proxy and its usage.
+description: Agent proxy installation and its usage.
 ---
 
-This topic describes how you can install agent proxy when you have restricted network condition.
+This topic describes when an agent proxy is required and how you can install it.
 
-## Agent Proxy for Harness Delegate
-You can enable proxy settings in Harness Delegate driven chaos infrastructure (or Harness Delegate) that enables you to restrict all the outbound traffic to go through the proxy. In the context of Harness Delegate, the agent proxy is known as **Chaos Runner**.
+When you have a restricted network, and you don't want to expose all the infrastructure of your application to the public, and when you want all the outbound connections to go from a single place, you can use your own proxy or an agent proxy.
 
-When you have a restricted network, and you don't wish to expose all the infrastructure of your application to the public, and when you want all the outbound connections to go from a single place, you can use agent proxy.
-
-Harness Delegate supports standard proxy variables `HTTP_PROXY` , `HTTPS_PROXY`, and `NO_PROXY`. It connects with the Kubernetes API server and the [Harness portal](https://app.harness.io).
-
-In general, the Harness portal connection goes through the proxy and you will need to specify `NO_PROXY` which is Kubernetes service IP in default namespace.
-
-You can also provide `PROXY_URL` setting that is used to communicate with the Harness portal.
-
-    ![](./static/mtls.png)
-
-    ![](./static/proxy.png)
-
-You can install the agent proxy for one account and provide the URL of the agent proxy in the configuration file for the Harness Delegate.
-
+The diagram below describes how the **Discovery Agent** and **Chaos Runner** communicate with Harness Control Plane.
 
     ![](./static/agent-proxy.png)
 
@@ -32,22 +18,32 @@ The diagram above describes the following:
 - If your cluster does not have connectivity with the Harness portal (Cluster B in the diagram), then such requests goes through the proxy.
 
 :::tip
-Chaos runner supports token-based authentication with the Harness Platform. If you want to add another authentication on top of Harness authentication, you can [enable mTLS](https://developer.harness.io/docs/platform/delegates/secure-delegates/delegate-mtls-support/) for the account.
+Chaos runner supports token-based authentication with the Harness Platform. If you want to add another authentication on top of Harness authentication, you can [enable mTLS](/docs/chaos-engineering/features/chaos-infrastructure/harness-infra/mtls-support) for the account.
 :::
 
-## Agent Proxy for Discovery Agent
+## Delegate-Driven Chaos Runner (DDCR)
+You can enable proxy settings in DDCR that enables you to restrict all the outbound traffic to go through the proxy.
 
-In the context of Discovery agent, the agent proxy is known as **Discovery Collector**.
+DDCR supports standard proxy variables `HTTP_PROXY` , `HTTPS_PROXY`, and `NO_PROXY`.
 
-If you want to add another authentication on top of Harness authentication, you can achieve this using mTLS for both Chaos Runner and Discovery Collector.
+In general, the Harness portal connection goes through the proxy and you will need to specify `NO_PROXY` which is Kubernetes service IP in default namespace.
 
-You can configure mTLS in the Chaos Runner or Discovery Collector. Create a Kubernetes secret with the certificate and key in the target cluster and provide the following details.
+    ![](./static/proxy.png)
 
-    ![](./static/mtls-1.png)
+Instead, you can also provide `PROXY_URL` setting that is used to communicate with the Harness portal.
 
-If you don't want to create Kubernetes secrets in multiple clusters, you can install the Chaos Runner agent proxy with mTLS key and certificate and provide the proxy URL in proxy setting.
+    ![](./static/mtls.png)
 
-    ![](./static/proxy-2.png)
+## Discovery Agent
 
+You can enable proxy settings in Discovery Agent that enables you to restrict all the outbound traffic to go through the proxy.
 
+Discovery Agent supports standard proxy variables `HTTP_PROXY` , `HTTPS_PROXY`, and `NO_PROXY`.
 
+In general, the Harness portal connection goes through the proxy and you will need to specify `NO_PROXY` which is Kubernetes service IP in default namespace.
+
+    ![](./static/proxy.png)
+
+Instead, you can also provide `PROXY_URL` setting that is used to communicate with the Harness portal.
+
+    ![](./static/mtls.png)
