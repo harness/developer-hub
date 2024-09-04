@@ -2,17 +2,48 @@ import { Horizon } from "./roadmapData";
 
 export const FfData: Horizon = {
   Now: {
-    description: "Q2 2024, May-Jul 2024",
+    description: "Q3 2024, Aug-Oct 2024",
     feature: [
       {
-        tag: [{ value: "Target Group Enhancements" }],
-        title: "Extend Operator Support (AND)",
-        description: "New operator support to help with complex rules, conditions and clauses on targets.",
+        tag: [{ value: "SDKs" }],
+        title: "Improve SDK Reliability and Hardening",
+        description: "Hardening our SDKs for reliability and performance for our customers for various SDKs.",
+      },
+    ],
+  },
+  Next: {
+    description: "Q4 2024, Nov-Jan 2025",
+    feature: [
+      {
+        tag: [{ value: "Platform Integration" }],
+        title: "See Harness Feature Management and Experimentation Roadmap for details",
+        description: "Learn more about the better together story with Harness and Split.",
+      },
+    ],
+  },
+  Later: {
+    description: "Q1 2025+, Feb 2025 & beyond",
+    feature: [
+      {
+        tag: [{ value: "Platform Integration" }],
+        title: "See Harness Feature Management and Experimentation Roadmap for details",
+        description: "Learn more about the better together story with Harness and Split.",
+      },
+    ],
+  },
+  Released: {
+    description: "What has been released",
+    feature: [
+      {
+        tag: [{ value: "Experimentation" }],
+        title: "A/B Testing",
+        description:
+          "Achieved through acquistion of Split FME product.",
       },
       {
-        tag: [{ value: "Pipelines" }],
-        title: "Pipeline Templates",
-        description: "Out of the box pipeline templates to easily setup automated workflows.",
+        tag: [{ value: "OpenSource" }],
+        title: "OpenFeature SDK Support",
+        description: "We now support multiple OpenFeature SDKs through our acquistion of Split FME product.",
       },
       {
         tag: [{ value: "Onboarding" }],
@@ -21,62 +52,14 @@ export const FfData: Horizon = {
       },
       {
         tag: [{ value: "Git Experience" }],
-        title: "Git Experience 2.0",
+        title: "Git Experience with Webhooks",
         description: "Increase the speed of our git sync across repos and general improvements for development teams to work together.",
       },
-    ],
-  },
-  Next: {
-    description: "Q3 2024, Aug-Oct 2024",
-    feature: [
       {
-        tag: [{ value: "Flag and Target Management" }],
-        title: "Flag Tag Management v2",
-        description:
-          "Iterative improvements on existing flag tag management such as toggling a group of flags.",
+        tag: [{ value: "Target Group Enhancements" }],
+        title: "Extend Operator Support (AND)",
+        description: "New operator support to help with complex rules, conditions and clauses on targets.",
       },
-      {
-        tag: [{ value: "Experimentation" }],
-        title: "A/B Testing",
-        description:
-          "Improved A/B testing framework for segmenting tests between targets.",
-      },
-      {
-        tag: [{ value: "SDKs" }],
-        title: "SDK Troubleshooting with AIDA",
-        description:
-          "Use AIDA to help you diagnose SDK issues and improvements in your code.",
-      },
-      {
-        tag: [{ value: "OpenSource" }],
-        title: "OpenFeature SDK Support",
-        description: "Besides GoLang OpenFeature SDK support we will build out more language support based on requests from our community.",
-      },
-      {
-        tag: [{ value: "OpenSource" }],
-        title: "Gitness + Feature Flags",
-        description: "Add boolean flags to Gitness to improve how our community develops and improves their experience.",
-      },
-    ],
-  },
-  Later: {
-    description: "Q4 2024+, Nov 2024 & beyond",
-    feature: [
-      {
-        tag: [{ value: "Platform Integration" }],
-        title: "Chaos Engineering and Feature Flag Integration 2.0",
-        description: "Ability to automatically test the resilience of a feature based on a feature flag change.",
-      },
-      {
-        tag: [{ value: "Platform Integration" }],
-        title: "Feature Flag Integration with Software Engineering Insights",
-        description: "Ability to integrate with the SEI module to understand how feature flags impact team's velocity and other DORA metrics.",
-      },
-    ],
-  },
-  Released: {
-    description: "What has been released",
-    feature: [
       {
         tag: [{ value: "Platform Integration" }],
         title: "Cost Impact of a Feature Change",

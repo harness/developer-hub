@@ -1,6 +1,46 @@
 import { Horizon } from "./roadmapData";
 
 export const IacmData: Horizon = {
+    Released: {
+    description: "What has been released",
+    feature: [
+      {
+        tag: [{ value: "Simplify Onboarding" }],
+        title: "Customized pipeline",
+        description: "IaCM supports highly customized pipelines that allows you to create advanced workflow, add 3rd party plugins, run steps in parallel, and more.",
+      },
+      {
+        tag: [{ value: "Security" }],
+        title: "OPA integration",
+        description: "IaCM natively integrates with OPA, allowing you to define rules that can be enforced at design and runtime, eliminating policy violations and reducing the risks of security and unplanned cost",
+      },
+      {
+        tag: [],
+        title: "Cost estimation",
+        description: "Using Infracost, IaCM provides cost estimation on resource changes, allowing you to understand how your cloud bill will be changed, based on resource changes",
+      },
+      {
+        tag: [{ value: "Security" }],
+        title: "State management",
+        description: "IaCM supports hosted backend, allowing you to store state securely",
+      },
+      {
+        tag: [{ value: "Security" }],
+        title: "Drift Detection",
+        description: "IaCM supports detecting drifts between state file and the actual resources, preventing misconfiguration, and securely vulnerabilities",
+      },
+      {
+        tag: [{ value: "Security" }],
+        title: "RBAC",
+        description: "IaCM supports granular RBAC operations, where admins can define the access privileges for different roles",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "PR Automation",
+        description: "IaCM support PR Automation that populates plan and cost data to the PR process, helping you to reduce testing time on Terraform changes",
+      },
+    ],
+  },
   Now: {
     description: "Q3 2024, Aug-Oct 2024",
     feature: [

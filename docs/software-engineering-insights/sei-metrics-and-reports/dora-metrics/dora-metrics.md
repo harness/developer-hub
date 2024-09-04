@@ -251,6 +251,19 @@ The [95th percentile lead time](/docs/software-engineering-insights/sei-technica
 
 If you want to learn more about the calculations behind these metrics, you can check out the [DORA Lead Time calculations](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation).
 
+### Lead Time Scoring
+
+The overall lead time can be categorized into three labels: Good, Acceptable, and Low.
+
+* **Total Ideal Time:** The sum of all ideal times for each stage in the workflow.
+* **Total Acceptable Time:** The sum of all acceptable times for each stage in the workflow.
+
+The lead time performance is ranked on the following grading scale:
+
+* **Good:** The lead time is less than or equal to the Total Ideal Time.
+* **Acceptable:** The lead time is greater than the Total Ideal Time but less than or equal to the Total Acceptable Time.
+* **Low:** The lead time exceeds the Total Acceptable Time.
+
 ### Example
 
 The following example demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default configuration for a PR-based DORA type Workflow profile, which has four stages: PR Creation Time, Time to Comment, Approval Time, and Merge Time.

@@ -45,6 +45,18 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## September 2024
+
+### Version 1.54.2
+
+#### Fixed issues
+
+- The Helm chart deployments failed when the `values` YAML file contained double quotes. This issue is resolved. (CDS-100174, ZD-68747, ZD-68940)
+- The placeholder in the health source connector component, which previously displayed `GCP`, has now been updated to `BigQuery`. There is no functionality change with the issue resolution. (CDS-99519)
+![](./static/health_source_connector.png)
+- Earlier, deleting the entire expressions from the delegate selector field at the step level was not possible. This issue is resolved. (CDS-96694)
+- The Service and environment values saved as input sets of monitored service template in the verify step were not available while running the pipeline. This issue is resolved. (CDS-96581)
+
 ## August 2024
 
 ### Version 1.53.5
@@ -57,7 +69,7 @@ We have introduced a failure strategy for the service, where the service step wi
 
 - **Infrastructure Scope Selector**
 
-We have introduced the scope for infrastructure selection. The infrastructures will be viewed in the Account scope. The field is now searchable, allowing users to start typing and see results as they type. One can select all the infractures in the environment by selecting the checkbox `All Infrastructures`. Currently this feature is behing the Feature Flag `CDS_SPECIFY_INFRASTRUCTURES`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-94529)
+We have introduced a UI component to make the list of infrastructure searchable and sorted based on creation time. You can also select all the infrastructures in the environment by choosing the `All Infrastructures` checkbox. Currently this feature is behing the Feature Flag `CDS_SPECIFY_INFRASTRUCTURES`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-94529)
 
 - The [My Executions](/docs/platform/triggers/triggering-pipelines#executions) filter on the listing page displays both manual executions and those triggered automatically by Git pull requests (PRs) i.e execution executed by their Githib PRs as well as manually execution pipeline execution will appear in the My Execution list. Currently this feature is behing the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (PIPE-13755)
 

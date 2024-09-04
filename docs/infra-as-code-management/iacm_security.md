@@ -77,7 +77,7 @@ descriptions={{
         },
         "2": {
         title: "Step 2 & 3: Cost estimation and OPA policy checks",
-        body: "As part of the `plan` step, a copy of the plan is passed to Harness Cloud to provide cost estimation data and also checked again your policies to enforce implicit policies set on the Plan File entity. Go to [add OPA policies](https://developer.harness.io/docs/infra-as-code-management/workspaces/project-setup/opa-workspace) for more information on configuring policies."
+        body: "As part of the `plan` step, a copy of the plan is passed to Harness Cloud to provide cost estimation data and also checked again your policies to enforce implicit policies set on the Plan File entity. Go to [add OPA policies](https://developer.harness.io/docs/infra-as-code-management/project-setup/opa-workspace) for more information on configuring policies."
         },
         "4": {
         title: "Step 4: Plan is stored in IaCM/Harness Cloud",

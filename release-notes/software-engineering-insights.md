@@ -24,6 +24,42 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## August 2024
 
+### Version 202408.2
+
+<!-- August 30, 2024 -->
+
+This release brings several new features and enhancements, including the ability to map custom fields to story points in Azure DevOps, an improved user experience for configuring GitLab integrations, and a better user experience for the management of Contributor records.
+
+#### Early access features
+
+* We have improved the user experience for configuring the **GitLab integration** focused on simplifying and streamlining the user journey. This includes support for authentication using **Personal Access Tokens (PAT)** and **OAuth** for **GitLab Cloud**, and **PAT-based authentication** for **GitLab On-Prem** setups. This feature is currently in **BETA** and requires the `SEI_GITLAB_NEW_ONBOARDING_FLOW_ENABLED` feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-7671)
+
+#### New features and enhancements
+
+* Added support for mapping custom fields to story points within the **Azure DevOps integration** configuration. This allows you to measure metrics using story points based on the specific custom fields. (SEI-7651)
+
+* Improved the user experience for managing **Contributor** records. The system now automatically switches to the latest version upon uploading new Contributor data. (SEI-8073)
+
+#### Fixed issues
+
+* Resolved an issue where the search functionality was not working in the **Trellis profile configuration** for development stages. (SEI-6569)
+
+* Fixed a bug that caused the application window to freeze when uploading contributor data in an incorrect CSV format. (SEI-7681)
+
+* Fixed a bug on the **SCM PR details page** where incorrect information was displayed for the user who merged the PR. (SEI-7745)
+
+* Fixed an issue where the option to clone a workflow profile was not functioning correctly. (SEI-7850)
+
+### Version 202408.1.1
+
+<!-- August 22, 2024 -->
+
+#### Hotfixes
+
+* The **Harness SEI Jenkins plugin** now support **Jenkins Configuration as Code (JCasC)**. This allows administrators to define the plugin’s configurations as YAML in code and use CI/CD processes to deploy the configuration. (SEI-7028)
+
+* The **Bitbucket Cloud** integration now supports multiple **Personal Access Token (PAT) based authentication**. This will help you resolve rate limiting issues while fetching data from Bitbucket Cloud. (SEI-7696)
+
 ### Version 202408.1
 
 <!-- August 14, 2024 -->

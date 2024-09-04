@@ -28,6 +28,10 @@ If you are running delegates version below 799xx and using Terraform/Terragrunt 
 
 :::
 
+:::danger Kubernetes Manifest impact on Delegate
+Delegate version 24.08.83702 is affected due to rendering logic of Kubernetes Manifest in certain cases only. If you are using this version, please upgrade to version 24.08.83704 to resolve the issue
+:::
+
 :::danger ARM64 Architecture Impact on Delegate Versions
 
 Certain delegate versions (`24.07.83608`, `24.07.83607`, `24.07.83606`, `24.07.83605`) are affected due to baked-in AMD64 client binaries on ARM64 architecture, despite building a multiarch image. If you are using any of these versions on ARM64 architecture, please upgrade to version `24.07.83609` or `24.07.83609.minimal` to resolve the issue.
@@ -66,6 +70,19 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## August 2024
+
+### Version 24.07.83611, 24.08.83705 <!--  August 30, 2024 -->
+
+#### Hotfix
+
+- Removed unnecessary env expansion and added url_encoding to encode special characters from proxy when curl connectivity pre-check is enabled (PL-56623).
+  
+### Version 24.08.83704 <!--  August 29, 2024 -->
+
+#### Hotfixes
+
+- Ensure kubernetes secrets are typecasted to Java strings internally before log sanitization. Earlier this was causing ClassCastException for some kubernetes manifests (CDS-100389).
+- Updated sensitive log in WinRM deployment to DEBUG level to ensure sensitive data is not leaked (CDS-100046).
 
 ### Version 24.07.83609 <!--  August 20, 2024 -->
 
