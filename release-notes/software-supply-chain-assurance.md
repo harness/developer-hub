@@ -25,21 +25,21 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 #### **Announcements**
 
-**SSCA is now Generally Available (GA)**. We have moved from Limited GA (since January 2024) to GA. Read more on our [announcement blog](https://www.harness.io/blog/harness-ssca-now-features-repo-security-posture-management-rspm).
+**SCS is now Generally Available (GA)**. We have moved from Limited GA (since January 2024) to GA. Read more on our [announcement blog](https://www.harness.io/blog/harness-ssca-now-features-repo-security-posture-management-rspm).
 
 #### **New features**
 
 * **Repository Security Posture Management**:
-    * Connect your GitHub with Harness SSCA to identify insecure configurations in code repositories and organization settings for comprehensive risk, compliance, and security posture management. Use the [Harness SSCA GitHub app](https://github.com/apps/harness-ssca) for integration. Learn more in our [RSPM](https://developer.harness.io/docs/software-supply-chain-assurance/repository-security-posture-management-rspm) documentation.
+    * Connect your GitHub with Harness SCS to identify insecure configurations in code repositories and organization settings for comprehensive risk, compliance, and security posture management. Use the [Harness SCS GitHub app](https://github.com/apps/harness-ssca) for integration. Learn more in our [RSPM](https://developer.harness.io/docs/software-supply-chain-assurance/repository-security-posture-management-rspm) documentation.
 * **Manage Risk and Compliance**
     * **Compliance Section**: A new Compliance section to assess and understand the risk posture of your entire supply chain. Detailed information is available in the [Manage Compliance Posture](https://developer.harness.io/docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture) documentation.
-    * **Rule Definitions Section**: Access a complete list of all standards and associated rules supported by Harness SSCA, including:
+    * **Rule Definitions Section**: Access a complete list of all standards and associated rules supported by Harness SCS, including:
         * [CIS Benchmarks for GitHub](https://developer.harness.io/docs/software-supply-chain-assurance/manage-risk-and-compliance/standards-and-rule-definitions#cis-benchmarks)
         * [OWASP Top 10 CI/CD Risks for GitHub](https://developer.harness.io/docs/software-supply-chain-assurance/manage-risk-and-compliance/standards-and-rule-definitions#owasp-top-10-cicd-security-risks)
     
         More details can be found in the [Standards and Rule Definitions](https://developer.harness.io/docs/software-supply-chain-assurance/manage-risk-and-compliance/standards-and-rule-definitions) documentation.
 * **Integrations and Permissions**
-    * A new interface to manage your integrations with Harness SSCA. Learn more about this in the [Integrations and Permissions](https://developer.harness.io/docs/software-supply-chain-assurance/integrations-and-permissions) document.
+    * A new interface to manage your integrations with Harness SCS. Learn more about this in the [Integrations and Permissions](https://developer.harness.io/docs/software-supply-chain-assurance/integrations-and-permissions) document.
 
 
 #### **Enhancements**
@@ -61,4 +61,4 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 ## September 2023
 
-The [Software Supply Chain Assurance module documentation](/docs/software-supply-chain-assurance) is live on the Harness Developer Hub. Check back soon for module release notes.
+The [Supply Chain Security module documentation](/docs/software-supply-chain-assurance) is live on the Harness Developer Hub. Check back soon for module release notes.
