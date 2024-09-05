@@ -10,6 +10,7 @@ description: A frontend plugin provides a simple way to display generated artifa
 | **Source**     | [GitHub](https://github.com/Vity01/backstage-jfrog-artifactory-libs) |
 | **Type**       | Open-source plugin                                                             |
 
+![](./static/jfrog-plugin.png)
 
 ## Configuration
 

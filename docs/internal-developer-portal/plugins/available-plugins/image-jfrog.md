@@ -11,6 +11,8 @@ description: View container image details from JFrog Artifactory in Harness IDP.
 | **Type**       | Open-source plugin                                                             |
 
 
+![](./static/container-image-jfrog.png)
+
 ## Configuration
 
 ### Application configuration YAML
