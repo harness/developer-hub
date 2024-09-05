@@ -1,13 +1,8 @@
 ---
-<<<<<<<< HEAD:docs/chaos-engineering/use-harness-ce/chaos-faults/aws/dynamo-db-replication-pause.md
 id: dynamo-db-replication-pause
 title: Dynamo DB replication pause
 redirect_from:
   - /docs/chaos-engineering/chaos-faults/aws/dynamo-db-replication-pause
-========
-id: dynamodb-replication-pause
-title: DynamoDB replication pause
->>>>>>>> main:docs/chaos-engineering/use-harness-ce/chaos-faults/aws/dynamodb-replication-pause.md
 ---
 
 DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.
