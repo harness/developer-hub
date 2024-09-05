@@ -1,5 +1,5 @@
 ---
-id: dynamo-db-replication-pause
+id: dynamodb-replication-pause
 title: Dynamo DB replication pause
 redirect_from:
   - /docs/chaos-engineering/chaos-faults/aws/dynamo-db-replication-pause

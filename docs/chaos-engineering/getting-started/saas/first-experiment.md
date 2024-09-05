@@ -10,9 +10,7 @@ In this tutorial, you will apply chaos on a sample boutique application on Kuber
 
 ## Before you begin
 
-* [What is chaos engineering?](/docs/chaos-engineering/get-started/overview.md)
-* [Key concepts](/docs/chaos-engineering/architecture-and-security/architecture/components)
-* [Prerequisites to execute chaos experiments](/docs/chaos-engineering/onboarding/prerequisites.md)
+* [What is chaos engineering?](/docs/chaos-engineering/concepts/chaos101)
 
 ## Step 1: Create a project
 
@@ -62,7 +60,7 @@ The **Cluster-wide access** installation mode allows you to target resources acr
 
 ### Step 4: Create a demo application and observability infrastructure
 
-Once you are all ready to target our Kubernetes resources, you can execute the simplest fault, [**Pod Delete**](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete.md). The "pod delete" chaos fault deletes the pods of a deployment, StatefulSet, DaemonSet, etc, to validate the resiliency of a microservice application.
+Once you are all ready to target our Kubernetes resources, you can execute the simplest fault, [**Pod Delete**](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-delete). The "pod delete" chaos fault deletes the pods of a deployment, StatefulSet, DaemonSet, etc, to validate the resiliency of a microservice application.
 
 9. You can use your application as a target, however, in this tutorial, use the [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo) microservices demo application as the target.
 
@@ -187,7 +185,7 @@ Since the target application has been deployed, you can now create a chaos exper
 :::tip
 - You can given any name and ensure you use the same when referencing or using the probe in other places.
 - You can provide your own URL in the `url` field. The format is provided in the above example. For example, if your application targets the "cart-service", your `url` would be `http://cartservice.hce.svc.cluster.local/cart`.
-- Go to [create a probe](/docs/chaos-engineering/features/resilience-probes/use-probe) to understand the steps in detail.
+- Go to [create a probe](/docs/chaos-engineering/use-harness-ce/probes/use-probe) to understand the steps in detail.
 :::
 
 21. Once you create the probe, it will be listed in the probe listing section on the left side of the page, as shown below. Select the probe to view the probe details. Click **Add to Fault**.
@@ -276,4 +274,4 @@ You can see that the value expected and the value obtained don't match. Hence, t
 Congratulations on running your first chaos experiment! Want to know how to remediate the application so as to pass the experiment run and probe checks? Increase the experiment pods to at least two so that at least one deployment pod survives the pod delete fault and helps the application stay afloat. Try running it on your own!
 
 Here are some recommendations:
-- [Create chaos experiments from scratch](/docs/chaos-engineering/get-started/tutorials/chaos-experiment-from-blank-canvas.md)
+- [Create chaos experiments from scratch](/docs/chaos-engineering/getting-started/saas/chaos-experiment-from-blank-canvas)
