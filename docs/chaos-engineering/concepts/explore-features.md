@@ -183,7 +183,9 @@ For more information, go to [Resilience Score](/docs/chaos-engineering/concepts/
 It describes how resilient an application is to different kinds of failures. For example, your application may be able to function smoothly in case of resource failures but causes glitches in case of network issues. This tells what kinds of failures your application is able to handle. For more information, go to [Application Maps](/docs/chaos-engineering/concepts/explore-concepts/app-maps).
 
 ### Prometheus Chaos Metrics
-[link](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/prom-probe)
+
+It provides comprehensive visibility into the effects of chaos experiments, enabling real-time monitoring and analysis about how the system behaved prior to, during, and after the chaos experiment was run.
+For more information, go to [Prometheus Metrics in your first experiment](/docs/chaos-engineering/getting-started/saas/first-experiment#step-7-evaluate-the-experiment-run).
 
 ## Resilience Insights
 

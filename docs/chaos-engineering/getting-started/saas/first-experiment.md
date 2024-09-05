@@ -187,7 +187,7 @@ Since the target application has been deployed, you can now create a chaos exper
 :::tip
 - You can given any name and ensure you use the same when referencing or using the probe in other places.
 - You can provide your own URL in the `url` field. The format is provided in the above example. For example, if your application targets the "cart-service", your `url` would be `http://cartservice.hce.svc.cluster.local/cart`.
-- Go to [create a probe](/docs/chaos-engineering/features/resilience-probes/use-probe) to understand the steps in detail.
+- Go to [create a probe](/docs/chaos-engineering/use-harness-ce/probes/use-probe) to understand the steps in detail.
 :::
 
 21. Once you create the probe, it will be listed in the probe listing section on the left side of the page, as shown below. Select the probe to view the probe details. Click **Add to Fault**.

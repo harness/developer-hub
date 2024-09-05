@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-08-14T18:19:25
+date: 2024-09-04T18:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,17 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: August 14, 2024
+#### Last updated: September 04, 2024
+
+## September 2024
+
+### Relay Proxy
+
+#### Version 2.0.4
+
+**Fixed Issues**
+
+- Fixes an issue where the Proxy could send SSE events with truncated flag identifiers if the flag identifiers contained an underscore e.g. `HELLO_WORLD`. When the Primary Proxy starts up it pulls down config from Saas, compares it with the config in redis and generates SSE events to make sure SDKs don't miss out on changes. However in this scenario if the flag identifier contained an underscore e.g. `HELLO_WORLD` the SSE event would indicate a change for the flag `HELLO`.
 
 ## August 2024
 
@@ -30,11 +40,18 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 2.0.3
 
-**Fixed Issues**
+**Fixed Issues**:
+  - Cached data from old Proxy Keys is now removed from redis. There was an issue where if you configured a Proxy with Proxy Key A, then reconfigured it with Proxy Key B and restarted the service you would end up with config for Proxy Key A & B in Redis when there should only be config for Proxy Key B.
+  - Fixes a race condition where concurrent map access could happen in the Primary Proxy when it's aggregating metrics data.
+  - Cleans up error logs that shouldn't have been logged.
 
-- Cached data from old Proxy Keys is now removed from redis. There was an issue where if you configured a Proxy with Proxy Key A, then reconfigured it with Proxy Key B and restarted the service you would end up with config for Proxy Key A & B in Redis when there should only be config for Proxy Key B.
-- Fixes a race condition where concurrent map access could happen in the Primary Proxy when it's aggregating metrics data.
-- Cleans up error logs that shouldn't have been logged
+### Java SDK
+
+#### Version 1.7.0
+
+**New features and enhancements**:
+ - Introduced the ability to store and retrieve `FeatureSnapshot` (previous and current feature config). 
+ - Updated `FeatureSnapshot` for JavaSDK. (FFM-1844)
 
 ### Javascript SDK
 
@@ -54,13 +71,21 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     - [ws](https://github.com/advisories/GHSA-3h5v-q93c-6h6q)
     - [braces](https://github.com/advisories/GHSA-grv7-fg5c-xmjg)
 
+### Python SDK
+
+#### Version 1.7.0
+
+**Enhancements**:
+ - Added `httpx_args` option. (FFM-11935):
+   - For further reading, you can refer to this [doc on `httpsx_args`](https://github.com/harness/ff-python-server-sdk/blob/main/docs/further_reading.md#httpx-configuration-options)
+   - You can find a [sample of the change by Harness](https://github.com/harness/ff-python-server-sdk/blob/main/examples/with_httpx_args_example/with_httpx_args.py) in our Python SDK repo.
+
 ## July 2024
 
 ### Relay Proxy
 
-#### Version 2.0.2
-
-**Fixed Issues**
+#### Version 2.0.2:
+**Fixed Issues**:
  - Fixed an issue where username & password auth for redis wasn't working
  - Fixes an issue where the Proxy didn't validate the environment in the request matched the environment in the token claims
  - Explicitly makes `REDIS_ADDR` a required environment variable. A connection to redis is required for the Proxy to function but the `REDIS_ADDR` wasn't explicitly requried in the code which could lead to vauge startup errors if you forgot to set it.
@@ -75,11 +100,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   - Removed the `envID` label from the `ff_proxy_http_requests_duration` metric
   - Removed the `url` and `envID` label from the `ff_http_requests_content_length_histogram` metric
 
-**Enhancements**
-
-- Optimises memory by reducing the number of memory allocations
-- Adds support for using the `Harness-Target` header to perform evaluations. This means that if you're using an SDK that sends the Target in the `Harness-Target` the Proxy will use it to perform the evaluation rather than having to fetch the target from redis to perform the evaluation.
-- Cleans up unecessary error logs
+**Enhancements**:
+  - Optimises memory by reducing the number of memory allocations
+  - Adds support for using the `Harness-Target` header to perform evaluations. This means that if you're using an SDK that sends the Target in the `Harness-Target` the Proxy will use it to perform the evaluation rather than having to fetch the target from redis to perform the evaluation.
+  - Cleans up unecessary error logs
 
 ### Android SDK
 

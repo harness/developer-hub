@@ -5,7 +5,7 @@ description: Steps to define and use a HTTP probe in the UI
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/probes/configure-and-add-probe
 - /docs/chaos-engineering/features/probes/configure-and-add-probe
-- /docs/chaos-engineering/features/resilience-probes/use-probe
+- /docs/chaos-engineering/use-harness-ce/probes/use-probe
 ---
 
 This topic describes the steps you can follow to create and use a resilience probe in your chaos experiment.

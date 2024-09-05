@@ -24,6 +24,74 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## August 2024
 
+### Version 202408.2
+
+<!-- August 30, 2024 -->
+
+This release brings several new features and enhancements, including the ability to map custom fields to story points in Azure DevOps, an improved user experience for configuring GitLab integrations, and a better user experience for the management of Contributor records.
+
+#### Early access features
+
+* We have improved the user experience for configuring the **GitLab integration** focused on simplifying and streamlining the user journey. This includes support for authentication using **Personal Access Tokens (PAT)** and **OAuth** for **GitLab Cloud**, and **PAT-based authentication** for **GitLab On-Prem** setups. This feature is currently in **BETA** and requires the `SEI_GITLAB_NEW_ONBOARDING_FLOW_ENABLED` feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-7671)
+
+#### New features and enhancements
+
+* Added support for mapping custom fields to story points within the **Azure DevOps integration** configuration. This allows you to measure metrics using story points based on the specific custom fields. (SEI-7651)
+
+* Improved the user experience for managing **Contributor** records. The system now automatically switches to the latest version upon uploading new Contributor data. (SEI-8073)
+
+#### Fixed issues
+
+* Resolved an issue where the search functionality was not working in the **Trellis profile configuration** for development stages. (SEI-6569)
+
+* Fixed a bug that caused the application window to freeze when uploading contributor data in an incorrect CSV format. (SEI-7681)
+
+* Fixed a bug on the **SCM PR details page** where incorrect information was displayed for the user who merged the PR. (SEI-7745)
+
+* Fixed an issue where the option to clone a workflow profile was not functioning correctly. (SEI-7850)
+
+### Version 202408.1.1
+
+<!-- August 22, 2024 -->
+
+#### Hotfixes
+
+* The **Harness SEI Jenkins plugin** now support **Jenkins Configuration as Code (JCasC)**. This allows administrators to define the plugin’s configurations as YAML in code and use CI/CD processes to deploy the configuration. (SEI-7028)
+
+* The **Bitbucket Cloud** integration now supports multiple **Personal Access Token (PAT) based authentication**. This will help you resolve rate limiting issues while fetching data from Bitbucket Cloud. (SEI-7696)
+
+### Version 202408.1
+
+<!-- August 14, 2024 -->
+
+This release introduces enhanced SEI Diagnostics for monitoring SCM integration statuses, Custom fields support in the Business Alignment report, and many more. Watch the [release demo](https://youtu.be/Z\_RDkXFxvK4) to see the key changes in action.
+
+<DocVideo src="https://www.youtube.com/embed/Z_RDkXFxvK4?si=1K_aFQvEoQJX7DYe" />
+
+**New Docs:** [SEI Diagnostics](/docs/software-engineering-insights/sei-diagnostics), [SEI API Guide](/docs/software-engineering-insights/sei-technical-reference/sei-api-reference/sei-api-guide), [Subscriptions and Licenses](/docs/software-engineering-insights/get-started/sei-subscription-and-licensing)
+
+#### Generally Available
+
+The new experience for the [Azure Devops integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) is now **Generally Available**! Find the step-by-step instructions for configuring the integration on the [Azure Devops integration topic](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops).
+
+#### Early access features
+
+* You can now add filters using custom fields from **Azure Devops** and **Jira** in the **Business Alignment report**. This feature is currently in **BETA** and requires the `SEI_NEW_BA_COMBINED_WIDGET` feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-7622)
+
+* You can now use the **Configuration Item** field from **ServiceNow** as a filter across the application. This feature is currently in **BETA** and requires the `SEI_SERVICE_NOW` feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-7827)
+
+#### New features and enhancements
+
+* In the **SEI Diagnostics** added support for monitoring integration statuses across the **SCM integrations**. To learn more, go to [SEI Diagnostics](/docs/software-engineering-insights/sei-diagnostics). (SEI-7749)
+
+* In the **SCM Rework report**, clicking on the commit message now redirects you to the corresponding **SCM commit**, making it easier to validate data across the SCM tool and SEI. (SEI-7840)
+
+#### Fixed issues
+
+* Fixed the bug for the **Harness SEI Jenkins Plugin** that caused the integration to return errors due to the **BlueOcean** dependency. (SEI-7025)
+
+* Resolved the issue that caused a few of the single stat reports to display no values. (SEI-7772)
+
 ### Version 202407.2.2
 
 <!-- August 09, 2024 -->
