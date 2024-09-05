@@ -12,12 +12,19 @@ This topic describes using an image registry within a chaos experiment.
 
 An image registry is a repository that hosts container images that are used by chaos experiments. Registries can be **public** or **private**. HCE allows you to use custom image registries for chaos experiments.
 
+A custom image registry allows for storing container images securely, restricting access to authorized users and applications only.
+
 :::tip
 - You can configure the image registry to be used with the default probes. If you haven't configured a probe yet, the experiment will use the default image registry.
 - HCE doesn't provide image registry support at the moment for default probes.
 :::
 
 Follow the steps below to use [custom values](#custom-values-for-image-registry) or [default values](#default-values-for-image-registry) of the image registry in your chaos experiment.
+
+### Why use a Custom Image Registry?
+
+When the image you need to use for your chaos experiment is private, and the chaos experiments are required to be run for internal consumption, you can configure image registry as **private** and provide custom values to it.
+This way, you will have better control, and security when working with private images.
 
 ## Custom values for image registry
 ### Step 1: Navigate to Image Registry
