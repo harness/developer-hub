@@ -108,7 +108,7 @@ const sidebars = {
         {
           type: "link",
           href: "/docs/software-supply-chain-assurance",
-          label: "Software Supply Chain Assurance",
+          label: "Supply Chain Security",
           className: "sidebar-ssca",
 
           customProps: {
@@ -794,7 +794,7 @@ const sidebars = {
   softwaresupplychainassurance: [
     {
       type: "category",
-      label: "Software Supply Chain Assurance",
+      label: "Supply Chain Security",
       className: "sidebar-ssca",
       link: {
         type: "doc",

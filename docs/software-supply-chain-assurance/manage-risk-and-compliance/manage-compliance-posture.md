@@ -5,7 +5,7 @@ description: Assess and understand the risk posture of your software supply chai
 sidebar_position: 1
 ---
 
-The Compliance section within the SSCA module serves as a hub for assessing and understanding the risk posture of your entire supply chain. This section is indispensable for GRC (Governance, Risk, and Compliance) and security teams as it provides detailed evaluation results after applying all relevant rules to various entity types within your supply chain. You can access a thorough summary of these evaluations, including the specific rules applied, their execution statuses, and the entities impacted by each rule.
+The Compliance section within the SCS module serves as a hub for assessing and understanding the risk posture of your entire supply chain. This section is indispensable for GRC (Governance, Risk, and Compliance) and security teams as it provides detailed evaluation results after applying all relevant rules to various entity types within your supply chain. You can access a thorough summary of these evaluations, including the specific rules applied, their execution statuses, and the entities impacted by each rule.
 
 
 <DocImage path={require('./static/rac-overview.png')} width="100%" height="100%" title="Click to view full size image" />

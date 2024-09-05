@@ -188,7 +188,7 @@ export const platformData: Horizon = {
         tag: [{ value: "SMP" }],
         title: "Supported modules",
         description:
-          "Infrastructure as Code Mgmt, Internal Developer Portal, Software Supply Chain Assurance, Code Repository",
+          "Infrastructure as Code Mgmt, Internal Developer Portal, Supply Chain Security, Code Repository",
       },
     ],
   },

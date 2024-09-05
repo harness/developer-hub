@@ -111,9 +111,9 @@ export const docsCards: CardSections = [
         link: "/docs/service-reliability-management/get-started/overview",
       },
       {
-        title: "SSCA",
+        title: "SCS",
         module: MODULES.ssca,
-        description: "Software Supply Chain Assurance onboarding guide",
+        description: "Supply Chain Security onboarding guide",
         link: "/docs/software-supply-chain-assurance/get-started/onboarding-guide",
       },
       {

@@ -17,7 +17,7 @@ For easy identification, each component in the Artifact view is accompanied by a
 <DocImage path={require('./static/label-components-app-base-distro-overview.png')} width="80%" height="80%" />
 
 :::info
-The SBOM orchestration process now automatically recognizes and assigns "app" and "distro" tags to components. However, it labels components with the "base" tag solely in cases where the application’s image explicitly provides the label names for your base image and orchestrates the base image with SSCA. For more details and guidance, please refer to the following section.
+The SBOM orchestration process now automatically recognizes and assigns "app" and "distro" tags to components. However, it labels components with the "base" tag solely in cases where the application’s image explicitly provides the label names for your base image and orchestrates the base image with SCS. For more details and guidance, please refer to the following section.
 :::
 
 

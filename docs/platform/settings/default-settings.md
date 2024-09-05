@@ -54,7 +54,7 @@ To access the Default Settings at the Project scope:
 </TabItem>
 </Tabs>
 
-On the **Default Settings** screen, settings are divided into Platform (General), cross-module feature (Connectors, Notifications, Pipelines, AIDA), and module-specific settings (CCM, CD, Git Experience, SSCA).
+On the **Default Settings** screen, settings are divided into Platform (General), cross-module feature (Connectors, Notifications, Pipelines, AIDA), and module-specific settings (CCM, CD, Git Experience, SCS).
 
 Expand each section to configure the settings in that section. Available settings vary by scope.
 

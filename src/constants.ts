@@ -36,7 +36,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.ce]: 'Chaos Engineering',
     [MODULES.sei]: 'Software Engineering Insights',
     [MODULES.cet]: 'Continuous Error Tracking',
-    [MODULES.ssca]: 'Software Supply Chain Assurance',
+    [MODULES.ssca]: 'Supply Chain Security',
     [MODULES.idp]: 'Internal Developer Portal',
     [MODULES.iacm]: 'Infrastructure as Code Management',
     [MODULES.code]: 'Code Repository',

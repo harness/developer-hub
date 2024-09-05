@@ -3,7 +3,9 @@ title: Autocreation of Entities in Harness
 description: This Page talks about auto creation of Harness entities
 ---
 
-Autocreation is a feature that allows you to automatically create entities in Harness when files are added remotely.
+Autocreation is a feature that allows you to automatically create entities in Harness when files are added remotely within your Git Repository.  The files, in this case, are created within Git, so the object is initiated and created within your repository in the [correct directory](#file-path-convention).  
+
+This differs from [moving inline entities to Git](https://developer.harness.io/docs/platform/git-experience/move-inline-entities-to-git/) and [enabling bidirectional sync](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup/) as for this case, customers would be initially creating objects from the Harness UI rather than initiating from Git, and do not have to follow a directory structure for the objects being saved in the Git Repo.
 
 :::info note
 Currently this feature is behind the feature flag `PIE_GITX_AUTOCREATION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
@@ -12,11 +14,12 @@ Currently this feature is behind the feature flag `PIE_GITX_AUTOCREATION`. Pleas
 ## Pre-requisites of Autocreation
 
 - Register the webhook for your repository where you are adding your files remotely. The scope of the webhook should match the entity it's trying to create. For example, a project-level webhook can only create entities within the same project, whereas an account-level webhook can create entities across multiple projects and the organizations.
-- Added files should follow a specific file path convention based on the entity type. 
+- Added files should follow a [specific file path convention based on the entity type](#file-path-convention). The file paths would be created manually and can be created on an as-needed-basis.
 
 :::info note
 Files that are added only in the default branch(main, master etc) of the Git Repo are autocreated.
 :::
+
 
 ## File Path Convention
 
@@ -255,6 +258,218 @@ For example:- `.harness/orgs/test_org/projects/test_project/envs/pre_production/
 - **Environment identifier**: `qa_project_level`
 - **Infrastructure directory**: `infras`
 - **Infrastructure File Path name**: `infra_project_level`
+
+### Overrides
+Overrides allow for specific configurations at different scope levels, such as Account, Organization, and Project, for various Harness entities like Environment, Service, and Infrastructure. The file path conventions for these overrides vary depending on the scope level.
+
+#### Global Environment Overrides
+
+1. **Account Level**
+
+To create a global environment override at the account level, use the following file path convention:
+
+`.harness/overrides/[ENV_REF]/<file_path_name>.yaml`
+
+For example:- `.harness/overrides/account.pre_production/overrides.yaml`
+
+
+- **Overrides directory**: `overrides`
+- **ENV_REF**: `account.pre_production`
+- **Overrides File Path name**: `overrides`
+
+2. **Organization Level**
+
+To create a global environment override at the organization level, use the following file path convention:
+
+`.harness/orgs/<org_identifier>/overrides/[ENV_REF]/<file_path_name>.yaml`
+
+For example:- `.harness/orgs/test_org/overrides/org.pre_prod/overrides.yaml`
+
+- **Organization directory**: `orgs`
+- **Organization identifier**: `test_org`
+- **Overrides directory**: `overrides`
+- **ENV_REF**: `org.pre_prod`
+- **Overrides File Path name**: `overrides`
+
+3.  **Project Level**
+
+To create a global environment override at the project level, use the following file path convention:
+
+`.harness/orgs/<org_identifier>/projects/<project_identifier>/overrides/[ENV_REF]/<file_path_name>.yaml`
+
+For example:- `.harness/orgs/test_org/projects/test_project/overrides/test_environment/overrides.yaml`
+
+- **Organization directory**: `orgs`
+- **Organization identifier**: `test_org`
+- **Projects directory**: `projects`
+- **Project identifier**: `test_project`
+- **Overrides directory**: `overrides`
+- **ENV_REF**: `test_environment`
+- **Overrides File Path name**: `overrides`
+
+
+#### Services and Environment Overrides
+
+1. **Account Level**
+
+To create a Services and Environment Overrides at the Account level, use the following file path convention:
+
+`.harness/overrides/[ENV_REF]/services/[SERVICE_REF]/<file_path_name>.yaml `
+
+For example:- `.harness/overrides/account.pre_production/services/account.test_demo/overrides.yaml`
+
+- **Overrides directory**: `overrides`
+- **ENV_REF**: `account.pre_production`
+- **Service directory**: `service`
+- **SERVICE_REF**: `account.test_demo`
+- **Overrides File Path name**: `overrides`
+
+2. **Organization Level**
+
+To create a Services and Environment Overrides override at the organization level, use the following file path convention:
+
+`.harness/orgs/<org_identifier>/overrides/[ENV_REF]/services/[SERVICE_REF]/<file_path_name>.yaml`
+
+For example:- `.harness/orgs/test_org/overrides/org.pre_prod/services/org.test_demo/overrides.yaml`
+
+- **Organization directory**: `orgs`
+- **Organization identifier**: `test_org`
+- **Overrides directory**: `overrides`
+- **ENV_REF**: `org.pre_prod`
+- **Service directory**: `service`
+- **SERVICE_REF**: `org.test_demo`
+- **Overrides File Path name**: `overrides`
+
+:::important note
+In this example, both the service `(org.test_demo)` and environment `(org.pre_prod)` are from the organization level. However, the path can represent different combinations, such as an organization-level service with an account-level environment or vice versa
+:::
+
+3. **Project level**
+
+To create a Services and Environment Overrides override at the project level, use the following file path convention:
+
+`.harness/orgs/<org_identifier>/projects/test_project/overrides/test_environment/services/[SERVICE_REF]/<file_path_name>.yaml`
+
+For example:- `.harness/orgs/test_org/projects/<project_identifier>/overrides/[ENV_REF]/services/test_demo/overrides.yaml`
+
+- **Organization directory**: `orgs`
+- **Organization identifier**: `test_org`
+- **Projects directory**: `projects`
+- **Project identifier**: `test_project`
+- **Overrides directory**: `overrides`
+- **Service directory**: `service`
+- **SERVICE_REF**: `test_demo`
+- **ENV_REF**: `test_environment`
+- **Overrides File Path name**: `overrides`
+
+
+#### Environment and Infrastructure Overrides
+
+1. Account Level
+
+To create an Environment and Infrastructure Overrides at the Account Level, use the following file path convention:
+
+`.harness/overrides/[ENV_REF]/infras/[INFRA_ID]/<file_path_name>.yaml`
+
+For example:-`.harness/overrides/account.pre_production/infras/infra_test/overrides.yaml`
+
+- **Overrides directory**: `overrides`
+- **ENV_REF**: `account.pre_production`
+- **Infrastructure directory**: `infras`
+- **INFRA_ID**: `infra_test`
+- **Overrides File Path name**: `overrides`
+
+2. Organization Level
+
+To create an Environment and Infrastructure Overrides at the Organization level, use the following file path convention:
+
+`.harness/orgs/<org_identifier>/overrides/[ENV_REF]/infras/[INFRA_ID]/<file_path_name>.yaml`
+
+For example:-`.harness/orgs/test_org/overrides/org.pre_production/infras/infra_test/overrides.yaml`
+
+- **Organization directory**: `orgs`
+- **Organization identifier**: `test_org`
+- **Overrides directory**: `overrides`
+- **ENV_REF**: `org.pre_production`
+- **Infrastructure directory**: `infras`
+- **INFRA_ID**: `infra_test`
+- **Overrides File Path name**: `overrides`
+
+3. Project Level
+
+To create an Environment and Infrastructure Overrides at the Project level, use the following file path convention:
+
+`.harness/orgs/<org_identifier>/projects/<project_identifier>/overrides/[ENV_REF]/infras/[INFRA_ID]/<file_path_name>.yaml`
+
+For example:- `.harness/orgs/test_org/projects/test_project/overrides/pre_production/infras/infra_test/overrides.yaml`
+
+- **Organization directory**: `orgs`
+- **Organization identifier**: `test_org`
+- **Project directory**: `projects`
+- **Project identifier**: `test_project`
+- **Overrides directory**: `overrides`
+- **ENV_REF**: `pre_production`
+- **Infrastructure directory**: `infras`
+- **INFRA_ID**: `infra_test`
+- **Overrides File Path name**: `overrides`
+
+
+#### Service and Infrastructure Overrides
+
+1. Account Level
+
+To create a Service and Infrastructure Overrides at the Account Level, use the following file path convention:
+
+`.harness/overrides/[ENV_REF]/services/[SERVICE_REF]/infras/[INFRA_ID]/<file_path_name>.yaml`
+
+For example:- `.harness/overrides/account.pre_production/services/account.test_demo/infras/infra_test/overrides.yaml`
+
+- **Overrides directory**: `overrides`
+- **ENV_REF**: `account.pre_production`
+- **Service directory**: `service`
+- **SERVICE_REF**: `account.test_demo`
+- **Infrastructure directory**: `infras`
+- **INFRA_ID**: `infra_test`
+- **Overrides File Path name**: `overrides`
+
+2. Organization Level
+
+To create a Service and Infrastructure Overrides at the Organization Level, use the following file path convention:
+
+`.harness/orgs/<org_identifier>/overrides/[ENV_REF]/services/[SERVICE_REF]/infras/[INFRA_ID]/<file_path_name>.yaml`
+
+For example:- `.harness/orgs/test_org/overrides/org.pre_production/services/org.test_demo/infras/infra_test/overrides.yaml`
+
+- **Organization directory**: `orgs`
+- **Organization identifier**: `test_org`
+- **Overrides directory**: `overrides`
+- **ENV_REF**: `org.pre_production`
+- **Service directory**: `service`
+- **SERVICE_REF**: `org.test_demo`
+- **Infrastructure directory**: `infras`
+- **INFRA_ID**: `infra_test`
+- **Overrides File Path name**: `overrides`
+
+
+3. Project Level
+
+To create a Service and Infrastructure Overrides at the Project Level, use the following file path convention:
+
+`.harness/orgs/<org_identifier>/projects/<project_identifier>/overrides/[ENV_REF]/infras/[INFRA_ID]/<file_path_name>.yaml`
+
+For example:- `.harness/orgs/test_org/projects/test_project/overrides/pre_production/infras/infra_test/overrides.yaml`
+
+- **Organization directory**: `orgs`
+- **Organization identifier**: `test_org`
+- **Project directory**: `projects`
+- **Project identifier**: `test_project`
+- **Overrides directory**: `overrides`
+- **ENV_REF**: `pre_production`
+- **Service directory**: `service`
+- **SERVICE_REF**: `org.test_demo`
+- **Infrastructure directory**: `infras`
+- **INFRA_ID**: `infra_test`
+- **Overrides File Path name**: `overrides`
 
 ## Creation of Entities
 

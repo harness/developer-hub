@@ -1,4 +1,3 @@
-
 ---
 id: generic-experiment-template
 title: Generic FIS experiment template
@@ -67,7 +66,7 @@ Below is an example AWS policy to execute the fault.
 
 :::info note
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-- Go to the [common tunables](/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults.md) and [AWS-specific tunables](./aws-fault-tunables.md) to tune the common tunables for all faults and AWS-specific tunables.
+- Go to the [common tunables](/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults.md) and [AWS-specific tunables](./aws-fault-tunables.md) to tune the common tunables for all faults and AWS-specific tunables.
 :::
 
 ### Mandatory tunables
@@ -100,17 +99,17 @@ Below is an example AWS policy to execute the fault.
     <tr>
       <td> TOTAL_CHAOS_DURATION </td>
       <td> Time duration for chaos insertion (sec) </td>
-      <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+      <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
     </tr>
     <tr>
       <td> CHAOS_INTERVAL </td>
       <td> The time duration between the attachment and detachment of the volumes (sec) </td>
-      <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+      <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
     </tr>
     <tr>
       <td> RAMP_TIME </td>
       <td> Period to wait before and after injection of chaos in sec </td>
-      <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+      <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
     </tr>
     <tr>
       <td> PARAMETERS </td>

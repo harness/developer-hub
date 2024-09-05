@@ -17,6 +17,15 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 :::
 
+### GitLab Integration: New Onboarding
+
+* **Release date:** August 2024
+* **Issue number:** SEI-7671
+* **Feature flag:** SEI_GITLAB_NEW_ONBOARDING_FLOW_ENABLED
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Access the improved experience for configuring the [GitLab integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab).
+
 ### Azure DevOps Integration: New Onboarding
 
 * **Release date:** June 2024

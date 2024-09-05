@@ -54,33 +54,6 @@ The following table describes each of the feature flags relevant to Harness IaCM
 To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
 :::
 
-<table width="900" cellspacing="0" cellpadding="0">
-    <tr>
-        <td width="300" word-wrap="break-word"><b>Flag</b></td>
-        <td width="600"><b>Description</b></td>
-    </tr>
-    <tr>
-        <td>IaCM_COST_ESTIMATION</td>
-        <td>Enable to allow users to anticipate and understand the potential financial impact of their infrastructure changes </td>
-    </tr>
-    <tr>
-        <td>IaCM_DRIFT_DETECTION</td>
-        <td>Grants users visibility of drift/anomalies between the desired state and the configuration in the target environment</td>
-    </tr>
-    <tr>
-        <td>IaCM_OPEN_TOFU</td>
-        <td>Allows users to configure their workspace to target an OpenTofu framework</td>
-    </tr>
-    <tr>
-        <td>IaCM_HARNESS_CODE</td>
-        <td>Allows users to integrate their workspace with Harness Code repositories</td>
-    </tr>
-    <tr>
-        <td>CREATE_DEFAULT_PROJECT</td>
-        <td>Enables the creation of a new project with default configuration </td>
-    </tr>
-</table>
-
 ## Supported plugins
 
 IaCM supports external plugins to enhance its usability and security. 

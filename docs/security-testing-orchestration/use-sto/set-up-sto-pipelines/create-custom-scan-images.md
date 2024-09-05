@@ -108,7 +108,7 @@ Once you're satisfied with the customized image, you can push it to your image r
 
 ### Add a shared folder to the pipeline stage
 
-Now you're ready to set up your pipeline. First, you add a shared path to the stage for the scan results. This is a standard good practice for [ingestion workflows](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans#snyk-open-source-ingestion-example). 
+Now you're ready to set up your pipeline. First, you add a shared path to the stage for the scan results. This is a standard good practice for [ingestion workflows](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-open-source#snyk-open-source-scan---ingestion-mode). 
 
 <Tabs>
     <TabItem value="Visual" label="Visual" default>

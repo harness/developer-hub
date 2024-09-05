@@ -1,7 +1,7 @@
 ---
 title: IaC scans with Wiz
 description: Scan Infrastructure as Code repositories with Wiz. Orchestration and Ingestion modes supported.
-sidebar_label: IaC scans with Wiz
+sidebar_label: Wiz IaC scanning
 sidebar_position: 30
 ---
 

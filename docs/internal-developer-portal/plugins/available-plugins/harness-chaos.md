@@ -40,9 +40,21 @@ This plugin does not require a delegate proxy to be set up.
 
 ## Layout
 
-This plugin exports a UI tab that you can use as a new "Chaos Experiments" tab for Chaos Engineering Experiments or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code as a new section as we do for the **CI/CD** section:
+_No action required_
+
+This plugin exports a UI tab that you can use as a new "Chaos Experiments" tab for Chaos Engineering Experiments or for any other layout page.  The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
 
 ```yaml
+- name: chaos
+  path: /chaos
+  title: Chaos Experiments
+  contents:
+    - component: EntityHarnessChaosContent
+```
+
+Also you could add a conditional like `isHarnessChaosAvailable`  which is met when `harness.io/project-url` and `harness.io/network-map-tags` annotations are present in the software components's `catalog-info.yaml` definition file.
+
+```YAML
 - name: chaos
   path: /chaos
   title: Chaos Experiments
@@ -54,8 +66,6 @@ This plugin exports a UI tab that you can use as a new "Chaos Experiments" tab f
             content:
               component: EntityHarnessChaosContent
 ```
-
-The `isHarnessChaosAvailable` condition is met when `harness.io/project-url` and `harness.io/network-map-tags` annotations are present in the software components's `catalog-info.yaml` definition file.
 
 ## Annotations
 

@@ -27,7 +27,7 @@ Before you begin, make sure you understand [SBOM generation](/docs/software-supp
 
 You need:
 
-* A Harness account with access to the SSCA module.
+* A Harness account with access to the SCS module.
 * A GitHub account
 * A [GitHub connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) for your GitHub account.
 * An IDE or code editor. This tutorial uses Visual Studio Code.
@@ -50,7 +50,7 @@ In the upcoming sections, we'll make some changes by introducing new libraries t
 
 Now that your repository is all set, let's move on to configuring the Harness CI pipeline. If you're already familiar with this setup or have an existing pipeline, feel free to jump ahead to the next sections.
 
-1. Access the Harness platform and navigate to the SSCA module.
+1. Access the Harness platform and navigate to the SCS module.
 2. In your project, select **Pipelines**, and then select **Create a Pipeline**.
 3. Enter a name, such as `SBOM Drift for React Store`.
 4. Select either **Inline** (store pipeline in the Harness Platform) or **Remote** (store pipeline in a Git repo).
@@ -176,7 +176,7 @@ Now that the trigger is in place, you can initiate it by either making a commit 
 It's crucial to have the SBOM for the main branch available to monitor any drift from new pull requests. Additionally, maintaining an up-to-date SBOM for the main branch is essential for successfully detecting SBOM drift when the `pull request submission` trigger is activated.
 :::
 
-After you trigger the pipeline and it executes successfully, you will find the SBOM for the main branch in the **Artifacts** section within SSCA.
+After you trigger the pipeline and it executes successfully, you will find the SBOM for the main branch in the **Artifacts** section within SCS.
 
 <DocImage path={require('./static/automate-sbom-drift/main-branch-sbom.png')} width="100%" height="100%" title="Click to view full size image" />
 
@@ -309,6 +309,6 @@ The SBOM for the `time_stamp` branch has been updated with two new libraries: lo
 
 ## Conclusion
 
-To wrap this up, you have learned how to set up automatic tracking of changes in your software's components directly from your GitHub repo with Harness's SSCA module. You've learned to create a pipeline that kicks in every time someone submits a new pull request. This pipeline does a couple of things: it generates a detailed list of all the components in your branch and checks if anything's changed compared to the baseline SBOM. If there's something new, removed, or updated, you get a report about it.
+To wrap this up, you have learned how to set up automatic tracking of changes in your software's components directly from your GitHub repo with Harness's SCS module. You've learned to create a pipeline that kicks in every time someone submits a new pull request. This pipeline does a couple of things: it generates a detailed list of all the components in your branch and checks if anything's changed compared to the baseline SBOM. If there's something new, removed, or updated, you get a report about it.
 
 This setup is super handy for keeping an eye on the software pieces you use and making sure nothing risky slips through when updates happen.
