@@ -7,17 +7,19 @@ sidebar_position: 10
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-IaCM Default Pipelines simplify the process of provisioning, destroying, and managing infrastructure workspaces by providing quick access to your pre-configured pipelines. These pipelines can be created in the normal fashion, and assigned as defaults at your project level, and can be triggered within any of that projects workspaces. This provides a much more streamlined experience and helps to ensure consistency across all of your workspaces.
+IaCM Default Pipelines simplify the process of provisioning, destroying, and managing infrastructure workspaces by providing quick access to your pre-configured pipelines. These pipelines can be created in the normal fashion, and assigned as defaults at the project level, and can be triggered within any of that project's workspaces. This provides a much more streamlined experience and helps to ensure consistency across all of your workspaces.  
 
-In addition, as some workspace may require alternative approaches, you can overwrite your default pipelines at the workspace level without disrupting those at or parented by the project level default pipelines.
+
+In addition, as some workspaces may require alternative approaches, you can overwrite your default pipelines at the workspace level without disrupting those at the project level or parented by the project level default pipelines.  
+
 
 :::warning danger zone
-A pipeline containing the `destroy` command will remove all saved infrastructure state from your Harness workspace.
+A pipeline containing the `destroy` command will remove all saved infrastructure managed by your Harness workspace.
 :::
 
 ### Prerequisites
 
-- You have created pipelines to Provision, Plan and Destroy and Check for drift to be assigned as defaults.
+- You have created pipelines to Provision, Plan, Destroy and Check for drift to be assigned as defaults. 
 
 ### Configure and run default pipelines
 
@@ -41,17 +43,23 @@ A pipeline containing the `destroy` command will remove all saved infrastructure
 ### Set your project-level default pipelines
 1. In your IaCM module, select **Project settings**, then select **IaCM Defaults**.
 2. Select the appropriate pipelines for your default categories and frameworks (OpenTofu / Terraform):
-   - **Plan:** Pipeline for running the plan phase only.
+   - **Plan:** Pipeline for running the plan only.
    - **Provision:** Pipeline for initializing, planning, approving, and applying changes.
-   - **Detect Drift:** Pipeline for detecting configuration drifts.
+   - **Detect Drift:** Pipeline for detecting drift between your configuration and provider state. 
    - **Destroy:** Pipeline for initializing, planning, approving, and destroying infrastructure.
 
 ### Review your default pipelines in your workspace
-3. Select **Workspaces**, then select one of your workspaces to run your defaults pipelines for.
-4. Select the **Configuration** tab and scroll down to **Default pipelines** to inspect or override your default pipelines at the selected workspace-level (this will not override the project-level default pipelines).
+3. Select **Workspaces**, then select one of your workspaces to run your default pipelines.
+4. Select the **Configuration** tab and scroll down to **Default pipelines** to inspect or override your default pipelines at the selected workspace-level (this will not effect your project level settings).
 
 ### Run your default pipelines in your workspace
 5. While in your workspace, run your default pipelines against it with the `Plan`, `Provision` and `Check for Drift` buttons.
+
+:::note execute the destroy pipeline
+To prevent accidental execution, the Destroy pipeline is in your workspace’s **Configuration** tab, under **Danger Zone**.
+
+To run it, select **Destroy workspace**.
+:::
 
 </TabItem>
 </Tabs>

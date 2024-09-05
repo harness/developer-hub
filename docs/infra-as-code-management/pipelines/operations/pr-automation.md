@@ -5,7 +5,7 @@ sidebar_position: 40
 ---
 
 Harness IaCM supports reviewing infrastructure changes via pull request automation. 
-This functionality allows developers to see the changes, such as the plan details, as comments in the PR, so they can see what will be the resource changes before applying the plan. Additionally, Harness IaCM also supports [Open Policy Agent (OPA)](https://developer.harness.io/docs/infra-as-code-management/project-setup/opa-workspace) for more advanced policy enforcement.
+This functionality allows developers to see the changes, such as the plan details, as comments in the PR, so they can see what the resource changes will be before applying the plan. Additionally, Harness IaCM also supports [Open Policy Agent (OPA)](https://developer.harness.io/docs/infra-as-code-management/project-setup/opa-workspace) for more advanced policy enforcement.  
 
 Follow these steps to enable PR automation:
 
