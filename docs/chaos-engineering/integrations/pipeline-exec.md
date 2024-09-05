@@ -43,7 +43,7 @@ Go to **Pipelines** and select the pipeline that you want to receive notificatio
 
     ![](./static/pipeline-exec/create-2.png)
 
-3. You can choose one of the notification methods. For example, Slack. Provide the relevant parameters, and click **Finish**.
+3. You can choose one of the notification methods. For example, Slack. Provide the relevant parameters, which in this case, is the **Slack Webhook URL**. Click **Finish**.
 
     ![](./static/pipeline-exec/provide-params-4.png)
 
