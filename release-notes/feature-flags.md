@@ -19,6 +19,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## September 2024
 
+### Javascript Client SDK
+
+#### Version 1.13.0
+
+**New features and enhancements**:
+ - Added the `authRequestReadTimeout` config option. Have a look at the [readme](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md#authentication-request-timeout) for further information and how to enable it. (FFM-11972)
+
+**Bug fixes**: 
+ - If authentication fails, the correct error will be logged instead of `Invalid Token`. (FFM-11972)
+
+
 ### React Client SDK
 
 #### Version 1.13.0
