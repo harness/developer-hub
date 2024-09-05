@@ -443,7 +443,7 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 | **Agent Version**        | **ArgoCD components versions officially supported (Repo-server, Application-controller, Appset-controller )** | **Redis versions**    |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------- | --------------------- |
-| **0.77.x**               | v2.8.x - v2.10.x                                                                                            | _redis:7.2.4-alpine_  |
+| **0.77.x** \- **0.78.x** | v2.8.x - v2.10.x                                                                                            | _redis:7.2.4-alpine_  |
 | **0.64.x** \- **0.76.x** | v2.7.x - v2.9.x                                                                                             | _redis:7.0.11-alpine_ |
 
 ### How long is a GitOps Agent version supported?
