@@ -131,6 +131,51 @@ After constructing the chaos experiment using one of the three options, save the
 	* Click **Save** to save the experiment to the Chaos Experiments page. You can add it to a [ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub) later.
 	* Select **Add Experiment to ChaosHub** to save this experiment as a template in a selected [ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub).
 
+## Create Experiment as a Pipeline
+
+1. Go to **Chaos** module and select **Pipelines** and click **+Create a Pipeline**.
+
+	![](./static/create-experiments/create-pipeline-1.png)
+
+2. Provide a name, and click **Start**.
+
+	![](./static/create-experiments/new-pipeline-2.png)
+
+3. Click the **+** (the stage type), and select **Custom Stage**.
+
+	![](./static/create-experiments/stage-3.png)
+
+4. Provide a name for the stage, and click **Set Up Stage**.
+
+	![](./static/create-experiments/set-stage-4.png)
+
+5. Click **Add Step** and choose the **Add Step** option.
+
+	![](./static/create-experiments/add-step-5.png)
+
+6. Choose **Chaos** from the Step Library.
+
+	![](./static/create-experiments/select-chaos-6.png)
+
+7. Provide a name, select the chaos experiment.
+
+	![](./static/create-experiments/configure-7.png)
+
+8. Choose from the list of chaos experiments, and click **Add to Pipeline**.
+
+	![](./static/create-experiments/select-exp-8.png)
+
+9. Click **Apply Changes**.
+
+	![](./static/create-experiments/apply-9.png)
+
+10. Click **Save**.
+
+	![](./static/create-experiments/overview-10.png)
+
+
+For more information, go to [Pipeline concepts](/docs/continuous-integration/get-started/key-concepts) and [Pipeline Modeling Overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
+
 ## Run or Schedule the Experiment
 
 You can choose to run the experiment immediately by clicking the **Run** button, or schedule it to run at a specific time by selecting the **Schedule** tab.
