@@ -29,13 +29,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 **Bug fixes**: 
  - If authentication fails, the correct error will be logged instead of `Invalid Token`. (FFM-11972)
 
-
 ### React Client SDK
 
 #### Version 1.13.0
 
 **New features and enhancements**:
  - Bumped Javascript SDK to 1.13.0. (FFM-11972, FFM-11852, ZD-68087)
+
+### React Native SDK
+
+#### Version 2.2.0
+
+**New features and enhancements**:
+ - Bumped FF React SDK to 2.2.0. (FFM-11972)
 
 ### Relay Proxy
 
