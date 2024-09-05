@@ -16,6 +16,13 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "DynamoDB replication pause",
+    description:
+      "DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.",
+    tags: ['replication', 'pause', "dynamodb"],
+    category: "aws",
+  },
+  {
     name: "EBS loss by ID",
     description:
       "EBS loss by ID disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration.",
@@ -279,6 +286,13 @@ export const experiments: ExperimentDetails[] = [
     description:
       "ECS update task role induces chaos to update the task role ARN for a specified chaos duration.",
     tags: ['task', 'role'],
+    category: "aws",
+  },
+  {
+    name: "Generic experiment template",
+    description:
+      "Generic experiment template provides a template to natively inject faults using FIS for different services, such as EC2, EBS, DynamoDB, and so on.",
+    tags: ['generic', 'template'],
     category: "aws",
   },
   {

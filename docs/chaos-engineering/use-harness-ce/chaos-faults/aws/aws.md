@@ -19,7 +19,7 @@ import { experiments } from "./experiments"
 AWS faults disrupt the resources running on different AWS services from the EKS cluster. To perform such AWS chaos experiments, you will need to authenticate CE with the AWS platform. This can be done in two ways.
 
 - **Using secrets:** You can use secrets to authenticate CE with AWS regardless of whether the Kubernetes cluster is used for the deployment. This is Kubernetes' native way of authenticating CE with AWS.
-- [**IAM integration:**](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-iam-integration) You can authenticate CE using AWS using IAM when you have deployed chaos on the EKS cluster. You can associate an IAM role with a Kubernetes service account. This service account can be used to provide AWS permissions to the experiment pod which uses the particular service account.
+- [**IAM integration:**](/docs/chaos-engineering/chaos-faults/aws/security-configurations/aws-iam-integration) You can authenticate CE using AWS using IAM when you have deployed chaos on the EKS cluster. You can associate an IAM role with a Kubernetes service account. This service account can be used to provide AWS permissions to the experiment pod which uses the particular service account.
 
 Here are AWS faults that you can execute and validate.
 
@@ -53,6 +53,22 @@ CLB AZ down takes down the AZ (Availability Zones) on a target CLB for a specifi
 - Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 - CLB AZ down fault breaks the connectivity of a CLB with the given zones and impacts their delivery.
 - Detaching the AZ from the classic load balancer disrupts the dependent application's performance.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### DynamoDB replication pause
+
+DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.
+- When chaos experiment is being executed, any changes to the DynamoDB table will not be replicated in different regions, thereby making the data in the DynamoDB inconsistent.
+- You can execute this fault on a DynamoDB table that is global, that is, there should be more than one replica of the table.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+DynamoDB replication pause determines the resilience of the application when data (in a database) that needs to be constantly updated is disrupted.
 
 </Accordion>
 </FaultDetailsCard>
@@ -360,7 +376,7 @@ ECS agent stop disrupts the state of infrastructure resources. This fault:
 ECS container CPU hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM documentation that is in-built into the fault. This fault:
 - Causes CPU chaos on the containers of the ECS task using the given `CLUSTER_NAME` environment variable for a specific duration.
 - To select the Task Under Chaos (TUC), use the service name associated with the task. If you provide the service name along with the cluster name, all the tasks associated with the given service will be selected as chaos targets.
-- This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
+- This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -416,7 +432,7 @@ ECS container HTTP modify body injects HTTP chaos which affects the request or r
 
 ECS container HTTP modify header injects HTTP chaos which modifies the headers of the request or response of the service.
 - This is achieved by starting a proxy server and redirecting the traffic through the proxy server.
-- This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
+- This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -468,7 +484,7 @@ ECS container IO stress disrupts the state of infrastructure resources. It induc
 - It causes I/O stress on the containers of the ECS task using the given `CLUSTER_NAME` environment variable for a specific duration.
 - To select the Task Under Chaos (TUC), use the service name associated with the task. If you provide the service name along with the cluster name, all the tasks associated with the given service will be selected as chaos targets.
 - It tests the ECS task sanity (service availability) and recovery of the task containers subject to I/O stress.
-- This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
+- This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -547,7 +563,7 @@ This fault helps improve the resilience of the services over time.
 ### ECS container volume detach
 
 ECS container volume detach provides a mechanism to detach and remove volumes associated with ECS task containers in an Amazon ECS (Elastic Container Service) task.
-This experiment primarily involves ECS Fargate and doesn't depend on EC2 instances. [They](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+This experiment primarily involves ECS Fargate and doesn't depend on EC2 instances. [They](/docs/chaos-engineering/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -729,6 +745,26 @@ ECS update task role allows you to modify the IAM task role associated with an A
   - Testing how your application handles changes in IAM role permissions and access.
   - Verifying the authorization settings of your system when the IAM role is updated.
   - Evaluating the impact of changes in IAM roles on the security and compliance of your application.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### Generic experiment template
+
+Generic experiment template provides a template to natively inject faults using FIS for different services, such as EC2, EBS, DynamoDB, and so on.
+- You need to create an FIS template and store it.
+- Provide parameters to the pre-created FIS templates and execute experiments.
+- You can specify the template ID and region on Harness to execute the experiments using these FIS templates.
+- You can monitor and report the results of executing the experiment from these FIS templates.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Inject faults natively using FIS services.
+- Monitor and report the results of executing the experiment from the FIS templates.
+- Build chaos experiments with pre-defined templates or build experiments from scratch using FIS service.
 
 </Accordion>
 </FaultDetailsCard>

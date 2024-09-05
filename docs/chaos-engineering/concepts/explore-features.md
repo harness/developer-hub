@@ -76,7 +76,15 @@ Application maps help:
 For more information on how to create an application map, go to [Application Map](/docs/chaos-engineering/concepts/explore-concepts/app-maps).
 
 ### Audit Logs
-[link](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/#logs)
+
+It refers to the detailed records that tracks all activities, changes, and events within the HCE platform. They help maintain a secure environment by providing transparency and accountability for all actions. They are critical for troubleshooting, compliance, and security auditing, thereby enabling teams to monitor and analyze the history of changes and operations within the HCE platform. These logs provide a chronological record of actions performed by users or systems, such as:
+
+- **Experiment Creation and Execution**: Logging details about when the chaos experiments are created, modified, or executed, including who initiated the action.
+- **Configuration Changes**: Recording changes made to chaos experiments, environments, or other configurations, specifying what was altered and by whom.
+- **User Access and Permissions**: Tracking user login attempts, access grants, and any changes to user roles or permissions.
+- **System Events**: System-generated events, errors, or alerts that may occur during chaos experiments.
+
+For more information, go to [logs](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/#logs).
 
 ### Custom Image Registry
 It is a repository that hosts container images that are used by chaos experiments. HCE allows you to use custom image registries for chaos experiments.
@@ -90,6 +98,8 @@ For more information on types of image registry and how to create one, go to [Im
 It is a collection of experiment templates and faults used to create and launch chaos experiments. Both experiments and faults are stored as manifests in an appropriate directory structure. This way, you can add new experiment templates and faults directly to the repository as files. In addition, you can derive the experiment templates from the existing experiments and save them to the ChaosHub from the UI.
 
 For more information on Enterprise ChaosHub, and their use cases, go to [ChaosHubs](/docs/chaos-engineering/use-harness-ce/chaoshubs/). To get hands-on experience, [Connect to a ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub) or [Manage a ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/manage-hub).
+
+For a more detailed demonstration, go to [the ChaosHub overview video](https://youtu.be/b4ggnJcZrcM?si=odEyBeAtWiqAF6zg).
 
 ### GameDays
 
@@ -128,7 +138,8 @@ The page where you land when you want to create a new experiment is Chaos Studio
 HCE provides you with out-of-the-box chaos faults that you can execute on your infrastructure. Some of the faults include Kubernetes, AWS, and VMware. For the full list of chaos faults, go to [Out-of-the-Box Faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/).
 
 ### Create Custom Faults
-[link](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#using-blank-canvas)
+
+You can create custom faults that can be injected into your application to test its resilience. These custom faults go beyond the pre-defined fault types provided by Harness. You can [Bring Your Own Chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/byoc/) to tailor the chaos experiments to meet specific needs, configurations, or scenarios unique to your environment.
 
 ## Security and Governance
 
@@ -152,11 +163,12 @@ You can execute chaos experiments as CI/CD pipelines to validate the resilience 
 You can integrate HCE with monitoring platforms such as SRM. For more information, go to [HCE SRM Integration](/docs/chaos-engineering/integrations/use-chaos-with-srm).
 
 ### JIRA
-link
+
+You can execute chaos experiments in pipelines, wherein you can integrate the pipeline execution with various steps, such as JIRA, CD, and so on.
+For more information, go to [Integrate with JIRA](/docs/chaos-engineering/integrations/pipeline-jira).
 
 ### Slack
-link
-
+TO-DO
 
 ## Chaos Metrics
 
@@ -177,7 +189,9 @@ It describes how resilient an application is to different kinds of failures. For
 
 ### Out-of-the-box Chaos Dashboards
 
-[link](/docs/chaos-engineering/use-harness-ce/dashboards/)
+HCE allows creation of chaos dashboards that simplifies the process of understanding the effects of chaos experiments and provides a comprehensive view of chaos experiments and their impact on system performance. These dashboards are designed to help you easily monitor, analyze, and visualize the results of chaos experiments.
+
+For more information, go to [Chaos Dashboards](/docs/chaos-engineering/use-harness-ce/dashboards/).
 
 
 ### Creating Custom Dashboards

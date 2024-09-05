@@ -167,15 +167,38 @@ Since the target application has been deployed, you can now create a chaos exper
 
     ![Tune Fault Config](./static/first-chaos/tune-fault-config.png)
 
-20. Navigate to the **Probes** tab. Here, you can either create a probe or select a pre-defined probe. Click **Select or Add new probes**. In this tutorial, you can select a pre-defined probe and add it to your chaos fault.
+20. Navigate to the **Probes** tab. Here, you can either create a probe or select a pre-defined probe. Click **Select or Add new probes**. In this tutorial, you can create a probe. Select **+New Probe**, select **HTTP** and enter the following details in the respective fields:
+
+    ```
+    name: "http-cartservice"
+    probeTimeout: "10s"
+    interval: "5s"
+    attempt: 2
+    probePollingInterval: "1s"
+    url: "http://service-of-the-user.namespace.svc.cluster-domain.example"
+    method: GET
+    Select "Compare Response Code"
+    criteria: "=="
+    responseCode: 200
+    ```
 
     ![Probes Config](./static/first-chaos/probes-config.png)
 
-21. To add a pre-defined probe to your chaos experiment, click the filter button and search for `http-cartservice`. This `cartservice` validates the availability of the `/cart` URL endpoint when you execute the pod delete fault.
+:::tip
+- You can given any name and ensure you use the same when referencing or using the probe in other places.
+- You can provide your own URL in the `url` field. The format is provided in the above example. For example, if your application targets the "cart-service", your `url` would be `http://cartservice.hce.svc.cluster.local/cart`.
+- Go to [create a probe](/docs/chaos-engineering/features/resilience-probes/use-probe) to understand the steps in detail.
+:::
 
-    ![Probes Config 2](./static/first-chaos/probes-config-2.png)
+21. Once you create the probe, it will be listed in the probe listing section on the left side of the page, as shown below. Select the probe to view the probe details. Click **Add to Fault**.
 
-    ![Probes Config 3](./static/first-chaos/probes-config-3.png)
+    ![Probes Config 4](./static/first-chaos/probes-config-4.png)
+
+:::info note
+Under probe details, you can see that the URL is `http://cartservice.hce.svc.cluster.local/cart` and the interval is 5s. As a part of the probe execution, `GET` requests are made to the specified URL. If no HTTP response is found within 5s, the probe status is considered as 'failed'. If all the probe executions pass, then the probe status is considered as 'passed'. You can find other probe details in the properties field.
+:::
+
+    ![Probes Config 2](./static/first-chaos/probes-config.png)
 
 22. Click **Add to Fault**.
 
