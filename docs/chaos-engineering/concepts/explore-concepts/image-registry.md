@@ -23,10 +23,9 @@ A custom image registry allows for storing container images securely, restrictin
 
 Follow the steps below to use [custom values](#custom-values-for-image-registry) or [default values](#default-values-for-image-registry) of the image registry in your chaos experiment.
 
-## Why use a Custom Image Registry?
+### Why use a Custom Image Registry?
 
 When the image you need to use for your chaos experiment is private, and the chaos experiments are required to be run for internal consumption, you can configure image registry as **private** and provide custom values to it.
-
 This way, you will have better control, and security when working with private images.
 
 ## Custom values for image registry
