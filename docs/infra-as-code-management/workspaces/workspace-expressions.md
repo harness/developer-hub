@@ -4,6 +4,9 @@ description: Learn how to use Harness workspace expressions.
 sidebar_position: 30
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Workspace expressions in Harness Infrastructure as Code Management (IaCM) provide a powerful way to dynamically reference and utilize various workspace-level parameters within your pipelines. By leveraging JEXL (Java Expression Language) expressions, you can access key workspace attributes, allowing for greater flexibility and customization in your workflows.
 
 With workspace expressions, you can:
@@ -15,6 +18,10 @@ With workspace expressions, you can:
 - Seamlessly manage Git-related parameters such as repository name, branch, commit SHA, and tags.
 
 These expressions are particularly useful in scenarios where your pipeline needs to adapt to different environments or configurations based on the workspace in use.
+
+:::info migrate expressions
+Go to the **Migrate expressions** tab in the [how to use workspace expressions](https://developer.harness.io/docs/infra-as-code-management/workspaces/workspace-expressions#how-to-use-workspace-expressions) section to see how to update your old expressions to the most recent format.
+:::
 
 ### Available workspace expressions
 
@@ -43,6 +50,8 @@ Here’s a table of the available workspace expressions in Harness IaCM:
 
 The following example highlights how you can apply workspace expressions to your pipelines run step and output the workspace identifier and secret variable value.
 
+<Tabs>
+<TabItem value="Interactive guide">
 <iframe 
     src="https://app.tango.us/app/embed/2bac0ddc-f01d-4b9e-ac7a-d7776160cfe8" 
     title="Using Harness workspace expressions" 
@@ -55,6 +64,36 @@ The following example highlights how you can apply workspace expressions to your
     mozallowfullscreen="true"
     allowfullscreen="true"
 ></iframe>
+</TabItem>
+<TabItem value="Migrate expressions">
+If you are currently using and older expression format, update it to the new format accordingly.
 
+For example, update secret variables from:
 
+```hcl
+// OLD
+<+pipeline.stages.stage_name.spec.execution.steps.step_name.spec.secretVariables.secret_variable_name>
+
+// NEW
+<+workspace.envVars.SECRET_ENV_VAR>
+```
+
+The following guide demonstrates how to update your workspace's secret environment variable reference:
+
+<iframe 
+    src="https://app.tango.us/app/embed/ad446a5f-cc13-408c-be77-8d19c241f8a8" 
+    title="Migrate workspace expressions in Harness IaCM" 
+    style={{ minHeight: '640px' }}
+    width="100%" 
+    height="100%"
+    referrerpolicy="strict-origin-when-cross-origin"
+    frameborder="0"
+    webkitallowfullscreen="true"
+    mozallowfullscreen="true"
+    allowfullscreen="true"
+></iframe>
+</TabItem>
+</Tabs>
+
+---
 Workspace expressions in Harness IaCM allow for advanced customization and dynamic referencing within your CI/CD pipelines. By understanding and utilizing these expressions, you can enhance the efficiency and adaptability of your infrastructure management processes.
