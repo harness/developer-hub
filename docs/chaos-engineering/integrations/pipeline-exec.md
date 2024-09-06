@@ -17,7 +17,7 @@ In all, pipelines facilitate orchestrating chaos experiments across infrastructu
 - Pipelines also facilitate **approvals** and **notifications**. Approval is a step introduced in the pipeline, that requires a person to approve the step in the pipeline before it is executed.
 
 :::tip
-You can configure permissions such that users in your account/project/organization can execute experiments only if they are in a pipeline.
+You can configure permissions such that users in your account/project/organization can execute experiments only if they are in a pipeline. Go to **Project Settings** -> **Roles** -> **Chaos** and select **Execute via Pipeline**.
 :::
 
 For more information, go to [Approvals](/docs/platform/approvals/approvals-tutorial).
