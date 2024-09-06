@@ -92,6 +92,36 @@ The following guide demonstrates how to update your workspace's secret environme
     mozallowfullscreen="true"
     allowfullscreen="true"
 ></iframe>
+
+See the following reference of old and new expression formats:
+
+<details>
+    <summary>See old and new expressions</summary>
+        | Value                   | Expressions                                                                                              |
+        |-------------------------|----------------------------------------------------------------------------------------------------------|
+        | **Workspace ID**         | Before: `<+pipeline.stages.s1.spec.execution.steps.init.spec.workspace>`                              |
+        |                         | After: `<+workspace.identifier>`                                                                     |
+        | **Folder Path**          | Before: `<+pipeline.stages.s1.spec.execution.steps.init.spec.envVariables.PLUGIN_ROOT_DIR>`            |
+        |                         | After: `<+workspace.folderPath>`                                                                     |
+        | **Provisioner Type**     | Before: `<+pipeline.stages.s1.spec.execution.steps.init.spec.envVariables.PLUGIN_PROVISIONER>`         |
+        |                         | After: `<+workspace.type>`                                                                           |
+        | **Provisioner Version**  | Before: `<+pipeline.stages.s1.spec.execution.steps.init.spec.envVariables.PLUGIN_TF_VERSION>`          |
+        |                         | After: `<+workspace.provisionerVersion>`                                                             |
+        | **Connector Ref**        | Before: `<+pipeline.stages.s1.spec.execution.steps.init.spec.envVariables.PLUGIN_CONNECTOR_REF>`       |
+        |                         | After: `<+workspace.connectorRef>`                                                                   |
+        | **Env Variable**         | Before: `<+pipeline.stages.s1.spec.execution.steps.init.spec.envVariables.SOME_ENV_VAR>`               |
+        |                         | After: `<+workspace.envVars.SOME_ENV_VAR>`                                                           |
+        | **Terraform/Opentofu var**| Before: `<+pipeline.stages.s1.spec.execution.steps.init.spec.envVariables.PLUGIN_WS_TF_VAR_OPEN_TOFU_VAR>` |
+        |                         | After: `<+workspace.variables.OPEN_TOFU_VAR>`                                                        |
+        | **Secret Variable**      | Before: `<+pipeline.stages.s1.spec.execution.steps.init.spec.secretVariables.SECRET_ENV_VAR>`          |
+        |                         | After: `<+workspace.envVars.SECRET_ENV_VAR>`                                                         |
+        | **Output**               | Before: `<+workspace.<+pipeline.stages.s1.spec.execution.steps.init.spec.workspace>.OUTPUT_ID>`        |
+        |                         | After: `<+workspace.outputs.OUTPUT_ID>`                                                              |
+        | **Env Var from Connector**| Before: `<+pipeline.stages.s1.spec.execution.steps.init.spec.envVariablesFromConnector.PLUGIN_ACCESS_KEY>` |
+        |                         | After: `<+workspce.envVariablesFromConnector.PLUGIN_ACCESS_KEY>`                                      |
+        | **Secret from Connector**| Before: `<+pipeline.stages.s1.spec.execution.steps.init.spec.secretVariablesFromConnector.PLUGIN_SECRET_KEY>` |
+        |                         | After: `<+workspace.secretVariablesFromConnector.PLUGIN_SECRET_KEY>`                                  |
+</details>
 </TabItem>
 </Tabs>
 
