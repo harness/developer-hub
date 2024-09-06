@@ -22,6 +22,18 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## September 2024
+
+### Version 1.108.2
+
+<!-- 2024-09-06 -->
+
+#### New features and enhancements
+
+- The [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) step will now present the code coverage data in Orchestration, Ingestion, and Extraction scan modes, this can be found as an issue item in your pipeline executions. (STO-7100)
+- The [Burp Suite Enterprise Edition](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference) step has been upgraded to use the `scope_v2` API version instead of `scope`. This update is designed to support server version `v2023.3`, while still maintaining backward compatibility with earlier supported versions. (STO-7955)
+
+
 ## August 2024
 
 ### Version 1.104.3
