@@ -1,7 +1,7 @@
 ---
 title: Artifact scans with Wiz
 description: Scan artifacts with Wiz. Orchestration and Ingestion modes supported.
-sidebar_label: Artifact scans with Wiz
+sidebar_label: Wiz artifact scanning
 sidebar_position: 10
 ---
 

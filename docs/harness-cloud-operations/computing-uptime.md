@@ -221,7 +221,7 @@ All the Platform SLIs are applicable here.
 | | 10% of traffic generates 5xx error in a rolling window of 5 mins |Partial Outage|
 | | 2x of average latency in a rolling window of 5 mins |Degraded Performance|
 
-## Software Supply Chain Assurance
+## Supply Chain Security
 
 All the Platform and Pipeline SLIs are applicable here. 
 

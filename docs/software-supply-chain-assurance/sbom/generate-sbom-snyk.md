@@ -1,5 +1,5 @@
 ---
-title: Ingest SBOM from Snyk into SSCA
+title: Ingest SBOM from Snyk into SCS
 description: You can easily ingest SBOM results generated from Snyk
 sidebar_position: 30
 ---
@@ -14,7 +14,7 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
 
 ## Generating and ingesting a Snyk Container SBOM
 
-A [Software Bill of Materials (SBOM)](https://cyclonedx.org/capabilities/sbom/) is a list of all the components, libraries, and other dependencies used in a software application. Harness SSCA can ingest [JSON SPDX](https://spdx.dev/learn/overview/) or [CycloneDx](https://cyclonedx.org/specification/overview/) formatted SBOM from any tool that can generate these report formats.
+A [Software Bill of Materials (SBOM)](https://cyclonedx.org/capabilities/sbom/) is a list of all the components, libraries, and other dependencies used in a software application. Harness SCS can ingest [JSON SPDX](https://spdx.dev/learn/overview/) or [CycloneDx](https://cyclonedx.org/specification/overview/) formatted SBOM from any tool that can generate these report formats.
 
 ### Generate the keys for SBOM Attestation - optional
 For enhanced trust and verification of your SBOM's integrity, the SBOM Orchestration step offers optional signing and attestation generation. This functionality requires a private key, password, and corresponding public key. If you choose to skip signing, you can proceed without generating or storing these keys.

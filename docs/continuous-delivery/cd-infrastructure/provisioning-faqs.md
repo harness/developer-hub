@@ -91,6 +91,10 @@ Harness lets you use Terraform to provision infrastructure as part of your deplo
 
 For an overview of the process see [Terraform provisioning with Harness](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness). 
 
+### How can I ensure the state file is properly saved in the Terraform Enterprise (TFE) workspace when running a Terraform apply script locally on the Harness delegate?
+
+One thing to check is whether the Harness delegate has the necessary permissions to write to the `dev-workflow-aws-harness` workspace. If the delegate lacks the required permissions, the state file won't be uploaded to the TFE workspace.
+
 ### Do I need to deploy an application to use Terraform?
 
 No. You do not need to deploy artifacts through Harness services to use Terraform provisioning in a workflow. You can use Terraform to provision infrastructure without deploying any artifact.

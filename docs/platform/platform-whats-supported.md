@@ -30,7 +30,7 @@ For supported platforms and technologies by module, go to the module documentati
 * [What's supported in FF](/docs/feature-flags/ff-supported-platforms)
 * [What's supported in CCM](/docs/cloud-cost-management/whats-supported)
 * [What's supported in STO](/docs/security-testing-orchestration/whats-supported)
-* [What's supported in SSCA](/docs/software-supply-chain-assurance/ssca-supported)
+* [What's supported in SCS](/docs/software-supply-chain-assurance/ssca-supported)
 * [What's supported in CE](/docs/chaos-engineering/whats-supported)
 * [What's supported in SRM](/docs/service-reliability-management/srm-whats-supported)
 * [What's supported in CET](/docs/continuous-error-tracking/whats-supported)

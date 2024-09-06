@@ -104,7 +104,7 @@ This topic shows you how to add a Custom Secret Manager in the project scope.
    You can also search for a specific Secret Manager Template by entering its name in **Search**. Once you select the Secret Manager Template, the details are displayed in the Template Studio.
 
 7. Select **Use Template**.
-8. Enter values for the required Input Variables. Harness allows you to use [Fixed Values and Runtime Inputs](../../variables-and-expressions/runtime-inputs).
+8. Enter values for the required Input Variables. Harness allows you to use [Fixed Values and Runtime Inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/).
 
 	![](../static/custom-secret-manager-36.png)
 

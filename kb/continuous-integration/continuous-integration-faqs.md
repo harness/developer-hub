@@ -4,6 +4,7 @@ description: Common questions and troubleshooting issues related to Harness CI.
 sidebar_position: 2
 redirect_from:
   - /docs/faqs/continuous-integration-ci-faqs
+  - /docs/frequently-asked-questions/harness-faqs/continuous-integration-ci-faqs
 ---
 
 ## Build infrastructure

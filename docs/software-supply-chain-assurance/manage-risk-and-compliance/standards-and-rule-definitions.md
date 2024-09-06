@@ -1,11 +1,11 @@
 ---
 title: Standards and Rule Definitions
 sidebar_label: Standards and rule definitions
-description: View and manage the standards and associated rules supported by Harness SSCA
+description: View and manage the standards and associated rules supported by Harness SCS
 sidebar_position: 2
 ---
 
-The **Rule Definitions** section offers a complete list of all the standards and associated rules supported by Harness SSCA. These rules are applied to various entity types, and the overall compliance posture is presented in the Compliance section of SSCA. To learn more about managing the compliance status, refer to the document [Manage Compliance Posture](./manage-compliance-posture)
+The **Rule Definitions** section offers a complete list of all the standards and associated rules supported by Harness SCS. These rules are applied to various entity types, and the overall compliance posture is presented in the Compliance section of SCS. To learn more about managing the compliance status, refer to the document [Manage Compliance Posture](./manage-compliance-posture)
 
 <DocImage path={require('./static/rule-definations.png')} width="100%" height="100%" title="Click to view full size image" />
 

@@ -56,11 +56,9 @@ This can be worked around by using query parameters in the Bitbucket api [https:
 
 #### Fixed issues
 
-- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` must be enabled whenever a base image connector is used. (CI-13924, ZD-68737)
+- For SMP customers, the 'getting started' flow for CI has been removed from the side navigation. (CI-13821)
 
-- For SMP customers, the 'getting started' purchase flow for CI has been removed from the side navigation as it is not relevant for SMP customers. (CI-13821)
-
-- Fixed an issue where the plugin image url was incorrect when the registry url had a port configured. This issue occurred because everything after the first : was being considered as the tag of the image, leading to an invalid Fully Qualified Name (FQN) and causing the Initialize step to fail in the Kubernetes flow. The fix ensures that the FQN is properly considered when the registry endpoint includes a port number. (CI-13770, ZD-66772)
+- Fixed an issue with 'Build and Push' step where a faiure occured when the registry URL in the Doceker connector had a port configured. This issue occurred because everything after the first ':' was being considered as the tag of the image, leading to an invalid Fully Qualified Name (FQN) and causing the Initialize step to fail in the Kubernetes flow. The fix ensures that the FQN is properly considered when the registry endpoint includes a port number. (CI-13770, ZD-66772)
 
 
 ### Version 1.43

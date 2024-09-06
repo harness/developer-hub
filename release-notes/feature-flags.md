@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-08-19T18:19:25
+date: 2024-09-05T18:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,40 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: August 19, 2024
+#### Last updated: September 05, 2024
+
+## September 2024
+
+### Javascript Client SDK
+
+#### Version 1.13.0
+
+**New features and enhancements**:
+ - Added the `authRequestReadTimeout` config option. Have a look at the [readme](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md#authentication-request-timeout) for further information and how to enable it. (FFM-11972)
+
+**Bug fixes**: 
+ - If authentication fails, the correct error will be logged instead of `Invalid Token`. (FFM-11972)
+
+### React Client SDK
+
+#### Version 1.13.0
+
+**New features and enhancements**:
+ - Bumped Javascript SDK to 1.13.0. (FFM-11972, FFM-11852, ZD-68087)
+
+### React Native SDK
+
+#### Version 2.2.0
+
+**New features and enhancements**:
+ - Bumped FF React SDK to 2.2.0. (FFM-11972)
+
+### Relay Proxy
+
+#### Version 2.0.4
+
+**Fixed Issues**:
+  - Fixes an issue where the Proxy could send SSE events with truncated flag identifiers if the flag identifiers contained an underscore e.g. `HELLO_WORLD`. When the Primary Proxy starts up it pulls down config from Saas, compares it with the config in redis and generates SSE events to make sure SDKs don't miss out on changes. However in this scenario if the flag identifier contained an underscore e.g. `HELLO_WORLD` the SSE event would indicate a change for the flag `HELLO`.
 
 ## August 2024
 
@@ -60,6 +93,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - The following CVEs have been patched:
     - [ws](https://github.com/advisories/GHSA-3h5v-q93c-6h6q)
     - [braces](https://github.com/advisories/GHSA-grv7-fg5c-xmjg)
+
+### Python SDK
+
+#### Version 1.7.0
+
+**Enhancements**:
+ - Added `httpx_args` option. (FFM-11935):
+   - For further reading, you can refer to this [doc on `httpsx_args`](https://github.com/harness/ff-python-server-sdk/blob/main/docs/further_reading.md#httpx-configuration-options)
+   - You can find a [sample of the change by Harness](https://github.com/harness/ff-python-server-sdk/blob/main/examples/with_httpx_args_example/with_httpx_args.py) in our Python SDK repo.
 
 ## July 2024
 

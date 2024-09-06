@@ -88,7 +88,7 @@ const ModuleData: ModuleData[] = [
     horizon: StoData,
   },
   {
-    title: "Software Supply Chain Assurance",
+    title: "Supply Chain Security",
     description: "SaaS release status: GA, SMP release status: BETA",
     module: MODULES.ssca,
     horizon: SscaData,

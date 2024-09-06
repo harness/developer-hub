@@ -8,7 +8,7 @@ redirect_from:
 
 When you [create SBOM policies](./create-sbom-policies.md), you define rules for open-source component usage based on criteria such as component name, version, license, PURL, and supplier.
 
-The SSCA module supports deny list and allow list policies. Your policy files can include both lists. This topic explains how to write rules for each list.
+The SCS module supports deny list and allow list policies. Your policy files can include both lists. This topic explains how to write rules for each list.
 
 ## Deny list policies
 
