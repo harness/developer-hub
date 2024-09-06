@@ -47,7 +47,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## September 2024
 
-### Version 1.55.x
+### Version 1.55.0
 
 #### New features and enhancements
 
@@ -69,7 +69,8 @@ Harness now supports applying failure strategies during multi-service, multi-inf
 - The service variable that references secret text is exposed in plaintext delegate logs when executing CD WinRM deployment. This issue is resolved. The warning logs are updated with debug logs. (CDS-100046, ZD-68713)
 - When using WinRM credential of type = Kerberos in PowerShell script, output variables are not displayed properly due to a missing identifier. This issue is resolved. (CDS-100036, ZD-68283)
 - Service was not loading when the service and environment used a custom template configured as **Always use the stable version**. This issue is resolved. (CDS-100021, CD-68666)
-- The tooltip was not being displayed for the Output alias under Optional Configuration. This tooltip description has been added. (CDS-99938)
+- The Custom stage pipelines did not show the environment in the Pipeline execution history. This issue is resolved now.(CDS-99938)
+- The tooltip was not being displayed for the Output alias under Optional Configuration. This tooltip description has been added. (CDS-90919)
 
 ### Version 1.54.2
 
