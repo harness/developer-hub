@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 
-date: 2024-09-02T10:00
+date: 2024-009-02T10:00
 sidebar_position: 10
 ---
 
@@ -29,7 +29,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### New features and enhancements
 
-- Cache Intelligence now supports C# .Net (CI-12672)
+- Added a new setting in the account default settings under CI named ‘Upload Logs Via Harness’, allowing customers to route CI step execution logs through Harness’ log service instead uploading them directly from the build environment. This was previously behind a feature flag, but is now available for all users. (CI-13647)
 
 #### Fixed issues
 
