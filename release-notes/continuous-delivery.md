@@ -59,6 +59,10 @@ New images for Serverless are released to support multiple runtime for `python3.
 
 - We have introduced an integration where a delegate can now connect to ServiceNow via Mulesoft Endpoint. (CDS-99537, ZD-64547)
 
+- **Multi-Deployment and Matrix Failure Strategy Support**
+
+Harness now supports applying failure strategies during multi-service, multi-infrastructure, and matrix deployments. Currently this feature is behing the Feature Flag `CDS_MULTI_DEPLOYMENT_ON_FAILURE`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-96876, ZD-63199, ZD-64391, ZD-64465, ZD-66720)
+
 #### Fixed issues
 
 - The Users were unable to move or delete a service specific override. This issue is resolved.Separate permission to delete is not required. The permission required to move or delete a service specific override for Global Environment and infrastructure specific is `core_environment_edit` and for service specific or service and infrastructure specific is `core_service_edit`. (CDS-100204, ZD-68468, ZD-68759)
@@ -85,7 +89,7 @@ New images for Serverless are released to support multiple runtime for `python3.
 
 - **Service Failure Strategy**
 
-We have introduced a failure strategy for the service, where the service step will, by default, inherit the failure strategy from the stage. (CDS-96876, ZD-63199, ZD-64391, ZD-64465, ZD-66720)
+We have introduced a failure strategy for the service, where the service step will, by default, inherit the failure strategy from the stage. Currently this feature is behing the Feature Flag `CDS_SERVICE_INFRA_FAILURE_STRATEGY`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.(CDS-96876, ZD-63199, ZD-64391, ZD-64465, ZD-66720)
 
 - **Infrastructure Scope Selector**
 
