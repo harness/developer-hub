@@ -51,26 +51,26 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### New features and enhancements
 
-- **Multiple Runtime support for Serverless.com and AWS SAM**
+- **Multiple runtime support for Serverless.com and AWS SAM**
 
-New images for AWS SAM are released to support multiple runtime for `python3.11`, `python3.12`, `ruby3.2`, `java8`, `go1.24`. Refer to Harness [AWS SAM - Containerized step images](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments/#containerized-step-images) for more information.
+Released new images for AWS SAM to support multiple runtime for `python3.11`, `python3.12`, `ruby3.2`, `java8`, `go1.24`. For more information, go to Harness [AWS SAM - Containerized step images](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments/#containerized-step-images). (CDS-80560)
 
-New images for Serverless are released to support multiple runtime for `python3.11`, `python3.12`, `ruby3.2`, `java8`.  Refer to Harness [Serverless.com - Containerized step images](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#containerized-step-images) for more information.
-
-- We have introduced an integration where a delegate can now connect to ServiceNow via Mulesoft Endpoint. (CDS-99537, ZD-64547)
+Released new images for Serverless to support multiple runtime for `python3.11`, `python3.12`, `ruby3.2`, `java8`.  For more information, go Harness [Serverless.com - Containerized step images](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#containerized-step-images). (CDS-80560)
 
 - **Multi-Deployment and Matrix Failure Strategy Support**
 
 Harness now supports applying failure strategies during multi-service, multi-infrastructure, and matrix deployments. Currently this feature is behing the Feature Flag `CDS_MULTI_DEPLOYMENT_ON_FAILURE`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-96876, ZD-63199, ZD-64391, ZD-64465, ZD-66720)
 
+- ServiceNow access is enabled through Mulesoft endpoint by adding `/now` URI in the ServiceNow requests. (CDS-99537, ZD-64547)
+
 #### Fixed issues
 
-- The Users were unable to move or delete a service specific override. This issue is resolved.Separate permission to delete is not required. The permission required to move or delete a service specific override for Global Environment and infrastructure specific is `core_environment_edit` and for service specific or service and infrastructure specific is `core_service_edit`. (CDS-100204, ZD-68468, ZD-68759)
-- The service variable that references secret text is exposed in plaintext delegate logs when executing CD WinRM deployment. This issue is resolved. The warning logs are updated with debug logs. (CDS-100046, ZD-68713)
-- When using WinRM credential of type = Kerberos in PowerShell script, output variables are not displayed properly due to a missing identifier. This issue is resolved. (CDS-100036, ZD-68283)
+- Users were unable to move or delete a service-specific override. This issue is resolved. The permissions required to move or delete a service-specific override for Global Environment and infrastructure is `core_environment_edit`. The permissions required for service-specific override or service and infrastructure is `core_service_edit`. Separate permissions to delete is not required.  (CDS-100204, ZD-68468, ZD-68759)
+- The service variable that referenced secret text was exposed in plaintext delegate logs when executing CD WinRM deployment. This issue is resolved. The warning logs are updated with debug logs. (CDS-100046, ZD-68713)
+- When using WinRM credential of "type = Kerberos" in PowerShell script, the output variables were not displayed properly due to a missing identifier. This issue is resolved. (CDS-100036, ZD-68283)
 - Service was not loading when the service and environment used a custom template configured as **Always use the stable version**. This issue is resolved. (CDS-100021, ZD-68666)
-- The Custom stage pipelines did not show the environment in the Pipeline execution history. This issue is resolved now.(CDS-99938)
-- The tooltip was not being displayed for the Output alias under Optional Configuration. This tooltip description has been added. (CDS-90919)
+- Custom stage pipelines did not show the environment in the Pipeline execution history. This issue is resolved now.(CDS-99938)
+- The tooltip for the Output alias (optional) field under Optional Configuration was not being displayed. This issue is resolved. (CDS-90919)
 
 ### Version 1.54.2
 
