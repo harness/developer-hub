@@ -115,6 +115,8 @@ If this setting is enabled **Skip Pre Flight** will be checked by default.
 
 ### Continuous Integration
 
+## S3-Compatible Object Store for Self-Managed Build Infrastructure
+
 :::note
 
 Currently, Harness-managed caching with self-managed build infrastructures is behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED`. Contact [Harness Support](mailto:support@harness.io) to enable these features.
@@ -140,6 +142,11 @@ Self-managed build infrastructure is any [build infrastructure](/docs/continuous
 This doesn't apply to Harness CI Cloud because, when you use Harness CI Cloud with Harness-managed caches, Harness uses Harness-hosted Harness Cloud storage.
 
 :::
+
+## Upload Logs Via Harness
+
+When set to `True`, CI step execution logs will route  through Harness' log service instead of getting uploaded directly to the object store (GCS bucket). This is useful if your network settings do not allow direct access to the object store. Note: Enabling this setting may introduce some latency in log uploads. Only activate this option if necessary.
+By Default, Upload Logs Via Harness is set to `False`. This is an account level setting only, it cannot be overriden in organization or project default settings. 
 
 ### Git Experience
 
