@@ -115,7 +115,7 @@ If this setting is enabled **Skip Pre Flight** will be checked by default.
 
 ### Continuous Integration
 
-## S3-Compatible Object Store for Self-Managed Build Infrastructure
+#### S3-Compatible Object Store for Self-Managed Build Infrastructure
 
 :::note
 
@@ -143,7 +143,7 @@ This doesn't apply to Harness CI Cloud because, when you use Harness CI Cloud wi
 
 :::
 
-## Upload Logs Via Harness
+#### Upload Logs Via Harness
 
 When set to `True`, CI step execution logs will route  through Harness' log service instead of getting uploaded directly to the object store (GCS bucket). This is useful if your network settings do not allow direct access to the object store. 
 By Default, Upload Logs Via Harness is set to `False`. This is an account level setting only, it cannot be overriden in organization or project default settings. 
