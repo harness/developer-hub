@@ -145,8 +145,9 @@ This doesn't apply to Harness CI Cloud because, when you use Harness CI Cloud wi
 
 ## Upload Logs Via Harness
 
-When set to `True`, CI step execution logs will route  through Harness' log service instead of getting uploaded directly to the object store (GCS bucket). This is useful if your network settings do not allow direct access to the object store. Note: Enabling this setting may introduce some latency in log uploads. Only activate this option if necessary.
+When set to `True`, CI step execution logs will route  through Harness' log service instead of getting uploaded directly to the object store (GCS bucket). This is useful if your network settings do not allow direct access to the object store. 
 By Default, Upload Logs Via Harness is set to `False`. This is an account level setting only, it cannot be overriden in organization or project default settings. 
+Note: Enabling this setting may introduce some latency in log uploads so we advise to only use this option is truly needed. 
 
 ### Git Experience
 
