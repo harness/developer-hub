@@ -30,9 +30,15 @@ The following failure strategies will be supported for Service and Environment s
 
 ## Examples covering failure strategy for Service and Infrastructure
 
+:::info note
+The Service and Infrastructure step does not have its own specific failure strategy. Instead, it inherits the failure strategy defined at the stage level. This means that any failure actions configured for the stage will apply to the Service step as well.
+:::
+
 ### Retry Service Step
 
-Here’s a YAML configuration demonstrating the Retry strategy for a service step:
+<details>
+<summary>YAML configuration demonstrating the Retry strategy for a service step</summary>
+
 
 ```yaml
 pipeline:
@@ -115,13 +121,17 @@ pipeline:
   identifier: serviceRetryWithoutPostAction
   name: serviceRetryWithMarkASFailure
 ```
+</details>
+
 This pipeline YAML demonstrates a service step that references an invalid artifact (`primaryArtifactRef`). As a result, the step will fail. The failure strategy is configured to `retry` the step twice, waiting 10 seconds between retries. If the issue persists, the pipeline will be marked as failed.
 
 ![](./static/service_failure_retry.png)
 
 ### Pipeline Rollback on Infra Failure
 
-Here’s another example where an incorrect infrastructure configuration triggers a pipeline rollback:
+
+<details>
+<summary>YAML configuration where an incorrect infrastructure configuration triggers a pipeline rollback</summary>
 
 ```yaml
 pipeline:
@@ -287,6 +297,7 @@ pipeline:
                 type: PipelineRollback
   name: infraPipelineRollback
 ```
+</details>
 
 This pipeline defines an infrastructure step with an incorrect `connectorRef`. The failure strategy is configured to trigger a `PipelineRollback` on failure. This means that if the infrastructure setup fails, the entire pipeline will revert to its previous state.
 
@@ -294,15 +305,20 @@ This pipeline defines an infrastructure step with an incorrect `connectorRef`. T
 
 The infrastructure step will fail due to the incorrect connector reference, causing the pipeline to roll back both `t2` and `t1` stages.
 
-## Cases covering multiservice, multi-Infra and deploy stages in a matrix
+## Failure Strategy Support for Multiservice, Multi-Infrastructure, and Matrix Deployment
 
 :::info
 Currently, this feature is behind the feature flag, `CDS_MULTI_DEPLOYMENT_ON_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
+Multiservice deployments can be achieved using either the native multiservice configuration or the matrix configuration.
+
 ### Applying Failure strategy during Multi-Deployment
 
 In the example below, two services (ser_1, ser_2) are deployed across two infrastructures (infra2, infra1). The infrastructures are configured to deploy in parallel, and a failure strategy is defined to ensure resilient handling of any errors during deployment.
+
+<details>
+<summary>Failure strategy during Multi-Deployment</summary>
 
 ```yaml
 pipeline:
@@ -392,6 +408,8 @@ pipeline:
                     action:
                       type: MarkAsFailure
 ```
+</details>
+
 In this deployment will proceed as follow:-
 
 (ser_1 and infra_2) and ( ser_2 and infra_2 ) will be deployed in parallel (different services within the same infrastructure).
@@ -409,10 +427,12 @@ The `onFailure` field supports two values:
 1. `RunAll`:
 This value ensures that if one deployment fails, the system will continue executing all remaining deployments.
 
+
 ```yaml
 multiDeploymentConfig:
   onFailure: RunAll
 ```
+
 
 In the example above, we have given given failure srategy for multideployment as RunAll, for example there is an issue with ser_1 and both the stages in series fails as well as there is an issue with infra_2 due to invalid configuration of artifact and connectors. In this case stage with (ser_1 infra_2), (ser_2 and infra_2) and (ser_1 and infra_1) will fail. The RunAll failure strategy ensures that even though these stages are failing (ser_2 and infra_1) proceeds with the deployment.
 
@@ -422,10 +442,12 @@ In the example above, we have given given failure srategy for multideployment as
 
 When this value is used, if any deployment fails, all queued deployments that haven’t yet started will be skipped. 
 
+
 ```yaml
 multiDeploymentConfig:
   onFailure: SkipQueued
 ```
+
 If a failure occurs during the deployment of ser_1 on infra2, all subsequent deployments, such as ser_2 on infra1, will be skipped, halting the pipeline for queued tasks.
 
 ![](./static/multideployment_queues.png)
@@ -435,6 +457,9 @@ In a parallel deployment, any deployments that have already started cannot be st
 :::
 
 ### Applying Failure strategy during Matrix
+
+<details>
+<summary>Adding Failure strategy using Matrix for Multi-Deployment</summary>
 
 ```yaml
 pipeline:
@@ -531,6 +556,8 @@ pipeline:
                 - infra2
             maxConcurrency: 2
 ```
+</details>
+
 The matrix strategy defines two variables—service and infra with each service `rollingDeploy2` and `rollingDeploy1` deployed across both `infra1` and `infra2`.
 
 The `onFailure` field needs to be added inside the matrix configuration to define how the system should handle failures.
