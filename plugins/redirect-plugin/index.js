@@ -104,7 +104,7 @@ async function docsPluginEnhanced(context, options) {
         );
         fs.copySync(serverRedirectsPath, outPutPath);
         fs.appendFileSync(outPutPath, strRedirects);
-        // if we need to append on the first line 
+        // if we need to append on the first line
         // fs.appendFileSync(
         //   outPutPath,
         //   "\r\n# client-redirect-netlify-format-aug-23-2023.txt appeneded from Archives \r\n\r\n"

@@ -1,6 +1,7 @@
 ---
 id: cf-app-network-latency
 title: CF app network latency
+canonical: https://github.com/facebook/docusaurus/issues/5250
 ---
 
 import CFAndBOSHSecrets from './shared/cf-and-bosh-secrets.md';
@@ -11,11 +12,14 @@ CF app network loss injects network latency into a Cloud Foundry app instance, c
 ![CF App Network Latency](./static/images/cf-app-network-latency.png)
 
 ## Use cases
+
 CF app network latency:
+
 - Checks resilience upon app network latency.
 - Validates the effectiveness of disaster recovery and high availability of the app.
 
 ### Mandatory tunables
+
 <table>
   <tr>
     <th> Tunable </th>
@@ -50,6 +54,7 @@ CF app network latency:
 </table>
 
 ### Optional tunables
+
 <table>
   <tr>
     <th> Tunable </th>
@@ -128,7 +133,8 @@ The `destinationHosts` input variable subjects the comma-separated names of the 
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-app-network-latency/destination-hosts.yaml yaml)
+[embedmd]: # "./static/manifests/cf-app-network-latency/destination-hosts.yaml yaml"
+
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
@@ -143,7 +149,7 @@ spec:
     app: cf-app
     organization: dev-org
     space: dev-space
-    destinationHosts: 'google.com'
+    destinationHosts: "google.com"
 ```
 
 ### Destination IPs
@@ -152,7 +158,8 @@ The `destinationIPs` input variable subjects the comma-separated names of the ta
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-app-network-latency/destination-ips.yaml yaml)
+[embedmd]: # "./static/manifests/cf-app-network-latency/destination-ips.yaml yaml"
+
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
@@ -167,7 +174,7 @@ spec:
     app: cf-app
     organization: dev-org
     space: dev-space
-    destinationIPs: '1.1.1.1'
+    destinationIPs: "1.1.1.1"
 ```
 
 ### Source and destination ports
@@ -179,7 +186,8 @@ By default, the network experiments disrupt traffic for all the source and desti
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-app-network-latency/source-and-destination-ports.yaml yaml)
+[embedmd]: # "./static/manifests/cf-app-network-latency/source-and-destination-ports.yaml yaml"
+
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
@@ -194,7 +202,7 @@ spec:
     app: cf-app
     organization: dev-org
     space: dev-space
-    destinationIPs: '1.1.1.1'
+    destinationIPs: "1.1.1.1"
     sourcePorts: "8080,3000"
     destinationPorts: "5000,3000"
 ```
@@ -208,7 +216,8 @@ By default, the network experiments disrupt traffic for all the source and desti
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-app-network-latency/ignore-source-and-destination-ports.yaml yaml)
+[embedmd]: # "./static/manifests/cf-app-network-latency/ignore-source-and-destination-ports.yaml yaml"
+
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
@@ -223,7 +232,7 @@ spec:
     app: cf-app
     organization: dev-org
     space: dev-space
-    destinationIPs: '1.1.1.1'
+    destinationIPs: "1.1.1.1"
     sourcePorts: "!8080,3000"
     destinationPorts: "!5000,3000"
 ```
@@ -234,7 +243,8 @@ The `latency` and `jitter` input variables add delay and a small deviation to th
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-app-network-latency/latency-jitter.yaml yaml)
+[embedmd]: # "./static/manifests/cf-app-network-latency/latency-jitter.yaml yaml"
+
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
@@ -254,11 +264,13 @@ spec:
 ```
 
 ### BOSH deployment
+
 The `boshDeployment` input determines the BOSH deployment name under which all the CF resources are being managed. It can be obtained using the BOSH CLI command `bosh deployments`.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-app-network-latency/boshDeployment.yaml yaml)
+[embedmd]: # "./static/manifests/cf-app-network-latency/boshDeployment.yaml yaml"
+
 ```yaml
 # bosh deployment
 apiVersion: litmuchaos.io/v1alpha1
@@ -278,11 +290,13 @@ spec:
 ```
 
 ### Instance affected percentage
+
 The `instanceAffectedPercentage` input specifies the percentage of total number of app instances that will be targeted. It defaults to 0 (1 instance).
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-app-network-latency/instanceAffectedPercentage.yaml yaml)
+[embedmd]: # "./static/manifests/cf-app-network-latency/instanceAffectedPercentage.yaml yaml"
+
 ```yaml
 # instance affected percentage
 apiVersion: litmuchaos.io/v1alpha1
@@ -303,13 +317,16 @@ spec:
 ```
 
 ### CF deployment platform
+
 The `cfDeploymentPlatform` input variable determines the deployment platform used for CF with respect to the infrastructure.
+
 - The deployment platform can be local, that is, the same environment used by the infrastructure, or a remote machine.
 - The deployment platform is where the fault-injector utility executes.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-container-kill/cfDeploymentPlatform.yaml yaml)
+[embedmd]: # "./static/manifests/cf-container-kill/cfDeploymentPlatform.yaml yaml"
+
 ```yaml
 # cf deployment platform
 apiVersion: litmuchaos.io/v1alpha1
@@ -328,11 +345,13 @@ spec:
 ```
 
 ### Skip SSL validation
+
 The `skipSSLValidation` input variable determines whether to skip SSL validation for calling the CF APIs.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-container-kill/skipSSLValidation.yaml yaml)
+[embedmd]: # "./static/manifests/cf-container-kill/skipSSLValidation.yaml yaml"
+
 ```yaml
 # skip ssl validation for cf
 apiVersion: litmuchaos.io/v1alpha1
@@ -352,11 +371,13 @@ spec:
 ```
 
 ### Fault injector port
+
 The `faultInjectorPort` input variable determines the port used for the fault-injector local server.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-container-kill/faultInjectorPort.yaml yaml)
+[embedmd]: # "./static/manifests/cf-container-kill/faultInjectorPort.yaml yaml"
+
 ```yaml
 # fault injector port
 apiVersion: litmuchaos.io/v1alpha1

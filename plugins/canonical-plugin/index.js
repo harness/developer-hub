@@ -1,27 +1,57 @@
-// export default function (context, options) {
-//   return {
-//     name: "docusaurus-plugin",
+const fs = require("fs-extra");
+const path = require("path");
+const docsPluginExports = require("@docusaurus/plugin-content-docs");
 
-//     // async postBuild({ siteConfig = {}, routesPaths = [], outDir }) {
-//     //   routesPaths.map((route) => {
-//     //     if (route === "/docs/") {
-//     //       console.log("match : ", route);
-//     //     }
-//     //   });
-//     // },
+const docsPlugin = docsPluginExports.default;
 
-//     injectHtmlTags() {
-//       return {
-//         headTags: [
-//           {
-//             tagName: "link",
-//             attributes: {
-//               rel: "preconnect",
-//               href: "https://www.github.com",
-//             },
-//           },
-//         ],
-//       };
-//     },
-//   };
-// }
+async function docsPluginEnhanced(context, options) {
+  const docsPluginInstance = await docsPlugin(context, options);
+
+  return {
+    ...docsPluginInstance,
+    async postBuild(params) {
+      const { outDir, content } = params;
+
+      if (
+        !content ||
+        !content.loadedVersions ||
+        content.loadedVersions.length < 1 ||
+        content.loadedVersions[0].docs.length < 1
+      ) {
+        return null;
+      }
+
+      const docs = content.loadedVersions[0].docs;
+
+      docs.map((post) => {
+        const { id, frontMatter, permalink } = post;
+
+        if (
+          id ==
+            "chaos-engineering/chaos-faults/cloud-foundry/cf-app-network-latency" &&
+          frontMatter.canonical
+        ) {
+          const htmlFilePath = path.join(outDir, permalink, "index.html");
+          console.log(htmlFilePath);
+          if (fs.existsSync(htmlFilePath)) {
+            let htmlContent = fs.readFileSync(htmlFilePath, "utf-8");
+
+            const canonicalTagRegex =
+              /<link\s+data-rh="true"\s+rel="canonical"\s+href="([^"]+)">/;
+            htmlContent = htmlContent.replace(canonicalTagRegex, "");
+            htmlContent = htmlContent.replace(
+              "</head>",
+              `<link rel="canonical" href="${frontMatter.canonical}" />\n</head>`
+            );
+            fs.writeFileSync(htmlFilePath, htmlContent, "utf-8");
+          }
+        }
+      });
+    },
+  };
+}
+
+module.exports = {
+  ...docsPluginExports,
+  default: docsPluginEnhanced,
+};
