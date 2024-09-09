@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 With Harness module registry, you can speed up and simplify your infrastructure management by reusing pre-built modules. This helps you avoid reinventing the wheel every time you need to set up common components, such as virtual machines, databases, or networks.
 
 ### Prerequisites
-Before you being configuring module registry, ensure that you have:
+Before you begin configuring module registry, ensure that you have:
 - Access to your OpenTofu or Terraform environment via [Harness connectors](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-connectors).
 
 ## Register a module
