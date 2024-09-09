@@ -59,18 +59,18 @@ Released new images for Serverless to support multiple runtime for `python3.11`,
 
 - **Multi-Deployment and Matrix Failure Strategy Support**
 
-Harness now supports applying failure strategies during multi-service, multi-infrastructure, and matrix deployments. Currently this feature is behing the Feature Flag `CDS_MULTI_DEPLOYMENT_ON_FAILURE`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-96876, ZD-63199, ZD-64391, ZD-64465, ZD-66720)
+Harness now supports applying failure strategies during multi-service, multi-infrastructure, and matrix deployments. Currently this feature is behind the feature flag `CDS_MULTI_DEPLOYMENT_ON_FAILURE`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-96876, ZD-63199, ZD-64391, ZD-64465, ZD-66720)
 
-- ServiceNow access is enabled through Mulesoft endpoint by adding `/now` URI in the ServiceNow requests. (CDS-99537, ZD-64547)
+- ServiceNow access is enabled through a Mulesoft endpoint by adding a `/now` URI in the ServiceNow requests. (CDS-99537, ZD-64547)
 
 #### Fixed issues
 
-- Users were unable to move or delete a service-specific override. This issue is resolved. The permissions required to move or delete a service-specific override for Global Environment and infrastructure is `core_environment_edit`. The permissions required for service-specific override or service and infrastructure is `core_service_edit`. Separate permissions to delete is not required.  (CDS-100204, ZD-68468, ZD-68759)
+- Users were unable to move or delete a service-specific override. This issue is resolved. The permissions required to move or delete a service-specific override for global environment and infrastructure is `core_environment_edit`. The permissions required for service-specific override or service and infrastructure is `core_service_edit`. Separate permissions to delete are not required.  (CDS-100204, ZD-68468, ZD-68759)
 - The service variable that referenced secret text was exposed in plaintext delegate logs when executing CD WinRM deployment. This issue is resolved. The warning logs are updated with debug logs. (CDS-100046, ZD-68713)
-- When using WinRM credential of "type = Kerberos" in PowerShell script, the output variables were not displayed properly due to a missing identifier. This issue is resolved. (CDS-100036, ZD-68283)
+- When using a WinRM credential of "type = Kerberos" in a PowerShell script, the output variables were not displayed properly due to a missing identifier. This issue is resolved. (CDS-100036, ZD-68283)
 - Service was not loading when the service and environment used a custom template configured as **Always use the stable version**. This issue is resolved. (CDS-100021, ZD-68666)
-- Custom stage pipelines did not show the environment in the Pipeline execution history. This issue is resolved now.(CDS-99938)
-- The tooltip for the Output alias (optional) field under Optional Configuration was not being displayed. This issue is resolved. (CDS-90919)
+- Custom stage pipelines did not show the environment in the pipeline execution history. This issue is resolved now.(CDS-99938)
+- The tooltip for the **Output Alias** (optional) field under **Optional Configuration** was not being displayed. This issue is resolved. (CDS-90919)
 
 ### Version 1.54.2
 
