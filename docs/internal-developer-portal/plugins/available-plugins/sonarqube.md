@@ -21,7 +21,7 @@ description: Components to display code quality metrics from SonarCloud and Sona
 
 ### Secrets
 
-- Go to [SonarQube](https://sonar.harness.io/account/security), for generating a new token, **Enter Token Name** and choose **User Token** in **Select Token Type**. 
+- Go to SonarQube, "eg: `https://sonar.your-comapny-name.io/account/security`", for generating a new token, **Enter Token Name** and choose **User Token** in **Select Token Type**. 
 
 ![](./static/add-secret-sq.png)
 
