@@ -7,7 +7,7 @@ description: Learn how you can apply failure strategy to services and environmen
 Currently, this feature is behind the feature flag, `CDS_SERVICE_INFRA_FAILURE_STRATEGY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-Failure strategies can be applied to [Service](./services/services-overview.md) and [Environment](./environments/environment-overview.md) steps, allowing users to define retries, abort etc. in case of failure. This ensures that the deployment process remains resilient, even when unexpected issues arise.
+[Failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines.md) can be applied to [Service](./services/services-overview.md) and [Environment](./environments/environment-overview.md) steps, allowing users to define failure actions like retries, abort etc. in case of failure. This approach helps maintain deployment stability by allowing the system to handle unexpected issues gracefully. By default, the failure strategy for Service and Environment steps is inherited from the stage configuration.
 
 ## Supported Failure Strategies
 
@@ -27,8 +27,6 @@ The following failure strategies will be supported for Service and Environment s
 3. Abort
 4. Mark as Failure
 5. Rollback Stage
-
-Imagine a scenario where you've dynamically provisioned Terraform (TF) resources for your deployment. If the delegate task responsible for setting up the infrastructure fails, such as when it cannot acquire the necessary host for SSH-based infrastructure, these failure strategies become critical. With the Rollback Stage option, you can deprovision the infrastructure that was provisioned before the failure, preventing unnecessary resource allocation and cleaning up failed deployments seamlessly.
 
 ## Examples covering failure strategy for Service and Infrastructure
 
@@ -120,8 +118,6 @@ pipeline:
 This pipeline YAML demonstrates a service step that references an invalid artifact (`primaryArtifactRef`). As a result, the step will fail. The failure strategy is configured to `retry` the step twice, waiting 10 seconds between retries. If the issue persists, the pipeline will be marked as failed.
 
 ![](./static/service_failure_retry.png)
-
-The step will retry two times before marking the pipeline as failed if the error isn’t resolved.
 
 ### Pipeline Rollback on Infra Failure
 
@@ -433,6 +429,10 @@ multiDeploymentConfig:
 If a failure occurs during the deployment of ser_1 on infra2, all subsequent deployments, such as ser_2 on infra1, will be skipped, halting the pipeline for queued tasks.
 
 ![](./static/multideployment_queues.png)
+
+:::important note
+In a parallel deployment, any deployments that have already started cannot be stopped, even if a failure occurs. Only queued deployments that haven’t begun execution will be skipped.
+:::
 
 ### Applying Failure strategy during Matrix
 
