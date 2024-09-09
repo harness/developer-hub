@@ -24,6 +24,7 @@ Harness supports the following standards
 
 * CIS Benchmarks for GitHub
 * OWASP Top 10 CI/CD Security Risks for GitHub
+* Harness Standards
 
 
 ### CIS Benchmarks
@@ -33,44 +34,62 @@ The following CIS v1.0 rules are supported by Harness for the evaluations, and H
 <details>
 <summary>CIS Benchmarks</summary>
 
-| **Serial Number** | **Rule Name** | **Entity**  |
-|-------------------|---------------|-------------|
-| 1                 | Ensure all public repositories contain a SECURITY.md file | Source Code |
-| 2                 | Ensure repository creation is limited to specific members | Source Code |
-| 3                 | Ensure repository deletion is limited to specific members | Source Code |
-| 4                 | Ensure issue deletion is limited to specific members | Source Code |
-| 5                 | Ensure inactive users are reviewed and removed from repositories | Source Code |
-| 6                 | Ensure proper access controls are implemented on repositories | Source Code |
-| 7                 | Ensure all repositories have a README.md file | Source Code |
-| 8                 | Ensure repositories are regularly backed up | Source Code |
-| 9                 | Ensure repository forks are only created with proper authorization | Source Code |
-| 10                | Ensure external collaborators are reviewed periodically | Source Code |
-| 11                | Ensure repositories are scanned for sensitive data | Source Code |
-| 12                | Ensure repositories are regularly scanned for vulnerabilities | Source Code |
-| 13                | Ensure code reviews are conducted for all repository changes | Source Code |
-| 14                | Ensure only authorized users can create repositories | Source Code |
-| 15                | Ensure repository configurations follow security best practices | Source Code |
-| 16                | Ensure repositories are configured to enforce branch protections | Source Code |
-| 17                | Ensure repositories have a security policy in place | Source Code |
-| 18                | Ensure all contributors have signed a Contributor License Agreement | Source Code |
-| 19                | Ensure repositories are configured to deny force pushes | Source Code |
-| 20                | Ensure repositories are archived when no longer needed | Source Code |
-| 21                | Ensure regular reviews of repository access permissions | Source Code |
-| 22                | Ensure pushing of new code is restricted to specific individuals or teams | Source Code |
-| 23                | Ensure force pushes code to branches is denied | Source Code |
-| 24                | Ensure that there are restrictions on who can dismiss code change reviews | Source Code |
-| 25                | Ensure dependencies are pinned to a specific, verified version | Dependencies |
-| 26                | Ensure packages are automatically scanned for known vulnerabilities | Dependencies |
-| 27                | Ensure packages are automatically scanned for license implications | Dependencies |
-| 28                | Ensure pipelines are automatically scanned for vulnerabilities | Build Pipelines |
-| 29                | Ensure scanners are in place to identify and prevent sensitive data in pipeline files | Build Pipelines |
-| 30                | Ensure all build steps are defined as code | Build Pipelines |
-| 31                | Ensure access to the build process's triggering is minimized | Build Pipelines |
-| 32                | Ensure all external dependencies used in the build process are locked | Build Pipelines |
-| 33                | Ensure pipeline steps produce an SBOM | Build Pipelines |
-| 34                | Ensure user's access to the package registry utilizes MFA | Artifacts |
-| 35                | Ensure anonymous access to artifacts is revoked | Artifacts |
-| 36                | Ensure webhooks of the package registry are secured | Artifacts |
+### Source Code
+
+| Rule ID  | Name                                                  | Platform | Entity |
+|----------|-------------------------------------------------------|----------|--------|
+| 1.1.3    | Automated Approval of Code Changes                    | GitHub   | Code   |
+| 1.1.4    | Dismissal of Previous Approvals on Updates            | GitHub   | Code   |
+| 1.1.5    | Restricted Dismissal of Code Change Reviews           | GitHub   | Code   |
+| 1.1.6    | Code Owners for Sensitive Code                        | GitHub   | Code   |
+| 1.1.7    | Code Owner’s Review Requirement                       | GitHub   | Code   |
+| 1.1.8    | Periodic Inactive Branch Reviews                      | GitHub   | Code   |
+| 1.1.9    | Checks Passing Before Merging New Code                | GitHub   | Code   |
+| 1.1.10   | Up-to-Date Open Git Branches                          | GitHub   | Code   |
+| 1.1.11   | Resolved Comments Before Merging                      | GitHub   | Code   |
+| 1.1.12   | Verification of Signed Commits for New Changes Before Merging | GitHub   | Code   |
+| 1.1.13   | Linear History Requirement                            | GitHub   | Code   |
+| 1.1.14   | Enforced Branch Protection Rules for Administrators    | GitHub   | Code   |
+| 1.1.15   | Restricted Pushing/Merging of New Code                | GitHub   | Code   |
+| 1.1.16   | Denied Force Pushing Code to Branches                 | GitHub   | Code   |
+| 1.1.17   | Denied Branch Deletions                               | GitHub   | Code   |
+| 1.2.1    | SECURITY.md in Public Repositories                    | GitHub   | Code   |
+| 1.2.2    | Limited Repository Creation                          | GitHub   | Code   |
+| 1.2.3    | Limited Repository Deletion                           | GitHub   | Code   |
+| 1.2.4    | Limited Issue Deletion                                | GitHub   | Code   |
+| 1.3.1    | Periodic Review and Removal of Inactive Users         | GitHub   | Code   |
+| 1.3.3    | Minimum Number of Administrators Set for the Organization | GitHub   | Code   |
+| 1.3.5    | Organization-Wide MFA Requirement                     | GitHub   | Code   |
+| 1.3.7    | Two Administrators Set for Each Repository            | GitHub   | Code   |
+| 1.3.8    | Strict Base Permissions Set for Repositories          | GitHub   | Code   |
+| 1.3.9    | Organization Identity Confirmed with “Verified” Badge | GitHub   | Code   |
+
+### Build Pipelines
+
+| Rule ID  | Name                                                     | Platform | Entity |
+|----------|----------------------------------------------------------|----------|--------|
+| 2.3.1    | Definition of All Build Steps as Code                    | CI/CD    | CI/CD  |
+| 2.3.5    | Minimized Access to Build Process Triggering             | CI/CD    | CI/CD  |
+| 2.3.7    | Automated Vulnerability Scanning for Pipelines           | CI/CD    | CI/CD  |
+| 2.3.8    | Automated Scanning for Sensitive Data in Pipeline Files  | CI/CD    | CI/CD  |
+| 2.4.2    | Locking of All External Dependencies Used in the Build Process | CI/CD    | CI/CD  |
+| 2.4.6    | Production of SBOM in Pipeline Steps                     | CI/CD    | CI/CD  |
+
+### Dependencies
+
+| Rule ID  | Name                                                        | Platform | Entity   |
+|----------|-------------------------------------------------------------|----------|----------|
+| 3.1.7    | Pinning of Dependencies to Specific, Verified Versions       | CI/CD    | CI/CD    |
+| 3.2.2    | Automatic Scanning for Known Vulnerabilities in Packages     | CI/CD    | CI/CD    |
+| 3.2.3    | Automatic Scanning for License Implications in Packages      | CI/CD    | CI/CD    |
+
+### Artifacts
+
+| Rule ID  | Name                                             | Platform  | Entity   |
+|----------|--------------------------------------------------|-----------|----------|
+| 4.2.3    | MFA for User Access to the Package Registry      | Artifacts| Artifacts|
+| 4.2.5    | Revocation of Anonymous Access to Artifacts      | Artifacts | Artifacts|
+| 4.3.4    | Security of Webhooks in the Package Registry     | Artifacts | Artifacts|
 
 </details>
 
@@ -80,28 +99,85 @@ The following rules are supported by Harness to perform evaluations, and Harness
 <details>
 <summary>OWASP Top 10 CI/CD Security Risks</summary>
 
-| **Serial Number** | **Rule Name** | **Entity** |
-|-------------------|---------------|------------|
-| 1                 | Ensure repositories have a CODEOWNERS file | SCM        |
-| 2                 | Ensure organization private repositories cannot be forked | SCM        |
-| 3                 | Ensure fork is not enabled for private repository | SCM        |
-| 4                 | Ensure GitHub action workflows do not have personal access tokens | SCM        |
-| 5                 | Ensure GitHub action workflows do not have permission to approve PR reviews at the repository level. | SCM      |
-| 6                 | Ensure all organization secrets are rotated within 180 days | SCM      |
-| 7                 | Ensure inactive users are reviewed and removed periodically | SCM      |
-| 8                 | Ensure the organization is requiring members to use MFA | SCM      |
-| 9                 | Ensure an organization's identity is confirmed with a Verified badge | SCM      |
-| 10                | Ensure all checks have passed before the merge of new code | SCM      |
-| 11                | Ensure linear history is required | SCM      |
-| 12                | Ensure branch deletions are denied | SCM      |
-| 13                | Ensure previous approvals are dismissed when updates are introduced to a code change proposal | SCM      |
-| 14                | Ensure GitHub actions do not have 'write' permission on critical resources | SCM      |
-| 15                | Ensure GitHub workflows do not publish deployment secrets to logs | SCM      |
-| 16                | Ensure GitHub action workflows do not use deprecated actions | SCM      |
-| 17                | Ensure GitHub actions are not dependent on unverified third-party actions | SCM      |
-| 18                | Ensure organization repositories use only verified actions | SCM      |
-| 19                | Ensure that sensitive data is not exposed in the code repository | SCM      |
-| 20                | Ensure regular audits of repository contents | SCM      |
+### CICD-SEC-1: Insufficient Flow Control Mechanisms
+
+| Rule ID | Name                                                                 | Platform | Entity | Severity |
+|---------|----------------------------------------------------------------------|----------|--------|----------|
+| 1.1.3   | Automated Approval of Code Changes                                    | GitHub   | SCM    | MEDIUM   |
+| 1.1.4   | Dismissal of Previous Approvals on Updates                            | GitHub   | SCM    | HIGH     |
+| 1.1.5   | Restricted Dismissal of Code Change Reviews                           | GitHub   | SCM    | HIGH     |
+| 1.1.6   | Code Owners Removed in GitHub repository                              | GitHub   | SCM    | HIGH     |
+| 1.1.7   | Code owners reviews are not required in GitHub before merging         | GitHub   | SCM    | MEDIUM   |
+| 1.1.9   | Checks Passing Before Merging New Code                                | GitHub   | SCM    | HIGH     |
+| 1.1.10  | Up-to-Date Open Git Branches                                          | GitHub   | SCM    | HIGH     |
+| 1.1.11  | Resolved Comments Before Merging                                      | GitHub   | SCM    | LOW      |
+| 1.1.13  | Linear History Requirement                                            | GitHub   | SCM    | LOW      |
+| 1.1.14  | Enforced Branch Protection Rules for Administrators                   | GitHub   | SCM    | HIGH     |
+| 1.1.15  | Restricted Pushing/Merging of New Code                                | GitHub   | SCM    | CRITICAL |
+| 1.1.17  | Denied Branch Deletions                                               | GitHub   | SCM    | CRITICAL |
+| 1.2.8   | Required reviews can be bypassed using GitHub Actions at Org level    | GitHub   | SCM    | HIGH     |
+| 1.2.9   | Required reviews can be bypassed using GitHub Actions at Repo level   | GitHub   | SCM    | HIGH     |
+| 1.3.9   | Organization Identity Confirmed with “Verified” Badge                 | GitHub   | SCM    | SCM      |
+| 1.2.12  | Auto-merged enabled on the repository                                 | GitHub   | SCM    | HIGH     |
+
+### CICD-SEC-2: Inadequate Identity and Access Management
+
+| Rule ID | Name                                               | Platform | Entity | Severity |
+|---------------------------|----------------------------------------------------|----------|--------|----------|
+| 1.3.1                     | Excessive user permissions to a GitHub repository  | GitHub   | SCM    | HIGH     |
+| 1.3.5                     | GitHub User account is missing 2FA                 | GitHub   | SCM    | HIGH     |
+| 1.3.10                    | GitHub inactive user account programmatic credentials | GitHub   | SCM    | MEDIUM   |
+| 1.1.12                    | Verification of Signed Commits for New Changes Before Merging | GitHub   | SCM    | LOW      |
+| 1.1.16                    | Denied Force Pushing Code to Branches              | GitHub   | SCM    | LOW      |
+| 1.2.15                    | Any organization member in GitHub can create private repositories | GitHub   | SCM    | LOW      |
+| 1.2.13                    | GitHub organization members can create public repositories | GitHub   | SCM    | LOW      |
+| 1.2.18                    | GitHub repository webhook SSL verification is disabled | GitHub   | SCM    | LOW      |
+| 1.3.12                    | GitHub deploy key has a weak SSH signature         | GitHub   | SCM    | LOW      |
+| 1.2.19                    | GitHub organization webhook SSL verification is disabled | GitHub   | SCM    | LOW      |
+| 1.3.11                    | Unrotated GitHub deploy keys                       | GitHub   | SCM    | LOW      |
+
+### CICD-SEC-4: Poisoned Pipeline Execution (PPE)
+| Rule ID | Name                                                 | Platform | Entity | Severity |
+|---------|------------------------------------------------------|----------|--------|----------|
+| 1.2.6   | Forking of private repositories in the GitHub organization is allowed | GitHub   | SCM    | MEDIUM   |
+| 1.2.7   | Forking of a private GitHub repository is allowed     | GitHub   | SCM    | MEDIUM   |
+| 2.1.5   | Pipeline vulnerable to command injection     | GitHub   | CI/CD    | High   |
+
+### CICD-SEC-5: Insufficient PBAC (Pipeline-Based Access Controls)
+
+| Rule ID  | Name                                                                   | Platform | Entity | Severity |
+|----------|------------------------------------------------------------------------|----------|--------|----------|
+| 1.2.5    | Default GitHub Actions workflow permissions in the organization set to 'read and write' | GitHub   | SCM    | MEDIUM   |
+| 1.2.14   | Default GitHub Actions workflow permissions in the repository set to 'read and write'  | GitHub   | SCM    | MEDIUM   |
+| 1.3.13   | GitHub deploy keys assigned with write permissions                     | GitHub   | SCM    | LOW      |
+
+### CICD-SEC-6: Insufficient Credential Hygiene
+
+| Rule ID  | Name                                                | Platform | Entity | Severity |
+|----------|-----------------------------------------------------|----------|--------|----------|
+| 1.2.20   | GitHub organization secret not scoped               | GitHub   | SCM    | MEDIUM   |
+| 1.2.10   | Unrotated organization secrets in GitHub Actions     | GitHub   | SCM    | MEDIUM   |
+| 1.2.11   | Unrotated repository secrets in GitHub Actions       | GitHub   | SCM    | MEDIUM   |
+| 2.1.6   | Possible secrets baked into docker image layers       | GitHub   | CI/CD    | MEDIUM   |
+
+
+### CICD-SEC-8: Ungoverned Usage of 3rd Party Services
+
+| Rule ID | Name                                                 | Platform | Entity | Severity |
+|---------------------------|------------------------------------------------------|----------|--------|----------|
+| 1.2.16                    | Unrestricted usage of GitHub Actions allowed across the organization | GitHub   | SCM    | HIGH     |
+| 1.2.17                    | Unrestricted usage of GitHub Actions allowed in the repository      | GitHub   | SCM    | HIGH     |
+| 2.4.2                     | Unpinned GitHub Actions                                           | GitHub   | CI/CD  | MEDIUM   |
+
+</details>
+
+### Harness Standards
+The following rules are defined by Harness
+<details>
+<summary>Harness Standards</summary>
+| Rule ID  | Name                                                | Platform | Entity | Severity |
+|----------|-----------------------------------------------------|----------|--------|----------|
+| 2.1.7   | Authorization not enforced for custom triggers        | Harness   | CI/CD    | High   |
 
 
 </details>

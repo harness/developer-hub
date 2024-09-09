@@ -30,7 +30,7 @@ The RSPM feature in SCS offers details into:
 You can click on a repository in the “Code Repositories” section, and it will present all the details specific to each aspect of the repository.
 
 :::info
-To onboard your code repositories, refer to the documentation on [Get Started with RSPM](./get-started/get-started-with-rspm)
+To onboard your code repositories, refer to the [Get Started](./get-started/get-started) guide.
 :::
 
 
