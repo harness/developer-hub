@@ -18,25 +18,8 @@ import DocVersionBadge from "@theme/DocVersionBadge";
 import DocBreadcrumbs from "@theme/DocBreadcrumbs";
 import Heading from "@theme/Heading";
 import type { Props } from "@theme/DocCategoryGeneratedIndexPage";
-
 import styles from "./styles.module.css";
-
-// const myMap = new Map();
-// myMap.set(
-//   "/docs/category/browser-testing/",
-//   "https://docusaurus.io/docs/api/plugin-methods/lifecycle-apis#postBuild"
-// );
-
-const myMap = new Map([
-  [
-    "/docs/category/browser-testing/",
-    "https://docusaurus.io/docs/api/plugin-methods/lifecycle-apis#postBuild",
-  ],
-  [
-    "/docs/category/get-started-with-code",
-    "https://docusaurus.io/docs/markdown-features/react",
-  ],
-]);
+import CanonocalLookup from "./CanonicalLookup";
 
 import { useLocation } from "@docusaurus/router";
 import Head from "@docusaurus/Head";
@@ -44,14 +27,22 @@ function DocCategoryGeneratedIndexPageMetadata({
   categoryGeneratedIndex,
 }: Props): JSX.Element {
   const location = useLocation();
-  console.log(location.pathname);
-  console.log(myMap.get(location.pathname));
+
+  // if (CanonocalLookup[location.pathname]) {
+  //   console.log({
+  //     path: location.pathname,
+  //     href: CanonocalLookup[location.pathname],
+  //   });
+  // }
 
   return (
     <>
       <Head>
-        {myMap.get(location.pathname) ? (
-          <link rel="canonical" href={`${myMap.get(location.pathname)}`}></link>
+        {CanonocalLookup[location.pathname] ? (
+          <link
+            rel="canonical"
+            href={`${CanonocalLookup[location.pathname]}`}
+          ></link>
         ) : null}
       </Head>
       <PageMetadata
