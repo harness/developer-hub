@@ -3,12 +3,12 @@ title: JFrog Artifactory Libs plugin
 description: A frontend plugin provides a simple way to display generated artifact (library) details and allows to copy library definition for the package managers.
 ---
 
-| Plugin details |                                                                                |
-| -------------- | ------------------------------------------------------------------------------ |
-| **Created by** | [Vity](https://github.com/Vity01)                                                      |
-| **Category**   | Discovery                                                                       |
+| Plugin details |                                                                      |
+| -------------- | -------------------------------------------------------------------- |
+| **Created by** | [Vity](https://github.com/Vity01)                                    |
+| **Category**   | Discovery                                                            |
 | **Source**     | [GitHub](https://github.com/Vity01/backstage-jfrog-artifactory-libs) |
-| **Type**       | Open-source plugin                                                             |
+| **Type**       | Open-source plugin                                                   |
 
 ![](./static/jfrog-plugin.png)
 
@@ -24,26 +24,26 @@ This plugin requires a backend proxy configuration to make calls to JFrog with a
 # app-config.yaml
 proxy:
   endpoints:
-    '/artifactory-proxy/':
-    target: 'https://your-jfrog-artifactory-instance.com'
+    "/artifactory-proxy/":
+    target: "https://your-jfrog-artifactory-instance.com"
     pathRewrite:
-        api/proxy/artifactory-proxy/?: /
+      api/proxy/artifactory-proxy/?: /
     headers:
       # if you use Jfrog instance for anonymous user token is not required, but it is also required for Docker package type
       Authorization: Bearer ${ARTIFACTORY_TOKEN}
-      X-Result-Detail: 'properties'
-      Accept: '*'
+      X-Result-Detail: "properties"
+      Accept: "*"
 jfrog:
   artifactory:
-    url: 'https://your-jfrog-artifactory-instance.com'
-    proxyPath: '/artifactory-proxy/' # /artifactory-proxy/ is default value
+    url: "https://your-jfrog-artifactory-instance.com"
+    proxyPath: "/artifactory-proxy/" # /artifactory-proxy/ is default value
 ```
 
 ![](./static/jfrog-config.png)
 
 ### Secrets
 
-- You need to add the ARTIFACTORY_TOKEN as a Harness Secret. 
+- You need to add the ARTIFACTORY_TOKEN as a Harness Secret.
 
 - **Create secret in Harness** to store API token, click on “New Secret Text” and enter values as shown below.
 
@@ -62,7 +62,7 @@ This plugin exports a page that you can use as a new **jfrog** page on the **sid
     text: JFrog
 ```
 
-This plugin exports the `JFrogLibArtifactCard` that you can show on the **Overview** tab of a service or any other layout page.  The following configuration is set by default in **Layout** under **Catalog Entities** for **Service** and you do not need to change anything:
+This plugin exports the `JFrogLibArtifactCard` that you can show on the **Overview** tab of a service or any other layout page. The following configuration is set by default in **Layout** under **Catalog Entities** for **Service** and you do not need to change anything:
 
 ```YAML
 - component: JFrogLibArtifactCard
@@ -72,15 +72,16 @@ Also you could add a conditional like `isJfrogArtifactAvailable` which is met wh
 
 ```YAML
 - name: Overview
-path: /
-title: Overview
-contents:
-- component: EntitySwitch
-      specs:
-        cases:
-          - if: isJfrogArtifactAvailable
-            content:
-              component: JFrogLibArtifactCard
+  path: /
+  title: Overview
+  contents:
+  # ...overview tab should already exist in your layout.
+  - component: EntitySwitch
+    specs:
+      cases:
+        - if: isJfrogArtifactAvailable
+        content:
+          component: JFrogLibArtifactCard
 ```
 
 ## Annotations
@@ -98,7 +99,7 @@ contents:
 
       # -- optional values --
       jfrog.com/artifactory-scope: 'compile' # optional string, one of these [compile, test,provided,runtime,classpath,optional]
-      jfrog.com/artifactory-packaging: 'aar' #optional string, eg. `aar` 
+      jfrog.com/artifactory-packaging: 'aar' #optional string, eg. `aar`
 ```
 
 And that's it! The plugin should now be integrated into your Harness IDP, and you should see the Artifact card when you navigate to the entity page where it's included.
@@ -109,7 +110,7 @@ And that's it! The plugin should now be integrated into your Harness IDP, and yo
   metadata:
     annotations:
       # -- required values --
-      jfrog.com/artifactory-artifact: 'docker.mydomain.com/mygroup/my/artifact-name' # or simply 'mygroup/my/artifact-name' 
+      jfrog.com/artifactory-artifact: 'docker.mydomain.com/mygroup/my/artifact-name' # or simply 'mygroup/my/artifact-name'
       jfrog.com/artifactory-repo: 'docker-local'
 ```
 
@@ -118,4 +119,3 @@ And that's it! The plugin should now be integrated into your Harness IDP, and yo
 ## Support
 
 The plugin is owned by Vity and managed in this [repository](https://github.com/Vity01/backstage-jfrog-artifactory-libs) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
-

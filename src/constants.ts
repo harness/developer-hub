@@ -21,6 +21,9 @@ export enum MODULES {
   smp = "smp",
   aida = "aida",
   dbdevops = "dbdevops",
+  ar = "ar",
+  cde = "cde",
+  armory = "armory",
   gitness = "gitness",
   fme = "fme"
 }
@@ -44,6 +47,9 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.smp]: 'Harness Self-Managed Enterprise Edition',
     [MODULES.aida]: 'AI Development Assistant',
     [MODULES.dbdevops]: 'Database DevOps',
+    [MODULES.ar]: 'Artifact Registry',
+    [MODULES.cde]: 'Cloud Development Environments',
+    [MODULES.armory]: 'Armory',
     [MODULES.gitness]: 'Gitness',
     [MODULES.fme]: 'Feature Mgmt & Experimentation'
 }
@@ -66,6 +72,9 @@ export const MODULE_ICON = {
     [MODULES.smp]: 'img/icon_harness.svg',
     [MODULES.aida]: 'img/icon_aida.svg',
     [MODULES.dbdevops]: 'img/icon_dbdevops.svg',
+    [MODULES.ar]: 'img/icon_artifact_registry.svg',
+    [MODULES.cde]: 'img/icon_cloud_development_environments.svg',
+    [MODULES.armory]: 'img/icon_armory.svg',
     [MODULES.gitness]: 'img/icon_gitness.svg',
     [MODULES.fme]: 'img/icon_fme.svg'
 }
