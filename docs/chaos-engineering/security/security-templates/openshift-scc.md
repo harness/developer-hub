@@ -6,6 +6,7 @@ redirect_from:
 - /docs/chaos-engineering/technical-reference/security/security-templates/openshift-scc
 - /docs/chaos-engineering/architecture-and-security/security/security-templates/openshift-scc
 ---
+
 This section discusses Openshift Security Context Constraint that allows administrators to control permissions for pods in a cluster.
 
 ## OpenShift Security Context Constraint (SCC)
@@ -14,7 +15,7 @@ Security context constraints allow administrators to control permissions for pod
 The <code>default</code> service account is used to run applications within a project. You can run other applications in the same project, but if you don't want to override the privileges used for all applications, create a new service account and grant special rights to the project where the application is run.
 
 :::tip
-You can leverage all the [permissions mentioned](#run-service-account-as-a-cluster-admin) later for fault execution as well as [service discovery](/docs/chaos-engineering/concepts/explore-concepts/service-discovery/user-defined-service-account). The SCC described below is a superset, which means only some of them are required for service discovery.
+You can leverage all the [permissions mentioned](#run-service-account-as-a-cluster-admin) for fault execution as well as [service discovery](/docs/chaos-engineering/features/service-discovery/user-defined-service-account). The SCC described below is a superset, which means only some of them are required for service discovery.
 :::
 
 ### Create a new service account
@@ -125,3 +126,4 @@ where
   - `-z` refers to applying the command to the service account in the current project;
   - `add-scc-to-user` ads the name of the SCC; and
   - `-n` specifies the namespace of the target service account.
+
