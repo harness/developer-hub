@@ -40,6 +40,10 @@ As an HCE user, service discovery simplifies your decision-making around:
 
 Consequently, you will be able to find the resilience of your service (with the help of resilience coverage reports, service-level resilience scores, and other such metrics).
 
+:::tip
+You can leverage all the [permissions mentioned](/docs/chaos-engineering/architecture-and-security/security/security-templates/openshift-scc#run-service-account-as-a-cluster-admin) for fault execution as well as service discovery.
+:::
+
 ### Advantages
 
 - Reduces overhead of creating a database with services
