@@ -1,6 +1,6 @@
-const fs = require("fs-extra");
-const path = require("path");
-const docsPluginExports = require("@docusaurus/plugin-content-docs");
+const fs = require('fs-extra');
+const path = require('path');
+const docsPluginExports = require('@docusaurus/plugin-content-docs');
 
 const docsPlugin = docsPluginExports.default;
 
@@ -28,22 +28,23 @@ async function docsPluginEnhanced(context, options) {
 
         if (
           id ==
-            "chaos-engineering/chaos-faults/cloud-foundry/cf-app-network-latency" &&
+            'chaos-engineering/chaos-faults/cloud-foundry/cf-app-network-latency' &&
           frontMatter.canonical
         ) {
-          const htmlFilePath = path.join(outDir, permalink, "index.html");
-          console.log(htmlFilePath);
+          const htmlFilePath = path.join(outDir, permalink, 'index.html');
+          // console.log(htmlFilePath);
           if (fs.existsSync(htmlFilePath)) {
-            let htmlContent = fs.readFileSync(htmlFilePath, "utf-8");
+            let htmlContent = fs.readFileSync(htmlFilePath, 'utf-8');
 
             const canonicalTagRegex =
-              /<link\s+data-rh="true"\s+rel="canonical"\s+href="([^"]+)">/;
-            htmlContent = htmlContent.replace(canonicalTagRegex, "");
+              /<link\s+data-rh="true"\s+rel="canonical"\s+href="([^"]+)"/;
+
             htmlContent = htmlContent.replace(
-              "</head>",
-              `<link rel="canonical" href="${frontMatter.canonical}" />\n</head>`
+              canonicalTagRegex,
+              `<link data-rh="true" rel="canonical" href="${frontMatter.canonical}" />`
             );
-            fs.writeFileSync(htmlFilePath, htmlContent, "utf-8");
+
+            fs.writeFileSync(htmlFilePath, htmlContent, 'utf-8');
           }
         }
       });
