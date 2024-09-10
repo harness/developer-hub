@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2024-08-26T10:00
+date: 2024-09-02T10:00
 sidebar_position: 10
 ---
 
@@ -19,6 +19,34 @@ These release notes describe recent changes to Harness Continuous Integration.
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## September 2024
+
+### Version 1.45
+
+<!-- 2024-09-02 -->
+
+#### Early Access feature
+
+- Added support for automatic setup of Build Intelligence for builds running in Harness Cloud. Customers can set the stage property `buildIntelligence` to 'true' in order to use this feature. Once enabled, Harness CI will automatically optimize Run and Test steps that are running Bazel or Gradle commands, to reduce build time. (CI-12969)
+
+#### New features and enhancements
+
+- Cache Intelligence now supports .Net (CI-12672)
+
+#### Fixed issues
+
+- Corrected the popup UI displaying incorrect time savings that were being cached from other steps in cache intelligence. (CI-13995)
+
+- The incorrect node id from the layout was being selected in the parallel stages UI. This has been fixed for any strategy or child pipelines as well. (CI-13993)
+
+- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` must be enabled whenever a base image connector is used (CI-13924)
+
+- Bitbucket has in issue in their api does not support the character slash ( / ) [https://jira.atlassian.com/browse/BCLOUD-20223](https://jira.atlassian.com/browse/BCLOUD-20223)
+This can be worked around by using query parameters in the Bitbucket api [https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww](https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww) (CI-13826)
+
+- The contrast of the select repository and other areas of the UI was very low in the dark theme. The contrast has been improved for a better UI experience. (CI-13530)
+
 
 ## August 2024
 
