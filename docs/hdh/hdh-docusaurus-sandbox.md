@@ -1,6 +1,7 @@
 ---
 description: Sandbox to learn about MD and HDH Features, powered by Docusaurus
 title: Get Creative with HDH and Docusaurus
+canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 tags:
   - contributing
 redirect_from:
