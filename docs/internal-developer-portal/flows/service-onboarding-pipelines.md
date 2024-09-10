@@ -1012,6 +1012,58 @@ The `projectSlug` filter generates a project slug from a repository URL
 - **Input**: `github.com?repo=backstage&org=backstage`
 - **Output**: `backstage/backstage`
 
+## Pre-fill workflows with URL Params
+
+We can now automatically load IDP Workflow forms pre-filled using the `formData` URL query parameter. eg: `https://app.harness.io/ng/account/account_id/module/idp/create/templates/default/a-python-lambda?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D`
+
+The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7` in the end of the URL allow you to automatically fill in values of the form. Please see the below table for explanation of individual tokens in the query param.
+
+| Item                | Example Value                           | Explanation                                                                                      |
+|---------------------|-----------------------------------------|--------------------------------------------------------------------------------------------------|
+| `formData`          | `formData`                              | Key of the query param.`formData` object is used to fill out scaffolder template forms.           |
+| `{"key"%3A"value"}` | `{"title"%3A"Title from query params"}` | Value of the query param. A JSON object with invalid URL characters encoded.`:` encodes to `%3A` |
+
+### Additional information
+
+Using automatically filled out values is handy when wanting to direct users to use scaffolder templates with known good values. This also allows automation to be constructed around the scaffolder, where the automation can provide fully constructed scaffolder URLs to the user. You can also prevent user from modifying the form values inserted from query params by making the form fields `readonly`. See below example of a minimal form which would be filled using query params defined in the above explanation.
+
+```YAML
+## Example Workflow
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: test-template-pipeline
+  title: Test pipeline using templates
+spec:
+  owner: name.owner
+  type: service
+  parameters:
+    - title: Repository Name
+      properties:
+        project_name:
+          title: Name your project
+          ui:readonly: true
+          type: string
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: trigger
+      name: Creating your github repository
+      action: trigger:harness-custom-pipeline
+      input:
+        url: PIPELINE_URL
+        inputset: 
+          github_org: ${{ parameters.project_name }}
+        apikey: ${{ parameters.token }}
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+
+```
 
 ## Upload a file using template
 
