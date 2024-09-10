@@ -4,6 +4,7 @@ description: Add container image verification with Cosign and policy enforcement
 sidebar_position: 4
 redirect_from:
   - /tutorials/cd-pipelines/kubernetes/cosign-opa
+canonical_url: https://www.harness.io/blog/balancing-developer-freedom-and-governance-with-opa
 ---
 
 <CTABanner
