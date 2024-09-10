@@ -32,7 +32,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### New features and enhancements
 
-- Cache Intelligence now supports C# .Net (CI-12672)
+- Cache Intelligence now supports .Net (CI-12672)
 
 #### Fixed issues
 
