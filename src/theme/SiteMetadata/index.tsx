@@ -2,14 +2,14 @@ import React from 'react';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import {PageMetadata, useThemeConfig} from '@docusaurus/theme-common';
+import { PageMetadata, useThemeConfig } from '@docusaurus/theme-common';
 import {
   DEFAULT_SEARCH_TAG,
   useAlternatePageUtils,
   keyboardFocusedClassName,
 } from '@docusaurus/theme-common/internal';
-import {useLocation} from '@docusaurus/router';
-import {applyTrailingSlash} from '@docusaurus/utils-common';
+import { useLocation } from '@docusaurus/router';
+import { applyTrailingSlash } from '@docusaurus/utils-common';
 import SearchMetadata from '@theme/SearchMetadata';
 
 // TODO move to SiteMetadataDefaults or theme-common ?
@@ -18,7 +18,7 @@ import SearchMetadata from '@theme/SearchMetadata';
 // See https://github.com/facebook/docusaurus/issues/3317
 function AlternateLangHeaders(): JSX.Element {
   const {
-    i18n: {currentLocale, defaultLocale, localeConfigs},
+    i18n: { currentLocale, defaultLocale, localeConfigs },
   } = useDocusaurusContext();
   const alternatePageUtils = useAlternatePageUtils();
 
@@ -35,7 +35,7 @@ function AlternateLangHeaders(): JSX.Element {
   // See https://www.searchviu.com/en/multiple-hreflang-tags-one-url/
   return (
     <Head>
-      {Object.entries(localeConfigs).map(([locale, {htmlLang}]) => (
+      {Object.entries(localeConfigs).map(([locale, { htmlLang }]) => (
         <link
           key={locale}
           rel="alternate"
@@ -75,12 +75,12 @@ function AlternateLangHeaders(): JSX.Element {
 // Default canonical url inferred from current page location pathname
 function useDefaultCanonicalUrl() {
   const {
-    siteConfig: {url: siteUrl, baseUrl, trailingSlash},
+    siteConfig: { url: siteUrl, baseUrl, trailingSlash },
   } = useDocusaurusContext();
 
   // TODO using useLocation().pathname is not a super idea
   // See https://github.com/facebook/docusaurus/issues/9170
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
 
   const canonicalPathname = applyTrailingSlash(useBaseUrl(pathname), {
     trailingSlash,
@@ -91,9 +91,9 @@ function useDefaultCanonicalUrl() {
 }
 
 // TODO move to SiteMetadataDefaults or theme-common ?
-function CanonicalUrlHeaders({permalink}: {permalink?: string}) {
+function CanonicalUrlHeaders({ permalink }: { permalink?: string }) {
   const {
-    siteConfig: {url: siteUrl},
+    siteConfig: { url: siteUrl },
   } = useDocusaurusContext();
   const defaultCanonicalUrl = useDefaultCanonicalUrl();
 
@@ -110,12 +110,12 @@ function CanonicalUrlHeaders({permalink}: {permalink?: string}) {
 
 export default function SiteMetadata(): JSX.Element {
   const {
-    i18n: {currentLocale},
+    i18n: { currentLocale },
   } = useDocusaurusContext();
 
   // TODO maybe move these 2 themeConfig to siteConfig?
   // These seems useful for other themes as well
-  const {metadata, image: defaultImage} = useThemeConfig();
+  const { metadata, image: defaultImage } = useThemeConfig();
 
   return (
     <>

@@ -5,24 +5,24 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from "react";
+import React from 'react';
 import {
   PageMetadata,
   useCurrentSidebarCategory,
-} from "@docusaurus/theme-common";
-import useBaseUrl from "@docusaurus/useBaseUrl";
-import DocCardList from "@theme/DocCardList";
-import DocPaginator from "@theme/DocPaginator";
-import DocVersionBanner from "@theme/DocVersionBanner";
-import DocVersionBadge from "@theme/DocVersionBadge";
-import DocBreadcrumbs from "@theme/DocBreadcrumbs";
-import Heading from "@theme/Heading";
-import type { Props } from "@theme/DocCategoryGeneratedIndexPage";
-import styles from "./styles.module.css";
-import CanonocalLookup from "./CanonicalLookup";
+} from '@docusaurus/theme-common';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import DocCardList from '@theme/DocCardList';
+import DocPaginator from '@theme/DocPaginator';
+import DocVersionBanner from '@theme/DocVersionBanner';
+import DocVersionBadge from '@theme/DocVersionBadge';
+import DocBreadcrumbs from '@theme/DocBreadcrumbs';
+import Heading from '@theme/Heading';
+import type { Props } from '@theme/DocCategoryGeneratedIndexPage';
+import styles from './styles.module.css';
+import CanonocalLookup from './CanonicalLookup';
 
-import { useLocation } from "@docusaurus/router";
-import Head from "@docusaurus/Head";
+import { useLocation } from '@docusaurus/router';
+import Head from '@docusaurus/Head';
 function DocCategoryGeneratedIndexPageMetadata({
   categoryGeneratedIndex,
 }: Props): JSX.Element {
