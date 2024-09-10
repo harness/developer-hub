@@ -35,13 +35,11 @@ async function docsPluginEnhanced(context, options) {
           // console.log(htmlFilePath);
           if (fs.existsSync(htmlFilePath)) {
             let htmlContent = fs.readFileSync(htmlFilePath, 'utf-8');
-
-            const canonicalTagRegex =
-              /<link\s+data-rh="true"\s+rel="canonical"\s+href="([^"]+)"/;
+            const canonicalTag = `<link rel="canonical" href="${frontMatter.canonical}" />`;
 
             htmlContent = htmlContent.replace(
-              canonicalTagRegex,
-              `<link data-rh="true" rel="canonical" href="${frontMatter.canonical}" />`
+              /<\/head>/i,
+              `  ${canonicalTag}\n</head>`
             );
 
             fs.writeFileSync(htmlFilePath, htmlContent, 'utf-8');
