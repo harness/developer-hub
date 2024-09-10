@@ -1578,7 +1578,7 @@ No. The jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://de
 
 ### mkdir permission denied when running Upload Artifacts to JFrog as non-root
 
-With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) must run as root. If you set **Run as User** to anything other than `1000`, the step fails with `mkdir /.jfrog: permission denied`.
+With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) must run as root. If you set **Run as User** to anything other than `0`, the step fails with `mkdir /.jfrog: permission denied`.
 
 ### What is PLUGIN_USERNAME and PLUGIN_PASSWORD used in the Upload Artifacts to JFrog Artifactory step?
 
