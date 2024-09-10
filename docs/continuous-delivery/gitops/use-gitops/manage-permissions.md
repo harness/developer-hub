@@ -1,5 +1,5 @@
 ---
-title: Manage access for GitOps using labels
+title: Manage access for GitOps Applications using labels
 description: Learn how to manage access control for GitOps resources
 sidebar_position: 40
 ---
