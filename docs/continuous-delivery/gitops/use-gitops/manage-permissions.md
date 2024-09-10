@@ -4,7 +4,7 @@ description: Learn how to manage access control for GitOps resources
 sidebar_position: 40
 ---
 
-Harness uses role-based access control (RBAC) for managing user permissions platform wide. This of course extends to Harness GitOps as well. To learn more, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
+Harness uses role-based access control (RBAC) for managing user permissions platform wide. This extends to Harness GitOps as well. To learn more, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 
 In addition to regular controls, access to GitOps applications can be controlled via label-based RBAC. This topic will teach you how it works, and how you can use it. 
 
@@ -23,7 +23,7 @@ Label-based RBAC offers several advantages:
 1. **Consistency**: Ensure uniform access policies across your entire application portfolio.
 1. **Flexibility**: Adapt to changing organizational structures and application architectures without major RBAC overhauls.
 
-## Implementing label-based RBAC
+## Implement label-based RBAC
 
 ### Step 1: Define your labeling strategy
 
@@ -32,9 +32,18 @@ Before you start, define a consistent labeling strategy. For example:
 - `harness.io/team: [frontend|backend|data]`
 - `harness.io/criticality: [high|medium|low]`
 
-### Step 2: Update your ApplicationSets
+### Step 2: Update your Application
 
-Modify your existing [ApplicationSet templates](https://argo-cd.readthedocs.io/en/stable/user-guide/application-set/) to include the necessary labels. For example:
+Next, add a label to your GitOps Application. To do so, follow these steps:
+
+1. In your project, click **GitOps**.
+2. Click **Applications**, and select your application. 
+3. In the options bar, select **App Details**.
+4. Add a **Label** that is consistent with your labeling strategy. 
+
+#### (Optional) Update your ApplicationSets
+
+Instead of modifying your application directly, you can also modify your existing [ApplicationSet templates](https://argo-cd.readthedocs.io/en/stable/user-guide/application-set/) to include the necessary labels. For example:
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -70,7 +79,7 @@ Resource Groups in Harness allow you to group applications based on their labels
 1. Select your **Resources** on the left. In this case you want **Gitops** > **Applications**
 1. Select **By Label** instead of **All**.
 1. Click **Add**
-1. Type in your label you chose by your naming convention in step 1. 
+1. Add a label. Follow the labeling strategy you established in step 1. For example, a production application would have the label `harness.io/env-type: [prod|staging|dev]`.
 1. Click **Add Application Labels**.
 
 ## Step 4: Create a role with permissions
