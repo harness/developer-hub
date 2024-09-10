@@ -1,0 +1,9 @@
+{
+  "position": 1,
+  "label": "Service Discovery",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Service Discovery"
+  }
+}

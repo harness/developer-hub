@@ -13,7 +13,7 @@ Discovered service is an entity on the Harness platform (also known as the contr
 
 Below is the control flow to a discovered service.
 
-  ![](./static/service-discovery/control-flow-1.png)
+  ![](./static/control-flow-1.png)
 
 ### Why is a discovered service required?
 
@@ -42,6 +42,10 @@ As an HCE user, service discovery simplifies your decision-making around:
 
 Consequently, you will be able to find the resilience of your service (with the help of resilience coverage reports, service-level resilience scores, and other such metrics).
 
+:::tip
+You can leverage all the [permissions mentioned](/docs/chaos-engineering/security/security-templates/openshift-scc#run-service-account-as-a-cluster-admin) for fault execution as well as service discovery.
+:::
+
 ### Advantages
 
 - Reduces overhead of creating a database with services
@@ -56,32 +60,32 @@ If you want to customize the discovery agent, follow the steps below.
 
 1. To customize the discovery agent, navigate to **Chaos**, select **Project Settings** and select **Discovery**.
 
-    ![](./static/service-discovery/discovery.png)
+    ![](./static/discovery.png)
 
 2. Click **New Discovery Agent**.
 
-    ![](./static/service-discovery/select-agent.png)
+    ![](./static/select-agent.png)
 
 3. Select an **environment**, **infrastructure**, **Discovery Agent Name** and **namespace**. The next step (optional) requires information such as node selector, blacklisted namespaces, and period of detecting the services. Select **Create New Discovery Agent**.
 
-    ![](./static/service-discovery/add-details-discovery.png)
+    ![](./static/add-details-discovery.png)
 
 ### Edit discovery agent
 
 1. To edit a discovery agent, navigate to the agent and click **Edit**. Make the necessary changes to the required fields.
 
-    ![](./static/service-discovery/edit-dis-agent-1.png)
+    ![](./static/edit-dis-agent-1.png)
 
 2. Select **Update Discovery Agent**.
 
-    ![](./static/service-discovery/edit-details-discovery.png)
+    ![](./static/edit-details-discovery.png)
 
 ### Delete discovery agent
 
 1. To delete a discovery agent, navigate to the agent you want to delete and select **Delete**.
 
-    ![](./static/service-discovery/delete-1.png)
+    ![](./static/delete-1.png)
 
 2. Select **Delete**.
 
-    ![](./static/service-discovery/confirm-2.png)
+    ![](./static/confirm-2.png)

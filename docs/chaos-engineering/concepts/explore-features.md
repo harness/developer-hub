@@ -43,7 +43,7 @@ Instead of creating a database with the services, you can automatically discover
 
 Below is the control flow to a discovered service.
 
-![](./explore-concepts/static/service-discovery/control-flow-1.png)
+![](./explore-concepts/service-discovery/static/control-flow-1.png)
 
 For more information on how to create a  discovery agent, go to [Service Discovery](/docs/chaos-engineering/concepts/explore-concepts/service-discovery).
 
