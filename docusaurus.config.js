@@ -505,7 +505,7 @@ async function config() {
       ],
       // redirect plugin start
       [
-        path.resolve(__dirname, './plugins/docsPluginEnhanced-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
 
         {
           id: 'university',
@@ -518,7 +518,7 @@ async function config() {
         },
       ],
       [
-        path.resolve(__dirname, './plugins/docsPluginEnhanced-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
 
         {
           id: 'community',
@@ -531,7 +531,7 @@ async function config() {
         },
       ],
       [
-        path.resolve(__dirname, './plugins/docsPluginEnhanced-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
         {
           id: 'kb',
           path: 'kb',
@@ -544,7 +544,7 @@ async function config() {
       ],
 
       [
-        path.resolve(__dirname, './plugins/docsPluginEnhanced-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
         {
           id: 'docs1',
           path: 'docs',
@@ -571,36 +571,9 @@ async function config() {
           ],
         },
       ],
-      // [
-      //   path.resolve(__dirname, './plugins/canonical-plugin'),
-      //   {
-      //     id: 'docs2',
-      //     path: 'docs',
-      //     sidebarPath: require.resolve('./sidebars.js'),
-      //     editUrl: 'https://github.com/harness/developer-hub/tree/main', // /tree/main/packages/create-docusaurus/templates/shared/
-      //     // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
-      //     exclude: ['**/shared/**', '**/static/**'],
-      //     routeBasePath: 'docs', //CHANGE HERE
-      //     remarkPlugins: [
-      //       [
-      //         (await import('remark-math')).default,
-      //         {
-      //           strict: false,
-      //         },
-      //       ],
-      //     ],
-      //     rehypePlugins: [
-      //       [
-      //         (await import('rehype-katex')).default,
-      //         {
-      //           strict: false,
-      //         },
-      //       ],
-      //     ],
-      //   },
-      // ],
+
       [
-        path.resolve(__dirname, './plugins/docsPluginEnhanced-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
         {
           id: 'roadmap',
           path: 'roadmap',
@@ -614,10 +587,8 @@ async function config() {
 
       'docusaurus-plugin-sass',
       path.join(__dirname, '/plugins/utmcookie-plugin'),
-      // path.join(__dirname, '/plugins/canonical-plugin'),
       path.join(__dirname, '/plugins/feedback-plugin'),
       path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
-      //path.join(__dirname, "/plugins/scarf-plugin"),
     ],
     clientModules: [
       path.join(__dirname, '/client_module/searchBar'),

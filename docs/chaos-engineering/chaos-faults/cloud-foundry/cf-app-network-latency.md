@@ -1,7 +1,6 @@
 ---
 id: cf-app-network-latency
 title: CF app network latency
-canonical_url: https://github.com/facebook/docusaurus/issues/5250
 ---
 
 import CFAndBOSHSecrets from './shared/cf-and-bosh-secrets.md';

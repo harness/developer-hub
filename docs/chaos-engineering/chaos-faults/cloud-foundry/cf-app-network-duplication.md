@@ -1,7 +1,6 @@
 ---
 id: cf-app-network-duplication
 title: CF app network duplication
-canonical_url: 'www.canonical.com'
 ---
 
 import CFAndBOSHSecrets from './shared/cf-and-bosh-secrets.md';
