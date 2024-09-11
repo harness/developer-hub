@@ -2,6 +2,7 @@
 title: Upload Artifacts to JFrog
 description: Add a step to upload artifacts to JFrog.
 sidebar_position: 12
+canonical_url: https://www.harness.io/blog/how-to-configure-your-builds-with-jfrog-artifactory-and-harness
 helpdocs_topic_id: lh082yv36h
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false
