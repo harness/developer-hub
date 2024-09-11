@@ -28,11 +28,11 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### Early Access feature
 
-- Added support for automatic setup of Build Intelligence for builds running in Harness Cloud. Customers can set the stage property `buildIntelligence` to 'true' in order to use this feature. Once enabled, Harness CI will automatically optimize Run and Test steps that are running Bazel or Gradle commands, to reduce build time. (CI-12969)
+- Added support for automatic setup of Build Intelligence for builds running in Harness Cloud. Customers can set the stage property `buildIntelligence` to 'true' in order to use this feature. Once enabled, Harness CI will automatically optimize Run and Test steps that are running Bazel or Gradle commands, to reduce build time. `CI_ENABLE_BUILD_CACHE_HOSTED_VM` feature flag is needed to use this feature (CI-12969)
 
 #### New features and enhancements
 
-- Cache Intelligence now supports .Net (CI-12672)
+- Cache Intelligence was enhanced with support for C# . Customers using C# applications can now leverage automatic dependencies caching with Cache Intelligence. (CI-12672)
 
 #### Fixed issues
 
