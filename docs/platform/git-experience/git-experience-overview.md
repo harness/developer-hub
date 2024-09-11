@@ -132,6 +132,7 @@ If the repository actually exists it will fetch the branch name, if not it will 
 :::important
 1. Search in repo listing is not supported for Azure Repos.
 2. GitHub connectors should be created at the "organization" level, linking each connector to a specific GitHub organization to access all repositories within that organization. Using a global GitHub connector with the URL “github.com” to access multiple organizations and their repositories is not supported and may cause issues. The V2 repo listing APIs do not support global GitHub connectors, and if such a connector is used, the API will automatically switch to the V1 flow to ensure repositories can still be listed, albeit without the enhancements of the V2 APIs.
+3. The Repo Listing API returns a maximum of 30 repositories at a time. This may result in the required repository not being listed, and users will need to manually enter the exact repository name.
 :::
 
 ### Branch Listing
@@ -145,6 +146,8 @@ You can now search for branches in a given repository with support for infinite 
 :::important
 1. Search in branch listing is not supported for Github and Github Apps.
 2. Please note that search in branch listing is only available while creating remote entities.
+3. The Branch Listing API returns only 30 branches at a time. If the required branch is not listed, users will need to manually enter the exact branch name.
+4. If a user belongs to multiple organizations, the first 30 repositories fetched may not belong to the required organization, potentially resulting in an empty response.
 :::
 
 
