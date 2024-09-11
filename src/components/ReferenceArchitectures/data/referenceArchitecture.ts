@@ -16,12 +16,6 @@ export const ReferenceArchitecturesCards: CardSections = [
           "Get started with Cloud Cost Management Reference Architectures.",
         link: "/kb/category/cloud-cost-management",
       },
-      {
-        title: "Ansible",
-        module: MODULES.platform,
-        description: "Get started with Ansible Reference Architecture.",
-        link: "/kb/reference-architectures/ansible",
-      },
     ],
   },
 ];
