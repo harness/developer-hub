@@ -1,7 +1,7 @@
 ---
 title: Sync GitOps applications
 description: This topic describes how to sync GitOps applications.
-sidebar_position: 9
+sidebar_position: 30
 redirect_from:
   - /docs/continuous-delivery/gitops/sync-gitops-applications
 ---
