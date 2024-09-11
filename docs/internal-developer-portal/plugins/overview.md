@@ -31,7 +31,7 @@ The secret variables in IDP must be globally unique across all plugins. This req
 
 Plugins that support publicly-accessible third-party providers can connect with the provider directly. However, some plugins, such as the Kubernetes plugin, require access to systems that are hosted in your private network. Such plugins require [Harness Delegates](/docs/first-gen/firstgen-platform/account/manage-delegates/delegate-installation), which serve as an HTTP proxy to connect to services running in your private network. In the configuration of the plugin, you can specify a host or IP address and choose which delegate to use when making requests.
 
-You can learn more about the [architecture of Delegate Proxy](/docs/internal-developer-portal/plugins/ plugins/delegate-proxy).
+You can learn more about the [architecture of Delegate Proxy](/docs/internal-developer-portal/plugins/delegate-proxy).
 
 ## FAQs
 
