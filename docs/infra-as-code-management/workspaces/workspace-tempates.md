@@ -43,20 +43,27 @@ To configure workspace templates and standardize your workspace setups, follow t
 </TabItem>  
 <TabItem value="Step-by-step">
 
-### Configure your Workspace Template
+1. In your **Account Settings**, select **Templates** from the Accout-level resources section.  
+2. Click the **New Template** dropdown and select **Infra Workspace**.
+3. Name your template and provide a suitable version label.  
+4. Select **Start**.
 
-1. In your **Account Settings**, select **Templates** from the navigation panel.  
-2. Click **New Template** to begin creating a workspace template.  
-3. Name your template and fill in all the required fields.  
-4. Add the necessary variables:  
-   - **Environment Variables** for environment-specific settings.  
-   - **Terraform Variables** to define project-specific Terraform configurations.  
-5. Navigate to the **YAML** section to preview or edit the generated configuration.
+This will bring you to your templates **General** tab that contains a typical workspace setup form as describes in the [IaCM onboarding guide](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#create-a-workspace).
 
-### Review your Workspace Template
+Once you complete your workspace setup:
+5. Select the **Variables** tab and add workspace variables (optional).
+6. Select **Save**. 
+7. Select **YAML** from the Visual/Yaml toggle option to preview or edit the generated configuration.
+---
+</TabItem>  
+</Tabs>
 
-1. After creating the template, navigate to the **Overview** section to see a summary of the template.  
-2. If adjustments are needed, click **Edit** to modify the template.
+### Review and edit your Workspace Template
+
+1. Select **Templates** to navigate to the workspace template overview page.
+- Either from the breadcrumb menu or via **Account settings**, then **Templates**.
+2. Select your workspace template to review.
+3. To edit, select **Open in Template Studio**.
 
 ### Apply your Workspace Template
 
@@ -74,7 +81,6 @@ To configure workspace templates and standardize your workspace setups, follow t
 1. In your workspace, run the default pipelines (Plan, Provision, Check for Drift) using the provided buttons.  
 2. Review the workspace configurations, including budget and provisioner settings, under the **Configurations** tab.
 
-</TabItem>  
-</Tabs>
+
 ---
 Workspace templates simplify workspace setup and ensure consistent configurations across projects, reducing manual effort and the risk of misconfiguration. By following the steps outlined above, you can create, edit, and apply templates to streamline your workspace management.  
