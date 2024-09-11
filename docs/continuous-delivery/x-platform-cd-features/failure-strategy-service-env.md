@@ -456,7 +456,7 @@ If a failure occurs during the deployment of ser_1 on infra2, all subsequent dep
 In a parallel deployment, any deployments that have already started cannot be stopped, even if a failure occurs. Only queued deployments that haven’t begun execution will be skipped.
 :::
 
-### Applying Failure strategy during Matrix
+### Applying Failure strategy for multi service with Matrix looping
 
 <details>
 <summary>Adding Failure strategy using Matrix for Multi-Deployment</summary>
