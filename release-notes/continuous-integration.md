@@ -28,19 +28,17 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### Early Access feature
 
-- Added support for automatic setup of Build Intelligence for builds running in Harness Cloud. Customers can set the stage property `buildIntelligence` to 'true' in order to use this feature. Once enabled, Harness CI will automatically optimize Run and Test steps that are running Bazel or Gradle commands, to reduce build time. (CI-12969)
+- Added support for automatic setup of Build Intelligence for builds running in Harness Cloud. Customers can set the stage property `buildIntelligence` to 'true' in order to use this feature. Once enabled, Harness CI will automatically optimize Run and Test steps that are running Bazel or Gradle commands, to reduce build time. `CI_ENABLE_BUILD_CACHE_HOSTED_VM` feature flag is needed to use this feature (CI-12969)
 
 #### New features and enhancements
 
-- Cache Intelligence now supports .Net (CI-12672)
+- Cache Intelligence was enhanced with support for C# . Customers using C# applications can now leverage automatic dependencies caching with Cache Intelligence. (CI-12672)
 
 #### Fixed issues
 
-- Corrected the popup UI displaying incorrect time savings that were being cached from other steps in cache intelligence. (CI-13995)
+- Fixed an issue where time savings due to Harness CI intelligence feature, didn't populate properly when used in the parallel CI stages. (CI-13993)
 
-- The incorrect node id from the layout was being selected in the parallel stages UI. This has been fixed for any strategy or child pipelines as well. (CI-13993)
-
-- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` must be enabled whenever a base image connector is used (CI-13924)
+- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature flag must be enabled whenever a base image connector is used (CI-13924)
 
 - Bitbucket has in issue in their api does not support the character slash ( / ) [https://jira.atlassian.com/browse/BCLOUD-20223](https://jira.atlassian.com/browse/BCLOUD-20223)
 This can be worked around by using query parameters in the Bitbucket api [https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww](https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww) (CI-13826)
