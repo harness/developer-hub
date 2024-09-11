@@ -66,3 +66,7 @@ In case of remote pipelines, the behaviour will be same as Inline. We only need 
 ### Pipeline Chaining
 
 If the **Is Input Data uneditable when rerunning?** option in the parent pipeline is set to **No**, the inputs in the child pipeline will remain editable, even if the child pipeline has the **Is Input Data uneditable when rerunning?** option set to Yes. In other words, the parent pipeline's settings override the child pipeline’s re-run input editability, allowing inputs to be modified in the child pipeline during a re-run.
+
+### API Call Behavior
+
+When the above [setting](#how-to-enable-fixed-inputs-on-re-run) is enabled, the API call to re-run the pipeline ignores any inputs provided. Normally, on re-runs, the inputs are sent again in the API call. However, with this setting enabled, even if inputs are provided, they will be ignored, and the inputs from the original execution will be used.
