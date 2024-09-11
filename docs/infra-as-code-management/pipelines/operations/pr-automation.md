@@ -2,6 +2,7 @@
 title: Pull request automation
 description: Learn how to set up a PR pipeline to review infrastructure changes. 
 sidebar_position: 40
+canonical_url: https://www.harness.io/blog/automate-your-ci-cd-pipeline-using-triggers
 ---
 
 Harness IaCM supports reviewing infrastructure changes via pull request automation. 
