@@ -17,7 +17,6 @@ This FAQ page is designed to assist customers who are experiencing common issues
 - [Running out of time in Hands-On Exam](#running-out-of-time-in-hands-on-exam)
 - [Issues with Course Registration](#issues-with-course-registration)
 - [Requesting Accommodations for Exams ](#requesting-accommodations-for-exams)
-- [Retakes for Exams ](#paid-exam-retakes)
 - [Inquires about Instructor-Led Training ](#inquiries-about-instructor-led-training)
 - [Contact Information](#contact-information)
 
@@ -92,15 +91,6 @@ Testing accommodations are considered on a case-by-case basis. Our exams include
 
 * Caveon Scorpion for knowledge questions. 
 * Instruqt for hands-on portions. 
-
----
-
-## Paid Exam Retakes
-
-For the Admin and Architect level exams, we allow for up to two retakes on paid exams.
-
-- If you have purchased an exam [not via coupon code] and need to retake,  please e-mail [certifications@harness.io](mailto:certifications@harness.io) so we can provide a retake coupon code.
-- If you redeemed a coupon code, please re-apply the coupon code when retaking.
 
 ---
 

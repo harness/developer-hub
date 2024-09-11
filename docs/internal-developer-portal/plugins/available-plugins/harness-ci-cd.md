@@ -82,13 +82,13 @@ metadata:
   annotations:
     # optional annotation
     harness.io/pipelines: |
-      CI: <harness_ci_pipeline_url>
-      CD: <harness_cd_pipeline_url>
-    # here labelA / labelB (example: CI/CD) denotes the value you will see in dropdown in execution list.
+      labelA: <harness_pipeline_url>
+      labelB: <harness_pipeline_url>
+    # here labelA / labelB denotes the value you will see in dropdown in execution list.
     # optional annotation
     harness.io/services: |
-      serviceA: <harness_service_url>
-      serviceB: <harness_service_url>
+      labelA: <harness_service_url>
+      labelB: <harness_service_url>
 spec:
   type: service
   # ...

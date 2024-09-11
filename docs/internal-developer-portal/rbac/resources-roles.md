@@ -207,4 +207,3 @@ Enable or Disable an IDP Plugin
 #### 4. Delete
 
 Delete a Plugin
-

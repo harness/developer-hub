@@ -1,0 +1,9 @@
+{
+  "position": 1,
+  "label": "Delegate",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Harness Delegate allows for quick onboarding and optimized chaos execution of experiments."
+  }
+}

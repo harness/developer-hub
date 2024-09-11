@@ -1,0 +1,9 @@
+{
+  "position": 5,
+  "label": "Get Started with Harness CE",
+  "collapsible": "true",
+  "collapsed": "true",
+  "customProps": {
+    "description": "Getting started with Harness Chaos Engineering"
+  }
+}
