@@ -67,6 +67,21 @@ We cannot as the pipeline YAML has details like project identifier, Org Identifi
 1st Option: You can use API to create a file in the harness file store and then refer it to another stage. https://apidocs.harness.io/tag/File-Store#operation/listFilesAndFolders
 2nd Option: You can just write a file on the delegate and use the same delegate.
 
+### How to fetch files from the harness file store in the run step?
+To fetch files from the Harness file store in a Run step, you can use the following example:
+
+```
+- step:
+    type: Run
+    name: Fetch Files from File Store
+    identifier: fetch_files
+    spec:
+      shell: Sh
+      command: |
+        harness file-store download-file --file-name <file_name> --destination <destination_path>
+```
+Replace "filename" with the name of the file you want to fetch from the file store, and "destinationpath" with the path where you want to save the file on the target host.
+
 ### How I can add runtime generated override file to a service before helm rendering?
 
 The values file resolution will only happen once the actual deployment step runs. We can add values.yaml override from file store or any other source repo in the manifest and update the values.yaml using api call or cli with dynamic information. If we want to use any output variable from the pipeline we can use the same expression directly in the values.yaml and while fetching the file the expressions will be resolved. We just need to ensure that the steps from where the output variable expressions are copied executes before the actual deployment step runs.
