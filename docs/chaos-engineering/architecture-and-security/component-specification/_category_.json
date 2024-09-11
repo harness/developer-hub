@@ -1,0 +1,13 @@
+{
+  "position": 6,
+  "label": "Custom resource specification",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Custom resource specification"
+   },
+  "customProps": {
+    "description": "Custom resources such as chaos engine and chaos experiment specification"
+  }
+}

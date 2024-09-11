@@ -1,9 +1,0 @@
-{
-  "position": 7,
-  "label": "Chaos Infrastructure",
-  "collapsible": "true",
-  "collapsed": "true",
-  "customProps": {
-    "description": "Facilitate the chaos fault injection and hypothesis validation"
-  }
-}

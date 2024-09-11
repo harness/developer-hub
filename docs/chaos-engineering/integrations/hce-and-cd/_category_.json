@@ -5,8 +5,7 @@
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Integrate HCE with Harness CD",
-      "description": "Learn how Harness CE integrates with Harness Continuous Delivery (CD) and how you can execute a chaos experiment as a CD pipeline."
+      "title":"Integrate HCE with Harness CD"
    },
   "customProps": {
     "description": "Integrate Harness Chaos Engineering with other Harness Continuous Delivery."

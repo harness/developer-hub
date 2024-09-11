@@ -6,7 +6,7 @@ redirect_from:
 ---
 
 This topic lists the platforms and technologies that Harness Chaos Engineering (HCE) supports for deploying chaos infrastructure.
-To learn more about chaos infrastructure, go to [Chaos infrastructure](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/).
+To learn more about chaos infrastructure, go to [Chaos infrastructure](/docs/chaos-engineering/architecture-and-security/architecture/control-plane).
 
 Harness Chaos Engineering is supported on the following platforms:
 - [Harness SaaS](#harness-saas)
@@ -38,7 +38,7 @@ The following table shows the supported operating systems and distributions for 
 
 ### Kubernetes
 
-#### Container runtime
+#### Container runtimes
 
 The supported container runtimes are as follows:
 
@@ -48,7 +48,7 @@ The supported container runtimes are as follows:
 
 ### Chaos fault types
 
-The following table shows available fault types and where they are supported. For a complete list and detailed information, go to [Chaos faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/).
+The following table shows available fault types and where they are supported. For a complete list and detailed information, go to [Chaos faults](/docs/chaos-engineering/chaos-faults/).
 
 | Fault type | Linux | K8s | Windows | VMware | AWS | GCP | Azure |
 |------------|-------|-----|---------|--------|-----|-----|-------|
@@ -64,10 +64,10 @@ The following table shows available fault types and where they are supported. Fo
 
 Chaos Engineering on Harness Self-Managed Enterprise Edition is in feature parity with Harness SaaS with the following limitations:
 * Harness Enterprise ChaosHub is not connected by default.
-  * Contact [Harness Support](mailto:support@harness.io) for access to the Harness Enterprise ChaosHub. Once you have access, you can add the Enterprise ChaosHub as a custom ChaosHub.
+  * Contact [Harness Support](mailto:support@harness.io) for access to the Harness Enterprise ChaosHub. Once you have access, you can add the Enterprise ChaosHub as a [custom ChaosHub](/docs/chaos-engineering/features/chaos-hubs/add-chaos-hub.md).
 * Harness AI Development Assistant (AIDA™) for CE
 
-For more information, go to Self-Managed Enterprise Edition and CE on SMP.
+For more information, go to [Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition) and [CE on SMP](/docs/chaos-engineering/get-started/ce-on-smp/ce-smp-roadmap).
 
 ## Harness Self-Managed Enterprise Edition In Offline Environments
 

@@ -1,11 +1,10 @@
 ---
 title: Use HCE with Service Reliability Management (SRM)
 sidebar_label: Use HCE with Service Reliability Management
-sidebar_position: 38
+sidebar_position: 35
 description: Integrating HCE with SRM
 redirect_from:
-- /docs/chaos-engineering/integrations/use-chaos-with-srm
-- /docs/chaos-engineering/integrations/use-chaos-with-srm
+	- /docs/chaos-engineering/integrations/use-chaos-with-srm
 ---
 
 Within Harness, you can see the impact of chaos faults on your target environment by using [SRM](/docs/service-reliability-management).

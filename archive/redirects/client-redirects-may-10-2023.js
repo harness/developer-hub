@@ -78,7 +78,7 @@ module.exports = {
     },
 
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/security-chaos/kube-security-cis",
+      from: "/docs/chaos-engineering/chaos-faults/security-chaos/kube-security-cis",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/security-chaos/kube-security-cis",
     },
 
@@ -93,7 +93,7 @@ module.exports = {
     },
 
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/load/locust-loadgen-chaos",
+      from: "/docs/chaos-engineering/chaos-faults/load/locust-loadgen-chaos",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen",
     },
 
@@ -2035,7 +2035,7 @@ module.exports = {
 
     // Created by SmritiSatya for branch redirects-for-ce on April 18,2023
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults",
+      from: "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults",
     },
     {
@@ -2123,392 +2123,392 @@ module.exports = {
       to: "/docs/chaos-engineering/configure-chaos-experiments/experiments/halt-chaos-experiments",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/chaos-faults",
+      from: "/docs/chaos-engineering/chaos-faults/chaos-faults",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/gcp-vm-disk-loss-by-label",
+      from: "/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss-by-label",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-disk-loss-by-label",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/gcp-vm-disk-loss",
+      from: "/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-disk-loss",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/gcp-vm-instance-stop-by-label",
+      from: "/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-instance-stop-by-label",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-instance-stop-by-label",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/gcp-vm-instance-stop",
+      from: "/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-instance-stop",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-instance-stop",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/azure-disk-loss",
+      from: "/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-disk-loss",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/azure-instance-cpu-hog",
+      from: "/docs/chaos-engineering/chaos-faults/azure/azure-instance-cpu-hog",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-cpu-hog",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/azure-instance-io-stress",
+      from: "/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-io-stress",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/azure-instance-memory-hog",
+      from: "/docs/chaos-engineering/chaos-faults/azure/azure-instance-memory-hog",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-memory-hog",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/azure-instance-stop",
+      from: "/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-stop",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/azure-web-app-access-restrict",
+      from: "/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-web-app-access-restrict",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/azure-web-app-stop",
+      from: "/docs/chaos-engineering/chaos-faults/azure/azure-web-app-stop",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-web-app-stop",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kube-resilience/kubelet-density",
+      from: "/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kube-resilience/kubelet-density",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/load/locust-loadgen",
+      from: "/docs/chaos-engineering/chaos-faults/load/locust-loadgen",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/vmware-cpu-hog",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/vmware-cpu-hog",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-cpu-hog",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-disk-loss",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-disk-loss",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-disk-loss",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-DNS-chaos",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-DNS-chaos",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-DNS-chaos",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-host-reboot",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-host-reboot",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-host-reboot",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-http-latency",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-http-latency",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-http-latency",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-http-modify-response",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-http-modify-response",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-http-reset-peer",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-http-reset-peer",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-http-reset-peer",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-io-stress",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-io-stress",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-io-stress",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-memory-hog",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-memory-hog",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-memory-hog",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-network-latency",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-network-latency",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-network-latency",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-network-loss",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-network-loss",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-network-loss",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-process-kill",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-process-kill",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-process-kill",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-service-stop",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-service-stop",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-service-stop",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-vm-power-off",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-vm-power-off",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-vm-power-off",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/vmware-windows-cpu-hog",
+      from: "/docs/chaos-engineering/chaos-faults/vmware/vmware-windows-cpu-hog",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-cpu-hog",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/node/common-tunables-for-node-faults",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/node/docker-service-kill",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/docker-service-kill",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/docker-service-kill",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/node/kubelet-service-kill",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/kubelet-service-kill",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/kubelet-service-kill",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/node/node-cpu-hog",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/node-cpu-hog",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-cpu-hog",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/node/node-drain",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/node-drain",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-drain",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/node/node-io-stress",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-io-stress",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/node/node-memory-hog",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/node-memory-hog",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-memory-hog",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/node/node-restart",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/node-restart",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-restart",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/node/node-taint",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/node-taint",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-taint",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/container-kill",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/container-kill",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/container-kill",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/disk-fill",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/disk-fill",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/disk-fill",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-autoscaler",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-autoscaler",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-autoscaler",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-cpu-hog-exec",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog-exec",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog-exec",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-cpu-hog",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-delete",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-delete",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-dns-error",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-dns-error",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-dns-spoof",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-spoof",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-dns-spoof",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-http-latency",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-latency",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-latency",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-http-modify-body",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-body",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-modify-body",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-http-modify-header",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-header",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-modify-header",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-http-reset-peer",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-reset-peer",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-reset-peer",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-http-status-code",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-status-code",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-io-stress",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-stress",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-memory-hog-exec",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-memory-hog-exec",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-memory-hog-exec",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-memory-hog",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-memory-hog",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-memory-hog",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-network-corruption",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-corruption",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-corruption",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-network-duplication",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-duplication",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-duplication",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-network-latency",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-latency",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-latency",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-network-loss",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-loss",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-loss",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-network-partition",
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-partition",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-partition",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/alb-az-down",
+      from: "/docs/chaos-engineering/chaos-faults/aws/alb-az-down",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/alb-az-down",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/clb-az-down",
+      from: "/docs/chaos-engineering/chaos-faults/aws/clb-az-down",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/clb-az-down",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ebs-loss-by-id",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ebs-loss-by-id",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ebs-loss-by-id",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ebs-loss-by-tag",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ebs-loss-by-tag",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ebs-loss-by-tag",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-cpu-hog",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-cpu-hog",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-cpu-hog",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-dns-chaos",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-dns-chaos",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-dns-chaos",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-http-latency",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-http-latency",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-latency",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-http-modify-body",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-http-modify-body",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-modify-body",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-http-modify-header",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-http-modify-header",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-modify-header",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-http-reset-peer",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-http-reset-peer",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-reset-peer",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-http-status-code",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-http-status-code",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-status-code",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-io-stress",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-io-stress",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-io-stress",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-memory-hog",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-memory-hog",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-memory-hog",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-network-latency",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-network-latency",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-network-latency",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/eec2-network-loss",
+      from: "/docs/chaos-engineering/chaos-faults/aws/eec2-network-loss",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-network-loss",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-process-kill",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-process-kill",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-process-kill",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-stop-by-id",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-stop-by-id",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-stop-by-id",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-stop-by-tag",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-stop-by-tag",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-stop-by-tag",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ecs-agent-stop",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ecs-agent-stop",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-agent-stop",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ecs-container-cpu-hog",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ecs-container-cpu-hog",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-cpu-hog",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ecs-container-io-stress",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ecs-container-io-stress",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-io-stress",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ecs-container-memory-hog",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ecs-container-memory-hog",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-memory-hog",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ecs-container-network-loss",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ecs-container-network-loss",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-network-loss",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ecs-instance-stop",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ecs-instance-stop",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-instance-stop",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ecs-container-network-latency",
+      from: "/docs/chaos-engineering/chaos-faults/aws/ecs-container-network-latency",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-network-latency",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/lambda-delete-event-source-mapping",
+      from: "/docs/chaos-engineering/chaos-faults/aws/lambda-delete-event-source-mapping",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-delete-event-source-mapping",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/lambda-delete-function-concurrency",
+      from: "/docs/chaos-engineering/chaos-faults/aws/lambda-delete-function-concurrency",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-delete-function-concurrency",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/lambda-toggle-event-mapping-state",
+      from: "/docs/chaos-engineering/chaos-faults/aws/lambda-toggle-event-mapping-state",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-toggle-event-mapping-state",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/lambda-update-function-memory",
+      from: "/docs/chaos-engineering/chaos-faults/aws/lambda-update-function-memory",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-update-function-memory",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/lambda-update-function-timeout",
+      from: "/docs/chaos-engineering/chaos-faults/aws/lambda-update-function-timeout",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-update-function-timeout",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/lambda-update-role-permission",
+      from: "/docs/chaos-engineering/chaos-faults/aws/lambda-update-role-permission",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-update-role-permission",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/rds-instance-delete",
+      from: "/docs/chaos-engineering/chaos-faults/aws/rds-instance-delete",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/rds-instance-delete",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/rds-instance-reboot",
+      from: "/docs/chaos-engineering/chaos-faults/aws/rds-instance-reboot",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/rds-instance-reboot",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/aws-fault-tunables",
+      from: "/docs/chaos-engineering/chaos-faults/aws/aws-fault-tunables",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/aws-fault-tunables",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security/aws-switch-profile",
+      from: "/docs/chaos-engineering/chaos-faults/aws/security/aws-switch-profile",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/aws-switch-profile",
     },
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security/policy-for-all-aws-faults",
+      from: "/docs/chaos-engineering/chaos-faults/aws/security/policy-for-all-aws-faults",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/policy-for-all-aws-faults",
     },
 
     {
-      from: "/docs/chaos-engineering/use-harness-ce/chaos-faults/",
+      from: "/docs/chaos-engineering/chaos-faults/",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/",
     },
 

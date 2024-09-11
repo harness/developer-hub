@@ -1,9 +1,0 @@
-{
-  "position": 1,
-  "label": "SaaS",
-  "collapsible": "true",
-  "collapsed": "true",
-  "customProps": {
-    "description":"Fulfill the prerequisites, and get hands-on experience in executing your first experiment on HCE SaaS in various ways."
-  }
-}

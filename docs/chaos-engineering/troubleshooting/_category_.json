@@ -1,12 +1,11 @@
 	{
-  "position": 11,
+  "position": 10,
   "label": "Troubleshooting",
   "collapsible": true,
   "collapsed": true,
   "link":{
       "type":"generated-index",
-      "title":"Troubleshooting",
-      "description": "This section describes some known issues and solutions to common pain points you might encounter while working with Harness CE."
+      "title":"Troubleshooting"
    },
   "customProps": {
     "description": "Solutions to common pain points and known issues."

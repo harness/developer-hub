@@ -1,12 +1,11 @@
 {
-  "position": 9,
+  "position": 10,
   "label": "API reference",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"HCE CLI",
-      "description": "This section describes the usage of two HCE APIs, namely HCE CLI, and HCE Onboard API."
+      "title":"HCE CLI"
    },
   "customProps": {
     "description": "Simplify executing complex API commands"

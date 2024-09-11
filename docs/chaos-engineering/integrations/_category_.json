@@ -1,12 +1,11 @@
 {
-  "position": 10,
+  "position": 9,
   "label": "Integrations",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Integrations",
-      "description": "This section describes how HCE integrates with various modules such as Continuous Delivery, Feature Flags, and SRM. You will also learn how to execute a chaos experiment as a GitLab pipeline and as a Jenkins pipeline."
+      "title":"Integrations"
    },
   "customProps": {
     "description": "Integrate Chaos Engineering with other Harness modules."

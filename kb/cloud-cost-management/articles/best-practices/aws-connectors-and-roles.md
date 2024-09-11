@@ -35,7 +35,7 @@ provider "harness" {}
 
 ## Create Roles In Each AWS Account via Terraform
 
-If you have the ability to provision roles into every AWS account using Terraform, you can use this module to simplify provisioning of the role.  In this example, we are applying account-wide read only access as the role permission for all services. For what can be enabled using this module please refer to [this guide](https://github.com/harness-community/terraform-aws-harness-ccm)
+If you have the ability to provision roles into every AWS account using Terraform, you can use this module to simplify provisioning of the role.  In this example, we are applying account-wide read only access as the role permission for all services. For what can be enabled using this module please refer to [this guide](https://github.com/harness-community/terraform-aws-harness-ccm).
 
 ```
 module "ccm-member" {
@@ -71,7 +71,7 @@ You will have to modify parameters in the StackSet in order for it to execute co
 
 ## Create A CCM Connector For Each AWS Account
 
-Use the Harness provider to create a CCM connector for each AWS account. In this example, we are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION)
+Use the Harness provider to create a CCM connector for each AWS account. In this example, we are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
 
 ```
 resource "harness_platform_connector_awscc" "data" {
@@ -96,3 +96,11 @@ resource "harness_platform_connector_awscc" "data" {
 ## Conclusion
 
 This is a general example of providing read only access for each connector inside of an AWS organization. Policies will have to be added based on what other CCM features you want to use. This example doesn't include setting up the connector for the billing account. This guide assumes there already exists a connector into the master AWS account sthat has the billing export and an existing connector for the billing data.
+
+## Supplemental Information
+
+[Here](https://registry.terraform.io/providers/harness/harness/latest/docs) is the Terraform documentation for the Harness provider.
+
+[Here](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) is the Terraform documentation for the AWS provider.
+
+[Here](https://docs.aws.amazon.com/) is the AWS API documentation.

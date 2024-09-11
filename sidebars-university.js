@@ -83,7 +83,7 @@ const sidebars = {
         // Instructions
         {
           type: "doc",
-          label: "Instructions",
+          label: "Hands-on Instructions",
           id: "instructions",
           className: "sidebar-ilt-instructions",
         },

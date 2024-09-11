@@ -3,8 +3,7 @@ title: Use HCE with Feature Flags
 sidebar_position: 1
 description: Integrate HCE with FF
 redirect_from:
-- /tutorials/chaos-experiments/chaos-ff
-- /docs/chaos-engineering/integrations/chaos-ff
+	- /tutorials/chaos-experiments/chaos-ff
 ---
 
 You can add chaos experiments to Harness Feature Flags (FF) pipelines as part of the process to control release of new software. An [FF pipeline](/docs/feature-flags/use-ff/ff-build-pipeline/build-feature-flag-pipeline) runs every time a feature flag changes, and lets you specify actions to take before the flag change takes effect. For example, you might want to have an approval step for all flag changes, or run a chaos experiment as part of the pipeline.
@@ -60,7 +59,7 @@ Harness recommends that when you add a chaos step to an FF pipeline, you also ad
 	When you select an experiment, the experiment's last resilience score, a preview of the experiment, and its chaos faults, are displayed.
 
 1. (Optional) On this screen you can:
-	* Select **New Experiment** to create a new experiment in Chaos Studio.
+	* Select **New Experiment** to [create a new experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments) in Chaos Studio. 
 	* Select **Edit in Chaos Studio** to edit a selected experiment.
 
 	Selecting these options takes you to Chaos Studio without saving your work.
@@ -72,7 +71,7 @@ Harness recommends that when you add a chaos step to an FF pipeline, you also ad
 	* If the resilience score is not met, this chaos step fails and the [stage failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) is initiated.
 	* We recommend you add another step in the pipeline that disables the flag if the chaos step fails.
 
-	For more information, go to Analyze chaos experiments.
+	For more information, go to [Analyze chaos experiments](/docs/chaos-engineering/features/experiments/create-complex-chaos-experiments#analyze-chaos-experiments).
 
 1. (Optional) Expand **Optional Configuration**, and enter an assertion (you can enter a fixed value, an expression, or a runtime input).
 
