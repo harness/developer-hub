@@ -8,6 +8,7 @@
 .certificationsSEI,
 .certificationsCE,
 .certificationsIDP,
+.certificationsIACM,
 .certificationsPlatform {
   background: url(/img/cert_harness_bg.svg) no-repeat;
   background-position: right;
@@ -332,6 +333,9 @@
       &.moduleIDP {
         border-color: var(--mod-idp-200);
       }
+      &.moduleIACM {
+        border-color: var(--mod-iacm-200);
+      }
 
       .certCardContainer {
         display: flex;
@@ -584,6 +588,7 @@
 .certificationsSEI,
 .certificationsCE,
 .certificationsIDP,
+.certificationsIACM,
 .certificationsPlatform {
   .certDesc {
     margin-top: 80px;
@@ -897,6 +902,7 @@
   .certificationsCE,
   .certificationsSEI,
   .certificationsIDP,
+  .certificationsIACM,
   .certificationsPlatform {
     .certDesc {
       .certCard {
@@ -935,6 +941,7 @@
   .certificationsCE,
   .certificationsSEI,
   .certificationsIDP,
+  .certificationsIACM,
   .certificationsPlatform {
     .certDesc {
       .certCard {
@@ -1010,6 +1017,7 @@
   .certificationsCE,
   .certificationsSEI,
   .certificationsIDP,
+  .certificationsIACM,
   .certificationsPlatform {
     padding-top: 36px;
 
@@ -1094,6 +1102,7 @@
   .certificationsCE,
   .certificationsSEI,
   .certificationsIDP,
+  .certificationsIACM,
   .certificationsPlatform {
     padding: 10px;
     background: none;
@@ -1244,6 +1253,7 @@
   .certificationsCE,
   .certificationsSEI,
   .certificationsIDP,
+  .certificationsIACM,
   .certificationsPlatform {
     background: none;
     padding: 10px;
@@ -1297,6 +1307,7 @@
   .certificationsCE,
   .certificationsSEI,
   .certificationsIDP,
+  .certificationsIACM,
   .certificationsPlatform {
     .certDesc {
       .certCard {

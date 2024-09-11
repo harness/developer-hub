@@ -5,10 +5,10 @@ import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
-// import AdminCertificationExamDetails from "./data/idp-certification-admin-exam-details.md";
-// import AdminCertificationReviewDetails from "./data/idp-certification-admin-review-guide.md";
-import DeveloperCertificationExamDetails from "./data/idp-certification-developer-exam-details.md";
-import DeveloperCertificationReviewGuide from "./data/idp-certification-developer-review-guide.md";
+// import AdminCertificationExamDetails from "./data/iacm-certification-admin-exam-details.md";
+// import AdminCertificationReviewDetails from "./data/iacm-certification-admin-review-guide.md";
+// import DeveloperCertificationExamDetails from "./data/iacm-certification-developer-exam-details.md";
+// import DeveloperCertificationReviewGuide from "./data/iacm-certification-developer-review-guide.md";
 // import ArchitectCertificationReviewDetails from "./data/idp-certification-architect-review-guide.md";
 // import ArchitectCertificationExamDetails from "./data/id[-certification-architect-exam-details.md";
 import IltCard from "./Card";
@@ -17,23 +17,23 @@ import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
-    img: `${url}img/cert_dev_idp_badge.svg`,
+    img: `${url}img/cert_dev_iacm_badge.svg`,
     alt: "Harness Certified Expert - Developer",
     type: certType.developer,
   },
   {
-    img: `${url}img/cert_adm_idp_badge.svg`,
+    img: `${url}img/cert_adm_iacm_badge.svg`,
     alt: "Harness Certified Expert - Administrator",
     type: certType.administrator,
   },
   {
-    img: `${url}img/cert_arc_idp_badge.svg`,
+    img: `${url}img/cert_arc_iacm_badge.svg`,
     alt: "Harness Certified Expert - Architect",
     type: certType.architect,
   },
 ];
 import { useColorMode } from "@docusaurus/theme-common";
-export default function CertificationsIDP() {
+export default function CertificationsIACM() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   // React router provides the current component's route, even in SSR
@@ -89,7 +89,7 @@ export default function CertificationsIDP() {
 
   return (
     <div
-      className={`${styles.certificationsIDP} ${
+      className={`${styles.certificationsIACM} ${
         activePage === ActivePage.SelfPacedTraning
           ? styles.SelfPacedTrainingBg
           : ""
@@ -106,10 +106,9 @@ export default function CertificationsIDP() {
               <i className="fa-solid fa-arrow-left"></i> Back to University Home
             </Link>
           </div>
-          <h1>Internal Developer Portal</h1>
+          <h1>Infrastrucure as Code Managemnet</h1>
           <div>
-            Eliminate cognitive overload by letting developers self-service
-            their flows like new service onboarding.
+          Efficiently and securely scale your Terraform / OpenTofu Infrastructure as Code.
           </div>
         </div>
         <div
@@ -281,28 +280,28 @@ export default function CertificationsIDP() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Internal Developer Portal - Developer
+                      Infrastucture as Code Management - Developer (BETA COMING
+                        SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_dev_idp_badge.svg`}
-                      alt="Harness Certified Expert - IDP Developer"
+                      src={`${baseUrl}img/cert_dev_iacm_badge.svg`}
+                      alt="Harness Certified Expert - IaCM Developer"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDP Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness IaCM Free/Team Plans
                     </span>
                   </div>
                   <div className={styles.right}>
-                    <h3>Review Study Guide</h3>
+                    <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to manage your
-                      applications with IDP projects.
+                      infrastructure with IaCM projects.
                     </div>
-                    <DeveloperCertificationReviewGuide />
+                    
 
                     <div className={styles.btnContainer}>
-                      <Link href="https://university-registration.harness.io/certified-internal-developer-portal-developer">
+                      <Link href="#">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
@@ -313,14 +312,14 @@ export default function CertificationsIDP() {
               </div>
             </div>
 
-            {/* Developer Exam Details */}
+            {/* Developer Exam Details 
 
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
               <div className={styles.examDetailsCard}>
-                <DeveloperCertificationExamDetails />
+                
                 <div className={styles.btnContainer}>
-                  <Link href="https://university-registration.harness.io/certified-internal-developer-portal-developer">
+                  <Link href="#">
                     <button className={styles.moreDetails}>
                       Register for Exam
                     </button>
@@ -328,6 +327,7 @@ export default function CertificationsIDP() {
                 </div>
               </div>
             </div>
+            */}
           </div>
 
           {/* Administrator Tab Content */}
@@ -352,16 +352,16 @@ export default function CertificationsIDP() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Internal Developer Portal - Administrator (BETA COMING
+                      Infrastucture as Code Management - Administrator (BETA COMING
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_adm_idp_badge.svg`}
+                      src={`${baseUrl}img/cert_adm_iacm_badge.svg`}
                       alt="Harness Certified Expert - IDP Administrator"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDP Enterprise
+                      <strong>Product version: </strong> Harness IaCM Enterprise
                       Plan
                     </span>
                   </div>
@@ -393,7 +393,7 @@ export default function CertificationsIDP() {
 
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
-                      Assesses the fundamental skills to deploy and maintain IDP
+                      Assesses the fundamental skills to deploy and maintain IaCM
                       projects and the overall Harness Platform.
                     </div>
                   </div>
@@ -440,16 +440,16 @@ export default function CertificationsIDP() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Software Engineering Insights - Architect (BETA COMING
+                      Infrastrucuture as Code Management - Architect (BETA COMING
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_arc_idp_badge.svg`}
-                      alt="Harness Certified Expert - IDP Architect"
+                      src={`${baseUrl}img/cert_arc_iacm_badge.svg`}
+                      alt="Harness Certified Expert - IaCM Architect"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDP Enterprise
+                      <strong>Product version: </strong> Harness IaCM Enterprise
                       Plan
                     </span>
                   </div>
@@ -457,7 +457,7 @@ export default function CertificationsIDP() {
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
                       Assess key technical job functions and advanced skills in
-                      design, implementation and management of IDP.
+                      design, implementation and management of IaCM.
                     </div>
                   </div>
                 </div>
@@ -489,8 +489,8 @@ export default function CertificationsIDP() {
                 .filter((ilt) => {
                   return (
                     ilt.tileType === "pre requisite" ||
-                    ilt.module === "idp" ||
-                    (ilt.module === "idp" && ilt.tileType === "comming soon")
+                    ilt.module === "iacm" ||
+                    (ilt.module === "iacm" && ilt.tileType === "comming soon")
                   );
                 })
 
@@ -517,8 +517,8 @@ export default function CertificationsIDP() {
               {spt
                 .filter((spt) => {
                   return (
-                    (spt.module === "idp" && spt.cardType === "FREE") ||
-                    (spt.module === "idp" && spt.tileType === "comming soon")
+                    (spt.module === "iacm" && spt.cardType === "FREE") ||
+                    (spt.module === "iacm" && spt.tileType === "comming soon")
                   );
                 })
                 .map((spt) => (
