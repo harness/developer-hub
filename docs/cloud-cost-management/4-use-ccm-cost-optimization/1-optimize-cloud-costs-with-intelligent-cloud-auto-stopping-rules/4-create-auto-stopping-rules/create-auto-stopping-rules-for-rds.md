@@ -6,6 +6,7 @@ helpdocs_topic_id: ryk2e3ujpn
 helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/autostopping-for-rds
 ---
 # Create AutoStopping Rules for RDS
 AutoStopping Rule is a dynamic and powerful resource orchestrator for non-production workloads. For more information, see [AutoStopping Rules Overview](../1-auto-stopping-rules.md).
