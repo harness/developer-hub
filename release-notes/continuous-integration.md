@@ -36,11 +36,9 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### Fixed issues
 
-- Corrected the popup UI displaying incorrect time savings that were being cached from other steps in cache intelligence. (CI-13995)
+- Fixed an issue where time savings due to Harness CI intelligence feature, didn't populate properly when used in the parallel CI stages. (CI-13993)
 
-- The incorrect node id from the layout was being selected in the parallel stages UI. This has been fixed for any strategy or child pipelines as well. (CI-13993)
-
-- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` must be enabled whenever a base image connector is used (CI-13924)
+- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature flag must be enabled whenever a base image connector is used (CI-13924)
 
 - Bitbucket has in issue in their api does not support the character slash ( / ) [https://jira.atlassian.com/browse/BCLOUD-20223](https://jira.atlassian.com/browse/BCLOUD-20223)
 This can be worked around by using query parameters in the Bitbucket api [https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww](https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww) (CI-13826)
