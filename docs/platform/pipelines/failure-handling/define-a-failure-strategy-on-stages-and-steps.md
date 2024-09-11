@@ -11,7 +11,7 @@ redirect_from:
   - /docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps
   - /docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings
   - /docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings
-canonical_url: https://www.harness.io/blog/building-robust-and-resilient-harness-pipelines-with-failure-handling-support
+canonical_url: https://www.harness.io/blog/deployment-pipeline-patterns
 ---
 
 A failure strategy defines how steps, stages, and step groups handle different failure conditions.
