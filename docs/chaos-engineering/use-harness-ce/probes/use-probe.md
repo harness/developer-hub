@@ -12,9 +12,11 @@ This topic describes the steps you can follow to create and use a resilience pro
 
 ## Before you begin, review the following
 
-- Go to probe overview to understand about probes.
-- Go to chaos faults to understand where you can use resilience probes.
-- Permission to edit a chaos experiment.
+- Go to [probe overview](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/) to understand about probes.
+- Go to [chaos faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/) to understand where you can use resilience probes.
+
+### Prerequisite
+- Permissions to edit a chaos experiment.
 
 :::tip
 Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable it.
@@ -46,9 +48,22 @@ If you are a first-time chaos module user or a Platform user who has not used re
 
 ## Edit a Resilience Probe
 
-* You can edit a resilience probe by navigating to the probe you wish to edit. Click the three vertical dot menu to the extreme right of the probe, and choose **Edit probe**. Modify the properties you wish to, and click **Save**.
+You can edit a resilience probe by navigating to the probe you wish to edit. Click the three vertical dot menu to the extreme right of the probe, and choose **Edit probe**. Modify the properties you wish to, and click **Save**.
 
   ![edit](./static/use-probe/edit-probe.png)
+
+:::tip
+Resilience probe names act as unique identifiers for a probe, which means you can't edit them. If you manually add the name of a probe in the manifest, this same name should be entered in the annotation as ID.
+:::
+
+When you want to enter the probe name in the manifest (manually) as a probeRef annotation, follow the below format:
+
+```
+probeRef: '[{"probeID":"ID","mode":"SOT"}]'
+```
+Here, `ID` is the unique ID of your probe.
+
+This step is not required if you use the user interface.
 
 ## Use a Resilience Probe
 
@@ -80,6 +95,22 @@ If you are a first-time chaos module user or a Platform user who has not used re
 	**You can't:**
 	- Repeat the same probe multiple times in the same fault in the same experiment.
 :::
+
+## Add probes to ChaosHub
+
+Adding probes to ChaosHub helps you to templatize the resilience probe. With this, you can import the probes directly from ChaosHub and reference it in a chaos experiment.
+
+1. To add a resilience probe to ChaosHub, go to **Resilience Probes** tab. Go to the resilience probe that you want to add to ChaosHub and click the **:** button. Click **Push to ChaosHub**.
+
+  ![](./static/use-probe/push-to-hub.png)
+
+2. Choose the ChaosHub to which you want to add the probe, and click **Apply**.
+
+  ![](./static/use-probe/apply-hub.png)
+
+3. Click **Save**.
+
+  ![](./static/use-probe/save-to-hub.png)
 
 ## Create probe using YAML
 
@@ -141,19 +172,3 @@ The entire manifest is available as a YAML file, which can be accessed by switch
                   engineStatus: ""
                   experiments: null
 ```
-
-## Update Resilience Probe
-You can [update (or edit) a probe](/docs/chaos-engineering/use-harness-ce/probes/use-probe#edit-a-resilience-probe) from within an experiment or from the **Resilience Probes** tab.
-
-:::tip
-Resilience probe names act as unique identifiers for a probe, which means you can't edit them. If you manually add the name of a probe in the manifest, this same name should be entered in the annotation as ID.
-:::
-
-When you want to enter the probe name in the manifest (manually) as a probeRef annotation, follow the below format:
-
-```
-probeRef: '[{"probeID":"ID","mode":"SOT"}]'
-```
-Here, `ID` is the unique ID of your probe.
-
-If you use the user interface, this step is not required.
