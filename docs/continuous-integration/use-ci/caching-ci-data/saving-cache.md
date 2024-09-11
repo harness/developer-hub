@@ -1,8 +1,8 @@
 ---
 title: Save and Restore Cache from S3
 description: Caching enables sharing data across stages
-
 sidebar_position: 30
+canonical_url: https://www.harness.io/blog/how-new-features-harness-continuous-integration-fit-your-environment
 helpdocs_topic_id: qibyllcmza
 helpdocs_category_id: 01tyeraya4
 helpdocs_is_private: false

@@ -2,6 +2,7 @@
 title: Build and Push to Docker
 description: Use a CI pipeline to build and push an image to a Docker registry.
 sidebar_position: 11
+canonical_url: https://www.harness.io/blog/docker-multi-stage-build
 helpdocs_topic_id: q6fr5bj63w
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
