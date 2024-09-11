@@ -2,6 +2,7 @@
 title: Set up an AWS VM build infrastructure
 description: Set up a CI build infrastructure using AWS VMs.
 sidebar_position: 10
+canonical_url: https://www.harness.io/blog/harness-ci-aws-vms
 helpdocs_topic_id: z56wmnris8
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false

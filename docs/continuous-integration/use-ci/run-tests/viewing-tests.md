@@ -2,6 +2,7 @@
 title: View tests
 description: View the results from CI tests.
 sidebar_position: 40
+canonical_url: https://www.harness.io/blog/continuous-integration-testing
 helpdocs_topic_id: sof7n3qjap
 helpdocs_category_id: flam7377aq
 helpdocs_is_private: false

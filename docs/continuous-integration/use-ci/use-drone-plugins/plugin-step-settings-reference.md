@@ -2,6 +2,7 @@
 title: Plugin step settings
 description: Plugins perform predefined tasks.
 sidebar_position: 40
+canonical_url: https://www.harness.io/blog/community-plugins-harness-ci
 helpdocs_topic_id: 8r5c3yvb8k
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
