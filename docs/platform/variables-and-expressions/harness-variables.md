@@ -6,6 +6,7 @@ helpdocs_topic_id: lml71vhsim
 helpdocs_category_id: dr1dwvwa54
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 
 import Tabs from '@theme/Tabs';

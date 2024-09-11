@@ -3,6 +3,7 @@ title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 date: 2024-09-03T14:00
 sidebar_position: 16
+canonical_url: https://www.harness.io/blog/get-started-with-harness-chaos-engineering-free-plan
 ---
 
 import Tabs from '@theme/Tabs';

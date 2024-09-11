@@ -2,6 +2,7 @@
 title: Policy samples
 description: See sample policies and when to use them.
 sidebar_position: 6
+canonical_url: https://www.harness.io/blog/feature-flags-best-practices
 ---
 
 Harness provides governance using Open Policy Agent (OPA), policy management, and Rego policies.
