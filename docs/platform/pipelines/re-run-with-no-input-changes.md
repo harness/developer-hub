@@ -69,4 +69,4 @@ If the **Is Input Data uneditable when rerunning?** option in the parent pipelin
 
 ### API Call Behavior
 
-When the above [setting](#how-to-enable-fixed-inputs-on-re-run) is enabled, the API call to re-run the pipeline ignores any inputs provided. Normally, on re-runs, the inputs are sent again in the API call. However, with this setting enabled, even if inputs are provided, they will be ignored, and the inputs from the original execution will be used.
+When the above [setting](#how-to-enable-fixed-inputs-on-re-run) is enabled, the [API call to Re-run](https://apidocs.harness.io/tag/Pipeline-Execution#operation/rerun-stages-execution-of-pipeline) the pipeline ignores any inputs provided. Normally, on re-runs, the inputs are sent again in the API call. However, with this setting enabled, even if inputs are provided, they will be ignored, and the inputs from the original execution will be used.
