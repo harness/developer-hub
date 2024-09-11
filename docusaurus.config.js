@@ -435,7 +435,7 @@ async function config() {
         prism: {
           theme: themes.github,
           darkTheme: themes.vsDark,
-          additionalLanguages: ["yaml", "json", "bash", "python", "git"]
+          additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git'],
         },
         colorMode: {
           defaultMode: 'light',
@@ -505,7 +505,7 @@ async function config() {
       ],
       // redirect plugin start
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
 
         {
           id: 'university',
@@ -518,7 +518,7 @@ async function config() {
         },
       ],
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
 
         {
           id: 'community',
@@ -531,7 +531,7 @@ async function config() {
         },
       ],
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
         {
           id: 'kb',
           path: 'kb',
@@ -544,7 +544,7 @@ async function config() {
       ],
 
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
         {
           id: 'docs1',
           path: 'docs',
@@ -571,8 +571,9 @@ async function config() {
           ],
         },
       ],
+
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
         {
           id: 'roadmap',
           path: 'roadmap',
@@ -588,7 +589,6 @@ async function config() {
       path.join(__dirname, '/plugins/utmcookie-plugin'),
       path.join(__dirname, '/plugins/feedback-plugin'),
       path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
-      //path.join(__dirname, "/plugins/scarf-plugin"),
     ],
     clientModules: [
       path.join(__dirname, '/client_module/searchBar'),
