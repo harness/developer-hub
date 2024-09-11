@@ -28,7 +28,7 @@ Select your Kubernetes connector where you want the pipeline to run, and expand 
 
 We need to create a few variables for the inputs to our ansible execution. Click "+ New Variable" and create two variables, one for `hosts_file` and one for `playbook`. Set both to be runtime inputs.
 
-![](static/ansible_step_group_sg.png)
+![](../static/ansible_step_group_sg.png)
 
 Click "Apply Changes" in the top right to create the step group.
 
@@ -38,7 +38,7 @@ Within the step group you created, select "Add Step" and add a new "Git Clone" s
 
 Select your git provider, and fill in the repository details based on the location of your ansible playbooks.
 
-![](static/ansible_step_group_clone.png)
+![](../static/ansible_step_group_clone.png)
 
 Click "Apply Changes" in the top right to save your repo settings.
 
@@ -72,7 +72,7 @@ ansible-playbook --private-key=id_rsa -i <+execution.steps.ansible.variables.hos
 
 Please note that the JEXL included assume the step group has an identifier of `ansible` and the clone step of `clone`, you may need to adjust the JEXL based on how you nameed those resources. It also assumes your SSH secret file id is `pem_file`.
 
-![](static/ansible_step_group_command.png)
+![](../static/ansible_step_group_command.png)
 
 Click "Apply Changes" in the top right to save your run settings.
 
@@ -80,7 +80,7 @@ Click "Apply Changes" in the top right to save your run settings.
 
 Now when you save your pipeline and execute it, you will be prompted for your hosts and playbook file.
 
-![](static/ansible_step_group_run.png)
+![](../static/ansible_step_group_run.png)
 
 ## Expanding
 
