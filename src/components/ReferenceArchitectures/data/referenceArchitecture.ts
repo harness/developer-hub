@@ -16,6 +16,12 @@ export const ReferenceArchitecturesCards: CardSections = [
           "Get started with Cloud Cost Management Reference Architectures.",
         link: "/kb/category/cloud-cost-management",
       },
+      {
+        title: "Delegate Architecture Best Practices",
+        module: MODULES.platform,
+        description: "Design considerations for choosing the right Delegate Architecture",
+        link: "/kb/reference-architectures/platform/delegate_architecture_bestpractices.md",
+      },
     ],
   },
 ];
