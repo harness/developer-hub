@@ -387,14 +387,14 @@ export default function University() {
                       alt="Developer SEI Badge"
                     />
                   </div>
-            {/* <h5>Coming Soon</h5> 
+           
                 <h5>Coming Soon</h5>
                 <div className={styles.unAvailableCerts}>
                   <img
-                    src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
-                    alt="Administrator CCM Badge"
+                    src={`${baseUrl}img/cert_dev_iacm_badge.svg`}
+                    alt="Developer IaCM Badge"
                   /> 
-                </div> */}
+                </div> 
                 </div>
               </div>
               <div className={styles.verticalLine}></div>
