@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Head from '@docusaurus/Head';
 import './CoveoSearch.scss';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 // Space => keyCode: 32
 const RESP_BREAK_POINT = 996;
@@ -24,9 +25,9 @@ const CoveoSearch = () => {
     }
   };
 
-  // useEffect(() => {
-  //   checkCoveo();
-  // }, []);
+  const {
+    siteConfig: { customFields },
+  } = useDocusaurusContext();
 
   useEffect(() => {
     checkCoveo();
@@ -106,12 +107,18 @@ const CoveoSearch = () => {
             </div>`;
         let coveoRoot = searchRoot.querySelector('#coveo-search'); // document.getElementById("coveo-search");
 
-        const resToken = await fetch(
-          'https://next.harness.io/api/gettoken-all/'
-        );
-        const dataToken = await resToken.json();
-        const orgId = dataToken?.orgId;
-        const apiToken = dataToken?.apiKey;
+        const res = await fetch('https://developer.harness.io/api/coveo_api', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: customFields.COVEO_API_KEY,
+          },
+        });
+
+        const resData = await res.json();
+        console.log(resData);
+        const orgId = resData?.orgId;
+        const apiToken = resData?.apiKey;
         Coveo.SearchEndpoint.configureCloudV2Endpoint(orgId, apiToken);
 
         const elemSearchMask = document.getElementById('coveo-search-mask');
@@ -158,7 +165,7 @@ const CoveoSearch = () => {
           window.dispatchEvent(new Event('resize'));
           window.dispatchEvent(new Event('orientationchange'));
         });
-        Coveo.$$(coveoRoot).on('afterInitialization', function (e, args) {
+        Coveo.$$(coveoRoot).on('afterInitialization', function () {
           Coveo.state(coveoRoot, 'f:@commonsource', ['Developer Hub']);
           /* disable auto-focus @2022-12-12
           document

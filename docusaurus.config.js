@@ -26,9 +26,9 @@ async function config() {
     customFields: {
       SEGMENT_API_KEY: process.env.SEGMENT_API_KEY,
       HARNESS_GENERIC_READ_ONLY_KEY: process.env.HARNESS_GENERIC_READ_ONLY_KEY,
+      COVEO_API_KEY: process.env.COVEO_API_KEY,
     },
 
-    //Mermaid Diagram Functionality
     markdown: {
       mermaid: true,
     },
@@ -435,7 +435,7 @@ async function config() {
         prism: {
           theme: themes.github,
           darkTheme: themes.vsDark,
-          additionalLanguages: ["yaml", "json", "bash", "python", "git"]
+          additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git'],
         },
         colorMode: {
           defaultMode: 'light',
@@ -505,7 +505,7 @@ async function config() {
       ],
       // redirect plugin start
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/doc-enhanced-plugin'),
 
         {
           id: 'university',
@@ -518,7 +518,7 @@ async function config() {
         },
       ],
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/doc-enhanced-plugin'),
 
         {
           id: 'community',
@@ -531,7 +531,7 @@ async function config() {
         },
       ],
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/doc-enhanced-plugin'),
         {
           id: 'kb',
           path: 'kb',
@@ -544,7 +544,7 @@ async function config() {
       ],
 
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/doc-enhanced-plugin'),
         {
           id: 'docs1',
           path: 'docs',
@@ -572,7 +572,7 @@ async function config() {
         },
       ],
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/doc-enhanced-plugin'),
         {
           id: 'roadmap',
           path: 'roadmap',
