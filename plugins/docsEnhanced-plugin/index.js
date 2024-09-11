@@ -58,7 +58,9 @@ async function docsPluginEnhanced(context, options) {
           // console.log(htmlFilePath);
           if (fs.existsSync(htmlFilePath)) {
             let htmlContent = fs.readFileSync(htmlFilePath, 'utf-8');
-            const canonicalTag = `<link rel="canonical" href="${frontMatter.canonical_url}" />`;
+            const canonicalTag = `<link rel="canonical" href="${
+              frontMatter.canonical_url || permalink
+            }" />`;
 
             htmlContent = htmlContent.replace(
               /<\/head>/i,
