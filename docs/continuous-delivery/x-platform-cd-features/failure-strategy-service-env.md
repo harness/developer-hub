@@ -31,7 +31,7 @@ The following failure strategies will be supported for Service and Environment s
 ## Examples covering failure strategy for Service and Infrastructure
 
 :::info note
-The Service and Infrastructure step does not have its own specific failure strategy. Instead, it inherits the failure strategy defined at the stage level. This means that any failure actions configured for the stage will apply to the Service step as well.
+The Service and Infrastructure step does not support failure strategy configuration and rather inherits. This means that any failure actions configured for the stage will apply to the Service step as well.
 :::
 
 ### Retry Service Step
