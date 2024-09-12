@@ -2,6 +2,7 @@
 title: Run your first chaos experiment
 description: Run a chaos experiment on Kubernetes for the first time.
 sidebar_position: 2
+canonical_url: https://www.harness.io/blog/chaos-engineering
 redirect_from:
   - /tutorials/chaos-experiments/first-chaos-engineering
 ---

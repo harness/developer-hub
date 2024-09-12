@@ -2,6 +2,7 @@
 title: Chaos Experiments
 sidebar_position: 1
 description: Configure rules to receive alerts for your chaos experiments.
+canonical_url: https://www.harness.io/blog/continuous-resilience
 redirect_from:
 - /docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments
 - /docs/chaos-engineering/configure-chaos-experiments/experiments/resilience-score

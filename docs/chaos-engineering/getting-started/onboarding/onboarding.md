@@ -1,6 +1,7 @@
 ---
 title: Overview
 sidebar_position: 3
+canonical_url: https://www.harness.io/blog/get-started-with-harness-chaos-engineering-free-plan
 redirect_from:
     - /docs/chaos-engineering/onboarding/hce-onboarding
 ---

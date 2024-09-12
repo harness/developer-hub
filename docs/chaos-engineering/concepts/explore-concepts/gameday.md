@@ -1,6 +1,7 @@
 ---
 id: GameDay
 sidebar_position: 25
+canonical_url: https://www.harness.io/blog/chaos-engineering
 title: GameDay
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/gameday/introduction-to-gameday

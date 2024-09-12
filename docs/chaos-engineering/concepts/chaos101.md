@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Chaos101
+canonical_url: https://www.harness.io/blog/chaos-engineering
 description: All you need to know about chaos engineering
 redirect_from:
 - /docs/chaos-engineering/get-started/introduction-to-chaos-module

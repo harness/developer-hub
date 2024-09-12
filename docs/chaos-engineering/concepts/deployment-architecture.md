@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: Deployment Architecture
 description: Deployment architecture of Harness Chaos Engineering
+canonical_url: https://www.harness.io/blog/automating-kubernetes-resource-discovery-and-chaos-experiment-creation
 redirect_from:
 - /docs/chaos-engineering/get-started/key-concepts
 - /docs/chaos-engineering/architecture-and-security/architecture/components
