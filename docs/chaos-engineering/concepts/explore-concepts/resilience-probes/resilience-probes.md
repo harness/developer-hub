@@ -4,6 +4,7 @@ sidebar_position: 1
 title: Overview
 redirect_from:
 - /docs/chaos-engineering/features/resilience-probes/overview
+- /docs/chaos-engineering/features/resilience-probes/types/
 ---
 
 This topic introduces you to resilience probes, their importance, types, and generic properties.

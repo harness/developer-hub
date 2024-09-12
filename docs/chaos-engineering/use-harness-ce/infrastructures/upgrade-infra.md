@@ -3,7 +3,8 @@ title: Upgrade chaos infrastructure
 sidebar_position: 5
 description: Guide to upgrade your chaos infrastructure
 redirect_from:
-	- /docs/chaos-engineering/chaos-infrastructure/upgrade-infra
+- /docs/chaos-engineering/chaos-infrastructure/upgrade-infra
+- /docs/chaos-engineering/features/chaos-infrastructure/upgrade-infra/
 ---
 
 If a HCE release is not backward compatible, upgrade your chaos infrastructure to ensure you can execute all experiments smoothly. This applies only to releases that have breaking changes, which will be clearly indicated in [release notes](/release-notes/chaos-engineering).
