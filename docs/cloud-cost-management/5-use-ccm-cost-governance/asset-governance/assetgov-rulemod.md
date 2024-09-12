@@ -15,7 +15,6 @@ Harness offers controls on modification of rule modification and enforcement.  I
 
 1. Locate the rule that you would like to modify, by searching the asset
 2. Click on the `vertical ellipses` and select `Clone`
-[!](./static/governancerules-clone.png)
 3. Modify the values in rules as required.  Rename the rule if necessary
 4. Validate the rule, and test Input.  
 5. Click on Save
