@@ -61,8 +61,6 @@ async function docsPluginEnhanced(context, options) {
           const canonicalTag = `<link rel="canonical" href="${
             frontMatter.canonical_url || "https://developer.harness.io"+permalink
           }" />`;
-          console.log(permalink);
-
           htmlContent = htmlContent.replace(
             /<\/head>/i,
             `  ${canonicalTag}\n</head>`
