@@ -3,6 +3,7 @@ title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 date: 2024-09-09T22:00
 sidebar_position: 6
+canonical_url: https://www.harness.io/blog/cloud-cost-management-tools
 ---
 
 import Tabs from '@theme/Tabs';
