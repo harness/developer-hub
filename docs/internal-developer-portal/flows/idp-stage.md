@@ -184,6 +184,8 @@ In the example provided for this step we have used pipeline variables as input f
 
 :::
 
+
+
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
@@ -198,6 +200,43 @@ Select the repository type in which your template is stored, which could be publ
 In case it's **Private** make sure you have added the **gitclone step** and the **path for template** should be the **Clone Directory** added in **gitclone step**
 
 In case of public templates you just need to add the public URL of the template path stored in your git provider. eg `https://github.com/devesh-harness/test-cookicutter`
+
+:::
+
+In case you have your own cookiecutter template, make sure the directory structure in the repository should be as follows
+
+```sh
+cookiecutter-something/
+├── {{ cookiecutter.project_name }}/  <--------- Project template
+│   └── ...
+├── blah.txt                      <--------- Non-templated files/dirs
+│                                            go outside
+│
+└── cookiecutter.json             <--------- Prompts & default values
+```
+
+You must have:
+
+- A `cookiecutter.json` file.
+
+- A `{{ cookiecutter.project_name }}/` directory, where `project_name` is defined in your `cookiecutter.json`.
+
+Beyond that, you can have whatever files/directories you want.
+
+:::info
+ 
+Cookiecutter runs only on the **Project Template** and use values mentioned in `cookiecutter.json`, hence when you add it on git it's suggested to have **one cookiecutter template per repository** with the `cookiecutter.json` on the root. Also in case you don't want to render a file on the execution of cookiecuuter template but that file is inside your Project Template, add it under `_copy_without_render` key in your `cookiecutter.json` 
+
+```json
+{
+    "project_slug": "sample",
+    "_copy_without_render": [
+        "*.html",
+        "*not_rendered_dir",
+        "rendered_dir/not_rendered_file.ini"
+    ]
+}
+```
 
 :::
 
@@ -236,6 +275,8 @@ Provide the input required the template in terms of key value pairs in this step
 
 </TabItem>
 </Tabs>
+
+
 
 
 ### 3. Create Repo
