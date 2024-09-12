@@ -6,6 +6,7 @@ helpdocs_topic_id: ardf4nbvcy
 helpdocs_category_id: id0hnxv6sg
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/dashboarding-data-visualization
 ---
 
 The Dashboard allows you to organize, explore, and present structured data logically. You can use this data to improve deployments and inform operations and business decisions.

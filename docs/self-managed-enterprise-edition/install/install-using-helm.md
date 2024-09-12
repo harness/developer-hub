@@ -13,6 +13,7 @@ redirect_from:
   - /docs/self-managed-enterprise-edition/deploy-with-kots/kubernetes-cluster-on-prem-infrastructure-requirements
   - /docs/self-managed-enterprise-edition/deploy-with-kots/kubernetes-cluster-on-prem-kubernetes-cluster-setup
   - /docs/self-managed-enterprise-edition/deploy-with-kots/kubernetes-cluster-self-managed-add-ingress-controller-service-annotations
+canonical_url: https://www.harness.io/blog/getting-started-with-helm
 ---
 
 import Tabs from '@theme/Tabs';

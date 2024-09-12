@@ -5,6 +5,7 @@ sidebar_position: 20
 redirect_from:
   - /docs/platform/get-started/pl-subscription-mgmt
   - /docs/platform/get-started/subscriptions
+canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 
 import Manage from '/docs/platform/shared/subscription-manage.md';
