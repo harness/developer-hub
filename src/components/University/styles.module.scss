@@ -826,6 +826,12 @@
   background-size: 35%;
 }
 
+.certificationsIACM {
+  background-image: url(/img/cert_iacm_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
+}
+
 .certificationsCE {
   background-image: url(/img/cert_ce_bg.svg);
 }
@@ -1215,6 +1221,14 @@
     }
   }
 
+  .certificationsIACM {
+    .hero {
+      .right {
+        background-image: url(/img/cert_iacm_bg.svg);
+      }
+    }
+  }
+
   .certificationsSEI {
     .hero {
       .right {
@@ -1378,6 +1392,14 @@
     .hero {
       .right {
         background-image: url(/img/cert_idp_bg.svg);
+      }
+    }
+  }
+
+  certificationsIACM {
+    .hero {
+      .right {
+        background-image: url(/img/cert_iacm_bg.svg);
       }
     }
   }
