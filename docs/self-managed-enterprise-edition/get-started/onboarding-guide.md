@@ -79,7 +79,7 @@ To get started with Harness Self-Managed Enterprise Edition, go to the following
 * Harness CD: [Continuous Delivery (CD) key concepts](../../continuous-delivery/get-started/key-concepts.md).
 * Harness FF: [Feature Flag (FF) onboarding guide](/docs/feature-flags/get-started/onboarding-guide).
 * Harness STO: [Security Testing Orchestration (STO) overview](../../security-testing-orchestration/get-started/overview.md).
-* Harness Chaos Engineering: [Get started with Harness Chaos Engineering (CE)](/docs/category/get-started-with-hce).
+* Harness Chaos Engineering: [Get started with Harness Chaos Engineering (CE)](/docs/chaos-engineering/concepts/chaos101).
 
 ### Self-Managed Enterprise Edition Release cadence
 Harness releases Self-Managed Enterprise Edition on a monthly basis. Additionally, periodic hot-fixes are released as needed.
