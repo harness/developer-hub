@@ -9,6 +9,13 @@ sidebar_position: 6
 Now that you have [added your Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component) in the Catalog, we need to add the documentation. By default, the **Docs** tab in your catalog does not include documentation for a new software component. However, you can quickly publish Markdown documentation to the **Docs** tab.
 
 
+:::info
+
+Techdocs is currently not supported with Harness Code Repo Integration
+
+:::
+
+
 ![](static/docs-empty.png)
 
 

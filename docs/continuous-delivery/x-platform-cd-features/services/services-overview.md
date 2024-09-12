@@ -87,4 +87,3 @@ If you want to restrict a user or user group to deploy to a specific environment
 ## Deleting a Service in Harness
 
 For information on deleting services in Harness, go to **Deleting a Service in Harness** in [Service-based licensing and usage for CD](/docs/continuous-delivery/get-started/service-licensing-for-cd/).
-
