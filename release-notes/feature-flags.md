@@ -50,6 +50,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 **New features and enhancements**:
  - Bumped FF React SDK to 2.2.0. (FFM-11972)
 
+### Ruby SDK
+
+#### Version 1.3.2
+
+**Fixed Issues**:
+ - No longer ships `rake`, `minitest` and `standard` as dependencies. (FFM-11995)
+
 ### Relay Proxy
 
 #### Version 2.0.4
