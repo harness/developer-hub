@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-09-05T18:19:25
+date: 2024-09-12T18:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,9 +15,16 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: September 05, 2024
+#### Last updated: September 12, 2024
 
 ## September 2024
+
+### Erlang SDK
+
+#### Version 3.0.1
+
+**Fixed Issues**:
+ - Fixed an issue where a flag or target group change would not be stored with the `Outdated` error. 
 
 ### Javascript Client SDK
 
