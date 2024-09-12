@@ -53,21 +53,24 @@ async function docsPluginEnhanced(context, options) {
       docs.map((post) => {
         const { permalink, frontMatter, source } = post;
         const { title, redirect_from } = frontMatter;
-        if (frontMatter.canonical_url) {
-          const htmlFilePath = path.join(outDir, permalink, 'index.html');
-          // console.log(htmlFilePath);
-          if (fs.existsSync(htmlFilePath)) {
-            let htmlContent = fs.readFileSync(htmlFilePath, 'utf-8');
-            const canonicalTag = `<link rel="canonical" href="${frontMatter.canonical_url}" />`;
 
-            htmlContent = htmlContent.replace(
-              /<\/head>/i,
-              `  ${canonicalTag}\n</head>`
-            );
+        const htmlFilePath = path.join(outDir, permalink, 'index.html');
+      
+        if (fs.existsSync(htmlFilePath)) {
+          let htmlContent = fs.readFileSync(htmlFilePath, 'utf-8');
+          const canonicalTag = `<link rel="canonical" href="${
+            frontMatter.canonical_url || "https://developer.harness.io"+permalink
+          }" />`;
+          console.log(permalink);
 
-            fs.writeFileSync(htmlFilePath, htmlContent, 'utf-8');
-          }
+          htmlContent = htmlContent.replace(
+            /<\/head>/i,
+            `  ${canonicalTag}\n</head>`
+          );
+
+          fs.writeFileSync(htmlFilePath, htmlContent, 'utf-8');
         }
+
         if (redirect_from) {
           if (Array.isArray(redirect_from)) {
             redirect_from.forEach((al) => {
