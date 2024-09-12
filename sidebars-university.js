@@ -73,6 +73,13 @@ const sidebars = {
           id: "idp",
            className:"sidebar-idp"
         },
+         //iacm
+         {
+          type: "doc",
+          label: "Infrastructure as Code Management",
+          id: "iacm",
+           className:"sidebar-iacm"
+        },
         //vILT
         {
           type: "link",
