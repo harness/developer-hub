@@ -71,7 +71,7 @@ $ kubectl apply -f harness-chaos-enable.yml
 
 ### Environment variable and secret usage references in source mode of command probe
 
-You can use secrets and environment variables in the [**source mode**](/docs/chaos-engineering/features/resilience-probes/cmd-probe#source-mode) of the command probe using the manifest in the following manner:
+You can use secrets and environment variables in the [**source mode**](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/cmd-probe) of the command probe using the manifest in the following manner:
 
 ```yaml
 source:
@@ -91,7 +91,7 @@ source:
 
 ### Memory stress fault stressng flag usage
 
-When a memory stress fault (such as [Linux memory stress](/docs/chaos-engineering/chaos-faults/linux/linux-memory-stress) or [Linux CPU stress](/docs/chaos-engineering/chaos-faults/linux/linux-cpu-stress)) is executed, the fault utilizes all of the available resources in the target system, thereby simulating an out of memory scenario.
+When a memory stress fault (such as [Linux memory stress](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-memory-stress) or [Linux CPU stress](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-cpu-stress)) is executed, the fault utilizes all of the available resources in the target system, thereby simulating an out of memory scenario.
 You can use another fault parameter, `stressNGFlags` to provide flexibility in the parameters passed to the VM.
 
 #### Workaround
@@ -137,7 +137,7 @@ The `--vm-populate` in the above manifest populates the memory, thereby stressin
 
 ### Executing an experiment moves it to a QUEUED state
 
-When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/components#20-chaos-manager) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/architecture-and-security/architecture/components#components-common-to-all-chaos-infrastructure).
+When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/concepts/chaos101#chaos-manager) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/concepts/chaos101#components-common-to-all-chaos-infrastructure).
 
 It could be due to a variety of reasons, such as:
 
@@ -345,4 +345,4 @@ powershell -Command "& { [Net.ServicePointManager]::SecurityProtocol = [Net.Secu
 
 This modification forces PowerShell to use TLS 1.2 for secure connections, thereby resolving the SSL/TLS issue.
 
-For further assistance, please refer to the [documentation](/docs/chaos-engineering/chaos-faults/windows) or contact [Harness Support](mailto:support@harness.io).
+For further assistance, please refer to the [documentation](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows) or contact [Harness Support](mailto:support@harness.io).

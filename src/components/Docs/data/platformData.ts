@@ -35,7 +35,7 @@ export const docsCards: CardSections = [
       {
         title: "Terraform Provider",
         module: MODULES.platform,
-        description: "Automate infrastucture using Terraform Provider.",
+        description: "Automate infrastructure using Terraform Provider.",
         link: "/docs/category/terraform-provider",
       },
     ],
@@ -48,7 +48,7 @@ export const docsCards: CardSections = [
         title: "CE",
         module: MODULES.ce,
         description: "Chaos Engineering onboarding guides",
-        link: "/docs/chaos-engineering/onboarding/hce-onboarding",
+        link: "/docs/chaos-engineering/getting-started/onboarding/",
       },
       {
         title: "CCM",
