@@ -16,6 +16,21 @@ To configure an IaCM workspace and create pipelines, you must have the following
 - An active cloud provider account
 - A Git repository
 
+## OpenTofu and Terraform
+:::info supported iac frameworks
+Harness IaCM currently supports integration with **OpenTofu** <HarnessApiData
+    query="https://app.harness.io/gateway/iacm/api/provisioners/supported/opentofu"
+    token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
+    fallback=""
+    parse='.[-1] | "(up to v\(.))"'>
+</HarnessApiData> and **Terraform** <HarnessApiData
+    query="https://app.harness.io/gateway/iacm/api/provisioners/supported/terraform"
+    token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
+    fallback=""
+    parse='.[-1] | "(up to v\(.))"'>
+</HarnessApiData> frameworks.
+:::
+
 ## Supported Workspace Connectors
 ### Cloud Providers
 - **AWS**: Connect via your AWS account to leverage extensive IaCM features.
@@ -33,18 +48,7 @@ Harness IaCM supports the following source providers for seamless code managemen
 
 Git options include `Latest from Branch` (specifying a branch) and `Git Tag` fetch types. Users can set a configuration file path, such as a terraform (.tf) file.
 
-## Supported IaC Frameworks
-Harness IaCM currently supports integration with **OpenTofu** <HarnessApiData
-    query="https://app.harness.io/gateway/iacm/api/provisioners/supported/opentofu"
-    token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
-    fallback=""
-    parse='.[-1] | "(up to v\(.))"'>
-</HarnessApiData> and **Terraform** <HarnessApiData
-    query="https://app.harness.io/gateway/iacm/api/provisioners/supported/terraform"
-    token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
-    fallback=""
-    parse='.[-1] | "(up to v\(.))"'>
-</HarnessApiData> frameworks.
+
  
 ## IaCM Feature Flags
 Some Harness IaCM features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience.

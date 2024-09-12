@@ -10,6 +10,12 @@ export const docsCards: CardSections = [
     description: "",
     list: [
       {
+        title: "What's supported",
+        module: MODULES.iacm,
+        description: "Find details on supported Infrastructure as Code tools, providers and frameworks including frameworks like OpenTofu and Terraform.",
+        link: "/docs/infra-as-code-management/whats-supported",
+      },
+      {
         title: "Onboarding",
         module: MODULES.iacm,
         description: "Get onboarded with Harness Infrastructure as Code Management.",
