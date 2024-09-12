@@ -4,6 +4,7 @@ description: Configure Harness pipeline steps for GitOps.
 sidebar_position: 30
 redirect_from:
   - /docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps
+canonical_url: https://www.harness.io/blog/gitops-the-push-and-pull-approach
 ---
 
 This topic shows you how to configure your Harness GitOps pipeline steps. Few of these steps are specifically meant to be used with [PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics.md), but others can be used directly in your GitOps pipeline stages. 
