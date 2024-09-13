@@ -6,6 +6,7 @@ redirect_from:
 
 This section describes the steps you can follow to create a secret to execute GCP chaos experiments.
 
+
 ### Step 1: Create a service account
 
 Create a service account to derive the authentication secret to run experiments on GCP. To create the service account and secret:
