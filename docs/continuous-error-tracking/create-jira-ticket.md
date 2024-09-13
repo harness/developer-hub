@@ -2,6 +2,7 @@
 title: Create a Jira ticket from an event
 description: Create a Jira ticket for an event directly from CET.
 sidebar_position: 4
+canonical_url: https://www.harness.io/blog/atlassian-jira-ticketing-support
 ---
 
 You can create a Jira ticket for an issue from the Events page. This helps you manage the issues directly from the Continuous Error Tracking.

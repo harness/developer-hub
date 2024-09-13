@@ -3,6 +3,7 @@ title: AWS CDK provisioning
 description: Provision infra using familiar programming languages with AWS CDK.
 sidebar_position: 7
 sidebar_label: AWS CDK
+canonical_url: https://www.harness.io/blog/ci-cd-pipelines-for-aws
 ---
 
 AWS Cloud Development Kit (AWS CDK), is an open-source software development framework that allows developers to provision AWS infrastructure resources using familiar programming languages, such as Go, Python, Java, C#, etc. CDK simplifies infrastructure as code (IaC) by abstracting away many of the low-level details and providing a higher-level, programmatic approach.

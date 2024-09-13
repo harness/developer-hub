@@ -2,7 +2,9 @@
 title: Harness Deployment Strategies FAQs
 description: Frequently asked questions about Harness deployment strategies.
 sidebar_position: 10
+canonical_url: https://www.harness.io/blog/blue-green-canary-deployment-strategies
 ---
+
 This article addresses some frequently asked questions about Harness deployment strategies.
 
 ### How to use FOR condition while using JEXL condition for triggers?

@@ -9,6 +9,7 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/gitops/install-a-harness-git-ops-agent
   - /docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent
+canonical_url: https://www.harness.io/blog/gitops-benefits
 ---
 
 This topic describes how to install a Harness GitOps Agent, a worker process that runs in your environment and performs GitOps tasks.

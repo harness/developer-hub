@@ -2,6 +2,7 @@
 title: Use Argo Rollouts
 description: Learn how to use Argo Rollouts with Harness GitOps.
 sidebar_position: 3
+canonical_url: https://www.harness.io/blog/argo-cd-for-kubernetes
 ---
 
 
