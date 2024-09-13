@@ -20,6 +20,41 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+## September 2024
+
+### Version 1.46
+
+<!-- 2024-09-09 -->
+
+#### New features and enhancements
+
+- Added support for setting Topology Spread Constraints to Kubernetes build pods. A new property, `podSpecOverlay`, has been introduced in the Kubernetes infrastructure properties within the CI stage, allowing users to apply additional settings to the build pod. Currently, this field supports specifying `topologySpreadConstraint`, with plans to extend support for additional configurations in the future. (CI-14033)
+
+- Added the ability to exclude connectors from the preflight check. This can be configured in the connector YAML by setting the property `ignoreTestConnection` to `true`. This feature is currently gated behind the feature flag `CI_IGNORE_TEST_CONNECTION`. (CI-13806, ZD-65275,65643)
+
+### Version 1.45
+
+<!-- 2024-09-02 -->
+
+#### Early Access feature
+
+- Added support for automatic setup of Build Intelligence for builds running in Harness Cloud. Customers can set the stage property `buildIntelligence` to 'true' in order to use this feature. Once enabled, Harness CI will automatically optimize Run and Test steps that are running Bazel or Gradle commands, to reduce build time. `CI_ENABLE_BUILD_CACHE_HOSTED_VM` feature flag is needed to use this feature (CI-12969)
+
+#### New features and enhancements
+
+- Cache Intelligence was enhanced with support for C# . Customers using C# applications can now leverage automatic dependencies caching with Cache Intelligence. (CI-12672)
+
+#### Fixed issues
+
+- Fixed an issue where time savings due to Harness CI intelligence feature, didn't populate properly when used in the parallel CI stages. (CI-13993)
+
+- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature flag must be enabled whenever a base image connector is used (CI-13924)
+
+- Bitbucket has in issue in their api does not support the character slash ( / ) [https://jira.atlassian.com/browse/BCLOUD-20223](https://jira.atlassian.com/browse/BCLOUD-20223)
+This can be worked around by using query parameters in the Bitbucket api [https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww](https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww) (CI-13826)
+
+- The contrast of the select repository and other areas of the UI was very low in the dark theme. The contrast has been improved for a better UI experience. (CI-13530)
+
 ## August 2024
 
 ### Version 1.44
