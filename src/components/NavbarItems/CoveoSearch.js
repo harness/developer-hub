@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Head from '@docusaurus/Head';
 import './CoveoSearch.scss';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
 
 // Space => keyCode: 32
 const RESP_BREAK_POINT = 996;
@@ -25,9 +25,6 @@ const CoveoSearch = () => {
     }
   };
 
-  const {
-    siteConfig: { customFields },
-  } = useDocusaurusContext();
 
   useEffect(() => {
     checkCoveo();
