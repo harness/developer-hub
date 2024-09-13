@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/feature-flags/ff-creating-flag/create-a-project
+canonical_url: https://www.harness.io/blog/benefits-of-feature-flags
 ---
 
 
