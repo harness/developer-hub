@@ -117,15 +117,12 @@ Probe status is the single source of truth when executing a chaos experiment. Th
 - **RUNNING**: A probe status is considered 'running' when the probe is currently in execution.
 - **N/A**: A probe status is in the 'N/A' state when the result of the fault could not be determined.
 
-:::info notes
-- ChaosHub support for resilience probes is not available yet.
-:::
+### Delete resilience probes
 
-### Force delete resilience probes
-
-- When you force delete a probe, it will not be available for use. You will lose the history of that probe, but experiment runs that used the probe will contain the history of the probe.
-- Once you delete a probe, information about the probe reference is also deleted from all the manifest references, that is, the probe is removed from the probeRef annotation. This ensures that the next possible run will not schedule the probe.
-Only when you **hard delete** a probe, you can reuse the name of that probe.
+You can delete a probe only after [disabling it](/docs/chaos-engineering/use-harness-ce/probes/use-probe#disable-a-probe). Go to Disable Probes for more information.
+- When you **Disable only**, you will lose the history of that probe, but experiment runs that used the probe will contain the history of the probe.
+- Once you **Bulk disable** a probe, information about the probe reference is also deleted from all the manifest references, that is, the probe is removed from the `probeRef` annotation. This ensures that the next possible run will not schedule the probe.
+- Only when you **hard delete** a probe, you can reuse the name of that probe.
 
 ### Resilience probes support
 Resilience probes are supported by the following features:
@@ -146,7 +143,6 @@ Resilience probes are supported by the following features:
 ### Image registry support
 - You can configure the image registry to be used with the default probes. If you haven't configured a probe yet, the experiment will use the default image registry.
 - HCE doesn't currently provide image registry support for default probes.
-
 
 :::info notes
 - **Legacy probes support (Backward compatibility)***: Users can still use legacy probes.

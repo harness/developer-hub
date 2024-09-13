@@ -24,7 +24,7 @@ Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. 
 - If you are a new customer, the feature flag is turned on by default and you will see the new flow of control in the resilience probes.
 :::
 
-## Create a Resilience Probe
+## Create a Resilience Probe from UI
 
 1. Select the **Chaos** module and navigate to **Resilience probes**. Click **New probe**.
 
@@ -46,73 +46,7 @@ Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. 
 If you are a first-time chaos module user or a Platform user who has not used resilience probes, you can create a resilience probe directly from the Chaos Studio drawer (from within an experiment). For this, you will see an option to add a system probe (which is a health check system probe) as a one-click button. This will not be present if you have configured at least one resilience probe.
 :::
 
-## Edit a Resilience Probe
-
-You can edit a resilience probe by navigating to the probe you wish to edit. Click the three vertical dot menu to the extreme right of the probe, and choose **Edit probe**. Modify the properties you wish to, and click **Save**.
-
-  ![edit](./static/use-probe/edit-probe.png)
-
-:::tip
-Resilience probe names act as unique identifiers for a probe, which means you can't edit them. If you manually add the name of a probe in the manifest, this same name should be entered in the annotation as ID.
-:::
-
-When you want to enter the probe name in the manifest (manually) as a probeRef annotation, follow the below format:
-
-```
-probeRef: '[{"probeID":"ID","mode":"SOT"}]'
-```
-Here, `ID` is the unique ID of your probe.
-
-This step is not required if you use the user interface.
-
-## Use a Resilience Probe
-
-1. Go to the chaos experiment for wish you wish to set up probe/s. Move to **probes** tab and click **+Select or Add new probes**.
-
-    ![nav](./static/use-probe/select-1.png)
-
-2. You can choose to [create a new probe](#create-a-resilience-probe) or add a probe that you created earlier.
-
-    ![create new](./static/use-probe/select-new-2.png)
-
-3. Once you select a probe, click **Add to Fault** to associate the resilience probe with a chaos fault.
-
-    ![add to fault](./static/use-probe/add-to-fault-3.png)
-
-4. Click **Apply changes** or continue to add or create probes based on your requirement.
-
-    ![add more](./static/use-probe/add-more-4.png)
-
-:::tip
-- Based on the type of probe you select, enter the values to set up the probe.
-
-	**You can:**
-	- Use any number of probes within a chaos experiment.
-	- Use the same probes for two faults within the same chaos experiment.
-	- Use Kubernetes-based probes for Kubernetes experiments.
-	- Use Linux-based probes for Linux experiments.
-
-	**You can't:**
-	- Repeat the same probe multiple times in the same fault in the same experiment.
-:::
-
-## Add probes to ChaosHub
-
-Adding probes to ChaosHub helps you to templatize the resilience probe. With this, you can import the probes directly from ChaosHub and reference it in a chaos experiment.
-
-1. To add a resilience probe to ChaosHub, go to **Resilience Probes** tab. Go to the resilience probe that you want to add to ChaosHub and click the **:** button. Click **Push to ChaosHub**.
-
-  ![](./static/use-probe/push-to-hub.png)
-
-2. Choose the ChaosHub to which you want to add the probe, and click **Apply**.
-
-  ![](./static/use-probe/apply-hub.png)
-
-3. Click **Save**.
-
-  ![](./static/use-probe/save-to-hub.png)
-
-## Create probe using YAML
+## Create a Resilience Probe Using YAML
 
 The entire manifest is available as a YAML file, which can be accessed by switching to the YAML view in Chaos Studio. Below is a sample manifest for the pod delete fault.
 
@@ -172,3 +106,95 @@ The entire manifest is available as a YAML file, which can be accessed by switch
                   engineStatus: ""
                   experiments: null
 ```
+
+## Edit a Resilience Probe
+
+You can edit a resilience probe by navigating to the probe you wish to edit. Click the three vertical dot menu to the extreme right of the probe, and choose **Edit probe**. Modify the properties you wish to, and click **Save**.
+
+  ![edit](./static/use-probe/edit-probe.png)
+
+:::tip
+Resilience probe names act as unique identifiers for a probe, which means you can't edit them. If you manually add the name of a probe in the manifest, this same name should be entered in the annotation as ID.
+:::
+
+When you want to enter the probe name in the manifest (manually) as a probeRef annotation, follow the below format:
+
+```
+probeRef: '[{"probeID":"ID","mode":"SOT"}]'
+```
+Here, `ID` is the unique ID of your probe.
+
+This step is not required if you use the user interface.
+
+## Enable a Probe
+
+You need to enable a probe before using it. Go to **Chaos** module, select **Resilience Probes** and select the **:** icon of the probe to enable.
+
+1. Select **Enable**.
+
+  ![](./static/use-probe/enable-1.png)
+
+2. Click **Confirm**.
+
+  ![](./static/use-probe/enable-2.png)
+
+3. Choose between **Bulk Enable** and **Enable Only**. If you choose **Bulk Enable**, this option modifies the entire manifest and references to the probe. If you choose **Enable Only**, it enables the probe functionality without affecting the manifest.
+
+  ![](./static/use-probe/enable-3.png)
+
+:::tip
+By default, **Enable Only** is applied in case you close the modal when selecting between the options **Bulk Enable** and **Enable Only**.
+:::
+
+## Use a Resilience Probe
+
+Before using a probe, [enable it](#enable-a-probe).
+1. Go to the chaos experiment for wish you wish to set up probe/s. Move to **probes** tab and click **+Select or Add new probes**.
+
+    ![nav](./static/use-probe/select-1.png)
+
+2. You can choose to [create a new probe](#create-a-resilience-probe) or add a probe that you created earlier.
+
+    ![create new](./static/use-probe/select-new-2.png)
+
+3. Once you select a probe, click **Add to Fault** to associate the resilience probe with a chaos fault.
+
+    ![add to fault](./static/use-probe/add-to-fault-3.png)
+
+4. Click **Apply changes** or continue to add or create probes based on your requirement.
+
+    ![add more](./static/use-probe/add-more-4.png)
+
+:::tip
+- Based on the type of probe you select, enter the values to set up the probe.
+
+	**You can:**
+	- Use any number of probes within a chaos experiment.
+	- Use the same probes for two faults within the same chaos experiment.
+	- Use Kubernetes-based probes for Kubernetes experiments.
+	- Use Linux-based probes for Linux experiments.
+
+	**You can't:**
+	- Repeat the same probe multiple times in the same fault in the same experiment.
+:::
+
+## Add Probes to ChaosHub
+
+Adding probes to ChaosHub helps you to templatize the resilience probe. With this, you can import the probes directly from ChaosHub and reference it in a chaos experiment.
+
+1. To add a resilience probe to ChaosHub, go to **Resilience Probes** tab. Go to the resilience probe that you want to add to ChaosHub and click the **:** button. Click **Push to ChaosHub**.
+
+  ![](./static/use-probe/push-to-hub.png)
+
+2. Choose the ChaosHub to which you want to add the probe, and click **Apply**.
+
+  ![](./static/use-probe/apply-hub.png)
+
+3. Click **Save**.
+
+  ![](./static/use-probe/save-to-hub.png)
+
+
+## Disable a Probe
+
+You can follow the steps similar to that as [Enable a Probe](#enable-a-probe), except that you select the **Disable** option. You can delete a probe only after you disable it.
