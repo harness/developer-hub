@@ -4,6 +4,7 @@ title: Tutorial - Pipeline Triggers
 description: Tutorial to get started with Triggers in Harness Pipelines.
 redirect_from:
   - /tutorials/cd-pipelines/trigger
+canonical_url: https://www.harness.io/blog/automate-your-ci-cd-pipeline-using-triggers
 ---
 
 This tutorial demonstrates how to use triggers by creating a Docker Registry Artifact trigger for a Harness CD pipeline.

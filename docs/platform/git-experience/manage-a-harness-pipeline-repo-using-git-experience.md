@@ -6,6 +6,7 @@ helpdocs_topic_id: 5nz7j3e1yc
 helpdocs_category_id: rv2jo2hoiy
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/github-actions-reusable-pipelines
 ---
 
 Git Experience enables you to store and manage your Harness pipelines and input sets as YAML definition files in your Git repos. You can store your Harness definitions in the same repo with your code. You can also store your Harness definitions in a separate repo from your codebase.

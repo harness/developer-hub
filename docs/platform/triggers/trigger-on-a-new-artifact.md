@@ -6,6 +6,7 @@ helpdocs_topic_id: c1eskrgngf
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/automate-ci-cd-effortlessly-with-harness-code-repository-trigger
 ---
 
 import Tabs from '@theme/Tabs';
