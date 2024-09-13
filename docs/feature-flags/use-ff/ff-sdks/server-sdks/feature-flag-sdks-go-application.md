@@ -6,7 +6,7 @@ helpdocs_topic_id: 4c8wljx60w
 helpdocs_category_id: kkiqy1f6d7
 helpdocs_is_private: false
 helpdocs_is_published: true
-redirect_from: 
+redirect_from:
   - /docs/feature-flags/ff-sdks/server-sdks/feature-flag-sdks-go-application
 canonical_url: https://www.harness.io/blog/erlang-elixir-sdk-now-available-harness-feature-flags
 ---
