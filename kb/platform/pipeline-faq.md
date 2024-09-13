@@ -729,3 +729,27 @@ Discrepancies arise when the YAML file in any Git branch has different values co
 When you make updates to the pipeline via the Harness UI, these changes are saved both to the Harness DB and to the YAML file in the selected Git branch. However, other branches in your repository may still carry outdated YAML files with old values.
 
 To maintain consistency across all branches and interfaces, ensure that any manual changes to the YAML in Git are synchronized with updates made in the Harness UI. It’s also a good practice to regularly update all relevant branches to keep them aligned with the Harness DB.
+
+#### We are getting error Expression provided did not resolve into a list of string/objects, how can we resolve this.
+
+The error Expression provided did not resolve into a list of string/object suggest that the pipeline was unable to iterate because it was expecting list of string. You will need to do a split on the expression :
+
+``` <+pipeline.stages.variable>.split(",") ```
+
+#### What is thr expression to get most recent commit from trigger for github payload
+
+You can use :
+``` <+trigger.payload.head_commit.message> ```
+
+#### We have a vault connector which shows in successful state though the secret has expired, what could be the reason
+
+The token resides in the delegate and is cached for the duration that is one percent less than the time-to-live (TTL) of the token to prevent the generation of a new token for each request for improved performance. Hence the connector was showing in connected state. More on how the token is generated and TTL can be referred [here] (https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault/#option-app-role)
+
+#### How can we get input set YAML in pipeline 
+
+You can fetch input set YAML using expression:
+``` <+inputSet> ```
+
+#### We store our secret in self hosting vault and able to create harness secret reference to that. But it seems not possible with harness SecretFile.
+
+File secrets are only created as Inline secrets. Inline secrets deleted in Harness are also deleted from the external secrets manager. Harness recommends that you always back up these secrets
