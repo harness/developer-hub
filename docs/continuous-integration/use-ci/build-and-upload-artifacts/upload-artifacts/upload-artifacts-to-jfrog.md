@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog
+canonical_url: https://www.harness.io/blog/how-to-configure-your-builds-with-jfrog-artifactory-and-harness
 ---
 
 import Tabs from '@theme/Tabs';
