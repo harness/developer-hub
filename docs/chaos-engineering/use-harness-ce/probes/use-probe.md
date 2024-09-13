@@ -24,7 +24,7 @@ Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. 
 - If you are a new customer, the feature flag is turned on by default and you will see the new flow of control in the resilience probes.
 :::
 
-## Create a Resilience Probe
+## Create a Resilience Probe from UI
 
 1. Select the **Chaos** module and navigate to **Resilience probes**. Click **New probe**.
 
@@ -65,6 +65,26 @@ Here, `ID` is the unique ID of your probe.
 
 This step is not required if you use the user interface.
 
+## Enable a Probe
+
+1. Go to **Chaos** module, select **Resilience Probes** and select the **:** icon of the probe to enable. Select **Enable**.
+
+  ![](./static/use-probe/enable-1.png)
+
+2. Click **Confirm**.
+
+  ![](./static/use-probe/enable-2.png)
+
+3. Choose between **Bulk Enable** and **Enable Only**. If you choose **Bulk Enable**, this option modifies the entire manifest and references to the probe. If you choose **Enable Only**, it enables the probe functionality without affecting the manifest.
+
+  ![](./static/use-probe/enable-3.png)
+
+:::tip
+- By default, **Enable Only** is applied in case you close the modal when selecting between the options **Bulk Enable** and **Enable Only**.
+- You need to enable a probe if it is in the disabled state.
+- A probe is enabled by default.
+:::
+
 ## Use a Resilience Probe
 
 1. Go to the chaos experiment for wish you wish to set up probe/s. Move to **probes** tab and click **+Select or Add new probes**.
@@ -96,7 +116,7 @@ This step is not required if you use the user interface.
 	- Repeat the same probe multiple times in the same fault in the same experiment.
 :::
 
-## Add probes to ChaosHub
+## Add Probes to ChaosHub
 
 Adding probes to ChaosHub helps you to templatize the resilience probe. With this, you can import the probes directly from ChaosHub and reference it in a chaos experiment.
 
@@ -112,63 +132,7 @@ Adding probes to ChaosHub helps you to templatize the resilience probe. With thi
 
   ![](./static/use-probe/save-to-hub.png)
 
-## Create probe using YAML
 
-The entire manifest is available as a YAML file, which can be accessed by switching to the YAML view in Chaos Studio. Below is a sample manifest for the pod delete fault.
+## Disable a Probe
 
-```yaml
-- name: pod-cpu-hog-dqt
-      inputs:
-        artifacts:
-          - name: pod-cpu-hog-dqt
-            path: /tmp/chaosengine-pod-cpu-hog-dqt.yaml
-            raw:
-              data: |
-                apiVersion: litmuschaos.io/v1alpha1
-                kind: ChaosEngine
-                metadata:
-                  annotations:
-                    probeRef: '[{"mode":"Continuous","probeID":"cart-svc-availability-check"},{"mode":"Edge","probeID":"boutique-website-latency-check"},{"mode":"Edge","probeID":"cart-pods-status-checks"},{"mode":"EOT","probeID":"ping-google"}]'
-                  creationTimestamp: null
-                  generateName: pod-cpu-hog-dqt
-                  labels:
-                    context: pod-cpu-hog
-                    workflow_name: boutique-cart-cpu-hog
-                    workflow_run_id: '{{ workflow.uid }}'
-                  namespace: '{{workflow.parameters.adminModeNamespace}}'
-                spec:
-                  appinfo:
-                    appkind: deployment
-                    applabel: app=cartservice
-                    appns: boutique
-                  chaosServiceAccount: litmus-admin
-                  components:
-                    runner:
-                      resources: {}
-                  engineState: active
-                  experiments:
-                  - name: pod-cpu-hog
-                    spec:
-                      components:
-                        env:
-                        - name: TOTAL_CHAOS_DURATION
-                          value: "61"
-                        - name: CPU_CORES
-                          value: "2"
-                        - name: PODS_AFFECTED_PERC
-                          value: "100"
-                        - name: CONTAINER_RUNTIME
-                          value: containerd
-                        - name: SOCKET_PATH
-                          value: /run/containerd/containerd.sock
-                        resources: {}
-                        securityContext:
-                          containerSecurityContext: {}
-                          podSecurityContext: {}
-                        statusCheckTimeouts: {}
-                      rank: 0
-                  jobCleanUpPolicy: retain
-                status:
-                  engineStatus: ""
-                  experiments: null
-```
+You can follow the steps similar to that as [Enable a Probe](#enable-a-probe), except that you select the **Disable** option. You can delete a probe only after you disable it.
