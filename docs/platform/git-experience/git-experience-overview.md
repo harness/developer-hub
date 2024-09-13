@@ -147,6 +147,17 @@ You can now search for branches in a given repository with support for infinite 
 2. Please note that search in branch listing is only available while creating remote entities.
 :::
 
+### Supported Git Providers for Repo and Branch Listing
+
+| Git Provider | Repo Listing | Branch Listing
+| --- | --- | --- |
+| Github | Yes | No  |
+| Bitbucket SAAS | Yes | Yes |
+| Bitbucket Server | Yes  | Yes |
+| Azure | No | Yes |
+| Gitlab | Yes | Yes |
+| Github App | No | No |
+| Harness Code | Yes | Yes |
 
 ### Multiple branch support
 
