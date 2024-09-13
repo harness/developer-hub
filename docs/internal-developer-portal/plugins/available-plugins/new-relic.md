@@ -52,6 +52,8 @@ _No action required_
     4. Error Rate
     5. Instance Count
     6. Apdex Score
+  
+- Since the plugin shows all the data in a single view and is not related to any one particular service, a sidenav is more appropriate and is added by default than a tab.
  
 - The following configuration is set by default in **Layout** under **Sidenav Layout** and you do not need to change anything:
 
