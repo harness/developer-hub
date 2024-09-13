@@ -1,0 +1,9 @@
+{
+  "position": 7,
+  "label": "Use Harness CE",
+  "collapsible": "true",
+  "collapsed": "true",
+  "customProps": {
+    "description": "This section describes how you can Harness CE to improve the resilience of your application."
+  }
+}

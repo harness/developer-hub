@@ -6,6 +6,7 @@ helpdocs_topic_id: wzr5tz0ero
 helpdocs_category_id: 2yrql0zhj0
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/cloud-autostopping
 ---
 
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions. With AutoStopping Rules configured:

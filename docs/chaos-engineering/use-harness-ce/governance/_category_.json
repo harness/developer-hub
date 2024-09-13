@@ -1,0 +1,14 @@
+{
+  "position": 5,
+  "label": "Governance",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link":{
+      "type":"generated-index",
+      "title":"Governance in Harness CE",
+      "description": "Governance refers to the set of policies, rules, and processes that manage and control how chaos experiments are created, executed, and monitored. It ensures that chaos engineering practices are applied consistently, in a secured manner, and are in alignment with the compliance requirements, and best practices."
+   },
+  "customProps": {
+    "description": "Set of policies, rules, and processes that manage and control how chaos experiments are created, executed, and monitored."
+  }
+}

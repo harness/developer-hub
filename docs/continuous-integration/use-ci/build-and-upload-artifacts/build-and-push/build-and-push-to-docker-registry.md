@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings
+canonical_url: https://www.harness.io/blog/docker-multi-stage-build
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';

@@ -3,7 +3,8 @@ title: Run chaos experiments as Jenkins pipelines
 sidebar_position: 34
 description: Guide to run a chaos experiment as a Jenkins pipeline
 redirect_from:
-    - /tutorials/chaos-experiments/chaos-experiments-on-jenkins
+- /tutorials/chaos-experiments/chaos-experiments-on-jenkins
+- /docs/chaos-engineering/integrations/experiment-as-jenkins-pipeline
 ---
 
 This tutorial describes how to create chaos experiments using Harness Chaos Engineering (HCE) and run them in Jenkins pipelines. Chaos experiments in Harness are created the same way in the chaos engineering module, irrespective of where they are invoked from.
@@ -36,7 +37,7 @@ This tutorial describes how to create chaos experiments using Harness Chaos Engi
 
    :::tip Demo
 
-   Go to [Jenkins demo](https://github.com/ksatchit/hce-jenkins-integration-demo) for a sample configuration of the chaos launch script. You can include this script in the Jenkins configuration file. 
+   Go to [Jenkins demo](https://github.com/ksatchit/hce-jenkins-integration-demo) for a sample configuration of the chaos launch script. You can include this script in the Jenkins configuration file.
    This is a sample to include one single chaos experiment, but the same can be repeated so as to be included in multiple chaos experiments.
 
    :::
@@ -51,10 +52,10 @@ This tutorial describes how to create chaos experiments using Harness Chaos Engi
                     '''
                     script {
                         env.notify_id = sh(returnStdout: true, script: 'cat n_id.txt').trim()
-                    }   
-               }   
+                    }
+               }
            }
-        
+
            stage('Monitor Chaos Experiment') {
                steps {
                    sh '''
@@ -62,7 +63,7 @@ This tutorial describes how to create chaos experiments using Harness Chaos Engi
                    '''
                }
            }
-        
+
            stage('Verify Resilience Score') {
                steps {
                    sh '''
@@ -73,7 +74,7 @@ This tutorial describes how to create chaos experiments using Harness Chaos Engi
                     }
                }
            }
-        
+
            stage('Take Rollback Decision') {
                steps {
                    sh '''

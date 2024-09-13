@@ -4,6 +4,7 @@ description: Frequently asked questions about pipelines.
 sidebar_position: 4
 redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/pipeline-faq
+canonical_url: https://www.harness.io/blog/ci-cd-pipeline-as-code-with-harness
 ---
 
 <!--

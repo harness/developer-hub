@@ -17,10 +17,10 @@ export const ReferenceArchitecturesCards: CardSections = [
         link: "/kb/category/cloud-cost-management",
       },
       {
-        title: "Ansible",
+        title: "Delegate Architecture Best Practices",
         module: MODULES.platform,
-        description: "Get started with Ansible Reference Architecture.",
-        link: "/kb/reference-architectures/ansible",
+        description: "Design considerations for choosing the right Delegate Architecture",
+        link: "/kb/reference-architectures/platform/delegate_architecture_bestpractices",
       },
     ],
   },

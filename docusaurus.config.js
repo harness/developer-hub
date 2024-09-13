@@ -238,6 +238,10 @@ async function config() {
                   to: 'university/idp',
                 },
                 {
+                  label: 'Infrastructure as Code Management',
+                  to: 'university/iacm',
+                },
+                {
                   label: 'Virtual Instructor-Led Calendar',
                   to: 'https://university-registration.harness.io/calendar',
                 },

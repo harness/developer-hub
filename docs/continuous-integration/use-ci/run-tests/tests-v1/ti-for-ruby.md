@@ -4,6 +4,7 @@ description: Set up TI for Ruby programming language.
 sidebar_position: 40
 redirect_from:
   - /docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-ruby
+canonical_url: https://www.harness.io/blog/ci-ruby-test-intelligence
 ---
 
 import Tabs from '@theme/Tabs';

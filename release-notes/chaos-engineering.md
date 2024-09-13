@@ -69,7 +69,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### New features and enhancements
 
-- Adds a new Kubernetes pod fault, [pod IO mistake](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-mistake) that causes files to read or write an incorrect value. (CHAOS-5916)
+- Adds a new Kubernetes pod fault, [pod IO mistake](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-io-mistake) that causes files to read or write an incorrect value. (CHAOS-5916)
 
 - Adds proxy support for Windows chaos infrastructure. (CHAOS-5859)
 
@@ -103,16 +103,16 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - This release improves the advanced filter support for "headers", "methods", "queryParams", "destination_IPS", and "destination_Hosts" in the API faults. (CHAOS-5381)
 
-- Adds the unit support (milliseconds, seconds, minutes and hours) for latency parameters in the [pod API latency](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-block) faults. (CHAOS-5378)
+- Adds the unit support (milliseconds, seconds, minutes and hours) for latency parameters in the [pod API latency](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-block) faults. (CHAOS-5378)
 
-- Adds backend to GameDay V2. (CHAOS-5138)
+- Adds backend to GameDay. (CHAOS-5138)
 - Adds the following JVM chaos faults for Linux that target the JVM of a given Java process running on a Linux machine to inject faults.
-    - [JVM CPU stress](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-cpu-stress)
-    - [JVM memory stress](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-memory-stress)
-    - [JVM method latency](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-latency)
-    - [JVM method exception](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-exception)
-    - [JVM modify return](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-modify-return)
-    - [JVM trigger GC](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-trigger-gc) (CHAOS-4675)
+    - [JVM CPU stress](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-cpu-stress)
+    - [JVM memory stress](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-memory-stress)
+    - [JVM method latency](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-method-latency)
+    - [JVM method exception](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-method-exception)
+    - [JVM modify return](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-modify-return)
+    - [JVM trigger GC](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-trigger-gc) (CHAOS-4675)
 
 :::danger important upgrade instructions for chaos infrastructure
 - [Video tutorial to upgrade your chaos infrastructure to 1.38.x or higher](https://youtu.be/fAnsGqkcdkc)
@@ -142,7 +142,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Fixed an issue where the user could not set up or create a Datadog probe. (CHAOS-5440)
 
-- Fixed an issue where the [pod IO stress](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress) experiment incorrectly applied stress on the helper pod instead of the target container. (CHAOS-5416)
+- Fixed an issue where the [pod IO stress](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-io-stress) experiment incorrectly applied stress on the helper pod instead of the target container. (CHAOS-5416)
 
 ### Version 1.37.0
 
@@ -261,9 +261,9 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * Appropriate environment variables are added at relevant places to ensure that the self-managed platform (SMP) can be used with feature flags (FF). (CHAOS-3865)
 
-* The [SSH chaos experiment](/docs/chaos-engineering/chaos-faults/ssh/ssh-chaos) now supports an extended termination grace period, allowing for longer execution of abort scripts. (CHAOS-3748)
+* The [SSH chaos experiment](/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/ssh-chaos) now supports an extended termination grace period, allowing for longer execution of abort scripts. (CHAOS-3748)
 
-* This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/features/chaosguard/chaosguard-concepts#1-condition). (CHAOS-3254)
+* This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/concepts/explore-concepts/chaosguard#condition). (CHAOS-3254)
 
 #### Fixed issues
 
@@ -329,9 +329,9 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * This release deprecates the `ACCESS_KEY` invalidation after a chaos infrastructure is successfully connected. Users can use the same manifest to connect to the infrastructures. (CHAOS-3164)
 
-* Adds UI support to search conditions for selection while creating a [ChaosGuard rule](/docs/chaos-engineering/features/chaosguard/chaosguard-concepts/#2-rule). (CHAOS-2982)
+* Adds UI support to search conditions for selection while creating a [ChaosGuard rule](/docs/chaos-engineering/concepts/explore-concepts/chaosguard#rule). (CHAOS-2982)
 
-* Adds support to incorporate `secretRef` and `configMapRef` with the tunables for [VMWare faults](/docs/chaos-engineering/chaos-faults/vmware). (CHAOS-2750)
+* Adds support to incorporate `secretRef` and `configMapRef` with the tunables for [VMWare faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware). (CHAOS-2750)
 
 * Adds support for encoding metrics queries in Dynatrace probes. These metrics are constructed and executed using the metrics (or data) explorer before the API call [POST]. (CHAOS-2852)
 
@@ -792,7 +792,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ##### New features and enhancements
 
-* [GameDay](/docs/chaos-engineering/features/gameday/gameday-v2) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
+* [GameDay](/docs/chaos-engineering/concepts/explore-concepts/GameDay) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
 * The CE [integration](/docs/chaos-engineering/integrations/use-chaos-with-srm) with Harness Service Reliability Management (SRM) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
@@ -898,7 +898,7 @@ To upgrade chaos infrastructures and experiments:
 
 ##### Early access features
 
-* Introduction of [Chaos dashboards](/docs/chaos-engineering/features/chaos-dashboard/overview). (CHAOS-719)
+* Introduction of [Chaos dashboards](/docs/chaos-engineering/use-harness-ce/dashboards/). (CHAOS-719)
     * Two new dashboards include number of experiments and number of infrastructures by user, as well as statistics of the chaos faults that were executed.
     * This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
 
@@ -919,7 +919,7 @@ To upgrade chaos infrastructures and experiments:
 ##### New features and enhancements
 
 * Introduction of GameDays in HCE Module. (CHAOS-643)
-    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/features/gameday/gameday-v2).
+    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/concepts/explore-concepts/GameDay).
 
 * Allow saving of experiment with inactive infrastructure. (CHAOS-1573)
     * HCE now allows you to save an experiment if the infrastructure is inactive, with the saveExperiment API.
@@ -1217,7 +1217,7 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 
 ##### Early access features
 
-The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). [HCE documentation](/docs/chaos-engineering) is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering).
+The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). [HCE documentation](/docs/chaos-engineering) is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](/docs/chaos-engineering/getting-started/saas/first-experiment).
 
 ##### Known issues
 

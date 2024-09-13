@@ -6,6 +6,7 @@ helpdocs_topic_id: mg09uspsx1
 helpdocs_category_id: 48wnu4u0tj
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/gitops-secrets
 ---
 
 Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness account.

@@ -1473,26 +1473,14 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 
 Go to the [Kaniko container runtime error article](/kb/continuous-integration/articles/kaniko_container_runtime_error).
 
-### Can I push and pull from two different docker registries that have same prefix for registry URL ?
+### When using 'Build ans Push' steps with Base Image connector, can I pull and push from two different docker registries that have same prefix for registry URL ?
 
-No, this is currently not supported in docker.
+No, when using base image connector, ensure the prefix of the url use for pulling is different than the prefix of the url in the connector used for pushing. 
 
-If two registry URLs begin with same prefix, for example https://index.docker.io it will result in the second registry credentials getting over-ridden in the docker config file when a docker login is attempted 
-
-As an example, this would fail as the prefix URLs are not unique.
-
-https://index.docker.io/v1/abc/test-private
-
-https://index.docker.io/v1/xyz/test2
-
-docker config would look like:
-```
-{
-      https://index.docker.io/***: { auth}
-}
-```
-But fully unique docker compliant registry URLs are not affected by this limitation.
-
+Docker uses a configuration file to store authentication details. If two registry URLs share the same prefix, Docker will only create a single authentication entry for that prefix, which will cause a conflict when accessing the second registry.
+     
+As an example, both https://index.docker.io/v1/abc/test1 and https://index.docker.io/v1/xyz/test2 have the same prefix (https://index.docker.io/v1/), so Docker cannot differentiate between them for authentication, causing the second set of credentials to overwrite the first.
+     
 ### What is the default build context when using Build and Push steps?
 
 The default build context is the stage workspace directory, which is `/harness`.
@@ -1579,7 +1567,9 @@ If you get a `certificate signed by unknown authority` error with the [Upload Ar
 
 ### Can I run the Upload Artifacts to JFrog Artifactory step with a non-root user?
 
-No. The jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
+Yes. By default, the jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
+
+Set JFROG_CLI_HOME_DIR as Stage variable to change the folder in which .jfrog will be created, to a path you have write access. 
 
 ### mkdir permission denied when running Upload Artifacts to JFrog as non-root
 
