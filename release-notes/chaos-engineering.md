@@ -1,7 +1,6 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-canonical_url: https://www.harness.io/blog/chaos-engineering
 date: 2024-08-30T10:00
 sidebar_position: 5
 ---
