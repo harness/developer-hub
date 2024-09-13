@@ -2,6 +2,7 @@ import type { Context } from '@netlify/functions';
 
 export default async (req: Request, context: Context): Promise<Response> => {
   const header = {
+    'Access-Control-Allow-Origin': 'https://www.harness.io',
     'Access-Control-Allow-Methods': 'GET,OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
   };
@@ -19,16 +20,10 @@ export default async (req: Request, context: Context): Promise<Response> => {
     });
   }
   let tokenEnv = process.env.COVEO_API_KEY;
-
-  const token = req.headers.get('authorization');
-
- 
-
   return new Response(
     JSON.stringify({
-      token,
+      token: tokenEnv,
       id: 'harnessproductionp9tivsqy',
-      tokenEnv,
     }),
     {
       status: 200,

@@ -106,18 +106,12 @@ const CoveoSearch = () => {
                 </div>
             </div>`;
         let coveoRoot = searchRoot.querySelector('#coveo-search'); // document.getElementById("coveo-search");
-
-        const res = await fetch('https://developer.harness.io/api/coveo_api', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: customFields.COVEO_API_KEY,
-          },
-        });
+        const rootUrl = window.location.href.split('/').slice(0, 3).join('/');
+        const res = await fetch(rootUrl + '/api/coveo_api');
 
         const resData = await res.json();
-        const orgId = resData?.orgId;
-        const apiToken = resData?.apiKey;
+        const orgId = resData?.id;
+        const apiToken = resData?.token;
         Coveo.SearchEndpoint.configureCloudV2Endpoint(orgId, apiToken);
 
         const elemSearchMask = document.getElementById('coveo-search-mask');

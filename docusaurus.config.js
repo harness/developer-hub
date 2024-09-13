@@ -26,7 +26,6 @@ async function config() {
     customFields: {
       SEGMENT_API_KEY: process.env.SEGMENT_API_KEY,
       HARNESS_GENERIC_READ_ONLY_KEY: process.env.HARNESS_GENERIC_READ_ONLY_KEY,
-      COVEO_API_KEY: process.env.COVEO_API_KEY,
     },
 
     //Mermaid Diagram Functionality
