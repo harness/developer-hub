@@ -4,7 +4,7 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp
 ---
 
-This section describes the steps you can follow to create a secret to execute GCP chaos experiments.
+This section describes the steps you can follow to create a secret to execute GCP chaos experiments. 
 
 
 ### Step 1: Create a service account
