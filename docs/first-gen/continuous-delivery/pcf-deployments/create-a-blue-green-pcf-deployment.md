@@ -6,6 +6,7 @@ helpdocs_topic_id: 52muxcsr1v
 helpdocs_category_id: emle05cclq
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/blue-green-canary-deployment-strategies
 ---
 
 Harness Tanzu Application Service (formerly PCF) Blue/Green deployments use the route(s) in the TAS manifest.yml and a temporary route you specify in the Harness Workflow.
