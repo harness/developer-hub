@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-09-03T14:00
+date: 2024-09-12T14:00
 sidebar_position: 16
 ---
 
@@ -145,6 +145,51 @@ To acquire the necessary `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD`, contact 
 Upon providing your credentials and the release version, the script will proceed to push the Looker image to your private repository.
 
 :::
+## September 12, 2024, version 0.20.2
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.20.2](https://github.com/harness/helm-charts/releases/tag/harness-0.20.2) |
+| Air Gap Bundle | [0.20.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.20.2) |
+| NG Manager | 1.51.9 |
+| CI Manager | 1.41.3 |
+| Manager | 1.42.5 |
+| Pipeline Service | 1.89.2 |
+| Platform Service | 1.34.2 |
+| Access Control Service | 1.56.1 |
+| Delegate | 24.07.83611 |
+| GitOps Service | 1.15.4 |
+| GitOps Agent | 0.78.0 |
+| Change Data Capture | 1.25.1 |
+| STO Core | 1.106.0 |
+| Test Intelligence Service | 1.27.0 |
+| NG UI | 1.37.5 |
+| LE NG | 1.3.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.20.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.20.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.20.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.20.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.20.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.20.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.20.2/sto_images.tgz" \
+  .
+```
+
+#### Fixed issues
+
+:::OPA_RBAC_FEATURE feature flag enabled by default.
+Harness enabled this feature flag as the default setting. Policies section on RoleDetails page will be now visible by default.
+
 
 ## September 3, 2024, version 0.20.0
 
