@@ -7,7 +7,6 @@ redirect_from:
 - /docs/chaos-engineering/technical-reference/architecture/kubernetes
 - /docs/chaos-engineering/get-started/prerequisites/#chaos-infrastructure-requirements
 - /docs/chaos-engineering/features/chaos-infrastructure/introduction
-- /docs/chaos-engineering/features/chaos-infrastructure/windows-chaos-infrastructure/
 ---
 
 import Tabs from '@theme/Tabs';

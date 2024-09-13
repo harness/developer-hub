@@ -7,7 +7,6 @@ redirect_from:
 - /docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments
 - /docs/chaos-engineering/configure-chaos-experiments/experiments/resilience-score
 - /docs/chaos-engineering/features/experiments/resilience-score/
-- /docs/category/chaos-experiments-/
 ---
 
 Harness Chaos Engineering (HCE) gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios against which you can validate your applications.
