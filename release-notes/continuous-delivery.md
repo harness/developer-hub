@@ -69,6 +69,8 @@ When a pipeline is re-run, only the steps that are actively re-run will now disp
 
 Harness now supports both Multiple and Single selection modes for runtime inputs, enabling users to choose between selecting one or more allowed values. Please contact [Harness support](mailto:support@harness.io) to enable the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. (PIPE-11757, ZD-47593,58532,68829)
 
+- While creating a new Gitops application, we have added a dropdown in the destination page, that enables users to select the cluster by cluster name or by cluster url. (CDS-99650)
+
 #### Fixed issues
 
 - Earlier, all the pipeline stages were not visible when using the **Zoom to Fit button** in Pipeline Studio. This issue is fixed. (PIPE-21475, ZD-68662)
