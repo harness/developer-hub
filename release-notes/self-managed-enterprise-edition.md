@@ -187,9 +187,9 @@ gsutil -m cp \
 
 #### Fixed issues
 
-:::OPA_RBAC_FEATURE feature flag enabled by default.
-Harness enabled this feature flag as the default setting. Policies section on RoleDetails page will be now visible by default.
+- Harness enabled the feature flag `OPA_RBAC_FEATURE` by default. You should now see the policies section on the RoleDetails page.
 
+- Added APIs for getting a Harness GitOps Cluster object with identifiers and metadata using an URL.
 
 ## September 3, 2024, version 0.20.0
 
