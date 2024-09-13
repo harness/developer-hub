@@ -1467,7 +1467,7 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 
 Go to the [Kaniko container runtime error article](/kb/continuous-integration/articles/kaniko_container_runtime_error).
 
-### When using 'Build ans Push' steps with Base Image connector, Can I pull and push from two different docker registries that have same prefix for registry URL ?
+### When using 'Build ans Push' steps with Base Image connector, can I pull and push from two different docker registries that have same prefix for registry URL ?
 
 No, when using base image connector, ensure the prefix of the url use for pulling is different than the prefix of the url in the connector used for pushing. 
 
