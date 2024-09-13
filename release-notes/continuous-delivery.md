@@ -53,7 +53,21 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - **Custom Logic for Traffic Routing**
 
-We have introduced custom logic for traffic routing, enabling users to rewrite custom logic for traffic routing to suit their deployment strategies. Previously, the host field in a virtual service's YAML was mandatory. With this update, users can leave the host field empty, allowing for more dynamic configurations. Additionally, we added a new Delegate Service checkbox, which simplifies setup by eliminating the need to manually specify the host, enhancing flexibility for dynamic traffic routing.
+We have introduced custom logic for traffic routing, enabling users to rewrite custom logic for traffic routing to suit their deployment strategies. Previously, the host field in a virtual service's YAML was mandatory. With this update, users can leave the host field empty, allowing for more dynamic configurations. Additionally, we added a new Delegate Service checkbox, which simplifies setup by eliminating the need to manually specify the host, enhancing flexibility for dynamic traffic routing. (CDS-97968)
+
+- **Re-Run Pipeline with no Input changes**
+
+You can configure your pipelines to have no Input change during re-run. This allows you to have consistency in re-run behavior, especially in pipelines where input changes should be restricted after the initial execution. (PIPE-11757, ZD-47593,58532,68829)
+
+- **Display of Correct Execution Times for Re-run Steps**
+
+When a pipeline is re-run, only the steps that are actively re-run will now display updated start and end times. Steps that were not required during the re-run and were copied over from the previous execution will retain their original execution times, ensuring an accurate representation of the pipeline’s execution history. (PIPE-18593, ZD-62115,65602)
+
+![](./static/accurate_time_execution.png)
+
+- **Multiple and Single Selection for Runtime Inputs**
+
+Harness now supports both Multiple and Single selection modes for runtime inputs, enabling users to choose between selecting one or more allowed values. Please contact [Harness support](mailto:support@harness.io) to enable the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. (PIPE-11757, ZD-47593,58532,68829)
 
 #### Fixed issues
 
