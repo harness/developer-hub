@@ -18,7 +18,7 @@ Failed CI pipelines don't inherently block PR merges. Harness can [send pipeline
 
 ## SLSA
 
-With Harness CI, you can use the [Harness Software Supply Chain Assurance (SSCA) module](/docs/software-supply-chain-assurance) to generate, manage, store, and enforce SBOM and SLSA Provenance.
+With Harness CI, you can use the [Harness Supply Chain Security (SCS) module](/docs/software-supply-chain-assurance) to generate, manage, store, and enforce SBOM and SLSA Provenance.
 
 You can also [run scripts in Run steps](../use-ci/run-step-settings) to generate SBOM and SLSA Provenance, and then [upload those artifacts](../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts).
 

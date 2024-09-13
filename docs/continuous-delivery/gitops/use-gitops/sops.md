@@ -2,7 +2,7 @@
 title: Manage Kubernetes secrets with Mozilla SOPS
 description: Use Mozilla SOPS to decrypt and provision secrets that are encrypted and stored in Git
 sidebar_label: Manage Secrets with SOPS
-sidebar_position: 2
+sidebar_position: 60
 ---
 
 GitOps uses Git as the source of truth for infrastructure and application configuration and therefore requires access to secrets in some form. For example, GitOps might require authentication tokens and private keys to operate correctly. Storing secrets in Git represents a security vulnerability and must not be allowed, even when the Git repository is considered private and implements access controls. 

@@ -1,10 +1,10 @@
 ---
 title: Manage access control
-description: Manage SSCA Roles and Permissions with RBAC.
+description: Manage SCS Roles and Permissions with RBAC.
 sidebar_position: 90
 ---
 
-# Manage SSCA Access Control
+# Manage SCS Access Control
 
 Harness's RBAC system enables you to precisely manage the user access to specific features or resources and the scope of actions they are permitted to perform. To delve deeper into the specifics of RBAC within Harness, refer to the documentation on [Role-based Access Control (RBAC)](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/).
 
@@ -21,11 +21,11 @@ Here's a guide to creating a role or managing permissions for the Remediation Tr
 
 1. Navigate to **Account Settings** > **Access Control** > **Roles** within your Harness Account.
 2. Add a new role or select an existing one to modify.
-3. Within the role, select Supply Chain Assurance. This action will display the SSCA Permissions.
+3. Within the role, select Supply Chain Security. This action will display the SCS Permissions.
 
 
 
-![SSCA RBAC](./static/ssca-rbac.png "SSCA RBAC")
+![SCS RBAC](./static/ssca-rbac.png "SCS RBAC")
 
 
 The Remediation Tracker is governed by the following permissions:

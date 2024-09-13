@@ -3,7 +3,8 @@ title: Use HCE with Continuous Delivery
 sidebar_position: 1
 description: Integrate HCE with CD
 redirect_from:
-  - /tutorials/chaos-experiments/integration-with-harness-cd
+- /tutorials/chaos-experiments/integration-with-harness-cd
+- /docs/chaos-engineering/integrations/hce-and-cd/chaos-cd
 ---
 
 You can add chaos experiments to [Harness Continuous Delivery (CD)](https://harness.io/products/continuous-delivery) pipelines as part of your deployment process. This ensures that you validate your system resiliency with every new deployment. Some benefits include:
@@ -26,11 +27,11 @@ Learn more about these benefits in our [CE/CD integration blog](https://www.harn
 
 You might consider injecting these types of faults as chaos steps in your CD pipeline:
 
-* **Network chaos faults** can be used for verifying service or microservice dependencies on each other when there's latency, or when one of the microservices is down. The [Pod network latency](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-latency.md) fault is an example.
+* **Network chaos faults** can be used for verifying service or microservice dependencies on each other when there's latency, or when one of the microservices is down. The pod network latency fault is an example.
 
-* **Stress chaos faults** can be used for verifying how microservices behave when there is a noisy neighbor. The [Pod CPU hog](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog.md) fault is an example.
+* **Stress chaos faults** can be used for verifying how microservices behave when there is a noisy neighbor. The pod CPU hog fault is an example.
 
-* **HTTP chaos faults** can be used for verifying how services or APIs behave when one of the APIs is under chaos. The [Pod HTTP latency](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-latency.md) fault is an example.
+* **HTTP chaos faults** can be used for verifying how services or APIs behave when one of the APIs is under chaos. The pod HTTP latency fault is an example.
 
 For more information about Harness CD, go to the [CD tutorials](/docs/category/cd-and-gitops-tutorials).
 
@@ -44,9 +45,9 @@ To use CE with CD using a selected experiment (though you can use many experimen
 
 ### Step 1: Add a chaos experiment and run it
 
-* [Create a chaos experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md) and run it to make sure it runs to completion.
+* Create a chaos experiment and run it to make sure it runs to completion.
 
-* In the example below, the relevant [probes](/docs/chaos-engineering/features/resilience-probes/use-probe.md) are added to avoid a false positive or false negative scenario around the resilience score.
+* In the example below, the relevant probes are added to avoid a false positive or false negative scenario around the resilience score.
 
 	![Completed chaos experiments with probes shown](./static/exp-run-complete-with-probes.png)
 
@@ -90,7 +91,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 	When you select an experiment, the experiment's last resilience score, a preview of the experiment, and its chaos faults, are displayed.
 
 1. (Optional) On this screen you can:
-	* Select **New Experiment** to [create a new experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md) in Chaos Studio.
+	* Select **New Experiment** to create a new experiment in Chaos Studio.
 	* Select **Edit in Chaos Studio** to edit a selected experiment.
 
 	Selecting these options takes you to Chaos Studio without saving your work.
@@ -101,7 +102,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 	If the resilience score is not met, this chaos step fails and the [stage failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) is initiated.
 
-	For more information, go to [Analyze chaos experiments](/docs/chaos-engineering/features/experiments/create-complex-chaos-experiments#analyze-chaos-experiments).
+	For more information, go to Analyze chaos experiments.
 
 1. (Optional) Expand **Optional Configuration**, and enter an assertion (you can enter a fixed value, an expression, or a runtime input).
 

@@ -1,6 +1,7 @@
 ---
 description: Sandbox to learn about MD and HDH Features, powered by Docusaurus
 title: Get Creative with HDH and Docusaurus
+canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 tags:
   - contributing
 redirect_from:
@@ -302,7 +303,8 @@ I = \int_0^{2\pi} \sin(x)\,dx
 $$
 
 ### Escaping Dollar Signs
-Leveraging `$` as plain text now needs to be escaped. 
+
+Leveraging `$` as plain text now needs to be escaped.
 
 ```
 #Safe
@@ -314,3 +316,57 @@ Leveraging `$` as plain text now needs to be escaped.
 #Not Safe
 ${host}
 ```
+
+## HDH API CALL
+
+### Usuage
+
+```js
+<HarnessApiData
+  query="https://app.harness.io/ng/api/organizations/default"
+  accountIdentifier
+  token
+  fallback="harness fallback"
+  parse=".data.organization.description"
+/>
+```
+
+### Result
+
+<HarnessApiData  query="https://app.harness.io/ng/api/organizations/default" accountIdentifier token fallback="harness fallback" parse=".data.organization.description"/>
+
+### Usuage
+
+```js
+<HarnessApiData
+  query="https://app.harness.io/gateway/iacm/api/provisioners/supported/terraform"
+  token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
+  fallback="error"
+  parse='.[-1] | "(up to v\(.))"'
+></HarnessApiData>
+```
+
+### Result
+
+<HarnessApiData
+    query="https://app.harness.io/gateway/iacm/api/provisioners/supported/terraform"
+    token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
+    fallback="error"
+    parse='.[-1] | "(up to v\(.))"'>
+</HarnessApiData>
+
+### Usuage
+
+```js
+<HarnessApiData
+  query="https://jsonplaceholder.typicode.com/todos/1"
+  fallback="Failed to load data."
+  parse=".title"
+/>
+```
+
+### Result
+
+<HarnessApiData query="https://jsonplaceholder.typicode.com/todos/1" fallback="Failed to load data." parse=".title"
+
+/>

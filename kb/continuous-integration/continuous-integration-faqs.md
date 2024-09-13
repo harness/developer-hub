@@ -4,6 +4,7 @@ description: Common questions and troubleshooting issues related to Harness CI.
 sidebar_position: 2
 redirect_from:
   - /docs/faqs/continuous-integration-ci-faqs
+  - /docs/frequently-asked-questions/harness-faqs/continuous-integration-ci-faqs
 ---
 
 ## Build infrastructure
@@ -1151,6 +1152,11 @@ If the user account used to generate the token doesn't have repository write per
 
 For repos under organizations or projects, check the role/permissions assigned to the user in the target repository. For example, a user in a GitHub organization can have some permissions at the organization level, but they might not have those permissions at the individual repository level.
 
+
+### Why does the status check for my PR redirect to a different PR's build Harness? 
+This issue occurs when two PRs are created for the same commit ID. Harness CI associates builds with commits rather than specific PRs. If multiple PRs share the same commit, the latest build will replace the previous one, causing the build check on the earlier PR to redirect to the newer PR’s build.
+To resolve this, push a new commit to the affected PR and rebuild it. This creates a unique commit, ensuring the build check redirects to the correct PR.
+
 ### Can I export a failed step's output to a pull request comment?
 
 To do this, you could:
@@ -1471,20 +1477,10 @@ Go to the [Kaniko container runtime error article](/kb/continuous-integration/ar
 
 No, when using base image connector, ensure the prefix of the url use for pulling is different than the prefix of the url in the connector used for pushing. 
 
-If two registry URLs begin with same prefix(e.g. https://index.docker.io) it will result in the second registry credentials getting over-ridden in the docker config file when a docker login is attempted 
-
-In other cases with a docker compatible jfrog registry, this limitation is not present. 
-If the URLs are fully unique the docker config map can have 2 separate entries for the authentication, as opposed to getting 1 entry as listed above.
-
-
-docker config would look like:
-```
-{
-infacloud-ct-docker.jfrog.io : {auth},
-ct-dockerhub.artifacts.cloudtrust.rocks: {auth}
-}
-```
-
+Docker uses a configuration file to store authentication details. If two registry URLs share the same prefix, Docker will only create a single authentication entry for that prefix, which will cause a conflict when accessing the second registry.
+     
+As an example, both https://index.docker.io/v1/abc/test1 and https://index.docker.io/v1/xyz/test2 have the same prefix (https://index.docker.io/v1/), so Docker cannot differentiate between them for authentication, causing the second set of credentials to overwrite the first.
+     
 ### What is the default build context when using Build and Push steps?
 
 The default build context is the stage workspace directory, which is `/harness`.
@@ -1577,7 +1573,7 @@ Set JFROG_CLI_HOME_DIR as Stage variable to change the folder in which .jfrog wi
 
 ### mkdir permission denied when running Upload Artifacts to JFrog as non-root
 
-With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) must run as root. If you set **Run as User** to anything other than `1000`, the step fails with `mkdir /.jfrog: permission denied`.
+With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) must run as root. If you set **Run as User** to anything other than `0`, the step fails with `mkdir /.jfrog: permission denied`.
 
 ### What is PLUGIN_USERNAME and PLUGIN_PASSWORD used in the Upload Artifacts to JFrog Artifactory step?
 

@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-07-23:T10:00:00
+date: 2024-09-10T10:00:00
 sidebar_position: 8
 ---
 
@@ -45,7 +45,92 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## September 2024
+
+### Version 1.55.1
+
+#### New features and enhancements
+
+- **Multiple runtime support for Serverless.com and AWS SAM**
+
+Released new images for AWS SAM to support multiple runtime for `python3.11`, `python3.12`, `ruby3.2`, `java8`, `go1.24`. For more information, go to Harness [AWS SAM - Containerized step images](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments/#containerized-step-images). (CDS-80560)
+
+Released new images for Serverless to support multiple runtime for `python3.11`, `python3.12`, `ruby3.2`, `java8`.  For more information, go Harness [Serverless.com - Containerized step images](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#containerized-step-images). (CDS-80560)
+
+- **Multi-Deployment and Matrix Failure Strategy Support**
+
+Harness now supports applying failure strategies during multi-service, multi-infrastructure, and matrix deployments. Currently this feature is behind the feature flag `CDS_MULTI_DEPLOYMENT_ON_FAILURE`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-96876, ZD-63199, ZD-64391, ZD-64465, ZD-66720)
+
+- ServiceNow access is enabled through a Mulesoft endpoint by adding a `/now` URI in the ServiceNow requests. (CDS-99537, ZD-64547)
+
+#### Fixed issues
+
+- Users were unable to move or delete a service-specific override. This issue is resolved. The permissions required to move or delete a service-specific override for global environment and infrastructure is `core_environment_edit`. The permissions required for service-specific override or service and infrastructure is `core_service_edit`. Separate permissions to delete are not required.  (CDS-100204, ZD-68468, ZD-68759)
+- The service variable that referenced secret text was exposed in plaintext delegate logs when executing CD WinRM deployment. This issue is resolved. The warning logs are updated with debug logs. (CDS-100046, ZD-68713)
+- When using a WinRM credential of "type = Kerberos" in a PowerShell script, the output variables were not displayed properly due to a missing identifier. This issue is resolved. (CDS-100036, ZD-68283)
+- Service was not loading when the service and environment used a custom template configured as **Always use the stable version**. This issue is resolved. (CDS-100021, ZD-68666)
+- Custom stage pipelines did not show the environment in the pipeline execution history. This issue is resolved now.(CDS-99938)
+- The tooltip for the **Output Alias** (optional) field under **Optional Configuration** was not being displayed. This issue is resolved. (CDS-90919)
+
+### Version 1.54.2
+
+#### Fixed issues
+
+- The Helm chart deployments failed when the `values` YAML file contained double quotes. This issue is resolved. (CDS-100174, ZD-68747, ZD-68940)
+- The placeholder in the health source connector component, which previously displayed `GCP`, has now been updated to `BigQuery`. There is no functionality change with the issue resolution. (CDS-99519)
+![](./static/health_source_connector.png)
+- Earlier, deleting the entire expressions from the delegate selector field at the step level was not possible. This issue is resolved. (CDS-96694)
+- The Service and environment values saved as input sets of monitored service template in the verify step were not available while running the pipeline. This issue is resolved. (CDS-96581)
+
 ## August 2024
+
+### Version 1.53.5
+
+#### New features and enhancements
+
+- **Service Failure Strategy**
+
+We have introduced a failure strategy for the service, where the service step will, by default, inherit the failure strategy from the stage. Currently this feature is behing the Feature Flag `CDS_SERVICE_INFRA_FAILURE_STRATEGY`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.(CDS-96876, ZD-63199, ZD-64391, ZD-64465, ZD-66720)
+
+- **Infrastructure Scope Selector**
+
+We have introduced a UI component to make the list of infrastructure searchable and sorted based on creation time. You can also select all the infrastructures in the environment by choosing the `All Infrastructures` checkbox. Currently this feature is behing the Feature Flag `CDS_SPECIFY_INFRASTRUCTURES`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-94529)
+
+- The [My Executions](/docs/platform/triggers/triggering-pipelines#executions) filter on the listing page displays both manual executions and those triggered automatically by Git pull requests (PRs) i.e execution executed by their Githib PRs as well as manually execution pipeline execution will appear in the My Execution list. Currently this feature is behing the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (PIPE-13755)
+
+#### Fixed issues
+
+- Earlier, Git Experience intermittently encountered errors when pushing changes to a new branch. The issue is resolved. The `/` in the gitx webhook identifier was replaced with `_` in the identifier field. Henceforth, you can't create webhook identifiers with a `/`. (PIPE-20973, ZD-681420)
+
+### Version 1.52.4
+
+#### New features and enhancements
+
+- You can clone [Services](/docs/continuous-delivery/x-platform-cd-features/services/services-overview#clone-services) across scopes i.e from one project to another, project to organization, account to project etc. and [Environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments#clone-environments) scopes (i.e from one project to another, project to organization, account to project etc.). Currently this feature is behind the Feature Flag `CDS_SERVICE_ENV_CLONING`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-97315, CDS-98426)
+
+#### Fixed issues
+
+- The error title **Intervention** was displayed when the verification step failed. The title is now updated to **Verification Failure**. (CDS-99671,ZD-65113)
+- The runtime input symbol was getting displayed even when **fixed values** was selected from the templates in the monitored services. This issue has been resolved. (CDS-99518) 
+- On the services page, the deployment type icon did not consistently appear. This issue has been resolved. (CDS-99331, ZD-66892)
+- GitOps deployments were not tracked for multiple projects because the Harness Gitops instances service was out of sync with applications without project mappings. This issue has been resolved. (CDS-98989, ZD-63203)
+- An error message associated with missing parameters in the GitHub Connector was ambiguous. This issue was resolved. (CDS-97760)
+- Previously, when a Pipeline Execution was aborted due to a Deployment Freeze, the details of the Freeze were not accessible from the Execution Console view. This issue was resolved by adding the details to the Console View. (PIPE-20658)
+
+### Version 1.51.5
+
+#### Behavior changes
+
+- Previously, in pipeline chaining, if the child pipeline was in a wait step, the child pipeline status would show as **Waiting** state whereas the parent pipeline status would show as **Running** state. This behavior is changed to show both parent and child pipeline status to show as **Waiting** state. Currently this feature is behind the Feature Flag `PIPE_MARK_PARENT_PIPELINE_STATUS_WAITING_AS_CHILD`. Contact [Harness support](mailto:support@harness.io) to enable it. (PIPE-20448, ZD-66154,66618,67697)  
+
+#### Fixed issues
+
+- The output tab in the pipeline console previously displayed incorrect details for retries when viewed in console mode. This issue has been resolved by ensuring that the correct step ID is passed for retry steps, allowing accurate details to be shown in the output tab.(PIPE-20648, ZD-67024)
+- While connecting to the Git sync service, a connection error was being thrown. This issue is fixed by increasing the retry policy from 1 to 3. (PIPE-20589, ZD-67247,67488)
+- The pipeline deployed using the rolling deployment were encountering a `NotificationTargetARN` error. This issue is resolved now with support for adding lifecycle hooks with different notificationARNs and roles during the time of creation of ASG. (CDS-99460, ZD-67371)
+- Users were unable to delete services that had been soft deleted from the service dashboard page. This issue has been resolved by adding functionality to support the deletion of these services. (CDS-99344, ZD-67225)
+- When renaming a file by adding an extension to the file name in the Harness File Store, the file's content was previously deleted. This issue has been fixed to ensure that file content is maintained when updating file metadata in the File Store. (CDS-99202, ZD-66962)
+- The K8s manifest connector runtime field was not visible in the run pipeline form. This issue has been resolved, and the runtime field is now visible in both the run pipeline form and the input set form. (CDS-99171, ZD-66902)
 
 ### Version 1.49.7
 

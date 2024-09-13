@@ -121,7 +121,7 @@ import {
             link: "/release-notes/service-reliability-management",
           },
           {
-            title: "Software Supply Chain Assurance release notes",
+            title: "Supply Chain Security release notes",
             module: MODULES.ssca,
             description:
               "",

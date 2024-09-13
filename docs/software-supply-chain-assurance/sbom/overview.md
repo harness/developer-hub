@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Understanding the process of generate and manage SBOMs with Harness SSCA
+description: Understanding the process of generate and manage SBOMs with Harness SCS
 sidebar_position: 9
 sidebar_label: Overview
 ---
@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 In today's software development landscape, applications are built from a complex mix of internal code, third-party libraries, and open-source components. This creates a challenge in understanding the exact makeup of the software and its potential vulnerabilities. Here's where a [Software Bill of Materials (SBOM)](https://security.cms.gov/learn/software-bill-materials-sbom) comes in. An SBOM is essentially a detailed list of all the components and dependencies used to build a software product. It includes information like the name, version, and license of each component, providing organizations with a clear picture of their software's composition, which in turn enables organizations to manage open-source component risks effectively.
 
-The Harness SSCA module provides comprehensive capabilities for generating, managing, and analyzing SBOM for software artifacts. Here’s how the **SBOM Orchestration** step in the SSCA module helps you achieve it:
+The Harness SCS module provides comprehensive capabilities for generating, managing, and analyzing SBOM for software artifacts. Here’s how the **SBOM Orchestration** step in the SCS module helps you achieve it:
 
 
 <DocImage path={require('./static/sbom-orch-overview.png')} width="80%" height="80%" title="Click to view full size image" />
@@ -27,19 +27,19 @@ The Harness SSCA module provides comprehensive capabilities for generating, mana
 
 ## Integration with SBOM tools
 
-The SSCA Module integrates with SBOM generation tools such as **[syft](https://github.com/anchore/syft)** and **[cdxgen](https://cyclonedx.github.io/cdxgen/#/)**, and is accessible to use from the SBOM Orchestration step This flexibility allows you to utilize your preferred tools or adhere to standards. 
+The SCS Module integrates with SBOM generation tools such as **[syft](https://github.com/anchore/syft)** and **[cdxgen](https://cyclonedx.github.io/cdxgen/#/)**, and is accessible to use from the SBOM Orchestration step This flexibility allows you to utilize your preferred tools or adhere to standards. 
 
 Moving forward, Harness will add support for additional SBOM generation tools.
 
 
 ## SBOM formats
 
-SSCA can generate SBOM in popular standard formats, such as **[SPDX](https://spdx.dev/)** and **[CycloneDX](https://cyclonedx.org/)**. As there are multiple SBOM formats and standards, the SSCA module normalizes your SBOM to extract the relevant information, such as component name, version, supplier, and licensing data. This normalization process ensures that your SBOM data is consistent, easy to manage, and can be used for policy enforcement and further analysis.
+SCS can generate SBOM in popular standard formats, such as **[SPDX](https://spdx.dev/)** and **[CycloneDX](https://cyclonedx.org/)**. As there are multiple SBOM formats and standards, the SCS module normalizes your SBOM to extract the relevant information, such as component name, version, supplier, and licensing data. This normalization process ensures that your SBOM data is consistent, easy to manage, and can be used for policy enforcement and further analysis.
 
 
 ## Ingest SBOM data
 
-While Harness SSCA enables you to generate SBOMs, it also supports the ingestion of SBOMs produced by third-party tools. Please refer to the [SBOM ingestion documentation](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/ingest-sbom-data) for more details.
+While Harness SCS enables you to generate SBOMs, it also supports the ingestion of SBOMs produced by third-party tools. Please refer to the [SBOM ingestion documentation](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/ingest-sbom-data) for more details.
 
 
 ## Attest and store the SBOM

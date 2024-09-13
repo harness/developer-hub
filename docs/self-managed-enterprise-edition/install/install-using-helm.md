@@ -213,7 +213,7 @@ The Harness modules below can be enabled or disabled conditionally:
 * Harness Security Testing Orchestration (STO)
 * Harness Service Reliability Management (SRM)
 * Harness Feature Flags (FF)
-* (**Beta**) Harness Software Supply Chain Assurance (SSCA)
+* Harness Supply Chain Security (SCS)
 
 You can conditionally disable or enable the modules by specifying a boolean value in the `enabled` field of the YAML:
 
@@ -265,7 +265,7 @@ chaos:
 enabled: true
 ```
 
-#### Deploy the SSCA module
+#### Deploy the SCS module
 
 ```
 ssca:
@@ -352,5 +352,5 @@ To get started with the modules, review the following topics:
 * For Harness Continuous Integration, go to the [CI key concepts](../../continuous-integration/get-started/key-concepts.md).
 * For Harness Continuous Delivery & GitOps, go to the [CD key concepts](/docs/continuous-delivery/get-started/key-concepts.md).
 * For Harness Security Testing Orchestration, go to the [STO overview](../../security-testing-orchestration/get-started/overview.md).
-* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-hce).
+* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/chaos-engineering/concepts/chaos101).
 * For Harness Cloud Cost Management, go to [Manage cloud costs by using Harness Self-Managed Enterprise Edition](/docs/category/ccm-on-harness-self-managed-enterprise-edition).

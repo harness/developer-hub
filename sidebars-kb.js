@@ -8,6 +8,7 @@ const sidebars = {
     {
       type: "category",
       label: "Knowledge Base",
+      className: "sidebar-allkb",
       link: {
         type: "doc",
         id: "kb",
@@ -253,6 +254,7 @@ const sidebars = {
           */
           type: "category",
           label: "Armory",
+          className: "sidebar-armory",
           link: {
             type: "generated-index",
             slug: "/armory",
@@ -265,18 +267,28 @@ const sidebars = {
             },
           ],
         },
-
+        /*
+     Reference Architecture Section
+    */
+        {
+          type: "link",
+          label: "Reference Architectures",
+          className: "sidebar-reference-arch",
+          href: "/kb/reference-architectures/",
+        },
       ],
     },
-    /*
-      Reference Architecture Section
-     */
+
+  ],
+  ReferenceArchitectures: [
     {
       type: "category",
       label: "Reference Architectures",
+      className: "sidebar-reference-arch",
       link: {
-        type: "generated-index",
-        slug: "reference-architectures",
+        type: "doc",
+        id: "reference-architectures",
+
       },
       collapsed: true,
       items: [
@@ -285,8 +297,18 @@ const sidebars = {
           dirName: "reference-architectures",
         },
       ],
-    },
 
+    },
+    // All KB
+    {
+      type: "link",
+      label: "Show All Knowledge Base",
+      className: "sidebar-allkb",
+      href: "/kb",
+      customProps: {
+        description: "All KB.",
+      },
+    }
   ],
 };
 

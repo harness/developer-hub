@@ -36,6 +36,7 @@ A code scanner can detect one or more of the following issue types in your sourc
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/reapsaw-scanner-reference">Reapsaw</a> Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference">Semgrep Code (<i>open-source option</i>) </a> Orchestration, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud (<i>free option</i>) </a> Orchestration, Extraction, Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/checkov-iac-scan">Checkov</a> Orchestration, Ingestion</li>
          </ul>
         </td>
         <td valign="top">
@@ -58,9 +59,9 @@ A code scanner can detect one or more of the following issue types in your sourc
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/nexus-scanner-reference">Nexus IQ</a> Orchestration, Extraction, Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference">Qwiet AI (formerly ShiftLeft)</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference">Semgrep Code (<i>paid option</i>) </a> Orchestration, Ingestion</li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Code</a> Ingestion</li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Infrastructure as Code</a> Ingestion _(beta)_</li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Open Source</a> Orchestration, Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning">Snyk Code</a> Orchestration, Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-iac-scanning">Snyk Infrastructure as Code</a> Orchestration, Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-open-source">Snyk Open Source</a> Orchestration, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference">Veracode</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz">Wiz</a> Orchestration, Ingestion  </li>
@@ -99,7 +100,7 @@ An artifact scanner can detect one or more of the following issue types in your 
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/docker-content-trust-dct-scanner-reference">Docker Content Trust (DCT)</a> Orchestration, Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference">Prisma Cloud (formerly Twistlock)</a> Orchestration, Extraction, Ingestion</li>
-              <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Container</a> Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-container-scanning">Snyk Container</a> Orchestration, Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/sysdig-scanner-reference">Sysdig</a> Orchestration, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io</a> Orchestration, Ingestion  </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz">Wiz</a> Orchestration, Ingestion  </li>

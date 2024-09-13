@@ -22,6 +22,18 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## September 2024
+
+### Version 1.108.2
+
+<!-- 2024-09-06 -->
+
+#### New features and enhancements
+
+- The [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) step will now present the code coverage data in Orchestration, Ingestion, and Extraction scan modes, this can be found as an INFO level issue item in your pipeline executions. (STO-7100)
+- The [Burp Suite Enterprise Edition](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference) step has been upgraded to use the `scope_v2` API version instead of `scope`. This update is designed to support server version `v2023.3`, while still maintaining backward compatibility with earlier supported versions. (STO-7955)
+
+
 ## August 2024
 
 ### Version 1.104.3
@@ -1505,7 +1517,7 @@ This release does not include new features.
 
 * You can now include Run steps in Security Test stages. You can also include Security Tests stages in STO pipelines without a CI license. (STO-5208)
 
-* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans). (STO-4958) 
+* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning#snyk-code-scan---ingestion-mode). (STO-4958) 
 
 #### Fixed issues
 

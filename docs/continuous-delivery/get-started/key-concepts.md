@@ -31,6 +31,12 @@ Deployments make developed artifacts available for use in test or production. Th
 
 For more information, go to [Deployment concepts and strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts) and [Deploy services on different platforms](/docs/category/deploy-services-on-different-platforms).
 
+:::tip
+
+Best practice: Each deployment stage should only have one deployment step. Deploying more than once per stage could cause unexpected behavior.
+
+:::
+
 ## Service
 
 A Harness Service is a logical construct that represents your microservices and other workloads. Each Service can be deployed, monitored, or changed independently.

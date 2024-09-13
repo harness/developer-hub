@@ -27,58 +27,28 @@ The full details of all the fields are mentioned below.
     <tr width="1000px">
       <td>
         <ul>
-          <li>parent</li>
-          <li>number</li>
-          <li>state</li>
-          <li>state_value</li>
-          <li>sys_created_by</li>
-          <li>created_by_user</li>
-          <li>impact</li>
-          <li>impact_value</li>
-          <li>active</li>
-          <li>priority</li>
-          <li>priority_value</li>
-          <li>short_description</li>
-          <li>closed_by</li>
-          <li>closed_by_user</li>
-          <li>requested_by</li>
-          <li>requested_by_user</li>
-            <ul>
-                <li>sys_id</li>
-                <li>name</li>
-                <li>user_name</li>
-                <li>email</li>
-                <li>timezone</li>
-            </ul>
-          <li>assigned_to</li>
-          <li>assignee</li>
-          <li>correlation_id</li>
-          <li>task_effective_number</li>
-          <li>sys_updated_by</li>
-          <li>sys_updated_by_user</li>
-          <li>opened_by</li>
-          <li>opened_by_user</li>
-          <li>sys_created_on</li>
-          <li>sys_updated_on</li>
-          <li>closed_at</li>
-          <li>opened_at</li>
-          <li>close_code</li>
-          <li>description</li>
-          <li>urgency</li>
-          <li>sys_id</li>
-          <li>approval</li>
-          <li>due_date</li>
-          <li>category</li>
-          <li>reason</li>
-          <li>type</li>
-          <li>phase_state</li>
-          <li>start_date</li>
-          <li>end_date</li>
-          <li>requested_by_date</li>
-          <li>risk</li>
-          <li>scope</li>
-          <li>business_service</li>
-          <li>business_service_info</li>
+          <li>SysId</li>
+          <li>Number</li>
+          <li>Short Description</li>
+          <li>Priority</li>
+          <li>Urgency</li>
+          <li>State</li>
+          <li>SysCreatedOn</li>
+          <li>SysUpdatedOn</li>
+          <li>ClosedAt</li>
+          <li>ParentId</li>
+          <li>AssignedTo</li>
+          <li>CreatedBy</li>
+          <li>ClosedBy</li>
+          <li>Scope</li>
+          <li>Impact</li>
+          <li>Type</li>
+          <li>StartDate</li>
+          <li>EndDate</li>
+          <li>CloseCode</li>
+          <li>BusinessService</li>
+          <li>BusinessServiceDepartment</li>
+          <li>RequestedByDepartment</li>
         </ul>
       </td>
     </tr>
@@ -97,44 +67,27 @@ The full details of all the fields are mentioned below.
     <tr width="1000px">
       <td>
         <ul>
-          <li>parent</li>
-          <li>number</li>
-          <li>state</li>
-          <li>state_value</li>
-          <li>sys_created_by</li>
-          <li>created_by_user</li>
-          <li>impact</li>
-          <li>impact_value</li>
-          <li>active</li>
-          <li>priority</li>
-          <li>priority_value</li>
-          <li>short_description</li>
-          <li>closed_by</li>
-          <li>closed_by_user</li>
-          <li>reopened_by</li>
-          <li>reopened_by_user</li>
-          <li>sys_updated_by</li>
-          <li>opened_by</li>
-          <li>opened_by_user</li>
-          <li>closed_at</li>
-          <li>sys_created_on</li>
-          <li>sys_updated_on</li>
-          <li>rfc</li>
-          <li>opened_at</li>
-          <li>resolved_at</li>
-          <li>close_code</li>
-          <li>description</li>
-          <li>sys_id</li>
-          <li>urgency</li>
-          <li>urgency_value</li>
-          <li>severity</li>
-          <li>severity_value</li>
-          <li>approval</li>
-          <li>due_date</li>
-          <li>category</li>
-          <li>sla_due</li>
-          <li>escalation</li>
-          <li>escalation_value</li>
+          <li>SysId</li>
+          <li>Number</li>
+          <li>Short Description</li>
+          <li>Priority</li>
+          <li>Urgency</li>
+          <li>State</li>
+          <li>Severity</li>
+          <li>SysCreatedOn</li>
+          <li>SysUpdatedOn</li>
+          <li>ResolvedAt</li>
+          <li>ParentId</li>
+          <li>AssignedTo</li>
+          <li>CreatedBy</li>
+          <li>ResolvedBy</li>
+          <li>Escalation</li>
+          <li>Impact</li>
+          <li>SlaDue</li>
+          <li>Category</li>
+          <li>CloseCode</li>
+          <li>BusinessService</li>
+          <li>BusinessServiceDepartment</li>
         </ul>
       </td>
     </tr>

@@ -60,9 +60,9 @@ To see your newly registered webhook go to, **Project Settings** > **Project-lev
 
 You can see the list of Git events in Harness. Learn more about [Git Sync Activity](./git-sync-health-page.md)
 
-If you want to setup webhook manually refer: [Manually Setup Webhook](./gitexp-bidir-sync-setup/#manully-setup-webhook)
+If you want to setup webhook manually refer to the below. 
 
-### Manully Setup Webhook
+### Manually Setup Webhook
 
 You can follow below steps to manually register webhook for your entity if you do not want to do it via banner automatically:-
 

@@ -127,75 +127,68 @@ The Harness Delegate is a software service you install in your environment. It c
 #### Sample ECS Fargate Delegate Task Definition JSON
 
 ```JSON
-  {
-    "containerDefinitions": [
-      {
-        "portMappings": [
-          {
-            "hostPort": 8080,
-            "protocol": "tcp",
-            "containerPort": 8080
-          }
-        ],
-        "cpu": 1,
-        "environment": [
-          {
-            "name": "ACCOUNT_ID",
-            "value": "<ACCOUNT_ID>"
-          },
-          {
-            "name": "DELEGATE_TOKEN",
-            "value": "<DELEGATE_TOKEN>"
-          },
-          {
-            "name": "DELEGATE_TYPE",
-            "value": "DOCKER"
-          },
-          {
-            "name": "INIT_SCRIPT",
-            "value": ""
-          },
-          {
-            "name": "DEPLOY_MODE",
-            "value": "KUBERNETES"
-          },
-          {
-            "name": "MANAGER_HOST_AND_PORT",
-            "value": "<MANAGER_HOST_AND_PORT>"
-          },
-          {
-            "name": "DELEGATE_NAME",
-            "value": "<DELEGATE_NAME>"
-          },
-          {
-            "name": "LOG_STREAMING_SERVICE_URL",
-            "value": "<LOG_STREAMING_SERVICE_URL>"
-          },
+ {
+   "containerDefinitions": [
+     {
+       "cpu": 1,
+       "healthCheck": { "command": [ "CMD-SHELL", "curl -f http://localhost:3460/api/health || exit 1" ]},
+       "environment": [
          {
-            "name": "DELEGATE_TAGS",
-            "value": ""
-          },
-
-          {
-            "name": "NEXT_GEN",
-            "value": "true"
-          }
-         ],
-        "memory": 2048,
-        "image": "harness/delegate:22.12.77802",
-        "essential": true,
-        "hostname": "<DELEGATE_HOST>",
-        "name": "<DELEGATE_NAME>"
-      }
-    ],
-      "memory": "2048",
-      "requiresCompatibilities": [
-      "EC2"
-    ],
-
-    "cpu": "1024",
-    "family": "harness-delegate-task-spec"
-  }
+           "name": "ACCOUNT_ID",
+           "value": "<ACCOUNT_ID>"
+         },
+         {
+           "name": "DELEGATE_TOKEN",
+           "value": "<DELEGATE_TOKEN>"
+         },
+         {
+           "name": "MANAGER_HOST_AND_PORT",
+           "value": "<MANAGER_HOST_AND_PORT>"
+         },
+         {
+           "name": "LOG_STREAMING_SERVICE_URL",
+           "value": "<LOG_STREAMING_SERVICE_URL>"
+         },            
+         {
+           "name": "DELEGATE_NAME",
+           "value": "<DELEGATE_NAME>"
+         },            
+         {
+           "name": "DELEGATE_TAGS",
+           "value": ""
+         },
+         {
+           "name": "INIT_SCRIPT",
+           "value": ""
+         },
+         {
+           "name": "DEPLOY_MODE",
+           "value": "KUBERNETES"
+         },
+         {
+           "name": "DELEGATE_TYPE",
+           "value": "DOCKER"
+         },
+         {
+           "name": "NEXT_GEN",
+           "value": "true"
+         }
+       ],
+       "memory": 2048,
+       "image": "<IMAGE>",
+       "essential": true,
+       "name": "ecs-delegate-im"
+     }
+   ],
+   "executionRoleArn": "arn:aws:iam::<AWS_ACCOUNT_ID>:role/ecsTaskExecutionRole",
+   "memory": "6144",
+   "requiresCompatibilities": [
+     "FARGATE"
+   ],
+   "networkMode": "awsvpc",
+   "cpu": "1024",
+   "family": "harness-delegate-task-spec"
+ }
 ```
 
 #### Sample ECS Fargate Delegate Service Definition JSON
@@ -829,7 +822,7 @@ See the following sections for information on other deployment strategies and st
 
 ### Harness supports JSON and YAML for all ECS manifests
 
-You can use both JSON and YAML for your task and service definitions.
+You can use both JSON and YAML for your task and service definitions. Note that fields are denoted in lower camel case rather than pascal case, i.e. `scalableDimension` vs `ScalableDimension`.
 
 ### ECS manifest examples
 
@@ -868,9 +861,20 @@ To configure Auto Scaling in Harness, you use **Scalable Target** and **Scaling 
 
 The Scalable Target setting in the Harness Service specifies a resource that AWS Application Auto Scaling can scale. For more information, see [ScalableTarget](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalabletarget.html) from AWS.
 
-Example:
+JSON Example:
+```json
+{
+  "resourceId": "service/<ECS cluster name>/<ECS service name>",
+  "scalableDimension": "ecs:service:DesiredCount",
+  "serviceNamespace": "ecs",
+  "minCapacity": 1,
+  "maxCapacity": 3
+}
+```
 
+YAML Example:
 ```yaml
+resourceId: service/<ECS cluster name>/<ECS service name>
 serviceNamespace: ecs
 scalableDimension: ecs:service:DesiredCount
 minCapacity: 1
@@ -881,8 +885,25 @@ maxCapacity: 3
 
 The Scaling Policy setting in the Harness Service defines a scaling policy that Application Auto Scaling uses to adjust your application resources. For more information, see [ScalingPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html) from AWS.
 
-Example:
+JSON Example:
+```json
+{
+  "scalableDimension": "ecs:service:DesiredCount",
+  "serviceNamespace": "ecs", 
+  "policyName": "P1",
+  "policyType": "TargetTrackingScaling",
+  "targetTrackingScalingPolicyConfiguration": {
+    "targetValue": 60,
+    "predefinedMetricSpecification": {
+      "predefinedMetricType": "ECSServiceAverageCPUUtilization"
+    },
+    "scaleInCooldown": 300,
+    "scaleOutCooldown": 300
+  }
+}
+```
 
+YAML Example:
 ```yaml
 scalableDimension: ecs:service:DesiredCount
 serviceNamespace: ecs
@@ -1525,11 +1546,11 @@ To attach your AWS CloudWatch alarms to a scaling policy, simply add a Harness S
 
 // to fetch scaling policy arn, run this
 
-aws application-autoscaling describe-scaling-policies --service-namespace ecs --resource-id service/<+infra.cluster>/<+execution.steps.ECS_DEPLOY_STEP_ID.output.serviceName> --region <+infra.region>
+scaling_policy=$(aws application-autoscaling describe-scaling-policies --service-namespace ecs --resource-id service/${cluster}/${serviceName})
 
 // to attach cloud watch alarm to scaling policy.
 
-aws cloudwatch put-metric-alarm --alarm-name ALARM_NAME --alarm-actions SCALING_POLICY_ARN
+aws cloudwatch put-metric-alarm --alarm-name $ALARM_Up --alarm-actions "$policy" --evaluation-periods 1 --comparison-operator GreaterThanOrEqualToThreshold --metric-name CPUUtilization --period 60 --namespace "AWS/ECS" --statistic Average --threshold 80 --unit Percent --dimensions Name=ClusterName,Value=$cluster Name=ServiceName,Value=$serviceName
 ```
 
 ## See also

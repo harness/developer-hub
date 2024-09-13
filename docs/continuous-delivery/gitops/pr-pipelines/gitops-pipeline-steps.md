@@ -156,10 +156,22 @@ Once your GitOps application is updated, you can use the GitOps Sync step to dep
 
 This step triggers a sync for your existing or updated GitOps application.
 
-After selecting this step, in **Advanced Configuration**, select the application you want to sync and configure the sync options. Optionally, click on the **Wait until healthy** checkbox, if you would like the step to run until the application reaches it's "Healthy" state.
+Optionally, click on the **Wait until healthy** checkbox, if you would like the step to run until the application reaches it's "Healthy" state.
+
+In **Advanced Configuration**, select the application you want to sync and configure the sync options. You can either can either choose an application or applications manually, or you can match up to 1000 applications using a regex filter.
 
 ![](../use-gitops/static/gitopssync-step.png)
 
 The sync options provided are the same options you receive while syncing an application in GitOps directly.
+
+### GitOps Get App Details step
+
+This step fetches the details and status of your application. 
+
+Enter your application name in the **Application** field. Currently, this field does not support Harness expressions. 
+
+If **Hard Refresh** is enabled, the application status will be hard refreshed when retrieving the information. 
+
+The data will be returned as a JSON payload that will be parsed by the step. The response can be referenced using Harness expressions in subsequent steps. 
 
 This completes all the configurable steps for GitOps in Harness pipelines. Happy Deploying!

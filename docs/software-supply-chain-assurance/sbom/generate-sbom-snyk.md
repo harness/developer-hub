@@ -1,5 +1,5 @@
 ---
-title: Ingest SBOM from Snyk into SSCA
+title: Ingest SBOM from Snyk into SCS
 description: You can easily ingest SBOM results generated from Snyk
 sidebar_position: 30
 ---
@@ -9,12 +9,12 @@ import CosignKeyGeneration from '/docs/software-supply-chain-assurance/shared/ge
 This workflow describes how to ingest Snyk scan results into a Harness pipeline. STO supports the following scan approaches for the following Snyk products:
 
 - Snyk Container SBOM via an ingestion workflow
-- Snyk Open Source SBOM via [STO Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans#snyk-repository-orchestration-example)
+- Snyk Open Source SBOM via [STO Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning)
 
 
 ## Generating and ingesting a Snyk Container SBOM
 
-A [Software Bill of Materials (SBOM)](https://cyclonedx.org/capabilities/sbom/) is a list of all the components, libraries, and other dependencies used in a software application. Harness SSCA can ingest [JSON SPDX](https://spdx.dev/learn/overview/) or [CycloneDx](https://cyclonedx.org/specification/overview/) formatted SBOM from any tool that can generate these report formats.
+A [Software Bill of Materials (SBOM)](https://cyclonedx.org/capabilities/sbom/) is a list of all the components, libraries, and other dependencies used in a software application. Harness SCS can ingest [JSON SPDX](https://spdx.dev/learn/overview/) or [CycloneDx](https://cyclonedx.org/specification/overview/) formatted SBOM from any tool that can generate these report formats.
 
 ### Generate the keys for SBOM Attestation - optional
 For enhanced trust and verification of your SBOM's integrity, the SBOM Orchestration step offers optional signing and attestation generation. This functionality requires a private key, password, and corresponding public key. If you choose to skip signing, you can proceed without generating or storing these keys.
@@ -65,7 +65,7 @@ Here's how to set these keys if you choose to enable signing
 
 ### Configure the STO scan step to generate SBOM
 
-Configure the [Snyk STO scanner step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans#snyk-repository-orchestration-example), and make sure you select **Generate SBOM** and the **SBOM Format**.
+Configure the [Snyk STO scanner step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning#snyk-code-scan---orchestration-mode), and make sure you select **Generate SBOM** and the **SBOM Format**.
 
 <DocImage path={require('../static/generate-sbom-blackduck-00.png')} width="60%" height="60%" title="Click to view full size image" />
 
