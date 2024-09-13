@@ -46,67 +46,6 @@ Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. 
 If you are a first-time chaos module user or a Platform user who has not used resilience probes, you can create a resilience probe directly from the Chaos Studio drawer (from within an experiment). For this, you will see an option to add a system probe (which is a health check system probe) as a one-click button. This will not be present if you have configured at least one resilience probe.
 :::
 
-## Create a Resilience Probe Using YAML
-
-The entire manifest is available as a YAML file, which can be accessed by switching to the YAML view in Chaos Studio. Below is a sample manifest for the pod delete fault.
-
-```yaml
-- name: pod-cpu-hog-dqt
-      inputs:
-        artifacts:
-          - name: pod-cpu-hog-dqt
-            path: /tmp/chaosengine-pod-cpu-hog-dqt.yaml
-            raw:
-              data: |
-                apiVersion: litmuschaos.io/v1alpha1
-                kind: ChaosEngine
-                metadata:
-                  annotations:
-                    probeRef: '[{"mode":"Continuous","probeID":"cart-svc-availability-check"},{"mode":"Edge","probeID":"boutique-website-latency-check"},{"mode":"Edge","probeID":"cart-pods-status-checks"},{"mode":"EOT","probeID":"ping-google"}]'
-                  creationTimestamp: null
-                  generateName: pod-cpu-hog-dqt
-                  labels:
-                    context: pod-cpu-hog
-                    workflow_name: boutique-cart-cpu-hog
-                    workflow_run_id: '{{ workflow.uid }}'
-                  namespace: '{{workflow.parameters.adminModeNamespace}}'
-                spec:
-                  appinfo:
-                    appkind: deployment
-                    applabel: app=cartservice
-                    appns: boutique
-                  chaosServiceAccount: litmus-admin
-                  components:
-                    runner:
-                      resources: {}
-                  engineState: active
-                  experiments:
-                  - name: pod-cpu-hog
-                    spec:
-                      components:
-                        env:
-                        - name: TOTAL_CHAOS_DURATION
-                          value: "61"
-                        - name: CPU_CORES
-                          value: "2"
-                        - name: PODS_AFFECTED_PERC
-                          value: "100"
-                        - name: CONTAINER_RUNTIME
-                          value: containerd
-                        - name: SOCKET_PATH
-                          value: /run/containerd/containerd.sock
-                        resources: {}
-                        securityContext:
-                          containerSecurityContext: {}
-                          podSecurityContext: {}
-                        statusCheckTimeouts: {}
-                      rank: 0
-                  jobCleanUpPolicy: retain
-                status:
-                  engineStatus: ""
-                  experiments: null
-```
-
 ## Edit a Resilience Probe
 
 You can edit a resilience probe by navigating to the probe you wish to edit. Click the three vertical dot menu to the extreme right of the probe, and choose **Edit probe**. Modify the properties you wish to, and click **Save**.
@@ -128,9 +67,7 @@ This step is not required if you use the user interface.
 
 ## Enable a Probe
 
-You need to enable a probe before using it. Go to **Chaos** module, select **Resilience Probes** and select the **:** icon of the probe to enable.
-
-1. Select **Enable**.
+1. Go to **Chaos** module, select **Resilience Probes** and select the **:** icon of the probe to enable. Select **Enable**.
 
   ![](./static/use-probe/enable-1.png)
 
@@ -143,12 +80,13 @@ You need to enable a probe before using it. Go to **Chaos** module, select **Res
   ![](./static/use-probe/enable-3.png)
 
 :::tip
-By default, **Enable Only** is applied in case you close the modal when selecting between the options **Bulk Enable** and **Enable Only**.
+- By default, **Enable Only** is applied in case you close the modal when selecting between the options **Bulk Enable** and **Enable Only**.
+- You need to enable a probe if it is in the disabled state.
+- A probe is enabled by default.
 :::
 
 ## Use a Resilience Probe
 
-Before using a probe, [enable it](#enable-a-probe).
 1. Go to the chaos experiment for wish you wish to set up probe/s. Move to **probes** tab and click **+Select or Add new probes**.
 
     ![nav](./static/use-probe/select-1.png)

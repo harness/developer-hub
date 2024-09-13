@@ -120,7 +120,8 @@ Probe status is the single source of truth when executing a chaos experiment. Th
 ### Delete resilience probes
 
 You can delete a probe only after [disabling it](/docs/chaos-engineering/use-harness-ce/probes/use-probe#disable-a-probe). Go to Disable Probes for more information.
-- When you **Disable only**, you will lose the history of that probe, but experiment runs that used the probe will contain the history of the probe.
+- When you select **Disable only**, the probe won't be available for further scheduling when selecting the probe from the UI. If the older runs (or experiment) manifest used that probe, successive runs of the experiment will be blocked with the message that the probe is disabled. This is because the probe is not removed since it is not a **Bulk Disable** operation. You will need to manually remove the probe references from the manifest.
+- When you select **Disable Only**, the history of the probe would be intact and you can see older probe executions associated with it.
 - Once you **Bulk disable** a probe, information about the probe reference is also deleted from all the manifest references, that is, the probe is removed from the `probeRef` annotation. This ensures that the next possible run will not schedule the probe.
 - Only when you **hard delete** a probe, you can reuse the name of that probe.
 
