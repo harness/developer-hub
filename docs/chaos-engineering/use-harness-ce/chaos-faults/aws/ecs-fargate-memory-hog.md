@@ -1,6 +1,7 @@
 ---
 id: ecs-fargate-memory-hog
 title: ECS Fargate memory hog
+canonical_url: https://www.harness.io/blog/aws-fargate-a-cloud-based-container-solution-without-kubernetes
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-fargate-memory-hog
 - /docs/chaos-engineering/chaos-faults/aws/ecs-fargate-memory-hog

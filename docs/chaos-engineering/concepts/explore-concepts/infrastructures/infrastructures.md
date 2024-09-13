@@ -1,6 +1,7 @@
 ---
 id: infrastructure
 sidebar_position: 3
+canonical_url: https://www.harness.io/blog/chaos-engineering
 title: Chaos Infrastructure
 redirect_from:
 - /docs/chaos-engineering/technical-reference/architecture/kubernetes

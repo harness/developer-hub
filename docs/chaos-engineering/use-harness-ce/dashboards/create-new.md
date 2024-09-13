@@ -1,6 +1,7 @@
 ---
 title: Create new dashboard
 sidebar_position: 2
+canonical_url: https://www.harness.io/blog/chaos-engineering-tools
 description: Guide to create a new dashboard and visualize entities of a chaos experiment
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/create-a-new-dashboard
