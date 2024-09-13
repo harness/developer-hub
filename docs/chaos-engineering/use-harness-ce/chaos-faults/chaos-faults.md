@@ -1,6 +1,7 @@
 ---
 id: chaos-faults
 title: Chaos faults
+canonical_url: https://www.harness.io/blog/harness-chaos-engineering-landscape
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/
 - /docs/chaos-engineering/chaos-faults/
