@@ -68,28 +68,28 @@ The following CIS v1.0 rules are supported by Harness for the evaluations, and H
 
 | Rule ID  | Name                                                     | Platform | Entity |
 |----------|----------------------------------------------------------|----------|--------|
-| 2.3.1    | Definition of All Build Steps as Code                    | CI/CD    | CI/CD  |
-| 2.3.5    | Minimized Access to Build Process Triggering             | CI/CD    | CI/CD  |
-| 2.3.7    | Automated Vulnerability Scanning for Pipelines           | CI/CD    | CI/CD  |
-| 2.3.8    | Automated Scanning for Sensitive Data in Pipeline Files  | CI/CD    | CI/CD  |
-| 2.4.2    | Locking of All External Dependencies Used in the Build Process | CI/CD    | CI/CD  |
-| 2.4.6    | Production of SBOM in Pipeline Steps                     | CI/CD    | CI/CD  |
+| 2.3.1    | Definition of All Build Steps as Code                    | GitHub    | CI/CD  |
+| 2.3.5    | Minimized Access to Build Process Triggering             | GitHub    | CI/CD  |
+| 2.3.7    | Automated Vulnerability Scanning for Pipelines           | GitHub    | CI/CD  |
+| 2.3.8    | Automated Scanning for Sensitive Data in Pipeline Files  | GitHub    | CI/CD  |
+| 2.4.2    | Locking of All External Dependencies Used in the Build Process | GitHub    | CI/CD  |
+| 2.4.6    | Production of SBOM in Pipeline Steps                     | GitHub    | CI/CD  |
 
 ### Dependencies
 
 | Rule ID  | Name                                                        | Platform | Entity   |
 |----------|-------------------------------------------------------------|----------|----------|
-| 3.1.7    | Pinning of Dependencies to Specific, Verified Versions       | CI/CD    | CI/CD    |
-| 3.2.2    | Automatic Scanning for Known Vulnerabilities in Packages     | CI/CD    | CI/CD    |
-| 3.2.3    | Automatic Scanning for License Implications in Packages      | CI/CD    | CI/CD    |
+| 3.1.7    | Pinning of Dependencies to Specific, Verified Versions       | GitHub    | CI/CD    |
+| 3.2.2    | Automatic Scanning for Known Vulnerabilities in Packages     | GitHub    | CI/CD    |
+| 3.2.3    | Automatic Scanning for License Implications in Packages      | GitHub    | CI/CD    |
 
 ### Artifacts
 
 | Rule ID  | Name                                             | Platform  | Entity   |
 |----------|--------------------------------------------------|-----------|----------|
-| 4.2.3    | MFA for User Access to the Package Registry      | Artifacts| Artifacts|
-| 4.2.5    | Revocation of Anonymous Access to Artifacts      | Artifacts | Artifacts|
-| 4.3.4    | Security of Webhooks in the Package Registry     | Artifacts | Artifacts|
+| 4.2.3    | MFA for User Access to the Package Registry      | GitHub| Artifacts|
+| 4.2.5    | Revocation of Anonymous Access to Artifacts      | GitHub | Artifacts|
+| 4.3.4    | Security of Webhooks in the Package Registry     | GitHub | Artifacts|
 
 </details>
 
@@ -171,7 +171,7 @@ The following rules are supported by Harness to perform evaluations, and Harness
 
 </details>
 
-### Harness Standards
+<!-- ### Harness Standards
 The following rules are defined by Harness
 <details>
 <summary>Harness Standards</summary>
@@ -180,4 +180,4 @@ The following rules are defined by Harness
 | 2.1.7   | Authorization not enforced for custom triggers        | Harness   | CI/CD    | High   |
 
 
-</details>
+</details> -->

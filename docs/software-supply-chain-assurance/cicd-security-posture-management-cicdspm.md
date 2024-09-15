@@ -6,7 +6,7 @@ sidebar_position: 21
 
 # CI/CD Security Posture Management with Harness SCS
 
-Understanding the risk posture of your CI/CD pipelines is essential for maintaining a secure software delivery process and protecting the overall supply chain. Harness SCS's CI/CD SPM offers a comprehensive view of the potential risks associated with your pipelines. It identifies risk and compliance issues stemming from pipeline configurations, using industry-standard benchmarks like the [OWASP Top 10 CI/CD Security Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/) and Harness's own security standards.
+Understanding the risk posture of your CI/CD pipelines is essential for maintaining a secure software delivery process and protecting the overall supply chain. Harness SCS's CI/CD SPM offers a comprehensive view of the potential risks associated with your pipelines. It identifies risk and compliance issues stemming from pipeline configurations, using industry-standard benchmarks like the [OWASP Top 10 CI/CD Security Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/) and Harness Supply Chain standards.
 
 <DocImage path={require('./static/cicdspm-overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
