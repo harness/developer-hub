@@ -313,6 +313,12 @@ import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
+## Proxy settings
+
+import ProxySettings from './shared/proxy-settings.md';
+
+<ProxySettings />
+
 ## YAML pipeline example
 
 The following pipeline example illustrates an orchestration workflow. It consists of a Semgrep step that scans a code repository and then ingests, normalizes, and deduplicates the results.

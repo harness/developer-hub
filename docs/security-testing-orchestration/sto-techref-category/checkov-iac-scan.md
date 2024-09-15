@@ -238,3 +238,9 @@ import ScannerRefAdditionalConfigs from '/docs/security-testing-orchestration/st
 import ScannerRefAdvancedSettings from '/docs/security-testing-orchestration/sto-techref-category/shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
+
+## Proxy settings
+
+import ProxySettings from './shared/proxy-settings.md';
+
+<ProxySettings />
