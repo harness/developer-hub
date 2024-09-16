@@ -48,6 +48,10 @@ variable "harness_gcp_sa" {
 }
 ```
 
+## Get Project List
+
+We two options to get the project list.  Option 1 is to use the GCP provider to get all project in the organization.
+
 Get all projects in a specific folder:
 ```
 data "google_projects" "my-org-projects" {
@@ -59,6 +63,15 @@ Get all projects in an organization:
 ```
 data "google_projects" "my-org-projects" {
   filter = "name:*"
+}
+```
+
+Option 2 is to use the `locals` value to define statically.  This is useful when you don't have a solid naming convention to filter results from option 1.
+
+```
+locals {
+  gcp-non-prod = ['project-1', 'project-2']
+  gcp-prod = ['project-3', 'project-4']
 }
 ```
 

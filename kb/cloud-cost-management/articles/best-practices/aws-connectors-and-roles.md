@@ -33,6 +33,26 @@ provider "aws" {}
 provider "harness" {}
 ```
 
+
+## Get Account List
+
+We two options to get the account list.  Option 1 is to use the AWS provider to get all accounts in the organization.
+
+```
+data "aws_organizations_organization" "this" {}
+```
+
+Option 2 is to use the `locals` value to define statically.  This is useful when you don't have a solid naming convention to filter results from option 1.
+
+```
+locals {
+  aws-non-prod = ['account-1', 'account-2']
+  aws-prod = ['account-3', 'account-4']
+}
+```
+
+We need to leverage the AWS and Harness Terraform providers. We will use these to create IAM roles and CCM connectors.
+
 ## Create Roles In Each AWS Account via Terraform
 
 If you have the ability to provision roles into every AWS account using Terraform, you can use this module to simplify provisioning of the role.  In this example, we are applying account-wide read only access as the role permission for all services. For what can be enabled using this module please refer to [this guide](https://github.com/harness-community/terraform-aws-harness-ccm).
