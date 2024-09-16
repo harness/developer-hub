@@ -15,11 +15,11 @@ You can scan your container images and extract scan results from [Amazon Elastic
 ## Important notes for running AWS ECR scans in STO
 
 
-- You need to add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to scan container images on Kubernetes or Docker build infrastructures. 
+- To scan container images on Kubernetes or Docker build infrastructures, you can either use a [Docker-in-Docker (DinD) background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline) or scan [without Docker-in-Docker](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#when-to-use-without-docker-in-docker), depending on your use case.
 
 - You need to run the scan step with root access if either of the following apply:
 
-  - You need to run a [Docker-in-Docker background service](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#docker-in-docker-requirements-for-sto).
+  - You need to run a [Docker-in-Docker background service](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#configuring-docker-in-docker-dind-for-your-pipeline).
 
   - You need to add trusted certificates to your scan images at runtime. 
 

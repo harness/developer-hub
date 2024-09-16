@@ -20,7 +20,7 @@ You can scan your repositories and container images using [Black Duck Hub](https
 ## Important notes for running Black Duck Hub scans in STO
 
 
-- You need to add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to scan container images on Kubernetes or Docker build infrastructures. 
+- You need to add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline) to scan container images on Kubernetes or Docker build infrastructures. 
 
 - You need to run the scan step with root access if either of the following apply:
 
