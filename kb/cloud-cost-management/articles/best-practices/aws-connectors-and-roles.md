@@ -36,7 +36,7 @@ provider "harness" {}
 
 ## Get Account List
 
-We two options to get the account list.  Option 1 is to use the AWS provider to get all accounts in the organization.
+We have two options to get the account list.  Option 1 is to use the AWS provider to get all accounts in the organization.
 
 ```
 data "aws_organizations_organization" "this" {}
@@ -50,8 +50,6 @@ locals {
   aws-prod = ['account-3', 'account-4']
 }
 ```
-
-We need to leverage the AWS and Harness Terraform providers. We will use these to create IAM roles and CCM connectors.
 
 ## Create Roles In Each AWS Account via Terraform
 

@@ -42,7 +42,7 @@ variable "harness_principal_id" {
 
 ## Get Subscription List
 
-We two options to get the subscription list.  Option 1 is to use the Azure provider to get all subscriptions in the tenant.
+We have two options to get the subscription list.  Option 1 is to use the Azure provider to get all subscriptions in the tenant.
 
 ```
 data "azurerm_subscriptions" "available" {}

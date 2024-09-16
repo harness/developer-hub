@@ -50,7 +50,7 @@ variable "harness_gcp_sa" {
 
 ## Get Project List
 
-We two options to get the project list.  Option 1 is to use the GCP provider to get all project in the organization.
+We have two options to get the project list.  Option 1 is to use the GCP provider to get all project in the organization.
 
 Get all projects in a specific folder:
 ```
