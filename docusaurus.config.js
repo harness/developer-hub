@@ -406,6 +406,10 @@ async function config() {
                   label: 'Instructor-Led Training',
                   to: '/university?ilt',
                 },
+                {
+                  label: 'Partners',
+                  to: 'https://partnertraining.harness.io/',
+                },
               ],
             },
             {
