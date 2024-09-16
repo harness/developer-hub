@@ -7,6 +7,7 @@ export default async (req: Request, context: Context): Promise<Response> => {
     'Access-Control-Allow-Headers': 'Content-Type',
   };
 
+
   if (req.method === 'OPTIONS') {
     return new Response('ok', {
       status: 200,
