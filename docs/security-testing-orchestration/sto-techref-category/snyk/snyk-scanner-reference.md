@@ -264,6 +264,6 @@ import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 
 ## Proxy settings
 
-import ProxySettings from './shared/proxy-settings.md';
+import ProxySettings from '../shared/proxy-settings.md';
 
 <ProxySettings />
