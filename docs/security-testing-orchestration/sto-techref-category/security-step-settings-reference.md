@@ -60,7 +60,7 @@ STO supports two primary container scanning workflows, **Docker-in-Docker (DinD)
 
 You should use Docker-in-Docker if:
 - Your scanner requires Docker access to perform operations inside a container.
-- You're using a **Custom Scan** step or **DataLoad** scan modes that depend on Docker functionality.
+- You're using a **Custom Scan** step or **DataLoad/OrchestratedScan** scan modes that depend on Docker functionality.
 - Your scanner does not support [without-DinD scanning](#scanners-that-support-without-dind-flow) (see the table below).
 
 #### Configuring Docker-in-Docker (DinD) for your pipeline
@@ -98,19 +98,9 @@ This forces the pipeline to avoid using Docker inside the container.
 <details>
 <summary>Without-DinD supported scanners</summary>
 
-| **Scanner**         | **Supports Without-DinD Scanning** |
-|---------------------|---------------------------------|
-| Anchor              | ✅                               |
-| Aqua Security       | ✅                               |
-| Aqua Trivy          | ✅                               |
-| AWS ECR Scan        | ✅                               |
-| Black Duck          | ❌ Does not support              |
-| Custom Scan         | ❌ Does not support              |
-| Grype               | ✅                               |
-| Prisma Cloud        | ✅                               |
-| Snyk                | ✅                               |
-| Sysdig              | ✅                               |
-| Wiz                 | ✅                               |
+import WithoutDinDSupportedScanners from '/docs/security-testing-orchestration/sto-techref-category/shared/_without-dind-supported-scanners.md';
+
+<WithoutDinDSupportedScanners />
 
 </details>
 
