@@ -134,7 +134,7 @@ git config --global user.name "Your Name"
 
 1. You can install and configure the Gitspaces VS Code extension to use it on your VS Code Desktop App.
 
-2. Install the Gitspaces VS Code Extension on fro VS COde Extensions Marketplace. 
+2. Install the Gitspaces VS Code Extension on from VS COde Extensions Marketplace. 
 
 3. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. 
 
