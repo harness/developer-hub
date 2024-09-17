@@ -380,7 +380,7 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
    ![](./static/harness-cd-git-ops-quickstart-15.png)
 
 21.  Select **Continue**.
-22.  The **Destination** section provides a dropdown to choose between Cluster URL and Cluster name. If you select "Server", you can choose from a list of **Cluster URL**, and if you select "Name",  you can choose from a list of **Cluster Name**.
+22.  The **Destination** section provides a dropdown that helps you choose how you want to define your cluster. Select whether you want to use cluster URL (Server) or cluster name (Name), and select the cluster you added earlier.
 
    Since a Harness GitOps Cluster contains the authentication settings needed to access the cluster, your Harness GitOps Application can select any Cluster.
 23.  In **Namespace**, enter **default**.
