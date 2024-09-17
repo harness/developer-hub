@@ -1,8 +1,10 @@
 ---
 title: Catalog Ingestion API
 description: Update Catalog Metadata using Ingestion APIs
-sidebar_position: 5
+sidebar_position: 1
 sidebar_label: Ingestion API
+redirect_from:
+  - docs/internal-developer-portal/catalog/custom-catalog-properties
 ---
 
 <DocVideo src="https://www.youtube.com/embed/mI_KIuMpnBM?si=2SfPcO-JpFvAMJrT" />

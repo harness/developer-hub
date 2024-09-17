@@ -3,11 +3,11 @@ title: Usage of Catalog Ingestion APIs
 description: Steps to use Catalog Ingestion API to ingest metadata and use the information on catalog overview and workflows
 sidebar_position: 7
 sidebar_label: Usage of Catalog Ingestion API
+redirect_from:
+  - docs/internal-developer-portal/catalog/ccp-for-workflows
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
-
-<DocVideo src="https://www.youtube.com/embed/mI_KIuMpnBM?si=2SfPcO-JpFvAMJrT" />
 
 ## Introduction
 
