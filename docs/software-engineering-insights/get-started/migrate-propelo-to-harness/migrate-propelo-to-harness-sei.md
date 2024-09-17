@@ -25,11 +25,14 @@ Product support will not change either.
 ## Important dates
 
 The Propelo product / platform is being deprecated and will undergo the following milestones in months to come:
-1. **02/28/2025 - End of Support (EoS)**
-No Harness support will be provided on the Propelo platform after this date. Only critical Security fixes may be provided. All customers will be supported on the Harness SEI module instead.
-03/31/2025 - End of Life (EoL)
-The Propelo platform will be completely brought down and all accounts will become un-operational. Harness accounts with SEI subscriptions will continue to operate and be supported.
 
+#### 02/28/2025 - End of Support (EoS)
+
+No Harness support will be provided on the Propelo platform after this date. Only critical Security fixes may be provided. All customers will be supported on the Harness SEI module instead.
+
+#### 03/31/2025 - End of Life (EoL)
+
+The Propelo platform will be completely brought down and all accounts will become un-operational. Harness accounts with SEI subscriptions will continue to operate and be supported.
 
 ## What’s new
 
@@ -41,7 +44,7 @@ Business Alignment metrics will help you understand where engineers are allocati
 
 The new profile also introduces a Business Alignment report, which consolidates all existing effort investment reports within the Propelo application into a single, comprehensive view. This report supports advanced features such as search, multiple drill-down views, and more.
 
-For detailed information, refer to the Business Alignment documentation.
+For detailed information, refer to the [Business Alignment documentation](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile).
 
 ### Simplified Navigation
 
@@ -178,8 +181,8 @@ The following features are currently not supported in the SEI module of Harness:
 
 The following Harness platform features are currently not supported in the SEI module of Harness:
 
-* Delegates (Alternative: Ingestion Satellites)
-* Connectors (Alternative: Integrations)
+* Delegates (SEI uses the [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview) to setup integrations with on-prem tools)
+* Connectors (SEI uses [integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview) to connect with third party tools)
 
 ## Migration methodology
 
@@ -255,9 +258,9 @@ Harness supports Single Sign-On (SSO) with SAML, LDAP (including Active Director
 
 ### Ingestion Satellite
 
-If you were using an Ingestion Satellite for on-premise integrations, follow these steps to update the satellite.yml file and re-run the container:
+If you were using an Ingestion Satellite for on-premise integrations, follow these steps to update the `satellite.yml` file and re-run the container:
 
-* In the satellite.yml file, replace the existing Account ID in the tenant field with the new Account ID of your Harness account. You can find this ID in the Harness account URL.
+* In the `satellite.yml` file, replace the existing **Propelo Account ID** in the tenant field with the new **Account ID** of your **Harness account**. You can find this ID in the Harness account URL.
 * Update the Base URL to match the appropriate environment:
   * **Base URL (PROD2):** `https://app.harness.io/gratis/sei/api/`
   * **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/`   
@@ -266,7 +269,7 @@ If you were using an Ingestion Satellite for on-premise integrations, follow the
 
 If you’re unsure which environment to use, contact the Support Executive assigned to your Harness account.
 
-After updating the satellite.yml file, run the container to schedule the ingestion process for your integrations.
+After updating the `satellite.yml` file, run the container to schedule the ingestion process for your integrations.
 
 ### Jenkins Plugin
 
