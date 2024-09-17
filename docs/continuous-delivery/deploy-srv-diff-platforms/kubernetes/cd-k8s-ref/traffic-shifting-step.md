@@ -131,7 +131,7 @@ Before you begin, make sure you have an understanding of Istio and how it works 
               Currently this feature is behind the feature flag `CDS_DELEGATE_VIRTUAL_SERVICE_SUPPORT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
               :::
 
-              With the introduction of [delegate virtual service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#Delegate) support, the **Host** field can now be left empty when using custom rewrite logic. This allows for more dynamic traffic routing configurations, enabling users to rewrite traffic-routing logic to fit their deployment strategies. To configure this, you need to check the **Delegate Service** option, which creates a delegate virtual service.. When this option is checked, the **Host** field will be left empty.
+              With the introduction of [delegate virtual service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#Delegate) support, the **Host** field can now be left empty when using custom rewrite logic. This allows for more dynamic traffic routing configurations, enabling users to rewrite traffic-routing logic to fit their deployment strategies. To configure this, you need to check the **Delegate Service** option, which creates a delegate virtual service. When this option is checked, the **Host** field will be left empty.
 
               This is available for **Canary Deployment, K8s Traffic routing, K8s Blue Green Deploy**.
 
