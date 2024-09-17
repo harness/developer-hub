@@ -123,7 +123,7 @@ This error indicates there may be a problem with the Docker installation on the 
 
 ### How do I check if the Docker daemon is running in a local runner build infrastructure?
 
-To check if the Docker daemon is running, use the `docker info` command. An error response indicates the daemon is not running. For more information, go to the Docker documentation on [Troubleshooting the Docker daemon](https://docs.docker.com/config/daemon/troubleshoot/)
+To check if the Docker daemon is running, use the `docker info` command. An error response indicates the daemon is not running. For more information, go to the Docker documentation on [Troubleshooting the Docker daemon](https://docs.docker.com/engine/daemon/troubleshoot/)
 
 ### Runner process quits after terminating SSH connection for local runner build infrastructure
 
@@ -1479,7 +1479,7 @@ No, when using base image connector, ensure the prefix of the url use for pullin
 
 Docker uses a configuration file to store authentication details. If two registry URLs share the same prefix, Docker will only create a single authentication entry for that prefix, which will cause a conflict when accessing the second registry.
      
-As an example, both https://index.docker.io/v1/abc/test1 and https://index.docker.io/v1/xyz/test2 have the same prefix (https://index.docker.io/v1/), so Docker cannot differentiate between them for authentication, causing the second set of credentials to overwrite the first.
+As an example, both `https://index.docker.io/v1/abc/test1` and `https://index.docker.io/v1/xyz/test2` have the same prefix `https://index.docker.io/v1/`, so Docker cannot differentiate between them for authentication, causing the second set of credentials to overwrite the first.
      
 ### What is the default build context when using Build and Push steps?
 

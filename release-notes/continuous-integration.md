@@ -50,8 +50,8 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 - Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature flag must be enabled whenever a base image connector is used (CI-13924)
 
-- Bitbucket has in issue in their api does not support the character slash ( / ) [https://jira.atlassian.com/browse/BCLOUD-20223](https://jira.atlassian.com/browse/BCLOUD-20223)
-This can be worked around by using query parameters in the Bitbucket api [https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww](https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww) (CI-13826)
+- Bitbucket has an issue in their API; it does not support the slash character ( / ) [https://jira.atlassian.com/browse/BCLOUD-20223](https://jira.atlassian.com/browse/BCLOUD-20223)
+This can be worked around by using query parameters in the Bitbucket api `https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww` (CI-13826)
 
 - The contrast of the select repository and other areas of the UI was very low in the dark theme. The contrast has been improved for a better UI experience. (CI-13530)
 
