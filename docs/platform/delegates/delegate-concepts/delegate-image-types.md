@@ -48,6 +48,15 @@ Harness Delegate images are multi-architecture under the same tag. If you naviga
   | Git | NA | 2.43.0 |
   | SCM | The Harness-generated library and version are changed with every fix. | The Harness-generated library and version are changed with every fix. |
 
+Latest Delegate image version and their respective SCM versions are listed below:
+
+| Delegate version | SCM versions |
+| --- | --- |
+| 24.08.83705 | a81c96813 |
+| 24.08.83704 | e92737411 |
+| 24.08.83701 | ffe83a057 |
+| 24.07.83611 | 43baeda70 |
+
 ## Docker pull commands
 
 The table below contains the pull commands for retrieving delegate images.
