@@ -221,7 +221,7 @@ You must have:
 
 - A `{{ cookiecutter.project_name }}/` directory, where `project_name` is defined in your `cookiecutter.json`.
 
-Beyond that, you can have whatever files/directories you want.
+Beyond that, you can have whatever files/directories you want. Here are few examples. 
 
 :::info
  
@@ -323,11 +323,16 @@ The following topics provide more information about creating code repo connector
 * Bitbucket: [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
 * GitHub: [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 * GitLab: [GitLab Connector Settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-* Other Git providers:
-  * [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
-  * [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
 
 #### Org, Repo, Description, Default Branch
+
+:::info
+
+For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well, in-case it's not a personal account
+
+![](./static/group-path-create-repo.png)
+
+:::
 
 Add the org, repo name, Repo Description and Default branch for the repo you want to create.
 
@@ -474,11 +479,16 @@ The following topics provide more information about creating code repo connector
 * Bitbucket: [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
 * GitHub: [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 * GitLab: [GitLab Connector Settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-* Other Git providers:
-  * [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
-  * [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
 
 #### Org, Repo, Code Directory, Branch
+
+:::info
+
+For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well.
+
+![](./static/group-path.png)
+
+:::
 
 Add the Org, Repo Name, Repo Description and Branch Name where you want to push the code.
 
@@ -541,11 +551,16 @@ The following topics provide more information about creating code repo connector
 * Bitbucket: [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
 * GitHub: [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 * GitLab: [GitLab Connector Settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-* Other Git providers:
-  * [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
-  * [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
+
 
 #### Org, Repo, Branch, File Path
+
+:::info
+
+For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well.
+
+:::
+
 
 Add the Org, Repo Name, Branch and the File path relative to the root of the repository, where your `catalog-info.yaml` is present.
 
