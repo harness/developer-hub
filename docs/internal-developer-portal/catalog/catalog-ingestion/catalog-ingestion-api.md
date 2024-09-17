@@ -13,7 +13,7 @@ redirect_from:
 
 With the introduction of Catalog Metadata Ingestion APIs, users now have the capability to append or update arbitrary metadata associated with catalog entities such as services, libraries, websites, etc without manually adding it to the `catalog-info.yaml`. This feature facilitates the integration of metadata sourced from internal systems such as cost trackers, service health checkers, security scans, or even from simple spreadsheets tracking personnel details.
 
-Also see - [Scorecards using Custom Data Sources](../scorecards/custom-data-source.md)
+Also see - [Scorecards using Custom Data Sources](../scorecards/custom-data-source)
 
 ## Key Features
 
