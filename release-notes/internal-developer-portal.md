@@ -26,7 +26,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 #### New features and enhancements
 
 - Harness IDP now has Backstage upgraded to the latest version. [IDP-2870]
-- New version of catalog ingestion APIs released with issue fixed from the previous versions. [IDP-3565]
+- New version of [catalog ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api) released with issue fixed from the previous versions. [IDP-3565]
 - Added support for [mkdocstrings](https://mkdocstrings.github.io/) plugin in TechDocs. [IDP-3570]
 
 #### Bug fixes
