@@ -241,7 +241,7 @@ Avoid using `allowedValues` with runtime inputs in list fields and use the sugge
 ## Allow Multi Selection and Single selection
 
 :::note
-Currently, multiple and single selection for runtime inputs is behind the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, multiple and single selection for runtime inputs is behind the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 :::
 
 You can select a **Mode** of selection while creating allowed values in Runtime Input:- 
@@ -263,7 +263,8 @@ You can use **Single Selection**, if you want to chose only one values from the 
 When writing pipelines in YAML, you can define Single Selection in allowed values by appending the `.selectOneFrom()` method to `<+input>`. For example: `<+input>.selectOneFrom(a,b,c)`.
 
 :::important note
-When using secrets as runtime inputs and configuring allowed values, the UI will not display an option for single selection. By default, only one value can be selected for a secret during runtime. 
+1. When using secrets as runtime inputs and configuring allowed values, the UI will not display an option for single selection. By default, only one value can be selected for a secret during runtime. 
+2. If FF `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES` is disbaled you will have an option to select single selection via allowed values as well, if it's enabled then single selection is only available via [UI and selectOneFrom](#single-selection). 
 :::
 
 
