@@ -24,6 +24,13 @@ Product support will not change either.
 
 ## Important dates
 
+The Propelo product / platform is being deprecated and will undergo the following milestones in months to come:
+1. **02/28/2025 - End of Support (EoS)**
+No Harness support will be provided on the Propelo platform after this date. Only critical Security fixes may be provided. All customers will be supported on the Harness SEI module instead.
+03/31/2025 - End of Life (EoL)
+The Propelo platform will be completely brought down and all accounts will become un-operational. Harness accounts with SEI subscriptions will continue to operate and be supported.
+
+
 ## What’s new
 
 We're excited to introduce several new features and improvements to the SEI module in the Harness platform. These updates will help you use SEI more effectively and gain better insights into your software delivery processes.
@@ -189,7 +196,7 @@ If you’ve decided to migrate, it’s crucial to plan and complete the necessar
 To get started, familiarize yourself with the Harness platform and its capabilities. Below is a list of resources to help you prepare:
 
 * [Harness SEI Documentation](/docs/software-engineering-insights/)
-* [Harness SEI FAQs and Knowledge Base](/kb/software-engineering-insights/)
+* [Harness SEI FAQs and Knowledge Base](/kb/sei)
 * [Harness SEI Release Notes](/release-notes/software-engineering-insights)
 * [Harness Blogs](https://www.harness.io/blog)
 * [Harness API Docs](https://apidocs.harness.io/)
@@ -306,7 +313,7 @@ This will display your active subscription details, including the number of cont
 You can use the following resources to learn more about the Harness platform.
 
 * [Harness SEI Documentation](/docs/software-engineering-insights/)
-* [Harness SEI FAQs and Knowledge Base](/kb/software-engineering-insights/)
+* [Harness SEI FAQs and Knowledge Base](/kb/sei)
 * [Harness SEI Release Notes](/release-notes/software-engineering-insights)
 * [Harness Blogs](https://www.harness.io/blog)
 * [Harness API Docs](https://apidocs.harness.io/)
