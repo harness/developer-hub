@@ -124,18 +124,19 @@ Before you begin, make sure you have an understanding of Istio and how it works 
               *Only applicable when using the Canary deployment step* You can use the placeholder `stable` and `canary` resource names. Which would effectively be replaced with the name of the stable and canary services, respectively.
               :::
 
-              :::note 
+             
 
-              **Delegate Virtual Service Support** 
-
+              - **Delegate Virtual Service Support** 
+              :::info note
               Currently this feature is behind the feature flag `CDS_DELEGATE_VIRTUAL_SERVICE_SUPPORT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+              :::
 
-              With the introduction of [delegate virtual service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#Delegate) support, the **Host** field can now be left empty when using custom rewrite logic. This allows for more dynamic traffic routing configurations, enabling users to rewrite traffic-routing logic to fit their deployment strategies. Additionally, a new **Delegate Service** option has been introduced to simplify the setup by automatically handling the host field for Istio’s Kubernetes virtual services.
+              With the introduction of [delegate virtual service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#Delegate) support, the **Host** field can now be left empty when using custom rewrite logic. This allows for more dynamic traffic routing configurations, enabling users to rewrite traffic-routing logic to fit their deployment strategies. To configure this, you need to check the **Delegate Service** option, which creates a delegate virtual service.. When this option is checked, the **Host** field will be left empty.
 
               This is available for **Canary Deployment, K8s Traffic routing, K8s Blue Green Deploy**.
 
               ![](./static/re-write-istio-canary.png)
-              :::
+              
 
             * **Weight**: Specify the percentage of traffic that should be routed to this host. The weight should be a numeric value in range [0 - 100].
 
