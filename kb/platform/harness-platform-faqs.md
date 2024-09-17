@@ -3360,3 +3360,8 @@ No, there is no way to find out which service account is associated with a servi
 
 ### How can I restrict a Harness secret so that it can only be accessed and used by a specific pipeline?
 You can use our RBAC and create a resource group and role so it can be used only in the required pipeline https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/#create-a-resource-group
+
+### How to send email to unregistered user in harness.
+To send email to unregisted user in harness, one has to setup his own SMTP server in account setting, harness default SMTP server will only able to send email to users registered in harness.
+
+
