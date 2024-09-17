@@ -810,8 +810,8 @@ For more details please refer to the Harness documentation on [Traffic Shifting 
 #### Does Harness support traffic-shifting for SpotInst deployments?
 No, the shift traffic feature is not currently available for SpotInst deployments
 
-#### How to switch fro rolling to Blue-Green deployment in harness.
-To update the deployment from rolling to blue-green - 
+#### How to switch from rolling to Blue-Green deployments in Harness.
+To update the deployment from rolling to blue-green:
 1. Update the Kubernetes deployment manually and add a label `harness.io/color: blue`
 2. Update the Kubernetes service and add the same label in the service selector manually.
 3. Then in your pipeline, change the type from rolling to blue-green and run the pipeline. 
