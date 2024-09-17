@@ -159,6 +159,9 @@ You can now search for branches in a given repository with support for infinite 
 | Github App | No | No |
 | Harness Code | Yes | Yes |
 
+1. [Repo Listing](#repo-listing) is not supported in Azure and Github Apps, but users can manually type in the desired repository name and add it.
+2. [Branch Listing](#branch-listing) is not supported in Github and Github Apps, but users can manually type in the desired branch name and add it.
+
 ### Multiple branch support
 
 Multiple users can make commits to multiple branches for the resources that are synced with the Git Provider. This provides the flexibility for various branching workflows.
