@@ -4,7 +4,6 @@ If you need to configure a different proxy (not using Secure Connect), you can m
 
 #### Definitions of Proxy variables:
 
-- `HTTPS_PROXY`: Specify the proxy server for HTTPS requests.
-- `HTTP_PROXY`: Specify the proxy server for HTTP requests.
-- `NO_PROXY`: Specify the domains that should bypass the proxy. You can use this to prevent certain traffic from being routed through the proxy.
-
+- `HTTPS_PROXY`: Specify the proxy server for HTTPS requests, example `https://sc.internal.harness.io:30000`
+- `HTTP_PROXY`: Specify the proxy server for HTTP requests, example `http://sc.internal.harness.io:30000`
+- `NO_PROXY`: Specify the domains as comma-separated values that should bypass the proxy. This allows you to exclude certain traffic from being routed through the proxy.
