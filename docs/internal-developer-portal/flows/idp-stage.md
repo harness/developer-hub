@@ -484,7 +484,7 @@ The following topics provide more information about creating code repo connector
 
 :::info
 
-For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well.
+For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well. In case of using the personal account, make sure you add the `account-id` in the path 
 
 ![](./static/group-path.png)
 
@@ -557,7 +557,7 @@ The following topics provide more information about creating code repo connector
 
 :::info
 
-For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well.
+For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well. In case of using the personal account, make sure you add the `account-id` in the path
 
 :::
 
