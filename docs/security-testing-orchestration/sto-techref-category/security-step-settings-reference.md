@@ -69,11 +69,11 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoDinDRequirements />
 
-To ensure the pipeline runs with Docker-in-Docker, add the following variable to the **Settings** of your step configuration:
+If you want to force STO to use Docker-in-Docker (DinD), set the following variable in the **Settings** section of your step configuration (optional):
 
 - `docker_mode`: `docker-in-docker`
 
-This ensures that the pipeline uses Docker inside the container for all required operations.
+This setting is optional and only needed if you want force the STO to use a specific mode. By default, STO will automatically choose the appropriate mode based on your environment.
 
 ### When to use Without-Docker-in-Docker
 
@@ -87,11 +87,11 @@ You should use without-Docker-in-Docker if:
 STO will automatically attempt to use the Without-DinD flow if it does not detect a Docker socket (`/var/run/docker.sock`), so in many cases, you won’t need to configure anything.
 :::
 
-To ensure the pipeline runs without using Docker-in-Docker, add the following variable to the **Settings** of your step configuration:
+If you want to force STO to use Without Docker-in-Docker flow, set the following variable in the **Settings** section of your step configuration (optional):
 
 - `docker_mode`: `without-docker-in-docker`
 
-This forces the pipeline to avoid using Docker inside the container.
+This setting is optional and only needed if you want force the STO to use a specific mode. By default, STO will automatically choose the appropriate mode based on your environment.
 
 
 ### Scanners that support Without-DinD flow
