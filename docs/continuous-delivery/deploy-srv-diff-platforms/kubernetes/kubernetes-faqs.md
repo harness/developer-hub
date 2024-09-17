@@ -810,6 +810,12 @@ For more details please refer to the Harness documentation on [Traffic Shifting 
 #### Does Harness support traffic-shifting for SpotInst deployments?
 No, the shift traffic feature is not currently available for SpotInst deployments
 
+#### How to switch fro rolling to Blue-Green deployment in harness.
+To update the deployment from rolling to blue-green - 
+1. Update the Kubernetes deployment manually and add a label `harness.io/color: blue`
+2. Update the Kubernetes service and add the same label in the service selector manually.
+3. Then in your pipeline, change the type from rolling to blue-green and run the pipeline. 
+
 #### Does Harness support Manual Authentication Configuration for Kubernetes EKS Deployments?
 Yes, Harness does support the manual authentication configurations for Kubernetes EKS deployments. User can pass in the URL to the cluster and any other authentication meta data for Harness to authenticate and deploy to the cluster.
 To use this feature, user should use Harness versions `24.07.83600` or above and must enable the Feature flag : `CDS_AWS_EKS_CLUSTER_MANUAL_CONFIGURATION`.
