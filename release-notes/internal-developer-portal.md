@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-08-30T20:00
+date: 2024-09-17T20:00
 sidebar_position: 12
 ---
 
@@ -16,6 +16,25 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## September 2024
+
+### Version 0.33.0
+
+<!-- September 17, 2024 -->
+
+#### New features and enhancements
+
+- We have upgraded our Backstage core version to v1.28. [IDP-2870]
+- [Catalog Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api) received a huge update with lots of new endpoints and use-cases supported. [IDP-3565]
+- Add [mkdocstrings](https://mkdocstrings.github.io/) plugin in TechDocs to generate docs from comments in code blocks. [IDP-3570]
+- New plugins added to the marketplace.
+  - [Argo-CD Plugin for Backstage](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-argo-cd#argo-cd-plugin-for-backstage)
+
+#### Bug fixes
+
+- Fixed issue with Jenkins Plugins integration using Delegate. [IDP-3551]
+- Fixed `AuthenticationError` issue for templates registered from Harness Code Repo. [IDP-3316]
 
 ## August 2024
 
