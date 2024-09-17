@@ -8,4 +8,4 @@ The registry type where the image is stored:
 
 * **Local Image in this Stage** Scan a local image built and stored within the context of the current stage (via `/var/run/docker.sock` registered as a stage level volume mount).
 
-* **Local OCI/Docker archive in this Stage** Scan an OCI or Docker archive that has been created and stored within the current stage. The path to the archive can be specified via the workspace file, and ensure that the path to which the archive is saved is a shared volume mount.
+* **Local OCI/Docker archive in this Stage** Scan an OCI or Docker archive that has been created and stored within the current stage. The path to the archive can be specified via the workspace field, and ensure that the path to which the archive is saved is a shared volume mount.
