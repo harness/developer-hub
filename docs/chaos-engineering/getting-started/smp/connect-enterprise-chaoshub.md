@@ -2,6 +2,9 @@
 title: Connect Enterprise ChaosHub via proxy
 sidebar_position: 2
 description: Connect Enterprise ChaosHub in an air-gapped setup via proxy
+redirect_from:
+- /docs/chaos-engineering/get-started/ce-on-smp/configure-proxy/connect-enterprise-chaoshub
+- /docs/category/configure-proxy-on-self-managed-enterprise-edition
 ---
 
 This topic describes the method to connect Enterprise ChaosHub (https://github.com/) in an air-gapped setup via proxy
