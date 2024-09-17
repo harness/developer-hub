@@ -16,7 +16,6 @@ This is where Workflow UI Field Extensions come in.
 
 ![](./static/owner-custompicker.png)
 
-
 #### `allowArbitraryValues`
 
 Whether to allow arbitrary user input. Defaults to true.
@@ -46,7 +45,6 @@ owner:
   ui:options:
     allowArbitraryValues: true
 ```
-
 
 #### `catalogFilter`
 
@@ -78,7 +76,6 @@ owner:
       - kind: Group
         spec.type: team
 ```
-
 
 #### `defaultNamespace`
 
@@ -112,10 +109,9 @@ owner:
     defaultNamespace: payment
 ```
 
+## Harness Specific Custom Extensions
 
-### Harness Specific Custom Extensions
-
-### EntityFieldPicker
+### 1. `EntityFieldPicker`
 
 ![](./static/system-custompicker.png)
 
@@ -140,14 +136,14 @@ system:
     ui:displayField: spec.owner
     ui:options:
     catalogFilter:
-        kind: 
+        kind:
         - System
         - Component
         - Service
         - API
 ```
-In the above example it will fetch all the owners for the software components `kind` mentioned under `catalogFilter`.
 
+In the above example it will fetch all the owners for the software components `kind` mentioned under `catalogFilter`.
 
 #### `allowArbitraryValues`
 
@@ -242,10 +238,9 @@ entity:
     defaultNamespace: default
 ```
 
+### 2. `HarnessOrgPicker`
 
-### 2. `HarnessOrgPicker` 
-
-Fetches all the org ID dynamically. 
+Fetches all the org ID dynamically.
 
 ```YAML
 #Example
@@ -271,9 +266,9 @@ spec:
     ...
 ```
 
-### 3. `HarnessProjectPicker` 
+### 3. `HarnessProjectPicker`
 
-Fetches all the project ID dynamically. 
+Fetches all the project ID dynamically.
 
 ```YAML
 # Example template.yaml file
@@ -294,7 +289,7 @@ spec:
            ui:field: HarnessProjectPicker
 ```
 
-### 4. `HarnessAutoOrgPicker` 
+### 4. `HarnessAutoOrgPicker`
 
 It auto populates org ID on project selection. So now when you select an project ID as an input the org ID gets selected automatically if required as an input.
 
@@ -321,12 +316,11 @@ spec:
            title: Org Identifier
            description: Harness org Identifier
            type: string
-           ui:field: HarnessAutoOrgPicker          
+           ui:field: HarnessAutoOrgPicker
 
 ```
 
 2. In case the properties Project Identifier is named something else other than `projectId` in that case for the custom action to function as desired we need to add it as a dependency under `projectPickerRef`
-
 
 ```YAML
 # Example template.yaml file
@@ -343,5 +337,5 @@ properties:
         ui:field: HarnessAutoOrgPicker
         dependencies:
           projectPickerRef:
-            - 'project_name'          
+            - 'project_name'
 ```
