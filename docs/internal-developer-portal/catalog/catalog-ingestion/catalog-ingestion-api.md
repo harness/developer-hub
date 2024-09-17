@@ -3,27 +3,117 @@ title: Catalog Ingestion API
 description: Update Catalog Metadata using Ingestion APIs
 sidebar_position: 1
 sidebar_label: Ingestion API
+keywords:
+  ["ingestion", "idp", "catalog", "custom", "data", "data source", "api"]
 redirect_from:
   - docs/internal-developer-portal/catalog/custom-catalog-properties
 ---
 
 ## Introduction
 
-With the introduction of Catalog Metadata Ingestion APIs, users now have the capability to append or update arbitrary metadata associated with catalog entities such as services, libraries, websites, etc without manually adding it to the `catalog-info.yaml`. This feature facilitates the integration of metadata sourced from internal systems such as cost trackers, service health checkers, security scans, or even from simple spreadsheets tracking personnel details.
+Software Catalog in Harness IDP allow modifying metadata associated with the services, libraries, websites and any other entities - without manually changing the `catalog-info.yaml`. This allows custom integrations of metadata sourced from other systems such as cost trackers, service health checkers, security scans, or even from simple spreadsheets tracking personnel details like who is on-call this week.
 
-Also see - [Scorecards using Custom Data Sources](/docs/internal-developer-portal/scorecards/custom-data-source)
-
-## Key Features
-
-- **Custom Property Support**: The metadata field in the catalog supports custom properties, enabling users to add tailored metadata to catalog entities.
-
-- **Scalability**: Using the APIs, users can now automate the process for adding custom properties at scale, streamlining the customization of catalog entities.
-
-- **Enhanced Personalization**: Users can now personalize their catalog experience to a greater extent, unlocking faster onboarding of entities and facilitating the creation of more personalized scorecards and plugins.
+If you are looking to ingest custom data exclusively for IDP Scorecards, see [Scorecards using Custom Data Sources](/docs/internal-developer-portal/scorecards/custom-data-source)
 
 <DocImage path={require('./static/catalog-custom-property.png')} />
 
-## API Examples and Usage
+## Quick Overview of the Endpoints (use cases)
+
+### 1. Update a Single Property of a Single Catalog Entity
+
+```
+POST /catalog/custom-properties/entity
+```
+
+```json title="Payload"
+{
+  "entity_ref": "boutique-service",
+  "property": "metadata.teamLead",
+  "value": "David John"
+}
+```
+
+### 2. Update Multiple Properties of a Single Catalog Entity
+
+```
+POST /catalog/custom-properties/entity
+```
+
+```json title="Payload"
+{
+  "entity_ref": "boutique-service",
+  "properties": [
+    {
+      "property": "metadata.teamLead",
+      "value": "David John"
+    },
+    {
+      "property": "metadata.teamOwner",
+      "value": "Grace"
+    }
+  ]
+}
+```
+
+### 3. Update a Single Property for Multiple Catalog Entities
+
+```
+POST /catalog/custom-properties/property
+```
+
+```json title="Payload"
+{
+  "property": "metadata.releaseVersion",
+  "entity_refs": [
+    {
+      "entity_ref": "component:default/order-service",
+      "value": 1.2.0
+    },
+    {
+      "entity_ref": "component:default/idp-service",
+    },
+    {
+      "entity_ref": "component:default/pipeline-service",
+    }
+  ],
+  "value": 1.5.0,
+}
+```
+
+### 4. Update a Single Property for Multiple Unspecified Catalog Entities using Filters
+
+```
+POST /catalog/custom-properties
+```
+
+```json title="Payload"
+{
+  "property": "metadata.teamLead",
+  "filter": {
+    "kind": "Component",
+    "type": "service"
+  },
+  "value": "Jane Doe"
+}
+```
+
+## Common API Request Details
+
+API Base URL - `https://app.harness.io/gateway/v1/`
+
+**Headers**
+
+```
+X-API-KEY: Harness API Key
+Harness-Account: YOUR ACCOUNT ID
+Content-Type: application/json
+```
+
+You can generate your Harness API Keys by following the [API Key docs](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/).
+
+You can find your account ID in any of your Harness URLs, for example: `https://app.harness.io/ng/account/<ACCOUNT_ID>/idp/overview`.
+
+## Detailed API Usage and Examples
 
 ## Entities to change/update are Specified or Known
 
@@ -56,20 +146,6 @@ https://app.harness.io/gateway/v1/catalog/custom-properties/entity
 
 ```
 
-### Headers
-
-- `x-api-key`: Your Harness API token.
-- `Harness-Account`: Your Harness account ID.
-
-You can find your account ID in any Harness URL, for example:
-
-```bash
-https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
-```
-
-- `'Content-Type: application/json'`
-
-
 ### Request Body
 
 ```json
@@ -79,7 +155,8 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
   "value": "83"
 }
 ```
-In the above example, we update/add **only** the `metadata.codeCoverageScore` **property** for the mentioned **entity** `boutique-service`. 
+
+In the above example, we update/add **only** the `metadata.codeCoverageScore` **property** for the mentioned **entity** `boutique-service`.
 
 - **entity_ref:** Entity ref is a stringified way of representing a Catalog entity with the format `[<kind>:][<namespace>/]<name>`. Both kind and namespace are optional. The simplest way to represent a component is to use the name. For example, `boutique-service`. This internally translates to `component:default/boutique-service` which means the entity is of `kind: Component` in the `default` namespace.
 
@@ -127,6 +204,7 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/ent
   ]
 }'
 ```
+
 :::info
 `mode` is optional and is in use when the property holds an **array** like `tags`, `relations`, etc. For arrays, the **default** mode value is `replace` e.g. if you post a new tag, it will replace the existing tags added in the entity.
 :::
@@ -143,20 +221,6 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/ent
 https://app.harness.io/gateway/v1/catalog/custom-properties/entity
 
 ```
-
-### Headers
-
-- `x-api-key`: Your Harness API token.
-- `Harness-Account`: Your Harness account ID.
-
-You can find your account ID in any Harness URL, for example:
-
-```bash
-https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
-```
-
-- `'Content-Type: application/json'`
-
 
 ### Request Body
 
@@ -176,7 +240,8 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
   ]
 }
 ```
-In the above example, we add the `metadata.codeCoverageScore` & `metadata.cloudCost` **property** for the mentioned **entity** `boutique-service`. 
+
+In the above example, we add the `metadata.codeCoverageScore` & `metadata.cloudCost` **property** for the mentioned **entity** `boutique-service`.
 
 - **entity_ref:** Entity ref is a stringified way of representing a Catalog entity with the format `[<kind>:][<namespace>/]<name>`. Both kind and namespace are optional. The simplest way to represent a component is to use the name. For example, `boutique-service`. This internally translates to `component:default/boutique-service` which means the entity is of `kind: Component` in the `default` namespace.
 
@@ -230,11 +295,13 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/ent
   "mode": "append/replace"
 }'
 ```
+
 :::info
+
 - `mode` is optional and is in use when the property holds an **array** like `tags`, `relations`, etc. For arrays, the **default** mode value is `replace` e.g. if you post a new tag, it will replace the existing tags added in the entity.
 
 - The `"value"?` is used for all entities without a corresponding value field.
-:::
+  :::
 
 ### Endpoint
 
@@ -248,20 +315,6 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/ent
 https://app.harness.io/gateway/v1/catalog/custom-properties/entity
 
 ```
-
-### Headers
-
-- `x-api-key`: Your Harness API token.
-- `Harness-Account`: Your Harness account ID.
-
-You can find your account ID in any Harness URL, for example:
-
-```bash
-https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
-```
-
-- `'Content-Type: application/json'`
-
 
 ### Request Body
 
@@ -284,7 +337,8 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
   "mode": "append/replace"
 }
 ```
-In the above example, we add the `metadata.releaseVersion` **property** for the mentioned **entities**. 
+
+In the above example, we add the `metadata.releaseVersion` **property** for the mentioned **entities**.
 
 - **entity_ref:** Entity ref is a stringified way of representing a Catalog entity with the format `[<kind>:][<namespace>/]<name>`. Both kind and namespace are optional. The simplest way to represent a component is to use the name. For example, `boutique-service`. This internally translates to `component:default/boutique-service` which means the entity is of `kind: Component` in the `default` namespace.
 
@@ -324,35 +378,22 @@ metadata:
 https://app.harness.io/gateway/v1/catalog/custom-properties
 ```
 
-### Headers
-
-- `x-api-key`: Your Harness API token.
-- `Harness-Account`: Your Harness account ID.
-
-You can find your account ID in any Harness URL, for example:
-
-```bash
-https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
-```
-
-- `'Content-Type: application/json'`
-
 ### Request Body
 
 ```json
 {
-    "property": "metadata.teamLead",
-    "filter": {
-        "kind": "Component",
-        "type": "service"
-    },
-    "skip_entity_refs": ["idp-service"],
-    "value": "Jane Doe",
-    "mode": "append/replace"    
+  "property": "metadata.teamLead",
+  "filter": {
+    "kind": "Component",
+    "type": "service"
+  },
+  "skip_entity_refs": ["idp-service"],
+  "value": "Jane Doe",
+  "mode": "append/replace"
 }
 ```
 
-- **skip_entity_refs:** It skips the change across the entites mentioned in the array. 
+- **skip_entity_refs:** It skips the change across the entites mentioned in the array.
 
 - **field:** It contains the information on the metadata name to be added, here in the above example it would ingest the `teamLead` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP.
 
@@ -513,6 +554,7 @@ curl --location --request DELETE 'https://app.harness.io/gateway/v1/catalog/cust
   "property": "metadata.teamLead"
 }'
 ```
+
 ## Catalog Metadata Deletion API to delete multiple properties for given entity
 
 ```bash
@@ -569,4 +611,4 @@ curl --location --request DELETE 'https://app.harness.io/gateway/v1/catalog/cust
 }'
 ```
 
-In the above example it will delete the property `metadata.teamLead`, across **all** the entities **except** `order-service` mentioned under `skip_entity_refs`. 
+In the above example it will delete the property `metadata.teamLead`, across **all** the entities **except** `order-service` mentioned under `skip_entity_refs`.
