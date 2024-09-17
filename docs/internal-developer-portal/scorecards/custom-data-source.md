@@ -9,7 +9,7 @@ sidebar_position: 40
 
 ## Introduction
 
-This video describes how you can create Scorecard Checks in Harness IDP on your custom data. This method uses the [Catalog Ingestion API](../catalog/custom-catalog-properties) to ingest the data into the Catalog and then creates a Custom Check on the ingested data.
+This video describes how you can create Scorecard Checks in Harness IDP on your custom data. This method uses the [Catalog Ingestion API](/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api) to ingest the data into the Catalog and then creates a Custom Check on the ingested data.
 
 **Steps**
 
