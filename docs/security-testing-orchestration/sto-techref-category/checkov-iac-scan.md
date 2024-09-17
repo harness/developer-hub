@@ -179,7 +179,6 @@ import StoSettingTargetWorkspace from '/docs/security-testing-orchestration/sto-
 
 <StoSettingTargetWorkspace  />
 
-Additionally, you can specify individual files to scan as well. For instance, if you only want to scan a specific file like `/tmp/iac/infra.tf`, you can specify the workspace path as `/harness/tmp/iac/infra.tf`
 
 ### Ingestion File
 
