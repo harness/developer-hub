@@ -1,0 +1,11 @@
+{
+    "label": "Catalog Ingestion",
+    "collapsible": "true",
+    "collapsed": "true",
+    "position": 20,
+    "link": {
+      "type": "generated-index",
+      "title": "Information on how to ingest information related to entities in catalog"
+    },
+    "customProps": {}
+  }
