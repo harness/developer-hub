@@ -69,7 +69,7 @@ When a pipeline is re-run, only the steps that are actively re-run will now disp
 
 Harness now supports both Multiple and Single selection modes for runtime inputs, enabling users to choose between selecting one or more allowed values. Please contact [Harness support](mailto:support@harness.io) to enable the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. (PIPE-11757, ZD-47593,58532,68829)
 
-- While creating a new Gitops application, we have added a dropdown in the destination page, that enables users to select the cluster by cluster name or by cluster url. (CDS-99650)
+- While creating a new Gitops application, we have introduced a dropdown in the destination page that enables users to choose how they want to define the cluster. The user can select **Server** to use cluster URL or select **Name** to use cluster name to define the entity. (CDS-99650)
 
 #### Fixed issues
 
