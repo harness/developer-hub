@@ -70,4 +70,10 @@ curl -x HARNESS_HTTPS_PROXY YOUR_ENDPOINT_URL
 
 Replace `YOUR_ENDPOINT_URL` with the URL that you want to route through the secure tunnel. For example, you could route a private Bitbucket domain like `https://bitbucket.myorg.com/`.
 
-The client must support connection by proxy.
+:::note
+
+- The client must support connection by proxy.
+- Secure Connect Client is supported on macOS and Linux.
+
+:::
+
