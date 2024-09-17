@@ -279,10 +279,6 @@ Once your Helm chart is added, it appears in the **Manifests** section. For exam
 
 ## Using subcharts
 
-:::note
-This feature is currently behind the feature flag, `NG_CDS_HELM_SUB_CHARTS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
-
 Helm charts can have dependencies called subcharts. You can define subcharts in your service YAML. Helm downloads these dependencies from exisiting or seperate repositories. Harness fetches the defined subcharts during pipeline execution.
 
 ### Important notes
