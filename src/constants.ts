@@ -24,7 +24,7 @@ export enum MODULES {
   ar = "ar",
   cde = "cde",
   armory = "armory",
-  gitness = "gitness",
+  opensource = "opensource",
   fme = "fme"
 }
 
@@ -50,7 +50,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.ar]: 'Artifact Registry',
     [MODULES.cde]: 'Cloud Development Environments',
     [MODULES.armory]: 'Armory',
-    [MODULES.gitness]: 'Gitness',
+    [MODULES.opensource]: 'Open Source',
     [MODULES.fme]: 'Feature Mgmt & Experimentation'
 }
 
@@ -75,6 +75,6 @@ export const MODULE_ICON = {
     [MODULES.ar]: 'img/icon_artifact_registry.svg',
     [MODULES.cde]: 'img/icon_cloud_development_environments.svg',
     [MODULES.armory]: 'img/icon_armory.svg',
-    [MODULES.gitness]: 'img/icon_gitness.svg',
+    [MODULES.opensource]: 'img/icon_opensource.svg',
     [MODULES.fme]: 'img/icon_fme.svg'
 }

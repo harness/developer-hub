@@ -186,9 +186,9 @@ const sidebars = {
         // Harness Open Source
         {
           type: "link",
-          href: "https://docs.gitness.com/",
-          label: "Gitness",
-          className: "sidebar-gitness",
+          href: "/docs/open-source",
+          label: "Open Source",
+          className: "sidebar-opensource",
           customProps: {
             description:
               "Learn about the latest open source offerings from Harness.",
