@@ -63,62 +63,14 @@ For creating all your Kubernetes connectors it is recommended that you utilize [
 # when using a delegate deployed into the cluster
 
 resource "harness_platform_connector_Kubernetes" "inheritFromDelegate" {
-  identifier  = "identifier"
-  name        = "name"
+  identifier  = "inheritFromDelegate"
+  name        = "inheritFromDelegate"
   description = "description"
   tags        = ["foo:bar"]
 
   inherit_from_delegate {
     delegate_selectors = ["harness-delegate"]
   }
-}
-
-# when using a cluster URL and service account (or other) credentials
-
-resource "harness_platform_connector_Kubernetes" "clientKeyCert" {
-  identifier  = "identifier"
-  name        = "name"
-  description = "description"
-  tags        = ["foo:bar"]
-
-  client_key_cert {
-    master_url                = "https://Kubernetes.example.com"
-    ca_cert_ref               = "account.TEST_k8ss_client_stuff"
-    client_cert_ref           = "account.test_k8s_client_cert"
-    client_key_ref            = "account.TEST_k8s_client_key"
-    client_key_passphrase_ref = "account.TEST_k8s_client_test"
-    client_key_algorithm      = "RSA"
-  }
-
-  delegate_selectors = ["harness-delegate"]
-}
-
-resource "harness_platform_connector_Kubernetes" "usernamePassword" {
-  identifier  = "identifier"
-  name        = "name"
-  description = "description"
-  tags        = ["foo:bar"]
-
-  username_password {
-    master_url   = "https://Kubernetes.example.com"
-    username     = "admin"
-    password_ref = "account.TEST_k8s_client_test"
-  }
-
-  delegate_selectors = ["harness-delegate"]
-}
-
-resource "harness_platform_connector_Kubernetes" "serviceAccount" {
-  identifier  = "identifier"
-  name        = "name"
-  description = "description"
-  tags        = ["foo:bar"]
-
-  service_account {
-    master_url                = "https://Kubernetes.example.com"
-    service_account_token_ref = "account.TEST_k8s_client_test"
-  }
-  delegate_selectors = ["harness-delegate"]
 }
 ```
 
@@ -133,14 +85,14 @@ For creating all your CCM Kubernetes connectors it is recommended that you utili
 At a minimum you need to enable `VISIBILITY`. If you are planning to perform auto stopping in this cluster, you can also enable `OPTIMIZATION`.
 
 ```terraform
-resource "harness_platform_connector_Kubernetes_cloud_cost" "example" {
-  identifier  = "identifier"
-  name        = "name"
+resource "harness_platform_connector_Kubernetes_cloud_cost" "inheritFromDelegateCCM" {
+  identifier  = "inheritFromDelegateCCM"
+  name        = "inheritFromDelegateCCM"
   description = "example"
   tags        = ["foo:bar"]
 
   features_enabled = ["VISIBILITY", "OPTIMIZATION"]
-  connector_ref    = "connector_ref"
+  connector_ref    = "inheritFromDelegate"
 }
 ```
 
