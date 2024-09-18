@@ -91,7 +91,7 @@ This step is not required if you use the user interface.
 
     ![nav](./static/use-probe/select-1.png)
 
-2. You can choose to [create a new probe](#create-a-resilience-probe) or add a probe that you created earlier.
+2. You can choose to [create a new probe](#create-a-resilience-probe-from-ui) or add a probe that you created earlier.
 
     ![create new](./static/use-probe/select-new-2.png)
 
