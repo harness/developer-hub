@@ -1,15 +1,16 @@
 ---
 title: Business Alignment report
 description: Generate Alignment metrics for your Engineering Team using the Business Alignment profile.
-sidebar_position: 131
-sidebar_label: Business Alignment report
+sidebar_position: 10
+sidebar_label: Business Alignment
+redirect_from:
+  - /docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report
+  - /docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-reports
+  - /docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-overview
+  - /docs/category/business-alignment
 ---
 
 The Business Alignment Report helps you visualize where your teams are investing the majority of their effort and assist them in prioritizing their time effectively. This report displays your investment efforts across the categories outlined in the corresponding Business Alignment Profile.
-
-:::info
-The Business Alignment report feature is currently in BETA. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
 
 <DocVideo src="https://www.youtube.com/embed/f3fLqermTGo?si=qFF0PVof8Q36kkr3" />
 
