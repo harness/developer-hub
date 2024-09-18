@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-09-17T10:00:00
+date: 2024-09-18T10:00:00
 sidebar_position: 8
 ---
 
@@ -47,7 +47,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## September 2024
 
-### Version 1.56.0
+### Version 1.56.1
 
 #### New features and enhancements
 
@@ -70,6 +70,8 @@ When a pipeline is re-run, only the steps that are actively re-run will now disp
 Harness now supports both Multiple and Single selection modes for runtime inputs, enabling users to choose between selecting one or more allowed values. Please contact [Harness support](mailto:support@harness.io) to enable the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. (PIPE-11757, ZD-47593,58532,68829)
 
 - While creating a new Gitops application, we have introduced a dropdown in the destination page that enables users to choose how they want to define the cluster. The user can select **Server** to use cluster URL or select **Name** to use cluster name to define the entity. (CDS-99650)
+
+- The Auto Scaling Group (ASG) that previously experienced downtime during rollback instance refresh is now enhanced to achieve zero downtime, ensuring continuous availability. Currently, this feature is behind the feature flag `CDS_ASG_ROLLOUT_ROLLBACK_INSTANCE_REFRESH`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-100052)
 
 #### Fixed issues
 
