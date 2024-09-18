@@ -36,8 +36,8 @@ Check out the release notes below for complete details and refer to the document
 
 We're excited to announce that Business Alignment is now Generally Available on the Harness platform. For more information, please refer to our documentation on:
 
-* Business Alignment Profile
-* Business Alignment Report
+* [Business Alignment Profile](/docs/software-engineering-insights/sei-profiles/business-alignment-profile)
+* [Business Alignment Report](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports)
 
 #### Deprecation Notice
 
