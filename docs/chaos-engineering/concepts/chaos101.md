@@ -6,11 +6,7 @@ description: All you need to know about chaos engineering
 redirect_from:
 - /docs/chaos-engineering/get-started/introduction-to-chaos-module
 - /docs/chaos-engineering/get-started/overview
-- /docs/chaos-engineering/chaos-infrastructure/linux-chaos-infrastructure-advanced-management
-- /docs/chaos-engineering/features/chaos-infrastructure/linux-chaos-infrastructure-advanced-management
-- /docs/chaos-engineering/features/chaos-infrastructure/windows-chaos-infrastructure
-- /docs/chaos-engineering/features/chaos-infrastructure/openshift-infra
-- /docs/chaos-engineering/chaos-infrastructure/openshift-infra
+- /docs/chaos-engineering/architecture-and-security/architecture/components
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

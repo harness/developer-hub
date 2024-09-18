@@ -14,7 +14,7 @@ The Compliance section within the SCS module serves as a hub for assessing and u
 To learn more about the supported standards and the rules applied to entities, please refer to the documentation on [Standards and Rule Definitions](./manage-compliance-posture).
 
 :::note
-Harness only supports Code Repositories, and specifically GitHub for applying all the rules. In the near future, Harness will add support for other platforms.
+Currently Harness supports Code Repositories, and CI/CD. Please refer to the [Use SCS](../get-started/onboarding-guide#use-scs) section in the onboarding document to see the full list of supported integrations for each feature. In the near future, Harness will add support for other entities and integrations.
 :::
 
 ## Compliance Overview

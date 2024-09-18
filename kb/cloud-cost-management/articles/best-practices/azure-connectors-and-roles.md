@@ -34,11 +34,26 @@ provider "azurerm" {
 
 provider "harness" {}
 
-data "azurerm_subscriptions" "available" {}
-
 variable "harness_principal_id" {
     type = string
     default = "0211763d-24fb-4d63-865d-92f86f77e908"
+}
+```
+
+## Get Subscription List
+
+We have two options to get the subscription list.  Option 1 is to use the Azure provider to get all subscriptions in the tenant.
+
+```
+data "azurerm_subscriptions" "available" {}
+```
+
+Option 2 is to use the `locals` value to define statically.  This is useful when you don't have a solid naming convention to filter results from option 1.
+
+```
+locals {
+  azure-non-prod = ['sub-1', 'sub-2']
+  azure-prod = ['sub-3', 'sub-4']
 }
 ```
 

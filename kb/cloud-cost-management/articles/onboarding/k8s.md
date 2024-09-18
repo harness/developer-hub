@@ -11,23 +11,11 @@ To ingest usage and cost data from a Kubernetes cluster, as well as allow access
 
 ### Deployment
 
-There are two ways to enable a connection from Harness to your cluster.
-
-The first option is to deploy a delegate into the target cluster, and give it a certain level of access depending on what you want to achieve with the Kubernetes connection. By deploying a delegate directly into the cluster you do not have to manage secrets, but simply controlled the access Harness has in your cluster by modifying the Kubernetes service account that is bound to the delegate deployment.
+When enabling CCM for a cluster the first step is to deploy a delegate into the target cluster and give it a certain level of access (described later in this guide) depending on what you want to achieve with the Kubernetes connection. By deploying a delegate directly into the cluster you do not have to manage secrets, but simply control the access Harness has in your cluster by modifying the Kubernetes service account that is bound to the delegate deployment.
 
 You should size your delegate according to the cluster nodes. If a cluster has less than 70 nodes the recommended sizing is 1CPU and 4GB. For more than 70 we recommend 2CPU and 14GB.
 
 ![](../../static/k8s_delegate.png)
-
-The second option is to create a service account and credential in the target cluster, store that credential in Harness as a secret, and then you can combine this secret and service account with a URL/domain/IP for the cluster API of the target cluster to create a connection to that cluster from outside. You will need a delegate deployed somewhere that has network connectivity to the cluster API of the target cluster.
-
-**This method is not recommended, as gathering the metrics for a cluster is resource (mainly memory) intensive.**
-
-![](../../static/k8s_serviceaccount.png)
-
-The most common method we see is the first, deploying a delegate into every target cluster. This is mainly based off limited network connectivity between clusters, and the extra work needed to generate and store service account credentials from across clusters when using the second method.
-
-You can use either method for every cluster you create connectors for, there does not need to be one method used for your entire account.
 
 #### Deployment Options
 

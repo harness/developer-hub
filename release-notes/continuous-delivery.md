@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-09-10T10:00:00
+date: 2024-09-18T10:00:00
 sidebar_position: 8
 ---
 
@@ -46,6 +46,40 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 ## September 2024
+
+### Version 1.56.1
+
+#### New features and enhancements
+
+- **Custom Logic for Traffic Routing**
+
+We have introduced custom logic for traffic routing, enabling users to rewrite custom logic for traffic routing to suit their deployment strategies. Previously, the host field in a virtual service's YAML was mandatory. With this update, users can leave the host field empty, allowing for more dynamic configurations. Additionally, we added a new Delegate Service checkbox, which simplifies setup by eliminating the need to manually specify the host, enhancing flexibility for dynamic traffic routing. (CDS-97968)
+
+- **Re-Run Pipeline with no Input changes**
+
+You can configure your pipelines to have no Input change during re-run. This allows you to have consistency in re-run behavior, especially in pipelines where input changes should be restricted after the initial execution. (PIPE-11757, ZD-47593,58532,68829)
+
+- **Display of Correct Execution Times for Re-run Steps**
+
+When a pipeline is re-run, only the steps that are actively re-run will now display updated start and end times. Steps that were not required during the re-run and were copied over from the previous execution will retain their original execution times, ensuring an accurate representation of the pipeline’s execution history. (PIPE-18593, ZD-62115,65602)
+
+![](./static/accurate_time_execution.png)
+
+- **Multiple and Single Selection for Runtime Inputs**
+
+Harness now supports both Multiple and Single selection modes for runtime inputs, enabling users to choose between selecting one or more allowed values. Please contact [Harness support](mailto:support@harness.io) to enable the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. (PIPE-11757, ZD-47593,58532,68829)
+
+- While creating a new Gitops application, we have introduced a dropdown in the destination page that enables users to choose how they want to define the cluster. The user can select **Server** to use cluster URL or select **Name** to use cluster name to define the entity. (CDS-99650)
+
+#### Fixed issues
+
+- Earlier, all the pipeline stages were not visible when using the **Zoom to Fit button** in Pipeline Studio. This issue is fixed. (PIPE-21475, ZD-68662)
+- In a few cases, the artifact trigger failed to pick up the artifact and trigger the pipeline. The trigger also had a **Pending** status and did not change **Success** This issue is fixed. A new perpetual task will be created after the maxFailed attempts are reached even if the pending trigger is deleted. (PIPE-20803, ZD-67390)
+- In NewRelic applications, all application IDs were not being shown and the list was limited to 10 application IDs and had a delayed response time during search. This issue is resolved. (CDS-100390, ZD-69177)
+- Users were unable to save the pipeline changes in the custom deployment template with an empty version label. This issue is fixed now. (CDS-100324, ZD-68869)
+- The instance details for the deployed service were not displayed after execution. This issue is resolved now. Instance sync for Custom Deployment will work if secrets are being referred and being used to fetch instances. (CDS-100179, ZD-68207)
+- Previously, a default value was passed to the timestamp in custom query for big query health source which restricted users to add timestamp according to their requirements. This issue is resolved. The default value for the timestamp input is removed. (CDS-99523)
+- Users were unable to import override from Git when  `CDS_OVERRIDES_GITX` feature flag was disabled, and the error message was unclear. This issue is resolved. The **Import to git** option will no longer be visible if `CDS_OVERRIDES_GITX` is disabled. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-98357)
 
 ### Version 1.55.1
 

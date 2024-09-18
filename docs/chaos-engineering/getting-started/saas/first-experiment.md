@@ -4,7 +4,8 @@ description: Run a chaos experiment on Kubernetes for the first time.
 sidebar_position: 2
 canonical_url: https://www.harness.io/blog/chaos-engineering
 redirect_from:
-  - /tutorials/chaos-experiments/first-chaos-engineering
+- /tutorials/chaos-experiments/first-chaos-engineering
+- /docs/chaos-engineering/get-started/tutorials/first-chaos-engineering 
 ---
 
 In this tutorial, you will apply chaos on a sample boutique application on Kubernetes.

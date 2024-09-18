@@ -7,6 +7,7 @@ redirect_from:
 - /docs/chaos-engineering/technical-reference/architecture/kubernetes
 - /docs/chaos-engineering/get-started/prerequisites/#chaos-infrastructure-requirements
 - /docs/chaos-engineering/features/chaos-infrastructure/introduction
+- /docs/chaos-engineering/features/chaos-infrastructure/windows-chaos-infrastructure/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -35,6 +36,7 @@ Go to [flow of control](/docs/chaos-engineering/use-harness-ce/chaos-faults/kube
 :::tip
 - You can add multiple chaos infrastructures as part of an environment.
 - You can set up a chaos infrastructure in **cluster-wide** access scope or in a **namespace** scope.
+- You can select faults which are compatible to the scope (namespace or cluster-wide) of the infrastructure you selected. For example, if you have a namespace-scoped infrastructure, you can't select cluster-scoped faults since they are incompatible and you will not have the permissions to execute cluster-scoped faults in namespace-scope infrastructure.
 :::
 
 ### Chaos infrastructure requirements

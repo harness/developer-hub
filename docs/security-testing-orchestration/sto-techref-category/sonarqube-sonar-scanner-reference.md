@@ -342,6 +342,8 @@ You can use [Harness expressions](https://developer.harness.io/docs/platform/var
 
 This setup ensures that the scan result name reflects both the branch and the PR, making it easier to identify and manage scan results in the SonarQube portal.
 
+## View SonarQube quality gate failures
+SonarQube quality gate failures will appear in scan results as 'Info' severity issues, with the issue type set to `EXTERNAL_POLICY`. Additionally, you can apply OPA policies in Harness STO to enforce or manage these failures.
 
 ## Generate coverage reports and upload to SonarQube
 

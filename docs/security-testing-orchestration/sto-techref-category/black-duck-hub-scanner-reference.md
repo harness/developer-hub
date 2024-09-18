@@ -109,6 +109,35 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 <StoSettingTargetWorkspace  />
 
+### Container image
+
+
+#### Type
+
+import StoSettingImageType from './shared/step_palette/image/_type.md';
+
+<StoSettingImageType />
+
+
+#### Domain (_extraction_)
+
+import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
+
+<StoSettingImageDomain />
+
+
+#### Name
+
+import StoSettingImageName from './shared/step_palette/image/_name.md';
+
+<StoSettingImageName />
+
+
+#### Tag
+
+import StoSettingImageTag from './shared/step_palette/image/_tag.md';
+
+<StoSettingImageTag />
 
 ### Ingestion
 

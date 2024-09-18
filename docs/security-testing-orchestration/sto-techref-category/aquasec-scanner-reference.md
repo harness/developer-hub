@@ -16,11 +16,6 @@ sidebar_position: 25
 
 You can scan your container images and ingest scan results from [Aqua Security Enterprise](https://www.aquasec.com/solutions/docker-container-security/). 
 
-The Aqua Security step can also ingest assurance policy violations. These violations appear as INFO-level issues in [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results).
-
-<DocImage path={require('./static/sto-7164-aquasec-external-policies.png')} width="70%" height="70%" title="Select policy sample" />
-
-
 
 ## Important notes for running Aqua Security scans in STO
 
@@ -202,8 +197,16 @@ import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
+
 ## Proxy settings
 
 import ProxySettings from './shared/proxy-settings.md';
 
 <ProxySettings /> 
+
+## View AquaSec Assurance Policy violations
+
+The Aqua Security Assurance Policy violations will appear in scan results as INFO-level issues in [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results).
+
+<DocImage path={require('./static/sto-7164-aquasec-external-policies.png')} width="70%" height="70%" title="Select policy sample" />
+

@@ -285,8 +285,13 @@ import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
+
 ## Proxy settings
 
 import ProxySettings from './shared/proxy-settings.md';
 
 <ProxySettings />
+
+## View Twistlock compliance rule failures
+Twistlock compliance rule failures will appear in scan results as `Info` severity issues, with the issue type set to `EXTERNAL_POLICY`. Additionally, you can apply OPA policies in Harness STO to enforce or manage these failures.
+

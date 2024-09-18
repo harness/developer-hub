@@ -3,7 +3,8 @@ title: On-Premise (SMP)
 sidebar_position: 1
 description: Understand the features facilitated by SMP.
 redirect_from:
-    - /docs/chaos-engineering/get-started/ce-on-smp/ce-smp-roadmap
+- /docs/chaos-engineering/get-started/ce-on-smp/ce-smp-roadmap
+- /docs/category/ce-on-harness-self-managed-enterprise-edition
 ---
 
 This topic describes features of SMP (Self-Managed Platform).

@@ -21,13 +21,13 @@ To perform Snyk Container scanning with orchestration scan mode, follow the belo
 
 1. Search and add the **Snyk** step to your pipeline. You can use this step in **Build** stage or **Security** stage.
 2. In the step configuration, set the following fields
-    1. Set the [**Scan Mode**](./snyk-scanner-reference#scan-mode) to **Orchestration**
-    2. Under [**Target**](./snyk-scanner-reference#target), set the **Type** to **Container**
-    3. Set the [**Scan Configuration**](./snyk-scanner-reference#scan-configuration) to **Snyk Container**
-    4. For [**Target and Variant Detection**](./snyk-scanner-reference#target-and-variant-detection) it's preferred to use **Auto** option or you can define them using the **Manual** option. 
-    5. Under **Container Image** section, set the [**Type**](./snyk-scanner-reference#type-1), [**Domain**](./snyk-scanner-reference#domain), [**Name**](./snyk-scanner-reference#name-1), and [**Tag**](./snyk-scanner-reference#tag) of your image.
+    1. Set the [**Scan Mode**](docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference.md#scan-mode) to **Orchestration**
+    2. Under [**Target**](docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference.md#target), set the **Type** to **Container**
+    3. Set the [**Scan Configuration**](docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference.md#scan-configuration) to **Snyk Container**
+    4. For [**Target and Variant Detection**](docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference.md#target-and-variant-detection) it's preferred to use **Auto** option or you can define them using the **Manual** option. 
+    5. Under **Container Image** section, set the [**Type**](docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference.md#type-1), [**Domain**](docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference.md#domain), [**Name**](./snyk-scanner-reference#name-1), and [**Tag**](docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference.md#tag) of your image.
     6. In **Access Id** and **Access Token**, you can pass the username and password of your container registry as Harness Secrets, which helps you access your private images. (Optional)
-    7. Under [**Authentication**](./snyk-scanner-reference#authentication), pass your Snyk API as Harness secret, for example: `<+secrets.getValue("snyk_api_token")>`
+    7. Under [**Authentication**](docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference.md#authentication), pass your Snyk API as Harness secret, for example: `<+secrets.getValue("snyk_api_token")>`
 
     <DocImage path={require('./static/container-orchestration.png')} width="40%" height="40%" title="Click to view full size image" />
 
