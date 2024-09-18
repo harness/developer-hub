@@ -87,15 +87,15 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>SEI_NEW_BA_PROFILES</td>
-        <td>Enable this flag to access the new [Business Alignment profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile).</td>
+        <td>Enable this flag to access the new [Business Alignment profile](/docs/software-engineering-insights/sei-profiles/business-alignment-profile).</td>
     </tr>
     <tr>
         <td>SEI_NEW_BA_COMBINED_WIDGET</td>
-        <td>Enable this flag to access the new [Business Alignment report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report).</td>
+        <td>Enable this flag to access the new [Business Alignment report](docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports).</td>
     </tr>
     <tr>
         <td>SEI_BA_INCLUDE_UNRESOLVED_ISSUES</td>
-        <td>Allows you to use the [Business Alignment report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report) to calculate alignment metrics for tickets that are in the In Progress status category and those that have been resolved (i.e., Done status category) within a specific duration of time.</td>
+        <td>Allows you to use the [Business Alignment report](docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports) to calculate alignment metrics for tickets that are in the In Progress status category and those that have been resolved (i.e., Done status category) within a specific duration of time.</td>
     </tr>
     <tr>
         <td>SEI_IS_AZURE_NEW_ONB_ENABLED</td>
