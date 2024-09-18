@@ -240,9 +240,6 @@ Avoid using `allowedValues` with runtime inputs in list fields and use the sugge
 
 ## Allow Multi Selection and Single selection
 
-:::note
-Currently, multiple and single selection for runtime inputs is behind the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
-:::
 
 You can select a **Mode** of selection while creating allowed values in Runtime Input:- 
 
@@ -250,21 +247,29 @@ You can select a **Mode** of selection while creating allowed values in Runtime 
 
 ### Multi Selection
 
+:::note
+Currently, multiple selection for runtime inputs is behind the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+:::
+
 Use Multi Selection if you want to choose one or more values from the list of [allowed values](#set-allowed-values). You can use multiple selection for runtime inputs in pipelines, stages, and shell script variables only. Multiple selection is an extension of allowed values; you must specify allowed values to use multiple selection.
 
 ![](./static/runtime-inputs-11.png)
 
 ### Single Selection
 
-You can use **Single Selection**, if you want to chose only one values from the list of [allowed values](#set-allowed-values). 
+:::note
+1. If FF `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`, is turned off, then using Allowed values and Single Selection both have identical behaviour of selecting a single value.
+2. If FF `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES` then, all the existing Allowed values will turn into **multi-select**. If the user wants to keep them as single select, they must change the option to **Single Selection**.
+:::
+
+You can use [**Single Selection Mode**](#allow-multi-selection-and-single-selection), if you want to chose only one value from the list of [allowed values](#set-allowed-values). 
 
 ![](./static/single_selection_option.png)
 
 When writing pipelines in YAML, you can define Single Selection in allowed values by appending the `.selectOneFrom()` method to `<+input>`. For example: `<+input>.selectOneFrom(a,b,c)`.
 
 :::important note
-1. When using secrets as runtime inputs and configuring allowed values, the UI will not display an option for single selection. By default, only one value can be selected for a secret during runtime. 
-2. If FF `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES` is disbaled you will have an option to select single selection via allowed values as well, if it's enabled then single selection is only available via [UI and selectOneFrom](#single-selection). 
+When using secrets as runtime inputs and configuring allowed values, the UI will not display an option for single selection. By default, only one value can be selected for a secret during runtime. 
 :::
 
 
