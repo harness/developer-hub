@@ -28,13 +28,15 @@ The following rules are available when adding branch rules. Some rules require a
 | Rule | Additional configuration |
 | ---- | ------------------------ |
 | **Block branch creation** | This rule doesn't block users in the **Bypass List**. |
+| **Block branch update** | This rule doesn't block users in the **Bypass List**. |
 | **Block branch deletion** | This rule doesn't block users in the **Bypass List**. |
+| **Block force push** | This rule doesn't block users in the **Bypass List**. |
 | **Require pull request** | This rule doesn't block users in the **Bypass List**. |
 | **Require a minimum number of reviewers** | You must specify the minimum number of reviewers. |
 | **Require review from code owners** | This rule requires a [CODEOWNERS file](#codeowners) in your branches. If there is no CODEOWNERS file, Harness can't enforce the rule. |
 | **Require approval of new changes** | This rule requires that you *also* enable **Require a minimum number of reviewers** or **Require review from code owners** (or both). Without at least one of those additional rules, this rule has no effect. |
+| **Require resolution of change requests** | None. 
 | **Require comment resolution** | None. |
-| **Require change request resolution** | None. |
 | **Require status checks to pass** | You must specify the checks that must pass. |
 | **Limit merge strategies** | You must select the allowed merge strategies. |
 | **Auto delete branch on merge** | None. |
