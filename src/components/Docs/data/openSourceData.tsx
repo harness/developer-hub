@@ -26,7 +26,7 @@ import {
             module: MODULES.code,
             description:
               "Learn the benefits, features, and key concepts of the Harness Open Source.",
-            link: "/docs/category/get-started-with-opensource",
+            link: "/docs/open-source/installation/quick_start",
           },
           {
             title: "Onboarding guide",

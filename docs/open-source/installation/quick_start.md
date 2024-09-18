@@ -1,9 +1,7 @@
 ---
+title: Quick Start
 sidebar_position: 1
-slug: '/'
 ---
-
-# Quick Start
 
 Let's discover **[Harness Open Source](https://gitness.com)** in less than 30 seconds.
 
