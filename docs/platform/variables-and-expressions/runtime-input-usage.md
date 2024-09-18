@@ -259,7 +259,7 @@ Use Multi Selection if you want to choose one or more values from the list of [a
 
 :::note
 1. If FF `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`, is turned off, then using Allowed values and Single Selection both have identical behaviour of selecting a single value.
-2. If FF `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES` then, all the existing Allowed values will turn into **multi-select**. If the user wants to keep them as single select, they must change the option to **Single Selection**.
+2. If FF `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES` is turned on, all the existing Allowed values will turn into **multi-select**. If the user wants to keep them as single select, they must change the option to **Single Selection**.
 :::
 
 You can use [**Single Selection Mode**](#allow-multi-selection-and-single-selection), if you want to chose only one value from the list of [allowed values](#set-allowed-values). 
