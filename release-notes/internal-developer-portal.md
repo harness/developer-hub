@@ -35,7 +35,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 - Fixed issue with Jenkins Plugins integration using Delegate. [IDP-3551]
 - Fixed `AuthenticationError` issue for templates registered from Harness Code Repo. [IDP-3316]
-- Fixed the issue with delay in registering workflow templates in IDP. 
+- Fixed the issue when registering or refreshing IDP workflow would take 10-30 minutes. This now happens instantly.
 - Fixed the UI issue regarding TechDocs and SideNav overlap. 
 
 ## August 2024
