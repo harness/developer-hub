@@ -167,9 +167,6 @@ You can integrate HCE with monitoring platforms such as SRM. For more informatio
 You can execute chaos experiments in pipelines, wherein you can integrate the pipeline execution with various steps, such as JIRA, CD, and so on.
 For more information, go to [Integrate with JIRA](/docs/chaos-engineering/integrations/pipeline-exec).
 
-### Slack
-TO-DO
-
 ## Chaos Metrics
 
 ### Resilience Score
