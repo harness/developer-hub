@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-09-17T20:00
+date: 2024-09-18T20:00
 sidebar_position: 12
 ---
 
@@ -35,6 +35,8 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 - Fixed issue with Jenkins Plugins integration using Delegate. [IDP-3551]
 - Fixed `AuthenticationError` issue for templates registered from Harness Code Repo. [IDP-3316]
+- Fixed the issue when registering or refreshing IDP workflow would take 10-30 minutes. This now happens instantly.
+- Fixed the UI issue when long sidenav in TechDocs sites would cause overlap issues.
 
 ## August 2024
 
