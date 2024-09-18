@@ -106,7 +106,7 @@ export default function CertificationsIACM() {
               <i className="fa-solid fa-arrow-left"></i> Back to University Home
             </Link>
           </div>
-          <h1>Infrastructure as Code Managemnet</h1>
+          <h1>Infrastructure as Code Management</h1>
           <div>
           Efficiently and securely scale your Terraform / OpenTofu Infrastructure as Code.
           </div>
