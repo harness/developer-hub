@@ -1,21 +1,22 @@
 ---
 title: Business Alignment report
 description: Generate Alignment metrics for your Engineering Team using the Business Alignment profile.
-sidebar_position: 131
-sidebar_label: Business Alignment report
+sidebar_position: 10
+sidebar_label: Business Alignment
+redirect_from:
+  - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports
+  - /docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-reports
+  - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports
+  - /docs/category/business-alignment
 ---
 
 The Business Alignment Report helps you visualize where your teams are investing the majority of their effort and assist them in prioritizing their time effectively. This report displays your investment efforts across the categories outlined in the corresponding Business Alignment Profile.
-
-:::info
-The Business Alignment report feature is currently in BETA. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
 
 <DocVideo src="https://www.youtube.com/embed/f3fLqermTGo?si=qFF0PVof8Q36kkr3" />
 
 <br />
 
-The report displays the effort invested for each category as a percentage, along with a label (`Ideal`, `Poor`, `Acceptable`) on the **Pie Chart**. The Trend Section displays the breakdown of the score over time in a **Stacked Bar Chart** format, based on the defined  Categories and their associated Allocation Goals in the [Business Alignment Profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile). The Bar Chart breaks down the metric value into time intervals as configured under the widget settings.
+The report displays the effort invested for each category as a percentage, along with a label (`Ideal`, `Poor`, `Acceptable`) on the **Pie Chart**. The Trend Section displays the breakdown of the score over time in a **Stacked Bar Chart** format, based on the defined  Categories and their associated Allocation Goals in the [Business Alignment Profile](/docs/software-engineering-insights/sei-profiles/business-alignment-profile). The Bar Chart breaks down the metric value into time intervals as configured under the widget settings.
 
 ![](./static/ba-report.png)
 

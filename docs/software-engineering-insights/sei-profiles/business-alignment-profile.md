@@ -1,17 +1,16 @@
 ---
 title: Business Alignment profile
-description: Use the BA profile to generate the BA report for your engineering team.
+description: Use the BA profile to examine effort investment metrics.
 sidebar_position: 10
 sidebar_label: Business Alignment profile
+redirect_from:
+  - /docs/software-engineering-insights/sei-profiles/business-alignment-profile
+  - /docs/software-engineering-insights/sei-profiles/investment-profile
 ---
 
 Business Alignment metrics help you understand where engineers are allocating their time through effort investment metrics. It is one of the most critical components of engineering metrics that connects your engineering to the business value.
 
 The **Business Alignment profile** acts as the single source of truth for the Business Alignment metrics calculations where you can create and manage the Investment Categories using Filter Sets and adjust the threshold of each of these categories using Allocation Goals.
-
-:::info
-The Business Alignment profile feature is currently in BETA. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
 
 <DocVideo src="https://www.youtube.com/embed/f3fLqermTGo?si=qFF0PVof8Q36kkr3" />
 
@@ -136,4 +135,4 @@ Finally, you will set the allocation goals for each category. This involves deci
 
 ### Step 7: Save the profile
 
-Once the profile settings have been configured, you can **Save** the profile. <br /> <br />You can select the newly created Business Alignment profile in the Business Alignment report widget to generate insights which can help you align your engineering work with business goals, ensuring that time and effort are spent where they're most valuable. To learn more about how the Alignement metrics are calculated, go to the [Business Alignment report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report).
+Once the profile settings have been configured, you can **Save** the profile. <br /> <br />You can select the newly created Business Alignment profile in the Business Alignment report widget to generate insights which can help you align your engineering work with business goals, ensuring that time and effort are spent where they're most valuable. To learn more about how the Alignement metrics are calculated, go to the [Business Alignment report](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports).

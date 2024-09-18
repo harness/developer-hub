@@ -4,10 +4,10 @@ description: Use Investment profiles to examine effort investment metrics.
 sidebar_position: 10
 ---
 
-Investment profiles help you understand where engineers are allocating their time through [effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-overview).
+Investment profiles help you understand where engineers are allocating their time through [effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports).
 
 :::info
-The 202312.2 release included a new Business Alignment profile and report settings, which enhance the effectiveness and accuracy of BA metrics calculation. The feature is currently in BETA. To learn more, go to [Business Alignment Profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile)
+The 202312.2 release included a new Business Alignment profile and report settings, which enhance the effectiveness and accuracy of BA metrics calculation. The feature is currently in BETA. To learn more, go to [Business Alignment Profile](/docs/software-engineering-insights/sei-profiles/business-alignment-profile)
 :::
 
 ## Configure Investment Profiles

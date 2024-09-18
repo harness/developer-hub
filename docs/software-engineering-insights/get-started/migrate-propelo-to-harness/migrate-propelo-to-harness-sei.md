@@ -44,7 +44,7 @@ Business Alignment metrics will help you understand where engineers are allocati
 
 The new profile also introduces a Business Alignment report, which consolidates all existing effort investment reports within the Propelo application into a single, comprehensive view. This report supports advanced features such as search, multiple drill-down views, and more.
 
-For detailed information, refer to the [Business Alignment documentation](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile).
+For detailed information, refer to the [Business Alignment documentation](/docs/software-engineering-insights/sei-profiles/business-alignment-profile).
 
 ### Simplified Navigation
 
