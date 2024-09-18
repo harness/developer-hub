@@ -197,8 +197,16 @@ import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
+
+## Proxy settings
+
+import ProxySettings from './shared/proxy-settings.md';
+
+<ProxySettings /> 
+
 ## View AquaSec Assurance Policy violations
 
 The Aqua Security Assurance Policy violations will appear in scan results as INFO-level issues in [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results).
 
 <DocImage path={require('./static/sto-7164-aquasec-external-policies.png')} width="70%" height="70%" title="Select policy sample" />
+

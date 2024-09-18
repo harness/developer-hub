@@ -258,6 +258,12 @@ import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
+## Proxy settings
+
+import ProxySettings from '/docs/security-testing-orchestration/sto-techref-category/shared/proxy-settings.md';
+
+<ProxySettings />
+
 ## Troubleshooting Black Duck Hub
 
 ### Scan fails with message "Could not connect to addon client after max retries"
