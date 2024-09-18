@@ -5,6 +5,8 @@ description: Harness chaos infrastructure that uses Harness Delegate to allow fo
 redirect_from:
 - /docs/chaos-engineering/onboarding/harness-infra
 - /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/
+- /docs/category/harness-delegate-driven-infrastructure
+- /docs/category/harness-dedicated-infrastructure
 ---
 
 This topic walks you through Harness chaos infrastructure that uses Harness Delegate and how it facilitates quick onboarding and optimizes chaos experiments.

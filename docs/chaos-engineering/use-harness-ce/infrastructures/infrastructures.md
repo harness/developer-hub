@@ -1,6 +1,8 @@
 ---
 title: Chaos Infrastructure
 sidebar_position: 1
+redirect_from:
+    - /docs/category/chaos-infrastructure
 ---
 
 This section describes how you can enable chaos infrastructures to execute chaos experiments on your cluster.

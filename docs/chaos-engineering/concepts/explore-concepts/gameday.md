@@ -6,6 +6,7 @@ title: GameDay
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/gameday/introduction-to-gameday
 - /docs/chaos-engineering/features/gameday/introduction-to-gameday
+- /docs/category/gameday
 ---
 
 This section describes what a GameDay is, why it is essential, how a typical GameDay is run, and its outcomes.

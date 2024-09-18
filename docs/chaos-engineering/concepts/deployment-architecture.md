@@ -10,6 +10,13 @@ redirect_from:
 - /docs/chaos-engineering/technical-reference/architecture/kubernetes
 - /docs/chaos-engineering/technical-reference/architecture/linux
 - /docs/chaos-engineering/architecture-and-security/architecture/control-plane
+- /docs/category/architecture-and-security
+- /docs/category/architecture
+- /docs/chaos-engineering/chaos-infrastructure/linux-chaos-infrastructure-advanced-management
+- /docs/chaos-engineering/features/chaos-infrastructure/linux-chaos-infrastructure-advanced-management
+- /docs/chaos-engineering/features/chaos-infrastructure/windows-chaos-infrastructure
+- /docs/chaos-engineering/features/chaos-infrastructure/openshift-infra
+- /docs/chaos-engineering/chaos-infrastructure/openshift-infra
 ---
 
 ## Before you begin, review the following
