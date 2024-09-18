@@ -71,8 +71,6 @@ Harness now supports both Multiple and Single selection modes for runtime inputs
 
 - While creating a new Gitops application, we have introduced a dropdown in the destination page that enables users to choose how they want to define the cluster. The user can select **Server** to use cluster URL or select **Name** to use cluster name to define the entity. (CDS-99650)
 
-- The Auto Scaling Group (ASG) that previously experienced downtime during rollback instance refresh is now enhanced to achieve zero downtime, ensuring continuous availability. Currently, this feature is behind the feature flag `CDS_ASG_ROLLOUT_ROLLBACK_INSTANCE_REFRESH`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-100052)
-
 #### Fixed issues
 
 - Earlier, all the pipeline stages were not visible when using the **Zoom to Fit button** in Pipeline Studio. This issue is fixed. (PIPE-21475, ZD-68662)
