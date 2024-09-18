@@ -1,0 +1,3 @@
+- The `mode` and `type` are mandatory fields in the probe schema when you define the entire configuration of the probe in the manifest (for Kubernetes (Legacy), Linux, and Windows infrastructure). The mandatory fields are generated and patched in the backend to the same manifest.
+- However, in the UI, you will only see the `mode` and `ID` fields when configuring your experiment. This is because the manifest is minified in the UI. Due to the minification, you won't have to provide the `type` field.
+- If you define the entire probe in `task.definition.chaos.probes`, the entire configuration is required. If you use the `task.probeRef`, you only need to specify `ID` and `mode` fields.

@@ -173,7 +173,7 @@ For more information, go to [Integrate with JIRA](/docs/chaos-engineering/integr
 
 It measures how resilient the target application is to a chaos experiment. You can [calculate](/docs/chaos-engineering/use-harness-ce/experiments/#determine-the-resilience-of-target-environment-using-resilience-score) this value based on the priority set for every fault in the experiment and the probe success percentage of the faults (if the probes are defined).
 
-For more information, go to [Resilience Score](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/#resilience-score).
+For more information, go to [Resilience Score](/docs/chaos-engineering/use-harness-ce/experiments/#determine-the-resilience-of-target-environment-using-resilience-score).
 
 ### Resilience Coverage
 
