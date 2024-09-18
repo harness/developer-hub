@@ -3,6 +3,7 @@ title: SEI Bitbucket cloud integration
 description: Integrate SEI with Bitbucket cloud.
 sidebar_position: 30
 sidebar_label: Bitbucket cloud
+canonical_url: https://www.harness.io/blog/bitbucket-servers-sunset
 ---
 
 Bitbucket is a web-based version control repository hosting service, for source code and development projects that use either Mercurial or Git revision control systems.
