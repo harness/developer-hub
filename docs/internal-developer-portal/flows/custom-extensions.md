@@ -276,8 +276,6 @@ entity:
         spec.type: team
 ```
 
-For the full details on the spec.\* values see [here](../software-catalog/descriptor-format.md#kind-group).
-
 #### `defaultKind`
 
 The default entity kind.
