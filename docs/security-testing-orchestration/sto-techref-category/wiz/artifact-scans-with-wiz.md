@@ -22,7 +22,7 @@ You can easily set up a Wiz step to run automated scans in a Harness pipeline. T
 
 <!--  If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. -->
 
-- To scan container images on Kubernetes or Docker build infrastructures, you can either use a [Docker-in-Docker (DinD) background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline) or scan [without Docker-in-Docker](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#when-to-use-without-docker-in-docker), depending on your use case.
+- STO pulls the image or tar archive for scanning, and by default, it runs the scan in [Without Docker-in-Docker (DinD)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#without-docker-in-docker-flow-in-sto) mode. If your application or scanner requires DinD, you can configure it as a dependency by following the steps outlined in the [Docker-in-Docker (DinD) flow](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-dockerdind-flow-in-sto) section.
 
 - You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
