@@ -6,7 +6,7 @@ sidebar_label: Business Alignment report
 redirect_from:
   - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports
   - /docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-reports
-  - /docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-overview
+  - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports
   - /docs/category/business-alignment
 ---
 
