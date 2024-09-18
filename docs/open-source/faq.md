@@ -16,7 +16,7 @@ Error response from daemon: failed to create task for container: failed to creat
 
 __Potential causes:__
 
-The [container](/docs/open-source/reference/pipelines/yaml/container) defined in the [step](/docs/category/steps-1) does not contain `/bin/sh`.
+The [container](./reference/pipelines/yaml/container.md) defined in the [step](/category/steps) does not contain `/bin/sh`.
 
 __Solutions:__
 
@@ -32,8 +32,8 @@ Error response from daemon: pull access denied for IMAGE_NAME, repository does n
 
 __Potential causes:__
 
-1. The [container](/docs/open-source/reference/pipelines/yaml/container) defined in the [step](/docs/category/steps-1) does not exist
-2. The [container](/docs/open-source/reference/pipelines/yaml/container) defined in the [step](/docs/category/steps-1) is private, and requires authentication
+1. The [container](./reference/pipelines/yaml/container.md) defined in the [step](/category/steps) does not exist
+2. The [container](./reference/pipelines/yaml/container.md) defined in the [step](/category/steps) is private, and requires authentication
 
 __Solutions:__
 
@@ -50,7 +50,7 @@ exec /bin/sh: exec format error
 
 __Potential causes:__
 
-The [container](/docs/open-source/reference/pipelines/yaml/container) defined in the [step](/docs/category/steps-1) is for a different OS and/or architecture.
+The [container](./reference/pipelines/yaml/container.md) defined in the [step](/category/steps) is for a different OS and/or architecture.
 
 __Solutions:__
 

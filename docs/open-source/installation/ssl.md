@@ -16,7 +16,7 @@ docker run -d \
   -p 3000:3000 \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /mnt/gitness-data:/data \
-  --name opensource \
+  --name gitness \
   --restart always \
-  harness/harness
+  harness/gitness
 ```

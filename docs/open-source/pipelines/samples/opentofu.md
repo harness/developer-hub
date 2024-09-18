@@ -11,7 +11,7 @@ This guide covers how to use [OpenTofu](https://opentofu.org/) in pipelines.
 
 OpenTofu's [state locking](https://opentofu.org/docs/language/state/locking/) features can help ensure multiple pipeline executions can't write to the [state](https://opentofu.org/docs/language/state/) at once.
 
-Alternatively, you can set [GITNESS_CI_PARALLEL_WORKERS](../../installation/settings.md#gitness_ci_parallel_workers) to `1`, so your Harness Open Source instance will only execute one pipeline at a time.
+Alternatively, you can set [GITNESS_CI_PARALLEL_WORKERS](../../installation/settings.md#gitness_ci_parallel_workers) to `1`, so your Gitness instance will only execute one pipeline at a time.
 
 :::
 

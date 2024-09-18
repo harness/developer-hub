@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 An **Artifact Registry** is a central location for storing and managing software artifacts, such as container images or helm charts used throughout the software development lifecycle. To create one, follow these steps:
 
 1. In your [project](../administration/project-management.md), select **Artifact Registries**, and then select **New Artifact Registry**
-2. Select a [registry type](/docs/open-source/registries/whats-supported#supported-registry-types). 
+2. Select a [registry type](/registries/whats-supported#supported-registry-types). 
 3. Enter a **Registry Name** and optional **Description** and **Labels**.
     :::tip
     This registry name must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`
@@ -24,7 +24,7 @@ An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that
 
 1. In your [project](../administration/project-management.md), select **Artifact Registries**. 
 2. Select the dropdown next to **New Artifact Registry**, and then select **Upstream Proxy**.
-3. Select a [registry type](/docs/open-source/registries/whats-supported#supported-registry-types).
+3. Select a [registry type](/registries/whats-supported#supported-registry-types).
 4. Enter the **Upstream Proxy Key**. This is the identifier or name for the proxy within Gitness and is chosen by you. 
    :::tip
     This proxy key must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`
