@@ -51,7 +51,7 @@ As part of our platform evolution, the following resources are being deprecated 
 
 **Important Note**
 
-We have deprecated support for **Investment Profile categories** in the **Trellis Profile configuration**. This change will be implemented over the next week. For questions or assistance with these changes, please contact [Harness Support](mailto:support@harness.io).
+We have deprecated the support for **Investment Profile categories** in the **Trellis Profile configuration**. For questions or assistance with these change, please contact [Harness Support](mailto:support@harness.io).
 
 #### Early access features
 
