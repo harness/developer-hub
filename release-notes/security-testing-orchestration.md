@@ -32,14 +32,14 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 - STO ingestion now works on [MacOS Harness hosted builds](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#operating-systems-and-architectures-supported-by-sto).
 - STO now supports [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) for Harness Hosted
-- The steps Snyk, Wiz, Prisma cloud, Auqa security, Aqua trivy, and Gype can now run without Docker-in-Docker as a dependency.
+- The steps Snyk, Wiz, Prisma Cloud, Aqua Security, Aqua Trivy, and Grype can now run without Docker-in-Docker as a dependency.
 - Improved the performance of the STO graph "Issue distribution over time"
 
 #### Fixed issue
 
 - Resolved the issue that caused the "Issue distribution over time" graph on the Overview page to time out and fail to load (STO-6037).
 - Fixed the problem where exempted issues were occasionally counted incorrectly in the "Issue distribution over time" graph on the Overview page. (STO-6037).
-- Resolved the issue that caused the Sonarqube step to fail during the upload of scan results (STO-7961).
+- Resolved the issue that caused the SonarQube step to fail during the upload of scan results (STO-7961).
 - Fixed the problem in the Checkmarx Ingestion where the SARIF normalizer failed to handle null values in the output (STO-7997).
 
 ### Version 1.108.2
