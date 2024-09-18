@@ -69,15 +69,15 @@ This step is not required if you use the user interface.
 
 1. Go to **Chaos** module, select **Resilience Probes** and select the **:** icon of the probe to enable. Select **Enable**.
 
-  ![](./static/use-probe/enable-1.png)
+    ![](./static/use-probe/enable-1.png)
 
 2. Click **Confirm**.
 
-  ![](./static/use-probe/enable-2.png)
+    ![](./static/use-probe/enable-2.png)
 
 3. Choose between **Bulk Enable** and **Enable Only**. If you choose **Bulk Enable**, this option modifies the entire manifest and references to the probe. If you choose **Enable Only**, it enables the probe functionality without affecting the manifest.
 
-  ![](./static/use-probe/enable-3.png)
+    ![](./static/use-probe/enable-3.png)
 
 :::tip
 - By default, **Enable Only** is applied in case you close the modal when selecting between the options **Bulk Enable** and **Enable Only**.
@@ -122,15 +122,15 @@ Adding probes to ChaosHub helps you to templatize the resilience probe. With thi
 
 1. To add a resilience probe to ChaosHub, go to **Resilience Probes** tab. Go to the resilience probe that you want to add to ChaosHub and click the **:** button. Click **Push to ChaosHub**.
 
-  ![](./static/use-probe/push-to-hub.png)
+    ![](./static/use-probe/push-to-hub.png)
 
 2. Choose the ChaosHub to which you want to add the probe, and click **Apply**.
 
-  ![](./static/use-probe/apply-hub.png)
+    ![](./static/use-probe/apply-hub.png)
 
 3. Click **Save**.
 
-  ![](./static/use-probe/save-to-hub.png)
+    ![](./static/use-probe/save-to-hub.png)
 
 
 ## Disable a Probe
