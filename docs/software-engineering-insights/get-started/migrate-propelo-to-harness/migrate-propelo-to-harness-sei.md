@@ -282,7 +282,7 @@ After completing the migration, you’ll need to uninstall the existing Jenkins 
 * Install the **Harness - SEI Job Reporter Plugin** and click on **Install without restart**
 * Install the plugin called **SEI Job Reporter** by selecting it and clicking **Install without restart**
 * Once the plugin installation is complete, the status will change to **Success**. If it doesn't change to Success, then a restart might be needed
-* Set the **Instance Name** and use the **API KEY** you generated earlier as the value for the **Manage Jenkins >> Harness - SEI Job Reporter >> SEI API KEY** field.
+* Set the **Instance Name** and use the **APIKEY** you generated earlier as the value for the **Manage Jenkins >> Harness - SEI Job Reporter >> SEI APIKEY** field.
 * Set the **Application Type** to the environment where you are configuring the **Plugin**.
 
 ![](../static/jenkins-plugin.webp)
