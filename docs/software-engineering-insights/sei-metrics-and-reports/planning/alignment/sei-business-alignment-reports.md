@@ -1,8 +1,8 @@
 ---
 title: Business Alignment report
 description: Generate Alignment metrics for your Engineering Team using the Business Alignment profile.
-sidebar_position: 10
-sidebar_label: Business Alignment
+sidebar_position: 131
+sidebar_label: Business Alignment report
 redirect_from:
   - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports
   - /docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-reports
@@ -12,13 +12,17 @@ redirect_from:
 
 The Business Alignment Report helps you visualize where your teams are investing the majority of their effort and assist them in prioritizing their time effectively. This report displays your investment efforts across the categories outlined in the corresponding Business Alignment Profile.
 
+:::info
+The Business Alignment report feature is currently in BETA. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
 <DocVideo src="https://www.youtube.com/embed/f3fLqermTGo?si=qFF0PVof8Q36kkr3" />
 
 <br />
 
 The report displays the effort invested for each category as a percentage, along with a label (`Ideal`, `Poor`, `Acceptable`) on the **Pie Chart**. The Trend Section displays the breakdown of the score over time in a **Stacked Bar Chart** format, based on the defined  Categories and their associated Allocation Goals in the [Business Alignment Profile](/docs/software-engineering-insights/sei-profiles/business-alignment-profile). The Bar Chart breaks down the metric value into time intervals as configured under the widget settings.
 
-![](./static/ba-report.png)
+![](../static/ba-report.png)
 
 ## Calculation Parameters
 
@@ -37,7 +41,7 @@ The report supports two drill-down views:
 
 Displays the total completed effort and distribution among individual contributors across all categories or the selected one. By selecting a category from the **Stacked Bar Chart**, you can access the drill-down report displaying data on the total completed effort, including the distribution of effort among individual contributors.
 
-![](./static/drilldown-contributors.png)
+![](../static/drilldown-contributors.png)
 
 ## Drill down by Tickets
 
@@ -45,7 +49,7 @@ Shows the relevant tickets included in the selected category or time interval in
 
 The data is represented in tabular format. Both the drill-down options support searching for specific contributors or tickets.
 
-![](./static/drilldown-tickets.png)
+![](../static/drilldown-tickets.png)
 
 :::info
 Please note that the **Drilldown by Contributor** option is available only if the widget is configured to calculate effort by engineer (FTE).
@@ -118,14 +122,14 @@ This feature is behind the Feature Flag `<NEW_BA_COMBINED_WIDGET>` and `<BA_INCL
 * Under the **Filters** tab, enable the **Include Unresolved Issues** option. By selecting this option, tickets that are in the **In Progress status category** will be included in the metric calculation. If you only want to include only resolved tickets, leave this option unchecked.
 
 <img
-  src={require('./static/unresolved-issues.png').default}
+  src={require('../static/unresolved-issues.png').default}
   alt="Example banner" height="50%" width="50%" border="1"
 />
   
 * Specify the time period or date range for which you want to include tickets in the calculation and display within the widget.
 
 <img
-  src={require('./static/inprogress-time-period.png').default}
+  src={require('../static/inprogress-time-period.png').default}
   alt="Example banner" height="50%" width="70%" border="1"
 />
 
@@ -136,14 +140,14 @@ This feature is behind the Feature Flag `<NEW_BA_COMBINED_WIDGET>` and `<BA_INCL
 * The **Effort Attribution** will automatically be selected as **Only use current assignee**
 
 <img
-  src={require('./static/effort-attribution.png').default}
+  src={require('../static/effort-attribution.png').default}
   alt="Example banner" height="50%" width="50%" border="1"
 />
 
 * In this case, **Ticket Time Spent** is the only supported **Effort Unit** and not **Story Points** or **Ticket Count**.
 
 <img
-  src={require('./static/effort-unit.png').default}
+  src={require('../static/effort-unit.png').default}
   alt="Example banner" height="50%" width="50%" border="1"
 />
 
@@ -152,7 +156,7 @@ This feature is behind the Feature Flag `<NEW_BA_COMBINED_WIDGET>` and `<BA_INCL
 * The **Effort Calculation** will automatically be selected as **Absolute (By ticket)**.
 
 <img
-  src={require('./static/effort-calculation.png').default}
+  src={require('../static/effort-calculation.png').default}
   alt="Example banner" height="50%" width="50%" border="1"
 />
 

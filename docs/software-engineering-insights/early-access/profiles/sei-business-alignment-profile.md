@@ -1,6 +1,6 @@
 ---
 title: Business Alignment profile
-description: Use the BA profile to examine effort investment metrics.
+description: Use the BA profile to generate the BA report for your engineering team.
 sidebar_position: 10
 sidebar_label: Business Alignment profile
 redirect_from:
@@ -11,6 +11,10 @@ redirect_from:
 Business Alignment metrics help you understand where engineers are allocating their time through effort investment metrics. It is one of the most critical components of engineering metrics that connects your engineering to the business value.
 
 The **Business Alignment profile** acts as the single source of truth for the Business Alignment metrics calculations where you can create and manage the Investment Categories using Filter Sets and adjust the threshold of each of these categories using Allocation Goals.
+
+:::info
+The Business Alignment profile feature is currently in BETA. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
 
 <DocVideo src="https://www.youtube.com/embed/f3fLqermTGo?si=qFF0PVof8Q36kkr3" />
 
