@@ -18,17 +18,13 @@ To configure an IaCM workspace and create pipelines, you must have the following
 
 ## Supported IaC Frameworks
 :::info opentofu / terraform
-Harness IaCM currently supports integration with **OpenTofu** <HarnessApiData
+Harness IaCM currently supports integration with all **OpenTofu** versions<HarnessApiData
     query="https://app.harness.io/gateway/iacm/api/provisioners/supported/opentofu"
     token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
     fallback=""
-    parse='.[-1] | "(up to v\(.))"'>
-</HarnessApiData> and **Terraform** <HarnessApiData
-    query="https://app.harness.io/gateway/iacm/api/provisioners/supported/terraform"
-    token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
-    fallback=""
-    parse='.[-1] | "(up to v\(.))"'>
-</HarnessApiData> frameworks.
+    parse='.[-1] | " (latest: v\(.))"'></HarnessApiData>.
+    
+ For **Terraform**, we support all MPL versions up to **1.5.x**, any BSL versions (from 1.6.0) are not supported.
 :::
 
 ## Supported Workspace Connectors
