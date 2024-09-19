@@ -2187,6 +2187,27 @@ Yes. You can use the following expression in a JEXL condition or trigger configu
 
 Replace `LABEL_KEY` with your label's actual key.
 
+### Why does the parallel execution of build and push steps fail when using Buildx on Kubernetes?
+
+When using Buildx on Kubernetes (enabled by feature flags), running multiple build-and-push steps in parallel can result in failures due to race conditions. This issue arises from how Docker-in-Docker works within Kubernetes pods.
+
+The failure occurs when either of the following feature flags are enabled:
+
+- `CI_USE_BUILDX_ON_K8` – Enables the use of Buildx instead of Kaniko for build-and-push steps.
+- `CI_ENABLE_DLC_SELF_HOSTED` – Enables DLC (Docker Layer Caching), which also forces the use of Buildx instead of Kaniko.
+
+When these flags are active, and parallel build-and-push steps are attempted, they often fail due to Kubernetes’ shared network space. Since all containers in the same Kubernetes pod share the same network, running multiple Docker daemons simultaneously (via Docker-in-Docker) leads to network race conditions, preventing multiple Docker builds from completing in parallel.
+
+Common failure causes:
+- **Privileged mode settings**: Buildx requires privileged access, which is not always enabled in self-hosted infrastructures.
+- **Race conditions**: Multiple Docker daemons may attempt to modify network rules (e.g., iptables) at the same time, causing conflicts.
+
+There is an open issue with Drone regarding parallel builds:  
+[Drone Issue: Docker Parallel Build Failing](https://drone.discourse.group/t/docker-parallel-build-failing-anyone/8439)
+
+To avoid this, run build-and-push steps sequentially in Kubernetes pipelines instead of in parallel. Additionally, there is an open PR to address iptables settings in the Drone Docker plugin, which could help mitigate these issues in the future:  
+[Drone Docker Plugin PR](https://github.com/drone-plugins/drone-docker/pull/309)
+
 ## Logs and execution history
 
 ### How do I access build logs?
