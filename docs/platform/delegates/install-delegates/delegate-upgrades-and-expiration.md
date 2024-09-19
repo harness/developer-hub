@@ -309,7 +309,7 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
 Six months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). 
 
-Delegates do not stop working after expiration. Because delegates are only backward-compatible, they might have issues if the backend has moved too far ahead. Harness recommends that you upgrade your delegates before they expire.
+When a delegate has been tagged as "expired", this does not stop a Delegate from continuing operations.  It is a cosmetic flag to inform a customer that the delegate should be considered for an upgrade. Because delegates are only backward-compatible, they might have issues if the backend has moved too far ahead. Harness recommends that you upgrade your delegates before they expire.
 
 | Release | EOS | EOL |
 | --- | --- | --- |
@@ -318,12 +318,10 @@ Delegates do not stop working after expiration. Because delegates are only backw
 
 EOS means the following:
 
-- Harness Support will no longer accept support requests for the delegate in both Harness FirstGen and Harness NextGen.
-
-- Security fixes will still be addressed.
-
-- Product defects will not be addressed.
-- If delegates are past their EOS date, Harness does not support them. Expired delegates might not work as intended. For issues with expired delegates, Harness Support will request that you upgrade your delegate(s).
+- Harness Support will provide best-attempt support requests for the delegate, and would recommend a change to a newer version.  This applies to both Harness FirstGen and Harness NextGen. 
+- Security fixes will still be addressed, but may be already addressed with a newer update.
+- Product defects will not be addressed.  Code Changes also will not be
+- If delegates are past their EOS date, Harness does not support them. Expired delegates might continue to work, but it is recommended to upgrade to a newer delegate if the delegate does not work as intended.
 
 EOL means the following:
 
