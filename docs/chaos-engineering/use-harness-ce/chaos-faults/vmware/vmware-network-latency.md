@@ -12,6 +12,10 @@ VMware network latency injects network packet latency from the VMware VM(s) into
 
 ![VMware Network Latency](./static/images/vmware-network-latency.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 VMware network latency:
 - Simulates issues within the VM network (or microservice) communication across services in different hosts.

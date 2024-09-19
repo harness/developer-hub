@@ -11,6 +11,11 @@ VMware process kill kills the target processes that are running as a part of a L
 
 ![VMware Process kill](./static/images/vmware-process-kill.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
+
 ## Use cases
 VMware process kill:
 - Disrupts critical processes running within the application, such as databases or message queues.

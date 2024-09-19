@@ -10,6 +10,10 @@ VMware DNS chaos causes DNS errors in the VMware VMs which results in the DNS se
 
 ![VMware DNS Chaos](./static/images/vmware-dns-chaos.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 
 - VMware DNS chaos causes DNS errors on the target VMs which results in unavailability (or distorted) network connectivity from the VM to the target hosts.
@@ -17,7 +21,6 @@ VMware DNS chaos causes DNS errors in the VMware VMs which results in the DNS se
 - It determines how DNS errors impact the infrastructure and standalone tasks in the application.
 - It simulates unavailability of DNS server, that is, loss of access to any external domain from a given microservice.
 - It simulates malfunctioning of DNS server, that is, loss of access to specific domains from a given microservice, loss of access to cloud provider dependencies, and loss of access to specific third party services.
-
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.

@@ -10,6 +10,10 @@ VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM. 
 
 ![VMware Cpu Hog](./static/images/vmware-cpu-hog.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 
 - VMware CPU hog determines the resilience of an application when stress is applied on the CPU resources of a VMware virtual machine.
@@ -39,7 +43,6 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-
 
 ### Mandatory tunables
 

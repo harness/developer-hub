@@ -10,6 +10,10 @@ VMware Windows CPU hog applies stress on the CPU resources on Windows OS based V
 
 ![VMware Windows Cpu Hog](./static/images/vmware-windows-cpu-hog.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 VMware Windows CPU hog:
 - Determines the resilience of an application when stress is applied on the CPU resources of a VMware Windows virtual machine.
@@ -24,6 +28,7 @@ VMware Windows CPU hog:
 - VMware tool should be installed on the target VM with remote execution enabled.
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`.
+
 
 - VM credentials can be passed as secrets or as a chaos engine environment variable.
 ```yaml

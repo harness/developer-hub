@@ -10,6 +10,10 @@ VMware disk loss detaches the disks that are attached to a Linux OS based VMware
 
 ![VMware Disk Loss](./static/images/vmware-disk-loss.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 
 - VMware disk loss determines the resilience of an application to the unplanned scaling of K8s pods.

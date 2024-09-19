@@ -10,6 +10,10 @@ VMware Windows memory hog applies stress on the Memory resources on Windows OS b
 
 ![VMware Windows Memory Hog](./static/images/vmware-windows-memory-hog.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 VMware Windows memory hog:
 - Determines the resilience of an application when stress is applied on the Memory resources of a VMware Windows virtual machine.

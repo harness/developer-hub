@@ -15,6 +15,10 @@ VMware HTTP modify response injects HTTP chaos by modifying the status code, bod
 
 ![VMware HTTP Modify Response](./static/images/vmware-http-modify-response.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 
 - VMware HTTP modify response determines the resilience of an application to modifications in the status code or body or header of the request (or response).

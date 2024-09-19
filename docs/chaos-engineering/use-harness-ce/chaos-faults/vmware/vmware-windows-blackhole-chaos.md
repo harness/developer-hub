@@ -10,6 +10,11 @@ VMware Windows blackhole chaos simulates a network blackhole scenario on Windows
 
 ![VMware Windows Blackhole Chaos](./static/images/vmware-windows-blackhole-chaos.png)
 
+
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 VMware Windows blackhole chaos
 - Determines the resilience of an application when a network blackhole scenario is simulated on a VMware Windows virtual machine.

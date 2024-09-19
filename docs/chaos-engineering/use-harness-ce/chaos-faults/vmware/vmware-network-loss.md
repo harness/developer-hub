@@ -9,6 +9,10 @@ VMware network loss injects network packet loss from the VMware VM(s) into the a
 
 ![VMware Network Loss](./static/images/vmware-network-loss.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 VMware network loss:
 - Simulates issues within the VM network (or microservice) communication across services in different hosts.

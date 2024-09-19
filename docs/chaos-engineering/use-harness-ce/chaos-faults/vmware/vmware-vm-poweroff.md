@@ -11,6 +11,10 @@ VMware VM power off stops (or powers off) the VMware VMs for a specific duration
 
 ![VMware VM Power off](./static/images/vmware-vm-poweroff.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 VMware VM power off:
 - Determines the resilience of an application to random power failures.
