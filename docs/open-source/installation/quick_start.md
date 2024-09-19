@@ -3,7 +3,7 @@ title: Quick Start
 sidebar_position: 1
 ---
 
-Let's discover **[Harness Open Source](https://gitness.com)** in less than 30 seconds.
+Let's discover **[Harness Open Source](/docs/open-source)** in less than 30 seconds.
 
 <!--
 ## Pre-Compiled Binaries
@@ -17,7 +17,7 @@ Use the following Docker command to install Harness Open Source locally.
 
 ```sh {} showLineNumbers
 docker run -d \
-  -p 3000:3000 \
+  -p 3000:3000 -p 3022:3022 \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /tmp/gitness:/data \
   --name gitness \
@@ -58,8 +58,8 @@ Optionally, Harness Open Source can [import repositories](../repositories/overvi
 
 Now that you've created a project and repository, you can:
 
-- [Clone](repositories/cloning) a repository
+- [Clone](/docs/open-source/repositories/cloning) a repository
 - Create a branch and open a [pull request](repositories/pull_requests)
-- Create a [pipeline](pipelines/overview)
+- Create a [pipeline](/docs/open-source/pipelines/overview)
 - Add [users](../administration/user-management.md) and assign [project members](../administration/project-management.md)
-- Learn how to customize your Harness Open Source [installation](category/installation)
+- Learn how to customize your Harness Open Source [installation](/docs/open-source/installation/quick_start)
