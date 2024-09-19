@@ -90,6 +90,9 @@ To add a custom **Category** to the profile configuration:
 
 * Go to the **Business Alignment profile** settings.
 * Select **+New Category** under the **RANKED CATEGORIES** section.
+
+![](./static/ba-new-category.png)
+
 * Add a **Name**, then click on **Save** to save the Category.
 * Define the **Filter Sets**, **Ticket Fetching Criteria** and **Allocation Goals** for the newly created custom category.
 
@@ -132,6 +135,8 @@ Finally, you will set the allocation goals for each category. This involves deci
 
 * Set an ideal resource allocation range as a percentage. This is your target for how much effort should go into each category.
 * You can also customize what is considered an acceptable range. This gives some flexibility while still aligning with your overall objectives.
+
+![](./static/allocation-goals.png)
 
 ### Step 7: Save the profile
 
