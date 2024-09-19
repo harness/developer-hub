@@ -10,6 +10,10 @@ VMware Windows disk stress applies stress on the disk resources on Windows OS ba
 
 ![VMware Windows Disk Stress](./static/images/vmware-windows-disk-stress.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 VMware Windows disk stress
 - Determines the resilience of an application when stress is applied on the disk resources of a VMware Windows virtual machine.

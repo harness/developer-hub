@@ -10,6 +10,10 @@ VMware memory hog fault consumes excessive memory resources on Linux OS based VM
 
 ![VMware Memory Hog](./static/images/vmware-memory-hog.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 
 - VMware memory hog determines the resilience of an application to unexpected consumption of excessive memory by application resources.

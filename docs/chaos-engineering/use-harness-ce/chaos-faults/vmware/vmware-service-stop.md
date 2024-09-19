@@ -10,6 +10,10 @@ VMware service stop stops the target system services running on a Linux OS based
 
 ![VMware ServiceStop](./static/images/vmware-service-stop.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 VMware service stop:
 - Determines the resilience of an application to random halts.

@@ -8,10 +8,6 @@ redirects_from:
 
 Windows chaos faults disrupt the resources of an application running on a Windows virtual machine. To execute these faults, you need to [install a chaos infrastructure in the Windows VM](/docs/chaos-engineering/use-harness-ce/infrastructures/).
 
-:::info note
-HCE doesn't support injecting Windows faults on Bare metal server.
-:::
-
 This section describes the interoperability matrix and the prerequisites to execute Windows chaos faults.
 
 ### Interoperability matrix to determine compatibility
