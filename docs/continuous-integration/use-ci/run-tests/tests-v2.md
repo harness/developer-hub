@@ -393,4 +393,4 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Test Intelligence fails due to Bazel not installed, but the container image has Bazel.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-due-to-bazel-not-installed-but-the-container-image-has-bazel)
 * [Does Test Intelligence support dynamic code?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-support-dynamic-code)
 * [Errors when running TI on Python code.](/kb/continuous-integration/continuous-integration-faqs/#python-test-intelligence-errors)
-* [Test Intelligence fails to find all classes on C# code.](/kb/continuous-integration/continuous-integration-faqs/#python-test-intelligence-errors)
+* [Test Intelligence fails to find all classes on C# code.](/kb/continuous-integration/continuous-integration-faqs/#why-some-of-my-c-classes-are-not-being-discovered-by-test-intelligence)
