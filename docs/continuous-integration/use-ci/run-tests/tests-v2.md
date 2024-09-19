@@ -131,6 +131,7 @@ All cloud available versions of Linux, Windows & Mac are supported.
 
 All cloud available versions of Linux, Windows & Mac are supported.
 
+<details>
 <summary><b>Supported languages</b></summary>
 
 | **Language** | **Minimum Version** |
@@ -153,6 +154,16 @@ All cloud available versions of Linux, Windows & Mac are supported.
 | Linux/Ubuntu         | 20.04+                 | AMD64 & ARM64     |
 | Alpine               | 3.17+                  | AMD64 & ARM64     |
 | Windows              | TBD                    | AMD64             |
+
+<details>
+<summary><b>Supported implementations</b></summary>
+
+| **Language** | **Minimum Version** |
+| ------------ | ------------------- |
+| .Net Core       | 6-8                  |
+| .Net Framework       | TBD                  |
+
+</details>
 
 </TabItem>
 </Tabs>
