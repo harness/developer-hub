@@ -5,7 +5,7 @@ sidebar_position: 10
 sidebar_label: Business Alignment profile
 redirect_from:
   - /docs/software-engineering-insights/sei-profiles/business-alignment-profile
-  - /docs/software-engineering-insights/sei-profiles/investment-profile
+  - /docs/software-engineering-insights/sei-profiles/business-alignment-profile
 ---
 
 Business Alignment metrics help you understand where engineers are allocating their time through effort investment metrics. It is one of the most critical components of engineering metrics that connects your engineering to the business value.
@@ -48,7 +48,7 @@ The ranking of categories plays a significant role in determining how tickets ar
 
 ### Allocation Goals
 
-After adding [categories](https://developer.harness.io/docs/software-engineering-insights/sei-profiles/investment-profile#categories), you can set goals for how much time you want developers to work on each category.
+After adding [categories](https://developer.harness.io/docs/software-engineering-insights/sei-profiles/business-alignment-profile#categories), you can set goals for how much time you want developers to work on each category.
 
 Define the **Ideal Range** for each Category. You can set ranges in percentage values. After defining your ideal range, SEI automatically calculates the Acceptable range and Poor range based on your ideal.
 
