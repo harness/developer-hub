@@ -190,7 +190,7 @@ Users can be migrated to Harness SEI using the following phases, which are expan
 
 * [Preparation phase](#preparation-phase)
 * [Migration phase](#migration-phase)
-* [Initial Onboarding phase](#initial-onboarding-phase)
+* [Onboarding phase](#onboarding-phase)
 
 ### Preparation phase
 
@@ -226,7 +226,7 @@ As part of the migration, all secrets and resources—such as Insights, Collecti
 Note that all actions will be disabled on the Propelo platform during the migration process.
 :::
 
-### Initial Onboarding phase
+### Onboarding phase
 
 Once the migration is completed, you’ll automatically receive the user invites to access the SEI module in the Harness platform. Accept the user invite to access Harness SEI platform. 
 
