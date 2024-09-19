@@ -7,6 +7,8 @@ redirect_from:
 - /docs/chaos-engineering/features/probes/http-probe
 ---
 
+import CommonNote from './shared/common-note.md'
+
 HTTP probe allows you to specify a URL that the experiment uses to determine the health or service availability (or other custom conditions) that is a part of the entry or exit criteria. The status code received is mapped against an expected status. It supports HTTP [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) and [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) methods.
 
 The HTTP GET method sends a GET request to the specified URL. The response received is matched for the response code or response body based on the provided criteria.
@@ -324,6 +326,8 @@ Alternatively, you have the option to enable the `insecureSkipVerify` check to b
 </table>
 
 ## Definition
+
+<CommonNote />
 
 ```yaml
 probe:

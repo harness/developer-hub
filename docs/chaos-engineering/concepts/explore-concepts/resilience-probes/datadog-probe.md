@@ -10,6 +10,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CommonNote from './shared/common-note.md'
 
 Datadog probe allows you to query raw metrics or a [Synthetic test](https://docs.datadoghq.com/synthetics/) and use its results to evaluate the probe outcome.
 
@@ -309,6 +310,9 @@ Listed below is the Datadog Probe schema with common properties shared across al
 </table>
 
 ## Definition
+
+<CommonNote />
+
 <Tabs>
   <TabItem value="kubernetes" label="Kubernetes" default>
 
