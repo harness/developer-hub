@@ -4,6 +4,7 @@ description: Run a Docker container in a CD stage.
 sidebar_position: 7
 redirect_from:
   - /docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step
+canonical_url: https://www.harness.io/blog/container-pipelines
 ---
 
 :::warning deprecation notice

@@ -22,6 +22,36 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## September 2024
+
+### Version 1.110.3
+
+<!-- 2024-09-18 -->
+
+#### New features and enhancements
+
+- STO ingestion now works on [MacOS Harness hosted builds](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#operating-systems-and-architectures-supported-by-sto).
+- STO now supports [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) for Harness Hosted
+- The steps Snyk, Wiz, Prisma Cloud, Aqua Security, Aqua Trivy, and Grype can now run without Docker-in-Docker as a dependency.
+- Improved the performance of the STO graph "Issue distribution over time"
+
+#### Fixed issue
+
+- Resolved the issue that caused the "Issue distribution over time" graph on the Overview page to time out and fail to load (STO-6037).
+- Fixed the problem where exempted issues were occasionally counted incorrectly in the "Issue distribution over time" graph on the Overview page. (STO-6037).
+- Resolved the issue that caused the SonarQube step to fail during the upload of scan results (STO-7961).
+- Fixed the problem in the Checkmarx Ingestion where the SARIF normalizer failed to handle null values in the output (STO-7997).
+
+### Version 1.108.2
+
+<!-- 2024-09-06 -->
+
+#### New features and enhancements
+
+- The [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) step will now present the code coverage data in Orchestration, Ingestion, and Extraction scan modes, this can be found as an INFO level issue item in your pipeline executions. (STO-7100)
+- The [Burp Suite Enterprise Edition](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference) step has been upgraded to use the `scope_v2` API version instead of `scope`. This update is designed to support server version `v2023.3`, while still maintaining backward compatibility with earlier supported versions. (STO-7955)
+
+
 ## August 2024
 
 ### Version 1.104.3
@@ -1505,7 +1535,7 @@ This release does not include new features.
 
 * You can now include Run steps in Security Test stages. You can also include Security Tests stages in STO pipelines without a CI license. (STO-5208)
 
-* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans). (STO-4958) 
+* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning#snyk-code-scan---ingestion-mode). (STO-4958) 
 
 #### Fixed issues
 

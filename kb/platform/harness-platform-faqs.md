@@ -2149,6 +2149,10 @@ Harness Delegates are primarily configured through variables, which can be adjus
 
 These approaches offer flexibility and reliability in ensuring that Harness delegates are configured correctly to meet your needs.
 
+### Upgrader job is up and running but not identified as Upgrade is Turned ON also upgrade is not working
+
+The name of the upgrader job workload needs to follow the delegate naming convention, so can you check and confirm if you have changed that manually or using the default name as you get while downloading the manifest.
+
 ## Dashboards
 
 ### Why isn't my project's Overview page showing deployments?
@@ -2822,6 +2826,10 @@ You can reference the secrets using the following as a guide.
 
 No, Harness doesn't use the customer secret manager to encrypt delegate tokens. Rather than storing the token in plain text, Harness leverages an internal encryption mechanism. This mechanism enables Harness to store the token's encrypted value in the database. This approach enhances security and mitigates potential risks associated with storing sensitive information.
 
+### Basic as string is getting masked although I am not using as secret or none of the secret has this value.
+
+We do follow some rules for masking, like to mask any api key/token, we mask any string followed by Basic/Bearer, and that’s the reason if you try to print these will be masked.
+
 ## Security
 
 ### Does JIT provisioning still initiate an email to the user for confirmation or password creation?
@@ -3141,6 +3149,11 @@ You can rely on our [Built-In variables](/docs/platform/variables-and-expression
 
 Unfortunately, JEXL conditions do not support the direct usage of environment variables. The conditions in JEXL only allow the use of variable expressions that can be resolved before the stage is executed. Since environment variables are resolved during runtime, it is not possible to utilize variable expressions that cannot be resolved until the stage is run.
 
+### Variable is interpreted as integer although passing as a string (enclosed with single or double quotes).
+
+Can you check if your string has underscore as a value  because underscores are ignored in strings.
+
+
 ## Miscellaneous
 
 ### Does the Harness Platform support localization?
@@ -3328,3 +3341,22 @@ The minimum supported screen resolution is 1440x900.
 ### Can I adjust the default width of step logs in the browser GUI? They currently open at around 25% of the screen width.
 
 Currently, there are no settings to modify the default GUI view setup. You can manually expand and adjust it as needed, but it resets to default when you refresh or switch to another execution.
+
+
+### How to revoke an account token in Harness?
+
+You can revoke an account token by going to the Access Control section in Harness and selecting the token you want to revoke.
+
+
+### Is it possible to extend the expiration date of a token that has already expired?
+No, you cannot extend the expiration date of an expired token. You will need to create a new token with a new expiration date or rotate the token.
+
+
+### What time zone is used to determine the expiration time of a token?
+The token expiration time zone will be UTC.
+
+### If I have a service account token like ```sat.w8EaJoerQcqqkZwcb*****************mqXIHzgFq```, is there any way to identify which service account it is associated with?
+No, there is no way to find out which service account is associated with a service account token just by looking at the token itself. 
+
+### How can I restrict a Harness secret so that it can only be accessed and used by a specific pipeline?
+You can use our RBAC and create a resource group and role so it can be used only in the required pipeline https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/#create-a-resource-group

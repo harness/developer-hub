@@ -109,6 +109,35 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 <StoSettingTargetWorkspace  />
 
+### Container image
+
+
+#### Type
+
+import StoSettingImageType from './shared/step_palette/image/_type.md';
+
+<StoSettingImageType />
+
+
+#### Domain (_extraction_)
+
+import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
+
+<StoSettingImageDomain />
+
+
+#### Name
+
+import StoSettingImageName from './shared/step_palette/image/_name.md';
+
+<StoSettingImageName />
+
+
+#### Tag
+
+import StoSettingImageTag from './shared/step_palette/image/_tag.md';
+
+<StoSettingImageTag />
 
 ### Ingestion
 
@@ -228,6 +257,12 @@ import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
 import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
+
+## Proxy settings
+
+import ProxySettings from '/docs/security-testing-orchestration/sto-techref-category/shared/proxy-settings.md';
+
+<ProxySettings />
 
 ## Troubleshooting Black Duck Hub
 

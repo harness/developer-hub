@@ -6,6 +6,7 @@ helpdocs_topic_id: 17wrdeuv0x
 helpdocs_category_id: 85tr1q4hin
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/canary-deployments-in-kubernetes
 ---
 
 This topic provides settings and permissions for the CD **Canary Deployment** step.

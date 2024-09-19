@@ -48,3 +48,4 @@ Harness recommends that you publish and ingest using the scanner-specific JSON f
 - **JFrog Xray** — JSON
 - **Wiz** - JSON _(recommended)_, SARIF
 - **Zed Attack Proxy (ZAP)** — JSON
+- **Checkov** - JSON, SARIF

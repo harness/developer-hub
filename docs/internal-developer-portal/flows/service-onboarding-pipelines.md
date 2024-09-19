@@ -373,6 +373,9 @@ perform operations on top of an existing repository.
 
 A sample template that takes advantage of this is like so:
 
+<details>
+<summary>Example YAML</summary>
+
 ```yaml
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
@@ -421,6 +424,7 @@ spec:
 
     ...
 ```
+</details>
 
 You will see from above that there is an additional `requestUserCredentials`
 object that is passed to the `RepoUrlPicker`. This object defines what the
@@ -501,6 +505,9 @@ output:
 
 When using the custom action `[trigger:harness-custom-pipeline](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline)` can as well configure the output to display the pipeline [output variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#input-and-output-variables), by setting the `showOutputVariables: true` under `inputs`and adding `output` as shown in the example below:
 
+<details>
+<summary>Example YAML</summary>
+
 ```YAML
 ...
 ## Example
@@ -528,6 +535,7 @@ output:
         Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`      
 ...
 ```
+</details>
 
 :::info
 
@@ -552,6 +560,9 @@ You might have noticed variables wrapped in `${{ }}` in the examples. These are 
 These template strings preserve the type of the parameter.
 
 The `${{ parameters.firstName }}` pattern will work only in the template file. If you want to start using values provided from the UI in your code, you will have to use the `${{ values.firstName }}` pattern. Additionally, you have to pass the parameters from the UI to the input of the `fetch:template` step.
+
+<details>
+<summary>Example YAML</summary>
 
 ```yaml
 apiVersion: scaffolder.backstage.io/v1beta3
@@ -593,6 +604,7 @@ spec:
           url: ${{ parameters.urlParameter }}
           enabledDB: ${{ parameters.enabledDB }}
 ```
+</details>
 
 Afterwards, if you are using the builtin templating action, you can start using the variables in your code. You can use also any other templating functions from [Nunjucks](https://mozilla.github.io/nunjucks/templating.html#tags) as well.
 
@@ -617,6 +629,9 @@ It is important to remember that all examples are based on [react-jsonschema-for
 
 ### Simple input with basic validations
 
+<details>
+<summary>Example YAML</summary>
+
 ```yaml
 parameters:
   - title: Fill in some steps
@@ -630,8 +645,12 @@ parameters:
         ui:autofocus: true
         ui:help: 'Hint: additional description...'
 ```
+</details>
 
 ### Multi line text input
+
+<details>
+<summary>Example YAML</summary>
 
 ```yaml
 parameters:
@@ -655,10 +674,14 @@ parameters:
               owner: CNCF
               lifecycle: experimental
 ```
+</details>
 
 ## Arrays options
 
 ### Array with custom titles
+
+<details>
+<summary>Example YAML</summary>
 
 ```yaml
 parameters:
@@ -686,8 +709,12 @@ parameters:
           - 'Throughput Optimized HDD (st1)'
           - 'Magnetic (standard)'
 ```
+</details>
 
 ### A multiple choices list
+
+<details>
+<summary>Example YAML</summary>
 
 ```yaml
 parameters:
@@ -705,8 +732,12 @@ parameters:
         uniqueItems: true
         ui:widget: checkboxes
 ```
+</details>
 
 ### Array with another types
+
+<details>
+<summary>Example YAML</summary>
 
 ```yaml
 parameters:
@@ -739,6 +770,7 @@ parameters:
               title: Simple text input
               type: string
 ```
+</details>
 
 ## Boolean options
 
@@ -767,6 +799,9 @@ parameters:
 
 ### Boolean multiple options
 
+<details>
+<summary>Example YAML</summary>
+
 ```yaml
 parameters:
   - title: Fill in some steps
@@ -784,9 +819,14 @@ parameters:
         ui:widget: checkboxes
 ```
 
+</details>
+
 ## Conditional Inputs in Templates
 
 ### Use parameters as condition in steps
+
+<details>
+<summary>Example YAML</summary>
 
 ```yaml
 - name: Only development environments
@@ -801,8 +841,12 @@ parameters:
   input:
     message: 'production step'
 ```
+</details>
 
 ### Conditionally set parameters
+
+<details>
+<summary>Example YAML</summary>
 
 ```yaml
 spec:
@@ -820,8 +864,12 @@ spec:
       input:
         url: ${{ parameters.path if parameters.path else '/root' }}
 ```
+</details>
 
 ### Use parameters as conditional for fields
+
+<details>
+<summary>Example YAML</summary>
 
 ```yaml
 parameters:
@@ -846,7 +894,12 @@ parameters:
                   type: string
 ```
 
+</details>
+
 1. **`One Of`**: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
+
+<details>
+<summary>Example YAML</summary>
 
 ```YAML
 dependencies:
@@ -862,7 +915,12 @@ dependencies:
               - java8
               - java11
 ```
+</details>
+
 2. **`All Of`**: Helps you create a dropdown in the template, where only all the options available could be selected.
+
+<details>
+<summary>Example YAML</summary>
 
 ```YAML
 type: object
@@ -879,7 +937,12 @@ allOf:
     ipsum:
       type: string
 ```
+</details>
+
 3. **`Any Of`**: Helps you to select from multiple properties where both can't be selected together at once. 
+
+<details>
+<summary>Example YAML</summary>
 
 ```YAML
 type: object
@@ -914,6 +977,8 @@ anyOf:
       type: string
       title: ID code
 ```
+
+</details>
 
 For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
 
@@ -1012,6 +1077,63 @@ The `projectSlug` filter generates a project slug from a repository URL
 - **Input**: `github.com?repo=backstage&org=backstage`
 - **Output**: `backstage/backstage`
 
+## Pre-fill workflows with URL Params
+
+We can now automatically load IDP Workflow forms pre-filled using the `formData` URL query parameter. eg: `https://app.harness.io/ng/account/account_id/module/idp/create/templates/default/a-python-lambda?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D`
+
+The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7` in the end of the URL allow you to automatically fill in values of the form. Please see the below table for explanation of individual tokens in the query param.
+
+| Item                | Example Value                           | Explanation                                                                                      |
+|---------------------|-----------------------------------------|--------------------------------------------------------------------------------------------------|
+| `formData`          | `formData`                              | Key of the query param.`formData` object is used to fill out IDP Workflow forms.           |
+| `{"key"%3A"value"}` | `{"title"%3A"Title from query params"}` | Value of the query param. A JSON object with invalid URL characters encoded.`:` encodes to `%3A` |
+
+### Additional information
+
+Using automatically filled out values is handy when wanting to direct users to use IDP Workflows with known good values. This also allows automation to be constructed around the Workflows, where the automation can provide fully constructed IDP URLs to the user. You can also prevent user from modifying the form values inserted from query params by making the form fields `readonly`. See below example of a minimal form which would be filled using query params defined in the above explanation.
+
+<details>
+<summary>Example YAML</summary>
+
+```YAML
+## Example Workflow
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: test-template-pipeline
+  title: Test pipeline using templates
+spec:
+  owner: name.owner
+  type: service
+  parameters:
+    - title: Repository Name
+      properties:
+        project_name:
+          title: Name your project
+          ui:readonly: true
+          type: string
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: trigger
+      name: Creating your github repository
+      action: trigger:harness-custom-pipeline
+      input:
+        url: PIPELINE_URL
+        inputset: 
+          github_org: ${{ parameters.project_name }}
+        apikey: ${{ parameters.token }}
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+
+```
+
+</details>
 
 ## Upload a file using template
 
@@ -1020,6 +1142,9 @@ There are 3 types of file upload.
 1. Single File
 2. Multiple Files
 3. Single File with Accept Attribute 
+
+<details>
+<summary>Example YAML</summary>
 
 ```YAML
 #Example
@@ -1041,6 +1166,7 @@ properties:
     format: data-url
     title: Single File with Accept attribute
 ```
+</details>
 
 ## How to use arrays as Harness Pipeline inputs 
 
@@ -1048,6 +1174,9 @@ Harness Pipelines variables can only be 3 types, string, number and secrets, in 
 
 In the following template I want to pick the enum and parse the `exampleVar` as a string and use it as comma separated value in the inputset for pipeline. 
 As you could see in the example below under `inputset`, `exampleVar` takes input as `${{ parameters.exampleVar.join(',') }}`. 
+
+<details>
+<summary>Example YAML</summary>
 
 ```YAML
     - title: Pass Variables Here      
@@ -1078,7 +1207,7 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
           owner: ${{ parameters.owner }}
         apikey: ${{ parameters.token }}
 ```
-
+</details>
 
 ## Template registration
 

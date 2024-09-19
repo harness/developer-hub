@@ -8,6 +8,7 @@ const sidebars = {
     {
       type: "category",
       label: "University",
+      className: "sidebar-univ",
       link: {
         type: "doc",
         id: "university-home",
@@ -72,23 +73,33 @@ const sidebars = {
           id: "idp",
            className:"sidebar-idp"
         },
+         //iacm
+         {
+          type: "doc",
+          label: "Infrastructure as Code Management",
+          id: "iacm",
+           className:"sidebar-iacm"
+        },
         //vILT
         {
           type: "link",
           label: "Virtual Instructor-Led Calendar",
           href: "https://university-registration.harness.io/calendar",
+          className: "sidebar-vilt-cal",
         },
         // Instructions
         {
           type: "doc",
-          label: "Instructions",
+          label: "Hands-on Instructions",
           id: "instructions",
+          className: "sidebar-ilt-instructions",
         },
         // FAQs
         {
           type: "doc",
           label: "FAQs",
           id: "faqs",
+          className: "sidebar-faqs",
         },
       ],
     },

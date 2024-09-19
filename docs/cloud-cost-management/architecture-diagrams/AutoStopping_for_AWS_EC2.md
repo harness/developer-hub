@@ -4,7 +4,7 @@ description: AutoStopping for AWS EC2
 sidebar_label: AutoStopping for AWS EC2 
 ---
 
-<DocImage path={require('./static/AutoStopping_for_AWS_EC2.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/AutoStopping_for_AWS_EC2_updated.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ### AutoStopping for AWS EC2: High-Level Overview
 
@@ -26,7 +26,7 @@ In this diagram, we will discuss about the interaction between CCM services and 
 
 -   If no ALB is found, Harness proactively creates a new one, establishing a crucial element for directing and managing traffic.
 
-4.  Proxy Manager Creation:
+4.  Harness-managed Lambda Creation:
 
 -   A newly created Proxy Manager becomes an essential component, actively tracking traffic directed towards AWS EC2.
 

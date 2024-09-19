@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests
+canonical_url: https://www.harness.io/blog/continuous-integration-testing
 ---
 
 
@@ -167,6 +168,37 @@ To publish a test report to the **Artifacts** tab, you must:
 
 </TabItem>
 </Tabs>
+
+## Parse JUnit tests results
+
+The `parse-test-reports` plugin is a Harness plugin designed to parse JUnit XML test reports and fail the pipeline if any test failures are detected. 
+This plugin ensures that the entire test suite runs, even if failures occur, by deferring the detection of failures to a later step in the pipeline. The plugin scans directories specified by input globs for JUnit XML test reports, and will exit with status 1 if it finds any test failures.
+
+
+**How it works**
+
+1. Set the failure strategy of the step that runs the tests to ignore failures. 
+2. Use the parse-test-reports plugin in a subsequent Plugin step to scan the test report directories set in the plugin, and fail the build if any failures are found.
+
+**Usage Example**
+
+```yaml
+
+- step:
+    type: Plugin
+    name: Parse Test Reports Plugin
+    identifier: Parse_Test_Reports_Plugin
+    spec:
+      connectorRef: dockerConnector
+      image: harnesscommunity/parse-test-reports:latest
+      settings:
+        test_globs: folder1/*.xml, folder2/*.xml  # paths to junit results
+
+```
+
+In the above example, Harness will scan for JUnit XML test reports in folder1 and folder2, and will fail (exit status 1) in case failures are detected in the JUnit XML test reports found in the folders scanned. 
+
+
 
 ## Test report dashboard
 

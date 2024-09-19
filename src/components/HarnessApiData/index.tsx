@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { getXChatbotKeyCookie } from "../Chatbot/helpers";
 import BrowserOnly from "@docusaurus/BrowserOnly";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 interface IHarnessApiData {
   query: string;
   accountIdentifier?: boolean;
-  token?: boolean;
+  token?: boolean | string;
   fallback: string;
-  parse?: string;
+  parse: string;
 }
+
 const HarnessApiData: React.FC<IHarnessApiData> = ({
   query,
   fallback,
@@ -19,46 +21,56 @@ const HarnessApiData: React.FC<IHarnessApiData> = ({
   return (
     <BrowserOnly fallback={<div>Loading...</div>}>
       {() => {
+        const {
+          siteConfig: { customFields },
+        } = useDocusaurusContext();
         const cookie = getXChatbotKeyCookie();
         const [response, setResponse] = useState("");
         useEffect(() => {
           async function FetchData() {
             try {
-              const response = await fetch(
+              const bodyData: { [key: string]: string } = { query, parse };
+              if (query.includes("app.harness.io") && accountIdentifier) {
+                bodyData.query += `?accountIdentifier=${cookie?.id}`;
+              }
+
+              if (
+                typeof token === "string" &&
+                token.startsWith("process.env.")
+              ) {
+                token = token.replace("process.env.", "");
+              }
+              bodyData.token =
+                typeof token === "string"
+                  ? (customFields[token] as string)
+                  : token
+                  ? cookie?.token
+                  : null;
+              const fetchResponse = await fetch(
+                // "http://localhost:8888/api/api_proxy",
                 "https://developer.harness.io/api/api_proxy",
                 {
                   method: "POST",
-                  body: JSON.stringify({
-                    ...(query.includes("app.harness.io")
-                      ? {
-                          token: token ? cookie.token : null,
-                          query:
-                            query +
-                            `?${
-                              accountIdentifier
-                                ? `accountIdentifier=${cookie.id}`
-                                : ""
-                            }`,
-                        }
-                      : { query }),
-                  }),
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(bodyData),
                 }
               );
-              if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+              if (!fetchResponse.ok) {
+                throw new Error(`HTTP error! status: ${fetchResponse.status}`);
               }
-              const data = await response.json();
 
-              const parsedData = parse
-                ? parse.split(".").reduce((o, i) => o?.[i], data)
-                : data;
+              const data = await fetchResponse.json();
 
-              setResponse(parsedData);
+              setResponse(data);
+
             } catch (error) {
               console.log(error);
               setResponse(fallback);
             }
           }
+
           FetchData();
         }, [query, fallback, accountIdentifier, token, parse]);
 

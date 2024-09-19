@@ -2,11 +2,13 @@
 title: Execute chaos experiment as CD pipeline
 sidebar_position: 2
 description: Guide to execute a chaos experiment as CD pipelines
+redirect_from:
+   - /docs/chaos-engineering/integrations/hce-and-cd/experiment-as-cd-pipeline
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This tutorial uses the `cart-pod-delete` experiment created in the tutorial on [running chaos experiments with API](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md#run-chaos-experiments-with-apis) to execute a chaos experiment as part of a Harness CD pipeline to validate the resiliency of an application in a continuous manner.
+This tutorial uses the `cart-pod-delete` experiment created in the tutorial on running chaos experiments with API to execute a chaos experiment as part of a Harness CD pipeline to validate the resiliency of an application in a continuous manner.
 
 As part of the tutorial, we have a pre-curated CD pipeline for deploying our demo application, Online Boutique Shop, to a Kubernetes cluster that you can get from a fork of [this repository](https://github.com/chaosnative/harness-chaos-demo/tree/main/boutique-app-manifests). Also, we have defined a pipeline webhook trigger for the repository such that any code change in the `main` branch triggers the CD pipeline to create a new deployment.
 
@@ -16,7 +18,7 @@ It can be observed that currently the pipeline is able to deploy the application
 
 ![Online Boutique App Cart](./static/online-boutique-app-cart.png)
 
-1. Add a chaos step to this pipeline so that the chaos experiment you created in the [running chaos experiments with API tutorial](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md#run-chaos-experiments-with-apis), `cart-pod-delete`, will run whenever a new pipeline deployment is triggered. This will allow you to validate the deployment against the chaos hypothesis.
+1. Add a chaos step to this pipeline so that the chaos experiment you created in the running chaos experiments with API tutorial, `cart-pod-delete`, will run whenever a new pipeline deployment is triggered. This will allow you to validate the deployment against the chaos hypothesis.
 
    To add the chaos step, select the **Add Step** icon next to the **Rollout Deployment** icon for the CD deployment stage, and then select **Chaos Step**.
 

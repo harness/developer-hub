@@ -5,6 +5,7 @@ sidebar_position: 20
 redirect_from:
   - /docs/platform/get-started/pl-subscription-mgmt
   - /docs/platform/get-started/subscriptions
+canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 
 import Manage from '/docs/platform/shared/subscription-manage.md';
@@ -120,11 +121,11 @@ STO tracks **Security Scans** license consumption, instead of **Developers**. **
 </details>
 
 <details>
-<summary>Software Supply Chain Assurance (SSCA) Supply Chain Executions</summary>
+<summary>Supply Chain Security (SCS) Supply Chain Executions</summary>
 
-A **Supply Chain Execution** is defined as the execution of the Software Supply Chain Assurance (SSCA) step in a pipeline. Generating SBOMs, enforcing SBOM policies, generating SLSA provenance, or verifying SLSA provenance are all counted as unique SSCA steps.
+A **Supply Chain Execution** is defined as the execution of the Supply Chain Security (SCS) step in a pipeline. Generating SBOMs, enforcing SBOM policies, generating SLSA provenance, or verifying SLSA provenance are all counted as unique SCS steps.
 
-SSCA tracks **Supply Chain Executions** license consumption, instead of **Developers**. **Supply Chain Executions** are tracked over a *last 30 days* active window.
+SCS tracks **Supply Chain Executions** license consumption, instead of **Developers**. **Supply Chain Executions** are tracked over a *last 30 days* active window.
 
 </details>
 
@@ -150,7 +151,7 @@ You can always acquire additional consumption entitlements as needed through add
 | **Software Engineering Insights** | Not applicable since **Developers** are tracked directly |
 | **Internal Developer Portal** | Not applicable since **Developers** are tracked directly|
 | **Security Testing Orchestration** | 100 Security Scans per **Developers** per month |
-| **Software Supply Chain Assurance** | 100 Supply Chain Executions per **Developers** per month|
+| **Supply Chain Security** | 100 Supply Chain Executions per **Developers** per month|
 
 #### Add-on consumption entitlements
 
@@ -162,7 +163,7 @@ This means you can purchase more:
 - MAUs for Feature Flags
 - Executions for IACM
 - Security Scans for STO
-- Supply Chain Executions for SSCA
+- Supply Chain Executions for SCS
 
 ### Cloud Cost Management (CCM) Cloud Spend
 

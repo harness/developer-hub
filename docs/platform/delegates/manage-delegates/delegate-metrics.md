@@ -4,6 +4,7 @@ description: This topic describes how to configure Prometheus and Grafana to col
 sidebar_position: 2
 redirect_from:
   - /docs/platform/delegates/manage-delegates/auto-scale-using-replicas
+canonical_url: https://www.harness.io/blog/architecting-harness-ci-for-scale
 ---
 
 Harness Delegates are responsible for executing various types of workloads, and the amount of resources consumed depends on the specific type of workload being performed. Harness cannot predict the specific resource requirements for a particular workload in advance.

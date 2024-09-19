@@ -1,13 +1,15 @@
 import type { Context } from "@netlify/functions";
+import jq from "jq-web";
+
 interface Body {
   query: string;
-  account_id?: string;
   token?: string;
+  parse: string;
 }
-export default async (req: Request, context: Context) => {
+export default async (req: Request, context: Context): Promise<Response> => {
   // context.cookies.set({
   //   name: "account_id",
-  //   value: "JPCeP2ujSwqNcwD7WhYeBw",
+  //   value: "JPw",
   //   domain: "localhost",
   //   path: "/",
   //   httpOnly: false,
@@ -17,7 +19,7 @@ export default async (req: Request, context: Context) => {
   // context.cookies.set({
   //   name: "x_chatbot_key",
   //   value:
-  //     "pat.JPCeP2ujSwqNcwD7WhYeBw.66ba01a6b989754944fb09f7.UROYQRP2piNQHih715kr",
+  //     "pat.",
   //   domain: "localhost",
   //   path: "/",
   //   httpOnly: false,
@@ -26,42 +28,44 @@ export default async (req: Request, context: Context) => {
   // });
   // context.cookies.set({
   //   name: "name",
-  //   value:
-  //     "pat.JPCeP2ujSwqNcwD7WhYeBw.66b967fa86fdf44551cc81a5.IIHqfwjU27pnOTULIOKV",
+  //   value: "Rohan-Maharjan",
   //   domain: "localhost",
   //   path: "/",
   //   httpOnly: false,
   //   secure: true,
   //   sameSite: "None",
   // });
-  // if (req.method === "OPTIONS") {
-  //   return new Response("ok", {
-  //     status: 200,
-  //     headers: {
-  //       "Access-Control-Allow-Methods": "POST,OPTIONS",
-  //       "Access-Control-Allow-Headers": "Content-Type,Authorization",
-  //     },
-  //   });
-  // }
+  const header = {
+    "Access-Control-Allow-Methods": "POST,OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
+  if (req.method === "OPTIONS") {
+    return new Response("ok", {
+      status: 200,
+      headers: header,
+    });
+  }
 
   if (req.method !== "POST") {
     return new Response("Not Implemented", {
       status: 400,
+      headers: header,
     });
   }
 
   const body: Body = await req.json();
-
-  if (!body.query) {
+  if (!body.query || !body.parse) {
     return new Response(JSON.stringify({ error: "Please send all fields" }), {
       status: 400,
+      headers: header,
     });
   }
+
   try {
     const response = await fetch(body.query, {
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": body.token,
+        "x-api-key": body.token || "",
       },
     });
 
@@ -73,17 +77,21 @@ export default async (req: Request, context: Context) => {
 
     const responseData = await response.json();
 
-    return new Response(JSON.stringify(responseData), {
+    const jqResponse = jq.json(responseData, body.parse);
+    return new Response(JSON.stringify(jqResponse), {
       status: 200,
-      headers: {
-        "Access-Control-Allow-Methods": "POST,OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type,Authorization",
-      },
+      headers: header,
     });
   } catch (error) {
-    console.log(error);
-    return new Response(JSON.stringify(error), {
-      status: 500,
-    });
+    console.error("Error:", error);
+    return new Response(
+      JSON.stringify({
+        error: error instanceof Error ? error.message : String(error),
+      }),
+      {
+        status: 500,
+        headers: header,
+      }
+    );
   }
 };

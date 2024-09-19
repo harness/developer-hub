@@ -17,6 +17,15 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 :::
 
+### GitLab Integration: New Onboarding
+
+* **Release date:** August 2024
+* **Issue number:** SEI-7671
+* **Feature flag:** SEI_GITLAB_NEW_ONBOARDING_FLOW_ENABLED
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Access the improved experience for configuring the [GitLab integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab).
+
 ### Azure DevOps Integration: New Onboarding
 
 * **Release date:** June 2024
@@ -37,7 +46,7 @@ Access the new PAT-based authentication option for Azure DevOps integration.
 
 Allows you to use the Business Alignment report to calculate alignment metrics for tickets that are in the In Progress status category and those that have been resolved (i.e., Done status category) within a specific duration of time.
 
-[Go To Documentation](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report)
+[Go To Documentation](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports)
 
 ### Business Alignment
 
@@ -46,9 +55,9 @@ Allows you to use the Business Alignment report to calculate alignment metrics f
 * **Feature flag:** SEI_NEW_BA_PROFILES, SEI_NEW_BA_COMBINED_WIDGET
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Enable this flag to access the new [Business Alignment profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile) and the associated [Business Alignment report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report).
+Enable this flag to access the new [Business Alignment profile](/docs/software-engineering-insights/sei-profiles/business-alignment-profile) and the associated [Business Alignment report](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports).
 
-[Go To Documentation](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile)
+[Go To Documentation](/docs/software-engineering-insights/sei-profiles/business-alignment-profile)
 
 ### ServiceNow integration
 

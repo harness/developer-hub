@@ -181,7 +181,7 @@ The Business Alignment Insight can help visualize where your teams expend the mo
 * **Effort Investment Trend Report**
 * **Effort Investment By Engineer**
 
-For more information about these reports and metrics, go to [effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-overview).
+For more information about these reports and metrics, go to [effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports).
 
 If you want to create additional Business Alignment Insights, select the **Effort Investment Profile** option under **Parameters** when [creating Insights](#create-insights).
 

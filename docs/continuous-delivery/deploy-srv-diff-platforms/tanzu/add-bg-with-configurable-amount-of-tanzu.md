@@ -4,6 +4,7 @@ description: Blue Green deployment configuration use cases for Tanzu
 sidebar_position: 5
 redirect_from:
   - /docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart/#blue-green-deployment-support-with-a-configurable-amount-of-tanzu-applications-to-maintain
+canonical_url: https://www.harness.io/blog/blue-green-canary-deployment-strategies
 ---
 
 By default Harness keeps 3 Versions of Tanzu Apps for Blue Green Deployment. The Active, the inactive, and then the 3rd previous deployment as a backup. This behavior is now configurable with the **Existing Version to Keep** option.  If the user says 0, Harness will only maintain 2. The Active and Inactive applications. If the user wishes to maintain 3 they can configure 1 and Harness will maintain Active, Inactive, and third previous successfully deployed version of the application. 

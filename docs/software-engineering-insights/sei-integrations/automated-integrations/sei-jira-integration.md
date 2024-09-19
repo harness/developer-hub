@@ -290,3 +290,19 @@ To add custom hygiene categories:
    The **Operator** represents an undesired state for the specified **Field**. For example, if your _desired state_ is for the specified **Field** to be populated, then your _undesired state_ is that the field is empty. Therefore, you would set the **Operator** to **Missing**.
 
 5. To get scores for custom hygiene categories, you must modify the category **Weights** in your Issue Hygiene Report widgets. Custom categories don't have an initial weight, so you must modify all instances of this widget to include your custom categories in the hygiene score calculations. For instructions, go to [Configure the Issue Hygiene Report](/docs/software-engineering-insights/sei-metrics-and-reports/hygiene-metrics#configure-the-issue-hygiene-report).
+
+## Reauthenticate
+
+If your integration health is failing due to expired credentials, you can easily re-authenticate by following these steps to update your access token:
+
+* Go to the **Integrations**, and select your integration from the **Your Integrations** tab.
+
+* Click on **Monitoring**.
+
+* Click on the **Change Authentication** button at the top right corner.
+
+* Follow the prompts and enter your email and the new **API Key**.
+
+* Click **Validate Connection** to complete the re-authentication process.
+ 
+By following these steps, you'll successfully re-authenticate with the Jira platform using your new access token, resolving any issues caused by expired credentials.

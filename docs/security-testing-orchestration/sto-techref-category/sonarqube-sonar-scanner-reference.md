@@ -284,7 +284,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 ### Settings
 
-Use this field to add environment variables to your SonarQube scans. For example, you can add [proxy settings](#sonarqube-proxy-settings) if your SonarQube instance is behind a proxy. 
+Use this field to add environment variables to your SonarQube scans. For example, you can add [proxy settings](#proxy-settings) if your SonarQube instance is behind a proxy.
 
 <!--
 ### Settings
@@ -307,17 +307,11 @@ import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 <ScannerRefAdvancedSettings />
 
 
+## Proxy settings
 
+import ProxySettings from '/docs/security-testing-orchestration/sto-techref-category/shared/proxy-settings.md';
 
-## SonarQube proxy settings
-
-If there's a proxy between your Harness pipeline and your SonarQube server, you can add your proxy settings under [Settings](#settings). For example:
-
-- `JVM_HTTP_PROXY_HOST : my-proxy.ca.myorg.org`
-- `JVM_HTTP_PROXY_PORT : 3735`
-- `JVM_HTTPS_PROXY_HOST : my-proxy.ca.myorg.org `
-- `JVM_HTTPS_PROXY_PORT : 3745`
-- `JVM_NO_PROXY : sonar.myorg.local`
+<ProxySettings />
 
 ## View scan results in SonarQube portal
 You can access scan results for your targets in the SonarQube portal. These results are organized under projects titled with your target/repository name. Further, you can view scan results specific to branches, PRs, and tags based on the scans performed in STO.
@@ -348,6 +342,8 @@ You can use [Harness expressions](https://developer.harness.io/docs/platform/var
 
 This setup ensures that the scan result name reflects both the branch and the PR, making it easier to identify and manage scan results in the SonarQube portal.
 
+## View SonarQube quality gate failures
+SonarQube quality gate failures will appear in scan results as 'Info' severity issues, with the issue type set to `EXTERNAL_POLICY`. Additionally, you can apply OPA policies in Harness STO to enforce or manage these failures.
 
 ## Generate coverage reports and upload to SonarQube
 

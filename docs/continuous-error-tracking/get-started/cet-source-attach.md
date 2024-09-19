@@ -4,6 +4,7 @@ description: Instantly link the application errors to the corresponding source c
 sidebar_position: 25
 redirect_from:
   - /docs/continuous-error-tracking/getting-started/cet-source-attach
+canonical_url: https://www.harness.io/blog/before-the-deployment-source-code-management
 ---
 
 # Connect your source code

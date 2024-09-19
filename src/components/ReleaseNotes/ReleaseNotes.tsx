@@ -18,18 +18,11 @@ export default function CD() {
             <h1>Harness Release Notes</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/kb">
+            <Link href="https://developer.harness.io/release-notes/rss.xml">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
-                <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Knowledge Base
-              </button>
-            </Link>
-            <Link href="/docs">
-              <button className={styles.btn}>
-                {/* <i className="fa-regular fa-file"></i> */}
-                <img src={`${baseUrl}img/icon_documentation.svg`} />
-                Documentation
+                <img src={`${baseUrl}img/icon_square-rss.svg`} />
+                Subscribe to all via RSS
               </button>
             </Link>
           </div>

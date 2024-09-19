@@ -1,7 +1,7 @@
 ---
 title: Code repository scans with Wiz
 description: Scan code repositories with Wiz. Orchestration and Ingestion modes supported.
-sidebar_label: Code repository scans with Wiz
+sidebar_label: Wiz code repository scanning
 sidebar_position: 20
 ---
 
@@ -192,6 +192,7 @@ import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
 import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
+
 
 ### Artifacts
 

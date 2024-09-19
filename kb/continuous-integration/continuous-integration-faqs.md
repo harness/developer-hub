@@ -4,6 +4,7 @@ description: Common questions and troubleshooting issues related to Harness CI.
 sidebar_position: 2
 redirect_from:
   - /docs/faqs/continuous-integration-ci-faqs
+  - /docs/frequently-asked-questions/harness-faqs/continuous-integration-ci-faqs
 ---
 
 ## Build infrastructure
@@ -122,7 +123,7 @@ This error indicates there may be a problem with the Docker installation on the 
 
 ### How do I check if the Docker daemon is running in a local runner build infrastructure?
 
-To check if the Docker daemon is running, use the `docker info` command. An error response indicates the daemon is not running. For more information, go to the Docker documentation on [Troubleshooting the Docker daemon](https://docs.docker.com/config/daemon/troubleshoot/)
+To check if the Docker daemon is running, use the `docker info` command. An error response indicates the daemon is not running. For more information, go to the Docker documentation on [Troubleshooting the Docker daemon](https://docs.docker.com/engine/daemon/troubleshoot/)
 
 ### Runner process quits after terminating SSH connection for local runner build infrastructure
 
@@ -1151,6 +1152,11 @@ If the user account used to generate the token doesn't have repository write per
 
 For repos under organizations or projects, check the role/permissions assigned to the user in the target repository. For example, a user in a GitHub organization can have some permissions at the organization level, but they might not have those permissions at the individual repository level.
 
+
+### Why does the status check for my PR redirect to a different PR's build Harness? 
+This issue occurs when two PRs are created for the same commit ID. Harness CI associates builds with commits rather than specific PRs. If multiple PRs share the same commit, the latest build will replace the previous one, causing the build check on the earlier PR to redirect to the newer PR’s build.
+To resolve this, push a new commit to the affected PR and rebuild it. This creates a unique commit, ensuring the build check redirects to the correct PR.
+
 ### Can I export a failed step's output to a pull request comment?
 
 To do this, you could:
@@ -1467,26 +1473,14 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 
 Go to the [Kaniko container runtime error article](/kb/continuous-integration/articles/kaniko_container_runtime_error).
 
-### Can I push and pull from two different docker registries that have same prefix for registry URL ?
+### When using 'Build ans Push' steps with Base Image connector, can I pull and push from two different docker registries that have same prefix for registry URL ?
 
-No, this is currently not supported in docker.
+No, when using base image connector, ensure the prefix of the url use for pulling is different than the prefix of the url in the connector used for pushing. 
 
-If two registry URLs begin with same prefix, for example https://index.docker.io it will result in the second registry credentials getting over-ridden in the docker config file when a docker login is attempted 
-
-As an example, this would fail as the prefix URLs are not unique.
-
-https://index.docker.io/v1/abc/test-private
-
-https://index.docker.io/v1/xyz/test2
-
-docker config would look like:
-```
-{
-      https://index.docker.io/***: { auth}
-}
-```
-But fully unique docker compliant registry URLs are not affected by this limitation.
-
+Docker uses a configuration file to store authentication details. If two registry URLs share the same prefix, Docker will only create a single authentication entry for that prefix, which will cause a conflict when accessing the second registry.
+     
+As an example, both `https://index.docker.io/v1/abc/test1` and `https://index.docker.io/v1/xyz/test2` have the same prefix `https://index.docker.io/v1/`, so Docker cannot differentiate between them for authentication, causing the second set of credentials to overwrite the first.
+     
 ### What is the default build context when using Build and Push steps?
 
 The default build context is the stage workspace directory, which is `/harness`.
@@ -1573,11 +1567,13 @@ If you get a `certificate signed by unknown authority` error with the [Upload Ar
 
 ### Can I run the Upload Artifacts to JFrog Artifactory step with a non-root user?
 
-No. The jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
+Yes. By default, the jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
+
+Set JFROG_CLI_HOME_DIR as Stage variable to change the folder in which .jfrog will be created, to a path you have write access. 
 
 ### mkdir permission denied when running Upload Artifacts to JFrog as non-root
 
-With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) must run as root. If you set **Run as User** to anything other than `1000`, the step fails with `mkdir /.jfrog: permission denied`.
+With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) must run as root. If you set **Run as User** to anything other than `0`, the step fails with `mkdir /.jfrog: permission denied`.
 
 ### What is PLUGIN_USERNAME and PLUGIN_PASSWORD used in the Upload Artifacts to JFrog Artifactory step?
 

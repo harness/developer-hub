@@ -121,6 +121,8 @@ When using base image connector, pushing to or pulling from multiple Docker regi
 This limitation does not apply to following build and push steps only on K8 - ACR, GAR, ECR.
 :::
 
+This setting is enabled by the feature flag `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR`.
+
 ### Optimize
 
 With Kubernetes cluster build infrastructures, select this option to enable `--snapshotMode=redo`. This setting causes file metadata to be considered when creating snapshots, and it can reduce the time it takes to create snapshots. For more information, go to the kaniko documentation for the [snapshotMode flag](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#flag---snapshotmode).

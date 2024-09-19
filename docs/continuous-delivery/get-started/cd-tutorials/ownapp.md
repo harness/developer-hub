@@ -5,6 +5,7 @@ hide_table_of_contents: true
 sidebar_position: 3
 redirect_from:
   - /tutorials/cd-pipelines/kubernetes/ownapp
+canonical_url: https://www.harness.io/blog/delegates-and-agents-onramp-to-scale-with-harness
 ---
 
 <CTABanner
@@ -57,107 +58,6 @@ Verify that you have the following:
 ## Getting Started with Harness GitOps
 
 <Tabs>
-<TabItem value="cli" label="CLI">
-
-1. Refer [Install and Configure Harness CLI](https://developer.harness.io/docs/platform/automation/cli/install) doc to setup and configure Harness CLI.
-
-2. Clone the Forked **harnesscd-example-apps** repo and change directory.
-
-   ```bash
-   git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
-   cd harnesscd-example-apps/deploy-own-app/gitops
-   ```
-
-   :::note
-
-   Replace `GITHUB_ACCOUNTNAME` with your GitHub Account name.
-
-   :::
-
-3. You have the option to use the same agent that you deployed during the Manifest tutorial or to deploy a new agent by following the steps below. However, remember to use a newly created agent identifier when creating repositories and clusters.
-   - Select **Settings**, and then select **GitOps Agents**.
-   - Select **New GitOps Agent**.
-   - When you are prompted with **Do you have any existing Argo CD instances?**, select **Yes** if you already have a Argo CD Instance, or else choose **No** to install the **Harness GitOps Agent**.
-
-<Tabs  queryString="gitopsagent">
-<TabItem value="agent-fresh-install" label="Harness GitOps Agent Fresh Install">
-
-- Select **No**, and then select **Start**.
-- In **Name**, enter the name for the new Agent `ownappagent`
-- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
-  - For this tutorial, let's use the `default` namespace to install the Agent and deploy applications.
-- Select **Continue**. The **Review YAML** settings appear.
-- This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.
-
-  ```
-  kubectl apply -f gitops-agent.yml -n default
-  ```
-
-- Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
-
-</TabItem>
-<TabItem value="existingargo" label="Harness GitOps Agent with existing Argo CD instance">
-
-- Select **Yes**, and then select **Start**.
-- In **Name**, enter the name for the existing Argo CD project.
-- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
-- Select **Next**. The **Review YAML** settings appear.
-- This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.
-
-  ```yaml
-  kubectl apply -f gitops-agent.yml -n default
-  ```
-
-- Once you have installed the Agent, Harness will start importing all the entities from the existing Argo CD Project.
-
-</TabItem>
-</Tabs>
-
-4. Before proceeding, store the Agent Identifier value as an environment variable for use in the subsequent commands:
-
-   ```bash
-   export AGENT_NAME=GITOPS_AGENT_IDENTIFIER
-   ```
-
-   > Note: Replace `GITOPS_AGENT_IDENTIFIER` with GitOps Agent Identifier.
-
-5. Create a **GitOps Repository**.
-
-   ```bash
-   harness gitops-repository --file deploy-own-app/gitops/repository.yml apply --agent-identifier $AGENT_NAME
-   ```
-
-   > If you intend to use a private Git repository that hosts your manifest files, create a Harness secret containing the Git personal access token (PAT). Subsequently, create a new GitOps Repository pointing to your private repo.
-
-6. Create a **GitOps Cluster**.
-
-   ```bash
-   harness gitops-cluster --file deploy-own-app/gitops/cluster.yml apply --agent-identifier $AGENT_NAME
-   ```
-
-7. Create a **GitOps Application**.
-
-   ```bash
-   harness gitops-application --file deploy-own-app/gitops/application.yml apply --agent-identifier $AGENT_NAME
-   ```
-
-   > To deploy your own app, modify `repoURL` and `path` in the application.yml.
-
-8. At last, it's time to synchronize the application with your Kubernetes setup.
-
-- Navigate to Harness UI > Default Project > GitOps > Applications, then click on gitops-application. Choose Sync, followed by Synchronize to kick off the application deployment.
-
-  - Observe the Sync state as Harness synchronizes the workload under `Resource View` tab.
-
-  - After a successful execution, you can check the deployment on your Kubernetes cluster using the following command:
-
-    ```bash
-    kubectl get pods -n sock-shop
-    ```
-
-  - Sock Shop is accessible via the master and any of the node urls on port `30001`.
-
-</TabItem>
 <TabItem value="ui" label="UI">
 
 1. Login to [Harness](https://app.harness.io/).
@@ -447,6 +347,107 @@ terraform destroy
 **Note:** Since deleting the Sockshop application in Harness does not delete the deployed cluster resources themselves, you’ll need to manually remove the Kubernetes deployment.
 
 </TabItem>
+<TabItem value="cli" label="CLI">
+
+1. Refer [Install and Configure Harness CLI](https://developer.harness.io/docs/platform/automation/cli/install) doc to setup and configure Harness CLI.
+
+2. Clone the Forked **harnesscd-example-apps** repo and change directory.
+
+   ```bash
+   git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
+   cd harnesscd-example-apps/deploy-own-app/gitops
+   ```
+
+   :::note
+
+   Replace `GITHUB_ACCOUNTNAME` with your GitHub Account name.
+
+   :::
+
+3. You have the option to use the same agent that you deployed during the Manifest tutorial or to deploy a new agent by following the steps below. However, remember to use a newly created agent identifier when creating repositories and clusters.
+   - Select **Settings**, and then select **GitOps Agents**.
+   - Select **New GitOps Agent**.
+   - When you are prompted with **Do you have any existing Argo CD instances?**, select **Yes** if you already have a Argo CD Instance, or else choose **No** to install the **Harness GitOps Agent**.
+
+<Tabs  queryString="gitopsagent">
+<TabItem value="agent-fresh-install" label="Harness GitOps Agent Fresh Install">
+
+- Select **No**, and then select **Start**.
+- In **Name**, enter the name for the new Agent `ownappagent`
+- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
+  - For this tutorial, let's use the `default` namespace to install the Agent and deploy applications.
+- Select **Continue**. The **Review YAML** settings appear.
+- This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.
+
+  ```
+  kubectl apply -f gitops-agent.yml -n default
+  ```
+
+- Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
+
+</TabItem>
+<TabItem value="existingargo" label="Harness GitOps Agent with existing Argo CD instance">
+
+- Select **Yes**, and then select **Start**.
+- In **Name**, enter the name for the existing Argo CD project.
+- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
+- Select **Next**. The **Review YAML** settings appear.
+- This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.
+
+  ```yaml
+  kubectl apply -f gitops-agent.yml -n default
+  ```
+
+- Once you have installed the Agent, Harness will start importing all the entities from the existing Argo CD Project.
+
+</TabItem>
+</Tabs>
+
+4. Before proceeding, store the Agent Identifier value as an environment variable for use in the subsequent commands:
+
+   ```bash
+   export AGENT_NAME=GITOPS_AGENT_IDENTIFIER
+   ```
+
+   > Note: Replace `GITOPS_AGENT_IDENTIFIER` with GitOps Agent Identifier.
+
+5. Create a **GitOps Repository**.
+
+   ```bash
+   harness gitops-repository --file deploy-own-app/gitops/repository.yml apply --agent-identifier $AGENT_NAME
+   ```
+
+   > If you intend to use a private Git repository that hosts your manifest files, create a Harness secret containing the Git personal access token (PAT). Subsequently, create a new GitOps Repository pointing to your private repo.
+
+6. Create a **GitOps Cluster**.
+
+   ```bash
+   harness gitops-cluster --file deploy-own-app/gitops/cluster.yml apply --agent-identifier $AGENT_NAME
+   ```
+
+7. Create a **GitOps Application**.
+
+   ```bash
+   harness gitops-application --file deploy-own-app/gitops/application.yml apply --agent-identifier $AGENT_NAME
+   ```
+
+   > To deploy your own app, modify `repoURL` and `path` in the application.yml.
+
+8. At last, it's time to synchronize the application with your Kubernetes setup.
+
+- Navigate to Harness UI > Default Project > GitOps > Applications, then click on gitops-application. Choose Sync, followed by Synchronize to kick off the application deployment.
+
+  - Observe the Sync state as Harness synchronizes the workload under `Resource View` tab.
+
+  - After a successful execution, you can check the deployment on your Kubernetes cluster using the following command:
+
+    ```bash
+    kubectl get pods -n sock-shop
+    ```
+
+  - Sock Shop is accessible via the master and any of the node urls on port `30001`.
+
+</TabItem>
 </Tabs>
 
 ### Congratulations!🎉
@@ -459,6 +460,154 @@ Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeli
 <TabItem value="CD pipeline">
 
 <Tabs queryString="interface">
+<TabItem value="ui" label="UI">
+
+## Before you begin \{#before-you-begin-ui}
+
+Verify that you have the following:
+
+1. **Obtain GitHub personal access token with the repo scope**. See the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
+2. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness Delegates and deploying a sample application in a local development environment.
+   - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
+3. **Install the [Helm CLI](https://helm.sh/docs/intro/install/)** in order to install the Harness Helm delegate.
+4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository using the GitHub web interface to utilize the Harness resource YAMLs.
+
+## Getting Started with Harness CD \{#getting-started-harness-cd-ui}
+
+1. Log in to [Harness](https://app.harness.io/).
+2. Select **Projects**, and then select **Default Project**.
+
+### Delegate
+
+3. You have the option to use the same delegate that you deployed during the Manifest tutorial or to deploy a new delegate by following the steps below. However, remember to use a newly created delegate identifier when creating connectors.
+
+- Log in to the [Harness UI](https://app.harness.io/). In **Project Setup**, select **Delegates**.
+
+  - Select **Delegates**.
+
+    - Select **Install delegate**. For this tutorial, let's explore how to install the delegate using Helm.
+    - Add the Harness Helm chart repo to your local Helm registry.
+
+    ```bash
+    helm repo add harness-delegate https://app.harness.io/storage/harness-download/delegate-helm-chart/
+    ```
+
+    ```bash
+    helm repo update harness-delegate
+    ```
+
+    - In the command provided, `ACCOUNT_ID`, `MANAGER_ENDPOINT`, and `DELEGATE_TOKEN` are auto-populated values that you can obtain from the delegate Installation wizard.
+
+      ```bash
+      helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
+      harness-delegate/harness-delegate-ng \
+       --set delegateName=helm-delegate \
+       --set accountId=ACCOUNT_ID \
+       --set managerEndpoint=MANAGER_ENDPOINT \
+       --set delegateDockerImage=harness/delegate:23.03.78904 \
+       --set replicas=1 --set upgrader.enabled=false \
+       --set delegateToken=DELEGATE_TOKEN
+      ```
+
+  - Verify that the delegate is installed successfully and can connect to the Harness Manager.
+  - You can also follow the [Install Harness Delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate) steps to install the delegate using the Terraform Helm Provider or Kubernetes manifest.
+
+:::warning
+
+If you plan to use your own Project, Organization, and custom names for Harness resources, please update the resource YAMLs accordingly with these details.
+
+:::
+
+### Secrets
+
+4. Under **Project Setup**, select **Secrets**.
+   - Select **New Secret**, and then select **Text**.
+   - Enter the secret name `ownappgitpat`.
+   - For the secret value, paste the GitHub personal access token you saved earlier.
+   - Select **Save**.
+
+### Connectors
+
+5. Create the **GitHub connector**.
+   - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/deploy-own-app/cd-pipeline/github-connector.yml).
+   - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
+   - Select **Create via YAML Builder** and paste the copied YAML.
+   - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
+   - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
+   - Select **Save Changes** and verify that the new connector named **ownapp_gitconnector** is successfully created.
+   - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
+6. Create the **Kubernetes connector**.
+   - Copy the contents of [kubernetes-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/deploy-own-app/cd-pipeline/kubernetes-connector.yml).
+   - In your Harness project, under **Project Setup**, select **Connectors**.
+   - Select **Create via YAML Builder** and and paste the copied YAML.
+   - Replace **DELEGATE_NAME** with the installed Delegate name. To obtain the Delegate name, navigate to **Project Setup**, and then **Delegates**.
+   - Select **Save Changes** and verify that the new connector named **ownapp_k8sconnector** is successfully created.
+   - Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
+
+### Environment
+
+7. In your Harness project, select **Environments**.
+   - Select **New Environment**, and then select **YAML**.
+   - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/deploy-own-app/cd-pipeline/environment.yml), paste it into the YAML editor, and select **Save**.
+   - In your new environment, select the **Infrastructure Definitions** tab.
+   - Select **Infrastructure Definition**, and then select **YAML**.
+   - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/deploy-own-app/cd-pipeline/infrastructure-definition.yml) and paste it into the YAML editor.
+   - Select **Save** and verify that the environment and infrastructure definition are created successfully.
+
+### Services
+
+8. In your Harness project, select **Services**.
+   - Select **New Service**.
+   - Enter the name `ownappservice`.
+   - Select **Save**, and then **YAML** (on the **Configuration** tab).
+   - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/deploy-own-app/cd-pipeline/service.yml), and paste it into the YAML editor.
+   - Select **Save**, and verify that the service **ownapp_service** is successfully created.
+
+### Pipeline
+
+<Tabs>
+<TabItem value="Canary">
+
+9. In **Default Project**, select **Pipelines**.
+   - Select **New Pipeline**.
+   - Enter the name `ownapp_canary_pipeline`.
+   - Select **Inline** to store the pipeline in Harness.
+   - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
+   - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
+     - Copy the contents of [canary-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/canary-pipeline.yml).
+     - In your Harness pipeline YAML editor, paste the YAML.
+     - Select **Save**.
+
+</TabItem>
+<TabItem value="Blue Green">
+
+9. In **Default Project**, select **Pipelines**.
+   - Select **New Pipeline**.
+   - Enter the name `ownapp_bluegreen_pipeline`.
+   - Select **Inline** to store the pipeline in Harness.
+   - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
+   - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
+     - Copy the contents of [bluegreen-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/bluegreen-pipeline.yml).
+     - In your Harness pipeline YAML editor, paste the YAML.
+     - Select **Save**.
+
+</TabItem>
+<TabItem value="Rolling">
+
+9. In **Default Project**, select **Pipelines**.
+   - Select **New Pipeline**.
+   - Enter the name `ownapp_rolling_pipeline`.
+   - Select **Inline** to store the pipeline in Harness.
+   - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
+   - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
+     - Copy the contents of [rolling-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/rolling-pipeline.yml).
+     - In your Harness pipeline YAML editor, paste the YAML.
+     - Select **Save**.
+
+</TabItem>
+</Tabs>
+
+</TabItem>
 <TabItem value="cli" label="CLI">
 
 ## Before you begin \{#before-you-begin-cli}
@@ -665,154 +814,6 @@ If you plan to use your own Project, Organization, and custom names for Harness 
     harness pipeline --file rolling-pipeline.yml apply
     ```
     You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps.
-
-</TabItem>
-</Tabs>
-
-</TabItem>
-<TabItem value="ui" label="UI">
-
-## Before you begin \{#before-you-begin-ui}
-
-Verify that you have the following:
-
-1. **Obtain GitHub personal access token with the repo scope**. See the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
-2. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness Delegates and deploying a sample application in a local development environment.
-   - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
-3. **Install the [Helm CLI](https://helm.sh/docs/intro/install/)** in order to install the Harness Helm delegate.
-4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository using the GitHub web interface to utilize the Harness resource YAMLs.
-
-## Getting Started with Harness CD \{#getting-started-harness-cd-ui}
-
-1. Log in to [Harness](https://app.harness.io/).
-2. Select **Projects**, and then select **Default Project**.
-
-### Delegate
-
-3. You have the option to use the same delegate that you deployed during the Manifest tutorial or to deploy a new delegate by following the steps below. However, remember to use a newly created delegate identifier when creating connectors.
-
-- Log in to the [Harness UI](https://app.harness.io/). In **Project Setup**, select **Delegates**.
-
-  - Select **Delegates**.
-
-    - Select **Install delegate**. For this tutorial, let's explore how to install the delegate using Helm.
-    - Add the Harness Helm chart repo to your local Helm registry.
-
-    ```bash
-    helm repo add harness-delegate https://app.harness.io/storage/harness-download/delegate-helm-chart/
-    ```
-
-    ```bash
-    helm repo update harness-delegate
-    ```
-
-    - In the command provided, `ACCOUNT_ID`, `MANAGER_ENDPOINT`, and `DELEGATE_TOKEN` are auto-populated values that you can obtain from the delegate Installation wizard.
-
-      ```bash
-      helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
-      harness-delegate/harness-delegate-ng \
-       --set delegateName=helm-delegate \
-       --set accountId=ACCOUNT_ID \
-       --set managerEndpoint=MANAGER_ENDPOINT \
-       --set delegateDockerImage=harness/delegate:23.03.78904 \
-       --set replicas=1 --set upgrader.enabled=false \
-       --set delegateToken=DELEGATE_TOKEN
-      ```
-
-  - Verify that the delegate is installed successfully and can connect to the Harness Manager.
-  - You can also follow the [Install Harness Delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate) steps to install the delegate using the Terraform Helm Provider or Kubernetes manifest.
-
-:::warning
-
-If you plan to use your own Project, Organization, and custom names for Harness resources, please update the resource YAMLs accordingly with these details.
-
-:::
-
-### Secrets
-
-4. Under **Project Setup**, select **Secrets**.
-   - Select **New Secret**, and then select **Text**.
-   - Enter the secret name `ownappgitpat`.
-   - For the secret value, paste the GitHub personal access token you saved earlier.
-   - Select **Save**.
-
-### Connectors
-
-5. Create the **GitHub connector**.
-   - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/deploy-own-app/cd-pipeline/github-connector.yml).
-   - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and paste the copied YAML.
-   - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
-   - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
-   - Select **Save Changes** and verify that the new connector named **ownapp_gitconnector** is successfully created.
-   - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
-6. Create the **Kubernetes connector**.
-   - Copy the contents of [kubernetes-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/deploy-own-app/cd-pipeline/kubernetes-connector.yml).
-   - In your Harness project, under **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and and paste the copied YAML.
-   - Replace **DELEGATE_NAME** with the installed Delegate name. To obtain the Delegate name, navigate to **Project Setup**, and then **Delegates**.
-   - Select **Save Changes** and verify that the new connector named **ownapp_k8sconnector** is successfully created.
-   - Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
-
-### Environment
-
-7. In your Harness project, select **Environments**.
-   - Select **New Environment**, and then select **YAML**.
-   - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/deploy-own-app/cd-pipeline/environment.yml), paste it into the YAML editor, and select **Save**.
-   - In your new environment, select the **Infrastructure Definitions** tab.
-   - Select **Infrastructure Definition**, and then select **YAML**.
-   - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/deploy-own-app/cd-pipeline/infrastructure-definition.yml) and paste it into the YAML editor.
-   - Select **Save** and verify that the environment and infrastructure definition are created successfully.
-
-### Services
-
-8. In your Harness project, select **Services**.
-   - Select **New Service**.
-   - Enter the name `ownappservice`.
-   - Select **Save**, and then **YAML** (on the **Configuration** tab).
-   - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/deploy-own-app/cd-pipeline/service.yml), and paste it into the YAML editor.
-   - Select **Save**, and verify that the service **ownapp_service** is successfully created.
-
-### Pipeline
-
-<Tabs>
-<TabItem value="Canary">
-
-9. In **Default Project**, select **Pipelines**.
-   - Select **New Pipeline**.
-   - Enter the name `ownapp_canary_pipeline`.
-   - Select **Inline** to store the pipeline in Harness.
-   - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
-   - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
-     - Copy the contents of [canary-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/canary-pipeline.yml).
-     - In your Harness pipeline YAML editor, paste the YAML.
-     - Select **Save**.
-
-</TabItem>
-<TabItem value="Blue Green">
-
-9. In **Default Project**, select **Pipelines**.
-   - Select **New Pipeline**.
-   - Enter the name `ownapp_bluegreen_pipeline`.
-   - Select **Inline** to store the pipeline in Harness.
-   - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
-   - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
-     - Copy the contents of [bluegreen-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/bluegreen-pipeline.yml).
-     - In your Harness pipeline YAML editor, paste the YAML.
-     - Select **Save**.
-
-</TabItem>
-<TabItem value="Rolling">
-
-9. In **Default Project**, select **Pipelines**.
-   - Select **New Pipeline**.
-   - Enter the name `ownapp_rolling_pipeline`.
-   - Select **Inline** to store the pipeline in Harness.
-   - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
-   - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
-     - Copy the contents of [rolling-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/rolling-pipeline.yml).
-     - In your Harness pipeline YAML editor, paste the YAML.
-     - Select **Save**.
 
 </TabItem>
 </Tabs>
