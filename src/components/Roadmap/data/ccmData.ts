@@ -268,28 +268,28 @@ export const CcmData: Horizon = {
         tag: [],
         title: "Azure preferences",
         description: "Support between Actual and Amortized cost in Azure Preferences.",
-        backgroundColor: "var(--blue-100)",
+        backgroundColor: "var(--green-100)",
       },
       {
         tag: [],
         title: "Tags support for Recommendations ",
         description:
           "Tags are supported for recommendations and filtering is allowed.",
-        backgroundColor: "var(--blue-100)",
+        backgroundColor: "var(--green-100)",
       },
       {
         tag: [],
         title: "Governance Cost Correlation support for new resources",
         description:
           "New resources added for all three clouds for Cost Correlation.",
-        backgroundColor: "var(--blue-100)",
+        backgroundColor: "var(--green-100)",
       },
       {
         tag: [],
         title: "Workload Bin-packing for EKS Cluster Orchestrator",
         description:
           "Efficient scheduling and placement of containers onto nodes for optimizing node count and utilization",
-        backgroundColor: "var(--blue-100)",
+        backgroundColor: "var(--green-100)",
       },
     ],
   },
