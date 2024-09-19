@@ -59,7 +59,7 @@ Optionally, Harness Open Source can [import repositories](../repositories/overvi
 Now that you've created a project and repository, you can:
 
 - [Clone](/docs/open-source/repositories/cloning) a repository
-- Create a branch and open a [pull request](repositories/pull_requests)
+- Create a branch and open a [pull request](/docs/open-source/repositories/pull_requests)
 - Create a [pipeline](/docs/open-source/pipelines/overview)
-- Add [users](../administration/user-management.md) and assign [project members](../administration/project-management.md)
+- Add [users](/docs/open-source/administration/user-management) and assign [project members](/docs/open-source/administration/project-management)
 - Learn how to customize your Harness Open Source [installation](/docs/open-source/installation/quick_start)
