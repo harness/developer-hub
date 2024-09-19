@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2024-08-26T10:00
+date: 2024-09-23T10:00
 sidebar_position: 10
 ---
 
@@ -21,6 +21,18 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## September 2024
+
+### Version 1.47
+
+<!-- 2024-09-17 -->
+
+#### New features and enhancements
+
+- Added the ability to exclude connectors from the preflight check in the CI module. This can be configured in the connector YAML by setting the `ignoreTestConnection` property to `true`. The feature is gated behind the feature flag `CI_IGNORE_TEST_CONNECTION`. (CI-13806, ZD-65275,65643)
+
+#### Fixed issues
+
+- Resolved an inconsistency between the **Run** and **Plugin** step configuration in the CI module. Previously, users could set key-value pairs in the **Run** step but not in the **Plugin** step. The fix enables the "Optional Configuration --> Settings" field in the Plugin step to accept both key-value pairs and runtime input. (CI-14038, ZD-69099)
 
 ### Version 1.46
 
