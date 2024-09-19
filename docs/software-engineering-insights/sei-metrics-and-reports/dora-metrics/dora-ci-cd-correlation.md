@@ -79,13 +79,9 @@ This section explains how SEI correlates CI and CD stages in the Lead Time workf
 SEI offers two primary methods for integrating Jenkins into your DORA CI/CD correlation workflow:
 
 * [SEI Jenkins Plugin](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/jenkins-plugin) 
-* [Jenkins plugin with a Custom CI/CD webhook.](#jenkins-ci-with-harness-cd)
+* [Jenkins plugin with a Custom CI/CD API](#jenkins-ci-with-harness-cd)
 
 Understanding when and how to use each method is crucial for effective implementation of DORA metrics in your development process.
-
-:::info
-Note that using Jenkins Plugin with a Custom CI/CD integration is is an alternative approach for when you're using Jenkins as your CI tool and a different CD tool, using a custom webhook configurations.
-:::
 
 ### SEI Jenkins Plugin
 
