@@ -36,7 +36,7 @@ export const spt: IltCardItem[] = [
      cardType: cardType.SPT,
    },
    {
-    title: "Security Orchestration Testing",
+    title: "Security Testing Orchestration",
     module: MODULES.sto,
      type: type.user,
      description:
