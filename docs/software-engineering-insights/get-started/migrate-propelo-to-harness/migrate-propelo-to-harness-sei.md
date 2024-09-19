@@ -14,9 +14,9 @@ Watch the video below to understand the step-by-step process involved in the mig
 
 -->
 
-## Why you should migrate to Harness SEI
+## Benefits of using Harness SEI
 
-Moving forward most important updates and improvements will be added to the SEI module in the Harness platform and we are planning for the deprecation of the Propelo platform. Importantly, nothing will change in terms of product functionality in the Harness platform or how you access the product itself. 
+Moving forward most important updates and improvements will be added to the SEI module in the Harness platform and we are planning for the deprecation of the Propelo platform. Importantly, nothing will change in terms of product functionality in the Harness platform or how you access the product itself.
 
 The documentation will now be hosted at [Harness Developer Hub](/docs/software-engineering-insights/)  
 
@@ -189,8 +189,8 @@ The following Harness platform features are currently not supported in the SEI m
 Users can be migrated to Harness SEI using the following phases, which are expanded upon the sections below:
 
 * [Preparation phase](#preparation-phase)
-* [Testing phase](#testing-phase)
 * [Migration phase](#migration-phase)
+* [Onboarding phase](#onboarding-phase)
 
 ### Preparation phase
 
@@ -226,11 +226,11 @@ As part of the migration, all secrets and resources—such as Insights, Collecti
 Note that all actions will be disabled on the Propelo platform during the migration process.
 :::
 
-### Testing phase
+### Onboarding phase
 
-Once the migration is completed, you’ll automatically receive the user invites to access the SEI module in the Harness platform. The next step is to verify that all data has been migrated correctly, including monitoring integration activity (health), insights, contributor records, and more.
+Once the migration is completed, you’ll automatically receive the user invites to access the SEI module in the Harness platform. Accept the user invite to access Harness SEI platform. 
 
-The integration status will remain Unknown until the Harness Support team triggers the ingestion process. The Harness Support team in the mean time will be validating the existing data related to reports and account configuration and once you provide the approval the ingestion will be triggered for all the integrations.
+The data migrated from the Propelo platform will reflect a snapshot taken at the time the migration process started. However, the integration status will initially display as "Unknown" until the Harness Support team triggers the data ingestion process. During this period, the team will validate the migrated data, including reports and account configuration. After your approval, the Harness Support team will trigger with ingestion for all integrations.
 
 If you notice any inconsistencies in the migrated data, please create a support ticket immediately. This will allow the Harness team to address the issue promptly.
 
@@ -273,19 +273,30 @@ After updating the `satellite.yml` file, run the container to schedule the inges
 
 ### Jenkins Plugin
 
-After completing the migration, you’ll need to uninstall the existing Jenkins plugin and reinstall it by following the steps below:
+#### For Plugin Versions 1.0.30 and Above
+
+If your Jenkins plugin version is 1.0.30 or higher, follow the instructions below. You can contact [Harness Support](mailto:support@harness.io) to confirm the active plugin version you are using.
+
+Once the migration is complete, you’ll need to uninstall the existing Jenkins plugin and reinstall it:
 
 * Sign-in to **Jenkins** and select **Manage Jenkins**
 * Select **Manage Plugins**
 * Select the **Available plugins** tab.
-* In the **Search** plugin, type in **Harness - SEI Jenkins Plugin**
+* In the **Search** field, type **Harness - SEI Jenkins Plugin**.
 * Install the **Harness - SEI Job Reporter Plugin** and click on **Install without restart**
 * Install the plugin called **SEI Job Reporter** by selecting it and clicking **Install without restart**
 * Once the plugin installation is complete, the status will change to **Success**. If it doesn't change to Success, then a restart might be needed
-* Set the **Instance Name** and use the **APIKEY** you generated earlier as the value for the **Manage Jenkins >> Harness - SEI Job Reporter >> SEI APIKEY** field.
+* Set the **Instance Name** and use the **APIKEY** available in your Jenkins integration instance as the value for the **Manage Jenkins >> Harness - SEI Job Reporter >> SEI APIKEY** field.
 * Set the **Application Type** to the environment where you are configuring the **Plugin**.
 
 ![](../static/jenkins-plugin.webp)
+
+#### For Plugin Versions Later Than 1.0.30
+
+If your Jenkins plugin version is newer than 1.0.30, follow these steps:
+
+* Go to **Jenkins plugin** settings.
+* Set the **Application Type** to the **Harness SEI environment** where your account is hosted. Contact [Harness Support](mailto:support@harness.io) to confirm where your account is hosted.
 
 ### IP Whitelisting
 
