@@ -94,7 +94,7 @@ While the plugin offers ease of use, it comes with limitations.
 * It doesn't differentiate between CI and CD stages, which may not fit all workflow needs.
 * It's best suited for setups where Jenkins handles both CI and CD and where granular separation of these stages in the Lead Time metric isn't a priority.
 
-### Jenkins Plugin with Custom CI/CD API
+### Custom CI/CD API
 
 The Jenkins plugin does not natively capture data for CI and CD executions, which means that artifact information—used as the correlation pointer for Lead Time—is not automatically sent to SEI.
 
@@ -281,7 +281,7 @@ curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \
 --data '{
     "instance_guid": "<INSTANCE_GUID>",
     "job_full_name": "<JOB_FULL_NAME>",
-    "execution_id": "<EXECUTION_ID>",
+    "build_number": "<BUILD_NUMBER>",
     "pipeline": "<PIPELINE_NAME>",
     "project_name": "<PROJECT_NAME>",
     "user_id": "<USER_ID>",
@@ -325,7 +325,7 @@ curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \
 --data '{
     "instance_guid": "<INSTANCE_GUID>",
     "job_full_name": "<JOB_FULL_NAME>",
-    "execution_id": "<EXECUTION_ID>",
+    "build_number": "<BUILD_NUMBER>",
     "pipeline": "<PIPELINE_NAME>",
     "project_name": "<PROJECT_NAME>",
     "user_id": "<USER_ID>",
@@ -366,7 +366,7 @@ The payload for both CI and CD data submissions contains several required fields
 | - | - | - |
 | `instance_guid` | string | [UUID (Universally Unique Identifier)](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/sei-custom-cicd-integrations#step-2-generate-a-cicd-instance-guid-associated-with-that-integration) for the CI/CD instance. |
 | `job_full_name` | string | A human-readable identifier for the job, often the same as the pipeline name. |
-| `execution_id` | string | Unique ID for the pipeline execution. |
+| `build_number` | integer | The build number associated with the job execution. |
 | `pipeline` | string | The name of the CI/CD job. |
 | `project_name` | string | Name of the project in which the pipeline is running. |
 | `user_id` | integer | User identifier in string |
@@ -387,8 +387,8 @@ The payload for both CI and CD data submissions contains several required fields
 | `output` | boolean | True for CI and False for CD |
 | `type` | string | Type of the artifact |
 | `location` | string | URL/location of the output artifact. |
-| `name` | string | Name of the artifact |
-| `qualifier` | string | Version or qualifier for the artifact. (name and qualifier are usually same for non-container based artifacts) |
+| `name` | string | Name of the artifact (unique) |
+| `qualifier` | string | Unique version or qualifier for the artifact. (name and qualifier are usually same for non-container based artifacts) |
 | `web_url` | string | Contains the pipeline execution URL |
 
 For more information refer to the documentation on setting up [Custom CI/CD integration](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/sei-custom-cicd-integrations). It is recommended to configure the custom CI/CD integration with assistance from [Harness Support](mailto:support@harness.io) to ensure the configuration meets the requirements for CI/CD correlation in lead time.
