@@ -310,7 +310,7 @@ When you edit an experiment that has multiple repositories, a pop up asks if you
 * If you want to execute the probe on a server other than the target, disable the security context in the advanced fault settings.
 
 #### How is the chaos Agent authenticated by the Harness control plane?
-A unique Id, named cluster ID and a dedicated key (named access-key) are generated when you install the chaos agent. These two identifiers are used to authenticate the Harness control plane. Every API request made to the control plane includes these identifiers for authentication. Go to [security](https://developer.harness.io/docs/chaos-engineering/architecture-and-security/security/introduction) and [FAQ](https://developer.harness.io/kb/chaos-engineering/chaos-engineering-faq) for more details.
+A unique Id, named cluster ID and a dedicated key (named access-key) are generated when you install the chaos agent. These two identifiers are used to authenticate the Harness control plane. Every API request made to the control plane includes these identifiers for authentication. Go to [security](/docs/chaos-engineering/security/) and [FAQ](https://developer.harness.io/kb/chaos-engineering/chaos-engineering-faq) for more details.
 
 This is applicable on HCE entities that use a dedicated infrastructure rather than the Harness Delegate, because in the case of Harness Delegate, the Delegate itself is the agent.
 
@@ -323,7 +323,7 @@ Yes, [chaos dedicated infrastructure](/docs/chaos-engineering/use-harness-ce/inf
 Yes, HCE provides integration with many tools, such as [Gitlab pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-gitlab-pipeline), [Jenkins pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-jenkins-pipeline), with [Harness CD](https://developer.harness.io/docs/category/integrate-hce-with-harness-cd), [Harness Feature Flags](https://developer.harness.io/docs/chaos-engineering/integrations/chaos-ff), and [SRM](https://developer.harness.io/docs/chaos-engineering/integrations/use-chaos-with-srm).
 
 #### Does Harness Chaos provide Resilience Probes for [X] APM (Prometheus, Dynatrace, Datadog, NewRelic, Splunk)?
-Yes, you can use resilience probes with [Prometheus](https://developer.harness.io/docs/chaos-engineering/features/resilience-probes/prom-probe), [Dynatrace](https://developer.harness.io/docs/chaos-engineering/features/resilience-probes/dynatrace-probe), [DataDog](https://developer.harness.io/docs/chaos-engineering/features/resilience-probes/datadog-probe), and [NewRelic](https://developer.harness.io/docs/chaos-engineering/features/resilience-probes/cmd-probe/cmd-probe-newrelic).
+Yes, you can use resilience probes with [Prometheus](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/prom-probe), [Dynatrace](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/dynatrace-probe), [DataDog](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/datadog-probe), and [NewRelic](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/cmd-probe/cmd-probe-newrelic).
 
 ## Use cases
 
