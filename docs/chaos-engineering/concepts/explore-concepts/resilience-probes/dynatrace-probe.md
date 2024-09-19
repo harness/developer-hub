@@ -8,6 +8,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CommonNote from './shared/common-note.md'
 
 Dynatrace probe is used to determine the health of your application by examining the entry or exit criteria.
 
@@ -30,6 +31,8 @@ stringData:
 1. Opening port 443 (HTTPS) to make API calls to the Dynatrace probe;
 2. Create a secret that has the Dynatrace access token with read permissions (that is, `metrics.read` scope).
 :::
+
+<CommonNote />
 
 ## Schema
 Listed below is the Dynatrace Probe schema with common properties shared across all probes and properties unique to Dynatrace probe.
