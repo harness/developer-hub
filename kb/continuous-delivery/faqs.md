@@ -3201,10 +3201,9 @@ No, pull request events do not occur on the forked repository.
 
 You can create a custom trigger to initiate a pipeline for a fork event. First, enable the Webhook setting to capture the event logs for the fork. Once enabled, you will be able to capture the event logs for every fork on the repository, and based on the payload, trigger conditions can be set.
 
-### how can I write to the harness filestore from a pipeline's shell script?
+### How to create a file in Harness File Store via Shell Script?
 
-To create a filestore from a shell script, you can use the harness api to create file inside shell script.
-Here is the link to api - https://apidocs.harness.io/tag/File-Store#operation/create
+To create a File Store from a Shell Script, you can use the [Harness API](https://apidocs.harness.io/tag/File-Store#operation/create).
 
 #### How can we delete Artifactory images from JFrog using Harness?
 
