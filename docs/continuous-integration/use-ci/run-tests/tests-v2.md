@@ -5,6 +5,8 @@ sidebar_position: 3
 ---
 
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) accelerates your test cycles without compromising quality, by running only the unit tests that are relevant to the code changes that triggered the build. Rather than running all test, all the time Instead of always running all unit tests, Harness automatically skips unneeded tests, speeding up your builds. You can also configure Harness TI to automatically split tests and run them in parallel.
 
@@ -156,12 +158,12 @@ All cloud available versions of Linux, Windows & Mac are supported.
 | Windows              | TBD                    | AMD64             |
 
 <details>
-<summary><b>Supported implementations</b></summary>
+<summary><b>Supported Implementations</b></summary>
 
-| **Language** | **Minimum Version** |
-| ------------ | ------------------- |
-| .Net Core       | 6-8                  |
-| .Net Framework       | TBD                  |
+| **Language**   | **Minimum Version** |
+| -------------- | ------------------- |
+| .Net Core      | 6-8                 |
+| .Net Framework | TBD                 |
 
 </details>
 
