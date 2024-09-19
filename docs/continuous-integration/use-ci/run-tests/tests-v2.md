@@ -8,11 +8,13 @@ import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
 [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) accelerates your test cycles without compromising quality, by running only the unit tests that are relevant to the code changes that triggered the build. Rather than running all test, all the time Instead of always running all unit tests, Harness automatically skips unneeded tests, speeding up your builds. You can also configure Harness TI to automatically split tests and run them in parallel.
 
-You can use this  **Test Intelligence** step, also known as the **Test** step, to run unit tests with **Python**, **Ruby**, **and Java** programming languages.
+You can use this **Test Intelligence** step, also known as the **Test** step, to run unit tests with **Python**, **Ruby**, **Java** and **C#** programming languages.
 
 :::note
 
 Currently, the Test step is behind the feature flag `CIE_ENABLE_RUNTEST_V2`. If the **Test** step is not available in your account, contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+C# (.Net Core 6.0+) support is also in early access and would require a specific environment variable to be used. If you wish to use the .Net test selection, please contact [Harness Support](mailto:support@harness.io) to enable it within your pipeline.
 
 :::
 
@@ -21,7 +23,6 @@ Currently, the Test step is behind the feature flag `CIE_ENABLE_RUNTEST_V2`. If 
 To use TI for Python, your codebase must be Python 3.
 
 :::
-
 
 <!-- Doesn't include C#, Kotlin, or Scala yet. -->
 
@@ -85,6 +86,77 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 </details>
 
+### Compatibility
+
+The following are the languages, OSes & versions that are supported by Harness' Test Intelligence:
+
+<Tabs>
+<TabItem value="Java" label="Java">
+
+## Supported Operating Systems
+
+All cloud available versions of Linux, Windows & Mac are supported.
+
+<details>
+<summary><b>Supported languages</b></summary>
+
+| **Language** | **Minimum Version** |
+| ------------ | ------------------- |
+| Java         | 6+                  |
+| Kotlin       | 1.5+                |
+| Scala        | 2.13+               |
+
+</details>
+
+</TabItem>
+<TabItem value="Ruby" label="Ruby">
+
+## Supported Operating Systems
+
+All cloud available versions of Linux, Windows & Mac are supported.
+
+<details>
+<summary><b>Supported languages</b></summary>
+
+| **Language** | **Minimum Version** |
+| ------------ | ------------------- |
+| Ruby         | 2.7+                |
+
+</details>
+
+</TabItem>
+<TabItem value="Python" label="Python">
+
+## Supported Operating Systems
+
+All cloud available versions of Linux, Windows & Mac are supported.
+
+<summary><b>Supported languages</b></summary>
+
+| **Language** | **Minimum Version** |
+| ------------ | ------------------- |
+| Python       | 3+                  |
+
+</details>
+
+</TabItem>
+<TabItem value="C#" label="C#">
+
+## Supported Operating Systems
+
+| **Operating System** | **Supported Versions** | **Architectures** |
+| -------------------- | ---------------------- | ----------------- |
+| Linux/Centos         | 8+                     | AMD64             |
+| Linux/RedHat         | 9+                     | AMD64 & ARM64     |
+| Linux/Debian         | 12+                    | AMD64 & ARM64     |
+| Linux/Suse           | 15.5+                  | AMD64 & ARM64     |
+| Linux/Ubuntu         | 20.04+                 | AMD64 & ARM64     |
+| Alpine               | 3.17+                  | AMD64 & ARM64     |
+| Windows              | TBD                    | AMD64             |
+
+</TabItem>
+</Tabs>
+
 ### Command and Shell
 
 Use these fields to define the commands that you need to run in this step.
@@ -107,6 +179,14 @@ Incremental builds don't work for Bazel if you give the entire repo in the **Com
 
 :::
 
+:::info
+
+For C# support, Harness uses a built-in environment variable named `CORECLR_PROFILER`.
+
+**You shouldn't override this variable.**
+
+:::
+
 ### Intelligence Mode
 
 Enable **Intelligence Mode** to [enable Test Intelligence](./ti-overview.md).
@@ -119,6 +199,7 @@ By default, we use the following globs for test selection:
 * Ruby: `**/spec/**/*_spec.rb`
 * Python: `"**/test_*.py`, `**/*_test.py"`
 * Java: `**/*.java`
+* C#: `**/*.cs`
 
 You can override the default test globs pattern, for example:
 
@@ -128,7 +209,7 @@ Since test selection is at the file-level, the test globs pattern references fil
 
 ### Report Paths
 
-This setting is optional. If unspecified, Harness uses the default JUnit report path `**/*.xml`.
+This setting is optional. If unspecified, Harness uses the default JUnit report path `**/*.xml` or `**/*.trx` for C#.
 
 You can use this setting if your test reports are stored in a non-default location or have a non-default name pattern.
 
@@ -146,6 +227,12 @@ For example:
 ```
 
 You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) is supported. [Test results must be in JUnit XML format](./test-report-ref.md).
+
+:::info
+
+When using .Net, make sure to enable log reporting when running the tests, e.g. `dotnet test -l:trx`, or otherwise no tests would be shown in the **Tests** tab.
+
+:::
 
 ### Output Variables
 
