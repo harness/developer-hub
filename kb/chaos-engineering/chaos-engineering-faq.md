@@ -323,7 +323,7 @@ Yes, [chaos dedicated infrastructure](/docs/chaos-engineering/use-harness-ce/inf
 Yes, HCE provides integration with many tools, such as [Gitlab pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-gitlab-pipeline), [Jenkins pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-jenkins-pipeline), with [Harness CD](https://developer.harness.io/docs/category/integrate-hce-with-harness-cd), [Harness Feature Flags](https://developer.harness.io/docs/chaos-engineering/integrations/chaos-ff), and [SRM](https://developer.harness.io/docs/chaos-engineering/integrations/use-chaos-with-srm).
 
 #### Does Harness Chaos provide Resilience Probes for [X] APM (Prometheus, Dynatrace, Datadog, NewRelic, Splunk)?
-Yes, you can use resilience probes with [Prometheus](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/prom-probe), [Dynatrace](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/dynatrace-probe), [DataDog](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/datadog-probe), and [NewRelic](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/cmd-probe/cmd-probe-newrelic).
+Yes, you can use resilience probes with [Prometheus](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/prom-probe), [Dynatrace](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/dynatrace-probe), [DataDog](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/datadog-probe), and [NewRelic](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-newrelic).
 
 ## Use cases
 
