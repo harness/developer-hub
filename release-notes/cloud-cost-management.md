@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2024-09-09T22:00
+date: 2024-09-19T22:00
 sidebar_position: 6
 ---
 
@@ -19,6 +19,28 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 ## September 2024
+
+### Version 1.30.3
+
+#### New features and enhancements
+- Prerequisites for Cluster Orchestrator: We are now listing all prerequisites required for Cluster Orchestrator, providing clearer guidelines to ensure smooth setup. [CCM-18892]
+- Export Perspective Chart as CSV: We now support exporting the Perspective chart as a CSV, allowing users to easily extract and analyze data from the chart. [CCM-18812]
+
+### Fixed Issues:
+- Toggle Fields in Recommendations Filters: The Toggle fields in the Recommendations screen Filters were not being saved on Create or Update. This has been fixed. [CCM-19267]
+
+- Saved Filter Option Not Visible on Anomalies Page Load: When first loading the anomalies page, the option to "Select a saved filter" was not visible until a filter was applied. This has been corrected so the saved filter option appears immediately. [CCM-19345]
+
+- Overflowing Text in 'Resume Setup' Button: The button text for "Resume Setup" in the orchestrator setup screen was overflowing. This has been fixed. [CCM-19212]
+
+- Cloud Connectors Redirect Fix: Clicking on cloud connectors in the integration did not lead to the actual connector configuration. Now, it redirects to the connector details page, improving troubleshooting and configuration access. [CCM-17586]
+
+- Cost Category Bucket Overflow Handling: Display issues with overflowing content in cost category bucket conditions when multiple choices were selected have been fixed. [CCM-14719]
+
+- Search Bar Missing for Label Value Selection in Cost Categories: The search bar was not appearing when selecting label values while creating cost categories. This has been resolved. [CCM-15437]
+
+- Asset Governance Savings Displayed as $0 on Overview Page: Asset Governance Savings were showing as $0 on the CCM Overview page. This issue has now been resolved, and the correct savings are displayed. [CCM-19450]
+
 ### Version 1.29.1
 
 #### Fixed issues
@@ -26,7 +48,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Budget Amount Reset: Earlier, navigating between the budget creation steps caused the budget amount settings to reset to defaults. The budget form fields will now retain their values when switching between steps. [CCM-10953]
 - Cost Category Name Updates: We have addressed an issue where cost category name updates were not properly reflected in perspective rules, ensuring the correct category names are used in all relevant areas. [CCM-18977]
 - Recommendations Slider Action: Previously, using the buffer slider in the CCM "recommendations" view and hitting the back button moved the slider instead of returning to the main recommendations page. Now, the back button no longer includes slider actions. [CCM-11303]
-- 
+
 ## August 2024
 ### Version 1.28.7
 
