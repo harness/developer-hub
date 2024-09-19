@@ -32,7 +32,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### Fixed issues
 
-- Resolved an inconsistency between the **Run** and **Plugin** step configuration in the CI module. Previously, users could set key-value pairs in the **Run** step but not in the **Plugin** step. The fix enables the "Optional Configuration --> Settings" field in the Plugin step to accept both key-value pairs and runtime input. (CI-14038, ZD-69099)
+- Resolved an inconsistency between the **Run** and **Plugin** step configuration in the CI module. Previously, users could set key-value pairs in the **Run** step but not in the **Plugin** step. The fix enables the "Optional Configuration --> Settings" field in the Plugin step to accept value as runtime input with default values and allowed values (CI-14038, ZD-69099)
 
 ### Version 1.46
 
