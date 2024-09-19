@@ -5,6 +5,7 @@ description: Features and specification of the Datadog probe
 redirect_from:
 - /docs/chaos-engineering/technical-reference/probes/datadog-probe
 - /docs/chaos-engineering/features/probes/datadog-probe
+- /docs/chaos-engineering/features/resilience-probes/datadog-probe
 ---
 
 import Tabs from '@theme/Tabs';
