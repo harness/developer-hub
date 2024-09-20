@@ -114,7 +114,7 @@ async function config() {
                   to: 'docs/platform',
                 },
                 {
-                  label: 'Cloud Development Environment',
+                  label: 'Cloud Development Environments',
                   to: 'docs/cloud-development-environment',
                 },
                 {

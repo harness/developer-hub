@@ -1,7 +1,7 @@
 {
-    "label": "Cloud Development Environment",
+    "label": "Cloud Development Environments",
     "collapsible": "true",
     "collapsed": "true",
-    "link": { "type": "generated-index", "title": "Cloud Development Environment" },
+    "link": { "type": "generated-index", "title": "Cloud Development Environments" },
     "customProps": {}
   }
