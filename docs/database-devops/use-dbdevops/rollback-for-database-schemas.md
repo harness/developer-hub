@@ -5,7 +5,7 @@ displayed_sidebar: dbdevopsbeta
 # sidebar_position: 4
 ---
 
-This topic describes how Harness Database DevOps rolls back to the last successful version of your database schema workload.
+This topic describes how Harness Database DevOps implements automated rollback to maintain the stability and integrity of your database schema workloads. 
 
 ## Accelerate Innovation Velocity
 
@@ -28,6 +28,26 @@ When managing database schema changes, the risk of something going wrong is alwa
 ### What is Automated Rollback?
 
 Automated rollback is a feature that automatically reverses database changes if an error occurs during a deployment. This prevents partial or inconsistent updates that could disrupt your application or lead to data corruption.
+
+In Harness DB DevOps, automated rollback leverages tags and versioning to ensure a smooth and reliable process. There are two main scenarios where rollback can occur:
+
+ 1. **Immediate Rollback**: If a change fails to apply during
+ deployment.
+ 2. **Delayed Rollback**: If a change is successfully applied, but a rollback is later required.
+
+### Immediate Rollback
+
+By default, if a change fails to apply during deployment, Harness DB DevOps will automatically roll back the change using the database's built-in transaction rollback mechanism. This is what we call an **immediate rollback**. This ensures that the database remains in a consistent state, even if a part of the deployment fails.
+
+### Delayed Rollback
+
+In some cases, you might need to roll back changes that were successfully applied. This could be due to:
+
+ - A subsequent change in the deployment pipeline failing
+ - An application health check failing after deployment
+ - Other operational or business reasons
+
+For these scenarios, Harness DB DevOps provides a 'Rollback' pipeline step. This step can be configured in your pipeline to roll back to a particular tag, allowing you to revert your database schema to a known good state.
 
 ### What are tags? 
 
