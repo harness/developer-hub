@@ -51,12 +51,5 @@ For these scenarios, Harness DB DevOps provides a 'Rollback' pipeline step. This
 
 ### What are tags? 
 
-A tag is a marker or label assigned to a specific point in a repository's history. Tags are typically used to denote important milestones, such as releases, versions, or significant updates.
+A tag is a marker or label assigned to a specific point in a database's migration history. Harness recommends creating a change every time you deploy a changeset to a database so that you always have a rollback point for future changes.
 
-Tags help developers and users easily identify and reference specific versions of the codebase. For example, a tag might be used to mark the release of version 1.0 of a software application. Unlike branches, tags are immutable, meaning they do not change over time and serve as a permanent record of a particular state of the code.
-
-### What are versioning? 
-
-Versioning is the practice of assigning unique version numbers to different states or iterations of a software project, database schema, API, or document. These version numbers help track changes, manage updates, and ensure compatibility between different parts of a system.
-
-Versioning is critical for maintaining order and clarity in the development process. It allows teams to differentiate between different stages of a product, such as beta releases, minor updates, or major overhauls. Version numbers typically follow a semantic format, such as "major.minor.patch" (e.g., 2.3.1), where each segment indicates the level and significance of changes made.
