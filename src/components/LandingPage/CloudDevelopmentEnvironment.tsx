@@ -25,7 +25,7 @@ export default function CDE() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img width={64} src={`${baseUrl}img/cde_illustration.svg`} />
-            <h1>Cloud Development Environment</h1>
+            <h1>Cloud Development Environments</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/docs/cloud-development-environment">

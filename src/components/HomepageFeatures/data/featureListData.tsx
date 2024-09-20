@@ -29,7 +29,7 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
-    title: "Set up Cloud Development Environment",
+    title: "Set up Cloud Development Environments",
     module: MODULES.cde,
     icon: "img/cde_icon.svg",
     description:

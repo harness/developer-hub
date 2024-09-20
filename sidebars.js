@@ -570,7 +570,7 @@ const sidebars = {
   clouddevelopmentenvironment: [
     {
       type: "category",
-      label: "Cloud Development Environment",
+      label: "Cloud Development Environments",
       className: "sidebar-cde",
       link: {
         type: "doc",

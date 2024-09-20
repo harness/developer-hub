@@ -1373,6 +1373,9 @@ html[data-theme="dark"] .sidebar-opensource > a::before {
 .continuous-delivery--gitops:hover {
   border-color: var(--mod-cd-200) !important;
 }
+.cloud-development-environment:hover {
+  border-color: var(--mod-cde-200) !important;
+}
 .continuous-integration:hover {
   border-color: var(--mod-ci-200) !important;
 }
