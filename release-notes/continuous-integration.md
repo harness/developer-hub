@@ -26,10 +26,6 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 <!-- 2024-09-17 -->
 
-#### New features and enhancements
-
-- Added the ability to exclude connectors from the preflight check in the CI module. This can be configured in the connector YAML by setting the `ignoreTestConnection` property to `true`. If the user sets this flag as `true` along with the feature flag `CI_IGNORE_TEST_CONNECTION` enabled, no matter the configuration, the connection test will always be marked as **Successful**. The feature is gated behind the feature flag `CI_IGNORE_TEST_CONNECTION`. (CI-13806, ZD-65275,65643)
-
 #### Fixed issues
 
 - Resolved an inconsistency between the **Run** and **Plugin** step configuration in the CI module. Previously, users could set key-value pairs in the **Run** step but not in the **Plugin** step. The fix enables the "Optional Configuration --> Settings" field in the Plugin step to accept value as runtime input with default values and allowed values (CI-14038, ZD-69099)
@@ -42,7 +38,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 - Added support for setting Topology Spread Constraints to Kubernetes build pods. A new property, `podSpecOverlay`, has been introduced in the Kubernetes infrastructure properties within the CI stage, allowing users to apply additional settings to the build pod. Currently, this field supports specifying `topologySpreadConstraint`, with plans to extend support for additional configurations in the future. (CI-14033)
 
-- Added the ability to exclude connectors from the preflight check. This can be configured in the connector YAML by setting the property `ignoreTestConnection` to `true`. This feature is currently gated behind the feature flag `CI_IGNORE_TEST_CONNECTION`. (CI-13806, ZD-65275,65643)
+- Added the ability to exclude connectors from the preflight check. This can be configured in the connector YAML by setting the property `ignoreTestConnection` to `true`. If the user sets this flag as `true` along with the feature flag `CI_IGNORE_TEST_CONNECTION` enabled, no matter the configuration, the connection test will always be marked as **Successful**. The feature is gated behind the feature flag `CI_IGNORE_TEST_CONNECTION`. (CI-13806, ZD-65275,65643)
 
 ### Version 1.45
 
