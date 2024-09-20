@@ -28,7 +28,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### New features and enhancements
 
-- Added the ability to exclude connectors from the preflight check in the CI module. This can be configured in the connector YAML by setting the `ignoreTestConnection` property to `true`. The feature is gated behind the feature flag `CI_IGNORE_TEST_CONNECTION`. (CI-13806, ZD-65275,65643)
+- Added the ability to exclude connectors from the preflight check in the CI module. This can be configured in the connector YAML by setting the `ignoreTestConnection` property to `true`. If the user sets this flag as `true` along with the feature flag `CI_IGNORE_TEST_CONNECTION` enabled, no matter the configuration, the connection test will always be marked as **Successful**. The feature is gated behind the feature flag `CI_IGNORE_TEST_CONNECTION`. (CI-13806, ZD-65275,65643)
 
 #### Fixed issues
 
