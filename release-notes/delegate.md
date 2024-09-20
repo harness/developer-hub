@@ -70,12 +70,17 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## September 2024
-
 ### Version 24.08.83804 <!--  September 20, 2024 -->
 
 #### Hotfixes
 
 - Updated the identifier so that the output obtained from the PowerShell command is parsed correctly (CDS-100036).
+
+### Version 24.08.83803 <!--  September 20, 2024 -->
+
+#### Hotfixes
+
+- Fixed an issue where the secrets will no longer get exposed in Kubernetes Dry Run Step even if they are placed in ConfigMap.
 
 ### Version 24.09.83900 <!-- September 9, 2024 -->
 
