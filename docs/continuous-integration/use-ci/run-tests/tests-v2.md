@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) accelerates your test cycles without compromising quality, by running only the unit tests that are relevant to the code changes that triggered the build. Rather than running all test, all the time Instead of always running all unit tests, Harness automatically skips unneeded tests, speeding up your builds. You can also configure Harness TI to automatically split tests and run them in parallel.
 
-You can use this **Test Intelligence** step, also known as the **Test** step, to run unit tests with **Python**, **Ruby**, **Java** and **C#** programming languages.
+You can use this **Test Intelligence** step, also known as the **Test** step, to run unit tests with **Python**, **Ruby**, **Java** , **C#** , **Scala** and **Kotlin** programming languages.
 
 :::note
 
@@ -26,7 +26,6 @@ To use TI for Python, your codebase must be Python 3.
 
 :::
 
-<!-- Doesn't include C#, Kotlin, or Scala yet. -->
 
 ## Configure the Test step
 
