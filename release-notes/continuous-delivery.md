@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-09-18T10:00:00
+date: 2024-09-23T10:00:00
 sidebar_position: 8
 ---
 
@@ -46,6 +46,21 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 ## September 2024
+
+### Version 1.57.x
+
+#### New features and enhancements
+
+- The Auto Scaling Group (ASG) that previously experienced downtime during rollback instance refresh is now enhanced to achieve zero downtime, ensuring continuous availability. Currently, this feature is behind the feature flag `CDS_ASG_ROLLOUT_ROLLBACK_INSTANCE_REFRESH`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-100052)
+
+#### Fixed issues
+
+- Previously, users could not copy the task id directly from the execution logs in the contineous verification process. This issue is resolved. **Copy Task ID** button is added in the execution logs modal for the verification step to copy the task ID. (CDS-100337)
+
+- Previously, users experienced delays when loading the service and execution dashboards. This issue has been resolved by introducing widget-level loaders for projects with a large number of services, significantly improving loading performance. 
+(CDS-100916, ZD-69971)
+
+- Previously, the dropdowns in the pipeline studio had low contrast in dark mode. This issue has now been fixed. (CDS-99271)
 
 ### Version 1.56.1
 
