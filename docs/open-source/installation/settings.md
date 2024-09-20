@@ -16,7 +16,7 @@ docker run -d \
   -e GITNESS_PRINCIPAL_ADMIN_EMAIL=mail@example.com \
   -e GITNESS_PRINCIPAL_ADMIN_PASSWORD=correct-horse-battery-staple \
   -e GITNESS_USER_SIGNUP_ENABLED=false \
-  -p 3000:3000 \
+  -p 3000:3000 -p 3022:3022 \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /tmp/gitness:/data \
   --name gitness \
