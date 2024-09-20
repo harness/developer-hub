@@ -21,6 +21,7 @@ You can scan your repositories and container images using [Black Duck Hub](https
 
 
 - You need to add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline) to scan container images on Kubernetes or Docker build infrastructures. 
+  - Blackduck only supports scanning older images, so the Docker-in-Docker step must be compatible with the version mentioned in the [BDH support](https://community.synopsys.com/s/article/Black-Duck-docker-inspector-scan-Exception-thrown-while-getting-image-packages-null). If scanning a tar file, ensure it is generated using a Docker version that is compatible with this requirement.
 
 - You need to run the scan step with root access if either of the following apply:
 

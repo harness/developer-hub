@@ -12,11 +12,6 @@ The Snyk step in Harness STO allows you to find and fix vulnerabilities in conta
 
 Refer to the [Snyk step configuration](./snyk-scanner-reference) document to learn more about the fields in the Snyk step and how to configure them.
 
-:::info
-STO pulls the image or tar archive for scanning, and by default, it runs the scan in [Without Docker-in-Docker (DinD)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#without-docker-in-docker-flow-in-sto) mode. If your application or scanner requires DinD, you can configure it as a dependency by following the steps outlined in the [Docker-in-Docker (DinD) flow](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-dockerdind-flow-in-sto) section.
-
-:::
-
 ## Snyk Container scan - Orchestration mode
 :::note
 This feature is currently behind the feature flag, `STO_SNYK_ORCHESTRATION_ENHANCEMENTS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.

@@ -33,14 +33,6 @@ You can run Anchore Enterprise scans in air-gapped environments. For more inform
 - [Running Anchore Enterprise in an Air-Gapped Environment](https://docs.anchore.com/3.0/docs/overview/air_gapped)
 - [Anchore Enterprise Feeds](https://docs.anchore.com/current/docs/overview/feeds)
 
-
-### Docker-in-Docker requirements
-
-- STO pulls the image or tar archive for scanning, and by default, it runs the scan in [Without Docker-in-Docker (DinD)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#without-docker-in-docker-flow-in-sto) mode. If your application or scanner requires DinD, you can configure it as a dependency by following the steps outlined in the [Docker-in-Docker (DinD) flow](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-dockerdind-flow-in-sto) section.
-
-- For Orchestrated and Extraction scans, you might want to increase the resource limits for your Docker-in-Docker background step. This can speed up your scan times, especially for large scans. For more information, go to [Optimize STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines).
-
-
 ### Root access requirements
 
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';

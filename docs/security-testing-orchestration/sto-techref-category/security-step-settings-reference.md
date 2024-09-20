@@ -73,6 +73,8 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoDinDRequirements />
 
+For Orchestrated and Extraction scans, you might want to increase the resource limits for your Docker-in-Docker background step. This can speed up your scan times, especially for large scans. For more information, go to [Optimize STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines).
+
 If you want to force STO to use Docker-in-Docker (DinD), set the following variable in the **Settings** section of your step configuration (optional):
 
 - `docker_mode`: `docker-in-docker`

@@ -19,8 +19,6 @@ For information about setting up Grype in an air-gapped environment, go to [Set 
 
 ## Important notes for running Grype scans in STO
 
-- STO pulls the image or tar archive for scanning, and by default, it runs the scan in [Without Docker-in-Docker (DinD)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#without-docker-in-docker-flow-in-sto) mode. If your application or scanner requires DinD, you can configure it as a dependency by following the steps outlined in the [Docker-in-Docker (DinD) flow](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-dockerdind-flow-in-sto) section.
-
 - You need to run the scan step with root access if either of the following apply:
 
   - You need to use a Docker-in-Docker background step.

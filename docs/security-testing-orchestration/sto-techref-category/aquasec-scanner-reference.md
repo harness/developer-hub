@@ -19,10 +19,6 @@ You can scan your container images and ingest scan results from [Aqua Security E
 
 ## Important notes for running Aqua Security scans in STO
 
-- You need to add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline) to run orchestration scans on Kubernetes or Docker build infrastructures.
-
-- To perform [Orchestration] on Kubernetes or Docker build infrastructures, you can either use a [Docker-in-Docker (DinD) background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline) or scan [without Docker-in-Docker](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#when-to-use-without-docker-in-docker), depending on your use case.
-
 - You need to run the scan step with root access if either of the following apply:
 
   - You need to run a [Docker-in-Docker background service](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline).

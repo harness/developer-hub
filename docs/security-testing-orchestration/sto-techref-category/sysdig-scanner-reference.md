@@ -16,8 +16,6 @@ You can scan container images using [Sysdig Vulnerability engine](https://docs.s
 
 ## Important notes for running Sysdig scans in STO
 
-- STO pulls the image or tar archive for scanning, and by default, it runs the scan in [Without Docker-in-Docker (DinD)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#without-docker-in-docker-flow-in-sto) mode. If your application or scanner requires DinD, you can configure it as a dependency by following the steps outlined in the [Docker-in-Docker (DinD) flow](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-dockerdind-flow-in-sto) section.
-
 - You need to run the scan step with root access if either of the following apply:
 
   - You need to run a [Docker-in-Docker background service](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#configuring-docker-in-docker-dind-for-your-pipeline).
