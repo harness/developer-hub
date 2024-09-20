@@ -17,7 +17,7 @@ import { MODULES } from "@site/src/constants";
           title: "Overview",
           module: MODULES.cde,
           description:
-            "Learn how to provision pre-configured Developer Environments for seamless development ",
+            "Learn how to provision pre-configured Cloud Developer Environments for seamless development ",
           link: "/docs/cloud-development-environment/get-started/overview",
         },
         {
