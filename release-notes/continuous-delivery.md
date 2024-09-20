@@ -921,7 +921,7 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 
 - Run step missing from CD stage if used in the provision infrastructure section of **Environment**. (CDS-86994, ZD-55259)
 - Deploy CDK Error. (CDS-86930, ZD-55227)
-  - This was caused by user error, but it describes an important configuration consideration. The user used a common image (`https://public.ecr.aws/amazonlinux/amazonlinux`) for the step that did not include the AWS CDK requirements. This resulted in a CDK error. 
+  - This was caused by user error, but it describes an important configuration consideration. The user used a common image (`https://gallery.ecr.aws/amazonlinux/amazonlinux`) for the step that did not include the AWS CDK requirements. This resulted in a CDK error. 
   - The image used in CDK steps should be created based on the Harness `aws-cdk-plugin` image available at `https://hub.docker.com/r/harness/aws-cdk-plugin`, documented [here](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/#docker-image-registry-connector-and-image-for-all-steps). The Harness image contains the Harness logic around the AWS CDK. You can a custom image built from `harness/aws-cdk-plugin:1.0.0` by adding support for different programming languages. See the tags at `https://hub.docker.com/r/harness/aws-cdk-plugin`tags.
 - Null AWS ASG name in logs for blue green Traffic Shift step. (CDS-86744)
   - Harness has fixed the logs for the ASG blue green Traffic Shift step. It no longer displays null ASG names.
