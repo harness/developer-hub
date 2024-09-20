@@ -114,6 +114,10 @@ async function config() {
                   to: 'docs/platform',
                 },
                 {
+                  label: 'Cloud Development Environment',
+                  to: 'docs/cloud-development-environment',
+                },
+                {
                   label: 'Code Repository',
                   to: 'docs/code-repository',
                 },
