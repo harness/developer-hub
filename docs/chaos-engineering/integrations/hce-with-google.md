@@ -23,7 +23,7 @@ The [harness-chaos builder](https://github.com/GoogleCloudPlatform/cloud-builder
 - [Harness API key](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens) is required for authentication, which is passed as a secret to the YAML file.
 
 ## Steps to Integrate Harness Chaos Engineering with Google Cloud Build
-1. [Set up a chaos experiment based on your application's requirements](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments): After saving the experiment, copy the experiment ID and `expected-resilience-score`.
+1. [Set up a chaos experiment based on your application's requirements](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments): After saving the experiment, copy the experiment ID and choose a value for the `expected-resilience-score`.
 
 :::tip
 Ensure that the resilience score of the experiment run meets the `expected-resilience-score`.
@@ -62,7 +62,7 @@ In the above YAML,
 - `--delay`: Sets the delay provided for multiple iterations (default value of 2s is provided for some APIs).
 - `--timeout`: Sets the timeout provided for multiple iterations (a default value of 180s is provided for some APIs).
 - `run-experiment`: The command to execute the experiment.
-- `HARNESS_API_KEY`: The API key from your Harness account.
+- `HARNESS_API_KEY`: The API key from your Harness account. This key is stored in Google Cloud's secret manager and referred from there.
 - `HARNESS_PROJECT_ID`: The ID of the Harness project that contains your experiment.
 - `HARNESS_EXPERIMENT_ID`: The ID of the chaos experiment you want to run.
 
