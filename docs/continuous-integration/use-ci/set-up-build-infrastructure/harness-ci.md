@@ -10,11 +10,11 @@ helpdocs_is_published: true
 
 import Dhrl from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
 
-When a Harness CI pipeline runs, an *initialize* step runs automatically before any other steps in the stage. This step prepares the environment to run your steps, such as preparing the build infrastructure and pulling required Harness images from Docker Hub (the default), the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), or the [Harness ECR public gallery](https://gallery.ecr.aws/harness), depending on how you configure your accounts and pipelines to [connect to the Harness container registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md).
+When a Harness CI pipeline runs, an *initialize* step runs automatically before any other steps in the stage. This step prepares the environment to run your steps, such as preparing the build infrastructure and pulling required Harness images from Docker Hub (the default), the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), or the [Harness ECR public gallery](https://public.ecr.aws/harness), depending on how you configure your accounts and pipelines to [connect to the Harness container registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md).
 
 ## Harness CI images list
 
-You can find Harness CI images on Docker Hub, the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), or the [Harness ECR public gallery](https://gallery.ecr.aws/harness).
+You can find Harness CI images on Docker Hub, the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), or the [Harness ECR public gallery](https://public.ecr.aws/harness).
 
 Here are some examples of Harness CI images and the purpose of each image. Build image tags change often.
 
@@ -153,7 +153,7 @@ API key authentication is required. For more information about API keys, go to [
 
 ## Deprecation notice: app.harness Docker registry
 
-Harness images are available on Docker Hub, the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), and the [Harness ECR public gallery](https://gallery.ecr.aws/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness deprecated the Harness-hosted `app.harness` Docker registry effective 15 February 2024. For more information, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md#deprecation-notice-appharness-docker-registry).
+Harness images are available on Docker Hub, the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), and the [Harness ECR public gallery](https://public.ecr.aws/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness deprecated the Harness-hosted `app.harness` Docker registry effective 15 February 2024. For more information, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md#deprecation-notice-appharness-docker-registry).
 
 ## Troubleshoot Harness images
 
