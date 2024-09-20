@@ -71,6 +71,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## September 2024
 
+### Version 24.09.83804 <!--  September 20, 2024 -->
+
+#### Hotfixes
+
+- Updated the identifier so that the output obtained from the PowerShell command is parsed correctly (CDS-100036).
+
 ### Version 24.09.83900 <!-- September 9, 2024 -->
 
 #### Fixed issues
