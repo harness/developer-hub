@@ -1,6 +1,6 @@
 ---
 title: Integrate experiment pipeline with notifications
-sidebar_position: 36
+sidebar_position: 40
 description: Guide to execute chaos experiment in a pipeline and receive notifications about experiment execution.
 ---
 
