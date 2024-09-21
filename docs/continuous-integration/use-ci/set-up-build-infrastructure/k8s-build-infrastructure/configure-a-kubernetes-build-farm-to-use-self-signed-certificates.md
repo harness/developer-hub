@@ -296,7 +296,7 @@ This workflow is applicable only if you're using a self-hosted registry to store
 
    </details>
 
-3. If you're storing your certificates in a local registry and [need to run Docker-in-Docker](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto), specify the local certificate path on the delegate.
+3. If you're storing your certificates in a local registry and [need to run Docker-in-Docker](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline), specify the local certificate path on the delegate.
 
    For example, if your self-signed certs are stored at `https://my-registry.local.org:799` and you log in with `docker login my-registry.local.org:799`, then you add the path to your `DESTINATION_CA_PATH` environment like this:
 

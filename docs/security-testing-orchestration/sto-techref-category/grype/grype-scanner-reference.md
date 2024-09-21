@@ -19,8 +19,6 @@ For information about setting up Grype in an air-gapped environment, go to [Set 
 
 ## Important notes for running Grype scans in STO
 
-- You need to add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to scan container images on Kubernetes or Docker build infrastructures. 
-
 - You need to run the scan step with root access if either of the following apply:
 
   - You need to use a Docker-in-Docker background step.
