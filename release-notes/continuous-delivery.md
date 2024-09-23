@@ -47,17 +47,27 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## September 2024
 
-### Version 1.57.x
+### Version 1.57.4
 
 #### New features and enhancements
 
-- The Auto Scaling Group (ASG) that previously experienced downtime during rollback instance refresh is now enhanced to achieve zero downtime, ensuring continuous availability. Currently, this feature is behind the feature flag `CDS_ASG_ROLLOUT_ROLLBACK_INSTANCE_REFRESH`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-100052)
+- The Auto Scaling Group (ASG) that previously experienced downtime during rollback instance refresh is now enhanced to achieve zero downtime, ensuring continuous availability. Currently, this feature is behind the feature flag `CDS_ASG_ROLLOUT_ROLLBACK_INSTANCE_REFRESH`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-97964)
+
+- Harness now supports configuring CLI environment variables for Tanzu Application Service deployment in the Service and overrides. Currently, this feature is behind the feature flag `CDS_CF_CLI_ENVIRONMENT_VARIABLE_SUPPORT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-93637, ZD-59417, ZD-61241, ZD-65736)
+
+- Users can now define allowed values in the **Select Hosts** settings under infrastructure. In the runtime view, a multi-select dropdown will be displayed, allowing users to choose from the predefined allowed values. Currently, this feature is behind the feature flag `CDS_ALLOWED_VALUES_DROPDOWN_PDC_HOSTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-99810)
+
+- Users can now successfully configure OAuth tokens for Git providers, including when using Vanity URLs. (PIPE-20617, ZD-64159)
+
+- **Matrix Failure Strategy Support**
+
+Harness now supports the matrix strategy at the state level, allowing execution across all stages despite failures, with an added option to retry failed stages. (CDS-100369)
 
 #### Fixed issues
 
-- Previously, users could not copy the task id directly from the execution logs in the contineous verification process. This issue is resolved. **Copy Task ID** button is added in the execution logs modal for the verification step to copy the task ID. (CDS-100337)
+- Previously, users could not copy the task ID directly from the execution logs in the continuous verification process. This issue is resolved. **Copy Task ID** button is added in the execution logs modal for the verification step to copy the task ID. (CDS-100337)
 
-- Previously, users experienced delays when loading the service and execution dashboards. This issue has been resolved by introducing widget-level loaders for projects with a large number of services, significantly improving loading performance. 
+- Previously, users experienced delays when loading the service and execution dashboards. This issue has been resolved by introducing widget-level loaders for projects with many services, significantly improving loading performance. 
 (CDS-100916, ZD-69971)
 
 - Previously, the dropdowns in the pipeline studio had low contrast in dark mode. This issue has now been fixed. (CDS-99271)
