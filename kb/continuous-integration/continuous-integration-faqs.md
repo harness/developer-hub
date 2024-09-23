@@ -1525,19 +1525,15 @@ Harness currently doesn't provide a hosted artifact repository however you can p
 
 ### Why Build and Push Steps Don't Support V2 API URLs?
 
-Here’s an improved explanation for why build and push steps do not support the use of `https://registry.hub.docker.com/v2/` or `https://index.docker.io/v2/`:
+If you encounter authentication errors when using `https://registry.hub.docker.com/v2/` or `https://index.docker.io/v2/` during build and push steps, consider either using V1 API URLs or authenticating with a Personal Access Token (PAT) for V2 API URLs.
 
----
-
-### Why Build and Push Steps Don't Support V2 API URLs
-
-When using the V2 Docker registry API, authentication issues arise due to the way authorization tokens are generated. Specifically, the JWT (JSON Web Token) used for authentication in the V2 API doesn’t include the proper scope required for push/pull actions. 
+When using the V2 Docker registry API, authentication issues can arise due to how authorization tokens are generated. Specifically, the JWT (JSON Web Token) used for authentication in the V2 API may lack the proper scope required for push/pull actions.
 
 Here’s the key difference:
 
-- **Username/Password Authentication**: When using a username and password, the generated token lacks the necessary scope details (e.g., actions such as `push` and `pull`). This causes issues when trying to authenticate with the registry for build and push steps.
+- **Username/Password Authentication**: When using a username and password, the generated token often lacks the necessary scope details (e.g., actions like `push` and `pull`). This can cause issues when trying to authenticate with the registry during build and push steps.
   
-- **Personal Access Token (PAT) Authentication**: A PAT provides more detailed scope information in the authentication headers, which ensures the appropriate access levels are granted for pushing and pulling images. With a PAT, the scope is correctly set in the JWT, enabling seamless authentication for build and push operations.
+- **Personal Access Token (PAT) Authentication**: A PAT provides more detailed scope information in the authentication headers, ensuring the correct access levels for pushing and pulling images. With a PAT, the JWT scope is properly set, allowing seamless authentication for build and push operations.
 
 Here’s an example of a properly scoped token when using a PAT:
 
@@ -1568,9 +1564,9 @@ Here’s an example of a properly scoped token when using a PAT:
 }
 ```
 
-In this example, the `actions` (pull, push) and the repository name are correctly defined, ensuring the token provides the right access permissions.
+In this example, the `actions` (pull, push) and the repository name are correctly defined, ensuring the token provides the appropriate access permissions.
 
-To avoid these issues, it's recommended to use a Personal Access Token (PAT) when configuring build and push steps for Docker registries.
+To avoid authentication issues, it's recommended to either use a PAT when configuring build and push steps for Docker registries with the V2 API or, if using a username and password, switch to the V1 API.
 
 ## Upload artifacts
 
