@@ -83,7 +83,7 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
-- Upgraded org.clojure:clojure from version 1.9.0 to 1.11.4 to address security vulnerabilities, including CVE-2024-22871, which could lead to a denial of service (DoS) attack. (PL-56307)
+- Upgraded `org.clojure:clojure` from version 1.9.0 to 1.11.4 to address security vulnerabilities, including CVE-2024-22871, which could lead to a denial of service (DoS) attack. (PL-56307)
 
 #### Fixed issues
 
