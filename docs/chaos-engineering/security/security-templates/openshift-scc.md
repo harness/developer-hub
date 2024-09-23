@@ -1,6 +1,6 @@
 ---
 title: Openshift
-sidebar_position: 2
+sidebar_position: 15
 description: Openshift Security Context Constraint to control permissions for pods in cluster
 redirect_from:
 - /docs/chaos-engineering/technical-reference/security/security-templates/openshift-scc
