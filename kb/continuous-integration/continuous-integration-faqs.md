@@ -1523,6 +1523,51 @@ The build and push step doesn’t use kaniko while running the build on Harness 
 
 Harness currently doesn't provide a hosted artifact repository however you can push the artifact to the other popular artifact repos. More details about the same can be referred in the [doc](https://developer.harness.io/docs/category/uploaddownload-artifacts)
 
+### Why Build and Push Steps Don't Support V2 API URLs?
+
+If you encounter authentication errors when using `https://registry.hub.docker.com/v2/` or `https://index.docker.io/v2/` during build and push steps, consider either using V1 API URLs or authenticating with a Personal Access Token (PAT) for V2 API URLs.
+
+When using the V2 Docker registry API, authentication issues can arise due to how authorization tokens are generated. Specifically, the JWT (JSON Web Token) used for authentication in the V2 API may lack the proper scope required for push/pull actions.
+
+Here’s the key difference:
+
+- **Username/Password Authentication**: When using a username and password, the generated token often lacks the necessary scope details (e.g., actions like `push` and `pull`). This can cause issues when trying to authenticate with the registry during build and push steps.
+  
+- **Personal Access Token (PAT) Authentication**: A PAT provides more detailed scope information in the authentication headers, ensuring the correct access levels for pushing and pulling images. With a PAT, the JWT scope is properly set, allowing seamless authentication for build and push operations.
+
+Here’s an example of a properly scoped token when using a PAT:
+
+```json
+{
+  "access": [
+    {
+      "actions": [
+        "pull",
+        "push"
+      ],
+      "name": "your-username/test-private-repo",
+      "parameters": {
+        "pull_limit": "200",
+        "pull_limit_interval": "21600"
+      },
+      "type": "repository"
+    }
+  ],
+  "aud": "registry.docker.io",
+  "exp": 1724982164,
+  "https://auth.docker.io": {
+    "at_id": "02874e98-c6ce-46ed-934b-57d184441c38",
+    "pat_id": "02874e98-c6ce-46ed-934b-57d184441c38",
+    "plan_name": "free",
+    "username": "your-username"
+  }
+}
+```
+
+In this example, the `actions` (pull, push) and the repository name are correctly defined, ensuring the token provides the appropriate access permissions.
+
+To avoid authentication issues, it's recommended to either use a PAT when configuring build and push steps for Docker registries with the V2 API or, if using a username and password, switch to the V1 API.
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
