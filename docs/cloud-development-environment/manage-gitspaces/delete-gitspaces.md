@@ -1,11 +1,9 @@
 ---
-title: How to Remove a CDE
+title: Delete a Gitspace
 sidebar_position: 2
-sidebar_label: Delete CDE
+sidebar_label: Delete a Gitspace
 ---
 
-## Steps to Delete a CDE
+Deleting a Gitspace is an irreversible action since deleted Gitspace cannot be restored.  
 
-1. Deleting a Gitspace is an irreversible action since deleted Gitspace cannot be restored.  
-
-2. On the Gitspace Page click on the **3 dots** and select **Delete Gitspace**. You will see a warning stating that this action cannot be undone. If you are sure you want to delete the Gitspace, click on **Delete**.
+On the Gitspace Page click on the **3 dots** and select **Delete Gitspace**. You will see a warning stating that this action cannot be undone. If you are sure you want to delete the Gitspace, click on **Delete**.

@@ -1,11 +1,10 @@
 ---
-title: How to Create a CDE
+title: Create a Gitspace
 sidebar_position: 1
-sidebar_label: Create Gitspace
+sidebar_label: Create a Gitspace
 ---
 
-## How to Create a Gitspace
-
+Follow the instructions below to create a Gitspace:
 
 1. Click on **+New Gitspace**. To create a **Gitspace** using the [sample app](https://github.com/harness-community/demo-repo-nm). You have two options to create Gitspace:
 
