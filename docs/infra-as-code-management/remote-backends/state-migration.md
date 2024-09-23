@@ -63,7 +63,7 @@ Create workspace configurations for each Terraform state file in your project wi
 
 1. Clone or fork the IaCM migration repository: 
     - Clone with: `git clone git@github.com:harness/iacm-migration.git`.
-    - Fork via: `https://github.com/harness/iacm-migration.git`.
+    - Fork via: `https://github.com/harness/iacm-migration/fork`.
 2. Create and new `<filename>.tfvars` file in the local repository, see the **Sample tfvars file** below for an example.
 3. In your terminal, `cd` to your repository directory and run: 
     - `terraform apply -refresh=true -var-file=<filename>.tfvars`.
