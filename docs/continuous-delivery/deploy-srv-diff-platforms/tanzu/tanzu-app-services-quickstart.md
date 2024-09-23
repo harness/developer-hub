@@ -364,6 +364,16 @@ Configure the following artifact bundle settings:
 - **Vars.yaml path:** The relative path to the vars.yaml file from the artifact bundle root after extraction. You can add multiple files.
 - **AutoScaler.yaml:** The relative path to the autoscaler.yaml file from the artifact bundle root after extraction. You can add multiple files.
 
+:::info note
+
+You can configure CLI Environment Variables such as CF_STAGING_TIMEOUT and CF_HOME in the **Advanced** section of the service tab.
+
+   ![](static/cli_environment_variables.png)
+
+Currently, this feature is behind the feature flag `CDS_CF_CLI_ENVIRONMENT_VARIABLE_SUPPORT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
+:::
+
 :::note Overrides
 
 The standard override rules apply to an artifact bundle with these exceptions:
