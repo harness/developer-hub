@@ -1201,7 +1201,7 @@ const sidebars = {
     {
       type: "category",
       label: "Open Source",
-      className: "sidebar-os",
+      className: "sidebar-opensource",
       link: {
         type: "doc",
         id: "open-source",
