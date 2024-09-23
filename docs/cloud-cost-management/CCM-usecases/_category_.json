@@ -1,0 +1,12 @@
+{
+    "label":"CCM Use Cases",
+    "position": 3,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Cost reporting"
+    }
+    }
+ 
