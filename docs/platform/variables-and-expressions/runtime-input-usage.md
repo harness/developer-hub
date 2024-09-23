@@ -251,7 +251,11 @@ You can select a **Mode** of selection while creating allowed values in Runtime 
 Currently, multiple selection for runtime inputs is behind the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 :::
 
-Use Multi Selection if you want to choose one or more values from the list of [allowed values](#set-allowed-values). You can use multiple selection for runtime inputs in pipelines, stages, and shell script variables only. Multiple selection is an extension of allowed values; you must specify allowed values to use multiple selection.
+You can use Multi Selection if you want to choose one or more values from the list of [allowed values](#set-allowed-values). Multi Selection maps to the `.allowedValues()` functor, and Single Selection maps to the 
+`.selectOneFrom()` functor. You can use multiple selection for runtime inputs in pipelines, stages, and shell script variables only. Multiple selection is an extension of allowed values, so you must specify allowed values to use it.
+
+For users who want to migrate to single selection, you can implement 
+`.selectOneFrom()` even before the FF `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES` is turned on.
 
 ![](./static/runtime-inputs-11.png)
 
