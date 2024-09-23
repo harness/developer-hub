@@ -276,10 +276,10 @@
   --mod-code-200: #2bb1f2;
   --mod-code-100: #e2f5ff;
 
-    /* Module Colors/Gitness */
-    --mod-gitness-300: #b0b1c4;
-    --mod-gitness-200: #d9dae5;
-    --mod-gitness-100: #f3f3fa;
+    /* Module Colors/opensource */
+    --mod-opensource-300: #b0b1c4;
+    --mod-opensource-200: #d9dae5;
+    --mod-opensource-100: #f3f3fa;
 
   
   /* ----- */
@@ -594,8 +594,8 @@ details summary::before {
   color: var(--mod-iacm-200);
 }
 
-.color-gitness {
-  color: var(--mod-gitness-200);
+.color-opensource {
+  color: var(--mod-opensource-200);
 }
 
 .table-of-contents ul li span[class*="color-"] {
@@ -1261,7 +1261,7 @@ figure p {
   background-repeat: no-repeat;
 }
 
-.sidebar-gitness > div > a::before,.sidebar-gitness> a::before{
+.sidebar-opensource > div > a::before,.sidebar-opensource> a::before{
   content: " ";
   display: inline-block;
   height: 24px;
@@ -1270,14 +1270,14 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
-html[data-theme="light"] .sidebar-gitness > div > a::before,
-html[data-theme="light"] .sidebar-gitness > a::before {
-  background-image: url("/img/icon_gitness.svg");
+html[data-theme="light"] .sidebar-opensource > div > a::before,
+html[data-theme="light"] .sidebar-opensource > a::before {
+  background-image: url("/img/icon_platform.svg");
 }
 
-html[data-theme="dark"] .sidebar-gitness > div > a::before,
-html[data-theme="dark"] .sidebar-gitness > a::before {
-  background-image: url("/img/icon_gitness_light.svg");
+html[data-theme="dark"] .sidebar-opensource > div > a::before,
+html[data-theme="dark"] .sidebar-opensource > a::before {
+  background-image: url("/img/icon_platform.svg");
 }
 
 .sidebar-roadmap > div > a::before,.sidebar-roadmap> a::before{
@@ -1388,8 +1388,8 @@ html[data-theme="dark"] .sidebar-gitness > a::before {
 .software-engineering-insights:hover {
   border-color: var(--mod-sei-200) !important;
 }
-.gitness:hover {
-  border-color: var(--mod-gitness-200) !important;
+.opensource:hover {
+  border-color: var(--mod-opensource-200) !important;
 }
 
 
