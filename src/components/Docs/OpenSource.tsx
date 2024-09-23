@@ -25,7 +25,7 @@ export default function Code() {
                 Knowledge Base
               </button>
             </Link>
-            <Link href="/release-notes/code-repository">
+            <Link href="https://github.com/harness/gitness/releases">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />
@@ -37,7 +37,7 @@ export default function Code() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Learn how you can accelerate development with security at scale.
+            Harness Open Source is an all-in-one platform that integrates source code management, CI/CD pipelines, hosted development environments, and artifact management.
             </p>{' '}
             <div className={styles.illustrationContainer}>
               <img

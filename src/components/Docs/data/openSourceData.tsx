@@ -15,25 +15,18 @@ import {
           "",
         list: [
           {
-            title: "What's supported",
-            module: MODULES.code,
-            description:
-              "Learn what features and functionality are supported by Harness Code.",
-            link: "/docs/open-source",
-          },
-          {
             title: "Get started with Harness Open Source",
-            module: MODULES.code,
+            module: MODULES.opensource,
             description:
               "Learn the benefits, features, and key concepts of the Harness Open Source.",
             link: "/docs/open-source/installation/quick_start",
           },
           {
-            title: "Onboarding guide",
+            title: "Administration guide",
             module: MODULES.opensource,
             description:
-              "Start using Harness Open Source.",
-            link: "/docs/open-source/overview",
+              "Start using Harness Open Source as an admin.",
+            link: "/docs/category/administration",
           },
         ],
       },
@@ -45,31 +38,31 @@ import {
         list: [
           {
             title: "Repositories",
-            module: MODULES.code,
+            module: MODULES.opensource,
             description:
-              "Create repositories and configure branch rules.",
-            link: "/docs/category/manage-repositories",
+              "Create and manage repositories.",
+            link: "/docs/category/repositories",
           },
           {
-            title: "Collaboration",
-            module: MODULES.code,
+            title: "Artifact Registries",
+            module: MODULES.opensource,
             description:
-              "Branch, commit, tag, and more.",
-            link: "/docs/category/collaborate-and-develop",
+              "Host, pull, and push artifacts - all within Harness Open Source.",
+            link: "/docs/category/registries",
           },
           {
-            title: "Pull requests",
-            module: MODULES.code,
+            title: "Gitspaces",
+            module: MODULES.opensource,
             description:
-              "Create, review, and merge PRs.",
-            link: "/docs/category/pull-requests",
+              "Create and manage hosted development environments.",
+            link: "/docs/category/gitspaces",
           },
           {
             title: "Pipelines",
-            module: MODULES.code,
+            module: MODULES.opensource,
             description:
-              "Build, test, and deploy code from your Harness Code repositories. Use webhooks to automate pipeline runs.",
-            link: "/docs/category/run-pipelines",
+              "Build, test, and deploy code from Harness Open Source. Use webhooks to automate pipeline runs.",
+            link: "/docs/category/pipelines-1",
           },
         ],
       },
