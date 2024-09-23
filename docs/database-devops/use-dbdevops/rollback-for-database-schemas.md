@@ -47,7 +47,7 @@ In some cases, you might need to roll back changes that were successfully applie
  - An application health check failing after deployment
  - Other operational or business reasons
 
-For these scenarios, Harness DB DevOps provides a 'Rollback' pipeline step. This step can be configured in your pipeline to roll back to a particular tag, allowing you to revert your database schema to a known good state.
+For these scenarios, Harness DB DevOps provides a 'Rollback Schema' pipeline step. This step can be configured in your pipeline to roll back to a particular tag, allowing you to revert your database schema to a known good state.
 
 ### What are tags? 
 
