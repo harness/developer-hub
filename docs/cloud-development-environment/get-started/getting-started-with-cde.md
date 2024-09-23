@@ -27,6 +27,12 @@ If a repository does not have a `devcontainer.json`, we will spin up the CDE wit
 For a list of supported Git providers, IDEs, and CDE machine specs, please refer to the [What's supported](https://developer.harness.io/docs/cloud-development-environment/whats-supported)
 
 
+:::info
+
+To use VS Code Desktop, you need to [install and configure](#install-gitspace-vs-code-extension-for-vs-code-desktop) the Gitspaces extensions.  
+
+:::
+
 ## Sample application
 
 Let us go through the flow of creating a CDE for our sample application, which is available in our public GitHub repository at [demo node.js app](https://github.com/harness-community/demo-repo-nm). Fork the repository if you want to make changes to it as part of this exercise. 
@@ -41,9 +47,11 @@ Let us go through the flow of creating a CDE for our sample application, which i
 
 ![](./static/select-project.png)
 
-3. On the **Create Gitspace** page, select the Git Provider. By default, **Harness Code** is selected. If you select any other Git provider and you want to create Gitspaces for private repositories, you should [configure OAuth](https://developer.harness.io/docs/platform/git-experience/oauth-integration/#configure-oauth-for-git-provider). 
+3. Now on the Create Gitspace page, select the Git Provider, by default we select the **Harness Code**. In case you select any other git provider, you need to [configure the oauth](https://developer.harness.io/docs/platform/git-experience/oauth-integration/#configure-oauth-for-git-provider) to access the **Private** Repositories, since in this example we are using a public repository you can directly start by adding the Repository URl.
 
 4. For this quickstart, we will use a GitHub public repository. Repository URL is `https://github.com/harness-community/demo-repo-nm` (enter URL of your fork if you forked it), make sure the URL is the clone URL strictly of the format `https://git-provider.com/organisation/repository` any extra string post this might cause an error. 
+
+![](./static/configure-oauth.png)
 
 5. Leave the default branch **main** selected.
 
@@ -99,7 +107,7 @@ The sample app contains a package called nodemon which has issues when we try to
     },
 ```
 
-2. In the Terminal, configure your GitHub credentials
+2. In the Terminal, configure your GitHub credentials, **in-case you have already configured the OAuth you can skip this step for all the git providers**. 
 
 ```sh
 git config --global user.email "you@example.com" 
@@ -120,11 +128,46 @@ git config --global user.name "Your Name"
 
 ## Install Gitspaces VS Code Extension for VS Code Desktop
 
-1. In your VS Code desktop application, go to the Extensions view by clicking on the **Extensions** icon in the Activity Bar on the side of the window. Search for "Gitspaces" in the Extensions Marketplace and click on the **Install** button. Please note that there are two extensions for Gitspaces - install the one that is named "Gitspaces" and **not** "Gitness Gitspaces".  
+1. You can install and configure the Gitspaces VS Code extension to use it on your VS Code Desktop App.
 
-3. The extension will appear on the left nav of your screen. Click on it and proceed to Sign in. 
+2. Install the Gitspaces VS Code Extension on from VS COde Extensions Marketplace. Click on Settings and Go to the Extension settings and add the host URL as `https://app.harness.io/`  
 
-4. You can now view any Gitspace from within your VS Code desktop application. You can open up any one of them that was created for VS Code desktop and start coding!
+![](./static/settings-vs-code-extension.png)
+
+3. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. **Make sure you have already signed-in to Harness Platform already in your browser before starting this step.**
+
+4. Any Gitspace you create with VS Code Desktop as the IDE will now open in your desktop application. You can also view a list of Gitspaces in the left navbar and switch between them as needed. 
+
+![](./static/cde-listing.png)
+
+## Start/Stop a Gitspace
+
+1. To save on compute you can stop a Gitspace when not in use and start it again at a later time. You will not lose any uncommitted changes across Gitspace restarts. 
+
+2. On the Gitspaces Page click on the 3 dots and select **Stop Gitspace**.
+
+![](./static/three-dots-stop-gitspace.png)
+
+![](./static/stop-gitspace.png)
+
+3. On the Gitspace Details Page under **More Actions**, there's option to **Stop Gitspace**.
+
+![](./static/stop-gitspace-gs-details.png)
+
+
+There are three ways of **starting the Gitspace**: 
+
+1. On the Gitspaces Page click on the 3 dots and select Start Gitspace.
+
+![](./static/three-dots-start-gitspace.png)
+
+![](./static/start-gitspaces.png)
+
+2. Click on a stopped Gitspace and you’ll see the Start Gitspace button in the popup. 
+
+3. On the Gitspace Details page, Start Gitspace is available in the More Options menu.
+
+![](./static/start-gitspaces-gs-details.png)
 
 ## Delete a Gitspace
 

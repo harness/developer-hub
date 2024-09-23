@@ -9,7 +9,7 @@ Harness CDE supports a number of git providers to fetch the code from and few ID
 
 ## Git Providers Supported​
 
-Any Public and Private Git Repositories for the following Git Providers. We support OAuth based authentication to access private repositories for your Git Provider. 
+We support the following Git Providers. We support OAuth based authentication to access private repositories for your Git Provider. 
 
 1. Harness Code Repository
 
@@ -18,6 +18,8 @@ Any Public and Private Git Repositories for the following Git Providers. We supp
 3. Bitbucket
 
 4. GitLab
+
+5. Any Public Git Repository
 
 ## IDEs Available​
 

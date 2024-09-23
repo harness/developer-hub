@@ -47,11 +47,15 @@ import TabItem from '@theme/TabItem';
 
 1. You can install and configure the Gitspaces VS Code extension to use it on your VS Code Desktop App.
 
-2. Install the Gitspaces VS Code Extension on from VS COde Extensions Marketplace. 
+2. Install the Gitspaces VS Code Extension on from VS COde Extensions Marketplace. Click on Settings and Go to the Extension settings and add the host URL as `https://app.harness.io/`  
 
-3. The extension will appear on the left nav of your screen, click on it and proceed to **Sign-in**. 
+![](./static/settings-vs-code-extension.png)
+
+3. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. **Make sure you have already signed-in to Harness Platform already in your browser before starting this step.**
 
 4. Any Gitspace you create with VS Code Desktop as the IDE will now open in your desktop application. You can also view a list of Gitspaces in the left navbar and switch between them as needed. 
+
+![](./static/cde-listing.png)
 
 </TabItem>
 </Tabs>
