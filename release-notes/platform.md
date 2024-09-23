@@ -79,6 +79,18 @@ The following deprecated API endpoints are longer supported:
 
 ## September 2024
 
+### Version 1.57.x<!-- September 23, 2024 -->
+
+#### New features and enhancements
+
+- Upgraded org.clojure:clojure from version 1.9.0 to 1.11.4 to address security vulnerabilities, including CVE-2024-22871, which could lead to a denial of service (DoS) attack. (PL-56307)
+
+#### Fixed issues
+
+- Resolved an issue in FileStore where tag values were not displayed in the tag hover for files. The custom logic for rendering tags has been replaced with a standard Tags component, ensuring that both tag names and values are correctly shown. (PL-56940, ZD-69741)
+
+- Fixed an issue on the Freeze page where long names and identifiers caused text overlap in the UI. A maximum width has been set for the freeze name cell, with the full name and identifier now visible on hover. (PL-56843, ZD-69083)
+
 ### Version 1.56.x<!-- September 16, 2024 -->
 
 #### New features and enhancements
