@@ -20,9 +20,9 @@ docker run -d \
   -p 3000:3000 -p 3022:3022 \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /tmp/gitness:/data \
-  --name gitness \
+  --name opensource \
   --restart always \
-  harness/gitness
+  harness/harness
 ```
 
 1. Once the container is running, open [localhost:3000](http://localhost:3000) in your browser.

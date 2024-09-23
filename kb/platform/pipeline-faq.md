@@ -70,7 +70,7 @@ Set the **Callback ID** in the Approval step, under **Approval Callback Identifi
 
 ### Does the Harness NextGen community edition support LDAP login?
 
-Community edition did not support LDAP. As of December 2023, the community edition is retired in favor of Gitness.
+Community edition did not support LDAP. As of December 2023, the community edition is retired in favor of [Harness Open Source](/docs/open-source/overview).
 
 ### Can monitoring be added for changes to a Harness file-store object?
 

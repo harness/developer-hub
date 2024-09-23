@@ -347,5 +347,5 @@ To delete the Harness Delegate from your Kubernetes cluster, go to [Delete a Del
 
 ## See also
 
-For frequently asked questions about Community Edition deployments in Harness, go to [Gitness and Community Edition FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/gitness-community-edition-faqs).
+For frequently asked questions about Harness Open Source and Free Edition deployments, go to [Harness Open Source and Free Edition FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/gitness-community-edition-faqs).
 

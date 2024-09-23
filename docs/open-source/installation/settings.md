@@ -19,9 +19,9 @@ docker run -d \
   -p 3000:3000 -p 3022:3022 \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /tmp/gitness:/data \
-  --name gitness \
+  --name opensource \
   --restart always \
-  harness/gitness
+  harness/harness
 ```
 
 ## GITNESS_CI_CONTAINER_NETWORKS
@@ -156,7 +156,7 @@ GITNESS_HTTP_PORT=3000
 <!-- 
 ## GITNESS_HTTP_PROTO
 
-The HTTP protocol used by Gitness. Allowed values are `http` or `https`.
+The HTTP protocol used by Harness Open Source. Allowed values are `http` or `https`.
 
 The default is `http`.
 
@@ -235,7 +235,7 @@ GITNESS_URL_BASE=http://localhost:3000
 
 ## GITNESS_URL_CONTAINER
 
-Optional endpoint used by pipeline step containers to communicate with Gitness, such as cloning repositories.
+Optional endpoint used by pipeline step containers to communicate with Harness Open Source, such as cloning repositories.
 
 This variable is usually set along with [GITNESS_CI_CONTAINER_NETWORKS](#gitness_ci_container_networks).
 
@@ -257,7 +257,7 @@ GITNESS_URL_GIT=http://localhost:3000/git
 
 ## GITNESS_URL_REGISTRY
 
-Set the registry endpoint for your Gitness instance. 
+Set the registry endpoint for your Harness Open Source instance. 
 
 The default value is `http://host.docker.internal:3000`.
 
