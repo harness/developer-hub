@@ -1,6 +1,6 @@
 ---
 title: Kyverno
-sidebar_position: 3
+sidebar_position: 5
 description: Kyverno policies to enforce runtime security
 redirect_from:
 - /docs/chaos-engineering/technical-reference/security/security-templates/kyverno-policies
