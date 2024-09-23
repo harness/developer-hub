@@ -7,30 +7,29 @@ sidebar_position: 1
 
 Harness CDE supports a number of git providers to fetch the code from and few IDE's to help you with a developer environment. 
 
-## Git Providers 
+## Git Providers Supported​
 
-You can create Gitspaces for the following repository types:
+Any Public and Private Git Repositories for the following Git Providers. We support OAuth based authentication to access private repositories for your Git Provider. 
 
-1. [Harness Code Repo](https://developer.harness.io/docs/code-repository) public and private repositories
+1. Harness Code Repository
 
-2. [GitHub Cloud](https://github.com/) public and private repositories
+2. GitHub
 
-3. [Bitbucket Cloud](https://bitbucket.org/) public and private repositories
+3. Bitbucket
 
-4. Any public Git repository 
+4. GitLab
 
-## IDEs 
+## IDEs Available​
 
-Gitspaces come pre-configured with your IDE of choice. We currently support the following:
+:::info
 
-1. [VS Code Desktop](https://code.visualstudio.com/)
-2. [VS Code Browser](https://code.visualstudio.com/docs/editor/vscode-web)
+To use VS Code Desktop, you need to [install and configure](/docs/cloud-development-environment/get-started/getting-started-with-cde#install-gitspace-vs-code-extension-for-vs-code-desktop) the Gitspaces extensions.  
 
-We are working on support for [IntelliJ IDEA](https://www.jetbrains.com/idea/) and other popular IDEs, so stay tuned for those to be added soon. 
+:::
 
-## Cloud Regions
+1. VS Code Desktop & Browser.
 
-Your Gitspaces are currently hosted on Harness Cloud. We support the following regions:
+## Regions Available​
 
 1. US West
 
@@ -42,8 +41,8 @@ We're working on adding more regions, as well as more flexible hosting models fo
 
 Currently supported machine types are:
 
-1. Standard: 2 core CPU 8GB Ram and 30GB Disk Size
+1. **Standard:** 2 core CPU 8GB Ram and 30GB Disk Size
 
-2. Large: 4 core CPU 16GB Ram and 30 GB Disk Size 
+2. **Large:** 4 core CPU 16GB Ram and 30 GB Disk Size 
 
 If you're looking for larger machines, please let us know, and we can discuss custom configurations to meet your needs.
