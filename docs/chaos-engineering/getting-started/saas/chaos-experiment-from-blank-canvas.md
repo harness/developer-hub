@@ -4,7 +4,7 @@ description: Create a chaos experiment from scratch.
 sidebar_position: 3
 redirect_from:
 - /tutorials/chaos-experiments/chaos-experiment-from-blank-canvas
-- /docs/chaos-engineering/getting-started/saas/chaos-experiment-from-blank-canvas
+- /docs/chaos-engineering/get-started/tutorials/chaos-experiment-from-blank-canvas
 ---
 
 In this tutorial, you will create chaos experiments from scratch and execute them on the sample boutique application.
