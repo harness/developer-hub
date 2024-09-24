@@ -155,6 +155,12 @@ import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
+## Proxy settings
+
+import ProxySettings from '/docs/security-testing-orchestration/sto-techref-category/shared/proxy-settings.md';
+
+<ProxySettings />
+
 ## Troubleshoot Yarn Audit Analyzer exceptions 
 
 <!-- https://harness.atlassian.net/browse/STO-6975 -->

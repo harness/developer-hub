@@ -3,6 +3,7 @@ title: Sprints Metrics Reports
 description: Add the Sprints Metrics widgets in your Insight
 sidebar_position: 20
 sidebar_label: Sprints Metrics Reports
+canonical_url: https://www.harness.io/blog/top-3-sprint-metrics-to-measure-developer-productivity
 ---
 
 You can use the sprint metrics reports to analyze sprint and planning metrics.

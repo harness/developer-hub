@@ -6,6 +6,7 @@ helpdocs_topic_id: 2lhfk506r8
 helpdocs_category_id: 2d7y1cr09y
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://harness.io/blog/change-management-continuous-delivery
 ---
 
 import PartialExample from '/docs/continuous-delivery/shared/jira-approval-steps.md';

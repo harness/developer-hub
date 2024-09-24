@@ -29,6 +29,15 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
+    title: "Set up Cloud Development Environments",
+    module: MODULES.cde,
+    icon: "img/cde_icon.svg",
+    description:
+      "Provision Pre-Configured Cloud Development Environment",
+    link: "docs/cloud-development-environment",
+    type: [docType.Documentation],
+  },
+  {
     title: "Manage Infrastructure as Code",
     module: MODULES.iacm,
     icon: "img/icon_iacm.svg",
@@ -65,7 +74,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ssca,
     icon: "img/icon_ssca.svg",
     description: <>Secure your software supply chain.</>,
-    link: "docs/category/get-started-with-ssca",
+    link: "docs/category/get-started-with-scs",
     type: [docType.Documentation],
   },
   {
@@ -81,7 +90,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
     description: <>Ensure application and infrastructure resilience.</>,
-    link: "docs/category/get-started-with-hce",
+    link: "docs/chaos-engineering/getting-started/",
     type: [docType.Documentation],
   },
   {

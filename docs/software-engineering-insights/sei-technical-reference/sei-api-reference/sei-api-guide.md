@@ -32,23 +32,23 @@ A service endpoint is the base URL that specifies the network address of an API 
 
 ### Authentication
 
-For authentication, use an SEI API key in the Authorization header:
+For authentication, use an SEI APIKEY in the Authorization header:
 
 ```bash
-Authorization: API KEY <HARNESS_SEI_API_KEY>
+Authorization: APIKEY <HARNESS_SEI_API_KEY>
 ```
 
 :::info
-Note that the SEI API key is different from a Harness Platform key. You can generate SEI API keys in the SEI module at the Account level.
+Note that the SEI APIKEY is different from a Harness Platform key. You can generate SEI APIKEYs in the SEI module at the Account level.
 :::
 
-Follow the steps below to generate an SEI API Key in Harness.
+Follow the steps below to generate an SEI APIKEY in Harness.
 
-* Go the **Harness SEI Account** and select **API KEYS** under the **SEI Settings**
-* Click on the **Create API Key** button at the top right corner
-* Add a name and description for the API Key
+* Go the **Harness SEI Account** and select **APIKEYS** under the **SEI Settings**
+* Click on the **Create APIKEY** button at the top right corner
+* Add a name and description for the APIKEY
 * Choose the role as either **Admin** or **Ingestion**. For this use case select the role of Admin.
-* Click on the **Create button** to generate the API Key. 
+* Click on the **Create button** to generate the APIKEY. 
 
 ### Content-Type
 

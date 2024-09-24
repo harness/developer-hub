@@ -2,6 +2,7 @@
 title: Integrate External Secrets
 description: Install and configure External Secrets Operator.
 sidebar_position: 5
+canonical_url: https://www.harness.io/blog/gitops-secrets
 ---
 
 The External Secrets Operator (ESO) is a powerful tool for managing secrets in a Kubernetes environment. It bridges the gap between Kubernetes and external secret management systems like AWS Secrets Manager or Azure KeyVault. Here's a detailed overview of the process.

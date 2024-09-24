@@ -4,6 +4,7 @@ description: Deploy a traditional app to AWS EC2 VMs
 hide_table_of_contents: true
 redirect_from:
   - /tutorials/cd-pipelines/vm/aws
+canonical_url: https://www.harness.io/blog/ci-cd-pipelines-for-aws
 ---
 
 <CTABanner

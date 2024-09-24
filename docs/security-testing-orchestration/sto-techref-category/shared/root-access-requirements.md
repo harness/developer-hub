@@ -1,7 +1,5 @@
 You need to run the scan step with root access if either of the following apply:
 
-* You need to run a [Docker-in-Docker background service](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#docker-in-docker-requirements-for-sto).
-
 * You need to add trusted certificates to your scan images at runtime. 
 
 :::note

@@ -638,3 +638,31 @@ For example, you might have an [On New Artifact Trigger](../triggers/trigger-on-
 You can select who can create and use these triggers within Harness. However, you must use your repository's RBAC to control who can add the artifacts or initiate events that start the Harness trigger.
 
 </details>
+
+## Handling Rollback Scenarios with `rollbackSteps`
+
+You can detect and handle rollback scenarios using various built-in expressions. One useful expression for stage-specific rollback handling is `rollbackSteps`, which helps determine if a stage is currently being rolled back, even when the pipeline itself may still be running in normal execution mode.
+
+The rollbackSteps expression lists all steps being executed in rollback mode when the associated stage is being rolled back. It allows you to implement rollback-specific logic in your pipeline.
+
+**Example Use Case**: If you want to apply custom failure handling or rollback logic for a stage in rollback mode, use the rollbackSteps expression in combination with the pipeline execution mode.
+
+### Sample Expression for Rollback Detection
+
+Here are some sample expressions that demonstrate how to use `rollbackSteps` to detect different rollback scenarios:
+
+#### Detecting Stage Rollback
+
+`isStageRollback=<+<+rollbackSteps>!=null && <+pipeline.executionMode> == "NORMAL">`
+
+This expression checks if the current stage is executing rollback steps while the pipeline is running in normal execution mode.
+
+#### Detecting Pipeline Rollback
+
+`isPipelineRollback=<+<+pipeline.executionMode> == "PIPELINE_ROLLBACK">`
+
+This checks if the entire pipeline is in rollback mode.
+
+#### Detecting Post-Execution Rollback
+
+`isPostProdRollback=<+<+pipeline.executionMode> == "POST_EXECUTION_ROLLBACK">`

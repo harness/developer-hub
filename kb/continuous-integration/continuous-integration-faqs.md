@@ -4,6 +4,7 @@ description: Common questions and troubleshooting issues related to Harness CI.
 sidebar_position: 2
 redirect_from:
   - /docs/faqs/continuous-integration-ci-faqs
+  - /docs/frequently-asked-questions/harness-faqs/continuous-integration-ci-faqs
 ---
 
 ## Build infrastructure
@@ -122,7 +123,7 @@ This error indicates there may be a problem with the Docker installation on the 
 
 ### How do I check if the Docker daemon is running in a local runner build infrastructure?
 
-To check if the Docker daemon is running, use the `docker info` command. An error response indicates the daemon is not running. For more information, go to the Docker documentation on [Troubleshooting the Docker daemon](https://docs.docker.com/config/daemon/troubleshoot/)
+To check if the Docker daemon is running, use the `docker info` command. An error response indicates the daemon is not running. For more information, go to the Docker documentation on [Troubleshooting the Docker daemon](https://docs.docker.com/engine/daemon/troubleshoot/)
 
 ### Runner process quits after terminating SSH connection for local runner build infrastructure
 
@@ -1472,26 +1473,14 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 
 Go to the [Kaniko container runtime error article](/kb/continuous-integration/articles/kaniko_container_runtime_error).
 
-### Can I push and pull from two different docker registries that have same prefix for registry URL ?
+### When using 'Build ans Push' steps with Base Image connector, can I pull and push from two different docker registries that have same prefix for registry URL ?
 
-No, this is currently not supported in docker.
+No, when using base image connector, ensure the prefix of the url use for pulling is different than the prefix of the url in the connector used for pushing. 
 
-If two registry URLs begin with same prefix, for example https://index.docker.io it will result in the second registry credentials getting over-ridden in the docker config file when a docker login is attempted 
-
-As an example, this would fail as the prefix URLs are not unique.
-
-https://index.docker.io/v1/abc/test-private
-
-https://index.docker.io/v1/xyz/test2
-
-docker config would look like:
-```
-{
-      https://index.docker.io/***: { auth}
-}
-```
-But fully unique docker compliant registry URLs are not affected by this limitation.
-
+Docker uses a configuration file to store authentication details. If two registry URLs share the same prefix, Docker will only create a single authentication entry for that prefix, which will cause a conflict when accessing the second registry.
+     
+As an example, both `https://index.docker.io/v1/abc/test1` and `https://index.docker.io/v1/xyz/test2` have the same prefix `https://index.docker.io/v1/`, so Docker cannot differentiate between them for authentication, causing the second set of credentials to overwrite the first.
+     
 ### What is the default build context when using Build and Push steps?
 
 The default build context is the stage workspace directory, which is `/harness`.
@@ -1533,6 +1522,51 @@ The build and push step doesn’t use kaniko while running the build on Harness 
 ### Does Harness have an artifact repository where the artifacts generated in the CI stage can be pushed and then use them in the subsequent CD stages?
 
 Harness currently doesn't provide a hosted artifact repository however you can push the artifact to the other popular artifact repos. More details about the same can be referred in the [doc](https://developer.harness.io/docs/category/uploaddownload-artifacts)
+
+### Why Build and Push Steps Don't Support V2 API URLs?
+
+If you encounter authentication errors when using `https://registry.hub.docker.com/v2/` or `https://index.docker.io/v2/` during build and push steps, consider either using V1 API URLs or authenticating with a Personal Access Token (PAT) for V2 API URLs.
+
+When using the V2 Docker registry API, authentication issues can arise due to how authorization tokens are generated. Specifically, the JWT (JSON Web Token) used for authentication in the V2 API may lack the proper scope required for push/pull actions.
+
+Here’s the key difference:
+
+- **Username/Password Authentication**: When using a username and password, the generated token often lacks the necessary scope details (e.g., actions like `push` and `pull`). This can cause issues when trying to authenticate with the registry during build and push steps.
+  
+- **Personal Access Token (PAT) Authentication**: A PAT provides more detailed scope information in the authentication headers, ensuring the correct access levels for pushing and pulling images. With a PAT, the JWT scope is properly set, allowing seamless authentication for build and push operations.
+
+Here’s an example of a properly scoped token when using a PAT:
+
+```json
+{
+  "access": [
+    {
+      "actions": [
+        "pull",
+        "push"
+      ],
+      "name": "your-username/test-private-repo",
+      "parameters": {
+        "pull_limit": "200",
+        "pull_limit_interval": "21600"
+      },
+      "type": "repository"
+    }
+  ],
+  "aud": "registry.docker.io",
+  "exp": 1724982164,
+  "https://auth.docker.io": {
+    "at_id": "02874e98-c6ce-46ed-934b-57d184441c38",
+    "pat_id": "02874e98-c6ce-46ed-934b-57d184441c38",
+    "plan_name": "free",
+    "username": "your-username"
+  }
+}
+```
+
+In this example, the `actions` (pull, push) and the repository name are correctly defined, ensuring the token provides the appropriate access permissions.
+
+To avoid authentication issues, it's recommended to either use a PAT when configuring build and push steps for Docker registries with the V2 API or, if using a username and password, switch to the V1 API.
 
 ## Upload artifacts
 
@@ -1578,11 +1612,13 @@ If you get a `certificate signed by unknown authority` error with the [Upload Ar
 
 ### Can I run the Upload Artifacts to JFrog Artifactory step with a non-root user?
 
-No. The jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
+Yes. By default, the jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
+
+Set JFROG_CLI_HOME_DIR as Stage variable to change the folder in which .jfrog will be created, to a path you have write access. 
 
 ### mkdir permission denied when running Upload Artifacts to JFrog as non-root
 
-With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) must run as root. If you set **Run as User** to anything other than `1000`, the step fails with `mkdir /.jfrog: permission denied`.
+With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) must run as root. If you set **Run as User** to anything other than `0`, the step fails with `mkdir /.jfrog: permission denied`.
 
 ### What is PLUGIN_USERNAME and PLUGIN_PASSWORD used in the Upload Artifacts to JFrog Artifactory step?
 
@@ -2195,6 +2231,27 @@ Yes. You can use the following expression in a JEXL condition or trigger configu
 ```
 
 Replace `LABEL_KEY` with your label's actual key.
+
+### Why does the parallel execution of build and push steps fail when using Buildx on Kubernetes?
+
+When using Buildx on Kubernetes (enabled by feature flags), running multiple build-and-push steps in parallel can result in failures due to race conditions. This issue arises from how Docker-in-Docker works within Kubernetes pods.
+
+The failure occurs when either of the following feature flags are enabled:
+
+- `CI_USE_BUILDX_ON_K8` – Enables the use of Buildx instead of Kaniko for build-and-push steps.
+- `CI_ENABLE_DLC_SELF_HOSTED` – Enables DLC (Docker Layer Caching), which also forces the use of Buildx instead of Kaniko.
+
+When these flags are active, and parallel build-and-push steps are attempted, they often fail due to Kubernetes’ shared network space. Since all containers in the same Kubernetes pod share the same network, running multiple Docker daemons simultaneously (via Docker-in-Docker) leads to network race conditions, preventing multiple Docker builds from completing in parallel.
+
+Common failure causes:
+- **Privileged mode settings**: Buildx requires privileged access, which is not always enabled in self-hosted infrastructures.
+- **Race conditions**: Multiple Docker daemons may attempt to modify network rules (e.g., iptables) at the same time, causing conflicts.
+
+There is an open issue with Drone regarding parallel builds:  
+[Drone Issue: Docker Parallel Build Failing](https://drone.discourse.group/t/docker-parallel-build-failing-anyone/8439)
+
+To avoid this, run build-and-push steps sequentially in Kubernetes pipelines instead of in parallel. Additionally, there is an open PR to address iptables settings in the Drone Docker plugin, which could help mitigate these issues in the future:  
+[Drone Docker Plugin PR](https://github.com/drone-plugins/drone-docker/pull/309)
 
 ## Logs and execution history
 

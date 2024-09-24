@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-08-20:T10:00:00
+date: 2024-09-18T10:00:00
 sidebar_position: 8
 ---
 
@@ -45,6 +45,77 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## September 2024
+
+### Version 1.56.1
+
+#### New features and enhancements
+
+- **Custom Logic for Traffic Routing**
+
+We have introduced custom logic for traffic routing, enabling users to rewrite custom logic for traffic routing to suit their deployment strategies. Previously, the host field in a virtual service's YAML was mandatory. With this update, users can leave the host field empty, allowing for more dynamic configurations. Additionally, we added a new Delegate Service checkbox, which simplifies setup by eliminating the need to manually specify the host, enhancing flexibility for dynamic traffic routing. (CDS-97968)
+
+- **Re-Run Pipeline with no Input changes**
+
+You can configure your pipelines to have no Input change during re-run. This allows you to have consistency in re-run behavior, especially in pipelines where input changes should be restricted after the initial execution. (PIPE-11757, ZD-47593,58532,68829)
+
+- **Display of Correct Execution Times for Re-run Steps**
+
+When a pipeline is re-run, only the steps that are actively re-run will now display updated start and end times. Steps that were not required during the re-run and were copied over from the previous execution will retain their original execution times, ensuring an accurate representation of the pipeline’s execution history. (PIPE-18593, ZD-62115,65602)
+
+![](./static/accurate_time_execution.png)
+
+- **Multiple and Single Selection for Runtime Inputs**
+
+Harness now supports both Multiple and Single selection modes for runtime inputs, enabling users to choose between selecting one or more allowed values. Please contact [Harness support](mailto:support@harness.io) to enable the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. (PIPE-11757, ZD-47593,58532,68829)
+
+- While creating a new Gitops application, we have introduced a dropdown in the destination page that enables users to choose how they want to define the cluster. The user can select **Server** to use cluster URL or select **Name** to use cluster name to define the entity. (CDS-99650)
+
+#### Fixed issues
+
+- Earlier, all the pipeline stages were not visible when using the **Zoom to Fit button** in Pipeline Studio. This issue is fixed. (PIPE-21475, ZD-68662)
+- In a few cases, the artifact trigger failed to pick up the artifact and trigger the pipeline. The trigger also had a **Pending** status and did not change **Success** This issue is fixed. A new perpetual task will be created after the maxFailed attempts are reached even if the pending trigger is deleted. (PIPE-20803, ZD-67390)
+- In NewRelic applications, all application IDs were not being shown and the list was limited to 10 application IDs and had a delayed response time during search. This issue is resolved. (CDS-100390, ZD-69177)
+- Users were unable to save the pipeline changes in the custom deployment template with an empty version label. This issue is fixed now. (CDS-100324, ZD-68869)
+- The instance details for the deployed service were not displayed after execution. This issue is resolved now. Instance sync for Custom Deployment will work if secrets are being referred and being used to fetch instances. (CDS-100179, ZD-68207)
+- Previously, a default value was passed to the timestamp in custom query for big query health source which restricted users to add timestamp according to their requirements. This issue is resolved. The default value for the timestamp input is removed. (CDS-99523)
+- Users were unable to import override from Git when  `CDS_OVERRIDES_GITX` feature flag was disabled, and the error message was unclear. This issue is resolved. The **Import to git** option will no longer be visible if `CDS_OVERRIDES_GITX` is disabled. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-98357)
+
+### Version 1.55.1
+
+#### New features and enhancements
+
+- **Multiple runtime support for Serverless.com and AWS SAM**
+
+Released new images for AWS SAM to support multiple runtime for `python3.11`, `python3.12`, `ruby3.2`, `java8`, `go1.24`. For more information, go to Harness [AWS SAM - Containerized step images](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments/#containerized-step-images). (CDS-80560)
+
+Released new images for Serverless to support multiple runtime for `python3.11`, `python3.12`, `ruby3.2`, `java8`.  For more information, go Harness [Serverless.com - Containerized step images](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#containerized-step-images). (CDS-80560)
+
+- **Multi-Deployment and Matrix Failure Strategy Support**
+
+Harness now supports applying failure strategies during multi-service, multi-infrastructure, and matrix deployments. Currently this feature is behind the feature flag `CDS_MULTI_DEPLOYMENT_ON_FAILURE`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-96876, ZD-63199, ZD-64391, ZD-64465, ZD-66720)
+
+- ServiceNow access is enabled through a Mulesoft endpoint by adding a `/now` URI in the ServiceNow requests. (CDS-99537, ZD-64547)
+
+#### Fixed issues
+
+- Users were unable to move or delete a service-specific override. This issue is resolved. The permissions required to move or delete a service-specific override for global environment and infrastructure is `core_environment_edit`. The permissions required for service-specific override or service and infrastructure is `core_service_edit`. Separate permissions to delete are not required.  (CDS-100204, ZD-68468, ZD-68759)
+- The service variable that referenced secret text was exposed in plaintext delegate logs when executing CD WinRM deployment. This issue is resolved. The warning logs are updated with debug logs. (CDS-100046, ZD-68713)
+- When using a WinRM credential of "type = Kerberos" in a PowerShell script, the output variables were not displayed properly due to a missing identifier. This issue is resolved. (CDS-100036, ZD-68283)
+- Service was not loading when the service and environment used a custom template configured as **Always use the stable version**. This issue is resolved. (CDS-100021, ZD-68666)
+- Custom stage pipelines did not show the environment in the pipeline execution history. This issue is resolved now.(CDS-99938)
+- The tooltip for the **Output Alias** (optional) field under **Optional Configuration** was not being displayed. This issue is resolved. (CDS-90919)
+
+### Version 1.54.2
+
+#### Fixed issues
+
+- The Helm chart deployments failed when the `values` YAML file contained double quotes. This issue is resolved. (CDS-100174, ZD-68747, ZD-68940)
+- The placeholder in the health source connector component, which previously displayed `GCP`, has now been updated to `BigQuery`. There is no functionality change with the issue resolution. (CDS-99519)
+![](./static/health_source_connector.png)
+- Earlier, deleting the entire expressions from the delegate selector field at the step level was not possible. This issue is resolved. (CDS-96694)
+- The Service and environment values saved as input sets of monitored service template in the verify step were not available while running the pipeline. This issue is resolved. (CDS-96581)
+
 ## August 2024
 
 ### Version 1.53.5
@@ -53,7 +124,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - **Service Failure Strategy**
 
-We have introduced a failure strategy for the service, where the service step will, by default, inherit the failure strategy from the stage. (CDS-96876, ZD-63199, ZD-64391, ZD-64465, ZD-66720)
+We have introduced a failure strategy for the service, where the service step will, by default, inherit the failure strategy from the stage. Currently this feature is behing the Feature Flag `CDS_SERVICE_INFRA_FAILURE_STRATEGY`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.(CDS-96876, ZD-63199, ZD-64391, ZD-64465, ZD-66720)
 
 - **Infrastructure Scope Selector**
 

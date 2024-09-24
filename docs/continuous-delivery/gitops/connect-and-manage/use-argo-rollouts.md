@@ -2,6 +2,7 @@
 title: Use Argo Rollouts
 description: Learn how to use Argo Rollouts with Harness GitOps.
 sidebar_position: 3
+canonical_url: https://www.harness.io/blog/argo-cd-for-kubernetes
 ---
 
 
@@ -45,7 +46,7 @@ kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/rele
 
 ![](./static/use-argo-rollouts-2.png)
 
-3. On the final screen, add the repository:
+3. On the next screen, add the repository:
 
 ![](./static/use-argo-rollouts-3.png)
 

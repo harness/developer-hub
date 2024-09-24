@@ -179,6 +179,129 @@ pipeline:
 ```
 </details>
 
+## Re-running Failed Stages in Chained Pipelines
+
+If you re-run the execution from a failed stage, and that stage is configured with a chained pipeline, the entire child pipeline will re-run, not just the specific stage within the child pipeline.
+
+Consider this Pipeline Yaml:-
+
+```yaml
+pipeline:
+  name: pipelineA
+  identifier: pipelineA
+  projectIdentifier: CD_Samples
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: cust_1
+        identifier: cust_1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hello
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+    - stage:
+        name: cust_2
+        identifier: cust_2
+        description: ""
+        type: Pipeline
+        spec:
+          org: default
+          pipeline: pipelineB
+          project: CD_Samples
+
+```
+In this pipeline we are using chained pipeline `pipelineB`.
+
+Pipeline Yaml for `pipelineB`:-
+
+```yaml
+pipeline:
+  name: pipelineB
+  identifier: pipelineB
+  projectIdentifier: CD_Samples
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: cust_3
+        identifier: cust_3
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hello_2
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+    - stage:
+        name: cust_4
+        identifier: cust_4
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: hello
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+
+```
+In this pipeline, stage `cust_4` will fail due to incorrect shell script command. Now when you click on `Re-run` and under that `From Last failed Stage` the whole chained pipeline will run. 
+
+![](./static/rerun_last_failed_stage.png)
+
+## Execution of Chained Pipeline
+
+:::info note
+Currently this feature is behing the Feature Flag `PIE_SHOW_ALL_EXECUTIONS_FILTER`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+:::
+
+You can see execution of your child pipeline in that pipeline execution history.
+
+![](./static/child_pipeline_execution.png)
+
+
 ## Considerations when executing remote chained pipelines
 
 Consider the following points for executing remote (stored in SCM) chained pipelines:

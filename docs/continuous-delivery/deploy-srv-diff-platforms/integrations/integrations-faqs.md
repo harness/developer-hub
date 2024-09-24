@@ -92,3 +92,11 @@ One method is to use conditional execution on an approval stage. Use a JEXL expr
 ### How does Harness integrate with Tetrate or Gloo for deployments?
 
 Harness supports traffic shifting with any SMI compliant Service Mesh, including Tetrate (built on Istio) and Gloo. One can configure traffic routing steps in your pipelines using Harness, ensuring smooth deployment workflows.
+
+#### Does Harness truncating logs?
+
+Yes, Harness does truncate logs. Please read more on this in Harness [Documentation](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations/)
+
+### Does Harness CD support platform connectivity for connectors such as Artifactory, Docker, AWS, etc., without using a Delegate?
+
+No, Harness CD does not support platform connectivity for any connectors, including Artifactory, Docker, AWS, and others. Using a Delegate is mandatory to facilitate the connection between Harness and these platforms. The Delegate acts as a bridge, handling the necessary communication and ensuring secure and reliable interactions with external services.

@@ -1,7 +1,7 @@
 ---
 hide_table_of_contents: true
 hide_title: true
-title: Software Supply Chain Assurance Documentation
+title: Supply Chain Security Documentation
 # id: software-supply-chain-assurance
 ---
 

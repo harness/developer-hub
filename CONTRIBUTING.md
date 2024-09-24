@@ -13,6 +13,7 @@
 ![IDP](static/img/icon_idp.svg)
 ![SSCA](static/img/icon_ssca.svg)
 ![Code](static/img/icon_code.svg)
+![CDE](static/img/icon_cloud_development_environments.svg)
 
 Thanks for considering to contribute to the Harness Developer Hub! Contributions come in all shapes and sizes and we appreciate them all. Contributions to the Harness Developer Hub come in the form of creating pull requests or submitting issues.
 

@@ -5,7 +5,7 @@ description: Learn about plugins in Internal Developer Portal and how to use the
 sidebar_position: 10
 ---
 
-Harness IDP is built on top of the [Backstage plugin architecture](https://backstage.io/docs/plugins/) and supports a curated list of plugins. Plugins are often used to show additional metadata about a software component on the software catalog. For example, plugins show information about CI/CD pipelines, alerts, incidents, and project status. The curated list of plugins is a subset of publicly available [Backstage plugins](https://backstage.io/plugins). Along with this we support [custom plugins](/docs/internal-developer-portal/plugins/custom-plugins/overview) as well which users can upload into IDP. Also we are constantly adding new plugins from the marketplace and building new plugins of our own. 
+Harness IDP is built on top of the [Backstage plugin architecture](https://backstage.io/docs/plugins/) and supports a curated list of plugins. Plugins are often used to show additional metadata about a software component on the software catalog. For example, plugins show information about CI/CD pipelines, alerts, incidents, and project status. The curated list of plugins is a subset of publicly available [Backstage plugins](https://backstage.io/plugins). Along with this we support [custom plugins](/docs/internal-developer-portal/plugins/custom-plugins/overview) as well which users can upload into IDP. Also we are constantly adding new plugins from the marketplace and building new plugins of our own.
 
 ![Plugins section in IDP](./static/plugins-page.png)
 
@@ -21,7 +21,7 @@ An application configuration is a YAML-driven way of configuring a plugin's beha
 
 ### Secrets
 
-A plugin configuration allows you to define variables whose values are secrets. The variables can be used in the application configuration YAML file. The secret is usually an API key for the third-party provider that the plugin supports. Any secret variable defined as `${}` in the application configuration YAML file must have a corresponding secret value defined. The secrets configured in IDP are stored in the Harness platform's built-in secret manager.
+A plugin configuration allows you to define variables whose values are secrets. The variables can be used in the application configuration YAML file. The secret is usually an API key for the third-party provider that the plugin supports. Any secret variable defined as `${}` in the application configuration YAML file must have a corresponding secret value defined. The secrets configured in IDP are stored in the Harness platform's built-in secret manager or your own secret manager. In case you are using your own secret manager, you will need to configure a Delegate proxy like the one below and ensure the delegate has access to your secret manager.
 
 :::note
 The secret variables in IDP must be globally unique across all plugins. This requirement ensures that you can reuse one plugin's secret variable in another plugin's configuration. However, we recommend redefining variables that are required by a plugin for the benefit of other users.
@@ -30,6 +30,8 @@ The secret variables in IDP must be globally unique across all plugins. This req
 ### (Optional) Delegate proxy
 
 Plugins that support publicly-accessible third-party providers can connect with the provider directly. However, some plugins, such as the Kubernetes plugin, require access to systems that are hosted in your private network. Such plugins require [Harness Delegates](/docs/first-gen/firstgen-platform/account/manage-delegates/delegate-installation), which serve as an HTTP proxy to connect to services running in your private network. In the configuration of the plugin, you can specify a host or IP address and choose which delegate to use when making requests.
+
+You can learn more about the [architecture of Delegate Proxy](./delegate-proxy.md).
 
 ## FAQs
 

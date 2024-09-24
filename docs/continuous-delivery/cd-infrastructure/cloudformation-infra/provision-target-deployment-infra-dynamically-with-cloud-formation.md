@@ -6,6 +6,7 @@ helpdocs_topic_id: 6jfl7i6a5u
 helpdocs_category_id: mlqlmg0tww
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/cloudformation-and-terraform-support
 ---
 
 You can use CloudFormation in Harness CD pipeline stages for ad hoc provisioning or to provision the target deployment infrastructure for the stage. Provisioning the target deployment infrastructure is called **dynamic provisioning**.

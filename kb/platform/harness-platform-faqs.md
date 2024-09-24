@@ -2149,6 +2149,10 @@ Harness Delegates are primarily configured through variables, which can be adjus
 
 These approaches offer flexibility and reliability in ensuring that Harness delegates are configured correctly to meet your needs.
 
+### Upgrader job is up and running but not identified as Upgrade is Turned ON also upgrade is not working
+
+The name of the upgrader job workload needs to follow the delegate naming convention, so can you check and confirm if you have changed that manually or using the default name as you get while downloading the manifest.
+
 ## Dashboards
 
 ### Why isn't my project's Overview page showing deployments?
@@ -2822,6 +2826,10 @@ You can reference the secrets using the following as a guide.
 
 No, Harness doesn't use the customer secret manager to encrypt delegate tokens. Rather than storing the token in plain text, Harness leverages an internal encryption mechanism. This mechanism enables Harness to store the token's encrypted value in the database. This approach enhances security and mitigates potential risks associated with storing sensitive information.
 
+### Basic as string is getting masked although I am not using as secret or none of the secret has this value.
+
+We do follow some rules for masking, like to mask any api key/token, we mask any string followed by Basic/Bearer, and that’s the reason if you try to print these will be masked.
+
 ## Security
 
 ### Does JIT provisioning still initiate an email to the user for confirmation or password creation?
@@ -3141,6 +3149,11 @@ You can rely on our [Built-In variables](/docs/platform/variables-and-expression
 
 Unfortunately, JEXL conditions do not support the direct usage of environment variables. The conditions in JEXL only allow the use of variable expressions that can be resolved before the stage is executed. Since environment variables are resolved during runtime, it is not possible to utilize variable expressions that cannot be resolved until the stage is run.
 
+### Variable is interpreted as integer although passing as a string (enclosed with single or double quotes).
+
+Can you check if your string has underscore as a value  because underscores are ignored in strings.
+
+
 ## Miscellaneous
 
 ### Does the Harness Platform support localization?
@@ -3347,3 +3360,7 @@ No, there is no way to find out which service account is associated with a servi
 
 ### How can I restrict a Harness secret so that it can only be accessed and used by a specific pipeline?
 You can use our RBAC and create a resource group and role so it can be used only in the required pipeline https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/#create-a-resource-group
+
+### If there is a pipeline in progress when we upgrade the delegate. Will the pipeline fail and need to be re-run?
+Delegate upgrades do not affect pipelines unless the shutdown timeout is reached. Before an upgrade is performed, the delegate finishes the underway tasks. The delegate then shuts down. There is a 10-minute timeout by default as part of the shutdown process. You can configure this setting, by updating the terminationgraceperiod in delegate yaml.
+

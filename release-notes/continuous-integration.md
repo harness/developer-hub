@@ -1,8 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-
-date: 2024-08-26T10:00
+date: 2024-09-23T10:00
 sidebar_position: 10
 ---
 
@@ -21,7 +20,65 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+## September 2024
+
+### Version 1.47
+
+<!-- 2024-09-17 -->
+
+#### Fixed issues
+
+- Resolved an inconsistency between the **Run** and **Plugin** step configuration in the CI module. Previously, users could set key-value pairs in the **Run** step but not in the **Plugin** step. The fix enables the "Optional Configuration --> Settings" field in the Plugin step to accept value as runtime input with default values and allowed values (CI-14038, ZD-69099)
+
+### Version 1.46
+
+<!-- 2024-09-09 -->
+
+#### New features and enhancements
+
+- Added support for setting Topology Spread Constraints to Kubernetes build pods. A new property, `podSpecOverlay`, has been introduced in the Kubernetes infrastructure properties within the CI stage, allowing users to apply additional settings to the build pod. Currently, this field supports specifying `topologySpreadConstraint`, with plans to extend support for additional configurations in the future. (CI-14033)
+
+- Added the ability to exclude connectors from the preflight check. This can be configured in the connector YAML by setting the property `ignoreTestConnection` to `true`. If the user sets this flag as `true` along with the feature flag `CI_IGNORE_TEST_CONNECTION` enabled, no matter the configuration, the connection test will always be marked as **Successful**. The feature is gated behind the feature flag `CI_IGNORE_TEST_CONNECTION`. (CI-13806, ZD-65275,65643)
+
+### Version 1.45
+
+<!-- 2024-09-02 -->
+
+#### Early Access feature
+
+- Added support for automatic setup of Build Intelligence for builds running in Harness Cloud. Customers can set the stage property `buildIntelligence` to 'true' in order to use this feature. Once enabled, Harness CI will automatically optimize Run and Test steps that are running Bazel or Gradle commands, to reduce build time. `CI_ENABLE_BUILD_CACHE_HOSTED_VM` feature flag is needed to use this feature (CI-12969)
+
+#### New features and enhancements
+
+- Cache Intelligence was enhanced with support for C# . Customers using C# applications can now leverage automatic dependencies caching with Cache Intelligence. (CI-12672)
+
+#### Fixed issues
+
+- Fixed an issue where time savings due to Harness CI intelligence feature, didn't populate properly when used in the parallel CI stages. (CI-13993)
+
+- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature flag must be enabled whenever a base image connector is used (CI-13924)
+
+- Bitbucket has an issue in their API; it does not support the slash character ( / ) [https://jira.atlassian.com/browse/BCLOUD-20223](https://jira.atlassian.com/browse/BCLOUD-20223)
+This can be worked around by using query parameters in the Bitbucket api `https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww` (CI-13826)
+
+- The contrast of the select repository and other areas of the UI was very low in the dark theme. The contrast has been improved for a better UI experience. (CI-13530)
+
 ## August 2024
+
+### Version 1.44
+
+<!-- 2024-08-26 -->
+
+#### New features and enhancements
+
+- Added a new setting in the account default settings under CI named ‘Upload Logs Via Harness’, allowing customers to route CI step execution logs through Harness’ log service instead uploading them directly from the build environment. This was previously behind a feature flag, but is now available for all users. (CI-13647)
+
+#### Fixed issues
+
+- For SMP customers, the 'getting started' flow for CI has been removed from the side navigation. (CI-13821)
+
+- Fixed an issue with 'Build and Push' step where a faiure occured when the registry URL in the Doceker connector had a port configured. This issue occurred because everything after the first ':' was being considered as the tag of the image, leading to an invalid Fully Qualified Name (FQN) and causing the Initialize step to fail in the Kubernetes flow. The fix ensures that the FQN is properly considered when the registry endpoint includes a port number. (CI-13770, ZD-66772)
+
 
 ### Version 1.43
 

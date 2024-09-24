@@ -112,6 +112,16 @@ It includes:
 - Queued License Limit Reached
 - Queued Execution Concurrency Reached
 
+### View Execution History 
+
+By default, all executions, including re-runs and child pipelines from the last 30 days, will be listed in the execution view. If you want to view executions beyond 30 days, you can use the filter option available on the Execution page to select a custom time range.
+
+![](./static/add_filter_for_execution.png)
+
+:::note
+Currently this feature is behing the Feature Flag `PIE_OPTIMIZE_EXECUTIONS_LIST_VIEW_TIME_RANGE`. Please contact [Harness support](mailto:support@harness.io) to enable this feature
+:::
+
 ### Execution mode
 
 Filter pipeline execution based on Execution mode:-

@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-07-13T20:00
+date: 2024-09-18T20:00
 sidebar_position: 12
 ---
 
@@ -17,7 +17,48 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 :::
 
+## September 2024
+
+### Version 0.33.0
+
+<!-- September 17, 2024 -->
+
+#### New features and enhancements
+
+- We have upgraded our Backstage core version to v1.28. [IDP-2870]
+- [Catalog Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api) received a huge update with lots of new endpoints and use-cases supported. [IDP-3565]
+- Add [mkdocstrings](https://mkdocstrings.github.io/) plugin in TechDocs to generate docs from comments in code blocks. [IDP-3570]
+- New plugins added to the marketplace.
+  - [Argo-CD Plugin for Backstage](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-argo-cd#argo-cd-plugin-for-backstage)
+
+#### Bug fixes
+
+- Fixed issue with Jenkins Plugins integration using Delegate. [IDP-3551]
+- Fixed `AuthenticationError` issue for templates registered from Harness Code Repo. [IDP-3316]
+- Fixed the issue when registering or refreshing IDP workflow would take 10-30 minutes. This now happens instantly.
+- Fixed the UI issue when long sidenav in TechDocs sites would cause overlap issues.
+
 ## August 2024
+
+### Version 0.32.0
+
+<!-- August 30, 2024 -->
+
+#### New features and enhancements
+
+- You can now create API response based [**Dynamic Workflow Pickers**](https://developer.harness.io/docs/internal-developer-portal/flows/dynamic-picker) for fetching values from a third party APIs and show it to the user. You can use it to provide a pick list of available repositories, projects or integrate with your other data sources. [IDP-3531]
+- **IDP Homepage is now customizable!** You can personalize the cards, banners and headers for your homepage. We have also added a new Toolbox card to organize the handy tools that your developers need to see, especially if they are new. Read more about [homepage customization](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/home-page-customization). [IDP-2890]
+- Harness Code Integration now supports registering components from Account, Org and Project level repositories. Previously this was limited to only project level repositories. [IDP-3390]
+- Harness Code is now available in the Direct Push and Create Repo step under IDP pipeline stage. [IDP-3400]
+- New plugins added to the marketplace.
+  - [JFrog artifactory Plugin](https://github.com/Vity01/backstage-jfrog-artifactory-libs)
+  - [Container Image Registry for JFrog Artifactory Plugin](https://janus-idp.io/plugins/jfrog-artifactory/).
+
+#### Bug fixes
+
+- Fixed issue with Jenkins Plugin not working with delegate proxy. [IDP-3511]
+- Updated the Schema Validation for Custom Plugin to support fields like `credentials`, `allowedHeaders` and `pathRewrite` under the Backend Proxy definition. [IDP-3391]
+- Fixed issue with fetching data for services, created using Git Sync, in the Harness CI/CD Plugin. [IDP-3566]
 
 ### Version 0.31.0
 

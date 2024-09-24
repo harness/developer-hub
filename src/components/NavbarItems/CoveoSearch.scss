@@ -408,6 +408,59 @@
 	color: var(--mod-cd-300);
 }
 
+
+// Armory
+.harness-search-module .CoveoFieldValue.CoveoFieldValueArmory {
+	background: var(--mod-ci-100);
+	border: 1px solid var(--mod-ci-200);
+	color: var(--mod-ci-300);
+	&::before {
+		content: url('/img/icon_armory_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueArmory .coveo-clickable {
+	color: var(--mod-ci-300);
+}
+
+// Cloud Development Environments
+.harness-search-module .CoveoFieldValue.CoveoFieldValueCDE {
+	background: var(--mod-sto-100);
+	border: 1px solid var(--mod-sto-200);
+	color: var(--mod-sto-300);
+	&::before {
+		content: url('/img/cde_icon.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueCDE .coveo-clickable {
+	color: var(--mod-sto-300);
+}
+
+
+// Artifact Registry
+.harness-search-module .CoveoFieldValue.CoveoFieldValueAR {
+	background: var(--mod-ci-100);
+	border: 1px solid var(--mod-ci-200);
+	color: var(--mod-ci-300);
+	&::before {
+		content: url('/img/icon_artifact_registry_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueAR .coveo-clickable {
+	color: var(--mod-ci-300);
+}
+
 .harness-search-module .CoveoFieldValue.CoveoFieldValuePlatform {
     &::before {
         content: url('/img/icon_harness_s.svg');
@@ -803,6 +856,27 @@
     }
     &[title="Database DevOps"]::before {
         content: url('/img/icon_dbdevops_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+    &[title="Artifact Registry"]::before {
+        content: url('/img/icon_artifact_registry_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+    &[title="Cloud Development Environments"]::before {
+        content: url('/img/cde_icon.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+    &[title="Armory"]::before {
+        content: url('/img/icon_armory_s.svg');
         display: inline-block;
         width: 16px;
         height: 16px;

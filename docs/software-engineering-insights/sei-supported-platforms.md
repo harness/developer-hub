@@ -87,19 +87,15 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>SEI_NEW_BA_PROFILES</td>
-        <td>Enable this flag to access the new [Business Alignment profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile).</td>
-    </tr>
-    <tr>
-        <td>SEI_NEW_BA_COMBINED_WIDGET</td>
-        <td>Enable this flag to access the new [Business Alignment report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report).</td>
+        <td>Enable this flag to access the new [Business Alignment profile](/docs/software-engineering-insights/sei-profiles/business-alignment-profile).</td>
     </tr>
     <tr>
         <td>SEI_BA_INCLUDE_UNRESOLVED_ISSUES</td>
-        <td>Allows you to use the [Business Alignment report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report) to calculate alignment metrics for tickets that are in the In Progress status category and those that have been resolved (i.e., Done status category) within a specific duration of time.</td>
+        <td>Allows you to use the [Business Alignment report](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports) to calculate alignment metrics for tickets that are in the **In Progress status category** and those that have been resolved (i.e., Done status category) within a specific duration of time.</td>
     </tr>
     <tr>
-        <td>SEI_IS_AZURE_NEW_ONB_ENABLED</td>
-        <td>Access the new [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) onboarding with PAT authentication</td>
+        <td>SEI_GITLAB_NEW_ONBOARDING_FLOW_ENABLED</td>
+        <td>Access the improved experience for configuring the [GitLab integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab).</td>
     </tr>
 </table>
 
@@ -138,5 +134,15 @@ Here are some SEI early access features that were recently promoted to GA:
         <td>SEI_SHOULD_ENABLE_REAUTH</td>
         <td>Enables access to new re-authorization user experience for a [GitHub integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)</td>
         <td>April 2024</td>
+    </tr>
+    <tr>
+        <td>SEI_IS_AZURE_NEW_ONB_ENABLED</td>
+        <td>Access the new [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) onboarding with PAT authentication</td>
+        <td>August 2024</td>
+    </tr>
+    <tr>
+        <td>SEI_ENABLE_TOPICS_SUPPORT_FOR_GITHUB</td>
+        <td>Configure Github Topics as an integration filter in the Collection definition</td>
+        <td>August 2024</td>
     </tr>
 </table>

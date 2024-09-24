@@ -16,6 +16,17 @@ To configure an IaCM workspace and create pipelines, you must have the following
 - An active cloud provider account
 - A Git repository
 
+## Supported IaC Frameworks
+:::info opentofu / terraform
+Harness IaCM currently supports integration with all **OpenTofu** versions<HarnessApiData
+    query="https://app.harness.io/gateway/iacm/api/provisioners/supported/opentofu"
+    token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
+    fallback=""
+    parse='.[-1] | " (latest: v\(.))"'></HarnessApiData>.
+    
+ For **Terraform**, we support all MPL versions up to **1.5.x**, any BSL versions (from 1.6.0) are not supported.
+:::
+
 ## Supported Workspace Connectors
 ### Cloud Providers
 - **AWS**: Connect via your AWS account to leverage extensive IaCM features.
@@ -32,19 +43,6 @@ Harness IaCM supports the following source providers for seamless code managemen
 - **Azure Repos**: Supports Azure Repos for direct access to Microsoft’s DevOps tools.
 
 Git options include `Latest from Branch` (specifying a branch) and `Git Tag` fetch types. Users can set a configuration file path, such as a terraform (.tf) file.
-
-## Supported IaC Frameworks
-Harness IaCM currently supports integration with **OpenTofu** <HarnessApiData
-    query="https://app.harness.io/gateway/iacm/api/provisioners/supported/opentofu"
-    token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
-    fallback=""
-    parse='.[-1] | "(up to v\(.))"'>
-</HarnessApiData> and **Terraform** <HarnessApiData
-    query="https://app.harness.io/gateway/iacm/api/provisioners/supported/terraform"
-    token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
-    fallback=""
-    parse='.[-1] | "(up to v\(.))"'>
-</HarnessApiData> frameworks.
  
 ## IaCM Feature Flags
 Some Harness IaCM features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience.
@@ -53,33 +51,6 @@ The following table describes each of the feature flags relevant to Harness IaCM
 :::note
 To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
 :::
-
-<table width="900" cellspacing="0" cellpadding="0">
-    <tr>
-        <td width="300" word-wrap="break-word"><b>Flag</b></td>
-        <td width="600"><b>Description</b></td>
-    </tr>
-    <tr>
-        <td>IaCM_COST_ESTIMATION</td>
-        <td>Enable to allow users to anticipate and understand the potential financial impact of their infrastructure changes </td>
-    </tr>
-    <tr>
-        <td>IaCM_DRIFT_DETECTION</td>
-        <td>Grants users visibility of drift/anomalies between the desired state and the configuration in the target environment</td>
-    </tr>
-    <tr>
-        <td>IaCM_OPEN_TOFU</td>
-        <td>Allows users to configure their workspace to target an OpenTofu framework</td>
-    </tr>
-    <tr>
-        <td>IaCM_HARNESS_CODE</td>
-        <td>Allows users to integrate their workspace with Harness Code repositories</td>
-    </tr>
-    <tr>
-        <td>CREATE_DEFAULT_PROJECT</td>
-        <td>Enables the creation of a new project with default configuration </td>
-    </tr>
-</table>
 
 ## Supported plugins
 

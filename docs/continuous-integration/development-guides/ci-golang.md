@@ -5,6 +5,7 @@ sidebar_position: 30
 redirect_from:
   - /tutorials/ci-pipelines/build/go
   - /tutorials/ci-pipelines/build/
+canonical_url: https://www.harness.io/blog/continuous-integration-continuous-delivery
 ---
 
 import Tabs from '@theme/Tabs';

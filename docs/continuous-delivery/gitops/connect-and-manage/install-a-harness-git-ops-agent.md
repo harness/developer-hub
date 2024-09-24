@@ -9,6 +9,7 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/gitops/install-a-harness-git-ops-agent
   - /docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent
+canonical_url: https://www.harness.io/blog/gitops-benefits
 ---
 
 This topic describes how to install a Harness GitOps Agent, a worker process that runs in your environment and performs GitOps tasks.
@@ -441,10 +442,16 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 ### What version of GitOps Agent supports what version of Repo server and Redis cache?
 
-| **Agent Version**        | **ArgoCD components versions officially supported (Repo-server, Application-controller, Appset-controller )** | **Redis versions**    |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------- | --------------------- |
-| **0.77.x**               | v2.8.x - v2.10.x                                                                                            | _redis:7.2.4-alpine_  |
-| **0.64.x** \- **0.76.x** | v2.7.x - v2.9.x                                                                                             | _redis:7.0.11-alpine_ |
+| GitOps Agent version | Packaged Argo CD version | Supported Argo CD versions                    | Redis version       |
+| -------------------- | ------------------------ | --------------------------------------------- | ------------------- |
+| 0.78.0               | v2.10.14                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14 | redis:7.2.4-alpine  |
+| 0.77.0               | v2.10.10                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10          | redis:7.2.4-alpine  |
+| 0.67.0 - 0.76.0      | v2.9.4                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0, 2.9.3, 2.9.4  | redis:7.0.11-alpine |
+| 0.66.0               | v2.9.3                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0, 2.9.3         | redis:7.0.11-alpine |
+| 0.64.0 - 0.65.0      | v2.9.0                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0,               | redis:7.0.11-alpine |
+| 0.60.0 - 0.63.0      | v2.8.2                   | v2.3.5, v2.7.2, v.2.7.8, v2.8.2               | redis:7.0.11-alpine |
+
+The supported Argo CD versions listed above are what Harness has verified. However, any patch version should work for each minor version listed. For example, the GitOps agent version `0.78.0` should support the Argo CD version of `2.10.0`, but this is not verified by Harness. 
 
 ### How long is a GitOps Agent version supported?
 

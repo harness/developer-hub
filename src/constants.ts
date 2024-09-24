@@ -21,7 +21,10 @@ export enum MODULES {
   smp = "smp",
   aida = "aida",
   dbdevops = "dbdevops",
-  gitness = "gitness",
+  ar = "ar",
+  cde = "cde",
+  armory = "armory",
+  opensource = "opensource",
   fme = "fme"
 }
 
@@ -36,7 +39,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.ce]: 'Chaos Engineering',
     [MODULES.sei]: 'Software Engineering Insights',
     [MODULES.cet]: 'Continuous Error Tracking',
-    [MODULES.ssca]: 'Software Supply Chain Assurance',
+    [MODULES.ssca]: 'Supply Chain Security',
     [MODULES.idp]: 'Internal Developer Portal',
     [MODULES.iacm]: 'Infrastructure as Code Management',
     [MODULES.code]: 'Code Repository',
@@ -44,7 +47,10 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.smp]: 'Harness Self-Managed Enterprise Edition',
     [MODULES.aida]: 'AI Development Assistant',
     [MODULES.dbdevops]: 'Database DevOps',
-    [MODULES.gitness]: 'Gitness',
+    [MODULES.ar]: 'Artifact Registry',
+    [MODULES.cde]: 'Cloud Development Environments',
+    [MODULES.armory]: 'Armory',
+    [MODULES.opensource]: 'Open Source',
     [MODULES.fme]: 'Feature Mgmt & Experimentation'
 }
 
@@ -66,6 +72,9 @@ export const MODULE_ICON = {
     [MODULES.smp]: 'img/icon_harness.svg',
     [MODULES.aida]: 'img/icon_aida.svg',
     [MODULES.dbdevops]: 'img/icon_dbdevops.svg',
-    [MODULES.gitness]: 'img/icon_gitness.svg',
+    [MODULES.ar]: 'img/icon_artifact_registry.svg',
+    [MODULES.cde]: 'img/cde_icon.svg',
+    [MODULES.armory]: 'img/icon_armory.svg',
+    [MODULES.opensource]: 'img/icon_opensource.svg',
     [MODULES.fme]: 'img/icon_fme.svg'
 }

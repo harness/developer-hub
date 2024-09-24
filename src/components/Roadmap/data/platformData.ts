@@ -133,11 +133,6 @@ export const platformData: Horizon = {
         title: "Auto Discovery of Entities in Git",
         description: "When an entity is created in Git it is created in Harness as well.",
       },
-      {
-        tag: [],
-        title: "GitX for Triggers",
-        description: "Ability to configure triggers as code in a Git provider."
-      },
     ],
   },
   Later: {
@@ -188,7 +183,7 @@ export const platformData: Horizon = {
         tag: [{ value: "SMP" }],
         title: "Supported modules",
         description:
-          "Infrastructure as Code Mgmt, Internal Developer Portal, Software Supply Chain Assurance, Code Repository",
+          "Infrastructure as Code Mgmt, Internal Developer Portal, Supply Chain Security, Code Repository",
       },
     ],
   },

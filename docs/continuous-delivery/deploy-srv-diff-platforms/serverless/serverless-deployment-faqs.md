@@ -2,6 +2,7 @@
 title: Serverless Lambda Deployment FAQs
 description: Serverless Deployment FAQs
 sidebar_position: 100
+canonical_url: https://www.harness.io/blog/cicd-for-serverless
 ---
 
 This article addresses some frequently asked questions about Serverless Lambda deployments in Harness.

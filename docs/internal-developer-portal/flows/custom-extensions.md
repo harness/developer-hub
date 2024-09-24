@@ -16,7 +16,6 @@ This is where Workflow UI Field Extensions come in.
 
 ![](./static/owner-custompicker.png)
 
-
 #### `allowArbitraryValues`
 
 Whether to allow arbitrary user input. Defaults to true.
@@ -46,7 +45,6 @@ owner:
   ui:options:
     allowArbitraryValues: true
 ```
-
 
 #### `catalogFilter`
 
@@ -78,7 +76,6 @@ owner:
       - kind: Group
         spec.type: team
 ```
-
 
 #### `defaultNamespace`
 
@@ -112,10 +109,220 @@ owner:
     defaultNamespace: payment
 ```
 
+### EntityPicker
 
-### Harness Specific Custom Extensions
+:::info
 
-### EntityFieldPicker
+Only **string** data `type` is supported for the EntityPicker.
+
+:::
+
+The input props that can be specified under `ui:options` for the `EntityPicker` field extension.
+
+#### `allowArbitraryValues`
+
+Whether to allow arbitrary user input. Defaults to true.
+
+`allowArbitraryValues` provides input validation when selecting an entity as the values you enter will correspond to a valid entity.
+
+- Adding a valid entity with `allowArbitraryValues` as `false`
+
+```yaml
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityPicker
+  ui:options:
+    allowArbitraryValues: false
+```
+- Adding an arbitrary entity with `allowArbitraryValues` as `true` (default value)
+
+```yaml
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityPicker
+  ui:options:
+    allowArbitraryValues: true
+```
+
+#### `catalogFilter`
+
+`catalogFilter` supports filtering options by any field(s) of an entity.
+
+- Get all entities of kind `Group`
+
+```yaml
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+```
+
+- Get entities of kind `Group` and spec.type `team`
+
+```yaml
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+        spec.type: team
+```
+
+#### `defaultKind`
+
+The default entity kind.
+
+```yaml
+system:
+  title: System
+  type: string
+  description: System of the component
+  ui:field: EntityPicker
+  ui:options:
+    catalogFilter:
+      kind: System
+    defaultKind: System
+```
+
+#### `defaultNamespace`
+
+The ID of a namespace that the entity belongs to. The default value is `default`.
+
+- Listing all entities in the `default` namespace (default value)
+
+```yaml
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityPicker
+  ui:options:
+    defaultNamespace: default
+```
+
+### `MultiEntityPicker`
+
+The input props that can be specified under `ui:options` for the `MultiEntityPicker` field extension.
+
+#### `allowArbitraryValues`
+
+Whether to allow arbitrary user input. Defaults to true.
+
+`allowArbitraryValues` provides input validation when selecting an entity as the values you enter will correspond to a valid entity.
+
+- Adding a valid entity with `allowArbitraryValues` as `false`
+
+```yaml
+entity:
+  title: Entities
+  type: array
+  description: Entities of the component
+  ui:field: MultiEntityPicker
+  ui:options:
+    allowArbitraryValues: false
+```
+
+- Adding an arbitrary entity with `allowArbitraryValues` as `true` (default value)
+
+```yaml
+entity:
+  title: Entities
+  type: array
+  description: Entities of the component
+  ui:field: MultiEntityPicker
+  ui:options:
+    allowArbitraryValues: true
+```
+
+#### `catalogFilter`
+
+`catalogFilter` supports filtering options by any field(s) of an entity.
+
+- Get all entities of kind `Group`
+
+```yaml
+entity:
+  title: Entities
+  type: array
+  description: Entities of the component
+  ui:field: MultiEntityPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+```
+
+- Get entities of kind `Group` and spec.type `team`
+
+```yaml
+entity:
+  title: Entities
+  type: array
+  description: Entities of the component
+  ui:field: MultiEntityPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+        spec.type: team
+```
+
+#### `defaultKind`
+
+The default entity kind.
+
+```yaml
+system:
+  title: System
+  type: array
+  description: Systems of the component
+  ui:field: MultiEntityPicker
+  ui:options:
+    catalogFilter:
+      kind: System
+    defaultKind: System
+```
+
+#### `defaultNamespace`
+
+The ID of a namespace that the entity belongs to. The default value is `default`.
+
+- Listing all entities in the `default` namespace (default value)
+
+```yaml
+entity:
+  title: Entity
+  type: array
+  description: Entities of the component
+  ui:field: MultiEntityPicker
+  ui:options:
+    defaultNamespace: default
+```
+
+- Listing all entities in the `payment` namespace
+
+```yaml
+entity:
+  title: Entity
+  type: array
+  description: Entities of the component
+  ui:field: MultiEntityPicker
+  ui:options:
+    defaultNamespace: payment
+```
+
+## Harness Specific Custom Extensions
+
+### 1. `EntityFieldPicker`
 
 ![](./static/system-custompicker.png)
 
@@ -140,14 +347,14 @@ system:
     ui:displayField: spec.owner
     ui:options:
     catalogFilter:
-        kind: 
+        kind:
         - System
         - Component
         - Service
         - API
 ```
-In the above example it will fetch all the owners for the software components `kind` mentioned under `catalogFilter`.
 
+In the above example it will fetch all the owners for the software components `kind` mentioned under `catalogFilter`.
 
 #### `allowArbitraryValues`
 
@@ -242,10 +449,9 @@ entity:
     defaultNamespace: default
 ```
 
+### 2. `HarnessOrgPicker`
 
-### 2. `HarnessOrgPicker` 
-
-Fetches all the org ID dynamically. 
+Fetches all the org ID dynamically.
 
 ```YAML
 #Example
@@ -271,9 +477,9 @@ spec:
     ...
 ```
 
-### 3. `HarnessProjectPicker` 
+### 3. `HarnessProjectPicker`
 
-Fetches all the project ID dynamically. 
+Fetches all the project ID dynamically.
 
 ```YAML
 # Example template.yaml file
@@ -294,7 +500,7 @@ spec:
            ui:field: HarnessProjectPicker
 ```
 
-### 4. `HarnessAutoOrgPicker` 
+### 4. `HarnessAutoOrgPicker`
 
 It auto populates org ID on project selection. So now when you select an project ID as an input the org ID gets selected automatically if required as an input.
 
@@ -321,12 +527,11 @@ spec:
            title: Org Identifier
            description: Harness org Identifier
            type: string
-           ui:field: HarnessAutoOrgPicker          
+           ui:field: HarnessAutoOrgPicker
 
 ```
 
 2. In case the properties Project Identifier is named something else other than `projectId` in that case for the custom action to function as desired we need to add it as a dependency under `projectPickerRef`
-
 
 ```YAML
 # Example template.yaml file
@@ -343,5 +548,5 @@ properties:
         ui:field: HarnessAutoOrgPicker
         dependencies:
           projectPickerRef:
-            - 'project_name'          
+            - 'project_name'
 ```

@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-08-21T10:00
+date: 2024-09-20T10:00
 sidebar_position: 4
 ---
 
@@ -26,6 +26,10 @@ These release notes describe recent changes to Harness Delegate.
 Added a critical security fix in harness secret manager for handling identities with CD workflows.
 If you are running delegates version below 799xx and using Terraform/Terragrunt features, upgrade to delegate version 799x or above immediately. Go to the [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) to update the delegates.
 
+:::
+
+:::danger Kubernetes Manifest impact on Delegate
+Delegate version 24.08.83702 is affected due to rendering logic of Kubernetes Manifest in certain cases only. If you are using this version, please upgrade to version 24.08.83704 to resolve the issue
 :::
 
 :::danger ARM64 Architecture Impact on Delegate Versions
@@ -65,7 +69,47 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## September 2024
+### Version 24.08.83804 <!--  September 20, 2024 -->
+
+#### Hotfixes
+
+- Updated the identifier so that the output obtained from the PowerShell command is parsed correctly (CDS-100036).
+
+### Version 24.08.83803 <!--  September 20, 2024 -->
+
+#### Hotfixes
+
+- Fixed an issue where the secrets will no longer get exposed in Kubernetes Dry Run Step even if they are placed in ConfigMap.
+
+### Version 24.09.83900 <!-- September 9, 2024 -->
+
+#### Fixed issues
+
+- Enhanced webhook notification handling to support secrets in headers, enabling proper decryption of Authorization and other header values stored in the Harness Secret Manager. This ensures seamless webhook triggering without requiring hardcoded values. (PL-55319, ZD-65913)
+
+- Fixed an issue where the AWS Secret Manager validation was failing due to regions being passed instead of full URLs, causing connectivity errors in delegate logs. The region is now correctly converted to a URL, preventing perpetual task failures. (PL-55740, ZD-67142, ZD-67150)
+
 ## August 2024
+
+### Version 24.08.83802 <!-- August 26, 2024 -->
+
+#### New features and enhancements
+
+- Upgraded the `dnsjava` library to version `3.6.0` to address CVE-2024-25638, which involved potential security vulnerabilities in DNS query responses. (PL-55721, ZD-63383, ZD-68810)
+
+### Version 24.07.83611, 24.08.83705 <!--  August 30, 2024 -->
+
+#### Hotfix
+
+- Removed unnecessary env expansion and added url_encoding to encode special characters from proxy when curl connectivity pre-check is enabled (PL-56623).
+  
+### Version 24.08.83704 <!--  August 29, 2024 -->
+
+#### Hotfixes
+
+- Ensure kubernetes secrets are typecasted to Java strings internally before log sanitization. Earlier this was causing ClassCastException for some kubernetes manifests (CDS-100389).
+- Updated sensitive log in WinRM deployment to DEBUG level to ensure sensitive data is not leaked (CDS-100046).
 
 ### Version 24.07.83609 <!--  August 20, 2024 -->
 
