@@ -1260,6 +1260,14 @@ During rollback of the first deployment, Harness deletes the ASG.
 
 During rollback of subsequent deployments, Harness reverts the ASG to the previous state of ASG before deployment.
 
+:::info note
+
+During the rollback of the first deployment, Harness restores the ASG template version to the state of the last successful run without deleting it. This enhancement eliminates the downtime caused by the instance refresh during rollbacks, ensuring continuous service availability.
+The minimum required delegate version to use this feature is `83900`.
+
+Currently, this feature is behind the feature flag `CDS_ASG_ROLLOUT_ROLLBACK_INSTANCE_REFRESH`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+:::
+
 Harness stores configurations of the ASG you are deploying twice: 
 - First storage: Harness stores the ASG configuration at the start of deployment for rollback *during deployment*.
 - Second storage: Harness stores the ASG configuration at the end of deployment for rollbacks *post deployment*.
