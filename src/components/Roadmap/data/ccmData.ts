@@ -368,7 +368,7 @@ export const CcmData: Horizon = {
         tag: [],
         title: "Tag Nomalization",
         description:
-          "Normalize tag variations effortlessly with AIDA's AI-driven recommendations",
+          "Normalize tag variations effortlessly with AIDA's AI-driven recommendations.",
         backgroundColor: "var(--blue-100)",
       },
     ],
