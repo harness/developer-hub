@@ -5,7 +5,7 @@ sidebar_position: 2
 sidebar_label: Quickstart
 ---
 
-Harness Cloud Development Environments (CDE) are preconfigured, remote, secure, ready-to-use  environments that developers can quickly spin up from anywhere and start writing code, debugging, and collaborating with other developers.
+Harness Cloud Development Environments (CDE) are pre-configured, remote, secure, ready-to-use  environments that developers can quickly spin up from anywhere and start writing code, debugging, and collaborating with other developers.
 
 This document focuses on the core features of Harness CDE and provides a Quickstart guide to help users get started. 
 
