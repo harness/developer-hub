@@ -15,11 +15,9 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="Create Gitspace">
 <TabItem value="using-harness-code" label="Using Harness Code">
 
-1. If you don’t have a Harness Code Repository, you can either [create](https://developer.harness.io/docs/code-repository/config-repos/create-repo) one or [import](https://developer.harness.io/docs/code-repository/config-repos/import-repo) a new repository. 
+2. Select the **Repository** from the dropdown, followed by updating the **branch**. 
 
-2. Once the repository is available, you can select the **branch** and the **IDE** type (VSCode Browser and Desktop are supported)
-
-3. Now **Create Gitspace**, by selecting the default **branch** as `main` or any other branch where you want to add the changes.  
+![](./static/harness-code.png)
 
 </TabItem>
 <TabItem value="other-git-repositories" label="Other Git Repositories">
@@ -51,13 +49,13 @@ import TabItem from '@theme/TabItem';
 
 ### Pre-Requisite: Install VS Code Desktop Extension
 
-1. You can install and configure the Gitspaces VS Code extension to use it on your VS Code Desktop App.
+1. You can install and configure the **Gitspaces VS Code extension** to use it on your VS Code Desktop App.
 
-2. Install the Gitspaces VS Code Extension on from VS COde Extensions Marketplace. Click on Settings and Go to the Extension settings and add the host URL as `https://app.harness.io/`  
+2. Install the Gitspaces VS Code Extension on from VS Code Extensions Marketplace. Click on **Settings** and Go to the **Extension settings** and add the host URL as `https://app.harness.io/`  
 
 ![](./static/settings-vs-code-extension.png)
 
-3. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. **Make sure you have already signed-in to Harness Platform in your browser before starting this step.**
+3. The extension will appear on the left nav of your screen, **click** on it and proceed to Sign-in. **Make sure you have already signed-in to Harness Platform in your browser before starting this step.**
 
 4. Any Gitspace you create with VS Code Desktop as the IDE will now open in your desktop application. You can also view a list of Gitspaces in the left navbar and switch between them as needed. 
 

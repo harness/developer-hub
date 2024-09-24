@@ -14,7 +14,13 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="GitHub">
 <TabItem value="using-github" label="Using GitHub Repositories">
 
-GitHub CLI comes pre-installed with VS Code IDE, also since we have already configured the Platform OAuth to login, we can directly start with raising the PRs. 
+GitHub CLI comes pre-installed with VS Code IDE, now you need to configure your email-id and user-name before you could start pushing changes to upstream. 
+
+```sh
+git config --global user.email "you@example.com" 
+
+git config --global user.name "Your Name"
+```
 
 </TabItem>
 <TabItem value="using-gitlab" label="Using GitLab Repositories">
@@ -39,6 +45,6 @@ GitHub CLI comes pre-installed with VS Code IDE, also since we have already conf
 
 3. To **commit** your staged changes, type a **commit message** describing the change you've made, then click **Commit**.
 
-4. Now Sync Changes, it will redirect you to login and authorize to your Source Provider except for the ones configured using Platform OAuth. After authorization, your changes will be committed to your fork.
+4. Now Sync Changes, it will redirect you to login and authorize to your Source Provider once the authentication is successful, your changes will be committed to your fork.
 
-5. And that’s it! You have successfully used Harness Cloud Development Environment for development
+5. And that’s it! You have successfully used Harness Cloud Development Environments for development
