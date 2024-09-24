@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Stages
 
-A stage contains one or more [steps](/docs/category/steps-1). 
+A stage contains one or more [steps](/category/steps). 
 
 ## Single
 

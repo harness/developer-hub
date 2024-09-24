@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Conditions
 
-Conditions limit pipeline [step](/docs/category/steps-1) execution at runtime. Harness Open Source sets [variables](../reference/pipelines/expression_variables.md) that can be used in conditions.
+Conditions limit pipeline [step](/category/steps) execution at runtime. Harness Open Source sets [variables](../reference/pipelines/expression_variables.md) that can be used in conditions.
 
 :::tip
 

@@ -18,4 +18,4 @@ Harness Open Source supports multiple pipelines per repository.
 ## Next steps
 
 - Create [triggers](triggers)
-- See [sample pipelines](/docs/category/samples) for popular tools and languages
+- See [sample pipelines](/category/samples) for popular tools and languages

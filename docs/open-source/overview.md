@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Overview
 
-Harness Open Source is an end-to-end open source software development platform from [Harness](https://www.harness.io/) that unifies managing your [source code repositories](/docs/category/repositories), [CI/CD pipelines](/docs/open-source/pipelines/overview), [hosted development environments](/docs/category/gitspaces), and [artifact management](/docs/category/registries).
+Harness Open Source is an end-to-end open source software development platform from [Harness](https://www.harness.io/) that unifies managing your [source code repositories](/category/repositories), [CI/CD pipelines](/pipelines/overview), [hosted development environments](/category/gitspaces), and [artifact management](/category/registries).
 
 Here’s a short overview of the capabilities:
 
@@ -13,7 +13,7 @@ Here’s a short overview of the capabilities:
 - Continuous Integration/Continuous Delivery - Build, test, and deploy code faster with hundreds of reusable pipeline templates.
 - Artifact Registry - Centralize and streamline software delivery pipelines by providing a single source of truth for software artifacts.
 
-## How is Gitness related to Drone?
+## How is Harness Open Source related to Drone?
 
 Gitness was the next step in the evolution of [Drone](https://www.drone.io), from continuous integration to source code hosting, bringing code management and pipelines closer together. 
 

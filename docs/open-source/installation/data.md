@@ -12,43 +12,43 @@ When running a shared Harness Open Source instance for a development team, you s
 
 ## Local instance
 
-On MacOS or Linux, create a `gitness` directory in a safe location:
+On MacOS or Linux, create a `harness` directory in a safe location:
 
 ```bash
-mkdir $HOME/gitness
+mkdir $HOME/harness
 ```
 
-Then pass `-v $HOME/gitness:/data` in your `docker run` command.
+Then pass `-v $HOME/harness:/data` in your `docker run` command.
 
 ```sh {4} showLineNumbers
 docker run -d \
   -p 3000:3000 \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v $HOME/gitness:/data \
-  --name gitness \
+  -v $HOME/harness:/data \
+  --name harness \
   --restart always \
-  harness/gitness
+  harness/harness
 ```
 
-Harness Open Source will now store its data beneath the `gitness` directory in your [home directory](https://en.wikipedia.org/wiki/Home_directory).
+Harness Open Source will now store its data beneath the `harness` directory in your [home directory](https://en.wikipedia.org/wiki/Home_directory).
 
 ## AWS EC2
 
 Create a separate volume just for your Harness Open Source instance data. Ensure the volume is an appropriate size for your team and number of repositories.
 
-Create an [EBS volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html) for your Harness Open Source instance data and mount it at `/mnt/gitness-data`, then pass `-v /mnt/gitness-data:/data` in your `docker run` command.
+Create an [EBS volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html) for your Harness Open Source instance data and mount it at `/mnt/harness-data`, then pass `-v /mnt/harness-data:/data` in your `docker run` command.
 
 ```sh {4} showLineNumbers
 docker run -d \
   -p 3000:3000 \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /mnt/gitness-data:/data \
-  --name gitness \
+  -v /mnt/harness-data:/data \
+  --name harness \
   --restart always \
-  harness/gitness
+  harness/harness
 ```
 
-Harness Open Source will now store its data beneath `/mnt/gitness-data` on your EC2 instance.
+Harness Open Source will now store its data beneath `/mnt/harness-data` on your EC2 instance.
 
 :::tip
 

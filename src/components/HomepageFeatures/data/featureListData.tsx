@@ -29,6 +29,15 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
+    title: "Set up Cloud Development Environments",
+    module: MODULES.cde,
+    icon: "img/cde_icon.svg",
+    description:
+      "Provision Pre-Configured Cloud Development Environment",
+    link: "docs/cloud-development-environment",
+    type: [docType.Documentation],
+  },
+  {
     title: "Manage Infrastructure as Code",
     module: MODULES.iacm,
     icon: "img/icon_iacm.svg",
