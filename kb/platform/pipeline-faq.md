@@ -350,6 +350,36 @@ There is no limit to the number of triggers for a pipeline.
 
 Yes, Harness NextGen supports both the QUARTZ and UNIX syntax formats for cron triggers. For more information, go to [Schedule Pipelines Using Cron Triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger).
 
+### What is the scenario described for manual pipeline execution in Harness?
+   The scenario involves a pipeline with a build step that takes a revision hash as input. Typically, the pipeline is triggered by a webhook, and the commit hash from the event is passed to inform the build. In certain cases, an operator may abort the pipeline and manually supply a known-good revision for building and deploying to avoid issues with the latest build.
+
+### How can an operator manually intervene in a pipeline execution?
+   If an operator notices a potential issue with the latest build, they can manually abort the pipeline after the build step and provide a known-good revision to build and deploy, bypassing the potentially problematic revision.
+
+### Why would someone want to disable pipeline triggers after manual execution?
+   Disabling triggers after manual execution helps prevent the pipeline from being triggered again by webhooks or automatic events, especially if the intent is to pause automated deployments until further fixes are made.
+
+### Can Harness automatically disable pipeline triggers after a manual pipeline execution?
+   No, Harness does not currently have a built-in feature to automatically disable pipeline triggers after a manual execution. This must be handled manually or through automation via API.
+
+### How can pipeline triggers be disabled automatically after a manual execution?
+   You can automate this process by creating a script that runs after a manual pipeline execution. This script can call the Harness API to disable the triggers, effectively halting any further automatic pipeline runs.
+
+### Which Harness API can be used to disable triggers?
+   The Update Trigger API from Harness can be used to programmatically disable triggers after a manual pipeline execution. More details on the API can be found in Harness API documentation.
+
+### Where can I find more information on the Harness API for managing triggers?
+   You can refer to the official [Harness API documentation](https://apidocs.harness.io/tag/Triggers#operation/updateTrigger) for detailed information on how to use the Update Trigger API and manage triggers effectively.
+
+### What are the steps involved in manually disabling pipeline triggers in Harness?
+   Without automation, you would need to go into the pipeline trigger menu in Harness and manually disable the triggers to prevent further executions.
+
+### How does manually disabling pipeline triggers help during manual execution scenarios?
+   Manually disabling the triggers helps ensure that no further automated triggers initiate the pipeline, especially when you are manually handling the pipeline due to known issues or revisions.
+
+### Can I use a custom script to manage pipeline triggers in Harness?
+   Yes, a custom script can be created to call the Harness API after a manual pipeline execution. This script can disable triggers automatically, aligning the pipeline execution with the operator's intent of deviating from the standard deployment strategy.
+
 ## Stop pipelines
 
 ### What is expected when I abort a pipeline, and what actions are taken to ensure a clean state in the system?
