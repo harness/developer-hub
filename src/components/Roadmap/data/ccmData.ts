@@ -5,7 +5,7 @@ export const CcmData: Horizon = {
     description: "Q1 CY'23, Feb-Apr 2023",
     feature: [
       {
-        tag: [{value: "Recommendations"}],
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Azure VM Recommendations",
         description: "Support for Azure VM optimisation (Rightsizing, Cleanup)",
         backgroundColor: "var(--green-100)",
@@ -40,7 +40,7 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--green-100)",
       },
       {
-        tag: [{value: "Budgets"}],
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Budget Groups",
         description:
           "Hierarchial Organisation of budgets with roll ups & cascading effects",
@@ -53,7 +53,7 @@ export const CcmData: Horizon = {
     description: "Q2 CY'23, May-Jul 2023",
     feature: [
       {
-        tag: [{value: "Recommendations"}],
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Recommendation Workflows ",
         description:
           "Support for Ignore list, JIRA/ SNOW integration, Applied recommendations dashboard (Docs)",
@@ -92,7 +92,7 @@ export const CcmData: Horizon = {
         link: "https://developer.harness.io/docs/category/governance-for-aws",
       },
       {
-        tag: [{value: "Budgets"}],
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Budgets - Capacity Planning ",
         description: "Support for yearly forecasts in Budgets",
         backgroundColor: "var(--green-100)",
@@ -103,14 +103,14 @@ export const CcmData: Horizon = {
     description: "Q3 CY'23, Aug-Oct 2023",
     feature: [
       {
-        tag: [],
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Forecasting Enhancements ",
         description:
           "Fine-tuned custom forecasting alogorithms resulting in improved accuracy",
         backgroundColor: "var(--green-100)",
       },
       {
-        tag: [{value: "Anomalies"}],
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Anomaly Detection Improvements ",
         description:
           "Improved accuracy to avoid False positives, Support for Harness K8s Tag based anomaly detection",
@@ -211,7 +211,7 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--green-100)",
       },
       {
-        tag: [{value: "Anomalies"}],
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Cost Anomaly Workflows ",
         description:
           "Ignore list, support for comments, JIRA/ SNOW integration",
@@ -271,7 +271,7 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--green-100)",
       },
       {
-        tag: [{value: "Recommendations"}],
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Tags support for Recommendations ",
         description:
           "Tags are supported for recommendations and filtering is allowed.",
@@ -318,7 +318,7 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--yellow-100)",
       },
       {
-        tag: [{value: "Recommendations"}],
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Recommendations RBAC enhancements",
         description:
           "",
@@ -365,7 +365,7 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--blue-100)",
       },
       {
-        tag: [],
+        tag: [{value: "Cost Platform"}],
         title: "Tag Nomalization",
         description:
           "Normalize tag variations effortlessly with AIDA's AI-driven recommendations.",
