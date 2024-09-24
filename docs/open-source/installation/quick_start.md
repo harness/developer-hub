@@ -5,7 +5,7 @@ slug: '/'
 
 # Quick Start
 
-Let's discover **[Harness Open Source](https://gitness.com)** in less than 30 seconds.
+Let's discover **[Harness Open Source](/docs/open-source/overview)** in less than 30 seconds.
 
 <!--
 ## Pre-Compiled Binaries
@@ -21,7 +21,7 @@ Use the following Docker command to install Harness Open Source locally.
 docker run -d \
   -p 3000:3000 \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /tmp/gitness:/data \
+  -v /tmp/harness:/data \
   --name gitness \
   --restart always \
   harness/gitness

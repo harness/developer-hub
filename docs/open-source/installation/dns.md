@@ -12,10 +12,10 @@ Set the [GITNESS_URL_BASE](settings.md#gitness_url_base) environment variable to
 
 ```sh {2} showLineNumbers
 docker run -d \
-  -e GITNESS_URL_BASE=http://gitness.company.com \
+  -e GITNESS_URL_BASE=http://harness.company.com \
   -p 3000:3000 \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /mnt/gitness-data:/data \
+  -v /mnt/harness-data:/data \
   --name gitness \
   --restart always \
   harness/gitness
