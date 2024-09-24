@@ -93,6 +93,14 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
+    title: "Set up Cloud Development Environments",
+    module: MODULES.cde,
+    icon: "img/cde_icon.svg",
+    description: <>Accelerate developer experience with pre-configured, secure and scalable developer environments.</>,
+    link: "docs/cloud-development-environment",
+    type: [docType.Documentation],
+  },
+  {
     title: "Measure Software Engineering Processes",
     module: MODULES.sei,
     icon: "img/icon_sei.svg",

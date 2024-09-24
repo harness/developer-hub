@@ -1,0 +1,11 @@
+{
+    "label": "Get started with CDE",
+    "collapsible": "true",
+    "collapsed": "true",
+    "position": 10,
+    "link": {
+      "type": "generated-index",
+      "title": "Get started with Harness Cloud Development Environments"
+    },
+    "customProps": {}
+  }

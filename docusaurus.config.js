@@ -158,6 +158,10 @@ async function config() {
                   to: 'docs/internal-developer-portal',
                 },
                 {
+                  label: 'Cloud Development Environments (BETA)',
+                  to: 'docs/cloud-development-environment',
+                },
+                {
                   label: 'Software Engineering Insights',
                   to: 'docs/software-engineering-insights',
                 },
@@ -167,7 +171,7 @@ async function config() {
                 },
                 {
                   label: 'Open Source',
-                  to: 'docs/open-source'
+                  href: 'docs/open-source',
                 },
                 {
                   label: 'FirstGen',
