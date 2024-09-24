@@ -174,7 +174,13 @@ Variable values can be [fixed values, runtime inputs, or expressions](/docs/plat
 
 ### Parallelism (Test Splitting)
 
-To enable parallelism (test splitting) in a **Test** step, specify the number of parallel workloads to divide the tests into.
+To enable parallelism (test splitting) in a **Test** step, specify the number of parallel workloads to divide the tests into. These workloades will be executed in parallel steps. 
+
+:::note
+
+When using tests splitting, Intelligence Mode must be enabled.
+
+:::
 
 For example:
 
@@ -185,7 +191,7 @@ For example:
                   identifier: test
                   spec:
                     ...
-                    parallelism : 4 # Divide tests into 4 parallel workloads.
+                    parallelism : 4 # Divide tests into 4 parallel workloads executed by 4 steps.
 ```
 
 ### Additional container settings
