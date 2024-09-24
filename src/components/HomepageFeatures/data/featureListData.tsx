@@ -29,15 +29,6 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
-    title: "Set up Cloud Development Environments",
-    module: MODULES.cde,
-    icon: "img/cde_icon.svg",
-    description:
-      "Provision Pre-Configured Cloud Development Environment",
-    link: "docs/cloud-development-environment",
-    type: [docType.Documentation],
-  },
-  {
     title: "Manage Infrastructure as Code",
     module: MODULES.iacm,
     icon: "img/icon_iacm.svg",
@@ -99,6 +90,14 @@ export const featureList: CardItem[] = [
     icon: "img/icon_idp.svg",
     description: <>A home for developers to create, manage, and explore software.</>,
     link: "docs/category/get-started-with-idp",
+    type: [docType.Documentation],
+  },
+  {
+    title: "Set up Cloud Development Environments (BETA)",
+    module: MODULES.cde,
+    icon: "img/cde_icon.svg",
+    description: <>Accelerate developer experience with pre-configured, secure and scalable developer environments</>,
+    link: "docs/cloud-development-environment",
     type: [docType.Documentation],
   },
   {

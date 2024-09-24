@@ -114,10 +114,6 @@ async function config() {
                   to: 'docs/platform',
                 },
                 {
-                  label: 'Cloud Development Environments',
-                  to: 'docs/cloud-development-environment',
-                },
-                {
                   label: 'Code Repository',
                   to: 'docs/code-repository',
                 },
@@ -160,6 +156,10 @@ async function config() {
                 {
                   label: 'Internal Developer Portal',
                   to: 'docs/internal-developer-portal',
+                },
+                {
+                  label: 'Cloud Development Environments (BETA)',
+                  to: 'docs/cloud-development-environment',
                 },
                 {
                   label: 'Software Engineering Insights',
