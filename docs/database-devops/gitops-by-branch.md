@@ -24,13 +24,10 @@ We, at Harness, encourage you to use GitOps-as-a-Service for your databases as i
  - enhancing audit trails and complaince
  - easier rollbacks and version control for database states
 
-## Accelerate Innovation Velocity
-
-Harness DB DevOps is a powerful tool that helps accelerate innovation velocity, particularly in the context of managing and evolving database schemas. By using DB DevOps, development teams can introduce new features, improve existing ones, and deploy updates more rapidly and safely. 
-
-By integrating DB DevOps into your development workflow, teams can accelerate their innovation velocity by automating and streamlining database schema changes. DB DevOps reduces the friction associated with database updates, allowing teams to focus on delivering new features and improvements faster and with greater confidence. This, in turn, enhances the overall agility of the development process, enabling organizations to stay competitive and responsive to market demands.
-
 ## Deploy to database instance by environment branch
 
 Environment branches in Git allow teams to maintain separate configurations for different environments (e.g., development, staging, production) within the same repository.
+
+
+
 
