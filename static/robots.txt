@@ -4,7 +4,7 @@
 User-Agent: *
 Allow: /
 Disallow: /docs/first-gen/
-Disallow: /docs/database-devops/
+# Disallow: /docs/database-devops/
 
 User-agent: coveobot
 Allow: /
