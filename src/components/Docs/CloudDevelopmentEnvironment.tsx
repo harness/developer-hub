@@ -25,7 +25,7 @@ export default function CDE() {
                 Knowledge Base
               </button>
             </Link>
-            <Link href="/release-notes/internal-developer-portal">
+            <Link href="/release-notes/cloud-development-environment">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />
                 Release Notes
