@@ -19,6 +19,10 @@ Pod HTTP reset peer:
 - Simulates premature connection loss that may occur due to firewall issues or other issues between microservices thereby verifying connection timeout.
 - Simulates connection resets due to resource limitations on the server side such as out of memory error, process kills, overload on the server due to high amounts of traffic.
 
+:::info note
+Pod HTTP latency supports HTTP, HTTPS methods, and gRPC framework.
+:::
+
 ### Permissions required
 
 Below is a sample Kubernetes role that defines the permissions required to execute the fault.
