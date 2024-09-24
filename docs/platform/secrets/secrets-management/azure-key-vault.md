@@ -177,6 +177,8 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
 5. Optional: Deselect **Purge Secrets**.
 
+   ![](../../secrets/static/azure-key-vault-17.png)
+
    This option is selected by default and purges deleted secrets instead of soft deleting them. For more information, go to [Purge deleted secret](https://learn.microsoft.com/en-us/rest/api/keyvault/secrets/purge-deleted-secret/purge-deleted-secret) in the Microsoft documentation.
 
    :::note
