@@ -115,7 +115,7 @@ When a new Collection is created, it is automatically associated with the Trelli
 * Select the **Collection** where you want to customize the **Trellis Factors** contributing to the **Trellis Metric** calculations.
 * Enable the **Trellis Contributor Scoring** option (if disabled).
 * Customize the **Factors** or **Trellis Groups** as needed. 
-* Save the Collection settings.
+* Save the **Collection settings**.
 
 This creates a new configuration for Trellis Factors at the Collection level that is derived from the existing Trellis Factors at the Account level.
 
