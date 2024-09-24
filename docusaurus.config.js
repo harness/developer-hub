@@ -171,7 +171,7 @@ async function config() {
                 },
                 {
                   label: 'Open Source',
-                  to: 'docs/open-source',
+                  to: 'docs/open-source'
                 },
                 {
                   label: 'FirstGen',

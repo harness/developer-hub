@@ -198,7 +198,7 @@ const sidebars = {
         // Harness Open Source
         {
           type: "link",
-          href: "docs/open-source",
+          href: "/docs/open-source",
           label: "Open Source",
           className: "sidebar-opensource",
           customProps: {
