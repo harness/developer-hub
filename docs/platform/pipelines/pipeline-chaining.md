@@ -291,6 +291,16 @@ In this pipeline, stage `cust_4` will fail due to incorrect shell script command
 
 ![](./static/rerun_last_failed_stage.png)
 
+## Execution of Chained Pipeline
+
+:::info note
+Currently this feature is behing the Feature Flag `PIE_SHOW_ALL_EXECUTIONS_FILTER`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+:::
+
+You can see execution of your child pipeline in that pipeline execution history.
+
+![](./static/child_pipeline_execution.png)
+
 
 ## Considerations when executing remote chained pipelines
 
