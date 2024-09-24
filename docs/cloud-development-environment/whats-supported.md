@@ -7,21 +7,26 @@ sidebar_position: 1
 
 Harness CDE supports a number of git providers to fetch the code from and few IDE's to help you with a developer environment. 
 
-## Git Providers Supported​
+## Git Providers 
 
-We support the following Git Providers. We support OAuth based authentication to access private repositories for your Git Provider. 
+You can create Gitspaces for the following repository types:
 
-1. Harness Code Repository
+1. [Harness Code Repo](https://developer.harness.io/docs/code-repository) public and private repositories
 
-2. GitHub
+2. [GitHub Cloud](https://github.com/) public and private repositories
 
-3. Bitbucket
+3. [Bitbucket Cloud](https://bitbucket.org/) public and private repositories
 
-4. GitLab
+4. Any public Git repository 
 
-5. Any Public Git Repository
+## IDEs 
 
-## IDEs Available​
+Gitspaces come pre-configured with your IDE of choice. We currently support the following:
+
+1. [VS Code Desktop](https://code.visualstudio.com/)
+2. [VS Code Browser](https://code.visualstudio.com/docs/editor/vscode-web)
+
+We are working on support for [IntelliJ IDEA](https://www.jetbrains.com/idea/) and other popular IDEs, so stay tuned for those to be added soon. 
 
 :::info
 
@@ -29,7 +34,6 @@ To use VS Code Desktop, you need to [install and configure](/docs/cloud-developm
 
 :::
 
-1. VS Code Desktop & Browser.
 
 ## Regions Available​
 

@@ -9,12 +9,12 @@ Harness Cloud Development Environments (CDE) are preconfigured, remote, secure, 
 
 This document focuses on the core features of Harness CDE and provides a Quickstart guide to help users get started. 
 
-Please ensure that the CDE mpdule is enabled in your Harness account before you start with these instructions. 
+Please ensure that the CDE module is enabled in your Harness account before you start with these instructions. 
 
 
 ## Configuration
 
- Gitspace configuration lives with your source code in a file named `.devcontainer/devcontainer.json`, which is an [industry standard spec](https://containers.dev/implementors/json_reference/) that defines metadata and settings required to configure a containerized development environment. 
+Gitspace configuration lives with your source code in a file named `.devcontainer/devcontainer.json`, which is an [industry standard spec](https://containers.dev/implementors/json_reference/) that defines metadata and settings required to configure a containerized development environment. 
 
 You can specify the image used to spin up the container in this config file. Any application dependencies can be prebaked into this image so that you do not spend time installing these each time.
 
@@ -146,28 +146,15 @@ git config --global user.name "Your Name"
 
 2. On the Gitspaces Page click on the 3 dots and select **Stop Gitspace**.
 
-![](./static/three-dots-stop-gitspace.png)
-
-![](./static/stop-gitspace.png)
-
 3. On the Gitspace Details Page under **More Actions**, there's option to **Stop Gitspace**.
-
-![](./static/stop-gitspace-gs-details.png)
-
 
 There are three ways of **starting the Gitspace**: 
 
 1. On the Gitspaces Page click on the 3 dots and select Start Gitspace.
 
-![](./static/three-dots-start-gitspace.png)
-
-![](./static/start-gitspaces.png)
-
 2. Click on a stopped Gitspace and you’ll see the Start Gitspace button in the popup. 
 
 3. On the Gitspace Details page, Start Gitspace is available in the More Options menu.
-
-![](./static/start-gitspaces-gs-details.png)
 
 ## Delete a Gitspace
 
