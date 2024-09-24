@@ -311,7 +311,7 @@ The following expressions reference information about a pipeline run, such as th
 * `<+pipeline.storeType>`: If the pipeline is stored in Harness, the expression resolves to `inline`. If the pipeline is stored in a Git repository, the expression resolves to `remote`.
 * `<+pipeline.repo>`: For remote pipelines, the expression resolves to the Git repository name. For inline pipelines, the expression resolves to `null`.
 * `<+pipeline.branch>`: For remote pipelines, the expression resolves to the Git branch where the pipeline exists. For inline pipelines, the expression resolves to `null`.
-* `<pipeline.orgIdentifier`>: The [identifier](../references/entity-identifier-reference.md) of an organization in your Harness account. The referenced organization is the pipeline's organization. 
+* `<+pipeline.orgIdentifier`>: The [identifier](../references/entity-identifier-reference.md) of an organization in your Harness account. The referenced organization is the pipeline's organization. 
 
 ### Secrets expressions
 
