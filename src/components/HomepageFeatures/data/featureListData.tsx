@@ -96,7 +96,7 @@ export const featureList: CardItem[] = [
     title: "Set up Cloud Development Environments",
     module: MODULES.cde,
     icon: "img/cde_icon.svg",
-    description: <>Accelerate developer experience with pre-configured, secure and scalable developer environments.</>,
+    description: <>Accelerate developer experience with pre-configured, secure and scalable development environments.</>,
     link: "docs/cloud-development-environment",
     type: [docType.Documentation],
   },
