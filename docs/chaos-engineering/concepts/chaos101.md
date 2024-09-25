@@ -63,7 +63,9 @@ You can build resilient applications by following the steps below:
 
 The practice of chaos engineering involves repeatedly performing experiments by injecting various potential failures, known as [chaos faults](/docs/chaos-engineering/use-harness-ce/experiments/#chaos-fault), to simulate real-world failure conditions against different resources, referred to as **targets**.
 
-Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for your organization. The diagram below outlines the steps you can take to introduce chaos into an application.
+Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for your organization. HCE is built on open-source CNCF chaos engineering project [LitmusChaos](https://litmuschaos.io/). It leverages the robustness of LitmusChaos and provides additional capabilities that makes chaos engineering an easy practice for enterprises. The additional capabilities are listed [here](/docs/chaos-engineering/getting-started/#hce-and-litmuschaos).
+
+The diagram below outlines the steps you can take to introduce chaos into an application.
 
 ![Chaos Engineering Overview](./static/chaos101/first-goal.png)
 

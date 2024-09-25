@@ -9,7 +9,7 @@ redirect_from:
 - /docs/chaos-engineering/features/resilience-probes/cmd-probe/cmd-probe-usage
 ---
 
-This topic guides you through steps to use the **command probe** in **inline mode** and **source mode**.
+This topic guides you on how to use the **command probe** inline and how to configure source parameter with the command probe.
 
 ## Before you begin, review the following
 
@@ -17,31 +17,23 @@ This topic guides you through steps to use the **command probe** in **inline mod
 
 In the final step of creating a probe, provide details specific to that resilience probe (such as a command for the command probe, a query to the Prometheus probe, and so on).
 
-### Specify Command to the Probe
+### Configure Command Probe
 
-In this example, you will specify details of the command probe, that is, provide a command to the command probe.
+You can configure a probe using the YAML manifest or from the UI. When you use the UI to configure a probe, the probe attributes are minified in the corresponding YAML, and are referred using the **probeID**.
 
-1. In the **Probe Details** modal, enter a command in the **Command** section. In this example, the command you enter will display a value on the console.
+In this example, you will specify details of the command probe from the UI.
+
+1. In the **Probe Details** modal, enter a command in the **Command** field.
 
  ![Step 1](./static/newrelic/source-mode-3.png)
 
-### Command Probe in Inline Mode
-
-Inline mode is used to define all the probe properties using the manifest. You can use the UI to configure the manifest. In this case, the manifest is minified for ease of use. To use the command probe in the **inline** mode from the UI,
-
-2. Enter the **Type**, **Comparison criteria**, and the **Value**. Toggle to switch off the **Source** mode. Click **Setup probe**.
+2. Enter the **Type**, **Comparison criteria**, and the **Value**. Click **Configure Properties**. Provide other values like **Timeout**, **Interval**, **Attempt**, **Polling Interval**, and **Verbosity**. Click **Setup Probe**.
 
  ![Step 2](./static/newrelic/inline-3.png)
 
-#### Validation in Inline Mode
+### Configure Command probe with source parameter
 
-When the probe in **inline mode** is used in a chaos experiment, you can see that the probe failed. This is because the actual value is an empty value but the expected value is different. The experiment doesn't specify any environment variable that could be associated with a user name, so the resultant value is empty.
-
- ![validation inline](./static/newrelic/val-inline.png)
-
-### Command probe in source mode
-
-Source is a field that you can specify when defining parameters to the command probe. To use the command probe with `source` button enabled, specify the parameters in the UI, which is later minified.
+To use the command probe with `source` parameter, enable the **Source** radio button, specify the parameters in the UI, which is later minified.
 
 To use the command probe in the **source** mode:
 

@@ -20,6 +20,10 @@ Harness CE is available as the SaaS version, that you can use by either signing 
 
 ## Chaos Platform Features
 
+### Powered by LitmusChaos
+
+HCE is built on open-source CNCF chaos engineering project [LitmusChaos](https://litmuschaos.io/). It leverages the robustness of LitmusChaos and provides additional capabilities that makes chaos engineering an easy practice for enterprises. The additional capabilities are listed [here](/docs/chaos-engineering/getting-started/#hce-and-litmuschaos).
+
 ### Centralized Chaos Control Plane
 
 The control plane comprises of microservices that enable the [web-based portal](https://app.harness.io) to perform its functions.
