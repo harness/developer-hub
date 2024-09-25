@@ -19,6 +19,10 @@ Pod HTTP latency:
 - Simulates latency to specific API services for (or from) a given microservice.
 - Simulates a slow response on specific third-party or dependent components or services.
 
+:::info note
+Pod HTTP latency supports HTTP, HTTPS methods, and gRPC framework.
+:::
+
 ### Permissions required
 
 Below is a sample Kubernetes role that defines the permissions required to execute the fault.
