@@ -14,7 +14,7 @@ export const ReferenceArchitecturesCards: CardSections = [
         module: MODULES.platform,
         description:
           "Get started with Infrastructure as Code Management reference architectures.",
-        link: "/kb/category/infra-as-code-management",
+        link: "/kb/reference-architectures/infra-as-code-management",
       },
       {
         title: "Cloud Cost Management",

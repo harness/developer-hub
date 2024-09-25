@@ -69,11 +69,9 @@ Harness seamlessly integrates with third-party services like external code repos
 - 
 
 ### State Management
-- **Remote State Storage:** Use remote state backends like AWS S3, GCP Cloud Storage, or Azure Blob Storage for reliable and scalable state management. Ensure state files are stored securely and versioned to prevent accidental data loss or corruption.
+- **Remote State Storage:** Use remote state backends like AWS S3, GCP Cloud Storage, or Azure Blob Storage for reliable and scalable state management. Ensure state files are stored securely and versioned to prevent accidental data loss or corruption. Go to [initialize remote backends](https://developer.harness.io/docs/infra-as-code-management/remote-backends/init-configuration) for more information.
 - **State Locking and Security:** Implement state locking to prevent multiple users or processes from modifying the state simultaneously, reducing the risk of conflicting changes and state corruption. For example, tools like OpenTofu or Terraform provide native support for state locking, typically using a shared backend like a database or cloud storage service. This ensures that only one operation can modify the state at a time, protecting the integrity of your infrastructure configurations.
-- **State File Security:** Encrypt state files both at rest and in transit to protect sensitive information such as resource configurations and secrets. Use encryption options provided by your state backend (e.g., server-side encryption for S3) and ensure access to state files is restricted to authorized users and services only.
 
 ### Error Handling and Debugging
 - **Common Errors:** Common IaCM errors include misconfigurations, authentication failures, and resource conflicts. To troubleshoot these, check the error messages in your pipeline execution logs, which provide detailed information about the cause and location of the issue.
 - **Pipeline Execution Logs:** Utilize pipeline execution history to view detailed logs for each pipeline run. These logs capture step-by-step execution details, making it easier to identify and resolve issues.
-- **Logging and Monitoring:** Set up comprehensive logging and monitoring for IaCM pipelines. Use tools like CloudWatch (AWS), Stackdriver (GCP), or Azure Monitor to capture logs and set alerts for critical errors or anomalies. This proactive approach enables faster detection and resolution of issues.
