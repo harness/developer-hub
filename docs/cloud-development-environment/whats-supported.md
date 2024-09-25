@@ -23,7 +23,7 @@ You can create Gitspaces for the following repository types:
 
 Gitspaces come pre-configured with your IDE of choice. We currently support the following:
 
-1. [VS Code Desktop](https://code.visualstudio.com/)
+1. [VS Code Desktop](https://code.visualstudio.com/) (>=v1.81.0)
 2. [VS Code Browser](https://code.visualstudio.com/docs/editor/vscode-web)
 
 We are working on support for [IntelliJ IDEA](https://www.jetbrains.com/idea/) and other popular IDEs, so stay tuned for those to be added soon. 

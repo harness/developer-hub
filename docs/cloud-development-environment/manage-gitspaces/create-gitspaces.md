@@ -49,7 +49,7 @@ import TabItem from '@theme/TabItem';
 
 ### Pre-Requisite: Install VS Code Desktop Extension
 
-1. You can install and configure the **Gitspaces VS Code extension** to use it on your VS Code Desktop App.
+1. You can install and configure the **Gitspaces VS Code extension** to use it on your VS Code Desktop App(>=v1.81.0).
 
 2. Install the Gitspaces VS Code Extension on from VS Code Extensions Marketplace. Click on **Settings** and Go to the **Extension settings** and add the host URL as `https://app.harness.io/`  
 
