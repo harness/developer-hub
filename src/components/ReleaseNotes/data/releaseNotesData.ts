@@ -107,6 +107,13 @@ import {
             link: "/release-notes/internal-developer-portal",
           },
           {
+            title: "Internal Developer Portal release notes",
+            module: MODULES.cde,
+            description:
+              "",
+            link: "/release-notes/cloud-development-environment",
+          },
+          {
             title: "Security Testing Orchestration release notes",
             module: MODULES.sto,
             description:
