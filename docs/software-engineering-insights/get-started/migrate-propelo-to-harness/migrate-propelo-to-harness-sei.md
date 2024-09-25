@@ -273,6 +273,8 @@ After updating the `satellite.yml` file, run the container to schedule the inges
 
 ### Jenkins Plugin
 
+<DocVideo src="https://www.youtube.com/embed/xCsnw6VHRFs?si=y2X6J2gMDajchYbt" />
+
 #### For Plugin Versions 1.0.30 and Above
 
 If your Jenkins plugin version is 1.0.30 or higher, follow the instructions below. You can contact [Harness Support](mailto:support@harness.io) to confirm the active plugin version you are using.
