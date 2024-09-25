@@ -222,6 +222,9 @@ src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga @dewan-ahme
 #FF Roadmap
 src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
 
+#FME Roadmap
+src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow
+
 #IACM Roadmap
 src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness
 
