@@ -16,7 +16,11 @@ Pod HTTP status code:
 - Tests the application's resilience to error code HTTP responses from the provided application server.
 - Simulates unavailability of specific API services (503, 404).
 - Simulates unavailability of specific APIs for (or from) a given microservice.
-- Simulates unauthorized requests for third party services (401 or 403), and API malfunction, that is internal server error (50x). 
+- Simulates unauthorized requests for third party services (401 or 403), and API malfunction, that is internal server error (50x).
+
+:::info note
+Pod HTTP status code supports HTTP method only.
+:::
 
 ### Permissions required
 

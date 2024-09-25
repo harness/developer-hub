@@ -432,7 +432,7 @@
 	border: 1px solid var(--mod-sto-200);
 	color: var(--mod-sto-300);
 	&::before {
-		content: url('/img/icon_cloud_development_environments_s.svg');
+		content: url('/img/cde_icon.svg');
 		display: inline-block;
 		width: 16px;
 		height: 16px;
@@ -869,7 +869,7 @@
         margin-right: 4px;
     }
     &[title="Cloud Development Environments"]::before {
-        content: url('/img/icon_cloud_development_environments_s.svg');
+        content: url('/img/cde_icon.svg');
         display: inline-block;
         width: 16px;
         height: 16px;

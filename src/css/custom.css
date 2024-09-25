@@ -203,6 +203,13 @@
   /* Module Colors/Continuous Delivery/100 */
   --mod-cd-100: #f6fff2;
 
+  /* Module Colors/Cloud Development Environment/300 */
+  --mod-cde-300: #1947ec;
+  /* Module Colors/Cloud Development Environment/200 */
+  --mod-cde-200: #2660ff;
+  /* Module Colors/Cloud Development Environment/100 */
+  --mod-cde-100: #ebefff;
+
   /* Module Colors/Continuous Verification/300 */
   --mod-cv-300: #30841f;
   /* Module Colors/Continuous Verification/200 */
@@ -556,6 +563,10 @@ details summary::before {
 
 .color-cd {
   color: var(--mod-cd-200);
+}
+
+.color-cde {
+  color: var(--mod-cde-200);
 }
 
 .color-ff {
@@ -1057,6 +1068,17 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+.sidebar-cde > div > a::before,.sidebar-cde > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/cde_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .sidebar-iacm > div > a::before,.sidebar-iacm > a::before{
   content: " ";
   display: inline-block;
@@ -1351,6 +1373,9 @@ html[data-theme="dark"] .sidebar-opensource > a::before {
 
 .continuous-delivery--gitops:hover {
   border-color: var(--mod-cd-200) !important;
+}
+.cloud-development-environment:hover {
+  border-color: var(--mod-cde-200) !important;
 }
 .continuous-integration:hover {
   border-color: var(--mod-ci-200) !important;
