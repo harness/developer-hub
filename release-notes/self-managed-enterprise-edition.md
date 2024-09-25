@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-09-12T14:00
+date: 2024-09-30T14:00
 sidebar_position: 16
 ---
 
@@ -145,6 +145,87 @@ To acquire the necessary `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD`, contact 
 Upon providing your credentials and the release version, the script will proceed to push the Looker image to your private repository.
 
 :::
+## September 30, 2024, version 0.21.0
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.21.0](https://github.com/harness/helm-charts/releases/tag/harness-0.21.0) |
+| Air Gap Bundle | [0.21.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.21.0) |
+| NG Manager | 1.55.6 |
+| CI Manager | 1.45.4 |
+| Pipeline Service | 1.93.4 |
+| Platform Service | 1.37.1 |
+| Access Control Service | 1.58.1 |
+| Delegate | 24.08.83804 |
+| GitOps Service | 1.17.5 |
+| GitOps Agent | 0.78.0 |
+| Change Data Capture | 1.33.0 |
+| STO Core | 1.108.4 |
+| Test Intelligence Service | 1.27.1 |
+| NG UI | 1.41.4 |
+| LE NG | 1.3.1 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.21.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.21.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.21.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.21.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.21.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.21.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.21.0/sto_images.tgz" \
+  .
+```
+
+### Early access features
+
+### New features and enhancements
+
+#### Harness Platform
+
+- Upgraded the Spring Framework libraries to version `6.0.18` to address multiple critical CVEs reported by Prismacloud. (PL-38815, ZD-42531, ZD-44910, ZD-46364, ZD-50403, ZD-52222, ZD-53107, ZD-53760, ZD-55114, ZD-60387, ZD-61129, ZD-62327, ZD-62502, ZD-62674, ZD-62690, ZD-63256, ZD-63383)
+
+- The BouncyCastle library has been upgraded from version `1.76` to `1.78` to address several medium-severity CVEs (CVE-2024-29857, CVE-2024-30171, CVE-2024-30172) and enhance overall system security. (PL-51346)
+
+- Upgraded the `dnsjava` library to version `3.6.0` to address CVE-2024-25638, which involved potential security vulnerabilities in DNS query responses. This item requires Harness Delegate version 24.08.83800. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55721, ZD-63383, ZD-68810) 
+
+- Upgraded the org.apache.cxf:cxf-core library from version 3.5.8 to 3.5.9 to address a security vulnerability (CVE-2024-32007). This upgrade enhances the security and stability of the application. (PL-55722, ZD-63383)
+
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed an issue where pipelines could get stuck in the running state due to delegate task handling. A new flow has been introduced to recompute eligible delegates after 3 rounds of broadcast, ensuring tasks are acquired even if delegates restart. This fix is controlled by the `RECOMPUTE_ELIGIBLE_DELEGATES_LIST` feature flag and requires Harness Delegate version 24.08.83802. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55249, ZD-66247)
+
+- Added an index for Audit Logs to improve query performance and reduce CPU usage (PL-55486)
+
+- The `displayname` attribute from SAML assertions is now honored for new JIT-provisioned users logging in via SAML. This ensures that usernames are correctly updated to reflect the displayname attribute, addressing inconsistencies in user names. (PL-55616)
+
+- Fixed an issue preventing Canny login from the Harness UI for customers using vanity URLs. The Canny login flow now correctly redirects to sso.html, enabling seamless access across all environments, including global gateway clusters and vanity URLs. (PL-55679, ZD-66968, ZD-67907)
+
+- The delegate initialization process has been moved from a background thread to the start of application. This change addresses issues with health check failures during startup by ensuring that delegate registration, websocket establishment, and heartbeat scheduling are completed before health checks are performed. This item requires Harness Delegate version 24.08.83700. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55905, ZD-67667)
+
+- Resolved an issue where not all user groups were visible in search results when inherited groups exceeded 1000. The search now displays a higher number of inherited user groups, ensuring comprehensive visibility for all user groups across your organization. (PL-56021, ZD-68131)
+
+- Fixed an issue where adding a new tag using the mouse click in the Tags input box on Default Settings Page wasn't working. Users can now create tags using both mouse clicks and the ENTER key. (PL-56098)
+
+- Fixed an issue where installing or upgrading SMP to version 0.19.0 would fail when `harness-secrets` was disabled. This issue was due to a version inconsistency in the common chart used by Helm, which has now been resolved by adjusting the chart hierarchy. (PL-56179)
+
+- Updated the delegate expiration logic to align with the 6-month support and 2-month upgrade policy. This ensures that delegates maintain compatibility and support within the specified time frame. This item requires Harness Delegate version 24.08.83800. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56193, ZD-68597, ZD-69188, ZD-69266)
+
+- Resolved an issue causing SCM binaries to not be found during delegate startup with versions `24.07.83605` and `24.07.83606`. Updated the handling of default values for built-in Docker environment variables to prevent delegate initialization errors. This item requires Harness Delegate version 24.08.83800. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).  (PL-56209, ZD-68661)
+
+- Fixed an issue where restarting a delegate with an account-level token incorrectly moved the existing project-level delegate group to the account level. The query for locating the existing delegate group has been updated to ensure that it correctly handles cases where the owner field is null, preventing unintended group migrations. This item requires Harness Delegate version 24.08.83800. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56377)
+
+- Resolved consistent proxy authentication issues seen after delegate upgrade by removing unnecessary environment variable expansion and adding URL encoding for special characters. The `PROXY_PASSWORD` environment variable is now handled correctly, ensuring proper authentication without requiring expansion. This item requires Harness Delegate version 24.08.83802. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56623, ZD-68887)
+
 ## September 12, 2024, version 0.20.2
 
 This release includes the following Harness module and component versions.
