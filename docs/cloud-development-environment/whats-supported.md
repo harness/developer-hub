@@ -5,6 +5,12 @@ sidebar_label: What's Supported
 sidebar_position: 1
 ---
 
+:::info
+
+Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io 
+
+:::
+
 Harness CDE supports a number of git providers to fetch the code from and few IDE's to help you with a developer environment. 
 
 ## Git Providers 
