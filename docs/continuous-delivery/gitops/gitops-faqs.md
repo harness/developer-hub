@@ -160,3 +160,48 @@ The minimum RBAC requirements depend on the applications and destination cluster
 ### How can I sync or delete an application or non-deployment resource?
 
 Each resource in our UI has a three dot "kebab menu" that allows you sync or delete the resource. 
+
+### What is the default setting for ArgoCD regarding cluster creation?
+   The default setting for ArgoCD is "in-cluster" creation, which is only explicitly prevented for namespaced agents when limiting where the agent can deploy.
+
+### Does the "in-cluster" creation have an assigned ArgoCD project?
+   No, the "in-cluster" setup does not have an assigned ArgoCD project by default.
+
+### How does the agent handle entities between ArgoCD and Harness?
+   The agent picks up entities from ArgoCD and sends them to GitOps according to the mapping between the ArgoCD and Harness projects. When the agent is first created, no mappings exist.
+
+### What does the account-level agent do?
+   The account-level agent picks up all entities that exist in ArgoCD and sends them to the GitOps service according to mappings. Initially, only global (non-project) entities are sent because no mappings exist at the start.
+
+### Can a project-level agent send "in-cluster" entities?
+   No, a project-level agent cannot send "in-cluster" entities until a mapping is created, either through the creation of an app, cluster, or repo in the UI, or by explicitly setting a mapping on the agent edit page.
+
+### When does "in-cluster" get reconciled with the GitOps service?
+   "In-cluster" entities are reconciled with the GitOps service only in the case of an account-level agent. The account agent will pick up all global entities and send them to GitOps, even if no mappings exist.
+
+### Can you have multiple agents per organization?
+   While it is possible, it is not recommended due to the manual steps involved in agent installation. The goal is to automate as much as possible.
+
+### Is it possible to have an agent at the account level and create clusters at the organization level?
+   No, this approach is not feasible because each agent can only have one "in-cluster" configuration. Therefore, creating clusters at the organization level for a single account-level agent is not possible.
+
+### What is a feasible alternative to having multiple "in-cluster" clusters for an agent?
+   You can create multiple clusters for the same agent by specifying "Cluster URL and credentials" rather than using the "in-cluster" identifier.
+
+### How can you create multiple clusters for the same agent?
+   You can create multiple clusters for the same agent by providing the "Cluster URL and credentials" during cluster setup instead of using the "in-cluster" configuration.
+
+### Is creating multiple clusters with the "in-cluster" identifier recommended?
+   No, creating multiple clusters with the "in-cluster" identifier is not recommended due to known issues with this configuration.
+
+### What challenges arise from having an agent per organization?
+   The main challenges include the manual steps required for agent installation, which complicates management and reduces automation efficiency.
+
+### What happens if no mapping exists when an agent is created?
+   If no mapping exists when the agent is created, only global (non-project) entities will be sent to the GitOps service until appropriate mappings are established.
+
+### Can a project-level agent automatically manage all clusters?
+   No, a project-level agent cannot automatically manage all clusters until specific entities are created or mappings are explicitly defined, limiting its functionality.
+
+### How does the existence of global entities affect the agent's functionality?
+   The existence of global entities allows the account-level agent to send those entities to the GitOps service, even if no project mappings are defined, thereby maintaining some level of operational capability.
