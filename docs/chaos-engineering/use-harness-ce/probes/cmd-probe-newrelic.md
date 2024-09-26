@@ -1,7 +1,7 @@
 ---
-title: Command probe in source mode with New Relic
+title: Command probe with New Relic
 sidebar_position: 6
-description: Guide to using the command probe in source mode with New Relic
+description: Guide to using the command probe with the source parameter in New Relic
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/probes/cmd-probe-usage
 - /docs/chaos-engineering/features/probes/cmd-probe/cmd-probe-newrelic
@@ -14,13 +14,12 @@ This topic guides you through steps to use the **command probe** in **source mod
 
 * [Command probe](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/cmd-probe)
 * [Create a command probe](/docs/chaos-engineering/use-harness-ce/probes/use-probe#create-a-resilience-probe)
-* [Command probe in source mode](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-usage#command-probe-in-source-mode)
+* [Command probe with source parameter](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-usage#configure-command-probe-with-source-parameter)
 
-When you execute a command probe in the source mode, it allows you to provide a custom image, environment variables, and secrets to execute the command.
 
 ### Extract Data from New Relic
 
-1. Create a binary file that stores the logic to extract data from New Relic. This file should extract the minimum, maximum, and mean values from the API response.
+1. Create a binary file that stores the logic to extract data from New Relic. In this example, we will create the logic such that this file should extract the minimum, maximum, and mean values from the API response.
 2. Dockerize the binary. This image contains the logic to query the New Relic GraphQL API and extract the minimum, maximum, and mean values from the API response.
 3. [Create a new command probe](/docs/chaos-engineering/use-harness-ce/probes/use-probe#create-a-resilience-probe), add the necessary details, and select **Configure Properties**.
 
