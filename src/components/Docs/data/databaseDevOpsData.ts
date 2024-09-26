@@ -26,7 +26,7 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.dbdevops,
           description:
             "Learn how to use the different elements of Harness Database DevOps.",
-          link: "/docs/category/use-database-devops",
+          link: "/docs/category/use-db-devops",
         },
         // {
         //   title: "Third Module to add",
