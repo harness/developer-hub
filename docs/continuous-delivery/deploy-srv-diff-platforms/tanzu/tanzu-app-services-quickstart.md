@@ -366,7 +366,9 @@ Configure the following artifact bundle settings:
 
 :::info note
 
-You can configure CLI Environment Variables such as CF_STAGING_TIMEOUT and CF_HOME in the **Advanced** section of the service tab.
+You can configure CLI environment variables such as CF_STAGING_TIMEOUT and CF_STARTUP_TIMEOUT in the **Advanced** section of the service tab.
+
+Certain CF CLI environment variables, such as CF_HOME, CF_PLUGIN_HOME, CF_USERNAME, CF_PASSWORD, and CF_DOCKER_CREDENTIALS, are internally set by the system and will be ignored.
 
    ![](static/cli_environment_variables.png)
 

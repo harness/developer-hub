@@ -129,7 +129,9 @@ To override the variables of specific services deployed to an environment, do th
 
 :::info note
 
-You can configure CLI Environment Variables override such as CF_STAGING_TIMEOUT and CF_HOME. Select the **CLI Environment Variables** in the **Override Type** dropdown and enter the **Override Info** such as Name, Type and Value.
+You can configure CLI environment variables override such as CF_STAGING_TIMEOUT and CF_STARTUP_TIMEOUT. Select the **CLI Environment Variables** in the **Override Type** dropdown and enter the **Override Info** such as Name, Type, and Value.
+
+Certain CF CLI environment variables, such as CF_HOME, CF_PLUGIN_HOME, CF_USERNAME, CF_PASSWORD, and CF_DOCKER_CREDENTIALS, are internally set by the system and will be ignored.
 
    ![](static/overrides_cli_environment_variables.png)
 
