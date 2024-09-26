@@ -5,11 +5,6 @@ sidebar_position: 4
 sidebar_label: Onboarding guide
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<BetaIcon />
-
 # DB DevOps onboarding guide
 
 Welcome to the Harness Database DevOps (DB DevOps) onboarding guide. This topic introduces you to the powerful capabilities of DB DevOps using Harness and guides you through key functionalities that streamline and secure your database management tasks.  

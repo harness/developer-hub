@@ -680,10 +680,10 @@ const sidebars = {
       type: "category",
       label: "Database DevOps",
       className: "sidebar-dbdevops",
-      link: {
-        type: "doc",
-        id: "database-devops",
-      },
+      // link: {
+      //   type: "doc",
+      //   id: "database-devops",
+      // },
       customProps: {
         description:
           "Learn how to manage Harness Database DevOps.",
