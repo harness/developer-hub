@@ -5,6 +5,12 @@ description: Basic terminology and concepts related to Harness Database DevOps
 sidebar_position: 20
 ---
 
+import BetaIcon from '/img/icon_beta.svg';
+
+<BetaIcon />
+
+# Database DevOps Key Concepts
+
 This topic covers basic terminology and concepts related to Database DevOps. For general Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/key-concepts.md). For information about using DB DevOps, go to [Harness Database DevOps onboarding guide](onboarding-guide.md).
 
 ## Database

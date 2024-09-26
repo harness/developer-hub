@@ -15,17 +15,17 @@ import { MODULES } from "@site/src/constants"
         "",
       list: [
         {
-          title: "Get started with Feature Flags",
+          title: "Get started with Database DevOps",
           module: MODULES.dbdevops,
           description:
-            "Learn the basics of Harness Feature Flags.",
+            "Learn the basics of Harness Database DevOps.",
           link: "/docs/category/get-started-with-database-devops",
         },
         {
-          title: "Create, manage, and view Database DevOpd",
+          title: "Build with Database DevOps",
           module: MODULES.dbdevops,
           description:
-            "Learn how to use he different elements of Harness Database DevOps.",
+            "Learn how to use the different elements of Harness Database DevOps.",
           link: "/docs/category/use-database-devops",
         },
         // {

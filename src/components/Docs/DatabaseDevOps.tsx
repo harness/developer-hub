@@ -17,7 +17,7 @@ export default function FF() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_dbdevops.svg`} />
-            <h1>Feature Flags</h1>
+            <h1>Database DevOps</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/kb/database-devops">
@@ -39,19 +39,18 @@ export default function FF() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness Feature Flags (FF) is a feature management solution that
-              lets you change your software's functionality without deploying
-              new code. It does this by letting you hide code or behavior
-              without having to ship new versions of the software. A feature
-              flag is like a powerful <i>If</i> statement.
+              Harness Database DevOps (DB DevOps) is a new module that seamlessly integrates database changes into CI/CD pipelines, automating 
+              schema management and governance. It provides full visibility into database changes across environments, ensuring reliable 
+              rollbacks and compliance with centralized policies. With GitOps workflows and support for major databases, it enables developers 
+              and DBAs to collaborate more effectively, reducing bottlenecks and deployment risks.
             </p>
             <div className={styles.illustrationContainer}>
               <img
                 className={styles.illustration}
                 src={
                   colorMode === "light"
-                    ? `${baseUrl}img/ff.svg`
-                    : `${baseUrl}img/FF_Landing_Page_dark_mode.svg`
+                    ? `${baseUrl}img/dbdevops_landing_page_lightmode.svg`
+                    : `${baseUrl}img/dbdevops_landing_page_darkmode.svg`
                 }
               />{" "}
             </div>

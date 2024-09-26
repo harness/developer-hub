@@ -1,5 +1,6 @@
 ---
 title: Automated Rollback for Database Schemas
+sidebar_label: Automated Rollback for Database Schemas
 description: Automated Rollback for Database Schemas.
 sidebar_position: 4
 ---
