@@ -145,8 +145,8 @@ You can create custom faults that can be injected into your application to test 
 
 ### Chaos RBACs
 
-Harness CE provides several controls to ensure the safe execution of chaos experiments on your infrastructure. The foundational elements of the chaos engineering process, such as chaos infrastructure, chaos hubs, chaos experiments, and chaos GameDays are registered as the module resources, with permissions exercised against them. These resources are scoped at the project level.
-For more information, go to [RBAC and User Authorization](/docs/chaos-engineering/security/#user-authorization-and-role-based-access-control).
+Harness CE provides several controls to ensure the safe execution of chaos experiments on your infrastructure. The foundational elements of the chaos engineering process, such as chaos infrastructure, ChaosHubs, chaos experiments, and GameDays are registered as the module resources, with permissions granted to use them. These resources are scoped at the project level.
+For more information, go to [RBAC and User Authorization](/docs/chaos-engineering/use-harness-ce/governance/rbac#user-authorization-and-role-based-access-control).
 
 ### ChaosGuard
 
