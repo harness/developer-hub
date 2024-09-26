@@ -151,6 +151,38 @@ spec:
 
 In the above template we have used the [Harness Trigger Custom Action](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend-module-github), which takes the **exact variable name** `github_org` and `github_repo` you created for your pipeline as input and a **token** as `apikey`
 
+:::info
+
+The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page`  in-case you have multiple pages.
+
+```
+# example workflow.yaml
+...
+parameters:
+  - title: <PAGE-1 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+    token:
+      title: Harness Token
+      type: string
+      ui:widget: password
+      ui:field: HarnessAuthToken
+  - title: <PAGE-2 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+  - title: <PAGE-n TITLE>  
+...
+```
+:::
+
 11. Copy the above template file in your git provider, and save it as `workflow.yaml`. 
 
 ## Register Template in IDP
