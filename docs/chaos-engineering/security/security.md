@@ -60,22 +60,6 @@ The permissions listed an be tuned for further minimization based on environment
 | custom resource definitions, chaosengines, finalizers, chaosexperiments, chaosresults | get, create, update, patch, delete, list, watch, deletecollection | Lifecycle management of chaos custom resources in CE.                                                                        |
 | leases (CRDs)                                                                         | get, create, list, update, delete                                 | Enable high availability of chaos custom controllers via leader elections.                                                    |
 
-### User authentication
-
-The Harness platform is fully integrated with several public OAuth providers with support for two-factor authentication and domain-whitelisting.
-Refer to the [authentication overview](/docs/platform/authentication/authentication-overview.md) to learn more.
-
-
-### User authorization and role-based access control
-
-The chaos module leverages [Harness access control](/docs/platform/role-based-access-control/rbac-in-harness.md) capabilities to restrict user action on chaos resources, which adhere to the same account-organization-project identification as the rest of the platform resources.
-
-The foundational elements of the chaos engineering process, chaos infrastructure, chaos hubs, chaos experiments, and chaos GameDays are registered as the module resources, with permissions exercised against them. These resources are scoped at the project level.
-
-If you (as a user) have administrative privileges on the project, you can create predefined role(s) pertaining to chaos resource access, that is, Create (Execute) and Edit (Update), View and Delete, and map them to the other invited users or user-groups.
-
-![User auth and RBAC](./static/overview/user-auth-rbac.png)
-
 ### Secrets management
 
 HCE leverages secrets for administrative or management purposes as well as at runtime (during execution of chaos experiments). The former involves users leveraging the Harness Secret Manager on the control plane, while the latter is purely managed by the users themselves in their respective Kubernetes clusters.

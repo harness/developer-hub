@@ -3360,3 +3360,7 @@ No, there is no way to find out which service account is associated with a servi
 
 ### How can I restrict a Harness secret so that it can only be accessed and used by a specific pipeline?
 You can use our RBAC and create a resource group and role so it can be used only in the required pipeline https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/#create-a-resource-group
+
+### If there is a pipeline in progress when we upgrade the delegate. Will the pipeline fail and need to be re-run?
+Delegate upgrades do not affect pipelines unless the shutdown timeout is reached. Before an upgrade is performed, the delegate finishes the underway tasks. The delegate then shuts down. There is a 10-minute timeout by default as part of the shutdown process. You can configure this setting, by updating the terminationgraceperiod in delegate yaml.
+

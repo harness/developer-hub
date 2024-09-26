@@ -136,6 +136,12 @@ The **Specify hosts** or **Select preconfigured hosts from Physical Data Center*
 
 The **Map Dynamically Provisioned Infrastructure** option is used when your are deploying to a dynamically provisioned infrastructure.
 
+:::note
+
+Write down hosts as a comma separated list. 
+
+:::
+
 ### Pre-existing infrastructure
 
 Let's look at an example of setting up an Infrastructure Definition for a pre-existing infrastructure.

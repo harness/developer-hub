@@ -5,7 +5,7 @@ sidebar_position: 10
 sidebar_label: Business Alignment profile
 redirect_from:
   - /docs/software-engineering-insights/sei-profiles/business-alignment-profile
-  - /docs/software-engineering-insights/sei-profiles/investment-profile
+  - /docs/software-engineering-insights/sei-profiles/business-alignment-profile
 ---
 
 Business Alignment metrics help you understand where engineers are allocating their time through effort investment metrics. It is one of the most critical components of engineering metrics that connects your engineering to the business value.
@@ -48,7 +48,7 @@ The ranking of categories plays a significant role in determining how tickets ar
 
 ### Allocation Goals
 
-After adding [categories](https://developer.harness.io/docs/software-engineering-insights/sei-profiles/investment-profile#categories), you can set goals for how much time you want developers to work on each category.
+After adding [categories](https://developer.harness.io/docs/software-engineering-insights/sei-profiles/business-alignment-profile#categories), you can set goals for how much time you want developers to work on each category.
 
 Define the **Ideal Range** for each Category. You can set ranges in percentage values. After defining your ideal range, SEI automatically calculates the Acceptable range and Poor range based on your ideal.
 
@@ -90,6 +90,9 @@ To add a custom **Category** to the profile configuration:
 
 * Go to the **Business Alignment profile** settings.
 * Select **+New Category** under the **RANKED CATEGORIES** section.
+
+![](./static/ba-new-category.png)
+
 * Add a **Name**, then click on **Save** to save the Category.
 * Define the **Filter Sets**, **Ticket Fetching Criteria** and **Allocation Goals** for the newly created custom category.
 
@@ -132,6 +135,8 @@ Finally, you will set the allocation goals for each category. This involves deci
 
 * Set an ideal resource allocation range as a percentage. This is your target for how much effort should go into each category.
 * You can also customize what is considered an acceptable range. This gives some flexibility while still aligning with your overall objectives.
+
+![](./static/allocation-goals.png)
 
 ### Step 7: Save the profile
 

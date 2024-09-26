@@ -64,10 +64,8 @@ async function config() {
           sitemap: {
             // changefreq: 'weekly',
             // priority: 0.5,
-            ignorePatterns: [
-              '/docs/database-devops',
-              '/docs/database-devops/**',
-            ],
+            // ignorePatterns: [
+            // ],
             // filename: 'sitemap.xml',
           },
           theme: {
@@ -126,6 +124,10 @@ async function config() {
                   to: 'docs/continuous-delivery',
                 },
                 {
+                  label: 'Database DevOps',
+                  to: 'docs/database-devops',
+                },
+                {
                   label: 'Infrastructure as Code Management',
                   to: 'docs/infrastructure-as-code-management',
                 },
@@ -158,6 +160,10 @@ async function config() {
                   to: 'docs/internal-developer-portal',
                 },
                 {
+                  label: 'Cloud Development Environments (BETA)',
+                  to: 'docs/cloud-development-environment',
+                },
+                {
                   label: 'Software Engineering Insights',
                   to: 'docs/software-engineering-insights',
                 },
@@ -167,7 +173,7 @@ async function config() {
                 },
                 {
                   label: 'Open Source',
-                  href: 'https://docs.gitness.com/',
+                  to: 'docs/open-source'
                 },
                 {
                   label: 'FirstGen',
@@ -282,11 +288,6 @@ async function config() {
               href: '/roadmap',
             },
             {
-              label: 'Open Source',
-              position: 'right',
-              href: 'https://docs.gitness.com/',
-            },
-            {
               type: 'custom-coveo-search',
               position: 'right',
             },
@@ -377,10 +378,6 @@ async function config() {
                 {
                   label: 'API Reference',
                   to: 'https://apidocs.harness.io/',
-                },
-                {
-                  label: 'Open Source',
-                  to: 'https://docs.gitness.com/',
                 },
                 {
                   label: 'YouTube',

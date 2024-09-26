@@ -75,7 +75,7 @@ While an annual contract can not be lowered mid-year through the contract, pleas
 
 #### What if I am building an open source project?
 
-We love Open Source and are committed to supporting our Community. We recommend the open-source [Gitness](https://gitness.com) for hosting your source code repository as well as CI/CD pipelines.
+We love Open Source and are committed to supporting our Community. We recommend [Harness Open Source](/docs/open-source/overview) for hosting your source code repository as well as CI/CD pipelines.
 
 Contact us and we will be happy to provide you with a no restriction SaaS Plan!
 
@@ -3299,7 +3299,7 @@ For frequently asked questions about Harness infrastructure provisioning, go to 
 
 For frequently asked questions about deployment swimlanes supported by Harness, go to the following docs:  
 
-- [Gitness and Community Edition FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/gitness-community-edition-faqs)
+- [Open Source and Free Edition FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/gitness-community-edition-faqs)
 - [Kubernetes deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-faqs)
 - [Helm and Native Helm deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-deployment-faqs)
 - [Kustomize deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-faqs)

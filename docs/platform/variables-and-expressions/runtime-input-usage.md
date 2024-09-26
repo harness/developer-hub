@@ -238,17 +238,45 @@ Avoid using `allowedValues` with runtime inputs in list fields and use the sugge
 
 :::
 
-## Allow multiple selection
+## Allow Multi Selection and Single selection
+
+
+You can select a **Mode** of selection while creating allowed values in Runtime Input:- 
+
+![](./static/mode_of_Selection_allowed_value.png)
+
+### Multi Selection
 
 :::note
-
-Currently, multiple selection for runtime inputs is behind the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
+Currently, multiple selection for runtime inputs is behind the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 :::
 
-Use multiple selection if you want to choose one or more values from the list of [allowed values](#allowed-values). You can use multiple selection for runtime inputs in pipelines, stages, and shell script variables only. Multiple selection is an extension of allowed values; you must specify allowed values to use multiple selection.
+You can use Multi Selection if you want to choose one or more values from the list of [allowed values](#set-allowed-values). Multi Selection maps to the `.allowedValues()` functor, and Single Selection maps to the 
+`.selectOneFrom()` functor. You can use multiple selection for runtime inputs in pipelines, stages, and shell script variables only. Multiple selection is an extension of allowed values, so you must specify allowed values to use it.
+
+For users who want to migrate to single selection, you can implement 
+`.selectOneFrom()` even before the FF `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES` is turned on.
 
 ![](./static/runtime-inputs-11.png)
+
+### Single Selection
+
+:::note
+1. If FF `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`, is turned off, then using Allowed values and Single Selection both have identical behaviour of selecting a single value.
+2. If FF `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES` is turned on, all the existing Allowed values will turn into **multi-select**. If the user wants to keep them as single select, they must change the option to **Single Selection**.
+:::
+
+You can use [**Single Selection Mode**](#allow-multi-selection-and-single-selection), if you want to chose only one value from the list of [allowed values](#set-allowed-values). 
+
+![](./static/single_selection_option.png)
+
+When writing pipelines in YAML, you can define Single Selection in allowed values by appending the `.selectOneFrom()` method to `<+input>`. For example: `<+input>.selectOneFrom(a,b,c)`.
+
+:::important note
+When using secrets as runtime inputs and configuring allowed values, the UI will not display an option for single selection. By default, only one value can be selected for a secret during runtime. 
+:::
+
+
 
 ## Supply runtime input during execution
 
