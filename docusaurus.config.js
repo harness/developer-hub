@@ -64,10 +64,10 @@ async function config() {
           sitemap: {
             // changefreq: 'weekly',
             // priority: 0.5,
-            ignorePatterns: [
-              '/docs/database-devops',
-              '/docs/database-devops/**',
-            ],
+            // ignorePatterns: [
+            //   '/docs/database-devops',
+            //   '/docs/database-devops/**',
+            // ],
             // filename: 'sitemap.xml',
           },
           theme: {

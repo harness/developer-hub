@@ -1,14 +1,9 @@
 ---
 title: Harness Database DevOps (DB DevOps) Overview
 sidebar_label: Overview
-displayed_sidebar: dbdevopsbeta
 description: Learn about Harness Database DevOps.
-# sidebar_position: 10
+sidebar_position: 10
 ---
-
-<!-- import BetaIcon from 'img/icon_beta.svg';
-
-<BetaIcon /> -->
 
 Harness Database DevOps helps customers integrate database changes seamlessly into their application deployment pipelines. It provides a centralized way to manage database schemas and enforce governance policies - all while enabling developers and DBAs to collaborate more effectively on database changes. 
 

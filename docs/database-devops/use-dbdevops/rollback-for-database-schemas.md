@@ -1,8 +1,8 @@
 ---
 title: Automated Rollback for Database Schemas
 description: Automated Rollback for Database Schemas.
-displayed_sidebar: dbdevopsbeta
-# sidebar_position: 4
+sidebar_label: Automated Rollback for Database Schemas.
+sidebar_position: 4
 ---
 
 This topic describes how Harness Database DevOps implements automated rollback to maintain the stability and integrity of your database schema workloads. 
