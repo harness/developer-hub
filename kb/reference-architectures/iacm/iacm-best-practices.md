@@ -11,17 +11,13 @@ This document provides a set of best practices and guidelines aimed at helping t
 
 ## Workflow hierarchy
 
-- **Account** is the root level, containing multiple Projects.
-    - **Projects** contain multiple Workspaces.
-        - **Workspaces** are isolated environments for IaC execution within a Project.
-- **Pipelines** are independent entities that can be executed against any Workspace within a Project.
+- **Account** is the root level, containing multiple Organizations.  
+    - **Organizations** contain multiple Projects.  
+        - **Projects** contain multiple Workspaces.  
+            - **Workspaces** are isolated environments for IaC execution within a Project.
+            - **Pipelines** are independent entities that can be executed against any Workspace within a Project.
 
-<!-- placeholder for hierarchy diagram -->
-
-### IaCM approaches / options
-- Terraform / OpenTofu
-- Harness UI
-- Harness API (with link to API docs and also Postman collection)
+![IaCM workflow hierarchy](static/iacm-hierarchy-diagram.png)
 
 ### Supported IaC Frameworks
 :::info opentofu / terraform
@@ -36,7 +32,8 @@ Harness IaCM currently supports integration with all **OpenTofu** versions<Harne
 
 ### Configuration Guidelines
 
-As a first stop, we recommend configuring your Cloud Provider and Code repository **connectors** to help streamline further configurations like workspace and pipeline creation so they can be easily selected.
+As a first step, we recommend configuring your Cloud Provider and Code repository **connectors** to help streamline further configurations like workspace and pipeline creation so they can be easily selected.  
+
 
 Go to [What's supported](https://developer.harness.io/docs/infra-as-code-management/whats-supported#supported-workspace-connectors) to see what cloud provider and code repository vendors are supported by Harness. 
 
