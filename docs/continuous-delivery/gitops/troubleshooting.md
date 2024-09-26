@@ -136,7 +136,12 @@ This error occurs when an agent is unable to connect to a repo:
 
 - To manage rate limiting in GitHub, see [Enabling rate limits for Git](https://docs.github.com/en/enterprise-server@3.10/admin/configuration/configuring-user-applications-for-your-enterprise/configuring-rate-limits#enabling-rate-limits-for-git).
 
+### Issue: GitOps agent pod stuck in CrashLoopBackoff
 
- 
+The GitOps agent goes into a CrashLoopBackoff state due to an authentication failure with the GitOps service. This issue occurred as the token in the agent’s YAML did not match the public key in the GitOps service database.
+
+This problem typically surfaces after re-enabling authentication if the agent previously operated in unauthenticated mode.
+
+- Ensure the agent's YAML file is updated with the correct authentication token, matching the public key in the database. After updating the YAML file, redeploy the agent to authenticate it properly. 
 
 
