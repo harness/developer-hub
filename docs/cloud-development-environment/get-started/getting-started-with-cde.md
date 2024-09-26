@@ -7,7 +7,7 @@ sidebar_label: Quickstart
 
 :::info
 
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io 
+Harness CDE is now available in [public beta](https://www.harness.io/blog/introducing-harness-cloud-development-environments). To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io 
 
 :::
 
@@ -141,7 +141,10 @@ git config --global user.name "Your Name"
 
 ![](./static/settings-vs-code-extension.png)
 
-3. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. **Make sure you have already signed-in to Harness Platform already in your browser before starting this step.**
+3. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. You can connect to VS Code desktop via two ways: SSH Key or a temporary password. 
+
+    1. SSH Key: You can create a new SSH key and add it directly with the other gitspace requirements. In case, you don't have an existing SSH key - you can follow the next step (i.e. connect via temporary password)
+    2. Temporary Password: You can connect without a SSH key by simply starting the gitspace with the default config. Once the gitspace has been created, you will be redirected to VS Code Desktop and will be prompted to establish a remote connection with a temporary password. You can copy the temp password, and follow the steps to establish this connection.
 
 4. Any Gitspace you create with VS Code Desktop as the IDE will now open in your desktop application. You can also view a list of Gitspaces in the left navbar and switch between them as needed. 
 

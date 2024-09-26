@@ -7,7 +7,7 @@ sidebar_position: 1
 
 :::info
 
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io 
+Harness CDE is now available in [public beta](https://www.harness.io/blog/introducing-harness-cloud-development-environments). To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io 
 
 :::
 
