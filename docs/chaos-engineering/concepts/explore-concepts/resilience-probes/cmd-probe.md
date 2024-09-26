@@ -8,6 +8,8 @@ redirect_from:
 - /docs/chaos-engineering/features/probes/cmd-probe/
 ---
 
+import CommonNote from './shared/common-note.md'
+
 This topic describes the [definition](#definition) and [schema](#schema) of the command probe. It also describes how to tune the probe in two modes: [inline mode](#inline-mode) and [source mode](#source-mode).
 
 The command probe allows you to run Bash commands and match the output as part of the entry or exit criteria. The intent behind this probe is to implement a non-standard and imperative way to express the hypothesis. For example, you can check for specific data within a database, parse the value out of a JSON blob that is dumped into a certain path, or check for the existence of a particular string in the service logs.
@@ -284,6 +286,10 @@ Listed below is the probe schema for the command probe with properties shared ac
 </table>
 
 ## Definition
+
+A sample definition of the probe is given below.
+
+<CommonNote />
 
 ```yaml
 probe:

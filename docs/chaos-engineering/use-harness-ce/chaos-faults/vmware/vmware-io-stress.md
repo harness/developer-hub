@@ -10,6 +10,10 @@ VMware IO stress causes disk stress on the target VMware VMs. It aims to verify 
 
 ![VMware IO Stress](./static/images/vmware-io-stress.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 
 - VMware IO stress determines the resilience of an application to unexpected spikes in resources.

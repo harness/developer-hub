@@ -6,6 +6,7 @@ redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/chaosguard/introduction-to-chaosguard
 - /docs/chaos-engineering/concepts/explore-concepts/chaosguard
 - /docs/chaos-engineering/features/chaosguard/chaosguard-concepts
+- /docs/category/chaosguard
 ---
 
 This section introduces you to ChaosGuard and describes how Harness provides RBAC (role-based access control) to users or user groups to access the **chaos resources** at different levels using **ChaosGuard**.

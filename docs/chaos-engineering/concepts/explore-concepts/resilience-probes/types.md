@@ -29,11 +29,15 @@ The probe mode refers to the way in which a probe checks the system's health dur
 - **Continuous**: The probe is executed continuously, with a specified polling interval during the chaos injection.
 - **OnChaos**: The probe is executed continuously, with a specified polling interval strictly for chaos duration of chaos.
 
+:::tip
+
+:::
+
 ### Default probe
 
-By default, each fault imported in Chaos Studio would have a health check command probe configured in Edge mode. A Health check probes helps to ensure that the application remains available and responsive to user requests even in the event of unexpected failures. By regularly checking the health of the containers, Kubernetes can automatically take action if a container is not healthy, such as restarting or removing the container, to maintain the availability and responsiveness of the application.
+By default, each fault imported into Chaos Studio would have a health check command probe configured in `Edge` mode. Health check probes ensure that the application remains available and responsive to user requests in the event of unexpected failures, by regularly checking the health of the containers. This regular check ensures that Kubernetes can automatically take action if a container is not healthy, such as restarting or removing the container.
 
-It is mandatory to have at least one probe configured in a Chaos Experiment to validate user defined/default checks against the application.
+It is mandatory to have at least one probe configured in a chaos experiment to validate the user-defined (or default) checks against the application.
 
 ## Common use cases
 
@@ -116,5 +120,5 @@ probe:
 
 ## Next steps
 
-* [Configure and add a probe](/docs/chaos-engineering/use-harness-ce/probes/use-probe)
-* [Using command probe in different modes](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-usage)
+- [Configure and add a probe](/docs/chaos-engineering/use-harness-ce/probes/use-probe)
+- [Using command probe in different modes](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-usage)

@@ -7,6 +7,8 @@ redirect_from:
 - /docs/chaos-engineering/features/probes/slo-probe
 ---
 
+import CommonNote from './shared/common-note.md'
+
 Service Level Objective (SLO) probes let users validate the error budget for a given SLO when the corresponding application is subject to chaos and determine the verdict based on the percentage change in the error budget. The probe leverages the API from the Service Reliability Management (SRM) module and fetches the error budget values during the chaos execution time period. The success of a chaos probe can be defined based on the drop in the percentage of the error budget values. The percentage drop is defined by the user in the probe configuration.
 
 ## Probe definition
@@ -236,6 +238,9 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
 </table>
 
 ## Definition
+
+<CommonNote />
+
 
 ```yaml
 probe:

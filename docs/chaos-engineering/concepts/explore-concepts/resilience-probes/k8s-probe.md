@@ -7,6 +7,8 @@ redirect_from:
 - /docs/chaos-engineering/features/probes/k8s-probe
 ---
 
+import CommonNote from './shared/common-note.md'
+
 With the proliferation of custom resources and operators, especially in the case of stateful applications, the steady state is manifested as status parameters or flags within Kubernetes resources. K8s Probe addresses verification of the desired resource state by allowing users to define the Kubernetes GVR (group-version-resource) with appropriate filters (field selectors or label selectors). The experiment makes use of the Kubernetes Dynamic Client to achieve this. The probe supports the following CRUD operations:
 
 - **create:** Creates Kubernetes resource based on the data provided inside the probe.k8sProbe/inputs.data field.
@@ -167,6 +169,9 @@ Listed below is the probe schema for the Kubernetes probe, with properties share
 </table>
 
 ## Definition
+
+<CommonNote />
+
 
 ```yaml
 probe:

@@ -13,6 +13,11 @@ VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP req
 
 ![VMware HTTP Reset Peer](./static/images/vmware-http-reset-peer.png)
 
+
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 
 - VMware HTTP reset peer determines the resilience of an application to unexpected halts in the outgoing HTTP requests.

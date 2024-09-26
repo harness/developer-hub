@@ -1,6 +1,6 @@
 ---
 title: Pod Security Policy
-sidebar_position: 3
+sidebar_position: 20
 description: Applying Pod Security Policy to pods in a cluster
 redirect_from:
 - /docs/chaos-engineering/technical-reference/security/security-templates/psp

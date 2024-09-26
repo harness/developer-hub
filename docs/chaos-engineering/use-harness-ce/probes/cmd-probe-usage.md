@@ -27,7 +27,7 @@ In this example, you will specify details of the command probe, that is, provide
 
 ### Command Probe in Inline Mode
 
-To use the command probe in the **inline** mode:
+Inline mode is used to define all the probe properties using the manifest. You can use the UI to configure the manifest. In this case, the manifest is minified for ease of use. To use the command probe in the **inline** mode from the UI,
 
 2. Enter the **Type**, **Comparison criteria**, and the **Value**. Toggle to switch off the **Source** mode. Click **Setup probe**.
 
@@ -40,6 +40,8 @@ When the probe in **inline mode** is used in a chaos experiment, you can see tha
  ![validation inline](./static/newrelic/val-inline.png)
 
 ### Command probe in source mode
+
+Source is a field that you can specify when defining parameters to the command probe. To use the command probe with `source` button enabled, specify the parameters in the UI, which is later minified.
 
 To use the command probe in the **source** mode:
 

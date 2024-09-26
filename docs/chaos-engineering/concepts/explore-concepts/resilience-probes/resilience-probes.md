@@ -5,44 +5,34 @@ title: Overview
 redirect_from:
 - /docs/chaos-engineering/features/resilience-probes/overview
 - /docs/chaos-engineering/features/resilience-probes/types/
+- /docs/category/resilience-probes
 ---
 
 This topic introduces you to resilience probes, their importance, types, and generic properties.
 
 :::tip
-Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable it.
+- For existing users, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. You also have the choice to upgrade to the new flow. Contact [Harness support](mailto:support@harness.io) to enable it or to upgrade to the new flow.
+- If you are a new customer, the feature flag is turned on by default and you will see the new flow of control in the resilience probes.
 :::
 
 ## What is a resilience probe?
 
-Resilience probes (or probes) are pluggable health checkers defined within the chaos engine for any chaos experiment. They are declarative checks that determine the outcome of a fault. Probes are scoped to the faults, and you can define as many probes as required as part of each fault. They (not limited to) perform the following:
+Resilience probes (or probes) are pluggable health checkers defined within the chaos engine for any chaos experiment. They are declarative checks that determine the outcome of a fault.
+
+![Probe](./static/overview/probe.png)
+
+Probes are scoped to specific [faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/), and you can define as many probes as needed for each fault. The probe is triggered by a chaos runner when the chaos engine begins execution. They can be used to perform tasks such as, but not limited to, the following:
 - Monitors your application's health **before**, **during** and **after** a chaos experiment.
 - Explore the behavior of a system in a chaotic or unpredictable manner.
 - Help understand the underlying patterns and laws that govern the behavior of these systems, and to use that understanding to predict or control their behavior.
 - Validate the [declarative hypothesis](#declarative-hypothesis) set by the user.
 
-### Resilience Score
-
-It is a quantitative measure of how resilient the target application is to a chaos experiment. You can [calculate](/docs/chaos-engineering/use-harness-ce/experiments/#determine-the-resilience-of-target-environment-using-resilience-score) this value based on the priority set for every fault in the experiment and the probe success percentage of the faults (if the probes are defined).
-
-:::tip
-- If you are an existing customer, you will see the old flow of control in resilience probes by default and you have the choice to upgrade to the new flow.
-- If you are a new customer, the feature flag is turned on by default and you will see the new flow of control in the resilience probes.
-:::
-
-The probe is triggered by a chaos runner when the chaos engine begins execution.
 Depending on the type of probe, probes can:
-* Run `cmd` commands for innumerable validations,
-* Run the Kubernetes commands, send HTTP requests, check for a label or field selector missing, and assert if the resource is absent or not,
-* Execute PromQL queries, perform conditional validation on QPS or probe success percentages (percentage of probes that have been successfully evaluated out of the total number of probes),
-* Validate your error budget (SLO probe),
-* Connect with the APM tool and assert metrics (Datadog probe).
-
-:::tip
-Depending on your requirement, probes can do a lot more than what is discussed earlier.
-:::
-
-![Probe](./static/overview/probe.png)
+- Run `cmd` commands for innumerable validations,
+- Run the Kubernetes commands, send HTTP requests, check for a label or field selector missing, and assert if the resource is absent or not,
+- Execute PromQL queries, perform conditional validation on QPS or probe success percentages (percentage of probes that have been successfully evaluated out of the total number of probes),
+- Validate your error budget (SLO probe),
+- Connect with the APM tool and assert metrics (Datadog probe).
 
 ### Declarative hypothesis
 
@@ -87,8 +77,8 @@ HCE facilitates 7 types of resilience probes listed below. Click each probe to n
 
 
 :::info note
-* Each type of probe has its advantages and disadvantages, and the choice of probe depends on the specific requirements of the experiment and the system being tested.
-* The probes can be used in isolation or in several combinations to achieve the desired checks.
+- Each type of probe has its advantages and disadvantages, and the choice of probe depends on the specific requirements of the experiment and the system being tested.
+- The probes can be used in isolation or in several combinations to achieve the desired checks.
 :::
 
 HCE allows you to create probes for multiple infrastructures, namely, Kubernetes, Linux, and Windows. The type of probes allowed on each of these infrastructures is listed below.
@@ -158,4 +148,5 @@ Resilience probes are not a part of any subscription, and hence you don't have a
 
 ## Next steps
 
-* [Use cases of resilience probes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/types#common-use-cases)
+- [Use case of resilience probes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/types#common-use-cases)
+- [Use resilience probes](/docs/chaos-engineering/use-harness-ce/probes/use-probe)

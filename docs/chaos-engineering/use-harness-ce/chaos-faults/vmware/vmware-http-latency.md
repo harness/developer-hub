@@ -11,6 +11,10 @@ VMware HTTP latency injects HTTP response latency into the service of a specific
 
 ![VMware HTTP Latency](./static/images/vmware-http-latency.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 
 - VMware HTTP latency determines the resilience of an application to HTTP latency.

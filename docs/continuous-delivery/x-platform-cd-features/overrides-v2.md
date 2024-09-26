@@ -37,6 +37,7 @@ Here are the override types and the permissions you require for each type:
 
 - Overrides V2 are supported for infrastructure entities, infrastructure and services combinations additionally, and can be visualized in a separate Overrides V2 section under Project, Org, and Account scopes.
 - With the new Overrides V2 experience, environment variables can be created only in the **Global Environment** variables section. It cannot be done in the **Environment** section anymore.
+  - Service and Infrastructure are unaffected and will behave as before the change.
 - If you continue to use Terraform scripts with Overrides V1 (without migrating to V2 scripts) but with Overrides V2 feature flag enabled, there will be changes in the Terraform plan and you may encounter errors while executing the V1 Terraform scripts.
 - When overrides as part of remote environments are migrated, the overrides are created as inline overrides with Overrides V2. Inline overrides can be moved as remote entities using [APIs](https://apidocs.harness.io/tag/ServiceOverrides/#operation/serviceOverrideMoveConfigs).
 

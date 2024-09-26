@@ -5,7 +5,10 @@ description: Features and specification of the Prometheus probe
 redirect_from:
 - /docs/chaos-engineering/technical-reference/probes/prom-probe
 - /docs/chaos-engineering/features/probes/prom-probe
+- /docs/chaos-engineering/features/resilience-probes/prom-probe
 ---
+
+import CommonNote from './shared/common-note.md'
 
 The Prometheus probe allows users to run Prometheus queries and match the resulting output against specific conditions. The intent behind this probe is to allow users to define metrics-based SLOs in a declarative way and determine the experiment verdict based on their success. The probe runs the query on a Prometheus server defined by the endpoint and checks whether the output satisfies the specified criteria. The outcome of a PromQL query (that is provided) is used for probe validation.
 
@@ -275,6 +278,8 @@ Alternatively, you have the option to enable the `insecureSkipVerify` check to b
 
 ## Definition
 
+<CommonNote />
+
 ```yaml
 probe:
   - name: "check-probe-success"
@@ -521,7 +526,7 @@ spec:
           comparator:
             # criteria which should be followed by the actual output and the expected output
             #supports >=,<=,>,<,==,!= comparision
-            criteria: ">" 
+            criteria: ">"
             # expected value, which should follow the specified criteria
             value: "0"
           tlsConfig:

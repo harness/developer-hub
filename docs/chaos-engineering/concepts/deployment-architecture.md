@@ -10,7 +10,17 @@ redirect_from:
 - /docs/chaos-engineering/technical-reference/architecture/kubernetes
 - /docs/chaos-engineering/technical-reference/architecture/linux
 - /docs/chaos-engineering/architecture-and-security/architecture/control-plane
+- /docs/category/architecture-and-security
+- /docs/category/architecture
+- /docs/chaos-engineering/chaos-infrastructure/linux-chaos-infrastructure-advanced-management
+- /docs/chaos-engineering/features/chaos-infrastructure/linux-chaos-infrastructure-advanced-management
+- /docs/chaos-engineering/features/chaos-infrastructure/windows-chaos-infrastructure
+- /docs/chaos-engineering/features/chaos-infrastructure/openshift-infra
+- /docs/chaos-engineering/chaos-infrastructure/openshift-infra
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ## Before you begin, review the following
 
@@ -81,12 +91,24 @@ You can sign in (or receive an invitation) to the Harness Platform and use the i
 The control plane helps **create**, **schedule**, and **monitor** chaos experiments. It includes chaos faults that achieve the desired chaos impact on target resources.
 
 ### Execution Plane
+
+<Tabs>
+<TabItem value = "Dedicated Chaos Infrastructure">
 The Harness execution plane contains components responsible for orchestrating chaos injection into target resources. These components include:
 
 - Operator
 - Exporter (optional)
 - Subscriber
 - Workflow Controller
+
+</TabItem>
+
+<TabItem value = "Harness Delegate">
+
+Harness Delegate introduces centralized execution plane with the component DDCR (Delegate Driven Chaos Runner), which is transient. It uses transient (short-lived) pods to implement Harness Chaos Engineering.
+
+</TabItem>
+</Tabs>
 
 #### Why is an Execution Plane Required?
 The execution plane sets up the resources (clusters) where chaos experiments are run. You will use the control plane to interact with these clusters and create chaos experiments.

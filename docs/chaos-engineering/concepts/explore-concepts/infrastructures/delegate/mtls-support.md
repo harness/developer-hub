@@ -16,7 +16,7 @@ To configure mTLS in the DDCR, create a Kubernetes secret with the certificate a
 
     ![](./static/mtls-1.png)
 
-If you don't want to create Kubernetes secrets in multiple clusters, you can install the Chaos Runner agent proxy with mTLS key and certificate and provide the proxy URL in proxy setting.
+If you don't want to create Kubernetes secrets in multiple clusters, you can [install the agent proxy](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/proxy-support#installation) (aka Chaos Runner agent proxy) with mTLS key and certificate and provide the proxy URL in proxy setting.
 
     ![](./static/proxy-2.png)
 

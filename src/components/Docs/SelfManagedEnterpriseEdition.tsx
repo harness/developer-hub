@@ -44,7 +44,9 @@ export default function CD() {
               developers and DevOps teams in delivering software with maximum
               speed, quality, security, reliability, and resilience at the
               lowest possible cost. It helps you stay within the governance
-              boundaries required to achieve organizational objectives.
+              boundaries required to achieve organizational objectives. 
+              Harness releases Self-Managed Enterprise Edition on a monthly basis. 
+              Additionally, periodic hot-fixes are released as needed.
             </p>
             <div className={styles.illustrationContainer}>
               <img

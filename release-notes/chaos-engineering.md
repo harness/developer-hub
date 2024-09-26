@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-08-30T10:00
+date: 2024-09-18T10:00
 sidebar_position: 5
 ---
 
@@ -21,7 +21,21 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
-## August 2023
+## September 2024
+
+## Version 1.45.5
+
+#### New features and enhancements
+
+- Adds a feature wherein ChaosGuard now lists chaos infrastructure based on which type of infrastructure you select (Delegate-enabled or dedicated infrastructure enabled). (CHAOS-6680)
+
+- Chaos infrastructure created with the help of a sandbox shows that is is supported by a dedicated infrastructure with the note "Supported by a Harness Delegate". (CHAOS-6501)
+
+#### Fixed issues
+
+- Fixed the issue of discrepancy between the number of probes in the UI and backend. (CHAOS-6528)
+
+## August 2024
 
 ### Version 1.44.3
 

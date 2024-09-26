@@ -5,6 +5,7 @@ title: Chaos Dashboard
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/overview
 - /docs/chaos-engineering/features/chaos-dashboard/overview
+- /docs/category/chaos-dashboard
 ---
 
 This section walks you through the concepts of Chaos dashboard and how you can visualize different aspects of a chaos experiment.

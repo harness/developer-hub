@@ -9,6 +9,10 @@ VMware network rate limit fault injects network rate limit from the VMware VM(s)
 
 ![VMware Network Rate Limit](./static/images/vmware-network-rate-limit.png)
 
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+:::
+
 ## Use cases
 VMware network rate limit:
 - Simulates issues within the VM network (or microservice) communication across services in different hosts.

@@ -19,7 +19,7 @@ The Run step settings are described below.
 
 ## Important notes
 
-- You cannot use this step with a non-root user at this time.
+- Customers running a Run Step within a [Containerized Step Group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/) may want to review the [Harness permissions inheritance logic](https://developer.harness.io/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step/)
 
 ## Container Registry and Image
 
@@ -297,10 +297,15 @@ Select an option to set the pull policy for the image.
 * **If Not Present**: The image is pulled only if it is not already present locally.
 * **Never**: The image is assumed to exist locally. No attempt is made to pull the image.
 
+## Run as User
+Customers can now define the UID to run all policies within the pod.  Please note both information about [Security Context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) and review the [Harness permissions inheritance logic](https://developer.harness.io/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step/) when using Containerized Step Groups
+
+
 ## Set Container Resources
 
 Maximum resource limits for containers that clone the codebase at runtime. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
+In the case of utilizing a Run Step in a Step Group, please note that if you are defining resources with variables, they must be at the Stage or Pipeline level.  Step Group variables will not be evaluated at the correct time when the resource is launched. 
 
 ## Advanced settings
 

@@ -29,7 +29,7 @@ This topic describes the AWS platform permissions required to execute chaos expe
 </tr>
 <tr>
 	<th> Access requirements for agent install </th>
-	<td><ul><li> Install agent as a cluster-admin or as a user-mapped to a cluster role with <a href="/docs/chaos-engineering/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements"> these </a> permissions. </li>
+	<td><ul><li> Install agent as a cluster-admin or as a user-mapped to a cluster role with <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements"> these </a> permissions. </li>
 	<li> Go to <a href= "/docs/chaos-engineering/chaos-faults/kubernetes/classification#cloud-based-faults-aws-gcp-azure"> architecture documentation </a> for more details on how the Kubernetes Chaos Agent is used to inject chaos on cloud resources.</li></ul></td>
 </tr>
 <tr>
