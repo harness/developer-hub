@@ -1,5 +1,5 @@
 ---
-title: Workaround for issue in `ui:widget:password`
+title: Workaround if user token is revealed in plaintext in Workflows using `ui:widget:password`
 ---
 
 ## Context
