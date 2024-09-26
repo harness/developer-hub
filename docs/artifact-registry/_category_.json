@@ -1,0 +1,7 @@
+{
+  "label": "Artifact Registry",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link": { "type": "generated-index", "title": "Artifact Registry" },
+  "customProps": {}
+}

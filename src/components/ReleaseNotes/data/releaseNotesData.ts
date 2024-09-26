@@ -86,6 +86,13 @@ import {
             link: "/release-notes/continuous-integration",
           },
           {
+            title: "Artifact Registry release notes",
+            module: MODULES.ar,
+            description:
+              "",
+            link: "/release-notes/artifact-registry",
+          },
+          {
             title: "Feature Flags release notes",
             module: MODULES.ff,
             description:
