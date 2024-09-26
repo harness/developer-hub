@@ -240,7 +240,7 @@ A chaos infrastructure could be inactive due to a variety of reasons. When you t
 
 #### How do I control user actions in a given environment in Harness Chaos?
 
-The scope of a user's access to chaos resources added to a given Harness account or project can be controlled by assigning them a predefined or custom role. To learn more, go to [chaos access control](/docs/chaos-engineering/security/#user-authorization-and-role-based-access-control).
+The scope of a user's access to chaos resources added to a given Harness account or project can be controlled by assigning them a predefined or custom role. To learn more, go to [chaos access control](/docs/chaos-engineering/use-harness-ce/governance/rbac#user-authorization-and-role-based-access-control).
 
 #### How do I control the security blast radius in terms of access to application microservices and infrastructure resources in a user environment?
 
