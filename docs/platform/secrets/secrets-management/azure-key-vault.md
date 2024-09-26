@@ -177,7 +177,17 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
 5. Optional: Deselect **Purge Secrets**.
 
+   ![](../../secrets/static/azure-key-vault-17.png)
+
    This option is selected by default and purges deleted secrets instead of soft deleting them. For more information, go to [Purge deleted secret](https://learn.microsoft.com/en-us/rest/api/keyvault/secrets/purge-deleted-secret/purge-deleted-secret) in the Microsoft documentation.
+
+   :::note
+   **Purge Protection Handling**
+
+   - If you have Purge Protection enabled on the Azure side, you must ensure that the `enablePurge` setting is set to `false` in the Azure vault connector. This is crucial because, with Purge Protection enabled in Azure, you will not be able to delete secrets if the `enablePurge` setting is `true`.
+
+   - Purge Protection is a feature in Azure that prevents the permanent deletion of secrets. When enabled, any deletion operation is soft-deleted, and the secret can be recovered within a certain retention period. Setting `enablePurge` to false ensures compatibility with this feature.
+   :::
 
 6. Select **Continue**.
 

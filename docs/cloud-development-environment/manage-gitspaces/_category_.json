@@ -1,0 +1,11 @@
+{
+    "label": "Manage Gitspace",
+    "collapsible": "true",
+    "collapsed": "true",
+    "position": 10,
+    "link": {
+      "type": "generated-index",
+      "title": "How to manage your Gitspaces create/edit/delete"
+    },
+    "customProps": {}
+  }
