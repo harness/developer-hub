@@ -1,9 +1,8 @@
 ---
 title: Using Artifactory Connector with Optional Archive Path Field
 sidebar_label: Using Artifactory Connector with Optional Archive Path Field
-displayed_sidebar: dbdevopsbeta
 description: Using Target Paths with Artifactory.
-# sidebar_position: 10
+sidebar_position: 10
 ---
 
 ## Overview
