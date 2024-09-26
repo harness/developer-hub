@@ -31,7 +31,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - New plugins added to the marketplace.
   - [Argo-CD Plugin for Backstage](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-argo-cd#argo-cd-plugin-for-backstage)
 
-- We have encountered an issue with usage of `ui:widget: password`, we have updated our docs with instructions, also more context [here](/kb/internal-developer-portal/articles/secrets-issue).  
+- We have encountered an issue with usage of `ui:widget: password` which reveals the user token in plain text to the user if the field is not used in the first page of the Workflow definition. We have updated our docs with instructions. Please find more context [here](/kb/internal-developer-portal/articles/secrets-issue) if you see the issue.  
 
 #### Bug fixes
 
