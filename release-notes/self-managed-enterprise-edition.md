@@ -186,7 +186,17 @@ gsutil -m cp \
 
 ### Early access features
 
+#### Continuous Integration
+
+- Added support for automatic setup of Build Intelligence for builds running in Harness Cloud. Customers can set the stage property `buildIntelligence` to `true` in order to use this feature. Once enabled, Harness CI will automatically optimize Run and Test steps that are running Bazel or Gradle commands, to reduce build time. (CI-12969)
+
 ### New features and enhancements
+
+#### Continuous Integration
+
+- Cache Intelligence was enhanced with support for C# . Customers using C# applications can now leverage automatic dependencies caching with Cache Intelligence. (CI-12672)
+
+- Added a new setting in the account default settings under CI named `Upload Logs Via Harness`, allowing customers to route CI step execution logs through Harness’ log service instead uploading them directly from the build environment. This was previously behind a feature flag, but is now available for all users. (CI-13647)
 
 #### Harness Platform
 
@@ -199,6 +209,28 @@ gsutil -m cp \
 - Upgraded the org.apache.cxf:cxf-core library from version 3.5.8 to 3.5.9 to address a security vulnerability (CVE-2024-32007). This upgrade enhances the security and stability of the application. (PL-55722, ZD-63383)
 
 ### Fixed issues
+
+#### Continuous Integration
+
+- Removed the CI onboarding flow for new projects on SMP environments, where users were previously directed to a 'Get Started' page that could fail due to `clientSecret` setup for Stripe. Now, customers will be directed to the Overview page instead. Upcoming releases will include changes to completely remove the Get Started option from the side navigation for SMP customers, ensuring it is no longer visible. (CI-13687)
+
+- Fixed an issue where the plugin image url was incorrect when the registry url had a port configured. This issue occurred because everything after : was being considered as the tag of the image, leading to an invalid Fully Qualified Name (FQN) and causing the Initialize step to fail in the Kubernetes flow. The fix ensures that the FQN is properly considered when the registry endpoint includes a port number. (CI-13770, ZD-66772)
+
+- Fixed an issue where pipeline failures at the initialization step resulted in the entire pod YAML, including environment variables with secrets, being logged as an error. The log level has been changed to debug to prevent sensitive data exposure, and a new log has been added to capture essential details without including the full object. (CI-13785)
+
+- For SMP customers, the 'getting started' flow for CI has been removed from the side navigation. (CI-13821)
+
+- Bitbucket has an issue in their API; it does not support the slash character ( / ) https://jira.atlassian.com/browse/BCLOUD-20223 This can be worked around by using query parameters in the Bitbucket api https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww (CI-13826)
+
+- Corrected the visibility of the NodeSelector field label in the CI stage infrastructure tab when using Kubernetes infrastructure. The reference for the node selector string has been fixed to ensure the label is properly populated. (CI-13867)
+
+- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature flag must be enabled whenever a base image connector is used (CI-13924)
+
+- Fixed an issue where time savings due to Harness CI intelligence feature, didn't populate properly when used in the parallel CI stages. (CI-13993)
+
+- Fixed an issue where time savings due to Harness CI intelligence feature, didn't populate properly when used in the parallel CI stages. (CI-13993)
+
+- Corrected the popup UI displaying incorrect time savings that were being cached from other steps in cache intelligence. (CI-13995)
 
 #### Harness Platform
 
