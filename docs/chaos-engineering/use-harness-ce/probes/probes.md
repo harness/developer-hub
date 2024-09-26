@@ -10,4 +10,4 @@ Resilience probes (or probes) are pluggable health checkers defined within the c
 
 To know more, go to [Resilience Probes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/).
 
-To get hands-on experience, [create a probe](/docs/chaos-engineering/use-harness-ce/probes/use-probe), [use a probe in different modes](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-usage), and [use command probe with NewRelic](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-newrelic).
+To get hands-on experience, [create a probe](/docs/chaos-engineering/use-harness-ce/probes/use-probe), [configure command probe](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-usage), and [use command probe with NewRelic](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-newrelic).

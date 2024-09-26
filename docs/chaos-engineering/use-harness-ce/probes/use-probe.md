@@ -13,7 +13,7 @@ This topic describes the steps you can follow to create and use a resilience pro
 ## Before you begin, review the following
 
 - Go to [probe overview](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/) to understand about probes.
-- Go to [chaos faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/) to understand where you can use resilience probes.
+- Go to [chaos faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/) to understand the application of resilience probes.
 
 ### Prerequisite
 - Permissions to edit a chaos experiment.
@@ -34,16 +34,17 @@ Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. 
 
     ![select](./static/use-probe/select-3.png)
 
-3. Based on the probe type you choose, the fields will vary. You can find details about every probe in their respective documentation (([Command](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/cmd-probe), [Datadog](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/datadog-probe), [Dynatrace](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/dynatrace-probe), [HTTP](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/http-probe), [Kubernetes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/k8s-probe), [Prometheus](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/prom-probe), and [SLO](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/slo-probe))). After you enter the details, click **Configure properties**. Enter further details and click **Configure details**.
+3. Based on the probe type you choose, the fields will vary. You can find details about every probe in their respective documentation (([Command](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/cmd-probe), [Datadog](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/datadog-probe), [Dynatrace](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/dynatrace-probe), [HTTP](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/http-probe), [Kubernetes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/k8s-probe), [Prometheus](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/prom-probe), and [SLO](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/slo-probe))). After entering the details, click **Configure properties**. Enter further details and click **Configure details**.
 
     ![configure](./static/use-probe/configure-5.png)
 
-5. Enter URL, authorization type, and click **Setup Probe**. Click **Confirm** when the screen prompts you to confirm creating the probe with specified details.
+4. Enter URL, authorization type, and click **Setup Probe**. Click **Confirm** when the screen prompts you to confirm creating the probe with specified details.
 
     ![setup](./static/use-probe/setup-6.png)
 
-:::tip
-If you are a first-time chaos module user or a Platform user who has not used resilience probes, you can create a resilience probe directly from the Chaos Studio drawer (from within an experiment). For this, you will see an option to add a system probe (which is a health check system probe) as a one-click button. This will not be present if you have configured at least one resilience probe.
+:::info note
+If you are a first-time chaos module user or a [Platform](https://developer.harness.io/docs/platform) user who has not used resilience probes, you can create a resilience probe directly from the Chaos Studio drawer (from within an experiment).
+For this, you will see an option to add a system probe (which is a health check system probe) as a one-click button. This will not be present if you have configured at least one resilience probe.
 :::
 
 ## Edit a Resilience Probe
@@ -69,15 +70,15 @@ This step is not required if you use the user interface.
 
 1. Go to **Chaos** module, select **Resilience Probes** and select the **:** icon of the probe to enable. Select **Enable**.
 
-    ![](./static/use-probe/enable-1.png)
+    ![enable](./static/use-probe/enable-1.png)
 
 2. Click **Confirm**.
 
-    ![](./static/use-probe/enable-2.png)
+    ![confirm enable](./static/use-probe/enable-2.png)
 
 3. Choose between **Bulk Enable** and **Enable Only**. If you choose **Bulk Enable**, this option modifies the entire manifest and references to the probe. If you choose **Enable Only**, it enables the probe functionality without affecting the manifest.
 
-    ![](./static/use-probe/enable-3.png)
+    ![bulk or no](./static/use-probe/enable-3.png)
 
 :::tip
 - By default, **Enable Only** is applied in case you close the modal when selecting between the options **Bulk Enable** and **Enable Only**.
@@ -122,16 +123,9 @@ Adding probes to ChaosHub helps you to templatize the resilience probe. With thi
 
 1. To add a resilience probe to ChaosHub, go to **Resilience Probes** tab. Go to the resilience probe that you want to add to ChaosHub and click the **:** button. Click **Push to ChaosHub**.
 
-    ![](./static/use-probe/push-to-hub.png)
+    ![add to hub](./static/use-probe/push-to-hub.png)
 
-2. Choose the ChaosHub to which you want to add the probe, and click **Apply**.
-
-    ![](./static/use-probe/apply-hub.png)
-
-3. Click **Save**.
-
-    ![](./static/use-probe/save-to-hub.png)
-
+2. Choose the ChaosHub to which you want to add the probe, and click **Apply**. Click **Save**.
 
 ## Disable a Probe
 
