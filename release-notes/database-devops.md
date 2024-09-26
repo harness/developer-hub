@@ -13,7 +13,7 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/infrastructure-as-code-management/rss.xml" />
 
-These release notes describe recent changes to Harness Infrastructure as Code Management.
+These release notes describe recent changes to Harness Database DevOps.
 
 :::info About Harness Release Notes
 
