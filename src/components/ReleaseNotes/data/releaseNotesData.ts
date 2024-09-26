@@ -86,6 +86,13 @@ import {
             link: "/release-notes/continuous-integration",
           },
           {
+            title: "Database DevOps release notes",
+            module: MODULES.dbdevops,
+            description:
+              "",
+            link: "/release-notes/database-devops",
+          },
+          {
             title: "Feature Flags release notes",
             module: MODULES.ff,
             description:
