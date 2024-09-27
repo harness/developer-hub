@@ -280,7 +280,7 @@ The following expressions reference information about a pipeline run, such as th
 * `<+pipeline.identifier>`: The pipeline's [identifier](../references/entity-identifier-reference.md) for the pipeline.
 * `<+pipeline.name>`: The name of the current pipeline.
 * `<+pipeline.tags>`: The [tags](/docs/platform/references/tags-reference) for a pipeline. To reference a specific tag, use `<+pipeline.tags.TAG_NAME>`.
-* `<+pipeline.executionId>`: Every pipeline run (execution) is given a universally unique identifier (UUID). The UUID can be referenced anywhere. The UUID forms the unique execution URL, for example:`https://app.harness.io/ng/#/account/:accountId/cd/orgs/default/projects/:projectId/pipelines/:pipelineId/executions/:executionId/pipeline`.
+* `<+pipeline.executionId>`: Every pipeline run (execution) is given a universally unique identifier (UUID). The UUID can be referenced anywhere. The UUID forms the unique execution URL, for example:`https://app.harness.io/ng/#/account/:accountId/cd/s/default/projects/:projectId/pipelines/:pipelineId/executions/:executionId/pipeline`.
 * `<+pipeline.resumedExecutionId>`: The execution ID of the root or original execution. This value is different from the `executionId` when it is a retry.
 * `<+pipeline.sequenceId>`: The incremental sequential Id for the execution of a pipeline.
 
@@ -311,7 +311,7 @@ The following expressions reference information about a pipeline run, such as th
 * `<+pipeline.storeType>`: If the pipeline is stored in Harness, the expression resolves to `inline`. If the pipeline is stored in a Git repository, the expression resolves to `remote`.
 * `<+pipeline.repo>`: For remote pipelines, the expression resolves to the Git repository name. For inline pipelines, the expression resolves to `null`.
 * `<+pipeline.branch>`: For remote pipelines, the expression resolves to the Git branch where the pipeline exists. For inline pipelines, the expression resolves to `null`.
-* `<pipeline.orgIdentifier`>: The [identifier](../references/entity-identifier-reference.md) of an organization in your Harness account. The referenced organization is the pipeline's organization. 
+* `<+pipeline.orgIdentifier`>: The [identifier](../references/entity-identifier-reference.md) of an organization in your Harness account. The referenced organization is the pipeline's organization. 
 
 ### Secrets expressions
 
