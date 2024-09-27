@@ -9,6 +9,7 @@ import TabItem from '@theme/TabItem';
 
 Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
+
 With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) feature, Harness automatically caches and restores software dependencies to speed up your builds - hassle free.
 
 You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
@@ -17,15 +18,16 @@ You can use Cache Intelligence with any [build infrastructure](/docs/continuous-
 Cache intelligence for self-managed build infrastructure is an early access feature and is behind the feature flag `CI_ENABLE_CACHE_INTEL_SELF_HOSTED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
+
 ## Supported tools and paths
 
-Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, **Node** and **MSBuild/dotnet (only for C#)** build tools, as long as default cache paths are used.
+Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, **Node** and **MSBuild/dotnet (only for C#)** build tools, as long as default cache paths are used. 
 
 For other build tools or non-default cache locations, you use Cache Intelligence with [custom cache paths](#customize-cache-paths).
 
 ## Cache storage
 
-When you use Cache Intelligence with Harness CI Cloud, the cache is stored in the Harness-managed environment. When running builds on self-managed infrastructure, you will need to provide your own storage.
+When you use Cache Intelligence with Harness CI Cloud, the cache is stored in the Harness-managed environment. When running builds on self-managed infrastructure, you will need to provide your own storage. 
 
 <Tabs>
 <TabItem value="cloud" label="Harness Cloud" default>
@@ -36,9 +38,9 @@ All pipelines in the account use the same cache storage, and each build tool has
 
 The cache storage limit depends on your subscription plan type:
 
-- Free: 2 GB
-- Team: 5 GB
-- Enterprise: 10 GB
+* Free: 2 GB
+* Team: 5 GB
+* Enterprise: 10 GB
 
 Harness doesn't limit the number of caches you can store, but, once you reach your storage limit, Harness continues to save new caches by automatically evicting old caches.
 
@@ -47,16 +49,17 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
 </TabItem>
 <TabItem value="sm" label="Self-managed build infrastructures">
 
-When running builds in self-managed infrastructures, [configure S3-compatible default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
+When running builds in self-managed infrastructures, [configure S3-compatible  default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
 
-We suggest that you consider setting bucket level retention policy for efficient cache management.
+We suggest that you consider setting bucket level retention policy for efficient cache management. 
 
 </TabItem>
 </Tabs>
 
+
 ## Enable Cache Intelligence
 
-1. If you're _not_ using Harness Cloud build infrastructure, you must [configure S3-compatible global object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to store and manage caches.
+1. If you're *not* using Harness Cloud build infrastructure, you must [configure S3-compatible global object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to store and manage caches.
 
    This is not required for Harness Cloud build infrastructure. For more information, go to [Cache storage](#cache-storage).
 
@@ -66,24 +69,24 @@ We suggest that you consider setting bucket level retention policy for efficient
 
    To do this in the YAML editor, add the following to your pipeline's `stage.spec`:
 
-   ```yaml
-   caching:
-     enabled: true
-   ```
+      ```yaml
+      caching:
+        enabled: true
+      ```
 
 3. Add [custom cache paths](#customize-cache-paths) if you're using an unsupported build tool, a non-default cache location, or a Windows platform. For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
 
 4. You can also:
 
-   - [Add custom cache keys.](#customize-cache-keys)
-   - [Define the cache policy.](#define-cache-policy)
-   - [Enable cache override.](#enable-cache-override)
+   * [Add custom cache keys.](#customize-cache-keys)
+   * [Define the cache policy.](#define-cache-policy)
+   * [Enable cache override.](#enable-cache-override)
 
 ## Customize cache paths
 
 Cache Intelligence stores the data to be cached in the `/harness` directory by default. You can use `paths` to specify a list of locations to be cached. This is useful if:
 
-- You're _not_ using a [fully supported build tool](#supported-tools-and-paths).
+- You're *not* using a [fully supported build tool](#supported-tools-and-paths).
 - You have customized cache locations, such as with `yarn config set cache-folder`.
 - You're using a Windows platform.
 
@@ -204,50 +207,52 @@ For example, if your pipeline has two stages, you might want to restore the cach
 
 To configure the cache policy, add `policy: pull | push | pull-push` to `stage.spec.caching`.
 
-- `policy: pull` - Only restore cache.
-- `policy: push` - Only save cache.
-- `policy: pull-push` - Save and restore cache. This is the default setting.
+* `policy: pull` - Only restore cache.
+* `policy: push` - Only save cache.
+* `policy: pull-push` - Save and restore cache. This is the default setting.
 
 For example, here is a pipeline with two Build (`CI`) stages using Cache Intelligence. The first stage's cache policy is set to `pull` only, and the second stage's cache policy is set to `push` only. When this pipeline runs, the first stage restores the build cache, and the second stage saves the cache at the end of the build.
 
 ```yaml
-stages:
-  - stage:
-      name: buildStage1
-      identifier: buildstage1
-      description: ""
-      type: CI
-      spec:
-        cloneCodebase: true
-        platform:
-          os: Linux
-          arch: Amd64
-        runtime:
-          type: Cloud
-          spec: {}
-        caching:
-          enabled: true
-          policy: pull # Define cache policy.
-        execution:
-          steps: ...
-  - stage:
-      name: buildStage2
-      identifier: buildstage2
-      description: ""
-      type: CI
-      spec:
-        cloneCodebase: true
-        platform:
-          os: Linux
-          arch: Amd64
-        runtime:
-          type: Cloud
-          spec: {}
-        caching:
-          enabled: true
-          policy: push # Define cache policy.
-        execution:
-          steps: ...
+  stages:
+    - stage:
+        name: buildStage1
+        identifier: buildstage1
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          caching:
+            enabled: true
+            policy: pull # Define cache policy.
+          execution:
+            steps:
+              ...
+    - stage:
+        name: buildStage2
+        identifier: buildstage2
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          caching:
+            enabled: true
+            policy: push # Define cache policy.
+          execution:
+            steps:
+              ...
 ```
 
 ## Enable cache override
@@ -256,8 +261,8 @@ The cache override allows you to force push the cache even if the cache key hasn
 
 To configure the cache override, add `override: true | false` to `stage.spec.caching`.
 
-- `override: true` - Always save the cache. Currently, this is the default setting.
-- `override: false` - Only save the cache if there are changes.
+* `override: true` - Always save the cache. Currently, this is the default setting.
+* `override: false` - Only save the cache if there are changes.
 
 For example:
 
@@ -303,7 +308,7 @@ curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache?accoun
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to caching, data sharing, dependency management, workspaces, shared paths, and more. For example:
 
-- [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/kb/continuous-integration/continuous-integration-faqs/#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)
-- [How can I use an artifact in a different stage from where it was created?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
-- [How can I check if the cache was restored?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-check-if-the-cache-was-restored)
-- [What is the Cache Intelligence cache storage limit?](/kb/continuous-integration/continuous-integration-faqs/#what-is-the-cache-intelligence-cache-storage-limit)
+* [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/kb/continuous-integration/continuous-integration-faqs/#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)
+* [How can I use an artifact in a different stage from where it was created?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
+* [How can I check if the cache was restored?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-check-if-the-cache-was-restored)
+* [What is the Cache Intelligence cache storage limit?](/kb/continuous-integration/continuous-integration-faqs/#what-is-the-cache-intelligence-cache-storage-limit)
