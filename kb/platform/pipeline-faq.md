@@ -349,6 +349,32 @@ There is no limit to the number of triggers for a pipeline.
 
 Yes, Harness NextGen supports both the QUARTZ and UNIX syntax formats for cron triggers. For more information, go to [Schedule Pipelines Using Cron Triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger).
 
+### We see error No builds with task id in our trigger, what does it mean?
+
+The error refers that there were no builds/artifacts found on the path provided and you need enure that the path provided for the artifacts in trigger is correct.
+
+### For s3 trigger how can we access build from paylaod?
+
+You can use expression ``` <+trigger.artifact.build> ``` to access build from s3 payload.
+
+### How can we access particular file name from s3 trigger payload?
+
+You can use expression : 
+
+``` <+json.select("artifact.metadata[?(@.key == 'Accept-Ranges')].value",<+json.format(<+trigger.payload>)>)> ```
+
+### What is the purpose of the "Define Multi Region Artifact Source" option?
+
+This option lets you add artifacts from different regions when configuring an On New Artifact trigger. It helps ensure that the pipeline can be triggered based on the availability of an artifact across various regions.
+
+### What happens when an artifact is available across multiple regions?
+
+The conditions you set for artifacts in different regions will be evaluated. Once the defined conditions are met, the pipeline is triggered automatically.
+
+### Why should I configure multiple regions for an artifact?
+
+Configuring multiple regions allows better availability and reliability. If the artifact is unavailable in one region, the pipeline can still be triggered by the availability in another region, improving resilience in deployments.
+
 ## Stop pipelines
 
 ### What is expected when I abort a pipeline, and what actions are taken to ensure a clean state in the system?
