@@ -1,16 +1,13 @@
 ---
 title: Database DevOps onboarding guide
 description: A self-service onboarding guide for Harness DB DevOps.
-displayed_sidebar: dbdevopsbeta
-# sidebar_position: 4
-# sidebar_label: Onboarding guide
+sidebar_position: 4
+sidebar_label: Onboarding guide
 ---
-<!-- 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import BetaIcon from 'img/icon_beta.svg';
 
-<BetaIcon /> -->
+import BetaIcon from '/img/icon_beta.svg';
+
+<BetaIcon />
 
 # DB DevOps onboarding guide
 

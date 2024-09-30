@@ -126,3 +126,15 @@ To override the variables of specific services deployed to an environment, do th
 
 </TabItem3>    
 </Tabs3>
+
+:::info note
+
+You can configure CLI environment variables override such as CF_STAGING_TIMEOUT and CF_STARTUP_TIMEOUT. Select the **CLI Environment Variables** in the **Override Type** dropdown and enter the **Override Info** such as Name, Type, and Value.
+
+Certain CF CLI environment variables, such as CF_HOME, CF_PLUGIN_HOME, CF_USERNAME, CF_PASSWORD, and CF_DOCKER_CREDENTIALS, are internally set by the system and will be ignored.
+
+   ![](static/overrides_cli_environment_variables.png)
+
+Currently, this feature is behind the feature flag `CDS_CF_CLI_ENVIRONMENT_VARIABLE_SUPPORT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
+:::

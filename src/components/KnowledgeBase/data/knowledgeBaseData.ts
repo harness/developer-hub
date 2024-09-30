@@ -4,7 +4,7 @@ export type CardItem = {
   title: string;
   /*
   MODULES.ci | MODULES.cd | MODULES.ff | MODULES.ccm | MODULES.idp | MODULES.sei |
-  MODULES.sto | MODULES.srm | MODULES.ce | MODULES.platform |
+  MODULES.sto | MODULES.srm | MODULES.ce | MODULES.platform | MODULES.dbdevops
   */
   module: MODULES;
   description?: JSX.Element | string;

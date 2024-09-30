@@ -64,10 +64,8 @@ async function config() {
           sitemap: {
             // changefreq: 'weekly',
             // priority: 0.5,
-            ignorePatterns: [
-              '/docs/database-devops',
-              '/docs/database-devops/**',
-            ],
+            // ignorePatterns: [
+            // ],
             // filename: 'sitemap.xml',
           },
           theme: {
@@ -124,6 +122,10 @@ async function config() {
                 {
                   label: 'Continuous Delivery & GitOps',
                   to: 'docs/continuous-delivery',
+                },
+                {
+                  label: 'Database DevOps',
+                  to: 'docs/database-devops',
                 },
                 {
                   label: 'Infrastructure as Code Management',

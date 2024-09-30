@@ -1099,6 +1099,16 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.sidebar-dbdevops > div > a::before,.sidebar-dbdevops > a::before{
+  content: " ";
+  display: inline-block;
+  min-height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_dbdevops.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .sidebar-ccm > div > a::before,.sidebar-ccm > a::before{
   content: " ";
   display: inline-block;

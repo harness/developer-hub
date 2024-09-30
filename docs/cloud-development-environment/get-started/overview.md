@@ -5,6 +5,12 @@ sidebar_position: 1
 sidebar_label: Overview
 ---
 
+:::info
+
+Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io 
+
+:::
+
 Harness CDEs are pre-configured, remote, secure, ready-to-use environments that developers can quickly spin up from anywhere and start writing code, debugging, and collaborating with other developers. Note that while the module name is Harness CDE, Harness-created CDEs are called Gitspaces :tm:.  
 
 CDEs are designed to eliminate challenges associated with local development environments, such as :
