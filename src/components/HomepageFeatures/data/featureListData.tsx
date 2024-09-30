@@ -101,6 +101,14 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
+    title: "Build with Harness Database DevOps",
+    module: MODULES.dbdevops,
+    icon: "img/icon_dbdevops.svg",
+    description: <>Accelerate deployment with an integrated pipeline for all database changes.</>,
+    link: "docs/database-devops",
+    type: [docType.Documentation],
+  },
+  {
     title: "Measure Software Engineering Processes",
     module: MODULES.sei,
     icon: "img/icon_sei.svg",

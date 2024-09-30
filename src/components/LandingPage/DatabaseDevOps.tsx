@@ -18,7 +18,7 @@ export default function FF() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_dbdevops.svg`} />
-            <h1>Database DevOps</h1>
+            <h1>Database DevOps (Beta)</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/docs/database-devops">
