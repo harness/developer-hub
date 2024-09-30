@@ -34,7 +34,6 @@ Harness IaCM currently supports integration with all **OpenTofu** versions<Harne
 
 As a first step, we recommend configuring your Cloud Provider and Code repository **connectors** to help streamline further configurations like workspace and pipeline creation so they can be easily selected.  
 
-
 Go to [What's supported](https://developer.harness.io/docs/infra-as-code-management/whats-supported#supported-workspace-connectors) to see what cloud provider and code repository vendors are supported by Harness. 
 
 ## Recommended Workflows and Performance Optimization
@@ -58,12 +57,10 @@ Harness seamlessly integrates with third-party services like external code repos
 - **Enhanced Visibility:** Provides a single point of control for auditing and policy enforcement.
 - **Reduced Dependencies:** Lowers reliance on external services, increasing system resilience.
 
-
 ## Security
 - **Access Controls:** [Role-based access control (RBAC)](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups.
 - **Secret Management:** Go to the [secret management page](https://developer.harness.io/docs/category/secrets-management) to see all supported secret management option available in the Harness Platform and determine what option is best suited for your needs. As mentioned above, Harness offer integration with multiple secret management options but recommend [Harness secret manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) to help offer optimal performance.
 - **OPA Policies:** Use [OPA policies](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/) to implement governance and trigger pipeline warnings or failures when policy conditions are not met. 
-- 
 
 ### State Management
 - **Remote State Storage:** Use remote state backends like AWS S3, GCP Cloud Storage, or Azure Blob Storage for reliable and scalable state management. Ensure state files are stored securely and versioned to prevent accidental data loss or corruption. Go to [initialize remote backends](https://developer.harness.io/docs/infra-as-code-management/remote-backends/init-configuration) for more information.
