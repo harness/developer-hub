@@ -4,7 +4,7 @@ description: Lists the plugins, git providers, and third-party integrations supp
 sidebar_label: What's Supported
 sidebar_position: 1
 ---
-
+ 
 Harness Internal Developer Portal integrates with a number of third-party providers to provide a single pane of glass for developers.
 
 ## Plugins for IDP
