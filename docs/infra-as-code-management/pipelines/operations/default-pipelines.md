@@ -7,11 +7,9 @@ sidebar_position: 10
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-IaCM Default Pipelines simplify the process of provisioning, destroying, and managing infrastructure workspaces by providing quick access to your pre-configured pipelines. These pipelines can be created in the normal fashion, and assigned as defaults at the project level, and can be triggered within any of that project's workspaces. This provides a much more streamlined experience and helps to ensure consistency across all of your workspaces.  
+IaCM Default Pipelines simplify the process of provisioning, destroying, and managing infrastructure workspaces by providing quick access to your pre-configured pipelines. These pipelines can be created in the normal fashion, assigned as defaults at the project level and  triggered within any of that project's workspaces. This provides a much more streamlined experience and helps to ensure consistency across all of your workspaces.
 
-
-In addition, as some workspaces may require alternative approaches, you can overwrite your default pipelines at the workspace level without disrupting those at the project level or parented by the project level default pipelines.  
-
+In addition, as some workspaces may require specialized pipelines, you can overwrite the defaults at the workspace level. This will not disrupt any other workspace using the project level defaults.
 
 :::warning danger zone
 A pipeline containing the `destroy` command will remove all saved infrastructure managed by your Harness workspace.
