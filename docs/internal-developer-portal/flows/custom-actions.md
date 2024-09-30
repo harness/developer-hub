@@ -114,6 +114,22 @@ Once you create the workflow with this custom action, you can see the pipeline U
 
 ![](./static/flow-ca-1.png)
 
+You can now optionally remove the pipeline url from the workflow execution logs, for this you need to use the boolean property `hidePipelineURLLog` and set the value as `true`.
+
+```YAML
+## Example
+steps:
+- id: trigger
+    name: Creating your react app
+    action: trigger:harness-custom-pipeline
+    input:
+    url: "Pipeline URL"
+    hidePipelineURLLog: true
+    inputset:
+        project_name: ${{ parameters.project_name }}
+    apikey: ${{ parameters.token }}
+```
+
 3. You can as well configure the output to display the pipeline [output variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#input-and-output-variables), by setting the `showOutputVariables: true` under `inputs`and adding `output` as shown in the example below:
 
 ```YAML
