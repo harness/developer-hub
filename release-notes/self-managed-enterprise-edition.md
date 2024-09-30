@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-09-30T14:00
+date: 2024-10-04T14:00
 sidebar_position: 16
 ---
 
@@ -145,7 +145,7 @@ To acquire the necessary `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD`, contact 
 Upon providing your credentials and the release version, the script will proceed to push the Looker image to your private repository.
 
 :::
-## September 30, 2024, version 0.21.0
+## October 4, 2024, version 0.21.0
 
 This release includes the following Harness module and component versions.
 
@@ -153,15 +153,14 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.21.0](https://github.com/harness/helm-charts/releases/tag/harness-0.21.0) |
 | Air Gap Bundle | [0.21.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.21.0) |
-| NG Manager | 1.55.6 |
-| CI Manager | 1.45.4 |
-| Pipeline Service | 1.93.4 |
-| Platform Service | 1.37.1 |
-| Access Control Service | 1.58.1 |
+| NG Manager | 1.55.8 |
+| CI Manager | 1.45.5 |
+| Pipeline Service | 1.93.5 |
+| Platform Service | 1.37.2 |
+| Access Control Service | 1.58.2 |
 | Delegate | 24.08.83804 |
-| GitOps Service | 1.17.5 |
-| GitOps Agent | 0.78.0 |
-| Change Data Capture | 1.33.0 |
+| GitOps Service | 1.17.6 |
+| Change Data Capture | 1.33.3 |
 | STO Core | 1.108.4 |
 | Test Intelligence Service | 1.27.1 |
 | NG UI | 1.41.4 |
@@ -200,6 +199,10 @@ gsutil -m cp \
 
 #### Harness Platform
 
+- SSCA module has been enabled on Custom Dashboards. This allows users to integrate SSCA functionality within their dashboards. (PL-56177)
+
+- Resolved an issue where notification rules were not executed for delegates with selected tags instead of group names. The notification trigger now correctly matches the entity identifiers against those in the notification rules. (PL-51795)
+
 - Upgraded the Spring Framework libraries to version `6.0.18` to address multiple critical CVEs reported by Prismacloud. (PL-38815, ZD-42531, ZD-44910, ZD-46364, ZD-50403, ZD-52222, ZD-53107, ZD-53760, ZD-55114, ZD-60387, ZD-61129, ZD-62327, ZD-62502, ZD-62674, ZD-62690, ZD-63256, ZD-63383)
 
 - The BouncyCastle library has been upgraded from version `1.76` to `1.78` to address several medium-severity CVEs (CVE-2024-29857, CVE-2024-30171, CVE-2024-30172) and enhance overall system security. (PL-51346)
@@ -209,6 +212,10 @@ gsutil -m cp \
 - Upgraded the org.apache.cxf:cxf-core library from version 3.5.8 to 3.5.9 to address a security vulnerability (CVE-2024-32007). This upgrade enhances the security and stability of the application. (PL-55722, ZD-63383)
 
 ### Fixed issues
+
+#### Chaos Engineering
+
+- Fixed the error associated with upgrading a chaos infrastructure by providing relevant permissions for the upgrade agent in the execution plane (user host/cluster). (CHAOS-5980)
 
 #### Continuous Integration
 
@@ -234,9 +241,13 @@ gsutil -m cp \
 
 #### Harness Platform
 
+- Fixed an issue where RBAC permissions were not reflecting properly in SMP and SNAPSHOT environments. The bug was caused by a shared lock across multiple services, leading to delays in event processing. Separate locks have been introduced for each service to resolve the issue. (PL-56509)
+
+- Fixed an issue where legacy delegates failed to work with non-root users after the 1.0.83605 upgrade. The working directory for shell script delegates has been reverted to the current directory, ensuring proper functionality. (PL-55792)
+
 - Fixed an issue where pipelines could get stuck in the running state due to delegate task handling. A new flow has been introduced to recompute eligible delegates after 3 rounds of broadcast, ensuring tasks are acquired even if delegates restart. This fix is controlled by the `RECOMPUTE_ELIGIBLE_DELEGATES_LIST` feature flag and requires Harness Delegate version 24.08.83802. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55249, ZD-66247)
 
-- Added an index for Audit Logs to improve query performance and reduce CPU usage (PL-55486)
+- Added an index for Audit Logs to improve query performance and reduce CPU usage (PL-56977)
 
 - The `displayname` attribute from SAML assertions is now honored for new JIT-provisioned users logging in via SAML. This ensures that usernames are correctly updated to reflect the displayname attribute, addressing inconsistencies in user names. (PL-55616)
 
@@ -257,6 +268,10 @@ gsutil -m cp \
 - Fixed an issue where restarting a delegate with an account-level token incorrectly moved the existing project-level delegate group to the account level. The query for locating the existing delegate group has been updated to ensure that it correctly handles cases where the owner field is null, preventing unintended group migrations. This item requires Harness Delegate version 24.08.83800. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56377)
 
 - Resolved consistent proxy authentication issues seen after delegate upgrade by removing unnecessary environment variable expansion and adding URL encoding for special characters. The `PROXY_PASSWORD` environment variable is now handled correctly, ensuring proper authentication without requiring expansion. This item requires Harness Delegate version 24.08.83802. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56623, ZD-68887)
+
+#### Security Testing Orchestration
+
+- Users can now deselect Jira project and ticket type settings at the account, organization, or project level, similar to other settings pages. Removing the Jira connector will automatically delete the associated external ticket settings, allowing users to fully disconnect their Jira integration if desired. (STO-7892, ZD-67770)
 
 ## September 12, 2024, version 0.20.2
 
