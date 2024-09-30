@@ -1,11 +1,11 @@
 {
-    "label":"Database DevOps Beta",
+    "label":"Database DevOps",
     "collapsible":"true",
     "collapsed":"true",
     "link":{
        "type":"generated-index",
-       "title":"Database DevOps Beta"
+       "title":"Database DevOps"
     },
-    "customProps":{
+   "customProps":{
     }
  }

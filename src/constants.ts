@@ -73,7 +73,7 @@ export const MODULE_ICON = {
     [MODULES.aida]: 'img/icon_aida.svg',
     [MODULES.dbdevops]: 'img/icon_dbdevops.svg',
     [MODULES.ar]: 'img/icon_artifact_registry.svg',
-    [MODULES.cde]: 'img/icon_cloud_development_environments.svg',
+    [MODULES.cde]: 'img/cde_icon.svg',
     [MODULES.armory]: 'img/icon_armory.svg',
     [MODULES.opensource]: 'img/icon_opensource.svg',
     [MODULES.fme]: 'img/icon_fme.svg'

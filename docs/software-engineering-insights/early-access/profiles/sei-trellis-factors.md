@@ -45,7 +45,7 @@ Trellis Factors at Collection Level are customized versions of the account-level
 
 ### Trellis Groups
 
-**Trellis Groups** represent **Custom Attribute** based **Trellis Sub-Profiles** within the Central profile. Trellis Groups allow you to customize the trellis calculation settings and thresholds for specific attributes. This provides a more granular and personalized way to calculate Trellis Scores.
+**Trellis Groups** represent categories based on **Custom Attributes** within the Trellis Factor settings. Trellis Groups allow you to customize the Trellis calculation settings and thresholds for specific attributes. This provides a more granular and personalized way to calculate Trellis Scores.
 
 With Trellis Groups, you can fine-tune how factors like Code Quality, Volume, Speed, Impact, Proficiency, and Collaboration are evaluated. The customizations are based on the responsibilities and expectations associated with different custom attributes. For example, you could create separate calculation rules for different engineering roles.
 
@@ -65,25 +65,30 @@ Go to the Collection where you want to calculate Trellis Score and enable the Tr
 
 ### Step 2: Customize the Trellis Factors at the Account Level
 
-* In your Harness Account, select the Trellis Factors under Profiles.
+* In your **Harness Account**, select the **Trellis Factors** under Profiles.
 * You will land on the **Trellis Factors** settings. This is where you can add, edit, delete Trellis Groups and enable/disable the Factors impacting the Trellis Calculations.
 
 ### Step 3: Add Trellis Groups
 
 * Click on **Add Trellis Groups** to create a unique group and define matching criteria for identifying users based on custom contributor attributes like `Role` and `Location`.
-* Make sure that the Trellis group name and matching criteria are unique.
+* Click on **Add Trellis Groups** to create a unique group and define matching criteria for identifying users based on custom contributor attributes like **Role** and **Location**.
+* You can configure multiple conditions to define the matching criteria for the Trellis Groups.
 
 ![](../static/trellis-groups.png)
 
+:::info
+To prevent contributors from being included in multiple Trellis groups, ensure that both the Trellis Group name and matching criteria are unique for each group.
+:::
+
 ### Step 4: Add Filters
 
-**Filters** are the criteria/conditions that determine which contributor fall into each sub-group.
+**Filters** define the conditions that determine which contributors are included in each Trellis Group.
 
 To set up these Filters:
 
-* Define the specific conditions for each filter. This involves selecting attributes from the `USER ATTRIBUTES` dropdown, setting the condition from the `CONDITIONS` dropdown, and then specifying the `VALUE` for that condition.
-* You can add multiple conditions for the same Trellis Group allowing you to create a more accurate and granular level definition for each sub Trellis Group.
-* Note that while creating the **Filters** for Trellis Groups you cannot add identical or conflicting conditions for two or more Trellis Groups. This is important because each contributor should only be part of one sub profile. 
+* Define specific conditions by selecting attributes from the **USER ATTRIBUTES** dropdown, choosing a condition from the **CONDITIONS** dropdown, and specifying the **VALUE** for that condition.
+* You can add multiple conditions to refine the definition of each Trellis Group more accurately.
+* Keep in mind that filters must be unique across Trellis Groups. Conflicting or identical conditions across groups are not allowed, as each contributor should ideally belong to only one group.
 
 :::info
 Note that adding a Contributor to two or more sub-profiles is not supported.
@@ -115,7 +120,7 @@ When a new Collection is created, it is automatically associated with the Trelli
 * Select the **Collection** where you want to customize the **Trellis Factors** contributing to the **Trellis Metric** calculations.
 * Enable the **Trellis Contributor Scoring** option (if disabled).
 * Customize the **Factors** or **Trellis Groups** as needed. 
-* Save the Collection settings.
+* Save the **Collection settings**.
 
 This creates a new configuration for Trellis Factors at the Collection level that is derived from the existing Trellis Factors at the Account level.
 

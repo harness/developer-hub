@@ -15,6 +15,10 @@ Pod HTTP modify header is a Kubernetes pod-level chaos fault that injects chaos 
 
 Pod HTTP modify header can be used to test resilience towards incorrect or incomplete headers in application services.
 
+:::info note
+Pod HTTP modify header supports HTTP method only.
+:::
+
 ### Permissions required
 
 Below is a sample Kubernetes role that defines the permissions required to execute the fault.

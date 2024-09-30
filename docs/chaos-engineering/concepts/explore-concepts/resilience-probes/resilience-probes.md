@@ -98,7 +98,7 @@ HCE allows you to create probes for multiple infrastructures, namely, Kubernetes
 - Go to [known issues](/docs/chaos-engineering/troubleshooting/known-issues) for more information.
 :::
 
-## Resilience probes status matrix
+## Resilience probes status
 
 Probe status is the single source of truth when executing a chaos experiment. The probe status in a chaos experiment can be in 4 different states.
 
@@ -110,20 +110,12 @@ Probe status is the single source of truth when executing a chaos experiment. Th
 
 ### Delete resilience probes
 
-You can delete a probe only after [disabling it](/docs/chaos-engineering/use-harness-ce/probes/use-probe#disable-a-probe). Go to Disable Probes for more information.
+You can delete a probe only after disabling it. Go to [Disable Probes](/docs/chaos-engineering/use-harness-ce/probes/use-probe#disable-a-probe) for more information.
+
 - When you select **Disable only**, the probe won't be available for further scheduling when selecting the probe from the UI. If the older runs (or experiment) manifest used that probe, successive runs of the experiment will be blocked with the message that the probe is disabled. This is because the probe is not removed since it is not a **Bulk Disable** operation. You will need to manually remove the probe references from the manifest.
 - When you select **Disable Only**, the history of the probe would be intact and you can see older probe executions associated with it.
 - Once you **Bulk disable** a probe, information about the probe reference is also deleted from all the manifest references, that is, the probe is removed from the `probeRef` annotation. This ensures that the next possible run will not schedule the probe.
 - Only when you **hard delete** a probe, you can reuse the name of that probe.
-
-### Resilience probes support
-Resilience probes are supported by the following features:
-- Resilience Tab
-- Chaos Studio
-- Experiments/Run Reports
-- Linux and Kubernetes experiments
-- GameDays
-- Sandbox environment
 
 ### Default/System resilience probes
 
@@ -140,11 +132,9 @@ Resilience probes are supported by the following features:
 - **Legacy probes support (Backward compatibility)***: Users can still use legacy probes.
 - **Audit integration**: Audit events are available for resilience probes.
 - **Access control permissions division**: ACL is mapped to the experiment ACL.
+- Resilience probes are not a part of any subscription, and hence you don't have any limit on the number of probes you can create.
+- You can execute 1,000 probes in a month.
 :::
-
-### License
-
-Resilience probes are not a part of any subscription, and hence you don't have any limit on the number of probes you can create. Concerning usability, 1,000 probes can be executed in a month.
 
 ## Next steps
 

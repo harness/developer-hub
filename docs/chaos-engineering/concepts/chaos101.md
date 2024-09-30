@@ -63,7 +63,9 @@ You can build resilient applications by following the steps below:
 
 The practice of chaos engineering involves repeatedly performing experiments by injecting various potential failures, known as [chaos faults](/docs/chaos-engineering/use-harness-ce/experiments/#chaos-fault), to simulate real-world failure conditions against different resources, referred to as **targets**.
 
-Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for your organization. The diagram below outlines the steps you can take to introduce chaos into an application.
+Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for your organization. HCE is built on open-source CNCF chaos engineering project [LitmusChaos](https://litmuschaos.io/). It leverages the robustness of LitmusChaos and provides additional capabilities that makes chaos engineering an easy practice for enterprises. The additional capabilities are listed [here](/docs/chaos-engineering/getting-started/#hce-and-litmuschaos).
+
+The diagram below outlines the steps you can take to introduce chaos into an application.
 
 ![Chaos Engineering Overview](./static/chaos101/first-goal.png)
 
@@ -90,7 +92,7 @@ HCE doesn't just focus on fault injection; it helps you set up a fully operation
     - **Dedicated Workspaces**: Isolate chaos experiments and resources for different teams or projects.
     - [**ChaosGuard**](/docs/chaos-engineering/concepts/explore-concepts/chaosguard): Adds an additional security layer by executing a set of conditions before running chaos experiments.
     - **Chaos Teams**: Allows control over who can access and execute chaos experiments, ensuring that only authorized users interact with chaos resources.
-    - **Access Control**: [Fine-grained permissions](/docs/chaos-engineering/security/#user-authorization-and-role-based-access-control) manage access to chaos infrastructure, the types of faults used, and the runtime permissions for executing experiments within target environments.
+    - **Access Control**: [Fine-grained permissions](/docs/chaos-engineering/use-harness-ce/governance/rbac#user-authorization-and-role-based-access-control) manage access to chaos infrastructure, the types of faults used, and the runtime permissions for executing experiments within target environments.
 
 - **Native Integration with Harness Continuous Delivery (CD) Pipelines**: [Streamline chaos engineering into your CI/CD workflows](/docs/category/integrate-hce-with-harness-cd).
 
@@ -112,11 +114,11 @@ HCE doesn't just focus on fault injection; it helps you set up a fully operation
 
 #### Workflow Custom Resource (CR)
 
-	It is used to define the number of operations that are coupled together in a specific sequence to achieve a desired chaos impact. These operations are chaos faults or any custom action associated with the experiment, such as load generation.
+    It is used to define the number of operations that are coupled together in a specific sequence to achieve a desired chaos impact. These operations are chaos faults or any custom action associated with the experiment, such as load generation.
 
 #### Chaos Manager
 
-	A GraphQL-based Golang microservice that serves the requests received from the chaos infrastructure either by querying MongoDB for relevant information.
+    A GraphQL-based Golang microservice that serves the requests received from the chaos infrastructure either by querying MongoDB for relevant information.
 
 :::tip
 A NoSQL MongoDB **database** microservice accountable for storing users' information, past chaos experiments, saved chaos experiment templates, user projects, ChaosHubs, and GitOps details, among other information.
@@ -124,24 +126,24 @@ A NoSQL MongoDB **database** microservice accountable for storing users' informa
 
 #### Chaos Exporter
 
-	An optional constituent that exposes monitoring metrics such as QPS and others present on the cluster to the frontend.
-	It facilitates external observability in HCE. You can achieve this by exporting the chaos metrics generated (during the chaos injection as time-series data) to the Prometheus database for processing and analysis.
+    An optional constituent that exposes monitoring metrics such as QPS and others present on the cluster to the frontend.
+    It facilitates external observability in HCE. You can achieve this by exporting the chaos metrics generated (during the chaos injection as time-series data) to the Prometheus database for processing and analysis.
 
 ### Components common to all Chaos Infrastructure
 
 Some of the components common to all chaos infrastructures include:
 
 - **Workflow controller**: Helps execute chaos experiments by:
-	- Searching for the experiment on the cluster.
-	- Identifying the experiment.
-	- Triggering the experiment.
+    - Searching for the experiment on the cluster.
+    - Identifying the experiment.
+    - Triggering the experiment.
 
 - **Subscriber**: Serves as a bridge between the execution plane and control plane. It also performs other tasks required to orchestrate the chaos experiment executions, such as:
-	- Installing a new chaos experiment on the cluster.
-	- Sending the experiment metadata (after completing the execution) to the control plane.
-	- Performing health checks on all the components in the chaos execution plane.
-	- Creating a chaos experiment CR from a chaos experiment template.
-	- Monitoring the events associated with the chaos experiment during its execution.
+    - Installing a new chaos experiment on the cluster.
+    - Sending the experiment metadata (after completing the execution) to the control plane.
+    - Performing health checks on all the components in the chaos execution plane.
+    - Creating a chaos experiment CR from a chaos experiment template.
+    - Monitoring the events associated with the chaos experiment during its execution.
 
 #### Chaos Operator
 Leverages the Kubernetes operator pattern to interpret the fault configuration, execute the individual faults in an experiment, execute the fault and its probes (if they have been defined), and populate the result after the execution.

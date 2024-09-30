@@ -86,6 +86,13 @@ import {
             link: "/release-notes/continuous-integration",
           },
           {
+            title: "Database DevOps release notes",
+            module: MODULES.dbdevops,
+            description:
+              "",
+            link: "/release-notes/database-devops",
+          },
+          {
             title: "Feature Flags release notes",
             module: MODULES.ff,
             description:
@@ -105,6 +112,13 @@ import {
             description:
               "",
             link: "/release-notes/internal-developer-portal",
+          },
+          {
+            title: "Internal Developer Portal release notes",
+            module: MODULES.cde,
+            description:
+              "",
+            link: "/release-notes/cloud-development-environment",
           },
           {
             title: "Security Testing Orchestration release notes",
