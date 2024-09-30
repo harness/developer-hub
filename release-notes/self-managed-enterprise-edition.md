@@ -217,6 +217,65 @@ gsutil -m cp \
 
 - Fixed the error associated with upgrading a chaos infrastructure by providing relevant permissions for the upgrade agent in the execution plane (user host/cluster). (CHAOS-5980)
 
+#### Continuous Delivery
+
+- Previously, when a Pipeline Execution was aborted due to a Deployment Freeze, the details of the Freeze were not accessible from the Execution Console view. This issue was resolved by adding the details to the Console View. (PIPE-20658)
+
+- Users were unable to move or delete a service-specific override. This issue is resolved. The permissions required to move or delete a service-specific override for global environment and infrastructure is `core_environment_edit`. The permissions required for service-specific override or service and infrastructure is `core_service_edit`. Separate permissions to delete are not required.  (CDS-100204, ZD-68468, ZD-68759)
+
+- The Helm chart deployments failed when the `values` YAML file contained double quotes. This issue is resolved. (CDS-100174, ZD-68747, ZD-68940)
+
+- The service variable that referenced secret text was exposed in plaintext delegate logs when executing CD WinRM deployment. This issue is resolved. The warning logs are updated with debug logs. (CDS-100046, ZD-68713)
+
+- When using a WinRM credential of "type = Kerberos" in a PowerShell script, the output variables were not displayed properly due to a missing identifier. This issue is resolved. (CDS-100036, ZD-68283)
+
+- Service was not loading when the service and environment used a custom template configured as **Always use the stable version**. This issue is resolved. (CDS-100021, ZD-68666)
+
+- Custom stage pipelines did not show the environment in the pipeline execution history. This issue is resolved now.(CDS-99938)
+
+- The error title **Intervention** was displayed when the verification step failed. The title is now updated to **Verification Failure**. (CDS-99671,ZD-65113)
+
+- The placeholder in the health source connector component, which previously displayed `GCP`, has now been updated to `BigQuery`. There is no functionality change with the issue resolution. (CDS-99519)
+![](./static/health_source_connector.png)
+
+- The runtime input symbol was getting displayed even when **fixed values** was selected from the templates in the monitored services. This issue has been resolved. (CDS-99518) 
+
+- On the services page, the deployment type icon did not consistently appear. This issue has been resolved. (CDS-99331, ZD-66892)
+
+- GitOps deployments were not tracked for multiple projects because the Harness Gitops instances service was out of sync with applications without project mappings. This issue has been resolved. (CDS-98989, ZD-63203)
+
+- Earlier, deleting the entire expressions from the delegate selector field at the step level was not possible. This issue is resolved. (CDS-96694)
+
+- The Service and environment values saved as input sets of monitored service template in the verify step were not available while running the pipeline. This issue is resolved. (CDS-96581)
+
+- The tooltip for the **Output Alias** (optional) field under **Optional Configuration** was not being displayed. This issue is resolved. (CDS-90919)
+
+- When the Input Set YAML was invalid, the backend response lacked the necessary error message and the `entityValidityDetails` parameter. This issue has been fixed by ensuring that invalid YAML is properly displayed in the YAML view, with the visual view disabled to avoid further errors and improve consistency across entities.(PIPE-20705, PIPE-20536)
+
+- The tooltip for affected components on the status page was broken, and the scheduled maintenance was being displayed too early. These issues have been fixed, ensuring the tooltip works correctly and that the maintenance notification only appears shortly before the maintenance window starts. (CDS-100526)
+
+- Invalid Input Set YAML was not properly displayed in the YAML view. The issue is fixed now. (PIPE-20705)
+
+- The tooltip for affected components on the status page was broken, and the scheduled maintenance was being displayed too early. These issues have been fixed, ensuring the tooltip works correctly and that the maintenance notification only appears shortly before the maintenance window starts. (CDS-100526)
+
+- When switching from 'All Infrastructure' to a specific infrastructure, the selected infrastructure would be dropped. Additionally, the infrastructure section was incorrectly accessible when the environment was set as a runtime input during multiple environment/infrastructure deployments, and there were issues with pagination support where infrastructure was disabled when the environment was a runtime input. These issues have now been resolved, ensuring proper infrastructure selection, access restrictions, and pagination support. (CDS-100178)
+
+- Previously, when using the GitOps Sync Step, even if only a few clusters were selected from the provided environment and a regex was given, the sync would incorrectly sync all apps across all clusters. This issue has been fixed, and now only the apps in the selected clusters will be synced as expected. (CDS-100130)
+
+- Previously, when `agentId` was set as a runtime input, `applicationName` was not set as a runtime input as expected. This issue has now been fixed. (CDS-99821)
+
+- The page number of project and connector list page was not getting reset when applying favourite filter. The issue is fixed now. (CDS-99747)
+
+- The favourite icon on connector details page was not getting higlighted when connector is marked as favourite. The issue is fixed now. (CDS-99742)
+
+- Previously, when accessing remote environments through the grid view, navigation did not land on the correct page, and the Git details were missing on the detail page. This issue has been fixed by updating the query parameters, ensuring that remote environments now navigate to the correct page and display the required Git details. (CDS-99435)
+
+- Previously, the service details call sorted by `lastUpdatedAt` on a fresh load, but the UI displayed `Last modified` in the filter. This caused inconsistency where edited services retained their position, and cloned services appeared last. Once the filter was selected with `Last modified`, the sort switched to `lastModifiedAt`, displaying edited or cloned services at the top. Additionally, in the environment view, the UI showed `Last Updated`, but the sorting parameters were sent as `lastModifiedAt`. The issue is fixed now. (CDS-98986)
+
+- Previously, when attempting to save a CV step without selecting a CV type, the step could not be saved, but no error message or notification was displayed to indicate the missing configuration. This issue has been resolved by adding an error message, `Verification type is required`, to inform users when the CV type is not selected. (CDS-98977)
+
+- When editing the additonal manifest, the manifest type is different. The issue is fixed and now the manifest type will be same as selected and match the sidebar. (CDS-98975)
+
 #### Continuous Integration
 
 - Removed the CI onboarding flow for new projects on SMP environments, where users were previously directed to a 'Get Started' page that could fail due to `clientSecret` setup for Stripe. Now, customers will be directed to the Overview page instead. Upcoming releases will include changes to completely remove the Get Started option from the side navigation for SMP customers, ensuring it is no longer visible. (CI-13687)
