@@ -76,6 +76,35 @@ Without the above parameter input the pipeline won't be executed. [Take a look a
 
 :::
 
+The `token` property we use to fetch **Harness Auth Token** is hidden on the **Review Step** using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page`  in-case you have multiple pages.
+
+```
+# example workflow.yaml
+...
+parameters:
+  - title: <PAGE-1 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+    token:
+      title: Harness Token
+      type: string
+      ui:widget: password
+      ui:field: HarnessAuthToken
+  - title: <PAGE-2 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+  - title: <PAGE-n TITLE>  
+...
+```
+
 #### Output
 
 1. `Title` : Name of the Pipeline. 
@@ -84,6 +113,22 @@ Without the above parameter input the pipeline won't be executed. [Take a look a
 Once you create the workflow with this custom action, you can see the pipeline URL running in the background and executing the flow. 
 
 ![](./static/flow-ca-1.png)
+
+You can now optionally remove the pipeline url from the workflow execution logs, for this you need to use the boolean property `hidePipelineURLLog` and set the value as `true`.
+
+```YAML
+## Example
+steps:
+- id: trigger
+    name: Creating your react app
+    action: trigger:harness-custom-pipeline
+    input:
+    url: "Pipeline URL"
+    hidePipelineURLLog: true
+    inputset:
+        project_name: ${{ parameters.project_name }}
+    apikey: ${{ parameters.token }}
+```
 
 3. You can as well configure the output to display the pipeline [output variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#input-and-output-variables), by setting the `showOutputVariables: true` under `inputs`and adding `output` as shown in the example below:
 

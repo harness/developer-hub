@@ -4,6 +4,9 @@ Solution| Supported Platform| Connected | HA | Monitoring| Disaster Recovery |
 | :-----------------------------------------------------------------: | :----------------------------: | :-----------: | :----------------: | :-------------------: | :-----------------: |
 | Kubernetes Cluster| Kubernetes - GKE - AKS - EKS | Yes| Yes | Prometheus, Grafana | Yes
 
+### Self-Managed Enterprise Edition Release cadence
+Harness releases Self-Managed Enterprise Edition on a monthly basis. Additionally, periodic hot-fixes are released as needed. Self-Managed Enterprise Edition takes a branch cut of Harness SaaS release and creates a Release Candidate which goes through the iteration of testing and bug fixing process after which the release candidate is released.
+
 ### Supported Kubernetes versions
 
 * Self-Managed Enterprise Edition supports Kubernetes v.1.28 and 1.27. We intend to support active K8s versions as they are released. 

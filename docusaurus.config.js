@@ -64,10 +64,8 @@ async function config() {
           sitemap: {
             // changefreq: 'weekly',
             // priority: 0.5,
-            ignorePatterns: [
-              '/docs/database-devops',
-              '/docs/database-devops/**',
-            ],
+            // ignorePatterns: [
+            // ],
             // filename: 'sitemap.xml',
           },
           theme: {
@@ -126,6 +124,10 @@ async function config() {
                   to: 'docs/continuous-delivery',
                 },
                 {
+                  label: 'Database DevOps',
+                  to: 'docs/database-devops',
+                },
+                {
                   label: 'Infrastructure as Code Management',
                   to: 'docs/infrastructure-as-code-management',
                 },
@@ -156,6 +158,10 @@ async function config() {
                 {
                   label: 'Internal Developer Portal',
                   to: 'docs/internal-developer-portal',
+                },
+                {
+                  label: 'Cloud Development Environments (BETA)',
+                  to: 'docs/cloud-development-environment',
                 },
                 {
                   label: 'Software Engineering Insights',
