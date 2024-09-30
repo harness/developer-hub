@@ -76,7 +76,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - WinRM shell script steps now support logs more than 5 hours till maximum of step timeout or 1 day (CDS-101408).
 
-### Version 24.08.83804 <!--  September 20, 2024 -->
+### Version 24.09.83905 <!--  September 20, 2024 -->
 
 #### Hotfixes
 
