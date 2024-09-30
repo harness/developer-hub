@@ -31,7 +31,7 @@ Here’s a table of the available workspace expressions in Harness IaCM:
 |-------------------------------|--------------------------------------------------|---------------------------------------------------------------------------------|
 | **Workspace ID**              | `<+workspace.identifier>`                        | Retrieves the unique identifier for the workspace.                              |
 | **Folder Path**               | `<+workspace.folderPath>`                        | Returns the root directory path associated with the workspace.                  |
-| **Provisioner Type**          | `<+workspace.type>`                              | Provides the type of provisioner being used, such as Terraform or Opentofu.     |
+| **Provisioner Type**          | `<+workspace.type>`                              | Provides the type of provisioner being used, such as `terraform` or `opentofu.` |
 | **Provisioner Version**       | `<+workspace.provisionerVersion>`                | Fetches the version of the provisioner used in the workspace.                   |
 | **Connector Reference**       | `<+workspace.connectorRef>`                      | Retrieves the connector reference associated with the workspace.                |
 | **Environment Variable**      | `<+workspace.envVars.SOME_ENV_VAR>`              | Accesses a specific environment variable within the workspace.                  |
