@@ -22,9 +22,9 @@ Loadgen faults disrupt the state of the application by applying a heavy load on 
 
 <FaultDetailsCard category="load">
 
-### Locust loadgen
+### K6 loadgen
 
-Locust loadgen fault simulates load generation on the target hosts for a specific chaos duration. This fault:
+K6 loadgen fault simulates load generation on the target hosts for a specific chaos duration. This fault:
 
 - Slows down or makes the target host unavailable due to heavy load.
 - Checks the performance of the application or process running on the instance.
@@ -38,9 +38,9 @@ This fault determines the resilience of the application under a generated load. 
 
 <FaultDetailsCard category="load">
 
-### K6 loadgen
+### Locust loadgen
 
-K6 loadgen fault simulates load generation on the target hosts for a specific chaos duration. This fault:
+Locust loadgen fault simulates load generation on the target hosts for a specific chaos duration. This fault:
 
 - Slows down or makes the target host unavailable due to heavy load.
 - Checks the performance of the application or process running on the instance.
