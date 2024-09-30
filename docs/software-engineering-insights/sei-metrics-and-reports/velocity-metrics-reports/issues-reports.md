@@ -503,5 +503,5 @@ You might want to set the time range to **Use Insight time**, which allows the u
 ## Other issues reports
 
 * **Issue Hotspots Report:** Determine code hotspots most often result in issues being created in your issue management system. This can help you identify code areas that need better test coverage.
-* **Issue Progress Report:** Analyze progress on [effort investment categories](/docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-overview).
+* **Issue Progress Report:** Analyze progress on [effort investment categories](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports).
 * **SCM issues:** For information about reports that track SCM issues, go to [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).

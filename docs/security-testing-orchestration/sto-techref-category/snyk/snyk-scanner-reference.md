@@ -3,6 +3,8 @@ title: Snyk step configuration
 description: Scan code repositories and container images with Snyk.
 sidebar_label: Snyk step configuration
 sidebar_position: 10
+redirect_from:
+  - /docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans
 ---
 
 import Tabs from '@theme/Tabs';
@@ -16,17 +18,7 @@ import TabItem from '@theme/TabItem';
 <br/>
 <br/>
 
-Harness STO supports the following scan modes for the following Snyk products:
-- Snyk Open Source
-  - [Snyk Open Source — orchestration mode](./snyk-scans.md#snyk-open-source-orchestration-example)
-  - [Snyk Open Source — ingestion mode](./snyk-scans.md#snyk-open-source-ingestion-example)
-- Snyk Code 
-  - [Snyk Code — ingestion mode](snyk-scans.md#snyk-code-ingestion-example)
-- Snyk Container
-  - [Snyk Container — ingestion mode](./snyk-scans.md#snyk-container-ingestion-example)
-- Snyk infrastructure as Code (currently in beta)
-  - [Snyk infrastructure as Code — ingestion mode](./snyk-scans.md#snyk-infrastructure-as-code-ingestion-example)
-
+The Snyk step in Harness STO enables you to perform Snyk [Code](./snyk-code-scanning.md), [Open Source](./snyk-open-source.md), [Container](./snyk-open-source.md), and [IaC](./snyk-iac-scanning.md) scanning in both Orchestration and Ingestion modes of STO. This document will guide you through understanding the fields, configuring them, and providing any necessary information for setting up the step.
 
 ## Important notes for running Snyk scans in STO
 
@@ -54,7 +46,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Snyk step settings for STO
 
-The recommended workflow is to add a Snyk step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+It is recommended to add a Snyk step to the **Security** or **Build** stage and configure it as described below.
 
 
 ### Scan
@@ -135,8 +127,37 @@ import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
 import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
 
 
-
 <StoSettingTargetWorkspace  />
+
+### Container image
+
+
+#### Type
+
+import StoSettingImageType from '../shared/step_palette/image/_type.md';
+
+<StoSettingImageType />
+
+
+#### Domain
+
+import StoSettingImageDomain from '../shared/step_palette/image/_domain.md';
+
+<StoSettingImageDomain />
+
+
+#### Name
+
+import StoSettingImageName from '../shared/step_palette/image/_name.md';
+
+<StoSettingImageName />
+
+
+#### Tag
+
+import StoSettingImageTag from '../shared/step_palette/image/_tag.md';
+
+<StoSettingImageTag />
 
 
 ### Authentication
@@ -241,3 +262,8 @@ import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 <ScannerRefAdvancedSettings />
 
 
+## Proxy settings
+
+import ProxySettings from '../shared/proxy-settings.md';
+
+<ProxySettings />

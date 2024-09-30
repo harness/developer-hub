@@ -2,6 +2,7 @@
 title: CD Steps FAQs
 description: Frequently asked questions about CD steps and step groups.
 sidebar_position: 8000
+canonical_url: https://www.harness.io/blog/ci-cd-pipeline
 ---
 
 This article addresses some frequently asked questions about CD steps and step groups.

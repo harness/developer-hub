@@ -9,16 +9,16 @@ With perspective preferences, you have the flexibility to tailor the cost data p
 ## Default settings for perspective preferences
 You can configure perspective preferences in the **Cloud Costs** > **Setup** > **Default Settings** page. You can override these settings at the perspective level if needed. The following table provides the default values of perspective preferences:  
 
-| **General** | **AWS** | **GCP** |
-| --- | --- | --- |
-| Show Anomalies - Enabled | Include Discounts - Enabled | Include Discounts - Disabled |
-| Show Others - Disabled | Include Credit - Enabled | Include Taxes - Enabled |
-| Show Unallocated cost in Clusters - Disabled | Include Refunds - Enabled | - |
-| - | Include Taxes - Enabled | - |
-| - | Show costs as:<ul><li>Amortised</li><li>Net-amortised</li><li>Unblended</li><li>Blended</li><li>Effective</li></ul>Default value: Unblended | - |
+| **General** | **AWS** | **GCP** | **Azure** |
+| --- | --- | --- | --- |
+| Show Anomalies - Enabled | Include Discounts - Enabled | Include Discounts - Disabled | Show costs as - Actual |
+| Show Others - Disabled | Include Credit - Enabled | Include Taxes - Enabled | - |
+| Show Unallocated cost in Clusters - Disabled | Include Refunds - Enabled | - | - |
+| - | Include Taxes - Enabled | - | - |
+| - | Show costs as:<ul><li>Amortised</li><li>Net-amortised</li><li>Unblended</li><li>Blended</li><li>Effective</li></ul>Default value: Unblended | - | - |
 
 
-<DocImage path={require('./static/default-preferences-settings.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/default-set.png')} width="90%" height="90%" title="Click to view full size image" />
 
 :::info
 
@@ -143,3 +143,29 @@ The following cost factors retrieved from your GCP Billing Export data can be in
 To know how to analyze the perspective data, go to [Analyze cost for GCP](../3-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md).
 
 For details about the **GCP Invoice Month** filter, go to [Add filters](/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-gcp-using-perspectives#option-add-filter).
+
+## Azure preferences
+
+Azure provides two types of cost export metrics: **Actual Cost** and **Amortized Cost**, each serving distinct financial tracking and analysis needs. In the Azure portal, users can toggle between these cost types to gain insights into their billing data. CCM allows users to configure their Azure connector to support both cost types, offering enhanced visibility and control over their expenses.
+
+#### Actual Cost
+
+Actual Cost refers to the real-time, pay-as-you-go pricing for Azure resources and services. It is calculated based on hourly or per-minute usage, directly reflecting the charges that can vary with demand and utilization. This cost model is ideal for real-time monitoring and cost analysis, as it provides a precise view of expenses as they occur.
+
+#### Amortized Cost
+
+Amortized Cost offers a predictable, averaged representation of costs over a specified period, typically on a monthly basis. This approach spreads the upfront payments or commitments of Reserved Instances (RIs) over their term, which can be either one or three years. Amortized costs are particularly useful for evenly distributing expenses over reservation terms, aiding in financial projections and budgeting by providing a stable cost structure.
+
+To accommodate the diverse needs of different teams,CCM supports the setup of both Actual and Amortized cost exports within the same connector. Users can view and toggle between these costs on their perspectives.
+
+:::note
+- In order to accurately track costs, ensure that your connector has one billing type set to "Actual." If not set while creating the connector, the creation will fail and for existing connectors, update the connectors such that one of the billing type should be "Actual" otherwise connector test connection would fail.
+
+- Billing type will be set to "Actual" in billing export in places where billing type was not present before this feature launch.
+
+- CCM will maintain data with the Azure cost type set to "Actual." All cost computations will be based on this setting.
+
+- For Active Spend and License-Util APIs, Costs will be queried assuming Azure cost type "Actual".
+
+:::
+

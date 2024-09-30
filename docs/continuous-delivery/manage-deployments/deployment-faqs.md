@@ -2,7 +2,9 @@
 title: Harness Deployment Strategies FAQs
 description: Frequently asked questions about Harness deployment strategies.
 sidebar_position: 10
+canonical_url: https://www.harness.io/blog/blue-green-canary-deployment-strategies
 ---
+
 This article addresses some frequently asked questions about Harness deployment strategies.
 
 ### How to use FOR condition while using JEXL condition for triggers?
@@ -1948,13 +1950,68 @@ When the Connector URL for job execution is enabled, the system uses the connect
 
 Enabling the Connector URL option affects the job execution process by modifying the way the job trigger URL is formed. Instead of using the internal IP address from the job URL obtained in the first API call, the system will only take the job identifier details from the response. It then combines these details with the connector URL to form the second API call URL. This ensures that the URL used to trigger the job is correct and reachable, preventing potential failures due to inaccessible internal IP addresses.
 
+### Can I roll back a failed pipeline using Post deployment rollback feature?
+No, you can only roll back successful pipelines. The rollback option is not available for pipelines that have failed.
+
+### Can I perform multiple rollbacks on the same pipeline using Post deployment rollback feature?
+No, you cannot roll back the same pipeline multiple times. However, you can perform a rollback if the pipeline is executed again.
+
+### In what order do stages roll back during a deployment rollback?
+Stages should roll back in reverse order when a deployment rollback is triggered.
+
+### What happens if the pipeline configuration changes between executions and we use Post deployment rollback feature ?
+If the pipeline configuration has changed, the rollback will use the YAML from the previous execution as a reference.
+
+### Why is my rollback step being skipped even though I don't have an execution condition?
+
+This can happen if the `If the pipeline executes successfully up to this point (default)` option is selected in the **Conditional Execution** configuration of the step. If this option is selected, the rollback step won't be able to run due to the failure of the pipeline. By default, rollback steps are only run if the pipeline deployment fails. When this option is selected for a rollback step, the pipeline would not have executed successfully causing the step to be skipped.
+
+### Why is my helm deployment failing with a `resource name may not be empty` error even though the `helm template` command works fine?
+
+```
+Error INSTALLATION FAILED: rendered manifests contain a resource that already exists. Unable to continue with install: could not get information about the resource Deployment "" in namespace "$NAMESPACE": resource name may not be empty
+```
+
+This issue is caused by a misconfiguration in the helm chart files. Either the `values.yaml` file or helm manifests themselves is not properly formatted or providing a valid value for a resource name. `helm template` does not lint helm charts or check for syntax errors. `helm template` only returns the output of the helm chart exactly how it is defined. To resolve this, try using `helm lint` on the manifest files and checking if there are any linting issues with the helm chart.
 
 
+### Will the ECS deploy feature create new resources based on the service configuration file like service/task/scaling policy/scaling target or do we need to create the infra before ECS deploy?
+
+Yes, ECS Deploy will deploy any files specified in the service. If a service/task/scaling policy/scaling target are specified, the ECS Deploy stage will deploy all of those. If you only specify a scaling target, ECS Deploy will only deploy that single resource. 
 
 
+### Why am I getting a `stageIdentifier` error when creating a trigger through the Harness API?
+
+```
+Failed while Saving Trigger: stageIdentifier can not be blank/missing. artifactRef can not be blank/missing.
+```
+
+This error happens when specifying the `withServiceV2` parameter of the API. By default, this value is `false` however, if using ServiceV2, it needs to be set to `true`.
 
 
+### Why can't I set an output variable in Harness using a python script in a script step?
 
+If an environment variable is set in a Python script, it will not be available in the Bash script for consumption. In Unix-like systems, a child process (such as a Python script) cannot directly modify the environment of its parent process (such as the shell that runs the Python script). In order for the Bash script to consume the variable from the child Python script, the Python script would have to return that value. For example,
+```
+MY_VARIABLE_HERE=$(python3 my_python_script.py)
+```
 
+The other method would be to write a shell script in the Python script for Bash to consume the variables.
+```
+import os
 
+# Set environment variable
+os.environ["MY_ENV_VAR"] = "test"
 
+# Write the environment variable to a file
+with open("/tmp/env_var.sh", "w") as file:
+    file.write(f"export MY_ENV_VAR={os.environ['MY_ENV_VAR']}\n")
+
+print("Environment variable MY_ENV_VAR set to:", os.environ["MY_ENV_VAR"])
+EOF
+```
+
+### Why did my artifact trigger my pipeline only once?
+If artifacts aren't triggering pipelines even though there were multiple artifacts pushed, it may be due to the `Execute Triggers With All Collected Artifacts or Manifests` configuration option. By default, artifact triggers are configured to only trigger once if more than one artifact or manifest is returned in a 1 minute interval. This configuration option allows triggers to execute for each artifact or manfiest collected regardless of the polling interval. To enable this feature, go to your Harness project/org/account **Default Settings**, select **Pipeline**, and then enable **Execute Triggers With All Collected Artifacts or Manifests**.
+
+For more information on this topic, go to [Trigger pipelines on a new artifact](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#important-notes) documentation

@@ -1,0 +1,10 @@
+.illustrationContainer {
+  width: 100%;
+  display: flex;
+  margin: 50px 0;
+  justify-content: center;
+  .illustration {
+    width: 80%;
+    // height: 500px;
+  }
+}

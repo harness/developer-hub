@@ -4,6 +4,7 @@ description: Frequently asked questions about pipelines.
 sidebar_position: 4
 redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/pipeline-faq
+canonical_url: https://www.harness.io/blog/ci-cd-pipeline-as-code-with-harness
 ---
 
 <!--
@@ -69,7 +70,7 @@ Set the **Callback ID** in the Approval step, under **Approval Callback Identifi
 
 ### Does the Harness NextGen community edition support LDAP login?
 
-Community edition did not support LDAP. As of December 2023, the community edition is retired in favor of Gitness.
+Community edition did not support LDAP. As of December 2023, the community edition is retired in favor of [Harness Open Source](/docs/open-source/overview).
 
 ### Can monitoring be added for changes to a Harness file-store object?
 
@@ -681,3 +682,51 @@ The `main.tf` sample file includes a delegate token option, facilitating automat
 ### What are there discrepancies between the user list, access control, and dashboard?
 
 Harness includes user login data in audit history, but it's not structured for analytics purposes. Creating a custom view for this data isn't currently supported.
+
+### How to import multiple template versions with terraform provider?
+As of today only one template can be imported at a time. For every version of the template, a new resource is maintained. This applies to all entities regardless of version. Terraform (TF) helps manage these resources/entities, with each version of the template being treated as a separate entity.
+
+### How can I copy an input set from one pipeline to another if there is no export option available when selecting the input set I want to copy?
+Harness does not support built-in functionality for this use case. However, you can manually copy the content from the Inputset YAML and create a new Inputset YAML in the desired project or pipeline, making sure to update the metadata accordingly.
+
+### What does this expression do ```<+secrets.getValue("")>```syntax in a pipeline?
+You can retrieve a secret value, such as `GitHub_PAT`, using the `<+secrets.getValue("")>` syntax in a pipeline. If the secret is at the project level, use `<+secrets.getValue("GitHub_PAT")>`. For an organization-level secret, use `<+secrets.getValue("org.GitHub_PAT")>`, and for an account-level secret, use `<+secrets.getValue("account.GitHub_PAT")>`.
+
+### Can a trigger be created from a specific directory within a Git repository?
+Trigger cannot be created from a specific directory however you can create a trigger for a repository and then use a condition in your trigger such as starts with or Changed Files option to achieve your usecase.
+
+### How can we create and utilize variables and input variables within a pipeline?
+Currently, creating a variable at any level based on an input at the pipeline level is not supported.
+
+However, you can pass the value from a pipeline-level input to a stage or step-level variable.
+
+### Is there a method to create a single pipeline for deployment that can be used across multiple repositories and services, all managed through code? If so, could you provide details on how to set this up effectively?
+Yes, you can create a reusable pipeline template that can be used for multiple repos and services. This can be achieved by creating a pipeline template in Harness and then referencing it in your code.
+
+You can then use this template to deploy your services across multiple environments. For more information on creating pipeline templates and on pipeline templates : https://developer.harness.io/docs/platform/templates/create-pipeline-template/ and https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/
+
+### Could you please let me know the maximum number of account variables that can be created per account?
+We do not have any limits on the number of variables that can be created per account.
+
+### After the deployment is completed, I want to automatically send an email that includes details about all the Jira tickets involved in the build. How can I accomplish this?
+We provide pipeline notifications to alert users about approvals and other events Pipeline Notifications Documentation : https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/
+
+### How can I access variables defined within a service, infrastructure, environment, or scope?
+To access variables in the the Service, Infrastructure and Environment. You can use our inbuilt variables https://developer.harness.io/docs/platform/variables-and-expressions/harness-expressions-reference#service-expressions and You can get environment and Infrastructure expressions from here similar way in your pipeline.
+
+### Could you please explain how delegate selection is handled in both Service and Infrastructure steps?
+The service will use the connector delegate selector during the artifact fetch task. The connector will employ a delegate or delegate selector as specified, and the same delegate will be used if no delegate selector is defined at the step, stage, or pipeline level. 
+
+### Why does the pipeline name (or other fields) appear differently in Pipeline Studio compared to the Pipeline Listing Page?
+
+The difference in pipeline names and other fields between the Pipeline Studio and the Pipeline Listing Page occurs because these interfaces pull data from different sources:
+
+1. **Pipeline Studio**: This interface displays information directly from the YAML file in your Git repository, showing the values as they currently exist in the branch you're working on.
+
+2. **Pipeline Listing Page**: This interface retrieves information from the Harness Database (DB), reflecting the last updates made via the Harness UI or API.
+
+Discrepancies arise when the YAML file in any Git branch has different values compared to what's stored in the Harness DB. For example, if the pipeline name in the Git YAML file does not match the name stored in the Harness DB, you’ll see different names in the two interfaces.
+
+When you make updates to the pipeline via the Harness UI, these changes are saved both to the Harness DB and to the YAML file in the selected Git branch. However, other branches in your repository may still carry outdated YAML files with old values.
+
+To maintain consistency across all branches and interfaces, ensure that any manual changes to the YAML in Git are synchronized with updates made in the Harness UI. It’s also a good practice to regularly update all relevant branches to keep them aligned with the Harness DB.

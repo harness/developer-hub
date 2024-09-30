@@ -4,7 +4,7 @@ description: AutoStopping for Azure VMs
 sidebar_label: AutoStopping for Azure VMs
 ---
 
-<DocImage path={require('./static/AutoStopping_for_Azure_VMs.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/AutoStopping_for_Azure_VMs_updated.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ### AutoStopping for Azure VMs: High-Level Overview
 
@@ -26,7 +26,7 @@ Harness manages the existing App Gateway within the customer environment. In cas
 
 -   If no App Gateway is found, Harness proactively creates a new one, establishing a crucial element for directing and managing traffic.
 
-4.  Proxy Manager Creation:
+4.  Harness-managed Azure Function Creation:
 
 -   A newly created Proxy Manager becomes an essential component, actively tracking traffic directed towards Azure VMs.
 

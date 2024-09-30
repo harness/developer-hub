@@ -1,0 +1,9 @@
+{
+  "position": 6,
+  "label": "Chaos Dashboard",
+  "collapsible": "true",
+  "collapsed": "true",
+  "customProps": {
+    "description": "Resilience Insights by visualizing key metrics and data from your experiment runs."
+  }
+}

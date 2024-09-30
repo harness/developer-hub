@@ -1,0 +1,13 @@
+{
+  "position": 4,
+  "label": "Understand Concepts",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link":{
+    "type":"generated-index",
+    "title":"Understand Concepts",
+ },
+  "customProps": {
+    "description": "Understand all the concepts of Harness Chaos Engineering"
+  }
+}

@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Head from '@docusaurus/Head';
 import './CoveoSearch.scss';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 // Space => keyCode: 32
 const RESP_BREAK_POINT = 996;
@@ -24,9 +25,9 @@ const CoveoSearch = () => {
     }
   };
 
-  // useEffect(() => {
-  //   checkCoveo();
-  // }, []);
+  const {
+    siteConfig: { customFields },
+  } = useDocusaurusContext();
 
   useEffect(() => {
     checkCoveo();
@@ -105,13 +106,12 @@ const CoveoSearch = () => {
                 </div>
             </div>`;
         let coveoRoot = searchRoot.querySelector('#coveo-search'); // document.getElementById("coveo-search");
+        const rootUrl = window.location.href.split('/').slice(0, 3).join('/');
+        const res = await fetch(rootUrl + '/api/coveo_api');
 
-        const resToken = await fetch(
-          'https://next.harness.io/api/gettoken-all/'
-        );
-        const dataToken = await resToken.json();
-        const orgId = dataToken?.orgId;
-        const apiToken = dataToken?.apiKey;
+        const resData = await res.json();
+        const orgId = resData?.id;
+        const apiToken = resData?.token;
         Coveo.SearchEndpoint.configureCloudV2Endpoint(orgId, apiToken);
 
         const elemSearchMask = document.getElementById('coveo-search-mask');
@@ -216,7 +216,7 @@ const CoveoSearch = () => {
         ></script>
 
         {isCoveoLoaded && (
-          <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn@v0.2.7/js/coveo_template.js"></script>
+          <script src="https://cms.harness.io/js/coveo_template.min.js"></script>
         )}
       </Head>
       <div id="searchBoxCoveo" ref={searchBoxEl}></div>

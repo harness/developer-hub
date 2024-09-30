@@ -125,4 +125,8 @@ You can use this to add environment variables to your scan environment. To enabl
 
  <DocImage path={require('./static/aws-security-hub-session-token.png')} width="70%" height="70%" title="Add AWS_SESSION_TOKEN to enable session-based authentication" />  
 
+## Proxy settings
 
+import ProxySettings from '/docs/security-testing-orchestration/sto-techref-category/shared/proxy-settings.md';
+
+<ProxySettings />

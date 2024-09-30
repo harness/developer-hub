@@ -65,7 +65,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ssca,
     icon: "img/icon_ssca.svg",
     description: <>Secure your software supply chain.</>,
-    link: "docs/category/get-started-with-ssca",
+    link: "docs/category/get-started-with-scs",
     type: [docType.Documentation],
   },
   {
@@ -81,7 +81,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
     description: <>Ensure application and infrastructure resilience.</>,
-    link: "docs/category/get-started-with-hce",
+    link: "docs/chaos-engineering/getting-started/",
     type: [docType.Documentation],
   },
   {
@@ -90,6 +90,14 @@ export const featureList: CardItem[] = [
     icon: "img/icon_idp.svg",
     description: <>A home for developers to create, manage, and explore software.</>,
     link: "docs/category/get-started-with-idp",
+    type: [docType.Documentation],
+  },
+  {
+    title: "Set up Cloud Development Environments",
+    module: MODULES.cde,
+    icon: "img/cde_icon.svg",
+    description: <>Accelerate developer experience with pre-configured, secure and scalable development environments.</>,
+    link: "docs/cloud-development-environment",
     type: [docType.Documentation],
   },
   {

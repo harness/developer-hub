@@ -113,11 +113,18 @@ Enable **Intelligence Mode** to [enable Test Intelligence](./ti-overview.md).
 
 ### Test Globs
 
-You can override the default test globs pattern, if applicable to your build tool.
+Specify a glob pattern to match the test files you want to include.
 
-For example:, the default for RSpec is `**/spec/**/*_spec.rb`, and you could override it with any other pattern, such as `spec/features/**/*_spec.rb`, which would look for a `/spec` directory at the root level, rather than anywhere in the workspace.
+By default, we use the following globs for test selection:
+* Ruby: `**/spec/**/*_spec.rb`
+* Python: `"**/test_*.py`, `**/*_test.py"`
+* Java: `**/*.java`
 
-As another example, the default for a Python test tool could be `*_test.py` or `test_*.py`, you could override it with any other pattern, such as `.test.py`. Because test selection is at the file-level, the test globs pattern references file names. You can include directory structures, such as `microservice1/**/test_*.py`.
+You can override the default test globs pattern, for example:
+
+The default for RSpec is `**/spec/**/*_spec.rb`, and you could override it with any other pattern, such as `spec/features/**/*_spec.rb`, which would look for a `/spec` directory at the root level, rather than anywhere in the workspace.
+
+Since test selection is at the file-level, the test globs pattern references file names. You can include directory structures, such as `microservice1/**/test_*.py`.
 
 ### Report Paths
 
@@ -167,7 +174,13 @@ Variable values can be [fixed values, runtime inputs, or expressions](/docs/plat
 
 ### Parallelism (Test Splitting)
 
-To enable parallelism (test splitting) in a **Test** step, specify the number of parallel workloads to divide the tests into.
+To enable parallelism (test splitting) in a **Test** step, specify the number of parallel workloads to divide the tests into. These workloades will be executed in parallel steps. 
+
+:::note
+
+When using tests splitting, Intelligence Mode must be enabled.
+
+:::
 
 For example:
 
@@ -178,7 +191,7 @@ For example:
                   identifier: test
                   spec:
                     ...
-                    parallelism : 4 # Divide tests into 4 parallel workloads.
+                    parallelism : 4 # Divide tests into 4 parallel workloads executed by 4 steps.
 ```
 
 ### Additional container settings

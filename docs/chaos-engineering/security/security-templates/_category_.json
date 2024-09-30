@@ -1,0 +1,9 @@
+{
+  "position": 3,
+  "label": "Security Policies",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "HCE security policies such as PSP, Openshift SCC, and Kyverno."
+  }
+}

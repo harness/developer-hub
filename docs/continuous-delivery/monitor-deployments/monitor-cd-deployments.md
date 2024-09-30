@@ -6,6 +6,7 @@ helpdocs_topic_id: phiv0zaoex
 helpdocs_category_id: 0gyfk4938x
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/challenges-dora-azure-devops
 ---
 
 This topic describes how you can use DORA and other advanced metrics for deployments and services in CD Dashboards.

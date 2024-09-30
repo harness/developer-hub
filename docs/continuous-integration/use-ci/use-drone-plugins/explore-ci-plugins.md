@@ -2,6 +2,7 @@
 title: Explore plugins
 description: Learn how, why, and when to use plugins
 sidebar_position: 10
+canonical_url: https://www.harness.io/blog/away-from-jenkins-harness-ci
 ---
 
 Plugins perform predefined tasks. They are essentially templated scripts that can be written in any programming language. Plugins are also useful for integrating with other tools in your SDLC toolchain.

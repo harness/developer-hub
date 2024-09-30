@@ -6,6 +6,7 @@ helpdocs_topic_id: x0etkdg62q
 helpdocs_category_id: mfdyp6tf0v
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/blue-green-canary-deployment-strategies
 ---
 
 Currently, this feature is behind the Feature Flag `AZURE_WEBAPP`. Contact [Harness Support](https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=support@harness.io) to enable the feature.A Harness Azure Web App Canary deployment shifts traffic from one deployment slot to another incrementally.

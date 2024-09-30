@@ -37,4 +37,7 @@ Deployment Failed For: For application '$APP_ID': Cannot update this process whi
 ```
 Cloud Foundry only allows for 1 deployment or update process at a time for an application. If an application is currently deploying or crash looping, Cloud Foundry will block all other updates to this Application. To fix this, either wait for the Application to finish processing the deployment or, if the Application is crash looping, consider rolling back to the previous version. A Rollback in Cloud Foundry does not count as an update or deployment process and can safely be executed if required.
 
+### Are there any limitations on secret variables in the Tanzu Command step in Harness?
+
+Yes, secret variable types are not supported for Input or Output Variables only String and Number types can be used. Also, output variables have a maximum size limit of `512KB`.
 

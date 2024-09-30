@@ -17,21 +17,42 @@ import DocVersionBanner from '@theme/DocVersionBanner';
 import DocVersionBadge from '@theme/DocVersionBadge';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import Heading from '@theme/Heading';
-import type {Props} from '@theme/DocCategoryGeneratedIndexPage';
-
+import type { Props } from '@theme/DocCategoryGeneratedIndexPage';
 import styles from './styles.module.css';
+import CanonocalLookup from './CanonicalLookup';
 
+import { useLocation } from '@docusaurus/router';
+import Head from '@docusaurus/Head';
 function DocCategoryGeneratedIndexPageMetadata({
   categoryGeneratedIndex,
 }: Props): JSX.Element {
+  const location = useLocation();
+
+  // if (CanonocalLookup[location.pathname]) {
+  //   console.log({
+  //     path: location.pathname,
+  //     href: CanonocalLookup[location.pathname],
+  //   });
+  // }
+
   return (
-    <PageMetadata
-      title={categoryGeneratedIndex.title}
-      description={categoryGeneratedIndex.description}
-      keywords={categoryGeneratedIndex.keywords}
-      // TODO `require` this?
-      image={useBaseUrl(categoryGeneratedIndex.image)}
-    />
+    <>
+      <Head>
+        {CanonocalLookup[location.pathname] ? (
+          <link
+            rel="canonical"
+            href={`${CanonocalLookup[location.pathname]}`}
+          ></link>
+        ) : null}
+      </Head>
+      <PageMetadata
+        title={categoryGeneratedIndex.title}
+        description={categoryGeneratedIndex.description}
+        keywords={categoryGeneratedIndex.keywords}
+        // TODO `require` this?
+        image={useBaseUrl(categoryGeneratedIndex.image)}
+      />
+    </>
   );
 }
 
@@ -66,7 +87,7 @@ function DocCategoryGeneratedIndexPageContent({
 }
 
 export default function DocCategoryGeneratedIndexPage(
-  props: Props,
+  props: Props
 ): JSX.Element {
   return (
     <>

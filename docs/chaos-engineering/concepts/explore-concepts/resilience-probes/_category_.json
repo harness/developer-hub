@@ -1,0 +1,9 @@
+{
+  "position": 35,
+  "label": "Resilience Probes",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Resilience Probes"
+  }
+}

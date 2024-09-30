@@ -4,12 +4,10 @@ description: Try Harness CD Community Edition (CE) on your laptop or any VM.
 sidebar_position: 1
 ---
 
-As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Gitness](https://gitness.com/). More details are available on this [blog post](https://www.harness.io/blog/retiring-harness-cd-community-edition-in-favor-of-gitness). Follow the instructions below if you are still using the Harness CD CE.
+:::warning
+As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Harness Open Source](/docs/open-source/overview).
 
-:::note
-
-**Want to get started right away?** See [Harness CD Community Edition quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-quickstart).
-
+Use the instructions on this page only if you are still using the Harness CD CE.
 :::
 
 ## What is Harness CD Community Edition?
@@ -27,6 +25,12 @@ As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Gi
 * In the near future, Amazon Web Services (AWS) (Elastic Container Service (ECS), Auto Scale Groups (ASG), CloudFormation, Lambda, etc), Microsoft Azure (Virtual Machine Scale Sets (VMSS), WebApps, Azure Kubernetes Service (AKS), Azure Container Registry (ACR), Azure Resource Manager (ARM), Blueprint), .NET, Google Cloud Build, VM, Tanzu Application Services (TAS), Serverless, and traditional (Tomcat, etc) deployments will be supported.  
 
 For the full list of the currently supported integrations, go to [what's supported in CD and GitOps](/docs/continuous-delivery/cd-integrations.md).
+
+:::note
+
+Get started with [Harness CD Community Edition quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-quickstart).
+
+:::
 
 ## Can I upgrade to a paid plan from Harness CD Community Edition?
 

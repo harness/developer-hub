@@ -1,7 +1,7 @@
 ---
 title: IaC scans with Wiz
 description: Scan Infrastructure as Code repositories with Wiz. Orchestration and Ingestion modes supported.
-sidebar_label: IaC scans with Wiz
+sidebar_label: Wiz IaC scanning
 sidebar_position: 30
 ---
 
@@ -193,6 +193,7 @@ import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.
 
 <StoSettingTargetWorkspace  />
 
+Additionally, you can specify individual files to scan as well. For instance, if you only want to scan a specific file like `/tmp/iac/infra.tf`, you can specify the workspace path as `/harness/tmp/iac/infra.tf`
 
 ### Ingestion File
 

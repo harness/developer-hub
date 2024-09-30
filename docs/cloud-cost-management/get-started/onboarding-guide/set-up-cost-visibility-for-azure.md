@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-azure
+canonical_url: https://www.harness.io/harness-devops-academy/what-is-azure-cost-management
 ---
 # Set up CCM for Azure
 

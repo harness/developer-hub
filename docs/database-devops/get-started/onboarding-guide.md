@@ -1,16 +1,13 @@
 ---
 title: Database DevOps onboarding guide
 description: A self-service onboarding guide for Harness DB DevOps.
-displayed_sidebar: dbdevopsbeta
-# sidebar_position: 4
-# sidebar_label: Onboarding guide
+sidebar_position: 4
+sidebar_label: Onboarding guide
 ---
-<!-- 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import BetaIcon from 'img/icon_beta.svg';
 
-<BetaIcon /> -->
+import BetaIcon from '/img/icon_beta.svg';
+
+<BetaIcon />
 
 # DB DevOps onboarding guide
 
@@ -35,6 +32,10 @@ Before beginning the walkthroughs in this guide, ensure you have:
     - [harness/ci-lite-engine](https://hub.docker.com/r/harness/ci-lite-engine)
     - [harness/drone-git](https://hub.docker.com/r/harness/drone-git)
     - [plugins/download-artifactory:latest](https://hub.docker.com/r/plugins/download-artifactory)
+
+:::warning
+When using DB DevOps, it is essential that you ensure that the `CDS_CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE` Feature Flag is enabled to avoid any impact to your Database DevOps environments. To enable the feature flag, please contact [Harness Support](mailto:support@harness.io).
+:::
  
 ## Create a Liquibase changelog
 

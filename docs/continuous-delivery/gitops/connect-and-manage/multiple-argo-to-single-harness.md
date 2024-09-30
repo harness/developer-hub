@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/gitops/multiple-argo-to-single-harness
+canonical_url: https://www.harness.io/blog/argo-cd-for-kubernetes
 ---
 
 This topic describes how to import your existing Argo CD configuration into Harness GitOps as a Bring Your Own Argo CD (BYOA) setup.

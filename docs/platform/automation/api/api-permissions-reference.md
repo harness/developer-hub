@@ -72,10 +72,15 @@ The following permissions allow an API key to interact with Chaos Engineering. T
 | `chaos_chaosinfrastructure_delete` | Delete Chaos Infrastructures |
 | `chaos_chaosexperiment_view` | View Chaos Experiments |
 | `chaos_chaosexperiment_edit` | Edit Chaos Experiments |
+| `chaos_chaosexperiment_execute` | Execute Chaos Experiments |
+| `chaos_chaosexperiment_executepipeline` | Execute a Chaos Experiment via Pipeline |
 | `chaos_chaosexperiment_delete` | Delete Chaos Experiments |
 | `chaos_chaosgameday_view` | View Chaos GameDay |
 | `chaos_chaosgameday_edit` | Edit Chaos GameDay |
 | `chaos_chaosgameday_delete` | Delete Chaos GameDay |
+| `chaos_chaossecuritygovernance_view` | View a Chaos Security Governance |
+| `chaos_chaossecuritygovernance_edit` | Edit a Chaos Security Governance |
+| `chaos_chaossecuritygovernance_delete` | Delete a Chaos Security Governance |
 
 ## Code Repository
 

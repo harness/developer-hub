@@ -48,6 +48,15 @@ You can deploy one service to multiple environments.
    Here's an example using one environment and two of its infrastructures.
 
    ![](./static/multiserv-multienv-11.png)
+ 
+:::note
+
+The UI component is updated to make the list of infrastructure searchable and sorted based on creation time. You can also select all the infrastructures in the environment by choosing the `All Infrastructures` checkbox.
+
+Make sure the feature flag `CDS_SPECIFY_INFRASTRUCTURES` is enabled for the new component. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+   ![](./static/Infrastructure_scope_selector.png)
+:::
 
    For details on **Deploy to Environments or Infrastructures in parallel?**, go to [deploying in parallel or serial](#deploying-in-parallel-or-serial) below.
 

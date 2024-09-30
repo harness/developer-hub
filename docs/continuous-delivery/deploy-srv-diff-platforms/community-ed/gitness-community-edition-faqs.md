@@ -1,19 +1,22 @@
 ---
-title: Gitness and Community Edition FAQs
-description: Frequently asked questions about Harness Continuous Delivery & GitOps, specifically for Gitness and Community Edition swimlanes.
+title: Harness Open Source and Free Edition FAQs
+description: Frequently asked questions about Harness Continuous Delivery & GitOps, specifically for Open Source and Free Edition swimlanes.
 sidebar_position: 100
 ---
 
-This article addresses some frequently asked questions about Gitness and Community Edition deployments in Harness.
+This article addresses some frequently asked questions about Harness Open Source and Free Edition deployments.
 
 ### Do you have a free version of Harness CD?
 
 Harness CD has two free options to get started. 
 
 - The [Harness CD & GitOps SaaS Free Plan](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg) is the recommended option for new users since there is no server side installation to manage.
-- If a self-managed yet lightweight option is needed, then the recommended option is to use [Gitness](https://gitness.com/).
+- If a self-managed yet lightweight option is needed, then the recommended option is to use [Harness Open Source](/docs/open-source/overview).
 
-As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Gitness](https://gitness.com/). More details are available on this [blog post](https://www.harness.io/blog/retiring-harness-cd-community-edition-in-favor-of-gitness). 
+:::warning
+As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Harness Open Source](/docs/open-source/overview).
+
+:::
 
 ### What can I do with Harness CD Community Edition?
 

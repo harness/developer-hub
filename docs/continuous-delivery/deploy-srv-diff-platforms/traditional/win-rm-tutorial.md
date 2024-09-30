@@ -68,7 +68,7 @@ The Harness WinRM Service contains the application package artifact (file or met
 
 Let's create the Service for an application artifact.
 
-1. For **Select Service**, click **New Service,** enter a name for the service: **winrm-service****.** You will use this name when selecting this Service in Harness Environments.
+1. For **Select Service**, click **New Service,** enter a name for the service: **winrm-service**. You will use this name when selecting this Service in Harness Environments.
 2. For **Service Definition**, in **Deployment Type**, select **WinRM** and click **Continue.**
 
 ### Add the Artifactory Connector
@@ -126,12 +126,18 @@ The **Specify hosts** or **Select preconfigured hosts from Physical Data Center*
 
 The **Map Dynamically Provisioned Infrastructure** option is used when your are deploying to a dynamically provisioned infrastructure.
 
+:::note
+
+Write down hosts as a comma separated list. 
+
+:::
+
 ### Pre-existing infrastructure
 
 Let's look at an example of setting up an Infrastructure Definition for a pre-existing infrastructure.
 
 1. In **Specify Environment**, click **New Environment** enter **winrm-env** for **Name.** This is the name that you will use when you select this Infrastructure Definition.
-2. For **Environment Type**, select **Pre-****Production**, and click **Save**.
+2. For **Environment Type**, select **Pre-Production**, and click **Save**.
 3. For **Specify Infrastructure**, click **New infrastructure**.
 4. Enter a name for the new infrastructure: **winrm-infra**.
 5. For **Select Infrastructure Type**, select **Physical Data Center**.

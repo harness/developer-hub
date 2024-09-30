@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /tutorials/cd-pipelines/templates
+canonical_url: https://www.harness.io/blog/deployment-pipeline-patterns
 ---
 
 import Tabs from '@theme/Tabs';

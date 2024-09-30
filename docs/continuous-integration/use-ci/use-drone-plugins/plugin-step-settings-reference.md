@@ -6,6 +6,7 @@ helpdocs_topic_id: 8r5c3yvb8k
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/docker-multi-stage-build
 ---
 
 This topic provides settings for the **Plugin** step. For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md).
@@ -63,7 +64,7 @@ For detailed information about a plugin's settings, go to the plugin's page on t
 
 Not all plugins write output variables.
 
-Support for plugin output variables is unpredictable with [self-managed VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
+Output variables, that use special characters ( e.g. '.' ',' '/' ) in their key or value, may not work when executed on [self-managed VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
 
 :::
 

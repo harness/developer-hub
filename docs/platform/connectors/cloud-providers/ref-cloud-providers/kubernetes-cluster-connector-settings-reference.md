@@ -182,6 +182,7 @@ This is an alternative to using delegate credentials. It can be required for cer
    * [Username and password](#username-and-password)
    * [Service Account](#service-account)
    * [OpenID Connect](#openid-connect)
+   * [Client Key Certificate](#client-key-certificate)
 
 :::info
 
@@ -321,6 +322,8 @@ The following settings are from the authorization server settings:
    ![](./static/kubernetes-cluster-connector-settings-reference-06.png)
 
    If you enter multiple scopes, use spaces to separate them.
+
+### Client Key Certificate
 
 The following settings are part of the provider app you use to log in:
 

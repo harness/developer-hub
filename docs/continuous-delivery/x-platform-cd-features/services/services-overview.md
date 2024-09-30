@@ -24,23 +24,34 @@ For more information, go to [create services](/docs/continuous-delivery/x-platfo
 
 :::info note
 Currently, this feature is behind the feature flag `CDS_SERVICE_ENV_CLONING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-This is currently being supported only for Services which is stored in Harness i.e INLINE entity.
 :::
 
 You can clone services across scopes i.e from one project to another, project to organization, account to project etc.
 
 Select **More Options** (&vellip;).
-Select **Clone**
+Select **Clone**.
 
 ![](./static/clone_option_service_inline.png)
 
 Once you click on **Clone**, you will see **Clone Service** setting:-
 
-![](./static/clone_option_service_inline_setting.png)
+You can change the **Name** add tags and description as well for this clone service.
 
-You can change the **Name** add tags and description as well for this clone environment.
+You can change the **Organization** and **Project** as well where you want to clone the service.
 
-You can change the **Organization** and **Project** as well where you want to clone the environment. 
+You can choose between **Inline** and **Remote** to set up your service. Choose **Inline** when you want your service to be stored in Harness. Choose **Remote** when storing your service in a Third-party Git repository or Harness Code Repository.
+
+To close a remote service to an inline service, you have to specify the source branch where the remote service is stored.
+
+![](./static/clone_service_remote_to_inline.png)
+
+To Clone an inline service or remote service to a remote service, you must specify the target repository, Harness Code Repository, to store the service in the Harness repository or Third-party Git provider, to store the service in a third party Git provider, define the Git Connector if Third-party Git provider. Specify the Repository name, the YAML path, and the commit message.
+
+![](./static/clone_option_service_remote.png)
+
+:::info note
+When you clone a service from a different organization or project, the connector referenced in the service doesn't get cloned and must be explicitly created.
+:::
 
 ## Services RBAC
 

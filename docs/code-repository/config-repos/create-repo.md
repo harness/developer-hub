@@ -2,6 +2,7 @@
 title: Create repositories
 description: Create repositories in Harness Code
 sidebar_position: 10
+canonical_url: https://www.harness.io/harness-devops-academy/what-is-a-code-repository
 ---
 
 Repositories are where your code is stored. When developers make changes to code in a Harness Code repository, those changes are tracked with version control. Harness Code fosters collaboration and governance with code reviews, approvals, status checks, and more.

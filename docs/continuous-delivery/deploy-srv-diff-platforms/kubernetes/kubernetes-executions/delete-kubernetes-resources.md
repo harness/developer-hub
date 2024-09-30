@@ -6,6 +6,7 @@ helpdocs_topic_id: eaj0xuegln
 helpdocs_category_id: uj8bqz9j0q
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/automating-kubernetes-resource-discovery-and-chaos-experiment-creation
 ---
 
 This topic describes how to remove any deployed Kubernetes resources with the **K8s Delete** step.

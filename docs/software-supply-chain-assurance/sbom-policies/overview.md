@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: learn to create SSCA policies and enforce them.
+description: learn to create SBOM policies and enforce them.
 sidebar_position: 1
 redirect_from:
   - /docs/software-supply-chain-assurance/ssca-policies/overview
@@ -8,7 +8,7 @@ redirect_from:
 
 The creation of a Software Bill of Materials (SBOM) significantly enhances software transparency. The comprehensive view not only brings visibility but also opens up the opportunity to improve security and ensure compliance. It enables organizations to define and implement specific rules governing the use of open source components, including the criteria to allow or deny components. By applying these rules, organizations can effectively mitigate security risks, comply with licensing obligations, and exert greater control over their software supply chain.
 
-The Harness SSCA module enables you to create these rules as policies that align with your organization's security regulations and legal compliance requirements. These policies can then be enforced on SBOMs. This entire process is facilitated through the "SBOM Policy Enforcement" step.
+The Harness SCS module enables you to create these rules as policies that align with your organization's security regulations and legal compliance requirements. These policies can then be enforced on SBOMs. This entire process is facilitated through the "SBOM Policy Enforcement" step.
 
 Here's a breakdown of the overall steps involved:
 
@@ -19,7 +19,7 @@ Here's a breakdown of the overall steps involved:
 3. [Enforce the policies on SBOM](./enforce-sbom-policies.md)
 4. View [policy violations](/docs/software-supply-chain-assurance/ssca-view-results) and take actions
 
-Here’s the overview of SBOM Policy Enforcement step in Harness SSCA:
+Here’s the overview of SBOM Policy Enforcement step in Harness SCS:
 
 <DocImage path={require('./static/sbom-enforcement-overview.png')} width="100%" height="100%" />
 

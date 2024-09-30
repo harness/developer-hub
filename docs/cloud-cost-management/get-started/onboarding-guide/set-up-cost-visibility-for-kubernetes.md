@@ -190,7 +190,6 @@ Make sure the connector passes its connection test to validate the delegate has 
 
 In Harness, the ratio of Delegates to Connectors is 1:2. If you have 20 clusters, then you need 20 delegates and 40 connectors (one Kubernetes cloud provider connector and one CCM Cloud Integration/Cloud Costs Kubernetes connector for each cluster).
 
-Alternatively, to use a single delegate to access multiple Kubernetes clusters, you must specify the Kubernetes master node URL.
 
 :::
 

@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2024-06-06T10:00
+date: 2024-09-19T22:00
 sidebar_position: 6
 ---
 
@@ -18,7 +18,77 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
+## September 2024
+
+### Version 1.30.3
+
+#### New features and enhancements
+- Prerequisites for Cluster Orchestrator: We are now listing all prerequisites required for Cluster Orchestrator, providing clearer guidelines to ensure smooth setup. [CCM-18892]
+- Export Perspective Chart as CSV: We now support exporting the Perspective chart as a CSV, allowing users to easily extract and analyze data from the chart. [CCM-18812]
+
+### Fixed Issues:
+- Toggle Fields in Recommendations Filters: The Toggle fields in the Recommendations screen Filters were not being saved on Create or Update. This has been fixed. [CCM-19267]
+
+- Saved Filter Option Not Visible on Anomalies Page Load: When first loading the anomalies page, the option to "Select a saved filter" was not visible until a filter was applied. This has been corrected so the saved filter option appears immediately. [CCM-19345]
+
+- Overflowing Text in 'Resume Setup' Button: The button text for "Resume Setup" in the orchestrator setup screen was overflowing. This has been fixed. [CCM-19212]
+
+- Cloud Connectors Redirect Fix: Clicking on cloud connectors in the integration did not lead to the actual connector configuration. Now, it redirects to the connector details page, improving troubleshooting and configuration access. [CCM-17586]
+
+- Cost Category Bucket Overflow Handling: Display issues with overflowing content in cost category bucket conditions when multiple choices were selected have been fixed. [CCM-14719]
+
+- Search Bar Missing for Label Value Selection in Cost Categories: The search bar was not appearing when selecting label values while creating cost categories. This has been resolved. [CCM-15437]
+
+- Asset Governance Savings Displayed as $0 on Overview Page: Asset Governance Savings were showing as $0 on the CCM Overview page. This issue has now been resolved, and the correct savings are displayed. [CCM-19450]
+
+### Version 1.29.1
+
+#### Fixed issues
+
+- Budget Amount Reset: Earlier, navigating between the budget creation steps caused the budget amount settings to reset to defaults. The budget form fields will now retain their values when switching between steps. [CCM-10953]
+- Cost Category Name Updates: We have addressed an issue where cost category name updates were not properly reflected in perspective rules, ensuring the correct category names are used in all relevant areas. [CCM-18977]
+- Recommendations Slider Action: Previously, using the buffer slider in the CCM "recommendations" view and hitting the back button moved the slider instead of returning to the main recommendations page. Now, the back button no longer includes slider actions. [CCM-11303]
+
+## August 2024
+### Version 1.28.7
+
+#### New features and enhancements
+
+- Custom Recommendations in Cloud Asset Governance: We have introduced custom recommendations in Cloud Asset Governance, allowing users to create, manage, and operationalize their own policies. A new custom recommendations page has been added where users can view, manage, and drill down into their custom recommendations based on various filters. [CCM-18955]
+
+- Support for Multi-Status in Governance Evaluation: We've added support for multiple statuses within a single Governance Evaluation, enabling more detailed policy evaluations. [CCM-18942]
+
+- GCP Data Sync Migration to Gen2: We have successfully migrated our GCP data sync Cloud Function from Gen1 to Gen2, significantly increasing the timeout from 9 minutes to 60 minutes, enhancing the reliability and performance of GCP data sync. [CCM-13672]
+
+#### Fixed issues
+
+- Budget Percentage Display Issue: Previously, when a budget amount was set to 0, the percentage spend comparison displayed as "Infinity." This has been fixed. [CCM-]
+
+- Cluster Data Query Optimisation:  We've started using Mongo hint to optimize the cluster billing calculation query, ensuring much faster calculation. [CCM-19140]
+
+- Cost Category Name Updates: There was an issue with cost category name updates that affected the rules in perspectives where the cost category was referenced. This issue has now been fixed. [CCM-18977]
+
+### Version 1.27.2
+
+#### Fixed issues
+
+- Filtered Output Reset: Previously, when a user re-ran a rule with a filtered output, the output was not reset. This issue has now been fixed, ensuring accurate output after each rule execution. [CCM-18859]
+- Spot and On-Demand Split Validation: Previously, no error was shown when the split ratio between Spot and On-Demand did not equal 100%. Now, if a user attempts to complete enablement in Commitment Orchestrator with an incorrect split ratio, an error message will be displayed, ensuring proper configuration. [CCM-18857]
+- Commitment Orchestrator Tooltip Accuracy: Enhanced the chart re-rendering after applying filters, hence ensuring accurate tooltips. [CCM-18739]
+
 ## July 2024
+
+### Version 1.25.0
+
+#### New features and enhancements
+
+- Dry Run and Run Once Buttons: Resolved an issue where the "Dry Run" and "Run Once" buttons were not enabled if there were issues with policy YAML validation. [CCM-18754]
+- Regions Filter: Added a new Regions filter in the Recommendations Filter Panel to allow more granular filtering. [CCM-18591]
+- Autostopping UI Changes: Improved the UI for Autostopping, including updates to the page index on the URL to match the page in the list, a wider first column based on available space, and the "Last Activity" column now reads the `updated_at` value directly instead of calling a separate API. [CCM-18585]
+
+#### Fixed issues
+
+- **Governance Evaluations List**: Resolved an issue where the page number was not resetting when changing the time filter on the Governance Evaluations List page, which resulted in retrieving the incorrect page with no results. [CCM-18571]
 
 ### Version 1.23.0
 

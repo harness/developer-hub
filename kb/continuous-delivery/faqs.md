@@ -16,6 +16,15 @@ For an overview of Harness concepts, see [Learn Harness' key concepts](/docs/pla
 
 ### General FAQs
 
+#### Where can one find instanceKey and infrastructureMappingId values in Trigger Rollback API?
+
+The Instance Key is a combination of the Infrastructure Key and the instance information available in the Instances Table.
+Infrastructure key can be found as part of the infrastructure output variables.
+Instance information can be found in the Instances Table.
+
+Note that the infrastructureMappingId is not exposed as part of the Infrastructure.
+
+
 #### How does Harness calculate pricing for CD?
 
 See [Service-based licensing and usage for CD](/docs/continuous-delivery/get-started/service-licensing-for-cd/)
@@ -66,7 +75,7 @@ While an annual contract can not be lowered mid-year through the contract, pleas
 
 #### What if I am building an open source project?
 
-We love Open Source and are committed to supporting our Community. We recommend the open-source [Gitness](https://gitness.com) for hosting your source code repository as well as CI/CD pipelines.
+We love Open Source and are committed to supporting our Community. We recommend [Harness Open Source](/docs/open-source/overview) for hosting your source code repository as well as CI/CD pipelines.
 
 Contact us and we will be happy to provide you with a no restriction SaaS Plan!
 
@@ -3192,6 +3201,10 @@ No, pull request events do not occur on the forked repository.
 
 You can create a custom trigger to initiate a pipeline for a fork event. First, enable the Webhook setting to capture the event logs for the fork. Once enabled, you will be able to capture the event logs for every fork on the repository, and based on the payload, trigger conditions can be set.
 
+### How to create a file in Harness File Store via Shell Script?
+
+To create a File Store from a Shell Script, you can use the [Harness API](https://apidocs.harness.io/tag/File-Store#operation/create).
+
 #### How can we delete Artifactory images from JFrog using Harness?
 
  You can use Jfrog [API] (https://jfrog.com/help/r/jfrog-rest-apis/delete-item) to delete artifacts. For calling this API you can either use HTTP step or a shell script.
@@ -3246,6 +3259,38 @@ For more details, refer to the Harness documentation on [Delegate Permissions](h
 In CD/Custom Stages, Python can be utilized through the implementation of a Step Group, which allows access to the Run Step that supports Python.
 For more details, refer to the Harness documentation on [Containerized Step Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/)
 
+#### What is the API endpoint and the required details to create Global Environment overrides?
+
+You can use the API: https://apidocs.harness.io/tag/ServiceOverrides/#operation/createServiceOverride to create Global Environment overrides.
+
+#### Is it possible to swap the template from the other branch that is already used in the pipeline?
+Yes, User can swap the template by changing the branch in the git config of the template.
+
+#### How can user skip the steps based on previous step output?
+User can configure the output variable in the previous step and use that variable with the expression in the conditional execution configuration of the step that you want to skip.
+
+#### How to run the command step only on single server?
+User can run the command step only on single server by using the below repeat looping strategy:
+```
+repeat:
+    items: ["0.0.0.0"]
+```
+#### How can user skip a CI/CD pipeline build through commit?
+You can skip a CI/CD pipeline build by including one of the following keywords anywhere within your commit message:
+[skip ci]
+[ci skip]
+[skip pipeline]
+[pipeline skip]
+[no_ci]
+
+#### Can the skip keywords be used in any part of the commit message?
+
+Yes, the skip keywords can be placed anywhere within the commit message, including within sentences or alongside other text. For example, This is a [ci skip] commit.
+
+#### Does harness pipeline support triggering GitHub action workflow from the pipeline?
+As per the current design, there's no native step for this but user can write a shell script at the end of execution to trigger the GitHub action workflow.
+
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
@@ -3254,7 +3299,7 @@ For frequently asked questions about Harness infrastructure provisioning, go to 
 
 For frequently asked questions about deployment swimlanes supported by Harness, go to the following docs:  
 
-- [Gitness and Community Edition FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/gitness-community-edition-faqs)
+- [Open Source and Free Edition FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/gitness-community-edition-faqs)
 - [Kubernetes deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-faqs)
 - [Helm and Native Helm deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-deployment-faqs)
 - [Kustomize deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-faqs)

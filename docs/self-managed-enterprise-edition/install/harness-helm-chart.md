@@ -9,6 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/self-managed-enterprise-edition/self-managed-helm-based-install/harness-helm-chart/
+canonical_url: https://www.harness.io/blog/getting-started-with-helm
 ---
 
 Harness recommends Helm package manager for the installation and deployment of Self-Managed Enterprise Edition. Helm offers benefits including:

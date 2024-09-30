@@ -5,6 +5,7 @@ sidebar_position: 40
 redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/code-coverage
   - /tutorials/ci-pipelines/test/codecov
+canonical_url: https://www.harness.io/blog/continuous-integration-testing
 ---
 
 import Tabs from '@theme/Tabs';

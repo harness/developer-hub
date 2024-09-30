@@ -21,6 +21,10 @@ import AMDCLI from '/docs/platform/shared/cli/amd.md';
 
 This documentation section will serve as your compass, guiding you through the installation, configuration, and upgrade of the Harness CLI utility.
 
+:::note
+The CLI primarily provides an alternative onboarding path for users seeking a self-service installation of Harness. 
+:::
+
 ## Install Harness CLI
 
 You can install `harness` CLI utility on Linux, MacOS, or Windows in order to interact with Harness Platform from a command-line interface.

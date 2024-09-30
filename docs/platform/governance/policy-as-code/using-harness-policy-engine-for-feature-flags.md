@@ -6,6 +6,7 @@ helpdocs_topic_id: vb6ilyz194
 helpdocs_category_id: zoc8fpiifm
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/feature-flags-policy-governance-tutorial
 ---
 
 This topic describes how to create policies using the Harness Policy As Code and apply them to your Feature Flags. Harness Policy As Code uses the Open Policy Agency (OPA) to store policies on the Harness platform. For more information about how OPA and Harness Policy As Code work, see [Harness Policy As Code Overview](/docs/feature-flags/troubleshoot-ff/harness-policy-engine).

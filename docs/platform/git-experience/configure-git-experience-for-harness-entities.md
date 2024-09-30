@@ -6,6 +6,7 @@ helpdocs_topic_id: grfeel98am
 helpdocs_category_id: rv2jo2hoiy
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/git-branching
 ---
 
 This quickstart shows you how to enable and use Git Experience for your Harness resources, such as pipelines.
