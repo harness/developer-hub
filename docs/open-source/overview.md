@@ -17,6 +17,6 @@ Here’s a short overview of the capabilities:
 
 Gitness was the next step in the evolution of [Drone](https://www.drone.io), from continuous integration to source code hosting, bringing code management and pipelines closer together. 
 
-Gitness then transformed into Harness Open Source, adding two new capabilities: hosted development environments and artifact registry. The goal is for Harness Open Source to eventually be at full parity with Drone in terms of pipeline capabilities, allowing users to seamlessly migrate from Drone to Gitness.
+Gitness then transformed into Harness Open Source, adding two new capabilities: [hosted development environments]((/docs/open-source/registries)) and [artifact registry](/docs/open-source/registries). The goal is for Harness Open Source to eventually be at full parity with Drone in terms of pipeline capabilities, allowing users to seamlessly migrate from Drone to Harness Open Source.
 
 Until then, Drone development will continue in a [feature branch](https://github.com/harness/gitness/tree/drone).
