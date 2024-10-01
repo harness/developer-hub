@@ -8,7 +8,7 @@ Let's discover **[Harness Open Source](/docs/open-source)** in less than 30 seco
 <!--
 ## Pre-Compiled Binaries
 
-We provide precompiled binaries for most official Gitness components. Check out the download section for a list of all available versions. _Note that the binary distribution is the recommended installation method._
+We provide precompiled binaries for most official Harness Open Source components. Check out the download section for a list of all available versions. _Note that the binary distribution is the recommended installation method._
 -->
 
 ## Install Harness Open Source
@@ -19,7 +19,7 @@ Use the following Docker command to install Harness Open Source locally.
 docker run -d \
   -p 3000:3000 -p 3022:3022 \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /tmp/gitness:/data \
+  -v /tmp/harness:/data \
   --name opensource \
   --restart always \
   harness/harness
