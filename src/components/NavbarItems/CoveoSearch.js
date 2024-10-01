@@ -23,7 +23,7 @@ const CoveoSearch = () => {
       setTimeout(checkCoveo, 200);
     }
   };
-  const [key, setKey] = useState({});
+
   useEffect(() => {
     checkCoveo();
     const elemSearchResultConainer = searchResultsEl.current;
@@ -110,8 +110,8 @@ const CoveoSearch = () => {
             const item = {
               token: data.token,
               orgId: data.id,
-              expiry: Date.now() + 60*1000, // 1mins from now
-              // expiry: Date.now() + 7200000, // 2hrs from now
+              // expiry: Date.now() + 60*1000, // 1mins from now
+              expiry: Date.now() + 7200000, // 2hrs from now
             };
             localStorage.setItem('coveo_token', JSON.stringify(item));
             return item;
