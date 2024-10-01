@@ -11,6 +11,12 @@ sidebar_label: Getting Started with Workflows
 
 This will help you setup a Workflow in IDP which automates GitHub Repo Onboarding for users.
 
+:::info
+
+We now have a [new Workflows homepage](/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization) which is behind a Feature Flag `IDP_ENABLE_WORKFLOWSV2`. To enable the feature flag, please contact [Harness Support](mailto:support@harness.io)
+
+:::
+
 ## Pre-requisite
 
 ### Add Connector
