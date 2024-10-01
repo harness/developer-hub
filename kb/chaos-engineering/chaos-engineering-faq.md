@@ -101,7 +101,7 @@ For example, to execute the network loss fault,
 ## Harness Delegate
 
 :::tip
-The FAQs below are based on HCE entities using [Harness Delegate](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/).
+The FAQs below are based on HCE entities using [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr).
 :::
 
 #### Do you support On-Premise Harness Control Plane?
@@ -114,7 +114,7 @@ HCE uses the Harness Delegate to execute chaos experiments, which you can levera
 - Better control over chaos experiments by facilitating advanced tunables.
 - Gain insights into application-level resilience scores.
 
-Go to [Harness Delegate](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/) for more information.
+Go to [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr) for more information.
 
 #### What ports are necessary to be opened in the org's firewall rules to access the Harness Control Plane from the user environment?
 You can access the Harness control plane from the user environment with outbound connectivity over HTTPS using port 443.
