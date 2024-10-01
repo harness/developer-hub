@@ -10,9 +10,10 @@ redirect_from:
 
 :::info
 
-We now have a [V2 version of workflows](/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization) which is behind the behind the Feature Flag `IDP_ENABLE_WORKFLOWSV2`
+The [new Workflows homepage](/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization)is behind a Feature Flag `IDP_ENABLE_WORKFLOWSV2`. To enable the feature flag, please contact [Harness Support](mailto:support@harness.io)
 
 :::
+
 
 Service Onboarding in Harness IDP use Harness pipeline orchestrator and those could be triggered through Software Templates. 
 
