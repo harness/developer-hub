@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2024-09-23T10:00
+date: 2024-10-01T10:00
 sidebar_position: 10
 ---
 
@@ -21,6 +21,18 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## September 2024
+
+### Version 1.48
+
+<!-- 2024-09-24 -->
+
+#### Fixed issues
+
+- Addressed an issue where some discrepancies in credits usage were reported for a small group of Harness Cloud customers. (CI-14422)
+
+- Resolved an issue where passing JSON as build arguments in the Docker build and push step resulted in errors due to improper parsing. The fix ensures JSON values are now handled correctly without adding extra slashes. (CI-14137, ZD-65727) 
+
+- Added support for automatic setup of Build Intelligence for builds running in Harness Cloud. Customers can set the stage property 'buildIntelligence' to 'true' in order to use this feature. Once enabled, Harness CI will automatically optimize Run and Test steps that are running Bazel or Gradle commands, to reduce build time with Build Intelligence. For details, check out the [documentation](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence). (CI-13729)
 
 ### Version 1.47
 
