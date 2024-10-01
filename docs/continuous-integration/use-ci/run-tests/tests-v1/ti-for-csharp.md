@@ -10,14 +10,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::info
+This page contains instructions for using  Test Intelligence (v1) with the **Run Tests** step. 
 
-Currently, the new **Test** step doesn't yet support TI for C#. Until support is added for this language, you can continue to use the **Run Tests** step for TI with C#.
-:::
+While **Run Tests** step remains backwards compatible, Harness recommends using the newer [**Test** ](../tests-v2.md) step (Test Intelligence v2) for simplified user experience.
 
-:::note
-
-Currently, TI for C# is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
+Currently, TI (v1) for C# is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 ## Enable TI for C#

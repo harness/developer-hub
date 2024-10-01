@@ -13,7 +13,7 @@ redirect_from:
 
 Software Catalog in Harness IDP supports modifying metadata associated with the services, libraries, websites and any other entities registered in the Catalog, without having to manually edit the `catalog-info.yaml`. This allows integrations with many systems such as cost trackers, service health checkers, security scans or even simple spreadsheets tracking personnel details like who is on-call this week.
 
-The ingested data can be used to display on the UI, can be consumed in [Custom Plugins](../../plugins/custom-plugins/overview.md) and measured in Scorecard Checks. If you are looking to use Catalog Data Ingestion exclusively for **Scorecards**, please see [Scorecards using Custom Data Sources](/docs/internal-developer-portal/scorecards/custom-data-source)
+The ingested data can be used to display on the UI, can be consumed in [Custom Plugins](../../plugins/custom-plugins/overview.md) and measured in Scorecard Checks. 
 
 <DocImage title="Architecture Diagram of Catalog Ingestion" path={require('./static/catalog-custom-property.png')} />
 

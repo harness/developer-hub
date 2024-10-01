@@ -21,7 +21,7 @@ Cache intelligence for self-managed build infrastructure is an early access feat
 
 ## Supported tools and paths
 
-Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, and **Node** build tools, as long as default cache paths are used. 
+Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, **Node** and **MSBuild/dotnet (only for C#)** build tools, as long as default cache paths are used. 
 
 For other build tools or non-default cache locations, you use Cache Intelligence with [custom cache paths](#customize-cache-paths).
 
