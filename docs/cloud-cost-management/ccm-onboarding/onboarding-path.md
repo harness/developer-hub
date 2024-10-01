@@ -9,6 +9,8 @@ import TabItem from '@theme/TabItem';
 
 This topic describes the different phases and steps involved in onboarding with Harness CCM. Follow these steps to ensure that you have all the settings and resources required for moving forward with your CCM setup.
 
+
+
 ## Overview
 
 This section lists the major onboarding phases and provides links to more details.
@@ -252,4 +254,8 @@ CCM resources can also be created using Harness Terraform provider. Terraform pr
 
 1. [Create connectors using Terraform](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_aws)
 2. [Create AutoStopping rules using Terraform](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/autostopping_rule_vm)
+
+:::info 
+For a complete list of Harness platform IP addresses that need to be permitted, please refer to the [central IP whitelisting list](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/#harness-platform-ips).
+:::
 

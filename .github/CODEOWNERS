@@ -202,6 +202,9 @@ README.md @pratmit
 #RA
 /kb/reference-architectures/ @rssnyder @suranc
 
+# SEI KB
+/kb/sei/ @codewdhruv
+
 # Roadmap ###
 
 #CCM Roadmap
@@ -224,6 +227,9 @@ src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
 
 #IACM Roadmap
 src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness
+
+#FME Roadmap
+src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow
 
 #IDP Roadmap
 src/components/Roadmap/data/idpData.ts @Debanitrkl

@@ -1395,27 +1395,27 @@ Go to [Chaos faults for VMware](/docs/chaos-engineering/use-harness-ce/chaos-fau
     </tr>
     <tr>
         <td>Multiple faults injection </td>
-        <td>❌</td>
+        <td>✅</td>
         <td>✅</td>
     </tr>
     <tr>
         <td>Exceptions</td>
-        <td>❌</td>
+        <td>✅</td>
         <td>✅</td>
     </tr>
     <tr>
         <td>Memory stress </td>
-        <td>❌</td>
+        <td>✅</td>
         <td>✅</td>
     </tr>
     <tr>
         <td>CPU stress</td>
-        <td>❌</td>
+        <td>✅</td>
         <td>✅</td>
     </tr>
     <tr>
         <td>App kill</td>
-        <td>❌</td>
+        <td>✅</td>
         <td>✅</td>
     </tr>
 </table>
@@ -1429,6 +1429,11 @@ Go to [Chaos faults for load](/docs/chaos-engineering/use-harness-ce/chaos-fault
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
         <td><b>HCE (SaaS)</b></td>
+    </tr>
+    <tr>
+        <td>K6 loadgen </td>
+        <td>❌</td>
+        <td>✅</td>
     </tr>
     <tr>
         <td>Locust loadgen </td>
