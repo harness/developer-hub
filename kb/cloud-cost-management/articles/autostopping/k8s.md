@@ -170,7 +170,7 @@ To call this API the token used must have auto stopping rule view in the Harness
 
 ## When opening tickets
 
-Gathering the right information to include when opening support tickets is key. If you are having an issue with traffic based kubernetes stopping, do the following:
+Gathering the right information to include when opening support tickets is key. If you are having an issue with traffic based kubernetes autostopping, do the following:
 
 - Describe the autostopping rule: `kubectl -n <namespace> describe asr/<rule name>`
 - Describe the ingress: `kubectl -n <namespace> describe ingress/<ingress name>`
