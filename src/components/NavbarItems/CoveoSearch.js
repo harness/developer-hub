@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Head from '@docusaurus/Head';
 import './CoveoSearch.scss';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 // Space => keyCode: 32
 const RESP_BREAK_POINT = 996;
@@ -24,11 +23,7 @@ const CoveoSearch = () => {
       setTimeout(checkCoveo, 200);
     }
   };
-
-  const {
-    siteConfig: { customFields },
-  } = useDocusaurusContext();
-
+  const [key, setKey] = useState({});
   useEffect(() => {
     checkCoveo();
     const elemSearchResultConainer = searchResultsEl.current;
@@ -106,14 +101,50 @@ const CoveoSearch = () => {
                 </div>
             </div>`;
         let coveoRoot = searchRoot.querySelector('#coveo-search'); // document.getElementById("coveo-search");
-        const rootUrl = window.location.href.split('/').slice(0, 3).join('/');
-        const res = await fetch(rootUrl + '/api/coveo_api');
+        let tokenData = {};
+        async function getCoveoToken() {
+          const rootUrl = window.location.href.split('/').slice(0, 3).join('/');
+          try {
+            const response = await fetch(rootUrl + '/api/coveo_api');
+            const data = await response.json();
+            const item = {
+              token: data.token,
+              orgId: data.id,
+              expiry: Date.now() + 60*1000, // 1mins from now
+              // expiry: Date.now() + 7200000, // 2hrs from now
+            };
+            localStorage.setItem('coveo_token', JSON.stringify(item));
+            return item;
+          } catch (error) {
+            console.error('Error fetching Coveo token:', error);
+          }
+        }
+        async function initializeCoveo() {
+          try {
+            const storedToken = localStorage.getItem('coveo_token');
 
-        const resData = await res.json();
-        const orgId = resData?.id;
-        const apiToken = resData?.token;
-        Coveo.SearchEndpoint.configureCloudV2Endpoint(orgId, apiToken);
+            if (storedToken) {
+              const data = JSON.parse(storedToken);
 
+              if (data.expiry <= Date.now()) {
+                tokenData = await getCoveoToken();
+              } else {
+                tokenData = data;
+              }
+            } else {
+              tokenData = await getCoveoToken();
+            }
+
+            Coveo.SearchEndpoint.configureCloudV2Endpoint(
+              tokenData.orgId,
+              tokenData.token
+            );
+          } catch (error) {
+            console.error('Error during Coveo initialization:', error);
+          }
+        }
+
+        initializeCoveo();
         const elemSearchMask = document.getElementById('coveo-search-mask');
         const elemDocusaurusRoot = document.getElementById('__docusaurus');
         const searchMask = document.createElement('div');
@@ -158,7 +189,7 @@ const CoveoSearch = () => {
           window.dispatchEvent(new Event('resize'));
           window.dispatchEvent(new Event('orientationchange'));
         });
-        Coveo.$$(coveoRoot).on('afterInitialization', function (e, args) {
+        Coveo.$$(coveoRoot).on('afterInitialization', function () {
           Coveo.state(coveoRoot, 'f:@commonsource', ['Developer Hub']);
           /* disable auto-focus @2022-12-12
           document
