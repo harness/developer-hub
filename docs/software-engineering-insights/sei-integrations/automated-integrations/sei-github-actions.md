@@ -39,12 +39,13 @@ To use a personal access token, paste the token in Enter the Access Token.
 1. Select **Integrations** under **Settings**.
 2. Select **Available Integrations**, locate the **Github Actions** integration.
 3. Select **Install**.
-4. Select an authentication method for the integration:
+4. Select the type of the **Github Actions instance**.
+5. Select an authentication method for the integration:
    - To use **OAuth**, select **Authorize** and follow the prompts to grant access to **GitHub**.
    - To use a personal access token, paste the token in **Enter the Access Token**.
-5. In **Integration Name**, enter a name for the integration.
-6. Select repositories to associate with the integration or select **Ingest All Repos** to associate all current and future repos in your **GitHub organization**.
-7. Select **Finish** and **Save** the integration.
+6. In **Integration Name**, enter a name for the integration.
+7. Select repositories to associate with the integration or select **Ingest All Repos** to associate all current and future repos in your **GitHub organization**.
+8. Select **Finish** and **Save** the integration.
 
 </TabItem>
   <TabItem value="satellite" label="Satellite">
