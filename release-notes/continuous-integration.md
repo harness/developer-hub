@@ -26,6 +26,10 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 <!-- 2024-09-24 -->
 
+#### Early Access feature
+
+- [Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2) for C# (.Net Core 6.0+) support is now available in early access. If you wish to use the .Net smart test selection, please contact [Harness Support](mailto:support@harness.io) to enable it within your pipeline.
+
 #### Fixed issues
 
 - Addressed an issue where some discrepancies in credits usage were reported for a small group of Harness Cloud customers. (CI-14422)
