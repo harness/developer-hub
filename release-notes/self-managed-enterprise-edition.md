@@ -217,6 +217,16 @@ gsutil -m cp \
 
 - Fixed the error associated with upgrading a chaos infrastructure by providing relevant permissions for the upgrade agent in the execution plane (user host/cluster). (CHAOS-5980)
 
+#### Cloud Cost Management
+
+- Budget Amount Reset: Earlier, navigating between the budget creation steps caused the budget amount settings to reset to defaults. The budget form fields will now retain their values when switching between steps. (CCM-10953)
+
+- Cost Category Name Updates: We have addressed an issue where cost category name updates were not properly reflected in perspective rules, ensuring the correct category names are used in all relevant areas. (CCM-18977)
+
+- Recommendations Slider Action: Previously, using the buffer slider in the CCM "recommendations" view and hitting the back button moved the slider instead of returning to the main recommendations page. Now, the back button no longer includes slider actions. (CCM-11303)
+
+- Budget Percentage Display Issue: Previously, when a budget amount was set to 0, the percentage spend comparison displayed as "Infinity." This has been fixed. (CCM-)
+
 #### Continuous Delivery
 
 - Previously, when a Pipeline Execution was aborted due to a Deployment Freeze, the details of the Freeze were not accessible from the Execution Console view. This issue was resolved by adding the details to the Console View. (PIPE-20658)
@@ -275,6 +285,10 @@ gsutil -m cp \
 - Previously, when attempting to save a CV step without selecting a CV type, the step could not be saved, but no error message or notification was displayed to indicate the missing configuration. This issue has been resolved by adding an error message, `Verification type is required`, to inform users when the CV type is not selected. (CDS-98977)
 
 - When editing the additonal manifest, the manifest type is different. The issue is fixed and now the manifest type will be same as selected and match the sidebar. (CDS-98975)
+
+- Access Control to GitOps Applications can now be managed using Labels. This allows Applications to be automatically added to the required Access Control Resource Groups. See https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/manage-permissions/ for more details. (CDS-97914)
+
+- When creating a GitOps Application, the cluster can now be specified by name instead of using the IP address, if required. This is helpful in cases where the Cluster IP may change in the backend. (CDS-96922)
 
 #### Continuous Integration
 
