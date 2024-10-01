@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-09-26T20:00
+date: 2024-10-01T20:00
 sidebar_position: 12
 ---
 
@@ -16,6 +16,27 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## October 2024
+
+### Version 0.34.0
+
+<!-- October 1, 2024 -->
+
+#### New features and enhancements
+
+- We have added the [new Workflows Homepage](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization), which helps you to customize the Workflows organization and information associated. This feature is behind the Feature Flag `IDP_ENABLE_WORKFLOWSV2`, contact [harness support](mailto:support@harness.io) to enable it on your account. [IDP-3752] 
+- We have upgraded to the new backend system of Backstage in Harness IDP. [IDP-3252]
+- Enhanced the API Response for Catalog Ingestion API. [IDP-3672]
+- New plugins added to the marketplace.
+  - [Sysdig Plugin for Backstage](https://github.com/sysdiglabs/backstage-plugin-sysdig)
+
+#### Bug fixes
+
+- Fixed the issue with `mode: append` to support updates to array values, in Catalog Ingestion API. [IDP-3734]
+- Fixed the UI issues with Harness Chaos Engineering Plugin. [IDP-3670]
+- Fixed the issue with global GitHub OAuth. [IDP-3655]
+- Fixed the issue with Catalog APIs with x-api-key in the header. 
 
 ## September 2024
 
