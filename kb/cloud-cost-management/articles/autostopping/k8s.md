@@ -165,3 +165,29 @@ spec:
 There is an API available to "warm up" or "cool down" a rule for a specified amount of time. This can be helpful when you have a schedule applied but some developer needs access to a workload, or needs to test bringing the workload down.
 
 To call this API the token used must have auto stopping rule view in the Harness account.
+
+# Troubleshooting
+
+## When opening tickets
+
+Gathering the right information to include when opening support tickets is key. If you are having an issue with traffic based kubernetes stopping, do the following:
+
+- Describe the autostopping rule: `kubectl -n <namespace> describe asr/<rule name>`
+- Describe the ingress: `kubectl -n <namespace> describe ingress/<ingress name>`
+- Describe the service: `kubectl -n <namespace> describe service/<service name>`
+- Get controller logs: `kubectl -n harness-autostopping logs deployment/autostopping-controller`
+- Get router logs: `kubectl -n harness-autostopping logs deployment/autostopping-router`
+
+Include all the above with your support ticket.
+
+## Loading page constantly refreshes, or never redirects to my application
+
+If you are unable to get past the autostopping loading page, first check to see if your pods have come up and are healthy.
+
+If the pods do come up and are healthy but the page is not redirecting, or the loading page is reloading constantly but never redirecting you to your application, then we can try resetting the router config.
+
+- Scale controller to zero:  `kubectl -n harness-autostopping scale deploy/autostopping-controller --replicas=0`
+- Delete configmap: `k -n harness-autostopping delete cm/harness-autostopping-config`
+- Scale controller to one: `k -n harness-autostopping scale deploy/autostopping-controller --replicas=1`
+
+At this point the configmap should be regenerated, and you can try accessing your application again.
