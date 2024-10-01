@@ -13,11 +13,10 @@ Here’s a short overview of the capabilities:
 - Continuous Integration/Continuous Delivery - Build, test, and deploy code faster with hundreds of reusable pipeline templates.
 - Artifact Registry - Centralize and streamline software delivery pipelines by providing a single source of truth for software artifacts.
 
-## How is Gitness related to Drone?
+## How is Harness Open Source related to Drone?
 
 Gitness was the next step in the evolution of [Drone](https://www.drone.io), from continuous integration to source code hosting, bringing code management and pipelines closer together. 
 
-Harness Open Source adds two new capabilities to Gitness - hosted development environments and artifact registry.
-The goal is for Harness Open Source to eventually be at full parity with Drone in terms of pipeline capabilities, allowing users to seamlessly migrate from Drone to Gitness.
+Gitness then transformed into Harness Open Source, adding two new capabilities: [hosted development environments](/docs/open-source/gitspaces/overview) and [artifact registry](/docs/open-source/registries/overview). The goal is for Harness Open Source to eventually be at full parity with Drone in terms of pipeline capabilities, allowing users to seamlessly migrate from Drone to Harness Open Source.
 
 Until then, Drone development will continue in a [feature branch](https://github.com/harness/gitness/tree/drone).

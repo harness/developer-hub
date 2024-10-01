@@ -17,13 +17,13 @@ For example:
 ```sh {2-3} showLineNumbers
 docker run -d \
   -e GITNESS_DATABASE_DRIVER=postgres \
-  -e GITNESS_DATABASE_DATASOURCE="host=1.2.3.4 port=5678 sslmode=disable dbname=gitness user=$USER password=$PASSWORD" \
-  -p 3000:3000 \
+  -e GITNESS_DATABASE_DATASOURCE="host=1.2.3.4 port=5678 sslmode=disable dbname=harness user=$USER password=$PASSWORD" \
+  -p 3000:3000 -p 3022:3022 \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v $HOME/gitness:/data \
-  --name gitness \
+  -v $HOME/harness:/data \
+  --name harness \
   --restart always \
-  harness/gitness
+  harness/harness
 ```
 
 `GITNESS_DATABASE_DRIVER` must be `postgres`.

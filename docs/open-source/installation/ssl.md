@@ -12,10 +12,10 @@ If you are terminating SSL traffic before your Harness Open Source instance (suc
 
 ```sh {2-3} showLineNumbers
 docker run -d \
-  -e GITNESS_URL_BASE=https://gitness.company.com \
+  -e GITNESS_URL_BASE=https://harness.company.com \
   -p 3000:3000 \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /mnt/gitness-data:/data \
+  -v /mnt/harness-data:/data \
   --name opensource \
   --restart always \
   harness/harness
