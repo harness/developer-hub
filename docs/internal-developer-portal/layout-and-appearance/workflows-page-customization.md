@@ -61,5 +61,11 @@ You can Remove a Group by clicking on the **three dots** on the Groups tabs and 
 2. **Favourites**: List all the starred workflows
 3. **All Workflows**: Lists all the workflows irrespective of the Groups they are part of.
 4. **Search**: Search the list of workflows based on the workflows title. 
+5. **Tags & Categories**: You can now filter workflows based on **tags** and **categories**. 
 
 ![](./static/navigating-new-workflows-page.png)
+![](./static/tags-categories.png)
+
+6. **Open Playground**: Template Editor is part of the **Open Playground**. 
+
+![](./static/open-playground.png)
