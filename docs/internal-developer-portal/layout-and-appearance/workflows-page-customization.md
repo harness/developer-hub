@@ -21,7 +21,7 @@ This will help you surface out the most useful Workflows for your developers, wh
 
 ## Available Customizations
 
-**Platform Engineers** (users assigned with the role of [IDP Admin](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin)) can customize the **Workflows homepage** under **IDP Admin -> Layouts -> Workflows** section by creating **groups** and adding Workflows to each group. These groups can be further customized using a **name**, **icon**, and **description** and they can be arranged in a specific order to determine how they appear on the Workflows homepage.
+**Platform Engineers** (users assigned with the role of [IDP Admin](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin) or having [Layout edit permission](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#4-layouts)) can customize the **Workflows homepage** under **IDP Admin -> Layouts -> Workflows** section by creating **groups** and adding Workflows to each group. These groups can be further customized using a **name**, **icon**, and **description** and they can be arranged in a specific order to determine how they appear on the Workflows homepage.
 
 The option to create new groups is also available under the Workflows homepage which will take you to the **Layout -> Workflows** under **Admin**. 
 
