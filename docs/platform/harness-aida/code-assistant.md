@@ -11,7 +11,7 @@ Harness AI code assistant consists of a set of tools that enhance coding experie
 Harness AI code assistant is designed to seamlessly integrate with your development workflow and it is available as an extension for popular Integrated Development Environments (IDEs). It exploits th power of Large Language Models to understand the context and generate relevant code/comment
 tailored to your specific needs.
 
-For instructions on how to install and configure the Harness AI Code Assistant extension see the installation section.
+For instructions on how to install and configure the Harness AI Code Assistant extension see the installation section below.
 
 ## Installation and Setup
 Harness AI code assistant is currently available as an extension for Visual Studio Code. It can be installed directly from the Visual Studio Code Marketplace.
@@ -52,7 +52,7 @@ Test generation allows developers to automatically create unit tests for their c
 
 ### Chat Assistant 
 Harness AI provides an interactive chat assistant that can answer coding queries, provide explanations, and assist with debugging. You can access the chat assistant by clicking on the Harness icon on the left sidebar of your IDE. This will open a chat window where you can type your questions or requests, and the assistant will respond with relevant information or code suggestions.
-![An example of AIDA code autocompletion](./static/chat.gif)
+![An example of AIDA code autocompletion](./static/chat1-julia.gif)
 
 
 ## Harness AI Chat: Features and Usage
@@ -64,7 +64,7 @@ By defualt, the chat assistant uses the context of the current file to provide r
 
 ### Inserting Code Snippets
 The Harness AI chat is an interactive tool designed to help users ask questions and receive responses in the form of code snippets or detailed text explanations. Recognizing that users often want to integrate the suggested code into their own projects, the Harness Chat Assistant simplifies this process. It provides a convenient toolbar above each code snippet, allowing users to effortlessly insert the suggested code at their current cursor position or into a new file, streamlining the workflow.
-![An example of AIDA code autocompletion](./static/insert.gif)
+![An example of AIDA code autocompletion](./static/insert-julia.gif)
 
 
 
@@ -88,3 +88,6 @@ Harness AI Code Assistant supports a wide range of programming languages includi
 
 ### What is language server and how does it work?
 The language server is component of Harness AI Code Assistant that runs on the user's machine and communicates with the IDE. The role of the language server is to generate the context that is needed to respond to user queries by gathering and processing information from the current open tabs and files in the workspace. The language server is also responsible for generating and sending requests to the Harness AI backend.
+
+### What context information is used by the chat assistant?
+The context used when utilizing the chat assistant includes the visible code in the current file, any relevant libraries or frameworks referenced in the project, and the user's previous interactions within the chat, and the selected code snippets if applicable. This allows the assistant to provide tailored responses based on the specific coding environment and the user's ongoing work. Additionally, users can enhance the context by adding references to other files or libraries as needed.
