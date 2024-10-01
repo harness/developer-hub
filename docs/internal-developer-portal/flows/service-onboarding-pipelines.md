@@ -10,7 +10,7 @@ redirect_from:
 
 :::info
 
-The [new Workflows homepage](/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization)is behind a Feature Flag `IDP_ENABLE_WORKFLOWSV2`. To enable the feature flag, please contact [Harness Support](mailto:support@harness.io)
+The [new Workflows homepage](/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization) is behind a Feature Flag `IDP_ENABLE_WORKFLOWSV2`. To enable the feature flag, please contact [Harness Support](mailto:support@harness.io)
 
 :::
 
