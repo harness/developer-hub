@@ -25,7 +25,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 #### New features and enhancements
 
-- We have added the [new Workflows Homepage](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization), which helps you to customize the Workflows organization and information associated. This feature is behind the Feature Flag `IDP_ENABLE_WORKFLOWSV2`, contact [harness support]((mailto:support@harness.io)) to enable it on your account. [IDP-3752] 
+- We have added the [new Workflows Homepage](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization), which helps you to customize the Workflows organization and information associated. This feature is behind the Feature Flag `IDP_ENABLE_WORKFLOWSV2`, contact [harness support](mailto:support@harness.io) to enable it on your account. [IDP-3752] 
 - We have upgraded to the new backend system of Backstage in Harness IDP. [IDP-3252]
 - Added Support for usage of pipeline templates in the pipeline orchestrator used in workflows. [IDP-3599]
 - Enhanced the API Response for Catalog Ingestion API. [IDP-3672]
