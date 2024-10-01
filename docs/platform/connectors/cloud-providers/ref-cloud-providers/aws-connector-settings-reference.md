@@ -570,6 +570,32 @@ Here are the custom parameters for the Harness AWS OIDC JWT:
 
 </details>
 
+<details>
+<summary> Sample IAM policy </summary>
+
+This example policy allows a specific entity to be authenticated through an OIDC provider.
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::156272853481:oidc-provider/app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringEquals": {
+                    "app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg:aud": "sts.amazonaws.com",
+                    "app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg:sub": "account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/OIDC_Test"
+                }
+            }
+        }
+    ]
+}
+```
+</details>
+
 </TabItem>
 </Tabs>
 
