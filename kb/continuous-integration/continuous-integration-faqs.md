@@ -11,11 +11,11 @@ redirect_from:
 
 ### What is build infrastructure and why do I need it for Harness CI?
 
-A build stage's infrastructure definition, the *build infrastructure*, defines "where" your stage runs. It can be a Kubernetes cluster, a VM, or even your own local machine. While individual steps can run in their own containers, your stage itself requires a build infrastructure to define a common workspace for the entire stage. For more information about build infrastructure and CI pipeline components go to:
+A build stage's infrastructure definition, the _build infrastructure_, defines "where" your stage runs. It can be a Kubernetes cluster, a VM, or even your own local machine. While individual steps can run in their own containers, your stage itself requires a build infrastructure to define a common workspace for the entire stage. For more information about build infrastructure and CI pipeline components go to:
 
-* [CI key concepts](https://developer.harness.io/docs/continuous-integration/get-started/key-concepts/)
-* [CI pipeline creation overview](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
-* [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me)
+- [CI key concepts](https://developer.harness.io/docs/continuous-integration/get-started/key-concepts/)
+- [CI pipeline creation overview](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
+- [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me)
 
 ### What kind of build infrastructure can I use? Which operating systems are supported?
 
@@ -39,12 +39,14 @@ No. Your build infrastructure can be configured to use whichever tools you like.
 ```
 
 `ADDITIONAL_CERTS_PATH` - An environment variable used for CI Build Stages. This variable should be set to the path where the certificates exist in the delegate. For example,
+
 ```
 - name: ADDITIONAL_CERTS_PATH
   value: "/tmp/ca.bundle"
 ```
 
 `DESTINATION_CA_PATH` - An environment variable used for CI Build Stages. This variable should be set to a comma-separated list of files where the certificate should be mounted. For example,
+
 ```
 - name: DESTINATION_CA_PATH
   value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
@@ -55,7 +57,6 @@ No. Your build infrastructure can be configured to use whichever tools you like.
 `DESTINATION_CA_PATH` and `ADDTIONAL_CERTS_PATH`/`CI_MOUNT_VOLUMES` both perform the same operation of mounting certificates to Kubernetes Build Infrastructure. Harness recommends `DESTINATION_CA_PATH` over `ADDTIONAL_CERTS_PATH`/`CI_MOUNT_VOLUMES` however, if both are defined, `DESTINATION_CA_PATH` will be consumed over `ADDTIONAL_CERTS_PATH`/`CI_MOUNT_VOLUMES`.
 
 For more information and instructions on how to mount certificates, please visit the [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/) documentation.
-
 
 ## Local runner build infrastructure
 
@@ -71,11 +72,11 @@ If the running is running, you should get a valid response, such as:
 
 ```json
 {
- "version": "0.1.2",
- "docker_installed": true,
- "git_installed": true,
- "lite_engine_log": "no log file",
- "ok": true
+  "version": "0.1.2",
+  "docker_installed": true,
+  "git_installed": true,
+  "lite_engine_log": "no log file",
+  "ok": true
 }
 ```
 
@@ -200,8 +201,8 @@ If your CI build gets stuck at the initialize step on the health check for conne
 If the delegate is connected but your AWS VM builds are failing, check the following:
 
 1. Make sure your the AMIs, specified in `pool.yml`, are still available.
-   * Amazon reprovisions their AMIs every two months.
-   * For a Windows pool, search for an AMI called `Microsoft Windows Server 2022 Base with Containers` and update `ami` in `pool.yml`.
+   - Amazon reprovisions their AMIs every two months.
+   - For a Windows pool, search for an AMI called `Microsoft Windows Server 2022 Base with Containers` and update `ami` in `pool.yml`.
 2. Confirm your [security group setup](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure/#configure-ports-and-security-group-settings) and security group settings in `runner/pool.yml`.
 
 ### Use internal or custom AMIs with self-managed AWS VM build infrastructure
@@ -212,16 +213,17 @@ Additionally, make sure there are no firewall or anti-malware restrictions inter
 
 ### Where can I find logs for self-managed AWS VM lite engine and cloud init output?
 
-* Linux
-   * Lite engine logs: `/var/log/lite-engine.log`
-   * Cloud init output logs: `/var/log/cloud-init-output.log`
-* Windows
-   * Lite engine logs: `C:\Program Files\lite-engine\log.out`
-   * Cloud init output logs: `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`
+- Linux
+  - Lite engine logs: `/var/log/lite-engine.log`
+  - Cloud init output logs: `/var/log/cloud-init-output.log`
+- Windows
+  - Lite engine logs: `C:\Program Files\lite-engine\log.out`
+  - Cloud init output logs: `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`
 
 ### What does it mean if delegate.task throws a "ConnectException failed to connect" error?
 
 <!-- CI-11679 -->
+
 Before submitting a task to a delegate, Harness runs a capability check to confirm that the delegate is connected to the runner. If the delegate can't connect, then the capability check fails and that delegate is ignored for the task. This can cause `failed to connect` errors on delegate task assignment, such as:
 
 ```
@@ -231,10 +233,10 @@ java.net.ConnectException: Failed to connect to /127.0.0.1:3000\
 
 To debug this issue, investigate delegate connectivity in your VM build infrastructure configuration:
 
-* [Verify connectivity for AWS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure#verify-connectivity)
-* [Verify connectivity for Microsoft Azure VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-azure#verify-connectivity)
-* [Verify connectivity for GCP VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform#verify-connectivity)
-* [Verify connectivity for Anka macOS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry#verify-connectivity)
+- [Verify connectivity for AWS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure#verify-connectivity)
+- [Verify connectivity for Microsoft Azure VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-azure#verify-connectivity)
+- [Verify connectivity for GCP VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform#verify-connectivity)
+- [Verify connectivity for Anka macOS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry#verify-connectivity)
 
 ## Harness Cloud
 
@@ -252,8 +254,8 @@ Recently Harness has been the victim of several Crypto attacks that use our Harn
 
 To address these issues, you can do one of the following:
 
-* Use the local runner build infrastructure option, or upgrade to a paid plan to use the self-managed VM or Kubernetes cluster build infrastructure options. There are no limitations on builds using your own infrastructure.
-* Create a Harness account with your work email and not a generic email address, like a Gmail address.
+- Use the local runner build infrastructure option, or upgrade to a paid plan to use the self-managed VM or Kubernetes cluster build infrastructure options. There are no limitations on builds using your own infrastructure.
+- Create a Harness account with your work email and not a generic email address, like a Gmail address.
 
 ### What is the Harness Cloud build credit limit for the Free plan?
 
@@ -275,9 +277,9 @@ No. To [use Harness Cloud build infrastructure](https://developer.harness.io/doc
 
 To use Harness Cloud build infrastructure, all connectors used in the stage must connect through the Harness Platform. This means that:
 
-* GCP connectors can't inherit credentials from the delegate. They must be configured to connect through the Harness Platform.
-* Azure connectors can't inherit credentials from the delegate. They must be configured to connect through the Harness Platform.
-* AWS connectors can't use IRSA, AssumeRole, or delegate connectivity mode. They must connect through the Harness Platform with access key authentication.
+- GCP connectors can't inherit credentials from the delegate. They must be configured to connect through the Harness Platform.
+- Azure connectors can't inherit credentials from the delegate. They must be configured to connect through the Harness Platform.
+- AWS connectors can't use IRSA, AssumeRole, or delegate connectivity mode. They must connect through the Harness Platform with access key authentication.
 
 For more information, go to [Use Harness Cloud build infrastructure - Requirements for connectors and secrets](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets).
 
@@ -353,9 +355,9 @@ Currently, caching build images with Harness CI Cloud isn't supported.
 
 By default, a built-in step runs inside a container within the build VM.
 
-###  How to fix the docker rate limiting errors while pulling the Harness internal images when the build is running on Harness cloud?
+### How to fix the docker rate limiting errors while pulling the Harness internal images when the build is running on Harness cloud?
 
-You could update the deafult docker connector ```harnessImage``` and point it to the Harness internal GAR/ECR as mentioned in the [doc](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
+You could update the deafult docker connector `harnessImage` and point it to the Harness internal GAR/ECR as mentioned in the [doc](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
 
 ## Kubernetes clusters
 
@@ -365,9 +367,9 @@ For a comparison of build infrastructures go to [Which build infrastructure is r
 
 For requirements, recommendations, and settings for using a Kubernetes cluster build infrastructure, go to:
 
-* [Set up a Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure)
-* [Build and push artifacts and images - Kubernetes cluster build infrastructures require root access](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#kubernetes-cluster-build-infrastructures-require-root-access)
-* [CI Build stage settings - Infrastructure - Kubernetes tab](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#infrastructure)
+- [Set up a Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure)
+- [Build and push artifacts and images - Kubernetes cluster build infrastructures require root access](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#kubernetes-cluster-build-infrastructures-require-root-access)
+- [CI Build stage settings - Infrastructure - Kubernetes tab](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#infrastructure)
 
 ### Can I run Docker commands on a Kubernetes cluster build infrastructure?
 
@@ -535,7 +537,7 @@ Currently, Harness CI doesn't support running CI builds on ECS clusters.
 
 Yes, if the Kubernetes connector is configured correctly. For more information, go to [Use delegate selectors with Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#use-delegate-selectors-with-kubernetes-cluster-build-infrastructure).
 
-### How can I configure the kaniko flag ```--skip-unused-stages``` in the built-in Build and Push step?
+### How can I configure the kaniko flag `--skip-unused-stages` in the built-in Build and Push step?
 
 You can set the kaniko flags as an environment variable in the build and push step. For more information, go to [Environment Variables (plugin runtime flags)](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/#environment-variables-plugin-runtime-flags)
 
@@ -563,7 +565,7 @@ This could happen if you are configuring the shared path in the CI stage with th
 
 No, barrier is not currently supported in CI stage
 
-### How to set the kaniko flag "--reproducible" in the build and push step? 
+### How to set the kaniko flag "--reproducible" in the build and push step?
 
 Kaniko flags can be configured as environment variables in build and push step. More details about the same can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/#environment-variables-plugin-runtime-flags)
 
@@ -575,17 +577,17 @@ You can configure the base connector in the build and push step and Harness will
 
 No, the output variable configured in the run step does not get exported if the step execution fails
 
-### Why is the Exporting of output variable from a run step is failing with the error "* stat /tmp/engine/xxxxxxx-output.env: no such file or directory" even after the step executed successfully ?
+### Why is the Exporting of output variable from a run step is failing with the error "\* stat /tmp/engine/xxxxxxx-output.env: no such file or directory" even after the step executed successfully ?
 
 When an output variable is configured in a run step, Harness adds a command at the end of the script to write the variable's value to a temp file, from which the output variable is processed. The error occurs if you manually exit the script with 'exit 0' before all commands are executed. Avoid calling 'exit 0' in the script if you are exporting an output variable.
 
-### Can we use docker compose to start multiple containers when we run the build in k8s cluster? 
+### Can we use docker compose to start multiple containers when we run the build in k8s cluster?
 
 You can use docker compose while running the build in k8s cluster however you need to run the dind as a background step as detailed in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/)
 
 ### When we start a container by running docker run command from a run step, does the new container get the environment variables configured in the run step?
 
-No, ENV variables configured in the run step will not be available within the new container, you need to manually pass the required  ENV variable while starting the container
+No, ENV variables configured in the run step will not be available within the new container, you need to manually pass the required ENV variable while starting the container
 
 ### How can we trigger a CI pipeline from a specific commit?
 
@@ -609,7 +611,7 @@ Currently, we do not support adding "topologySpreadConstraints" to the build pod
 
 ### Why the docker commands in the run step is failing with the error "Cannot connect to the Docker daemon at unix:///var/run/docker.sock?" even after the dind background step logs shows that the docker daemon has been initialized?
 
-This could happen if the folders ```/var/lib/docker``` and ```/var/run```  are not added under the shared path in the CI stage. More details about the dind config can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/) 
+This could happen if the folders `/var/lib/docker` and `/var/run` are not added under the shared path in the CI stage. More details about the dind config can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/)
 
 ### Why the build using dind is failing with out of memory error even after enough memory is configured in the run step where the docker commands are running?
 
@@ -624,11 +626,12 @@ This happens when the step container configured in the run step doesnt have dock
 The built-in build and push step use kaniko to perform the build in k8s build infra. We can configure dind build to use buildx while running the build in k8s infra
 More details about the dind config can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/)
 
-### Do we need to have both ARM and AMD build infrastructure to build multiarch images using built-in build and push step in k8s infra?  
+### Do we need to have both ARM and AMD build infrastructure to build multiarch images using built-in build and push step in k8s infra?
 
 Yes, we need to have one stage running on ARM and another stage running on AMD to build both ARM and AMD images using the built-in build and push step in k8s infra. More details including a sample pipeline can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-multi-arch/)
 
 ### Does Harness CI support AKS 1.28.3 version?
+
 Yes
 
 ## Self-signed certificates
@@ -645,9 +648,9 @@ With a local runner build infrastructure, you can use `CI_MOUNT_VOLUMES` to use 
 
 There are multiple ways you can do this:
 
-* Build the delegate image with the certs baked into it, if you are custom building the delegate image.
-* Create a secret/configmap with the certs data, and then mount it on the delegate pod.
-* Run commands in the `INIT_SCRIPT` to download the certs while the delegate launches and make them available to the delegate pod file system.
+- Build the delegate image with the certs baked into it, if you are custom building the delegate image.
+- Create a secret/configmap with the certs data, and then mount it on the delegate pod.
+- Run commands in the `INIT_SCRIPT` to download the certs while the delegate launches and make them available to the delegate pod file system.
 
 ### Where should I mount internal CA certs on the build pod?
 
@@ -666,24 +669,24 @@ To resolve this issue, add `SCM_SKIP_SSL=true` to the `environment` section of t
 
 ```yaml
 environment:
-      - ACCOUNT_ID=XXXX
-      - DELEGATE_TOKEN=XXXX
-      - MANAGER_HOST_AND_PORT=https://app.harness.io
-      - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
-      - DEPLOY_MODE=KUBERNETES
-      - DELEGATE_NAME=test
-      - NEXT_GEN=true
-      - DELEGATE_TYPE=DOCKER
-      - SCM_SKIP_SSL=true
+  - ACCOUNT_ID=XXXX
+  - DELEGATE_TOKEN=XXXX
+  - MANAGER_HOST_AND_PORT=https://app.harness.io
+  - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
+  - DEPLOY_MODE=KUBERNETES
+  - DELEGATE_NAME=test
+  - NEXT_GEN=true
+  - DELEGATE_TYPE=DOCKER
+  - SCM_SKIP_SSL=true
 ```
 
 For more information about self-signed certificates, delegates, and delegate environment variables, go to:
 
-* [Delegate environment variables](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables)
-* [Docker delegate environment variables](https://developer.harness.io/docs/platform/delegates/delegate-reference/docker-delegate-environment-variables)
-* [Install delegates](https://developer.harness.io/docs/category/install-delegates)
-* [Set up a local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure)
-* [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates)
+- [Delegate environment variables](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables)
+- [Docker delegate environment variables](https://developer.harness.io/docs/platform/delegates/delegate-reference/docker-delegate-environment-variables)
+- [Install delegates](https://developer.harness.io/docs/category/install-delegates)
+- [Set up a local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure)
+- [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates)
 
 ### Certificate volumes aren't mounted to the build pod
 
@@ -747,8 +750,8 @@ instances:
       account:
         region: us-east-2
         availability_zone: us-east-2c
-        access_key_id: 
-        access_key_secret: 
+        access_key_id:
+        access_key_secret:
         key_pair_name: XXXXX
       ami: ami-088d5094c0da312c0
       size: t3.large ## VM machine size.
@@ -844,17 +847,17 @@ To resolve this, exclude the `ToString` portion from the stage variable's concat
 For example, the following two stage variables include one variable that has a `ToString` value and another variable that concatenates three [expressions](https://developer.harness.io//docs/platform/variables-and-expressions/runtime-inputs/#expressions) into a single expression, including the `ToString` value.
 
 ```yaml
-        variables:
-          - name: DATE_FORMATTED ## This variable's value is 'ToString' output.
-            type: String
-            description: ""
-            required: false
-            value: (Get-Date).ToString("yyyy.MMdd")
-          - name: BUILD_VAR ## This variable's value concatenates the execution ID, the sequence ID, and the value of DATE_FORMATTED.
-            type: String
-            description: ""
-            required: false
-            value: <+<+pipeline.executionId>+"-"+<+pipeline.sequenceId>+"-"+<+stage.variables.DATE_FORMATTED>>
+variables:
+  - name: DATE_FORMATTED ## This variable's value is 'ToString' output.
+    type: String
+    description: ""
+    required: false
+    value: (Get-Date).ToString("yyyy.MMdd")
+  - name: BUILD_VAR ## This variable's value concatenates the execution ID, the sequence ID, and the value of DATE_FORMATTED.
+    type: String
+    description: ""
+    required: false
+    value: <+<+pipeline.executionId>+"-"+<+pipeline.sequenceId>+"-"+<+stage.variables.DATE_FORMATTED>>
 ```
 
 When a PowerShell script calls the concatenated variable, such as `echo <+pipeline.stages.test.variables.BUILD_VAR>`, the `ToString` portion of the output prints on a separate line from the rest of the value, despite being part of one concatenated expression.
@@ -869,31 +872,32 @@ To resolve this, exclude the `ToString` portion from the stage variable's concat
 For example, here are the two stage variables from the previous example without the `ToString` value in the concatenated expression.
 
 ```yaml
-        variables:
-          - name: DATE_FORMATTED ## This variable is unchanged.
-            type: String
-            description: ""
-            required: false
-            value: (Get-Date).ToString("yyyy.MMdd")
-          - name: BUILD_VAR ## This variable's value concatenates only the execution ID and sequence ID. It no longer includes DATE_FORMATTED.
-            type: String
-            description: ""
-            required: false
-            value: <+<+pipeline.executionId>+"-"+<+pipeline.sequenceId>>
+variables:
+  - name: DATE_FORMATTED ## This variable is unchanged.
+    type: String
+    description: ""
+    required: false
+    value: (Get-Date).ToString("yyyy.MMdd")
+  - name: BUILD_VAR ## This variable's value concatenates only the execution ID and sequence ID. It no longer includes DATE_FORMATTED.
+    type: String
+    description: ""
+    required: false
+    value: <+<+pipeline.executionId>+"-"+<+pipeline.sequenceId>>
 ```
 
 In the `Run` step's PowerShell script, call the `ToString` value separately and then "manually concatenate" it onto the concatenated expression. For example:
 
 ```yaml
-              - step:
-                  identifier: echo
-                  type: Run
-                  name: echo
-                  spec:
-                    shell: Powershell
-                    command: |- ## DATE_FORMATTED is resolved separately and then appended to BUILD_VAR.
-                      $val = <+stage.variables.DATE_FORMATTED>
-                      echo <+pipeline.stages.test.variables.BUILD_VAR>-$val
+- step:
+    identifier: echo
+    type: Run
+    name: echo
+    spec:
+      shell: Powershell
+      command:
+        |- ## DATE_FORMATTED is resolved separately and then appended to BUILD_VAR.
+        $val = <+stage.variables.DATE_FORMATTED>
+        echo <+pipeline.stages.test.variables.BUILD_VAR>-$val
 ```
 
 ### User data isn't running on AWS Windows Server 2022 VM Pool
@@ -994,9 +998,9 @@ Yes. Use the [Depth](https://developer.harness.io/docs/continuous-integration/us
 
 There are several strategies you can use to improve codebase clone time:
 
-* Depending on your build infrastructure, you can set [Limit Memory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#set-container-resources) to `1Gi` in your codebase configuration.
-* For builds triggered by PRs, set the [Pull Request Clone Strategy](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#pull-request-clone-strategy) to **Source Branch** and set [Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) to `1`.
-* If you don't need the entire repo contents for your build, you can disable the built-in clone codebase step and use a Run step to execute specific `git clone` arguments, such as to [clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
+- Depending on your build infrastructure, you can set [Limit Memory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#set-container-resources) to `1Gi` in your codebase configuration.
+- For builds triggered by PRs, set the [Pull Request Clone Strategy](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#pull-request-clone-strategy) to **Source Branch** and set [Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) to `1`.
+- If you don't need the entire repo contents for your build, you can disable the built-in clone codebase step and use a Run step to execute specific `git clone` arguments, such as to [clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
 
 ### What codebase environment or payload variables/expressions are available to use in triggers, commands, output variables, or otherwise?
 
@@ -1036,9 +1040,9 @@ If you want to force all stages to use the same commit ID, even if there are cha
 
 ### Git fetch fails with invalid index-pack output when cloning large repos
 
-* Error: During the **Initialize** step, when cloning the default codebase, `git fetch` throws `fetch-pack: invalid index-pack output`.
-* Cause: This can occur with large code repos and indicates that the build machine might have insufficient resources to clone the repo.
-* Solution: To resolve this, edit the pipeline's YAML and allocate `memory` and `cpu` resources in the `codebase` configuration. For example:
+- Error: During the **Initialize** step, when cloning the default codebase, `git fetch` throws `fetch-pack: invalid index-pack output`.
+- Cause: This can occur with large code repos and indicates that the build machine might have insufficient resources to clone the repo.
+- Solution: To resolve this, edit the pipeline's YAML and allocate `memory` and `cpu` resources in the `codebase` configuration. For example:
 
 ```yaml
 properties:
@@ -1059,21 +1063,21 @@ properties:
 
 ### Clone codebase fails due to missing plugin
 
-* Error: Git clone fails during stage initialization, and the runner's logs contain `Error response from daemon: plugin \"<plugin>\" not found`
-* Platform: This error can occur in build infrastructures that use a Harness Docker Runner, such as the [local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) or the [VM build infrastructures](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures).
-* Cause: A required plugin is missing from your build infrastructure container's Docker installation. The plugin is required to configure Docker networks.
-* Solution:
-   1. On the machine where the runner is running, stop the runner.
-   2. Set the `NETWORK_DRIVER` environment variable to your preferred network driver plugin (such as `export NETWORK_DRIVER="nat"` or `export NETWORK_DRIVER="bridge"`). For Windows, use [PowerShell variable syntax](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-5.1#using-the-variable-syntax), such as `$Env:NETWORK_DRIVER="nat"` or `$Env:NETWORK_DRIVER="bridge"`.
-   3. Restart the runner.
+- Error: Git clone fails during stage initialization, and the runner's logs contain `Error response from daemon: plugin \"<plugin>\" not found`
+- Platform: This error can occur in build infrastructures that use a Harness Docker Runner, such as the [local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) or the [VM build infrastructures](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures).
+- Cause: A required plugin is missing from your build infrastructure container's Docker installation. The plugin is required to configure Docker networks.
+- Solution:
+  1.  On the machine where the runner is running, stop the runner.
+  2.  Set the `NETWORK_DRIVER` environment variable to your preferred network driver plugin (such as `export NETWORK_DRIVER="nat"` or `export NETWORK_DRIVER="bridge"`). For Windows, use [PowerShell variable syntax](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-5.1#using-the-variable-syntax), such as `$Env:NETWORK_DRIVER="nat"` or `$Env:NETWORK_DRIVER="bridge"`.
+  3.  Restart the runner.
 
 ### How do I configure the Git Clone step? What is the Clone Directory setting?
 
 For details about Git Clone step settings, go to:
 
-* [Git Clone step - Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#depth)
-* [Git Clone step - Clone Directory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#clone-directory)
-* [All Git Clone step settings](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step)
+- [Git Clone step - Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#depth)
+- [Git Clone step - Clone Directory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#clone-directory)
+- [All Git Clone step settings](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step)
 
 ### Does Harness CI support Git Large File Storage (git-lfs)?
 
@@ -1152,8 +1156,8 @@ If the user account used to generate the token doesn't have repository write per
 
 For repos under organizations or projects, check the role/permissions assigned to the user in the target repository. For example, a user in a GitHub organization can have some permissions at the organization level, but they might not have those permissions at the individual repository level.
 
+### Why does the status check for my PR redirect to a different PR's build Harness?
 
-### Why does the status check for my PR redirect to a different PR's build Harness? 
 This issue occurs when two PRs are created for the same commit ID. Harness CI associates builds with commits rather than specific PRs. If multiple PRs share the same commit, the latest build will replace the previous one, causing the build check on the earlier PR to redirect to the newer PR’s build.
 To resolve this, push a new commit to the affected PR and rebuild it. This creates a unique commit, ensuring the build check redirects to the correct PR.
 
@@ -1179,8 +1183,8 @@ For [chained pipelines](https://developer.harness.io/docs/platform/pipelines/pip
 
 To prevent parallel chained pipelines from overwriting one another, you can try these strategies:
 
-* Create a pipeline template for your chained pipeline, create multiple pipelines from this template that have unique pipeline identifiers, and then add those separate pipelines in parallel within the parent pipeline.
-* Add a [custom SCM status check](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks/#custom-scm-status-checks) at the end of the chained pipeline's Build stage that manually updates the PR with the build status. Make sure this step alway runs, regardless of the outcome of previous steps or stages.
+- Create a pipeline template for your chained pipeline, create multiple pipelines from this template that have unique pipeline identifiers, and then add those separate pipelines in parallel within the parent pipeline.
+- Add a [custom SCM status check](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks/#custom-scm-status-checks) at the end of the chained pipeline's Build stage that manually updates the PR with the build status. Make sure this step alway runs, regardless of the outcome of previous steps or stages.
 
 ### My pipeline has multiple Build stages, and I disabled Clone Codebase for some of them. Why is the PR status being updated for the stages that don't clone my codebase?
 
@@ -1237,7 +1241,6 @@ curl -X POST -H "Authorization: token YOUR_ACCESS_TOKEN" \
 }' https://api.github.com/repos/OWNER/REPOSITORY/pulls
 ```
 
-
 ## Pipeline initialization and Harness CI images
 
 ### Initialize step fails with a "Null value" error or timeout
@@ -1250,13 +1253,13 @@ For example, assume you have a step (named, for example, `my-cool-step`) that us
 
 Depending on how your expression/variable's value is generated, you need to either rearrange the flow of steps in your stage/pipeline or determine how you can provide the value earlier (such as by declaring it in a pipeline variable or stage variable).
 
-**With a Kubernetes cluster build infrastructure, all step-level variables must be resolved upfront during pod creation.** Therefore, steps referencing output variable from prior steps in the same stage resolve as null, regardless of how the steps are arranged in your stage. To avoid this, generate the output variables in a prior *stage* and then use an expression referencing the value from the prior stage, for example:
+**With a Kubernetes cluster build infrastructure, all step-level variables must be resolved upfront during pod creation.** Therefore, steps referencing output variable from prior steps in the same stage resolve as null, regardless of how the steps are arranged in your stage. To avoid this, generate the output variables in a prior _stage_ and then use an expression referencing the value from the prior stage, for example:
 
 ```
 <+pipeline.stages.PRIOR_STAGE.spec.execution.steps.PRIOR_STAGE_STEP.output.outputVariables.SOME_VAR>
 ```
 
-Similarly, **when using step groups or step group templates with a Kubernetes cluster build infrastructure, Harness can resolve only *stage* variables and *pipeline* variables during initialization.** Step/group variables resolve as null. This is because stage and pipeline variables are available to be resolved when creating the Kubernetes pod, and step/step group variables are not. In this case, if you encounter the `null value` error and you are using step-level variables, try configuring these as stage or pipeline variables instead.
+Similarly, **when using step groups or step group templates with a Kubernetes cluster build infrastructure, Harness can resolve only _stage_ variables and _pipeline_ variables during initialization.** Step/group variables resolve as null. This is because stage and pipeline variables are available to be resolved when creating the Kubernetes pod, and step/step group variables are not. In this case, if you encounter the `null value` error and you are using step-level variables, try configuring these as stage or pipeline variables instead.
 
 Make sure to update the [expressions referencing the variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#reference-variables) if you change them from step variables to stage/pipeline variables.
 
@@ -1302,16 +1305,16 @@ If you take this approach, you might not need all the Harness images. For exampl
 
 ### Build failed with "failed to pull image" or "ErrImagePull"
 
-* **Error messages:** `ErrImagePull` or some variation of the following, which may have a different image name, tag, or registry: `Failed to pull image "artifactory.domain.com/harness/ci-addon:1.16.22": rpc error: code = Unknown desc = Error response from daemon: unknown: Not Found.`
-* **Causes:**
-   * Harness couldn't pull an image that is needed to run the pipeline.
-   * `ErrImagePull` can be caused by networking issues or if the specified image doesn't exist in the specified repository.
-   * `Failed to pull image - Not Found` means that a Harness-specific image or tag, in this case `ci-addon:1.16.22`, isn't present in the specified artifact repository, and you are using the `account.harnessImage` connector to pull Harness images. You can use this connector to pull from your own registry or to pull images from any Docker registry, but it is also used to pull Harness-required CI images. Modifying this connector can cause it to fail to pull the necessary Harness CI images.
-* **Solutions:**
-   * If you modified the built-in Harness Docker connector, check the connector's configuration to make sure it uses one of the compatible methods for pull Harness-required images, as described in [Connect to the Harness container image registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
-   * If you are trying to pull images from your own registry, check your configuration for [pulling Harness images from a private registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#pull-harness-images-from-a-private-registry). You might need to use a different connecter than the built-in Harness Docker connector.
-   * If you [modified tags for some images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#specify-the-harness-ci-images-used-in-your-pipelines), check that your configuration uses valid tags that are present in the repository from which Harness is attempting to pull the tags.
-   * If you believe the issue is due to networking issues, try again later if you think the issue is transient, or check your connector or network configuration to make sure Harness is able to connect to the given registry.
+- **Error messages:** `ErrImagePull` or some variation of the following, which may have a different image name, tag, or registry: `Failed to pull image "artifactory.domain.com/harness/ci-addon:1.16.22": rpc error: code = Unknown desc = Error response from daemon: unknown: Not Found.`
+- **Causes:**
+  - Harness couldn't pull an image that is needed to run the pipeline.
+  - `ErrImagePull` can be caused by networking issues or if the specified image doesn't exist in the specified repository.
+  - `Failed to pull image - Not Found` means that a Harness-specific image or tag, in this case `ci-addon:1.16.22`, isn't present in the specified artifact repository, and you are using the `account.harnessImage` connector to pull Harness images. You can use this connector to pull from your own registry or to pull images from any Docker registry, but it is also used to pull Harness-required CI images. Modifying this connector can cause it to fail to pull the necessary Harness CI images.
+- **Solutions:**
+  - If you modified the built-in Harness Docker connector, check the connector's configuration to make sure it uses one of the compatible methods for pull Harness-required images, as described in [Connect to the Harness container image registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
+  - If you are trying to pull images from your own registry, check your configuration for [pulling Harness images from a private registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#pull-harness-images-from-a-private-registry). You might need to use a different connecter than the built-in Harness Docker connector.
+  - If you [modified tags for some images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#specify-the-harness-ci-images-used-in-your-pipelines), check that your configuration uses valid tags that are present in the repository from which Harness is attempting to pull the tags.
+  - If you believe the issue is due to networking issues, try again later if you think the issue is transient, or check your connector or network configuration to make sure Harness is able to connect to the given registry.
 
 ### What pipeline environment variables are there for CI pipelines?
 
@@ -1376,8 +1379,8 @@ With Kubernetes cluster build infrastructures, Build and Push steps use [kaniko]
 
 For more information, go to:
 
-* [Build and push artifacts and images - Kubernetes clusters require root access](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#kubernetes-cluster-build-infrastructures-require-root-access)
-* [Harness CI images - Images list](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#harness-ci-images-list)
+- [Build and push artifacts and images - Kubernetes clusters require root access](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#kubernetes-cluster-build-infrastructures-require-root-access)
+- [Harness CI images - Images list](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#harness-ci-images-list)
 
 ### Can I set kaniko and drone-docker runtime flags, such as skip-tls-verify or custom-dns?
 
@@ -1433,9 +1436,9 @@ Create a Docker connector for your desired container registry and use it in the 
 
 ### Build and Push to ECR step fails with error building image, failed to execute command, exec format error
 
-* Error: `Error building image: error building stage: failed to execute command: starting command: ...: exec format error`
-* Cause: This error can occur if you're running an ARM node pool instead of AMD.
-* Solution: Change your node pool to AMD and retry the build.
+- Error: `Error building image: error building stage: failed to execute command: starting command: ...: exec format error`
+- Cause: This error can occur if you're running an ARM node pool instead of AMD.
+- Solution: Change your node pool to AMD and retry the build.
 
 ### Build and Push to ECR step fails with error checking push permissions
 
@@ -1475,12 +1478,12 @@ Go to the [Kaniko container runtime error article](/kb/continuous-integration/ar
 
 ### When using 'Build ans Push' steps with Base Image connector, can I pull and push from two different docker registries that have same prefix for registry URL ?
 
-No, when using base image connector, ensure the prefix of the url use for pulling is different than the prefix of the url in the connector used for pushing. 
+No, when using base image connector, ensure the prefix of the url use for pulling is different than the prefix of the url in the connector used for pushing.
 
 Docker uses a configuration file to store authentication details. If two registry URLs share the same prefix, Docker will only create a single authentication entry for that prefix, which will cause a conflict when accessing the second registry.
-     
+
 As an example, both `https://index.docker.io/v1/abc/test1` and `https://index.docker.io/v1/xyz/test2` have the same prefix `https://index.docker.io/v1/`, so Docker cannot differentiate between them for authentication, causing the second set of credentials to overwrite the first.
-     
+
 ### What is the default build context when using Build and Push steps?
 
 The default build context is the stage workspace directory, which is `/harness`.
@@ -1511,7 +1514,7 @@ No. Currently, **Build and Push** steps don't support build secrets.
 
 [You can use the Build and Push to Docker step to build and push to JFrog Docker registries.](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-jfrog)
 
-### Why build and push to ECR step is failing with the error ```failed to create docker config: Username must be specified for registry```?
+### Why build and push to ECR step is failing with the error `failed to create docker config: Username must be specified for registry`?
 
 This could happen when you have the build and push to ECR step with a base connecter which is configured with anonymous auth type. Base connector configured in the build and push to ECR step should be an authenticated connector
 
@@ -1614,7 +1617,7 @@ If you get a `certificate signed by unknown authority` error with the [Upload Ar
 
 Yes. By default, the jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
 
-Set JFROG_CLI_HOME_DIR as Stage variable to change the folder in which .jfrog will be created, to a path you have write access. 
+Set JFROG_CLI_HOME_DIR as Stage variable to change the folder in which .jfrog will be created, to a path you have write access.
 
 ### mkdir permission denied when running Upload Artifacts to JFrog as non-root
 
@@ -1698,7 +1701,7 @@ No. Resource limits are not customizable when using Harness Cloud or self-manage
 
 Test Intelligence requires that you use enable the built-in Clone Codebase functionality.
 
-Test Intelligence won't work if you clone your repo *only* through a **Git Clone** step or a **Run** step.
+Test Intelligence won't work if you clone your repo _only_ through a **Git Clone** step or a **Run** step.
 
 ### How can I understand the relationship between code changes and the selected tests?
 
@@ -1708,7 +1711,7 @@ On the Tests tab, the visualization call graph provides insights into why each t
 
 No call graph is generated if Test Intelligence selects to run all tests because the call graph would be huge and not useful (no test selection logic to demonstrate).
 
-Additionally, the first run with TI *doesn't* include test selection, because Harness must establish a baseline for comparison in future runs. On subsequent runs, Harness can use the baseline to select relevant tests based on the content of the code changes.
+Additionally, the first run with TI _doesn't_ include test selection, because Harness must establish a baseline for comparison in future runs. On subsequent runs, Harness can use the baseline to select relevant tests based on the content of the code changes.
 
 For information about how and when TI selects tests, go to [How does Test Intelligence work?](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview#how-does-test-intelligence-work)
 
@@ -1747,13 +1750,17 @@ Bazel is already installed on Harness Cloud runners. For other build infrastruct
 
 If you encounter errors with Python TI, make sure that:
 
-* Your project is written in Python 3, and your repo is a pure Python 3 repo.
-* You don't use resource file relationships. TI for Python doesn't support resource file relationships.
-* You don't use dynamic loading and metaclasses. TI for Python might miss tests or changes in repos that use dynamic loading or metaclasses.
-* Your build tool is pytest or unittest.
-* The Python 3 binary is present. This means it is preinstalled on the build machine or available in the step's [Container Registry and Image](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2/#container-registry-and-image).
-* If you use another command to invoke Python 3, such as `python`, you have added an alias, such as `python3 = "python"`.
-* If you get code coverage errors, your [Command](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2/#command-and-shell) doesn't need coverage flags (`--cov` or `coverage`).
+- Your project is written in Python 3, and your repo is a pure Python 3 repo.
+- You don't use resource file relationships. TI for Python doesn't support resource file relationships.
+- You don't use dynamic loading and metaclasses. TI for Python might miss tests or changes in repos that use dynamic loading or metaclasses.
+- Your build tool is pytest or unittest.
+- The Python 3 binary is present. This means it is preinstalled on the build machine or available in the step's [Container Registry and Image](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2/#container-registry-and-image).
+- If you use another command to invoke Python 3, such as `python`, you have added an alias, such as `python3 = "python"`.
+- If you get code coverage errors, your [Command](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2/#command-and-shell) doesn't need coverage flags (`--cov` or `coverage`).
+
+### Why some of my C# classes are not being discovered by Test Intelligence?
+
+Currently, the C# support still has some limitations where classes that reside in a file that doesn't match their name are not being discovered by the agent. For now, we recommend that all the classes that are part of the application would reside in a file of their own name. This limitation is tracked and expected to be lifted in the future.
 
 ### Does Test Intelligence support dynamic code?
 
@@ -1822,10 +1829,10 @@ File store expressions don't work for all secrets, and some secrets require addi
 
 For more information, go to:
 
-* [Use GCP secrets in scripts](https://developer.harness.io/docs/continuous-integration/secure-ci/authenticate-gcp-key-in-run-step)
-* [Add and reference text secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#line-breaks-and-shell-interpreted-characters)
-* [Add and reference file secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-file-secrets/#line-breaks-and-shell-interpreted-characters)
-* [Add and reference file secrets - JKS files](https://developer.harness.io/docs/platform/secrets/add-file-secrets/#jks-files)
+- [Use GCP secrets in scripts](https://developer.harness.io/docs/continuous-integration/secure-ci/authenticate-gcp-key-in-run-step)
+- [Add and reference text secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#line-breaks-and-shell-interpreted-characters)
+- [Add and reference file secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-file-secrets/#line-breaks-and-shell-interpreted-characters)
+- [Add and reference file secrets - JKS files](https://developer.harness.io/docs/platform/secrets/add-file-secrets/#jks-files)
 
 :::
 
@@ -1835,7 +1842,7 @@ You could do this by [running DinD in a Background step](https://developer.harne
 
 ### Why doesn't Harness use the GCP connector in my Run step to pull the image?
 
-If your GCP connector inherits credentials from the delegate, Harness uses the node pool's authentication configuration while pulling the image. Harness can't extract the secret and mount it under  `imagePullSecrets` in this case.
+If your GCP connector inherits credentials from the delegate, Harness uses the node pool's authentication configuration while pulling the image. Harness can't extract the secret and mount it under `imagePullSecrets` in this case.
 
 ### Can I tag code committed from a Harness pipeline?
 
@@ -1940,12 +1947,12 @@ Error messages like `cannot connect to the Docker daemon` indicate that you migh
 **Actions that launch the Docker daemon:** If your Action attempts to launch the Docker daemon, and you have a DinD Background step in the same stage, you must add `PLUGIN_DAEMON_OFF: true` as a [stage variable](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#stage-variables). For example:
 
 ```yaml
-        variables:
-          - name: PLUGIN_DAEMON_OFF
-            type: String
-            description: ""
-            required: false
-            value: "true"
+variables:
+  - name: PLUGIN_DAEMON_OFF
+    type: String
+    description: ""
+    required: false
+    value: "true"
 ```
 
 **Harness Cloud:** You don't need DinD Background steps with Harness Cloud build infrastructure, and you can run GitHub Actions in [Action steps](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) instead of Plugin steps.
@@ -1974,23 +1981,23 @@ Make sure to use the FQN for the image when pulling from an internal private con
 
 ### What tool does a Harness GitHub Action plugin use in the backgound to run an action?
 
-The Github Action Drone plugin uses ```nektos/act``` in the background to run GitHub Actions.
+The Github Action Drone plugin uses `nektos/act` in the background to run GitHub Actions.
 
-###  Does the Harness Github Action plugin support exporting output variables?
+### Does the Harness Github Action plugin support exporting output variables?
 
 Currently the Github action plugin doesn’t support exporting the output variable, however the built-in Github Action step that can be added in Harness Cloud build pipeline supports exporting output variables.
 
 ### Which container image is being by the Harness Github Action plugin to run the github action?
 
-The current version of nektos/act used in the  github action plugin uses the image ```node:12-buster-slim``` to run the action.
+The current version of nektos/act used in the github action plugin uses the image `node:12-buster-slim` to run the action.
 
 ### Do we need a Docker-in-Docker (dind) container running in the background step to be able to run Harness GHA plugin?
 
 Docker-in-Docker is not required to be run as a background step because the GHA plugin image is built with the dind base image making it readily available within the GHA plugin.
 
-### How do we configure the stage variable ```PLUGIN_STRIP_PREFIX``` if we have 2 upload to s3 steps that needs to trim different keywords from the file path?
+### How do we configure the stage variable `PLUGIN_STRIP_PREFIX` if we have 2 upload to s3 steps that needs to trim different keywords from the file path?
 
-Since this stage variable accessible to all the steps, currently it is not supported to trim the different keywords from the file path if both the Upload to s3 steps are part of the same CI stage. 
+Since this stage variable accessible to all the steps, currently it is not supported to trim the different keywords from the file path if both the Upload to s3 steps are part of the same CI stage.
 
 ### How can we upload all the files including the directory when using the upload artifacts to jfrog antifactory step?
 
@@ -2040,8 +2047,8 @@ Harness CI offers a variety of [caching](https://developer.harness.io/docs/conti
 
 There are two options to download files from an S3 bucket in Harness:
 
-* Use the [Save and Restore Cache from S3 steps](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/). This step is specifically designed for downloading files from S3 and simplifies the process.
-* Use a custom shell script in a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
+- Use the [Save and Restore Cache from S3 steps](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/). This step is specifically designed for downloading files from S3 and simplifies the process.
+- Use a custom shell script in a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
 
 ### Can I use GCS for caching with Harness CI?
 
@@ -2115,8 +2122,7 @@ Yes. Go to [Cache Intelligence API](https://developer.harness.io/docs/continuous
 
 ### Does the execution save the cache in Harness side when the cache intelligence option is configured in the build running in self hosted infra?
 
-No, You need to configure the S3 compatible  object store in your infra to be used as the cache storage. More details about the same can be referred in the [doc](https://developer.harness.io/docs/platform/settings/default-settings/#continuous-integration) 
-
+No, You need to configure the S3 compatible object store in your infra to be used as the cache storage. More details about the same can be referred in the [doc](https://developer.harness.io/docs/platform/settings/default-settings/#continuous-integration)
 
 ## Background steps and service dependencies
 
@@ -2136,9 +2142,9 @@ Yes, you can use multiple background steps to run multiple background services, 
 
 Yes. Background steps have these limitations:
 
-* Background steps don't support failure strategies or output variables.
-* Steps running in containers can communicate with Background steps running on [Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) by their Background step ID. For example, if a Background step has ID `myloginservice`, later steps running in Docker can communicate with the Background step via `myloginservice:<port_number>`.
-* If your build stage uses Harness Cloud build infrastructure and you are running a Docker image for your Background step, followed by steps that do not use Docker (steps that run directly on the host), you must specify [Port Bindings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#port-bindings) in your Background step. Later steps that run on the host can communicate with the Background step via `localhost:<port_number>`.
+- Background steps don't support failure strategies or output variables.
+- Steps running in containers can communicate with Background steps running on [Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) by their Background step ID. For example, if a Background step has ID `myloginservice`, later steps running in Docker can communicate with the Background step via `myloginservice:<port_number>`.
+- If your build stage uses Harness Cloud build infrastructure and you are running a Docker image for your Background step, followed by steps that do not use Docker (steps that run directly on the host), you must specify [Port Bindings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#port-bindings) in your Background step. Later steps that run on the host can communicate with the Background step via `localhost:<port_number>`.
 
 ### How can a step call a service started by a Background step?
 
@@ -2259,8 +2265,8 @@ To avoid this, run build-and-push steps sequentially in Kubernetes pipelines ins
 
 For information about viewing build and build logs, go to:
 
-* [View builds](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds)
-* [Troubleshooting - Pipeline execution failures](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen#pipeline-execution-failures)
+- [View builds](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds)
+- [Troubleshooting - Pipeline execution failures](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen#pipeline-execution-failures)
 
 ### Does Harness limit log line length?
 
@@ -2298,8 +2304,8 @@ You must restart your delegate after you enable the `CI_INDIRECT_LOG_UPLOAD` fea
 
 For more information about configuring connectivity, go to:
 
-* [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
-* [Allowlist Harness Domains and IPs](/docs/platform/references/allowlist-harness-domains-and-ips)
+- [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
+- [Allowlist Harness Domains and IPs](/docs/platform/references/allowlist-harness-domains-and-ips)
 
 ### Step logs don't load in real time
 
@@ -2460,9 +2466,11 @@ Yes. [Harness CI offers many options for mobile app development.](https://develo
 Yes, you can use the [Harness Terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_pipeline).
 
 ### When using the --no-push option in a Harness build step, where is the locally built image stored?
-Harness doesn't store the built image directly with `--no-push` in Kaniko builds; Kaniko stores layers locally (e.g., `/kaniko`) and requires [exporting as an image or tarball](https://github.com/drone/drone-kaniko/blob/main/cmd/kaniko-docker/main.go#L191) for using in subsequent steps. For more information, go to the [`--tar-path`flag description](https://github.com/GoogleContainerTools/kaniko/tree/cf9a334cb027e6bc6a35c94a3b120b34880750a9?tab=readme-ov-file#flag---tar-path) in the Kaniko readme. 
 
-### In a CI/CD pipeline using Drone CI and the drone-aws-sam plugin, how can you pass multiple arguments to the AWS SAM build command? 
+Harness doesn't store the built image directly with `--no-push` in Kaniko builds; Kaniko stores layers locally (e.g., `/kaniko`) and requires [exporting as an image or tarball](https://github.com/drone/drone-kaniko/blob/main/cmd/kaniko-docker/main.go#L191) for using in subsequent steps. For more information, go to the [`--tar-path`flag description](https://github.com/GoogleContainerTools/kaniko/tree/cf9a334cb027e6bc6a35c94a3b120b34880750a9?tab=readme-ov-file#flag---tar-path) in the Kaniko readme.
+
+### In a CI/CD pipeline using Drone CI and the drone-aws-sam plugin, how can you pass multiple arguments to the AWS SAM build command?
+
 When using the drone-aws-sam plugin in a Drone CI pipeline, you can pass multiple arguments to the AWS SAM build command by specifying them in the `build_command_options` field of the plugin configuration. The arguments should be separated by spaces and enclosed in double quotes if they contain spaces or special characters. Here's an example:
 
 ```
@@ -2470,17 +2478,21 @@ build_command_options: "--no-cached --debug --parameter-overrides 'ParameterKey=
 ```
 
 ### A background service consistently generates logs containing "SIGQUIT: quit PC=0x46d441 m=0 sigcode=0..." messages during a specific stage execution. These messages appear only in logs scraped from the container and streamed to an external monitoring tool, not directly in the CI/CD platform logs. What might be causing this, and how can I troubleshoot it?
+
 Harness runs the service defined in the background step in a separate go-routine, which will be available until the lifetime of the stage. The service gets automatically killed during cleanup after the execution of the stage.
 
 The container logs you're seeing mean that the go-routine has received the termination signal, most likely during pod clean-up. It does look like the logs are quite verbose, which could indicate that debug mode is enabled for this particular step.
 
 ### Is there a public API in CI to obtain the day-by-day usage breakdown of Mac VMs for the account?
+
 As of now, there is no public API available to retrieve such information.
 
-###  Is there a known issue or limitation with Kaniko that prevents the chmod command within ADD in a Dockerfile from working properly when building with native build and push steps?
+### Is there a known issue or limitation with Kaniko that prevents the chmod command within ADD in a Dockerfile from working properly when building with native build and push steps?
+
 This seems like a known issue with Kaniko. https://github.com/GoogleContainerTools/kaniko/issues/2850
 
 ### How can I rotate my Drone user token?
+
 To rotate a user token, you can use the following curl command:
 
 ```
@@ -2488,6 +2500,7 @@ curl -X POST -i -H "Authorization: Bearer AUTH_TOKEN" https://<DRONE_SERVER_FQDN
 ```
 
 ### What actions can I take to address the extended runtime of a Docker command, particularly when encountering timeouts during microdnf updates?
+
 The prolonged runtime of Docker commands, often exacerbated by timeouts during microdnf updates, can be primarily attributed to network issues. To address this, you should verify the connectivity of the repomirror being utilized. Additionally, you could examine and potentially adjust the timeouts configured on the repomirror to enhance performance. These steps can help mitigate the impact of network-related delays and improve the efficiency of Docker operations.
 
 #### What does the error "java. lang.IllegalStateException: Failed to execute ApplicationRunner" mean?
@@ -2495,6 +2508,7 @@ The prolonged runtime of Docker commands, often exacerbated by timeouts during m
 The error `java.lang.IllegalStateException: Failed to execute ApplicationRunner` indicates that there was an issue while trying to execute an ApplicationRunner in a Java application. This could be due to various reasons such as missing dependencies, incorrect configuration, or runtime issues. Examining the stack trace and reviewing the application code further may be necessary to pinpoint the exact cause of the error.
 
 #### How can I a run background step in debug mode in Harness?
+
 To enable debug logging, set the environment variable to `DEBUG=true`. For more configuration information, go to [Relay proxy configuration reference](https://developer.harness.io/docs/feature-flags/use-ff/relay-proxy/configuration).
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
