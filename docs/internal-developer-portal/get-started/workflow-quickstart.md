@@ -11,6 +11,13 @@ sidebar_label: Getting Started with Workflows
 
 This will help you setup a Workflow in IDP which automates GitHub Repo Onboarding for users.
 
+:::info
+
+We now have a [V2 version of workflows](/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization) which is behind the behind the Feature Flag `IDP_ENABLE_WORKFLOWSV2`
+
+
+:::
+
 ## Pre-requisite
 
 ### Add Connector

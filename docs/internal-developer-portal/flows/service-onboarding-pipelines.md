@@ -8,6 +8,12 @@ redirect_from:
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
+:::info
+
+We now have a [V2 version of workflows](/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization) which is behind the behind the Feature Flag `IDP_ENABLE_WORKFLOWSV2`
+
+:::
+
 Service Onboarding in Harness IDP use Harness pipeline orchestrator and those could be triggered through Software Templates. 
 
 ![](./static/service-onboarding.png)
