@@ -180,6 +180,27 @@ Gathering the right information to include when opening support tickets is key. 
 
 Include all the above with your support ticket.
 
+## Failed to get statefulsets. No statefulsets found
+
+If you see this error, it means Harness is unable to reconsile your ingress + service + deployment.
+
+### SA Permissions
+
+The first thing you should check is the `harness-autostopping` service account and make sure it has the correct permissions.
+
+Get all cluster role bindings with `kubectl get clusterrolebinding` and look for a line which assigns `ClusterRole/harness-ccm-autostopping` to it:
+
+If you see something like `harness-ccm-autostopping    ClusterRole/harness-ccm-autostopping`, that means permissions are most likley correct.
+
+### Selector Labels
+
+The next thing to check is that the selector labels for the service match the selector lables for the deployment. If they are not matching, it will result in this error.
+
+- Get the service selector labels: `kubectl -n whoami get service/<service name> -o jsonpath='{.spec.selector}'`
+- Get the deployment selector labels: `kubectl -n whoami get deployment/<deployment name> -o jsonpath='{.spec.selector}'`
+
+These should be the same. If they are different or have different labels not in both, reconsile the selectors so they match exactly.
+ 
 ## Loading page constantly refreshes, or never redirects to my application
 
 If you are unable to get past the autostopping loading page, first check to see if your pods have come up and are healthy.
