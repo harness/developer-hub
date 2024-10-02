@@ -31,9 +31,9 @@ Deployments make developed artifacts available for use in test or production. Th
 
 For more information, go to [Deployment concepts and strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts) and [Deploy services on different platforms](/docs/category/deploy-services-on-different-platforms).
 
-:::tip
+:::tip Best Practice
 
-Best practice: Each deployment stage should only have one deployment step. Deploying more than once per stage could cause unexpected behavior.
+Each deployment stage should only have one deployment step. Deploying more than once per stage could cause unexpected behavior.
 
 :::
 
@@ -43,9 +43,9 @@ A Harness Service is a logical construct that represents your microservices and 
 
 When a Service is added to the stage in a Pipeline, you define its Service Definition. Service Definitions represent the real artifacts, manifests, and variables of a Service. They are the actual files and variable values. You can also propagate and override a Service in subsequent stages by selecting its name in that stage's Service settings.
 
-:::tip
+:::tip Best Practice
 
-Best practice: Define one Harness Service for every micro service that you want to deploy. We do not recommend overloading one Harness Service for multiple deployments.
+Define one Harness Service for every micro service that you want to deploy. We do not recommend overloading one Harness Service for multiple deployments.
 
 :::
 
@@ -125,6 +125,14 @@ For example, go to:
 The third-party credentials used in Harness connectors require different permissions depending on your deployment type (Kubernetes, ECS, Serverless, etc) and the tasks your pipelines will perform in those platforms.
 
 For example, if your Pipeline deploys a Docker image to a Kubernetes cluster, you will need a Connector that can pull the images and any related manifests from their repositories. Also, you will need another Connector that can push the image to the target cluster and create any objects you need (Secrets, Deployments, etc).
+
+### Secrets
+
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness Delegate has access to the key management system. You can also integrate your own secret management solution. To learn more about secrets in Harness, go to [Secrets Management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+
+:::tip Best Practice
+Do not store secrets in plain text, objects, or any other Harness construct other than a secret or secret manager. Doing so could leave you vulnerable to security risks. 
+:::
 
 ## Delegates
 
