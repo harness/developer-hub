@@ -47,12 +47,15 @@ ECG is supported only for Unix-like machines. To install the agent,
 
 1. Download the ECG file from the S3 link:  
 [https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/ecg_1.2.0_linux_amd64.zip](https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/ecg_1.2.0_linux_amd64.zip)
-2. Unzip the file.
+2. Unzip the file and navigate into the resulting folder
 ```
-unzip ecg_1.1.0_linux_amd64.zip
+unzip ecg_1.2.0_linux_amd64.zip
+cd ecg_1.2.0_linux_amd64
 ```
-3. Install the agent.
+3. Check the contents of the installation script, make it executable, and execute it as root
 ```
+cat install.sh
+chmod +x install.sh
 sudo ./install.sh
 ```
 
@@ -62,7 +65,8 @@ To configure ECG for your rule, provide the following configuration details:
 
 * **Account ID**: Account ID for which you want to enable ECG. You can copy the account ID from the Harness Manager. In Harness Manager's address bar, copy the **Harness account ID** from your Harness URL. The Harness account ID comes after `account` in the URL.  
   
-For example in the following URL, the account ID is `1a2b3c`: `https://app.harness.io/#/account/1a2b3c`.
+For example in the following URL, the account ID is `1a2b3c`: `https://app.harness.io/ng/account/1a2b3c`.
+
 * **Hostname of the AutoStopping Rule**: Hostname of the AutoStopping Rule for which you want to configure the ECG. You can copy the hostname from the [AutoStopping dashboard](../1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/autostopping-dashboard.md). To obtain the hostname, do the following:
 1. In **AutoStopping Rules**, in **Summary of Rules**, click the rule for which you want to configure the ECG.
 2. Copy the hostname.
