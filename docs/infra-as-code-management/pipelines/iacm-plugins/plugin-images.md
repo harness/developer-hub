@@ -27,19 +27,50 @@ To address this versioning challenge and ensure that your custom image stays up-
 
 ### Create a custom image
 
-The following example custom image includes the Harness Terraform Plugin (HTP) version and has the AWS `kubectl` and `kustomize` tools installed in the root image giving your steps access to them as needed.
+Create custom images with root-based and rootless custom containers for **Harness Cloud** and **Kubernetes** environments. The following examples demonstrate package installation via `microdnf` and direct binary installation for tools like `kubectl`.
 
+<Tabs>
+<TabItem value="Root-based custom container">
+Create a root-based custom container for use in **Harness Cloud** and **Docker**.
+
+Once your image is created, build with: `docker build -f Dockerfile --platform linux/amd64 --target custom-root -t harness_terraform_vm_custom`.
 ```sh
-FROM plugins/harness_terraform
-RUN apk update
-RUN apk add aws-cli
-RUN aws --version
+FROM plugins/harness_terraform_vm AS custom-root
+
+## Example of an installation using the in-built "microdnf" package manager
+RUN microdnf install -y wget
+RUN microdnf clean all
+
+## Example of downloading and installing a binary directly
+## Binaries need to be suitable for the amd64 architecture
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-RUN chmod +x kubectl
-RUN mkdir -p ~/.local/bin
-RUN mv ./kubectl ~/.local/bin/kubectl
 ```
+</TabItem>
+<TabItem value="Rootless custom container">
+Create a custom container for use in **Kubernetes**.
+
+Once your image is created, build with: `docker build -f Dockerfile --platform linux/amd64 --target custom-root -t harness_terraform_custom`.
+```sh
+FROM plugins/harness_terraform AS custom-rootless
+
+## Switch to root temporarily so that we can install extra tools
+USER root
+
+## Example of an installation using the in-built "microdnf" package manager
+RUN microdnf install -y wget
+RUN microdnf clean all
+
+## Example of downloading and installing a binary directly
+## Binaries need to be suitable for the amd64 architecture
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+## Switch back to the "app" user now that all tools are installed
+USER app
+```
+</TabItem>
+</Tabs>
 
 <details close>
     <summary>
