@@ -2511,6 +2511,38 @@ The error `java.lang.IllegalStateException: Failed to execute ApplicationRunner`
 
 To enable debug logging, set the environment variable to `DEBUG=true`. For more configuration information, go to [Relay proxy configuration reference](https://developer.harness.io/docs/feature-flags/use-ff/relay-proxy/configuration).
 
+#### Kaniko error "error building image: deleting file system after stage 0: unlinkat /opt/nodejs: directory not empty"
+
+The error 
+```
+Deleting filesystem...                       
+error building image: deleting file system after stage 0: unlinkat /opt/nodejs: directory not empty
+```
+is an issue that can occur when building images with Kaniko.  This is tied back to a Kaniko issue, https://github.com/GoogleContainerTools/kaniko/issues/2164
+
+Kaniko executes in user space and creates and destroys the file system repeatedly. In this case, if the files in location `/opt/nodejs` is being used by some other process, it will not be able to delete it.
+
+In those cases, setting `ignore-path` in Kaniko overrides this behaviour: https://github.com/GoogleContainerTools/kaniko/blob/main/pkg/util/fs_util.go#L233 
+
+To do this within Harness, the following will need to be set as a variable so that `ignore-path` shows up in the Kaniko CLI Arguements.  The environment variable will need to be set with `PLUGIN_IGNORE_PATH` and the path, in this case, `/opt/nodejs`.
+
+```
+        variables:
+          - name: PLUGIN_IGNORE_PATH
+            type: String
+            description: ""
+            required: false
+            value: /opt/nodejs
+```
+
+
+If it is operating as expected, the Kaniko CLI will show the following in the CLI, and will continue to execute the code properly.
+
+```
+/kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=destination/repo:1.0 --snapshotMode=redo --digest-file=/kaniko/digest-file --ignore-path=/opt/nodejs
+```
+
+
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 
 <!-- If a question applies to multiple categories, choose the one most relevant to the question. For example, "How do I run Windows builds on a K8s cluster build infra?" is most relevant to the "Windows builds" category. Although this question involves build infrastructure and kubernetes clusters, it specifically mentions Windows builds. If a user needs help running Windows builds, they will scan for "Windows" as a keyword before K8s (since K8s is broader than just Windows) -->
