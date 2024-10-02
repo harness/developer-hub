@@ -11,7 +11,7 @@ export const ReferenceArchitecturesCards: CardSections = [
     list: [
       {
         title: "Infrastructure as Code Management: Best Practices",
-        module: MODULES.platform,
+        module: MODULES.iacm,
         description:
           "Get started with Infrastructure as Code Management reference architectures.",
         link: "/kb/category/infrastructure-as-code-management",
