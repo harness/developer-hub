@@ -11,6 +11,18 @@ Because Delegates are a Harness platform offering, they can potentially be used 
 --set-json custom_envs='[{"name":"BLOCK_SHELL_TASK","value":"true"}]'
 ```
 
+# Resource Requirements
+Gathering fine-grain metrics in the cluster is memory intensive.  In an effort to ensure we don't run out of memory and terminate the pod, the following sizing guidelines are recommended:
+
+| # Nodes in the Cluster | CPU (Cores) | MEM (Mi)  |
+| -----------------------| ----------- | --------- |
+|         <= 100         |      1      |    3814   |
+|       101 - 200        |      2      |    7629   |
+|       201 - 300        |      3      |   11444   |
+|       301 - 400        |      4      |   15258   |
+|       401 - 500        |      5      |   19073   |
+
+
 ## Helm Chart
 ```
 helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
@@ -41,5 +53,9 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
   --set ccm.visibility=true \
   
   # Prevent the delegate from being used for running scripts
-  --set-json custom_envs='[{"name":"BLOCK_SHELL_TASK","value":"true"}]'
+  --set-json custom_envs='[{"name":"BLOCK_SHELL_TASK","value":"true"}]' \
+
+  # Set CPU and MEM resource limits
+  --set cpu=1 \
+  --set memory=3814
   ```
