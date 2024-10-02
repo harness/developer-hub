@@ -13,7 +13,7 @@ To ingest usage and cost data from a Kubernetes cluster, as well as allow access
 
 When enabling CCM for a cluster the first step is to deploy a delegate into the target cluster and give it a certain level of access (described later in this guide) depending on what you want to achieve with the Kubernetes connection. By deploying a delegate directly into the cluster you do not have to manage secrets, but simply control the access Harness has in your cluster by modifying the Kubernetes service account that is bound to the delegate deployment.
 
-Gathering fine-grain metrics in the cluster is memory intensive.  In an effort to ensure we don't run out of memory and terminate the pod, the following sizing guidelines are recommended:
+Gathering fine-grain metrics in the cluster is memory intensive.  In an effort to ensure we don't run out of memory and terminate the pod, the following sizing guidelines are recommended for the delegate:
 
 | # Nodes in the Cluster | CPU (Cores) | MEM (Mi)  |
 | -----------------------| ----------- | --------- |
