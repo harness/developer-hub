@@ -28,6 +28,14 @@ export const featureList: CardItem[] = [
     link: "docs/category/get-started-with-cd",
     type: [docType.Documentation],
   },
+    {
+    title: "Build with Harness Database DevOps",
+    module: MODULES.dbdevops,
+    icon: "img/icon_dbdevops.svg",
+    description: <>Accelerate deployment with an integrated pipeline for all database changes.</>,
+    link: "docs/database-devops",
+    type: [docType.Documentation],
+  },
   {
     title: "Manage Infrastructure as Code",
     module: MODULES.iacm,
