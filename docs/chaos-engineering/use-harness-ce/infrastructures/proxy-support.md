@@ -1,9 +1,10 @@
 ---
 title: Configure Proxy Settings
-sidebar_position: 3
+sidebar_position: 5
 description: Configure DDCR and Discovery Agent Proxy settings.
 redirect_from:
-    - /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/proxy-support
+- /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/proxy-support
+- /docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/proxy-support
 ---
 
 import Tabs from '@theme/Tabs';
@@ -15,17 +16,17 @@ When you have a restricted network, and you don't want to expose all the infrast
 
 The diagram below describes how the **Discovery Agent** and **Chaos Runner** communicate with Harness Control Plane.
 
-    ![](./static/agent-proxy.png)
+    ![](./static/delegate/agent-proxy.png)
 
 The diagram above describes the following:
 - All the inbound connections go through the Delegate.
 - If your cluster has connectivity with the Harness portal (Harness Control Plane in the diagram), you won't need any proxy.
 - If your cluster does not have connectivity with the Harness portal (Harness Control Plane in the diagram), then such requests goes through the proxy.
-    - In case you already have a proxy set up, you can [provide the URL of the proxy in the UI](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/proxy-support#delegate-driven-chaos-runner-ddcr).
+    - In case you already have a proxy set up, you can [provide the URL of the proxy in the UI](/docs/chaos-engineering/use-harness-ce/infrastructures/proxy-support#delegate-driven-chaos-runner-ddcr).
     - In case you don't have a proxy set up, you can [install](#installation) chaos agent proxy.
 
 :::tip
-Chaos runner supports token-based authentication with the Harness Platform. If you want to add another authentication on top of Harness authentication, you can [enable mTLS](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/mtls-support) for the account.
+Chaos runner supports token-based authentication with the Harness Platform. If you want to add another authentication on top of Harness authentication, you can [enable mTLS](/docs/chaos-engineering/use-harness-ce/infrastructures/mtls-support) for the account.
 :::
 
 ## Installation
@@ -92,11 +93,11 @@ DDCR supports standard proxy variables `HTTP_PROXY` , `HTTPS_PROXY`, and `NO_PRO
 
 In general, the Harness portal connection goes through the proxy and you will need to specify `NO_PROXY` which is the `kubernetes` service IP in the `default` namespace.
 
-    ![](./static/proxy.png)
+    ![](./static/delegate/proxy.png)
 
 Instead, you can also provide `PROXY_URL` setting that is used to communicate with the Harness portal.
 
-    ![](./static/mtls.png)
+    ![](./static/delegate/mtls.png)
 
 ## Discovery Agent
 
@@ -106,8 +107,8 @@ Discovery Agent supports standard proxy variables `HTTP_PROXY` , `HTTPS_PROXY`, 
 
 In general, the Harness portal connection goes through the proxy and you will need to specify `NO_PROXY` which is Kubernetes service IP in default namespace.
 
-    ![](./static/proxy.png)
+    ![](./static/delegate/proxy.png)
 
 Instead, you can also provide `PROXY_URL` setting that is used to communicate with the Harness portal.
 
-    ![](./static/mtls.png)
+    ![](./static/delegate/mtls.png)

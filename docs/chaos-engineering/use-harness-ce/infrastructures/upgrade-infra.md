@@ -1,6 +1,6 @@
 ---
 title: Upgrade chaos infrastructure
-sidebar_position: 5
+sidebar_position: 6
 description: Guide to upgrade your chaos infrastructure
 redirect_from:
 - /docs/chaos-engineering/chaos-infrastructure/upgrade-infra
@@ -21,7 +21,7 @@ These are the high-level steps to upgrade your chaos infrastructure, explained i
 1. [Update the chaos infrastructure in Harness](#step-3-update-the-chaos-infrastructure-in-harness) in environments where you've deployed it.
 1. [Edit experiment YAML](#step-4-update-the-chaosnativego-runner-image-in-experiment-yaml) to update the chaosnative/go-runner image to the new version.
 
-## How to tell if an infrastructure upgrade is required
+## How to tell if an infrastructure upgrade is required?
 
 Go to **Chaos > Environments**, and select an environment where you've installed chaos infrastructure.  **UPGRADE NEEDED** is displayed next to an infrastructure if it requires an upgrade, along with an **Update** link.
 
@@ -97,3 +97,24 @@ To update the chaosnative/go-runner image version in an experiment:
 1. Select **Save**.
 
 1. Repeat this procedure to update the relevant existing experiments in any custom chaos hubs that may be connected to your project.
+
+## Use Helm Template to Upgrade Chaos Infrastructure
+
+* To upgrade a chaos infrastructure that you installed using the Helm commands, you can navigate to the environment and click **Upgrade now**. This will list the set of commands that you can execute on your terminal.
+
+  ![step 9](./static/enable-disable/upgrade-9.png)
+
+2. Choose an existing environment or create a new environment
+
+3. If you want to override other values, you can make the changes in the values.yaml file of the respective custom resource in the Helm repository.
+1. Download the [helm repository](https://github.com/harness/chaos-infra-helm-chart). This repository contains all the chaos resources required for chaos infrastructure management. The repository also contains resources necessary for the namespace and cluster scope installations. You can use this repository to install and manage the infrastructure.
+
+Based on the scope of installation, you have to execute the commands.
+
+1. If you wish to install the infrastructure in the namespace scope, you will get a helm command to install the CRDs. You have to apply this command separately before installing or upgrading the infrastructure.
+2. If you wish to install the infrastructure in cluster scope, apply the helm upgrade command to install the CRDs and other infrastructure components.
+
+:::tip
+1. If you install your infrastructure in cluster scope, HCE supports auto-upgrade for such an infrastructure.
+2. It is important that you remember that the flags in the command are based on the input parameters you provide while installing the infrastructure.
+:::
