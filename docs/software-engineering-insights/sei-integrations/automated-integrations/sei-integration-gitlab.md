@@ -7,12 +7,12 @@ sidebar_label: GitLab Cloud
 
 GitLab is a DevOps platform that provides Git repos, CI/CD pipelines, issue management, and more.
 
-SEI supports two integrations to integrate SEI with GIthub.
+To integrate SEI with Gitlab, you must choose your Gitlab Account type. SEI supports connecting with the following:
 
 * Gitlab Cloud
 * Gitlab Enterprise
 
-To integrate with Gitlab Enterprise, use the [SEI Gitlab Enterprise integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab-enterprise).
+To integrate with Gitlab Enterprise, go to [Connect with Gitlab Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab-enterprise).
 
 ## Configure authentication
 
@@ -29,10 +29,10 @@ If you can't use OAuth, you must create a GitLab personal access token to config
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Configure the integration
+## Connect with Gitlab Cloud
 
 <Tabs>
-  <TabItem value="cloud" label="Cloud" default>
+  <TabItem value="oauth" label="Using OAuth" default>
 
 1. In your **Harness Project**, go to the **SEI Module**, and select **Account**.
 2. Select **Integrations** under **Data Settings**.
@@ -40,32 +40,53 @@ import TabItem from '@theme/TabItem';
 
   To integrate with an on-premises, privately-hosted GitLab instance, install the **GitLab Enterprise** integration with API key (personal access token) authentication and an [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
-4. Select an authentication method for the integration:
-
-   * To use OAuth, select **Authorize** and follow the prompts to grant access to GitLab.
-   * To use a Personal Access Token, enter the **URL** for your GitLab instance and paste your **Access Token**.
-
+4. Select the authentication medium as OAuth and select **Authorize** and follow the prompts to grant access to GitLab.
 5. In **Integration Name**, enter a name for the integration.
-6. Finish configuration and **Save** the integration.
+6. Click on **Validate Connection** to run the pre-flight checks and validate the connection. Once successful, you'll have the integration set up under the **Your Integrations** tab.
+
 
 </TabItem>
-  <TabItem value="satellite" label="Satellite">
+  <TabItem value="pat" label="Using PAT">
 
-The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud using the **Personal Access Token**, with the exception of using satellite to communicate with the Gitlab server.
+1. In your **Harness Project**, go to the **SEI Module**, and select **Account**.
+2. Select **Integrations** under **Data Settings**.
+3. Select **Available Integrations**, locate the **GitLab Cloud** integration, and select **Install**.
 
-Make sure to select the satellite integration checkbox while configuring the integration. If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+  To integrate with an on-premises, privately-hosted GitLab instance, install the **GitLab Enterprise** integration with API key (personal access token) authentication and an [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
-1. Enter the **Personal Access Token** and click **Next**.
-2. In **Integration Name**, enter a name for the integration.
-3. Add a **Description** for the integration. (Optional)
-4. In the **URL** field, add the URL where your Gitlab repository is deployed.
+4. Select the authentication medium as Using Personal Access Token (PAT).
+   1. In **Integration Name**, enter a name for the integration.
+   2. Paste the previously generated Personal Access Token.
+5. Click on **Validate Connection** to run the pre-flight checks and validate the connection. Once successful, you'll have the integration set up under the **Your Integrations** tab.
+
+</TabItem>
+</Tabs>
+
+## Connect with Gitlab On-Prem
+
+To integrate SEI with GitLab Enterprise, you have two options based on the accessibility of your GitLab instance:
+
+Private on-premise GitLab Integration: Integration with a private instance of GitLab using an API key.
+Public on-premise GitLab Integration: Integration of on-premise instance of GitLab that is publicly accessible using an API key.
+
+<Tabs>
+  <TabItem value="private-cloud" label="Private Cloud" default>
+
+The steps for configuring the integration with Gitlab Private Cloud using the **Ingestion Satellite** is similar to configuring the integration on cloud using the **Personal Access Token**, with the exception of using satellite to communicate with the Gitlab server.
+
+1. In **Integration Name**, enter a name for the integration.
+2. Add a **Description** for the integration. (Optional)
+3. In the **URL** field, add the URL where your Gitlab repository is deployed.
+4. Enter the **Personal Access Token** that you previously generated for the Gitlab account.
 5. If applicable, configure **Additional Options**:
    1. **Fetch PRs**: Allow SEI to ingest PR data from Gitlab.
    2. **Fetch Issues**: Allow SEI to ingest data from Gitlab Issues.
    3. **Fetch Projects**: Allow SEI to ingest data from Gitlab Projects.
    4. **Fetch Commits**: Allow SEI to ingest commit metadata from Gitlab.
    5. **Fetch Commit Files**: Allow SEI to ingest data within commits from Gitlab.
-6. Select **Next** and click on **Download Config** and save the `satellite.yml` file. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
+6. Click on **Download YAML File** and save the `satellite.yml` file. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
+
+If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 Here’s a sample `satellite.yml` file:
 
@@ -99,7 +120,3 @@ Use the following optional metadata fields to optimize the ingestion functionali
 | PR Commit Limit | `pr_commit_limit` | Default value: 250 | This field sets a cap on the number of commits fetched per Pull Request. |
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
-
-
-</TabItem>
-</Tabs>
