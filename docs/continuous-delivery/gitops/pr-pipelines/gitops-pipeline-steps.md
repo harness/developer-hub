@@ -167,9 +167,13 @@ The sync options provided are the same options you receive while syncing an appl
 
 ### GitOps Get App Details step
 
-This step fetches the details and status of your application. 
+This step fetches the details and status of your application.
 
-Enter your application name in the **Application** field. Currently, this field does not support Harness expressions. 
+:::info
+
+Currently, Get App Details step is behind the feature flag `GITOPS_GET_APP_DETAILS_STEP`. Contact Harness Support to enable the feature.
+
+:::
 
 If **Hard Refresh** is enabled, the application status will be hard refreshed when retrieving the information. 
 
@@ -177,9 +181,9 @@ You can choose on how the application can be fetched.
 
 ![](../pr-pipelines/static/gitops-get-app-details.png)
 
-Select **Application Names** to select the application names from the dropdown. You can also provide the application name when you start the pipeline execution by selecting the Runtime input option.
+Choose **Application Names** to select the application names from the dropdown. You can also provide the application name when you start the pipeline execution by selecting the Runtime input option.
 
-You can also fetch up to 1000 applications by selecting **Application Regex**. You can provide a regex expression as a Fixed value, or provide it as a run-time input or Expression.
+You can also fetch up to 1000 applications by choosing **Application Regex**. You can provide a regex expression as a Fixed value, or provide it as a run-time input or Expression.
 
 :::note Limitations and Constraints
 
@@ -200,11 +204,5 @@ The data will be returned as a JSON payload that will be parsed by the step. The
 Example response of one application fetched: `{"applications":[{app1}]}`
 
 Example response of multiple application fetched: `{"applications:[{app1},{app2}]}`
-
-:::info
-
-Currently, Get App Details step is behind the feature flag `GITOPS_GET_APP_DETAILS_STEP`. Contact Harness Support to enable the feature.
-
-:::
 
 This completes all the configurable steps for GitOps in Harness pipelines. Happy Deploying!
