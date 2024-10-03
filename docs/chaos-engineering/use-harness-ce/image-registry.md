@@ -1,11 +1,12 @@
 ---
 id: image-registry
-sidebar_position: 30
+sidebar_position: 5
 title: Image Registry
 description: A repository that hosts container images used by chaos experiments.
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/image-registry
 - /docs/chaos-engineering/features/image-registry
+- /docs/chaos-engineering/concepts/explore-concepts/image-registry
 ---
 
 This topic describes using an image registry within a chaos experiment.

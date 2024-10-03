@@ -93,7 +93,7 @@ For more information, go to [logs](/docs/chaos-engineering/use-harness-ce/infras
 ### Custom Image Registry
 It is a repository that hosts container images that are used by chaos experiments. HCE allows you to use custom image registries for chaos experiments.
 
-For more information on types of image registry and how to create one, go to [Image Registry](/docs/chaos-engineering/concepts/explore-concepts/image-registry).
+For more information on types of image registry and how to create one, go to [Image Registry](/docs/chaos-engineering/use-harness-ce/image-registry).
 
 ## Chaos Orchestration
 
