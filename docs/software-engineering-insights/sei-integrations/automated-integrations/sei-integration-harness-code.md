@@ -1,17 +1,17 @@
 ---
-title: SEI Harness CI/CD integration
-description: Integrate SEI with Harness CI and CD
-sidebar_position: 110
-sidebar_label: HarnessNG
+title: SEI Harness Code integration
+description: Integrate SEI with Harness Code Repository
+sidebar_position: 115
+sidebar_label: Harness Code Repository
 ---
 
-Harness is a modern software delivery platform that allows engineers and DevOps to build, test, deploy, and verify the software on demand.
+The Harness Code Repository module (Code) is a source code management (SCM) tool that fosters developer collaboration and accelerates innovation while keeping security and compliance in mind.
 
-Use the SEI HarnessNG integration to integrate SEI with your Harness CI/CD modules.
+Use the SEI Harness Code integration to integrate SEI with your Harness Code Repository module.
 
 ## Requirements
 
-To configure the SEI Harness integration, you need:
+To configure the SEI Harness Code integration, you need:
 
 * Your Harness account ID. You can find this under **Account Settings**.
 * A [Harness API key and token](/docs/platform/automation/api/add-and-manage-api-keys).
@@ -25,14 +25,14 @@ import TabItem from '@theme/TabItem';
 
 1. In your **Harness Project**, go to the **SEI Module**, and select **Account**.
 2. Select **Integrations** under **Data Settings**.
-3. Select **Available Integrations**, locate the **Harness NG integration**, and select **Install**.
+3. Select **Available Integrations**, locate the **Harness Code integration**, and select **Install**.
 
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
 
-* Select the type of the **HarnessNG account** as **Cloud**.
+* Select the type of the **Harness account** as **Cloud**.
 
-![](../static/harnessng-1.png)
+![](../static/harness-code-1.png)
 
 * Configure and **Save** the integration.
    * **URL**: Enter `https://app.harness.io`.
@@ -48,7 +48,7 @@ import TabItem from '@theme/TabItem';
      For example, "`org/project`, `org2/project2`" Like organization names, project names are case-sensitive. Leaving this field blank will ingest all the projects from organizations accessible to the token user.
 * Click on **Validate Connection** to run the pre-flight checks and validate the connection. Once successful, you'll have the integration set up under the **Your Integrations** tab.
 
-![](../static/harnessng-2.png)
+![](../static/harness-code-2.png)
 
 </TabItem>
 
@@ -58,9 +58,9 @@ You can connect Harness SEI with Harness Self-Managed Enterprise Edition (Harnes
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud using the API key, with the exception of using satellite to communicate with the Harness NG server.
 
-* Select the type of the **HarnessNG account** as **On-Prem**.
+* Select the type of the **Harness account** as **On-Prem**.
 
-![](../static/harnessng-1.png)
+![](../static/harness-code-1.png)
 
 * Configure and **Save** the integration.
    * **URL**: Enter `https://app.harness.io`.
@@ -76,13 +76,13 @@ The steps for configuring the integration using **Satellite** is similar to conf
      For example, "`org/project`, `org2/project2`" Like organization names, project names are case-sensitive. Leaving this field blank will ingest all the projects from organizations accessible to the token user.
 * Click on **Download YAML File** and save the `satellite.yml` file. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
-![](../static/harnessng-3.png)
+![](../static/harness-code-3.png)
 
 If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 Here’s a sample `satellite.yml` file:
 
-```yaml
+```bash
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
@@ -90,15 +90,21 @@ satellite:
   # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
   - id: '<INTEGRATION_ID>'
-    application: harnessng
     url: '<HARNESS_URL>'
+    application: harnesscode
     api_key: <HARNESS_API_KEY>
     metadata:
       accountId: <HARNESS_NG_ACCOUNTID>
       organization: default
       project: default
-
+      fetch_prs: true
+      fetch_repos: true
+      fetch_issues: false
+      fetch_commits: true
+      fetch_projects: true
+      fetch_commit_files: true
 ```
 
 </TabItem>
 </Tabs>
+

@@ -29,7 +29,11 @@ import TabItem from '@theme/TabItem';
 1. In your **Harness Project**, select the **SEI Module**, and go to your **Account Scope**.
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **Drone CI** integration, and select **Install**.
-4. Configure and save the integration.
+4. Select the type of your **DroneCI account** as **Cloud**.
+
+![](../static/droneci-1.png)
+
+5. Configure and save the integration.
 
    * **URL:** Enter the URL for your Drone platform.
    * **Authorization Token:** Enter your Drone personal API token.
@@ -38,13 +42,31 @@ import TabItem from '@theme/TabItem';
    * **Name:** Enter a name for the integration.
    * **Description** and **Tags** are optional.
 
+![](../static/droneci-2.png)
+
+6. Click on **Validate Connection** to run the pre-flight checks and validate the connection. Once successful, you'll have the integration set up under the **Your Integrations** tab.
 
 </TabItem>
-  <TabItem value="satellite" label="Satellite">
+  <TabItem value="on-prem" label="On-Prem">
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Drone CI server.
 
-Make sure to select the satellite integration checkbox while configuring the integration. Once you save the integration a `satellite.yml` file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
+1. In your **Harness Project**, select the **SEI Module**, and go to your **Account Scope**.
+2. Select **Integrations** under **Data Settings**.
+3. Select **Available Integrations**, locate the **Drone CI** integration, and select **Install**.
+4. Select the type of your **DroneCI account** as **On-Prem**.
+
+![](../static/droneci-1.png)
+
+5. Add the integration details and download the `satellite.yaml` file:
+
+   * **URL:** Enter the URL for your Drone platform.
+   * **Authorization Token:** Enter your Drone personal API token.
+   * **Repositories:** You can specify repositories to associate with the integration. If unspecified, the integration associates all available repositories. Available repositories are repositories that the user associated with the **Authorization Token** can access.
+   * **Fetch Step Logs:** Select this option if you want SEI to ingest step logs from Drone.
+   * **Name:** Enter a name for the integration.
+   * **Description** and **Tags** are optional.
+   * Click on the **Download YAML File** button and update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
 If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
