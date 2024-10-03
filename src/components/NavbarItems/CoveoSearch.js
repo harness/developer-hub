@@ -46,10 +46,8 @@ const CoveoSearch = () => {
 
     const initializeSearch = async () => {
       const storedToken = localStorage.getItem('coveo_token');
-
       if (storedToken) {
         const data = JSON.parse(storedToken);
-
         if (data.expiry <= Date.now()) {
           tokenData = await getCoveoToken();
         } else {
@@ -58,29 +56,35 @@ const CoveoSearch = () => {
       } else {
         tokenData = await getCoveoToken();
       }
-
+    
+      // Check if tokenData is missing or invalid
+      if (!tokenData) {
+        console.error('Error initializing Coveo: Missing token or orgId');
+        return;
+      }
+    
+      // Proceed with initializing Coveo if window.Coveo is defined
       if (window.Coveo) {
         Coveo.SearchEndpoint.configureCloudV2Endpoint(
           tokenData.orgId,
           tokenData.token
         );
-
         let searchboxRoot = searchBoxEl.current;
         let searchRoot = document.createElement('div');
         searchRoot.setAttribute('class', 'coveo-search-results');
         searchRoot.setAttribute('style', 'display: none;');
-
+    
         const elemSearchResultConainer = searchResultsEl.current;
         if (elemSearchResultConainer) {
           elemSearchResultConainer.appendChild(searchRoot);
         }
-
+    
         searchboxRoot.innerHTML = `
           <div class='CoveoSearchbox' data-enable-omnibox='true' data-placeholder='Search...' data-trigger-query-on-clear='true' data-query-suggest-character-threshold='1'>
               <div class="CoveoAnalytics" data-search-hub="WebsiteSearch"></div>
           </div>
         `;
-
+    
         searchRoot.innerHTML = `
           <div id="coveo-search" class="CoveoSearchInterface" data-enable-history="false">
               <div class="CoveoPromotedResultsBadge"></div>
@@ -108,13 +112,12 @@ const CoveoSearch = () => {
               </div>
           </div>
         `;
-
+    
         const coveoRoot = searchRoot.querySelector('#coveo-search');
-
         Coveo.init(coveoRoot, {
           externalComponents: [searchboxRoot],
         });
-
+    
         Coveo.$$(coveoRoot).on('doneBuildingQuery', function (e, args) {
           let q = args.queryBuilder.expression.build();
           if (q) {
@@ -123,13 +126,14 @@ const CoveoSearch = () => {
             searchRoot.style.display = 'none';
           }
         });
-
+    
         Coveo.$$(coveoRoot).on('afterInitialization', function () {
           Coveo.state(coveoRoot, 'f:@commonsource', ['Developer Hub']);
         });
+      } else {
+        console.error('Coveo script failed to load.');
       }
     };
-
     await loadCoveoScript();
     await initializeSearch();
   };

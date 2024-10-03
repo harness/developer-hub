@@ -22,9 +22,10 @@ Harness IaCM currently supports integration with all **OpenTofu** versions<Harne
     query="https://app.harness.io/gateway/iacm/api/provisioners/supported/opentofu"
     token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
     fallback=""
-    parse='.[-1] | " (latest: v\(.))"'></HarnessApiData>.
-    
+    parse='.[-1] | " (latest: v\(.))"'></HarnessApiData>.  
  For **Terraform**, we support all MPL versions up to **1.5.x**, any BSL versions (from 1.6.0) are not supported.
+
+ Go to [OpenTofu migration](https://opentofu.org/docs/intro/migration/) to migrate from Terraform to OpenTofu.
 :::
 
 ## Supported Workspace Connectors
