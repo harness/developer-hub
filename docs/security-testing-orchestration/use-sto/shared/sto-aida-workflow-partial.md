@@ -19,6 +19,8 @@ This procedure describes how to refine a suggestion by providing more informatio
    
      Harness AI can often auto-detect the language of a code snippet, but it's good practice to confirm that the language setting is correct. 
 
+     Some scanners provide details on the location of the vulnerable code, such as the file name and line number, but may not offer the specific code snippet itself. With the **Edit Input** option, you can copy and paste the exact vulnerable code snippet. Harness AI will then use this information to recommend code changes, which can be used to [create a pull request](/docs/security-testing-orchestration/remediations/ai-based-remediations#create-pull-request-from-sto) or make a [code suggestion](/docs/security-testing-orchestration/remediations/ai-based-remediations#make-code-suggestion-from-sto).
+
    3. Add any additional context in the text pane. For example, you might want to include relevant code immediately before the snippet where the vulnerability was identified, in addition to the snippet itself. Then select **Generate**.  
 
       <DocImage path={require('./static/ai-remediation-issue-refine.png')} width="50%" height="50%" title="Click to view full size image" />

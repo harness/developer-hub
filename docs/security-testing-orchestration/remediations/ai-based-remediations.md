@@ -29,15 +29,15 @@ Moreover, you can [enhance the AI remediation](#edit-to-enhance-the-ai-remediati
 
 ## Make Code Suggestion from STO
 
-In the AI Remediation details of a selected issue, STO provides the option to make code suggestions for applying the recommended fixes. To use this feature, simply click on **Suggest Fix**. Once you have created a code suggestion, you can view it by clicking on the **View Fix** button. This feature is currently supported for Harness Code Repository and GitHub.
+In the AI Remediation details of a selected issue, STO provides the option to make code suggestions for applying the recommended fixes. To use this feature, simply click on **Suggest Fix**. Once you have created a code suggestion, you can view it by clicking on the **View Fix** button. Make sure to read the [notes](#notes-for-code-suggestions-and-create-pull-request-features) to understand the requirements and what is supported for this feature.
 
-Please note that the **Suggest Fix** option will only be available if there is a match between the file where the issue was found and the files being modified in the pull request. This ensures that the suggested changes directly relate to the identified issue.
+Please note that the **Suggest Fix** option will only be available if there is a match between the file where the issue was found and the files being modified in the pull request. This ensures that the suggested changes are directly committed in the existing PR without the need for a separate PR.
 
 ## Create Pull Request from STO
 
-In the AI Remediation details of a selected issue, STO provides the option to create a Pull Request to apply the recommended fixes. To use this feature, click on **Create Pull Request**. Once you have created a code suggestion, you can view it by clicking on the **View Fix** button. This feature is currently supported for Harness Code Repository and GitHub.
+In the AI Remediation details of a selected issue, STO provides the option to create a Pull Request to apply the recommended fixes. To use this feature, click on **Create Pull Request**, STO will create a Pull Request with the recommended fixes. You can view the PR by clicking on the **View Fix** button. Make sure to read the [notes](#notes-for-code-suggestions-and-create-pull-request-features) to understand the requirements and what is supported for this feature.
 
-The **Create Pull Request** option is available for both branch scanning and PR scanning. However, in the case of PR scanning, this option will only appear if the remediation suggestions apply to code files that were not modified in the PR.
+The **Create Pull Request** option is available for both branch scanning and PR scanning. However, in the case of PR scanning, this option will only appear if the remediation suggestions apply to code files that were not modified in the PR. These suggestions may address new or existing vulnerabilities identified in the base branch.
 
 ## Edit to enhance the AI remediations
 
