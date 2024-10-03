@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-09-30T08:09:25
+date: 2024-10-03T08:09:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,11 +15,19 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: September 30, 2024
+#### Last updated: October 03, 2024
 
 ## September 2024
 
 ### Relay Proxy
+
+#### Version 2.0.6
+
+**Fixed Issues**:
+
+- Upgrades dependencies to resolve CVEs
+- Reduces pushpin log level from info to error level. This reduces the amount of ephemeral pod storage the Proxy consumes in k8s.
+- Ensures the Proxy only writes to the response body if the response hasn't already been committed.
 
 #### Version 2.0.5
 
