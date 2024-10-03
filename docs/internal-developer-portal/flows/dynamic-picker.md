@@ -5,7 +5,7 @@ sidebar_position: 100
 sidebar_label: Dynamic Workflow picker based on API response
 ---
 
-It is quiet common to create a UI field in [IDP Workflow](http://localhost:3000/docs/internal-developer-portal/flows/service-onboarding-pipelines#specparameters---formstep--formstep) forms which shows a static list options to the user. For example -
+It is quiet common to create a UI field in [IDP Workflow](http://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#specparameters---formstep--formstep) forms which shows a static list options to the user. For example -
 
 ```yaml
 properties:
