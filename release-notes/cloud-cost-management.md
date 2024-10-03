@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2024-09-19T22:00
+date: 2024-10-01T18:00
 sidebar_position: 6
 ---
 
@@ -17,6 +17,20 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 
 :::
+
+## October 2024
+
+### Version 1.31.4
+
+#### New features and enhancements
+- Updated Cloud Custodian Versions for Cloud Asset Governance: The cloud-custodian versions have been updated to the following:
+      - `c7n==0.9.41`
+      - `c7n_azure==0.7.40`
+      - `c7n_gcp==0.4.40`
+  [CCM-19608]
+
+- Support for AWS GovCloud in Asset Governance: Asset governance now extends support to AWS GovCloud, enabling governance features. [CCM-18909]
+- UI Improvement for AutoStopping Windows: We have added enhanced CSS to provide adequate space for selection of source IP-based custom exclusions in the exclusion list. [CCM-14294]
 
 ## September 2024
 
