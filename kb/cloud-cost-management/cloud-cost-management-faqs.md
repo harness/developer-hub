@@ -78,6 +78,19 @@ Sometimes Azure takes time to propagate/refresh the access settings on the stora
 
 There is no data retention present for CCM. However, all data that is older than 5 years old is deleted.
 
+### What are the recommended resource allocations for different cluster sizes?
+
+Gathering fine-grain metrics in the cluster is memory intensive.  In an effort to ensure we don't run out of memory and terminate the pod, the following sizing guidelines are recommended:
+
+ | # Nodes in the Cluster | CPU (Cores) | MEM (Mi)  |
+ | -----------------------| ----------- | --------- |
+ |         <= 100         |      1      |    3814   |
+ |       101 - 200        |      2      |    7629   |
+ |       201 - 300        |      3      |   11444   |
+ |       301 - 400        |      4      |   15258   |
+ |       401 - 500        |      5      |   19073   |
+
+
 ## Perspectives
 
 ### Can the order of perspectives in the list be customized for alerting purposes?
