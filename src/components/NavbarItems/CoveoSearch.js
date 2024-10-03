@@ -46,10 +46,8 @@ const CoveoSearch = () => {
 
     const initializeSearch = async () => {
       const storedToken = localStorage.getItem('coveo_token');
-    
       if (storedToken) {
         const data = JSON.parse(storedToken);
-    
         if (data.expiry <= Date.now()) {
           tokenData = await getCoveoToken();
         } else {
@@ -62,7 +60,7 @@ const CoveoSearch = () => {
       // Check if tokenData is missing or invalid
       if (!tokenData) {
         console.error('Error initializing Coveo: Missing token or orgId');
-        return; // Halt execution if tokenData is invalid
+        return;
       }
     
       // Proceed with initializing Coveo if window.Coveo is defined
@@ -71,7 +69,6 @@ const CoveoSearch = () => {
           tokenData.orgId,
           tokenData.token
         );
-    
         let searchboxRoot = searchBoxEl.current;
         let searchRoot = document.createElement('div');
         searchRoot.setAttribute('class', 'coveo-search-results');
@@ -117,7 +114,6 @@ const CoveoSearch = () => {
         `;
     
         const coveoRoot = searchRoot.querySelector('#coveo-search');
-    
         Coveo.init(coveoRoot, {
           externalComponents: [searchboxRoot],
         });
