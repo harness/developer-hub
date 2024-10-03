@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
 
 ## Connect with Github Actions (Cloud)
 
-1. Select **Integrations** under **Settings**.
+1. Select **Integrations** under **Data Settings**.
 2. Select **Available Integrations**, locate the **Github Actions** integration.
 3. Select **Install**.
 4. Select the type of the Github Actions instance as **Cloud**.

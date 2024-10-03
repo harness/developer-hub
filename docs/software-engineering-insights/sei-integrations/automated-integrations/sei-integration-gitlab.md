@@ -1,8 +1,10 @@
 ---
-title: SEI GitLab Cloud integration
-description: Integrate SEI with GitLab Cloud.
+title: SEI GitLab integration
+description: Integrate SEI with GitLab Cloud/Enterprise.
 sidebar_position: 100
-sidebar_label: GitLab Cloud
+sidebar_label: GitLab
+redirect_from:
+  - docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab       
 ---
 
 GitLab is a DevOps platform that provides Git repos, CI/CD pipelines, issue management, and more.
@@ -13,7 +15,7 @@ To integrate SEI with Gitlab, you must choose your Gitlab Account type. SEI supp
 * Gitlab Private Cloud
 * Gitlab Enterprise
 
-To integrate with Gitlab Enterprise, go to [Connect with Gitlab Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab-enterprise).
+To integrate with Gitlab Enterprise, go to [Connect with Gitlab Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab).
 
 ## Configure authentication
 
