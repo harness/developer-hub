@@ -77,6 +77,9 @@ README.md @pratmit
 # SEI Docs
 /docs/software-engineering-insights/ @codewdhruv
 
+# DB DevOps Docs
+/docs/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos
+
 # FirstGen Docs ###
 
 # CD Docs
@@ -117,6 +120,10 @@ README.md @pratmit
 # SMP FAQs
 /docs/faqs/self-managed-ee-faq/ @pratmit
 
+# DB DevOps FAQs
+
+/kb/database-devops/index @jenniferopal @stephenatwell @HarnessTheChaos
+
 # Release Notes ###
 
 # CD Release Notes
@@ -139,6 +146,9 @@ README.md @pratmit
 
 # Delegate Release Notes
 /release-notes/delegate.md @pratmit
+
+# Database DevOps Release Notes
+/release-notes/database-devops.md @stephenatwell @jenniferopal @HarnessTheChaos
 
 # FF Release Notes
 /release-notes/feature-flags.md @HarnessTheChaos @jenniferopal
