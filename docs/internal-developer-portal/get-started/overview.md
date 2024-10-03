@@ -25,7 +25,9 @@ For a live and in-depth demo, please [reach out](https://www.harness.io/demo/int
 
 # Key features
 
-## Service onboarding pipelines
+## Workflows
+
+![](./static/workflowsv2.png)
 
 ![](static/new%20app%20onboarding%20with%20idp%20stage.png)
 
