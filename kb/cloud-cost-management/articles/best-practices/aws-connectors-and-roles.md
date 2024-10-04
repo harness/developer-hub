@@ -78,8 +78,8 @@ locals {
 resource "harness_platform_connector_awscc" "data" {
   for_each = toset(concat(local.aws-non-prod, local.aws-prod))
 
-  dentifier = "aws${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
-  name       = "aws${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
+  identifier = "aws${each.key}"
+  name       = "aws${each.key}"
 
   account_id = trimspace(each.key)
 
