@@ -67,9 +67,13 @@ For teams using trunk-based development, an alternative approach is to use a sin
 
 To configure deployments by environment branch in Harness DB DevOps:
 
- 1. In your schema configuration, specify the branch for each environment.
- 2. 
-
+ 1. Create a database instance in Harness. This instance will associate your schema configuration with the database connector.
+ 2. In your schema configuration, specify the branch for each environment. You will specify the branch of the code from which you want to deploy. 
+ 3. In your Git repository, you will create pull requests that merge changes from your development branch into your staging branch. When you merge a pull request, Harness will automatically detect the change and apply it to the corresponding environment.
+ 4. When a change is committed (e.g., a merge from development to staging), the trigger will initiate the deployment pipeline for that specific environment.
+ 5. In your deployment pipeline, define the steps that specify which database changes to apply based on the environment. 
+ 6. You can, then, track the status of each change set and roll back changes if necessary.
+ 7. Ensure that your database connector is properly configured to connect to the respective database instances.
 
 ## Conclusion 
 
