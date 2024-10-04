@@ -19,7 +19,7 @@ spec:
             # enable https support
             - name: HTTPS_ENABLED
               value: 'true'
-            - name: CUSTOM_CERTIFICATES
+            - name: SERVER_CERTIFICATES
               value: 'Y3VzdG9tIGNlcnRpZmljYXRlcwo='
             # provide the api path filter
             - name: PATH_FILTER
