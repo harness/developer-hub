@@ -46,7 +46,7 @@ There are two options to retrieve the accounts we want to create connectors for.
 ```
 data "aws_organizations_organization" "this" {}
 
-resource "harness_platform_connector_awscc" "data" {
+resource "harness_platform_connector_awscc" "this" {
   for_each = { for account in data.aws_organizations_organization.this.accounts : "${trimspace(account.name)}" => account }
 
   identifier = replace(replace(trimspace(each.value.name), "-", "_"), " ", "_")
