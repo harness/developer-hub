@@ -89,7 +89,7 @@ resource "harness_platform_connector_awscc" "data" {
     "GOVERNANCE",
   ]
   cross_account_access {
-    role_arn    = "arn:aws:iam::${trimspace(each.key)}:role/HarnessCERole"
+    role_arn    = "arn:aws:iam::${each.key}:role/HarnessCERole"
     external_id = "harness:891928451355:${data.harness_platform_current_account.current.id}"
   }
 }
