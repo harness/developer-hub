@@ -77,7 +77,6 @@ resource "harness_platform_connector_gcp_cloud_cost" "this" {
 
   features_enabled      = ["VISIBILITY", "OPTIMIZATION", "GOVERNANCE"]
   gcp_project_id        = each.value.project_id
-  # gcp_project_id        = each.key
   service_account_email = var.harness_gcp_sa
 }
 ```
