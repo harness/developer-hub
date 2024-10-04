@@ -17,7 +17,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Last updated: October 03, 2024
 
-## September 2024
+## October 2024
 
 ### Relay Proxy
 
@@ -28,6 +28,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Upgrades dependencies to resolve CVEs
 - Reduces pushpin log level from info to error level. This reduces the amount of ephemeral pod storage the Proxy consumes in k8s.
 - Ensures the Proxy only writes to the response body if the response hasn't already been committed.
+
+## September 2024
+
+### Relay Proxy
 
 #### Version 2.0.5
 
