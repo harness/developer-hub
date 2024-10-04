@@ -37,40 +37,22 @@ provider "harness" {}
 data "harness_platform_current_account" "current" {}
 ```
 
+## Get Accounts And Create Connectors
 
-## Get Account List
+There are two options to retrieve the accounts we want to create connectors for.  We'll use the Harness provider to create a CCM connector for each AWS account after we retrieve them. We are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
 
-We have two options to get the account list.  Option 1 is to use the AWS provider to get all accounts in the organization.
+### Use The AWS Provider To Get All Accounts In The Organization
 
 ```
 data "aws_organizations_organization" "this" {}
-```
 
-Option 2 is to use the `locals` value to define statically.  This is useful when you don't have a solid naming convention to filter results from option 1.  To use this, ensure you uncomment out the lines in the connector resource and comment out it's equivalent line for using aws_organizations_organization.
-
-```
-locals {
-  aws-non-prod = ["000000000001", "000000000002"]
-  aws-prod = ["000000000004", "000000000003"]
-}
-```
-
-## Create A CCM Connector For Each AWS Account
-
-Use the Harness provider to create a CCM connector for each AWS account. In this example, we are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
-
-```
 resource "harness_platform_connector_awscc" "data" {
   for_each = { for account in data.aws_organizations_organization.this.accounts : "${trimspace(account.name)}" => account }
-  # for_each = toset(concat(local.aws-non-prod, local.aws-prod))
 
   identifier = replace(replace(trimspace(each.value.name), "-", "_"), " ", "_")
-  # identifier = "aws${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
   name       = replace(replace(trimspace(each.value.name), "-", "_"), " ", "_")
-  # name       = "aws${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
 
   account_id = trimspace(each.value.id)
-  # account_id = trimspace(each.key)
 
   features_enabled = [
     "OPTIMIZATION",
@@ -79,7 +61,35 @@ resource "harness_platform_connector_awscc" "data" {
   ]
   cross_account_access {
     role_arn    = "arn:aws:iam::${trimspace(each.value.id)}:role/HarnessCERole"
-    # role_arn    = "arn:aws:iam::${trimspace(each.key)}:role/HarnessCERole"
+    external_id = "harness:891928451355:${data.harness_platform_current_account.current.id}"
+  }
+}
+```
+
+### Use The Built In Locals Value To Define The Accounts Statically
+This is useful when you don't have a solid naming convention and you want to apply certain features to different accounts.  For example, you want to only apply autostopping in non-prod accounts.  This is also useful when you can't authenticate to the AWS master account.
+
+```
+locals {
+  aws-non-prod = ["000000000001", "000000000002"]
+  aws-prod = ["000000000004", "000000000003"]
+}
+
+resource "harness_platform_connector_awscc" "data" {
+  for_each = toset(concat(local.aws-non-prod, local.aws-prod))
+
+  dentifier = "aws${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
+  name       = "aws${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
+
+  account_id = trimspace(each.key)
+
+  features_enabled = [
+    "OPTIMIZATION",
+    "VISIBILITY",
+    "GOVERNANCE",
+  ]
+  cross_account_access {
+    role_arn    = "arn:aws:iam::${trimspace(each.key)}:role/HarnessCERole"
     external_id = "harness:891928451355:${data.harness_platform_current_account.current.id}"
   }
 }

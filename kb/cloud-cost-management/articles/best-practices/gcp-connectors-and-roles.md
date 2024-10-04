@@ -48,9 +48,11 @@ variable "harness_gcp_sa" {
 }
 ```
 
-## Get Project List
+## Get Projects And Create Connectors
 
-We have two options to get the project list.  Option 1 is to use the GCP provider to get all project in the organization.
+There are two options to retrieve the projects we want to create connectors for.  We'll use the Harness provider to create a CCM connector for each GCP project after we retrieve them. We are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
+
+### Use The Google Provider To Get All Projects In The Organization
 
 Get all projects in a specific folder:
 ```
@@ -66,32 +68,38 @@ data "google_projects" "my-org-projects" {
 }
 ```
 
-Option 2 is to use the `locals` value to define statically.  This is useful when you don't have a solid naming convention to filter results from option 1.  To use this, ensure you uncomment out the lines in the connector resource and comment out it's equivalent line for using google_projects.
+```
+resource "harness_platform_connector_gcp_cloud_cost" "this" {
+  for_each = { for project in data.google_projects.my-org-projects.projects : project.project_id => project }
+
+  identifier = replace(each.value.project_id, "-", "_")
+  name       = each.value.name
+
+  features_enabled      = ["VISIBILITY", "OPTIMIZATION", "GOVERNANCE"]
+  gcp_project_id        = each.value.project_id
+  # gcp_project_id        = each.key
+  service_account_email = var.harness_gcp_sa
+}
+```
+
+
+### Use The Built In Locals Value To Define The Projects Statically
+This is useful when you don't have a solid naming convention and you want to apply certain features to different projects.  For example, you want to only apply autostopping in non-prod projects.  This is also useful when you can't authenticate to the GCP organization.
 
 ```
 locals {
   gcp-non-prod = ['project-1', 'project-2']
   gcp-prod = ['project-3', 'project-4']
 }
-```
 
-## Create A CCM Connector For Each GCP Project
-
-Use the Harness provider to create a CCM connector for each GCP project. In this example, we are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
-
-```
 resource "harness_platform_connector_gcp_cloud_cost" "this" {
-  for_each = { for project in data.google_projects.my-org-projects.projects : project.project_id => project }
-  # for_each = toset(concat(local.gcp-non-prod, local.gcp-prod))
+  for_each = toset(concat(local.gcp-non-prod, local.gcp-prod))
 
-  identifier = replace(each.value.project_id, "-", "_")
-  # identifier = "gcp${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
-  name       = each.value.name
-  # name = "aws${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
+  identifier = "gcp${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
+  name = "aws${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
 
   features_enabled      = ["VISIBILITY", "OPTIMIZATION", "GOVERNANCE"]
-  gcp_project_id        = each.value.project_id
-  # gcp_project_id        = each.key
+  gcp_project_id        = each.key
   service_account_email = var.harness_gcp_sa
 }
 ```
@@ -103,7 +111,7 @@ Your organization probably already has a process to do this.  When this is the c
 
 There are two examples. One is project-wide viewer (read-only) access and the other is project-wide editor access. Based on your needs in Harness, choose the minimum amount of permissions needed.
 
-Note:  If you give the Harness service account the appropriate permissions across your entire organization via the GCP console, you do not have to use the below Terraform to give permissions for each project.
+Note:  If you give the Harness service account the appropriate permissions across your entire organization via the GCP console, you do not have to use the below Terraform to give permissions for each project.  These are written using the Google provider to get all projects.  If you are using the locals value to statically define the projects, the logic for the loop and project will have to be modified.
 
 ```
 # for view access
