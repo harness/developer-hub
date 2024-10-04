@@ -95,7 +95,7 @@ resource "harness_platform_connector_gcp_cloud_cost" "this" {
   for_each = toset(concat(local.gcp-non-prod, local.gcp-prod))
 
   identifier = "gcp${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
-  name = "aws${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
+  name = "gcp${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
 
   features_enabled      = ["VISIBILITY", "OPTIMIZATION", "GOVERNANCE"]
   gcp_project_id        = each.key
