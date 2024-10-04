@@ -52,7 +52,7 @@ data "azurerm_subscriptions" "available" {}
 resource "harness_platform_connector_azure_cloud_cost" "subscription" {
   for_each = { for subscription in data.azurerm_subscriptions.available.subscriptions : subscription.subscription_id => subscription }
 
-  identifier = replace(each.value.subscription_id, "-", "_")
+  identifier = "azure${replace(each.value.subscription_id, "-", "_")}"
   name       = each.value.display_name
   
   features_enabled = ["VISIBILITY", "OPTIMIZATION", "GOVERNANCE"]
