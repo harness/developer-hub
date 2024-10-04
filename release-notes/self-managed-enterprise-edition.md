@@ -31,11 +31,11 @@ When upgrading to SMP versions 0.17.x and above, the installation may fail if yo
 	
   2.	The script will prompt you to enter the namespace where Harness is installed.
 	
-  3.	You will then be asked to provide the version you are upgrading to. For instance, if you are upgrading to Harness 0.20.0, you should input 0.20.0.
+  3.	You will then be asked to provide the version you are upgrading to. For instance, if you are upgrading to Harness 0.21.0, you should input 0.21.0.
 	
   4.	The script will automatically update the Ingress objects as needed.
 
-You can find the script in the Harness 0.20.0 release charts at `scripts/update-ingress-objects.sh`, or you can run it directly from this URL: [update-ingress-objects.sh](https://raw.githubusercontent.com/harness/helm-charts/main/src/harness/scripts/update-ingress-objects.sh).
+You can find the script in the Harness 0.21.0 release charts at `scripts/update-ingress-objects.sh`, or you can run it directly from this URL: [update-ingress-objects.sh](https://raw.githubusercontent.com/harness/helm-charts/main/src/harness/scripts/update-ingress-objects.sh).
 
 Note: Ensure you have access to the Kubernetes cluster where Harness is running and have the necessary permissions to GET, DELETE, and APPLY Ingress objects.
 :::
@@ -198,6 +198,40 @@ gsutil -m cp \
 - Added a new setting in the account default settings under CI named `Upload Logs Via Harness`, allowing customers to route CI step execution logs through Harness’ log service instead uploading them directly from the build environment. This was previously behind a feature flag, but is now available for all users. (CI-13647)
 
 #### Harness Platform
+
+- PodDisruptionBudgets can now be created using global and service-level overrides and are enabled by default for all supported services. (PL-56564, ZD-68426)
+
+  At the global level, for all supported services
+
+  ```yaml
+  global:
+    pdb:
+      create: true
+  ```
+
+  At service level, for individual service (eg: ng-manager)
+  ```yaml
+  platform:
+    ng-manager:
+      pdb:
+        create: true
+  ```
+
+  If PDB is enabled globally, it will create PDB for all supported services. If the requirement is to create PDB for specific services, then it needs to be enabled for each service.
+
+  `minAvailable` and `maxUnavailable` can be set to either percentage or absolute value, if both of them are set then K8s will throw an error.
+
+  ```yaml
+  global:
+    pdb:
+      create: true
+      minAvailable: "50%"
+      maxUnavailable: "50%" # set either of these two
+  ```
+  The default value is minAvailable: `50%`
+
+  *Note: PDB support for log-service will be available from the next release.*
+
 
 - SSCA module has been enabled on Custom Dashboards. This allows users to integrate SSCA functionality within their dashboards. (PL-56177)
 
