@@ -38,7 +38,7 @@ Learn how to [manage your Harness Open Source instance data](../installation/dat
 
 :::
 
-## Create a [project](../administration/project-management.md)
+## Create a project
 
 1. Select **New Project**.
 2. Enter a project **Name** and optional **Description**.
@@ -46,7 +46,7 @@ Learn how to [manage your Harness Open Source instance data](../installation/dat
 
 Optionally, Harness Open Source can [import projects](../administration/project-management.md#import-a-project) from external sources (such as GitLab groups or GitHub organizations).
 
-## Create a [repository](../repositories/overview.md)
+## Create a repository
 
 1. In your project, select **Repositories** and then select **New Repository**.
 2. Enter the repository **Name**.
