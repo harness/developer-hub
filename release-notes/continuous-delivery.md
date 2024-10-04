@@ -45,6 +45,26 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## October
+
+### Version 1.59.x
+
+#### New features and enhancements
+
+- We have introduced **GitOps Get App Details** step to fetch application details and status. Currently, this feature is behind the feature flag `GITOPS_GET_APP_DETAILS_STEP`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-100548)
+
+#### Fixed issues
+
+- Previously, artifact paths containing spaces caused errors during downloads. This issue has been resolved. With the introduction of the `CDS_ENCODE_API_REQUESTS` feature flag, URLs used to download artifacts from Artifactory are now automatically encoded. This enhancement supports artifact names with special characters, such as spaces. If this feature flag is enabled, manually encoded URLs will result in double encoding and may cause download failures. Ensure the URLs are not pre-encoded before sending requests when this flag is active. (CDS-100947, ZD-69919)
+
+- Previously, the remote environments were not fetched accurately when used in a GitOps pipeline. This issue is resolved. We set the valid source principal before fetching the remote environment for GitOps. (CDS-101087, ZD-70156)
+
+- Previously, the error message for GCF deployment was unclear while using a wrong manifest function file. This issue is resolved. (CDS-100391)
+
+- Previously, the dark theme pop-ups had a list items that were indistinguishable from each other. This issue is resolved now. (CDS-99275)
+
+- Previously, log details were not displayed in the UI when a pipeline with K8s async steps timed out while the `CDS_K8S_ASYNC_STEP_STRATEGY` feature flag was enabled. This issue has now been resolved. (CDS-95705)
+
 ## September 2024
 
 ### Version 1.57.6
