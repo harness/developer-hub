@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-09-20T10:00
+date: 2024-10-07T10:00
 sidebar_position: 4
 ---
 
@@ -69,6 +69,19 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 ## October 2024
+
+### Version 24.09.84100 <!--  October 7, 2024 -->
+
+#### New features and enhancements
+
+- Implemented a limit on the number of delegates and delegate tokens per account and per scope. The maximum number of delegate tokens is now set to 10,000 to ensure better management and scalability. (PL-56296)
+
+#### Fixed issues
+
+- Improved error messaging for the `<+secrets.getValue(secretlocation)>` expression to provide clearer feedback when a secret is not found. The updated message now states, "The secret has not been found," and includes the full computed path for better troubleshooting. (PL-51900, ZD-65130, ZD-69181)
+
+- Resolved an issue in the `UpdateVersionInfoTask` by adding the missing PLATFORM enum, which eliminated the IllegalArgumentException. (PL-51100) 
+
 ### Version 24.09.83906 <!--  October 1, 2024 -->
 
 #### Hotfixes

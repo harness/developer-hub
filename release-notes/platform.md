@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-09-30T14:00:30
+date: 2024-10-07T14:00:30
 sidebar_position: 3
 ---
 
@@ -79,13 +79,13 @@ The following deprecated API endpoints are longer supported:
 
 ## October 2024
 
-### Version 1.59.x<!-- October 14, 2024 -->
+### Version 1.59.x<!-- October 7, 2024 -->
 
 #### New features and enhancements
 
 - Updated the description and UI label for the `rotationTimeStamp` field in the Rotate Token API. This update clarifies that the input is for setting the expiry time of the old token being rotated, ensuring clearer understanding during token rotation. (PL-56558, ZD-69048)
 
-- Implemented a limit on the number of delegates and delegate tokens per account and per scope. The maximum number of delegate tokens is now set to 10,000 to ensure better management and scalability. This item requires Harness Delegate version 24.09.84000. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56296)
+- Implemented a limit on the number of delegates and delegate tokens per account and per scope. The maximum number of delegate tokens is now set to 10,000 to ensure better management and scalability. This item requires Harness Delegate version 24.09.84100. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56296)
 
 - Upgraded the `bitnami/minio` image to version `2024.6.29-debian-12-r0` to address multiple high and critical vulnerabilities, ensuring improved security and compliance. (PL-56127)
 
@@ -107,9 +107,9 @@ The following deprecated API endpoints are longer supported:
 
 - Implemented an RBAC check across all scopes when listing delegates and delegate tags. Users will now only see delegates they have access to in the current scope. This fix is currently behind the feature flag P`L_RBAC_CHECK_UP_THE_HIERARCHY_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable it. (PL-55748, ZD-67385)
 
-- Improved error messaging for the `<+secrets.getValue(secretlocation)>` expression to provide clearer feedback when a secret is not found. The updated message now states, "The secret has not been found," and includes the full computed path for better troubleshooting. This item requires Harness Delegate version 24.09.84000. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-51900, ZD-65130, ZD-69181)
+- Improved error messaging for the `<+secrets.getValue(secretlocation)>` expression to provide clearer feedback when a secret is not found. The updated message now states, "The secret has not been found," and includes the full computed path for better troubleshooting. This item requires Harness Delegate version 24.09.84100. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-51900, ZD-65130, ZD-69181)
 
-- Resolved an issue in the `UpdateVersionInfoTask` by adding the missing PLATFORM enum, which eliminated the IllegalArgumentException. This item requires Harness Delegate version 24.09.84000. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-51100) 
+- Resolved an issue in the `UpdateVersionInfoTask` by adding the missing PLATFORM enum, which eliminated the IllegalArgumentException. This item requires Harness Delegate version 24.09.84100. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-51100) 
 
 ## September 2024
 
