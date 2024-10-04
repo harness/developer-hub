@@ -1,16 +1,15 @@
 ---
 title: GitOps Environment By Branch 
 sidebar_label: GitOps Environment By Branch
-displayed_sidebar: dbdevopsbeta
 description: Basic terminology and concepts related to Harness Database DevOps
-# sidebar_position: 10
+sidebar_position: 10
 ---
 
-Harness GitOps Environment By Branch is an approach to managing infrastructure and application deployments using Git as the single source of truth. Harness GitOps lets you perform GitOps deployments in Harness. If you'd like to learn more about Harness GitOps, you can refer to the [Harness GitOps basics doc](../continuous-delivery/gitops/get-started/harness-git-ops-basics.md). 
+Harness GitOps Environment By Branch is an approach to managing infrastructure and application deployments using Git as the single source of truth. Harness GitOps lets you perform GitOps deployments in Harness. If you'd like to learn more about Harness GitOps, you can refer to the [Harness GitOps basics doc](../../continuous-delivery/gitops/get-started/harness-git-ops-basics.md). 
 
 :::info
-If you'd like to follow a YouTube video 
-:::
+Head over to our YouTube for a tutorial on how to set up [Harness Database DevOps with GitOps](https://youtu.be/5JbTEx2ekWo?si=GFx9uRG0x9o3bIvt). 
+:::sx
 
 ## GitOps as a Service
 
