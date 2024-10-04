@@ -28,9 +28,13 @@ terraform {
   }
 }
 
-provider "aws" {}
+provider "aws" {
+  region = "us-east-1"
+}
 
 provider "harness" {}
+
+data "harness_platform_current_account" "current" {}
 ```
 
 
@@ -42,16 +46,49 @@ We have two options to get the account list.  Option 1 is to use the AWS provide
 data "aws_organizations_organization" "this" {}
 ```
 
-Option 2 is to use the `locals` value to define statically.  This is useful when you don't have a solid naming convention to filter results from option 1.
+Option 2 is to use the `locals` value to define statically.  This is useful when you don't have a solid naming convention to filter results from option 1.  To use this, ensure you uncomment out the lines in the connector resource and comment out it's equivalent line for using aws_organizations_organization.
 
 ```
 locals {
-  aws-non-prod = ['account-1', 'account-2']
-  aws-prod = ['account-3', 'account-4']
+  aws-non-prod = ["000000000001", "000000000002"]
+  aws-prod = ["000000000004", "000000000003"]
 }
 ```
 
-## Create Roles In Each AWS Account via Terraform
+## Create A CCM Connector For Each AWS Account
+
+Use the Harness provider to create a CCM connector for each AWS account. In this example, we are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
+
+```
+resource "harness_platform_connector_awscc" "data" {
+  for_each = { for account in data.aws_organizations_organization.this.accounts : "${trimspace(account.name)}" => account }
+  # for_each = toset(concat(local.aws-non-prod, local.aws-prod))
+
+  identifier = replace(replace(trimspace(each.value.name), "-", "_"), " ", "_")
+  # identifier = "aws${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
+  name       = replace(replace(trimspace(each.value.name), "-", "_"), " ", "_")
+  # name       = "aws${replace(replace(trimspace(each.key), "-", "_"), " ", "_")}"
+
+  account_id = trimspace(each.value.id)
+  # account_id = trimspace(each.key)
+
+  features_enabled = [
+    "OPTIMIZATION",
+    "VISIBILITY",
+    "GOVERNANCE",
+  ]
+  cross_account_access {
+    role_arn    = "arn:aws:iam::${trimspace(each.value.id)}:role/HarnessCERole"
+    # role_arn    = "arn:aws:iam::${trimspace(each.key)}:role/HarnessCERole"
+    external_id = "harness:891928451355:${data.harness_platform_current_account.current.id}"
+  }
+}
+```
+
+## Create Roles In Each AWS Account
+Your organization probably already has a process to do this.  When this is the case, defer to that process.  Below are two alternatives.
+
+### Create Roles In Each AWS Account via Terraform
 
 If you have the ability to provision roles into every AWS account using Terraform, you can use this module to simplify provisioning of the role.  In this example, we are applying account-wide read only access as the role permission for all services. For what can be enabled using this module please refer to [this guide](https://github.com/harness-community/terraform-aws-harness-ccm).
 
@@ -65,12 +102,12 @@ module "ccm-member" {
   enable_events           = true
 
   governance_policy_arn = [
-    "arn:aws:iam::aws:policy/ViewOnlyAccess"
+    "arn:aws:iam::aws:policy/ReadOnlyAccess"
   ]
 }
 ```
 
-## Create Roles In Each AWS Account via a CloudFormation StackSet
+### Create Roles In Each AWS Account via a CloudFormation StackSet
 
 If you want deploy a role in each account via a CloudFormation StackSet, [here](https://continuous-efficiency-prod.s3.us-east-2.amazonaws.com/setup/ngv1/HarnessAWSTemplate.yaml) is the StackSet that provides the necessary permissions for Recommendations, AutoStopping, Asset Governance, and Commitment Orchestration.
 
@@ -86,30 +123,6 @@ You will have to modify parameters in the StackSet in order for it to execute co
 - OptimizationEnabled: `true` if you want to do autostopping in this account, `false` otherwise
 - GovernanceEnabled: `true` will enable read-only access for all services within the account to have the ability to run evaluations in dry-run mode.  If you want to enforce rules on various services, you will need to add additional policies to this StackSet
 - CommitmentOrchestratorEnabled: `false` (turning on commitment orchestrator for a non-payer account doesn't make sense)
-
-## Create A CCM Connector For Each AWS Account
-
-Use the Harness provider to create a CCM connector for each AWS account. In this example, we are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
-
-```
-resource "harness_platform_connector_awscc" "data" {
-  for_each = { for account in data.aws_organizations_organization.this.accounts : "${trimspace(account.name)}" => account }
-
-  identifier = replace(replace(trimspace(each.value.name), "-", "_"), " ", "_")
-  name       = replace(replace(trimspace(each.value.name), "-", "_"), " ", "_")
-
-  account_id = trimspace(each.value.id)
-  features_enabled = [
-    "OPTIMIZATION",
-    "VISIBILITY",
-    "GOVERNANCE",
-  ]
-  cross_account_access {
-    role_arn    = "arn:aws:iam::${trimspace(each.value.id)}:role/HarnessCERole"
-    external_id = "harness:891928451355:<your harness account id>"
-  }
-}
-```
 
 ## Conclusion
 
