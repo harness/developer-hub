@@ -6,6 +6,7 @@ helpdocs_topic_id: n7vpieto0n
 helpdocs_category_id: v3h3y6pya6
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/harness-devops-academy/what-is-azure-cost-management
 ---
 
 # View Azure Cost Dashboard

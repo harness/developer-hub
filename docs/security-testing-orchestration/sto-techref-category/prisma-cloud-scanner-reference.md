@@ -16,11 +16,9 @@ You can scan container images and ingest results from [Prisma Cloud](https://doc
 
 ## Important notes for running Prisma Cloud scans in STO
 
-- You need to add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to scan container images on Kubernetes or Docker build infrastructures. 
-
 - You need to run the scan step with root access if either of the following apply:
 
-  - You need to run a [Docker-in-Docker background service](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#docker-in-docker-requirements-for-sto).
+  - You need to run a [Docker-in-Docker background service](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#configuring-docker-in-docker-dind-for-your-pipeline).
 
   - You need to add trusted certificates to your scan images at runtime. 
 
@@ -285,4 +283,13 @@ import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
+
+## Proxy settings
+
+import ProxySettings from './shared/proxy-settings.md';
+
+<ProxySettings />
+
+## View Twistlock compliance rule failures
+Twistlock compliance rule failures will appear in scan results as `Info` severity issues, with the issue type set to `EXTERNAL_POLICY`. Additionally, you can apply OPA policies in Harness STO to enforce or manage these failures.
 

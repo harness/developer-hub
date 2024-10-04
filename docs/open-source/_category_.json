@@ -1,0 +1,11 @@
+{
+    "label":"Open Source",
+    "collapsible":"true",
+    "collapsed":"true",
+    "link":{
+       "type":"generated-index",
+       "title":"Open Source"
+    },
+    "customProps":{
+    }
+ }

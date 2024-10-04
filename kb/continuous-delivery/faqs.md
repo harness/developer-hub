@@ -75,7 +75,7 @@ While an annual contract can not be lowered mid-year through the contract, pleas
 
 #### What if I am building an open source project?
 
-We love Open Source and are committed to supporting our Community. We recommend the open-source [Gitness](https://gitness.com) for hosting your source code repository as well as CI/CD pipelines.
+We love Open Source and are committed to supporting our Community. We recommend [Harness Open Source](/docs/open-source/overview) for hosting your source code repository as well as CI/CD pipelines.
 
 Contact us and we will be happy to provide you with a no restriction SaaS Plan!
 
@@ -3201,6 +3201,10 @@ No, pull request events do not occur on the forked repository.
 
 You can create a custom trigger to initiate a pipeline for a fork event. First, enable the Webhook setting to capture the event logs for the fork. Once enabled, you will be able to capture the event logs for every fork on the repository, and based on the payload, trigger conditions can be set.
 
+### How to create a file in Harness File Store via Shell Script?
+
+To create a File Store from a Shell Script, you can use the [Harness API](https://apidocs.harness.io/tag/File-Store#operation/create).
+
 #### How can we delete Artifactory images from JFrog using Harness?
 
  You can use Jfrog [API] (https://jfrog.com/help/r/jfrog-rest-apis/delete-item) to delete artifacts. For calling this API you can either use HTTP step or a shell script.
@@ -3295,7 +3299,7 @@ For frequently asked questions about Harness infrastructure provisioning, go to 
 
 For frequently asked questions about deployment swimlanes supported by Harness, go to the following docs:  
 
-- [Gitness and Community Edition FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/gitness-community-edition-faqs)
+- [Open Source and Free Edition FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/gitness-community-edition-faqs)
 - [Kubernetes deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-faqs)
 - [Helm and Native Helm deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-deployment-faqs)
 - [Kustomize deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-faqs)

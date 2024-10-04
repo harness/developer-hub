@@ -37,10 +37,10 @@ curl -o idp-catalog-wizard-github.py https://raw.githubusercontent.com/harness-c
 ``` 
 
 ```sh
-python3 idp-catalog-wizard-github.py [OPTIONS]
+python3 idp-catalog-wizard-github.py --create-yamls --org YOUR_GITHUB_ORG --token YOUR_GITHUB_TOKEN --repo-pattern "regex_pattern"
 ```
 
-- Case 1: Run command using `--create-yamls` args, then you'll have to manually push the `files - "services/" .....` after which you can run command using `--register-yamls` args to register all the yamls.
+- Case 1: Run command using `--create-yamls` args, then you'll have to manually push the files - `"services/" .....` after which you can run command using `--register-yamls` args to register all the yamls.
 
 - Case 2: Run command using `--run-all` args, all actions will be performed - create, push and register in one go.
 
@@ -119,7 +119,7 @@ curl -o idp-catalog-wizard-bitbucket.py https://raw.githubusercontent.com/harnes
 ```
 
 ```sh
-python3 idp-catalog-wizard-bitbucket.py [OPTIONS]
+python3 idp-catalog-wizard-bitbucket.py --create-yamls --workspace example_workspace --username bitbucket_username --password bitbucket --project_key bitbucket_project_key
 ```
 
 - Case 1.a: Run command using `--create-yamls` args, then you'll have to manually push the files `- "services/" .....` after which you can run command using `--register-yamls` args to register all the yamls. Scope of this command is your **whole workspace**.

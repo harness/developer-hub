@@ -147,7 +147,11 @@ import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
+## Proxy settings
 
+import ProxySettings from './shared/proxy-settings.md';
+
+<ProxySettings />
 
 ## YAML pipeline example
 

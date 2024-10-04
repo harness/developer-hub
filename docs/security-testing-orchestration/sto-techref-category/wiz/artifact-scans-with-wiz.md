@@ -1,7 +1,7 @@
 ---
 title: Artifact scans with Wiz
 description: Scan artifacts with Wiz. Orchestration and Ingestion modes supported.
-sidebar_label: Artifact scans with Wiz
+sidebar_label: Wiz artifact scanning
 sidebar_position: 10
 ---
 
@@ -273,6 +273,7 @@ import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
 import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
+
 
 ### Container image
 

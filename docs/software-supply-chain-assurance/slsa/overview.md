@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Use Harness SSCA to comply with SLSA Level 3
+description: Use Harness SCS to comply with SLSA Levels
 sidebar_position: 5
 redirect_from:
   - /tutorials/secure-supply-chain/generate-slsa
@@ -10,7 +10,7 @@ Software supply chains, made up of all the code, people, systems, and processes 
 
 What makes a framework like SLSA effective is its focus on provenance, which is a record of where software comes from (source, ingest, where it was pulled from, what are the build parameters). Provenance can be analyzed and verified for security purposes to ensure that there is no tampering.
 
-With Harness SSCA, organizations can achieve **SLSA Level 1, Level 2 and Level 3** compliance, adhering to all the prescriptive requirements according to the build track of [SLSA v1.0](https://slsa.dev/spec/v1.0/) specification.
+With Harness SCS, organizations can achieve **SLSA Level 1, Level 2 and Level 3** compliance, adhering to all the prescriptive requirements according to the build track of [SLSA v1.0](https://slsa.dev/spec/v1.0/) specification.
 
 <DocImage path={require('./static/slsa-levels-with-harness.png')} width="100%" height="100%" />
 
@@ -30,10 +30,10 @@ Here’s how it looks overall:
 
 **SLSA Generation and Attestation**: When you configure your code to build and set up to push the image to a container registry, ensure you also configure the generation of SLSA provenance in the build stage. This stage will generate and attest the provenance with a private key and password, subsequently pushing both the image and its attested provenance to the container registry. For a detailed guide on implementing this process, please refer to the [Generate SLSA Provenance](https://developer.harness.io/docs/software-supply-chain-assurance/slsa/generate-slsa) documentation.
 
-**SLSA Verification**: The SLSA verification step within the SSCA module verifies the authenticity of provenance using a public key. After verification, you can enforce policy sets on the verified provenance. For more details on the implementation, refer to the [Verify SLSA Provenance](https://developer.harness.io/docs/software-supply-chain-assurance/slsa/verify-slsa) documentation.
+**SLSA Verification**: The SLSA verification step within the SCS module verifies the authenticity of provenance using a public key. After verification, you can enforce policy sets on the verified provenance. For more details on the implementation, refer to the [Verify SLSA Provenance](https://developer.harness.io/docs/software-supply-chain-assurance/slsa/verify-slsa) documentation.
 
 ## How to comply with SLSA Level 1
-To meet the requirements of [Build L1](https://slsa.dev/spec/v1.0/levels#build-l1), Harness SSCA enables you to generate detailed provenance, which documents the build process, including the build platform and the top-level inputs. This provenance can then be easily downloaded and shared as needed. Also, it's important that you follow a consistent build process.
+To meet the requirements of [Build L1](https://slsa.dev/spec/v1.0/levels#build-l1), Harness SCS enables you to generate detailed provenance, which documents the build process, including the build platform and the top-level inputs. This provenance can then be easily downloaded and shared as needed. Also, it's important that you follow a consistent build process.
 - For generating SLSA Provenance, refer to [Generate SLSA Provenance](./generate-slsa.md)
 - To view and download the SLSA Provenance, refer to [View pipeline execution results](../ssca-view-results.md#view-slsa-provenance-and-verification-status)
 
@@ -44,7 +44,7 @@ To attain [Build L2](https://slsa.dev/spec/v1.0/levels#build-l2) compliance, adh
 Here are the steps to follow:
 
 - Connect your hosted infrastructure with Harness for executing builds.
-- Utilize Harness SSCA to sign the generated provenance. Refer to [Attest SLSA Provenance](./generate-slsa.md#attest-the-slsa-provenance)
+- Utilize Harness SCS to sign the generated provenance. Refer to [Attest SLSA Provenance](./generate-slsa.md#attest-the-slsa-provenance)
 - Verify the provenance attestation to confirm its authenticity in the downstream. This step is crucial for protecting the supply chain from unauthorized alterations. Refer to [Verify SLSA Provenance](./verify-slsa.md)
 
 ## How to comply with SLSA Level 3

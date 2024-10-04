@@ -2,6 +2,7 @@
 title: Containerize step groups
 description: Run CD steps in an ephemeral container.
 sidebar_position: 1
+canonical_url: https://www.harness.io/blog/ci-cd-pipeline
 ---
 
 

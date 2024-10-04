@@ -2,6 +2,7 @@
 title: Set up bidirectional sync for Git Experience
 description: learn how to set up and use bidirectional sync for Git Experience.
 sidebar_position: 3
+canonical_url: https://www.harness.io/blog/git-sync-experience
 ---
 
 By default, Harness Git Experience syncs unidirectionally, from Harness to your Git repos. You can also have Harness Git Experience sync bidirectionally between Harness and your Git repo.

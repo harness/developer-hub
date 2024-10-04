@@ -2,12 +2,12 @@
 title: SEI Harness CI/CD integration
 description: Integrate SEI with Harness CI and CD
 sidebar_position: 110
-sidebar_label: Harness
+sidebar_label: HarnessNG
 ---
 
 Harness is a modern software delivery platform that allows engineers and DevOps to build, test, deploy, and verify the software on demand.
 
-Use the SEI Harness integration to integrate SEI with your Harness CI/CD modules.
+Use the SEI HarnessNG integration to integrate SEI with your Harness CI/CD modules.
 
 ## Requirements
 
@@ -23,13 +23,18 @@ import TabItem from '@theme/TabItem';
 
 ## Configure the integration
 
+1. In your **Harness Project**, go to the **SEI Module**, and select **Account**.
+2. Select **Integrations** under **Data Settings**.
+3. Select **Available Integrations**, locate the **Harness NG integration**, and select **Install**.
+
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
 
+* Select the type of the **HarnessNG account** as **Cloud**.
 
-1. Select **Integrations** under **Settings**.
-2. Select **Available Integrations**, locate the **Harness NG integration**, and select **Install**.
-3. Configure and **save** the integration.
+![](../static/harnessng-1.png)
+
+* Configure and **Save** the integration.
    * **URL**: Enter `https://app.harness.io`.
    * **API key**: Enter your Harness personal access token.
    * **Account ID**: Enter your Harness account ID.
@@ -41,14 +46,37 @@ import TabItem from '@theme/TabItem';
    * **Project**: Enter your project name. Similarly, you can use a comma-separated list if you have multiple projects.
      
      For example, "`org/project`, `org2/project2`" Like organization names, project names are case-sensitive. Leaving this field blank will ingest all the projects from organizations accessible to the token user.
-4. Finish configuration and **Save** the integration.
+* Click on **Validate Connection** to run the pre-flight checks and validate the connection. Once successful, you'll have the integration set up under the **Your Integrations** tab.
+
+![](../static/harnessng-2.png)
 
 </TabItem>
-  <TabItem value="satellite" label="Satellite">
+
+<TabItem value="harness-smp" label="Harness Self-Managed Enterprise Edition">
+
+You can connect Harness SEI with Harness Self-Managed Enterprise Edition (Harness On-Prem), using the [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/run-the-satellite-container)
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud using the API key, with the exception of using satellite to communicate with the Harness NG server.
 
-Make sure to select the satellite integration checkbox while configuring the integration. Once you save the integration a `satellite.yml` file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
+* Select the type of the **HarnessNG account** as **On-Prem**.
+
+![](../static/harnessng-1.png)
+
+* Configure and **Save** the integration.
+   * **URL**: Enter `https://app.harness.io`.
+   * **API key**: Enter your Harness personal access token.
+   * **Account ID**: Enter your Harness account ID.
+   * **Name**: Enter a name for the integration.
+   * **Description** and **Tags** are optional.
+   * **Organization**: Enter your organization name. If you have multiple organizations, you can use a comma-separated list.
+     
+     For example, "Youtube, YouTubeTV." Please note that organization names are case-sensitive. You can leave this field blank to include all organizations accessible to the token user.
+   * **Project**: Enter your project name. Similarly, you can use a comma-separated list if you have multiple projects.
+     
+     For example, "`org/project`, `org2/project2`" Like organization names, project names are case-sensitive. Leaving this field blank will ingest all the projects from organizations accessible to the token user.
+* Click on **Download YAML File** and save the `satellite.yml` file. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
+
+![](../static/harnessng-3.png)
 
 If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
@@ -58,7 +86,8 @@ Here’s a sample `satellite.yml` file:
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the Environment of your Harness Account.
+  url: 'https://app.harness.io/gratis/sei/api'
+  # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
   - id: '<INTEGRATION_ID>'
     application: harnessng

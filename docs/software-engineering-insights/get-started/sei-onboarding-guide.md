@@ -67,7 +67,7 @@ If you're migrating to Harness SEI from Propelo standalone application, review t
 
 | **Step** | **Details** | **Documentation** |
 | - | - | - |
-| <a href="/docs/software-engineering-insights/sei-profiles/investment-profile">Configure Investment Profile</a> | Learn how to create/edit an investment profile | [Click here](/docs/software-engineering-insights/sei-profiles/investment-profile) |
+| <a href="/docs/software-engineering-insights/sei-profiles/business-alignment-profile">Configure Business Alignment Profile</a> | Learn how to create/edit an investment profile | [Click here](/docs/software-engineering-insights/sei-profiles/business-alignment-profile) |
 | <a href="/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-type-workflow-profile">Configure Workflow profile for DORA</a> | Learn how to create/edit a workflow profile for measuring DORA metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-type-workflow-profile) |
 | <a href="/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-velocity-lead-time-type-workflow-profile">Configure Workflow profile for Lead Time</a> | Learn how to create/edit a workflow profile to measure Lead Time metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-velocity-lead-time-type-workflow-profile) |
 | <a href="/docs/software-engineering-insights/sei-profiles/trellis-profile">Configure Trellis profile</a> | Learn how to create/edit a Trellis profile | [Click here](/docs/software-engineering-insights/sei-profiles/trellis-profile) |
@@ -249,7 +249,7 @@ A **Profile** in SEI represents an entity where users define a different set of 
 
 SEI provides 3 different types of profiles:
 
-* [Investment Profile / Business Alignment Profile](/docs/software-engineering-insights/sei-profiles/investment-profile): Business Alignment profiles help you understand where engineers are allocating their time through effort investment metrics. It is one of the most critical components of engineering metrics by connecting engineering to business value.
+* [Investment Profile / Business Alignment Profile](/docs/software-engineering-insights/sei-profiles/business-alignment-profile): Business Alignment profiles help you understand where engineers are allocating their time through effort investment metrics. It is one of the most critical components of engineering metrics by connecting engineering to business value.
 * [Trellis Profile](/docs/software-engineering-insights/sei-profiles/trellis-profile): The Trellis Scores feature on SEI provides a proprietary scoring mechanism to evaluate and understand your engineering team's productivity. The Trellis Profile is the entity that lets you customize the standards and thresholds for calculating the Trellis Score. 
 * [Workflow Profile](/docs/software-engineering-insights/sei-profiles/workflow-profile): Workflow profile is an entity in SEI where users define the stages, events, and measurement criteria to assess the entire development process lifecycle using Lead Time and DORA metrics. You can use these profiles to derive insights on the time taken to ship changes or the time taken for bug fixes to reach production etc.
 
@@ -311,7 +311,7 @@ Find the list of demos for the latest Harness SEI features.
 | Role-Based Access Control on Harness SEI |<a href="https://youtu.be/7GProEXyB9c">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/access-control/sei-roles-and-permissions) |
 | Account Level Settings on Harness SEI |<a href="https://youtu.be/NCzw--puYmY">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights) |
 | Project Level Settings on Harness SEI |<a href="https://youtu.be/Jbza13xRnMU?si=80HvIXvaqE9Uf7hD">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/) |
-| Business Alignment 2.0 - BETA |<a href="https://youtu.be/f3fLqermTGo?si=bqY_sfda1QzxJWQj">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report) |
+| Business Alignment |<a href="https://youtu.be/f3fLqermTGo?si=bqY_sfda1QzxJWQj">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports) |
 | Trellis Scores - Reimagined - BETA |<a href="https://youtu.be/KsdTv3z2BkA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/early-access/profiles/sei-trellis-factors) |
 | DORA Metrics Explained |<a href="https://youtu.be/443Zhm_bAqs?si=8WdhRC0Kp_X7KZKz">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/dora-insight) |
 | Dev Insight Explained |<a href="https://youtu.be/Jibzk-KF7PA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/developer-insight) |

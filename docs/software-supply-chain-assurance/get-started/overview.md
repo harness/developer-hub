@@ -1,7 +1,7 @@
 ---
-title: Harness Software Supply Chain Assurance (SSCA) overview
+title: Harness Supply Chain Security (SCS) overview
 sidebar_label: Overview
-description: Secure your software supply chain with Harness SSCA.
+description: Secure your software supply chain with Harness SCS.
 sidebar_position: 1
 ---
 
@@ -12,12 +12,12 @@ In today's software development landscape, reliance on open-source components an
 
 High-profile breaches, like those experienced by Log4j, SolarWinds and Codecov, have further underscored the importance of software supply chain security. While standard security techniques for detecting vulnerabilities in source code are essential, they don't fully address the risks throughout the supply chain journey,  - from source to distribution.
 
-To address these challenges, the Harness Software Supply Chain Assurance (SSCA) module is designed to secure the software supply chain, ensuring a layer of security that extends beyond conventional measures.
+To address these challenges, the Harness Supply Chain Security (SCS) module is designed to secure the software supply chain, ensuring a layer of security that extends beyond conventional measures.
 
 
-## Software Supply Chain Assurance Objectives
+## Supply Chain Security Objectives
 
-The SSCA module focuses on securing the software supply chain from two critical perspectives: dependency attacks and exploits from the DevOps toolchain. It ensures that the software remains secure throughout the entire delivery process by addressing risks from both sides. The SSCA module helps you to achieve the following objectives
+The SCS module focuses on securing the software supply chain from two critical perspectives: dependency attacks and exploits from the DevOps toolchain. It ensures that the software remains secure throughout the entire delivery process by addressing risks from both sides. The SCS module helps you to achieve the following objectives
 
 
 
@@ -28,9 +28,9 @@ The SSCA module focuses on securing the software supply chain from two critical 
 This comprehensive approach helps organizations maintain a secure and compliant software supply chain, mitigating risks from dependencies and ensuring robust protection against potential attacks from the DevOps toolchain.
 
 
-## Software Supply Chain Assurance Features
+## Supply Chain Security Features
 
-To realize the objectives, the SSCA module offers the following features:
+To realize the objectives, the SCS module offers the following features:
 
 
 
@@ -43,4 +43,4 @@ To realize the objectives, the SSCA module offers the following features:
 * [Govern the usage of open source with SBOM policy enforcement.](https://developer.harness.io/docs/software-supply-chain-assurance/sbom-policies/overview)
 * [Remediate issues related to risk & compliance and zero-day exploits.](https://developer.harness.io/docs/software-supply-chain-assurance/remediation-tracker/overview)
 
-For more information about these features and how SSCA integrates with the Harness Platform, go to the [SSCA key concepts](https://developer.harness.io/docs/software-supply-chain-assurance/get-started/key-concepts).
+For more information about these features and how SCS integrates with the Harness Platform, go to the [SCS key concepts](https://developer.harness.io/docs/software-supply-chain-assurance/get-started/key-concepts).

@@ -6,6 +6,7 @@ helpdocs_topic_id: 00el61pzok
 helpdocs_category_id: uj8bqz9j0q
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/blue-green-canary-deployment-strategies
 ---
 
 By default, the Harness Kubernetes Rolling, Canary, and Blue Green steps will deploy all of the resources you have set up in the Service Definition **Manifests** section.

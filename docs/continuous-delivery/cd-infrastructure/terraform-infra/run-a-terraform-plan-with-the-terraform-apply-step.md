@@ -6,6 +6,7 @@ helpdocs_topic_id: hdclyshiho
 helpdocs_category_id: jcu7twh2t6
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/cloudformation-and-terraform-support
 ---
 
 This topic describes how to apply a Terraform plan or script using the Terraform Apply step.

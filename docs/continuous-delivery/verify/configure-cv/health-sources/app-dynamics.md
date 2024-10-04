@@ -3,6 +3,7 @@ title: AppDynamics
 description: Learn how to set up AppDynamics as a health source for CV
 redirect_from: 
     - /docs/continuous-delivery/verify/configure-cv/verify-deployments-with-app-dynamics
+canonical_url: https://www.harness.io/blog/appdynamics-vs-new-relic-the-complete-guide
 ---
 
 :::important

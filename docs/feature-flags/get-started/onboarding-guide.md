@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/feature-flags/ff-onboarding/getting-started-with-feature-flags
+canonical_url: https://www.harness.io/blog/feature-flags-best-practices
 ---
 
 This guide describes the basic steps for getting started with Harness Feature Flags.

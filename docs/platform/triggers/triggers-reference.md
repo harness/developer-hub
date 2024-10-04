@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference
+canonical_url: https://www.harness.io/blog/github-actions-support-harness-ci
 ---
 
 This topic provides settings information for triggers. Triggers are used to initiate the execution of pipelines.

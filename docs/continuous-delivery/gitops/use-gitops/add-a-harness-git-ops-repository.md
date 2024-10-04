@@ -1,7 +1,7 @@
 ---
 title: Add a Harness GitOps repository
 description: This topic describes how to add a Harness GitOps repository containing the declarative description of a desired state.
-sidebar_position: 4
+sidebar_position: 20
 helpdocs_topic_id: 58i67mkxap
 helpdocs_category_id: 013h04sxex
 helpdocs_is_private: false

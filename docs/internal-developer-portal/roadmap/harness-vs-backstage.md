@@ -13,7 +13,7 @@ The following tables compare feature availability between Harness IDP and Self-M
 | Catalog Dependency graph    | Yes                        | Yes             |                                                                                                                         |
 | Custom Entity Types         | Yes                        | Yes             | [Docs](/docs/internal-developer-portal/layout-and-appearance/catalog#understanding-catalog-entity-kinds-and-types)      |
 | Custom Entity Kinds         | Limited                    | No              | Backstage does not recommend creating custom entity Kinds, since the existing Kinds are sufficient for major use-cases. |
-| Custom Catalog Processors   | Yes                        | Alternative     | [See Catalog Ingestion API](/docs/internal-developer-portal/catalog/ccp-for-workflows)                                  |
+| Custom Catalog Processors   | Yes                        | Alternative     | [See Catalog Ingestion API](/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api-tutorial.md)                                  |
 | Custom Entity Providers     | Yes                        | No              |                                                                                                                         |
 | Automated Service Discovery | No                         | Roadmap         |                                                                                                                         |
 
@@ -46,7 +46,7 @@ The following tables compare feature availability between Harness IDP and Self-M
 | Service Scorecards                            | Limited                    | Yes             |                                                                                        |
 | Custom checks                                 | No                         | Yes             |                                                                                        |
 | Parsing support for file-content based checks | No                         | Yes             |                                                                                        |
-| Custom Data Source                            | No                         | Yes             | [See Catalog Ingestion API](/docs/internal-developer-portal/catalog/ccp-for-workflows) |
+| Custom Data Source                            | No                         | Yes             | [See Catalog Ingestion API](/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api-tutorial) |
 
 | **Governance and Security**                              | **Self Managed Backstage** | **Harness IDP** |
 | -------------------------------------------------------- | -------------------------- | --------------- |

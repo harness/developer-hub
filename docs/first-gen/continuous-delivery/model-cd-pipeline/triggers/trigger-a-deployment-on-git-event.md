@@ -6,6 +6,7 @@ helpdocs_topic_id: ys3cvwm5gc
 helpdocs_category_id: weyg86m5qp
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/dynamic-triggers-for-git-events
 ---
 
 For GitHub, GitLab, and Bitbucket, you can trigger [Build Workflows](../../concepts-cd/deployment-types/ci-cd-with-the-build-workflow.md) or a [Build and Deploy Pipeline](../../concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview.md) in response to a Git event using Webhooks using a Harness On Webhook Event Trigger.

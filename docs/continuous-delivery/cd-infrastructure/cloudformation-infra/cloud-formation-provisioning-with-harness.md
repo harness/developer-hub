@@ -6,6 +6,7 @@ helpdocs_topic_id: vu2qi7dfzm
 helpdocs_category_id: 31zj6kgnsg
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/cloudformation-and-terraform-support
 ---
 
 This topic describes how to use AWS CloudFormation to provision infrastructure as part of your deployment process.

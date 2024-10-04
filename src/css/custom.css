@@ -203,6 +203,13 @@
   /* Module Colors/Continuous Delivery/100 */
   --mod-cd-100: #f6fff2;
 
+  /* Module Colors/Cloud Development Environment/300 */
+  --mod-cde-300: #1947ec;
+  /* Module Colors/Cloud Development Environment/200 */
+  --mod-cde-200: #2660ff;
+  /* Module Colors/Cloud Development Environment/100 */
+  --mod-cde-100: #ebefff;
+
   /* Module Colors/Continuous Verification/300 */
   --mod-cv-300: #30841f;
   /* Module Colors/Continuous Verification/200 */
@@ -276,10 +283,10 @@
   --mod-code-200: #2bb1f2;
   --mod-code-100: #e2f5ff;
 
-    /* Module Colors/Gitness */
-    --mod-gitness-300: #b0b1c4;
-    --mod-gitness-200: #d9dae5;
-    --mod-gitness-100: #f3f3fa;
+    /* Module Colors/opensource */
+    --mod-opensource-300: #b0b1c4;
+    --mod-opensource-200: #d9dae5;
+    --mod-opensource-100: #f3f3fa;
 
   
   /* ----- */
@@ -558,6 +565,10 @@ details summary::before {
   color: var(--mod-cd-200);
 }
 
+.color-cde {
+  color: var(--mod-cde-200);
+}
+
 .color-ff {
   color: var(--mod-ff-200);
 }
@@ -594,8 +605,8 @@ details summary::before {
   color: var(--mod-iacm-200);
 }
 
-.color-gitness {
-  color: var(--mod-gitness-200);
+.color-opensource {
+  color: var(--mod-opensource-200);
 }
 
 .table-of-contents ul li span[class*="color-"] {
@@ -1057,6 +1068,17 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+.sidebar-cde > div > a::before,.sidebar-cde > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/cde_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .sidebar-iacm > div > a::before,.sidebar-iacm > a::before{
   content: " ";
   display: inline-block;
@@ -1074,6 +1096,16 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_ff.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-dbdevops > div > a::before,.sidebar-dbdevops > a::before{
+  content: " ";
+  display: inline-block;
+  min-height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_dbdevops.svg");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1261,7 +1293,7 @@ figure p {
   background-repeat: no-repeat;
 }
 
-.sidebar-gitness > div > a::before,.sidebar-gitness> a::before{
+.sidebar-opensource > div > a::before,.sidebar-opensource> a::before{
   content: " ";
   display: inline-block;
   height: 24px;
@@ -1270,14 +1302,14 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
-html[data-theme="light"] .sidebar-gitness > div > a::before,
-html[data-theme="light"] .sidebar-gitness > a::before {
-  background-image: url("/img/icon_gitness.svg");
+html[data-theme="light"] .sidebar-opensource > div > a::before,
+html[data-theme="light"] .sidebar-opensource > a::before {
+  background-image: url("/img/icon_platform.svg");
 }
 
-html[data-theme="dark"] .sidebar-gitness > div > a::before,
-html[data-theme="dark"] .sidebar-gitness > a::before {
-  background-image: url("/img/icon_gitness_light.svg");
+html[data-theme="dark"] .sidebar-opensource > div > a::before,
+html[data-theme="dark"] .sidebar-opensource > a::before {
+  background-image: url("/img/icon_platform.svg");
 }
 
 .sidebar-roadmap > div > a::before,.sidebar-roadmap> a::before{
@@ -1352,6 +1384,9 @@ html[data-theme="dark"] .sidebar-gitness > a::before {
 .continuous-delivery--gitops:hover {
   border-color: var(--mod-cd-200) !important;
 }
+.cloud-development-environment:hover {
+  border-color: var(--mod-cde-200) !important;
+}
 .continuous-integration:hover {
   border-color: var(--mod-ci-200) !important;
 }
@@ -1388,8 +1423,8 @@ html[data-theme="dark"] .sidebar-gitness > a::before {
 .software-engineering-insights:hover {
   border-color: var(--mod-sei-200) !important;
 }
-.gitness:hover {
-  border-color: var(--mod-gitness-200) !important;
+.opensource:hover {
+  border-color: var(--mod-opensource-200) !important;
 }
 
 

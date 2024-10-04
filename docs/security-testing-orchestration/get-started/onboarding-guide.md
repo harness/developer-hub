@@ -110,7 +110,7 @@ You need a Harness build infrastructure to run scans in STO. First, review [Oper
 
 :::note
 
-Kubernetes cluster and local runner infrastructures might also require a Docker-in-Docker background step in your pipeline. For more information, go to [Docker-in-Docker requirements for STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto).
+Kubernetes cluster and local runner infrastructures might also require a Docker-in-Docker background step in your pipeline. For more information, go to [Docker-in-Docker requirements for STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline).
 
 :::
 

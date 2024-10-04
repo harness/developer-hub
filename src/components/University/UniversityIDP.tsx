@@ -361,7 +361,7 @@ export default function CertificationsIDP() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDPEnterprise
+                      <strong>Product version: </strong> Harness IDP Enterprise
                       Plan
                     </span>
                   </div>

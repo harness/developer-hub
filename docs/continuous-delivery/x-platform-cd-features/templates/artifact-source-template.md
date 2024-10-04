@@ -2,6 +2,7 @@
 title: Create an artifact source template
 description: Create a custom artifact source for CD services.
 sidebar_position: 1
+canonical_url: https://www.harness.io/blog/what-is-artifact-repository
 ---
 
 Harness templates help you standardize your pipelines for your DevOps teams. Team members can select stage, step, and other templates instead of having to create them.

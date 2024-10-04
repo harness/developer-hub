@@ -15,16 +15,6 @@ export const FmeData: Horizon = {
         description: "New segment type enabling large-scale audience targeting up to 1M keys.",
       },
       {
-        tag: [{ value: "Measurement" }],
-        title: "Monitoring tab: feature traffic insights",
-        description: "Analyze flag traffic in real time to understand trends and ensure proper targeting configuration.",
-      },
-      {
-        tag: [{ value: "Alerting" }],
-        title: "Significance alerting for guardrail metrics",
-        description: "Automatically receive alerts on any guardrail metric without manual configuration.",
-      },
-      {
         tag: [{ value: "Better Together" }],
         title: "Access Split from within Harness app",
         description: "Allow Harness customers to authenticate and access Split from the Harness application.",
@@ -82,6 +72,16 @@ export const FmeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Measurement" }],
+        title: "Monitoring tab: feature traffic insights",
+        description: "Analyze flag traffic in real time to understand trends and ensure proper targeting configuration.",
+      },
+      {
+        tag: [{ value: "Alerting" }],
+        title: "Significance alerting for guardrail metrics",
+        description: "Automatically receive alerts on any guardrail metric without manual configuration.",
+      },
       {
         tag: [{ value: "Targeting" }],
         title: "Semantic version targeting",

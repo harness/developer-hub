@@ -2,6 +2,7 @@
 title: CD steps, stages, and strategies
 description: Learn the CD steps, stages, and strategies
 sidebar_position: 2
+canonical_url: https://www.harness.io/blog/ci-cd-pipeline
 ---
 
 This topic talks about CD steps, stages, and strategies.

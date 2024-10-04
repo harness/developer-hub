@@ -7,6 +7,7 @@ helpdocs_topic_id: vz5cq0nfg2
 helpdocs_category_id: w4rzhnf27d
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/rbac
 ---
 
 <!-- No redirect for /4_role-based-access-control/1-rbac-in-harness because that link didn't exist in prod. Now the link is true to prod: /role-based-access-control/rbac-in-harness. -->

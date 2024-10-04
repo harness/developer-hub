@@ -2,6 +2,7 @@
 title: Set up your first CV
 description: Learn how to set up a simple CV in your Harness CD pipeline.
 sidebar_position: 20
+canonical_url: https://www.harness.io/blog/ci-cd-pipeline-as-code-with-harness
 ---
 
 :::info note
