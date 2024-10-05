@@ -356,3 +356,41 @@ In the event that the `ff-service` is unable to connect to the database due to t
  2. Reinstall the Helm Chart:
 
  - Reinstalling the Helm chart will re-trigger the migration and setup process, ensuring that the database is created correctly. By deleting the failed migration job and reinstalling the Helm chart, you can resolve the database connection issue and ensure the ff-service connects to the newly created database.
+
+ #### Can I freeze a feature flag for a specific user or group so that it remains enabled even after the flag is globally disabled?
+
+ We evaluate using flag/target group rules at runtime, and as long as you don’t modify a flag/target group rule, then the target will get the same evaluation. This doesn’t mean the target’s evaluation is essentially “frozen,” as it will still be evaluated each time using the available rules.
+For example if a feature flag is enabled for a specific target based on a rule that checks for an attribute (e.g., user_role = “beta tester”), as long as this rule remains unchanged that target will consistently get the same evaluation
+
+#### Can I ensure that a feature flag's evaluation for a target remains constant over time?
+
+While you can't "freeze" a feature flag's evaluation, you can ensure consistent results by not altering the flag or target group rules. The system evaluates the flag at runtime, so if the conditions (e.g., rules) remain the same, the evaluation result for a target will remain consistent. However, it's important to note that the evaluation happens every time and is not locked in place.
+
+#### What does the error "unable to find valid certification path to requested target" mean?
+
+The error "unable to find valid certification path to requested target" occurs when Java's SSL/TLS subsystem cannot establish a chain of trust from the server's SSL certificate to a trusted root certificate in your Java trust store. This usually means that the server's certificate, or one of the certificates in the chain leading to a trusted root, is missing from your trust store.
+
+#### How can I check if the server’s SSL certificate is already in the Java trust store?
+
+You can check if the server's SSL certificate is in the Java trust store by using the keytool command-line utility that comes with the Java Development Kit (JDK). The command keytool -list -keystore path_to_truststore -alias certificate_alias 
+can be used to list the certificates. If the certificate is not present, you will need to import it manually using the keytool -importcert command.
+
+#### What is the maximum number of targets in a target group? Is it possible to bulk upload 1,000 target IDs?
+
+Currently, there is no enforced limit on the number of targets in a target group. If you want to bulk upload 1,000 target IDs, you can do so by using the API directly. You should be able to pass all the target IDs in a single request when using the API.
+
+#### Does harness have CDN support for server SDKs in the context of feature flags?
+
+Our CDN implementation is designed primarily for server SDKs. When a feature flag is toggled, we proactively update a Redis cache, which the CDN checks to ensure it has the latest version. If the CDN has the latest version, it serves that; if not, it updates itself with the latest data. This process ensures that the correct versions of flags and targets are served for each environment, with a lightweight check on every request to maintain accuracy.
+
+#### Is CDN caching available for client-side SDKs, and how does it work?
+
+Yes, CDN caching is available for our client-side SDKs. The effectiveness of CDN caching on the client side depends on the cardinality of the target and its additional attributes. For instance, if you include a dynamic attribute like a timestamp, our server will need to reevaluate the request, which can affect caching performance.
+
+#### What happens if a request includes dynamic attributes like timestamps?
+
+If a request includes dynamic attributes such as a timestamp, the CDN caching might be bypassed, requiring our server to reevaluate the request. This is because the varying nature of such attributes makes it necessary to ensure that the most accurate and up-to-date data is served, which may involve additional processing on the server side.
+
+#### What happens if a new API key is created in Feature Flags after the proxy has started?
+
+If a new API key is created in Feature Flags after the proxy has started, the proxy will not be able to validate the new API key during authentication. This is because the proxy only retrieves API keys at startup and does not dynamically check for new ones. To use the new API key, you must restart the proxy and include the new API key in its configuration.
