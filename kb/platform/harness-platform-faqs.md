@@ -762,6 +762,33 @@ You can find this value on the Authentication page (right below the Overview men
 
 The most probable root cause is that there is a difference in query for this user group/user (like DC), so check and confirm and add the corresponding user query.
 
+### Not getting password email reset after trying multiple times and UI shows email sent successfully
+
+Need to check below:
+- Have you ever logged in or were you added recently? Then you need to first accept the invite you might have received.
+
+- Can you check with admin if custom SMTP is used for the harness account and if email has been initiated or not?
+
+
+### Unable to login and getting message `Password authentication is not allowed for your default account. Please use single sign-on instead`.
+
+It looks like your default account has enabled SSO login, so harness username/password login will not work and you need to use SSO login.
+
+
+### How can I login to a non-default account directly if I am part of multiple accounts and the authentication mechanism is different?
+
+You can use a deep link with the account ID, and it should ask you to login as per the authentication set for that account.
+
+`https://app.harness.io/ng/account/<prodaccountid>/main-dashboard﻿`
+
+### I am unable to view my older support ticket raised.
+
+Can you check and confirm the email/user with which you are logged in is the same, or has there been any change to the email/domain.
+
+### I accidentally used the wrong password. Now how to unlock my account
+
+There is a lockout duration after which you can try to login, or to unblock immediately, you can click on Reset Password and try to login with the new password, as that will reset the lockout entry.
+
 ## Automation
 
 ### How can I use Harness CD with Google Cloud Functions?
