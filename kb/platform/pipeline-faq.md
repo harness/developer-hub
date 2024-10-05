@@ -135,9 +135,25 @@ The triggered test pipeline will run independently and will not be part of the o
 
 If the test pipeline fails, you can utilize the rollback feature to revert the deployment. However, this rollback functionality depends on having a previous successful execution to revert to.
 
-#### Is there a way to integrate the triggered test pipeline within the original deployment pipeline?
+### Is there a way to integrate the triggered test pipeline within the original deployment pipeline?
 
 No, currently there is no way to fully integrate a triggered test pipeline within the original deployment pipeline. The test pipeline will always operate as a separate entity.
+
+### How does Resource Group control access?
+
+A Resource Group in Harness is an RBAC (Role-Based Access Control) component that defines the objects (resources) a user or service account can access. These objects include projects, pipelines, connectors, secrets, delegates, environments, and more. Assigning a resource group to a user, user group, or service account grants them access to the resources defined in that group.
+
+### How does the scope of a Resource Group impact access control?
+
+The scope of a Resource Group determines where it can be applied and which resources it can access. For example, a resource group created at the project scope will only be available for that specific project, while one created at the organization level can provide access to all projects within that organization, depending on the selected Resource Scope options.
+
+###  What happens if a user belongs to multiple user groups with different Resource Groups?
+
+In Harness, permissions are additive. If a user belongs to multiple user groups with different Resource Groups, their total permissions will be the sum of all roles and resource groups from all groups they belong to, as well as any directly assigned permissions. This means users could have broader access based on their collective assignments.
+
+### What is the principle of least privilege (PoLP), and how does it apply to Resource Groups?
+
+The principle of least privilege (PoLP) means granting users only the minimum access needed to perform their tasks. In Harness, to maintain PoLP, it's important to carefully assign roles and resource groups, ensuring users don't have access to more resources or permissions than necessary. Custom roles and resource groups can be created to fine-tune access control.
 
 ## API
 
