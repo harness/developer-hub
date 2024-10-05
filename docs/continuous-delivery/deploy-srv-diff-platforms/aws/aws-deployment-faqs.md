@@ -578,3 +578,45 @@ Invalid request: No manifests found in stage Deploy_AMI. AsgRollingDeploy step r
 ```
 
 This means that your Launch Template and ASG Configuration are not setup correctly in your service under AWS ASG Configurations.
+
+### What is the Amazon ECS deployment circuit breaker?
+
+The Amazon ECS deployment circuit breaker is a rolling update mechanism that monitors the state of tasks in a service deployment. If a deployment fails to reach a steady state, it can automatically roll back to the most recent successful deployment.
+
+### How does the deployment ECS circuit breaker detect a failed deployment?
+
+The circuit breaker monitors whether tasks transition to the RUNNING state and pass health checks. If the deployment fails at either stage (tasks not running or failing health checks), the circuit breaker determines the deployment has failed.
+
+### What happens when a ECS deployment fails in terma of circuit breaker?
+
+If a deployment fails, the circuit breaker rolls back to the most recent deployment that is in a COMPLETED state. If no such deployment exists, the deployment is stalled, and no new tasks are launched.
+
+### What stages does the deployment circuit breaker monitor?
+
+Stage 1: The circuit breaker checks if tasks transition to the RUNNING state. If successful, the deployment proceeds; otherwise, it may fail.
+
+Stage 2: It monitors the health checks of the running tasks. If they pass, the deployment succeeds. If tasks consistently fail health checks, the deployment may fail.
+
+### What health checks are considered by the deployment circuit breaker?
+
+The circuit breaker checks Elastic Load Balancing health checks, AWS Cloud Map service health checks, and container health checks for the tasks in the deployment.
+
+### Can I manually take action when a deployment fails on AWS side?
+
+Yes, you can configure Amazon EventBridge rules to notify you when a deployment fails, and you can manually intervene by restarting or troubleshooting the deployment.
+
+### What happens if a rollback occurs after a ECS failed deployment?
+
+If a rollback is triggered, a new deployment is automatically started, and the reason field in the event will indicate that it was initiated due to a rollback.
+
+### What should I do if no previous deployment is in a COMPLETED state?
+
+If no previous deployment is in a COMPLETED state when a failure occurs, the circuit breaker stalls the deployment, preventing new tasks from being launched until manual intervention or the service is updated.
+
+### How does Harness handle ECS Blue/Green deployments?
+
+In Harness, you specify the Prod and Stage listeners. Harness first deploys the new version using the Stage listener’s target group for testing. Once the deployment is verified, Harness swaps the Prod listener to forward traffic to the new target group, completing the deployment.
+
+### What is the role of target groups in ECS Blue/Green deployments?
+
+Target groups represent the ECS services running your application. The Blue (old) version and Green (new) version each run in separate target groups. The ELB listeners dynamically switch between these target groups based on the stage of deployment and validation.
