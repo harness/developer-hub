@@ -11,7 +11,7 @@ helpdocs_is_published: true
 Harness Policy As Code provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies. You can use Harness Policy As Code to ensure that Harness entities like Pipelines meet specific compliance requirements when specific events happen (On Save, On Run, etc).
 
 :::info note
-Harness Policy As Code is not available in the Free Tier.
+Harness Policy As Code is not available in the [Free Tier](/docs/platform/get-started/subscriptions-licenses/subscriptions.md).
 :::
 
 This quickstart shows you how to use Harness OPA integration to enforce Pipeline governance.
