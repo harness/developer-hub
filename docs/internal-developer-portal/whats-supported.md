@@ -54,7 +54,7 @@ Harness IDP requires some secrets to be set for plugins and external integration
 
 ### [trigger:trigger-pipeline-with-webhook](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#2-triggertrigger-pipeline-with-webhook)
 
-- This template action supports all types of pipeline with a webhook based trigger. It triggers a pipeline execution based on the input-set identifier and a webhook name. 
+- This action supports all types of pipeline with a webhook based trigger. It triggers a pipeline execution based on the input-set identifier and a webhook name. 
 
 :::info
 
