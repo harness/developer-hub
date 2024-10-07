@@ -111,10 +111,34 @@ To use your custom image in a step, create a reference in the YAML configuration
         image: plugins/private_harness_terraform_plugin  # (1)
         connectorRef: privateConnector  # (2)
 ```
-
-:::info
+:::note
 In this example, the `image` attribute **(1)** in the YAML points to the plugin image in the Elastic Container Registry (ECR) where it is hosted. If your image is hosted in a private ECR, you'll need to create a connector for that ECR and define the `connectorRef` **(2)** for the connector. This ensures that Harness can access the image. At this stage, the "apply" step in your pipeline will use the "private_harness_terraform_plugin" and have access to `kubectl` and `kustomize` for its operations.
 :::
+ <details>
+    <summary>
+        OpenTofu Network Connectivity Requirements
+    </summary>
+When using OpenTofu with Harness IaC Management (IaCM), it’s important to ensure that your environment allows the necessary network access for OpenTofu to function properly. OpenTofu relies on external services to download binaries, modules, and providers. If your environment is restricted, such as in air-gapped setups or strict firewall configurations, you may need to whitelist specific domains or use alternative strategies like custom images as mentioned above.
+
+For example:
+- In public internet access environments, ensuring the required domains are reachable will allow for seamless use of OpenTofu.
+- In air-gapped environments, where internet access is restricted, you may need to use a custom image with pre-installed binaries or configure your environment to avoid external dependencies.
+
+### Whitelist domains
+To enable proper connectivity, ensure the following domains are accessible from your infrastructure:
+- `get.opentofu.org` – Required for downloading the OpenTofu binaries.
+- `registry.opentofu.org` – Used for resolving and downloading providers and modules.
+- `github.com` – Necessary for accessing provider and module resources.
+- `packages.opentofu.org` (Optional) – This domain is needed only for Redhat-based installations, but it can be bypassed by pre-caching binaries in your shared file system.
+
+### Handle restricted network environments
+If your environment does not have internet access, there are two potential solutions:
+1. **Custom images:** You can build a custom image that includes the OpenTofu binaries. This image can be used in your pipeline, eliminating the need to access `get.opentofu.org`.
+2. **Private module registry:** If you have a private module registry, `registry.opentofu.org` is not required. You can configure OpenTofu to resolve modules and providers from your internal registry.
+
+### Firewall configuration
+Make sure to configure your firewall to allow outbound access to the domains listed above, unless you have implemented one of the alternative solutions. Lack of access to these domains can cause errors when downloading providers or modules.
+</details>
 
 ## IACM execution-config
 To use images from your repository in an IACM stage, you can use the `execution-config` API endpoints. 
