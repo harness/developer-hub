@@ -93,5 +93,13 @@ export const university: CardItem[] = [
     link: "/university/idp",
     numberOfCerts: 1,
   },
+  {
+    title: "Infrastructure as Code Management",
+    module: MODULES.iacm,
+    description:
+      "Efficiently and securely scale your Terraform / OpenTofu Infrastructure as Code.",
+    link: "/university/iacm",
+    SPT_available: true,
+  },
   
 ];
