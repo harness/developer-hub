@@ -8,7 +8,7 @@ Solution| Supported Platform| Connected | HA | Monitoring| Disaster Recovery |
 
 | Kubernetes Version | Supported | Notes                                                                                                        |
 |--------------------|-----------|--------------------------------------------------------------------------------------------------------------|
-| 1.30               | Yes       | Starting with EKS 1.30 (AWS), the support for default annotation on the storage class has been removed. For Harness to work, please update your overrides to include the `storageClassName` (gp2, gp3, etc) by updating the following values: <br><br> global: <br> &nbsp;&nbsp;&nbsp;&nbsp;storageClass: "gp3" <br> &nbsp;&nbsp;&nbsp;&nbsp;storageClassName: "gp3" |
+| 1.30               | Yes       | Starting with EKS 1.30 (AWS), the support for default annotation on the storage class has been removed. For Harness to work, please update your overrides to include the `storageClassName` (gp2, gp3, etc) by updating the following values: <br /><br /> global: <br /> &nbsp;&nbsp;&nbsp;&nbsp;storageClass: "gp3" <br /> &nbsp;&nbsp;&nbsp;&nbsp;storageClassName: "gp3" |
 | 1.29               | Yes       |                                                                                                              |
 | 1.28               | Yes       |                                                                                                              |
 | 1.27               | Yes       |                                                                                                              |
