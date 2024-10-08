@@ -75,7 +75,7 @@ If enabled, delegate will stop acquiring new tasks if the cpu/memory usage goes 
 
 ### DELEGATE_CPU_THRESHOLD
 
-To configure the delegate resource threshold, set the `DELEGATE_CPU_THRESHOLD` env variable to the CPU threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks. For more information, go to [Configure delegate metrics and auto scale](/docs/platform/delegates/manage-delegates/delegate-metrics).
+To configure the delegate resource threshold, set the `DELEGATE_CPU_THRESHOLD` env variable to the CPU threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks. Note that `DYNAMIC_REQUEST_HANDLING` has to be set to true for this to take effect. For more information, go to [Configure delegate metrics and auto scale](/docs/platform/delegates/manage-delegates/delegate-metrics).
 
    ```yaml
         - name: DELEGATE_CPU_THRESHOLD
@@ -84,7 +84,7 @@ To configure the delegate resource threshold, set the `DELEGATE_CPU_THRESHOLD` e
 
 ### DELEGATE_MEMORY_THRESHOLD
 
-To configure the delegate resource threshold, set the `DELEGATE_MEMORY_THRESHOLD` env variable to the memory threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks. For more information, go to [Configure delegate metrics and auto scale](/docs/platform/delegates/manage-delegates/delegate-metrics).
+To configure the delegate resource threshold, set the `DELEGATE_MEMORY_THRESHOLD` env variable to the memory threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks. Note that `DYNAMIC_REQUEST_HANDLING` has to be set to true for this to take effect. For more information, go to [Configure delegate metrics and auto scale](/docs/platform/delegates/manage-delegates/delegate-metrics).
 
    ```yaml
         - name: DELEGATE_MEMORY_THRESHOLD
