@@ -15,7 +15,7 @@ description: Generate security reports using Sysdig Secure
 
 ### Application configuration YAML
 
-- Under the **Plugins** tab in **Admin**, go to `app-config.yaml` and **Edit YAML** to configure your [Sysdig Secure Endpoint (region for SaS)](https://docs.sysdig.com/en/docs/administration/saas-regions-and-ip-ranges/) in the **target** field.
+- Under the **Plugins** tab in **Admin**, go to `app-config.yaml` and **Edit YAML** to configure your [Sysdig Secure Endpoint (region for SaaS)](https://docs.sysdig.com/en/docs/administration/saas-regions-and-ip-ranges/) in the **target** field.
 
 ![](./static/sysdig-configuration.png)
 
@@ -27,7 +27,7 @@ description: Generate security reports using Sysdig Secure
 
 ### Delegate proxy
 
-- If Sysdig is behind a firewall, eg.,`sysdig.mycompany.com` will not be accessible from outside, so a delegate proxy has to be selected. Please ensure you have [Harness Delegate installed](https://developer.harness.io/docs/platform/delegates/install-delegates/overview) for the same. 
+- If your Sysdig instance is behind a firewall, e.g.,`sysdig.mycompany.com` will not be accessible directly from Harness SaaS clusters, a delegate proxy has to be setup. Please ensure you have [Harness Delegate installed](https://developer.harness.io/docs/platform/delegates/install-delegates/overview) for the same. 
 
 ![](./static/sysdig-delegate.png)
 
@@ -37,9 +37,9 @@ This plugin exports a tab that you can show under the **Sysdig** tab for  a serv
 
 ```YAML
 - name: Sysdig
-    path: /sysdig
-    title: Sysdig
-    contents:
+  path: /sysdig
+  title: Sysdig
+  contents:
     - component: SysdigPage
 ```
 
