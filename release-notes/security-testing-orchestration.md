@@ -22,6 +22,22 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## October 2024
+
+### Version 1.112.5
+
+<!-- 2024-10-08 -->
+
+#### New features and enhancements
+
+- Resolved a performance issue that caused the Exemptions page to fail to load in some projects (STO-8104, ZD-70734).
+- Updated the Nexus IQ runner to copy custom certificates from the delegate to the JVM (STO-8060).
+- Cleaned up issue details fields and added a new **Issue type** field to all issues (STO-8080).
+
+#### Fixed issue
+
+- Fixed a bug that caused scanners to ignore additional settings with boolean values. For example, in the Anchore scanner configuration, setting the `ANCHORECTL_UPDATE_CHECK` variable to `true` or `false` was previously ignored. With this fix, STO will properly recognize all the boolean value variables (STO-8006, ZD-69654).
+
 ## September 2024
 
 ### Version 1.110.3
