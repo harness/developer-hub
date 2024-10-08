@@ -70,6 +70,8 @@ The `isHarnessCiCdAvailable` condition is met when one of the following annotati
 - `harness.io/services`
 - `harness.io/project-url` (deprecated)
 
+![](./static/cd-tab.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file, [follow the information on how to fetch the URLs for annotation](https://github.com/harness/backstage-plugins/blob/main/plugins/harness-ci-cd/PluginConfiguation.md):

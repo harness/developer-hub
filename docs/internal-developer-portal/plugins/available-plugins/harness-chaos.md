@@ -67,6 +67,8 @@ Also you could add a conditional like `isHarnessChaosAvailable`  which is met wh
               component: EntityHarnessChaosContent
 ```
 
+![](./static/harness-chaos-tab.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file.

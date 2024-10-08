@@ -84,6 +84,8 @@ Also you could add a conditional like `isJfrogArtifactAvailable` which is met wh
           component: JFrogLibArtifactCard
 ```
 
+![](./static/artifact.gif)
+
 ## Annotations
 
 - Artifact details are correlated to IDP entities using an annotation added in the entity's `catalog-info.yaml` file.

@@ -54,6 +54,8 @@ This plugin exports a UI tab that you can use as a new CI/CD tab for a service o
 
 The `isGithubActionsAvailable` condition is met when the `github.com/project-slug` annotation is present in the software components's `catalog-info.yaml` definition file.
 
+![](./static/github-actions-tab.png)
+
 ## Annotations
 
 If the `catalog-info.yaml` descriptor file for the component is stored in GitHub, the `github.com/project-slug` is automatically added as the `org/repo` where the file is stored, as follows. However, you can manually configure or override this setting:
