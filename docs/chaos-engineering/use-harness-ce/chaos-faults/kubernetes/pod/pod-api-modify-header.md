@@ -398,9 +398,9 @@ For outgoing traffic, enable HTTPS support by setting `HTTPS_ENABLED` to `true`.
 
 - If the HTTP client doesn't reload certificates with every API call, provide either the `CA_CERTIFICATES` or `SERVER_CERTIFICATES` environment variables to the chaos experiment. In this case, you don’t need to set `HTTPS_ROOT_CERT_PATH` and `HTTPS_ROOT_CERT_FILE_NAME`. The relevant CA certificates must be provided to the target application.
 
-  #### Generating Certificates
+  #### Generate Certificates
 
-  You can set either `CA_CERTIFICATES` or `SERVER_CERTIFICATES` depending on the use case, but not both simultaneously.
+  You can set either `CA_CERTIFICATES` or `SERVER_CERTIFICATES` depending on the use case.
 
   1. **Self-Signed Certificates**:
      To generate self-signed certificates, use the following commands:
