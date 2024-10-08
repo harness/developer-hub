@@ -73,3 +73,34 @@ To commit changes to Git using the configured OAuth token:
 :::info note
 We currently do not support OAuth authentication for Git providers that use vanity URLs.
 :::
+
+## Generating an OAuth Access Token with VanityURLs as the Host
+
+Harness supports the creation of OAuth Access Tokens when users are using VanityURLs as the host. This functionality is currently available for **GitHub** and **Gitlab**. 
+
+### Github
+
+In case of [Github](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#redirect-urls), users can follow the steps outlined in 
+   [Configuring OAuth for Git provider](#configure-oauth-for-git-provider), and Harness will automatically update configurations.
+
+
+### Gitlab
+
+For [GitLab](https://docs.gitlab.com/ee/integration/oauth_provider.html#adding-an-application), users need to ensure that their Vanity URL is added to the OAuth application's redirect URI list. They must provide their subdomain to have the Vanity URL whitelisted. Contact [Harness Support](mailto:support@harness.io) to complete this process.
+
+Example: If your subdomain is `yourcompany.harness.io`, the redirect URI would be:
+
+`https://yourcompany.harness.io/gateway/api/secret/oauth2/gitlab`
+
+### Supported Vanity URL Format
+Currently, Harness supports vanity URLs in the format `https://<YOUR_SUBDOMAIN>.harness.io`.
+Invalid combinations include:
+
+1. `https://<YOUR_SUBDOMAIN_1>.<YOUR_SUBDOMAIN_2>.harness.io`
+2. `https://app.harness.io/<YOUR_SUBDOMAIN>`
+
+
+
+
+
+

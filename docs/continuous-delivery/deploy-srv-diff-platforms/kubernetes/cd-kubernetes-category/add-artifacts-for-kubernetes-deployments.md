@@ -6,6 +6,7 @@ helpdocs_topic_id: 4ifq51cp0i
 helpdocs_category_id: qfj6m1k2c4
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/deploy-your-simple-node-js-application-using-local-docker-images-in-minikube
 ---
 
 This topic covers adding container image locations as Harness artifacts and referencing them in your Values files.

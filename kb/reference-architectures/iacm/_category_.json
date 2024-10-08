@@ -1,0 +1,10 @@
+{
+    "label":"Infrastructure as Code Management",
+    "position": 2,
+    "collapsible":"true",
+    "collapsed":"true",
+    "link":{
+       "type":"generated-index",
+       "title":"Infrastructure as Code Management"
+    }
+}

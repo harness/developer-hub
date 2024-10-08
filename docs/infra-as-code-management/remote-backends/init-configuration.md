@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 At the first step of most infrastructure provisioning pipelines, you prepare your working directory with the `terraform init` command. Part of this step includes setting up your backend environment for Terraform state management.
 Harness enables the use of environment variables to dynamically update your backend configuration in Terraform. 
 
-Generally, you have two approaches, [hardcoded backend configuration](https://developer.hashicorp.com/terraform/language/settings/backends/configuration), or partial configuration, where you specify an empty or partially configured backend block and populate the necessary values through environment variables.
+Generally, you have two approaches, [hardcoded backend configuration](https://developer.hashicorp.com/terraform/language/backend), or partial configuration, where you specify an empty or partially configured backend block and populate the necessary values through environment variables.
 
 ## Apply environment variables
 Using environment variables allows for a more dynamic and flexible backend configuration.
@@ -30,16 +30,17 @@ In this example, the backend configuration is left empty, allowing us to supply 
 You can set the environment variables used to configure the backend in various ways, such as directly in the terminal or through Infrastructure pipelines. Here are the variables corresponding to the partial configuration:
 
 :::important
-To set up an environment variable that populates the terraform backend configuration as part of the `terraform init -backend-config` command (for example: `terraform init -backend-config="bucket=sample_s3_bucket" -backend-config="key=terraform.tfstate" -backend-config="region=us-east-1"`), you must name your variables in the following format:
+To set up an environment variable that populates your terraform backend configuration as part of the `terraform init -backend-config` command (for example: `terraform init -backend-config="bucket=sample_s3_bucket" -backend-config="key=terraform.tfstate" -backend-config="region=us-east-1"`), you must name your variables in the following format:
 
 `PLUGIN_PLUGIN_INIT_BACKEND_CONFIG_` followed by a unique identifier to distinguish your variable.
 :::
 
-When initializing an AWS S3 bucket for example, and passing the `bucket`, `key`, and `region` parameters, Harness recommends naming your variables similar to the following:  
+When initializing an AWS S3 bucket for example, and passing the `bucket`, `key`, `region` and `dynamodb_table` parameters, Harness recommends naming your variables similar to the following:  
 
 - `PLUGIN_INIT_BACKEND_CONFIG_BUCKET`
 - `PLUGIN_INIT_BACKEND_CONFIG_KEY`
 - `PLUGIN_INIT_BACKEND_CONFIG_REGION`
+- `PLUGIN_INIT_BACKEND_CONFIG_DYNAMODB_TABLE`
 
 ### Add new environment variables
 To add new environment variables, follow these steps:
@@ -72,7 +73,7 @@ To add new environment variables, follow these steps:
 
 ## Review variable usage
 
-Once your Terraform backend configuration environment variables are set and you have a provision pipeline, run the pipeline and review the console log during the `init` step to confirm your variable values match what is used in the pipeline.  
+Once your Terraform backend configuration environment variables are set, and you have a provision pipeline, run the pipeline and review the console log during the `init` step to confirm your variable values match what is used in the pipeline.  
 
 ![Pipeline environment variable usage](./static/tf-initi-variable-log.png)
 
@@ -81,4 +82,4 @@ Notice the list of backend config values, shortly followed by the generated `ter
 ## Conclusion
 Using environment variables for backend configuration in Terraform provides a flexible and dynamic approach, making it easier to manage different environments and improve security. By following the steps outlined in this topic, you can set up and use environment variables to configure your Terraform backend dynamically.  
 
-Go to [Terraform documentation on partial configuration](https://developer.hashicorp.com/terraform/language/settings/backends/configuration#partial-configuration) for more information on supported backend configurations.
+Go to [Terraform documentation on partial configuration](https://developer.hashicorp.com/terraform/language/backend#partial-configuration) for more information on supported backend configurations.

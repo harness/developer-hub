@@ -6,6 +6,7 @@ helpdocs_topic_id: boug6e884h
 helpdocs_category_id: jcu7twh2t6
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/automation-of-harness-e2e-entity-creation-using-opentofu
 ---
 
 

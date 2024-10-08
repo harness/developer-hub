@@ -59,3 +59,24 @@ To clean up the workspace and revert back to the old state, [mark the stage as f
 ## Abort a step
 
 You can initiate an abort on the **Verify** step. For more information, go to [Abort verification](/docs/continuous-delivery/verify/configure-cv/abort-verification).
+
+
+## Abort process and when an "abort" gets completed
+
+Although an abort process may be initiated, there are multiple steps that need to be completed as a part of an abort.  This can mean that delays can occur in the timing of when tasks become aborted, and whether the receiving environments will abort their processes.
+
+As an example, a pipeline may have multiple parallel stages, doing a variety of tasks.  A bash job, a build in Artifactory, and possibly other processes could be running concurrently.
+
+They all may have different timings for when those abort process will be received and completed.  
+
+### What happens in the process
+
+The abort event to the delegate has its own delay due to network and infrastructure and can take time to arrive.  
+
+After that, the delegate still has the possibility of additional delays in sending that "abort" message to the destinations. Network and infrastructure can add further delays and then the abort process is also dependent on the task itself.
+
+For example, aborting a BASH execution should be relatively simple, whereas, stopping a build process from Artifactory would be a larger process. Harness can initiate a command to abort, but it may ultimately be controlled by the other service that it is connecting to, and how it would handle the abort command.
+
+During that time, the task that is supposed to be stopped, it can be completed, or partially completed.  It is recommended that a user review their environments to confirm if any artifacts or builds were created before the abort commands were completed. 
+
+Users should often weigh whether aborting a pipeline, or failing stages to trigger a rollback is a better option to stop their execution.

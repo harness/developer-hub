@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-08-21T10:00
+date: 2024-09-20T10:00
 sidebar_position: 4
 ---
 
@@ -68,8 +68,47 @@ Six months after a delegate image is released, the delegate reaches End of Suppo
 For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
+## October 2024
+### Version 24.09.83906 <!--  October 1, 2024 -->
+
+#### Hotfixes
+
+- ASG step will not delete all tags and create tags but instead only remove those tags which are not present while running pipleine. (CDS-101285)
+
+## September 2024
+### Version 24.08.83805 <!--  September 26, 2024 -->
+
+#### Hotfixes
+
+- WinRM shell script steps now support logs more than 5 hours till maximum of step timeout or 1 day (CDS-101408).
+
+### Version 24.09.83905 <!--  September 20, 2024 -->
+
+#### Hotfixes
+
+- Updated the identifier so that the output obtained from the PowerShell command is parsed correctly (CDS-100036).
+
+### Version 24.08.83803 <!--  September 20, 2024 -->
+
+#### Hotfixes
+
+- Fixed an issue where the secrets will no longer get exposed in Kubernetes Dry Run Step even if they are placed in ConfigMap.
+
+### Version 24.09.83900 <!-- September 9, 2024 -->
+
+#### Fixed issues
+
+- Enhanced webhook notification handling to support secrets in headers, enabling proper decryption of Authorization and other header values stored in the Harness Secret Manager. This ensures seamless webhook triggering without requiring hardcoded values. (PL-55319, ZD-65913)
+
+- Fixed an issue where the AWS Secret Manager validation was failing due to regions being passed instead of full URLs, causing connectivity errors in delegate logs. The region is now correctly converted to a URL, preventing perpetual task failures. (PL-55740, ZD-67142, ZD-67150)
 
 ## August 2024
+
+### Version 24.08.83802 <!-- August 26, 2024 -->
+
+#### New features and enhancements
+
+- Upgraded the `dnsjava` library to version `3.6.0` to address CVE-2024-25638, which involved potential security vulnerabilities in DNS query responses. (PL-55721, ZD-63383, ZD-68810)
 
 ### Version 24.07.83611, 24.08.83705 <!--  August 30, 2024 -->
 

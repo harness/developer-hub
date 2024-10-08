@@ -6,6 +6,7 @@ helpdocs_topic_id: qghequ5vxu
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/automate-your-ci-cd-pipeline-using-triggers
 ---
 
 This topic shows you how to create and run custom triggers for your Harness pipelines using platform-agnostic Webhooks and cURL commands.

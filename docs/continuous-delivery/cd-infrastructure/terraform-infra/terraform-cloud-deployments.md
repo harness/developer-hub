@@ -2,6 +2,7 @@
 title: Terraform Cloud provisioning
 description: Connect to a Terraform Cloud/Enterprise instance and run your workspaces.
 sidebar_position: 9
+canonical_url: https://www.harness.io/blog/cloudformation-and-terraform-support
 ---
 
 In addition to running Terraform configuration files locally on the Harness Delegate, Harness supports running Terraform Cloud and Enterprise workspaces.

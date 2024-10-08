@@ -64,10 +64,8 @@ async function config() {
           sitemap: {
             // changefreq: 'weekly',
             // priority: 0.5,
-            ignorePatterns: [
-              '/docs/database-devops',
-              '/docs/database-devops/**',
-            ],
+            // ignorePatterns: [
+            // ],
             // filename: 'sitemap.xml',
           },
           theme: {
@@ -126,6 +124,10 @@ async function config() {
                   to: 'docs/continuous-delivery',
                 },
                 {
+                  label: 'Database DevOps',
+                  to: 'docs/database-devops',
+                },
+                {
                   label: 'Infrastructure as Code Management',
                   to: 'docs/infrastructure-as-code-management',
                 },
@@ -158,6 +160,10 @@ async function config() {
                   to: 'docs/internal-developer-portal',
                 },
                 {
+                  label: 'Cloud Development Environments (BETA)',
+                  to: 'docs/cloud-development-environment',
+                },
+                {
                   label: 'Software Engineering Insights',
                   to: 'docs/software-engineering-insights',
                 },
@@ -167,7 +173,7 @@ async function config() {
                 },
                 {
                   label: 'Open Source',
-                  href: 'https://docs.gitness.com/',
+                  to: 'docs/open-source'
                 },
                 {
                   label: 'FirstGen',
@@ -238,6 +244,10 @@ async function config() {
                   to: 'university/idp',
                 },
                 {
+                  label: 'Infrastructure as Code Management',
+                  to: 'university/iacm',
+                },
+                {
                   label: 'Virtual Instructor-Led Calendar',
                   to: 'https://university-registration.harness.io/calendar',
                 },
@@ -276,11 +286,6 @@ async function config() {
               label: 'Roadmap',
               position: 'right',
               href: '/roadmap',
-            },
-            {
-              label: 'Open Source',
-              position: 'right',
-              href: 'https://docs.gitness.com/',
             },
             {
               type: 'custom-coveo-search',
@@ -375,10 +380,6 @@ async function config() {
                   to: 'https://apidocs.harness.io/',
                 },
                 {
-                  label: 'Open Source',
-                  to: 'https://docs.gitness.com/',
-                },
-                {
                   label: 'YouTube',
                   to: 'https://www.youtube.com/c/Harnessio',
                 },
@@ -401,6 +402,10 @@ async function config() {
                 {
                   label: 'Instructor-Led Training',
                   to: '/university?ilt',
+                },
+                {
+                  label: 'Partners',
+                  to: 'https://partnertraining.harness.io/',
                 },
               ],
             },
@@ -435,7 +440,7 @@ async function config() {
         prism: {
           theme: themes.github,
           darkTheme: themes.vsDark,
-          additionalLanguages: ["yaml", "json", "bash", "python", "git"]
+          additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git'],
         },
         colorMode: {
           defaultMode: 'light',
@@ -505,7 +510,7 @@ async function config() {
       ],
       // redirect plugin start
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
 
         {
           id: 'university',
@@ -518,7 +523,7 @@ async function config() {
         },
       ],
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
 
         {
           id: 'community',
@@ -531,7 +536,7 @@ async function config() {
         },
       ],
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
         {
           id: 'kb',
           path: 'kb',
@@ -544,7 +549,7 @@ async function config() {
       ],
 
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
         {
           id: 'docs1',
           path: 'docs',
@@ -571,8 +576,9 @@ async function config() {
           ],
         },
       ],
+
       [
-        path.resolve(__dirname, './plugins/redirect-plugin'),
+        path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
         {
           id: 'roadmap',
           path: 'roadmap',
@@ -588,7 +594,6 @@ async function config() {
       path.join(__dirname, '/plugins/utmcookie-plugin'),
       path.join(__dirname, '/plugins/feedback-plugin'),
       path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
-      //path.join(__dirname, "/plugins/scarf-plugin"),
     ],
     clientModules: [
       path.join(__dirname, '/client_module/searchBar'),

@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
  - /docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage
+canonical_url: https://www.harness.io/blog/docker-multi-stage-build
 ---
 
 import Tabs from '@theme/Tabs';

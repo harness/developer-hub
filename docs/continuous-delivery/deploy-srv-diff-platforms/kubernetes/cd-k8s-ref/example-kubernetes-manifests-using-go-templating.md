@@ -6,6 +6,7 @@ helpdocs_topic_id: qvlmr4plcp
 helpdocs_category_id: 85tr1q4hin
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/deploying-to-do-application-kubernetes-harness
 ---
 
 This topic describes how to make your Kubernetes manifests reusable and dynamic using [Go templating](https://godoc.org/text/template) and Harness built-in variables.

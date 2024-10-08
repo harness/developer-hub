@@ -10,16 +10,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::info
-While the **Run Tests** step remains backwards compatible, Harness recommends [using the new **Test** step](../tests-v2.md) to take advanced of improved user experience.
-:::
+This page contains instructions for using  Test Intelligence (v1) with the **Run Tests** step. 
 
-:::note
-
-Currently, support for Python in the Run Tests step is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. This feature flag is not applicable to the new **Test** step.
+While **Run Tests** step remains backwards compatible, Harness recommends using the newer [**Test** ](../tests-v2.md) step (Test Intelligence v2) for simplified user experience.
 
 :::
 
-Using [Test Intelligence (TI)](../ti-overview.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 
 ## Enable TI for Python
 
@@ -31,10 +27,6 @@ You can enable TI for Python in three steps:
 3. [(Optional) Add test splitting.](#add-test-splitting)
 
 ### Add the 'Run Tests' step
-
-:::info
-While the **Run Tests** step remains backwards compatible, Harness recommends [using the new **Test** step](../tests-v2.md) to take advanced of improved user experience.
-:::
 
 Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
 

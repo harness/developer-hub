@@ -6,6 +6,7 @@ helpdocs_topic_id: sof7n3qjap
 helpdocs_category_id: flam7377aq
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/build-system-vs-ci
 ---
 
 From the **Builds** page, you can inspect past builds and monitor the progress of ongoing builds.

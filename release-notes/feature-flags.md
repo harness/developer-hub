@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-09-05T18:19:25
+date: 2024-10-03T08:09:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,9 +15,60 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: September 05, 2024
+#### Last updated: October 03, 2024
+
+## October 2024
+
+### Relay Proxy
+
+#### Version 2.0.6
+
+**Fixed Issues**:
+
+- Upgrades dependencies to resolve CVEs
+- Reduces pushpin log level from info to error level. This reduces the amount of ephemeral pod storage the Proxy consumes in k8s.
+- Ensures the Proxy only writes to the response body if the response hasn't already been committed.
 
 ## September 2024
+
+### Relay Proxy
+
+#### Version 2.0.5
+
+**New features and enhancements**:
+
+ - If you include a `Harness-SDK-ApplicationID` header in your request to the Proxy it will be included in the logs e.g. `{"level":"info","ts":"2024-09-10T15:36:00+01:00","caller":"middleware/middleware.go:44","msg":"request","component":"LoggingMiddleware","method":"GET","path":"/client/env/:environment_uuid/feature-configs","status":401,"took":"80.619µs","appID":"app-123"}`
+
+**Fixed Issues**
+
+ - Fixes an issue where the cache status wasn't being reported properly in the `/health` response if the Proxy disconnected/reconnected to redis after startup
+ - Fixes an issue where a stale inventory key would remain in redis even though stale assets had been removed which caused unecessary memory usage in redis.
+
+#### Version 2.0.4
+
+**Fixed Issues**:
+  - Fixes an issue where the Proxy could send SSE events with truncated flag identifiers if the flag identifiers contained an underscore e.g. `HELLO_WORLD`. When the Primary Proxy starts up it pulls down config from Saas, compares it with the config in redis and generates SSE events to make sure SDKs don't miss out on changes. However in this scenario if the flag identifier contained an underscore e.g. `HELLO_WORLD` the SSE event would indicate a change for the flag `HELLO`.
+
+#### Version 1.0.5
+
+**Fixed Issues**
+
+ - Fixes CVEs by upgrading packages and dependencies
+
+### Erlang SDK
+
+#### Version 3.0.1
+
+**Fixed Issues**:
+ - Fixed an issue where a flag or target group change would not be stored with the `Outdated` error. 
+
+### .NET SDK
+#### Version 1.7.2
+**New features and enhancements**:
+ - Added .NET 8.0 TFM. (FFM-12057)
+ - Upgraded `System.IdentityModel.Tokens.Jwt` for .NET 7.0 and 8.0
+ TFMs.
+ - Remove unused `Disruptor` library.
 
 ### Javascript Client SDK
 
@@ -43,12 +94,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 **New features and enhancements**:
  - Bumped FF React SDK to 2.2.0. (FFM-11972)
 
-### Relay Proxy
+### Ruby SDK
 
-#### Version 2.0.4
+#### Version 1.3.2
 
 **Fixed Issues**:
-  - Fixes an issue where the Proxy could send SSE events with truncated flag identifiers if the flag identifiers contained an underscore e.g. `HELLO_WORLD`. When the Primary Proxy starts up it pulls down config from Saas, compares it with the config in redis and generates SSE events to make sure SDKs don't miss out on changes. However in this scenario if the flag identifier contained an underscore e.g. `HELLO_WORLD` the SSE event would indicate a change for the flag `HELLO`.
+ - No longer ships `rake`, `minitest` and `standard` as dependencies. (FFM-11995)
 
 ## August 2024
 

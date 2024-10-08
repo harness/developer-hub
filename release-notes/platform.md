@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-09-05T14:00:30
+date: 2024-09-30T14:00:30
 sidebar_position: 3
 ---
 
@@ -78,6 +78,42 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## September 2024
+
+### Version 1.57.x<!-- September 30, 2024 -->
+
+#### New features and enhancements
+
+- Upgraded `org.clojure:clojure` from version 1.9.0 to 1.11.4 to address security vulnerabilities, including CVE-2024-22871, which could lead to a denial of service (DoS) attack. (PL-56307)
+
+#### Fixed issues
+
+- Resolved an issue in FileStore where tag values were not displayed in the tag hover for files. The custom logic for rendering tags has been replaced with a standard Tags component, ensuring that both tag names and values are correctly shown. (PL-56940, ZD-69741)
+
+- Fixed an issue on the Freeze page where long names and identifiers caused text overlap in the UI. A maximum width has been set for the freeze name cell, with the full name and identifier now visible on hover. (PL-56843, ZD-69083)
+
+### Version 1.56.x<!-- September 16, 2024 -->
+
+#### New features and enhancements
+
+- Improved error messaging for Custom Secrets Manager with Template to provide clear guidance when secrets are referenced from a lower scope. Users are now directed to the correct configuration using the provided [documentation](/docs/platform/secrets/secrets-management/reference-secrets-in-custom-sm/) for prefixing secrets. 
+
+- Added support for v1 APIs in template-service, ng-manager, platform-service, and pipeline-service for Istio version 1.19.0 and above. If you are running istio >= 1.19.0, add the following override in your `override.yaml` file to access V1 APIs. (PL-50528, ZD-65579)
+
+  ```yaml
+  global:
+    istio:
+      enableRegexRoutes: true
+  ```
+
+- Fixed an issue where Slack could still be selected as a notification method at the project level, even after being disabled at the account level. Notification channel options are now controlled by Default Settings and must be enabled there to be available. (PL-48866, ZD-60861)
+
+#### Fixed issues
+
+- Fixed an issue where users with the correct permissions were unable to delete resources in a Resource Group. (PL-56726, ZD-69369)
+
+- Fixed an issue where the AWS Secret Manager validation was failing due to regions being passed instead of full URLs, causing connectivity errors in delegate logs. The region is now correctly converted to a URL, preventing perpetual task failures. (PL-55740, ZD-67142, ZD-67150)
+
+- Enhanced webhook notification handling to support secrets in headers, enabling proper decryption of Authorization and other header values stored in the Harness Secret Manager. This ensures seamless webhook triggering without requiring hardcoded values. (PL-55319, ZD-65913)
 
 ### Version 1.55.x<!-- September 5, 2024 -->
 

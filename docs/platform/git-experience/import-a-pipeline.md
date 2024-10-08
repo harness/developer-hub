@@ -6,6 +6,7 @@ helpdocs_topic_id: q1nnyk7h4v
 helpdocs_category_id: rv2jo2hoiy
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/ci-cd-pipeline-as-code-with-harness
 ---
 
 import import_from_git from './static/import-a-pipeline-29.png'

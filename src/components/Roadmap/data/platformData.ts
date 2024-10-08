@@ -133,11 +133,6 @@ export const platformData: Horizon = {
         title: "Auto Discovery of Entities in Git",
         description: "When an entity is created in Git it is created in Harness as well.",
       },
-      {
-        tag: [],
-        title: "GitX for Triggers",
-        description: "Ability to configure triggers as code in a Git provider."
-      },
     ],
   },
   Later: {

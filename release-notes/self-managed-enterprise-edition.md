@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-09-03T14:00
+date: 2024-09-12T14:00
 sidebar_position: 16
 ---
 
@@ -145,6 +145,51 @@ To acquire the necessary `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD`, contact 
 Upon providing your credentials and the release version, the script will proceed to push the Looker image to your private repository.
 
 :::
+## September 12, 2024, version 0.20.2
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.20.2](https://github.com/harness/helm-charts/releases/tag/harness-0.20.2) |
+| Air Gap Bundle | [0.20.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.20.2) |
+| NG Manager | 1.51.9 |
+| CI Manager | 1.41.3 |
+| Manager | 1.42.5 |
+| Pipeline Service | 1.89.2 |
+| Platform Service | 1.34.2 |
+| Access Control Service | 1.56.1 |
+| Delegate | 24.07.83611 |
+| GitOps Service | 1.15.4 |
+| GitOps Agent | 0.78.0 |
+| Change Data Capture | 1.25.1 |
+| STO Core | 1.106.0 |
+| Test Intelligence Service | 1.27.0 |
+| NG UI | 1.37.5 |
+| LE NG | 1.3.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.20.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.20.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.20.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.20.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.20.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.20.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.20.2/sto_images.tgz" \
+  .
+```
+
+#### Fixed issues
+
+- Harness enabled the feature flag `OPA_RBAC_FEATURE` by default. You should now see the policies section on the **RoleDetails** page.
+
+- Added APIs for getting a Harness GitOps cluster object with identifiers and metadata using an URL.
 
 ## September 3, 2024, version 0.20.0
 
@@ -215,7 +260,7 @@ This feature is currently behind the feature flag, `CI_GIT_CLONE_ENHANCED`. Cont
 
 #### Chaos Engineering
 
-- Adds a new Kubernetes pod fault, [pod IO mistake](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-mistake) that causes files to read or write an incorrect value. (CHAOS-5916)
+- Adds a new Kubernetes pod fault, [pod IO mistake](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-io-mistake) that causes files to read or write an incorrect value. (CHAOS-5916)
 
 - Adds proxy support for Windows chaos infrastructure. (CHAOS-5859)
 
@@ -937,16 +982,16 @@ gsutil -m cp \
 
 - This release improves the advanced filter support for "headers", "methods", "queryParams", "destination_IPS", and "destination_Hosts" in the API faults. (CHAOS-5381)
 
-- Adds the unit support (milliseconds, seconds, minutes and hours) for latency parameters in the [pod API latency](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-block) faults. (CHAOS-5378)
+- Adds the unit support (milliseconds, seconds, minutes and hours) for latency parameters in the [pod API latency](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-block) faults. (CHAOS-5378)
 
 - Adds backend to GameDay V2. (CHAOS-5138)
 - Adds the following JVM chaos faults for Linux that target the JVM of a given Java process running on a Linux machine to inject faults.
-    - [JVM CPU stress](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-cpu-stress)
-    - [JVM memory stress](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-memory-stress)
-    - [JVM method latency](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-latency)
-    - [JVM method exception](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-exception)
-    - [JVM modify return](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-modify-return)
-    - [JVM trigger GC](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-trigger-gc) (CHAOS-4675)
+    - [JVM CPU stress](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-cpu-stress)
+    - [JVM memory stress](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-memory-stress)
+    - [JVM method latency](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-method-latency)
+    - [JVM method exception](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-method-exception)
+    - [JVM modify return](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-modify-return)
+    - [JVM trigger GC](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-trigger-gc) (CHAOS-4675)
 
 :::danger important upgrade instructions for chaos infrastructure
 - [Video tutorial to upgrade your chaos infrastructure to 1.38.x or higher](https://youtu.be/fAnsGqkcdkc)
@@ -1029,7 +1074,7 @@ gsutil -m cp \
 
 - Fixed an issue where the user could not set up or create a Datadog probe. (CHAOS-5440)
 
-- Fixed an issue where the [pod IO stress](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress) experiment incorrectly applied stress on the helper pod instead of the target container. (CHAOS-5416)
+- Fixed an issue where the [pod IO stress](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-io-stress) experiment incorrectly applied stress on the helper pod instead of the target container. (CHAOS-5416)
 
 - Fixed the issue where the sample data wasn't rendered in sorted timestamp while setting up custom health source. (CHAOS-5473)
 - Improved the efficiency of Mongo queries by adding a compound index. (CHAOS-5280, CHAOS-5279)

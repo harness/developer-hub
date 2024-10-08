@@ -8,6 +8,10 @@ sidebar_label: ServiceNow
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::info
+The SEI ServiceNow integration is currently in BETA and is accessible behind the Feature Flag `<SEI_SERVICENOW>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
 ServiceNow is used to set up systems that define, manage, automate and structure IT services for companies. You can use the SEI ServiceNow integration to integrate SEI with ServiceNow Cloud and ServiceNow On-Prem accounts.
 
 This integration allows you to track, manage, and analyze incidents, and change requests in real-time, leading to improved efficiency and enhanced productivity.

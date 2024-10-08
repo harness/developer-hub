@@ -24,7 +24,8 @@ Learn about the features, components, and key concepts of Harness SCS:
 
 | **Feature** | **Works with Harness Code Repository** | **Works with Harness CI (using Harness Pipeline's Build Stage)**   | **Works with Harness CD (using Harness Pipeline's Deploy Stage)** | **Works with 3rd Party Code Repo/CI/CD (using Harness Pipeline's Security Stage)**  |
 |--|--|--|--|--|
-|[Repository Security Posture Management](/docs/software-supply-chain-assurance/repository-security-posture-management-rspm) | On Roadmap | No | No | Only GitHub, others are on Roadmap |
+|[Repository Security Posture Management](/docs/software-supply-chain-assurance/repository-security-posture-management-rspm) | On Roadmap | N | N | Only GitHub, others are on Roadmap |
+|[CICD Security Posture Management](../cicd-security-posture-management-cicdspm) | - | Works with Harness pipelines | Works with Harness pipelines | Only GitHub Actions, others are on Roadmap |
 |[Generate or ingest SBOM, followed by SBOM drift detection & SBOM scores](/docs/category/generate-or-ingest-sbom) | Y | Y | Y | Y |
 |[Enforce OSS usage with SBOM governance policies](/docs/category/enforce-sbom-policies) | Y | Y | Y | Y |
 |[Generate SLSA provenance](/docs/software-supply-chain-assurance/slsa/generate-slsa) | Y | Y | N | N |

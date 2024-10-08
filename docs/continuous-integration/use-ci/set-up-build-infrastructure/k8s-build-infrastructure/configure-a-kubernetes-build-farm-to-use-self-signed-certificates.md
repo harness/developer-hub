@@ -296,7 +296,7 @@ This workflow is applicable only if you're using a self-hosted registry to store
 
    </details>
 
-3. If you're storing your certificates in a local registry and [need to run Docker-in-Docker](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto), specify the local certificate path on the delegate.
+3. If you're storing your certificates in a local registry and [need to run Docker-in-Docker](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline), specify the local certificate path on the delegate.
 
    For example, if your self-signed certs are stored at `https://my-registry.local.org:799` and you log in with `docker login my-registry.local.org:799`, then you add the path to your `DESTINATION_CA_PATH` environment like this:
 
@@ -321,6 +321,25 @@ This workflow is applicable only if you're using a self-hosted registry to store
    ```
 
 4. Restart the delegate. Once it's up and running, `exec` into the container and ensure that the volume exists at the mounted path and contains your certificates.
+
+## Secret Name Creation for Certificate Bundles in Build Pods
+
+When a customer mounts a certificate bundle in their build pods, the bundle is created as a secret and mounted in the pod.
+
+The secret names follow a specific format: `Podname-filename-hash`.
+
+For Exampple:-
+**Pod Name**: `harnessci-buildpod-9rwcbkl6`
+**Secret Name**: `harnessci-buildpod-9rwcbkl6-custom-cr-pem-0-pem-1667255857`
+Here, `custom-cr-pem` is the pem file name and `1667255857` is the random hash that is generated during secret creation.
+
+The name is sanitized to comply with Kubernetes naming conventions. If the total length exceeds 63 characters, it is trimmed from the end to ensure compliance.
+
+:::info note
+1. Previously, if the characters exceeded the limit, users had to manually shorten the file or stage names to avoid errors. Now, this change for automatic trimming of secret names beyond 63 characters is available starting from **delegate release 821xx**.
+2. This behavior applies only to **Kubernetes architecture**.
+3. To avoid potential failures in Kubernetes environments, ensure that all secret names are lowercase. Starting from **delegate release 825xx**, any uppercase characters in the secret name are automatically converted to lowercase to ensure compatibility with Kubernetes naming conventions.
+:::
 
 ## Troubleshoot Kubernetes cluster build infrastructures
 

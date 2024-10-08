@@ -6,6 +6,7 @@ helpdocs_topic_id: j5xrnxl5yz
 helpdocs_category_id: xot6u3ge9d
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/create-simple-helm-chart
 ---
 
 Harness supports Helm charts stored in a remote Helm Chart Repository, such as ChartMuseum. In some cases, you might be deploying the same Helm chart and version to many clusters/namespaces in parallel. This can cause many identical downloads and performance issues.

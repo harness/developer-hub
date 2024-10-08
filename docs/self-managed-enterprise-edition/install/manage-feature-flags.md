@@ -4,6 +4,7 @@ description: Learn how to manage Feature Flags for Self-Managed Enterprise Editi
 sidebar_position: 10
 redirect_from:
   - /docs/self-managed-enterprise-edition/self-managed-helm-based-install/manage-feature-flags/
+canonical_url: https://www.harness.io/blog/feature-flags-best-practices
 ---
 
 This topic describes how to manage Feature Flags for Harness Self-Managed Enterprise Edition. You update Feature Flags using the `override.yaml` file for your base installation.

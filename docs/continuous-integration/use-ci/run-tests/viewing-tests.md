@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests
+canonical_url: https://www.harness.io/blog/continuous-integration-testing
 ---
 
 

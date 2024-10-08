@@ -8,6 +8,7 @@ helpdocs_is_private: false
 redirect_from:
   - /docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/cicd-for-serverless
 ---
 
 import Tabs from '@theme/Tabs';

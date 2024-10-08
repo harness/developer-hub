@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-08-30T20:00
+date: 2024-10-01T20:00
 sidebar_position: 12
 ---
 
@@ -16,6 +16,50 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## October 2024
+
+### Version 0.34.0
+
+<!-- October 1, 2024 -->
+
+#### New features and enhancements
+
+- We have added the [new Workflows Homepage](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization), which helps you to customize the Workflows organization and information associated. This feature is behind the Feature Flag `IDP_ENABLE_WORKFLOWSV2`, contact [harness support](mailto:support@harness.io) to enable it on your account. [IDP-3752] 
+- We have upgraded to the new backend system of Backstage in Harness IDP. [IDP-3252]
+- Enhanced the API Response for Catalog Ingestion API. [IDP-3672]
+- New plugins added to the marketplace.
+  - [Sysdig Plugin for Backstage](https://github.com/sysdiglabs/backstage-plugin-sysdig)
+
+#### Bug fixes
+
+- Fixed the issue with `mode: append` to support updates to array values, in Catalog Ingestion API. [IDP-3734]
+- Fixed the UI issues with Harness Chaos Engineering Plugin. [IDP-3670]
+- Fixed the issue with global GitHub OAuth. [IDP-3655]
+- Fixed the issue with Catalog APIs with x-api-key in the header. 
+
+## September 2024
+
+### Version 0.33.0
+
+<!-- September 17, 2024 -->
+
+#### New features and enhancements
+
+- We have upgraded our Backstage core version to v1.28. [IDP-2870]
+- [Catalog Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api) received a huge update with lots of new endpoints and use-cases supported. [IDP-3565]
+- Add [mkdocstrings](https://mkdocstrings.github.io/) plugin in TechDocs to generate docs from comments in code blocks. [IDP-3570]
+- New plugins added to the marketplace.
+  - [Argo-CD Plugin for Backstage](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-argo-cd#argo-cd-plugin-for-backstage)
+
+- We have encountered an issue with usage of `ui:widget: password` which reveals the user token in plain text to the user if the field is not used in the first page of the Workflow definition. We have updated our docs with instructions. Please find more context [here](/kb/internal-developer-portal/articles/secrets-issue) if you see the issue.  
+
+#### Bug fixes
+
+- Fixed issue with Jenkins Plugins integration using Delegate. [IDP-3551]
+- Fixed `AuthenticationError` issue for templates registered from Harness Code Repo. [IDP-3316]
+- Fixed the issue when registering or refreshing IDP workflow would take 10-30 minutes. This now happens instantly.
+- Fixed the UI issue when long sidenav in TechDocs sites would cause overlap issues.
 
 ## August 2024
 

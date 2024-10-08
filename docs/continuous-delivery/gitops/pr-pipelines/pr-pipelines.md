@@ -2,6 +2,7 @@
 title: Create Harness GitOps PR pipelines
 description: Learn how to create PR pipelines with Harness GitOps.
 sidebar_position: 2
+canonical_url: https://www.harness.io/blog/gitops-the-push-and-pull-approach
 ---
 
 This topic shows you how to create a Harness PR pipeline in Harness GitOps to make changes to one of an ApplicationSet's target environments.

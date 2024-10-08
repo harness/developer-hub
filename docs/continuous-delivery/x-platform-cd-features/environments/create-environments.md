@@ -2,6 +2,7 @@
 title: Create environments
 description: Learn how to create CD environments.
 sidebar_position: 2
+canonical_url: https://www.harness.io/blog/deployment-environments
 ---
 
 Environments represent your deployment targets (QA, Prod, etc). Each environment contains one or more **Infrastructure Definitions** that list your target clusters, hosts, namespaces, etc.

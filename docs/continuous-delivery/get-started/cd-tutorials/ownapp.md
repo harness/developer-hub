@@ -5,6 +5,7 @@ hide_table_of_contents: true
 sidebar_position: 3
 redirect_from:
   - /tutorials/cd-pipelines/kubernetes/ownapp
+canonical_url: https://www.harness.io/blog/delegates-and-agents-onramp-to-scale-with-harness
 ---
 
 <CTABanner

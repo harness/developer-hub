@@ -4,7 +4,7 @@
 # Learn more at: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Global Owners of the HDH Repository
-*       @ravilach @wei-harness
+*       @pratmit @wei-harness
 
 # Configuration Files in DS are JS.
 *.js    @wei-harness
@@ -13,18 +13,18 @@
 *.lock  @wei-harness
 
 # Contributing
-CONTRIBUTING.md @ravilach
-README.md @ravilach
-/docs/hdh/ @ravilach
+CONTRIBUTING.md @pratmit
+README.md @pratmit
+/docs/hdh/ @pratmit
 
-# Certification
+# University
 /university/ @ravilach
 
 # Community
 /community/ @Ompragash
 
 # Redirect Archives
-/archive/  @ravilach @wei-harness
+/archive/  @pratmit @wei-harness
 
 # Documentation ###
 
@@ -32,10 +32,13 @@ README.md @ravilach
 /docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av
 
 # Continuous Integration Docs
-/docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed @lkilpatrick-harness
+/docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed
 
 # CODE Docs
-/docs/code-repository/ @pwolf-harness @hitesharinga @dewan-ahmed @lkilpatrick-harness
+/docs/code-repository/ @pwolf-harness @hitesharinga @dewan-ahmed
+
+# Open Source Docs
+/docs/open-source/ @dewan-ahmed @rustd @SushrutHarness
 
 # STO Docs
 /docs/security-testing-orchestration/ @tejakummarikuntla
@@ -63,7 +66,7 @@ README.md @ravilach
 /docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla
 
 # IACMS Docs
-/docs/infra-as-code-management/ @RickCraig @richardblack-Harness
+/docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez 
 
 # FF Docs
 /docs/feature-flags/ @HarnessTheChaos @jenniferopal
@@ -73,6 +76,9 @@ README.md @ravilach
 
 # SEI Docs
 /docs/software-engineering-insights/ @codewdhruv
+
+# DB DevOps Docs
+/docs/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos
 
 # FirstGen Docs ###
 
@@ -114,6 +120,10 @@ README.md @ravilach
 # SMP FAQs
 /docs/faqs/self-managed-ee-faq/ @pratmit
 
+# DB DevOps FAQs
+
+/kb/database-devops/index @jenniferopal @stephenatwell @HarnessTheChaos
+
 # Release Notes ###
 
 # CD Release Notes
@@ -129,13 +139,16 @@ README.md @ravilach
 /release-notes/continuous-error-tracking.md @M-Tsur
 
 # CI Release Notes
-/release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed @lkilpatrick-harness
+/release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed
 
 # CODE Release Notes
-/release-notes/code-repository.md @pwolf-harness @hitesharinga @dewan-ahmed @lkilpatrick-harness
+/release-notes/code-repository.md @pwolf-harness @hitesharinga @dewan-ahmed
 
 # Delegate Release Notes
 /release-notes/delegate.md @pratmit
+
+# Database DevOps Release Notes
+/release-notes/database-devops.md @stephenatwell @jenniferopal @HarnessTheChaos
 
 # FF Release Notes
 /release-notes/feature-flags.md @HarnessTheChaos @jenniferopal
@@ -167,10 +180,10 @@ README.md @ravilach
 /kb/ @deepanshuHarness
 
 # Drone KB
-/kb/continuous-integration/drone-faqs.md @jimsheldon
+/kb/continuous-integration/drone-faqs.md @dewan-ahmed
 
 # CI KB
-/kb/continuous-integration/ @nofarblue @rustd @deepanshuHarness @dewan-ahmed @lkilpatrick-harness
+/kb/continuous-integration/ @nofarblue @rustd @deepanshuHarness @dewan-ahmed
 
 # CD KB
 /kb/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av
@@ -182,7 +195,7 @@ README.md @ravilach
 /kb/feature-flags/ @HarnessTheChaos @jenniferopal
 
 #CCM KB
-/kb/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss @rssnyder
+/kb/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss @rssnyder @brandon-harness
 
 #SRM KB
 /kb/service-reliability-management/ @sunilgupta-harness
@@ -202,6 +215,9 @@ README.md @ravilach
 #RA
 /kb/reference-architectures/ @rssnyder @suranc
 
+# SEI KB
+/kb/sei/ @codewdhruv
+
 # Roadmap ###
 
 #CCM Roadmap
@@ -214,16 +230,19 @@ src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av
 src/components/Roadmap/data/cdData.ts @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
 
 #CI Roadmap
-src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed @lkilpatrick-harness
+src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed
 
 #Code Roadmap
-src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga @dewan-ahmed @lkilpatrick-harness
+src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga @dewan-ahmed
 
 #FF Roadmap
 src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
 
 #IACM Roadmap
 src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness
+
+#FME Roadmap
+src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow
 
 #IDP Roadmap
 src/components/Roadmap/data/idpData.ts @Debanitrkl

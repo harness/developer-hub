@@ -2,6 +2,7 @@
 title: Reconcile pipeline template changes
 description: This topic explains how to reconcile pipeline template changes in Harness.
 sidebar_position: 15
+canonical_url: https://www.harness.io/blog/ci-cd-pipeline-as-code-with-harness
 ---
 
 If any [entity](https://developer.harness.io/docs/platform/references/harness-entity-reference/) referenced in a pipeline is updated, Harness prompts you to update the pipeline if you're viewing the pipeline in Pipeline Studio. Harness detects updates made to the referenced entities using Pipeline Studio or YAML view. 

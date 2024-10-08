@@ -4,7 +4,6 @@
 User-Agent: *
 Allow: /
 Disallow: /docs/first-gen/
-Disallow: /docs/database-devops/
 
 User-agent: coveobot
 Allow: /
@@ -15,3 +14,4 @@ Sitemap: https://developer.harness.io/sitemap.xml
 # User-Agent: *
 # Disallow: /docs/{slug}/
 # Disallow: /docs/{slug}/{file-name}
+# Disallow: /docs/database-devops/

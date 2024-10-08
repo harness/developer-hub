@@ -7,6 +7,7 @@ helpdocs_topic_id: 7kb90dkxw0
 helpdocs_category_id: ei5fgqxb0j
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/github-actions
 ---
 
 

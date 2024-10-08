@@ -70,9 +70,25 @@ integrations:
 
 ```
 
-### Troubleshooting
+### Supported metadata
 
-In case you do not see data for all projects initially, consider enabling the `use_privileged_APIs` metadata field i.e. set the field to `True`. This needs the generated `SONARQUBE_API_KEY` to have the `Requires ‘Administer System’` permissions in SonarQube. For more information, go to [SonarQube Documentation](https://next.sonarqube.com/sonarqube/web_api/api/projects/search).
+<table>
+    <tr>
+        <td><b>Metadata</b></td>
+        <td><b>Type</b></td>
+        <td><b>Description</b></td>
+    </tr>
+    <tr>
+        <td>allow_unsafe_ssl</td>
+        <td>Boolean</td>
+        <td>Allows users to bypass SSL verification for custom certificates authorized by the SonarQube server</td>
+    </tr>
+    <tr>
+        <td>use_privileged_APIs</td>
+        <td>Boolean</td>
+        <td>Set to True to enable the use of privileged APIs, which are required when all project data is not visible. This requires the API key to have the **Administer System** permission in SonarQube. For more information, go to [SonarQube Documentation](https://next.sonarqube.com/sonarqube/web_api/api/projects/search).</td>
+    </tr>
+</table>
 
 </TabItem>
 </Tabs>
