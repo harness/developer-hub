@@ -145,7 +145,7 @@ permissions:
       <tr>
         <td> DESTINATION_PORTS </td>
         <td> Comma-separated list of the destination service or host ports for which `egress` traffic should be affected. </td>
-        <td> Default: 80,8443. For more information, go to <a href="#destination-ports">destination ports</a>. </td>
+        <td> Default: 80,443. For more information, go to <a href="#destination-ports">destination ports</a>. </td>
       </tr>
       <tr>
         <td> HTTPS_ENABLED </td>
@@ -153,9 +153,14 @@ permissions:
         <td> Default: false. For more information, go to <a href="#https">HTTPS</a>.</td>
       </tr>
       <tr>
-        <td> CUSTOM_CERTIFICATES </td>
-        <td> Provide the custom certificates for the proxy server to serve as intermediate certificates for HTTPS communication. </td>
+        <td> CA_CERTIFICATES </td>
+        <td> Provide the CA certificates for the proxy server to serve as intermediate certificates for HTTPS communication. </td>
         <td> HTTPS communication necessitates its use as intermediate certificates by the proxy server. These certificates should be loaded into the target application. For more information, go to <a href="#https">HTTPS</a></td>
+      </tr>
+      <tr>
+        <td> SERVER_CERTIFICATES </td>
+        <td> Provide the Server certificates for the proxy server to serve as intermediate certificates for HTTPS communication. </td>
+        <td> HTTPS communication necessitates its use as intermediate certificates by the proxy server. The corresponding CA certificates should be loaded as root certificates inside the target application. For more information, go to <a href="#https">HTTPS</a></td>
       </tr>
       <tr>
         <td> HTTPS_ROOT_CERT_PATH </td>
@@ -327,25 +332,41 @@ spec:
 
 ### HTTPS
 
-Enable the HTTPS support for both incoming and outgoing traffic by setting the `HTTPS_ENABLED` field to `true`. Its usage varies depending on whether it is applied to `ingress` or `egress` scenarios.
+To enable HTTPS support for both incoming and outgoing traffic, set the `HTTPS_ENABLED` field to `true`. The configuration details vary depending on whether it's applied to ingress or egress traffic.
 
 #### Ingress
 
-Set this parameter if the HTTPS URL of the target application includes a port, formatted as `https://<hostname>:port`. However, if the HTTPS URL is in the format `https://<hostname>` without a port, this setting is not required.
+Set the `HTTPS_ENABLED` parameter if the target application's HTTPS URL includes a port (e.g., `https://<hostname>:port`). If the URL is in the format `https://<hostname>` without a port, this setting is not required.
 
 #### Egress
 
-For outbound traffic, set `HTTPS_ENABLED` to `true` to enable HTTPS support for external services. This enables the establishment of TLS certificates for the proxy within the target application.
+For outgoing traffic, enable HTTPS support by setting `HTTPS_ENABLED` to `true`. This ensures TLS certificates are used for secure communication through the proxy within the target application.
 
-* If the HTTP client in the target application is configured to reload certificates with each API call, set `HTTPS_ENABLED` to `true`, and there is no need to provide `CUSTOM_CERTIFICATES`. However, if the root certificate directory and file name differ from `/etc/ssl/certs` and `ca-certificates.crt` respectively, set the root certificate directory path using the `HTTPS_ROOT_CERT_PATH` environment variable and the file name using the `HTTPS_ROOT_CERT_FILE_NAME` environment variable.
-* If the HTTP client in the target application isn't configured to reload certificates with each API call, provide the `CUSTOM_CERTIFICATES` environment variable to the chaos experiment, and there is no need to set `HTTPS_ROOT_CERT_PATH` and `HTTPS_ROOT_CERT_FILE_NAME` environment variables. The same custom certificates should be loaded into the target application. You can generate custom certificates using the following commands:
+  - If the HTTP client in the target application is configured to reload certificates with each API call, set `HTTPS_ENABLED` to `true`, and there's no need to provide `CA_CERTIFICATES` or `SERVER_CERTIFICATES`. However, if the root certificate directory or file name differs from `/etc/ssl/certs` and `ca-certificates.crt`, specify them using the `HTTPS_ROOT_CERT_PATH` and `HTTPS_ROOT_CERT_FILE_NAME` environment variables.
 
-   ```bash
-   openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.crt -days 365 -nodes -subj '/CN=*'
-   cat key.pem cert.crt > ca-cert.pem
-   cat ca-cert.pem | base64 # provide it inside the CUSTOM_CERTIFICATES ENV
-   ```
-  Load the `cert.crt` into the target application and provide the base64 encoded value of ca-cert.pem to the `CUSTOM_CERTIFICATES` environment variable.
+  - If the HTTP client doesn't reload certificates with every API call, provide either the `CA_CERTIFICATES` or `SERVER_CERTIFICATES` environment variables to the chaos experiment. In this case, you don’t need to set `HTTPS_ROOT_CERT_PATH` and `HTTPS_ROOT_CERT_FILE_NAME`. The relevant CA certificates must be provided to the target application.
+
+    #### Generate Certificates
+
+    You can set either `CA_CERTIFICATES` or `SERVER_CERTIFICATES` depending on the use case.
+
+    1. **Self-Signed Certificates**:
+       To generate self-signed certificates, use the following commands:
+
+       ```bash
+       openssl req -x509 -newkey rsa:4096 -keyout ca.key -out ca.crt -days 365 -nodes -subj '/CN=*'
+       cat ca.key ca.crt > ca-cert.pem
+       cat ca-cert.pem | base64 # provide this value in the CA_CERTIFICATES environment variable
+       ```
+       Load the `ca.crt` CA certificate as the root CA into the target application, and set the base64-encoded value of `ca-cert.pem` in the `CA_CERTIFICATES` environment variable inside the experiment manifest.
+
+    2. **CA-Signed Certificates**:
+       If you're using a trusted Certificate Authority (CA) to sign the server certificates, loading CA certificates into the target application may not be necessary, as it might already have the required CA certificates. Instead, you can simply set the `SERVER_CERTIFICATES` environment variable with the server certificates, as shown below:
+
+       ```bash
+       cat server.key server.crt > server-cert.pem
+       cat server-cert.pem | base64 # provide this value in the SERVER_CERTIFICATES environment variable
+       ```
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -373,7 +394,7 @@ spec:
             # enable https support
             - name: HTTPS_ENABLED
               value: 'true'
-            - name: CUSTOM_CERTIFICATES
+            - name: CA_CERTIFICATES
               value: 'Y3VzdG9tIGNlcnRpZmljYXRlcwo='
             # provide the api path filter
             - name: PATH_FILTER
