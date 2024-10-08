@@ -64,6 +64,8 @@ _No action required_
     text: NewRelic
 ```
 
+![](./static/new-relic-page.png)
+
 ## Annotations
 
 _Not-Required_

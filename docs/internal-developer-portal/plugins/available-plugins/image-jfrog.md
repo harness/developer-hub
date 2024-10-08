@@ -60,6 +60,8 @@ This plugin exports a UI tab that you can use as a new **JFrog** tab for a servi
     - component: JfrogArtifactoryPage
 ```
 
+![](./static/jfrog-plugin-user1.png)
+
 ## Annotations
 
 - Artifact details are correlated to IDP entities using an annotation added in the entity's `catalog-info.yaml` file.

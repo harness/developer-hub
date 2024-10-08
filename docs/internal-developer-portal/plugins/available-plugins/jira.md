@@ -86,6 +86,8 @@ You can also make the card appear conditionally for services (only if Jira is co
           component: EntityJiraOverviewCard
 ```
 
+![](./static/jira-card.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set one of the following annotations in its `catalog-info.yaml` definition file:

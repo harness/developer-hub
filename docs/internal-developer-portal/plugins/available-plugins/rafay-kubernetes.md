@@ -119,6 +119,8 @@ This plugin exports new cards under overview tab for a service or for any other 
                       md: 6
 ```
 
+![](./static/rafay-kubernetes-card.png)
+
 ## Support
 
 The plugin is owned by Rafay Systems and managed in the public [npm package](https://www.npmjs.com/package/@rafaysystems/backstage-plugin-rafay/v/0.1.9?activeTab=code). Reach out to [Rafay Systems](https://docs.rafay.co/) to report bugs or suggest new features for the plugin.

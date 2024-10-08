@@ -75,6 +75,10 @@ This plugin exports an overview page card, UI tab that you can use as a new CI/C
 
 The `isAzureDevOpsAvailable` condition is met when the `dev.azure.com/project-repo` annotation is present in the software components's `catalog-info.yaml` definition file.
 
+![](./static/azure-builds.png)
+![](./static/azure-gittags.png)
+![](./static/azure-pr.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set the following annotation in its `catalog-info.yaml` definition file:

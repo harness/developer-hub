@@ -81,6 +81,10 @@ This plugin exports a page and two card on the overview page, one to start a Cod
 
 The `isGithubCodespacesAvailable` condition is met when the `github.com/project-slug` annotation is present in the software components's `catalog-info.yaml` definition file.
 
+![](./static/codespaces-list.png)
+
+![](./static/codespaces-start.png)
+
 ## Annotations
 
 If the `catalog-info.yaml` descriptor file for the component is stored in GitHub, the `github.com/project-slug` is automatically added as the `org/repo` where the file is stored, as follows. You can as well add annotation for a custom [devcontainer](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) configuration with relative path of `devcontainer.json` file from root of the repository. However, you can manually configure or override this setting:

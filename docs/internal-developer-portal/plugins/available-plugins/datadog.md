@@ -44,6 +44,8 @@ This plugin exports the `EntityDatadogGraphCard` that you can show on the **Over
 - component: EntityDatadogGraphCard
 ```
 
+![](./static/datadog-widget.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set one of the following annotations in its `catalog-info.yaml` definition file.

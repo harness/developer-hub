@@ -67,6 +67,8 @@ Also you could add a conditional like `isHarnessIacmAvailable` which is met when
               component: EntityIacmContent
 ```
 
+![](./static/harness-iacm-backstage-plugin-screenshot.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file, you can fetch the workspaces URL from the [workspaces](https://developer.harness.io/docs/infra-as-code-management/workspaces/create-workspace) page:
