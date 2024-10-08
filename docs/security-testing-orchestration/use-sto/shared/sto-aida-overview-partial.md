@@ -1,7 +1,6 @@
 
 
-Harness uses state-of-the-art AI technology to streamline the process of triaging and fixing security vulnerabilities. For every vulnerability detected by STO, Harness AI explains the issue precisely and provides detailed advice  — including code changes and package upgrades — on how to fix it. It is based on large, well-trained language models. It learns continuously based on feedback and the latest public knowledge. Optionally, you can regenerate advice with additional context and thereby optimize your results. 
-
+Harness uses state-of-the-art AI technology to streamline the process of triaging and fixing security vulnerabilities. For every vulnerability findings by the scanner and ingested into STO, Harness AI explains the issue precisely and provides detailed advice additional to the remediation suggestion provided by the scanner itself — including code changes and package upgrades — on how to fix it. It is based on large, well-trained language models. Optionally, you can regenerate advice with additional context and thereby optimize your results.
 
 <DocImage path={require('./static/harness-ai-in-sto-overview.png')} width="100%" height="100%" title="Click to view full size image" />
 

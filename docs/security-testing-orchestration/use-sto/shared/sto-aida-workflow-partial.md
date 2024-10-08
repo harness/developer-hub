@@ -34,5 +34,3 @@ This procedure describes how to refine a suggestion by providing more informatio
    2. To further refine the suggested remediation with an additional code snippet, select **Edit Snippet** and then re-generate.
 
       <DocImage path={require('./static/ai-remediation-occurrence-3.png')} width="50%" height="50%" title="Click to view full size image" />
-
-    
