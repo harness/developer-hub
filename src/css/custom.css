@@ -423,6 +423,7 @@ html *:after {
 
 body {
   font-family: var(--harness-font-family) !important;
+  background-color: var(--ifm-background-color);
 }
 
 a:hover {
