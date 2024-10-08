@@ -4,6 +4,10 @@ description: Configure pipeline notification rules at one place
 sidebar_position: 3
 ---
 
+:::note
+Currently, this feature is behind the feature flag `PL_CENTRAL_NOTIFICATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 With notifications management, you can configure notifications for the following resource types:
 
 1. Pipeline
@@ -67,6 +71,10 @@ Under events you can select the following **pipeline events**:-
 4. Stage Start
 5. Stage Success
 5. Stage Failed
+
+:::info note
+Stage start/success/failed events will apply to all stages within a pipeline. There is no option to configure notifications for specific stages.
+:::
 
 Under **Create Condition** provide, Condition Name and **Select Pipeline Events**. Click on **Continue** to set channel where you want to send the notification.
 
