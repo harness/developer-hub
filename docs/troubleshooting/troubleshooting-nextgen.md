@@ -317,6 +317,18 @@ This feature is not available for Harness Self-Managed Enterprise Edition.
 
 :::
 
+### Resource Errors
+You might encounter pipeline execution failures related to lack of compute resources. These commonly surface as errors such as:
+```
+connection error: desc = "transport: Error while dialing: dial tcp :20003: connect: connection refused"
+```
+![](./static/troubleshooting-nextgen-resource-errors.png)
+
+This error typically indicates that insufficient container resources have been applied to this particular step.
+
+To resolve this error, it is recommended to increment the "Limit Memory" and "Limit CPU" from the **Optional Configuration** for the step.
+
+
 ## Secrets
 
 The following issues can occur when using Harness secrets.
