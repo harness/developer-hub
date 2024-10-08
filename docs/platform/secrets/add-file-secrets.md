@@ -98,7 +98,7 @@ line 2
 line 3
 ```
 
-When this value is base64-encoded, it results in an output like `bGluZSAxCmxpbmUgMgpsaW5lIDM=`. You could add this value to a Harness secret named **linebreaks**, and then decode the secret with a command such as `echo <+secrets.getValue("linebreaks")> | base64 -d`.
+When this value is base64-encoded, it results in an output like `bGluZSAxCmxpbmUgMgpsaW5lIDM=`. You could add this value to a Harness secret named **linebreaks**, and then decode the secret with a command such as `echo '<+secrets.getValue("linebreaks")>' | base64 -d`.
 
 When the pipeline runs, the resulting decoded output is not sanitized because it doesn't match the stored base64-encoded value.
 
@@ -111,13 +111,13 @@ You can reference secrets in scripts, but [text secrets](./add-use-text-secrets.
 To address this, you can decode and write the secret to a file. For example, the following command decodes a secret from [base64](https://linux.die.net/man/1/base64) and writes it to a file:
 
 ```shell
-echo <+secrets.getValue("my_secret")> | base64 -d > /path/to/file.txt
+echo '<+secrets.getValue("my_secret")>' | base64 -d > /path/to/file.txt
 ```
 
 For secrets that are not in base64, such as PEM files, you can convert and encode them in base64, and then store them as [Harness file secrets](./add-file-secrets.md) before decoding them in your pipelines. For example, this command decodes a secret called `my_secret` and stores the decoded secret at `/harness/secrets.json`:
 
 ```shell
-echo <+secrets.getValue("my_secret")> | base64 -d > /harness/secrets.json
+echo '<+secrets.getValue("my_secret")>' | base64 -d > /harness/secrets.json
 ```
 
 You can also write secrets to files without base64, for example:
@@ -175,7 +175,7 @@ To use JKS files, you need to use base64 encoding.
    ```
    ls -lha /
 
-   echo <+secrets.getValue("filejksasbase64")> > /values.jksbase64
+   echo '<+secrets.getValue("filejksasbase64")>' > /values.jksbase64
 
    cat /values.jksbase64
 
