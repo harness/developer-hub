@@ -160,3 +160,58 @@ The minimum RBAC requirements depend on the applications and destination cluster
 ### How can I sync or delete an application or non-deployment resource?
 
 Each resource in our UI has a three dot "kebab menu" that allows you sync or delete the resource. 
+
+### How can I declaratively create a  GitOps Applications using yaml manifest?
+
+In Harness GitOps, you can achieve a similar approach to ArgoCD by using YAML manifests to define the GitOps applications declaratively. In the GitOps model, Harness allows you to manage the infrastructure and applications as code, keeping the boundaries between Harness metadata and the ArgoCD application clear. 
+
+Here’s how you can create (declaratively) a Harness GitOps Application using YAML manifests while maintaining the separation the customer is looking for:
+
+1. Harness GitOps Application YAML:
+- Define the Harness GitOps application in a YAML manifest. This YAML file will include the necessary Harness metadata (like environment, service, etc.) to manage the deployment.
+- The GitOps application will point to a repository containing the ArgoCD portion (i.e., the ArgoCD Application files).
+
+**Harness YAML**
+```
+apiVersion: harness.io/v1alpha1
+kind: GitOpsApplication
+metadata:
+  name: my-harness-gitops-app
+  namespace: harness-namespace
+spec:
+  repoURL: https://github.com/org/repo
+  targetRevision: main
+  path: apps/my-app  # Directory where your ArgoCD Application YAML resides
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  destination:
+    namespace: my-app-namespace
+    server: https://kubernetes.default.svc
+```
+
+2. Separate ArgoCD Application Definition:
+- The actual ArgoCD Application resource will reside in the repo that your Harness GitOps application points to. This keeps a clean separation between Harness’ metadata and the ArgoCD application logic.
+
+**Argo Application YAML**
+```
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-argo-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/org/repo
+    path: apps/my-app
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: my-app-namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
