@@ -219,7 +219,7 @@ gsutil -m cp \
 
   If PDB is enabled globally, it will create PDB for all supported services. If the requirement is to create PDB for specific services, then it needs to be enabled for each service.
 
-  `minAvailable` and `maxUnavailable` can be set to either percentage or absolute value, if both of them are set then K8s will throw an error.
+  `minAvailable` and `maxUnavailable` can be set to either percentage or absolute value. If both of them are set then `minAvailable` will take precedence.
 
   ```yaml
   global:
