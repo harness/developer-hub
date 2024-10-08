@@ -1,6 +1,6 @@
 ---
-title: Entity deletion reference
-description: This topic covers the rules governing the deletion of Harness entities.
+title: Entity deletion reference and Force Delete
+description: This topic covers the rules governing the deletion of Harness entities, and the Enable Force Delete of Harness Resources setting
 sidebar_position: 4
 helpdocs_topic_id: amj1oz4x4k
 helpdocs_category_id: fb16ljb8lu
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic covers the rules governing the deletion of Harness entities.
+This topic covers the rules governing the deletion of Harness entities, and how to override it with a forceful delete.
 
 ### Entity connections
 
@@ -85,7 +85,7 @@ Project deletion has the following rules:
 * Project Delegates are deleted from Harness. You will have to remove the Harness Delegate(s) from your environment.
 * All Project Users are notified via email that the Project was deleted.
 
-### Force delete
+## Enable Force Delete of Harness Resources
 
 You can force delete a Harness entity even if your pipelines or other entities reference it. Following are the entities that you can force delete in Harness:
 - Connectors
@@ -98,7 +98,7 @@ You can force delete a Harness entity even if your pipelines or other entities r
 - File Store files
 
   
-The Harness account admin can enable or disable the force delete option in the account's default settings.
+The Harness account admin can enable or disable the force delete option in the account's default settings.  It is generally recommended that this setting be turned on only for brief periods due to the interconnectivity nature of the Harness entities. 
 
 ![](../references/static/force-delete-new.png)
 
@@ -112,7 +112,7 @@ This topic explains the steps to force delete a connector.
    1. Connector is not referenced in any Harness entity - If your connector is not referenced in any Harness entity, you can delete it by clicking Delete.
    2. Connector is referenced in Harness entities - If your connector is referenced in a Pipeline or any other Harness entity, you can view the corresponding references or force delete it by selecting Forcefully delete this connector now.
       
-      ![](../references/static/forcedelete2.png)
+      ![](../references/static/forcedelete2.png) 
 
 
 You can view the details of all the Harness entities that you force delete in the Harness Audit logs.
@@ -121,9 +121,11 @@ When you force delete any Harness entity, the resources that reference it will b
 
 ![](../references/static/forcedelete3.png)
 
+As an example, if a template is being referenced and it is forcefully deleted, pipeline users will see this type of error message in their pipeline.  
+![](../references/static/forcedelete-missingobj.png)
 
 
-To avoid this, remove this entity from all the resources that reference it.
+However, error messages and error results will vary depending on the entity deleted.  To avoid this, it is recommended to remove the entity from all the resources that reference it as a first step, and to only utilize Force Deletion as final step after all others have been exhausted.
 ### See also
 
 * [Harness Entity Reference](harness-entity-reference.md)
