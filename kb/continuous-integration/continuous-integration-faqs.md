@@ -405,6 +405,8 @@ By default, resource requests are always set to the minimum, and additional reso
 
 By default, the namespace's default service account is auto-mounted on the build pod, through which it can communicate with API server. To use a non-default service account, specify the [Service Account Name](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#service-account-name) in the Kubernetes cluster build infrastructure settings.
 
+
+
 ### Do I have to mount a service account on the build pod?
 
 No. Mounting a service account isn't required if the pod doesn't need to communicate with the Kubernetes API server during pipeline execution. To disable service account mounting, deselect [Automount Service Account Token](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#automount-service-account-token) in the Kubernetes cluster build infrastructure settings.
@@ -1266,6 +1268,11 @@ Make sure to update the [expressions referencing the variables](https://develope
 ### Initialize step occasionally times out at 8 minutes
 
 Eight minutes is the default time out limit for the Initialize step. If your build is hitting the timeout limit due to resource constraints, such as pulling large images, you can increase the [Init Timeout](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#init-timeout) in the stage Infrastructure settings.
+
+### Can we run multiple steps in a single container in containerised step group?
+
+No, You can't run all the steps in a single container, but you can run it in a single pod and share the data using `shared-path` config in the step group.
+
 
 ### Problems cloning code repo during initialization.
 
