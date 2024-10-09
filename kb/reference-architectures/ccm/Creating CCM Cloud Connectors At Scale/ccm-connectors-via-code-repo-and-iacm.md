@@ -31,7 +31,7 @@ This will be used to store and maintain our IaC.
 
 2. Create a main.tf file that contains Terraform code.  We'll use two parts of this: [Part 1](https://developer.harness.io/kb/cloud-cost-management/articles/best-practices/aws-connectors-and-roles#setup-providers) is for the providers portion and [Part 2](https://developer.harness.io/kb/cloud-cost-management/articles/best-practices/aws-connectors-and-roles#use-the-built-in-locals-value-to-define-the-accounts-statically) for defining accounts statically.  Note: For the role_arn, you'll have to replace the role name with whatever role you provisioned in each account for Harness to use.  It has to have the appropriate permissions done correctly for each CCM feature you want to use.  Setting up this roles is outside the scope of this exercise, but possibilities are located [here](https://developer.harness.io/kb/cloud-cost-management/articles/best-practices/aws-connectors-and-roles#create-roles-in-each-aws-account).
 
-\```
+```
 terraform {
   required_providers {
     aws = {
@@ -75,7 +75,7 @@ resource "harness_platform_connector_awscc" "data" {
     external_id = "harness:891928451355:${data.harness_platform_current_account.current.id}"
   }
 }
-\```
+```
 
 ###  Create A New IaCM Workspace
 
