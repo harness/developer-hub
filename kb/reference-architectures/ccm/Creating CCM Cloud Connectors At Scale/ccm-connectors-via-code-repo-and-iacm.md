@@ -13,7 +13,7 @@ Users of this guide should have an understanding of the Harness modules Code Rep
 
 ## Setup
 
-In the pipeline portion of this guide, we will need a Kubernetes cluster, a delegate running in the cluster that has permissions to deploy a pod.  Please don't proceed until there is confirmation this is configured.
+In the pipeline portion of this guide we will need a Kubernetes cluster a delegate running in the cluster that has permissions to deploy a pod.  Please don't proceed until there is confirmation this is configured.
 
 ###  Create A Project
 
