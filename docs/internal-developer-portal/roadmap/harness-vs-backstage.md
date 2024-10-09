@@ -6,6 +6,9 @@ sidebar_position: 2
 
 The following tables compare feature availability between Harness IDP and Self-Managed Backstage for various features like [Software Catalog](https://developer.harness.io/docs/category/software-catalog), [Workflows](https://developer.harness.io/docs/category/self-service-flows), [Plugins](https://developer.harness.io/docs/category/plugins), [Scorecards](https://developer.harness.io/docs/category/scorecards), [Governance](https://developer.harness.io/docs/category/governance) and [Platform](/docs/platform/get-started/key-concepts.md).
 
+
+## Software Catalog
+
 | **Software Catalog**        | **Self Managed Backstage** | **Harness IDP** | Notes                                                                                                                   |
 | --------------------------- | -------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | Entity definition as Code   | Yes                        | Yes             |                                                                                                                         |
@@ -16,6 +19,9 @@ The following tables compare feature availability between Harness IDP and Self-M
 | Custom Catalog Processors   | Yes                        | Alternative     | [See Catalog Ingestion API](/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api-tutorial.md)                                  |
 | Custom Entity Providers     | Yes                        | No              |                                                                                                                         |
 | Automated Service Discovery | No                         | Roadmap         |                                                                                                                         |
+
+
+## Workflows
 
 | **Workflows**                                                                      | **Self Managed Backstage** | **Harness IDP** | Notes                                                                                                                                                                  |
 | ---------------------------------------------------------------------------------- | -------------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -34,12 +40,17 @@ The following tables compare feature availability between Harness IDP and Self-M
 | Scheduled execution                                                                | No                         | Yes             |                                                                                                                                                                        |
 | Custom UI field extensions                                                         | Limited                    | No              |                                                                                                                                                                        |
 
+## Plugins
+
 | **Plugins**                            | **Self Managed Backstage** | **Harness IDP** |
 | -------------------------------------- | -------------------------- | --------------- |
 | Install and configure plugins          | Yes                        | Yes             |
 | Customize Catalog layout using plugins | Yes                        | Yes             |
 | Write custom frontend plugins          | Yes                        | Yes             |
 | Write custom backend plugins           | Yes                        | No              |
+
+
+## Scorecards
 
 | **Scorecards**                                | **Self Managed Backstage** | **Harness IDP** | **Notes**                                                                              |
 | --------------------------------------------- | -------------------------- | --------------- | -------------------------------------------------------------------------------------- |
@@ -48,6 +59,8 @@ The following tables compare feature availability between Harness IDP and Self-M
 | Parsing support for file-content based checks | No                         | Yes             |                                                                                        |
 | Custom Data Source                            | No                         | Yes             | [See Catalog Ingestion API](/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api-tutorial) |
 
+## Governance and Security
+
 | **Governance and Security**                              | **Self Managed Backstage** | **Harness IDP** |
 | -------------------------------------------------------- | -------------------------- | --------------- |
 | Approval gates via Jira/ServiceNow/etc. for workflows    | No                         | Yes             |
@@ -55,6 +68,8 @@ The following tables compare feature availability between Harness IDP and Self-M
 | Open Policy Agent based Policies                         | No                         | Yes             |
 | Audit Trails                                             | No                         | Yes             |
 | Integration with Secret Managers (AWS, GCP, Vault, etc.) | No                         | Yes             |
+
+## Platform
 
 | **Platform**                                                                            | **Self Managed Backstage** | **Harness IDP** |
 | --------------------------------------------------------------------------------------- | -------------------------- | --------------- |
@@ -66,10 +81,36 @@ The following tables compare feature availability between Harness IDP and Self-M
 | Alerting based on metrics trends                                                        | No                         | Yes             |
 | Project and Org based hierarchy of entities                                             | No                         | Limited         |
 
+
+## Miscellaneous
+
 | **Miscellaneous**                    | **Self Managed Backstage** | **Harness IDP** |
 | ------------------------------------ | -------------------------- | --------------- |
 | Customize UI theme colors            | Yes                        | Roadmap         |
 | AI assisted onboarding and workflows | No                         | Roadmap         |
+
+
+## All Backstage customizations and their availability in Harness IDP
+
+| **All Backstage customizations and their availability in Harness IDP** | **Self Managed backstage** | **Harness IDP** | Note there are no interfaces for these customizations, and all of these require you to implement it yourself using code                                                                       |
+|--------------------------------------------------------------------|------------------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Add or remove plugins                                              | Yes                    | Yes         |                                                                                                                                                                                               |
+| Write your own plugins                                             | Yes                    | Yes         | Frontend and Proxy backend only. Custom backends should be hosted by customers internally as a separate service or lambda.                                                                    |
+| Write your own workflow actions                                    | Yes                    | Yes         | Via a custom step in the Harness pipeline (run any docker container or a script)                                                                                                              |
+| Custom UI pickers in Scaffolder (Field Extensions)                 | Yes                    | Yes         | [Supported Workflow UI Pickers](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions)                                                                          |
+| Catalog Dependency graph                                           | Yes                    | Yes         |                                                                                                                                                                                               |
+| Custom entity providers                                            | Yes                    | Roadmap     |                                                                                                                                                                                               |
+| Custom entity kinds                                                | Limited                | Roadmap     |                                                                                                                                                                                               |
+| Custom catalog processors                                          | Yes                    | Roadmap     |                                                                                                                                                                                               |
+| Custom home page                                                   | Yes                    | Partial     | [Homepage Customisations](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/home-page-customization)                                                          |
+| Custom side bar                                                    | Yes                    | Yes         | [Sidebar Customisations](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/sidenav)                                                                           |
+| Custom colors and themes                                           | Yes                    | Roadmap     |                                                                                                                                                                                               |
+| Custom entity page layout                                          | Yes                    | Yes         | [Layout of Catalog Entity Pages](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/catalog)                                                                   |
+| Custom workflows home page                                         | No                     | Yes         | [Workflows Homepage Customization](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization)                                            |
+| Search - bring your own index                                      | Yes                    | No          |                                                                                                                                                                                               |
+| Search results UI                                                  | Yes                    | No          |                                                                                                                                                                                               |
+| Custom permissions policy using Backstage permissions framework    | Yes                    | Limited     | [Role-based access control (RBAC)](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles) ,  [Governance](https://developer.harness.io/docs/category/governance-2) |
+
 
 ### How does Harness IDP compare against Self managed Backstage in terms of extensibility and flexibility?
 
