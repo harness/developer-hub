@@ -9,8 +9,8 @@ import { ActivePage, getCertLevel } from "./LandingPage";
 // import AdminCertificationReviewDetails from "./data/iacm-certification-admin-review-guide.md";
 import DeveloperCertificationExamDetails from "./data/iacm-certification-developer-exam-details.md";
 import DeveloperCertificationReviewGuide from "./data/iacm-certification-developer-review-guide.md";
-// import ArchitectCertificationReviewDetails from "./data/idp-certification-architect-review-guide.md";
-// import ArchitectCertificationExamDetails from "./data/id[-certification-architect-exam-details.md";
+// import ArchitectCertificationReviewDetails from "./data/iacm-certification-architect-review-guide.md";
+// import ArchitectCertificationExamDetails from "./data/iacm-certification-architect-exam-details.md";
 import IltCard from "./Card";
 import { ilt } from "./data/iltData";
 import { spt } from "./data/sptData";
@@ -297,7 +297,7 @@ export default function CertificationsIACM() {
                       Assesses the fundamental skills to manage your
                       infrastructure with IaCM projects.
                     </div>
-                    
+                    <DeveloperCertificationReviewGuide />
 
                     <div className={styles.btnContainer}>
                       <Link href="#">
@@ -311,12 +311,12 @@ export default function CertificationsIACM() {
               </div>
             </div>
 
-            {/* Developer Exam Details 
+            {/* Developer Exam Details */}
 
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
               <div className={styles.examDetailsCard}>
-                
+              <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
                   <Link href="#">
                     <button className={styles.moreDetails}>
@@ -326,7 +326,7 @@ export default function CertificationsIACM() {
                 </div>
               </div>
             </div>
-            */}
+            
           </div>
 
           {/* Administrator Tab Content */}
