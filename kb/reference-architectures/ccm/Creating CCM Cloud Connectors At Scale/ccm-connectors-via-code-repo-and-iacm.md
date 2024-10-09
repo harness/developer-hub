@@ -102,7 +102,7 @@ The AWS authentication is handled via the OIDC connector defined above, but Harn
 For the Harness platform API Key, you'll need to:
 
 1. Create a service account
-2. Give the service account account admin for all resources including child scopes.  This is overpermissive.  If you want, you can also create a custom role that only has connector admin.
+2. Give the service account account admin for all account level resources. This is overpermissive.  If you want, you can also create a custom role that only has connector admin.
 3. Create an API key, then a token.  Copy the token value
 4. Create a a new secret with the token
 
