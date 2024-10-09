@@ -87,7 +87,6 @@ Create a new pipeline.  The pipeline will be used to run our init, plan, and app
 6. Add another step, select 'IACM Approval'.  Leave everything else the same
 7. Add a final step, select 'IACM OpenTofu Plugin'.  Set the command to `apply` and leave everything else the same
 8. Save the stage
-![](../../static/iacm-complete-stage.png)
 
 Things to consider:
 
