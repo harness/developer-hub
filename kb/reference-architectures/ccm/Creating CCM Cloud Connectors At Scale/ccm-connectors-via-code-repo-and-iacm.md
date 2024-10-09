@@ -81,12 +81,11 @@ Create a new pipeline.  The pipeline will be used to run our init, plan, and app
 ![](../../static/iacm-connector-stage-infra.png)
 
 2. Select the workspace we created in the step above
-3. For execution, choose the 'Provision Terraform' operation
-4. Remove the `init`, `plan`, and `apply` pre-built steps as these are for Terraform and we are using OpenTofu
-5. Add Step, select 'IACM OpenTofu Plugin'.  Set the command to `init` and leave everything else the same
-6. Add Step, select 'IACM OpenTofu Plugin'.  Set the command to `plan` and leave everything else the same
-8. Add Step, select 'IACM Approval'.  Leave everything else the same
-7. Add Step, select 'IACM OpenTofu Plugin'.  Set the command to `apply` and leave everything else the same
+3. For execution, choose the 'Blank Canvas' operation
+4. Add a step, select 'IACM OpenTofu Plugin'.  Set the command to `init` and leave everything else the same
+5. Add another step, select 'IACM OpenTofu Plugin'.  Set the command to `plan` and leave everything else the same
+6. Add another step, select 'IACM Approval'.  Leave everything else the same
+7. Add a final step, select 'IACM OpenTofu Plugin'.  Set the command to `apply` and leave everything else the same
 8. Save the stage
 
 ![](../../static/iacm-complete-stage.png)
