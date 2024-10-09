@@ -64,11 +64,6 @@ export const IacmData: Horizon = {
         title: "Default Pipelines",
         description: "Users will have the ability to assign pipelines to different Terraform/OpenTofu operations, making it easier to control the automation for each Workspace update",
       },
-      {
-        tag: [{ value: "Security" },{ value: "Enterprise" }],
-        title: "SMP (on-prem)",
-        description: "Supporting implementing IaCM in private environments",
-      },
     ],
   },
   Next: {
@@ -83,6 +78,11 @@ export const IacmData: Horizon = {
         tag: [],
         title: "Native Ansible Support",
         description: "Supporting Ansible as an IaC provider",
+      },
+      {
+        tag: [{ value: "Security" },{ value: "Enterprise" }],
+        title: "SMP (on-prem)",
+        description: "Supporting implementing IaCM in private environments",
       },
     ],
   },
