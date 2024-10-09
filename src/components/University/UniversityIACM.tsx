@@ -7,8 +7,8 @@ import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
 // import AdminCertificationExamDetails from "./data/iacm-certification-admin-exam-details.md";
 // import AdminCertificationReviewDetails from "./data/iacm-certification-admin-review-guide.md";
-// import DeveloperCertificationExamDetails from "./data/iacm-certification-developer-exam-details.md";
-// import DeveloperCertificationReviewGuide from "./data/iacm-certification-developer-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/iacm-certification-developer-exam-details.md";
+import DeveloperCertificationReviewGuide from "./data/iacm-certification-developer-review-guide.md";
 // import ArchitectCertificationReviewDetails from "./data/idp-certification-architect-review-guide.md";
 // import ArchitectCertificationExamDetails from "./data/id[-certification-architect-exam-details.md";
 import IltCard from "./Card";
@@ -280,8 +280,7 @@ export default function CertificationsIACM() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Infrastucture as Code Management - Developer (BETA COMING
-                        SOON)
+                      Infrastucture as Code Management - Developer (BETA)
                     </h2>
                     <img
                       src={`${baseUrl}img/cert_dev_iacm_badge.svg`}
