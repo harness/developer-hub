@@ -121,7 +121,7 @@ For the Harness platform API Key, you'll need to:
 
 Create a new pipeline.  The pipeline will be used to run our init, plan, and apply Terraform stages.
 
-1. Add a new stage.  Select `Infrastructure` as the stage type and name the stage `ccm_connectors`
+1. Add a new stage. Select `Infrastructure` as the stage type and name the stage `ccm_connectors`
     - Select the infrastructure as Kubernetes, select the Kubernetes cluster you identified earlier on at the beginning of the setup portion of this guide, and choose your namespace
 
 ![](../../static/iacm-connector-stage-infra.png)
