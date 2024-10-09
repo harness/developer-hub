@@ -90,7 +90,12 @@ Now, let’s install dependencies for the sample app and run it. We will also ma
 npm run dev
 ```
 
-3. Your application will be available at proxy host 3000. You will see a message at the bottom right of your IDE with a link to open the app in browser. After running `npm run dev`, ensure that port 3000 is not being used by any other application. If it is, you can forward port 3000 as follows:
+3. Your application will be available at proxy host 3000. You will see a message at the bottom right of your IDE with a link to open the app in browser. 
+
+    If you're unable to see the pop-up, it might be because the application is running inside the development container. To access this container remotely, we'll need to set up port forwarding. [Watch this video to learn more about port forwarding](https://www.youtube.com/watch?v=MGcNbaEOgR4).
+
+    Here's how you can forward the port:
+
     1. Go to the **Ports** section in your VS Code desktop and click **Forward a Port**.
 
     ![](./static/forward-port-cde.png)
