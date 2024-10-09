@@ -87,7 +87,7 @@ We'll use this to store our IaC configuration, variables, states, and other reso
     - Provisioner:
         - Connector (a few options): 
             - If you have a AWS connector for your master billing account already (not a CCM AWS connector), choose this for your connector.  
-            - If you need to create a new connector, the suggestion is to use OIDC. You'll have to provision a role in your master billing AWS account that trusts Harness.  In setup, you can skip setting up the backoff strategy and select connect through Harness platform for the connectivity mode.  You have to select a connector to complete setup.  Even though we aren't going to use this connector in our example (because we are getting the account ids statically in the Terraform code), we still have to specify the connector.
+            - If you need to create a new connector, the suggestion is to [use OIDC](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials). You'll have to provision a role in your master billing AWS account that trusts Harness. In setup, you can skip setting up the backoff strategy and select connect through Harness platform for the connectivity mode.  You have to select a connector to complete setup.  Even though we aren't going to use this connector in our example (because we are getting the account ids statically in the Terraform code), we still have to specify the connector.
         - Workspace Type:
             - Choose the latest version of OpenTofu as we only have old versions of Terraform to choose from since Hashicorp changed their licensing model.  Your Terraform code is compatible with OpenTofu.
     - Repository:
