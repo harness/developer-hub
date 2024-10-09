@@ -25,7 +25,7 @@ The project will use the Code Repository and IaCM modules.
 
 This will be used to store and maintain our IaC.
 
-1. Go into your new project and create a new Code Repository, Repository. This will hold the code for our CCM connectors.
+1. Go into your new project and create a new Code repository. This will hold the code for our CCM connectors.
 
 ![](../../static/new_code_repo.png)
 
