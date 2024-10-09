@@ -25,11 +25,11 @@ The project will use the Code Repository and IaCM modules.
 
 This will be used to store and maintain our IaC.
 
-1. Go into your new project and createa a new Code Repository, Repository. This will hold the code for our CCM connectors.
+1. Go into your new project and create a new Code Repository, Repository. This will hold the code for our CCM connectors.
 
 ![](../../static/new_code_repo.png)
 
-2. Create a main.tf file that contains Terraform code.  We'll use two parts of this: [Part 1](https://developer.harness.io/kb/cloud-cost-management/articles/best-practices/aws-connectors-and-roles#setup-providers) is for the providers portion and [Part 2](https://developer.harness.io/kb/cloud-cost-management/articles/best-practices/aws-connectors-and-roles#use-the-built-in-locals-value-to-define-the-accounts-statically) for defining accounts statically.  Note: For the role_arn, you'll have to replace the role name with whatever role you provisioned in each account for Harness to use.  It has to have the appropriate permissions done correctly for each CCM feature you want to use.  Setting up this roles is outside the scope of this excercise, but possibilities are located [here](https://developer.harness.io/kb/cloud-cost-management/articles/best-practices/aws-connectors-and-roles#create-roles-in-each-aws-account).
+2. Create a main.tf file that contains Terraform code.  We'll use two parts of this: [Part 1](https://developer.harness.io/kb/cloud-cost-management/articles/best-practices/aws-connectors-and-roles#setup-providers) is for the providers portion and [Part 2](https://developer.harness.io/kb/cloud-cost-management/articles/best-practices/aws-connectors-and-roles#use-the-built-in-locals-value-to-define-the-accounts-statically) for defining accounts statically.  Note: For the role_arn, you'll have to replace the role name with whatever role you provisioned in each account for Harness to use.  It has to have the appropriate permissions done correctly for each CCM feature you want to use.  Setting up this roles is outside the scope of this exercise, but possibilities are located [here](https://developer.harness.io/kb/cloud-cost-management/articles/best-practices/aws-connectors-and-roles#create-roles-in-each-aws-account).
 
 \```
 terraform {
@@ -81,13 +81,13 @@ resource "harness_platform_connector_awscc" "data" {
 
 We'll use this to store our IaC configuration, variables, states, and other resources necessary to manage our AWS CCM cloud connectors
 
-1. Navigate the the IaCM module and create a new workspace.  
+1. Navigate to the IaCM module and create a new workspace.  
     - Provisioner:
         - Connector (a few options): 
             - If you have a AWS connector for your master billing account already (not a CCM AWS connector), choose this for your connector.  
             - If you need to create a new connector, the suggestion is to use OIDC. You'll have to provision a role in your master billing AWS account that trusts Harness.  In setup, you can skip setting up the backoff strategy and select connect through Harness platform for the connectivity mode.  You have to select a connector to complete setup.  Even though we aren't going to use this connector in our example (because we are getting the account ids statically in the Terraform code), we still have to specify the connector.
         - Workspace Type:
-            - Choose the latest version of OpenTofu as we only have old versions of Terraform to choose from since Hashicorp changed their licensing model.  You're Terraform code is compatible with OpenTofu.
+            - Choose the latest version of OpenTofu as we only have old versions of Terraform to choose from since Hashicorp changed their licensing model.  Your Terraform code is compatible with OpenTofu.
     - Repository:
         - Choose Harness Code Repository and select the repository we created in the first step.  Select main as the branch and the folder path should be blank as we created the main.tf in the root directory.
 
@@ -95,14 +95,14 @@ We'll use this to store our IaC configuration, variables, states, and other reso
 
 #### Define Variables
 
-The AWS authentication is taken care of via the OIDC connector defined above, but what still needs to be done is the Harness authentication.  To define the Harness authentication, we need to define two environment variables: Harness account id and Harness platform API key.  
+The AWS authentication is handled via the OIDC connector defined above, but Harness authentication still needs to be configured.  To define the Harness authentication, we need to define two environment variables: Harness account id and Harness platform API key.  
 
 For the Harness platform API Key, you'll need to:
 
 1. Create a service account
 2. Give the service account account admin for all resources including child scopes.  This is overpermissive.  If you want, you can also create a custom role that only has connector admin.
 3. Create an API key, then a token.  Copy the token value
-4. Createa a new secret with the token
+4. Create a a new secret with the token
 
 ![](../../static/service-account-iacm-connectors.png)
 
@@ -141,7 +141,7 @@ Things to consider:
 
 ![](../../static/iacm-local-images.png)
 
-2.  You'll need firewall exceptions for the steps as well.  Each step has to download OpenTofu at runtime.  This was a conscious decision because you could have hundreds of workspaces that use hundreds of different OpenTofu versions and managing all those versions is a big lift.
+2.  You'll need firewall exceptions for the steps as well.  Each step must download OpenTofu at runtime. This was a conscious decision because you might have hundreds of workspaces using various OpenTofu versions, and managing all those versions would be a significant task.
 
 ## Run The Pipeline
 
