@@ -5,7 +5,7 @@ description: Automatically Create CCM Cloud Connectors via Harness Modules Code 
 
 # Overview
 
-The process below defines a system where we can use the Harness modules Code Repository and IaCM together to accomplish creating CCM cloud connectors at scale.  For this excercise, we'll focus on AWS CCM Cloud Connectors, but other cloud providers could follow this same process.
+The process below defines a system where we can use the Harness modules Code Repository and Infrastructure as Code together to accomplish creating CCM cloud connectors at scale.  For this exercise, we'll focus on AWS CCM Cloud Connectors, but other cloud providers could follow this same process.
 
 To accomplish this, we will store our Terraform code in Code Repository.  We'll then use this repo in the IaCM module to apply the connectors.
 
