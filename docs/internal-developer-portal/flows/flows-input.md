@@ -420,7 +420,11 @@ parameters:
 
 </details>
 
+![](./static/template-conditional.gif)
+
 1. **`One Of`**: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
+
+Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/05d533cb9789d5abffbdc103d55530efea489161/workflow-examples/conditional-one-of.yaml#L11-L25)
 
 <details>
 <summary>Example YAML</summary>
@@ -441,7 +445,11 @@ dependencies:
 ```
 </details>
 
+![](./static/template-one-of.png)
+
 2. **`All Of`**: Helps you create a dropdown in the template, where only all the options available could be selected.
+
+Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/70f70f32dfca3ad394677b19608d72706cc8d38c/workflow-examples/conditional-all-of.yaml#L54-L77)
 
 <details>
 <summary>Example YAML</summary>
@@ -463,7 +471,29 @@ allOf:
 ```
 </details>
 
+![](./static/template-conditional-all-of.png)
+
 3. **`Any Of`**: Helps you to select from multiple properties where both can't be selected together at once. 
+
+Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/4215c82f933af1d3c1675b89baa2f042e83a60a2/workflow-examples/conditional-any-of.yaml#L31-L46)
+
+**The Example Workflow Explained**
+
+1. **Parameters Structure**
+The parameters section includes `age` as an integer and `items` as an array. Each item in the array can contain either a `foo` or `bar` property, utilizing `anyOf`.
+
+2. **Identification Methods**
+The template allows for two methods of identification using `anyOf`. Users can provide either:
+
+- A first name and last name (defaulting `firstName` to "Chuck"), or
+- An ID code.
+
+3. **Required Fields**
+The `age` field is required, while the fields under the two identification methods are optional but must comply with the `anyOf` logic.
+
+4. **Display Step**
+The steps section includes a `debug:log` action to display the collected information based on the provided input.
+
 
 <details>
 <summary>Example YAML</summary>
@@ -504,6 +534,120 @@ anyOf:
 
 </details>
 
+![](./static/template-conditional-anyof.png)
+
 For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/).
 
 
+## Upload a file using Workflows
+
+There are 3 types of file upload. 
+
+1. Single File
+2. Multiple Files
+3. Single File with Accept Attribute 
+
+<details>
+<summary>Example YAML</summary>
+
+```YAML
+#Example
+title: Files
+type: object
+properties:
+  file:
+    type: string
+    format: data-url
+    title: Single file
+  files:
+    type: array
+    title: Multiple files
+    items:
+      type: string
+      format: data-url
+  filesAccept:
+    type: string
+    format: data-url
+    title: Single File with Accept attribute
+```
+</details>
+
+
+## Using Secrets
+
+You may want to mark things as secret and make sure that these values are protected and not available through REST endpoints. You can do this by using the built in `ui:field: Secret` and `ui:widget: password`.
+
+:::info
+`ui:widget: password` needs to be mentioned under the first `page` in-case you have multiple pages.
+
+```YAML {14}
+# example workflow.yaml
+...
+parameters:
+  - title: <PAGE-1 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+    token:
+      title: Harness Token
+      type: string
+      ui:widget: password
+      ui:field: HarnessAuthToken
+  - title: <PAGE-2 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+  - title: <PAGE-n TITLE>  
+...
+```
+:::
+
+You can define this property as any normal parameter, however the consumption of this parameter will not be available through `${{ parameters.myKey }}` you will instead need to use `${{ secrets.myKey }}` in your `template.yaml`.
+
+Parameters will be automatically masked in the review step.
+
+<details>
+<summary>Example YAML</summary>
+
+```yaml
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: v1beta3-demo
+  title: Test Action template
+  description: scaffolder v1beta3 template demo
+spec:
+  owner: backstage/techdocs-core
+  type: service
+
+  parameters:
+    - title: Authenticaion
+      description: Provide authentication for the resource
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          # use the built in Secret field extension
+          ui:field: Secret
+        password:
+          type: string
+          ui:field: Secret
+
+  steps:
+    - id: setupAuthentication
+      action: auth:create
+      input:
+        # make sure to use ${{ secrets.parameterName }} to reference these values
+        username: ${{ secrets.username }}
+        password: ${{ secrets.password }}
+```
+
+</details>
