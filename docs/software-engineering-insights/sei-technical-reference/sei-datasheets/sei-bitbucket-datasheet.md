@@ -9,12 +9,12 @@ SEI uses Rest APIs to connect to BitBucket. Using these API calls SEI ingests me
 
 The full details of all the fields are mentioned below.
 
-- [BitBucket Commits](#bitbucket-commits)
+- [BitBucket commits](#bitbucket-commits)
 - [BitBucket pull requests](#bitbucket-pull-requests)
 - [BitBucket repositories](#bitbucket-repositories)
 - [BitBucket tags](#bitbucket-tags)
 
-### BitBucket Commits
+### BitBucket commits
 
 <table>
   <thead>
