@@ -251,6 +251,8 @@ parameters:
 
 ### Array with Custom Objects
 
+Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/5140ef7993a3c932c49af9162562a99e16428080/workflow-examples/multi-choice-list.yaml#L24-L34)
+
 <details>
 <summary>Example YAML</summary>
 
@@ -287,6 +289,8 @@ parameters:
 ```
 </details>
 
+![](./static/template-arrays-multipleobjects.png)
+
 ## Boolean options
 
 ### Boolean
@@ -299,8 +303,9 @@ parameters:
         title: Checkbox boolean
         type: boolean
 ```
+![](./static/template-checkbox-boolean.png)
 
-### Boolean Yes or No options
+### Boolean Yes or No options (Radio Button)
 
 ```yaml
 parameters:
@@ -311,6 +316,8 @@ parameters:
         type: boolean
         ui:widget: radio
 ```
+
+![](./static/template-boolean-radio.png)
 
 ### Boolean multiple options
 
@@ -335,6 +342,8 @@ parameters:
 ```
 
 </details>
+
+![](./static/template-boolean-multiselect.png)
 
 ## Conditional Inputs in Templates
 
