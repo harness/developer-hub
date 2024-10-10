@@ -86,7 +86,7 @@ In case of [Github](https://docs.github.com/en/apps/oauth-apps/building-oauth-ap
 
 ### Gitlab
 
-For [GitLab](https://docs.gitlab.com/ee/integration/oauth_provider.html#adding-an-application), users need to ensure that their Vanity URL is added to the OAuth application's redirect URI list. They must provide their subdomain to have the Vanity URL whitelisted. Contact [Harness Support](mailto:support@harness.io) to complete this process.
+For [GitLab](https://docs.gitlab.com/ee/integration/oauth_provider.html#adding-an-application), users need to ensure that their Vanity URL is added to the OAuth application's redirect URI list. Customer must provide their subdomain to have the Vanity URL whitelisted. Contact [Harness Support](mailto:support@harness.io) to complete this process.
 
 Example: If your subdomain is `yourcompany.harness.io`, the redirect URI would be:
 
