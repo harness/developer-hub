@@ -14,7 +14,7 @@ You can apply a failure strategy to the following:
 * **Step Group:** You can set up a failure strategy for all steps in the group. Individual steps in the group don't have a failure strategy.
 * **Stage:** The failure strategy for all steps and step groups in the stage. If step and step group failure strategies exist, they override this failure strategy.
 
-For more information, go to [define a failure strategy on stages and steps](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
+For more information, go to [define a failure strategy on stages and steps](#failure-strategy-settings).
 
 ## Error types
 

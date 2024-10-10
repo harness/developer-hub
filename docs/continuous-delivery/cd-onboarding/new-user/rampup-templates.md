@@ -222,7 +222,7 @@ For details on advanced settings, go to:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors).
 * [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings).
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
+* [Failure Strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings.md).
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview).
 
