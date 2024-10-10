@@ -3,6 +3,8 @@ title: Harness CDE Quickstart
 description: Get Started with Harness CDE.
 sidebar_position: 2
 sidebar_label: Quickstart
+redirect_from:
+  - /docs/cloud-development-environment/get-started/getting-started-with-cde
 ---
 
 :::info

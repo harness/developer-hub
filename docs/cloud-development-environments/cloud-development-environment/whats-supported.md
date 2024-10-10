@@ -3,6 +3,8 @@ title: What's supported in Harness CDE
 description: Lists the git providers, IDE integrations and compute types supported in IDP.
 sidebar_label: What's Supported
 sidebar_position: 1
+redirect_from:
+  - /docs/cloud-development-environment/whats-supported
 ---
 
 :::info
