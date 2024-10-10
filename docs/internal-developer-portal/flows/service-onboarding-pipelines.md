@@ -1,7 +1,8 @@
 ---
-title: Service onboarding pipelines
-description: Service onboarding pipelines use a software template and enable a developer to spawn new software applications easily while following the company's best practices.
+title: Self-Service Workflows
+description: Self-Service Workflows enable a developer to spawn new software applications easily while following the company's best practices.
 sidebar_position: 1
+sidebar_label: Self-Service Workflows
 redirect_from:
   - /docs/internal-developer-portal/features/service-onboarding-pipelines
 ---
