@@ -73,7 +73,7 @@ Under events you can select the following **pipeline events**:-
 5. Stage Failed
 
 :::info note
-Stage start/success/failed events will apply to all stages within a pipeline. There is no option to configure notifications for specific stages.
+Stage start/success/failed events will apply to all stages within a pipeline. There is no option to configure notifications for specific stages, if you want to do that you can configure it via [Pipeline level notification](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md).
 :::
 
 Under **Create Condition** provide, Condition Name and **Select Pipeline Events**. Click on **Continue** to set channel where you want to send the notification.
