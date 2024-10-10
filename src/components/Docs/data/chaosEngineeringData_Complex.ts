@@ -143,7 +143,7 @@ import { MODULES } from "@site/src/constants"
         module: MODULES.ce,
         description:
           "Additional layer of security to minimize blast radius and mitigate potential security threats. ",
-        link: "/docs/chaos-engineering/concepts/explore-concepts/chaosguard",
+        link: "/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/",
       },
       {
         title: "Chaos dashboard",

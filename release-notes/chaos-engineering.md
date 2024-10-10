@@ -277,7 +277,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * The [SSH chaos experiment](/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/ssh-chaos) now supports an extended termination grace period, allowing for longer execution of abort scripts. (CHAOS-3748)
 
-* This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/concepts/explore-concepts/chaosguard#condition). (CHAOS-3254)
+* This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/#condition). (CHAOS-3254)
 
 #### Fixed issues
 
@@ -343,7 +343,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * This release deprecates the `ACCESS_KEY` invalidation after a chaos infrastructure is successfully connected. Users can use the same manifest to connect to the infrastructures. (CHAOS-3164)
 
-* Adds UI support to search conditions for selection while creating a [ChaosGuard rule](/docs/chaos-engineering/concepts/explore-concepts/chaosguard#rule). (CHAOS-2982)
+* Adds UI support to search conditions for selection while creating a [ChaosGuard rule](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/#rule). (CHAOS-2982)
 
 * Adds support to incorporate `secretRef` and `configMapRef` with the tunables for [VMWare faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware). (CHAOS-2750)
 

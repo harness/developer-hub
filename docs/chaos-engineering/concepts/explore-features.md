@@ -154,7 +154,7 @@ For more information, go to [RBAC and User Authorization](/docs/chaos-engineerin
 
 ### ChaosGuard
 
-ChaosGuard provides an additional level of security to guard chaos experiments from chaos-enabled users. It aims to minimize the blast radius  and mitigate potential threats. For more information, go to [ChaosGuard](/docs/chaos-engineering/concepts/explore-concepts/chaosguard). For hands-on experience, [Configure and Use ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/govern-run).
+ChaosGuard provides an additional level of security to guard chaos experiments from chaos-enabled users. It aims to minimize the blast radius  and mitigate potential threats. For more information, go to [ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/). For hands-on experience, [Configure and Use ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/govern-run).
 
 ## Integrations
 
