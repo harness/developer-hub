@@ -16,4 +16,9 @@ Harness deployment logging has the following limitations:
 * Harness always saves the final log line that contains the status (Success, Failure, and so on), even if the log exceeds the limit.
 * If the final log line is large and the log already exceeds the limit of 25MB, Harness shows a limited portion of the end of the final line (10KB of data for the line).
 * The Harness log service has a limit of 5000 lines. Logs rendered in the Harness UI are truncated from the top if the logs exceed the 5000 line limit.
+
+:::note
+If you need logs more than 5000 lines, contact [Harness Support](mailto:support@harness.io)
+:::
+
 * Steps exceeding a 5-hour runtime may experience log visibility issues. We are working to address this limitation.
