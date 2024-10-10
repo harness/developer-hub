@@ -607,7 +607,7 @@ This could happen when the PR/push trigger is configured with the 'Auto-abort Pr
 
 ### Can we add the config "topologySpreadConstraints" in the build pod which will help CI pod to spread across different AZs?
 
-Currently, we do not support adding "topologySpreadConstraints" to the build pod
+Harness CI now includes a new property, `podSpecOverlay`, in the Kubernetes infrastructure properties of the CI stage. This allows users to apply additional settings to the build pod. Currently, we support specifying `topologySpreadConstraint` in this field.
 
 ### Why the docker commands in the run step is failing with the error "Cannot connect to the Docker daemon at unix:///var/run/docker.sock?" even after the dind background step logs shows that the docker daemon has been initialized?
 
