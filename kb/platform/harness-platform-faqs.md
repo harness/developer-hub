@@ -169,6 +169,22 @@ With Harness, users and groups can be created automatically via SCIM. Permission
 
 No, there is no such option currently. To debug permission related issues, check the groups and roles assigned to user.
 
+### How can I enforce password policies in Harness?
+
+You can enforce password policies in Harness by setting requirements such as minimum password length, inclusion of uppercase and lowercase letters, digits, and special characters, as well as configuring password expiration intervals and lockout policies after failed login attempts.
+
+### How can I restrict email domains for user logins in Harness?
+
+You can restrict email domains by selecting the option to allow only specific domains as usable login credentials. This creates a whitelist of domains that users must belong to in order to access the Harness account.
+
+### What is the difference between session inactivity timeout and absolute session timeout in Harness?
+
+Session inactivity timeout logs users out after a set period of inactivity, while absolute session timeout logs users out after a set period of time, regardless of activity. If both are configured, the condition that is met first will apply.
+
+### Can I allow public access to resources in Harness?
+
+Yes, Harness can allow public access to certain resources, such as pipelines. However, this feature is currently behind a feature flag (PL_ALLOW_TO_SET_PUBLIC_ACCESS) and requires contacting Harness Support to enable it.
+
 ## API/Integration
 
 ### How can you update a secret file using binary file content through an API request?
