@@ -326,7 +326,7 @@ gsutil -m cp \
 
 - We identified and resolved an issue where creating multiple project-level GitOps resources using Terraform would partially fail if no existing app project mapping was in place. This failure was due to a race condition caused by multiple resources attempting to create app project mappings simultaneously. With the issue resolved, Terraform can now be used to create multiple project-level GitOps resources without encountering this problem.  (CDS-101361)
 
-- Added validation against existing account, org and project in create/update requests for gitops resources.
+- Added validation against existing account, org and project in create/update requests for gitops resources. (101364)
 
 #### Continuous Integration
 
