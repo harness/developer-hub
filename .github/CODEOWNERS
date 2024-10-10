@@ -56,7 +56,7 @@ README.md @pratmit
 /docs/service-reliability-management/ @sunilgupta-harness
 
 # Chaos Docs
-/docs/chaos-engineering/ @neelanjan00 @SmritiSatya
+/docs/chaos-engineering/ @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt
 
 # Platform Docs
 /docs/platform/ @pratmit @krishi0408
@@ -111,7 +111,7 @@ README.md @pratmit
 /docs/faqs/security-testing-orchestration/ @tejakummarikuntla
 
 # Chaos FAQs
-/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya
+/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya @ksatchit
 
 # Delegate FAQs
 /docs/faqs/harness-delegate-faqs/ @pratmit
@@ -135,7 +135,7 @@ README.md @pratmit
 /release-notes/cloud-cost-management.md @rdsoze
 
 # CE Release Notes
-/release-notes/chaos-engineering.md @neelanjan00 @SmritiSatya
+/release-notes/chaos-engineering.md @neelanjan00 @SmritiSatya @Jonsy13
 
 # CET Release Notes
 /release-notes/continuous-error-tracking.md @M-Tsur
