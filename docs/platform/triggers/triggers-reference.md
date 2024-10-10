@@ -560,11 +560,9 @@ import TabItem from '@theme/TabItem';
 ### Manual and custom webhook registration
 
 Use the manual webhook registration process if [automatic webhook registration fails](/docs/platform/triggers/triggering-pipelines#common-causes-of-webhook-registration-failure) or is impossible (as with custom webhooks).
-x
-:::infox
 
+:::info
 Harness Self-Managed Enterprise Edition does not support webhook triggers for Helm-based installations using self-signed certificates.
-
 :::
 
 1. In Harness, obtain the trigger webhook by selecting the **Webhook/Link** icon in the list of triggers.
