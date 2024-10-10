@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - ASG step will not delete all tags and create tags but instead only remove those tags which are not present while running pipleine. (CDS-101285)
 
+### Version 24.09.83907 <!--  October 10, 2024 -->
+
+#### Hotfixes
+
+- Jira steps will now ignore unsupported fields which reading a jira ticket. (CDS-101162)
+
 ## September 2024
 ### Version 24.08.83805 <!--  September 26, 2024 -->
 
