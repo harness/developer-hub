@@ -155,11 +155,11 @@ This release includes the following Harness module and component versions.
 | Air Gap Bundle | [0.21.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.21.0) |
 | NG Manager | 1.55.8 |
 | CI Manager | 1.45.5 |
-| Pipeline Service | 1.93.5 |
+| Pipeline Service | 1.93.6 |
 | Platform Service | 1.37.2 |
 | Access Control Service | 1.58.2 |
 | Delegate | 24.08.83804 |
-| GitOps Service | 1.17.6 |
+| GitOps Service | 1.17.9 |
 | Change Data Capture | 1.33.3 |
 | STO Core | 1.108.4 |
 | Test Intelligence Service | 1.27.1 |
@@ -323,6 +323,10 @@ gsutil -m cp \
 - Access Control to GitOps Applications can now be managed using Labels. This allows Applications to be automatically added to the required Access Control Resource Groups. See https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/manage-permissions/ for more details. (CDS-97914)
 
 - When creating a GitOps Application, the cluster can now be specified by name instead of using the IP address, if required. This is helpful in cases where the Cluster IP may change in the backend. (CDS-96922)
+
+- We identified and resolved an issue where creating multiple project-level GitOps resources using Terraform would partially fail if no existing app project mapping was in place. This failure was due to a race condition caused by multiple resources attempting to create app project mappings simultaneously. With the issue resolved, Terraform can now be used to create multiple project-level GitOps resources without encountering this problem.  (CDS-101361)
+
+- Added validation against existing account, org and project in create/update requests for gitops resources.
 
 #### Continuous Integration
 
