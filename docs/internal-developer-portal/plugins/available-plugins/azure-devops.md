@@ -130,7 +130,7 @@ If you have multiple organizations you'll need to also add this annotation:
 dev.azure.com/host-org: <host>/<organization>
 ```
 
-For this annotation <host> will match the host value in the git integrations of azure which you have set up in git integration section and <organization> will be the name of the Organization that is part of the host.
+For this annotation `<host>` will match the host value in the git integrations of azure which you have set up in git integration section and `<organization>` will be the name of the Organization that is part of the host.
 
 If the entity we are viewing lives in the my-other-org organization then the dev.azure.com/host-org annotation would look like this:
 
