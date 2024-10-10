@@ -7,7 +7,7 @@ sidebar_label: Quickstart
 
 :::info
 
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io 
+Harness CDE is now available in [public beta](https://www.harness.io/blog/introducing-harness-cloud-development-environments). To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io 
 
 :::
 
@@ -90,7 +90,19 @@ Now, let’s install dependencies for the sample app and run it. We will also ma
 npm run dev
 ```
 
-3. Your application will be available at proxy host 3000. You will see a message at the bottom right of your IDE with a link to open the app in browser.
+3. Your application will be available at proxy host 3000. You will see a message at the bottom right of your IDE with a link to open the app in browser. 
+
+    If you're unable to see the pop-up, it might be because the application is running inside the development container. To access this container remotely, we'll need to set up port forwarding. [Watch this video to learn more about port forwarding](https://www.youtube.com/watch?v=MGcNbaEOgR4).
+
+    Here's how you can forward the port:
+
+    1. Go to the **Ports** section in your VS Code desktop and click **Forward a Port**.
+
+    ![](./static/forward-port-cde.png)
+
+    2. Enter "3000" in the port field and press **Enter**.
+    3. Open [https://localhost:3000](https://localhost:3000) to view your app live.
+
 
 4. The application shows the Harness canary in a variety of fun situations and poses.
 
@@ -141,7 +153,17 @@ git config --global user.name "Your Name"
 
 ![](./static/settings-vs-code-extension.png)
 
-3. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. **Make sure you have already signed-in to Harness Platform already in your browser before starting this step.**
+3. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. You can connect to VS Code desktop via two ways: SSH Key or a temporary password. To connect to a Gitspace locally using VS Code desktop, you have two options: either use an SSH key or a temporary password.
+    1. SSH Key:
+You can create a new SSH key using `ssh-keygen` [(learn more here on how to create an SSH key)](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key). This generates a pair of keys (public and private). Copy the public key and paste it into the "SSH key" field while setting up a Gitspace (as shown in the picture below). This will enable you to establish a remote connection to VS Code desktop via SSH. If you prefer not to use an SSH key, you can use the temporary password method outlined below.
+
+        ![](./static/ssh-key.png)
+
+
+    2. Temporary Password:
+If you do not wish to connect via an SSH key, you can use a temporary password. During Gitspace setup, simply leave the "SSH key" field blank. A temporary password will be generated automatically for the remote connection. After the Gitspace is created, you'll be redirected to VS Code desktop and prompted to copy the temporary password. Paste it and follow the prompts to establish the remote connection. 
+
+        ![](./static/temp-password.png)
 
 4. Any Gitspace you create with VS Code Desktop as the IDE will now open in your desktop application. You can also view a list of Gitspaces in the left navbar and switch between them as needed. 
 
