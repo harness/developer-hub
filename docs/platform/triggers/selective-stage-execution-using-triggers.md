@@ -23,9 +23,9 @@ Make sure that you have met the following requirements:
 
     ![](./static/selective-stage-execution.png)
 
-3. When you create a trigger, in the **Configuration** tab, select the stages you want to execute.
+3. When you create a trigger, in the **Pipeline Input** tab, select the stages you want to execute.
 
-   ![](./static/select-stage-to-execute.png)
+    ![](./static/select-stage-to-execute.png)
 
   Here is a sample trigger YAML:
 
