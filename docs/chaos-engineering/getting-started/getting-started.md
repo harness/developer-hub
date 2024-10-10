@@ -66,7 +66,7 @@ HCE module has the following additional capabilities:
 12. [Bring Your Own Chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/byoc/)
 13. Teaming around ChaosHubs
 14. Resilience probes ([Dynatrace](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/datadog-probe) and [Datadog](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/datadog-probe))
-15. [ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/govern-run)
+15. [ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/)
 
 ## Integrations with other Harness modules
 

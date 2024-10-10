@@ -48,7 +48,7 @@ You can create a [superset AWS policy](/docs/chaos-engineering/use-harness-ce/ch
 
 :::tip
 - You can authenticate cloud API requests made by the chaos pods. If the Kubernetes chaos infrastructure (or agent) is set up on EKS or GKE clusters, you can set up [IRSA](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-iam-integration) or [workload identity](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/gcp-iam-integration/) respectively, instead of using Kubernetes secrets.
-- You can configure [ChaosGuard](/docs/chaos-engineering/concepts/explore-concepts/chaosguard/) rules to limit the scope of the Harness chaos platform for faults executed, clusters chosen, application workload targeted and chaos service account leveraged.
+- You can configure [ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/) rules to limit the scope of the Harness chaos platform for faults executed, clusters chosen, application workload targeted and chaos service account leveraged.
 - The Service Load chaos is target-platform agnostic, that is, it can generate load against service endpoints regardless of where they are hosted.
 :::
 
