@@ -3,6 +3,8 @@ title: Overview
 description: A pre-configured development environment.
 sidebar_position: 1
 sidebar_label: Overview
+redirect_from:
+  - /docs/cloud-development-environment/get-started/overview
 ---
 
 :::info

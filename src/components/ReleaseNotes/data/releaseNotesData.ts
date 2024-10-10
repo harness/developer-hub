@@ -118,7 +118,7 @@ import {
             module: MODULES.cde,
             description:
               "",
-            link: "/release-notes/cloud-development-environment",
+            link: "/release-notes/cloud-development-environments",
           },
           {
             title: "Security Testing Orchestration release notes",

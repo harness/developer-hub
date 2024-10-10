@@ -160,8 +160,8 @@ async function config() {
                   to: 'docs/internal-developer-portal',
                 },
                 {
-                  label: 'Cloud Development Environments (BETA)',
-                  to: 'docs/cloud-development-environment',
+                  label: 'Cloud Development Environments',
+                  to: 'docs/cloud-development-environments',
                 },
                 {
                   label: 'Software Engineering Insights',

@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 <TabItem value="other-git-repositories" label="Other Git Repositories">
 
-1. You can add a public or private repository URL for supported [git providers](/docs/cloud-development-environment/whats-supported#git-providers).
+1. You can add a public or private repository URL for supported [git providers](/docs/cloud-development-environments/whats-supported#git-providers).
 
 2. For **public repositories**, the URL must strictly follow this format: https://git-provider.com/organisation/repository (e.g., for GitHub: https://github.com/harness-community/demo-repo-nm). Any extra text after this may cause an error.
 

@@ -28,7 +28,7 @@ export default function CDE() {
             <h1>Cloud Development Environments (BETA)</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/docs/cloud-development-environment">
+            <Link href="/docs/cloud-development-environments">
               <button
                 className={clsx(
                   "button button--lg",
@@ -41,7 +41,7 @@ export default function CDE() {
                 Documentation
               </button>
             </Link>
-            <Link href="/release-notes/cloud-development-environment">
+            <Link href="/release-notes/cloud-development-environments">
               <button
                 className={clsx(
                   "button button--lg",
@@ -61,7 +61,7 @@ export default function CDE() {
             Harness CDEs are Development Environments, which are preconfigured, remote, ready-to-use  environments that developers can quickly spin up from anywhere and start writing code, debugging, and collaborating with other developers.
             </p>
             <div className={styles.alignCenter}>
-              <Link href="/docs/cloud-development-environment">
+              <Link href="/docs/cloud-development-environments">
                 <button
                   className={clsx(
                     "button button--lg",

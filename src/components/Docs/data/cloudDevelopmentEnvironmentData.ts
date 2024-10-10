@@ -18,13 +18,13 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.cde,
           description:
             "Learn how to provision pre-configured Cloud Developer Environments for seamless development ",
-          link: "/docs/cloud-development-environment/get-started/overview",
+          link: "/docs/cloud-development-environments/get-started/overview",
         },
         {
           title: "Getting Started with CDE",
           module: MODULES.cde,
           description: "Set up your CDE.",
-          link: "/docs/cloud-development-environment/get-started/getting-started-with-cde",
+          link: "/docs/cloud-development-environments/get-started/getting-started-with-cde",
         },
       ],
     },
