@@ -31,7 +31,7 @@ If a repository does not have a `devcontainer.json`, we will spin up the CDE wit
 
 ## What is supported?
 
-For a list of supported Git providers, IDEs, and CDE machine specs, please refer to the [What's supported](https://developer.harness.io/docs/cloud-development-environment/whats-supported)
+For a list of supported Git providers, IDEs, and CDE machine specs, please refer to the [What's supported](https://developer.harness.io/docs/cloud-development-environments/whats-supported)
 
 
 :::info
