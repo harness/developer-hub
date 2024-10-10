@@ -42,7 +42,7 @@ If you don't want to change the behavior for your entire account, follow the ste
 5. For **Provider Type** and **URL**, do one of the following:
 
    * To pull [Harness images from GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gcr.io/gcr-prod` for **Docker Registry URL**.
-   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gallery.ecr.aws/harness` for **Docker Registry URL**.
+   * To pull [Harness images from ECR](https://public.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
 
    If you want to change the connector back to Docker Hub, select **Docker Hub** and enter `https://registry.hub.docker.com`.
 
@@ -71,7 +71,7 @@ If you don't want to change the behavior for your entire account, you can [Use c
 5. For **Provider Type** and **URL**, do one of the following:
 
    * To pull [Harness images from GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gcr.io/gcr-prod` for **Docker Registry URL**.
-   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gallery.ecr.aws/harness` for **Docker Registry URL**.
+   * To pull [Harness images from ECR](https://public.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
    * To pull images from Docker Hub, select **Docker Hub** and entering `https://registry.hub.docker.com`.
 
 6. For **Authentication**, select **Username and Password**, and provide a username and token to access Docker Hub or GCR,depending on the **Docker Registry URL**. The token needs read, write, and delete permissions.
@@ -109,7 +109,7 @@ If you want to change the behavior for your entire account, you can [configure H
 5. For **Provider Type** and **URL**, do one of the following:
 
    * To pull [Harness images from GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gcr.io/gcr-prod` for **Docker Registry URL**.
-   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gallery.ecr.aws/harness` for **Docker Registry URL**.
+   * To pull [Harness images from ECR](https://public.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
    * To pull images from Docker Hub, select **Docker Hub** and entering `https://registry.hub.docker.com`.
 
 6. For **Authentication**, select **Username and Password**, and provide a username and token to access GCR, ECR, or Docker Hub. The token needs **Read, Write, Delete** permissions.
@@ -137,7 +137,7 @@ You can also [use a private registry for STO scanner images](/docs/security-test
 
 ### Download Harness images to your registry
 
-1. Download the images you need from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) or the [Harness ECR public gallery](https://gallery.ecr.aws/harness), perform any tests or validations necessary for your organization's security policies, and then store the images in your private registry.
+1. Download the images you need from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) or the [Harness ECR public gallery](https://public.ecr.aws/harness), perform any tests or validations necessary for your organization's security policies, and then store the images in your private registry.
 
    :::warning
 
@@ -188,12 +188,12 @@ When selecting the connector to use to pull images, Harness follows this hierarc
 
 ## End of life notice: app.harness Docker registry
 
-[Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci) are available on Docker Hub, the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), and the [Harness ECR public gallery](https://gallery.ecr.aws/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness deprecated the Harness-hosted `app.harness` Docker registry effective 15 Feb 2024. The registry end point will be end of life on 15 May 2024.
+[Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci) are available on Docker Hub, the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), and the [Harness ECR public gallery](https://public.ecr.aws/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness deprecated the Harness-hosted `app.harness` Docker registry effective 15 Feb 2024. The registry end point will be end of life on 15 May 2024.
 
 The end of life could impact you if:
 
 * Your built-in Harness Docker connector (`account.harnessImage`) is configured to use the `app.harness` Docker registry. To avoid errors when the deprecation takes place, modify the target image registry by following the steps in [Configure Harness to always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
-* You [pull Harness images from a private registry](#pull-harness-images-from-a-private-registry), and you are currently pulling the latest images from the `app.harness` Docker registry. To avoid errors post end of life, make sure you are pulling images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) or the [Harness ECR public gallery](https://gallery.ecr.aws/harness).
+* You [pull Harness images from a private registry](#pull-harness-images-from-a-private-registry), and you are currently pulling the latest images from the `app.harness` Docker registry. To avoid errors post end of life, make sure you are pulling images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) or the [Harness ECR public gallery](https://public.ecr.aws/harness).
 * You have other Docker connectors configured to the `app.harness` Docker registry. Edit these connectors to use `https://registry.hub.docker.com` instead.
 
 ## Troubleshoot Harness images
