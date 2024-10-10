@@ -199,7 +199,7 @@ gsutil -m cp \
 
 #### Harness Platform
 
-- PodDisruptionBudgets can now be created using global and service-level overrides and are enabled by default for all supported services. (PL-56564, ZD-68426)
+- PodDisruptionBudgets can now be created using global and service-level overrides and can be enabled for supported services. (PL-56564, ZD-68426)
 
   At the global level, for all supported services
 
