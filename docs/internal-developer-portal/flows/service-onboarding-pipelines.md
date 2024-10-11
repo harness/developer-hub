@@ -22,7 +22,7 @@ In Harness IDP, a Self Service Workflow (also known as a software template in Ba
 
 ## How to write IDP Workflows
 
-Workflows in Harness IDP is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). You can create your own Workflows with a small yaml definition which describes the Workflow and its metadata, along with some input variables that your Workflow will need, and then a list of actions which are then executed by the scaffolding service. Read more on [How to build your Workflows](/docs/internal-developer-portal/flows/flows-input). Here's an example Workflow definition YAML: 
+Workflows in Harness IDP is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). You can create your own Workflows with a small yaml definition which describes the Workflow and its metadata, along with some input variables that your Workflow will need, and then a list of actions which are then executed by the scaffolding service. Here's an example Workflow definition YAML: 
 
 
 <details>
@@ -113,41 +113,62 @@ spec:
 ```
 </details>
 
-## Adding the owner
-
-By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi` and it should only contain the user name not the complete email id. 
-
-A simple `workflow.yaml` definition might look something like this:
-
-```YAML {4,9}
-...
-# these are the steps which are rendered in the frontend with the form input
-spec:
-  owner: debabrata.panigrahi@harness.io
-  type: service
-  parameters:
-    - title: Service Details
-      properties:   
-        owner:
-          title: Choose an Owner for the Service
-          type: string
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKinds:
-              - Group
-        # This field is hidden but needed to authenticate the request to trigger the pipeline
-        token:
-          title: Harness Token
-          type: string
-          ui:widget: password
-          ui:field: HarnessAuthToken
-...
-
-```
-
 Let's dive in and pick apart what each of these sections do and what they are.
 
 ## Frontend of the Template
+
+In a Workflow, the **input parameters** are the first interaction point for developers. They define the structure and types of data needed to initiate the onboarding process.
+
+1. **Parameter Types**:
+   Workflow definition can accept a wide range of input types, such as:
+   - **String**: Simple text fields used for names, IDs, or environment types.
+   - **Integer**: Used for numeric inputs, such as setting a quota or defining age limits.
+   - **Array**: Useful for handling multiple inputs, like a list of dependencies or services.
+   - **Object**: When using more complex structures, nested fields can be defined using object types.
+   
+2. **User Interaction and Validation**:
+   - Inputs can include UI widgets that make user interaction easier. For example, a string input can have a `ui:field` of [`OwnerPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#ownerpicker) to allow users to select team members from a dropdown list.
+
+  ::: info
+
+    ## Adding the owner
+
+    By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi` and it should only contain the user name not the complete email id. 
+
+    A simple `workflow.yaml` definition might look something like this:
+
+    ```YAML {4,9}
+    ...
+    # these are the steps which are rendered in the frontend with the form input
+    spec:
+      owner: debabrata.panigrahi@harness.io
+      type: service
+      parameters:
+        - title: Service Details
+          properties:   
+            owner:
+              title: Choose an Owner for the Service
+              type: string
+              ui:field: OwnerPicker
+              ui:options:
+                allowedKinds:
+                  - Group
+            # This field is hidden but needed to authenticate the request to trigger the pipeline
+            token:
+              title: Harness Token
+              type: string
+              ui:widget: password
+              ui:field: HarnessAuthToken
+    ...
+
+    ```
+  :::
+
+   - **Default values**: You can set default values for parameters to guide users on commonly used values, making onboarding quicker and more user-friendly.
+   - **Field Dependency**: Input fields can be made dynamic using `anyOf` or `allOf`, where only certain fields become visible based on the user’s previous choices. For instance, selecting a "production" environment could trigger additional input fields for production-specific configurations.
+   
+3. **Required Fields**:
+   Templates allow developers to enforce required fields. For example, the field `age` or `owner` could be marked as mandatory, ensuring critical data is not skipped during onboarding.
 
 ### `spec.parameters` - `FormStep | FormStep[]`
 
@@ -277,9 +298,17 @@ spec:
 
 ## Building the Template Backend
 
-## `spec.steps` - `Action[]`
+### `spec.steps` - `Action[]`: Action Customization
 
-The `steps` is an array of the things that you want to happen part of this Workflow. These follow the same standard format:
+**Steps** are the core execution units within Workflows. Each step runs an action that might involve triggering a CI/CD pipeline, creating a service in a catalog, or provisioning infrastructure resources. The inputs gathered from the user are passed into these steps, and the outputs are generated based on the results of each step.
+
+Actions within steps can be customized to fit various use cases, such as:
+
+- **Creating Repositories**: Using `[trigger:harness-custom-pipeline](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline)` and execute a pipeline with [create-repo stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#3-create-repo) to generate a new repository based on the provided input.
+- **Logging Data**: Using `debug:log` to display or log specific information about the inputs.
+- **Triggering Pipelines**: Using `[trigger:harness-custom-pipeline](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline)` to pipelines in Harness for various actions like creating repository, [onboarding new service](https://developer.harness.io/docs/internal-developer-portal/flows/create-a-new-service-using-idp-stage), etc. 
+
+These follow the same standard format:
 
 ```yaml
 - id: fetch-base # A unique id for the step
@@ -322,7 +351,31 @@ TO BE ADDED
 
 ### Configuring the Output
 
-Each individual step can output some variables that can be used in the scaffolder frontend for after the job is finished. This is useful for things like linking to the entity that has been created with the backend, linking to the created repository, or showing Markdown text blobs. **Read more on how to configure output** (TO BE ADDED). 
+1. **Links to Generated Resources**
+The output can generate direct links to newly created resources such as Git repositories, documentation pages, or CI/CD pipelines. This gives the developer immediate access to manage or monitor their newly onboarded resources.
+
+**Example**:  
+To Be Added
+
+
+2. **Service Metadata and Status**
+Output can include status messages or metadata from the onboarding process. For example, details about a service registration or the progress of resource provisioning (success/failure messages) can be returned as output.
+
+**Example**:  
+To Be Added
+
+
+3. **Generated Files and Artifacts**
+Developers can configure templates to generate files (e.g., README.md, YAML configuration files) or artifacts (e.g., Dockerfiles, Kubernetes manifests) during onboarding.
+
+**Example**:  
+To Be Added
+
+
+4. **Dynamic Outputs Based on Inputs**
+Outputs can be conditional based on inputs. For instance, if a user selected the "production" environment during onboarding, the output could include production-specific links (e.g., monitoring dashboards, production CI/CD pipelines).
+
+Each individual step can output some variables that can be used in the Workflow frontend for after the job is finished. This is useful for things like linking to the entity that has been created with the backend, linking to the created repository, or showing Markdown text blobs. **[Read more on how to configure output](/docs/internal-developer-portal/flows/flows-output.md)**. 
 
 ```yaml
 output:
