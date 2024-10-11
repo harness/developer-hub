@@ -493,7 +493,7 @@ The Normal install type installs exactly 1 replica of all components.
 
 Both ArgoCD and Harness have an HA install type. The Harness HA type installs different variations of the components with more than 1 replicas.
 
-- `agent` has 2 replicas.
+- `agent` has 2 replicas. In HA mode, the agent will utilize a Horizontal Pod Autoscaler for CPU and memory, with a minimum of 1 replica and a maximum of 5 replicas.
 - `redis` has 3 replicas/sentinels (`haproxy`).
 - `argocd-application-controller` has 1 replica (ArgoCD uses 2).
 - `argocd-repo-server` server has 2 replicas.
