@@ -24,9 +24,9 @@ While building custom delegate if you are not using delegate as base image [exam
 
 1- SCM binary path is not added to path env variable.
 
-2- SCM binary is stored at correct location. Example: While downloading scm binary from `https://app.harness.io/public/shared/tools/scm/release/a81c96813/bin/linux/$TARGETARCH/scm` it should be stored in location `client-tools/scm/a81c96813/scm`. Resulting curl will look like:
+2- SCM binary is stored at correct location. Example: While downloading scm binary from `https://app.harness.io/public/shared/tools/scm/release/SCM_VERSION/bin/linux/$TARGETARCH/scm` it should be stored in location `client-tools/scm/SCM_VERSION/scm`. Resulting curl will look like:
 ```
-curl -f -s -L -o client-tools/scm/a81c96813/scm https://app.harness.io/public/shared/tools/scm/release/a81c96813/bin/linux/$TARGETARCH/scm
+curl -f -s -L -o client-tools/scm/SCM_VERSION/scm https://app.harness.io/public/shared/tools/scm/release/SCM_VERSION/bin/linux/$TARGETARCH/scm
 ```
 :::
 
