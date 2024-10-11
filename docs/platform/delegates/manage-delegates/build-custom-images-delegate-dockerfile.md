@@ -19,6 +19,17 @@ For more information on delegate automatic upgrades and the delegate expiration 
 
 You can include third party tools with your delegate when you use the delegate Dockerfile. The image includes default tools. For a list of default tools and their versions, go to the [delegate Dockerfile repository](https://github.com/harness/delegate-dockerfile).
 
+:::info note
+While building custom delegate if you are not using delegate as base image [example](https://github.com/harness/delegate-dockerfile/blob/main/Dockerfile) then for scm to work properly please ensure below
+
+1- SCM binary path is not added to path env variable.
+
+2- SCM binary is stored at correct location. Example: While downloading scm binary from `https://app.harness.io/public/shared/tools/scm/release/a81c96813/bin/linux/$TARGETARCH/scm` it should be stored in location `client-tools/scm/a81c96813/scm`. Resulting curl will look like:
+```
+curl -f -s -L -o client-tools/scm/a81c96813/scm https://app.harness.io/public/shared/tools/scm/release/a81c96813/bin/linux/$TARGETARCH/scm
+```
+:::
+
 ## Dockerfile-minimal
 
 Use `Dockerfile-minimal` to create delegate images without tools. This image includes only the SCM client tool.
