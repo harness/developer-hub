@@ -3,6 +3,8 @@ title: Harness CDE Quickstart
 description: Get Started with Harness CDE.
 sidebar_position: 2
 sidebar_label: Quickstart
+redirect_from:
+  - /docs/cloud-development-environment/get-started/getting-started-with-cde
 ---
 
 :::info
@@ -31,7 +33,7 @@ If a repository does not have a `devcontainer.json`, we will spin up the CDE wit
 
 ## What is supported?
 
-For a list of supported Git providers, IDEs, and CDE machine specs, please refer to the [What's supported](https://developer.harness.io/docs/cloud-development-environment/whats-supported)
+For a list of supported Git providers, IDEs, and CDE machine specs, please refer to the [What's supported](https://developer.harness.io/docs/cloud-development-environments/whats-supported)
 
 
 :::info
