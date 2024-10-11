@@ -47,6 +47,24 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## October
 
+### Version 1.60.x
+
+#### New features and enhancements
+
+- The Harness GitOps agent uses the **Horizontal Pod Autoscaler** for CPU and memory management, with a minimum of 1 replica and a maximum of 5 replicas in High Availability (HA) mode. (CDS-100830)
+
+#### Fixed issues
+
+- Previously, some users were unable to use GitEx bidirectional sync with Harness repositories due to the presence of special characters in the repository. This issue is resolved. Users can now create webhooks even if their repository contain special characters.(PIPE-22238, ZD-70182)
+
+- The Git experience repository search was not yielding the expected results. This issue has been resolved. The search functionality  works only with repository names, not with full paths or subdirectories. (PIPE-22173, ZD-70809)
+
+- Previously, some users were unable to read service and job names from the exported manifest due to data masking. This issue is resolved. (CDS-101472, ZD-70697)
+
+- The default configuration for the GitOps Get App Details step through the UI was not functioning properly. This issue resolved. (CDS-101260)
+
+- The ECR token was revealed through artifact expressions in the shell script step. This issue is resolved now.(CDS-101258, ZD-70269)
+
 ### Version 1.59.4
 
 #### New features and enhancements
