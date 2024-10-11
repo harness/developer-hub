@@ -169,6 +169,10 @@ With Harness, users and groups can be created automatically via SCIM. Permission
 
 No, there is no such option currently. To debug permission related issues, check the groups and roles assigned to user.
 
+### Can a ORG service account token access the connectors at account level?
+
+No, In harness RBAC, child scope does not have permissions to access the parent resources. If you want to run any pipeline that has account level resources used, you have to create a account level service account token.
+
 ## API/Integration
 
 ### How can you update a secret file using binary file content through an API request?
@@ -3364,3 +3368,8 @@ You can use our RBAC and create a resource group and role so it can be used only
 ### If there is a pipeline in progress when we upgrade the delegate. Will the pipeline fail and need to be re-run?
 Delegate upgrades do not affect pipelines unless the shutdown timeout is reached. Before an upgrade is performed, the delegate finishes the underway tasks. The delegate then shuts down. There is a 10-minute timeout by default as part of the shutdown process. You can configure this setting, by updating the terminationgraceperiod in delegate yaml.
 
+### How to check latest harness manager version?
+To check latest harness manager version or any other services version, Go to `Account setting > Account Details > Platform Service Versions`
+
+### Can we configure audit log streaming to S3?
+Yes, you can configure log stream to s3 using the following doc - https://developer.harness.io/docs/platform/governance/audit-trail/audit-streaming/
