@@ -3290,6 +3290,10 @@ Yes, the skip keywords can be placed anywhere within the commit message, includi
 #### Does harness pipeline support triggering GitHub action workflow from the pipeline?
 As per the current design, there's no native step for this but user can write a shell script at the end of execution to trigger the GitHub action workflow.
 
+#### Why I am not able to see rollback options in custom stage?
+
+The rollback option is only available for the deployment stage, So you can only be able to see in the deployment stage.
+
 
 ### Infrastructure provisioning FAQs
 
