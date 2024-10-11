@@ -115,7 +115,7 @@ spec:
 
 Let's dive in and pick apart what each of these sections do and what they are.
 
-## Frontend of the Template
+## Frontend of the Workflow
 
 In a Workflow, the **input parameters** are the first interaction point for developers. They define the structure and types of data needed to initiate the onboarding process.
 
@@ -127,42 +127,7 @@ In a Workflow, the **input parameters** are the first interaction point for deve
    - **Object**: When using more complex structures, nested fields can be defined using object types.
    
 2. **User Interaction and Validation**:
-   - Inputs can include UI widgets that make user interaction easier. For example, a string input can have a `ui:field` of [`OwnerPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#ownerpicker) to allow users to select team members from a dropdown list.
-
-  ::: info
-
-    ## Adding the owner
-
-    By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi` and it should only contain the user name not the complete email id. 
-
-    A simple `workflow.yaml` definition might look something like this:
-
-    ```YAML {4,9}
-    ...
-    # these are the steps which are rendered in the frontend with the form input
-    spec:
-      owner: debabrata.panigrahi@harness.io
-      type: service
-      parameters:
-        - title: Service Details
-          properties:   
-            owner:
-              title: Choose an Owner for the Service
-              type: string
-              ui:field: OwnerPicker
-              ui:options:
-                allowedKinds:
-                  - Group
-            # This field is hidden but needed to authenticate the request to trigger the pipeline
-            token:
-              title: Harness Token
-              type: string
-              ui:widget: password
-              ui:field: HarnessAuthToken
-    ...
-
-    ```
-  :::
+   - Inputs can include UI widgets that make user interaction easier. For example, a string input can have a `ui:field` of [`OwnerPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#ownerpicker) to allow users to select team members from a dropdown list. 
 
    - **Default values**: You can set default values for parameters to guide users on commonly used values, making onboarding quicker and more user-friendly.
    - **Field Dependency**: Input fields can be made dynamic using `anyOf` or `allOf`, where only certain fields become visible based on the user’s previous choices. For instance, selecting a "production" environment could trigger additional input fields for production-specific configurations.
@@ -296,7 +261,39 @@ spec:
 
 </details>
 
-## Building the Template Backend
+### Adding the owner
+
+By default the [owner](https://developer.harness.io/docs/internal-developer-portal/catalog/how-to-create-idp-yaml#spec-owner) is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi` and it should only contain the user name not the complete email id. 
+
+A simple `workflow.yaml` definition might look something like this:
+
+```YAML {4,9}
+...
+# these are the steps which are rendered in the frontend with the form input
+spec:
+  owner: debabrata.panigrahi@harness.io
+  type: service
+  parameters:
+    - title: Service Details
+      properties:   
+        owner:
+          title: Choose an Owner for the Service
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+        # This field is hidden but needed to authenticate the request to trigger the pipeline
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+...
+
+```
+
+## Building the Workflow Backend
 
 ### `spec.steps` - `Action[]`: Action Customization
 
