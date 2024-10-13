@@ -3290,6 +3290,14 @@ Yes, the skip keywords can be placed anywhere within the commit message, includi
 #### Does harness pipeline support triggering GitHub action workflow from the pipeline?
 As per the current design, there's no native step for this but user can write a shell script at the end of execution to trigger the GitHub action workflow.
 
+#### How does the rollback feature work in Terraform when using Harness?
+
+When a rollback occurs, Harness reverts the provisioned infrastructure to the last successful Terraform state. It's important to note that it does not increment the serial in the state, but instead performs a hard rollback to the exact version specified. The rollback will only include resources that were successfully deployed prior to the failure, meaning if only the latest module succeeded, the rollback will exclude earlier modules if they were not part of that state.
+
+#### What are the prerequisites for running Terraform locally on Harness Delegates?
+
+To run Terraform locally using Harness Delegates, Terraform must be installed on the Delegate. You can either install it manually or use the INIT_SCRIPT environment variable in the Delegate YAML. The Delegate uses the RedHat Universal Base Image (redhat/ubi8). An example script to install Terraform is provided in the documentatio
+
 
 ### Infrastructure provisioning FAQs
 
