@@ -43,7 +43,7 @@ Harness now allows you to create service accounts at the account level and use t
       `principal`: The service account at the account level to which you're assigning the role.
 
 7. Execute the Pipeline Using the Service Account
-After assigning the role, you can now use the [Pipeline Execution API](./https://apidocs.harness.io/tag/Pipeline-Execution#operation/execute-pipeline) to execute the pipelines in the specified resource group. Pass the service account’s `API key` as the `x-api-key` header in your API request.
+After assigning the role, you can now use the [Pipeline Execution API](https://apidocs.harness.io/tag/Pipeline-Execution#operation/execute-pipeline) to execute the pipelines in the specified resource group. Pass the service account’s `API key` as the `x-api-key` header in your API request.
 
 ## Benefits
 
