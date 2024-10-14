@@ -17,7 +17,7 @@ Currently, this early access feature is behind a feature flag . Contact [Harness
 
 Currently Cluster Orchestrator can be set up using two methods:
 a. Helm Based installation
-b. Script based installation via CCM UI
+b. Script based installation via CCM UI and kubectl
 
 ## Helm-based Installation
 
