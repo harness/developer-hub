@@ -545,7 +545,7 @@ This feature is currently behind the feature flag, `CI_GIT_CLONE_ENHANCED`. Cont
 
 - The error causing STO steps not to run in the CI stage has now been fixed (STO-7887).
 
-- You can now override the security testing scanner image at the step level. Learn more about [configuring your pipeline to use images from your registry](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry#configure-your-pipeline-to-use-images-from-your-registry). (STO-7724)
+- You can now override the security testing scanner image at the step level. Learn more about [configuring your pipeline to use images from your registry](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelinesconfigure-pipeline-to-use-sto-images-from-private-registry#configure-your-pipeline-to-use-images-from-your-registry). (STO-7724)
 
 ### Fixed issues
 
