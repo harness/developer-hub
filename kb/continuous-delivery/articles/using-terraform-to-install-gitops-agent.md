@@ -102,7 +102,7 @@ The following fields are mandatory:
 - **account_id** (String): Account identifier of the GitOps agent.
 - **identifier** (String): Identifier of the GitOps agent.
 - **name** (String): Name of the GitOps agent.
-- **type** (String) Default: "AGENT_TYPE_UNSET" Enum: "AGENT_TYPE_UNSET" "CONNECTED_ARGO_PROVIDER" "MANAGED_ARGO_PROVIDER"
+- **type** (String) Default: "MANAGED_ARGO_PROVIDER", Enum: "CONNECTED_ARGO_PROVIDER", "MANAGED_ARGO_PROVIDER"
 
 The following fields are optional:
 
