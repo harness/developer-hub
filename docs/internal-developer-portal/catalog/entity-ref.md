@@ -5,11 +5,11 @@ sidebar_label: Catalog Entity Reference
 sidebar_position: 11
 ---
 
-Entities commonly have a need to reference other entities. For example, a Component entity may want to declare who its owner is by mentioning a Group or User entity, and a User entity may want to declare what Group entities it is a member of. This article describes how to write those references in your yaml entity declaration files.
+In IDP Catalog, Entities such as (Components, APIs, Groups, etc.) commonly have a need to refer other Catalog entities. For example, when we set an Owner of a Component by mentioning a Group or User. Or when we add a dependency between a Service and an API. This article describes how to write those entity references in your YAML descriptor files. The "Entity Refs" are also used anywhere else you want to uniquely mention an entity such as when using the [Catalog Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api/).
 
 Each entity in the catalog is uniquely identified by the triplet of its  [kind](https://developer.harness.io/docs/internal-developer-portal/catalog/how-to-create-idp-yaml#start-with-basic-entity-information), [namespace](https://backstage.io/docs/features/software-catalog/descriptor-format#namespace-optional), and [name](https://developer.harness.io/docs/internal-developer-portal/catalog/how-to-create-idp-yaml#provide-metadata). But that's a lot to type out manually, and in a lot of circumstances, both the kind and the namespace are fixed, or possible to deduce, or could have sane default values. So in order to help the writer, the catalog has a few tricks up its sleeve.
 
-Each reference can be expressed in one of two ways: as **a compact string**, or as **a compound reference structure**.
+Each reference can be expressed in one of two ways: as **a compact string**.
 
 ## String References
 
@@ -20,6 +20,14 @@ The string is of the form `[<kind>:][<namespace>/]<name>`. That is, it is compos
 - Optionally, the kind, followed by a colon
 - Optionally, the namespace, followed by a forward slash
 - The name
+
+Here are few examples: 
+
+  - `component:order-service`
+  - `api:petstore`
+  - `group:my-team`
+  - `component:default/my-service`
+
 
 **The name is always required**. Depending on the context, you may be able to leave out the kind and/or namespace. If you do, it is contextual what values will be used, and the relevant documentation should specify which rule applies where.
 **All strings are case insensitive**.
@@ -50,7 +58,3 @@ there to exist three API kind entities in the catalog matching those references.
 
 Note that the remarks above in regards to shortening (leaving out kind and/or namespace) _only_ apply for the entity input YAML data. In protocols, storage systems, or when referring to entities externally, the entity ref always consists of all three parts.
 
-## Compound References
-
-This is a more verbose version of a reference, where each part of the kind-namespace-name triplet is expressed as a field in an object. You may see this structure used in Backstage code, but it should normally not be used in any form of protocol or between plugins and/or external systems. For those cases, instead prefer to use the string form which has clearer semantics and can be
-transported more easily since it's just a string.
