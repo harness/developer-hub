@@ -79,6 +79,16 @@ The following deprecated API endpoints are longer supported:
 
 ## October 2024
 
+### Version 1.60.x<!-- October 15, 2024 -->
+
+#### Fixed issues
+
+- Fixed an issue where delegate restarts during pipeline execution were incorrectly labeled as disconnections. The error message now correctly states delegate restarted while executing to help users identify the root cause related to their infrastructure. (PL-57421, ZD-70611)
+
+- Fixed an issue causing the Cloud Credits page to break in the QA environment. The issue was resolved by updating the path URLs with a `. +` configuration change to ensure correct routing. (PL-57317)
+
+- Made UI improvements to the Cloud Credits page, including enabling the TimeRangePicker for free subscriptions and increasing the page size to display all organizations and projects in dropdowns. (PL-56928)
+
 ### Version 1.59.x<!-- October 7, 2024 -->
 
 #### New features and enhancements
