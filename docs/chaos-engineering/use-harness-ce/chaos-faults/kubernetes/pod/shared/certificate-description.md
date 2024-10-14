@@ -1,7 +1,3 @@
-### HTTP
-
-HTTP connections don't require any certificate or additional configuration. They default settings work seamlessly with HTTP.
-
 ### CA Certificate
 The certificates provided by CA (or self-signed) to sign or validate the server certificates.
 

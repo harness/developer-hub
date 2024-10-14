@@ -174,13 +174,13 @@ permissions:
       </tr>
       <tr>
         <td> CA_CERTIFICATES </td>
-        <td> Provide the CA certificates for the proxy server to serve as intermediate certificates for HTTPS communication. For more information, go to <a href="#ca-certificate">CA certificate.</a></td>
-        <td> HTTPS communication necessitates its use as intermediate certificates by the proxy server. These certificates should be loaded into the target application. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-block#ca-certificates">CA certificates.</a></td>
+        <td> These CA certificates are used by the proxy server to generate the server certificates for the TLS handshake between the target application and the proxy server. For more information, go to <a href="#ca-certificate">CA certificate.</a></td>
+        <td> These CA certificates must also be added to the target application's root certificate. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-block#ca-certificates">CA certificates.</a></td>
         </tr>
      <tr>
         <td> SERVER_CERTIFICATES </td>
-        <td> Provide the server certificates for the proxy server to serve as intermediate certificates for HTTPS communication. </td>
-        <td> HTTPS communication necessitates its use as intermediate certificates by the proxy server. The corresponding CA certificates should be loaded as root certificates inside the target application. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-block#server-certificates">server certificates.</a></td>
+        <td> These server certificates are used by the proxy server for the TLS handshake between the target application and the proxy server. </td>
+        <td> The corresponding CA certificates should be loaded as root certificates inside the target application. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-block#server-certificates">server certificates.</a></td>
       </tr>
       <tr>
         <td> HTTPS_ROOT_CERT_PATH </td>
@@ -393,57 +393,9 @@ spec:
 
 ### HTTPS
 
-To enable HTTPS support for both incoming and outgoing traffic between the target and the proxy, set the `HTTPS_ENABLED` field to `true` and follow one the ways: **Using self-signed certificate** or **using trusted certificate** to configure TLS. The configuration details vary depending on whether it's applied to ingress or egress traffic.
+To enable HTTPS support for both incoming and outgoing traffic between the target and the proxy, set the `HTTPS_ENABLED` field to `true` and follow one the ways: **Using self-signed certificate** or **using trusted certificate** to configure TLS for egress traffic.
 
 <ConfTLS />
-
-#### Ingress
-
-Set the `HTTPS_ENABLED` parameter if the target application's HTTPS URL includes a port (e.g., `https://<hostname>:port`). If the URL is in the format `https://<hostname>` without a port, this setting is not required.
-
-#### Egress
-
-For outgoing traffic, enable HTTPS support by setting `HTTPS_ENABLED` to `true`. This ensures TLS certificates are used for secure communication through the proxy within the target application.
-
-  - If the HTTP client in the target application is configured to reload certificates with each API call, set `HTTPS_ENABLED` to `true`. This way, niether `CA_CERTIFICATES` nor `SERVER_CERTIFICATES` is required. However, if the root certificate directory or file name differs from `/etc/ssl/certs` and `ca-certificates.crt`, specify them using the `HTTPS_ROOT_CERT_PATH` and `HTTPS_ROOT_CERT_FILE_NAME` environment variables.
-
-  - If the HTTP client doesn't reload certificates with every API call, provide either the `CA_CERTIFICATES` or `SERVER_CERTIFICATES` environment variables to the chaos experiment. In this case, don't set `HTTPS_ROOT_CERT_PATH` and `HTTPS_ROOT_CERT_FILE_NAME`. The relevant CA certificates must be provided to the target application.
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]: # "./static/manifests/pod-api-modify-header/https-enabled.yaml yaml"
-
-```yaml
-## enable https support
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-api-modify-header
-      spec:
-        components:
-          env:
-            # enable https support
-            - name: HTTPS_ENABLED
-              value: 'true'
-            - name: SERVER_CERTIFICATES
-              value: 'Y3VzdG9tIGNlcnRpZmljYXRlcwo='
-            # provide the api path filter
-            - name: PATH_FILTER
-              value: '/status'
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-```
 
 ### Advanced fault tunables
 
