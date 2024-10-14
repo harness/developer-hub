@@ -20,14 +20,13 @@ For more information on delegate automatic upgrades and the delegate expiration 
 You can include third party tools with your delegate when you use the delegate Dockerfile. The image includes default tools. For a list of default tools and their versions, go to the [delegate Dockerfile repository](https://github.com/harness/delegate-dockerfile).
 
 :::info note
-While building custom delegate if you are not using delegate as base image [example](https://github.com/harness/delegate-dockerfile/blob/main/Dockerfile) then for scm to work properly please ensure below
-
-1- SCM binary path is not added to path env variable.
-
-2- SCM binary is stored at correct location. Example: While downloading scm binary from `https://app.harness.io/public/shared/tools/scm/release/SCM_VERSION/bin/linux/$TARGETARCH/scm` it should be stored in location `client-tools/scm/SCM_VERSION/scm`. Resulting curl will look like below, replace SCM_VERSION with actual scm version, please refer [delegate to scm version mapping](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types/#third-party-tools-included-in-the-delegate-image-type).
+While building custom delegate if you are not using delegate as base image [example](https://github.com/harness/delegate-dockerfile/blob/main/Dockerfile) then please ensure that you always package scm binary like below
 ```
-curl -f -s -L -o client-tools/scm/SCM_VERSION/scm https://app.harness.io/public/shared/tools/scm/release/SCM_VERSION/bin/linux/$TARGETARCH/scm
+RUN mkdir -m 777 -p client-tools/scm/<SCM_VERSION> \
+  && curl -f -s -L -o client-tools/scm/SCM_VERSION/scm https://app.harness.io/public/shared/tools/scm/release/<SCM_VERSION>/bin/linux/$TARGETARCH/scm
 ```
+SCM_VERSION can be found here [delegate to scm version mapping](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types/#third-party-tools-included-in-the-delegate-image-type)
+
 :::
 
 ## Dockerfile-minimal
