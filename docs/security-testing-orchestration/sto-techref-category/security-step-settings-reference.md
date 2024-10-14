@@ -105,7 +105,7 @@ Following the [DinD configuration](#configuring-docker-in-docker-dind-for-your-p
             registry_domain=example.io # replace with the domain of the registry behind the self-signed CA
 
             # Get all .pem files in the current directory
-            pem_files=$(find /harness-shared-certs-path/ -name "*.pem")
+            pem_files=$(find $HARNESS_SHARED_CERTS_PATH -name "*.pem")
 
             # Iterate over each .pem file
             mkdir -p /etc/docker/certs.d/${registry_domain}
