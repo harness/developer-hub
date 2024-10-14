@@ -123,6 +123,11 @@ There are several types of delegates you can use for an Azure App Service deploy
 
 For Azure Web App deployments, users typically install a Kubernetes delegate in AKS or a Docker Delegate on a VMSS.
 
+:::note
+Harness Delegate must have network connectivity to the deployed application for successful Azure Web App deployments.
+:::
+
+
 ## Azure Web Apps target infrastructure
 
 You define the target infrastructure for your deployment in the **Environment** settings of the pipeline stage. You can define an environment separately in your project's **Environments** section and select it in the stage, or create the environment within the stage **Environment** tab.
