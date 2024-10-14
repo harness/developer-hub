@@ -345,6 +345,9 @@ This setup ensures that the scan result name reflects both the branch and the PR
 ## View SonarQube quality gate failures
 SonarQube quality gate failures will appear in scan results as 'Info' severity issues, with the issue type set to `EXTERNAL_POLICY`. Additionally, you can apply OPA policies in Harness STO to enforce or manage these failures.
 
+## View SonarQube code coverage
+SonarQube code coverage data will appear in scan results as 'Info' severity issues. Additionally, you can apply an OPA policy to fail the pipeline based on the code coverage metric. This can be achieved using the "Security Tests - Code Coverage" policy from Harness [Policy Library](/docs/platform/governance/policy-as-code/sample-policy-use-case)
+
 ## Generate coverage reports and upload to SonarQube
 
 You can set up your pipeline to generate test coverage reports and then get them pushed up to your SonarQube instance. To do this:

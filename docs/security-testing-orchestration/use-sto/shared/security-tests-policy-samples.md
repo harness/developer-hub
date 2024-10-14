@@ -220,3 +220,7 @@ For example, suppose you want a policy to warn or block if a scan step finds any
        input[_].outcome.outputVariables.NEW_HIGH != "0"
    }
    ```
+
+#### Block the pipeline based on the Code Coverage metric
+
+You can use the sample policy "Security Test - Code Coverage" 
