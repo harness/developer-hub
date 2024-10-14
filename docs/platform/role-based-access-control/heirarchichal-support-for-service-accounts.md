@@ -14,9 +14,9 @@ Harness now allows you to create service accounts at the account level and use t
 
 2. Generate an [API Key](./add-and-manage-service-account.md#manage-api-keys) for the Service Account
 
-4. Create a [Role](./add-manage-roles.md#create-a-role) with necessary permissions at the Project Level
+4. Create a [Role](./add-manage-roles.md#create-a-role) with the necessary permissions at the Project Level
 
-5. Create a [Resource Group](./add-resource-groups.md#create-a-resource-group) with at the Project Level
+5. Create a [Resource Group](./add-resource-groups.md#create-a-resource-group) at the Project Level
 
 6. Assign the Role to the Service Account at the Project Level
 
