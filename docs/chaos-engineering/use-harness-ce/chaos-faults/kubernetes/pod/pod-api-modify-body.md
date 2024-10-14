@@ -7,7 +7,14 @@ redirect_from:
 - /docs/chaos-engineering/chaos-faults/kubernetes/pod-api-modify-body
 ---
 
+import CommonNote from './shared/common-note.md'
+import CertDesc from './shared/certificate-description.md'
+import ConfTLS from './shared/configure-tls.md'
+
 Pod API modify body is a Kubernetes pod-level chaos fault that modifies the api request and response body by replacing any portions that match a specified regular expression with a provided value. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
+
+<CommonNote />
+
 
 ![Pod API Modify Body](./static/images/pod-api-modify-body.png)
 
@@ -167,13 +174,13 @@ permissions:
       </tr>
       <tr>
         <td> CA_CERTIFICATES </td>
-        <td> Provide the CA certificates for the proxy server to serve as intermediate certificates for HTTPS communication. </td>
-        <td> HTTPS communication necessitates its use as intermediate certificates by the proxy server. These certificates should be loaded into the target application. For more information, go to <a href="#https">HTTPS</a></td>
-      </tr>
+        <td> Provide the CA certificates for the proxy server to serve as intermediate certificates for HTTPS communication. For more information, go to <a href="#ca-certificate">CA certificate.</a></td>
+        <td> HTTPS communication necessitates its use as intermediate certificates by the proxy server. These certificates should be loaded into the target application. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-block#ca-certificates">CA certificates.</a></td>
+        </tr>
       <tr>
         <td> SERVER_CERTIFICATES </td>
-        <td> Provide the Server certificates for the proxy server to serve as intermediate certificates for HTTPS communication. </td>
-        <td> HTTPS communication necessitates its use as intermediate certificates by the proxy server. The corresponding CA certificates should be loaded as root certificates inside the target application. For more information, go to <a href="#https">HTTPS</a></td>
+        <td> Provide the server certificates for the proxy server to serve as intermediate certificates for HTTPS communication. </td>
+        <td> HTTPS communication necessitates its use as intermediate certificates by the proxy server. The corresponding CA certificates should be loaded as root certificates inside the target application. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-block#server-certificates">server certificates.</a></td>
       </tr>
       <tr>
         <td> HTTPS_ROOT_CERT_PATH </td>
@@ -382,9 +389,13 @@ spec:
               value: "80"
 ```
 
+<CertDesc />
+
 ### HTTPS
 
-To enable HTTPS support for both incoming and outgoing traffic, set the `HTTPS_ENABLED` field to `true`. The configuration details vary depending on whether it's applied to ingress or egress traffic.
+To enable HTTPS support for both incoming and outgoing traffic between the target and the proxy, set the `HTTPS_ENABLED` field to `true` and follow one the ways: **Using self-signed certificate** or **using trusted certificate** to configure TLS. The configuration details vary depending on whether it's applied to ingress or egress traffic.
+
+<ConfTLS />
 
 #### Ingress
 
@@ -394,31 +405,9 @@ Set the `HTTPS_ENABLED` parameter if the target application's HTTPS URL includes
 
 For outgoing traffic, enable HTTPS support by setting `HTTPS_ENABLED` to `true`. This ensures TLS certificates are used for secure communication through the proxy within the target application.
 
-- If the HTTP client in the target application is configured to reload certificates with each API call, set `HTTPS_ENABLED` to `true`, and there's no need to provide `CA_CERTIFICATES` or `SERVER_CERTIFICATES`. However, if the root certificate directory or file name differs from `/etc/ssl/certs` and `ca-certificates.crt`, specify them using the `HTTPS_ROOT_CERT_PATH` and `HTTPS_ROOT_CERT_FILE_NAME` environment variables.
+  - If the HTTP client in the target application is configured to reload certificates with each API call, set `HTTPS_ENABLED` to `true`. This way, niether `CA_CERTIFICATES` nor `SERVER_CERTIFICATES` is required. However, if the root certificate directory or file name differs from `/etc/ssl/certs` and `ca-certificates.crt`, specify them using the `HTTPS_ROOT_CERT_PATH` and `HTTPS_ROOT_CERT_FILE_NAME` environment variables.
 
-- If the HTTP client doesn't reload certificates with every API call, provide either the `CA_CERTIFICATES` or `SERVER_CERTIFICATES` environment variables to the chaos experiment. In this case, you don’t need to set `HTTPS_ROOT_CERT_PATH` and `HTTPS_ROOT_CERT_FILE_NAME`. The relevant CA certificates must be provided to the target application.
-
-  #### Generate Certificates
-
-  You can set either `CA_CERTIFICATES` or `SERVER_CERTIFICATES` depending on the use case.
-
-  1. **Self-Signed Certificates**:
-     To generate self-signed certificates, use the following commands:
-
-     ```bash
-     openssl req -x509 -newkey rsa:4096 -keyout ca.key -out ca.crt -days 365 -nodes -subj '/CN=*'
-     cat ca.key ca.crt > ca-cert.pem
-     cat ca-cert.pem | base64 # provide this value in the CA_CERTIFICATES environment variable
-     ```
-     Load the `ca.crt` CA certificate as the root CA into the target application, and set the base64-encoded value of `ca-cert.pem` in the `CA_CERTIFICATES` environment variable inside the experiment manifest.
-
-  2. **CA-Signed Certificates**:
-     If you're using a trusted Certificate Authority (CA) to sign the server certificates, loading CA certificates into the target application may not be necessary, as it might already have the required CA certificates. Instead, you can simply set the `SERVER_CERTIFICATES` environment variable with the server certificates, as shown below:
-
-     ```bash
-     cat server.key server.crt > server-cert.pem
-     cat server-cert.pem | base64 # provide this value in the SERVER_CERTIFICATES environment variable
-     ```
+  - If the HTTP client doesn't reload certificates with every API call, provide either the `CA_CERTIFICATES` or `SERVER_CERTIFICATES` environment variables to the chaos experiment. In this case, don't set `HTTPS_ROOT_CERT_PATH` and `HTTPS_ROOT_CERT_FILE_NAME`. The relevant CA certificates must be provided to the target application.
 
 The following YAML snippet illustrates the use of this environment variable:
 
