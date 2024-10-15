@@ -132,6 +132,8 @@ This behavior applies to pipelines configured via direct YAML updates as well. I
 
 
 **When the feature flag is enabled**: The pipeline will be blocked from execution entirely if the user does not have access to the secret.
+
+
 **When the feature flag is disabled**: The pipeline will still start execution, but it will fail during the step that references the secret if the user lacks access.
 
 ### Different levels
