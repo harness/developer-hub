@@ -132,6 +132,8 @@ If the repository actually exists it will fetch the branch name, if not it will 
 :::important
 1. Search in repo listing is not supported for Azure Repos.
 2. GitHub connectors should be created at the "organization" level, linking each connector to a specific GitHub organization to access all repositories within that organization. Using a global GitHub connector with the URL “github.com” to access multiple organizations and their repositories is not supported and may cause issues. The V2 repo listing APIs do not support global GitHub connectors, and if such a connector is used, the API will automatically switch to the V1 flow to ensure repositories can still be listed, albeit without the enhancements of the V2 APIs.
+3. For **GitLab** the search functionality will only work with the repository names, not the full path or subdirectory.
+For Example: If the repo full directory path is: `test-group9482940/subgroup/folder1/subgroupextra/project2`, then the search will only work for the `project2` substring.
 :::
 
 ### Branch Listing

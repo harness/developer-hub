@@ -216,13 +216,13 @@ As a general rule, start with the **Use Template** option and only opt for **Cop
 
 ## Failure strategies and advanced settings
 
-When possible, it's best to mark all the stage and step [failure strategies](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy) and advanced settings as `<+input>` to ensure the greatest amount of flexibility by your team members. If these settings are not externalized as inputs to the template, then end users of the template are not able to modify them.
+When possible, it's best to mark all the stage and step [failure strategies](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings.md) and advanced settings as `<+input>` to ensure the greatest amount of flexibility by your team members. If these settings are not externalized as inputs to the template, then end users of the template are not able to modify them.
 
 For details on advanced settings, go to:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors).
 * [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings).
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
+* [Failure Strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings.md).
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview).
 

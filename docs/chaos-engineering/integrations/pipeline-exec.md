@@ -30,7 +30,7 @@ For more information, go to [Notifications](/docs/platform/notifications/notific
 
 To execute an experiment in a pipeline, you need to have the appropriate permissions. Go to **Project Settings** -> **Access Control** -> **Roles** and enable the **Execute via Pipeline** permission. You can otherwise create a new role or ask your project admin to create an appropriate role.
 
-![enable pipeline](./static/pipeline-exec/perms-reqd.png)
+    ![enable pipeline](./static/pipeline-exec/fine-grain-control.png)
 
 ### Integrate Experiment Pipeline with Notification
 

@@ -55,6 +55,10 @@ If you don't want to change the behavior for your entire account, follow the ste
 
 8. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
+:::info note
+Harness now supports anonymous access to all public Docker registries, including Amazon ECR and Artifactory Public. Users can now pull images without requiring authentication.
+:::
+
 ## Configure Harness to always use credentials to pull Harness images
 
 If you don't want to connect anonymously, you can configure Harness to always use credentials, instead of anonymous access, to pull the Harness images. This option changes the behavior for your entire account by editing the credentials of the built-in **Harness Docker Connector**. This is useful if your organization's security policies don't allow anonymous connections to public image repos.

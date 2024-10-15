@@ -104,4 +104,4 @@ In this example, you enter the `data` value in the **Search** field.
 
 ## Troubleshoot Git event triggers
 
-For more troubleshooting information specific to Git event triggers, go to [Trigger pipelines using Git events](./triggering-pipelines).
+For more troubleshooting information specific to Git event triggers, go to [Trigger pipelines using Git events](/docs/platform/triggers/triggering-pipelines.md).

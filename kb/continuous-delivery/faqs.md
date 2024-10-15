@@ -24,6 +24,9 @@ Instance information can be found in the Instances Table.
 
 Note that the infrastructureMappingId is not exposed as part of the Infrastructure.
 
+#### Does Harness support migration of entities such as overrides into GitX or store them remotely?
+
+Yes, Harness supports the migration of entities such as overrides, pipelines, templates, etc. Please contact [Harness support](mailto:support@harness.io) to learn more about the migration tool.
 
 #### How does Harness calculate pricing for CD?
 

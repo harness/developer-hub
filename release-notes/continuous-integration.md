@@ -20,6 +20,20 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+## October 2024
+
+### Version 1.50
+
+<!-- 2024-10-08 -->
+
+#### Fixed issues
+
+- Resolved an issue in the build input settings that occurred during manual build runs. When selecting the Pull Request option under build type, the focus would occasionally shift to the Tags option instead. This issue has been fixed to ensure proper selection. (CI-14571, ZD-70841) 
+
+- Fixed an issue on the CI Execution Summary page where branch and tag names were being truncated in some cases. The layout has been updated to display the text correctly. (CI-14539)
+
+- Fixed an issue in the mac local runner where resource sharing between container and non-container steps was failing. The problem occurred due to the migration to Rancher/Colima, which resulted in two separate directories for container (/tmp) and non-container (/private/tmp) steps, causing symlink-related conflicts. This has been resolved behind the feature flag "CI_MOUNT_PATH_ENABLED_MAC" to ensure proper resource sharing between steps. (CI-13253)
+
 ## September 2024
 
 ### Version 1.49
