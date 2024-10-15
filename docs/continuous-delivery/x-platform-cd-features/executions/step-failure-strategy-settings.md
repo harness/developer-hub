@@ -120,6 +120,15 @@ Here is what will happen:
 * On an authentication failure, the stage is aborted.
 * On a connectivity error, the error is ignored.
 
+## Failure Strategy Behavior for Secrets in ShellScript Environment Variables
+
+:::info note
+Currently this behaviour is behind FF `PIE_SEND_SECRET_REF_FOR_SHELLSCRIPT_VARIABLES`. Please contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag.
+:::
+
+When a secret is referenced in ShellScript environment variables, the pipeline will not execute if the user does not have access to the referenced secret. This ensures that only users with the appropriate permissions can trigger pipelines that require access to specific secrets.
+
+This behavior applies to pipelines configured via direct YAML updates as well. In the UI, secret selection is filtered based on [RBAC](/docs/platform/role-based-access-control/rbac-in-harness.md), so users will only see the secrets they have access to.
 ### Different levels
 
 If there is a clash between selected errors in strategies on different levels, the step-level strategy is used and the stage-level strategy is ignored.
