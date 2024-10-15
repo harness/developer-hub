@@ -122,11 +122,11 @@ POST /catalog/custom-properties/entity
   "entity_ref": "boutique-service",
   "property": "metadata.tags",
   "value": [
-    "tagA"
+    "scala"
   ]
 }
 ```
-This sets the `metadata.tags` for `boutique-service` to `"tagA"` replacing the existing values
+This sets the `metadata.tags` for `boutique-service` to `"scala"` replacing the existing values
 
 #### Example 1: Creating the First Entity (No Mode Specified)
 
@@ -148,13 +148,40 @@ POST /catalog/custom-properties/entity
   "mode": "append"
 }
 ```
-Result: The metadata.tags property will now be `["tagA", "python", "java", "c++"]`, with the new values added to the existing ones.
+Result: The `metadata.tags` property will now be `["scala", "python", "java", "c++"]`, with the new values added to the existing ones.
 
 #### When to Use Each Mode:
 
 - `replace`: Use when you want to completely replace the value of a property. For example, if the existing tags are outdated, and you want to set new ones.
 
 - `append`: Use when you want to add new values without losing the current values, applicable to array or map types. This is useful for incremental updates like **adding a new annotation** to the `catalog-info.yaml`. 
+
+```json title="Payload" 
+{
+  "entity_ref": "boutique-service",
+  "property": "metadata.annotations",
+  "value": [
+    {
+      "pagerduty.com/integration-key": "AS567G"
+    }
+  ],
+  "mode": "append"
+}
+```
+
+```YAML title="Updated YAML" {8}
+## Example catalog-info.yaml
+...
+metadata:
+  name: my-new-service
+  description: Description of my new service
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    pagerduty.com/integration-key: AS567G
+  tags:
+    - java
+...
+```
 
 ## Common API Request Details
 
