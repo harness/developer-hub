@@ -29,7 +29,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 <!-- 2024-10-08 -->
 
 #### New features and enhancements
-
+- The Snyk step scan modes for [Code scanning](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning), [Container scanning](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-container-scanning), and [IaC (Infrastructure as Code) scanning](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-iac-scanning) are now generally available (GA). Previously, these scan modes were behind the feature flag `STO_SNYK_ORCHESTRATION_ENHANCEMENTS`.
 - Resolved a performance issue that caused the Exemptions page to fail to load in some projects (STO-8104, ZD-70734).
 - Updated the Nexus IQ runner to copy custom certificates from the delegate to the JVM (STO-8060).
 - Cleaned up issue details fields and added a new **Issue type** field to all issues (STO-8080).
