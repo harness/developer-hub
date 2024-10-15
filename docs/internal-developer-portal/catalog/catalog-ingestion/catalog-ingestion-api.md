@@ -97,13 +97,44 @@ POST /catalog/custom-properties
 }
 ```
 
-### 5. Update a Single Property of a Single Catalog Entity without replacing the existing values
+### 5. Update a Single Property of a Catalog Entity Without Replacing Existing Values
 
-```
+When you want to update a specific property of a catalog entity, you can use different modes to control how the update behaves. The default mode is `replace`, which completely overwrites the existing value. However, you can use other modes like `append` for array types to preserve the existing values while adding new ones.
+
+#### Available Modes:
+- **replace** (default): Completely replaces the existing value with the new one provided in the `value` field.
+- **append**: Adds new values to the existing array (or other appendable types like maps or key-value pairs).
+
+> **Note**: `append` only works with data types that can hold multiple values, such as arrays or maps. It does not apply to simple data types like strings.
+
+---
+
+#### Example 1: Creating the First Entity (No Mode Specified)
+
+By default, when you add a property to an entity, it uses the `replace` mode to set the value.
+
+```http
 POST /catalog/custom-properties/entity
 ```
 
-```json title="Payload" {9}
+```json title="Payload"
+{
+  "entity_ref": "boutique-service",
+  "property": "metadata.tags",
+  "value": "tagA"
+}
+```
+This sets the `metadata.tags` for `boutique-service` to `"tagA"` replacing the existing values
+
+#### Example 1: Creating the First Entity (No Mode Specified)
+
+To add new tags without replacing the existing ones, you can use the `append` mode.
+
+```http
+POST /catalog/custom-properties/entity
+```
+
+```json title="Payload"
 {
   "entity_ref": "boutique-service",
   "property": "metadata.tags",
@@ -115,9 +146,13 @@ POST /catalog/custom-properties/entity
   "mode": "append"
 }
 ```
-:::info
-`"mode": "append"` could only be used to add new values with datatype as **array, maps, key-value pairs etc.** This method won't work with simple datatype like **strings**. 
-:::
+Result: The metadata.tags property will now be `["tagA", "python", "java", "c++"]`, with the new values added to the existing ones.
+
+#### When to Use Each Mode:
+
+- `replace`: Use when you want to completely replace the value of a property. For example, if the existing tags are outdated, and you want to set new ones.
+
+- `append`: Use when you want to add new values without losing the current values, applicable to array or map types. This is useful for incremental updates like **adding a new annotation** to the `catalog-info.yaml`. 
 
 ## Common API Request Details
 
