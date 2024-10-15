@@ -121,7 +121,9 @@ POST /catalog/custom-properties/entity
 {
   "entity_ref": "boutique-service",
   "property": "metadata.tags",
-  "value": "tagA"
+  "value": [
+    "tagA"
+  ]
 }
 ```
 This sets the `metadata.tags` for `boutique-service` to `"tagA"` replacing the existing values
@@ -134,7 +136,7 @@ To add new tags without replacing the existing ones, you can use the `append` mo
 POST /catalog/custom-properties/entity
 ```
 
-```json title="Payload"
+```json title="Payload" {9}
 {
   "entity_ref": "boutique-service",
   "property": "metadata.tags",
