@@ -97,6 +97,28 @@ POST /catalog/custom-properties
 }
 ```
 
+### 5. Update a Single Property of a Single Catalog Entity without replacing the existing values
+
+```
+POST /catalog/custom-properties/entity
+```
+
+```json title="Payload" {9}
+{
+  "entity_ref": "boutique-service",
+  "property": "metadata.tags",
+  "value": [
+    "python",
+    "java",
+    "c++"
+  ],
+  "mode": "append"
+}
+```
+:::info
+`"mode": "append"` could only be used to add new values with datatype as **array, maps, key-value pairs etc.** This method won't work with simple datatype like **strings**. 
+:::
+
 ## Common API Request Details
 
 ### API Base URL
