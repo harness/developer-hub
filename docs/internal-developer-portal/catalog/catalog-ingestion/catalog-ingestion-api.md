@@ -174,7 +174,7 @@ Here are some other examples of valid `entity_refs` -
 - `group:my-team`
 - `component:default/my-service`
 
-Entity Refs are case-insensitive.
+Entity Refs are case-insensitive. [Read More](/docs/internal-developer-portal/catalog/entity-ref) on the Entity Reference. 
 
 </details>
 
