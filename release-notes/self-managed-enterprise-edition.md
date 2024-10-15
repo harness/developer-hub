@@ -165,6 +165,7 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | 1.27.1 |
 | NG UI | 1.41.4 |
 | LE NG | 1.3.1 |
+| Looker | 1.1.0 |
 
 #### Alternative air gap bundle download method
 
@@ -406,6 +407,7 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | 1.27.0 |
 | NG UI | 1.37.5 |
 | LE NG | 1.3.0 |
+| Looker | 1.1.0 |
 
 #### Alternative air gap bundle download method
 
@@ -451,6 +453,7 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | 1.27.0 |
 | NG UI | 1.37.5 |
 | LE NG | 1.3.0 |
+| Looker | 1.1.0 |
 
 #### Alternative air gap bundle download method
 
@@ -686,6 +689,7 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | 1.17.0 |
 | NG UI | 1.30.6 |
 | LE NG | 1.3.0 |
+| Looker | 1.1.0 |
 
 #### Alternative air gap bundle download method
 
@@ -736,6 +740,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 1.30.4 |
 | LE NG | 1.3.0 |
 | Bootstrap | 1.6.1 |
+| Looker | 1.1.0 |
 
 #### Alternative air gap bundle download method
 
@@ -779,6 +784,7 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | 1.17.0 |
 | NG UI | 1.30.4 |
 | LE NG | 1.3.0 |
+| Looker | 1.1.0 |
 
 #### Alternative air gap bundle download method
 
@@ -1034,7 +1040,8 @@ This release includes the following Harness module and component versions.
 | Looker                   | 1.1.0                                                                                           |
 | Gitops                   | 1.11.8                                                                                          |
 | CI Manager               | 1.30.4                                                                                          |
-| NG UI                    | 1.26.17                                                                                         |          
+| NG UI                    | 1.26.17                                                                                         |
+| Looker                   | 1.1.0                                                                                           |          
 
 #### Alternative air gap bundle download method
 
@@ -1144,6 +1151,7 @@ Here's the markdown table with adjusted spacing for better visual appeal:
 | NG UI                    | 1.26.16                                                                                         |
 | LE NG                    | 1.3.0                                                                                           |
 | Harness Manager          | 1.32.10                                                                                         |
+| Looker                   | 1.1.0                                                                                           |
 
 This should make the table visually appealing and properly aligned.
 
@@ -1189,6 +1197,7 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | 1.17.0 |
 | NG UI | 1.26.16 |
 | LE NG | 1.3.0 |
+| Looker | 1.1.0 |
 
 #### Alternative air gap bundle download method
 
