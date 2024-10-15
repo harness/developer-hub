@@ -17,6 +17,16 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 :::
 
+## October 2024
+
+### Version: 1.14.3
+<!-- 2024-10-15 -->
+
+#### New features and enhancements
+- Added Rule `2.3.9` from OWASP CI/CD SEC-x for evaluation against Harness Pipelines. For more information, refer to the [Standards and Rule Definitions](/docs/software-supply-chain-assurance/manage-risk-and-compliance/standards-and-rule-definitions) documentation.
+- In the Evaluation details, links to the relevant GitHub workflows or Harness pipelines have been included.
+- Introduced UI enhancements in the Compliance section.
+
 ## July 2024
 
 ### Version: 1.14.3
