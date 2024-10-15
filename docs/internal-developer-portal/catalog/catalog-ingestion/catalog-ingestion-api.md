@@ -99,7 +99,7 @@ POST /catalog/custom-properties
 
 ### 5. Update a Single Property of a Catalog Entity Without Replacing Existing Values
 
-When you want to update a specific property of a catalog entity, you can use different modes to control how the update behaves. The default mode is `replace`, which completely overwrites the existing value. However, you can use other modes like `append` for array types to preserve the existing values while adding new ones.
+When you want to update a specific property of a catalog entity, you can use different modes to control how the update behaves. The default mode is `replace`, which completely overwrites the existing value. However, you can use other modes like `append` for complex datatype like array to preserve the existing values while adding new ones.
 
 #### Available Modes:
 - **replace** (default): Completely replaces the existing value with the new one provided in the `value` field.
