@@ -36,37 +36,37 @@ The following CIS v1.0 rules are supported by Harness for the evaluations, and H
 
 ### Source Code
 
-| Rule ID  | Name                                                  | Platform | Entity |
+| Rule ID  | Name                                                  | Platform | Type |
 |----------|-------------------------------------------------------|----------|--------|
-| 1.1.3    | Automated Approval of Code Changes                    | GitHub   | Code   |
-| 1.1.4    | Dismissal of Previous Approvals on Updates            | GitHub   | Code   |
-| 1.1.5    | Restricted Dismissal of Code Change Reviews           | GitHub   | Code   |
-| 1.1.6    | Code Owners for Sensitive Code                        | GitHub   | Code   |
-| 1.1.7    | Code Owner’s Review Requirement                       | GitHub   | Code   |
-| 1.1.8    | Periodic Inactive Branch Reviews                      | GitHub   | Code   |
-| 1.1.9    | Checks Passing Before Merging New Code                | GitHub   | Code   |
-| 1.1.10   | Up-to-Date Open Git Branches                          | GitHub   | Code   |
-| 1.1.11   | Resolved Comments Before Merging                      | GitHub   | Code   |
-| 1.1.12   | Verification of Signed Commits for New Changes Before Merging | GitHub   | Code   |
-| 1.1.13   | Linear History Requirement                            | GitHub   | Code   |
-| 1.1.14   | Enforced Branch Protection Rules for Administrators    | GitHub   | Code   |
-| 1.1.15   | Restricted Pushing/Merging of New Code                | GitHub   | Code   |
-| 1.1.16   | Denied Force Pushing Code to Branches                 | GitHub   | Code   |
-| 1.1.17   | Denied Branch Deletions                               | GitHub   | Code   |
-| 1.2.1    | SECURITY.md in Public Repositories                    | GitHub   | Code   |
-| 1.2.2    | Limited Repository Creation                          | GitHub   | Code   |
-| 1.2.3    | Limited Repository Deletion                           | GitHub   | Code   |
-| 1.2.4    | Limited Issue Deletion                                | GitHub   | Code   |
-| 1.3.1    | Periodic Review and Removal of Inactive Users         | GitHub   | Code   |
-| 1.3.3    | Minimum Number of Administrators Set for the Organization | GitHub   | Code   |
-| 1.3.5    | Organization-Wide MFA Requirement                     | GitHub   | Code   |
-| 1.3.7    | Two Administrators Set for Each Repository            | GitHub   | Code   |
-| 1.3.8    | Strict Base Permissions Set for Repositories          | GitHub   | Code   |
-| 1.3.9    | Organization Identity Confirmed with “Verified” Badge | GitHub   | Code   |
+| 1.1.3    | Automated Approval of Code Changes                    | GitHub   | Code Repository  |
+| 1.1.4    | Dismissal of Previous Approvals on Updates            | GitHub   | Code Repository  |
+| 1.1.5    | Restricted Dismissal of Code Change Reviews           | GitHub   | Code Repository  |
+| 1.1.6    | Code Owners for Sensitive Code                        | GitHub   | Code Repository  |
+| 1.1.7    | Code Owner’s Review Requirement                       | GitHub   | Code Repository  |
+| 1.1.8    | Periodic Inactive Branch Reviews                      | GitHub   | Code Repository  |
+| 1.1.9    | Checks Passing Before Merging New Code                | GitHub   | Code Repository  |
+| 1.1.10   | Up-to-Date Open Git Branches                          | GitHub   | Code Repository  |
+| 1.1.11   | Resolved Comments Before Merging                      | GitHub   | Code Repository  |
+| 1.1.12   | Verification of Signed Commits for New Changes Before Merging | GitHub  | Code Repository  |
+| 1.1.13   | Linear History Requirement                            | GitHub   | Code Repository  |
+| 1.1.14   | Enforced Branch Protection Rules for Administrators    | GitHub   | CodeRepository   |
+| 1.1.15   | Restricted Pushing/Merging of New Code                | GitHub   | Code Repository  |
+| 1.1.16   | Denied Force Pushing Code to Branches                 | GitHub   | Code Repository  |
+| 1.1.17   | Denied Branch Deletions                               | GitHub   | Code Repository  |
+| 1.2.1    | SECURITY.md in Public Repositories                    | GitHub   | Code Repository  |
+| 1.2.2    | Limited Repository Creation                          | GitHub   | Code  Repository |
+| 1.2.3    | Limited Repository Deletion                           | GitHub   | Code Repository  |
+| 1.2.4    | Limited Issue Deletion                                | GitHub   | Code Repository  |
+| 1.3.1    | Periodic Review and Removal of Inactive Users         | GitHub   | Code Repository  |
+| 1.3.3    | Minimum Number of Administrators Set for the Organization | GitHub   | Code Repository   |
+| 1.3.5    | Organization-Wide MFA Requirement                     | GitHub   | Code Repository  |
+| 1.3.7    | Two Administrators Set for Each Repository            | GitHub   | Code Repository  |
+| 1.3.8    | Strict Base Permissions Set for Repositories          | GitHub   | Code Repository  |
+| 1.3.9    | Organization Identity Confirmed with “Verified” Badge | GitHub   | Code Repository  |
 
 ### Build Pipelines
 
-| Rule ID  | Name                                                     | Platform | Entity |
+| Rule ID  | Name                                                     | Platform | Type |
 |----------|----------------------------------------------------------|----------|--------|
 | 2.3.1    | Definition of All Build Steps as Code                    | GitHub    | CI/CD  |
 | 2.3.5    | Minimized Access to Build Process Triggering             | GitHub    | CI/CD  |
@@ -77,7 +77,7 @@ The following CIS v1.0 rules are supported by Harness for the evaluations, and H
 
 ### Dependencies
 
-| Rule ID  | Name                                                        | Platform | Entity   |
+| Rule ID  | Name                                                        | Platform | Type   |
 |----------|-------------------------------------------------------------|----------|----------|
 | 3.1.7    | Pinning of Dependencies to Specific, Verified Versions       | GitHub    | CI/CD    |
 | 3.2.2    | Automatic Scanning for Known Vulnerabilities in Packages     | GitHub    | CI/CD    |
@@ -85,7 +85,7 @@ The following CIS v1.0 rules are supported by Harness for the evaluations, and H
 
 ### Artifacts
 
-| Rule ID  | Name                                             | Platform  | Entity   |
+| Rule ID  | Name                                             | Platform  | Type   |
 |----------|--------------------------------------------------|-----------|----------|
 | 4.2.3    | MFA for User Access to the Package Registry      | GitHub| Artifacts|
 | 4.2.5    | Revocation of Anonymous Access to Artifacts      | GitHub | Artifacts|
@@ -101,73 +101,74 @@ The following rules are supported by Harness to perform evaluations, and Harness
 
 ### CICD-SEC-1: Insufficient Flow Control Mechanisms
 
-| Rule ID | Name                                                                 | Platform | Entity | Severity |
+| Rule ID | Name                                                                 | Platform | Type | Severity |
 |---------|----------------------------------------------------------------------|----------|--------|----------|
-| 1.1.3   | Automated Approval of Code Changes                                    | GitHub   | SCM    | MEDIUM   |
-| 1.1.4   | Dismissal of Previous Approvals on Updates                            | GitHub   | SCM    | HIGH     |
-| 1.1.5   | Restricted Dismissal of Code Change Reviews                           | GitHub   | SCM    | HIGH     |
-| 1.1.6   | Code Owners Removed in GitHub repository                              | GitHub   | SCM    | HIGH     |
-| 1.1.7   | Code owners reviews are not required in GitHub before merging         | GitHub   | SCM    | MEDIUM   |
-| 1.1.9   | Checks Passing Before Merging New Code                                | GitHub   | SCM    | HIGH     |
-| 1.1.10  | Up-to-Date Open Git Branches                                          | GitHub   | SCM    | HIGH     |
-| 1.1.11  | Resolved Comments Before Merging                                      | GitHub   | SCM    | LOW      |
-| 1.1.13  | Linear History Requirement                                            | GitHub   | SCM    | LOW      |
-| 1.1.14  | Enforced Branch Protection Rules for Administrators                   | GitHub   | SCM    | HIGH     |
-| 1.1.15  | Restricted Pushing/Merging of New Code                                | GitHub   | SCM    | CRITICAL |
-| 1.1.17  | Denied Branch Deletions                                               | GitHub   | SCM    | CRITICAL |
-| 1.2.8   | Required reviews can be bypassed using GitHub Actions at Org level    | GitHub   | SCM    | HIGH     |
-| 1.2.9   | Required reviews can be bypassed using GitHub Actions at Repo level   | GitHub   | SCM    | HIGH     |
-| 1.3.9   | Organization Identity Confirmed with “Verified” Badge                 | GitHub   | SCM    | SCM      |
-| 1.2.12  | Auto-merged enabled on the repository                                 | GitHub   | SCM    | HIGH     |
+| 1.1.3   | Automated Approval of Code Changes                                    | GitHub   | Code Repository    | MEDIUM   |
+| 1.1.4   | Dismissal of Previous Approvals on Updates                            | GitHub   | Code Repository    | HIGH     |
+| 1.1.5   | Restricted Dismissal of Code Change Reviews                           | GitHub   | Code Repository    | HIGH     |
+| 1.1.6   | Code Owners Removed in GitHub repository                              | GitHub   | Code Repository    | HIGH     |
+| 1.1.7   | Code owners reviews are not required in GitHub before merging         | GitHub   | Code Repository    | MEDIUM   |
+| 1.1.9   | Checks Passing Before Merging New Code                                | GitHub   | Code Repository    | HIGH     |
+| 1.1.10  | Up-to-Date Open Git Branches                                          | GitHub   | Code Repository    | HIGH     |
+| 1.1.11  | Resolved Comments Before Merging                                      | GitHub   | Code Repository    | LOW      |
+| 1.1.13  | Linear History Requirement                                            | GitHub   | Code Repository    | LOW      |
+| 1.1.14  | Enforced Branch Protection Rules for Administrators                   | GitHub   | Code Repository    | HIGH     |
+| 1.1.15  | Restricted Pushing/Merging of New Code                                | GitHub   | Code Repository    | CRITICAL |
+| 1.1.17  | Denied Branch Deletions                                               | GitHub   | Code Repository    | CRITICAL |
+| 1.2.8   | Required reviews can be bypassed using GitHub Actions at Org level    | GitHub   | Code Repository    | HIGH     |
+| 1.2.9   | Required reviews can be bypassed using GitHub Actions at Repo level   | GitHub   | Code Repository    | HIGH     |
+| 1.3.9   | Organization Identity Confirmed with “Verified” Badge                 | GitHub   | Code Repository    | Code Repository      |
+| 1.2.12  | Auto-merged enabled on the repository                                 | GitHub   | Code Repository    | HIGH     |
 
 ### CICD-SEC-2: Inadequate Identity and Access Management
 
-| Rule ID | Name                                               | Platform | Entity | Severity |
+| Rule ID | Name                                               | Platform | Type | Severity |
 |---------------------------|----------------------------------------------------|----------|--------|----------|
-| 1.3.1                     | Excessive user permissions to a GitHub repository  | GitHub   | SCM    | HIGH     |
-| 1.3.5                     | GitHub User account is missing 2FA                 | GitHub   | SCM    | HIGH     |
-| 1.3.10                    | GitHub inactive user account programmatic credentials | GitHub   | SCM    | MEDIUM   |
-| 1.1.12                    | Verification of Signed Commits for New Changes Before Merging | GitHub   | SCM    | LOW      |
-| 1.1.16                    | Denied Force Pushing Code to Branches              | GitHub   | SCM    | LOW      |
-| 1.2.15                    | Any organization member in GitHub can create private repositories | GitHub   | SCM    | LOW      |
-| 1.2.13                    | GitHub organization members can create public repositories | GitHub   | SCM    | LOW      |
-| 1.2.18                    | GitHub repository webhook SSL verification is disabled | GitHub   | SCM    | LOW      |
-| 1.3.12                    | GitHub deploy key has a weak SSH signature         | GitHub   | SCM    | LOW      |
-| 1.2.19                    | GitHub organization webhook SSL verification is disabled | GitHub   | SCM    | LOW      |
-| 1.3.11                    | Unrotated GitHub deploy keys                       | GitHub   | SCM    | LOW      |
+| 1.3.1                     | Excessive user permissions to a GitHub repository  | GitHub   | Code Repository    | HIGH     |
+| 1.3.5                     | GitHub User account is missing 2FA                 | GitHub   | Code Repository    | HIGH     |
+| 1.3.10                    | GitHub inactive user account programmatic credentials | GitHub   | Code Repository    | MEDIUM   |
+| 1.1.12                    | Verification of Signed Commits for New Changes Before Merging | GitHub   | Code Repository    | LOW      |
+| 1.1.16                    | Denied Force Pushing Code to Branches              | GitHub   | Code Repository    | LOW      |
+| 1.2.15                    | Any organization member in GitHub can create private repositories | GitHub   | Code Repository    | LOW      |
+| 1.2.13                    | GitHub organization members can create public repositories | GitHub   | Code Repository    | LOW      |
+| 1.2.18                    | GitHub repository webhook SSL verification is disabled | GitHub   | Code Repository    | LOW      |
+| 1.3.12                    | GitHub deploy key has a weak SSH signature         | GitHub   | Code Repository    | LOW      |
+| 1.2.19                    | GitHub organization webhook SSL verification is disabled | GitHub   | Code Repository    | LOW      |
+| 1.3.11                    | Unrotated GitHub deploy keys                       | GitHub   | Code Repository    | LOW      |
 
 ### CICD-SEC-4: Poisoned Pipeline Execution (PPE)
-| Rule ID | Name                                                 | Platform | Entity | Severity |
+| Rule ID | Name                                                 | Platform | Type | Severity |
 |---------|------------------------------------------------------|----------|--------|----------|
-| 1.2.6   | Forking of private repositories in the GitHub organization is allowed | GitHub   | SCM    | MEDIUM   |
-| 1.2.7   | Forking of a private GitHub repository is allowed     | GitHub   | SCM    | MEDIUM   |
-| 2.1.5   | Pipeline vulnerable to command injection     | GitHub   | CI/CD    | High   |
+| 1.2.6   | Forking of private repositories in the GitHub organization is allowed | GitHub   | Code Repository    | MEDIUM   |
+| 1.2.7   | Forking of a private GitHub repository is allowed     | GitHub   | Code Repository    | MEDIUM   |
+| 2.1.5   | Pipeline vulnerable to command injection     | Harness Pipelines   | CI/CD    | High   |
 
 ### CICD-SEC-5: Insufficient PBAC (Pipeline-Based Access Controls)
 
-| Rule ID  | Name                                                                   | Platform | Entity | Severity |
+| Rule ID  | Name                                                                   | Platform | Type | Severity |
 |----------|------------------------------------------------------------------------|----------|--------|----------|
-| 1.2.5    | Default GitHub Actions workflow permissions in the organization set to 'read and write' | GitHub   | SCM    | MEDIUM   |
-| 1.2.14   | Default GitHub Actions workflow permissions in the repository set to 'read and write'  | GitHub   | SCM    | MEDIUM   |
-| 1.3.13   | GitHub deploy keys assigned with write permissions                     | GitHub   | SCM    | LOW      |
+| 1.2.5    | Default GitHub Actions workflow permissions in the organization set to 'read and write' | GitHub   | Code Repository    | MEDIUM   |
+| 1.2.14   | Default GitHub Actions workflow permissions in the repository set to 'read and write'  | GitHub   | Code Repository    | MEDIUM   |
+| 1.3.13   | GitHub deploy keys assigned with write permissions                     | GitHub   | Code Repository    | LOW      |
 
 ### CICD-SEC-6: Insufficient Credential Hygiene
 
-| Rule ID  | Name                                                | Platform | Entity | Severity |
+| Rule ID  | Name                                                | Platform | Type | Severity |
 |----------|-----------------------------------------------------|----------|--------|----------|
-| 1.2.20   | GitHub organization secret not scoped               | GitHub   | SCM    | MEDIUM   |
-| 1.2.10   | Unrotated organization secrets in GitHub Actions     | GitHub   | SCM    | MEDIUM   |
-| 1.2.11   | Unrotated repository secrets in GitHub Actions       | GitHub   | SCM    | MEDIUM   |
-| 2.1.6   | Possible secrets baked into docker image layers       | GitHub   | CI/CD    | MEDIUM   |
+| 1.2.20   | GitHub organization secret not scoped               | GitHub   | Code Repository    | MEDIUM   |
+| 1.2.10   | Unrotated organization secrets in GitHub Actions     | GitHub   | Code Repository    | MEDIUM   |
+| 1.2.11   | Unrotated repository secrets in GitHub Actions       | GitHub   | Code Repository    | MEDIUM   |
+| 2.1.6   | Possible secrets baked into docker image layers       | Harness Pipelines   | CI/CD    | MEDIUM   |
 
 
 ### CICD-SEC-8: Ungoverned Usage of 3rd Party Services
 
-| Rule ID | Name                                                 | Platform | Entity | Severity |
+| Rule ID | Name                                                 | Platform | Type | Severity |
 |---------------------------|------------------------------------------------------|----------|--------|----------|
-| 1.2.16                    | Unrestricted usage of GitHub Actions allowed across the organization | GitHub   | SCM    | HIGH     |
-| 1.2.17                    | Unrestricted usage of GitHub Actions allowed in the repository      | GitHub   | SCM    | HIGH     |
+| 1.2.16                    | Unrestricted usage of GitHub Actions allowed across the organization | GitHub   | Code Repository    | HIGH     |
+| 1.2.17                    | Unrestricted usage of GitHub Actions allowed in the repository      | GitHub   | Code Repository    | HIGH     |
 | 2.4.2                     | Unpinned GitHub Actions                                           | GitHub   | CI/CD  | MEDIUM   |
+| 2.3.9                     | Authorization not enforced for custom triggers                    | Harness Pipelines   | CI/CD  | HIGH   |
 
 </details>
 
@@ -175,7 +176,7 @@ The following rules are supported by Harness to perform evaluations, and Harness
 The following rules are defined by Harness
 <details>
 <summary>Harness Standards</summary>
-| Rule ID  | Name                                                | Platform | Entity | Severity |
+| Rule ID  | Name                                                | Platform | Type | Severity |
 |----------|-----------------------------------------------------|----------|--------|----------|
 | 2.1.7   | Authorization not enforced for custom triggers        | Harness   | CI/CD    | High   |
 
