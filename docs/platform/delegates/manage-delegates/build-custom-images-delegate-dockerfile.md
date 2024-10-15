@@ -24,9 +24,15 @@ While building custom delegate if you are not using delegate as base image [exam
 
 ```
 RUN mkdir -m 777 -p client-tools/scm/<SCM_VERSION> \
-  && curl -f -s -L -o client-tools/SCM_VERSION/<version>/scm https://app.harness.io/public/shared/tools/scm/release/<SCM_VERSION>/bin/linux/$TARGETARCH/scm
+  && curl -f -s -L -o client-tools/scm/<SCM_VERSION>/scm https://app.harness.io/public/shared/tools/scm/release/<SCM_VERSION>/bin/linux/$TARGETARCH/scm
 ```
-SCM_VERSION can be found here [delegate to scm version mapping](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types/#third-party-tools-included-in-the-delegate-image-type)
+SCM_VERSION should be coming from our [delegate to scm version mapping](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types/#third-party-tools-included-in-the-delegate-image-type)
+
+Example: If you're using delegate version 24.08.83705 then you should use scm version a81c96813, which gives below command
+```
+mkdir -m 777 -p client-tools/scm/a81c96813 \
+  && curl -f -s -L -o client-tools/scm/a81c96813/scm https://app.harness.io/public/shared/tools/scm/release/a81c96813/bin/linux/$TARGETARCH/scm 
+ ```
 
 :::
 
