@@ -141,7 +141,7 @@ The following rules are supported by Harness to perform evaluations, and Harness
 |---------|------------------------------------------------------|----------|--------|----------|
 | 1.2.6   | Forking of private repositories in the GitHub organization is allowed | GitHub   | Code Repository    | MEDIUM   |
 | 1.2.7   | Forking of a private GitHub repository is allowed     | GitHub   | Code Repository    | MEDIUM   |
-| 2.1.5   | Pipeline vulnerable to command injection     | Harness Pipelines   | CI/CD    | High   |
+| 2.1.5   | Pipeline vulnerable to command injection     | Harness   | CI/CD    | High   |
 
 ### CICD-SEC-5: Insufficient PBAC (Pipeline-Based Access Controls)
 
@@ -158,17 +158,18 @@ The following rules are supported by Harness to perform evaluations, and Harness
 | 1.2.20   | GitHub organization secret not scoped               | GitHub   | Code Repository    | MEDIUM   |
 | 1.2.10   | Unrotated organization secrets in GitHub Actions     | GitHub   | Code Repository    | MEDIUM   |
 | 1.2.11   | Unrotated repository secrets in GitHub Actions       | GitHub   | Code Repository    | MEDIUM   |
-| 2.1.6   | Possible secrets baked into docker image layers       | Harness Pipelines   | CI/CD    | MEDIUM   |
+| 2.1.6   | Possible secrets baked into docker image layers       | Harness   | CI/CD    | MEDIUM   |
+| 2.3.9                     | Authorization not enforced for custom triggers                    | Harness   | CI/CD  | HIGH   |
 
 
 ### CICD-SEC-8: Ungoverned Usage of 3rd Party Services
 
 | Rule ID | Name                                                 | Platform | Type | Severity |
 |---------------------------|------------------------------------------------------|----------|--------|----------|
-| 1.2.16                    | Unrestricted usage of GitHub Actions allowed across the organization | GitHub   | Code Repository    | HIGH     |
+| 1.2.16                    | Unrestricted usage of GitHub Actions allowed across the organization | GitHub   | pi Repository    | HIGH     |
 | 1.2.17                    | Unrestricted usage of GitHub Actions allowed in the repository      | GitHub   | Code Repository    | HIGH     |
 | 2.4.2                     | Unpinned GitHub Actions                                           | GitHub   | CI/CD  | MEDIUM   |
-| 2.3.9                     | Authorization not enforced for custom triggers                    | Harness Pipelines   | CI/CD  | HIGH   |
+
 
 </details>
 
