@@ -27,11 +27,25 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### New features and enhancements
 
+- Adds support to explicitly define the log watcher sidecar for chaos experiment manifest that use Harness Delegate. (CHAOS-6703)
+
+- Adds support to explicitly define the log watcher sidecar for chaos experiment manifest that use a dedicated chaos infrastructure. (CHAOS-6657)
+
+- Adds an updated UI for ChaosGuard to show dedicated chaos infrastructure, Harness Delegate, Linux and Windows chaos infrastructure. It also provides a modal each for application map and service discovery, respectively. (CHAOS-6646)
+
+- Adds support for live log streams for helper pods when executing an experiment that uses Harness Delegate. (CHAOS-5931)
+
 - Adds self-signed and trusted CA certificates for API chaos experiments. (CHAOS-6834)
 
 - Adds the functionality to block all inbound rules for Windows global blackhole chaos. (CHAOS-6603)
 
 #### Fixed issues
+
+- Fixed an issue where the list of infrastructure supported by Harness Delegate showed deleted infrastructure. (CHAOS-6742)
+
+- Fixed an issue where the image registry was unable to automatically reload the experiment manifest when creating a chaos experiment. (CHAOS-6727)
+
+- Fixed an issue in the image registry where selecting the **ignore** option from the UI would override values from backend. (CHAOS-6724)
 
 - Fixed the issue where the experiment schedule type was not being updated when it was changed from non-cron to cron type. (CHAOS-6822)
 
