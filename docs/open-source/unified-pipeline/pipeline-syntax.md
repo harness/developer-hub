@@ -314,7 +314,7 @@ pipeline:
 ---
 
 Defines the service being used. If declared as a child of `pipeline` will define a pipeline-level service. 
-Additionally, it can also be a child of `stages` meaning it will define a stage-level service. [Q](new functionality to put service at pipeline level)
+Additionally, it can also be a child of `stages` meaning it will define a stage-level service. 
 
 To define the service, enter the service name. 
 
@@ -323,6 +323,11 @@ To define the service, enter the service name.
 ```yaml
 service: petstore
 ```
+
+### `service.parallel`
+---
+
+Boolean value. If set to `true`, the services will deploy in parallel.
 
 ### `service.items`
 ---
@@ -342,7 +347,7 @@ service:
 ---
 
 Defines the environment being used. If declared as a child of `pipeline` will define a pipeline-level environment. 
-Additionally, it can also be a child of `stages` meaning it will define a stage-level environment. [Q]
+Additionally, it can be a child of `stages` meaning it will define a stage-level environment.
 
 #### Example: Define an environment
 
@@ -645,17 +650,81 @@ Options:
 - `pull-push`
 - `push`
 
-### `stages.service`
----
-
-### `stages.environment`
----
-
 ### `stages.volumes`
 ---
 
+Defines a list of storage volumes used by the stage. 
+
+#### `stages.volumes[i].name`
+---
+
+Name of the volume. 
+
+#### `stages.volumes[i].uses`
+---
+
+Defines the use of the volume. 
+Options:
+- `bind`
+- `claim`
+- `config`
+- `temp`
+
+#### `stages.volumes[i].with`
+---
+
+An object that defines the volume's parameters. The object's parameter's depend on the `use` defined above.  
+
+##### `Use: Bind`
+
+Parameters:
+- `name`: Name of the volume.
+
+##### `Use: Claim`
+
+Parameters:
+- `name`: Name of the claim.
+
+##### `Use: Config`
+
+Parameters:
+- `name`: Name of the volume. 
+- `mode`: 
+- `optional`: Boolean. Marks the volume as optional. 
+
+##### `Use: Temp`
+
+Parameters:
+- `limit`:  String or number. Size limit for the temp volume.
+
 ### `stages.template`
 ---
+
+Defines the stage using a plugin template. 
+
+#### `stages.template.uses`
+---
+
+Sets the plugin template being used for this stage. 
+
+#### `stages.template.with`
+---
+
+Set the inputs for the plugin template being used. 
+
+##### Example: Using `stages.template`
+
+```yaml
+pipeline:
+  stages:
+  - template:
+      uses: account.golang
+      with:
+        version: "1.19"
+        goos: linux
+        goarch: amd64
+        cgo-enabled: true
+```
 
 ### `stages.runtime`
 ---
@@ -672,11 +741,17 @@ Options:
 ### `stages.approval`
 ---
 
-### `stages.steps`
+## `steps`
 ---
 
 Defines a Harness Step. Each step is a logical construction that does a specific action of work. For example, you could define a deploy, shell script, or, approval step. 
 
+Each step will have `stages` as its parent. Therefore, all yaml following that has `steps` as a parent will have `pipeline.stages` as its parent. For brevity, we will not explicitly list the full parent string for the steps options below. 
+
+### `steps.run`
+---
+
+Defines a run step for the stage. This step runs scripts, builds, deploys code etc. [Q](Add a better description)
 
 
 
