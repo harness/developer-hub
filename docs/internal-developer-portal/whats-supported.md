@@ -45,7 +45,7 @@ Harness IDP requires some secrets to be set for plugins and external integration
 
 :::
 
-## Template Actions to Trigger Harness Pipeline
+## Workflow Actions to Trigger Harness Pipeline
 
 ### [trigger:harness-custom-pipeline](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline)
 
