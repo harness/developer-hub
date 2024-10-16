@@ -69,9 +69,14 @@ When you add the Helm chart to Harness as a manifest, you have different options
 
 ![](./static/trigger-pipelines-on-new-helm-chart-05.png)
 
-#### OCI Helm registries are not supported with Harness triggers
+#### Supported Helm registries and limitations.
 
 You cannot use [OCI Helm Registries](../connectors/artifact-repositories/connect-to-an-artifact-repo.md) with Helm Chart triggers.
+
+You can use:
+- [HTTP Helm](/docs/platform/connectors/code-repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference)
+- [S3](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference)
+- [Google Cloud Storage](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
 
 ### Create a Helm Chart trigger
 
