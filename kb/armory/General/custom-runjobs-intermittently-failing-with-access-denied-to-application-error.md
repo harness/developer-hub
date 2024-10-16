@@ -12,5 +12,6 @@ This is a known issue that has been addressed in Armory Spinnaker 2.26.1, specif
 The issue stems from Orca passing an application name to Clouddriver to ask for permissions, however no such application actually exists.
 In order to confirm this indeed is the case for a particular execution failure, look at the Clouddriver log for the following error:
 ```FiatAccessDeniedExceptionHandler : Encountered exception while processing request GET:/{}applications/```
-And confirm `````` is not an application that exists in your environment.
+
+And confirm it is not an application that exists in your environment.
 

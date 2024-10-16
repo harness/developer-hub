@@ -13,6 +13,7 @@ This is a known bug of Kubernetes, Kustomize, and even Helm. There is another Kn
 [https://kb.armory.io/s/article/Load-balancer-service-svc-spinnaker-demo-does-not-exist](https://kb.armory.io/s/article/Load-balancer-service-svc-spinnaker-demo-does-not-exist)
 Additionally, there is a very similar issue on Github.
 [https://github.com/spinnaker/spinnaker/issues/5040](https://github.com/spinnaker/spinnaker/issues/5040)
+
 Kubernetes has trouble viewing manifests when deployment strategies are used, thus causing errors. 
 
 

@@ -5,7 +5,8 @@ title: Spring Expression Language (SpEL) samples
 ## Introduction
 Spring Expression Language (SpEL) is a powerful tool that can help customers with a variety of tasks around pipelines.  This can include passing information to subsequent stages and transforming information that was provided from previous stages.
 Customers wanting to see some larger examples of how SpEL can be leveraged, can take a look at the following KB articles that provide some real-life situations where SpEL helps solve some common issues from customers:
-* Passing Rosco-Packer information to subsequent stages: [https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010305](https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010305)* Using SpEL to add Target Groups in a Deployment Pipeline for AWS CloudFormation: [https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010280](https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010280)
+* Passing Rosco-Packer information to subsequent stages: [https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010305](https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010305)
+* Using SpEL to add Target Groups in a Deployment Pipeline for AWS CloudFormation: [https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010280](https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010280)
  
 Below are some common usage examples of using in Evaluate Variables stage and Check Preconditions stages
 
@@ -35,15 +36,13 @@ Evaluate Variables Configuration. Pulls the parameters called ```a1``` from the 
 
 
 ``````${parameters.a1}``````
-
-###  
+ 
 ### Sample 4: Call parameter all values
 Evaluate Variables Configuration. Pulls the parameter all values from the stage
 
 
 ``````${parameters.values()}``````
-
-###  
+ 
 ### Sample 5: Use java class 
 Evaluate Variables Configuration.  Implementing ```Java class``` for evaluations. 
 
@@ -58,7 +57,6 @@ Evaluate Variables Configuration.  Implementing ```Java class``` for evaluation
 
 ``````${new java.lang.String(a).substring(1,8)}``````
 
-###  
 ### Sample 6: Use Helper functions
 
 
@@ -98,7 +96,7 @@ Evaluate Variables Configuration captures the webhook stage values specified.  
 ``````${#stage("WebhookBefore").context.webhook.body}​``````
 
 
-###  
+
 ### Sample 8: Capture the Size of Map of JSON
 
 
@@ -109,7 +107,7 @@ Evaluate Variables Configuration.  Size evaluates the size of the list and retu
 ``````${alreadyDeployedBeforeRun.size()}​``````
 
 
-###  
+
 ### Sample 9: Use toString().contains()
 
 

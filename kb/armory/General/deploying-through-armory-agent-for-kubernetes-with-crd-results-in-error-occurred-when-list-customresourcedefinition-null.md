@@ -4,7 +4,8 @@ title: Deploying through Armory Agent for Kubernetes with CRD results in "Error 
 
 ## Issue
 Customers may find that Kubernetes custom resource definition (CRD) deployments fail with the below error when deployed through the Armory Agent for Kubernetes
-```
+
+````
 exception="io.armory.kubesvc.services.ops.executor.KubesvcRuntimeException: Error occurred when List customResourceDefinition/null in : (401: namespace default has not been authorized in the configuration of account xxxxxxxxxxx)
 	at io.armory.kubesvc.util.OperationUtils.perform(OperationUtils.java:79)
 	at io.armory.kubesvc.services.ops.executor.KubesvcExecutor.list(KubesvcExecutor.java:254)
@@ -133,7 +134,7 @@ exception="io.armory.kubesvc.services.ops.executor.KubesvcRuntimeException: Erro
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:829)"
-```
+````
 ## Cause
 This is identified as an issue with the ```Armory Agent plugin ```if the version used is below ```0.8.26```, ```0.9.18```, or ```0.10.2```.  Below is the plugin matrix for corresponding Spinnaker versions that had the issue
 Armory Enterprise (Spinnaker) VersionAgent plugin Version2.25.x (1.25.x)0.8.262.26.x (1.26.x)0.9.182.27.x (1.27.x)0.10.2

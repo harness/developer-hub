@@ -21,6 +21,7 @@ Project Aurora for Spinnaker™ requires that Argo Rollouts Controller 1.x or la
 For information about how to install Argo Rollouts, see [Controller Install](https://argoproj.github.io/argo-rollouts/installation/#controller-installation)[ation](https://argoproj.github.io/argo-rollouts/installation/#controller-installation) in the Argo documentation.
 ## ****Configure permissions
 Create a ```ClusterRole```, ```ServiceAccount```, and ```ClusterRoleBinding``` for the Remote Network Agent by applying the following manifest to the ```aurora``` namespace:
+```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -135,8 +136,11 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: spin-cluster-role
+```
+
 ## ****Configure the Remote Network Agent
 For information about adding accounts, see the ```kubernetes.accounts[]``` options in the [Agent Configuration documentation](https://docs.armory.io/docs/armory-agent/agent-options/#configuration-options).
+```
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -156,8 +160,11 @@ data:
           verify: true
     kubernetes:
      accounts: [] 
+```
+
 ## ****Deploy the Remote Network Agent
 Apply the following Remote Network Agent deployment manifest to the namespace created on the target cluster for the Agent (```aurora``` for the examples on this page):
+```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -220,6 +227,7 @@ spec:
       #   secret:
       #     defaultMode: 420
       #     secretName: kubeconfigs-secret
+```
 ## Next steps
 After completing the above steps, return to [Get Started with Project Aurora for Spinnaker™](https://docs.armory.io/docs/installation/aurora-install/) and continue from [Verify the Agent Deployment](https://docs.armory.io/docs/installation/aurora-install/#verify-the-agent-deployment).
 
