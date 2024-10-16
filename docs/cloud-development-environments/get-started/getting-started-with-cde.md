@@ -74,7 +74,7 @@ Let us go through the flow of creating a CDE for our sample application, which i
 
 ![](./static/create-gitspace.png)
 
-8. After clicking on **Create Gitspace**, you’ll be redirected to the **Gitspace Details** page, where you can view the events and logs as the Gitspace is being created. Once it is ready, you can open the Gitspace by clicking the **Open VS Code Online** or **Open VS Code Desktop** button at the top right of the page.If you're using VS Code Desktop, you'll need to [install the plugin](#install-gitspace-vs-code-extension-for-vs-code-desktop) to view and connect to your Gitspace.
+8. After clicking on **Create Gitspace**, you’ll be redirected to the **Gitspace Details** page, where you can view the events and logs as the Gitspace is being created. Once it is ready, you can open the Gitspace by clicking the **Open VS Code Online** or **Open VS Code Desktop** button at the top right of the page.If you're using VS Code Desktop, you'll need to install the plugin to view and connect to your Gitspace. (Follow the steps outlined in the following section to install the plugin.)
 
 ![](./static/gitspaces-starting.png)
 
@@ -153,7 +153,7 @@ git config --global user.name "Your Name"
 
 3. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. To connect to a Gitspace with VS Code Desktop, you have two options: either use an SSH key or a temporary password.
     1. SSH Key:
-    You can create a new SSH key using `ssh-keygen` [(learn more here on how to create an SSH key)](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key). This generates a pair of keys (public and private). Copy the public key and paste it into the "SSH key" field while setting up a Gitspace (as shown in the picture below). This will enable you to establish a remote connection to the gitspace via SSH. If you prefer not to use an SSH key, you can use the temporary password method outlined below.
+    You can create a new SSH key using `ssh-keygen` [(learn more here on how to create an SSH key)](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key). This generates a pair of keys (public and private). Copy the public key and paste it into the "SSH key" field while setting up a Gitspace (as shown in the picture below). This will enable you to establish a remote connection to the Gitspace via SSH. If you prefer not to use an SSH key, you can use the temporary password method outlined below.
 
         ![](./static/ssh-key.png)
 
@@ -190,10 +190,9 @@ Deleting a Gitspace is an irreversible action since deleted Gitspaces cannot be 
 
 ## Auto Stopping of Gitspaces
 
-Harness reduces cloud costs and saves compute resources by auto stopping inactive or unused gitspaces, while offering flexibility by restating them with all the data and changes fully preserved. 
+Harness reduces cloud costs and saves compute resources by auto stopping inactive or unused Gitspaces, while offering flexibility by restating them with all the data and changes fully preserved. 
 
-A gitspace will automatically stop running and time out if left inactive for a certain time. By default, this period of inactivity is 60 minutes. Inactivity, in this context, means no user activity within the Gitspace, particularly in the IDE.. Any terminal activity will reset this inactivity period.  
-Harness monitors the inactivity of each Gitspace and automatically stops it from the backend once the inactivity period reaches 60 minutes.
+Harness monitors the inactivity of each Gitspace and will automatically stop running and time out if left inactive for a certain time. By default, this period of inactivity is 60 minutes. Inactivity, in this context, means no user activity within the Gitspace, particularly in the IDE. Any terminal activity will reset this inactivity period.  
 
 Gitspaces stopped in this way preserve all data, changes, and state, allowing you to pick up right where you left off when it’s restarted. This not only saves costs but also reduces the utilization of unused resources.
 
@@ -202,5 +201,7 @@ Gitspaces stopped in this way preserve all data, changes, and state, allowing yo
 With our beta plan, you receive 2,000 free minutes of Gitspace usage each month. This allows you to run and use your Gitspaces for up to 2,000 minutes at no cost. These minutes automatically renew every 30 days, resetting on the 1st of each month. 
 
 You can easily view and track your remaining minutes directly from the Gitspaces page in the Harness UI. (as shown in the image below)
+
+If you need additional minutes for your account, don’t hesitate to contact us at cde-interest@harness.io.
 
 ![](./static/Beta%20plan%20usage.png)
