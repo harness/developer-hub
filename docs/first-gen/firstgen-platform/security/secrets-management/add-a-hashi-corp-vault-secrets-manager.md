@@ -115,7 +115,7 @@ In the **Sink Path** field, enter any sink path you have in your Vault Agent Con
 
 ### Option: Kubernetes Auth
 
-Currently, this feature is behind the Feature Flag `ENABLE_K8S_AUTH_IN_VAULT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. This option uses a Kubernetes Service Account Token to authenticate with Vault. With this method of authentication, you can easily add a Vault token into a Kubernetes Pod.
+Currently, this feature is behind the Feature Flag `ENABLE_K8S_AUTH_IN_VAULT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.This option uses a Kubernetes Service Account Token to authenticate with Vault. With this method of authentication, you can easily add a Vault token into a Kubernetes Pod.
 
 To authenticate with Kubernetes Auth, make sure you have created a role in the vault inside `auth/kubernetes/role`. This role authorizes the "vault-auth" service account in the default namespace and it gives it the default policy. This is also where you'll find the **service account name** and **namespace** that will be used to access the vault endpoint.
 
