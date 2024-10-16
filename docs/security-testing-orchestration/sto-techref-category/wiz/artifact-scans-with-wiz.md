@@ -392,3 +392,8 @@ import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
+## View Wiz policy failures
+
+import WizPolicyFailureResults from '../shared/_wiz-policy-failure-results.md';
+
+<WizPolicyFailureResults />
