@@ -2350,7 +2350,7 @@ input.pipeline.stages[_].stage.spec.execution.steps[_].step.spec.resources.limit
 }
 ```
 
-#### Do we have audit trials for changes in Dashboard?
+#### Do we have audit trails for changes in Dashboard?
 
 No, this feature is yet to come.
 
@@ -3293,6 +3293,25 @@ Yes, the skip keywords can be placed anywhere within the commit message, includi
 #### Does harness pipeline support triggering GitHub action workflow from the pipeline?
 As per the current design, there's no native step for this but user can write a shell script at the end of execution to trigger the GitHub action workflow.
 
+#### What is the override priority in Overrides V2?
+
+The override priority is hierarchical: Service & Infrastructure Specific overrides take precedence, followed by Infrastructure Specific overrides, Service Specific overrides, and finally, Global Environment overrides. Additionally, project-level overrides take precedence over organization-level, which in turn take precedence over account-level overrides.
+
+#### How can I manage my overrides using Git in Overrides V2?
+
+To manage overrides using Git, you can choose to store overrides remotely in a repository. You will need to create a Git connector, select your repository, and save your overrides using the specified YAML path. The Git Experience support is behind the feature flag `CDS_OVERRIDES_GITX`.
+
+#### What are the benefits of using Overrides V2 over the previous version?
+
+Overrides V2 offers greater flexibility, enhanced management of infrastructure variables, independent YAML object representation, and more granular configuration options at the account and organizational levels.
+
+#### What happens if I continue to use Terraform scripts with Overrides V1 after enabling Overrides V2?
+
+If you use Terraform scripts designed for Overrides V1 while having Overrides V2 enabled, you may encounter changes in the Terraform plan and potential execution errors, as V1 scripts may not be fully compatible with the new system.
+
+#### Are there any limitations when using Overrides V2?
+
+Yes, runtime inputs are not supported for infrastructure-specific and service & infrastructure-specific variables. Additionally, environment variables can only be created in the Global Environment section and not in individual Environment sections.
 
 ### Infrastructure provisioning FAQs
 
