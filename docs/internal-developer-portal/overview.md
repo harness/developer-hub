@@ -4,8 +4,8 @@ description: A home for developers to create, manage, and explore software.
 sidebar_position: 2
 sidebar_label: Harness IDP Overview
 redirect_from:
-  - /docs/internal-developer-portal/getting-started/overview
   - /docs/internal-developer-portal/get-started/overview
+  - /docs/internal-developer-portal/getting-started/overview
 ---
 
 # Harness IDP Overview
