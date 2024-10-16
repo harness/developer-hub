@@ -9,11 +9,13 @@ This capability can be integrated into Armory Enterprise, and this eliminates th
 
 ## Prerequisites
 The following are required:
-* Creation of AWS role in accordance with the AWS documentation on [IAM roles for service accounts- Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html)* Armory v2.26+
+* Creation of AWS role in accordance with the AWS documentation on [IAM roles for service accounts- Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) * Armory v2.26+
+
 Note:IRSA requires a[ minimum version of the AWS SDK.](https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/) If the SDK version is not currently being utilized, you may [make the app IRSA-aware (in the pod).](https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/)
 
 ## Instructions
 To override the service accounts, the following example may be utilized:
+```
 apiVersion: spinnaker.armory.io/v1alpha2
 kind: SpinnakerService
 metadata:
@@ -29,13 +31,14 @@ spec:
       echo:
         kubernetes:
           serviceAccountName: spin-sa-echo
- 
+```
+
 The service account would then need to have annotations applied for particular roles, as in the following example:
+```
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: spin-sa
   annotations:
     eks.amazonaws.com/role-arn: arn:aws:iam::000000000000:role/my-spinnaker-role
- 
-
+```
