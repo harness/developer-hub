@@ -705,6 +705,21 @@ The infrastructure definition is added.
   </TabItem2>
 </Tabs2>
 
+:::info
+
+We now support OpenID Connect (OIDC) authentication in GCP, enabling seamless integration with OIDC-compliant identity providers for enhanced security and user management.
+
+To configure OIDC authentication in Kubernetes, navigate to account/project settings.
+
+Select **New Connector**, select **GCP**
+
+In the details tab, select **OIDC**
+
+Enter the necessary details like **Workload Pool ID**, **Provider ID**, **Project ID** and **Service Account Email**
+
+![](static/gcp-oidc.png)
+:::
+
 ### Dynamically provisioned Functions infrastructure
 
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
