@@ -7,10 +7,10 @@
 *       @pratmit @wei-harness
 
 # Configuration Files in DS are JS.
-*.js    @wei-harness
-*.ts    @wei-harness
-*.jsx    @wei-harness
-*.tsx    @wei-harness
+*.js    @wei-harness @rohanmaharjan100
+*.ts    @wei-harness @rohanmaharjan100
+*.jsx    @wei-harness @rohanmaharjan100
+*.tsx    @wei-harness @rohanmaharjan100
 
 # Changes to Lock File
 *.lock  @wei-harness
