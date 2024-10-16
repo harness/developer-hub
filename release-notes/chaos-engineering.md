@@ -21,6 +21,20 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## October 2024
+
+## Version 1.47.0
+
+#### New features and enhancements
+
+- Adds self-signed and trusted CA certificates for API chaos experiments. (CHAOS-6834)
+
+- Adds the functionality to block all inbound rules for Windows global blackhole chaos. (CHAOS-6603)
+
+#### Fixed issues
+
+- Fixed the issue where the experiment schedule type was not being updated when it was changed from non-cron to cron type. (CHAOS-6822)
+
 ## September 2024
 
 ## Version 1.45.5
