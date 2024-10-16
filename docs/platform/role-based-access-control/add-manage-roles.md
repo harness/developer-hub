@@ -181,6 +181,10 @@ The user can now sign in to their account and access only those resources allowe
 
 You can now streamline role management by reusing roles across scopes in Harness, simplifying access control configuration across your account, organizations, and projects. By creating a role at the account level, you can easily assign it to users, user groups, or service accounts at more granular levels like the organization or project scope.
 
+:::important
+You can only reuse custom roles across scopes. Built-in roles are not reusable.
+:::
+
 :::note
 This feature is behind the feature flag `PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
@@ -208,13 +212,10 @@ This example walks through reusing a role across scopes. The role is created at 
 3. Select **Manage Role Bindings**.
 4. Under **Role Bindings**, select **Add**.
 5. Under **Select an Existing Role**, select **Account** in the header and then select the role you want to assign.
-:::note
-You can only reuse custom roles across scopes. Built-in roles are not reusable.
-:::
-[](./static/add-manage-roles-20.png)
+   [](./static/add-manage-roles-20.png)
 6. Select **Apply Selected**.
 7. Select **Save**.
-[](./static/add-manage-roles-21.png)
+   [](./static/add-manage-roles-21.png)
 
 </details>
 
