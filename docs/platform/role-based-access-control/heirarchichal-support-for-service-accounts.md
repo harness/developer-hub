@@ -14,11 +14,11 @@ Harness now allows you to create Service Accounts at the account level and use t
 
 2. Generate an [API Key](./add-and-manage-service-account.md#manage-api-keys) for the Service Account
 
-4. Create a [Role](./add-manage-roles.md#create-a-role) with the necessary permissions at the Project Level
+3. Create a [Role](./add-manage-roles.md#create-a-role) with the necessary permissions at the Project Level
 
-5. Create a [Resource Group](./add-resource-groups.md#create-a-resource-group) at the Project Level
+4. Create a [Resource Group](./add-resource-groups.md#create-a-resource-group) at the Project Level
 
-6. Assign the Role and Resource Group to the Service Account at the Project Level
+5. Assign the Role and Resource Group to the Service Account at the Project Level
 
    - Using the [Role Assignment API](https://apidocs.harness.io/tag/Role-Assignments#operation/postRoleAssignments), assign the created role to the service account. You need to create the role assignment at the project level, granting the service account permission to execute the pipelines in the resource group.
 
@@ -43,7 +43,7 @@ Harness now allows you to create Service Accounts at the account level and use t
       `principal`: The service account at the account level to which you're assigning the role.
       `scopeLevel`: The scope at which the principal exists. In this case, it's at the account level.
 
-7. Execute the Pipeline Using the Service Account.
+6. Execute the Pipeline Using the Service Account.
 After assigning the role, you can now use the [Pipeline Execution API](https://apidocs.harness.io/tag/Pipeline-Execution#operation/execute-pipeline) to execute the pipelines in the specified resource group. Pass the service account’s `API key` as the `x-api-key` header in your API request.
 
 ## Benefits
