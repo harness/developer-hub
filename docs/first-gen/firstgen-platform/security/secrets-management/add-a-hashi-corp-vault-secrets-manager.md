@@ -115,7 +115,9 @@ The `appRoleLogin` method now supports a custom authentication path, utilizing i
 
 ![](./static/add-a-hashi-corp-vault-secrets-manager-68.png)
 
-For example, the custom path can be set as `<customPath>`, providing greater flexibility in configuring the authentication mechanism. This feature is particularly useful in scenarios where the default authentication path requires customization.
+For example, the custom AppRole path can be set as `<customPath>`, providing greater flexibility in configuring the authentication mechanism. This feature is particularly useful in scenarios where the default authentication path requires customization.
+
+Ensure that the custom AppRole path you configure exists in your HashiCorp Vault. This step is necessary for the authentication to succeed using the custom path.
 
 ### Option: Vault Agent
 
