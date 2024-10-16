@@ -193,8 +193,6 @@ import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.
 
 <StoSettingTargetWorkspace  />
 
-Additionally, you can specify individual files to scan as well. For instance, if you only want to scan a specific file like `/tmp/iac/infra.tf`, you can specify the workspace path as `/harness/tmp/iac/infra.tf`
-
 ### Ingestion File
 
 
@@ -267,3 +265,7 @@ import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
 import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
+
+## View Wiz policy failures
+
+import WizPolicyFailureResults from '../shared/_wiz-policy-failure-results.md';
