@@ -154,3 +154,15 @@ metadata:
 
 ![](static/docs-rendered.png)
 
+## Supported MkDocs Plugins in Techdocs
+
+In techdocs we support [MkDocs plugins and extensions](https://backstage.io/docs/features/techdocs/faqs/#what-is-the-mkdocs-techdocs-core-plugin). Here's the list of plugins added.
+
+  - [mkdocs-glightbox](https://github.com/blueswen/mkdocs-glightbox)
+  - [mkdocs-git-authors-plugin](https://github.com/timvink/mkdocs-git-authors-plugin)
+  - [mkdocs-git-revision-date-localized-plugin](https://github.com/timvink/mkdocs-git-revision-date-localized-plugin)
+  - [mkdocs-video](https://pypi.org/project/mkdocs-video/)
+  - [mkdocs-material-extensions](https://pypi.org/project/mkdocs-material-extensions/)
+  - [mkdocs-redirects](https://github.com/mkdocs/mkdocs-redirects)
+  - [mkdocs-awesome-pages-plugin](https://pypi.org/project/mkdocs-awesome-pages-plugin/2.6.1/)
+  - [mkdocs-minify-plugin](https://pypi.org/project/mkdocs-minify-plugin/0.7.1/)
