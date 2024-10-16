@@ -25,11 +25,9 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## Version 1.45.5
 
-#### New features and enhancements
-
-- Chaos infrastructure created with the help of a sandbox shows that it is supported by a dedicated infrastructure or Delegate with the notes "Supported by Dedicated Chaos Infrastructure" and "Supported by a Harness Delegate", respectively. (CHAOS-6501)
-
 #### Fixed issues
+
+- Fixed the issue where chaos infrastructure created with the help of a sandbox showed "Supported by a Harness Delegate". (CHAOS-6501)
 
 - Fixed the issue where selecting an infrastructure to create ChaosGuard crashed. Now, the page lists the chaos infrastructure based on the type of infrastructure you select (Delegate-enabled or dedicated infrastructure enabled). (CHAOS-6680)
 
