@@ -1108,6 +1108,23 @@ For more information, go to [Delegate expiration policy](/docs/platform/delegate
 
 No, additional encoding is not supported for delegate tokens.
 
+### Getting below error while trying to create a new delegate
+
+`Error from server (BadRequest): error when creating "harness-delegate.yml": Secret in version "v1" cannot be handled as a Secret: illegal base64 data at input byte 6`
+
+
+So looks like the token is not passed in correct format, so need to pass the correct delegate token
+
+
+### From where we can get the delegate token, is it the same as the API key?
+
+No, it's not the same as an API key; it can be found under the delegate page, and you will be able to see the token tab there on the top right corner.
+
+
+### What is the use of the delegate token?
+
+Delegate tokens are used to encrypt communication between Harness Delegates and Harness Managers.
+
 ### I can see that a legacy delegate is a statefulset object. What does this mean? What's the major difference from Deployment type?
 
 **StatefulSet:**
