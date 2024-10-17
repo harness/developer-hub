@@ -1,4 +1,4 @@
-### Using Self-Signed Certificates
+#### Using Self-Signed Certificates
 
 To establish TLS communication between the target application and the proxy server, you can use one of the following. 
 
@@ -46,7 +46,7 @@ To establish TLS communication between the target application and the proxy serv
 Intermediate Certificates are the chain of certificates that are used to generate the eventual server certificate for security purposes.
 :::
 
-### Using Trusted Certificates
+#### Using Trusted Certificates
 
 You can use trusted server certificates for internal or external domains, both of which are described below.
 
