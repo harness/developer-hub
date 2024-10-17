@@ -204,7 +204,7 @@ This example walks through reusing a role across scopes. The role is created at 
    - For **Pipelines**, select **Execute**.
 6. Select **Apply Changes**.
 
-[](./static/add-manage-roles-17.png)
+<DocImage path={require('./static/add-manage-roles-19.png')} />
 
 #### Assign the role to users at the organization scope
 1. In Harness, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
@@ -212,10 +212,10 @@ This example walks through reusing a role across scopes. The role is created at 
 3. Select **Manage Role Bindings**.
 4. Under **Role Bindings**, select **Add**.
 5. Under **Select an Existing Role**, select **Account** in the header and then select the role you want to assign.
-   [](./static/add-manage-roles-20.png)
+   <DocImage path={require('./static/add-manage-roles-20.png')} />
 6. Select **Apply Selected**.
 7. Select **Save**.
-   [](./static/add-manage-roles-21.png)
+   <DocImage path={require('./static/add-manage-roles-21.png')} />
 
 </details>
 
