@@ -179,7 +179,7 @@ The user can now sign in to their account and access only those resources allowe
 
 ## Reuse roles across scopes
 
-You can now streamline role management by reusing roles across scopes in Harness, simplifying access control configuration across your account, organizations, and projects. By creating a role at the account level, you can easily assign it to users, user groups, or service accounts at more granular levels like the organization or project scope.
+You can further streamline role management by reusing roles across scopes in Harness, simplifying access control configuration across your account, organizations, and projects. By creating a role at the account level, you can easily assign it to users, user groups, or service accounts at more granular levels like the organization or project scope.
 
 :::important
 You can only reuse custom roles across scopes. Built-in roles are not reusable.
