@@ -16,7 +16,8 @@ helpdocs_is_published: truex
 <br/>
 
  You can run scans and ingest results from [SonarQube](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
- 
+
+<DocVideo src="https://www.youtube.com/embed/qP0TUQuTSfI?si=yzQslx3sXdQjXWTi" /> 
 
 ## Important notes for running SonarQube scans in STO
 
@@ -345,8 +346,14 @@ This setup ensures that the scan result name reflects both the branch and the PR
 ## View SonarQube quality gate failures
 SonarQube quality gate failures will appear in scan results as 'Info' severity issues, with the issue type set to `EXTERNAL_POLICY`. Additionally, you can apply OPA policies in Harness STO to enforce or manage these failures.
 
+To retrieve quality gate failure data from SonarQube, ensure the access token used in the SonarQube step configuration has **Browse Project** or **Administer** [permissions](https://docs.sonarsource.com/sonarqube/latest/instance-administration/user-management/user-permissions/) for the project being scanned.
+
 ## View SonarQube code coverage results
 SonarQube code coverage data appears in the scan results as `Info` issues. To locate it, search for `Code Coverage` within the Info issues, the issue type will be labeled as Code Coverage. Additionally, you can apply an OPA policy to fail the pipeline based on the code coverage results. This can be achieved using the [Security Tests - Code Coverage](/docs/security-testing-orchestration/policies/create-opa-policies.md#block-the-pipeline-based-on-the-code-coverage-results) policy from the [security tests policy samples](/docs/security-testing-orchestration/policies/create-opa-policies.md#security-test-policy-samples).
+
+To retrieve code coverage data from SonarQube, ensure the access token used in the SonarQube step configuration has **Browse Project** or **Administer** [permissions](https://docs.sonarsource.com/sonarqube/latest/instance-administration/user-management/user-permissions/) for the project being scanned.
+
+<DocVideo src="https://www.youtube.com/embed/OCSTG5nfK1A?si=u9pI1f3iayDicAzv" />
 
 <DocImage path={require('./static/sonarqube-code-coverage.png')} width="80%" height="80%" title="Click to view full size image" />
 
