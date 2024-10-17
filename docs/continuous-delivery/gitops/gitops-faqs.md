@@ -31,7 +31,7 @@ A: Yes, the Harness GitOps Agent supports High Availability and scalability by a
 
 
 ### Which versions of ArgoCd that the latest version of the GitOps agent support? 
-We currently support v2.8.2.
+We currently support v2.10.
  
 
 ### The GitOps agent updater, can you advise that this will update the Agent, ArgoCD and Redis? Is this also true if use the option to bring our own ArgoCD?
