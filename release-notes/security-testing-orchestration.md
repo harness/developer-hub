@@ -78,7 +78,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 - The [Veracode scan step](/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference) in STO now ignores issues mitigated on the Veracode side, so the scan results exclude any mitigated issues.
 - The STO dashboard now includes a new graph to view the **Top 5 Vulnerable Targets**, showing code repositories, artifacts, instances, and configurations across the account.
-- You can now override the security testing scanner image at the step level. Learn more about [configuring your pipeline to use images from your registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry#configure-your-pipeline-to-use-images-from-your-registry).
+- You can now override the security testing scanner image at the step level. Learn more about [configuring your pipeline to use STO images from your private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry#configure-your-pipeline-to-use-images-from-your-registry).
 
 
 ## July 2024
@@ -1075,7 +1075,7 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
 
 - You can now set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
 
-  For information on how to set up this workflow, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+  For information on how to set up this workflow, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 - Reference Identifiers selected for AIDA enhancement in a Security Issue are now remembered, upon generation, and shown when revisited in the UI. (STO-6032)
 
