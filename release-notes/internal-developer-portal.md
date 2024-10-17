@@ -30,23 +30,25 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - Added support for [configuring runtime inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-input-usage/#configure-execution-inputs) in the [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage), enabling users to specify inputs during pipeline execution. [IDP-3781]
 
 - New plugins added to the marketplace.
-  - [Harness CCM Backstage Plugin](https://github.com/harness/backstage-plugins/tree/main/plugins/harness-ccm#harness-cloud-cost-management-plugin). [IDP-3758]
-  - [Simple Icons](https://github.com/dweber019/backstage-plugins/tree/main/plugins/simple-icons#simple-icons-plugin). [IDP-3763]
+  - [Harness CCM Backstage Plugin](https://6710b86d60fb34af04947140--harness-developer.netlify.app/docs/internal-developer-portal/plugins/available-plugins/harness-ccm). [IDP-3758]
+
+- Added Support for [SimpleIcons](https://simpleicons.org/), the list of supported icons are available in **Admin** -> **Layout** -> **Icons**. [IDP-3763]
 
 
 #### Bug fixes
 
-- Fixed an issue where Harness Code URLs could not be properly parsed for the `// ` characters during the registration of a software component. [IDP-3820]
+- Fixed the issue causing Timeout errors on Workflows execution page, even when the Pipeline execution was successful. [IDP-3580]
+
+- Fixed an issue where Account Level Repo URLs for Harness Code were not functional during the registration of a software component. [IDP-3820]
 
 - Fixed the issue with un-supported content types displayed in [Homepage Layout](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/home-page-customization). [IDP-3783]
 
-- Fixed the issue with usage of `x-api-key` in [IDP APIs](https://developer.harness.io/docs/internal-developer-portal/api-refernces/public-api) headers. [IDP-3729]
+- Fixed the issue with usage of `x-api-key` in [IDP APIs](https://developer.harness.io/docs/internal-developer-portal/api-refernces/public-api) headers, the `x-api-token` should be replaced with `x-api-key`. [IDP-3729]
 
 - Fixed an issue where the TechDocs button appeared greyed out in the About Card when the source was Harness Code. This fix restores full functionality to the button, ensuring users can access TechDocs as expected. [IDP-3725]
 
 - Fixed an issue where the IaCM plugin returned a 401 Unauthorized error, even when the user had proper access. [IDP-3653]
 
-- Fixed the issue causing Timeout errors on Workflows execution page, even when the Pipeline execution was successful. [IDP-3580]
 
 ### Version 0.34.0
 
