@@ -346,12 +346,12 @@ system:
     ui:field: EntityFieldPicker
     ui:displayField: spec.owner
     ui:options:
-    catalogFilter:
-        kind:
-        - System
-        - Component
-        - Service
-        - API
+      catalogFilter:
+          kind:
+          - System
+          - Component
+          - Service
+          - API
 ```
 
 In the above example it will fetch all the owners for the software components `kind` mentioned under `catalogFilter`.
