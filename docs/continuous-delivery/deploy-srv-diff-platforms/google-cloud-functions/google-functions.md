@@ -40,7 +40,7 @@ Harness supports the following:
 - For Google Cloud Functions 1st gen, Harness supports both Google Cloud Storage and Google Cloud Source.
 - We support OpenID Connect (OIDC) authentication in Google Cloud Functions, enabling seamless integration with OIDC-compliant identity providers for enhanced security and user management.
 
-To configure OIDC authentication in Kubernetes, navigate to account/project settings.
+To configure OIDC authentication in GCP, navigate to account/project settings.
 
 Select **New Connector**, select **GCP**
 
