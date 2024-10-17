@@ -8,7 +8,6 @@ redirect_from:
 ---
 
 import CommonNote from './shared/common-note.md'
-import CertDesc from './shared/certificate-description.md'
 import ConfTLS from './shared/configure-tls.md'
 
 Pod API modify body is a Kubernetes pod-level chaos fault that modifies the api request and response body by replacing any portions that match a specified regular expression with a provided value. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
@@ -174,13 +173,13 @@ permissions:
       </tr>
       <tr>
         <td> CA_CERTIFICATES </td>
-        <td> These CA certificates are used by the proxy server to generate the server certificates for the TLS handshake between the target application and the proxy server. For more information, go to <a href="#ca-certificate">CA certificate.</a></td>
-        <td> These CA certificates must also be added to the target application's root certificate. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-block#ca-certificates">CA certificates.</a></td>
+        <td> These CA certificates are used by the proxy server to generate the server certificates for the TLS handshake between the target application and the proxy server. </td>
+        <td> These CA certificates must also be added to the target application's root certificate. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-modify-body#using-self-signed-certificates">CA certificates.</a></td>
         </tr>
       <tr>
         <td> SERVER_CERTIFICATES </td>
         <td> These server certificates are used by the proxy server for the TLS handshake between the target application and the proxy server. </td>
-        <td> The corresponding CA certificates should be loaded as root certificates inside the target application. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-block#server-certificates">server certificates.</a></td>
+        <td> The corresponding CA certificates should be loaded as root certificates inside the target application. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-modify-body#using-self-signed-certificates">server certificates.</a></td>
       </tr>
       <tr>
         <td> HTTPS_ROOT_CERT_PATH </td>
@@ -389,11 +388,9 @@ spec:
               value: "80"
 ```
 
-<CertDesc />
-
 ### HTTPS
 
-To enable HTTPS support for both incoming and outgoing traffic between the target and the proxy, set the `HTTPS_ENABLED` field to `true` and follow one the ways: **Using self-signed certificate** or **using trusted certificate** to configure TLS for egress traffic.
+To enable HTTPS support for both incoming and outgoing traffic between the target and the proxy, set the `HTTPS_ENABLED` field to `true`. The next step is to configure TLS, for which you can follow one of the ways: **Using self-signed certificate** or **using trusted certificate**.
 
 <ConfTLS />
 
