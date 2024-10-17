@@ -56,6 +56,8 @@ import StoSupportedFormats from './shared/_sto-supported-ingestion-formats.md';
 
 STO supports two primary ways of scanning a container image; scanning the docker image contained within a Docker-in-Docker background step (requiring privileged mode) or scanning an OCI/Docker archive, which **doesn't need the Docker-in-Docker background step** (this is the recommended approach).
 
+<DocVideo src="https://www.youtube.com/embed/x1NXBJaHF7U?si=gOrrOAE9p1DGEnLB" />
+
 ### Scanning an OCI/Docker archive with STO
 
 Scanning an OCI/Docker archive is easier and preferred approach, as it simplifies configuration by removing the need for a Docker-in-Docker background step and reducing security overhead (since privileged mode is not required). STO will automatically scan the OCI/Docker archive without any need for additional DinD configurations.
