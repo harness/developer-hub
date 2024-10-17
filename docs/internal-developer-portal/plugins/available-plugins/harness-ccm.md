@@ -48,9 +48,9 @@ This plugin exports a card on the Overview Page and a UI tab that you can use as
 
 ```YAML
 - name: ccm
-    path: /ccm
-    title: Cloud Cost Management
-    contents:
+  path: /ccm
+  title: Cloud Cost Management
+  contents:
     - component: EntityCcmContent
 ```
 
