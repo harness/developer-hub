@@ -53,25 +53,31 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - The Harness GitOps agent uses the **Horizontal Pod Autoscaler** for CPU and memory management, with a minimum of 1 replica and a maximum of 5 replicas in High Availability (HA) mode. (CDS-100830)
 
+- Harness GitOps now supports Multi-Source applications with ArgoCD. Currently, this feature is behind the feature flag  `GITOPS_MULTI_SOURCE_ENABLED`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-85518)
+
+- We have introduced a **Force Delete** Button for GitOps Applications, which can be used when a delete operation is stalled. Please note that this option may leave some resources orphaned, so it is advised to use it only in critical scenarios. (CDS-97813)
+
 - Users can now send HTML content in the email body, which is rendered correctly in email clients in the **Email Step**. Currently, this feature is behind the feature flag `CDS_EMAIL_USE_DEFAULT_FORMATTING`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-99225, ZD-64024)
 
-- In the Harness **Manual Approval** step, we now support allowed values for Approver Inputs.(CDS-99459)
+- In the Harness **Manual Approval** step, we now support allowed values for Approver Inputs. (CDS-99459)
 
-- We now support authentication with JET Identity for the AWS Connector for the following services: EKS, ASG, WinRM, SSH, ECS, CloudFormation, and SAM.(CDS-99538)
+- We now support authentication with JET Identity for the AWS Connector for the following services: EKS, ASG, WinRM, SSH, ECS, CloudFormation, and SAM. (CDS-99538)
 
 #### Fixed issues
 
-- Previously, some users were unable to use GitEx bidirectional sync with Harness repositories due to the presence of special characters in the repository. This issue is resolved. Users can now create webhooks even if their repository contain special characters.(PIPE-22238, ZD-70182)
+- Previously, in the Gitops Overview page, the **Recent Deployment Activities** dashboard did not filter deployments by agent identifier. As a result, deployments from other applications with the same name but different agents were displayed if they were in the same project hierarchy. This issue is resolved. The recent activities dashboard now scopes the results to the appropriate agent. (CDS-100336)
+
+- Previously, some users were unable to use GitEx bidirectional sync with Harness repositories due to the presence of special characters in the repository. This issue is resolved. Users can now create webhooks even if their repository contain special characters. (PIPE-22238, ZD-70182)
 
 - The Git experience repository search was not yielding the expected results. This issue has been resolved. The search functionality  works only with repository names, not with full paths or subdirectories. (PIPE-22173, ZD-70809)
 
 ![](./static/git-repository-pipe-22173.png)
 
-- Previously, some users couldn't access Kubernetes service and job names in the exported manifest because of data masking. This issue is resolved. Now, the entire Kubernetes dry run manifest output YAML will not be sanitized, except for config maps and secrets. If the `CDS_K8S_SANITIZE_COMPLETE_DRY_RUN_STEP_OUTPUT` feature flag is enabled, then the entire output will be sanitized (CDS-101472, ZD-70697)
+- Previously, some users couldn't access Kubernetes service and job names in the exported manifest because of data masking. This issue is resolved. Now, the entire Kubernetes dry run manifest output YAML will not be sanitized, except for config maps and secrets. If the `CDS_K8S_SANITIZE_COMPLETE_DRY_RUN_STEP_OUTPUT` feature flag is enabled, then the entire output will be sanitized. (CDS-101472, ZD-70697)
 
 - The default configuration for the GitOps Get App Details step through the UI was not functioning properly. This issue is resolved. (CDS-101260)
 
-- The ECR token was revealed through artifact expressions in the shell script step. This issue is resolved.(CDS-101258, ZD-70269)
+- The ECR token was revealed through artifact expressions in the shell script step. This issue is resolved. (CDS-101258, ZD-70269)
 
 ### Version 1.59.4
 
