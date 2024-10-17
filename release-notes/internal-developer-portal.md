@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-10-01T20:00
+date: 2024-10-17T20:00
 sidebar_position: 12
 ---
 
@@ -18,6 +18,35 @@ Review the notes below for details about recent changes to Harness Internal Deve
 :::
 
 ## October 2024
+
+### Version 0.35.0
+
+<!-- October 17, 2024 -->
+
+#### New features and enhancements
+
+- Added support for a new `mode: Append` in the [Catalog Ingestion API](/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api#5-update-a-single-property-of-a-catalog-entity-without-replacing-existing-values). This feature allows for the ingestion and modification of complex data types in the catalog without overwriting existing values. [IDP-3799]
+
+- Added support for [configuring runtime inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-input-usage/#configure-execution-inputs) in the [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage), enabling users to specify inputs during pipeline execution. [IDP-3781]
+
+- New plugins added to the marketplace.
+  - [Harness CCM Backstage Plugin](https://github.com/harness/backstage-plugins/tree/main/plugins/harness-ccm#harness-cloud-cost-management-plugin). [IDP-3758]
+  - [Simple Icons](https://github.com/dweber019/backstage-plugins/tree/main/plugins/simple-icons#simple-icons-plugin). [IDP-3763]
+
+
+#### Bug fixes
+
+- Fixed an issue where Harness Code URLs could not be properly parsed for the `// ` characters during the registration of a software component. [IDP-3820]
+
+- Fixed the issue with un-supported content types displayed in [Homepage Layout](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/home-page-customization). [IDP-3783]
+
+- Fixed the issue with usage of `x-api-key` in [IDP APIs](https://developer.harness.io/docs/internal-developer-portal/api-refernces/public-api) headers. [IDP-3729]
+
+- Fixed an issue where the TechDocs button appeared greyed out in the About Card when the source was Harness Code. This fix restores full functionality to the button, ensuring users can access TechDocs as expected. [IDP-3725]
+
+- Fixed an issue where the IaCM plugin returned a 401 Unauthorized error, even when the user had proper access. [IDP-3653]
+
+- Fixed the issue causing Timeout errors on Workflows execution page, even when the Pipeline execution was successful. [IDP-3580]
 
 ### Version 0.34.0
 
