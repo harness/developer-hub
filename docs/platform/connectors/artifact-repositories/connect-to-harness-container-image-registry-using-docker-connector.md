@@ -71,7 +71,7 @@ If you don't want to change the behavior for your entire account, you can [Use c
 5. For **Provider Type** and **URL**, do one of the following:
 
    * To pull [Harness images from GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gcr.io/gcr-prod` for **Docker Registry URL**.
-   * To pull [Harness images from ECR](https://public.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
+   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
    * To pull images from Docker Hub, select **Docker Hub** and entering `https://registry.hub.docker.com`.
 
 6. For **Authentication**, select **Username and Password**, and provide a username and token to access Docker Hub or GCR,depending on the **Docker Registry URL**. The token needs read, write, and delete permissions.
