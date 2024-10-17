@@ -14,7 +14,7 @@ When a Harness CI pipeline runs, an *initialize* step runs automatically before 
 
 ## Harness CI images list
 
-You can find Harness CI images on Docker Hub, the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), or the [Harness ECR public gallery](https://public.ecr.aws/harness).
+You can find Harness CI images on Docker Hub, the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), or the [Harness ECR public gallery](https://gallery.ecr.aws/harness).
 
 Here are some examples of Harness CI images and the purpose of each image. Build image tags change often.
 
