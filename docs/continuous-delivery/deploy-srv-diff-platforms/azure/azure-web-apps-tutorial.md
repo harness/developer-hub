@@ -325,7 +325,7 @@ The **Slot Deployment** step has the following settings:
 
  * **Name:** Enter a name for the step.
  * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
-   * **Clean**: Select if you want to clean the target directory prior to deployment. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option. 
+   * **Clean**: Select this option if you want to remove all files from the target deployment directory before deploying the new artifact. The `clean` option ensures that the directory is cleared of any residual files from previous deployments, which helps prevent conflicts or issues caused by leftover files. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option. 
 
  * **Web App Name:** Enter the name of the Azure Web App for deployment.
 
@@ -375,7 +375,7 @@ The **Slot Deployment** step has the following settings:
 
 * **Name:** Enter a name for the step.
 * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
-  * **Clean**: Select if you want to clean the target directory prior to deployment. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option. 
+  * **Clean**: Select this option if you want to remove all files from the target deployment directory before deploying the new artifact. The `clean` option ensures that the directory is cleared of any residual files from previous deployments, which helps prevent conflicts or issues caused by leftover files. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option.
 
 * **Web App Name:** Enter the name of the Azure Web App for deployment.
 * **Deployment Slot:** Enter the name of the Source slot for the deployment. This slot is where Harness deploys the new Web App version.Make sure the slot you enter is running.
@@ -456,7 +456,7 @@ The **Slot Deployment** step has the following settings:
 
 * **Name:** Enter a name for the step.
 * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
-  * **Clean**: Select if you want to clean the target directory prior to deployment. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option. 
+  * **Clean**: Select this option if you want to remove all files from the target deployment directory before deploying the new artifact. The `clean` option ensures that the directory is cleared of any residual files from previous deployments, which helps prevent conflicts or issues caused by leftover files. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option. 
 
 * **Web App Name:** Enter the Azure Web App for deployment.
 * **Deployment Slot:** Enter the Source slot for the deployment. This slot is where Harness deploys the new Web App version.Make sure the slot you select is running. Harness shows all slots regardless of their status.
