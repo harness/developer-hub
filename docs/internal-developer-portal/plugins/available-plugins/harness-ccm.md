@@ -76,14 +76,14 @@ Also you could add a conditional like `isHarnessCcmAvailable` which is met when 
 
 To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file, you can fetch the Perspective URL from the [Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#perspectives) page:
 
-```yaml
+```YAML
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   # ...
   annotations:
     harness.io/perspective-url: |
-      PerspectiveA: <harness_ccm_perspective_url>
+      PerspectiveA: https://url-details/perspectives/perspectiveId/name/perspectiveName
       PerspectiveB: <harness_ccm_perspective_url>
 spec:
   type: service
