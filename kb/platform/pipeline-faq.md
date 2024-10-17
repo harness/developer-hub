@@ -350,6 +350,9 @@ There is no limit to the number of triggers for a pipeline.
 
 Yes, Harness NextGen supports both the QUARTZ and UNIX syntax formats for cron triggers. For more information, go to [Schedule Pipelines Using Cron Triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger).
 
+### I have a CI pipeline configured on Harness NG and want to run the same pipeline everyday. Could you please help to configure to run it as a cron.
+You can use [cron trigger](https://developer.harness.io/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger)  to schedule pipeline execution everyday.
+
 ## Stop pipelines
 
 ### What is expected when I abort a pipeline, and what actions are taken to ensure a clean state in the system?
