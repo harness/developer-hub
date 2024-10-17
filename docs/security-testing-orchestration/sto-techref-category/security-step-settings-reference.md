@@ -52,11 +52,10 @@ import StoSupportedFormats from './shared/_sto-supported-ingestion-formats.md';
 
 
 
-## Scanning a Docker image with STO - DinD details
+## Scanning a Docker image with STO
 
 STO supports two primary ways of scanning a container image; scanning the docker image contained within a Docker-in-Docker background step (requiring privileged mode) or scanning an OCI/Docker archive, which **doesn't need the Docker-in-Docker background step** (this is the recommended approach).
 
-<DocVideo src="https://www.youtube.com/embed/x1NXBJaHF7U?si=gOrrOAE9p1DGEnLB" />
 
 ### Scanning an OCI/Docker archive with STO
 
@@ -66,9 +65,9 @@ If you want to force the scanner step **not to use** any Docker-in-Docker(DinD) 
 
 - `docker_mode`: `without-docker-in-docker`
 
-This setting is optional and only needed if you want force the STO to use a specific approach.
+This setting is optional and only needed if you want to force the STO to use a specific approach.
 
-The following scanners can perform container scanning without requiring a Docker-in-Docker background step
+The following scanners can perform container scanning without requiring a Docker-in-Docker background step.
 
 import WithoutDinDSupportedScanners from '/docs/security-testing-orchestration/sto-techref-category/shared/_without-dind-supported-scanners.md';
 
@@ -88,7 +87,7 @@ If you want to force the scanner step to use Docker-in-Docker (DinD) background 
 
 - `docker_mode`: `docker-in-docker`
 
-This setting is optional and only needed if you want force the STO to use a specific approach.
+This setting is optional and only needed if you want to force the STO to use a specific approach.
 
 ### Configuring DinD Background step to trust self-signed container registries
 When using Docker-in-Docker (DinD) as a background step for scanning container images, the step needs to pull images from your container registry. If your container registry uses a [self-signed certificate](https://en.wikipedia.org/wiki/Self-signed_certificate), the background step will not be able to access it by default. To resolve this issue, you need to add the following command to configure the background step to trust the self-signed container registry.
