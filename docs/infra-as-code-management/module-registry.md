@@ -5,14 +5,17 @@ sidebar_position: 70
 sidebar_label: Module registry
 ---
 
+<CTABanner
+  buttonText="Learn More"
+  title="Pending release"
+  tagline="This feature is currently pending release and be available soon!"
+  link="https://www.harness.io/blog/harness-iacm-module-registry"
+  closable={false}
+  target="_self"
+/>
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-:::warning pending release
-**Note:** This feature is currently behind a feature flag and may not be available by default. 
-
-Contact your Technical Program Manager (TPM) or customer support to request access.
-:::
  
 With Harness module registry, you can speed up and simplify your infrastructure management by reusing pre-built modules. This helps you avoid reinventing the wheel every time you need to set up common components, such as virtual machines, databases, or networks.
 
