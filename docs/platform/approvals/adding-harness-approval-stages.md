@@ -337,6 +337,8 @@ For variable_3, initially set to an empty string and must match the regex patter
 
 For variable_4, initially set to an empty string and allows selection from the options 1, 2, or 3.
 
+The validation of approval inputs only occurs during manual approvals; there is no validation for rejections or auto approvals.
+
 ### User groups as expressions
 
 In **User Groups**, select **Expression** as the type of value.
