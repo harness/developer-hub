@@ -145,6 +145,40 @@ To acquire the necessary `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD`, contact 
 Upon providing your credentials and the release version, the script will proceed to push the Looker image to your private repository.
 
 :::
+
+### Note for ArgoCD based installations
+
+:::warning important instructions for ArgoCD based deployments and upgrades
+
+If you’re using ArgoCD to deploy Harness with Custom Dashboards (Looker) enabled, you might run into issues during upgrades with the encryption/decryption key. ArgoCD re-generates the Looker encryption key with every upgrade because it uses helm template to inflate resources. To avoid this, you need to ensure the key remains consistent across upgrades.
+
+To fix this issue, follow these steps
+
+  1. Retrieve the Looker secret using this command:
+
+  ```bash
+  kubectl get secrets looker-secrets -o yaml -n <namespace>
+  ```
+
+  2. Copy the value of lookerMasterKey from the secret and decode it using the following command or any base64 decoder. You’ll need to decode it twice.
+  It's required to decode the secret value twice because during creation, first it's encoded by the helm function in the charts and then Kubernetes encodes it again while creating the secret.
+
+  ```bash
+  echo "<base64-encoded-lookerMasterKey>" | base64 --decode | base64 --decode
+  ```
+
+  3. After decoding, update your ArgoCD values override with the decoded key:
+
+  ```yaml
+  platform:
+  looker:
+    secrets:
+      lookerMasterKey: "<your-decoded-key>"
+  ```
+
+By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
+:::
+
 ## October 4, 2024, version 0.21.0
 
 This release includes the following Harness module and component versions.
