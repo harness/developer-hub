@@ -379,6 +379,25 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
    
    ![](./static/harness-cd-git-ops-quickstart-15.png)
 
+:::note Support for Multiple Sources
+
+You can also have multiple sources for a single application.
+
+Currently, Support for Multiple Sources is behind the feature flag `GITOPS_MULTI_SOURCE_ENABLED`. Contact Harness Support to enable the feature.
+
+Select the checkbox **Is Multiple Source** in the Source section.
+
+Under **Repository**, choose **Repo ID** if you have pre-configured repositories in Harness GitOps Repositories. If not, select **Repo URL** and provide the URL details of your repository. Ensure that you have a credentials template configured for the repository if it is private.
+
+Note that if the first source is a **Repo ID**, all the subsequent sources must also be configured using **Repo ID**, and vice versa.
+
+Select the checkbox **Reference** to designate this source as a reference source, which can be used later when defining the values file. Note that the reference source can only be a Git repository, not a Helm repository.
+
+Click on **+ Add Source** to add the details of your next source.
+
+![](./static/gitops-multiple-sources.png)
+:::
+
 21.  Select **Continue**.
 22.  The **Destination** section provides a dropdown that helps you choose how you want to define your cluster. Select whether you want to use cluster URL (Server) or cluster name (Name), and select the cluster you added earlier.
 
