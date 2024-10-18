@@ -22,7 +22,7 @@ Yes. For instructions and information about customizing your STO images, go to:
 
 - [Update your STO images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images)
 - [Create custom scanner images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/create-custom-scan-images)
-- [Store images in a private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry)
+- [Store images in a private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry)
 
 ## Can I use an API to extract data on vulnerabilities detected by STO?
 

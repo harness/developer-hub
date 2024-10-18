@@ -18,7 +18,7 @@ You can scan your configurations and ingest the scan results from [AWS Security 
 
 - This integration supports session-based authentication with AWS. You can pass the token as a key-value pair in the [Settings](#settings) field.
 
-- You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+- You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 - STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
 
