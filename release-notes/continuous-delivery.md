@@ -101,6 +101,10 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ### Version 1.59.4
 
+#### Hotfix
+
+- Previously, pipelines were failing for Helm deployments when neither the password nor the password reference was provided in cases where the inheritFromDelegate option was used. This issue is resolved. (CDS-102243)
+
 #### New features and enhancements
 
 - We have introduced **GitOps Get App Details** step to fetch application details and status. Currently, this feature is behind the feature flag `GITOPS_GET_APP_DETAILS_STEP`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-100548)
