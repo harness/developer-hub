@@ -136,7 +136,9 @@ This error occurs when an agent is unable to connect to a repo:
 
 - To manage rate limiting in GitHub, see [Enabling rate limits for Git](https://docs.github.com/en/enterprise-server@3.10/admin/configuration/configuring-user-applications-for-your-enterprise/configuring-rate-limits#enabling-rate-limits-for-git).
 
-### Issue: GitOps agent pod stuck in CrashLoopBackoff
+## Issue: GitOps agent pod stuck in CrashLoopBackoff
+
+### Error: This is an unauthorized agent. Sleeping for 15 minutes and then shutting down, please check your settings on HarnessUI
 
 The GitOps agent goes into a CrashLoopBackoff state due to an authentication failure with the GitOps service. This issue occurred as the token in the agent’s YAML did not match the public key in the GitOps service database.
 
