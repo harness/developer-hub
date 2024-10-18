@@ -118,7 +118,7 @@ This feature is supported on delegate version `837xx` and above and is available
 
 The `appRoleLogin` method now supports a custom authentication path, utilizing it if provided, or defaulting to the standard `approle` endpoint if not specified.
 
-![](./static/add-hashicorp-vault-31.png)
+![](../../secrets/static/add-hashicorp-vault-31.png)
 
 For example, the custom AppRole path can be set as `<customPath>`, providing greater flexibility in configuring the authentication mechanism. This feature is particularly useful in scenarios where the default authentication path requires customization.
 
