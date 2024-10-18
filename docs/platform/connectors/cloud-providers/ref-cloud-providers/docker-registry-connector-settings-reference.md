@@ -117,3 +117,9 @@ You can connect through a Harness Delegate or the Harness Platform. If you plan 
 The **Secure Connect** option is for [Secure Connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
 
 :::
+
+:::info Limitation
+
+The Docker connector currently does not support OpenID Connect (OIDC) for authentication, limiting integration with OIDC-compliant identity providers
+
+:::
