@@ -11,7 +11,8 @@ import FaultPermissions from './shared/fault-permissions.md'
 Linux JVM memory stress consumes excessive memory resources of the JVM. This sometimes results in OOM kill (Out-of-memory).
 
 :::tip
-JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
+- JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
+- Provide **read** and **execute** permissions to the `/etc/linux-chaos-infrastructure/byteman` directory (the directory that houses Byteman agent) for the Java application user.
 :::
 
 ![Linux JVM memory stress](./static/images/linux-jvm-memory-stress.png)

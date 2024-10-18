@@ -11,7 +11,8 @@ import FaultPermissions from './shared/fault-permissions.md'
 Linux JVM method exception injects chaos into a Java application to invoke an exception.
 
 :::tip
-JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
+- JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
+- Provide **read** and **execute** permissions to the `/etc/linux-chaos-infrastructure/byteman` directory (the directory that houses Byteman agent) for the Java application user.
 :::
 
 ![Linux JVM method exception](./static/images/linux-jvm-method-exception.png)

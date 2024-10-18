@@ -11,7 +11,8 @@ import FaultPermissions from './shared/fault-permissions.md'
 Linux JVM trigger gc triggers the garbage collector on a specific process in Java that causes unused (or out of scope) objects, variables and so on to be garbage collected and recycled, thereby freeing up memory space. It is used to determine the performance and resilience of the application (or services) running on Linux machines.
 
 :::tip
-JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
+- JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
+- Provide **read** and **execute** permissions to the `/etc/linux-chaos-infrastructure/byteman` directory (the directory that houses Byteman agent) for the Java application user.
 :::
 
 ![Linux JVM trigger gc](./static/images/linux-jvm-trigger-gc.png)

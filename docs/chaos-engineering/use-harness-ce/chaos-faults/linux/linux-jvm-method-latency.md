@@ -11,7 +11,8 @@ import FaultPermissions from './shared/fault-permissions.md'
 Linux JVM method latency slows down the Java application by introducing delays in executing the method calls.
 
 :::tip
-JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
+- JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
+- Provide **read** and **execute** permissions to the `/etc/linux-chaos-infrastructure/byteman` directory.
 :::
 
 ![Linux JVM method latency](./static/images/linux-jvm-method-latency.png)

@@ -11,7 +11,8 @@ import FaultPermissions from './shared/fault-permissions.md'
 Linux JVM CPU stress consumes excessive CPU threads of the JVM.
 
 :::tip
-JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
+- JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
+- Provide **read** and **execute** permissions to the `/etc/linux-chaos-infrastructure/byteman` directory (the directory that houses Byteman agent) for the Java application user.
 :::
 
 ![Linux JVM CPU stress](./static/images/linux-jvm-cpu-stress.png)
