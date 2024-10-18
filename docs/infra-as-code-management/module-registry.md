@@ -7,6 +7,12 @@ sidebar_label: Module registry
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+:::warning pending release
+**Note:** This feature is currently behind a feature flag and may not be available by default. 
+
+Contact your Technical Program Manager (TPM) or customer support to request access.
+:::
  
 With Harness module registry, you can speed up and simplify your infrastructure management by reusing pre-built modules. This helps you avoid reinventing the wheel every time you need to set up common components, such as virtual machines, databases, or networks.
 
