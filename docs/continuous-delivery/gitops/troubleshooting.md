@@ -140,7 +140,7 @@ This error occurs when an agent is unable to connect to a repo:
 
 ### Issue: This is an unauthorized agent. Sleeping for 15 minutes and then shutting down, please check your settings on HarnessUI
 
-The GitOps agent goes into a CrashLoopBackoff state due to an authentication failure with the GitOps service. This issue occurred as the token in the agent’s YAML did not match the public key in the GitOps service database.
+This issue occurred as the token in the agent’s YAML did not match the public key in the GitOps service database. The GitOps agent goes into a CrashLoopBackoff state due to an authentication failure with the GitOps service. 
 
 This problem typically surfaces after re-enabling authentication if the agent previously operated in unauthenticated mode.
 
