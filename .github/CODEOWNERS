@@ -60,7 +60,7 @@ README.md @pratmit
 /docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
 
 # CCM Docs
-/docs/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss @nikunj-badjatya @raviyadalam
+/docs/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss @nikunj-badjatya @raviyadalam
 
 # CET Docs
 /docs/continuous-error-tracking/ @M-Tsur
@@ -107,7 +107,7 @@ README.md @pratmit
 /docs/category/self-managed-enterprise-edition-fg/ @pratmit
 
 # CCM Docs
-/docs/category/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
+/docs/category/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss
 
 # FAQ Docs ###
 
@@ -118,7 +118,7 @@ README.md @pratmit
 /docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos @jenniferopal
 
 # CCM FAQs
-/docs/faqs/cloud-cost-management-faqs/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
+/docs/faqs/cloud-cost-management-faqs/ @navaneeth @Rohit-Kaliki @joeyouss
 
 # STO FAQs
 /docs/faqs/security-testing-orchestration/ @tejakummarikuntla
@@ -145,7 +145,7 @@ README.md @pratmit
 /release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
 
 # CCM Release Notes
-/release-notes/cloud-cost-management.md @rdsoze @raviyadalam 
+/release-notes/cloud-cost-management.md @raviyadalam 
 
 # CE Release Notes
 /release-notes/chaos-engineering.md @neelanjan00 @SmritiSatya @Jonsy13
@@ -210,7 +210,7 @@ README.md @pratmit
 /kb/feature-flags/ @HarnessTheChaos @jenniferopal
 
 #CCM KB
-/kb/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss @rssnyder @brandon-harness
+/kb/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss @rssnyder @brandon-harness
 
 #SRM KB
 /kb/service-reliability-management/ @sunilgupta-harness
@@ -239,7 +239,7 @@ README.md @pratmit
 # Roadmap ###
 
 #CCM Roadmap
-src/components/Roadmap/data/ccmData.ts @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
+src/components/Roadmap/data/ccmData.ts @navaneeth @Rohit-Kaliki @joeyouss
 
 #CD Roadmap
 src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av
