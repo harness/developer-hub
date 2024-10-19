@@ -28,7 +28,7 @@ Here are are a few examples of Harness STO images in the [Harness GCR project](h
 
 ## I don't want to pull images from a public registry
 
-If you don't want to pull images directly from the public Harness registry, you can pull images from your own private registry. For more information, go to [Configure STO to download images from a private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+If you don't want to pull images directly from the public Harness registry, you can pull images from your own private registry. For more information, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 
 ## When should I update my STO images? 

@@ -137,7 +137,7 @@ If you want to change the behavior for your entire account, you can [configure H
 
 Harness CI images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can download the images you need, perform any necessary security checks, upload them to your private registry, and then configure your CI pipelines to pull the Harness CI images from your private registry.
 
-You can also [use a private registry for STO scanner images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+You can also [use a private registry for STO scanner images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 ### Download Harness images to your registry
 
