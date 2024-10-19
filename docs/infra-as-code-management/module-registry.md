@@ -8,9 +8,9 @@ sidebar_label: Module registry
 <CTABanner
   buttonText="Learn More"
   title="Pending release"
-  tagline="This feature is currently pending release and be available soon!"
+  tagline="The IaCM Module Registry feature is currently pending release and will be available soon!"
   link="https://www.harness.io/blog/harness-iacm-module-registry"
-  closable={false}
+  closable={true}
   target="_self"
 />
 
