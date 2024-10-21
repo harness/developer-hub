@@ -74,7 +74,7 @@ Let us go through the flow of creating a CDE for our sample application, which i
 
 ![](./static/create-gitspace.png)
 
-8. After clicking on **Create Gitspace**, you’ll be redirected to the **Gitspace Details** page, where you can view the events and logs as the Gitspace is being created. Once it is ready, you can open the Gitspace by clicking the **Open VS Code Online** or **Open VS Code Desktop** button at the top right of the page.If you're using VS Code Desktop, you'll need to install the plugin to view and connect to your Gitspace. (Follow the steps outlined in the following section to install the plugin.)
+8. After clicking on **Create Gitspace**, you’ll be redirected to the **Gitspace Details** page, where you can view the events and logs as the Gitspace is being created. Once it is ready, you can open the Gitspace by clicking the **Open VS Code Online** or **Open VS Code Desktop** button at the top right of the page.If you're using VS Code Desktop, you'll need to install the plugin to view and connect to your Gitspace. (Follow the steps outlined in the followingsection to install the plugin.)
 
 ![](./static/gitspaces-starting.png)
 
@@ -202,6 +202,6 @@ With our beta plan, you receive 2,000 free minutes of Gitspace usage each month.
 
 You can easily view and track your remaining minutes directly from the Gitspaces page in the Harness UI. (as shown in the image below)
 
-If you need additional minutes for your account, don’t hesitate to contact us at cde-interest@harness.io.
+If you need additional minutes for your account, don’t hesitate to contact us at cde-interest@harness.io
 
 ![](./static/Beta%20plan%20usage.png)
