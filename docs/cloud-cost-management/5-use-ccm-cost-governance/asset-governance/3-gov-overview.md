@@ -62,6 +62,10 @@ These custom recommendations not only show up in the recommendation section but 
 - It can take up to 24 hours for a custom recommendation to appear.
 - In case of AWS and Azure, Account/ Subscription and region combination with greater than 300$ of monthly spend are considered for recommendations.
 - In case of GCP, Project with greater than 300$ of monthly spend is considered for recommendations.
+- The cloud-custodian versions currently are as following:
+  - `c7n==0.9.41`
+  - `c7n_azure==0.7.40`
+  - `c7n_gcp==0.4.40 `
 
 :::
 
