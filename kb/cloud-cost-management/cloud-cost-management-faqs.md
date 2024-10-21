@@ -810,3 +810,29 @@ To create an annual budget with a monthly breakdown, you need to select the budg
 
 Yes, since budgets are based on Perspectives, we can also incorporate built-in cloud discounts.
 
+#### Why are my connectors failing with error - Please install the metrics server on your cluster?
+
+The Metrics Server must be running on the Kubernetes cluster where your Harness Kubernetes Delegate is installed. Before enabling CCM for Kubernetes, you must make sure the utilization data for pods and nodes is available.
+
+#### What is the metrics server for CCM?
+
+The Metrics Server is a cluster-wide aggregator of resource usage data. It collects resource metrics from kubelets and exposes them in the Kubernetes API server through Metrics API. CCM polls the utilization data every minute on the Delegate. The metrics are aggregated for 20 minutes and then CCM keeps one data point per 20 minutes. For more information, see Installing the Kubernetes Metrics Server from AWS.
+
+#### What is the significance of the K8S_UTILIZATION job?
+
+The K8S_UTILIZATION job is crucial because it provides the data required by the INSTANCE_BILLING job, which calculates billing costs.
+
+####  How can I create two columns for Domain and Team in my visualization using CCM Dashboards?
+
+You can create two columns by utilizing the Unified Multiple Cost Categories feature. Assign Cost Category Name 1 to Domain and Cost Category Name 2 to Team.
+
+#### What are the steps to access the Series tab for label modification?
+
+Enter the Edit mode for the table.
+Go to the Series tab.
+Find the labels for the columns in the tile, and modify them as needed.
+
+#### We are unable to see GCP cost in CCM, we see this error - Creating table with tags is not supported?
+
+This is an issue that happens at GCP's end, The workaround to this is to forcefully clear tags from the source table bq update --clear_all_tags <SOURCE_TABLE_NAME>.
+

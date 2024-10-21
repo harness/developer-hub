@@ -3293,6 +3293,203 @@ Yes, the skip keywords can be placed anywhere within the commit message, includi
 #### Does harness pipeline support triggering GitHub action workflow from the pipeline?
 As per the current design, there's no native step for this but user can write a shell script at the end of execution to trigger the GitHub action workflow.
 
+#### How do I generate a manifest with secrets without marking it?
+
+As per the current design, The manifests secrets are masked as `***`. In the output, the secrets are replaced with the string `Kioq`.
+
+#### How do I make sure the trigger ignores push with SHA - "000000000000"?
+
+You can use the below conditions to ignore push with SHA value "000000000"
+```payloadConditions:
+- key: <+eventPayload.after>
+operator: NotEquals
+value: "0000000000000000000000000000000000000000"
+headerConditions:
+- key: <+trigger.header['X-GitHub-Event']>
+operator: Equals
+value: Push
+```
+
+#### Does harness can ignore fake commits that have a SHA value - "0000....."
+
+Currently, we do not have any inbuild validation to ignore commits with any specific SHA values, triggers will get initiated for all commits based on the conditions.
+
+#### What is the priority order for Helm values.yaml overrides in manifests?
+
+The priority order for Helm values.yaml overrides across different types are as follows:
+
+Infra & Service
+Infra
+Service
+Global
+
+#### Is there a specific order of priority within a manifest for overrides?
+
+No, within a manifest, there is no specific priority order for overrides. The system does not provide control over which override gets resolved first.
+
+#### How can I manage conflicts or ambiguity with Helm values.yaml overrides?
+
+To avoid conflicts or ambiguity, it is recommended to include the values.yaml in only one override. This ensures that there are no unexpected behaviors due to multiple overrides trying to resolve in an unpredictable order.
+
+#### Can we store a variable value from pipeline1 and can we use it for pipeline 2?
+
+We support project variables. So your pipeline 1 can use the project variable update API to update the value of the variable and pipeline 2 can then fetch the value from the project variable and use the value using expressions.
+ 
+API for the project variable -  https://apidocs.harness.io/tag/Variables#operation/updateVariable
+
+#### I am looking to see if it is possible to create dynamic output variables. We may have 1 output variable or could have many. Can we have output variables based on this?
+
+Dynamic creation of output variables is not supported. Instead, I would suggest a different approach that is creating a single script and using looping to run the script multiple times for each input and generate the output variable for it, and we can retrieve those values further in a shell script.
+
+#### How do I pass JSON to the request body to create pipeline API?
+
+Harness does not support JSON for stable API - https://apidocs.harness.io/tag/Pipeline#operation/postPipelineV2
+We do have beta APIs which are experimental in nature some may support JSON.
+
+#### I have a question on how to remove pipeline executions in the event information was outputted in the logs that we do not want to be made available to our harness users. What is the operation to remove a pipeline execution in this situation?
+
+For the SaaS Harness platform, Please raise a support ticket, mentioning the details and we will take care of the rest. In the case of an SMP setup:-
+
+We do have two entries in DB that can be deleted to clear off the pipeline execution, Under PMS DB, we have collections that hold the planexecution summary and metadata namely planExecutionsMetadata and planExecutionsSummary.
+
+These have documents indexed and have a field plan ID that can be used to delete those specific plan executions.
+
+#### I have two pipelines CI and CD, Do I need to retrieve the values from the CI pipeline and pass those values as runtime input values in the CD inputset?
+
+We cannot pass the value to child pipeline input sets via the parent pipeline.
+You can create a new input set for the parent pipeline and pass all the values for the child pipeline using that input set.
+
+#### Can we have delegates with the same name/identifier at the account level as well as org level and as well as project level?
+
+Yes, Delegate with the same name is allowed at the account, project, and org levels.
+
+#### Why is account admin required for the Writing to Harness file store?
+
+Is the filestore at the account level, yes then it will require account-level access and a role that has files - view, create/edit, and access 
+
+#### Could you point me to the documentation that explains how to set up a file store at the org level and access it via the API?
+
+There is no separate documentation however as with all other settings/resources that you see at different scopes, you will see file stores as well under project setting/organization setting which have files corresponding to that scope.
+ 
+The API to create files at different scopes is the same, based on the parameters passed it creates it at different scopes. I am sharing API doc link below:
+https://apidocs.harness.io/tag/File-Store#operation/listFilesAndFolders
+
+#### Which artifact sources are available for Azure web service that support zip files?
+
+You can use a generic repository for artifactory to reference a zip file. You can even S3 as well for zip files.
+
+#### What do you mean in regards to a generic repository?
+
+Generic refers to a type of repo that you can create in artifactory - https://jfrog.com/help/r/jfrog-artifactory-documentation/generic-repositories
+ 
+#### Is there no support to use a Nexus repository for the zip artifacts?
+
+We support raw repository type for Nexus 3, You can use raw format to store zip files and use that as a source in the service
+
+#### Can I pass the script for some of the fields in the harness step?
+
+Direct scripting is not supported for any of the fields in Harness but most of the steps do support expressions. Expression scripts can be created instead to resolve to the required value.
+
+#### Can pipeline tags be modified for individual pipeline executions?
+
+No, pipeline tags are pipeline-specific and cannot be modified for individual pipeline executions. They remain the same across all executions of a pipeline.
+
+#### What are pipeline tags?
+
+Pipeline tags are labels or metadata associated with a specific pipeline. They are used to categorize and organize pipelines for easier identification and management.
+
+#### How can I add custom information for a specific pipeline execution?
+
+You can add notes for each pipeline execution to record custom information related to that specific execution. However, these notes are separate from pipeline tags.
+
+#### Are notes used for pipeline execution filterable?
+
+Currently, notes added to pipeline executions are not filterable. You cannot filter or search pipeline executions based on the content of notes.
+
+#### How should I manage different pipeline executions if I can’t filter notes?
+
+To manage pipeline executions effectively, consider using a consistent naming or tagging convention at the pipeline level. For specific details related to individual executions, rely on notes, even though they cannot be filtered.
+
+#### Is it possible to escape a string expression so that Harness won't substitute? If so, how? The user is trying to compare the literal value and not the substituted value - <+env.variables.environment> != "<+env.variables.environment> ?
+
+We dont support internal matching for the expression. As by design, we will try to resolve all the expressions.
+Regarding the use case, You can check against the expression by checking if the value is null or not
+
+#### Can I use conditional expressions to check for override values?
+
+Yes, but since overrides are applied at the service step, any conditional expression that needs to check override values must be placed inside the steps for that stage.
+
+#### At what point are overrides applied in the pipeline?
+
+Overrides are applied at the service step.
+
+#### Can we have a conditional execution on stage if I want to validate it against overrides value?
+
+Conditional executions are applied before overrides in this case. This means that the conditions are checked and executed before applying any overrides, which happen at the service step.
+
+#### I want it to trigger on any file change in the "svc-apis" path or any sub-path from the "svc-apis" directory. I tried using the IN and Regex condition types with "svc-apis/*", "svc-apis/**", and "svc-apis/.*". None of which were able to pick up changes in my repo.
+
+Can you please use this condition with regex - "svc-apis/*.*"
+ 
+Ex -
+```
+payloadConditions:
+            - key: changedFiles
+              operator: Regex
+              value: svc-apis/*.*
+```
+
+#### Can I provide a regex pattern but with the "In" operator?
+
+No, Regex is not supported inside the IN condition, You can create another trigger with a different path and provide the regex.
+
+#### Why does the Harness CD Helm deployment stage is using the bitbucket connector delegate tag and infrastructure tag?
+
+This is expected since the k8s deployment task needs to do both things - fetch the helm charts and perform the deployment. So, it requires delegates who have both capabilities. 
+ 
+The first step of fetching the file is fetching the values file and for helm deployment, one delegate performs the task of fetching the helm chart and deployment.
+
+#### API to get the pipeline output variable value?
+
+Currently, we only support full pipeline execution summary, you can use JQ to filter output variables in a shell script.
+We also support only rendering specific stages bypassing the stage node execution ID.
+
+#### Can I pass the expression for type secret variables?
+
+No, Expressions are not supported for secret type variables, On selecting type secret, we provide a dropdown in UI to select the secret identifier.
+
+#### How can I pass multi-service ids via expression?
+
+We don't support expressions for multi-service deployment. For multi-service deployment, services should be provided either at runtime or fixed value in the pipeline.
+
+#### How do I auto-abort old running pipelines when a new one starts?
+
+We only support auto abort in case of trigger and approval steps. There is an option to tick mark in case that auto aborts older running execution.
+
+#### What is the Autocreation feature in Harness?
+
+Autocreation is a feature that automatically creates entities in Harness when files are added remotely within your Git repository. These files are initiated and created in the correct directory within the Git repository.
+
+#### How does Autocreation differ from moving inline entities to Git?
+
+Autocreation differs from moving inline entities to Git because, in Autocreation, objects are initiated from within Git, while moving inline entities involves creating objects from the Harness UI and syncing them to Git. Autocreation also requires a specific directory structure within Git, whereas moving inline entities does not.
+
+#### Where are files created in the Git repository for Autocreation?
+
+Files are created in the default branch (e.g., main, master, etc.) of the Git repository. Files must also be located under the .harness folder for them to be auto created.
+
+#### What directory structure must be followed for Autocreation?
+
+For Autocreation to work, all file paths must begin with .harness. Webhooks will track the .harness folder by default, so any files you want to auto create should be placed there.
+
+#### What role do webhooks play in the Autocreation process?
+
+Webhooks are used to track changes in the .harness folder. When files are added to this folder in the default branch, the Autocreation process is triggered automatically.
+
+####  Is there bidirectional sync with Autocreation like in Harness UI?
+
+No, Autocreation works independently of bidirectional sync. In Autocreation, entities are initiated from Git, whereas bidirectional sync is used when creating objects from the Harness UI and syncing them to Git.
+
 
 ### Infrastructure provisioning FAQs
 

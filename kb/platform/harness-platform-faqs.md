@@ -3364,3 +3364,14 @@ You can use our RBAC and create a resource group and role so it can be used only
 ### If there is a pipeline in progress when we upgrade the delegate. Will the pipeline fail and need to be re-run?
 Delegate upgrades do not affect pipelines unless the shutdown timeout is reached. Before an upgrade is performed, the delegate finishes the underway tasks. The delegate then shuts down. There is a 10-minute timeout by default as part of the shutdown process. You can configure this setting, by updating the terminationgraceperiod in delegate yaml.
 
+#### This is a recurring issue, our GitHub connectors are hitting their rate limit of 5000 requests per hour. Is there any way to set up our connectors using a GitHub app?
+
+We do support setting Github connector with GitHub App - https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support
+
+#### We need to generate an Excel report that provides details for all organization-level connectors in the Harness. To achieve this, we're looking for an API call or method to retrieve the necessary data.
+
+You can use this API and use the org parameter - https://apidocs.harness.io/tag/Connectors#operation/getConnectorListV2
+
+#### Does the harness NG platform have any limits to the number of users?
+
+No, the harness does not have any limits on number of users in an account.
