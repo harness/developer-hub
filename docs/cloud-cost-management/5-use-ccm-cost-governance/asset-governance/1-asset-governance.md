@@ -71,15 +71,15 @@ Cloud Custodian, while a widely used open-source cloud management tool, presents
 
 In contrast, Harness Cloud Asset Governance retains the strengths of Cloud Custodian while addressing its shortcomings. Harness provides preconfigured governance-as-code rules for easy implementation and customization, powered by an AI Development Assistant (AIDA™) for natural language policy authoring. It offers a fully managed and scalable rule execution engine, reducing operational complexities for organizations. 
 
-The cloud-custodian versions utilised currently are as following:
-  - `c7n==0.9.41`
-  - `c7n_azure==0.7.40`
-  - `c7n_gcp==0.4.40 `
-
 The platform also includes a user-friendly visual interface, Role-Based Access Control, and detailed Audit trails for centralized visibility and precise access management. Additionally, Harness incorporates Out-of-the-Box Recommendations to identify cost-saving opportunities and improve compliance and security. By choosing Harness Cloud Asset Governance, organizations can optimize their cloud governance, enhance customization and usability, and overcome the challenges associated with self-hosting Cloud Custodian.
 
 Harness Cloud Asset Governance streamlines cloud management processes, improves governance efficiency, and enables organizations to achieve a well-managed cloud environment effectively. More details about the comparison can be found [here](https://www.harness.io/blog/harness-cloud-asset-governance-cloud-custodian-beyond).
 
+### Cloud-Custodian Versions at Harness
 
+The cloud-custodian versions utilised currently are as following:
+  - `c7n==0.9.41`
+  - `c7n_azure==0.7.40`
+  - `c7n_gcp==0.4.40 `
 
 
