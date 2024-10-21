@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-10-17T20:00
+date: 2024-10-21T20:00
 sidebar_position: 12
 ---
 
@@ -21,7 +21,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ### Version 0.35.0
 
-<!-- October 17, 2024 -->
+<!-- October 21, 2024 -->
 
 #### New features and enhancements
 
@@ -30,9 +30,9 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - Added support for [configuring runtime inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-input-usage/#configure-execution-inputs) in the [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage), enabling users to specify inputs during pipeline execution. [IDP-3781]
 
 - New plugins added to the marketplace.
-  - [Harness CCM Backstage Plugin](https://6710b86d60fb34af04947140--harness-developer.netlify.app/docs/internal-developer-portal/plugins/available-plugins/harness-ccm). [IDP-3758]
+  - [Harness CCM Backstage Plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/harness-ccm). [IDP-3758]
 
-- Added Support for [SimpleIcons](https://simpleicons.org/), the list of supported icons are available in **Admin** -> **Layout** -> **Icons**. [IDP-3763]
+- Added Support for [SimpleIcons](https://developer.harness.io/docs/internal-developer-portal/catalog/add-links-docs#icons) in the Links card on Overview page, the list of supported icons are available in **Admin** -> **Layout** -> **Icons**. [IDP-3763]
 
 
 #### Bug fixes
