@@ -114,7 +114,7 @@ import {
             link: "/release-notes/internal-developer-portal",
           },
           {
-            title: "Internal Developer Portal release notes",
+            title: "Cloud Development Environments release notes",
             module: MODULES.cde,
             description:
               "",
