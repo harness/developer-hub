@@ -41,6 +41,8 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 - Fixed the issue causing Timeout errors on Workflows execution page, even when the Pipeline execution was successful. [IDP-3580]
 
+- Restored the missing GitHub Scaffolder actions, which is included under Workflows Actions by default along with other [built-in Backstage Scaffolder actions.](https://backstage.io/docs/features/software-templates/builtin-actions/)
+
 - Fixed an issue where Account Level Repo URLs for Harness Code were not functional during the registration of a software component. [IDP-3820]
 
 - Fixed the issue with un-supported content types displayed in [Homepage Layout](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/home-page-customization). [IDP-3783]
