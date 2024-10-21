@@ -2,7 +2,7 @@
 title: Gitspaces VS Code Extension 
 description: Get Started with Gitspaces VS Code Extension.
 sidebar_position: 3
-sidebar_label: VS Code Extension
+sidebar_label: Gitspaces VS Code Extension
 redirect_from:
   - /docs/cloud-development-environment/get-started/gitspaces-vs-code-extension
 ---
@@ -47,7 +47,8 @@ To install the Gitspaces VS Code extension, here’s what you need to do:
 After installing the prerequisites, follow these steps to sign in to your Gitspaces account within VS Code:
 1. Open VS Code, click on the Gitspaces icon in the activity bar, and select "Sign in." 
     ![](./static/signing-in-1.png)
-    Alternatively, open the Command Palette (Ctrl+Shift+P) and type "Gitspace". Choose “Gitspace: Login” from the options. 
+
+Alternatively, open the Command Palette (Ctrl+Shift+P) and type "Gitspace". Choose “Gitspace: Login” from the options. 
     ![](./static/signing-in-2.png)
 
 2. A dialog will appear asking to open your browser for Gitspaces authentication. Click “Allow” and “Open” to proceed. 
