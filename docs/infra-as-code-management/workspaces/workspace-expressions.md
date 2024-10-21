@@ -50,6 +50,10 @@ Here’s a table of the available workspace expressions in Harness IaCM:
 
 The following example highlights how you can apply workspace expressions to your pipelines run step and output the workspace identifier and secret variable value.
 
+:::warning reserved keyword
+Do not name your run step `workspace` as it is a reserved keyword.
+:::
+
 <Tabs>
 <TabItem value="Interactive guide">
 <iframe 
