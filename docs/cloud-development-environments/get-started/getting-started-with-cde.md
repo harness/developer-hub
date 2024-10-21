@@ -74,7 +74,7 @@ Let us go through the flow of creating a CDE for our sample application, which i
 
 ![](./static/create-gitspace.png)
 
-8. After clicking on **Create Gitspace**, you’ll be redirected to the **Gitspace Details** page, where you can view the events and logs as the Gitspace is being created. Once it is ready, you can open the Gitspace by clicking the **Open VS Code Online** or **Open VS Code Desktop** button at the top right of the page.If you're using VS Code Desktop, you'll need to [install the plugin](#install-gitspace-vs-code-extension-for-vs-code-desktop) to view and connect to your Gitspace.
+8. After clicking on **Create Gitspace**, you’ll be redirected to the **Gitspace Details** page, where you can view the events and logs as the Gitspace is being created. Once it is ready, you can open the Gitspace by clicking the **Open VS Code Online** or **Open VS Code Desktop** button at the top right of the page.If you're using VS Code Desktop, you'll need to install the plugin to view and connect to your Gitspace. (Follow the steps outlined in the followingsection to install the plugin.)
 
 ![](./static/gitspaces-starting.png)
 
@@ -92,7 +92,15 @@ Now, let’s install dependencies for the sample app and run it. We will also ma
 npm run dev
 ```
 
-3. Your application will be available at proxy host 3000. You will see a message at the bottom right of your IDE with a link to open the app in browser.
+3. Your application will be available at proxy host 3000. You will see a message at the bottom right of your IDE with a link to open the app in browser. 
+
+    If you're unable to see the pop-up, it's because the application is running inside the development container. To access this application, we'll need to set up port forwarding. [Watch this video to learn more about port forwarding](https://www.youtube.com/watch?v=MGcNbaEOgR4).
+
+    1. Go to the **Ports** section in your VS Code desktop and click **Forward a Port**.  
+        ![](./static/forward-port-cde.png)
+
+    2. Enter "3000" in the port field and press **Enter**.
+    3. Open [https://localhost:3000](https://localhost:3000) to view your app live.
 
 4. The application shows the Harness canary in a variety of fun situations and poses.
 
@@ -143,7 +151,16 @@ git config --global user.name "Your Name"
 
 ![](./static/settings-vs-code-extension.png)
 
-3. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. **Make sure you have already signed-in to Harness Platform already in your browser before starting this step.**
+3. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. To connect to a Gitspace with VS Code Desktop, you have two options: either use an SSH key or a temporary password.
+    1. SSH Key:
+    You can create a new SSH key using `ssh-keygen` [(learn more here on how to create an SSH key)](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key). This generates a pair of keys (public and private). Copy the public key and paste it into the "SSH key" field while setting up a Gitspace (as shown in the picture below). This will enable you to establish a remote connection to the Gitspace via SSH. If you prefer not to use an SSH key, you can use the temporary password method outlined below.
+
+        ![](./static/ssh-key.png)
+
+    2. Temporary Password:
+    If you do not wish to connect via an SSH key, you can use a temporary password. During Gitspace creation, simply leave the "SSH key" field blank. A temporary password will be generated automatically for the remote connection. After the Gitspace is created, you'll be redirected to VS Code desktop and prompted to copy the temporary password. Paste it and follow the prompts to establish the remote connection. 
+
+        ![](./static/temp-password.png)
 
 4. Any Gitspace you create with VS Code Desktop as the IDE will now open in your desktop application. You can also view a list of Gitspaces in the left navbar and switch between them as needed. 
 
@@ -170,3 +187,21 @@ There are three ways of **starting the Gitspace**:
 Deleting a Gitspace is an irreversible action since deleted Gitspaces cannot be restored.  
 
 1. On the Gitspaces Page click on the 3 dots and select Delete Gitspace. You will see a warning stating that this action cannot be undone. If you are sure you want to delete the Gitspace, click on Delete.
+
+## Auto Stopping of Gitspaces
+
+Harness reduces cloud costs and saves compute resources by auto stopping inactive or unused Gitspaces, while offering flexibility by restating them with all the data and changes fully preserved. 
+
+Harness monitors the inactivity of each Gitspace and will automatically stop running and time out if left inactive for a certain time. By default, this period of inactivity is 60 minutes. Inactivity, in this context, means no user activity within the Gitspace, particularly in the IDE. Any terminal activity will reset this inactivity period.  
+
+Gitspaces stopped in this way preserve all data, changes, and state, allowing you to pick up right where you left off when it’s restarted. This not only saves costs but also reduces the utilization of unused resources.
+
+## Beta Plan Usage 
+
+With our beta plan, you receive 2,000 free minutes of Gitspace usage each month. This allows you to run and use your Gitspaces for up to 2,000 minutes at no cost. These minutes automatically renew every 30 days, resetting on the 1st of each month. 
+
+You can easily view and track your remaining minutes directly from the Gitspaces page in the Harness UI. (as shown in the image below)
+
+If you need additional minutes for your account, don’t hesitate to contact us at cde-interest@harness.io
+
+![](./static/Beta%20plan%20usage.png)
