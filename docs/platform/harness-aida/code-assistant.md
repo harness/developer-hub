@@ -91,3 +91,9 @@ The language server is component of Harness AI Code Assistant that runs on the u
 
 ### What context information is used by the chat assistant?
 The context used when utilizing the chat assistant includes the visible code in the current file, any relevant libraries or frameworks referenced in the project, and the user's previous interactions within the chat, and the selected code snippets if applicable. This allows the assistant to provide tailored responses based on the specific coding environment and the user's ongoing work. Additionally, users can enhance the context by adding references to other files or libraries as needed.
+
+## Troubleshooting
+
+### When starting the extension on my Apple silicon Mac I get the error "couldn't create a connection to server."
+This is a known issue with the universal binary install, please download the Apple silicon specifc [VScode installer.](https://code.visualstudio.com/download) 
+
