@@ -373,7 +373,7 @@ async function config() {
                 },
                 {
                   label: 'Slack',
-                  to: 'https://join.slack.com/t/harnesscommunity/shared_invite/zt-2szikyzoy-eRuy5o_Ns0z0mWeXuxOQng',
+                  to: 'https://join-community-slack.harness.io/',
                 },
                 {
                   label: 'API Reference',
