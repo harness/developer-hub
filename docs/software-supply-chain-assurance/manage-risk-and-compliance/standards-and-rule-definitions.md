@@ -166,7 +166,7 @@ The following rules are supported by Harness to perform evaluations, and Harness
 
 | Rule ID | Name                                                 | Platform | Type | Severity |
 |---------------------------|------------------------------------------------------|----------|--------|----------|
-| 1.2.16                    | Unrestricted usage of GitHub Actions allowed across the organization | GitHub   | pi Repository    | HIGH     |
+| 1.2.16                    | Unrestricted usage of GitHub Actions allowed across the organization | GitHub   | Code Repository    | HIGH     |
 | 1.2.17                    | Unrestricted usage of GitHub Actions allowed in the repository      | GitHub   | Code Repository    | HIGH     |
 | 2.4.2                     | Unpinned GitHub Actions                                           | GitHub   | CI/CD  | MEDIUM   |
 
