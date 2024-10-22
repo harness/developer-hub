@@ -71,14 +71,14 @@ In the legacy navigation, go to **Account settings** and then select **Billing**
 
 ## Harness Cloud billing and Cloud credits
 
-Harness Cloud provides Harness-managed VMs that can be used for various tasks in Harness such as builds, security tests and infrastructure provisioning. This section outlines how billing and credit consumption work for all Harness Cloud executions.
+Harness Cloud provides Harness-managed infrastructure that can be used for various tasks in Harness such as builds, security tests and infrastructure provisioning. This section outlines how billing and credit consumption work for all Harness Cloud executions.
 
 [Learn more about Harness Cloud](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
 
 
 ### Credit consumption
 
-Credits are deducted for each minute of execution on Harness Cloud, depending on factors such as the operating system and allocated resources. Multiple Harness modules (e.g., CI, Security Testing Orchestration, Infrastructure as Code Management) allow customers to run pipeline stages on Harness Cloud infrastructure, and whenever a stage is executed on Harness Cloud machines, the corresponding credits are consumed.
+Credits are deducted for each minute of execution on Harness Cloud, depending on factors such as the operating system and allocated resources. Multiple Harness modules (e.g., CI, Security Testing Orchestration, Infrastructure as Code Management) allow customers to run pipeline stages on Harness Cloud infrastructure, and whenever a stage is executed on Harness Cloud, the corresponding credits are consumed.
 
 **What is build execution time?** 
 The build execution time is the number of minutes that a build takes to complete, counted by the number of minutes used per machine type, and totaled across all machines and machine types used to complete the build.
@@ -92,28 +92,25 @@ Users can choose between two models: **Flex** and **Custom**:
 #### Rate Tables
 The following tables outline the minute multipliers for each model as of August 2023:
 
-##### Flex Model 
-| **Resource Class**  | **Cores** | **Minute Multiplier** |
-|------------|-----------|-----------------------|
-| **Linux**  |           |                       |
-| flex | max per capacity    | 2                     |
-| **Windows**|           |                       |
-| flex | max per capacity    | 8                     |
-| **macOS**    |           |                       |
-| flex | max per capacity    | 60                    |
-##### Custom Model 
+##### <u>Flex Model</u>
+| **Operating system** | **Resource Class Name**  | **Cores** | **Minute Multiplier** |
+|------------|------------|-----------|-----------------------|
+| **Linux**   | flex | max per capacity    | 2                     |
+| **Windows** | flex | max per capacity    | 8                     |
+| **macOS**    |  flex | max per capacity    | 60                    |
 
-| **Resource Class**  | **Cores** | **Minute Multiplier** |
-|------------|-----------|-----------------------|
-| **Linux**  |           |                       |
-| small      | 4     | 2                     |
-| medium     | 8     | 5                     |
-| large      | 16    | 10                    |
-| xlarge     | 30    | 20                    |
-| **Windows**|           |                       |
-| small| 4     | 8                     |
-| **macOS**    |           |                       |
-| small | 6     | 60                    |
+##### <u>Custom Model</u> 
+
+
+| **Operating system** | **Resource Class Name** | **Cores** | **Minute Multiplier** |
+|-------------|-------------------------|-----------|-----------------------|
+| **Linux**   | small                   | 4         | 2                     |
+|             | medium                  | 8         | 5                     |
+|             | large                   | 16        | 10                    |
+|             | xlarge                  | 30        | 20                    |
+| **Windows** | small                   | 4         | 8                     |
+| **macOS**   | small                   | 6         | 60                    |
+
 
 Credits for Cloud minutes are calculated by multiplying the execution time (measured in minutes, rounded to the nearest minute) by the minute multiplier of the selected resource class.
 
@@ -132,8 +129,6 @@ To learn how to select a resource class, please see [Using resource classes](/do
 Customers on **paid plans** can purchase Harness Cloud credits. These purchased credits can be rolled over from one month to the next, but generally expire one year from purchase, unless specified otherwise in signed an Order Form with Harness.
 
 Harness notifies you when you are running low on cloud credits, and Harness can invoice in arrears for overages. For more information, go to [Credit overages (overuse)](#credit-overages-overuse).
-
-Free plans may require credit card validation to use Harness Cloud. If you don't want to provide a credit card, you can use [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) with your free plan.
 
 Cloud credits can be consumed by all users within the account registered to run pipelines on Harness Cloud.
 
