@@ -20,7 +20,7 @@ In the future, Harness will allow you to modify the severity of a rule or even s
 
 ## Supported Standards and Rules
 
-Harness supports the following standards
+Harness supports the following standards.
 
 * CIS Benchmarks for GitHub
 * OWASP Top 10 CI/CD Security Risks for GitHub
