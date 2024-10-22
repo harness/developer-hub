@@ -21,6 +21,22 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+## October 2024
+
+### Version 1.114.3
+
+<!-- 2024-10-22 -->
+
+#### New features and enhancements
+- Improved issue details formatting to support various data formats from scanners (STO-8058, STO-7845, ZD-6673).
+- Added AquaSecurity's ECR registries as a fallback to prevent rate-limit issues when their GHCR (STO-8157).
+- Container image scanning without using the Docker-in-Docker step does not recognize certificates passed through the delegate. This issue has now been fixed (STO-8140).
+- Anchore policy failures now show as "Info" level issues of type "External Policy" in scan results (STO-6494).
+
+#### Documentation enhancements
+- Added a video tutorial for [SonarQube Orchestration scan mode](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference).
+- Added a video on [How to perform Local Docker/OCI Archive scanning with Harness STO.](https://www.youtube.com/watch?v=x1NXBJaHF7U&list=PLXsYHFsLmqf1wmAiQZkL65Xt6VarH_DuH&index=8&t=7s)
+
 
 ## October 2024
 
