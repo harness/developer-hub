@@ -12,7 +12,7 @@ With Harness Cloud, you can run builds in isolation on Harness-managed VMs that 
 
 Harness Cloud provides the following advantages:
 
-* Use Cloud credits to run builds on Harness-managed machines. No need to set up you own machines.
+* Use Cloud credits to run builds on Harness-managed infrastructure. No need to set-up and maintain the infrastructure yourself
 * Starter pipelines for different programming languages.
 * Blazing fast builds on Linux, macOS, and Windows.
 * Get the latest features first. Harness may enable features for Harness Cloud before rolling them out to other build infrastructure options.
