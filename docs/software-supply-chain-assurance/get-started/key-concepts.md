@@ -1,17 +1,17 @@
 ---
-title: Harness SSCA key concepts
+title: Harness SCS key concepts
 sidebar_label: Key concepts
-description: Basic terminology and concepts related to SSCA
+description: Basic terminology and concepts related to SCS
 sidebar_position: 2
 ---
 
-This topic covers basic terminology and concepts related to the Harness Software Supply Chain Assurance (SSCA) module.
+This topic covers basic terminology and concepts related to the Harness Supply Chain Security (SCS) module.
 
 ## Software supply chain security
 
 A *software supply chain* comprises almost anything involved in developing, building, and publishing software artifacts. This can include components, libraries, tools, processes, and more. *Software supply chain security* includes the measures and processes required to secure these elements.
 
-[Supply-chain Levels for Software Artifacts (SLSA)](https://slsa.dev/) provides industry-wide standards and frameworks for software supply chain security. The Harness SSCA module helps you meet these standards and otherwise secure your software supply chain.
+[Supply-chain Levels for Software Artifacts (SLSA)](https://slsa.dev/) provides industry-wide standards and frameworks for software supply chain security. The Harness SCS module helps you meet these standards and otherwise secure your software supply chain.
 
 It is a best practice in software supply chain security to produce declarations about your supply chain inventory or security, including:
 
@@ -26,12 +26,11 @@ For a detailed explanation of software supply chain security concepts and terms,
 
 import SbomAbout from '/docs/software-supply-chain-assurance/shared/sbom-about.md';
 
-
 <SbomAbout />
 
 ## Policy management and enforcement
 
-With the Harness SSCA module, you can define and enforce policies governing the use of open-source components within your software artifacts. This policy management and enforcement capability helps you ensure compliance with your security, legal, and operational requirements.
+With the Harness SCS module, you can define and enforce policies governing the use of open-source components within your software artifacts. This policy management and enforcement capability helps you ensure compliance with your security, legal, and operational requirements.
 
 ### Policy definitions
 
@@ -39,7 +38,7 @@ You can create custom policies to define rules for open-source component usage b
 
 ### Policy types
 
-The SSCA module supports these policy types:
+The SCS module supports these policy types:
 
 * **Deny list policies:** Define components, or combinations of component attributes, that are not allowed. If an artifact includes a component that is part of the deny list, the artifact's policy evaluation fails.
 * **Allow list policies:** Define components or combinations of component attributes that are allowed. If an artifact includes a component that *is not* part of the allow list, the artifact's policy evaluation fails.
@@ -47,7 +46,7 @@ The SSCA module supports these policy types:
 
 ### Policy enforcement
 
-The SSCA module enforces policies in the CI and CD stages of the software delivery lifecycle, ensuring that you build and deploy only compliant software artifacts. When an artifact moves through the CI and CD stages of your [pipelines](#pipelines), the SSCA module checks the artifact and its associated SBOM against your defined policies. You can review any detected policy violations on the **Supply Chain** tab in **Execution details** page of a pipeline. For more information, go to [view pipeline execution results](../ssca-view-results.md#view-policy-violations).
+The SCS module enforces policies in the CI and CD stages of the software delivery lifecycle, ensuring that you build and deploy only compliant software artifacts. When an artifact moves through the CI and CD stages of your [pipelines](#pipelines), the SCS module checks the artifact and its associated SBOM against your defined policies. You can review any detected policy violations on the **Supply Chain** tab in **Execution details** page of a pipeline. For more information, go to [view pipeline execution results](../ssca-view-results.md#view-policy-violations).
 
 <!-- Future: If any violations are detected, response actions are activated based on your policy configurations. -->
 
@@ -71,20 +70,46 @@ You can use remediation flows in the SSCA module to respond quickly and effectiv
 
 ## SLSA compliance
 
-With the Harness SSCA module, you can achieve SLSA Build [Level 1](../slsa/overview.md#how-to-comply-with-slsa-level-1), [Level 2](../slsa/overview.md#how-to-comply-with-slsa-level-2), [Level 3](../slsa/overview.md#how-to-comply-with-slsa-level-3). Refer to [SLSA Overview](../slsa/overview.md)
+With the Harness SCS module, you can achieve SLSA Build [Level 1](../slsa/overview.md#how-to-comply-with-slsa-level-1), [Level 2](../slsa/overview.md#how-to-comply-with-slsa-level-2), [Level 3](../slsa/overview.md#how-to-comply-with-slsa-level-3). Refer to [SLSA Overview](../slsa/overview.md)
 
 SLSA Provenance attestations are stored as `.att` files in the artifact repository along with the image. You can also find the SLSA Provenance on the **Supply Chain** tab in **Execution details** page of a pipeline.
 
 * [SLSA Generation and Attestation](../slsa/generate-slsa.md)
 * [SLSA Verification](../slsa/verify-slsa.md)
 
+## Attestation and Verification
+
+The attestation process in Harness SCS follows the [In-toto attestation framework](https://github.com/in-toto/attestation). This process involves a container image, an SBOM or SLSA provenance, a private key from a key pair and a password. SCS uses [Cosign](https://docs.sigstore.dev/cosign/verifying/attestation/) to perform the attestation and securely sign it. The signed attestation is then pushed to the container registry, where the digest of the image is set as the file name with a `.att` extension.
+
+<DocImage path={require('./static/get-started-attestation-overview.png')} width="80%" height="80%" title="Click to view full size image" />
+
+Here’s an example of what the signed attestation would look like
+
+```
+{
+  "payloadType": "application/vnd.in-toto+json",
+  "payload": "CJTUERYUmVmLVBhY2thZ2UtZGViLXpsaWIxZy1mOTFhODZjZjhhYjJhZTY3XCIsXCJyZWxhdGlvbnNoaXBUeXBlXCI6XCJDT05UQUlOU1wifSx7XCJzcGR4RWxlbWVudE",
+  "signatures": [
+    {
+      "keyid": "dEdLda4DzZYoQgNCgW",
+      "sig": "MEUCIFoNt/ELa4DzZYoQgNCgW++AaCbYv4eOu0FloUFfAiEA6EJQ31P0ROEbLhDpUhMdMAzkqlBSCMFPDk1cyR1s6h8="
+    }
+  ]
+}
+
+```
+
+You can perform Base64 decoding on the payload data to view your SBOM or SLSA Provenance.
+
+For verification, the signed attestation is retrieved from the container registry and verified using the corresponding public key. This public key should be of the same key pair where the attestation was signed using the private key.
+
 ## Harness Platform components
 
-The Harness SSCA module integrates with other Harness modules and uses components that are common to the Harness Platform. For more information about Harness Platform terminology and concepts, go to [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
+The Harness SCS module integrates with other Harness modules and uses components that are common to the Harness Platform. For more information about Harness Platform terminology and concepts, go to [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 
 ### Pipelines
 
-You add SSCA steps to your CI (build), CD (deploy) and STO (security) stages in your Harness pipelines.
+You add SCS steps to your CI (build), CD (deploy) and STO (security) stages in your Harness pipelines.
 
 A pipeline is an end-to-end workflow that, for example, pulls code from a codebase, builds an artifact, runs tests or other actions on the artifact or code, and then uploads or deploys the artifact to storage or a container registry.
 

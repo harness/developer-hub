@@ -2,6 +2,8 @@
 title: Outbound endpoints
 description: This topic provides an overview of the endpoints the Proxy uses when it connects to SAAS Feature Flags
 sidebar_position: 60
+redirect_from:
+  - /docs/feature-flags/relay-proxy/outbound_endpoints
 ---
 
 These are the endpoints requested by the Relay Proxy when it communicates with Harness SaaS. These are listed in the order they're used:

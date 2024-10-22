@@ -24,7 +24,7 @@ Yes, the feature `Artifact Bundle Support with Tanzu Application Deployments` as
 
 ### Can one configure how many versions of the Tanzu apps required to be maintained for Blue-Green Deployments ?
 
-Yes, Users can now configure how many versions of the Tanzu apps that they want Harness to maintain for Blue Green Deployments with enabling Feature Flag: `CDS_PCF_SUPPORT_BG_WITH_2_APPS_NG`. Currently we maintain 3 (Active, Inactive, and Most recent Successful deployment). With this feature we now manage Active and Inactive more inline with the industry standard Blue Green Deployment. For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart/#blue-green-deployment-support-with-a-configurable-amount-of-tanzu-applications-to-maintain).
+Yes, Users can now configure how many versions of the Tanzu apps that they want Harness to maintain for Blue Green Deployments. Currently we maintain 3 (Active, Inactive, and Most recent Successful deployment). With this feature we now manage Active and Inactive more inline with the industry standard Blue Green Deployment. For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart/#blue-green-deployment-support-with-a-configurable-amount-of-tanzu-applications-to-maintain).
 
 ### Is it possible to deploy multiple TAS applications using a single manifest?
 As of now, we don't support or certify deploying multiple applications using a single manifest.
@@ -37,4 +37,7 @@ Deployment Failed For: For application '$APP_ID': Cannot update this process whi
 ```
 Cloud Foundry only allows for 1 deployment or update process at a time for an application. If an application is currently deploying or crash looping, Cloud Foundry will block all other updates to this Application. To fix this, either wait for the Application to finish processing the deployment or, if the Application is crash looping, consider rolling back to the previous version. A Rollback in Cloud Foundry does not count as an update or deployment process and can safely be executed if required.
 
+### Are there any limitations on secret variables in the Tanzu Command step in Harness?
+
+Yes, secret variable types are not supported for Input or Output Variables only String and Number types can be used. Also, output variables have a maximum size limit of `512KB`.
 

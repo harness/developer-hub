@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference
+canonical_url: https://www.harness.io/blog/what-is-artifact-repository
 ---
 
 This topic provides settings and permissions for the Nexus connector.

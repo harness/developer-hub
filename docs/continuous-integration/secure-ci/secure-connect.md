@@ -8,6 +8,8 @@ sidebar_position: 20
 
 Currently, Secure Connect for Harness Cloud is behind the feature flag `CI_SECURE_TUNNEL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+If you're using Secure Connect with macOS, the feature flag `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` is required as well. 
+
 :::
 
 [Harness CI Cloud (Harness-managed build infrastructure)](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) addresses common challenges you might face when implementing a continuous integration tool in your infrastructure:
@@ -35,14 +37,21 @@ You can [configure Secure Connect](#configure-secure-connect) in minutes. If you
 
 ## Configure Secure Connect
 
+:::note
+
+- The client must support connection by proxy.
+- Secure Connect Client is supported on macOS and Linux. 
+
+:::
+
 1. Create a [Harness API key](/docs/platform/automation/api/add-and-manage-api-keys) with at least `RBAC:core_pipeline_view` and `ABAC:All` permissions.
 1. Use the following command to run the Docker client in your firewalled environment. Where you run the client depends on what assets need to securely connect to Harness and your environment's network configuration.
 
    ```
-   docker run -it -e REMOTE_PORT=ANY_PORT_FROM_30000_TO_30100  -e REMOTE_SERVER=sc.harness.io -e API_KEY=YOUR_HARNESS_API_KEY harness/frpc-signed
+   docker run -it -e REMOTE_PORT=ANY_PORT_FROM_30000_TO_30099  -e REMOTE_SERVER=sc.harness.io -e API_KEY=YOUR_HARNESS_API_KEY harness/frpc-signed
    ```
 
-   * `REMOTE_PORT` is any port from 30000 to 30100.
+   * `REMOTE_PORT` is any port from 30000 to 30099.
    * `API_KEY` is a valid Harness API key.
 
 2. Enable **Secure Connect** for each connector you use with Harness Cloud that needs to route through a secure tunnel. This setting is available in each connector's **Connect to Provider** settings.
@@ -70,4 +79,4 @@ curl -x HARNESS_HTTPS_PROXY YOUR_ENDPOINT_URL
 
 Replace `YOUR_ENDPOINT_URL` with the URL that you want to route through the secure tunnel. For example, you could route a private Bitbucket domain like `https://bitbucket.myorg.com/`.
 
-The client must support connection by proxy.
+

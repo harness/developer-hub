@@ -5,13 +5,13 @@ description: Learn to create and manage your remediation tracker
 sidebar_position: 2
 ---
 
-The instructions provided in this document will guide you through the process of creating a remediation tracker in the SSCA Module. Please follow these steps to set up your tracker.
+The instructions provided in this document will guide you through the process of creating a remediation tracker in the SCS Module. Please follow these steps to set up your tracker.
 
 <DocVideo src="https://youtu.be/BxTwle4240M?si=aZmCMEie5JAef4F3" />
 
 ## Prerequisites
 
-Before creating a remediation tracker, it is crucial to ensure that your deployment pipelines incorporate and successfully complete the [SBOM Orchestration step](../sbom/generate-sbom#generate-sbom-in-harness). Additionally, all artifacts must be listed in the [Artifacts view](../artifact-view) page in the SSCA module, as the tracker can only screen through those deployed artifacts available in this view.
+Before creating a remediation tracker, it is crucial to ensure that your deployment pipelines incorporate and successfully complete the [SBOM Orchestration step](../sbom/generate-sbom#generate-sbom-in-harness). Additionally, all artifacts must be listed in the [Artifacts view](../artifact-view) page in the SCS module, as the tracker can only screen through those deployed artifacts available in this view.
 
 
 ## Setting up the remediation tracker
@@ -20,7 +20,7 @@ Creating the remediation tracker can be done in a few clicks:
 
 
 
-1. Navigate to the Supply Chain Assurance module within the project
+1. Navigate to the Supply Chain Security module within the project
 2. Select 'Remediation Tracker' from the available options.
 3. Click '+ New Remediation Tracker'.
 

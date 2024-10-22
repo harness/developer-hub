@@ -162,6 +162,12 @@ import ScannerRefAdvancedSettings from '/docs/security-testing-orchestration/sto
 
 <ScannerRefAdvancedSettings />
 
+## Proxy settings
+
+import ProxySettings from '/docs/security-testing-orchestration/sto-techref-category/shared/proxy-settings.md';
+
+<ProxySettings />
+
 ## Custom Ingest pipeline examples 
 
 Here are some topics that describe end-to-end workflows for ingesting SARIF and JSON data:

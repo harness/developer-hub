@@ -6,6 +6,7 @@ helpdocs_topic_id: tk55quhfi4
 helpdocs_category_id: v3h3y6pya6
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/cloud-logging-optimization
 ---
 
 # View GCP Cost Dashboard

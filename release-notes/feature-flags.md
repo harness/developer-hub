@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-07-01T16:19:25
+date: 2024-10-21T08:09:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,9 +15,208 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: July 1, 2024
+#### Last updated: October 21, 2024
+
+## October 2024
+
+### Relay Proxy
+
+#### Version 2.0.6
+
+**Fixed Issues**:
+
+- Upgrades dependencies to resolve CVEs
+- Reduces pushpin log level from info to error level. This reduces the amount of ephemeral pod storage the Proxy consumes in k8s.
+- Ensures the Proxy only writes to the response body if the response hasn't already been committed.
+
+### Java SDK
+
+#### Version 1.8.0
+
+**New features and enhancements**:
+ - New `HarnessConfig` options: 
+ -- `maxRequestRetry`: Defines the maximum number of retry attempts for the following request: authentication, polling, metrics, and reacting to stream events
+ -- `flushAnalyticsOnClose`: Indicates whether to flush analytics data when the SDK is closed. 
+ -- `flushAnalyticsOnCloseTimeout`: The timeout for flushing analytics on SDK close. (FFM-12087)
+ 
+ For full details, see associated Java docs and for sample usage, see [`ConfigExample`](https://github.com/harness/ff-java-server-sdk/blob/main/examples/src/main/java/io/harness/ff/examples/ConfigExample.java). 
+
+**Fixed Issues**:
+ - Resolved an issue where initial connection attempts to the
+ stream, as well as reconnection attempts after disconnection, were
+ limited to 5 tries. Now, reconnection attempts have no limit and
+ utilize exponential backoff, with a 60-second cap on retry
+ intervals reached after several attempts. (FFM-12087)
+ - Fixed a memory leak caused when the SDK was closed but the
+ stream’s `ScheduledExecutorService` remained active. All SDK
+ resources are now properly shut down when `close()` is called.
+ - Addressed an issue where, after calling `close()` and shutting
+ down the stream, the SDK would still make a poll request,
+ resulting in error logs due to evicted network resources. Now, no
+ polling requests are made after `close()` is invoked.
+
+## September 2024
+
+### Relay Proxy
+
+#### Version 2.0.5
+
+**New features and enhancements**:
+
+ - If you include a `Harness-SDK-ApplicationID` header in your request to the Proxy it will be included in the logs e.g. `{"level":"info","ts":"2024-09-10T15:36:00+01:00","caller":"middleware/middleware.go:44","msg":"request","component":"LoggingMiddleware","method":"GET","path":"/client/env/:environment_uuid/feature-configs","status":401,"took":"80.619µs","appID":"app-123"}`
+
+**Fixed Issues**
+
+ - Fixes an issue where the cache status wasn't being reported properly in the `/health` response if the Proxy disconnected/reconnected to redis after startup
+ - Fixes an issue where a stale inventory key would remain in redis even though stale assets had been removed which caused unecessary memory usage in redis.
+
+#### Version 2.0.4
+
+**Fixed Issues**:
+  - Fixes an issue where the Proxy could send SSE events with truncated flag identifiers if the flag identifiers contained an underscore e.g. `HELLO_WORLD`. When the Primary Proxy starts up it pulls down config from Saas, compares it with the config in redis and generates SSE events to make sure SDKs don't miss out on changes. However in this scenario if the flag identifier contained an underscore e.g. `HELLO_WORLD` the SSE event would indicate a change for the flag `HELLO`.
+
+#### Version 1.0.5
+
+**Fixed Issues**
+
+ - Fixes CVEs by upgrading packages and dependencies
+
+### Erlang SDK
+
+#### Version 3.0.1
+
+**Fixed Issues**:
+ - Fixed an issue where a flag or target group change would not be stored with the `Outdated` error. 
+
+### .NET SDK
+#### Version 1.7.2
+**New features and enhancements**:
+ - Added .NET 8.0 TFM. (FFM-12057)
+ - Upgraded `System.IdentityModel.Tokens.Jwt` for .NET 7.0 and 8.0
+ TFMs.
+ - Remove unused `Disruptor` library.
+
+### Javascript Client SDK
+
+#### Version 1.13.0
+
+**New features and enhancements**:
+ - Added the `authRequestReadTimeout` config option. Have a look at the [readme](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md#authentication-request-timeout) for further information and how to enable it. (FFM-11972)
+
+**Bug fixes**: 
+ - If authentication fails, the correct error will be logged instead of `Invalid Token`. (FFM-11972)
+
+### React Client SDK
+
+#### Version 1.13.0
+
+**New features and enhancements**:
+ - Bumped Javascript SDK to 1.13.0. (FFM-11972, FFM-11852, ZD-68087)
+
+### React Native SDK
+
+#### Version 2.2.0
+
+**New features and enhancements**:
+ - Bumped FF React SDK to 2.2.0. (FFM-11972)
+
+### Ruby SDK
+
+#### Version 1.3.2
+
+**Fixed Issues**:
+ - No longer ships `rake`, `minitest` and `standard` as dependencies. (FFM-11995)
+
+## August 2024
+
+### Node.js SDK
+
+#### Version 1.8.3
+
+**Fixed issues**:
+ - Patched Axios CVE: `CVE-2024-39338`. (FFM-11888)
+
+### Relay Proxy
+
+#### Version 2.0.3
+
+**Fixed Issues**:
+  - Cached data from old Proxy Keys is now removed from redis. There was an issue where if you configured a Proxy with Proxy Key A, then reconfigured it with Proxy Key B and restarted the service you would end up with config for Proxy Key A & B in Redis when there should only be config for Proxy Key B.
+  - Fixes a race condition where concurrent map access could happen in the Primary Proxy when it's aggregating metrics data.
+  - Cleans up error logs that shouldn't have been logged.
+
+### Java SDK
+
+#### Version 1.7.0
+
+**New features and enhancements**:
+ - Introduced the ability to store and retrieve `FeatureSnapshot` (previous and current feature config). 
+ - Updated `FeatureSnapshot` for JavaSDK. (FFM-1844)
+
+### Javascript SDK
+
+#### Version 1.27.0
+
+**Fixed issues**:
+ - Added `maxStreamRetries` config option. (FFM-11788, ZD-66828)
+ - If retries are exhausted, one of these two states would occur:
+    1. If polling is enabled, the SDK would remain in polling mode and no further streaming reconnection attempts would be made. The default polling option, if not supplied, is whatever the `streamingEnabled` value is or,
+    2. If polling is disabled, the SDK would not get any further evaluation updates for the remainder of the SDK client instance's life. The SDK would need re-initialised, e.g the app being restarted, to get new evaluations in this state.
+ - Fixed an edge case where if the stream disconnects and resumes during a request made by the fallback poller (60 seconds later), the fallback poller will not be disabled and will continue polling for the lifetime of the SDK instance. (FFM-11852, ZD-68087)
+
+#### Version 1.26.3
+
+**Fixed issues**:
+ - The following CVEs have been patched:
+    - [ws](https://github.com/advisories/GHSA-3h5v-q93c-6h6q)
+    - [braces](https://github.com/advisories/GHSA-grv7-fg5c-xmjg)
+
+### Python SDK
+
+#### Version 1.7.0
+
+**Enhancements**:
+ - Added `httpx_args` option. (FFM-11935):
+   - For further reading, you can refer to this [doc on `httpsx_args`](https://github.com/harness/ff-python-server-sdk/blob/main/docs/further_reading.md#httpx-configuration-options)
+   - You can find a [sample of the change by Harness](https://github.com/harness/ff-python-server-sdk/blob/main/examples/with_httpx_args_example/with_httpx_args.py) in our Python SDK repo.
 
 ## July 2024
+
+### Relay Proxy
+
+#### Version 2.0.2:
+**Fixed Issues**:
+ - Fixed an issue where username & password auth for redis wasn't working
+ - Fixes an issue where the Proxy didn't validate the environment in the request matched the environment in the token claims
+ - Explicitly makes `REDIS_ADDR` a required environment variable. A connection to redis is required for the Proxy to function but the `REDIS_ADDR` wasn't explicitly requried in the code which could lead to vauge startup errors if you forgot to set it.
+ - Reduces excessive memory usage from having an excessive amount of labels on prometheus metrics. This required is to remove the following labels from the following metrics
+  - Removed the `key` label from the following metrics
+    - `ff_proxy_redis_cache_scan_duration`
+    - `ff_proxy_redis_cache_write_count`
+    - `ff_proxy_redis_cache_read_count`
+    - `ff_proxy_redis_cache_remove_count`
+    - `ff_proxy_redis_cache_scan_count`
+  - Removed the `method` label from the `ff_proxy_http_requests_total` metric
+  - Removed the `envID` label from the `ff_proxy_http_requests_duration` metric
+  - Removed the `url` and `envID` label from the `ff_http_requests_content_length_histogram` metric
+
+**Enhancements**:
+  - Optimises memory by reducing the number of memory allocations
+  - Adds support for using the `Harness-Target` header to perform evaluations. This means that if you're using an SDK that sends the Target in the `Harness-Target` the Proxy will use it to perform the evaluation rather than having to fetch the target from redis to perform the evaluation.
+  - Cleans up unecessary error logs
+
+### Android SDK
+
+#### Version 2.2.3
+
+**Fixed issues**:
+ - Fixed an issue where the SDK Client would not be closed correctly if `Close()` or `CloseWithFuture()` was called, and `Streaming` and/or `Polling` requests would continue to be made in the background. (FFM-11779)
+
+#### Version 2.2.2
+
+**Fixed issues**:
+ - Fixed the high initialization latency for large projects. (FFM-11750)
+ - Resolved an issue where using the callback method to initialize the SDK when the device had no connectivity. It would fail to give a `success/failure` result until the device regains connectivity. Now, a failure result is immediately sent and a success callback will be sent when the device is able to reconnect once the SDK initializes successfully. (FFM-11750)
 
 ### Java SDK
 
@@ -25,6 +224,31 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 **Fixed issues**:
  - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11654)
+
+### .NET SDK
+
+#### Version 1.7.1
+
+**Fixed issues**:
+ - Fixed incorrect number variation warning message. (FFM-11759, ZD-66232)
+ - Fixed an issue when `client.close()` is called the stream remains connected. The stream now exits correctly and resources are released. (FFM-11801, ZD-66232)
+ - If `WaitForInitialization()` was called and no timeout argument provided, the SDK could block permanently on unrecoverable authentication failures.  Now, the SDK will unblock immediately on `40x` errors, and retry up to 10 times on `50x` errors, after which it will unblock. (FFM-11759, ZD-66232)
+
+**New features and enhancements**:
+ - Add `FlagsLoaded` Event - see [events](https://github.com/harness/ff-dotnet-server-sdk/blob/main/docs/further_reading.md#listen-on-events). (FFM-11759, ZD-66232)
+
+### Python SDK
+
+#### Version 1.6.4
+
+**Fixed issues**:
+ - Fixed an issue where SDK dependencies, `tenacity` and `typing_extensions`, were pinned to fixed versions, which could make integration with the SDK impossible if different versions are specified in an application or its dependencies. (FFM-11770, ZD-66342)
+
+#### Version 1.6.3
+
+**Fixed issues**:
+ - Pins `typing_extensions` to latest release compatible with 3.7 to resolve compatibility issues with code brought in from the OAPI Generator. (FFM-11655)
+ - Added a guard around the debug log. The guard being a `None` check on the feature config type before we attempt to log it. (PL-51773)
 
 ### Ruby SDK
 

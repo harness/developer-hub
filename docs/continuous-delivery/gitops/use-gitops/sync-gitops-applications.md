@@ -1,7 +1,7 @@
 ---
 title: Sync GitOps applications
 description: This topic describes how to sync GitOps applications.
-sidebar_position: 9
+sidebar_position: 30
 redirect_from:
   - /docs/continuous-delivery/gitops/sync-gitops-applications
 ---
@@ -43,11 +43,18 @@ To sync applications using the **GitOpsSync** step:
 3. Select the GitOpsSync step to configure step parameters.
 4. Optionally, click on the **Wait until healthy** checkbox, if you would like the step to run until the application reaches it's **Healthy** state.
 5. In **Advanced Configuration**, select the application you want to sync and configure the sync options.
-   
-    ![](./static/gitopssync-step.png)    
+      You can either can either choose an application or applications manually, or you can match up to 1000 applications using a regex filter.
+
+    ![](./static/gitopssync-step-regex.png)    
  
 6. Select **Apply Changes**.
 
 Here is how the resources would look in Harness after the sync process is complete.
 
 ![](./static/harness-git-ops-application-set-tutorial-40.png)
+
+## Terminate sync
+
+To terminate an in-progress sync, go to the application for the syncing app and locate the **Terminate Sync** button in the top right corner of the UI. Replace the **Sync** button when a sync is in progress.
+
+![](./static/terminate_sync.png)

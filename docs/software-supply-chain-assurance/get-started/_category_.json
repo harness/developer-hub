@@ -1,11 +1,11 @@
 {
-   "label":"Get started with SSCA",
+   "label":"Get started with SCS",
    "position": 20,
    "collapsible":"true",
    "collapsed":"true",
-   "className":"red",
+   "className":"default",
    "link":{
       "type":"generated-index",
-      "title":"Get started with Harness SSCA"
+      "title":"Get started with Harness SCS"
    }
 }

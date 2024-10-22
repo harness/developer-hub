@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings
+canonical_url: https://www.harness.io/blog/docker-multi-stage-build
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
@@ -112,7 +113,15 @@ Later in the pipeline, you can use the same expression to pull the tagged image,
 :::
 
 ### Base Image Connector
-Select an authenticated connector to download base images from a Docker-compliant registry. If you do not specify a Base Image Connector, the step downloads base images without authentication. Specifying a Base Image Connector is recommended because unauthenticated downloads generally have a lower rate limit than authenticated downloads.
+
+Select an authenticated connector to download base images from a Docker-compliant registry. If you do not specify a **Base Image Connector**, the step downloads base images without authentication. Specifying a **Base Image Connector** is recommended because unauthenticated downloads generally have a lower rate limit than authenticated downloads.
+
+:::tip
+When using base image connector, pushing to or pulling from multiple Docker registries with the same URL prefix (e.g., https://index.docker.io) is not supported. This limitation occurs because the second registry's credentials overwrite the first in the Docker config file. This issue doesn't affect registries with completely unique URLs, such as separate JFrog instances. 
+This limitation does not apply to following build and push steps only on K8 - ACR, GAR, ECR.
+:::
+
+This setting is enabled by the feature flag `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR`. When enabling this flag, the delegate version must be higher than `24.07.83503`.
 
 ### Optimize
 
@@ -204,3 +213,5 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Why doesn't the Build and Push step include the content of VOLUMES from my Dockerfile in the final image?](/kb/continuous-integration/continuous-integration-faqs/#why-doesnt-the-build-and-push-step-include-the-content-of-volumes-from-my-dockerfile-in-the-final-image)
 * [Can I use a specific version of kaniko or drone-docker?](/kb/continuous-integration/continuous-integration-faqs/#is-there-a-way-to-use-a-newer-or-older-version-of-kaniko)
 * [How do I fix this kaniko container runtime error: kaniko should only be run inside of a container?](/kb/continuous-integration/articles/kaniko_container_runtime_error)
+* [Can I push and pull from two different docker registries that have same prefix for registry URL ?](/kb/continuous-integration/continuous-integration-faqs/#can-i-push-and-pull-from-two-different-docker-registries-that-have-same-prefix-for-registry-url-)
+* [Why does the parallel execution of build and push steps fail when using Buildx on Kubernetes?](/kb/continuous-integration/continuous-integration-faqs#why-does-the-parallel-execution-of-build-and-push-steps-fail-when-using-buildx-on-kubernetes)

@@ -53,6 +53,8 @@ This plugin exports a page, a tab and a UI card that you can show on the **Overv
     - component: RootlyIncidentsPage
 ```
 
+![](./static/rootly.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set one of the following annotations in its `catalog-info.yaml` definition file.

@@ -30,25 +30,42 @@ Perform the following steps to create a new Application Gateway in Azure.
 4. If you have not added your cloud account, click **New Connector**. For the detailed steps, see [Connect to an Azure Connector](../1-add-connectors/add-azure-connector.md).  
 
   ![](./static/create-an-application-gateway-for-azure-04.png)
+  
 5. Define an AutoStopping Rule. See [Step 2: Add a New AutoStopping Rule](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md).
+
 6. Select the resources to be managed by the AutoStopping Rule. See Step: [Select the Resources to be Managed by the AutoStopping Rule](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md#select-the-resources-to-be-managed-by-the-autostopping-rule)
+
 7. Select the instance fulfillment type. See Step 3: Select the Instance Fulfillment Type.
+
 8. (Optional) Set up advanced configuration. See Step: Set Up Advanced Configuration.
-9. In **Setup Access**, select **DNS Link**.
-10. In **Select Application Gateway**, click **New Application Gateway** to add an application gateway.
-11. In **Create a new Application Gateway**, in **Provide a name for the Load balancer**, enter a name for your application gateway. This name will appear in your application gateway list.
-12. In Enter Domain Name, enter a domain name. For example, `autostopping.yourcompany.com`.  
+
+10. In **Setup Access**, select **DNS Link**.
+
+11. In **Select Application Gateway**, click **New Application Gateway** to add an application gateway.
+
+12. In **Create a new Application Gateway**, in **Provide a name for the Load balancer**, enter a name for your application gateway. This name will appear in your application gateway list.
+
+13. In Enter Domain Name, enter a domain name. For example, `autostopping.yourcompany.com`.  
 
   ![](./static/create-an-application-gateway-for-azure-06.png)
-13. Click **Continue**.
-14. Select region from the drop-down list to install the Access Point.
-15. Select a **Resource Group** from the drop-down list.
-16. (Optional) Upload a **Certificate**.
-17. Select **Virtual Network**.
-18. Select **Subnet**.
-19. Select **Frontend IP**.
-20. Select **SKU**.
-21. Click **Save**.  
+
+14. Click **Continue**.
+
+15.  Select region from the drop-down list to install the Access Point.
+
+16. Select a **Resource Group** from the drop-down list.
+
+17. (Optional) Upload a **Certificate**.
+
+18. Select **Virtual Network**.
+
+19. Select **Subnet**.
+
+20. Select **Frontend IP**.
+
+21. Select **SKU**.
+
+22. Click **Save**.  
   
 Your application gateway is listed under the **Application Gateway**.
 

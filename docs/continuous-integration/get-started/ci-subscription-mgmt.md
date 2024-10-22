@@ -116,6 +116,7 @@ Credits for Cloud minutes are calculated by multiplying the execution time (meas
 
 Examples for credit consumption, based on the values in the table above:
 
+
 * 1,000 minutes on a Linux, 4-core (small) machine = 2,000 cloud credits (1,000 minutes × 2).
 * 1,000 minutes on a Windows, 4-core (small) machine = 8,000 cloud credits (1,000 minutes × 8).
 * 1,000 minutes on a macOS, 6-core (small) machine = 60,000 cloud credits (1,000 minutes × 60).
@@ -143,7 +144,7 @@ The number of concurrent stages you can run on Harness Cloud in your account dep
 
 The following table lists concurrency limits for each OS type and plan tier.
 
-| OS | Free | Team | Enterprise |
+| OS | Free | Startup | Enterprise |
 | -- | ---- | ---- | ---------- |
 | Linux | 20 | 40 | 60 |
 | Windows | 1 | 5 | 5 |
@@ -154,7 +155,7 @@ The following table lists concurrency limits for each OS type and plan tier.
 Harness stores cached data when using cache optimizing [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) features, in Harness managed storage. The maximum amount of cache data that you can store depends on the plan you are subscribed to:
 
 * Free: 2 GB
-* Team: 5 GB
+* Startup: 5 GB
 * Enterprise: 10 GB
 
 Harness does not directly limit the number of caches you can store, but once you reach your storage limit, Harness continues to save new caches while automatically evicting old caches.
@@ -166,7 +167,7 @@ The network transfer limit applies to the data transferred from Harness Cloud to
 The limit depends on the plan you are subscribed to:
 
 * Free: 1 GB
-* Team: 5 GB
+* Startup: 5 GB
 * Enterprise: 10 GB
 
 ### Credit overages (overuse)

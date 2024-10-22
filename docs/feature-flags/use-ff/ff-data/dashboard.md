@@ -2,6 +2,8 @@
 title: Use the FF dashboard
 description: This topic describes how to use, copy, and edit the Feature Flags dashboard.
 sidebar_position: 5
+redirect_from:
+  - /docs/feature-flags/ff-data/dashboard
 ---
 
 Feature Flags comes with an out-of-the-box dashboard that provides various aggregated views of data about your flags at an organization level. This includes flags across all projects and environments in an organization. 

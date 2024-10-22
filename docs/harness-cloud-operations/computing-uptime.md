@@ -152,11 +152,13 @@ All the Platform SLIs are applicable here.
 ## Security Test Orchestration 
 All the Platform SLIs are applicable here. Pipeline relevant if the STO use case is tied to a pipeline. 
 
-| **SLI**         | **Threshold**                           | **Availability**|
-|-------------------------------------------|-----------------|-----------------------------------------|
-| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
-| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
-| Security Step Executions Failures | 25% increase in security stage execution failures in a rolling window of 5 mins |Partial outage|
+| **Component**  | **SLI**        | **Threshold**                                   | **Availability**        |
+|----------------|----------------|-------------------------------------------------|-------------------------|
+| STO APIs       | 4xx Error Rate | More than 5% over 5 min rolling window          | Possible Partial Outage |
+| STO APIs       | 5xx Error Rate | More than 1% over 5 min rolling window          | Partial Outage          |
+| STO APIs       | 5xx Error Rate | More than 5% over 5 min rolling window          | Major Outage            |
+| STO APIs       | Response Time  | 95th percentile: > 1s over 5 min rolling window | Degraded performance    |
+| Pipeline Steps | Security Step Execution Failures | 25% increase in security stage execution failures in a rolling window of 5 mins | Partial Outage |
 
 ## Continuous Error Tracking
 All the Platform SLIs are applicable here. 
@@ -219,7 +221,7 @@ All the Platform SLIs are applicable here.
 | | 10% of traffic generates 5xx error in a rolling window of 5 mins |Partial Outage|
 | | 2x of average latency in a rolling window of 5 mins |Degraded Performance|
 
-## Software Supply Chain Assurance
+## Supply Chain Security
 
 All the Platform and Pipeline SLIs are applicable here. 
 

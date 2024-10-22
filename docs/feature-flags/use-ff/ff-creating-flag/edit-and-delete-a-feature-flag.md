@@ -9,6 +9,8 @@ helpdocs_topic_id: u80hwpf1wq
 helpdocs_category_id: skrwlcueml
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-creating-flag/edit-and-delete-a-feature-flag
 ---
 
 ## Editing a Feature flag

@@ -72,6 +72,10 @@ This plugin exports three UI cards that you can show on the **Overview** tab of 
       md: 6
 ```
 
+![](./static/alerts_card.png)
+
+![](./static/dashboards_card.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set the following annotations in its `catalog-info.yaml` definition file.
@@ -125,7 +129,9 @@ metadata:
     grafana/tag-selector: "my-tag"
 ```
 
-[Read more](https://github.com/K-Phoen/backstage-plugin-grafana/blob/main/docs/dashboards-on-component-page.md)
+The aforementioned annotations are suitable for [displaying dashboards on a component page](https://github.com/K-Phoen/backstage-plugin-grafana/blob/main/docs/dashboards-on-component-page.md), you can as well [display alerts on a component page](https://github.com/K-Phoen/backstage-plugin-grafana/blob/main/docs/alerts-on-component-page.md) and [embed dashboards on a page](https://github.com/K-Phoen/backstage-plugin-grafana/blob/main/docs/embed-dashboards-on-page.md).
+
+[Read More](https://github.com/K-Phoen/backstage-plugin-grafana/blob/main/docs/index.md)
 
 ## Support
 

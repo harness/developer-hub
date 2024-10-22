@@ -6,6 +6,9 @@ helpdocs_topic_id: mmf7cu2owg
 helpdocs_category_id: y1oewjcb0q
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-sdks/client-sdks/flutter-sdk-reference 
+canonical_url: https://www.harness.io/blog/benefits-of-feature-flags
 ---
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'

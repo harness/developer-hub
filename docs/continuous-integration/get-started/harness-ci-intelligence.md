@@ -6,6 +6,12 @@ sidebar_position: 3
 
 Harness Continuous Integration (CI) Intelligence features are designed to smartly speed up builds and boost efficiency.
 
+## Build Intelligence
+
+[Build Intelligence](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence.md) is part of the suite of intelligent features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. Build Intelligence works by storing these outputs locally or remotely and retrieving them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency. 
+
+Build Intelligence in Harness CI is currently available for **Gradle** and **Bazel** with **Maven** support coming soon.
+
 ## Test Intelligence
 
 Testing is an important part of Continuous Integration. Testing safeguards the quality of your product before shipping. However, test cycles often involve many tests, and it can take a significant amount of time for the tests to run. Additionally, the tests that run might be irrelevant to the code changes that triggered the build.
@@ -61,8 +67,33 @@ You can use DLC with any [build infrastructure](/docs/continuous-integration/use
 
 When you use DLC with Harness CI Cloud, the cache is stored in the Harness-managed environment. When running builds in self-managed infrastructures, [configure S3-compatible  default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
 
+## Comparing Cache Intelligence, Docker Layer Caching, and Build Intelligence
+
+| Feature               | Description                                                                                                  | Purpose                                         | Context                      | Additional Details                                                                                     |
+|-----------------------|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------|------------------------------|-------------------------------------------------------------------------------------------------------|
+| **Docker Layer Caching (DLC)**   | Reuses previously built Docker image layers, building only what’s necessary.                               | Speeds up Docker image build and push steps     | Docker images                | Can be used with any build infrastructure; cache stored in Harness cloud environment or S3-compatible storage. |
+| **Cache Intelligence**     | Caches software dependencies (e.g., plugins) downloaded at the start of the build in a specific directory. | Caches dependencies to save download time       | Software dependencies         | Automatically caches and restores dependencies; works with any build infrastructure; stored in Harness cloud or S3-compatible storage. |
+| **Build Intelligence**            | Caches outputs of cacheable build tasks as identified by the build tool (e.g., Gradle tasks).            | Speeds up overall build process by reusing task outputs | Build outputs                | Available in Harness Cloud only, with support for self-hosted coming soon. Available for Gradle and Bazel, with Maven support coming soon.   |
+
+## Intelligence Savings 
+
+Harness Intelligence optimizes your build stages by reducing execution times and providing insights into where time savings are achieved. This section explains how the time savings are calculated and displayed, helping you understand the benefits of using Harness Intelligence features.
+:::note
+This feature is currently in beta, and is available with `CI_PARSE_SAVINGS` feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Below is a screenshot demonstrating the time savings for a **Build** stage using Cache Intelligence and Test Intelligence.
+
+![](./static/ci_stage_savings.png)
+
+### How is Build stage time saving calculated 
+
+Harness calculates time savings by comparing the duration of the Build stage before and after Harness intelligence time savings are observed. When you first run your pipeline with Harness Intelligence features, a full run is executed, creating a baseline duration for the Build stage without any smart optimizations.
+
+When Build stages are optimized with Intelligence features and savings are observed, the savings are shown compared to the baseline. A baseline can also be updated in subsequent runs where intelligence features are enabled but a full run (non-optimized) is executed. For example, depending on the code change, Test Intelligence may choose to run all tests, generating a new baseline.
 
 
-<!-- ## Build Intelligence -->
+:::note
+If a stage contains parallel steps, the reported savings will be based on the CPU time saved by each parallel step from previous non-optimized runs. However, these savings are not reflective of wall clock time. Therefore, summing the CPU time savings may not accurately represent the actual time saved in minutes. Additionally, any changes in the stage logic, such as adding or removing steps, can impact the accuracy of time savings calculations.
+:::
 
-<!-- Build Cache feature. Caches outputs (like artifacts) rather than inputs (like Cache Intelligence) or image layers (like DLC). -->

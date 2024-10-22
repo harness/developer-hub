@@ -469,6 +469,15 @@ Use the following Harness OIDC provider endpoint and OIDC audience settings to c
 * Harness OIDC provider endpoint: `https://app.harness.io/ng/api/oidc/account/<ACCOUNT_ID>`
 * OIDC audience: `sts.amazonaws.com`
 
+### Supported Swimlanes
+
+These are the current supported deployment swimlanes for AWS OIDC:
+
+- ECS
+- Kubernetes
+- Terraform
+- CloudFormation
+
 ### Enhanced Subject
 
 :::info
@@ -558,6 +567,35 @@ Here are the custom parameters for the Harness AWS OIDC JWT:
     }
 }
 ```
+
+</details>
+
+<details>
+<summary> Sample IAM policy scoped to a specific project or organization </summary>
+
+This example policy enables scoping to a specific project or organization for authentication through an OIDC provider.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::156272853481:oidc-provider/app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringEquals": {
+                    "app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg:aud": "sts.amazonaws.com",
+                    "app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg:sub": "account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/OIDC_Test"
+                }
+            }
+        }
+    ]
+}
+```
+You can match only the aud or sub. To map to a particular organization and project, you must enable the feature flag `PL_OIDC_ENHANCED_SUBJECT_FIELD` . The subject value will follow the format shown above: `account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/OIDC_Test`.
 
 </details>
 

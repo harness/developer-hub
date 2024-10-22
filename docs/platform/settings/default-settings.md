@@ -54,7 +54,7 @@ To access the Default Settings at the Project scope:
 </TabItem>
 </Tabs>
 
-On the **Default Settings** screen, settings are divided into Platform (General), cross-module feature (Connectors, Notifications, Pipelines, AIDA), and module-specific settings (CCM, CD, Git Experience, SSCA).
+On the **Default Settings** screen, settings are divided into Platform (General), cross-module feature (Connectors, Notifications, Pipelines, AIDA), and module-specific settings (CCM, CD, Git Experience, SCS).
 
 Expand each section to configure the settings in that section. Available settings vary by scope.
 
@@ -93,7 +93,29 @@ These settings are for the Harness CD module.
 - **Disable addition of Harness track selector in Kubernetes deployments:** During canary deployments, Harness adds a selector (`harness.io/track: stable`) in deployment objects during the rolling deployment phase. If there are pre-existing deployment objects in the cluster (not deployed by Harness), this can cause an errors. For more information, go to [Skip Harness label selector tracking on Kubernetes deployments](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/skip-harness-label-selector-tracking-on-kubernetes-deployments).
 - **Ignore status code for HTTP connections:** This setting is only relevant for HTTP steps and HTTP Helm repositories. When enabled, Harness only requires a valid response from the target HTTP server and does not verify the response code. This is useful when the Harness Delegate is configured with a proxy, because socket connection tests conducted by Harness from the delegate do not account for proxy details.
 
+### Pre Flight check
+
+Pre Flight check includes a series of check on the Pipeline such as verifying Pipeline YAML, accessibility of connectors, services, secrets and others. 
+
+**Skip Pre Flight** is not checked by default in the Pipeline Run Form that means that the Pre Flight checks do not run by default.
+
+![](./static/skip_pre_flight_check.png)
+
+You can enable Pre Flight Check by default by following these steps:
+
+:::info note
+This change is behind the FF `CDS_REMOVE_CONNECTOR_HEARTBEAT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
+If the FF `CDS_REMOVE_CONNECTOR_HEARTBEAT` is enabled then you will be able to see the default setting **Run Pre Flight checks by Default for Pipeline Execution** in Pipeline settings.
+
+![](./static/prelight_setting.png)
+
+If this setting is enabled **Skip Pre Flight** will be checked by default.
+
 ### Continuous Integration
+
+#### S3-Compatible Object Store for Self-Managed Build Infrastructure
 
 :::note
 
@@ -120,6 +142,12 @@ Self-managed build infrastructure is any [build infrastructure](/docs/continuous
 This doesn't apply to Harness CI Cloud because, when you use Harness CI Cloud with Harness-managed caches, Harness uses Harness-hosted Harness Cloud storage.
 
 :::
+
+#### Upload Logs Via Harness
+
+When set to `True`, CI step execution logs will route  through Harness' log service instead of getting uploaded directly to the object store (GCS bucket). This is useful if your network settings do not allow direct access to the object store. 
+By Default, Upload Logs Via Harness is set to `False`. This is an account level setting only, it cannot be overriden in organization or project default settings. 
+**Note:** Enabling this setting may introduce some latency in log uploads so we advise to only use this option if truly needed. 
 
 ### Git Experience
 

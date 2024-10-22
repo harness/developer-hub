@@ -6,6 +6,7 @@ helpdocs_topic_id: qghequ5vxu
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/automate-your-ci-cd-pipeline-using-triggers
 ---
 
 This topic shows you how to create and run custom triggers for your Harness pipelines using platform-agnostic Webhooks and cURL commands.
@@ -393,20 +394,20 @@ To skip authorization omit the `-H 'X-Api-Key: sample_api_key'` parameter.
 Adding authorization is only supported for `/v3` webhook endpoints. For that reason, all the curl commands in this section use `/v3` endpoints.
 :::
 
-### Enforcing authorization for custom triggers
+### Enforce authorization for custom triggers
 
-You can require that all custom triggers in this Harness account use API key tokens.
+You may **Mandate Authorization for Custom Webhook Triggers**. Doing this will mandate the use of an API key token in the header of all the custom webhooks in your account. If the setting is turned on, and an API token isn't provided, then the following error will occur:
+
+```
+{"status":"ERROR","code":"INVALID_REQUEST","message":"Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request","correlationId":"465d6463-152b-4211-8cb5-6bcc2538afa8","detailedMessage":null,"responseMessages":[{"code":"INVALID_REQUEST","level":"ERROR","message":"Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request","exception":null,"failureTypes":[]}],"metadata":null}
+```
+
+To enable this setting, do the following:
 
 1. In your Harness account, select **Account Settings**.
 2. Select **Account Resources**.
 3. Select **Default Settings**.
 4. In **Pipeline**, set **Mandate Authorization for Custom Webhook Triggers** to **true**.
-
-Now all custom triggers in this account must use an API key token or an authorization error is thrown when the cURL command is run.
-
-```
-{"status":"ERROR","code":"INVALID_REQUEST","message":"Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request","correlationId":"465d6463-152b-4211-8cb5-6bcc2538afa8","detailedMessage":null,"responseMessages":[{"code":"INVALID_REQUEST","level":"ERROR","message":"Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request","exception":null,"failureTypes":[]}],"metadata":null}
-```
 
 #### Allow overrides for custom trigger authorization
 
@@ -415,3 +416,13 @@ When the **Allow Overrides** box is selected at the account level, Harness users
 In a project, in **Default Settings** > **Pipeline**, you can set a different value for **Mandate Authorization for Custom Webhook Triggers**.
 
 If **Allow Overrides** is unchecked, then the value of the setting is propagated to all projects in the account.
+
+## Executions
+
+:::important note
+Currently this feature is behing the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+:::
+
+ **My Executions** filter on the listing page displays both manual executions and those triggered automatically by custom trigger i.e execution executed by custom trigger/curl command and manually execution pipeline execution will appear in the My Execution list. 
+ 
+But to display execution triggered by custom webhook trigger it must have a authorization i.e X-API-key should be present

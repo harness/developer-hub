@@ -2,6 +2,8 @@
 title: Sample cURL Requests
 description: This topic contains some example curl requests that can be useful for debugging
 sidebar_position: 110
+redirect_from:
+  - /docs/feature-flags/relay-proxy/sample_curl_requests
 ---
 
 These requests can be useful to debug information coming from Harness SaaS or from the Relay Proxy.

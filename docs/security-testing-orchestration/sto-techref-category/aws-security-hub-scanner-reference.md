@@ -18,9 +18,8 @@ You can scan your configurations and ingest the scan results from [AWS Security 
 
 - This integration supports session-based authentication with AWS. You can pass the token as a key-value pair in the [Settings](#settings) field.
 
-- If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. 
-
-- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+- You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+- STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
@@ -125,4 +124,8 @@ You can use this to add environment variables to your scan environment. To enabl
 
  <DocImage path={require('./static/aws-security-hub-session-token.png')} width="70%" height="70%" title="Add AWS_SESSION_TOKEN to enable session-based authentication" />  
 
+## Proxy settings
 
+import ProxySettings from '/docs/security-testing-orchestration/sto-techref-category/shared/proxy-settings.md';
+
+<ProxySettings />

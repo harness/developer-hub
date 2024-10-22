@@ -46,4 +46,26 @@ export const ilt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },
+  {
+    title: "Software Engineering Insights",
+    module: MODULES.sei,
+    type: type.user,
+    description:
+      "Deep dive into advanced Software Engineering Insights concepts across the SDLC.",
+    version: "Harness SEI Enterprise Plan",
+    link: "https://university-registration.harness.io/ilt-software-engineering-insights",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
+  {
+    title: "Cloud Cost Management",
+    module: MODULES.ccm,
+    type: type.user,
+    description:
+      "Deep dive into advanced Cloud Cost Management concepts supporting FinOps.",
+    version: "Harness CCM Enterprise Plan",
+    link: "https://university-registration.harness.io/ilt-cloud-cost-management",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
 ];

@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference
+canonical_url: https://www.harness.io/blog/github-actions-support-harness-ci
 ---
 
 This topic provides settings information for triggers. Triggers are used to initiate the execution of pipelines.
@@ -22,47 +23,47 @@ There is a YAML editor for triggers. When creating or editing a trigger, switch 
 Here's an example of the YAML for a GitLab webhook trigger.
 
 ```yaml
-trigger:  
-    name: GitlabNewTrigger  
-    identifier: GitlabNewTrigger  
-    enabled: true  
-    description: ""  
-    tags: {}  
-    orgIdentifier: default  
-    projectIdentifier: NewProject  
-    pipelineIdentifier: testpp  
-    source:  
-        type: Webhook  
-        spec:  
-            type: Gitlab  
-            spec:  
-                type: MergeRequest  
-                spec:  
-                    connectorRef: gitlab  
-                    autoAbortPreviousExecutions: true  
-                    payloadConditions:  
-                        - key: <+trigger.payload.user.username>  
-                          operator: In  
-                          value: john, doe.john  
-                    headerConditions:  
-                        - key: <+trigger.header['X-Gitlab-Event']>  
-                          operator: Equals  
-                          value: Merge Request Hook  
-                    jexlCondition: (<+trigger.payload.user.username> == "doe" || <+trigger.payload.user.username> == "doe.john") && <+trigger.header['X-Gitlab-Event']> == "Merge Request Hook"  
-                    actions: []  
-    inputYaml: |  
-        pipeline:  
-            identifier: testpp  
-            properties:  
-                ci:  
-                    codebase:  
-                        build:  
-                            type: branch  
-                            spec:  
-                                branch: <+trigger.branch>  
-            variables:  
-                - name: testVar  
-                  type: String  
+trigger:
+    name: GitlabNewTrigger
+    identifier: GitlabNewTrigger
+    enabled: true
+    description: ""
+    tags: {}
+    orgIdentifier: default
+    projectIdentifier: NewProject
+    pipelineIdentifier: testpp
+    source:
+        type: Webhook
+        spec:
+            type: Gitlab
+            spec:
+                type: MergeRequest
+                spec:
+                    connectorRef: gitlab
+                    autoAbortPreviousExecutions: true
+                    payloadConditions:
+                        - key: <+trigger.payload.user.username>
+                          operator: In
+                          value: john, doe.john
+                    headerConditions:
+                        - key: <+trigger.header['X-Gitlab-Event']>
+                          operator: Equals
+                          value: Merge Request Hook
+                    jexlCondition: (<+trigger.payload.user.username> == "doe" || <+trigger.payload.user.username> == "doe.john") && <+trigger.header['X-Gitlab-Event']> == "Merge Request Hook"
+                    actions: []
+    inputYaml: |
+        pipeline:
+            identifier: testpp
+            properties:
+                ci:
+                    codebase:
+                        build:
+                            type: branch
+                            spec:
+                                branch: <+trigger.branch>
+            variables:
+                - name: testVar
+                  type: String
                   value: alpine
 ```
 
@@ -124,7 +125,7 @@ Select Git events and, if applicable, one or more actions that will initiate the
 | **GitLab** | Merge Request | Select one or more of the following:<ul><li>Open</li><li>Close</li><li>Reopen</li><li>Merge</li><li>Update</li><li>Sync</li></ul> |
 | | Merge Request Comment | Create |
 | | Push | GitLab push triggers respond to commit and tag creation actions by default. |
-| **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul><br/>This event type doesn't support PRs attempting to merge Bitbucket forked repos into the original, base repo if the base repo is configured as the pipeline's codebase. For more information, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers). |
+| **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul><br/>This event type doesn't support PRs attempting to merge Bitbucket forked repos into the original, base repo if the base repo is configured as the pipeline's codebase. For more information, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines#troubleshoot-git-event-triggers). |
 | | Pull Request Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> Note that this event type is currently supported only for Bitbucket cloud, and not for Bitbucket on-premises triggers. |
 | | Push | Bitbucket Cloud push triggers respond to commit and tag creation actions by default. |
 | **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul><br/>This event type doesn't support the **Changed Files** [condition](#branch-and-changed-files-conditions), because the Azure DevOps API doesn't provide a mechanism to fetch files in a PR. |
@@ -412,7 +413,7 @@ The JEXL `in` operator is not supported in the **JEXL Condition** field.
 
 ## Pipeline Input
 
-When executing pipelines using triggers, you can select stages and provide input sets dynamically. 
+When executing pipelines using triggers, you can select stages and provide input sets dynamically.
 
 Select **Pipeline Stages** to execute pipelines using triggers. This can be a fixed value or an expression.
 
@@ -420,7 +421,7 @@ Select **Pipeline Stages** to execute pipelines using triggers. This can be a fi
 
 If you select fixed value for pipeline stages, all stages in the pipeline are dispalyed. Select a stage or all stages that you want to execute using the trigger.
 
-For input sets, in **Pipeline Input**, select or create the input set to use when the trigger executes the pipeline. 
+For input sets, in **Pipeline Input**, select or create the input set to use when the trigger executes the pipeline.
 
 ### Select pipeline stages and input sets using expressions
 
@@ -430,7 +431,7 @@ In **Pipeline Input**, select or create the input set using expressions. Here's 
 
 ![](./static/create-input-set.png)
 
-Here's is a sample trigger YAML:  
+Here's is a sample trigger YAML:
 
 ```yaml
 trigger:
@@ -467,7 +468,7 @@ trigger:
   inputSetRefs: <+<+trigger.payload.input_set_refs>.split(",")>
 
 ```
-Here's a sample trigger payload:   
+Here's a sample trigger payload:
 
 
 ```yaml
@@ -481,7 +482,7 @@ Here's a sample trigger payload:
 ### Important notes when using expressions
 
 * If the value provided for the input set YAML reference is an expression, Harness checks for the key `input_set_refs` in the trigger payload and uses the value provided there.
-* RBAC for input sets cannot be considered in pipelines executed by triggers as Harness won't know which user executed the pipeline using triggers. 
+* RBAC for input sets cannot be considered in pipelines executed by triggers as Harness won't know which user executed the pipeline using triggers.
 * Limitation: You cannot pass the stages or inputRefs as an expression in the trigger payload.
 
 
@@ -558,12 +559,10 @@ import TabItem from '@theme/TabItem';
 
 ### Manual and custom webhook registration
 
-Use the manual webhook registration process if [automatic webhook registration fails](./triggering-pipelines/#common-causes-of-webhook-registration-failure) or is impossible (as with custom webhooks).
+Use the manual webhook registration process if [automatic webhook registration fails](/docs/platform/triggers/triggering-pipelines#common-causes-of-webhook-registration-failure) or is impossible (as with custom webhooks).
 
 :::info
-
 Harness Self-Managed Enterprise Edition does not support webhook triggers for Helm-based installations using self-signed certificates.
-
 :::
 
 1. In Harness, obtain the trigger webhook by selecting the **Webhook/Link** icon in the list of triggers.

@@ -62,4 +62,20 @@
 # Added by ravilach on 7-11-2024 for Broken FF Category 
 /docs/category/use-feature-flag-sdks /docs/category/use-ff-sdks
 
+#Added by ravilach temp on 8-26-2024 for Unscripted
+/unscripted https://play.instruqt.com/harness/invite/odjkrnp3nbcz
+
+# Added by sushrutharness on 8-29-2024 for broken AWS category
+/docs/continuous-delivery/deploy-srv-diff-platforms/aws /docs/category/aws
+
+# Added by tejakummarikuntla on 9-3-2024 for SSCA to SCS refactoring
+/docs/category/get-started-with-ssca /docs/category/get-started-with-scs
+
+# Added by tejakummarikuntla on 10-14-2024 for renaming the document: "Configure pipeline to use STO images from private registry"
+/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry /docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry
+
+# Added by Debanitrkl on 10-10-2024 for CDE redirects
+
+/docs/cloud-development-environment /docs/cloud-development-environments 
+
 # Redirects generated from Front Matter [sytem generated goes below here]:

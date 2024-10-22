@@ -1,0 +1,10 @@
+{
+  "position": 3,
+  "label": "ChaosHub",
+  "collapsible": "true",
+  "collapsed": "true",
+  "customProps": {
+    "description": "Collection of experiment templates (defined as workflow CRs) and faults (defined as ChaosExperiment CR and ChaosEngine CR) that help create and execute new chaos experiments against your target resources."
+  }
+}
+

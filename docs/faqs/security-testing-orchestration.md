@@ -107,7 +107,7 @@ STO identifies an issue as "new" like this:
 
 When Harness acquired ZeroNorth in 2021, the STO development team used Docker-in-Docker to speed up the integration between the ZeroNorth and Harness platforms. Some scanners explicitly require Docker-in-Docker, which requires Privileged mode.
 
-On March 14, 2023, Harness introduced a set of new UIs (scanner templates) for Aqua Trivy, Bandit, SonarQube, and other popular scanners. These steps do not require Docker-in-Docker *unless* you are scanning a container image on Kubernetes or Docker build infrastructures. For more information, go to [Docker-in-Docker requirements for STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto).
+On March 14, 2023, Harness introduced a set of new UIs (scanner templates) for Aqua Trivy, Bandit, SonarQube, and other popular scanners. These steps do not require Docker-in-Docker *unless* you are scanning a container image on Kubernetes or Docker build infrastructures. For more information, go to [Docker-in-Docker requirements for STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline).
 
 :::info
 Harness is currently working to remove this requirement for other scanners that don't need it and to provide other ways to orchestrate scans.

@@ -6,6 +6,7 @@ helpdocs_topic_id: 9op1u6dgks
 helpdocs_category_id: 4o8zim2tfr
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/blue-green-canary-deployment-strategies
 ---
 
 Currently, this feature is behind the Feature Flag `AZURE_VMSS`. Contact [Harness Support](https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=support@harness.io) to enable the feature. A [Blue/Green](../../concepts-cd/deployment-types/deployment-concepts-and-strategies.md) virtual machine scale set (VMSS) deployment uses a load balancer with two backend pools: one production pool and one stage pool. You identify the pools during Workflow setup.

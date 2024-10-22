@@ -19,7 +19,7 @@ Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Conta
 
 :::warning
 
-**Harness recommends [Harness Cloud](../use-harness-cloud-build-infrastructure) for macOS builds.**
+**Harness recommends [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) for macOS builds.**
 
 This recommendation is due to licensing requirements and the complexity of managing macOS VMs with Anka virtualization.
 

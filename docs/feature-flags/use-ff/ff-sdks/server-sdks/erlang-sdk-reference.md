@@ -2,6 +2,9 @@
 title: Erlang SDK reference
 description: This topic describes how to use the Harness Feature Flags Erlang SDK. For getting started quickly, you can use our sample code from the Erlang SDK README.
 sidebar_position: 15
+redirect_from:
+  - /docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference
+canonical_url: https://www.harness.io/blog/erlang-elixir-sdk-now-available-harness-feature-flags
 ---
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'

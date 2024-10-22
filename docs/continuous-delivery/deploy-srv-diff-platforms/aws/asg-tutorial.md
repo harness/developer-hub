@@ -1260,6 +1260,15 @@ During rollback of the first deployment, Harness deletes the ASG.
 
 During rollback of subsequent deployments, Harness reverts the ASG to the previous state of ASG before deployment.
 
+:::info note
+
+During the rollback of the first deployment, Harness restores the ASG template version to the state of the last successful run without deleting it. This enhancement eliminates the downtime caused by the instance refresh during rollbacks, ensuring continuous service availability.
+The minimum required delegate version to use this feature is `83900`.
+
+Currently, this feature is behind the feature flag `CDS_ASG_ROLLOUT_ROLLBACK_INSTANCE_REFRESH`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
+:::
+
 Harness stores configurations of the ASG you are deploying twice: 
 - First storage: Harness stores the ASG configuration at the start of deployment for rollback *during deployment*.
 - Second storage: Harness stores the ASG configuration at the end of deployment for rollbacks *post deployment*.
@@ -1385,12 +1394,6 @@ You can create a multi-phase workflow that progressively deploy your new instanc
 When you select the Canary execution strategy for your pipeline, make sure to select the **Add Multi Phase Canary Steps** to enable phased deployment. 
 
 ![ASG phased execution](./static/asg-phased-execution.png)
-
-
-:::important
-Currently, this feature is behind the feature flag, `CDS_ASG_PHASED_DEPLOY_FEATURE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 
 A phased deployment uses two step groups:  
 1. A Canary phase containing steps that define your ASG, deploy a percentage or partial count of the ASG's instances, and verify this partial deployment. You can add more Canary phases that expand the partial deployment.
@@ -1572,10 +1575,10 @@ The ASG Blue Green Deploy step has the following settings:
 - **Same as already running Instances** or **Fixed**:
   - Select **Fixed** to enforce a Max, Min, and Desired number of instances.Select **Same as already running Instances** to use scaling settings on the last ASG deployed by this Harness pipeline. If this is the first deployment and you select **Same as already running Instances**, Harness uses a default of Min 0, Desired 6, and Max 10. Harness does not use the Min, Max, and Desired settings of the base ASG.
 - **Load Balancer:** select the load balancer(s) to use.
-- **Prod Listener:** select the listener to use for prod traffic.
-- **Prod Listener Rule ARN:** select the ARN for the prod listener rule. 
-- **Stage Listener:** select the listener to use for stage traffic.
-- **Stage Listener Rule ARN:** select the ARN for the stage listener rule.
+- **Prod Listener:** provide the ARN for the listener to be used for prod traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]]`)
+- **Prod Listener Rule ARN:** provide the ARN for the listener rule to be used for prod traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]/[ruleref]]`)
+- **Stage Listener:** provide the ARN for the listener to be used for staging traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]]`)
+- **Stage Listener Rule ARN:** provide the ARN for the listener rule to be used for staging traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]/[ruleref]]`)
   
   :::important
   There is only one listener rule for both target groups (stage and prod), and one listener ARN for a listener rule. Go to [AWS requirements](#aws-requirements) for more information.

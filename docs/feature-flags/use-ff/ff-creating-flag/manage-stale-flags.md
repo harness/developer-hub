@@ -2,6 +2,8 @@
 title: Manage stale flags
 description: Identify and automatically open pull requests to remove stale feature flags from your code.
 sidebar_position: 35
+redirect_from:
+  - /docs/feature-flags/ff-creating-flag/manage-stale-flags
 ---
 
 ## Manage stale flags

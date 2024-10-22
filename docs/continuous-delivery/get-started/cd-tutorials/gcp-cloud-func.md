@@ -141,6 +141,143 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
    - Select **Save**.
 
 <Tabs queryString="interface2g">
+<TabItem value="ui2g" label="UI">
+
+### Connectors
+
+<details>
+<summary>What are connectors?</summary>
+
+Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](/docs/category/connectors).
+
+</details>
+
+1. Create the **GitHub connector**.
+   - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/github-connector.yml).
+   - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
+   - Select **Create via YAML Builder** and paste the copied YAML.
+   - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace `GITHUB_USERNAME` with your GitHub account username in the YAML.
+   - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
+   - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
+   - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
+2. Create the **GCP connector**.
+   - Copy the contents of [gcp-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/gcp-connector.yml).
+   - In your Harness project, under **Project Setup**, select **Connectors**.
+   - Select **Create via YAML Builder** and and paste the copied YAML.
+   - Select **Save Changes** and verify that the new connector named **gcpconnector** is successfully created.
+   - Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
+
+### Environment
+
+<details>
+<summary>What are Harness environments?</summary>
+
+Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
+
+</details>
+
+1. In your Harness project, select **Environments**.
+   - Select **New Environment**, and then select **YAML**.
+   - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/environment.yml), paste it into the YAML editor, and select **Save**.
+   - In your new environment, select the **Infrastructure Definitions** tab.
+   - Select **Infrastructure Definition**, and then select **YAML**.
+   - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/infrastructure-definition.yml) and paste it into the YAML editor.
+   - Replace `CLOUD PROJECT NAME` with your GCP project name.
+   - Replace `REGION` with your GCP region name.
+   - Select **Save** and verify that the environment and infrastructure definition are created successfully.
+
+### Services
+
+<details>
+<summary>What are Harness services?</summary>
+
+In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
+
+</details>
+
+1. In your Harness project, select **Services**.
+   - Select **New Service**.
+   - Enter the name `hello_http`.
+   - Select **Save**, and then **YAML** (on the **Configuration** tab).
+   - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd_gen/service.yml), and paste the into the YAML editor.
+   - Replace `CLOUD PROJECT NAME` with your GCP project name.
+   - Replace `CLOUD BUCKET NAME` with your GCP bucket name.
+   - Select **Save**, and verify that the service **hello_http** is successfully created.
+
+### Pipeline
+
+<details>
+<summary>What are Harness pipelines?</summary>
+
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact/function deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
+
+</details>
+
+1. In your Harness project, select **Pipelines**.
+   - Select **Create a Pipeline**.
+   - Enter the name `hello_http`.
+   - Select **Inline** to store the pipeline in Harness.
+   - Select **Start**.
+   - In **Pipeline Studio**, select **YAML**.
+   - Select **Edit YAML** and choose any of the following execution strategies. Paste the respective YAML based on your selection.
+
+<Tabs queryString="deployment1g">
+<TabItem value="canary1g" label="Canary">
+
+<details>
+<summary>What are Canary deployments?</summary>
+
+A canary deployment updates nodes/functions/etc. in a single environment gradually, allowing you to use gates between increments and shift traffic as needed. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
+
+</details>
+
+1. Copy the contents of [canary-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd_gen/canary-pipeline.yml).
+2. In your Harness pipeline YAML editor, paste the YAML.
+3. Select **Save**.
+   You can switch to the **Visual** editor and confirm the pipeline stage and execution steps as shown below.
+
+<DocImage path={require('./static/harness-cicd-tutorial/canary-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
+
+</TabItem>
+<TabItem value="bg1g" label="Blue Green">
+
+<details>
+<summary>What are Blue Green deployments?</summary>
+
+Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a **new** service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service/function version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
+
+</details>
+
+1. Copy the contents of [bluegreen-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd_gen/bluegreen-pipeline.yml).
+2. In your Harness pipeline YAML editor, paste the YAML.
+3. Select **Save**.
+
+   You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
+
+<DocImage path={require('./static/harness-cicd-tutorial/bluegreen-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
+
+</TabItem>
+<TabItem value="basic1g" label="Basic">
+
+<details>
+<summary>What are Basic deployments?</summary>
+
+For Google Cloud Functions, the basic deployment execution strategy deploys the new function version and routes 100% of traffic from the old version to the new function version.
+
+</details>
+
+1. Copy the contents of [basic-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd_gen/basic-pipeline.yml).
+2. In your Harness pipeline YAML editor, paste the YAML.
+3. Select **Save**.
+
+   You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
+
+   <DocImage path={require('./static/harness-cicd-tutorial/rolling-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
+
+</TabItem>
+</Tabs>
+
+</TabItem>
 <TabItem value="cli2g" label="CLI">
 
 1. Download and configure the Harness CLI.
@@ -340,143 +477,6 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
 </Tabs>
 
 </TabItem>
-<TabItem value="ui2g" label="UI">
-
-### Connectors
-
-<details>
-<summary>What are connectors?</summary>
-
-Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](/docs/category/connectors).
-
-</details>
-
-1. Create the **GitHub connector**.
-   - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/github-connector.yml).
-   - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and paste the copied YAML.
-   - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace `GITHUB_USERNAME` with your GitHub account username in the YAML.
-   - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
-   - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
-   - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
-2. Create the **GCP connector**.
-   - Copy the contents of [gcp-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/gcp-connector.yml).
-   - In your Harness project, under **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and and paste the copied YAML.
-   - Select **Save Changes** and verify that the new connector named **gcpconnector** is successfully created.
-   - Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
-
-### Environment
-
-<details>
-<summary>What are Harness environments?</summary>
-
-Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
-
-</details>
-
-1. In your Harness project, select **Environments**.
-   - Select **New Environment**, and then select **YAML**.
-   - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/environment.yml), paste it into the YAML editor, and select **Save**.
-   - In your new environment, select the **Infrastructure Definitions** tab.
-   - Select **Infrastructure Definition**, and then select **YAML**.
-   - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/infrastructure-definition.yml) and paste it into the YAML editor.
-   - Replace `CLOUD PROJECT NAME` with your GCP project name.
-   - Replace `REGION` with your GCP region name.
-   - Select **Save** and verify that the environment and infrastructure definition are created successfully.
-
-### Services
-
-<details>
-<summary>What are Harness services?</summary>
-
-In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
-
-</details>
-
-1. In your Harness project, select **Services**.
-   - Select **New Service**.
-   - Enter the name `hello_http`.
-   - Select **Save**, and then **YAML** (on the **Configuration** tab).
-   - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd_gen/service.yml), and paste the into the YAML editor.
-   - Replace `CLOUD PROJECT NAME` with your GCP project name.
-   - Replace `CLOUD BUCKET NAME` with your GCP bucket name.
-   - Select **Save**, and verify that the service **hello_http** is successfully created.
-
-### Pipeline
-
-<details>
-<summary>What are Harness pipelines?</summary>
-
-A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact/function deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
-
-</details>
-
-1. In your Harness project, select **Pipelines**.
-   - Select **Create a Pipeline**.
-   - Enter the name `hello_http`.
-   - Select **Inline** to store the pipeline in Harness.
-   - Select **Start**.
-   - In **Pipeline Studio**, select **YAML**.
-   - Select **Edit YAML** and choose any of the following execution strategies. Paste the respective YAML based on your selection.
-
-<Tabs queryString="deployment1g">
-<TabItem value="canary1g" label="Canary">
-
-<details>
-<summary>What are Canary deployments?</summary>
-
-A canary deployment updates nodes/functions/etc. in a single environment gradually, allowing you to use gates between increments and shift traffic as needed. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
-
-</details>
-
-1. Copy the contents of [canary-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd_gen/canary-pipeline.yml).
-2. In your Harness pipeline YAML editor, paste the YAML.
-3. Select **Save**.
-   You can switch to the **Visual** editor and confirm the pipeline stage and execution steps as shown below.
-
-<DocImage path={require('./static/harness-cicd-tutorial/canary-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
-
-</TabItem>
-<TabItem value="bg1g" label="Blue Green">
-
-<details>
-<summary>What are Blue Green deployments?</summary>
-
-Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a **new** service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service/function version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
-
-</details>
-
-1. Copy the contents of [bluegreen-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd_gen/bluegreen-pipeline.yml).
-2. In your Harness pipeline YAML editor, paste the YAML.
-3. Select **Save**.
-
-   You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
-
-<DocImage path={require('./static/harness-cicd-tutorial/bluegreen-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
-
-</TabItem>
-<TabItem value="basic1g" label="Basic">
-
-<details>
-<summary>What are Basic deployments?</summary>
-
-For Google Cloud Functions, the basic deployment execution strategy deploys the new function version and routes 100% of traffic from the old version to the new function version.
-
-</details>
-
-1. Copy the contents of [basic-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd_gen/basic-pipeline.yml).
-2. In your Harness pipeline YAML editor, paste the YAML.
-3. Select **Save**.
-
-   You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
-
-   <DocImage path={require('./static/harness-cicd-tutorial/rolling-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
-
-</TabItem>
-</Tabs>
-
-</TabItem>
 </Tabs>
 
 Finally, it's time to execute your pipeline.
@@ -567,6 +567,102 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
    - Select **Save**.
 
 <Tabs queryString="interface1g">
+<TabItem value="ui1g" label="UI">
+
+### Connectors
+
+<details>
+<summary>What are connectors?</summary>
+
+Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. Explore connector how-tos [here](/docs/category/connectors).
+
+</details>
+
+1. Create the **GitHub connector**.
+   - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/github-connector.yml)
+   - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
+   - Select **Create via YAML Builder** and paste the copied YAML.
+   - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
+   - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
+   - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
+   - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
+2. Create the **GCP connector**.
+   - Copy the contents of [gcp-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/gcp-connector.yml).
+   - In your Harness project, under **Project Setup**, select **Connectors**.
+   - Select **Create via YAML Builder** and and paste the copied YAML.
+   - Select **Save Changes** and verify that the new connector named **gcpconnector** is successfully created.
+   - Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
+
+### Environment
+
+<details>
+<summary>What are Harness environments?</summary>
+
+Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
+
+</details>
+
+1. In your Harness project, select **Environments**.
+   - Select **New Environment**, and then select **YAML**.
+   - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/environment.yml), paste it into the YAML editor, and select **Save**.
+   - In your new environment, select the **Infrastructure Definitions** tab.
+   - Select **Infrastructure Definition**, and then select **YAML**.
+   - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/infrastructure-definition.yml) and paste it into the YAML editor.
+   - Replace `CLOUD PROJECT NAME` with your GCP project name.
+   - Replace `REGION` with your GCP region name.
+   - Select **Save** and verify that the environment and infrastructure definition are created successfully.
+
+### Services
+
+<details>
+<summary>What are Harness services?</summary>
+
+In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
+
+</details>
+
+1. In your Harness project, select **Services**.
+   - Select **New Service**.
+   - Enter the name `hello_world`.
+   - Select **Save**, and then **YAML** (on the **Configuration** tab).
+   - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/1st_gen/service.yml), and paste the into the YAML editor.
+   - Replace `CLOUD PROJECT NAME` with your GCP project name.
+   - Replace `CLOUD BUCKET NAME` with your GCP bucket name.
+   - Select **Save**, and verify that the service **hello_world** is successfully created.
+
+### Pipeline
+
+<details>
+<summary>What are Harness pipelines?</summary>
+
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact/function deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
+
+</details>
+
+1. In your Harness project, select **Pipelines**.
+   - Select **Create a Pipeline**.
+   - Enter the name `hello_world`.
+   - Select **Inline** to store the pipeline in Harness.
+   - Select **Start**.
+   - In **Pipeline Studio**, select **YAML**.
+   - Select **Edit YAML** and Paste the below Rolling deployment YAML.
+
+<details>
+<summary>What are Basic deployments?</summary>
+
+For Google Cloud Functions, the basic deployment execution strategy deploys the new function version and routes 100% of traffic from the old version to the new function version.
+
+</details>
+
+1. Copy the contents of [basic-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/1st_gen/basic-pipeline.yml).
+2. In your Harness pipeline YAML editor, paste the YAML.
+3. Select **Save**.
+
+   You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
+
+<DocImage path={require('./static/harness-cicd-tutorial/rolling_gen1.png')} width="60%" height="60%" title="Click to view full size image" />
+
+</TabItem>
 <TabItem value="cli1g" label="CLI">
 
 1. Download and Configure Harness CLI.
@@ -716,102 +812,6 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
 
 2. You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
    <DocImage path={require('./static/harness-cicd-tutorial/rolling-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
-
-</TabItem>
-<TabItem value="ui1g" label="UI">
-
-### Connectors
-
-<details>
-<summary>What are connectors?</summary>
-
-Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. Explore connector how-tos [here](/docs/category/connectors).
-
-</details>
-
-1. Create the **GitHub connector**.
-   - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/github-connector.yml)
-   - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and paste the copied YAML.
-   - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
-   - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
-   - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
-   - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
-2. Create the **GCP connector**.
-   - Copy the contents of [gcp-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/gcp-connector.yml).
-   - In your Harness project, under **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and and paste the copied YAML.
-   - Select **Save Changes** and verify that the new connector named **gcpconnector** is successfully created.
-   - Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
-
-### Environment
-
-<details>
-<summary>What are Harness environments?</summary>
-
-Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
-
-</details>
-
-1. In your Harness project, select **Environments**.
-   - Select **New Environment**, and then select **YAML**.
-   - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/environment.yml), paste it into the YAML editor, and select **Save**.
-   - In your new environment, select the **Infrastructure Definitions** tab.
-   - Select **Infrastructure Definition**, and then select **YAML**.
-   - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/infrastructure-definition.yml) and paste it into the YAML editor.
-   - Replace `CLOUD PROJECT NAME` with your GCP project name.
-   - Replace `REGION` with your GCP region name.
-   - Select **Save** and verify that the environment and infrastructure definition are created successfully.
-
-### Services
-
-<details>
-<summary>What are Harness services?</summary>
-
-In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
-
-</details>
-
-1. In your Harness project, select **Services**.
-   - Select **New Service**.
-   - Enter the name `hello_world`.
-   - Select **Save**, and then **YAML** (on the **Configuration** tab).
-   - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/1st_gen/service.yml), and paste the into the YAML editor.
-   - Replace `CLOUD PROJECT NAME` with your GCP project name.
-   - Replace `CLOUD BUCKET NAME` with your GCP bucket name.
-   - Select **Save**, and verify that the service **hello_world** is successfully created.
-
-### Pipeline
-
-<details>
-<summary>What are Harness pipelines?</summary>
-
-A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact/function deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
-
-</details>
-
-1. In your Harness project, select **Pipelines**.
-   - Select **Create a Pipeline**.
-   - Enter the name `hello_world`.
-   - Select **Inline** to store the pipeline in Harness.
-   - Select **Start**.
-   - In **Pipeline Studio**, select **YAML**.
-   - Select **Edit YAML** and Paste the below Rolling deployment YAML.
-
-<details>
-<summary>What are Basic deployments?</summary>
-
-For Google Cloud Functions, the basic deployment execution strategy deploys the new function version and routes 100% of traffic from the old version to the new function version.
-
-</details>
-
-1. Copy the contents of [basic-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/1st_gen/basic-pipeline.yml).
-2. In your Harness pipeline YAML editor, paste the YAML.
-3. Select **Save**.
-
-   You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
-
-<DocImage path={require('./static/harness-cicd-tutorial/rolling_gen1.png')} width="60%" height="60%" title="Click to view full size image" />
 
 </TabItem>
 </Tabs>

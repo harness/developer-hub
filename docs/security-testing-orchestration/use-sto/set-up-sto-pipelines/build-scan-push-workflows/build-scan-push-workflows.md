@@ -13,7 +13,7 @@ The following workflows provide some examples of you can set up pipelines to aut
 
 This workflow is useful if you can use Docker-in-Docker and don't have a CI license. For a hands-on example of how to implement this, go to [(STO license) Create a build-scan-push pipeline ](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-workflows/build-scan-push-sto-only).
 
-1. Add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to your pipeline.
+1. Add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline) to your pipeline.
 
 2. Add a [Run step](/docs/continuous-integration/use-ci/run-step-settings) to build a local copy of the container image.
 
@@ -171,7 +171,7 @@ pipeline:
 
 This workflow is useful if you can use Docker-in-Docker and have a CI license. For a hands-on example of how to implement this, go to [Create a build-scan-push pipeline (STO and CI)](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-workflows/build-scan-push-sto-ci).
 
-1. Add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to your pipeline.
+1. Add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline) to your pipeline.
 
 2. Add a [CI Build and Push step](/docs/category/build-push-upload-download) to build and push your image with a snapshot tag such as`image:snapshot-donotuse-<+pipeline.executionId>`.
 

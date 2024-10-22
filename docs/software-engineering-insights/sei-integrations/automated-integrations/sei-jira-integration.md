@@ -27,7 +27,11 @@ For the Jira type as Cloud, you can choose how you want to connect Jira i.e.
 
 ![](../static/jira-cloud-type.png)
 
-### Configure the integration using the Jira Connect App
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="jira-connect-app" label="Using Jira Connect App" default>
 
 The Jira Connect App facilitates a seamless connection to Jira projects with minimal user intervention, requiring Jira admin configuration for the app.
 <br/> <br/>Using the Jira Connect App allows you to retrieve all user emails from Jira, making it faster and easier to connect and manage the integration.
@@ -46,9 +50,9 @@ The following permissions are required to configure the **Jira Connect App** int
 
 To set up the integration using the **Jira Connect App**:
 
-1. Select **Integrations** under **Settings**.
+1. Select **Integrations** under **Data Settings**.
 2. Select **Available Integrations**, locate the **Jira integration**, and select **Install**.
-3. Select **Jira Software Cloud** as the ~~i~~ntegration type.
+3. Select **Jira Software Cloud** as the integration type.
 4. Select the **Jira Connect App** tile to set up the connection with Jira.
 5. In the Jira Connect App settings page add the basic overview information:
    * **Integration Name:** Name for your integration.
@@ -69,11 +73,13 @@ Note that the key expires after 10 minutes, so generate a new key if the current
 
 7. Click on **Validate Connection** to validate the connection, and once successful, you'll have the integration set up under the **Your Integrations** tab.
 
-### Configure the integration using the Jira API Token
+</TabItem>
+
+<TabItem value="api-key" label="Using API Key">
 
 Before you configure the SEI Jira integration, you must generate an Atlassian API token.
 
-#### Authenticate with Jira
+### Authenticate with Jira
 
 Before you configure the SEI Jira integration, you must generate an Atlassian API token.
 
@@ -90,11 +96,11 @@ Due to the scope of visibility required, consider using a managed service accoun
 
 ![](../static/jira-api-token.png)
 
-#### Configure the integration
+### Configure the integration
 
 To set up the integration using the Jira API Key:
 
-1. Select **Integrations** under **Settings**.
+1. Select **Integrations** under **Data Settings**.
 2. Select **Available Integrations**, locate the **Jira integration**, and select **Install**.
 3. Select Jira Software Cloud as the integration type.
 4. Select the Using Jira API Token tile to set up the connection with Jira.
@@ -116,24 +122,37 @@ To set up the integration using the Jira API Key:
 
 ![](../static/jira-key-config.png)
 
+8. Click on **Validate Connection** to validate the connection, and once successful, you'll have the integration set up under the **Your Integrations** tab.
+
+</TabItem>
+</Tabs>
+
 :::info
-Please note that after adding an integration, it **may take up to 24 hours for the data to reflect on SEI.** This means that any widgets you configure on Insights using this integration **may not display data until the synchronization is completed.**
+Please note that after adding an integration, it may take up to 24 hours for the data to reflect on SEI. This means that any widgets you configure on Insights using this integration may not display data until the synchronization is completed.
 :::
 
 ## Connect with Jira Software Data Center
 
-To connect with the **Jira Software Data Center**, you can use the **Ingestion Satellite** to integrate with on-premises Jira instances. The configuration process for the integration is similar to setting up the integration in the cloud but instead uses the satellite to communicate with the Atlassian server.
+<Tabs>
+<TabItem value="satellite" label="Connect via Ingestion Satellite" default>
+
+To connect with the on-prem instances of **Jira Software Data Center**, you can use the [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/run-the-satellite-container). The configuration process for the integration is similar to setting up the integration in the cloud but instead uses the ingestion satellite to communicate with the Atlassian server.
 
 To set up the integration for the Jira Data Center:
 
-1. Select **Integrations** under **Settings**.
-2. Select **Available Integrations**, locate the **Jira integration**, and select **Install**.
-3. Select **Jira Software Data Center** as the ~~i~~ntegration type.
-4. Define the integration settings:
+1. In your **Harness Project**, go to the **SEI Module**, and select **Account**.
+2. Select **Integrations** under **Data Settings**.
+3. Select **Available Integrations**, locate the **Jira integration**, and select **Install**.
+4. Select **Jira Software Data Center** as the integration type.
+5. Choose the **Connect via Satellite** option.
+
+![](../static/jira-3.png)
+
+6. Define the integration settings:
    * **Integration Name:** Name for your integration.
    * **Description (optional):** Add a description for the integration.
    * **Tags (optional):** Add tags for the integration if required.
-5. Configure the integration settings and authentication:
+7. Configure the integration settings and authentication:
    * Enter the URL of your Jira On-prem instance, for example, `<https://JIRA.ORGANIZATION-DOMAIN>`. Ensure it's a valid URL.
    * Select the authentication method. You can choose between **Using Jira Personal Access Token** (recommended) or **Jira Username** and **Password**.
    * If using a personal access token, enter the token.
@@ -174,7 +193,7 @@ jira:
   allow_unsafe_ssl: true
 ```
 
-Here’s a sample `satellite.yml` file which uses a Personal Access Token and password for authentication.
+Here’s a sample `satellite.yml` file which uses a **Personal Access Token** and **password** for authentication.
 
 ```yaml
 satellite:
@@ -200,6 +219,42 @@ The timezone field within the metadata should be in the Atlassian standard versi
 
 To find the correct timezone, go to `https://<ORGANIZATION_ATLASSIAN_URL>/rest/api/2/myself`
 :::
+
+</TabItem>
+
+<TabItem value="cloud-data-center" label="Connect via Cloud">
+
+To set up the integration for the cloud instance of Jira Data Center follow the steps below:
+
+1. In your **Harness Project**, go to the **SEI Module**, and select **Account**.
+2. Select **Integrations** under **Data Settings**.
+3. Select **Available Integrations**, locate the **Jira integration**, and select **Install**.
+4. Select **Jira Software Data Center** as the integration type.
+5. Choose the **Connect via Cloud** option.
+
+![](../static/jira-3.png)
+
+6. Define the integration settings:
+   * **Integration Name:** Name for your integration.
+   * **Description (optional):** Add a description for the integration.
+   * **Tags (optional):** Add tags for the integration if required.
+7. Configure the integration settings and authentication:
+   * Enter the URL of your Jira On-prem instance, for example, `<https://JIRA.ORGANIZATION-DOMAIN>`. Ensure it's a valid URL.
+   * Select the authentication method. You can choose between **Using Jira Personal Access Token** (recommended) or **Jira Username** and **Password**.
+   * If using a personal access token, enter the token.
+   * If using a username and password, enter the username and associated password.
+
+![](../static/jira-data-center.png)
+
+6. Configure advanced integration settings as needed:
+   * Select your preferred time zone from the available options.
+   * Choose which fields you want to exclude from ingestion. 
+     
+     You may want to exclude fields containing sensitive information like summary, description, and comments. Excluded fields won't be evaluated for hygiene or best practices compliance.
+7. Click on **Validate Connection** to run the pre-flight checks and validate the connection. Once successful, you'll have the integration set up under the **Your Integrations** tab.
+
+</TabItem>
+</Tabs>
 
 ### Troubleshooting
 
@@ -290,3 +345,19 @@ To add custom hygiene categories:
    The **Operator** represents an undesired state for the specified **Field**. For example, if your _desired state_ is for the specified **Field** to be populated, then your _undesired state_ is that the field is empty. Therefore, you would set the **Operator** to **Missing**.
 
 5. To get scores for custom hygiene categories, you must modify the category **Weights** in your Issue Hygiene Report widgets. Custom categories don't have an initial weight, so you must modify all instances of this widget to include your custom categories in the hygiene score calculations. For instructions, go to [Configure the Issue Hygiene Report](/docs/software-engineering-insights/sei-metrics-and-reports/hygiene-metrics#configure-the-issue-hygiene-report).
+
+## Reauthenticate
+
+If your integration health is failing due to expired credentials, you can easily re-authenticate by following these steps to update your access token:
+
+* Go to the **Integrations**, and select your integration from the **Your Integrations** tab.
+
+* Click on **Monitoring**.
+
+* Click on the **Change Authentication** button at the top right corner.
+
+* Follow the prompts and enter your email and the new **API Key**.
+
+* Click **Validate Connection** to complete the re-authentication process.
+ 
+By following these steps, you'll successfully re-authenticate with the Jira platform using your new access token, resolving any issues caused by expired credentials.

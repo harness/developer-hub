@@ -2,6 +2,8 @@
 title: Manage tags for feature flags
 description: This topic focuses on tagging and its uses within Feature Flags.
 sidebar_position: 45
+redirect_from:
+  - /docs/feature-flags/ff-creating-flag/tag-management
 ---
 
 # Tagging Management Overview
@@ -87,6 +89,23 @@ Additionally, it's crucial to add Environments as a Resource Group. This step he
 Check out the [Manage Resource Groups in Harness](../../../platform/role-based-access-control/add-resource-groups.md) if you'd like to learn more on this.
 
 :::
+
+### Editing Permissions For Users Within A Resource Group
+
+Users that are assigned a role to create Feature Flags or delete Flags can have their permissions adjusted when they are added to a Resource Group. Here are the steps to adjusting the permissions for these users within a Resource Group:
+
+ 1. On the Home Page of the Harness Application, head over to *Feature Flags*.
+ 2. Under the *Feature Flags* tab, scroll down and click on the *Project Setup* dropdown menu. Click *Access Control*. 
+ 3. You should find your list of *Users*. Select the *Manage Role Bindings* tag next to the User you want to adjust. 
+ 4. Click *Add* and a dropdown will appear for you. From here, you're able to select a role for your selected user and the Resource Group where the role of the user would be active.
+ 5. Once you're done, select *Apply*.
+ 6. In the *Access Control* menu, click *Roles* and select the *Feature Flag Admin Role*. Review the permissions to ensure that the *Create/Edit* and *Toggle* options are highlighted.
+ 7. Go back to the *Access Control* page, select *Resource Groups* and select the Resource Group you would like to make changes to.
+ 8. The Tags for the Resource group will appear. In order to remove any assigned tags that is impacting permissions of some, or all, of ther users, select *All* next to the *By Tag* option.  
+ 9. This should remove any blocks to permissions for the users in your selected Resource Group. 
+ 10. If you'd like to create a new tag, you can go back to the Tags page, select *Add* and you'll be able to create a new one. 
+
+The user can now create flags once the resource group is changed to "Remove by Tag". You can also create a new tag if you'd like tio adjust permissions for users within your Resource Group.
 
 # Related Content
 

@@ -65,21 +65,17 @@ Here's a simple extraction setup for SonarScanner:
       - Manual executions - The branch defined in SonarQube (**Target variant**, specified below)
       - Triggered executions - The pull request defined in SonarQube 
 
-:::note
 
-**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`. Contact [Harness Support](mailto:support@harness.io) to enable this option.
-
-:::
    
 #### Target settings
 
    1. [Target and variant detection](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#target-and-variant-detection) = **Manual**.
-   2. [Target name](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#target-and-variant-detection) This should match the code repository name in SonarQube. 
-   4. [Target variant](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#target-and-variant-detection) This should match the branch or PR defined in SonarQube.
+   2. [Target name](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#name) This should match the code repository name in SonarQube. 
+   4. [Target variant](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#variant) This should match the branch or PR defined in SonarQube.
 
 #### Authentication/tool settings
 
-   1. [Domain](//docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#domain) The SonarQube instance URL.
+   1. [Domain](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#domain) The SonarQube instance URL.
    2. [Access token](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#access-token) to your SaaS instance.
    3. [SonarQube project key](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#access-token).
 

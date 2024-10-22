@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-07-10:T10:00:30
+date: 2024-10-15T14:00:30
 sidebar_position: 3
 ---
 
@@ -77,7 +77,207 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## October 2024
+
+### Version 1.60.x<!-- October 15, 2024 -->
+
+#### Fixed issues
+
+- Fixed an issue where delegate restarts during pipeline execution were incorrectly labeled as disconnections. The error message now correctly states delegate restarted while executing to help users identify the root cause related to their infrastructure. (PL-57421, ZD-70611)
+
+- Fixed an issue causing the Cloud Credits page to break in the QA environment. The issue was resolved by updating the path URLs with a `. +` configuration change to ensure correct routing. (PL-57317)
+
+- Made UI improvements to the Cloud Credits page, including enabling the TimeRangePicker for free subscriptions and increasing the page size to display all organizations and projects in dropdowns. (PL-56928)
+
+### Version 1.59.x<!-- October 7, 2024 -->
+
+#### New features and enhancements
+
+- Updated the description and UI label for the `rotationTimeStamp` field in the Rotate Token API. This update clarifies that the input is for setting the expiry time of the old token being rotated, ensuring clearer understanding during token rotation. (PL-56558, ZD-69048)
+
+- Implemented a limit on the number of delegates and delegate tokens per account and per scope. The maximum number of delegate tokens is now set to 10,000 to ensure better management and scalability. This item requires Harness Delegate version 24.09.84100. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56296)
+
+- Upgraded the `bitnami/minio` image to version `2024.6.29-debian-12-r0` to address multiple high and critical vulnerabilities, ensuring improved security and compliance. (PL-56127)
+
+- Removed the outdated static HTML page (`https://app.harness.io/ng/static/versions.html`) that displayed versions of various NG services. Customers are now advised to check deployed service versions from their Account Settings page in NGUI. (PL-52144)
+
+- Upgraded the `com.nimbusds_nimbus-jose-jwt` library to version `9.37.3` to address high-severity vulnerabilities, including CVE-2023-52428, which could lead to denial of service through resource consumption. (PL-51347, ZD-70765)
+
+#### Fixed issues
+
+- Fixed an issue causing the Cloud Credits page to break in the QA environment. The issue was resolved by updating the path URLs with a `. +` configuration change to ensure correct routing. (PL-57317)
+
+- Improved error messaging for pipeline execution failures when the delegate cannot reach the build pod. This enhancement helps users quickly identify connectivity issues between the delegate and build farm, improving troubleshooting and reducing impact on user experience. (PL-57241, ZD-68383, ZD-69998)
+
+- Fixed an issue with Cloud Credits reporting for the DataRobot account, where usage data was not displaying correctly. Updated the licenseUsageAPI logic to aggregate results by timestamp and CIOsType, and adjusted the license_Usage_Yearly table to account for leap years. (PL-57023)
+
+- Corrected the API documentation for the Audit Event API. The yamlDiffRecord field was incorrectly listed in the response and has been removed from the docs. Additionally, the missing auditYaml API endpoint has been added to the documentation for retrieving YAML differences. (PL-56934, ZD-69812)
+
+- Fixed several usability issues in the Roles Reusability feature, including auto-refetch failures in the Active User Lists view, non-functional Cancel buttons in the Assign Roles modal, and the unnecessary Back button in the Role Assignments modal. (PL-56146)
+
+- Implemented an RBAC check across all scopes when listing delegates and delegate tags. Users will now only see delegates they have access to in the current scope. This fix is currently behind the feature flag P`L_RBAC_CHECK_UP_THE_HIERARCHY_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable it. (PL-55748, ZD-67385)
+
+- Improved error messaging for the `<+secrets.getValue(secretlocation)>` expression to provide clearer feedback when a secret is not found. The updated message now states, "The secret has not been found," and includes the full computed path for better troubleshooting. This item requires Harness Delegate version 24.09.84100. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-51900, ZD-65130, ZD-69181)
+
+- Resolved an issue in the `UpdateVersionInfoTask` by adding the missing PLATFORM enum, which eliminated the IllegalArgumentException. This item requires Harness Delegate version 24.09.84100. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-51100) 
+
+## September 2024
+
+### Version 1.57.x<!-- September 30, 2024 -->
+
+#### New features and enhancements
+
+- Upgraded `org.clojure:clojure` from version 1.9.0 to 1.11.4 to address security vulnerabilities, including CVE-2024-22871, which could lead to a denial of service (DoS) attack. (PL-56307)
+
+#### Fixed issues
+
+- Resolved an issue in FileStore where tag values were not displayed in the tag hover for files. The custom logic for rendering tags has been replaced with a standard Tags component, ensuring that both tag names and values are correctly shown. (PL-56940, ZD-69741)
+
+- Fixed an issue on the Freeze page where long names and identifiers caused text overlap in the UI. A maximum width has been set for the freeze name cell, with the full name and identifier now visible on hover. (PL-56843, ZD-69083)
+
+### Version 1.56.x<!-- September 16, 2024 -->
+
+#### New features and enhancements
+
+- Improved error messaging for Custom Secrets Manager with Template to provide clear guidance when secrets are referenced from a lower scope. Users are now directed to the correct configuration using the provided [documentation](/docs/platform/secrets/secrets-management/reference-secrets-in-custom-sm/) for prefixing secrets. 
+
+- Added support for v1 APIs in template-service, ng-manager, platform-service, and pipeline-service for Istio version 1.19.0 and above. If you are running istio >= 1.19.0, add the following override in your `override.yaml` file to access V1 APIs. (PL-50528, ZD-65579)
+
+  ```yaml
+  global:
+    istio:
+      enableRegexRoutes: true
+  ```
+
+- Fixed an issue where Slack could still be selected as a notification method at the project level, even after being disabled at the account level. Notification channel options are now controlled by Default Settings and must be enabled there to be available. (PL-48866, ZD-60861)
+
+#### Fixed issues
+
+- Fixed an issue where users with the correct permissions were unable to delete resources in a Resource Group. (PL-56726, ZD-69369)
+
+- Fixed an issue where the AWS Secret Manager validation was failing due to regions being passed instead of full URLs, causing connectivity errors in delegate logs. The region is now correctly converted to a URL, preventing perpetual task failures. (PL-55740, ZD-67142, ZD-67150)
+
+- Enhanced webhook notification handling to support secrets in headers, enabling proper decryption of Authorization and other header values stored in the Harness Secret Manager. This ensures seamless webhook triggering without requiring hardcoded values. (PL-55319, ZD-65913)
+
+### Version 1.55.x<!-- September 5, 2024 -->
+
+#### Fixed issues
+
+- Resolved consistent proxy authentication issues seen after delegate upgrade by removing unnecessary environment variable expansion and adding URL encoding for special characters. The `PROXY_PASSWORD` environment variable is now handled correctly, ensuring proper authentication without requiring expansion. This item requires Harness Delegate version 24.08.83802. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56623, ZD-68887)
+
+- Fixed an issue preventing Canny login from the Harness UI for customers using vanity URLs. The Canny login flow now correctly redirects to sso.html, enabling seamless access across all environments, including global gateway clusters and vanity URLs. (PL-55679, ZD-66968, ZD-67907)
+
+- Fixed an issue where pipelines could get stuck in the running state due to delegate task handling. A new flow has been introduced to recompute eligible delegates after 3 rounds of broadcast, ensuring tasks are acquired even if delegates restart. This fix is controlled by the `RECOMPUTE_ELIGIBLE_DELEGATES_LIST` feature flag and requires Harness Delegate version 24.08.83802. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55249, ZD-66247)
+
+### Version 1.54.x<!-- September 3, 2024 -->
+
+#### New features and enhancements
+
+- Upgraded the `dnsjava` library to version `3.6.0` to address CVE-2024-25638, which involved potential security vulnerabilities in DNS query responses. This item requires Harness Delegate version 24.08.83800. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55721, ZD-63383, ZD-68810) 
+
+- Upgraded the Spring Framework libraries to version `6.0.18` to address multiple critical CVEs reported by Prismacloud. (PL-38815, ZD-42531, ZD-44910, ZD-46364, ZD-50403, ZD-52222, ZD-53107, ZD-53760, ZD-55114, ZD-60387, ZD-61129, ZD-62327, ZD-62502, ZD-62674, ZD-62690, ZD-63256, ZD-63383)
+
+#### Fixed issues
+
+- Added an index for Audit Logs to improve query performance and reduce CPU usage (PL-55486)
+
+- Fixed an issue where users without account-level access could still use account-level delegates when creating connectors at the org or project level. The delegate listing now respects RBAC permissions at each scope, ensuring proper access control. This item requires Harness Delegate version 24.08.83800. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55748, ZD-67385)
+
+- Fixed an issue where adding a new tag using the mouse click in the Tags input box on Default Settings Page wasn't working. Users can now create tags using both mouse clicks and the ENTER key. (PL-56098)
+
+- Updated the delegate expiration logic to align with the 6-month support and 2-month upgrade policy. This ensures that delegates maintain compatibility and support within the specified time frame. This item requires Harness Delegate version 24.08.83800. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56193, ZD-68597, ZD-69188, ZD-69266)
+
+- Resolved an issue causing SCM binaries to not be found during delegate startup with versions `24.07.83605` and `24.07.83606`. Updated the handling of default values for built-in Docker environment variables to prevent delegate initialization errors. This item requires Harness Delegate version 24.08.83800. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).  (PL-56209, ZD-68661)
+
+- Fixed an issue where restarting a delegate with an account-level token incorrectly moved the existing project-level delegate group to the account level. The query for locating the existing delegate group has been updated to ensure that it correctly handles cases where the owner field is null, preventing unintended group migrations. This item requires Harness Delegate version 24.08.83800. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56377)
+
+## August 2024
+
+### Version 1.53.x<!-- August 23, 2024 -->
+
+#### New features and enhancements
+
+- Upgraded the org.apache.cxf:cxf-core library from version 3.5.8 to 3.5.9 to address a security vulnerability (CVE-2024-32007). This upgrade enhances the security and stability of the application. (PL-55722, ZD-63383)
+
+#### Fixed issues
+
+- Resolved an issue where not all user groups were visible in search results when inherited groups exceeded 1000. The search now displays a higher number of inherited user groups, ensuring comprehensive visibility for all user groups across your organization. (PL-56021, ZD-68131)
+
+- Fixed an issue where installing or upgrading SMP to version 0.19.0 would fail when `harness-secrets` was disabled. This issue was due to a version inconsistency in the common chart used by Helm, which has now been resolved by adjusting the chart hierarchy. (PL-56179)
+
+### Version 1.52.x<!-- August 19, 2024 -->
+
+#### New features and enhancements
+
+- The BouncyCastle library has been upgraded from version `1.76` to `1.78` to address several medium-severity CVEs (CVE-2024-29857, CVE-2024-30171, CVE-2024-30172) and enhance overall system security. (PL-51346)
+
+#### Fixed issues
+
+- The `displayname` attribute from SAML assertions is now honored for new JIT-provisioned users logging in via SAML. This ensures that usernames are correctly updated to reflect the displayname attribute, addressing inconsistencies in user names. (PL-55616)
+
+- The delegate initialization process has been moved from a background thread to the start of application. This change addresses issues with health check failures during startup by ensuring that delegate registration, websocket establishment, and heartbeat scheduling are completed before health checks are performed. This item requires Harness Delegate version 24.08.83700. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55905, ZD-67667)
+
+### Version 1.51.x<!-- August 9, 2024 -->
+
+#### New features and enhancements
+
+- Improved delegate cache to reduce cache misses and optimize performance. This update ensures more reliable and efficient caching, addressing issues identified in recent incidents. (PL-55626)
+
+- Introduced a new feature in the Connector details Page that supports favorites. You can now mark connectors as `favorites`, making it easier to filter and manage your preferred connectors for a more streamlined experience. (PL-55460)
+
+- Enhanced AppRole token cache for HashiCorp Vault: Updated the cache key calculation to include secretId and approleId. This change fixes a problem where tokens were not being refreshed correctly. Now, the cache accurately reflects the latest credentials, ensuring secure and reliable token management. This item requires Harness Delegate version 24.07.83605. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55567, ZD-65493)
+
+- Added proxy configuration support for external notification channels in SMP. To address issues faced by customers who operate in air-gapped environments, we've introduced proxy settings for the platform service. By updating the override file with proxy details, notifications via MS Teams and Slack will now function correctly even when behind a proxy. This feature is available in SMP version 0.19.0. This item requires Harness Delegate version 24.07.83605. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48415, ZD-59707, ZD-62139)
+
+#### Fixed issues
+
+- Enhanced validation on the User Group Form to provide accurate notifications when no users are selected or if only a search query is entered. This change improves user experience and form accuracy. (PL-55793)
+
+- Fixed issue with delegate creation scope where delegates were being created at the account level instead of the project level. The resolution ensures that delegates are correctly installed in the intended scope, particularly when creating new orgs or projects and installing Kubernetes delegates via YAML. (PL-55615)
+
+- Optimized query performance for `delegateConnectionResults`. Added a new index based on delegateId and criteria to improve query efficiency and reduced CPU usage. Updated cache keys to include accountId for better indexing and cache utilization. This change addresses high query volume and CPU spikes previously observed. (PL-52071)
+
+- Resolved issue with Rollout deployment logs where logs were not available or expandable. This problem, caused by a race condition between stream closure and log dispatching, has been fixed. Logs will now display correctly even under heavy load. This item requires Harness Delegate version 24.07.83605. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55512, ZD-66330)
+
 ## July 2024
+
+### Version 1.49.x<!-- July 30, 2024 -->
+
+#### New features and enhancements
+
+- We have added a security check to restrict SAML assertions to a single login. Any attempt to reuse a SAML assertion within its expiry period will now be rejected by Harness during login. Currently, this feature is behind the feature flag `PL_ENABLE_SAML_ASSERTION_CACHE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (PL-55247, ZD-66114)
+
+#### Fixed issues
+
+- SAML groups were not being picked up by Harness due to a regression introduced with recent changes in syncing users in SAML user groups. Identified and resolved the issue, ensuring that SAML groups are now correctly synced with Harness. (PL-55507, ZD-66567, ZD-66882)
+
+- SCIM sync issues were occurring due to incorrect handling of `orgIdentifier` and `projectIdentifier`. Updated the query to correctly handle cases where `orgIdentifier` and `projectIdentifier` are null. (PL-55444, ZD-66712)
+
+- Users were able to see the enable/disable option for AIDA at the project level, even if AIDA was disabled at the account level. Implemented a change to display an error message when users attempt to enable AIDA at the project level if it is disabled at the account level. (PL-48296)
+
+### Version 1.48.11<!-- August 02, 2024 -->
+
+#### New features and enhancements
+
+- Upgraded the `io.netty_netty-codec-http` library to address a medium-severity issue. The version has been updated from 4.1.101.Final to 4.1.108.Final. (PL-51350)
+
+- Upgraded the `org.apache.cxf_cxf-core` library from version 3.5.5 to 3.5.8 to address a medium-severity issue CVE-2024-28752. (PL-51348, ZD-66657)
+
+- Reduced delegate liveness probe failure time. Previously, delegates had a 15-minute window to send heartbeats before the liveness probe failed, leading to a delegate restart. This time has now been reduced to 5 minutes to ensure quicker detection and response to heartbeat failures. This item requires Harness Delegate version 24.07.83605. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-52037)
+
+#### Fixed issues
+
+- Clicking a role after scrolling distorted the viewport. The issue with viewport distortion on the Roles page has been fixed. (PL-52063, ZD-65768)
+
+- Tokens could not be created via API from the API docs because the required fields were missing. Added the necessary required fields to the Create a Token page in the API docs, allowing tokens to be successfully created via the API. (PL-51974, ZD-65569)
+
+- The **Cancel** button was not working while creating a connector via YAML. Updated the behavior of the Connectors page YAML editor to match that of other pages. The **Discard** button on the YAML editor page now exits back to the previous page. (PL-42928)
+
+- Legacy delegates were unable to download the SCM binary. This issue has been resolved. (PL-55263, ZD-66357, ZD-66361)
+
+- Users were not being created in Harness FirstGen after being provisioned in NextGen. Updated the user provision field to ensure that users are properly created in Harness FirstGen after being provisioned in NextGen. (PL-52142, ZD-65604)
+
+- Users encountered a `Media not found` error when clicking the **+Dashboard** button and in the **About the Dashboard** dialog. Removed missing Dashboard tutorial videos, resolving the `Media not found` error. (PL-50890)
 
 ### Version 1.45.5<!-- July 10, 2024 -->
 

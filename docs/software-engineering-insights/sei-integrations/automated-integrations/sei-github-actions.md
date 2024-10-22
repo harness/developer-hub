@@ -23,42 +23,63 @@ If you can't use OAuth, you must create a GitHub personal access token to config
    - If your GitHub organization uses SAML SSO, enable SSO for your personal access token. For instructions, go to the GitHub documentation on [Authorizing a personal access token for use with SAML SSO](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
 
 :::info
-The `Triage Rule` and `Trend` fields are not supported on the Stacks and Aggregation option for the Github Actions integration.
+The `Triage Rule` and `Trend` custom fields are not supported as the Stacks and Aggregation option when using the Github Actions integration.
 :::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Configure the integration
+## Connect with Github Actions (Cloud)
 
-<Tabs>
-  <TabItem value="cloud" label="Cloud" default>
-
-To use a personal access token, paste the token in Enter the Access Token.
-
-1. Select **Integrations** under **Settings**.
+1. Select **Integrations** under **Data Settings**.
 2. Select **Available Integrations**, locate the **Github Actions** integration.
 3. Select **Install**.
-4. Select an authentication method for the integration:
-   - To use **OAuth**, select **Authorize** and follow the prompts to grant access to **GitHub**.
-   - To use a personal access token, paste the token in **Enter the Access Token**.
-5. In **Integration Name**, enter a name for the integration.
-6. Select repositories to associate with the integration or select **Ingest All Repos** to associate all current and future repos in your **GitHub organization**.
-7. Select **Finish** and **Save** the integration.
+4. Select the type of the Github Actions instance as **Cloud**.
+
+![](../static/gha-1.png)
+
+<Tabs>
+  <TabItem value="oauth" label="Using OAuth" default>
+
+* Select an authentication method as **Using OAuth**.
+
+![](../static/gha-2.png)
+
+* Follow the prompts to grant access to **GitHub**.
+* In **Integration Name**, enter a name for the integration.
+* Select repositories to associate with the integration or select **Ingest All Repos** to associate all current and future repos in your **GitHub organization**.
+* Click on **Validate Connection** to run the pre-flight checks and validate the connection. Once successful, you'll have the integration set up under the **Your Integrations** tab.
 
 </TabItem>
-  <TabItem value="satellite" label="Satellite">
+  <TabItem value="pat" label="Using Personal Accesss Token">
 
-The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Github server.
+This authentication method is simple to set up and is suitable for various API interactions. Note that the access token needs periodic renewal based on the timeline of the generated token. 
 
-Make sure to select the satellite integration checkbox while configuring the integration.
+* In **Integration Name**, enter a **Name** for the integration.
+* Add a **Description** for the integration. (Optional)
+* Enter the **Personal Access Token** that you generated earlier.
+* Click on **Validate Connection** to run the pre-flight checks and validate the connection. Once successful, you'll have the integration set up under the **Your Integrations** tab.
+
+![](../static/gha-3.png)
+
+</TabItem>
+</Tabs>
+
+## Connect with Github Actions (On-Prem)
+
+To connect Harness SEI with on-prem instance of Github Actions, you'll need to use the [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/run-the-satellite-container).
+
+The steps for configuring the integration using the **Ingestion Satellite** is similar to configuring the integration on Cloud, with the exception of using satellite to communicate with the Github server.
 
 1. In **Integration Name**, enter a **Name** for the integration.
 2. Add a **Description** for the integration. (Optional)
-3. In the **URL** field, add the URL where your GitHub repository is deployed.
-   For example, if your GitHub is deployed on a virtual machine (VM), add the URL in the format: `<GITHUB_INSTANCE_URL>`
+3. Enter the **Personal Access Token** that you generated earlier.
+4. In the **Github Actions URL** field, add the URL where your GitHub Actions instance is hosted.
+5. Click on the **Download YAML File** button and save the `satellite.yml` file. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/run-the-satellite-container).
 
-4. Select **Next** and click on **Download the Config file** and save the **satellite.yml** file. Update it following the instructions here.
+![](../static/gha-4.png)
+
+If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 Here’s a sample `satellite.yml` file:
 
@@ -66,23 +87,19 @@ Here’s a sample `satellite.yml` file:
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: "https://app.harness.io/gratis/sei/api" # Note that this URL is relative to the Environment of your Harness Account.
+  url: "https://app.harness.io/gratis/sei/api" 
+  # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
-  - id: "<ACCOUNT_ID>"
+  - id: "<INTEGRATION_ID>"
     application: github_actions
     url: "<GITHUB_INSTANCE_URL>"
     authentication: apikey
 ```
 
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-troubleshooting-faqs).
-
-</TabItem>
-</Tabs>
-
 <details>
-<summary>List of supported widgets:</summary>
+<summary>Supported Reports</summary>
 
-Following widgets are supported for Github Action integration:
+Following reports are supported for the Github Action integration:
 
 - CICD Job Count Report
 - CICD Job Count Trend Report
@@ -99,9 +116,9 @@ Following widgets are supported for Github Action integration:
 
 </details>
 
-## Ingest artifacts and environment variable data
+## Send artifact information to Harness SEI
 
-This section provides step-by-step instructions on how to set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions.
+This section provides step-by-step instructions on how you can set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions.
 
 ### Prerequisites
 
@@ -276,7 +293,7 @@ jobs:
 
 :::tip
 
-- If the SEI API endpoint fails, the workflow will not be able to capture the artifacts or the job run parameters. In such cases, you will need to re-execute the Github Actions workflow.
+- If the SEI API fails, the workflow will not be able to send the artifacts or the job run parameters. In such cases, you will need to re-execute the Github Actions workflow.
 - Artifacts data from existing/previous workflow executions cannot be ingested into SEI.
 - Ensure that the tag names of images are unique to maintain the correct correlation between CI and CD processes.
 

@@ -36,13 +36,46 @@ export const spt: IltCardItem[] = [
      cardType: cardType.SPT,
    },
    {
-    title: "Security Orchestration Testing",
+    title: "Security Testing Orchestration",
     module: MODULES.sto,
      type: type.user,
      description:
        "Self-paced video course introducing Harness Security Testing Orchestration.",
      version: "Harness STO Enterprise Plan",
      link: "https://university-registration.harness.io/self-paced-training-harness-security-testing-orchestration",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
+   {
+    title: "Software Engineering Insights",
+    module: MODULES.sei,
+     type: type.user,
+     description:
+       "Self-paced video course introducing Harness Software Engineering Insights.",
+     version: "Harness SEI Enterprise Plan",
+     link: "https://university-registration.harness.io/self-paced-training-harness-software-engineering-insights",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
+   {
+    title: "Cloud Cost Management",
+    module: MODULES.ccm,
+     type: type.user,
+     description:
+       "Self-paced video course introducing Harness Cloud Cost Management.",
+     version: "Harness CCM Free/Team Plans",
+     link: "https://university-registration.harness.io/self-paced-training-harness-cloud-cost-management",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
+   {
+    title: "Infrastructure as Code Management",
+    module: MODULES.iacm,
+     type: type.user,
+     description:
+       "Self-paced video course introducing Harness Infrastructure as Code Management.",
+     version: "Harness IaCM Free/Team Plans",
+     link: "https://university-registration.harness.io/self-paced-training-harness-infrastructure-as-code-management",
      tileType: tileType.normal,
      cardType: cardType.SPT,
    },

@@ -6,6 +6,8 @@ helpdocs_topic_id: dbk9uoaid3
 helpdocs_category_id: xw2hz815l8
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-using-flags/ff-target-management/add-targets
 ---
 
 import add_target_1 from './static/1-add-targets-00.png'
@@ -81,12 +83,12 @@ To add a target:
 
 ## Upload a list of targets
 
-This option allows you to import a list of targets in CSV format. To do this:
+This option allows you to import a list of targets in CSV format saved as UTF-8 format only. To do this:
 
 1. In **Feature Flags**, in **Target Management**, select **Targets**.
 2. Click **+ Target**.
 3. In **Add Target(s)**, select **Upload a list of Targets**.
-4. Upload your CSV file as per the template below. The CSV file must have only the Name and Identifier; do not include any headings, for example:
+4. Upload your CSV file saved as UTF-8 format only as per the template below. The CSV file must have only the Name and Identifier; do not include any headings, for example:
 
    |          |     |
    | -------- | --- |

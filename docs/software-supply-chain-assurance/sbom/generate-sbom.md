@@ -1,6 +1,6 @@
 ---
 title: Generate and Manage Software Bill of Materials (SBOM)
-description: Generate and Manage SBOM with Harness SSCA
+description: Generate and Manage SBOM with Harness SCS
 sidebar_position: 10
 sidebar_label: Generate SBOM
 redirect_from:
@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 import CosignKeyGeneration from '/docs/software-supply-chain-assurance/shared/generate-cosign-key-pair.md';
 
-A Software Bill of Materials (SBOM) is an exhaustive list of all components, libraries, and other dependencies utilized in a software application. The **SBOM Orchestration** step within Harness SSCA facilitates the generation of SBOMs for your software artifacts.
+A Software Bill of Materials (SBOM) is an exhaustive list of all components, libraries, and other dependencies utilized in a software application. The **SBOM Orchestration** step within Harness SCS facilitates the generation of SBOMs for your software artifacts.
 
 This document elaborates on utilizing the SBOM Orchestration step for SBOM generation. If you already possess an SBOM and wish to ingest it, please refer to the [Ingest SBOM](./ingest-sbom-data.md) section.
 
@@ -268,7 +268,7 @@ The **Artifact Source** allows you to specify the source of the artifact. Presen
    To generate an SBOM for the entire repository, leave this field empty.
 * **Git Branch:** The branch of the repository for which you want to generate the SBOM.
 * **Workspace:** If you cloned the codebase to a different directory than the root workspace directory (`/harness`), enter the path to the subdirectory using the format `/harness/PATH/TO/SUBDIRECTORY`. Leave this field empty if you cloned your codebase into the default directory (`/harness`). Usually, your codebase is only cloned into a non-default directory if you are [cloning multiple codebases](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline) into a pipeline.
-* **SBOM Drift:** Select this option if you want to [track changes in SBOM](/docs/software-supply-chain-assurance/sbom/sbom-drift). Harness SSCA can detect the changes by comparing the generated SBOM against a specified base/primary SBOM.
+* **SBOM Drift:** Select this option if you want to [track changes in SBOM](/docs/software-supply-chain-assurance/sbom/sbom-drift). Harness SCS can detect the changes by comparing the generated SBOM against a specified base/primary SBOM.
 
 <DocImage path={require('./static/repo-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
 

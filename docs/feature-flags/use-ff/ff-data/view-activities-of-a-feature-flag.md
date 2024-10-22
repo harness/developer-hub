@@ -6,6 +6,8 @@ helpdocs_topic_id: 51gbk0d2zh
 helpdocs_category_id: axthyiihah
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-data/view-activities-of-a-feature-flag
 ---
 
 import ff_metrics from './static/2-view-activities-of-a-feature-flag-01.png'

@@ -2,6 +2,7 @@
 title: Use Dashboard Intelligence by AIDA
 description: Learn how to use Dashboard Intelligence by AIDA to create dashboards.
 sidebar_position: 30
+canonical_url: https://www.harness.io/blog/elevating-aida-harness-unveils-7-new-innovative-capabilities
 ---
 
 Dashboard Intelligence by Harness AI Development Assistant (AIDA™) is your copilot for dashboard creation in Harness. This feature is available directly in the **Dashboard Editor** when you create or edit a dashboard. For more information on AIDA, go to [Overview of AIDA](/docs/platform/harness-aida/aida-overview).

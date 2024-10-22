@@ -21,8 +21,109 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+## October 2024
+
+### Version 1.114.3
+
+<!-- 2024-10-22 -->
+
+#### New features and enhancements
+- Improved issue details formatting to support various data formats from scanners (STO-8058, STO-7845, ZD-6673).
+- Added AquaSecurity's ECR registries as a fallback to prevent rate-limit issues when their GHCR (STO-8157).
+- Container image scanning without using the Docker-in-Docker step does not recognize certificates passed through the delegate. This issue has now been fixed (STO-8140).
+- Anchore policy failures now show as "Info" level issues of type "External Policy" in scan results (STO-6494).
+
+#### Documentation enhancements
+- Added a video tutorial for [SonarQube Orchestration scan mode](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference).
+- Added a video on [How to perform Local Docker/OCI Archive scanning with Harness STO.](https://www.youtube.com/watch?v=x1NXBJaHF7U&list=PLXsYHFsLmqf1wmAiQZkL65Xt6VarH_DuH&index=8&t=7s)
+
+
+## October 2024
+
+### Version 1.112.5
+
+<!-- 2024-10-08 -->
+
+#### New features and enhancements
+- The Snyk step scan modes for [Code scanning](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning), [Container scanning](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-container-scanning), and [IaC (Infrastructure as Code) scanning](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-iac-scanning) are now generally available (GA). Previously, these scan modes were behind the feature flag `STO_SNYK_ORCHESTRATION_ENHANCEMENTS`.
+- Resolved a performance issue that caused the Exemptions page to fail to load in some projects (STO-8104, ZD-70734).
+- Updated the Nexus IQ runner to copy custom certificates from the delegate to the JVM (STO-8060).
+- Cleaned up issue details fields and added a new **Issue type** field to all issues (STO-8080).
+
+#### Fixed issue
+
+- Fixed a bug that caused scanners to ignore additional settings with boolean values. For example, in the Anchore scanner configuration, setting the `ANCHORECTL_UPDATE_CHECK` variable to `true` or `false` was previously ignored. With this fix, STO will properly recognize all the boolean value variables (STO-8006, ZD-69654).
+
+## September 2024
+
+### Version 1.110.3
+
+<!-- 2024-09-18 -->
+
+#### New features and enhancements
+
+- STO ingestion now works on [MacOS Harness hosted builds](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#operating-systems-and-architectures-supported-by-sto).
+- STO now supports [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) for Harness Hosted
+- The steps Snyk, Wiz, Prisma Cloud, Aqua Security, Aqua Trivy, and Grype can now run without Docker-in-Docker as a dependency.
+- Improved the performance of the STO graph "Issue distribution over time"
+
+#### Fixed issue
+
+- Resolved the issue that caused the "Issue distribution over time" graph on the Overview page to time out and fail to load (STO-6037).
+- Fixed the problem where exempted issues were occasionally counted incorrectly in the "Issue distribution over time" graph on the Overview page. (STO-6037).
+- Resolved the issue that caused the SonarQube step to fail during the upload of scan results (STO-7961).
+- Fixed the problem in the Checkmarx Ingestion where the SARIF normalizer failed to handle null values in the output (STO-7997).
+
+### Version 1.108.2
+
+<!-- 2024-09-06 -->
+
+#### New features and enhancements
+
+- The [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) step will now present the code coverage data in Orchestration, Ingestion, and Extraction scan modes, this can be found as an INFO level issue item in your pipeline executions. (STO-7100)
+- The [Burp Suite Enterprise Edition](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference) step has been upgraded to use the `scope_v2` API version instead of `scope`. This update is designed to support server version `v2023.3`, while still maintaining backward compatibility with earlier supported versions. (STO-7955)
+
+
+## August 2024
+
+### Version 1.104.3
+
+<!-- 2024-08-05 -->
+
+#### New features and enhancements
+
+- The [Veracode scan step](/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference) in STO now ignores issues mitigated on the Veracode side, so the scan results exclude any mitigated issues.
+- The STO dashboard now includes a new graph to view the **Top 5 Vulnerable Targets**, showing code repositories, artifacts, instances, and configurations across the account.
+- You can now override the security testing scanner image at the step level. Learn more about [configuring your pipeline to use STO images from your private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry#configure-your-pipeline-to-use-images-from-your-registry).
+
 
 ## July 2024
+
+### Version 1.104.3
+
+<!-- 2024-07-26 -->
+
+#### New features and enhancements
+- You can now override the image that runs the STO step directly in the scanner step UI. Expand **Additional Configuration** and then set **Container Registry** and **Image Tag**. (STO-7724)
+- The Bandit, Anchor, and Semgrep steps now support [Secure Connect](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect/) within STO. (STO-7666)
+- The dark theme for AIDA is improved. Its appearance is now consistent with other UI components. (STO-7849)
+
+### Version 1.103.3
+
+<!-- 2024-07-19 -->
+
+#### New features and enhancements
+- In the [Checkmarx step](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) under the **Scan Tool**, the fields **Team Name** and **Project Name** are now mandatory for step configuration. Previously, these fields were optional. (STO-7681)
+- We now track the number of occurrences for a given issue/scan combination independently of the associated occurrence IDs. Newly created issues will only store up to 1,000 occurrences, with the total number of occurrences being stored separately. Occurrences are stored based on severity, with higher-severity occurrences given priority. (STO-5979)
+
+  These following endpoints now include `numOccurrences` at the issue level, showing the total number of occurrences for the issues:
+    - `GET api/v2/issues/{issueId}`
+    - `GET api/v2/scans/{scanId}/issue/{issueId}`
+    - `GET api/v2/scans/{scanId}/issues`
+
+  Also, the following endpoints now accept an optional payload parameter `numOccurrences`, representing the total number of occurrences associated with the issue:
+    - `POST api/v2/issues`
+    - `PUT api/v2/issues/{issueId}`
 
 ### Version 1.102.2
 
@@ -990,7 +1091,7 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
 
 - You can now set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
 
-  For information on how to set up this workflow, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+  For information on how to set up this workflow, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 - Reference Identifiers selected for AIDA enhancement in a Security Issue are now remembered, upon generation, and shown when revisited in the UI. (STO-6032)
 
@@ -1301,7 +1402,7 @@ The following security steps are now generally available:
   Note the following:
 
   - This release includes new steps for the following scanners: Aqua Trivy, Bandit, Black Duck, Checkmarx, Grype, Mend, Prisma Cloud, Snyk, SonarQube, and ZAP.  
-  - Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image in a Kubernetes build infrastructure. For more information, go to [Docker-in-Docker requirements for STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto).   
+  - Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image in a Kubernetes build infrastructure. For more information, go to [Docker-in-Docker requirements for STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline).   
   - These steps are currently available in Security stages only. 
   - Support is currently limited to Kubernetes and Harness Cloud AMD64 build infrastructures only.
 
@@ -1466,7 +1567,7 @@ This release does not include new features.
 
 * You can now include Run steps in Security Test stages. You can also include Security Tests stages in STO pipelines without a CI license. (STO-5208)
 
-* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans). (STO-4958) 
+* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning#snyk-code-scan---ingestion-mode). (STO-4958) 
 
 #### Fixed issues
 

@@ -2,6 +2,7 @@
 title: Create ServiceNow tickets in CD stages
 description: Create ServiceNow tickets in CD stages.
 sidebar_position: 3
+canonical_url: https://www.harness.io/blog/servicenow-ci-cd-pipelines
 ---
 
 This topic describes how to create ServiceNow tickets in CD stages.

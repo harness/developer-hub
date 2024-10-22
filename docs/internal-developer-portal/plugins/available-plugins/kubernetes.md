@@ -117,6 +117,8 @@ This plugin exports a UI tab that you can use as a new **Kubernetes** tab for a 
     - component: EntityKubernetesContent
 ```
 
+![](./static/k8s-plugin.png)
+
 ## Annotations
 
 There are several annotations supported by the Kubernetes plugin, and you can use them in your service's `catalog-info.yaml` descriptor file to link to a Kubernetes entity. For details, go to the [plugin docs](https://backstage.io/docs/features/kubernetes/configuration#surfacing-your-kubernetes-components-as-part-of-an-entity).

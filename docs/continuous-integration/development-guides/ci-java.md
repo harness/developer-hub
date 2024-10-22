@@ -4,6 +4,7 @@ description: Use a CI pipeline to build and test a Java application.
 sidebar_position: 50
 redirect_from:
   - /tutorials/ci-pipelines/build/java
+canonical_url: https://www.harness.io/blog/continuous-integration-testing
 ---
 
 import Tabs from '@theme/Tabs';

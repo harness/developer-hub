@@ -287,3 +287,25 @@ Except for the latest version of Nexus, it is in alphabetical order.
 ### WinRM Download artifact is not working in NG after setting correct environment variables (HARNESS_ENV_PROXY and HTTP_PROXY).
 
 Make sure you're using delegate version 791xx and check in console logs if you are able to see Using HTTP_PROXY environment variable.
+
+### What steps can I take if artifact.metadata.filename returns null while trying to retrieve an artifact name from Artifactory (S3)?
+
+For S3 Type Connectors, the expression `<+artifact.metadata.filename>` isn’t available. Check the AWS S3 Artifact Documentation [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#aws-s3-artifact-expressions).
+
+As a workaround, since the file path is already available, you can extract the filename using the following script:
+```
+$path = <+pipeline.stages.<StageName>.spec.artifacts.primary.filePath>"
+$filename = Split-Path -Path $path -Leaf
+Write-Output $filename
+```
+
+This script will help you filter out the filename from the provided file path.
+
+### How can I select multiple artifacts from a service for deployment in Harness?
+Currently, Harness supports selecting multiple artifacts from a service for deployment using sidecar artifacts. Sidecar artifacts follow the same rules as primary artifacts.
+
+To set this up:
+- Configure the artifacts in your Harness Service Definition.
+- Use the expression `<+artifacts.sidecars.[sidecar_identifier].imagePath>:<+artifacts.sidecars.[sidecar_identifier].tag>` in your Values file to reference the sidecar artifact.
+
+For detailed instructions on setting up sidecar artifacts in Harness, refer to [our documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/#sidecar-artifacts).

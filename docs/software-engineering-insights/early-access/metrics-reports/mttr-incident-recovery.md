@@ -50,7 +50,7 @@ To use the DORA MTTR widget for measuring incident recovery time in the ServiceN
 2. Choose **ServiceNow** as the tool for measuring MTTR.
 3. Select the associated **ServiceNow integration**. To learn about how to configure the integration, go to [ServiceNow integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow).
 4. Define incident criteria for calculating MTTR by selecting various filters that define incidents you want to track or measure for MTTR calculations.
-5. The DORA profile definition supports all the ServiceNow fields including **Priority**, **Urgency**, **Status** etc to be configured as filters.
+5. The DORA profile definition supports all the ServiceNow fields including **Priority**, **Urgency**, **Status** etc to be configured as filters. When configuring the filters, the custom fields available dynamically changes based on the selected ticket type.
 6. This definition can also be configured using additional time-based filters such as **Incident Created**, **Incident Resolved**, and **Incident Updated** in order to calculate MTTR based on your preferences.
 
 Once you have configured the DORA profile to measure incident recovery time using ServiceNow you can add the MTTR widget to the Insight.

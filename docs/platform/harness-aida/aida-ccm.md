@@ -2,6 +2,7 @@
 title: Optimize cloud costs using AIDA
 description: Learn how to use Harness AIDA for cloud asset governance.
 sidebar_position: 30
+canonical_url: https://www.harness.io/blog/elevating-aida-harness-unveils-7-new-innovative-capabilities
 ---
 
 

@@ -6,6 +6,7 @@ helpdocs_topic_id: 1nf0qcz4o0
 helpdocs_category_id: jkwta6oexk
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/cloud-cost-management-tools
 ---
 
 # Analyze cost for AWS

@@ -37,6 +37,12 @@ The `terraform plan` creates an execution plan to preview the actions Terraform 
 - **Configuration Comparison**: Analyzes current versus desired states to identify necessary changes.
 - **Change Proposal**: Lists the actions that `terraform apply` will execute to reach the desired state.
 
+Harness IaCM supports resource targeting and replacement, allowing you to specify which resources to focus on during a plan operation. You can use environment variable prefixes to define these targets or replacements:
+- `PLUGIN_PLAN_TARGET_`
+- `PLUGIN_PLAN_REPLACE_`
+
+For example, set `PLUGIN_PLAN_TARGET_1=tfcode.bucket1` to target a specific resource.
+
 ### Apply
 The `terraform apply` executes the proposed plan to modify the infrastructure state:
 - **Executing Plan**: Implements the changes outlined in the plan to modify resource states.

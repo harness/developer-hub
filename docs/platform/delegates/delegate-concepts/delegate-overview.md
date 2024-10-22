@@ -6,6 +6,7 @@ helpdocs_topic_id: 2k7lnc7lvl
 helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 
 Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification, and other providers with Harness Manager. The first time you connect Harness to a third-party resource, Harness Delegate is installed in your target infrastructure, for example, a Kubernetes cluster. After the delegate is installed, you connect to third-party resources. The delegate performs all operations, including deployment and integration.
@@ -21,6 +22,14 @@ Harness Delegate connects to Harness Manager over an outbound HTTPS/WSS connecti
 ![Harness Delegate overview](./static/harness-platform-architecture-00.png)
 
 The delegate connects to Harness Manager (via SaaS) over a Secure WebSockets channel (WebSockets over TLS). The channel is used to send notifications of delegate task events and to exchange connection heartbeats. The channel is not used to send task data itself.
+
+:::note
+By default, the Harness Delegate makes outbound calls to the Harness platform (app.harness.io) and Google's Stackdriver Logging API. When you configure a Harness Connector with providers such as artifact servers, deployment environments, and cloud providers, the Harness Delegate will also make outbound calls to these external providers.
+
+Harness recommends installing the delegate behind your firewall. The delegate must have network access to the artifact servers, deployment environments, and cloud providers it needs to interact with.
+
+If you want to prevent the delegate from sending its logs to the Harness platform, or if your firewall blocks access to Google's Stackdriver Logging API, you should set the `STACK_DRIVER_LOGGING_ENABLED` environment variable to `false` for the delegate. This will disable all remote logging and prevent connectivity issues.
+:::
 
 Delegate communication includes the following functions:
 
@@ -57,6 +66,12 @@ For advanced installation topics, go to the following:
 - [Install a delegate with third-party custom tool binaries](../install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md)
 
 ### Delegate sizes
+
+:::danger delegate resources
+Memory and CPU requirements are for the delegate only. Your delegate host/pod/container requires additional computing resources for its operating system and other services, such as Docker or Kubernetes.
+
+The resource requirements for the delegate container depend on the type of tasks or executions. For instance, CI-only delegates can handle hundreds of parallel pipelines. However, for CD Terraform tasks, a single task might require a 2Gi container due to Terraform's memory requirements. Each Terraform command needs at least 500MB of memory.
+ :::
 
 One delegate size does not fit all use cases, so Harness lets you pick from several options:
 
@@ -228,8 +243,7 @@ The delegate logs are available in the Harness UI. When a pipeline runs and an e
 Delegate logs are also sent to Harness by default. These Stackdriver logs are stored in Harness's GCP account.
 
 :::warning
-**Not Recommended:** You can stop delegates from sending delegate logs to Harness by setting the `STACK_DRIVER_LOGGING_ENABLED` environment variable to `false` for the delegate. This will disable all remote logging.
-
+**Not Recommended:** If you want to prevent the delegate from sending its logs to the Harness platform, or if your firewall blocks access to Google's Stackdriver Logging API, you should set the `STACK_DRIVER_LOGGING_ENABLED` environment variable to `false` for the delegate. This will disable all remote logging and prevent connectivity issues.
 :::
 
 You can configure the delegate logging level by setting the `LOGGING_LEVEL` environment variable. Valid values are `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, and `OFF`. If an invalid value is specified, the logging level defaults to `DEBUG`. If no value is specified, the logging level defaults to `INFO`.

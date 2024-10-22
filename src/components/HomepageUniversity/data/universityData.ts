@@ -53,7 +53,9 @@ export const university: CardItem[] = [
     description:
       "Save time, reduce effort, and save on your cloud bill with intelligent cloud cost automation.Detect and stop cloud cost anomalies as they occur, to avoid unpleasant billing surprises with a FinOps approach.",
     link: "/university/cloud-cost-management",
-    numberOfCerts: 1,
+    numberOfCerts: 2,
+    SPT_available: true,
+    ILT_available: true,
   },
   {
     title: "Security Testing Orchestration",
@@ -73,4 +75,31 @@ export const university: CardItem[] = [
     link: "/university/chaos-engineering",
     numberOfCerts: 1,
   },
+  {
+    title: "Software Engineering Insights",
+    module: MODULES.sei,
+    description:
+      "Discover SDLC bottlenecks, assess team productivity, and improve developer experience.",
+    link: "/university/sei",
+    SPT_available: true,
+    ILT_available: true,
+    numberOfCerts: 1,
+  },
+  {
+    title: "Internal Developer Portal",
+    module: MODULES.idp,
+    description:
+      "Eliminate cognitive overload by letting developers self-service their flows like new service onboarding.",
+    link: "/university/idp",
+    numberOfCerts: 1,
+  },
+  {
+    title: "Infrastructure as Code Management",
+    module: MODULES.iacm,
+    description:
+      "Efficiently and securely scale your Terraform / OpenTofu Infrastructure as Code.",
+    link: "/university/iacm",
+    SPT_available: true,
+  },
+  
 ];

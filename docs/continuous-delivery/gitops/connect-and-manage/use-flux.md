@@ -2,7 +2,7 @@
 title: Manage Flux applications with Harness GitOps
 description: Manage Flux applications from the Harness GitOps user interface.
 sidebar_label: Manage Flux applications
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 If you are managing workloads with Flux, you can also manage them from the GitOps user interface in Harness. Support for managing Flux workloads is accomplished by connecting the Harness GitOps agent to Flux through a special flux application resource in ArgoCD. The resource is the Flux Subsystem for Argo (FSA), also known as Flamingo. You can use the GitOps user interface to manage both regular ArgoCD and Flux resources, and view them all on the GitOps dashboard. 

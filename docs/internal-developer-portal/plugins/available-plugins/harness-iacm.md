@@ -42,9 +42,19 @@ This plugin does not require a delegate proxy to be set up.
 
 _No action required_
 
-This plugin exports a UI tab that you can use as a new IACM tab for workspaces or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then you can find the following YAML code added:
+This plugin exports a UI tab that you can use as a new IACM tab for workspaces or for any other layout page. The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
 
-```yaml
+```YAML
+- name: iacm
+  path: /iacm
+  title: IACM
+  contents:
+    - component: EntityIacmContent
+```
+
+Also you could add a conditional like `isHarnessIacmAvailable` which is met when `harness.io/workspace-url` annotation is present in the software components's `catalog-info.yaml` definition file.
+
+```YAML
 - name: iacm
   path: /iacm
   title: IACM
@@ -57,8 +67,7 @@ This plugin exports a UI tab that you can use as a new IACM tab for workspaces o
               component: EntityIacmContent
 ```
 
-The `isHarnessIacmAvailable` condition is met when `harness.io/workspace-url` annotation is present in the software components's `catalog-info.yaml` definition file.
-
+![](./static/harness-iacm-backstage-plugin-screenshot.png)
 
 ## Annotations
 

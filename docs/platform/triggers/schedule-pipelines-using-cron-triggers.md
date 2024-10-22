@@ -6,6 +6,7 @@ helpdocs_topic_id: 4z9mf24m1b
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/automate-your-ci-cd-pipeline-using-triggers
 ---
 
 You can use cron triggers to schedule pipeline executions. For example, to schedule a pipeline run every Monday at 1AM, Harness uses the cron expression `0 1 * * MON`. For information about other trigger types and triggers in general, go to the [Triggers overview](./triggers-overview).
@@ -34,19 +35,19 @@ When you edit a Cron trigger later, you can type or paste in a Cron expression.
 
 The Cron expression will be evaluated against UTC time.
 
-There are two types of supported cron expressions, QUARTZ and UNIX. 
+There are two types of supported cron expressions, QUARTZ and UNIX.
 
 Following are the QUARTZ and UNIX expression formatting samples:
 
 QUARTZ Expression
 ```
-0 0 4 7 ? 2014  
-| | | |   | |  
-| | | |   | \------- YEAR (2014)  
-| | | |   \--------- DAY_OF_WEEK (NOT_SPECIFIED)  
-| | | \------------- MONTH (JULY)  
-| | \--------------- DAY_OF_MONTH (4th)  
-| \----------------- HOUR (0- MIDNIGHT LOCAL TIME)  
+0 0 4 7 ? 2014
+| | | |   | |
+| | | |   | \------- YEAR (2014)
+| | | |   \--------- DAY_OF_WEEK (NOT_SPECIFIED)
+| | | \------------- MONTH (JULY)
+| | \--------------- DAY_OF_MONTH (4th)
+| \----------------- HOUR (0- MIDNIGHT LOCAL TIME)
 \------------------- MINUTE (0)
 ```
 

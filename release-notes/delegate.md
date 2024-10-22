@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-07-10T10:00
+date: 2024-10-07T10:00
 sidebar_position: 4
 ---
 
@@ -19,6 +19,28 @@ These release notes describe recent changes to Harness Delegate.
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
+
+:::
+
+:::info **Delegate Security Update**
+Added a critical security fix in harness secret manager for handling identities with CD workflows.
+If you are running delegates version below 799xx and using Terraform/Terragrunt features, upgrade to delegate version 799x or above immediately. Go to the [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) to update the delegates.
+
+:::
+
+:::danger Kubernetes Manifest impact on Delegate
+Delegate version 24.08.83702 is affected due to rendering logic of Kubernetes Manifest in certain cases only. If you are using this version, please upgrade to version 24.08.83704 to resolve the issue
+:::
+
+:::danger ARM64 Architecture Impact on Delegate Versions
+
+Certain delegate versions (`24.07.83608`, `24.07.83607`, `24.07.83606`, `24.07.83605`) are affected due to baked-in AMD64 client binaries on ARM64 architecture, despite building a multiarch image. If you are using any of these versions on ARM64 architecture, please upgrade to version `24.07.83609` or `24.07.83609.minimal` to resolve the issue.
+
+:::
+
+:::danger Stackdriver logs notice
+
+If you have blocked Stackdriver logs using firewall rules, upgrade your delegates to version 24.06.83304 or later.
 
 :::
 
@@ -46,8 +68,141 @@ Six months after a delegate image is released, the delegate reaches End of Suppo
 For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
+## October 2024
 
-## July
+### Version 24.09.84100 <!--  October 7, 2024 -->
+
+#### New features and enhancements
+
+- Implemented a limit on the number of delegates and delegate tokens per account and per scope. The maximum number of delegate tokens is now set to 10,000 to ensure better management and scalability. (PL-56296)
+
+#### Fixed issues
+
+- Improved error messaging for the `<+secrets.getValue(secretlocation)>` expression to provide clearer feedback when a secret is not found. The updated message now states, "The secret has not been found," and includes the full computed path for better troubleshooting. (PL-51900, ZD-65130, ZD-69181)
+
+- Resolved an issue in the `UpdateVersionInfoTask` by adding the missing PLATFORM enum, which eliminated the IllegalArgumentException. (PL-51100) 
+
+### Version 24.09.83909 <!--  October 11, 2024 -->
+
+#### Hotfixes
+
+- Improved logging, error handling and force shutdown for stuck cases in winrm script for collecting output variables. These changes are behind a delegate environment variable `ENV_VARS_COLLECTOR_EXPLICIT_EXIT`. Also delegate environment variable `WINRM4J_LOG_LEVEL` for `io.cloudsoft.winrm4j` logging level has been added. (CDS-101843)
+
+### Version 24.09.83908 <!--  October 11, 2024 -->
+
+#### Hotfixes
+
+- With this change entire k8s dry manifest output yaml won't be sanitized. Only config map and secrets kind blocks would be sanitised unless `CDS_K8S_SANITIZE_COMPLETE_DRY_RUN_STEP_OUTPUT`` feature flag is switched on. (CDS-101686)
+
+### Version 24.09.83907 <!--  October 10, 2024 -->
+
+#### Hotfixes
+
+- Jira steps will now ignore unsupported fields which reading a jira ticket. (CDS-101162)
+
+### Version 24.09.83906 <!--  October 1, 2024 -->
+
+#### Hotfixes
+
+- ASG step will not delete all tags and create tags but instead only remove those tags which are not present while running pipleine. (CDS-101285)
+
+## September 2024
+### Version 24.08.83805 <!--  September 26, 2024 -->
+
+#### Hotfixes
+
+- WinRM shell script steps now support logs more than 5 hours till maximum of step timeout or 1 day (CDS-101408).
+
+### Version 24.09.83905 <!--  September 20, 2024 -->
+
+#### Hotfixes
+
+- Updated the identifier so that the output obtained from the PowerShell command is parsed correctly (CDS-100036).
+
+### Version 24.08.83803 <!--  September 20, 2024 -->
+
+#### Hotfixes
+
+- Fixed an issue where the secrets will no longer get exposed in Kubernetes Dry Run Step even if they are placed in ConfigMap.
+
+### Version 24.09.83900 <!-- September 9, 2024 -->
+
+#### Fixed issues
+
+- Enhanced webhook notification handling to support secrets in headers, enabling proper decryption of Authorization and other header values stored in the Harness Secret Manager. This ensures seamless webhook triggering without requiring hardcoded values. (PL-55319, ZD-65913)
+
+- Fixed an issue where the AWS Secret Manager validation was failing due to regions being passed instead of full URLs, causing connectivity errors in delegate logs. The region is now correctly converted to a URL, preventing perpetual task failures. (PL-55740, ZD-67142, ZD-67150)
+
+## August 2024
+
+### Version 24.08.83802 <!-- August 26, 2024 -->
+
+#### New features and enhancements
+
+- Upgraded the `dnsjava` library to version `3.6.0` to address CVE-2024-25638, which involved potential security vulnerabilities in DNS query responses. (PL-55721, ZD-63383, ZD-68810)
+
+### Version 24.07.83611, 24.08.83705 <!--  August 30, 2024 -->
+
+#### Hotfix
+
+- Removed unnecessary env expansion and added url_encoding to encode special characters from proxy when curl connectivity pre-check is enabled (PL-56623).
+  
+### Version 24.08.83704 <!--  August 29, 2024 -->
+
+#### Hotfixes
+
+- Ensure kubernetes secrets are typecasted to Java strings internally before log sanitization. Earlier this was causing ClassCastException for some kubernetes manifests (CDS-100389).
+- Updated sensitive log in WinRM deployment to DEBUG level to ensure sensitive data is not leaked (CDS-100046).
+
+### Version 24.07.83609 <!--  August 20, 2024 -->
+
+#### Hotfix
+
+- Modified the default value handling for built-in Docker environment variables for `TARGETPLATFORM`
+
+### Version 24.08.83701 <!--  August 14, 2024 -->
+
+#### New features and enhancements
+
+- Enhanced AppRole token cache for HashiCorp Vault: Updated the cache key calculation to include secretId and approleId. This change fixes a problem where tokens were not being refreshed correctly. Now, the cache accurately reflects the latest credentials, ensuring secure and reliable token management. (PL-55567, ZD-65493)
+
+- Added proxy configuration support for external notification channels in SMP. To address issues faced by customers who operate in air-gapped environments, we've introduced proxy settings for the platform service. By updating the override file with proxy details, notifications via MS Teams and Slack will now function correctly even when behind a proxy. This feature is available in SMP version 0.19.0. (PL-48415, ZD-59707, ZD-62139)
+
+#### Fixed issues
+
+- The delegate initialization process has been moved from a background thread to the start of application. This change addresses issues with health check failures during startup by ensuring that delegate registration, websocket establishment, and heartbeat scheduling are completed before health checks are performed. (PL-55905, ZD-67667)
+
+- Resolved issue with Rollout deployment logs where logs were not available or expandable. This problem, caused by a race condition between stream closure and log dispatching, has been fixed. Logs will now display correctly even under heavy load. (PL-55512, ZD-66330)
+
+### Version 24.07.83608 <!--  August 14, 2024 -->
+
+- Separated the LDAP settings between CG and NG. With this feature, the CG LDAP upgrade to NG LDAP, and CG and NG LDAP settings now operate independently. This feature is behind the feature flag `PL_ENABLE_NG_LDAP_SETTINGS`. To enable this feature, please contact [Harness Support](mailto:support@harness.io). (PL-56167)
+
+### Version 24.08.83306 <!--  August 13, 2024 -->
+
+#### Hotfix
+
+- Sensitive secrets were logged in plain text in `delegate.log` due to the use of `secrets.getValue` in environment variables. The logging level for these events has been changed from `error` to `debug` to prevent exposure of secrets. (CI-13785, ZD-68120)
+
+### Version 24.07.83607 <!--  August 13, 2024 -->
+
+#### Hotfix
+
+- Sensitive secrets were logged in plain text in `delegate.log` due to the use of `secrets.getValue` in environment variables. The logging level for these events has been changed from `error` to `debug` to prevent exposure of secrets. (CI-13785, ZD-68120)
+
+### Version 24.07.83406 <!--  August 13, 2024 -->
+
+#### Hotfix
+
+- Sensitive secrets were logged in plain text in `delegate.log` due to the use of `secrets.getValue` in environment variables. The logging level for these events has been changed from `error` to `debug` to prevent exposure of secrets. (CI-13785, ZD-68120)
+
+## July 2024
+
+### Version 24.07.82906 <!--  July 17, 2024 -->
+
+#### Hotfix
+
+- Rollout deployment logs were not available and could not be expanded. Although the deployment was working, the logs were not displaying. The issue has been addressed by ensuring that logs will be shown even on a heavily loaded delegate. (PL-55512, ZD-66330)
 
 ### Version 24.07.83404 <!--  July 10, 2024 -->
 

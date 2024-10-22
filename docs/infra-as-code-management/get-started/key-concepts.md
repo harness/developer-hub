@@ -9,44 +9,26 @@ redirect_from:
 
 Infrastructure as Code (IaC) is the ability to define cloud resources as code definitions. It allows for repeatable infrastructure configuration. Examples of IaC tools are HashiCorp Terraform and Amazon CloudFormation.
 
-## Cloud provider
-
-A company offering the ability to run cloud resources on your behalf, for example AWS, Azure, GCP, and others.
-
-For information about how to connect to a cloud provider, go to [Connect to a cloud provider](/docs/category/cloud-providers).
-
-## Cloud resource
-
-Any running instance of cloud infrastructure, for example an EC2 instance or an S3 bucket.
 
 ## Workspace
 
-A group of infrastructure resources. A workspace brings together IaC code, IaC variables, cloud provider connection, state and workflows. For Terraform, every workspace has its own state file.
+Your workspace is a container for your infrastructure resources. It integrates IaC code, variables, cloud provider connections, state files, and workflows. In Terraform, each workspace has its own state file, which tracks the status of its managed resources.
 
-## Variables
+## Operations
 
-Typically, IaC code is extended by inserting variables. Environment and Terraform variables are available. 
+Operations are actions taken to manage and maintain your infrastructure using IaC tools.
 
-## Provision
+-	**Provision:** The process of applying infrastructure configuration to a cloud provider to create cloud resources. For example, executing `terraform apply` with a terraform file will provision the defined resources.
+-	**Destroy:** The process of removing all resources that were provisioned by the IaC code.
+-	**Drift**: Occurs when the actual state of your infrastructure deviates from the state defined by your IaC code. This often happens when changes are made directly through the cloud provider’s console or API, bypassing the IaC tool.
+- **Drift Detection:** The process of identifying discrepancies between the infrastructure defined in your IaC code and the actual running infrastructure. This is typically done by comparing the state file with the current state of the resources.
 
-The process of taking the infrastructure configuration and applying it against a cloud provider to create cloud resources. For example, running `terraform apply` using a main.tf file.
+## Resources
 
-## Destroy
+Resources are the components and services managed by your IaC tool and cloud provider.
 
-The process of removing all resources that are provisioned under the IaC code. This is also called Destroy. 
-
-## Drift 
-
-When the state and the actual running infrastructure are misaligned. For example, if someone manually edits AWS resources from the console or API without going through the IaC tool managing its infrastructure.
-
-## Drift detection
-
-Functionality to determine if the cloud resources defined in the IaC code are provisioned as defined by comparing the statefile with the running infrastructure.
-
-## Harness state tracking
-
-Functionality to monitor the current state and to track changes to a stack over its lifecycle. 
-
-## Terraform state backend
-
-A service that manages access and changes to a shared Terraform statefile.
+- **Cloud Resource:** Any instance of cloud infrastructure that is currently running, such as an EC2 instance or an S3 bucket.
+- **Cloud Provider:** A company offering cloud computing services, allowing you to run and manage resources on their infrastructure. Examples include AWS, Azure, and Google Cloud Platform (GCP). For information about how to connect to a cloud provider, go to [Connect to a cloud provider](/docs/category/cloud-providers).
+-	**Harness State Tracking:** Functionality that monitors the current state of a stack and tracks any changes throughout its lifecycle.
+-	**Terraform State Backend:** A service that manages access to and changes in a shared Terraform state file, ensuring consistency across your team and preventing conflicts.
+-	**Variables:** Elements used to extend and customize IaC code. Both environment variables and Terraform-specific variables are supported.

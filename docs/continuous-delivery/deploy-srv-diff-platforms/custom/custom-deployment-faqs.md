@@ -44,3 +44,12 @@ For more details, go to [Documentation](https://developer.harness.io/docs/contin
 Yes ,Elastic Beanstalk Deployment template is used for deployment template will help users deploy Elastic Beanstalk services.
 For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#elastic-beanstalk---sample).
 
+### Does Harness support deployment template to access variables such as a project variable?
+
+Yes, when using a custom deployment template in the infrastructure, one can use variables inside that. Project-level variables can be fetched using the `<+project.variableName>` syntax in the deployment template.
+
+### Can we specify a harness expression as a string in shell step?
+Any expression in harness pipeline will be evaluated and hence currently it is not possible to pass the expression as part of the shell step as astring as it gets evaluated as well.
+
+### Does Harness support to configure a repository for Python packages in Nexus Artifact Source?
+Nexus Artifact Source does not support Python (PyPi) package types. It only supports deployment of Zip, Tar, or container-based packages. For Python packages, consider using a different repository type or configuring a custom artifact source.

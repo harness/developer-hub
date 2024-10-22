@@ -74,6 +74,8 @@ You can also make the card appear conditionally for services (only if PagerDuty 
           component: EntitySplunkOnCallCard
 ```
 
+![](./static/splunk.png)
+
 ## Annotations
 
 The information displayed for each entity is based on either an associated team name or an associated routing key.

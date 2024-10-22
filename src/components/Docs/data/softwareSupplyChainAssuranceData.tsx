@@ -15,24 +15,24 @@ import {
             "",
           list: [
             {
-              title: "SSCA onboarding guide",
+              title: "SCS onboarding guide",
               module: MODULES.ssca,
               description:
-                "Start using Harness SSCA.",
+                "Start using Harness SCS.",
               link: "/docs/software-supply-chain-assurance/get-started/onboarding-guide",
             },
             {
-              title: "SSCA overview",
+              title: "SCS overview",
               module: MODULES.ssca,
               description:
-                "Learn how the Harness Software Supply Chain Assurance module addresses software supply chain security challenges.",
+                "Learn how the Harness Supply Chain Security module addresses software supply chain security challenges.",
               link: "/docs/software-supply-chain-assurance/get-started/overview",
             },
             {
-              title: "SSCA key concepts",
+              title: "SCS key concepts",
               module: MODULES.ssca,
               description:
-                "Learn key concepts for SSCA, such as SBOM, SLSA, remediation, prevention, and policy enforcement.",
+                "Learn key concepts for SCS, such as SBOM, SLSA, remediation, prevention, and policy enforcement.",
               link: "/docs/software-supply-chain-assurance/get-started/key-concepts",
             },
 

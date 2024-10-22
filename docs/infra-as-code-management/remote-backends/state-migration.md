@@ -61,8 +61,9 @@ The migration tool utilizes a `variables.tf` file to set default variables that 
 
 Create workspace configurations for each Terraform state file in your project with the following steps:
 
-1. Clone the IaCM migration repository: 
-    - `git clone git@github.com:wings-software/iacm-migration.git`.
+1. Clone or fork the IaCM migration repository: 
+    - Clone with: `git clone git@github.com:harness/iacm-migration.git`.
+    - Fork via: `https://github.com/harness/iacm-migration/fork`.
 2. Create and new `<filename>.tfvars` file in the local repository, see the **Sample tfvars file** below for an example.
 3. In your terminal, `cd` to your repository directory and run: 
     - `terraform apply -refresh=true -var-file=<filename>.tfvars`.
@@ -90,7 +91,7 @@ Once the apply command completes, an out folder is generated within your reposit
     workspaces = [
         {
             identifier = "workspace_demo_1"
-            repository = "<local-repo-directory>"
+            repository = "<repo-directory>"
             repository_path = "migration-demo-1"
             repository_branch = "<repo-branch>"
             terraform_variables = [
@@ -103,7 +104,7 @@ Once the apply command completes, an out folder is generated within your reposit
         },
         {
             identifier = "workspace_demo_2"
-            repository = "<local-repo-directory>"
+            repository = "<repo-directory>"
             repository_path = "migration-demo-2"
             repository_branch = "<repo-branch>"
             terraform_variables = [

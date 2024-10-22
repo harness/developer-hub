@@ -6,6 +6,8 @@ helpdocs_topic_id: 5qz1qrugyk
 helpdocs_category_id: xw2hz815l8
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-using-flags/ff-target-management/add-target-groups
 ---
 
 import target_group_1 from './static/2-add-target-groups-06.png'
@@ -13,6 +15,7 @@ import target_group_2 from './static/2-add-target-groups-07.png'
 import target_group_3 from './static/2-add-target-groups-08.png'
 import target_group_4 from './static/2-add-target-groups-09.png'
 import target_group_5 from './static/2-add-target-groups-10.png'
+import target_group_6 from './static/2-add-target-groups-11.png'
 
 :::info note
 While targets are often users, a target can be anything that can be uniquely identified. For example, a target can be a user, an application, a system, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.
@@ -128,6 +131,57 @@ You can use Target Settings to include or exclude targets from a target group. C
 3. Select the group(s) to add or exclude a target to/from, then click **Add to Target Group**, or **Exclude from Target Group**.
 
 4. The targets are now added to, or excluded from, the target groups.
+
+## Targeting using AND rules (beta feature)
+:::info note
+This beta feature is behind the `FFM_11173_TARGET_GROUP_AND_OPERATOR` feature flag. AND rules won't be available via the UI or work with sdks or the relay proxy unless this flag is enabled on Harness SaaS. 
+
+Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
+### SDK compatiblity
+
+| SDK            | Compatible Versions | Other Config Required?                               |
+|----------------|---------------------|------------------------------------------------------|
+| Golang         | v0.1.24+            |                                                      |
+| .NET           | v1.6.10+            |                                                      |
+| Java           | v1.6.1+             |                                                      |
+| Python         | v1.6.2+             |                                                      |
+| Node.js        | v1.8.2+             |                                                      |
+| Ruby           | v1.3.1+             |                                                      |
+| Erlang         | n/a                 |                                                      |
+| Apex           | n/a                 |                                                      |
+| Javascript     | All                 |                                                      |
+| Android/IOS    | All                 |                                                      |
+| React          | All                 |                                                      |
+| React Native   | All                 |                                                      |
+| Flutter        | All                 |                                                      |
+| Xamarin        | All                 |                                                      |
+| Relay Proxy V2 | 2.0.1+              | Enable and-rules flag in your relay proxy - see [here](https://github.com/harness/ff-proxy/blob/v2/docs/configuration.md) |
+
+### Creating AND rules
+
+<img src={target_group_6} alt="A screenshot showing target group AND rules" height="80%" width="80%" />   
+
+1. Click into the target group you want to add rules for
+2. Click ‘edit’ beside criteria to open the side panel to add rules
+3. Click ‘Add rule’ to add a new OR rule
+4. Click the + sign beside an existing rule to add an AND condition to a rule
+
+### Behavior with compatible SDKs
+
+The AND rule will be used to evaluate the flag i.e. the flag in the example will only be true if (Identifier equals Harness AND loc equals US) OR (Identifier equals Test_Acc)
+
+### Behavior with older SDKs 
+
+Older SDKs don’t have the logic to handle the AND section of each rule. They will only evaluate the first clause of each rule i.e. for the above example older non compatible SDK’s will evaluate the rule as (Identifier equals Harness) OR (Identifier equals Test_Acc). The same behaviour applies when the `FFM_11173_TARGET_GROUP_AND_OPERATOR` flag is disabled.
+
+### Backwords/forwards compatibility 
+
+These AND rules are backwards and forwards compatible with existing target group rules. When the `FFM_11173_TARGET_GROUP_AND_OPERATOR` flag is enabled all your existing OR rules will still exist, you’ll just now have the ability to add the additional AND rules to them via the + symbol in the updated UI.
+
+If for any reason you need the flag to be disabled in future all newly created rules will still exist, however they will only display the first clause of each rule i.e. if you rolled back to the old UI/functionality you would only see 2 rules in the UI for this example, Identifier equals Harness OR Identifier equals Test_Acc, the AND portions would be dropped. 
+
 
 ## Next step
 

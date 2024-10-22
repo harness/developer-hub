@@ -91,6 +91,10 @@ Harness lets you use Terraform to provision infrastructure as part of your deplo
 
 For an overview of the process see [Terraform provisioning with Harness](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness). 
 
+### How can I ensure the state file is properly saved in the Terraform Enterprise (TFE) workspace when running a Terraform apply script locally on the Harness delegate?
+
+One thing to check is whether the Harness delegate has the necessary permissions to write to the `dev-workflow-aws-harness` workspace. If the delegate lacks the required permissions, the state file won't be uploaded to the TFE workspace.
+
 ### Do I need to deploy an application to use Terraform?
 
 No. You do not need to deploy artifacts through Harness services to use Terraform provisioning in a workflow. You can use Terraform to provision infrastructure without deploying any artifact.
@@ -450,5 +454,20 @@ Harness lets users run AWS CDK Workloads via the Container Based Steps.
 Please follow more on this [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/)
 
 
+### Why isn't my environment variable working in Terraform Plan or Apply?
 
+Some environment variables are exclusive to Terraform Enterprise or Terraform Cloud. For example, `TFE_PARALLLELISM` is a Terraform Enterprise environment variable that is not supported by the Terraform CLI. In order to use these environment variables, please make sure to use either Terraform Enterprise or Terraform Cloud.
 
+### Does AWS CDK still require feature flags to be set in order to use?
+
+AWS CDK is globally available and does not require any feature flags to enable and use. For more information, please go to [AWS CDK Provisioning](/docs/continuous-delivery/cd-infrastructure/aws-cdk/).
+
+### Why is my CloudFormation create stack operation failing with the error **Exception: Invalid request: Parameter 'InsufficientDataHealthStatus' must be one of AllowedValues (Service: AmazonCloudFormation; Status Code: 400; Error Code: ValidationError; Request ID: ...; Proxy: null) while creating stack: HarnessStack-route53**?
+
+So it looks like the parameter value InsufficientDataHealthStatus is not below the allowed values as per the Amazon document:
+```
+Healthy: Route 53 considers the health check to be healthy.
+Unhealthy: Route 53 considers the health check to be unhealthy.
+LastKnownStatus: Route 53 uses the status of the health check from the last time that CloudWatch had sufficient data to determine the alarm state. For new health checks that have no last known status, the default status for the health check is healthy.
+```
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-healthcheck-healthcheckconfig.html﻿

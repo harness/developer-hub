@@ -2,6 +2,7 @@
 title: Create environments
 description: Learn how to create CD environments.
 sidebar_position: 2
+canonical_url: https://www.harness.io/blog/deployment-environments
 ---
 
 Environments represent your deployment targets (QA, Prod, etc). Each environment contains one or more **Infrastructure Definitions** that list your target clusters, hosts, namespaces, etc.
@@ -461,6 +462,41 @@ Next, when you create a pipeline, you can select the environment and the GitOps 
 GitOps clusters are used in a PR pipeline. A PR pipeline creates and merges a Git PR on the `config.json` for a destination cluster as part of an ApplicationSet. The PR Pipeline runs, merges a change to the config.json, and a GitOps sync on the ApplicationSet is initiated.
 
 GitOps Clusters are not used in standard CD pipelines. They're used when using GitOps only.
+
+
+## Clone Environments
+
+:::info note
+Currently, this feature is behind the feature flag `CDS_SERVICE_ENV_CLONING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can clone environment across scopes (i.e from one project to another, project to organization, account to project etc.).
+
+Select **More Options**.
+Select **Clone**
+![](./static/clone_option_env_inline.png)
+
+Once you click on **Clone**, you will see the **Clone Environment** setting:
+
+You can change the **Name**, and add tags, or descriptions for this clone environment.
+
+You can modify the destination of your clone environment using the  **Organization** and **Project** fields.
+
+The checkbox **Do you want to clone infrastructures?** is checked by default. The infrastructures in the environment will be cloned as inline by default, regardless of the destination being remote or inline environment. Uncheck the checkbox if you do not want to clone all the infrastructures in the environment.
+
+You can choose between **Inline** and **Remote** to set up your environment. Choose **Inline** when you want your environments to be stored in Harness. Choose **Remote** when storing your environment in a Third-party Git repository or Harness Code Repository.
+
+To clone a remote environment to an inline environment, you have to specify the source branch where the remote environment is stored.
+
+![](./static/clone_env_inline_settings.png)
+
+To clone an inline environment or remote environment to a remote environment, you must specify the target repository, Harness Code Repository, to store the environment in the Harness repository or Third-party Git provider, to store the environment in a third party Git provider, define the Git Connector if Third-party Git provider. Specify the Repository name, the YAML path, and the commit message.
+
+![](./static/clone_env_remote_settings.png)
+
+:::info note
+When you clone an environment from a different organization or project, the connector referenced in the infrastructure doesn't get cloned and must be explicitly created.
+:::
 
 
 ## Runtime inputs and expressions in environments

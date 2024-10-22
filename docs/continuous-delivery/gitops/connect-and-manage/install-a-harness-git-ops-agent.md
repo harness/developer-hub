@@ -1,7 +1,7 @@
 ---
 title: Install a Harness GitOps Agent
 description: This topic describes how to install a worker process that runs in your environment and performs GitOps tasks.
-sidebar_position: 4
+sidebar_position: 6
 helpdocs_topic_id: 52r3l5q67u
 helpdocs_category_id: 013h04sxex
 helpdocs_is_private: false
@@ -9,6 +9,7 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/gitops/install-a-harness-git-ops-agent
   - /docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent
+canonical_url: https://www.harness.io/blog/gitops-benefits
 ---
 
 This topic describes how to install a Harness GitOps Agent, a worker process that runs in your environment and performs GitOps tasks.
@@ -281,6 +282,17 @@ For steps on setting up the mapping and import, go to [Map existing Argo project
 
 The Harness GitOps Agent can work on environments where traffic is routed through a proxy. 
 
+To do so, add your proxy settings to your GitOps agent when creating your agent.
+
+1. Expand the **Advanced** dropdown menu in the **Overview** page. 
+2. Find the **Proxy Settings** as seen below and fill in the relevant fields for your proxy.
+
+![](./static/add-a-proxy.png)
+
+<details>
+<summary>
+Manually configure proxy support (DEPRECATED)
+</summary>
 To enable proxy support for the Harness GitOps Agent in environments where traffic is routed through a proxy, configuration is required for two key components: the `agent itself and the argocd-repo-server. Follow these steps to set up proxy support for both components.
 
 1. **Agent:** Add a property/config `HTTPS_PROXY`, and add proxy details, such as URL, port, and auth details as its value in the ConfigMap `gitops-agent`. For example, `HTTPS_PROXY: "http://squid.proxy-test:3128"`.
@@ -342,7 +354,7 @@ spec:
 
    .. rest of agent YAML ...
 ```
-  
+
 ### Proxy setup for testing
 
 Use the following YAML example to install proxy in any other environment.
@@ -421,7 +433,8 @@ spec:
     app.kubernetes.io/name: squid
 ---
 ```
-   
+
+</details>
 
 ## GitOps Agent FAQs
 
@@ -429,15 +442,16 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 ### What version of GitOps Agent supports what version of Repo server and Redis cache?
 
-GitOps Agent v0.67.4 supports redis:7.0.11-alpine and Repo server [argocd:v2.9.4](http://quay.io/argoproj/argocd:v2.9.4).
+| GitOps Agent version | Packaged Argo CD version | Supported Argo CD versions                    | Redis version       |
+| -------------------- | ------------------------ | --------------------------------------------- | ------------------- |
+| 0.78.0               | v2.10.14                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14 | redis:7.2.4-alpine  |
+| 0.77.0               | v2.10.10                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10          | redis:7.2.4-alpine  |
+| 0.67.0 - 0.76.0      | v2.9.4                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0, 2.9.3, 2.9.4  | redis:7.0.11-alpine |
+| 0.66.0               | v2.9.3                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0, 2.9.3         | redis:7.0.11-alpine |
+| 0.64.0 - 0.65.0      | v2.9.0                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0,               | redis:7.0.11-alpine |
+| 0.60.0 - 0.63.0      | v2.8.2                   | v2.3.5, v2.7.2, v.2.7.8, v2.8.2               | redis:7.0.11-alpine |
 
-GitOps Agent v0.66.0 supports redis:7.0.11-alpine and Repo server [argocd:v2.9.3](http://quay.io/argoproj/argocd:v2.9.3).
-
-GitOps Agent v0.64.0 to v0.65.0 supports redis:7.0.11-alpine and Repo server [argocd:v2.9.0](http://quay.io/argoproj/argocd:v2.9.0).
-
-GitOps Agent v0.60.0 to v0.63.0 supports redis:7.0.8-alpine and Argo CD version [argocd:v2.8.2](http://quay.io/argoproj/argocd:v2.8.2).
-
-GitOps Agent v0.57.0 to v0.59.2 supports Argo CD version [v2.7.8](http://quay.io/argoproj/argocd:v2.7.8).
+The supported Argo CD versions listed above are what Harness has verified. However, any patch version should work for each minor version listed. For example, the GitOps agent version `0.78.0` should support the Argo CD version of `2.10.0`, but this is not verified by Harness. 
 
 ### How long is a GitOps Agent version supported?
 
@@ -479,7 +493,7 @@ The Normal install type installs exactly 1 replica of all components.
 
 Both ArgoCD and Harness have an HA install type. The Harness HA type installs different variations of the components with more than 1 replicas.
 
-- `agent` has 2 replicas.
+- `agent` has 2 replicas. In HA mode, the agent will utilize a Horizontal Pod Autoscaler for CPU and memory, with a minimum of 1 replica and a maximum of 5 replicas.
 - `redis` has 3 replicas/sentinels (`haproxy`).
 - `argocd-application-controller` has 1 replica (ArgoCD uses 2).
 - `argocd-repo-server` server has 2 replicas.

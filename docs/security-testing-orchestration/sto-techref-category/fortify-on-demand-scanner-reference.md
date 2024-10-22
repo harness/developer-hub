@@ -159,6 +159,12 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 
 -->
 
+### Repository
+
+import StoLegacyRepo from './shared/custom-scan/_repo.md'; 
+
+<StoLegacyRepo />
+
 ### Product access
 
 These settings are available to access your Fortify on Demand SaaS instance when `policy_type` is `orchestratedScan` or `dataLoad`. 
@@ -260,5 +266,8 @@ import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md'
 
 <StoSettingFailOnSeverity />
 
+## Proxy settings
 
+import ProxySettings from './shared/proxy-settings.md';
 
+<ProxySettings />

@@ -11,23 +11,19 @@ To ingest usage and cost data from a Kubernetes cluster, as well as allow access
 
 ### Deployment
 
-There are two ways to enable a connection from Harness to your cluster.
+When enabling CCM for a cluster the first step is to deploy a delegate into the target cluster and give it a certain level of access (described later in this guide) depending on what you want to achieve with the Kubernetes connection. By deploying a delegate directly into the cluster you do not have to manage secrets, but simply control the access Harness has in your cluster by modifying the Kubernetes service account that is bound to the delegate deployment.
 
-The first option is to deploy a delegate into the target cluster, and give it a certain level of access depending on what you want to achieve with the Kubernetes connection. By deploying a delegate directly into the cluster you do not have to manage secrets, but simply controlled the access Harness has in your cluster by modifying the Kubernetes service account that is bound to the delegate deployment.
+Gathering fine-grain metrics in the cluster is memory intensive.  In an effort to ensure we don't run out of memory and terminate the pod, the following sizing guidelines are recommended for the delegate:
 
-You should size your delegate according to the cluster nodes. If a cluster has less than 70 nodes the recommended sizing is 1CPU and 4GB. For more than 70 we recommend 2CPU and 14GB.
+| # Nodes in the Cluster | CPU (Cores) | MEM (Mi)  |
+| -----------------------| ----------- | --------- |
+|        `<= 100`        |      1      |    3814   |
+|       `101 - 200`      |      2      |    7629   |
+|       `201 - 300`      |      3      |   11444   |
+|       `301 - 400`      |      4      |   15258   |
+|       `401 - 500`      |      5      |   19073   |
 
 ![](../../static/k8s_delegate.png)
-
-The second option is to create a service account and credential in the target cluster, store that credential in Harness as a secret, and then you can combine this secret and service account with a URL/domain/IP for the cluster API of the target cluster to create a connection to that cluster from outside. You will need a delegate deployed somewhere that has network connectivity to the cluster API of the target cluster.
-
-**This method is not recommended, as gathering the metrics for a cluster is resource (mainly memory) intensive.**
-
-![](../../static/k8s_serviceaccount.png)
-
-The most common method we see is the first, deploying a delegate into every target cluster. This is mainly based off limited network connectivity between clusters, and the extra work needed to generate and store service account credentials from across clusters when using the second method.
-
-You can use either method for every cluster you create connectors for, there does not need to be one method used for your entire account.
 
 #### Deployment Options
 
@@ -75,62 +71,14 @@ For creating all your Kubernetes connectors it is recommended that you utilize [
 # when using a delegate deployed into the cluster
 
 resource "harness_platform_connector_Kubernetes" "inheritFromDelegate" {
-  identifier  = "identifier"
-  name        = "name"
+  identifier  = "inheritFromDelegate"
+  name        = "inheritFromDelegate"
   description = "description"
   tags        = ["foo:bar"]
 
   inherit_from_delegate {
     delegate_selectors = ["harness-delegate"]
   }
-}
-
-# when using a cluster URL and service account (or other) credentials
-
-resource "harness_platform_connector_Kubernetes" "clientKeyCert" {
-  identifier  = "identifier"
-  name        = "name"
-  description = "description"
-  tags        = ["foo:bar"]
-
-  client_key_cert {
-    master_url                = "https://Kubernetes.example.com"
-    ca_cert_ref               = "account.TEST_k8ss_client_stuff"
-    client_cert_ref           = "account.test_k8s_client_cert"
-    client_key_ref            = "account.TEST_k8s_client_key"
-    client_key_passphrase_ref = "account.TEST_k8s_client_test"
-    client_key_algorithm      = "RSA"
-  }
-
-  delegate_selectors = ["harness-delegate"]
-}
-
-resource "harness_platform_connector_Kubernetes" "usernamePassword" {
-  identifier  = "identifier"
-  name        = "name"
-  description = "description"
-  tags        = ["foo:bar"]
-
-  username_password {
-    master_url   = "https://Kubernetes.example.com"
-    username     = "admin"
-    password_ref = "account.TEST_k8s_client_test"
-  }
-
-  delegate_selectors = ["harness-delegate"]
-}
-
-resource "harness_platform_connector_Kubernetes" "serviceAccount" {
-  identifier  = "identifier"
-  name        = "name"
-  description = "description"
-  tags        = ["foo:bar"]
-
-  service_account {
-    master_url                = "https://Kubernetes.example.com"
-    service_account_token_ref = "account.TEST_k8s_client_test"
-  }
-  delegate_selectors = ["harness-delegate"]
 }
 ```
 
@@ -145,14 +93,14 @@ For creating all your CCM Kubernetes connectors it is recommended that you utili
 At a minimum you need to enable `VISIBILITY`. If you are planning to perform auto stopping in this cluster, you can also enable `OPTIMIZATION`.
 
 ```terraform
-resource "harness_platform_connector_Kubernetes_cloud_cost" "example" {
-  identifier  = "identifier"
-  name        = "name"
+resource "harness_platform_connector_Kubernetes_cloud_cost" "inheritFromDelegateCCM" {
+  identifier  = "inheritFromDelegateCCM"
+  name        = "inheritFromDelegateCCM"
   description = "example"
   tags        = ["foo:bar"]
 
   features_enabled = ["VISIBILITY", "OPTIMIZATION"]
-  connector_ref    = "connector_ref"
+  connector_ref    = "inheritFromDelegate"
 }
 ```
 
@@ -164,7 +112,7 @@ Once you have the CCM Kubernetes connector up and running you should start to re
 
 If you want to perform auto stopping in a Kubernetes cluster you will need to deploy the Harness auto stopping controller and router into your cluster.
 
-[There is a helm chart for deploying the controller and router here](https://github.com/rssnyder/harness-ccm-autostopping).
+[There is a helm chart for deploying the controller and router here](https://github.com/rssnyder/charts/tree/main/charts/harness-ccm-autostopping).
 
 Otherwise, to get the deployment manifest for both components navigate to CCM in the Harness UI, under `Setup`,  `Cloud Integration`, and view your current connectors under `Kubernetes Clusters`. Find your connector in the list and select the three dots on the right and select `Edit Cost Access Features`.
 

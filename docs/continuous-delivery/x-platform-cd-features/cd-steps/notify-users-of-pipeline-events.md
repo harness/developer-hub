@@ -4,6 +4,10 @@ description: Notify users of different pipeline events.
 sidebar_position: 3
 ---
 
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This topic describes how to notify users of different pipeline events using popular notification methods.
 
 You can send pipeline event notifications using email and popular communication and incident management platforms.
@@ -232,7 +236,7 @@ notificationRules:
       notificationMethod:
         type: Webhook
         spec:
-          webhookUrl: https://app.harness.io/gateway/ng/api/projects/Quality_Assurence?accountIdentifier=vpCkHKsDSxK9_KYfjCTMKA&orgIdentifier=QE_Team
+          webhookUrl: https://app.harness.io/gateway/ng/api/projects/Quality_Assurence?accountIdentifier=ACCOUNT_ID&orgIdentifier=QE_Team
           headers:
             accept: "*/*"
             authorization: <+pipeline.variables.sv1>
@@ -253,120 +257,281 @@ For example, a Slack notification when the pipeline completes as well as when it
 ![](./static/pipeline_notification_end_complete.png)
 
 The webhook call is made as a POST request, and includes a JSON object containing the properties of the triggered event.
+
+If you are using a custom webhook trigger in webhook notification method and if your Pipeline setting **Mandate Authorization for Custom Webhook Triggers** is **true** then you need to pass the API key in the header.
+
+![](./static/mandate_auth_custom.png)
+
+
+
 ### JSON for webhook notifications
 
-<details>
-<summary>Here's the JSON Harness posts to your webhook endpoint.</summary>
+<Tabs>
+<TabItem value="Pipeline Start">
 
 ```json
 {
-  "type": "object",
-  "properties": {
-    "accountIdentifier": {
-      "type": "string"
-    },
-    "orgIdentifier": {
-      "type": "string"
-    },
-    "projectIdentifier": {
-      "type": "string"
-    },
-    "pipelineIdentifier": {
-      "type": "string"
-    },
-    "planExecutionId": {
-      "type": "string"
-    },
-    "stageIdentifier": {
-      "type": "string"
-    },
-    "stepIdentifier": {
-      "type": "string"
-    },
-    "executionUrl": {
-      "type": "string"
-    },
-    "pipelineUrl": {
-      "type": "string"
-    },
-    "eventType": {
-      "type": "string",
-      "enum": [
-        "AllEvents",
-        "PipelineStart",
-        "PipelineSuccess",
-        "PipelineFailed",
-        "PipelineEnd",
-        "PipelinePaused",
-        "StageSuccess",
-        "StageFailed",
-        "StageStart",
-        "StepFailed"
-      ]
-    },
-    "nodeStatus": {
-      "type": "string"
-    },
+  "eventData": {
+    "accountIdentifier": "ACCOUNT_ID",
+    "orgIdentifier": "default",
+    "projectIdentifier": "PROJECT_ID",
+    "pipelineIdentifier": "PIPELINE_ID",
+    "pipelineName": "PIPELINE_NAME",
+    "planExecutionId": "PIPELINE_EXECUTION_ID",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/PIPELINE_EXECUTION_ID/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
+    "eventType": "PipelineStart",
+    "nodeStatus": "started",
     "triggeredBy": {
-      "type": "object",
-      "properties": {
-        "triggerType": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        }
-      }
+      "triggerType": "MANUAL",
+      "name": "NAME",
+      "email": "EMAIL_ID"
     },
-    "moduleInfo": {
-      "type": "object",
-      "properties": {
-        "services": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "environments": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "envGroups": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "infrastructures": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
+    "moduleInfo": {},
+    "startTime": "Tue Aug 20 08:14:46 GMT 2024",
+    "startTs": 1724141686
+  }
+}
+```
+</TabItem>
+<TabItem value="Pipeline End">
+
+```json
+{
+  "eventData": {
+    "accountIdentifier": "ACCOUNT_ID",
+    "orgIdentifier": "default",
+    "projectIdentifier": "PROJECT_ID",
+    "pipelineIdentifier": "PIPELINE_ID",
+    "pipelineName": "PIPELINE_NAME",
+    "planExecutionId": "PIPELINE_EXECUTION_ID",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/PIPELINE_EXECUTION_ID/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
+    "eventType": "PipelineEnd",
+    "nodeStatus": "completed",
+    "triggeredBy": {
+      "triggerType": "MANUAL",
+      "name": "NAME",
+      "email": "EMAIL_ID"
     },
-    "startTime": {
-      "type": "string"
-    },
-    "startTs": {
-      "type": "integer"
-    },
-    "endTime": {
-      "type": "string"
-    },
-    "endTs": {
-      "type": "integer"
-    }
+    "moduleInfo": {},
+    "startTime": "Tue Aug 20 08:19:31 GMT 2024",
+    "startTs": 1724141971,
+    "endTime": "Tue Aug 20 08:19:42 GMT 2024",
+    "endTs": 1724141982
   }
 }
 ```
 
-</details>
+</TabItem>
+<TabItem value="Pipeline Success">
+
+```json
+{
+  "eventData": {
+    "accountIdentifier": "ACCOUNT_ID",
+    "orgIdentifier": "default",
+    "projectIdentifier": "PROJECT_ID",
+    "pipelineIdentifier": "PIPELINE_ID",
+    "pipelineName": "PIPELINE_NAME",
+    "planExecutionId": "PIPELINE_EXECUTION_ID",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/PIPELINE_EXECUTION_ID/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
+    "eventType": "PipelineSuccess",
+    "nodeStatus": "completed",
+    "triggeredBy": {
+      "triggerType": "MANUAL",
+      "name": "NAME",
+      "email": "EMAIL_ID"
+    },
+    "moduleInfo": {},
+    "startTime": "Tue Aug 20 08:22:42 GMT 2024",
+    "startTs": 1724142162,
+    "endTime": "Tue Aug 20 08:22:53 GMT 2024",
+    "endTs": 1724142173
+  }
+}
+```
+
+</TabItem>
+<TabItem value="Pipeline Failed">
+
+```json
+{
+  "eventData": {
+    "accountIdentifier": "ACCOUNT_ID",
+    "orgIdentifier": "default",
+    "projectIdentifier": "PROJECT_ID",
+    "pipelineIdentifier": "PIPELINE_ID",
+    "pipelineName": "PIPELINE_NAME",
+    "planExecutionId": "PIPELINE_EXECUTION_ID",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/PIPELINE_EXECUTION_ID/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
+    "eventType": "PipelineFailed",
+    "nodeStatus": "failed",
+    "triggeredBy": {
+      "triggerType": "MANUAL",
+      "name": "NAME",
+      "email": "EMAIL_ID"
+    },
+    "moduleInfo": {},
+    "startTime": "Tue Aug 20 08:25:04 GMT 2024",
+    "startTs": 1724142304,
+    "endTime": "Tue Aug 20 08:25:18 GMT 2024",
+    "errorMessage": "Shell Script execution failed. Please check execution logs.",
+    "endTs": 1724142318
+  }
+}
+```
+
+</TabItem>
+<TabItem value="Stage Failed ">
+
+```json
+{
+  "eventData": {
+    "accountIdentifier": "ACCOUNT_ID",
+    "orgIdentifier": "default",
+    "projectIdentifier": "PROJECT_ID",
+    "pipelineIdentifier": "PIPELINE_ID",
+    "pipelineName": "PIPELINE_NAME",
+    "planExecutionId": "PIPELINE_EXECUTION_ID",
+    "stageIdentifier": "qq",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/PIPELINE_EXECUTION_ID/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
+    "stepName": "qq",
+    "stageName": "qq",
+    "eventType": "StageFailed",
+    "nodeStatus": "failed",
+    "triggeredBy": {
+      "triggerType": "MANUAL",
+      "name": "NAME",
+      "email": "EMAIL_ID"
+    },
+    "startTime": "Tue Aug 20 08:28:13 GMT 2024",
+    "startTs": 1724142493,
+    "endTime": "Tue Aug 20 08:28:23 GMT 2024",
+    "errorMessage": "Shell Script execution failed. Please check execution logs.",
+    "endTs": 1724142503
+  }
+}
+```
+
+The above JSON is for a specific stage, If you choose all stages three times the webhook will be triggered. In this case we have two stages qq and qs and both failed and two times the notification was triggered. 
+
+
+</TabItem>
+
+<TabItem value="Stage success">
+
+```json
+{
+  "eventData": {
+    "accountIdentifier": "ACCOUNT_ID",
+    "orgIdentifier": "default",
+    "projectIdentifier": "PROJECT_NAME",
+    "pipelineIdentifier": "PIPELINE_NAME",
+    "pipelineName": "PIPELINE_NAME",
+    "planExecutionId": "PIPELINE_EXECUTION_ID",
+    "stageIdentifier": "qq",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/PIPELINE_EXECUTION_ID/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
+    "stepName": "qq",
+    "stageName": "qq",
+    "eventType": "StageSuccess",
+    "nodeStatus": "completed",
+    "triggeredBy": {
+      "triggerType": "MANUAL",
+      "name": "NAME",
+      "email": "EMAIL_ID"
+    },
+    "startTime": "Tue Aug 20 08:38:40 GMT 2024",
+    "startTs": 1724143120,
+    "endTime": "Tue Aug 20 08:38:44 GMT 2024",
+    "endTs": 1724143124
+  }
+}
+```
+
+The above JSON is for a specific stage, If you choose all stages three times the webhook will be triggered. In this case we have two stages qq and qs and both are passed successfully and two times the notification was triggered. 
+
+
+</TabItem>
+
+<TabItem value="Stage Started">
+
+```json
+{
+  "eventData": {
+    "accountIdentifier": "ACCOUNT_ID",
+    "orgIdentifier": "default",
+    "projectIdentifier": "PROJECT_NAME",
+    "pipelineIdentifier": "PIPELINE_NAME",
+    "pipelineName": "PIPELINE_NAME",
+    "planExecutionId": "DRWqd-imSA2wi8xPmoaOjQ",
+    "stageIdentifier": "qs",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/DRWqd-imSA2wi8xPmoaOjQ/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
+    "stepName": "qs",
+    "stageName": "qs",
+    "eventType": "StageStart",
+    "nodeStatus": "started",
+    "triggeredBy": {
+      "triggerType": "MANUAL",
+      "name": "NAME",
+      "email": "EMAIL_ID"
+    },
+    "moduleInfo": {},
+    "startTime": "Tue Aug 20 09:03:09 GMT 2024",
+    "startTs": 1724144589
+  }
+}
+```
+
+The above JSON is for a specific stage, If you choose all stages three times the webhook will be triggered. In this case we have two stages qq and qs and both stages started so two times the notification was triggered. 
+
+
+</TabItem>
+
+<TabItem value="Step Failed">
+
+```json
+{
+  "eventData": {
+    "accountIdentifier": "ACCOUNT_ID",
+    "orgIdentifier": "default",
+    "projectIdentifier": "PROJECT_NAME",
+    "pipelineIdentifier": "PIPELINE_NAME",
+    "pipelineName": "PIPELINE_NAME",
+    "planExecutionId": "OmbdztM2Qvqh7ZwM06FY4A",
+    "stageIdentifier": "qq",
+    "stepIdentifier": "ShellScript_1",
+    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/OmbdztM2Qvqh7ZwM06FY4A/pipeline",
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
+    "stepName": "ShellScript_1",
+    "eventType": "StepFailed",
+    "nodeStatus": "failed",
+    "triggeredBy": {
+      "triggerType": "MANUAL",
+      "name": "NAME",
+      "email": "EMAIL_ID"
+    },
+    "startTime": "Tue Aug 20 09:12:09 GMT 2024",
+    "startTs": 1724145129,
+    "endTime": "Tue Aug 20 09:12:10 GMT 2024",
+    "errorMessage": "Shell Script execution failed. Please check execution logs.",
+    "endTs": 1724145130
+  }
+}
+```
+
+The above JSON is for a specific stage, If you choose all stages three times the webhook will be triggered. In this case we have two stages qq and qs and both stages started so two times the notification was triggered. 
+
+
+</TabItem>
+
+</Tabs>
+
 
 ## Notify Slack channels in user groups
 

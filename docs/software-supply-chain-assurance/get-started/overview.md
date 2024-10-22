@@ -1,35 +1,46 @@
 ---
-title: Harness Software Supply Chain Assurance (SSCA) overview
+title: Harness Supply Chain Security (SCS) overview
 sidebar_label: Overview
-description: Secure your software supply chain with Harness SSCA.
+description: Secure your software supply chain with Harness SCS.
 sidebar_position: 1
 ---
 
-Today's software development landscape heavily relies on open-source components and third-party libraries. While this reliance streamlines development and expedites product delivery, it simultaneously exposes the software supply chain to potential risks, including security vulnerabilities, licensing discrepancies, and the looming threat of supply chain attacks.
+In today's software development landscape, reliance on open-source components and various DevOps tools has become essential for faster development. While this approach streamlines the development process and accelerates product delivery, it also introduces potential risks to the software supply chain. These risks include security vulnerabilities from the extensive chain of dependencies, which can lead to zero-day exploits, licensing discrepancies, and other attacks. Additionally, while there are various tools involved in the software development process, the tools themselves can also open the door to multiple supply chain attacks. 
 
-Also, high-profile breaches, like those experienced by SolarWinds and Codecov, have further underscored the importance of software supply chain security. While standard security techniques for detecting vulnerabilities in source code are essential, they don't fully address the risks of tampering throughout the supply chain journey - from source to distribution.
+<DocImage path={require('./static/ssca-overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
-To address these challenges, the Harness Software Supply Chain Assurance (SSCA) module is designed to secure the software supply chain, ensuring a layer of security that extends beyond conventional measures.
 
-## Software Supply Chain Assurance objectives
+High-profile breaches, like those experienced by Log4j, SolarWinds and Codecov, have further underscored the importance of software supply chain security. While standard security techniques for detecting vulnerabilities in source code are essential, they don't fully address the risks throughout the supply chain journey,  - from source to distribution.
 
-Harness SSCA module provides a robust solution for establishing trust in the software supply chain, managing open-source components, ensuring policy compliance, and enabling rapid response to new threats. The SSCA module aims to achieve the following objectives
+To address these challenges, the Harness Supply Chain Security (SCS) module is designed to secure the software supply chain, ensuring a layer of security that extends beyond conventional measures.
 
-* **Prevent:** Stop the use of harmful or unauthorized open-source components.
-* **Report:** Generate compliance reports adhering to both internal governance policies and external regulations.
-* **Trust:** Establish trust in the software supply chain so that the artifacts produced can be trusted.
 
-<!-- After remediation capability added: * **Remediate:** Respond quickly and effectively to threats by updating and deploying the patched version of impacted components. -->
-<!-- after dashboards/views added: * **Track:** Provide real-time visibility into the usage and deployment of open-source components. -->
+## Supply Chain Security Objectives
 
-## Software Supply Chain Assurance features
+The SCS module focuses on securing the software supply chain from two critical perspectives: dependency attacks and exploits from the DevOps toolchain. It ensures that the software remains secure throughout the entire delivery process by addressing risks from both sides. The SCS module helps you to achieve the following objectives
 
-To realize the [objectives](#software-supply-chain-assurance-objectives), the SSCA module offers features such as:
 
-* [SBOM generation and management.](../sbom/overview.md)
-* [Govern the usage of open source with SBOM policy enforcement.](../sbom-policies/overview.md)
-* [Comply with SLSA Build Level 1, Level 2 and Level 3.](../slsa/overview.md)
 
-<!-- * Remediation paths to effectively address zero-day vulnerabilities in open-source components. * Comprehensive visibility into component usage and deployment environments.-->
+1. **Risk and Compliance Visibility**: Gain insights into the security posture of code repositories, artifacts, and CI/CD tools concerning risk and compliance standards such as [CIS Benchmarks](https://www.cisecurity.org/benchmark/software-supply-chain-security), [OWASP Top 10 CI/CD Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/), and [SLSA](https://slsa.dev/).
+2. **Intelligent Remediation**: Initiate SLAs and track the remediation of all risk and compliance issues, including the removal of non-compliant open-source dependencies, using SBOMs (Software Bill of Materials).
+1. **Governance Policy Enforcement**: Achieve a high level of security by collecting evidence and enforcing supply chain governance policies based on compliance standards and SBOMs.
 
-For more information about these features and how SSCA integrates with the Harness Platform, go to the [SSCA key concepts](./key-concepts.md).
+This comprehensive approach helps organizations maintain a secure and compliant software supply chain, mitigating risks from dependencies and ensuring robust protection against potential attacks from the DevOps toolchain.
+
+
+## Supply Chain Security Features
+
+To realize the objectives, the SCS module offers the following features:
+
+
+
+* [Repository security posture management](../repository-security-posture-management-rspm)
+* Comply with security compliance standards
+    * [CIS Benchmarks](../manage-risk-and-compliance/standards-and-rule-definitions#cis-benchmarks)
+    * [OWASP Top 10 CI/CD Risks](../manage-risk-and-compliance/standards-and-rule-definitions#owasp-top-10-cicd-security-risks)
+* [SLSA Build Level 1, Level 2 and Level 3.](https://developer.harness.io/docs/software-supply-chain-assurance/slsa/overview)
+* [SBOM generation and management.](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/overview)
+* [Govern the usage of open source with SBOM policy enforcement.](https://developer.harness.io/docs/software-supply-chain-assurance/sbom-policies/overview)
+* [Remediate issues related to risk & compliance and zero-day exploits.](https://developer.harness.io/docs/software-supply-chain-assurance/remediation-tracker/overview)
+
+For more information about these features and how SCS integrates with the Harness Platform, go to the [SCS key concepts](https://developer.harness.io/docs/software-supply-chain-assurance/get-started/key-concepts).

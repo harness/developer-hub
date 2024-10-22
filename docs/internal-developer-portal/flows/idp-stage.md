@@ -184,6 +184,8 @@ In the example provided for this step we have used pipeline variables as input f
 
 :::
 
+
+
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
@@ -198,6 +200,43 @@ Select the repository type in which your template is stored, which could be publ
 In case it's **Private** make sure you have added the **gitclone step** and the **path for template** should be the **Clone Directory** added in **gitclone step**
 
 In case of public templates you just need to add the public URL of the template path stored in your git provider. eg `https://github.com/devesh-harness/test-cookicutter`
+
+:::
+
+In case you have your own cookiecutter template, make sure the directory structure in the repository should be as follows
+
+```sh
+cookiecutter-something/
+├── {{ cookiecutter.project_name }}/  <--------- Project template
+│   └── ...
+├── blah.txt                      <--------- Non-templated files/dirs
+│                                            go outside
+│
+└── cookiecutter.json             <--------- Prompts & default values
+```
+
+You must have:
+
+- A `cookiecutter.json` file.
+
+- A `{{ cookiecutter.project_name }}/` directory, where `project_name` is defined in your `cookiecutter.json`.
+
+Beyond that, you can have whatever files/directories you want.
+
+:::info
+ 
+Cookiecutter runs only on the **Project Template** and use values mentioned in `cookiecutter.json`, hence when you add it on git it's suggested to have **one cookiecutter template per repository** with the `cookiecutter.json` on the root. Also in case you don't want to render a file on the execution of cookiecuuter template but that file is inside your Project Template, add it under `_copy_without_render` key in your `cookiecutter.json` 
+
+```json
+{
+    "project_slug": "sample",
+    "_copy_without_render": [
+        "*.html",
+        "*not_rendered_dir",
+        "rendered_dir/not_rendered_file.ini"
+    ]
+}
+```
 
 :::
 
@@ -236,6 +275,8 @@ Provide the input required the template in terms of key value pairs in this step
 
 </TabItem>
 </Tabs>
+
+
 
 
 ### 3. Create Repo
@@ -282,11 +323,16 @@ The following topics provide more information about creating code repo connector
 * Bitbucket: [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
 * GitHub: [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 * GitLab: [GitLab Connector Settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-* Other Git providers:
-  * [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
-  * [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
 
 #### Org, Repo, Description, Default Branch
+
+:::info
+
+For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well, in-case it's not a personal account
+
+![](./static/group-path-create-repo.png)
+
+:::
 
 Add the org, repo name, Repo Description and Default branch for the repo you want to create.
 
@@ -433,11 +479,15 @@ The following topics provide more information about creating code repo connector
 * Bitbucket: [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
 * GitHub: [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 * GitLab: [GitLab Connector Settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-* Other Git providers:
-  * [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
-  * [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
+
 
 #### Org, Repo, Code Directory, Branch
+
+:::info
+
+For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well. In case of using the personal account, make sure you add the `account-id` in the path
+
+:::
 
 Add the Org, Repo Name, Repo Description and Branch Name where you want to push the code.
 
@@ -500,11 +550,14 @@ The following topics provide more information about creating code repo connector
 * Bitbucket: [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
 * GitHub: [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 * GitLab: [GitLab Connector Settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-* Other Git providers:
-  * [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
-  * [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
 
 #### Org, Repo, Branch, File Path
+
+:::info
+
+For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well. In case of using the personal account, make sure you add the `account-id` in the path
+
+:::
 
 Add the Org, Repo Name, Branch and the File path relative to the root of the repository, where your `catalog-info.yaml` is present.
 

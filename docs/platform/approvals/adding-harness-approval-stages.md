@@ -291,6 +291,54 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 
 `<+pipeline.stages.Shell_Script.spec.execution.steps.Harness_Approval_Step.output.approverInputs.foo> == 1`
 
+### Support for allowed values for custom approval inputs
+
+You can now provide allowed values for manual approval step.
+
+Here's an example YAML file showcasing various configurations you can use for allowed values.
+
+#### YAML Example
+
+```yaml
+- step:
+                  type: HarnessApproval
+                  name: HarnessApproval_1
+                  identifier: HarnessApproval_1
+                  spec:
+                    approvalMessage: Please review the following information and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    isAutoRejectEnabled: false
+                    approvers:
+                      userGroups:
+                        - _project_all_users
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                    approverInputs:
+                      - name: variable_1
+                        defaultValue: ""
+                        allowedValues: 1,2,3
+                      - name: variable_2
+                        defaultValue: ""
+                        required: true
+                      - name: variable_3
+                        defaultValue: ""
+                        regex: .*abc
+                      - name: variable_4
+                        defaultValue: ""
+                        selectOneFrom: 1,2,3
+                  timeout: 3m
+```            
+
+In this example, for variable_1, initially set to an empty string and can take the allowed values: 1, 2, or 3.
+
+For variable_2, initially set to an empty string and is required, meaning a value must be provided.
+
+For variable_3, initially set to an empty string and must match the regex pattern .*abc, meaning it should contain the substring "abc" anywhere in its value.
+
+For variable_4, initially set to an empty string and allows selection from the options 1, 2, or 3.
+
+The validation of approval inputs only occurs during manual approvals; there is no validation for rejections or auto approvals.
+
 ### User groups as expressions
 
 In **User Groups**, select **Expression** as the type of value.

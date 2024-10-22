@@ -28,6 +28,10 @@ The [Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/
 
 In Harness, a workload is a Deployment, StatefulSet, or DaemonSet object deployed and managed to steady state.
 
+:::warning
+In Canary deployment, only one deployment workload is supported. Having multiple workloads in service manifests will result in deployment failure.
+:::
+
 ## Multiple managed workloads
 
 With the Rolling Deployment step, you can deploy multiple managed workloads.
@@ -178,11 +182,6 @@ Harness displays the status of each pod deployed and confirms steady state.
 
 For information on how to configure traffic routing for canary deployments, see [Traffic Routing Step Reference](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step.md).
 
-:::note
-
-Currently, this feature is behind the feature flag `CDS_K8S_TRAFFIC_ROUTING_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 #### Wrap Up
 

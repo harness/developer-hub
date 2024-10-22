@@ -6,6 +6,8 @@ helpdocs_topic_id: xf3hmxbaji
 helpdocs_category_id: xw2hz815l8
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-using-flags/ff-target-management/target-users-with-flags
 ---
 
 Feature Flag targeting allows you to serve a particular Variation of a flag to specific target when the flag is enabled. Targets are anything that can be uniquely identified, we refer to these Targets as users, but they could also be apps, machines, resources, emails etc. 
@@ -64,6 +66,10 @@ To add specific Targets: 
    * If you select one of the default Variations, for example, True or False, select the Target(s) or target group(s), then Click **Save**.
 
       ![The Targeting Tab of a Flag with the dropdown menus for adding a target highlighted.](./static/3-targeting-users-with-flags-03.png)
+
+   :::info note
+   Accounts with over 250,000 targets can only search for targets by the exact target identifier rather than using wildcard searches on name and identifier.
+   :::
 
    * If you want to use a Percentage Rollout, select the target group, enter the percentage of each Variation you want to serve, then click **Save**.
 

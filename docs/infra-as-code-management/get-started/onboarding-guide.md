@@ -53,6 +53,10 @@ resource "aws_instance" "my_first_ec2_instance" {
 
 Go to [Terraform Documentation](https://developer.hashicorp.com/terraform/intro) or [OpenTofu Documentation](https://opentofu.org/docs/) for more information on currently supported Workspace types. 
 
+## Terraform to OpenTofu migration
+Harness supports all OpenTofu versions, and Terraform MPL versions up to 1.5.x, any BSL versions (from 1.6.0) are not supported. 
+Follow this [OpenTofu migration guide](https://opentofu.org/docs/intro/migration/) to transition from Terraform to OpenTofu and leverage the benefits of this open-source alternative.
+
 ## Create a workspace
 
 A workspace is essentially a named environment or container that stores your Terraform configurations, variables, states, and other resources necessary to manage infrastructure. 
@@ -154,6 +158,10 @@ Using OIDC allows your connector to assume a role and its permissions set in you
 Go to the **Use OIDC** tab [Cloud platform connectors reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials) for more information.
 :::
 ---
+
+:::tip migrate existing projects
+For first-time use, use our [migration tool](https://developer.harness.io/docs/infra-as-code-management/remote-backends/state-migration) to create new workspaces and import your existing Terraform projects into the Harness Platform.
+:::
 
 ## Add a new workspace
 

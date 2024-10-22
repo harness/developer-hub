@@ -1,0 +1,14 @@
+{
+    "label":"Reporting & Insights",
+    "position": 50,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Workspace Reporting and insights"
+    },
+    "customProps":{
+       "helpdocs_category_id":""
+    }
+ }

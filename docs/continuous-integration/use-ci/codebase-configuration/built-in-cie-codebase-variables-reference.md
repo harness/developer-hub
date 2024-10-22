@@ -6,6 +6,7 @@ helpdocs_topic_id: 576gjpak61
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/github-actions-support-harness-ci
 ---
 
 import Tabs from '@theme/Tabs';

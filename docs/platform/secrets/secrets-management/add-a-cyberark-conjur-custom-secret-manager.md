@@ -45,19 +45,16 @@ This topic shows you how to create a Secret Manager Template at the Project scop
 
    ```bash
    CONJUR_APPLIANCE_URL='<+spec.environmentVariables.CONJUR_APPLIANCE_URL>'
-   HOST_ID='<+spec.environmentVariables.HOST_ID>'
+   HOST_ID='<+secretManager.environmentVariables.HOST_ID>'
    API_KEY='<+secrets.getValue(<+spec.environmentVariables.API_KEY_SECRET_ID>)>'
-   AUTHENTICATOR='<+spec.environmentVariables.AUTHENTICATOR>'
-   ACCOUNT='<+spec.environmentVariables.ACCOUNT>'
+   AUTHENTICATOR='<+secretManager.environmentVariables.AUTHENTICATOR>'
+   ACCOUNT='<+secretManager.environmentVariables.ACCOUNT>'
    KIND='variable'
 
-   IDENTIFIER='<+spec.environmentVariables.IDENTIFIER>'
+   IDENTIFIER='<+secretManager.environmentVariables.IDENTIFIER>'
 
-   #
    # Authenticate first to get an access token
    # ref: https://docs.conjur.org/Latest/en/Content/Developer/Conjur_API_Authenticate.htm
-   #
-
    FULL_AUTH_URL="$CONJUR_APPLIANCE_URL/$AUTHENTICATOR/$ACCOUNT/$HOST_ID/authenticate"
    ACCEPT_HEADER='Accept-Encoding: base64'
    ACCESS_TOKEN=$(curl --request POST --header "$ACCEPT_HEADER" --data "$API_KEY" "$FULL_AUTH_URL")
@@ -66,8 +63,12 @@ This topic shows you how to create a Secret Manager Template at the Project scop
    RETRIEVAL_URL="$CONJUR_APPLIANCE_URL/secrets/$ACCOUNT/$KIND/$IDENTIFIER"
    AUTH_HEADER="Authorization: Token token=\"${ACCESS_TOKEN}\""
    ACCEPT_HEADER_JSON="Accept: application/json"
+   secret="$(curl --request GET $RETRIEVAL_URL --header "$AUTH_HEADER" --header "$ACCEPT_HEADER_JSON")"
 
-   secret="$(curl --request GET $RETRIEVAL_URL --header "$AUTH_HEADER" --header "$ACCEPT_HEADER_JSON" | head -n 1)"
+   # Check the exit status of the curl command
+   if [ $? -ne 0 ]; then
+     exit 1
+   fi
    ```
 
 12. Select **Configuration**, then Select **Add Input Variable**.
@@ -114,28 +115,30 @@ template:
       spec:
         script: |-
           CONJUR_APPLIANCE_URL='<+spec.environmentVariables.CONJUR_APPLIANCE_URL>'
-          HOST_ID='<+spec.environmentVariables.HOST_ID>'
+          HOST_ID='<+secretManager.environmentVariables.HOST_ID>'
           API_KEY='<+secrets.getValue(<+spec.environmentVariables.API_KEY_SECRET_ID>)>'
-          AUTHENTICATOR='<+spec.environmentVariables.AUTHENTICATOR>'
-          ACCOUNT='<+spec.environmentVariables.ACCOUNT>'
+          AUTHENTICATOR='<+secretManager.environmentVariables.AUTHENTICATOR>'
+          ACCOUNT='<+secretManager.environmentVariables.ACCOUNT>'
           KIND='variable'
-
-
-          #
+          
+          IDENTIFIER='<+secretManager.environmentVariables.IDENTIFIER>'
+          
           # Authenticate first to get an access token
           # ref: https://docs.conjur.org/Latest/en/Content/Developer/Conjur_API_Authenticate.htm
-          #
           FULL_AUTH_URL="$CONJUR_APPLIANCE_URL/$AUTHENTICATOR/$ACCOUNT/$HOST_ID/authenticate"
           ACCEPT_HEADER='Accept-Encoding: base64'
           ACCESS_TOKEN=$(curl --request POST --header "$ACCEPT_HEADER" --data "$API_KEY" "$FULL_AUTH_URL")
-
+          
           #  Use the token to retrieve a secret
           RETRIEVAL_URL="$CONJUR_APPLIANCE_URL/secrets/$ACCOUNT/$KIND/$IDENTIFIER"
           AUTH_HEADER="Authorization: Token token=\"${ACCESS_TOKEN}\""
           ACCEPT_HEADER_JSON="Accept: application/json"
-
-          # Set secret variable, which is expected to be set as the value of the secret.
-          secret="$(curl --request GET $RETRIEVAL_URL --header "$AUTH_HEADER" --header "$ACCEPT_HEADER_JSON" | head -n 1)"
+          secret="$(curl --request GET $RETRIEVAL_URL --header "$AUTH_HEADER" --header "$ACCEPT_HEADER_JSON")"
+          
+          # Check the exit status of the curl command
+          if [ $? -ne 0 ]; then
+           exit 1
+          fi
 
     environmentVariables:
       - name: CONJUR_APPLIANCE_URL

@@ -334,9 +334,23 @@ To add an Infrastructure Definition with the EKS connection method, do the follo
 5. Enter a name for the infrastructure definition.
 6. In **Deployment Type**, select **Kubernetes**.
 7. In **Select Infrastructure Type**, select **Elastic Kubernetes Service**.
-8. In **Cluster**, select or enter the name of the target cluster.
-9. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
-10. Select **Save**.
+8. In **Connector**, select your AWS connector. 
+9. In **Cluster**, select or enter the name of the target cluster.
+10. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
+11. Select **Save**.
+
+:::tip
+
+If these connection settings don't work for your setup, try using **Manual Configuration**. To do so, enable the feature flag `CDS_AWS_EKS_CLUSTER_MANUAL_CONFIGURATION` by contacting [Harness Support](mailto:support@harness.io).
+
+Once enabled, do the following:
+
+1. Above **Cluster**, check the checkbox labeled **Manual Configuration**. This reveals new options.
+2. In **Endpoint**, select your cluster endpoint. 
+3. In **CA Certification Data**, select the certificate associated with your cluster, if you have one.
+4. Select your **Cluster** and **Namespace** as described above. 
+
+:::
 
 </TabItem>
 </Tabs>
@@ -452,6 +466,23 @@ To add an **Infrastructure Definition** with the Rancher connection method, do t
 
 </TabItem>
 </Tabs>
+
+:::info
+
+We now support OpenID Connect (OIDC) authentication in Kubernetes, enabling seamless integration with OIDC-compliant identity providers for enhanced security and user management.
+
+To configure OIDC authentication in Kubernetes, navigate to account/project settings.
+
+Select **New Connector**, select **Kubernetes cluster**
+
+In the details tab, select **Specify master URL and credentials**
+
+Enter the Master URL
+
+In the **Authentication**, select **OpenID Connect** and fill in the necessary details.
+
+![](static/kubernetes-oidc-support.png)
+:::
 
 ## Dynamically provisioned infrastructure
 

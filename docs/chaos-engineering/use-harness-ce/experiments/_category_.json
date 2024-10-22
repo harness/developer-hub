@@ -1,0 +1,9 @@
+{
+  "position": 2,
+  "label": "Chaos Experiment",
+  "collapsible": "true",
+  "collapsed": "true",
+  "customProps": {
+    "description": "Composed of chaos faults arranged in a specific order to create a failure scenario."
+  }
+}
