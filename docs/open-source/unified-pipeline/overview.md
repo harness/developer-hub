@@ -24,4 +24,10 @@ Ensure that we make a global keyword section
 
 Need to define a UI design direction. 
 
+Move up `container`, `script`, maybe `shell`, and `env` up a level. 
+
+StepQueue and StepTemplate still not defined. 
+
+Add [*] to all steps
+
 ## Github compatibility
