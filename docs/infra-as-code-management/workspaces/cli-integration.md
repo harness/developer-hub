@@ -31,7 +31,7 @@ This backend configuration is suitable for teams looking to decommission their e
 <TabItem value="Step-by-step">
 To configure your Harness backend, follow these steps:
 
-1. Backend Configuration:
+**1. Backend configuration:**
 The CLI integration provides you with the auto-generated configuration needed to set up Harness as your Terraform backend. Below is a sample of the configuration block that should be added to your terraform block in your existing Terraform files:
 
 ```hcl
@@ -46,14 +46,14 @@ terraform {
   }
 }
 ```
-2. Authentication via Environment Variables:
+**2. Authentication via environment variables:**
 We recommend using environment variables to securely pass your authentication token to Terraform. This prevents the token from being hardcoded into configuration files, enhancing security and flexibility across environments.
 To do this, set the TF_HTTP_PASSWORD environment variable to your Harness Personal Access Token:
 `export TF_HTTP_PASSWORD=<your-harness-access-token>`
 
 This approach ensures that the token is kept secure and only passed during Terraform operations.
 
-3. Running Terraform Commands:
+**3. Run terraform commands:**
 Once the backend is configured and authentication is set up, run the terraform init command to initialize the backend:
 `terraform init`
 
