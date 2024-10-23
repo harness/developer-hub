@@ -309,47 +309,33 @@ charts/
 ```
 :::
 
-To add a Helm sub chart through the Harness UI, follow these steps:
-
-**Chart Path**: Specify the path to your main Helm chart in your Git repository. For example, if your Helm chart is located at `test/k8sDeploymentType/helm/multi-chart`, enter this path as the Chart Path.
-
-**Sub-Chart Path (optional)**: If you have subcharts that you want to include, you can specify their path here. This path should point to any folder within the `test` directory, such as `test/main/test-chart`.
-
-![](./static/deploy-helm-subcharts.png)
-
 Here is a sample service YAML where a subchart is defined.
 
 ```
 service:
-service:
-  name: Multi-Chart
-  identifier: MultiChart
+  name: K8sHelmSubChart
+  identifier: K8sHelmSubChart
   serviceDefinition:
-    type: NativeHelm
+    type: Kubernetes
     spec:
       manifests:
         - manifest:
-            identifier: manifest
+            identifier: m1
             type: HelmChart
             spec:
               store:
-                type: Git
+                type: Github
                 spec:
-                  connectorRef: GitSampleK8sManifests
+                  connectorRef: gitHubAchyuth
                   gitFetchType: Branch
-                  folderPath: test/k8sDeploymentType/helm/multi-chart
-                  branch: master
-              subChartPath: main/test-chart
+                  folderPath: parent-chart
+                  branch: main
+              subChartPath: first-child
               skipResourceVersioning: false
               enableDeclarativeRollback: false
               helmVersion: V3
-              fetchHelmChartMetadata: false
               commandFlags:
                 - commandType: Template
-                  flag: "--dependency-update"
-                - commandType: Install
-                  flag: "--dependency-update"
-                - commandType: Upgrade
                   flag: "--dependency-update"
   gitOpsEnabled: false
 ```
@@ -365,6 +351,34 @@ You can see the subchart and the list of files fetched in the fetch section of t
 You can see the `template` command with the `--dependency-update` flag running in the prepare section of the pipeline execution.
 
 ![](./static/helm-dependency.png)
+
+### Configuring Helm Sub-Charts with Git Repositories
+
+We can set up Helm Sub-chart scenarios with Git repositories as well. Suppose you have your project directory structured as follows:
+```
+charts/
+  ├── subcharts/
+  │   ├── my-sub-chart1/
+  │   └── my-sub-chart2/
+  └── maincharts/
+      ├── my-main-chart1/
+      └── my-main-chart2/
+```
+**Chart Path**: This should be the path where all charts are present, in this case, `charts/`.
+
+**Sub-Chart Path**: This will be the relative path of the chart you want to deploy. For example, if you want to deploy my-main-chart1, the Sub-Chart Path would be `maincharts/my-main-chart1/`.
+
+All dependency files can be fetched from the charts/ folder, allowing you to include any sub-chart as a dependency.
+
+It is also recommended to add the following Helm Command Flags in the Advanced section:
+
+1. Command Type **Template**, Flag `--dependency-update`
+2. Command Type **Install**, Flag `--dependency-update`
+3. Command Type **Upgrade**, Flag `--dependency-update`
+
+With these commands, Helm will update the chart dependencies defined in your Chart.yaml
+
+![](./static/deploy-helm-subcharts.png)
 
 ## Reference the artifact
 
