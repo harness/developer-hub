@@ -1,7 +1,7 @@
 ---
 title: Overview
 description: A home for developers to create, manage, and explore software.
-sidebar_position: 2
+sidebar_position: 3
 sidebar_label: Harness IDP Overview
 redirect_from:
   - /docs/internal-developer-portal/getting-started/overview
