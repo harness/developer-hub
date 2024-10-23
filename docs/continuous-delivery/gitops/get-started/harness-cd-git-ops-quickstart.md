@@ -362,6 +362,15 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
    For this example, we'll simply select a manual sync policy and no other options. You can change any of these settings by editing your Application or whenever you sync.
 9. In **Sync Policy**, select **Manual**, and then select **Continue**.
 10.  In **Source**, you specify the source repo to use.
+
+You can add your repository in two ways.
+
+By **Repo ID**: This option requires that the repository has been previously created with the necessary parameters to enable access. When creating an application using a repository by ID, you cannot remove the repository until there are no applications referencing it.
+
+By **Repo URL**: This option requires only the URL of the repository (along with the matching repository credential template if the repository is private). If the URL of the pre-created repository is specified, the application will be treated as if it was created using the **Repo ID** option.
+
+Note: When importing applications in BYOA, if the URL in the application matches any existing pre-created repositories (including those imported during the BYOA flow), the application will be imported as if it were created using the **Repo ID** option. Conversely, if the URL is not found in the list of available repositories for the specific agent, the application will be imported as if it were created using the **Repo URL** option.
+
 11. In **Repository Type**, select **Git**.
 12. Click **Repository URL** and select the URL you entered in your Harness GitOps Repository: `https://github.com/argoproj/argocd-example-apps`.
 13. In **Revision Type**, select **Branch**.
@@ -381,7 +390,7 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
 
 :::note Support for Multiple Sources
 
-You can also have multiple sources for a single application.
+You can configure multiple sources for a single application in Harness GitOps. This feature is supported by ArgoCD starting from version 2.6 and is currently in beta.
 
 Currently, Support for Multiple Sources is behind the feature flag `GITOPS_MULTI_SOURCE_ENABLED`. Contact Harness Support to enable the feature.
 
@@ -389,7 +398,7 @@ Select the checkbox **Is Multiple Source** in the Source section.
 
 Under **Repository**, choose **Repo ID** if you have pre-configured repositories in Harness GitOps Repositories. If not, select **Repo URL** and provide the URL details of your repository. Ensure that you have a credentials template configured for the repository if it is private.
 
-Note that if the first source is a **Repo ID**, all the subsequent sources must also be configured using **Repo ID**, and vice versa.
+Note that if the first source is set as **Repo ID**, all subsequent sources must also be configured using **Repo ID**, and vice versa.
 
 Select the checkbox **Reference** to designate this source as a reference source, which can be used later when defining the values file. Note that the reference source can only be a Git repository, not a Helm repository.
 
