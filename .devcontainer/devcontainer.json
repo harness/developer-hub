@@ -7,7 +7,6 @@
         "streetsidesoftware.code-spell-checker",
         "github.vscode-pull-request-github"
     ],
-    "forwardPorts": [3000],
     "postCreateCommand": "yarn install",
     "waitFor": "postCreateCommand" // otherwise automated jest tests fail
 }
