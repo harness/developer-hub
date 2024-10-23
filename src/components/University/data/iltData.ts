@@ -68,4 +68,15 @@ export const ilt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },
+  {
+    title: "Infrastructure as Code Management",
+    module: MODULES.iacm,
+    type: type.user,
+    description:
+      "Deep dive into advanced IaC orchestration and management concepts.",
+    version: "Harness IaCM Enterprise Plan",
+    link: "https://university-registration.harness.io/ilt-infrastructure-as-code-management",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
 ];
