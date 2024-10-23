@@ -1,7 +1,10 @@
 {
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
     "features": {
-      "ghcr.io/devcontainers/features/node": "1.6.1"
+        "ghcr.io/devcontainers/features/node": {
+            "version": 16,
+            "installYarnUsingApt": true
+        }
     },
     "settings": {
       "[typescript]": {
@@ -26,6 +29,8 @@
     ],
     "forwardPorts": [3000],
     "containerUser": "vscode",
+    "postCreateCommand": "yarn install",
+    "waitFor": "postCreateCommand", // otherwise automated jest tests fail
     "features": {
       "node": {
         "version": "18"
