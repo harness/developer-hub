@@ -1,6 +1,6 @@
 ---
 title: Chaos Experiments
-sidebar_position: 1
+sidebar_position: 2
 description: Configure rules to receive alerts for your chaos experiments.
 canonical_url: https://www.harness.io/blog/continuous-resilience
 redirect_from:

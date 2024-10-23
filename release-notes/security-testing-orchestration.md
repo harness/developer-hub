@@ -21,6 +21,38 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+## October 2024
+
+### Version 1.114.3
+
+<!-- 2024-10-22 -->
+
+#### New features and enhancements
+- Improved issue details formatting to support various data formats from scanners (STO-8058, STO-7845, ZD-6673).
+- Added AquaSecurity's ECR registries as a fallback to prevent rate-limit issues when their GHCR (STO-8157).
+- Container image scanning without using the Docker-in-Docker step does not recognize certificates passed through the delegate. This issue has now been fixed (STO-8140).
+- Anchore policy failures now show as "Info" level issues of type "External Policy" in scan results (STO-6494).
+
+#### Documentation enhancements
+- Added a video tutorial for [SonarQube Orchestration scan mode](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference).
+- Added a video on [How to perform Local Docker/OCI Archive scanning with Harness STO.](https://www.youtube.com/watch?v=x1NXBJaHF7U&list=PLXsYHFsLmqf1wmAiQZkL65Xt6VarH_DuH&index=8&t=7s)
+
+
+## October 2024
+
+### Version 1.112.5
+
+<!-- 2024-10-08 -->
+
+#### New features and enhancements
+- The Snyk step scan modes for [Code scanning](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning), [Container scanning](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-container-scanning), and [IaC (Infrastructure as Code) scanning](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-iac-scanning) are now generally available (GA). Previously, these scan modes were behind the feature flag `STO_SNYK_ORCHESTRATION_ENHANCEMENTS`.
+- Resolved a performance issue that caused the Exemptions page to fail to load in some projects (STO-8104, ZD-70734).
+- Updated the Nexus IQ runner to copy custom certificates from the delegate to the JVM (STO-8060).
+- Cleaned up issue details fields and added a new **Issue type** field to all issues (STO-8080).
+
+#### Fixed issue
+
+- Fixed a bug that caused scanners to ignore additional settings with boolean values. For example, in the Anchore scanner configuration, setting the `ANCHORECTL_UPDATE_CHECK` variable to `true` or `false` was previously ignored. With this fix, STO will properly recognize all the boolean value variables (STO-8006, ZD-69654).
 
 ## September 2024
 
@@ -62,7 +94,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 - The [Veracode scan step](/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference) in STO now ignores issues mitigated on the Veracode side, so the scan results exclude any mitigated issues.
 - The STO dashboard now includes a new graph to view the **Top 5 Vulnerable Targets**, showing code repositories, artifacts, instances, and configurations across the account.
-- You can now override the security testing scanner image at the step level. Learn more about [configuring your pipeline to use images from your registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry#configure-your-pipeline-to-use-images-from-your-registry).
+- You can now override the security testing scanner image at the step level. Learn more about [configuring your pipeline to use STO images from your private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry#configure-your-pipeline-to-use-images-from-your-registry).
 
 
 ## July 2024
@@ -1059,7 +1091,7 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
 
 - You can now set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
 
-  For information on how to set up this workflow, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+  For information on how to set up this workflow, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 - Reference Identifiers selected for AIDA enhancement in a Security Issue are now remembered, upon generation, and shown when revisited in the UI. (STO-6032)
 

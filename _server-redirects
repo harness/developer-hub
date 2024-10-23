@@ -71,4 +71,16 @@
 # Added by tejakummarikuntla on 9-3-2024 for SSCA to SCS refactoring
 /docs/category/get-started-with-ssca /docs/category/get-started-with-scs
 
+# Added by tejakummarikuntla on 10-14-2024 for renaming the document: "Configure pipeline to use STO images from private registry"
+/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry /docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry
+
+# Added by Debanitrkl on 10-10-2024 for CDE redirects
+
+/docs/cloud-development-environment /docs/cloud-development-environments 
+
+# Added by Debanitrkl on 10-16-2024 for IDP Sidenav Changes
+
+/docs/internal-developer-portal/roadmap/harness-vs-backstage /docs/internal-developer-portal/harness-vs-backstage
+
+
 # Redirects generated from Front Matter [sytem generated goes below here]:

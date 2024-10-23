@@ -64,12 +64,30 @@ Tags are displayed on the delegate details page in Harness Manager. Go to [Tags 
           value: "has_jq, has_gcloud"
 ```
 
+### DYNAMIC_REQUEST_HANDLING
+
+If enabled, delegate will stop acquiring new tasks if the cpu/memory usage goes beyond values defined in `CPU_USAGE_THRESHOLD` and `MEMORY_USAGE_THRESHOLD`. The default value for both is 80. 
+
+   ```yaml
+        - name: DYNAMIC_REQUEST_HANDLING
+          value: "true"
+   ```
+
 ### DELEGATE_CPU_THRESHOLD
 
-To configure the delegate resource threshold, set the `DELEGATE_CPU_THRESHOLD` env variable to the CPU threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks. For more information, go to [Configure delegate metrics and auto scale](/docs/platform/delegates/manage-delegates/delegate-metrics).
+To configure the delegate resource threshold, set the `DELEGATE_CPU_THRESHOLD` env variable to the CPU threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks. Note that `DYNAMIC_REQUEST_HANDLING` has to be set to true for this to take effect. For more information, go to [Configure delegate metrics and auto scale](/docs/platform/delegates/manage-delegates/delegate-metrics).
 
    ```yaml
         - name: DELEGATE_CPU_THRESHOLD
+          value: "80"
+   ```
+
+### DELEGATE_MEMORY_THRESHOLD
+
+To configure the delegate resource threshold, set the `DELEGATE_MEMORY_THRESHOLD` env variable to the memory threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks. Note that `DYNAMIC_REQUEST_HANDLING` has to be set to true for this to take effect. For more information, go to [Configure delegate metrics and auto scale](/docs/platform/delegates/manage-delegates/delegate-metrics).
+
+   ```yaml
+        - name: DELEGATE_MEMORY_THRESHOLD
           value: "80"
    ```
 

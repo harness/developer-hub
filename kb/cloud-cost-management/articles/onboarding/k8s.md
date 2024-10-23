@@ -13,7 +13,15 @@ To ingest usage and cost data from a Kubernetes cluster, as well as allow access
 
 When enabling CCM for a cluster the first step is to deploy a delegate into the target cluster and give it a certain level of access (described later in this guide) depending on what you want to achieve with the Kubernetes connection. By deploying a delegate directly into the cluster you do not have to manage secrets, but simply control the access Harness has in your cluster by modifying the Kubernetes service account that is bound to the delegate deployment.
 
-You should size your delegate according to the cluster nodes. If a cluster has less than 70 nodes the recommended sizing is 1CPU and 4GB. For more than 70 we recommend 2CPU and 14GB.
+Gathering fine-grain metrics in the cluster is memory intensive.  In an effort to ensure we don't run out of memory and terminate the pod, the following sizing guidelines are recommended for the delegate:
+
+| # Nodes in the Cluster | CPU (Cores) | MEM (Mi)  |
+| -----------------------| ----------- | --------- |
+|        `<= 100`        |      1      |    3814   |
+|       `101 - 200`      |      2      |    7629   |
+|       `201 - 300`      |      3      |   11444   |
+|       `301 - 400`      |      4      |   15258   |
+|       `401 - 500`      |      5      |   19073   |
 
 ![](../../static/k8s_delegate.png)
 
@@ -104,7 +112,7 @@ Once you have the CCM Kubernetes connector up and running you should start to re
 
 If you want to perform auto stopping in a Kubernetes cluster you will need to deploy the Harness auto stopping controller and router into your cluster.
 
-[There is a helm chart for deploying the controller and router here](https://github.com/rssnyder/harness-ccm-autostopping).
+[There is a helm chart for deploying the controller and router here](https://github.com/rssnyder/charts/tree/main/charts/harness-ccm-autostopping).
 
 Otherwise, to get the deployment manifest for both components navigate to CCM in the Harness UI, under `Setup`,  `Cloud Integration`, and view your current connectors under `Kubernetes Clusters`. Find your connector in the list and select the three dots on the right and select `Edit Cost Access Features`.
 

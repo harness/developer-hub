@@ -8,6 +8,8 @@ sidebar_position: 20
 
 Currently, Secure Connect for Harness Cloud is behind the feature flag `CI_SECURE_TUNNEL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+If you're using Secure Connect with macOS, the feature flag `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` is required as well. 
+
 :::
 
 [Harness CI Cloud (Harness-managed build infrastructure)](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) addresses common challenges you might face when implementing a continuous integration tool in your infrastructure:
@@ -34,6 +36,13 @@ You can [configure Secure Connect](#configure-secure-connect) in minutes. If you
 | <ul><li>Extension of your existing private infrastructure</li><li>Dedicated infrastructure</li><li>Encryption at rest and in transit</li><li>No passwords stored using OIDC</li><li>No customer assets stored in CI Cloud</li></ul> | <ul><li>Enable Secure Connect in one click</li><li>Doesn't require admin approval</li><li>Multi-cloud/on-prem support</li></ul> |
 
 ## Configure Secure Connect
+
+:::note
+
+- The client must support connection by proxy.
+- Secure Connect Client is supported on macOS and Linux. 
+
+:::
 
 1. Create a [Harness API key](/docs/platform/automation/api/add-and-manage-api-keys) with at least `RBAC:core_pipeline_view` and `ABAC:All` permissions.
 1. Use the following command to run the Docker client in your firewalled environment. Where you run the client depends on what assets need to securely connect to Harness and your environment's network configuration.
@@ -70,4 +79,4 @@ curl -x HARNESS_HTTPS_PROXY YOUR_ENDPOINT_URL
 
 Replace `YOUR_ENDPOINT_URL` with the URL that you want to route through the secure tunnel. For example, you could route a private Bitbucket domain like `https://bitbucket.myorg.com/`.
 
-The client must support connection by proxy.
+

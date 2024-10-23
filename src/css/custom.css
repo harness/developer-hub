@@ -327,7 +327,8 @@
 
   --hover: var(--gray-200);
   --platform-card-bg: var(--white);
-  --homepageFeatureCard: transparent;
+  --homepageFeatureCard: white;
+  
 }
 
 /* darkmode css */
@@ -389,6 +390,7 @@ html[data-theme="dark"] .navbar {
   --ifm-navbar-shadow: white !important;
   --ifm-navbar-background-color: var(--black) !important;
   --ifm-background-color: var(--black) !important;
+  --body-background-color: var(--black) !important;
   --ifm-heading-color: white !important;
   --text-color: white !important;
   --background-color: var(--black);
@@ -423,6 +425,7 @@ html *:after {
 
 body {
   font-family: var(--harness-font-family) !important;
+  background-color: var( --background-color);
 }
 
 a:hover {

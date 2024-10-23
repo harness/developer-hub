@@ -64,6 +64,10 @@ This plugin exports a UI tab that you can use as a new CI/CD tab for a service o
 
 The `isCircleCIAvailable` condition is met when the `circleci.com/project-slug` annotation is present in the software components's `catalog-info.yaml` definition file.
 
+![](./static/circle-ci-pipeline-details.png)
+
+![](./static/circle-ci-build-details.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set the following annotation in its `catalog-info.yaml` definition file:

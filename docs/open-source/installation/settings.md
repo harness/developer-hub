@@ -18,7 +18,7 @@ docker run -d \
   -e GITNESS_USER_SIGNUP_ENABLED=false \
   -p 3000:3000 -p 3022:3022 \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /tmp/gitness:/data \
+  -v /tmp/harness:/data \
   --name opensource \
   --restart always \
   harness/harness

@@ -31,7 +31,8 @@ A: Yes, the Harness GitOps Agent supports High Availability and scalability by a
 
 
 ### Which versions of ArgoCd that the latest version of the GitOps agent support? 
-We currently support v2.8.2.
+
+We currently support v2.10.14.
  
 
 ### The GitOps agent updater, can you advise that this will update the Agent, ArgoCD and Redis? Is this also true if use the option to bring our own ArgoCD?
@@ -160,3 +161,16 @@ The minimum RBAC requirements depend on the applications and destination cluster
 ### How can I sync or delete an application or non-deployment resource?
 
 Each resource in our UI has a three dot "kebab menu" that allows you sync or delete the resource. 
+
+### How to get list of all gitops degraded/suspended gitops applications?
+
+To get a list of all degraded/suspended applications, you can call an api to get the list of all the applications along with their health status, here is the API, you can use - 
+ 
+```
+curl 'https://app.harness.io/gateway/gitops/api/v1/applications?routingId=SNM_3IzhRa6SFPz6DIV7aA' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+  -H 'authorization: Bearer PAT_TOKEN' \
+
+  --data-raw '{"accountIdentifier":"ACCOUNT_ID","orgIdentifier":"ORG_ID","projectIdentifier":"PROJECT_ID"}'
+```

@@ -59,6 +59,8 @@ This plugin exports a UI tab that you can use as a new CI/CD tab for a service o
 
 The `isJenkinsAvailable` condition is met when the `jenkins.io/github-folder` annotation is present in the software components's `catalog-info.yaml` definition file.
 
+![](./static/jenkins-card.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set the following annotation in its `catalog-info.yaml` definition file:

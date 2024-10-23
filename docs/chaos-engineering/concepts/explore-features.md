@@ -65,7 +65,7 @@ For more information on importance and types of probes, go to [Resilience Probes
 
 Experiment log refers to metadata generated when a chaos experiment is in progress. These logs are stored in separate files, which are bound to the faults of the experiment. They contain information such as the steps of execution of the fault, errors caused during the execution of the fault, and so on. The log files are named based on the unique fault name mentioned in the experiment.
 
-For more information on infrastructure logs, go to [Infrastructure Logs](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/#logs).
+For more information on infrastructure logs, go to [Infrastructure Logs](/docs/chaos-engineering/use-harness-ce/infrastructures/#logs).
 
 ### Application Map
 
@@ -88,12 +88,12 @@ It refers to the detailed records that tracks all activities, changes, and event
 - **User Access and Permissions**: Tracking user login attempts, access grants, and any changes to user roles or permissions.
 - **System Events**: System-generated events, errors, or alerts that may occur during chaos experiments.
 
-For more information, go to [logs](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/#logs).
+For more information, go to [logs](/docs/chaos-engineering/use-harness-ce/infrastructures/#logs).
 
 ### Custom Image Registry
 It is a repository that hosts container images that are used by chaos experiments. HCE allows you to use custom image registries for chaos experiments.
 
-For more information on types of image registry and how to create one, go to [Image Registry](/docs/chaos-engineering/concepts/explore-concepts/image-registry).
+For more information on types of image registry and how to create one, go to [Image Registry](/docs/chaos-engineering/use-harness-ce/image-registry).
 
 ## Chaos Orchestration
 
@@ -154,7 +154,7 @@ For more information, go to [RBAC and User Authorization](/docs/chaos-engineerin
 
 ### ChaosGuard
 
-ChaosGuard provides an additional level of security to guard chaos experiments from chaos-enabled users. It aims to minimize the blast radius  and mitigate potential threats. For more information, go to [ChaosGuard](/docs/chaos-engineering/concepts/explore-concepts/chaosguard). For hands-on experience, [Configure and Use ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/govern-run).
+ChaosGuard provides an additional level of security to guard chaos experiments from chaos-enabled users. It aims to minimize the blast radius  and mitigate potential threats. For more information, go to [ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/). For hands-on experience, [Configure and Use ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/govern-run).
 
 ## Integrations
 

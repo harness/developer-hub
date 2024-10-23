@@ -46,6 +46,8 @@ You can also add a smaller card on the overview page, as follows:
 - component: EntityGithubPullRequestsOverviewCard
 ```
 
+![](./static/github-pull-request-tab.png)
+
 ## Annotations
 
 If the `catalog-info.yaml` descriptor file for the component is stored in GitHub, the `github.com/project-slug` is automatically added as the `org/repo` where the file is stored. However, you can manually configure or override this setting:

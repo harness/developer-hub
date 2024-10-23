@@ -26,6 +26,10 @@ For more information, go to [Approvals](/docs/platform/approvals/approvals-tutor
 
 For more information, go to [Notifications](/docs/platform/notifications/notification-settings).
 
+- To execute an experiment in a pipeline, enable the **Execute via Pipeline** permission in your **Project Settings**.
+
+    ![enable pipeline](./static/pipeline-exec/fine-grain-control.png)
+
 ### Integrate Experiment Pipeline with Notification
 
 You can create a chaos experiment as a pipeline and integrate it to receive notifications about the status of the experiment. Go to [create experiment as a pipeline](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#create-experiment-as-a-pipeline) to get hands-on experience of creating a chaos experiment as a pipeline.

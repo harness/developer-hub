@@ -102,7 +102,7 @@ For more information, go to [Add a pipeline notification strategy](/docs/continu
 
 **Allow for rollback capabilities.** Harness automatically adds rollback steps to deployment stages. By default, the pipeline is set to roll back a stage when a deployment task fails. Users can further enhance and customize the rollback behavior to perform more operations.
 
-For more information, go to [Define a failure strategy on stages and steps](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
+For more information, go to [Define a failure strategy on stages and steps](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings.md).
 
 ## Infrastructure-as-code (IaC)
 
@@ -185,7 +185,7 @@ You need to ensure developers and release managers are aware of a failure. Using
 For more information, go to: 
 
 - [Notify users of pipeline events](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events). 
-- [Define a failure strategy on stages and steps](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy). 
+- [Define a failure strategy on stages and steps](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings.md). 
 
 ## Continuous improvement
 

@@ -7,7 +7,7 @@ description: View service incident information from FireHydrant, such as active 
 | -------------- | ------------------------------------------------------------------------------------------ |
 | **Created by** | [FireHydrant](https://firehydrant.com/)                                                    |
 | **Category**   | Incident management                                                                        |
-| **Source**     | [GitHub](https://github.com/backstage/backstage/blob/master/plugins/firehydrant/README.md) |
+| **Source**     | [GitHub](https://github.com/backstage/community-plugins/tree/main/workspaces/firehydrant/plugins/firehydrant) |
 | **Type**       | Open-source plugin                                                                         |
 
 ## Configuration
@@ -47,6 +47,8 @@ This plugin exports a UI card that you can show on the **Overview** tab of a ser
 - component: FirehydrantCard
 ```
 
+![](./static/firehydrant_plugin_screenshot.png)
+
 ## Annotations
 
 To further configure the plugin for a service in the software catalog, set the following annotation in its `catalog-info.yaml` definition file:
@@ -59,4 +61,4 @@ metadata:
 
 ## Support
 
-The plugin is owned by FireHydrant and managed in the [Backstage repository](https://github.com/backstage/backstage) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
+The plugin is owned by FireHydrant and managed in the [Backstage repository](https://github.com/backstage/community-plugins/tree/main/workspaces/firehydrant/plugins/firehydrant) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

@@ -1,0 +1,12 @@
+---
+title: Clouddriver will not Connect to MySQL Causing a Stoppage, DatabaseChangeLock Error
+---
+
+## Issue
+Clouddriver will not connect to MySQL. Errors can be seen throughout the logs and cause a problem where it will not allow pipelines to execute due to a ```locked``` state of MySQL with no timeframe or lockout period.
+```I 2020-12-22T23:26:00.121328401Z 2020-12-22 23:26:00.121 INFO 1 --- [ main] liquibase.executor.jvm.JdbcExecutor : SELECT `LOCKED` FROM clouddriver.DATABASECHANGELOGLOCK WHERE ID=1```
+
+## Cause
+One of the causes of this error is a bug in MySQL where a ```locked``` status will be hit due to some other error.  When MySQL is in this state, the state doesn't reset, as there is no timeout period to remove the error state to bring MySQL back to an unlocked status. These locked records can hold indefinitely.Below is an example of an error code that references the locked log:
+```Error creating bean with name 'liquibase' defined in class path resource [com/netflix/spinnaker/kork/sql/config/DefaultSqlConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.LockException: Could not acquire change log lock. Currently locked by spin-clouddriver-ro-deck-############## (###.######.###) since 12/22/20, 10:58 PM at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.2.3.RELEASE.jar:5.2.3.RELEASE] at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:651) ~[spring-beans-5.2.3.RELEASE.jar:5.2.3.RELEASE] ... 56 common frames omitted Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'healthEndpoint' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Unsatisfied dependency expressed through method 'healthEndpoint' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'healthContributorRegistry' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthContribut```
+

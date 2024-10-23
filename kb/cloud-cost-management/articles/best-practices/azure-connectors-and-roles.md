@@ -40,28 +40,56 @@ variable "harness_principal_id" {
 }
 ```
 
-## Get Subscription List
+## Get Subscriptions And Create Connectors
 
-We have two options to get the subscription list.  Option 1 is to use the Azure provider to get all subscriptions in the tenant.
+There are two options to retrieve the subscriptions we want to create connectors for.  We'll use the Harness provider to create a CCM connector for each Azure subscription after we retrieve them. We are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
+
+### Use the Azure provider to get all subscriptions in the tenant.
 
 ```
 data "azurerm_subscriptions" "available" {}
+
+resource "harness_platform_connector_azure_cloud_cost" "subscription" {
+  for_each = { for subscription in data.azurerm_subscriptions.available.subscriptions : subscription.subscription_id => subscription }
+
+  identifier = "azure${replace(each.value.subscription_id, "-", "_")}"
+  name       = each.value.display_name
+  
+  features_enabled = ["VISIBILITY", "OPTIMIZATION", "GOVERNANCE"]
+  tenant_id        = each.value.tenant_id
+  subscription_id  = each.value.subscription_id
+}
 ```
 
-Option 2 is to use the `locals` value to define statically.  This is useful when you don't have a solid naming convention to filter results from option 1.
+### Use The Built In Locals Value To Define The Subscriptions Statically
+This is useful when you don't have a solid naming convention and you want to apply certain features to different subscriptions.  For example, you want to only apply autostopping in non-prod subscriptions.  This is also useful when you can't authenticate to the Azure tenant.
 
 ```
 locals {
-  azure-non-prod = ['sub-1', 'sub-2']
-  azure-prod = ['sub-3', 'sub-4']
+  azure-non-prod = ["00000000-0000-0000-0000-000000000001", "00000000-0000-0000-0000-000000000002"]
+  azure-prod = ["00000000-0000-0000-0000-000000000003", "00000000-0000-0000-0000-000000000004"]
+}
+
+resource "harness_platform_connector_azure_cloud_cost" "subscription" {
+  for_each = toset(concat(local.azure-non-prod, local.azure-prod))
+
+  identifier = "azure${replace(each.key, "-", "_")}"
+  name       = "azure${replace(each.key, "-", "_")}"
+  
+  features_enabled = ["VISIBILITY", "OPTIMIZATION", "GOVERNANCE"]
+  tenant_id        = "00000000-0000-0000-0000-000000000005""
+  subscription_id = trimspace(each.key)
 }
 ```
 
 ## Create Roles In Each Azure Subscription
+Your organization probably already has a process to do this.  When this is the case, defer to that process.  Below is an alternative.
+
+### Create Roles In Each Azure Subscription via Terraform
 
 There are two examples. One is subscription-wide reader access and the other is subscription-wide contributor access. Based on your needs in Harness, choose the minimum amount of permissions needed.
 
-Note:  If you give the Harness principal id the appropriate permissions across your entire tenant via the Azure portal, you do not have to use the below Terraform to give permissions for each subscription.
+Note:  If you give the Harness principal id the appropriate permissions across your entire tenant via the Azure portal, you do not have to use the below Terraform to give permissions for each subscription.  These are written using the Azure provider to get all subscriptions.  If you are using the locals value to statically define the subscriptions, the logic for the loop and scope will have to be modified.
 
 ```
 # for view access
@@ -80,24 +108,6 @@ resource "azurerm_role_assignment" "editor" {
   scope                = each.value.id
   role_definition_name = "Contributor"
   principal_id         = var.harness_principal_id
-}
-```
-
-## Create A CCM Connector For Each Azure Subscription
-
-Use the Harness provider to create a CCM connector for each Azure subscription. In this example, we are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
-
-```
-resource "harness_platform_connector_azure_cloud_cost" "subscription" {
-  for_each = { for subscription in data.azurerm_subscriptions.available.subscriptions : subscription.subscription_id => subscription }
-
-  identifier = replace(each.value.subscription_id, "-", "_")
-  name       = each.value.display_name
-  
-  #VISIBILITY is for recommendations, OPTIMIZATION is for auto stopping, GOVERNANCE is for asset governance
-  features_enabled = ["VISIBILITY", "OPTIMIZATION", "GOVERNANCE"]
-  tenant_id        = each.value.tenant_id
-  subscription_id  = each.value.subscription_id
 }
 ```
 

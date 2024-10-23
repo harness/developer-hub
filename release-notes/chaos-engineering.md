@@ -21,17 +21,43 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## October 2024
+
+## Version 1.47.0
+
+#### New features and enhancements
+
+- Adds support to explicitly define the log watcher sidecar for chaos experiment manifest that use Harness Delegate. (CHAOS-6703)
+
+- Adds support to explicitly define the log watcher sidecar for chaos experiment manifest that use a dedicated chaos infrastructure. (CHAOS-6657)
+
+- Adds an updated UI for ChaosGuard to show dedicated chaos infrastructure, Harness Delegate, Linux and Windows chaos infrastructure. It also provides a modal each for application map and service discovery, respectively. (CHAOS-6646)
+
+- Adds support for live log streams for helper pods when executing an experiment that uses Harness Delegate. (CHAOS-5931)
+
+- Adds self-signed and trusted CA certificates for API chaos experiments. (CHAOS-6834)
+
+- Adds the functionality to block all inbound rules for Windows global blackhole chaos. (CHAOS-6603)
+
+#### Fixed issues
+
+- Fixed an issue where the list of infrastructure supported by Harness Delegate showed deleted infrastructure. (CHAOS-6742)
+
+- Fixed an issue where the image registry was unable to automatically reload the experiment manifest when creating a chaos experiment. (CHAOS-6727)
+
+- Fixed an issue in the image registry where selecting the **ignore** option from the UI would override values from backend. (CHAOS-6724)
+
+- Fixed the issue where the experiment schedule type was not being updated when it was changed from non-cron to cron type. (CHAOS-6822)
+
 ## September 2024
 
 ## Version 1.45.5
 
-#### New features and enhancements
-
-- Adds a feature wherein ChaosGuard now lists chaos infrastructure based on which type of infrastructure you select (Delegate-enabled or dedicated infrastructure enabled). (CHAOS-6680)
-
-- Chaos infrastructure created with the help of a sandbox shows that is is supported by a dedicated infrastructure with the note "Supported by a Harness Delegate". (CHAOS-6501)
-
 #### Fixed issues
+
+- Fixed the issue where chaos infrastructure created with the help of a sandbox showed "Supported by a Harness Delegate". (CHAOS-6501)
+
+- Fixed the issue where selecting an infrastructure to create ChaosGuard crashed. Now, the page lists the chaos infrastructure based on the type of infrastructure you select (Delegate-enabled or dedicated infrastructure enabled). (CHAOS-6680)
 
 - Fixed the issue of discrepancy between the number of probes in the UI and backend. (CHAOS-6528)
 
@@ -277,7 +303,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * The [SSH chaos experiment](/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/ssh-chaos) now supports an extended termination grace period, allowing for longer execution of abort scripts. (CHAOS-3748)
 
-* This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/concepts/explore-concepts/chaosguard#condition). (CHAOS-3254)
+* This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/#condition). (CHAOS-3254)
 
 #### Fixed issues
 
@@ -343,7 +369,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * This release deprecates the `ACCESS_KEY` invalidation after a chaos infrastructure is successfully connected. Users can use the same manifest to connect to the infrastructures. (CHAOS-3164)
 
-* Adds UI support to search conditions for selection while creating a [ChaosGuard rule](/docs/chaos-engineering/concepts/explore-concepts/chaosguard#rule). (CHAOS-2982)
+* Adds UI support to search conditions for selection while creating a [ChaosGuard rule](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/#rule). (CHAOS-2982)
 
 * Adds support to incorporate `secretRef` and `configMapRef` with the tunables for [VMWare faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware). (CHAOS-2750)
 

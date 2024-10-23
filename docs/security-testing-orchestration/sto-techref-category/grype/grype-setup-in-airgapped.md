@@ -17,7 +17,7 @@ To run Grype scans in an air-gapped environment, you need do the following:
 
   <!-- TBD any other external tools we want to mention? I googled around for information about the other artifact repositories we support, or at least have connectors for...Bamboo, Azure Artifacts, Nexus, etc....I didn't find a lot of info about running these tools in air-gapped environments  -->
 
-2. Load local copies of your Harness container images to your private registry. For more information, go to [Configure STO to download Images from a private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+2. Load local copies of your Harness container images to your private registry. For more information, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 3. Install Grype and set it up to run in your air-gapped environment. For more information, go to the following sections in the Grype documentation: 
    - [Installation](https://github.com/anchore/grype#installation)
