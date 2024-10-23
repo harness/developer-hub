@@ -349,12 +349,14 @@ parameters:
 
 ### Use parameters as condition in steps
 
+Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/35341522c0035107a3b610018f42372cebd8a664/workflow-examples/conditional-in-steps.yaml#L25-L45)
+
 <details>
 <summary>Example YAML</summary>
 
 ```yaml
 - name: Only development environments
-  if: ${{ parameters.environment === "staging" and parameters.environment === "development" }}
+  if: ${{ parameters.environment === "staging" or parameters.environment === "development" }}
   action: debug:log
   input:
     message: 'development step'
@@ -364,10 +366,20 @@ parameters:
   action: debug:log
   input:
     message: 'production step'
+
+- name: Non-production environments
+  if: ${{ parameters.environment !== "prod" and parameters.environment !== "production" }}
+  action: debug:log
+  input:
+    message: 'non-production step'
 ```
 </details>
 
+![](./static/conditional-in-step.png)
+
 ### Conditionally set parameters
+
+The `if` keyword within the parameter uses [nunjucks templating](https://mozilla.github.io/nunjucks/templating.html#if). The `not` keyword is unavailable; instead, use javascript equality. eg: `${{ parameters.branchName if parameters.branchName else appendTimestamp("default-branch-name-") }}`
 
 <details>
 <summary>Example YAML</summary>
