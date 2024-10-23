@@ -1,5 +1,8 @@
 {
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+    "features": {
+      "ghcr.io/devcontainers/features/node": "1.6.1"
+    },
     "settings": {
       "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
