@@ -48,8 +48,8 @@ terraform {
 ```
 **2. Authentication via environment variables:**
 We recommend using environment variables to securely pass your authentication token to Terraform. This prevents the token from being hardcoded into configuration files, enhancing security and flexibility across environments.
-To do this, set the TF_HTTP_PASSWORD environment variable to your Harness Personal Access Token:
-`export TF_HTTP_PASSWORD=<your-harness-access-token>`
+
+To do this, set the **TF_HTTP_PASSWORD environment variable to your Harness Personal Access Token: `export TF_HTTP_PASSWORD=<your-harness-access-token>`
 
 This approach ensures that the token is kept secure and only passed during Terraform operations.
 
