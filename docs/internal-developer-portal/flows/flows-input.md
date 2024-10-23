@@ -158,12 +158,12 @@ parameters:
 
 Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/main/workflow-examples/arrays.yaml)
 
-<details>
-<summary>Example YAML</summary>
-
 ### Array with distinct values
 
 Values mentioned under `enum` needs to be distinct, duplicate values aren't allowed under `enum`. 
+
+<details>
+<summary>Example YAML</summary>
 
 ```YAML
 parameters:
@@ -186,8 +186,14 @@ parameters:
           - 'Throughput Optimized HDD'
           - 'Magnetic'
 ```
+</details>
+
+![Arrays With Distinct Values](./static/arrays-distinct-values.png)
 
 ### Array with duplicate values
+
+<details>
+<summary>Example YAML</summary>
 
 ```YAML
 parameters:
@@ -216,8 +222,6 @@ parameters:
           - 'Magnetic (standard)'
 ```
 </details>
-
-![Arrays With Distinct Values](./static/arrays-distinct-values.png)
 
 ![Arrays With Duplicate Values](./static/arrays-duplicate-values.png)
 
@@ -354,7 +358,7 @@ Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob
 <details>
 <summary>Example YAML</summary>
 
-```yaml
+```YAML
 - name: Only development environments
   if: ${{ parameters.environment === "staging" or parameters.environment === "development" }}
   action: debug:log
@@ -375,6 +379,22 @@ Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob
 ```
 </details>
 
+#### The Example Workflow Explained
+
+- Parameters: The user selects the environment from the predefined list: development, staging, production, or prod.
+
+- Steps:
+
+  - Development Step: Executed only if the environment is development or staging.
+  - Production Step: Executed only if the environment is production or prod.
+  - Non-Production Step: Executed only if the environment is not production or prod.
+
+- Conditionals (if statements): The `if` condition allows execution of steps based on the selected environment.
+
+- Output: A sample output section is included, where you can route the result of any step to view the logs. Replace the url field with an appropriate log service URL if needed.
+
+This Workflow showcases how you can use conditionals `if` to control which steps run based on the environment selected by the user.
+
 ![](./static/conditional-in-step.png)
 
 ### Conditionally set parameters
@@ -384,7 +404,7 @@ The `if` keyword within the parameter uses [nunjucks templating](https://mozilla
 <details>
 <summary>Example YAML</summary>
 
-```yaml
+```YAML
 spec:
   parameters:
     - title: Fill in some steps
