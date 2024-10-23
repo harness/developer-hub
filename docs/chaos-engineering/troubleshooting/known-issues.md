@@ -56,7 +56,7 @@ HCE currently offers [GameDay](/docs/chaos-engineering/concepts/explore-concepts
 
 ## Inclusion in ChaosGuard policies
 
-[ChaosGuard](/docs/chaos-engineering/concepts/explore-concepts/chaosguard) is an HCE feature that enhances the security and control of chaos experiments. It allows you to create policies that define who can execute which experiments, when, and from which Chaos Hub and is based on customized security standards. Currently, ChaosGuard policies don't support Windows chaos experiments. Once implemented, it will provide a more robust and secure framework for managing Windows chaos experiments.
+[ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/) is an HCE feature that enhances the security and control of chaos experiments. It allows you to create policies that define who can execute which experiments, when, and from which Chaos Hub and is based on customized security standards. Currently, ChaosGuard policies don't support Windows chaos experiments. Once implemented, it will provide a more robust and secure framework for managing Windows chaos experiments.
 
 ## Scheduled or Cron experiments
 

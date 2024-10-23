@@ -13,6 +13,9 @@
     2. Configure the Background step as follows:
        1. Dependency Name = `dind`
        2. Container Registry = The Docker connector to download the DinD image. If you don't have one defined, go to [Docker connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+         :::info
+         If your container registry uses a [self-signed certificate](https://en.wikipedia.org/wiki/Self-signed_certificate), the background step will not be able to access the registry by default. Refer to [Configure DinD Background step to trust self-signed container registries](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#configuring-dind-background-step-to-trust-self-signed-container-registries) for instructions.
+         :::
        3. Image = `docker:dind`
        4. Under **Entry Point**, add the following: `dockerd` 
           

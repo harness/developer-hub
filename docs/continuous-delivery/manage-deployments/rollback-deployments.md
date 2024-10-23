@@ -70,17 +70,3 @@ A user will be allowed to execute rollbacks on any instance only if they possess
 
 ![](./static/permissions_post_rollback.png)
 :::
-
-## Obtaining instance key and infrastructure mapping Id to roll back specific services using APIs
-
-You can use APIs to trigger rollback for specific services. For more details, go to [Trigger rollback](https://apidocs.harness.io/tag/Rollback/#operation/triggerRollback). 
-Note that you need `instanceKey` and `infrastructureMappingId` of the service instance for rollback. You can obtain these parameters using a cURL command. 
-
-Here's a sample cURL request:
-
-```
-curl --location 'https://https://app.harness.io/ng/api/dashboard/getInstancesDetails?routingId=<Account_Identifier>accountIdentifier=<Account_Identifier>orgIdentifier=<Org_Name>&projectIdentifier=<Project_Name>&serviceId=<Service_Id>&envId=<Environment_Id>&infraIdentifier=<Infrastructure>&buildId=null' \
---header 'x-api-key: <KEY>'
-```
-
-From the response, you can obtain `infrastructureMappingId` and `instanceKey`. 

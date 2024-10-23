@@ -114,3 +114,9 @@ The [Artifactory user account](#username-and-password) you use in the Harness Ar
 ![](./static/artifactory-connector-settings-reference-11.png)
 
 :::
+
+:::info Limitation
+
+The Artifactory connector currently does not support OpenID Connect (OIDC) for authentication, limiting integration with OIDC-compliant identity providers
+
+:::

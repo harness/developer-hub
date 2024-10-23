@@ -176,3 +176,44 @@ To add role bindings to an existing user:
 10. Select **Apply**. You will receive a notification stating **Role Assignments updated successfully**, and the role binding process is complete.
   
 The user can now sign in to their account and access only those resources allowed in the resource groups with their **Account Admin** permissions.
+
+## Reuse roles across scopes
+
+You can further streamline role management by reusing roles across scopes in Harness, simplifying access control configuration across your account, organizations, and projects. By creating a role at the account level, you can easily assign it to users, user groups, or service accounts at more granular levels like the organization or project scope.
+
+:::important
+You can only reuse custom roles across scopes. Built-in roles are not reusable.
+:::
+
+:::note
+This feature is behind the feature flag `PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+<details>
+<summary>Example: Reusing roles across scopes</summary>
+
+This example walks through reusing a role across scopes. The role is created at the account scope and then assigned to users at the organization and project scopes.
+
+#### Create a role at the account scope
+
+1. In Harness, go to **Account Settings**, and then select **Access Control**.
+2. Select **Roles** in the header, and then select **New Role**.
+3. For **Name**, enter `TEST_ROLE`. **Description** and **Tags** are optional.
+4. Select **Save**.
+5. Select the following permissions:
+   - For **Pipelines**, select **Execute**.
+6. Select **Apply Changes**.
+
+#### Assign the role to users at the organization scope
+1. In Harness, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
+2. Select **User Groups** in the header, and then select the User Group you want to assign the role to.
+3. Select **Manage Role Bindings**.
+4. Under **Role Bindings**, select **Add**.
+5. Under **Select an Existing Role**, select **Account** in the header and then select the role you want to assign.
+   <DocImage path={require('./static/add-manage-roles-20.png')} />
+6. Select **Apply Selected**.
+7. Select **Save**.
+   <DocImage path={require('./static/add-manage-roles-21.png')} />
+
+</details>
+

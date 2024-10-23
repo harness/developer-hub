@@ -1,0 +1,1 @@
+The Wiz policy failure results appears in the scan results as an `Info` level issue, categorized as `External Policy` Issue Type. Additionally, you can apply [OPA policies](/docs/security-testing-orchestration/policies/create-opa-policies) to enforce or manage these failures.

@@ -166,6 +166,8 @@ To accommodate the diverse needs of different teams,CCM supports the setup of bo
 - CCM will maintain data with the Azure cost type set to "Actual." All cost computations will be based on this setting.
 
 - For Active Spend and License-Util APIs, Costs will be queried assuming Azure cost type "Actual".
+- Prior to Azure preferences, all data was ingested as 'Actual,' even if Amortized billing was used. After Azure preferences, we ingested the new Amortized billing export data. Due to this, in some cases, 'Actual' data might no longer show. To fix this, kindly change the Azure cost type filter to ‘Amortized’.
+
 
 :::
 

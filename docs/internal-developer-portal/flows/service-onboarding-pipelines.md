@@ -1,8 +1,8 @@
 ---
-title: Self-Service Workflows
+title: Self Service Workflows Overview
 description: Self-Service Workflows enable a developer to spawn new software applications easily while following the company's best practices.
 sidebar_position: 1
-sidebar_label: Self-Service Workflows
+sidebar_label: Overview
 redirect_from:
   - /docs/internal-developer-portal/features/service-onboarding-pipelines
 ---

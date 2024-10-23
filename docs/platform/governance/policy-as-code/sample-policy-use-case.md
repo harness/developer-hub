@@ -60,7 +60,7 @@ This topic provides sample policies you can use in policy steps and on pipeline-
 	    - [Exclude vulnerabilities by number of occurrences](#exclude-vulnerabilities-by-number-of-occurrences)
 	    - [Exclude vulnerabilities by CVE age](#exclude-vulnerabilities-by-cve-age)
 	    - [Exclude vulnerabilities using STO output variables](#exclude-vulnerabilities-using-sto-output-variables)
-
+		- [Block the pipeline based on the code coverage results](#block-the-pipeline-based-on-the-code-coverage-results)
 
 ## Policy samples
 

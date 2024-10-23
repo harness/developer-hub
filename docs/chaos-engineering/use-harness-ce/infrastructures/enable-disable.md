@@ -43,11 +43,12 @@ If you want to delete your environment, remove the environment references, that 
 
 2. To use Harness Delegate, select **Yes**. To use a dedicated chaos infrastructure, select **No**. In this example, select **Yes**, and click **Next**.
 
-3. Provide a **Name**, **Deployment Type**, **Select Infrastructure Type**, and provide **Cluster Details**, such as **Connector**, and **Namespace**. To create a new connector, go to [Create Kubernetes Connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector). After you specify the connector, select **Apply Selected**. Provide the name of the namespace and click **Save**.
+3. Provide a **Name**, **Deployment Type**, **Select Infrastructure Type**, and provide **Cluster Details**, such as **Connector**, and **Namespace**. To create a new connector, go to [Create Kubernetes Connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector). While creating a Kubernetes connetor, select or create a new Delegate. Go to [Create new Delegate](https://developer.harness.io/docs/platform/delegates/install-delegates/overview#install-the-helm-chart). Once your Delegate shows up in the list, enter its name in the search bar, and select **Save and Continue**. This will test your connection and describe if it was a success or no. Contact [Harness Support](mailto:support@harness.io) if you encounter issues with the verification.
 
 :::tip
-- Currently, DDCR (or Harness Delegate) can only be installed to execute Kubernetes-based faults, which means you can only create Kubernetes connectors.
-- To execute faults on Linux and Windows, you will need to install Linux and Windows agents respectively.
+- Ensure your Delegate version is `24.09.83900` or above to support executing chaos experiments using DDCR. 
+- Currently, DDCR (or Harness Delegate) can only be installed to execute Kubernetes-based faults. This means you can only create Kubernetes connectors.
+- To execute faults on Linux and Windows, install Linux and Windows agents respectively.
 - To configure mTLS with DDCR and Discovery Agent, go to [mTLS Support](/docs/chaos-engineering/use-harness-ce/infrastructures/mtls-support).
 - To configure mTLS with DDCR and and Discovery Agent proxy settings, go to [proxy Support](/docs/chaos-engineering/use-harness-ce/infrastructures/proxy-support).
 :::

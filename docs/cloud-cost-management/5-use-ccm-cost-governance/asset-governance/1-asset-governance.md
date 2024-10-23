@@ -75,6 +75,13 @@ Additionally, Harness incorporates Out-of-the-Box Recommendations to identify co
 
 Harness Cloud Asset Governance streamlines cloud management processes, improves governance efficiency, and enables organizations to achieve a well-managed cloud environment effectively. More details about the comparison can be found [here](https://www.harness.io/blog/harness-cloud-asset-governance-cloud-custodian-beyond).
 
+### Cloud-Custodian Versions at Harness
+
+The cloud-custodian versions utilised currently are as following:
+  - `c7n==0.9.41`
+  - `c7n_azure==0.7.40`
+  - `c7n_gcp==0.4.40 `
+
 
 
 

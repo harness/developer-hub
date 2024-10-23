@@ -30,24 +30,27 @@ Follow the steps below to effectively integrate such links into your software co
 
 ## Steps to add Links
  
- 1. Click on the edit icon on the overview page, which will redirect you to the IDP yaml.
- 
- ![](./static/edit-icon.png)
+1. Click on the edit icon on the overview page, which will redirect you to the IDP yaml.
 
- 2. Now add **links** to the IDP yaml as shown in the example below.
+![](./static/edit-icon.png)
 
-<details>
-<summary>Link Attributes</summary>
+2. Now add **links** to the IDP yaml as shown in the example below.
 
-- **url:** This is the actual web address or URL that the link points to. It's the destination users will be directed to when they click on the link.
+## Link Attributes
 
-- **title:** This serves as the display name or label for the link. It gives users a brief idea of what to expect when they click on the link or where it might lead them.
+### URL
 
-- **icon:** An optional attribute, you can select from a category of supported icon that provides a visual representation or hint about the nature or category of the link.
+This is the actual web address or URL that the link points to. It's the destination users will be directed to when they click on the link.
 
-</details>
+### Title 
 
- ```yaml
+This serves as the display name or label for the link. It gives users a brief idea of what to expect when they click on the link or where it might lead them.
+
+### Icons
+
+An optional attribute, you can select from a category of supported icons (**Admin** -> **Layout** -> **Icons**) that provide a visual representation or hint about the nature or category of the link. These icons are part of [SimpleIcons](https://simpleicons.org/). The name of the icon can be copied from the **Icons** page under **Layout in Admin** by clicking on the icon.
+
+```YAML
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
@@ -60,18 +63,18 @@ metadata:
     - url: https://example.com/user
       title: Examples Users
       icon: user
-    - url: https://example.com/group
-      title: Example Group
-      icon: group
-    - url: https://example.com/cloud
-      title: Link with Cloud Icon
-      icon: cloud
-    - url: https://example.com/dashboard
-      title: Dashboard
-      icon: dashboard
-    - url: https://example.com/help
-      title: Support
-      icon: help
+    - title: Prometheus
+      url: https://google.ch
+      icon: prometheus
+    - title: Grafana
+      url: https://google.ch
+      icon: grafana
+    - title: Google BigQuery
+      url: https://google.ch
+      icon: googlebigquery
+    - title: 1.1.1.1
+      url: https://google.ch
+      icon: 1dot1dot1dot1
     - url: https://example.com/web
       title: Website
       icon: web
@@ -87,7 +90,10 @@ spec:
   system: artist-engagement-portal
   dependsOn: ['resource:artists-db']
   apiConsumedBy: ['component:www-artist']
- ```
+```
+
+![](./static/color.png)
+
 ## Conclusion
 
  Together, the attributes under link not only provide essential information but also enhance the user experience by making navigation more intuitive and visually appealing. By categorizing and visually representing links, users can quickly find and access the resources they're interested in.

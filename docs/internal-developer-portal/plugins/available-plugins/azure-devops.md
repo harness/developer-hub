@@ -90,6 +90,10 @@ metadata:
 ```
 Let's break this down a little: `<project-name>` will be the name of your Team Project and `<repo-name>` will be the name of your repository which needs to be part of the Team Project you entered for `<project-name>`.
 
+### Git Integration
+
+Add the azure integration under git integration section. Follow this [doc](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration/?Connector=azure-connector)
+
 ### Mono repos
 
 If you have multiple entities within a single repo, you will need to specify which pipelines belong to each entity.
@@ -117,6 +121,28 @@ dev.azure.com/build-definition: <build-definition-name>
 ```
 
 In this case `<project-name>` will be the name of your Team Project and `<build-definition-name>` will be the name of the Build Definition you would like to see Builds for, and it's possible to add more Builds separated by a comma. If the Build Definition name has spaces in it make sure to put quotes around it.
+
+### Multiple Organizations
+
+If you have multiple organizations you'll need to also add this annotation:
+
+```YAML
+dev.azure.com/host-org: <host>/<organization>
+```
+
+For this annotation `<host>` will match the host value in the git integrations of azure which you have set up in git integration section and `<organization>` will be the name of the Organization that is part of the host.
+
+If the entity we are viewing lives in the my-other-org organization then the dev.azure.com/host-org annotation would look like this:
+
+```YAML
+dev.azure.com/host-org: dev.azure.com/my-other-org
+```
+
+And if the entity was from yet-another-org it would look like this:
+
+```YAML
+dev.azure.com/host-org: server.company.com/yet-another-org
+```
 
 ## Support
 

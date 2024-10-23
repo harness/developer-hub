@@ -293,65 +293,51 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 
 ### Support for allowed values for custom approval inputs
 
-You can provide the input as a list of values that you can select from during runtime.
+You can now provide allowed values for manual approval step.
 
-Here's an example YAML.
+Here's an example YAML file showcasing various configurations you can use for allowed values.
 
 #### YAML Example
 
 ```yaml
-- stage:
-        name: Approval
-        identifier: Approval
-        description: ""
-        type: Approval
-        spec:
-          execution:
-            steps:
-              - step:
-                  name: Harness Approval
-                  identifier: Harness_Approval
+- step:
                   type: HarnessApproval
-                  timeout: 1d
+                  name: HarnessApproval_1
+                  identifier: HarnessApproval_1
                   spec:
-                    approvalMessage: |-
-                      Please review the following information
-                      and approve the pipeline progression
+                    approvalMessage: Please review the following information and approve the pipeline progression
                     includePipelineExecutionHistory: true
+                    isAutoRejectEnabled: false
                     approvers:
+                      userGroups:
+                        - _project_all_users
                       minimumCount: 1
                       disallowPipelineExecutor: false
-                      userGroups: <+input>
-                    isAutoRejectEnabled: false
                     approverInputs:
-                      - name: Name
-                        defaultValue: <+stage.variables.name>
-                      - name: ID
-                        defaultValue: <+stage.variables.approve_id>
-                      - name: Test
-                        defaultValue: <+stage.variables.test>
-        tags: {}
-        variables:
-          - name: name
-            type: String
-            description: ""
-            required: false
-            value: <+input>.allowedValues(name1,name2,name3)
-          - name: approver_id
-            type: String
-            description: ""
-            required: false
-            value: <+input>.allowedValues(id1,id2,id3)
-          - name: test
-            type: String
-            description: ""
-            required: false
-            value: <+input>
+                      - name: variable_1
+                        defaultValue: ""
+                        allowedValues: 1,2,3
+                      - name: variable_2
+                        defaultValue: ""
+                        required: true
+                      - name: variable_3
+                        defaultValue: ""
+                        regex: .*abc
+                      - name: variable_4
+                        defaultValue: ""
+                        selectOneFrom: 1,2,3
+                  timeout: 3m
 ```            
 
-This is how it would look while running the pipeline. You will be able to select more than one input values for both **name** and **approver_id** options.
+In this example, for variable_1, initially set to an empty string and can take the allowed values: 1, 2, or 3.
 
-![list of input values during rumtime](./static/Approval-Input-value-of%20-calues.png)
+For variable_2, initially set to an empty string and is required, meaning a value must be provided.
+
+For variable_3, initially set to an empty string and must match the regex pattern .*abc, meaning it should contain the substring "abc" anywhere in its value.
+
+For variable_4, initially set to an empty string and allows selection from the options 1, 2, or 3.
+
+The validation of approval inputs only occurs during manual approvals; there is no validation for rejections or auto approvals.
 
 ### User groups as expressions
 

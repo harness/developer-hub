@@ -105,7 +105,7 @@ export const featureList: CardItem[] = [
     module: MODULES.cde,
     icon: "img/cde_icon.svg",
     description: <>Accelerate developer experience with pre-configured, secure and scalable development environments.</>,
-    link: "docs/cloud-development-environment",
+    link: "docs/cloud-development-environments",
     type: [docType.Documentation],
   },
   {

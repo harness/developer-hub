@@ -22,6 +22,27 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 :::
 
+## October 2024
+
+### Version 202410.1
+
+<!-- October 16, 2024 -->
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### New features and enhancements
+
+* The **BitBucket integration** now supports reauthentication, enabling you to reconnect to the BitBucket application if OAuth fails or the access token expires. (SEI-7957)
+* The calculation method for measuring the time spent on a status in the **Issue Time Across Stages report** and **Lead Time by Time Spent in Stages report** has been improved. Now, the report accurately tracks the duration by calculating the time between when a ticket first enters a specific status and when it exits that status. This ensures a more accurate measurement of how long an issue or work item remains in each stage. (SEI-8667) (SEI-8803)
+* The **Jenkins integration** is now upgraded to the new integration framework. This improves the overall user experience for configuring the Jenkins integration. (SEI-8750)
+* Fixed a bug in the Jira integration configuration where selecting the timezone field resulted in multiple values being selected. (SEI-8748)
+
+#### Fixed issues
+
+* Fixed the bug where when selecting the timezone field in the **Jira integration** configuration multiple values were getting selected. (SEI-8748)
+
 ## September 2024
 
 ### Version 202409.2

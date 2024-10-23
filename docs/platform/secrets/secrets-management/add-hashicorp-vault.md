@@ -110,6 +110,20 @@ path "auth/token/renew-self" {
 }
 ```
 
+#### Custom Authentication Path for AppRole Login
+
+:::note
+This feature is supported on delegate version `837xx` and above and is available behind the Feature Flag `PL_APPROLE_CUSTOM_PATH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+The `appRoleLogin` method now supports a custom authentication path, utilizing it if provided, or defaulting to the standard `approle` endpoint if not specified.
+
+![](../../secrets/static/add-hashicorp-vault-31.png)
+
+For example, the custom AppRole path can be set as `<customPath>`, providing greater flexibility in configuring the authentication mechanism. This feature is particularly useful in scenarios where the default authentication path requires customization.
+
+Ensure that the custom AppRole path you configure exists in your HashiCorp Vault. This step is necessary for the authentication to succeed using the custom path.
+
 ### Option: Token
 
 For Harness, the **Token** option requires [periodic tokens](https://www.vaultproject.io/docs/concepts/tokens#periodic-tokens) (tokens that have renewal options).

@@ -20,6 +20,20 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+## October 2024
+
+### Version 1.50
+
+<!-- 2024-10-08 -->
+
+#### Fixed issues
+
+- Resolved an issue in the build input settings that occurred during manual build runs. When selecting the Pull Request option under build type, the focus would occasionally shift to the Tags option instead. This issue has been fixed to ensure proper selection. (CI-14571, ZD-70841) 
+
+- Fixed an issue on the CI Execution Summary page where branch and tag names were being truncated in some cases. The layout has been updated to display the text correctly. (CI-14539)
+
+- Fixed an issue in the mac local runner where resource sharing between container and non-container steps was failing. The problem occurred due to the migration to Rancher/Colima, which resulted in two separate directories for container (/tmp) and non-container (/private/tmp) steps, causing symlink-related conflicts. This has been resolved behind the feature flag "CI_MOUNT_PATH_ENABLED_MAC" to ensure proper resource sharing between steps. (CI-13253)
+
 ## September 2024
 
 ### Version 1.49
@@ -60,7 +74,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### New features and enhancements
 
-- Added support for setting Topology Spread Constraints to Kubernetes build pods. A new property, `podSpecOverlay`, has been introduced in the Kubernetes infrastructure properties within the CI stage, allowing users to apply additional settings to the build pod. Currently, this field supports specifying `topologySpreadConstraint`, with plans to extend support for additional configurations in the future. (CI-14033)
+- Added support for setting Topology Spread Constraints to Kubernetes build pods. A new property, `podSpecOverlay`, has been introduced in the Kubernetes infrastructure properties within the CI stage, allowing users to apply additional settings to the build pod. Currently, this field supports specifying `topologySpreadConstraint`, with plans to extend support for additional configurations in the future. This feature requires using delegate version  24.09.83900 or higher (CI-14033)
 
 - Added the ability to exclude connectors from the preflight check. This can be configured in the connector YAML by setting the property `ignoreTestConnection` to `true`. If the user sets this flag as `true` along with the feature flag `CI_IGNORE_TEST_CONNECTION` enabled, no matter the configuration, the connection test will always be marked as **Successful**. The feature is gated behind the feature flag `CI_IGNORE_TEST_CONNECTION`. (CI-13806, ZD-65275,65643)
 
@@ -80,7 +94,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 - Fixed an issue where time savings due to Harness CI intelligence feature, didn't populate properly when used in the parallel CI stages. (CI-13993)
 
-- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature flag must be enabled whenever a base image connector is used (CI-13924)
+- Due to Docker rate limiting, `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature flag must be enabled whenever a base image connector is used (CI-13924). When enabling this flag, the delegate version must be higher than `24.07.83503`.
 
 - Bitbucket has an issue in their API; it does not support the slash character ( / ) [https://jira.atlassian.com/browse/BCLOUD-20223](https://jira.atlassian.com/browse/BCLOUD-20223)
   This can be worked around by using query parameters in the Bitbucket api `https://api.bitbucket.org/2.0/repositories/smjth/originalrepo/?at=qq/ww` (CI-13826)

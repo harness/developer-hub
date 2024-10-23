@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-10-03T08:09:25
+date: 2024-10-21T08:09:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: October 03, 2024
+#### Last updated: October 21, 2024
 
 ## October 2024
 
@@ -28,6 +28,32 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Upgrades dependencies to resolve CVEs
 - Reduces pushpin log level from info to error level. This reduces the amount of ephemeral pod storage the Proxy consumes in k8s.
 - Ensures the Proxy only writes to the response body if the response hasn't already been committed.
+
+### Java SDK
+
+#### Version 1.8.0
+
+**New features and enhancements**:
+ - New `HarnessConfig` options: 
+ -- `maxRequestRetry`: Defines the maximum number of retry attempts for the following request: authentication, polling, metrics, and reacting to stream events
+ -- `flushAnalyticsOnClose`: Indicates whether to flush analytics data when the SDK is closed. 
+ -- `flushAnalyticsOnCloseTimeout`: The timeout for flushing analytics on SDK close. (FFM-12087)
+ 
+ For full details, see associated Java docs and for sample usage, see [`ConfigExample`](https://github.com/harness/ff-java-server-sdk/blob/main/examples/src/main/java/io/harness/ff/examples/ConfigExample.java). 
+
+**Fixed Issues**:
+ - Resolved an issue where initial connection attempts to the
+ stream, as well as reconnection attempts after disconnection, were
+ limited to 5 tries. Now, reconnection attempts have no limit and
+ utilize exponential backoff, with a 60-second cap on retry
+ intervals reached after several attempts. (FFM-12087)
+ - Fixed a memory leak caused when the SDK was closed but the
+ stream’s `ScheduledExecutorService` remained active. All SDK
+ resources are now properly shut down when `close()` is called.
+ - Addressed an issue where, after calling `close()` and shutting
+ down the stream, the SDK would still make a poll request,
+ resulting in error logs due to evicted network resources. Now, no
+ polling requests are made after `close()` is invoked.
 
 ## September 2024
 

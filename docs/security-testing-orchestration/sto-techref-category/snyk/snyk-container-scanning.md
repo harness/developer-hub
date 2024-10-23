@@ -13,9 +13,6 @@ The Snyk step in Harness STO allows you to find and fix vulnerabilities in conta
 Refer to the [Snyk step configuration](./snyk-scanner-reference) document to learn more about the fields in the Snyk step and how to configure them.
 
 ## Snyk Container scan - Orchestration mode
-:::note
-This feature is currently behind the feature flag, `STO_SNYK_ORCHESTRATION_ENHANCEMENTS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
 
 To perform Snyk Container scanning with orchestration scan mode, follow the below steps:
 

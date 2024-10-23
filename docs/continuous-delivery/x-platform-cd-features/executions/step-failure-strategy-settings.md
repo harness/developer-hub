@@ -14,7 +14,7 @@ You can apply a failure strategy to the following:
 * **Step Group:** You can set up a failure strategy for all steps in the group. Individual steps in the group don't have a failure strategy.
 * **Stage:** The failure strategy for all steps and step groups in the stage. If step and step group failure strategies exist, they override this failure strategy.
 
-For more information, go to [define a failure strategy on stages and steps](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
+For more information, go to [define a failure strategy on stages and steps](#failure-strategy-settings).
 
 ## Error types
 
@@ -119,6 +119,22 @@ Here is what will happen:
 * On a verification failure, the stage is aborted.
 * On an authentication failure, the stage is aborted.
 * On a connectivity error, the error is ignored.
+
+## Failure Strategy Behavior for Secrets in ShellScript Environment Variables
+
+:::info note
+Currently this behaviour is behind FF `PIE_SEND_SECRET_REF_FOR_SHELLSCRIPT_VARIABLES`. Please contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag.
+:::
+
+When a secret is referenced in ShellScript environment variables, the pipeline will not execute if the user does not have access to the referenced secret. This ensures that only users with the appropriate permissions can trigger pipelines that require access to specific secrets.
+
+This behavior applies to pipelines configured via direct YAML updates as well. In the UI, secret selection is filtered based on [RBAC](/docs/platform/role-based-access-control/rbac-in-harness.md), so users will only see the secrets they have access to.
+
+
+**When the feature flag is enabled**: The pipeline will be blocked from execution entirely if the user does not have access to the secret.
+
+
+**When the feature flag is disabled**: The pipeline will still start execution, but it will fail during the step that references the secret if the user lacks access.
 
 ### Different levels
 

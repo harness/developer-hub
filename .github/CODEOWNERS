@@ -7,10 +7,23 @@
 *       @pratmit @wei-harness
 
 # Configuration Files in DS are JS.
-*.js    @wei-harness
+*.js    @wei-harness @rohanmaharjan100
+*.ts    @wei-harness @rohanmaharjan100
+*.jsx    @wei-harness @rohanmaharjan100
+*.tsx    @wei-harness @rohanmaharjan100
 
 # Changes to Lock File
 *.lock  @wei-harness
+
+# Changes to Config Files
+*.ini  @wei-harness
+*.json  @wei-harness
+*.toml  @wei-harness
+*ignore @wei-harness
+/_server-redirect @wei-harness
+
+# Changes to Netlify Files
+/netlify/ @wei-harness
 
 # Contributing
 CONTRIBUTING.md @pratmit
@@ -19,6 +32,8 @@ README.md @pratmit
 
 # University
 /university/ @ravilach
+/src/components/HomepageUniversity/ @ravilach
+/src/components/University/ @ravilach
 
 # Community
 /community/ @Ompragash
@@ -29,7 +44,7 @@ README.md @pratmit
 # Documentation ###
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av
+/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
 
 # Continuous Integration Docs
 /docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed
@@ -41,29 +56,29 @@ README.md @pratmit
 /docs/open-source/ @dewan-ahmed @rustd @SushrutHarness
 
 # STO Docs
-/docs/security-testing-orchestration/ @tejakummarikuntla
-/docs/faqs/security-testing-orchestration/ @tejakummarikuntla
+/docs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
+/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
 
 # CCM Docs
-/docs/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss @nikunj-badjatya
+/docs/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss @nikunj-badjatya @raviyadalam
 
 # CET Docs
 /docs/continuous-error-tracking/ @M-Tsur
 
 # SRM Docs
-/docs/service-reliability-management/ @sunilgupta-harness
+/docs/service-reliability-management/ @sunilgupta-harness @umamukkara
 
 # Chaos Docs
-/docs/chaos-engineering/ @neelanjan00 @SmritiSatya
+/docs/chaos-engineering/ @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt
 
 # Platform Docs
-/docs/platform/ @pratmit @krishi0408
+/docs/platform/ @pratmit @krishi0408 @GokulBansal0
 
 # IDP Docs
-/docs/internal-developer-portal/ @Debanitrkl
+/docs/internal-developer-portal/ @Debanitrkl @OrkoHunter
 
 # SSCA Docs
-/docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla
+/docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness
 
 # IACMS Docs
 /docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez 
@@ -72,10 +87,10 @@ README.md @pratmit
 /docs/feature-flags/ @HarnessTheChaos @jenniferopal
 
 # Cloud Operations Docs
-/docs/harness-cloud-operations/ @ankit-harness
+/docs/harness-cloud-operations/ @ankit-harness @yogi-harness
 
 # SEI Docs
-/docs/software-engineering-insights/ @codewdhruv
+/docs/software-engineering-insights/ @codewdhruv @batraprashant
 
 # DB DevOps Docs
 /docs/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos
@@ -92,7 +107,7 @@ README.md @pratmit
 /docs/category/self-managed-enterprise-edition-fg/ @pratmit
 
 # CCM Docs
-/docs/category/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
+/docs/category/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss
 
 # FAQ Docs ###
 
@@ -103,13 +118,13 @@ README.md @pratmit
 /docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos @jenniferopal
 
 # CCM FAQs
-/docs/faqs/cloud-cost-management-faqs/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
+/docs/faqs/cloud-cost-management-faqs/ @navaneeth @Rohit-Kaliki @joeyouss
 
 # STO FAQs
 /docs/faqs/security-testing-orchestration/ @tejakummarikuntla
 
 # Chaos FAQs
-/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya
+/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya @ksatchit
 
 # Delegate FAQs
 /docs/faqs/harness-delegate-faqs/ @pratmit
@@ -127,13 +142,13 @@ README.md @pratmit
 # Release Notes ###
 
 # CD Release Notes
-/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av
+/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
 
 # CCM Release Notes
-/release-notes/cloud-cost-management.md @rdsoze
+/release-notes/cloud-cost-management.md @raviyadalam 
 
 # CE Release Notes
-/release-notes/chaos-engineering.md @neelanjan00 @SmritiSatya
+/release-notes/chaos-engineering.md @neelanjan00 @SmritiSatya @Jonsy13
 
 # CET Release Notes
 /release-notes/continuous-error-tracking.md @M-Tsur
@@ -154,25 +169,25 @@ README.md @pratmit
 /release-notes/feature-flags.md @HarnessTheChaos @jenniferopal
 
 # IDP Release Notes
-/release-notes/internal-developer-portal.md @Debanitrkl
+/release-notes/internal-developer-portal.md @Debanitrkl @OrkoHunter
 
 # Platform Release Notes
-/release-notes/platform.md @pratmit
+/release-notes/platform.md @pratmit @GokulBansal0
 
 # SEI Release Notes
-/release-notes/software-engineering-insights.md @codewdhruv
+/release-notes/software-engineering-insights.md @codewdhruv @batraprashant
 
 # STO Release Notes
-/release-notes/security-testing-orchestration.md @tejakummarikuntla
+/release-notes/security-testing-orchestration.md @tejakummarikuntla @priteshchandaliya
 
 # SMP
 /release-notes/self-managed-enterprise-edition.md @pratmit
 
 # SRM Release Notes
-/release-notes/service-reliability-management.md @sunilgupta-harness
+/release-notes/service-reliability-management.md @sunilgupta-harness @umamukkara
 
 # SSCA Release Notes
-/release-notes/service-reliability-management.md @sunilgupta-harness @tejakummarikuntla
+/release-notes/service-reliability-management.md @sunilgupta-harness @tejakummarikuntla @pranay-harness
 
 # Knowledge Base ###
 
@@ -195,7 +210,7 @@ README.md @pratmit
 /kb/feature-flags/ @HarnessTheChaos @jenniferopal
 
 #CCM KB
-/kb/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss @rssnyder @brandon-harness
+/kb/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss @rssnyder @brandon-harness
 
 #SRM KB
 /kb/service-reliability-management/ @sunilgupta-harness
@@ -215,13 +230,16 @@ README.md @pratmit
 #RA
 /kb/reference-architectures/ @rssnyder @suranc
 
+#IACM RA
+/kb/reference-architectures/iacm/ @RickCraig @allofthesepeople @scottyw-harness @richardblack-Harness
+
 # SEI KB
 /kb/sei/ @codewdhruv
 
 # Roadmap ###
 
 #CCM Roadmap
-src/components/Roadmap/data/ccmData.ts @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
+src/components/Roadmap/data/ccmData.ts @navaneeth @Rohit-Kaliki @joeyouss
 
 #CD Roadmap
 src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av
