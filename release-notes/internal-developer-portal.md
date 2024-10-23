@@ -310,7 +310,7 @@ Welcome to first release of April, and in this release we bring you features lik
 
 - **Blogs:** [Introducing new Catalog Ingestion APIs to make Harness IDP truly yours](https://www.harness.io/blog/introducing-new-catalog-ingestion-apis-to-make-harness-idp-truly-yours)
 
-- **New Docs:** [Get started with IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/), [Harness IDP Overview](https://developer.harness.io/docs/internal-developer-portal/get-started/overview), [Catalog Metadata Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties), [Usage of Catalog Metadata Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/ccp-for-workflows), [Custom Dashboards](https://developer.harness.io/docs/internal-developer-portal/dashboard/custom-dashboards)
+- **New Docs:** [Get started with IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/), [Harness IDP Overview](/docs/internal-developer-portal/overview), [Catalog Metadata Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties), [Usage of Catalog Metadata Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/ccp-for-workflows), [Custom Dashboards](https://developer.harness.io/docs/internal-developer-portal/dashboard/custom-dashboards)
 
 - **New Videos:** Our team presented a talk on "[Architecting Multi-tenant Backstage Instances in a Shared Kubernetes Cluster](https://youtu.be/TPHsBduIvm0?si=wWp9b5kXXNKDGrX0)" at the recently held [Backstagecon Europe](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/backstagecon/).
 

@@ -1,7 +1,8 @@
 ---
-title: Scorecards
+title: Scorecards Overview
 description: Measure software maturity and enforce best practices
 sidebar_position: 3
+sidebar_label: Overview
 redirect_from:
   - /docs/internal-developer-portal/features/scorecard
 ---
