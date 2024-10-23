@@ -308,38 +308,51 @@ charts/
 		 - values.yaml
 ```
 
+To add a Helm chart through the Harness UI, follow these steps:
+
+**Chart Path**: Specify the path to your main Helm chart in your Git repository. For example, if your Helm chart is located at `test/k8sDeploymentType/helm/multi-chart`, enter this path as the Chart Path.
+
+**Sub-Chart Path (optional)**: If you have subcharts that you want to include, you can specify their path here. This path should point to any folder within the `test` directory, such as `test/main/test-chart`.
+
+![](./static/deploy-helm-subcharts.png)
+
 :::
 
 Here is a sample service YAML where a subchart is defined.
 
 ```
 service:
-  name: K8sHelmSubChart
-  identifier: K8sHelmSubChart
+service:
+  name: Multi-Chart
+  identifier: MultiChart
   serviceDefinition:
-    type: Kubernetes
+    type: NativeHelm
     spec:
       manifests:
         - manifest:
-            identifier: m1
+            identifier: manifest
             type: HelmChart
             spec:
               store:
-                type: Github
+                type: Git
                 spec:
-                  connectorRef: gitHubAchyuth
+                  connectorRef: GitSampleK8sManifests
                   gitFetchType: Branch
-                  folderPath: parent-chart
-                  branch: main
-              subChartName: first-child
+                  folderPath: test/k8sDeploymentType/helm/multi-chart
+                  branch: master
+              subChartPath: main/test-chart
               skipResourceVersioning: false
               enableDeclarativeRollback: false
               helmVersion: V3
+              fetchHelmChartMetadata: false
               commandFlags:
                 - commandType: Template
                   flag: "--dependency-update"
+                - commandType: Install
+                  flag: "--dependency-update"
+                - commandType: Upgrade
+                  flag: "--dependency-update"
   gitOpsEnabled: false
-
 ```
 
 ### Pipeline execution of a Helm chart with subcharts
