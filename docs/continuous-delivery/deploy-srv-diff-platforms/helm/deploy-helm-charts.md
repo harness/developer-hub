@@ -307,16 +307,15 @@ charts/
 		 - Chart.yaml
 		 - values.yaml
 ```
+:::
 
-To add a Helm chart through the Harness UI, follow these steps:
+To add a Helm sub chart through the Harness UI, follow these steps:
 
 **Chart Path**: Specify the path to your main Helm chart in your Git repository. For example, if your Helm chart is located at `test/k8sDeploymentType/helm/multi-chart`, enter this path as the Chart Path.
 
 **Sub-Chart Path (optional)**: If you have subcharts that you want to include, you can specify their path here. This path should point to any folder within the `test` directory, such as `test/main/test-chart`.
 
 ![](./static/deploy-helm-subcharts.png)
-
-:::
 
 Here is a sample service YAML where a subchart is defined.
 
