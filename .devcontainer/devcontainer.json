@@ -1,11 +1,5 @@
 {
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
-    "features": {
-        "ghcr.io/devcontainers/features/node": {
-            "version": 16,
-            "installYarnUsingApt": true
-        }
-    },
+    "image": "ghcr.io/devcontainers/templates/javascript-node:4.0.2",
     "settings": {
       "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
