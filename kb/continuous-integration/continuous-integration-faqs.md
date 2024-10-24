@@ -2552,3 +2552,23 @@ If it is operating as expected, the Kaniko CLI will show the following in the CL
 <!-- Please do a keyword search (cmd+F) to avoid making duplicate entries. For example, `buildkit`, `lfs`, `kaniko`, `buildah`, etc. -->
 
 <!-- Please follow a sequential heading structure. The level 4 headings don't show up on the mini-TOC. This makes it impossible for customers to scan the questions in the Mini-TOC and then jump directly to their question. It is also inappropriate, from an accessibility perspective, to skip heading levels. -->
+
+#### What is the Image Migration Tool?
+
+The Image Migration Tool is a plugin that allows users to copy container images from one registry to another. It pulls images from a source registry and pushes them to a destination registry, enabling efficient management and transfer of images across different environments.
+
+#### Can the Image Migration plugin push images to any registry?
+
+No, it can only push to registries that support basic authentication, AWS ECR registries, and GAR registries with access token authentication.
+
+#### Is it possible to use the plugin without providing a username and password?
+
+Yes, if the source registry is public or does not require authentication, you can omit the username and password for the source.
+
+#### What is the purpose of the insecure option in the plugin settings?
+
+The insecure option, when set to true, disables TLS, which is normally enabled by default to secure the connection.
+
+#### Where can I find more information about using the Image Migration Tool?
+
+Additional details, including configuration examples and usage guidelines, can be found in the plugin’s [README documentation](https://github.com/harness-community/drone-docker-image-migration?tab=readme-ov-file#plugin-image).
