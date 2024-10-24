@@ -204,7 +204,7 @@ Run the following Bash commands using your terminal or Azure cloud shell.
 2. Run the following command that provides Storage Blob Data Reader permission to the Harness application on the scope fetched in the previous step. It contains the ID of the Harness CCM client application: `0211763d-24fb-4d63-865d-92f86f77e908`.
 
    ```
-   az role assignment create --assignee0211763d-24fb-4d63-865d-92f86f77e908--role 'Storage Blob Data Reader' --scope $SCOPE
+   az role assignment create --assignee 0211763d-24fb-4d63-865d-92f86f77e908 --role 'Storage Blob Data Reader' --scope $SCOPE
    ```
 
 3. (Optional) Run this command if you have opted for **Azure Inventory Management** in the Choosing Requirements step:
