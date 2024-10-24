@@ -669,6 +669,26 @@ POST /catalog/custom-properties/entity
 ```
 Result: The `metadata.tags` property will now be `["scala", "python", "java", "c++"]`, with the new values added to the existing ones.
 
+#### Example 2: Add a new annotation
+
+To add a new `annotation` under, `metadata` we can append the `metadata.annotations` field.
+
+```http
+POST /catalog/custom-properties/entity
+```
+
+```json title="Payload" {4}
+{
+  "entity_ref": "github-pull-request",
+  "property": "metadata.annotations",
+  "value": {
+          "harness.io/pipelines": "CI: https://app.harness.io/ng/account/account_id/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio?storeType=INLINE"
+        },
+  "mode": "append"
+}
+```
+Result: The `metadata.annotations` property will now add `harness.io/pipelines` to the existing annotations. If `harness.io/pipelines` annotations already exists then this will overwrite the same. 
+
 #### When to Use Each Mode:
 
 - `replace`: Use when you want to completely replace the value of a property. For example, if the existing tags are outdated, and you want to set new ones.
