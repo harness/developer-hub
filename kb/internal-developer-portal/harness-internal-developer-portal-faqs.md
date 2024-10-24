@@ -45,3 +45,7 @@ During onboarding into IDP we mass onboard all the services using a `catalog-inf
 3. In some cases the entities get into the `hasError` state. You can know whether the entity is in orphaned state or `hasError` state, by checking for the **Processing Status** dropdown on the Catalog page
 
 4. Additionally, here is an example [script](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/identify-and-delete-orphan-entity.py) that finds and delete all the entities that has `NotFoundError`, because the `source-location` for these entities are no more valid (YAML files moved or renamed). 
+
+
+### How can user extend the AWS token session time in IDP?
+User can add env var to control the timeout expiration of AWS credentials in IDP.
