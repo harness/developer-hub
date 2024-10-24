@@ -2542,6 +2542,18 @@ If it is operating as expected, the Kaniko CLI will show the following in the CL
 /kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=destination/repo:1.0 --snapshotMode=redo --digest-file=/kaniko/digest-file --ignore-path=/opt/nodejs
 ```
 
+#### How can I Tag docker images based on which PR or branch is getting built?
+
+You can use expressions to pass the branch and other metadata to the tag field of the build and push step in order to tag the builds.
+
+#### Can only select expression and fixed value for Source Paths in the save cache step.We would like to use an input for this?
+
+You can use a stage/pipeline variable set it as runtime input and use the expression of that variable for this step field, So during runtime whatever value you provide for the variable will get picked up by the field
+
+
+
+
+
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 
