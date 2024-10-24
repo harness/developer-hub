@@ -159,6 +159,22 @@ This error could occur when there's a mismatch between the OS type of the local 
 
 No. You must upgrade the Harness Docker runner manually.
 
+###  Why the CI stage execution is failing with the error "Error response from daemon: could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network" when running the build on local build infra?
+
+This could happen when there are many stale docker networks and the runner is unable to create any new network. You could run the command "docker network prune" to delete the unused stale networks on the machine wher the runner is running
+
+### Does runner configured in the local build infra creates docker network as part of each execution?
+
+Yes, the runner will be creating the docker networks as part of each CI stage execution and these networs will be deleted once the execution got completed
+
+### When we run the CI stage using local build infrastructure, where does the runner execute each step? Does it run as a process on the host machine, or does it execute within a container?
+
+The native harness steps will be running within a container by default and the run step can be configured to run on the host machine or run inside a container
+
+### Is the host machine auto cleaned up after executing the CI stage on local build infrastructure, similar to how it is when running the build on a VM?
+
+No, host machine doesnt get cleaned up when the build is running on local build infra
+
 ## Self-managed VM build infrastructure
 
 ### Can I use the same build VM for multiple CI stages?
@@ -237,6 +253,14 @@ To debug this issue, investigate delegate connectivity in your VM build infrastr
 - [Verify connectivity for Microsoft Azure VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-azure#verify-connectivity)
 - [Verify connectivity for GCP VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform#verify-connectivity)
 - [Verify connectivity for Anka macOS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry#verify-connectivity)
+
+### When we run the onprem VM build on windows machine, the windows VM takes more time to start compared to the linux VM. Is there way to speed up the windows VM start up?
+
+Windows VMs would usually take more time to start compared to linux VM. You could keep a warm VM always running ready to accept the incoming build request by configuring pool with 1 or higher number in the pool.yaml
+
+### After making changes in the pool.yml, why the runner is not taking the new changes?
+
+This might be because the runner wasn't restarted after updating the pool.yml. The runner must be restarted for the changes in pool.yml to take effect
 
 ## Harness Cloud
 
@@ -633,6 +657,116 @@ Yes, we need to have one stage running on ARM and another stage running on AMD t
 ### Does Harness CI support AKS 1.28.3 version?
 
 Yes
+
+### Im configuring the hostpath in the build stage to mount a folder from the delegate to the build pod. Why can we not see the folder from delegate inside the step container during execution?
+
+The host path mount will copy the contents of the folder from the node where the pod is running not from the delegate. It will not pick the files/folder from the delegate and there is currently not a built-in way to copy the contents from the delegate to the build pod
+
+### Can we run dind to pull windows image?
+
+No, dind is alpine based and we cant pull windows image onto dind container
+
+### We are increasing the memory and cpu of a run step to improve the image pull time. Why the imaage pull time remains same even after increasing the compute resource on the run step?
+
+Image pull is happening in the node where the build pod gets scheduled and it is unrelated to the compute resource we are configuring in the step. We could consider increasing the resource on the node or cache the images for this usecase
+
+### Does harness clean the PVC after the stage execution if we configure the CI stage to mount a PVC? 
+
+Harness doesnt cleanup the content inside the PVC after the stage execution
+
+### Is there a way to pass a file from the local computer as a runtime input while executing a pipline
+
+Passing a file as runtime input from the local computer is not currently supported
+
+### Why the CI stage is failing with the error "invalid: [spec.volumes[0].hostPath.path: Required value, spec.containers[0].volumeMounts[0].name: Not found: "volume-0", spec.containers[0].volumeMounts[1].mountPath: Invalid value: "/test": must be unique" even though we are mounting only one host path volume under the path "/test"?
+
+This could happen if you have added shared path with the same name ```/test```. The path added to shared path will be mounted on build pod as emptydir type volume and you could get the above error if you are mounting any other volume with the same name under the infra advanced config 
+
+### Why the step container configured in the background step did not execute the default entry point instead it only executed the custom commands added in the command section?
+
+When we add custom commands in the command section of the background step, these commands will override the default entry point and only the custom commands will be executed at runtime
+
+### Can we add multiple entry points in the background step?
+
+No, we can only add one entrypoint in the background step and any values added after the entry point will be considered as the arguments for the entrypoint
+
+###  Does CI has a concept of resource constraint similar to CD stage when running the build in k8s cluster?
+
+No, CI doesnt have the concept of resource constraint. Once a CI stage starts execution, a request to create the build pod is sent to the Kubernetes cluster. The cluster then schedules the pod on any available node based on the resources available in the cluster
+
+### When we run multiple CI stages concurrently targeting the same Kubernetes cluster, will the build pods for these stages run simultaneously or be queued?
+
+If the k8s cluster has nodes with sufficient compute resources, all the build pods will run simultaneously. Otherwise, they will be scheduled based on resource availability
+
+### Is it possible to pin a specific version of LE/addon images for a particular pipeline, rather than pinning the version for the entire account?
+
+Currently it is not supported to pin the CI image version to a sepecifc pipeline and it can only be updated at the account level
+
+### Can we use docker compose in a run step to start the containers when the build is running in k8s cluster?
+
+Yes, we can use docker compose to start the container from a run step. Make sure that the dind is configured as detailed in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/)
+
+### What k8s service account does build stage pod use?
+
+The default service account in the namespace will be mounted in the build pod by default. If we need to mount a different service account, it can be configured in the advanced infra config of the CI stage
+
+### Is there a way to always use a specific non-default service account for all build stages in every pipeline?
+
+Custom service account needs to be configured for individual stages and it can not be configured in one place to use for all the pipeline
+
+### Can we add ```hostNetwork: true``` in the build pod YAML?
+
+No, currently you dont have the option to add this spec in the build pod YAML
+
+### If ```hostNetwork``` can not be added in the build pod YAML, is there any other way the build pod can get access to the file "/etc/hosts" on the node?
+
+We could mount ```/etc/hosts``` from hosts via hostpath volume. More details about mounting volumes on build pod can be reffered [here](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#volumes)
+
+### Can we change the default workspace ```harness``` while running a script in run step?
+
+Currently, there is not an option to configure the default workspace in the UI however you could add the necesary command to change the direcetory as the first command in the run step
+
+### When we run kafka container as a background step, why is it failing to start the service with the error "./config/server.properties: No such file or directory"? We can start the same container outside Harness without any issues.
+
+"/harness" will be the default workspace of all the step containers including the one that is running as background step. The kafka image has the below commands in the entry point script which will always fail if the current working directory doesn't have the file "./config/server.properties"
+
+```
+KAFKA_CONFIG=./config/server.properties
+grep -qF -- "$ADVERTISED_LISTENERS" $KAFKA_CONFIG || echo "$ADVERTISED_LISTENERS" >> $KAFKA_CONFIG
+```
+
+You could add the below commands in the background step to first change the directory to "/opt/kafka" and then execute the entry point script
+
+```
+cd /opt/kafka
+/usr/local/bin/start-kafka-zookeeper
+```
+
+### Is there a way to execute the default entry point of an image in a run step?
+
+Yes, you can explicitly run the script defined as the entry point by specifying it in the command section of the run step
+
+### When we configure build areguments in the native build and push step, can we configure both key and value of build argument to take value at runtime?
+
+Currently you can only configure the build argument value to accept the value at runtime but the key should be configured with fixed value
+
+### Can we use the creds from the Harness AWS connector in the run step?
+
+No, run step can not access the creds configured in the Harness AWS connector
+
+### Why the CI stage execution is failing with the error ```etcdserver: request is too large``` in the init step?
+
+### which of registries and repositories does Harness need access to in order to pull the Harness internal images used in CI stage execution?
+
+Harness internal images are being pulled from [this](https://hub.docker.com/u/harness) docker public repositry by default. You also have the option to pull the images from GCR or ECR. More details about the same can be referred in the [doc](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
+
+### Why the build is failing with the error "image is required for the stepid: xxxx" at the init step when the run step image is configured with step group variable?
+
+Stepgroup variables are unavailable before the stepgroup execution starts. When running a build in a Kubernetes cluster, the image name needs to be known during the init stage since the full pod YAML must be sent to the cluster to create the build pod. You could consider using a stage variable or pipeline variable for the image value instead of a stepgroup variable.
+
+### Can we see the compute resource allocation of the build pod from the execution UI?
+
+Currently we cant see the resource allocation of the build pod in the execution UI however the product team is workig on enhancing this experience
 
 ## Self-signed certificates
 
@@ -1241,6 +1375,22 @@ curl -X POST -H "Authorization: token YOUR_ACCESS_TOKEN" \
 }' https://api.github.com/repos/OWNER/REPOSITORY/pulls
 ```
 
+### Will the task of updating the status check on the PR be executed on the build pod or delegate?
+
+The status check update task will be executed on the delegate
+
+### If we have a pipeline with multiple CI stages, each stage is updating the status check on the PR. Is there a way to update the status check only once for the entire pipeline?
+
+You could disable the API access on the git connector used in the codebase config, and then add a run step at the end of the last CI stage in the pipeline to manually sent the statsu check. More details about sending custom status check can be reffered in the below [doc](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks/#custom-scm-status-checks) 
+
+### Why do we not see the full stage name in the status check message in the PR?
+
+This could happen becuase we trim the message that goes with status check if the message length exceeds a certain value to avoid getting the message size limit from GitHub side. You could consider reducing the pipeline and stage identifier so that the status check message will not be truncated
+
+### When running a CI stage with parallelism, do all parallel stages send a status check, or is it only sent by one of the stages?
+
+The status check will be sent for each CI stage execution
+
 ## Pipeline initialization and Harness CI images
 
 ### Initialize step fails with a "Null value" error or timeout
@@ -1327,6 +1477,14 @@ By default, Harness uses anonymous Docker access to pull Harness-required images
 ### Does the Initialize step count towards Harness Cloud build credit usage?
 
 No. Pipeline initialization isn't included in your build minutes.
+
+### Why does ```Pipeline.sequenceId``` resolve to different values in two CI stages when rerunning the pipeline from the last failed stage?
+
+When we rerun from the the failed stage, the stages that successfully ran in the previous execution will retain their original sequence ID, while the rerun stage will receive a new sequence ID
+
+### How can we make sure that the expression ```Pipeline.sequenceId``` resolves to the same number in all the stages with an execution when we rerun a failed execution?
+
+When you rerun the failed execution you need to use the option "rerun pipeline" so that all the stages will rerun and all the stages will have a new identical sequence ID
 
 ## Build and push images
 
@@ -2003,6 +2161,18 @@ Since this stage variable accessible to all the steps, currently it is not suppo
 
 You could append the directory name in the target path which should create a folder with the same name in the artifactory and the files will be uploaded inside this directory
 
+### How can we configure the JIRA number to be updated in the JIRA plugin?
+
+You can include the JIRA number to be updated in the format [PROJ-123] either in the PR title or in the commit message associated with the build
+
+### Why the JIRA plugin is unable to locate the JIRA number that needs to be updated when the clone codebase is not enabled in the stage?
+
+The JIRA plugin will extract the JIRA number from the PR title or the commit message hence the JIRA plugin will not get the details about the JIRA numbver if the code is not being checked out during the stage execution
+
+### How can we integrate gatling in CI build pipeline?
+
+You can use [this](https://docs.gatling.io/reference/integrations/ci-cd/github-actions/) GitHub action to integrate gatling in Harness execution
+
 ## Workspaces, shared volumes, and shared paths
 
 ### What is a workspace in a CI pipeline?
@@ -2123,6 +2293,10 @@ Yes. Go to [Cache Intelligence API](https://developer.harness.io/docs/continuous
 ### Does the execution save the cache in Harness side when the cache intelligence option is configured in the build running in self hosted infra?
 
 No, You need to configure the S3 compatible object store in your infra to be used as the cache storage. More details about the same can be referred in the [doc](https://developer.harness.io/docs/platform/settings/default-settings/#continuous-integration)
+
+### What is the default archive format in the cache step?
+
+The default archive format is ```tar``` and you could change it to ```gzip``` if necessary
 
 ## Background steps and service dependencies
 
