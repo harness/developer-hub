@@ -4,6 +4,16 @@ description: Learn how to create and manage workspace templates for standardized
 sidebar_position: 20
 sidebar_label: Workspace templates
 ---
+
+<CTABanner
+  buttonText="Learn More"
+  title="Pending release"
+  tagline="The IaCM Workspace Templates feature is currently pending release and will be available soon!"
+  link="https://developer.harness.io/roadmap/#iacm"
+  closable={true}
+  target="_self"
+/>
+
 import Tabs from '@theme/Tabs';  
 import TabItem from '@theme/TabItem';  
  
