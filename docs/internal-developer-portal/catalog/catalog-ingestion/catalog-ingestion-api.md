@@ -628,7 +628,7 @@ When you want to update a specific property of a catalog entity, you can use dif
 
 ---
 
-#### Example 1: Creating the First Entity (No Mode Specified)
+#### Example 1: Add a Property to the Entity (No Mode Specified)
 
 By default, when you add a property to an entity, it uses the `replace` mode to set the value.
 
@@ -647,7 +647,7 @@ POST /catalog/custom-properties/entity
 ```
 This sets the `metadata.tags` for `boutique-service` to `"scala"` replacing the existing values
 
-#### Example 1: Creating the First Entity (No Mode Specified)
+#### Example 2: Add New Values to the Entity
 
 To add new tags without replacing the existing ones, you can use the `append` mode.
 
@@ -669,7 +669,7 @@ POST /catalog/custom-properties/entity
 ```
 Result: The `metadata.tags` property will now be `["scala", "python", "java", "c++"]`, with the new values added to the existing ones.
 
-#### Example 2: Add a new annotation
+#### Example 3: Add a new annotation
 
 To add a new `annotation` under, `metadata` we can append the `metadata.annotations` field.
 
