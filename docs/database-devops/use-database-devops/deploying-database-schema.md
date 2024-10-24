@@ -5,7 +5,7 @@ description: Explaining how to deploy Database Schema Updates
 sidebar_position: 20
 ---
 
-# Technical Documentation for Deploying Database Schema Updates on Harness Database DevOps
+# Deploying Database Schema Updates on Harness Database DevOps
 
 ## Overview
 
