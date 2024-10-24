@@ -139,6 +139,41 @@ If the test pipeline fails, you can utilize the rollback feature to revert the d
 
 No, currently there is no way to fully integrate a triggered test pipeline within the original deployment pipeline. The test pipeline will always operate as a separate entity.
 
+### How can I filter data within a specific date range, excluding the end date?
+Currently, our platform supports combining multiple date filters with an 'OR' command, but it does not support 'AND' conditions. Therefore, achieving the specific date range you need isn't possible with the available filtering options.
+
+### Can I move pipelines between organizations without recreating them?
+Directly moving pipelines between organizations isn’t possible. However, you can use the Clone Pipeline feature to duplicate pipelines in the target organization. You may need to update resource references after cloning.
+
+### Can I split my current pipeline into two and run them synchronously?
+Yes, you can split your pipeline into two separate ones and use the Pipeline Chaining feature to manage their execution order. This allows you to run the pipelines in sequence or in parallel based on your setup. For more details, check out [Pipeline Chaining](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/).
+
+### What happens to the remote resource configuration in the UI if Git connectivity is lost?
+
+If the Git connectivity is lost, the state of the remote resource configuration in the UI won't be updated. This means that any pipeline depending on this remote resource configuration won't be able to run, as it relies on the latest information from GitHub. To avoid disruptions in your pipeline execution, it's important to ensure that your Git connectivity is stable and reliable.
+
+### How can I copy an account-level template to a project or from one project to another in Harness?
+Directly copying an account-level template to a project isn't supported, but you can do it manually by following these steps:
+
+- Copy the YAML: Go to the account-level template and copy its YAML.
+- Create a New Project Template: Open the Harness Template YAML editor in the target project.
+- Paste the YAML: Paste the copied YAML into the editor.
+- Update Identifiers: Ensure the projectIdentifier and orgIdentifier fields are present and correctly set in the YAML.
+
+Here's an example of what the YAML might look like:
+```
+template:
+  name: A
+  identifier: A
+  versionLabel: A
+  type: Stage
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+```
+
+By following these steps, you can manually transfer templates between different scopes within Harness.
+
 ## API
 
 ### Can I run pipelines through the API or CLI?
@@ -294,6 +329,21 @@ No, failure strategies apply to all steps within a step group.
 ### How can I restrict approval for the user who ran the pipeline?
 
 You can select the **Disallow the executor from approving the pipeline** option in the Approval step.
+
+### Which API data should we look at to calculate median times for the Pipeline?
+To calculate median execution times using the getExecutionDetailV2 Harness API, use the startTs and endTs properties.
+
+- Extract Timestamps: Execution duration = endTs - startTs (in milliseconds).
+- Calculate Median: Gather execution durations, sort them, and select the middle value.
+
+For more details, check the [Harness API documentation](https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2).
+
+### How do I correctly configure the 'connector_ref' for an org-level 'import template' API request?
+To correctly configure the 'connector_ref' for an organization-level 'import template' API request in Harness, prepend the connector reference with "org.". For example, if your connector is named "connector_github", the correct reference would be "org.connector_github". This prefix ensures the API recognizes the connector as belonging to the organization.
+
+### Does Harness provide an API to read or download secret file information?
+Currently, Harness does not expose API endpoints to retrieve actual secret data or file content, whether it's text secrets or file secrets. While you can retrieve metadata information through APIs, accessing the secret data directly is not supported.
+
 ## Pipeline triggers
 
 ### How can I obtain the triggered build version value, trigger ID, or trigger URL during pipeline runtime when a pipeline is triggered by a PR?
@@ -350,6 +400,42 @@ There is no limit to the number of triggers for a pipeline.
 
 Yes, Harness NextGen supports both the QUARTZ and UNIX syntax formats for cron triggers. For more information, go to [Schedule Pipelines Using Cron Triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger).
 
+### How can I manage two pipelines with separate triggers and have one wait for the other to finish?
+If you prefer not to use Pipeline Chaining, you can set up two pipelines with separate triggers. Here's a workaround:
+
+- Pipeline1 is triggered by a git push event.
+- Pipeline2 is triggered by a custom webhook.
+
+In Pipeline1, add an HTTP step at the end to trigger Pipeline2 using the custom webhook. This way, Pipeline2 will only start after Pipeline1 completes, and you can enable or disable Pipeline2’s trigger as needed.
+
+For more information on setting up HTTP steps, refer to [HTTP Step Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/).
+
+### How can I merge a pull request using a Harness pipeline trigger with a GitHub connector?
+Unfortunately, it is not possible to merge a pull request directly using a Harness pipeline trigger with a GitHub connector. Harness pipeline triggers are designed to initiate pipeline executions based on events from the Git provider, such as pull request creation or push events.
+
+### How can I trigger a pipeline based on the status of another pipeline in a different project within the same organization?
+ustom Triggers allow you to initiate a pipeline based on the status or output of another pipeline in a different project within the same organization. Configure the trigger to monitor the completion or specific status of the referenced pipeline. Once the condition is met, the desired pipeline will automatically trigger.
+
+Alternatively, consider using pipeline chaining to link multiple pipelines chaining, where the output of one pipeline serves as input for the next. This approach enables orchestration of dependent pipelines in a controlled sequence.
+
+For more details on pipeline chaining, refer to the [Pipeline Chaining](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/).
+
+If you could share more specifics about why custom triggers didn't fit your solution, we might be able to offer more targeted advice. Sometimes, small configuration tweaks can make a significant difference.
+
+### How can I troubleshoot problems with the payload condition `<+trigger.payload.push.changes[0].new.type>` in JEXL?
+
+The word .new is a [Reserved Keyword](https://commons.apache.org/proper/commons-jexl/reference/syntax.html). This can cause unexpected problems when you use it directly in your expressions.
+
+Instead of using:
+```
+<+trigger.payload.push.changes[0].new.type>
+```
+Try replacing it with:
+```
+<+trigger.payload.push.changes[0]['new']['type']>
+```
+By using square brackets and quotes, you can reference the new field without running into keyword conflicts. This small change helps JEXL understand that you're referring to a property, not the Reserved Keyword.
+
 ## Stop pipelines
 
 ### What is expected when I abort a pipeline, and what actions are taken to ensure a clean state in the system?
@@ -369,6 +455,8 @@ When you [abort a pipeline](https://developer.harness.io/docs/platform/pipelines
 ### What happened to the pause button?
 
 Harness deprecated the pause button because it was inconsistent and put pipelines in a bad state.
+
+
 
 ## Chain pipelines
 
@@ -391,6 +479,17 @@ Make sure the expression is called in the parent pipeline after the child pipeli
 ### Can I trigger an Azure pipeline from a Harness pipeline?
 
 To trigger an Azure pipeline from a Harness pipeline, you can use a Shell Script or Run step and invoke/trigger any pipeline using a cURL or webhook.
+
+### How can I fetch approver details from a previous stage in one pipeline and print it in a stage in a second pipeline?
+Directly accessing variables or approver details from one pipeline in another isn't possible. However, you can pass output variables or approval details between pipelines using pipeline chaining.
+
+Here’s how you can do it:
+
+- Define Output Variable: In the parent pipeline, define the output variable in the output section of the first stage.
+- Reference Output Variable: In the second stage of the parent pipeline, use the expression `<+pipeline.[pipeline_stage_identifier].[output_variable_defined_under_output_section]>` to reference the output variable from the first stage.
+- When you run the parent pipeline, the output variable from the first stage will be passed to the second stage as an input variable.
+
+For more details, refer to the [pipeline chaining documentation](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/).
 
 ## Delete pipelines
 
@@ -487,6 +586,63 @@ It is a scheduled task designed to clean up dashboards that have no tiles. This 
 
 Check if the Harness Delegate was recently updated, and also confirm the version of Ansible being executed.
 
+### How can I rerun a specific container step multiple times if it fails, allowing other steps to continue in a pipeline?
+You can define a failure strategy on each step to retry it a specified number of times if it fails. This allows other steps to continue executing even if one fails. Check out the documentation on [step failure strategy settings](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings/) for details on configuring [retry counts](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/#retry-count-expression) and intervals.
+
+### How can I set a runtime input to allow only one selection for certain variables in my build pipeline, even if multiple selection is enabled for the whole account?
+Unfortunately, it is not possible to enable multiple selection for the whole account and then disable it for specific variables in a build pipeline.
+
+### How do I Stop/Interrupt the execution of a pipeline from a Bash/Shell script?
+Stopping a pipeline directly from a Bash/Shell script isn't feasible. However, you can achieve this using the Harness API by making an API call to interrupt the pipeline. Here's an example using the curl command to execute an Interrupt API call:
+[Execute an Interrupt API](https://apidocs.harness.io/tag/Pipeline-Execute#operation/putHandleInterrupt)
+
+### How can I add multi-line release notes in a pipeline or provide multi-line input outside of the approval step?
+Currently, we don’t support multi-line text fields for release notes or other inputs directly in the pipeline. As a workaround, you can use the comment field.
+
+### How can I enforce a specific stage when another stage is added in a pipeline?
+To enforce a specific stage when adding another stage in a pipeline, you can implement the following policy:
+
+```
+package main
+
+deny[msg] {
+    input.request.object.metadata.labels["stage"] == "production"
+    not input.request.object.metadata.labels["stage"] == "approval"
+    msg := "Production stage requires approval stage"
+}
+```
+This policy ensures that the "approval" stage must be included whenever the "production" stage is added, enforcing necessary approvals in your pipeline.
+
+### How can I verify if any previous stages in a pipeline have been skipped?
+To ensure no previous stages in a pipeline have been skipped, use this policy:
+
+```
+package main
+
+deny[msg] {
+    input.eventType == "stage" # Check if the event type is a stage
+    input.stage.status == "SKIPPED" # Check if the current stage is skipped
+    input.pipeline.stages[_].status == "SKIPPED" # Check if any previous stage is skipped
+    input.pipeline.stages[_].order < input.stage.order # Check if the previous stage order is less than the current stage order
+    msg := "Previous stage(s) have been skipped"
+}
+```
+
+This policy denies evaluation if any previous stages have been skipped, ensuring sequential execution in your pipeline.
+
+### How can I gather and store evidence from tests performed outside of the Harness pipeline?
+You can store evidence files, like screenshots and documents, using the Artifacts tab in Harness. Here's how:
+
+- Upload Files: Use a pipeline step to upload files to a cloud storage service like S3.
+- Publish Artifact URL: Use a Plugin step to publish the artifact URL to the Artifacts tab in Harness.
+- This will allow you to access the evidence files within the Harness pipeline.
+
+Reference documents:
+- [Upload File to S3](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3/)
+- [Artifact Tab](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab)
+
+Currently, Harness does not support uploading files from a user's local machine at runtime, similar to the "Add Files" option in the comment section. Runtime input fields can gather text information but not files.
+
 ## Pipeline templates
 
 ### What is the frequency that we need to reconcile pipeline template changes?
@@ -526,6 +682,9 @@ For more information, go to [Reconcile pipeline template changes](/docs/platform
 ### Can we initiate a test pipeline from our deployment pipeline template?
 
 No, triggering another pipeline from a custom webhook trigger will not integrate the triggered pipeline within the original pipeline. The triggered pipeline will operate independently with its stages and steps.
+
+### Can I group stage templates within a pipeline template into a group?
+Currently, grouping of stages within a pipeline template is not supported. While steps can be grouped under a stage, there isn't an option to group entire stages together.
 
 ## Pipeline notifications
 
@@ -580,6 +739,16 @@ In Harness, use the pipeline execution URL [expression](https://developer.harnes
 ### Can a PagerDuty notification be sent when a connector is disconnected?
 
 Harness connectors do not support notifications at this time.
+
+### How can I add Harness variables to a Slack message for additional context using the native Slack integration?
+Unfortunately, the native Slack notification integration in Harness doesn't currently support adding variables for additional context. If you need to include detailed build information, you'll have to use a custom "Run" step.
+
+### How can I receive Slack notifications for manual intervention in a pipeline?
+To get Slack notifications for manual interventions, you can set up pipeline notifications to alert you when a step or stage fails. This is done through the notification settings in your pipeline configuration.
+
+You can find detailed instructions on setting up Slack notifications [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/).
+
+Currently, we do not support customizing or enhancing the failure notifications to specifically indicate manual intervention is needed.
 
 ## Delegates
 
@@ -730,3 +899,32 @@ Discrepancies arise when the YAML file in any Git branch has different values co
 When you make updates to the pipeline via the Harness UI, these changes are saved both to the Harness DB and to the YAML file in the selected Git branch. However, other branches in your repository may still carry outdated YAML files with old values.
 
 To maintain consistency across all branches and interfaces, ensure that any manual changes to the YAML in Git are synchronized with updates made in the Harness UI. It’s also a good practice to regularly update all relevant branches to keep them aligned with the Harness DB.
+
+### How can I manage service variable overrides efficiently in Harness?
+When dealing with multiple service variable overrides in Harness, such as var1=Hello, var2=Good, var3=Morning, you can reference them in scripts using the format `<+serviceVariables.var1> <+serviceVariables.var2> <+serviceVariables.var3>`, resulting in "Hello Good Morning".
+
+Currently, Harness does not support declaring variables in a single file and referencing them collectively. Each variable override is handled individually at runtime.
+
+### How can I efficiently generate multiple service overrides for a new environment without manual work?
+Currently, the quickest way to create multiple overrides is through the API. You can navigate to the Overrides section in the Project settings and create a service/environment/infrastructure override, or use the API to create an override: [Harness API Docs](https://apidocs.harness.io/tag/ServiceOverrides/#operation/createServiceOverride). 
+
+### How can I use a Git repository to manage service overrides?
+Yes, you can enable the Git Experience feature to manage overrides via a git repository. This allows you to save, edit, and import overrides more efficiently. We have feature Flag CDS_OVERRIDES_GITX for this Git Feature.
+
+### How can I prevent users from creating environment and service overrides?
+To restrict users from creating environment and service overrides, adjust the permissions in the Harness RBAC (Role-Based Access Control):
+
+Configure the permissions to remove the "Create/Edit" privileges for Service and Environment for the specified user or user group. This prevents them from creating new overrides or modifying existing ones.
+
+### How do I reference a variable from a different stage in a pipeline?
+For example, in the "pipeline_input" stage, I want to check the service variable for the "deploy_web" stage.
+
+Use the full path (FQN) expression starting from the pipeline. To reference the service variable from the "deploy_web" stage in the "pipeline_input" stage, use:
+```
+<+pipeline.stages.deploy_web.spec.serviceConfig.serviceName>
+```
+
+Remember, the service name is evaluated only after the Deploy stage. For more details, check out this guide on [Fully Qualified Names](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#use-fqns).
+
+### Why does my output variable only show the first line of a multi-line string?
+At the moment, we don’t support multi-line strings for output variables, so only the first line is displayed.
