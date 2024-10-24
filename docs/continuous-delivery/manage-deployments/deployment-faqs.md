@@ -2015,3 +2015,36 @@ EOF
 If artifacts aren't triggering pipelines even though there were multiple artifacts pushed, it may be due to the `Execute Triggers With All Collected Artifacts or Manifests` configuration option. By default, artifact triggers are configured to only trigger once if more than one artifact or manifest is returned in a 1 minute interval. This configuration option allows triggers to execute for each artifact or manfiest collected regardless of the polling interval. To enable this feature, go to your Harness project/org/account **Default Settings**, select **Pipeline**, and then enable **Execute Triggers With All Collected Artifacts or Manifests**.
 
 For more information on this topic, go to [Trigger pipelines on a new artifact](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#important-notes) documentation
+
+### How should I execute specific deployment steps on different types of servers within a single environment setup in Harness?
+To execute specific deployment steps on different types of servers within a single environment setup in Harness, you should use the Matrix Looping Strategy. This method allows you to set up a matrix with different server types (like agent servers and WAS servers) and perform tailored deployment steps for each combination. By configuring this matrix correctly, you ensure that each step runs only on the intended server types.
+
+You can customize server configurations in Harness by leveraging the environment infrastructure settings and using templates. This involves dynamically defining server lists based on the environment specifics. By using variable expressions to reference these configurations, your pipeline remains flexible across various environments without requiring manual adjustments each time.
+
+To execute steps on multiple target instances in Harness using expressions, utilize Reference Hosts expressions within your step configurations. This feature allows you to specify exact hosts where each step should execute. For instance, using `<+instance.hostName>` ensures that specific tasks run only on servers identified by their names. This capability is especially useful in complex deployment scenarios where tasks need precise distribution across different server types.
+
+### What expressions can I use to conditionally execute steps in a Harness deployment pipeline?
+For conditional step execution in a Harness deployment pipeline, leverage JEXL (Java Expression Language) expressions. Specifically, `<+instance.hostName>` helps determine which host should execute a particular step. For example, `<+instance.hostName>` matches 'Test1' will execute the step exclusively on Test1 servers, while `<+instance.hostName>` matches 'Test2*' confines execution to Test2 servers.
+
+### Can you provide an example configuration for using the Matrix Looping Strategy in a Harness deployment?
+Certainly! Here’s an example YAML configuration illustrating the Matrix Looping Strategy in action:
+```
+loop:
+  matrix:
+    - name: Test1
+      items:
+        - Test1-server-1
+        - Test1-server-2
+    - name: Test2
+      items:
+        - Test2-server-1
+        - Test2-server-2
+steps:
+  - name: Step 1 - Agent
+    commands:
+      - command: echo "Step 1 - Test1 on <+matrix.Test1>"
+  - name: Step 2 - WAS
+    commands:
+      - command: echo "Step 2 - Test2 on <+matrix.Test2>"
+```
+This configuration defines a matrix with dimensions Test1 and Test2, each listing specific server instances. The steps section outlines actions to be executed on each combination of servers.
