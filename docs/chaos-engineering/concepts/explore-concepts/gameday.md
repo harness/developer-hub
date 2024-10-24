@@ -50,6 +50,13 @@ Once you create a GameDay in HCE, you can run it multiple times. HCE saves infor
 
 1. HCE account
 2. Access to a cluster
+3. Appropriate permissions to execute a GameDay
+
+### Permissions required
+
+ChaosHubs are associated with chaos experiments, hence you need permissions to create new experiments and modify exisiting experiments. Chaos experiments, in turn, are executed in a chaos infrastructure, hence you need to have access to **create/edit** and **view** the **chaos infrastructure**. Go to **Project Settings** -> **Access Control** -> **Roles** and create a new role or ask your project admin to create an appropriate role.
+
+![](./static/gameday/perms-reqd.png)
 
 ### Plan your GameDay
 
