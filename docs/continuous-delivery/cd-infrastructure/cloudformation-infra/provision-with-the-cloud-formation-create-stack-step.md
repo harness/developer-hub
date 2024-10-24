@@ -125,6 +125,10 @@ This is the same as the `--stack-name` option in the `aws cloudformation create-
 aws cloudformation create-stack --stack-name test --template-body file://eks.yml
 ```
 
+:::info note
+ If a CloudFormation stack with the specified name already exists, the `Create Stack` step will update the existing stack with the new template, rather than creating a new one.
+:::
+
 ### Option: CloudFormation Parameter Files
 
 You can use CloudFormation parameters files to specify input parameters for the stack.
