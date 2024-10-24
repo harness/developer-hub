@@ -1,7 +1,7 @@
 ---
 title: Workspace expressions
 description: Learn how to use Harness workspace expressions.
-sidebar_position: 30
+sidebar_position: 40
 ---
 
 import Tabs from '@theme/Tabs';
