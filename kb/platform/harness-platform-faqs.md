@@ -169,6 +169,11 @@ With Harness, users and groups can be created automatically via SCIM. Permission
 
 No, there is no such option currently. To debug permission related issues, check the groups and roles assigned to user.
 
+### How can I list all users that have a specific role?
+In our Role-Based Access Control (RBAC) system, user groups contain multiple Harness users to whom roles and resource groups are assigned. The permissions and access granted by these roles and resource groups are then applied to all members of the user group.
+
+Currently, we do not have a feature to list all users who have a particular role attached to them. You'll need to review all user groups that have a specific role assigned to find out which users are included.
+
 ## API/Integration
 
 ### How can you update a secret file using binary file content through an API request?
