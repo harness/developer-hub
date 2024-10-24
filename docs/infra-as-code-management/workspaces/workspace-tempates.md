@@ -21,7 +21,7 @@ With workspace templates, you can standardize workspace configurations across yo
 
 ### Prerequisites
 Before you begin configuring workspace templates, ensure that you have:
-- Admin or template creation permissions.
+- Appropriate permissions to create templates. Go to [RBAC](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/) to find out how to set users role-based access control.
 - Access to an account or project where the templates will be applied.
 
 :::tip  
@@ -82,7 +82,7 @@ Follow these steps to:
 - Apply a workspace template to a new workspace.
 
    ## Create a new workspace template
-   1. In your **Account Settings**, select **Templates** from the Accout-level resources section.  
+   1. In your **Account Settings**, select **Templates** from the Account-level resources section.  
    2. Click the **New Template** dropdown and select **Infra Workspace**.
    3. Name your template and provide a suitable version label.  
    4. Select **Start**.
