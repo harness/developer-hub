@@ -127,6 +127,21 @@ This error ocurrs if there's no scan target in the Scanner configuration. To fix
 
 An enhancement has been made to ensure the orchestration step always downloads results for the branch specified in the step, instead of downloading results only for main or master branches. For more information, go to the [STO 1.83.1 release notes](https://developer.harness.io/release-notes/security-testing-orchestration#version-1831).
 
+#### What do "High" and "New High" mean in STO output?
+In STO, "High" includes all issues with a high severity level, while "New High" refers to the high severity issues detected in the current scan that weren't present in the previous scan.
 
+For example:
+High 15: There are 15 high severity issues in total.
+New High 3: Out of these 15, 3 are newly detected in the current scan.
+This means that the total number of high severity issues is 15, and of these, 3 are new in the latest scan. For more details, refer to the [STO documentation](https://developer.harness.io/docs/security-testing-orchestration/get-started/key-concepts/output-variables/).
 
+#### How can I scan images with AquaTrivy when using the default build and push step?
+Currently, you can't combine build, scan, and push operations into a single step. Instead, you can achieve this workflow by using separate steps:
 
+- Build and Push (with PLUGIN_NO_PUSH=true to avoid pushing the image initially).
+- AquaTrivy Scan
+- Build and Push
+You can also set up a custom pipeline using the Run Step to push the image directly to ECR. For detailed instructions, refer to the [Build, Scan, and Push Workflow Documentation](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-workflows/#buildscanpush-with-ci-and-docker-in-docker).
+
+#### How can we notify SecOps engineers when DevOps engineers raise an exemption request in the pipeline?
+Currently, SecOps engineers manually review exemption requests through the dashboard and handle approvals or rejections. Unfortunately, there are no built-in notification configurations for this process at the moment.
