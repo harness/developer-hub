@@ -129,4 +129,44 @@ An enhancement has been made to ensure the orchestration step always downloads r
 
 
 
+#### How can a user set a baseline for comparison?
+
+Navigate to Security Test Orchestration > Test Targets.
+Select the target (e.g., branch: master) and set it as the baseline.
+
+
+
+#### How can user compare the baseline vs. downstream issues?
+If user is on a downstream branch (e.g., test-001) and want to compare its issues with the baseline (e.g., master):
+
+Run the pipeline again with DEMO-001 as the target variant.
+After the run completes, go to the Security Tests tab to compare issues.
+
+
+#### Can user automate these comparisons using input sets?
+Yes, user can save runtime settings as input sets with specific configurations, such as different target variants or baselines.
+
+
+#### What are "shift-left" and "shift-right" issues?
+"Shift-left" issues refer to vulnerabilities detected early in development or in downstream branches, while "shift-right" issues pertain to vulnerabilities found in production or main branches.
+
+#### What does "fail_on_severity"?
+It determines the severity level of vulnerabilities that will cause the pipeline to fail if detected.
+
+#### Can user customize fail_on_severity for different stages or branches?
+Yes, user can set different fail_on_severity levels for different scan steps, stages and branches.
+
+#### Is harness STO support codebase scan using semgrep?
+Yes, user can configure the Semgrep step running in orchestration mode.
+
+
+#### Is Harness support DAST scanning using ZAP?
+Yes, User can configure Zap step that scans the app and ingests the results into STO.
+
+
+#### Is DAST step supports Veracode amd ingestion for the scan?
+No, As per the current design DAST step doesn't support veracode and ingestion for the scan.
+
+#### Does STO supports veracode sandbox scans?
+No, As per the current design veracode sandbox scansnot supported, only policy scans are supported.
 
