@@ -1794,6 +1794,46 @@ This identifier is required for Harness to link old and new pod life cycles prop
 
 Protection details are below for artifact sources related to SSH/WinRm in NextGen:
 
+### How can I limit the number of concurrent tasks on a Harness Delegate?
+To control the number of concurrent tasks your Harness Delegate handles, you can use the DELEGATE_TASK_CAPACITY environment variable. This setting helps prevent the Delegate from reaching its pod resource limits, which can cause pipeline steps to fail.
+
+For more information on how to set this up, check out the [Delegate Environment Variables Documentation](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables/#delegate_task_capacity).
+
+### How Harness creates default delegate tokens? 
+Yes, there was indeed a recent change. With the release of platform Version 1.45.5, we modified the unique index for delegate token names. Now, the default token name in each scope is simply default_token, instead of the more detailed default_token_org/project format you were used to.
+
+This change aims to streamline the token naming convention and applies only to new projects and organizations. Rest assured, existing projects and organizations will keep their current token names.
+
+We understand that this might affect your onboarding process for new projects, and we’re here to help you navigate this transition smoothly. For more details, you can refer to our [release notes](https://developer.harness.io/release-notes/platform/#version-1455)
+
+### Can I restrict delegates created at the account level to specific organizations?
+Yes, you can restrict delegates to specific organizations by assigning them to particular resource groups. These resource groups can then be associated with specific organizations.
+
+### When using both cloud and on-prem delegates for the Harness GitHub Connector, does the on-prem delegate take over in case of cloud connectivity issues?
+
+Yes, if the Harness GitHub Connector is configured with both a cloud and an on-prem delegate, and the cloud connectivity goes down, Harness will automatically switch to the on-prem delegate to perform the GitHub operations. Delegates are selected based on their availability and capability, so if one is unavailable, the other will take over the task.
+
+To verify this setup, you can create a test pipeline that uses the GitHub connector and specify both delegates in the delegate selector for the pipeline. Then, intentionally disconnect the cloud delegate and observe if the on-prem delegate takes over the task.
+
+For more details, please refer to our documentation on [using delegate selectors](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+
+### Can I set up a Harness Delegate on AWS EC2 Linux without using Docker?
+Currently, Harness supports two modes for deploying delegates: Docker delegates and Kubernetes delegates. We do not offer any other installation modes for delegates at this time.
+
+### What permissions are required for the Harness Kubernetes Delegate, and how can we configure them to adhere to the Least Privilege Principle?
+To configure permissions for the Harness Kubernetes Delegate while adhering to the Least Privilege Principle, you'll need to define specific rules for the Kubernetes service account associated with the Delegate. Here’s what you need to consider:
+- Ensure the service account has permissions scoped to the target namespace where Harness deploys resources.
+- Required permissions include list, get, create, watch (for pod events), and delete for entities like configMaps, secrets, events, deployments, and pods.
+- Avoid using wildcards (*) in resource and verb definitions. Instead, explicitly list the resources (configMap, secret, etc.) and verbs (create, delete, etc.) needed by Harness.
+
+For detailed guidelines on configuring roles and permissions for the Kubernetes Cluster Connector used by Harness, refer to [our documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/#roles-and-policies-for-the-connector).
+
+### How can I use a delegate variable at runtime in my pipeline?
+To use a delegate dynamically in your pipeline, ensure you're referencing it correctly with Example: `<+pipeline.variables.delegate>`. For Org Level Delegate like harness_kubernetes, try using the full reference format org.harness_kubernetes in your allow variable list.
+
+### Can I restrict delegates created at the account level to specific organizations?
+Yes, you can restrict delegates to specific organizations by assigning them to particular resource groups. These resource groups can then be associated with specific organizations.
+
 #### Artifactory
 
 To download artifacts from Artifactory to the delegate, Harness uses `org.jfrog.artifactory.client:artifactory-java-client-api:jar:2.9.1`.
@@ -2829,6 +2869,14 @@ No, Harness doesn't use the customer secret manager to encrypt delegate tokens. 
 ### Basic as string is getting masked although I am not using as secret or none of the secret has this value.
 
 We do follow some rules for masking, like to mask any api key/token, we mask any string followed by Basic/Bearer, and that’s the reason if you try to print these will be masked.
+
+### What do I need to consider when saving the contents of a secret file in Harness?
+When saving secret file content as a Harness secret:
+Ensure the content does not exceed any limitations Harness may have on secret length or size. You can find detailed guidelines on managing file secrets and their limitations in our [documentation](https://developer.harness.io/docs/platform/secrets/add-file-secrets/).
+
+### How should I handle special characters in secret values when referencing them in scripts?
+When referencing secrets in scripts, especially if the secret value contains special characters like "$":
+Use single quotes around the expression `('<+secrets.getValue("identifier")>')` to prevent shell interpretation errors. For more information on handling special characters in secret values, refer to [our documentation](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#line-breaks-and-shell-interpreted-characters).
 
 ## Security
 
