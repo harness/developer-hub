@@ -33,7 +33,6 @@ For artifacts generated in the same pipeline, the Plugin step is usually placed 
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://domain.com/path/to/artifact
-                      artifact_file: artifact.txt
 ```
 
 ### Plugin step specifications
@@ -66,18 +65,20 @@ For private S3 buckets, use the console view URL, such as `https://s3.console.aw
 If you uploaded multiple artifacts, you can provide a list of URLs, such as:
 
 ```yaml
-                      file_urls:
-                        - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact1.html
-                        - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact2.pdf
+  file_urls:
+    - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact1.html
+    - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact2.pdf
 ```
 
+
+You can also set **display name** for each of the URLs set in the plugin, by using the format `name:::file_url`, where `:::` is the delimiter that separates the name and url. For example: 
+```yaml
+  file_urls:
+    - artifact1:::https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact1.html
+    - artifact2:::https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact2.pdf
+```
 For information about using Harness CI to upload artifacts, go to [Build and push artifacts and images](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
 
-#### artifact_file
-
-Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. In the Visual editor, set this as a key-value pair under **Settings**.
-
-This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
 ## Build logs and artifact files
 
@@ -222,7 +223,6 @@ For example, this step publishes the URL for the combined Allure report on the A
       image: plugins/artifact-metadata-publisher
       settings:
         file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html
-        artifact_file: artifact.txt
 ```
 
 For details about these settings, go to [Configure the Artifact Metadata Publisher plugin](#configure-the-artifact-metadata-publisher-plugin).
@@ -322,7 +322,6 @@ pipeline:
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html
-                      artifact_file: artifact.txt
 ```
 
 </TabItem>
@@ -410,7 +409,6 @@ pipeline:
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html
-                      artifact_file: artifact.txt
 ```
 
 </TabItem>
