@@ -687,7 +687,7 @@ POST /catalog/custom-properties/entity
   "mode": "append"
 }
 ```
-Result: The `metadata.annotations` property will now add `harness.io/pipelines` to the existing annotations.
+Result: The `metadata.annotations` property will now add `harness.io/pipelines` to the existing annotations. If `harness.io/pipelines` annotations already exists then this will overwrite the same. 
 
 #### When to Use Each Mode:
 
