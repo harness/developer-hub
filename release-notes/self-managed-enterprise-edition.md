@@ -179,6 +179,79 @@ To fix this issue, follow these steps
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
 :::
 
+## October 28, 2024, version 0.22.0
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.22.0](https://github.com/harness/helm-charts/releases/tag/harness-0.22.0) |
+| Air Gap Bundle | [0.22.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.22.0) |
+| NG Manager | 1.57.8 |
+| CI Manager | 1.47.5 |
+| Pipeline Service | 1.95.4 |
+| Platform Service | 1.39.1 |
+| Access Control Service | 1.61.1 |
+| Delegate | 24.09.83900 |
+| GitOps Service | 1.18.7 |
+| Change Data Capture | 1.36.0 |
+| STO Core | 1.113.10 |
+| Test Intelligence Service | 1.27.1 |
+| NG UI | 1.43.2 |
+| LE NG | 1.3.1 |
+| Looker | 1.1.1 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.22.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.0/sto_images.tgz" \
+  .
+```
+
+### Early access features
+
+### New features and enhancements
+
+#### Harness Platform
+
+- Upgraded `org.clojure:clojure` from version 1.9.0 to 1.11.4 to address security vulnerabilities, including CVE-2024-22871, which could lead to a denial of service (DoS) attack. (PL-56307)
+
+- Added support for v1 APIs in template-service, ng-manager, platform-service, and pipeline-service for Istio version 1.19.0 and above. If you are running istio >= 1.19.0, add the following override in your `override.yaml` file to access V1 APIs. (PL-50528, ZD-65579)
+
+  ```yaml
+  global:
+    istio:
+      enableRegexRoutes: true
+  ```
+
+- Fixed an issue where Slack could still be selected as a notification method at the project level, even after being disabled at the account level. Notification channel options are now controlled by Default Settings and must be enabled there to be available. (PL-48866, ZD-60861)
+
+### Fixed issues
+
+#### Harness Platform
+
+- Optimized delegate caching by increasing the delegateAccountCache TTL from 1 minute to 3 minutes. This change reduces the number of delegate fetch queries to the database, improving performance during pipeline execution. (PL-56622)
+
+- Resolved an issue in FileStore where tag values were not displayed in the tag hover for files. The custom logic for rendering tags has been replaced with a standard Tags component, ensuring that both tag names and values are correctly shown. (PL-56940, ZD-69741)
+
+- Fixed an issue on the Freeze page where long names and identifiers caused text overlap in the UI. A maximum width has been set for the freeze name cell, with the full name and identifier now visible on hover. (PL-56843, ZD-69083)
+
+- Fixed an issue where users with the correct permissions were unable to delete resources in a Resource Group. (PL-56726, ZD-69369)
+
+- Fixed an issue where the AWS Secret Manager validation was failing due to regions being passed instead of full URLs, causing connectivity errors in delegate logs. The region is now correctly converted to a URL, preventing perpetual task failures. (PL-55740, ZD-67142, ZD-67150)
+
+- Enhanced webhook notification handling to support secrets in headers, enabling proper decryption of Authorization and other header values stored in the Harness Secret Manager. This ensures seamless webhook triggering without requiring hardcoded values. (PL-55319, ZD-65913)
+
 ## October 4, 2024, version 0.21.0
 
 This release includes the following Harness module and component versions.
