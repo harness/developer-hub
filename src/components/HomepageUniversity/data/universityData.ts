@@ -93,6 +93,7 @@ export const university: CardItem[] = [
     link: "/university/idp",
     numberOfCerts: 1,
     SPT_available: true,
+    ILT_available: true,
   },
   {
     title: "Infrastructure as Code Management",
