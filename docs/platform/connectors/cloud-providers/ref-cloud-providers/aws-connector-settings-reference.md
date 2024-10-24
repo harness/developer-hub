@@ -450,6 +450,8 @@ We also support JET (JWT-based Enterprise Token) identity tokens for authenticat
 - AWS CloudFormation
 - AWS SAM (Serverless Application Model)
 
+To obtain a JET identity token, authenticate with your identity provider using your credentials and request a token through their API.
+
 Currently, support JET identity tokens for authentication for AWS connectors is behind the feature flag `CDS_AWS_SESSION_TOKEN_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 Additionally, this option requires Harness Delegate version 24.09.84100 or later.
