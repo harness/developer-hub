@@ -294,7 +294,7 @@ You must have a role with **Pipeline Execute** [permission](/docs/platform/role-
 Currently, this feature is behind FF `PIE_RESOLVE_EXECUTION_INPUT_EXPRESSION`. Please Contact [Harness Support](mailto:support@harness.io).
 :::
 
-Users can pass expressions in the allowed values of runtime inputs, allowing dynamic values to be passed from one stage to another during pipeline execution. Variables defined in earlier stages can be referenced in subsequent stages using expressions.
+Harness supports expressions in the allowed values of runtime inputs, enabling dynamic values to pass from one stage to another during pipeline execution. Variables or outputs defined in earlier stages can be referenced in subsequent stages, allowing for flexible configuration.
 
 Let's consider this example yaml:-
 
@@ -386,6 +386,13 @@ We used the expression `<+input>.executionInput().allowedValues(<+pipeline.stage
 The expression `<+pipeline.stages.custom_1.spec.execution.steps.ShellScript_1.output.outputVariables.name>` resolved to "123".
 The expression `<+pipeline.stages.custom_1.spec.execution.steps.ShellScript_1.output.outputVariables.version>` resolved to "v1,v2,v3".
 The final expression resolved to `<+input>.executionInput().allowedValues(123,v1,v2,v3)`, which is essentially a list of values.
+
+
+:::note
+- **Resolution of Expressions in the Execution Input Tab**: In the Execution Input tab, expressions allow dynamic values from earlier stages to be used in subsequent stages, providing runtime options based on prior outputs.
+
+- **Handling of Comma-Separated Values**: If resolved values contain commas, they will automatically convert into a list. If multiple expressions are present, they will be concatenated by default, forming a combined list.
+:::
 
 ### Configure execution inputs
 
