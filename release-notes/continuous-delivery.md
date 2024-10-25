@@ -56,6 +56,8 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Harness has introduced EventBridge webhooks that can be configured with Git, Slack, and generic options (for Nexus artifacts) to trigger pipelines in real time. Currently, this feature is behind the feature flag `CDS_EVENT_BRIDGE_WEBHOOK`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. 
 (CDS-98869, ZD-66421)
 
+- Harness has introduced a new step `File Uplaod` for uploading files as a runtime input during execution of a pipeline. The combined file size should not be greater than 100 MB and each individual file must not be greater than 50 MB. Currently, this feature is behind the feature flag `PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (PIPE-20287,65927 )
+
 #### Fixed issues
 
 - Previously, the custom icon for the Step Group Template was not displayed when the template was used in the pipeline. This issue is resolved. (PIPE-22587)
