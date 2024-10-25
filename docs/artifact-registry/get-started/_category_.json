@@ -1,0 +1,9 @@
+{
+    "label": "Get Started with Artifact Registry",
+    "collapsible": "true",
+    "collapsed": "true",
+    "link": { "type": "generated-index", "title": "Get Started with Artifact Registry" },
+    "customProps": {},
+    "position": 10
+}
+  
