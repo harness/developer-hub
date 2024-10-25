@@ -107,6 +107,33 @@ Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and
 * [Create Dashboards](../../../platform/dashboards/create-dashboards.md)
 * [Create Visualizations and Graphs](../../../platform/dashboards/create-visualizations-and-graphs.md)
 
+#### SCAD-Related Columns for AWS
+
+[Split cost allocation data (SCAD)](https://docs.aws.amazon.com/cur/latest/userguide/split-cost-allocation-data.html) feature introduces cost and usage data for container-level resources—specifically ECS tasks and Kubernetes pods—into AWS Cost and Usage Reports (CUR). Previously, AWS CUR only provided costs at the EC2 instance level. Now, split cost allocation calculates container-level costs by analyzing each container’s consumption of EC2 instance resources, assigning costs based on the amortized cost of the instance and the percentage of CPU and memory resources utilized by containers running on it.
+
+We have added support for the following SCAD-related columns:
+
+- `parentresourceid`
+- `reservedusage`
+- `actualusage`
+- `splitusage`
+- `splitusageratio`
+- `splitcost`
+- `netsplitcost`
+- `unusedcost`
+- `netunusedcost`
+- `publicondemandsplitcost`
+- `publicondemandunusedcost`
+
+Along with the following labels:
+
+- `aws:eks:cluster-name`
+- `aws:eks:deployment`
+- `aws:eks:namespace`
+- `aws:eks:node`
+- `aws:eks:workload-name`
+- `aws:eks:workload-type`
+
 ### Next Steps
 
 * [Use Dashboard Actions](../../../platform/dashboards/use-dashboard-actions.md)
