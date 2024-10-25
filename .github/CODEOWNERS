@@ -47,10 +47,10 @@ README.md @pratmit
 /docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
 
 # Continuous Integration Docs
-/docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed
+/docs/continuous-integration/ @nofarblue @rustd
 
 # CODE Docs
-/docs/code-repository/ @pwolf-harness @hitesharinga @dewan-ahmed
+/docs/code-repository/ @pwolf-harness @hitesharinga
 
 # Open Source Docs
 /docs/open-source/ @dewan-ahmed @rustd @SushrutHarness
@@ -157,10 +157,10 @@ README.md @pratmit
 /release-notes/continuous-error-tracking.md @M-Tsur
 
 # CI Release Notes
-/release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed
+/release-notes/continuous-integration.md @nofarblue @rustd
 
 # CODE Release Notes
-/release-notes/code-repository.md @pwolf-harness @hitesharinga @dewan-ahmed
+/release-notes/code-repository.md @pwolf-harness @hitesharinga
 
 # Delegate Release Notes
 /release-notes/delegate.md @pratmit
@@ -198,10 +198,10 @@ README.md @pratmit
 /kb/ @deepanshuHarness @jimin-harness
 
 # Drone KB
-/kb/continuous-integration/drone-faqs.md @dewan-ahmed @jimin-harness @deepanshuHarness
+/kb/continuous-integration/drone-faqs.md @jimin-harness @deepanshuHarness
 
 # CI KB
-/kb/continuous-integration/ @nofarblue @rustd @dewan-ahmed @jimin-harness @deepanshuHarness
+/kb/continuous-integration/ @nofarblue @rustd @jimin-harness @deepanshuHarness
 
 # CD KB
 /kb/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @jimin-harness @deepanshuHarness
@@ -251,10 +251,10 @@ src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av
 src/components/Roadmap/data/cdData.ts @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
 
 #CI Roadmap
-src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed
+src/components/Roadmap/data/ciData.ts @nofarblue @rustd
 
 #Code Roadmap
-src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga @dewan-ahmed
+src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga
 
 #FF Roadmap
 src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
