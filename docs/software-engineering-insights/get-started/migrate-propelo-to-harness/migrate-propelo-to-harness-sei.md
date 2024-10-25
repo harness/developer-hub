@@ -300,6 +300,12 @@ If your Jenkins plugin version is newer than 1.0.30, follow these steps:
 * Go to **Jenkins plugin** settings.
 * Set the **Application Type** to the **Harness SEI environment** where your account is hosted. Contact [Harness Support](mailto:support@harness.io) to confirm where your account is hosted.
 
+#### Verification
+
+After reconfiguring the plugin, it may take 10 to 15 minutes for the Jenkins integration instance to establish a connection. Once the connection is successful, the status of the Jenkins integration instance will change to Operational.
+
+![](../static/jenkins-operational.png)
+
 ### IP Whitelisting
 
 The ingestion satellite in SEI only needs outbound access to the Harness domain name (typically app.harness.io). You can allowlist the [following IPs](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/) if needed.

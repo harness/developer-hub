@@ -108,9 +108,13 @@ To configure input variables for the shell script, do the following:
 
 1. Select **Configuration**, and then select **Add Input Variable**.
 2. Add **Name**, **Type**, and **Value** for the input variables in your script.  
-Harness allows you to use [Fixed values and runtime inputs](../variables-and-expressions/runtime-inputs.md).
+Harness allows you to use [Fixed values, Runtime Inputs and Expressions](../variables-and-expressions/runtime-inputs.md).
 
-   ![The image shows the configuration tab for creating a secrets manager template. The user has specified three variables whose data type is string and whose values are to be specified at run time](./static/create-a-secret-manager-template-32.png)
+:::note
+Only Secret and Variable expressions are supported within Expressions.
+:::
+
+   ![The image displays the configuration tab for setting up a Secrets Manager template. The user has defined four variables of the string data type, each with configurable values that can be set as runtime inputs, expressions, or fixed values.](./static/create-a-secret-manager-template-32.png)
 3. Select **Execution Target**. This is where you want to execute the script that you just added.  
 If you want to run the shell script on a target host and not on the Harness Delegate, you must first create the required connection attributes.  
 To access an SSH-based custom secrets manager, create an SSH credential first. Go to [Add SSH keys](/docs/platform/secrets/add-use-ssh-secrets.md) for the procedure to create SSH credentials.  

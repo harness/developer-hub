@@ -285,7 +285,7 @@ If you are an existing customer, you need to:
 
 - Edit the IAM role used by the Harness AWS Connector corresponding to the AWS account.
 - In the IAM role, add the `ce:GetRightsizingRecommendation` permission to the **HarnessEventsMonitoringPolicy**.
-  :::
+:::
 
 Once you have the `ce:GetRightsizingRecommendation` permission added to the **HarnessEventsMonitoringPolicy** in the IAM role, perform the following tasks on your AWS console to enable recommendations.
 
@@ -634,6 +634,10 @@ If you come across an error message indicating missing permissions, as displayed
 6. Save changes.
 
 For more information, go to [Editing IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html).
+
+:::info 
+- If you are using permission boundaries to enforce restrictions, ensure that Harness permissions are explicitly allowed to enable the connectors and functionalities to operate correctly.
+:::
 
 ## Next steps
 

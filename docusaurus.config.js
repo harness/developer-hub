@@ -160,8 +160,8 @@ async function config() {
                   to: 'docs/internal-developer-portal',
                 },
                 {
-                  label: 'Cloud Development Environments (BETA)',
-                  to: 'docs/cloud-development-environment',
+                  label: 'Cloud Development Environments',
+                  to: 'docs/cloud-development-environments',
                 },
                 {
                   label: 'Software Engineering Insights',
@@ -373,7 +373,7 @@ async function config() {
                 },
                 {
                   label: 'Slack',
-                  to: 'https://join.slack.com/t/harnesscommunity/shared_invite/zt-2frobs97n-HwsLuNvfb6A7dEf_HKspHA',
+                  to: 'https://join-community-slack.harness.io/',
                 },
                 {
                   label: 'API Reference',

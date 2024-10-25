@@ -18,6 +18,11 @@ The table below outlines the roadmap for the Harness Self-Managed Enterprise Edi
 | Limited GA (Current version)| Feature parity with SaaS | <ul><li> Cloud</li><li>Connected</li><li>Airgapped</li><li>Signed certificates</li></ul> | Kubernetes clusters | <ul><li>NGINX</li><li>Istio virtual services</li></ul> |
 | General Availability (Coming soon)| Feature parity with SaaS |
 
+:::info note
+To install SMP in an air-gapped environment, go to [SMP in air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
+:::
+
+
 For more information, go to [What's supported](/docs/chaos-engineering/whats-supported.md).
 
 For information on feature releases, go to [SMP Release Notes](/release-notes/self-managed-enterprise-edition).

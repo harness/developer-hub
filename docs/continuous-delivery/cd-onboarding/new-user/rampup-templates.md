@@ -216,13 +216,13 @@ As a general rule, start with the **Use Template** option and only opt for **Cop
 
 ## Failure strategies and advanced settings
 
-When possible, it's best to mark all the stage and step [failure strategies](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy) and advanced settings as `<+input>` to ensure the greatest amount of flexibility by your team members. If these settings are not externalized as inputs to the template, then end users of the template are not able to modify them.
+When possible, it's best to mark all the stage and step [failure strategies](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings.md) and advanced settings as `<+input>` to ensure the greatest amount of flexibility by your team members. If these settings are not externalized as inputs to the template, then end users of the template are not able to modify them.
 
 For details on advanced settings, go to:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors).
 * [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings).
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
+* [Failure Strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings.md).
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview).
 
@@ -258,9 +258,9 @@ Once everything is done and checks out good, merge the feature branch to main, w
 
 ### Releasing Template Updates
 
-When following the above flow, template updates for non breaking changes are released out to users automatically with no intervention once the update is merged.  
+When following the above flow, template updates for non breaking changes are released out to users automatically with no intervention once the update is merged.
 
-For breaking changes, users should be notified when the new version becomes available so they can update their pipelines to consume the new version. An end of life date should be set for the old version, by which all template consumers should complete moving over to the new version. Pipelines in scope can be determined by using the "Referenced By" tab when viewing the template in the templates menu.
+For breaking changes, when the new Template version is complete the branch should be merged down to `main` and marked as "stable" in the template studio. Then users of the template should be notified that the new version is available and update their pipelines to consume the new version. Pipelines in scope can be determined by using the "Referenced By" tab when viewing the template in the templates menu.  An end of life date should be set for the old version, by which all template consumers should complete moving over to the new version.
 
 Template consumers incorporating new versions containing breaking changes should make their updates on a feature branch, to avoid impacting their users.  Like templates, this is accomplished by using the GitX feature to remotely track the pipeline or template in a git repository.  Saving the changes to a new feature branch, and selecting this branch when running the pipeline to test the change.  Once the changes are tested with a successful pipeline run, merge the feature branch into `main` to roll the change out to the production pipeline.
 

@@ -112,7 +112,7 @@ Once you have the CCM Kubernetes connector up and running you should start to re
 
 If you want to perform auto stopping in a Kubernetes cluster you will need to deploy the Harness auto stopping controller and router into your cluster.
 
-[There is a helm chart for deploying the controller and router here](https://github.com/rssnyder/harness-ccm-autostopping).
+[There is a helm chart for deploying the controller and router here](https://github.com/rssnyder/charts/tree/main/charts/harness-ccm-autostopping).
 
 Otherwise, to get the deployment manifest for both components navigate to CCM in the Harness UI, under `Setup`,  `Cloud Integration`, and view your current connectors under `Kubernetes Clusters`. Find your connector in the list and select the three dots on the right and select `Edit Cost Access Features`.
 

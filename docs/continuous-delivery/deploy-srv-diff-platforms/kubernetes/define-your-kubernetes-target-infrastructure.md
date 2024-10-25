@@ -467,6 +467,23 @@ To add an **Infrastructure Definition** with the Rancher connection method, do t
 </TabItem>
 </Tabs>
 
+:::info
+
+We now support OpenID Connect (OIDC) authentication in Kubernetes, enabling seamless integration with OIDC-compliant identity providers for enhanced security and user management.
+
+To configure OIDC authentication in Kubernetes, navigate to account/project settings.
+
+Select **New Connector**, select **Kubernetes cluster**
+
+In the details tab, select **Specify master URL and credentials**
+
+Enter the Master URL
+
+In the **Authentication**, select **OpenID Connect** and fill in the necessary details.
+
+![](static/kubernetes-oidc-support.png)
+:::
+
 ## Dynamically provisioned infrastructure
 
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:

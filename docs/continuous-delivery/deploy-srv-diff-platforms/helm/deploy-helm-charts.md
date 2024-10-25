@@ -307,7 +307,6 @@ charts/
 		 - Chart.yaml
 		 - values.yaml
 ```
-
 :::
 
 Here is a sample service YAML where a subchart is defined.
@@ -331,7 +330,7 @@ service:
                   gitFetchType: Branch
                   folderPath: parent-chart
                   branch: main
-              subChartName: first-child
+              subChartPath: first-child
               skipResourceVersioning: false
               enableDeclarativeRollback: false
               helmVersion: V3
@@ -339,7 +338,6 @@ service:
                 - commandType: Template
                   flag: "--dependency-update"
   gitOpsEnabled: false
-
 ```
 
 ### Pipeline execution of a Helm chart with subcharts
@@ -353,6 +351,34 @@ You can see the subchart and the list of files fetched in the fetch section of t
 You can see the `template` command with the `--dependency-update` flag running in the prepare section of the pipeline execution.
 
 ![](./static/helm-dependency.png)
+
+### Configuring Helm Sub-Charts with Git Repositories
+
+We can set up Helm Sub-chart scenarios with Git repositories as well. Suppose you have your project directory structured as follows:
+```
+charts/
+  ├── subcharts/
+  │   ├── my-sub-chart1/
+  │   └── my-sub-chart2/
+  └── maincharts/
+      ├── my-main-chart1/
+      └── my-main-chart2/
+```
+**Chart Path**: This should be the path where all charts are present, in this case, `charts/`.
+
+**Sub-Chart Path**: This will be the relative path of the chart you want to deploy. For example, if you want to deploy my-main-chart1, the Sub-Chart Path would be `maincharts/my-main-chart1/`.
+
+All dependency files can be fetched from the charts/ folder, allowing you to include any sub-chart as a dependency.
+
+It is also recommended to add the following Helm Command Flags in the Advanced section:
+
+1. Command Type **Template**, Flag `--dependency-update`
+2. Command Type **Install**, Flag `--dependency-update`
+3. Command Type **Upgrade**, Flag `--dependency-update`
+
+With these commands, Helm will update the chart dependencies defined in your Chart.yaml
+
+![](./static/deploy-helm-subcharts.png)
 
 ## Reference the artifact
 

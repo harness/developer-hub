@@ -63,6 +63,7 @@ These custom recommendations not only show up in the recommendation section but 
 - In case of AWS and Azure, Account/ Subscription and region combination with greater than 300$ of monthly spend are considered for recommendations.
 - In case of GCP, Project with greater than 300$ of monthly spend is considered for recommendations.
 
+
 :::
 
 ## Cost Correlation
