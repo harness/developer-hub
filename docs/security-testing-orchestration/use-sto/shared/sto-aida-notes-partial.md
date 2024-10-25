@@ -1,7 +1,8 @@
-Before you can use Harness AIDA, you must do the following:
+Before you can use Harness AI in STO, you must do the following:
   1. Read the [AIDA Data Privacy Overview](https://www.harness.io/legal/aida-privacy).
   2. Sign an [End-User License Agreement](https://www.harness.io/legal/aida-terms) with Harness.
-  3. Enable AIDA in your Harness account. Go to **Account Settings**, select **Account Resources**, select the **Harness AIDA** tile, and then enable the **Harness AI Development Assistant (AIDA)** setting. Select **Allow Overrides** if you want to be able to enable/disable AIDA for individual projects.  
+  3. Enable AIDA in your Harness account. Go to **Account Settings**, select **Default Settings**, select the **Harness AIDA** tile, and then enable the **Harness AI Development Assistant (AIDA)** setting. Select **Allow Overrides** if you want to be able to enable/disable AIDA for individual projects.  
+
 
 :::caution
 

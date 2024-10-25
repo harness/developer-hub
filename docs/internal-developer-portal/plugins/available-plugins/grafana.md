@@ -72,6 +72,10 @@ This plugin exports three UI cards that you can show on the **Overview** tab of 
       md: 6
 ```
 
+![](./static/alerts_card.png)
+
+![](./static/dashboards_card.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set the following annotations in its `catalog-info.yaml` definition file.

@@ -1,7 +1,8 @@
 ---
-title: Software catalog
+title: Software Catalog Overview
 description: Learn more about the software catalog in Harness IDP
 sidebar_position: 1
+sidebar_label: Overview
 redirect_from:
   - /docs/internal-developer-portal/features/software-catalog
 ---

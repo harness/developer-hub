@@ -35,6 +35,13 @@ You don't have to edit anything in the **Update Release Repo**, **Merge PR** and
 
 ### Update Release Repo step
 
+:::note Limitation
+
+Only one Update Release Repo or Revert PR step can run per GitHub token reference at a time.
+This adheres to [GitHub's best practices](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api?apiVersion=2022-11-28#avoid-concurrent-requests) to prevent [secondary rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#about-secondary-rate-limits) during pull request creation.
+
+:::
+
 This step fetches JSON or YAML files, updates them with your changes, performs a commit and push, and then creates the PR.
 
 You can also enter variables in this step to update key-value pairs in the config file you are deploying.
@@ -105,6 +112,13 @@ Found linked app: syncstep-automation-app-cluster11. Link - https://app.harness.
 
 ### Revert PR step
 
+:::note Limitation
+
+Only one Update Release Repo or Revert PR step can run per GitHub token reference at a time.
+This adheres to [GitHub's best practices](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api?apiVersion=2022-11-28#avoid-concurrent-requests) to prevent [secondary rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#about-secondary-rate-limits) during pull request creation.
+
+:::
+
 This step reverts the commit passed and creates a new PR. Use this step if you want to run any tests or automation on the pipeline and then revert the commit done by the **Update Release Repo** step.
 
 The Revert PR step uses the commitId from the Update Release Repo step as input. The commitId can be an expression, runtime input, or a static value. For example,
@@ -167,12 +181,42 @@ The sync options provided are the same options you receive while syncing an appl
 
 ### GitOps Get App Details step
 
-This step fetches the details and status of your application. 
+This step fetches the details and status of your application.
 
-Enter your application name in the **Application** field. Currently, this field does not support Harness expressions. 
+:::info
+
+Currently, Get App Details step is behind the feature flag `GITOPS_GET_APP_DETAILS_STEP`. Contact Harness Support to enable the feature.
+
+:::
 
 If **Hard Refresh** is enabled, the application status will be hard refreshed when retrieving the information. 
 
-The data will be returned as a JSON payload that will be parsed by the step. The response can be referenced using Harness expressions in subsequent steps. 
+You can choose on how the application can be fetched. 
+
+![](../pr-pipelines/static/gitops-get-app-details.png)
+
+Choose **Application Names** to select the application names from the dropdown. You can also provide the application name when you start the pipeline execution by selecting the Runtime input option.
+
+You can also fetch up to 1000 applications by choosing **Application Regex**. You can provide a regex expression as a Fixed value, or provide it as a run-time input or Expression.
+
+:::note Limitations and Constraints
+
+Applications are included in the step’s outcome only if the serviceId, envId, and clusterId match the values provided in the pipeline.
+
+If no matching applications are found, the step will fail.
+
+The applicationRegex must be a valid regex, or the step will fail.
+
+You can fetch up to 1000 applications in a single step, provided the final JSON string remains under 512kB.
+
+To stay within the 512kB size limit, certain fields in the response are trimmed or excluded. These include `.app.spec.ignoreDifferences`, `.app.spec.info`, `.app.status.resources`, and `.app.status.operationstate.syncresult.resources`
+
+:::
+
+The data will be returned as a JSON payload that will be parsed by the step. The response can be referenced using Harness expressions in subsequent steps.
+
+Example response of one application fetched: `{"applications":[{app1}]}`
+
+Example response of multiple application fetched: `{"applications:[{app1},{app2}]}`
 
 This completes all the configurable steps for GitOps in Harness pipelines. Happy Deploying!

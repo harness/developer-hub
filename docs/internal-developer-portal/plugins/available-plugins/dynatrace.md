@@ -51,6 +51,8 @@ This plugin exports a UI tab that you can use as a new **Dynatrace** tab for a s
     - component: DynatraceTab
 ```
 
+![](./static/dynatrace-tab.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set one of the following annotations in its `catalog-info.yaml` definition file.

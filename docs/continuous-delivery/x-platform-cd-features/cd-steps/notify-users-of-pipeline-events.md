@@ -249,7 +249,8 @@ notificationRules:
       enabled: true
 ```
 :::info note
-Please note that you should be able to include custom headers while creating custom webhook notifications channel(s) as well as while updating the existing ones.
+1. Please note that you should be able to include custom headers while creating custom webhook notifications channel(s) as well as while updating the existing ones.
+2. For a `Stage Start` event (such as during a deployment stage), the notification summary will include unresolved expressions for services, infrastructure, and environments. This is intentional, as the notification is sent before all references are fully resolved, preventing any potential errors in resolution from causing the stage execution to fail.
 :::
 
 For example, a Slack notification when the pipeline completes as well as when it is successful looks something like this:

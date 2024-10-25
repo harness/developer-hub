@@ -17,7 +17,7 @@ The following table lists SEI support for platforms, repos, registries, and rela
 
 | **Type of integration** | **SCM** | **CI/CD** | **Security** | **Issue Tracking and Management** | **Communication and collaboration** | **Others** |
 | -- | -- | -- | -- | -- | -- | -- |
-| Automated | <ul><li>Bitbucket</li><li>GitHub</li><li>Gitlab</li><li>Azure Repos</li></ul> | <ul><li>CircleCI</li><li>Drone</li><li>Jenkins</li><li>Harness</li><li>Azure Pipelines</li></ul> | <ul><li>Sonarqube</li></ul> | <ul><li>Jira</li><li>Azure Boards</li><li>Rally Software (BETA)</li></ul> | <ul><li>Slack</li></ul> | <ul><li>TestRail</li></ul> |
+| Automated | <ul><li>Bitbucket</li><li>GitHub</li><li>Gitlab</li><li>Azure Repos</li><li>Harness Code Repository</li></ul> | <ul><li>CircleCI</li><li>Drone</li><li>Jenkins</li><li>Harness</li><li>Azure Pipelines</li></ul> | <ul><li>Sonarqube</li></ul> | <ul><li>Jira</li><li>Azure Boards</li><li>Rally Software (BETA)</li></ul> | <ul><li>Slack</li></ul> | <ul><li>TestRail</li></ul> |
 | Other | <ul><li>Perforce Helix Server</li><li> Gerrit</li></ul> | <ul><li>Github Actions</li></ul> | <ul><li>Checkmarx</li><li>Snyk</li><li>Tenable</li><li>Coverity</li></ul> |  | <ul><li>Microsoft Teams</li></ul> | <ul><li>Pagerduty</li><li>ServiceNow</li><li>PostgreSQL</li><li>Salesforce</li><li>Splunk</li><li>Zendesk</li></ul> |
 
 :::info Note:
@@ -86,8 +86,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Integrate SEI with the ServiceNow Platform. This integration is still under development.</td>
     </tr>
     <tr>
-        <td>SEI_NEW_BA_PROFILES</td>
-        <td>Enable this flag to access the new [Business Alignment profile](/docs/software-engineering-insights/sei-profiles/business-alignment-profile).</td>
+        <td>SEI_SHOULD_ENABLE_REAUTH</td>
+        <td>Allows you to reauthenticate using a new access token for existing integrations that have been upgraded to the latest integration framework</td>
     </tr>
     <tr>
         <td>SEI_BA_INCLUDE_UNRESOLVED_ISSUES</td>
@@ -131,11 +131,6 @@ Here are some SEI early access features that were recently promoted to GA:
         <td>April 2024</td>
     </tr>
     <tr>
-        <td>SEI_SHOULD_ENABLE_REAUTH</td>
-        <td>Enables access to new re-authorization user experience for a [GitHub integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)</td>
-        <td>April 2024</td>
-    </tr>
-    <tr>
         <td>SEI_IS_AZURE_NEW_ONB_ENABLED</td>
         <td>Access the new [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) onboarding with PAT authentication</td>
         <td>August 2024</td>
@@ -144,5 +139,10 @@ Here are some SEI early access features that were recently promoted to GA:
         <td>SEI_ENABLE_TOPICS_SUPPORT_FOR_GITHUB</td>
         <td>Configure Github Topics as an integration filter in the Collection definition</td>
         <td>August 2024</td>
+    </tr>
+    <tr>
+        <td>SEI_NEW_BA_PROFILES</td>
+        <td>The upgraded Business Alignment profile is now generally available</td>
+        <td>September 2024</td>
     </tr>
 </table>

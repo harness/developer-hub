@@ -69,6 +69,8 @@ Also you could add a conditional like `isHarnessFeatureFlagAvailable` which is m
               component: EntityHarnessFeatureFlagContent
 ```
 
+![](./static/harness-ff-plugin.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file:

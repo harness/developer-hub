@@ -22,7 +22,56 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 :::
 
+## October 2024
+
+### Version 202410.1
+
+<!-- October 16, 2024 -->
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### New features and enhancements
+
+* The **BitBucket integration** now supports reauthentication, enabling you to reconnect to the BitBucket application if OAuth fails or the access token expires. (SEI-7957)
+* The calculation method for measuring the time spent on a status in the **Issue Time Across Stages report** and **Lead Time by Time Spent in Stages report** has been improved. Now, the report accurately tracks the duration by calculating the time between when a ticket first enters a specific status and when it exits that status. This ensures a more accurate measurement of how long an issue or work item remains in each stage. (SEI-8667) (SEI-8803)
+* The **Jenkins integration** is now upgraded to the new integration framework. This improves the overall user experience for configuring the Jenkins integration. (SEI-8750)
+* Fixed a bug in the Jira integration configuration where selecting the timezone field resulted in multiple values being selected. (SEI-8748)
+
+#### Fixed issues
+
+* Fixed the bug where when selecting the timezone field in the **Jira integration** configuration multiple values were getting selected. (SEI-8748)
+
 ## September 2024
+
+### Version 202409.2
+
+<!-- October 01, 2024 -->
+
+In this release we have added adoption and scalability features like improvements to the SEI integrations framework to enhance the self-service onboarding.&#x20;
+
+<DocVideo src="https://www.youtube.com/embed/_CC1yiTDE7U?si=lR0PRFQx4SRmmQev" />
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### New features and enhancements
+
+* Added support for the `allow_unsafe_ssl` metadata flag in the satellite configuration for the [SonarQube integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-sonarqube), allowing users to bypass SSL verification for custom certificates authorized by the SonarQube server. (SEI-8309)
+
+* We have improved the user experience for configuring the [CircleCI integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-circleci) and [DroneCI integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-droneci) focused on simplifying and streamlining the user journey. This includes support for authentication across both **Cloud** and **On-prem setups**, as well as reauthentication for expired access tokens. (SEI-8515)
+
+* Added support to display the collection name and selected Insight time range in PDFs exported from an Insight (SEI-8646)
+
+#### Fixed issues
+
+* Resolved a bug where PRs from the [Harness Code repository](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harness-code) were not getting displayed in the **Trellis contributor profile**. (SEI-8038)
+
+* Fixed the issue causing the application window to freeze when configuring stages in the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile) settings. (SEI-8347)
+
+* Fixed the issue where widget configuration wasn’t updating to the **Default Business Alignment profile** when a previously selected BA profile was deleted. (SEI-8539)
 
 ### Version 202409.1
 

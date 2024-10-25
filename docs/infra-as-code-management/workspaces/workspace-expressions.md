@@ -1,7 +1,7 @@
 ---
 title: Workspace expressions
 description: Learn how to use Harness workspace expressions.
-sidebar_position: 30
+sidebar_position: 40
 ---
 
 import Tabs from '@theme/Tabs';
@@ -31,7 +31,7 @@ Here’s a table of the available workspace expressions in Harness IaCM:
 |-------------------------------|--------------------------------------------------|---------------------------------------------------------------------------------|
 | **Workspace ID**              | `<+workspace.identifier>`                        | Retrieves the unique identifier for the workspace.                              |
 | **Folder Path**               | `<+workspace.folderPath>`                        | Returns the root directory path associated with the workspace.                  |
-| **Provisioner Type**          | `<+workspace.type>`                              | Provides the type of provisioner being used, such as Terraform or Opentofu.     |
+| **Provisioner Type**          | `<+workspace.type>`                              | Provides the type of provisioner being used, such as `opentofu` or `terraform`. |
 | **Provisioner Version**       | `<+workspace.provisionerVersion>`                | Fetches the version of the provisioner used in the workspace.                   |
 | **Connector Reference**       | `<+workspace.connectorRef>`                      | Retrieves the connector reference associated with the workspace.                |
 | **Environment Variable**      | `<+workspace.envVars.SOME_ENV_VAR>`              | Accesses a specific environment variable within the workspace.                  |
@@ -49,6 +49,10 @@ Here’s a table of the available workspace expressions in Harness IaCM:
 ### How to use workspace expressions
 
 The following example highlights how you can apply workspace expressions to your pipelines run step and output the workspace identifier and secret variable value.
+
+:::warning reserved keyword
+Do not name your run step `workspace` as it is a reserved keyword.
+:::
 
 <Tabs>
 <TabItem value="Interactive guide">

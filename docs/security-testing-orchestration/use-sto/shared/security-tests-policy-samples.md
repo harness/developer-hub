@@ -17,6 +17,7 @@ The Harness Policy Library includes the following [policy samples](/docs/platfor
 - [Exclude vulnerabilities by number of occurrences](#exclude-vulnerabilities-by-number-of-occurrences)
 - [Exclude vulnerabilities by CVE age](#exclude-vulnerabilities-by-cve-age)
 - [Exclude vulnerabilities using STO output variables](#exclude-vulnerabilities-using-sto-output-variables)
+- [Block the pipeline based on the code coverage results](#block-the-pipeline-based-on-the-code-coverage-results)
 
 <!-- TOC end -->
 
@@ -220,3 +221,26 @@ For example, suppose you want a policy to warn or block if a scan step finds any
        input[_].outcome.outputVariables.NEW_HIGH != "0"
    }
    ```
+
+#### Block the pipeline based on the code coverage results
+
+Apply a policy to the scan step to either warn or block the pipeline based on the code coverage value. You can use the sample policy **Security Test - Code Coverage**. Below is a sample policy for reference:
+
+```
+package securityTests
+
+import future.keywords.in
+import future.keywords.if
+
+# Define a set of Output Variables that are denied
+deny_list :=([
+# Fail if CODE_COVERAGE is less than 50.0
+  {
+    "name": "CODE_COVERAGE", "value": 50.0, "operator": "<"
+  },
+# Optionally define more Output Variables here
+#  {
+#    "name": "HIGH", "value": 0, "operator": ">"
+#  }
+])
+```

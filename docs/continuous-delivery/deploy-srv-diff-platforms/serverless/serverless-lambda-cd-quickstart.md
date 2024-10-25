@@ -76,7 +76,7 @@ Review [Harness Key Concepts](/docs/platform/get-started/key-concepts) to esta
     - View and copy the API Key and Secret to a temporary place. You'll need them when setting up the Harness AWS Connector later in this quickstart.
     - **Full Admin Access:** click on **Attach existing policies directly**. Search for and select **AdministratorAccess** then click **Next: Review**. Check to make sure everything looks good and click **Create user**.
     - **Limited Access:** click on **Create policy**. Select the **JSON** tab, and add the JSON using the following code from the [Serverless gist](https://gist.github.com/ServerlessBot/7618156b8671840a539f405dea2704c8) IAMCredentials.json:
-- **OIDC-enabled AWS Connector**: Currently, Serverless functions cannot be deployed using an OIDC-enabled AWS Connector.
+- **OIDC-enabled AWS Connector**: Serverless functions can be deployed using an OIDC-enabled AWS Connector.
 
 <details>
 <summary>IAMCredentials.json</summary>

@@ -10,13 +10,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::info
-Currently, the new **Test** step supports Java but it doesn't yet support Kotlin or Scala. Until support is added for these languages, continue to use the **Run Tests** step for TI with Kotlin or Scala.
 
-While the **Run Tests** step remains backwards compatible,We recommend using the new [**Test** ](../tests-v2.md) step with Java applications moving forward.  
+This page contains instructions for using  Test Intelligence (v1) with the **Run Tests** step. 
+
+While **Run Tests** step remains backwards compatible, Harness recommends using the newer [**Test** ](../tests-v2.md) step (Test Intelligence v2) for simplified user experience.
 
 :::
-
-Using [Test Intelligence (TI)](../ti-overview.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 
 ## Enable TI for Java, Kotlin, or Scala
 

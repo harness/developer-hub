@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2024-09-19T22:00
+date: 2024-10-01T18:00
 sidebar_position: 6
 ---
 
@@ -18,6 +18,32 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
+## October 2024
+
+### Version 1.32.1
+
+#### New features and enhancements
+
+- Account Names Now Displayed in Governance Overview:** We now display Account Names in the Recommendations widget and Overview list, improving clarity.
+  
+- Anomaly Alert Upsert Functionality: When adding a new anomaly alert, the system was updating the existing alert instead of creating a new one when an email address was added. We have now implemented an upsert function for the channel list to ensure a new alert is added correctly, enhancing alert management.
+
+#### Fixed Issues
+
+- Date Filter Sync Issue on Evaluation Details Page: There was a mismatch between the date filter and URL-passed dates, causing an "undefined - undefined" display. Users had to manually select a date range. This is now fixed for a smoother experience.
+
+### Version 1.31.4
+
+#### New features and enhancements
+- Updated Cloud Custodian Versions for Cloud Asset Governance: The cloud-custodian versions have been updated to the following:
+      - `c7n==0.9.41`
+      - `c7n_azure==0.7.40`
+      - `c7n_gcp==0.4.40`
+  [CCM-19608]
+
+- Support for AWS GovCloud in Asset Governance: Asset governance now extends support to AWS GovCloud, enabling governance features. [CCM-18909]
+- UI Improvement for AutoStopping Windows: We have added enhanced CSS to provide adequate space for selection of source IP-based custom exclusions in the exclusion list. [CCM-14294]
+
 ## September 2024
 
 ### Version 1.30.3
@@ -26,7 +52,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Prerequisites for Cluster Orchestrator: We are now listing all prerequisites required for Cluster Orchestrator, providing clearer guidelines to ensure smooth setup. [CCM-18892]
 - Export Perspective Chart as CSV: We now support exporting the Perspective chart as a CSV, allowing users to easily extract and analyze data from the chart. [CCM-18812]
 
-### Fixed Issues:
+#### Fixed Issues
 - Toggle Fields in Recommendations Filters: The Toggle fields in the Recommendations screen Filters were not being saved on Create or Update. This has been fixed. [CCM-19267]
 
 - Saved Filter Option Not Visible on Anomalies Page Load: When first loading the anomalies page, the option to "Select a saved filter" was not visible until a filter was applied. This has been corrected so the saved filter option appears immediately. [CCM-19345]

@@ -60,6 +60,10 @@ spec:
           url: https://github.com/zalopay-oss/backstage-grpc-playground/blob/main/examples/stream/common.proto
 ```
 
+![](./static/call_stream.gif)
+
+![](./static/missing_import_1.gif)
+
 Read More on the [open-source docs](https://github.com/zalopay-oss/backstage-grpc-playground?tab=readme-ov-file#yaml-file-definition) 
 
 ## Support

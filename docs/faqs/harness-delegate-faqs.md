@@ -280,6 +280,43 @@ You can target the delegate to specific namespaces buy editing its YAML file wit
 
 Yes. For information on delegate HA, go to [Delegate high availability](/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-high-availability-ha).
 
+## Resolving 401 errors on Delegates with IMDSv2 enforced
+Administrators looking to enhance their security within AWS may look to [utilize IMDSv2 with their instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html).  IMDSv2 has several different methods of being applied, [including forcing enforcement](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-new-instances.html).  If enforcement is applied, administrators may need to make some adjustments to the default rules to ensure Harness will work with the environment
+
+In order to see the status of enforcement on a particular instance, admins can run the following in the AWS CLI:
+```
+aws ec2 describe-instances --region <region/zone> --instance-id <instanceID#> --query "Reservations[0].Instances[0].MetadataOptions" 
+```
+
+The following is a sample return of what admins can expect to see:
+```
+Output:
+{ 
+	"State": "applied", 
+	"HttpTokens": "required", 
+	"HttpPutResponseHopLimit": 2, 
+	"HttpEndpoint": "enabled" 
+}
+```
+The **HttpTokens** value set to **required** indicates that the environment is in an enforced IDMSv2 state instead of optional.
+
+Therefore, administrators will need to be mindful of the **HttpPutResponseHopLimit**.  If the limit is set too low, then users and administrators may run into 401 errors when attempting to retrieve Metadata
+```
+ EC2RoleRequestError: no EC2 instance role found
+ caused by: EC2MetadataError: failed to make EC2Metadata request
+
+ status code: 401, request id:
+```
+
+Administrators should then look to increase the `HttpPutResponseHopLimit` until the error goes away.  This can be done by setting the options on the instance using the AWS CLI
+```
+aws ec2 modify-instance-metadata-options \
+    --instance-id <instanceID#> \
+    --http-tokens required \
+    --http-put-response-hop-limit <NewHopLimit> \
+    --http-endpoint enabled
+```
+
 ## Troubleshooting the delegate
 
 The most common problems with the delegate are:

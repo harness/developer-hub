@@ -83,12 +83,12 @@ To add a target:
 
 ## Upload a list of targets
 
-This option allows you to import a list of targets in CSV format. To do this:
+This option allows you to import a list of targets in CSV format saved as UTF-8 format only. To do this:
 
 1. In **Feature Flags**, in **Target Management**, select **Targets**.
 2. Click **+ Target**.
 3. In **Add Target(s)**, select **Upload a list of Targets**.
-4. Upload your CSV file as per the template below. The CSV file must have only the Name and Identifier; do not include any headings, for example:
+4. Upload your CSV file saved as UTF-8 format only as per the template below. The CSV file must have only the Name and Identifier; do not include any headings, for example:
 
    |          |     |
    | -------- | --- |

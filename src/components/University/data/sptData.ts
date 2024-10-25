@@ -68,4 +68,26 @@ export const spt: IltCardItem[] = [
      tileType: tileType.normal,
      cardType: cardType.SPT,
    },
+   {
+    title: "Infrastructure as Code Management",
+    module: MODULES.iacm,
+     type: type.user,
+     description:
+       "Self-paced video course introducing Harness Infrastructure as Code Management.",
+     version: "Harness IaCM Free/Team Plans",
+     link: "https://university-registration.harness.io/self-paced-training-harness-infrastructure-as-code-management",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
+   {
+    title: "Internal Developer Portal",
+    module: MODULES.idp,
+     type: type.user,
+     description:
+       "Self-paced video course introducing Harness Internal Developer Portal.",
+     version: "Harness IDP Enterprise Plans",
+     link: "https://university-registration.harness.io/self-paced-training-harness-internal-developer-portal",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
 ];
