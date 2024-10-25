@@ -70,7 +70,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 ## October 2024
 
-### Version 24.09.84100 <!--  October 7, 2024 -->
+### Version 24.10.84104 <!--  October 7, 2024 -->
 
 #### New features and enhancements
 
@@ -79,8 +79,6 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 #### Fixed issues
 
 - Improved error messaging for the `<+secrets.getValue(secretlocation)>` expression to provide clearer feedback when a secret is not found. The updated message now states, "The secret has not been found," and includes the full computed path for better troubleshooting. (PL-51900, ZD-65130, ZD-69181)
-
-- Resolved an issue in the `UpdateVersionInfoTask` by adding the missing PLATFORM enum, which eliminated the IllegalArgumentException. (PL-51100) 
 
 ### Version 24.09.83909 <!--  October 11, 2024 -->
 
