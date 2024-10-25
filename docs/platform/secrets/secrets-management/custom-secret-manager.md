@@ -107,6 +107,10 @@ This topic shows you how to add a Custom Secret Manager in the project scope.
 7. Select **Use Template**.
 8. Enter values for the required Input Variables. Harness allows you to use [Fixed Values, Runtime Inputs and Expressions](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/).
 
+:::note
+Only Secret and Variable expressions are supported within Expressions.
+:::
+
 	![](../static/custom-secret-manager-36.png)
 
 9. Select **Fixed** to make the variable values fixed. Harness won't ask you these values when you create Secrets.
