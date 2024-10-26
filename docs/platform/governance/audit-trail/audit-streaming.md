@@ -72,7 +72,7 @@ To configure the GCP GCS streaming connector:
 
    Harness writes all the streaming records to this destination.
 
-   ![](../../governance/audit-trail/static/streaming-connector.png)
+   ![](../../governance/audit-trail/static/streaming-connector-gcp.png)
 
 6. Select **Save** and **Continue**.
 
