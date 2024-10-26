@@ -52,6 +52,36 @@ To add a streaming destination:
 After you add your streaming destination, you're ready to configure the streaming connector.
 
 <Tabs>
+<TabItem value="GCS" label="GCP GCS" default>
+
+To configure the GCP GCS streaming connector:
+
+1. Follow the steps above to [Add a streaming destination](#add-a-streaming-destination).
+
+2. Select **GCP GCS**.
+
+3. In **Select Connector**, select an existing GCP connector or create a new one.
+
+   You can use either the **Connect through a Harness Delegate** or **Connect through Harness Platform** connectivity mode options when setting up your GCP connector. Audit streaming supports both options.
+
+   Go to [Add an GCP connector](../../connectors/cloud-providers/connect-to-google-cloud-platform-gcp.md) for steps to create a new GCP Provider connector.
+
+4. Select **Apply Selected**.
+
+5. In **Google Cloud Storage Bucket**, enter the bucket name.
+
+   Harness writes all the streaming records to this destination.
+
+   ![](../../governance/audit-trail/static/streaming-connector.png)
+
+6. Select **Save** and **Continue**.
+
+7. After the connection test is successful, select **Finish**.
+
+   The streaming destination gets configured and appears in the list of destinations under **Audit Log Streaming**. By default the destination is inactive.
+
+</TabItem>
+
 <TabItem value="S3" label="Amazon S3" default>
 
 To configure the Amazon S3 streaming connector:
