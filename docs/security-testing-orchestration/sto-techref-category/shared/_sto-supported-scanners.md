@@ -134,6 +134,7 @@ For information about the specific vulnerabilities detected by each scanner, go 
         <td valign="top">
          <ul>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference">Burp Enterprise</a> Orchestration, Extraction, Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/traceable-step-configuration">Traceable</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/hql-appscan-scanner-reference">HCL AppScan</a> Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/qualys-web-app-scanner-reference">Qualys Web Application Scanning (WAS)</a>  Ingestion </li>
