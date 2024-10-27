@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-10-04T14:00
+date: 2024-10-28T14:00
 sidebar_position: 16
 ---
 
@@ -200,6 +200,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 1.43.2 |
 | LE NG | 1.3.1 |
 | Looker | 1.1.1 |
+| Log Service | 1.9.2 |
 
 #### Alternative air gap bundle download method
 
@@ -218,8 +219,6 @@ gsutil -m cp \
   .
 ```
 
-### Early access features
-
 ### New features and enhancements
 
 #### Chaos Engineering
@@ -235,6 +234,10 @@ gsutil -m cp \
 - Adds self-signed and trusted CA certificates for API chaos experiments. (CHAOS-6834)
 
 - Adds the functionality to block all inbound rules for Windows global blackhole chaos. (CHAOS-6603)
+
+#### Cloud Cost Management
+
+- Export Perspective Chart as CSV: We now support exporting the Perspective chart as a CSV, allowing users to easily extract and analyze data from the chart. (CCM-18812)
 
 #### Code Repository
 
@@ -291,6 +294,18 @@ gsutil -m cp \
 - Fixed an issue in the image registry where selecting the **ignore** option from the UI would override values from backend. (CHAOS-6724)
 
 - Fixed the issue where the experiment schedule type was not being updated when it was changed from non-cron to cron type. (CHAOS-6822)
+
+#### Cloud Cost Management
+
+- Toggle Fields in Recommendations Filters: The Toggle fields in the Recommendations screen Filters were not being saved on Create or Update. This has been fixed. (CCM-19267)
+
+- Saved Filter Option Not Visible on Anomalies Page Load: When first loading the anomalies page, the option to "Select a saved filter" was not visible until a filter was applied. This has been corrected so the saved filter option appears immediately. (CCM-19345)
+
+- Cloud Connectors Redirect Fix: Clicking on cloud connectors in the integration did not lead to the actual connector configuration. Now, it redirects to the connector details page, improving troubleshooting and configuration access. (CCM-17586)
+
+- Cost Category Bucket Overflow Handling: Display issues with overflowing content in cost category bucket conditions when multiple choices were selected have been fixed. (CCM-14719)
+
+- Search Bar Missing for Label Value Selection in Cost Categories: The search bar was not appearing when selecting label values while creating cost categories. This has been resolved. (CCM-15437)
 
 #### Continuous Delivery
 
