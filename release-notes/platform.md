@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-10-15T14:00:30
+date: 2024-10-28T14:00
 sidebar_position: 3
 ---
 
@@ -78,6 +78,20 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## October 2024
+
+### Version 1.62.x<!-- October 28, 2024 -->
+
+#### Fixed issues
+
+- Resolved an issue where code base cloning steps failed due to class package changes, causing deserialization errors. Aliases have been added to ensure successful deserialization, improving build stability and preventing timeouts in clone code base steps. (PL-57778, ZD-70731, ZD-71581, ZD-71589, ZD-71593, ZD-71596, ZD-71597, ZD-71599, ZD-72110)
+
+- Removed the restriction on the Content-Type header for the Delegate metrics endpoint. The endpoint now accepts any Content-Type, enabling compatibility with tools like Dynatrace ActiveGate for metrics collection. (PL-57704, ZD-71319)
+
+- Enhanced query performance to prevent timeouts when filtering large numbers of user groups inherited in child scopes. Listing user groups now completes efficiently even with high volumes. (PL-57595, ZD-71170)
+
+#### New features and enhancements
+
+- Set limits on the number of delegates and delegate tokens allowed per account and per scope. The current limit is set to 10,000. This change requires Harness Delegate version 24.10.84200. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56296)
 
 ### Version 1.60.x<!-- October 15, 2024 -->
 
