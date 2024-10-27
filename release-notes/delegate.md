@@ -70,6 +70,10 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 ## October 2024
 
+### Version 24.10.84200 <!--  October 28, 2024 -->
+
+- Set limits on the number of delegates and delegate tokens allowed per account and per scope. The current limit is set to 10,000. (PL-56296)
+
 ### Version 24.10.84104 <!--  October 7, 2024 -->
 
 #### New features and enhancements
