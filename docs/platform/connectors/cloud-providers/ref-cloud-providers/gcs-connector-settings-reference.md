@@ -73,7 +73,7 @@ If you are using a proxy server in your GCP account, and you want to use GCP ser
 
 ## GCP connector settings
 
-The GCP connector has the following settings.
+The GCP connector has the following settings to allow Harness to securely connect to Google Cloud Platform.
 
 ### Overview settings
 
@@ -90,9 +90,9 @@ Provide credentials that enable Harness to connect to your GCP account.
 
 Select this option to use a GCP service account key.
 
-You can store a GCP service account keys as [Harness Encrypted File Secrets](/docs/platform/secrets/add-file-secrets).
+- You can store a GCP service account keys as [Harness Encrypted File Secrets](/docs/platform/secrets/add-file-secrets).
 
-To obtain the Google Cloud's service account key file, go to the Google documentation on [Creating and managing service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). JSON format is required.
+- To obtain the Google Cloud's service account key file, go to the Google documentation on [Creating and managing service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). JSON format is required.
 
 ![](./static/gcs-connector-settings-reference-00.png)
 
@@ -112,13 +112,30 @@ Select this option to allow the connector to inherit its authentication credenti
 
 </details>
 
-#### OIDC
+#### Use OpenID Connect (OIDC)
 
-Select this option if you want to [use OIDC](#use-openid-connect-oidc).
+:::note
+
+Currently, this feature is behind the feature flag `PL_GCP_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+Additionally, the OIDC connectivity mode is not compatible with Google Cloud Functions. You can't deploy Google Cloud Functions with OIDC-enabled GCP connectors.
+
+:::
+
+Select the **Connect through Harness Platform for OIDC** option to allow Harness to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials.
+
+Select the **Connect through Harness Delegate for OIDC** option to allow Harness Delegate to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials. This option requires Harness Delegate version 24.03.82603 or later.
+
+To connect to GCP with OIDC, you must configure an [OIDC identity provider](https://cloud.google.com/iam/docs/workload-identity-federation-with-other-providers) GCP and connect the service account with relevant permissions that Harness will use to operate in GCP. Use the following Harness OIDC provider endpoint and OIDC audience settings to create your OIDC identity provider.
+
+   * Harness OIDC provider endpoint: `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID>`
+   * OIDC audience: `https://iam.googleapis.com/projects/<YOUR_GCP_PROJECT_ID>/locations/global/workloadIdentityPools/<YOUR_WORKLOAD_POOL_ID>/providers/<YOUR_PROVIDER_ID>`
+
+If accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector. For instructions, go to [Configure OIDC with GCP WIF for Harness Cloud builds](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
 
 ### Select Connectivity Mode
 
-Select how you want Harness to communicate with GCP. The available options depend on what you chose for **Details**.
+Select how you want Harness to communicate with GCP. The available options depend on what you chose for **Details** settings.
 
 #### Connect through Harness Platform
 

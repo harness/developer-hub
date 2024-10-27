@@ -24,85 +24,83 @@ This topic describes how to add a Google KMS Secret Manager in Harness.
 
 ### Add a Secret Manager
 
-This topic assumes you have a Harness Project set up. If not, go to[Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
+To add Google KMS as a secret manager, you’ll need to set up a Harness Project. If you haven't already, refer to [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
 
-You can add a connector from any module in your Project in Project setup, or in your Organization or Account Resources.
+You can add connectors from any module in your Project under Project Setup, or in your Organization or Account Resources:
 
-In **Connectors**, select **Connector**.
+1. In **Connectors**, select **Connector**.
 
-In **Secret Managers**, select **GCP KMS**.
+2. Under **Secret Managers**, select **GCP KMS**.
 
 ![](../../secrets/static/add-google-kms-secrets-manager-63.png)
 
-The **GCP Key Management Service** settings appear.
+#### GCP Key Management Service Settings
 
 ![](../../secrets/static/add-google-kms-secrets-manager-64.png)
 
-In **Name,** enter a name for your secret manager. You will use this name to select this secret manager when adding or selecting a secret.
+Basic Information: 
 
-Enter a description for your secret manager.
+- **Name**: Enter a unique name for the secret manager.
 
-Enter tags for your secret manager.
+- **ID**: Harness will auto-generate an ID based on the name. You can edit this ID during initial setup but not after saving.
 
-Select **Continue**.
+- **Description**: Optional description of the secret manager.
 
-### Obtain Google Cloud Symmetric Key
+- **Tags**: Tag the secret manager for easy search and organization.
 
-To obtain the values for the Details page, you'll need a Google Cloud Symmetric Key.
+### Details Settings
 
-In the [Google Cloud Console](https://console.cloud.google.com/), select your project.
+To obtain the values for the Details settings, you'll need a Google Cloud Symmetric Key.
 
-Select **Security** > **Key** **Management**.
+1. In the [Google Cloud Console](https://console.cloud.google.com/), select your project.
 
-Select/create a key ring. Select/create a key in the key ring.
+2. Select **Security** > **Key** **Management**.
 
-To create resources in this or the next step, go to Google Cloud's[Creating Symmetric Keys](https://cloud.google.com/kms/docs/creating-keys) topic. Open the Actions menu (⋮), and then select **Copy Resource Name**.
+3. Select/create a key ring. Select/create a key in the key ring.
+
+4. To create resources in this or the next step, go to Google Cloud's [Creating Symmetric Keys](https://cloud.google.com/kms/docs/creating-keys) topic. Open the Actions menu (⋮), and then select **Copy Resource Name**.
 
 ![](../../secrets/static/add-google-kms-secrets-manager-65.png)
 
-A reference to the key is now on your clipboard.
+5. A reference to the key is now on your clipboard.
 
-Paste the reference into an editor. You can now copy and paste its substrings into each of the Harness Secret Manager's **Details** settings as shown below.
+    Paste the reference into an editor. You can now copy and paste its substrings into each of the Harness Secret Manager's **Details** settings as shown below.
 
 ![](../../secrets/static/add-google-kms-secrets-manager-66.png)
 
-### Attach Service Account Key (Credentials) File
+![](../../secrets/static/add-google-kms-secrets-manager-71.png)
 
-Next, you will export your Google Cloud service account key and attach it to the **Details** page in Harness.
+### Configure Credentials
 
-First, you need to grant a Principal the Cloud KMS CryptoKey Encrypter/Decrypter (cloudkms.cryptoKeyEncrypterDecrypter) role.
+Harness supports two credential types for authenticating with Google KMS: Service Account Key and OpenID Connect (OIDC). Follow the steps below to configure the appropriate credentials for your setup.
 
-In Google Cloud Console, go to the IAM page.
+#### 1. Service Account Key
 
-Locate the Principal you want to use, and then select Edit.
+To configure a Service Account Key for Google KMS in Harness, refer to our [Service Account Key Setup Guide](). This guide covers all steps for creating and downloading the key file, uploading it to Harness, and attaching it to the GCP KMS connector.
 
-In Edit permissions, add the Cloud KMS CryptoKey Encrypter/Decrypter role, and then select **Save**.
+**Permissions Required**: To use the Service Account Key with Google KMS, ensure the following role is assigned to the service account in Google Cloud:
 
-![](../../secrets/static/add-google-kms-secrets-manager-67.png)
+- **Cloud KMS CryptoKey Encrypter/Decrypter** (`roles/cloudkms.cryptoKeyEncrypterDecrypter`): Allows the service account to encrypt and decrypt data using KMS keys.
 
-Go to Google [Permissions and roles](https://cloud.google.com/kms/docs/reference/permissions-and-roles) and Cloud's Using Cloud IAM with KMSCloud's Using Cloud IAM with KMS topics.
+    - In Google Cloud Console, go to **IAM & Admin > IAM**.
 
-Next, you'll select the Service Account for that Principal and export its Key file.
+    - Locate your service account, select Edit, and add the **Cloud KMS CryptoKey Encrypter/Decrypter** role.
 
-In the Google Cloud Console, in IAM & Admin, go to Service Accounts.
+#### 2. OpenID Connect (OIDC)
 
-Scroll to the service account for the Principal you gave the Cloud KMS CryptoKey Encrypter/Decrypter role. If no service account is present, create one.
+:::note
+OIDC support requires the PL_GCP_OIDC_AUTHENTICATION feature flag in Harness. Contact Harness Support to enable this feature.
+:::
 
-Open your service account's Actions ⋮ menu, then select **Manage keys**.
+For setting up OIDC, refer to our [OIDC Setup Guide]() for detailed steps on configuring a workload identity pool and identity provider with Harness.
 
-Select **ADD KEY** > **Create new key**.
+**Permissions Required**: When using OIDC with Google KMS, ensure the identity provider in Google Cloud is granted the following permissions:
 
-![](../../secrets/static/add-google-kms-secrets-manager-68.png)
+- **Cloud KMS CryptoKey Encrypter/Decrypter** (`roles/cloudkms.cryptoKeyEncrypterDecrypter`): Grants encryption and decryption access to KMS keys within Google Cloud.
 
-In the resulting Create private key dialog, select JSON, create the key, and download it to your computer.
+    - In **IAM & Admin > Workload Identity Federation**, select your identity pool.
 
-Return to the secret manager's Details page in Harness.
-
-Under GCP KMS Credentials File, select **Create or Select a Secret**. You can create a new [File Secret](/docs/platform/secrets/add-file-secrets) and upload the key file you just exported from Google Cloud.
-
-![](../../secrets/static/add-google-kms-secrets-manager-69.png)
-
-Select **Save**, and then select **Continue**.
+    - Assign the **Cloud KMS CryptoKey Encrypter/Decrypter** role to the identity provider associated with the workload identity pool.
 
 ### Set up delegates
 
