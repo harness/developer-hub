@@ -34,6 +34,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 #### Fixed issues
 
 -  Resolved an issue where excessive logging of the "sanitizeStreamLogs: sanitizing lines" message was flooding the engine and add-on logs. Additionally, a monitoring log line that was previously removed, impacting customer monitoring, has been restored. (CI-14640, ZD-71067)
+- Resolved an issue where sessions were initiated without credential information. The update ensures sessions are now created with the correct credentials, enabling cross-account authentication (CI-14134, ZD-69447)
 
 #### Harness images updates
 
@@ -45,7 +46,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 | `harness/ci-lite-engine` | Removed a log line in lite-engine that was breaking a customer's monitoring process (CI-14735)| 1.16.58 | 1.16.58 
 | `harness/drone-git` | Updated the base image, addressing security vulnerabilities | 1.6.0 | 1.6.1 
 | `plugins/artifact-metadata-publisher` | Added support for setting display name, which will appear for URLs published in the Artifacts tab (CI-12176) | 1.0.0 | 2.0.0 
-| `plugins/s3` | we were creating session with config which does not had the credential info, added a code change to update a session with new cred info. Which will help cross account to authenticate (CI-14134) | 1.4.1 | 1.4.3
+| `plugins/s3` | Updated session creation to include credential information, allowing for successful cross-account authentication. (CI-14134, ZD-69447) | 1.4.1 | 1.4.3
 | `drone-kaniko` | Added support for AWS OIDC in kaniko-ecr (CI-14242)| 1.10.1 | 1.10.2
 
 
