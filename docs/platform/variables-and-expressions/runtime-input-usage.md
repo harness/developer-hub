@@ -440,7 +440,7 @@ Harness allows you to upload files as a runtime input during pipeline execution 
 
 ![](./static/file_upload_icon.png)
 
-After adding the step in your stage and executing the pipeline, you will see an `Upload and Submit` button.
+After adding the step to the stage and executing the pipeline, an `Upload and Submit` button will appear.
 
 ![](./static/upload_and_submit.png)
 
@@ -448,7 +448,7 @@ Click the button to `Select files`.
 
 ![](./static/select_files.png)
 
-After selecting the files you wish to upload, click `Submit`. The files will then be displayed under `Upload`.
+Once files are selected, click `Upload` to confirm the selection. Users can also delete the uploaded files. Uploaded files will then be displayed, and `Submit` can be clicked to complete the process.
 
 ![](./static/upload_files_step_file.png)
 
@@ -457,10 +457,21 @@ In the `Output tab`, you will find two outputs:
 - `uploadedby`: The email of the user who uploaded the files.
 - `filesname`: The name of the uploaded file in your storage, which follows the path format: `accountID/runtimeFileInputData/planExecutionId/nodeExecutionId/fileName`.
 
-Important Notes for Uploading Files as Runtime Input:
+#### Retrieve Uploaded File Using cURL
+To download the uploaded file, use the following cURL command:
+
+```
+curl --location --request GET 'https://app.harness.io/gateway/pipeline/api/input-file/file/PLAN_EXECUTION_ID?accountIdentifier=ACCOUNT_IDENTIFIER&nodeExecutionId=NODE_EXECUTION_ID&fileName=FILE_NAME' \
+--header 'x-api-key: PAT_TOKEN'
+```
+
+:::note
+**Important Notes for Uploading Files as Runtime Input:**
 
 1. The total combined file size must not exceed 100 MB.
 2. Each individual file size must not exceed 50 MB.
+3. File names with spaces are currently not supported.
+:::
 
 ### Use the default value instead of failing
 
