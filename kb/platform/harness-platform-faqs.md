@@ -3069,6 +3069,14 @@ Dashboards are a licensed functionality. If you don't have a current license, da
 
 Yes. For more information, go to [Install using Helm](/docs/self-managed-enterprise-edition/install/install-using-helm) and [Upgrade the Helm chart](/docs/self-managed-enterprise-edition/install/upgrade-helm-chart).
 
+### How to update SMP with a new certificate if the existing certificate is going to expire.
+
+You can follow the below steps:
+
+- Create the secret with the cert 
+- Use it in the ingress-controller 
+- Run helm upgrade `$ helm upgrade harness . -n -f override-prod.yaml -f values-updated.yaml `
+
 ## Terraform
 
 ### Why is my Terraform plugin crashing when using the Harness provider?
