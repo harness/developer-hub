@@ -430,6 +430,60 @@ You can use mid-run input along with [allowed values](#allowed-values) and [defa
 </TabItem>
 </Tabs>
 
+### Upload files as runtime input
+
+:::info note
+Currently, this feature is behind the feature flag `PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature
+:::
+
+Harness allows you to upload files as a runtime input during pipeline execution using the `File Upload step` in a custom stage.
+
+![](./static/file_upload_icon.png)
+
+After adding the step to the stage and executing the pipeline, an `Upload and Submit` button will appear.
+
+![](./static/upload_and_submit.png)
+
+Click the button to `Select files`.
+
+![](./static/select_files.png)
+
+Once files are selected, click `Upload` to confirm the selection. Users can also delete the uploaded files. Uploaded files will then be displayed, and `Submit` can be clicked to complete the process.
+
+:::note
+Users with `pipeline execution` RBAC permissions can upload and download files.
+:::
+
+Users can view their uploaded files in the `Upload` tab and can download them by clicking the download icon.
+
+![](./static/upload_files_step_file.png)
+
+In the `Output tab`, you will find two outputs:
+
+- `uploadedby`: The email of the user who uploaded the files.
+- `filesname`: The name of the uploaded file in your storage, which follows the path format: `accountID/runtimeFileInputData/planExecutionId/nodeExecutionId/fileName`. An underscore followed by 6 alphanumeric characters is appended to the `fileName`. This exact name, including the appended characters, must be used in the [download API](#retrieve-uploaded-file-using-curl).
+
+For example, if the original file name is `input.txt`, it will be stored as `input_91ASD1.txt`, and this complete name (`input_91ASD1.txt`) should be provided when using the download API.
+
+To get the exact uploaded file name, navigate to the `Output` tab of the upload step execution, where the full file name can be found.
+
+#### Retrieve Uploaded File Using cURL
+To download the uploaded file, use the following cURL command:
+
+```
+curl --location --request GET 'https://app.harness.io/gateway/pipeline/api/input-file/file/PLAN_EXECUTION_ID?accountIdentifier=ACCOUNT_IDENTIFIER&nodeExecutionId=NODE_EXECUTION_ID&fileName=FILE_NAME' \
+--header 'x-api-key: PAT_TOKEN'
+```
+
+:::note
+**Important Notes for Uploading Files as Runtime Input:**
+
+1. The total combined file size must not exceed 100 MB.
+2. Each individual file size must not exceed 50 MB.
+3. File names with spaces are currently not supported.
+4. Supported file types include: `jpg`, `jpeg`, `png`, `pdf`, `xls`, `csv`, `xlsx`, `txt`, `json`, `yaml`, `xml`, and `html`.
+:::
+
 ### Use the default value instead of failing
 
 There is a time limit for mid-run input. Pipelines don't wait indefinitely for mid-run input. If no input is provided before the input time elapses, the pipeline fails.
