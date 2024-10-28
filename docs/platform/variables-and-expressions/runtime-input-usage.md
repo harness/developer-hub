@@ -450,6 +450,10 @@ Click the button to `Select files`.
 
 Once files are selected, click `Upload` to confirm the selection. Users can also delete the uploaded files. Uploaded files will then be displayed, and `Submit` can be clicked to complete the process.
 
+:::note
+Users with `pipeline execution` RBAC permissions can upload and download files.
+:::
+
 Users can view their uploaded files in the `Upload` tab and can download them by clicking the download icon.
 
 ![](./static/upload_files_step_file.png)
@@ -457,7 +461,11 @@ Users can view their uploaded files in the `Upload` tab and can download them by
 In the `Output tab`, you will find two outputs:
 
 - `uploadedby`: The email of the user who uploaded the files.
-- `filesname`: The name of the uploaded file in your storage, which follows the path format: `accountID/runtimeFileInputData/planExecutionId/nodeExecutionId/fileName`.
+- `filesname`: The name of the uploaded file in your storage, which follows the path format: `accountID/runtimeFileInputData/planExecutionId/nodeExecutionId/fileName`. An underscore followed by 6 alphanumeric characters is appended to the `fileName`. This exact name, including the appended characters, must be used in the [download API](#retrieve-uploaded-file-using-curl).
+
+For example, if the original file name is `input.txt`, it will be stored as `input_91ASD1.txt`, and this complete name (`input_91ASD1.txt`) should be provided when using the download API.
+
+To get the exact uploaded file name, navigate to the `Output` tab of the upload step execution, where the full file name can be found.
 
 #### Retrieve Uploaded File Using cURL
 To download the uploaded file, use the following cURL command:
@@ -473,6 +481,7 @@ curl --location --request GET 'https://app.harness.io/gateway/pipeline/api/input
 1. The total combined file size must not exceed 100 MB.
 2. Each individual file size must not exceed 50 MB.
 3. File names with spaces are currently not supported.
+4. Supported file types include: `jpg`, `jpeg`, `png`, `pdf`, `xls`, `csv`, `xlsx`, `txt`, `json`, `yaml`, `xml`, and `html`.
 :::
 
 ### Use the default value instead of failing
