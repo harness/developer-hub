@@ -2153,6 +2153,20 @@ These approaches offer flexibility and reliability in ensuring that Harness dele
 
 The name of the upgrader job workload needs to follow the delegate naming convention, so can you check and confirm if you have changed that manually or using the default name as you get while downloading the manifest.
 
+### Delegates are Running in the Same Environment, but the Git Connector Test Works with One and Fails with the Other
+
+If both delegates are hosted within the same network, compare the proxies applied to each. There may be a chance that they are not using the same proxy settings.
+
+
+### How to Check and Compare Delegates Used for Pipeline Executions
+
+Since a pipeline has different stages and steps, multiple delegates can be used. To identify the delegate used for each step, navigate to the respective step in each execution. There, you’ll be able to see the delegate assigned.
+
+
+### What is a Perpetual Task in Harness?
+
+A perpetual task is a type of background task, such as data collection or artifact collection, that runs continuously to support various processes in Harness.
+
 ## Dashboards
 
 ### Why isn't my project's Overview page showing deployments?
@@ -2382,6 +2396,19 @@ For more information, go to [Create conditional alerts](/docs/platform/dashboard
 Harness offers Splunk streaming. Currently, this feature is behind the feature flag `PL_AUDIT_STREAMING_USING_SPLUNK_HEC_ENABLE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 Splunk audit log streaming is compatible with Splunk enterprise and SaaS. For more information, go to [Configure audit streaming](/docs/platform/governance/audit-trail/audit-streaming/#configure-the-streaming-connector).
+
+### Unable to Add New User as No One is Receiving Email Invites
+
+Please check if a custom SMTP is configured and ensure its validity.
+
+
+### None of the users are receiving any emails. How can this be fixed?
+
+Please check and confirm if a valid SMTP configuration is in place. If not, ensure the default SMTP provided by Harness is being used. Also, verify that no email filters are applied at the account level.
+
+### What is the Recommendation for Using Email Notification Filters?
+It’s recommended to add your company’s domain to the allowlist. Only recipients with domains listed in the allowlist will be able to receive notifications from that channel.
+
 
 ## Organizations and Projects
 
