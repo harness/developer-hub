@@ -3372,3 +3372,17 @@ Yes, Harness has an API to check the status of the deployment. You can check her
 
 ### How can user restart a delegate?
 User can restart the delegate by deleting the pod itself.
+
+### Can we setup OKTA in Harness using Secure Web Authentication?
+No, Harness only supports SAML 2.0 for OKTA. 
+
+### What customer roles does Harness support for delegates?
+Harness supports the below customer roles: 
+cluster-admin
+cluster-viewer
+namespace-admin
+custom cluster roles
+
+### Can we install multiple tools in the delegate at once?
+Yes, you can, define all the scripts under INIT_SCRIPT in the delegate yaml. 
+
