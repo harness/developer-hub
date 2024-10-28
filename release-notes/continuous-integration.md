@@ -22,6 +22,35 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## October 2024
 
+### Version 1.51
+
+<!-- 2024-10-21 -->
+
+#### New features and enhancements
+
+- Introduced a new plugin, `plugins/test-analysis` to support managing flaky tests by introducing a quarantine mechanism. This helps teams to reduce false positives in CI by isolating non-critical, known flaky test failures. By using a quarantine list, the plugin prevents disruptions caused by unreliable tests, allowing teams to focus on true failures and improve test suite reliability without unnecessary pipeline failures (CI-13605).
+- Added support for setting display name, which will appear for URLs published in the Artifacts tab, when using the plugin `plugins/artifact-metadata-publisher`. See [documentation](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab/#file_urls) for more information (CI-12176). 
+
+#### Fixed issues
+
+-  Resolved an issue where excessive logging of the "sanitizeStreamLogs: sanitizing lines" message was flooding the engine and add-on logs. Additionally, a monitoring log line that was previously removed, impacting customer monitoring, has been restored. (CI-14640, ZD-71067)
+- Resolved an issue where sessions were initiated without credential information. The update ensures sessions are now created with the correct credentials, enabling cross-account authentication (CI-14134, ZD-69447)
+
+#### Harness images updates
+
+| **Image** | **Change**  | **Previous version** | **New Version** 
+|-------------------------------|-----------------|-------------|------------------|
+| `harness/ci-addon` | Updated base image and go version, addressing security vulnerabilities (CI-14173) | 1.16.57 | 1.16.58 
+| `harness/ci-addon` | Removed a log line in lite-engine that was breaking a customer's monitoring process (CI-14735)| 1.16.58 | 1.16.58 
+| `harness/ci-lite-engine` | Updated base image and go version, addressing security vulnerabilities (CI-14173) | 1.16.57 | 1.16.58 
+| `harness/ci-lite-engine` | Removed a log line in lite-engine that was breaking a customer's monitoring process (CI-14735)| 1.16.58 | 1.16.58 
+| `harness/drone-git` | Updated the base image, addressing security vulnerabilities | 1.6.0 | 1.6.1 
+| `plugins/artifact-metadata-publisher` | Added support for setting display name, which will appear for URLs published in the Artifacts tab (CI-12176) | 1.0.0 | 2.0.0 
+| `plugins/s3` | Updated session creation to include credential information, allowing for successful cross-account authentication. (CI-14134, ZD-69447) | 1.4.1 | 1.4.3
+| `drone-kaniko` | Added support for AWS OIDC in kaniko-ecr (CI-14242)| 1.10.1 | 1.10.2
+
+
+
 ### Version 1.50
 
 <!-- 2024-10-08 -->
