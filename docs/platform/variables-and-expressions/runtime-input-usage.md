@@ -450,6 +450,8 @@ Click the button to `Select files`.
 
 Once files are selected, click `Upload` to confirm the selection. Users can also delete the uploaded files. Uploaded files will then be displayed, and `Submit` can be clicked to complete the process.
 
+Users can view their uploaded files in the `Upload` tab and can download them by clicking the download icon.
+
 ![](./static/upload_files_step_file.png)
 
 In the `Output tab`, you will find two outputs:
