@@ -56,18 +56,24 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Harness has introduced EventBridge webhooks that can be configured with Git, Slack, and generic options (for Nexus artifacts) to trigger pipelines in real time. Currently, this feature is behind the feature flag `CDS_EVENT_BRIDGE_WEBHOOK`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. 
 (CDS-98869, ZD-66421)
 
-- Harness has introduced a new step `File Uplaod` for uploading files as a runtime input during execution of a pipeline. The combined file size should not be greater than 100 MB and each individual file must not be greater than 50 MB. Currently, this feature is behind the feature flag `PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (PIPE-20287,65927 )
+- Harness has introduced a new step `File Uplaod` for uploading files as a runtime input during execution of a pipeline. The combined file size should not be greater than 100 MB and each individual file must not be greater than 50 MB. Currently, this feature is behind the feature flag `PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (PIPE-20287,ZD-65927)
+
+- Harness now supports automatic upgrades for the GitOps agent from Private/Custom Repositories. (CDS-98332)
+
+- Harness now improves audit tracking by emitting an audit event when the stable version of a template is changed. (PIPE-19754)
+
+- Harness has enhanced the DataDog import dashboard experience by displaying metrics in the CV health source configuration. (CDS-95597)
 
 #### Fixed issues
 
 - Previously, the custom icon for the Step Group Template was not displayed when the template was used in the pipeline. This issue is resolved. (PIPE-22587)
 - Previously, the **Update Release Repo** step did not allow users to provide empty values. This issue is resolved. (CDS-101936, ZD-71421)
-- The GitOpsUpdateReleaseRepo step was incorrectly adding variables from Environment and Service Overrides to the config.json for GitOps PR pipelines when the step variable was empty. This issue is resolved. Empty step variables will now be removed from the variables added to the PR. (CDS-101778, ZD-71421)
+- The Update Release Repo step was incorrectly adding variables from Environment and Service Overrides to the JSON file for GitOps PR pipelines when the step variable was empty. This issue is resolved. Empty step variables will now be removed from the variables added to the PR. (CDS-101778, ZD-71421)
 - Previously, the Terraform Backend Config with Harness Code was not configuring the Remote Setup as expected. This issue is resolved. (CDS-101620)
 - Previously, a few dropdowns in step forms, action popups in lists, and text in the Collaborators column had visibility issues in dark mode. This issue is resolved. (CDS-101494)
 - Previously, users were unable to fetch an artifact version from Nexus during deployment. This issue has been resolved, and API requests made to the Nexus server to download artifacts are now URL-encoded. Currently, this feature is behind the feature flag `CDS_ENCODE_API_REQUESTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.(CDS-101407, ZD-70660)
 - Previously, the tooltip describing the purpose of the **Clean** checkbox in the **Azure Slot Deployment** step was missing. This issue is resolved. A tooltip has now been added to clarify the Clean checkbox. (CDS-101302)
--  Previously, ECR tokens were exposed via artifact expressions and visible in logs. This issue is resolved. (CDS-101258, ZD-70269)
+- Previously, ECR tokens were exposed via artifact expressions and visible in logs. This issue is resolved. (CDS-101258, ZD-70269)
 
 ### Version 1.60.5
 
@@ -101,7 +107,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Harness GitOps now supports Multi-Source applications with ArgoCD. This feature is available for the GitOps agent version 0.79. Currently, this feature is behind the feature flag  `GITOPS_MULTI_SOURCE_ENABLED`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-85518)
 
-- We have introduced a **Force Delete** Button for GitOps Applications, which can be used when a delete operation is stalled. Note that this option may leave some resources orphaned, so it is advised to use it only in critical scenarios. (CDS-97813)
+- We now suport force deleting of GitOps Applications, which can be used when a delete operation is stalled. Note that this option may leave some resources orphaned, so it is advised to use it only in critical scenarios. (CDS-97813)
 
 - While retrieving an application from ArgoCD, if the application is not found in the specified agent namespace, it will be removed from the database. (CDS-101006)
 
