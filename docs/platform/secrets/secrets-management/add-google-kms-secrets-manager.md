@@ -76,7 +76,7 @@ Harness supports two credential types for authenticating with Google KMS: Servic
 
 #### 1. Service Account Key
 
-To configure a Service Account Key for Google KMS in Harness, refer to our [Service Account Key Setup Guide](). This guide covers all steps for creating and downloading the key file, uploading it to Harness, and attaching it to the GCP KMS connector.
+To configure a Service Account Key for Google KMS in Harness, refer to our [Service Account Key Setup Guide](../../connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md#specify-credentials-here). This guide covers all steps for creating and downloading the key file, uploading it to Harness, and attaching it to the GCP KMS connector.
 
 **Permissions Required**: To use the Service Account Key with Google KMS, ensure the following role is assigned to the service account in Google Cloud:
 
@@ -92,7 +92,7 @@ To configure a Service Account Key for Google KMS in Harness, refer to our [Serv
 OIDC support requires the PL_GCP_OIDC_AUTHENTICATION feature flag in Harness. Contact Harness Support to enable this feature.
 :::
 
-For setting up OIDC, refer to our [OIDC Setup Guide]() for detailed steps on configuring a workload identity pool and identity provider with Harness.
+For setting up OIDC, refer to our [OIDC Setup Guide](../../connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md#use-openid-connect-oidc) for detailed steps on configuring a workload identity pool and identity provider with Harness.
 
 **Permissions Required**: When using OIDC with Google KMS, ensure the identity provider in Google Cloud is granted the following permissions:
 
