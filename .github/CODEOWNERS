@@ -198,34 +198,34 @@ README.md @pratmit
 /kb/ @deepanshuHarness @jimin-harness
 
 # Drone KB
-/kb/continuous-integration/drone-faqs.md @dewan-ahmed @jimin-harness @deepanshuHarness
+/kb/continuous-integration/drone-faqs.md @jimin-harness @deepanshuHarness
 
 # CI KB
-/kb/continuous-integration/ @nofarblue @rustd @dewan-ahmed @jimin-harness @deepanshuHarness
+/kb/continuous-integration/ @jimin-harness @deepanshuHarness
 
 # CD KB
-/kb/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @jimin-harness @deepanshuHarness
+/kb/continuous-delivery/ @jimin-harness @deepanshuHarness
 
 #Platform KB
-/kb/platform/ @pratmit @jimin-harness @deepanshuHarness
+/kb/platform/ @jimin-harness @deepanshuHarness
 
 #FF KB
-/kb/feature-flags/ @HarnessTheChaos @jenniferopal @jimin-harness @deepanshuHarness
+/kb/feature-flags/ @jimin-harness @deepanshuHarness
 
 #CCM KB
-/kb/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss @rssnyder @brandon-harness @jimin-harness @deepanshuHarness
+/kb/cloud-cost-management/ @jimin-harness @deepanshuHarness
 
 #SRM KB
-/kb/service-reliability-management/ @sunilgupta-harness @jimin-harness @deepanshuHarness
+/kb/service-reliability-management/ @jimin-harness @deepanshuHarness
 
 #CE KB
-/kb/chaos-engineering/ @neelanjan00 @SmritiSatya @jimin-harness @deepanshuHarness
+/kb/chaos-engineering/ @jimin-harness @deepanshuHarness
 
 #CET KB
-/kb/continuous-error-tracking/ @M-Tsur @jimin-harness @deepanshuHarness
+/kb/continuous-error-tracking/ @jimin-harness @deepanshuHarness
 
 #STO KB
-/kb/security-testing-orchestration/ @tejakummarikuntla @jimin-harness @deepanshuHarness
+/kb/security-testing-orchestration/ @jimin-harness @deepanshuHarness
 
 #Armory KB
 /kb/armory @okosun-j @jimin-harness @deepanshuHarness
@@ -234,10 +234,10 @@ README.md @pratmit
 /kb/reference-architectures/ @rssnyder @suranc @jimin-harness @deepanshuHarness
 
 #IACM RA
-/kb/reference-architectures/iacm/ @RickCraig @allofthesepeople @scottyw-harness @richardblack-Harness @jimin-harness @deepanshuHarness
+/kb/reference-architectures/iacm/ @jimin-harness @deepanshuHarness
 
 # SEI KB
-/kb/sei/ @codewdhruv @jimin-harness @deepanshuHarness
+/kb/sei/ @jimin-harness @deepanshuHarness
 
 # Roadmap ###
 
