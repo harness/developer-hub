@@ -169,6 +169,10 @@ With Harness, users and groups can be created automatically via SCIM. Permission
 
 No, there is no such option currently. To debug permission related issues, check the groups and roles assigned to user.
 
+### I currently have access to the Harness platform, specifically to our team’s project. However, it seems our team doesn’t have the necessary permissions to create new pipelines or objects. Could you advise on how to obtain these permissions?
+
+It’s possible you’re missing the required permissions for pipeline creation. Please reach out to your Harness admin to request a role with create/update permissions for pipelines.
+
 ## API/Integration
 
 ### How can you update a secret file using binary file content through an API request?
@@ -761,6 +765,14 @@ You can find this value on the Authentication page (right below the Overview men
 ### Why is LDAP sync not working for some groups despite working fine for others, and even manual sync isn't helping?
 
 The most probable root cause is that there is a difference in query for this user group/user (like DC), so check and confirm and add the corresponding user query.
+
+### Okta SCIM Provisioned User is Not Being Added to Group
+
+Please check in Okta to see if you are using user group provisioning. If only the user is provisioned without group assignment, you will need to manually assign them to the group in Harness.
+
+### Why Do I Need to Log In Again When Switching Accounts?
+
+Different accounts may have different authentication mechanisms enforced (such as single sign-on or two-factor authentication). Therefore, when attempting to switch accounts, you need to re-authenticate according to the requirements of the target account.
 
 ## Automation
 
