@@ -36,7 +36,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 
 | Resource | Permissions |
 | ---  | ----------- |
-| Environments | <ul><li>View (`core_environment_view`)</li><li>Create/Edit (`core_environment_edit`)</li><li>Delete (`core_environment_delete`)</li><li>Access: Can access referenced environments at runtime (`core_environment_access`)</li><li>Rollback (`core_environment_rollback`)</li><li>Create/Edit (`core_environment_edit`)</li><li>View FF SDK Key: View Feature Flag environment key (`ff_environment_apiKeyView`) </li><li>Create FF SDK Key: Create Feature Flag environment key (`ff_environment_apiKeyCreate`)</li><li>Delete FF SDK Key: Delete Feature Flag environment key (`ff_environment_apiKeyDelete`)</li></ul> |
+| Environments | <ul><li>View (`core_environment_view`)</li><li>Create/Edit (`core_environment_edit`)</li><li>Delete (`core_environment_delete`)</li><li>Access: Can access referenced environments at runtime (`core_environment_access`)</li><li>Rollback (`core_environment_rollback`)</li><li>View FF SDK Key: View Feature Flag environment key (`ff_environment_apiKeyView`) </li><li>Create FF SDK Key: Create Feature Flag environment key (`ff_environment_apiKeyCreate`)</li><li>Delete FF SDK Key: Delete Feature Flag environment key (`ff_environment_apiKeyDelete`)</li></ul> |
 
 ## Pipelines
 
