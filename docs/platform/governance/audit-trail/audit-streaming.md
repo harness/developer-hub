@@ -54,6 +54,12 @@ After you add your streaming destination, you're ready to configure the streamin
 <Tabs>
 <TabItem value="GCS" label="GCP GCS" default>
 
+:::note
+
+Currently, this feature is behind the feature flag `PL_GCP_GCS_STREAMING_DESTINATION_ENABLED`. Additionally, if you are using OIDC credentials, you will need the `PL_GCP_OIDC_AUTHENTICATION` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 To configure the GCP GCS streaming connector:
 
 1. Follow the steps above to [Add a streaming destination](#add-a-streaming-destination).
