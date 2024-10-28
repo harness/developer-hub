@@ -76,7 +76,7 @@ README.md @pratmit
 
 # Pipeline Docs
 /docs/platform/platform/pipelines/ @krishi0408 @vishal-av @SudarshanPurohit
-/docs/platform/git-experience/ @krishi0408 @vishal-av @prasadsatamharness
+/docs/platform/-experience/ @krishi0408 @vishal-av @prasadsatamharness
 /docs/platform/templates/ @krishi0408 @vishal-av @SudarshanPurohit
 /docs/platform/variables-and-expressions/ @krishi0408 @vishal-av @SudarshanPurohit
 /docs/platform/triggers/ @krishi0408 @vishal-av @SudarshanPurohit
@@ -247,6 +247,9 @@ README.md @pratmit
 
 # SEI KB
 /kb/sei/ @codewdhruv @jimin-harness @deepanshuHarness
+
+#Pipeline KB
+/kb/platform/pipeline-faq.md @krishi0408 @vishal-av @prasadsatamharness @SudarshanPurohit
 
 # Roadmap ###
 
