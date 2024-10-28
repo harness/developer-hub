@@ -319,7 +319,7 @@ Here's an example YAML file showcasing various configurations you can use for al
                         required: true
                         allowedValues: 1,2,3
                       - name: variable_2
-                        defaultValue: test
+                        defaultValue: ""
                         required: true
                       - name: variable_3
                         defaultValue: ""
