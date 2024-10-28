@@ -18,7 +18,7 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.ar,
           description:
             "Learn how to create and manage an artifact registry",
-          link: "/docs/artifact-registry/overview",
+          link: "/docs/artifact-registry/get-started/overview",
         },
         {
           title: "Manage Artifacts",
