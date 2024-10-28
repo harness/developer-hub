@@ -1,5 +1,5 @@
 ---
-title: What's supported in Gitness Gitspaces
+title: What's supported in Harness Open Source Gitspaces
 description: Lists the git providers supported in Gitspaces.
 sidebar_label: What's Supported
 sidebar_position: 2
