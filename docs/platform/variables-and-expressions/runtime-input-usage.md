@@ -430,6 +430,38 @@ You can use mid-run input along with [allowed values](#allowed-values) and [defa
 </TabItem>
 </Tabs>
 
+### Upload files as runtime input
+
+:::info note
+Currently, this feature is behind the feature flag `PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature
+:::
+
+Harness allows you to upload files as a runtime input during pipeline execution using the `File Upload step` in a custom stage.
+
+![](./static/file_upload_icon.png)
+
+After adding the step in your stage and executing the pipeline, you will see an `Upload and Submit` button.
+
+![](./static/upload_and_submit.png)
+
+Click the button to `Select files`.
+
+![](./static/select_files.png)
+
+After selecting the files you wish to upload, click `Submit`. The files will then be displayed under `Upload`.
+
+![](./static/upload_files_step_file.png)
+
+In the `Output tab`, you will find two outputs:
+
+- `uploadedby`: The email of the user who uploaded the files.
+- `filesname`: The name of the uploaded file in your storage, which follows the path format: `accountID/runtimeFileInputData/planExecutionId/nodeExecutionId/fileName`.
+
+Important Notes for Uploading Files as Runtime Input:
+
+1. The total combined file size must not exceed 100 MB.
+2. Each individual file size must not exceed 50 MB.
+
 ### Use the default value instead of failing
 
 There is a time limit for mid-run input. Pipelines don't wait indefinitely for mid-run input. If no input is provided before the input time elapses, the pipeline fails.
