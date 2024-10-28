@@ -77,7 +77,7 @@ Application maps help:
 - Manage experiments associated with them.
 - Perform trend analysis.
 
-For more information on how to create an application map, go to [Application Map](/docs/chaos-engineering/concepts/explore-concepts/app-maps).
+For more information on how to create an application map, go to [Application Map](/docs/chaos-engineering/use-harness-ce/app-maps).
 
 ### Audit Logs
 
@@ -181,7 +181,7 @@ For more information, go to [Resilience Score](/docs/chaos-engineering/use-harne
 
 ### Resilience Coverage
 
-It describes how resilient an application is to different kinds of failures. For example, your application may be able to function smoothly in case of resource failures but causes glitches in case of network issues. This tells what kinds of failures your application is able to handle. For more information, go to [Application Maps](/docs/chaos-engineering/concepts/explore-concepts/app-maps).
+It describes how resilient an application is to different kinds of failures. For example, your application may be able to function smoothly in case of resource failures but causes glitches in case of network issues. This tells what kinds of failures your application is able to handle. For more information, go to [Application Maps](/docs/chaos-engineering/use-harness-ce/app-maps).
 
 ### Prometheus Chaos Metrics
 
