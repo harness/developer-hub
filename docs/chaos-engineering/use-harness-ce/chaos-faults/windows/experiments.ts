@@ -22,4 +22,11 @@ export const experiments: ExperimentDetails[] = [
     tags: ["network"],
     category: "windows",
   },
+  {
+    name: "Windows Network Latency",
+    description:
+      "Windows Network Latency simulates a network latency scenario on Windows VMs. It checks the performance of the application running on the Windows VMs.",
+    tags: ["network", "latency"],
+    category: "windows",
+  },
 ];

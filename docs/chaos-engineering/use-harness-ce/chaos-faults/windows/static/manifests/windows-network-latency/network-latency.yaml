@@ -1,0 +1,19 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: MachineChaosExperiment
+metadata:
+  name: windows-network-latency
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    infraType: windows
+    steps:
+      - - name: windows-network-latency
+    tasks:
+    - definition:
+        chaos:
+          env:
+            - name: NETWORK_LATENCY
+              value: "2000"
+            - name: DESTINATION_HOSTS
+              value: aws.amazon.com,github.com
