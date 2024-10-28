@@ -117,7 +117,7 @@ The following deprecated API endpoints are longer supported:
 
 - Upgraded the `com.nimbusds_nimbus-jose-jwt` library to version `9.37.3` to address high-severity vulnerabilities, including CVE-2023-52428, which could lead to denial of service through resource consumption. (PL-51347, ZD-70765)
 
-- Enhanced Notification Support: With Microsoft discontinuing notifications via the Office 365 connector, Harness now seamlessly integrates with Microsoft Workflows to create and manage notifications.
+- Enhanced Notification Support: Harness now seamlessly integrates with Microsoft Workflows to create and manage notifications, in addition to Microsoft Office 365 connectors.
 
 #### Fixed issues
 
