@@ -350,6 +350,14 @@ There is no limit to the number of triggers for a pipeline.
 
 Yes, Harness NextGen supports both the QUARTZ and UNIX syntax formats for cron triggers. For more information, go to [Schedule Pipelines Using Cron Triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger).
 
+### Is there any limitation to trigger payload? 
+
+Yes, 16MB is the limit.
+
+### How to enable polling for git-based web hook trigger?
+
+Harness uses Git events, but you can enable polling by asking Harness's support to enable FF CD_GIT_WEBHOOK_POLLING
+
 ## Stop pipelines
 
 ### What is expected when I abort a pipeline, and what actions are taken to ensure a clean state in the system?
