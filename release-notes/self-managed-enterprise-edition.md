@@ -23,7 +23,7 @@ These release notes describe recent changes to Harness Self-Managed Enterprise E
 
 :::info MongoDB Upgrade to Version 6.x in SMP Environments
 
-With MongoDB 5 reaching end-of-life (EOL) and MongoDB 6 also nearing EOL, upgrading to MongoDB 6.x is recommended as an intermediate step for customers using an in-cluster MongoDB instance. This upgrade mitigates known CVEs and aligns with MongoDB’s recommended upgrade path.
+With MongoDB 5 reaching end-of-life (EOL), upgrading to MongoDB 6.x is recommended as an intermediate step for customers using an in-cluster MongoDB instance. This upgrade mitigates known CVEs and aligns with MongoDB’s recommended upgrade path.
 
 #### Upgrade Path
 1. Upgrade to at least SMP 0.17.0 or if you are running 0.16.0 or below version. This is required because Mongo doesn’t allow direct upgrade from Mongo 4.0 to Mongo 6.0
