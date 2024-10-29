@@ -3297,6 +3297,25 @@ As per the current design, there's no native step for this but user can write a 
 
 The rollback option is only available for the deployment stage, So you can only be able to see in the deployment stage.
 
+#### How can I avoid issues with hyphens and spaces in variable names?
+
+It's recommended to avoid using hyphens and spaces in variable names. If necessary, use double quotes to wrap property names that include these characters, such as <+execution.steps.httpstep.spec.headers["x-auth"]>.
+
+#### What happens if an expression can't be resolved at runtime? 
+
+If an expression cannot be resolved due to a lack of necessary information, it will return null, potentially causing the pipeline to fail or execute incorrectly.
+
+#### Are there limitations on the size of evaluated expressions?
+
+Yes, the evaluated values of expressions are limited to 256 KB. If an expression produces a value larger than this, it may be truncated or fail to resolve.
+
+#### What are common pitfalls when using expressions in CI/CD stages?
+
+Avoid referencing outputs from steps that haven’t executed yet, as they will not be available for resolution. This includes referencing step inputs in a stage’s configuration before the steps have run.
+
+#### What are the implications of using ternary operators in expressions? 
+
+Ternary operators allow for conditional logic within expressions. Ensure the entire ternary expression is wrapped in `<+...>` and avoid spaces between operators and values.
 
 ### Infrastructure provisioning FAQs
 
