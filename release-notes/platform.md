@@ -77,6 +77,16 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## November 2024
+
+### Version 1.63.x<!-- November 4, 2024 -->
+
+#### Fixed issues
+
+- Resolved an issue where the Event Summary link under Audit Logs would cause the page to break when a new, unhandled action was onboarded. The Event Summary now displays "N/A" in line with the Audit Logs page. (PL-57850)
+
+- Fixed an issue where GAR Trigger creation would fail if no artifact was present in the repository, causing delays in automation workflows. Now, triggers can be created without pre-existing artifacts, supporting smoother CI processes. (PL-56263, ZD-66511)
+
 ## October 2024
 
 ### Version 1.62.x<!-- October 28, 2024 -->
