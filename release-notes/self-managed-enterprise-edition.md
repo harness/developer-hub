@@ -21,6 +21,39 @@ These release notes describe recent changes to Harness Self-Managed Enterprise E
 
 :::
 
+:::info MongoDB Upgrade to Version 6.x in SMP Environments
+
+With MongoDB 5 reaching end-of-life (EOL) and MongoDB 6 also nearing EOL, upgrading to MongoDB 6.x is recommended as an intermediate step for customers using an in-cluster MongoDB instance. This upgrade mitigates known CVEs and aligns with MongoDB’s recommended upgrade path.
+
+#### Upgrade Path
+1. Upgrade to at least SMP 0.17.0 or if you are running 0.16.0 or below version. This is required because Mongo doesn’t allow direct upgrade from Mongo 4.0 to Mongo 6.0
+2. Upgrade to 0.22.0 or above.
+
+#### Harness-Specific Details
+
+1. **Helm Users:**
+  - A job has been introduced to handle the FCV upgrade automatically. This job runs pre-upgrade checks and upgrades FCV to match the server version.
+  - The job is idempotent, meaning it will safely handle re-runs without unintended effects.
+  - For installations using helm, customers should avoid direct MongoDB upgrades from version 4.4 to 6.0 to ensure compatibility.
+
+2. **ArgoCD Users:**
+  - For ArgoCD users, run the FCV upgrade job manually before performing the main upgrade.
+
+#### MongoDB FCV Upgrade Job
+To enable automatic FCV upgrade, include this job definition: (mongo-preupgradejob)[https://raw.githubusercontent.com/harness/helm-charts/refs/heads/main/src/harness/templates/mongo-preupgradejob.yaml]
+This job runs as a pre-upgrade hook to ensure FCV is compatible with the MongoDB server version.
+
+#### Configuration
+
+To disable the upgrade job if a manual FCV upgrade is preferred, use the following setting in the override file:
+
+```yaml
+upgrades:
+  mongoFCVUpgrade:
+    enabled: true  # Set to false to disable
+```
+:::
+
 ### Breaking change - Ingress
 
 :::danger important upgrade instructions for versions 0.17.x and above
@@ -103,8 +136,6 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
    ```
 
 :::
-
-
 
 ### Breaking change - Looker images
 
@@ -191,7 +222,7 @@ This release includes the following Harness module and component versions.
 | CI Manager | 1.47.5 |
 | Pipeline Service | 1.95.4 |
 | Platform Service | 1.39.1 |
-| Access Control Service | 1.61.1 |
+| Access Control Service | 1.61.2 |
 | Delegate | 24.09.83900 |
 | GitOps Service | 1.18.7 |
 | Change Data Capture | 1.36.0 |
@@ -264,6 +295,8 @@ gsutil -m cp \
 - Added the ability to exclude connectors from the preflight check. This can be configured in the connector YAML by setting the property ignoreTestConnection to true. If the user sets this flag as true along with the feature flag CI_IGNORE_TEST_CONNECTION enabled, no matter the configuration, the connection test will always be marked as Successful. The feature is gated behind the feature flag CI_IGNORE_TEST_CONNECTION. (CI-13806, ZD-65275,65643)
 
 #### Harness Platform
+
+- Support for the Legacy Delegate has been removed in this SMP release. Customers currently using the Legacy Delegate are required to upgrade to the Immutable Delegate to ensure continued compatibility and support. (PL-58052)
 
 - Upgraded `org.clojure:clojure` from version 1.9.0 to 1.11.4 to address security vulnerabilities, including CVE-2024-22871, which could lead to a denial of service (DoS) attack. (PL-56307)
 
