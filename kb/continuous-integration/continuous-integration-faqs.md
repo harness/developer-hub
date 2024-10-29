@@ -1798,6 +1798,15 @@ pom.xml allows using environment variable references with syntax like below:
 
 You can not directly use harness expression in pom.xml but you can use harness expression to pass the values to environment variables which then in turn can be used in pom.xml.
 
+### How can I enable the Test step in my account?
+The Test step is behind the feature flag CIE_ENABLE_RUNTEST_V2. If it’s not available in your account, please contact Harness Support to enable it.
+
+### What are the requirements for using C# support in Test Intelligence?
+C# support is in early access and requires a specific environment variable. To enable .NET test selection, contact Harness Support.
+
+### What should I do if I want to ignore certain tests or files?
+To ignore specific tests or files, create a .ticonfig.yaml file in your codebase and list the paths you want to ignore.
+
 ## Script execution
 
 ### Does Harness CI support script execution?
@@ -2426,6 +2435,12 @@ There are several [debug mode requirements](https://developer.harness.io/docs/co
 ### Re-run in debug mode isn't available for a new pipeline
 
 Debug mode is not available for a pipeline's first build. Run the pipeline again and, if it meets the [debug mode requirements](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/debug-mode#debug-mode-requirements), you should be able to trigger re-run in debug mode.
+
+### What is Debug Mode in Harness CI?
+Debug Mode is an early access feature that allows users to troubleshoot remote builds by SSH-ing into a debug session on the build's remote host. This feature is designed to provide secure and temporary access to the build environment for efficient debugging.
+
+### How can I enable Debug Mode?
+Debug Mode is currently behind the feature flag CI_REMOTE_DEBUG. To enable it, please contact Harness Support.
 
 ## AIDA for CI
 
