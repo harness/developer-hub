@@ -1,11 +1,11 @@
 {
-    "label":"Azure Boards",
-    "position": 3,
+    "label":"Jenkins",
+    "position": 18,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Azure Boards"
+       "title":"Jenkins"
     }
  }

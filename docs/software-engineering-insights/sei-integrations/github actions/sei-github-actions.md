@@ -2,7 +2,7 @@
 title: Github actions
 description: Integrate SEI with Github Actions
 sidebar_position: 45
-sidebar_label: Github actions
+sidebar_label: Connect with Github actions
 ---
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts.

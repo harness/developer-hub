@@ -1,11 +1,11 @@
 {
-    "label":"Semi-automated integrations",
-    "position": 2,
+    "label":"GitLab",
+    "position": 10,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Semi-automated integrations"
+       "title":"GitLab"
     }
  }

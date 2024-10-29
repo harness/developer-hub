@@ -1,11 +1,11 @@
 {
-    "label":"Gerrit",
-    "position": 30,
+    "label":"Harness CICD",
+    "position": 10,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Gerrit"
+       "title":"Harness CICD"
     }
  }

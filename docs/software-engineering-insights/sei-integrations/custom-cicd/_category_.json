@@ -1,11 +1,11 @@
 {
-    "label":"GitLab",
-    "position": 5,
+    "label":"Custom CICD",
+    "position": 19,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"GitLab"
+       "title":"Custom CICD"
     }
  }

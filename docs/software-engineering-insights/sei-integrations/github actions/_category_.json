@@ -1,11 +1,11 @@
 {
-    "label":"Source code management",
-    "position": 2,
+    "label":"GitHub Actions",
+    "position": 18,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Source code management"
+       "title":"GitHub Actions"
     }
  }

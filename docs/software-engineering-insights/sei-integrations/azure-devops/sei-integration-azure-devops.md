@@ -32,7 +32,7 @@ The following permissions and settings are required to use the **SEI AzureDevOps
 
 <figure>
 
-![](../../static/azure-devops-user-permissions.png)
+![](../static/azure-devops-user-permissions.png)
 
 <figcaption>Permissions for an Azure DevOps user who can access two projects and can't access a third project.</figcaption>
 </figure>
@@ -51,7 +51,7 @@ Before you configure the **SEI AzureDevOps integration**, you must generate a **
 3. In the Organization dropdown, select **All accessible organizations**.
 4. Configure the **Scopes** by choosing the required level of access for the token as given below.
 
-![](../../static/ado-pat-permissions.avif)
+![](../static/ado-pat-permissions.avif)
 
 </TabItem>
 </Tabs>

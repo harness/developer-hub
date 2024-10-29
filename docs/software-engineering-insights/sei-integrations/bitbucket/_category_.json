@@ -1,11 +1,11 @@
 {
-    "label":"Issue management",
-    "position": 2,
+    "label":"BitBucket",
+    "position": 15,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Issue management"
+       "title":"BitBucket"
     }
  }
