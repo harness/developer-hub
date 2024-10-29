@@ -3204,6 +3204,14 @@ No, pull request events do not occur on the forked repository.
 
 You can create a custom trigger to initiate a pipeline for a fork event. First, enable the Webhook setting to capture the event logs for the fork. Once enabled, you will be able to capture the event logs for every fork on the repository, and based on the payload, trigger conditions can be set.
 
+#### We are looking for an option in the harness approval stage where two users are required to approve the stage, but they must belong to two different user groups, not the same group?
+
+You can set the number of approvers to two, but we only require two unique users, treating it as an 'or' condition without restricting by user group. This means two different users from the same group would still be able to approve.
+
+#### If we implement two approval steps, can these steps be initiated in parallel instead of sequentially?
+
+Approval steps cannot be added in parallel; they can only be configured sequentially.
+
 ### How to create a file in Harness File Store via Shell Script?
 
 To create a File Store from a Shell Script, you can use the [Harness API](https://apidocs.harness.io/tag/File-Store#operation/create).
