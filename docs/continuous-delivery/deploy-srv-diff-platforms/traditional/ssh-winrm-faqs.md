@@ -88,3 +88,6 @@ Need to check if the Windows machine is behind proxy and the same needs to be co
 
 ### Do we create the target directory for config file copy or artifact download if they do not exist?
 We do not create the directory if they do not exist, hence we need to ensure the path that we provide do exist on the target host.
+
+### How to reference privateIp for ec2 instance while using ssh type deployment?
+You can make use of <+instance.properties.privateIp> and for all available variable under instance properties you can print  <+instance.properties.*> and confirm.
