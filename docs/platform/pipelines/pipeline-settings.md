@@ -124,6 +124,15 @@ For example, with a Free plan, you can add a maximum of 10 parallel stages in a 
 
 Even if you specify a `maxConcurrency` limit of 5 or 10, the moment you do the looping repeat strategy, Harness will already compute the total number of potential stages, if the list generates more than 256 items we will fail there before even running any of the stages and honoring the `maxconcurrency`. 
 
+### Execution Limits
+
+| Resource | Use-case | Default Limits
+| ---  | ----------- | ------ |
+| Pipeline | Number of pipelines in an account | <ul><li>Free: 5</li><li>Team: 5k</li><li>Enterprise: 10k</li></ul> | 
+| Templates | Number of templates present in an account at all levels | <ul><li>Free: 5</li><li>Team: 5k</li><li>Enterprise: 10k</li></ul> | 
+| Templates | Nesting of Template | <ul><li>Free: 5</li><li>Team: 5k</li><li>Enterprise: 10k</li></ul> | 
+| Triggers | Number of triggers that can be present in an account |  <ul><li>Free: 5</li><li>Team: 5k</li><li>Enterprise: 10k</li></ul> | 
+
 ### Resolved YAML size limit
 
 **Compiled YAML cannot exceed the Harness-enforced limit of 3 MB.**
