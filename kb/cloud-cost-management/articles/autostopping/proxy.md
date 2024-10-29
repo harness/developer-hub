@@ -45,7 +45,7 @@ Once you have a terminal session on the proxy VM:
 You can check that the proxy is running it's internal services by SSHing into it and check the system status.
 
 - There is an internal service on the proxy running on port 8094 and 8093
-    - If you go to http://<ip of proxy>:8093 you should see text that includes your account id, this is one hint that the internal workings of the proxy are running as expected
+    - If you go to `http://<ip of proxy>:8093` you should see text that includes your account id, this is one hint that the internal workings of the proxy are running as expected
         - You will need to make sure port 8093 is open in the security group the proxy is using
 - You can check the status and logs of the proxy services with the following commands:
     - `systemctl status lw_tcp_proxy`
