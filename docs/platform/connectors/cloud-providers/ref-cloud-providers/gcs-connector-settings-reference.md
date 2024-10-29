@@ -162,6 +162,52 @@ To connect to GCP with OIDC, you must configure an [OIDC identity provider](http
 
 If accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector. For instructions, go to [Configure OIDC with GCP WIF for Harness Cloud builds](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
 
+#### Custom Parameters 
+
+Here are the custom parameters for the Harness GCP OIDC JWT:
+
+- **account_id**: The account id of your Harness account.
+- **organization_id**: The organization id of your Harness organization.
+- **organization_name**: The organization name
+- **project_id**: The project id of your Harness project. 
+- **project_name**: The project name.
+- **connector_id**: The id of the OIDC-enabled GCP connector that sent this token.
+- **connector_name**: The name of the OIDC-enabled GCP connector that sent this token.
+- **pipeline_Identifier**: Pipeline identifier 
+- **pipeline_Name**: Pipeline Name
+- **environment_identifier**: Environment Identifier
+- **environment_name**: Environment name
+- **environment_type**: Environment Type
+- **context**: This specifies the Harness context from when this OIDC token is generated. Possible values for this field are:
+  - `CONNECTOR_VALIDATION` - This context is sent when the connector is being setup.
+  - `PIPELINE_CONFIGURATION` - This context is sent when a pipeline configuration is being completed.
+  - `PIPELINE_EXECUTION` - This context is sent when a pipeline configuration is being executed.
+  - `PERPETUAL_TASK` - This context is sent when a perpetual task is executing.
+
+
+##### Examples
+
+<details>
+<summary> JWT sent by a connector at the project scope </summary>
+
+```
+{
+  "typ": "JWT",
+  "alg": "RS256",
+  "kid": "NjVBRjY5MDlCMUIwNzU4RTA2QzZFMDQ4QzQ2MDAyQjVDNjk1RTM2Qg"
+}
+{
+  "sub": "Provider:Harness:Account:{account_id}",
+  "iss": "https://token.oidc.harness.io/account/{account_id}",
+  "aud": "https://app.harness.io/{account_id}", (address of harness instance with account id)
+  "exp": 1632493867,
+  "iat": 1632493567,
+  "account_id": "ACCOUNT_ID",     
+}
+
+```
+</details>
+
 ### Troubleshoot GCP connector errors
 
 Go to [Troubleshoot GCP connector errors](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp#troubleshoot-gcp-connector-errors).
