@@ -61,7 +61,7 @@ Search and add a **Run** step in your pipeline and add the following command in 
 
 # Variables
 API_URL="https://api.traceable.ai/graphql"  
-API_TOKEN="YTdfdJkZdTA3ZWIdtfdfdZjQ3NdfdS00OTdfE4YjUtMmU1OTcyNWZiM2Jj" 
+API_TOKEN="YOUR_API_TOKEN" 
 SCAN_ID="scan_id_test"  
 OUTPUT_FILE="/harness/vulnerabilities.json"  # File to store the result
 
