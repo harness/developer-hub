@@ -134,6 +134,16 @@ Along with the following labels:
 - `aws:eks:workload-name`
 - `aws:eks:workload-type`
 
+**Example of a query and result with SCAD columns:**
+
+![](./static/scad-example.png)
+
+The `eks_namespace` labels won’t display `netamortisedcost` and `amortisedcost` values, as only SCAD-related columns and values are accessible from AWS.
+
+The `kube-system` namespace is the only one that will reflect `netamortisedcost` and `amortisedcost` values. This is because AWS provides `blendedcost` and `unblendedcost` fields exclusively for this namespace, allowing us to calculate the amortised and net amortised cost values. These calculated values are stored in the `awscur_<<month_year>>` table and subsequently persisted in the `unifiedTable` as `awsAmortisedCost` and `awsNetAmortisedCost`.
+
+![](./static/scad-2.png) 
+
 ### Next Steps
 
 * [Use Dashboard Actions](../../../platform/dashboards/use-dashboard-actions.md)
