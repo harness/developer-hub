@@ -188,7 +188,7 @@ Here are the custom parameters for the Harness GCP OIDC JWT:
 ##### Examples
 
 <details>
-<summary> JWT sent by a connector at the project scope </summary>
+<summary> JWT sent by a connector at the account scope </summary>
 
 ```
 {
