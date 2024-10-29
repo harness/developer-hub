@@ -293,7 +293,13 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 
 ### Support for allowed values for custom approval inputs
 
-You can now provide allowed values for manual approval step.
+You can now specify allowed values for the **Manual Approval** step.
+
+:::note
+
+Currently, allowed values for custom approval inputs is behind the feature flag `CDS_ENABLE_CONSTRAINTS_ON_APPROVAL_INPUTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 Here's an example YAML file showcasing various configurations you can use for allowed values.
 
