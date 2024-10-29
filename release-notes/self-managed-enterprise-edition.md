@@ -25,6 +25,11 @@ These release notes describe recent changes to Harness Self-Managed Enterprise E
 
 With MongoDB 5 reaching end-of-life (EOL), upgrading to MongoDB 6.x is recommended for customers using an in-cluster MongoDB instance. This upgrade mitigates known CVEs and aligns with MongoDB’s recommended upgrade path.
 
+#### MongoDB Version History:
+- MongoDB 4.4 was used in versions 0.16.x.
+- MongoDB 5.0 was utilized from versions 0.17.x to 0.21.x.
+- MongoDB 6.0 is available from version 0.22.x onwards.
+
 #### Upgrade Path
 1. Upgrade to at least SMP 0.17.0 if you are running 0.16.0 or below version. This is required because Mongo doesn’t allow direct upgrade from Mongo 4.0 to Mongo 6.0
 2. Upgrade to 0.22.0 or above.
