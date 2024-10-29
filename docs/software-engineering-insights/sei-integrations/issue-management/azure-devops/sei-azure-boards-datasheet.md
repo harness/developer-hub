@@ -1,7 +1,7 @@
 ---
 title: Azure Boards Datasheet
 description: A complete list of metadata ingested by SEI from Azure Boards
-sidebar_label: Azure Boards Datasheet
+sidebar_label: Datasheet
 sidebar_position: 52
 ---
 

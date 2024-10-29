@@ -2,7 +2,7 @@
 title: SEI Gerrit integration
 description: Integrate SEI with Gerrit.
 sidebar_position: 80
-sidebar_label: Gerrit
+sidebar_label: Connect with Gerrit
 ---
 
 Gerrit is a free, web-based team code collaboration tool.

@@ -1,8 +1,8 @@
 ---
 title: SEI Jira integration
 description: Integrate SEI with Jira.
-sidebar_position: 131
-sidebar_label: Jira
+sidebar_position: 1
+sidebar_label: Connect with Jira
 redirect_from:
   - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration
   - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira

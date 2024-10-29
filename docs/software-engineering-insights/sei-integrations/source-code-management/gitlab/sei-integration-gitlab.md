@@ -2,7 +2,7 @@
 title: SEI GitLab integration
 description: Integrate SEI with GitLab Cloud/Enterprise.
 sidebar_position: 100
-sidebar_label: GitLab
+sidebar_label: Connect with GitLab
 redirect_from:
   - docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab       
 ---

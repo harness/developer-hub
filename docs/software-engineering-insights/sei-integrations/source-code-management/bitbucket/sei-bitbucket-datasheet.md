@@ -1,7 +1,7 @@
 ---
 title: BitBucket Datasheet
 description: A complete list of metadata ingested by SEI from BitBucket
-sidebar_label: BitBucket Datasheet
+sidebar_label: Datasheet
 sidebar_position: 90
 ---
 

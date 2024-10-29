@@ -2,7 +2,7 @@
 title: SEI Bitbucket integration
 description: Integrate SEI with Bitbucket Cloud / Data Center
 sidebar_position: 30
-sidebar_label: Bitbucket
+sidebar_label: Connect with Bitbucket
 canonical_url: https://www.harness.io/blog/bitbucket-servers-sunset
 redirect_from:
   - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket
@@ -28,15 +28,15 @@ import TabItem from '@theme/TabItem';
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, and locate the **Bitbucket integration**, and select **Install**
 
-![](../static/bitbucket-1.png)
+![](../../static/bitbucket-1.png)
 
 4. Select the type of your Bitbucket account as Cloud.
 
-![](../static/bitbucket-2.png)
+![](../../static/bitbucket-2.png)
 
 5. Choose the authentication type for the integration. You can either use **OAuth** or **App Passwords** to set up the authentication with the Bitbucket platform.
 
-![](../static/bitbucket-3.png)
+![](../../static/bitbucket-3.png)
 
 <Tabs>
   <TabItem value="oauth" label="Using OAuth" default>
@@ -63,7 +63,7 @@ Set up OAuth by registering your application in Bitbucket, then obtain an author
   * Enter a label for your new app password. This helps you remember what it's used for.
   * Select the following permissions required.
 
-![](../static/bitbucket-6.png)
+![](../../static/bitbucket-6.png)
 
 * Copy the generated app password and save it securely. (Note that you won't be able to see it again.)
 
@@ -73,12 +73,12 @@ In Harness, go to your integration configuration and click on **Next**.
 * The **Description** and **Tags** are optional.
 * Add the **Username** and **Password** that you previously generated.
 
-![](../static/bitbucket-4.png)
+![](../../static/bitbucket-4.png)
 
 :::info
 Note that to prevent rate limiting issues, it is recommended to configure the integration with multiple Account Credentials.
 
-![](../static/bitbucket-5.png)
+![](../../static/bitbucket-5.png)
 
 :::
 
@@ -95,14 +95,14 @@ Note that to prevent rate limiting issues, it is recommended to configure the in
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, and locate the **Bitbucket integration**, and select **Install**
 
-![](../static/bitbucket-1.png)
+![](../../static/bitbucket-1.png)
 
 4. Select the type of your Bitbucket account as **Data Center**.
 5. Choose **Authentication Method**:
    1. Use **Personal Access Token (PAT)** to connect to a **Public On-Prem Bitbucket** server.
    2. Use **Ingestion Satellite** to connect to a **Private On-Prem Bitbucket** server
 
-![](../static/bitbucket-7.png)
+![](../../static/bitbucket-7.png)
 
 
 <Tabs>
@@ -117,7 +117,7 @@ Note that to prevent rate limiting issues, it is recommended to configure the in
 * You can select the **Filters** to define the type of data you want to ingest. The available options are **Fetch Commits**, **Fetch PRs**, **Fetch PRs Reviews**, **Fetch Commits Fields**.
 * Click on **Validate Connection** to run the pre-flight checks and validate the connection. Once successful, you'll have the integration set up under the **Your Integrations** tab.
 
-![](../static/bitbucket-8.png)
+![](../../static/bitbucket-8.png)
 
 </TabItem>
 

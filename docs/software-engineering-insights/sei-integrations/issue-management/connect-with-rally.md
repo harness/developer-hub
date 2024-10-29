@@ -2,7 +2,7 @@
 title: SEI Rally integration
 description: Integrate SEI with Rally Software.
 sidebar_position: 132
-sidebar_label: Rally
+sidebar_label: Connect with Rally
 redirect_from:
   - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-rally
 ---
