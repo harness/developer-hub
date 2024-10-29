@@ -228,6 +228,9 @@ import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
+## View Anchore policy failures
+Anchore policy failures will appear in scan results as `Info` severity issues, with the issue type set to `EXTERNAL_POLICY`. Successfully passed policies will not be included in the scan results.  Additionally, you can apply [OPA policies](/docs/security-testing-orchestration/policies/create-opa-policies) in Harness STO to enforce or manage the policy failures.
+
 ## Proxy settings
 
 import ProxySettings from './shared/proxy-settings.md';
