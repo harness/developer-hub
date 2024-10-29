@@ -10,17 +10,17 @@ helpdocs_is_published: true
 
 ### What are AWS RDS Reserved Instances (RIs)?
 
-Amazon Relational Database Service (RDS) Reserved Instances (RIs) are long-term reservations designed to provide substantial cost savings compared to On-Demand pricing. By committing to specific database instances for either a one- or three-year term, RDS RIs offer a predictable cost structure, enabling AWS users to optimize expenses as their operations scale.
+Amazon Relational Database Service (RDS) Reserved Instances (RIs) are long-term reservations designed to provide substantial cost savings compared to On-Demand pricing. By committing to specific database instances for either a one or three-year term, RDS RIs offer a predictable cost structure, enabling AWS users to optimize expenses as their operations scale.
 
-RDS supports a variety of instance types, each optimized for different workloads and performance requirements. Choosing the right instance type is essential for achieving both efficiency and cost-effectiveness with Reserved Instances. This approach not only reduces costs but also supports capacity reservation within specific Availability Zones, ensuring that your applications have reliable scalability and consistent performance — crucial for workloads that demand uninterrupted database access and high uptime.
+RDS supports a variety of instance types, each optimized for different workloads and performance requirements. Choosing the right instance type is essential for achieving both efficiency and cost-effectiveness with Reserved Instances. This approach not only reduces costs but also supports capacity reservation within specific Availability Zones, ensuring that your applications have reliable scalability and consistent performance. This is crucial for workloads that demand uninterrupted database access and high uptime.
 
-RDS Reserved Instances (RIs) work by allowing you to commit to a specific type of database instance for a set period—either one or three years—in exchange for a lower price compared to On-Demand rates. This model is particularly cost-effective for databases that run continuously, as it significantly reduces long-term costs.
+RDS Reserved Instances (RIs) allow users to commit to a specific type of database instance for a set period—either one or three years—in exchange for a lower price compared to On-Demand rates. This model is particularly cost-effective for databases that run continuously, as it significantly reduces long-term costs.
 
-Once a Reserved Instance is purchased, AWS automatically applies the discounted rate to eligible database (DB) instance classes on your bill, ensuring you benefit from the savings without needing to manually track instances. The level of discount depends on factors such as:
+Once a Reserved Instance is purchased, AWS automatically applies the discounted rate to eligible database (DB) instance classes on the bill so that the users benefit from the savings without needing to manually track instances. The level of discount depends on factors such as:
 
 1. **DB Instance Type**: The specific database instance type you commit to, as instance classes vary in cost and capacity.
 2. **DB Engine**: Different database engines (e.g., MySQL, PostgreSQL, Oracle) have varied pricing structures, impacting the discount you receive.
-3. **Commitment Term**: Opting for a three-year term provides deeper savings than a one-year commitment.
+3. **Commitment Term**: This depends on the user's need and can be chosen for either three years or one year.
 
 By selecting an RDS RI that aligns with your database requirements, this pricing model allows you to optimize your AWS costs while effectively meeting your performance and scalability needs.
 
@@ -37,18 +37,17 @@ The pricing model for Amazon RDS Reserved Instances centers around the idea of c
 Managing Reserved Instance (RI) commitments presents several challenges due to the complex nature of AWS resources and the need for careful monitoring and forecasting.
 
 First, the variety and volume of Reserved Instances complicate management, as each RI may have different terms, expiration dates, and specifications. This diversity makes it difficult to monitor all RIs effectively and ensure they align with evolving needs.
-Continuous monitoring of RI usage is also essential, as usage patterns can fluctuate. Striking a balance is crucial; overusing or underutilizing RIs can lead to inefficiencies, resulting in either missed savings opportunities or unnecessary costs. 
-Forecasting future needs adds another layer of difficulty, as factors like product demand changes or new organizational priorities can impact resource requirements. This unpredictability makes it challenging to anticipate usage accurately, leading to the potential for unused commitments.
 
-Additionally, the fear of overprovisioning may cause organizations to under-commit, sacrificing potential long-term savings. Effectively leveraging RIs requires a thorough understanding of workload cycles and the ability to anticipate both current and future demands. Ultimately, a balanced approach is needed to manage RI commitments while accommodating business needs.
+Continuous monitoring of RI usage is also essential, as usage patterns can fluctuate. Overusing or underutilizing RIs can lead to inefficiencies, resulting in either missed savings opportunities or unnecessary costs. Also, forecasting future needs is difficult too, as factors like product demand changes or new organizational priorities can impact resource requirements. 
 
-Lastly, manually management of RIs can become a time-consuming a nd error-prone task, especially as infrastructure grows in complexity.
-For Reserved Instance (RI) management, automation is valuable. Automated systems can continuously monitor RI usage and optimize commitments based on real-time data, ensuring RIs are neither over nor underutilized. This reduces the chances of overspending and enhances cost savings by adjusting resources dynamically to meet current demand.
+Additionally, the fear of overprovisioning may cause organizations to under-commit, sacrificing potential long-term savings. 
+
+Lastly, manually management of RIs can become a time-consuming and error-prone task, especially as infrastructure grows in complexity.
+For Reserved Instance (RI) management, automation is important. Automated systems can continuously monitor RI usage and optimize commitments based on real-time data, ensuring RIs are neither over nor underutilized. This reduces the chances of overspending and enhances cost savings by adjusting resources dynamically to meet current demand.
 
 Additionally, automation improves scalability and agility. When managing resources manually, scaling up or down to meet demand can be slow and reactive, potentially leading to lost revenue or user dissatisfaction. Automated systems, however, can respond instantly to usage fluctuations, scaling resources efficiently and cost-effectively. 
 
-For this, we extended the capabilities of our Commitment Orchestrator to now support AWS RDS as well.
-
+We have now enhanced Harness CCM's Commitment Orchestrator by extending its capabilities to include support for AWS RDS.
 ## Getting Started
 
 ### Step 1 : Setting up the master account 
