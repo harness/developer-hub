@@ -139,6 +139,12 @@ If the test pipeline fails, you can utilize the rollback feature to revert the d
 
 No, currently there is no way to fully integrate a triggered test pipeline within the original deployment pipeline. The test pipeline will always operate as a separate entity.
 
+### We are looking for an option in the harness approval stage where two users are required to approve the stage, but they must belong to two different user groups, not the same group?
+You can set the number of approvers to two, but this only requires two unique users, functioning as an 'or' condition without restricting by user group. This means that two different users from the same group would still be able to approve.
+
+### If we implement two approval steps, can these steps be initiated in parallel rather than sequentially?
+Approval steps cannot be added in parallel; they can only be configured sequentially.
+
 ## API
 
 ### Can I run pipelines through the API or CLI?
@@ -294,6 +300,10 @@ No, failure strategies apply to all steps within a step group.
 ### How can I restrict approval for the user who ran the pipeline?
 
 You can select the **Disallow the executor from approving the pipeline** option in the Approval step.
+
+### How to list the output variables for a pipeline stage via api
+ You can use getExecutionDetailV2 and pass renderFullBottomGraph as true to get complete details and need to navigate the stage
+ 
 ## Pipeline triggers
 
 ### How can I obtain the triggered build version value, trigger ID, or trigger URL during pipeline runtime when a pipeline is triggered by a PR?
