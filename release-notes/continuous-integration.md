@@ -29,9 +29,6 @@ These release notes describe recent changes to Harness Continuous Integration.
 #### New features and enhancements
 
 - Harness CI now supports **Hardware Acceleration** with nested virtualization on Linux runners with AMD architecture. This enhancement accelerates Android emulation, enabling faster and more efficient Android test execution within virtualized CI environments. See [documentation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#hardware-acceleration) for more information. 
-
-http://localhost:3000/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#hardware-acceleration
-
 - Introduced a new plugin, `plugins/test-analysis` to support managing flaky tests by introducing a quarantine mechanism. This helps teams to reduce false positives in CI by isolating non-critical, known flaky test failures. By using a quarantine list, the plugin prevents disruptions caused by unreliable tests, allowing teams to focus on true failures and improve test suite reliability without unnecessary pipeline failures (CI-13605).
 - Added support for setting display name, which will appear for URLs published in the Artifacts tab, when using the plugin `plugins/artifact-metadata-publisher`. See [documentation](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab/#file_urls) for more information (CI-12176). 
 
