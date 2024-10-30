@@ -164,7 +164,11 @@ If accessing Google cloud resources, use [workload identity federation](https://
 
 #### Custom Parameters 
 
-Here are the custom parameters for the Harness GCP OIDC JWT:
+You can add attribute condition in you Workload Identity Pools under Workload Identity Federation. 
+
+![](./static/workload_pools.png)
+
+Here are the custom attributes for the Harness GCP OIDC JWT:
 
 - **account_id**: The account id of your Harness account.
 - **organization_id**: The organization id of your Harness organization.
@@ -185,6 +189,7 @@ Here are the custom parameters for the Harness GCP OIDC JWT:
   - `PERPETUAL_TASK` - This context is sent when a perpetual task is executing.
 
 
+
 ##### Examples
 
 <details>
@@ -202,11 +207,13 @@ Here are the custom parameters for the Harness GCP OIDC JWT:
   "aud": "https://app.harness.io/{account_id}", (address of harness instance with account id)
   "exp": 1632493867,
   "iat": 1632493567,
-  "account_id": "ACCOUNT_ID",     
+  "account_id": "ACCOUNT_ID",
 }
 
 ```
 </details>
+
+Custom attributes will be passed in the JWT payload.
 
 ### Troubleshoot GCP connector errors
 
