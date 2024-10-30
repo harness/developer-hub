@@ -106,22 +106,22 @@ Currently this feature is behind the Feature Flag `PIPE_TRIGGER_EVENTS_PAGE_UI`.
 :::
 
 
-Users can view trigger events for all the triggers created within a Pipeline in the **Events** tab. 
+Users can view trigger events for all triggers created within a Pipeline in the **Events** tab.
 
 ![](./static/trigger_events_page.png)
 
-You can get **Event Correlation ID, Trigger Status, Time and Trigger Name** as well. 
+The Events tab provides information on **Event Correlation ID**, **Trigger Status**, **Time**, and **Trigger Name**.
 
-By clicking on the three dots in front of each trigger you can find **Payload** as well as **Trigger Details**
+By clicking the three dots next to each trigger, you can view additional details, including the **Payload** and **Trigger Details**.
 
 ![](./static/trigger_info.png)
 
-You can filter triggers based on **Trigger Name, Trigger Type and Status**
+You can filter triggers based on **Trigger Name, Trigger Type and Status**:- 
 
-Trigger type will include :- **All, Webhook, Artifact, Manifest and Scheduled**
+- Trigger type will include :- **All, Webhook, Artifact, Manifest and Scheduled**
 
 ![](./static/trigger_type.png)
 
-Trigger Status will include :- **Success, Failed, Skipped**
+- Trigger Status will include :- **Success, Failed, Skipped**
 
 ![](./static/trigger_status.png)
