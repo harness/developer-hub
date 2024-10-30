@@ -169,6 +169,11 @@ With Harness, users and groups can be created automatically via SCIM. Permission
 
 No, there is no such option currently. To debug permission related issues, check the groups and roles assigned to user.
 
+### How to inherit and assign role to user group via api
+
+You can use role assignment api and pass the org/project identifier where you need to inherit the user group
+https://apidocs.harness.io/tag/Role-Assignments#operation/postRoleAssignment
+
 ## API/Integration
 
 ### How can you update a secret file using binary file content through an API request?
