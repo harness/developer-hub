@@ -436,6 +436,120 @@ spec:
 
 </details>
 
+## GitOps Auto Updater Job
+
+The GitOps Auto Updater Job is designed to automate the process of keeping the GitOps agent up to date. This job checks the GitOps service at regular intervals (default is every four hours) to determine if a new version of the GitOps agent is available.
+
+You can customize the schedule for these checks and updates, as well as specify a private or custom registry for pulling the updated agent images.
+
+### Scheduling the Updater Job
+
+Locate the ConfigMap: The ConfigMap is typically named gitops-agent-upgrader and can be found in the namespace where your GitOps agent is deployed.
+
+By default, the upgrader checks for updates every four hours. You can change this frequency by modifying the schedule field in the CronJob manifest of the GitOps agent YAML file:
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: gitops-agent-upgrader
+  namespace: "default"
+  labels: ...
+spec:
+  schedule: "0 */4 * * *"
+```
+
+If you are using an overrides YAML file, add `cron: "0 */4 * * *"` in the Agent upgrader overrides section and run the Helm upgrade command again to apply the changes.
+
+```yaml
+# <---Agent upgrader overrides--->
+upgrader:
+  enabled: true 
+  cron : "0 */4 * * *"
+  image: harness/upgrader:latest
+```
+
+After making changes to the values.yaml file, run a Helm upgrade to apply the configuration:
+
+```bash
+helm upgrade <release-name> <chart-name> -f values.yaml
+```
+
+### Disable Auto Upgrader 
+
+To disable the auto-upgrader, you can set `suspend: true` in the CronJob configuration under the `kind: CronJob` section:
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: gitops-agent-upgrader
+  namespace: "agrocd"
+  labels:...
+spec:
+  schedule: "0 */4 * * *"
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 20
+  jobTemplate:
+      spec: 
+         suspend: true
+```
+
+Alternatively, you can run the following command to suspend the auto-upgrade on the installed image:
+
+```bash
+kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>
+```
+
+You can also remove the entire CronJob section if necessary.
+
+If you are using an overrides YAML file, set `enabled: false` in the Agent upgrader overrides section and run the Helm upgrade command again to apply the changes.
+
+```yaml
+# <---Agent upgrader overrides--->
+upgrader:
+  enabled: false 
+  cron : "0 */4 * * *"
+  image: harness/upgrader:latest
+```
+
+### Configuring GitOps Auto Upgrader for a Private Repository
+
+Ensure that your GitOps Auto Updater is configured to use your private registry. This involves updating the `gitops-agent-upgrader` ConfigMap.
+
+Modify the ConfigMap: Add the `UPGRADER_REGISTRY_MIRROR` entry to specify your private repository. Here’s an example of what the ConfigMap YAML would look like:
+
+```yaml
+  # Source: gitops-helm-byoa/templates/upgrader/harness-upgrader-cm.yaml
+  apiVersion: v1
+  data:
+    UPGRADER_REGISTRY_MIRROR: myprivateartifactory.xyz
+    ... other configs ...
+    kind: ConfigMap
+    metadata:
+      name: gitops-agent-upgrader
+      namespace: "default"
+```
+
+If you are using an overrides YAML file, you will need to update the values.yaml file to include the registry mirror for the upgrader:
+
+```yaml
+# <---Agent upgrader overrides--->
+upgrader:
+  enabled: true
+  image: docker.io/harness/upgrader:latest
+  config:
+    registryMirror: myprivateartifactory.xyz
+```
+
+After making changes to the values.yaml file, run a Helm upgrade to apply the configuration:
+
+```bash
+  helm upgrade <release-name> <chart-name> -f values.yaml
+```
+
+Make sure that the agent image is hosted in your private repository with the appropriate format as mentioned in your config file, such as `privateregistryhost.xyz/harness/gitops-agent:tag`:
+
 ## GitOps Agent FAQs
 
 Here are some answers to commonly asked GitOps Agent questions.
