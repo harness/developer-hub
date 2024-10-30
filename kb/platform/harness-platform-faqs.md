@@ -451,7 +451,7 @@ This limitation is by design to uphold security protocols. Delegates often opera
 
 ### Does Harness SAML work with any SSO provider?
 
-Yes, Harness provides support for Okta and Azure OneLogin out of the box, but you can add any custom SSO with Harness. All you need is the Harness SAML endpoint URL and SAML metadata file.
+Yes, Harness provides support for Okta and Azure OneLogin out of the box, but you can add any custom SSO with Harness. All you need is the Harness  endpoint URL and  metadata file.
 
 ### How do I resolve Okta provisioning errors due to user limits?
 
@@ -467,7 +467,7 @@ To resolve the issue, remove and then re-add the user, ensuring that they are no
 
 This is expected behavior because the user group is linked to an SSO group through group authorization, making it unmanageable via SCIM.
 
-### How can I update SAML-connected groups with a new name via API?
+### How can I update -connected groups with a new name via API?
 
 Set `samlSettings` to `null` in the API call to update SAML-connected groups with new names.
 
@@ -761,6 +761,22 @@ You can find this value on the Authentication page (right below the Overview men
 ### Why is LDAP sync not working for some groups despite working fine for others, and even manual sync isn't helping?
 
 The most probable root cause is that there is a difference in query for this user group/user (like DC), so check and confirm and add the corresponding user query.
+
+### Can I manually synchronize LDAP users into a Harness user group?
+
+Yes, you can manually synchronize LDAP users into a Harness user group by linking the group to the LDAP SSO configuration and selecting the synchronization option in the account settings.
+
+### What should I do if I experience delegate time-out errors during LDAP configuration?
+
+If you encounter delegate time-out errors, try increasing the LDAP Response Timeout to 2 minutes and ensure the sync interval is set to the default of 1 hour or higher.
+
+### Is it possible to enable or disable Local Login in Harness?
+
+Yes, Local Login can be enabled or disabled using the feature flag `DISABLE_LOCAL_LOGIN`. Contact Harness Support for assistance with this feature.
+
+### How do I enable multiple identity provider (IdP) support in Harness, and can I configure multiple SAML providers at once?
+
+The feature for multiple IdP support is behind a feature flag called `PL_ENABLE_MULTIPLE_IDP_SUPPORT`. To enable it, you'll need to contact Harness Support. Once enabled, you can configure multiple SAML providers by going to Account Settings, selecting Authentication, and then clicking on Add SAML Provider. Simply repeat the configuration steps for each provider, and all added providers will be listed under "Login via SAML."
 
 ## Automation
 
@@ -2506,6 +2522,10 @@ No, the project identifier can't be renamed because it is set when the project i
 ### Why don't I see data for a new user?
 
 Check the user group assigned to the user. If the user isn't assigned to any user group/role, they will not be able to view or access any relevant data.
+
+### Can I edit the email address of a service account after it's created?
+
+No, you cannot edit the email address of a service account once it is created. You can only edit the name, description, and tags. If you need a different email, you must delete the existing service account and create a new one with the desired email address.
 
 ## Platform rate limits
 
