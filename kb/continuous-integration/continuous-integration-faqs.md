@@ -58,6 +58,9 @@ No. Your build infrastructure can be configured to use whichever tools you like.
 
 For more information and instructions on how to mount certificates, please visit the [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/) documentation.
 
+### How to set the request limit for container in CI stage.
+Currently, we can only configure limits for resource allocation but cannot set specific resource requests, which leads to using the default resource request.[Override resource limits:](/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#override-resource-limits)
+
 ## Local runner build infrastructure
 
 ### Can I run builds locally? Can I run builds directly on my computer?
