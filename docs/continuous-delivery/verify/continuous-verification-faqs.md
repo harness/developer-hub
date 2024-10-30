@@ -138,3 +138,7 @@ You can use version as SII for those resources, but you need to make sure the qu
 ### Currently, NewRelic seems to be account-level. When we remove the NewRelic verification from "a" pipeline, it is removed from every pipeline.
 
 No, If you are using the default monitored service while using the same env and service combination, the health source can be configured on the monitored service, so if you remove it, all pipelines using the same monitored service will not be able to see the health source.
+
+### Is there any limitation of query size for custom health source
+
+Yes, its quite big and set as 16000
