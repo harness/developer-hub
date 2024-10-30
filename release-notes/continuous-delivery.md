@@ -47,6 +47,38 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## October
 
+### Version 1.63.x
+
+#### New features and enhancements
+
+- Harness now supports Approval APIs, allowing users to approve or reject Harness approval steps using Service Account tokens. (CDS-97580, ZD-64388)
+
+- Harness now supports webhooks configured with GitLab system hooks to trigger pipelines. (CDS-95423)
+
+- Harness now supports self-hosted Bitbucket OAuth tokens for the Git Experience. (CDS-95417)
+
+- The Harness platform has been updated with an upgraded Kubernetes SDK, moving from version 18.0 to 21.0, and the Helm SDK has been updated from version 3.12 to 3.13. (CDS-99044, ZD-66670)
+
+#### Fixed issues
+
+- Previously, an error occurred related to the column "actualRunDuration" in the "verify_step_execution_cvng" relation due to missing migrations. This issue is resolved by running the necessary migrations to create the required columns. (CDS-102602)
+- During the native Terraform apply stage within a CD pipeline, users encountered an unclear error due to the default image missing the Terraform binary. This issue is resolved now. The updated message now reads: Please verify if Terraform is properly installed. (CDS-101932)
+- Previously, the rollback process failed due to an incorrect branch reference for the YAML file. This issue is resolved by adding logic to include the Git details when performing post-deployment rollbacks. 
+Currently, this feature is behind the feature flag `CDS_ADD_GIT_INFO_IN_POST_DEPLOYMENT_ROLLBACK`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-101504)
+
+#### Gitops Version 1.19.0, Gitops Agent Version 0.80
+
+#### New features and enhancements
+
+- Repository status was incorrectly set to 'Error' upon creation; now we refresh credentials on the agent right after creation or update to ensure accurate status. (CDS-101944)
+- Harness GitOps now supports application filtering by cluster, labels, and application/application set. (CDS-97564)
+
+#### Fixed issues
+
+- Previously, the terminate sync operation in the GitOps application required application edit permissions due to a misconfiguration. This issue is resolved, and the operation now correctly checks for application sync permissions. (CDS-101930)
+- Previously, the application regex selector in the GitOps sync step would sync all applications instead of just those in the selected clusters. This issue is resolved. When matched applications no longer correspond to the clusters or environments in the pipeline, the skipped applications will be logged, and the step will pass unless the actual sync procedure fails.(CDS-100130)
+- Previously, uninstalling a Helm release would remove CRDs, causing applications to lose their references to projects. This issue is resolved. When installing the agent using Helm, the option to keep ArgoCD CRDs on uninstall is now set to true by default. (CDS-97016)
+
 ### Version 1.62.5
 
 #### New features and enhancements
