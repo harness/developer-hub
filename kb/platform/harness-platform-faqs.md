@@ -3372,3 +3372,19 @@ Yes, Harness has an API to check the status of the deployment. You can check her
 
 ### How can user restart a delegate?
 User can restart the delegate by deleting the pod itself.
+
+#### Can we configure for delegate selection based on nature of task?
+
+We do not have task specific selection for delegates. Delegates selector can be specified for pipeline, stages steps or connectors but not with respect to the nature of task.
+
+#### Do we support multiple sub-domains for mTLS configuration?
+Per account only subdomain url is supported for mTLS. We can not configure multiple sud-domain for one account.
+
+#### If we enable mTLS for a account, is it possible to disable it again?
+Once mTLS is enabled there is option to enable loose mode that supports delegate without mTLS as well.
+
+#### What is the recommended way for sharing certificate for mTLS configuration.
+All mTLS configuration related query should happen through the support case. It is recommended to share the combined cert in pem file.
+
+#### Is it possible to stream the audit logs to any third party tool for consumption through a generic cofnigruation?
+Currently we only provide first class support for streaming to splunk and s3. We do not have any generic configuration for streaming the audit logs.

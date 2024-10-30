@@ -476,3 +476,49 @@ org.apache.http.client.HttpResponseException: status code: 500, reason phrase: S
 ```
 
 This can happen if the Jenkins Job is parameterized but no parameters are being passed. The reverse, where the Jenkins Job is not parameterized but parameters are being passed, can also cause this issue. To fix this, please make sure that the proper parameters are being passed to Jenkins.
+
+#### Can we create account level variable using terraform provider?
+We have below terraform resource for creating variables, this can be used for any scope [account/org/project].
+ 
+Please check this once and let us know if this helps:
+https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_variables
+ 
+If you want to create at account level you do not need to pass org and project in the resource configuration.
+
+#### Do we have step level execution field for dashboard?
+Currently we capture step level information in fields for dashboard only for jira and approval step type.
+
+#### How to use harness variables with java operators to get length of array?
+You can use the size construct of the jexl to get this value. Below is a sample usage:
+```
+<+size(<+<+pipeline.variables.servicenames>.split(',')>)>
+```
+
+#### How to identify which inputSet was used for a pipeline execution?
+
+We have an api which fetches the detail of pipeline execution for a give planExecution Id. So you can get the planExecution ID either via api or from UI and invoke the below api end point:
+https://apidocs.harness.io/tag/Pipeline-Execution-Details/#operation/getInputsetYamlV2
+
+
+#### In case of multi-service deployment, is it possible to index the stage names based on service names they are deploying?
+
+You can have this setting enabled at account level where the stages will be indexed with service name, please try this at your end and let us know if this helps:
+"Enable Matrix Labels By Name"
+
+#### What do you specify as Parent folder if you are creating a file in harness file store using api or terraform?
+For root folder the value of "parent_identifier" attribute is "Root". This is inline with the api call that is made.
+
+#### How to export all values from a file store file having entries in key value format for a shell script execution.
+
+You can access the file content, write to a local file on delegate and use to source it for environment variable. Below is a sample script:
+```
+cat>>.env<<EOF
+<+configFile.getAsString("testenv")>
+EOF
+export $(xargs < .env)
+env
+```
+
+#### If harness end point is a vanity url, what to use as the end point in terraform provider configuration?
+
+We can use the vanity url as end point, for example "https://VANITY.harness.io/gateway".

@@ -730,3 +730,52 @@ Discrepancies arise when the YAML file in any Git branch has different values co
 When you make updates to the pipeline via the Harness UI, these changes are saved both to the Harness DB and to the YAML file in the selected Git branch. However, other branches in your repository may still carry outdated YAML files with old values.
 
 To maintain consistency across all branches and interfaces, ensure that any manual changes to the YAML in Git are synchronized with updates made in the Harness UI. It’s also a good practice to regularly update all relevant branches to keep them aligned with the Harness DB.
+
+#### Is it possible to use same pipeline for different environment?
+You can use same pipeline for deployment to multiple environments. You can configure your environment to be runtime input and not fixed value. This way when the pipeline is running you have option to pass the evnironment which you want to deploy to. As the environments are different you can have corresponding infrastructure definition with target environment connection details.
+
+#### Is it possible to merge an input set reference and runtime input for the same pipeline execution call through api?
+
+We can not merge a input set reference and runtime input (for some of the variable that is not being passed values through input set) in one api call. We need to executed such pipeline using runtimeinput yaml in the payload.
+
+#### Can we use output expression from a stage in parent pipeline in the input set of the chained pipeline?
+We will not be able to use output expression from parent pipeline in the input set which is used by a child pipeline in a chained pipeline stage later in the execution.
+
+#### What are some valid inputs to the sort parameter in the execution summary api call?
+
+Below are the valid inputs for sort parameter in the execution summary api call:
+```
+name,ASC
+name, DESC 
+
+status,ASC
+status,DESC
+
+startTs,ASC
+startTS,DESC
+
+```
+
+#### How to get only last successful deployment/execution of pipeline?
+
+Below is a sample curl for the list execution api for a specific pipeline. This lists all the recent success executions :
+
+```
+ 
+curl -i -X POST \
+  'https://app.harness.io/pipeline/api/pipelines/execution/summary?accountIdentifier=<accountID>&orgIdentifier=<orgID>&projectIdentifier=<ProjectId>&pipelineIdentifier=<identifierforthePipeline>&page=0&size=10&filterIdentifier=<IdofthefiltercreatedinUI>&showAllExecutions=false&status=Success' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: pat.xxx.xx.xx' \
+  -d '{
+    "filterType": "PipelineExecution",
+    "pipelineTags": []
+  }'
+
+```
+You can sort on startTs,DESC and pass size=1 to get just the latest one. Also this will just give you the latest success execution.
+
+#### Is it possible to move all the Harness entities in one go to the git experience configured repo and not individual ones?
+Harness git experience is configured at individual level and not project level. However once configured for git experience there is no need to do manual sync. We can also enable bi-directional sync to allow for a two way sync-process for all remote entities.
+
+#### Do we have git experience for triggers?
+We do not store trigger as part of remote repo and all the triggers for the pipeline are stored as inline.

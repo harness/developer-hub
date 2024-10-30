@@ -565,3 +565,23 @@ We do not have any way to provide customer ordering. We follow a bottom up appro
 
 ### What happens if we do not pass any chart version to helm deployment having manifest with runtime input option for chart version?
 If chart version is not provided as runtime input the deployment is done using the latest chart version available for the specified chart in the given repo.
+
+#### Can we make provided values yaml optional?
+Currently we do not have a way to make the provided values yaml optional or pick selective values yaml from the configuration.
+
+#### How can we configure a manifest that can use multiple values yaml based on user selection?
+We can make the path of values yaml while configuring the service as an expression and use the input from user to populate the path of the file. So you can have vlaues1.yaml , values2.yaml,values3.yaml in the same github repo .
+In the configuration rather than specifying the filename for the override value yaml directly you can give the name of the values yaml as input. 
+
+#### How to run helm upgrade command by passing a custom file which is stored in vault?
+You can make use of service hooks in this scenario. I am sharing a documentation which has a sample usage of service hook.
+ 
+You can extend this as per your scenario to use to download the file from vault and pass it as a flag option for helm upgrade command.
+ 
+https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks
+
+#### Why the helm deploy step is missing advanced flag option?
+
+If you are using kubernetes helm you can use the same flag configuration as at the end of the day we render the manifest and run kubectl command to apply the manifest hence the same flag configurations are present there as well in rollout step configruation.
+ 
+However if you are using native helm we use helm commands for the deployment and only the helm command options are available. Also these are available as part of manifest itself.
