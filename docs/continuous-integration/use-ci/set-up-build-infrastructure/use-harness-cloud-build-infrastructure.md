@@ -179,7 +179,7 @@ To enable this feature, set the `nestedVirtualization` property to `true` as sho
 
 :::note
 * To enable `nestedVirtualization` use the YAML editor, as this option is currently unavailable in the visual editor.
-* Hardware acceleration is available for all machine sizes, when using Linux with ARM architecture on Harness Cloud.
+* Hardware acceleration is available for all machine sizes, when using Linux with AMD architecture on Harness Cloud.
 :::
 
 ```yaml
