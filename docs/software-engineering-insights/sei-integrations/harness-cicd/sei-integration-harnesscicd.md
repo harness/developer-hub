@@ -1,8 +1,8 @@
 ---
 title: SEI Harness CI/CD integration
 description: Integrate SEI with Harness CI and CD
-sidebar_position: 110
-sidebar_label: Connect with Harness CI and CD
+sidebar_position: 10
+sidebar_label: Connect with Harness CI/CD
 ---
 
 Harness is a modern software delivery platform that allows engineers and DevOps to build, test, deploy, and verify the software on demand.
