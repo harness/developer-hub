@@ -471,7 +471,7 @@ To resolve the issue, remove and then re-add the user, ensuring that they are no
 
 This is expected behavior because the user group is linked to an SSO group through group authorization, making it unmanageable via SCIM.
 
-### How can I update -connected groups with a new name via API?
+### How can I update SAML-connected groups with a new name via API?
 
 Set `samlSettings` to `null` in the API call to update SAML-connected groups with new names.
 
