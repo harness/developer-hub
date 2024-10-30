@@ -262,9 +262,7 @@ You can customize the schedule for these checks and updates, as well as specify 
 
 ### Scheduling the Updater Job
 
-Locate the ConfigMap: The ConfigMap is typically named gitops-agent-upgrader and can be found in the default namespace (or the namespace where your GitOps agent is deployed).
-
-By default, the upgrader checks for updates every four hours. You can change this frequency by modifying the schedule field in the CronJob manifest:
+By default, the upgrader checks for updates every four hours. You can change this frequency by modifying the schedule field in the CronJob manifest of the GitOps agent YAML file:
 
 ```yaml
 apiVersion: batch/v1
@@ -319,7 +317,7 @@ Alternatively, you can run the following command to suspend the auto-upgrade on 
 kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>
 ```
 
-You can also remove the entire `kind: CronJob` section if necessary.
+You can also remove the entire CronJob section if necessary.
 
 If you are using an overrides YAML file, set `enabled: false` in the Agent upgrader overrides section and run the Helm upgrade command again to apply the changes.
 
