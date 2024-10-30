@@ -104,9 +104,9 @@ You can also set the template name as a Runtime Input, allowing you to see a dro
 
 If the selected template has fields, the associated secondary fields will be displayed for configuration.
 
-![](./static/service-now-template-dropdown-1.png)
+![](./static/service-now-template-dropdown-2.png)
 
-A dropdown list is provided for setting up runtime values for triggers and input sets associated with templates.
+Additionally, a dropdown for templates is also provided when setting up Triggers and on the Input Sets page.
 
 ## Create from Standard Template
 
