@@ -292,6 +292,10 @@ In service-to-service scenarios, a best practice is to transmit only the princip
 
 Yes, for more information, go to [getAccessControlList](https://apidocs.harness.io/tag/Access-Control-List#operation/getAccessControlList) in the API documentation.
 
+### Can I use tags to control access to high-criticality pipelines?
+
+Yes, you can use tags like type: prod or security: high_severity to control access to high-criticality pipelines. By tagging these pipelines appropriately, you ensure that only authorized users can access them, streamlining security and access management.
+
 ### Can I access the Harness API from a React app, and how can I handle CORS issues when making API calls with the x-api-key header?
 
 Yes, the Harness API is accessible from the React (or any JavaScript library) app. However, when encountering Cross-Origin Resource Sharing (CORS) issues, it's crucial to understand that browsers make pre-flight CORS requests, especially when the host origin and the server origin are different.
