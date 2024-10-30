@@ -5,11 +5,7 @@ sidebar_label: Datasheet
 sidebar_position: 20
 ---
 
-SEI uses Rest APIs to connect to Jira. Using these API calls SEI ingests metadata for
-Jira Issues, Projects, Users, Status, and Sprints. By default, all the standard fields for
-Issues, Projects, Users, Status, and Sprints are ingested. In addition, if a customer
-specifies custom fields, SEI will ingest those custom fields too. This metadata is used
-to generate engineering metrics and insights. 
+SEI connects to Jira via REST APIs, that is used for ingesting metadata for Jira Issues, Projects, Users, Statuses, and Sprints. By default, SEI captures all standard fields across these entities, and users can also specify custom fields for ingestion.
 
 The full details of all the fields are
 mentioned below.
