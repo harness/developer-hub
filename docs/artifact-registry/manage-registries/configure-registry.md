@@ -27,6 +27,7 @@ After [creating an upstream proxy](/docs/artifact-registry/manage-registries/cre
 3. Select **Configure Upstream**.
 4. Under **Available upstream proxies**, you will see a list of available upstream proxies. Select as many as you would like. 
 5. Under **Selected proxies**, you will see an ordered list of selected proxies for this registry. When the registry receives a request, the proxies will be *queried in order* from top to bottom.
+6. Click **Save** in the top right corner. 
 
 ### Establish artifact filtering rules
 
