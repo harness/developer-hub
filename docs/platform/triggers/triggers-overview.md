@@ -99,3 +99,29 @@ To add a trigger to a pipeline, do the following:
 4. Complete the required fields for your trigger type. For steps on setting up different types of triggers, go to the [Triggers documentation](/docs/category/triggers).
 
 
+## View Trigger Events
+
+:::info note
+Currently this feature is behind the Feature Flag `PIPE_TRIGGER_EVENTS_PAGE_UI`. Contact [Harness Support](mailto:support@harness.io) to enable this FF.
+:::
+
+
+Users can view trigger events for all triggers created within a Pipeline in the **Events** tab.
+
+![](./static/trigger_events_page.png)
+
+The Events tab provides information on **Event Correlation ID**, **Trigger Status**, **Time**, and **Trigger Name**.
+
+By clicking the three dots next to each trigger, you can view additional details, including the **Payload** and **Trigger Details**.
+
+![](./static/trigger_info.png)
+
+You can filter triggers based on **Trigger Name, Trigger Type and Status**:- 
+
+- Trigger type will include :- **All, Webhook, Artifact, Manifest and Scheduled**
+
+![](./static/trigger_type.png)
+
+- Trigger Status will include :- **Success, Failed, Skipped**
+
+![](./static/trigger_status.png)
