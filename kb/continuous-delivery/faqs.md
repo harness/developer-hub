@@ -3200,6 +3200,18 @@ This is not a permissions issue. Harness does not support viewing account-level 
 
 No, pull request events do not occur on the forked repository.
 
+#### Can I reference existing secrets in a GCP project different from the one where my delegate is located?
+
+Currently, Harness does not support GCP cross-project secret access by default. To access secrets in a different project, you can use the OIDC option, specifying the required GCP Project ID. Alternatively, you can try assigning permissions through a service account with cross-project access, but this has limitations based on specific project-level permissions.
+
+#### Do I add the Kubernetes Delete step to the same pipeline I use for deployment?
+
+Yes, you can include the Kubernetes Delete step in your deployment pipeline. This step can be added at any stage in the pipeline to manage the offboarding of services effectively.
+
+#### Is it possible to control the parallelism for multi-service Kubernetes deployments in Harness?
+
+Currently, Harness deploys all services in parallel for multi-service deployment pipelines, and there is no built-in feature to batch these services or control the number of parallel executions. Services are deployed simultaneously in the selected order.
+
 #### How can we create a trigger on a fork event? 
 
 You can create a custom trigger to initiate a pipeline for a fork event. First, enable the Webhook setting to capture the event logs for the fork. Once enabled, you will be able to capture the event logs for every fork on the repository, and based on the payload, trigger conditions can be set.

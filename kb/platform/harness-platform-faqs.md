@@ -2830,6 +2830,15 @@ No, Harness doesn't use the customer secret manager to encrypt delegate tokens. 
 
 We do follow some rules for masking, like to mask any api key/token, we mask any string followed by Basic/Bearer, and that’s the reason if you try to print these will be masked.
 
+### Can I configure Harness to store secrets in a different GCP Project ID than where the delegate is installed?
+
+Yes, you can Use a Google Cloud service account key from the target project or the OIDC (OpenID Connect) for authentication, where you can specify the GCP project ID in the OIDC settings.
+
+### Can I reference existing secrets in a GCP project different from the one where my delegate is located?
+
+Currently, Harness does not support GCP cross-project secret access by default. To access secrets in a different project, you can use the OIDC option, specifying the required GCP Project ID. Alternatively, you can try assigning permissions through a service account with cross-project access, but this has limitations based on specific project-level permissions.
+
+
 ## Security
 
 ### Does JIT provisioning still initiate an email to the user for confirmation or password creation?
