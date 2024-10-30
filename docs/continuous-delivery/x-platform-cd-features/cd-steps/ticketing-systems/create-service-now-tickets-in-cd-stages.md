@@ -106,7 +106,7 @@ If the selected template has fields, the associated secondary fields will be dis
 
 ![](./static/service-now-template-dropdown-2.png)
 
-Additionally, a dropdown for templates is also provided when setting up Triggers and on the Input Sets page.
+Additionally, a dropdown for templates is also provided when configuring Triggers and Input Sets for this step.
 
 ## Create from Standard Template
 
