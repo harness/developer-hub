@@ -2555,6 +2555,17 @@ deny[msg] {
     msg := sprintf("Running the pipeline on a branch other than 'main' is not allowed. The selected branch was: '%s'", input.pipeline.gitConfig.branch)
 }
 ```
+#### Is the "ASG Shift Traffic" step available for EKS and SpotInst deployments in Harness?
+
+The "ASG Shift Traffic" step is available for EKS deployments but requires a service mesh for traffic shifting between old and new services. Without a service mesh, you can use a Kubernetes Apply step with an ingress controller that supports traffic splitting, like the AWS ALB Ingress Controller, to manage traffic shifting.
+
+#### How long are deployment instances tracked in Harness?
+
+Deployment instances in Harness are tracked as active if they have been part of any pipeline execution within the past 30 days. Active services and environments appear on the dashboard during this period. Deployments older than 30 days are removed from the summary page but can still be accessed through audit logs or historical data. To make environment cards visible again and resume tracking, you will need to redeploy the service to the relevant environments.
+
+###  Can Harness fetch artifacts from an Artifactory Remote repository?
+
+No, Harness cannot directly fetch artifacts from an Artifactory Remote repository, as Artifactory's API doesn’t support direct querying of upstream repositories. However, you can fetch artifacts from local and remote-cache repositories. To access artifacts from a remote repository, configure Artifactory to cache them locally, allowing Harness to retrieve them from the cache.
 
 #### How can I send the pipeline's logs to Loki?
 

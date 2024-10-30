@@ -145,6 +145,18 @@ Turn off this setting if the check isn't required. Turning this off can cause pi
 
 For more information, go to [Run RBAC Validation before executing Inline Pipelines](/docs/platform/pipelines/pipeline-settings/#run-rbac-validation-before-executing-inline-pipelines).
 
+### How do I enable the option to create a template under an organization in Harness when it’s greyed out?
+
+To enable template creation for a user, ensure they have the "Manage Templates" permission at the organization level. Check that their role includes the Create/Edit permissions for templates, then update relevant roles to include these permissions. Also, set the resource group scope to the organization level instead of the account level.
+
+### How can I allow an application team to edit a specific dashboard in Harness without giving access to all dashboards?
+
+To allow an application team to edit specific dashboards in Harness without granting access to all dashboards, you can use the RBAC (Role-Based Access Control) feature by creating custom resource groups and roles. Begin by creating a custom resource group that includes only the desired dashboards; if the resource group requires a folder selection, you may need to create a new folder and move the specific dashboards into it. Then, create a custom role with "Dashboard Editor" permissions, which will enable editing access. Finally, assign this role to the application team and bind it to the custom resource group. This approach ensures that the team has edit permissions only for the designated dashboards.
+
+###  Why is the pipeline input set grayed out in Harness?
+
+The pipeline input set may be grayed out due to a storage mismatch—if the input set is stored inline (in Harness) while the pipeline is in a remote Git repository. Additionally, it may also be grayed out if you lack the required permissions to view or create/edit the input set. To fix the storage issue, ensure both entities are stored in the same location, and refer to the documentation on moving inline entities to Git if needed.
+
 ### What is the purpose of linkedSsoDisplayName?
 
 `LinkedSsoDisplayName` is the same SSO setting name in Harness. For SAML, the value provided for both `ssoGroupId` and `ssoGroupName` must be the same.
@@ -550,6 +562,10 @@ Verify that the entity ID is correct and matches across both your SSO applicatio
 
 Harness will automatically detect the change and update the email address in Harness using the SCIM app. You won't need to manually update the user's email address.
 
+### How do we fix SSH key issues in Harness when the same key works locally?
+
+Ensure your SSH key is in PEM format, as Harness requires this format. If you have an OpenSSH key, convert it to PEM using the command: `ssh-keygen -p -m PEM -f <your-key-file>`
+
 ### How do I sync LDAP groups manually if the linked user group isn't syncing?
 
 You can Navigate to the **Authentication** tab, go to the LDAP setting, and try the **Synchronize User Group** option.
@@ -669,6 +685,10 @@ When you set up a new OKTA SAML and then migrate your users to it, you must set 
 The permissions for Harness are managed by the User Groups present in Harness. In case of authorization, the user groups from SAML app are linked to Harness Local User groups.
 
 For more information, go to [Single Sign-On (SSO) with SAML](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/).
+
+### Can I update userName values to match a new IdP email when switching from Google to Okta, or must I create new user accounts?
+
+The userName field in Harness cannot be changed, as it uniquely identifies each user. To transition smoothly, configure both Identity Providers (IdPs) temporarily, allowing users to choose the correct IdP during login until the migration is complete. If adding multiple IdPs isn’t possible, you’ll need to create new accounts with the new emails.
 
 ### Which authentication method should we use when setting up a vault connector for delegates hosted on an Azure VM?
 
@@ -843,6 +863,10 @@ In the connector selector options, you will need to give only 1 tag, either "ABC
 ### Why can't I delete a connector referenced by an entity that is no longer present?
 
 You can delete a connector referenced by an entity that is no longer present by enabling the **Force Delete** option in default settings.
+
+### Does Harness support SSH over HTTPS for GitHub connectors, and how do we set it up for a GHE Cloud migration?
+
+Yes, Harness supports SSH over HTTPS for GitHub connectors. For your GitHub Enterprise Cloud (GHE Cloud) migration, configure an RSA, ECDSA, or Ed25519 key in PEM format. Set the connection to use port 443 and host ssh.github.com. Generate your SSH key in PEM format, then configure the GitHub connector in Harness with the SSH URL, ensuring the correct port and host format for a secure SSH-over-HTTPS setup.
 
 ## Delegates
 
@@ -1065,6 +1089,14 @@ Open the delegate manifest file and locate the container `spec` (`spec.container
 ### Is mTLS supported between the delegate and connectors in Harness?
 
 No, mTLS isn't supported between the delegate and connectors in Harness. While mTLS is implemented between the delegate and Harness Manager, connectors act as logical entities facilitating connections between Harness Manager and external systems via the delegate. As such, there's no direct connection between connectors and the delegate that requires securing via mTLS.
+
+### Why aren’t my delegates showing under Project Settings in Harness?
+
+If delegates are not visible under Project Settings, they may have been created at the account level instead of the project level. In Harness, delegates are scoped to either the account, organization, or project level and cannot be moved between these scopes. To resolve this, create new delegates specifically at the project level.
+
+### Why are console logs empty despite a successful execution in my Harness pipeline?
+
+Empty console logs, despite a successful pipeline run, could indicate an expired delegate, which can interfere with log capture. Check the delegate status in the Harness console to confirm it has not expired. If it has, upgrade to the latest version and consider enabling automatic upgrades to prevent this issue in the future. Once updated, rerun the pipeline to ensure logs are captured correctly.
 
 ### When the NextGen delegate updater job terminates a delegate, does it consider whether jobs are running, and what is the associated grace period?
 
@@ -2167,6 +2199,10 @@ Check the time frame for the dashboard page. By default Harness sets this value 
 
 Harness shows service usage account for the last 30 days.
 
+### How can I download a large dashboard report in Harness, especially if it has more than 5,000 lines?
+
+For large data sets, download the report in CSV format. CSV files can handle larger volumes of data efficiently compared to PDF format and are more suitable for data-heavy reports.
+
 ## Feature Flags
 
 ### If I enable PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES, can I choose when to allow multiple selections or will it always be enabled by default?
@@ -3078,6 +3114,22 @@ Dashboards are a licensed functionality. If you don't have a current license, da
 
 Yes. For more information, go to [Install using Helm](/docs/self-managed-enterprise-edition/install/install-using-helm) and [Upgrade the Helm chart](/docs/self-managed-enterprise-edition/install/upgrade-helm-chart).
 
+### How can I integrate VMware Aria Automation (VRA) with Harness for deploying VMs?
+
+Harness does not offer a native integration with VMware Aria Automation, but you can still deploy VMs by using either the Generic Webhook step or Shell Script step in Harness. With the webhook option, you can configure a webhook to trigger a deployment in VRA. Alternatively, use the Shell Script step to call VRA’s API directly or run deployment scripts. This approach provides flexibility to automate VM deployments effectively within your Harness pipeline.
+
+### Steps to Safely Uninstall Looker from Harness Environment
+
+1. In the Helm chart’s values override file, set ngcustomdashboard->enabled to false to disable the Looker feature.
+
+2. In the values override file, remove the entire Looker section. Additionally, delete the config: section from the ng-custom-dashboards section.
+
+3. Execute a Helm upgrade using the same version. This action ensures the Looker and ng-custom-dashboard pods are safely removed.
+
+4. After disabling Looker, review and remove any remaining configurations or references to maintain a clean environment.
+
+Note: Ensure you are operating on a newer version of Looker for compatibility before proceeding with these steps.
+
 ## Terraform
 
 ### Why is my Terraform plugin crashing when using the Harness provider?
@@ -3162,6 +3214,13 @@ Unfortunately, JEXL conditions do not support the direct usage of environment va
 
 Can you check if your string has underscore as a value  because underscores are ignored in strings.
 
+### How do I fix the "infinite loop evaluating expressions" error with pipeline template variables in Harness?
+
+This error occurs when a variable references itself in its expression, creating a circular reference. To fix it, avoid assigning the variable a value that includes its own expression.
+
+### How do I set and reference a variable for an environment using Overrides v2 in Harness?
+
+Navigate to the Overrides panel and create a variable under the desired override type (e.g., Global Environment, Service Specific, or Service & Infrastructure Specific). For instance, if you name the variable variable1 in Global Environment, reference it in your pipeline as `<+serviceVariables.variable1>`. Override priority is as follows: Global Environment (lowest), Service Specific, and Service & Infrastructure Specific (highest). The highest priority value will be used if `variable1` is set at multiple levels.
 
 ## Miscellaneous
 
@@ -3351,6 +3410,9 @@ The minimum supported screen resolution is 1440x900.
 
 Currently, there are no settings to modify the default GUI view setup. You can manually expand and adjust it as needed, but it resets to default when you refresh or switch to another execution.
 
+### Can I generate a token with a username and password instead of an x-api-key in the Harness API?
+
+No, Harness does not support token generation with just a username and password. Tokens must be created in the UI, where you’ll receive an x-api-key for use in API calls.
 
 ### How to revoke an account token in Harness?
 
@@ -3381,3 +3443,46 @@ Yes, Harness has an API to check the status of the deployment. You can check her
 
 ### How can user restart a delegate?
 User can restart the delegate by deleting the pod itself.
+
+### Does the application limit the length of each user input field and validate the length on the server side?
+
+Yes, the application limits user input length to 64-128 characters and validates it on the server side.
+
+### Does the application refrain from using client-provided data (including HTTP headers) to make functional decisions?
+
+Yes, the application relies on server-side parameters and strategically uses client-side data for enhancing user experience, with all critical validations done on the server side.
+
+### Does the application prevent 'redirect' (i.e., 302 Object moved) when accepting sensitive information from user forms?
+
+Yes, the application uses HTTPS and POST requests to prevent exposure of sensitive data and disallows redirects in case of form submissions
+
+### Does the application use a common database Functional ID to connect to the database instead of passing through end user credentials?
+
+Yes, the application connects to the database using a single set of credentials rather than individual user credentials.
+
+### If using a common database Functional ID, does the application conduct authorization checks on user actions for granular user access control? 
+
+Yes, the application enforces specific permissions and access control checks at the application level.
+
+###  If the application uses frames, is there an XFS (Cross Frame Scripting) prevention solution implemented?
+
+Yes, the application implements the “Content-Security-Policy: frame-ancestors 'none';” directive to prevent XFS attacks.
+
+### Does the application respond with generic error messages that do not reveal internal sensitive information?
+
+Yes, the application provides generic error messages that do not expose internal details.
+
+
+### Are cryptographic keys, passwords, or algorithms hard-coded in the application code? 
+
+No, the application uses an internal STO module to run secret scans against every PR check to ensure no secrets are hard-coded.
+
+### Does the application filter or escape user-supplied input for SQL characters or parameterize SQL queries to prevent SQL injection vulnerabilities? 
+
+Yes, the application uses parameterized SQL queries and conducts SAST scans to prevent SQL injection vulnerabilities.
+
+### Does the application ensure URL redirects are either relative or validated against a whitelist?
+
+Yes, the application uses relative URLs or known origins and does not use absolute URLs.
+
+

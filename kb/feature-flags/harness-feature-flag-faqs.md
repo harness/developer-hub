@@ -426,3 +426,24 @@ To see these logs, you need to set your logger level to debug. Keep in mind that
 #### Can I see which target group rule evaluated to true to return the flag value in the .NET SDK logs?
 
 Yes, in the .NET SDK, verbose logging can provide detailed information about which target group rules were evaluated and whether they matched. To access these logs, your logging level should be set to debug.
+
+### Why is my target group activity not displaying data in Harness?
+
+In Harness, the Activity Log for a target group tracks configuration changes, such as when the group was created or updated (e.g., new targets added). However, it does not display real-time evaluations or show which feature flag variations are served to that group.
+
+To monitor flag evaluations:
+
+Use the Metrics tab on the feature flag itself. This tab provides insights into which variations were served, although it won’t specify the exact rule or target group that triggered the variation.
+If you aren’t seeing expected evaluations, ensure that required attributes (like realm_organization_id) are included in all evaluations, as missing attributes can prevent evaluations from targeting the correct group.
+
+### How can I allow users to create Feature Flags without granting broad environment edit permissions in Harness?
+
+In Harness, users need "Edit" rights at the environment level to create Feature Flags, which can allow edits to all environments in a project. To restrict permissions more precisely:
+
+1. Create a Custom Role with "Create" and "Edit Config" permissions limited to Feature Flags, excluding broader environment permissions.
+
+2. Set Up a Resource Group that includes only the Feature Flags resource. Assign the custom role to this Resource Group, enabling users to manage Feature Flags without edit access to other environments.
+
+### How are targets processed when using an identifier/name with additional conditions in the "Include the following" field?
+
+Targets specified in the "Include the following" field are processed as “all targets matching the identifier OR any of the conditions.” This includes targets that match either the identifier or any of the added conditions.

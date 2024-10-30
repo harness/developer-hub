@@ -84,6 +84,14 @@ Refer to the link: `https://app.harness.io/gratis/ng/static/versions.html`.
 
 Harness console does not support rendering image files.
 
+### What should I do if I encounter insufficient resources in my Harness pipeline?
+
+If your pipeline faces insufficient resources errors, it typically indicates that the available nodes do not meet the CPU requirements for the pipeline’s runner. Here are the steps to resolve this:
+
+1. Scale Up the Cluster: Add more nodes to your cluster to increase available CPU resources.
+
+2. Scale Down Other Resources: If possible, reduce the load by scaling down non-critical resources in the cluster, freeing up CPU for the pipeline.
+
 ## Pipeline access control
 
 ### Can I disable a pipeline?
@@ -138,6 +146,18 @@ If the test pipeline fails, you can utilize the rollback feature to revert the d
 #### Is there a way to integrate the triggered test pipeline within the original deployment pipeline?
 
 No, currently there is no way to fully integrate a triggered test pipeline within the original deployment pipeline. The test pipeline will always operate as a separate entity.
+
+### How can I bypass input prompts in a shell script during pipeline execution?
+
+If your shell script requires user input, you can bypass these prompts by using the following technique when running the script:
+
+echo "y" | sh $SCRIPT $PACKAGE $ARG
+
+In this example:
+The echo "y" | part automatically supplies a "yes" response (y) to all prompts within the script.
+This approach works well if your script has options to continue by default, like -y flags. If specific responses are required, replace "y" with the needed input.
+
+This allows your pipeline to execute the script without waiting for manual input, ensuring smooth, automated deployment.
 
 ## API
 
@@ -487,6 +507,22 @@ It is a scheduled task designed to clean up dashboards that have no tiles. This 
 
 Check if the Harness Delegate was recently updated, and also confirm the version of Ansible being executed.
 
+### Why are some successful script executions showing as errors in the pipeline logs?
+
+Harness logs can sometimes display expected script exits as errors due to how they are categorized: When a command in the script outputs to stderr, Harness may automatically label this as an error. This includes commands like grep, which returns exit code 1 when no match is found—an expected outcome in some cases.
+
+### How can I prevent specific commands from showing as errors when they are expected to exit with non-zero codes?
+
+To avoid having expected non-zero exit codes displayed as errors, Modify the script to redirect stderr to stdout for commands where a non-zero exit is expected
+
+### How can I resolve issues when extracting Harness pipeline log zip files?
+
+If you are facing issues unzipping Harness pipeline log files, try using a third-party tool like 7-Zip. This tool can handle certain compression formats more effectively than default system extractors, especially for large or complex log files. Download and install 7-Zip, then use it to extract your log zip files. This approach has resolved similar issues for other users.
+
+### Can a step reference the log from a previous step in Harness?
+
+Harness does not currently support direct log referencing from a previous step. However, you can work around this by saving logs to a file in the first step, encoding the file content in base64, and assigning it to an output variable. In the next step, retrieve and decode this variable to access the log content.
+
 ## Pipeline templates
 
 ### What is the frequency that we need to reconcile pipeline template changes?
@@ -514,6 +550,10 @@ Versioning a template enables you to create a new template without modifying the
 ### Can I upgrade a pipeline that is using templates without reconciliation?
 
 If changes are made within the pipeline, then no reconciliation is required.  However, if changes are made outside of the pipeline and it has an entity that was recently updated, then reconciliation is required.  For example, if you update the environment on the **Environment tab** and not in Pipeline Studio, Harness prompts you to reconcile the pipeline.
+
+### Can I commit a Custom Deployment Template (CDT) to Git in Harness, and how do I keep templates synced across environments?
+
+Harness does not support committing Custom Deployment Templates (CDTs) to Git; attempting to do so will result in an error indicating that the template type is not Git-supported.
 
 ### What causes entities referenced pipeline to go out of sync?
 
@@ -580,6 +620,17 @@ In Harness, use the pipeline execution URL [expression](https://developer.harnes
 ### Can a PagerDuty notification be sent when a connector is disconnected?
 
 Harness connectors do not support notifications at this time.
+
+### How can I run a specific step if any step in my pipeline fails?
+
+To execute a specific step (such as sending a notification) when any pipeline step fails, you can use the following methods:
+
+1. Configure a failure strategy in your pipeline to trigger a step on failure. This could be set up to call a webhook, notify through MS Teams, or send an alert to your AWS account with a payload.
+
+2. Set up a webhook notification at the pipeline level to activate when a failure occurs. This webhook can be customized to send data (e.g., error details) to a designated endpoint in your AWS account.
+
+3. Harness also offers built-in MS Teams notifications that can alert user groups of pipeline events. For step-by-step setup instructions, refer to: https://developer.harness.io/docs/platform/notifications/send-notifications-to-microsoft-teams/
+
 
 ## Delegates
 
@@ -678,6 +729,10 @@ This occurs because the SAML app integration settings are stored at the account 
 ### How can I create a delegate with Terraform?
 
 The `main.tf` sample file includes a delegate token option, facilitating automatic delegate registration at the token's scope upon installation. For instance, a project token automatically registers the delegate at the project scope. To locate the listed delegate, navigate to the project where the token was generated.
+
+### How can I use the --no-cache build-arg as an optional harness-pipeline variable in a Docker build-and-publish step?
+
+To use the --no-cache build-arg as an optional Harness pipeline variable, you can include the variable in your YAML configuration and use it within the build arguments.
 
 ### What are there discrepancies between the user list, access control, and dashboard?
 
