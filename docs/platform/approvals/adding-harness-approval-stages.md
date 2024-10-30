@@ -403,7 +403,7 @@ You can approve requests using a Service Account token.
 
  Configure Manual Approval Stage
 
-In the manual approval stage, select whether to use an individual service account or a combination (if more than one approval is needed). Set the input type as **Expression**.
+In the manual approval stage, select whether to use an individual service account or a combination (if more than one approval is needed). Set the input type as **Fixed value**.
 
 ![](./static/approval-using-service-account.png)
 
@@ -424,9 +424,8 @@ Here's an example YAML file showcasing the configurations you can use.
         minimumCount: 1
         disallowPipelineExecutor: false
         serviceAccounts:
-          - <+pipeline.variables.servacc>
+          - org.serviceAccountId
       approverInputs: []
-    timeout: 1d
 ```
 
 Follow the instructions [here](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-service-account/) to create a service account token.
@@ -441,6 +440,8 @@ In the body of your request, include the following:
    - `action` (e.g., Approve or Reject)
 
 Execute the API call. The request will trigger the approval process. Based on the action specified in the request body, the pipeline will be either approved or rejected.
+
+Note: Along with Fixed value, expressions are also supported for userGroups, providing more flexibility in your approval configurations
 
 ### Approval notifications to approvers
 
