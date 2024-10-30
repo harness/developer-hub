@@ -6,6 +6,7 @@ helpdocs_topic_id: lbhf2h71at
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/getting-started-with-helm
 ---
 
 This topic shows you how to perform Native Helm deployments using Harness.
@@ -334,6 +335,23 @@ The options avialable to you to specify a Helm chart store depend on whether or 
 - **Direct Connection**. Contains the OCI Helm Registry Connector option (shortened to **OCI Helm**), which you can use with any OCI-based registry.
 - **Via Cloud Provider**. Contains the ECR connector option. This connector is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. The ECR connector option uses an AWS connector and regenerates the required authentication token if the token has expired.
   - For details on using different authentication types (access key, delegate IAM, and IRSA), go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
+
+:::info
+
+We now support OpenID Connect (OIDC) authentication in Native Helm, enabling seamless integration with OIDC-compliant identity providers for enhanced security and user management.
+
+To configure OIDC authentication in Kubernetes, navigate to account/project settings.
+
+Select **New Connector**, select **Kubernetes cluster**.
+
+In the details tab, select **Specify master URL and credentials**.
+
+Enter the Master URL.
+
+In the **Authentication**, select **OpenID Connect** and fill in the necessary details.
+
+![](static/kubernetes-oidc-support.png) 
+:::
 
 ### Helm commands performance analysis
 Harness interacts with helm charts and repositories by using various helm commands. When these commands are run in parallel along with a large helm repository, they can leave a  significant CPU footprint on the Harness Delegate.

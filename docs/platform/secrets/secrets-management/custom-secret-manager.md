@@ -6,6 +6,7 @@ helpdocs_topic_id: mg09uspsx1
 helpdocs_category_id: 48wnu4u0tj
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/gitops-secrets
 ---
 
 Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness account.
@@ -104,7 +105,11 @@ This topic shows you how to add a Custom Secret Manager in the project scope.
    You can also search for a specific Secret Manager Template by entering its name in **Search**. Once you select the Secret Manager Template, the details are displayed in the Template Studio.
 
 7. Select **Use Template**.
-8. Enter values for the required Input Variables. Harness allows you to use [Fixed Values and Runtime Inputs](../../variables-and-expressions/runtime-inputs).
+8. Enter values for the required Input Variables. Harness allows you to use [Fixed Values, Runtime Inputs and Expressions](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/).
+
+:::note
+Only Secret and Variable expressions are supported within Expressions.
+:::
 
 	![](../static/custom-secret-manager-36.png)
 

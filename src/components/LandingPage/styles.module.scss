@@ -157,6 +157,13 @@
     padding-left: 10px;
   }
 }
+.btnCDE {
+  background: var(--mod-cde-200);
+  border-color: var(--mod-cde-200);
+  img {
+    padding-left: 10px;
+  }
+}
 .btnCV {
   background: var(--mod-cv-200);
   border-color: var(--mod-cv-200);
@@ -252,6 +259,13 @@
 .btnPlatform {
   background: var(--primary);
   border-color: var(--primary);
+  img {
+    padding-left: 10px;
+  }
+}
+.btnGitness {
+  background: var(--mod-gitness-200);
+  border-color: var(--mod-gitness-200);
   img {
     padding-left: 10px;
   }

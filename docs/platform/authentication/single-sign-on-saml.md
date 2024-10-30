@@ -6,6 +6,7 @@ helpdocs_topic_id: mlpksc7s6c
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 
 Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. This document explains how to set up SAML authentication.

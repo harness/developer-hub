@@ -1,0 +1,9 @@
+{
+  "position": 4,
+  "label": "Resilience Probe",
+  "collapsible": "true",
+  "collapsed": "true",
+  "customProps": {
+    "description":"Pluggable health checkers defined inside the chaos engine. Create a resilience probe and use it in different ways."
+  }
+}

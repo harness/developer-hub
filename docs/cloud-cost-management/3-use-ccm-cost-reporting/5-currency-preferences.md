@@ -67,7 +67,7 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
   
     The currency standardization process begins. A banner is displayed on the Overview page. The selected currency is applied to the last two years of data. The conversion factor used for the ongoing month is applied to the current month's data, while the conversion factor used for the previous month is applied to the historical data from the past two years.
 
-    ![](./static/currency-preference-banner.png)
+    ![](./static/overview-currency.png)
 
 
 
@@ -76,16 +76,13 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
 * After configuring the currency settings, the currency symbol immediately changes to the preferred one. However, the cost data does not change and remains in the original currency. It may take up to 24 hours for the converted value to be displayed.
 * It may take up to 48 hours for data on the **Recommendations** page to be updated.
 
-  ![](./static/currency-preference-recommendations.png)
+  ![](./static/recommendations_currency.png)
 
 * Currency standardization is supported only within CCM. Note that the currency symbol in **Dashboards** is not changed, but the cost is displayed in the preferred currency.
 * You can configure these settings only for your cloud accounts. Contact Harness Support to view the Kubernetes cluster data in your preferred currency.
 * The currency format defaults to the _en-us_ locale. If you wish to change this, contact Harness Support.
   In the following example, the locale is changed from _en-us_ to _fr-be_ which has changed the currency representation (currency symbol appears after the digits).
   The format differs based on the locale.
-
-    ![](./static/currency-preference-locale.png)
-
 
 * If your preferred currency is not supported for the _en-us_ locale, the currency code will be displayed instead of the currency symbol. If you wish to view the currency symbol instead, contact Harness support.
 

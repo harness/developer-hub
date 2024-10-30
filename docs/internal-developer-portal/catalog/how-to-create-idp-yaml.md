@@ -1,7 +1,7 @@
 ---
 title: How to write the IDP YAML
 description: Detailed information on how to write the ipd YAML or the catalog-info.yaml
-sidebar_position: 7
+sidebar_position: 3
 ---
 
 ## Create an IDP YAML or `catalog-info.yaml`

@@ -13,7 +13,7 @@ Organizations often grapple with the urgent need to respond to zero-day exploits
 ![Overview of Remediation Tracker](./static/overview-remediation-tracker.png "Overview of Remediation Tracker")
 
 
-The Remediation Tracker emerges as a vital solution within the Software Supply Chain Assurance (SSCA) module in Harness. This tool equips organizations with the means to proactively tackle zero-day vulnerabilities by providing a centralized platform for tracking vulnerable artifacts. It enables monitoring across deployed artifacts, environments, and pipelines, empowering organizations to respond effectively and minimize the risk posed by zero-day exploits.
+The Remediation Tracker emerges as a vital solution within the Supply Chain Security(SCS) module in Harness. This tool equips organizations with the means to proactively tackle zero-day vulnerabilities by providing a centralized platform for tracking vulnerable artifacts. It enables monitoring across deployed artifacts, environments, and pipelines, empowering organizations to respond effectively and minimize the risk posed by zero-day exploits.
 
 
 ## Key features
@@ -48,7 +48,7 @@ The tracker effectively oversees the remediation progress across all artifacts b
 
 Offering real-time tracking, the tracker consistently updates its status, showing the number of deployments needing patching alongside those already remediated. When it identifies that all pending deployments associated with every artifact in the tracker have been patched, it automatically updates its status to 'closed.' For more flexibility, there's also an option to manually close the tracker when necessary.
 
-With these features, the SSCA Remediation Tracker provides essential tools and information for promptly identifying affected artifacts and taking decisive action to mitigate potential security threats, enhancing software supply chain security.
+With these features, the SCS Remediation Tracker provides essential tools and information for promptly identifying affected artifacts and taking decisive action to mitigate potential security threats, enhancing software supply chain security.
 
 
 ## Next Steps

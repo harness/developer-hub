@@ -418,6 +418,38 @@ token:
   ui:field: HarnessAuthToken
 ```
 
+:::info
+
+The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page`  in-case you have multiple pages.
+
+```
+# example workflow.yaml
+...
+parameters:
+  - title: <PAGE-1 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+    token:
+      title: Harness Token
+      type: string
+      ui:widget: password
+      ui:field: HarnessAuthToken
+  - title: <PAGE-2 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+  - title: <PAGE-n TITLE>  
+...
+```
+:::
+
 Also the token input is used as a parameter under `steps` as `apikey`
 
 ```yaml

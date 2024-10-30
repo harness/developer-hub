@@ -67,6 +67,10 @@ To add specific Targets: 
 
       ![The Targeting Tab of a Flag with the dropdown menus for adding a target highlighted.](./static/3-targeting-users-with-flags-03.png)
 
+   :::info note
+   Accounts with over 250,000 targets can only search for targets by the exact target identifier rather than using wildcard searches on name and identifier.
+   :::
+
    * If you want to use a Percentage Rollout, select the target group, enter the percentage of each Variation you want to serve, then click **Save**.
 
       ![The Targeting Tab of a Flag with percentage roll out applied](./static/3-targeting-users-with-flags-04.png)

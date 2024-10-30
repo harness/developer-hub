@@ -74,7 +74,7 @@ Before you configure the **SEI AzureDevOps integration**, you must generate a **
 </TabItem>
    <TabItem value = "PAT" label = "Personal Access Token">
 
-1. Select **Integrations** under **Settings**.
+1. Select **Integrations** under **Data Settings**.
 2. Select **Available Integration**, locate the **Azure DevOps Services integration**, and select **Install**.
 3. Choose the authentication type as **Using Personal Access Token (PAT)** and click on **Next** in the instructions page.
 4. Configure and **save** the integration.

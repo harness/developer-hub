@@ -38,6 +38,10 @@ See [Pipeline Resource Constraints](./deployment-resource-constraints.md).
 
 The automatic **Resource Constraints** setting does not apply to [Custom stages](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage). **Resource Constraints** apply to a combination of Service + Infrastructure, and Custom Stages have no Services or Infrastructures. You can use Barriers and Queue steps in any stage types.
 
+:::info note
+When an environment is added to a Custom Stage, resource constraints do apply, and jobs may get queued based on the environment and infrastructure combination.
+:::
+
 ### Resource constraint scoping at the project level
 
 :::note

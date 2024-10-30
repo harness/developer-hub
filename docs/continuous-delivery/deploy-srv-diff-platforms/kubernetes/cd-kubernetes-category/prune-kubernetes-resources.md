@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/cd-advanced/cd-kubernetes-category/prune-kubernetes-resources
+canonical_url: https://www.harness.io/blog/auto-pruning-orphaned-resources
 ---
 
 This topic describes how to perform Kubernetes pruning using Harness. 

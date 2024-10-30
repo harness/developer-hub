@@ -40,7 +40,7 @@ Harness SRM supports the following health sources:
 
 To learn how to add a health source, go to [Health sources](/docs/category/health-sources-catalog).
 
-Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
+Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../continuous-delivery/verify/configure-cv/health-sources/custom-health-metrics) lets you customize APMs of your choice.
 
 ## Change sources
 

@@ -282,8 +282,7 @@ export default function CertificationsSEI() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Software Engineering Insights - Developer (BETA COMING
-                      SOON)
+                      Software Engineering Insights - Developer
                     </h2>
                     <img
                       src={`${baseUrl}img/cert_dev_sei_badge.svg`}
@@ -304,7 +303,7 @@ export default function CertificationsSEI() {
                     <DeveloperCertificationReviewGuide />
 
                     <div className={styles.btnContainer}>
-                      <Link href="#">
+                      <Link href="https://university-registration.harness.io/certified-software-engineering-insights-developer">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
@@ -322,7 +321,7 @@ export default function CertificationsSEI() {
               <div className={styles.examDetailsCard}>
                 <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
-                  <Link href="#">
+                  <Link href="https://university-registration.harness.io/certified-software-engineering-insights-developer">
                     <button className={styles.moreDetails}>
                       Register for Exam
                     </button>

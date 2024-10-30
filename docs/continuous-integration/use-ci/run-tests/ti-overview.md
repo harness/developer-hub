@@ -59,15 +59,12 @@ Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **T
 
 ## Enable Test Intelligence (TI)
 
-If you're using **Python**, **Ruby**, or **Java** programming languages we recommend using our new [ **Test**](./tests-v2.md) Step to run your tests. With this step, you do not need to change your test commands - Test Intelligence will be automatically configured, making it easy to use.
+We recommend using [ **Test**](./tests-v2.md) Step (Test Intelligence v2) to run your tests. This is a newer, simplified version of Test Intelligence, where you do not need to change your test commands - Test Intelligence will be automatically configured for you in runtime, making it easier to use.
 
-:::note
-This is an early access feature and is behind the feature flag `CIE_ENABLE_RUNTEST_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
-To benefit from TI with **C#**, **Kotlin**, or **Scala** , use the 'Run Tests' step (V1), while we work on supprting these programming languages with the new **Test**.
+For instructions on using the Test Intelligence (v2), go to: [Test Intelligence step](./tests-v2.md)
 
-For instructions on using Test Intelligence, go to:
+For instructions on using the Test Intelligence (v1), go to:
 
 - [Enable TI with Run Tests step for C#](./tests-v1/ti-for-csharp.md)
 - [Enable TI with Run Tests step for Java, Kotlin, or Scala](./tests-v1/ti-for-java-kotlin-scala.md)

@@ -19,7 +19,7 @@ import CustomScannersThatUseCustomStep from '/docs/security-testing-orchestratio
 ## Important notes for Custom Scan steps
 
 - To configure a Custom Scan step, you add a set of key-value pairs in the **Settings** field. The key and value strings you need to specify, such as `product_name` and `orchestratedScan`, are case-sensitive. 
-- You need to [add a Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) if you're running an `orchestratedScan` or `dataLoad` scan in a Kubernetes or Docker build infrastructure. 
+- You need to [add a Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline) if you're running an `orchestratedScan` or `dataLoad` scan in a Kubernetes or Docker build infrastructure. 
 - You need to run the [Custom Scan step with root access](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#root-access-requirements-for-sto) if you need to run a Docker-in-Docker step, or if you need to add trusted certificates to your scan images at runtime. 
 - The following topics contain useful information for setting up scanner integrations in STO:
   - [What's supported in STO](/docs/security-testing-orchestration/whats-supported)

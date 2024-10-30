@@ -440,6 +440,22 @@ There are some instances where you need to use the **Use IRSA** option instead o
 
 With the **AWS Access Key** option, you provide the [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](/docs/platform/secrets/add-use-text-secrets.md) for both.
 
+We also support JET (JWT-based Enterprise Token) identity tokens for authentication and authorization across the following AWS services:
+
+- Amazon EKS (Elastic Kubernetes Service)
+- Amazon ASG (Auto Scaling Groups)
+- WinRM (Windows Remote Management)
+- SSH (Secure Shell)
+- Amazon ECS (Elastic Container Service)
+- AWS CloudFormation
+- AWS SAM (Serverless Application Model)
+
+To obtain a JET identity token, authenticate with your identity provider using your credentials and request a token through their API.
+
+Currently, support JET identity tokens for authentication for AWS connectors is behind the feature flag `CDS_AWS_SESSION_TOKEN_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+Additionally, this option requires Harness Delegate version 24.09.84100 or later.
+
 </TabItem>
 <TabItem value="irsa" label="Use IRSA">
 
@@ -567,6 +583,35 @@ Here are the custom parameters for the Harness AWS OIDC JWT:
     }
 }
 ```
+
+</details>
+
+<details>
+<summary> Sample IAM policy scoped to a specific project or organization </summary>
+
+This example policy enables scoping to a specific project or organization for authentication through an OIDC provider.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::156272853481:oidc-provider/app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringEquals": {
+                    "app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg:aud": "sts.amazonaws.com",
+                    "app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg:sub": "account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/OIDC_Test"
+                }
+            }
+        }
+    ]
+}
+```
+You can match only the aud or sub. To map to a particular organization and project, you must enable the feature flag `PL_OIDC_ENHANCED_SUBJECT_FIELD` . The subject value will follow the format shown above: `account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/OIDC_Test`.
 
 </details>
 

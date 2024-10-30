@@ -40,9 +40,21 @@ This plugin does not require a delegate proxy to be set up.
 
 ## Layout
 
-This plugin exports a UI tab that you can use as a new IACM tab for workspaces or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code under **iacm** section as we do for the **CI/CD** section:
+_No action required_
 
-```yaml
+This plugin exports a UI tab that you can use as a new IACM tab for workspaces or for any other layout page. The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
+
+```YAML
+- name: iacm
+  path: /iacm
+  title: IACM
+  contents:
+    - component: EntityIacmContent
+```
+
+Also you could add a conditional like `isHarnessIacmAvailable` which is met when `harness.io/workspace-url` annotation is present in the software components's `catalog-info.yaml` definition file.
+
+```YAML
 - name: iacm
   path: /iacm
   title: IACM
@@ -55,12 +67,11 @@ This plugin exports a UI tab that you can use as a new IACM tab for workspaces o
               component: EntityIacmContent
 ```
 
-The `isHarnessIacmAvailable` condition is met when `harness.io/workspace-url` annotation is present in the software components's `catalog-info.yaml` definition file.
-
+![](./static/harness-iacm-backstage-plugin-screenshot.png)
 
 ## Annotations
 
-To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file, you can fetch the workspaces URL from the [workspaces](https://developer.harness.io/docs/infra-as-code-management/workspaces/create-workspace) page:
+To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file, you can fetch the workspaces URL from the [workspaces](https://developer.harness.io/docs/infra-as-code-management/workspaces/create-workspace) page. Note that the URL should be in the format of `https://app.harness.io/ng/account/<ACCOUNT_ID>/module/iacm/orgs/<ORGANIZATION_ID/projects/<PROJECT_ID/workspaces/<WORKSPACE_ID/resources`
 
 ```yaml
 apiVersion: backstage.io/v1alpha1

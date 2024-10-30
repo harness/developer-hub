@@ -5,7 +5,7 @@ sidebar_position: 2
 ---
 
 :::warning
-As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Gitness](https://gitness.com/). More details are available on this [blog post](https://www.harness.io/blog/retiring-harness-cd-community-edition-in-favor-of-gitness).
+As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Harness Open Source](/docs/open-source/overview).
 
 Use the instructions on this page only if you are still using the Harness CD CE.
 :::

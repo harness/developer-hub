@@ -2,6 +2,7 @@
 title: Pre-built public images
 description: These images are loaded with helpful libraries for CI pipelines.
 sidebar_position: 80
+canonical_url: https://www.harness.io/blog/deploy-your-simple-node-js-application-using-local-docker-images-in-minikube
 ---
 
 The [Harness Community](https://github.com/harness-community/) maintains pre-built, public Docker images that you can use to quickly set up a build environment. These images are heavily extended versions of official Docker images, and they include useful tools for CI pipelines.

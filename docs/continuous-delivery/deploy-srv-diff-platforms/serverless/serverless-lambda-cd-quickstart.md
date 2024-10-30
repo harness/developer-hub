@@ -8,6 +8,7 @@ helpdocs_is_private: false
 redirect_from:
   - /docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/cicd-for-serverless
 ---
 
 import Tabs from '@theme/Tabs';
@@ -75,7 +76,7 @@ Review [Harness Key Concepts](/docs/platform/get-started/key-concepts) to esta
     - View and copy the API Key and Secret to a temporary place. You'll need them when setting up the Harness AWS Connector later in this quickstart.
     - **Full Admin Access:** click on **Attach existing policies directly**. Search for and select **AdministratorAccess** then click **Next: Review**. Check to make sure everything looks good and click **Create user**.
     - **Limited Access:** click on **Create policy**. Select the **JSON** tab, and add the JSON using the following code from the [Serverless gist](https://gist.github.com/ServerlessBot/7618156b8671840a539f405dea2704c8) IAMCredentials.json:
-- **OIDC-enabled AWS Connector**: Currently, Serverless functions cannot be deployed using an OIDC-enabled AWS Connector.
+- **OIDC-enabled AWS Connector**: Serverless functions can be deployed using an OIDC-enabled AWS Connector.
 
 <details>
 <summary>IAMCredentials.json</summary>
@@ -242,7 +243,7 @@ We recommend you to use the new images that we have introduced with multiple run
 
 #### New Images
 
-Harness support [multiple runtime images](https://hub.docker.com/r/harness/serverless-plugin/tags) for **nodejs20**, **nodejs18** and **java17**. These are Linux AMD64 images. 
+Harness support [multiple runtime images](https://hub.docker.com/r/harness/serverless-plugin/tags) for **nodejs20**, **nodejs18**, **java17**, **java8**, **python3.11**, **python3.12** and **ruby3.2**. These are Linux AMD64 images. 
 
 Unlike old images, in new images a single image has the capabiliity of handling all the serverless steps.
 
@@ -253,6 +254,10 @@ There are two flavours of images available first with serverless installed and o
 | nodejs 20 | harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64 | harness/serverless-plugin:nodejs20.x-1.0.0-beta-linux-amd64 |
 | nodejs 18 | harness/serverless-plugin:nodejs18.x-3.39.0-1.0.0-beta-linux-amd64 | harness/serverless-plugin:nodejs18.x-1.0.0-beta-linux-amd64 |
 | java 17 | harness/serverless-plugin:java17-3.39.0-1.0.0-beta-linux-amd64 | harness/serverless-plugin:java17-1.0.0-beta-linux-amd64 |
+| java 8 | harness/serverless-plugin:java8.al2-3.39.0-1.0.0-beta-linux-amd64 | harness/serverless-plugin:java8.al2-1.0.0-beta-linux-amd64 |
+| python 3.11 | harness/serverless-plugin:python3.11-3.39.0-1.0.0-beta-linux-amd64 | harness/serverless-plugin:python3.11-1.0.0-beta-linux-amd64 |
+| python 3.12 | harness/serverless-plugin:python3.12-3.39.0-1.0.0-beta-linux-amd64 | harness/serverless-plugin:python3.12-1.0.0-beta-linux-amd64 |
+| ruby 3.2 | harness/serverless-plugin:ruby3.2-3.39.0-1.0.0-beta-linux-amd64 | harness/serverless-plugin:ruby3.2-1.0.0-beta-linux-amd64 |
 
 
 Now, let's understand the runtime image one with serverless installed and one without serverless installed. 

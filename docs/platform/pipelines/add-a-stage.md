@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/platform/pipelines/add-a-custom-stage
+canonical_url: https://www.harness.io/blog/ci-cd-pipeline
 ---
 
 

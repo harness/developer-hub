@@ -1,8 +1,8 @@
 {
-    "label":"Software Supply Chain Assurance",
+    "label":"Supply Chain Security",
     "collapsible":"true",
     "collapsed":"true",
-    "className":"red",
+    "className":"default",
     "link":{
        "type":"generated-index",
        "title":"Software Supply Chain Assurance"

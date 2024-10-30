@@ -6,6 +6,7 @@ helpdocs_topic_id: rt449t1xhy
 helpdocs_category_id: 85tr1q4hin
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/blue-green-canary-deployment-strategies
 ---
 
 This topic describes how Harness rolls back to the last successful version of your workload in response to failures.

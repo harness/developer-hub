@@ -157,7 +157,7 @@ For users setting a JEXL Boolean condition, it is important to remember that a c
 This will still show a step or stage as completed successfully.
 ![](./static/conditional-skipped.png)
 
-Depending on the situation, this might be the desired effect. Otherwise, you should [implement a failure strategy for the step/stage](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
+Depending on the situation, this might be the desired effect. Otherwise, you should [implement a failure strategy for the step/stage](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings.md).
 ### Failure strategies take precedence over conditional executions
 
 Your stages and steps can include both conditional executions and [failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).

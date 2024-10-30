@@ -3,7 +3,6 @@
 
 User-Agent: *
 Allow: /
-Disallow: /docs/first-gen
 Disallow: /docs/first-gen/
 
 User-agent: coveobot
@@ -13,6 +12,6 @@ Sitemap: https://developer.harness.io/sitemap.xml
 
 # For alpha or hidden modules, add to this file to exclude from search engines
 # User-Agent: *
-# Disallow: /docs/infra-as-code-management
-# Disallow: /docs/infra-as-code-management/
-
+# Disallow: /docs/{slug}/
+# Disallow: /docs/{slug}/{file-name}
+# Disallow: /docs/database-devops/

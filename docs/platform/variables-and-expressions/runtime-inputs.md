@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/platform/references/runtime-inputs
+canonical_url: https://www.harness.io/blog/github-actions-support-harness-ci
 ---
 
 import Tabs from '@theme/Tabs';

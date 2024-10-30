@@ -6,6 +6,7 @@ helpdocs_topic_id: 2aaevhygep
 helpdocs_category_id: f6rh2cdvx9
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/getting-started-with-helm
 ---
 
 :::warning

@@ -3,7 +3,7 @@
     "position": 15,
     "collapsible":"true",
     "collapsed":"true",
-    "className":"red",
+    "className":"default",
     "link":{
        "type":"generated-index",
        "title":"Early access features on Harness SEI"

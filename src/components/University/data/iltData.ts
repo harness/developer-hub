@@ -57,4 +57,37 @@ export const ilt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },
+  {
+    title: "Cloud Cost Management",
+    module: MODULES.ccm,
+    type: type.user,
+    description:
+      "Deep dive into advanced Cloud Cost Management concepts supporting FinOps.",
+    version: "Harness CCM Enterprise Plan",
+    link: "https://university-registration.harness.io/ilt-cloud-cost-management",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
+  {
+    title: "Infrastructure as Code Management",
+    module: MODULES.iacm,
+    type: type.user,
+    description:
+      "Deep dive into advanced IaC orchestration and management concepts.",
+    version: "Harness IaCM Enterprise Plan",
+    link: "https://university-registration.harness.io/ilt-infrastructure-as-code-management",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
+  {
+    title: "Internal Developer Portal",
+    module: MODULES.idp,
+    type: type.user,
+    description:
+      "Deep dive into advanced IDP and developer self-service concepts.",
+    version: "Harness IDP Enterprise Plan",
+    link: "https://university-registration.harness.io/ilt-internal-developer-portal",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
 ];

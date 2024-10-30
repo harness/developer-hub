@@ -313,6 +313,7 @@ target segment not found%!(EXTRA string-some-target-here)
 This error occurs if a user is trying to add a target group that does not exist as a target to a Feature Flag.
 
 #### Why am I getting a target not created error?
+
 ```
 target not created 'target'
 ```
@@ -320,9 +321,30 @@ target not created 'target'
 This error occurs if a user is trying to add a target that already exists.
 
 #### How to retrieve the feature flag state for a specific target via API?
-The best approach today to achieve this usecase is If you want to know what a specific target will get for a specific flag, you can instantiate one of the SDKs, connect with an SDK key and evaluate that target. It’s the most reliable way of doing it since it’s exactly what the target will be doing.
+The best approach today to achieve this usecase is if you want to know what a specific target will get for a specific flag, you can instantiate one of the SDKs, connect with an SDK key and evaluate that target. It’s the most reliable way of doing it since it’s exactly what the target will be doing.
 
-## FF On-Premises Deployments
+#### How does the client SDK handle target creation when a service restarts and authenticates?
+
+When a service restarts and authenticates, it must supply the target information itself. The SDK does not store or manage targets on the Harness side. Therefore, the customer's application is responsible for providing the target and its associated data during authentication. Typically, this information would be retrieved from a session if it pertains to a user, or fetched from a user store. This ensures that the service has the necessary target data upon restarting and re-authenticating.
+
+#### Does deleting a Flag in one environment delete it from all other environments?
+
+Yes, deleting a flag in one environment does delete it from all environments.
+
+#### Why weren't delete actions included in the Feature Flag Admin role?
+
+Deleting a flag can lead to catastrophic consequences. To safeguard against this, we want our users to think carefully about permissions. The Feature Flag Admin role can do almost everything except delete to prevent accidental or unintended deletions.
+
+#### How can I grant delete permissions to a user if the Feature Flag Admin role does not include it?
+
+If you need to grant delete permissions to a user, you have two options:
+
+1. Use one of the out-of-the-box roles: Project Admin, Org Admin, or Account Admin. All of these roles include the delete flag permission and allow users to perform all necessary actions.
+2. Create a specific role that includes the delete permission and assign that role to your users. This way, you can tailor permissions to your exact needs while maintaining control over potentially destructive actions.
+
+#### What does warning NU1701 mean?
+
+The warning NU1701 is a common issue encountered in .NET projects when there are compatibility problems between the project and the NuGet packages it depends on. This warning typically indicates that a referenced package was restored using a target framework that does not fully support the target framework of the project.
 
 #### How can I resolve the issue where the `ff-service` cannot connect to the database, resulting in the error `FATAL: database 'cf_db'` does not exist (SQLSTATE 3D000)"?
 
@@ -334,3 +356,73 @@ In the event that the `ff-service` is unable to connect to the database due to t
  2. Reinstall the Helm Chart:
 
  - Reinstalling the Helm chart will re-trigger the migration and setup process, ensuring that the database is created correctly. By deleting the failed migration job and reinstalling the Helm chart, you can resolve the database connection issue and ensure the ff-service connects to the newly created database.
+
+#### Why is my feature flag returning the default variation for a specific target always?
+
+The default variation is returned when the feature flag evaluation either fails or does not match the defined conditions for the target. This can happen due to misconfigured targeting rules, SDK integration issues, or incorrect environment setup.
+
+#### Why does the feature flag work for one target but not another?
+
+This discrepancy may occur due to differences in the way the targets are configured. Targeting rules, audience segmentation, or SDK setup might differ between targets, causing the flag to behave differently for each.
+
+#### What does it mean when the feature flag evaluation fails?
+
+This may happen if the target doesn't meet any conditions, if there's a problem fetching the flag, or if the evaluation logic encounters an error.
+
+#### What steps can I take to resolve the issue of the default variation being served?
+
+1. Compare the flag configuration and targeting rules between targets.
+2. Ensure the SDK is correctly initialized and integrated with the environment.
+3. Check logs for errors or issues in the flag evaluation process.
+4. Verify the target meets the necessary conditions to receive the intended variation.
+5. Confirm the correct flag version is deployed to the right environment.
+
+#### What would be the best practice for targeting large user groups(in millions)?
+
+The best practice is to use attribute-based targeting. Assign an attribute (e.g., emailWhitelist) to users in the large group and create a rule based on that attribute. This approach avoids performance issues and ensures a more manageable solution.
+
+#### How does targeting a large group impact the client-side SDKs?
+
+Client-side SDKs will need to fetch larger documents, increasing data transfer time and affecting overall evaluation speed. This can cause noticeable delays on the client-side due to limited processing power and resources compared to server-side environments. These performance bottlenecks can lead to poor user experience.
+
+#### Why is it recommended to use attributes instead of targeting users directly?
+
+Using attributes (like emailWhitelist: true) helps:
+1. Improve performance by using more efficient lookup methods (e.g., equals instead of in).
+2. Avoid UI management issues, since you don’t have to manually manage such a large list of users.
+
+####  What does the error "FF-SDK Streaming: SSE read timeout" mean?
+
+This error indicates that the Server-Sent Events (SSE) stream used by the Harness SDK has been disconnected, typically due to network issues or other interruptions. It is a normal occurrence in varied network conditions.
+
+#### Is the "FF-SDK Streaming: SSE read timeout" a critical issue?
+
+In most cases, this error is not critical. Starting from version 1.26.2 of the Harness FF JavaScript Client SDK, this timeout is logged at a debug level to indicate that disconnections are expected and normal. The system will attempt to reconnect, and in the meantime, it uses polling as a fallback.
+
+#### What can I do to prevent SSE read timeouts?
+
+Since occasional SSE disconnections are normal, there's no need to prevent them. However, ensuring a stable network connection can help reduce the frequency of timeouts. You should only investigate further if timeouts happen frequently or if the SDK fails to reconnect after multiple attempts.
+
+#### When adding Target Group, is there a way of adding multiple Ids in one copy ?
+
+You can use the api and provide multiple values in one go
+
+#### Is there a way to create a Target group in one environment and then promote it across the other environments?
+
+We have APIs to create target groups  [API](https://apidocs.harness.io/tag/Target-Groups), which can further be automated using pipelines.
+
+#### Can we manage targets and target groups using Git Sync? is it possible to move targets between target groups using Git Sync?
+
+No, Git Sync is only used for managing flag configurations. Targets and target groups cannot be managed or moved between groups through Git Sync.
+
+#### Why shouldn't I use a server-side SDK key in client-side applications?
+
+Using a server-side SDK key in client-side applications (like browser or mobile apps) is not secure because client-side environments can be easily inspected and compromised by users. Attackers can use browser developer tools or unpack mobile apps to access sensitive information, including the SDK key. Server-side SDK keys should only be used in secure server environments.
+
+#### How do I enable verbose logging to view these details?
+
+To see these logs, you need to set your logger level to debug. Keep in mind that debug-level logs may not be suitable for production environments, as they can generate a significant amount of information.
+
+#### Can I see which target group rule evaluated to true to return the flag value in the .NET SDK logs?
+
+Yes, in the .NET SDK, verbose logging can provide detailed information about which target group rules were evaluated and whether they matched. To access these logs, your logging level should be set to debug.

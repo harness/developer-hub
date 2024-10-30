@@ -70,7 +70,7 @@ The `Privileged` field interacts differently depending on which step is being us
 - Background step 
 - Plugin step 
 - Run step
-- All 3 SSCA (Software Supply Chain Assurance) steps
+- All 3 SCS (Supply Chain Security) steps
 
 #### Previous Behavior:
 

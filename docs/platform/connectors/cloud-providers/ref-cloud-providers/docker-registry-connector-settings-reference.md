@@ -72,7 +72,7 @@ If you select **Other**, the registry must be Docker V2 compliant.
 The URL of the Docker registry. This is usually the URL used for your [docker login](https://docs.docker.com/engine/reference/commandline/login/) credentials.
 
 * To connect to a public Docker Hub registry, use `https://index.docker.io/v2/`.
-* To connect to a private Docker Hub registry, use `https://index.docker.io/v1/`.
+* To connect to a private Docker Hub registry, use `https://index.docker.io/v1/`. Learn [why](/kb/continuous-integration/continuous-integration-faqs#why-build-and-push-steps-dont-support-v2-api-urls).
 * For other Docker registries, provide the relevant URL for your container registry provider. For example:
    * For GitHub Container Registry, provide the GHCR hostname and namespace, such as `https://ghcr.io/NAMESPACE`. The namespace is the name of a GitHub personal account or organization.
    * For JFrog Artifactory Docker registries, provide your JFrog instance URL, such as `https://mycompany.jfrog.io`. You can get this URL from the `docker-login` command on your repo's **Set Me Up** page.
@@ -115,5 +115,11 @@ You can connect through a Harness Delegate or the Harness Platform. If you plan 
 :::tip
 
 The **Secure Connect** option is for [Secure Connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+
+:::
+
+:::info Limitation
+
+The Docker connector currently does not support OpenID Connect (OIDC) for authentication, limiting integration with OIDC-compliant identity providers
 
 :::

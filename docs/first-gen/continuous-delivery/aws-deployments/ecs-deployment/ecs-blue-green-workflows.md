@@ -6,6 +6,7 @@ helpdocs_topic_id: 7qtpb12dv1
 helpdocs_category_id: df9vj316ec
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/amazon-ecs-blue-green-deployments-with-harness
 ---
 
 This topic describes different methods for creating ECS Blue/Green Workflows.

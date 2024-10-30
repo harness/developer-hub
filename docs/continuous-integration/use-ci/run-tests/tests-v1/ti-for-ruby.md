@@ -4,13 +4,17 @@ description: Set up TI for Ruby programming language.
 sidebar_position: 40
 redirect_from:
   - /docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-ruby
+canonical_url: https://www.harness.io/blog/ci-ruby-test-intelligence
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::info
-While the **Run Tests** step remains backwards compatible, Harness recommends using the new [**Test** ](../tests-v2.md) step to take advanced of improved user experience.
+This page contains instructions for using  Test Intelligence (v1) with the **Run Tests** step. 
+
+While **Run Tests** step remains backwards compatible, Harness recommends using the newer [**Test** ](../tests-v2.md) step (Test Intelligence v2) for simplified user experience.
+
 :::
 
 

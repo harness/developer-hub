@@ -6,12 +6,6 @@ redirect_from:
   - /tutorials/internal-developer-portal/opa-scorecards
 ---
 
-:::info
-
-This feature is currently behind the Feature Flag `IDP_ENABLED FF`. Please contact [Harness Support](mailto:support@harness.io) to enable it in your account.
-
-:::
-
 Harness Policy As Code uses [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) as the central service to store and enforce policies for the different entities and processes across the Harness platform. For more information about Harness Policy as Code, go to [Harness Governance Overview](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview) and [Harness Governance Quickstart](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 
 You can centrally define and store policies and then select where (which entities) and when (which events) they will be applied.

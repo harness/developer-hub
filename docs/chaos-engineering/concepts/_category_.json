@@ -1,0 +1,14 @@
+{
+  "position": 2,
+  "label": "Concepts and Features",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Concepts and Features",
+      "description": "Understand the general concepts of Chaos Engineering, the deployment architecture and explore features."
+   },
+  "customProps": {
+    "description": "Understand the general concepts of Chaos Engineering, concepts in Harness Chaos Engineering, it's architecture & explore it's features"
+  }
+}

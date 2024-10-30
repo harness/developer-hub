@@ -1,0 +1,16 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/typescript-node",
+    "extensions": [
+        "dbaeumer.vscode-eslint",
+        "orta.vscode-jest",
+        "esbenp.prettier-vscode",
+        "streetsidesoftware.code-spell-checker",
+        "github.vscode-pull-request-github"
+    ],
+    "hostRequirements": {
+       "cpus": 4,
+       "memory": "8gb"
+    },
+    "postCreateCommand": "yarn install",
+    "waitFor": "postCreateCommand" // otherwise automated jest tests fail
+}

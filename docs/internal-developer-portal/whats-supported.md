@@ -41,14 +41,20 @@ For information about what's supported for other Harness modules and the Harness
 
 :::info
 
-Harness IDP requires some secrets to be set for plugins and external integrations in Catalog to work. In these cases, we only support secrets stored in the [Harness secret manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+Harness IDP requires some secrets to be set for plugins and external integrations in Catalog to work. In these cases, we support all kind of [secret managers](https://developer.harness.io/docs/category/secrets-management). 
 
 :::
 
-## Template Actions to Trigger Harness Pipeline
+## Workflow Actions to Trigger Harness Pipeline
 
-- The template actions currently supports only [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)(**Only Available with Harness CD License**) and [codebase disabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) **CI stage(Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
+### [trigger:harness-custom-pipeline](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline)
+
+- This action currently supports only [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)(**Only Available with Harness CD License or Free Tier usage**) and [codebase disabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) **CI stage (Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
 - All input, except for [pipeline expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be [fixed values](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
+
+### [trigger:trigger-pipeline-with-webhook](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#2-triggertrigger-pipeline-with-webhook)
+
+- This action supports all types of pipeline with a webhook based trigger. It triggers a pipeline execution based on the input-set identifier and a webhook name. 
 
 :::info
 
@@ -57,3 +63,14 @@ Workflows in IDP use Harness Pipelines as Orchestrator, so any secret requiremen
 You can use Harness Secret Manager as well for the above described function. 
 
 :::
+
+## Miscellaneous
+
+| **What do we Support?**              | **Links**                                                                                                                                                                                                                                                        |
+|----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Custom Plugins                   | We support only [Frontend Backstage Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/build-a-frontend-plugin) as [Custom Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview)   |
+| Scorecard Data Sources            | These are the list of available Scorecard [Data Sources](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources)                                                                                                           |
+| Backstage Plugins                | [Available Backstage Plugins](https://developer.harness.io/docs/category/available-plugins)                                                                                                                                                                  |
+| Custom Theming And Branding      | Not supported.                                                                                                                                                                                                                                         |
+| Developer Homepage Customisation | You can customize the Homepage for a personalized experience.                                                                                                                                                                                                |
+| API support to update entities   | We support [Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties) to update entities in the catalog.                                                                                           |

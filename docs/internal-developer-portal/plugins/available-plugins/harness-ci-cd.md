@@ -70,6 +70,8 @@ The `isHarnessCiCdAvailable` condition is met when one of the following annotati
 - `harness.io/services`
 - `harness.io/project-url` (deprecated)
 
+![](./static/cd-tab.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file, [follow the information on how to fetch the URLs for annotation](https://github.com/harness/backstage-plugins/blob/main/plugins/harness-ci-cd/PluginConfiguation.md):
@@ -82,13 +84,13 @@ metadata:
   annotations:
     # optional annotation
     harness.io/pipelines: |
-      labelA: <harness_pipeline_url>
-      labelB: <harness_pipeline_url>
-    # here labelA / labelB denotes the value you will see in dropdown in execution list.
+      CI: <harness_ci_pipeline_url>
+      CD: <harness_cd_pipeline_url>
+    # here labelA / labelB (example: CI/CD) denotes the value you will see in dropdown in execution list.
     # optional annotation
     harness.io/services: |
-      labelA: <harness_service_url>
-      labelB: <harness_service_url>
+      serviceA: <harness_service_url>
+      serviceB: <harness_service_url>
 spec:
   type: service
   # ...

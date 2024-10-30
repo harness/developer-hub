@@ -5,6 +5,7 @@ sidebar_position: 40
 redirect_from:
   - /docs/getting-started/harness-ui-overview
   - /docs/get-started/harness-ui-overview
+canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 
 import select_modules from './static/select-modules-leftnav.png'

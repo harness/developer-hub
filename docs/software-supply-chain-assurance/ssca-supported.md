@@ -1,6 +1,6 @@
 ---
-title: What's supported by Harness SSCA
-description: The SSCA module supports these components and standards.
+title: What's supported by Harness SCS
+description: The SCS module supports these components and standards.
 sidebar_label: What's supported
 sidebar_position: 10
 ---

@@ -1,11 +1,21 @@
 ---
 description: Sandbox to learn about MD and HDH Features, powered by Docusaurus
 title: Get Creative with HDH and Docusaurus
+canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 tags:
   - contributing
 redirect_from:
   - /sandbox
 ---
+
+<CTABanner
+  buttonText="Banner Button Text"
+  title="Title text."
+  tagline="Tagline text!"
+  link="https://www.harness.io/training"
+  closable={true}
+  target="_self"
+/>
 
 import harness_atl from './static/atlanta_light.png'
 
@@ -41,7 +51,7 @@ H5 Heading
 
 Details are toggle elements.
 
-As of Late 2023 we have a [Set Focus](https://github.com/harness/developer-hub/blob/main/plugins/focusOnAnchor-plugin/index.js) feature that will process which detail the link is on and expand the appropriate section if a detail. 
+As of Late 2023 we have a [Set Focus](https://github.com/harness/developer-hub/blob/main/plugins/focusOnAnchor-plugin/index.js) feature that will process which detail the link is on and expand the appropriate section if a detail.
 
 - https://developer.harness.io/docs/hdh/hdh-docusaurus-sandbox#second-level-detail-heading
 
@@ -49,12 +59,14 @@ As of Late 2023 we have a [Set Focus](https://github.com/harness/developer-hub/b
 <summary>First Level Detail</summary>
 
 ### First Level Detail Heading
+
 Some first level text
 
 <details>
 <summary>Second Level Detail</summary>
 
 ### Second Level Detail Heading
+
 Some second level text
 
 </details>
@@ -107,7 +119,7 @@ e.g deeper linking:
 Can see what the tab value ='s then the anchor tab there in combination and for nested tabs can continue.
 `?pipeline=uicdpipe&gitops-cli-os=windowsgitops&deploymentcli=helmrollingcli#create-a-service-3`
 
-As of Late 2023 we have a [Set Focus](https://github.com/harness/developer-hub/blob/main/plugins/focusOnAnchor-plugin/index.js) feature that will process which tab the link is on and expand the appropriate section if a detail. 
+As of Late 2023 we have a [Set Focus](https://github.com/harness/developer-hub/blob/main/plugins/focusOnAnchor-plugin/index.js) feature that will process which tab the link is on and expand the appropriate section if a detail.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -123,7 +135,9 @@ This is an `TabItem` 1.
 <summary>Details in Tab One </summary>
 
 #### Header inside Details Tab One
-Detail text tab 1. 
+
+Detail text tab 1.
+
 </details>
 
 </TabItem>
@@ -137,7 +151,9 @@ This is an `TabItem` 2.
 <summary>Details in Tab Two </summary>
 
 #### Header inside Details Tab Two
-Detail text tab 2. 
+
+Detail text tab 2.
+
 </details>
 
 </TabItem>
@@ -253,13 +269,158 @@ clicked and hoovered. Though pills can contain links also.
 <DocsTag icon = "fa-solid fa-hand-dots"  backgroundColor= "#cbe2f9"   textColor="#0b5cad" iconColor="#6938c0" text="Community" link="/docs/security-testing-orchestration"  />
 
 ## Embed Mode
+
 If needing to embed HDH externally, can use the embed request parameter e.g `embed=true`. Below
-is an example of an iframe. 
+is an example of an iframe.
 
 ```
 <iframe src="https://developer.harness.io/docs/platform/get-started/onboarding-guide?embed=true" title="HDH Embed Example" height="600" width="940"></iframe>
- ```
+```
 
- #### Iframe Render
+#### Iframe Render
 
 <iframe src="https://developer.harness.io/docs/platform/get-started/onboarding-guide?embed=true" title="HDH Embed Example" height="600" width="940"></iframe>
+
+## Math Equations
+
+### Inline
+
+Write inline math equations by wrapping LaTeX equations between $:
+
+```
+Let $f\colon[a,b]\to\R$ be Riemann integrable. Let $F\colon[a,b]\to\R$ be
+$F(x)=\int_{a}^{x} f(t)\,dt$. Then $F$ is continuous, and at all $x$ such that
+$f$ is continuous at $x$, $F$ is differentiable at $x$ with $F'(x)=f(x)$.
+```
+
+Let $f\colon[a,b]\to\R$ be Riemann integrable. Let $F\colon[a,b]\to\R$ be
+$F(x)=\int_{a}^{x} f(t)\,dt$. Then $F$ is continuous, and at all $x$ such that
+$f$ is continuous at $x$, $F$ is differentiable at $x$ with $F'(x)=f(x)$.
+
+### Blocks
+
+For equation block or display mode, use line breaks and $$:
+
+```
+$$
+I = \int_0^{2\pi} \sin(x)\,dx
+$$
+```
+
+$$
+I = \int_0^{2\pi} \sin(x)\,dx
+$$
+
+### Escaping Dollar Signs
+
+Leveraging `$` as plain text now needs to be escaped.
+
+```
+#Safe
+`**${host}**`
+
+#Safe
+`${host}`
+
+#Not Safe
+${host}
+```
+
+## HDH API CALL
+
+### Usuage
+
+```js
+<HarnessApiData
+  query="https://app.harness.io/ng/api/organizations/default"
+  accountIdentifier
+  token
+  fallback="harness fallback"
+  parse=".data.organization.description"
+/>
+```
+
+### Result
+
+<HarnessApiData  query="https://app.harness.io/ng/api/organizations/default" accountIdentifier token fallback="harness fallback" parse=".data.organization.description"/>
+
+### Usuage
+
+```js
+<HarnessApiData
+  query="https://app.harness.io/gateway/iacm/api/provisioners/supported/terraform"
+  token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
+  fallback="error"
+  parse='.[-1] | "(up to v\(.))"'
+></HarnessApiData>
+```
+
+### Result
+
+<HarnessApiData
+    query="https://app.harness.io/gateway/iacm/api/provisioners/supported/terraform"
+    token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
+    fallback="error"
+    parse='.[-1] | "(up to v\(.))"'>
+</HarnessApiData>
+
+### Usuage
+
+```js
+<HarnessApiData
+  query="https://jsonplaceholder.typicode.com/todos/1"
+  fallback="Failed to load data."
+  parse=".title"
+/>
+```
+
+### Result
+
+<HarnessApiData query="https://jsonplaceholder.typicode.com/todos/1" fallback="Failed to load data." parse=".title"
+
+/>
+
+## Call To Action (CTA) Banners
+A few ways of adding banners in HDH. 
+
+### Per Page CTA
+
+Leverage the `CTABanner` tag which is on this page. 
+
+```
+<CTABanner
+  buttonText="Banner Button Text"
+  title="Title text."
+  tagline="Tagline text!"
+  link="https://www.harness.io/training"
+  closable={true}
+  target="_self"
+/>
+```
+
+### Rule Based Bannering
+This needs to be configured in `docusaurus.config.js` with the `announcementBar` element. 
+
+```
+ announcementBar: {
+          id: 'announcementBar_cd_announcement',
+          content:
+            "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>FirstGen Harness CD will be EOL on 12/30/2023 and EOS on 3/30/2024.</span> Learn more in our <a href='/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd/' target='_self'>Upgrade Guide</a>. Contact  <a href='https://support.harness.io' target='_self'>Harness Support</a> with questions or concerns.",
+          backgroundColor: '#FFF5ED',
+          textColor: '#000000',
+          isCloseable: true,
+        },
+        announcementBarByPath: {
+          // list all pathnames in Regular expressions format
+          pathRegExp: [
+            // paths for md-doc pages / global patterns
+            '^/docs/first-gen/continuous-delivery.*',
+            '^/docs/first-gen/first-gen-quickstarts.*',
+            '-fg.*',
+            'fg-.*',
+            'firstgen-.*',
+            'first-gen.*',
+            '-firstgen.*',
+          ],
+        },
+```

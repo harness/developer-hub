@@ -550,6 +550,8 @@ Harness don’t handle helm hooks from our side in any way.
 
 If a deployment doesn't reach a steady state, CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG will log the events and errors that occur, helping you diagnose and resolve the issues that prevented the deployment from completing successfully.
 
+### How to execute helm lookup expression in helm template?
+We can pass the helm template command option  `--dry-run=server`. These command options can be added in the helm manifest advanced configruation.
 
 #### How to execute helm lookup expression in helm template?
 We can pass the helm template command option "--dry-run=server". These command options can be added in the helm manifest advanced configruation.
@@ -558,4 +560,8 @@ We can pass the helm template command option "--dry-run=server". These command o
 We do not have any way to provide customer ordering. We follow a bottom up approach for values yaml priority in case of multiple values yaml provided where the last one gets the highest priority.
 
 #### What happens if we do not pass any chart version to helm deployment having manifest with runtime input option for chart version?
+### Is it possible to provide custom priority order for values.yaml while providing multiple values yaml file?
+We do not have any way to provide customer ordering. We follow a bottom up approach for values yaml priority in case of multiple values yaml provided where the last one gets the highest priority.
+
+### What happens if we do not pass any chart version to helm deployment having manifest with runtime input option for chart version?
 If chart version is not provided as runtime input the deployment is done using the latest chart version available for the specified chart in the given repo.

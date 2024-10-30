@@ -50,6 +50,8 @@ When adding the host, include only the host name. Remove the protocol (HTTP/HTTP
 
 This plugin provides components that are included on the search results page. It does not export any components to be used in the layout section of the IDP Admin UI.
 
+![](./static/confluence_search_result.png)
+
 ## Annotations
 
 This plugin does not require annotations.

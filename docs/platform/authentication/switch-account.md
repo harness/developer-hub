@@ -6,6 +6,7 @@ helpdocs_topic_id: 918lei069y
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false
 helpdocs_is_published: true
+canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 
 You can be a part of more than one Harness Account. This topic explains how to switch between multiple Accounts in Harness.
