@@ -47,7 +47,7 @@ These are the essential settings for performing an Orchestration scan using the 
 ## Ingestion mode configuration
 With the Ingestion mode in the Traceable step, you can read scan results from a data file and import them into STO. To do this, you need the scan results saved in a supported format. This section explains how to fetch and save the scan results in `JSON` format, then use Ingestion mode in the Traceable step to feed the data into STO.
 
-If you already have the scan results in the supported format and just need to configure Ingestion mode, skip ahead to **Configure the Traceable Step for Ingestion**.
+If you already have the scan results in the supported format and just need to configure Ingestion mode, skip ahead to [Configure the Traceable Step for Ingestion](#configure-the-traceable-step-for-ingestion).
 
 ### Fetch and save scan results in JSON format
 Search and add a **Run** step in your pipeline and add the following command in the step.
@@ -264,10 +264,10 @@ You should create a Harness text secret with your encrypted token and reference 
 ### Scan Tool
 
 #### Suite ID
-Enter the Traceable suite id, you can learn more  about Suites in [Traceable documentation](https://docs.traceable.ai/docs/suites#:~:text=The%20API%20Security%20Suites%20page,environment%20to%20create%20a%20scan.).
+Enter the Traceable Suite  ID, which you can find in the URL when you open your suite in Traceable. For example, in the URL `https://app.traceable.ai/my-suite/44aadeB-782b-8d52-8q12-43kdf33/vulnerabilities?time=1d&env=env`, the suite ID is `44aadeB-782b-8d52-8q12-43kdf33`. You can learn more about Suites in the [Traceable documentation](https://docs.traceable.ai/docs/suites).
 
 #### Runner Selection
-This field appears when the scan mode is set to "Orchestration." You can choose to let STO configure it automatically by selecting **Auto**, or set it manually by choosing **Manual**. If you select **Manual**, you’ll need to enter the ID of the Traceable runner in the **Runner ID** field.
+This field appears when the scan mode is set to **Orchestration**. You can allow Traceable to set it automatically by selecting **Auto**, or configure it manually by choosing **Manual**. If you select **Manual**, enter the Traceable environment ID in the **Runner ID** field.
 
 ### Ingestion File
 
