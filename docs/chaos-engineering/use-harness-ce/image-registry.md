@@ -1,5 +1,4 @@
 ---
-id: image-registry
 sidebar_position: 5
 title: Image Registry
 description: A repository that hosts container images used by chaos experiments.

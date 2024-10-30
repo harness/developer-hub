@@ -1,5 +1,4 @@
 ---
-id: app-maps
 sidebar_position: 1
 title: Application Maps
 redirect_from:
