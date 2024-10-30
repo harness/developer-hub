@@ -164,7 +164,7 @@ If accessing Google cloud resources, use [workload identity federation](https://
 
 #### Custom Parameters 
 
-You can add attribute condition in you Workload Identity Pools under Workload Identity Federation. 
+You can add attribute conditions in your Workload Identity Pools under Workload Identity Federation. 
 
 ![](./static/workload_pools.png)
 
@@ -213,7 +213,7 @@ Here are the custom attributes for the Harness GCP OIDC JWT:
 ```
 </details>
 
-Custom attributes will be passed in the JWT payload.
+Custom attributes will be included in the JWT payload.
 
 ### Troubleshoot GCP connector errors
 
