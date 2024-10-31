@@ -3297,6 +3297,15 @@ As per the current design, there's no native step for this but user can write a 
 
 The rollback option is only available for the deployment stage, So you can only be able to see in the deployment stage.
 
+#### References Tab in Templates not showing pipelines
+
+If the pipeline is in non-default branch and the template is in default branch here. We don’t calculate the references for non-default branches. Only the entities that are in default branch are recorded as reference. Thus its expected.
+
+#### Parallel execution for stages based of success of steps
+Yes this is achievable, We can setup condirional execution with jexl expression based on status of the stpe in the previus stage execution.
+
+#### Large pipeline names getting truncated in the Pipeline page UI.
+If your pipeline name is longer lets say 50 characters , yes a part of it gets truncated As we show pipeline name without getting truncated upto 44 characters in thr UI
 
 ### Infrastructure provisioning FAQs
 
