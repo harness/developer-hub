@@ -7,7 +7,7 @@ sidebar_position: 10
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-IaCM Default Pipelines simplify the process of provisioning, destroying, and managing infrastructure workspaces by providing quick access to your pre-configured pipelines. These pipelines can be created in the normal fashion, assigned as defaults at the project level and  triggered within any of that project's workspaces. This provides a much more streamlined experience and helps to ensure consistency across all of your workspaces.
+IaCM Default Pipelines simplify the process of provisioning, destroying, and managing infrastructure workspaces by providing quick access to your pre-configured pipelines. These pipelines can be created in the normal fashion, assigned as defaults at the project level and triggered within any of that project's workspaces. This provides a much more streamlined experience and helps to ensure consistency across all of your workspaces.  
 
 In addition, as some workspaces may require specialized pipelines, you can overwrite the defaults at the workspace level. This will not disrupt any other workspace using the project level defaults.
 
