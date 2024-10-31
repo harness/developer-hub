@@ -60,6 +60,12 @@ CCM gets read-only access to the cost data along with a list of all the member (
 
 Yes, CCM can sync the entire data if CUR files are available at the source. If a new CUR file is made available at source (even for previous months), CCM will sync and correct the data.
 
+#### My Azure connector see the error “Invalid Request: No billing export file is found in last 24hrs in”
+This happens as it is the first day of the month and the folder has not been created yet in the source azure-storage bucket where export exists. There is a lag of ~2 days in Azure exports (from source itself), then this will be resolved automatically.
+
+#### Connector suddenly cannot access CUR after changing directory path.
+This may be caused by the CUR report may have failed to generate on the cloud provider side. Please check the report and have it regenerated
+
 ### Azure connectors
 
 #### Can I create multiple Azure connectors for each Harness Account?
@@ -93,6 +99,9 @@ Yes, the billing export can be deleted. However, it is recommended that you stor
 #### Can CCM get historical data from CUR?
 
 Yes, CCM can sync the entire data if CUR files are available at the source without any limits. If a new CUR file is made available at source (even for previous months), CCM will sync and correct the data.
+
+#### I am seeing error message, “No EA Subscriptions for Management Group with managementGroupId” when trying to set up my Azure connector
+Check the Azure file to see if there is the correct permissions and if there is the correcting grouping.
 
 #### The Azure connector fails in the validation step and the message “Authorization permission mismatch” is displayed. What is the reason?
 
@@ -357,11 +366,23 @@ No, Harness doesn't support dynamic picking of instance families in node recomme
 
 Yes, Harness considers RIs and Savings Plans to provide insights into potential spend and savings. 
 
+#### Does Jira Recommendations support auto ticket creation?
+No the Jira tickets have to be manually created for the recommendations.
+
+#### How are my Recommendations being calculated?
+If you are using AWS, the recommendations are using the “GetRightsizingRecommendation” API from AWS.
+
 ### Perspectives and Dashboards
 
 #### What is the limit to the number of Perspectives that I can create in an account?
 
 You can create up to 250 Perspectives in an account. See [Create cost perspectives](../cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md).
+
+#### How can I set custom date range for Harness Dashboards?
+Custom time range can only be set for Time or Date fields. First select the correct type of field then choose “is in range” and then set the dates.
+
+#### Namespace is not showing up in a cluster dashboard, but they are seen in recommendations.
+This may be due how the dashboard is looking at the data. Make sure that the dashboard is set to look for Recommendations. There are different fields in the dashboard that shows Namespace depending on the deployment type.
 
 #### Will I be able to see tags in Perspectives?
 
@@ -384,6 +405,12 @@ To resolve any cost differences between the Perspective and Dashboard in Harness
   If the Dashboard is set to the default **ReportingTimeframe** value (Last 30 days) that does not encompass the specified **Time Period**, adjust the Reporting Timeframe filter to cover a larger interval that includes the Time Period filter. This ensures that the Dashboard data spans the same duration as the Perspective.
 
   ![](./static/dashboard-time-filters.png)
+
+#### Is it possible to add custom filters that have (1) access to logs, (2) input vars, (3) output vars, (4) failure reason, or (5) stage where failure occurred? 
+Execution Status will show is the pipeline was marked as Failure or Succeeded, however you won't be able to get info at the stage level. If you are looking at deployment pipelines you could also potentially look into having a dashboard on Deployments and Services v2 which can get some more stage level information of the pipelines run. Also you can use the Harness API to get more information of the pipelines.
+
+#### Custom Dashboard - How can you compare quarterly numbers by specific dates?
+Make a customer field with the total costs divided by the corresponding dates. Then use that field as the date range for the dashboard.
 
 #### Do the recommendations consider our compute savings plan, RIs, and Savings Plans?
 
@@ -408,7 +435,14 @@ The budget alerts are sent out daily at 2.30 p.m. GMT.
 
 No limit as of now.
 
+#### Why are my budget dates showing not on the 1st?
+When creating a budget, make sure the budget start date is a date within the current time period set.
 
+#### Why is my budget growth rate now increasing?
+The budget growth rate is set to increase at the next budget time period. EX: if the time period is monthly, the next month the budget will increase
+
+#### How can you get Budget API to show the correct months?
+You will need to set the correct timestamp "budgetMonthlyBreakdown": { "budgetBreakdown": "MONTHLY", "budgetMonthlyAmount": [ { "time": 1685577600000, "value": 20000.0, } , where time is set in Unix 
 
 ### Anomaly Detection
 
@@ -454,6 +488,9 @@ We display anomalies at the most granular level of the hierarchy and intentional
 
 Before proceeding, please double-check whether you have configured a new connector specifically for that particular cloud service. If you have indeed set up a new connector, please be aware that our machine learning models may not yet have sufficient training data for accurately identifying anomalies. To obtain reliable anomaly results, we typically require a minimum of 14 days' worth of training data.
 
+#### Why are Anomalies not showing? 
+Due to Perspective being filtered on Cost Categories, which is not supported for Anomaly detection.
+
 ### General AutoStopping rules
 
 This section addresses some frequently asked questions about [Harness intelligent cloud AutoStopping rules](../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-auto-stopping-rules.md).
@@ -491,6 +528,9 @@ AutoStopping provides several advantages, and it can work alongside Autoscaling 
 #### Can I shut down entire clusters more easily than creating one rule per service?
 
 Yes, you can use schedules to shut down the entire ECS cluster in fixed windows of time. See [Fixed schedules](../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/create-autostopping-rules-aws.md#fixed-schedules).
+
+#### Can an auto stopping rule shutdown services on the VM before it shuts down the vm?
+Auto Stopping rules are set to only talk to the VM itself for shutdown and spin up. It won't be able to access any of the services on the VM itself.
 
 ### AWS AutoStopping rules
 
