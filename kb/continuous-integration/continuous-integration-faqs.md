@@ -2590,6 +2590,21 @@ If it is operating as expected, the Kaniko CLI will show the following in the CL
 /kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=destination/repo:1.0 --snapshotMode=redo --digest-file=/kaniko/digest-file --ignore-path=/opt/nodejs
 ```
 
+#### How can I pull a base image from a private registry when building and pushing an image to DockerHub?
+
+You can use the "Base Image Connector" in your pipeline step configuration to pull the required base image from a private registry. This connector specifies where the build process should pull the base image, ensuring it uses your private repository.
+
+#### Why don't I see the "Base Image Connector" option in my pipeline setup?
+
+It is generally present for ECR build and push, but for docker, it's behind a feature flag. Please contact support to enable it.
+
+#### Why can't I use Docker delegate on AWS Fargate for my CI/CD builds?
+
+AWS Fargate doesn't support the Docker engine directly, which is required for running Docker-in-Docker (DinD) setups needed in many CI/CD builds. Fargate is designed for container execution without exposing Docker's runtime, making it incompatible with the Docker delegate setup.
+
+#### What alternative setups can I use for Docker-based builds on AWS?
+
+AWS EC2 instances, ECS on EC2, or Amazon EKS (Kubernetes) are recommended for Docker builds, as they allow direct access to the Docker engine. These setups fully support Docker delegate configurations required for Harness CI/CD processes.
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 

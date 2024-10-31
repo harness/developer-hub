@@ -3297,6 +3297,30 @@ As per the current design, there's no native step for this but user can write a 
 
 The rollback option is only available for the deployment stage, So you can only be able to see in the deployment stage.
 
+#### We need the ability to query the currently used delegate selector of a k8s rolling deploy step?
+
+You can use something like this -
+<+pipeline.stages.<STAGE_ID>.spec.execution.steps.<STEP_ID>.spec.delegateSelectors[0].delegateSelectors>
+
+#### Why is there a delay in the API response when selecting the artifact in the remote pipeline as compared to the inline pipeline?
+
+The API needs to call and process all pipeline YAMLs, which are stored remotely on GitHub. This retrieval process, especially with remote repositories, takes time and can cause delays in the API response.
+
+#### How does bi-directional sync help improve API performance?
+
+Bi-directional sync allows for continuous synchronization between the local and remote repositories, reducing the need to fetch all YAMLs each time the API is called. With bi-directional sync, changes are updated automatically, minimizing the delay caused by on-demand retrieval.
+
+#### What does the error "/var/run/docker.sock: socket: too many open files" mean?
+
+This error occurs when Docker reaches the limit on the number of files it can open simultaneously. Each connection, file, or process consumes file descriptors, and when the limit is exceeded, Docker cannot open any more files or sockets, resulting in this error.
+
+#### How can I resolve the "too many open files" error for Docker?
+
+To resolve this issue, you need to increase the default nofile limit, which controls the maximum number of open file descriptors. This can be done by editing the Docker configuration file to raise the limit.
+
+#### Will increasing the open files limit impact system performance?
+
+Raising the limit allows Docker to handle more files and connections simultaneously but generally does not negatively impact performance. However, setting the limit excessively high may impact memory usage slightly, as each open file consumes system resources.
 
 ### Infrastructure provisioning FAQs
 
