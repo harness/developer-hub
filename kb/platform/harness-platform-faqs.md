@@ -3372,3 +3372,10 @@ Yes, Harness has an API to check the status of the deployment. You can check her
 
 ### How can user restart a delegate?
 User can restart the delegate by deleting the pod itself.
+
+
+### Can user able to list the projects associated with the user by API?
+Yes, you can use this API: https://apidocs.harness.io/tag/Project/#operation/getProjectList
+
+### Is user can able to view the yaml changes of all resources in Audit trail ?
+No, the user can only able to view the yaml changes as per the RBAC associated with the user.
