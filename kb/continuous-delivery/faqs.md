@@ -632,6 +632,9 @@ When a service is added to the stage in a pipeline, you define its service defin
 
 You can also propagate and override a service in subsequent stages by selecting its name in that stage's service settings.
 
+### How does override differ for Values vs Config?
+The values.yaml file overrides by combining with the base YAML and replacing common values with those in values.yaml, which has higher priority. In contrast, config files are completely overridden
+
 #### What artifacts does Harness support?
 
 Harness supports all of the common repos.
@@ -1461,6 +1464,9 @@ We do have a pipeline rollback feature that is behind a feature flag. This might
 [Documentation](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines)
   
 Also, for the kubernetes job, if you use the Apply step instead of Rollout then the step will wait for the job to complete before proceeding, and you would not need the wait step.
+
+### I am unable to Rollback a pipeline because the Rollback option is not available.
+Check if you have the necessary permissions for rollback. Also, confirm that you are not trying to rollback a failed pipeline, as rollback is unavailable for failed pipelines or for those not marked as successful as part of the failure strategy.
 
 #### Backup resource YAML files.
 
