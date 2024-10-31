@@ -2501,6 +2501,34 @@ For steps, you can set a custom timeout limit in each step's **Optional Configur
 
 Currently, Approval steps aren't compatible with CI stages.
 
+### Can user able to provide the expression in the codebase resource configurution?
+Yes, user can provide the expression in the fixed value also and the expression will get resolved.
+
+### What does this error “Manual codebase git task needs one of PR number, branch or tag. Please check if you are passing codebase inputs correctly.” mean while running the child pipeline?
+It means the codebase inout is not configured/passed so the pipeline is failing to invoke the child pipeline.
+
+### If the user passes the secret value in output variable of run step at the runtime, will it get masked or not?
+No, the output variable is for the pass the values generated in the pipeline to the further steps and stages.
+
+### Is user can clone the two repos at the same time?
+Yes, User can use the Git Clone step in the pipeline to clone two repos at the same time.
+
+### Is it possible to set the minimum resource request for CPU/Memory in the container.
+No, As per the current design it’s not possible.
+
+### Is timeout value can be configured with the runtime inout with default value in run step?
+No, It can be configured as runtime but not with the default value.
+
+### Is it possible to reset the build number of the pipeline?
+It is not supported to reset the build number as it could cause data integrity implications. If it is feasible, you could clone the existing pipeline so that the new pipeline will start the execution from build 1.
+
+### What does this error means (etcdserver: request is too large) in execution?
+This error means pipeline hitting the etcd size limits when harness ci build pods are created on the cluster. 
+Article for your reference: https://etcd.io/docs/v3.5/dev-guide/limit/
+
+### Is the expression is supported in Infrastructure volume size config?
+No, You can express memory as a plain integer or as a fixed-point number using the suffixes G or M. You can also use the power-of-two equivalents Giand Mi. Do not include spaces in the string (5Mi not 5 Mi). If not specified, the volume can use up to 50% of available memory on the host node.
+
 ## General issues with connectors, secrets, delegates, and other Platform components
 
 For troubleshooting and FAQs for Platform components that aren't specific to CI, such as RBAC, secrets, secrets managers, connectors, delegates, and otherwise, go to the [Harness Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
