@@ -130,7 +130,7 @@ For example, here's a typical GKE login:
 ```
 gcloud container clusters get-credentials <cluster_name> --zone us-central1-c --project <project_name>
 ```
-In case of **Helm Chart**, run the following command to install the `helm-chart` file you downloaded (in this example, the namespace entered in the **Namespace** setting is `default`):
+In case of **Helm Chart**, run the following command to install the `helm-chart` file you downloaded (in this example, the namespace entered in the **Namespace** setting is `argocd`):
 
 ```
 helm repo add gitops-agent https://harness.github.io/gitops-helm/
@@ -139,7 +139,7 @@ helm install argocd gitops-agent/gitops-helm --values override.yaml --namespace 
 ```
 You can use `--set argo-cd.crds.install=false` to skip CRDs installation to avoid collision if CRDs were already installed with previous installation of GitOps Agent or Argo CD.
 
-In case of **YAML**, run the following command to apply the YAML file you downloaded (in this example, the namespace entered in the **Namespace** setting is `default`):
+In case of **YAML**, run the following command to apply the YAML file you downloaded (in this example, the namespace entered in the **Namespace** setting is `argocd`):
 
 ```
 kubectl apply -f gitops-agent.yaml -n argocd
