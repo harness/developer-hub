@@ -32,26 +32,11 @@ You can also create a new project for the service onboarding pipelines. Eventual
 
 ![](./static/pipelines-project-admin-section.png)
 
-2.  Then select **Create a Pipeline**, add a name for the pipeline and select the type as **Inline**
+2. Then select **Create a Pipeline**, add a name for the pipeline and select the type as **Inline**
 
 ![](./static/add-a-pipeline.png)
 
-3. Go to the variables and create all the **variables** whose values you're going to provide as **runtime** inputs using the workflows. Here's the list of variables you need to create, make sure you name them exactly the same as mentioned below as we use the same names in the workflows. 
-
-- project_name
-- organization
-- cookiecutterurl
-- repository_type
-- repository_description
-- repository_default_branch
-- direct_push_branch
-- harness_org
-- harness_project
-- harness_pipeline_name
-- catalog_file_name
-- owner
-
-![](./static/create-variables-new.png)
+3. Define the pipeline via Pipeline YAML or via the Pipeline UI
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -59,13 +44,15 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="self-service-onboarding-pipeline">
 <TabItem value="pipeline-yaml" label="Pipeline YAML">
 
-4. The YAML below defines an IDP Stage with a number of steps ([as described here](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage/#execution-steps)) that will perform the actions to onboard the new service. Copy the YAML below, then in the Harness Pipeline Studio go to the YAML view and paste it, just replace the `projectIdentifier` and `orgIdentifier` with the org and project you're creating the pipeline on. 
+The YAML below defines an IDP Stage with a number of steps ([as described here](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage/#execution-steps)) that will perform the actions to onboard the new service. Copy the YAML below, then in the Harness Pipeline Studio go to the YAML view and paste it, just replace the `projectIdentifier` and `orgIdentifier` with the org and project you're creating the pipeline on. 
 
 :::info
 
-You need to have completed all the steps under **[PreRequisites](#prerequisites)** for the below given YAML to work properly 
+You need to have completed all the steps under **[Prerequisites](#prerequisites)** for the below given YAML to work properly. 
 
-Please update the `connectorRef: account.<the_connector_name_you_created_under_prerequisites>` for all the steps it's used, also here we are assuming the git provider to be GitHub please update the `connectorType` for `CreateRepo`, `DirectPush` and `RegisterCatalog` step in case it's other than GitHub. Also under every `xApiKey` add the secret name you have created under pre-requisite. 
+If your GitHub connector is not named `democonnector` or is not at the account level, please update all `connectorRef: account.democonnector` instances to refer to your connector.
+
+If you're not using GitHub, please update the `Create Repo`, `Push Code into Repo` and `Register Component in Catalog` steps with the correct SCM type. 
 
 :::
 
@@ -93,7 +80,7 @@ pipeline:
             steps:
               - step:
                   type: CookieCutter
-                  name: CookieCutter_1
+                  name: CookieCutter
                   identifier: CookieCutter_1
                   spec:
                     templateType: public
@@ -102,19 +89,19 @@ pipeline:
                       app_name: <+pipeline.variables.project_name>
               - step:
                   type: CreateRepo
-                  name: CreateRepo_1
+                  name: Create Repo
                   identifier: CreateRepo_1
                   spec:
                     connectorType: Github
-                    connectorRef: account.<the_connector_name_you_created_under_prerequisites>
+                    connectorRef: account.democonnector
                     organization: <+pipeline.variables.organization>
-                    repository: <+pipeline.variables.repository_name>
+                    repository: <+pipeline.variables.project_name>
                     repoType: <+pipeline.variables.repository_type>
                     defaultBranch: <+pipeline.variables.repository_default_branch>
-                    personalAccount: true
+                    personalAccount: false
               - step:
                   type: CreateCatalog
-                  name: CreateCatalog_1
+                  name: Create Component YAML
                   identifier: CreateCatalog_1
                   spec:
                     fileName: <+pipeline.variables.catalog_file_name>
@@ -133,66 +120,58 @@ pipeline:
                         lifecycle: experimental
               - step:
                   type: DirectPush
-                  name: DirectPush_1
+                  name: Push Code into Repo
                   identifier: DirectPush_1
                   spec:
                     connectorType: Github
                     forcePush: true
-                    connectorRef: account.<the_connector_name_you_created_under_prerequisites>
+                    connectorRef: account.democonnector
                     organization: <+pipeline.variables.organization>
                     repository: <+pipeline.variables.project_name>
                     codeDirectory: <+pipeline.variables.project_name>
                     branch: <+pipeline.variables.repository_default_branch>
               - step:
                   type: RegisterCatalog
-                  name: RegisterCatalog_1
+                  name: Register Component in Catalog
                   identifier: RegisterCatalog_1
                   spec:
                     connectorType: Github
-                    connectorRef: account.<the_connector_name_you_created_under_prerequisites>
+                    connectorRef: account.democonnector
                     organization: <+pipeline.variables.organization>
                     repository: <+pipeline.variables.project_name>
                     filePath: <+pipeline.variables.catalog_file_name>
                     branch: <+pipeline.variables.direct_push_branch>
               - step:
                   type: CreateOrganization
-                  name: CreateOrganization_1
+                  name: Create Organization
                   identifier: CreateOrganization_1
                   spec:
                     orgName: <+pipeline.variables.harness_org>
-                    xApiKey: account.<the_secret_name_you_created_under_prerequisites>
+                    xApiKey: account.harness-x-api-key
               - step:
                   type: CreateProject
-                  name: CreateProject_1
+                  name: Create Project
                   identifier: CreateProject_1
                   spec:
                     projectName: <+pipeline.variables.project_name>
                     orgIdentifier: <+pipeline.stages.serviceonboardingstep.spec.execution.steps.CreateOrganization_1.output.outputVariables.orgIdentifier>
-                    xApiKey: account.<the_secret_name_you_created_under_prerequisites>
+                    xApiKey: account.harness-x-api-key
                     orgType: prevStepOrg
               - step:
                   type: CreateResource
-                  name: CreateResource_1
+                  name: Create Pipeline
                   identifier: CreateResource_1
                   spec:
                     resourceDefinition: |-
                       resource "harness_platform_pipeline" "example" {
-                        identifier = "<+pipeline.variables.pipeline_name>"
+                        identifier = "<+pipeline.variables.harness_pipeline_name>"
                         org_id     = "<+pipeline.stages.serviceonboardingstep.spec.execution.steps.CreateOrganization_1.output.outputVariables.orgIdentifier>"
                         project_id = "<+pipeline.stages.serviceonboardingstep.spec.execution.steps.CreateProject_1.output.outputVariables.projectIdentifier>"
-                        name       = "<+pipeline.variables.pipeline_name>"
-                        git_details {
-                          branch_name    = "<+pipeline.variables.direct_push_branch>"
-                          commit_message = "commitMessage"
-                          file_path      = "<+pipeline.variables.project_name>"
-                          connector_ref  = <the_connector_name_you_created_under_prerequisites>
-                          store_type     = "REMOTE"
-                          repo_name      = "<+pipeline.variables.harness_project>"
-                        }
+                        name       = "<+pipeline.variables.harness_pipeline_name>"
                         yaml = <<-EOT
                             pipeline:
-                                name: <+pipeline.variables.pipeline_name>
-                                identifier: <+pipeline.variables.pipeline_name>
+                                name: <+pipeline.variables.harness_pipeline_name>
+                                identifier: <+pipeline.variables.harness_pipeline_name>
                                 allowStageExecutions: false
                                 projectIdentifier: <+pipeline.stages.serviceonboardingstep.spec.execution.steps.CreateProject_1.output.outputVariables.projectIdentifier>
                                 orgIdentifier: <+pipeline.stages.serviceonboardingstep.spec.execution.steps.CreateOrganization_1.output.outputVariables.orgIdentifier>
@@ -277,21 +256,31 @@ pipeline:
                                                         type: StageRollback
                         EOT
                       }
-                    xApiKey: account.<the_secret_name_you_created_under_prerequisites>
+                    xApiKey: account.harness-x-api-key
           cloneCodebase: false
         tags: {}
   variables:
+    - name: project_name
+      type: String
+      description: ""
+      required: true
+      value: <+input>
     - name: cookiecutterurl
       type: String
       description: ""
-      required: false
+      required: true
       value: <+input>
     - name: organization
       type: String
       description: ""
-      required: false
+      required: true
       value: <+input>
-    - name: project_name
+    - name: repository_type
+      type: String
+      description: ""
+      required: true
+      value: <+input>
+    - name: repository_description
       type: String
       description: ""
       required: false
@@ -299,42 +288,32 @@ pipeline:
     - name: repository_default_branch
       type: String
       description: ""
-      required: false
+      required: true
       value: <+input>
     - name: direct_push_branch
       type: String
       description: ""
-      required: false
+      required: true
       value: <+input>
     - name: catalog_file_name
       type: String
       description: ""
-      required: false
+      required: true
       value: <+input>
     - name: harness_org
       type: String
       description: ""
-      required: false
+      required: true
       value: <+input>
     - name: harness_project
       type: String
       description: ""
-      required: false
+      required: true
       value: <+input>
     - name: harness_pipeline_name
       type: String
       description: ""
-      required: false
-      value: <+input>
-    - name: repository_type
-      type: String
-      description: ""
-      required: false
-      value: <+input>
-    - name: repository_description
-      type: String
-      description: ""
-      required: false
+      required: true
       value: <+input>
 
 ```
@@ -354,7 +333,27 @@ pipeline:
     mozallowfullscreen="mozallowfullscreen" 
     allowfullscreen="allowfullscreen"></iframe>
 
+The instruction guide above shows how to create and configure variables in steps 16-27. Make sure to create all of the variables listed below:
+
+- project_name
+- organization
+- cookiecutterurl
+- repository_type
+- repository_description
+- repository_default_branch
+- direct_push_branch
+- harness_org
+- harness_project
+- harness_pipeline_name
+- catalog_file_name
+- owner
+
+![](./static/create-variables-new.png)
+
 </TabItem>
+
+
+
 </Tabs>
 
 
@@ -365,7 +364,7 @@ pipeline:
 
 :::info
 
-Software Templates currently support pipelines that are comprised only of [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)[custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step) with codebase disabled. Additionally, all inputs, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
+Software Templates currently support pipelines that are comprised only of [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage), [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and [CI Stage with Run Step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step) with codebase disabled. Additionally, all inputs, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
 
 ![](./static/pipeline-varialbles-idp-implementation.png)
 
@@ -373,7 +372,7 @@ Software Templates currently support pipelines that are comprised only of [IDP S
 
 ## Create a Software Template
 
-Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.
+Now let's create the UI counterpart in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. Harness IDP uses the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.
 
 [Source](https://github.com/harness-community/idp-samples/blob/main/template-self-service-flow-with-pipeline-provisioning.yaml)
 
