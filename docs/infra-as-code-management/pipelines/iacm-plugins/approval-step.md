@@ -56,6 +56,8 @@ During pipeline execution, once the approval plan appears, you can see all the c
 
 :::tip optional wiz scan
 As an additional safeguard, you can add a [Wiz Scan](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz) to scan your proposed infrastructure change for security vulnerabilities.
+
+The Wiz scan feature is part of the [Harness STO module](https://developer.harness.io/docs/security-testing-orchestration) and requires an STO license.
 :::
 
 If you have the right access control, you can select each resource and see which attributes have changed. 
