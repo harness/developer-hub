@@ -3372,3 +3372,29 @@ Yes, Harness has an API to check the status of the deployment. You can check her
 
 ### How can user restart a delegate?
 User can restart the delegate by deleting the pod itself.
+
+### Can you have an OPA policy ignore a certain pipeline? 
+Yes this can be done when you create an exception in the policy. You can use the input object to check the project and pipeline names and apply the exception accordingly.
+
+### Can you have a OPA policy validation on Terraform Enterprise show in the Pipeline Execution?
+No, currently there is no validation on the Harness side to check OPA validations from Terraform Enterprise
+### PL -Where can you view or monitor Connector’s Health check status. From where you can validate that for how long a connector appeared in failed state or connected state with timeline details.
+This can be viewed in the Activity History page of the Connector.
+
+### Is there a variable we can reference for delegates to see where a step and stage is running?
+There is the variable delegateSelectors that is set in each pipeline when a delegate is set. Outside of the pipeline itself there are not any other mention to call what delegate was being used other than in the delegate selector logs. The variable will look something like <+pipeline.stages.stage_name.spec.delegateSelectors>
+
+### Does Harness fetch the status of OPA policy validation inside Terraform Enterprise workspaces?
+Harness Terraform Enterprise integration doesn’t support leveraging OPA on Terraform Enterprise side and will not pick up any policies.
+
+### Why are users not receiving emails invitation from Harness?
+There may be firewall or network rules set that are preventing Harness emails from being received. 
+
+### When setting Harness delegates in lower network environments to access only their respective environments. What is the best course of action to build and push artifacts?
+Create a “common build namespace” in other lower environments, which teams can utilize to run their static commands before pushing the deployable artifact. The routed of the build will be controlled by the k8s connector and builds will be routed to a delegate that in installed in the build cluster. Now as long as that build cluster has the namespace created, the build should work.
+
+### Why am I seeing the error “Service [Service] under Project[Project], Organization [Org] couldn't be deleted since there are currently 2 active instances for the service”
+You use the force delete parameter and try it again: https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service#force_delete
+
+### Does Json Functor work for secret values?
+No it only works for values that contain string.
