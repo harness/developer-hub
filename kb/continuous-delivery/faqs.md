@@ -3297,6 +3297,49 @@ As per the current design, there's no native step for this but user can write a 
 
 The rollback option is only available for the deployment stage, So you can only be able to see in the deployment stage.
 
+#### Is there a way to view compiled yaml so templated steps/stages are viewable inline with the pipeline before the execution?
+The user can only able to view yaml of templated steps/stages as inline after the execution.
+
+#### Is user can disable the pipeline from running just like the trigger?
+No, user can use the freeze deployment to restrict the pipeline from running.
+
+#### Can user able to use the command step with type bash script in the WinRM type pipeline?
+No, The WinrRM deployment type pipeline only support PowerShell script command step.
+
+#### Can user able to change the deployment type of pipeline?
+Yes, user can able to change the deployment type of pipeline but they need to configure the execution steps again.
+
+#### Can user able to change the service type?
+No, once the service is created the user can’t able to change the type.
+
+
+#### How can user configure the step scaling policy with ECS deployment?
+User can implement this via Cloudformation and Terraform. 
+
+#### Is it possible to not trigger the pipeline in case certain files are changed?
+Yes, you can use the changed file condition and event payload expression to exclude the multiple files.
+
+#### Is it possible to hide resource constraint step in the execution?
+No, the resource constraint step can’t made to be hidden.
+
+#### Is organisation variable can be configured with more than one values?
+No, the organisation variable can be configured with only a single value.
+
+#### Is user can call one pipeline from another pipeline?
+Yes, you can achieve this with pipeline chaining or custom trigger.
+
+#### Is user can change the pipeline name?
+Yes, If name is updated via Harness as part of yaml change, then it shall be updated in DB as well, but if only yaml on GIT is changed, then name value in DB remains unchanged resulting into such scenarios. 
+
+#### Is user can configure the Cloudwatch Alarms to scaling policies?
+Yes, you can it through he Harness as suggested here: https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#attaching-cloudwatch-alarms-to-scaling-policies
+
+#### Is user can configure the pipeline template within a pipeline template?
+No, instead of this you can do the pipeline chaining.
+
+#### When configuring trigger, the repo name text field can support expressions?
+No, As per the current design only fixed/static value is supported.
+
 
 ### Infrastructure provisioning FAQs
 
