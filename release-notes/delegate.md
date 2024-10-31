@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-10-28T14:00
+date: 2024-10-31T22:00
 sidebar_position: 4
 ---
 
@@ -73,6 +73,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 ### Version 24.10.84200 <!--  October 28, 2024 -->
 
 - Set limits on the number of delegates and delegate tokens allowed per account and per scope. The current limit is set to 10,000. (PL-56296)
+
+### Version 24.10.84105 <!--  October 31, 2024 -->
+
+#### New features and enhancements 
+
+- Add support for k8s sidecar containers
 
 ### Version 24.10.84104 <!--  October 7, 2024 -->
 
