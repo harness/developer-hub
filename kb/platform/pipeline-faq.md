@@ -139,6 +139,36 @@ If the test pipeline fails, you can utilize the rollback feature to revert the d
 
 No, currently there is no way to fully integrate a triggered test pipeline within the original deployment pipeline. The test pipeline will always operate as a separate entity.
 
+### Are environment level <+input> fields supported when running a pipeline? 
+Yes, environment level <+input> fields are supported when running a pipeline. You can set the environment value as a runtime input by going to the stage where you want to set the environment value, clicking on the Environment dropdown, selecting Runtime Input, and then entering a name for the input.
+
+### Can Approval Stage be used with Step Group Templates?
+Yes, Step Group templates will show when using “Use Template” on an Approval Stage
+
+### For each step in command script, Harness is trying to establish the connection to my server. Is this the default behavior of Harness?
+Yes this is expected behavior, if you would like to by pass, consolidate the scripts being run to not have the server connect each time. 
+
+### How can I completely prevent a concurrent execution of a pipeline?
+An OPA policy can be used to check the live execution status of the pipeline and make sure there is nothing running. 
+
+### How can you add wildcard list support for an expression?
+You will need to follow JEXL format and add a pipeline, here is an example expression: <+pipeline.properties.ci.codebase.build.spec.branch> =~ "^(main|develop|staging|release|release/.*|project|project/.*|master)$"
+
+### Is it possible to group two stages together?
+No it is not possible to group two stages together at this time. 
+
+### How to create Terraform Environment variables in Harness?
+Terraform environment variables can be created using the output variables in the Terraform stage
+
+### How can my expired pipeline that timed out abort/stop the job on the Terraform side?
+If the pipeline is expired it will not time out from the Terraform side. You will need to set up a failure strategy to mark the pipeline as failed.
+
+### Is it expected that when my pipeline times out the Terraform job keeps running?
+Yes, If the timeout set in the pipeline is reached then the pipeline will abort but Terraform will not pick up on the timeout. In order to have both the pipeline and Terraform to stop, a failure strategy to set the pipeline to Mark as Failedshould be set up.
+
+### Can you use dynamic values for the exclude in Matrix?
+You can use dynamic values in the exclude, however you cannot use multi level arrays with dynamic values in the pipeline
+
 ## API
 
 ### Can I run pipelines through the API or CLI?
