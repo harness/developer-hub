@@ -14,10 +14,21 @@ By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme setting
 
 ### Kubernetes delegate proxy settings
 
-The proxy settings are in the `harness-delegate.yaml` file:
+The proxy settings are in the `harness-delegate.yaml` file under the env section for the deployment:
 
 ```yaml
+kind: Deployment
 ...
+spec:
+...
+  template:
+...
+    spec:
+...
+      containers:
+        name: delegate
+...
+        env:
         - name: PROXY_HOST
           value: ""
         - name: PROXY_PORT
@@ -42,7 +53,32 @@ The proxy settings are in the `harness-delegate.yaml` file:
 ```
 
 The `PROXY_MANAGER` setting determines whether the delegate bypasses proxy settings to reach the Harness Manager in the cloud. If you want to bypass, enter `false`.
-
+You will also need to configure this for the upgrader CRON job using the `HTTPS_PROXY` environment variable and adding an `env` section:
+```yaml
+kind: CronJob
+...
+spec:
+...
+  jobTemplate:
+    spec:
+      template:
+        spec:
+...
+          containers:
+          - image: harness/upgrader:latest
+            name: upgrader
+...
+            env:
+            - name: HTTP_PROXY
+              value: http://<PROXY HOST>:<PROXY PORT>
+            - name: HTTPS_PROXY
+              value: http://<PROXY HOST>:<PROXY PORT>
+            - name: PROXY_SCHEME
+              value: http
+            - name: NO_PROXY
+              value: ""
+...
+```
 #### In-Cluster Kubernetes delegate with proxy
 
 If an in-cluster Kubernetes delegate has a proxy configured, then `NO_PROXY` must contain the cluster master IP. This enables the delegate to skip the proxy for in-cluster connections.
