@@ -73,6 +73,7 @@ export const university: CardItem[] = [
     description:
       "Discover how your applications stand up to real-world failure scenarios.",
     link: "/university/chaos-engineering",
+    ILT_available: true,
     numberOfCerts: 1,
   },
   {
@@ -104,5 +105,4 @@ export const university: CardItem[] = [
     SPT_available: true,
     ILT_available: true,
   },
-  
 ];
