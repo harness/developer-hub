@@ -1,8 +1,8 @@
 ---
-title: SEI Azure DevOps integration
+title: Connect with Azure DevOps
 description: Integrate SEI with Azure DevOps.
 sidebar_position: 1
-sidebar_label: Connect with Azure Boards
+sidebar_label: Connect with Azure DevOps
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -17,7 +17,7 @@ Azure DevOps Services is a cloud offering. To integrate with the on-premises off
 Please note that the new onboarding experience for the Azure DevOps integration, with Personal Access Token (PAT) authentication is currently in BETA and requires the `<SEI_IS_AZURE_NEW_ONB_ENABLED>` Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
-## Requirements
+### Requirements
 
 The following permissions and settings are required to use the **SEI AzureDevOps Services integration**:
 
@@ -56,7 +56,7 @@ Before you configure the **SEI AzureDevOps integration**, you must generate a **
 </TabItem>
 </Tabs>
 
-## Configure the integration
+### Add the integration
 
 <Tabs>
    <TabItem value = "OAuth" label = "OAuth" default>
@@ -98,11 +98,7 @@ Note: Different integrations will be automatically created for various Azure Dev
 </TabItem>
 </Tabs>
 
-<details>
-
-<summary>Known Issues</summary>
-
-**Limitations in the AzureDevops integration**
+### Limitations
 
 1. Data for the following widgets (duration metrics) is not available:
    * CICD Job Duration Report
@@ -113,8 +109,8 @@ Note: Different integrations will be automatically created for various Azure Dev
 2. The integration does not accurately reflect the pipeline stage status.
 3. Lead time widgets are not supported on this integration
 
-</details>
-
 :::note
+
 Please note that after adding an integration and for each subsequent data sync, it may take up to **24 hours** for the data to be fully reflected on SEI. This means that any widgets you configure on Insights using this integration **may not display data until the synchronization is completed.**
+
 :::

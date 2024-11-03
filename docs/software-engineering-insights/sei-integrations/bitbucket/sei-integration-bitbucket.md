@@ -10,7 +10,7 @@ redirect_from:
 
 Bitbucket is a web-based version control repository hosting service, for source code and development projects that use either Mercurial or Git revision control systems.
 
-Use the SEI Bitbucket integration to integrate SEI with Bitbucket Cloud or Bitbucket Data Center (Enterprise).
+This topic describes the settings and permissions for the Bitbucket integration. Harness SEI supports both Cloud and Data Center (On-Prem) versions of Bitbucket. The following settings are applicable to both versions.
 
 ## Requirements
 
@@ -51,7 +51,7 @@ Set up OAuth by registering your application in Bitbucket, then obtain an author
 </TabItem>
   <TabItem value="app-password" label="Using App Password">
 
-**App Passwords** in Bitbucket serve as an alternative to OAuth. They are generated in your Bitbucket account and are used to authenticate against the API without using your primary account credentials. Follow the instructions below to generate App Passwords in Bitbucket:
+**App Passwords** in Bitbucket serve as an alternative to OAuth. If you use a Google account to log in to Bitbucket, you must use an App password. Bitbucket accounts with two-factor authentication must use access tokens. Follow the instructions below to generate App Passwords in Bitbucket:
 
 * Sign in to **Bitbucket Cloud** and log in to your account.
 * Navigate to **Account Settings**:
@@ -141,7 +141,8 @@ satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
   url: 'https://app.harness.io/gratis/sei/api' 
-  # Note that this URL is relative to the Environment of your Harness Account.
+  # Note that this URL is relative to the Environment of your Harness Account
+  
 integrations:
   - id: '<INTEGRATION_ID>'
     application: bitbucket_server

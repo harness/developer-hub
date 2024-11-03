@@ -1,12 +1,11 @@
 ---
 title: Azure Boards Datasheet
 description: A complete list of metadata ingested by SEI from Azure Boards
-sidebar_label: Datasheet
+sidebar_label: Boards Datasheet
 sidebar_position: 52
 ---
 
-SEI uses Rest APIs to connect to Azure Boards. Using these API calls SEI ingests metadata for WorkItems, Teams, Iterations and other metadata. This data is used to generate engineering metrics and insights.
-
+SEI uses Rest APIs to connect to Azure Boards. Using these API calls SEI ingests metadata for WorkItems, Teams, Iterations and other metadata.
 The full details of all the fields are mentioned below.
 
 - [Azure boards iterations](#azure-boards-iterations)

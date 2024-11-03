@@ -5,8 +5,7 @@ sidebar_label: Datasheet
 sidebar_position: 90
 ---
 
-SEI uses Rest APIs to connect to BitBucket. Using these API calls SEI ingests metadata for commits and pull requests from BitBucket. This metadata is used to generate engineering metrics and insights.
-
+SEI uses Rest APIs to connect to BitBucket. Using these API calls SEI ingests metadata for commits and pull requests from BitBucket.
 The full details of all the fields are mentioned below.
 
 - [BitBucket commits](#bitbucket-commits)

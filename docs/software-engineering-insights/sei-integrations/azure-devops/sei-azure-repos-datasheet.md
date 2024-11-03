@@ -1,12 +1,11 @@
 ---
 title: Azure Repos Datasheet
 description: A complete list of metadata ingested by SEI from Azure Repos
-sidebar_label: Azure Repos Datasheet
+sidebar_label: Repos Datasheet
 sidebar_position: 50
 ---
 
-SEI uses Rest APIs to connect to Azure Repos. Using these API calls SEI ingests metadata for commits and pull requests from Azure Repos service. This metadata is used to generate engineering metrics and insights.
-
+SEI uses Rest APIs to connect to Azure Repos. Using these API calls SEI ingests metadata for commits and pull requests from Azure Repos service.
 The full details of all the fields are mentioned below.
 
 - [Azure repos commits](#azure-repos-commits)
