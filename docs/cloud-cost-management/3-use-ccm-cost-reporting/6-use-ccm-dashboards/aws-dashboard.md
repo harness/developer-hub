@@ -107,7 +107,7 @@ Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and
 * [Create Dashboards](../../../platform/dashboards/create-dashboards.md)
 * [Create Visualizations and Graphs](../../../platform/dashboards/create-visualizations-and-graphs.md)
 
-#### SCAD-Related Columns for AWS
+### SCAD-Related Columns for AWS
 
 [Split cost allocation data (SCAD)](https://docs.aws.amazon.com/cur/latest/userguide/split-cost-allocation-data.html) feature introduces cost and usage data for container-level resources—specifically ECS tasks and Kubernetes pods—into AWS Cost and Usage Reports (CUR). Previously, AWS CUR only provided costs at the EC2 instance level. Now, split cost allocation calculates container-level costs by analyzing each container’s consumption of EC2 instance resources, assigning costs based on the amortized cost of the instance and the percentage of CPU and memory resources utilized by containers running on it.
 
@@ -134,7 +134,152 @@ Along with the following labels:
 - `aws:eks:workload-name`
 - `aws:eks:workload-type`
 
-**Example of a query and result with SCAD columns:**
+#### Example: Calculating Split Cost Allocation Data for Containers
+ 
+**Scenario:**
+- Usage in a single hour:
+	- One instance (m5.xlarge) shared by two namespaces and four pods, running for a full hour.
+	- Instance configuration: 4 vCPUs and 16 GB memory.
+	- Amortized cost of the instance: $1/hr.
+
+**Step 1: Compute the unit cost for CPU and memory**
+
+- Unit-cost-per-resource: 
+![](./static/step1_scad.png) 
+
+![](./static/step2_scad.png) 
+
+:::note
+
+ Split cost allocation data uses relative unit weights for CPU and memory based on a 9:1 ratio. This is derived from per vCPU per hour and per GB per hour prices in AWS Fargate.
+
+ :::
+| Instance  | Instance Type   | vCPU-available  | Memory-available  |  Amortized-cost-per-hour | CPU-per-vCPU-hour | Cost-per-GB-hour |
+|---|---|---|---|---|---|---|
+| Instance1  | m5.xlarge  | 4  |  16 |  $1 |  $0.17 | $0.02  |
+
+**Step 2: Compute the allocated capacity and instance unused capacity**
+
+**Allocated capacity**
+- The memory and vCPU allocated to the Kubernetes pod from the parent EC2 instance, defined as the maximum of used and reserved capacity.
+
+**Instance unused capacity**
+- Unused vCPU and memory capacity.
+
+| Pod Name  | Namespace  | Reserved vCPU  |  Used vCPU | Allocated vCPU  | Reserved Memory  | Used Memory  | Allocated Memory |
+|---|---|---|---|---|---|---|---|
+| Pod1  | Namespace1  | 1  | 0.1  | 1  |  4 GB | 3 GB  | 4 GB  |
+| Pod2  | Namespace2  |  1 | 1.9  | 1.9  | 4 GB  |  6 GB | 6 GB  |
+| Pod3  | Namespace1  |  1 | 0.5  | 1  | 2 GB  |  2 GB |  2 GB |
+| Pod4  | Namespace2  |  1 | 0.5  | 1  | 2 GB  | 2 GB  | 2 GB  |
+| Unused  | Unused  |  - | -  | 0  | -  | -  | 2 GB  |
+| Total  | -  |  - | -  | 4.9 vCPU  |   | -  | 16 GB  |
+ 
+
+- `Pod1-Allocated-vCPU = Max (used, reeserved) = Max (1 vCPU, 0.1 vCPU)` = 1 vCPU
+- `Pod1-Allocated-memory = Max (used, reeserved) = Max (4 GB, 3 GB)` = 4 GB
+ 
+- `Instance-Unused-vCPU = Max (CPU-available - SUM(Allocated-vCPU), 0)` = Max (4 – 4.9, 0) = 0
+- `Instance-Unused-memory = Max (Memory-available - SUM(Allocated-memory), 0)` = Max (16 – 14, 0) = 2 GB
+
+In this example, there is CPU over-subscription, meaning the total vCPU used by the pods exceeds the available vCPU of the instance by 0.9 vCPU. This is attributed to Pod2, which uses more vCPU (1.9 vCPU) than what was reserved (1 vCPU).
+
+
+**Step 3: Compute the split usage ratios**
+
+**Split usage ratio**
+
+The percentage of CPU or memory used by the Kubernetes pod compared to the overall CPU or memory available on the EC2 instance.  
+  
+
+-   **Pod1 vCPU split usage ratio** = Allocated vCPU / Total Allocated vCPU
+    
+    -   = 1 vCPU / 4.9 vCPU
+        
+    -   = 0.204
+        
+-   **Pod1 Memory split usage ratio** = Allocated Memory / Total Memory
+    
+    -   = 4 GB / 16 GB
+        
+    -   = 0.25
+        
+-   **Pod2 vCPU split usage ratio** = Allocated vCPU / Total Allocated vCPU
+    
+    -   = 1.9 vCPU / 4.9 vCPU
+        
+    -   = 0.388
+        
+-   **Pod2 Memory split usage ratio** = Allocated Memory / Total Memory
+    
+    -   = 6 GB / 16 GB
+        
+    -   = 0.375
+
+
+**Unused ratio**
+
+The percentage of CPU or memory used by the Kubernetes pod compared to the overall CPU or memory used on the EC2 instance (that is, not factoring in the unused CPU or memory on the instance).
+
+-   **Pod1 vCPU unused ratio** = Pod1 vCPU split usage ratio / (Total vCPU split usage ratio - Instance unused vCPU)
+    
+    -   = 0 (since Instance unused vCPU is 0)
+        
+-   **Pod1 Memory unused ratio** = Pod1 Memory split usage ratio / (Total Memory split usage ratio - Instance unused memory)
+    
+    -   = 0.25 / (1 - 0.125)
+        
+    -   = 0.286
+
+
+| Pod Name  | Namespace | vCPU Split Usage Ratio | vCPU Unused Ratio | Memory Split Usage Ratio  | Memory Unused Ratio |
+|---|---|---|---|---|---|
+| Pod1  | Namespace1  |  0.204  | 0 | 0.250  |  0.286 | 
+| Pod2  | Namespace2  |  0.388 | 0  | 0.375 | 0.429  |  
+| Pod3  | Namespace1  |  0.204 | 0  | 0.125 | 0.143  | 
+| Pod4  | Namespace2  |  0.204 | 0  | 0.125  | 0.143 | 
+| Unused  | Unused  | 0 |   | 0.125  |  |
+|  |  |  1 |   | 1 |   | 
+
+
+
+**Step 4: Compute the split cost and unused costs**
+
+**Split cost**
+
+The pay-per-use cost allocation of the EC2 instance cost based on allocated CPU and memory usage by the Kubernetes pod.
+
+**Unused instance cost**
+
+The cost of unused CPU or memory resources on the instance.
+
+**Pod1 Split Cost** = `(Pod1 vCPU split usage ratio * Total vCPU * Cost per vCPU hour) + (Pod1 Memory split usage ratio * Total Memory * Cost per GB hour)`
+
+= (0.204 * 4 vCPU * $0.17) + (0.25 * 16GB * $0.02) = $0.22
+
+**Pod1 Unused Cost** =`(Pod1 vCPU unused ratio × Instance vCPU unused ratio × vCPU available × Cost per vCPU hour) + (Pod1 Memory unused ratio × Instance Memory unused ratio × Memory available × Cost per GB hour)`
+
+= (0 * 0 * 4 * $0.17) + (0.286 * 0.125 * 16 * $0.02) = $0.01
+
+**Pod1 Total Split Cost** = Pod1 Split Cost + Pod1 Unused Cost
+
+= $0.23
+
+| Pod Name  | Namespace | Split-cost | Unused-cost | Total-split-cost | 
+|---|---|---|---|---|
+| Pod1  | Namespace1  |  $0.22 | $0.01 | $0.23  |  
+| Pod2  | Namespace2  |  $0.38 | $0.02  | $0.40 |
+| Pod3  | Namespace1  |  $0.18 | $0.01  | $0.19 |
+| Pod4  | Namespace2  |  $0.18 | $0.01  | $0.19  | 
+| Unused  | Unused  | $0.04 |   |  |
+|  |  |  $1 | $0.04  | $1 |
+
+The cost of the service is the sum of the cost of pods associated with each namespace.
+- Total cost of Namespace1 = $0.23 + $0.19 = $0.42
+- Total cost of Namespace2 = $0.40 + $0.19 = $0.59
+
+
+#### Example of a query and result with SCAD columns:
 
 ![](./static/scad-example.png)
 
