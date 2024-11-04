@@ -22,4 +22,11 @@ export const experiments: ExperimentDetails[] = [
     tags: ["network"],
     category: "windows",
   },
+  {
+    name: "Windows Network Loss",
+    description:
+      "Windows network loss causes network loss on Windows VM for the target hosts using Clumsy.",
+    tags: ["network", "loss"],
+    category: "windows",
+  },
 ];
