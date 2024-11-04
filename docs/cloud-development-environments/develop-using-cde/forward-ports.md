@@ -4,8 +4,6 @@ sidebar_position: 3
 sidebar_label: Port Forward
 ---
 
-## Explain about the port forwarding principles we are using
-
 You can forward ports in your CDEs to test and debug your application. 
 
 Port forwarding gives you access to TCP ports running within your CDE. For example, if you're running a web application on a particular port in your CDE, you can forward that port. This allows you to access the application from the browser on your local machine for testing and debugging.

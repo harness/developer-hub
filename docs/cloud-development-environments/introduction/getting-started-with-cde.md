@@ -1,10 +1,10 @@
 ---
-title: Harness CDE Quickstart 
-description: Get Started with Harness CDE.
+title: Quickstart 
+description: Get Started with Harness CDE (Gitspaces)
 sidebar_position: 2
 sidebar_label: Quickstart
 redirect_from:
-  - /docs/cloud-development-environment/get-started/getting-started-with-cde
+  - /docs/cloud-development-environment/introduction/getting-started-with-cde
 ---
 
 :::info
@@ -19,6 +19,10 @@ Harness Cloud Development Environments (CDE) are pre-configured, remote, secure,
 This document focuses on the core features of Harness CDE and provides a Quickstart guide to help users get started. 
 
 Please ensure that the CDE module is enabled in your Harness account before you start with these instructions. 
+
+Watch this video to get started with Harness Cloud Development Environments:
+[![Introducing Harness Cloud Development Environments](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2F73eGzg3qs8w%3Fsi%3D32qGSyxMDWlN-UfL)](https://youtu.be/73eGzg3qs8w?si=32qGSyxMDWlN-UfL)
+
 
 
 ## Configuration
@@ -94,7 +98,12 @@ npm run dev
 
 3. Your application will be available at proxy host 3000. You will see a message at the bottom right of your IDE with a link to open the app in browser. 
 
-    If you're unable to see the pop-up, it's because the application is running inside the development container. To access this application, we'll need to set up port forwarding. [Watch this video to learn more about port forwarding](https://www.youtube.com/watch?v=MGcNbaEOgR4).
+    If you're unable to see the pop-up, it's because the application is running inside the development container. To access this application, we'll need to set up port forwarding. 
+    
+    Watch this video to learn more about port forwarding:
+    [![Port Forwarding in VS Code](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FMGcNbaEOgR4%3Fsi%3DqGvdhMoQ2gDzfOfB)](https://youtu.be/MGcNbaEOgR4?si=qGvdhMoQ2gDzfOfB)
+
+ 
 
     1. Go to the **Ports** section in your VS Code desktop and click **Forward a Port**.  
         ![](./static/forward-port-cde.png)
@@ -142,42 +151,3 @@ git config --global user.name "Your Name"
 
 7. And that’s it! You have successfully used CDE for development
 
-## Start/Stop a Gitspace
-
-1. To save on compute you can stop a Gitspace when not in use and start it again at a later time. You will not lose any uncommitted changes across Gitspace restarts. 
-
-2. On the Gitspaces Page click on the 3 dots and select **Stop Gitspace**.
-
-3. On the Gitspace Details Page under **More Actions**, there's option to **Stop Gitspace**.
-
-There are three ways of **starting the Gitspace**: 
-
-1. On the Gitspaces Page click on the 3 dots and select Start Gitspace.
-
-2. Click on a stopped Gitspace and you’ll see the Start Gitspace button in the popup. 
-
-3. On the Gitspace Details page, Start Gitspace is available in the More Options menu.
-
-## Delete a Gitspace
-
-Deleting a Gitspace is an irreversible action since deleted Gitspaces cannot be restored.  
-
-1. On the Gitspaces Page click on the 3 dots and select Delete Gitspace. You will see a warning stating that this action cannot be undone. If you are sure you want to delete the Gitspace, click on Delete.
-
-## Auto Stopping of Gitspaces
-
-Harness reduces cloud costs and saves compute resources by auto stopping inactive or unused Gitspaces, while offering flexibility by restating them with all the data and changes fully preserved. 
-
-Harness monitors the inactivity of each Gitspace and will automatically stop running and time out if left inactive for a certain time. By default, this period of inactivity is 60 minutes. Inactivity, in this context, means no user activity within the Gitspace, particularly in the IDE. Any terminal activity will reset this inactivity period.  
-
-Gitspaces stopped in this way preserve all data, changes, and state, allowing you to pick up right where you left off when it’s restarted. This not only saves costs but also reduces the utilization of unused resources.
-
-## Beta Plan Usage 
-
-With our beta plan, you receive 2,000 free minutes of Gitspace usage each month. This allows you to run and use your Gitspaces for up to 2,000 minutes at no cost. These minutes automatically renew every 30 days, resetting on the 1st of each month. 
-
-You can easily view and track your remaining minutes directly from the Gitspaces page in the Harness UI. (as shown in the image below)
-
-If you need additional minutes for your account, don’t hesitate to contact us at cde-interest@harness.io
-
-![](./static/Beta%20plan%20usage.png)

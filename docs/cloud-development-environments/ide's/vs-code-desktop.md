@@ -1,10 +1,10 @@
 ---
-title: Gitspaces VS Code Extension 
-description: Get Started with Gitspaces VS Code Extension.
-sidebar_position: 3
-sidebar_label: Gitspaces VS Code Extension
+title: VS Code Desktop
+description: Connect to your Gitspaces in your VS Code Desktop
+sidebar_position: 2
+sidebar_label: VS Code Desktop
 redirect_from:
-  - /docs/cloud-development-environment/get-started/gitspaces-vs-code-extension
+  - /docs/cloud-development-environment/ide's/vs-code-desktop
 ---
 
 :::info
@@ -29,7 +29,7 @@ To install the Gitspaces VS Code extension, here’s what you need to do:
 
     ![](./static/installing-1.png)
 
-2. Search for [“Gitspaces VS Code Extension”](https://marketplace.visualstudio.com/items?itemName=harness-inc.gitspaces). You can install and configure the Gitspaces VS Code extension to use it on your VS Code Desktop App(>=v1.81.0). (“Harness Gitspaces” is our open source extension)
+2. Search for [“Harness Gitspaces VS Code Extension”](https://marketplace.visualstudio.com/items?itemName=harness-inc.gitspaces). You can install and configure the Gitspaces VS Code extension to use it on your VS Code Desktop App(>=v1.81.0). (“Harness OSS Gitspaces” is our open source extension)
 
     ![](./static/installing-2.png)
 
@@ -118,10 +118,3 @@ Select any Gitspace to open and start working on it.
     ![](./static/managing-gitspaces-4.png)
 
 With these simple steps, you’re all set to manage and develop in your Gitspaces using the VS Code Gitspaces extension. It simplifies remote development and makes working with your Gitspaces smooth and efficient.
-
-
-
-
-
-
-

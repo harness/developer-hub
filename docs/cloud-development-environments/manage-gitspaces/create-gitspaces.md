@@ -1,7 +1,10 @@
 ---
 title: Create a Gitspace
+description: Learn how to create a new Gitspace
 sidebar_position: 1
 sidebar_label: Create a Gitspace
+redirect_from:
+  - /docs/cloud-development-environment/manage-gitspace/create-gitspaces
 ---
 
 Follow the instructions below to create a Gitspace:
@@ -33,49 +36,21 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 </Tabs>
 
-<Tabs queryString="Select IDE">
-<TabItem value="vs-code-online" label="VS Code Browser">
 
-## VS Code Browser
-
-- VS Code Browser can directly be started on your browser and doesn't require any pre-configuration. 
-- You can select the IDE type as VS Code Browser and you'll redirected to the IDE on a new tab once the Gitspace is created and you click on **Open VS Code Editor**. 
-
-
-</TabItem>
-<TabItem value="vs-code-desktop" label="VS Code Desktop">
-
-## VS Code Desktop
-
-### Pre-Requisite: Install VS Code Desktop Extension
-
-1. You can install and configure the **Gitspaces VS Code extension** to use it on your VS Code Desktop App(>=v1.81.0).
-
-2. Install the Gitspaces VS Code Extension on from VS Code Extensions Marketplace. Click on **Settings** and Go to the **Extension settings** and add the host URL as `https://app.harness.io/`  
-
-![](./static/settings-vs-code-extension.png)
-
-3. The extension will appear on the left nav of your screen, **click** on it and proceed to Sign-in. **Make sure you have already signed-in to Harness Platform in your browser before starting this step.**
-
-4. Any Gitspace you create with VS Code Desktop as the IDE will now open in your desktop application. You can also view a list of Gitspaces in the left navbar and switch between them as needed. 
-
-![](./static/cde-listing.png)
 
 ### Select IDE
+Move back to the CDE Create Gitspace window and select your preferred IDE from the given options. 
 
-5. Move back to the CDE Create Gitspace window and select the IDE as **VS Code Desktop**. 
+### Select Region 
+Select the **region** in which you want to provision your CDE. 
 
-</TabItem>
-</Tabs>
-
-5. Select the **region** in which you want to provision your CDE. 
-
-6. Select the machine type to be either **Standard** or **Large**. 
+### Select Machine 
+Select the machine type to be either **Standard** or **Large**. 
 
 ![](./static/create-gitspace.png)
 
-7. It will take few minutes to provision the Gitspace and you could see all the steps and logs involved. 
+It will take few minutes to provision the Gitspace and you could see all the steps and logs involved. 
 
 ![](./static/gitspaces-starting.png)
 
-8. Now you can **Open VS Code Editor** and start developing. 
+Now you can your Gitspace in the selected IDE and start developing. 
