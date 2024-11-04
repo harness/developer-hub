@@ -58,11 +58,6 @@ Windows Network Latency causes a network packet delay on Windows VMs for the tar
         <td> Period to wait before and after injecting chaos (in seconds). </td>
         <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
-      <tr>
-        <td> PATH_OF_CLUMSY </td>
-        <td> Path of the Clumsy tool in the VM. </td>
-        <td> For example, <code>C:\\Program Files\\Clumsy\\</code>.</td>
-      </tr>
     </table>
 
 
