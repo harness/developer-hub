@@ -5,6 +5,10 @@ title: Windows Network Latency
 
 Windows Network Latency causes a network packet delay on Windows VMs for the target hosts by causing network packet delay using clumsy. It checks the performance of the application running on the Windows VMs.
 
+:::tip
+When Clumsy is downloaded, the path is exported, that is used while executing the experiment. 
+:::
+
 ![Windows Network Latency](./static/images/windows-network-latency.png)
 
 ## Use cases
