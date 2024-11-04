@@ -95,5 +95,39 @@ docker pull pkg.qa.harness.io/<ACCOUNT_ID>/docs-registry/<IMAGE_NAME>:<TAG>
 docker pull pkg.qa.harness.io/<ACCOUNT_ID>/docs-registry/library/nginx
 ```
 
+This first attempts to pull the image from the registry `docs-registry` but the image doesn't exist. Therefore, it will check the proxy next and find it in DockerHub. 
 
+### Push an image
 
+Next, we will tag and push the nginx image to the registry to store locally. 
+
+1. Open the **Setup Client** tab in your registry.
+2. Find the **Retag and Push the image** section.
+3. Copy the tag image command. It should look like this: 
+
+```
+docker tag <IMAGE_NAME>:<TAG> pkg.qa.harness.io/<ACCOUNT_ID>/docs-registry/<IMAGE_NAME>:<TAG>
+```
+
+4. Replace `<IMAGE_NAME>` with `nginx` and the second `<TAG>` with `test`. `<ACCOUNT_ID>` should be filled for you. The command will look like this:
+
+```
+docker tag nginx pkg.qa.harness.io/<ACCOUNT_ID>/docs-registry/nginx:test
+```
+
+5. Copy the push image command and make the replacements, it will look like this: 
+
+```
+docker push pkg.qa.harness.io/<ACCOUNT_ID>/docs-registry/nginx:test
+```
+
+Now, you should see the artifact appear in your docker registry as well as the **Artifacts** tab in the left navigation panel.
+
+That concludes the quick start guide! You should now have enough to get started with Artifact Registry. 
+
+## See Also
+
+To learn more go to:
+
+- [Configure Registries](/docs/artifact-registry/manage-registries/configure-registry)
+- [Manage Artifacts](/docs/artifact-registry/manage-artifacts/overview)
