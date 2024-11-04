@@ -3,21 +3,20 @@ id: gcp-sql-instance-failover
 title: GCP SQL Instance Failover
 ---
 
-GCP SQL instance failover .
+GCP SQL Instance Failover disrupts the state of GCP SQL Instance filtered using a Name & Project ID by triggering failover on the SQL instance.
 
 ![GCP VM Disk Loss By Label](./static/images/gcp-vm-disk-loss-by-label.png)
 
 ## Use cases
 
-GCP SQL instance failover:
+GCP SQL instance failover fault:
 - Determines the resilience of the GKE infrastructure.
-
+- Determines how quickly a SQL Instance can recover when a failover on one of the replicas is triggered.
 
 ### Prerequisites
 - Kubernetes > 1.16
 - Service account should have editor access (or owner access) to the GCP project.
-- Target disk volume should not be a boot disk of any VM instance.
-- Disk volumes with the target label should be attached to their respective instances.
+- High Availability should be enabled on target GCP SQL Instance
 - Kubernetes secret should have the GCP service account credentials in the default namespace. Refer [generate the necessary credentials in order to authenticate your identity with the Google Cloud Platform (GCP)](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp) docs for more information.
 ```yaml
 apiVersion: v1
@@ -47,18 +46,13 @@ stringData:
       </tr>
       <tr>
         <td> GCP_PROJECT_ID </td>
-        <td> Id of the GCP project containing the disk volumes. </td>
-        <td> All the target disk volumes should belong to a single GCP project. For more information, go to <a href="#detach-volumes-by-label"> GCP project ID.</a></td>
+        <td> Id of the GCP project containing the SQL Instance. </td>
+        <td> Target SQL Instance should belong to this GCP project. For more information, go to <a href="#failover-sql-instance-by-name"> GCP project ID.</a></td>
       </tr>
       <tr>
-        <td> DISK_VOLUME_LABEL </td>
-        <td>Label of the target non-boot persistent disk volume. </td>
-        <td> This value is provided as a <code>key:value</code> pair or as a <code>key</code> if the corresponding value is empty. For example, <code>disk:target-disk</code>. For more information, go to <a href="#detach-volumes-by-label">detach volumes by label.</a></td>
-      </tr>
-      <tr>
-        <td> ZONES </td>
-        <td> The zone of the target disk volumes. </td>
-        <td> Only one zone is provided, which indicates that all target disks reside in the same zone. For more information, go to <a href="#detach-volumes-by-label">zones.</a></td>
+        <td> SQL_INSTANCE_NAME </td>
+        <td>Name of the target GCP SQL Instance. </td>
+        <td> For more information, go to <a href="#failover-sql-instance-by-name">SQL INSTANCE NAME.</a></td>
       </tr>
     </table>
 
@@ -80,11 +74,6 @@ stringData:
         <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#chaos-interval">chaos interval.</a></td>
       </tr>
       <tr>
-        <td> DISK_AFFECTED_PERC </td>
-        <td> Percentage of total disks that are filtered using the target label (specify numeric values only). </td>
-        <td> Defaults to 0 (that corresponds to 1 disk).</td>
-      </tr>
-      <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target disks. </td>
         <td> Defaults to parallel. It supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution. </a></td>
@@ -104,25 +93,18 @@ stringData:
 ### IAM permissions
 
 Listed below are the IAM permissions leveraged by the fault:
-- `compute.disks.get`
-- `compute.instances.attachDisk`
-- `compute.instances.detachDisk`
-- `compute.disks.list`
-- `compute.instances.get`
+- `cloudsql.instances.failover`
+- `cloudsql.instances.list`
 
-### Detach volumes by label
+### Failover SQL Instance by name
 
-The label of disk volumes subject to disk loss. It detaches all the disks with the `DISK_VOLUME_LABEL` label in the `ZONES` zone within the `GCP_PROJECT_ID` project. It re-attaches the disk volume after waiting for the duration specified by `TOTAL_CHAOS_DURATION` environment variable.
+The name of SQL Instance subject to Failover. It triggers failover on the sql instances with the provided name under `SQL_INSTANCE_NAME` within the `GCP_PROJECT_ID` project. It waits for the failover to complete & target instance to come in RUNNING state again in different zone.
 
 **GCP project ID**: The project ID which is a unique identifier for a GCP project. Tune it by using the `GCP_PROJECT_ID` environment variable.
 
-**Zones**: The zone of the disk volumes subject to the fault. Tune it by using the `ZONES` environment variable.
-
-**Note:** The `DISK_VOLUME_LABEL` accepts only one label and `ZONES` accepts only one zone name. Therefore, all the disks must reside in the same zone.
-
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/gcp-vm-disk-loss-by-label/gcp-disk-loss.yaml yaml)
+[embedmd]:# (./static/manifests/gcp-sql-instance-failover/gcp-sql-instance-failover.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -132,16 +114,22 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: gcp-vm-disk-loss-by-label
-    spec:
+    - name: gcp-sql-instance-failover
+      image: docker.io/harness/chaos-go-runner:main-latest
+      imagePullPolicy: Always
+      args:
+        - -c
+        - ./experiments -name gcp-sql-instance-failover
+      command:
+        - /bin/bash
       components:
         env:
-        - name: DISK_VOLUME_LABEL
-          value: 'disk:target-disk'
-        - name: ZONES
-          value: 'us-east1-b'
-        - name: GCP_PROJECT_ID
-          value: 'my-project-4513'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+          - name: TOTAL_CHAOS_DURATION
+            value: "30"
+          - name: SQL_INSTANCE_NAME
+            value: "test-sql-instance"
+          - name: GCP_PROJECT_ID
+            value: "sample-project-id"
+          - name: DEFAULT_HEALTH_CHECK
+            value: "false"
 ```
