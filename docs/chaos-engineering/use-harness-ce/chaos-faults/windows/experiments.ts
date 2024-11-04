@@ -29,4 +29,11 @@ export const experiments: ExperimentDetails[] = [
     tags: ["network", "loss"],
     category: "windows",
   },
+  {
+    name: "Windows Network Latency",
+    description:
+      "Windows Network Latency causes a network packet delay on Windows VMs for the target hosts by causing network packet delay using clumsy. It checks the performance of the application running on the Windows VMs.",
+    tags: ["network", "latency"],
+    category: "windows",
+  },
 ];

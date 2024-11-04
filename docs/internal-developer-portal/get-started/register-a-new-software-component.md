@@ -49,10 +49,9 @@ Following are the key fields that you must update:
 
 ## Register the software component
 
-3. In the left navigation, select **Create**, and then select **Register Software Component**.
+3. In the left navigation, select **Register**.
 
-![](static/create-page-sidebar.png)
-![](static/create-page.png)
+![](./static/register-url.png)
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

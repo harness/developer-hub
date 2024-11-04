@@ -325,6 +325,24 @@ Yes, HCE provides integration with many tools, such as [Gitlab pipelines](https:
 #### Does Harness Chaos provide Resilience Probes for [X] APM (Prometheus, Dynatrace, Datadog, NewRelic, Splunk)?
 Yes, you can use resilience probes with [Prometheus](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/prom-probe), [Dynatrace](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/dynatrace-probe), [DataDog](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/datadog-probe), and [NewRelic](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-newrelic).
 
+## License
+
+#### How is licensing counted for services across different environments in Harness Chaos Engineering?
+
+Licensing is counted separately for each service in different environments. For example, if chaos experimentation is conducted on a Kubernetes service named “login-service” in both QA and Production environments within the same 30-day cycle, it will consume two chaos service licenses.
+
+#### Does using the same service in multiple environments increase license usage?
+
+Yes, each unique environment where a service undergoes chaos experimentation counts individually towards license utilization, allowing separate tracking for services across environments.
+
+#### How is the license utilization measured in Harness Chaos Engineering?
+
+License utilization is measured over a 30-day cycle. Each cycle allows license services to be rolled over to a different set of target services, enabling flexible use across various teams, applications, and environments.
+
+#### Can I change the target services for my license in Harness Chaos Engineering?
+
+Yes, at the end of each 30-day cycle, license services can be re-assigned to a different set of target services, thereby optimizing the resource utilization.
+
 ## Use cases
 
 #### How can we leverage Harness Chaos to test Disaster Recovery (DR)?

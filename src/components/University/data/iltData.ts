@@ -90,4 +90,15 @@ export const ilt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },
+  {
+    title: "Chaos Engineering",
+    module: MODULES.ce,
+    type: type.user,
+    description:
+      "Deep dive into chaos engineering and concepts supporting testing.",
+    version: "Harness CE Enterprise Plan",
+    link: "https://university-registration.harness.io/instructor-led-training-for-harness-chaos-engineering",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
 ];

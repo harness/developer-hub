@@ -1,10 +1,10 @@
 ---
-id: app-maps
 sidebar_position: 1
 title: Application Maps
 redirect_from:
 - /docs/chaos-engineering/features/app-maps/intro-app-map
 - /docs/category/application-maps
+- /docs/chaos-engineering/concepts/explore-concepts/app-maps
 ---
 
 This topic describes application maps, their significance, and how to create, edit, and delete them.
