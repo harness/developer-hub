@@ -193,7 +193,7 @@ parameters:
 
 ## Register Template in IDP
 
-12. In the left navigation, select **Create**, and then select **Register Software Component**.
+12. In the left navigation, select **Workflows**, and then select **Register New Workflow**.
 
 ![](static/create-page-sidebar.png)
 ![](static/create-page.png)
