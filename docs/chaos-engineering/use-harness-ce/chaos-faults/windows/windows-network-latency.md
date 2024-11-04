@@ -3,17 +3,18 @@ id: windows-network-latency
 title: Windows Network Latency
 ---
 
-Windows Network Latency simulates a network latency scenario on Windows VMs. It checks the performance of the application running on the Windows VMs.
+Windows Network Latency causes a network packet delay on Windows VMs for the target hosts by causing network packet delay using clumsy. It checks the performance of the application running on the Windows VMs.
 
 ![Windows Network Latency](./static/images/windows-network-latency.png)
 
 ## Use cases
 - Determines the resilience of an application when a network delay scenario is simulated on a Windows virtual machine.
-- Simulates the situation of network delay for processes running on the application, which degrades their performance.
+- Simulates the situation of network delay for dependent processes and microservices running on the application, which degrades their performance.
 - Helps verify the application's ability to handle network failures and its failover mechanisms.
 
 ## Prerequisites
 - Ensure that the [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/prerequisites) are fulfilled before executing the experiment.
+- Verify that [clumsy](https://jagt.github.io/clumsy/download.html) is installed on the Windows VM, since it is essential for this experiment.
 
 ### Mandatory tunables
 
@@ -25,7 +26,7 @@ Windows Network Latency simulates a network latency scenario on Windows VMs. It 
       </tr>
       <tr>
         <td> NETWORK_LATENCY </td>
-        <td> The network delay that you want to introduce during chaos, in milliseconds. </td>
+        <td> The network latency (or delay) that you want to introduce during chaos, in milliseconds. </td>
         <td> For example, 2000. </td>
       </tr>
       <tr>
@@ -45,7 +46,7 @@ Windows Network Latency simulates a network latency scenario on Windows VMs. It 
       <tr>
         <td> DESTINATION_IPS </td>
         <td> IP addresses of services (or pods) or CIDR block whose access is affected. </td>
-        <td> </td>
+        <td> `DESTINATION_HOSTS` and `DESTINATION_IPS` are mutually exclusive, which means you can specify one of the values at a given time. </td>
       </tr>
       <tr>
         <td> DURATION </td>
@@ -56,6 +57,11 @@ Windows Network Latency simulates a network latency scenario on Windows VMs. It 
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
         <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+      </tr>
+      <tr>
+        <td> PATH_OF_CLUMSY </td>
+        <td> Path of the Clumsy tool in the VM. </td>
+        <td> For example, <code>C:\\Program Files\\Clumsy\\</code>.</td>
       </tr>
     </table>
 
@@ -85,8 +91,8 @@ spec:
           env:
             - name: NETWORK_LATENCY
               value: "2000"
-            - name: DESTINATION_HOSTS
-              value: aws.amazon.com,github.com
+            - name: DESTINATION_IPS
+              value: '0.8.0.8,192.168.5.6'
 ```
 
 ### Destination hosts
@@ -95,7 +101,7 @@ The `DESTINATION_HOSTS` environment variable specifies the destination hosts to 
 
 Use the following example to specify destination hosts:
 
-[embedmd]:# (./static/manifests/windows-network-latency/network-latency.yaml yaml)
+[embedmd]:# (./static/manifests/windows-network-latency/destination-hosts.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: MachineChaosExperiment
@@ -115,5 +121,5 @@ spec:
             - name: NETWORK_LATENCY
               value: "2000"
             - name: DESTINATION_HOSTS
-              value: aws.amazon.com,github.com
+              value: "aws.amazon.com,github.com"
 ```

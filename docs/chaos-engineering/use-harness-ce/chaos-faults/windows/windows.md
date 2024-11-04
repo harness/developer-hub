@@ -74,12 +74,12 @@ Windows blackhole chaos blocks traffic to specified IP addresses on Windows OS b
 
 ### Windows Network Latency
 
-Windows Network Latency simulates a network latency scenario on Windows VMs. It checks the performance of the application running on the Windows VMs.
+Windows Network Latency causes a network packet delay on Windows VMs for the target hosts by causing network packet delay using clumsy. It checks the performance of the application running on the Windows VMs.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-- Determines the resilience of an application when a network delay scenario is simulated on a Windows virtual machine.
-- Simulates the situation of network delay for processes running on the application, which degrades their performance.
+- Determines the resilience of an application when a network latency scenario is simulated on a Windows virtual machine.
+- Simulates the situation of network latency for processes running on the application, which degrades their performance.
 - Helps verify the application's ability to handle network failures and its failover mechanisms.
 </Accordion>
 
