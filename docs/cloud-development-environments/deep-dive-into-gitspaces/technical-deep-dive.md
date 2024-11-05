@@ -4,7 +4,7 @@ description: How does Harness CDE operate at a high level?
 sidebar_position: 1
 sidebar_label: Technical Deep-Dive
 redirect_from:
-  - /docs/cloud-development-environment/deep-dive-into-gitspaces/technical-deep-dive
+  - /docs/cloud-development-environments/deep-dive-into-gitspaces/technical-deep-dive
 ---
 
 :::info

@@ -4,7 +4,7 @@ description: Connect to your Gitspaces within your VS Code Browser
 sidebar_position: 1
 sidebar_label: VS Code Browser
 redirect_from:
-  - /docs/cloud-development-environment/ide's/vs-code-browser
+  - /docs/cloud-development-environments/ide's/vs-code-browser
 ---
 
 :::info

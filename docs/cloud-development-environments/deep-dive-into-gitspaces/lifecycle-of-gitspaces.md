@@ -4,7 +4,7 @@ description: Different states and actions of a Gitspace
 sidebar_position: 2
 sidebar_label: Lifecycle of Gitspaces
 redirect_from:
-  - /docs/cloud-development-environment/deep-dive-into-gitspaces/lifecycle-of-gitspaces
+  - /docs/cloud-development-environments/deep-dive-into-gitspaces/lifecycle-of-gitspaces
 ---
 
 :::info

@@ -4,7 +4,7 @@ description: Lists the git providers, IDE integrations and compute types support
 sidebar_label: Beta Plan Usage
 sidebar_position: 2
 redirect_from:
-  - /docs/cloud-development-environment/beta-usage
+  - /docs/cloud-development-environments/beta-usage
 ---
 
 :::info

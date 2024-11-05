@@ -4,7 +4,7 @@ description: Tracking Changes in Gitspaces
 sidebar_position: 2
 sidebar_label: Tracking Changes
 redirect_from:
-  - /docs/cloud-development-environment/features-of-gitspaces/tracking-changes
+  - /docs/cloud-development-environments/features-of-gitspaces/tracking-changes
 ---
 
 :::info

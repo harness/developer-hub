@@ -4,7 +4,7 @@ description: Auto-Stopping of Gitspaces
 sidebar_position: 1
 sidebar_label: Auto-Stopping
 redirect_from:
-  - /docs/cloud-development-environment/features-of-gitspaces/auto-stopping
+  - /docs/cloud-development-environments/features-of-gitspaces/auto-stopping
 ---
 
 :::info

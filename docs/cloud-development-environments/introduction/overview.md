@@ -4,7 +4,7 @@ description: Understand the basics of a Gitspace
 sidebar_position: 1
 sidebar_label: Overview
 redirect_from:
-  - /docs/cloud-development-environment/introduction/overview
+  - /docs/cloud-development-environments/introduction/overview
 ---
 
 :::info

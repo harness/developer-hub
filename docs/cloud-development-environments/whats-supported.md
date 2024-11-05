@@ -4,7 +4,7 @@ description: Lists the git providers, IDE integrations and compute types support
 sidebar_label: What's Supported
 sidebar_position: 1
 redirect_from:
-  - /docs/cloud-development-environment/whats-supported
+  - /docs/cloud-development-environments/whats-supported
 ---
 
 :::info
