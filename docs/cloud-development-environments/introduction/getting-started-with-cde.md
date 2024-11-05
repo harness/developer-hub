@@ -14,13 +14,14 @@ Harness CDE is now available in public beta. To enable it on your account, conta
 :::
 
 
-Harness Cloud Development Environments (CDE) are pre-configured, remote, secure, ready-to-use  environments that developers can quickly spin up from anywhere and start writing code, debugging, and collaborating with other developers.
+Harness CDE (also known as Gitspaces) are on-demand remote development environments that can be instantly spun up with just a click. These environments come pre-configured with everything you need to start coding, including your dependencies, tools, libraries, and even your favorite IDE, enabling you with an instant ready-to-use development setup.
 
-This document focuses on the core features of Harness CDE and provides a Quickstart guide to help users get started. 
+This document provides a Quickstart guide to help users get started with Gitspaces. 
 
 Please ensure that the CDE module is enabled in your Harness account before you start with these instructions. 
 
 Watch this video to get started with Harness Cloud Development Environments:
+
 [![Introducing Harness Cloud Development Environments](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2F73eGzg3qs8w%3Fsi%3D32qGSyxMDWlN-UfL)](https://youtu.be/73eGzg3qs8w?si=32qGSyxMDWlN-UfL)
 
 
@@ -101,6 +102,7 @@ npm run dev
     If you're unable to see the pop-up, it's because the application is running inside the development container. To access this application, we'll need to set up port forwarding. 
     
     Watch this video to learn more about port forwarding:
+    
     [![Port Forwarding in VS Code](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FMGcNbaEOgR4%3Fsi%3DqGvdhMoQ2gDzfOfB)](https://youtu.be/MGcNbaEOgR4?si=qGvdhMoQ2gDzfOfB)
 
  
