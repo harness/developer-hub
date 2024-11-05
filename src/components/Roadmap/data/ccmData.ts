@@ -301,35 +301,35 @@ export const CcmData: Horizon = {
         title: "Custom Recommendations powered by Governance ",
         description:
           "Allows users to generate recommendations for all the type of resources supported for Cost Correlation. ",
-        backgroundColor: "var(--yellow-100)",
+        backgroundColor: "var(--green-100)",
       },
       {
         tag: [{value: "Asset Governance"}],
         title: "Inventory Management powered by Governance",
         description:
           "Allows users to generate inventory details for any type of resource.",
-        backgroundColor: "var(--yellow-100)",
+        backgroundColor: "var(--green-100)",
       },
       {
         tag: [{value: "Anomalies"}],
         title: "Anomaly Detection 2.0",
         description:
           "Enhanced anomaly detection capabilities with drill-down analysis. Includes support for cost category anomalies, customizable workflows, and preferences for setting percentage deviations and minimum cost thresholds.",
-        backgroundColor: "var(--yellow-100)",
+        backgroundColor: "var(--green-100)",
       },
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Recommendations RBAC enhancements",
         description:
           "",
-        backgroundColor: "var(--yellow-100)",
+        backgroundColor: "var(--green-100)",
       },
       {
         tag: [{value: "Commitment Orchestrator"}],
         title: "Commitment Orchestrator for RDS (Beta) ",
         description:
           "",
-        backgroundColor: "var(--yellow-100)",
+        backgroundColor: "var(--green-100)",
       },
     ],
   },
@@ -341,35 +341,35 @@ export const CcmData: Horizon = {
         title: "Conversational FinOps",
         description:
           "Natural language prompts to query complex cloud cost analytics and insights",
-        backgroundColor: "var(--blue-100)",
+        backgroundColor: "var(--yellow-100)",
       },
       {
         tag: [{value: "Cluster Orchestrator"}],
         title: "Cluster Orchestrator for GKE ",
         description:
           "Workload-driven intelligent node autoscaling with distributed spot orchestration",
-        backgroundColor: "var(--blue-100)",
+        backgroundColor: "var(--yellow-100)",
       },
       {
         tag: [{value: "Commitment Orchestrator"}],
         title: "Commitment Orchestrator for GCP ",
         description:
           "Automated purchasing and management of CUDs to maximize savings, compute coverage and utilization",
-        backgroundColor: "var(--blue-100)",
+        backgroundColor: "var(--yellow-100)",
       },
       {
         tag: [{value: "Asset Governance"}],
         title: "Cloud Asset Governance - Security & Compliance ",
         description:
           "Support for CSPM and compliance policy packs (CIS, GDPR etc.)",
-        backgroundColor: "var(--blue-100)",
+        backgroundColor: "var(--yellow-100)",
       },
       {
         tag: [{value: "Cost Platform"}],
         title: "Tag Nomalization",
         description:
           "Normalize tag variations effortlessly with AIDA's AI-driven recommendations.",
-        backgroundColor: "var(--blue-100)",
+        backgroundColor: "var(--yellow-100)",
       },
     ],
   },
