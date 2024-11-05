@@ -1,7 +1,7 @@
 ---
 title: Supported Workflow UI Pickers (Field Extensions)
 description: This page lists all the Workflow UI Field Extensions that are supported in Harness IDP, which can be used as the Workflow form UI pickers.
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 ## Workflow UI Pickers

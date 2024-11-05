@@ -1,7 +1,7 @@
 ---
 title: Create a service onboarding pipeline (using IDP Stage)
 description: Create a basic service onboarding pipeline in Harness IDP
-sidebar_position: 4
+sidebar_position: 6
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
