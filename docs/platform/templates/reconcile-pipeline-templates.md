@@ -208,3 +208,104 @@ To resolve conflicts in the pipeline YAML, do the following:
 3. Select **Save**. Harness reconciles the change, making it the default state.
  
    Harness calls the update pipeline API `PUT https://app.harness.io/pipeline/api/pipelines/{pipelineIdentifier}`, and saves the updated YAML.
+
+## Bulk Reconciliation of templates
+
+:::info note
+Currently this feature is behind Feature Flag `PIPE_BULK_RECONCILIATION`. Please contact Harness Support(mailto:support@harness.io) to enable this FF.
+:::
+
+Bulk reconciliation allows you to apply changes across multiple entities that reference a modified template. When a template is referenced by multiple entities (like stages or steps across different pipelines) and undergoes updates, you can use bulk reconciliation to synchronize these entities with the updated template in a single operation.
+
+For example you have a step template:-
+
+```yaml
+template:
+  name: ReconcileStepTemplate
+  identifier: ReconcileStepTemplate
+  versionLabel: v1
+  type: Step
+  projectIdentifier: ShivamTemplate
+  orgIdentifier: default
+  tags: {}
+  spec:
+    timeout: <+input>
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: <+input>
+      environmentVariables:
+        - name: var1
+          type: String
+          value: <+input>
+      outputVariables: []
+      includeInfraSelectors: <+input>
+```
+
+
+In this example, when you update a variable at a step level, you changed the value of ShellScript from `Runtime input` to `Fixed value`.
+
+```yaml
+template:
+  name: ReconcileStepTemplate
+  identifier: ReconcileStepTemplate
+  versionLabel: v1
+  type: Step
+  projectIdentifier: Testemplate
+  orgIdentifier: default
+  tags: {}
+  spec:
+    timeout: <+input>
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: echo hello
+      environmentVariables:
+        - name: var1
+          type: String
+          value: <+input>
+      outputVariables: []
+      includeInfraSelectors: <+input>
+```
+
+After saving the template, click on the three dots and select **Reconcile References**.
+
+![](./static/reconcile_references.png)
+
+When you select **Reconcile References**, a list of all entities consuming that step template appears:
+
+![](./static/reconcile_references_update.png)
+
+You can select the entities and click on **Update All Unsynced Entities** to synchronize them with the updated template.
+
+To view the reconciliation status, click on **Reference Reconciliation History**.
+
+![](./static/reference_reconciliation_history.png)
+
+Here, you can view the **Details, Status, Start Time** of each reconciliation.
+
+
+![](./static/reference_history_details.png)
+
+Clicking on **Details** will show the individual status of each reconciled entity.
+
+![](./static/reconcile_reconciliation_status.png)
+
+:::info note
+Important Points for Bulk Reconciliation
+- Only inline entities and direct references to templates are supported.
+- The user triggering the bulk reconciliation must have **Pipeline Edit** permissions for the entities being updated.
+-  The username of the individual who triggered the bulk reconciliation will appear in audit logs for update events.
+-  You can select up to 25 entities in a single bulk reconciliation.
+:::
+
