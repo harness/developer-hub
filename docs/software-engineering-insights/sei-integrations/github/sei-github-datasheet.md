@@ -1,7 +1,7 @@
 ---
 title: Github Datasheet
 description: A complete list of metadata ingested by SEI from Github
-sidebar_label: Datasheet
+sidebar_label: Metadata
 sidebar_position: 20
 ---
 SEI uses Rest APIs to connect to Github. Using these API calls SEI ingests metadata

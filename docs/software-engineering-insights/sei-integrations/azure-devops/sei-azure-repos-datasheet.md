@@ -1,7 +1,7 @@
 ---
 title: Azure Repos Datasheet
 description: A complete list of metadata ingested by SEI from Azure Repos
-sidebar_label: Repos Datasheet
+sidebar_label: Repos Metadata
 sidebar_position: 50
 ---
 

@@ -5,11 +5,9 @@ sidebar_position: 10
 sidebar_label: Connect with Harness CI/CD
 ---
 
-Harness is a modern software delivery platform that allows engineers and DevOps to build, test, deploy, and verify the software on demand.
+Use the SEI HarnessNG integration to integrate Software Engineering Insights with the Harness Continuous Delivery & GitOps and Continuous Integration modules.
 
-Use the SEI HarnessNG integration to integrate SEI with your Harness CI/CD modules.
-
-## Requirements
+### Requirements
 
 To configure the SEI Harness integration, you need:
 
@@ -21,7 +19,7 @@ Copy the account ID and token somewhere that you can retrieve them when you conf
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Configure the integration
+### Add the integration
 
 1. In your **Harness Project**, go to the **SEI Module**, and select **Account**.
 2. Select **Integrations** under **Data Settings**.
@@ -88,6 +86,7 @@ satellite:
   api_key: <ACCOUNT_API_KEY>
   url: 'https://app.harness.io/gratis/sei/api'
   # Note that this URL is relative to the Environment of your Harness Account.
+
 integrations:
   - id: '<INTEGRATION_ID>'
     application: harnessng

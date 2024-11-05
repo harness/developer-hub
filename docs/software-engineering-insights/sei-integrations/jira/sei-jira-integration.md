@@ -134,5 +134,5 @@ Please note that after adding an integration, it may take up to 24 hours for the
 * [Connect with Jira Data Center](/docs/software-engineering-insights/sei-integrations/jira/jira-data-center)
 * [Add custom hygiene misses](/docs/software-engineering-insights/sei-integrations/jira/custom-hygiene-misses)
 * [Add salesforce mapping](/docs/software-engineering-insights/sei-integrations/jira/jira-salesforce-mapping)
-* [Reauthenticate with Jira](/docs/software-engineering-insights/sei-integrations/jira/reauthenticate)
+* [Reauthenticate](/docs/software-engineering-insights/sei-integrations/reauthenticate-integration)
 * [Ingested data](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-datasheet)

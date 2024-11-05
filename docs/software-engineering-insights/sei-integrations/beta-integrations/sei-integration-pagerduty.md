@@ -2,7 +2,7 @@
 title: SEI PagerDuty integration
 description: Integrate SEI with PagerDuty.
 sidebar_position: 150
-sidebar_label: PagerDuty
+sidebar_label: Connect with PagerDuty
 ---
 
 PagerDuty specializes in a SaaS incident response platform for IT departments.

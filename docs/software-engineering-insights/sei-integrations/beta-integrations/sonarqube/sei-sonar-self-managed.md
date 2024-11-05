@@ -1,15 +1,13 @@
 ---
-title: SEI SonarQube integration
-description: Integrate SEI with SonarQube or SonarCloud.
+title: Connect with SonarQube Server
+description: Integrate SEI with SonarQube Server
 sidebar_position: 200
-sidebar_label: SonarQube
+sidebar_label: Connect with SonarQube Server
 ---
 
-SonarQube is an open-source platform for continuous inspection of code quality to perform automatic reviews with static analysis of code to detect bugs, code smells, and security vulnerabilities on 20+ programming languages.
+To integrate SEI with on-premises SonarQube instances, you must use an Ingestion Satellite. The configuration steps for this integration are similar to those for Sonar Cloud, with the key difference being the use of the satellite for communication with the SonarQube server.
 
-Use the SEI SonarQube integration to integrate SEI with SonarQube or SonarCloud.
-
-## Requirements
+### Requirements
 
 To use the SEI SonarQube integration you need a **SonarQube API Token**.
 
@@ -19,13 +17,7 @@ To use the SEI SonarQube integration you need a **SonarQube API Token**.
 * For instructions on creating API tokens, go to the SonarQube documentation on [Generating and using tokens](https://docs.sonarsource.com/sonarqube/9.7/user-guide/user-account/generating-and-using-tokens/).
 * Copy the key somewhere that you can retrieve it when you configure the integration.
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-## Configure the integration
-
-<Tabs>
-  <TabItem value="cloud" label="Cloud" default>
+### Add the integration
 
 1. In your **Harness Project**, go to the **SEI Module**, and select **Account**.
 2. Select **Integrations** under **Data Settings**.
@@ -39,15 +31,9 @@ import TabItem from '@theme/TabItem';
    * **Project Keys:** Enter one or more project keys to ingest. If you want SEI to ingest all projects, leave this field empty. Project keys are case sensitive.
    * **Name:** Enter a name for the integration.
    * **Description** and **Tags** are optional.
+5. Click on Download YAML file to download the satellite configuration file.
 
-To integrate with the on-premises SonarQube instances, you must use an [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
-
-</TabItem>
-  <TabItem value="satellite" label="Satellite">
-
-The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the SonarQube server.
-
-Make sure to select the satellite integration checkbox while configuring the integration. Once you save the integration a ```satellite.yml``` file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
+The ```satellite.yml``` file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
 If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
@@ -57,7 +43,9 @@ Here’s a sample `satellite.yml`
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the Environment of your Harness Account.
+  url: 'https://app.harness.io/gratis/sei/api' 
+  # Note that this URL is relative to the Environment of your Harness Account.
+
 integrations:
   - id: '<INTEGRATION_ID>'
     application: sonarqube
@@ -89,6 +77,3 @@ integrations:
         <td>Set to True to enable the use of privileged APIs, which are required when all project data is not visible. This requires the API key to have the **Administer System** permission in SonarQube. For more information, go to [SonarQube Documentation](https://next.sonarqube.com/sonarqube/web_api/api/projects/search).</td>
     </tr>
 </table>
-
-</TabItem>
-</Tabs>

@@ -8,7 +8,7 @@ sidebar_label: Recommendations
 
 For engineering leaders it is essential for analyzing activity in your GitHub repositories, providing insights into contributions, collaboration, and process efficiency. The SCM widgets in SEI can be used with the GitHub integration to enable leaders to monitor developer productivity, track rework, and identify trends in pull requests (PRs) and code reviews.
 
-In this guide, we’ll outline recommended SCM metrics for GitHub, focusing on actionable insights that enhance team performance and efficiency.
+This topic includes recommendations on some of the most popular widgets that are used to measure developer metrics while using the Github integration.
 
 ## Key widgets
 
@@ -34,6 +34,6 @@ Understanding rework is essential to improving code quality and maintaining high
 
 :::info 
 
-The GitHub integration in SEI supports numerous other SCM widgets. For more recommendations or to explore additional SCM reports, contact Harness Support for guidance.
+The GitHub integration in SEI supports numerous other SCM widgets. For more recommendations or to explore additional SCM reports, contact [Harness Support](mailto:support@harness.io) for guidance.
 
 :::

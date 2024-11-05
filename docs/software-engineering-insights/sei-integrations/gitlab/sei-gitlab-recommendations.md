@@ -8,7 +8,7 @@ sidebar_label: Recommendations
 
 For engineering leaders it is essential for analyzing activity in your GitLab repositories, providing insights into contributions, collaboration, and process efficiency. The SCM widgets in SEI can be used with the GitLab integration to enable leaders to monitor developer productivity, track rework, and identify trends in pull requests (PRs) and code reviews.
 
-In this guide, we’ll outline recommended SCM metrics for GitLab, focusing on actionable insights that enhance team performance and efficiency.
+This topic includes recommendations on some of the most popular widgets that are used to measure developer metrics while using the GitLab integration.
 
 ## Key widgets
 
@@ -32,8 +32,8 @@ Use SCM PR widgets to analyze the flow of PRs through your repositories, assess 
 
 Understanding rework is essential to improving code quality and maintaining high standards in development. The SCM Rework widget tracks rework volumes over time, helping teams identify which areas of code are more prone to revisions and need improvement.
 
-:::info 
+:::info
 
-The GitLab integration in SEI supports numerous other SCM widgets. For more recommendations or to explore additional SCM reports, contact Harness Support for guidance.
+The GitLab integration in SEI supports numerous other SCM widgets. For more recommendations or to explore additional SCM reports, contact [Harness Support](mailto:support@harness.io) for guidance.
 
 :::

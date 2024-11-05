@@ -1,7 +1,7 @@
 ---
 title: ServiceNow Datasheet
 description: A complete list of metadata ingested by SEI from the ServiceNow platform
-sidebar_label: ServiceNow Datasheet
+sidebar_label: Metadata
 sidebar_position: 40
 ---
 

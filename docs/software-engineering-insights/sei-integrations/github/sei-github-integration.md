@@ -10,10 +10,10 @@ redirect_from:
 
 GitHub provides hosting for software development and version control using Git.
 
-To integrate SEI with Github, you must choose your Github type.
+To integrate SEI with Github, you must choose the type of your Github account.
 
-* GitHub Organization (Cloud)
-* GitHub Enterprise Server (On-Prem)
+* [GitHub Organization (Cloud)](#add-the-github-integration)
+* [GitHub Enterprise Server (On-Prem)](/docs/software-engineering-insights/sei-integrations/github/sei-github-enterprise-server)
 
 To integrate with GitHub Enterprise Server, go to [Connect with GitHub Enterprise](/docs/software-engineering-insights/sei-integrations/github/sei-github-enterprise-server).
 
@@ -136,3 +136,10 @@ Before you configure the SEI GitHub integration, you must generate a GitHub Pers
 
 </TabItem>
 </Tabs>
+
+### See also
+
+* [Connect with Github Enterprise](/docs/software-engineering-insights/sei-integrations/github/sei-github-enterprise-server)
+* [Reauthenticate](/docs/software-engineering-insights/sei-integrations/reauthenticate-integration)
+* [Ingested data](/docs/software-engineering-insights/sei-integrations/github/sei-github-datasheet)
+* [Recommendations](/docs/software-engineering-insights/sei-integrations/github/sei-github-recommendations)

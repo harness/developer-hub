@@ -6,9 +6,7 @@ sidebar_label: Recommendations
 
 ---
 
-This guide highlights recommended CI/CD reports and metrics for the Harness integration to help teams track job frequency, success, duration, and lead time, driving continuous improvement in delivery workflows.
-
-In this guide, we’ll outline recommended SCM metrics for GitLab, focusing on actionable insights that enhance team performance and efficiency.
+This topic includes recommendations on some of the most popular widgets that are used while using the GitLab integration for measuring metrics that can help teams track job frequency, success, duration, and lead time, driving continuous improvement in delivery workflows.
 
 ## Key widgets
 

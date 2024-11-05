@@ -61,6 +61,7 @@ satellite:
   api_key: <ACCOUNT_API_KEY>
   url: 'https://app.harness.io/gratis/sei/api' 
   # Note that this URL is relative to the Environment of your Harness Account.
+
 integrations:
   - id: '<INTEGRATION_ID>' 
   # For ex: 4691
@@ -110,3 +111,10 @@ Use the following optional metadata fields to optimize the ingestion functionali
 | PR Commit Limit | `pr_commit_limit` | Default value: 250 | This field sets a cap on the number of commits fetched per Pull Request. |
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+
+### See also
+
+* [Connect with GitLab Private Cloud](/docs/software-engineering-insights/sei-integrations/gitlab/sei-gitlab-private-cloud)
+* [Connect with GitLab Cloud](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab)
+* [Reauthenticate](/docs/software-engineering-insights/sei-integrations/reauthenticate-integration)
+* [Recommendations](/docs/software-engineering-insights/sei-integrations/gitlab/sei-gitlab-recommendations)

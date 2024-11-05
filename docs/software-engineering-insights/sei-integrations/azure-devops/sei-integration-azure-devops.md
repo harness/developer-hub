@@ -13,10 +13,6 @@ Use the SEI Azure DevOps Services integration to integrate SEI with ADO Services
 
 Azure DevOps Services is a cloud offering. To integrate with the on-premises offering, Azure DevOps Server, you must use an [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
-:::note
-Please note that the new onboarding experience for the Azure DevOps integration, with Personal Access Token (PAT) authentication is currently in BETA and requires the `<SEI_IS_AZURE_NEW_ONB_ENABLED>` Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
-
 ### Requirements
 
 The following permissions and settings are required to use the **SEI AzureDevOps Services integration**:
@@ -66,10 +62,10 @@ Before you configure the **SEI AzureDevOps integration**, you must generate a **
 3. Select **Available Integration**, locate the **Azure DevOps Services** integration, and select **Install**.
 4. Configure and save the integration.
 
-   * If you are redirected to Azure DevOps, sign in with your user credentials. Azure DevOps uses OAuth authentication.
+   * If redirected, sign in with your Azure DevOps credentials to authenticate via OAuth.
    * Enter a **Name** for the integration.
    * The **Description** and **Tags** are optional.
-   * Identify Azure DevOps **Organizations** to associate with the integration. If unspecified, the integration associates all available organizations. Available organizations are organizations that the authenticated user can access.
+   * Specify the Azure DevOps Organizations to associate with the integration. If left unspecified, all accessible organizations will be associated.
 
 </TabItem>
    <TabItem value = "PAT" label = "Personal Access Token">
@@ -100,17 +96,26 @@ Note: Different integrations will be automatically created for various Azure Dev
 
 ### Limitations
 
-1. Data for the following widgets (duration metrics) is not available:
+1. The Azure DevOps integration currently ingests and retains data for the last 90 days.
+2. The SCM Rework metric, including the Rework widget, is not stable at this time for Azure DevOps integration.
+3. Data for the following widgets (duration metrics) is not available:
    * CICD Job Duration Report
    * CICD Job Duration Single Stat
    * CICD Job Duration Trend Report
    * CICD Pipeline Jobs Duration Report
    * CICD Pipeline Jobs Duration Trend Report
-2. The integration does not accurately reflect the pipeline stage status.
-3. Lead time widgets are not supported on this integration
+4. The integration does not accurately reflect the pipeline stage status.
+5. Lead time widgets are not supported on this integration
 
 :::note
 
-Please note that after adding an integration and for each subsequent data sync, it may take up to **24 hours** for the data to be fully reflected on SEI. This means that any widgets you configure on Insights using this integration **may not display data until the synchronization is completed.**
+After adding the integration, it may take up to 24 hours for data to fully sync to SEI. During this time, any widgets you set up in Insights may not display data until the sync is complete.
 
 :::
+
+### See also
+
+* [Reauthenticate](/docs/software-engineering-insights/sei-integrations/reauthenticate-integration)
+* [Ingested data from Azure Repos](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-azure-repos-datasheet)
+* [Ingested data from Azure Pipelines](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-azure-pipelines-datasheet)
+* [Ingested data from Azure Boards](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-azure-boards-datasheet)

@@ -1,8 +1,8 @@
 ---
-title: SEI ServiceNow integration
+title: Connect with ServiceNow
 description: Integrate SEI with the ServiceNow Platform.
-sidebar_position: 150
-sidebar_label: ServiceNow
+sidebar_position: 10
+sidebar_label: Connect with ServiceNow
 ---
 
 import Tabs from '@theme/Tabs';
@@ -172,18 +172,13 @@ integrations:
     api_key: <SERVICENOW_PASSWORD>
 ```
 
-## What data is ingested
+## Recommendations
 
-The data is updated every hour. The following details are ingested from the ServiceNow platform using this integration. To find the detailed list of the data ingested, go to [ServiceNow integration datasheet](/docs/software-engineering-insights/sei-technical-reference/sei-datasheets/sei-servicenow-datasheet).
+The ServiceNow integration primarily is used for measuring the incident recovery time using the DORA Mean Time to Restore (MTTR) widget.
 
-### Incidents
+For detailed instructions on setting up and configuring the DORA profile to effectively measure MTTR using the ServiceNow integration, please refer to [Measure incident recovery time](/docs/software-engineering-insights/early-access/metrics-reports/mttr-incident-recovery).
 
-Details like the incident number, state, priority, impact, assignments, updates, resolution information, and other relevant incident data are ingested.
+## See also
 
-### Change Requests
-
-Information about change requests, including number, state, priority, impact, assignments, updates, approval details, and other relevant change request data is ingested.
-
-### Users
-
-User information like name, employee number, username, email, and other user-related details is ingested.
+* [Ingested data](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow-datasheet)
+* [Supported integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview)

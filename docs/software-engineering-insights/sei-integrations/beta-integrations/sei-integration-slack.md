@@ -2,7 +2,7 @@
 title: SEI Slack integration
 description: Integrate SEI with Slack.
 sidebar_position: 180
-sidebar_label: Slack
+sidebar_label: Connect with Slack
 ---
 
 Slack offers many IRC-style features, including persistent chat rooms organized by topic, private groups, and direct messaging.

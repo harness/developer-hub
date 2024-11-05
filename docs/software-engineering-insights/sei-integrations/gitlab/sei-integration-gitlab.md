@@ -42,19 +42,27 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="oauth" label="Using OAuth" default>
 
-* Select the authentication medium as **Using OAuth** and follow the prompts to grant access to GitLab.
+* Select the authentication medium as **Using OAuth**
+* You’ll be redirected to GitLab, where you can grant permissions for the integration. GitLab will confirm authorization, returning you to the integration setup page.
 * In **Integration Name**, enter a name for the integration.
-* Click on **Validate Connection** to run the pre-flight checks and validate the connection. Once successful, you'll have the integration set up under the **Your Integrations** tab.
+* Click **Validate Connection** to run preliminary checks, ensuring the OAuth connection is functional. During this step, any access issues or authorization errors will be highlighted. Once validated successfully, the integration will appear under **Your Integrations**, where you can monitor its status and connectivity.
 
 </TabItem>
   <TabItem value="pat" label="Using Personal Access Token">
 
-This authentication method is simple to set up and is suitable for various API interactions. Note that the access token needs periodic renewal based on the timeline of the generated token. 
+This authentication method is simple to set up and is suitable for various API interactions. However note that tokens expire based on their assigned lifespan, requiring periodic renewal to keep the integration active.
 
 * Select the authentication medium as **Using Personal Access Token (PAT)**.
 * In **Integration Name**, enter a name for the integration.
 * Paste the previously generated Personal Access Token.
-* Click on **Validate Connection** to run the pre-flight checks and validate the connection. Once successful, you'll have the integration set up under the **Your Integrations** tab.
+* Click **Validate Connection** to run the pre-flight checks. This step verifies the token's validity and permissions to ensure the integration can connect and retrieve data. If all checks pass, the integration will appear under Your Integrations, confirming successful setup.
 
 </TabItem>
 </Tabs>
+
+### See also
+
+* [Connect with GitLab Private Cloud](/docs/software-engineering-insights/sei-integrations/gitlab/sei-gitlab-private-cloud)
+* [Connect with GitLab On-Prem](/docs/software-engineering-insights/sei-integrations/gitlab/sei-gitlab-onprem)
+* [Reauthenticate](/docs/software-engineering-insights/sei-integrations/reauthenticate-integration)
+* [Recommendations](/docs/software-engineering-insights/sei-integrations/gitlab/sei-gitlab-recommendations)

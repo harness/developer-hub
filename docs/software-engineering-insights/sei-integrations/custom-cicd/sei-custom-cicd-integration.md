@@ -1,25 +1,27 @@
 ---
-title: Custom CI/CD integrations
+title: Connect with Custom CI/CD tools
 description: Integrate custom CI/CD tools with Harness SEI
 sidebar_position: 1
 sidebar_label: Custom CI/CD integrations
 ---
 
-SEI supports custom CI/CD integrations through webhooks. Use this for CI/CD tools that don't have a dedicated SEI integration.
+SEI supports custom CI/CD integrations using the `/v1/custom-cicd` API. 
 
-Configure the webhook API call according to the following webhook specifications.
+Use this for CI/CD tools that don't have a dedicated SEI integration.
 
-## Webhook specification
+Configure the API according to the following specifications.
+
+## API specification
 
 * **Method:** `POST`
-* **Base URL (PROD2):** `https://app.harness.io/gratis/sei/api/v1/custom-cicd`
-* **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/v1/custom-cicd`
+* **Base URL (Environment: PROD2):** `https://app.harness.io/gratis/sei/api/v1/custom-cicd`
+* **Base URL (Environment: PROD1 ):** `https://app.harness.io/prod1/sei/api/v1/custom-cicd`
 * **Header:** Requires Harness SEI ApiKey authorization. The content type is ```application/json```
 * **Body:** Contains a data object with ```request_type``` and ```payload```.
 
 
 <details>
-<summary>Post CI/CD data to SEI</summary>
+<summary>Send CI/CD data to SEI</summary>
 
 **Parameters**
 
@@ -71,7 +73,7 @@ curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \
 ```
 
 :::info
-Please note that the API endpoint mentioned in the webhook specifications is relative to the environment you are using. You will need to replace it with the actual URL that are specific to your environment.
+Please note that the base url is relative to the environment you are using. You will need to replace it with the actual URL that are specific to your environment.
 :::
 
 ### Payload fields
@@ -179,7 +181,7 @@ Here is an example payload:
 
 ## Generate UUID / GUID
 
-Follow the steps to generate a **Globally Unique Identifier (GUID)** for custom Continuous Integration/Continuous Deployment (CI/CD) integrations. A GUID is used to uniquely identify your custom integration when making requests to the Harness API or configuring Propels.
+Follow the steps to generate a **Globally Unique Identifier (GUID)**. A GUID is used to uniquely identify your custom integration when making requests to the Harness API or configuring Propels.
 
 ### Requirements
 

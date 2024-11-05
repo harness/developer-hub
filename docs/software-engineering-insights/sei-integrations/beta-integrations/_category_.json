@@ -1,11 +1,11 @@
 {
-    "label":"Other integrations",
+    "label":"BETA integrations",
     "position": 20,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Other integrations"
+       "title":"BETA integrations"
     }
  }

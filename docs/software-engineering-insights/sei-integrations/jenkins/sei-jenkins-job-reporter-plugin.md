@@ -1,8 +1,8 @@
 ---
-title: Job reporter plugin
-description: Use the plugin to send jenkins builds data to SEI
+title: Config as Code settings
+description: Config as Code settings for the Job reporter plugin
 sidebar_position: 10
-sidebar_label: Job reporter plugin
+sidebar_label: Config as Code settings
 ---
 
 The SEI Job Reporter Plugin, monitors all job runs. As soon as a job run completes it sends the info about job run and failed logs back to SEI SaaS.
@@ -26,7 +26,7 @@ It does not do any periodic push. It gathers info about job stages and steps. If
 | Dashboard for Blue Ocean               | Direct                                | 1.23.2  | [https://plugins.jenkins.io/blueocean-dashboard](https://plugins.jenkins.io/blueocean-dashboard)                 |
 | Pub-Sub "light" Bus                    | Indirect                              | 1.13    | [https://plugins.jenkins.io/pubsub-light](https://plugins.jenkins.io/pubsub-light)                               |
 
-### Configuration as Code
+### Config as Code Settings
 
 #### Requirements
 

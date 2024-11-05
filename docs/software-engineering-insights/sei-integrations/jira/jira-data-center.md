@@ -63,7 +63,9 @@ Here’s a sample `satellite.yml` file which uses username and password for auth
 satellite:
   tenant: <ACCOUNT_NAME>
   api_key: <SEI_API_KEY>
-  url: "https://app.harness.io/gratis/sei/api" # Note that this URL is relative to the Environment of your Harness Account.
+  url: "https://app.harness.io/gratis/sei/api" 
+  # Note that this URL is relative to the Environment of your Harness Account.
+
 integrations:
   - id: '<INTEGRATION_ID>'
     url: '<ATLASSIAN_ORGANIZATION_URL>'
@@ -79,13 +81,15 @@ jira:
   allow_unsafe_ssl: true
 ```
 
-Here’s a sample `satellite.yml` file which uses a **Personal Access Token** and **password** for authentication.
+Here’s a sample `satellite.yml` file which uses a Personal Access Token for authentication.
 
 ```yaml
 satellite:
   tenant: <ACCOUNT_NAME>
   api_key: <SEI_API_KEY>
-  url: "https://app.harness.io/gratis/sei/api" # Note that this URL is relative to the Environment of your Harness Account.
+  url: "https://app.harness.io/gratis/sei/api" 
+  # Note that this URL is relative to the Environment of your Harness Account.
+
 integrations:
   - id: '<INTEGRATION_ID>'
     url: '<ATLASSIAN_ORGANIZATION_URL>'
@@ -144,9 +148,9 @@ To set up the integration for the cloud instance of Jira Data Center follow the 
 
 ### Troubleshooting
 
-If you encounter any authentication issues, consider the following options:
+Here are some troubleshooting suggestions for Jira integrations.
 
-* While using a username and password for authentication, edit the generated `satellite.yml` file and use your Jira password as a value for `api_key` in the YAML and keep the `user_name` as is.
+* While using a username and password for authentication if the satellite fails to set up the connection, edit the generated `satellite.yml` file and use your Jira password as a value for `api_key` in the YAML and keep the `user_name` as is.
 
 Test with the following curl command:
 
@@ -200,12 +204,12 @@ Replace `<ADFS_PASSWORD>` with the actual password for the specified ADFS userna
 
 </details>
 
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+If you encounter issues with configuring the Ingestion Satellite, refer to the [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 ### See also
 
-* [Connect with Jira Cloud](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration)
+* [Connect with Jira Data Center](/docs/software-engineering-insights/sei-integrations/jira/jira-data-center)
 * [Add custom hygiene misses](/docs/software-engineering-insights/sei-integrations/jira/custom-hygiene-misses)
 * [Add salesforce mapping](/docs/software-engineering-insights/sei-integrations/jira/jira-salesforce-mapping)
-* [Reauthenticate with Jira](/docs/software-engineering-insights/sei-integrations/jira/reauthenticate)
+* [Reauthenticate](/docs/software-engineering-insights/sei-integrations/reauthenticate-integration)
 * [Ingested data](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-datasheet)

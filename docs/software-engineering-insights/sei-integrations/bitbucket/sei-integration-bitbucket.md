@@ -1,8 +1,8 @@
 ---
-title: SEI Bitbucket integration
-description: Integrate SEI with Bitbucket Cloud / Data Center
-sidebar_position: 30
-sidebar_label: Connect with Bitbucket
+title: Connect with Bitbucket Data Center
+description: Integrate SEI with Bitbucket Data Center
+sidebar_position: 10
+sidebar_label: Connect with Bitbucket Data Center
 canonical_url: https://www.harness.io/blog/bitbucket-servers-sunset
 redirect_from:
   - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket
@@ -10,86 +10,21 @@ redirect_from:
 
 Bitbucket is a web-based version control repository hosting service, for source code and development projects that use either Mercurial or Git revision control systems.
 
-This topic describes the settings and permissions for the Bitbucket integration. Harness SEI supports both Cloud and Data Center (On-Prem) versions of Bitbucket. The following settings are applicable to both versions.
+This topic describes the settings and permissions for the Bitbucket integration. Harness SEI supports both Cloud and Data Center (On-Prem) versions of Bitbucket. The following settings are applicable to Bitbucket Data Center.
 
-## Requirements
+### Requirements
 
 The following permissions and settings are required to use the SEI Bitbucket integration:
 
 * You have a Bitbucket account.
 * Your role is **Member** or higher.
 
-## Connect with Bitbucket Cloud
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
-2. Select **Integrations** under **Data Settings**.
-3. Select **Available Integrations**, and locate the **Bitbucket integration**, and select **Install**
+### Add the integration
 
-![](../static/bitbucket-1.png)
-
-4. Select the type of your Bitbucket account as Cloud.
-
-![](../static/bitbucket-2.png)
-
-5. Choose the authentication type for the integration. You can either use **OAuth** or **App Passwords** to set up the authentication with the Bitbucket platform.
-
-![](../static/bitbucket-3.png)
-
-<Tabs>
-  <TabItem value="oauth" label="Using OAuth" default>
-
-Set up OAuth by registering your application in Bitbucket, then obtain an authorization token by having users authenticate. Use this token to access Bitbucket resources securely.
-
-* If you are redirected to Bitbucket, select **Grant Access** to allow the integration. You might need to sign in. Bitbucket uses OAuth authentication.
-* Enter a **Name** for the integration.
-* The **Description** and **Tags** are optional.
-* Click on **Save** to save the integration.
-
-</TabItem>
-  <TabItem value="app-password" label="Using App Password">
-
-**App Passwords** in Bitbucket serve as an alternative to OAuth. If you use a Google account to log in to Bitbucket, you must use an App password. Bitbucket accounts with two-factor authentication must use access tokens. Follow the instructions below to generate App Passwords in Bitbucket:
-
-* Sign in to **Bitbucket Cloud** and log in to your account.
-* Navigate to **Account Settings**:
-  * Click on your profile picture in the bottom left corner.
-  * Select **Personal settings**.
-  * In the left-hand menu, click **App passwords** under the **Access management** section.
-  * Click the **Create app password** button.
-* Configure **App Password**:
-  * Enter a label for your new app password. This helps you remember what it's used for.
-  * Select the following permissions required.
-
-![](../static/bitbucket-6.png)
-
-* Copy the generated app password and save it securely. (Note that you won't be able to see it again.)
-
-In Harness, go to your integration configuration and click on **Next**.
-
-* Enter a **Name** for the integration.
-* The **Description** and **Tags** are optional.
-* Add the **Username** and **Password** that you previously generated.
-
-![](../static/bitbucket-4.png)
-
-:::info
-Note that to prevent rate limiting issues, it is recommended to configure the integration with multiple Account Credentials.
-
-![](../static/bitbucket-5.png)
-
-:::
-
-* Click on **Validate Connection** to run the pre-flight checks and validate the connection. Once successful, you'll have the integration set up under the **Your Integrations** tab.
-
-</TabItem>
-</Tabs>
-
-## Connect with Bitbucket Data Center
-
-[Bitbucket Data Center (also known as Bitbucket Enterprise)](https://www.atlassian.com/software/bitbucket/enterprise) is a self-managed solution for source code collaboration. Harness SEI supports connecting with both Private and Public Bitbucket On-Prem instances.
+[Bitbucket Data Center (also known as Bitbucket Enterprise)](https://www.atlassian.com/software/bitbucket/enterprise) is a self-managed solution for source code collaboration. Harness SEI supports connecting with both private and public Bitbucket On-Prem instances.
 
 1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
 2. Select **Integrations** under **Data Settings**.
@@ -142,7 +77,7 @@ satellite:
   api_key: <ACCOUNT_API_KEY>
   url: 'https://app.harness.io/gratis/sei/api' 
   # Note that this URL is relative to the Environment of your Harness Account
-  
+
 integrations:
   - id: '<INTEGRATION_ID>'
     application: bitbucket_server
@@ -161,3 +96,9 @@ integrations:
 
 </TabItem>
 </Tabs>
+
+### See also
+
+* [Connect with Bitbucket Cloud](/docs/software-engineering-insights/sei-integrations/bitbucket/sei-bitbucket-cloud)
+* [Reauthenticate](/docs/software-engineering-insights/sei-integrations/reauthenticate-integration)
+* [Ingested data](/docs/software-engineering-insights/sei-integrations/bitbucket/sei-bitbucket-datasheet)

@@ -132,3 +132,10 @@ integrations:
 
 </TabItem>
 </Tabs>
+
+### See also
+
+* [Connect with Github Cloud](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration)
+* [Reauthenticate](/docs/software-engineering-insights/sei-integrations/reauthenticate-integration)
+* [Ingested data](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-datasheet)
+* [Recommendations](/docs/software-engineering-insights/sei-integrations/github/sei-github-recommendations)

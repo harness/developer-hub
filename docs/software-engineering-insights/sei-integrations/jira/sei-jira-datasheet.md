@@ -1,7 +1,7 @@
 ---
 title: Jira Datasheet
 description: A complete list of metadata ingested by SEI from Jira
-sidebar_label: Datasheet
+sidebar_label: Metadata
 sidebar_position: 20
 ---
 
