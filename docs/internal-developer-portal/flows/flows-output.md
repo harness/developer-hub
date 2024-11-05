@@ -238,6 +238,23 @@ There are two ways in which you can add the output variable to the template synt
 
 ![](./static/output-variables.png)
 
+### Hide Logs 
+
+You can now optionally remove the pipeline url from the workflow execution logs, for this you need to use the boolean property `hidePipelineURLLog` and set the value as `true`.
+
+```YAML {8}
+## Example
+steps:
+- id: trigger
+    name: Creating your react app
+    action: trigger:harness-custom-pipeline
+    input:
+    url: "Pipeline URL"
+    hidePipelineURLLog: true
+    inputset:
+        project_name: ${{ parameters.project_name }}
+    apikey: ${{ parameters.token }}
+```
 
 ## Hide or mask sensitive data on Review step
 
@@ -266,5 +283,10 @@ use `ui:widget: password` or set some properties of `ui:backstage`:
           show: false # wont print any info about 'hidden' property on Review Step
 ```
 
+## Show Logs After a Successful Workflow Execution
 
+In case of a successful workflow execution in order to view logs, you need to select the three dots on the right corner of the page, and select Show Logs from the dropdown.
+
+![](./static/navigate-logs.png)
+![](./static/logs-view.png)
 
