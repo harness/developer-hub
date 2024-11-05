@@ -30,10 +30,7 @@ Windows CPU stress applies stress on the CPU resources of Windows OS based machi
 
 <Accordion color="green">
 <summary>Use cases</summary>
-- It determines the resilience of an application when stress is applied on the CPU resources of Windows VM.
-- It simulates the situation of lack of CPU for processes running on the application, which degrades their performance.
-- It helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition.
-- It verifies the autopilot functionality of cloud managed clusters.
+This fault helps determine how resilient an application is when stress is applied on the CPU resources of a Windows virtual machine.
 </Accordion>
 
 </FaultDetailsCard>
@@ -48,9 +45,7 @@ Windows memory stress applies stress on the memory resources on Windows OS based
 
 <Accordion color="green">
 <summary>Use cases</summary>
-- It determines the resilience of an application when stress is applied on the memory resources of a Windows VM.
-- It simulates the situation of lack of memory for processes running on the application, which degrades their performance. 
-- It verifies the autopilot functionality of services or application on the VM.
+This fault helps determine how resilient an application is when stress is applied on the memory resources of a Windows virtual machine.
 </Accordion>
 
 </FaultDetailsCard>
@@ -63,9 +58,7 @@ Windows blackhole chaos blocks traffic to specified IP addresses on Windows OS b
 
 <Accordion color="green">
 <summary>Use cases</summary>
-- It determines the resilience of an application when a network blackhole scenario is simulated on a Windows VM.
-- It simulates the situation of network isolation for processes running on the application, which degrades their performance.
-- It helps verify the application's ability to handle network failures and its failover mechanisms.
+This fault helps determine how resilient an application is when network access to certain IP addresses is blocked on a Windows virtual machine.
 </Accordion>
 
 </FaultDetailsCard>
@@ -74,12 +67,12 @@ Windows blackhole chaos blocks traffic to specified IP addresses on Windows OS b
 
 ### Windows Network Latency
 
-Windows Network Latency causes a network packet delay on Windows VMs for the target hosts by causing network packet delay using clumsy. It checks the performance of the application running on the Windows VMs.
+Windows Network Latency causes a network packet delay on Windows VMs for the target hosts by causing network packet delay using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the application running on the Windows VMs.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-- Determines the resilience of an application when a network latency scenario is simulated on a Windows virtual machine.
-- Simulates the situation of network latency for processes running on the application, which degrades their performance.
+- Determines the resilience of an application when a network delay scenario is simulated on a Windows virtual machine.
+- Simulates the situation of network delay for dependent processes and microservices running on the application, which degrades their performance.
 - Helps verify the application's ability to handle network failures and its failover mechanisms.
 </Accordion>
 
@@ -89,7 +82,7 @@ Windows Network Latency causes a network packet delay on Windows VMs for the tar
 
 ### Windows Network Loss
 
-Windows network loss causes network loss on Windows VM for the target hosts using Clumsy. It checks the performance of the application running on the Windows VMs under network loss conditions.
+Windows network loss causes network packet loss on Windows VM for the target hosts or IP addresses using Clumsy. It checks the performance of the services running on the Windows VMs after the disrupted network loss conditions.
 
 <Accordion color="green">
 <summary>Use cases</summary>

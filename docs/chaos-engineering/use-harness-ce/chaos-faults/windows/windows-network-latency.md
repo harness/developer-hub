@@ -3,7 +3,7 @@ id: windows-network-latency
 title: Windows Network Latency
 ---
 
-Windows Network Latency causes a network packet delay on Windows VMs for the target hosts by causing network packet delay using [Clumsy](https://app.harness.io/public/shared/tools/chaos/windows/clumsy-0.3-win64-a.zip). It checks the performance of the application running on the Windows VMs.
+Windows Network Latency causes a network packet delay on Windows VMs for the target hosts by causing network packet delay using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the application running on the Windows VMs.
 
 :::tip
 When Clumsy is downloaded, the path is exported, that is used while executing the experiment. 

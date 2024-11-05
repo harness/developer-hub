@@ -3,7 +3,7 @@ id: windows-network-loss
 title: Windows Network Loss
 ---
 
-Windows network loss causes network packet loss on Windows VM for the target hosts or IP addresses using [Clumsy](https://app.harness.io/public/shared/tools/chaos/windows/clumsy-0.3-win64-a.zip). It checks the performance of the services running on the Windows VMs after the disrupted loss conditions.
+Windows network loss causes network packet loss on Windows VM for the target hosts or IP addresses using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the services running on the Windows VMs after the disrupted network loss conditions.
 
 ![Windows Network Loss](./static/images/windows-network-loss.png)
 
