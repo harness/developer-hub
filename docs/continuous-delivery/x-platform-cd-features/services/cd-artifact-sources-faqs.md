@@ -309,3 +309,10 @@ To set this up:
 - Use the expression `<+artifacts.sidecars.[sidecar_identifier].imagePath>:<+artifacts.sidecars.[sidecar_identifier].tag>` in your Values file to reference the sidecar artifact.
 
 For detailed instructions on setting up sidecar artifacts in Harness, refer to [our documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/#sidecar-artifacts).
+
+### What should I consider when configuring artifactPath and artifactName for artifact fetch in Harness?
+When setting up artifactPath and artifactName:
+
+- Ensure that artifactName patterns (e.g., pricr-notification-*.jar) are specific enough to match the required artifacts.
+- Avoid overly generic patterns like *.jar, which may lead to fetch errors or mismatches.
+- Check that artifactPath aligns with the repository structure in Artifactory to ensure successful retrieval.

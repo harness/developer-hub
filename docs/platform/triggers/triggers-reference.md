@@ -540,6 +540,12 @@ import TabItem from '@theme/TabItem';
 * Merge request events
 * Push events
 
+[GitLab System Hooks](https://docs.gitlab.com/ee/administration/system_hooks.html#create-a-system-hook):
+
+* Push events
+* Push tag events
+* Merge request events 
+
 
 </TabItem>
   <TabItem value="Bitbucket" label="Bitbucket">
@@ -586,6 +592,29 @@ The `pipelineIdentifier` and `triggerIdentifier` target the webhook at the speci
 In some cases, you won't want to target the webhook at the specific pipeline and trigger. For example, there are events in GitHub that are not covered by Harness and you might want to set up a custom trigger for those events that applies to all pipelines and their triggers in a project. To instruct Harness to evaluate the custom trigger against all pipelines (until it finds matching **Conditions**), remove `pipelineIdentifier` and `triggerIdentifier` from the URL before adding the trigger to your repo.
 
 :::
+
+### GitLab System Hooks
+
+Setting Up GitLab System Hooks
+
+GitLab supports various system hooks, including:
+
+Push Events
+Push Tag Events
+Merge Request Events
+
+To set up a webhook to listen for GitLab system hooks, configure the trigger similarly to how you would set up a GitLab event trigger.
+
+Configuration Steps
+
+1. Navigate to Admin Settings: In your GitLab instance, go to Admin Settings and select System Hooks.
+2. Add a New Webhook: Click on Add New Webhook.
+3. Copy the Webhook URL: From the Harness triggers page, copy the webhook URL and paste it into the System Webhook URL field.
+4. Provide Additional Details: Fill in the Name, Description, and Secret Token for validation.
+5. Select Events: Under Triggers, choose all the events you want the webhook to listen for.
+6. Save Configuration: Click on Save to complete the setup.
+
+Your GitLab system hook is now configured. You can test your trigger by pushing an event.
 
 ## Last Activation
 

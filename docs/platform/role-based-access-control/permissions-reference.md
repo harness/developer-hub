@@ -36,13 +36,13 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 
 | Resource | Permissions |
 | ---  | ----------- |
-| Environments | <ul><li>View (`core_environment_view`)</li><li>Create/Edit (`core_environment_edit`)</li><li>Delete (`core_environment_delete`)</li><li>Access: Can access referenced environments at runtime (`core_environment_access`)</li><li>View FF SDK Key: View Feature Flag environment key (`ff_environment_apiKeyView`) </li><li>Create FF SDK Key: Create Feature Flag environment key (`ff_environment_apiKeyCreate`)</li><li>Delete FF SDK Key: Delete Feature Flag environment key (`ff_environment_apiKeyDelete`)</li></ul> |
+| Environments | <ul><li>View (`core_environment_view`)</li><li>Create/Edit (`core_environment_edit`)</li><li>Delete (`core_environment_delete`)</li><li>Access: Can access referenced environments at runtime (`core_environment_access`)</li><li>Rollback (`core_environment_rollback`)</li><li>View FF SDK Key: View Feature Flag environment key (`ff_environment_apiKeyView`) </li><li>Create FF SDK Key: Create Feature Flag environment key (`ff_environment_apiKeyCreate`)</li><li>Delete FF SDK Key: Delete Feature Flag environment key (`ff_environment_apiKeyDelete`)</li></ul> |
 
 ## Pipelines
 
 | Resource | Permissions |
 | ---  | ----------- |
-| Pipelines | <ul><li>View</li><li>Create/Edit (`core_pipeline_edit`)</li><li>Delete (`core_pipeline_delete`)</li><li>Execute: Initiate pipeline runs (`core_pipeline_execute`)</li><li>Abort Pipeline (`core_pipeline_abort`)</li></ul> |
+| Pipelines | <ul><li>View (`core_pipeline_view`)</li><li>Create/Edit (`core_pipeline_edit`)</li><li>Delete (`core_pipeline_delete`)</li><li>Execute: Initiate pipeline runs (`core_pipeline_execute`)</li><li>Abort Pipeline (`core_pipeline_abort`)</li></ul> | 
 
 ## Services
 
@@ -68,7 +68,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 
 | Resource | Permissions |
 | ---  | ----------- |
-| Governance Policies | <ul><li>View (`core_governancePolicy_view`)</li><li>Edit (`core_governancePolicy_edit`)</li><li>Create (`core_governancePolicy_create`)</li><li>Delete (`core_governancePolicy_delete`)</li></ul> |
+| Governance Policies | <ul><li>View (`core_governancePolicy_view`)</li><li>Edit (`core_governancePolicy_edit`)</li><li>Create (`core_governancePolicy_create`)</li><li>Analyse Access Policies(`core_accessPolicies_analyze`)</li><li>Delete (`core_governancePolicy_delete`)</li></ul> |
 | Governance Policy Sets | <ul><li>View (`core_governancePolicySets_view`)</li><li>Edit (`core_governancePolicySets_edit`)</li><li>Create (`core_governancePolicySets_create`)</li><li>Delete (`core_governancePolicySets_delete`)</li><li>Evaluate (`core_governancePolicySets_evaluate`)</li></ul> |
 
 ## Discovery
@@ -88,6 +88,12 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Resource | Permissions |
 | ---  | ----------- |
 | Webhooks | <ul><li>View (`core_gitxWebhooks_view`)</li><li>Create/Edit (`core_gitxWebhooks_edit`)</li><li>Delete (`core_gitxWebhooks_delete`)</li></ul> |
+
+## Input Sets 
+
+| Resource | Permissions |
+| ---  | ----------- |
+| Input Sets  | <ul><li>View Input Set (`core_inputset_view`)</li><li>Create/Edit Input Set (`core_inputset_edit`)</li><li>Delete Input Set(`core_inputset_delete`)</li></ul> |
 
 ## Module-specific permissions
 
@@ -136,6 +142,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Repository Certificates | <ul><li>View (`gitops_gpgkey_view`)</li><li>Create/Edit (`gitops_gpgkey_edit`)</li><li>Delete (`gitops_gpgkey_delete`)</li></ul>|
 | Applications | <ul><li>View (`gitops_application_view`)</li><li>Create/Edit (`gitops_application_edit`)</li><li>Delete (`gitops_application_delete`)</li><li>Sync: Deploy applications (`gitops_application_sync`)</li></ul> |
 | Repositories | <ul><li>View (`gitops_repository_view`)</li><li>Create/Edit (`gitops_repository_edit`)</li><li>Delete (`gitops_repository_delete`)</li></ul> |
+| Certificates | <ul><li>View GitOps Certificate (`gitops_cert_view`)</li><li>Create/Edit GitOps Certificate (`gitops_cert_edit`)</li><li>Delete GitOps Certificate(`gitops_cert_delete`)</li></ul> |
 
 ### Infrastructure as Code
 

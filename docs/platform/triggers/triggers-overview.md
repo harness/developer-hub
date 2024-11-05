@@ -11,6 +11,11 @@ This topic provides an overview of triggers in Harness. Harness uses triggers as
 There are four trigger types in Harness:
 
 - **Webhook:** Trigger Harness pipelines in response to Git events that match specific payload conditions you set up in a Harness trigger. For more information, go to [Trigger pipelines using Git events](/docs/platform/triggers/triggering-pipelines).
+
+    - Trigger Harness pipelines in response to specific Slack events that you set up in a Harness trigger. For more information, go to [Trigger pipelines using Slack events](/docs/platform/triggers/trigger-pipelines-using-slack-events).
+
+    - Trigger Harness pipelines in response to events from third-party artifact repositories that match specific payload conditions you set up in a Harness trigger. For more information, go to [Trigger pipelines using Generic events](/docs/platform/triggers/trigger-pipelines-using-generic-events).
+
 - **Artifact:** Trigger Harness pipelines in response to a new artifact version being added to a registry. For more information, go to [Trigger pipelines on a new artifact](/docs/platform/triggers/trigger-on-a-new-artifact).
 - **Manifest:** Trigger Harness pipelines in response to a new Helm chart version being added to an HTTP Helm repo. For more information, go to [Trigger pipelines on new Helm chart](/docs/platform/triggers/trigger-pipelines-on-new-helm-chart).
 - **Scheduled:** Schedule Harness pipeline executions using Cron-based triggers. For more information, go to [Schedule pipelines using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers).
@@ -94,3 +99,29 @@ To add a trigger to a pipeline, do the following:
 4. Complete the required fields for your trigger type. For steps on setting up different types of triggers, go to the [Triggers documentation](/docs/category/triggers).
 
 
+## View Trigger Events
+
+:::info note
+Currently this feature is behind the Feature Flag `PIPE_TRIGGER_EVENTS_PAGE_UI`. Contact [Harness Support](mailto:support@harness.io) to enable this FF.
+:::
+
+
+Users can view trigger events for all triggers created within a Pipeline in the **Events** tab.
+
+![](./static/trigger_events_page.png)
+
+The Events tab provides information on **Event Correlation ID**, **Trigger Status**, **Time**, and **Trigger Name**.
+
+By clicking the three dots next to each trigger, you can view additional details, including the **Payload** and **Trigger Details**.
+
+![](./static/trigger_info.png)
+
+You can filter triggers based on **Trigger Name, Trigger Type and Status**:- 
+
+- Trigger type will include :- **All, Webhook, Artifact, Manifest and Scheduled**
+
+![](./static/trigger_type.png)
+
+- Trigger Status will include :- **Success, Failed, Skipped**
+
+![](./static/trigger_status.png)

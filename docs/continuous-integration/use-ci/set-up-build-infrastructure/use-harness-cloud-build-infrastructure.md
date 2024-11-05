@@ -156,7 +156,7 @@ You can use the yaml editor to change the cloud machine size.
 Currently, specifying machine size is behind the feature flag CI_ENABLE_RESOURCE_CLASSES. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
 :::
 
-To select a resource class size, please modify the CI stge cloud infrastructure runtime setting accordingly: 
+To select a resource class size, please set the desired size as value for `size` property in the CI stge cloud infrastructure runtime configuration. For example: 
 
 ```yaml
           platform:
@@ -165,9 +165,39 @@ To select a resource class size, please modify the CI stge cloud infrastructure 
           runtime:
             type: Cloud
             spec: 
-              size: xlarge # large | xlarge
+              size: xlarge # optional 
 ```
 To learn more about all available resource classes in Harness Cloud, please visit [Harness Cloud billing and cloud credits](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-cloud-credits).
+
+### Hardware Acceleration 
+
+Harness supports hardware acceleration using nested virtualization on Linux/AMD Cloud machines.
+
+By enabling this feature, Android SDK tools and emulators can run more efficiently within virtualized environments, making Android test execution faster and optimizing build time.
+
+To enable this feature, set the `nestedVirtualization` property to `true` as shown below. 
+
+:::note
+* To enable `nestedVirtualization` use the YAML editor, as this option is currently unavailable in the visual editor.
+* Hardware acceleration is available for all machine sizes, when using Linux with AMD architecture on Harness Cloud.
+:::
+
+```yaml
+    - stage:
+        name: build
+        identifier: build
+        type: CI
+        spec:
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec:
+              nestedVirtualization: true
+              size: xlarge # optional 
+```
+
 
 ### Harness Cloud best practices
 

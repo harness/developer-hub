@@ -174,3 +174,23 @@ curl 'https://app.harness.io/gateway/gitops/api/v1/applications?routingId=SNM_3I
 
   --data-raw '{"accountIdentifier":"ACCOUNT_ID","orgIdentifier":"ORG_ID","projectIdentifier":"PROJECT_ID"}'
 ```
+
+### Can I map multiple Argo CD projects to a single Harness project?
+
+No, you cannot map the same Argo CD project to multiple Harness projects. Each Argo CD project must be mapped to a unique Harness project.
+
+### What happens if I add new entities to my Argo CD project after mapping it to Harness?
+
+Any new entities added to the mapped Argo CD project will be automatically imported into the corresponding Harness project, ensuring synchronization between both platforms.
+
+### How can I verify that my Argo CD entities are correctly imported and visible in Harness?
+
+After mapping, navigate to your Harness project, select GitOps, and check under Applications, Repositories, and Clusters to see the imported entities.
+
+### What should I do if I need to upgrade my Argo CD version after setting up the BYOA agent?
+
+If you upgrade your Argo CD to version 2.8.0 or later, you must restart the Harness GitOps agent pods to ensure they pick up the necessary configuration changes.
+
+### How does Harness handle naming for Argo CD repositories when they are imported?
+
+Harness automatically generates names for Argo CD repositories during the import process by removing dashes and appending a unique suffix. This ensures each repository has a distinct name within Harness.

@@ -24,6 +24,26 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## October 2024
 
+### Version 202410.2
+
+<!-- October 28, 2024 -->
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### New features and enhancements
+
+* The **Sonarqube** and **TestRail** integration is now upgraded to the new integration framework. The integrations now support reauthentication allowing you to easily reconnect if your access token expires. This update makes configuring these integrations easier and more reliable (SEI-8926) (SEI-8927)
+* The drilldown view in the DORA widgets has been improved to show the duration column data in minutes instead of seconds. (SEI-30)
+* The **GitHub Actions** integration now supports configuring multiple personal access tokens. This helps resolve rate-limiting issues when ingesting large datasets. (SEI-9172)
+
+#### Fixed issues
+
+* Fixed a bug that previously resulted in the incorrect display of the repository count ingested into the system for the GitHub integration (SEI-8748)
+* The issue with selecting columns in the open report view while using the HarnessCICD integration has now been resolved (SEI-1950)
+* Resolved an issue in the SCM Committers widget where clicking on a Contributor did not redirect to the Developer Scorecard (SEI-9021) (ZD-71647)
+
 ### Version 202410.1
 
 <!-- October 16, 2024 -->

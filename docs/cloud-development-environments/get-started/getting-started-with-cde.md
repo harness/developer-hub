@@ -142,30 +142,6 @@ git config --global user.name "Your Name"
 
 7. And that’s it! You have successfully used CDE for development
 
-
-## Install Gitspaces VS Code Extension for VS Code Desktop
-
-1. You can install and configure the Gitspaces VS Code extension to use it on your VS Code Desktop App(>=v1.81.0).
-
-2. Install the Gitspaces VS Code Extension on from VS COde Extensions Marketplace. Click on Settings and Go to the Extension settings and add the host URL as `https://app.harness.io/`  
-
-![](./static/settings-vs-code-extension.png)
-
-3. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. The extension will appear on the left nav of your screen, click on it and proceed to Sign-in. To connect to a Gitspace with VS Code Desktop, you have two options: either use an SSH key or a temporary password.
-    1. SSH Key:
-    You can create a new SSH key using `ssh-keygen` [(learn more here on how to create an SSH key)](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key). This generates a pair of keys (public and private). Copy the public key and paste it into the "SSH key" field while setting up a Gitspace (as shown in the picture below). This will enable you to establish a remote connection to the Gitspace via SSH. If you prefer not to use an SSH key, you can use the temporary password method outlined below.
-
-        ![](./static/ssh-key.png)
-
-    2. Temporary Password:
-    If you do not wish to connect via an SSH key, you can use a temporary password. During Gitspace creation, simply leave the "SSH key" field blank. A temporary password will be generated automatically for the remote connection. After the Gitspace is created, you'll be redirected to VS Code desktop and prompted to copy the temporary password. Paste it and follow the prompts to establish the remote connection. 
-
-        ![](./static/temp-password.png)
-
-4. Any Gitspace you create with VS Code Desktop as the IDE will now open in your desktop application. You can also view a list of Gitspaces in the left navbar and switch between them as needed. 
-
-![](./static/cde-listing.png)
-
 ## Start/Stop a Gitspace
 
 1. To save on compute you can stop a Gitspace when not in use and start it again at a later time. You will not lose any uncommitted changes across Gitspace restarts. 

@@ -171,7 +171,7 @@ import { MODULES } from "@site/src/constants"
       module: MODULES.ce,
       description:
         "Bind multiple interacting discovered services into a single object.",
-      link: "/docs/chaos-engineering/concepts/explore-concepts/app-maps",
+      link: "/docs/chaos-engineering/use-harness-ce/application-map",
     },
   ],
 },

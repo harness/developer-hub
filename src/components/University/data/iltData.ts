@@ -79,4 +79,26 @@ export const ilt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },
+  {
+    title: "Internal Developer Portal",
+    module: MODULES.idp,
+    type: type.user,
+    description:
+      "Deep dive into advanced IDP and developer self-service concepts.",
+    version: "Harness IDP Enterprise Plan",
+    link: "https://university-registration.harness.io/ilt-internal-developer-portal",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
+  {
+    title: "Chaos Engineering",
+    module: MODULES.ce,
+    type: type.user,
+    description:
+      "Deep dive into chaos engineering and concepts supporting testing.",
+    version: "Harness CE Enterprise Plan",
+    link: "https://university-registration.harness.io/instructor-led-training-for-harness-chaos-engineering",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
 ];

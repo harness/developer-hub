@@ -74,6 +74,15 @@ README.md @pratmit
 # Platform Docs
 /docs/platform/ @pratmit @krishi0408 @GokulBansal0
 
+# Pipeline Docs
+/docs/platform/pipelines/ @krishi0408 @vishal-av @SudarshanPurohit
+/docs/platform/git-experience/ @krishi0408 @vishal-av @prasadsatamharness
+/docs/platform/templates/ @krishi0408 @vishal-av @SudarshanPurohit
+/docs/platform/variables-and-expressions/ @krishi0408 @vishal-av @SudarshanPurohit
+/docs/platform/triggers/ @krishi0408 @vishal-av @SudarshanPurohit
+/docs/platform/approvals/ @krishi0408 @vishal-av 
+/docs/platform/connectors/ @krishi0408 @vishal-av
+
 # IDP Docs
 /docs/internal-developer-portal/ @Debanitrkl @OrkoHunter
 
@@ -94,6 +103,9 @@ README.md @pratmit
 
 # DB DevOps Docs
 /docs/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos
+
+# CDE Docs
+/docs/cloud-development-environments/ @manishas
 
 # FirstGen Docs ###
 
@@ -192,49 +204,49 @@ README.md @pratmit
 # Knowledge Base ###
 
 # Overall KB
-/kb/ @deepanshuHarness
+/kb/ @deepanshuHarness @jimin-harness @td-harness @guna-harness @reconAmit 
 
 # Drone KB
-/kb/continuous-integration/drone-faqs.md @dewan-ahmed
+/kb/continuous-integration/drone-faqs.md @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
 
 # CI KB
-/kb/continuous-integration/ @nofarblue @rustd @deepanshuHarness @dewan-ahmed
+/kb/continuous-integration/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
 
 # CD KB
-/kb/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av
+/kb/continuous-delivery/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
 
 #Platform KB
-/kb/platform/ @pratmit
+/kb/platform/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
 
 #FF KB
-/kb/feature-flags/ @HarnessTheChaos @jenniferopal
+/kb/feature-flags/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
 
 #CCM KB
-/kb/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss @rssnyder @brandon-harness
+/kb/cloud-cost-management/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
 
 #SRM KB
-/kb/service-reliability-management/ @sunilgupta-harness
+/kb/service-reliability-management/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
 
 #CE KB
-/kb/chaos-engineering/ @neelanjan00 @SmritiSatya
+/kb/chaos-engineering/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
 
 #CET KB
-/kb/continuous-error-tracking/ @M-Tsur
+/kb/continuous-error-tracking/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
 
 #STO KB
-/kb/security-testing-orchestration/ @tejakummarikuntla
+/kb/security-testing-orchestration/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
 
 #Armory KB
-/kb/armory @okosun-j
+/kb/armory @okosun-j @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
 
 #RA
-/kb/reference-architectures/ @rssnyder @suranc
+/kb/reference-architectures/ @rssnyder @suranc @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
 
 #IACM RA
-/kb/reference-architectures/iacm/ @RickCraig @allofthesepeople @scottyw-harness @richardblack-Harness
+/kb/reference-architectures/iacm/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
 
 # SEI KB
-/kb/sei/ @codewdhruv
+/kb/sei/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
 
 # Roadmap ###
 
