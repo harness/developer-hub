@@ -94,16 +94,9 @@ Here’s how to create and open a Gitspace in VS Code:
 
 
 ## Connecting to your Gitspace
-To connect to a Gitspace with VS Code Desktop, you have two options: either use an SSH key or a temporary password.
-1. SSH Key:
-You can create a new SSH key using `ssh-keygen` [(learn more here on how to create an SSH key)](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key). This generates a pair of keys (public and private). Copy the public key and paste it into the "SSH key" field while setting up a Gitspace (as shown in the picture below). This will enable you to establish a remote connection to the Gitspace via SSH. If you prefer not to use an SSH key, you can use the temporary password method outlined below.
+To connect to a Gitspace with VS Code Desktop, you can use an SSH key. You can create a new SSH key using `ssh-keygen` [(learn more here on how to create an SSH key)](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key). This generates a pair of keys (public and private). Copy the public key and paste it into the "SSH key" field while setting up a Gitspace (as shown in the picture below). This will enable you to establish a remote connection to the Gitspace via SSH. If you prefer not to use an SSH key, you can use the temporary password method outlined below.
 
-    ![](./static/ssh-key.png)
-    
-2. Temporary Password:
-If you do not wish to connect via an SSH key, you can use a temporary password. During Gitspace creation, simply leave the "SSH key" field blank. A temporary password will be generated automatically for the remote connection. After the Gitspace is created, you'll be redirected to VS Code desktop and prompted to copy the temporary password. Paste it and follow the prompts to establish the remote connection. 
-
-    ![](./static/temp-password.png)
+![](./static/ssh-key.png)
 
 
 ## Managing your Gitspace 
