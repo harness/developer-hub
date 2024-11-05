@@ -3,7 +3,7 @@ id: windows-network-loss
 title: Windows Network Loss
 ---
 
-Windows network loss causes network loss on Windows VM for the target hosts using [Clumsy](https://jagt.github.io/clumsy/index.html). It checks the performance of the application running on the Windows VMs under network loss conditions.
+Windows network loss causes network packet loss on Windows VM for the target hosts or IP addresses using [Clumsy](https://app.harness.io/public/shared/tools/chaos/windows/clumsy-0.3-win64-a.zip). It checks the performance of the services running on the Windows VMs after the disrupted loss conditions.
 
 ![Windows Network Loss](./static/images/windows-network-loss.png)
 
@@ -24,7 +24,7 @@ Windows network loss:
 
 ## Prerequisites
 - Ensure that the [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/prerequisites) are fulfilled before executing the experiment.
-- Verify that [Clumsy](https://jagt.github.io/clumsy/download.html) is installed on the Windows VM, since it is essential for this experiment.
+- Verify that [Clumsy](https://app.harness.io/public/shared/tools/chaos/windows/clumsy-0.3-win64-a.zip) is installed on the Windows VM.
 
 ### Mandatory tunables
 
@@ -36,13 +36,18 @@ Windows network loss:
       </tr>
       <tr>
         <td> NETWORK_PACKET_LOSS_PERCENTAGE </td>
-        <td> The number of data packets lost during transmission, in percentage. </td>
+        <td> The percentage of data packets lost during transmission. </td>
         <td> For example, 100. For more information, go to <a href="#network-packet-loss"> network packet loss. </a></td>
       </tr>
       <tr>
           <td> DESTINATION_HOSTS </td>
-          <td> DNS or FQDN names of services whose access is affected. </td>
-          <td> You can specify multiple inputs as comma-separated values. For example, "abc.com,github.com". For more information, go to <a href="#destination-hosts"> destination hosts. </a></td>
+          <td> DNS or FQDN names of services whose access is affected. You can specify multiple inputs as comma-separated values. </td>
+          <td> For example, "abc.com,github.com". It is mutually exclusive with <code>DESTINATION_IPS</code> variable. For more information, go to <a href="#destination-hosts"> destination hosts. </a></td>
+      </tr>
+      <tr>
+        <td> DESTINATION_IPS </td>
+        <td> IP addresses of the target destination services. You can specify multiple inputs as comma-separated values.</td>
+        <td> It is mutually exclusive with <code>DESTINATION_HOSTS</code> variable. For example, '0.8.0.8,192.168.5.6'. </td>
       </tr>
     </table>
 
@@ -52,11 +57,6 @@ Windows network loss:
         <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
-      </tr>
-      <tr>
-        <td> DESTINATION_IPS </td>
-        <td> IP addresses of services (or pods) or CIDR block whose access is affected. </td>
-        <td> For example, '0.8.0.8,192.168.5.6'. </td>
       </tr>
       <tr>
         <td> DURATION </td>
@@ -72,7 +72,7 @@ Windows network loss:
 
 ### Network packet loss
 
-The `NETWORK_PACKET_LOSS_PERCENTAGE` environment variable specifies the number of data packets lost during transmission, in percentage. You can provide multiple values using comma-separated list. 
+The `NETWORK_PACKET_LOSS_PERCENTAGE` environment variable specifies the percentage of data packets lost during transmission.
 
 Use the following example to specify network packet loss:
 
@@ -95,14 +95,11 @@ spec:
           env:
             - name: NETWORK_PACKET_LOSS_PERCENTAGE
               value: "100"
-            - name: DESTINATION_HOSTS
-              value: 'github.com,aws.amazon.com'
-            - name: DESTINATION_IPS
-              value: '0.8.0.8,192.168.5.6'
 ```
 
 ### Destination hosts
 The `DESTINATION_HOSTS` environment variable specifies the destination hosts to induce network loss on the target Windows VM. You can provide multiple values using comma-separated list. 
+`DESTINATION_HOSTS` and `DESTINATION_IPS` environment variables are mutually exclusive.
 
 Use the following example to specify destination hosts:
 
@@ -123,8 +120,34 @@ spec:
     - definition:
         chaos:
           env:
-            - name: NETWORK_PACKET_LOSS_PERCENTAGE
-              value: "100"
             - name: DESTINATION_HOSTS
               value: "aws.amazon.com,github.com"
+```
+
+### Destination IPS
+
+The `DESTINATION_IPS` environment variable specifies the IP addresses of target destination services. You can specify multiple inputs as comma-separated values. 
+`DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables are mutually exclusive.
+
+Use the following example to specify destination IPS:
+
+[embedmd]:# (./static/manifests/windows-network-loss/destination-ips.yaml yaml)
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: MachineChaosExperiment
+metadata:
+  name: windows-network-loss
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    infraType: windows
+    steps:
+      - - name: windows-network-loss
+    tasks:
+    - definition:
+        chaos:
+          env:
+            - name: DESTINATION_IPS
+              value: '0.8.0.8,192.168.5.6'
 ```
