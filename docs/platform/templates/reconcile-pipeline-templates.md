@@ -215,7 +215,7 @@ To resolve conflicts in the pipeline YAML, do the following:
 Currently this feature is behind Feature Flag `PIPE_BULK_RECONCILIATION`. Please contact Harness Support(mailto:support@harness.io) to enable this FF.
 :::
 
-Bulk reconciliation allows you to apply changes across multiple entities that reference a modified template. When a template is referenced by multiple entities (like stages or steps across different pipelines) and undergoes updates, you can use bulk reconciliation to synchronize these entities with the updated template in a single operation.
+ When changes are made to the runtime inputs in a template—such as adding or removing inputs—and the template is referenced by multiple entities (like other templates, stages, or pipelines), you can trigger a **Bulk Reconciliation** directly from the template page. This process ensures that all dependent entities are synchronized with the updated template in a single operation.
 
 For example you have a step template:-
 
