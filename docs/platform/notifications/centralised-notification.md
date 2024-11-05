@@ -5,7 +5,7 @@ sidebar_position: 3
 ---
 
 :::note
-Currently, this feature is behind the feature flag `PL_CENTRAL_NOTIFICATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, the Centralised Notification feature is behind the feature flag `PL_CENTRAL_NOTIFICATIONS`, and Pipeline specific notifications are behind `PIPE_CENTRALISED_NOTIFICATION`. You will need both these flags turned on to use this feature. Contact [Harness Support](mailto:support@harness.io) to enable them.
 :::
 
 With notifications management, you can configure notifications for the following resource types:
