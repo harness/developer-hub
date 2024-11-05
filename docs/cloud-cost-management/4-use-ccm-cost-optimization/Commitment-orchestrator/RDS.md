@@ -48,6 +48,9 @@ For Reserved Instance (RI) management, automation is important. Automated system
 Additionally, automation improves scalability and agility. When managing resources manually, scaling up or down to meet demand can be slow and reactive, potentially leading to lost revenue or user dissatisfaction. Automated systems, however, can respond instantly to usage fluctuations, scaling resources efficiently and cost-effectively. 
 
 We have now enhanced Harness CCM's Commitment Orchestrator by extending its capabilities to include support for AWS RDS.
+
+<DocImage path={require('./static/RDSui.png')} width="100%" height="100%" title="Click to view full size image" />
+
 ## Getting Started
 
 ### Step 1 : Setting up the master account 
@@ -98,6 +101,7 @@ In the Action Center UI, you can:
 - Approve or reject recommendations individually, in subsets, or all at once.
 - Perform actions on different master accounts and regions.
 
+
 :::info
 You can change and select the mode (either automatic approval or manual approval) during the setup flow. 
 :::
@@ -110,6 +114,9 @@ You can change and select the mode (either automatic approval or manual approval
 3. **Commitment Orchestrator Setup**: Commitment Orchestrator can be easily setup on your master account to centralize commitment management and streamline operations.
 4. **Detailed Activity Logs**: Harness’ Commitment Orchestrator also provides comprehensive logs detailing every action performed within the Commitment Orchestrator, ensuring transparency and accountability.
 5. **RBAC Support**: Role-Based Access Control (RBAC) is included to manage permissions and access levels within the Commitment Orchestrator, enhancing security and governance.
+
+<DocImage path={require('./static/loghistory.png')} width="90%" height="90%" title="Click to view full size image" />
+
 
 ## FAQs
 1. Which cloud providers are supported at the moment?
