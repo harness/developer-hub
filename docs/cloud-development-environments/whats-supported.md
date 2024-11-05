@@ -38,8 +38,8 @@ We are working on support for [IntelliJ IDEA](https://www.jetbrains.com/idea/) a
 
 :::info
 
-To use VS Code Desktop, you need to [install and configure](/docs/cloud-development-environments/get-started/getting-started-with-cde#install-gitspaces-vs-code-extension-for-vs-code-desktop
-) the Gitspaces extensions.  
+To use VS Code Desktop, you need to [install and configure](/docs/cloud-development-environments/ide's/vs-code-desktop)
+) the Gitspaces extension.  
 :::
 
 ## Regions Available​
