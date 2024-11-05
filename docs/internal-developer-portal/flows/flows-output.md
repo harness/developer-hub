@@ -1,20 +1,176 @@
 ---
 title: How to configure your Workflows Backend
-description: Instructions to integrate individual workflows with custom actions available and configure the output
+description: Instructions to integrate individual workflows with actions available and configure the output
 sidebar_position: 3
 sidebar_label: How to configure your Workflows Backend
 ---
 
 ## Introduction
 
-
+In Harness IDP the Workflows backend could be attributed to the Orchestrator used, where you set-up all the integrations, add all the secrets required for successful execution of the Workflows. These integrations are further managed through [Workflows Actions](/docs/internal-developer-portal/flows/custom-actions). These Actions are configured under the `step` in Workflows. [Steps](/docs/internal-developer-portal/flows/service-onboarding-pipelines#building-the-workflow-backend) are the core execution units within Workflows. Each step runs an action that might involve triggering a CI/CD pipeline, creating a service in a catalog, or provisioning infrastructure resources. The inputs gathered from the user are passed into these steps, and the outputs are generated based on the results of each step.
 
 ## Harness Pipeline as Orchestrator
 
+Harness Pipelines serve as powerful orchestrators for Workflows. In this setup you can trigger Harness pipelines directly through a [Workflow Action](/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline). This action accepts the Harness pipeline URL as input, alongside an automatically inserted authentication token under the parameters section just like other inputs required for the pipeline execution. This seamless integration is enabled by Harness IDP being part of the broader Harness SaaS ecosystem, allowing users to even manage Workflows through pipelines RBAC. 
 
+We have also built a native [IDP Stage](/docs/internal-developer-portal/flows/idp-stage) to help with Git cloning, cookiecutter templating, repository creation, catalog creation,catalog registration, Slack notifications, and resource creation using Harness IaCM powered by OpenTofu. 
 
+This [Harness Specific Workflows Actions](/docs/internal-developer-portal/flows/custom-actions#harness-specific-custom-actions) currently supports only [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)**(Only Available with Harness CD License or Free Tier usage)** and [codebase disabled](http://localhost:3001/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages) **CI stage (Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings). **All input, except for [pipeline expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be [fixed values](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).**
 
-## Output Examples
+<details>
+<summary>Example YAML</summary>
+
+```YAML {42-58}
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: onboard-services
+  title: Create and Onboard a new react app
+  description: A template to create and onboard a new react app
+  tags:
+    - nextjs
+    - react
+    - javascript
+spec:
+  owner: debabrata.panigrahi@harness.io
+  type: service
+  parameters:
+    - title: Next.js app details
+      required:
+        - project_name
+        - github_repo
+        - github_org
+      properties:
+        project_name:
+          title: Name of your new app
+          type: string
+          description: Unique name of the app          
+        github_repo:
+          title: Name of the GitHub repository
+          type: string
+          description: This will be the name of Repository on Github
+        github_org:
+          title: Name of the GitHub Organisation
+          type: string
+          description: This will be the name of Organisation on Github
+        github_token:
+          title: GitHub PAT
+          type: string
+          ui:widget: password
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "YOUR PIPELINE URL"
+        inputset:
+          project_name: ${{ parameters.project_name }}
+          github_repo: ${{ parameters.github_repo }}
+          github_org: ${{ parameters.github_org }}
+          github_token: ${{ parameters.github_token }}
+        apikey: ${{ parameters.token }}
+    # The final step is to register our new component in the catalog.
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+```
+</details>
+
+In the above example there are two parts:
+
+1. Input from the user
+2. Execution of pipeline
+
+Let's take a look at the inputs that the template expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in properties are the unique IDs of fields (for example, `github_repo` and `project_name`). These are the pipeline variables that you need to set as runtime inputs while configuring the pipeline. This is what we want the developer to enter when creating their new application.
+
+The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. It takes the pipeline `url`,`inputset` containing all the runtime input variables that the pipeline needs and the `apikey` as input .
+
+### Manage variables in the pipeline
+
+The above example uses various pipeline variables. The variables are as follows:
+
+- `<+pipeline.variables.project_name>`
+- `<+pipeline.variables.github_username>`
+- `<+pipeline.variables.github_token>`
+- `<+pipeline.variables.github_org>`
+- `<+pipeline.variables.github_repo>`
+
+Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name should match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template.
+
+For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the above mentioned example.
+
+You can use the **Variables** button on the floating sidebar on the right-hand side to open the Variables page for the pipeline.
+
+![](./static/pipeline%20variables.png)
+
+You can create any number of pipeline variables and decide their value type. Some variables, such as a GitHub token, a user name, and organization, can have a fixed value. The token used in the code above is a Harness secret whose value is decoded during pipeline execution.
+
+Variables such as project name and GitHub repository are runtime inputs. They are needed at the time of pipeline execution. When creating a new variable, you can specify its type in the UI. For more information about reference variables, go to the [reference documentation](/docs/platform/variables-and-expressions/harness-variables/) on pipeline variables.
+
+### Authenticate the request
+
+Once you have written all the inputs that the template requires, you must add the following YAML snippet under `spec.parameters.properties`.
+
+```yaml
+token:
+  title: Harness Token
+  type: string
+  ui:widget: password
+  ui:field: HarnessAuthToken
+```
+
+:::info
+
+The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page`  in-case you have multiple pages.
+
+```
+# example workflow.yaml
+...
+parameters:
+  - title: <PAGE-1 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+    token:
+      title: Harness Token
+      type: string
+      ui:widget: password
+      ui:field: HarnessAuthToken
+  - title: <PAGE-2 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+  - title: <PAGE-n TITLE>  
+...
+```
+:::
+
+Also the token input is used as a parameter under `steps` as `apikey`
+
+```YAML
+  steps:
+    - id: trigger
+      name: ...
+      action: trigger:harness-custom-pipeline
+      input:
+        url: ...
+        inputset:
+          key: value
+          ...
+        apikey: ${{ parameters.token }}
+```
 
 ### Support for Harness Account Variables
 
@@ -29,163 +185,6 @@ In the context of Harness IDP you can use all the **[custom account variables](h
       input:
         url: https://app.harness.io/ng/account/<+account.identifier>/module/idp/orgs/<+variable.account.orgIdentifier>/projects/<+variable.account.projectIdentifier>/pipelines/pipeline_id/pipeline-studio/?storeType=INLINE
 ...
-```
-
-### The Repository Picker
-
-In order to make working with repository providers easier, we've built a custom
-picker that can be used by overriding the `ui:field` option in the `uiSchema`
-for a `string` field. Instead of displaying a text input block it will render
-our custom component that we've built which makes it easy to select a repository
-provider, and insert a project or owner, and repository name.
-
-You can see it in the above full example which is a separate step and it looks a
-little like this:
-
-```yaml
-- title: Choose a location
-  required:
-    - repoUrl
-  properties:
-    repoUrl:
-      title: Repository Location
-      type: string
-      ui:field: RepoUrlPicker
-      ui:options:
-        allowedHosts:
-          - github.com
-```
-
-The `allowedHosts` part should be set to where you wish to enable this template
-to publish to. And it can be any host that is listed in your `integrations`
-config in `app-config.yaml`.
-
-Besides specifying `allowedHosts` you can also restrict the template to publish to
-repositories owned by specific users/groups/namespaces by setting the `allowedOwners`
-option. With the `allowedRepos` option you are able to narrow it down further to a
-specific set of repository names. A full example could look like this:
-
-```yaml
-- title: Choose a location
-  required:
-    - repoUrl
-  properties:
-    repoUrl:
-      title: Repository Location
-      type: string
-      ui:field: RepoUrlPicker
-      ui:options:
-        allowedHosts:
-          - github.com
-        allowedOwners:
-          - backstage
-          - someGithubUser
-        allowedRepos:
-          - backstage
-```
-
-For a list of all possible `ui:options` input props for `RepoUrlPicker`, please visit [here](https://backstage.io/docs/features/software-templates/ui-options-examples/).
-
-
-#### Using the Users `oauth` token
-
-There's a little bit of extra magic that you get out of the box when using the
-`RepoUrlPicker` as a field input. You can provide some additional options under
-`ui:options` to allow the `RepoUrlPicker` to grab an `oauth` token for the user
-for the required `repository`.
-
-This is great for when you are wanting to create a new repository, or wanting to
-perform operations on top of an existing repository.
-
-A sample template that takes advantage of this is like so:
-
-<details>
-<summary>Example YAML</summary>
-
-```yaml
-apiVersion: scaffolder.backstage.io/v1beta3
-kind: Template
-metadata:
-  name: v1beta3-demo
-  title: Test Action template
-  description: scaffolder v1beta3 template demo
-spec:
-  owner: backstage/techdocs-core
-  type: service
-
-  parameters:
-    ...
-
-    - title: Choose a location
-      required:
-        - repoUrl
-      properties:
-        repoUrl:
-          title: Repository Location
-          type: string
-          ui:field: RepoUrlPicker
-          ui:options:
-            # Here's the option you can pass to the RepoUrlPicker
-            requestUserCredentials:
-              secretsKey: USER_OAUTH_TOKEN
-              additionalScopes:
-                github:
-                  - workflow
-            allowedHosts:
-              - github.com
-    ...
-
-  steps:
-    ...
-
-    - id: publish
-      name: Publish
-      action: publish:github
-      input:
-        allowedHosts: ['github.com']
-        description: This is ${{ parameters.name }}
-        repoUrl: ${{ parameters.repoUrl }}
-        # here's where the secret can be used
-        token: ${{ secrets.USER_OAUTH_TOKEN }}
-
-    ...
-```
-</details>
-
-You will see from above that there is an additional `requestUserCredentials`
-object that is passed to the `RepoUrlPicker`. This object defines what the
-returned `secret` should be stored as when accessing using
-`${{ secrets.secretName }}`, in this case it is `USER_OAUTH_TOKEN`. And then you
-will see that there is an additional `input` field into the `publish:github`
-action called `token`, in which you can use the `secret` like so:
-`token: ${{ secrets.USER_OAUTH_TOKEN }}`.
-
-There's also the ability to pass additional scopes when requesting the `oauth`
-token from the user, which you can do on a per-provider basis, in case your
-template can be published to multiple providers.
-
-Note, that you will need to configure an **connector** for your source code management (SCM) service to make this feature work.
-
-
-## Outputs
-
-Each individual step can output some variables that can be used in the
-scaffolder frontend for after the job is finished. This is useful for things
-like linking to the entity that has been created with the backend, linking
-to the created repository, or showing Markdown text blobs.
-
-```yaml
-output:
-  links:
-    - title: Repository
-      url: ${{ steps['publish'].output.remoteUrl }} # link to the remote repository
-    - title: Open in catalog
-      icon: catalog
-      entityRef: ${{ steps['register'].output.entityRef }} # link to the entity that has been ingested to the catalog
-  text:
-    - title: More information
-      content: |
-        **Entity URL:** `${{ steps['publish'].output.remoteUrl }}`
 ```
 ### Fetch Output from Harness Pipeline onto IDP
 
@@ -240,34 +239,32 @@ There are two ways in which you can add the output variable to the template synt
 ![](./static/output-variables.png)
 
 
-:::info
+## Hide or mask sensitive data on Review step
 
-The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page`  in-case you have multiple pages.
+Sometimes, specially in custom fields, you collect some data on Create form that
+must not be shown to the user on Review step. To hide or mask this data, you can
+use `ui:widget: password` or set some properties of `ui:backstage`:
 
 ```YAML
-# example workflow.yaml
-...
-parameters:
-  - title: <PAGE-1 TITLE>
-    properties:
-      property-1:
-        title: title-1
-        type: string
-      property-2:
-        title: title-2
-    token:
-      title: Harness Token
+- title: Hide or mask values
+  properties:
+    password:
+      title: Password
       type: string
-      ui:widget: password
-      ui:field: HarnessAuthToken
-  - title: <PAGE-2 TITLE>
-    properties:
-      property-1:
-        title: title-1
-        type: string
-      property-2:
-        title: title-2
-  - title: <PAGE-n TITLE>  
-...
+      ui:widget: password # will print '******' as value for property 'password' on Review Step
+    masked:
+      title: Masked
+      type: string
+      ui:backstage:
+        review:
+          mask: '<some-value-to-show>' # will print '<some-value-to-show>' as value for property 'Masked' on Review Step
+    hidden:
+      title: Hidden
+      type: string
+      ui:backstage:
+        review:
+          show: false # wont print any info about 'hidden' property on Review Step
 ```
-:::
+
+
+

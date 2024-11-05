@@ -344,7 +344,7 @@ When `each` is used, the outputs of a repeated step are returned as an array of 
 
 ### Using Harness Pipeline as an Orchestrator
 
-TO BE ADDED 
+Harness Pipelines serve as powerful orchestrators for Workflows. In this setup you can trigger Harness pipelines directly through a [Workflow Action](/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline). This action accepts the Harness pipeline URL as input, alongside an automatically inserted authentication token under the parameters section just like other inputs required for the pipeline execution. This seamless integration is enabled by Harness IDP being part of the broader Harness SaaS ecosystem, allowing users to even manage Workflows through pipelines RBAC. [Read More](/docs/internal-developer-portal/flows/flows-output#harness-pipeline-as-orchestrator)
 
 ### Configuring the Output
 
@@ -352,21 +352,43 @@ TO BE ADDED
 The output can generate direct links to newly created resources such as Git repositories, documentation pages, or CI/CD pipelines. This gives the developer immediate access to manage or monitor their newly onboarded resources.
 
 **Example**:  
-To Be Added
 
+```YAML
+output:
+  links:
+    - title: "Repository Link"
+      url: "${{ steps['repo-create'].output.repoUrl }}"
+    - title: "Pipeline Dashboard"
+      url: "${{ steps['deploy-pipeline'].output.pipelineUrl }}"
+
+```
 
 2. **Service Metadata and Status**
 Output can include status messages or metadata from the onboarding process. For example, details about a service registration or the progress of resource provisioning (success/failure messages) can be returned as output.
 
 **Example**:  
-To Be Added
+
+```YAML
+output:
+  text:
+    - title: "Service Registration Status"
+      content: "Service registration completed with status: `${{ steps['register-service'].output.status }}`
+```
 
 
 3. **Generated Files and Artifacts**
 Developers can configure templates to generate files (e.g., README.md, YAML configuration files) or artifacts (e.g., Dockerfiles, Kubernetes manifests) during onboarding.
 
 **Example**:  
-To Be Added
+
+```YAML
+output:
+  links:
+    - title: "Generated README"
+      url: "${{ steps['create-readme'].output.fileUrl }}"
+    - title: "Kubernetes Manifest"
+      url: "${{ steps['generate-manifest'].output.fileUrl }}"
+```
 
 
 4. **Dynamic Outputs Based on Inputs**
@@ -374,7 +396,7 @@ Outputs can be conditional based on inputs. For instance, if a user selected the
 
 Each individual step can output some variables that can be used in the Workflow frontend for after the job is finished. This is useful for things like linking to the entity that has been created with the backend, linking to the created repository, or showing Markdown text blobs. **[Read more on how to configure output](/docs/internal-developer-portal/flows/flows-output.md)**. 
 
-```yaml
+```YAMl
 output:
   links:
     - title: Repository
@@ -430,7 +452,7 @@ Learn more about how to use them in the [service onboarding tutorial](/docs/inte
 
 ## Available Workflow UI pickers
 
-Harness IDP ships the following [custom UI pickers](/docs/internal-developer-portal/flows/custom-actions.md) that can be used in the template form for developers to select from.
+Harness IDP ships the following [Workflows UI pickers](/docs/internal-developer-portal/flows/custom-actions.md) that can be used in the template form for developers to select from.
 
 - `HarnessOrgPicker`
 - `HarnessProjectPicker`

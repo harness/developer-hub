@@ -148,9 +148,9 @@ In the above script you need to add the **[Personal Access Token](https://develo
 6. Click **Apply Changes**.
 
 
-    ### Manage variables in the pipeline
+### Manage variables in the pipeline
 
-    The script uses several pipeline variables. The variables are as follows:
+The script uses several pipeline variables. The variables are as follows:
 
 - `<+pipeline.variables.project_name>`
 - `<+pipeline.variables.github_username>`
