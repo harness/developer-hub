@@ -10,20 +10,19 @@ redirect_from:
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
 
-Self Service Workflows in Harness IDP use Harness pipeline orchestrator. 
-
 ![](./static/service-onboarding.png)
 
-In Harness IDP, a Self Service Workflow (also known as a software template in Backstage) enables platform engineers to automate the process of service creation. As a platform engineer, you can create a Workflows that prompts developers for details and creates a repository with a basic setup that includes a CI/CD process. The Workflow is defined in a YAML file named `workflow.yaml`. The [syntax](https://backstage.io/docs/features/software-templates/input-examples) of the Workflow definition is owned by [backstage.io](https://backstage.io/docs/features/software-templates/writing-templates) while the Workflow runs on a Harness pipeline of your choice.
+In Harness IDP, a Self-Service Workflow (also known as a software template in Backstage) enables platform engineers to automate the process of service creation. As a platform engineer, you can create a workflow that prompts developers for details and then generates a repository with a basic setup that includes a CI/CD process. The workflow is defined in a YAML file named `workflow.yaml`. The [syntax](https://backstage.io/docs/features/software-templates/input-examples) of the workflow definition is managed by backstage.io, while the workflow itself runs on a Harness pipeline of your choice.
 
 <!-- See it in action: Demo video -->
 
-**To get started, check out the tutorial to [create your first service onboarding pipeline](/docs/internal-developer-portal/tutorials/service-onboarding-pipeline).**
+**To get started, check out the tutorial to [create your first Workflow](/docs/internal-developer-portal/get-started/workflow-quickstart).**
 
 ## How to write IDP Workflows
 
-Workflows in Harness IDP is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). You can create your own Workflows with a small yaml definition which describes the Workflow and its metadata, along with some input variables that your Workflow will need, and then a list of actions which are then executed by the scaffolding service. Here's an example Workflow definition YAML: 
+Workflows in Harness IDP is powered by the Backstage Software Template. You can create your own Workflows with a small YAML definition which describes the Workflow and its metadata, along with some input variables that your Workflow will need, and then a list of actions which are then executed by the scaffolding service. Here's an example Workflow definition YAML: 
 
+Read More on [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates).
 
 <details>
 <summary>Example YAML</summary>
@@ -133,7 +132,7 @@ In a Workflow, the **input parameters** are the first interaction point for deve
    - **Field Dependency**: Input fields can be made dynamic using `anyOf` or `allOf`, where only certain fields become visible based on the user’s previous choices. For instance, selecting a "production" environment could trigger additional input fields for production-specific configurations.
    
 3. **Required Fields**:
-   Templates allow developers to enforce required fields. For example, the field `age` or `owner` could be marked as mandatory, ensuring critical data is not skipped during onboarding.
+   Workflows allow developers to enforce required fields. For example, the field `age` or `owner` could be marked as mandatory, ensuring critical data is not skipped during onboarding.
 
 ### `spec.parameters` - `FormStep | FormStep[]`
 
