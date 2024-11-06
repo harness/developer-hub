@@ -294,22 +294,23 @@ helm repo update harness-ccm-cluster-orchestrator
 ### Step 4: Install/Upgrade the Cluster Orchestrator
 
 After running the Terraform script and gathering the required output values, use the following Helm command to install or upgrade the Cluster Orchestrator.
+ 
+Please note, after running the Terraform script, the API key will not be printed since it is sensitive data. To retrieve the value, you need to run `terraform output harness_ccm_token`
 
 Replace the placeholders in the command with values from the Terraform outputs and your specific configuration:
 
 ```bash
-helm upgrade -i harness-ccm-cluster-orchestrator --namespace kube-system \
+helm upgrade -i harness-ccm-cluster-orchestrator --namespace kube-system harness-ccm-cluster-orchestrator/harness-ccm-cluster-orchestrator 
 --set harness.accountID="<harness_account_id>" 
---set harness.k8sConnectorID="<k8s_connector_id>" 
---set harness.remoteAPI="https://app.harness.io/gateway" 
---set harness.ccm.token="<harness_ccm_token>" 
+--set harness.k8sConnectorID="<k8s_connector_id>" \
+--set harness.ccm.secret.token="<harness_ccm_token>" 
 --set eksCluster.name="<eks_cluster_name>" 
 --set eksCluster.region="<eks_cluster_region>" 
 --set eksCluster.controllerRoleARN="<eks_cluster_controller_role_arn>" 
 --set eksCluster.endpoint="<eks_cluster_endpoint>" 
 --set eksCluster.defaultInstanceProfile.name="<eks_cluster_default_instance_profile>" 
 --set eksCluster.nodeRole.arn="<eks_cluster_node_role_arn>" 
---set clusterOrchestrator.id="<cluster_orchestrator_id>"
+--set clusterOrchestrator.id="<cluster_orchestrator_id>
 ```
 
 ## Installation via kubectl
