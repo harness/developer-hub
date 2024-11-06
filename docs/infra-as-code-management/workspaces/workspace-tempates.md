@@ -17,7 +17,20 @@ sidebar_label: Workspace templates
 import Tabs from '@theme/Tabs';  
 import TabItem from '@theme/TabItem';  
  
-With workspace templates, you can standardize workspace configurations across your projects by predefining essential variables, configuration settings, and other workspace options. This helps streamline workspace setup, ensuring consistency and reducing manual configuration efforts.  
+With workspace templates, you can standardize workspace configurations across your projects by predefining essential variables, configuration settings, and other workspace options. This helps streamline workspace setup, ensuring consistency and reducing manual configuration efforts. 
+
+<iframe  
+   src="https://www.youtube.com/embed/ss_ea7cjnFs"  
+   title="Workspace Templates overview"  
+   style={{ minHeight: '540px' }}  
+   width="100%"  
+   height="100%"  
+   referrerpolicy="strict-origin-when-cross-origin"  
+   frameborder="0"  
+   webkitallowfullscreen="true"  
+   mozallowfullscreen="true"  
+   allowfullscreen="true"  
+></iframe>  
 
 ### Prerequisites
 Before you begin configuring workspace templates, ensure that you have:
@@ -32,7 +45,6 @@ When apply a workspace template your will have the option to either **Use Templa
 The difference between these options is as follows:
 - **Use Template:** When a user selects Use Template, their workspace will continue to reflect any future changes made to the template.
 - **Copy Template:** Selecting Copy Template creates a one-time copy of the template as it is at that moment, without updating if the template changes later.
-
 :::
 
 ## Configure Workspace Templates
