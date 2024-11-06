@@ -48,12 +48,6 @@ export const IdpData: Horizon = {
           "Services deployed using Harness CD will auto-magically appear in IDP and will be easier to manage for end-users.",
       },
       {
-        tag: [{ value: "Catalog" }],
-        title: "Catalog Auto-Discovery with Kubernetes",
-        description:
-          "Services can be discovered from Kubernetes clusters and be onboarded in the IDP Catalog.",
-      },
-      {
         tag: [{ value: "Workflows" }],
         title: "Dynamic Picker: Support Conditional API Request",
         description:
@@ -149,6 +143,12 @@ export const IdpData: Horizon = {
         title: "Re-work Kubernetes plugin",
         description:
           "Improving the authentication mode of the Kubernetes plugin to use Delegates. Provide ease of setup for existing Harness customers using Kubernetes connector. Make the plugin performant and scalable for 1000s of pods.",
+      },
+      {
+        tag: [{ value: "Catalog" }],
+        title: "Catalog Auto-Discovery with Kubernetes",
+        description:
+          "Services can be discovered from Kubernetes clusters and be onboarded in the IDP Catalog.",
       },
       {
         tag: [{ value: "Platform" }],
