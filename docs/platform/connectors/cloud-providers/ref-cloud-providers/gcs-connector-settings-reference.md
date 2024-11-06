@@ -133,52 +133,6 @@ To connect to GCP with OIDC, you must configure an [OIDC identity provider](http
 
 If accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector. For instructions, go to [Configure OIDC with GCP WIF for Harness Cloud builds](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
 
-### Select Connectivity Mode
-
-Select how you want Harness to communicate with GCP. The available options depend on what you chose for **Details** settings.
-
-#### Connect through Harness Platform
-
-With this option, Harness communicates with GCP through a direct, secure communication between Harness and GCP. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
-
-#### Connect through a Harness Delegate
-
-With this option, Harness communicates with GCP indirectly through a Harness Delegate that is running in GCP. 
-
-You must choose this option if you chose to [inherit delegate credentials](#use-the-credentials-of-a-specific-harness-delegate).
-
-If connecting through a Harness Delegate, select either:
-
-* **Use any available Delegate**: Harness selects an available delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](../../../delegates/delegate-concepts/delegate-overview.md).
-* **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Use delegate selectors](../../../delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](../../../delegates/install-delegates/overview).
-
-:::note
-
-It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
-
-:::
-
-#### Use OpenID Connect (OIDC)
-
-:::note
-
-Currently, this feature is behind the feature flag `PL_GCP_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-Additionally, the OIDC connectivity mode is not compatible with Google Cloud Functions. You can't deploy Google Cloud Functions with OIDC-enabled GCP connectors.
-
-:::
-
-Select the **Connect through Harness Platform for OIDC** option to allow Harness to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials.
-
-Select the **Connect through Harness Delegate for OIDC** option to allow Harness Delegate to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials. This option requires Harness Delegate version 24.03.82603 or later.
-
-To connect to GCP with OIDC, you must configure an [OIDC identity provider](https://cloud.google.com/iam/docs/workload-identity-federation-with-other-providers) GCP and connect the service account with relevant permissions that Harness will use to operate in GCP. Use the following Harness OIDC provider endpoint and OIDC audience settings to create your OIDC identity provider.
-
-   * Harness OIDC provider endpoint: `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID>`
-   * OIDC audience: `https://iam.googleapis.com/projects/<YOUR_GCP_PROJECT_ID>/locations/global/workloadIdentityPools/<YOUR_WORKLOAD_POOL_ID>/providers/<YOUR_PROVIDER_ID>`
-
-If accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector. For instructions, go to [Configure OIDC with GCP WIF for Harness Cloud builds](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
-
 #### Custom Parameters 
 
 You can add attribute conditions in your Workload Identity Pools under Workload Identity Federation. 
@@ -205,8 +159,6 @@ Here are the custom attributes for the Harness GCP OIDC JWT:
   - `PIPELINE_EXECUTION` - This context is sent when a pipeline configuration is being executed.
   - `PERPETUAL_TASK` - This context is sent when a perpetual task is executing.
 
-
-
 ##### Examples
 
 <details>
@@ -231,6 +183,31 @@ Here are the custom attributes for the Harness GCP OIDC JWT:
 </details>
 
 Custom attributes will be included in the JWT payload.
+
+### Select Connectivity Mode
+
+Select how you want Harness to communicate with GCP. The available options depend on what you chose for **Details** settings.
+
+#### Connect through Harness Platform
+
+With this option, Harness communicates with GCP through a direct, secure communication between Harness and GCP. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
+
+#### Connect through a Harness Delegate
+
+With this option, Harness communicates with GCP indirectly through a Harness Delegate that is running in GCP. 
+
+You must choose this option if you chose to [inherit delegate credentials](#use-the-credentials-of-a-specific-harness-delegate).
+
+If connecting through a Harness Delegate, select either:
+
+* **Use any available Delegate**: Harness selects an available delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](../../../delegates/delegate-concepts/delegate-overview.md).
+* **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Use delegate selectors](../../../delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](../../../delegates/install-delegates/overview).
+
+:::note
+
+It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
+
+:::
 
 ### Troubleshoot GCP connector errors
 
