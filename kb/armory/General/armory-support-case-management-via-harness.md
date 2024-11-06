@@ -58,9 +58,9 @@ Enter a description of the issue you are having in the form above, and click **â
 
 * First, select the **issue type** from the dropdown: options include **Problem, Question, Feature Request,** or **Other**.
 * Then, choose the **priority** level using our[ priority guidelines](https://www.harness.io/support/tiers-and-definitions) to ensure fair support for all users.
-* If you have a preferred region, you can select it from an optional dropdown to align your case with a nearby engineer.
+* If you have a preferred region, you can select it from an optional dropdown to align your case with the engineering team closest to your region.
 * Use the radio buttons above to both mark the case as **Urgent** (for critical scenarios where Armory is unavailable/unusable), and **Was this working before?** if there were no changes made to indicate a potential regression.
-* For **Module**, select **Armory** from the dropdown.
+* For **Module**, select **Spinnaker** from the dropdown.
 * In the **description field**, provide detailed information to help expedite resolution. You can also upload **attachments** (images, logs, etc.) that may assist.
 * Click **Submit** to confirm your case. A success message and case ID link will appear at the top of the UI, allowing direct access to Zendesk portal for Harness Support when clicked.
 
