@@ -31,6 +31,11 @@ Redis cache expire expires a given key (or all keys) for a specific duration. Du
     <th> Notes </th>
   </tr>
   <tr>
+    <td> address </td>
+    <td> The address of the Redis server. </td>
+    <td> If a password or certificate is also required alongside the address, please use the <a href="#redis-authentication">secret file approach</a>. </td>
+  </tr>
+  <tr>
     <td> key </td>
     <td> The key to expire in the Redis cache. </td>
     <td> For empty value, all the keys are expired. For more information, go to <a href="#key"> key</a>. </td>

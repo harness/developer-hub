@@ -1,4 +1,8 @@
 ## Redis authentication
+:::note
+If your Redis server doesn't require authentication, you may directly provide the `address` tunable. Refer [here](#optional-tunables).
+:::
+
 The following authentication and connection details reside on the same machine where the chaos infrastructure is executed. These details are provided in the `/etc/linux-chaos-infrastructure/redis.env` file in the following format:
 
 ```
@@ -8,7 +12,7 @@ TLS_AUTH_CERT="/path/to/tls-cert"
 ```
 
 :::tip
-`ADDRESS` is a mandatory field. You can also include `PASSWORD` and `TLS_AUTH_CERT` fields. You need them only if you have configured your Redis database to facilitate authentication.
+- `ADDRESS` is a mandatory field. You can also include `PASSWORD` and `TLS_AUTH_CERT` fields. You need them only if you have configured your Redis database to facilitate authentication.
 :::
 
 
