@@ -1,17 +1,17 @@
 apiVersion: litmuschaos.io/v1alpha1
 kind: MachineChaosExperiment
 metadata:
-  name: windows-network-latency
+  name: windows-network-loss
 spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
     infraType: windows
     steps:
-      - - name: windows-network-latency
+      - - name: windows-network-loss
     tasks:
     - definition:
         chaos:
           env:
-            - name: NETWORK_LATENCY
-              value: "2000"
+            - name: NETWORK_PACKET_LOSS_PERCENTAGE
+              value: "100"
