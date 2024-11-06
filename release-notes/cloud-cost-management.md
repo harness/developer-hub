@@ -18,7 +18,26 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
+
 ## October 2024
+
+### Version 1.32.1
+
+#### New features and enhancements
+
+- AWS Payer Account ID Field Added: We’ve introduced the AWS Payer Account ID in the AWS fields dropdown for Perspectives and CC Rules. Only account IDs will be shown, excluding account names. [CCM-19843]
+
+- Increased Connector Limit for GCP: We raised the default limit to 6,000 for GCP cross combinations (target account * target region) to prevent unannounced system loads, aligning with the 200 account and 30 region limits. [CCM-19838]
+
+- ‘Select All’ Option for Filtered Search: A new ‘Select All’ option allows users to select an entire filtered list, automatically updating based on the filtered options. [CCM-19794]
+
+- Date Filter Sync Issue on Evaluation Details Page: Fixed a date filter sync issue displaying "undefined - undefined" on load. Users previously had to manually select a date range, which is now resolved. [CCM-19785]
+
+- Fixed ECS Metrics Chart Issue: CPU recommendations in ECS metrics charts previously displayed incorrect graphs, and CPU usage showed as 0. This has now been corrected. [CCM-19715]
+
+- Ad-Hoc Enforcement Runs: Users can now dry run or execute enforcements directly from the Enforcements list or details page, improving control over ad-hoc enforcement. [CCM-19438]
+
+- AutoStopping Controller Update Notification: Outdated AutoStopping Controller versions will now trigger a UI notification, guiding users through the update steps. [CCM-19356]
 
 ### Version 1.32.1
 
