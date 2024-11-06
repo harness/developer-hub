@@ -143,61 +143,53 @@ For details, see PagerDuty's documentation on [creating integrations](https://
 
 ## Microsoft Teams notifications
 
-For Microsoft Teams notifications, you enter in the Webhook URL for your Microsoft Teams channel in **Microsoft Teams Webhook URL**.
+To set up notifications in Microsoft Teams, you’ll need a webhook URL linked to the channel where you want to receive notifications.
 
-You create a channel connector in Microsoft Teams to generate the webhook Harness needs for notification.
+### Step 1: Create a Webhook in Microsoft Teams
 
-In Microsoft Teams, right-click the channel where you want to send notifications, and select **Connectors**.
+1. In Microsoft Teams, right-click the team name where you want to send notifications, and select **Workflows** from the menu.
 
-![](./static/notify-users-of-pipeline-events-06.png)
+  ![](./static/notify-users-of-pipeline-events-06.png)
 
-In **Connectors**, locate **Incoming Webhook**, and select **Configure.**
+2. In the **Workflows** section, select **Post to a channel when webhook request is received**.
 
-![](./static/notify-users-of-pipeline-events-07.png)
+  ![](./static/notify-users-of-pipeline-events-07.png)
 
-In **Incoming Webhook**, enter a name, such as **Harness**.
+3. Provide a name for the webhook, then click **Next**.
 
-Right-click and save the Harness icon from here:
+  ![](./static/notify-users-of-pipeline-events-08.png)
 
-![](./static/notify-users-of-pipeline-events-08.png)
+4. Select the **Team** and **Channel** where you’d like to receive notifications, then click **Add Workflow**.
 
-Select **Upload Image** and add the Harness icon you downloaded.
+  ![](./static/notify-users-of-pipeline-events-09.png)
 
-Next, you'll create the webhook URL needed by Harness.
+5. A webhook URL will be generated. Copy this URL for use in Harness.
 
-In your Microsoft Teams connector, select **Create**. The webhook URL is generated.
+  ![](./static/notify-users-of-pipeline-events-10.png)
 
-![](./static/notify-users-of-pipeline-events-09.png)
-
-Click the copy button to copy the webhook URL, and then select **Done**.
-
-The channel indicates that the connector was set up.
-
-![](./static/notify-users-of-pipeline-events-10.png)
+### Step 2: Use the Webhook URL in Harness
 
 In Harness, in **Notification Method** settings, enter the webhook URL for your Microsoft Teams channel in **Microsoft Teams Webhook URL** or add it as an [encrypted text](/docs/platform/secrets/add-use-text-secrets) and reference it here.
 
 For example, if you have a text secret with the identifier `teamswebhookURL`, you can reference it like this:​
 
-
 ```bash
 <+secrets.getValue("teamswebhookURL")>​​
 ```
+
 You can reference a secret within the Org scope using an expression with `org`:
 
-
 ```bash
-<+secrets.getvalue("org.your-secret-Id")>​
+<+secrets.getValue("org.teamswebhookURL")>​
 ```
+
 You can reference a secret within the Account scope using an expression with `account`:​
 
-
 ```bash
-<+secrets.getvalue("account.your-secret-Id")>​​
+<+secrets.getValue("account.teamswebhookURL")>​​
 ```
 
 ## Webhook Notifications
-
 
 Use Webhook notifications to inform an external application of an event. 
 
