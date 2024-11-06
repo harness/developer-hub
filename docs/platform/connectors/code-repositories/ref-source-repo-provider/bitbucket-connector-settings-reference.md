@@ -181,11 +181,11 @@ Make sure to follow the prompts to finish creating the key. For more information
 
 You must enable API access to use Git-based triggers, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required. API access requires username and password authentication.
 
-In the **Username** field, enter the Bitbucket account username as specified in your Bitbucket **Account settings**. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
+In the **Username** field, enter the Bitbucket account username as specified in your Bitbucket **Account settings**, please note this might be different from what you entered in the first **Username** field. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
 
-In the **Personal Access Token** field, provide a Bitbucket account-level [App password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/), [Access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), or [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html). Passwords are stored as [Harness Encrypted Text secrets](/docs/platform/secrets/add-use-text-secrets).
+In the **Personal Access Token** field, provide a Bitbucket account-level [App password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/). Please note this will be different from the **Access Token** you may have used. Passwords are stored as [Harness Encrypted Text secrets](/docs/platform/secrets/add-use-text-secrets).
 
 You must provide an account-level app password or token. Repo-level tokens are not supported.
 
