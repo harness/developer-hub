@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-10-28T14:00
+date: 2024-11-11T14:00
 sidebar_position: 3
 ---
 
@@ -79,13 +79,31 @@ The following deprecated API endpoints are longer supported:
 
 ## November 2024
 
-### Version 1.63.x<!-- November 4, 2024 -->
+### Version 1.64.x<!-- November 11, 2024 -->
 
 #### Fixed issues
+
+- The delegate name is now displayed in the UI whenever a connector test fails, provided the validation task was acquired by a delegate. This enhancement offers better visibility into which delegate handled the task during troubleshooting. (PL-56483, ZD-64425)
+
+- The `/.wellknown/jwks` endpoint for OIDC now correctly exposes the "alg" value as "RS256" instead of "RSA256". This update ensures compatibility with standard OIDC configurations. (PL-58029)
+
+- In the Resource Group Details page, when "All" is selected for resources, the options to specify environments by tag, type, or individually (+ Add button) are now hidden. This update prevents unintended configurations when managing resources in bulk. (PL-58108, ZD-72184)
 
 - Resolved an issue where the Event Summary link under Audit Logs would cause the page to break when a new, unhandled action was onboarded. The Event Summary now displays "N/A" in line with the Audit Logs page. (PL-57850)
 
 - Fixed an issue where GAR Trigger creation would fail if no artifact was present in the repository, causing delays in automation workflows. Now, triggers can be created without pre-existing artifacts, supporting smoother CI processes. (PL-56263, ZD-66511)
+
+#### New features and enhancements
+
+- GCP GCS Audit Streaming now supports Manual Credentials and IAM Delegate authentication, in addition to the existing OIDC-based authentication. This enhancement offers greater flexibility in authentication options. (PL-52059)
+
+- Added a new scope query parameter to the `listDelegates` endpoint. When set to true, this parameter enables listing delegates across hierarchical scopes (Account, Org, Project). By default, scope is set to false. (PL-57724)
+
+- Upgraded the base image for `delegate`, `delegate-minimal`, `ci-addon`, and `lite-engine` from `redhat/ubi8-minimal:8.8` to `redhat/ubi8-minimal:8.10`. This update enhances security and compatibility with the latest UBI version. (PL-58062)
+
+- Removed delegate and watcher JARs along with client tools from the delegate proxy in SMP. This update reduces the proxy footprint and optimizes performance. (PL-58052)
+
+- Updated the `delegate/rings` API to return the immutable delegate version instead of the legacy delegate version. Additionally, the `connected-ratio-with-primary` and `connected-delegate-ratio` APIs have been removed. (PL-57518)
 
 ## October 2024
 
