@@ -72,6 +72,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ### Version 24.10.84200 <!-- November 4, 2024 -->
 
+#### Fixed issues
+
+- Removed restrictions on the Delegate metrics API endpoint, allowing requests with any Content-Type header. This update supports improved compatibility with monitoring tools like Dynatrace. (PL-57704, ZD-71319)
+
+#### New features and enhancements
+
 - Set limits on the number of delegates and delegate tokens allowed per account and per scope. The current limit is set to 10,000. (PL-56296)
 
 ## October 2024
