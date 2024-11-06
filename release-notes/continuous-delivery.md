@@ -47,6 +47,39 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## November
 
+### Version 1.64.x
+
+#### New features and enhancements
+
+- Harness now supports **Approval APIs**, allowing users to approve or reject Harness **Manual Approval** steps using Service Account tokens. (CDS-97580, ZD-64388)
+
+- Harness now supports webhooks configured with **GitLab System Hooks** to trigger pipelines. (CDS-95423)
+
+- Harness now supports self-hosted Bitbucket OAuth tokens for the Git Experience. (CDS-95417)
+
+- The Harness platform has been updated with the Kubernetes SDK (v18.0 to v21.0) and Helm SDK (v3.12 to v3.13).
+
+- Harness now supports deployment of **Azure Functions**. (CDS-51900)
+
+- Harness has introduced supports for **Canary** and **Blue-Green** Deployment strategies with Helm Charts. (CDS-35715)
+
+- Harness now supports deployment of **Google Cloud Run**. (CDS-36357)
+
+- Harness now supports for enabling metrics in ASG deployments. (CDS-99276)
+
+- Harness now detects the failure state of CRDs in the Kubernetes Apply step when CRDs behave like jobs. (CDS-98761)
+
+- You can now specify the environment using **Expressions** in the GitOps pipeline. (CDS-97523)
+
+- Template name suggestions are now available as part of the **ServiceNow Creation** step. (CDS-97672, ZD-64772)
+
+#### Fixed issues
+
+- Previously, an error occurred related to the column "actualRunDuration" in the "verify_step_execution_cvng" relation due to missing migrations. This issue is resolved by running the necessary migrations to create the required columns. (CDS-102602)
+- During the native Terraform apply stage within a CD pipeline, users encountered an unclear error due to the default image missing the Terraform binary. This issue is resolved now. The updated message now reads: Please verify if Terraform is properly installed. (CDS-101932)
+- Previously, the rollback process failed due to an incorrect branch reference for the YAML file. This issue is resolved by adding logic to include the Git details when performing post-deployment rollbacks. 
+Currently, this feature is behind the feature flag `CDS_ADD_GIT_INFO_IN_POST_DEPLOYMENT_ROLLBACK`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-101504)
+
 #### Gitops Version 1.19.0, Gitops Agent Version 0.80
 
 #### New features and enhancements
