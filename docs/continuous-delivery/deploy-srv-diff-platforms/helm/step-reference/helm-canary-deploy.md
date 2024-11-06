@@ -1,7 +1,7 @@
 ---
 title: Helm Canary Deploy Step
 description: Reference for the Helm Canary Deploy step
-sidebar_position: 20
+sidebar_position: 30
 ---
 
 This topic describes the configuration and settings for the Helm Canary Deploy step.

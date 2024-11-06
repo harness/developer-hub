@@ -1,7 +1,7 @@
 ---
 title: Helm Rollback Step
 description: Reference for the Helm Rollback step. 
-sidebar_position: 15
+sidebar_position: 20
 ---
 
 This topic describes the configuration and settings for the Helm Rollback step.
