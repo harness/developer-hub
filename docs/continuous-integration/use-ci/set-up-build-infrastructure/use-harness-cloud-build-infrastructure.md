@@ -179,6 +179,7 @@ To enable this feature, set the `nestedVirtualization` property to `true` as sho
 
 :::note
 * To enable `nestedVirtualization` use the YAML editor, as this option is currently unavailable in the visual editor.
+* When using Hardware acceleration, run your steps directly on the VM, rather than inside a container. Running inside a container is currently not supported with hardware acceleration.
 * Hardware acceleration is available for all machine sizes, when using Linux with AMD architecture on Harness Cloud.
 :::
 
