@@ -42,8 +42,8 @@ You can either create a new application gateway when creating a new order, stopp
 - Region: The region where your target VM or the cloud resource is hosted.
 - Resource Group: A resource group is a container that holds related resources for an Azure solution. For example, virtual machines, storage accounts, etc.
 - Certificate (Optional)
-- Virtual Network: VNet allows you to create and manage virtual private networks (VPNs) in the Azure cloud. 
-- Subnet: A range of IP addresses that you define within a VNet and is used to logically segment and isolate resources within the network.
+- Virtual Network: Azure Virtual Network is a service that provides the fundamental building block for your private network in Azure. VNet allows you to create and manage virtual private networks (VPNs) in the Azure cloud. 
+- Subnet: AppGateway subnet should only contain AppGateway, no other resources can be placed in this subnet.
 - Frontend IP
 - SKU
 - Azure Function Region
@@ -78,13 +78,12 @@ Perform the following steps to create a new Application Gateway in Azure.
 - Select the resources to be managed by the AutoStopping Rule. 
   - If VM is selected, then you need to add instances to be managed by the rule. 
   ![](./static/create-lb-9.png)
-- You can choose to convert the selected instance(s) to spot or remain on-demand. AutoStopping has full spot interruption handling and on-demand fall back capabilities built.
+- You can choose to convert the selected instance(s) to spot or remain on-demand.
 - Advanced configuration like hiding progress, page or dry run can be set up. You can also add dependencies between two or more AutoStopping Rules when you want one Rule to make one or more other Rules active based on the traffic that it receives. You can choose the rules from the drop down menu and add the required delay in seconds.
 
 6. Setup Access
 
-You can select the network protocol based on the workload type handled by the target VM. For example, if the application or service running in the VM requires a more secure connection, you must select HTTPS. If your application requires precise and error-free data delivery, then select TCP.
-
+You can select the network protocol based on the workload type handled by the target VM.
  ![](./static/create-lb-10.png)
 
 - **TCP Workload or SSH/RDP:**
@@ -95,7 +94,7 @@ You can either specify an Autostopping proxy from the drop down menu (if an Auto
 
 - **HTTP/HTTPS Workload:**
 
-Select the connector to which your appGateway or load balancer belongs. Next specify an application gateway (if it has already been created) from the drop down menu Or you can create a new one.
+Select the connector to which your appGateway or load balancer belongs. Next specify an application gateway (if it has already been created) from the drop down menu or you can create a new one.
  ![](./static/create-lb-12.png)
 
 Click on +Create new AutoStopping Proxy and select "Create Application Gateway". Provide a name and a domain. 
@@ -104,7 +103,7 @@ Click on +Create new AutoStopping Proxy and select "Create Application Gateway".
 After this is set up. In the next window, add:
 - Region: The region where your target VM or the cloud resource is hosted.
 - Resource Group: A resource group is a container that holds related resources for an Azure solution. For example, virtual machines, storage accounts, etc.
-- Certificate (Optional)
+- Certificate (Optional): The SSL certificate should match the domain selected for the LB. 
 - Virtual Network: VNet allows you to create and manage virtual private networks (VPNs) in the Azure cloud. 
 - Subnet: A range of IP addresses that you define within a VNet and is used to logically segment and isolate resources within the network.
 - Frontend IP
