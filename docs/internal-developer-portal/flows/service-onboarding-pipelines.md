@@ -7,9 +7,6 @@ redirect_from:
   - /docs/internal-developer-portal/features/service-onboarding-pipelines
 ---
 
-<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
-
-
 ![](./static/service-onboarding.png)
 
 In Harness IDP, a Self-Service Workflow (also known as a software template in Backstage) enables platform engineers to automate the process of service creation. As a platform engineer, you can create a workflow that prompts developers for details and then generates a repository with a basic setup that includes a CI/CD process. The workflow is defined in a YAML file named `workflow.yaml`. The [syntax](https://backstage.io/docs/features/software-templates/input-examples) of the workflow definition is managed by backstage.io, while the workflow itself runs on a Harness pipeline of your choice.
@@ -24,10 +21,9 @@ Workflows in Harness IDP is powered by the Backstage Software Template. You can 
 
 Read More on [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates).
 
-<details>
-<summary>Example YAML</summary>
 
 ```YAML
+##Example YAML
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 # some metadata about the template itself
@@ -110,7 +106,6 @@ spec:
       - title: Pipeline Details
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
-</details>
 
 Let's dive in and pick apart what each of these sections do and what they are.
 
@@ -134,7 +129,7 @@ In a Workflow, the **input parameters** are the first interaction point for deve
 3. **Required Fields**:
    Workflows allow developers to enforce required fields. For example, the field `age` or `owner` could be marked as mandatory, ensuring critical data is not skipped during onboarding.
 
-### `spec.parameters` - `FormStep | FormStep[]`
+### `spec.parameters`
 
 These `parameters` are Workflow variables which can be modified in the frontend as a sequence. It can either be one `Step` if you just want one big list of different fields in the frontend, or it can be broken up into multiple different steps which would be rendered as different steps in the scaffolder plugin frontend.
 
@@ -266,7 +261,7 @@ By default the [owner](https://developer.harness.io/docs/internal-developer-port
 
 A simple `workflow.yaml` definition might look something like this:
 
-```YAML {4,9}
+```YAML {4}
 ...
 # these are the steps which are rendered in the frontend with the form input
 spec:
@@ -300,17 +295,15 @@ spec:
 
 Actions within steps can be customized to fit various use cases, such as:
 
-- **Creating Repositories**: Using `[trigger:harness-custom-pipeline](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline)` and execute a pipeline with [create-repo stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#3-create-repo) to generate a new repository based on the provided input.
+- **Creating Repositories**: Using [`trigger:harness-custom-pipeline`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline) and execute a pipeline with [create-repo stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#3-create-repo) to generate a new repository based on the provided input.
 - **Logging Data**: Using `debug:log` to display or log specific information about the inputs.
-- **Triggering Pipelines**: Using `[trigger:harness-custom-pipeline](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline)` to pipelines in Harness for various actions like creating repository, [onboarding new service](https://developer.harness.io/docs/internal-developer-portal/flows/create-a-new-service-using-idp-stage), etc. 
+- **Triggering Pipelines**: Using [`trigger:harness-custom-pipeline`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline) to pipelines in Harness for various actions like creating repository, [onboarding new service](https://developer.harness.io/docs/internal-developer-portal/flows/create-a-new-service-using-idp-stage), etc. 
 
 These follow the same standard format:
 
-```yaml
+```YAML
 - id: fetch-base # A unique id for the step
   name: Fetch Base # A title displayed in the frontend
-  if: ${{ parameters.name }} # Optional condition, skip the step if not truthy
-  each: ${{ parameters.iterable }} # Optional iterable, run the same step multiple times
   action: fetch:template # An action to call
   input: # Input that is passed as arguments to the action handler
     url: ./template
@@ -318,7 +311,7 @@ These follow the same standard format:
       name: ${{ parameters.name }}
 ```
 
-By default we ship some [built in actions](https://backstage.io/docs/features/software-templates/builtin-actions) along with some [custom actions](/docs/internal-developer-portal/flows/custom-actions).
+[Read More](/docs/internal-developer-portal/flows/custom-actions) on the Available Workflow Actions.
 
 When `each` is provided, the current iteration value is available in the `${{ each }}` input.
 
@@ -347,7 +340,7 @@ Harness Pipelines serve as powerful orchestrators for Workflows. In this setup y
 
 ### Configuring the Output
 
-1. **Links to Generated Resources**
+**Example: Links to Generated Resources**
 The output can generate direct links to newly created resources such as Git repositories, documentation pages, or CI/CD pipelines. This gives the developer immediate access to manage or monitor their newly onboarded resources.
 
 **Example**:  
@@ -359,68 +352,21 @@ output:
       url: "${{ steps['repo-create'].output.repoUrl }}"
     - title: "Pipeline Dashboard"
       url: "${{ steps['deploy-pipeline'].output.pipelineUrl }}"
-
-```
-
-2. **Service Metadata and Status**
-Output can include status messages or metadata from the onboarding process. For example, details about a service registration or the progress of resource provisioning (success/failure messages) can be returned as output.
-
-**Example**:  
-
-```YAML
-output:
-  text:
-    - title: "Service Registration Status"
-      content: "Service registration completed with status: `${{ steps['register-service'].output.status }}`
 ```
 
 
-3. **Generated Files and Artifacts**
-Developers can configure templates to generate files (e.g., README.md, YAML configuration files) or artifacts (e.g., Dockerfiles, Kubernetes manifests) during onboarding.
+## Workflow Registration
 
-**Example**:  
+A Workflow is a kind of entity that exists in the software catalog. You can create a `workflow.yaml` file and register the URL with the catalog. For information about adding a Workflow, go to [Add a new software component to the catalog](/docs/internal-developer-portal/get-started/register-a-new-software-component).
 
-```YAML
-output:
-  links:
-    - title: "Generated README"
-      url: "${{ steps['create-readme'].output.fileUrl }}"
-    - title: "Kubernetes Manifest"
-      url: "${{ steps['generate-manifest'].output.fileUrl }}"
-```
-
-
-4. **Dynamic Outputs Based on Inputs**
-Outputs can be conditional based on inputs. For instance, if a user selected the "production" environment during onboarding, the output could include production-specific links (e.g., monitoring dashboards, production CI/CD pipelines).
-
-Each individual step can output some variables that can be used in the Workflow frontend for after the job is finished. This is useful for things like linking to the entity that has been created with the backend, linking to the created repository, or showing Markdown text blobs. **[Read more on how to configure output](/docs/internal-developer-portal/flows/flows-output.md)**. 
-
-```YAMl
-output:
-  links:
-    - title: Repository
-      url: ${{ steps['publish'].output.remoteUrl }} # link to the remote repository
-    - title: Open in catalog
-      icon: catalog
-      entityRef: ${{ steps['register'].output.entityRef }} # link to the entity that has been ingested to the catalog
-  text:
-    - title: More information
-      content: |
-        **Entity URL:** `${{ steps['publish'].output.remoteUrl }}`
-```
-
-## Template registration
-
-A template is a kind of entity that exists in the software catalog. You can create a `template.yaml` file and register the URL with the catalog. For information about registering a template, go to [Add a new software component to the catalog](/docs/internal-developer-portal/get-started/register-a-new-software-component.md).
-
-## Delete/Unregister Template
+## Delete/Unregister Workflows
 
 1. Navigate to the **Catalog** page, and select **Template** under Kind.
 
 ![](./static/catalog-navigation.png)
 
-2. Select the Template Name you want to Unregister.
-3. Now on the Template overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+2. Select the Workflow Name you want to Unregister.
+3. Now on the Workflows overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
 
 ![](./static/unregister-entity.png)
 
@@ -428,26 +374,18 @@ A template is a kind of entity that exists in the software catalog. You can crea
 
 ![](./static/Unregister-location.png)
 
-5. This will delete the Template.
+5. This will delete the Workflow.
 
 ## Available Workflow Actions
 
-:::info
-
-Please refer to the [support matrix](/docs/internal-developer-portal/flows/custom-actions#custom-actions-usage-limitations) for custom actions before using them, also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values). 
-
-![](./static/pipeline-varialbles-idp-implementation.png)
-
-:::
-
-Harness IDP ships the following Harness related built-in actions along with [some others](/docs/internal-developer-portal/flows/custom-actions.md) to be used in the software template steps.
+Harness IDP ships the following Harness related built-in actions along with [some others](/docs/internal-developer-portal/flows/custom-actions) to be used in the software template steps.
 
 - `trigger:harness-custom-pipeline`
 - `trigger:trigger-pipeline-with-webhook`
 - `harness:create-secret`
 - `harness:delete-secret`
 
-Learn more about how to use them in the [service onboarding tutorial](/docs/internal-developer-portal/tutorials/using-secret-as-an-input).
+Learn more about how to use them in the [service onboarding tutorial](/docs/internal-developer-portal/flows/create-a-new-service-using-idp-stage).
 
 ## Available Workflow UI pickers
 
@@ -457,4 +395,4 @@ Harness IDP ships the following [Workflows UI pickers](/docs/internal-developer-
 - `HarnessProjectPicker`
 - `HarnessAutoOrgPicker`
 
-You can use these UI fields in the `ui:field` option of your `template.yaml` file. Read more about how to use these [custom field extensions](https://backstage.io/docs/features/software-templates/writing-custom-field-extensions#using-the-custom-field-extension) or take a look at [this example](https://github.com/bhavya-sinha/scaffolder-sample-templates/blob/5f52718ec49cb2c27a87e2fbeae075873701911c/fieldExtension.yaml#L78-L85).
+You can use these UI fields in the `ui:field` option of your `workflows.yaml` file. Read more about how to use these [Workflows UI Pickers](/docs/internal-developer-portal/flows/custom-extensions).

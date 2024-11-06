@@ -256,7 +256,7 @@ steps:
     apikey: ${{ parameters.token }}
 ```
 
-## Hide or mask sensitive data on Review step
+### Hide or mask sensitive data on Review step
 
 Sometimes, specially in custom fields, you collect some data on Create form that
 must not be shown to the user on Review step. To hide or mask this data, you can
@@ -283,10 +283,73 @@ use `ui:widget: password` or set some properties of `ui:backstage`:
           show: false # wont print any info about 'hidden' property on Review Step
 ```
 
-## Show Logs After a Successful Workflow Execution
+### Show Logs After a Successful Workflow Execution
 
 In case of a successful workflow execution in order to view logs, you need to select the three dots on the right corner of the page, and select Show Logs from the dropdown.
 
 ![](./static/navigate-logs.png)
 ![](./static/logs-view.png)
 
+### Use-Case Based Output Examples
+
+1. **Links to Generated Resources**
+The output can generate direct links to newly created resources such as Git repositories, documentation pages, or CI/CD pipelines. This gives the developer immediate access to manage or monitor their newly onboarded resources.
+
+**Example**:  
+
+```YAML
+output:
+  links:
+    - title: "Repository Link"
+      url: "${{ steps['repo-create'].output.repoUrl }}"
+    - title: "Pipeline Dashboard"
+      url: "${{ steps['deploy-pipeline'].output.pipelineUrl }}"
+
+```
+
+2. **Service Metadata and Status**
+Output can include status messages or metadata from the onboarding process. For example, details about a service registration or the progress of resource provisioning (success/failure messages) can be returned as output.
+
+**Example**:  
+
+```YAML
+output:
+  text:
+    - title: "Service Registration Status"
+      content: "Service registration completed with status: `${{ steps['register-service'].output.status }}`
+```
+
+
+3. **Generated Files and Artifacts**
+Developers can configure templates to generate files (e.g., README.md, YAML configuration files) or artifacts (e.g., Dockerfiles, Kubernetes manifests) during onboarding.
+
+**Example**:  
+
+```YAML
+output:
+  links:
+    - title: "Generated README"
+      url: "${{ steps['create-readme'].output.fileUrl }}"
+    - title: "Kubernetes Manifest"
+      url: "${{ steps['generate-manifest'].output.fileUrl }}"
+```
+
+
+4. **Dynamic Outputs Based on Inputs**
+Outputs can be conditional based on inputs. For instance, if a user selected the "production" environment during onboarding, the output could include production-specific links (e.g., monitoring dashboards, production CI/CD pipelines).
+
+Each individual step can output some variables that can be used in the Workflow frontend for after the job is finished. This is useful for things like linking to the entity that has been created with the backend, linking to the created repository, or showing Markdown text blobs. **[Read more on how to configure output](/docs/internal-developer-portal/flows/flows-output.md)**. 
+
+```YAMl
+output:
+  links:
+    - title: Repository
+      url: ${{ steps['publish'].output.remoteUrl }} # link to the remote repository
+    - title: Open in catalog
+      icon: catalog
+      entityRef: ${{ steps['register'].output.entityRef }} # link to the entity that has been ingested to the catalog
+  text:
+    - title: More information
+      content: |
+        **Entity URL:** `${{ steps['publish'].output.remoteUrl }}`
+```
