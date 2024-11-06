@@ -45,6 +45,21 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## November
+
+#### Gitops Version 1.19.0, Gitops Agent Version 0.80
+
+#### New features and enhancements
+
+- Repository status was incorrectly set to 'Error' upon creation; now we refresh credentials on the agent right after creation or update to ensure accurate status. (CDS-101944)
+- Harness GitOps now supports application filtering by cluster, labels, and application/application set. For more information, go to [GitOps documentation](https://developer.harness.io/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#application-filters). (CDS-97564)
+
+#### Fixed issues
+
+- Previously, the terminate sync operation in the GitOps application required application edit permissions due to a misconfiguration. This issue is resolved, and the operation now correctly checks for application sync permissions. (CDS-101930)
+- Previously, the application regex selector in the GitOps sync step would sync all applications instead of just those in the selected clusters. This issue is resolved. When matched applications no longer correspond to the clusters or environments in the pipeline, the skipped applications will be logged, and the sync operation will only be triggered for the applications matching the regex.(CDS-100130)
+- Previously, uninstalling a Helm release would remove CRDs, causing applications to lose their references to projects. This issue is resolved. When installing the agent using Helm, the option to keep ArgoCD CRDs on uninstall is now set to true by default. (CDS-97016)
+
 ## October
 
 ### Version 1.62.5
