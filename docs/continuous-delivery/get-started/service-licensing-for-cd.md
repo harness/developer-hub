@@ -127,7 +127,7 @@ None of the customers
 
 Potentially, yes. Your license consumption may increase since we are now tracking more deployable items and offering additional value. This could result in a higher renewal cost. However, we are committed to working with you to adjust your contract to match your usage and needs. We are not using these increases to charge you more; we are just trying to track license utilization across all customers better.
 
-### Q2: Why has tracking for GitOps Services been introduced in Licensing V2?
+### Why has tracking for GitOps Services been introduced in Licensing V2?
 
 **A:** GitOps has become a core feature of Harness Continuous Deployment (CD) and is widely adopted by our customers. Including GitOps Services in the billing model ensures that billing accurately reflects the comprehensive set of features you utilize, promoting fairness and transparency.
 
