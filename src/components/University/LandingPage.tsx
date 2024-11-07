@@ -108,15 +108,13 @@ export default function University() {
 
   return (
     <div
-      className={`${styles.university} ${
-        activePage === ActivePage.SelfPacedTraning
+      className={`${styles.university} ${activePage === ActivePage.SelfPacedTraning
           ? styles.SelfPacedTrainingBg
           : ""
-      } ${
-        activePage === ActivePage.InstructorLedTraining
+        } ${activePage === ActivePage.InstructorLedTraining
           ? styles.InstructorLedTrainingBg
           : ""
-      }  `}
+        }  `}
     >
       <div className={styles.hero}>
         <div className={styles.left}>
@@ -128,15 +126,13 @@ export default function University() {
           </div>
         </div>
         <div
-          className={`${styles.right} ${
-            activePage === ActivePage.SelfPacedTraning
+          className={`${styles.right} ${activePage === ActivePage.SelfPacedTraning
               ? styles.SelfPacedTrainingBg
               : ""
-          } ${
-            activePage === ActivePage.InstructorLedTraining
+            } ${activePage === ActivePage.InstructorLedTraining
               ? styles.InstructorLedTrainingBg
               : ""
-          }  `}
+            }  `}
         >
           {activePage === ActivePage.SelfPacedTraning && (
             <img
@@ -165,9 +161,8 @@ export default function University() {
               <img
                 src={badge.img}
                 alt={badge.alt}
-                className={`${
-                  badge.type === certType[tab] ? styles.active : ""
-                } `}
+                className={`${badge.type === certType[tab] ? styles.active : ""
+                  } `}
               />
             ))}
         </div>
@@ -175,17 +170,15 @@ export default function University() {
       <div className={styles.btns}>
         <button
           onClick={handleSelfPacedTrainingClick}
-          className={`${
-            colorMode == "light"
+          className={`${colorMode == "light"
               ? styles.InstLedTrainBtnLight
               : styles.InstLedTrainBtnDark
-          } ${
-            activePage === ActivePage.SelfPacedTraning
+            } ${activePage === ActivePage.SelfPacedTraning
               ? colorMode == "light"
                 ? styles.activeLight
                 : styles.activeDark
               : ""
-          }`}
+            }`}
         >
           {activePage == ActivePage.SelfPacedTraning ? (
             colorMode == "light" ? (
@@ -202,17 +195,15 @@ export default function University() {
         </button>
         <button
           onClick={handleInstLedTrainClick}
-          className={`${
-            colorMode == "light"
+          className={`${colorMode == "light"
               ? styles.InstLedTrainBtnLight
               : styles.InstLedTrainBtnDark
-          } ${
-            activePage === ActivePage.InstructorLedTraining
+            } ${activePage === ActivePage.InstructorLedTraining
               ? colorMode == "light"
                 ? styles.activeLight
                 : styles.activeDark
               : ""
-          }`}
+            }`}
         >
           {activePage == ActivePage.InstructorLedTraining ? (
             colorMode == "light" ? (
@@ -228,15 +219,13 @@ export default function University() {
           Instructor-Led Training
         </button>
         <button
-          className={`${
-            colorMode == "light" ? styles.certBtnLight : styles.certBtnDark
-          } ${
-            activePage === ActivePage.Certifications
+          className={`${colorMode == "light" ? styles.certBtnLight : styles.certBtnDark
+            } ${activePage === ActivePage.Certifications
               ? colorMode == "light"
                 ? styles.activeLight
                 : styles.activeDark
               : ""
-          }`}
+            }`}
           onClick={handleCertficationClick}
         >
           {activePage == ActivePage.Certifications ? (
@@ -386,8 +375,12 @@ export default function University() {
                       src={`${baseUrl}img/cert_dev_sei_badge.svg`}
                       alt="Developer SEI Badge"
                     />
+                    <img
+                      src={`${baseUrl}img/cert_dev_iacm_badge.svg`}
+                      alt="Developer IaCM Badge"
+                    />
                   </div>
-           
+                  {/*
                 <h5>Coming Soon</h5>
                 <div className={styles.unAvailableCerts}>
                   <img
@@ -395,6 +388,7 @@ export default function University() {
                     alt="Developer IaCM Badge"
                   /> 
                 </div> 
+*/}
                 </div>
               </div>
               <div className={styles.verticalLine}></div>

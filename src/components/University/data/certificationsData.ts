@@ -8,7 +8,7 @@ export const university: CardItem[] = [
     type: certType.developer,
     description:
       "CD & GitOps Developer focuses on the fundamental skills to deploy your applications with CD & GitOps projects.",
-    version: "Harness CD & GitOps Free/Team Plans",
+    version: "Harness CD & GitOps Free Plan",
     link: "/university/continuous-delivery?lvl=developer",
     // numberOfCerts: 1,
   },
@@ -38,7 +38,7 @@ export const university: CardItem[] = [
     type: certType.developer,
     description:
       "CI Developer focuses focuses on the fundamental skills of building your code with CI projects.",
-    version: "Harness CI Free/Team Plans",
+    version: "Harness CI Free Plan",
     link: "/university/continuous-integration?lvl=developer",
     // numberOfCerts: 1,
   },
@@ -68,7 +68,7 @@ export const university: CardItem[] = [
     type: certType.developer,
     description:
       "FF Developer focuses on the fundamental skills to progressivly deploy/toggle your applications with FF projects.",
-    version: "Harness FF Free/Team Plans",
+    version: "Harness FF Free Plan",
     link: "/university/feature-flags?lvl=developer",
     // numberOfCerts: 1,
   },
@@ -78,7 +78,7 @@ export const university: CardItem[] = [
     type: certType.developer,
     description:
       "CCM Developer focuses on the fundamental skills to detect and stop cloud cost anomalies as they occur.",
-    version: "Harness CCM Free/Team Plans",
+    version: "Harness CCM Free Plan",
     link: "/university/cloud-cost-management?lvl=developer",
     // numberOfCerts: 1,
   },
@@ -98,7 +98,7 @@ export const university: CardItem[] = [
     type: certType.developer,
     description:
       "STO Developer focuses on the fundamental skills to shift security left in your pipelines.",
-    version: "Harness STO Free/Team Plans",
+    version: "Harness STO Free Plan",
     link: "/university/sto?lvl=developer",
     // numberOfCerts: 1,
   },
@@ -128,7 +128,7 @@ export const university: CardItem[] = [
     type: certType.developer,
     description:
       "Chaos Developer focuses on the fundamental skills to inject failure into your applications to build resilience.",
-    version: "Harness Chaos Free/Team Plans",
+    version: "Harness Chaos Free Plan",
     link: "/university/chaos-engineering?lvl=developer",
     // numberOfCerts: 1,
   },
@@ -150,6 +150,16 @@ export const university: CardItem[] = [
       "SEI Developer focuses on the fundamental skills to discover SDLC bottlenecks and improve developer experience with data.",
     version: "Harness SEI Enterprise Plan",
     link: "/university/sei?lvl=developer",
+    // numberOfCerts: 1,
+  },
+  {
+    title: "Infrastructure as Code Management  - Developer",
+    module: MODULES.iacm,
+    type: certType.developer,
+    description:
+      "IaCM Developer focuses on the fundamental skills to scale your Terraform / OpenTofu Infrastructure as Code.",
+    version: "Harness IaCM Free Plan",
+    link: "/university/iacm?lvl=developer",
     // numberOfCerts: 1,
   },
 ];

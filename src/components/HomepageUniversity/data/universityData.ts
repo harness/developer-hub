@@ -102,6 +102,7 @@ export const university: CardItem[] = [
     description:
       "Efficiently and securely scale your Terraform / OpenTofu Infrastructure as Code.",
     link: "/university/iacm",
+    numberOfCerts: 1,
     SPT_available: true,
     ILT_available: true,
   },
