@@ -206,9 +206,9 @@ We welcome your feedback as it helps us improve our services. You can provide fe
 - **Support Tickets:** Submit feedback via our support portal.
 - **Surveys:** Participate in customer satisfaction surveys when prompted.
 
-### Q20: What if I disagree with the usage data shown on the new licensing page?
+### What if I disagree with the usage data shown on the new licensing page?
 
-**A:** If you believe there is a discrepancy in your usage data:
+If you believe there is a discrepancy in your usage data:
 
 - **Review Details:** Check the detailed reports available to understand the metrics.
 - **Contact Support:** Reach out to our support team for assistance.
