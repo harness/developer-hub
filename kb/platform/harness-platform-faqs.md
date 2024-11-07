@@ -3382,7 +3382,7 @@ No, currently there is no validation on the Harness side to check OPA validation
 This can be viewed in the Activity History page of the Connector.
 
 ### Is there a variable we can reference for delegates to see where a step and stage is running?
-There is the variable delegateSelectors that is set in each pipeline when a delegate is set. Outside of the pipeline itself there are not any other mention to call what delegate was being used other than in the delegate selector logs. The variable will look something like <+pipeline.stages.stage_name.spec.delegateSelectors>
+There is the variable delegateSelectors that is set in each pipeline when a delegate is set. Outside of the pipeline itself there are not any other mention to call what delegate was being used other than in the delegate selector logs. The variable will look something like ``<+pipeline.stages.stage_name.spec.delegateSelectors>``
 
 ### Does Harness fetch the status of OPA policy validation inside Terraform Enterprise workspaces?
 Harness Terraform Enterprise integration doesn’t support leveraging OPA on Terraform Enterprise side and will not pick up any policies.
