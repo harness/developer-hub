@@ -135,9 +135,6 @@ Potentially, yes. Your license consumption may increase since we are now trackin
 
 By adjusting the valuation to 0.20 of a Service per serverless function, customers deploying serverless architectures will experience reduced costs associated with these functions. This change makes it more cost-effective for you to leverage serverless deployments.
 
-### Q4: Will my overall billing increase with Licensing V2?
-
-**A:** It depends on your usage patterns. You may see little to no change if you primarily use CD Services with minimal Deployments without service and do not utilize GitOps or Deployment Templates. However, if you heavily use the newly billed components, your billing may increase accordingly. We recommend reviewing your usage and considering optimization strategies to manage costs effectively.
 
 ### Q5: How can I calculate my expected billing under Licensing V2?
 
