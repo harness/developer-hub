@@ -102,7 +102,7 @@ Harness CD consumes 1 Service License for every 100 pipeline executions of such 
 
 *Update: 11/06/2024* 
 
-Harness has launched an improved service tracking change to track services deployed and managed by Harness. With the launch of improved tracking, we have also launched a new subscription page allowing users to visualize what is being tracked by Harness.
+Harness has introduced a significant update to its service tracking capabilities, enhancing the way services deployed and managed by Harness are monitored. With this new feature, users can now more easily track the deployment status and performance of their services in real time. Alongside these improvements, Harness has rolled out a new subscription page that provides an intuitive interface for visualizing what services are being tracked, giving users greater visibility and control over their deployments. This update streamlines tracking, making it simpler to ensure that services are operating as expected throughout their lifecycle.
 
 #### Demo Video
 
@@ -111,9 +111,7 @@ Harness has launched an improved service tracking change to track services deplo
 
 ## Improved Service Licence Tracking
 
-None of the customers
-
-| Component                    | Licensing V1                                    | Licensing V2                                    | Change Details                                                                                                                       |
+| Component                    | Service Tracking (Past State)                                    | Service Tracking (New State)                                    | Change Details                                                                                                                       |
 |------------------------------|-------------------------------------------------|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
 | **CD Service**               | 1 Service = 20 SI                               | 1 Service = 20 SI                               | No change in licensing rules.                                                                                                        |
 | **GitOps Service**           | Not measurable by customer, not calculated in product | 1 GitOps Service = 20 SI (1 Service)            | New service tracking introduced for GitOps Services.                                                                                 |
@@ -121,13 +119,13 @@ None of the customers
 | **Serverless Services**      | 1 Function = 1 Service                          | 1 Function = 0.2 Service For SI based - No Charge | Adjusted valuation to 0.2 Service per function.                                                                                       |
 
 
-## Customer FAQs for the improved Licensing Tracking
+## Customer FAQs for the improved Service Tracking
 
-### Will Licensing V2 increase my costs?
+### Will Service tracking improvements increase my costs?
 
 Potentially, yes. Your license consumption may increase since we are now tracking more deployable items and offering additional value. This could result in a higher renewal cost. However, we are committed to working with you to adjust your contract to match your usage and needs. We are not using these increases to charge you more; we are just trying to track license utilization across all customers better.
 
-### Why has tracking for GitOps Services been introduced in Licensing V2?
+###  Why has tracking for GitOps Services been introduced in the new service tracking improvements?
 
 **A:** GitOps has become a core feature of Harness Continuous Deployment (CD) and is widely adopted by our customers. Including GitOps Services in the billing model ensures that billing accurately reflects the comprehensive set of features you utilize, promoting fairness and transparency.
 
@@ -157,26 +155,26 @@ We understand concerns about cost management. This change is not intended to upc
 
 We are committed to making this transition as smooth as possible. While your current contract remains unchanged until renewal, we encourage you to review your usage using the new licensing page. This will give you ample time to adjust your workflows and optimize usage before the new licensing terms take effect upon renewal.
 
-### Can I stay on my current licensing model instead of moving to Licensing V2?
+### Can I stay on my current licensing model instead of moving to Service tracking improvements?
 
-Licensing V2 is designed to provide a more accurate and fair billing model based on actual usage. While we recommend transitioning to take advantage of the enhanced features and support, we understand that each customer has unique needs. Please discuss your specific situation with your account representative to explore possible options.
+**A:** Service tracking improvements is designed to provide a more accurate and fair billing model based on actual usage. While we recommend transitioning to take advantage of the enhanced tracking and support, we understand that each customer has unique needs. Please discuss your specific situation with your account representative to explore possible options.
 
 ### How will the licensing changes affect my existing integrations and workflows?
 
 The licensing changes are billing-related and should not directly impact your existing integrations and workflows. All your current configurations will continue to function as before. The main difference will be in how usage is tracked and billed. If you have concerns, our support team is ready to assist you in reviewing your setup.
 
-### What support is available to help me transition to Licensing V2?
+### What support is available to help me transition to Service tracking improvements?
 
 We offer comprehensive support to assist you during this transition:
 
 - **Dedicated Account Representative:** Your account manager can provide personalized guidance.
 - **Technical Support:** Our technical team can help optimize your configurations for the new licensing model.
 - **Documentation and Resources:** Access detailed guides and best practices within our Help Center.
-- **Webinars and Workshops:** Participate in upcoming sessions focused on navigating Licensing V2.
+- **Webinars and Workshops:** Participate in upcoming sessions focused on navigating Service tracking improvements.
 
-### How does Licensing V2 handle seasonal or fluctuating usage patterns?
+### How does Service tracking improvements handle seasonal or fluctuating usage patterns?
 
-Licensing V2 is designed to accommodate varying usage levels:
+**A:** Service tracking improvements is designed to accommodate varying usage levels:
 
 - **Flexible Billing:** The model accounts for actual usage, which can adapt to your seasonal demands.
 - **Scaling Options:** Easily scale up or down based on your needs without long-term commitments for unused capacity.
@@ -188,17 +186,17 @@ Please contact us if you anticipate exceeding your licensed usage before renewal
 
 ### I'm not using certain features, such as GitOps or Serverless Functions. Can my licensing be adjusted accordingly?
 
-Absolutely. Licensing V2 is usage-based, so you will only be billed for the components you utilize. If you do not use features like GitOps or Serverless Functions, they will not contribute to your license consumption. This model ensures you pay only for what you use.
+Absolutely. Service tracking improvements is usage-based, so you will only be billed for the components you utilize. If you do not use features like GitOps or Serverless Functions, they will not contribute to your license consumption. This model ensures you pay only for what you use.
 
-### How does Licensing V2 impact security and compliance features?
+### How does Service tracking improvements impact security and compliance features?
 
 All security and compliance features remain fully supported and will not be affected by the licensing changes. Your access to these critical features will continue, ensuring your deployments remain secure and compliant with industry standards.
 
-### Will there be changes to how users are managed and billed in Licensing V2?
+### Will there be changes to how users are managed and billed in Service tracking improvements?
 
-Under Licensing V2, we have shifted from user-based CD service billing. While we no longer bill based on the number of users, user management functionalities remain unchanged. You can continue to add and manage users within your organization without it affecting your CD licensing costs.
+Under Service tracking improvements, we have shifted from user-based CD service billing. While we no longer bill based on the number of users, user management functionalities remain unchanged. You can continue to add and manage users within your organization without it affecting your CD licensing costs.
 
-### How can I provide feedback about Licensing V2?
+### How can I provide feedback about the service tracking improvements?
 
 We welcome your feedback as it helps us improve our services. You can provide feedback through:
 
@@ -214,13 +212,13 @@ If you believe there is a discrepancy in your usage data:
 - **Contact Support:** Reach out to our support team for assistance.
 - **Investigation:** We will investigate and resolve any inaccuracies promptly.
 
-### Are there any changes to the terms and conditions in Licensing V2?
+### Are there any changes to the terms and conditions in Service tracking improvements?
 
-Licensing V2 may include updates to terms and conditions to reflect the new billing model. We recommend reviewing the updated terms provided during renewal. Your account representative can also walk you through any changes and address your questions.
+Service tracking improvements may include updates to terms and conditions to reflect the new billing model. We recommend reviewing the updated terms provided during renewal. Your account representative can also walk you through any changes and address your questions.
 
-### How does Licensing V2 affect multi-account or multi-project setups?
+### How does Service tracking improvements affect multi-account or multi-project setups?
 
-Licensing V2 provides aggregated usage tracking across all your accounts and projects, offering a unified view of your consumption. This helps in managing licenses more efficiently in complex organizational structures. Billing will reflect the total usage across all entities.
+Service tracking improvements provides aggregated usage tracking across all your accounts and projects, offering a unified view of your consumption. This helps in managing licenses more efficiently in complex organizational structures. Billing will reflect the total usage across all entities.
 
 ### Can I customize my licensing plan to fit my organization's needs better?
 
