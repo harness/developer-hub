@@ -153,9 +153,9 @@ The User License is now considered a legacy license type that we no longer suppo
 
 We understand concerns about cost management. This change is not intended to upcharge you. It’s intended to improve service tracking. We will not upcharge based on increased utilization. To help you, we offer tools within the platform that provide detailed visibility into your usage. You can monitor your consumption in real-time and set up alerts for usage thresholds. Additionally, our team is available to work with you to analyze your usage patterns and identify opportunities for optimization to keep your costs predictable.
 
-### Q10: Will there be a grace period to adjust to the new licensing model?
+### Will there be a grace period to adjust to the new licensing model?
 
-**A:** We are committed to making this transition as smooth as possible. While your current contract remains unchanged until renewal, we encourage you to review your usage using the new licensing page. This will give you ample time to adjust your workflows and optimize usage before the new licensing terms take effect upon renewal.
+We are committed to making this transition as smooth as possible. While your current contract remains unchanged until renewal, we encourage you to review your usage using the new licensing page. This will give you ample time to adjust your workflows and optimize usage before the new licensing terms take effect upon renewal.
 
 ### Q11: Can I stay on my current licensing model instead of moving to Licensing V2?
 
