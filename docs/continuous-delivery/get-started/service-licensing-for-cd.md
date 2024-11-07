@@ -222,9 +222,9 @@ Licensing V2 may include updates to terms and conditions to reflect the new bill
 
 **A:** Licensing V2 provides aggregated usage tracking across all your accounts and projects, offering a unified view of your consumption. This helps in managing licenses more efficiently in complex organizational structures. Billing will reflect the total usage across all entities.
 
-### Q23: Can I customize my licensing plan to fit my organization's needs better?
+### Can I customize my licensing plan to fit my organization's needs better?
 
-**A:** We offer flexible licensing options to accommodate various requirements. Please discuss your specific needs with your account representative, and we will tailor a licensing plan that aligns with your operational and budgetary goals.
+We offer flexible licensing options to accommodate various requirements. Please discuss your specific needs with your account representative, and we will tailor a licensing plan that aligns with your operational and budgetary goals.
 
 ### Need Further Assistance?
 
