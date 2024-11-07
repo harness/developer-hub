@@ -74,6 +74,7 @@ export const university: CardItem[] = [
       "Discover how your applications stand up to real-world failure scenarios.",
     link: "/university/chaos-engineering",
     ILT_available: true,
+    SPT_available: true,
     numberOfCerts: 1,
   },
   {
