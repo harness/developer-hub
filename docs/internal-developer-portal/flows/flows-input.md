@@ -1,17 +1,13 @@
 ---
-title: Workflows Form Input Library 
+title: Workflows Form Inputs Library
 description: Instructions to build the UI of individual workflows and all the types of inputs possible in Workflows
 sidebar_position: 2
-sidebar_label: Workflows Form Input Library
+sidebar_label: Workflows Form Inputs Library
 redirect_from:
   - /docs/internal-developer-portal/flows/custom-extensions
 ---
 
-## Introduction
-
-There are various ways in which you can take input from users in the Workflows. All types of form input types and examples are listed in this document. 
-
-## Input Examples
+There are various ways in which you can take input from users in IDP Workflows. All types of form input types and examples are listed in this document.
 
 ## Simple text input
 
@@ -31,15 +27,16 @@ parameters:
         type: string
         description: Description about input
         maxLength: 8
-        pattern: '^([a-zA-Z][a-zA-Z0-9]*)(-[a-zA-Z0-9]+)*$'
+        pattern: "^([a-zA-Z][a-zA-Z0-9]*)(-[a-zA-Z0-9]+)*$"
         ui:autofocus: true
-        ui:help: 'Hint: additional description...'
+        ui:help: "Hint: additional description..."
 ```
+
 </details>
 
 ![](./static/workflows-pattern.png)
 
-### Multi line text input
+### Multi-line text input
 
 Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/main/workflow-examples/multi-line-input.yaml)
 
@@ -70,15 +67,16 @@ parameters:
           > echo $c
           > word
 ```
+
 </details>
 
 ![](./static/workflows-multiline.png)
 
-### Dynamically Fetch Values in Workflows 
+### Dynamically Fetch Values in Workflows
 
 You can dynamically fetch values in the Workflows fields using UI Pickers, which are in-built. There are two kinds of UI Pickers:
 
-1. [Standard Workflow UI Picker](/docs/internal-developer-portal/flows/flows-input#workflow-ui-pickers) 
+1. [Standard Workflow UI Picker](/docs/internal-developer-portal/flows/flows-input#workflow-ui-pickers)
 2. [API Based Dynamic Workflow UI Picker](/docs/internal-developer-portal/flows/dynamic-picker)
 
 ## Arrays options
@@ -89,7 +87,7 @@ Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob
 
 ### Array with distinct values
 
-Values mentioned under `enum` needs to be distinct, duplicate values aren't allowed under `enum`. 
+Values mentioned under `enum` needs to be distinct, duplicate values aren't allowed under `enum`.
 
 <details>
 <summary>Example YAML</summary>
@@ -115,6 +113,7 @@ parameters:
           - 'Throughput Optimized HDD'
           - 'Magnetic'
 ```
+
 </details>
 
 ![Arrays With Distinct Values](./static/arrays-distinct-values.png)
@@ -150,10 +149,10 @@ parameters:
           - 'Throughput Optimized HDD (st1)'
           - 'Magnetic (standard)'
 ```
+
 </details>
 
 ![Arrays With Duplicate Values](./static/arrays-duplicate-values.png)
-
 
 ### A multiple choices list
 
@@ -178,6 +177,7 @@ parameters:
         uniqueItems: true
         ui:widget: checkboxes
 ```
+
 </details>
 
 ![](./static/multi-option-arrays.png)
@@ -220,6 +220,7 @@ parameters:
               title: Simple text input
               type: string
 ```
+
 </details>
 
 ![](./static/template-arrays-multipleobjects.png)
@@ -236,6 +237,7 @@ parameters:
         title: Checkbox boolean
         type: boolean
 ```
+
 ![](./static/template-checkbox-boolean.png)
 
 ### Boolean Yes or No options (Radio Button)
@@ -267,9 +269,9 @@ parameters:
         items:
           type: boolean
           enum:
-            - 'Enable scraping'
-            - 'Enable HPA'
-            - 'Enable cache'
+            - "Enable scraping"
+            - "Enable HPA"
+            - "Enable cache"
         uniqueItems: true
         ui:widget: checkboxes
 ```
@@ -279,52 +281,6 @@ parameters:
 ![](./static/template-boolean-multiselect.png)
 
 ## Conditional Inputs in Workflows
-
-### Use parameters as condition in steps
-
-Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/35341522c0035107a3b610018f42372cebd8a664/workflow-examples/conditional-in-steps.yaml#L25-L45)
-
-<details>
-<summary>Example YAML</summary>
-
-```YAML
-- name: Only development environments
-  if: ${{ parameters.environment === "staging" or parameters.environment === "development" }}
-  action: debug:log
-  input:
-    message: 'development step'
-
-- name: Only production environments
-  if: ${{ parameters.environment === "prod" or parameters.environment === "production" }}
-  action: debug:log
-  input:
-    message: 'production step'
-
-- name: Non-production environments
-  if: ${{ parameters.environment !== "prod" and parameters.environment !== "production" }}
-  action: debug:log
-  input:
-    message: 'non-production step'
-```
-</details>
-
-#### The Example Workflow Explained
-
-- Parameters: The user selects the environment from the predefined list: development, staging, production, or prod.
-
-- Steps:
-
-  - Development Step: Executed only if the environment is development or staging.
-  - Production Step: Executed only if the environment is production or prod.
-  - Non-Production Step: Executed only if the environment is not production or prod.
-
-- Conditionals (if statements): The `if` condition allows execution of steps based on the selected environment.
-
-- Output: A sample output section is included, where you can route the result of any step to view the logs. Replace the url field with an appropriate log service URL if needed.
-
-This Workflow showcases how you can use conditionals `if` to control which steps run based on the environment selected by the user.
-
-![](./static/conditional-in-step.png)
 
 ### Conditionally set parameters
 
@@ -349,6 +305,7 @@ spec:
       input:
         url: ${{ parameters.path if parameters.path else '/root' }}
 ```
+
 </details>
 
 ### Use parameters as conditional for fields
@@ -383,7 +340,7 @@ parameters:
 
 ![](./static/template-conditional.gif)
 
-1. **`One Of`**: Helps you create a dropdown in the Workflow, where only one of all the options available could be selected. 
+1. **`One Of`**: Helps you create a dropdown in the Workflow, where only one of all the options available could be selected.
 
 Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/05d533cb9789d5abffbdc103d55530efea489161/workflow-examples/conditional-one-of.yaml#L11-L25)
 
@@ -404,6 +361,7 @@ dependencies:
               - java8
               - java11
 ```
+
 </details>
 
 ![](./static/template-one-of.png)
@@ -430,31 +388,31 @@ allOf:
     ipsum:
       type: string
 ```
+
 </details>
 
 ![](./static/template-conditional-all-of.png)
 
-3. **`Any Of`**: Helps you to select from multiple properties where both can't be selected together at once. 
+3. **`Any Of`**: Helps you to select from multiple properties where both can't be selected together at once.
 
 Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/4215c82f933af1d3c1675b89baa2f042e83a60a2/workflow-examples/conditional-any-of.yaml#L31-L46)
 
 **The Example Workflow Explained**
 
 1. **Parameters Structure**
-The parameters section includes `age` as an integer and `items` as an array. Each item in the array can contain either a `foo` or `bar` property, utilizing `anyOf`.
+   The parameters section includes `age` as an integer and `items` as an array. Each item in the array can contain either a `foo` or `bar` property, utilizing `anyOf`.
 
 2. **Identification Methods**
-The Workflow allows for two methods of identification using `anyOf`. Users can provide either:
+   The Workflow allows for two methods of identification using `anyOf`. Users can provide either:
 
 - A first name and last name (defaulting `firstName` to "Chuck"), or
 - An ID code.
 
 3. **Required Fields**
-The `age` field is required, while the fields under the two identification methods are optional but must comply with the `anyOf` logic.
+   The `age` field is required, while the fields under the two identification methods are optional but must comply with the `anyOf` logic.
 
 4. **Display Step**
-The steps section includes a `debug:log` action to display the collected information based on the provided input.
-
+   The steps section includes a `debug:log` action to display the collected information based on the provided input.
 
 <details>
 <summary>Example YAML</summary>
@@ -499,14 +457,13 @@ anyOf:
 
 For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/).
 
-
 ## Upload a file using Workflows
 
-There are 3 types of file upload. 
+There are 3 types of file upload.
 
 1. Single File
 2. Multiple Files
-3. Single File with Accept Attribute 
+3. Single File with Accept Attribute
 
 <details>
 <summary>Example YAML</summary>
@@ -531,8 +488,8 @@ properties:
     format: data-url
     title: Single File with Accept attribute
 ```
-</details>
 
+</details>
 
 ## Using Secrets
 
@@ -564,9 +521,10 @@ parameters:
         type: string
       property-2:
         title: title-2
-  - title: <PAGE-n TITLE>  
+  - title: <PAGE-n TITLE>
 ...
 ```
+
 :::
 
 You can define this property as any normal parameter, however the consumption of this parameter will not be available through `${{ parameters.myKey }}` you will instead need to use `${{ secrets.myKey }}` in your `workflow.yaml`.
@@ -739,7 +697,7 @@ jiraprojectID:
     ui:displayField: metadata.jiraProjectId
     ui:options:
     catalogFilter:
-        kind: 
+        kind:
         - Component
         - Service
 ```
@@ -940,6 +898,7 @@ properties:
           projectPickerRef:
             - 'project_name'
 ```
+
 ### Other UI Pickers
 
 ### 1. `OwnerPicker`
@@ -1068,6 +1027,7 @@ entity:
   ui:options:
     allowArbitraryValues: false
 ```
+
 - Adding an arbitrary entity with `allowArbitraryValues` as `true` (default value)
 
 ```YAML
@@ -1307,7 +1267,6 @@ specific set of repository names. A full example could look like this:
 
 For a list of all possible `ui:options` input props for `RepoUrlPicker`, please visit [here](https://backstage.io/docs/features/software-templates/ui-options-examples/).
 
-
 #### Using the Users `oauth` token
 
 There's a little bit of extra magic that you get out of the box when using the
@@ -1371,6 +1330,7 @@ spec:
 
     ...
 ```
+
 </details>
 
 You will see from above that there is an additional `requestUserCredentials`
@@ -1386,8 +1346,6 @@ token from the user, which you can do on a per-provider basis, in case your Work
 
 Note, that you will need to configure an **connector** for your source code management (SCM) service to make this feature work.
 
-
-
 ## Pre-fill workflows with URL Params
 
 We can now automatically load IDP Workflow forms pre-filled using the `formData` URL query parameter. eg: `https://app.harness.io/ng/account/account_id/module/idp/create/templates/default/a-python-lambda?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D`
@@ -1395,10 +1353,9 @@ We can now automatically load IDP Workflow forms pre-filled using the `formData`
 The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7` in the end of the URL allow you to automatically fill in values of the form. Please see the below table for explanation of individual tokens in the query param.
 
 | Item                | Example Value                           | Explanation                                                                                      |
-|---------------------|-----------------------------------------|--------------------------------------------------------------------------------------------------|
-| `formData`          | `formData`                              | Key of the query param.`formData` object is used to fill out IDP Workflow forms.           |
+| ------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `formData`          | `formData`                              | Key of the query param.`formData` object is used to fill out IDP Workflow forms.                 |
 | `{"key"%3A"value"}` | `{"title"%3A"Title from query params"}` | Value of the query param. A JSON object with invalid URL characters encoded.`:` encodes to `%3A` |
-
 
 ## Add Readonly Fields
 
@@ -1435,7 +1392,7 @@ spec:
       action: trigger:harness-custom-pipeline
       input:
         url: PIPELINE_URL
-        inputset: 
+        inputset:
           github_org: ${{ parameters.project_name }}
         apikey: ${{ parameters.token }}
   output:
@@ -1446,7 +1403,6 @@ spec:
 ```
 
 </details>
-
 
 ## For Use-Cases you don't find here
 

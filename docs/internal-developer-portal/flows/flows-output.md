@@ -7,14 +7,13 @@ sidebar_label: How to configure your Workflows Backend
 
 ## Introduction
 
-In Harness IDP, every Workflow has a Harness Pipeline as it's backend. Once you’ve created a  [Workflows form](/docs/internal-developer-portal/flows/flows-input) to collect inputs from users, these values are passed into the Pipeline through a Workflow Action. This action triggers specific steps in the Pipeline, which can do things like launching a CI/CD process, registering a service in the catalog, or setting up infrastructure. 
-
+In Harness IDP, every Workflow has a Harness Pipeline as it's backend. Once you’ve created a [Workflows form](/docs/internal-developer-portal/flows/flows-input) to collect inputs from users, these values are passed into the Pipeline through a Workflow Action. This action triggers specific steps in the Pipeline, which can do things like launching a CI/CD process, registering a service in the catalog, or setting up infrastructure.
 
 ## Harness Pipeline as Orchestrator
 
-Harness Pipelines serve as powerful orchestrators for Workflows. In this setup you can trigger Harness pipelines directly through a [Workflow Action](/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline). This action accepts the Harness pipeline URL as input, alongside an automatically inserted authentication token under the parameters section just like other inputs required for the pipeline execution. This seamless integration is enabled by Harness IDP being part of the broader Harness SaaS ecosystem, allowing users to even manage Workflows through pipelines RBAC. 
+Harness Pipelines serve as powerful orchestrators for Workflows. In this setup you can trigger Harness pipelines directly through a [Workflow Action](/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline). This action accepts the Harness pipeline URL as input, alongside an automatically inserted authentication token under the parameters section just like other inputs required for the pipeline execution. This seamless integration is enabled by Harness IDP being part of the broader Harness SaaS ecosystem, allowing users to even manage Workflows through pipelines RBAC.
 
-We have also built a native [IDP Stage](/docs/internal-developer-portal/flows/idp-stage) to help with Git cloning, cookiecutter templating, repository creation, catalog creation,catalog registration, Slack notifications, and resource creation using Harness IaCM powered by OpenTofu. 
+We have also built a native [IDP Stage](/docs/internal-developer-portal/flows/idp-stage) to help with Git cloning, cookiecutter templating, repository creation, catalog creation,catalog registration, Slack notifications, and resource creation using Harness IaCM powered by OpenTofu.
 
 This [Harness Specific Workflows Actions](/docs/internal-developer-portal/flows/custom-actions#harness-specific-custom-actions) currently supports only [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)**(Only Available with Harness CD License or Free Tier usage)** and [codebase disabled](http://localhost:3001/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages) **CI stage (Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings). **All input, except for [pipeline expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be [fixed values](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).**
 
@@ -43,7 +42,7 @@ spec:
         project_name:
           title: Name of your new app
           type: string
-          description: Unique name of the app          
+          description: Unique name of the app
         github_repo:
           title: Name of the GitHub repository
           type: string
@@ -91,7 +90,6 @@ The `spec.steps` field contains only one action, and that is to trigger a Harnes
 
 [Steps](/docs/internal-developer-portal/flows/service-onboarding-pipelines#building-the-workflow-backend) is where you integrate the Harness Pipeline as a Backend and are the core execution units within Workflows. Each step runs an action that might involve triggering a CI/CD pipeline, creating a service in a catalog, or provisioning infrastructure resources.
 
-
 ### Manage variables in the pipeline
 
 The above example uses various pipeline variables. The variables are as follows:
@@ -128,7 +126,7 @@ token:
 
 :::info
 
-The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page`  in-case you have multiple pages.
+The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page` in-case you have multiple pages.
 
 ```
 # example workflow.yaml
@@ -153,9 +151,10 @@ parameters:
         type: string
       property-2:
         title: title-2
-  - title: <PAGE-n TITLE>  
+  - title: <PAGE-n TITLE>
 ...
 ```
+
 :::
 
 Also the token input is used as a parameter under `steps` as `apikey`
@@ -187,6 +186,7 @@ In the context of Harness IDP you can use all the **[custom account variables](h
         url: https://app.harness.io/ng/account/<+account.identifier>/module/idp/orgs/<+variable.account.orgIdentifier>/projects/<+variable.account.projectIdentifier>/pipelines/pipeline_id/pipeline-studio/?storeType=INLINE
 ...
 ```
+
 ### Fetch Output from Harness Pipeline onto IDP
 
 When using the custom action [`trigger:harness-custom-pipeline`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline) can as well configure the output to display the pipeline [output variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#input-and-output-variables), by setting the `showOutputVariables: true` under `inputs`and adding `output` as shown in the example below:
@@ -215,12 +215,13 @@ output:
   text:
     - title: Output Variable
       content: |
-        Output Variable **test2** is `${{ steps.trigger.output.test2 }}` 
+        Output Variable **test2** is `${{ steps.trigger.output.test2 }}`
     - title: Another Output Variable
       content: |
-        Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`      
+        Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`
 ...
 ```
+
 </details>
 
 :::info
@@ -231,15 +232,15 @@ Only **user defined output variables** are allowed, but you can as well use the 
 
 :::
 
-There are two ways in which you can add the output variable to the Workflows syntax. 
+There are two ways in which you can add the output variable to the Workflows syntax.
 
-1. You can directly mention the output variable name `${{ steps.trigger.output.test2 }}`, here `test2` is the output variable name we created in the pipeline. 
+1. You can directly mention the output variable name `${{ steps.trigger.output.test2 }}`, here `test2` is the output variable name we created in the pipeline.
 
-2. You can copy the JEXL expression of the output variable and remove the JEXL constructs, `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`, here the part `pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1` comes from `<+pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test2>` copied from execution logs. 
+2. You can copy the JEXL expression of the output variable and remove the JEXL constructs, `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`, here the part `pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1` comes from `<+pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test2>` copied from execution logs.
 
 ![](./static/output-variables.png)
 
-### Hide Logs 
+### Hide Logs
 
 You can now optionally remove the pipeline url from the workflow execution logs, for this you need to use the boolean property `hidePipelineURLLog` and set the value as `true`.
 
@@ -294,9 +295,9 @@ In case of a successful workflow execution in order to view logs, you need to se
 ### Use-Case Based Output Examples
 
 1. **Links to Generated Resources**
-The output can generate direct links to newly created resources such as Git repositories, documentation pages, or CI/CD pipelines. This gives the developer immediate access to manage or monitor their newly onboarded resources.
+   The output can generate direct links to newly created resources such as Git repositories, documentation pages, or CI/CD pipelines. This gives the developer immediate access to manage or monitor their newly onboarded resources.
 
-**Example**:  
+**Example**:
 
 ```YAML
 output:
@@ -309,9 +310,9 @@ output:
 ```
 
 2. **Service Metadata and Status**
-Output can include status messages or metadata from the onboarding process. For example, details about a service registration or the progress of resource provisioning (success/failure messages) can be returned as output.
+   Output can include status messages or metadata from the onboarding process. For example, details about a service registration or the progress of resource provisioning (success/failure messages) can be returned as output.
 
-**Example**:  
+**Example**:
 
 ```YAML
 output:
@@ -320,11 +321,10 @@ output:
       content: "Service registration completed with status: `${{ steps['register-service'].output.status }}`
 ```
 
-
 3. **Generated Files and Artifacts**
-Developers can configure Workflows to generate files (e.g., README.md, YAML configuration files) or artifacts (e.g., Dockerfiles, Kubernetes manifests) during onboarding.
+   Developers can configure Workflows to generate files (e.g., README.md, YAML configuration files) or artifacts (e.g., Dockerfiles, Kubernetes manifests) during onboarding.
 
-**Example**:  
+**Example**:
 
 ```YAML
 output:
@@ -335,11 +335,10 @@ output:
       url: "${{ steps['generate-manifest'].output.fileUrl }}"
 ```
 
-
 4. **Dynamic Outputs Based on Inputs**
-Outputs can be conditional based on inputs. For instance, if a user selected the "production" environment during onboarding, the output could include production-specific links (e.g., monitoring dashboards, production CI/CD pipelines).
+   Outputs can be conditional based on inputs. For instance, if a user selected the "production" environment during onboarding, the output could include production-specific links (e.g., monitoring dashboards, production CI/CD pipelines).
 
-Each individual step can output some variables that can be used in the Workflow frontend for after the job is finished. This is useful for things like linking to the entity that has been created with the backend, linking to the created repository, or showing Markdown text blobs. **[Read more on how to configure output](/docs/internal-developer-portal/flows/flows-output.md)**. 
+Each individual step can output some variables that can be used in the Workflow frontend for after the job is finished. This is useful for things like linking to the entity that has been created with the backend, linking to the created repository, or showing Markdown text blobs. **[Read more on how to configure output](/docs/internal-developer-portal/flows/flows-output.md)**.
 
 ```YAMl
 output:
@@ -354,3 +353,50 @@ output:
       content: |
         **Entity URL:** `${{ steps['publish'].output.remoteUrl }}`
 ```
+
+### Use parameters as condition in steps
+
+Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/35341522c0035107a3b610018f42372cebd8a664/workflow-examples/conditional-in-steps.yaml#L25-L45)
+
+<details>
+<summary>Example YAML</summary>
+
+```YAML
+- name: Only development environments
+  if: ${{ parameters.environment === "staging" or parameters.environment === "development" }}
+  action: debug:log
+  input:
+    message: 'development step'
+
+- name: Only production environments
+  if: ${{ parameters.environment === "prod" or parameters.environment === "production" }}
+  action: debug:log
+  input:
+    message: 'production step'
+
+- name: Non-production environments
+  if: ${{ parameters.environment !== "prod" and parameters.environment !== "production" }}
+  action: debug:log
+  input:
+    message: 'non-production step'
+```
+
+</details>
+
+#### The Example Workflow Explained
+
+- Parameters: The user selects the environment from the predefined list: development, staging, production, or prod.
+
+- Steps:
+
+  - Development Step: Executed only if the environment is development or staging.
+  - Production Step: Executed only if the environment is production or prod.
+  - Non-Production Step: Executed only if the environment is not production or prod.
+
+- Conditionals (if statements): The `if` condition allows execution of steps based on the selected environment.
+
+- Output: A sample output section is included, where you can route the result of any step to view the logs. Replace the url field with an appropriate log service URL if needed.
+
+This Workflow showcases how you can use conditionals `if` to control which steps run based on the environment selected by the user.
+
+![](./static/conditional-in-step.png)
