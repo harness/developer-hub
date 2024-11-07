@@ -190,9 +190,9 @@ Licensing V2 is designed to accommodate varying usage levels:
 
 **A:** Absolutely. Licensing V2 is usage-based, so you will only be billed for the components you utilize. If you do not use features like GitOps or Serverless Functions, they will not contribute to your license consumption. This model ensures you pay only for what you use.
 
-### Q17: How does Licensing V2 impact security and compliance features?
+### How does Licensing V2 impact security and compliance features?
 
-**A:** All security and compliance features remain fully supported and will not be affected by the licensing changes. Your access to these critical features will continue, ensuring your deployments remain secure and compliant with industry standards.
+All security and compliance features remain fully supported and will not be affected by the licensing changes. Your access to these critical features will continue, ensuring your deployments remain secure and compliant with industry standards.
 
 ### Q18: Will there be changes to how users are managed and billed in Licensing V2?
 
