@@ -149,9 +149,9 @@ The User License is now considered a legacy license type that we no longer suppo
 
 **A:** Harness will migrate existing customers with Service or Service Instance Licenses to the V2 version of these license types. After discussing with you, the licensing page will compute usage according to the V2 licensing model. Please note that you cannot renew under the legacy V1 Service or Service Instance Licenses.
 
-### Q9: I'm concerned about unexpected cost increases. How can I ensure my costs remain manageable?
+### I'm concerned about unexpected cost increases. How can I ensure my costs remain manageable?
 
-**A:** We understand concerns about cost management. This change is not intended to upcharge you. It’s intended to improve service tracking. We will not upcharge based on increased utilization. To help you, we offer tools within the platform that provide detailed visibility into your usage. You can monitor your consumption in real-time and set up alerts for usage thresholds. Additionally, our team is available to work with you to analyze your usage patterns and identify opportunities for optimization to keep your costs predictable.
+We understand concerns about cost management. This change is not intended to upcharge you. It’s intended to improve service tracking. We will not upcharge based on increased utilization. To help you, we offer tools within the platform that provide detailed visibility into your usage. You can monitor your consumption in real-time and set up alerts for usage thresholds. Additionally, our team is available to work with you to analyze your usage patterns and identify opportunities for optimization to keep your costs predictable.
 
 ### Q10: Will there be a grace period to adjust to the new licensing model?
 
