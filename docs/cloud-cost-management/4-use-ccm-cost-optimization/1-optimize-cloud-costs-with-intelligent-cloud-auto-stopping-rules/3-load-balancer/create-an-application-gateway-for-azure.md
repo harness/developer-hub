@@ -16,10 +16,9 @@ Azure Application Gateway is a web traffic load balancer that enables you to man
 * [Connect to an Azure Connector](../1-add-connectors/add-azure-connector.md)
 * [Create AutoStopping Rules for Azure](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
 
-
 ## Create a New Application Gateway
 
-You can either create a new application gateway when creating a new order, stopping or you can do so from Load Balancer Manager page. By using the second option, you can easily import.
+You can either create a new application gateway when creating a new Autostopping rule or you can do so from Load Balancer Manager page. By using the second option, you can easily import the created gateway into your rule.
 
 ### Method 1: Create a new Application Gateway from Load Balancer Manager page.
 
@@ -40,7 +39,7 @@ You can either create a new application gateway when creating a new order, stopp
 
 5. In the next window, add:
 - Region: The region where your target VM or the cloud resource is hosted.
-- Resource Group: A resource group is a container that holds related resources for an Azure solution. For example, virtual machines, storage accounts, etc.
+- Resource Group: A Resource Group (RG) in Azure is a logical container that holds related resources for a solution. In the context of an Azure Application Gateway, the resource group serves as the container for the various resources associated with the Application Gateway, such as: Virtual Machines (VMs), Storage Accounts, Networking Resources, etc.
 - Certificate (Optional)
 - Virtual Network: Azure Virtual Network is a service that provides the fundamental building block for your private network in Azure. VNet allows you to create and manage virtual private networks (VPNs) in the Azure cloud. 
 - Subnet: AppGateway subnet should only contain AppGateway, no other resources can be placed in this subnet.
