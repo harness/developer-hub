@@ -14,7 +14,7 @@ In Harness IDP there are two types of APIs that are being used
 
 ## Backstage API
 
-The Backstage API includes the Backstage endpoints exposed through the Harness Platform. For detailed documentation on endpoints and other Backstage API reference information, go to the [Backstage API reference documentation](/docs/internal-developer-portal/api-refernces/public-api).
+The Backstage API includes the Backstage endpoints exposed through the Harness Platform. This API let's you programmatically add/remove entities in the catalog. For detailed documentation on endpoints and other Backstage API reference information, go to the [Backstage API reference documentation](/docs/internal-developer-portal/api-refernces/public-api).
 
 ## Platform API
 
