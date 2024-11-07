@@ -182,9 +182,9 @@ Licensing V2 is designed to accommodate varying usage levels:
 - **Scaling Options:** Easily scale up or down based on your needs without long-term commitments for unused capacity.
 - **Usage Monitoring:** Utilize our tools to predict and plan for high or low-activity periods.
 
-### Q15: What if my usage exceeds my licensed amount before renewal?
+### What if my usage exceeds my licensed amount before renewal?
 
-**A:** Please contact us if you anticipate exceeding your licensed usage before renewal. We can discuss options such as adjusting your license tier or exploring short-term accommodations to ensure uninterrupted service while we work together on a long-term solution.
+Please contact us if you anticipate exceeding your licensed usage before renewal. We can discuss options such as adjusting your license tier or exploring short-term accommodations to ensure uninterrupted service while we work together on a long-term solution.
 
 ### Q16: I'm not using certain features, such as GitOps or Serverless Functions. Can my licensing be adjusted accordingly?
 
