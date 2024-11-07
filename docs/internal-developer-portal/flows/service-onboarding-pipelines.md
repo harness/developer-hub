@@ -13,6 +13,8 @@ In Harness IDP, a Self-Service Workflow (also known as a software template in Ba
 
 **Workflows** are stored in the **Catalog** under a **`kind` Template**.
 
+![](./static/workflows-mindmap.png)
+
 <!-- See it in action: Demo video -->
 
 **To get started, check out the tutorial to [create your first Workflow](/docs/internal-developer-portal/get-started/workflow-quickstart).**
@@ -147,7 +149,7 @@ Let's dive in and pick apart what each of these sections do and what they are.
    - **Object**: When using more complex structures, nested fields can be defined using object types.
    
 2. **User Interaction and Validation**:
-   - Inputs can include UI widgets that make user interaction easier. For example, a string input can have a `ui:field` of [`OwnerPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#ownerpicker) to allow users to select team members from a dropdown list. 
+   - Inputs can include UI widgets that make user interaction easier. For example, a string input can have a `ui:field` of [`OwnerPicker`](/docs/internal-developer-portal/flows/flows-input#harness-specific-ui-pickers) to allow users to select team members from a dropdown list. 
 
    - **Default values**: You can set default values for parameters to guide users on commonly used values, making onboarding quicker and more user-friendly.
    - **Field Dependency**: Input fields can be made dynamic using `anyOf` or `allOf`, where only certain fields become visible based on the user’s previous choices. For instance, selecting a "production" environment could trigger additional input fields for production-specific configurations.
@@ -410,4 +412,4 @@ Harness IDP ships the following [Workflows UI pickers](/docs/internal-developer-
 - `HarnessProjectPicker`
 - `HarnessAutoOrgPicker`
 
-You can use these UI fields in the `ui:field` option of your `workflows.yaml` file. Read more about how to use these [Workflows UI Pickers](/docs/internal-developer-portal/flows/custom-extensions).
+You can use these UI fields in the `ui:field` option of your `workflows.yaml` file. Read more about how to use these [Workflows UI Pickers](/docs/internal-developer-portal/flows/flows-input#workflow-ui-pickers).

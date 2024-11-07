@@ -78,7 +78,7 @@ parameters:
 
 You can dynamically fetch values in the Workflows fields using UI Pickers, which are in-built. There are two kinds of UI Pickers:
 
-1. [Standard Workflow UI Picker](/docs/internal-developer-portal/flows/custom-extensions) 
+1. [Standard Workflow UI Picker](/docs/internal-developer-portal/flows/flows-input#workflow-ui-pickers) 
 2. [API Based Dynamic Workflow UI Picker](/docs/internal-developer-portal/flows/dynamic-picker)
 
 ## Arrays options
