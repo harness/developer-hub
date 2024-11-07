@@ -161,9 +161,9 @@ We are committed to making this transition as smooth as possible. While your cur
 
 **A:** Licensing V2 is designed to provide a more accurate and fair billing model based on actual usage. While we recommend transitioning to take advantage of the enhanced features and support, we understand that each customer has unique needs. Please discuss your specific situation with your account representative to explore possible options.
 
-### Q12: How will the licensing changes affect my existing integrations and workflows?
+### How will the licensing changes affect my existing integrations and workflows?
 
-**A:** The licensing changes are billing-related and should not directly impact your existing integrations and workflows. All your current configurations will continue to function as before. The main difference will be in how usage is tracked and billed. If you have concerns, our support team is ready to assist you in reviewing your setup.
+The licensing changes are billing-related and should not directly impact your existing integrations and workflows. All your current configurations will continue to function as before. The main difference will be in how usage is tracked and billed. If you have concerns, our support team is ready to assist you in reviewing your setup.
 
 ### Q13: What support is available to help me transition to Licensing V2?
 
