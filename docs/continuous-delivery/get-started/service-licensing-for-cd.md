@@ -226,7 +226,7 @@ Licensing V2 may include updates to terms and conditions to reflect the new bill
 
 We offer flexible licensing options to accommodate various requirements. Please discuss your specific needs with your account representative, and we will tailor a licensing plan that aligns with your operational and budgetary goals.
 
-### Need Further Assistance?
+## Need Further Assistance?
 
 Our team is here to help you through this transition. If you have any additional questions or concerns, please don't hesitate to contact your Harness account representative or our support team.
 
