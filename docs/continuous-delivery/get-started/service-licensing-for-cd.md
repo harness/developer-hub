@@ -186,9 +186,9 @@ Licensing V2 is designed to accommodate varying usage levels:
 
 Please contact us if you anticipate exceeding your licensed usage before renewal. We can discuss options such as adjusting your license tier or exploring short-term accommodations to ensure uninterrupted service while we work together on a long-term solution.
 
-### Q16: I'm not using certain features, such as GitOps or Serverless Functions. Can my licensing be adjusted accordingly?
+### I'm not using certain features, such as GitOps or Serverless Functions. Can my licensing be adjusted accordingly?
 
-**A:** Absolutely. Licensing V2 is usage-based, so you will only be billed for the components you utilize. If you do not use features like GitOps or Serverless Functions, they will not contribute to your license consumption. This model ensures you pay only for what you use.
+Absolutely. Licensing V2 is usage-based, so you will only be billed for the components you utilize. If you do not use features like GitOps or Serverless Functions, they will not contribute to your license consumption. This model ensures you pay only for what you use.
 
 ### How does Licensing V2 impact security and compliance features?
 
