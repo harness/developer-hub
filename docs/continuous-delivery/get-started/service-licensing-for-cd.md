@@ -142,9 +142,9 @@ By adjusting the valuation to 0.20 of a Service per serverless function, custome
 
 - **Service Instances:** Count the Service Instances for CD and GitOps Services.
 
-### Q6: Does Harness provide tools to help manage and optimize licensing costs?
+### Does Harness provide tools to help manage and optimize licensing costs?
 
-**A:** Yes, Harness offers monitoring and reporting tools within the platform to help you track usage across all licensing components. You can generate detailed reports based on the Service Licensing Page to monitor your consumption and identify areas for optimization.
+Yes, Harness offers monitoring and reporting tools within the platform to help you track usage across all licensing components. You can generate detailed reports based on the Service Licensing Page to monitor your consumption and identify areas for optimization.
 
 ### Q7: What is happening with the User License I initially renewed or purchased?
 
