@@ -4,7 +4,7 @@ description: Reference for the Helm Blue Green Swap step
 sidebar_position: 60
 ---
 
-This topic describes the configuration and settings for the Helm Blue Green Swap step. This step swaps the primary service running the application with the secondary service that is waiting to take over.
+This topic describes the configuration and settings for the Helm Blue Green Swap step. This step swaps the primary service running the application with the stage service that is waiting to take over.
 
 :::note
 
