@@ -11,7 +11,7 @@ This topic describes how you can use user-defined service accounts in different 
 ### Cluster Scope
 In this scope, the service account is created by default and the discovery runs in cluster scope by default.
 
-:::tip 
+:::tip
 This is the default mode of operation and if you want to create service account, refer to the YAML below and provide the service account name in the UI.
 :::
 
