@@ -718,8 +718,6 @@ This is where Workflow UI Pickers come in.
 
 ### 1. `EntityFieldPicker`
 
-![](./static/system-custompicker.png)
-
 :::info
 
 Only **string** data `type` is supported for the EntityPicker.
@@ -733,22 +731,20 @@ The input props that can be specified under `ui:options` for the `EntityFieldPic
 This is used to fetch the value from catalog dynamically, corresponding to the key mentioned.
 
 ```YAML
-system:
-    title: System
+jiraprojectID:
+    title: Jira Project Key
     type: string
-    description: System of the component
+    description: The key for your JIRA project
     ui:field: EntityFieldPicker
-    ui:displayField: spec.owner
+    ui:displayField: metadata.jiraProjectId
     ui:options:
-      catalogFilter:
-          kind:
-          - System
-          - Component
-          - Service
-          - API
+    catalogFilter:
+        kind: 
+        - Component
+        - Service
 ```
 
-In the above example it will fetch all the owners for the software components `kind` mentioned under `catalogFilter`.
+In the above example it will fetch all the `jiraProjectId` for the software components `kind` mentioned under `catalogFilter`.
 
 #### `allowArbitraryValues`
 

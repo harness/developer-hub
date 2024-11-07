@@ -137,6 +137,8 @@ Harness IDP provides an in-built editor to help you build the Workflows, it prov
 
 Let's dive in and pick apart what each of these sections do and what they are.
 
+![](./static/yaml-syntax-workflow.png)
+
 ## Frontend of the Workflow
 
 **Workflows** are stored in the **Catalog** under a **`kind` Template**. The minimum that is needed to define the frontend of the Workflows is a `workflows.yaml` file with metadata like `parameters`. In a Workflow, the **input parameters** are the first interaction point for developers. They define the structure and types of data needed to initiate the onboarding process.
