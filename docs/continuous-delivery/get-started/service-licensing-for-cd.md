@@ -218,9 +218,9 @@ If you believe there is a discrepancy in your usage data:
 
 Licensing V2 may include updates to terms and conditions to reflect the new billing model. We recommend reviewing the updated terms provided during renewal. Your account representative can also walk you through any changes and address your questions.
 
-### Q22: How does Licensing V2 affect multi-account or multi-project setups?
+### How does Licensing V2 affect multi-account or multi-project setups?
 
-**A:** Licensing V2 provides aggregated usage tracking across all your accounts and projects, offering a unified view of your consumption. This helps in managing licenses more efficiently in complex organizational structures. Billing will reflect the total usage across all entities.
+Licensing V2 provides aggregated usage tracking across all your accounts and projects, offering a unified view of your consumption. This helps in managing licenses more efficiently in complex organizational structures. Billing will reflect the total usage across all entities.
 
 ### Can I customize my licensing plan to fit my organization's needs better?
 
