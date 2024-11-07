@@ -125,7 +125,7 @@ None of the customers
 
 ### Will Licensing V2 increase my costs?
 
-**A:** Potentially, yes. Your license consumption may increase since we are now tracking more deployable items and offering additional value. This could result in a higher renewal cost. However, we are committed to working with you to adjust your contract to match your usage and needs. We are not using these increases to charge you more; we are just trying to track license utilization across all customers better.
+Potentially, yes. Your license consumption may increase since we are now tracking more deployable items and offering additional value. This could result in a higher renewal cost. However, we are committed to working with you to adjust your contract to match your usage and needs. We are not using these increases to charge you more; we are just trying to track license utilization across all customers better.
 
 ### Q2: Why has tracking for GitOps Services been introduced in Licensing V2?
 
