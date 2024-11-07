@@ -7,7 +7,6 @@ import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
 import DeveloperCertificationExamDetails from "./data/ce-certification-developer-exam-details.md";
 import DeveloperCertificationReviewGuide from "./data/ce-certification-developer-review-guide.md";
-
 import IltCard from "./Card";
 import { ilt } from "./data/iltData";
 import { spt } from "./data/sptData";
@@ -539,7 +538,7 @@ export default function CertificationsChaos() {
           </div>
         </div>
       )}
-      {activePage === ActivePage.SelfPacedTraning && (
+       {activePage === ActivePage.SelfPacedTraning && (
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
           <p>Free self-paced courses that you can consume on your own time.</p>
@@ -552,7 +551,7 @@ export default function CertificationsChaos() {
                 .map((spt) => (
                   <IltCard {...spt} />
                 ))}
-              {ilt
+              {spt
                 .filter((spt) => {
                   return (
                     (spt.module === "ce" && spt.cardType === "FREE") ||

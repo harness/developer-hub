@@ -90,4 +90,15 @@ export const spt: IltCardItem[] = [
      tileType: tileType.normal,
      cardType: cardType.SPT,
    },
+   {
+    title: "Chaos Engineering",
+    module: MODULES.ce,
+     type: type.user,
+     description:
+       "Self-paced video course introducing Harness Chaos Engineering.",
+     version: "Harness CE Free Plan",
+     link: "https://university-registration.harness.io/self-paced-training-harness-chaos-engineering",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
 ];
