@@ -165,9 +165,9 @@ Licensing V2 is designed to provide a more accurate and fair billing model based
 
 The licensing changes are billing-related and should not directly impact your existing integrations and workflows. All your current configurations will continue to function as before. The main difference will be in how usage is tracked and billed. If you have concerns, our support team is ready to assist you in reviewing your setup.
 
-### Q13: What support is available to help me transition to Licensing V2?
+### What support is available to help me transition to Licensing V2?
 
-**A:** We offer comprehensive support to assist you during this transition:
+We offer comprehensive support to assist you during this transition:
 
 - **Dedicated Account Representative:** Your account manager can provide personalized guidance.
 - **Technical Support:** Our technical team can help optimize your configurations for the new licensing model.
