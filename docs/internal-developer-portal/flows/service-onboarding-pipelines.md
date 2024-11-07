@@ -11,6 +11,8 @@ redirect_from:
 
 In Harness IDP, a Self-Service Workflow (also known as a software template in Backstage) enables platform engineers to automate the process of service creation. As a platform engineer, you can create a workflow that prompts developers for details and then generates a repository with a basic setup that includes a CI/CD process. The workflow is defined in a YAML file named `workflow.yaml`. The [syntax](https://backstage.io/docs/features/software-templates/input-examples) of the workflow definition is managed by backstage.io, while the workflow itself runs on a Harness pipeline of your choice.
 
+**Workflows** are stored in the **Catalog** under a **`kind` Template**.
+
 <!-- See it in action: Demo video -->
 
 **To get started, check out the tutorial to [create your first Workflow](/docs/internal-developer-portal/get-started/workflow-quickstart).**
@@ -26,11 +28,11 @@ Read More on [Backstage Software Template](https://backstage.io/docs/features/so
 ##Example YAML
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
-# some metadata about the template itself
+# some metadata about the Workflow itself
 metadata:
   name: react-app
   title: Create a new service
-  description: A template to create a new service
+  description: A Workflow to create a new service
   tags:
     - nextjs
     - react
@@ -107,11 +109,35 @@ spec:
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
 
+## Syntax for Workflows YAML
+
+You might have noticed variables wrapped in `${{ }}` in the examples. These are strings for linking and gluing the different parts of the Workflows together. All the form inputs from the `parameters` section will be available by using this syntax (for example, `${{ parameters.project_name }}` inserts the value of `project_name` from the parameters). This is great for passing the values from the form into different steps and reusing these input variables.
+
+These strings preserve the type of the parameter.
+
+The `${{ parameters.project_name }}` pattern will work in the Workflows file to pass the parameters from the UI to the input of the `trigger:harness-custom-pipeline` step.
+
+As you can see above in the `Outputs` section, `actions` and `steps` can also output things. You can grab that output using `steps.$stepId.output.$property`.
+
+You can read more about all the `inputs` and `outputs` defined in the actions in code part of the `JSONSchema`
+
+It is important to remember that all examples are based on [react-jsonschema-form](https://rjsf-team.github.io/react-jsonschema-form/).
+
+
+## Using the Workflows Editor
+
+Harness IDP provides an in-built editor to help you build the Workflows, it provides a real-time preview of the corresponding UI based on the YAML definition of the Workflows. Here you can work on building a new workflows along with trying out changes with the existing workflows. **You can't save the changes made here, rather you have to copy the changes made to the YAML and add it to the Workflow definition YAML stored in your git provider**. On the Workflows page go to **Open Playground** -> **Edit Template Form** to open the Workflows Editor. 
+
+![](./static/template-editor-1.png)
+![](./static/template-editoer-2.png)
+![](./static/template-editor-3.png)
+
+
 Let's dive in and pick apart what each of these sections do and what they are.
 
 ## Frontend of the Workflow
 
-In a Workflow, the **input parameters** are the first interaction point for developers. They define the structure and types of data needed to initiate the onboarding process.
+**Workflows** are stored in the **Catalog** under a **`kind` Template**. The minimum that is needed to define the frontend of the Workflows is a `workflows.yaml` file with metadata like `parameters`. In a Workflow, the **input parameters** are the first interaction point for developers. They define the structure and types of data needed to initiate the onboarding process.
 
 1. **Parameter Types**:
    Workflow definition can accept a wide range of input types, such as:
@@ -129,15 +155,15 @@ In a Workflow, the **input parameters** are the first interaction point for deve
 3. **Required Fields**:
    Workflows allow developers to enforce required fields. For example, the field `age` or `owner` could be marked as mandatory, ensuring critical data is not skipped during onboarding.
 
-### `spec.parameters`
+### Where to Add the Frontend Forms 
 
-These `parameters` are Workflow variables which can be modified in the frontend as a sequence. It can either be one `Step` if you just want one big list of different fields in the frontend, or it can be broken up into multiple different steps which would be rendered as different steps in the scaffolder plugin frontend.
+These `parameters` are Workflow variables which can be modified in the frontend as a sequence. It can either be one `Step` if you just want one big list of different fields in the frontend, or it can be broken up into multiple different steps which would be rendered as different steps in the Workflows Frontend.
 
 Each `Step` is `JSONSchema` with some extra goodies for styling what it might look like in the frontend. For these steps we rely very heavily on this [library](https://github.com/rjsf-team/react-jsonschema-form). They have some [great docs](https://rjsf-team.github.io/react-jsonschema-form/docs/) and a [playground](https://rjsf-team.github.io/react-jsonschema-form) where you can play around with some examples.
 
 There's another option for that library called `uiSchema` which we've taken advantage of, and we've merged it with the existing `JSONSchema` that you provide to the library. These are the little `ui:*` properties that you can see in the step definitions.
 
-**[Read More on building the Workflows Frontend](/docs/internal-developer-portal/flows/flows-input)**
+**[Read More on building the Workflows UI Form](/docs/internal-developer-portal/flows/flows-input)**
 
 For example if we take the **simple** example from the playground it looks like this:
 
@@ -213,8 +239,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: v1beta3-demo
-  title: Test Action template
-  description: scaffolder v1beta3 template demo
+  title: Test Action Workflow
+  description: Workflow Demo
 spec:
   owner: backstage/techdocs-core
   type: service
@@ -289,7 +315,7 @@ spec:
 
 ## Building the Workflow Backend
 
-### `spec.steps` - `Action[]`: Action Customization
+### Where to Add the Backend Integration: Action Customization
 
 **Steps** are the core execution units within Workflows. Each step runs an action that might involve triggering a CI/CD pipeline, creating a service in a catalog, or provisioning infrastructure resources. The inputs gathered from the user are passed into these steps, and the outputs are generated based on the results of each step.
 
@@ -302,37 +328,26 @@ Actions within steps can be customized to fit various use cases, such as:
 These follow the same standard format:
 
 ```YAML
-- id: fetch-base # A unique id for the step
-  name: Fetch Base # A title displayed in the frontend
-  action: fetch:template # An action to call
-  input: # Input that is passed as arguments to the action handler
-    url: ./template
-    values:
-      name: ${{ parameters.name }}
+  steps:
+    - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "YOUR PIPELINE URL"
+        inputset:
+          project_name: ${{ parameters.project_name }}
+          github_repo: ${{ parameters.github_repo }}
+          github_org: ${{ parameters.github_org }}
+          github_token: ${{ parameters.github_token }}
+        apikey: ${{ parameters.token }}
+    # The final step is to register our new component in the catalog.
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
 ```
 
 [Read More](/docs/internal-developer-portal/flows/custom-actions) on the Available Workflow Actions.
-
-When `each` is provided, the current iteration value is available in the `${{ each }}` input.
-
-Examples:
-
-```yaml
-each: ['apples', 'oranges']
-input:
-  values:
-    fruit: ${{ each.value }}
-```
-
-```yaml
-each: [{ name: 'apple', count: 3 }, { name: 'orange', count: 1 }]
-input:
-  values:
-    fruit: ${{ each.value.name }}
-    count: ${{ each.value.count }}
-```
-
-When `each` is used, the outputs of a repeated step are returned as an array of outputs from each iteration.
 
 ### Using Harness Pipeline as an Orchestrator
 
@@ -378,7 +393,7 @@ A Workflow is a kind of entity that exists in the software catalog. You can crea
 
 ## Available Workflow Actions
 
-Harness IDP ships the following Harness related built-in actions along with [some others](/docs/internal-developer-portal/flows/custom-actions) to be used in the software template steps.
+Harness IDP ships the following Harness related built-in actions along with [some others](/docs/internal-developer-portal/flows/custom-actions) to be used in the Workflow `steps`.
 
 - `trigger:harness-custom-pipeline`
 - `trigger:trigger-pipeline-with-webhook`
@@ -389,7 +404,7 @@ Learn more about how to use them in the [service onboarding tutorial](/docs/inte
 
 ## Available Workflow UI pickers
 
-Harness IDP ships the following [Workflows UI pickers](/docs/internal-developer-portal/flows/custom-actions.md) that can be used in the template form for developers to select from.
+Harness IDP ships the following [Workflows UI pickers](/docs/internal-developer-portal/flows/custom-actions.md) that can be used in the Workflows form for developers to select from.
 
 - `HarnessOrgPicker`
 - `HarnessProjectPicker`

@@ -1,94 +1,15 @@
 ---
-title: How to build your Workflows Frontend 
+title: Workflows Form Input Library 
 description: Instructions to build the UI of individual workflows and all the types of inputs possible in Workflows
 sidebar_position: 2
-sidebar_label: How to build your Workflows Frontend
+sidebar_label: Workflows Form Input Library
+redirect_from:
+  - /docs/internal-developer-portal/flows/custom-extensions
 ---
 
 ## Introduction
 
-Workflows in Harness IDP is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). You can create your own Workflows with a small YAML definition which describes the self service workflows and its metadata, along with inputs variables that your Workflows will need, and then a list of actions which are then executed by the scaffolding service. It is suggested to use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the frontend(UI for Inputs). [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the Self Service Workflows.
-
-**Workflows** are stored in the **Catalog** under a **`kind` Template**. The minimum that is needed to define the frontend of the Workflows is a `workflows.yaml` file with metadata like `parameters`.
-
-## Syntax for Workflows YAML
-
-You might have noticed variables wrapped in `${{ }}` in the examples. These are strings for linking and gluing the different parts of the Workflows together. All the form inputs from the `parameters` section will be available by using this syntax (for example, `${{ parameters.firstName }}` inserts the value of `firstName` from the parameters). This is great for passing the values from the form into different steps and reusing these input variables.
-
-These strings preserve the type of the parameter.
-
-The `${{ parameters.firstName }}` pattern will work only in the Workflows file. If you want to start using values provided from the UI in your code, you will have to use the `${{ values.firstName }}` pattern. Additionally, you have to pass the parameters from the UI to the input of the `fetch:template` step.
-
-<details>
-<summary>Example YAML</summary>
-
-```yaml
-apiVersion: scaffolder.backstage.io/v1beta3
-kind: Template
-metadata:
-  name: v1beta3-demo
-  title: Test Action
-  description: scaffolder v1beta3 template demo
-spec:
-  owner: backstage/techdocs-core
-  type: service
-  parameters:
-    - title: Fill in some steps
-      required:
-        - name
-      properties:
-        name:
-          title: Name
-          type: string
-          description: Unique name of your project
-        urlParameter:
-          title: URL endpoint
-          type: string
-          description: URL endpoint at which the component can be reached
-          default: 'https://www.example.com'
-        enabledDB:
-          title: Enable Database
-          type: boolean
-          default: false
-  ...
-  steps:
-    - id: fetch-base
-      name: Fetch Base
-      action: fetch:template
-      input:
-        url: ./template
-        values:
-          name: ${{ parameters.name }}
-          url: ${{ parameters.urlParameter }}
-          enabledDB: ${{ parameters.enabledDB }}
-```
-</details>
-
-Afterwards, if you are using the builtin actions, you can start using the variables in your code. You can use also any other functions from [Nunjucks](https://mozilla.github.io/nunjucks/templating.html#tags) as well.
-
-```bash
-#!/bin/bash
-echo "Hi my name is ${{ values.name }}, and you can fine me at ${{ values.url }}!"
-{% if values.enabledDB %}
-echo "You have enabled your database!"
-{% endif %}
-```
-
-As you can see above in the `Outputs` section, `actions` and `steps` can also output things. You can grab that output using `steps.$stepId.output.$property`.
-
-You can read more about all the `inputs` and `outputs` defined in the actions in code part of the `JSONSchema`
-
-It is important to remember that all examples are based on [react-jsonschema-form](https://rjsf-team.github.io/react-jsonschema-form/).
-
-
-## Using the Workflows Editor
-
-Harness IDP provides an in-built editor to help you build the Workflows, it provides a real-time preview of the corresponding UI based on the YAML definition of the Workflows. Here you can work on building a new workflows along with trying out changes with the existing workflows. **You can't save the changes made here, rather you have to copy the changes made to the YAML and add it to the Workflow definition YAML stored in your git provider**. On the Workflows page go to **Open Playground** -> **Edit Template Form** to open the Workflows Editor. 
-
-![](./static/template-editor-1.png)
-![](./static/template-editoer-2.png)
-![](./static/template-editor-3.png)
-
+There are various ways in which you can take input from users in the Workflows. All types of form input types and examples are listed in this document. 
 
 ## Input Examples
 
@@ -357,7 +278,7 @@ parameters:
 
 ![](./static/template-boolean-multiselect.png)
 
-## Conditional Inputs in Templates
+## Conditional Inputs in Workflows
 
 ### Use parameters as condition in steps
 
@@ -462,7 +383,7 @@ parameters:
 
 ![](./static/template-conditional.gif)
 
-1. **`One Of`**: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
+1. **`One Of`**: Helps you create a dropdown in the Workflow, where only one of all the options available could be selected. 
 
 Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/05d533cb9789d5abffbdc103d55530efea489161/workflow-examples/conditional-one-of.yaml#L11-L25)
 
@@ -487,7 +408,7 @@ dependencies:
 
 ![](./static/template-one-of.png)
 
-2. **`All Of`**: Helps you create a dropdown in the template, where only all the options available could be selected.
+2. **`All Of`**: Helps you create a dropdown in the Workflow, where only all the options available could be selected.
 
 Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/70f70f32dfca3ad394677b19608d72706cc8d38c/workflow-examples/conditional-all-of.yaml#L54-L77)
 
@@ -523,7 +444,7 @@ Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob
 The parameters section includes `age` as an integer and `items` as an array. Each item in the array can contain either a `foo` or `bar` property, utilizing `anyOf`.
 
 2. **Identification Methods**
-The template allows for two methods of identification using `anyOf`. Users can provide either:
+The Workflow allows for two methods of identification using `anyOf`. Users can provide either:
 
 - A first name and last name (defaulting `firstName` to "Chuck"), or
 - An ID code.
@@ -648,7 +569,7 @@ parameters:
 ```
 :::
 
-You can define this property as any normal parameter, however the consumption of this parameter will not be available through `${{ parameters.myKey }}` you will instead need to use `${{ secrets.myKey }}` in your `template.yaml`.
+You can define this property as any normal parameter, however the consumption of this parameter will not be available through `${{ parameters.myKey }}` you will instead need to use `${{ secrets.myKey }}` in your `workflow.yaml`.
 
 Parameters will be automatically masked in the review step.
 
@@ -660,8 +581,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: v1beta3-demo
-  title: Test Action template
-  description: scaffolder v1beta3 template demo
+  title: Test Action Workflow
+  description: Workflows Demo
 spec:
   owner: backstage/techdocs-core
   type: service
@@ -694,7 +615,7 @@ spec:
 
 ## Built in Filters
 
-Template filters are functions that help you transform data, extract specific information,
+Workflow filters are functions that help you transform data, extract specific information,
 and perform various operations in Workflows.
 
 This section introduces the built-in filters provided by Backstage and offers examples of
@@ -787,6 +708,690 @@ The `projectSlug` filter generates a project slug from a repository URL
 - **Input**: `github.com?repo=backstage&org=backstage`
 - **Output**: `backstage/backstage`
 
+## Workflow UI Pickers
+
+Collecting input from the user is a very large part of the Workflows as a whole. Sometimes the built in components and fields just aren't good enough, and sometimes you want to enrich the form that the users sees with better inputs that fit better.
+
+This is where Workflow UI Pickers come in.
+
+### Harness Specific UI Pickers
+
+### 1. `EntityFieldPicker`
+
+![](./static/system-custompicker.png)
+
+:::info
+
+Only **string** data `type` is supported for the EntityPicker.
+
+:::
+
+The input props that can be specified under `ui:options` for the `EntityFieldPicker` field extension.
+
+#### `displayField`
+
+This is used to fetch the value from catalog dynamically, corresponding to the key mentioned.
+
+```YAML
+system:
+    title: System
+    type: string
+    description: System of the component
+    ui:field: EntityFieldPicker
+    ui:displayField: spec.owner
+    ui:options:
+      catalogFilter:
+          kind:
+          - System
+          - Component
+          - Service
+          - API
+```
+
+In the above example it will fetch all the owners for the software components `kind` mentioned under `catalogFilter`.
+
+#### `allowArbitraryValues`
+
+Whether to allow arbitrary user input. Defaults to true.
+
+`allowArbitraryValues` provides input validation when selecting an entity as the values you enter will correspond to a valid entity.
+
+- Adding a valid entity with `allowArbitraryValues` as `false`
+
+```yaml
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityFieldPicker
+  ui:options:
+    allowArbitraryValues: false
+```
+
+- Adding an arbitrary entity with `allowArbitraryValues` as `true` (default value)
+
+```yaml
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityFieldPicker
+  ui:options:
+    allowArbitraryValues: true
+```
+
+#### `catalogFilter`
+
+`catalogFilter` supports filtering options by any field(s) of an entity.
+
+- Get all entities of kind `Group`
+
+```yaml
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityFieldPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+```
+
+- Get entities of kind `Group` and spec.type `team`
+
+```yaml
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityFieldPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+        spec.type: team
+```
+
+#### `defaultKind`
+
+The default entity kind.
+
+```yaml
+system:
+  title: System
+  type: string
+  description: System of the component
+  ui:field: EntityFieldPicker
+  ui:options:
+    catalogFilter:
+      kind: System
+    defaultKind: System
+```
+
+#### `defaultNamespace`
+
+The ID of a namespace that the entity belongs to. The default value is `default`.
+
+- Listing all entities in the `default` namespace (default value)
+
+```yaml
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityFieldPicker
+  ui:options:
+    defaultNamespace: default
+```
+
+### 2. `HarnessOrgPicker`
+
+Fetches all the org ID dynamically.
+
+```YAML
+#Example
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: your-workflow
+  ...
+spec:
+  ...
+  parameters:
+    - title: Details
+       properties:
+         projectId:
+           title: Project Identifier
+           description: Harness Project Identifier
+           type: string
+           ui:field: HarnessProjectPicker
+         orgId:
+            title: Org Identifier
+            type: string
+            ui:field: HarnessOrgPicker
+    ...
+```
+
+### 3. `HarnessProjectPicker`
+
+Fetches all the project ID dynamically.
+
+```YAML
+# Example workflow.yaml file
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: your-workflow
+  ...
+spec:
+  ...
+  parameters:
+    - title: Details
+       properties:
+         projectId:
+           title: Project Identifier
+           description: Harness Project Identifier
+           type: string
+           ui:field: HarnessProjectPicker
+```
+
+### 4. `HarnessAutoOrgPicker`
+
+It auto populates org ID on project selection. So now when you select an project ID as an input the org ID gets selected automatically if required as an input.
+
+1. For `HarnessAutoOrgPicker` to work, it is suggested to name the Project Identifier under Properties as `projectId` and using the `HarnessProjectPicker`.
+
+```YAML
+# Example workflow.yaml file
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: your-workflow
+  ...
+spec:
+  ...
+  parameters:
+    - title: Details
+       properties:
+         projectId:
+           title: Project Identifier
+           description: Harness Project Identifier
+           type: string
+           ui:field: HarnessProjectPicker
+         orgId:
+           title: Org Identifier
+           description: Harness org Identifier
+           type: string
+           ui:field: HarnessAutoOrgPicker
+
+```
+
+2. In case the properties Project Identifier is named something else other than `projectId` in that case for the custom action to function as desired we need to add it as a dependency under `projectPickerRef`
+
+```YAML
+# Example workflow.yaml file
+properties:
+    <ANY NAME OTHER THAN projectId>:
+        title: Project Identifier
+        description: Harness Project Identifier
+        type: string
+        ui:field: HarnessProjectPicker
+    orgId:
+        title: Org Identifier
+        description: Harness org Identifier
+        type: string
+        ui:field: HarnessAutoOrgPicker
+        dependencies:
+          projectPickerRef:
+            - 'project_name'
+```
+### Other UI Pickers
+
+### 1. `OwnerPicker`
+
+`OwnerPicker` is used for developers to pick a User Group from the list of Groups that exist in the account.
+
+![](./static/owner-custompicker.png)
+
+#### `allowArbitraryValues`
+
+Whether to allow arbitrary user input. Defaults to true.
+
+`allowArbitraryValues` provides input validation when selecting an owner as the values you enter will correspond to a valid owner.
+
+- Adding a valid owner with `allowArbitraryValues` as `false`
+
+```YAML
+owner:
+  title: Owner
+  type: string
+  description: Owner of the component
+  ui:field: OwnerPicker
+  ui:options:
+    allowArbitraryValues: false
+```
+
+- Adding an arbitrary owner with `allowArbitraryValues` as `true` (default value)
+
+```YAML
+owner:
+  title: Owner
+  type: string
+  description: Owner of the component
+  ui:field: OwnerPicker
+  ui:options:
+    allowArbitraryValues: true
+```
+
+#### `catalogFilter`
+
+`catalogFilter` supports filtering options by any field(s) of an entity.
+
+- Get all entities of kind `Group`
+
+```YAML
+owner:
+  title: Owner
+  type: string
+  description: Owner of the component
+  ui:field: OwnerPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+```
+
+- Get entities of kind `Group` and spec.type `team`
+
+```YAML
+owner:
+  title: Owner
+  type: string
+  description: Owner of the component
+  ui:field: OwnerPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+        spec.type: team
+```
+
+#### `defaultNamespace`
+
+The ID of a namespace that the owner belongs to. The default value is `default`.
+
+- Listing owners in the `default` namespace (default value)
+
+```YAML
+owner:
+  title: Owner
+  type: string
+  description: Owner of the component
+  ui:field: OwnerPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+    defaultNamespace: default
+```
+
+- Listing owners in the `payment` namespace
+
+```YAML
+owner:
+  title: Owner
+  type: string
+  description: Owner of the component
+  ui:field: OwnerPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+    defaultNamespace: payment
+```
+
+### 2. `EntityPicker`
+
+:::info
+
+Only **string** data `type` is supported for the EntityPicker.
+
+:::
+
+The input props that can be specified under `ui:options` for the `EntityPicker` field extension.
+
+#### `allowArbitraryValues`
+
+Whether to allow arbitrary user input. Defaults to true.
+
+`allowArbitraryValues` provides input validation when selecting an entity as the values you enter will correspond to a valid entity.
+
+- Adding a valid entity with `allowArbitraryValues` as `false`
+
+```YAML
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityPicker
+  ui:options:
+    allowArbitraryValues: false
+```
+- Adding an arbitrary entity with `allowArbitraryValues` as `true` (default value)
+
+```YAML
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityPicker
+  ui:options:
+    allowArbitraryValues: true
+```
+
+#### `catalogFilter`
+
+`catalogFilter` supports filtering options by any field(s) of an entity.
+
+- Get all entities of kind `Group`
+
+```YAML
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+```
+
+- Get entities of kind `Group` and spec.type `team`
+
+```YAML
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+        spec.type: team
+```
+
+#### `defaultKind`
+
+The default entity kind.
+
+```yaml
+system:
+  title: System
+  type: string
+  description: System of the component
+  ui:field: EntityPicker
+  ui:options:
+    catalogFilter:
+      kind: System
+    defaultKind: System
+```
+
+#### `defaultNamespace`
+
+The ID of a namespace that the entity belongs to. The default value is `default`.
+
+- Listing all entities in the `default` namespace (default value)
+
+```YAML
+entity:
+  title: Entity
+  type: string
+  description: Entity of the component
+  ui:field: EntityPicker
+  ui:options:
+    defaultNamespace: default
+```
+
+### 3. `MultiEntityPicker`
+
+The input props that can be specified under `ui:options` for the `MultiEntityPicker` field extension.
+
+#### `allowArbitraryValues`
+
+Whether to allow arbitrary user input. Defaults to true.
+
+`allowArbitraryValues` provides input validation when selecting an entity as the values you enter will correspond to a valid entity.
+
+- Adding a valid entity with `allowArbitraryValues` as `false`
+
+```yaml
+entity:
+  title: Entities
+  type: array
+  description: Entities of the component
+  ui:field: MultiEntityPicker
+  ui:options:
+    allowArbitraryValues: false
+```
+
+- Adding an arbitrary entity with `allowArbitraryValues` as `true` (default value)
+
+```yaml
+entity:
+  title: Entities
+  type: array
+  description: Entities of the component
+  ui:field: MultiEntityPicker
+  ui:options:
+    allowArbitraryValues: true
+```
+
+#### `catalogFilter`
+
+`catalogFilter` supports filtering options by any field(s) of an entity.
+
+- Get all entities of kind `Group`
+
+```yaml
+entity:
+  title: Entities
+  type: array
+  description: Entities of the component
+  ui:field: MultiEntityPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+```
+
+- Get entities of kind `Group` and spec.type `team`
+
+```yaml
+entity:
+  title: Entities
+  type: array
+  description: Entities of the component
+  ui:field: MultiEntityPicker
+  ui:options:
+    catalogFilter:
+      - kind: Group
+        spec.type: team
+```
+
+#### `defaultKind`
+
+The default entity kind.
+
+```yaml
+system:
+  title: System
+  type: array
+  description: Systems of the component
+  ui:field: MultiEntityPicker
+  ui:options:
+    catalogFilter:
+      kind: System
+    defaultKind: System
+```
+
+#### `defaultNamespace`
+
+The ID of a namespace that the entity belongs to. The default value is `default`.
+
+- Listing all entities in the `default` namespace (default value)
+
+```yaml
+entity:
+  title: Entity
+  type: array
+  description: Entities of the component
+  ui:field: MultiEntityPicker
+  ui:options:
+    defaultNamespace: default
+```
+
+- Listing all entities in the `payment` namespace
+
+```yaml
+entity:
+  title: Entity
+  type: array
+  description: Entities of the component
+  ui:field: MultiEntityPicker
+  ui:options:
+    defaultNamespace: payment
+```
+
+### The Repository Picker
+
+In order to make working with repository providers easier, we've built a custom
+picker that can be used by overriding the `ui:field` option in the `uiSchema`
+for a `string` field. Instead of displaying a text input block it will render
+our custom component that we've built which makes it easy to select a repository
+provider, and insert a project or owner, and repository name.
+
+You can see it in the above full example which is a separate step and it looks a
+little like this:
+
+```yaml
+- title: Choose a location
+  required:
+    - repoUrl
+  properties:
+    repoUrl:
+      title: Repository Location
+      type: string
+      ui:field: RepoUrlPicker
+      ui:options:
+        allowedHosts:
+          - github.com
+```
+
+The `allowedHosts` part should be set to where you wish to enable this Workflow
+to publish to. And it can be any host that is listed in your `integrations`
+config in `app-config.yaml`.
+
+Besides specifying `allowedHosts` you can also restrict the Workflow to publish to
+repositories owned by specific users/groups/namespaces by setting the `allowedOwners`
+option. With the `allowedRepos` option you are able to narrow it down further to a
+specific set of repository names. A full example could look like this:
+
+```yaml
+- title: Choose a location
+  required:
+    - repoUrl
+  properties:
+    repoUrl:
+      title: Repository Location
+      type: string
+      ui:field: RepoUrlPicker
+      ui:options:
+        allowedHosts:
+          - github.com
+        allowedOwners:
+          - backstage
+          - someGithubUser
+        allowedRepos:
+          - backstage
+```
+
+For a list of all possible `ui:options` input props for `RepoUrlPicker`, please visit [here](https://backstage.io/docs/features/software-templates/ui-options-examples/).
+
+
+#### Using the Users `oauth` token
+
+There's a little bit of extra magic that you get out of the box when using the
+`RepoUrlPicker` as a field input. You can provide some additional options under
+`ui:options` to allow the `RepoUrlPicker` to grab an `oauth` token for the user
+for the required `repository`.
+
+This is great for when you are wanting to create a new repository, or wanting to
+perform operations on top of an existing repository.
+
+A sample Workflow that takes advantage of this is like so:
+
+<details>
+<summary>Example YAML</summary>
+
+```yaml
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: v1beta3-demo
+  title: Test Action Workflow
+  description: Workflows Demo
+spec:
+  owner: backstage/techdocs-core
+  type: service
+
+  parameters:
+    ...
+
+    - title: Choose a location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            # Here's the option you can pass to the RepoUrlPicker
+            requestUserCredentials:
+              secretsKey: USER_OAUTH_TOKEN
+              additionalScopes:
+                github:
+                  - workflow
+            allowedHosts:
+              - github.com
+    ...
+
+  steps:
+    ...
+
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        description: This is ${{ parameters.name }}
+        repoUrl: ${{ parameters.repoUrl }}
+        # here's where the secret can be used
+        token: ${{ secrets.USER_OAUTH_TOKEN }}
+
+    ...
+```
+</details>
+
+You will see from above that there is an additional `requestUserCredentials`
+object that is passed to the `RepoUrlPicker`. This object defines what the
+returned `secret` should be stored as when accessing using
+`${{ secrets.secretName }}`, in this case it is `USER_OAUTH_TOKEN`. And then you
+will see that there is an additional `input` field into the `publish:github`
+action called `token`, in which you can use the `secret` like so:
+`token: ${{ secrets.USER_OAUTH_TOKEN }}`.
+
+There's also the ability to pass additional scopes when requesting the `oauth`
+token from the user, which you can do on a per-provider basis, in case your Workflow can be published to multiple providers.
+
+Note, that you will need to configure an **connector** for your source code management (SCM) service to make this feature work.
+
+
+
 ## Pre-fill workflows with URL Params
 
 We can now automatically load IDP Workflow forms pre-filled using the `formData` URL query parameter. eg: `https://app.harness.io/ng/account/account_id/module/idp/create/templates/default/a-python-lambda?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D`
@@ -811,8 +1416,8 @@ Using automatically filled out values is handy when wanting to direct users to u
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: test-template-pipeline
-  title: Test pipeline using templates
+  name: test-workflow-pipeline
+  title: Test pipeline using Workflows
 spec:
   owner: name.owner
   type: service
@@ -845,3 +1450,8 @@ spec:
 ```
 
 </details>
+
+
+## For Use-Cases you don't find here
+
+It is suggested to use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the frontend(UI for Inputs) for use-cases that are not listed here. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the Self Service Workflows.

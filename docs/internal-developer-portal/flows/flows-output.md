@@ -7,7 +7,8 @@ sidebar_label: How to configure your Workflows Backend
 
 ## Introduction
 
-In Harness IDP the Workflows backend could be attributed to the Orchestrator used, where you set-up all the integrations, add all the secrets required for successful execution of the Workflows. These integrations are further managed through [Workflows Actions](/docs/internal-developer-portal/flows/custom-actions). These Actions are configured under the `step` in Workflows. [Steps](/docs/internal-developer-portal/flows/service-onboarding-pipelines#building-the-workflow-backend) are the core execution units within Workflows. Each step runs an action that might involve triggering a CI/CD pipeline, creating a service in a catalog, or provisioning infrastructure resources. The inputs gathered from the user are passed into these steps, and the outputs are generated based on the results of each step.
+In Harness IDP, every Workflow has a Harness Pipeline as it's backend. Once you’ve created a  [Workflows form](/docs/internal-developer-portal/flows/flows-input) to collect inputs from users, these values are passed into the Pipeline through a Workflow Action. This action triggers specific steps in the Pipeline, which can do things like launching a CI/CD process, registering a service in the catalog, or setting up infrastructure. 
+
 
 ## Harness Pipeline as Orchestrator
 
@@ -17,16 +18,14 @@ We have also built a native [IDP Stage](/docs/internal-developer-portal/flows/id
 
 This [Harness Specific Workflows Actions](/docs/internal-developer-portal/flows/custom-actions#harness-specific-custom-actions) currently supports only [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)**(Only Available with Harness CD License or Free Tier usage)** and [codebase disabled](http://localhost:3001/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages) **CI stage (Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings). **All input, except for [pipeline expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be [fixed values](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).**
 
-<details>
-<summary>Example YAML</summary>
-
 ```YAML {42-58}
+##Example YAML
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: onboard-services
   title: Create and Onboard a new react app
-  description: A template to create and onboard a new react app
+  description: A Workflow to create and onboard a new react app
   tags:
     - nextjs
     - react
@@ -80,16 +79,18 @@ spec:
       - title: Pipeline Details
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
-</details>
 
 In the above example there are two parts:
 
 1. Input from the user
 2. Execution of pipeline
 
-Let's take a look at the inputs that the template expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in properties are the unique IDs of fields (for example, `github_repo` and `project_name`). These are the pipeline variables that you need to set as runtime inputs while configuring the pipeline. This is what we want the developer to enter when creating their new application.
+Let's take a look at the inputs that the Workflow expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in properties are the unique IDs of fields (for example, `github_repo` and `project_name`). These are the pipeline variables that you need to set as runtime inputs while configuring the pipeline. This is what we want the developer to enter when creating their new application.
 
 The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. It takes the pipeline `url`,`inputset` containing all the runtime input variables that the pipeline needs and the `apikey` as input .
+
+[Steps](/docs/internal-developer-portal/flows/service-onboarding-pipelines#building-the-workflow-backend) is where you integrate the Harness Pipeline as a Backend and are the core execution units within Workflows. Each step runs an action that might involve triggering a CI/CD pipeline, creating a service in a catalog, or provisioning infrastructure resources.
+
 
 ### Manage variables in the pipeline
 
@@ -101,9 +102,9 @@ The above example uses various pipeline variables. The variables are as follows:
 - `<+pipeline.variables.github_org>`
 - `<+pipeline.variables.github_repo>`
 
-Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name should match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template.
+Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name should match with the parameter name used in the Workflow as the values would be pre-populated from the values entered as input in the below IDP Workflow.
 
-For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the above mentioned example.
+For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `inputset` in the above mentioned example.
 
 You can use the **Variables** button on the floating sidebar on the right-hand side to open the Variables page for the pipeline.
 
@@ -115,7 +116,7 @@ Variables such as project name and GitHub repository are runtime inputs. They ar
 
 ### Authenticate the request
 
-Once you have written all the inputs that the template requires, you must add the following YAML snippet under `spec.parameters.properties`.
+Once you have written all the inputs that the Workflow requires, you must add the following YAML snippet under `spec.parameters.properties`.
 
 ```yaml
 token:
@@ -174,7 +175,7 @@ Also the token input is used as a parameter under `steps` as `apikey`
 
 ### Support for Harness Account Variables
 
-In the context of Harness IDP you can use all the **[custom account variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#define-variables)** and **[account scoped built-in variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-expressions-reference)** in template YAML.
+In the context of Harness IDP you can use all the **[custom account variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#define-variables)** and **[account scoped built-in variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-expressions-reference)** in Workflow YAML.
 
 ```YAML
 ...
@@ -188,7 +189,7 @@ In the context of Harness IDP you can use all the **[custom account variables](h
 ```
 ### Fetch Output from Harness Pipeline onto IDP
 
-When using the custom action `[trigger:harness-custom-pipeline](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline)` can as well configure the output to display the pipeline [output variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#input-and-output-variables), by setting the `showOutputVariables: true` under `inputs`and adding `output` as shown in the example below:
+When using the custom action [`trigger:harness-custom-pipeline`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline) can as well configure the output to display the pipeline [output variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#input-and-output-variables), by setting the `showOutputVariables: true` under `inputs`and adding `output` as shown in the example below:
 
 <details>
 <summary>Example YAML</summary>
@@ -230,7 +231,7 @@ Only **user defined output variables** are allowed, but you can as well use the 
 
 :::
 
-There are two ways in which you can add the output variable to the template syntax. 
+There are two ways in which you can add the output variable to the Workflows syntax. 
 
 1. You can directly mention the output variable name `${{ steps.trigger.output.test2 }}`, here `test2` is the output variable name we created in the pipeline. 
 
@@ -321,7 +322,7 @@ output:
 
 
 3. **Generated Files and Artifacts**
-Developers can configure templates to generate files (e.g., README.md, YAML configuration files) or artifacts (e.g., Dockerfiles, Kubernetes manifests) during onboarding.
+Developers can configure Workflows to generate files (e.g., README.md, YAML configuration files) or artifacts (e.g., Dockerfiles, Kubernetes manifests) during onboarding.
 
 **Example**:  
 
