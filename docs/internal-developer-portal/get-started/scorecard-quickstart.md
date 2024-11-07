@@ -73,7 +73,7 @@ You can skip this step if you want to use the default checks available and can s
 3. Now we will be creating a custom check to check for Jira annotation.
 4. Add the **Name** and **Description**
 5. Now under Rules select **All Of** and the Datasource as **Catalog Info YAML**.
-6. Select the Datapoint as **Annotation exists**, with annotation value as `jira/project-key` to be mentioned on your `catalog-info.yaml`. 
+6. Select the Datapoint as **Annotation exists**,  with annotation value as `jira/project-key` to be mentioned on your `catalog-info.yaml`. 
 7. Now add the operator as `Equal to` with value as `True`.
 8. Save the changes.
 
@@ -94,7 +94,7 @@ Let's create a scorecard for catalog using the custom check we created above and
 
 ![](./static/default-check-catalog-readiness.png)
 
-11. Followed by the Custom Check **Jira Check** you created above, ignore this step if you have skipped creating a custom check. 
+11. Followed by the Custom Check **Jira Check** you created above, ignore this tep if you have skipped creating a custom check. 
 
 ![](./static/custom-check-jira.png)
 
@@ -104,7 +104,7 @@ Let's create a scorecard for catalog using the custom check we created above and
 
 ![](./static/catalog-readiness.png)
 
-14. Go to your catalog and check for your software component you'll find the scores for catalog readiness. 
+14. Go to your catalog and check for your software component you'll find the scores for catalog readinesss. 
 
 ![](./static/catalog-readiness-applied.png)
 

@@ -35,7 +35,7 @@ proxy:
 
 ### Secrets
 
-- There are some types of API key on new relic, to this use must be `User` type of key. Read more about how to find or generate this key in [New Relic's Documentation](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#rest-api-key).
+- There is some types of api key on new relic, to this use must be `User` type of key. Read more about how to find or generate this key in [New Relic's Documentation](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#rest-api-key).
 
 - **Create secret in Harness** to store API token, click on “New Secret Text” and enter values as shown below.
 
@@ -45,7 +45,7 @@ proxy:
 
 _No action required_
 
-- This plugin exports a page that you can use as a **New Relic** page on the **Sidenav** to view New Relic Application Performance Monitoring (APM) data such as:
+- This plugin exports a page that you can use as a **New Relic** page on the **sidenav** to view New Relic Application Performance Monitoring (APM) data such as:
     1. Application Name
     2. Response Time (ms)
     3. Throughput (rpm)
@@ -53,7 +53,7 @@ _No action required_
     5. Instance Count
     6. Apdex Score
   
-- Since the plugin shows all the data in a single view and is not related to any one particular service, a Sidenav is more appropriate and is added by default than a tab.
+- Since the plugin shows all the data in a single view and is not related to any one particular service, a sidenav is more appropriate and is added by default than a tab.
  
 - The following configuration is set by default in **Layout** under **Sidenav Layout** and you do not need to change anything:
 

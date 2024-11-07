@@ -14,7 +14,7 @@ description: View CI/CD executions running within your Jenkins instance.
 
 ### Application configuration YAML
 
-This plugin requires a backend configuration to make calls to your Jenkins instance with authentication. Update the following configuration with your Jenkins URL and a username:
+This plugin requires a backend configuration to make calls to your Jenkins instance with authentication. Update the following configuration with your Jenkins URL and a user name:
 
 ```yaml
 jenkins:
@@ -57,7 +57,7 @@ This plugin exports a UI tab that you can use as a new CI/CD tab for a service o
                   description: You need to add an annotation to your component if you want to enable CI/CD for it. You can read more about annotations in Backstage by clicking the button below.
 ```
 
-The `isJenkinsAvailable` condition is met when the `jenkins.io/github-folder` annotation is present in the software component's `catalog-info.yaml` definition file.
+The `isJenkinsAvailable` condition is met when the `jenkins.io/github-folder` annotation is present in the software components's `catalog-info.yaml` definition file.
 
 ![](./static/jenkins-card.png)
 

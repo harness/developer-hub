@@ -76,7 +76,7 @@ spec:
         - template_type
         - public_template_url
         - repository_type
-        - repository_description
+        - repositoty_description
         - repository_default_branch
         - direct_push_branch
         - slack_id
@@ -117,7 +117,7 @@ spec:
             - public
             - private
           default: Public
-        repository_description:
+        repositoty_description:
           type: string
           title: Add a description to your repo
           description: Auto-generated using Self-Service-Flow of Harness-IDP 
@@ -151,7 +151,7 @@ spec:
           template_type: ${{ parameters.template_type }}
           public_template_url: ${{ parameters.public_template_url }}
           repository_type: ${{ parameters.repository_type }}
-          repository_description: ${{ parameters.repository_description }}
+          repositoty_description: ${{ parameters.repository_description }}
           repository_default_branch: ${{ parameters.repository_default_branch }}
           direct_push_branch: ${{ parameters.direct_push_branch }}
           slack_id: ${{ parameters.slack_id }}
@@ -212,7 +212,7 @@ spec:
 
 ## Kind: Resource
 
-A resource describes the infrastructure a system needs to operate, like BigTable databases, Pub/Sub topics, S3 buckets or CDNs. Modelling them together with components and systems allow visualizing resource footprint, and create tooling around them.
+A resource describes the infrastructure a system needs to operate, like BigTable databases, Pub/Sub topics, S3 buckets or CDNs. Modelling them together with components and systems allows to visualize resource footprint, and create tooling around them.
 
 Descriptor files for this kind may look as follows.
 

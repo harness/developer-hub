@@ -13,7 +13,7 @@ description: A backstage plugin ported from BloomRPC which is an Electron applic
 
 ## Configuration
 
-The Plugin is Auto-Enabled now, and you don't need to set any configuration, as the plugin isn't available under Marketplace. 
+The Plugin is Auto-Enabled now and you don't need to set any configuration, as the plugin isn't available under Marketplace. 
 
 :::info
 

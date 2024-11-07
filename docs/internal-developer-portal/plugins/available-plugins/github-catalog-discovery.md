@@ -14,7 +14,7 @@ description: Automatically discover catalog-info.yaml files in your GitHub organ
 
 ### Application configuration YAML
 
-This plugin enables you to configure rules based on which the entity definition files (for example, `catalog-info.yaml`) can be auto-discovered from your GitHub organizations and repositories. Once you've configured rules, you no longer need to manually register all the catalog information YAML files. Any new files created will also be automatically registered with the catalog.
+This plugin enables you to configure rules based on which the entity definition files (for example, `catalog-info.yaml`) can be auto-discovered from your GitHub organizations and repositories. Once you've configure rules, you no longer need to manually register all the catalog information YAML files. Any new files created will also be automatically registered with the catalog.
 
 Go to the [official documentation](https://backstage.io/docs/integrations/github/discovery#configuration) to understand the YAML configuration for this plugin. Here is an example:
 

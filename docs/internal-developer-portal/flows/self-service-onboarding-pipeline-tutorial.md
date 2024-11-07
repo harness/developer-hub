@@ -6,7 +6,7 @@ sidebar_position: 6
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-In this tutorial we will create a self-service onboarding flow to create a new service using cookiecutter template and add it Harness IDP software catalog as a software component using the `catalog-info.yaml` followed by provisioning a Deployment Pipeline for the newly created service, using the [Harness Terraform Provider](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider/). 
+In this tutorial we will create a self service onboarding flow to create a new service using cookiecutter template and add it Harness IDP software catalog as a software component using the `catalog-info.yaml` followed by provisioning a Deployment Pipeline for the newly created service, using the [Harness Terraform Provider](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider/). 
 
 ## Pre-Requisite:
  
@@ -34,7 +34,7 @@ You can also create a new project for the service onboarding pipelines. Eventual
 
 :::info
 
-You need to have completed all the [prerequisites](#pre-requisite) for the below given YAML to work properly 
+You need to have completed all the [pre-requisites](#pre-requisite) for the below given YAML to work properly 
 
 Please update the `connectorRef: <the_connector_name_you_created_under_prerequisites>` for all the steps it's used, also here we are assuming the git provider to be GitHub please update the `connectorType` for `CreateRepo`, `DirectPush` and `RegisterCatalog` step in case it's other than GitHub. Also under the slack notify step for `token` add the token identifier, you have created above as part of pre-requisites. 
 
@@ -174,7 +174,7 @@ Please update the `connectorRef: <the_connector_name_you_created_under_prerequis
 
 ### Pre-requisites
 
-- Fork this [repo](https://github.com/harness-community/idp-samples/tree/main) or download the [folder](https://github.com/harness-community/idp-samples/tree/main/terraform) and add it to your own git provider, to be used as **Configuration File Repository**. Also, on `harness_resources.tf` file update the `org id` and in `harness.tf` update the `account_id`.
+- Fork this [repo](https://github.com/harness-community/idp-samples/tree/main) or download the [folder](https://github.com/harness-community/idp-samples/tree/main/terraform) and add it to your own git provider, to be used as **Configuration File Repository**. Also on `harness_resources.tf` file update the `org id` and in `harness.tf` update the `account_id`.
 
 Now, if you also use Harness CI/CD, you can follow the steps below to create a [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) with Terraform Apply step to provision the Harness deployment pipeline. 
 
@@ -240,7 +240,7 @@ We also have a Terraform Var Files, as mentioned in the below example YAML.
 
 :::info
 
-Software Templates currently support pipelines that are composed only of [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)[custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step) with codebase disabled. Additionally, all inputs, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
+Software Templates currently support pipelines that are comprised only of [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)[custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step) with codebase disabled. Additionally, all inputs, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
 
 ![](./static/pipeline-varialbles-idp-implementation.png)
 
@@ -254,7 +254,7 @@ Now that our pipeline is ready to execute when a project name and a GitHub repos
 
 ### Adding the owner
 
-By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi`, and it should only contain the user name not the complete email ID. 
+By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi` and it should only contain the user name not the complete email id. 
 
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
@@ -379,7 +379,7 @@ token:
 
 :::info
 
-The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page` in-case you have multiple pages.
+The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page`  in-case you have multiple pages.
 
 ```
 # example workflow.yaml
@@ -434,9 +434,9 @@ Now navigate to the **Workflows** page in IDP. You will see the newly created te
 
 ## Additional Information
 
-### Conditional Inputs in Workflow
+### Conditional Inputs in Templates
 
-1. One Of: Helps you create a dropdown in the Workflow, where only one of all the options available could be selected. 
+1. One Of: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
 
 ```YAML
 dependencies:
@@ -452,7 +452,7 @@ dependencies:
               - java8
               - java11
 ```
-2. All Of: Helps you create a dropdown in the Workflow, where only all the options available could be selected.
+2. All Of: Helps you create a dropdown in the template, where only all the options available could be selected.
 
 ```YAML
 type: object
@@ -507,7 +507,7 @@ anyOf:
 
 For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
 
-### Upload a File in a Workflow
+### Upload a File in a Template
 
 There are 3 types of file upload. 
 
@@ -540,7 +540,7 @@ properties:
 
 Harness Pipelines variables can only be 3 types, string, number and secrets, in case you want to add multiple strings and comma separated values you need to [join](https://mozilla.github.io/nunjucks/templating.html#join) them and send as single input parameters. 
 
-In the following Workflow if you want to pick the enum and parse the `exampleVar` as a string and use it as comma separated value in the `inputset` for pipeline. 
+In the following template I want to pick the enum and parse the `exampleVar` as a string and use it as comma separated value in the inputset for pipeline. 
 As you could see in the example below under `inputset`, `exampleVar` takes input as `${{ parameters.exampleVar.join(',') }}`. 
 
 ```YAML
@@ -573,14 +573,14 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
         apikey: ${{ parameters.token }}
 ```
 
-### Unregister/Delete Workflow
+### Unregister/Delete Template
 
 1. Navigate to the **Catalog** page, and select **Template** under Kind.
 
 ![](./static/catalog-navigation.png)
 
-2. Select the Workflow Name you want to Unregister.
-3. Now on the Workflow overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+2. Select the Template Name you want to Unregister.
+3. Now on the Template overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
 
 ![](./static/unregister-entity.png)
 
@@ -588,4 +588,4 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
 
 ![](./static/Unregister-location.png)
 
-5. This will delete the Workflow.
+5. This will delete the Template.

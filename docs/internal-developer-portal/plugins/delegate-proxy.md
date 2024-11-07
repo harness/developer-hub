@@ -27,7 +27,7 @@ Harness IDP supports the following the types pf plugins in terms of accessing th
 There are two scenarios when you need to add a Delegate Proxy when configuring an IDP plugin (including custom plugins).
 
 1. A Delegate Proxy is needed when you have a plugin which needs to connect to an internal system of yours which is not accessible directly from the Harness SaaS platform. For example, [the Kubernetes plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/kubernetes/#delegate-proxy).
-2. A Delegate Proxy is also needed if the secrets used in the Plugin's configuration are not stored in Harness built-in secret manager, but are stored on your own infrastructure (e.g. Cloud Provider's secret manager, HashiCorp Vault, etc.)
+2. A Delegate Proxy is also needed if the secrets used in the Plugin's configuration are not stored in Harness built-in secret manager, but are stored on your own infrastructure (e.g. Cloud Provider's secret manager, Hashicorp Vault, etc.)
 
 ## Architecture Diagrams
 
@@ -46,7 +46,7 @@ In this case the user is trying to display data in the plugin, that is fetched u
 
 ### Backend Proxy used to access an internal system using a Delegate Proxy
 
-In this case, the plugin connects to an internal system using both Backend Proxy and a Delegate Proxy. The request to delegate proxy goes through an interceptor which checks for the host as it is required by the delegate proxy. 
+In this case, the plugin connects to an internal system using both Backend Proxy as well as a Delegate Proxy. The request to delegate proxy goes through an interceptor which checks for the host as it is required by the delegate proxy. 
 
 <DocImage path={require('./static/del-back-proxy.png')} />
 
@@ -58,4 +58,4 @@ For the delegate interceptor to work, the plugin must make requests to the backe
 
 :::
 
-Let's understand how the Delegate Proxy works, when you configure a plugin you get option to enable plugin proxy using a delegate, and once the proxy is enabled the Harness Interceptor sends the information provided as part of proxy configuration to Delegate Proxy which in-turn accesses the internal service of present behind a private network usually in customer's infrastructure using Delegate installed on that infrastructure. In case the API endpoints used in the plugins are publicly accessible, these are fetched directly into the Plugin UI. In case you have multiple delegates the delegate information is retrieved from the DB based on the selection user has done.
+Let's understand how the Delegate Proxy works, when you configure a plugin you get option to enable plugin proxy using a delegate, and once the proxy is enabled the Harness Interceptor sends the information provided as part of proxy configuration to Delegate Proxy which in-turn accesses the internal service of present behind a private network usually in customer's infrastructure using Delegate installed on that infrastructure. Incase the API endpoints used in the plugins are publicly accessible, these are fetched directly into the Plugin UI. In case you have multiple delegates the delegate information is retrieved from the DB based on the selection user has done.

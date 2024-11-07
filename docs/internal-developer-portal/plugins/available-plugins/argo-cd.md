@@ -35,7 +35,7 @@ argocd:
 
 ### Secrets
 
-- You need to add the `ARGOCD_PASSWORD` and `ARGOCD_AUTH_TOKEN`(Optional) as a Harness Secret. Also, if both are mentioned `ARGOCD_PASSWORD` will take precedence. 
+- You need to add the `ARGOCD_PASSWORD` and `ARGOCD_AUTH_TOKEN`(Optional) as a Harness Secret. Also if both are mentioned `ARGOCD_PASSWORD` will take precedence. 
 
 - **Create secret in Harness** to store API token, click on “New Secret Text” and enter values as shown below.
 

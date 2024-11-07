@@ -171,7 +171,7 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
 
    1. Generates a basic Next.js app.
 
-   2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/cookiecutter-react-app), which essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
+   2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/cookiecutter-react-app), whichand it's essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
 
    ```sh
    # Testing path
@@ -243,11 +243,11 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
 </TabItem>
 </Tabs>
 
-You can use the **Variables** button on the floating sidebar on the right-hand side to open the Variables' page for the pipeline.
+You can use the **Variables** button on the floating sidebar on the right-hand side to open the Variables page for the pipeline.
 
 ![](./static/pipeline%20variables.png)
 
-You can create any number of pipeline variables and decide their value type. Some variables, such as a GitHub token, a username, and organization, can have a fixed value. The token used in the code above is a Harness secret whose value is decoded during pipeline execution.
+You can create any number of pipeline variables and decide their value type. Some variables, such as a GitHub token, a user name, and organization, can have a fixed value. The token used in the code above is a Harness secret whose value is decoded during pipeline execution.
 
 Variables such as project name and GitHub repository are runtime inputs. They are needed at the time of pipeline execution. When creating a new variable, you can specify its type in the UI. For more information about reference variables, go to the [reference documentation](/docs/platform/variables-and-expressions/harness-variables/) on pipeline variables.
 
@@ -404,7 +404,7 @@ The YAML definition includes fields such as cloud provider and database choice. 
 
 ### Adding the owner
 
-By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi`, and it should only contain the username not the complete email ID. 
+By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi` and it should only contain the user name not the complete email id. 
 
 ### Authenticate the request
 
@@ -420,9 +420,9 @@ token:
 
 :::info
 
-The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page` in-case you have multiple pages.
+The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page`  in-case you have multiple pages.
 
-```YAML
+```
 # example workflow.yaml
 ...
 parameters:
@@ -450,7 +450,7 @@ parameters:
 ```
 :::
 
-Also, the token input is used as a parameter under `steps` as `apikey`
+Also the token input is used as a parameter under `steps` as `apikey`
 
 ```yaml
   steps:
@@ -477,9 +477,9 @@ The template actions currently supports only [custom stage](https://developer.ha
 
 :::
 
-The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. Update the `url` and replace it with the URL of your service onboarding pipeline. Also, ensure that the `inputset` is correct, and it contains all the runtime input variables that the pipeline needs.
+The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. Update the `url` and replace it with the URL of your service onboarding pipeline. Also, ensure that the `inputset` is correct and it contains all the runtime input variables that the pipeline needs.
 
-### Conditional Inputs in Workflows
+### Conditional Inputs in Templates
 
 1. One Of: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
 
@@ -552,7 +552,7 @@ anyOf:
 
 For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
 
-### Upload a file using Workflow
+### Upload a file using template
 
 There are 3 types of file upload. 
 
@@ -619,20 +619,20 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
         apikey: ${{ parameters.token }}
 ```
 
-### Register the Workflow
+### Register the template
 
 Use the URL to the `template.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
 
-Now navigate to the **Create** page in IDP. You will see the newly created Workflow appear. Try it out!
+Now navigate to the **Create** page in IDP. You will see the newly created template appear. Try it out!
 
-### Unregister/Delete Workflow
+### Unregister/Delete Template
 
 1. Navigate to the **Catalog** page, and select **Template** under Kind.
 
 ![](./static/catalog-navigation.png)
 
-2. Select the Workflow Name you want to Unregister.
-3. Now on the Workflow overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+2. Select the Template Name you want to Unregister.
+3. Now on the Template overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
 
 ![](./static/unregister-entity.png)
 
@@ -640,4 +640,4 @@ Now navigate to the **Create** page in IDP. You will see the newly created Workf
 
 ![](./static/Unregister-location.png)
 
-5. This will delete the Workflow.
+5. This will delete the Template.

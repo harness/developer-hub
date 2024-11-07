@@ -5,7 +5,7 @@ sidebar_position: 500
 sidebar_label: Track Adoption
 ---
 
-We provide an out-of-the-box adoption dashboard to help you with tracking Harness IDP adoption inside your organization. You can find this Dashboard under [Custom Dashboards](https://developer.harness.io/docs/category/harness-dashboards). 
+We provide an out of the box adoption dashboard to help you with tracking Harness IDP adoption inside your organization. You can find this Dashboard under [Custom Dashboards](https://developer.harness.io/docs/category/harness-dashboards). 
 
 ## Navigate to Dashboards
 

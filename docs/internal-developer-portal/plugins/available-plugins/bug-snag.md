@@ -16,7 +16,7 @@ description: Monitor errors in Bugsnag for your service in Backstage.
 
 _No action required_
 
-This plugin requires a backend proxy configuration to make calls to Bugsnag with authentication. The following configuration is set by default, and you do not need to change anything:
+This plugin requires a backend proxy configuration to make calls to Bugsnag with authentication. The following configuration is set by default and you do not need to change anything:
 
 ```yaml
 proxy:

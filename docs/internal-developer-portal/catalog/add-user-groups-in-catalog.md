@@ -11,7 +11,7 @@ The Catalog in Harness IDP also supports addition of [organizational entities](h
 
 :::info
 
-The User Groups registered as entities in Catalog directly are not synced back with Harness Platform. The User Groups you add in IDP won't be available as a [Harness Platform User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups). However, the opposite is true - any user group created in the Harness Platform at the Account level scope will be available in the IDP Catalog as well.
+The User Groups registered as entities in Catalog directly are not synced abck with Harness Platform. The User Groups you add in IDP won't be available as a [Harness Platform User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups). However the opposite is true - any user group created in the Harness Platform at the Account level scope will be available in the IDP Catalog as well.
 
 :::
 
@@ -46,7 +46,7 @@ spec:
 
 In the above example, `children` represent other user-groups and `members` represent the users under this user group. 
 
-At present, we sync all your [user-groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/) added in Harness Platform to IDP and you could find them under catalog page. 
+At present we sync all your [user-groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/) added in Harness Platform to IDP and you could find them under catalog page. 
 
 ![](./static/groups.png)
 
@@ -54,7 +54,7 @@ Here's and example of how a group is displayed as a Team page in IDP.
 
 :::info
 
-In case there's a user-group already present with the same `metadata.name` while you're registering through your catalog or adding it to the platform, there would be no overwrite of the user-group if it's already present. 
+In case there's an user-group already present with the same `metadata.name` while you're registering through your catalog or adding it to the platform, there would be no overwrite of the user-group if it's already present. 
 
 :::
 
