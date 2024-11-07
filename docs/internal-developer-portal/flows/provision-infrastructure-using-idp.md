@@ -6,7 +6,7 @@ sidebar_position: 7
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic infrastructure provisioning pipeline using IaCM that takes input from software template and provisions a ec2 instance for a developer. After you create the software template, developers can choose the template on the **Workflow** page and enter details such as a the owner user-group and the Git repository. The IaCM pipeline handles change management by creating a JIRA ticket followed by the IaCM stage containing the terraform scripts. Once the infra is provisioned we do the Governance Management using the OPA. 
+This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic infrastructure provisioning pipeline using IaCM that takes input from software template and provisions an ec2 instance for a developer. After you create the software template, developers can choose the template on the **Workflow** page and enter details such as a the owner user-group and the Git repository. The IaCM pipeline handles change management by creating a JIRA ticket followed by the IaCM stage containing the terraform scripts. Once the infra is provisioned we do the Governance Management using the OPA. 
 
 Users (developers) must perform a sequence of tasks to provision the infrastructure. First, they interact with a software template. A software template is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness IaCM pipeline that provisions the new ec2 instance.
 
@@ -251,7 +251,7 @@ All inputs, except for [pipeline input as variables](https://developer.harness.i
 
 :::
 
-## Create a Software Template
+## Create a Workflow
 
 Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. 
 
@@ -371,7 +371,7 @@ This YAML code is governed by Backstage. You can change the name and description
 
 ### Authenticating the Request to the Pipeline
 
-The Software Template contains a single action which is designed to trigger the pipeline you created via an API call. Since the API call requires authentication, Harness has created a custom component to authenticate based of the logged-in user's credentials.
+The Workflow contains a single action which is designed to trigger the pipeline you created via an API call. Since the API call requires authentication, Harness has created a custom component to authenticate based of the logged-in user's credentials.
 
 The following YAML snippet under `spec.parameters.properties` automatically creates a token field without exposing it to the end user.
 
@@ -385,9 +385,9 @@ token:
 
 :::info
 
-The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page`  in-case you have multiple pages.
+The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page` in-case you have multiple pages.
 
-```
+```YAML
 # example workflow.yaml
 ...
 parameters:
@@ -430,11 +430,11 @@ That token is then used as part of `steps` as `apikey`
         apikey: ${{ parameters.token }}
 ```
 
-### Register the Template in IDP
+### Register the Workflow in IDP
 
-Use the URL to the `template.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
 
-## Use the Software Template via Self Service Workflows
+## Use the Self Service Workflows
 
-Now navigate to the **Workflows** page in IDP. You will see the newly created template appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization!
+Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization!
 

@@ -240,13 +240,13 @@ We also have a Terraform Var Files, as mentioned in the below example YAML.
 
 :::info
 
-Software Templates currently support pipelines that are comprised only of [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)[custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step) with codebase disabled. Additionally, all inputs, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
+Workflows currently support pipelines that are composed only of [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)[custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step) with codebase disabled. Additionally, all inputs, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
 
 ![](./static/pipeline-varialbles-idp-implementation.png)
 
 :::
 
-## Create a Software Template
+## Create a Workflow
 
 Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.
 
@@ -254,7 +254,7 @@ Now that our pipeline is ready to execute when a project name and a GitHub repos
 
 ### Adding the owner
 
-By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi` and it should only contain the user name not the complete email id. 
+By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi` and it should only contain the username not the complete email ID. 
 
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
@@ -351,7 +351,7 @@ Replace the `YOUR PIPELINE URL HERE` with the pipeline URL that you created.
 
 ![](./static/copy-pipeline-url.png)
 
-This YAML code is governed by Backstage. You can change the name and description of the software template. The template has the following parts:
+This YAML code is governed by Backstage. You can change the name and description of the Workflow. The template has the following parts:
 
 1. Input from the user
 2. Execution of pipeline
@@ -365,7 +365,7 @@ The YAML definition includes fields such as cloud provider and database choice. 
 
 ### Authenticating the Request to the Pipeline
 
-The Software Template contains a single action which is designed to trigger the pipeline you created via an API call. Since the API call requires authentication, Harness has created a custom component to authenticate based of the logged-in user's credentials.
+The Workflow contains a single action which is designed to trigger the pipeline you created via an API call. Since the API call requires authentication, Harness has created a custom component to authenticate based of the logged-in user's credentials.
 
 The following YAML snippet under `spec.parameters.properties` automatically creates a token field without exposing it to the end user.
 
@@ -379,9 +379,9 @@ token:
 
 :::info
 
-The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page`  in-case you have multiple pages.
+The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page` in-case you have multiple pages.
 
-```
+```YAML
 # example workflow.yaml
 ...
 parameters:
@@ -424,19 +424,19 @@ That token is then used as part of `steps` as `apikey`
         apikey: ${{ parameters.token }}
 ```
 
-### Register the Template in IDP
+### Register the Workflow in IDP
 
-Use the URL to the `template.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
 
-## Use the Software Template via Self Service Workflows
+## Use the Self Service Workflows
 
-Now navigate to the **Workflows** page in IDP. You will see the newly created template appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization!
+Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization!
 
 ## Additional Information
 
-### Conditional Inputs in Templates
+### Conditional Inputs in Workflows
 
-1. One Of: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
+1. One Of: Helps you create a dropdown in the Workflow where only one of all the options available could be selected. 
 
 ```YAML
 dependencies:
@@ -452,7 +452,7 @@ dependencies:
               - java8
               - java11
 ```
-2. All Of: Helps you create a dropdown in the template, where only all the options available could be selected.
+2. All Of: Helps you create a dropdown in the Workflow, where only all the options available could be selected.
 
 ```YAML
 type: object
@@ -507,7 +507,7 @@ anyOf:
 
 For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
 
-### Upload a File in a Template
+### Upload a File in a Workflow
 
 There are 3 types of file upload. 
 
@@ -573,14 +573,14 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
         apikey: ${{ parameters.token }}
 ```
 
-### Unregister/Delete Template
+### Unregister/Delete Workflow
 
 1. Navigate to the **Catalog** page, and select **Template** under Kind.
 
 ![](./static/catalog-navigation.png)
 
-2. Select the Template Name you want to Unregister.
-3. Now on the Template overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+2. Select the Workflow Name you want to Unregister.
+3. Now on the Workflow overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
 
 ![](./static/unregister-entity.png)
 
@@ -588,4 +588,4 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
 
 ![](./static/Unregister-location.png)
 
-5. This will delete the Template.
+5. This will delete the Workflow.

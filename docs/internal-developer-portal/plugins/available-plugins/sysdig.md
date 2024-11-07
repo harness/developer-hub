@@ -33,7 +33,7 @@ description: Generate security reports using Sysdig Secure
 
 ## Layout
 
-This plugin exports a tab that you can show under the **Sysdig** tab for  a service. The following configuration is set by default in **Layout** under **Admin** for **Catalog Entities -> Service** and you do not need to change anything:
+This plugin exports a tab that you can show under the **Sysdig** tab for a service. The following configuration is set by default in **Layout** under **Admin** for **Catalog Entities -> Service** and you do not need to change anything:
 
 ```YAML
 - name: Sysdig

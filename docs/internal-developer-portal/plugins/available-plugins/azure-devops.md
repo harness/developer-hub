@@ -14,7 +14,7 @@ description: Easily view your Azure Pipelines within the Software Catalog.
 
 ### Application configuration YAML
 
-This plugin requires a backend proxy configuration to make calls to Azure Pipelines with authentication. The following configuration is set by default and you need to add the `host`, `token` and `organization`
+This plugin requires a backend proxy configuration to make calls to Azure Pipelines with authentication. The following configuration is set by default, and you need to add the `host`, `token` and `organization`
 
 ```yaml
 azureDevOps:
@@ -73,7 +73,7 @@ This plugin exports an overview page card, UI tab that you can use as a new CI/C
                 component: EntityAzureGitTagsContent
 ```
 
-The `isAzureDevOpsAvailable` condition is met when the `dev.azure.com/project-repo` annotation is present in the software components's `catalog-info.yaml` definition file.
+The `isAzureDevOpsAvailable` condition is met when the `dev.azure.com/project-repo` annotation is present in the software components' `catalog-info.yaml` definition file.
 
 ![](./static/azure-builds.png)
 ![](./static/azure-gittags.png)

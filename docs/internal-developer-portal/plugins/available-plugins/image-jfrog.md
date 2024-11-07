@@ -18,7 +18,7 @@ description: View container image details from JFrog Artifactory in Harness IDP.
 
 This plugin requires a backend proxy configuration to make calls to JFrog with authentication.
 
-- Under the **Plugins** tab in **Admin**, go to `app-config.yaml` and **Edit YAML** to configure your jfrog endpoint in the **target** field in the format as shown below.
+- Under the **Plugins** tab in **Admin**, go to `app-config.yaml` and **Edit YAML** to configure your JFrog endpoint in the **target** field in the format as shown below.
 
 ```YAML
 # app-config.yaml

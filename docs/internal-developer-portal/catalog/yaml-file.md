@@ -168,7 +168,7 @@ spec:
 
 ## Kind: API
 
-We have detailed descriptions here on the [how to add api docs](https://developer.harness.io/docs/internal-developer-portal/get-started/add-api-docs#example-for-different-use-cases).
+We have detailed descriptions here on the [how to add API docs](https://developer.harness.io/docs/internal-developer-portal/get-started/add-api-docs#example-for-different-use-cases).
 
 ## Kind: Group
 
@@ -212,7 +212,7 @@ spec:
 
 ## Kind: Resource
 
-A resource describes the infrastructure a system needs to operate, like BigTable databases, Pub/Sub topics, S3 buckets or CDNs. Modelling them together with components and systems allows to visualize resource footprint, and create tooling around them.
+A resource describes the infrastructure a system needs to operate, like BigTable databases, Pub/Sub topics, S3 buckets or CDNs. Modelling them together with components and systems allows visualizing resource footprint, and create tooling around them.
 
 Descriptor files for this kind may look as follows.
 

@@ -54,7 +54,7 @@ This plugin exports a card on the Overview Page and a UI tab that you can use as
     - component: EntityCcmContent
 ```
 
-Also you could add a conditional like `isHarnessCcmAvailable` which is met when `harness.io/perspective-url` annotation is present in the software components's `catalog-info.yaml` definition file.
+Also, you could add a conditional like `isHarnessCcmAvailable` which is met when `harness.io/perspective-url` annotation is present in the software component's `catalog-info.yaml` definition file.
 
 ```YAML
 - name: ccm

@@ -5,7 +5,7 @@ sidebar_position: 100
 sidebar_label: Dynamic Workflow picker based on API response
 ---
 
-It is quiet common to create a UI field in [IDP Workflow](http://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#specparameters---formstep--formstep) forms which shows a static list options to the user. For example -
+It is quite common to create a UI field in [IDP Workflow](http://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#specparameters---formstep--formstep) forms which shows a static list options to the user. For example -
 
 ```yaml
 properties:
@@ -56,9 +56,9 @@ Inside the plugin, you get three options (like any other [IDP plugin configurati
 
 1. Declare a Backend Proxy endpoint and headers
 2. Configure necessary secrets
-3. Configure Delegate Proxy (in case the API is not publicly accessible or the secret is on your infrastructure)
+3. Configure Delegate Proxy (in case the API is not publicly accessible, or the secret is on your infrastructure)
 
-In order to setup a proxy to connect with GitHub APIs, you can add the following in the configuration YAML
+In order to set up a proxy to connect with GitHub APIs, you can add the following in the configuration YAML
 
 ```yaml
 proxy:
@@ -77,7 +77,7 @@ The `target` should point to the API base URL of your 3rd party provider e.g. `a
 
 The `pathRewrite` is field used by the system to ensure the API requests are correctly rerouted. It needs to be of the format `/api/proxy/<endpoint_name>/?: /` as shown above.
 
-In the `headers` you can add an Authorization header. Ensure you use a unique token name here as variables are `GITHUB_TOKEN` or `BITBUCKET_TOKEN` are system defined. The token name does not matter, as long as a secret is setup for the corresponding variable.
+In the `headers` you can add an Authorization header. Ensure you use a unique token name here as variables are `GITHUB_TOKEN` or `BITBUCKET_TOKEN` are system defined. The token name does not matter, as long as a secret is set up for the corresponding variable.
 
 ![](./static/example-proxy-backend-config.png)
 
@@ -161,7 +161,7 @@ You can find the detailed docs on the [project's README](https://github.com/Road
 
 ### Parsing API Response using filters
 
-Let's look at some of the different types of API responses and how to create a picker based on that using the `arraySelector`, `valueSelector` and `labelSelector` filters.
+Let's look at some different types of API responses and how to create a picker based on that using the `arraySelector`, `valueSelector` and `labelSelector` filters.
 
 #### Case 1: The response is an array
 
@@ -169,7 +169,7 @@ Let's look at some of the different types of API responses and how to create a p
 ["item1", "item2"]
 ```
 
-This is the most straightforward case and we do not need any of the additional filters here.
+This is the most straightforward case, and we do not need any of the additional filters here.
 
 ```yaml
 properties:
@@ -264,4 +264,4 @@ properties:
 
 ### Advanced processing the API response
 
-If the filters here are not sufficient for your use case and you require additional data processing of the response, then we recommend you setting up a Lambda function in your cloud provider or a lightweight backend to do this job. You can use your Backend Proxy and Delegate Proxy to communicate to your custom Lambda/Backend.
+If the filters here are not sufficient for your use case, and you require additional data processing of the response, then we recommend you setting up a Lambda function in your cloud provider or a lightweight backend to do this job. You can use your Backend Proxy and Delegate Proxy to communicate to your custom Lambda/Backend.
