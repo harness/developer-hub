@@ -2,6 +2,8 @@
 title: Create a Service Onboarding Pipeline along with the Deployment Pipeline 
 description: Create a basic service onboarding pipeline using Harness IDP, along with provisioning a deployment pipeline for the newly created service
 sidebar_position: 7
+redirect_from:
+  - /docs/internal-developer-portal/flows/create-new-service-along-with-pipeline
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
