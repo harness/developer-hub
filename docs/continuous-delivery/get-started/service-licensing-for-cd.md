@@ -194,9 +194,9 @@ Absolutely. Licensing V2 is usage-based, so you will only be billed for the comp
 
 All security and compliance features remain fully supported and will not be affected by the licensing changes. Your access to these critical features will continue, ensuring your deployments remain secure and compliant with industry standards.
 
-### Q18: Will there be changes to how users are managed and billed in Licensing V2?
+### Will there be changes to how users are managed and billed in Licensing V2?
 
-**A:** Under Licensing V2, we have shifted from user-based CD service billing. While we no longer bill based on the number of users, user management functionalities remain unchanged. You can continue to add and manage users within your organization without it affecting your CD licensing costs.
+Under Licensing V2, we have shifted from user-based CD service billing. While we no longer bill based on the number of users, user management functionalities remain unchanged. You can continue to add and manage users within your organization without it affecting your CD licensing costs.
 
 ### How can I provide feedback about Licensing V2?
 
