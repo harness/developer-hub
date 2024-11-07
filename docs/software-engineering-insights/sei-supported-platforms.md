@@ -9,20 +9,41 @@ sidebar_position: 1
 
 SEI integrates with a number of third-party providers to provide a centralized visibility on engineering work.
 
-## Integrations for SEI
+## Harness SEI supported platforms and technologies
 
-SEI supports a number of plugins to integrate your dashboard with third-party providers. Please find the growing list of [supported third-party integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview)
+Harness SEI supports a variety of platforms, repos, tools, and related technologies. The following sections list entities or providers with first-class support in Harness SEI. Please find the growing list of [supported third-party integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview)
 
-The following table lists SEI support for platforms, repos, registries, and related technologies.
+### Issue Management Platform
 
-| **Type of integration** | **SCM** | **CI/CD** | **Security** | **Issue Tracking and Management** | **Communication and collaboration** | **Others** |
-| -- | -- | -- | -- | -- | -- | -- |
-| Automated | <ul><li>Bitbucket</li><li>GitHub</li><li>Gitlab</li><li>Azure Repos</li><li>Harness Code Repository</li></ul> | <ul><li>CircleCI</li><li>Drone</li><li>Jenkins</li><li>Harness</li><li>Azure Pipelines</li></ul> | <ul><li>Sonarqube</li></ul> | <ul><li>Jira</li><li>Azure Boards</li><li>Rally Software (BETA)</li></ul> | <ul><li>Slack</li></ul> | <ul><li>TestRail</li></ul> |
-| Other | <ul><li>Perforce Helix Server</li><li> Gerrit</li></ul> | <ul><li>Github Actions</li></ul> | <ul><li>Checkmarx</li><li>Snyk</li><li>Tenable</li><li>Coverity</li></ul> |  | <ul><li>Microsoft Teams</li></ul> | <ul><li>Pagerduty</li><li>ServiceNow</li><li>PostgreSQL</li><li>Salesforce</li><li>Splunk</li><li>Zendesk</li></ul> |
+* [Azure Boards](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops)
+* [Jira](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration)
+
+### Source Code Management (SCM)
+
+* [Azure Repos](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops)
+* [Bitbucket](/docs/software-engineering-insights/sei-integrations/bitbucket/sei-bitbucket-cloud)
+* [GitHub](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration)
+* [GitLab Cloud](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab)
+* [GitLab Enterprise](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab)
+
+### CI/CD
+
+* [Jenkins](/docs/software-engineering-insights/sei-integrations/jenkins/jenkins-plugin)
+* [Harness Continuous Delivery & GitOps and Continuous Integration](/docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd)
+* [Azure Pipelines](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops)
+* [GitHub Actions](/docs/software-engineering-insights/sei-integrations/github%20actions/sei-github-actions)
+
+### BETA
+
+* [SonarQube](/docs/software-engineering-insights/sei-integrations/beta-integrations/sonarqube/sei-integration-sonarqube)
+* [PagerDuty](/docs/software-engineering-insights/sei-integrations/beta-integrations/sei-integration-pagerduty)
+* [ServiceNow](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow)
+
+Use the [Ingestion Satellites](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview) service within your local network or VPC to connect your artifacts, issue management, collaboration tools, source code managers, and other providers to Harness SEI.
 
 :::info Note:
 
-The integrations categorized under the **Others** label are now available with basic support, and we are actively working towards expanding their capabilities in the near future.
+The integrations categorized under the **BETA** label are now available with basic support, and we are actively working towards expanding their capabilities in the near future.
 
 :::
 
@@ -62,14 +83,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enable this feature if you want to use the new user experience for Collection Navigation under the Insights</td>
     </tr>
     <tr>
-        <td>RALLY</td>
-        <td>Enables access to the SEI Rally integration used for integrating SEI with the Rally Software</td>
-    </tr>
-    <tr>
-        <td>SEI_THEME_BASED_DORA</td>
-        <td>Enables you to configure the DORA profile to establish a theme-based correlation between Pull Requests and Deployments. </td>
-    </tr>
-    <tr>
         <td>SEI_MTTR_PAGERDUTY_ENABLED</td>
         <td>Enables you to measure the incident recovery time using the DORA MTTR report for the PagerDuty integration.</td>
     </tr>
@@ -92,10 +105,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>SEI_BA_INCLUDE_UNRESOLVED_ISSUES</td>
         <td>Allows you to use the [Business Alignment report](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports) to calculate alignment metrics for tickets that are in the **In Progress status category** and those that have been resolved (i.e., Done status category) within a specific duration of time.</td>
-    </tr>
-    <tr>
-        <td>SEI_GITLAB_NEW_ONBOARDING_FLOW_ENABLED</td>
-        <td>Access the improved experience for configuring the [GitLab integration](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab).</td>
     </tr>
 </table>
 
