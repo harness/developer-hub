@@ -52,6 +52,12 @@ Before you configure the **SEI AzureDevOps integration**, you must generate a **
 </TabItem>
 </Tabs>
 
+:::info
+If you have enabled an allow list in your Azure DevOps account, certain Harness IP addresses must be added to it in order to allow communication between the Harness Platform and Azure DevOps. If the necessary IPs are not whitelisted, the integration may fail to authenticate or sync data properly.
+
+To ensure your integration can work correctly, please refer to the list of [Harness Platform IPs](/docs/platform/references/allowlist-harness-domains-and-ips) that may need to be whitelisted in your firewall.
+:::
+
 ### Add the integration
 
 <Tabs>
@@ -60,37 +66,54 @@ Before you configure the **SEI AzureDevOps integration**, you must generate a **
 1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integration**, locate the **Azure DevOps Services** integration, and select **Install**.
-4. Configure and save the integration.
 
-   * If redirected, sign in with your Azure DevOps credentials to authenticate via OAuth.
-   * Enter a **Name** for the integration.
-   * The **Description** and **Tags** are optional.
-   * Specify the Azure DevOps Organizations to associate with the integration. If left unspecified, all accessible organizations will be associated.
+![](../static/sei-ado.png)
+
+4. Select **Using OAuth** as the type of authentication to configure the integration. You'll be redirected to the Azure Devops platform, sign in with your Azure DevOps credentials to authenticate via OAuth.
+
+![](../static/using-ado-oauth.png)
+
+5. Enter a **Name** for the integration.
+6. The **Description** and **Tags** are optional.
+7. Specify the **Azure DevOps Organizations** to associate with the integration. If left unspecified, all accessible organizations will be associated.
 
 </TabItem>
    <TabItem value = "PAT" label = "Personal Access Token">
 
 1. Select **Integrations** under **Data Settings**.
 2. Select **Available Integration**, locate the **Azure DevOps Services integration**, and select **Install**.
+
+![](../static/sei-ado.png)
+
 3. Choose the authentication type as **Using Personal Access Token (PAT)** and click on **Next** in the instructions page.
-4. Configure and **save** the integration.
+
+![](../static/sei-ado-pat.png)
+
+4. Configure and **Save** the integration.
    * Enter a **Name** for the integration.
    * The **Description** and **Tags** are optional.
    * Add the **Personal Access Token** you previously generated in Azure DevOps.
+
+![](../static/ado-add-pat.png)
+
    * Select the specific Azure DevOps services you want to integrate:
      * Azure Boards
      * Azure Pipelines
      * Azure Repos
+
+![](../static/ado-services.png)
+
    * Click on **Validate Connection** to validate the connection, and once successful, you'll have the integration set up under the **Your Integrations** tab.
 
 :::info
-Note: Different integrations will be automatically created for various Azure DevOps services. For example:
+Note: Different integrations will be automatically created for all the Azure DevOps services. For example:
 
 * Azure integration - Boards for Azure Boards
 * Azure integration - Pipelines for Azure DevOps Pipelines
 * Azure integration - Repos for Azure DevOps Repos
 
 :::
+
 </TabItem>
 </Tabs>
 
@@ -104,8 +127,8 @@ Note: Different integrations will be automatically created for various Azure Dev
    * CICD Job Duration Trend Report
    * CICD Pipeline Jobs Duration Report
    * CICD Pipeline Jobs Duration Trend Report
-4. The integration does not accurately reflect the pipeline stage status.
-5. Lead time widgets are not supported on this integration
+4. The integration does not accurately reflect the pipeline stage status across the widgets.
+5. Lead time widgets are not fully supported for this integration
 
 :::note
 

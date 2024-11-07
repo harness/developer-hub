@@ -9,7 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::info
-The SEI ServiceNow integration is currently in BETA and is accessible behind the Feature Flag `<SEI_SERVICENOW>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+The SEI ServiceNow integration is currently in BETA and is accessible behind the Feature Flag `<SEI_SERVICENOW>`. Please contact [Harness Support](/docs/software-engineering-insights/sei-support) to enable this feature.
 :::
 
 ServiceNow is used to set up systems that define, manage, automate and structure IT services for companies. You can use the SEI ServiceNow integration to integrate SEI with ServiceNow Cloud and ServiceNow On-Prem accounts.
@@ -19,6 +19,16 @@ This integration allows you to track, manage, and analyze incidents, and change 
 <DocVideo src="https://www.youtube.com/embed/wFWHAAIj3_o?si=mL8xNInFtNp4GwPG" />
 
 ## Requirements
+
+To connect ServiceNow with Harness SEI, you can choose between two authentication methods:
+
+* **Using Username and Password:** Use the service account credentials for direct authentication.
+* **Using OAuth:** Use token-based authentication with OAuth credentials.
+
+Ensure the service account has the required credentials and permissions to successfully configure the integration.
+
+<Tabs>
+<TabItem value="Using OAuth" default>
 
 ### OAuth Credentials
 
@@ -31,7 +41,7 @@ These credentials are essential for secure, token-based authentication between y
 
 ### Required permissions
 
-When configuring the ServiceNow integration, ensure the user has the following roles:
+When configuring the ServiceNow integration, ensure the service account has the following roles:
 
 * **itil:** Provides access to IT Service Management (ITSM) functionalities.
 * **oauth_admin:** Required only if using the OAuth flow for creating integrations. This role allows management of OAuth applications.
@@ -42,6 +52,31 @@ To fetch data for all users within the ServiceNow instance, the following roles 
 
 * **user:** Basic role assigned to all ServiceNow users.
 * **user_admin:** Provides administrative capabilities over user accounts.
+
+</TabItem>
+
+<TabItem value="Using Username & Password">
+
+When configuring the ServiceNow integration, ensure the service account has the following roles:
+
+* **itil:** Provides access to IT Service Management (ITSM) functionalities.
+* **personalize_choices:** Enables customization of choice lists.
+* **personalize_dictionary:** Allows modification of dictionary entries.
+
+To fetch data for all users within the ServiceNow instance, the following roles are required:
+
+* **user:** Basic role assigned to all ServiceNow users.
+* **user_admin:** Provides administrative capabilities over user accounts.
+
+</TabItem>
+</Tabs>
+
+
+:::info
+If you have enabled an allow list in your ServiceNow account, certain Harness IP addresses must be added to it in order to allow communication between the Harness Platform and ServiceNow. If the necessary IPs are not whitelisted, the integration may fail to authenticate or sync data properly.
+
+To ensure your integration can work correctly, please refer to the list of [Harness Platform IPs](/docs/platform/references/allowlist-harness-domains-and-ips) that may need to be whitelisted in your firewall.
+:::
 
 ### Create a Client ID and Client Secret in ServiceNow
 
@@ -100,11 +135,9 @@ Please note that the Client ID and Client Secret are sensitive credentials and s
 
 ### Step 2: Choose the Type of ServiceNow setup
 
-* Choose your ServiceNow type:
-  * ServiceNow Cloud
-  * ServiceNow On-Prem
+Select the type of ServiceNow setup as ServiceNow Cloud.
 
-In this case select the type of ServiceNow setup as ServiceNow Cloud
+![](../../static/snow-types.png)
 
 ### Step 3: Configure the integration
 
@@ -113,24 +146,43 @@ The ServiceNow integration can set up the authentication either by using Usernam
 <Tabs>
   <TabItem value="Username" label="Username/Password" default>
 
-* Add the **Name** for the integration, which is mandatory. You can add **Description** and **Tags** (Optional).
-* Add the **URL** of your **ServiceNow application instance**, for example, "`https://xyz.service-now.com`". Make sure it's a valid URL.
-* Choose the authentication mode as Use ServiceNow Username/Password. Add the **Username** and **Password**, for your **ServiceNow account**.
+* Choose the authentication mode as Using Username and Password.
+
+![](../../static/snow-auth-types.png)
+
+* Enter a name for this ServiceNow integration. You can add **Description** and **Tags** (Optional).
+* Enter the base URL you use to access ServiceNow. For example: `https://example.service-now.com`.
+* Add the **Username** and **Password**, of the **ServiceNow Service Account**.
+* Set the timezone to UTC by default. If you use a different timezone, specify it here.
 * You can click on **Advanced Configurations** and choose the **Fields** you wish to exclude from ingestion. You might exclude fields containing sensitive information such as **Summary**, **Description**, and **Comments**.
+
+![](../../static/snow-auth.png)
+
 * Click on the **Next: Validate Connection**.
+  
   It will establish a connection with the provided URL, perform authentication, and then run the preflight checks. If everything is successful, you will see a message confirming a successful connection.
 * Click on the **Done** button and the integration will be successfully saved.
+
+![](../../static/snow-success.png)
 
 </TabItem>
   <TabItem value="Oauth" label="OAuth">
 
-* Add the **Name** for the integration, which is mandatory. You can add **Description** and **Tags** (Optional).
-* Add the **URL** of your **ServiceNow application instance**, for example, "`https://xyz.service-now.com`". Make sure it's a valid URL.
+![](../../static/snow-auth-types.png)
+
 * Choose the **Authentication Method** as **Use ServiceNow OAuth**
+* Enter a name for this ServiceNow integration. You can add **Description** and **Tags** (Optional).
+* Enter the base URL you use to access ServiceNow. For example: `https://example.service-now.com`.
 * Add the **ServiceNow Client ID** and **Client Secret** that you generated after creating the application registry in ServiceNow
+* Set the timezone to UTC by default. If you use a different timezone, specify it here.
 * Click on the **Connect ServiceNow** button. This will redirect you to the ServiceNow application.
-* Allow the application, and it will redirect you back to SEI
-* Click on **Validate Connection** to run the pre-flight checks and on successfull authentication the integration will be saved in your account.
+* Allow the application and grant the required permissions, and it will redirect you back to SEI
+* Click on the **Next: Validate Connection**.
+  
+  It will establish a connection with the provided URL, perform authentication, and then run the preflight checks. If everything is successful, you will see a message confirming a successful connection.
+* Click on the **Done** button and the integration will be successfully saved.
+
+![](../../static/snow-success.png)
 
 </TabItem>
 </Tabs>
@@ -145,7 +197,9 @@ The ServiceNow integration can set up the authentication either by using Usernam
 
 ### Step 2: Choose the Type of ServiceNow setup
 
-Select the type of ServiceNow setup as ServiceNow On-Prem
+Select the type of ServiceNow setup as ServiceNow On-Prem.
+
+![](../../static/snow-types.png)
 
 ### Step 3: Configure the integration
 
@@ -154,6 +208,10 @@ The ServiceNow on-prem integration can set up the authentication only using the 
 * Add the **Name** for the integration, which is mandatory. You can add **Description** and **Tags** (Optional).
 * Add the **URL** of your **ServiceNow application instance**, for example, "`https://xyz.service-now.com`". Make sure it's a valid URL.
 * Add the **Username** and **Password** for your **ServiceNow account**.
+
+![](../../static/snow-auth.png)
+
+* Set the timezone to UTC by default. If you use a different timezone, specify it here.
 * Click on **Download YAML File** to download the `satellite.yml` file.
 * Click on the **Done** button and the integration will be successfully saved. Once you have downloaded the `satellite.yml` file update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
@@ -172,7 +230,7 @@ integrations:
     api_key: <SERVICENOW_PASSWORD>
 ```
 
-## Recommendations
+## ServiceNow Use Cases
 
 The ServiceNow integration primarily is used for measuring the incident recovery time using the DORA Mean Time to Restore (MTTR) widget.
 

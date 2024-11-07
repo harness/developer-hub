@@ -25,6 +25,12 @@ If you can't use OAuth, you must create a GitLab personal access token to config
 2. Select the `api` scope with complete read/write API access.
 3. Copy the token somewhere that you can retrieve it when you configure the integration.
 
+:::info
+If you have enabled an allow list in your GitLab account, certain Harness IP addresses must be added to it in order to allow communication between the Harness Platform and GitLab. If the necessary IPs are not whitelisted, the integration may fail to authenticate or sync data properly.
+
+To ensure your integration can work correctly, please refer to the list of [Harness Platform IPs](/docs/platform/references/allowlist-harness-domains-and-ips) that may need to be whitelisted in your firewall.
+:::
+
 ### Add the integration
 
 Follow the steps below to configure the integration:

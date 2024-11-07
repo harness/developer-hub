@@ -9,6 +9,29 @@ sidebar_label: Connect with Jira Data Center
 Jira Data Center is the self-managed, enterprise edition of Jira.
 This topic explains how you can integrate Harness Software Engineering Insights with Jira Data Center.
 
+### Authenticate with Jira
+
+Before you configure the SEI Jira integration, you must generate an Atlassian API token.
+
+:::tip Use a service account
+
+The user creating the token must have read access to all projects that you want SEI to track, and the user must be able to search issues within the SEI-relevant projects.
+
+Due to the scope of visibility required, consider using a managed service account, rather than a personal user account, to create the token.
+
+:::
+
+1. Create an Atlassian API token. For instructions, go to the Atlassian documentation on [Managing API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
+2. Make sure to copy the token somewhere that you can retrieve it when you configure the integration.
+
+![](../static/jira-api-token.png)
+
+:::info
+If you have enabled an allow list in your Atlassian account, certain Harness IP addresses must be added to it in order to allow communication between the Harness Platform and Atlassian. If the necessary IPs are not whitelisted, the integration may fail to authenticate or sync data properly.
+
+To ensure your integration can work correctly, please refer to the list of [Harness Platform IPs](/docs/platform/references/allowlist-harness-domains-and-ips) that may need to be whitelisted in your firewall.
+:::
+
 ### Add the Jira integration
 
 To integrate SEI with Jira Data Center, choose your Jira type as Jira Data Center.

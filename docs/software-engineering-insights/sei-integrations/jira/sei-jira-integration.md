@@ -28,6 +28,12 @@ Due to the scope of visibility required, consider using a managed service accoun
 
 ![](../static/jira-api-token.png)
 
+:::info
+If you have enabled an allow list in your Atlassian account, certain Harness IP addresses must be added to it in order to allow communication between the Harness Platform and Atlassian. If the necessary IPs are not whitelisted, the integration may fail to authenticate or sync data properly.
+
+To ensure your integration can work correctly, please refer to the list of [Harness Platform IPs](/docs/platform/references/allowlist-harness-domains-and-ips) that may need to be whitelisted in your firewall.
+:::
+
 ### Add the Jira integration
 
 To integrate SEI with Jira, you must choose your Jira type:
