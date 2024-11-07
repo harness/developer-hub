@@ -34,30 +34,30 @@ Harness SEI supports a variety of platforms, repos, tools, and related technolog
 
 ### Issue Management Platform
 
-* [Azure Boards](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
-* [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration)
+* [Azure Boards](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops)
+* [Jira](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration)
 
 ### Source Code Management (SCM)
 
-* [Azure Repos](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
-* [Bitbucket](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket)
-* [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)
-* [GitLab Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab)
-* [GitLab Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab)
+* [Azure Repos](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops)
+* [Bitbucket](/docs/software-engineering-insights/sei-integrations/bitbucket/sei-bitbucket-cloud)
+* [GitHub](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration)
+* [GitLab Cloud](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab)
+* [GitLab Enterprise](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab)
 
 ### CI/CD
 
-* [Jenkins](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/jenkins-plugin)
-* [Harness Continuous Delivery & GitOps and Continuous Integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng)
-* [Azure Pipelines](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
-* [GitHub Actions](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions)
+* [Jenkins](/docs/software-engineering-insights/sei-integrations/jenkins/jenkins-plugin)
+* [Harness Continuous Delivery & GitOps and Continuous Integration](/docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd)
+* [Azure Pipelines](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops)
+* [GitHub Actions](/docs/software-engineering-insights/sei-integrations/github%20actions/sei-github-actions)
 
 ### BETA
 
-* [SonarQube](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-sonarqube)
+* [SonarQube](/docs/software-engineering-insights/sei-integrations/beta-integrations/sonarqube/sei-integration-sonarqube)
 * [Slack](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-slack)
-* [PagerDuty](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-pagerduty)
-* [ServiceNow](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow)
+* [PagerDuty](/docs/software-engineering-insights/sei-integrations/beta-integrations/sei-integration-pagerduty)
+* [ServiceNow](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow)
 
 Use the [Ingestion Satellites](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview) service within your local network or VPC to connect your artifacts, issue management, collaboration tools, source code managers, and other providers to Harness SEI.
 

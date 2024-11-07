@@ -24,7 +24,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 * **Feature flag:** SEI_GITLAB_NEW_ONBOARDING_FLOW_ENABLED
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Access the improved experience for configuring the [GitLab integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab).
+Access the improved experience for configuring the [GitLab integration](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab).
 
 ### Azure DevOps Integration: New Onboarding
 
@@ -35,7 +35,7 @@ Access the improved experience for configuring the [GitLab integration](/docs/so
 
 Access the new PAT-based authentication option for Azure DevOps integration.
 
-[Go To Documentation](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
+[Go To Documentation](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops)
 
 ### Business Alignment: Active Work Measurement
 
@@ -68,7 +68,7 @@ Enable this flag to access the new [Business Alignment profile](/docs/software-e
 
 Integrate SEI with the ServiceNow Platform.
 
-[Go To Documentation](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow)
+[Go To Documentation](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow)
 
 ### Expanded Sprint Metrics
 

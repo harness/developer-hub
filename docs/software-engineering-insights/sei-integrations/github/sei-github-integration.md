@@ -4,7 +4,7 @@ description: Integrate SEI with GitHub Cloud
 sidebar_position: 05
 sidebar_label: Connect with GitHub Cloud
 redirect_from:
-  - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration
+  - /docs/software-engineering-insights/sei-integrations/github/sei-github-integration
   - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github
 ---
 

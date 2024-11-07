@@ -153,10 +153,10 @@ SEI can connect to one or more CI/CD integrations. The jobs and executions are n
 
 The correlation between CI & CD execution is built on generated artifacts (by CI execution) and consumed artifacts (by CD execution). At this time, only container image-type artifacts are supported.
 
-You can set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions. To learn more, go to [Github Actions integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions#ingest-artifacts-and-environment-variable-data).
+You can set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions. To learn more, go to [Github Actions integration](/docs/software-engineering-insights/sei-integrations/github%20actions/sei-github-actions#ingest-artifacts-and-environment-variable-data).
 
 :::info
-SEI currently supports only [HarnessNG integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng) as the CD tool for configuring stages in the Lead Time workflow.
+SEI currently supports only [HarnessNG integration](/docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd) as the CD tool for configuring stages in the Lead Time workflow.
 :::
 
 ### Commits we fetch
@@ -246,7 +246,7 @@ While DORA metrics provide valuable insights, it's important to consider some li
 
 #### Artifact Information Unavailability for Jenkins
 
-Due to the limitations of the [Jenkins Harness SEI plugin](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/jenkins-plugin), if there is no artifact information available, the calculation of CI/CD Lead Time cannot be performed accurately since artifact generation and deployment times are essential for these metrics.
+Due to the limitations of the [Jenkins Harness SEI plugin](/docs/software-engineering-insights/sei-integrations/jenkins/jenkins-plugin), if there is no artifact information available, the calculation of CI/CD Lead Time cannot be performed accurately since artifact generation and deployment times are essential for these metrics.
 
 #### CI/CD Job Configuration for Jenkins
 
@@ -283,31 +283,31 @@ When there are several stages within the CI and CD pipelines (such as Unit Test,
 
 The following Issue Management Platforms are supported for calculating the DORA metrics on Harness SEI:
 
-  * [JIRA](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration)
-  * [Azure Boards](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
+  * [JIRA](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration)
+  * [Azure Boards](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops)
   * [Rally Software](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally)
 
 #### Source Code Manager
 
 The following SCM Platforms are supported for calculating the DORA metrics on Harness SEI:
 
-  * [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)
-  * [BitBucket](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket)
-  * [GitLab](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab)
-  * [Azure Repos](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
+  * [GitHub](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration)
+  * [BitBucket](/docs/software-engineering-insights/sei-integrations/bitbucket/sei-bitbucket-cloud)
+  * [GitLab](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab)
+  * [Azure Repos](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops)
 
 #### CI and CD Platforms
 
 The following Issue Management Platforms are supported for calculating the DORA metrics on Harness SEI:
 
-  * [Jenkins (via Harness SEI Plugin or WebHooks)](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/jenkins-plugin)
+  * [Jenkins (via Harness SEI Plugin or WebHooks)](/docs/software-engineering-insights/sei-integrations/jenkins/jenkins-plugin)
     * If integrated using the Plugin, combined CI/CD Lead Time will be obtained.
     * If integrated using Webhooks, CI and CD Lead Time will be obtained separately.
-  * [Harness NG](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng)
+  * [Harness NG](/docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd)
     * By Default, the ability to split CI and CD is available
-  * [GitHub Actions](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions)
+  * [GitHub Actions](/docs/software-engineering-insights/sei-integrations/github%20actions/sei-github-actions)
     * By Default, the ability to split CI and CD is available
-  * [Custom CICD](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/sei-custom-cicd-integrations)
+  * [Custom CICD](/docs/software-engineering-insights/sei-integrations/custom-cicd/sei-custom-cicd-integration)
     * Integration can be set up by using your own custom implementation through webhooks.
 
 To learn more about all the supported integrations on SEI, go to [What's Supported](/docs/software-engineering-insights/sei-supported-platforms)

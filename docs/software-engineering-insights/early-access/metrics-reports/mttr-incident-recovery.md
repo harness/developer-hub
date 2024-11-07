@@ -19,8 +19,8 @@ To use the DORA Mean Time to Restore (MTTR) report and measure incident recovery
 
 SEI currently supports the following incident management platforms for MTTR measurement:
 
-* [ServiceNow](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow)
-* [PagerDuty](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-pagerduty)
+* [ServiceNow](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow)
+* [PagerDuty](/docs/software-engineering-insights/sei-integrations/beta-integrations/sei-integration-pagerduty)
 
 <Tabs>
 <TabItem value="Pagerduty">
@@ -34,7 +34,7 @@ To use the DORA MTTR widget for measuring incident recovery time in Pagerduty fo
 
 1. Under the **DORA profile** definition, select the **Mean Time to Restore** section.
 2. Choose **PagerDuty** as the tool for measuring MTTR.
-3. Select the associated **Pagerduty integration**. To learn about how to configure the integration, go to [PagerDuty integration](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-pagerduty).
+3. Select the associated **Pagerduty integration**. To learn about how to configure the integration, go to [PagerDuty integration](/docs/software-engineering-insights/sei-integrations/beta-integrations/sei-integration-pagerduty).
 4. Define incident criteria for calculating MTTR by selecting various filters that define incidents you want to track or measure for MTTR calculations.
 5. The DORA profile definition supports several PagerDuty fields including **PD Service**, **Incident Priority**, **Incident Urgency**, **Alert Severity**, **Status** and **User ID**.
 6. This definition can also be configured using additional time-based filters such as `created at`, `updated at`, and `resolved at` in order to calculate MTTR based on your preferences.
@@ -48,7 +48,7 @@ To use the DORA MTTR widget for measuring incident recovery time in the ServiceN
 
 1. Under the **DORA profile** definition, select the **Mean Time to Restore** section.
 2. Choose **ServiceNow** as the tool for measuring MTTR.
-3. Select the associated **ServiceNow integration**. To learn about how to configure the integration, go to [ServiceNow integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow).
+3. Select the associated **ServiceNow integration**. To learn about how to configure the integration, go to [ServiceNow integration](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow).
 4. Define incident criteria for calculating MTTR by selecting various filters that define incidents you want to track or measure for MTTR calculations.
 5. The DORA profile definition supports all the ServiceNow fields including **Priority**, **Urgency**, **Status** etc to be configured as filters. When configuring the filters, the custom fields available dynamically changes based on the selected ticket type.
 6. This definition can also be configured using additional time-based filters such as **Incident Created**, **Incident Resolved**, and **Incident Updated** in order to calculate MTTR based on your preferences.

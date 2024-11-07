@@ -15,7 +15,7 @@ To integrate SEI with Gitlab, you must choose your Gitlab Account type. SEI supp
 * Gitlab Private Cloud
 * Gitlab Enterprise
 
-To integrate with Gitlab Enterprise, go to [Connect with Gitlab Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab).
+To integrate with Gitlab Enterprise, go to [Connect with Gitlab Enterprise](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab).
 
 ### Configure authentication
 

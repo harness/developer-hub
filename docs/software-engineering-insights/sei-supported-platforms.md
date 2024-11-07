@@ -95,7 +95,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>SEI_GITLAB_NEW_ONBOARDING_FLOW_ENABLED</td>
-        <td>Access the improved experience for configuring the [GitLab integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab).</td>
+        <td>Access the improved experience for configuring the [GitLab integration](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab).</td>
     </tr>
 </table>
 
@@ -122,17 +122,17 @@ Here are some SEI early access features that were recently promoted to GA:
     </tr>
     <tr>
         <td>SEI_EASY_ONBOARDING_JIRA</td>
-        <td>Enables access to the new user experience for connecting to [Jira Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration#connect-with-jira-cloud) & [Data Center](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration#connect-with-jira-software-data-center) using the [Jira Connect App](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration#configure-the-integration-using-the-jira-connect-app)</td>
+        <td>Enables access to the new user experience for connecting to [Jira Cloud](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration#connect-with-jira-cloud) & [Data Center](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration#connect-with-jira-software-data-center) using the [Jira Connect App](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration#configure-the-integration-using-the-jira-connect-app)</td>
         <td>April 2024</td>
     </tr>
     <tr>
         <td>SEI_EASY_ONBOARDING_GITHUB</td>
-        <td>Enables access to the new user experience for connecting to [GitHub Organization (Cloud)](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration#connect-with-github-cloud) & [GitHub Enterprise Server](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration#connect-with-github-enterprise-server) using the [SEI GitHub App](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration#configure-the-integration-using-the-github-app)</td>
+        <td>Enables access to the new user experience for connecting to [GitHub Organization (Cloud)](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration#connect-with-github-cloud) & [GitHub Enterprise Server](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration#connect-with-github-enterprise-server) using the [SEI GitHub App](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration#configure-the-integration-using-the-github-app)</td>
         <td>April 2024</td>
     </tr>
     <tr>
         <td>SEI_IS_AZURE_NEW_ONB_ENABLED</td>
-        <td>Access the new [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) onboarding with PAT authentication</td>
+        <td>Access the new [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops) onboarding with PAT authentication</td>
         <td>August 2024</td>
     </tr>
     <tr>
