@@ -2,6 +2,8 @@
 title: Provision Infrastructure using IDP and IaCM
 description: Create a basic infrastructure provisioning pipeline using Harness IDP
 sidebar_position: 7
+redirect_from:
+  - /docs/internal-developer-portal/flows/provision-infrastructure-using-idp
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />

@@ -2,6 +2,8 @@
 title: Use Harness IDP for self serviced Harness CI/CD onboarding
 description: This tutorial will give an idea on how to create a new service using flows and provision a Harness Deployment pipeline for the newly created service. 
 sidebar_position: 6
+redirect_from:
+  - /docs/internal-developer-portal/flows/self-service-onboarding-pipeline-tutorial
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />

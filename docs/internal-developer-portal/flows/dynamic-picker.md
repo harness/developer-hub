@@ -1,7 +1,7 @@
 ---
 title: Dynamic Workflow Picker based on API Response
 description: This page describes how you can create a dynamic workflow picker in IDP and create dropdown fields which show results based on an API response.
-sidebar_position: 100
+sidebar_position: 20
 sidebar_label: Dynamic Workflow picker based on API response
 ---
 
