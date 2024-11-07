@@ -6,9 +6,17 @@ sidebar_position: 50
 
 This topic describes the configuration and settings for the Helm Blue Green Deploy step.
 
-The Helm Blue Green Deploy step deploys using a canary based strategy. To learn more, go to [Blue Green Deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#blue-green-deployment).
+The Helm Blue Green Deploy step deploys using a blue green based strategy. To learn more, go to [Blue Green Deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#blue-green-deployment).
 
 For a successfully blue green deployment, you will require this deployment step as well as the [Blue Green Swap step](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/step-reference/helm-bg-swap) after this step.
+
+:::note
+
+Currently, this feature is behind the feature flag `CDS_HELM_BG_STRATEGY`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
+Harness Delegate version 84300 or later is required for this feature.
+
+:::
 
 ## Name
 

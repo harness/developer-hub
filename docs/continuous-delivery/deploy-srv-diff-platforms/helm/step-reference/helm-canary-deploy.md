@@ -8,6 +8,14 @@ This topic describes the configuration and settings for the Helm Canary Deploy s
 
 The Helm Canary Deploy step deploys using a canary based strategy. To learn more, go to [Harness canary deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment/#harness-canary-deployments).
 
+:::note
+
+Currently, this feature is behind the feature flag `CDS_HELM_CANARY_STRATEGY`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
+Harness Delegate version 84300 or later is required for this feature.
+
+:::
+
 ## Name
 
 The name for the deploy step.
