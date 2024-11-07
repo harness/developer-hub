@@ -157,9 +157,9 @@ We understand concerns about cost management. This change is not intended to upc
 
 We are committed to making this transition as smooth as possible. While your current contract remains unchanged until renewal, we encourage you to review your usage using the new licensing page. This will give you ample time to adjust your workflows and optimize usage before the new licensing terms take effect upon renewal.
 
-### Q11: Can I stay on my current licensing model instead of moving to Licensing V2?
+### Can I stay on my current licensing model instead of moving to Licensing V2?
 
-**A:** Licensing V2 is designed to provide a more accurate and fair billing model based on actual usage. While we recommend transitioning to take advantage of the enhanced features and support, we understand that each customer has unique needs. Please discuss your specific situation with your account representative to explore possible options.
+Licensing V2 is designed to provide a more accurate and fair billing model based on actual usage. While we recommend transitioning to take advantage of the enhanced features and support, we understand that each customer has unique needs. Please discuss your specific situation with your account representative to explore possible options.
 
 ### How will the licensing changes affect my existing integrations and workflows?
 
