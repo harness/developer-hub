@@ -141,9 +141,9 @@ By adjusting the valuation to 0.20 of a Service per serverless function, custome
 
 Yes, Harness offers monitoring and reporting tools within the platform to help you track usage across all licensing components. You can generate detailed reports based on the Service Licensing Page to monitor your consumption and identify areas for optimization.
 
-### Q7: What is happening with the User License I initially renewed or purchased?
+### What will happen with the User License I initially renewed or purchased?
 
-**A:** The User License is now considered a legacy license type that we no longer support for Harness CD. While you can renew based on the User License, the licensing page will compute usage in terms of services, not users, and you will not receive an accurate estimate of user counts. Originally, Harness CD tracked deployed services rather than users. The User License model was created to offer more favorable pricing terms for some customers.
+The User License is now considered a legacy license type that we no longer support for Harness CD. While you can renew based on the User License, the licensing page will compute usage in terms of services, not users, and you will not receive an accurate estimate of user counts. Originally, Harness CD tracked deployed services rather than users. The User License model was created to offer more favorable pricing terms for some customers.
 
 ### Q8: What is happening with the Service or Service Instance Licenses I initially renewed or purchased?
 
