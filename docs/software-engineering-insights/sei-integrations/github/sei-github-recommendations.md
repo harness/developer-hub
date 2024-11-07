@@ -28,8 +28,8 @@ Using GitHub data, the Trellis widgets help measure essential metrics across the
 
 For teams working on DevOps, DORA metrics like Lead Time for Changes and Mean Time to Restore (MTTR) are important. If your team uses GitHub as the SCM, the widgets below can help identify delays in delivery or recovery from issues.
 
-* [Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/dora-metrics#lead-time-for-changes)
-* [Mean Time to Restore](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/dora-metrics#mean-time-to-restore-mttr)
+* [Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/#lead-time-for-changes)
+* [Mean Time to Restore](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/#mean-time-to-restore-mttr)
 
 
 ### Developer contributions

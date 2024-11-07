@@ -14,14 +14,14 @@ This topic provides use cases for some of the most popular widgets available wit
 For teams working on DevOps, DORA metrics like Deployment Frequency and Change Failure Rate are important. If your team uses Jenkins as the CI and CD tool, the following widgets can help you identify delays in delivery and monitor the effectiveness of your recovery from issues.
 
 * [Create a DORA profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#dora-profile)
-* [Deployment Frequency](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/dora-metrics#deployment-frequency)
-* [Change Failure Rate](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/dora-metrics#change-failure-rate)
+* [Deployment Frequency](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/#deployment-frequency)
+* [Change Failure Rate](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/#change-failure-rate)
 
 ### Measure lead time
 
 The Jenkins integration can be used to configure the Workflow profile for measuring the lead time metric. Tracking lead time for changes is essential to understanding how quickly new code reaches production. The CI/CD stages in Lead Time can highlights areas in the CI/CD pipeline that may require optimization to improve the build time or delivery speed.
 
-* [Lead Time for Changes (DORA widget)](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/dora-metrics#lead-time-for-changes)
+* [Lead Time for Changes (DORA widget)](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/#lead-time-for-changes)
 * [Lead Time reports (Velocity Lead Time widgets)](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports)
 
 ### Job and pipeline run frequency

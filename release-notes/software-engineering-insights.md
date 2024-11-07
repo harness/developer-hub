@@ -61,13 +61,13 @@ This release does not include any early access features.
 
 * Added support for the `allow_unsafe_ssl` metadata flag in the satellite configuration for the [SonarQube integration](/docs/software-engineering-insights/sei-integrations/beta-integrations/sonarqube/sei-integration-sonarqube), allowing users to bypass SSL verification for custom certificates authorized by the SonarQube server. (SEI-8309)
 
-* We have improved the user experience for configuring the [CircleCI integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-circleci) and [DroneCI integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-droneci) focused on simplifying and streamlining the user journey. This includes support for authentication across both **Cloud** and **On-prem setups**, as well as reauthentication for expired access tokens. (SEI-8515)
+* We have improved the user experience for configuring the [CircleCI integration](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#harness-sei-supported-platforms-and-technologies) and [DroneCI integration](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#harness-sei-supported-platforms-and-technologies) focused on simplifying and streamlining the user journey. This includes support for authentication across both **Cloud** and **On-prem setups**, as well as reauthentication for expired access tokens. (SEI-8515)
 
 * Added support to display the collection name and selected Insight time range in PDFs exported from an Insight (SEI-8646)
 
 #### Fixed issues
 
-* Resolved a bug where PRs from the [Harness Code repository](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harness-code) were not getting displayed in the **Trellis contributor profile**. (SEI-8038)
+* Resolved a bug where PRs from the [Harness Code repository](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#harness-sei-supported-platforms-and-technologies) were not getting displayed in the **Trellis contributor profile**. (SEI-8038)
 
 * Fixed the issue causing the application window to freeze when configuring stages in the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile) settings. (SEI-8347)
 
@@ -700,7 +700,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * Improved the ingestion logic to fetch information for the **Pull Request** related to the **Development Field** in the work item in **Azure Boards** for the **Azure DevOps** integration. Please note that this feature is currently in `BETA`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-2265) (SEI-5064) (SEI-5065)
 * The release includes a new integration for the **Rally Software**.
   Rally is a web-based platform for managing and tracking the entire application development lifecycle, including project management, release planning, iteration planning, and defect tracking. (ECOE-3) <br/> <br/>
-  To learn more, go to [Rally integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally). <br/> <br/>
+  To learn more, go to [Rally integration](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#harness-sei-supported-platforms-and-technologies). <br/> <br/>
   This feature is currently in `BETA` is accessible behind the Feature Flag  `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 #### Fixed issues

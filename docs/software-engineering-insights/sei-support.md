@@ -11,7 +11,7 @@ If you believe you have found a bug in Harness Software Engineering Insights, pl
 
 To create a support ticket:
 
-1. Go to [support.harness.io](support.harness.io)
+1. Go to [https://support.harness.io](https://support.harness.io)
 2. Log in and Click on Submit a Request
 3. Enter a meaningful subject
 4. Provide steps to reproduce the issue in the description field
@@ -24,11 +24,11 @@ Harness Support team will communicate with you directly through the ticket to ke
 
 ### Request a new feature
 
-Have a fantastic idea? Please go to our [Idea Portal](ideas.harness.io) and submit it.
+Have a fantastic idea? Please go to our [Idea Portal](https://ideas.harness.io) and submit it.
 
 Submitting your ideas is super easy, simply  follow these steps:
 
-1. Navigate to [ideas.harness.io](ideas.harness.io) (directly or from the product)
+1. Navigate to [https://ideas.harness.io](https://ideas.harness.io) (directly or from the product)
 2. Select the module as Software Engineering Insights.
 3. Search to see if your idea has already been proposed. If so, you can "vote up" for it, increasing its chances of being considered. You will be notified of the status and progress of your idea.
 4. If your desired feature hasn’t been suggested yet, complete the form (provide a title and a short description). Once submitted, you will be notified of the status and progress of your idea.

@@ -55,7 +55,6 @@ Harness SEI supports a variety of platforms, repos, tools, and related technolog
 ### BETA
 
 * [SonarQube](/docs/software-engineering-insights/sei-integrations/beta-integrations/sonarqube/sei-integration-sonarqube)
-* [Slack](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-slack)
 * [PagerDuty](/docs/software-engineering-insights/sei-integrations/beta-integrations/sei-integration-pagerduty)
 * [ServiceNow](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow)
 

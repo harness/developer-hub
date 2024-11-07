@@ -285,7 +285,6 @@ The following Issue Management Platforms are supported for calculating the DORA 
 
   * [JIRA](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration)
   * [Azure Boards](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops)
-  * [Rally Software](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally)
 
 #### Source Code Manager
 
