@@ -8,7 +8,7 @@ redirect_from:
 
 ## Introduction
 
-Dashboards is a Harness Platform Feature, that allows you to visualize key metrics and data related to your module. You can customize the dashboards to show specific metrics and data relevant to your needs, and access them from a central location. The Harness Dashboards provide actionable insights out of your IDP, so you can enable good developer experience in your org. Dashboards also allow you to set up scheduled delivery of reporting and alerts for your executives and stakeholders.
+Dashboards is a Harness Platform Feature, that allows you to visualize key metrics and data related to your module. You can customize the dashboards to show specific metrics and data relevant to your needs, and access them from a central location. The Harness Dashboards provide actionable insights out of your IDP, so you can enable good developer experience in your org. Dashboards also allow you to setup scheduled delivery of reporting and alerts for your executives and stakeholders.
 
 :::info
 
@@ -32,7 +32,7 @@ To view and access dashboards, select **DASHBOARDS** from the left navigation in
 
 ### Out of the Box Dashboards
 
-At present, we provide 3 out of the box dashboards for IDP. 
+At present we provide 3 out of the box dashboards for IDP. 
 
 1. Adoption Dashboard: Track how Developers are using IDP, you get to know **active users** during the selected **Aggregation Period** along with insights on each of the key features 
 
@@ -63,7 +63,7 @@ It is recommended to refer [this documentation](https://developer.harness.io/doc
 
 ### Explore
 
-An Explore is a starting point for a query that is designed to explore a particular subject area. This topic describes the various explores available for monitoring your developer portal, and the data to provide. The following is list of explores available for visualizing IDP data.
+An Explore is a starting point for a query that is designed to explore a particular subject area. This topic describes the various explores available for monitoring your developer portal, and the data the provide. The following is list of explores available for visualizing IDP data.
 
 1. IDP Catalog
 2. IDP Plugins

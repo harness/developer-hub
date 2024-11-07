@@ -27,7 +27,7 @@ Docs in Harness IDP is powered by [TechDocs Backstage Plugin](https://backstage.
 To add documentation:
 
 1. Create a `docs` directory next to where you have `catalog-info.yaml`.
-2. Inside the `docs` directory, create a `index.md` file with the following contents.
+2. Inside the `docs` directory, create an `index.md` file with the following contents.
 
 ```
 # Welcome!
@@ -90,7 +90,7 @@ When you see`dir:.`, you can translate it to mean:
 
 - That the documentation source code lives in the same location as the `catalog-info.yaml` file.
 - That, in particular, the `mkdocs.yml` file is a sibling of `catalog-info.yaml` (meaning, it is in the same directory)
-- And that all the source content of the documentation would be available if one were to download the directory containing those two files (as well as all sub-directories).
+- And that all of the source content of the documentation would be available if one were to download the directory containing those two files (as well as all sub-directories).
 
 The directory tree of the entity would look something like this:
 

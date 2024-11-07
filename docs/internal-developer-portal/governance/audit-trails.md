@@ -8,7 +8,7 @@ sidebar_position: 10
 
 With Audit Trail in Harness, you can view and track changes to your Harness resources within your Harness account.
 
-The audit data retention period is 2 years. Harness reserves the right to delete audit data after 2 years. You can request a longer retention period by contacting Harness. For example, if you require audit data for legal discoveries, etc., contact Harness, and we can help.
+The audit data retention period is 2 years. Harness reserves the right to delete audit data after 2 years. You can request a longer retention period by contacting Harness. For example, if you require audit data for legal discoveries, etc, contact Harness and we can help.
 
 ## IDP Events in Audit Trail
 
@@ -33,7 +33,7 @@ The Account Audit Trail includes the following IDP events:
 
 :::info
 
-The audit trails on Plugins is dependent on other services' latest version, which are yet to be released, so it might take a week or two to make this available for our users. 
+The audit trails on Plugins is dependant on other services latest version, which are yet to be released, so it might take a week or two to make this available for our users. 
 
 :::
 
@@ -48,7 +48,7 @@ Each event in the Account Audit Trail list provides the following details:
 
 ![](./static/audit-trail.png)
 
-When you click on a resource name, you will be directed to the corresponding event page. For instance, clicking on a Check resource will take you to the Checks listing page, while clicking on a Catalog Connector resource will redirect you to the Connectors page.
+When you click on a resource name, you will be directed to the corresponding event page. For instance, clicking on an Check resource will take you to the Checks listing page, while clicking on a Catalog Connector resource will redirect you to the Connectors page.
 
 
 To see more information about a particular event, select the messaging icon next to it. The Event Summary page appears, displaying the following information:

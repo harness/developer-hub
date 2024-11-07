@@ -105,7 +105,7 @@ For those looking to expand their knowledge and explore more advanced methods of
 
 ### GitHub Auto-Discovery Plugin
 
-If you're aiming to register multiple components in the software catalog concurrently, the [GitHub auto-discovery plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery/) is a valuable tool. This plugin automates the discovery and registration of components, with all the IDP YAML located in single repo.
+If you're aiming to register multiple components in the software catalog concurrently, the [GitHub auto-discovery plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery/) is a valuable tool. This plugin automates the discovery and registration of components, with all the idp yamls located in single repo.
 
 ### Using the Catalog API
 
@@ -121,7 +121,7 @@ function usage {
     echo "  -a      Harness Account Identifier"
     echo "  -x      Harness X-API-KEY for the given account"
     echo "  -u      Harness Bearer Authorization from the logged in session"
-    echo "  -l      Catalog locations to be registered in Harness IDP. Comma separated list of locations"
+    echo "  -l      Catalog locations to be registered in Harness IDP. Comma seperated list of locations"
     exit 1
 }
 
@@ -152,7 +152,7 @@ do
     if [[ "$RESULT_HTTP_CODE" -ne 201 ]] ; then
         echo "Failed registering $LOCATION catalog location in Harness IDP account $ACCOUNT_IDENTIFIER"
     else
-        echo "Successfully registered $LOCATION catalog location in Harness IDP account $ACCOUNT_IDENTIFIER"
+        echo "Successfully registerd $LOCATION catalog location in Harness IDP account $ACCOUNT_IDENTIFIER"
     fi
 
     echo "--------"

@@ -16,7 +16,7 @@ description: View CI/CD pipeline executions running in CircleCI.
 
 _No action required_
 
-This plugin requires a backend proxy configuration to make calls to CircleCI with authentication. The following configuration is set by default, and you do not need to change anything:
+This plugin requires a backend proxy configuration to make calls to CircleCI with authentication. The following configuration is set by default and you do not need to change anything:
 
 ```yaml
 proxy:
@@ -62,7 +62,7 @@ This plugin exports a UI tab that you can use as a new CI/CD tab for a service o
                   description: You need to add an annotation to your component if you want to enable CI/CD for it. You can read more about annotations in Backstage by clicking the button below.
 ```
 
-The `isCircleCIAvailable` condition is met when the `circleci.com/project-slug` annotation is present in the software component's `catalog-info.yaml` definition file.
+The `isCircleCIAvailable` condition is met when the `circleci.com/project-slug` annotation is present in the software components's `catalog-info.yaml` definition file.
 
 ![](./static/circle-ci-pipeline-details.png)
 

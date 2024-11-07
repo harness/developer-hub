@@ -7,11 +7,11 @@ sidebar_label: Additional Info Card
 
 ## Introduction
 
-Now you can add an Additional info Card to the overview page and populate it with the `catalog-info.yaml` metadata for all the root fields `apiVersion`, `kind`, `metadata`, and `spec` along with the [supported values](https://backstage.io/docs/features/software-catalog/descriptor-format/#contents) under the root field. e.g. `<+spec.type>`
+Now you can add a Additional Info Card to the overview page and populate it with the `catalog-info.yaml` metadata for all the root fields `apiVersion`, `kind`, `metadata`, and `spec` along with the [supported values](https://backstage.io/docs/features/software-catalog/descriptor-format/#contents) under the root field. eg `<+spec.type>`
 
 ## Usage
 
-This card can help you display additional information like name of team lead, list of the tools used for your software component etc., in your catalog overview page of a particular software component. This also enables you to display the additionally ingested items in the catalog using catalog metadata ingestion API. 
+This card can help you display additional information like name of team lead, list of the tools used for your software component  etc., in your catalog overview page of a particular software component. This also enables you to display the additionally ingested items in the catalog using catalog metadata ingestion API. 
 
 
 <DocVideo src="https://www.youtube.com/embed/Qi1PIWSPves?si=44qlTho7ZQHKjw59" />
@@ -120,4 +120,4 @@ spec:
   lifecycle: experimental
 ```
 
-In the above example, we have added key value pairs under `additionalInfo`, and it's only possible to display the values using the key. For example, you can add `<+metadata.name.additionalInfo.onShoreTeamLead>` in the layout to get the name `Jane Doe` displayed in the Additional Info Card. 
+In the above example, we have added key value pairs under `additionalInfo` and it's only possible to display the values using the key. For example, you can add `<+metadata.name.additionalInfo.onShoreTeamLead>` in the layout to get the name `Jane Doe` displayed in the Additional Info Card. 

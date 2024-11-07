@@ -58,7 +58,7 @@ A warning message appears: Your Score for the service used needs to be more than
 
 #### Failure: 
 
-You configure a Pipeline with a Deployment stage that deploys to a prod environment with a service having Score less than the set limit. When you save the Pipeline, Harness throws an error message indicating the rule was enforced and the Pipeline fails validation.
+You configure a Pipeline with a Deploy stage that deploys to a prod environment with a service having Score less than the set limit. When you save the Pipeline, Harness throws an error message indicating the rule was enforced and the Pipeline fails validation.
 
 ### Example B: Pipeline > On Run (Policy Used: IDP Scorecard For Multi Service )
 
@@ -87,7 +87,7 @@ deny[msg] {
 
 #### Success: 
 
-You deploy the Pipeline and during the dry run the Scores of all the services you have used in the pipeline turns to be more than the set limit(here: 50). As a result, the dry run progresses. Harness indicates that the rule was evaluated, and the action was valid.
+You deploy the Pipeline and during the dry run the Scores of all the services you have used in the pipeline turns to be more than the set limit(here: 50). As a result, the dry run progresses. Harness indicates that the rule was evaluated and the action was valid.
 
 #### Failure: 
-Some of the services you have used have a score less than the set limit(here: 50). As a result, the dry run fails. Harness indicates that a rule was enforced, and the deployment is prevented.
+Some of the services you have used have a score less than the set limit(here: 50). As a result, the dry run fails. Harness indicates that a rule was enforced and the deployment is prevented.

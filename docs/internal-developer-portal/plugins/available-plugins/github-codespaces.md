@@ -79,7 +79,7 @@ This plugin exports a page and two card on the overview page, one to start a Cod
 ...
 ```
 
-The `isGithubCodespacesAvailable` condition is met when the `github.com/project-slug` annotation is present in the software component's `catalog-info.yaml` definition file.
+The `isGithubCodespacesAvailable` condition is met when the `github.com/project-slug` annotation is present in the software components's `catalog-info.yaml` definition file.
 
 ![](./static/codespaces-list.png)
 

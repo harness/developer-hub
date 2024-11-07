@@ -21,7 +21,7 @@ This will help you surface out the most useful Workflows for your developers, wh
 
 ## Available Customizations
 
-**Platform Engineers** (users assigned with the role of [IDP Admin](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin) or having [Layout edit permission](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#4-layouts)) can customize the **Workflows homepage** under **IDP Admin -> Layouts -> Workflows** section by creating **groups** and adding Workflows to each group. These groups can be further customized using a **name**, **icon**, and **description**, and they can be arranged in a specific order to determine how they appear on the Workflows homepage.
+**Platform Engineers** (users assigned with the role of [IDP Admin](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin) or having [Layout edit permission](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#4-layouts)) can customize the **Workflows homepage** under **IDP Admin -> Layouts -> Workflows** section by creating **groups** and adding Workflows to each group. These groups can be further customized using a **name**, **icon**, and **description** and they can be arranged in a specific order to determine how they appear on the Workflows homepage.
 
 The option to create new groups is also available under the Workflows homepage which will take you to the **Layout -> Workflows** under **Admin**. 
 
@@ -124,7 +124,7 @@ spec:
 
 ![](./static/workflows-three-dots.png)
 
-7. **Open Playground**: Template Editor is part of the **Open Playground**, where you can preview your workflows changes live. 
+7. **Open Playground**: Template Editor is part of the **Open Playground**, where you can you can preview your workflows changes live. 
 
 ![](./static/open-playground.png)
 
@@ -133,7 +133,7 @@ spec:
 
 ### Icons Supported in Harness IDP
 
-- Go to Icons under **IDP-Admin -> Layout**, and highlight the icon name you want to add, it will be copied, and now you can add it under the `metadata.icon` in the Workflow definition YAML. 
+- Go to Icons under **IDP-Admin -> Layout**, and highlight the icon name you want to add, it will be copied and now you can add it under the `metadata.icon` in the Workflow definition YAML. 
 
 ![](./static/layout-icons.png)
 ![](./static/icons.png)

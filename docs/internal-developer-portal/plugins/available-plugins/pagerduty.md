@@ -16,7 +16,7 @@ description: Identify active incidents for an entity and learn about the escalat
 
 _No action required_
 
-This plugin requires a backend proxy configuration to make calls to PagerDuty with authentication. The following configuration is set by default, and you do not need to change anything:
+This plugin requires a backend proxy configuration to make calls to PagerDuty with authentication. The following configuration is set by default and you do not need to change anything:
 
 ```yaml
 proxy:
