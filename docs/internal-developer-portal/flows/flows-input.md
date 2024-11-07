@@ -79,7 +79,7 @@ You can dynamically fetch values in the Workflows fields using UI Pickers, which
 1. [Standard Workflow UI Picker](/docs/internal-developer-portal/flows/flows-input#workflow-ui-pickers)
 2. [API Based Dynamic Workflow UI Picker](/docs/internal-developer-portal/flows/dynamic-picker)
 
-## Arrays options
+## Array options
 
 ### Array with strings
 
@@ -284,7 +284,7 @@ parameters:
 
 ### Conditionally set parameters
 
-The `if` keyword within the parameter uses [nunjucks templating](https://mozilla.github.io/nunjucks/templating.html#if). The `not` keyword is unavailable; instead, use javascript equality. eg: `${{ parameters.branchName if parameters.branchName else appendTimestamp("default-branch-name-") }}`
+The `if` keyword within the parameter uses [nunjucks templating](https://mozilla.github.io/nunjucks/templating.html#if). The `not` keyword is unavailable; instead, use JavaScript equality. e.g.: `${{ parameters.branchName if parameters.branchName else appendTimestamp("default-branch-name-") }}`
 
 <details>
 <summary>Example YAML</summary>
@@ -493,7 +493,7 @@ properties:
 
 ## Using Secrets
 
-You may want to mark things as secret and make sure that these values are protected and not available through REST endpoints. You can do this by using the built in `ui:field: Secret` and `ui:widget: password`.
+You may want to mark things as secret and make sure that these values are protected and not available through REST endpoints. You can do this by using the built-in `ui:field: Secret` and `ui:widget: password`.
 
 :::info
 `ui:widget: password` needs to be mentioned under the first `page` in-case you have multiple pages.
@@ -546,7 +546,7 @@ spec:
   type: service
 
   parameters:
-    - title: Authenticaion
+    - title: Authentication
       description: Provide authentication for the resource
       required:
         - username
@@ -850,7 +850,7 @@ spec:
 
 ### 4. `HarnessAutoOrgPicker`
 
-It auto populates org ID on project selection. So now when you select an project ID as an input the org ID gets selected automatically if required as an input.
+It autopopulates org ID on project selection. So now when you select a project ID as an input the org ID gets selected automatically if required as an input.
 
 1. For `HarnessAutoOrgPicker` to work, it is suggested to name the Project Identifier under Properties as `projectId` and using the `HarnessProjectPicker`.
 
@@ -1269,9 +1269,9 @@ For a list of all possible `ui:options` input props for `RepoUrlPicker`, please 
 
 #### Using the Users `oauth` token
 
-There's a little bit of extra magic that you get out of the box when using the
+There's a little extra magic that you get out of the box when using the
 `RepoUrlPicker` as a field input. You can provide some additional options under
-`ui:options` to allow the `RepoUrlPicker` to grab an `oauth` token for the user
+`ui:options` to allow the `RepoUrlPicker` to grab a `oauth` token for the user
 for the required `repository`.
 
 This is great for when you are wanting to create a new repository, or wanting to
@@ -1344,11 +1344,11 @@ action called `token`, in which you can use the `secret` like so:
 There's also the ability to pass additional scopes when requesting the `oauth`
 token from the user, which you can do on a per-provider basis, in case your Workflow can be published to multiple providers.
 
-Note, that you will need to configure an **connector** for your source code management (SCM) service to make this feature work.
+Note, that you will need to configure a **connector** for your source code management (SCM) service to make this feature work.
 
 ## Pre-fill workflows with URL Params
 
-We can now automatically load IDP Workflow forms pre-filled using the `formData` URL query parameter. eg: `https://app.harness.io/ng/account/account_id/module/idp/create/templates/default/a-python-lambda?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D`
+We can now automatically load IDP Workflow forms pre-filled using the `formData` URL query parameter. e.g.: `https://app.harness.io/ng/account/account_id/module/idp/create/templates/default/a-python-lambda?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D`
 
 The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7` in the end of the URL allow you to automatically fill in values of the form. Please see the below table for explanation of individual tokens in the query param.
 

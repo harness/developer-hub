@@ -40,7 +40,7 @@ This plugin does not require a delegate proxy to be set up.
 
 ## Layout
 
-This plugin exports a UI tab that you can use as a new SLOs tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in the a new Tab section:
+This plugin exports a UI tab that you can use as a new SLOs tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in the new Tab section:
 
 ```yaml
 - name: SLOs
@@ -50,13 +50,13 @@ This plugin exports a UI tab that you can use as a new SLOs tab for a service or
     - component: EntityHarnessSrmContent
 ```
 
-Note: You can also use the `isHarnessSRMAvailable` conditional. It is satisfied when the `harness.io/services` annotation is present in the software components's `catalog-info.yaml` definition file.
+Note: You can also use the `isHarnessSRMAvailable` conditional. It is satisfied when the `harness.io/services` annotation is present in the software component's `catalog-info.yaml` definition file.
 
 ![](./static/srm-screenshot.png)
 
 ## Annotations
 
-To configure the plugin for a service in the software catalog, set an `harness.io/services` annotation in its `catalog-info.yaml` definition file:
+To configure the plugin for a service in the software catalog, set a `harness.io/services` annotation in its `catalog-info.yaml` definition file:
 
 ```yaml
 apiVersion: backstage.io/v1alpha1

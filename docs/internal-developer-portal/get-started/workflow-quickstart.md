@@ -71,7 +71,7 @@ Apply the changes
 
 9. Add the **Connector** you created under Select codebase repo connector. 
 
-10. Now under **Organization** and **Repository Name** add the variables you created as **Expressions** (`<+pipeline.variables.github_org>` and `<+pipeline.variables.github_repo>` ).
+10. Now under **Organization** and **Repository Name** add the variables you created as **Expressions** (`<+pipeline.variables.github_org>` and `<+pipeline.variables.github_repo>`).
 
 11. Add a **Repository Description**, **Apply Changes**. 
 
@@ -90,13 +90,13 @@ curl -L \
 ```
 
 
-## Create Template
+## Create Workflow
 
-**If you want to use our sample templates you can skip this step and go to register template step**
+**If you want to use our sample Workflows you can skip this step and go to register Workflow step**
 
-The template is defined in a YAML file named `template.yaml`. The [syntax](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates) of the template definition is owned by [backstage.io](https://backstage.io/docs/features/software-templates/writing-templates) while the workflow runs on a Harness pipeline of your choice.
+The Workflow is defined in a YAML file named `workflow.yaml`. The [syntax](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates) of the template definition is owned by [backstage.io](https://backstage.io/docs/features/software-templates/writing-templates) while the workflow runs on a Harness pipeline of your choice.
 
-The following is the example template with [custom action](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline) to create a new repository. 
+The following is the example Workflow with [Workflows Action](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline) to create a new repository. 
 
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
@@ -155,13 +155,13 @@ spec:
 
 ```
 
-In the above template we have used the [Harness Trigger Custom Action](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend-module-github), which takes the **exact variable name** `github_org` and `github_repo` you created for your pipeline as input and a **token** as `apikey`
+In the above Workflow we have used the [Harness Trigger Custom Action](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend-module-github), which takes the **exact variable name** `github_org` and `github_repo` you created for your pipeline as input and a **token** as `apikey`
 
 :::info
 
-The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page`  in-case you have multiple pages.
+The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page` in-case you have multiple pages.
 
-```
+```YAML
 # example workflow.yaml
 ...
 parameters:
@@ -189,9 +189,9 @@ parameters:
 ```
 :::
 
-11. Copy the above template file in your git provider, and save it as `workflow.yaml`. 
+11. Copy the above Workflow file in your git provider, and save it as `workflow.yaml`. 
 
-## Register Template in IDP
+## Register Workflow in IDP
 
 12. In the left navigation, select **Workflows**, and then select **Register New Workflow**.
 
@@ -205,19 +205,19 @@ parameters:
 
 ![](static/finished-state.png)
 
-15. Now click on the template name
+15. Now click on the Workflow name
 
 ![](static/workflowquickstart.png)
 
 ## Use Workflows to Create a Repo
 
-16. Once you're on the entity page for template, **Launch the Template**.
+16. Once you're on the entity page for Workflow, **Launch the Workflow**.
 
 ![](static/Launch-template.png)
 
 17. Now fill the fields as:
     - Repository Location: Add a name for the repository you wanted to create. 
-    - GitHub Organization: Add the org where you want add your new repository, usually GitHub URL are of the format `https://github.com/org_name/repo_name/` 
+    - GitHub Organization: Add the org where you want to add your new repository, usually GitHub URL are of the format `https://github.com/org_name/repo_name/` 
 
 ![](static/fill-template-fields.png)
 
@@ -225,13 +225,13 @@ parameters:
 
 ![](static/create-repo-run.png)
 
-## Delete the Template
+## Delete the Workflow
 
-If you want to unregister or delete the template follow the steps mentioned [here](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#deleteunregister-template). 
+If you want to unregister or delete the Workflow follow the steps mentioned [here](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#deleteunregister-template). 
 
 ## Further Reading
 
-Self Service Onboarding in IDP is powered by scaffolder templates and Harness Pipeline([IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)) . Follow the tutorials to learn more about it. 
+Self Service Onboarding in IDP is powered by Workflows and Harness Pipeline([IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)). Follow the tutorials to learn more about it. 
 
 1. [Create a service onboarding pipeline (using IDP Stage)](https://developer.harness.io/docs/internal-developer-portal/flows/create-a-new-service-using-idp-stage)
 

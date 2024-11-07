@@ -8,9 +8,9 @@ sidebar_position: 8
 
 <DocVideo src="https://www.youtube.com/embed/0GoK3SD1rxs?si=RCMDhlPhoC5qZh3J" />
 
-This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic service onboarding pipeline that uses a software template and provisions a Next.js application for a developer. After you create the software template, developers can choose the template on the **Create** page and enter details such as a name for the application and the path to their Git repository. The service onboarding pipeline creates a hello world repository for storing code.
+This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic service onboarding pipeline that uses a software Workflow and provisions a Next.js application for a developer. After you create the software Workflow, developers can choose the Workflow on the **Create** page and enter details such as a name for the application and the path to their Git repository. The service onboarding pipeline creates a hello world repository for storing code.
 
-Your users (developers) must perform a sequence of tasks to create the application. First, they interact with a software template. A software template is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness pipeline that onboard the new service. Usually the pipeline fetches a _hello-world_ skeleton code, creates a new repository, and interacts with third-party providers such as cloud providers, Jira, and Slack.
+Your users (developers) must perform a sequence of tasks to create the application. First, they interact with a software Workflow. A software Workflow is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness pipeline that onboard the new service. Usually the pipeline fetches a _hello-world_ skeleton code, creates a new repository, and interacts with third-party providers such as cloud providers, Jira, and Slack.
 
 ![](./static/service-onboarding-user-flow.png)
 
@@ -158,9 +158,9 @@ The script uses several pipeline variables. The variables are as follows:
 - `<+pipeline.variables.github_org>`
 - `<+pipeline.variables.github_repo>`
 
-Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name should match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template.
+Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name should match with the parameter name used in the Workflow as the values would be pre-populated from the values entered as input in the below IDP Workflow.
 
-For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template.
+For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given Workflow.
 
 </TabItem>
 <TabItem value="GitLab">
@@ -171,7 +171,7 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
 
    1. Generates a basic Next.js app.
 
-   2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/cookiecutter-react-app), whichand it's essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
+   2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/cookiecutter-react-app), which essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/Workflows) or create your own project from scratch.
 
    ```sh
    # Testing path
@@ -236,9 +236,9 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
 - `<+pipeline.variables.gitlab_org>`
 - `<+pipeline.variables.gitlab_repo>`
 
-Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name should match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template.
+Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name should match with the parameter name used in the Workflow as the values would be pre-populated from the values entered as input in the below IDP Workflow.
 
-For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template.
+For e.g., : `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given Workflow.
 
 </TabItem>
 </Tabs>
@@ -247,26 +247,26 @@ You can use the **Variables** button on the floating sidebar on the right-hand s
 
 ![](./static/pipeline%20variables.png)
 
-You can create any number of pipeline variables and decide their value type. Some variables, such as a GitHub token, a user name, and organization, can have a fixed value. The token used in the code above is a Harness secret whose value is decoded during pipeline execution.
+You can create any number of pipeline variables and decide their value type. Some variables, such as a GitHub token, a username, and organization, can have a fixed value. The token used in the code above is a Harness secret whose value is decoded during pipeline execution.
 
 Variables such as project name and GitHub repository are runtime inputs. They are needed at the time of pipeline execution. When creating a new variable, you can specify its type in the UI. For more information about reference variables, go to the [reference documentation](/docs/platform/variables-and-expressions/harness-variables/) on pipeline variables.
 
-### Create a software template definition in IDP
+### Create a software Workflow definition in IDP
 
-Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your skeleton hello world code. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.  
+Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Workflow](https://backstage.io/docs/features/software-Workflows/writing-Workflows). Create a `Workflow.yaml` file anywhere in your Git repository. Usually, that would be the same place as your skeleton hello world code. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the Workflow. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP Workflows.  
 
 <Tabs>
 <TabItem value="GitHub">
 
-[Source](https://github.com/harness-community/idp-samples/blob/main/template-github.yaml)
+[Source](https://github.com/harness-community/idp-samples/blob/main/Workflow-github.yaml)
 
 ```yaml
 apiVersion: scaffolder.backstage.io/v1beta3
-kind: Template
+kind: Workflow
 metadata:
   name: onboard-services
   title: Create and Onboard a new react app
-  description: A template to create and onboard a new react app
+  description: A Workflow to create and onboard a new react app
   tags:
     - nextjs
     - react
@@ -323,15 +323,15 @@ spec:
 </TabItem>
 <TabItem value="GitLab">
 
-[Source](https://github.com/harness-community/idp-samples/blob/main/template-gitlab.yaml)
+[Source](https://github.com/harness-community/idp-samples/blob/main/Workflow-gitlab.yaml)
 
 ```yaml
 apiVersion: scaffolder.backstage.io/v1beta3
-kind: Template
+kind: Workflow
 metadata:
   name: onboard-services
   title: Create and Onboard a new react app
-  description: A template to create and onboard a new react app
+  description: A Workflow to create and onboard a new react app
   tags:
     - nextjs
     - react
@@ -389,7 +389,7 @@ spec:
 </TabItem>
 </Tabs>
 
-This YAML code is governed by Backstage. You can change the name and description of the software template. The template has the following parts:
+This YAML code is governed by Backstage. You can change the name and description of the software Workflow. The Workflow has the following parts:
 
 1. Input from the user
 2. Execution of pipeline
@@ -398,17 +398,17 @@ This YAML code is governed by Backstage. You can change the name and description
 ![](./static/template-2.png)
 
 
-Let's take a look at the inputs that the template expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in `properties` are the unique IDs of fields (for example, `github_repo` and `project_name`). If you recall, they are the pipeline variables that we set as runtime inputs earlier. This is what we want the developer to enter when creating their new application.
+Let's take a look at the inputs that the Workflow expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in `properties` are the unique IDs of fields (for example, `github_repo` and `project_name`). If you recall, they are the pipeline variables that we set as runtime inputs earlier. This is what we want the developer to enter when creating their new application.
 
 The YAML definition includes fields such as cloud provider and database choice. They are for demonstration purposes only and are not used in this tutorial.
 
 ### Adding the owner
 
-By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi` and it should only contain the user name not the complete email id. 
+By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi`, and it should only contain the username not the complete email ID. 
 
 ### Authenticate the request
 
-Once you have written all the inputs that the template requires, you must add the following YAML snippet under `spec.parameters.properties`.
+Once you have written all the inputs that the Workflow requires, you must add the following YAML snippet under `spec.parameters.properties`.
 
 ```yaml
 token:
@@ -420,7 +420,7 @@ token:
 
 :::info
 
-The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page`  in-case you have multiple pages.
+The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page` in-case you have multiple pages.
 
 ```
 # example workflow.yaml
@@ -471,17 +471,17 @@ This is a custom component we created to authenticate the call to execute the pi
 
 :::info
 
-The template actions currently supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step), also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
+The Workflow actions currently supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step), also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
 
 ![](./static/pipeline-varialbles-idp-implementation.png)
 
 :::
 
-The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. Update the `url` and replace it with the URL of your service onboarding pipeline. Also, ensure that the `inputset` is correct and it contains all the runtime input variables that the pipeline needs.
+The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. Update the `url` and replace it with the URL of your service onboarding pipeline. Also, ensure that the `inputset` is correct, and it contains all the runtime input variables that the pipeline needs.
 
-### Conditional Inputs in Templates
+### Conditional Inputs in Workflows
 
-1. One Of: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
+1. One Of: Helps you create a dropdown in the Workflow, where only one of all the options available could be selected. 
 
 ```YAML
 dependencies:
@@ -497,7 +497,7 @@ dependencies:
               - java8
               - java11
 ```
-2. All Of: Helps you create a dropdown in the template, where only all the options available could be selected.
+2. All Of: Helps you create a dropdown in the Workflow, where only all the options available could be selected.
 
 ```YAML
 type: object
@@ -552,7 +552,7 @@ anyOf:
 
 For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
 
-### Upload a file using template
+### Upload a file using Workflow
 
 There are 3 types of file upload. 
 
@@ -586,7 +586,7 @@ properties:
 Harness Pipelines variables can only be 3 types, string, number and secrets, in case you want to add multiple strings and comma separated values you need to [join](https://mozilla.github.io/nunjucks/templating.html#join) them and send as single input parameters. 
 
 
-In the following template I want to pick the enum and parse the `exampleVar` as a string and use it as comma separated value in the inputset for pipeline. 
+In the following Workflow I want to pick the enum and parse the `exampleVar` as a string and use it as comma separated value in the inputset for pipeline. 
 As you could see in the example below under `inputset`, `exampleVar` takes input as `${{ parameters.exampleVar.join(',') }}`. 
 
 ```YAML
@@ -619,20 +619,20 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
         apikey: ${{ parameters.token }}
 ```
 
-### Register the template
+### Register the Workflow
 
-Use the URL to the `template.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
 
-Now navigate to the **Create** page in IDP. You will see the newly created template appear. Try it out!
+Now navigate to the **Create** page in IDP. You will see the newly created Workflow appear. Try it out!
 
-### Unregister/Delete Template
+### Unregister/Delete Workflow
 
 1. Navigate to the **Catalog** page, and select **Template** under Kind.
 
 ![](./static/catalog-navigation.png)
 
-2. Select the Template Name you want to Unregister.
-3. Now on the Template overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+2. Select the Workflow Name you want to Unregister.
+3. Now on the Workflow overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
 
 ![](./static/unregister-entity.png)
 
@@ -640,4 +640,4 @@ Now navigate to the **Create** page in IDP. You will see the newly created templ
 
 ![](./static/Unregister-location.png)
 
-5. This will delete the Template.
+5. This will delete the Workflow.

@@ -52,7 +52,7 @@ This plugin exports a UI tab that you can use as a new CI/CD tab for a service o
                   description: You need to add an annotation to your component if you want to enable CI/CD for it. You can read more about annotations in Backstage by clicking the button below.
 ```
 
-The `isGithubActionsAvailable` condition is met when the `github.com/project-slug` annotation is present in the software components's `catalog-info.yaml` definition file.
+The `isGithubActionsAvailable` condition is met when the `github.com/project-slug` annotation is present in the software component's `catalog-info.yaml` definition file.
 
 ![](./static/github-actions-tab.png)
 

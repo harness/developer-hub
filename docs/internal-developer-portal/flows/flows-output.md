@@ -7,15 +7,15 @@ sidebar_label: How to configure your Workflows Backend
 
 ## Introduction
 
-In Harness IDP, every Workflow has a Harness Pipeline as it's backend. Once you’ve created a [Workflows form](/docs/internal-developer-portal/flows/flows-input) to collect inputs from users, these values are passed into the Pipeline through a Workflow Action. This action triggers specific steps in the Pipeline, which can do things like launching a CI/CD process, registering a service in the catalog, or setting up infrastructure.
+In Harness IDP, every Workflow has a Harness Pipeline as its backend. Once you’ve created a [Workflows form](/docs/internal-developer-portal/flows/flows-input) to collect inputs from users, these values are passed into the Pipeline through a Workflow Action. This action triggers specific steps in the Pipeline, which can do things like launching a CI/CD process, registering a service in the catalog, or setting up infrastructure.
 
 ## Harness Pipeline as Orchestrator
 
 Harness Pipelines serve as powerful orchestrators for Workflows. In this setup you can trigger Harness pipelines directly through a [Workflow Action](/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline). This action accepts the Harness pipeline URL as input, alongside an automatically inserted authentication token under the parameters section just like other inputs required for the pipeline execution. This seamless integration is enabled by Harness IDP being part of the broader Harness SaaS ecosystem, allowing users to even manage Workflows through pipelines RBAC.
 
-We have also built a native [IDP Stage](/docs/internal-developer-portal/flows/idp-stage) to help with Git cloning, cookiecutter templating, repository creation, catalog creation,catalog registration, Slack notifications, and resource creation using Harness IaCM powered by OpenTofu.
+We have also built a native [IDP Stage](/docs/internal-developer-portal/flows/idp-stage) to help with Git cloning, cookiecutter templating, repository creation, catalog creation, catalog registration, Slack notifications, and resource creation using Harness IaCM powered by OpenTofu.
 
-This [Harness Specific Workflows Actions](/docs/internal-developer-portal/flows/custom-actions#harness-specific-custom-actions) currently supports only [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)**(Only Available with Harness CD License or Free Tier usage)** and [codebase disabled](http://localhost:3001/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages) **CI stage (Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings). **All input, except for [pipeline expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be [fixed values](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).**
+This [Harness Specific Workflows Actions](/docs/internal-developer-portal/flows/custom-actions#harness-specific-custom-actions) currently support only [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)**(Only Available with Harness CD License or Free Tier usage)** and [codebase disabled](http://localhost:3001/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages) **CI stage (Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings). **All input, except for [pipeline expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be [fixed values](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).**
 
 ```YAML {42-58}
 ##Example YAML
@@ -86,7 +86,7 @@ In the above example there are two parts:
 
 Let's take a look at the inputs that the Workflow expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in properties are the unique IDs of fields (for example, `github_repo` and `project_name`). These are the pipeline variables that you need to set as runtime inputs while configuring the pipeline. This is what we want the developer to enter when creating their new application.
 
-The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. It takes the pipeline `url`,`inputset` containing all the runtime input variables that the pipeline needs and the `apikey` as input .
+The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. It takes the pipeline `url`,`inputset` containing all the runtime input variables that the pipeline needs and the `apikey` as input.
 
 [Steps](/docs/internal-developer-portal/flows/service-onboarding-pipelines#building-the-workflow-backend) is where you integrate the Harness Pipeline as a Backend and are the core execution units within Workflows. Each step runs an action that might involve triggering a CI/CD pipeline, creating a service in a catalog, or provisioning infrastructure resources.
 
@@ -102,13 +102,13 @@ The above example uses various pipeline variables. The variables are as follows:
 
 Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name should match with the parameter name used in the Workflow as the values would be pre-populated from the values entered as input in the below IDP Workflow.
 
-For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `inputset` in the above mentioned example.
+For e.g.: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `inputset` in the above-mentioned example.
 
 You can use the **Variables** button on the floating sidebar on the right-hand side to open the Variables page for the pipeline.
 
 ![](./static/pipeline%20variables.png)
 
-You can create any number of pipeline variables and decide their value type. Some variables, such as a GitHub token, a user name, and organization, can have a fixed value. The token used in the code above is a Harness secret whose value is decoded during pipeline execution.
+You can create any number of pipeline variables and decide their value type. Some variables, such as a GitHub token, a username, and organization, can have a fixed value. The token used in the code above is a Harness secret whose value is decoded during pipeline execution.
 
 Variables such as project name and GitHub repository are runtime inputs. They are needed at the time of pipeline execution. When creating a new variable, you can specify its type in the UI. For more information about reference variables, go to the [reference documentation](/docs/platform/variables-and-expressions/harness-variables/) on pipeline variables.
 
@@ -226,7 +226,7 @@ output:
 
 :::info
 
-Only **user defined output variables** are allowed, but you can as well use the system generated variables by assigning them as a new variable under shell script step as displayed below. For eg. we have mentioned the system generated output as `jira_id` and under **Optional Configuration** added a **test-var** which becomes a user defined output variable and could be displayed as output in the IDP workflows.
+Only **user defined output variables** are allowed, but you can as well use the system generated variables by assigning them as a new variable under shell script step as displayed below. For e.g. we have mentioned the system generated output as `jira_id` and under **Optional Configuration** added a **test-var** which becomes a user defined output variable and could be displayed as output in the IDP workflows.
 
 ![](./static/output-variable.png)
 
@@ -242,7 +242,7 @@ There are two ways in which you can add the output variable to the Workflows syn
 
 ### Hide Logs
 
-You can now optionally remove the pipeline url from the workflow execution logs, for this you need to use the boolean property `hidePipelineURLLog` and set the value as `true`.
+You can now optionally remove the pipeline URL from the workflow execution logs, for this you need to use the boolean property `hidePipelineURLLog` and set the value as `true`.
 
 ```YAML {8}
 ## Example
@@ -395,7 +395,7 @@ Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob
 
 - Conditionals (if statements): The `if` condition allows execution of steps based on the selected environment.
 
-- Output: A sample output section is included, where you can route the result of any step to view the logs. Replace the url field with an appropriate log service URL if needed.
+- Output: A sample output section is included, where you can route the result of any step to view the logs. Replace the URL field with an appropriate log service URL if needed.
 
 This Workflow showcases how you can use conditionals `if` to control which steps run based on the environment selected by the user.
 
