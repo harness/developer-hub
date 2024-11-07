@@ -15,7 +15,7 @@ Security context constraints allow administrators to control permissions for pod
 The <code>default</code> service account is used to run applications within a project. You can run other applications in the same project, but if you don't want to override the privileges used for all applications, create a new service account and grant special rights to the project where the application is run.
 
 :::tip
-You can leverage all the [permissions mentioned](#run-service-account-as-a-cluster-admin) for fault execution as well as [service discovery](/docs/chaos-engineering/concepts/explore-concepts/service-discovery/user-defined-service-account). The SCC described below is a superset, which means only some of them are required for service discovery.
+You can leverage all the [permissions mentioned](#run-service-account-as-a-cluster-admin) for fault execution as well as [service discovery](/docs/chaos-engineering/use-harness-ce/service-discovery/user-defined-service-account). The SCC described below is a superset, which means only some of them are required for service discovery.
 :::
 
 ### Create a new service account

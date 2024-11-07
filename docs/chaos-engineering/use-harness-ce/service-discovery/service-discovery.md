@@ -1,10 +1,11 @@
 ---
 id: service-discovery
-sidebar_position: 45
+sidebar_position: 1
 title: Service Discovery
 redirect_from:
 - /docs/chaos-engineering/features/service-discovery/intro-service-discovery
 - /docs/category/service-discovery
+- /docs/chaos-engineering/concepts/explore-concepts/service-discovery/
 ---
 
 This topic introduces you to **service discovery** for **Kubernetes infrastructure**, its significance, and its purpose.
