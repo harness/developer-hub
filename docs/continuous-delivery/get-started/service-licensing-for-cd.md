@@ -131,7 +131,7 @@ Potentially, yes. Your license consumption may increase since we are now trackin
 
 **A:** GitOps has become a core feature of Harness Continuous Deployment (CD) and is widely adopted by our customers. Including GitOps Services in the billing model ensures that billing accurately reflects the comprehensive set of features you utilize, promoting fairness and transparency.
 
-### Q3: How does the change in Serverless Services valuation benefit me?
+### How does the change in Serverless Services valuation benefit me?
 
 **A:** By adjusting the valuation to 0.20 of a Service per serverless function, customers deploying serverless architectures will experience reduced costs associated with these functions. This change makes it more cost-effective for you to leverage serverless deployments.
 
