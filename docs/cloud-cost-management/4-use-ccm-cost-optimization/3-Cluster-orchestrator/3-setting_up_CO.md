@@ -310,7 +310,7 @@ helm upgrade -i harness-ccm-cluster-orchestrator --namespace kube-system harness
 --set eksCluster.endpoint="<eks_cluster_endpoint>" 
 --set eksCluster.defaultInstanceProfile.name="<eks_cluster_default_instance_profile>" 
 --set eksCluster.nodeRole.arn="<eks_cluster_node_role_arn>" 
---set clusterOrchestrator.id="<cluster_orchestrator_id>
+--set clusterOrchestrator.id="<cluster_orchestrator_id>"
 ```
 
 ## Installation via kubectl
