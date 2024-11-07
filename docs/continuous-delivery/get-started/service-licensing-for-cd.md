@@ -136,11 +136,6 @@ Potentially, yes. Your license consumption may increase since we are now trackin
 By adjusting the valuation to 0.20 of a Service per serverless function, customers deploying serverless architectures will experience reduced costs associated with these functions. This change makes it more cost-effective for you to leverage serverless deployments.
 
 
-### Q5: How can I calculate my expected billing under Licensing V2?
-
-**A:** You can estimate your total billed services by summing up your usage based on the new licensing rules:
-
-- **Service Instances:** Count the Service Instances for CD and GitOps Services.
 
 ### Does Harness provide tools to help manage and optimize licensing costs?
 
