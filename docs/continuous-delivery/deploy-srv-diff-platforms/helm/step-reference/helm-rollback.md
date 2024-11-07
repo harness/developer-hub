@@ -6,7 +6,7 @@ sidebar_position: 20
 
 This topic describes the configuration and settings for the Helm Rollback step.
 
-The Helm Rollback step performs a rollback for a helm deployment. 
+The Helm Rollback step performs a rolling rollback for a helm deployment. 
 
 As a best practice, every time you use a [Helm Deployment step](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/step-reference/helm-deploy.md) you should also use a Helm Rollback step in the rollback phase of the pipeline. 
 
