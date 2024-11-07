@@ -187,7 +187,7 @@ The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-network-loss/network-packet-loss-percentage.yaml yaml)
 ```yaml
-# it injects the chaos into the egress traffic
+# it injects the chaos into the ingress/egress traffic
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -220,7 +220,7 @@ The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-network-loss/destination-host-and-ip.yaml yaml)
 ```yaml
-# it injects the chaos into the egress traffic for specific IPs/hosts
+# it injects the chaos into the ingress/egress traffic for specific IPs/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -253,7 +253,7 @@ The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-network-loss/network-interface.yaml yaml)
 ```yaml
-# it injects the chaos into the egress traffic for specific network interface
+# it injects the chaos into the ingress/egress traffic for specific network interface
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

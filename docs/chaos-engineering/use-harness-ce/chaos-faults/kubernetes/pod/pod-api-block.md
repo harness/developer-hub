@@ -345,7 +345,7 @@ To enable HTTPS support for both incoming and outgoing traffic between the targe
 ### Advanced fault tunables
 
 - `PROXY_PORT`: Port where the proxy listens for requests and responses.
-- `SERVICE_DIRECTION`: Direction of the flow of control, either ingress or egress. It supports `ingress`, and `egress` values.
+- `SERVICE_DIRECTION`: Direction of the flow of control, either `ingress` or `egress`.
 - `NETWORK_INTERFACE`: Network interface used for the proxy.
 
 The following YAML snippet illustrates the use of this environment variable:
