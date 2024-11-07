@@ -11,10 +11,10 @@ Harness supports a wide range of use cases and integrations with other platforms
 ## Requirements and Planning:
 
 We integrate with Jira, GitLab, Azure DevOps and GitHub for issue tracking and requirements.
-- [Jira](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration)
-- [GitLab](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab)
-- [GitHub](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration)
-- [Azure DevOps Boards](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops)
+- [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration)
+- [GitLab](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab)
+- [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)
+- [Azure DevOps Boards](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
 
 ## UX Design
 

@@ -54,7 +54,7 @@ We do have different built-in notification mechanisms,  slack/email/ms teams/pag
 ### Is there a way to create a github repository tag in Harness ?
 
 One can use `curl` commands to create tags via API for [Github repository tags](https://docs.github.com/en/rest/repos/tags?apiVersion=2022-11-28). 
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/software-engineering-insights/sei-integrations/github%20actions/sei-github-actions/#set-up-the-workflow)
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions/#set-up-the-workflow)
 
 
 ### What does exit status 1 mean
