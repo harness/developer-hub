@@ -133,7 +133,7 @@ Potentially, yes. Your license consumption may increase since we are now trackin
 
 ### How does the change in Serverless Services valuation benefit me?
 
-**A:** By adjusting the valuation to 0.20 of a Service per serverless function, customers deploying serverless architectures will experience reduced costs associated with these functions. This change makes it more cost-effective for you to leverage serverless deployments.
+By adjusting the valuation to 0.20 of a Service per serverless function, customers deploying serverless architectures will experience reduced costs associated with these functions. This change makes it more cost-effective for you to leverage serverless deployments.
 
 ### Q4: Will my overall billing increase with Licensing V2?
 
