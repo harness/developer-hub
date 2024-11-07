@@ -198,9 +198,9 @@ All security and compliance features remain fully supported and will not be affe
 
 **A:** Under Licensing V2, we have shifted from user-based CD service billing. While we no longer bill based on the number of users, user management functionalities remain unchanged. You can continue to add and manage users within your organization without it affecting your CD licensing costs.
 
-### Q19: How can I provide feedback about Licensing V2?
+### How can I provide feedback about Licensing V2?
 
-**A:** We welcome your feedback as it helps us improve our services. You can provide feedback through:
+We welcome your feedback as it helps us improve our services. You can provide feedback through:
 
 - **Account Representative:** Share your thoughts directly with your account manager.
 - **Support Tickets:** Submit feedback via our support portal.
