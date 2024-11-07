@@ -63,8 +63,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Harness has introduced supports for **Canary** and **Blue-Green** Deployment strategies with Helm Charts. (CDS-35715)
 
-- Harness now supports deployment of **Google Cloud Run**. (CDS-36357)
-
 - Harness now supports for enabling metrics in ASG deployments. (CDS-99276)
 
 - Harness now detects the failure state of CRDs in the Kubernetes Apply step when CRDs behave like jobs. (CDS-98761)
