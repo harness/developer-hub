@@ -111,8 +111,6 @@ Harness has introduced a significant update to its service tracking capabilities
 
 ## Improved Service Licence Tracking
 
-None of the customers
-
 | Component                    | Service Tracking (Past State)                                    | Service Tracking (New State)                                    | Change Details                                                                                                                       |
 |------------------------------|-------------------------------------------------|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
 | **CD Service**               | 1 Service = 20 SI                               | 1 Service = 20 SI                               | No change in licensing rules.                                                                                                        |
