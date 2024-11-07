@@ -145,9 +145,9 @@ Yes, Harness offers monitoring and reporting tools within the platform to help y
 
 The User License is now considered a legacy license type that we no longer support for Harness CD. While you can renew based on the User License, the licensing page will compute usage in terms of services, not users, and you will not receive an accurate estimate of user counts. Originally, Harness CD tracked deployed services rather than users. The User License model was created to offer more favorable pricing terms for some customers.
 
-### Q8: What is happening with the Service or Service Instance Licenses I initially renewed or purchased?
+### What will happen with the Service or Service Instance Licenses I initially renewed or purchased?
 
-**A:** Harness will migrate existing customers with Service or Service Instance Licenses to the V2 version of these license types. After discussing with you, the licensing page will compute usage according to the V2 licensing model. Please note that you cannot renew under the legacy V1 Service or Service Instance Licenses.
+Harness will migrate existing customers with Service or Service Instance Licenses to the V2 version of these license types. After discussing with you, the licensing page will compute usage according to the V2 licensing model. Please note that you cannot renew under the legacy V1 Service or Service Instance Licenses.
 
 ### I'm concerned about unexpected cost increases. How can I ensure my costs remain manageable?
 
