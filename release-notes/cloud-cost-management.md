@@ -27,6 +27,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Ad-Hoc Enforcement Runs: Users can now dry run or execute enforcements directly from the Enforcements list or details page in Asset Governance, improving control over ad-hoc enforcement. [CCM-19438]
 
+- New Resource Name Column in Recommendations View: A new column, Resource Name (No drilldown) has been added to the Governance recommendations view. This allows users to group Governance Recommendations by a specific rule. [CCM-19922]
+
 - AWS Payer Account ID Field Added: We’ve introduced the AWS Payer Account ID in the AWS fields dropdown for Perspectives and Cost Categories Rules. Only account IDs will be shown, excluding account names. [CCM-19843]
 
 - Increased Connector Limit for GCP: We raised the default limit to 6,000 for GCP cross combinations (target account * target region) to prevent unannounced system loads, aligning with the 200 account and 30 region limits in Asset Governance. [CCM-19838]
