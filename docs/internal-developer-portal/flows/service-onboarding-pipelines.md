@@ -307,7 +307,7 @@ Harness IDP ships the following Harness related built-in actions along with [som
 - `harness:create-secret`
 - `harness:delete-secret`
 
-Learn more about how to use them in the [service onboarding tutorial](/docs/internal-developer-portal/flows/create-a-new-service-using-idp-stage).
+Learn more about how to use them in the [service onboarding tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/create-a-new-service-using-idp-stage).
 
 ## Available Workflow UI pickers
 
