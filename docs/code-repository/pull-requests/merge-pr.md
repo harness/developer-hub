@@ -21,8 +21,14 @@ After [reviewing a PR](./review-pr.md), you can merge it and commit the changes 
 
 ### Rebase a PR
 
-If the base branch has diverged from the source branch, you may want to rebase the PR before merging to ensure a clean integration of changes. You can do this by selecting the **Rebase** option in the 'more actions' menu of the PR before proceeding with the merge. Rebase is optional for all merge strategies but may be required for Fast-forward merges when the base branch has diverged from the source branch.
+If the base branch has diverged from the source branch, you may want to rebase the PR before merging to ensure a clean integration of changes. You can do this by selecting the **Rebase** option in the 'more actions' menu of the PR before proceeding with the merge. Rebase is optional for all merge strategies but may be required for Fast-forward merges when the base branch has diverged from the source branch. 
 
+:::info Note
+
+* Merge conflicts will need to be resolved locally on the client before rebasing.
+* Rebase is not possible if force-push is disabled on the source branch in repository branch rules.
+
+:::
 
 ### Merge strategies
 
