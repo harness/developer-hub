@@ -135,7 +135,7 @@ Create a secret with token and configure in the Personal Access token field. [Re
 
 ![](./static/bitbucket-connector.png)
 
-For **Bitbucket Cloud** the url needs to have **src** instead of **blob**. for eg. `https://bitbucket.org/org-name/repo-name/src/branch/harness-services/Organization/default.yaml`
+For **Bitbucket Cloud** the URL needs to have **src** instead of **blob**. For e.g. `https://bitbucket.org/org-name/repo-name/src/branch/harness-services/Organization/default.yaml`
 
 :::
 
@@ -155,7 +155,7 @@ While using GitHub App, you need a **private key for your GitHub app** to config
 
 :::
 
-More instructions on [using github app in github connector](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support).
+More instructions on [using GitHub app in GitHub connector](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support).
 
 </TabItem>
 <TabItem value="gitlab-connector" label="GitLab">
@@ -187,7 +187,7 @@ The scope is tied to URL format `https://gitprovider.com/org-name`, so all the G
 <Tabs queryString="Import Harness Services">
 <TabItem value="import-harness-services" label="Import Harness Services">
 
-8. User will be shown the list of services in their account. It will be defined in terms of IDP entity i.e harness organization is a domain, harness project is a system and harness service is a component in the IDP world. This list includes services at all scopes.
+8. User will be shown the list of services in their account. It will be defined in terms of IDP entity i.e. harness organization is a domain, harness project is a system and harness service is a component in the IDP world. This list includes services at all scopes.
 
 9. User can choose all the services / individual services / no services
 
@@ -235,9 +235,9 @@ https://github.com/sathish-soundarapandian/onboarding-test.git
 https://github.com/sathish-soundarapandian/onboarding-test
 ```
 
-- The provided repo in the repo URL should belong to the same organization / project for which the connector has been setup. Ex -
+- The provided repo in the repo URL should belong to the same organization / project for which the connector has been set up. Ex -
 
-**In connector** - The account path is `https://github.com/sathish-soundarapandian`. So the repo url in IDP onboarding flow should be `https://github.com/sathish-soundarapandian/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
+**In connector** - The account path is `https://github.com/sathish-soundarapandian`. So the repo URL in IDP onboarding flow should be `https://github.com/sathish-soundarapandian/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
 
 - Provided repo should exist with a valid default HEAD branch. Ideally this will be case when the repo is initialized with README file
 
@@ -298,9 +298,9 @@ https://github.com/sathish-soundarapandian/onboarding-test.git
 https://github.com/sathish-soundarapandian/onboarding-test
 ```
 
-- The provided repo in the repo URL should belong to the same organization / project for which the connector has been setup. Ex -
+- The provided repo in the repo URL should belong to the same organization / project for which the connector has been set up. Ex -
 
-**In connector** - The account path is `https://github.com/sathish-soundarapandian`. So the repo url in IDP onboarding flow should be `https://github.com/sathish-soundarapandian/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
+**In connector** - The account path is `https://github.com/sathish-soundarapandian`. So the repo URL in IDP onboarding flow should be `https://github.com/sathish-soundarapandian/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
 
 - Provided repo should exist with a valid default HEAD branch. Ideally this will be case when the repo is initialized with README file
 
@@ -318,7 +318,7 @@ https://github.com/sathish-soundarapandian/onboarding-test
 
 ## Create and Register Entities
 
-11. Once the required details are entered and submitted for importing, we will push the generated entity yaml files to the repo and path provided. You will be seeing two commits - One is done during the sync flow and other commit which will consist of remaining entities will be pushed in an async manner. Time frame for async operation will depend on how big the repo size is and how many revisions the provided repo has.
+11. Once the required details are entered and submitted for importing, we will push the generated entity YAML files to the repo and path provided. You will be seeing two commits - One is done during the sync flow and other commit which will consist of remaining entities will be pushed in an asynchronous manner. Time frame for asynchronous operation will depend on how big the repo size is and how many revisions the provided repo has.
 
 12. In the background, the catalog are also imported into IDP along with their associated configs.
 
@@ -326,13 +326,13 @@ https://github.com/sathish-soundarapandian/onboarding-test
 
 ## Catalog
 
-13. User can navigate to the IDP homepage to get started. Catalog will be start showing up once the async operation is completed.
+13. User can navigate to the IDP homepage to get started. Catalog will be start showing up once the asynchronous operation is completed.
 
-14. Since during the onboarding flow harness will not be able to discover the complete metadata of the entity, the owner field will be set to Unknown. As part of the IDP provisioning, harness users and groups are imported to IDP. With this in place, customers can start editing the catalog info yaml definition to update the owner for each of the entity.
+14. Since during the onboarding flow harness will not be able to discover the complete metadata of the entity, the owner field will be set to Unknown. As part of the IDP provisioning, harness users and groups are imported to IDP. With this in place, customers can start editing the catalog info YAML definition to update the owner for each of the entity.
 
 ![](static/catalog.png)
 
-15. Post onboarding, users can import any number of entities into harness-idp using the [register component flow](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component). This flow expects you to provide the complete url where the entity definition is hosted.
+15. Post onboarding, users can import any number of entities into Harness IDP using the [register component flow](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component). This flow expects you to provide the complete URL where the entity definition is hosted.
 
 **Recommendations**
 

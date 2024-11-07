@@ -17,7 +17,7 @@ description: A frontend plugin that displays Opsgenie alerts, incidents and on-c
 
 This plugin requires a backend proxy configuration to make calls to Opsgenie with authentication.
 
-- Under the **Plugins** tab in **Admin**, go to `app-config.yaml` and **Edit YAML** to configure your opsgenie instance in the **target** field and add your **domain** in the format as shown below.
+- Under the **Plugins** tab in **Admin**, go to `app-config.yaml` and **Edit YAML** to configure your Opsgenie instance in the **target** field and add your **domain** in the format as shown below.
 
 ```yaml
 # app-config.yaml
@@ -54,7 +54,7 @@ opsgenie:
 - view and search a list of incidents
 - view incident-related analytics
 
-The following configuration needs to set by users in **Layout** under **Admin** for **Sidenav** to get the opsgenie page. 
+The following configuration needs to set by users in **Layout** under **Admin** for **Sidenav** to get the Opsgenie page. 
 
 ```yaml
 - name: SidebarItem
@@ -71,7 +71,7 @@ The following configuration needs to set by users in **Layout** under **Admin** 
 
 2. The `EntityOpsgenieAlertsCard` component which can display recent alerts for a specific component.
 
-This plugin exports the above mentioned card that you can show on the **Overview** tab of a service or any other layout page.  The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
+This plugin exports the above-mentioned card that you can show on the **Overview** tab of a service or any other layout page.  The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
 
 ```yaml
 - component: EntityOpsgenieAlertsCard

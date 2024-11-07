@@ -28,7 +28,7 @@ _No action required_
 
 _No action required_
 
-This plugin exports a  single page. The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
+This plugin exports a single page. The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
 
 ```YAML
     - name: EntityAdrContent

@@ -16,7 +16,7 @@ description: View list of Chaos Experiments	for your applications.
 
 _No action required_
 
-This plugin requires a backend proxy configuration to make calls to Harness APIs with authentication. The following configuration is set by default and you do not need to change anything:
+This plugin requires a backend proxy configuration to make calls to Harness APIs with authentication. The following configuration is set by default, and you do not need to change anything:
 
 ```yaml
 proxy:
@@ -52,7 +52,7 @@ This plugin exports a UI tab that you can use as a new "Chaos Experiments" tab f
     - component: EntityHarnessChaosContent
 ```
 
-Also you could add a conditional like `isHarnessChaosAvailable`  which is met when `harness.io/project-url` and `harness.io/network-map-tags` annotations are present in the software components's `catalog-info.yaml` definition file.
+Also, you could add a conditional like `isHarnessChaosAvailable` which is met when `harness.io/project-url` and `harness.io/network-map-tags` annotations are present in the software component's `catalog-info.yaml` definition file.
 
 ```YAML
 - name: chaos

@@ -28,7 +28,7 @@ Docs in Harness IDP is powered by [TechDocs Backstage Plugin](https://backstage.
 To add documentation:
 
 1. Create a `docs` directory next to where you have `catalog-info.yaml`.
-2. Inside the `docs` directory, create an `index.md` file with the following contents.
+2. Inside the `docs` directory, create a `index.md` file with the following contents.
 
 ```
 # Welcome!

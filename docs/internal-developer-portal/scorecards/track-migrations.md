@@ -14,7 +14,7 @@ In this tutorial we will be using [Scorecards](https://developer.harness.io/docs
 
 Before starting, ensure you have:
 
-1. An active Harness IDP account, at present IDP is enabled on request so please [fill this form](https://www.harness.io/demo/internal-developer-portal) to get IDP enabled for you.
+1. An active Harness IDP account, at present IDP is enabled on request, so [fill this form](https://www.harness.io/demo/internal-developer-portal) to get IDP enabled for you.
 
 2. Access to your git provider through the connectors in the Admin section, remember to provide API access. Follow the [steps mentioned here to create connector](https://developer.harness.io/docs/category/code-repo-connectors) once you're in the connector window.
 
@@ -38,7 +38,7 @@ Catalog -> Software Component -> Inspect Entity -> Raw YAML
 
 ## Understanding Checks in Scorecards
 
-We have added data points for git based datasources (GitHub, GitLab, etc.), to be used to create custom checks in Scorecards that can match and extract specific string patterns from any file in your source code. This feature is particularly useful for tracking versions in various files eg., bazel for java, Dockerfile, go.mod for go, package.json for react and javascript, manifest files, etc.
+We have added data points for git based datasources (GitHub, GitLab, etc.), to be used to create custom checks in Scorecards that can match and extract specific string patterns from any file in your source code. This feature is particularly useful for tracking versions in various files eg., bazel for java, Dockerfile, go.mod for go, package.json for React and JavaScript, manifest files, etc.
 
 ## Setting up a Custom Check
 
@@ -75,7 +75,7 @@ A `Location` reference that points to the source code of the entity (typically a
 
 ### File Specification
 
-5. Defining the File: Specify the filename with its extension or provide the relative path from the root folder. For example, use .bazelrc, package.json, manifest/Dockerfile. Also you can provide the filename as a regex pattern, example for a file path `/backstage/blob/master/scripts/log-20240105.anyextension` the regex would be `/backstage/blob/master/scripts/log-20240105\..*`
+5. Defining the File: Specify the filename with its extension or provide the relative path from the root folder. For example, use .bazelrc, package.json, manifest/Dockerfile. Also, you can provide the filename as a regex pattern, example for a file path `/backstage/blob/master/scripts/log-20240105.anyextension` the regex would be `/backstage/blob/master/scripts/log-20240105\..*`
 
 ### Specify the Pattern
 
@@ -85,7 +85,7 @@ A `Location` reference that points to the source code of the entity (typically a
 
 Here, we need to group the string pattern which we want to match using `()` for example in the above example we have grouped the number `(\d+)` another example is if we would try to match this string `go 1.21` in a go.mod file, the corresponding regex would be `^go\s(\d+\.\d+)$` another regex pattern example for package.json file content `"eslint": "^7.7.0",` is `"eslint":\s"\^(\d+\.\d+\.\d+)",`
 
-Also we suggest you to use [chatgpt](https://chat.openai.com/) for generating and [regex101](https://regex101.com/) validating the regex.
+Also, we suggest you to use [chatgpt](https://chat.openai.com/) for generating and [regex101](https://regex101.com/) validating the regex.
 
 :::
 

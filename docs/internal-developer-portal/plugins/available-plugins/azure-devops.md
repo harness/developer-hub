@@ -14,7 +14,7 @@ description: Easily view your Azure Pipelines within the Software Catalog.
 
 ### Application configuration YAML
 
-This plugin requires a backend proxy configuration to make calls to Azure Pipelines with authentication. The following configuration is set by default and you need to add the `host`, `token` and `organization`
+This plugin requires a backend proxy configuration to make calls to Azure Pipelines with authentication. The following configuration is set by default, and you need to add the `host`, `token` and `organization`
 
 ```yaml
 azureDevOps:

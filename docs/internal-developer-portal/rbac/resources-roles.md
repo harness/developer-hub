@@ -16,7 +16,7 @@ Every entity in the Software Catalog has a corresponding [`catalog-info.yaml` de
 
 ### View Access
 
-Catalog is central to Harness IDP, and each and every user having access to your account can view the catalog entities. However you can control the ability to delete the components using the **Catalog Access Policies** as described below.
+Catalog is central to Harness IDP, and each and every user having access to your account can view the catalog entities. However, you can control the ability to delete the components using the **Catalog Access Policies** as described below.
 
 ### Catalog Access Policies
 
@@ -64,14 +64,14 @@ Workflows being a catalog entity has a corresponding `workflow.yaml` or `templat
 
 ### Hide Workflows
 
-You can hide the workflows, suggested to use while the workflow is in development phase, by using the same tags used to [hide catalog entities](/docs/internal-developer-portal/rbac/resources-roles#hide-catalog-entities). 
+You can hide the workflows, suggested using while the workflow is in development phase, by using the same tags used to [hide catalog entities](/docs/internal-developer-portal/rbac/resources-roles#hide-catalog-entities). 
 
 
 ## Platform Level RBAC 
 
-To do this Harness provides a logical structure comprising of **Account**, **Organization** and **Project** that naturally aligns with how most organizations are structured and **Harness IDP is an Account Level module**.
+To do this Harness provides a logical structure comprising **Account**, **Organization** and **Project** that naturally aligns with how most organizations are structured and **Harness IDP is an Account Level module**.
 
-1. **Account:** Account is the topmost entity that can exercise control and has visibility over the entire platform. It is your Harness account and it encompasses all the resources within your Harness subscription. It provides a way to manage billing, user authentication, and global settings for all the organizations and projects within the account. Users with account-level permissions can manage the account-level settings, including billing, subscription, and SSO configuration. Resources, such as connectors, created at the account scope are available for use in all the organizations and projects within that account.
+1. **Account:** Account is the topmost entity that can exercise control and has visibility over the entire platform. It is your Harness account, and it encompasses all the resources within your Harness subscription. It provides a way to manage billing, user authentication, and global settings for all the organizations and projects within the account. Users with account-level permissions can manage the account-level settings, including billing, subscription, and SSO configuration. Resources, such as connectors, created at the account scope are available for use in all the organizations and projects within that account.
 
 Before configuring RBAC in Harness IDP, you should have an understanding of:
 
@@ -88,7 +88,7 @@ In Harness, RBAC policies are defined using:
 
    2. **Named Resources** – Groups together a specific set of individual resources.
 
-When a **User** or a **User Group** is associated with a **Role** and a **Resource Group**, it provides them the permission as defined in the role to the resources as grouped together in the resource group. You need [these permissions](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#required-permissions) to setup RBAC in IDP.
+When a **User** or a **User Group** is associated with a **Role** and a **Resource Group**, it provides them the permission as defined in the role to the resources as grouped together in the resource group. You need [these permissions](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#required-permissions) to set up RBAC in IDP.
 
 ![](./static/resource-group.png)
 

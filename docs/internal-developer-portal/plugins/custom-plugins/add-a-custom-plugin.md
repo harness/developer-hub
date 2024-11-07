@@ -26,7 +26,7 @@ In IDP we allow addition of, backstage frontend plugins, created by you as a cus
 
 :::info
 
-As the feature is in beta we don't have proper error handling in place yet, so for all the steps below please make sure all your entires are correct for the plugin.
+As the feature is in beta we don't have proper error handling in place yet, so for all the steps below please make sure all your entries are correct for the plugin.
 
 :::
 
@@ -41,7 +41,7 @@ import TabItem from '@theme/TabItem';
 
 4. Now add the URL for your plugin **public** npm package.
 
-eg,. `https://www.npmjs.com/package/@parsifal-m/plugin-dev-quotes-homepage`, `https://www.npmjs.com/package/backstage-plugin-should-i-deploy`
+e.g., `https://www.npmjs.com/package/@parsifal-m/plugin-dev-quotes-homepage`, `https://www.npmjs.com/package/backstage-plugin-should-i-deploy`
 
 ![](./static/use-url.png)
 
@@ -154,7 +154,7 @@ new-plugin/
 5. Now Click Next and start adding the **Plugin Metadata**. You have to fill the following fields 
     
     - **Plugin Name** : Add a name for your Plugin
-    - **Package name** : This will be same as your plugin package present in your plugin's `package.json` file. Make sure the name is exactly similar to what's mentioned in the `package.json` including `@`, eg: `@parsifal-m/plugin-dev-quotes-homepage`
+    - **Package name** : This will be same as your plugin package present in your plugin's `package.json` file. Make sure the name is exactly similar to what's mentioned in the `package.json` including `@`, e.g.: `@parsifal-m/plugin-dev-quotes-homepage`
     - **Description** : Add an apt description for your plugin, especially the function of the plugin.
     - **Category** : Add an functional category for your plugin like `Monitoring`, `Observability`, `CI/CD` etc.
     - **Created By** : Add the [User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups) you belong to from the dropdown. 

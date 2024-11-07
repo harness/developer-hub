@@ -6,7 +6,7 @@ sidebar_position: 7
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic service onboarding pipeline that uses a software template and provisions a application templated by cookiecutter for a developer. After you create the software template, developers can choose the template on the **Workflow** page and enter details such as a name for the application and the path to their Git repository. The service onboarding pipeline creates a new repository and adds a `catalog-info.yaml` to it and registers it back into your software catalog all using the new **Developer Portal** stage. 
+This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic service onboarding pipeline that uses a software template and provisions an application templated by cookiecutter for a developer. After you create the software template, developers can choose the template on the **Workflow** page and enter details such as a name for the application and the path to their Git repository. The service onboarding pipeline creates a new repository and adds a `catalog-info.yaml` to it and registers it back into your software catalog all using the new **Developer Portal** stage. 
 
 Users (developers) must perform a sequence of tasks to create the application. First, they interact with a software template. A software template is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness pipeline that onboard the new service. Usually the pipeline fetches a cookiecutter template code, creates a new repository, and interacts with third-party providers such as cloud providers, Jira, and Slack.
 
@@ -333,7 +333,7 @@ pipeline:
     mozallowfullscreen="mozallowfullscreen" 
     allowfullscreen="allowfullscreen"></iframe>
 
-The instruction guide above shows how to create and configure variables in steps 16-27. Make sure to create all of the variables listed below:
+The instruction guide above shows how to create and configure variables in steps 16-27. Make sure to create all the variables listed below:
 
 - project_name
 - organization
@@ -364,7 +364,7 @@ The instruction guide above shows how to create and configure variables in steps
 
 :::info
 
-Software Templates currently support pipelines that are comprised only of [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage), [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and [CI Stage with Run Step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step) with codebase disabled. Additionally, all inputs, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
+Software Templates currently support pipelines that are composed only of [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage), [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and [CI Stage with Run Step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step) with codebase disabled. Additionally, all inputs, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
 
 ![](./static/pipeline-varialbles-idp-implementation.png)
 
@@ -524,7 +524,7 @@ token:
 
 :::info
 
-The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page`  in-case you have multiple pages.
+The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page` in-case you have multiple pages.
 
 ```
 # example workflow.yaml
@@ -579,9 +579,8 @@ Now navigate to the **Workflows** page in IDP. You will see the newly created te
 
 ## Additional Information
 
-### Conditional Inputs in Templates
-
-1. One Of: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
+### Conditional Inputs in Workflows
+1. One Of: Helps you create a dropdown in the Workflow, where only one of all the options available could be selected. 
 
 ```YAML
 dependencies:
@@ -597,7 +596,7 @@ dependencies:
               - java8
               - java11
 ```
-2. All Of: Helps you create a dropdown in the template, where only all the options available could be selected.
+2. All Of: Helps you create a dropdown in the Workflow, where only all the options available could be selected.
 
 ```YAML
 type: object
@@ -652,7 +651,7 @@ anyOf:
 
 For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
 
-### Upload a File in a Template
+### Upload a File in a Workflow
 
 There are 3 types of file upload. 
 
@@ -718,14 +717,14 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
         apikey: ${{ parameters.token }}
 ```
 
-### Unregister/Delete Template
+### Unregister/Delete Workflow
 
 1. Navigate to the **Catalog** page, and select **Template** under Kind.
 
 ![](./static/catalog-navigation.png)
 
-2. Select the Template Name you want to Unregister.
-3. Now on the Template overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+2. Select the Workflow Name you want to Unregister.
+3. Now on the Workflow overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
 
 ![](./static/unregister-entity.png)
 
@@ -733,4 +732,4 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
 
 ![](./static/Unregister-location.png)
 
-5. This will delete the Template.
+5. This will delete the Workflow.

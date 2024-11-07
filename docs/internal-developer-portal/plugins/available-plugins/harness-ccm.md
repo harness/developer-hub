@@ -16,7 +16,7 @@ description: Manage and Optimize Cloud Costs using Harness Cloud Cost Management
 
 _No action required_
 
-This plugin requires a backend proxy configuration to make calls to Harness APIs with authentication. The following configuration is set by default and you do not need to change anything:
+This plugin requires a backend proxy configuration to make calls to Harness APIs with authentication. The following configuration is set by default, and you do not need to change anything:
 
 ```YAML
 proxy:

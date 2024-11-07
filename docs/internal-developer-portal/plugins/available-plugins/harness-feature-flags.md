@@ -18,7 +18,7 @@ description: View your project's feature flags and their statuses.
 
 _No action required_
 
-This plugin requires a backend proxy configuration to make calls to Harness APIs with authentication. The following configuration is set by default and you do not need to change anything:
+This plugin requires a backend proxy configuration to make calls to Harness APIs with authentication. The following configuration is set by default, and you do not need to change anything:
 
 ```yaml
 proxy:
@@ -54,7 +54,7 @@ This plugin exports a UI tab that you can use as a new Feature Flags tab for a s
     - component: EntityHarnessFeatureFlagContent
 ```
 
-Also you could add a conditional like `isHarnessFeatureFlagAvailable` which is met when the `harness.io/project-url` annotation is present in the software components's `catalog-info.yaml` definition file.
+Also, you could add a conditional like `isHarnessFeatureFlagAvailable` which is met when the `harness.io/project-url` annotation is present in the software component's `catalog-info.yaml` definition file.
 
 ```yaml
 - name: feature-flags

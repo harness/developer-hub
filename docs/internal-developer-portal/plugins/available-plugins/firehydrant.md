@@ -16,7 +16,7 @@ description: View service incident information from FireHydrant, such as active 
 
 _No action required_
 
-This plugin requires a backend proxy configuration to make calls to FireHydrant with authentication. The following configuration is set by default and you do not need to change anything:
+This plugin requires a backend proxy configuration to make calls to FireHydrant with authentication. The following configuration is set by default, and you do not need to change anything:
 
 ```yaml
 proxy:

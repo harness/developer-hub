@@ -61,7 +61,7 @@ This functionality is limited to the modules and settings that you have access t
 
 5. Before adding the execution steps we need to create some **[pipeline variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable/)** with [runtime inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) which we will be using as **[expression inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#expressions)** in various steps under execution. 
 
-6. To add pipeline variables go to the right nav of your pag and select **Variables** icon.
+6. To add pipeline variables go to the right nav of your page and select **Variables** icon.
 
 7. Under **Custom Variables** select **+Add Variable**.
 
@@ -199,7 +199,7 @@ Select the repository type in which your template is stored, which could be publ
 
 In case it's **Private** make sure you have added the **gitclone step** and the **path for template** should be the **Clone Directory** added in **gitclone step**
 
-In case of public templates you just need to add the public URL of the template path stored in your git provider. eg `https://github.com/devesh-harness/test-cookicutter`
+In case of public templates you just need to add the public URL of the template path stored in your git provider. e.g. `https://github.com/devesh-harness/test-cookicutter`
 
 :::
 
@@ -225,7 +225,7 @@ Beyond that, you can have whatever files/directories you want.
 
 :::info
  
-Cookiecutter runs only on the **Project Template** and use values mentioned in `cookiecutter.json`, hence when you add it on git it's suggested to have **one cookiecutter template per repository** with the `cookiecutter.json` on the root. Also in case you don't want to render a file on the execution of cookiecuuter template but that file is inside your Project Template, add it under `_copy_without_render` key in your `cookiecutter.json` 
+Cookiecutter runs only on the **Project Template** and use values mentioned in `cookiecutter.json`, hence when you add it on git it's suggested to have **one cookiecutter template per repository** with the `cookiecutter.json` on the root. Also in case you don't want to render a file on the execution of cookiecuuter template, but that file is inside your Project Template, add it under `_copy_without_render` key in your `cookiecutter.json` 
 
 ```json
 {
@@ -244,7 +244,7 @@ Cookiecutter runs only on the **Project Template** and use values mentioned in `
 
 First select the type of the input it could be a [Fixed Value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values), [Runtime input](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) or [Expression](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#expressions)
 
-In case of **Fixed Value** provide the absolute value of template URL, for eg. `https://github.com/devesh-harness/test-cookicutter`
+In case of **Fixed Value** provide the absolute value of template URL, for e.g. `https://github.com/devesh-harness/test-cookicutter`
 
 In case of **Runtime Input** provide the absolute value of the template URL after you run the pipeline. 
 
@@ -360,7 +360,7 @@ Add the org, repo name, Repo Description and Default branch for the repo you wan
 
 Following is the output variable of this step.
 
-1. **repositoryUrl** : The URL of the repository created eg; `https://github.com/org-name/repo-name` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<+pipeline.stages.idp.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>`
+1. **repositoryUrl** : The URL of the repository created e.g.; `https://github.com/org-name/repo-name` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<+pipeline.stages.idp.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>`
 
 These output variable could be viewed under the output tab in 
 ![](./static/output-createrepo.png)
@@ -368,7 +368,7 @@ These output variable could be viewed under the output tab in
 
 ### 4. Create Catalog
 
-This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to register the software component we have created in previous step in our IDP catalog. 
+This step is used to create the `catalog-info.yaml/idp.yaml` to be used to register the software component we have created in previous step in our IDP catalog. 
 
 :::warning
 
@@ -392,7 +392,7 @@ Name the `catalog-info.yaml` followed by providing a path if you don't want to r
 
 #### File Content
 
-Add the YAML content to be added in your `catalog-info.yaml` file, For eg.,
+Add the YAML content to be added in your `catalog-info.yaml` file, For e.g.,
 
 ```YAML
 apiVersion: backstage.io/v1alpha1
@@ -440,7 +440,7 @@ spec:
 
 Following is the output variable of this step.
 
-1. **registeredCatalogUrl** : The URL of the software component registered in the catalog of IDP eg; `https://app.harness.io/ng/account/**************/module/idp/catalog/default/component/component-name` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<<+pipeline.stages.idp.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>>`
+1. **registeredCatalogUrl** : The URL of the software component registered in the catalog of IDP e.g.; `https://app.harness.io/ng/account/**************/module/idp/catalog/default/component/component-name` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<<+pipeline.stages.idp.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>>`
 
 These output variable could be viewed under the output tab in 
 ![](./static/output-createcatalog.png)
@@ -625,7 +625,7 @@ The `token` is the [Bot-tokens](https://api.slack.com/authentication/token-types
 
 ![](./static/slack-notify-step.png)
 
-The output of the steps like **Create Repo**, **Register Catalog** in the `JEXL` format has been used to construct the `Message` for slack notification. 
+The output of the steps like **Create Repo**, **Register Catalog** in the `JEXL` format has been used to construct the `Message` for Slack notification. 
 
 </TabItem>
 </Tabs>
@@ -713,7 +713,7 @@ The `xApiKey` is the [Harness PAT](https://developer.harness.io/docs/platform/au
 
 ![](./static/create-resourcesl.png)
 
-- You can add a **Name** to the step followed by adding the **Resource Definition** and create a Harness Entity using Resources supported by our [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs). You'll find an already existing sample **Resource Definition** by default, that can create a Harness Pipeline with a **Run Step**.  
+- You can add a **Name** to the step followed by adding the **Resource Definition** and create a Harness Entity using Resources supported by our [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs). Furthermore, you'll find an already existing sample **Resource Definition** by default, that can create a Harness Pipeline with a **Run Step**.  
 
 ![](./static/create-resource-step.png)
 
@@ -932,13 +932,13 @@ You can use the Harness IDP `execution-config` API to specify or update the Harn
 
 :::info
 
-Certain steps are common across different stages in Harness Pipeline but the images used in each of them is specific to the stage they are part of, like `Run Step`.
+Certain steps are common across different stages in Harness Pipeline, but the images used in each of them is specific to the stage they are part of, like `Run Step`.
 
 :::
 
 API key authentication is required. For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). For more information about authentication, go to the [Harness API documentation](https://apidocs.harness.io/#section/Introduction/Authentication).
 
-1. Send a `get-default-config` request to get a list of the latest Harness IDP worklfows excuted. You can use the `infra` parameter to get `k8` images or `VM` images.
+1. Send a `get-default-config` request to get a list of the latest Harness IDP Workflows executed. You can use the `infra` parameter to get `k8` images or `VM` images.
 
    ```json
    curl --location --request GET "https://app.harness.io/gateway/idp/execution-config/get-default-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \

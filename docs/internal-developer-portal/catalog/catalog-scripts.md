@@ -15,13 +15,13 @@ import TabItem from '@theme/TabItem';
 
 - The GitHub Catalog Discovery plugin registers one location per repository. This might not be a good idea when there are many (3000+ in this case) as any error in fetching one `catalog-yaml` would mark the whole location as failed and create trouble with the entity sync.
 
-- To solve this we would recommend you to use the following scripts which would register separate locations for all the matching catalog-info.yaml files and hence would be synchronised separately.
+- To solve this we would recommend you to use the following scripts which would register separate locations for all the matching catalog-info.yaml files and hence would be synchronized separately.
 
 ### Pre-Requisites to Use the Script
 
 - Harness API Key - [Docs](https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token)
 - GitHub Token - [Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
-- A Repository to store all the IDP Config YAMLs
+- A Repository to store all the IDP Config YAML
 - [Python 3](https://www.python.org/downloads/) installed on your machine where you're trying to execute the code along with [requests](https://pypi.org/project/requests/) library. 
 
 ### Download the Script
@@ -53,7 +53,7 @@ python3 idp-catalog-wizard-github.py --register-yamls --org org_name --x_api_key
 
 ```
 
-- `org` : Github Org name
+- `org` : GitHub Org name
 - `x_api_key`: Refer https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token to generate one
 - -`account` : This is your Harness Account ID. You can get it from the URL e.g. - `https://app.harness.io/ng/account/{Your account ID}/module/idp/overview`
 
@@ -74,7 +74,7 @@ python3 idp-catalog-wizard-github.py --run-all --org example-org --token your_to
 
 ### [Create Services](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/create_services.py)
 
-- Generates a monorepo with the following file structure, assigning random english names.
+- Generates a monorepo with the following file structure, assigning random English names.
 
 ```sh
 repo
@@ -96,14 +96,14 @@ repo
 
 - Similar to GitHub, Bitbucket Catalog Discovery plugin registers one location per repository. This might not be a good idea when there are many (3000+ in this case) as any error in fetching one `catalog-yaml` would mark the whole location as failed and create trouble with the entity sync.
 
-- To solve this we would recommend you to use the following scripts which would register separate locations for all the matching `catalog-info.yaml` files and hence would be synchronised separately.
+- To solve this we would recommend you to use the following scripts which would register separate locations for all the matching `catalog-info.yaml` files and hence would be synchronized separately.
 
 
 ### Pre-Requisites to Use the Script
 
 - Harness API Key - [Docs](https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token)
 - Bitbucket App Password - [Docs](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/)
-- A Repository to store all the IDP Config YAMLs
+- A Repository to store all the IDP Config YAML
 - [Python 3](https://www.python.org/downloads/) installed on your machine where you're trying to execute the code along with [requests](https://pypi.org/project/requests/) library. 
 
 ### Download the Script
@@ -124,11 +124,11 @@ python3 idp-catalog-wizard-bitbucket.py --create-yamls --workspace example_works
 
 - Case 1.a: Run command using `--create-yamls` args, then you'll have to manually push the files `- "services/" .....` after which you can run command using `--register-yamls` args to register all the yamls. Scope of this command is your **whole workspace**.
 
-- Case 1.b: Add all args as given for case 1.a example below with `--project_key` which will keep your **scope to project** instead of workspace.
+- Case 1.b: Add all args as given for case "1.a" example below with `--project_key` which will keep your **scope to project** instead of workspace.
 
 - Case 2.a: Run command using `--run-all` args, all actions will be performed - create, push and register in one go.
 
-- Case 2.b: Add all args as given for case 2.a example below with `--project_key` which will keep your **scope to project** instead of workspace.
+- Case 2.b: Add all args as given for case "2.a" example below with `--project_key` which will keep your **scope to project** instead of workspace.
 
 #### Example:
 
@@ -136,7 +136,7 @@ python3 idp-catalog-wizard-bitbucket.py --create-yamls --workspace example_works
 
 :::info
 
-Bitbucket `username` isn't same as your email address, rather follow this [docs](https://community.atlassian.com/t5/Bitbucket-questions/HOW-TO-FIND-MY-BIT-BUCKET-USERNAME/qaq-p/1081960), to find your username. 
+Bitbucket `username` isn't same as your email address, rather follow these [docs](https://community.atlassian.com/t5/Bitbucket-questions/HOW-TO-FIND-MY-BIT-BUCKET-USERNAME/qaq-p/1081960), to find your username. 
 
 :::
 

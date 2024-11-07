@@ -2,7 +2,7 @@
 title: Backstage API
 description: Lists the public API endpoints supported in IDP.
 sidebar_label: Backstage API
-sidebar_position: 1
+sidebar_position: 2
 redirect_from:
   - /docs/internal-developer-portal/public-api
 ---
@@ -105,9 +105,9 @@ curl 'https://idp.harness.io/{HARNESS_ACCOUNT_IDENTIFIER}/idp/api/catalog/refres
   --data-raw '{"entityRef":"{ENTITY_REF}"}'
 ```
 
-`ENTITY_REF` needs to be replaced with the entity path, for eg., `component:default/idp-service` (kind:namespace/name format)
+`ENTITY_REF` needs to be replaced with the entity path, for e.g., `component:default/idp-service` (kind:namespace/name format)
 
-Here are the steps to get the entityref:
+Here are the steps to get the `entityRef`:
 
 Go to **Inspect Entity** on the component page and under **Identity** in Overview you can find the `entityRef`
 
@@ -117,8 +117,8 @@ Go to **Inspect Entity** on the component page and under **Identity** in Overvie
 
 
 #### Response:
-The response will immediately sync the mentioned component in the entity ref with the `catalog-info.yaml` stored in the git provider
 
+The response will immediately sync the mentioned component in the entity ref with the `catalog-info.yaml` stored in the git provider
 
 ## Catalog Entities Delete API
 
@@ -254,8 +254,8 @@ curl --location --request DELETE 'https://idp.harness.io/ACCOUNT_ID/idp/api/cata
 --header 'Harness-Account: {ACCOUNT_ID}'
 ```
 #### Response:
-The response will remove the locations from your IDP catalog as defined in the `uid`.
 
+The response will remove the locations from your IDP catalog as defined in the `uid`.
 
 ## Catalog Entities API
 

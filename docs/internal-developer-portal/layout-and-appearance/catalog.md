@@ -11,19 +11,19 @@ sidebar_position: 10
 
 ## Introduction
 
-Every page that exists in the Software Catalog e.g. service, API, library, system etc. is uniquely designed to show the most relevant information to the developer for the particular type of application they are viewing. The views are powered by out of the box components like the About card, Scorecard as well as the [Plugins](/docs/internal-developer-portal/plugins/overview) that are configured.
+Every page that exists in the Software Catalog e.g. service, API, library, system etc. is uniquely designed to show the most relevant information to the developer for the particular type of application they are viewing. The views are powered by out-of-the-box components like the About card, Scorecard as well as the [Plugins](/docs/internal-developer-portal/plugins/overview) that are configured.
 
 Once you enable a plugin or create a [custom plugin](/docs/internal-developer-portal/plugins/custom-plugins/overview), you can decide where to show the components exported the plugin by changing the Layout of the Catalog entity of the particular type. For example, if you enable the Grafana plugin, you might want to add a Tab called "Performance" and render the Grafana plugin in there.
 
-Note that when you enable a plugin, we auto-update the default layouts but you can always make changes by looking at what UI components are exported by that particular plugin. You can find this information under each and every plugin's documentation. [See an example for Dynatrace](http://localhost:3000/docs/internal-developer-portal/plugins/available-plugins/dynatrace#layout).
+Note that when you enable a plugin, we auto-update the default layouts, but you can always make changes by looking at what UI components are exported by that particular plugin. You can find this information under each and every plugin's documentation. [See an example for Dynatrace](http://localhost:3000/docs/internal-developer-portal/plugins/available-plugins/dynatrace#layout).
 
 ![](./static/custom-card-and-tab.png)
 
 ## Understanding Catalog Entity Kinds and Types
 
-Every Catalog Layout is uniquely designed for a particular **Kind** and **Type** of an application. For example, the most common catalog layout is for a microservice and is often represented as `Kind: Component` and `spec.type: service`. You can learn more about the [available kinds in the Catalog YAML docs](/docs/internal-developer-portal/catalog/yaml-file) and its [System Model](/docs/internal-developer-portal/catalog/system-model) to understand the different use-cases.
+Every Catalog Layout is uniquely designed for a particular **Kind** and **Type** of application. For example, the most common catalog layout is for a microservice and is often represented as `Kind: Component` and `spec.type: service`. You can learn more about the [available kinds in the Catalog YAML docs](/docs/internal-developer-portal/catalog/yaml-file) and its [System Model](/docs/internal-developer-portal/catalog/system-model) to understand the different use-cases.
 
-The `kind` of entities are fixed to those available out of the box (Component, API, Resource, etc.), however you can create any arbitrary `type` for these kinds of entities. Let's say you use the word "micro-frontends" to represent internal websites in your organization. In order to create this new type of Component, you can use `microfrontend` in the `spec.type` field of the Catalog Definition YAML and then create a unique layout for those types of applications.
+The `kind` of entities are fixed to those available out of the box (Component, API, Resource, etc.), however you can create any arbitrary `type` for these kinds of entities. Let's say you use the word "microfrontends" to represent internal websites in your organization. In order to create this new type of Component, you can use `microfrontend` in the `spec.type` field of the Catalog Definition YAML and then create a unique layout for those types of applications.
 
 ## Layout Editor
 
@@ -33,7 +33,7 @@ You can access the layout of the Catalog Pages by going to the **Admin** section
 
 ![](./static/catalog-layouts-home.png)
 
-The Layouts are grouped by the `kind` of the Catalog entities and their use-cases in the sidebar. As you can see there are a number of layouts possible for a particular `kind`. For example, the first layout in the screen will match any Catalog entity with `kind: Component` and `spec.type: service`. Similarly there is a different layout for `spec.type: website`. At the end, there is a catch-all layout which will be used for any other `type` which has not been explicitly created above.
+The Layouts are grouped by the `kind` of the Catalog entities and their use-cases in the sidebar. As you can see there are a number of layouts possible for a particular `kind`. For example, the first layout in the screen will match any Catalog entity with `kind: Component` and `spec.type: service`. Similarly, there is a different layout for `spec.type: website`. At the end, there is a catch-all layout which will be used for any other `type` which has not been explicitly created above.
 
 ### Creating a new Layout
 
@@ -45,7 +45,7 @@ Enter a unique `type` that this layout will be applicable to. In this example, w
 
 ![](./static/create-new-layout.png)
 
-And voila! Your new Layout is created which will specifically render for entities with `kind: Component` and `spec.type: library`.
+And voilà! Your new Layout is created which will specifically render for entities with `kind: Component` and `spec.type: library`.
 
 ## How to create a new Entity type
 
@@ -202,9 +202,9 @@ page:
 
 ## How to resize a card in Overview page
 
-The Catalog pages use a 12-column grid system for responsive layouts. Where md is the recommended unit, and `md: 1` stands for 1/12th of the grid. See other possible breakpoints on [Material UI docs](https://mui.com/material-ui/react-grid/).
+The Catalog pages use a 12-column grid system for responsive layouts. Where `md` is the recommended unit, and `md: 1` stands for 1/12th of the grid. See other possible breakpoints on [Material UI docs](https://mui.com/material-ui/react-grid/).
 
-Recommendation: You can use `md: 6` for a card that occupies half width of a page and md: 12 to assign full width.
+Recommendation: You can use `md: 6` for a card that occupies half width of a page and `md: 12` to assign full width.
 
 Example -
 

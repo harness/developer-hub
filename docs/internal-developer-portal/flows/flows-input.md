@@ -79,7 +79,7 @@ You can dynamically fetch values in the Workflows fields using UI Pickers, which
 1. [Standard Workflow UI Picker](/docs/internal-developer-portal/flows/flows-input#workflow-ui-pickers)
 2. [API Based Dynamic Workflow UI Picker](/docs/internal-developer-portal/flows/dynamic-picker)
 
-## Arrays options
+## Array options
 
 ### Array with strings
 
@@ -284,7 +284,7 @@ parameters:
 
 ### Conditionally set parameters
 
-The `if` keyword within the parameter uses [nunjucks templating](https://mozilla.github.io/nunjucks/templating.html#if). The `not` keyword is unavailable; instead, use javascript equality. eg: `${{ parameters.branchName if parameters.branchName else appendTimestamp("default-branch-name-") }}`
+The `if` keyword within the parameter uses [nunjucks templating](https://mozilla.github.io/nunjucks/templating.html#if). The `not` keyword is unavailable; instead, use JavaScript equality. e.g., `${{ parameters.branchName if parameters.branchName else appendTimestamp("default-branch-name-") }}`
 
 <details>
 <summary>Example YAML</summary>
@@ -400,7 +400,7 @@ Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob
 **The Example Workflow Explained**
 
 1. **Parameters Structure**
-   The parameters section includes `age` as an integer and `items` as an array. Each item in the array can contain either a `foo` or `bar` property, utilizing `anyOf`.
+   The parameters' section includes `age` as an integer and `items` as an array. Each item in the array can contain either a `foo` or `bar` property, utilizing `anyOf`.
 
 2. **Identification Methods**
    The Workflow allows for two methods of identification using `anyOf`. Users can provide either:
@@ -412,7 +412,7 @@ Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob
    The `age` field is required, while the fields under the two identification methods are optional but must comply with the `anyOf` logic.
 
 4. **Display Step**
-   The steps section includes a `debug:log` action to display the collected information based on the provided input.
+   The step section includes a `debug:log` action to display the collected information based on the provided input.
 
 <details>
 <summary>Example YAML</summary>
@@ -493,7 +493,7 @@ properties:
 
 ## Using Secrets
 
-You may want to mark things as secret and make sure that these values are protected and not available through REST endpoints. You can do this by using the built in `ui:field: Secret` and `ui:widget: password`.
+You may want to mark things as secret and make sure that these values are protected and not available through REST endpoints. You can do this by using the built-in `ui:field: Secret` and `ui:widget: password`.
 
 :::info
 `ui:widget: password` needs to be mentioned under the first `page` in-case you have multiple pages.
@@ -668,7 +668,7 @@ The `projectSlug` filter generates a project slug from a repository URL
 
 ## Workflow UI Pickers
 
-Collecting input from the user is a very large part of the Workflows as a whole. Sometimes the built in components and fields just aren't good enough, and sometimes you want to enrich the form that the users sees with better inputs that fit better.
+Collecting input from the user is a very large part of the Workflows as a whole. Sometimes the built-in components and fields just aren't good enough, and sometimes you want to enrich the form that the users sees with better inputs that fit better.
 
 This is where Workflow UI Pickers come in.
 
@@ -850,7 +850,7 @@ spec:
 
 ### 4. `HarnessAutoOrgPicker`
 
-It auto populates org ID on project selection. So now when you select an project ID as an input the org ID gets selected automatically if required as an input.
+It autopopulates org ID on project selection. So now when you select a project ID as an input the org ID gets selected automatically if required as an input.
 
 1. For `HarnessAutoOrgPicker` to work, it is suggested to name the Project Identifier under Properties as `projectId` and using the `HarnessProjectPicker`.
 
@@ -1220,7 +1220,7 @@ for a `string` field. Instead of displaying a text input block it will render
 our custom component that we've built which makes it easy to select a repository
 provider, and insert a project or owner, and repository name.
 
-You can see it in the above full example which is a separate step and it looks a
+You can see it in the above full example which is a separate step, and it looks a
 little like this:
 
 ```yaml
@@ -1269,9 +1269,9 @@ For a list of all possible `ui:options` input props for `RepoUrlPicker`, please 
 
 #### Using the Users `oauth` token
 
-There's a little bit of extra magic that you get out of the box when using the
+There's a little of extra magic that you get out of the box when using the
 `RepoUrlPicker` as a field input. You can provide some additional options under
-`ui:options` to allow the `RepoUrlPicker` to grab an `oauth` token for the user
+`ui:options` to allow the `RepoUrlPicker` to grab a `oauth` token for the user
 for the required `repository`.
 
 This is great for when you are wanting to create a new repository, or wanting to
@@ -1344,11 +1344,11 @@ action called `token`, in which you can use the `secret` like so:
 There's also the ability to pass additional scopes when requesting the `oauth`
 token from the user, which you can do on a per-provider basis, in case your Workflow can be published to multiple providers.
 
-Note, that you will need to configure an **connector** for your source code management (SCM) service to make this feature work.
+Note, that you will need to configure a **connector** for your source code management (SCM) service to make this feature work.
 
 ## Pre-fill workflows with URL Params
 
-We can now automatically load IDP Workflow forms pre-filled using the `formData` URL query parameter. eg: `https://app.harness.io/ng/account/account_id/module/idp/create/templates/default/a-python-lambda?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D`
+We can now automatically load IDP Workflow forms pre-filled using the `formData` URL query parameter. Eg: `https://app.harness.io/ng/account/account_id/module/idp/create/templates/default/a-python-lambda?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D`
 
 The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7` in the end of the URL allow you to automatically fill in values of the form. Please see the below table for explanation of individual tokens in the query param.
 
@@ -1357,7 +1357,7 @@ The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7` i
 | `formData`          | `formData`                              | Key of the query param.`formData` object is used to fill out IDP Workflow forms.                 |
 | `{"key"%3A"value"}` | `{"title"%3A"Title from query params"}` | Value of the query param. A JSON object with invalid URL characters encoded.`:` encodes to `%3A` |
 
-## Add Readonly Fields
+## Add Read only Fields
 
 Using automatically filled out values is handy when wanting to direct users to use IDP Workflows with known good values. This also allows automation to be constructed around the Workflows, where the automation can provide fully constructed IDP URLs to the user. You can also prevent user from modifying the form values inserted from query params by making the form fields `readonly`. See below example of a minimal form which would be filled using query params defined in the above explanation.
 

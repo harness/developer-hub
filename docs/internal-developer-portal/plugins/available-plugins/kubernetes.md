@@ -107,7 +107,7 @@ When adding the host, include only the host name. Remove the protocol (HTTP/HTTP
 
 ## Layout
 
-This plugin exports a UI tab that you can use as a new **Kubernetes** tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu. and then add the following in a new **Kubernetes** section:
+This plugin exports a UI tab that you can use as a new **Kubernetes** tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu. And then add the following in a new **Kubernetes** section:
 
 ```yaml
 - name: kubernetes
@@ -132,7 +132,7 @@ annotations:
   'backstage.io/kubernetes-id': dice-roller
 ```
 ### Adding the namespace annotation
-Entities can have the `backstage.io/kubernetes-namespace` annotation, this will cause the entity's Kubernetes resources to by looked up via that namespace.
+Entities can have the `backstage.io/kubernetes-namespace` annotation, this will cause the entity's Kubernetes resources to be looked up via that namespace.
 
 ```YAML
 annotations:
@@ -147,7 +147,7 @@ In order for Kubernetes components to show up in the software catalog as a part 
 ```
 
 ### Label selector query annotation
-You can write your own custom label selector query that Backstage will use to lookup the objects (similar to `kubectl --selector="your query here"`). Review the labels and selectors Kubernetes documentation for more info.
+You can write your own custom label selector query that Backstage will use to look up the objects (similar to `kubectl --selector="your query here"`). Review the labels and selectors Kubernetes documentation for more info.
 
 ```YAML
 'backstage.io/kubernetes-label-selector': 'app=my-app,component=front-end'

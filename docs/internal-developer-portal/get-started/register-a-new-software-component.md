@@ -67,7 +67,7 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 <TabItem value="harness-code-repo-enabled" label="Harness Code Repository">
 
-4. Once you copy thr URL for `catalog-info.yaml` from Harness Code Repository make sure to replace vanity url domain with `accounts.eu.harness.io`
+4. Once you copy thr URL for `catalog-info.yaml` from Harness Code Repository make sure to replace vanity URL domain with `accounts.eu.harness.io`
 
 ![](static/replace-vanity-url-register.png)
 
@@ -88,7 +88,7 @@ The new component will be available in your catalog.
 
 We can register multiple `catalog-info.yaml` in the following ways.
 
-1. If all your `catalog-info.yaml` are in the root of the same repo you can add the extensions in the target, as shown in the example below and it will register all the components.
+1. If all your `catalog-info.yaml` are in the root of the same repo you can add the extensions in the target, as shown in the example below, and it will register all the components.
 
 ```YAML
 apiVersion: backstage.io/v1alpha1
@@ -102,7 +102,7 @@ spec:
     - ./all-components.yaml
 ```
 
-2. If the `catalog -info.yaml` is scattered across repos and you want to register them together then mention the absolute path in the git provider. Please make sure the **connector** you have created has **account level permissions** and all the repos mentioned under targets are under that **same account**.
+2. If the `catalog -info.yaml` is scattered across repos, and you want to register them together then mention the absolute path in the git provider. Please make sure the **connector** you have created has **account level permissions** and all the repos mentioned under targets are under that **same account**.
 
 ```YAML
 apiVersion: backstage.io/v1alpha1
@@ -121,7 +121,7 @@ spec:
 
 ## Delete/Unregister Software Components
 
-1. Navigate to the **Catalog** page, and select **Component** under Kind, here we are de-registering a template
+1. Navigate to the **Catalog** page, and select **Component** under Kind, here we are deregistering a template
 
 ![](./static/catalog-navigation.png)
 
@@ -138,6 +138,6 @@ spec:
 
 ## Troubleshooting: Failed to register
 
-If, after registering an entity, your're unable to find the same in your catalog, check the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab, wait a few minutes for registration to complete. If it's under the **Failed** tab. try re-registering the entity.
+If, after registering an entity, you're unable to find the same in your catalog, check the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab, wait a few minutes for registration to complete. If it's under the **Failed** tab. Try re-registering the entity.
 
 ![](./static/devtools.png)

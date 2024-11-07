@@ -533,7 +533,7 @@ Entity Refs are case-insensitive.
 
 :::info
 
-We need to add escape character for any field has an additional `DOT` in the path like `metadata.annotation.harness.io/idp-test` , that part needs to be escaped with `\"` like this `metadata.annotations.\"harness.io/idp-test\"`
+We need to add escape character for any field has an additional `DOT` in the path like `metadata.annotation.harness.io/idp-test`, that part needs to be escaped with `\"` like this `metadata.annotations.\"harness.io/idp-test\"`
 
 :::
 
@@ -541,7 +541,7 @@ We need to add escape character for any field has an additional `DOT` in the pat
 
 :::info
 
-**Error Handling**: We validate the body of the API and certain fields like `kind`, `metadata`, `metadata.name`, `metadata.namespace`, are uneditable and if you try to change these, the endpoint returns an Error Code 400. Also make sure your metadata updates adhere to the [backstage schema](https://github.com/backstage/backstage/tree/master/packages/catalog-model/src/schema)
+**Error Handling**: We validate the body of the API and certain fields like `kind`, `metadata`, `metadata.name`, `metadata.namespace`, are not editable and if you try to change these, the endpoint returns an Error Code 400. Also make sure your metadata updates adhere to the [backstage schema](https://github.com/backstage/backstage/tree/master/packages/catalog-model/src/schema)
 
 :::
 
@@ -622,7 +622,7 @@ When you want to update a specific property of a catalog entity, you can use dif
 
 #### Available Modes:
 - **replace** (default): Completely replaces the existing value with the new one provided in the `value` field.
-- **append**: Adds new values to the existing array (or other appendable types like maps or key-value pairs).
+- **append**: Adds new values to the existing array (or other types that could be appended like maps or key-value pairs).
 
 > **Note**: `append` only works with data types that can hold multiple values, such as arrays or maps. It does not apply to simple data types like strings.
 
@@ -857,13 +857,13 @@ GET /catalog/custom-properties/entity?property=metadata.releaseVersion
 
 ## Other Catalog Endpoints
 
-This page describes only the ingestion related Catalog endpoints. Please look at other [Catalog API endpoints](../../api-refernces/public-api.md) which contains basic endpoints for fetching full entity, registering and unregistering entities.
+This page describes only the ingestion related Catalog endpoints. Please look at other [Catalog API endpoints](../../api-refernces/public-api.md) which contains basic endpoints for fetching full entity, register and unregister entities.
 
 ## API takes priority over Catalog YAML file (in case of a conflict)
 
 Any property updated using Ingestion APIs will take priority over what is specified in the Catalog Info YAML files. For example, if a `catalog-info.yaml` has the following
 
-```yaml
+```YAML
 # ...
 metadata:
   name: boutique-frontend
