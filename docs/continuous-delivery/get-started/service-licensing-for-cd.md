@@ -214,9 +214,9 @@ If you believe there is a discrepancy in your usage data:
 - **Contact Support:** Reach out to our support team for assistance.
 - **Investigation:** We will investigate and resolve any inaccuracies promptly.
 
-### Q21: Are there any changes to the terms and conditions in Licensing V2?
+### Are there any changes to the terms and conditions in Licensing V2?
 
-**A:** Licensing V2 may include updates to terms and conditions to reflect the new billing model. We recommend reviewing the updated terms provided during renewal. Your account representative can also walk you through any changes and address your questions.
+Licensing V2 may include updates to terms and conditions to reflect the new billing model. We recommend reviewing the updated terms provided during renewal. Your account representative can also walk you through any changes and address your questions.
 
 ### Q22: How does Licensing V2 affect multi-account or multi-project setups?
 
