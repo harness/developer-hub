@@ -174,9 +174,9 @@ The licensing changes are billing-related and should not directly impact your ex
 - **Documentation and Resources:** Access detailed guides and best practices within our Help Center.
 - **Webinars and Workshops:** Participate in upcoming sessions focused on navigating Licensing V2.
 
-### Q14: How does Licensing V2 handle seasonal or fluctuating usage patterns?
+### How does Licensing V2 handle seasonal or fluctuating usage patterns?
 
-**A:** Licensing V2 is designed to accommodate varying usage levels:
+Licensing V2 is designed to accommodate varying usage levels:
 
 - **Flexible Billing:** The model accounts for actual usage, which can adapt to your seasonal demands.
 - **Scaling Options:** Easily scale up or down based on your needs without long-term commitments for unused capacity.
