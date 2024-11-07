@@ -1,12 +1,12 @@
 ---
-title: Supported Custom Actions
-description: These Custom Actions are supported in Harness IDP
+title: Supported Workflows Actions
+description: These Workflows Actions are supported in Harness IDP
 sidebar_position: 4
 ---
 
 ## Introduction
 
-The Flows comes with several built-in actions for fetching content, registering in the catalog and of course actions for creating and publishing a git repository.
+The Workflows comes with several built-in actions for fetching content, registering in the catalog and of course actions for creating and publishing a git repository.
 
 There are several repository providers supported out of the box such as **GitHub**, **Azure**, **GitLab** and **Bitbucket**.
 

@@ -1,7 +1,7 @@
 ---
 title: Getting started with service onboarding pipeline (using Custom Stage)
 description: Create a basic service onboarding pipeline in Harness IDP
-sidebar_position: 2
+sidebar_position: 8
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
@@ -148,9 +148,9 @@ In the above script you need to add the **[Personal Access Token](https://develo
 6. Click **Apply Changes**.
 
 
-    ### Manage variables in the pipeline
+### Manage variables in the pipeline
 
-    The script uses several pipeline variables. The variables are as follows:
+The script uses several pipeline variables. The variables are as follows:
 
 - `<+pipeline.variables.project_name>`
 - `<+pipeline.variables.github_username>`

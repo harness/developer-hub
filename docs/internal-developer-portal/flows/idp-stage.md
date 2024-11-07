@@ -1,7 +1,7 @@
 ---
 title: IDP Stage
 description: Overview of IDP stage and the steps associated with it
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 
