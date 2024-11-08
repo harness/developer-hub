@@ -30,7 +30,6 @@ These release notes describe recent changes to Harness Continuous Integration.
 #### New features and enhancements
 - Self-Hosted Cache Intelligence and Docker Layer Caching Enhancements - This release introduces enhancements for self-hosted builds, allowing seamless configuration of S3-compatible caching with AWS or GCP connectors using OIDC for authentication These options are behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` (for Docker layer caching) and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED` (for Cache Intelligence). Contact [Harness Support](mailto:support@harness.io) to enable them. 
 - OIDC, previously available only for Harness Cloud, is now supported for self-hosted builds running on Kubernetes, enhancing security and simplifying authentication.
-- Secure Connect for JFrog Artifactory - Secure Connect now supports uploads to JFrog Artifactory step, providing a secure and streamlined way to manage artifact publishing.
 
 #### Fixed issues
 - Storing secrets in custom secret managers is now supported for cache intelligence in the self-hosted flow. (CI-14719, ZD-71881)
