@@ -355,7 +355,7 @@ export const CcmData: Horizon = {
         tag: [{value: "AutoStopping"}],
         title: "Overlapping Schedules",
         description:
-          "Overlapping schedules allow teams across time zones to define their usage windows for shared resources. By prioritizing these schedules, users can effectively manage conflicts and ensure accurate resource allocation."
+          "Overlapping schedules allow teams across time zones to define their usage windows for shared resources. By prioritizing these schedules, users can effectively manage conflicts and ensure accurate resource allocation"
         backgroundColor: "var(--green-100)",
       },
       {
