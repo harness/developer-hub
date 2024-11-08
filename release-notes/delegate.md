@@ -98,15 +98,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Improved logging, error handling and force shutdown for stuck cases in winrm script for collecting output variables. These changes are behind a delegate environment variable `ENV_VARS_COLLECTOR_EXPLICIT_EXIT`. Also delegate environment variable `WINRM4J_LOG_LEVEL` for `io.cloudsoft.winrm4j` logging level has been added. (CDS-101843)
 
-### Version 24.09.83908 <!--  October 11, 2024 -->
-
-#### Hotfixes
-
 - With this change entire k8s dry manifest output yaml won't be sanitized. Only config map and secrets kind blocks would be sanitised unless `CDS_K8S_SANITIZE_COMPLETE_DRY_RUN_STEP_OUTPUT`` feature flag is switched on. (CDS-101686)
-
-### Version 24.09.83907 <!--  October 10, 2024 -->
-
-#### Hotfixes
 
 - Jira steps will now ignore unsupported fields which reading a jira ticket. (CDS-101162)
 
