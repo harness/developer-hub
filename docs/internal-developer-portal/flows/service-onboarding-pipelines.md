@@ -13,7 +13,7 @@ IDP Self Service Workflows enable Platform Engineers, Infrastructure teams and D
 
 The Workflow is defined using a YAML file usually called `workflow.yaml`. The [syntax](https://backstage.io/docs/features/software-templates/input-examples) of the Workflow definition is managed by Backstage.io. IDP Workflows are also known as Backstage Software Template since they are usually used to standardize how a new Software is created in an organization.
 
-**Workflows** are also **Catalog** entities with **`kind: Template`**.
+**Workflows** are also **Catalog** entities of **`kind: Template`**.
 
 ![](./static/workflows-mindmap.png)
 
@@ -49,7 +49,7 @@ spec:
         - template_type
         - public_template_url
         - repository_type
-        - repositoty_description
+        - repository_description
         - repository_default_branch
         - direct_push_branch
         - slack_id
@@ -81,7 +81,7 @@ spec:
             - public
             - private
           default: Public
-        repositoty_description:
+        repository_description:
           type: string
           title: Add a description to your repo
           description: Auto-generated using Self-Service-Flow of Harness-IDP
@@ -92,7 +92,7 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-  # here's the steps that are executed in series in the scaffolder backend
+  # here's the steps that are executed in series in the Workflow backend
   steps:
     - id: trigger
       name: Creating your react app

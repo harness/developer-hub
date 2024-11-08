@@ -157,7 +157,7 @@ parameters:
 
 :::
 
-Also the token input is used as a parameter under `steps` as `apikey`
+Also, the token input is used as a parameter under `steps` as `apikey`
 
 ```YAML
   steps:
