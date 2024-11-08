@@ -1,10 +1,10 @@
 ---
 title: Beta Plan Usage
-description: Lists the git providers, IDE integrations and compute types supported in IDP.
+description: How to get started with Gitspaces Beta?
 sidebar_label: Beta Plan Usage
-sidebar_position: 2
+sidebar_position: 3
 redirect_from:
-  - /docs/cloud-development-environments/beta-usage
+  - /docs/cloud-development-environments/introduction/beta-usage
 ---
 
 :::info

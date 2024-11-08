@@ -10,7 +10,7 @@ import { MODULES } from "@site/src/constants";
   // Docs
   export const docsCards: CardSections = [
     {
-      name: "Get Started",
+      name: "Overview",
       description: "",
       list: [
         {
@@ -18,13 +18,32 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.cde,
           description:
             "Understand the basics of a Gitspace",
-          link: "/docs/cloud-development-environments/introduction/overview",
+          link: "/docs/cloud-development-environments/overview",
+        },
+      ],
+    },
+    {
+      name: "Get Started",
+      description: "",
+      list: [
+        {
+          title: "What's Supported",
+          module: MODULES.cde,
+          description:
+            "What's supported in Harness CDE",
+          link: "/docs/cloud-development-environments/introduction/whats-supported",
         },
         {
           title: "Getting Started with CDE",
           module: MODULES.cde,
           description: "Get Started with Harness CDE (Gitspaces)",
           link: "/docs/cloud-development-environments/introduction/getting-started-with-cde",
+        },
+        {
+          title: "Beta Plan Usage",
+          module: MODULES.cde,
+          description: "How to get started with Harness CDE Beta?",
+          link: "/docs/cloud-development-environments/introduction/beta-usage",
         },
       ],
     },

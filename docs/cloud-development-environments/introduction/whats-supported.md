@@ -1,10 +1,10 @@
 ---
 title: What's supported in Harness CDE
-description: Lists the git providers, IDE integrations and compute types supported in IDP.
+description: Lists the git providers, IDE integrations and compute types supported in Harness CDE.
 sidebar_label: What's Supported
 sidebar_position: 1
 redirect_from:
-  - /docs/cloud-development-environments/whats-supported
+  - /docs/cloud-development-environments/introduction/whats-supported
 ---
 
 :::info
@@ -38,8 +38,7 @@ We are working on support for [IntelliJ IDEA](https://www.jetbrains.com/idea/) a
 
 :::info
 
-To use VS Code Desktop, you need to [install and configure](/docs/cloud-development-environments/ide's/vs-code-desktop)
-) the Gitspaces extension.  
+To use VS Code Desktop, you need to [install and configure](/docs/cloud-development-environments/ide's/vs-code-desktop) the Gitspaces extension.  
 :::
 
 ## Regions Available​
