@@ -43,5 +43,6 @@ import TabItem from '@theme/TabItem';
 ![](./static/create-gitspace-public.png)
 
 </TabItem>
+</Tabs>
 
 Please refer to the [IDE documentation](/docs/open-source/gitspaces/ide's) for detailed instructions on accessing your Gitspaces using your preferred IDE.
