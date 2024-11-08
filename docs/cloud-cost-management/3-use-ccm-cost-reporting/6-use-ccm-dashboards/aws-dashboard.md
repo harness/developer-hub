@@ -109,9 +109,9 @@ Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and
 
 ### SCAD-Related Columns for AWS
 
-[Split cost allocation data (SCAD)](https://docs.aws.amazon.com/cur/latest/userguide/split-cost-allocation-data.html) feature introduces cost and usage data for container-level resources—specifically ECS tasks and Kubernetes pods—into AWS Cost and Usage Reports (CUR). Previously, AWS CUR only provided costs at the EC2 instance level. Now, split cost allocation calculates container-level costs by analyzing each container’s consumption of EC2 instance resources, assigning costs based on the amortized cost of the instance and the percentage of CPU and memory resources utilized by containers running on it.
+[Split cost allocation data (SCAD)](https://docs.aws.amazon.com/cur/latest/userguide/split-cost-allocation-data.html) feature introduces cost and usage data for container-level resources—specifically ECS tasks and Kubernetes pods—into AWS Cost and Usage Reports (CUR). Previously AWS CUR was not including granular level K8S and ECS cost visibility. Now, split cost allocation calculates container-level costs by analyzing each container’s consumption of EC2 instance resources, assigning costs based on the amortized cost of the instance and the percentage of CPU and memory resources utilized by containers running on it.
 
-We have added support for the following SCAD-related columns:
+CCM now has support for analyzing K8S cost data via SCAD CUR. Following are the columns which can be used.
 
 - `parentresourceid`
 - `reservedusage`
@@ -281,13 +281,9 @@ The cost of the service is the sum of the cost of pods associated with each name
 
 #### Example of a query and result with SCAD columns:
 
-![](./static/scad-example.png)
-
 The `eks_namespace` labels won’t display `netamortisedcost` and `amortisedcost` values, as only SCAD-related columns and values are accessible from AWS.
 
 The `kube-system` namespace is the only one that will reflect `netamortisedcost` and `amortisedcost` values. This is because AWS provides `blendedcost` and `unblendedcost` fields exclusively for this namespace, allowing us to calculate the amortised and net amortised cost values. These calculated values are stored in the `awscur_<<month_year>>` table and subsequently persisted in the `unifiedTable` as `awsAmortisedCost` and `awsNetAmortisedCost`.
-
-![](./static/scad-2.png) 
 
 ### Next Steps
 
