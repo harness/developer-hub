@@ -47,29 +47,27 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## November
 
-### Version 1.64.0
+### Version 1.64.6
 
 #### New features and enhancements
 
-- Harness now supports **Approval APIs**, allowing users to approve or reject Harness **Manual Approval** steps using Service Account tokens. (CDS-97580, ZD-64388)
+- Approval APIs now support Service Account tokens for approving or rejecting Harness Manual Approval steps. For more information, go to Harness [Using Approval API](/docs/platform/approvals/adding-harness-approval-stages#using-the-approvals-api-with-service-account-authentication). (CDS-97580, ZD-64388)
 
-- Harness now supports webhooks configured with **GitLab System Hooks** to trigger pipelines. (CDS-95423)
+- Harness now supports webhooks configured with **GitLab System Hooks** to trigger pipelines. For more information, go to Harness [GitLab System Hooks](/docs/platform/triggers/triggers-reference/#gitlab-system-hooks). (CDS-95423)
 
-- Harness now supports self-hosted Bitbucket OAuth tokens for the Git Experience. (CDS-95417)
+- Harness now supports self-hosted Bitbucket OAuth tokens for the Git Experience. For more information, go to Harness [Bitbucket Configuration](/docs/platform/git-experience/oauth-integration/). (CDS-95417)
 
-- The Harness platform has been updated with the Kubernetes SDK (v18.0 to v21.0) and Helm SDK (v3.12 to v3.13).
+- The Harness platform has been updated with the Kubernetes SDK (v18.0 to v21.0) and Helm SDK. (v3.12 to v3.13).
 
-- Harness now supports deployment of **Azure Functions**. (CDS-51900)
-
-- Harness has introduced supports for **Canary** and **Blue-Green** Deployment strategies with Helm Charts. (CDS-35715)
+- Harness has introduced native supports for **Canary** and **Blue-Green** Deployment strategies with Helm Chart deployments. For more information, go to Harness [Helm Chart deployments](/docs/category/helm-step-reference/). (CDS-35715)
 
 - Harness now supports for enabling metrics in ASG deployments. (CDS-99276)
 
 - Harness now detects the failure state of CRDs in the Kubernetes Apply step when CRDs behave like jobs. (CDS-98761)
 
-- You can now specify the environment using **Expressions** in the GitOps pipeline. (CDS-97523)
+- You can now specify the environment using **Expressions** in the GitOps pipeline. For more information, go to Harness [GitOps documentation](/docs/continuous-delivery/gitops/pr-pipelines/#create-the-pr-pipeline). (CDS-97523)
 
-- Template name suggestions are now available as part of the **ServiceNow Creation** step. (CDS-97672, ZD-64772)
+- Template name suggestions are now available as part of the **ServiceNow Creation** step. For more information, go to [Harness documentation](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages/#create-from-form-template) (CDS-97672, ZD-64772)
 
 #### Fixed issues
 
