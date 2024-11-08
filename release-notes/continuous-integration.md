@@ -20,7 +20,32 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+
+
 ## October 2024
+
+### Version 1.53
+<!-- 2024-11-04 -->
+
+#### New features and enhancements
+- Self-Hosted Cache Intelligence and Docker Layer Caching Enhancements - This release introduces enhancements for self-hosted builds, allowing seamless configuration of S3-compatible caching with AWS or GCP connectors using OIDC for authentication These options are behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` (for Docker layer caching) and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED` (for Cache Intelligence). Contact [Harness Support](mailto:support@harness.io) to enable them. 
+- OIDC, previously available only for Harness Cloud, is now supported for self-hosted builds running on Kubernetes, enhancing security and simplifying authentication.
+- Secure Connect for JFrog Artifactory - Secure Connect now supports uploads to JFrog Artifactory step, providing a secure and streamlined way to manage artifact publishing.
+
+#### Fixed issues
+- Storing secrets in custom secret managers is now supported for cache intelligence in the self-hosted flow. (CI-14719, ZD-71881)
+- Fixed an issue where bitbucket tag builds with tags containing slashes were causing errors in execution due to variable codebase.commitSha returning null. Harness now correctly supports tags with slashes for bitbucket and git builds, ensuring SHA values are properly referenced. (CI-14706, ZD-70972)
+- Addressed an issue where pipelines failed at the clone codebase step on Windows infrastructure when using the GitHub SSH connector. (CI-14592, ZD-70570, ZD-71715)
+- Improved "Copy to Clipboard" functionality for pipeline output logs. Previously, extra new lines were added when pasting the copied output, causing unnecessary spacing between lines. This issue has been fixed to ensure log output is pasted without additional line breaks. (CI-14200, ZD-68902)
+
+| **Image** | **Change**  | **Previous version** | **New Version** 
+|-------------------------------|-----------------|-------------|------------------|
+| `harness/drone-git` |  Fixed an issue when using the GitHub SSH connector on Windows (CI-14592) | 1.61 | 1.62
+| `harness/ci-addon` | Improved "Copy to Clipboard" functionality for pipeline output logs (CI-14200)| 1.16.58 | 1.16.59 
+| `plugin/artifactory` | Added support for Secure Connect (CI-14921)| 1.7.0 | 1.7.1
+
+
+
 
 ### Version 1.51
 
@@ -44,7 +69,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 | `harness/ci-addon` | Updated base image and go version, addressing security vulnerabilities (CI-14173) | 1.16.57 | 1.16.58 
 | `harness/ci-addon` | Removed a log line in lite-engine that was breaking a customer's monitoring process (CI-14735)| 1.16.58 | 1.16.58 
 | `harness/ci-lite-engine` | Updated base image and go version, addressing security vulnerabilities (CI-14173) | 1.16.57 | 1.16.58 
-| `harness/ci-lite-engine` | Removed a log line in lite-engine that was breaking a customer's monitoring process (CI-14735)| 1.16.58 | 1.16.58 
+| `harness/ci-lite-engine` | Removed a log line in lite-engine that was breaking a customer's monitoring process (CI-14735)| 1.16.56 | 1.16.57 
 | `harness/drone-git` | Updated the base image, addressing security vulnerabilities | 1.6.0 | 1.6.1 
 | `plugins/artifact-metadata-publisher` | Added support for setting display name, which will appear for URLs published in the Artifacts tab (CI-12176) | 1.0.0 | 2.0.0 
 | `plugins/s3` | Updated session creation to include credential information, allowing for successful cross-account authentication. (CI-14134, ZD-69447) | 1.4.1 | 1.4.3
@@ -173,7 +198,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### New features and enhancements
 
-- Harness Intelligence features optimize your 'Build' stages by reducing execution time through advanced caching caapbilities and Test Intelligence. With this release, we've added stage savings data to stage summary of 'Build' stages where saving is observed, as well as further insight into the optimization on the step level. To learn more, visit [Intelligence Savings Documentation](../docs/continuous-integration/get-started/harness-ci-intelligence#intelligence-savings) (CI-13252)
+- Harness Intelligence features optimize your 'Build' stages by reducing execution time through advanced caching capabilities and Test Intelligence. With this release, we've added stage savings data to stage summary of 'Build' stages where saving is observed, as well as further insight into the optimization on the step level. To learn more, visit [Intelligence Savings Documentation](../docs/continuous-integration/get-started/harness-ci-intelligence#intelligence-savings) (CI-13252)
 
 #### Fixed issues
 
