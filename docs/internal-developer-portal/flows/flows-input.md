@@ -668,7 +668,7 @@ The `projectSlug` filter generates a project slug from a repository URL
 
 ## Workflow UI Pickers
 
-Collecting input from the user is a very large part of the Workflows as a whole. Sometimes the built in components and fields just aren't good enough, and sometimes you want to enrich the form that the users sees with better inputs that fit better.
+Collecting input from the user is a very large part of the Workflows as a whole. Sometimes the built-in components and fields just aren't good enough, and sometimes you want to enrich the form that the users sees with better inputs that fit better.
 
 This is where Workflow UI Pickers come in.
 
@@ -678,7 +678,7 @@ This is where Workflow UI Pickers come in.
 
 :::info
 
-Only **string** data `type` is supported for the EntityPicker.
+Only **string** data `type` is supported for the `EntityPicker`.
 
 :::
 
@@ -1004,7 +1004,7 @@ owner:
 
 :::info
 
-Only **string** data `type` is supported for the EntityPicker.
+Only **string** data `type` is supported for the `EntityPicker`.
 
 :::
 
@@ -1357,7 +1357,7 @@ The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7` i
 | `formData`          | `formData`                              | Key of the query param.`formData` object is used to fill out IDP Workflow forms.                 |
 | `{"key"%3A"value"}` | `{"title"%3A"Title from query params"}` | Value of the query param. A JSON object with invalid URL characters encoded.`:` encodes to `%3A` |
 
-## Add Readonly Fields
+## Add Read only Fields
 
 Using automatically filled out values is handy when wanting to direct users to use IDP Workflows with known good values. This also allows automation to be constructed around the Workflows, where the automation can provide fully constructed IDP URLs to the user. You can also prevent user from modifying the form values inserted from query params by making the form fields `readonly`. See below example of a minimal form which would be filled using query params defined in the above explanation.
 
