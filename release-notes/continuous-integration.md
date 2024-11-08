@@ -28,8 +28,10 @@ These release notes describe recent changes to Harness Continuous Integration.
 <!-- 2024-11-04 -->
 
 #### New features and enhancements
-- Self-Hosted Cache Intelligence and Docker Layer Caching Enhancements - This release introduces enhancements for self-hosted builds, allowing seamless configuration of S3-compatible caching with AWS or GCP connectors using OIDC for authentication These options are behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` (for Docker layer caching) and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED` (for Cache Intelligence). Contact [Harness Support](mailto:support@harness.io) to enable them. 
-- OIDC, previously available only for Harness Cloud, is now supported for self-hosted builds running on Kubernetes, enhancing security and simplifying authentication.
+- Self-Hosted Cache Intelligence and Docker Layer Caching Enhancements - This release introduces enhancements for self-hosted builds, allowing seamless configuration of S3-compatible caching with AWS or GCP connectors using OIDC for authentication These options are behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` (for Docker layer caching) and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED` (for Cache Intelligence). 
+- OIDC, previously available only for Harness Cloud, is now supported for self-hosted builds running on Kubernetes, enhancing security and simplifying authentication. OIDC is currently behind feature flags `PL_GCP_OIDC_AUTHENTICATION` for GCP and `CDS_AWS_OIDC_AUTHENTICATION` for AWS
+
+To enable feature flags, please contact [Harness Support](mailto:support@harness.io). 
 
 #### Fixed issues
 - Storing secrets in custom secret managers is now supported for cache intelligence in the self-hosted flow. (CI-14719, ZD-71881)
