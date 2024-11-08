@@ -45,4 +45,4 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 </Tabs>
 
-Please refer to the [IDE documentation](/docs/open-source/gitspaces/ide's) for detailed instructions on accessing your Gitspaces using your preferred IDE.
+Please refer to the [IDE documentation](/docs/open-source/gitspaces/ide's/vs-code-desktop.md) for detailed instructions on accessing your Gitspaces using your preferred IDE.
