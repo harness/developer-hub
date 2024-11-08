@@ -109,7 +109,7 @@ For a more detailed demonstration, go to [the ChaosHub overview video](https://y
 
 It is a template/methodology used by teams to practice chaos engineering. These teams execute chaos experiments on the application during a specific period.
 
-For more information, go to [GameDays](/docs/chaos-engineering/concepts/explore-concepts/GameDay).  To get hands-on experience, [Create a GameDay run](/docs/chaos-engineering/concepts/explore-concepts/GameDay#create-a-gameday).
+For more information, go to [GameDays](/docs/chaos-engineering/use-harness-ce/GameDay).  To get hands-on experience, [Create a GameDay run](/docs/chaos-engineering/use-harness-ce/GameDay#create-a-gameday).
 
 ### Auto Create Chaos Experiments
 
