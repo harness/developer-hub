@@ -334,7 +334,7 @@ export const CcmData: Horizon = {
         tag: [{value: "Commitment Orchestrator"}],
         title: "Commitment Orchestrator Inventory ",
         description:
-          "The Commitment Orchestrator Inventory provides an overview of all active and historical commitment purchases, such as Savings Plans (SP) and Reserved Instances (RI).",
+          "Provides a centralized view of all account commitments, including details on Convertible and Standard RIs, Compute and EC2 Savings Plans, and statuses.",
         backgroundColor: "var(--yellow-100)",
       },
       {
@@ -342,6 +342,33 @@ export const CcmData: Horizon = {
         title: "Workload Bin-packing for EKS Cluster Orchestrator",
         description:
           "Efficient scheduling and placement of containers onto nodes for optimizing node count and utilization",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "AutoStopping"}],
+        title: "Smart Advisor",
+        description:
+          "Smart Advisor helps you uncover cost-saving opportunities by identifying underused cloud resources and recommending the ideal Autostopping configurations."
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "AutoStopping"}],
+        title: "Overlapping Schedules",
+        description:
+          "Overlapping schedules allow teams across time zones to define their usage windows for shared resources. By prioritizing these schedules, users can effectively manage conflicts and ensure accurate resource allocation."
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "AutoStopping"}],
+        title: "Granular RBAC",
+        description:
+          "Granular RBAC in Harness Autostopping introduces fine-grained control over Rules and Connectors as separate resources, enabling more precise permission management."
+        backgroundColor: "var(--green-100)",
+      },
+       {
+        tag: [{value: "AutoStopping"}],
+        title: "Bulk Processing of AutoStopping Rules",
+        description:"Bulk processing of Autostopping rules enables users to select and update multiple rules at once to simplify the management of multiple rules simultaneously."
         backgroundColor: "var(--green-100)",
       },
     ],
