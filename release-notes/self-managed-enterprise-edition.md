@@ -258,8 +258,7 @@ gsutil -m cp \
 
 #### Harness Platform
 
-- In `0.22.0` we introduced a change that caused helmfile diff to fail, dry-run to fail due to a new check that connects to server to retrieve the harness-manager's version.
-To avoid this issue, we introduced a flag `upgrades.versionLookups.enabled` set to `false` that allows to disable this feature. (PL-58295, ZD-72635)
+- Fixed an issue in version `0.22.0` causing helmfile diff and dry-run commands to fail due to server version lookups. Introduced a flag `upgrades.versionLookups.enabled` set to `false` to disable this check and enable seamless upgrades and dry runs. (PL-58295, ZD-72635)
 
 ### New features and enhancements
 
