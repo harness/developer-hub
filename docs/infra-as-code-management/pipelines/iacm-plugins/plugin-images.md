@@ -4,6 +4,15 @@ description: Create and use your own Terraform plugin images.
 sidebar_position: 30
 ---
 
+<CTABanner
+  buttonText="Learn More"
+  title="Pending release"
+  tagline="The IaCM Default Pipelines feature is currently pending release and will be available soon!"
+  link="https://developer.harness.io/roadmap/#iacm"
+  closable={true}
+  target="_self"
+/>
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
