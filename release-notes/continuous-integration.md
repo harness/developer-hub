@@ -35,13 +35,13 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 
 #### Fixed issues
 - Storing secrets in custom secret managers is now supported for cache intelligence in the self-hosted flow. (CI-14719, ZD-71881)
-- Fixed an issue where bitbucket tag builds with tags containing slashes were causing errors in execution due to variable codebase.commitSha returning null. Harness now correctly supports tags with slashes for bitbucket and git builds, ensuring SHA values are properly referenced. (CI-14706, ZD-70972)
-- Addressed an issue where pipelines failed at the clone codebase step on Windows infrastructure when using the GitHub SSH connector. (CI-14592, ZD-70570, ZD-71715)
+- Fixed an issue where bitbucket tag builds with tags containing slashes were causing errors in execution due to `<+codebase.commitSha>` returning null. Harness now correctly supports tags with slashes for bitbucket and git builds, ensuring SHA values are properly referenced. (CI-14706, ZD-70972)
+- Addressed an issue where pipelines failed at the clone codebase step on Windowsinfrastructure when using the GitHub SSH connector and cloning using LFS. (CI-14592, ZD-70570, ZD-71715)
 - Improved "Copy to Clipboard" functionality for pipeline output logs. Previously, extra new lines were added when pasting the copied output, causing unnecessary spacing between lines. This issue has been fixed to ensure log output is pasted without additional line breaks. (CI-14200, ZD-68902)
 
 | **Image** | **Change**  | **Previous version** | **New Version** 
 |-------------------------------|-----------------|-------------|------------------|
-| `harness/drone-git` |  Fixed an issue when using the GitHub SSH connector on Windows (CI-14592) | 1.61 | 1.62
+| `harness/drone-git` |  Fixed an issue when using the GitHub SSH connector on Windows and fetching LFS files (CI-14592) | 1.61 | 1.62
 | `harness/ci-addon` | Improved "Copy to Clipboard" functionality for pipeline output logs (CI-14200)| 1.16.58 | 1.16.59 
 | `plugin/artifactory` | Added support for Secure Connect (CI-14921)| 1.7.0 | 1.7.1
 
