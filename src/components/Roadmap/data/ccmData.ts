@@ -345,6 +345,27 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--yellow-100)",
       },
       {
+        tag: [{value: "Cluster Orchestrator"}],
+        title: "Configurable Karpenter Node Time-To-Live (TTL) in Harness UI",
+        description:
+          "Configurable Karpenter Node Time-To-Live (TTL) allows users to set node lifetimes directly within the interface, simplifying node management.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Cluster Orchestrator"}],
+        title: "Spot Orchestration: Reverse Fallback Retry",
+        description:
+          "Reverse Fallback Retry enables automatic rollback of workloads to their original nodes or environments once they’re available, ensuring efficient resource use. ",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Cluster Orchestrator"}],
+        title: "Workload Distribution Rule at Workload & Namespace level",
+        description:
+          "Workload Distribution Rules enable precise control over workload placement within clusters at both workload and namespace levels, enhancing resource balance, policy compliance, and workload isolation across Kubernetes environments.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
         tag: [{value: "AutoStopping"}],
         title: "Smart Advisor",
         description:
