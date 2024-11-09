@@ -16,11 +16,6 @@ export const CdData: Horizon = {
       },
       {
         tag: [{value: "Pipeline"}],
-        title: "Unified Pipeline Phase II",
-        description: " ",
-      },
-      {
-        tag: [{value: "Pipeline"}],
         title: "Flexible Templates Phase II",
         description: "Users can reference injected stages/steps in pipeline templates",
       },
