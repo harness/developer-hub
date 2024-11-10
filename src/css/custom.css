@@ -1102,6 +1102,16 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.sidebar-fme > div > a::before,.sidebar-fme > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_fme.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .sidebar-dbdevops > div > a::before,.sidebar-dbdevops > a::before{
   content: " ";
   display: inline-block;

@@ -136,6 +136,10 @@ async function config() {
                   to: 'docs/feature-flags',
                 },
                 {
+                  label: 'Feature Management & Experimentation',
+                  to: 'docs/feature-management-experimentation',
+                },
+                {
                   label: 'Cloud Cost Management',
                   to: 'docs/cloud-cost-management',
                 },
@@ -333,6 +337,10 @@ async function config() {
                 {
                   label: 'Feature Flags',
                   to: 'https://harness.io/products/feature-flags',
+                },
+                {
+                  label: 'Feature Management & Experimentation',
+                  to: 'https://harness.io/products/feature-management-experimentation',
                 },
                 {
                   label: 'Cloud Cost Management',

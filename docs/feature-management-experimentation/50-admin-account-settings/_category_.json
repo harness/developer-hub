@@ -1,0 +1,7 @@
+{
+    "label": "Admin & account settings",
+    "position": 50,
+    "collapsible": true,
+    "collapsed": true,
+    "className": "red"
+}

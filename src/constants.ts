@@ -51,7 +51,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.cde]: 'Cloud Development Environments',
     [MODULES.armory]: 'Armory',
     [MODULES.opensource]: 'Open Source',
-    [MODULES.fme]: 'Feature Mgmt & Experimentation'
+    [MODULES.fme]: 'Feature Management & Experimentation'
 }
 
 export const MODULE_ICON = {

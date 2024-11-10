@@ -1,0 +1,12 @@
+{
+    "label": "Tutorials",
+    "position": 40,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "FME Tutorials",
+        "description": "These guides and tutorials help you get started with FME or explore advanced use cases."
+    },
+}

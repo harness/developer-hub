@@ -1,0 +1,7 @@
+{
+    "label": "Release monitoring",
+    "position": 30,
+    "collapsible": true,
+    "collapsed": true,
+    "className": "red"
+}
