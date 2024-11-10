@@ -124,19 +124,6 @@ For example, with a Free plan, you can add a maximum of 10 parallel stages in a 
 
 Even if you specify a `maxConcurrency` limit of 5 or 10, the moment you do the looping repeat strategy, Harness will already compute the total number of potential stages, if the list generates more than 256 items we will fail there before even running any of the stages and honoring the `maxconcurrency`. 
 
-### Crud Limits
-
-| Resource | Use-case | Default Limits
-| ---  | ----------- | ------ |
-| Pipeline | Number of pipelines in an account | <ul><li>Free: 5</li><li>Team: 5k</li><li>Enterprise: 10k</li></ul> | 
-| Templates | Number of templates present in an account at all levels | <ul><li>Free: 5</li><li>Team: 5k</li><li>Enterprise: 10k</li></ul> | 
-| Templates | Nesting of Template | <ul><li>Free: 10</li><li>Team: 10</li><li>Enterprise: 10</li></ul> | 
-| Triggers | Number of triggers that can be present in an account |  <ul><li>Free: 100</li><li>Team: 5k</li><li>Enterprise: 10k</li></ul> | 
-
-:::note
-If you need limits beyond the default values specified above, please contact [Harness Support](mailto:support@harness.io).
-:::
-
 ### Execution Limits
 
 | Resource | Use-case | Default Limits
@@ -145,7 +132,6 @@ If you need limits beyond the default values specified above, please contact [Ha
 | Step | Output size for a step | <ul><li>Free: 100KB</li><li>Team: 1MB</li><li>Enterprise: 1MB</li></ul> | 
 | File Store | Size of the file store | <ul><li>Free: 100KB</li><li>Team: 500KB</li><li>Enterprise: 1MB</li></ul> | 
 | Triggers | Size of payload supported by triggers |  <ul><li>Free: 16MB</li><li>Team: 16MB</li><li>Enterprise: 16MB</li></ul> | 
-| Expression Engine V2 | Maximum size of json we can store on expression engine | 16MB | 
 
 :::note
 If you need limits beyond the default values specified above, please contact [Harness Support](mailto:support@harness.io).
