@@ -18,9 +18,9 @@ This first section will go over how to create and configure a registry for use.
 
 ### Enable and select the module
 
-You can find the Artifact Registry module by from the side nav.
+You can find the Artifact Registry module in the module selector in the left nav.
 
-![](./static/select-ar-module.png)
+![](./static/module-selector.png)
 
 ### Create a docker registry
 

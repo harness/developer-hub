@@ -1,0 +1,41 @@
+---
+title: Artifact Details
+description: Learn more about the Artifact Details page and how to use it.
+sidebar_position: 30
+---
+
+The artifact details page can be found by clicking the digest of an artifact in a registry or by clicking an artifact in the **Artifacts** tab. 
+
+This page offers the following information:
+- General Information
+- Artifact Details
+- SBOM
+- Vulnerabilities
+- Deployments
+- Code
+
+## General Information/Overview
+
+This section includes an overview of the artifact, offering a glimpse at all it's relevant information needed to manage it. Use this page to copy relevant information like the registry path or the pull command required to download the artifact.
+
+![](./static/artifact-overview.png)
+
+## Artifact Details
+
+The **Artifact Details** tab contains the artifact's layer and manifest. 
+
+## SBOM 
+
+The **SBOM** tab will show results from the [SBOM Orchestration step](/docs/software-supply-chain-assurance/sbom/generate-sbom/#add-the-sbom-orchestration-step). Therefore, this feature will only be available to customers who also have the [SCA module](/docs/software-supply-chain-assurance). 
+
+## Vulnerabilities
+
+The **Vulnerabilities** tab will show results from security tests run on the artifact using [security scan steps](/docs/category/built-in-scan-steps). Therefore, this feature will only be available to customers who also have the [STO module](/docs/security-testing-orchestration).
+
+## Deployments
+
+The **Deployments** tab displays information pertaining to the artifact's deployments. This information includes the deployment environments and the number of times its been deployed.
+
+## Code
+
+The **Code** tab shows the code that was used to build the artifact. However, this feature only works if you are using [Harness Code Repository](/docs/code-repository).
