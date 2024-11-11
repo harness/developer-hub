@@ -61,7 +61,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Harness has introduced native supports for **Canary** and **Blue-Green** Deployment strategies with Helm Chart deployments. For more information, go to Harness [Helm Chart deployments](/docs/category/helm-step-reference/). (CDS-35715)
 
-- Harness now supports for enabling metrics in ASG deployments. (CDS-99276)
+- Harness now supports for enabling metrics in ASG deployments. For more information, go to Harness [ASG Additional Configuration](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#asg-additional-configuration). (CDS-99276)
 
 - Harness now detects the failure state of CRDs in the Kubernetes Apply step when CRDs behave like jobs. (CDS-98761)
 
@@ -95,7 +95,7 @@ Currently, this feature is behind the feature flag `CDS_ADD_GIT_INFO_IN_POST_DEP
 
 #### New features and enhancements
 
-- Harness now supports customer attributes for OIDC with the GCP connector. Currently, this feature is behind the feature flag `PL_GCP_OIDC_AUTHENTICATION`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-96753, ZD-63581,63632)
+- Harness now supports custom attributes for OIDC with the GCP connector. Currently, this feature is behind the feature flag `PL_GCP_OIDC_AUTHENTICATION`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-96753, ZD-63581,63632)
 
 - Harness has introduced EventBridge webhooks that can be configured with Git, Slack, and generic options (for Nexus artifacts) to trigger pipelines in real time. Currently, this feature is behind the feature flag `CDS_EVENT_BRIDGE_WEBHOOK`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. 
 (CDS-98869, ZD-66421)
