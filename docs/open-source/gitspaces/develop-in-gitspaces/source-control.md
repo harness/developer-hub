@@ -44,4 +44,4 @@ git config --global user.name "Your Name"
 
 4. Now Sync Changes, it will redirect you to login and authorize to your Source Provider. After authorization, your changes will be committed to your fork.
 
-5. And that’s it! You have successfully used Gitness Gitspace for development
+5. And that’s it! You have successfully used Harness Open Source Gitspaces for development
