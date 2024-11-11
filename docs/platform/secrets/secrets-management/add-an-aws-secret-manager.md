@@ -60,7 +60,6 @@ The following policy list enables Harness to perform all the secrets operations 
           "secretsmanager:GetSecretValue",
           "secretsmanager:ListSecretVersionIds",
           "secretsmanager:ListSecrets",
-          "secretsmanager:PutSecretValue",
           "secretsmanager:UpdateSecret",
           "secretsmanager:TagResource"
         ],
