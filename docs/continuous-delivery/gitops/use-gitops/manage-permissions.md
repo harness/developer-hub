@@ -72,7 +72,7 @@ spec:
 
 ### Step 3: Create resource groups in Harness
 
-Resource Groups in Harness allow you to group applications based on their labels. Here's how to create them:
+Resource Groups in Harness allow you to group your applications. Here's how to create them:
 1. Navigate to **Access Control** > **Resource Groups** in your **Project Settings**.
 1. Click **New Resource Group**.
 1. Name your group and click **Save**.
