@@ -123,7 +123,7 @@ Harness has introduced a significant update to its service tracking capabilities
 
 ### Will Service tracking improvements increase my costs?
 
-Potentially, yes. Your license consumption may increase since we are now tracking more deployable items and offering additional value. This could result in a higher renewal cost. However, we are committed to working with you to adjust your contract to match your usage and needs. We are not using these increases to charge you more; we are just trying to track license utilization across all customers better.
+ Your license consumption may increase since we are now tracking more deployable items and offering additional value. This could result in a higher renewal cost. However, we are committed to working with you to adjust your contract to match your usage and needs. We are not using these increases to charge you more; we are just trying to track license utilization across all customers better.
 
 ###  Why has tracking for GitOps Services been introduced in the new service tracking improvements?
 
