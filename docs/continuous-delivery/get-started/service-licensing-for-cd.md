@@ -123,7 +123,7 @@ Harness has introduced a significant update to its service tracking capabilities
 
 ### Will Service tracking improvements increase my costs?
 
- Your license consumption may increase since we are now tracking more deployable items and offering additional value. This could result in a higher renewal cost. However, we are committed to working with you to adjust your contract to match your usage and needs. We are not using these increases to charge you more; we are just trying to track license utilization across all customers better.
+ Your license consumption may increase since we are now tracking more deployable items and offering additional value. We are committed to working with you to adjust your contract to match your usage and needs. We are not using these increases to charge you more; we are just trying to better track license utilization across all customers.
 
 ###  Why has tracking for GitOps Services been introduced in the new service tracking improvements?
 
@@ -157,7 +157,7 @@ We are committed to making this transition as smooth as possible. While your cur
 
 ### Can I stay on my current licensing model instead of moving to Service tracking improvements?
 
-**A:** Service tracking improvements is designed to provide a more accurate and fair billing model based on actual usage. While we recommend transitioning to take advantage of the enhanced tracking and support, we understand that each customer has unique needs. Please discuss your specific situation with your account representative to explore possible options.
+Service tracking improvements is designed to provide a more accurate and fair billing model based on actual usage. While we recommend transitioning to take advantage of the enhanced tracking and support, we understand that each customer has unique needs. Please discuss your specific situation with your account representative to explore possible options.
 
 ### How will the licensing changes affect my existing integrations and workflows?
 
@@ -174,7 +174,7 @@ We offer comprehensive support to assist you during this transition:
 
 ### How does Service tracking improvements handle seasonal or fluctuating usage patterns?
 
-**A:** Service tracking improvements is designed to accommodate varying usage levels:
+Service tracking improvements are designed to accommodate varying usage levels:
 
 - **Flexible Billing:** The model accounts for actual usage, which can adapt to your seasonal demands.
 - **Scaling Options:** Easily scale up or down based on your needs without long-term commitments for unused capacity.
@@ -194,7 +194,7 @@ All security and compliance features remain fully supported and will not be affe
 
 ### Will there be changes to how users are managed and billed in Service tracking improvements?
 
-Under Service tracking improvements, we have shifted from user-based CD service billing. While we no longer bill based on the number of users, user management functionalities remain unchanged. You can continue to add and manage users within your organization without it affecting your CD licensing costs.
+Under Service tracking improvements, we have shifted from user-based CD service billing. While we no longer bill based on the number of users, user management functionalities remain unchanged. You can continue to add and manage users within your organization without affecting your CD licensing costs.
 
 ### How can I provide feedback about the service tracking improvements?
 
