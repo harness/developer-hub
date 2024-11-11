@@ -91,11 +91,11 @@ The following deprecated API endpoints are longer supported:
 
 - Resolved an issue where the Event Summary link under Audit Logs would cause the page to break when a new, unhandled action was onboarded. The Event Summary now displays "N/A" in line with the Audit Logs page. (PL-57850)
 
-- Fixed an issue where GAR Trigger creation would fail if no artifact was present in the repository, causing delays in automation workflows. Now, triggers can be created without pre-existing artifacts, supporting smoother CI processes. (PL-56263, ZD-66511)
-
 #### New features and enhancements
 
 - GCP GCS Audit Streaming now supports Manual Credentials and IAM Delegate authentication, in addition to the existing OIDC-based authentication. This enhancement offers greater flexibility in authentication options. (PL-52059)
+
+- Added support for `Connection via Platform` for AWS Secrets Manager, AWS KMS and GCP KMS using the `OIDC method`, enabling users to connect directly through the Harness platform without requiring a delegate. (PL-52058)
 
 - Added a new scope query parameter to the `listDelegates` endpoint. When set to true, this parameter enables listing delegates across hierarchical scopes (Account, Org, Project). By default, scope is set to false. (PL-57724)
 
