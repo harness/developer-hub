@@ -30,11 +30,11 @@ A list of all registered custom actions can be found under
 
 :::info
 
-This action currently supports only [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)(**Available with Harness CD License or Free Tier usage**) and [codebase disabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) **CI stage(Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
+This action currently supports [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [Deploy Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage#add-a-stage) and [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)(**Available with Harness CD License or Free Tier usage**) and [codebase disabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) **Build Stage(Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
 
 :::
 
-This custom action requires **pipeline variables**(`<+pipeline.variables.VARIABLE_IDENTIFIER>`) as input along with the **pipeline url**(for pipelines using [Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview) make sure your URL includes `branch` and `repoName` e.g., `https://app.harness.io/ng/account/accountID/module/idp/orgs/orgID/projects/projectID/pipelines/pipelineID?repoName=repo-name&branch=branch`), and then trigger the pipeline based in the `inputset` obtained from the user. 
+This custom action requires **variables of type pipeline, stage or step** as input along with the **pipeline url**(for pipelines using [Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview) make sure your URL includes `branch` and `repoName` e.g., `https://app.harness.io/ng/account/accountID/module/idp/orgs/orgID/projects/projectID/pipelines/pipelineID?repoName=repo-name&branch=branch`), and then trigger the pipeline based in the `inputset` obtained from the user. 
 
 ```YAML
 ...
@@ -63,6 +63,44 @@ output:
         Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`      
 ...
 ```
+
+In the YAML example above, under `inputset`, values such as `project_name` and `github_repo` are placeholders for pipeline variable names. You can use the reference format `<+pipeline.variables.VARIABLE_NAME>` directly within the `inputset` **key-value pairs**. For example, instead of simply specifying the variable name, you can reference the pipeline variable like this:
+
+```YAML
+...
+inputset:
+  <+pipeline.variables.project_name>: ${{ parameters.project_name }}
+  <+pipeline.variables.github_repo>: ${{ parameters.github_repo }}
+  ...
+...
+```
+To obtain these references, simply copy the variable path from the Harness Pipeline Studio UI.
+
+![](./static/pipeline-variable.png)
+
+#### Support for Stage and Step Variables
+
+In addition to pipeline variables, you can also reference **stage, step group, service, and environment variables** within the `inputset`. Here’s how each type of variable can be referenced:
+
+- Stage variable reference: `<+pipeline.stages.STAGE_IDENTIFIER.variables.VARIABLE_NAME>`
+- Step variable reference: `<+serviceVariables.VARIABLE_NAME>` `<+pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_IDENTIFIER.VARIABLE_NAME>`
+- Step group variable reference: `<+pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_GROUP_IDENTIFIER.steps.STEP_IDENTIFIER.VARIABLE_NAME>`
+
+If you need to reference lower-level variables (such as stage, step group, and step variables) from outside their original scope, you must include the relative path to that variable. For instance, if you want to reference a stage variable from a different stage, you should use the format, `<+pipeline.stages.originalStageID.variables.variableName>`
+
+Instead of the simpler `<+stage.variables.variableName>`. This fully qualified path ensures the correct variable is referenced across stages, step groups, or steps.
+
+```YAML
+inputset:
+  <+pipeline.variables.project_name>: ${{ parameters.project_name }}
+  <+pipeline.stages.originalStageID.variables.github_repo>: ${{ parameters.github_repo }}
+  <+pipeline.stages.TempStage.spec.execution.steps.demostepgroup.steps.ShellScript_1.cloud_provider>: ${{ parameters.provider }}
+```
+To obtain these references, simply copy the variable path from the Harness Pipeline Studio UI.
+
+![](./static/stage-variable.png)
+
+> Note: **This is the only way to reference stage and step variables under `inputset`, without the fully qualified path, the input isn't valid.**
 
 :::info 
 
