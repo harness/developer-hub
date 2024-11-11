@@ -17,7 +17,7 @@ By default, Harness builds utilizing a Kubernetes cluster infrastructure are com
 Customers can also utilize BuildX for their builds.  This feature can be enabled by submitting a ticket to Harness Support to enable the flag `CI_USE_BUILDX_ON_K8`.  We recommend [reviewing the notes about this feature on the CI Early Access Features page](https://developer.harness.io/docs/continuous-integration/ci-supported-platforms/#harness-ci-early-access-features).  You must run BuildX on Kubernetes with Privileged mode enabled.
 
 ### Drone Docker
-It is also possible to utilize drone docker. Please read the following documentation for a full breakdown of [drone-docker] and how to use it (https://github.com/drone-plugins/drone-docker/blob/master/README.md).
+It is also possible to utilize drone docker. Please read the following documentation for a full breakdown of [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md) and how to use it.
 
 ### Individual Step Root / Buildah plugin
 If your Kubernetes cluster builds infrastructure is configured to run as non-root, you can either [enable root access individual steps](#enable-root-access-for-a-single-step) or [use the Buildah plugin](#use-the-buildah-plugin), which doesn't require root access, but will require privileged access.
