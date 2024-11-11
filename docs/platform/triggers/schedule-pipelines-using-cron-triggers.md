@@ -11,6 +11,10 @@ canonical_url: https://www.harness.io/blog/automate-your-ci-cd-pipeline-using-tr
 
 You can use cron triggers to schedule pipeline executions. For example, to schedule a pipeline run every Monday at 1AM, Harness uses the cron expression `0 1 * * MON`. For information about other trigger types and triggers in general, go to the [Triggers overview](./triggers-overview).
 
+:::note
+The cron expression will be evaluated in UTC time. Only UTC timezone is supported. It does not automatically adjust for daylight saving time (DST) and must be explicitly configured with the correct date and time in UTC.
+:::
+
 This topic assumes you're familiar with [Harness' key concepts](/docs/platform/get-started/key-concepts.md) and that you have created a Harness CI or CD pipeline.
 
 import Variables from '/docs/platform/shared/variables-not-supported.md'
