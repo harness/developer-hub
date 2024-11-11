@@ -71,5 +71,5 @@ You will see the plan as a comment in the PR:
 ![Resources](./static/pr-comment.png)
 
 :::info
-As a security measure, comments will not be populated if the repository is public. To override it, add the Environment Variable `HARNESS_PASSWORD_API`  with the git repository token/secret set as the value.
+As a security measure, comments will not be populated if the repository is public. To override it, add the Environment Variable `HARNESS_PASSWORD_API` with the git repository token/secret set as the value.
 :::
