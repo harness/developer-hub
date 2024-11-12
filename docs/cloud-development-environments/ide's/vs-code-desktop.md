@@ -15,12 +15,15 @@ Harness CDE is now available in public beta. To enable it on your account, conta
 
 Harness CDE provides a seamless integration with VS Code, making it easy to connect to your Gitspaces remotely. With the Gitspaces VS Code extension, you can access and manage your Gitspaces directly within your VS Code desktop IDE. This guide will walk you through the steps to install, set up, and start developing in your Gitspaces using this extension.
 
+Check out this video to get started with the Harness Gitspaces VS Code Extension: 
+
+[![Managing Harness CDE with the Gitspaces VS Code Extension](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2F8rwKZNszOpI%3Fsi%3DKfgXkzRK6A861dOU)](https://youtu.be/8rwKZNszOpI?si=KfgXkzRK6A861dOU)
 
 ## Pre-requisites 
 Before starting out, ensure that you have the following:
 1. VS Code Desktop installed [(Install VS Code Desktop)](https://code.visualstudio.com/download)
 2. Gitspaces VS Code extension installed (Refer to the steps below)
-3. [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) and [Dev containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extensions installed and enabled in VS Code Desktop
+3. [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) extension installed and enabled in VS Code Desktop
 
 
 ## Installing the Gitspaces VS Code Extension
