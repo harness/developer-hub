@@ -300,16 +300,16 @@ Please note, after running the Terraform script, the API key will not be printed
 Replace the placeholders in the command with values from the Terraform outputs and your specific configuration:
 
 ```bash
-helm upgrade -i harness-ccm-cluster-orchestrator --namespace kube-system harness-ccm-cluster-orchestrator/harness-ccm-cluster-orchestrator 
---set harness.accountID="<harness_account_id>" 
+helm upgrade -i harness-ccm-cluster-orchestrator --namespace kube-system harness-ccm-cluster-orchestrator/harness-ccm-cluster-orchestrator \
+--set harness.accountID="<harness_account_id>" \
 --set harness.k8sConnectorID="<k8s_connector_id>" \
---set harness.ccm.secret.token="<harness_ccm_token>" 
---set eksCluster.name="<eks_cluster_name>" 
---set eksCluster.region="<eks_cluster_region>" 
---set eksCluster.controllerRoleARN="<eks_cluster_controller_role_arn>" 
---set eksCluster.endpoint="<eks_cluster_endpoint>" 
---set eksCluster.defaultInstanceProfile.name="<eks_cluster_default_instance_profile>" 
---set eksCluster.nodeRole.arn="<eks_cluster_node_role_arn>" 
+--set harness.ccm.secret.token="<harness_ccm_token>" \
+--set eksCluster.name="<eks_cluster_name>" \
+--set eksCluster.region="<eks_cluster_region>" \
+--set eksCluster.controllerRoleARN="<eks_cluster_controller_role_arn>" \
+--set eksCluster.endpoint="<eks_cluster_endpoint>" \
+--set eksCluster.defaultInstanceProfile.name="<eks_cluster_default_instance_profile>" \
+--set eksCluster.nodeRole.arn="<eks_cluster_node_role_arn>" \
 --set clusterOrchestrator.id="<cluster_orchestrator_id>"
 ```
 
