@@ -130,4 +130,4 @@ That concludes the quick start guide! You should now have enough to get started 
 To learn more go to:
 
 - [Configure Registries](/docs/artifact-registry/manage-registries/configure-registry)
-- [Manage Artifacts](/docs/artifact-registry/manage-artifacts/overview)
+- [Manage Artifacts](/docs/artifact-registry/manage-artifacts/artifact-management)
