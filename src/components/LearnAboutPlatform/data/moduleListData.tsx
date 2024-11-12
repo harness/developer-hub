@@ -95,6 +95,17 @@ export const moduleList: CardItem[] = [
     link: "docs/internal-developer-portal",
   },
   {
+    title: "Cloud Development Environments",
+    module: MODULES.cde,
+    icon: "img/cde_icon.svg",
+    description: (
+      <>
+        Accelerate day 1 dev onboarding and day 2 dev productivity.
+      </>
+    ),
+    link: "docs/cloud-development-environments",
+  },
+  {
     title: "Software Engineering Insights",
     module: MODULES.sei,
     // icon: "img/icon_idp.svg",
