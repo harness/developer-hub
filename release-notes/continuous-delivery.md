@@ -69,6 +69,8 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Template name suggestions are now available as part of the **ServiceNow Creation** step. For more information, go to [Harness documentation](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages/#create-from-form-template) (CDS-97672, ZD-64772)
 
+- Harness now allows [bulk reconciliation](/docs/platform/templates/reconcile-pipeline-templates#bulk-reconciliation-of-templates) of templates, enabling users to update runtime input changes across multiple entities (like stages or pipelines) in a single action. Currently, this feature is behind the feature flag `PIPE_BULK_RECONCILIATION`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (PIPE-2018,ZD-39998,42766,43260,45380,47467,47517,63038,71628)
+
 #### Fixed issues
 
 - Previously, an error occurred related to the column "actualRunDuration" in the "verify_step_execution_cvng" relation due to missing migrations. This issue is resolved by running the necessary migrations to create the required columns. (CDS-102602)
