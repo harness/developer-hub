@@ -41,7 +41,7 @@ export const FmeData: Horizon = {
     feature: [
       {
         tag: [{ value: "Targeting" }],
-        title: "Flag Prerequisites",
+        title: "Flag prerequisites",
         description:
           "Top level flag dependencies enforced (new) as well as within rules (existing).",
       },
@@ -53,7 +53,7 @@ export const FmeData: Horizon = {
       },
       {
         tag: [{ value: "Better Together" }],
-        title: "Split Integration into Harness",
+        title: "Split integration into Harness",
         description:
           "Incorporate Split as a fully native Harness module.",
       },
@@ -120,7 +120,7 @@ export const FmeData: Horizon = {
       },
       {
         tag: [{ value: "SDK" }, {value: "Security"}],
-        title: "SDK Certificate pinning",
+        title: "SDK certificate pinning",
         description: "Enhanced Mobile (iOS and Android) SDK support to ensure mobile apps connect only to trusted servers.",
         link:"https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#certificate-pinning",
       },
