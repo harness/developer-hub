@@ -69,13 +69,13 @@ In the YAML example above, under `inputset`, values such as `project_name` and `
 ```YAML
 ...
 inputset:
-  <+pipeline.variables.project_name>: ${{ parameters.project_name }}
-  <+pipeline.variables.github_repo>: ${{ parameters.github_repo }}
+  pipeline.variables.project_name: ${{ parameters.project_name }}
+  pipeline.variables.github_repo: ${{ parameters.github_repo }}
   ...
 ...
 ```
-To obtain these references, simply copy the variable path from the Harness Pipeline Studio UI.
-
+To obtain these references, simply copy the variable path from the Harness Pipeline Studio UI. Please make sure to remove `<+` & `>` from the expression copied from UI. 
+ 
 ![](./static/pipeline-variable.png)
 
 #### Support for Stage, Step Variables and Pipeline Templates
