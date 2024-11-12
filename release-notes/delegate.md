@@ -22,6 +22,23 @@ These release notes describe recent changes to Harness Delegate.
 
 :::
 
+:::info **Delegate Base Image Migration**
+
+Harness is planning to update the base image for its Delegate from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4`, as UBI-8 reached end-of-life on May 31st, 2024. No further updates, patches, or fixes will be provided for UBI-8, so this migration ensures continued security and compatibility. This change will take effect starting **January 6, 2025**.
+
+**Key Updates with UBI9 Migration:**
+
+- **Microdnf Command Update**: When installing or removing any tool via the `microdnf` command, the confirmation option `-y` is now required.
+  - **Example**: `microdnf install wget -y`
+
+- **Tool Availability**: `curl` is already included in `ubi9-minimal`, so manual installation is no longer necessary.
+
+**Action Required**: If you use an `init_script` or a custom Dockerfile for your Delegate image, please incorporate these updates to avoid compatibility issues.
+
+For more details on UBI9, please refer to the [UBI9 Release Notes](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/9.0_release_notes/index).
+
+:::
+
 :::info **Delegate Security Update**
 Added a critical security fix in harness secret manager for handling identities with CD workflows.
 If you are running delegates version below 799xx and using Terraform/Terragrunt features, upgrade to delegate version 799x or above immediately. Go to the [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) to update the delegates.
