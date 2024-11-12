@@ -56,4 +56,5 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 ## Supported plugins
 
 IaCM supports external plugins to enhance its usability and security. 
-- [Wiz Scans](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz) to check your proposed infrastructure changes for security vulnerabilities.
+- [Wiz Scans](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz) to check your proposed infrastructure changes for security vulnerabilities. 
+    - The Wiz scan feature is part of the [Harness STO module](https://developer.harness.io/docs/security-testing-orchestration) and requires an STO license.

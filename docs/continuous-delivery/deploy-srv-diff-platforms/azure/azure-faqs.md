@@ -158,3 +158,11 @@ One can modify the `pom.xml` file to configure the mvn publish command to push t
 
 ### Can I do an AZURE_VMSS deployment through Harness?
 Yes, user can configure this custom deployment template as suggested in this doc: https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom/custom-deployment-tutorial/#azure-vmss---deployment-template-sample
+
+### How to add a health check for Azure Slot deployment?
+
+You can use a shell script to perform health checks after slot deployment.
+
+### How to pass Application Settings and Connection Strings for Azure App Service Configuration?
+
+You can pass those in Harness Service under App Services Configuration.

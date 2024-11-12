@@ -8,7 +8,7 @@ export const spt: IltCardItem[] = [
      type: type.user,
      description:
        "Self-paced video course introducing the Harness Platform.",
-     version: "Free/Teams Plans of any module",
+     version: "Free Plan of any module",
      link: "https://university-registration.harness.io/self-paced-training-platform-fundamentals",
      tileType: tileType.preReq,
      cardType: cardType.SPT,
@@ -19,7 +19,7 @@ export const spt: IltCardItem[] = [
      type: type.user,
      description:
        "Self-paced video course introducing Harness Continuous Delivery & GitOps.",
-     version: "Harness CD & GitOps Free/Team Plans",
+     version: "Harness CD & GitOps Free Plan",
      link: "https://university-registration.harness.io/self-paced-training-harness-continuous-delivery-gitops",
      tileType: tileType.normal,
      cardType: cardType.SPT,
@@ -30,7 +30,7 @@ export const spt: IltCardItem[] = [
      type: type.user,
      description:
        "Self-paced video course introducing Harness Continuous Integration.",
-     version: "Harness CI Free/Team Plans",
+     version: "Harness CI Free Plan",
      link: "https://university-registration.harness.io/self-paced-training-harness-continuous-integration",
      tileType: tileType.normal,
      cardType: cardType.SPT,
@@ -63,7 +63,7 @@ export const spt: IltCardItem[] = [
      type: type.user,
      description:
        "Self-paced video course introducing Harness Cloud Cost Management.",
-     version: "Harness CCM Free/Team Plans",
+     version: "Harness CCM Free Plan",
      link: "https://university-registration.harness.io/self-paced-training-harness-cloud-cost-management",
      tileType: tileType.normal,
      cardType: cardType.SPT,
@@ -74,8 +74,30 @@ export const spt: IltCardItem[] = [
      type: type.user,
      description:
        "Self-paced video course introducing Harness Infrastructure as Code Management.",
-     version: "Harness IaCM Free/Team Plans",
+     version: "Harness IaCM Free Plan",
      link: "https://university-registration.harness.io/self-paced-training-harness-infrastructure-as-code-management",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
+   {
+    title: "Internal Developer Portal",
+    module: MODULES.idp,
+     type: type.user,
+     description:
+       "Self-paced video course introducing Harness Internal Developer Portal.",
+     version: "Harness IDP Enterprise Plans",
+     link: "https://university-registration.harness.io/self-paced-training-harness-internal-developer-portal",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
+   {
+    title: "Chaos Engineering",
+    module: MODULES.ce,
+     type: type.user,
+     description:
+       "Self-paced video course introducing Harness Chaos Engineering.",
+     version: "Harness CE Free Plan",
+     link: "https://university-registration.harness.io/self-paced-training-harness-chaos-engineering",
      tileType: tileType.normal,
      cardType: cardType.SPT,
    },

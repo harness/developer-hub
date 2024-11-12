@@ -9,7 +9,7 @@ sidebar_position: 40
 
 ## Introduction 
 
-A Backstage Plugin adds functionality to Backstage. In this tutorial we will be using the a backstage monorepo to build out frontend plugins. 
+A Backstage Plugin adds functionality to Backstage. In this tutorial we will be using the backstage monorepo to build out frontend plugins. 
 
 ## Pre-Requisites
 
@@ -38,7 +38,7 @@ This method of serving the plugin provides quicker iteration speed and a faster 
 
 ## Other Plugin Library Package Types
 
-There are other plugin library package types that you can chose from. To be able to select the type when you create a new plugin just run: `yarn new`. You'll then be asked what type of plugin you wish to create like this:
+There are other plugin library package types that you can choose from. To be able to select the type when you create a new plugin just run: `yarn new`. You'll then be asked what type of plugin you wish to create like this:
 
 ##  Plugin Development
 
@@ -99,7 +99,7 @@ export const ExamplePage = examplePlugin.provide(
 );
 ```
 
-This extension can then be imported and used in the app as follow, typically placed within the top-level `<FlatRoutes>`:
+This extension can then be imported and used in the app as follows, typically placed within the top-level `<FlatRoutes>`:
 
 ```sh
 <Route path="/any-path" element={<ExamplePage />} />
@@ -137,7 +137,7 @@ new-plugin/
     package.json
     README.md
 ```
-You might note a thing or two. Yes, a plugin looks like a mini project on it's own with a `package.json` and a `src` folder. And this is because we want plugins to be separate packages. This makes it possible to ship plugins on npm and it lets you work on a plugin in isolation, without loading all the other plugins in a potentially big Backstage app.
+You might note a thing or two. Yes, a plugin looks like a mini project on its own with a `package.json` and a `src` folder. And this is because we want plugins to be separate packages. This makes it possible to ship plugins on NPM and it lets you work on a plugin in isolation, without loading all the other plugins in a potentially big Backstage app.
 
 The `index.ts` files are there to let us import from the folder path and not specific files. It's a way to have control over the exports in one file per folder.
 
@@ -176,7 +176,7 @@ This is where the plugin is created and where it creates and exports extensions 
 
 ## Components
 
-The generated plugin includes two example components to showcase how we structure our plugins. There are usually one or multiple page components and next to them you can split up the UI in as many components as you feel like.
+The generated plugin includes two example components to showcase how we structure our plugins. There are usually one or multiple page components and next to them, you can split up the UI in as many components as you feel like.
 
 We have the `ExampleComponent` to show an example Backstage page component. The `ExampleFetchComponent` showcases the common task of making an async request to a public API and plot the response data in a table using Material UI components.
 

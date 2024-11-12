@@ -73,7 +73,7 @@ If you are using a proxy server in your GCP account, and you want to use GCP ser
 
 ## GCP connector settings
 
-The GCP connector has the following settings.
+The GCP connector has the following settings to allow Harness to securely connect to Google Cloud Platform.
 
 ### Overview settings
 
@@ -90,9 +90,9 @@ Provide credentials that enable Harness to connect to your GCP account.
 
 Select this option to use a GCP service account key.
 
-You can store a GCP service account keys as [Harness Encrypted File Secrets](/docs/platform/secrets/add-file-secrets).
+- You can store a GCP service account keys as [Harness Encrypted File Secrets](/docs/platform/secrets/add-file-secrets).
 
-To obtain the Google Cloud's service account key file, go to the Google documentation on [Creating and managing service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). JSON format is required.
+- To obtain the Google Cloud's service account key file, go to the Google documentation on [Creating and managing service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). JSON format is required.
 
 ![](./static/gcs-connector-settings-reference-00.png)
 
@@ -111,35 +111,6 @@ Select this option to allow the connector to inherit its authentication credenti
   * [GCP Policy Simulator](https://cloud.google.com/iam/docs/simulating-access)
 
 </details>
-
-#### OIDC
-
-Select this option if you want to [use OIDC](#use-openid-connect-oidc).
-
-### Select Connectivity Mode
-
-Select how you want Harness to communicate with GCP. The available options depend on what you chose for **Details**.
-
-#### Connect through Harness Platform
-
-With this option, Harness communicates with GCP through a direct, secure communication between Harness and GCP. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
-
-#### Connect through a Harness Delegate
-
-With this option, Harness communicates with GCP indirectly through a Harness Delegate that is running in GCP. 
-
-You must choose this option if you chose to [inherit delegate credentials](#use-the-credentials-of-a-specific-harness-delegate).
-
-If connecting through a Harness Delegate, select either:
-
-* **Use any available Delegate**: Harness selects an available delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](../../../delegates/delegate-concepts/delegate-overview.md).
-* **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Use delegate selectors](../../../delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](../../../delegates/install-delegates/overview).
-
-:::note
-
-It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
-
-:::
 
 #### Use OpenID Connect (OIDC)
 
@@ -161,6 +132,82 @@ To connect to GCP with OIDC, you must configure an [OIDC identity provider](http
    * OIDC audience: `https://iam.googleapis.com/projects/<YOUR_GCP_PROJECT_ID>/locations/global/workloadIdentityPools/<YOUR_WORKLOAD_POOL_ID>/providers/<YOUR_PROVIDER_ID>`
 
 If accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector. For instructions, go to [Configure OIDC with GCP WIF for Harness Cloud builds](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
+
+#### Custom Parameters 
+
+You can add attribute conditions in your Workload Identity Pools under Workload Identity Federation. 
+
+![](./static/workload_pools.png)
+
+Here are the custom attributes for the Harness GCP OIDC JWT:
+
+- **account_id**: The account id of your Harness account.
+- **organization_id**: The organization id of your Harness organization.
+- **organization_name**: The organization name
+- **project_id**: The project id of your Harness project. 
+- **project_name**: The project name.
+- **connector_id**: The id of the OIDC-enabled GCP connector that sent this token.
+- **connector_name**: The name of the OIDC-enabled GCP connector that sent this token.
+- **pipeline_Identifier**: Pipeline identifier 
+- **pipeline_Name**: Pipeline Name
+- **environment_identifier**: Environment Identifier
+- **environment_name**: Environment name
+- **environment_type**: Environment Type
+- **context**: This specifies the Harness context from when this OIDC token is generated. Possible values for this field are:
+  - `CONNECTOR_VALIDATION` - This context is sent when the connector is being setup.
+  - `PIPELINE_CONFIGURATION` - This context is sent when a pipeline configuration is being completed.
+  - `PIPELINE_EXECUTION` - This context is sent when a pipeline configuration is being executed.
+  - `PERPETUAL_TASK` - This context is sent when a perpetual task is executing.
+
+##### Examples
+
+<details>
+<summary> JWT sent by a connector at the account scope </summary>
+
+```
+{
+  "typ": "JWT",
+  "alg": "RS256",
+  "kid": "NjVBRjY5MDlCMUIwNzU4RTA2QzZFMDQ4QzQ2MDAyQjVDNjk1RTM2Qg"
+}
+{
+  "sub": "Provider:Harness:Account:{account_id}",
+  "iss": "https://token.oidc.harness.io/account/{account_id}",
+  "aud": "https://app.harness.io/{account_id}", (address of harness instance with account id)
+  "exp": 1632493867,
+  "iat": 1632493567,
+  "account_id": "ACCOUNT_ID",
+}
+
+```
+</details>
+
+Custom attributes will be included in the JWT payload.
+
+### Select Connectivity Mode
+
+Select how you want Harness to communicate with GCP. The available options depend on what you chose for **Details** settings.
+
+#### Connect through Harness Platform
+
+With this option, Harness communicates with GCP through a direct, secure communication between Harness and GCP. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
+
+#### Connect through a Harness Delegate
+
+With this option, Harness communicates with GCP indirectly through a Harness Delegate that is running in GCP. 
+
+You must choose this option if you chose to [inherit delegate credentials](#use-the-credentials-of-a-specific-harness-delegate).
+
+If connecting through a Harness Delegate, select either:
+
+* **Use any available Delegate**: Harness selects an available delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](../../../delegates/delegate-concepts/delegate-overview.md).
+* **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Use delegate selectors](../../../delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](../../../delegates/install-delegates/overview).
+
+:::note
+
+It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
+
+:::
 
 ### Troubleshoot GCP connector errors
 

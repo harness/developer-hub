@@ -121,7 +121,7 @@ const ModuleData: ModuleData[] = [
   },
   {
     title: "Infrastructure as Code Management",
-    description: "SaaS release status: Limited GA, SMP release status: On Roadmap",
+    description: "SaaS release status: GA, SMP release status: On Roadmap",
     module: MODULES.iacm,
     horizon: IacmData,
   },

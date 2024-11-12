@@ -35,6 +35,13 @@ You don't have to edit anything in the **Update Release Repo**, **Merge PR** and
 
 ### Update Release Repo step
 
+:::note Limitation
+
+Only one Update Release Repo or Revert PR step can run per GitHub token reference at a time.
+This adheres to [GitHub's best practices](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api?apiVersion=2022-11-28#avoid-concurrent-requests) to prevent [secondary rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#about-secondary-rate-limits) during pull request creation.
+
+:::
+
 This step fetches JSON or YAML files, updates them with your changes, performs a commit and push, and then creates the PR.
 
 You can also enter variables in this step to update key-value pairs in the config file you are deploying.
@@ -104,6 +111,13 @@ Found linked app: syncstep-automation-app-cluster11. Link - https://app.harness.
 ```
 
 ### Revert PR step
+
+:::note Limitation
+
+Only one Update Release Repo or Revert PR step can run per GitHub token reference at a time.
+This adheres to [GitHub's best practices](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api?apiVersion=2022-11-28#avoid-concurrent-requests) to prevent [secondary rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#about-secondary-rate-limits) during pull request creation.
+
+:::
 
 This step reverts the commit passed and creates a new PR. Use this step if you want to run any tests or automation on the pipeline and then revert the commit done by the **Update Release Repo** step.
 

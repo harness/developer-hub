@@ -42,16 +42,16 @@ Once your project is created, you can set up and map integrations as an admin an
 1. Go to the **Integration Mapping** tab within the SEI module.
 2. Click **Map Integrations** and select existing integrations or create new ones as needed.
 3. Ensure you associate the integrations with your current project.
-4. Now for configuring a Sprint Metrics insight, you'll need to map the [Jira integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration) (Issue Management Tool).
+4. Now for configuring a Sprint Metrics insight, you'll need to map the [Jira integration](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration) (Issue Management Tool).
 
 :::info
-You can also use [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) as the Issue Management tool.
+You can also use [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops) as the Issue Management tool.
 :::
 
 You can also create new integrations and associate the integration with the current project by mapping them.
 
-* To create a new Jira integration, go to [Jira integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration).
-* To create a new Azure DevOps integration, go to [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops).
+* To create a new Jira integration, go to [Jira integration](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration).
+* To create a new Azure DevOps integration, go to [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops).
 
 ## Create the Insight
 

@@ -24,6 +24,9 @@ Instance information can be found in the Instances Table.
 
 Note that the infrastructureMappingId is not exposed as part of the Infrastructure.
 
+#### Does Harness support migration of entities such as overrides into GitX or store them remotely?
+
+Yes, Harness supports the migration of entities such as overrides, pipelines, templates, etc. Please contact [Harness support](mailto:support@harness.io) to learn more about the migration tool.
 
 #### How does Harness calculate pricing for CD?
 
@@ -3289,6 +3292,10 @@ Yes, the skip keywords can be placed anywhere within the commit message, includi
 
 #### Does harness pipeline support triggering GitHub action workflow from the pipeline?
 As per the current design, there's no native step for this but user can write a shell script at the end of execution to trigger the GitHub action workflow.
+
+#### Why I am not able to see rollback options in custom stage?
+
+The rollback option is only available for the deployment stage, So you can only be able to see in the deployment stage.
 
 
 ### Infrastructure provisioning FAQs

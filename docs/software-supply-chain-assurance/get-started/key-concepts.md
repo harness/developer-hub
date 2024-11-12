@@ -26,7 +26,6 @@ For a detailed explanation of software supply chain security concepts and terms,
 
 import SbomAbout from '/docs/software-supply-chain-assurance/shared/sbom-about.md';
 
-
 <SbomAbout />
 
 ## Policy management and enforcement
@@ -77,6 +76,32 @@ SLSA Provenance attestations are stored as `.att` files in the artifact reposito
 
 * [SLSA Generation and Attestation](../slsa/generate-slsa.md)
 * [SLSA Verification](../slsa/verify-slsa.md)
+
+## Attestation and Verification
+
+The attestation process in Harness SCS follows the [In-toto attestation framework](https://github.com/in-toto/attestation). This process involves a container image, an SBOM or SLSA provenance, a private key from a key pair and a password. SCS uses [Cosign](https://docs.sigstore.dev/cosign/verifying/attestation/) to perform the attestation and securely sign it. The signed attestation is then pushed to the container registry, where the digest of the image is set as the file name with a `.att` extension.
+
+<DocImage path={require('./static/get-started-attestation-overview.png')} width="80%" height="80%" title="Click to view full size image" />
+
+Here’s an example of what the signed attestation would look like
+
+```
+{
+  "payloadType": "application/vnd.in-toto+json",
+  "payload": "CJTUERYUmVmLVBhY2thZ2UtZGViLXpsaWIxZy1mOTFhODZjZjhhYjJhZTY3XCIsXCJyZWxhdGlvbnNoaXBUeXBlXCI6XCJDT05UQUlOU1wifSx7XCJzcGR4RWxlbWVudE",
+  "signatures": [
+    {
+      "keyid": "dEdLda4DzZYoQgNCgW",
+      "sig": "MEUCIFoNt/ELa4DzZYoQgNCgW++AaCbYv4eOu0FloUFfAiEA6EJQ31P0ROEbLhDpUhMdMAzkqlBSCMFPDk1cyR1s6h8="
+    }
+  ]
+}
+
+```
+
+You can perform Base64 decoding on the payload data to view your SBOM or SLSA Provenance.
+
+For verification, the signed attestation is retrieved from the container registry and verified using the corresponding public key. This public key should be of the same key pair where the attestation was signed using the private key.
 
 ## Harness Platform components
 

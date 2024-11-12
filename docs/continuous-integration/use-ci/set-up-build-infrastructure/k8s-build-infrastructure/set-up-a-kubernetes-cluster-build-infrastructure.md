@@ -348,17 +348,49 @@ You can provide a list of [`tolerations`](https://kubernetes.io/docs/concepts/sc
 Keys are reserved keywords used to validate unique FQNs. If you have multiple tolerations with the same key, you must include an `identifier` to differentiate them. For example:
 
 ```yaml
-              tolerations:
-                - identifier: identifier1
-                  effect: NoSchedule
-                  key: key1
-                  operator: Equal
-                  value: value1
-                - identifier: identifier2
-                  effect: NoSchedule
-                  key: key1
-                  operator: Equal
-                  value: value2
+    tolerations:
+      - identifier: identifier1
+        effect: NoSchedule
+        key: key1
+        operator: Equal
+        value: value1
+      - identifier: identifier2
+        effect: NoSchedule
+        key: key1
+        operator: Equal
+        value: value2
+```
+
+### Topology Spread Constraints
+A new property, `podSpecOverlay`, has been introduced in the Kubernetes infrastructure properties within the CI stage, allowing users to apply additional settings to the build pod. Currently, this field supports specifying `topologySpreadConstraint`, with plans to extend support for additional configurations in the future. 
+
+:::note
+* podSpecOverlay is currently supported via YAML only. Please use the YAML editor to modify.
+* This feature requires using delegate version 24.09.83900 or higher.
+:::
+
+#### Usage example 
+
+```yaml
+  podSpecOverlay: |-
+    topologySpreadConstraints:
+      - maxSkew: 3
+        minDomains: 2
+        topologyKey: topology.kubernetes.io/zone
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchExpressions:
+            - key: app
+              operator: In
+              values:
+                - my-app
+                - anotherapp
+            - key: tier
+              operator: NotIn
+              values:
+                - frontend
+                - backend
+                - full-stack
 ```
 
 ### Host Names

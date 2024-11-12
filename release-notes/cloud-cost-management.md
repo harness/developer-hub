@@ -18,7 +18,40 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
+
 ## October 2024
+
+### Version 1.32.1
+
+#### New features and enhancements
+
+- Ad-Hoc Enforcement Runs: Users can now dry run or execute enforcements directly from the Enforcements list or details page in Asset Governance, improving control over ad-hoc enforcement. [CCM-19438]
+
+- New Resource Name Column in Recommendations View: A new column, Resource Name (No drilldown) has been added to the Governance recommendations view. This allows users to group Governance Recommendations by a specific rule in Dashboards. [CCM-19922]
+
+- AWS Payer Account ID Field Added: We’ve introduced the AWS Payer Account ID in the AWS fields dropdown for Perspectives and Cost Categories Rules. Only account IDs will be shown, excluding account names. [CCM-19843]
+
+- Increased Connector Limit for GCP: We raised the default limit to 6,000 for GCP cross combinations (target account * target region) to prevent unannounced system loads, aligning with the 200 account and 30 region limits in Asset Governance. [CCM-19838]
+
+- ‘Select All’ Option for Filtered Search: We have added a 'Select All' option to the filtered search results in Enforcement creation flow and Testing Terminal in Asset Governance. This option will select the entire filtered list. If the filtered list changes, the 'Select All' option will be deselected. If all filtered options are already selected, the 'Select All' option will be automatically selected. [CCM-19794]
+
+- Date Filter Sync Issue on Evaluation Details Page: Fixed a date filter sync issue displaying "undefined - undefined" on load. Users previously had to manually select a date range, which is now resolved. [CCM-19785]
+
+- Fixed ECS Metrics Chart Issue: CPU recommendations in ECS metrics charts previously displayed incorrect graphs, and CPU usage showed as 0. This has now been corrected. [CCM-19715]
+
+- AutoStopping Controller Update Notification: Outdated AutoStopping Controller versions will now trigger a UI notification, guiding users through the update steps. [CCM-19356]
+
+### Version 1.32.1
+
+#### New features and enhancements
+
+- Account Names Now Displayed in Governance Overview:** We now display Account Names in the Recommendations widget and Overview list, improving clarity.
+  
+- Anomaly Alert Upsert Functionality: When adding a new anomaly alert, the system was updating the existing alert instead of creating a new one when an email address was added. We have now implemented an upsert function for the channel list to ensure a new alert is added correctly, enhancing alert management.
+
+#### Fixed Issues
+
+- Date Filter Sync Issue on Evaluation Details Page: There was a mismatch between the date filter and URL-passed dates, causing an "undefined - undefined" display. Users had to manually select a date range. This is now fixed for a smoother experience.
 
 ### Version 1.31.4
 
@@ -40,7 +73,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Prerequisites for Cluster Orchestrator: We are now listing all prerequisites required for Cluster Orchestrator, providing clearer guidelines to ensure smooth setup. [CCM-18892]
 - Export Perspective Chart as CSV: We now support exporting the Perspective chart as a CSV, allowing users to easily extract and analyze data from the chart. [CCM-18812]
 
-### Fixed Issues:
+#### Fixed Issues
 - Toggle Fields in Recommendations Filters: The Toggle fields in the Recommendations screen Filters were not being saved on Create or Update. This has been fixed. [CCM-19267]
 
 - Saved Filter Option Not Visible on Anomalies Page Load: When first loading the anomalies page, the option to "Select a saved filter" was not visible until a filter was applied. This has been corrected so the saved filter option appears immediately. [CCM-19345]

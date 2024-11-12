@@ -31,7 +31,8 @@ A: Yes, the Harness GitOps Agent supports High Availability and scalability by a
 
 
 ### Which versions of ArgoCd that the latest version of the GitOps agent support? 
-We currently support v2.8.2.
+
+We currently support v2.10.14.
  
 
 ### The GitOps agent updater, can you advise that this will update the Agent, ArgoCD and Redis? Is this also true if use the option to bring our own ArgoCD?
@@ -160,3 +161,36 @@ The minimum RBAC requirements depend on the applications and destination cluster
 ### How can I sync or delete an application or non-deployment resource?
 
 Each resource in our UI has a three dot "kebab menu" that allows you sync or delete the resource. 
+
+### How to get list of all gitops degraded/suspended gitops applications?
+
+To get a list of all degraded/suspended applications, you can call an api to get the list of all the applications along with their health status, here is the API, you can use - 
+ 
+```
+curl 'https://app.harness.io/gateway/gitops/api/v1/applications?routingId=SNM_3IzhRa6SFPz6DIV7aA' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+  -H 'authorization: Bearer PAT_TOKEN' \
+
+  --data-raw '{"accountIdentifier":"ACCOUNT_ID","orgIdentifier":"ORG_ID","projectIdentifier":"PROJECT_ID"}'
+```
+
+### Can I map multiple Argo CD projects to a single Harness project?
+
+No, you cannot map the same Argo CD project to multiple Harness projects. Each Argo CD project must be mapped to a unique Harness project.
+
+### What happens if I add new entities to my Argo CD project after mapping it to Harness?
+
+Any new entities added to the mapped Argo CD project will be automatically imported into the corresponding Harness project, ensuring synchronization between both platforms.
+
+### How can I verify that my Argo CD entities are correctly imported and visible in Harness?
+
+After mapping, navigate to your Harness project, select GitOps, and check under Applications, Repositories, and Clusters to see the imported entities.
+
+### What should I do if I need to upgrade my Argo CD version after setting up the BYOA agent?
+
+If you upgrade your Argo CD to version 2.8.0 or later, you must restart the Harness GitOps agent pods to ensure they pick up the necessary configuration changes.
+
+### How does Harness handle naming for Argo CD repositories when they are imported?
+
+Harness automatically generates names for Argo CD repositories during the import process by removing dashes and appending a unique suffix. This ensures each repository has a distinct name within Harness.

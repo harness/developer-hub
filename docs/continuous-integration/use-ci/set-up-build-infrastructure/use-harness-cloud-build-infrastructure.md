@@ -12,7 +12,7 @@ With Harness Cloud, you can run builds in isolation on Harness-managed VMs that 
 
 Harness Cloud provides the following advantages:
 
-* Use build credits to run builds on Harness-managed machines. No need to set up you own machines.
+* Use Cloud credits to run builds on Harness-managed infrastructure. No need to set-up and maintain the infrastructure yourself
 * Starter pipelines for different programming languages.
 * Blazing fast builds on Linux, macOS, and Windows.
 * Get the latest features first. Harness may enable features for Harness Cloud before rolling them out to other build infrastructure options.
@@ -29,11 +29,12 @@ The steps in each stage execute on the stage's dedicated VM. This allows the sta
 
 :::
 
-## Billing and build credits
+## Billing and Cloud Credits
 
-Free plans get 2000 free build credits each month. If you're on a Team or Enterprise plan, build credit allowances are factored into your plan, and you can purchase additional build credit packages.
+Free plans get 2000 free Harness Cloud credits each month. 
+If you're using a paid CI plan, you can purchase build credit packages.
 
-Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
+Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-cloud-credits).
 
 Free plans require credit card validation to use Harness Cloud. If you don't want to provide a credit card, consider using [local runner build infrastructure](./define-a-docker-build-infrastructure).
 
@@ -146,6 +147,58 @@ pipeline:
 Currently, macOS platforms for Harness Cloud are behind a feature flag with limited availability. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
 
 :::
+
+### Using Resource Classes
+You can use the yaml editor to change the cloud machine size. 
+
+:::info
+
+Currently, specifying machine size is behind the feature flag CI_ENABLE_RESOURCE_CLASSES. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
+:::
+
+To select a resource class size, please set the desired size as value for `size` property in the CI stge cloud infrastructure runtime configuration. For example: 
+
+```yaml
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: 
+              size: xlarge # optional 
+```
+To learn more about all available resource classes in Harness Cloud, please visit [Harness Cloud billing and cloud credits](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-cloud-credits).
+
+### Hardware Acceleration 
+
+Harness supports hardware acceleration using nested virtualization on Linux/AMD Cloud machines.
+
+By enabling this feature, Android SDK tools and emulators can run more efficiently within virtualized environments, making Android test execution faster and optimizing build time.
+
+To enable this feature, set the `nestedVirtualization` property to `true` as shown below. 
+
+:::note
+* To enable `nestedVirtualization` use the YAML editor, as this option is currently unavailable in the visual editor.
+* When using hardware acceleration, run your steps directly on the VM, rather than inside a container. Running inside a container is currently not supported with hardware acceleration.
+* Hardware acceleration is available for all machine sizes, when using Linux with AMD architecture on Harness Cloud.
+:::
+
+```yaml
+    - stage:
+        name: build
+        identifier: build
+        type: CI
+        spec:
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec:
+              nestedVirtualization: true
+              size: xlarge # optional 
+```
+
 
 ### Harness Cloud best practices
 
@@ -307,7 +360,3 @@ Atlassian released a fix for this issue; however, if you use a Harness Cloud Win
 
 1. [Disable Clone Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages).
 2. At the beginning of your build stage, add a a [Run step](/docs/continuous-integration/use-ci/run-step-settings) that uses the `harness/drone-git` image and Git commands to clone your BitBucket cloud repo.
-
-#### Harness Cloud VMs don't support hardware acceleration
-
-Currently, Harness Cloud build machines don't support hardware acceleration. This applies to all platforms and architectures.

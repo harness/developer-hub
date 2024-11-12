@@ -104,31 +104,23 @@ If **Namespaced** is selected, the Harness GitOps agent is installed without clu
 
 Note that if you remove CRDs, you may loose your Argo CD objects like applications or projects.
 
-Select **Next**. The **Download YAML** or **Download Helm Chart** settings appear.
+Select **Next**. The **Helm Chart** and **YAML** deployment options appear.
 
-![](../use-gitops/static/install-a-harness-git-ops-agent-95.png)
+The **Helm Chart** option lets you download a `override.yaml` file for the Harness GitOps Agent. Download this file and pass it as values to the Helm chart.
+
+![](install-a-harness-git-ops-agent-helm-95.png)
+
 
 The **YAML** option lets you download the manifest YAML for the Harness GitOps Agent. You can download this YAML file and run it in your Harness GitOps Agent cluster.
 
-The **Helm Chart** option lets you download a `helm-chart` file for the Harness GitOps Agent. You can download this file and install it in your Harness GitOps Agent cluster.
+![](install-a-harness-git-ops-agent-yaml-95.png)
 
-![](../use-gitops/static/install-a-harness-git-ops-agent-96.png)
-
-:::note
-
-For Helm based installations, if your account is behind the feature flag `GITOPS_AGENT_HELM_V2`, you will be able to download an `override.yaml` file which will contain the Helm Value overrides to apply, and you can use the commands mentioned to install the agent using the [public Helm Repository](https://harness.github.io/gitops-helm/) for the GitOps Agent.
-
-![](../use-gitops/static/install-a-harness-git-ops-agent-97.png)
-
-Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-
-:::
 
 ## Install the Agent
 
-Select **Download & Continue**. You are prompted to save the YAML file.
+Select **Download Values Yaml** or **Downlad YAML**. You are prompted to save the YAML file.
 
-Open a terminal and navigate to the folder where you downloaded the YAML file.
+Open a terminal and navigate to the folder where you downloaded manifest or override YAML file.
 
 In the same terminal, log into the Kubernetes cluster where you want to install the Agent.
 
@@ -138,40 +130,27 @@ For example, here's a typical GKE login:
 ```
 gcloud container clusters get-credentials <cluster_name> --zone us-central1-c --project <project_name>
 ```
-
-In case of **YAML**, run the following command to apply the YAML file you downloaded (in this example, the namespace entered in the **Namespace** setting is `default`):
-
-```
-kubectl apply -f gitops-agent.yaml -n default
-```
-
-In case of **Helm Chart**, run the following command to install the `helm-chart` file you downloaded (in this example, the namespace entered in the **Namespace** setting is `default`):
-
-```
-helm install gitops-agent ./gitops-agent.tgz -n default
-```
-
-:::note
-
-For Helm based installations, if your account is behind the feature flag `GITOPS_AGENT_HELM_V2`, you will be able to download an `override.yaml` file which will contain the Helm Value overrides to apply, and you can use the commands mentioned to install the agent using the [public Helm Repository](https://harness.github.io/gitops-helm/) for the GitOps Agent.
+In case of **Helm Chart**, run the following command to install the `helm-chart` file you downloaded (in this example, the namespace entered in the **Namespace** setting is `argocd`):
 
 ```
 helm repo add gitops-agent https://harness.github.io/gitops-helm/
 helm repo update gitops-agent
-helm install argocd gitops-agent/gitops-helm --values override.yaml --namespace default
+helm install argocd gitops-agent/gitops-helm --values override.yaml --namespace argocd
 ```
-You can use `--set argo-cd.crds.install=false` to skip CRDs installation to avoid collision if CRDs were already installed with previous installation of GitOps Agent or Argo CD.	
+You can use `--set argo-cd.crds.install=false` to skip CRDs installation to avoid collision if CRDs were already installed with previous installation of GitOps Agent or Argo CD.
 
-Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+In case of **YAML**, run the following command to apply the YAML file you downloaded (in this example, the namespace entered in the **Namespace** setting is `argocd`):
 
-:::
+```
+kubectl apply -f gitops-agent.yaml -n argocd
+```
 
 In the following output example you can see all of the Harness GitOps objects created in Kubernetes.
 
 This example output is for installing a new Harness GitOps Agent without using an existing Argo CD instance using the YAML.
 
 ```
-% kubectl apply -f harness-gitops-agent.yaml -n default  
+% kubectl apply -f gitops-agent.yaml -n argocd
 networkpolicy.networking.k8s.io/argocd-application-controller created
 networkpolicy.networking.k8s.io/argocd-applicationset-controller created
 networkpolicy.networking.k8s.io/argocd-repo-server created
@@ -228,13 +207,6 @@ statefulset.apps/argocd-application-controller created
 cronjob.batch/gitops-agent-upgrader created
 ingress.networking.k8s.io/argocd-applicationset-controller created
 ```
-:::note
-
-This list will have slight differences on accounts where the feature flag `GITOPS_AGENT_HELM_V2` is not enabled. Contact [Harness Support](mailto:support@harness.io) to enable this.
-
-If the Harness GitOps Agent is being deployed to a cluster running Kubernetes v1.21 or less, Harness requires you replace `apiVersion: apiextensions.k8s.io/v1` with `apiVersion: apiextensions.k8s.io/v1beta1` in the deployment YAML file.
-
-:::
 
 Back in Harness, select **Continue**.
 
@@ -436,6 +408,120 @@ spec:
 
 </details>
 
+## GitOps Auto Updater Job
+
+The GitOps Auto Updater Job is designed to automate the process of keeping the GitOps agent up to date. This job checks the GitOps service at regular intervals (default is every four hours) to determine if a new version of the GitOps agent is available.
+
+You can customize the schedule for these checks and updates, as well as specify a private or custom registry for pulling the updated agent images.
+
+### Scheduling the Updater Job
+
+Locate the ConfigMap: The ConfigMap is typically named gitops-agent-upgrader and can be found in the namespace where your GitOps agent is deployed.
+
+By default, the upgrader checks for updates every four hours. You can change this frequency by modifying the schedule field in the CronJob manifest of the GitOps agent YAML file:
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: gitops-agent-upgrader
+  namespace: "default"
+  labels: ...
+spec:
+  schedule: "0 */4 * * *"
+```
+
+If you are using an overrides YAML file, add `cron: "0 */4 * * *"` in the Agent upgrader overrides section and run the Helm upgrade command again to apply the changes.
+
+```yaml
+# <---Agent upgrader overrides--->
+upgrader:
+  enabled: true 
+  cron : "0 */4 * * *"
+  image: harness/upgrader:latest
+```
+
+After making changes to the values.yaml file, run a Helm upgrade to apply the configuration:
+
+```bash
+helm upgrade <release-name> <chart-name> -f values.yaml
+```
+
+### Disable Auto Upgrader 
+
+To disable the auto-upgrader, you can set `suspend: true` in the CronJob configuration under the `kind: CronJob` section:
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: gitops-agent-upgrader
+  namespace: "agrocd"
+  labels:...
+spec:
+  schedule: "0 */4 * * *"
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 20
+  jobTemplate:
+      spec: 
+         suspend: true
+```
+
+Alternatively, you can run the following command to suspend the auto-upgrade on the installed image:
+
+```bash
+kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>
+```
+
+You can also remove the entire CronJob section if necessary.
+
+If you are using an overrides YAML file, set `enabled: false` in the Agent upgrader overrides section and run the Helm upgrade command again to apply the changes.
+
+```yaml
+# <---Agent upgrader overrides--->
+upgrader:
+  enabled: false 
+  cron : "0 */4 * * *"
+  image: harness/upgrader:latest
+```
+
+### Configuring GitOps Auto Upgrader for a Private Repository
+
+Ensure that your GitOps Auto Updater is configured to use your private registry. This involves updating the `gitops-agent-upgrader` ConfigMap.
+
+Modify the ConfigMap: Add the `UPGRADER_REGISTRY_MIRROR` entry to specify your private repository. Here’s an example of what the ConfigMap YAML would look like:
+
+```yaml
+  # Source: gitops-helm-byoa/templates/upgrader/harness-upgrader-cm.yaml
+  apiVersion: v1
+  data:
+    UPGRADER_REGISTRY_MIRROR: myprivateartifactory.xyz
+    ... other configs ...
+    kind: ConfigMap
+    metadata:
+      name: gitops-agent-upgrader
+      namespace: "default"
+```
+
+If you are using an overrides YAML file, you will need to update the values.yaml file to include the registry mirror for the upgrader:
+
+```yaml
+# <---Agent upgrader overrides--->
+upgrader:
+  enabled: true
+  image: docker.io/harness/upgrader:latest
+  config:
+    registryMirror: myprivateartifactory.xyz
+```
+
+After making changes to the values.yaml file, run a Helm upgrade to apply the configuration:
+
+```bash
+  helm upgrade <release-name> <chart-name> -f values.yaml
+```
+
+Make sure that the agent image is hosted in your private repository with the appropriate format as mentioned in your config file, such as `privateregistryhost.xyz/harness/gitops-agent:tag`:
+
 ## GitOps Agent FAQs
 
 Here are some answers to commonly asked GitOps Agent questions.
@@ -493,7 +579,7 @@ The Normal install type installs exactly 1 replica of all components.
 
 Both ArgoCD and Harness have an HA install type. The Harness HA type installs different variations of the components with more than 1 replicas.
 
-- `agent` has 2 replicas.
+- `agent` has 2 replicas. In HA mode, the agent will utilize a Horizontal Pod Autoscaler for CPU and memory, with a minimum of 1 replica and a maximum of 5 replicas.
 - `redis` has 3 replicas/sentinels (`haproxy`).
 - `argocd-application-controller` has 1 replica (ArgoCD uses 2).
 - `argocd-repo-server` server has 2 replicas.

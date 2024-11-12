@@ -41,7 +41,7 @@ Listed below are topics and links to how you can use them to improve resilience 
 
 ## Governance
 
-- [Governance in Execution](/docs/chaos-engineering/use-harness-ce/governance/govern-run)
+- [Governance in Execution](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/)
 - [Governance during Creation](//docs/chaos-engineering/use-harness-ce/governance/rbac#user-authorization-and-role-based-access-control)
 
 ## Chaos Infrastructure

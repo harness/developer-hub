@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-10-07T10:00
+date: 2024-11-5T22:00
 sidebar_position: 4
 ---
 
@@ -68,9 +68,21 @@ Six months after a delegate image is released, the delegate reaches End of Suppo
 For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
+## November 2024
+
+### Version 24.10.84200 <!-- November 4, 2024 -->
+
+- Set limits on the number of delegates and delegate tokens allowed per account and per scope. The current limit is set to 10,000. (PL-56296)
+
 ## October 2024
 
-### Version 24.09.84100 <!--  October 7, 2024 -->
+### Version 24.10.84105 <!--  October 31, 2024 -->
+
+#### New features and enhancements 
+
+- Add support for k8s sidecar containers
+
+### Version 24.10.84104 <!--  October 7, 2024 -->
 
 #### New features and enhancements
 
@@ -80,11 +92,13 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Improved error messaging for the `<+secrets.getValue(secretlocation)>` expression to provide clearer feedback when a secret is not found. The updated message now states, "The secret has not been found," and includes the full computed path for better troubleshooting. (PL-51900, ZD-65130, ZD-69181)
 
-- Resolved an issue in the `UpdateVersionInfoTask` by adding the missing PLATFORM enum, which eliminated the IllegalArgumentException. (PL-51100) 
-
-### Version 24.09.83907 <!--  October 10, 2024 -->
+### Version 24.09.83909 <!--  October 11, 2024 -->
 
 #### Hotfixes
+
+- Improved logging, error handling and force shutdown for stuck cases in winrm script for collecting output variables. These changes are behind a delegate environment variable `ENV_VARS_COLLECTOR_EXPLICIT_EXIT`. Also delegate environment variable `WINRM4J_LOG_LEVEL` for `io.cloudsoft.winrm4j` logging level has been added. (CDS-101843)
+
+- With this change entire k8s dry manifest output yaml won't be sanitized. Only config map and secrets kind blocks would be sanitised unless `CDS_K8S_SANITIZE_COMPLETE_DRY_RUN_STEP_OUTPUT`` feature flag is switched on. (CDS-101686)
 
 - Jira steps will now ignore unsupported fields which reading a jira ticket. (CDS-101162)
 

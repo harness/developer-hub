@@ -116,9 +116,9 @@ All of the parameters supported by the [RunTask API](https://docs.aws.amazon.com
 
 ## Skip Steady-State Check
 
-If you do not select this option, Harness will not check to see if the task was triggered.
+- When the **Skip Steady-State Check** is not selected: Harness will wait for the ECS tasks to reach the `RUNNING` state, but it will not wait for them to complete (i.e., transition to `STOPPED`). Note that Harness does not check if the tasks succeed or fail after reaching the RUNNING state. A task may enter the `RUNNING` state and still fail afterward.
 
-If you do select this option, Harness will poll the ECS task to see if it triggered successfully.
+- When the **Skip Steady-State Check** is selected: Harness ensures that the ECS tasks were triggered successfully but does not wait for the tasks to enter the `RUNNING` state
 
 
 ## Advanced settings

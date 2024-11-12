@@ -1,16 +1,16 @@
 ---
-title: IDP API
+title: Backstage API
 description: Lists the public API endpoints supported in IDP.
-sidebar_label: IDP API
-sidebar_position: 1
+sidebar_label: Backstage API
+sidebar_position: 2
 redirect_from:
   - /docs/internal-developer-portal/public-api
 ---
 
-The following are the list of APIs supported by IDP. 
+The following are the list of Backstage APIs supported by IDP. 
 
 :::info
-The APIs listed here are [Backstage APIs](https://backstage.io/docs/features/software-catalog/software-catalog-api) exposed through Harness Platform and you could find all the APIs for [IDP mentioned in openapi specs](https://apidocs.harness.io/tag/AppConfig)
+The APIs listed here are [Backstage APIs](https://backstage.io/docs/features/software-catalog/software-catalog-api) exposed through Harness Platform and you could find all other APIs for [IDP mentioned in openapi specs](https://apidocs.harness.io/tag/AppConfig)
 :::
 
 In order to use the APIs in Harness platform, you need to generate a Harness API Key as described in [Manage API keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys)
@@ -19,20 +19,20 @@ In order to use the APIs in Harness platform, you need to generate a Harness API
 
 ## Catalog API
 
-### Endpoint
+#### Endpoint
 
 Register Software Component in Harness Catalog.
 
-### HTTP Method
+#### HTTP Method
 
 `POST`
 
-### URL 
+#### URL 
 
 ```bash
 https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations
 ```
-### URL Parameters
+#### URL Parameters
 
 `ACCOUNT_IDENTIFIER`: Your Harness account ID.
 
@@ -42,11 +42,11 @@ You can find your account ID in any Harness URL, for example:
 https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 ```
 
-### Headers
+#### Headers
 - `x-api-key`: Your Harness API token.
 - `Harness-Account`: Your Harness account ID.
 
-### Request Body
+#### Request Body
 
 ```json
 {
@@ -63,26 +63,26 @@ curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/loc
 --header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
 --data-raw '{"type":"url","target":"https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml"}'
 ```
-### Response:
+#### Response:
 The response will register a software component in your IDP catalog as defined in the `catalog-info.yaml` or `idp.yaml` file from the specified git repository.
 
 
 ## Catalog Refresh API
 
-### Endpoint
+#### Endpoint
 
 Syncs the component with the latest version of `catalog-info.yaml` stored in git providers.
 
-### HTTP Method
+#### HTTP Method
 
 `POST`
 
-### URL 
+#### URL 
 
 ```bash
 https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/refresh
 ```
-### URL Parameters
+#### URL Parameters
 
 `ACCOUNT_IDENTIFIER`: Your Harness account ID.
 
@@ -92,7 +92,7 @@ You can find your account ID in any Harness URL, for example:
 https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 ```
 
-### Headers
+#### Headers
 - `x-api-key`: Your Harness API token.
 - `Harness-Account`: Your Harness account ID.
 
@@ -105,9 +105,9 @@ curl 'https://idp.harness.io/{HARNESS_ACCOUNT_IDENTIFIER}/idp/api/catalog/refres
   --data-raw '{"entityRef":"{ENTITY_REF}"}'
 ```
 
-`ENTITY_REF` needs to be replaced with the entity path, for eg., `component:default/idp-service` (kind:namespace/name format)
+`ENTITY_REF` needs to be replaced with the entity path, for e.g., `component:default/idp-service` (kind:namespace/name format)
 
-Here are the steps to get the entityref:
+Here are the steps to get the `entityRef`:
 
 Go to **Inspect Entity** on the component page and under **Identity** in Overview you can find the `entityRef`
 
@@ -116,28 +116,28 @@ Go to **Inspect Entity** on the component page and under **Identity** in Overvie
 ![](./static/entitiyrefidp.png)
 
 
-### Response:
-The response will immediately sync the mentioned component in the entity ref with the `catalog-info.yaml` stored in the git provider
+#### Response:
 
+The response will immediately sync the mentioned component in the entity ref with the `catalog-info.yaml` stored in the git provider
 
 ## Catalog Entities Delete API
 
 ### Delete Using Location ID
 
-### Endpoint
+#### Endpoint
 
 Delete Software Component from Harness Catalog.
 
-### HTTP Method
+#### HTTP Method
 
 `DELETE`
 
-### URL 
+#### URL 
 
 ```bash
 https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations/{LOCATION_ID}
 ```
-### URL Parameters
+#### URL Parameters
 
 `ACCOUNT_IDENTIFIER`: Your Harness account ID.
 
@@ -171,7 +171,7 @@ The Response of the above cURL would be as shown below and the `id` mentioned is
 ]
 ```
 
-### Headers
+#### Headers
 - `x-api-key`: Your Harness API token.
 - `Harness-Account`: Your Harness account ID.
 
@@ -182,26 +182,26 @@ curl --location --request DELETE 'https://idp.harness.io/{ACCOUNT_ID}/idp/api/ca
 --header 'x-api-key: <API-KEY>' \
 --header 'Harness-Account: {ACCOUNT_ID}'
 ```
-### Response:
+#### Response:
 The response will remove the software component along the with the locations from your IDP catalog as defined in the location provided.
 
 
 ### Delete Using `metadata.uid` for Orphaned Entities
 
-### Endpoint
+#### Endpoint
 
 Deletes an entity by its `metadata.uid` field value. 
 
-### HTTP Method
+#### HTTP Method
 
 `DELETE`
 
-### URL 
+#### URL 
 
 ```bash
 https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/entities/by-uid/{uid}
 ```
-### URL Parameters
+#### URL Parameters
 
 `ACCOUNT_IDENTIFIER`: Your Harness account ID.
 
@@ -242,7 +242,7 @@ The Response of the above cURL would be as shown below and the `metadata.uid` me
 ]
 ```
 
-### Headers
+#### Headers
 - `x-api-key`: Your Harness API token.
 - `Harness-Account`: Your Harness account ID.
 
@@ -253,26 +253,26 @@ curl --location --request DELETE 'https://idp.harness.io/ACCOUNT_ID/idp/api/cata
 --header 'x-api-key: <API-KEY>' \
 --header 'Harness-Account: {ACCOUNT_ID}'
 ```
-### Response:
+#### Response:
 The response will remove the locations from your IDP catalog as defined in the `uid`.
 
 
 ## Catalog Entities API
 
-### Endpoint
+#### Endpoint
 
 Retrieves catalog entities that match a specific filter from the Harness IDP.
 
-### HTTP Method
+#### HTTP Method
 
 `GET`
 
-### URL 
+#### URL 
 
 ```bash
 https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/entities
 ```
-### URL Parameters
+#### URL Parameters
 
 1. `ACCOUNT_IDENTIFIER`: Your Harness account ID.
 
@@ -311,7 +311,7 @@ Example:
       Condition 2: spec.type exists
 ```
 
-### Headers
+#### Headers
 - `x-api-key`: Your Harness API token.
 - `Harness-Account`: Your Harness account ID.
 
@@ -323,5 +323,5 @@ curl 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/entities?filte
 --header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
 ```
 
-### Response:
+#### Response:
 The response will include a list of catalog entities that match the specified filter criteria.

@@ -36,7 +36,7 @@ type: service
 name: core-backend
 ```
 
-#### Core Queueing Library: 
+#### Core Queuing Library: 
 
 Now let's start adding a library component, akin to a specialized tool used within the office.
 
@@ -48,7 +48,7 @@ name: core-queueing-library
 
 ### Dependency Representation: 
 
-Showing how the Core Backend depends on the Core Queueing Library.
+Showing how the Core Backend depends on the Core Queuing Library.
 
 ```YAML
 providesApi:

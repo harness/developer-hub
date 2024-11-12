@@ -269,3 +269,23 @@ This is as simple as the command below:
 ```
 terraform destroy
 ```
+
+## Changing Harness references and state files
+
+Administrators may want to change the references of various Harness variables.  For example, there may be a reference to an SSH key stored in Harness that will need to be renamed or relocated.
+
+For example,
+`harness_plt_cnnctr_github.llb_ghe_ssh_key_ctagile` may need to be renamed or moved from a project scope to an account scope.
+
+In this case, it is important to remember that Terraform treats these references within state files, the same way they do about Cloud resources.  Terraform expect the resources to exist, until the reference is changed and moved to the new reference.  This is due to the stateful nature of Terraform.
+
+If, for example, the SSHKey in Harness is deleted before the state file is updated with a `terrafrom plan` and `apply`, the state file will be looking for a non-existent SSHKey and you may run into the following type of error:
+
+```
+Stack trace from the terraform-provider-harness_v0.32.9 plugin:
+panic: runtime error: invalid memory address or nil pointer dereference
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x90 pc=0x12ee973]
+goroutine 209 [running]
+```
+
+In this case, the state file will need to be manually updated with the new resource reference, or the old reference will need to be removed completely.

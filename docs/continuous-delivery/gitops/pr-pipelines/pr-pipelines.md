@@ -214,6 +214,8 @@ Finally, create the Harness PR pipeline by following these steps-
 
 7. For the stage environment, we'll use a Harness runtime input. When you run the pipeline, Harness will prompt you for a value for the environment. You can select the environment you want to use for the PR.
 
+   You can also use **Expressions** here. The value provided for the environment expression will propagate through all the PR steps. Note: only expressions that resolves to strings are valid and considered during execution.
+
     1. Set **Specify environment or environment group** as a runtime input.
 
        ![](static/harness-git-ops-application-set-tutorial-55.png)

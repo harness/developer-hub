@@ -71,7 +71,7 @@ You might use `split()` if you want to extract certain details from a string or 
 In this example, assume you have a pipeline variable called `abc` with value `def:ghi`. You might use `split()` like this:
 
 ```
-<+<+pipeline.variables.abc>.split(':')[1]>
+<+pipeline.variables.abc.split(':')[1]>
 ```
 
 This expression evaluates to `ghi`.
@@ -79,7 +79,7 @@ This expression evaluates to `ghi`.
 For this example, assume you have a pipeline variable called `abc` with value `5.6.0`. You could use `split()` like this:
 
 ```
-<+<+pipeline.variables.abc>.split('\\.')[1]>
+<+pipeline.variables.abc.split('\\.')[1]>
 ```
 
 This expression resolves to `6`.
@@ -87,7 +87,7 @@ This expression resolves to `6`.
 To create an assertion expression from a variable, assume you have a variable `someVar` with the value `prod-environment-variable`. To extract `prod` from this value, you would use `split()` like this:
 
 ```
-<+<+pipeline.variables.someVar>.split('-')[0]>
+<+pipeline.variables.someVar.split('-')[0]>
 ```
 
 ### charAt()

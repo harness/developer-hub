@@ -21,6 +21,7 @@ Harness supports OAuth integration for the following Git providers:
 * GitHub
 * GitLab
 * Bitbucket SaaS
+* Self-hosted Bitbucket
 
 :::info note
 Harness does not support OAuth integration for Azure repos. Additionally, please note that we don't support OAuth for On-prem GIT systems.
@@ -47,6 +48,41 @@ To configure your credentials for Git:
 :::info note
 You can delete access tokens you no longer need. Under **Access tokens for Git providers**, select the trash can icon that corresponds to the Git provider token you want to delete. A confirmation message appears, asking if you want to delete the SCM. After you confirm, Harness removes the configuration.
 :::
+
+### Configure OAuth for Self-hosted Bitbucket provider
+
+:::note
+Currently, support for OAuth configuration with the self-hosted Bitbucket provider is behind the feature flag `CDS_PROVIDERS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
+Harness Delegate version 840xx or later is required for this feature.
+:::
+
+To configure your credentials for Self-hosted Bitbucket provide:
+
+1. Go to your user profile in Harness.
+2. Under Account providers, click on **New Provider**.
+
+![](./static/oauth-selfhosted-bitbucket-1.png)
+
+3. Select **Bitbucket** as a provier.
+4. Enter the **Name** and **Domain URL** of the provider. 
+5. Specify the **Secret Manager**. This is where you have the access token related to the BitBucket stored.
+6. Specify the **Delegate Selector**. Click on continue.
+
+![](./static/oauth-selfhosted-bitbucket-2.png)
+
+7. Copy the Redirect URL provided on the Harness Credentials page.
+
+8. Now, navigate to the settings of your self-hosted Bitbucket. Click on **Application Links**, then click on **Create Link**.
+9. Enter the **Name**. Under the **Redirect URL** provide the URL you previously copied from the Bitbucket Configuration step and save it.
+10. Navigate back to **Application Links** page, click on the settings for the application you created, then click on **View Credentials**. Copy the **Client ID** and the **Client Secret**, and use these to configure the provider on the Harness Credentials page. Save it.
+
+Now that the Bitbucket provider is configured, navigate to the user profile page, click on **Profile Overview**
+Under **Connect to a Provider**, click on **Select a Provider**, CLick on **On-Prem** section and select the provider you earlier created. Click on **Connect**.
+
+![](./static/oauth-selfhosted-bitbucket-3.png)
+
+ Once you select **Alow** on the Bitbucket page, the access token will be created.
 
 ## Commit changes to Git with the configured OAuth token
 
@@ -80,13 +116,12 @@ Harness supports the creation of OAuth Access Tokens when users are using Vanity
 
 ### Github
 
-In case of [Github](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#redirect-urls), users can follow the steps outlined in 
-   [Configuring OAuth for Git provider](#configure-oauth-for-git-provider), and Harness will automatically update configurations.
+In case of [Github](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#redirect-urls), customers can follow the steps outlined in [Configuring OAuth for Git provider](#configure-oauth-for-git-provider), and Harness will automatically update configurations.
 
 
 ### Gitlab
 
-For [GitLab](https://docs.gitlab.com/ee/integration/oauth_provider.html#adding-an-application), users need to ensure that their Vanity URL is added to the OAuth application's redirect URI list. They must provide their subdomain to have the Vanity URL whitelisted. Contact [Harness Support](mailto:support@harness.io) to complete this process.
+For [GitLab](https://docs.gitlab.com/ee/integration/oauth_provider.html#adding-an-application), customers need to ensure that their Vanity URL is added to the OAuth application's redirect URI list. The OAuth application is set up by Harness, so customers will need to contact [Harness Support](mailto:support@harness.io) to complete this process. They must provide their subdomain to have the Vanity URL whitelisted.
 
 Example: If your subdomain is `yourcompany.harness.io`, the redirect URI would be:
 

@@ -77,7 +77,7 @@ Application maps help:
 - Manage experiments associated with them.
 - Perform trend analysis.
 
-For more information on how to create an application map, go to [Application Map](/docs/chaos-engineering/concepts/explore-concepts/app-maps).
+For more information on how to create an application map, go to [Application Map](/docs/chaos-engineering/use-harness-ce/application-map).
 
 ### Audit Logs
 
@@ -154,7 +154,7 @@ For more information, go to [RBAC and User Authorization](/docs/chaos-engineerin
 
 ### ChaosGuard
 
-ChaosGuard provides an additional level of security to guard chaos experiments from chaos-enabled users. It aims to minimize the blast radius  and mitigate potential threats. For more information, go to [ChaosGuard](/docs/chaos-engineering/concepts/explore-concepts/chaosguard). For hands-on experience, [Configure and Use ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/govern-run).
+ChaosGuard provides an additional level of security to guard chaos experiments from chaos-enabled users. It aims to minimize the blast radius  and mitigate potential threats. For more information, go to [ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/). For hands-on experience, [Configure and Use ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/govern-run).
 
 ## Integrations
 
@@ -181,7 +181,7 @@ For more information, go to [Resilience Score](/docs/chaos-engineering/use-harne
 
 ### Resilience Coverage
 
-It describes how resilient an application is to different kinds of failures. For example, your application may be able to function smoothly in case of resource failures but causes glitches in case of network issues. This tells what kinds of failures your application is able to handle. For more information, go to [Application Maps](/docs/chaos-engineering/concepts/explore-concepts/app-maps).
+It describes how resilient an application is to different kinds of failures. For example, your application may be able to function smoothly in case of resource failures but causes glitches in case of network issues. This tells what kinds of failures your application is able to handle. For more information, go to [Application Maps](/docs/chaos-engineering/use-harness-ce/application-map).
 
 ### Prometheus Chaos Metrics
 

@@ -78,7 +78,7 @@ This section explains how SEI correlates CI and CD stages in the Lead Time workf
 
 SEI offers two primary methods for integrating Jenkins into your DORA CI/CD correlation workflow:
 
-* [SEI Jenkins Plugin](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/jenkins-plugin) 
+* [SEI Jenkins Plugin](/docs/software-engineering-insights/sei-integrations/jenkins/jenkins-plugin) 
 * [Jenkins plugin with a Custom CI/CD API](#jenkins-ci-with-harness-cd)
 
 Understanding when and how to use each method is crucial for effective implementation of DORA metrics in your development process.
@@ -87,7 +87,7 @@ Understanding when and how to use each method is crucial for effective implement
 
 The SEI Jenkins Plugin is designed for straightforward integration when Jenkins serves as your primary CI/CD tool. It supports Lead Time, Deployment Frequency and Change Failure Rate configuration. It's ideal for teams who are comfortable with a single-stage configuration for both CI and CD processes and don't require separate metrics for these stages.
 
-To use the plugin, simply install it from the [Jenkins plugin store](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/jenkins-plugin) and configure it within your Jenkins environment. Once set up, the plugin automatically sends pipeline execution data for all CI/CD pipelines to SEI. In your SEI workflow profile, you'll need to configure a single stage that represents both CI and CD.
+To use the plugin, simply install it from the [Jenkins plugin store](/docs/software-engineering-insights/sei-integrations/jenkins/jenkins-plugin) and configure it within your Jenkins environment. Once set up, the plugin automatically sends pipeline execution data for all CI/CD pipelines to SEI. In your SEI workflow profile, you'll need to configure a single stage that represents both CI and CD.
 
 While the plugin offers ease of use, it comes with limitations.
 
@@ -110,7 +110,7 @@ This section explains how SEI correlates CI and CD stages in the Lead Time workf
 
 For more complex setups, particularly those involving multiple tools or requiring distinct CI and CD metrics, the custom integration approach is the way to go. This approach is especially useful when you're using Jenkins for CI but a different tool, such as Harness, for CD.
 
-Implementing this involves creating a [Custom CI/CD integration](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/sei-custom-cicd-integrations) in SEI and adding custom script logic to your Jenkins pipeline. This script sends build artifact information to SEI via a POST request.
+Implementing this involves creating a [Custom CI/CD integration](/docs/software-engineering-insights/sei-integrations/custom-cicd/sei-custom-cicd-integration) in SEI and adding custom script logic to your Jenkins pipeline. This script sends build artifact information to SEI via a POST request.
 
 Here's an example of how you might implement this in your Jenkins pipeline:
 
@@ -246,7 +246,7 @@ Note that SEI natively supports correlation for container image based artifacts.
 
 This section explains how SEI correlates CI and CD stages in the Lead Time workflow when the CI tool is Github Actions and CD tool used is Harness CD.
 
-You can set up a [GitHub Actions workflow](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions#ingest-artifacts-and-environment-variable-data)to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions. To learn more, go to [Github Actions integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions).
+You can set up a [GitHub Actions workflow](/docs/software-engineering-insights/sei-integrations/github%20actions/sei-github-actions#ingest-artifacts-and-environment-variable-data)to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions. To learn more, go to [Github Actions integration](/docs/software-engineering-insights/sei-integrations/github%20actions/sei-github-actions).
 
 In this scenario it is important to ensure both pipelines are using the same artifact source. The following details are required to be met in order to set the correlation between Harness CI and Harness CD.
 
@@ -364,7 +364,7 @@ The payload for both CI and CD data submissions contains several required fields
 
 | Field | Data Type | Description |
 | - | - | - |
-| `instance_guid` | string | [UUID (Universally Unique Identifier)](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/sei-custom-cicd-integrations#step-2-generate-a-cicd-instance-guid-associated-with-that-integration) for the CI/CD instance. |
+| `instance_guid` | string | [UUID (Universally Unique Identifier)](/docs/software-engineering-insights/sei-integrations/custom-cicd/sei-custom-cicd-integration#step-2-generate-a-cicd-instance-guid-associated-with-that-integration) for the CI/CD instance. |
 | `job_full_name` | string | A human-readable identifier for the job, often the same as the pipeline name. |
 | `build_number` | integer | The build number associated with the job execution. |
 | `pipeline` | string | The name of the CI/CD job. |
@@ -391,7 +391,7 @@ The payload for both CI and CD data submissions contains several required fields
 | `qualifier` | string | Unique version or qualifier for the artifact. (name and qualifier are usually same for non-container based artifacts) |
 | `web_url` | string | Contains the pipeline execution URL |
 
-For more information refer to the documentation on setting up [Custom CI/CD integration](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/sei-custom-cicd-integrations). It is recommended to configure the custom CI/CD integration with assistance from [Harness Support](mailto:support@harness.io) to ensure the configuration meets the requirements for CI/CD correlation in lead time.
+For more information refer to the documentation on setting up [Custom CI/CD integration](/docs/software-engineering-insights/sei-integrations/custom-cicd/sei-custom-cicd-integration). It is recommended to configure the custom CI/CD integration with assistance from [Harness Support](mailto:support@harness.io) to ensure the configuration meets the requirements for CI/CD correlation in lead time.
 
 :::info IMPORTANT NOTE
 * SEI natively supports correlation for container image-based artifacts. For other artifact types, modifications may be necessary to ensure unique creation of artifact names.

@@ -52,7 +52,7 @@ This plugin exports a UI tab that you can use as a new "Chaos Experiments" tab f
     - component: EntityHarnessChaosContent
 ```
 
-Also you could add a conditional like `isHarnessChaosAvailable`  which is met when `harness.io/project-url` and `harness.io/network-map-tags` annotations are present in the software components's `catalog-info.yaml` definition file.
+Also, you could add a conditional like `isHarnessChaosAvailable` which is met when `harness.io/project-url` and `harness.io/network-map-tags` annotations are present in the software component's `catalog-info.yaml` definition file.
 
 ```YAML
 - name: chaos

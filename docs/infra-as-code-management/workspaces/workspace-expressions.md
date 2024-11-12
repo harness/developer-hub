@@ -1,7 +1,7 @@
 ---
 title: Workspace expressions
 description: Learn how to use Harness workspace expressions.
-sidebar_position: 30
+sidebar_position: 40
 ---
 
 import Tabs from '@theme/Tabs';
@@ -49,6 +49,10 @@ Here’s a table of the available workspace expressions in Harness IaCM:
 ### How to use workspace expressions
 
 The following example highlights how you can apply workspace expressions to your pipelines run step and output the workspace identifier and secret variable value.
+
+:::warning reserved keyword
+Do not name your run step `workspace` as it is a reserved keyword.
+:::
 
 <Tabs>
 <TabItem value="Interactive guide">

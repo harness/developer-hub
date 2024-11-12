@@ -23,7 +23,7 @@ Any software component can be registered in the catalog by using a YAML file sto
 * Bitbucket
 * Azure Repos
 
-We support multiple connectors with different hostname for a single git provider to fetch `catalog-info.yaml` at once. Eg., Users can  use connectors for both `github.com` and `github enterprise` and fetch entity yaml at the same time.
+We support multiple connectors with different hostname for a single git provider to fetch `catalog-info.yaml` at once. E.g., Users can use connectors for both `github.com` and `github enterprise` and fetch entity YAML at the same time.
 
 :::warning
 
@@ -35,7 +35,7 @@ API calls in IDP are used to fetch YAML data, last commit SHA, and detect any ne
 
 ## CI/CD providers that IDP supports
 
-Harness IDP is agnostic to your CI/CD provider and works with tools such as GitLab, CircleCI, and GitHub Actions. You can use Harness CI/CD for a better out-of-the-box experience but it's not required.
+Harness IDP is agnostic to your CI/CD provider and works with tools such as GitLab, CircleCI, and GitHub Actions. You can use Harness CI/CD for a better out-of-the-box experience, but it's not required.
 
 For information about what's supported for other Harness modules and the Harness Platform overall, refer to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
@@ -45,7 +45,7 @@ Harness IDP requires some secrets to be set for plugins and external integration
 
 :::
 
-## Template Actions to Trigger Harness Pipeline
+## Workflow Actions to Trigger Harness Pipeline
 
 ### [trigger:harness-custom-pipeline](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline)
 
@@ -68,7 +68,7 @@ You can use Harness Secret Manager as well for the above described function.
 
 | **What do we Support?**              | **Links**                                                                                                                                                                                                                                                        |
 |----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Custom PLugins                   | We support only [Frontend Backstage Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/build-a-frontend-plugin) as [Custom Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview)   |
+| Custom Plugins                   | We support only [Frontend Backstage Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/build-a-frontend-plugin) as [Custom Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview)   |
 | Scorecard Data Sources            | These are the list of available Scorecard [Data Sources](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources)                                                                                                           |
 | Backstage Plugins                | [Available Backstage Plugins](https://developer.harness.io/docs/category/available-plugins)                                                                                                                                                                  |
 | Custom Theming And Branding      | Not supported.                                                                                                                                                                                                                                         |
