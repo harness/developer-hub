@@ -61,7 +61,7 @@ Apart from these, there are two more cards that can be added, removed or edited 
 
 This GitHub PR card provides a summary of your pull requests across all repositories you have access to, including both public and private repositories across multiple organizations. The numbers displayed at the top, such as "15 Created," "1 Review Requests," and "1 Assigned" only reflect open pull requests, even though the card also contains information on closed pull requests, as seen by the "Closed (525)" tab.
 
-The access is configured by your Platform Admin while setting up the [git integrations](/docs/internal-developer-portal/get-started/setup-git-integration), meaning you don’t need to be signed in to access this. It will display data across all repositories you have permissions for, making it easy to track your contributions, review requests, and assignments in one place without switching contexts.
+The access is configured by your Platform Admin while setting up the [git integrations](/docs/internal-developer-portal/get-started/setup-git-integration), meaning you don’t need to be signed in to access this. It will display data across all repositories you have permissions for, making it easy to track your contributions, review requests, and assigned PRs in one place without switching contexts.
 
 #### Tool Kit
 
