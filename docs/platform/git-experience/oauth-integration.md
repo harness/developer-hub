@@ -51,6 +51,12 @@ You can delete access tokens you no longer need. Under **Access tokens for Git p
 
 ### Configure OAuth for Self-hosted Bitbucket provider
 
+:::note
+Currently, support for OAuth configuration with the self-hosted Bitbucket provider is behind the feature flag `CDS_PROVIDERS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
+Harness Delegate version 840xx or later is required for this feature.
+:::
+
 To configure your credentials for Self-hosted Bitbucket provide:
 
 1. Go to your user profile in Harness.
