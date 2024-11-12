@@ -345,7 +345,7 @@ HCE facilitates installing two types of chaos infrastructure:
 
 ## What is DDCR?
 
-DDCR, aka [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) is a service that runs in your local network that helps connect your infrastructure, artifacts with Harness Manager. It allows for quick onboarding and optimized chaos execution for microservices-based targets on Kubernetes.
+DDCR, aka [Harness Delegate or DDCI (Delegate-Driven Chaos Infrastructure)](/docs/platform/delegates/delegate-concepts/delegate-overview) is a service that runs in your local network that helps connect your infrastructure, artifacts with Harness Manager. It allows for quick onboarding and optimized chaos execution for microservices-based targets on Kubernetes.
 
 The diagram below describes the high-level flow of how you can [discover services](/docs/chaos-engineering/concepts/explore-concepts/service-discovery) and [create application maps](/docs/chaos-engineering/concepts/explore-concepts/app-maps).
 
@@ -416,4 +416,3 @@ The table below lists the chaos infrastructure execution plane components and th
 | chaos-exporter     | chaos-exporter        | 125m | 300M | chaosnative/chaos-exporter          |
 | subscriber         | subscriber            | 125m | 300M | chaosnative/harness-chaos-subscriber|
 | workflow-controller| workflow-controller   | 125m | 300M | chaosnative/workflow-controller     |
-

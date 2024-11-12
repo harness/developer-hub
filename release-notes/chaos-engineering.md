@@ -23,7 +23,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## September 2024
 
-## Version 1.45.5
+### Version 1.45.5
 
 #### New features and enhancements
 
@@ -42,6 +42,12 @@ The release notes describe recent changes to Harness Chaos Engineering.
 #### New features and enhancements
 
 - Enables the global blackhole chaos to block inbound traffic. (CHAOS-6381)
+
+#### Fixed issues
+
+- Added NIL check for probes in CDC, updated `chaosGameDays` collection name and `gameday_run_id` field. (CHAOS-5737)
+
+- CPU utilization increased due to continuously executing clean up tasks. This issue has been fixed by adding a sleep operation that runs after every "remove" operation and optimizes overall CPU performance. (CHAOS-5709)
 
 ## July 2024
 
@@ -114,6 +120,8 @@ The release notes describe recent changes to Harness Chaos Engineering.
 ### Version 1.38.7
 
 #### New features and enhancements
+
+- This release provides support to install chaos infrastructure using Delegates, and this is known as DDCI (Delegate-Driven Chaos Infrastructure). (CHAOS-2017)
 
 - This release improves the advanced filter support for "headers", "methods", "queryParams", "destination_IPS", and "destination_Hosts" in the API faults. (CHAOS-5381)
 
