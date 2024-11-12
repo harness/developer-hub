@@ -4,7 +4,7 @@
 # Learn more at: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Global Owners of the HDH Repository
-*       @pratmit @wei-harness
+*       @pratmit @wei-harness @deba-harness
 
 # Configuration Files in DS are JS.
 *.js    @wei-harness @rohanmaharjan100
