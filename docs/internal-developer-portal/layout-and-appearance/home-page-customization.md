@@ -55,13 +55,21 @@ The **Platform Admins** can customize the homepage under Layouts for 3 different
 
 Apart from these, there are two more cards that can be added, removed or edited according to your requirements. 
 
-### Tool Kit
+### GitHub PR Card
+
+![](./static/github-pr-card.png)
+
+This GitHub PR card provides a summary of your pull requests across all repositories you have access to, including both public and private repositories across multiple organizations. The numbers displayed at the top, such as "15 Created," "1 Review Requests," and "1 Assigned" only reflect open pull requests, even though the card also contains information on closed pull requests, as seen by the "Closed (525)" tab.
+
+The access is configured by your Platform Admin while setting up the [git integrations](/docs/internal-developer-portal/get-started/setup-git-integration), meaning you don’t need to be signed in to access this. It will display data across all repositories you have permissions for, making it easy to track your contributions, review requests, and assignments in one place without switching contexts.
+
+#### Tool Kit
 
 -  This card acts as a necessary bookmark for all the links visited by the developer quite frequently, eg; JIRA Sprint Dashboard, QA Environments
 
 -  You can add a new toolkit card with multiple links and the associated `custom icon` **(Recommended Size: 128x128px and file size: 200KB)** along with a name and a link.  
 
-### Video
+#### Video
 
 - You can add any videos as a card, and the supported types are public embedded links of the videos. 
 
