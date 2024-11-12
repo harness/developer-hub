@@ -103,6 +103,16 @@ export const CdData: Horizon = {
         tag: [{value: "Release Management"}],
         title: "Release Management",
         description: "Users can create and orchestrate a release process using a collection of requirements and existing pipelines.",
+      },
+      {
+        tag: [{value: "Continuous Verification"}],
+        title: "Continuous Verification using Manifest",
+        description: "Users can initiate a CV step using a manifest. This allows service owners to define the key metrics to be validated in CV during service definition.",
+      }, 
+      {
+        tag: [{value: "Continuous Verification"}],
+        title: "Support for DQL in Dynatrace Health Source",
+        description: "Support for DQL (Dynatrace Query Language) in the Dynatrace Health Source to enhance data querying and analysis capabilities.",
       }
     ],
   },
@@ -154,11 +164,6 @@ export const CdData: Horizon = {
   "Later": {
     description: "Q2 2025+, May 2025 & Beyond",
     feature: [
-      {
-        tag: [{value: "Continuous Verification"}],
-        title: "Continuous Verification using Manifest",
-        description: "Users can initiate a CV step using a manifest. This allows service owners to define the key metrics to be validated in CV during service definition.",
-      }, 
       {
         tag: [{value: "Continuous Verification"}],
         title: "Prometheus Default Health Source for Continuous Verification",
