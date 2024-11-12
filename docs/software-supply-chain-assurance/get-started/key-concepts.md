@@ -52,15 +52,15 @@ The SCS module enforces policies in the CI and CD stages of the software deliver
 
 <!--H2 Comprehensive visibility
 
-The SSCA module provides several ways to review your software supply chain's health and security.
+The SCS module provides several ways to review your software supply chain's health and security.
 
-* **SSCA Dashboard:** Provides an overview of open-source component usage, policy violations, and license usage across your software artifacts. Use this dashboard to quickly understand and monitor your software supply chain's health at a high level.
+* **SCS Dashboard:** Provides an overview of open-source component usage, policy violations, and license usage across your software artifacts. Use this dashboard to quickly understand and monitor your software supply chain's health at a high level.
 * **Component View:** Provides a detailed perspective of the open-source components used within your software artifacts. By offering in-depth component information, the Component View helps you better understand your software supply chain and more effectively manage component-related risks.
 * **Artifact View:** Provides a detailed perspective on individual software artifacts, including associated open-source components and deployment environments. By offering in-depth artifact information, the Artifact View helps you better understand your software supply chain and more effectively manage artifact-related risks. -->
 
 <!-- H2 Remediation workflows
 
-You can use remediation flows in the SSCA module to respond quickly and effectively to newly discovered zero-day vulnerabilities. With remediation flows, you can quickly assess all usage of vulnerable components in different artifacts and understand where they are deployed, thereby creating a targeted remediation effort. The SSCA module provides the following features to help you effectively and efficiently respond to incidents:
+You can use remediation flows in the SCS module to respond quickly and effectively to newly discovered zero-day vulnerabilities. With remediation flows, you can quickly assess all usage of vulnerable components in different artifacts and understand where they are deployed, thereby creating a targeted remediation effort. The SCS module provides the following features to help you effectively and efficiently respond to incidents:
 
 * **Actively monitor threats by subscribing to various vulnerability feeds.** Upon detecting new vulnerabilities, automatically assess the impact, generate a list of impacted, and generate a list of environments where the impacted artifacts are deployed.
 * **Generate alert notifications.** Notifications can include information about incidents and impacted artifacts. You can define rules about when to send notifications and who to notify.
