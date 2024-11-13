@@ -47,6 +47,19 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## November
 
+#### Gitops Version 1.20.0, Gitops Agent Version 0.81
+
+#### New Features and Enhancement
+
+- With Harness Multi-source GitOps, users can now explicitly specify the source to sync with their applications in the sync policy. (CDS-103055)
+
+#### Fixed issues
+
+- GitOps hosted agent scale-up was failing with the unclear error message "Failed to Scale the GitOps agent." This issue has is resolved, and the error message now provides a detailed reason for the scale-up failure. (CDS-103429)
+- Mongo DB displayed error in the reconciler with the message `session was not created by this client` when reading from a secondary client during a transaction.The issue is resolved. (CDS-103016)
+- Users experience continuous log window refresh when viewing logs for a Harness GitOps resource. This issue is resolved now. (CDS-103016, ZD-72211)
+- Previously, ScaleJob feature did not work on hosted GitOps. This issue is resolved. (CDS-102709)
+
 ### Version 1.64.6
 
 #### New features and enhancements
