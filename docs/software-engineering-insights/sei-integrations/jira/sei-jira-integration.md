@@ -88,7 +88,22 @@ To set up the integration using the **Jira Connect App**:
    * Verify that you are an owner of the Jira account where you track issues. An easy way to check is to visit your organization page and verify that the organization is listed.
    * Go to the **Atlassian Marketplace** to install the app and configure the [SEI app](https://marketplace.atlassian.com/apps/1231375/harness-software-engineering-insights-sei?tab=overview\&hosting=cloud) to access the Jira projects.
    * **Install** the App.
-   * Generate and copy the **Jira Connect App key**, then paste it when requested by the Jira Connect app.
+   * Generate and copy the **Jira Connect App key** in the SEI integration configuration settings.
+
+![](../static/sei-otp.png)
+
+   * Go back to the **Jira Connect App** you just installed.
+   * Select **Apps** on the header (beside Create button)
+
+![](../static/add-sei-top-app.png)
+
+   * Select **Harness SEI Atlassian Connect configuration** from the dropdown menu.
+
+![](../static/select-app.png)
+
+   * Paste the SEI OTP key
+
+![](../static/past-otp.png)
 
 :::info
 Note that the key expires after 10 minutes, so generate a new key if the current one expires.
