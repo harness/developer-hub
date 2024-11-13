@@ -1,19 +1,19 @@
 ---
-title: Provision Workspaces
-description: Learn how to provision workspaces using an interactive guide, step-by-step instructions, and YAML.
-sidebar_position: 20
+title: Destroy Workspaces
+description: Learn how to destroy workspaces using an interactive guide, step-by-step instructions, and YAML.
+sidebar_position: 30
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-After you create a workspace, you can perform operations against the configuration, including provisioning. This guide walks you through how to create a provision pipeline to run the `init`, `plan` and `apply` command with OpenTofu or Terraform.
+You can perform specific operations against your workspace configuration. Similarly to [provisioning a workspace](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/provision-workspace), you can tear down the infrastructure state from a workspace without deleting the workspace itself. This guide walks you through how to create a Destroy pipeline to run the `init`, `plan` and `destroy` commands with OpenTofu or Terraform.
 
 <Tabs>
 <TabItem value="Interactive" label="Interactive Guide" default>
 <iframe 
     src="https://app.tango.us/app/embed/c80ce1fe-cc35-45a4-9c7d-b36451567a97" 
-    title="Provision workspaces" 
+    title="Destroy workspaces" 
     style={{ minHeight: '640px' }}
     width="100%" 
     height="100%"
@@ -30,17 +30,15 @@ Follow these instructions to provision a workspace within the Harness Visual Edi
 1. In the Harness project pane, select **Pipelines**.
 2. Click **+ Create a Pipeline** to set up a new pipeline.
 3. Click **Add Stage** and select **Infrastructure** from the **Select Stage Type** pane.
-
-    ![Add infrastructure stage](./static/select-stage.png)
-
 4. Enter a stage name, optional description, and tag, then select **Set Up Stage**.
-5. On the **Workspace** tab, select an existing workspace or click **+ Create New Workspace** to create one. 
-:::note runtime input
-If set to `runtime input`, you can specify the workspace at execution time..
-:::
-6. Go to the **Execution** tab. Under **Common Operations**, select **Provision**.
-7. Optionally, select **Use Strategy** to automatically add `init`, `plan`, and `apply` steps, or customize the pipeline by adding steps manually.
+5. On the **Workspace** tab, select an existing workspace or click **+ Create New Workspace** to create one. Note: If set to `runtime input`, the workspace can be specified during execution.
+6. Go to the **Execution** tab. Under **Common Operations**, select **Destroy** to configure the workspace destruction process.
+7. Select **Use Strategy** to automatically add `init`, `plan`, and `destroy` steps, or customize the pipeline by adding steps manually.
 8. Click **Save** and then **Run Pipeline** to execute.
+
+:::note
+The plan-destroy step generates a Terraform plan. This Terraform plan is accessible to all the steps after the IaCM Terraform plan, and can be referenced using the expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.parsedPlan>`.
+:::
 </TabItem>
 <TabItem value="YAML" label="YAML">
 To provision a workspace via YAML, use the template below. Replace bracketed placeholders as needed.
@@ -50,12 +48,13 @@ pipeline:
   name: <<PIPELINE NAME>>
   identifier: <<PIPELINE IDENTIFIER>>
   projectIdentifier: <<PROJECT IDENTIFIER>>
-  orgIdentifier: <<ORG IDENTIFIER>>
+  orgIdentifier: <<ORG IDENTIFER>>
   tags: {}
   stages:
     - stage:
-        name: Provision Stage
-        identifier: provision_stage
+        name: iacstage
+        identifier: iacstage
+        description: ""
         type: IACM
         spec:
           workspace: <<WORKSPACE ID>>
@@ -73,22 +72,26 @@ pipeline:
                   identifier: init
                   spec:
                     command: init
+                  timeout: 5m
               - step:
                   type: IACMTerraformPlugin
                   name: plan
-                  identifier: plan
+                  identifier: plandestroy
                   spec:
-                    command: plan
+                    command: plan-destroy
+                  description: plan destroy
               - step:
                   type: IACMTerraformPlugin
-                  name: apply
-                  identifier: apply
+                  name: destroy
+                  identifier: destroy
                   spec:
-                    command: apply
+                    command: destroy
+                  description: destroy
+                  timeout: 5m
         tags: {}
 ```
 :::note
-Notice the three steps to apply your `init`, `plan` and `apply` commands. 
+Notice the three steps to apply your `init`, `plan` and `destroy` commands. 
 :::
 </TabItem>
 </Tabs>
