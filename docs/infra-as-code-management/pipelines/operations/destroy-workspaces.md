@@ -12,7 +12,7 @@ You can perform specific operations against your workspace configuration. Simila
 <Tabs>
 <TabItem value="Interactive" label="Interactive Guide" default>
 <iframe 
-    src="https://app.tango.us/app/embed/c80ce1fe-cc35-45a4-9c7d-b36451567a97" 
+    src="https://app.tango.us/app/embed/f3f65cad-3a49-4293-925a-5f830557c066" 
     title="Destroy workspaces" 
     style={{ minHeight: '640px' }}
     width="100%" 
