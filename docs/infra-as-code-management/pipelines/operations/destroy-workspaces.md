@@ -1,7 +1,7 @@
 ---
 title: Destroy Workspaces
 description: Learn how to destroy workspaces using an interactive guide, step-by-step instructions, and YAML.
-sidebar_position: 30
+sidebar_position: 20
 ---
 
 import Tabs from '@theme/Tabs';
@@ -31,7 +31,7 @@ Follow these instructions to provision a workspace within the Harness Visual Edi
 2. Click **+ Create a Pipeline** to set up a new pipeline.
 3. Click **Add Stage** and select **Infrastructure** from the **Select Stage Type** pane.
 4. Enter a stage name, optional description, and tag, then select **Set Up Stage**.
-5. On the **Workspace** tab, select an existing workspace or click **+ Create New Workspace** to create one. Note: If set to `runtime input`, the workspace can be specified during execution.
+5. On the **Workspace** tab, select an existing workspace or click **+ Create New Workspace** to create one.
 6. Go to the **Execution** tab. Under **Common Operations**, select **Destroy** to configure the workspace destruction process.
 7. Select **Use Strategy** to automatically add `init`, `plan`, and `destroy` steps, or customize the pipeline by adding steps manually.
 8. Click **Save** and then **Run Pipeline** to execute.
@@ -39,22 +39,22 @@ Follow these instructions to provision a workspace within the Harness Visual Edi
 :::note
 The plan-destroy step generates a Terraform plan. This Terraform plan is accessible to all the steps after the IaCM Terraform plan, and can be referenced using the expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.parsedPlan>`.
 :::
+
 </TabItem>
 <TabItem value="YAML" label="YAML">
-To provision a workspace via YAML, use the template below. Replace bracketed placeholders as needed.
+To destroy a workspace via YAML, use the template below. Replace bracketed placeholders as needed.
 
 ```yaml
 pipeline:
   name: <<PIPELINE NAME>>
   identifier: <<PIPELINE IDENTIFIER>>
   projectIdentifier: <<PROJECT IDENTIFIER>>
-  orgIdentifier: <<ORG IDENTIFER>>
+  orgIdentifier: <<ORG IDENTIFIER>>
   tags: {}
   stages:
     - stage:
-        name: iacstage
-        identifier: iacstage
-        description: ""
+        name: Destroy Stage
+        identifier: destroy_stage
         type: IACM
         spec:
           workspace: <<WORKSPACE ID>>
@@ -91,13 +91,11 @@ pipeline:
         tags: {}
 ```
 :::note
-Notice the three steps to apply your `init`, `plan` and `destroy` commands. 
+Notice the three steps to execute your `init`, `plan` and `destroy` commands. 
 :::
 </TabItem>
 </Tabs>
 ---
+:::tip review resources
 After the plan is created, view resources and Terraform outputs on the **Resources** tab. Check which resources will be added, modified, or removed.
-
-:::tip pipeline chaining
-Currently, IaCM doesn't support multiple Workspaces in the same pipeline. If you'd like to provision several Workspaces altogether, consider using [Pipeline Chaining](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/).
 :::

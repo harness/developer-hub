@@ -1,7 +1,7 @@
 ---
 title: Provision Workspaces
 description: Learn how to provision workspaces using an interactive guide, step-by-step instructions, and YAML.
-sidebar_position: 20
+sidebar_position: 10
 ---
 
 import Tabs from '@theme/Tabs';
@@ -88,13 +88,11 @@ pipeline:
         tags: {}
 ```
 :::note
-Notice the three steps to apply your `init`, `plan` and `apply` commands. 
+Notice the three steps to execute your `init`, `plan` and `apply` commands. 
 :::
 </TabItem>
 </Tabs>
 ---
+:::tip review resources
 After the plan is created, view resources and Terraform outputs on the **Resources** tab. Check which resources will be added, modified, or removed.
-
-:::tip pipeline chaining
-Currently, IaCM doesn't support multiple Workspaces in the same pipeline. If you'd like to provision several Workspaces altogether, consider using [Pipeline Chaining](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/).
 :::
