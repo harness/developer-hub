@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-09-16T14:00:30
+date: 2024-11-11T14:00
 sidebar_position: 3
 ---
 
@@ -77,7 +77,105 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## November 2024
+
+### Version 1.64.x<!-- November 11, 2024 -->
+
+#### Fixed issues
+
+- The delegate name is now displayed in the UI whenever a connector test fails, provided the validation task was acquired by a delegate. This enhancement offers better visibility into which delegate handled the task during troubleshooting. (PL-56483, ZD-64425)
+
+- The `/.wellknown/jwks` endpoint for OIDC now correctly exposes the "alg" value as "RS256" instead of "RSA256". This update ensures compatibility with standard OIDC configurations. (PL-58029)
+
+- In the Resource Group Details page, when "All" is selected for resources, the options to specify environments by tag, type, or individually (+ Add button) are now hidden. This update prevents unintended configurations when managing resources in bulk. (PL-58108, ZD-72184)
+
+- Resolved an issue where the Event Summary link under Audit Logs would cause the page to break when a new, unhandled action was onboarded. The Event Summary now displays "N/A" in line with the Audit Logs page. (PL-57850)
+
+#### New features and enhancements
+
+- GCP GCS Audit Streaming now supports Manual Credentials and IAM Delegate authentication, in addition to the existing OIDC-based authentication. This enhancement offers greater flexibility in authentication options. (PL-52059)
+
+- Added support for `Connection via Platform` for AWS Secrets Manager, AWS KMS and GCP KMS using the `OIDC method`, enabling users to connect directly through the Harness platform without requiring a delegate. (PL-52058)
+
+- Added a new scope query parameter to the `listDelegates` endpoint. When set to true, this parameter enables listing delegates across hierarchical scopes (Account, Org, Project). By default, scope is set to false. (PL-57724)
+
+- Upgraded the base image for `delegate`, `delegate-minimal`, `ci-addon`, and `lite-engine` from `redhat/ubi8-minimal:8.8` to `redhat/ubi8-minimal:8.10`. This update enhances security and compatibility with the latest UBI version. (PL-58062)
+
+- Removed delegate and watcher JARs along with client tools from the delegate proxy in SMP. This update reduces the proxy footprint and optimizes performance. (PL-58052)
+
+- Updated the `delegate/rings` API to return the immutable delegate version instead of the legacy delegate version. Additionally, the `connected-ratio-with-primary` and `connected-delegate-ratio` APIs have been removed. (PL-57518)
+
+## October 2024
+
+### Version 1.62.x<!-- October 28, 2024 -->
+
+#### Fixed issues
+
+- Resolved an issue where code base cloning steps failed due to class package changes, causing deserialization errors. Aliases have been added to ensure successful deserialization, improving build stability and preventing timeouts in clone code base steps. (PL-57778, ZD-70731, ZD-71581, ZD-71589, ZD-71593, ZD-71596, ZD-71597, ZD-71599, ZD-72110)
+
+- Removed the restriction on the Content-Type header for the Delegate metrics endpoint. The endpoint now accepts any Content-Type, enabling compatibility with tools like Dynatrace ActiveGate for metrics collection. (PL-57704, ZD-71319)
+
+- Enhanced query performance to prevent timeouts when filtering large numbers of user groups inherited in child scopes. Listing user groups now completes efficiently even with high volumes. (PL-57595, ZD-71170)
+
+#### New features and enhancements
+
+- Set limits on the number of delegates and delegate tokens allowed per account and per scope. The current limit is set to 10,000. This change requires Harness Delegate version 24.10.84200. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56296)
+
+### Version 1.60.x<!-- October 15, 2024 -->
+
+#### Fixed issues
+
+- Fixed an issue where delegate restarts during pipeline execution were incorrectly labeled as disconnections. The error message now correctly states delegate restarted while executing to help users identify the root cause related to their infrastructure. (PL-57421, ZD-70611)
+
+- Fixed an issue causing the Cloud Credits page to break in the QA environment. The issue was resolved by updating the path URLs with a `. +` configuration change to ensure correct routing. (PL-57317)
+
+- Made UI improvements to the Cloud Credits page, including enabling the TimeRangePicker for free subscriptions and increasing the page size to display all organizations and projects in dropdowns. (PL-56928)
+
+### Version 1.59.x<!-- October 7, 2024 -->
+
+#### New features and enhancements
+
+- Updated the description and UI label for the `rotationTimeStamp` field in the Rotate Token API. This update clarifies that the input is for setting the expiry time of the old token being rotated, ensuring clearer understanding during token rotation. (PL-56558, ZD-69048)
+
+- Implemented a limit on the number of delegates and delegate tokens per account and per scope. The maximum number of delegate tokens is now set to 10,000 to ensure better management and scalability. This item requires Harness Delegate version 24.10.84104. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56296)
+
+- Upgraded the `bitnami/minio` image to version `2024.6.29-debian-12-r0` to address multiple high and critical vulnerabilities, ensuring improved security and compliance. (PL-56127)
+
+- Removed the outdated static HTML page (`https://app.harness.io/ng/static/versions.html`) that displayed versions of various NG services. Customers are now advised to check deployed service versions from their Account Settings page in NGUI. (PL-52144)
+
+- Upgraded the `com.nimbusds_nimbus-jose-jwt` library to version `9.37.3` to address high-severity vulnerabilities, including CVE-2023-52428, which could lead to denial of service through resource consumption. (PL-51347, ZD-70765)
+
+- Enhanced Notification Support: Harness now seamlessly integrates with Microsoft Workflows to create and manage notifications, in addition to Microsoft Office 365 connectors. (PL-55565, ZD-66761, ZD-66985, ZD-67032, ZD-67378, ZD-68690)
+
+#### Fixed issues
+
+- Fixed an issue causing the Cloud Credits page to break in the QA environment. The issue was resolved by updating the path URLs with a `. +` configuration change to ensure correct routing. (PL-57317)
+
+- Improved error messaging for pipeline execution failures when the delegate cannot reach the build pod. This enhancement helps users quickly identify connectivity issues between the delegate and build farm, improving troubleshooting and reducing impact on user experience. (PL-57241, ZD-68383, ZD-69998)
+
+- Fixed an issue with Cloud Credits reporting for the DataRobot account, where usage data was not displaying correctly. Updated the licenseUsageAPI logic to aggregate results by timestamp and CIOsType, and adjusted the license_Usage_Yearly table to account for leap years. (PL-57023)
+
+- Corrected the API documentation for the Audit Event API. The yamlDiffRecord field was incorrectly listed in the response and has been removed from the docs. Additionally, the missing auditYaml API endpoint has been added to the documentation for retrieving YAML differences. (PL-56934, ZD-69812)
+
+- Fixed several usability issues in the Roles Reusability feature, including auto-refetch failures in the Active User Lists view, non-functional Cancel buttons in the Assign Roles modal, and the unnecessary Back button in the Role Assignments modal. (PL-56146)
+
+- Implemented an RBAC check across all scopes when listing delegates and delegate tags. Users will now only see delegates they have access to in the current scope. This fix is currently behind the feature flag P`L_RBAC_CHECK_UP_THE_HIERARCHY_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable it. (PL-55748, ZD-67385)
+
+- Improved error messaging for the `<+secrets.getValue(secretlocation)>` expression to provide clearer feedback when a secret is not found. The updated message now states, "The secret has not been found," and includes the full computed path for better troubleshooting. This item requires Harness Delegate version 24.10.84104. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-51900, ZD-65130, ZD-69181)
+
 ## September 2024
+
+### Version 1.57.x<!-- September 30, 2024 -->
+
+#### New features and enhancements
+
+- Upgraded `org.clojure:clojure` from version 1.9.0 to 1.11.4 to address security vulnerabilities, including CVE-2024-22871, which could lead to a denial of service (DoS) attack. (PL-56307)
+
+#### Fixed issues
+
+- Resolved an issue in FileStore where tag values were not displayed in the tag hover for files. The custom logic for rendering tags has been replaced with a standard Tags component, ensuring that both tag names and values are correctly shown. (PL-56940, ZD-69741)
+
+- Fixed an issue on the Freeze page where long names and identifiers caused text overlap in the UI. A maximum width has been set for the freeze name cell, with the full name and identifier now visible on hover. (PL-56843, ZD-69083)
 
 ### Version 1.56.x<!-- September 16, 2024 -->
 

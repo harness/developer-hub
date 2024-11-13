@@ -10,23 +10,81 @@ import TabItem from '@theme/TabItem';
 Build Intelligence is part of [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence), a suite of features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. BI works by storing these outputs locally or remotely and retrieving them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency.
 
 :::note
-Build Intelligence is currently only offered to Harness Cloud, with support for self hosted coming soon. This feature is behind the feature flag `CI_CACHE_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+* Build Intelligence is currently only offered to Harness Cloud, with support for self hosted coming soon. This feature is behind the feature flag `CI_CACHE_ENABLED`. 
+* 'Build intelligence' CI stage property, which enables automatic setup of Build Intelligence on Harness Cloud when using supported build tools in Run and Test steps is behind the feature flag `CI_ENABLE_BUILD_CACHE_HOSTED_VM`.
+
+Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-Build Intelligence in Harness CI is currently available for Gradle and Bazel with Maven support coming soon. Regardless of the programing language used in your projects, as long as you're building with a supported build tool, you can take advantage of Build Intelligence to optimize your builds.
 
-## Build Intelligence Support for Gradle
+Build Intelligence in Harness CI is currently available for Gradle and Bazel with Maven support coming soon. Regardless of the programming language used in your projects, as long as you're building with a supported build tool, you can take advantage of Build Intelligence to optimize your builds.
+
+
+## Auto-setup of Build Intelligence
+
+The Build Intelligence stage property simplifies the setup of Build Intelligence in Harness Cloud. When enabled, it automatically configures Build Intelligence for supported build tools (currently Gradle and Bazel) in Run and Test steps without requiring any additional configuration. This automation is particularly beneficial in CI pipelines, as it eliminates the need for developers to modify project settings in their git repository (such as Gradle’s settings.gradle) to configure the cache.
+
+Build Intelligence setup is fully automated when the `CI_ENABLE_BUILD_CACHE_HOSTED_VM` feature flag is enabled. However, for local development (e.g., on a developer's laptop), manual configuration is necessary to take advantage of caching.
+
+### Enabling Auto-setup 
+* Via Visual editor: To enable Build Intelligence, go to the CI Stage Overview tab and toggle Build Intelligence to true.
+* In yaml, set build intelligence with `buildIntelligence` property, as you can see below
+
+```YAML
+    - stage:
+        identifier: build
+        name: build
+        type: CI
+        spec:
+          cloneCodebase: true
+          buildIntelligence: 
+            enabled: true # Build intelligence enabled
+          execution:
+            steps:
+              - step:
+                  type: Action
+                  name: Set up Gradle
+                  identifier: Set_up_Gradle
+                  spec:
+                    uses: gradle/gradle-build-action@v2
+                    with:
+                      gradle-version: "8.5"
+              - step:
+                  type: Run
+                  name: build
+                  identifier: build
+                  spec:
+                    shell: Sh
+                    command: ./gradlew build 
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+
+```
+
+## Build Intelligence configuration
+
+For local development (e.g., running build commands on a developer's laptop), manual configuration is necessary to take advantage of the remote cache. 
+Manual configuration may also be needed in case you run your build in Harness CI but would not like to use auto-setup.  
+
+Please follow the instructions below, for either Bazel or Gradle, in case manual configuration is needed.
+
+
+### Build Intelligence Support for Gradle
 
 [Gradle](https://gradle.org/) is the open source build system of choice for Java, Android, and Kotlin developers. Harness CI offers Build Intelligence support for Gradle to optimize build times by reusing outputs from previous builds.
 
-### How it works?
+#### How it works?
 
 1. **Plugin Integration**: The Build Intelligence plugin for Gradle is imported into your project. This plugin interacts with Gradle to handle cache pull and push operations.
 2. **Cache Operations**: At the start of the build, the plugin registers with Gradle to check for cached build outputs. If available, it retrieves and provides them to Gradle, avoiding the need to regenerate them.
 
 The above operation is transparent to you as a user and happens in the background. 
 
-### Configuration for Gradle
+#### Configuration for Gradle
 
 1. Import the build cache plugin in `settings.gradle` file: Customers using **prod1** or **prod2** clusters don't need to configure the `endpoint` parameter in the settings below and it'll be populated by the plugin. The default value for this endpoint for **prod1** or **prod2** is `https://app.harness.io/gateway/cache-service`. For customers not using **prod1** or **prod2** clusters, they'll need to configure the `endpoint` parameter. 
 
@@ -37,7 +95,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'io.harness:gradle-cache:0.0.2'
+        classpath 'io.harness:gradle-cache:0.0.4'
     }
 }
 ...
@@ -78,7 +136,7 @@ The above configuration is only required for local builds. For hosted CI builds,
 org.gradle.caching = true
 ```
 
-### Sample pipeline for build intelligence for Gradle
+#### Sample pipeline for build intelligence for Gradle
 
 ```YAML
 pipeline:
@@ -128,11 +186,11 @@ pipeline:
       value: <+input>
 ```
 
-## Build Intelligence Support for Bazel
+### Build Intelligence Support for Bazel
 
 [Bazel](https://bazel.build/) is an open-source build and test tool designed for high performance, scalability, and handling large codebases across multiple languages and platforms. Harness CI offers Build Intelligence support for Bazel to optimize build times by reusing outputs from previous builds.
 
-### How it works?
+#### How it works?
 
 1. Proxy binary: Download the proxy binary from `https://app.harness.io/storage/harness-download/harness-ti/cache-proxy/OS/ARCH/cache-proxy`. Replace **OS/ARCH** in the URL with one of the following options:
 

@@ -9,7 +9,7 @@ The Custom Plugins feature in IDP allows users to plug their own private Backsta
 
 :::warning
 
-This feature is in **BETA** and is available behind the feature flag `IDP_ENABLE_CUSTOM_PLUGINS` . If you want to try out this feature, please reach out to the IDP team. We would love to work with you and take feedback.
+This feature is in **BETA** and is available behind the feature flag `IDP_ENABLE_CUSTOM_PLUGINS`. If you want to try out this feature, please reach out to the IDP team. We would love to work with you and take feedback.
 
 <DocVideo src="https://www.youtube.com/embed/6ab9xQY7kSE?si=zbG2ZUnZZQNJrlfS"/>
 
@@ -17,7 +17,7 @@ This feature is in **BETA** and is available behind the feature flag `IDP_ENABLE
 
 :::info
 
-At present we only support the **Frontend Plugins** allowing you to create your own UI components, and use the **Backstage proxy** and **Delegates**, to connect to your internal systems and show meaningful data on the IDP UI.
+At present, we only support the **Frontend Plugins** allowing you to create your own UI components, and use the **Backstage proxy** and **Delegates**, to connect to your internal systems and show meaningful data on the IDP UI.
 
 :::
 
@@ -25,9 +25,9 @@ At present we only support the **Frontend Plugins** allowing you to create your 
 
 In Harness IDP we allow two ways in which you can add your custom plugins
 
-1. The npm package URL for **public npm packages** of the plugin (eg. `https://www.npmjs.com/package/@parsifal-m/plugin-dev-quotes-homepage`)
+1. The npm package URL for **public npm packages** of the plugin (e.g. `https://www.npmjs.com/package/@parsifal-m/plugin-dev-quotes-homepage`)
 2. The `package.tgz` folder which has the packaged plugin packed using `yarn pack`
 
-Follow the detailed steps mentioned on this [docs](/docs/internal-developer-portal/plugins/custom-plugins/add-a-custom-plugin) to add your custom plugins to the IDP. 
+Follow the detailed steps mentioned on these [docs](/docs/internal-developer-portal/plugins/custom-plugins/add-a-custom-plugin) to add your custom plugins to the IDP. 
 
 

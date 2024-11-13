@@ -7,9 +7,9 @@ sidebar_position: 1
 
 Gitspaces:tm: are Development Environments, which are preconfigured, remote, ready-to-use  environments that developers can quickly spin up from anywhere and start writing code, debugging, and collaborating with other developers.
 
-## How do Gitspaces work in Gitness?
+## How do Gitspaces work?
 
-Each Gitspace is a docker container that is spun up on the same machine where Gitness is installed. Each Gitspace is tightly coupled with a source code repository and branch. This source code is automatically cloned to the container during the Gitspaces creation workflow.
+Each Gitspace is a docker container that is spun up on the same machine where Harness Open Source is installed. Each Gitspace is tightly coupled with a source code repository and branch. This source code is automatically cloned to the container during the Gitspaces creation workflow.
 
 The Gitspace is then exposed to the user via a web-based IDE or via their desktop IDE. This IDE is connected to the container via a websocket connection, which enables the user to interact with the container as if it were a local development environment. 
 

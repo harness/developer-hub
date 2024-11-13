@@ -9,7 +9,7 @@ Contact [Harness Support](mailto:support@harness.io) to request a personalized, 
 
 ## Step 1: Use integrations to fetch contributors data from your SDLC tools
 
-SEI can automatically detect user identities and create contributor profiles by integrating with your existing SDLC tools such as [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration), [Github](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration) etc. For detailed information on available integrations and setup instructions, go to [SEI Integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview).
+SEI can automatically detect user identities and create contributor profiles by integrating with your existing SDLC tools such as [Jira](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration), [Github](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration) etc. For detailed information on available integrations and setup instructions, go to [SEI Integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview).
 
 :::info
 Please note that after adding or updating an integration, it may take up to 24 hours for the data to be fully reflected in SEI. The contributor list, reports and insights will update once synchronization is complete.

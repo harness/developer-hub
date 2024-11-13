@@ -93,6 +93,13 @@ import {
             link: "/release-notes/artifact-registry",
           },
           {
+            title: "Database DevOps release notes",
+            module: MODULES.dbdevops,
+            description:
+              "",
+            link: "/release-notes/database-devops",
+          },
+          {
             title: "Feature Flags release notes",
             module: MODULES.ff,
             description:
@@ -114,11 +121,11 @@ import {
             link: "/release-notes/internal-developer-portal",
           },
           {
-            title: "Internal Developer Portal release notes",
+            title: "Cloud Development Environments release notes",
             module: MODULES.cde,
             description:
               "",
-            link: "/release-notes/cloud-development-environment",
+            link: "/release-notes/cloud-development-environments",
           },
           {
             title: "Security Testing Orchestration release notes",

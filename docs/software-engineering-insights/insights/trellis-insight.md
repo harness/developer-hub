@@ -54,17 +54,17 @@ Once your project is created, you can set up and map integrations as an admin an
 1. Go to the **Integration Mapping** tab within the SEI module.
 2. Click **Map Integrations** and select existing integrations or create new ones as needed.
 3. Ensure you associate the integrations with your current project.
-4. Now for configuring a DORA Metrics insight, you'll need to map the [Jira integration (Issue Management Tool)](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration), [Github integration (Source Code Manager)](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration), [Harness NG integration (CI/CD Platform)](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng).
+4. Now for configuring a DORA Metrics insight, you'll need to map the [Jira integration (Issue Management Tool)](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration), [Github integration (Source Code Manager)](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration), [Harness NG integration (CI/CD Platform)](/docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd).
 
 :::info
-You can also use [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) as the Issue Management tool.
+You can also use [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops) as the Issue Management tool.
 :::
 
 You can also create new integrations and associate the integration with the current project by mapping them.
 
-* To create a new Jira integration, go to [Jira integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration).
-* To create a new GitHub integration, go to [GitHub integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration).
-* To create a new Harness NG integration, go to [Harness NG integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng).
+* To create a new Jira integration, go to [Jira integration](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration).
+* To create a new GitHub integration, go to [GitHub integration](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration).
+* To create a new Harness NG integration, go to [Harness NG integration](/docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd).
 
 ## Create the Insight
 

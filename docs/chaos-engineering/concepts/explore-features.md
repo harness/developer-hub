@@ -20,6 +20,10 @@ Harness CE is available as the SaaS version, that you can use by either signing 
 
 ## Chaos Platform Features
 
+### Powered by LitmusChaos
+
+HCE is built on open-source CNCF chaos engineering project [LitmusChaos](https://litmuschaos.io/). It leverages the robustness of LitmusChaos and provides additional capabilities that makes chaos engineering an easy practice for enterprises. The additional capabilities are listed [here](/docs/chaos-engineering/getting-started/#hce-and-litmuschaos).
+
 ### Centralized Chaos Control Plane
 
 The control plane comprises of microservices that enable the [web-based portal](https://app.harness.io) to perform its functions.
@@ -61,7 +65,7 @@ For more information on importance and types of probes, go to [Resilience Probes
 
 Experiment log refers to metadata generated when a chaos experiment is in progress. These logs are stored in separate files, which are bound to the faults of the experiment. They contain information such as the steps of execution of the fault, errors caused during the execution of the fault, and so on. The log files are named based on the unique fault name mentioned in the experiment.
 
-For more information on infrastructure logs, go to [Infrastructure Logs](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/#logs).
+For more information on infrastructure logs, go to [Infrastructure Logs](/docs/chaos-engineering/use-harness-ce/infrastructures/#logs).
 
 ### Application Map
 
@@ -73,7 +77,7 @@ Application maps help:
 - Manage experiments associated with them.
 - Perform trend analysis.
 
-For more information on how to create an application map, go to [Application Map](/docs/chaos-engineering/concepts/explore-concepts/app-maps).
+For more information on how to create an application map, go to [Application Map](/docs/chaos-engineering/use-harness-ce/application-map).
 
 ### Audit Logs
 
@@ -84,12 +88,12 @@ It refers to the detailed records that tracks all activities, changes, and event
 - **User Access and Permissions**: Tracking user login attempts, access grants, and any changes to user roles or permissions.
 - **System Events**: System-generated events, errors, or alerts that may occur during chaos experiments.
 
-For more information, go to [logs](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/#logs).
+For more information, go to [logs](/docs/chaos-engineering/use-harness-ce/infrastructures/#logs).
 
 ### Custom Image Registry
 It is a repository that hosts container images that are used by chaos experiments. HCE allows you to use custom image registries for chaos experiments.
 
-For more information on types of image registry and how to create one, go to [Image Registry](/docs/chaos-engineering/concepts/explore-concepts/image-registry).
+For more information on types of image registry and how to create one, go to [Image Registry](/docs/chaos-engineering/use-harness-ce/image-registry).
 
 ## Chaos Orchestration
 
@@ -145,12 +149,12 @@ You can create custom faults that can be injected into your application to test 
 
 ### Chaos RBACs
 
-Harness CE provides several controls to ensure the safe execution of chaos experiments on your infrastructure. The foundational elements of the chaos engineering process, such as chaos infrastructure, chaos hubs, chaos experiments, and chaos GameDays are registered as the module resources, with permissions exercised against them. These resources are scoped at the project level.
-For more information, go to [RBAC and User Authorization](/docs/chaos-engineering/security/#user-authorization-and-role-based-access-control).
+Harness CE provides several controls to ensure the safe execution of chaos experiments on your infrastructure. The foundational elements of the chaos engineering process, such as chaos infrastructure, ChaosHubs, chaos experiments, and GameDays are registered as the module resources, with permissions granted to use them. These resources are scoped at the project level.
+For more information, go to [RBAC and User Authorization](/docs/chaos-engineering/use-harness-ce/governance/rbac#user-authorization-and-role-based-access-control).
 
 ### ChaosGuard
 
-ChaosGuard provides an additional level of security to guard chaos experiments from chaos-enabled users. It aims to minimize the blast radius  and mitigate potential threats. For more information, go to [ChaosGuard](/docs/chaos-engineering/concepts/explore-concepts/chaosguard). For hands-on experience, [Configure and Use ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/govern-run).
+ChaosGuard provides an additional level of security to guard chaos experiments from chaos-enabled users. It aims to minimize the blast radius  and mitigate potential threats. For more information, go to [ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/). For hands-on experience, [Configure and Use ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/govern-run).
 
 ## Integrations
 
@@ -177,7 +181,7 @@ For more information, go to [Resilience Score](/docs/chaos-engineering/use-harne
 
 ### Resilience Coverage
 
-It describes how resilient an application is to different kinds of failures. For example, your application may be able to function smoothly in case of resource failures but causes glitches in case of network issues. This tells what kinds of failures your application is able to handle. For more information, go to [Application Maps](/docs/chaos-engineering/concepts/explore-concepts/app-maps).
+It describes how resilient an application is to different kinds of failures. For example, your application may be able to function smoothly in case of resource failures but causes glitches in case of network issues. This tells what kinds of failures your application is able to handle. For more information, go to [Application Maps](/docs/chaos-engineering/use-harness-ce/application-map).
 
 ### Prometheus Chaos Metrics
 
@@ -203,3 +207,4 @@ For more information, go to [Chaos Dashboards](/docs/chaos-engineering/use-harne
 After executing a chaos experiment, you can view the run report of the experiment if you configure your account to send alerts about updates on your experiment executions.
 
 For more information, go to [Alert Integration](/docs/chaos-engineering/use-harness-ce/experiments/alert-integration#sample-run-report).
+

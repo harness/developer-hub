@@ -49,7 +49,6 @@ To begin your installation, download the following files:
 
      - Chaos Engineering: `ce-images.tgz`
      - Cloud Cost Management: `ccm-images.tgz`
-     - Chaos Engineering: `ce-images.tgz`
      - Continuous Delivery & GitOps NextGen: `cdng-images.tgz`
      - Continuous Integration: `ci-images.tgz`
      - Feature Flags: `ff-images.tgz`

@@ -23,13 +23,8 @@ You can scan your repositories and container images using [Black Duck Hub](https
 - You need to add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline) to scan container images on Kubernetes or Docker build infrastructures. 
   - Blackduck only supports scanning older images, so the Docker-in-Docker step must be compatible with the version mentioned in the [BDH support](https://community.synopsys.com/s/article/Black-Duck-docker-inspector-scan-Exception-thrown-while-getting-image-packages-null). If scanning a tar file, ensure it is generated using a Docker version that is compatible with this requirement.
 
-- You need to run the scan step with root access if either of the following apply:
-
-  - You need to add a Docker-in-Docker background step.
-
-  - You need to add trusted certificates to your scan images at runtime. 
-
-- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+- You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+- STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 

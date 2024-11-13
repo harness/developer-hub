@@ -39,7 +39,7 @@ This plugin does not require a delegate proxy to be set up because GitHub is pub
 
 ## Layout
 
-This plugin exports a page and two card on the overview page, one to start a Codespace and another with a list of already active Codespace. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then you could find the following YAML code auto-ingested:
+This plugin exports a page and two cards on the overview page, one to start a Codespace and another with a list of already active Codespace. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then you could find the following YAML code auto-ingested:
 
 ```yaml
 ...
@@ -79,7 +79,11 @@ This plugin exports a page and two card on the overview page, one to start a Cod
 ...
 ```
 
-The `isGithubCodespacesAvailable` condition is met when the `github.com/project-slug` annotation is present in the software components's `catalog-info.yaml` definition file.
+The `isGithubCodespacesAvailable` condition is met when the `github.com/project-slug` annotation is present in the software component's `catalog-info.yaml` definition file.
+
+![](./static/codespaces-list.png)
+
+![](./static/codespaces-start.png)
 
 ## Annotations
 

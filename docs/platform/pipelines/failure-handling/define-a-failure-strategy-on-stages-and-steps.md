@@ -86,7 +86,7 @@ Due to the potential complexity of failure strategies, [input sets](/docs/platfo
 
 ### Failure strategies for CD steps and stages
 
-For guidance on configuring failure strategies for CD stages and steps, go to [Define a failure strategy on Harness CD stages and steps](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
+For guidance on configuring failure strategies for CD stages and steps, go to [Define a failure strategy on Harness CD stages and steps](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings.md).
 
 ## Failure strategy settings
 

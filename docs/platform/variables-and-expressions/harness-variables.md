@@ -172,13 +172,13 @@ Here's when you can reference expressions resolved from information in each of t
 
 </details>
 
-### Hyphens require escaping
+### Hyphens and spaces require escaping
 
-Harness recommends not using hyphens/dashes (`-`) in variable and property names, because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software.
+Harness recommends not using hyphens/dashes (`-`) or spaces in variable and property names, because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software. Spaces may also cause incorrect evaluation of expressions. 
 
-For example, this expression won't work: `<+execution.steps.httpstep.spec.headers.x-auth>`
+For example, these expressions won't work: `<+execution.steps.httpstep.spec.headers.x-auth>`, `<+execution.steps.get_jira_info.issue.Customer Name>`
 
-If you must include a hyphen in an expression, such as with `x-auth`, you can wrap the property name in double quotes (`""`), such as `<+execution.steps.httpstep.spec.headers["x-auth"]>`.
+If you must include a hyphen in an expression, such as with `x-auth`, you can wrap the property name in double quotes (`""`), such as `<+execution.steps.httpstep.spec.headers["x-auth"]>` and  `<+execution.steps.get_jira_info.issue."Customer Name">`.
 
 This also applies to nested usage, such as:
 

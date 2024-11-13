@@ -39,10 +39,15 @@ export const IacmData: Horizon = {
         title: "PR Automation",
         description: "IaCM support PR Automation that populates plan and cost data to the PR process, helping you to reduce testing time on Terraform changes",
       },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Custom arguments support",
+        description: "Users will have the flexibility to modify which arguments will be used during execution, allowing additional customization",
+      },
     ],
   },
   Now: {
-    description: "Q3 2024, Aug-Oct 2024",
+    description: "Q4 2024, Nov 2024-Jan 2025",
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
@@ -55,29 +60,30 @@ export const IacmData: Horizon = {
         description: "Users will be able to create Workspaces that will inherit cost, OPA, and other configurations from templates, simplifying onboarding and enforcing best practices",
       },
       {
-        tag: [],
-        title: "Custom arguments support",
-        description: "Users will have the flexibility to modify which arguments will be used during execution, allowing additional customization",
-      },
-      {
         tag: [{ value: "Developer Experience" }],
         title: "Default Pipelines",
         description: "Users will have the ability to assign pipelines to different Terraform/OpenTofu operations, making it easier to control the automation for each Workspace update",
       },
-      {
-        tag: [{ value: "Security" },{ value: "Enterprise" }],
-        title: "SMP (on-prem)",
-        description: "Supporting implementing IaCM in private environments",
+      {    
+        tag: [{ value: "Developer Experience" }],
+        title: "Variable Sets",
+        description: "Define reusable collections of Terraform and environment variables, as well as connectors, that can be used across different workspaces. This feature makes it easy to manage variables centrally while maintaining security for sensitive data.",
       },
+
     ],
   },
   Next: {
-    description: "Q4 2024, Nov 2024-Jan 2025",
+    description: "Q1 2025, Feb 2025-Mar 2025",
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
         title: "CLI Integration",
         description: "Having the ability to run Workspace-related pipelines directly from CLI",
+      },
+      {
+        tag: [{ value: "Security" },{ value: "Enterprise" }],
+        title: "SMP (on-prem)",
+        description: "Supporting implementing IaCM in private environments",
       },
       {
         tag: [],
@@ -87,7 +93,7 @@ export const IacmData: Horizon = {
     ],
   },
   Later: {
-    description: "Q1 2025+  & beyond",
+    description: "Q2 2025+ & beyond",
     feature: [
       {
         tag: [],

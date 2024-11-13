@@ -50,7 +50,7 @@ We support the following `regex operators` as Operators for all the Data Points.
 
 ### Support for `catalog-info.yaml` metadata as inputs.
 
-Users can now use all of the entity definition from the `catalog-info.yaml` or from additional properties [ingested using APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties) as input variable(JEXL format) in Scorecard Checks. For example, `<+metadata.testCoverageScore>`, `<+metadata.annotations['backstage.io/techdocs-ref']>`. Checks eg., `<+metadata.harnessData.name>` will fetch the value for the branch in the following YAML as `catalog-info.yaml`.
+Users can now use all the entity definition from the `catalog-info.yaml` or from additional properties [ingested using APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties) as input variable(JEXL format) in Scorecard Checks. For example, `<+metadata.testCoverageScore>`, `<+metadata.annotations['backstage.io/techdocs-ref']>`. Checks e.g., `<+metadata.harnessData.name>` will fetch the value for the branch in the following YAML as `catalog-info.yaml`.
 
 ```YAML
 ...
@@ -69,10 +69,9 @@ metadata:
 
 :::info
 
-Few datasources like **PagerDuty**, **Kubernetes** are dependant on the Plugins to fetch data using the annotations meant for the plugins in `catalog-info.yaml` as well as the proxy defined in the plugins section. 
+Few datasources like **PagerDuty**, **Kubernetes** are dependent on the Plugins to fetch data using the annotations meant for the plugins in `catalog-info.yaml` as well as the proxy defined in the plugins section. 
 
 :::
-
 
 ## GitHub
 
@@ -81,7 +80,7 @@ The following **Data Points** are available for GitHub Data Source.
 1. **Branch Protection**
 - *Objective:* Ensure that branch protection rules disallow force push and delete.
 - *Calculation Method:* Fetch `backstage.io/source-location` annotation from the catalog YAML file to find repository details and verify the branch protection rules.
-- *Prerequisites:* Github Connector with Admin access. Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
+- *Prerequisites:* GitHub Connector with Admin access. Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
 
 ![](./static/branch-protection.png)
 
@@ -101,7 +100,7 @@ spec:
 
 2. **File Existence**
 - *Objective:* Verify the existence of a specified file in the repository.
-- *Calculation Method:* Use the `backstage.io/source-location` annotation to locate the repository and check for the file’s presence. Make sure to mention the filename with extension or relative path from the root folder (Eg: README.md or docs/README.md) in the conditional input field.
+- *Calculation Method:* Use the `backstage.io/source-location` annotation to locate the repository and check for the file’s presence. Make sure to mention the filename with extension or relative path from the root folder (e.g.: README.md or docs/README.md) in the conditional input field.
 - *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
 
 ![](./static/file-exist.png)
@@ -129,7 +128,7 @@ spec:
 
 **Example YAML**
 
-```
+```YAML
 kind: "Component"
 apiVersion: "backstage.io/v1alpha1"
 metadata:
@@ -144,17 +143,17 @@ spec:
 4. **Average time to complete successful workflow runs (in minutes)**
 - *Objective:* Calculate the average time taken to complete **successful** workflow runs (in minutes).
 - *Calculation Method:* Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the average time for the last 100 successful workflow runs to complete.
-- *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the workflow id or filename in the conditional input field.
+- *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the workflow ID or filename in the conditional input field.
 
 5. **Average time to complete workflow runs (in minutes)**
 - *Objective:* Calculate the average time taken to complete workflow runs (in minutes).
 - *Calculation Method:* Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the average time for the last 100 workflow runs to complete.
-- *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the workflow id or filename in the conditional input field.
+- *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the workflow ID or filename in the conditional input field.
 
 6. **Workflow success rate**
 - *Objective:* Calculates success rate for the given workflow.
 - *Calculation Method:* Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the success rate for the workflow.
-- *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the workflow id or filename in the conditional input field.
+- *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the workflow ID or filename in the conditional input field.
 
 7. **Workflows count**
 - *Objective:* Calculates total number of workflows.
@@ -163,7 +162,7 @@ spec:
 
 8. **Open code scanning alerts**
 - *Objective:* Calculates the total number of open alerts reported in code scanning for the given severity.
-- *Calculation Method:*  Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the total number of open alerts reported in code scanning.
+- *Calculation Method:* Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the total number of open alerts reported in code scanning.
 - *Prerequisites:* GitHub Connector with read access for code scanning alerts. Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the severity type in the conditional input field.
 
 9. **Open Dependabot alerts**
@@ -183,13 +182,13 @@ spec:
 
 12. **Extract string from a file**
 - *Objective:* Gets the string matching the pattern from given file from the branch.
-- *Calculation Method:* If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field, **also the filename can be provided as a regex pattern**, example for a file path `/backstage/blob/master/scripts/log-20240105.anyextension` the regex would be `/backstage/blob/master/scripts/log-20240105\..*`. After fetching the file, the designated pattern is then searched within the file contents and it's value is extracted and returned.
+- *Calculation Method:* If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field, **also the filename can be provided as a regex pattern**, example for a file path `/backstage/blob/master/scripts/log-20240105.anyextension` the regex would be `/backstage/blob/master/scripts/log-20240105\..*`. After fetching the file, the designated pattern is then searched within the file contents and its value is extracted and returned.
 
 :::info
 
 ### URL priority for branch name field
 
-In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
+In some of the data points we take `branchName` as input, and it's an optional field in case the branch is mentioned in `source-location` in **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
 
 ![](./static/source-location.png)
 
@@ -215,7 +214,7 @@ In case you mention the `branchName` field as a check config other than what's p
 
 ### URL priority for branch name field
 
-In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
+In some of the data points we take `branchName` as input, and it's an optional field in case the branch is mentioned in `source-location` in **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
 ![](./static/source-location.png)
 
 In case you mention the `branchName` field as a check config other than what's present in the `source-location` the priority order conditions could be found below. 
@@ -259,7 +258,7 @@ spec:
 
 2. **File Existence**
 - *Objective:* Verify the existence of a specified file in the repository.
-- *Calculation Method:* Use the `backstage.io/source-location` annotation to locate the repository and check for the file’s presence. Make sure to mention the filename with extension or relative path from the root folder (Eg: README.md or docs/README.md) in the conditional input field.
+- *Calculation Method:* Use the `backstage.io/source-location` annotation to locate the repository and check for the file’s presence. Make sure to mention the filename with extension or relative path from the root folder (e.g.: README.md or docs/README.md) in the conditional input field.
 - *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitLab repository.
 
 ![](./static/f-e-gitlab.png)
@@ -301,13 +300,13 @@ spec:
 
 4. **Extract string from a file**
 - *Objective:* Gets the string matching the pattern from given file from the branch.
-- *Calculation Method:* If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the designated pattern is then searched within the file contents and it's value is extracted and returned.
+- *Calculation Method:* If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the designated pattern is then searched within the file contents and its value is extracted and returned.
 
 :::info
 
 ### URL priority for branch name field
 
-In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
+In some of the data points we take `branchName` as input, and it's an optional field in case the branch is mentioned in `source-location` in **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
 
 ![](./static/source-location.png)
 
@@ -333,7 +332,7 @@ In case you mention the `branchName` field as a check config other than what's p
 
 ### URL priority for branch name field
 
-In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
+In some of the data points we take `branchName` as input, and it's an optional field in case the branch is mentioned in `source-location` in **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
 
 ![](./static/source-location.png)
 
@@ -358,7 +357,7 @@ The following **Data Points** are available for Bitbucket Data Source.
 1. **Branch Protection**
 - *Objective:* Ensure that branch protection rules disallow force push and delete.
 - *Calculation Method:* Fetch `backstage.io/source-location` annotation from the catalog YAML file to find repository details and verify the branch protection rules.
-- *Prerequisites:* Bitbucket Connector with Admin access. Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source BitBucket repository.
+- *Prerequisites:* Bitbucket Connector with Admin access. Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source Bitbucket repository.
 
 ![](./static/b-p-bitbucket.png)
 
@@ -399,13 +398,13 @@ spec:
 
 3. **Extract string from a file**
 - *Objective:* Gets the string matching the pattern from given file from the branch.
-- *Calculation Method:* If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the designated pattern is then searched within the file contents and it's value is extracted and returned.
+- *Calculation Method:* If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the designated pattern is then searched within the file contents and its value is extracted and returned.
 
 :::info
 
 ### URL priority for branch name field
 
-In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
+In some of the data points we take `branchName` as input, and it's an optional field in case the branch is mentioned in `source-location` in **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
 
 ![](./static/source-location.png)
 
@@ -431,7 +430,7 @@ In case you mention the `branchName` field as a check config other than what's p
 
 ### URL priority for branch name field
 
-In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
+In some of the data points we take `branchName` as input, and it's an optional field in case the branch is mentioned in `source-location` in **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
 
 ![](./static/source-location.png)
 
@@ -451,7 +450,7 @@ In case you mention the `branchName` field as a check config other than what's p
 
 2. **File Existence**
 - *Objective:* Verify the existence of a specified file in the repository.
-- *Calculation Method:* Use the `backstage.io/source-location` annotation to locate the repository and check for the file’s presence. Make sure to mention the filename with extension or relative path from the root folder (Eg: README.md or docs/README.md) in the conditional input field.
+- *Calculation Method:* Use the `backstage.io/source-location` annotation to locate the repository and check for the file’s presence. Make sure to mention the filename with extension or relative path from the root folder (e.g.: README.md or docs/README.md) in the conditional input field.
 
 ### URL priority for branch name field
 
@@ -489,13 +488,13 @@ spec:
 
 - For the functioning of Harness Data Source related checks, the Harness CI/CD plugin should be configured with annotations in catalog info YAML, `harness.io/pipelines` and `harness.io/services`.
 
-- `harness.io/pipelines`: The pipeline URL is used as input and it should only be fetched from under **Projects** and not from specific modules. 
+- `harness.io/pipelines`: The pipeline URL is used as input, and it should only be fetched from under **Projects** and not from specific modules. 
 
 Here's an example of the URL input: `https://app.harness.io/ng/account/account_id/home/orgs/org_id/projects/project_id/pipelines/pipeline_id`
 
 ![](./static/projects-pipelines.png)
 
-- `harness.io/services`: The URL for the Service should be used as an input and it should only be fetched from under **Projects** and not from specific modules.
+- `harness.io/services`: The URL for the Service should be used as an input, and it should only be fetched from under **Projects** and not from specific modules.
 
 Here's an example of the URL input: `https://app.harness.io/ng/account/account_id/home/orgs/org_id/projects/project_id/services/service_id`
 
@@ -552,6 +551,30 @@ If the rule depends on the execution of the pipeline then the latest execution o
 2. In case if annotation is missing the catalog info YAML, we will get the failure summary for the check in order to add the annotation [We can refer to the Pre-Requisite section to add it]
 
 ![](./static/es2-harness.png)
+
+5. **(Code) Extract string from a file**
+
+- *Objective*: Gets the string matching the pattern from given file from the branch.
+
+- *Calculation Method*: If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the backstage.io/source-location annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the designated pattern is then searched within the file contents and its value is extracted and returned
+
+- *Prerequisites*: Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source Harness Code repository.
+
+6. **(Code) Does file exist**
+
+- *Objective*: Checks if the given filename exist or not.
+
+- *Calculation Method*: Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and find if the file is present or not. Make sure to mention the filename with extension or relative path from the root folder (e.g.: README.md or docs/README.md) in the conditional input field.
+
+- *Prerequisites*: Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source Harness Code repository.
+
+7. **(Code) Match string in a file**
+
+- *Objective*: Matches the pattern in the given file from the branch.
+
+- *Calculation Method*: If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the backstage.io/source-location annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the contents are examined to find the pattern. Returns true/false based on whether the pattern was found or not.
+
+- *Prerequisites*: Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source Harness Code repository.
 
 ## Catalog 
 
@@ -626,7 +649,7 @@ spec:
 3. **Documentation Exists**:
 - *Objective:* Checks if the catalog YAML file has the annotation `backstage.io/techdocs-ref` configured or not.
 - *Calculation Method:* The catalog YAML is inspected to check if the `backstage.io/techdocs-ref` is present under the metadata field.
-- *Prerequisites:* The directory configured should have the `mkdocs.yml` file and a docs directory having all the documentation in markdown format.
+- *Prerequisites:* The directory configured should have the `mkdocs.yml` file and a docs directory having all the documentation in Markdown format.
 
 ![](./static/doc-catalog.png)
 
@@ -672,7 +695,7 @@ spec:
 - *Objective:* Checks if the catalog YAML file has a particular annotation set under `annotation` field is configured or not.
 - *Calculation Method:* The catalog YAML is inspected to check if the particular annotation is present under the metadata field.
  
-For example, setting up the check below for the example `catalog-info.yaml` you could find wether the annotation `jira/project-key`present or not. In this case the check would pass as the annotation is present.
+For example, setting up the check below for the example `catalog-info.yaml` you could find whether the annotation `jira/project-key`present or not. In this case the check would pass as the annotation is present.
 
 ![](./static/checks-annotation-exist.png)
 
@@ -693,9 +716,9 @@ spec:
 
 :::info
 
-The Kubernetes datasource being dependant on the Kubernetes Plugin for annotations and proxy we only support `label-selector` eg. `'backstage.io/kubernetes-label-selector': 'app=my-app,component=front-end'` rest all other annotation type mentioned [here](https://backstage.io/docs/features/kubernetes/configuration#common-backstageiokubernetes-id-label) are planned to be supported in the next few releases. 
+The Kubernetes datasource being dependent on the Kubernetes Plugin for annotations and proxy we only support `label-selector` e.g. `'backstage.io/kubernetes-label-selector': 'app=my-app,component=front-end'` rest all other annotation type mentioned [here](https://backstage.io/docs/features/kubernetes/configuration#common-backstageiokubernetes-id-label) are planned to be supported in the next few releases. 
 
-Also for additional filtering we support namespace in annotation `'backstage.io/kubernetes-namespace': dice-space` as well, but `label-selector` is mandatory. 
+Also, for additional filtering we support namespace in annotation `'backstage.io/kubernetes-namespace': dice-space` as well, but `label-selector` is mandatory. 
 
 :::
 
@@ -741,9 +764,9 @@ The following **Data Points** are available for Jira Data Source.
 
 - *Objective:* Calculates the total number of issues for the given JQL query. 
 - *Calculation Method:* Fetches annotations from catalog YAML file to find project details and calculates number of issues. Make sure to provide JQL expression in the conditional input field.
-    1. Open P0/P1 bugs:  `issuetype = Bug AND priority in (P0, P1) AND statusCategory != Done`
-    2. Features delivered (last 90 days):  `issuetype in (Epic, 'New Feature') AND resolved >= -90d`
-    3. Make sure to wrap words within single quotes. Eg: `'New Feature'`
+    1. Open P0/P1 bugs: `issuetype = Bug AND priority in (P0, P1) AND statusCategory != Done`
+    2. Features delivered (last 90 days): `issuetype in (Epic, 'New Feature') AND resolved >= -90d`
+    3. Make sure to wrap words within single quotes. e.g.: `'New Feature'`
 - *Prerequisites:* Provide annotations like `jira/project-key`(required) and `jira/component`(optional) in the catalog YAML file.
 
 ![](./static/issues-jira.png)
@@ -767,8 +790,8 @@ spec:
 
 - *Objective:* Calculates the average time taken to resolve issues for the given JQL query. 
 - *Calculation Method:* Fetches annotations from catalog YAML file to find project details and calculates average time. Make sure to provide JQL expression in the conditional input field.
-    1. Mean time to resolve bugs:  `issuetype = Bug AND priority in (P0,P1) AND resolved >= -90d`
-    2. Make sure to wrap words within single quotes. Eg: `'New Feature'`
+    1. Mean time to resolve bugs: `issuetype = Bug AND priority in (P0,P1) AND resolved >= -90d`
+    2. Make sure to wrap words within single quotes. e.g.: `'New Feature'`
 - *Prerequisites:* Provide annotations like `jira/project-key`(required) and `jira/component`(optional) in the catalog YAML file.
 
 ![](./static/mean-jira.png)
@@ -792,15 +815,15 @@ spec:
 
 - *Objective:* Calculates the ratio between Open & Closed issues for the given JQL query. 
 - *Calculation Method:* Fetches annotations from catalog YAML file to find project details and calculates the ratio. Make sure to provide JQL expression in the conditional input field.
-    1. Mean time to resolve bugs:  `issuetype = Bug AND priority in (P0,P1) AND resolved >= -90d`
-    2. Make sure to wrap words within single quotes. Eg: `'New Feature'`
+    1. Mean time to resolve bugs: `issuetype = Bug AND priority in (P0,P1) AND resolved >= -90d`
+    2. Make sure to wrap words within single quotes. e.g.: `'New Feature'`
 - *Prerequisites:* Provide annotations like `jira/project-key`(required) and `jira/component`(optional) in the catalog YAML file.
 
 ![](./static/ratio-jira.png)
 
 **Example YAML**
 
-```
+```YAML
 kind: "Component"
 apiVersion: "backstage.io/v1alpha1"
 metadata:
@@ -834,7 +857,7 @@ The following **Data Points** are available for PagerDuty Data Source.
 
 ![](./static/incident-pd.png)
 
-4. **Average resolved time of the last 10 resolved incidents (in Minutes)** -  This data point can be used to create rules to check if the average resolved time for the last 10 resolved incidents (in Minutes) is less than the given provided input values.
+4. **Average resolved time of the last 10 resolved incidents (in Minutes)** - This data point can be used to create rules to check if the average resolved time for the last 10 resolved incidents (in Minutes) is less than the given provided input values.
 
 ![](./static/time-pd.png)
 
@@ -849,7 +872,7 @@ The following **Data Points** are available for PagerDuty Data Source.
 ![](./static/es2-pd.png)
 
 
-5. Now add a `tag` under which category your check belongs to , Ex. "Developer Productivity", "Software Maturity" and click `enter` to add each tags. 
+5. Now add a `tag` under which category your check belongs to, Ex. "Developer Productivity", "Software Maturity" and click `enter` to add each tags. 
 
 6. Now add the default result in case of missing data and **Save Changes**. Your checks will be added. 
 
@@ -861,7 +884,7 @@ The following **Data Points** are available for PagerDuty Data Source.
 
 - To have an overview of a single check and information on all the components it is applied, select the tab under **Check Stats** column for an individual check, it will redirect you to the overview page. 
 
-- The overview page lists all the components on which the check is applied and the graph helps you to track time-sensitive information on the components on which the check has passed, this can be used to track functions like migration and upgrades across your software ecosystem. 
+- The overview page lists all the components on which the check is applied, and the graph helps you to track time-sensitive information on the components on which the check has passed, this can be used to track functions like migration and upgrades across your software ecosystem. 
 
 ![](./static/check-component-overview.png)
 

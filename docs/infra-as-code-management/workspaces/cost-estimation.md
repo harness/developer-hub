@@ -1,7 +1,7 @@
 ---
 title: Cost estimation
 description: Learn how to get cost estimation for infrastructure changes.
-sidebar_position: 20
+sidebar_position: 30
 ---
 
 Harness IaCM supports getting cost estimates as part of the infrastructure flow. This can help you to understand if your cloud spending is going to increase as part of updating or provisioning resources. Please note that the data shown is just an estimation of the cost change and the actual cost might be different depending on your agreement with your cloud provider. 

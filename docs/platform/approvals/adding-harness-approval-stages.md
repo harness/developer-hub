@@ -293,65 +293,69 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 
 ### Support for allowed values for custom approval inputs
 
-You can provide the input as a list of values that you can select from during runtime.
+You can now specify allowed values for the **Manual Approval** step.
 
-Here's an example YAML.
+:::note
+
+Currently, allowed values for custom approval inputs is behind the feature flag `CDS_ENABLE_CONSTRAINTS_ON_APPROVAL_INPUTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Here's an example YAML file showcasing various configurations you can use for allowed values.
 
 #### YAML Example
 
 ```yaml
-- stage:
-        name: Approval
-        identifier: Approval
-        description: ""
-        type: Approval
-        spec:
-          execution:
-            steps:
-              - step:
-                  name: Harness Approval
-                  identifier: Harness_Approval
+- step:
                   type: HarnessApproval
-                  timeout: 1d
+                  name: HarnessApproval_1
+                  identifier: HarnessApproval_1
                   spec:
-                    approvalMessage: |-
-                      Please review the following information
-                      and approve the pipeline progression
+                    approvalMessage: Please review the following information and approve the pipeline progression
                     includePipelineExecutionHistory: true
+                    isAutoRejectEnabled: false
                     approvers:
+                      userGroups:
+                        - _project_all_users
                       minimumCount: 1
                       disallowPipelineExecutor: false
-                      userGroups: <+input>
-                    isAutoRejectEnabled: false
                     approverInputs:
-                      - name: Name
-                        defaultValue: <+stage.variables.name>
-                      - name: ID
-                        defaultValue: <+stage.variables.approve_id>
-                      - name: Test
-                        defaultValue: <+stage.variables.test>
-        tags: {}
-        variables:
-          - name: name
-            type: String
-            description: ""
-            required: false
-            value: <+input>.allowedValues(name1,name2,name3)
-          - name: approver_id
-            type: String
-            description: ""
-            required: false
-            value: <+input>.allowedValues(id1,id2,id3)
-          - name: test
-            type: String
-            description: ""
-            required: false
-            value: <+input>
+                      - name: variable_1
+                        defaultValue: ""
+                        required: true
+                        allowedValues: 1,2,3
+                      - name: variable_2
+                        defaultValue: ""
+                        required: true
+                      - name: variable_3
+                        defaultValue: ""
+                        description: regex expression
+                        regex: .*abc
+                      - name: variable_4
+                        defaultValue: val1
+                        description: Select one
+                        required: true
+                        selectOneFrom: val1, val2, val3
+                  timeout: 3m
 ```            
 
-This is how it would look while running the pipeline. You will be able to select more than one input values for both **name** and **approver_id** options.
+In this example, for variable_1, initially set to an empty string and can take the allowed values: 1, 2, or 3.
 
-![list of input values during rumtime](./static/Approval-Input-value-of%20-calues.png)
+For variable_2, initially set to an empty string and is required, meaning a value must be provided.
+
+For variable_3, initially set to an empty string and must match the regex pattern .*abc, meaning it should contain the substring "abc" anywhere in its value.
+
+For variable_4, initially set to an empty string and allows selection from the options val1, val2, or val3.
+
+To configure allowed values through the Harness app, navigate to the **Manual Approval** step. Under **Approvers Input**, click on **Set Allowed Values**.
+
+![](./static/allowed-values-1.png)
+
+Once the desired configuration is set, click **Confirm**.
+
+![](./static/allowed-values-2.png)
+
+Validation of approval inputs only occurs during manual approvals; there is no validation for rejections or auto approvals. Additionally, there is no validation at the YAML level to ensure that the default value is within the allowed values or follows the regex.
 
 ### User groups as expressions
 
@@ -392,6 +396,52 @@ You can select one of the following types of expression for user groups:
     :::
 
   ![](./static/adding-harness-approval-stages-19.png)
+
+### Using the Approvals API with Service Account Authentication
+
+You can approve requests using a Service Account token.
+
+ Configure Manual Approval Stage
+
+In the manual approval stage, select whether to use an individual service account or a combination (if more than one approval is needed). Set the input type as **Fixed value**.
+
+![](./static/approval-using-service-account.png)
+
+Here's an example YAML file showcasing the configurations you can use.
+
+```yaml
+- step:
+    type: HarnessApproval
+    name: HarnessApproval_1
+    identifier: HarnessApproval_1
+    spec:
+      approvalMessage: Please review the following information and approve the pipeline progression
+      includePipelineExecutionHistory: true
+      isAutoRejectEnabled: false
+      approvers:
+        userGroups:
+          - account._account_all_users
+        minimumCount: 1
+        disallowPipelineExecutor: false
+        serviceAccounts:
+          - org.serviceAccountId
+      approverInputs: []
+```
+
+Follow the instructions [here](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-service-account/) to create a service account token.
+ 
+Use this [Approvals API](https://apidocs.harness.io/tag/Approvals/#operation/addHarnessApprovalActivityByPipelineExecutionId) and fill in all the necessary details, specifying the pipeline that needs approval.   
+
+Use the service account token for authentication.
+
+In the body of your request, include the following:
+   - `approverInputs`
+   - `comments`
+   - `action` (e.g., Approve or Reject)
+
+Execute the API call. The request will trigger the approval process. Based on the action specified in the request body, the pipeline will be either approved or rejected.
+
+Note: Along with Fixed value, expressions are also supported for userGroups, providing more flexibility in your approval configurations
 
 ### Approval notifications to approvers
 

@@ -7,10 +7,10 @@ import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
 // import AdminCertificationExamDetails from "./data/iacm-certification-admin-exam-details.md";
 // import AdminCertificationReviewDetails from "./data/iacm-certification-admin-review-guide.md";
-// import DeveloperCertificationExamDetails from "./data/iacm-certification-developer-exam-details.md";
-// import DeveloperCertificationReviewGuide from "./data/iacm-certification-developer-review-guide.md";
-// import ArchitectCertificationReviewDetails from "./data/idp-certification-architect-review-guide.md";
-// import ArchitectCertificationExamDetails from "./data/id[-certification-architect-exam-details.md";
+import DeveloperCertificationExamDetails from "./data/iacm-certification-developer-exam-details.md";
+import DeveloperCertificationReviewGuide from "./data/iacm-certification-developer-review-guide.md";
+// import ArchitectCertificationReviewDetails from "./data/iacm-certification-architect-review-guide.md";
+// import ArchitectCertificationExamDetails from "./data/iacm-certification-architect-exam-details.md";
 import IltCard from "./Card";
 import { ilt } from "./data/iltData";
 import { spt } from "./data/sptData";
@@ -280,8 +280,7 @@ export default function CertificationsIACM() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Infrastucture as Code Management - Developer (BETA COMING
-                        SOON)
+                      Infrastucture as Code Management - Developer
                     </h2>
                     <img
                       src={`${baseUrl}img/cert_dev_iacm_badge.svg`}
@@ -293,15 +292,15 @@ export default function CertificationsIACM() {
                     </span>
                   </div>
                   <div className={styles.right}>
-                    <h3>Coming Soon...</h3>
+                    <h3>Review Study Guide</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to manage your
                       infrastructure with IaCM projects.
                     </div>
-                    
+                    <DeveloperCertificationReviewGuide />
 
                     <div className={styles.btnContainer}>
-                      <Link href="#">
+                      <Link href="https://university-registration.harness.io/certified-infrastructure-as-code-management-developer">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
@@ -312,14 +311,14 @@ export default function CertificationsIACM() {
               </div>
             </div>
 
-            {/* Developer Exam Details 
+            {/* Developer Exam Details */}
 
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
               <div className={styles.examDetailsCard}>
-                
+              <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
-                  <Link href="#">
+                  <Link href="https://university-registration.harness.io/certified-infrastructure-as-code-management-developer">
                     <button className={styles.moreDetails}>
                       Register for Exam
                     </button>
@@ -327,7 +326,7 @@ export default function CertificationsIACM() {
                 </div>
               </div>
             </div>
-            */}
+            
           </div>
 
           {/* Administrator Tab Content */}

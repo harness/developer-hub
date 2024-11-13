@@ -174,6 +174,10 @@ The Anomalies page displays the following information based on the selected filt
 
 ### Create an anomaly alert for your Perspective
 
+:::info 
+- Please note, Perspectives with **LABEL** filters are not supported for Anomaly Alerts.
+:::
+
 You can create alerts to receive notifications when an anomaly is detected. To create an alert, perform the following steps:
 
 1. On the **Anomalies** page, click **Settings**.

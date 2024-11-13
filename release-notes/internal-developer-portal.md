@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-09-18T20:00
+date: 2024-11-13T20:00
 sidebar_position: 12
 ---
 
@@ -17,6 +17,98 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 :::
 
+## November 2024
+
+### Version 0.36.0
+
+<!-- November 13, 2024 -->
+
+#### New features and enhancements
+
+- You can now view your pull requests under the [My Pull Requests card](/docs/internal-developer-portal/layout-and-appearance/home-page-customization#my-pull-requests-card) on the Developer Homepage. Currently, only GitHub is supported. [IDP-3458]
+
+![](./static/idp-pull-request-github.png)
+
+- We’ve added support for [pipeline templates, stage variables, and step variables](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#support-for-stage-step-variables-and-pipeline-templates) to be used as inputs for workflows with the `trigger:harness-custom-pipeline` action. [IDP-3927]
+
+- The [Plugins Marketplace](https://developer.harness.io/docs/internal-developer-portal/plugins/plugin-marketplace) now offers a single-pane-of-glass view, showing plugins supported under IDP as well as available Backstage Community Plugins, which can be added based on customer requests. [IDP-4010]
+
+![](./static/idp-plugin-marketplace.png)
+
+- Added Audit trails Support for Workflows v2 and Homepage Layout. [IDP-3849, IDP-3848]
+
+- Added support for Harness Code Repository data points under Harness data source for Scorecards. The following data points are added: [IDP-3640]
+  - Extract string from a file
+  - Does file exist
+  - Match string in a file 
+
+
+#### Bug fixes
+
+- Resolved an issue with the Direct Push step on Harness-hosted infrastructure, where secrets data was not populated due to the Git clone step being skipped by default in the IDP stage. [IDP-4000]
+
+- Resolved the issue with removing old layout from IDP. [IDP-3905]
+
+- Resolved an issue with the Kubernetes plugin’s "View Logs" functionality. This feature now correctly requires the `kubernetes.proxy` permission to be set for proxied calls to work as expected. [IDP-3900]
+
+- Resolved an issue with `HarnessAutoOrgPicker` not displaying organizations for some projects. Increased the maximum number of projects from 500 to 1000 to support customer accounts with more than 500 projects. [IDP-4022]
+
+## October 2024
+
+### Version 0.35.0
+
+<!-- October 21, 2024 -->
+
+#### New features and enhancements
+
+- You can now use `mode: Append` in the [Catalog Ingestion API](/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api#5-update-a-single-property-of-a-catalog-entity-without-replacing-existing-values). This feature allows for the ingestion and modification of complex data types in the catalog without overwriting existing values. [IDP-3799]
+
+- You can now [configure runtime inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-input-usage/#configure-execution-inputs) in the [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage), enabling users to specify inputs during pipeline execution. [IDP-3781]
+
+- New plugins added to the marketplace.
+  - [Harness CCM Backstage Plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/harness-ccm). [IDP-3758]
+
+![](./static/harness-ccm-backstage-plugin-screenshot.png)
+
+- You can now add [SimpleIcons](https://developer.harness.io/docs/internal-developer-portal/catalog/add-links-docs#icons) in the Links card on Overview page, the list of supported icons are available in **Admin** -> **Layout** -> **Icons**. [IDP-3763]
+
+
+#### Bug fixes
+
+- Fixed the issue causing Timeout errors on Workflows execution page, even when the Pipeline execution was successful. [IDP-3580]
+
+- Restored the missing GitHub Scaffolder actions, which is included under Workflows Actions by default along with other [built-in Backstage Scaffolder actions.](https://backstage.io/docs/features/software-templates/builtin-actions/)
+
+- Fixed an issue where Account Level Repo URLs for Harness Code were not functional during the registration of a software component. [IDP-3820]
+
+- Fixed the issue with un-supported content types displayed in [Homepage Layout](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/home-page-customization). [IDP-3783]
+
+- Fixed the issue with usage of `x-api-key` in [IDP APIs](https://developer.harness.io/docs/internal-developer-portal/api-refernces/public-api) headers, the `x-api-token` should be replaced with `x-api-key`. [IDP-3729]
+
+- Fixed an issue where the TechDocs button appeared greyed out in the About Card when the source was Harness Code. This fix restores full functionality to the button, ensuring users can access TechDocs as expected. [IDP-3725]
+
+- Fixed an issue where the IaCM plugin returned a 401 Unauthorized error, even when the user had proper access. [IDP-3653]
+
+
+### Version 0.34.0
+
+<!-- October 1, 2024 -->
+
+#### New features and enhancements
+
+- We have added the [new Workflows Homepage](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization), which helps you to customize the Workflows organization and information associated. This feature is behind the Feature Flag `IDP_ENABLE_WORKFLOWSV2`, contact [harness support](mailto:support@harness.io) to enable it on your account. [IDP-3752] 
+- We have upgraded to the new backend system of Backstage in Harness IDP. [IDP-3252]
+- Enhanced the API Response for Catalog Ingestion API. [IDP-3672]
+- New plugins added to the marketplace.
+  - [Sysdig Plugin for Backstage](https://github.com/sysdiglabs/backstage-plugin-sysdig)
+
+#### Bug fixes
+
+- Fixed the issue with `mode: append` to support updates to array values, in Catalog Ingestion API. [IDP-3734]
+- Fixed the UI issues with Harness Chaos Engineering Plugin. [IDP-3670]
+- Fixed the issue with global GitHub OAuth. [IDP-3655]
+- Fixed the issue with Catalog APIs with x-api-key in the header. 
+
 ## September 2024
 
 ### Version 0.33.0
@@ -30,6 +122,8 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - Add [mkdocstrings](https://mkdocstrings.github.io/) plugin in TechDocs to generate docs from comments in code blocks. [IDP-3570]
 - New plugins added to the marketplace.
   - [Argo-CD Plugin for Backstage](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-argo-cd#argo-cd-plugin-for-backstage)
+
+- We have encountered an issue with usage of `ui:widget: password` which reveals the user token in plain text to the user if the field is not used in the first page of the Workflow definition. We have updated our docs with instructions. Please find more context [here](/kb/internal-developer-portal/articles/secrets-issue) if you see the issue.  
 
 #### Bug fixes
 
@@ -108,7 +202,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - Fixed the issue with [pull and run images from private artifactory storage in your pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#pull-images), for developer portal stages. [IDP-3258]
 - Fixed the issue regarding the use of templates in IDP Stage. [IDP-3121]
 - Fixed the issue with "no git integration added banner" showing even when git integration is in place. [IDP-3157]
-- Fixed the issue with max projects fetched by [`HarnessProjectPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#3-harnessprojectpicker) UI Picker [IDP-3331].
+- Fixed the issue with max projects fetched by [`HarnessProjectPicker`](/docs/internal-developer-portal/flows/flows-input#3-harnessprojectpicker) UI Picker [IDP-3331].
 
 ### Version 0.29.0
 
@@ -252,7 +346,7 @@ Welcome to first release of April, and in this release we bring you features lik
 
 - **Blogs:** [Introducing new Catalog Ingestion APIs to make Harness IDP truly yours](https://www.harness.io/blog/introducing-new-catalog-ingestion-apis-to-make-harness-idp-truly-yours)
 
-- **New Docs:** [Get started with IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/), [Harness IDP Overview](https://developer.harness.io/docs/internal-developer-portal/get-started/overview), [Catalog Metadata Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties), [Usage of Catalog Metadata Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/ccp-for-workflows), [Custom Dashboards](https://developer.harness.io/docs/internal-developer-portal/dashboard/custom-dashboards)
+- **New Docs:** [Get started with IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/), [Harness IDP Overview](/docs/internal-developer-portal/overview), [Catalog Metadata Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties), [Usage of Catalog Metadata Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/ccp-for-workflows), [Custom Dashboards](https://developer.harness.io/docs/internal-developer-portal/dashboard/custom-dashboards)
 
 - **New Videos:** Our team presented a talk on "[Architecting Multi-tenant Backstage Instances in a Shared Kubernetes Cluster](https://youtu.be/TPHsBduIvm0?si=wWp9b5kXXNKDGrX0)" at the recently held [Backstagecon Europe](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/backstagecon/).
 
@@ -260,7 +354,7 @@ Welcome to first release of April, and in this release we bring you features lik
 
 - We now support a new [git integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) framework, which will allow users to have multiple connectors, with different host name, for a single git provider at once. For eg., Users can now use connectors for both `github.com` and `github enterprise` to fetch entity yaml from both the sources at the same time. [IDP-2213]
 
-- We have added support for a new Workflow UI Picker, [`EntityFieldPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#entityfieldpicker) using which users can use the data present in catalog as an input for the workflows. [IDP-2441]
+- We have added support for a new Workflow UI Picker, [`EntityFieldPicker`](/docs/internal-developer-portal/flows/flows-input#1-entityfieldpicker) using which users can use the data present in catalog as an input for the workflows. [IDP-2441]
 
 - We have added a new plugin, to support [GitHub Codespaces](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/github-codespaces) integration in the software catalog.[IDP-2469]
 

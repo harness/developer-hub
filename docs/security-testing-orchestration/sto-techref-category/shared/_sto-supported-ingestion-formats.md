@@ -16,6 +16,7 @@ Harness recommends that you publish and ingest using the scanner-specific JSON f
 - **Black Duck Hub** — JSON
 - **Brakeman** — JSON
 - **Burp** — XML
+- **Traceable** — JSON
 - **Checkmarx** — XML, SARIF  <!-- - **Clair** — JSON -->
 - **CodeQL** — SARIF
 - **Coverity** — XML

@@ -135,7 +135,7 @@ Create a secret with token and configure in the Personal Access token field. [Re
 
 ![](./static/bitbucket-connector.png)
 
-For **Bitbucket Cloud** the url needs to have **src** instead of **blob**. for eg. `https://bitbucket.org/org-name/repo-name/src/branch/harness-services/Organization/default.yaml`
+For **Bitbucket Cloud** the url needs to have **src** instead of **blob**. For e.g. `https://bitbucket.org/org-name/repo-name/src/branch/harness-services/Organization/default.yaml`
 
 :::
 
@@ -149,7 +149,13 @@ For **Bitbucket Cloud** the url needs to have **src** instead of **blob**. for e
 3. Configure the [GitHub connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference). You can configure connectors for both `github.com` and `GitHub Enterprise` and use them at once to fetch `catalog-info.yaml` from both the sources at same time.
 4. After the connection test runs, select **Finish** to save the connector.
 
-More instructions on [using github app in github connector](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support).
+:::warning
+
+While using GitHub App, you need a **private key for your GitHub app** to configure your Harness GitHub connector, follow the instructions mentioned [here](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/#generate-a-private-key) **to convert the key file to the necessary format for the Harness GitHub connector**
+
+:::
+
+More instructions on [using GitHub app in GitHub connector](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support).
 
 </TabItem>
 <TabItem value="gitlab-connector" label="GitLab">
@@ -231,7 +237,7 @@ https://github.com/sathish-soundarapandian/onboarding-test
 
 - The provided repo in the repo URL should belong to the same organization / project for which the connector has been setup. Ex -
 
-**In connector** - The account path is `https://github.com/sathish-soundarapandian`. So the repo url in IDP onboarding flow should be `https://github.com/sathish-soundarapandian/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
+**In connector** - The account path is `https://github.com/sathish-soundarapandian`. So the repo URL in IDP onboarding flow should be `https://github.com/sathish-soundarapandian/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
 
 - Provided repo should exist with a valid default HEAD branch. Ideally this will be case when the repo is initialized with README file
 
@@ -294,7 +300,7 @@ https://github.com/sathish-soundarapandian/onboarding-test
 
 - The provided repo in the repo URL should belong to the same organization / project for which the connector has been setup. Ex -
 
-**In connector** - The account path is `https://github.com/sathish-soundarapandian`. So the repo url in IDP onboarding flow should be `https://github.com/sathish-soundarapandian/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
+**In connector** - The account path is `https://github.com/sathish-soundarapandian`. So the repo URL in IDP onboarding flow should be `https://github.com/sathish-soundarapandian/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
 
 - Provided repo should exist with a valid default HEAD branch. Ideally this will be case when the repo is initialized with README file
 
@@ -312,7 +318,7 @@ https://github.com/sathish-soundarapandian/onboarding-test
 
 ## Create and Register Entities
 
-11. Once the required details are entered and submitted for importing, we will push the generated entity yaml files to the repo and path provided. You will be seeing two commits - One is done during the sync flow and other commit which will consist of remaining entities will be pushed in an async manner. Time frame for async operation will depend on how big the repo size is and how many revisions the provided repo has.
+11. Once the required details are entered and submitted for importing, we will push the generated entity YAML files to the repo and path provided. You will be seeing two commits - One is done during the sync flow and other commit which will consist of remaining entities will be pushed in an async manner. Time frame for async operation will depend on how big the repo size is and how many revisions the provided repo has.
 
 12. In the background, the catalog are also imported into IDP along with their associated configs.
 
@@ -322,11 +328,11 @@ https://github.com/sathish-soundarapandian/onboarding-test
 
 13. User can navigate to the IDP homepage to get started. Catalog will be start showing up once the async operation is completed.
 
-14. Since during the onboarding flow harness will not be able to discover the complete metadata of the entity, the owner field will be set to Unknown. As part of the IDP provisioning, harness users and groups are imported to IDP. With this in place, customers can start editing the catalog info yaml definition to update the owner for each of the entity.
+14. Since during the onboarding flow harness will not be able to discover the complete metadata of the entity, the owner field will be set to Unknown. As part of the IDP provisioning, harness users and groups are imported to IDP. With this in place, customers can start editing the catalog info YAML definition to update the owner for each of the entity.
 
 ![](static/catalog.png)
 
-15. Post onboarding, users can import any number of entities into harness-idp using the [register component flow](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component). This flow expects you to provide the complete url where the entity definition is hosted.
+15. Post onboarding, users can import any number of entities into harness-idp using the [register component flow](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component). This flow expects you to provide the complete URL where the entity definition is hosted.
 
 **Recommendations**
 

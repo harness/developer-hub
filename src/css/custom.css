@@ -334,7 +334,8 @@
 
   --hover: var(--gray-200);
   --platform-card-bg: var(--white);
-  --homepageFeatureCard: transparent;
+  --homepageFeatureCard: white;
+  
 }
 
 /* darkmode css */
@@ -396,6 +397,7 @@ html[data-theme="dark"] .navbar {
   --ifm-navbar-shadow: white !important;
   --ifm-navbar-background-color: var(--black) !important;
   --ifm-background-color: var(--black) !important;
+  --body-background-color: var(--black) !important;
   --ifm-heading-color: white !important;
   --text-color: white !important;
   --background-color: var(--black);
@@ -430,6 +432,7 @@ html *:after {
 
 body {
   font-family: var(--harness-font-family) !important;
+  background-color: var( --background-color);
 }
 
 a:hover {
@@ -1118,6 +1121,16 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_ff.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-dbdevops > div > a::before,.sidebar-dbdevops > a::before{
+  content: " ";
+  display: inline-block;
+  min-height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_dbdevops.svg");
   background-size: contain;
   background-repeat: no-repeat;
 }

@@ -18,7 +18,7 @@ description: A frontend plugin provides a simple way to display generated artifa
 
 This plugin requires a backend proxy configuration to make calls to JFrog with authentication.
 
-- Under the **Plugins** tab in **Admin**, go to `app-config.yaml` and **Edit YAML** to configure your jfrog endpoint in the **target** field and add your **artifactory URL (used for UI browse links)** in the format as shown below.
+- Under the **Plugins** tab in **Admin**, go to `app-config.yaml` and **Edit YAML** to configure your JFrog endpoint in the **target** field and add your **artifactory URL (used for UI browse links)** in the format as shown below.
 
 ```yaml
 # app-config.yaml
@@ -53,7 +53,7 @@ jfrog:
 
 _No action required_
 
-This plugin exports a page that you can use as a new **jfrog** page on the **sidenav**. The following configuration is set by default in **Layout** under **Sidenav Layout** and you do not need to change anything:
+This plugin exports a page that you can use as a new **JFrog** page on the **Sidenav**. The following configuration is set by default in **Layout** under **Sidenav Layout** and you do not need to change anything:
 
 ```yaml
 - name: SidebarItem
@@ -68,7 +68,7 @@ This plugin exports the `JFrogLibArtifactCard` that you can show on the **Overvi
 - component: JFrogLibArtifactCard
 ```
 
-Also you could add a conditional like `isJfrogArtifactAvailable` which is met when `jfrog.com/artifactory-artifact` annotation is present in the software components's `catalog-info.yaml` definition file.
+Also, you could add a conditional like `isJfrogArtifactAvailable` which is met when `jfrog.com/artifactory-artifact` annotation is present in the software component's `catalog-info.yaml` definition file.
 
 ```YAML
 - name: Overview
@@ -83,6 +83,8 @@ Also you could add a conditional like `isJfrogArtifactAvailable` which is met wh
         content:
           component: JFrogLibArtifactCard
 ```
+
+![](./static/artifact.gif)
 
 ## Annotations
 
@@ -102,7 +104,7 @@ Also you could add a conditional like `isJfrogArtifactAvailable` which is met wh
       jfrog.com/artifactory-packaging: 'aar' #optional string, eg. `aar`
 ```
 
-And that's it! The plugin should now be integrated into your Harness IDP, and you should see the Artifact card when you navigate to the entity page where it's included.
+The version of a package is shown only when it has a release version (one which follows Semantic Versioning). And that's it! The plugin should now be integrated into your Harness IDP, and you should see the Artifact card when you navigate to the entity page where it's included.
 
 - For a docker image you define repository and artifact name. Both formats are supported:
 

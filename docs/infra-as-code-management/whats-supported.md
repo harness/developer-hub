@@ -22,9 +22,10 @@ Harness IaCM currently supports integration with all **OpenTofu** versions<Harne
     query="https://app.harness.io/gateway/iacm/api/provisioners/supported/opentofu"
     token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
     fallback=""
-    parse='.[-1] | " (latest: v\(.))"'></HarnessApiData>.
-    
+    parse='.[-1] | " (latest: v\(.))"'></HarnessApiData>.  
  For **Terraform**, we support all MPL versions up to **1.5.x**, any BSL versions (from 1.6.0) are not supported.
+
+ Go to [OpenTofu migration](https://opentofu.org/docs/intro/migration/) to migrate from Terraform to OpenTofu.
 :::
 
 ## Supported Workspace Connectors
@@ -55,4 +56,5 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 ## Supported plugins
 
 IaCM supports external plugins to enhance its usability and security. 
-- [Wiz Scans](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz) to check your proposed infrastructure changes for security vulnerabilities.
+- [Wiz Scans](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz) to check your proposed infrastructure changes for security vulnerabilities. 
+    - The Wiz scan feature is part of the [Harness STO module](https://developer.harness.io/docs/security-testing-orchestration) and requires an STO license.

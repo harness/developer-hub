@@ -45,7 +45,9 @@ This plugin exports a UI tab that you can use as a new tab for a service or for 
               component: EntityGithubInsightsContent
 ```
 
-The `isGithubInsightsAvailable` condition is met when the `github.com/project-slug` annotation is present in the software components's `catalog-info.yaml` definition file.
+The `isGithubInsightsAvailable` condition is met when the `github.com/project-slug` annotation is present in the software component's `catalog-info.yaml` definition file.
+
+![](./static/github-insights.png)
 
 ## Annotations
 

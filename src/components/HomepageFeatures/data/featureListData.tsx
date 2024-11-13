@@ -36,6 +36,14 @@ export const featureList: CardItem[] = [
     link: "docs/category/get-started-with-cd",
     type: [docType.Documentation],
   },
+    {
+    title: "Build with Harness Database DevOps",
+    module: MODULES.dbdevops,
+    icon: "img/icon_dbdevops.svg",
+    description: <>Accelerate deployment with an integrated pipeline for all database changes.</>,
+    link: "docs/database-devops",
+    type: [docType.Documentation],
+  },
   {
     title: "Manage Infrastructure as Code",
     module: MODULES.iacm,
@@ -105,7 +113,7 @@ export const featureList: CardItem[] = [
     module: MODULES.cde,
     icon: "img/cde_icon.svg",
     description: <>Accelerate developer experience with pre-configured, secure and scalable development environments.</>,
-    link: "docs/cloud-development-environment",
+    link: "docs/cloud-development-environments",
     type: [docType.Documentation],
   },
   {

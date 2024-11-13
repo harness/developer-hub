@@ -276,8 +276,6 @@ When writing pipelines in YAML, you can define Single Selection in allowed value
 When using secrets as runtime inputs and configuring allowed values, the UI will not display an option for single selection. By default, only one value can be selected for a secret during runtime. 
 :::
 
-
-
 ## Supply runtime input during execution
 
 Sometimes you might not know the value for a runtime input at the beginning of the pipeline run. For example:
@@ -289,6 +287,112 @@ Sometimes you might not know the value for a runtime input at the beginning of t
 In these cases, you might need to provide runtime input during pipeline execution.
 
 You must have a role with **Pipeline Execute** [permission](/docs/platform/role-based-access-control/permissions-reference/) to be able to submit runtime inputs during execution.
+
+### Support for Expressions in Allowed Values of Runtime Inputs
+
+:::info note
+Currently, this feature is behind FF `PIE_RESOLVE_EXECUTION_INPUT_EXPRESSION`. Please Contact [Harness Support](mailto:support@harness.io).
+:::
+
+Harness supports expressions in the allowed values of runtime inputs, enabling dynamic values to pass from one stage to another during pipeline execution. Variables or outputs defined in earlier stages can be referenced in subsequent stages, allowing for flexible configuration.
+
+Let's consider this example yaml:-
+
+```yaml
+pipeline:
+  name: custom_expression_runtime
+  identifier: custom_expression_runtime
+  projectIdentifier: test
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: custom_1
+        identifier: custom_1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |
+                          export name="123"
+                          export version="v1,v2,v3"
+                    environmentVariables: []
+                    outputVariables:
+                      - name: name
+                        type: String
+                        value: name
+                      - name: version
+                        type: String
+                        value: version
+                  timeout: 10m
+        tags: {}
+    - stage:
+        name: cust_2
+        identifier: cust_2
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hey
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+        variables:
+          - name: var2
+            type: String
+            description: ""
+            required: false
+            value: <+input>.executionInput().allowedValues(<+pipeline.stages.custom_1.spec.execution.steps.ShellScript_1.output.outputVariables.name>,<+pipeline.stages.custom_1.spec.execution.steps.ShellScript_1.output.outputVariables.version>)
+```
+
+Here’s how it worked:
+
+In this pipeline YAML, `custom_1` has two output variables, `name` and `version`, which are used as runtime inputs in the second stage, `cust_2`. The value of var2 is dynamically provided from the output of the `ShellScript_1` step in stage custom_1. We have set `var2` as a runtime input, and in the allowed values, we have used the expressions `<+pipeline.stages.custom_1.spec.execution.steps.ShellScript_1.output.outputVariables.name>` and `<+pipeline.stages.custom_1.spec.execution.steps.ShellScript_1.output.outputVariables.version>`. Additionally, we have enabled the option to "Request input value when the stage/step is being executed" to see the resolved values of the expressions during pipeline execution.
+
+Now, when we execute the pipeline, the first stage (`custom_1`) will run, and the script's output variables, `name` and `version`, will resolve to their respective values.
+
+![](./static/output_expression_runtime_allowed.png)
+
+When the execution of the second stage (`cust_2`) starts, it will wait for the execution inputs. As shown, in `var2`, we have added allowed values as expressions, and those values have been converted into a **list**.
+
+![](./static/input_expression_runtime_allowed.png)
+
+
+We used the expression `<+input>.executionInput().allowedValues(<+pipeline.stages.custom_1.spec.execution.steps.ShellScript_1.output.outputVariables.name>,<+pipeline.stages.custom_1.spec.execution.steps.ShellScript_1.output.outputVariables.version>)`, where one part is the output variable for name and the other is the output variable for version.
+
+The expression `<+pipeline.stages.custom_1.spec.execution.steps.ShellScript_1.output.outputVariables.name>` resolved to "123".
+The expression `<+pipeline.stages.custom_1.spec.execution.steps.ShellScript_1.output.outputVariables.version>` resolved to "v1,v2,v3".
+The final expression resolved to `<+input>.executionInput().allowedValues(123,v1,v2,v3)`, which is essentially a list of values.
+
+
+:::note
+- **Resolution of Expressions in the Execution Input Tab**: In the Execution Input tab, expressions allow dynamic values from earlier stages to be used in subsequent stages, providing runtime options based on prior outputs.
+
+- **Handling of Comma-Separated Values**: If resolved values contain commas, they will automatically convert into a list. If multiple expressions are present, they will be concatenated by default, forming a combined list.
+:::
 
 ### Configure execution inputs
 
@@ -325,6 +429,60 @@ You can use mid-run input along with [allowed values](#allowed-values) and [defa
 
 </TabItem>
 </Tabs>
+
+### Upload files as runtime input
+
+:::info note
+Currently, this feature is behind the feature flag `PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature
+:::
+
+Harness allows you to upload files as a runtime input during pipeline execution using the `File Upload step` in a custom stage.
+
+![](./static/file_upload_icon.png)
+
+After adding the step to the stage and executing the pipeline, an `Upload and Submit` button will appear.
+
+![](./static/upload_and_submit.png)
+
+Click the button to `Select files`.
+
+![](./static/select_files.png)
+
+Once files are selected, click `Upload` to confirm the selection. Users can also delete the uploaded files. Uploaded files will then be displayed, and `Submit` can be clicked to complete the process.
+
+:::note
+Users with `pipeline execution` RBAC permissions can upload and download files.
+:::
+
+Users can view their uploaded files in the `Upload` tab and can download them by clicking the download icon.
+
+![](./static/upload_files_step_file.png)
+
+In the `Output tab`, you will find two outputs:
+
+- `uploadedby`: The email of the user who uploaded the files.
+- `filesname`: The name of the uploaded file in your storage, which follows the path format: `accountID/runtimeFileInputData/planExecutionId/nodeExecutionId/fileName`. An underscore followed by 6 alphanumeric characters is appended to the `fileName`. This exact name, including the appended characters, must be used in the [download API](#retrieve-uploaded-file-using-curl).
+
+For example, if the original file name is `input.txt`, it will be stored as `input_91ASD1.txt`, and this complete name (`input_91ASD1.txt`) should be provided when using the download API.
+
+To get the exact uploaded file name, navigate to the `Output` tab of the upload step execution, where the full file name can be found.
+
+#### Retrieve Uploaded File Using cURL
+To download the uploaded file, use the following cURL command:
+
+```
+curl --location --request GET 'https://app.harness.io/gateway/pipeline/api/input-file/file/PLAN_EXECUTION_ID?accountIdentifier=ACCOUNT_IDENTIFIER&nodeExecutionId=NODE_EXECUTION_ID&fileName=FILE_NAME' \
+--header 'x-api-key: PAT_TOKEN'
+```
+
+:::note
+**Important Notes for Uploading Files as Runtime Input:**
+
+1. The total combined file size must not exceed 100 MB.
+2. Each individual file size must not exceed 50 MB.
+3. File names with spaces are currently not supported.
+4. Supported file types include: `jpg`, `jpeg`, `png`, `pdf`, `xls`, `csv`, `xlsx`, `txt`, `json`, `yaml`, `xml`, and `html`.
+:::
 
 ### Use the default value instead of failing
 

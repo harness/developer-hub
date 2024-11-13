@@ -13,7 +13,7 @@ description: A backstage plugin ported from BloomRPC which is an Electron applic
 
 ## Configuration
 
-The Plugin is Auto-Enabled now and you don't need to set any configuration, as the plugin isn't available under Marketplace. 
+The Plugin is Auto-Enabled now, and you don't need to set any configuration, as the plugin isn't available under Marketplace. 
 
 :::info
 
@@ -59,6 +59,10 @@ spec:
           file_path: examples/stream/common.proto
           url: https://github.com/zalopay-oss/backstage-grpc-playground/blob/main/examples/stream/common.proto
 ```
+
+![](./static/call_stream.gif)
+
+![](./static/missing_import_1.gif)
 
 Read More on the [open-source docs](https://github.com/zalopay-oss/backstage-grpc-playground?tab=readme-ov-file#yaml-file-definition) 
 

@@ -117,7 +117,7 @@ Make sure your personal access token has the following permissions: `api`, `read
 </TabItem>
   <TabItem value="ssh" label="SSH Key">
 
-SSH connections require an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
+SSH connections require an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`. Always save the ssh key as a file secret.
 
 For details on creating SSH keys and adding them to your GitLab account, go to the GitLab documentation about [Using SSH keys to communicate with GitLab](https://docs.gitlab.com/ee/user/ssh.html).
 

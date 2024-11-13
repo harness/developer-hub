@@ -593,6 +593,12 @@ For example, skipping certain steps in pipeline based on the tags attached to th
 
 ![](./static/services-and-environments-overview-29.png)
 
+:::note
+You can now define allowed values in the Select Hosts settings under infrastructure. In the runtime view, a multi-select dropdown will be displayed, allowing users to choose from the predefined allowed values. 
+
+Currently, this feature is behind the feature flag CDS_ALLOWED_VALUES_DROPDOWN_PDC_HOSTS. Please contact Harness support to enable this feature.
+:::
+
 ## Values YAML overrides and merges
 
 You can specify values YAML files at the environment's **Service Overrides** and **Configuration**, and the service itself.

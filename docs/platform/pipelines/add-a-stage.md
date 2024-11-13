@@ -168,3 +168,7 @@ Please review these important notes about using **Environment** and **Infrastruc
 * The Custom stage leverages steps from other stage types. Any steps listed in the Step Library for your Custom stages are also available for Build, Deploy, or Approval stages. Harness has no steps that are applicable only to the Custom stage.
 * The Custom stage can't use module-specific steps. Steps specific to CI and CD stages, like the Rolling Deployment step, aren't available for the Custom stage.
 * Licensing is applied to steps in Custom stages. For example, CD steps, such as the HTTP step, are available for the Custom stage only if you have a CD license.
+
+:::info note
+ Delegate-based steps, such as shell scripts and command steps, can run for a maximum of 4 days. This applies to any tasks executed via the Harness Delegate. Ensure that your workflows account for this runtime, as any delegate-based step exceeding 4 days will not complete successfully.
+:::

@@ -28,7 +28,7 @@ This topic describes the [prerequisites](#permissions-required) to fulfill befor
 
 - Identify application (or infrastructure) steady-state parameters (even if this requires manual effort)- using APMs or logs or other methods: You can use [resilience probes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/) to monitor your application and validate the data.
 
-- Identify image registry requirements and steps to set up the registry with secrets: Chaos experiments use Docker images that need to be stored in a repository. In HCE, these images are hosted in [image registry](/docs/chaos-engineering/concepts/explore-concepts/image-registry).
+- Identify image registry requirements and steps to set up the registry with secrets: Chaos experiments use Docker images that need to be stored in a repository. In HCE, these images are hosted in [image registry](/docs/chaos-engineering/use-harness-ce/image-registry).
 
 - Identify specific needs, especially for Kubernetes. You might need to specify the following while creating a chaos experiment:
 	- [Namespace quotas](/docs/chaos-engineering/security/namespace-considerations): Ensure that you configure the namespace in the right manner to limit the exposure of all services of your application.

@@ -125,7 +125,7 @@ Select Git events and, if applicable, one or more actions that will initiate the
 | **GitLab** | Merge Request | Select one or more of the following:<ul><li>Open</li><li>Close</li><li>Reopen</li><li>Merge</li><li>Update</li><li>Sync</li></ul> |
 | | Merge Request Comment | Create |
 | | Push | GitLab push triggers respond to commit and tag creation actions by default. |
-| **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul><br/>This event type doesn't support PRs attempting to merge Bitbucket forked repos into the original, base repo if the base repo is configured as the pipeline's codebase. For more information, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers). |
+| **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul><br/>This event type doesn't support PRs attempting to merge Bitbucket forked repos into the original, base repo if the base repo is configured as the pipeline's codebase. For more information, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines#troubleshoot-git-event-triggers). |
 | | Pull Request Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> Note that this event type is currently supported only for Bitbucket cloud, and not for Bitbucket on-premises triggers. |
 | | Push | Bitbucket Cloud push triggers respond to commit and tag creation actions by default. |
 | **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul><br/>This event type doesn't support the **Changed Files** [condition](#branch-and-changed-files-conditions), because the Azure DevOps API doesn't provide a mechanism to fetch files in a PR. |
@@ -384,6 +384,12 @@ The following image shows payload conditions that trigger a pipeline if the comm
 
 ![](./static/triggers-reference-15.png)
 
+:::info note
+The `<+eventPayload>` expression may resolve as a list in initial executions, causing issues if [string operations](/docs/platform/variables-and-expressions/expressions-java-methods.md) (e.g., .replace("'", "")) are applied, as these are incompatible with lists. However, on reruns, `<+eventPayload>` usually resolves as a string, allowing such operations to proceed without errors.
+
+**Tip:** Use `<+trigger.eventPayload>` instead to ensure a consistent string format, compatible with string operations in all executions.
+:::
+
 ### JEXL Conditions
 
 You can refer to payload data and headers using [JEXL expressions](https://commons.apache.org/proper/commons-jexl/reference/syntax.html). That includes all constants, methods, and operators in [JexlOperator](https://commons.apache.org/proper/commons-jexl/apidocs/org/apache/commons/jexl3/JexlOperator.html).
@@ -540,6 +546,12 @@ import TabItem from '@theme/TabItem';
 * Merge request events
 * Push events
 
+[GitLab System Hooks](https://docs.gitlab.com/ee/administration/system_hooks.html#create-a-system-hook):
+
+* Push events
+* Push tag events
+* Merge request events 
+
 
 </TabItem>
   <TabItem value="Bitbucket" label="Bitbucket">
@@ -559,12 +571,10 @@ import TabItem from '@theme/TabItem';
 
 ### Manual and custom webhook registration
 
-Use the manual webhook registration process if [automatic webhook registration fails](./triggering-pipelines/#common-causes-of-webhook-registration-failure) or is impossible (as with custom webhooks).
+Use the manual webhook registration process if [automatic webhook registration fails](/docs/platform/triggers/triggering-pipelines#common-causes-of-webhook-registration-failure) or is impossible (as with custom webhooks).
 
 :::info
-
 Harness Self-Managed Enterprise Edition does not support webhook triggers for Helm-based installations using self-signed certificates.
-
 :::
 
 1. In Harness, obtain the trigger webhook by selecting the **Webhook/Link** icon in the list of triggers.
@@ -588,6 +598,29 @@ The `pipelineIdentifier` and `triggerIdentifier` target the webhook at the speci
 In some cases, you won't want to target the webhook at the specific pipeline and trigger. For example, there are events in GitHub that are not covered by Harness and you might want to set up a custom trigger for those events that applies to all pipelines and their triggers in a project. To instruct Harness to evaluate the custom trigger against all pipelines (until it finds matching **Conditions**), remove `pipelineIdentifier` and `triggerIdentifier` from the URL before adding the trigger to your repo.
 
 :::
+
+### GitLab System Hooks
+
+Setting Up GitLab System Hooks
+
+GitLab supports various system hooks, including:
+
+Push Events
+Push Tag Events
+Merge Request Events
+
+To set up a webhook to listen for GitLab system hooks, configure the trigger similarly to how you would set up a GitLab event trigger.
+
+Configuration Steps
+
+1. Navigate to Admin Settings: In your GitLab instance, go to Admin Settings and select System Hooks.
+2. Add a New Webhook: Click on Add New Webhook.
+3. Copy the Webhook URL: From the Harness triggers page, copy the webhook URL and paste it into the System Webhook URL field.
+4. Provide Additional Details: Fill in the Name, Description, and Secret Token for validation.
+5. Select Events: Under Triggers, choose all the events you want the webhook to listen for.
+6. Save Configuration: Click on Save to complete the setup.
+
+Your GitLab system hook is now configured. You can test your trigger by pushing an event.
 
 ## Last Activation
 

@@ -63,4 +63,38 @@ This fault helps determine how resilient an application is when network access t
 
 </FaultDetailsCard>
 
+<FaultDetailsCard category="windows">
+
+### Windows Network Latency
+
+Windows Network Latency causes a network packet delay on Windows VMs for the target hosts by causing network packet delay using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the application running on the Windows VMs.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the resilience of an application when a network delay scenario is simulated on a Windows virtual machine.
+- Simulates the situation of network delay for dependent processes and microservices running on the application, which degrades their performance.
+- Helps verify the application's ability to handle network failures and its failover mechanisms.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="windows">
+
+### Windows Network Loss
+
+Windows network loss causes network packet loss on Windows VM for the target hosts or IP addresses using Clumsy. It checks the performance of the services running on the Windows VMs after the disrupted network loss conditions.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Simulates issues within the host network (or microservice) communication across services in different hosts.
+- Determines the impact of degradation while accessing a microservice.
+- Limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses, if the VM stalls or gets corrupted while waiting endlessly for a packet.
+- Simulates degraded network with varied percentages of dropped packets between microservices.
+- Simulates loss of access to specific third party (or dependent) services (or components).
+- Simulates blackhole against traffic to a given availability zone, that is, failure simulation of availability zones.
+- Simulates network partitions (split-brain) between peer replicas for a stateful application.
+</Accordion>
+
+</FaultDetailsCard>
+
 </div>

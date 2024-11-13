@@ -8,7 +8,7 @@ Let's discover **[Harness Open Source](/docs/open-source)** in less than 30 seco
 <!--
 ## Pre-Compiled Binaries
 
-We provide precompiled binaries for most official Gitness components. Check out the download section for a list of all available versions. _Note that the binary distribution is the recommended installation method._
+We provide precompiled binaries for most official Harness Open Source components. Check out the download section for a list of all available versions. _Note that the binary distribution is the recommended installation method._
 -->
 
 ## Install Harness Open Source
@@ -19,7 +19,7 @@ Use the following Docker command to install Harness Open Source locally.
 docker run -d \
   -p 3000:3000 -p 3022:3022 \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /tmp/gitness:/data \
+  -v /tmp/harness:/data \
   --name opensource \
   --restart always \
   harness/harness
@@ -38,7 +38,7 @@ Learn how to [manage your Harness Open Source instance data](../installation/dat
 
 :::
 
-## Create a [project](../administration/project-management.md)
+## Create a project
 
 1. Select **New Project**.
 2. Enter a project **Name** and optional **Description**.
@@ -46,7 +46,7 @@ Learn how to [manage your Harness Open Source instance data](../installation/dat
 
 Optionally, Harness Open Source can [import projects](../administration/project-management.md#import-a-project) from external sources (such as GitLab groups or GitHub organizations).
 
-## Create a [repository](../repositories/overview.md)
+## Create a repository
 
 1. In your project, select **Repositories** and then select **New Repository**.
 2. Enter the repository **Name**.

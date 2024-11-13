@@ -25,7 +25,7 @@ A **Contributor** is an identified user profile that SEI tracks and analyzes acr
 
 ## License Calculation
 
-Your SEI subscription includes a specific number of **Contributor licenses**. A Contributor is counted as a licensing unit if they have at least one user account associated with an integrated **Source Code Management (SCM)** tool, such as [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration), [GitLab](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab), [Bitbucket](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket) or any other. If a User has accounts in other SDLC tools but no account with an SCM tool, they are not counted as a licensing unit.
+Your SEI subscription includes a specific number of **Contributor licenses**. A Contributor is counted as a licensing unit if they have at least one user account associated with an integrated **Source Code Management (SCM)** tool, such as [GitHub](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration), [GitLab](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab), [Bitbucket](/docs/software-engineering-insights/sei-integrations/bitbucket/sei-bitbucket-cloud) or any other. If a User has accounts in other SDLC tools but no account with an SCM tool, they are not counted as a licensing unit.
 
 All Contributors who have made contributions to the SCM tool are considered Contributors and require a license.
 

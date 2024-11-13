@@ -32,6 +32,8 @@ Get an overview of your entire SEI system's health.
 
 View details on recent and ongoing data ingestion processes.
 
+![](./static/system-status.png)
+
 ### Ingestion Satellite Status
 
 Monitor the health of ingestion satellites for on-prem integration setups.
@@ -39,6 +41,8 @@ Monitor the health of ingestion satellites for on-prem integration setups.
 ## Integration Status
 
 Check the status of individual integrations and drill down into specific issues.
+
+![](./static/integration-status.png)
 
 ## Run Spot Check
 

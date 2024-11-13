@@ -6,16 +6,25 @@ import styles from './styles.module.scss';
 import TutorialCard, { TutorialCards } from '../LandingPage/TutorialCard';
 // Define the cards in "***Data.ts"
 import { docsCards } from './data/openSourceData';
-
+import { useColorMode } from '@docusaurus/theme-common';
 export default function Code() {
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { colorMode } = useColorMode();
   return (
     <div className="container">
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src={`${baseUrl}img/icon_platform.svg`} />
-            <h1>Open Source</h1>
+            <img
+              className={styles.illustration}
+              style={{ height: '72px', marginBottom: '15px' }}
+              src={
+                colorMode === 'light'
+                  ? `${baseUrl}img/icon_opensource_light.svg`
+                  : `${baseUrl}img/icon_opensource_dark.svg`
+              }
+            />
+            <h1 style={{ display: 'none' }}>Open Source</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/kb">
@@ -37,7 +46,9 @@ export default function Code() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Harness Open Source is an all-in-one platform that integrates source code management, CI/CD pipelines, hosted development environments, and artifact management.
+              Harness Open Source is an all-in-one platform that integrates
+              source code management, CI/CD pipelines, hosted development
+              environments, and artifact management.
             </p>{' '}
             <div className={styles.illustrationContainer}>
               <img

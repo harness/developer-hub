@@ -42,7 +42,7 @@ If you don't want to change the behavior for your entire account, follow the ste
 5. For **Provider Type** and **URL**, do one of the following:
 
    * To pull [Harness images from GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gcr.io/gcr-prod` for **Docker Registry URL**.
-   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gallery.ecr.aws/harness` for **Docker Registry URL**.
+   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
 
    If you want to change the connector back to Docker Hub, select **Docker Hub** and enter `https://registry.hub.docker.com`.
 
@@ -54,6 +54,10 @@ If you don't want to change the behavior for your entire account, follow the ste
    * For delegate installation instructions, go to [Delegate installation overview](../../delegates/install-delegates/overview).
 
 8. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
+
+:::info note
+Harness now supports anonymous access to all public Docker registries, including Amazon ECR and Artifactory Public. Users can now pull images without requiring authentication.
+:::
 
 ## Configure Harness to always use credentials to pull Harness images
 
@@ -71,7 +75,7 @@ If you don't want to change the behavior for your entire account, you can [Use c
 5. For **Provider Type** and **URL**, do one of the following:
 
    * To pull [Harness images from GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gcr.io/gcr-prod` for **Docker Registry URL**.
-   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gallery.ecr.aws/harness` for **Docker Registry URL**.
+   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
    * To pull images from Docker Hub, select **Docker Hub** and entering `https://registry.hub.docker.com`.
 
 6. For **Authentication**, select **Username and Password**, and provide a username and token to access Docker Hub or GCR,depending on the **Docker Registry URL**. The token needs read, write, and delete permissions.
@@ -109,7 +113,7 @@ If you want to change the behavior for your entire account, you can [configure H
 5. For **Provider Type** and **URL**, do one of the following:
 
    * To pull [Harness images from GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gcr.io/gcr-prod` for **Docker Registry URL**.
-   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gallery.ecr.aws/harness` for **Docker Registry URL**.
+   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
    * To pull images from Docker Hub, select **Docker Hub** and entering `https://registry.hub.docker.com`.
 
 6. For **Authentication**, select **Username and Password**, and provide a username and token to access GCR, ECR, or Docker Hub. The token needs **Read, Write, Delete** permissions.
@@ -133,7 +137,7 @@ If you want to change the behavior for your entire account, you can [configure H
 
 Harness CI images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can download the images you need, perform any necessary security checks, upload them to your private registry, and then configure your CI pipelines to pull the Harness CI images from your private registry.
 
-You can also [use a private registry for STO scanner images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+You can also [use a private registry for STO scanner images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 ### Download Harness images to your registry
 

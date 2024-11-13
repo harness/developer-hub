@@ -101,7 +101,7 @@ For example, to execute the network loss fault,
 ## Harness Delegate
 
 :::tip
-The FAQs below are based on HCE entities using [Harness Delegate](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/).
+The FAQs below are based on HCE entities using [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr).
 :::
 
 #### Do you support On-Premise Harness Control Plane?
@@ -114,7 +114,7 @@ HCE uses the Harness Delegate to execute chaos experiments, which you can levera
 - Better control over chaos experiments by facilitating advanced tunables.
 - Gain insights into application-level resilience scores.
 
-Go to [Harness Delegate](/docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/) for more information.
+Go to [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr) for more information.
 
 #### What ports are necessary to be opened in the org's firewall rules to access the Harness Control Plane from the user environment?
 You can access the Harness control plane from the user environment with outbound connectivity over HTTPS using port 443.
@@ -240,7 +240,7 @@ A chaos infrastructure could be inactive due to a variety of reasons. When you t
 
 #### How do I control user actions in a given environment in Harness Chaos?
 
-The scope of a user's access to chaos resources added to a given Harness account or project can be controlled by assigning them a predefined or custom role. To learn more, go to [chaos access control](/docs/chaos-engineering/security/#user-authorization-and-role-based-access-control).
+The scope of a user's access to chaos resources added to a given Harness account or project can be controlled by assigning them a predefined or custom role. To learn more, go to [chaos access control](/docs/chaos-engineering/use-harness-ce/governance/rbac#user-authorization-and-role-based-access-control).
 
 #### How do I control the security blast radius in terms of access to application microservices and infrastructure resources in a user environment?
 
@@ -324,6 +324,24 @@ Yes, HCE provides integration with many tools, such as [Gitlab pipelines](https:
 
 #### Does Harness Chaos provide Resilience Probes for [X] APM (Prometheus, Dynatrace, Datadog, NewRelic, Splunk)?
 Yes, you can use resilience probes with [Prometheus](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/prom-probe), [Dynatrace](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/dynatrace-probe), [DataDog](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/datadog-probe), and [NewRelic](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-newrelic).
+
+## License
+
+#### How is licensing counted for services across different environments in Harness Chaos Engineering?
+
+Licensing is counted separately for each service in different environments. For example, if chaos experimentation is conducted on a Kubernetes service named “login-service” in both QA and Production environments within the same 30-day cycle, it will consume two chaos service licenses.
+
+#### Does using the same service in multiple environments increase license usage?
+
+Yes, each unique environment where a service undergoes chaos experimentation counts individually towards license utilization, allowing separate tracking for services across environments.
+
+#### How is the license utilization measured in Harness Chaos Engineering?
+
+License utilization is measured over a 30-day cycle. Each cycle allows license services to be rolled over to a different set of target services, enabling flexible use across various teams, applications, and environments.
+
+#### Can I change the target services for my license in Harness Chaos Engineering?
+
+Yes, at the end of each 30-day cycle, license services can be re-assigned to a different set of target services, thereby optimizing the resource utilization.
 
 ## Use cases
 

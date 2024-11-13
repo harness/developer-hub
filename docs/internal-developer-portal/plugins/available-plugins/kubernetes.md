@@ -107,7 +107,7 @@ When adding the host, include only the host name. Remove the protocol (HTTP/HTTP
 
 ## Layout
 
-This plugin exports a UI tab that you can use as a new **Kubernetes** tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu. and then add the following in a new **Kubernetes** section:
+This plugin exports a UI tab that you can use as a new **Kubernetes** tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu. And then add the following in a new **Kubernetes** section:
 
 ```yaml
 - name: kubernetes
@@ -116,6 +116,8 @@ This plugin exports a UI tab that you can use as a new **Kubernetes** tab for a 
   contents:
     - component: EntityKubernetesContent
 ```
+
+![](./static/k8s-plugin.png)
 
 ## Annotations
 

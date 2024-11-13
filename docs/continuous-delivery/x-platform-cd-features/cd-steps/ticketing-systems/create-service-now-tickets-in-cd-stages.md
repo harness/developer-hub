@@ -98,6 +98,16 @@ This option updates tickets with values as defined in the linked form template f
 
 Your ServiceNow ticket is now added to your Pipeline.
 
+You can also set the template name as a Runtime Input, allowing you to see a dropdown list of available templates during runtime.
+
+![](./static/service-now-template-dropdown-1.png)
+
+If the selected template has fields, the associated secondary fields will be displayed for configuration.
+
+![](./static/service-now-template-dropdown-2.png)
+
+Additionally, a dropdown for templates is also provided when configuring Triggers and Input Sets for this step.
+
 ## Create from Standard Template
 
 :::note
@@ -112,6 +122,10 @@ Select **Create From Standard Template** to create a ticket by using an existing
 In **Template Name**, you can enter the name of an existing template, select from the list of existing templates displayed when you select the field, or provide an expression. You can also search the templates you need.
 
 If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
+
+You can also set the template name as a Runtime Input, allowing you to see a dropdown list of available templates during runtime.
+
+If the selected template has fields, the associated secondary fields will be displayed for configuration.
 
 Your ServiceNow ticket is now added to your pipeline. After standard template is loaded, fields are marked editable based on `Standard Change Properties` if `change_manager` role is present with the integration user. Else, the properties can't be fetched and fields are made read-only as per default settings in the [ServiceNow documentation](https://docs.servicenow.com/bundle/utah-api-reference/page/integrate/inbound-rest/concept/change-management-api.html#title_change-POST-standard). 
 

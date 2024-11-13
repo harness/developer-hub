@@ -14,10 +14,6 @@ Refer to the [Snyk step configuration](./snyk-scanner-reference) document to lea
 
 
 ## Snyk Code scan - Orchestration mode
-:::note
-This feature is currently behind the feature flag, `STO_SNYK_ORCHESTRATION_ENHANCEMENTS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
-
 To perform Snyk Code scanning with orchestration scan mode, follow the below steps:
 
 1. Search and add the **Snyk** step to your pipeline. You can use this step in **Build** stage or **Security** stage.

@@ -1,12 +1,12 @@
 ---
-title: Supported Custom Actions
-description: These Custom Actions are supported in Harness IDP
+title: Supported Workflows Actions
+description: These Workflows Actions are supported in Harness IDP
 sidebar_position: 4
 ---
 
 ## Introduction
 
-The Flows comes with several built-in actions for fetching content, registering in the catalog and of course actions for creating and publishing a git repository.
+The Workflows come with several built-in actions for fetching content, registering in the catalog and of course actions for creating and publishing a git repository.
 
 There are several repository providers supported out of the box such as **GitHub**, **Azure**, **GitLab** and **Bitbucket**.
 
@@ -28,7 +28,13 @@ A list of all registered custom actions can be found under
 
 ### 1. `trigger:harness-custom-pipeline`
 
-This custom action requires **pipeline variables**(`<+pipeline.variables.VARIABLE_IDENTIFIER>`) as input along with the **pipeline url**(for pipelines using [Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview) make sure your url includes `branch` and `repoIdentfier`), and then trigger the pipeline based in the `inputset` obtained from the user. 
+:::info
+
+This action currently supports [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [Deploy Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage#add-a-stage), [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)(**Available with Harness CD License or Free Tier usage**), Pipelines using [Pipeline Templates](https://developer.harness.io/docs/platform/templates/create-pipeline-template/) and [codebase disabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) **Build Stage(Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
+
+:::
+
+This custom action requires **variables of type pipeline, stage or step** as input along with the **pipeline url**(for pipelines using [Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview) make sure your URL includes `branch` and `repoName` e.g., `https://app.harness.io/ng/account/accountID/module/idp/orgs/orgID/projects/projectID/pipelines/pipelineID?repoName=repo-name&branch=branch`), and then trigger the pipeline based in the `inputset` obtained from the user. 
 
 ```YAML
 ...
@@ -58,9 +64,47 @@ output:
 ...
 ```
 
+In the YAML example above, under `inputset`, values such as `project_name` and `github_repo` are placeholders for pipeline variable names. You can use the reference format `<+pipeline.variables.VARIABLE_NAME>` directly within the `inputset` **key-value pairs**. For example, instead of simply specifying the variable name, you can reference the pipeline variable like this:
+
+```YAML
+...
+inputset:
+  pipeline.variables.project_name: ${{ parameters.project_name }}
+  pipeline.variables.github_repo: ${{ parameters.github_repo }}
+  ...
+...
+```
+To obtain these references, simply copy the variable path from the Harness Pipeline Studio UI. Please make sure to remove `<+` & `>` from the expression copied from UI. 
+ 
+![](./static/pipeline-variable.png)
+
+#### Support for Stage, Step Variables and Pipeline Templates
+
+In addition to pipeline variables, you can also reference **stage, step group, service, and environment variables** within the `inputset`. Here’s how each type of variable can be referenced:
+
+- Stage variable reference: `pipeline.stages.STAGE_IDENTIFIER.variables.VARIABLE_NAME`
+- Step variable reference: `pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_IDENTIFIER.VARIABLE_NAME`
+- Step group variable reference: `pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_GROUP_IDENTIFIER.steps.STEP_IDENTIFIER.VARIABLE_NAME`
+
+If you need to reference lower-level variables (such as stage, step group, and step variables) from outside their original scope, you must include the relative path to that variable. For instance, if you want to reference a stage variable from a different stage, you should use the format, `pipeline.stages.originalStageID.variables.variableName`
+
+Instead of the simpler `stage.variables.variableName`. This fully qualified path ensures the correct variable is referenced across stages, step groups, or steps.
+
+```YAML
+inputset:
+  pipeline.variables.project_name: ${{ parameters.project_name }}
+  pipeline.stages.originalStageID.variables.github_repo: ${{ parameters.github_repo }}
+  pipeline.stages.TempStage.spec.execution.steps.demostepgroup.steps.ShellScript_1.cloud_provider: ${{ parameters.provider }}
+```
+To obtain these references, simply copy the variable path from the Harness Pipeline Studio UI.
+
+![](./static/stage-variable.png)
+
+> Note: **This is the only way to reference stage and step variables under `inputset`, without the fully qualified path, the input isn't valid.**
+
 :::info 
 
-In the above example the `apikey` parameter takes input from Harness Token which is specified under spec as a mandatory paramenter as mentioned below
+In the above example the `apikey` parameter takes input from Harness Token which is specified under spec as a mandatory parameter as mentioned below
 
 ```YAML
 ...
@@ -76,14 +120,59 @@ Without the above parameter input the pipeline won't be executed. [Take a look a
 
 :::
 
+The `token` property we use to fetch **Harness Auth Token** is hidden on the **Review Step** using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page` in-case you have multiple pages.
+
+```YAML
+# example workflow.yaml
+...
+parameters:
+  - title: <PAGE-1 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+    token:
+      title: Harness Token
+      type: string
+      ui:widget: password
+      ui:field: HarnessAuthToken
+  - title: <PAGE-2 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+  - title: <PAGE-n TITLE>  
+...
+```
+
 #### Output
 
 1. `Title` : Name of the Pipeline. 
-2.  `url` : Execution URL of the Pipeline eg: `https://app.harness.io/ng/account/********************/module/idp-admin/orgs/default/projects/communityeng/pipelines/uniteddemo/executions/**********/pipeline?storeType=INLINE`
+2.  `url` : Execution URL of the Pipeline e.g.: `https://app.harness.io/ng/account/********************/module/idp-admin/orgs/default/projects/communityeng/pipelines/uniteddemo/executions/**********/pipeline?storeType=INLINE`
 
 Once you create the workflow with this custom action, you can see the pipeline URL running in the background and executing the flow. 
 
 ![](./static/flow-ca-1.png)
+
+You can now optionally remove the pipeline URL from the workflow execution logs, for this you need to use the boolean property `hidePipelineURLLog` and set the value as `true`.
+
+```YAML
+## Example
+steps:
+- id: trigger
+    name: Creating your react app
+    action: trigger:harness-custom-pipeline
+    input:
+    url: "Pipeline URL"
+    hidePipelineURLLog: true
+    inputset:
+        project_name: ${{ parameters.project_name }}
+    apikey: ${{ parameters.token }}
+```
 
 3. You can as well configure the output to display the pipeline [output variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#input-and-output-variables), by setting the `showOutputVariables: true` under `inputs`and adding `output` as shown in the example below:
 
@@ -102,7 +191,7 @@ output:
 
 :::info
 
-Only **user defined output variables** are allowed, but you can as well use the system generated variables by assigning them as a new variable under shell script step as displayed below. For eg. we have mentioned the system generated output as `jira_id` and under **Optional Configuration** added a **test-var** which becomes a user defined output variable and could be displayed as output in the IDP workflows.
+Only **user defined output variables** are allowed, but you can as well use the system generated variables by assigning them as a new variable under shell script step as displayed below. For e.g. we have mentioned the system generated output as `jira_id` and under **Optional Configuration** added a **test-var** which becomes a user defined output variable and could be displayed as output in the IDP workflows.
 
 ![](./static/output-variable.png)
 
@@ -118,15 +207,15 @@ There are two ways in which you can add the output variable to the template synt
 
 ### 2. `trigger:trigger-pipeline-with-webhook`
 
-This custom action could be used to trigger a pipeline execution based on the **input-set identifier** and a webhook name. Usually a single deployment pipeline has different input-set as per the environment it's going to be deployed and developers can just specify the input-set id aligning with the environment name to trigger the deployment pipeline. 
+This custom action could be used to trigger a pipeline execution based on the **input-set identifier** and a webhook name. Usually a single deployment pipeline has different input-set as per the environment it's going to be deployed and developers can just specify the input-set ID aligning with the environment name to trigger the deployment pipeline. 
 
 ![](static/input-set-list.png)
 
-Developers need to mention the input set identifier instead of the name in the workflows input, usually identifier are names devoid of any special characters and spaces, eg, `input set-test` name would have an identifier as `inputsettest`. It is suggested to provide all the available input-set as `enums` in the template to avoid any ambiguity by developers.  
+Developers need to mention the input set identifier instead of the name in the workflows input, usually identifier are names devoid of any special characters and spaces, e.g., `input set-test` name would have an identifier as `inputsettest`. It is suggested to provide all the available input-set as `enums` in the template to avoid any ambiguity by developers.  
 
 ![](static/inputsetidentifier.png) 
 
-Here's an example workflow based on this workflows [template](https://github.com/harness-community/idp-samples/blob/main/workflows-ca-inputset.yaml). 
+Here's an example workflow based on this [source](https://github.com/harness-community/idp-samples/blob/main/workflows-ca-inputset.yaml). 
 
 ![](static/input-form-ca.png)
 
@@ -148,7 +237,7 @@ steps:
 
 :::info 
 
-In the above example the `apikey` parameter takes input from Harness Token which is specified under spec as a mandatory paramenter as mentioned below
+In the above example the `apikey` parameter takes input from Harness Token which is specified under spec as a mandatory parameter as mentioned below
 
 ```YAML
 ...

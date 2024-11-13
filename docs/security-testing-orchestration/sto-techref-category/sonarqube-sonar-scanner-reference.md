@@ -16,7 +16,8 @@ helpdocs_is_published: truex
 <br/>
 
  You can run scans and ingest results from [SonarQube](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
- 
+
+<DocVideo src="https://www.youtube.com/embed/qP0TUQuTSfI?si=yzQslx3sXdQjXWTi" /> 
 
 ## Important notes for running SonarQube scans in STO
 
@@ -26,7 +27,7 @@ helpdocs_is_published: truex
   For details about specific language requirements, go to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/).
 * By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestration and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube step. 
 * You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
-* You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+* You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 ### Root access requirements 
 
@@ -345,6 +346,17 @@ This setup ensures that the scan result name reflects both the branch and the PR
 ## View SonarQube quality gate failures
 SonarQube quality gate failures will appear in scan results as 'Info' severity issues, with the issue type set to `EXTERNAL_POLICY`. Additionally, you can apply OPA policies in Harness STO to enforce or manage these failures.
 
+To retrieve quality gate failure data from SonarQube, ensure the access token used in the SonarQube step configuration has **Browse Project** or **Administer** [permissions](https://docs.sonarsource.com/sonarqube/latest/instance-administration/user-management/user-permissions/) for the project being scanned.
+
+## View SonarQube code coverage results
+SonarQube code coverage data appears in the scan results as `Info` issues. To locate it, search for `Code Coverage` within the Info issues, the issue type will be labeled as Code Coverage. Additionally, you can apply an OPA policy to fail the pipeline based on the code coverage results. This can be achieved using the [Security Tests - Code Coverage](/docs/security-testing-orchestration/policies/create-opa-policies.md#block-the-pipeline-based-on-the-code-coverage-results) policy from the [security tests policy samples](/docs/security-testing-orchestration/policies/create-opa-policies.md#security-test-policy-samples).
+
+To retrieve code coverage data from SonarQube, ensure the access token used in the SonarQube step configuration has **Browse Project** or **Administer** [permissions](https://docs.sonarsource.com/sonarqube/latest/instance-administration/user-management/user-permissions/) for the project being scanned.
+
+<DocVideo src="https://www.youtube.com/embed/OCSTG5nfK1A?si=u9pI1f3iayDicAzv" />
+
+<DocImage path={require('./static/sonarqube-code-coverage.png')} width="80%" height="80%" title="Click to view full size image" />
+
 ## Generate coverage reports and upload to SonarQube
 
 You can set up your pipeline to generate test coverage reports and then get them pushed up to your SonarQube instance. To do this:
@@ -357,7 +369,7 @@ You can set up your pipeline to generate test coverage reports and then get them
 
 3. Add the commands necessary to generate the report.
 
-4. Add a [failure strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/) to the Run step and configure it to ignore all failures.
+4. Add a [failure strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings.md) to the Run step and configure it to ignore all failures.
 
    This step is required if you want the pipeline to proceed even if it can't generate a coverage report. 
 

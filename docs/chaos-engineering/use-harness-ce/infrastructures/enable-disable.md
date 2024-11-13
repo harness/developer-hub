@@ -1,6 +1,6 @@
 ---
 title: Enable and disable infrastructure
-sidebar_position: 1
+sidebar_position: 3
 redirect_from:
 - /docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures
 - docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures
@@ -15,6 +15,7 @@ This topic describes how you can enable and disable a chaos infrastructure.
 ## Before you begin, review the following
 
 - [Chaos infrastructure and different types](/docs/chaos-engineering/concepts/chaos101#chaos-infrastructure).
+- [Why is a chaos infrastructure required?](/docs/chaos-engineering/use-harness-ce/infrastructures/)
 
 ## Install Infrastructure
 
@@ -33,7 +34,30 @@ If you want to delete your environment, remove the environment references, that 
 ### Enable Chaos
 
 <Tabs>
-<TabItem value="Kubernetes">
+
+<TabItem value="Harness Delegate">
+
+#### Using DDCR
+
+1. Select the **Environment** you created, and choose the **Infrastructure type**. In this example, you can select **Kubernetes** and click **+ New Infrastructure**.
+
+2. To use Harness Delegate, select **Yes**. To use a dedicated chaos infrastructure, select **No**. In this example, select **Yes**, and click **Next**.
+
+3. Provide a **Name**, **Deployment Type**, **Select Infrastructure Type**, and provide **Cluster Details**, such as **Connector**, and **Namespace**. To create a new connector, go to [Create Kubernetes Connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector). While creating a Kubernetes connetor, select or create a new Delegate. Go to [Create new Delegate](https://developer.harness.io/docs/platform/delegates/install-delegates/overview#install-the-helm-chart). Once your Delegate shows up in the list, enter its name in the search bar, and select **Save and Continue**. This will test your connection and describe if it was a success or no. Contact [Harness Support](mailto:support@harness.io) if you encounter issues with the verification.
+
+:::tip
+- Ensure your Delegate version is `24.09.83900` or above to support executing chaos experiments using DDCR. 
+- Currently, DDCR (or Harness Delegate) can only be installed to execute Kubernetes-based faults. This means you can only create Kubernetes connectors.
+- To execute faults on Linux and Windows, install Linux and Windows agents respectively.
+- To configure mTLS with DDCR and Discovery Agent, go to [mTLS Support](/docs/chaos-engineering/use-harness-ce/infrastructures/mtls-support).
+- To configure mTLS with DDCR and and Discovery Agent proxy settings, go to [proxy Support](/docs/chaos-engineering/use-harness-ce/infrastructures/proxy-support).
+:::
+
+</TabItem>
+
+<TabItem value="Dedicated Kubernetes Chaos Infrastructure">
+
+#### Using Dedicated Chaos Infrastructure
 
 You can enable chaos **on existing infrastructure** that uses a Harness cluster connector (also known as Harness Kubernetes connector) or **on new infrastructure**.
 
@@ -113,6 +137,8 @@ To enable chaos on an existing Harness Kubernetes connector:
 
 <TabItem value="Linux">
 
+#### On Linux infrastructure
+
 :::info note
 If you're installing the chaos infrastructure alongside SElinux, you must add a policy module to enable `timedatectl`. SElinux is enabled by default in distributions such as **CentOS**, **SUSE Linux**, **RHEL**, and **Fedora** among others.
 
@@ -190,6 +216,8 @@ You can also specify [different values](/docs/chaos-engineering/concepts/chaos10
 </TabItem>
 <TabItem value="Windows">
 
+#### On Windows
+
 :::important
 Ensure that you have fulfilled the [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/prerequisites.md) before connecting to a Windows chaos infrastructure.
 :::
@@ -235,7 +263,7 @@ Service created and started successfully.
 
 <TabItem value="Helm template">
 
-### Use Helm Template to Install Chaos Infrastructure
+#### Use Helm Template to Install Chaos Infrastructure
 
 HCE provides Helm support to install chaos infrastructure, in addition to installing with the help of a manifest (as explained earlier).
 
@@ -267,31 +295,10 @@ To use Helm to install a chaos infrastructure,
 
 7. If you select the namespace scope, you will see some commands that you need to execute on your terminal. One you are done, click **Completed Command Execution**.
 
-### Use Helm Template to Upgrade Chaos Infrastructure
-
-* To upgrade a chaos infrastructure that you installed using the Helm commands, you can navigate to the environment and click **Upgrade now**. This will list the set of commands that you can execute on your terminal.
-
-  ![step 9](./static/enable-disable/upgrade-9.png)
-
-2. Choose an existing environment or create a new environment
-
-3. If you want to override other values, you can make the changes in the values.yaml file of the respective custom resource in the Helm repository.
-1. Download the [helm repository](https://github.com/harness/chaos-infra-helm-chart). This repository contains all the chaos resources required for chaos infrastructure management. The repository also contains resources necessary for the namespace and cluster scope installations. You can use this repository to install and manage the infrastructure.
-
-Based on the scope of installation, you have to execute the commands.
-
-1. If you wish to install the infrastructure in the namespace scope, you will get a helm command to install the CRDs. You have to apply this command separately before installing or upgrading the infrastructure.
-2. If you wish to install the infrastructure in cluster scope, apply the helm upgrade command to install the CRDs and other infrastructure components.
-
-:::tip
-1. If you install your infrastructure in cluster scope, HCE supports auto-upgrade for such an infrastructure.
-2. It is important that you remember that the flags in the command are based on the input parameters you provide while installing the infrastructure.
-:::
-
 </TabItem>
 </Tabs>
 
-### Validate Chaos Infrastructure Installation
+## Validate Chaos Infrastructure Installation
 
 After adding chaos infrastructure, Harness takes some time to set up all the chaos infrastructure resources. On the UI, if you navigate to **Environments** -> **Windows** (or Kubernetes or Linux), you can see the connection status is `CONNECTED`.
 
@@ -312,6 +319,8 @@ Based on the infrastructure you have used, you can follow the steps to disconnec
 <Tabs>
 <TabItem value="Kubernetes">
 
+#### Kubernetes
+
 1. Select the `⋮` icon against the chaos infrastructure name and select **Disable**.
 
     ![Delete Chaos Infra](./static/enable-disable/delete-chaos-infra-short.png)
@@ -321,6 +330,8 @@ Based on the infrastructure you have used, you can follow the steps to disconnec
 </TabItem>
 <TabItem value="Linux">
 
+#### Linux
+
 1. Select the `⋮` icon against the chaos infrastructure name and select **Disable**.
 
     ![Delete Chaos Infra](./static/enable-disable/12.delete-infra.png)
@@ -329,6 +340,8 @@ Based on the infrastructure you have used, you can follow the steps to disconnec
 
 </TabItem>
 <TabItem value="Windows">
+
+#### Windows
 
 1. Select the `⋮` icon against the chaos infrastructure name and select **Disable**.
 

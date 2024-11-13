@@ -38,7 +38,18 @@ Harness supports the following:
 
 - For Google Cloud Functions 2nd gen, Harness does not support [Google Cloud Source Repository](https://cloud.google.com/functions/docs/deploy#from-source-repo) at this time. Only Google Cloud Storage is supported.
 - For Google Cloud Functions 1st gen, Harness supports both Google Cloud Storage and Google Cloud Source.
-- Currently, the OIDC connectivity mode is not compatible with Google Cloud Functions. You can't deploy Google Cloud Functions with OIDC-enabled GCP connectors. 
+- We support OpenID Connect (OIDC) authentication in Google Cloud Functions, enabling seamless integration with OIDC-compliant identity providers for enhanced security and user management.
+
+To configure OIDC authentication in GCP, navigate to account/project settings.
+
+Select **New Connector**, select **GCP**
+
+In the details tab, select **OIDC**
+
+Enter the necessary details like **Workload Pool ID**, **Provider ID**, **Project ID** and **Service Account Email**
+
+![](static/gcp-oidc.png)
+
 
 ## Deployment summary
 
@@ -943,10 +954,9 @@ execution:
 
 If deployment failure occurs, the stage or step [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the **Rollback Cloud Function** step in the **Rollback** section of **Execution**. Harness adds the Rollback Cloud Function step automatically.
 
-The Harness rollback capabilities are based on the Google Cloud Function [revisions](https://cloud.google.com/run/docs/managing/revisions) available in Google Cloud.
+The Harness rollback capabilities are based on the Google Cloud Function [revisions](https://cloud.google.com/run/docs/managing/revisions) available in Google Cloud. Harness consumes the Google Cloud SDK for both deployment and rollback operations. During rollback, an additional revision is created. This behavior is a known issue with the Google SDK, and there is an open feature request with Google to address this limitation.
 
 If the function already exists (for example, revision 10) and a new revision is deployed (for example, revision 11) but a step after the deployment there is a failure and rollback is triggered, then Harness will deploy a new function revision (revision **12**) but it will contain the artifact and metadata for revision 10.
-
 
 ## FAQs
 

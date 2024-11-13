@@ -97,6 +97,7 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
     - Bitbucket
     - Custom Remote Source Repository
     - Harness Local File Store
+    - [Harness Code Repository](/docs/code-repository.md)
   - For Helm Chart Type Manifests we also support:
     - Generic Git Provider
     - Google Cloud Storage
@@ -213,6 +214,7 @@ To use an AKS cluster for deployment, the AKS cluster parameter `disableLocalAcc
     - Helm OCI Repository (ACR, ECR, GAR, Artifactory)
     - Helm HTTP Server Repository (Nexus, Artifactory)
     - Harness Local File Store
+    - [Harness Code Repository](/docs/code-repository.md)
   - Artifact Repository for Container Images to deploy with Chart:
     - DockerHub
     - Amazon Elastic Container Registry
@@ -260,6 +262,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
     - Github Package Registry
     - Nexus 3 (Sonatype 3.50.0 and previous supported)
     - Artifactory
+- **Limitations:**
+    - [Harness Code Repository](/docs/code-repository.md) is not supported for storing ECS manifest.
 
 </details>
 
@@ -280,7 +284,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
   - AWS cloud, any region
 - **Versions and tooling support:**
   - AWS SDK
-
+- **Limitations:**
+  - [Harness Code Repository](/docs/code-repository.md) is not supported for storing your configuration files, User Data, Scaling Policy script and Config File.
 </details>
 
 
@@ -303,6 +308,9 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
   - Artifact Repository Supported to Deploy with Function Definition:
     - Amazon Elastic Container Registry
     - Amazon S3
+- **Limitations:**
+  - [Harness Code Repository](/docs/code-repository.md) is not supported for storing AWS Lambda Config File, Lambda Function Definition and Lambda Function Alias Definition.
+
 
 </details>
 
@@ -322,6 +330,10 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 - **Supported integrations:**
   - All Git providers are supported for SAM templates.
   - Currently, you cannot add artifacts to your Harness SAM service.
+  - [Harness Code Repository](/docs/code-repository.md) is supported for storing your Values YAML file for manifest type **Values YAML**.
+- **Limitations:**
+  - [Harness Code Repository](/docs/code-repository.md) is not supported for storing AWS SAM manifest when you select manifest type as **AWS SAM Directory**.
+
 
 </details>
 
@@ -397,6 +409,11 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 - **Versions and tooling support:**
   - Binary Versions:
     - CF CLI v7
+- **Limitations:**
+  - [Harness Code Repository](/docs/code-repository.md) is not supported for storing for all TAS manifest type.
+
+
+
 
 </details>
 
@@ -478,7 +495,9 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
     - Amazon Elastic Container Registry
     - Artifactory
     - Amazon S3
-
+  - [Harness Code Repository](/docs/code-repository.md) is supported for storing your Values YAML file for manifest type **Values YAML**.
+- **Limitations:**
+  - [Harness Code Repository](/docs/code-repository.md) is not supported for storing Serverless Lambda Manifest when you select manifest type as **Serverless Lambda Manifest** as well as for storing Config File.
 </details>
 
 
@@ -496,6 +515,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
   - Azure cloud, any Region
 - **Versions and tooling support:**
   - Azure SDK
+- **Limitations:**
+  - [Harness Code Repository](/docs/code-repository.md) is not supported for storing your Application Settings Script File in Azure Webpps.
 
 </details>
 

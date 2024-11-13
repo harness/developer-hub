@@ -29,7 +29,7 @@ More details on descriptor format for API's could be found below in the referenc
 
 :::info
 
-Note that to be able to read from targets that are outside of the normal integration points such as `github.com`, you'll need to explicitly allow it by adding an entry in the **URL Allow List** under **Admin**
+Note that to be able to read from targets that are outside the normal integration points such as `github.com`, you'll need to explicitly allow it by adding an entry in the **URL Allow List** under **Admin**
 
 ![](static/url-allow-list.png)
 
@@ -58,7 +58,7 @@ In the above example we import all the API specs in `json` format as a `$text` e
 
 :::
 
-The above mentioned `catalog-info.yaml` when registered in the catalog would display all the APIs in the following format. 
+The above-mentioned `catalog-info.yaml` when registered in the catalog would display all the APIs in the following format. 
 
 ![](./static/openapi-json.png)
 
@@ -88,7 +88,7 @@ spec:
     $text: ./petstore.oas.yaml
 ```
 
-The above mentioned `catalog-info.yaml` when registered in the catalog would display all the APIs in the following format.
+The above-mentioned `catalog-info.yaml` when registered in the catalog would display all the APIs in the following format.
 
 ![](./static/swagger-api.png)
 
@@ -121,7 +121,7 @@ spec:
     ...
 ```
 
-The above mentioned `catalog-info.yaml` when registered in the catalog would display all the APIs in the following format.
+The above-mentioned `catalog-info.yaml` when registered in the catalog would display all the APIs in the following format.
 
 ![](./static/spotify-api.png)
 

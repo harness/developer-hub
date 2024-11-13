@@ -1,6 +1,6 @@
 ---
 title: Chaos Experiments
-sidebar_position: 1
+sidebar_position: 2
 description: Configure rules to receive alerts for your chaos experiments.
 canonical_url: https://www.harness.io/blog/continuous-resilience
 redirect_from:
@@ -17,6 +17,12 @@ A **chaos experiment** is composed of chaos faults that are arranged in a specif
 You can define the experiment using the Chaos Studio, that helps create new experiments using the guided UI or by uploading the workflow CR (custom resource) manifest.
 
 When an experiment fails, the failed step specifies the exact cause of failure for the experiment run. It contains an error code for the classification of the error, a phase to specify the execution phase during which the error occurred, and finally, the reason which is a user-friendly description of the error.
+
+### Permissions required
+
+Chaos experiments are executed in a chaos infrastructure, hence you need to have access to **create/edit** and **view** the **chaos infrastructure**. Go to **Project Settings** -> **Access Control** -> **Roles** and create a new role or ask your project admin to create an appropriate role.
+
+![](./static/perms-reqd.png)
 
 :::tip
 - To create a chaos experiment, you need to [enable a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable). To enable an infrastructure, you need to [create an environment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#create-environment).

@@ -16,7 +16,7 @@ description: Display Splunk On-Call information associated with an entity and tr
 
 _No action required_
 
-This plugin requires a backend proxy configuration to make calls to PagerDuty with authentication. The following configuration is set by default and you do not need to change anything:
+This plugin requires a backend proxy configuration to make calls to Splunk with authentication. The following configuration is set by default and you do not need to change anything:
 
 ```YAML
 proxy:
@@ -36,7 +36,7 @@ splunkOnCall:
 
 ### Secrets
 
-Since the `SPLUNK_ON_CALL_API_ID` and `SPLUNK_ON_CALL_API_KEY` variable is used in the application configuration, you must generate a Splunk API key and add the secrets. For instructions on how to create a  API ID and an API Key, [read the instructions](https://help.victorops.com/knowledge-base/api/). You also need to provide a REST Endpoint as `SPLUNK_ON_CALL_REST_ENDPOINT` , to enable the REST Endpoint integration, go on https://portal.victorops.com/ inside Integrations > 3rd Party Integrations > REST – Generic. You can now copy the URL to notify: `<SPLUNK_ON_CALL_REST_ENDPOINT>/$routing_key`
+Since the `SPLUNK_ON_CALL_API_ID` and `SPLUNK_ON_CALL_API_KEY` variable is used in the application configuration, you must generate a Splunk API key and add the secrets. For instructions on how to create an API ID and an API Key, [read the instructions](https://help.victorops.com/knowledge-base/api/). You also need to provide a REST Endpoint as `SPLUNK_ON_CALL_REST_ENDPOINT`, to enable the REST Endpoint integration, go on https://portal.victorops.com/ inside Integrations > 3rd Party Integrations > REST – Generic. You can now copy the URL to notify: `<SPLUNK_ON_CALL_REST_ENDPOINT>/$routing_key`
 
 ![](./static/splunk-secrets.png)
 
@@ -63,7 +63,7 @@ This plugin exports a UI card that you can show on the **Overview** tab of a ser
 - component: EntitySplunkOnCallCard
 ```
 
-You can also make the card appear conditionally for services (only if PagerDuty is configured for the service) by replacing the card with a switch case, as follows:
+You can also make the card appear conditionally for services (only if Splunk is configured for the service) by replacing the card with a switch case, as follows:
 
 ```yaml
 - component: EntitySwitch
@@ -73,6 +73,8 @@ You can also make the card appear conditionally for services (only if PagerDuty 
         content:
           component: EntitySplunkOnCallCard
 ```
+
+![](./static/splunk.png)
 
 ## Annotations
 

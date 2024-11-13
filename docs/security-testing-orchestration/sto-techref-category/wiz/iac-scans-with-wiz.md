@@ -22,7 +22,7 @@ You can easily set up a Wiz step to run automated scans in your Harness pipeline
 
 <!--  If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. -->
 
-- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
@@ -193,8 +193,6 @@ import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.
 
 <StoSettingTargetWorkspace  />
 
-Additionally, you can specify individual files to scan as well. For instance, if you only want to scan a specific file like `/tmp/iac/infra.tf`, you can specify the workspace path as `/harness/tmp/iac/infra.tf`
-
 ### Ingestion File
 
 
@@ -267,3 +265,9 @@ import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
 import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
+
+## View Wiz policy failures
+
+import WizPolicyFailureResults from '../shared/_wiz-policy-failure-results.md';
+
+<WizPolicyFailureResults />

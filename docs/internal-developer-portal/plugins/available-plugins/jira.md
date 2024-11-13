@@ -34,7 +34,7 @@ proxy:
 
 Since the `JIRA_TOKEN` variable is used in the application configuration, you must generate a Jira API key and set it as the value of `JIRA_TOKEN`. For information about how to generate a Jira API key, go to the [instructions](https://id.atlassian.com/manage-profile/security/api-tokens).
 
-- Select **Create API token**, give some label  and copy the generated token
+- Select **Create API token**, give some label and copy the generated token
 - **Base64 encode API token**: We need to prefix the token with the Jira user email and base64 encode it.
 ```sh
 echo -n "jira-mail@example.com:hTBgqVcrcxRYpT5TCzTA9C0F" | base64
@@ -42,11 +42,11 @@ echo -n "jira-mail@example.com:hTBgqVcrcxRYpT5TCzTA9C0F" | base64
 
 :::info
 
-**base64** encoding is mandatory for the API Token and you need to add your `email address` followed by `:` as a prefix to the token generated eg: `jira-mail@example.com:hTBgqVcrcxRYpT5TCzTA9C0F`
+**base64** encoding is mandatory for the API Token and you need to add your `email address` followed by `:` as a prefix to the token generated e.g.: `jira-mail@example.com:hTBgqVcrcxRYpT5TCzTA9C0F`
 
 :::
 
-- **Create secret in Harness to store API token**: Once token is generated, click on the “input field” next to `JIRA_TOKEN` and you will see a pop-up to create or chose exiting secret
+- **Create secret in Harness to store API token**: Once token is generated, click on the “input field” next to `JIRA_TOKEN` and you will see a pop-up to create or chose existing secret
 
 ![](./static/select-secret.png)
 
@@ -85,6 +85,8 @@ You can also make the card appear conditionally for services (only if Jira is co
         content:
           component: EntityJiraOverviewCard
 ```
+
+![](./static/jira-card.png)
 
 ## Annotations
 

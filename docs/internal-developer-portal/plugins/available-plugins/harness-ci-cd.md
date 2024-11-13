@@ -64,11 +64,13 @@ This plugin exports a UI tab that you can use as a new CI/CD tab for a service o
                   description: You need to add an annotation to your component if you want to enable CI/CD for it. You can read more about annotations in Backstage by clicking the button below.
 ```
 
-The `isHarnessCiCdAvailable` condition is met when one of the following annotations is present in the software components's `catalog-info.yaml` definition file.
+The `isHarnessCiCdAvailable` condition is met when one of the following annotations is present in the software component's `catalog-info.yaml` definition file.
 
 - `harness.io/pipelines`
 - `harness.io/services`
 - `harness.io/project-url` (deprecated)
+
+![](./static/cd-tab.png)
 
 ## Annotations
 

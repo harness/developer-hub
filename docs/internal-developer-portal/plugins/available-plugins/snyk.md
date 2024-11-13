@@ -63,6 +63,8 @@ This plugin exports a UI card that you can show on the **Overview** tab of a ser
 
 ```
 
+![](./static/snyk-tab.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set one of the following annotations in its `catalog-info.yaml` definition file.
