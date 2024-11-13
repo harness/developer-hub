@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-10-21T20:00
+date: 2024-11-13T20:00
 sidebar_position: 12
 ---
 
@@ -16,6 +16,37 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## November 2024
+
+### Version 0.36.0
+
+<!-- November 13, 2024 -->
+
+#### New features and enhancements
+
+- You can now view your pull requests under the [My Pull Requests card](/docs/internal-developer-portal/layout-and-appearance/home-page-customization#my-pull-requests-card) on the Developer Homepage. Currently, only GitHub is supported as a data source. [IDP-3458]
+
+![](./static/idp-pull-request-github.png)
+
+- We’ve added support for [pipeline templates, stage variables, and step variables](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#support-for-stage-step-variables-and-pipeline-templates) to be used as inputs for workflows with the `trigger:harness-custom-pipeline` action. [IDP-3927]
+
+- The [Plugins Marketplace](https://developer.harness.io/docs/internal-developer-portal/plugins/plugin-marketplace) now offers a single-pane-of-glass view, showing plugins supported under IDP as well as available Backstage Community Plugins, which can be added based on customer requests. [IDP-4010]
+
+![](./static/idp-plugin-marketplace.png)
+
+- Added Audit trails Support for Workflows v2 and Homepage Layout. [IDP-3849, IDP-3848]
+
+
+#### Bug fixes
+
+- Resolved an issue with the Direct Push step on Harness-hosted infrastructure, where secrets data was not populated due to the Git clone step being skipped by default in the IDP stage. [IDP-4000]
+
+- Resolved the issue with removing old layout from IDP. [IDP-3905]
+
+- Resolved an issue with the Kubernetes plugin’s "View Logs" functionality. This feature now correctly requires the `kubernetes.proxy` permission to be set for proxied calls to work as expected. [IDP-3900]
+
+- Resolved an issue with the Catalog Readiness Scorecard. [IDP-3887]
 
 ## October 2024
 
