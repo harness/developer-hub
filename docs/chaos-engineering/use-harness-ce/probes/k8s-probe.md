@@ -5,6 +5,7 @@ description: Features and specification of the Kubernetes probe
 redirect_from:
 - /docs/chaos-engineering/technical-reference/probes/k8s-probe
 - /docs/chaos-engineering/features/probes/k8s-probe
+- /docs/chaos-engineering/concepts/explore-concepts/resilience-probes/k8s-probe
 ---
 
 import CommonNote from './shared/common-note.md'

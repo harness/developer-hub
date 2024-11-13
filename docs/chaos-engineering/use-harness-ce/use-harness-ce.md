@@ -52,5 +52,5 @@ Listed below are topics and links to how you can use them to improve resilience 
 ## Resilience Probes
 
 - [Create Resilience Probes](/docs/chaos-engineering/use-harness-ce/probes/use-probe)
-- [Use Command Probe in Inline and Source Mode](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-usage)
-- [Use Command Probe in Source Mode with New Relic](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-newrelic)
+- [Use Command Probe in Inline and Source Mode](/docs/chaos-engineering/use-harness-ce/probes/command-probe/cmd-probe-usage)
+- [Use Command Probe in Source Mode with New Relic](/docs/chaos-engineering/use-harness-ce/probes/command-probe/cmd-probe-newrelic)
