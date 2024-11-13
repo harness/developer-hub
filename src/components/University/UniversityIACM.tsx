@@ -280,7 +280,7 @@ export default function CertificationsIACM() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Infrastucture as Code Management - Developer (BETA)
+                      Infrastucture as Code Management - Developer
                     </h2>
                     <img
                       src={`${baseUrl}img/cert_dev_iacm_badge.svg`}
@@ -292,7 +292,7 @@ export default function CertificationsIACM() {
                     </span>
                   </div>
                   <div className={styles.right}>
-                    <h3>Coming Soon...</h3>
+                    <h3>Review Study Guide</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to manage your
                       infrastructure with IaCM projects.
@@ -300,7 +300,7 @@ export default function CertificationsIACM() {
                     <DeveloperCertificationReviewGuide />
 
                     <div className={styles.btnContainer}>
-                      <Link href="#">
+                      <Link href="https://university-registration.harness.io/certified-infrastructure-as-code-management-developer">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
@@ -318,7 +318,7 @@ export default function CertificationsIACM() {
               <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
-                  <Link href="#">
+                  <Link href="https://university-registration.harness.io/certified-infrastructure-as-code-management-developer">
                     <button className={styles.moreDetails}>
                       Register for Exam
                     </button>

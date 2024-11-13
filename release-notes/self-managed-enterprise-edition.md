@@ -213,6 +213,59 @@ To fix this issue, follow these steps
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
 :::
 
+## November 8, 2024, patch version 0.22.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.22.1](https://github.com/harness/helm-charts/releases/tag/harness-0.22.1) |
+| Air Gap Bundle | [0.22.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.22.1) |
+| NG Manager | 1.57.8 |
+| CI Manager | 1.47.5 |
+| Harness Manager | 1.48.8 |
+| Pipeline Service | 1.95.4 |
+| Platform Service | 1.39.1 |
+| Access Control Service | 1.61.2 |
+| Delegate | 24.09.83900 |
+| GitOps Service | 1.18.7 |
+| Change Data Capture | 1.36.0 |
+| STO Core | 1.113.10 |
+| Test Intelligence Service | 1.27.1 |
+| NG UI | 1.43.2 |
+| LE NG | 1.3.1 |
+| Looker | 1.1.1 |
+| Log Service | 1.9.2 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.22.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed an issue in version `0.22.0` causing helmfile diff and dry-run commands to fail due to server version lookups. Introduced a flag `upgrades.versionLookups.enabled` set to `false` to disable this check and enable seamless upgrades and dry runs. (PL-58295, ZD-72635)
+
+### New features and enhancements
+
+#### Harness Platform
+
+- Updated Helm common chart to avoid creating the rewrite object in the virtual service when not specified in the override/values file. This change ensures cleaner and more efficient configuration by excluding unnecessary rewrite rules. (PL-58400)
+
 ## October 28, 2024, version 0.22.0
 
 This release includes the following Harness module and component versions.

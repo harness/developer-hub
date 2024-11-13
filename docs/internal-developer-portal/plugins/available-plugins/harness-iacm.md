@@ -52,7 +52,7 @@ This plugin exports a UI tab that you can use as a new IACM tab for workspaces o
     - component: EntityIacmContent
 ```
 
-Also you could add a conditional like `isHarnessIacmAvailable` which is met when `harness.io/workspace-url` annotation is present in the software components's `catalog-info.yaml` definition file.
+Also, you could add a conditional like `isHarnessIacmAvailable` which is met when `harness.io/workspace-url` annotation is present in the software component's `catalog-info.yaml` definition file.
 
 ```YAML
 - name: iacm

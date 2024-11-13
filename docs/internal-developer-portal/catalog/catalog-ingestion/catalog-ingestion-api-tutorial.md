@@ -70,11 +70,11 @@ In case you want to display the same information you have ingested on your Overv
 
 :::info
 
-We had already added the `offShoreTeamLead` in the [`catalog-info.yaml`](https://github.com/harness-community/idp-samples/blob/main/example-catalog-info/cataog-info-ccp.yaml) as we have recommended above under the pre-requisites, if you haven't used the same, you'll get a data not found error for the field.
+We had already added the `offShoreTeamLead` in the [`catalog-info.yaml`](https://github.com/harness-community/idp-samples/blob/main/example-catalog-info/cataog-info-ccp.yaml) as we have recommended above under the prerequisites, if you haven't used the same, you'll get a data not found error for the field.
 
 :::
 
-2. Now go to the **FoodService** Software Component in the **Catalog** and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/custom-card)
+2. Now go to the **FoodService** Software Component in the **Catalog**, and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/custom-card)
 
 ![](./static/additional-info-card.png)
 

@@ -533,7 +533,7 @@ Entity Refs are case-insensitive.
 
 :::info
 
-We need to add escape character for any field has an additional `DOT` in the path like `metadata.annotation.harness.io/idp-test` , that part needs to be escaped with `\"` like this `metadata.annotations.\"harness.io/idp-test\"`
+We need to add escape character for any field has an additional `DOT` in the path like `metadata.annotation.harness.io/idp-test`, that part needs to be escaped with `\"` like this `metadata.annotations.\"harness.io/idp-test\"`
 
 :::
 
@@ -622,7 +622,7 @@ When you want to update a specific property of a catalog entity, you can use dif
 
 #### Available Modes:
 - **replace** (default): Completely replaces the existing value with the new one provided in the `value` field.
-- **append**: Adds new values to the existing array (or other appendable types like maps or key-value pairs).
+- **append**: Adds new values to the existing array (or other types to be appended like maps or key-value pairs).
 
 > **Note**: `append` only works with data types that can hold multiple values, such as arrays or maps. It does not apply to simple data types like strings.
 

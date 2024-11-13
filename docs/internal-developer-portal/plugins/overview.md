@@ -5,7 +5,7 @@ description: Learn about plugins in Internal Developer Portal and how to use the
 sidebar_position: 10
 ---
 
-Harness IDP is built on top of the [Backstage plugin architecture](https://backstage.io/docs/plugins/) and supports a curated list of plugins. Plugins are often used to show additional metadata about a software component on the software catalog. For example, plugins show information about CI/CD pipelines, alerts, incidents, and project status. The curated list of plugins is a subset of publicly available [Backstage plugins](https://backstage.io/plugins). Along with this we support [custom plugins](/docs/internal-developer-portal/plugins/custom-plugins/overview) as well which users can upload into IDP. Also we are constantly adding new plugins from the marketplace and building new plugins of our own.
+Harness IDP is built on top of the [Backstage plugin architecture](https://backstage.io/docs/plugins/) and supports a curated list of plugins. Plugins are often used to show additional metadata about a software component on the software catalog. For example, plugins show information about CI/CD pipelines, alerts, incidents, and project status. The curated list of plugins is a subset of publicly available [Backstage plugins](https://backstage.io/plugins). Along with this we support [custom plugins](/docs/internal-developer-portal/plugins/custom-plugins/overview) as well which users can upload into IDP. Also, we are constantly adding new plugins from the marketplace and building new plugins of our own.
 
 ![Plugins section in IDP](./static/plugins-page.png)
 
@@ -41,10 +41,10 @@ See the [list of curated plugins](/docs/category/available-plugins).
 
 **A plugin is available in the Backstage marketplace but not in Harness IDP. Can we file a request to add the plugin to IDP?**
 
-We are happy to expand our curated plugins list as requested by our customers. Let us know about the plugin and we'll be happy to make it available for you.
+We’re happy to expand our curated plugin list based on customer requests. [Submit a request in the marketplace](/docs/internal-developer-portal/plugins/plugin-marketplace#request-access-for-plugin) to make a plugin available in your Developer Portal.
 
 **We are looking for a plugin that is not present in the Backstage marketplace. What are our options?**
 
 1. Go to [plugin ideas](https://github.com/backstage/backstage/issues?q=is%3Aopen+is%3Aissue+label%3Aplugin) by the Backstage community and check whether a request already exists. If not, you can [create one](https://github.com/backstage/backstage/issues/new?assignees=&labels=plugin&projects=&template=plugin.yaml&title=%F0%9F%94%8C+Plugin%3A+%3Ctitle%3E).
 2. You can build a new Backstage plugin and publish it on the marketplace. Start [here](https://backstage.io/docs/plugins/create-a-plugin) and search for "how to create a Backstage plugin".
-3. (Coming soon) You can build a custom plugin and use it in Harness IDP, without making the source public.
+3. You can build a [custom plugin](/docs/internal-developer-portal/plugins/custom-plugins/overview) and use it in Harness IDP, without making the source public.

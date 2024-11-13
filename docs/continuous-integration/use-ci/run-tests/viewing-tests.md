@@ -11,7 +11,7 @@ redirect_from:
 canonical_url: https://www.harness.io/blog/continuous-integration-testing
 ---
 
-
+ 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -190,15 +190,13 @@ This plugin ensures that the entire test suite runs, even if failures occur, by 
     identifier: Parse_Test_Reports_Plugin
     spec:
       connectorRef: dockerConnector
-      image: harnesscommunity/parse-test-reports:latest
+      image: plugins/test-analysis:latest
       settings:
         test_globs: folder1/*.xml, folder2/*.xml  # paths to junit results
 
 ```
 
 In the above example, Harness will scan for JUnit XML test reports in folder1 and folder2, and will fail (exit status 1) in case failures are detected in the JUnit XML test reports found in the folders scanned. 
-
-
 
 ## Test report dashboard
 

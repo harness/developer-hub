@@ -67,7 +67,7 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 <TabItem value="harness-code-repo-enabled" label="Harness Code Repository">
 
-4. Once you copy thr URL for `catalog-info.yaml` from Harness Code Repository make sure to replace vanity url domain with `accounts.eu.harness.io`
+4. Once you copy the URL for `catalog-info.yaml` from Harness Code Repository make sure to replace vanity URL domain with `accounts.eu.harness.io`
 
 ![](static/replace-vanity-url-register.png)
 
@@ -125,8 +125,8 @@ spec:
 
 ![](./static/catalog-navigation.png)
 
-2. Select the Template Name you want to Unregister.
-3. Now on the Template overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+2. Select the Workflow Name you want to Unregister.
+3. Now on the Workflow overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
 
 ![](./static/unregister-entity.png)
 
@@ -134,10 +134,10 @@ spec:
 
 ![](./static/Unregister-location.png)
 
-5. This will delete the Template.
+5. This will delete the Workflow.
 
 ## Troubleshooting: Failed to register
 
-If, after registering an entity, your're unable to find the same in your catalog, check the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab, wait a few minutes for registration to complete. If it's under the **Failed** tab. try re-registering the entity.
+If, after registering an entity, you're unable to find the same in your catalog, check the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab, wait a few minutes for registration to complete. If it's under the **Failed** tab. Try re-registering the entity.
 
 ![](./static/devtools.png)

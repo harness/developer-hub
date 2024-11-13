@@ -179,6 +179,7 @@ To enable this feature, set the `nestedVirtualization` property to `true` as sho
 
 :::note
 * To enable `nestedVirtualization` use the YAML editor, as this option is currently unavailable in the visual editor.
+* When using hardware acceleration, run your steps directly on the VM, rather than inside a container. Running inside a container is currently not supported with hardware acceleration.
 * Hardware acceleration is available for all machine sizes, when using Linux with AMD architecture on Harness Cloud.
 :::
 
@@ -359,7 +360,3 @@ Atlassian released a fix for this issue; however, if you use a Harness Cloud Win
 
 1. [Disable Clone Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages).
 2. At the beginning of your build stage, add a a [Run step](/docs/continuous-integration/use-ci/run-step-settings) that uses the `harness/drone-git` image and Git commands to clone your BitBucket cloud repo.
-
-#### Harness Cloud VMs don't support hardware acceleration
-
-Currently, Harness Cloud build machines don't support hardware acceleration. This applies to all platforms and architectures.

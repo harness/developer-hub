@@ -15,5 +15,3 @@ spec:
           env:
             - name: NETWORK_LATENCY
               value: "2000"
-            - name: DESTINATION_IPS
-              value: '0.8.0.8,192.168.5.6'

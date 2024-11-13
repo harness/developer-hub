@@ -6,7 +6,7 @@ sidebar_position: 50
 
 SonarQube is an open-source platform designed for continuous inspection of code quality. It provides valuable insights into code issues, trends, and metrics to help organizations maintain high-quality software.
 
-To analyze your SonarQube data in SEI, set up a [SonarQube SEI integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-sonarqube), and then add the following SonarQube reports to your Insight.
+To analyze your SonarQube data in SEI, set up a [SonarQube SEI integration](/docs/software-engineering-insights/sei-integrations/beta-integrations/sonarqube/sei-integration-sonarqube), and then add the following SonarQube reports to your Insight.
 
 The data is collected from all the branches available in the project and is not restricted only to the main or master branch. Currently, the data is fetched from SonarQube for the last year.
 

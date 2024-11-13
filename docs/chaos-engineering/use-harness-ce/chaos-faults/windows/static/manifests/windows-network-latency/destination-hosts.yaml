@@ -13,7 +13,5 @@ spec:
     - definition:
         chaos:
           env:
-            - name: NETWORK_LATENCY
-              value: "2000"
             - name: DESTINATION_HOSTS
               value: "aws.amazon.com,github.com"

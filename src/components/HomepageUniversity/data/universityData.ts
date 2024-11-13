@@ -74,6 +74,7 @@ export const university: CardItem[] = [
       "Discover how your applications stand up to real-world failure scenarios.",
     link: "/university/chaos-engineering",
     ILT_available: true,
+    SPT_available: true,
     numberOfCerts: 1,
   },
   {
@@ -102,6 +103,7 @@ export const university: CardItem[] = [
     description:
       "Efficiently and securely scale your Terraform / OpenTofu Infrastructure as Code.",
     link: "/university/iacm",
+    numberOfCerts: 1,
     SPT_available: true,
     ILT_available: true,
   },

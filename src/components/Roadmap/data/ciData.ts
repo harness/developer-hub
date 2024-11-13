@@ -2,22 +2,17 @@ import { Horizon } from "./roadmapData";
 
 export const CiData: Horizon = {
   Now: {
-    description: "Q3 2024, Aug-Oct 2024",
+    description: "Q4 2024, Nov-Jan 2025",
     feature: [
       {
         tag: [{ value: "Fast" }],
-        title: "Build Intelligence for Gradle - Self Hosted",
-        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. Support for cloud is already available, this work is to extend support for self-hosted build infrastructure.",
-      },
-      {
-        tag: [{ value: "Fast" }],
-        title: "Build Intelligence for Bazel- Self Hosted",
+        title: "Build Intelligence for Gradle & Bazel - Self Hosted",
         description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. Support for cloud is already available, this work is to extend support for self-hosted build infrastructure.",
       },
       {
         tag: [{ value: "Fast" }],
         title: "Build Intelligence for Maven",
-        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
+        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. Support will be added for Maven build tool, for both Cloud ans self-hosted builds.",
       },
       {
         tag: [{ value: "Cloud" }],
@@ -25,41 +20,37 @@ export const CiData: Horizon = {
         description: "Gain insights into how Harness Cloud build credits are consumed by different pipelines, helping you manage and optimize your CI resource allocation.",
       },
       {
-        tag: [{ value: "Cloud" }],
-        title: "Linux Hardware Acceleration in Harness Cloud",
-        description: "This enhancement allows leveraging hardware acceleration to speed up computational tasks, improving performance for resource-intensive builds, when running on Linux Cloud machines.",
+        tag: [{ value: "Fast" }, { value: "Beta" }],
+        title: "Cache Intelligence - VB & F# ",
+        description: "Cache Intelligence reduces build times by automatically caching software dependencies, avoiding the need for external storage. We will add support for VB & F#.",
       },
-
-      {
-        tag: [{ value: "Integrations" }],
-        title: "Docker build secrets",
-        description: "Ability to use Docker build secrets in Build and Push steps.",
-      },
-      {
-        tag: [{ value: "Integrations" }],
-        title: "Git Clone Enhancements",
-        description: "Native support for Git LFS, submodules, and tag fetching in the native clone functionality and Git Clone step. These enhancements improve repository management, reducing setup time and errors, and boosting overall productivity.",
-      },    
-      {
-        tag: [{ value: "Fast" }],
-        title: "Test Intelligence for .Net Core",
-        description: "Accelerate testing cycles of Python applications with Test Intelligence, selectively running only tests that cover the code changes made.",
-      },  
-      {
-        tag: [{ value: "Fast" }, { value: "Cloud" }],
-        title: "Simplify usage of Build Intelligence",
-        description: "Support for automatically using Build Intelligence on Cloud, eliminating the need for user configuration and making it easier for teams to speed up their builds.",
-      },
-      
-    ],
-  },
-  Next: {
-    description: "Q4 2024, Nov-Jan 2025",
-    feature: [
       {
         tag: [{ value: "Fast" }],
         title: "Test Intelligence for JavaScript-based languages and tools",
         description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related the code changes made.",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Docker Build Secrets",
+        description: "Ability to use Docker build secrets in Build and Push steps.",
+      },
+      {
+        tag: [{ value: "Secure" }],
+        title: "OpenID Connect (OIDC) - HashiCorp",
+        description: "Securely connect to HashiCorp through OIDC, for accessing public cloud resources without secrets or credentials.",
+      },
+   
+,
+      
+    ],
+  },
+  Next: {
+    description: "Q1 2025, Feb-Apr 2025",
+    feature: [
+      {
+        tag: [{ value: "Artifact Management" }],
+        title: "Hosted Artifacts Management",
+        description: "Manage your build artifacts with ease using hosted artifacts management, providing a secure, scalable solution for storing and accessing your CI/CD artifacts.",
       },
       {
         tag: [{ value: "Fast" }],
@@ -67,11 +58,15 @@ export const CiData: Horizon = {
         description: "ML-based Test Intelligence that applies smart test selection across all testing frameworks, reducing testing times and speeding up the feedback loop for developers. Test Intelligence currently supported for unit tests, and with this work we will make it available for other test types as well.",
       },
       {
-        tag: [{ value: "Fast" }],
-        title: "Flaky tests management",
-        description: "Identify, track, and manage flaky tests, improving test reliability and build stability.",
+        tag: [{ value: "Integrations" }, { value: "Mobile" }],
+        title: "Native integration with Fastlane",
+        description: "Simplify building and publishing iOS and Android applications with native Fastlane integration",
       },
-
+      {
+        tag: [{value: "Insights"}],
+        title: "Test Insights",
+        description: "Harness can help users visualize their test executions for their failures, success, and other metrics, providing meaningful insights",
+      },
       {
         tag: [{ value: "Secure" }],
         title: "OpenID Connect (OIDC) - Azure",
@@ -80,25 +75,50 @@ export const CiData: Horizon = {
     ],
   },
   Later: {
-    description: "Q1 2025+, Feb 2025 & beyond",
+    description: "Q2 2025+, May 2025 & beyond",
     feature: [
 
-      {
-        tag: [{ value: "Artifact Management" }],
-        title: "Hosted Artifacts Management",
-        description: "Manage your build artifacts with ease using hosted artifacts management, providing a secure, scalable solution for storing and accessing your CI/CD artifacts.",
-      },
       {
         tag: [{ value: "Fast" }],
         title: "Build Intelligence for Go",
         description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
       },
+      {
+        tag: [{ value: "Fast" }],
+        title: "Flaky tests management",
+        description: "Identify, track, and manage flaky tests, improving test reliability and build stability.",
+      },
+      {
+        tag: [{ value: "AIDA" }],
+        title: "AIDA driven Build pipelines",
+        description: "Using Harness AIDA, Harness will help generate and CI pipelines.",
+      },
+      {
+        tag: [{ value: "Mobile" }],
+        title: "MobileOps",
+        description: "Solutions to simplify and streamline mobile device testing, helping teams improve the efficiency and reliability of their mobile development workflows.",
+      }
 
     ],
   },
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Git Clone Enhancements",
+        description: "Native support for Git LFS, submodules, and tag fetching in the native clone functionality and Git Clone step. These enhancements improve repository management, reducing setup time and errors, and boosting overall productivity.",
+      }, 
+      {
+        tag: [{ value: "Cloud" }],
+        title: "Linux Hardware Acceleration in Harness Cloud",
+        description: "This enhancement allows leveraging hardware acceleration when running on Linux/amd Cloud machines. This enhancement enables Android emulation, leading to faster and more efficient Android test execution",
+      },
+      {
+        tag: [{ value: "Fast" }],
+        title: "Test Intelligence for C# ",
+        description: "Accelerate testing cycles of C# C# (.Net Core 6.0+) applications with Test Intelligence, selectively running only tests that cover the code changes made.",
+      },  
       {
         tag: [{ value: "Fast" },{ value: "Cloud" } ,{ value: "Beta" }],
         title: "Build Intelligence for Gradle",
@@ -111,18 +131,18 @@ export const CiData: Horizon = {
       },
       {
         tag: [{ value: "Secure" }, { value: "Beta" }],
-        title: "Secure Tunnel support for Harness CI cloud",
+        title: "Secure Connect",
         description: "Enables encrypted, secure tunnel between the Harness Cloud network and your private network, to safely use Harness Cloud build infrastructure with privately-hosted assets, such as internal artifacts repositories and code repositories.",
       },
       {
         tag: [{ value: "Fast" }, { value: "Beta" }],
         title: "Cache Intelligence for self-hosted build infrastructure",
-        description: "Cache Intelligence reduces build times by automatically caching software dependencies, avoiding the need for external storage.  It's currently supported when running builds in Harness Cloud, and with this work we will make it available for users running self-managed builds as well.",
+        description: "Cache Intelligence reduces build times by automatically caching software dependencies. Customers running their builds on self-hosted infra can now configure a default S3-compatible bucket to be used with cache intelligence",
       },
       {
         tag: [{ value: "Fast" }, { value: "Beta" }],
         title: "Docker Layer Caching for self-hosted build infrastructure",
-        description: "Accelerate builds with Docker Layer Caching, which reuses unchanged layers from previous builds, speeding up the Docker image creation process.",
+        description: "Accelerate builds with Docker Layer Caching, which reuses unchanged layers from previous builds, speeding up the Docker image creation process. Customers running their builds on self-hosted infra can now configure a default S3-compatible bucket to be used with cache intelligence",
       },
       {
         tag: [{ value: "Fast" }, { value: "Beta" }],
@@ -146,24 +166,10 @@ export const CiData: Horizon = {
       },
       {
         tag: [{ value: "Integrations" }],
-        title: "Plugin enhancement - Publish Artifacts to Jfrog Artifactory",
-        description: "Added support for passing 'build_name', 'build_number' and '--target-props' JFrog flags.",
-      },
-      {
-        tag: [{ value: "Integrations" }],
-        title: "Plugin - Push Helm Charts to Docker Registry",
-        description: "Easily push Helm charts compliant with Open Container Initiative (OCI) to Docker Registry.",
-      },
-      {
-        tag: [{ value: "Integrations" }],
-        title: "Plugin - Copy Docker images between registries",
-        description: "Copy images between docker registries, eliminating the need to rebuild the same image multiple times, saving time and computational resources.",
-      },
-      {
-        tag: [{ value: "Integrations" }],
-        title: "Plugin - Get Maven Version",
-        description: "The plugin is designed to retrieve the POM_VERSION from the pom.xml file and assign it as an environment variable to be used by subsequent builds tasks.",
+        title: "Plugin - Test Analysis",
+        description: "Introduced a new plugin, plugins/test-analysis, to support managing flaky tests by introducing a quarantine mechanism. This helps teams to reduce false positives in CI by isolating non-critical, known flaky test failures. By using a quarantine list, the plugin prevents disruptions caused by unreliable tests, allowing teams to focus on true failures and improve test suite reliability without unnecessary pipeline failures",
       },
     ],
   },
 };
+

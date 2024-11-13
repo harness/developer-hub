@@ -166,7 +166,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - Fixed the issue with [pull and run images from private artifactory storage in your pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#pull-images), for developer portal stages. [IDP-3258]
 - Fixed the issue regarding the use of templates in IDP Stage. [IDP-3121]
 - Fixed the issue with "no git integration added banner" showing even when git integration is in place. [IDP-3157]
-- Fixed the issue with max projects fetched by [`HarnessProjectPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#3-harnessprojectpicker) UI Picker [IDP-3331].
+- Fixed the issue with max projects fetched by [`HarnessProjectPicker`](/docs/internal-developer-portal/flows/flows-input#3-harnessprojectpicker) UI Picker [IDP-3331].
 
 ### Version 0.29.0
 
@@ -318,7 +318,7 @@ Welcome to first release of April, and in this release we bring you features lik
 
 - We now support a new [git integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) framework, which will allow users to have multiple connectors, with different host name, for a single git provider at once. For eg., Users can now use connectors for both `github.com` and `github enterprise` to fetch entity yaml from both the sources at the same time. [IDP-2213]
 
-- We have added support for a new Workflow UI Picker, [`EntityFieldPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#entityfieldpicker) using which users can use the data present in catalog as an input for the workflows. [IDP-2441]
+- We have added support for a new Workflow UI Picker, [`EntityFieldPicker`](/docs/internal-developer-portal/flows/flows-input#1-entityfieldpicker) using which users can use the data present in catalog as an input for the workflows. [IDP-2441]
 
 - We have added a new plugin, to support [GitHub Codespaces](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/github-codespaces) integration in the software catalog.[IDP-2469]
 

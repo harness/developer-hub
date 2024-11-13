@@ -46,6 +46,32 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Fixed the issue where two continuous command probes with a short polling duration could not execute in Linux infrastructure. (CHAOS-5461)
 
+## November 2024
+
+### Version 1.48.0
+
+#### New features and enhancements
+
+- Adds a pre-check to the Windows global blackhole experiment to verify if the firewall is enabled for the target Windows VM. If not, the `ENABLE_FIREWALL` tunable is set, which, by default, enables the firewall. (CHAOS-6848)
+
+- Introduces the Windows disk fill chaos experiment, supported by Windows chaos infrastructure. (CHAOS-6842)
+
+#### Fixed issues
+
+- Fixed the input mechanism for specifying multiple zones for CLB AZ down chaos fault, now allowing comma-separated values for multiple inputs. (CHAOS-6909)
+
+- Fixed an issue with the bulk update experiment selection checkbox not de-selecting after updating a cron job. (CHAOS-6856)
+
+- Fixed the error occurring when performing multiple actions on experiments, such as pushing to a custom ChaosHub, adding to GameDay, and executing the experiments consecutively. (CHAOS-6568)
+
+- Fixed the UI issue that prevented a GameDay execution after the stakeholder approval. (CHAOS-6467)
+
+- Fixed the issue where the **Application Maps** drawer was not displayed on the first page due to pagination issues. (CHAOS-6407)
+
+- Fixed the visibility issue of the status display for the Enterprise ChaosHub in dark mode. (CHAOS-5970)
+
+- Fixed the issue where two continuous command probes with a short polling duration could not execute in Linux infrastructure. (CHAOS-5461)
+
 ## October 2024
 
 ### Version 1.47.0

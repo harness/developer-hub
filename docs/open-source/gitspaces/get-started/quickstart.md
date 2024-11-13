@@ -10,7 +10,7 @@ The Quickstart aims to provide users with an introduction to developing using Gi
 
 ### Installation
 
-Gitspace is automatically available when you install Gitness. Installation instructions [here](https://docs.gitness.com/).
+Gitspace is automatically available when you install Harness Open Source. Installation instructions [here](https://developer.harness.io/docs/open-source/installation/quick_start).
 
 ## Sample application
 
@@ -18,7 +18,7 @@ Let us go through the flow of creating a Gitspace for our sample application, wh
 
 ## Create a Gitspace
 
-1. **Sign up** for or **Login** to Gitness, and create a [new project](https://docs.gitness.com/#create-a-project). You will see Gitspace available in the sidenav. 
+1. **Sign up** for or **Login** to Harness Open Source, and create a [new project](https://developer.harness.io/docs/open-source/installation/quick_start). You will see Gitspace available in the sidenav. 
 
 ![](./static/loading-page-gitspace.png)
 
@@ -83,5 +83,5 @@ To make changes to the application, you should  have forked it first and then cr
 - To commit your staged changes, type a commit message describing the change you've made, then click **Commit**.
 - Now **Sync Changes**, it will redirect you to login and authorize to your GitHub. After authorization, your changes will be committed to your fork.
 
-**And that’s it! You have successfully used Gitness Gitspace for development**
+**And that’s it! You have successfully used Harness Open Source Gitspaces for development**
 

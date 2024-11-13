@@ -79,15 +79,15 @@ This release does not include any early access features.
 
 #### New features and enhancements
 
-* Added support for the `allow_unsafe_ssl` metadata flag in the satellite configuration for the [SonarQube integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-sonarqube), allowing users to bypass SSL verification for custom certificates authorized by the SonarQube server. (SEI-8309)
+* Added support for the `allow_unsafe_ssl` metadata flag in the satellite configuration for the [SonarQube integration](/docs/software-engineering-insights/sei-integrations/beta-integrations/sonarqube/sei-integration-sonarqube), allowing users to bypass SSL verification for custom certificates authorized by the SonarQube server. (SEI-8309)
 
-* We have improved the user experience for configuring the [CircleCI integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-circleci) and [DroneCI integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-droneci) focused on simplifying and streamlining the user journey. This includes support for authentication across both **Cloud** and **On-prem setups**, as well as reauthentication for expired access tokens. (SEI-8515)
+* We have improved the user experience for configuring the [CircleCI integration](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#harness-sei-supported-platforms-and-technologies) and [DroneCI integration](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#harness-sei-supported-platforms-and-technologies) focused on simplifying and streamlining the user journey. This includes support for authentication across both **Cloud** and **On-prem setups**, as well as reauthentication for expired access tokens. (SEI-8515)
 
 * Added support to display the collection name and selected Insight time range in PDFs exported from an Insight (SEI-8646)
 
 #### Fixed issues
 
-* Resolved a bug where PRs from the [Harness Code repository](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harness-code) were not getting displayed in the **Trellis contributor profile**. (SEI-8038)
+* Resolved a bug where PRs from the [Harness Code repository](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#harness-sei-supported-platforms-and-technologies) were not getting displayed in the **Trellis contributor profile**. (SEI-8038)
 
 * Fixed the issue causing the application window to freeze when configuring stages in the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile) settings. (SEI-8347)
 
@@ -228,7 +228,7 @@ This release introduces enhanced SEI Diagnostics for monitoring SCM integration 
 
 #### Generally Available
 
-The new experience for the [Azure Devops integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) is now **Generally Available**! Find the step-by-step instructions for configuring the integration on the [Azure Devops integration topic](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops).
+The new experience for the [Azure Devops integration](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops) is now **Generally Available**! Find the step-by-step instructions for configuring the integration on the [Azure Devops integration topic](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops).
 
 #### Early access features
 
@@ -352,7 +352,7 @@ Over the coming weeks, we will be moving away from the current static API docume
 
 * We have now added support for configuring filters using custom fields that are specific to change requests or incidents in the collection definition and profile settings for the **ServiceNow integration**. When configuring the filters, the custom fields available will dynamically change based on the selected ticket type. This feature is currently in BETA and requires the `SEI_SERVICE_NOW` feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.(SEI-7301)
 
-* The **ServiceNow integration** is now available for **on-prem accounts**. You can use the ingestion satellite to configure the integration. Find the step-by-step instructions on the [ServiceNow integration document](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow#servicenow-on-prem).
+* The **ServiceNow integration** is now available for **on-prem accounts**. You can use the ingestion satellite to configure the integration. Find the step-by-step instructions on the [ServiceNow integration document](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow#servicenow-on-prem).
 
 * A new instruction page has been added, with a step-by-step guide on setting up Azure DevOps integration using OAuth in the updated integration flow for Azure DevOps. This feature is currently in BETA and requires the `SEI_IS_AZURE_NEW_ONB_ENABLED` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable it. (SEI-7471)
 
@@ -382,15 +382,15 @@ In our continued effort to improve the user experience, this release introduces 
 
 <DocVideo src="https://www.youtube.com/embed/KMufOcfrNeQ?si=0wfq15tEWdguJjHC" />
 
-* **New Docs and Tutorials:** New Interactive Guides now complement our Step-by-step instructions in the documentation. These guides let you follow the user journey directly in the product while referencing the documentation. Try this out here: [SEI ServiceNow integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow#create-a-client-id-and-client-secret-in-servicenow).
+* **New Docs and Tutorials:** New Interactive Guides now complement our Step-by-step instructions in the documentation. These guides let you follow the user journey directly in the product while referencing the documentation. Try this out here: [SEI ServiceNow integration](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow#create-a-client-id-and-client-secret-in-servicenow).
 
 #### Early access features
 
-* We've introduced a new onboarding experience for the **Azure DevOps integration**, with **Personal Access Token (PAT)** authentication alongside the existing OAuth-based method. For step-by-step setup instructions, please refer to the [SEI Azure DevOps integration guide](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops). This feature is currently in BETA and requires the `<SEI_IS_AZURE_NEW_ONB_ENABLED>` Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable it. (SEI-6221) (ZD-62211)
+* We've introduced a new onboarding experience for the **Azure DevOps integration**, with **Personal Access Token (PAT)** authentication alongside the existing OAuth-based method. For step-by-step setup instructions, please refer to the [SEI Azure DevOps integration guide](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops). This feature is currently in BETA and requires the `<SEI_IS_AZURE_NEW_ONB_ENABLED>` Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable it. (SEI-6221) (ZD-62211)
 
 ![](./static/ado-pat.png)
 
-* Added support for configuring filters using **ServiceNow** fields in the reports and the collection definition. To learn more, go to [ServiceNow integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow). This integration is in BETA and requires the `<SEI_SERVICE_NOW>` entitlement. Contact [Harness Support](mailto:support@harness.io) to enable it. (SEI-7169)
+* Added support for configuring filters using **ServiceNow** fields in the reports and the collection definition. To learn more, go to [ServiceNow integration](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow). This integration is in BETA and requires the `<SEI_SERVICE_NOW>` entitlement. Contact [Harness Support](mailto:support@harness.io) to enable it. (SEI-7169)
 
 #### New features and enhancements
 
@@ -424,7 +424,7 @@ In our continued effort to improve the user experience, this release introduces 
 
 * Added support to calculate alignment metrics for tickets in the **In Progress** status category and those that have been resolved (i.e., **Done** status category) within a specific duration of time. This allows you to measure the actual effort invested for the selected period. The new **Status** column in the drill down now shows the current status of each issue. To learn more, go to [Business Alignment report use cases](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports). (SEI-6833) <br />This feature is currently in **BETA** is accessible behind the Feature Flag `<SEI_NEW_BA_COMBINED_WIDGET>` and `<SEI_BA_INCLUDE_UNRESOLVED_ISSUES>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
-* Added support for **OAuth-based** authentication for the **ServiceNow integration**. To learn more, go to [ServiceNow integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow). This feature is currently in **BETA** is accessible behind the Feature Flag `<SEI_SERVICE_NOW>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-6847)
+* Added support for **OAuth-based** authentication for the **ServiceNow integration**. To learn more, go to [ServiceNow integration](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow). This feature is currently in **BETA** is accessible behind the Feature Flag `<SEI_SERVICE_NOW>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-6847)
 
 * The **DORA Mean Time to Restore** report can now be used to measure the incident recovery time of incidents from the **ServiceNow platform**.  This feature is currently in **BETA** is accessible behind the Feature Flag `<SEI_SERVICE_NOW>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-6849)
 
@@ -557,7 +557,7 @@ In our continued effort to improve the user experience, this release introduces 
 
 * Added support for automatically sending alerts via **Slack** notifications and **Email** when the **Ingestion Satellite** status is `UNHEALTHY`. (SEI-6610)
 
-* The release includes a new integration for the **ServiceNow Platform**.  **ServiceNow** is used to set up systems that define, manage, automate and structure IT services for companies. <br /><br />You can use the **SEI ServiceNow integration** to integrate SEI with **ServiceNow Cloud** and **ServiceNow On-Prem** accounts. To learn more, go to [ServiceNow integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow)<br /><br />This feature is currently in `BETA` is accessible behind the Feature Flag `<SEI_SERVICE_NOW>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+* The release includes a new integration for the **ServiceNow Platform**.  **ServiceNow** is used to set up systems that define, manage, automate and structure IT services for companies. <br /><br />You can use the **SEI ServiceNow integration** to integrate SEI with **ServiceNow Cloud** and **ServiceNow On-Prem** accounts. To learn more, go to [ServiceNow integration](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow)<br /><br />This feature is currently in `BETA` is accessible behind the Feature Flag `<SEI_SERVICE_NOW>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 #### Fixed issues
 
@@ -644,7 +644,7 @@ In our continued effort to improve the user experience, this release introduces 
   * Selecting the issue key under the Sprints or Project tab will now automatically redirect you to the details page of the selected issue. <br /> <br /> This new Diagnostics page feature is currently in **BETA** and is behind the Feature Flag `<SEI_SHOW_DIAGNOSTIC_TILE>`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
   
 * Added support to measure the incident recovery time using the **DORA MTTR report** for the **PagerDuty integration**. PagerDuty is a cloud-based incident response platform that integrates with various monitoring tools to alert the appropriate teams when an issue occurs with their systems or services. To use this functionality, ensure that you configure the DORA profile to measure the MTTR metric using the PagerDuty integration. <br /> <br />Find the resource below to get started with using this feature.
-  * [Configure the Pagerduty integration](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-pagerduty)
+  * [Configure the Pagerduty integration](/docs/software-engineering-insights/sei-integrations/beta-integrations/sei-integration-pagerduty)
   * [Measure incident recovery time using the DORA Mean Time to Restore report.](/docs/software-engineering-insights/early-access/metrics-reports/mttr-incident-recovery) <br /> <br />
   
   This feature is currently in **BETA** and is accessible behind the Feature Flag `<SEI_MTTR_PAGERDUTY_ENABLED>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
@@ -674,7 +674,7 @@ In our continued effort to improve the user experience, this release introduces 
 #### New features and enhancements
 
 * Added support for displaying the latest pipeline execution link for the **CICD Job Count Report**, **CICD Pipeline Jobs Duration Trend Report**, **CICD Job Duration Report**, **CICD Pipeline Jobs Count Trend Report**, **CICD Pipeline Jobs Duration Report**, **DORA Deployment Frequency & Change Failure Rate** reports. <br /> <br />
-You can now view the latest pipeline execution link as a column in the drill-down view of the reports. By clicking on the link, you will be redirected to the corresponding **GitLab** pipeline execution tab. Please note that this feature is only available for reports generated using a [GitLab Cloud integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab) and will be available for newer or updated pipelines. To receive older pipeline data, please contact [Harness Support](mailto:support@harness.io). (SEI-2683) (SEI-3546) (SEI-5825)
+You can now view the latest pipeline execution link as a column in the drill-down view of the reports. By clicking on the link, you will be redirected to the corresponding **GitLab** pipeline execution tab. Please note that this feature is only available for reports generated using a [GitLab Cloud integration](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab) and will be available for newer or updated pipelines. To receive older pipeline data, please contact [Harness Support](mailto:support@harness.io). (SEI-2683) (SEI-3546) (SEI-5825)
 * In the **Activity Logs** tab we have added the support for adding `Type` as a **Filter**. This allows you to filter the activity logs using filters such as Action, Email, and more. (SEI-5157) (SEI-5343)
 * Users on the SEI Harness Platform will now have an improved navigation experience, eliminating the need to select **Collection Category** and **Collections** to access **Insights**. 
   * Now, when users create a new **Project**, they will be directed to a landing page where they can choose to create a new **Insight**. 
@@ -720,7 +720,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * Improved the ingestion logic to fetch information for the **Pull Request** related to the **Development Field** in the work item in **Azure Boards** for the **Azure DevOps** integration. Please note that this feature is currently in `BETA`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-2265) (SEI-5064) (SEI-5065)
 * The release includes a new integration for the **Rally Software**.
   Rally is a web-based platform for managing and tracking the entire application development lifecycle, including project management, release planning, iteration planning, and defect tracking. (ECOE-3) <br/> <br/>
-  To learn more, go to [Rally integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally). <br/> <br/>
+  To learn more, go to [Rally integration](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#harness-sei-supported-platforms-and-technologies). <br/> <br/>
   This feature is currently in `BETA` is accessible behind the Feature Flag  `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 #### Fixed issues
@@ -753,16 +753,16 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 
 #### Early access features
 
-* Added the support for re-authentication for [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration) and [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration) integrations. The new experience for the re-authentication flow for the Jira and GitHub integration is accessible behind the Feature Flag `<SHOULD_ENABLE_REAUTH>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-5188)
+* Added the support for re-authentication for [Jira](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration) and [GitHub](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration) integrations. The new experience for the re-authentication flow for the Jira and GitHub integration is accessible behind the Feature Flag `<SHOULD_ENABLE_REAUTH>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-5188)
 
 #### Fixed issues
 
 * In the **Issue Backlog Trend Report**, there was a bug where the `Ticket Lifetime` field appeared the same for all tickets. This has been fixed and now the field has been replaced with the `Resolution Time` column. (SEI-1999)
 * There was an existing bug in the **Issue Hygiene Report** where removing the criteria did not update the hygiene score in the widget. This has been resolved and now the data is displayed correctly in the report. (SEI-4645)
-* There was some inconsistency in the data displayed on the **Sprint Metrics Trend Report** when using [Azure DevOps](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) as the integration for the **Issue Management Tool**. This has been fixed now. (SEI-4690)
+* There was some inconsistency in the data displayed on the **Sprint Metrics Trend Report** when using [Azure DevOps](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops) as the integration for the **Issue Management Tool**. This has been fixed now. (SEI-4690)
 * In the **Lead time by Time Spent in Stages report** there was an issue where in the extended drill-down view the data was displayed incorrectly. This has been resolved now. (SEI-4753)
-* In the [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration) integration, there was a bug where the **Custom Hygienes** were displayed as blank and were only showing story points as the criteria to define the hygiene misses. This has been fixed now. (SEI-5076)
-* There was a bug where integrations created using the [GitHub App](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration#configure-the-integration-using-the-github-app) were not ingesting data due to repositories not being selected during the integration creation. This has been fixed and now the ingestion should start automatically as the integration is created. (SEI-5223)
+* In the [Jira](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration) integration, there was a bug where the **Custom Hygienes** were displayed as blank and were only showing story points as the criteria to define the hygiene misses. This has been fixed now. (SEI-5076)
+* There was a bug where integrations created using the [GitHub App](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration#configure-the-integration-using-the-github-app) were not ingesting data due to repositories not being selected during the integration creation. This has been fixed and now the ingestion should start automatically as the integration is created. (SEI-5223)
 * In the **Issue Backlog Trend report** and the **SCM Issues Resolution Time Report** drill-down, there was an issue where the `Ticket Lifetime (Resolution Time)` column data was not visible in the downloaded CSV file. This issue has been resolved now. (SEI-5237) (SEI-5269)
 * There were two known issues in the **Sprint Metrics Report** related to how certain Jira tasks/items were being counted.
   * Some Jira tasks were still appearing in the report even after they had been removed during the middle of the sprint. This happened because these tasks were included when generating metrics for the report. This has been fixed and now any tasks which are deleted mid-sprint will not appear in the Report. (SEI-5259)
@@ -811,7 +811,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * Added correlation support for mapping Jenkins CI artifacts with Harness CD. Now when configuring stages for a workflow profile, selecting Jenkins as the CI provider now allows you to define Harness CD in the subsequent stage for mapping artifact data. (SEI-2848) (SEI-4623) (SEI-4624) (SEI-4625) (SEI-4626)
 * Optimized the [Sprint Metrics Trend Report](/docs/category/sprint-metrics) to update the extended view and display data only when a new filter is applied. (SEI-4739) (SEI-4702) (SEI-4876)
 * Added the support for configuring stages and steps as a filter for Azure DevOps pipelines in the Deployment Frequency and Change Failure Rate report settings. (SEI-4814)
-* Improved the ingestion logic for the [HarnessNG Integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng) to support data retrieval for non-container type artifact deployments. (SEI-4912)
+* Improved the ingestion logic for the [HarnessNG Integration](/docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd) to support data retrieval for non-container type artifact deployments. (SEI-4912)
 * Enhanced the Lead Time by Time Spent in Stages report to make `ISSUE RESOLVED IN` a mandatory filter when the associated profile in the report settings has a Jira Release stage configured. (SEI-4668)
 
 #### Fixed issues

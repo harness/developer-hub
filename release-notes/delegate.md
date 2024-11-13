@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-10-31T22:00
+date: 2024-11-5T22:00
 sidebar_position: 4
 ---
 
@@ -19,6 +19,23 @@ These release notes describe recent changes to Harness Delegate.
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
+
+:::
+
+:::info **Delegate Base Image Migration**
+
+Harness is planning to update the base image for its Delegate from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4`, as UBI-8 reached end-of-life on May 31st, 2024. No further updates, patches, or fixes will be provided for UBI-8, so this migration ensures continued security and compatibility. This change will take effect starting **January 6, 2025**.
+
+**Key Updates with UBI9 Migration:**
+
+- **Microdnf Command Update**: When installing or removing any tool via the `microdnf` command, the confirmation option `-y` is now required.
+  - **Example**: `microdnf install wget -y`
+
+- **Tool Availability**: `curl` is already included in `ubi9-minimal`, so manual installation is no longer necessary.
+
+**Action Required**: If you use an `init_script` or a custom Dockerfile for your Delegate image, please incorporate these updates to avoid compatibility issues.
+
+For more details on UBI9, please refer to the [UBI9 Release Notes](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/9.0_release_notes/index).
 
 :::
 
@@ -68,6 +85,12 @@ Six months after a delegate image is released, the delegate reaches End of Suppo
 For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
+## November 2024
+
+### Version 24.10.84200 <!-- November 4, 2024 -->
+
+- Set limits on the number of delegates and delegate tokens allowed per account and per scope. The current limit is set to 10,000. (PL-56296)
+
 ## October 2024
 
 ### Version 24.10.84105 <!--  October 31, 2024 -->
@@ -92,15 +115,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Improved logging, error handling and force shutdown for stuck cases in winrm script for collecting output variables. These changes are behind a delegate environment variable `ENV_VARS_COLLECTOR_EXPLICIT_EXIT`. Also delegate environment variable `WINRM4J_LOG_LEVEL` for `io.cloudsoft.winrm4j` logging level has been added. (CDS-101843)
 
-### Version 24.09.83908 <!--  October 11, 2024 -->
-
-#### Hotfixes
-
 - With this change entire k8s dry manifest output yaml won't be sanitized. Only config map and secrets kind blocks would be sanitised unless `CDS_K8S_SANITIZE_COMPLETE_DRY_RUN_STEP_OUTPUT`` feature flag is switched on. (CDS-101686)
-
-### Version 24.09.83907 <!--  October 10, 2024 -->
-
-#### Hotfixes
 
 - Jira steps will now ignore unsupported fields which reading a jira ticket. (CDS-101162)
 

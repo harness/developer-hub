@@ -120,11 +120,11 @@ spec:
 ![](./static/navigating-new-workflows-page.png)
 ![](./static/tags-categories.png)
 
-6. **Workflows Details**: The three dots on each workflows now allows you to **View**, **Edit** and **Refresh**(updates Workflow with the latest changes in definition YAML) the YAMLs.  
+6. **Workflows Details**: The three dots on each Workflows now allows you to **View**, **Edit** and **Refresh**(updates Workflow with the latest changes in definition YAML) the YAMLs.  
 
 ![](./static/workflows-three-dots.png)
 
-7. **Open Playground**: Template Editor is part of the **Open Playground**, where you can you can preview your workflows changes live. 
+7. **Open Playground**: Template Editor is part of the **Open Playground**, where you can preview your workflows changes live. 
 
 ![](./static/open-playground.png)
 
@@ -133,7 +133,7 @@ spec:
 
 ### Icons Supported in Harness IDP
 
-- Go to Icons under **IDP-Admin -> Layout**, and highlight the icon name you want to add, it will be copied and now you can add it under the `metadata.icon` in the Workflow definition YAML. 
+- Go to Icons under **IDP-Admin -> Layout**, and highlight the icon name you want to add, it will be copied, and now you can add it under the `metadata.icon` in the Workflow definition YAML. 
 
 ![](./static/layout-icons.png)
 ![](./static/icons.png)

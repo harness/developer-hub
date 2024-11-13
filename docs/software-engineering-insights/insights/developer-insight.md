@@ -38,7 +38,7 @@ Once your project is created, you can set up and map integrations as an admin an
 1. Go to the **Integration Mapping** tab within the SEI module.
 2. Click **Map Integrations** and select existing integrations or create new ones as needed.
 3. Ensure you associate the integrations with your current project.
-4. Now for configuring a Developer Metrics insight, you'll need to map the integration for your source code manager. For this tutorial we will map the [GitHub integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration) (Source Code Manager).
+4. Now for configuring a Developer Metrics insight, you'll need to map the integration for your source code manager. For this tutorial we will map the [GitHub integration](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration) (Source Code Manager).
 
 :::info
 Find a list of all the supported integrations for SCM on Harness SEI [here](/docs/software-engineering-insights/sei-supported-platforms)
@@ -46,7 +46,7 @@ Find a list of all the supported integrations for SCM on Harness SEI [here](/doc
 
 You can also create new integrations and associate the integration with the current project by mapping them.
 
-* To create a new GitHub integration, go to [GitHub integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration).
+* To create a new GitHub integration, go to [GitHub integration](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration).
 
 ## Create the Insight
 
