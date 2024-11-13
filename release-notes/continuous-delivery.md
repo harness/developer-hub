@@ -51,12 +51,12 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### New Features and Enhancement
 
-- With Harness Multi-source GitOps, users can now explicitly specify the source to sync with their applications in the sync policy. (CDS-103055)
+- For Harness GitOps Applications that use multiple sources, users can now select which of the source to sync with their Applications during the sync operation. Previously, all sources were always synced. (CDS-103055)
 
 #### Fixed issues
 
-- GitOps hosted agent scale-up was failing with the unclear error message "Failed to Scale the GitOps agent." This issue has is resolved, and the error message now provides a detailed reason for the scale-up failure. (CDS-103429)
-- Users experience continuous log window refresh when viewing logs for a Harness GitOps resource. This issue is resolved now. (CDS-103016, ZD-72211)
+- GitOps hosted agent scale-up was failing with the unclear error message "Failed to Scale the GitOps agent." This issue is resolved, and the error message now provides a detailed reason for the scale-up failure. (CDS-103429)
+- Users experience continuous log window refresh when viewing logs for a Harness GitOps resource. This issue is resolved. (CDS-103016, ZD-72211)
 
 ### Version 1.64.6
 
