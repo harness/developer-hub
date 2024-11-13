@@ -570,7 +570,7 @@ If the rule depends on the execution of the pipeline then the latest execution o
 
 7. **(Code) Match string in a file**
 
-- *Objective*: Matches the pattern in the given file from the branch..
+- *Objective*: Matches the pattern in the given file from the branch.
 
 - *Calculation Method*: If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the backstage.io/source-location annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the contents are examined to find the pattern. Returns true/false based on whether the pattern was found or not.
 
