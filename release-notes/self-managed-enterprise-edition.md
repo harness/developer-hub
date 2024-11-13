@@ -1215,8 +1215,6 @@ Refer to following doc for more details on new [repo listing](/docs/platform/git
 
 #### Chaos Engineering
 
-- Added NIL check for probes in CDC, updated chaosGameDays collection name and `gameday_run_id` field. (CHAOS-5737)
-
 - CPU utilization increased due to continuously executing clean up tasks. This issue has been fixed by adding a sleep operation that runs after every remove operation and optimizes overall CPU performance. (CHAOS-5709)
 
 #### Continuous Integration
