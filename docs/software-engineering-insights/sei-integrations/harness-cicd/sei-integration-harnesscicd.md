@@ -13,8 +13,9 @@ To configure the SEI Harness integration, you need:
 
 * Your Harness account ID. You can find this under **Account Settings**.
 * A [Harness API key and token](/docs/platform/automation/api/add-and-manage-api-keys).
+* The **Harness Service Account** used to generate the API key must have a role binding as **Account Viewer** with the resource group set to **All Resources Including Child Scopes**. Copy the account ID and token somewhere that you can retrieve them when you configure the integration.
 
-Copy the account ID and token somewhere that you can retrieve them when you configure the integration.
+![](../static/harness-service-account-permissions.png)
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

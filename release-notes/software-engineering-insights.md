@@ -22,6 +22,28 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 :::
 
+## November 2024
+
+### Version 202411.1
+
+<!-- November 13, 2024 -->
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### New features and enhancements
+
+* Improved the user experience when connecting with [Bitbucket Data Center](/docs/software-engineering-insights/sei-integrations/bitbucket/sei-integration-bitbucket). Users now have the choice of:
+  * **Direct Public Connection** using the username and PAT token. This requires you to allow incoming connections from from Harness. For more information check, [Allowlist Harness Platform IPs](/docs/platform/references/allowlist-harness-domains-and-ips)
+  * **Satellite Connection** for on-prem instances. (SEI-9240)
+
+#### Fixed issues
+
+* The issue of duplicated work items appearing in the SEI system across different Azure DevOps organizations has been resolved. (SEI-8885) (ZD-70797)
+* Fixed the bug that caused the Configuration Item to display no values when adding a filter using the ServiceNow integration (SEI-9295) (ZD-72519)
+* The issue causing reauthentication failures in the Azure DevOps integration has been resolved. (SEI-9327)
+
 ## October 2024
 
 ### Version 202410.2
