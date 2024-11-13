@@ -1,7 +1,7 @@
 ---
 title: Pull request automation
 description: Learn how to set up a PR pipeline to review infrastructure changes. 
-sidebar_position: 40
+sidebar_position: 50
 ---
 
 import Tabs from '@theme/Tabs';
