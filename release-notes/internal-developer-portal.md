@@ -37,6 +37,11 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 - Added Audit trails Support for Workflows v2 and Homepage Layout. [IDP-3849, IDP-3848]
 
+- Added support for Harness Code Repository data points under Harness data source for Scorecards. The following data points are added: [IDP-3640]
+  - Extract string from a file
+  - Does file exist
+  - Match string in a file 
+
 
 #### Bug fixes
 
