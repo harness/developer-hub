@@ -25,7 +25,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 #### New features and enhancements
 
-- You can now view your pull requests under the [My Pull Requests card](/docs/internal-developer-portal/layout-and-appearance/home-page-customization#my-pull-requests-card) on the Developer Homepage. Currently, only GitHub is supported as a data source. [IDP-3458]
+- You can now view your pull requests under the [My Pull Requests card](/docs/internal-developer-portal/layout-and-appearance/home-page-customization#my-pull-requests-card) on the Developer Homepage. Currently, only GitHub is supported. [IDP-3458]
 
 ![](./static/idp-pull-request-github.png)
 
