@@ -92,5 +92,5 @@ We do not create the directory if they do not exist, hence we need to ensure the
 ### Does Harness support automatic rollback for SSH/WINRM deployment types?
 No, you need to write a custom script where you can get the previous version and create a new forward deployment with the required version of the artifact and the manifest.
 
-### How to reference privateIp for ec2 instance while using ssh type deployment?
-You can make use of ```<+instance.properties.privateIp>``` and for all available variable under instance properties you can print  ```<+instance.properties.*>``` and confirm.
+### How do I reference privateIp for an EC2 instance while using a ssh type deployment?
+You can make use of ```<+instance.properties.privateIp>``` for all available variables under instance properties. You can print  ```<+instance.properties.*>``` and confirm this list. 
