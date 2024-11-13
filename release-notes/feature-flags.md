@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-10-28T08:09:25
+date: 2024-11-13T08:09:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,14 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: October 28, 2024
+#### Last updated: November 13, 2024
+
+## November 2024
+
+### Ruby Server SDK
+
+**Fixed Issues**:
+ - Skips processing invalid metrics if they are detected.  We are currently investigating an edge case in the SDK, where very large projects can generate invalid metric events shortly after the SDK has initialised. This patch release ensures these invalid metrics events are skipped, and a warning is logged if the SDK encounters them. The impact is flag evaluation metrics will not include any events that have been skipped. (FFM-12192)
 
 ## October 2024
 
