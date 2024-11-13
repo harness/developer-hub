@@ -51,8 +51,6 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 - Resolved an issue with the Kubernetes plugin’s "View Logs" functionality. This feature now correctly requires the `kubernetes.proxy` permission to be set for proxied calls to work as expected. [IDP-3900]
 
-- Resolved an issue with the Catalog Readiness Scorecard. [IDP-3887]
-
 - Resolved an issue with `HarnessAutoOrgPicker` not displaying organizations for some projects. Increased the maximum number of projects from 500 to 1000 to support customer accounts with more than 500 projects. [IDP-4022]
 
 ## October 2024
