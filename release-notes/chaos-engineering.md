@@ -1,13 +1,12 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-09-18T10:00
+date: 2024-11-13T10:00
 sidebar_position: 5
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/chaos-engineering/rss.xml" />
 
@@ -21,9 +20,35 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## November 2024
+
+### Version 1.48.0
+
+#### New features and enhancements
+
+- Adds a pre-check to the Windows global blackhole experiment to verify if the firewall is enabled for the target Windows VM. If not, the `ENABLE_FIREWALL` tunable is set, which, by default, enables the firewall. (CHAOS-6848)
+
+- Introduces the Windows disk fill chaos experiment, supported by Windows chaos infrastructure. (CHAOS-6842)
+
+#### Fixed issues
+
+- Fixed the input mechanism for specifying multiple zones for CLB AZ down chaos fault, now allowing comma-separated values for multiple inputs. (CHAOS-6909)
+
+- Fixed an issue with the bulk update experiment selection checkbox not de-selecting after updating a cron job. (CHAOS-6856)
+
+- Fixed the error occurring when performing multiple actions on experiments, such as pushing to a custom ChaosHub, adding to GameDay, and executing the experiments consecutively. (CHAOS-6568)
+
+- Fixed the UI issue that prevented a GameDay execution after the stakeholder approval. (CHAOS-6467)
+
+- Fixed the issue where the **Application Maps** drawer was not displayed on the first page due to pagination issues. (CHAOS-6407)
+
+- Fixed the visibility issue of the status display for the Enterprise ChaosHub in dark mode. (CHAOS-5970)
+
+- Fixed the issue where two continuous command probes with a short polling duration could not execute in Linux infrastructure. (CHAOS-5461)
+
 ## October 2024
 
-## Version 1.47.0
+### Version 1.47.0
 
 #### New features and enhancements
 
@@ -51,7 +76,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## September 2024
 
-## Version 1.45.5
+### Version 1.45.5
 
 #### Fixed issues
 
