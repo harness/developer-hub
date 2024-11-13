@@ -44,6 +44,12 @@ This release does not include any early access features.
 * Fixed the bug that caused the Configuration Item to display no values when adding a filter using the ServiceNow integration (SEI-9295) (ZD-72519)
 * The issue causing reauthentication failures in the Azure DevOps integration has been resolved. (SEI-9327)
 
+#### Documentation and content
+
+The [Harness Software Engineering Insights playlist](https://www.youtube.com/embed/videoseries?si=jEksy8WQoTcVlqmv&amp;list=PLXsYHFsLmqf09e_PRmpCaraxmn3U1X1fP) is now available on YouTube.
+
+<DocVideo src="https://www.youtube.com/embed/videoseries?si=jEksy8WQoTcVlqmv&amp;list=PLXsYHFsLmqf09e_PRmpCaraxmn3U1X1fP" />
+
 ## October 2024
 
 ### Version 202410.2
