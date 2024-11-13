@@ -4,6 +4,8 @@ description: Validate your data in SEI
 sidebar_label: Diagnostics
 sidebar_position: 85
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 Diagnostics helps you validate data accuracy, monitor data ingestion, and troubleshoot integration related issues in the application. It provides visibility into data ingestion status, progress, and alerts to ensure the SEI system is healthy and  has the latest data updated.
 
@@ -90,9 +92,130 @@ Monitor the health of ingestion satellites for on-prem integration setups.
 
 ## Integration Status
 
-Check the status of individual integrations and drill down into specific issues.
+The Integration Status page is a central dashboard designed to help you monitor, manage, and troubleshoot all your integrations effectively. 
+This page provides a real-time health check on data ingestion status, allowing you to identify potential data discrepancies across different integrations quickly.
+
+### Overview
+
+Each integration displays essential information:
+
+* Integration Name, ID, and Description: Unique identifiers for easy identification across multiple integration instances.
+* Current Status: Real-time health indicator, showing the latest ingestion state.
 
 ![](./static/integration-status.png)
+
+### Status labels and recommended actions
+
+Each integration is labeled with a specific status based on recent ingestion results. Below are the statuses, their meanings, and recommended actions:
+
+| Status | Description | What It Means For You | Recommended Action |
+|--------|-------------|----------------------|-------------------|
+| HEALTHY | All ingestion jobs successful in the past week | Your integration is working optimally | Continue regular monitoring |
+| CRITICAL | No successful ingestion jobs in the past week | Data is not being updated, immediate attention required | Check credentials and connectivity  |
+| NEEDS ATTENTION | Some failed ingestion jobs in the past week | Partial data loss may be occurring | Review [error logs](#injestion-jobs) and recent changes |
+| OFFLINE SATELLITE | No recent ingestion jobs and no active satellite | Integration agent is not communicating | Verify satellite configuration and network status |
+| PAUSED | Integration ingestion manually paused | No new data is being collected (intentional) | Contact [Harness Support](/docs/software-engineering-insights/sei-support) to resume when ready to continue data ingestion |
+| UNKNOWN | No recent ingestion jobs or unspecified issues | System cannot determine integration health | Check integration requirements and configuration |
+
+### Troubleshooting by Integration Type
+
+Each integration provides unique data points based on its setup and usage. For example, the Jira integration section includes separate details on Projects and Sprints ingested into the system.
+Similarly for Source Code Management (SCM) tools provides a summary of repository ingestion across all integrations. It includes the total count of repositories successfully ingested, along with specific data for each integration.
+
+<Tabs>
+<TabItem value="Jira" default>
+
+The integration status page for Jira display the total count of projects and sprints data that are ingested as part of all the integrations.
+
+![](./static/diagnostics-jira-integration.png)
+
+For each ingested project, the following details are available:
+
+* Total Issues Count: Number of issues ingested for the project.
+* Newest Issue Creation Date and Time: Date and time of the most recently created issue.
+* All Issues View: Lists all ingested issues, making it easy to verify data accuracy. 
+
+![](./static/diagnostics-projects.png)
+
+* Each issue includes:
+  * Story Points Allocated: Total story points assigned to each issue.
+  * Issue Type: Categorizes issues (e.g., Bug, Task, Story).
+  * Assignee: Person responsible for the issue.
+  * Issue Created At: Date and time the issue was originally created.
+  * Last Issue Update: Timestamp of the last update to the issue.
+
+To locate specific issues, you can use the Filter and Search by Ticket ID feature. If you need to identify projects with missing data, enable Show Only Projects with 0 Issues to display projects with no issues ingested.
+
+![](./static/diagnostics-project-details.png)
+
+For each ingested sprint, the following metrics are displayed:
+
+Sprint Name
+Start Date and End Date: Planned timeline for the sprint.
+Committed Story Points: Total story points planned for completion.
+Delivered Story Points: Actual story points delivered by the sprint’s end.
+Total Issues Count: Number of issues ingested for the sprint.
+Latest Issue Created Date: Most recent creation date among issues in the sprint.
+
+![](./static/diagnostics-sprints.png)
+
+In addition, each sprint shows all associated issues, with the following details for each:
+
+Story Points Allocated: Story points assigned to each issue.
+Issue Type: Type of issue (e.g., Bug, Task, Story).
+Status: Current status of the issue.
+Assignee: Team member assigned to the issue.
+Issue Created At: Date the issue was created.
+Last Issue Update: Date of the latest update to the issue.
+
+![](./static/diagnostics-sprint-details.png)
+
+</TabItem>
+
+<TabItem value="Source Code Managers">
+
+The integration status page for SCM integrations provides a overview for tracking and validating the data of repositories ingested through your integrations. It displays the total count of repositories and allows you to access detailed information to monitor repository activity and troubleshoot data discrepancy issues.
+
+![](./static/diagnostics-scm-integrations.png)
+
+The status page shows the total count of repositories ingested as part of the integration. For each SCM integration, select View to see key information.
+
+* Repository Name: Name of each repository.
+* Total Commits: Total number of commits made in each repository.
+* Total Pull Requests: Total count of PRs submitted in the repository.
+* Newest PR Created Time (UTC): Date and time of the latest PR creation.
+
+![](./static/diagnostics-scm-repos.png)
+
+Click View PRs to see data on each pull request, including:
+
+* All PRs: List of all pull requests for the repository.
+* Current State: The current status of each PR (e.g., open, closed, merged).
+* Creator: The user who created the PR.
+* Assignee: The user assigned to review or merge the PR.
+* Labels: Any labels applied to the PR.
+* Created At: The date and time the PR was created.
+* Last Updated: The most recent date and time the PR was updated.
+
+![](./static/diagnostics-repos-details.png)
+
+Clicking on a PR title opens a detailed PR Details page, displaying:
+
+* Cycle Time: The total time from PR creation to merge or closure.
+* Files Changed: A list of all files modified in the PR.
+* Lines Changed: The total lines of code added or removed.
+* Comment Density: The frequency of comments within the PR.
+* PR History: A timeline of significant PR events (e.g., status changes).
+* Associated Commits: All commits linked to the PR.
+* CI Pipelines: Any continuous integration pipelines related to the PR.
+* Time Spent in Status: A breakdown of time spent in each PR stage, along with other specific PR details.
+
+![](./static/diagnostics-pr-details.png)
+
+
+
+</TabItem>
+</Tabs>
 
 ## Run Spot Check
 
