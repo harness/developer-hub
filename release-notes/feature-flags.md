@@ -33,7 +33,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 **Fixed Issues**:
  - Skips processing invalid metrics if they are detected. We are currently investigating an edge case in the SDK, where very large projects can generate 
  invalid metric events shortly after the SDK has initialised. This patch release ensures these invalid metrics events are skipped, and a warning is logged 
- if the SDK encounters them. The impact is flag evaluation metrics will not include any events that have been skipped. (FFM-12192)
+ if the SDK encounters them. The impact of flag evaluation metrics will not include any events that have been skipped. (FFM-12192)
 
 ## October 2024
 
