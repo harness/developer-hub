@@ -248,7 +248,7 @@ export default function LearnAboutPlatform(): JSX.Element {
           <li>
             <a href="/release-notes/software-supply-chain-assurance">
               <h4>Supply Chain Security</h4>
-              <p>New features and fixed issues for the SSCA module</p>
+              <p>New features and fixed issues for the SCS module</p>
             </a>
           </li>
           <li>

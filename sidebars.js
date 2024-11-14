@@ -117,7 +117,7 @@ const sidebars = {
             description: "Learn how to left shift your security testing.",
           },
         },
-        // SSCA
+        // SCS
         {
           type: "link",
           href: "/docs/software-supply-chain-assurance",
@@ -137,7 +137,7 @@ const sidebars = {
             description: "Learn how to build and validate resilience.",
           },
         },
-        // SSCA
+        // SCS
 
         // Service Reliability Management Page
         {
@@ -152,17 +152,17 @@ const sidebars = {
           },
         },
         // Continuous Error Tracking landing page
-        {
-          type: "link",
-          href: "/docs/continuous-error-tracking",
-          label: "Continuous Error Tracking",
-          className: "sidebar-cet",
-
-          customProps: {
-            description:
-              "Learn how you can identify, triage, and resolve errors in applications.",
-          },
-        },
+        //{
+        //  type: "link",
+        //  href: "/docs/continuous-error-tracking",
+        //  label: "Continuous Error Tracking",
+        //  className: "sidebar-cet",
+        //
+        //  customProps: {
+        //    description:
+        //      "Learn how you can identify, triage, and resolve errors in applications.",
+        //  },
+        //},
         {
           type: "link",
           href: "/docs/internal-developer-portal",
@@ -176,7 +176,7 @@ const sidebars = {
         // Cloud Development Environments Landing Page
         {
           type: "link",
-          label: "Cloud Development Environments (BETA)",
+          label: "Cloud Development Environments",
           className: "sidebar-cde",
           href: "/docs/cloud-development-environments",
           
