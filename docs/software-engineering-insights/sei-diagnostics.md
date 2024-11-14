@@ -1,6 +1,6 @@
 ---
 title: Diagnostics
-description: Validate your data in SEI 
+description: Troubleshoot and validate your data in SEI 
 sidebar_label: Diagnostics
 sidebar_position: 85
 ---
@@ -26,7 +26,7 @@ Use SEI Diagnostics if you need to:
 * Source Control Management (SCM): All SCM integrations supported by SEI
 :::
 
-## System Status
+## System status
 
 The System Status overview provides a centralized view of your SEI system's health, specifically focusing on the ingestion jobs and satellite connectivity. Here's a breakdown of what each section covers:
 
@@ -40,6 +40,8 @@ Ingestion jobs retrieve data from integrated platforms. For each job, the follow
 * **Error Logs:** In case of a failure, the logs provide insights into the cause and any associated errors for troubleshooting.
 
 ![](./static/system-status.png)
+
+### Common error logs
 
 Below are examples of errors you might find in the error logs, along with causes and potential fixes:
 
@@ -86,11 +88,23 @@ This error occurs when the integration is sending too many requests to the API w
 
 If you're using a PAT (Personal Access Token) or API Key for authentication, try [reauthenticating](/docs/software-engineering-insights/sei-integrations/reauthenticate-integration) the integration with multiple access tokens for different service accounts. This can help distribute the request load and reduce the likelihood of hitting rate limits. If the error persists, reach out to [support](/docs/software-engineering-insights/sei-support) with the details for further investigation.
 
-### Ingestion Satellite Status
+### Ingestion satellite status
 
-Monitor the health of ingestion satellites for on-prem integration setups. 
+Monitor the health of ingestion satellites for on-prem integration setups.
 
-## Integration Status
+![](./static/diagnostics-satellite-status.png)
+
+The following details are displayed:
+
+* **Satellite ID:** Unique identifier for the ingestion satellite.
+* **Status:** Current health status (e.g., Healthy).
+* **Status Updated At:** The most recent timestamp of when the status was last updated.
+* **Memory (MB):** Current memory usage versus allocated memory.
+* **CPU (Cores):** The number of CPU cores currently in use by the satellite.
+* **Version:** Installed satellite software version.
+* **Integrations:** The integration IDs where the satellite is actively used
+
+## Integration status
 
 The Integration Status page is a central dashboard designed to help you monitor, manage, and troubleshoot all your integrations effectively. 
 This page provides a real-time health check on data ingestion status, allowing you to identify potential data discrepancies across different integrations quickly.
@@ -99,14 +113,14 @@ This page provides a real-time health check on data ingestion status, allowing y
 
 Each integration displays essential information:
 
-* Integration Name, ID, and Description: Unique identifiers for easy identification across multiple integration instances.
-* Current Status: Real-time health indicator, showing the latest ingestion state.
+* **Integration Name, ID, and Description:** Unique identifiers for easy identification across multiple integration instances.
+* **Current Status:** Real-time health indicator, showing the latest ingestion state.
 
 ![](./static/integration-status.png)
 
 ### Status labels and recommended actions
 
-Each integration is labeled with a specific status based on recent ingestion results. Below are the statuses, their meanings, and recommended actions:
+Each integration is labeled with a specific status based on recent ingestion activity. Below are the statuses, their meanings, and recommended actions:
 
 | Status | Description | What It Means For You | Recommended Action |
 |--------|-------------|----------------------|-------------------|
@@ -117,112 +131,115 @@ Each integration is labeled with a specific status based on recent ingestion res
 | PAUSED | Integration ingestion manually paused | No new data is being collected (intentional) | Contact [Harness Support](/docs/software-engineering-insights/sei-support) to resume when ready to continue data ingestion |
 | UNKNOWN | No recent ingestion jobs or unspecified issues | System cannot determine integration health | Check integration requirements and configuration |
 
-### Troubleshooting by Integration Type
+### View details
 
-Each integration provides unique data points based on its setup and usage. For example, the Jira integration section includes separate details on Projects and Sprints ingested into the system.
-Similarly for Source Code Management (SCM) tools provides a summary of repository ingestion across all integrations. It includes the total count of repositories successfully ingested, along with specific data for each integration.
+Each integration provides unique data points based on its setup and usage. For example, the Jira Integration section includes details on the Projects and Sprints ingested into the system, while Source Code Management (SCM) integrations provide a summary of repository ingestion across all integrations.
 
 <Tabs>
-<TabItem value="Jira" default>
+<TabItem value="View Jira Data" default>
 
-The integration status page for Jira display the total count of projects and sprints data that are ingested as part of all the integrations.
+The integration status page for Jira displays the total count of Projects and Sprints ingested as part of the Jira integrations.
 
 ![](./static/diagnostics-jira-integration.png)
 
-For each ingested project, the following details are available:
+For each ingested project, the following information is provided:
 
-* Total Issues Count: Number of issues ingested for the project.
-* Newest Issue Creation Date and Time: Date and time of the most recently created issue.
-* All Issues View: Lists all ingested issues, making it easy to verify data accuracy. 
+* **Total Issues Count:** The number of issues ingested for the project.
+* **Newest Issue Creation Date and Time:** The timestamp of the most recently created issue.
+* **All Issues View:** Displays all ingested issues for easy verification of data accuracy.
 
 ![](./static/diagnostics-projects.png)
 
-* Each issue includes:
-  * Story Points Allocated: Total story points assigned to each issue.
-  * Issue Type: Categorizes issues (e.g., Bug, Task, Story).
-  * Assignee: Person responsible for the issue.
-  * Issue Created At: Date and time the issue was originally created.
-  * Last Issue Update: Timestamp of the last update to the issue.
+For each ingested issue, the following details are shown:
 
-To locate specific issues, you can use the Filter and Search by Ticket ID feature. If you need to identify projects with missing data, enable Show Only Projects with 0 Issues to display projects with no issues ingested.
+* **Story Points Allocated:** Total story points assigned to the issue.
+* **Issue Type:** Categorization of the issue (e.g., Bug, Task, Story).
+* **Assignee:** Person responsible for the issue.
+* **Issue Created At:** Date and time the issue was created.
+* **Last Issue Update:** Timestamp of the last update to the issue.
+
+You can use the Filter and Search by Ticket ID feature to locate specific issues. To identify projects with missing data, enable Show Only Projects with 0 Issues to display projects with no ingested issues.
 
 ![](./static/diagnostics-project-details.png)
 
 For each ingested sprint, the following metrics are displayed:
 
-Sprint Name
-Start Date and End Date: Planned timeline for the sprint.
-Committed Story Points: Total story points planned for completion.
-Delivered Story Points: Actual story points delivered by the sprint’s end.
-Total Issues Count: Number of issues ingested for the sprint.
-Latest Issue Created Date: Most recent creation date among issues in the sprint.
+* **Sprint Name**
+* **Start Date and End Date:** The timeline for the sprint.
+* **Committed Story Points:** Total story points planned for completion.
+* **Delivered Story Points:** Actual story points delivered by the sprint’s end.
+* **Total Issues Count:** The number of issues that was part of the sprint.
+* **Latest Issue Created Date:** The most recent creation date among issues in the sprint.
 
 ![](./static/diagnostics-sprints.png)
 
 In addition, each sprint shows all associated issues, with the following details for each:
 
-Story Points Allocated: Story points assigned to each issue.
-Issue Type: Type of issue (e.g., Bug, Task, Story).
-Status: Current status of the issue.
-Assignee: Team member assigned to the issue.
-Issue Created At: Date the issue was created.
-Last Issue Update: Date of the latest update to the issue.
+* **Story Points Allocated:** Story points assigned to each issue.
+* **Issue Type:** Type of issue (e.g., Bug, Task, Story).
+* **Status:** Current status of the issue.
+* **Assignee:** Contributor assigned to the issue.
+* **Issue Created At:** Date the issue was created.
+* **Last Issue Update:** Date of the latest update to the issue.
 
 ![](./static/diagnostics-sprint-details.png)
 
 </TabItem>
 
-<TabItem value="Source Code Managers">
+<TabItem value="View Other Source Code Managers Data">
 
-The integration status page for SCM integrations provides a overview for tracking and validating the data of repositories ingested through your integrations. It displays the total count of repositories and allows you to access detailed information to monitor repository activity and troubleshoot data discrepancy issues.
+The integration status page for SCM provides an overview of the ingestion data for repositories. It displays the total count of repositories and allows you to access detailed information to monitor repository activity and troubleshoot data discrepancies.
 
 ![](./static/diagnostics-scm-integrations.png)
 
-The status page shows the total count of repositories ingested as part of the integration. For each SCM integration, select View to see key information.
+The status page shows the total count of repositories ingested as part of each SCM integration. Click on the **View** button for detailed information about each repository:
 
-* Repository Name: Name of each repository.
-* Total Commits: Total number of commits made in each repository.
-* Total Pull Requests: Total count of PRs submitted in the repository.
-* Newest PR Created Time (UTC): Date and time of the latest PR creation.
+* **Repository Name:** Name of each repository.
+* **Total Commits:** The total number of commits made in the repository.
+* **Total Pull Requests (PRs):** The total number of PRs submitted.
+* **Newest PR Created Time (UTC):** Date and time of the latest PR creation.
 
 ![](./static/diagnostics-scm-repos.png)
 
-Click View PRs to see data on each pull request, including:
+Click **View PRs** to access details on each pull request:
 
-* All PRs: List of all pull requests for the repository.
-* Current State: The current status of each PR (e.g., open, closed, merged).
-* Creator: The user who created the PR.
-* Assignee: The user assigned to review or merge the PR.
-* Labels: Any labels applied to the PR.
-* Created At: The date and time the PR was created.
-* Last Updated: The most recent date and time the PR was updated.
+* **All PRs:** Lists all pull requests for the repository.
+* **Current State:** The current status of each PR (e.g., Open, Closed, Merged).
+* **Creator:** The user who created the PR.
+* **Assignee:** The Assignee field displays data from GitHub’s assignee field, showing the person or people assigned to contribute on the pull request.
+* **Labels:** Any labels applied to the PR.
+* **Created At:** Date and time the PR was created.
+* **Last Updated:** The most recent date and time the PR was updated.
 
 ![](./static/diagnostics-repos-details.png)
 
 Clicking on a PR title opens a detailed PR Details page, displaying:
 
-* Cycle Time: The total time from PR creation to merge or closure.
-* Files Changed: A list of all files modified in the PR.
-* Lines Changed: The total lines of code added or removed.
-* Comment Density: The frequency of comments within the PR.
-* PR History: A timeline of significant PR events (e.g., status changes).
-* Associated Commits: All commits linked to the PR.
-* CI Pipelines: Any continuous integration pipelines related to the PR.
-* Time Spent in Status: A breakdown of time spent in each PR stage, along with other specific PR details.
+* **Cycle Time:** The total time from PR creation to merge or closure.
+* **Files Changed:** A list of all files modified in the PR.
+* **Lines Changed:** The total lines of code added or removed.
+* **Comment Density:** The frequency of comments within the PR.
+* **PR History:** A timeline of significant PR events (e.g., status changes).
+* **Associated Commits:** All commits linked to the PR.
+* **CI Pipelines:** Any continuous integration pipelines related to the PR.
+* **Time Spent in Status:** A breakdown of time spent in each PR stage, along with other specific PR details.
 
 ![](./static/diagnostics-pr-details.png)
-
-
 
 </TabItem>
 </Tabs>
 
-## Run Spot Check
+## Run spot check
 
-Perform targeted validation of data for a specific timeframe or data subset.
+The **Run Spot Check** feature allows you to quickly verify whether specific data items, such as Jira issues (by ticket key) or pull requests (by PR ID and repository name), have been successfully ingested into the SEI system.
 
-## Troubleshooting
+When you run a search, the system scans its internal storage and retrieves the requested item if it exists in SEI. This feature is especially useful for cross-checking data between Harness SEI and other tools, ensuring that all relevant data has been correctly ingested and is available for analysis.
 
-### Missing data in the system
+<div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+  <img src={require('../software-engineering-insights/static/run-spot-check.png').default} alt="Run Spot Check Overview" style={{ width: '48%' }} />
+</div>
 
-If you encounter a 
+<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+  <img src={require('../software-engineering-insights/static/spot-check-jira.png').default} alt="Spot Check Jira" style={{ width: '48%' }} />
+  <img src={require('../software-engineering-insights/static/spot-check-pr.png').default} alt="Spot Check Jira" style={{ width: '48%' }} />
+</div>
