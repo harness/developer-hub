@@ -8,7 +8,7 @@ Welcome to the Harness Database DevOps Product Documentation. This guide will as
 
 ## Before you begin, review the following:
 
-- [All about Database DevOps](/docs/database-devops/get-started/)
+- [All about Database DevOps](/docs/database-devops/get-started/overview.md)
 
 ## Harness DB DevOps Architecture
 
