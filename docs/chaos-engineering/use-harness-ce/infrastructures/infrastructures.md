@@ -318,7 +318,7 @@ To verify the status of the service, navigate to the command prompt on your Wind
 
 HCE allows you to create the below probes for Windows:
 
-1. [HTTP](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/http-probe)
+1. [HTTP](/docs/chaos-engineering/use-harness-ce/probes/http-probe)
 
 </TabItem>
 </Tabs>

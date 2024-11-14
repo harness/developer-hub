@@ -267,7 +267,7 @@ You should create a Harness text secret with your encrypted token and reference 
 Enter the Traceable Suite  ID, which you can find in the URL when you open your suite in Traceable. For example, in the URL `https://app.traceable.ai/my-suite/44aadeB-782b-8d52-8q12-43kdf33/vulnerabilities?time=1d&env=env`, the suite ID is `44aadeB-782b-8d52-8q12-43kdf33`. You can learn more about Suites in the [Traceable documentation](https://docs.traceable.ai/docs/suites).
 
 #### Runner Selection
-This field appears when the scan mode is set to **Orchestration**. You can allow Traceable to set it automatically by selecting **Auto**, or configure it manually by choosing **Manual**. If you select **Manual**, enter the Traceable [Runner ID][https://docs.traceable.ai/docs/runners] in the **Runner ID** field. Also, make sure you have runners created and active in Traceable, as the step cannot create runners.
+This field appears when the scan mode is set to **Orchestration**. You can allow Traceable to set it automatically by selecting **Auto**, or configure it manually by choosing **Manual**. If you select **Manual**, enter the Traceable [Runner ID](https://docs.traceable.ai/docs/runners#runner-view) in the **Runner ID** field. Also, make sure you have runners created and active in Traceable, as the step cannot create runners.
 
 ### Ingestion File
 

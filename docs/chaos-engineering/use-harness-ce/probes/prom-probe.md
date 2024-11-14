@@ -6,6 +6,7 @@ redirect_from:
 - /docs/chaos-engineering/technical-reference/probes/prom-probe
 - /docs/chaos-engineering/features/probes/prom-probe
 - /docs/chaos-engineering/features/resilience-probes/prom-probe
+- /docs/chaos-engineering/concepts/explore-concepts/resilience-probes/prom-probe
 ---
 
 import CommonNote from './shared/common-note.md'

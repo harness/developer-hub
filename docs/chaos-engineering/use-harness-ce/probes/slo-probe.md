@@ -5,6 +5,7 @@ description: Features and specification of the SLO probe
 redirect_from:
 - /docs/chaos-engineering/technical-reference/probes/slo-probe
 - /docs/chaos-engineering/features/probes/slo-probe
+- /docs/chaos-engineering/concepts/explore-concepts/resilience-probes/slo-probe
 ---
 
 import CommonNote from './shared/common-note.md'

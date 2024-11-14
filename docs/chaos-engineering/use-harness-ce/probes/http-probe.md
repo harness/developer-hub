@@ -5,6 +5,7 @@ description: Features and specification of the HTTP probe
 redirect_from:
 - /docs/chaos-engineering/technical-reference/probes/http-probe
 - /docs/chaos-engineering/features/probes/http-probe
+- /docs/chaos-engineering/concepts/explore-concepts/resilience-probes/http-probe
 ---
 
 import CommonNote from './shared/common-note.md'

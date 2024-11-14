@@ -5,6 +5,7 @@ description: Features and specification of the Dynatrace probe
 redirect_from:
 - /docs/chaos-engineering/features/probes/dynatrace-probe
 - /docs/chaos-engineering/features/resilience-probes/dynatrace-probe
+- /docs/chaos-engineering/concepts/explore-concepts/resilience-probes/dynatrace-probe
 ---
 
 import Tabs from '@theme/Tabs';

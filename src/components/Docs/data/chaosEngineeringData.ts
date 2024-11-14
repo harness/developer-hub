@@ -157,7 +157,7 @@ import { MODULES } from "@site/src/constants"
       module: MODULES.ce,
       description:
         "Monitor your application's health before, during, and after executing a chaos experiment.",
-      link: "/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/",
+      link: "/docs/chaos-engineering/use-harness-ce/probes/",
     },
     {
       title: "Service Discovery",

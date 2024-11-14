@@ -45,6 +45,11 @@ Before you configure the **SEI AzureDevOps integration**, you must generate a **
    2. Select **Security** from the dropdown menu.
    3. Under **Personal Access Tokens**, click on the **+ New Token** button.
 3. In the Organization dropdown, select **All accessible organizations**.
+
+:::info
+Due to a limitation in Azure DevOps, the PAT token must be configured with the All accessible organizations scope to ensure Harness can retrieve the user data
+:::
+
 4. Configure the **Scopes** by choosing the required level of access for the token as given below.
 
 ![](../static/ado-pat-permissions.avif)
