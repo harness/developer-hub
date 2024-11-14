@@ -6,15 +6,16 @@ redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/probes/cmd-probe-usage
 - /docs/chaos-engineering/features/probes/cmd-probe/cmd-probe-newrelic
 - /docs/chaos-engineering/features/resilience-probes/cmd-probe/cmd-probe-newrelic
+- /docs/chaos-engineering/use-harness-ce/probes/cmd-probe-newrelic
 ---
 
 This topic guides you through steps to use the **command probe** in **source mode** to extract and validate the data from the APM tool New Relic.
 
 ## Before you begin, review the following
 
-* [Command probe](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/cmd-probe)
+* [Command probe](/docs/chaos-engineering/use-harness-ce/probes/command-probe)
 * [Create a command probe](/docs/chaos-engineering/use-harness-ce/probes/use-probe#create-a-resilience-probe)
-* [Command probe with source parameter](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-usage#configure-command-probe-with-source-parameter)
+* [Command probe with source parameter](/docs/chaos-engineering/use-harness-ce/probes/command-probe/cmd-probe-usage#configure-command-probe-with-source-parameter)
 
 
 ### Extract Data from New Relic

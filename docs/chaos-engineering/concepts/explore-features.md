@@ -59,7 +59,7 @@ Resilience probes are pluggable health checkers defined within the chaos engine 
 - Help understand the underlying patterns and laws that govern the behavior of these systems, and to use that understanding to predict or control their behavior.
 - Validate the declarative hypothesis set by the user.
 
-For more information on importance and types of probes, go to [Resilience Probes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/).
+For more information on importance and types of probes, go to [Resilience Probes](/docs/chaos-engineering/use-harness-ce/probes/).
 
 ### Experiment Logs
 

@@ -12,7 +12,7 @@ This topic describes how you can create chaos experiments that consist of chaos 
 
 - [What is a chaos experiment?](/docs/chaos-engineering/concepts/chaos101)
 - [What are chaos faults?](/docs/chaos-engineering/use-harness-ce/experiments/#chaos-fault)
-- [What are resilience probes?](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/)
+- [What are resilience probes?](/docs/chaos-engineering/use-harness-ce/probes/)
 - [How to create a resilience probe?](/docs/chaos-engineering/use-harness-ce/probes/use-probe)
 
 ### Create Environment

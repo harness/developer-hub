@@ -5,6 +5,7 @@ description: Modes and use cases of resilience probes
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/probes/overview
 - /docs/chaos-engineering/features/probes/overview
+- /docs/chaos-engineering/concepts/explore-concepts/resilience-probes/types
 ---
 
 This section introduces you to the following:
@@ -121,4 +122,4 @@ probe:
 ## Next steps
 
 - [Configure and add a probe](/docs/chaos-engineering/use-harness-ce/probes/use-probe)
-- [Using command probe in different modes](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-usage)
+- [Using command probe in different modes](/docs/chaos-engineering/use-harness-ce/probes/command-probe/cmd-probe-usage)
