@@ -86,7 +86,7 @@ README.md @pratmit
 # IDP Docs
 /docs/internal-developer-portal/ @Debanitrkl @OrkoHunter
 
-# SSCA Docs
+# SCS Docs
 /docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness
 
 # IACMS Docs
@@ -201,8 +201,8 @@ README.md @pratmit
 # SRM Release Notes
 /release-notes/service-reliability-management.md @sunilgupta-harness @umamukkara
 
-# SSCA Release Notes
-/release-notes/service-reliability-management.md @sunilgupta-harness @tejakummarikuntla @pranay-harness
+# SCS Release Notes
+/release-notes/software-supply-chain-assurance.md @sunilgupta-harness @tejakummarikuntla @pranay-harness
 
 # Knowledge Base ###
 
@@ -289,7 +289,7 @@ src/components/Roadmap/data/seiData.ts @codewdhruv
 #SRM Roadmap
 src/components/Roadmap/data/srmData.ts @sunilgupta-harness
 
-#SSCA Roadmap
+#SCS Roadmap
 src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla
 
 #STO Roadmap
