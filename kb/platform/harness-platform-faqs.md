@@ -1665,7 +1665,7 @@ No, a delegate can only be connected to one manager instance. Hence the same del
 ### Do proxy settings apply to both HTTP delegate commands and raw socket connects during capability checks?
 
 Proxy settings typically work for HTTP delegate commands, enabling you to route HTTP traffic through a proxy server. However, in the case of capability checks, such as raw socket connects, proxy settings might not apply.
-`CDS_USE_HTTP_CHECK_IGNORE_RESPONSE_INSTEAD_OF_SOCKET_NG` this feature flag should be enabled to solve the issue.
+`Ignore status code for HTTP connections` this account setting (Continuous Deployment) should be enabled to solve the issue.
 
 ### Are automatic upgrades available for ECS delegates?
 
