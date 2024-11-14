@@ -22,7 +22,9 @@ These release notes describe recent changes to Harness Delegate.
 
 :::
 
-:::info **Delegate Base Image Migration**
+### Delegate Base Image Migration
+
+:::info
 
 Harness is planning to update the base image for its Delegate from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4`, as UBI-8 reached end-of-life on May 31st, 2024. No further updates, patches, or fixes will be provided for UBI-8, so this migration ensures continued security and compatibility. This change will take effect starting **January 6, 2025**.
 
