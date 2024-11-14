@@ -33,7 +33,7 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 ##### Enhancements in Compliance section
 - Renamed **Rules** tab to **Evaluations**.
-- Added **Applicable On** column in the **Evaluations** tab to display the entity types to which rules apply, such as Code Repository or CI/CD, along with along with platform/Integration logo. For example GitHub, GitHub Actions.
+- Added **Applicable On** column in the **Evaluations** tab to display the entity types to which rules apply, such as Code Repository or CI/CD.
 - Added a link to entity source in the [impacted entity details](/docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture#view-impacted-entities) within the **Evaluations** tab. By clicking on an impacted entity, you can use the “Go to workflow/repository” link to navigate directly to the associated pipeline or repository.
 
 
