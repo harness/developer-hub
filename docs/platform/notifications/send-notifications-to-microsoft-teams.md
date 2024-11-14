@@ -24,11 +24,11 @@ We assume you have a Microsoft Teams administrator account.
 
 ### Step 1: Create a Webhook in Microsoft Teams
 
-1. In Microsoft Teams, right-click the team name where you want to send notifications, and select **Workflows** from the menu.
+1. In Microsoft Teams, right-click the channel name where you want to send notifications, and select **Workflows** from the menu.
 
   ![](./static/send-notifications-to-microsoft-teams-10.png)
 
-2. In the **Workflows** section, select **Post to a channel when webhook request is received**.
+2. In the **Workflows** section, select the workflow **Post to a channel when webhook request is received**.
 
   ![](./static/send-notifications-to-microsoft-teams-11.png)
 
