@@ -17,6 +17,26 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 :::
 
+## November 2024
+
+### Version: 1.19.1
+<!-- 2024-11-13 -->
+
+#### New features and enhancements
+- Launched a dedicated **SLSA Generation** step under the Supply Chain Security section in the step palette; removed the **SLSA Provenance** section from the stage Overview. You can now perform SLSA provenance generation and attestation using the new SLSA Generation step.
+- [Chain of Custody](/docs/software-supply-chain-assurance/artifact-view#artifact-overview) in the Artifact section now logs events from the Security Testing Orchestration (STO) module.
+- [Rule Definitions](/docs/software-supply-chain-assurance/manage-risk-and-compliance/standards-and-rule-definitions) section now has an expandable view, showing rule descriptions upon expansion; replaced the **Type** column with **Applicable On** to display the entity types to which rules apply, such as Code Repository or CI/CD, along with platform/Integration logo. For example, GitHub, GitHub Actions.
+
+##### Enhancements in CI/CD section
+- Added sorting option for pipelines based on **Risk and Compliance Issues** column.
+- New filter for pipelines by **CI/CD Types**, allowing you to list GitHub workflows or Harness pipelines.
+
+##### Enhancements in Compliance section
+- Renamed **Rules** tab to **Evaluations**.
+- Added **Applicable On** column in the **Evaluations** tab to display the entity types to which rules apply, such as Code Repository or CI/CD.
+- Added a link to entity source in the [impacted entity details](/docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture#view-impacted-entities) within the **Evaluations** tab. By clicking on an impacted entity, you can use the “Go to workflow/repository” link to navigate directly to the associated pipeline or repository.
+
+
 ## October 2024
 
 ### Version: 1.18.0
