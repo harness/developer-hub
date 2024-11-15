@@ -57,6 +57,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - **Support for Pasting Comma-Separated Values**: Users can now paste comma-separated values in account, region, project, and subscription input fields across Azure, GCP, and AWS. [CCM-19837]
 
+- **Enhanced Governance Recommendations Details**: Asset Governance dashboards now display both **Account Name** in the Namespace field and **AWS Account ID** in a dedicated field. [CCM-19921]
+
+#### Fixed Issues
+
+- **Improved Schedule Creation in AutoStopping UI**:  
+  Users can now directly input numbers when creating schedules for AutoStopping in the UI, eliminating the need to rely solely on arrow keys. [CCM-19425]
 
 ## October 2024
 
