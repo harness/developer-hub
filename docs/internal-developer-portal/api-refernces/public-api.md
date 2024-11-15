@@ -314,7 +314,7 @@ Example:
 - **Example: Filter `components` based on `system` name**
 
 ```cURL
-curl --location 'https://backstage.qa.harness.io/ACCOUNT_ID/idp/api/catalog/entities?filter=kind=component,relations.partOf=system:default/SYSTEM_NAME' \
+curl --location 'https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/entities?filter=kind=component,relations.partOf=system:default/SYSTEM_NAME' \
 --header 'x-api-key: X_API_KEY' \
 --header 'Harness-Account: ACCOUNT_ID'
 ```
