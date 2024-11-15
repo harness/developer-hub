@@ -47,6 +47,14 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## November
 
+### Version 1.65.x
+
+### Fixed Issues
+
+- Previously, approver inputs in multi-approval scenarios displayed only the last approval activity's response, leading to incorrect default values and missing input constraints. The issue is fixed. (CDS-103109)
+- Previously, URLs used to fetch artifacts from Artifactory with artifact filters did not support special characters, such as spaces, in artifact names. This issue is now fixed to automatically encode URLs, allowing support for special characters. This change is behind FF `CDS_ENCODE_API_REQUESTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-103041, ZD-69919)
+- Previously, when a canary pod had no data while the primary pod did, the risk should have been marked as "No Data" per [documentation](/docs/continuous-delivery/verify/cv-results/interpret-metric-results#metrics-summary-section). Instead, it was incorrectly marked as "No Analysis," causing issues when using the "Fail on No Analysis" feature. This issue is now fixed to align with the documentation, distinguishing "No Data" from "No Analysis" in risk assessments.(CDS-102865, ZD-72242)
+
 ### Version 1.64.6
 
 #### New features and enhancements
