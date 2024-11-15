@@ -51,6 +51,12 @@ You identify the artifact for the app, configuration settings, and any secrets a
 
 The **Artifact** is required but the rest of the settings are optional, and will depend on your Web App.
 
+:::warning
+
+If you switch your service deployment from Azure DevOps to Harness, note that the actuator information may not immediately reflect the latest version deployed with Harness. This is due to the info being cached from the last Azure DevOps deployment. Verify the actuator info manually to ensure it reflects the correct version.
+
+:::
+
 ### Azure Web Apps service startup command
 
 You can use service **Startup Command** to add a startup script for your app.
