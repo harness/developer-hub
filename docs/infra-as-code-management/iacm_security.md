@@ -80,4 +80,4 @@ The following diagram below illustrates the IaCM operational security flow and t
 5. **Apply/Destroy Execution:** When applying or destroying infrastructure changes, IaCM ensures adherence to defined policies. After verification, changes are applied, and a new state is stored securely in IaCM/Harness Cloud.
 6. **State Storage and Historical Tracking:** A copy of the state file is stored securely in IaCM/Harness Cloud, enabling historical tracking and visibility within the UI, including resource views and past states.
 
-![IaCM Security Diagram: Flow from pipeline execution, through state storage, to Harness Cloud security](/iacm-security.svg)
+![IaCM Security Diagram: Flow from pipeline execution, through state storage, to Harness Cloud security](/img/iacm-security.svg)
