@@ -81,7 +81,7 @@ A set of mandatory input flags is required to install chaos infrastructure, incl
 :::info note
 LCI does not currently support:
 1. Cron schedules
-2. [GameDays](/docs/chaos-engineering/concepts/explore-concepts/GameDay)
+2. [GameDays](/docs/chaos-engineering/use-harness-ce/GameDay)
 3. Executing [parallel faults](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI)
 :::
 

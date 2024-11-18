@@ -136,7 +136,7 @@ import { MODULES } from "@site/src/constants"
         module: MODULES.ce,
         description:
           "Execute chaos experiments in the application during a specific period..",
-        link: "/docs/chaos-engineering/concepts/explore-concepts/GameDay",
+        link: "/docs/chaos-engineering/use-harness-ce/GameDay",
       },
       {
         title: "ChaosGuard",
