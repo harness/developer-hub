@@ -52,6 +52,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 #### New Features and Enhancement
 
 - For Harness GitOps Applications that use multiple sources, users can now select which of the source to sync with their Applications during the sync operation. Previously, all sources were always synced. (CDS-103055)
+- With agent version **v0.81.0**, the base image for the GitOps agent has been upgraded from `redhat/ubi8-minimal:8.9-1029` to `redhat/ubi8-minimal:8.10-1086`.
 
 #### Fixed issues
 
