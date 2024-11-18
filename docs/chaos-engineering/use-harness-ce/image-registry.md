@@ -7,6 +7,8 @@ redirect_from:
 - /docs/chaos-engineering/features/image-registry
 - /docs/chaos-engineering/concepts/explore-concepts/image-registry
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 This topic describes using an image registry within a chaos experiment.
 
@@ -85,3 +87,34 @@ container:
   args:
     - kubectl apply -f /tmp/ -n {{workflow.parameters.adminModeNamespace}} && sleep 30
 ```
+
+## Images required
+
+Listed below are images that you should download to use image registry. The example below describes images required for 1.47.x release. Based on the release, the version will vary.
+
+Go to [Delegate release](https://developer.harness.io/release-notes/delegate/) to get the latest version of Delegate image.
+
+<Tabs>
+<TabItem value = "Dedicated Chaos Infrastructure">
+
+- harness/chaos-log-watcher:1.47.0
+- harness/chaos-workflow-controller:v3.4.16
+- harness/chaos-argoexec:v3.4.16
+- harness/chaos-exporter:1.47.0
+- harness/chaos-operator:1.47.0
+- harness/chaos-runner:1.47.0
+- harness/chaos-subscriber:1.47.0
+- docker.io/harness/chaos-go-runner:1.47.0
+- harness/k8s-chaos-infrastructure-upgrader:1.47.0
+
+</TabItem>
+
+<TabItem value = "Harness Delegate">
+
+- harness/chaos-ddcr:1.47.0
+- harness/chaos-log-watcher:1.47.0
+- harness/service-discovery-collector:0.27.0
+- docker.io/harness/chaos-ddcr-faults:1.47.0
+
+</TabItem>
+</Tabs>
