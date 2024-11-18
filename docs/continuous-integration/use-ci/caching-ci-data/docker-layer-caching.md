@@ -144,3 +144,9 @@ In addition to reducing build times, excluding unnecessary files and packages ma
 * Write your Dockerfiles to [use Docker layer caching efficiently](https://docs.docker.com/build/cache/#how-can-i-use-the-cache-efficiently).
 
 </details>
+
+## Troubleshooting DLC
+
+### I use DLC but I do not observe time savings
+
+Distributed Layer Cache (DLC) provides caching benefits, but certain operations may not see significant improvements due to how caching works. For example, FROM statements never use cache, as base image layers are always pulled to ensure freshness. Additionally, external dependencies (like copying files from non-cached sources) may not be fully cached. DLC primarily caches self-contained operations, and checksum-based steps (like COPY or ADD) only reuse cache when source files remain unchanged. To maximize caching benefits, optimize Dockerfile instructions to reduce dependency on external sources.
