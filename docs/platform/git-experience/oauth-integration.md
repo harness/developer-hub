@@ -87,7 +87,7 @@ Under **Connect to a Provider**, click on **Select a Provider**, CLick on **On-P
 ### Configure OAuth for Self-hosted Gitlab provider
 
 :::note
-Currently, support for OAuth configuration with the self-hosted Gitlab provider is behind the feature flag `CDS_PROVIDERS` and ``. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+Currently, support for OAuth configuration with the self-hosted Gitlab provider is behind the feature flag `CDS_PROVIDERS` and `PIPE_ENABLE_GITLAB_ON_PREM_FLOW `. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
 
 Harness Delegate version 843xx or later is required for this feature.
 :::
