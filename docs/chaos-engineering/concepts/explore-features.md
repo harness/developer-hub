@@ -47,9 +47,9 @@ Instead of creating a database with the services, you can automatically discover
 
 Below is the control flow to a discovered service.
 
-![](./explore-concepts/service-discovery/static/control-flow-1.png)
+![](../use-harness-ce/service-discovery/static/control-flow-1.png)
 
-For more information on how to create a  discovery agent, go to [Service Discovery](/docs/chaos-engineering/concepts/explore-concepts/service-discovery).
+For more information on how to create a  discovery agent, go to [Service Discovery](/docs/chaos-engineering/use-harness-ce/service-discovery).
 
 ### Resilience Probes
 
@@ -69,7 +69,7 @@ For more information on infrastructure logs, go to [Infrastructure Logs](/docs/c
 
 ### Application Map
 
-It is a resource on the Harness Platform (also known as the control plane) that binds multiple interacting [discovered services](/docs/chaos-engineering/concepts/explore-concepts/service-discovery) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
+It is a resource on the Harness Platform (also known as the control plane) that binds multiple interacting [discovered services](/docs/chaos-engineering/use-harness-ce/service-discovery) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
 
 Application maps help:
 - Test and monitor a group of services.

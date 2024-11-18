@@ -1,6 +1,6 @@
 ---
 title: CE Services - License Consumption 
-sidebar_position: 20
+sidebar_position: 90
 description: Harness CE services license consumption
 ---
 

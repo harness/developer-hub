@@ -2,6 +2,8 @@
 title: Restrict Discovery to Specific Namespace(s)
 sidebar_position: 3
 description: Restrict Discovery to Single and Multiple Namespaces.
+redirect_from:
+  - /docs/chaos-engineering/concepts/explore-concepts/service-discovery/user-defined-service-account
 ---
 
 This topic describes how you can use user-defined service accounts in different scopes to discover services. You can create the necessary roles in your cluster, and provide the service account name in the UI.
@@ -9,7 +11,7 @@ This topic describes how you can use user-defined service accounts in different 
 ### Cluster Scope
 In this scope, the service account is created by default and the discovery runs in cluster scope by default.
 
-:::tip
+:::tip 
 This is the default mode of operation and if you want to create service account, refer to the YAML below and provide the service account name in the UI.
 :::
 

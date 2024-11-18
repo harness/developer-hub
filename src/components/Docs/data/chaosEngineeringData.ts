@@ -164,7 +164,7 @@ import { MODULES } from "@site/src/constants"
       module: MODULES.ce,
       description:
         "Determine connections made to and from your Kubernetes cluster. ",
-      link: "/docs/chaos-engineering/concepts/explore-concepts/service-discovery",
+      link: "/docs/chaos-engineering/use-harness-ce/service-discovery",
     },
     {
       title: "Application Maps",
