@@ -84,6 +84,42 @@ Under **Connect to a Provider**, click on **Select a Provider**, CLick on **On-P
 
  Once you select **Alow** on the Bitbucket page, the access token will be created.
 
+### Configure OAuth for Self-hosted Gitlab provider
+
+:::note
+Currently, support for OAuth configuration with the self-hosted Gitlab provider is behind the feature flag `CDS_PROVIDERS` and ``. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
+Harness Delegate version 843xx or later is required for this feature.
+:::
+
+To configure your credentials for Self-hosted Gitlab provide:
+
+1. Go to your user profile in Harness.
+2. Under Account providers, click on **New Provider**.
+
+![](./static/gitlab_on_prem.png)
+
+3. Select **Gitlab** as a provier.
+4. Enter the **Name** and **Domain URL** of the provider. 
+5. Specify the **Secret Manager**. This is where you have the access token related to the Gitlab stored.
+6. Specify the **Delegate Selector**. Click on continue.
+
+![](./static/credential_gitlabonprem.png)
+
+7. Go to **User Settings** and under the settings click on **Applications**. Add the **Name** and the **Redirect URI** that you previously copied from the Gitlab Configuration step. Add the **Scopes** and **Save Application**. 
+
+
+![](./static/gitlab_applications.png)
+
+8. Once you save the application, copy the **Application ID** and **Secret**  and use these to configure the provider on the Harness Credentials page. 
+
+Now that the Gitlab provider is configured, navigate to the user profile page, click on **Profile Overview**.
+Under **Connect to a Provider**, click on **Select a Provider**, CLick on **On-Prem** section and select the provider you earlier created. Click on **Connect**.
+
+![](./static/gitlab_onprem_authorize.png)
+
+Click on **Authorize** on the Gitlab page, the access token will be created.
+
 ## Commit changes to Git with the configured OAuth token
 
 To commit changes to Git using the configured OAuth token: 
