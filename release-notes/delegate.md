@@ -89,6 +89,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 ## November 2024
 
+### Version 24.10.84205-ubi9-beta <!-- November 18, 2024 -->
+
+#### Early release (Non-GA'ed release).
+
+- Upgrading redhat/ubi8-minimal to redhat/ubi9-minimal for testing purpose. **This image can have issues as this is not a GA'ed image.**
+
 ### Version 24.11.84304 <!-- November 11, 2024 -->
 
 #### Fixed issues
