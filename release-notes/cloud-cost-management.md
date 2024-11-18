@@ -25,35 +25,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### New features and enhancements
 
 - **UI for Hibernate Support for EC2 and Azure VM**: We have introduced the "Hibernate" option in the AutoStopping flow for Azure VM and EC2. This allows resources to enter a hibernation state until a request is received. [CCM-19907]
-  <DocImage path={require('./static/Hibernate-1.34.3.png')} width="70%" height="70%" title="Click to view full-size image" />
+  <DocImage path={require('./static/Hibernate-1.34.3.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 - **UX Enhancements for Rule Sets and Enforcements in Asset Governance**:  
   [CCM-19861] and [CCM-19860] We’ve improved the creation and update flow for the following:  
   - **Enforcements** 
-   <iframe 
-     src="https://app.tango.us/app/embed/5e585d47-052b-4081-9cf5-e3ba7ceccf97" 
-     title="Set up Commitment Orchestrator" 
-     style={{minHeight:'640px'}}
-     width="100%" 
-     height="100%" 
-     referrerpolicy="strict-origin-when-cross-origin" 
-     frameborder="0" 
-     webkitallowfullscreen="webkitallowfullscreen" 
-     mozallowfullscreen="mozallowfullscreen" 
-     allowfullscreen="allowfullscreen"></iframe>
+ <DocImage path={require('./static/enforcement_rn.png')} width="90%" height="90%" title="Click to view full-size image" />
 
   - **Rule Sets**  
-   <iframe 
-     src="https://app.tango.us/app/embed/0402fbe4-1b72-453b-a943-96a681804723" 
-     title="Set up Commitment Orchestrator" 
-     style={{minHeight:'640px'}}
-     width="100%" 
-     height="100%" 
-     referrerpolicy="strict-origin-when-cross-origin" 
-     frameborder="0" 
-     webkitallowfullscreen="webkitallowfullscreen" 
-     mozallowfullscreen="mozallowfullscreen" 
-     allowfullscreen="allowfullscreen"></iframe>
+ <DocImage path={require('./static/ruleset_rn.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 - **Support for Pasting Comma-Separated Values**: Users can now paste comma-separated values in account, region, project, and subscription input fields across Azure, GCP, and AWS. [CCM-19837]
 
