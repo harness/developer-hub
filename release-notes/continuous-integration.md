@@ -28,15 +28,19 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::note
 
-**Network Whitelisting Update for Hosted macOS Infrastructure**
+**Network Whitelisting Update for Hosted macOS Infrastructure (M2 Machines)**
 
 Harness Cloud users utilizing hosted macOS infrastructure, who rely on whitelisting for on-premises resource access, are requested to update their configuration:
 
-To ensure uninterrupted connectivity and functionality for your CI builds, please whitelist the following IP range in your network settings by November 15th, 2024:
+To ensure uninterrupted connectivity and functionality for your CI builds, please whitelist the following IP range in your network settings by December 15th, 2024:
 
 IP Range: 207.254.53.128/25
 
+This update also includes a transition to M2 machines, offering improved performance and efficiency for your builds.
+
 If you have any questions or need assistance with the whitelisting process, please contact Harness Support.
+
+
 
 :::
 
