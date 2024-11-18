@@ -14,7 +14,10 @@ Amazon Relational Database Service (RDS) Reserved Instances (RIs) are long-term 
 
 RDS supports a variety of instance types, each optimized for different workloads and performance requirements. Choosing the right instance type is essential for achieving both efficiency and cost-effectiveness with Reserved Instances. This approach not only reduces costs but also supports capacity reservation within specific Availability Zones, ensuring that your applications have reliable scalability and consistent performance. This is crucial for workloads that demand uninterrupted database access and high uptime.
 
-RDS Reserved Instances (RIs) allow users to commit to a specific type of database instance for a set period—either one or three years—in exchange for a lower price compared to On-Demand rates. This model is particularly cost-effective for databases that run continuously, as it significantly reduces long-term costs.
+RDS Reserved Instances (RIs) allow users to commit to a specific type of database instance for a set period—either one or three years—in exchange for a lower price compared to On-Demand rates. Using reserved DB instances, you can reserve a DB instance for a one- or three-year term. Reserved DB instances provide you with a significant discount compared to on-demand DB instance pricing. Reserved DB instances are not physical instances, but rather a billing discount applied to the use of certain on-demand DB instances in your account. Discounts for reserved DB instances are tied to instance type and AWS Region.
+
+When you purchase a reserved DB instance in Amazon RDS, you purchase a commitment to getting a discounted rate, on a specific DB instance type, for the duration of the reserved DB instance. To use an Amazon RDS reserved DB instance, you create a new DB instance just like you do for an on-demand instance.
+You can modify a DB instance that you're using as a reserved DB instance. If the modification is within the specifications of the reserved DB instance, part or all of the discount still applies to the modified DB instance. If the modification is outside the specifications, such as changing the instance class, the discount no longer applies. 
 
 Once a Reserved Instance is purchased, AWS automatically applies the discounted rate to eligible database (DB) instance classes on the bill so that the users benefit from the savings without needing to manually track instances. The level of discount depends on factors such as:
 
@@ -24,6 +27,11 @@ Once a Reserved Instance is purchased, AWS automatically applies the discounted 
 
 By selecting an RDS RI that aligns with your database requirements, this pricing model allows you to optimize your AWS costs while effectively meeting your performance and scalability needs.
 
+:::note
+
+Please note, once purchased, Standard RIs cannot be exchanged or sold for RDS. For EC2 however, we support both Covertible and Standard RIs.
+
+:::
 ### Pricing
 
 The pricing model for Amazon RDS Reserved Instances centers around the idea of commitment and upfront payment. 
@@ -42,7 +50,7 @@ Continuous monitoring of RI usage is also essential, as usage patterns can fluct
 
 Additionally, the fear of overprovisioning may cause organizations to under-commit, sacrificing potential long-term savings. 
 
-Lastly, manually management of RIs can become a time-consuming and error-prone task, especially as infrastructure grows in complexity.
+Lastly, manual management of RIs can become a time-consuming and error-prone task, especially as infrastructure grows in complexity.
 For Reserved Instance (RI) management, automation is important. Automated systems can continuously monitor RI usage and optimize commitments based on real-time data, ensuring RIs are neither over nor underutilized. This reduces the chances of overspending and enhances cost savings by adjusting resources dynamically to meet current demand.
 
 Additionally, automation improves scalability and agility. When managing resources manually, scaling up or down to meet demand can be slow and reactive, potentially leading to lost revenue or user dissatisfaction. Automated systems, however, can respond instantly to usage fluctuations, scaling resources efficiently and cost-effectively. 
@@ -110,7 +118,7 @@ You can change and select the mode (either automatic approval or manual approval
 ## Current features:
 
 1. **Enhanced Visibility**: Commitment Orchestrator gives insight into current account status, including detailed breakdowns of savings and resource utilization across all accounts and regions. (Requires visibility permission as part of the master account connector setup).
-2. **Convertible RI Support**: It allows easy purchasing of Convertible Reserved Instances (RI) to optimize cost-efficiency and flexibility in resource allocation.
+2. **Standard RI Support**: It allows easy purchasing of Standard Reserved Instances (RI).
 3. **Commitment Orchestrator Setup**: Commitment Orchestrator can be easily setup on your master account to centralize commitment management and streamline operations.
 4. **Detailed Activity Logs**: Harness’ Commitment Orchestrator also provides comprehensive logs detailing every action performed within the Commitment Orchestrator, ensuring transparency and accountability.
 5. **RBAC Support**: Role-Based Access Control (RBAC) is included to manage permissions and access levels within the Commitment Orchestrator, enhancing security and governance.
@@ -129,6 +137,8 @@ You can change and select the mode (either automatic approval or manual approval
 
 3. How many RI purchases happen in a month?
 
+- 
+
 4. Where can I see the history of all the actions taken?
 
 - In the visibility section, you can see all the actions under the logs
@@ -139,5 +149,5 @@ You can change and select the mode (either automatic approval or manual approval
 
 6. Can orchestration be setup on any account?
 
--  No, only master account with correct permission listed above will be allowed and it can be done for multiple master accounts.
+-  No, only master account with correct permissions listed above will be allowed and it can be done for multiple master accounts.
 
