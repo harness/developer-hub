@@ -137,7 +137,7 @@ You can change and select the mode (either automatic approval or manual approval
 
 3. How many RI purchases happen in a month?
 
-- 
+- We purchase one Seed RI per region where there is sufficient usage in the account.
 
 4. Where can I see the history of all the actions taken?
 
