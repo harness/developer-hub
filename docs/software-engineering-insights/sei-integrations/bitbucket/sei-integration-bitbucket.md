@@ -47,12 +47,12 @@ import TabItem from '@theme/TabItem';
 
 
 <Tabs>
-  <TabItem value="pat" label="Using PAT" default>
+  <TabItem value="pat" label="Direct Public Connection" default>
 
 * Enter a **Name** for the integration.
 * The **Description** and **Tags** are optional.
 * Enter the **URL** for the **Bitbucket Public On-Prem Instance** in the format `https://bitbucket.org/<TEAMNAME_OR_USERNAME>/<REPOSITORY_NAME>/src`
-* Enter your **Username**
+* In the **Username** field, enter the Bitbucket account username as specified in your **Bitbucket Account settings**.
 * Enter the **Bitbucket Personal Access Token**. To generate an PAT token for your Bitbucket account, go to [Managing PAT tokens for Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/create-a-repository-access-token/).
 * Enter **Tags** and the **List of repositories** you want to ingest. You can leave this option blank if you want to ingest all the repositories from organizations accessible to the token user.
 * You can select the **Filters** to define the type of data you want to ingest. The available options are **Fetch Commits**, **Fetch PRs**, **Fetch PRs Reviews**, **Fetch Commits Fields**.
@@ -67,7 +67,7 @@ import TabItem from '@theme/TabItem';
 * Enter a **Name** for the integration.
 * The **Description** and **Tags** are optional.
 * Enter the **URL** for the **Bitbucket Public On-Prem Instance** in the format `https://bitbucket.org/<TEAMNAME_OR_USERNAME>/<REPOSITORY_NAME>/src`
-* Enter your **Username**
+* In the **Username** field, enter the Bitbucket account username as specified in your **Bitbucket Account settings**.
 * Enter the **Bitbucket Personal Access Token**. To generate an PAT token for your Bitbucket account, go to [Managing PAT tokens for Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/create-a-repository-access-token/).
 * Enter **Tags** and the **List of repositories** you want to ingest. You can leave this option blank if you want to ingest all the repositories from organizations accessible to the token user.
 * You can select the **Filters** to define the type of data you want to ingest. The available options are **Fetch Commits**, **Fetch PRs**, **Fetch PRs Reviews**, **Fetch Commits Fields**.

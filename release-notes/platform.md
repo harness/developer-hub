@@ -83,7 +83,7 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- The delegate name is now displayed in the UI whenever a connector test fails, provided the validation task was acquired by a delegate. This enhancement offers better visibility into which delegate handled the task during troubleshooting. (PL-56483, ZD-64425)
+- The delegate name is now displayed in the UI whenever a connector test fails, provided the validation task was acquired by a delegate. This enhancement offers better visibility into which delegate handled the task during troubleshooting. This change requires Harness Delegate version 24.11.84304. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-56483, ZD-64425)
 
 - The `/.wellknown/jwks` endpoint for OIDC now correctly exposes the "alg" value as "RS256" instead of "RSA256". This update ensures compatibility with standard OIDC configurations. (PL-58029)
 
@@ -97,13 +97,13 @@ The following deprecated API endpoints are longer supported:
 
 - Added support for `Connection via Platform` for AWS Secrets Manager, AWS KMS and GCP KMS using the `OIDC method`, enabling users to connect directly through the Harness platform without requiring a delegate. (PL-52058)
 
-- Added a new scope query parameter to the `listDelegates` endpoint. When set to true, this parameter enables listing delegates across hierarchical scopes (Account, Org, Project). By default, scope is set to false. (PL-57724)
+- Added a new scope query parameter to the `listDelegates` endpoint. When set to true, this parameter enables listing delegates across hierarchical scopes (Account, Org, Project). By default, scope is set to false. This change requires Harness Delegate version 24.11.84304. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-57724)
 
-- Upgraded the base image for `delegate`, `delegate-minimal`, `ci-addon`, and `lite-engine` from `redhat/ubi8-minimal:8.8` to `redhat/ubi8-minimal:8.10`. This update enhances security and compatibility with the latest UBI version. (PL-58062)
+- Upgraded the base image for `delegate`, `delegate-minimal`, `ci-addon`, and `lite-engine` from `redhat/ubi8-minimal:8.8` to `redhat/ubi8-minimal:8.10`. This update enhances security and compatibility with the latest UBI version. This change requires Harness Delegate version 24.11.84304. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-58062)
 
 - Removed delegate and watcher JARs along with client tools from the delegate proxy in SMP. This update reduces the proxy footprint and optimizes performance. (PL-58052)
 
-- Updated the `delegate/rings` API to return the immutable delegate version instead of the legacy delegate version. Additionally, the `connected-ratio-with-primary` and `connected-delegate-ratio` APIs have been removed. (PL-57518)
+- Updated the `delegate/rings` API to return the immutable delegate version instead of the legacy delegate version. Additionally, the `connected-ratio-with-primary` and `connected-delegate-ratio` APIs have been removed. This change requires Harness Delegate version 24.11.84304. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-57518)
 
 ## October 2024
 
@@ -116,6 +116,8 @@ The following deprecated API endpoints are longer supported:
 - Removed the restriction on the Content-Type header for the Delegate metrics endpoint. The endpoint now accepts any Content-Type, enabling compatibility with tools like Dynatrace ActiveGate for metrics collection. (PL-57704, ZD-71319)
 
 - Enhanced query performance to prevent timeouts when filtering large numbers of user groups inherited in child scopes. Listing user groups now completes efficiently even with high volumes. (PL-57595, ZD-71170)
+
+- Removed restrictions on the Delegate metrics API endpoint, allowing requests with any Content-Type header. This update supports improved compatibility with monitoring tools like Dynatrace. This change requires Harness Delegate version 24.10.84200. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-57704, ZD-71319)
 
 #### New features and enhancements
 

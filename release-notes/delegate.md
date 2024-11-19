@@ -22,7 +22,9 @@ These release notes describe recent changes to Harness Delegate.
 
 :::
 
-:::info **Delegate Base Image Migration**
+### Delegate Base Image Migration
+
+:::info
 
 Harness is planning to update the base image for its Delegate from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4`, as UBI-8 reached end-of-life on May 31st, 2024. No further updates, patches, or fixes will be provided for UBI-8, so this migration ensures continued security and compatibility. This change will take effect starting **January 6, 2025**.
 
@@ -87,7 +89,33 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 ## November 2024
 
+### Version 24.10.84205-ubi9-beta <!-- November 18, 2024 -->
+
+#### Early release (Non-GA'ed release).
+
+- Upgrading redhat/ubi8-minimal to redhat/ubi9-minimal for testing purpose. **This image can have issues as this is not a GA'ed image.**
+
+### Version 24.11.84304 <!-- November 11, 2024 -->
+
+#### Fixed issues
+
+- The delegate name is now displayed in the UI whenever a connector test fails, provided the validation task was acquired by a delegate. This enhancement offers better visibility into which delegate handled the task during troubleshooting. (PL-56483, ZD-64425)
+
+#### New features and enhancements
+
+- Added a new scope query parameter to the `listDelegates` endpoint. When set to true, this parameter enables listing delegates across hierarchical scopes (Account, Org, Project). By default, scope is set to false. (PL-57724)
+
+- Upgraded the base image for `delegate`, `delegate-minimal`, `ci-addon`, and `lite-engine` from `redhat/ubi8-minimal:8.8` to `redhat/ubi8-minimal:8.10`. This update enhances security and compatibility with the latest UBI version. (PL-58062)
+
+- Updated the `delegate/rings` API to return the immutable delegate version instead of the legacy delegate version. Additionally, the `connected-ratio-with-primary` and `connected-delegate-ratio` APIs have been removed. (PL-57518)
+
 ### Version 24.10.84200 <!-- November 4, 2024 -->
+
+#### Fixed issues
+
+- Removed restrictions on the Delegate metrics API endpoint, allowing requests with any Content-Type header. This update supports improved compatibility with monitoring tools like Dynatrace. (PL-57704, ZD-71319)
+
+#### New features and enhancements
 
 - Set limits on the number of delegates and delegate tokens allowed per account and per scope. The current limit is set to 10,000. (PL-56296)
 

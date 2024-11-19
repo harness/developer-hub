@@ -38,7 +38,15 @@ To set up webhook for Feature Flag implementation:
  repository should be aware that the webhook will feed events for every file in the repository, regardless of the chosen directory. It's recommended to
  use separate connectors for more granular control.
  2. **Timing Considerations**: Webhook events trigger both NG manager and FF service. There's a possibility that an event may arrive at the Feature
- Flag service before the remote files are properly fetched and cached by the GitEx service. To mitigate this, the system attempts to pull the new file for up to 5 seconds post-event (10 attempts, 500ms apart). If unsuccessful, the system will fall back to the 5-minute poller intervals.
+ Flag service before the remote files are properly fetched and cached by the GitEx service. To mitigate this, the system attempts to pull the new file for up to 5 seconds 
+ post-event (10 attempts, 500ms apart). If unsuccessful, the system will fall back to the 5-minute poller intervals.
+ 3. **Enabling Webhook**: Once a webhook is set up at any level (account/project/org) it will be set up for any project that has Git sync enabled with the same GitHub 
+ connector in the Feature Flags Module.
+ 4. **Deleting Webhooks**: A webhook can be used by many entities so deleting the webhook in Harness will not cause it to be deleted in git.
+ 5. **Disabling Webhook**: For Feature Flags disabling the webook in Harness is not enough to disable the functionality. You must either:
+   1. Disable/reset Git Sync in the Feature Flags module.
+   2. Delete the webhook in Github.
+  
 
 ## Best Practices
 

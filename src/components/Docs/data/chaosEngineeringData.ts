@@ -136,7 +136,7 @@ import { MODULES } from "@site/src/constants"
         module: MODULES.ce,
         description:
           "Execute chaos experiments in the application during a specific period..",
-        link: "/docs/chaos-engineering/concepts/explore-concepts/GameDay",
+        link: "/docs/chaos-engineering/use-harness-ce/GameDay",
       },
       {
         title: "ChaosGuard",
@@ -157,14 +157,14 @@ import { MODULES } from "@site/src/constants"
       module: MODULES.ce,
       description:
         "Monitor your application's health before, during, and after executing a chaos experiment.",
-      link: "/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/",
+      link: "/docs/chaos-engineering/use-harness-ce/probes/",
     },
     {
       title: "Service Discovery",
       module: MODULES.ce,
       description:
         "Determine connections made to and from your Kubernetes cluster. ",
-      link: "/docs/chaos-engineering/concepts/explore-concepts/service-discovery",
+      link: "/docs/chaos-engineering/use-harness-ce/service-discovery",
     },
     {
       title: "Application Maps",

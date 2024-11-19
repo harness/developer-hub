@@ -220,3 +220,28 @@ Here's an example of a resolved `<+inputSet>` expression:
 ```
 {pipeline:identifier:Custom} {pipeline:stages:[{stage:identifier:Custom}]} {pipeline:stages:[{stage:type:Custom}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:identifier:ShellScript_1}}}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:type:ShellScript}}}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:timeout:10s}}}]} {pipeline:stages:[{stage:spec:{execution:{step:identifier:json_format}]}}]} {pipeline:stages:[{stage:spec:{execution:{step:type:ShellScript}]}}]} {pipeline:stages:[{stage:spec:{execution:{step:timeout:10m}]}}]}
 ```
+
+## Handling Input Changes During Pipeline Re-Runs
+
+When re-running a pipeline, especially with multi-deployment or looping stages, note that input values may be cached from the initial execution. This may result in the pipeline using original inputs rather than new values specified for the re-run.
+
+![](./static/re-run_behavior.png)
+
+### Behavior Details
+
+#### Last Failed Stage Re-Run
+
+Selecting **From Last Failed Stage** reuses metadata (including input values) from the previous execution. While consistent, this does not apply updated user inputs.
+
+#### Specific Stage Re-Run
+
+ To ensure new input values are applied, select **From Specific Stage** when re-running. This option reloads all specified inputs, including any changes made since the last run.
+
+### Example
+
+On the first run, a user provides **poc.11** as the release version. On re-running, they specify **poc.13**.
+Expected Outcome: If re-run **From Last Failed Stage**, the pipeline may still use **poc.11** due to cached metadata. Selecting **From Specific Stage** will correctly apply **poc.13**.
+
+### Recommendation
+
+To apply updated inputs reliably, always use the **From Specific Stage** option if input changes are required for the re-run.

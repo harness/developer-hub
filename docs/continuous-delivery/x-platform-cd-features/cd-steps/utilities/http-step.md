@@ -229,8 +229,6 @@ You can enable the setting by using the steps below:
 3. Under **Continuous Deployment**, you can set **Ignore status code for HTTP connections** as **true**.
 ![](./static/Ignore%20status%20code%20for%20HTTP%20connections.png)
 
-This setting is independent of the feature flag; it will always be available. To currently use this feature, we require either the Feature Flag "CDS_USE_HTTP_CHECK_IGNORE_RESPONSE_INSTEAD_OF_SOCKET_NG" to be enabled or the corresponding setting. The feature flag will soon be removed, and this feature will be solely managed by using this setting.
-
 :::
 
 
