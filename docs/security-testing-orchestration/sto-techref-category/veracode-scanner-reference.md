@@ -48,11 +48,13 @@ Search for and add the **Veracode** step to your pipeline. This step can be used
 
 3. **Target**: The **[Type](#type)** is to Repository by default. For **[Target and Variant Detection](#target-and-variant-detection)**, you can use the [**Auto**](#target-and-variant-detection) option to let STO set the **Name** and **Varient** fields for you. Or, you can manually define them using the **Manual** option.
 
-4. **Authentication**: Select the Authentication [**Type**](#type-1) as either [**API Key**](#api-key) or [**Username and Password**](#username-and-password). Based on the type, configure the **Access Id** and **Access Token**.
+4. **Workspace**(optional): Specify the path to the file or directory you want to scan in the [Workspace](#workspace) field. If this field is left blank, the entire repository will be scanned.
 
-5. **App Id** (optional):  In the **Scan Tool** section, you can enter the Veracode [**App Id**](#app-id) of the application you want to use for the scan. If this field is left blank, the step will attempt to locate an application using the **Target Name** you provided. If no matching application is found, a new Veracode Application will be created automatically with the name format `harness-HARNESS_PROJECT_ID-TARGET_NAME`. Additionally, refer to [this section](#using-an-existing-veracode-application-created-by-sto) to learn more on how to use an existing Veracode Application created by STO.
+5. **Authentication**: Select the Authentication [**Type**](#type-1) as either [**API Key**](#api-key) or [**Username and Password**](#username-and-password). Based on the type, configure the **Access Id** and **Access Token**.
 
-6. **Sandbox Id**(optional): This field appears if you select **Sandbox Scan** as your [Scan Configuration](#scan-configuration). You can enter your [**Sandbox Id**](#sandbox-id) to use an existing Veracode Sandbox. If left blank, STO will create a new Sandbox automatically, naming it in the format `s-harness-HARNESS_PROJECT_ID-TARGET_NAME`.
+6. **App Id**(optional):  In the **Scan Tool** section, you can enter the Veracode [**App Id**](#app-id) of the application you want to use for the scan. If this field is left blank, the step will attempt to locate an application using the **Target Name** you provided. If no matching application is found, a new Veracode Application will be created automatically with the name format `harness-HARNESS_PROJECT_ID-TARGET_NAME`. Additionally, refer to [this section](#using-an-existing-veracode-application-created-by-sto) to learn more on how to use an existing Veracode Application created by STO.
+
+7. **Sandbox Id**(optional): This field appears if you select **Sandbox Scan** as your [Scan Configuration](#scan-configuration). You can enter your [**Sandbox Id**](#sandbox-id) to use an existing Veracode Sandbox. If left blank, STO will create a new Sandbox automatically, naming it in the format `s-harness-HARNESS_PROJECT_ID-TARGET_NAME`.
 
 <DocImage path={require('./static/veracode-orchestration.png')} width="40%" height="40%" title="Click to view full size image" />
 
@@ -83,11 +85,11 @@ Search for and add the **Veracode** step to your pipeline. This step can be used
 
 2. **Scan Configuration**: If your scan results needs to be reirived from a Sandbox you can choose **Sandbox Scan**. Else, you can use **Default**.
 
-3. **Target**: The **[Type](#type)** is to Repository by default. For **[Target and Variant Detection](#target-and-variant-detection)**, you can use the [**Auto**](#target-and-variant-detection) option to let STO set the **Name** and **Varient** fields for you. Or, you can manually define them using the **Manual** option.
+3. **Target**: The **[Type](#type)** is to Repository by default. For **[Target and Variant Detection](#target-and-variant-detection)**, you can use the [**Auto**](#target-and-variant-detection) option to let STO set the **Name** and **Variant** fields for you. Or, you can manually define them using the **Manual** option.
 
 4. **Authentication**: Select the Authentication [**Type**](#type-1) as either [**API Key**](#api-key) or [**Username and Password**](#username-and-password). Based on the type, configure the **Access Id** and **Access Token**.
 
-**App Id** (optional): In the **Scan Tool** section, you can provide the Veracode [App Id](#app-id) of the application from which you want to fetch scan results. If left blank, the step will try to locate an application using the **Target Name** you specified. Note that the step can only find applications previously created by STO during orchestration, as it relies on the specific naming convention used by STO. Additionally, refer to [this section](#using-an-existing-veracode-application-created-by-sto) to learn more on how to use an existing Veracode Application created by STO.
+**App Id**(optional): In the **Scan Tool** section, you can provide the Veracode [App Id](#app-id) of the application from which you want to fetch scan results. If left blank, the step will try to locate an application using the **Target Name** you specified. Note that the step can only find applications previously created by STO during orchestration, as it relies on the specific naming convention used by STO. Additionally, refer to [this section](#using-an-existing-veracode-application-created-by-sto) to learn more on how to use an existing Veracode Application created by STO.
 
 6. **Sandbox Id**: This field appears if you select **Sandbox Scan** as your [Scan Configuration](#scan-configuration). You can enter your [**Sandbox Id**](#sandbox-id) to use an existing Veracode Sandbox.
 
