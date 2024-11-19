@@ -841,6 +841,13 @@ input[type='checkbox'].coveo-checkbox + button {
     height: 16px;
     margin-right: 4px;
   }
+  &[title='Continuous Delivery & GitOps']::before {
+    content: url('/img/icon_cd_s.svg');
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+  }
   &[title='Continuous Integration']::before {
     content: url('/img/icon_ci_s.svg');
     display: inline-block;
@@ -877,6 +884,13 @@ input[type='checkbox'].coveo-checkbox + button {
     margin-right: 4px;
   }
   &[title='Software Supply Chain Assurance']::before {
+    content: url('/img/icon_ssca_s.svg');
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+  }
+  &[title='Supply Chain Security']::before {
     content: url('/img/icon_ssca_s.svg');
     display: inline-block;
     width: 16px;
@@ -948,6 +962,27 @@ input[type='checkbox'].coveo-checkbox + button {
   }
   &[title='Open Source']::before {
     content: url('/img/icon_harness_s.svg');
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+  }
+  &[title='AI Code Assistant']::before {
+    content: url('/img/icon_aida_s.svg');
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+  }
+  &[title='Feature Management & Experimentation']::before {
+    content: url('/img/icon_ff_s.svg');
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+  }
+  &[title='Harness Intelligence']::before {
+    content: url('/img/icon_aida_s.svg');
     display: inline-block;
     width: 16px;
     height: 16px;
