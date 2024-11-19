@@ -47,7 +47,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## November
 
-#### Gitops Version 1.20.0, Gitops Agent Version 0.81
+#### Gitops Version 1.20.2, Gitops Agent Version 0.81.0
 
 #### New Features and Enhancement
 
