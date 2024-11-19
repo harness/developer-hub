@@ -32,10 +32,6 @@ The way to mitigate this is to again use changesets to back up the data before d
 
 This should be there as a best practice and then executed to allow for any schema evolution. We are also exploring governance guard-rails to enforce such practices.
 
-### Does DB DevOps leverage any existing open-source tooling?
-
-Yes, we currently use liquidbase, and plan to add support for flyway in the future.
-
 ### How does DB DevOps manage database changes in relation to application deployments?
 
 Both change types can be included in the same pipeline to ensure that the database and schema are deployed together.
