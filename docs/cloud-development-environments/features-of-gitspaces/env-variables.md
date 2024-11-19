@@ -48,5 +48,5 @@ Run the following command:
 
 This will display the environment variables you’ve configured, as shown in the output below.
 
-<img width="958" alt="env 2" src="https://github.com/user-attachments/assets/429d389a-5ee3-4023-9ca3-fd3bc0fac869">
+<img width="958" alt="env 2" src="https://github.com/user-attachments/assets/429d389a-5ee3-4023-9ca3-fd3bc0fac869"/>
 
