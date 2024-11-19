@@ -89,6 +89,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 ## November 2024
 
+### Version 24.11.84307 <!-- November 19, 2024 -->
+
+#### Fixed issues
+
+- The customer encountered a pipeline failure when they enabled the CDS_K8S_CUSTOM_YAML_PARSER feature and used a YAML manifest with parameters supported by the 21.x.x version of the Kubernetes Java SDK. The issue arose due to a YAML parsing error. (CDS-104069)
+
 ### Version 24.10.84205-ubi9-beta <!-- November 18, 2024 -->
 
 #### Early release (Non-GA'ed release).
