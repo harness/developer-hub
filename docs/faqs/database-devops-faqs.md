@@ -32,10 +32,6 @@ The way to mitigate this is to again use changesets to back up the data before d
 
 This should be there as a best practice and then executed to allow for any schema evolution. We are also exploring governance guard-rails to enforce such practices.
 
-### How does DB DevOps handle database provisioning?
-
-Initially we will not add functionality for this, but it is under consideration for our post-GA roadmap.
-
 ### Does DB DevOps leverage any existing open-source tooling?
 
 Yes, we currently use liquidbase, and plan to add support for flyway in the future.
