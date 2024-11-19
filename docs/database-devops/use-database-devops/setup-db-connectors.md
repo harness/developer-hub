@@ -18,7 +18,7 @@ The JDBC connector accepts the following:
  - username  (**string / secret**)
  - password - (**secret**)
 
-It, then, performs a test connection using a delegate with a delegate selector or any available delegate.
+It, then, performs a test connection using a delegate with a delegate selector or any available delegate. You should use a delegate that has network access to the database.
 
 ### JDBC URLs
 
