@@ -25,12 +25,6 @@ export default function AR() {
                 Knowledge Base
               </button>
             </Link>
-            <Link href="/release-notes/artifact-registry">
-              <button className={styles.btn}>
-                <img src={`${baseUrl}img/icon_release_notes.svg`} />
-                Release Notes
-              </button>
-            </Link>
           </div>
         </div>
         <div className={styles.spaceBetween}>
