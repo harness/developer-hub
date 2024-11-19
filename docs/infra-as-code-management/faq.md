@@ -9,7 +9,7 @@ sidebar_label: FAQs
 <details>
     <summary>Can we use multiple workspaces in a single stage?</summary>
 
-    Yes, multiple workspaces can be used in a single stage. This feature is behind a feature flag enabled by default. If it’s not accessible, contact Harness Support to enable it.
+    No, a single stage is limited to one workspace. However, a pipeline can include multiple stages, and each stage can be configured to reference a different workspace. This allows you to structure your pipeline to handle multiple workspaces by chaining stages, each performing specific tasks on its assigned workspace. 
 </details>
 
 ## Cost-related questions
