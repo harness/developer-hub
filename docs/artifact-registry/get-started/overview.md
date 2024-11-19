@@ -12,19 +12,47 @@ Harness Artifact Registry is in beta. To enable it, please contact [Harness Supp
 
 :::
 
+**Harness Artifact Registry** is a centralized repository designed to store, manage, and organize software artifacts—such as binaries, container images, libraries, or other build outputs—that are essential for development and deployment processes. It provides developers with a secure and efficient way to store, version, and distribute these artifacts, while supporting key capabilities like access control, dependency management, and vulnerability scanning to ensure reliability and security across software delivery pipelines.  
+
 ## Key Features
 
-Harness Artifact Registry ships with these key features:
-- **Upstream Proxies**: Use upstream proxies to easily pull artifacts from other registries like Dockerhub. With upstream proxies, you never need to worry about where your artifacts are just ask for them, and Harness handles the rest. 
-- **Cleanup Policies**: Set cleanup policies to maintain your registries and avoid bloat. (Coming Soon)
-- **Supported Package Types**: Harness Artifact Registry currently supports Docker and Helm with many more to come. Go to [What's Supported](/docs/artifact-registry/whats-supported) for more information. 
-- **STO Integration**: Harness Artifact Registry integrates with our security modules in order to ensure your artifacts are as secure as possible. 
+- **Universal Artifact Management**:
+    - Manage and store all artifact types in a single, unified platform.
+    - Generic file support for storing raw or custom artifacts.
+
+- **Advanced Search and Insights**: 
+    - Use AI-powered semantic search to quickly find artifacts using contextual information. 
+    - Gain visibility into usage patterns and artifact consumption across teams.
+
+- **Upstream Proxy Support**: 
+    - Proxy and cache open-source software (OSS) dependencies to reduce latency and ensure availability. 
+    - Simplify dependency management while controlling access to external repositories.
+
+- **Fine-Grained Access Control**
+    - Role-based access control (RBAC) to secure artifacts at every stage of their lifecycle.
+    - Enforce policies for artifact creation, usage, and deletion.
+
+- **Built-In Vulnerability Scanning**
+    - Detect vulnerabilities in stored artifacts automatically with built in integrations with Harness Supply Chain Security module.
+    - Stay compliant with security standards and ensure artifact integrity.
+
+- **Artifact Cleanup Policies**
+    - Automate artifact cleanup to optimize storage and reduce costs.
+    - Define rules to retain only the artifacts you need based on age, usage, or tags.
+
+- **End-to-End Governance**
+    - Comprehensive tracking of artifact history, from creation to retirement.
+    - Ensure compliance with enterprise standards through customizable policies.
 
 ## Benefits of Harness Artifact Registry
 
-Harness Artifact Registry enables DevOps teams to maintain a single source of truth for artifacts (such as packages, images, and libraries) across the organization.
+- **Seamless CI/CD Integration**:
+    - Integrated with Harness Pipelines to enable efficient, developer-friendly workflows.
+    - Automate artifact handling during builds, tests, and deployments.
 
-1. **Universal Repository Management**: Store and maintain proxies for all organizational artifacts in a centralized repository.
-2. **Accelerated CI Builds and Built-in Governance**: Enhance CI hosted builds, implement governance for deployments, and strengthen your DevSecOps capabilities with integrated CI, CD, STO, and SSCA.
-3. **Comprehensive Artifact Lifecycle Management**: Manage artifacts from build to archival with Artifact Insights, powered by metadata intelligence across the Harness Platform.
-4. **Global Multi-site Replication**: Enable distributed teams to access artifacts with minimal latency through efficient multi-site replication.
+- **Easy Onboarding and Adoption**: 
+    - Leverage the power of the Harness Platform for seamless onboarding and rapid adoption. Our intuitive interface and integration capabilities make it easy to get started and use effectively.
+
+- **Enterprise-Grade Scalability**:
+    - Harness Artifact Registry is built to handle massive volumes of artifacts with lightning-fast performance, ensuring your development and deployment processes scale effortlessly.
+

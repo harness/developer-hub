@@ -120,7 +120,7 @@ async function config() {
                   to: 'docs/continuous-integration',
                 },
                 {
-                  label: 'Artifact Registry (BETA)',
+                  label: 'Artifact Registry',
                   to: 'docs/artifact-registry',
                 },
                 {
