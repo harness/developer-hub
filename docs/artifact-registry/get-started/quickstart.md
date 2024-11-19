@@ -1,16 +1,16 @@
 ---
-title: Quick Start
-description: Get started with Harness Artifact Registry
+title: Quick Start with Docker
+description: Build a Docker Registry with Harness
 sidebar_position: 20
 ---
 
 The Harness Artifact Registry module allows you to quickly and easily store your digital artifacts. 
 
-Use this quick start guide to learn what the module has to offer and how to use it. 
+Use this docker quick start guide to learn what the module has to offer and how to use it.
 
 ## Prerequisite
 
-This quick start guide requires the use of docker, so ensure that you can use the docker CLI locally. 
+This quick start guide requires the use of docker, so ensure that you can use the docker CLI. 
 
 ## Creating a registry
 
@@ -34,7 +34,7 @@ You can find the Artifact Registry module in the module selector in the left nav
 
 ## Create a docker upstream proxy
 
-An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that allows the registry to fetch artifacts from another external or remote registry. When a user requests an artifact that isn't available in the local registry, the registry directs the request to a configured upstream proxy. To create one, follow these steps: 
+An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that allows the registry to fetch artifacts from another external or remote registry. When a user requests an artifact that isn't available in the registry, the registry directs the request to a configured upstream proxy. To create one, follow these steps: 
 
 1. Select the dropdown next to **+ New Artifact Registry**, and then select **Upstream Proxy**.
 
@@ -51,7 +51,7 @@ An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that
 
 ### Set the upstream proxy
 
-After creating an upstream proxy, you need to set it in your local artifact registry. To do so, follow these steps:
+After creating an upstream proxy, you need to set it in your artifact registry. To do so, follow these steps:
 
 1. In the docker registry we created above, select **Configuration**.
 2. Open the **Advanced (Optional)** dropdown menu. 
@@ -62,7 +62,7 @@ After creating an upstream proxy, you need to set it in your local artifact regi
 
 ## Use a registry
 
-Next, lets use the registry we created. To do so, we will pull an artifact from the proxy, tag it, and add it to our local registry. 
+Next, lets use the registry we created. To do so, we will pull an artifact from the proxy, tag it, and add it to our registry. 
 
 Operations that interact with your registry all start with the **Setup Client** button in the top right corner of your registry.
 
@@ -99,7 +99,7 @@ This first attempts to pull the image from the registry `docs-registry` but the 
 
 ### Push an image
 
-Next, we will tag and push the nginx image to the registry to store locally. 
+Next, we will tag and push the nginx image to the registry to store it in Harness. 
 
 1. Open the **Setup Client** tab in your registry.
 2. Find the **Retag and Push the image** section.

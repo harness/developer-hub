@@ -20,7 +20,7 @@ All artifact operations start with the **Setup Client** page found inside your r
 
 ![](./static/generate-token.png)
 
-## Pull an image
+## Pull an artifact
 
 1. Open the **Setup Client** tab in your registry.
 2. Scroll to the bottom and find the **Pull** section.
@@ -31,11 +31,11 @@ This first attempts to pull the image from your registry and then any upstream p
 
 If you have multiple upstream proxies, the image will be pulled from the top most proxy that has the image in the list. 
 
-## Push an image
+## Push an artifact
 
 1. Open the **Setup Client** tab in your registry.
 2. Find the **Push** section.
-3. Copy the push command. You will need to replace anything with brackets (`<>`) with the relevant artifact information. For example, replace `<TAG>` with the artifact version or tag you want, or `<CHART_TGZ_FILE>` with the name of your helm chart `.tgz` file.  
+3. Copy the push command. You will need to replace anything with brackets (`<>`) with the relevant artifact information. For example, replace `<TAG>` with the artifact version or tag that you want.
 4. Run the command in terminal.
 
 Now, you should see the artifact appear in your registry as well as the **Artifacts** tab in the left navigation panel.

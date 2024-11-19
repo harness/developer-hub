@@ -1,6 +1,6 @@
 ---
-title: Create or Import Registries
-description: Learn how to create and import artifact registries, including upstream proxies. 
+title: Create Registries
+description: Learn how to create artifact registries, including upstream proxies. 
 sidebar_position: 10
 ---
 
@@ -21,7 +21,7 @@ An **Artifact Registry** is a central location for storing and managing software
 
 ## Create an upstream proxy
 
-An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that allows the registry to fetch artifacts from another external or remote registry. When a user requests an artifact that isn't available in the local registry, the registry directs the request to a configured upstream proxy. To create one, follow these steps: 
+An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that allows the registry to fetch artifacts from another external or remote registry. When a user requests an artifact that isn't available in the registry, the registry directs the request to a configured upstream proxy. To create one, follow these steps: 
 
 1. Select the dropdown next to **+ New Artifact Registry**, and then select **Upstream Proxy**.
 
@@ -47,3 +47,5 @@ An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that
 
 1. Choose your **Authentication** method.
 1. Select **Create Upstream Proxy**.
+
+After you've created your upstream proxy you will need to set it in a registry. To learn how to do so, go to [Set an upstream proxy](/docs/artifact-registry/manage-registries/configure-registry#set-an-upstream-proxy).

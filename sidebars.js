@@ -532,16 +532,6 @@ const sidebars = {
         description: "Learn about recent changes to Harness products.",
       },
     },
-     // Roadmap
-     {
-      type: "link",
-      label: "Roadmap",
-      className: "sidebar-roadmap",
-      href: "/roadmap/#ar",
-      customProps: {
-        description: "Learn about upcoming changes to Harness products.",
-      },
-    },
     // API Docs
     {
       type: "link",

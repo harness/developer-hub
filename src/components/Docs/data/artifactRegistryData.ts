@@ -17,8 +17,14 @@ import { MODULES } from "@site/src/constants";
           title: "Overview",
           module: MODULES.ar,
           description:
-            "Learn how to create and manage an artifact registry",
+            "Learn more about Harness Artifact Registry",
           link: "/docs/artifact-registry/get-started/overview",
+        },
+        {
+          title: "Manage Registries",
+          module: MODULES.ar,
+          description: "Learn how to create and manage artifact registries.",
+          link: "/docs/artifact-registry/manage-registries/",
         },
         {
           title: "Manage Artifacts",

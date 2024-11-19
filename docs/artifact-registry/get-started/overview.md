@@ -12,27 +12,13 @@ Harness Artifact Registry is in beta. To enable it, please contact [Harness Supp
 
 :::
 
-Artifact Registry enables developers to centrally store artifacts and build dependencies. With Artifact Registry, developers can:
+## Key Features
 
-- **Centralize and Organize**: Manage all your software artifacts (build outputs, container images, dependencies) in one secure, scalable location.
-- **Automate and Accelerate**: Effortlessly integrate artifact management into your CI/CD pipelines, speeding up builds and deployments.
-- **Govern and Secure**: Ensure compliance, enforce quality standards, and protect your software supply chain.
-
-## Why do you need an artifact registry?
-
-### Decreased Developer Productivity 
-
-- Slow builds due to long artifact download times from external repositories fetching open source components. 
-- Impaired team collaboration without a universal repository manager for storing, searching and sharing artifacts across various repositories. k
-- Decreased innovation velocity due to developer toil associated with switching between different tools and repositories for each package type.
-
-### Increased Security Risk
-
-- Increased vulnerability risk and compliance struggles due to inconsistent access controls, lack of centralized security policies and audit trails.
-
-### Increased cost
-- High data transfer costs without data proximity of build infrastructure and artifact storage.
-- Increased infrastructure costs due to duplication of artifacts across repositories wastes valuable storage space.
+Harness Artifact Registry ships with these key features:
+- **Upstream Proxies**: Use upstream proxies to easily pull artifacts from other registries like Dockerhub. With upstream proxies, you never need to worry about where your artifacts are just ask for them, and Harness handles the rest. 
+- **Cleanup Policies**: Set cleanup policies to maintain your registries and avoid bloat. (Coming Soon)
+- **Supported Package Types**: Harness Artifact Registry currently supports Docker and Helm with many more to come. Go to [What's Supported](/docs/artifact-registry/whats-supported) for more information. 
+- **STO Integration**: Harness Artifact Registry integrates with our security modules in order to ensure your artifacts are as secure as possible. 
 
 ## Benefits of Harness Artifact Registry
 
