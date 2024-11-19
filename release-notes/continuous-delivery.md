@@ -47,9 +47,16 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## November
 
-### Version 1.65.x
+### Version 1.65.3
 
-### Fixed Issues
+#### New features and enhancements
+
+- **Support for OAuth Configuration with Self-Hosted GitLab Provider**
+
+Harness now supports configuring OAuth for self-hosted GitLab providers. This feature simplifies authentication and authorization by enabling seamless integration with GitLab's OAuth mechanism.  This change is behind FF `CDS_PROVIDERS` and `PIPE_ENABLE_GITLAB_ON_PREM_FLOW`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. This item requires Harness Delegate version 843xx or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+
+#### Fixed Issues
 
 - Previously, approver inputs in multi-approval scenarios displayed only the last approval activity's response, leading to incorrect default values and missing input constraints. The issue is fixed. (CDS-103109)
 - Previously, URLs used to fetch artifacts from Artifactory with artifact filters did not support special characters, such as spaces, in artifact names. This issue is now fixed to automatically encode URLs, allowing support for special characters. This change is behind FF `CDS_ENCODE_API_REQUESTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-103041, ZD-69919)
