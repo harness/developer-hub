@@ -10,10 +10,6 @@ This article addresses some frequently asked questions about Harness Database De
 
 Harness Database DevOps (DB DevOps) is a new module that integrates database changes into your deployment pipeline and provides greater visibility into database changes. It will allow you to manage database code like application code.
 
-### When will DB DevOps be available?
-
-The Alpha version became available in June 2024, enter Beta early august, and go GA in October 2024.
-
 ### Will DB DevOps be a paid module?
 
 Yes.
