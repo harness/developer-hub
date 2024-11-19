@@ -2,7 +2,7 @@
 title: Quickstart 
 description: Get Started with Harness CDE (Gitspaces)
 sidebar_position: 2
-sidebar_label: Quickstart
+sidebar_label: Quickstart Guide
 redirect_from:
   - /docs/cloud-development-environments/introduction/getting-started-with-cde
 ---
@@ -13,7 +13,6 @@ Harness CDE is now available in public beta. To enable it on your account, conta
 
 :::
 
-
 Harness CDE (also known as Gitspaces) are on-demand remote development environments that can be instantly spun up with just a click. These environments come pre-configured with everything you need to start coding, including your dependencies, tools, libraries, and even your favorite IDE, enabling you with an instant ready-to-use development setup.
 
 This document provides a Quickstart guide to help users get started with Gitspaces. 
@@ -23,22 +22,6 @@ Please ensure that the CDE module is enabled in your Harness account before you 
 Watch this video to get started with Harness Cloud Development Environments:
 
 [![Introducing Harness Cloud Development Environments](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2F73eGzg3qs8w%3Fsi%3D32qGSyxMDWlN-UfL)](https://youtu.be/73eGzg3qs8w?si=32qGSyxMDWlN-UfL)
-
-
-
-## Configuration
-
-Gitspace configuration lives with your source code in a file named `.devcontainer/devcontainer.json`, which is an [industry standard spec](https://containers.dev/implementors/json_reference/) that defines metadata and settings required to configure a containerized development environment. 
-
-You can specify the image used to spin up the container in this config file. Any application dependencies can be prebaked into this image so that you do not spend time installing these each time.
-
-The `devcontainer.json` spec contains many properties that let users customize their development environments. We currently support the `image` and `postCreateCommand` properties.  
-
-If a repository does not have a `devcontainer.json`, we will spin up the CDE with a default docker image at  `mcr.microsoft.com/devcontainers/base:dev-ubuntu-24.04`. The Dockerfile for this default image is available at `https://github.com/devcontainers/images/tree/main/src/base-ubuntu` 
-
-## What is supported?
-
-For a list of supported Git providers, IDEs, and CDE machine specs, please refer to the [What's supported](https://developer.harness.io/docs/cloud-development-environments/whats-supported)
 
 
 :::info

@@ -17,7 +17,7 @@ import { MODULES } from "@site/src/constants";
           title: "Overview",
           module: MODULES.cde,
           description:
-            "Understand the basics of a Gitspace",
+            "Learn how Harness enhances developer experience with pre-configured cloud development environments.",
           link: "/docs/cloud-development-environments/overview",
         },
       ],
@@ -30,19 +30,19 @@ import { MODULES } from "@site/src/constants";
           title: "What's Supported",
           module: MODULES.cde,
           description:
-            "What's supported in Harness CDE",
+            "Learn more about the providers supported by Harness Gitspaces.",
           link: "/docs/cloud-development-environments/introduction/whats-supported",
         },
         {
-          title: "Getting Started with CDE",
+          title: "Getting Started with Gitspaces",
           module: MODULES.cde,
-          description: "Get Started with Harness CDE (Gitspaces)",
+          description: "Get started by setting up and configuring your Gitspaces",
           link: "/docs/cloud-development-environments/introduction/getting-started-with-cde",
         },
         {
           title: "Beta Plan Usage",
           module: MODULES.cde,
-          description: "How to get started with Harness CDE Beta?",
+          description: "Learn more about the Harness Gitspaces Beta Plan.",
           link: "/docs/cloud-development-environments/introduction/beta-usage",
         },
       ],
@@ -52,16 +52,16 @@ import { MODULES } from "@site/src/constants";
       description: "",
       list: [
         {
-          title: "Technical Deep-Dive",
+          title: "Gitspace Configuration",
           module: MODULES.cde,
           description:
-            "How does Harness CDE operate at a high level?",
-          link: "/docs/cloud-development-environments/deep-dive-into-gitspaces/technical-deep-dive",
+            "Learn more about the underlying configuration of a Gitspace. ",
+          link: "/docs/cloud-development-environments/deep-dive-into-gitspaces/gitspace-configuration",
         },
         {
-          title: "Lifecycle of Gitspaces",
+          title: "Gitspace Lifecycle",
           module: MODULES.cde,
-          description: "Learn more about the different states and actions of a Gitspace ",
+          description: "Understand the different stages in the life of a Gitspace.",
           link: "/docs/cloud-development-environments/deep-dive-into-gitspaces/lifecycle-of-gitspaces",
         },
       ],
@@ -71,35 +71,47 @@ import { MODULES } from "@site/src/constants";
       description: "",
       list: [
         {
+          title: "Authentication",
+          module: MODULES.cde,
+          description:
+            "Learn how to configure a Git provider for authentication.",
+          link: "/docs/cloud-development-environments/features-of-gitspaces/authentication",
+        },{
           title: "Auto-Stopping",
           module: MODULES.cde,
           description:
-            "Auto-Stopping of Gitspaces",
+            "Learn more about why Harness auto-stops inactive Gitspaces. ",
           link: "/docs/cloud-development-environments/features-of-gitspaces/auto-stopping",
+        },{
+          title: "Environment Variables",
+          module: MODULES.cde,
+          description:
+            "Learn how to define environment variables for your development.",
+          link: "docs/cloud-development-environments/features-of-gitspaces/env-variables",
         },
         {
           title: "Tracking Changes",
           module: MODULES.cde,
-          description: "Tracking Changes in Gitspaces",
+          description: "Learn how to track all Gitspace changes from Harness UI.",
           link: "/docs/cloud-development-environments/features-of-gitspaces/tracking-changes",
         },
       ],
     },
     {
-      name: "IDEs / Editors",
+      name: "IDEs",
       description: "",
       list: [
         {
           title: "VS Code Browser",
           module: MODULES.cde,
           description:
-            "Connect to your Gitspaces within your VS Code Browser",
+            "Connect to your Gitspaces within VS Code Browser",
           link: "/docs/cloud-development-environments/ide's/vs-code-browser",
         },
         {
           title: "VS Code Desktop",
           module: MODULES.cde,
-          description: "Connect to your Gitspaces within your VS Code Desktop",
+          description: "Connect to your Gitspaces within VS Code Desktop",
           link: "/docs/cloud-development-environments/ide's/vs-code-desktop",
         },
       ],
@@ -129,20 +141,14 @@ import { MODULES } from "@site/src/constants";
       ],
     },
     {
-      name: "Develop using Gitspaces",
+      name: "Developing in Gitspaces",
       description: "",
       list: [
         {
           title: "Source Control",
           module: MODULES.cde,
-          description: "Using Source Control in your Gitpaces",
+          description: "Learn how to execute various Git functions directly in your Gitspace.",
           link: "/docs/cloud-development-environments/develop-using-cde/source-control",
-        },
-        {
-          title: "Pull Request",
-          module: MODULES.cde,
-          description: "Raising a Pull Request Using Gitspaces",
-          link: "/docs/cloud-development-environments/develop-using-cde/pull-request",
         },
         {
           title: "Port Forward",

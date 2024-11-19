@@ -1,11 +1,11 @@
 {
-    "label": "Develop Using CDE",
+    "label": "Developing in Gitspaces",
     "collapsible": "true",
     "collapsed": "true",
-    "position": 30,
+    "position": 60,
     "link": {
       "type": "generated-index",
-      "title": "How to use CDEs as a development environment"
+      "title": "Developing in Gitspaces"
     },
     "customProps": {}
   }

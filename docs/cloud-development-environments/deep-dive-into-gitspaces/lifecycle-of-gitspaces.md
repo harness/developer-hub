@@ -1,8 +1,8 @@
 ---
-title: Lifecycle of Gitspaces
-description: Different states and actions of a Gitspace 
+title: Understanding the Gitspace Lifecycle
+description: Understand the stages in the life of a Gitspace.
 sidebar_position: 2
-sidebar_label: Lifecycle of Gitspaces
+sidebar_label: Gitspace Lifecycle
 redirect_from:
   - /docs/cloud-development-environments/deep-dive-into-gitspaces/lifecycle-of-gitspaces
 ---
@@ -13,24 +13,42 @@ Harness CDE is now available in public beta. To enable it on your account, conta
 
 :::
 
-This guide will take you through the different states and actions a Gitspace can exist in.
+This guide explains the lifecycle of Gitspaces, detailing the different states a Gitspace can exist in and the actions associated with each state.
+
+![](./static/gitspace%20lifecycle.png)
 
 Watch this video to understand the lifecycle of Gitspaces in action:
 
 [![Lifecycle of Gitspaces](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FNKyFKUBJdzY%3Fsi%3DhLjUc034BBtyxXZa)](https://youtu.be/NKyFKUBJdzY?si=hLjUc034BBtyxXZa)
 
+## States of a Gitspace
+A Gitspace can be in one of the following three states:
+- ```Active```: The Gitspace is running and ready for development 
+- ```Stopped```: The Gitspace is stopped and can be restarted for development 
+- ```Error```: System generated error state
 
-The CDE control plane is responsible for managing the lifecycle of a Gitspace. Your gitspace will keep running while you are using it in your IDE, but will time out after a period of inactivity. 
+The CDE control plane manages the Gitspace lifecycle. Your Gitspace will stay active while you’re working in your IDE, but it will automatically time out after a period of inactivity.
 
-## Stopping a Gitspace
-Click on “Stop Gitspace” from either the Harness UI or the Gitspaces VS code extension. 
-The CDE control plane stops the container. 
-The VM for the specific gitspace can be suspended /spun down which in turn stops the gitspace. 
+## Actions of a Gitspace
 
-## Restarting a Gitspace
-You can also restart the gitspace directly from the Harness UI or the Gitspaces VS code extension. In that case, the CDE control plane will restart the VM and the gitspace will be back up and running. 
+### Creating a Gitspace
+Gitspaces can be created directly from the Harness UI. [Learn more about how you can create a Gitspace here](docs/cloud-development-environments/introduction/getting-started-with-cde). 
 
-## Deleting a Gitspace
-Click on “Delete Gitspace” from the Harness UI.
-The CDE control plane stops the container (in case it's already running). 
-It deletes the container, VM and the associated storage, effectively deleting the gitspace. 
+When a user creates a Gitspace, a message is sent to the CDE control plane with all the required details to start the Gitspace. The CDE control plane resolves all the Gitspace details and provisions the VM as per the resource requirements. 
+
+A dev container is created and spun up based on the configuration present in the devcontainer.json file. Once the Gitspace is created, the CDE control plane generates a Gitspace URL. 
+
+### Stopping a Gitspace
+You can stop a Gitspace by clicking on “Stop Gitspace” from either the Harness UI or the Gitspaces VS code extension. The CDE control plane stops the container. 
+
+### Restarting a Gitspace
+You can also restart the Gitspace directly from the Harness UI or the Gitspaces VS code extension.
+
+In that case, the CDE control plane will restart the VM and the gitspace will be back up and running.
+
+### Deleting a Gitspace
+Click on “Delete Gitspace” from the Harness UI. 
+
+The CDE control plane stops the container (in case it's already running). It deletes the container, VM and the associated storage, effectively deleting the gitspace.
+
+Learn more about [Gitspace actions](/docs/cloud-development-environments/manage-gitspaces/existing-gitspaces) here. 

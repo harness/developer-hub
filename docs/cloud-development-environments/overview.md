@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Understand the basics of a Gitspace 
+description: Learn how Harness enhances developer experience with pre-configured cloud development environments.
 sidebar_position: 1
 sidebar_label: Overview
 redirect_from:
@@ -13,13 +13,13 @@ Harness CDE is now available in public beta. To enable it on your account, conta
 
 :::
 
-## What is a Gitspace?
-Harness CDEs (or Gitspaces) are pre-configured, remote, secure, ready-to-use environments that developers can quickly spin up from anywhere and start writing code, debugging, and collaborating with other developers. Note that while the module name is Harness CDE, Harness-created CDEs are called Gitspaces.
+## What are Gitspaces?
+Harness CDE (also known as Gitspaces) are on-demand remote development environments that can be instantly spun up with just a click. These environments come pre-configured with everything you need to start coding, including your dependencies, tools, libraries, and even your favorite IDE, enabling you with an instant ready-to-use development setup.
 
 ![](./static/gitspaces-overview.png)
 
 
-## Why Cloud Development Environments?
+## Why Cloud Development Environments (CDE)?
 There are a lot of challenges with local development such as:
 - Toil of installing/managing a complex set of libraries, tools, dependencies on each developer's machine
 - Environment drift, leading to "works on my machine" bugs
@@ -34,7 +34,7 @@ CDEs eliminate these challenges with characteristics like:
 
 - *Flexible*: Each Gitspace can be spun up with a custom hardware configuration, so you can get bigger machines for resource-intensive applications and smaller machines for trivial ones. 
 
-## Use Cases
+## Use Cases of CDE
 - *Faster Onboarding*: Developers can start coding on day 1 with a single click! This is not just for new developers joining an organization, but also for those switching teams or projects internally. 
 
 - *Higher developer productivity & satisfaction*: CDEs eliminate toil! Developers no longer spend time on frustrating and thankless tasks such as trying to reproduce environment specific issues or reconfiguring their local machines. 

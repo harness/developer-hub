@@ -1,7 +1,7 @@
 ---
 title: Auto-Stopping
-description: Auto-Stopping of Gitspaces
-sidebar_position: 1
+description: Learn more about why Harness auto-stops inactive Gitspaces.  
+sidebar_position: 2
 sidebar_label: Auto-Stopping
 redirect_from:
   - /docs/cloud-development-environments/features-of-gitspaces/auto-stopping

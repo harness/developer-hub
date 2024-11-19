@@ -1,6 +1,6 @@
 ---
 title: Tracking Changes
-description: Tracking Changes in Gitspaces
+description: Learn how to track all Gitspace changes from Harness UI.
 sidebar_position: 2
 sidebar_label: Tracking Changes
 redirect_from:
@@ -13,9 +13,9 @@ Harness CDE is now available in public beta. To enable it on your account, conta
 
 :::
 
-A Gitspace is a remote development environment fully pre-configured with everything a developer needs to start coding instantly. Developers can spin up as many Gitspaces as they want. They can also keep a track of the changes in their Gitspaces directly from the Harness UI. 
+You can spin up as many Gitspaces as they want. You can also keep a track of the changes in their Gitspaces directly from the Harness UI. 
 
-One can monitor changes in their Gitspace for the following code changes:
+You can monitor changes in your Gitspace for the following code changes:
 - Commits on your current working branch
 - Staged changes (tracked files or changes added to the staging area)
 - Working directory changes (tracked changes not yet added to staging)
