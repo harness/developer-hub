@@ -33,7 +33,7 @@ Harness Artifact Registry is in beta. To enable it, please contact [Harness Supp
     - Enforce policies for artifact creation, usage, and deletion.
 
 - **Built-In Vulnerability Scanning**
-    - Detect vulnerabilities in stored artifacts automatically with built in integrations with Harness Supply Chain Security module.
+    - Detect vulnerabilities in stored artifacts automatically with built in integrations with the [Harness Supply Chain Security module](/docs/software-supply-chain-assurance/).
     - Stay compliant with security standards and ensure artifact integrity.
 
 - **Artifact Cleanup Policies**
@@ -45,6 +45,10 @@ Harness Artifact Registry is in beta. To enable it, please contact [Harness Supp
     - Ensure compliance with enterprise standards through customizable policies.
 
 ## Benefits of Harness Artifact Registry
+
+- **AI Powered Universal Artifact Management**:
+    - Manage and store all your artifacts in a single unified platform.
+    - Quickly locate what you need with advanced AI-driven search capabilities that understand context and meaning.
 
 - **Seamless CI/CD Integration**:
     - Integrated with Harness Pipelines to enable efficient, developer-friendly workflows.

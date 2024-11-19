@@ -33,14 +33,15 @@ export default function AR() {
             Harness Artifact Registry (AR) is a universal hub for all your artifacts, regardless of type. By centralizing artifact management in one secure location, we're streamlining the process of handling multiple registries across various platforms and tools. 
             </p>
             <p>
-            Artifact Registry enables developers to centrally store artifacts and build dependencies. With Artifact Registry, developers can:
-
+            Artifact Registry enables developers to centrally store artifacts and build dependencies.
+            With Artifact Registry, developers can:
+            </p>
             <ul>
             <li><b>Centralize and Organize</b>: Manage all your software artifacts (build outputs, container images, dependencies) in one secure, scalable location. </li>
             <li><b>Automate and Accelerate</b>: Effortlessly integrate artifact management into your CI/CD pipelines, speeding up builds and deployments. </li>
             <li><b>Govern and Secure</b>: Ensure compliance, enforce quality standards, and protect your software supply chain. </li>
             </ul>
-            </p>
+           
             <div className={styles.illustrationContainer}>
               {/* <img
                 className={styles.illustration}

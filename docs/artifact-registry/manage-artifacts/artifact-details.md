@@ -28,11 +28,11 @@ The **Artifact Details** tab contains the artifact's layer and manifest.
 
 ## SBOM 
 
-The **SBOM** tab will show results from the [SBOM scans](/docs/software-supply-chain-assurance/sbom/generate-sbom/#add-the-sbom-orchestration-step). Therefore, this feature will only be available to customers who also have the [SCS module](/docs/software-supply-chain-assurance). 
+The **SBOM** tab will show results for the artifact's bill of materials including dependency lists, software suppliers, package managers, etc. To use this feature, you will require the [SCS module](/docs/software-supply-chain-assurance). 
 
 ## Vulnerabilities
 
-The **Vulnerabilities** tab will show results from security tests run on the artifact using [security scan steps](/docs/category/built-in-scan-steps). Therefore, this feature will only be available to customers who also have the [SCS module](/docs/software-supply-chain-assurance).
+The **Vulnerabilities** tab will show results from security tests run on the artifact. Therefore, this feature will only be available to customers who also have the [STO module](/docs/security-testing-orchestration/).
 
 ## Deployments
 
