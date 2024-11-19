@@ -12,7 +12,7 @@ Harness Database DevOps (DB DevOps) is a new module that integrates database cha
 
 ### Does DB DevOps support rollbacks?
 
-Yes, rollbacks are supported, leveraging Liquidbase's rollback capabilities. For many liquibase native operations there is a default rollback behavior that can be overriden if desired. When passing raw sql scripts, a rollback script can be associated to the change to allow for rollback.
+Yes, rollbacks are supported, leveraging Liquibase's rollback capabilities. For many liquibase native operations there is a default rollback behavior that can be overriden if desired. When passing raw sql scripts, a rollback script can be associated to the change to allow for rollback.
 
 Liquibase rollback or "roll-forward" is an "undo" mechanism for database changes.
 
@@ -30,7 +30,7 @@ This should be there as a best practice and then executed to allow for any schem
 
 ### How does DB DevOps manage database changes in relation to application deployments?
 
-Both change types can be included in the same pipeline to ensure that the database and schema are deployed together.
+Customers can only deploy application changes if they are also licensed for Harness CD however, both change types can be included in the same pipeline to ensure that the database and schema are deployed together.
 
 ### Will DB DevOps be aware of changes done to my database outside of Harness?
 
