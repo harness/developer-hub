@@ -87,7 +87,7 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.cde,
           description:
             "Learn how to define environment variables for your development.",
-          link: "docs/cloud-development-environments/features-of-gitspaces/env-variables",
+          link: "/docs/cloud-development-environments/features-of-gitspaces/env-variables",
         },
         {
           title: "Tracking Changes",
