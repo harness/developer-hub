@@ -32,10 +32,6 @@ This should be there as a best practice and then executed to allow for any schem
 
 Both change types can be included in the same pipeline to ensure that the database and schema are deployed together.
 
-### How will Harness help my SQL performance?
-
-Harness will have views correlating changes in database performance metrics with changes that may affect it. Our roadmap also includes analyzing SQL queries to warn users of queries that may cause performance issues or outages before applying them to production.
-
 ### Will DB DevOps be aware of changes done to my database outside of Harness?
 
 Initially DB DevOps will be aware of any changes done to your database by Liquibase. Eventually we plan to add detection for changes done that do not use Harness or Liquibase.
