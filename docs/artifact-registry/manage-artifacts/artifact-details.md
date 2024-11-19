@@ -41,5 +41,3 @@ The **Deployments** tab displays information pertaining to the artifact's deploy
 ## Code
 
 *Coming Soon*
-
-<!-- The **Code** tab shows the code that was used to build the artifact. However, this feature only works if you are using [Harness Code Repository](/docs/code-repository). -->
