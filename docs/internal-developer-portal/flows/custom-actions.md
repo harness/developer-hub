@@ -13,7 +13,7 @@ There are several repository providers supported out of the box such as **GitHub
 
 ## How To View Supported Actions
 
-A list of all registered custom actions can be found under 
+A list of all registered Workflow actions can be found under 
 
 `Workflows/Create/Self Service` -> `Installed Actions`
 
@@ -24,7 +24,7 @@ A list of all registered custom actions can be found under
 ![](./static/installed-actions.png)
 
 
-## Harness Specific Custom Actions
+## Harness Specific Workflow Actions
 
 ### 1. `trigger:harness-custom-pipeline`
 
@@ -34,7 +34,7 @@ This action currently supports [IDP Stage](https://developer.harness.io/docs/int
 
 :::
 
-This custom action requires **variables of type pipeline, stage or step** as input along with the **pipeline url**(for pipelines using [Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview) make sure your URL includes `branch` and `repoName` e.g., `https://app.harness.io/ng/account/accountID/module/idp/orgs/orgID/projects/projectID/pipelines/pipelineID?repoName=repo-name&branch=branch`), and then trigger the pipeline based in the `inputset` obtained from the user. 
+This Worfklow action requires **variables of type pipeline, stage or step** as input along with the **pipeline url**(for pipelines using [Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview) make sure your URL includes `branch` and `repoName` e.g., `https://app.harness.io/ng/account/accountID/module/idp/orgs/orgID/projects/projectID/pipelines/pipelineID?repoName=repo-name&branch=branch`), and then trigger the pipeline based in the `inputset` obtained from the user. 
 
 ```YAML
 ...
@@ -154,7 +154,7 @@ parameters:
 1. `Title` : Name of the Pipeline. 
 2.  `url` : Execution URL of the Pipeline e.g.: `https://app.harness.io/ng/account/********************/module/idp-admin/orgs/default/projects/communityeng/pipelines/uniteddemo/executions/**********/pipeline?storeType=INLINE`
 
-Once you create the workflow with this custom action, you can see the pipeline URL running in the background and executing the flow. 
+Once you create the workflow with this Workflow action, you can see the pipeline URL running in the background and executing the flow. 
 
 ![](./static/flow-ca-1.png)
 
@@ -207,7 +207,7 @@ There are two ways in which you can add the output variable to the template synt
 
 ### 2. `trigger:trigger-pipeline-with-webhook`
 
-This custom action could be used to trigger a pipeline execution based on the **input-set identifier** and a webhook name. Usually a single deployment pipeline has different input-set as per the environment it's going to be deployed and developers can just specify the input-set ID aligning with the environment name to trigger the deployment pipeline. 
+This Workflow action could be used to trigger a pipeline execution based on the **input-set identifier** and a webhook name. Usually a single deployment pipeline has different input-set as per the environment it's going to be deployed and developers can just specify the input-set ID aligning with the environment name to trigger the deployment pipeline. 
 
 ![](static/input-set-list.png)
 
@@ -259,7 +259,7 @@ Without the above parameter input the pipeline won't be executed. [Take a look a
 2. `Pipeline Details` : Redirects you to the pipeline in Harness Pipeline Editor. 
 3. `UI URL`: Lists all the recent executions of the pipeline. 
 
-Once you create the workflow with this custom action, you can see the pipeline URL running in the background and executing the flow. 
+Once you create the workflow with this Workflow action, you can see the pipeline URL running in the background and executing the flow. 
 
 ![](static/output-ca.png)
 
@@ -270,10 +270,10 @@ Once you create the workflow with this custom action, you can see the pipeline U
 
 
 
-### Custom Actions Usage Limitations
+### Workflow Actions Usage Limitations
 
-| **Custom Action**                      | **Pipelines and Stages**    |
+| **Workflow Actions**                      | **Pipelines and Stages**    |
 |----------------------------------------|-----------------------------|
-| trigger:harness-custom-pipeline        | Supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) |
+| trigger:harness-custom-pipeline        | Supports only [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [Deploy Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage#add-a-stage), [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)(**Available with Harness CD License or Free Tier usage**), Pipelines using [Pipeline Templates](https://developer.harness.io/docs/platform/templates/create-pipeline-template/) and [codebase disabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) **Build Stage(Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) |
 | trigger:trigger-pipeline-with-webhook  | Supports all the pipelines with a custom webhook based trigger          | 
 
