@@ -25,8 +25,6 @@ One of the limitations being:
 
  - You cannot enforce policy against SQL initially. 
 
-So while MongoDB is supported, we advise starting with one of the other supported databases instead. 
-
 Additionally, for sources to read the change log from, Harness Database DevOps supports:
 
 - **Git**
