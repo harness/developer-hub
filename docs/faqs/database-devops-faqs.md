@@ -10,10 +10,6 @@ This article addresses some frequently asked questions about Harness Database De
 
 Harness Database DevOps (DB DevOps) is a new module that integrates database changes into your deployment pipeline and provides greater visibility into database changes. It will allow you to manage database code like application code.
 
-### Will DB DevOps be a paid module?
-
-Yes.
-
 ### How will DB DevOps be priced?
 
 The plan is to price around the concept of ‘database instances', which is the application of a particular database schema, to a particular database connection. This pricing metric aligns well to perceived customer value. For our startup tier we also plan to have per-user pricing, with a cap on the number of database instances per user.
