@@ -120,6 +120,10 @@ async function config() {
                   to: 'docs/continuous-integration',
                 },
                 {
+                  label: 'Artifact Registry',
+                  to: 'docs/artifact-registry',
+                },
+                {
                   label: 'Continuous Delivery & GitOps',
                   to: 'docs/continuous-delivery',
                 },
