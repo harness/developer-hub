@@ -41,7 +41,3 @@ This should be there as a best practice and then executed to allow for any schem
 ### How does DB DevOps manage database changes in relation to application deployments?
 
 Customers can only deploy application changes if they are also licensed for Harness CD however, both change types can be included in the same pipeline to ensure that the database and schema are deployed together.
-
-### Will DB DevOps be aware of changes done to my database outside of Harness?
-
-Initially DB DevOps will be aware of any changes done to your database by Liquibase. Eventually we plan to add detection for changes done that do not use Harness or Liquibase.
