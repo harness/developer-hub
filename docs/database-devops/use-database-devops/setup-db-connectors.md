@@ -1,11 +1,11 @@
 ---
-title: Setting Up Connectors for MongoDB
-sidebar_label: Setting Up Connectors for MongoDB
-description: Setting Up Connectors for MongoDB.
+title: Setting Up Connectors
+sidebar_label: Setting Up Connectors
+description: Setting Up Connectors 
 sidebar_position: 4
 ---
 
-This topic describes how Harness Database DevOps implements automated rollback to maintain the stability and integrity of your database schema workloads. 
+This topic describes how to set up connectors within Harness Database DevOps. 
 
 ## Setting Up Connectors for MongoDB
 
