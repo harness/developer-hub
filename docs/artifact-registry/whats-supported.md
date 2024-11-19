@@ -4,6 +4,12 @@ sidebar_position: 1
 sidebar_label: What's Supported
 ---
 
+:::info 
+
+Harness Artifact Registry is in beta. To enable it on your account, please contact your sales representative or reach out to the team at [ar-interest@harness.io](mailto:support@harness.io).
+
+:::
+
 ## Registries
 
 Harness Artifact Registry support a variety of registry types, and new ones are often added. We currently support the registry types listed below. 
