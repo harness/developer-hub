@@ -7,6 +7,8 @@ import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
 import DeveloperCertificationExamDetails from "./data/ce-certification-developer-exam-details.md";
 import DeveloperCertificationReviewGuide from "./data/ce-certification-developer-review-guide.md";
+import AdminCertificationExamDetails from "./data/ce-certification-admin-exam-details.md";
+import AdminCertificationReviewDetails from "./data/ce-certification-admin-review-guide.md";
 import IltCard from "./Card";
 import { ilt } from "./data/iltData";
 import { spt } from "./data/sptData";
@@ -349,7 +351,7 @@ export default function CertificationsChaos() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Chaos Engineering - Administrator (BETA COMING SOON)
+                      Chaos Engineering - Administrator (BETA)
                     </h2>
                     <img
                       src={`${baseUrl}img/cert_adm_ce_badge.svg`}
