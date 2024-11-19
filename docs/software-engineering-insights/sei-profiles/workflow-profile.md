@@ -4,9 +4,14 @@ description: Use Workflow profiles to define stages, events, and measurement cri
 sidebar_position: 30
 ---
 
-In SEI, users can create **Workflow Profiles** to measure and assess the entire software development lifecycle. These profiles allow you to define the stages, events, and measurement criteria that are relevant to your development process.
+Workflow profiles in Software Engineering Insights allow you to define the set of developer processes and measurement criteria to measure and assess the efficacy of the entire software development lifecycle in your organization. You can use the workflow profiles, to measure key metrics such as DORA (DevOps Research and Assessment) and Lead Time, which helps you understand and gain valuable insights into the time taken to ship changes or deploy bug fixes to production.
 
-By utilizing these workflow profiles, you can measure key metrics such as DORA (DevOps Research and Assessment) and Lead Time, which provide valuable insights into the time taken to ship changes or deploy bug fixes to production.
+Workflow profiles can be set up only by the Account Admin / SEI Admin as it is a account level resource. The ideal persona who should create and manage workflow profiles in your organization should be someone who owns or has proficiency in replicating the software delivery process of your organization and knows it end to end.
+
+Workflow profiles in Harness are of two types:
+
+1. DORA profile
+2. Velocity Lead Time profile
 
 You can configure the profile depending on the factors you want to include in your calculations. For example, you can:
 
