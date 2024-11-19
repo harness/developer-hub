@@ -20,8 +20,6 @@ The JDBC connector accepts the following:
 
 It, then, performs a test connection using a delegate with a delegate selector or any available delegate.
 
-For the JDBC Connector test connection, we use JDBC Type 4 connectors. The JDBC Type 4 connectors are platform-independent, connecting directly to a database by converting JDBC calls into database-specific calls; known as database protocol drivers or thin drivers. In order for us to support any databases further on, we just need to add a JDBC type 4 dependency in Bazel’s WORKSPACE without touching the source code.
-
 ### JDBC URLs
 
 URL Examples
