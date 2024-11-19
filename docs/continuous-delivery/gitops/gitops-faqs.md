@@ -208,6 +208,9 @@ kind: Application
 metadata:
   name: my-argo-app
   namespace: argo-cd
+  labels:
+    harness.io/envRef: harnessEnvId
+    harness.io/serviceRef: harnessServiceId
 spec:
   project: default
   source:
@@ -246,8 +249,4 @@ spec:
 **SyncPolicy**:
 - automated: Specifies that ArgoCD will automatically sync the app (prune resources and self-heal if necessary).
 
-Once the ArgoCD Application manifest is in place in your Git repository, you can configure Harness GitOps to manage synchronization between the Git repository and the Kubernetes cluster.
-
-To do so, you need to create a GitOps Application in Harness that points to the same repository and path where the ArgoCD Application is defined. For more details on creating an application, refer [Harness CD GitOps tutorial](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#step-1-add-a-harness-gitops-agent)
-
-Harness GitOps will now automatically monitor changes in the specified Git repository and path (e.g., apps/my-app/argocd), and it will trigger ArgoCD to sync the changes to your Kubernetes cluster.
+The project field must be set to an Argo project that is mapped to a Harness project for successful import functionality.
