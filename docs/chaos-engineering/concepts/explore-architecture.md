@@ -123,6 +123,8 @@ The chaos control plance provides a native Gameday feature using which Chaos Gam
 ## Scaling of  Harness Chaos Engineering
 Chaos capabilies can be onboarded onto new applications using the agentless model. Once the Harness delegate is deployed and configured, you can onboard chaos onto a new Kubernetes cluster by simply adding a connector and by running an automated chaos onboarding wizard that discovers the resources and creates initial set of chaos experiments.
 
+![Scaling with Harness Chaos Engineering](./static/architecture/scalingchaos.png)
+
 
 ## How Stuff Works 
 This [page](how-stuff-works-ce) provides the details of how various components of chaos control plane and chaos execution plane work and interact with each other.
