@@ -16,7 +16,7 @@ sidebar_label: FAQs
 <details>
     <summary>Can drift detection incur additional costs?</summary>
 
-    No, only the `apply` command incurs charges. The `plan` command and drift detection are free.
+    No, usage charges are only incurred when an `apply` changes resources. The `plan` command and drift detection are free.
 </details>
 
 ## Module registry-related questions
