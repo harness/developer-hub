@@ -12,6 +12,16 @@ Harness Database DevOps (DB DevOps) is a new module that integrates database cha
 
 ### Does DB DevOps support rollbacks?
 
+Yes, rollbacks are supported within the DB DevOps framework. The system includes built-in rollback capabilities that can be customized as needed. For many operations, there is a default rollback behavior that can be overridden if desired. When using raw SQL scripts, a corresponding rollback script can be associated with the change to facilitate the rollback process.
+
+The rollback mechanism serves as an "undo" feature for database changes. Each change is recorded as a changeset, which includes both the change itself and the associated rollback instructions.
+
+When initiating a rollback, the system processes the changesets in reverse order, executing each one to revert the database to a previous state. Changesets can be rolled back individually or in groups, and the system utilizes tags and contexts to manage sets of changes, allowing for targeted rollbacks.
+
+Customers may inquire about this functionality, particularly in scenarios where changes could be destructive, such as deleting a column. While the system can recreate the column structure during a rollback, it cannot automatically restore lost data. To mitigate this risk, it is advisable to use changesets to back up data before deletion, include rollback instructions to recreate the column, and clean up any backup tables afterward.
+
+Implementing these best practices will support effective schema evolution. Additionally, we are exploring governance guardrails to enforce such practices within the DB DevOps process.
+
 Yes, rollbacks are supported, leveraging Liquibase's rollback capabilities. For many liquibase native operations there is a default rollback behavior that can be overriden if desired. When passing raw sql scripts, a rollback script can be associated to the change to allow for rollback.
 
 Liquibase rollback or "roll-forward" is an "undo" mechanism for database changes.
