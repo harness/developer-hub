@@ -879,7 +879,7 @@ spec:
 
 ```
 
-2. In case the properties Project Identifier is named something else other than `projectId` in that case for the custom action to function as desired we need to add it as a dependency under `projectPickerRef`
+2. In case the properties Project Identifier is named something else other than `projectId` in that case for the Workflow action to function as desired we need to add it as a dependency under `projectPickerRef`
 
 ```YAML
 # Example workflow.yaml file
