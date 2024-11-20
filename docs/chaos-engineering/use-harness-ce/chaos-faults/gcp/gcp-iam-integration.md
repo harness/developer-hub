@@ -59,7 +59,15 @@ Workload Identity can be enabled for an existing cluster as well as a new cluste
     --workload-pool=PROJECT_ID.svc.id.goog
     ```
 
-* To enable Workload Identity on an exisitng node pool when you have the node pool name:
+* To enable Workload Identity on an existing cluster, run the following command:
+
+    ```
+    gcloud container clusters update CLUSTER_NAME \
+    --region=COMPUTE_REGION \
+    --workload-pool=PROJECT_ID.svc.id.goog
+    ```
+
+* To enable Workload Identity on a node pool when you have the node pool name:
 
     ```
     gcloud container node-pools update CLUSTER_NAME_NODE_POOL_NAME --cluster=CLUSTER_NAME --zone us-west1-a --workload-metadata-from-node=GKE_METADATA
@@ -76,19 +84,6 @@ Workload Identity can be enabled for an existing cluster as well as a new cluste
             ```
             gcloud container node-pools describe CLUSTER_NAME_NODE_POOL_NAME --cluster=CLUSTER_NAME --zone us-west1-a
             ```
-
-Replace the following:
-* **CLUSTER_NAME:** The name of your new cluster.
-* **COMPUTE_REGION:** The compute engine region of your cluster. For zonal clusters, use `--zone=COMPUTE_ZONE`.
-* **PROJECT_ID:** Your Google Cloud project ID.
-
-* To enable Workload Identity on an existing cluster, run the following command:
-
-```
-gcloud container clusters update CLUSTER_NAME \
---region=COMPUTE_REGION \
---workload-pool=PROJECT_ID.svc.id.goog
-```
 
 Replace the following:
 * **CLUSTER_NAME:** The name of your new cluster.
