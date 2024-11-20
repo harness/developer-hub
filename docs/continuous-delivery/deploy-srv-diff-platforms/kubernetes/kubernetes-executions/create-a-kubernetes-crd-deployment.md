@@ -84,6 +84,24 @@ If the `steadyStateCondition` fails, Harness logs the following error message:
 ```
 Status check for resources in namespace [[namespace]] failed.
 ```
+
+#### Custom resource: failureCondition
+
+`harness.io/failureCondition`: This annotation allows you to treat CRDs as jobs and specify custom logic that triggers a failure.
+
+This annotation supports Failure states in Custom Resource Definitions (CRDs) when the Kubernetes Apply step is configured to run as a job. When this annotation is set to true, it will evaluate the condition and trigger a failure if the condition is met.
+
+Here’s an example of how to configure the annotation:
+```yaml
+metadata:
+  annotations:
+    managed-workload: "true"
+    failureCondition: "status.failed == 1"
+```
+
+**Important Note:** This annotation is opt-in and only affects users who explicitly configure it.
+It provides enhanced control over job failure logic, enabling more precise management of CRD failure states.
+
 #### Custom resource: release-name
 
 `harness.io/release-name: <release_name>` in labels: this is required for Harness to track any pods for the custom resource.
