@@ -11,6 +11,8 @@ Time chaos is a Kubernetes pod-level fault that introduces controlled time offse
 
 ![Time Chaos](./static/images/time-chaos.png)
 
+[This](https://youtu.be/9S_wnY1rLfs) video walks through the execution of the time chaos experiment.
+
 ## Use cases
 Time Chaos:
 - Simulate scenarios where TLS certificates expire while the system is in operation. This allows them to assess how their applications, services, or infrastructure handle expired certificates in real-time.
