@@ -110,7 +110,7 @@ Due to the potential complexity of JEXL expressions in conditional executions, [
 
 When using templates with conditional execution based on custom JEXL expressions, you need to configure the `when` conditions separately for the execution and rollback sections to ensure they run as expected during rollbacks.
 
-1. **In Your Step Template :**
+1. **In Step Template :**
 
 Set the `when` condition as a runtime input:
 
@@ -118,9 +118,7 @@ Set the `when` condition as a runtime input:
 when: <+input>
 ```
 
-2. **When Using the Template in the Execution Section:**
-
-Specify the `when` condition to run the step only on successful execution in production environments:
+2. **Specify the `when` condition to run the step only on successful execution `thus far` in production environments:**
 
 ```yaml
 when:
@@ -128,13 +126,12 @@ when:
   condition: <+env.type> == "Production"
 ```
 
-3. **When Using the Template in the Rollback Section:**
+3. **Specify the `when` condition to run the step always in production environments:**
 
 ```yaml
 when:
   stageStatus: All
   condition: <+env.type> == "Production"
-
 ```
 
 ## Variables and expressions in conditional execution settings
