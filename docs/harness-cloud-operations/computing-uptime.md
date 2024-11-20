@@ -230,25 +230,24 @@ All the Platform and Pipeline SLIs are applicable here.
 | APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
 | API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
 
-## Software Engineering Insights  (Legacy)  
+## Software Engineering Insights
 
 | **SLI**         | **Threshold**                           | **Availability**|
 |-------------------------------------------|-----------------|-----------------------------------------|
-| Login via /signin | Greater than 30 seconds for a consecutive duration of 5 minutes |Partial Outage|
-| Login via both flows not loading | Greater than 30 seconds for a consecutive duration of 5 minutes |Major Outage|
-| Integrations list API | 5XX |Major Outage|
-|| Greater than 30 seconds |Degraded Performance|
-| Ingestion Delay - Forward scans| Delay in receiving any events > 24 hours |Partial Outage|
-| ETL + Indexing  Delay| Delay in receiving any events > 48 hours |Partial Outage|
-| Legacy Aggregations Delay| Delay in receiving any events > 36 hours |Partial Outage|
-| UI dashboard widget Load times| Greater than 3 mins for a consecutive duration of 10 mins |Degraded Performance|
-| SEI UI landing page/dashboard page not loading| For a consecutive duration of 5 mins |Major Outage|
-| Trellis Events| Delay in processing events > 8 hours |Degraded Performance|
-| Trellis Monthly calculations| Delay > 5 days |Partial Outage|
-| Pub/sub queue Async processing time (Pubsub queues/Scheduled Tasks)| Delay in processing > 12 hours |Degraded Performance|
-| Real time data layer Load ( DB Load or ES cluster state)| DB Load > 95% or ES cluster state RED |Partial Outage|
-| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
-| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| Login Failure (Legacy only)| Greater than 30 seconds for a consecutive duration of 5 minutes |Major Outage|
+| Integrations list API Error Rate | failure rate (5XX) of the API  in 5 minutes > 0.5 |Major Outage|
+| Integrations list API Latency | Response time greater than 30 seconds | Degraded Performance|
+| Ingestion Delay | Delay in receiving any events > 24 hours |Partial Outage|
+| ETL / Aggregations  Delay| Delay in receiving any events > 48 hours |Partial Outage|
+| ETL / Aggregations  Performance| Jobs stuck in scheduled state for more than 12 hours |Degraded Performance|
+| ES Indexing  Delay| Delay in receiving any events > 48 hours |Partial Outage|
+| UI dashboard widget Load times| Greater than 3 mins for a consecutive duration of 10 mins for all customers |Degraded Performance|
+| UI landing page/dashboard page not loading| For a consecutive duration of 5 mins |Major Outage|
+| Trellis Events| Delay in processing events > 24 hours or monthly calculation not finished in first 7 days |Degraded Performance|
+| DB Health | DB Load > 80%  |Degraded Performance|
+| ES Cluster health | ES cluster state RED / read-only mode |Partial Outage|
+| Server API Error rate (5XX) | More than 1% over 5 min rolling window | Major Outage|
+| API Response Time | 95th percentile: > 15s over 5 min rolling window | Degraded performance|
 
 
 
