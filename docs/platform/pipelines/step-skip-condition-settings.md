@@ -106,6 +106,37 @@ When you run the pipeline, you'll be prompted to define the conditional executio
 
 Due to the potential complexity of JEXL expressions in conditional executions, [input sets](/docs/platform/pipelines/input-sets) are useful for conditional executions as runtime input. Input sets contain pre-defined runtime inputs that you select at runtime. This eliminates the need to manually enter the entire conditional execution each time.
 
+### Configuring a Step/Template in the Rollback Section with Custom when Condition
+
+When using templates with conditional execution based on custom JEXL expressions, you need to configure the `when` conditions separately for the execution and rollback sections to ensure they run as expected during rollbacks.
+
+1. **In Your Step Template :**
+
+Set the `when` condition as a runtime input:
+
+```yaml
+when: <+input>
+```
+
+2. **When Using the Template in the Execution Section:**
+
+Specify the `when` condition to run the step only on successful execution in production environments:
+
+```yaml
+when:
+  stageStatus: Success
+  condition: <+env.type> == "Production"
+```
+
+3. **When Using the Template in the Rollback Section:**
+
+```yaml
+when:
+  stageStatus: All
+  condition: <+env.type> == "Production"
+
+```
+
 ## Variables and expressions in conditional execution settings
 
 In conditional execution settings, your JEXL conditions can include [Harness expressions and variables](/docs/platform/variables-and-expressions/harness-variables), including the output of previous steps.
