@@ -23,11 +23,11 @@ To create a Gitspace, you’ll first need to configure your preferred Git provid
 ### Configuring OAuth
 When creating a Gitspace, you can select your Git provider to fetch repository details. Choose your provider from the dropdown menu, then select the option from the yellow box to configure OAuth from your profile. This will redirect you to your profile section to complete the setup.
 
-<img width="650" alt="oauth1" src="https://github.com/user-attachments/assets/62f8c2f5-af74-4ed6-a709-f87af8c706a3">
+<img width="650" alt="oauth1" src="https://github.com/user-attachments/assets/62f8c2f5-af74-4ed6-a709-f87af8c706a3"/>
 
 Alternatively, you can configure OAuth directly from your profile section. Simply navigate to your ```“Profile Overview”``` from the bottom-left corner.
 
-<img width="1200" alt="oauth2" src="https://github.com/user-attachments/assets/ce788c1a-8481-472b-87d3-d684fe9e023d">
+<img width="1200" alt="oauth2" src="https://github.com/user-attachments/assets/ce788c1a-8481-472b-87d3-d684fe9e023d"/>
 
 Refer to this guide to learn how to [connect and configure OAuth for your Git providers](https://developer.harness.io/docs/platform/git-experience/oauth-integration/).
 
