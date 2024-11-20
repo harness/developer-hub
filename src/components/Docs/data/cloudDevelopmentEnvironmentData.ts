@@ -36,7 +36,7 @@ import { MODULES } from "@site/src/constants";
         {
           title: "Getting Started with Gitspaces",
           module: MODULES.cde,
-          description: "Get started by setting up and configuring your Gitspaces",
+          description: "Get started by setting up and configuring your Gitspaces.",
           link: "/docs/cloud-development-environments/introduction/getting-started-with-cde",
         },
         {

@@ -41,16 +41,6 @@ export default function CDE() {
             <p>
             Gitspaces eliminate the toil and friction associated with managing local development environments, leading to happier and more productive developers!   
             </p>
-            <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={
-                  colorMode === "light"
-                    ? `${baseUrl}img/cde_illustration.svg`
-                    : `${baseUrl}img/cde_illustration_dark.svg`
-                }
-              />{" "}
-            </div>
           </div>
         </div>
       </div>

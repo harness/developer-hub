@@ -19,6 +19,8 @@ Each time a new Gitspace is created, a dedicated Development Container is provis
 
 This Development Container allows you to work within a containerized version of a build environment. Simply put, it offers a pre-configured, ready-to-code setup directly within your IDE, allowing you to start coding instantly. 
 
+<img width="900" alt="gitspace config" src="https://github.com/user-attachments/assets/0ca2d223-0cee-4ab6-aaa5-5752549eb263">
+
 
 ### Development Containers
 Development Containers (also known as [Dev Containers](https://containers.dev/implementors/spec/)) are an open source specification for developing consistent and feature-rich development environments. 
@@ -27,7 +29,7 @@ This specification equips containers with all the tools, libraries and runtimes 
 Each Development Container is defined by a ```devcontainer.json``` file, which configures the containerized development environment.
 
 ### devcontainer.json File
-Gitspace configuration lives with your source code in the ```devcontainer.json``` file within your project’s repository. This file contains all necessary metadata and settings to define your development environment.
+Gitspace configuration lives with your source code in the ```.devcontainer/devcontainer.json``` file within your project’s repository. This file contains all necessary metadata and settings to define your development environment.
 
 The ```devcontainer.json``` specification includes various properties, allowing you to customize the environment. 
 
