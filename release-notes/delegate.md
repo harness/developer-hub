@@ -93,7 +93,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 #### Fixed issues
 
-- The customer encountered a pipeline failure when they enabled the CDS_K8S_CUSTOM_YAML_PARSER feature and used a YAML manifest with parameters supported by the 21.x.x version of the Kubernetes Java SDK. The issue arose due to a YAML parsing error. (CDS-104069)
+- The customer encountered a pipeline failure when they enabled the CDS_K8S_CUSTOM_YAML_PARSER feature and used a YAML manifest with parameters supported by the 21.x.x version of the Kubernetes Java SDK. The issue arose due to a YAML parsing error. (CDS-104066)
 
 ### Version 24.10.84205-ubi9-beta <!-- November 18, 2024 -->
 
