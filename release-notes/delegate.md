@@ -89,6 +89,15 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 ## November 2024
 
+### Version 24.11.84308 <!-- November 20, 2024 -->
+- In order to use this feature the customer must need to enable the request param named 
+"encryptYamlOutput" currently the UI is not ready for the same so customer have to enter the given input via yaml directly in 
+step param of k8s dry run node (CDS-103383)
+
+#### Fixed issues
+
+- The customer encountered a pipeline failure when they enabled the CDS_K8S_CUSTOM_YAML_PARSER feature and used a YAML manifest with parameters supported by the 21.x.x version of the Kubernetes Java SDK. The issue arose due to a YAML parsing error. (CDS-104066)
+
 ### Version 24.10.84205-ubi9-beta <!-- November 18, 2024 -->
 
 #### Early release (Beta release).
