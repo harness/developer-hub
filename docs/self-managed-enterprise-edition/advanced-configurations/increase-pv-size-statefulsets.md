@@ -39,14 +39,20 @@ For a reference on how to take backups, please go to [Back up and restore Harnes
    ```
    chmod +x update-pvc.sh
    ```
-3. Run the script with correct arguments
+3. Run the script and enter correct arguments when prompted
 
    ```
-   ./pvc-update.sh --namespace <namespace> --overridefile <override-file-path> --newsize <new-size-in-Gi> --database <database> --helmrelease <harness-release-name> --chart <harness-chart>
+   ./pvc-update.sh
    ```
    Example:
    ```
-   ./pvc-update.sh --namespace harness --overridefile ./harness-values.yaml --newsize 30Gi --database mongodb --helmrelease harness --chart harness/harness
+   ./pvc-update.sh
+   Enter Namespace: harness
+   Enter Override file: ./override-values.yaml
+   Enter new pvc size in Gi (eg: 30Gi): 20Gi
+   Enter database to increase pvc size (mongodb, timescaledb, minio, postgresql, timescaledb-wal): minio
+   Enter release name: harness
+   Enter chart path/name: harness/harness
    ```
 4. Wait for the script to complete successfully.
 
