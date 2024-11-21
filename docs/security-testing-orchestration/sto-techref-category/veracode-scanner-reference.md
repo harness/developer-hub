@@ -43,23 +43,16 @@ The Orchestration mode in Veracode step allows you to initiate a scan on your co
 Search for and add the **Veracode** step to your pipeline. This step can be used in either the **Build** stage or the **Security** stage. In the step configuration, set the following fields:
 
 1. **Scan Mode**: Set the **Scan Mode** to **Orchestration**.
-
 2. **Scan Configuration**: Based on your requirements, choose between [**Default**](#default) or [**Sandbox Scan**](#sandbox-scan) as the scan configuration.
-
 3. **Target**: The **[Type](#type)** is to Repository by default. For **[Target and Variant Detection](#target-and-variant-detection)**, you can use the [**Auto**](#target-and-variant-detection) option to let STO set the **Name** and **Varient** fields for you. Or, you can manually define them using the **Manual** option.
-
 4. **Workspace**(optional): Specify the path to the file or directory you want to scan in the [Workspace](#workspace) field. If this field is left blank, the entire repository will be scanned.
-
 5. **Authentication**: Select the Authentication [**Type**](#type-1) as either [**API Key**](#api-key) or [**Username and Password**](#username-and-password). Based on the type, configure the **Access Id** and **Access Token**.
-
 6. **App Id**(optional):  In the **Scan Tool** section, you can enter the Veracode [**App Id**](#app-id) of the application you want to use for the scan. If this field is left blank, the step will attempt to locate an application using the **Target Name** you provided. If no matching application is found, a new Veracode Application will be created automatically with the name format `harness-HARNESS_PROJECT_ID-TARGET_NAME`. Additionally, refer to [this section](#using-an-existing-veracode-application-created-by-sto) to learn more on how to use an existing Veracode Application created by STO.
-
 7. **Sandbox Id**(optional): This field appears if you select **Sandbox Scan** as your [Scan Configuration](#scan-configuration). You can enter your [**Sandbox Id**](#sandbox-id) to use an existing Veracode Sandbox. If left blank, STO will create a new Sandbox automatically, naming it in the format `s-harness-HARNESS_PROJECT_ID-TARGET_NAME`.
 
 <DocImage path={require('./static/veracode-orchestration.png')} width="40%" height="40%" title="Click to view full size image" />
 
-
-These are the essential settings for performing an Orchestration scan using the Veracode step. For more features and configuration options, refer [Veracode Step Settings](#veracode-step-settings) section.
+These are the essential settings required to perform an Orchestration scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Security Tests** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode step Settings](#veracode-step-settings) section.
 
 ## Ingestion mode configuration
 With the Ingestion mode in the Veracode step, you can read scan results from a data file and import them into STO. To do this, you need the scan results saved in the XML format. Importantly, before you can ingest scan results, you must perform all the Veracode prerequisites for the repo that you're scanning. If you're scanning a Java repo, for example, the Veracode documentation outlines the specific packaging and compilation requirements for scanning your Java applications. For specific requirements, go to the [Veracode docs](https://docs.veracode.com/) and search for Veracode Packaging Requirements.
@@ -67,14 +60,13 @@ With the Ingestion mode in the Veracode step, you can read scan results from a d
 Here's how you can configure your Veracode step to Ingest the scan results from the XML data file downloaded from Veracode portal.
 
 1. Search for and add the **Veracode** step to your pipeline.
-
 2. **Scan Mode**: Set the **Scan Mode** to **Ingestion**.
-
 3. **Target**: The **[Type](#type)** is to Repository by default. For **[Target and Variant Detection](#target-and-variant-detection)**, define the **Name** and **Varient** manually.
-
 4. **Ingestion File**: For the field [**Ingestion File**](#ingestion-file), enter the path where the XML scan results file is saved. for example `/harness/output.xml`
 
 <DocImage path={require('./static/veracode-ingestion.png')} width="40%" height="40%" title="Click to view full size image" />
+
+These are the essential settings required to perform an Ingestion scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Security Tests** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode Step Settings](#veracode-step-settings) section.
 
 ## Extraction mode configuration
 The Extraction mode in Veracode step allows you to retrieve the latest scan data of a specific Veracode Application and feed the results into STO. Here's how you can do it.
@@ -82,18 +74,15 @@ The Extraction mode in Veracode step allows you to retrieve the latest scan data
 Search for and add the **Veracode** step to your pipeline. This step can be used in either the **Build** stage or the **Security** stage. In the step configuration, set the following fields:
 
 1. **Scan Mode**: Set the **Scan Mode** to **Extraction**.
-
-2. **Scan Configuration**: If your scan results needs to be reirived from a Sandbox you can choose **Sandbox Scan**. Else, you can use **Default**.
-
+2. **Scan Configuration**: If your scan results needs to be retrieved from a Veracode Sandbox you can choose **Sandbox Scan**. Else, you can use **Default**.
 3. **Target**: The **[Type](#type)** is to Repository by default. For **[Target and Variant Detection](#target-and-variant-detection)**, you can use the [**Auto**](#target-and-variant-detection) option to let STO set the **Name** and **Variant** fields for you. Or, you can manually define them using the **Manual** option.
-
 4. **Authentication**: Select the Authentication [**Type**](#type-1) as either [**API Key**](#api-key) or [**Username and Password**](#username-and-password). Based on the type, configure the **Access Id** and **Access Token**.
-
-**App Id**(optional): In the **Scan Tool** section, you can provide the Veracode [App Id](#app-id) of the application from which you want to fetch scan results. If left blank, the step will try to locate an application using the **Target Name** you specified. Note that the step can only find applications previously created by STO during orchestration, as it relies on the specific naming convention used by STO. Additionally, refer to [this section](#using-an-existing-veracode-application-created-by-sto) to learn more on how to use an existing Veracode Application created by STO.
-
+5. **App Id**(optional): In the **Scan Tool** section, you can provide the Veracode [App Id](#app-id) of the application from which you want to fetch scan results. If left blank, the step will try to locate an application using the **Target Name** you specified. Note that the step can only find applications previously created by STO during orchestration, as it relies on the specific naming convention used by STO. Additionally, refer to [this section](#using-an-existing-veracode-application-created-by-sto) to learn more on how to use an existing Veracode Application created by STO.
 6. **Sandbox Id**: This field appears if you select **Sandbox Scan** as your [Scan Configuration](#scan-configuration). You can enter your [**Sandbox Id**](#sandbox-id) to use an existing Veracode Sandbox.
 
 <DocImage path={require('./static/veracode-extraction.png')} width="40%" height="40%" title="Click to view full size image" />
+
+These are the essential settings required to perform an Extraction scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Security Tests** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode Step Settings](#veracode-step-settings) section.
 
 ## Veracode step settings
 The following are the details of each field in the Veracode step.
@@ -199,3 +188,9 @@ Veracode policy failures will appear in scan results as `Info` severity issues, 
 If you want to reuse an existing Veracode Application created by STO during a previous Orchestration, you have two approaches. 
 1. You can provide the Veracode Application ID in the **App Id** field to directly reference the existing application. The step will use the appropriate Veracode Application.
 2. You can set the **Target Name** to match the one used in your previous Orchestration. If the Veracode Application name follows the standard format (e.g., `harness-D2dLdFdfF-dvpwa`), you can simply enter the last part of the name, such as `dvpwa`, as the **Target Name**, and the step will automatically use that Application. In this case, you can leave the **App Id** field blank. However, this approach only works if the application name is in the exact format expected by the step, as it uses this structure to locate the application.
+
+## Proxy settings
+
+import ProxySettings from './shared/proxy-settings.md';
+
+<ProxySettings />
