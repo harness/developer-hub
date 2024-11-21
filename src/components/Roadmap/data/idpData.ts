@@ -31,21 +31,15 @@ export const IdpData: Horizon = {
           { value: "Workflows" },
           { value: "Platform" },
         ],
-        title: "Granular RBAC and Project/Org Hierarchy",
+        title: "Granular RBAC at Account Level Resources",
         description:
-          "Introduce Project/Org Hierarchy in the Catalog to allow granular Access Control on IDP Catalog entities as well as Workflows. Entities can be created at 3 different scopes (Project, Org, Account) and can be shared with other Users and Groups using Harness Platform RBAC.",
+          "Move IDP Catalog entities as well as Workflows to Account scope and support Harness RBAC on those Resources",
       },
       {
         tag: [{ value: "Catalog" }],
         title: "API based Entity Creation",
         description:
           "Allow creating the Core entities (Components, APIs, Resources) directly on the Harness Platform without having to create a YAML. This will allow seamless integration with third party entities for catalog population and updates.",
-      },
-      {
-        tag: [{ value: "Catalog" }],
-        title: "Catalog Auto-Discovery with Harness CD",
-        description:
-          "Services deployed using Harness CD will auto-magically appear in IDP and will be easier to manage for end-users.",
       },
       {
         tag: [{ value: "Workflows" }],
@@ -78,6 +72,22 @@ export const IdpData: Horizon = {
   Next: {
     description: "Q1 2025, Feb 2025 - Apr 2025",
     feature: [
+      {
+        tag: [
+          { value: "Catalog" },
+          { value: "Workflows" },
+          { value: "Platform" },
+        ],
+        title: "Introduce Project/Org Scopes",
+        description:
+          "Introduce Project/Org Hierarchy in the Catalog to allow granular Access Control on IDP Catalog entities as well as Workflows on those levels. Entities can be created at 3 different scopes (Project, Org, Account) and can be shared with other Users and Groups using Harness Platform RBAC.",
+      },
+      {
+        tag: [{ value: "Catalog" }],
+        title: "Catalog Auto-Discovery with Harness CD",
+        description:
+          "Services deployed using Harness CD will auto-magically appear in IDP and will be easier to manage for end-users.",
+      },
       {
         tag: [{ value: "Catalog" }],
         title: "Flexible Catalog Table",
