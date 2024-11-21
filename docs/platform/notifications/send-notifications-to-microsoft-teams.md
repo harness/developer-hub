@@ -22,37 +22,29 @@ Setup is a simple process of generating a Webhook in Microsoft Teams and adding 
 
 We assume you have a Microsoft Teams administrator account.
 
-### Step 1: Create a Connector for Microsoft Teams Channel
+### Step 1: Create a Webhook in Microsoft Teams
 
-You create a channel connector in Microsoft Teams to generate the Webhook Harness needs for notification.
+1. In Microsoft Teams, right-click the channel name where you want to send notifications, and select **Workflows** from the menu.
 
-In Microsoft Teams, right-click the channel where you want to send notifications, and select **Connectors**.
+  ![](./static/send-notifications-to-microsoft-teams-10.png)
 
-![](./static/send-notifications-to-microsoft-teams-10.png)
-In **Connectors**, locate **Incoming Webhook**, and click **Configure.**
+2. In the **Workflows** section, select the workflow **Post to a channel when webhook request is received**.
 
-![](./static/send-notifications-to-microsoft-teams-11.png)
-In **Incoming Webhook**, enter a name, such as **Harness**.
+  ![](./static/send-notifications-to-microsoft-teams-11.png)
 
-Right-click and save the Harness icon from here:
+3. Provide a name for the webhook, then click **Next**.
 
-![](./static/send-notifications-to-microsoft-teams-12.png)
+  ![](./static/send-notifications-to-microsoft-teams-12.png)
 
-Click **Upload Image** and add the Harness icon you downloaded.
+4. Select the **Team** and **Channel** where you’d like to receive notifications, then click **Add Workflow**.
 
-Next, you'll create the Webhook URL needed by Harness.
+  ![](./static/send-notifications-to-microsoft-teams-13.png)
 
-### Step 2: Generate Channel Webhook
+5. A webhook URL will be generated. Copy this URL for use in Harness.
 
-In your Microsoft Teams Connector, click **Create**. The Webhook URL is generated.
+  ![](./static/send-notifications-to-microsoft-teams-14.png)
 
-![](./static/send-notifications-to-microsoft-teams-13.png)
-Click the copy button to copy the Webhook URL, and then click **Done**.
-
-The channel indicates that the Connector was set up.
-
-![](./static/send-notifications-to-microsoft-teams-14.png)
-### Step 3: Add Webhook to Harness User Group Notification Preferences
+### Step 2: Add Webhook to Harness User Group Notification Preferences
 
 In your **Account**/**Organization**/**Project** click Access Control.
 

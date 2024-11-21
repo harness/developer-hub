@@ -73,7 +73,6 @@ Few datasources like **PagerDuty**, **Kubernetes** are dependent on the Plugins 
 
 :::
 
-
 ## GitHub
 
 The following **Data Points** are available for GitHub Data Source. 
@@ -552,6 +551,30 @@ If the rule depends on the execution of the pipeline then the latest execution o
 2. In case if annotation is missing the catalog info YAML, we will get the failure summary for the check in order to add the annotation [We can refer to the Pre-Requisite section to add it]
 
 ![](./static/es2-harness.png)
+
+5. **(Code) Extract string from a file**
+
+- *Objective*: Gets the string matching the pattern from given file from the branch.
+
+- *Calculation Method*: If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the backstage.io/source-location annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the designated pattern is then searched within the file contents and its value is extracted and returned
+
+- *Prerequisites*: Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source Harness Code repository.
+
+6. **(Code) Does file exist**
+
+- *Objective*: Checks if the given filename exist or not.
+
+- *Calculation Method*: Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and find if the file is present or not. Make sure to mention the filename with extension or relative path from the root folder (e.g.: README.md or docs/README.md) in the conditional input field.
+
+- *Prerequisites*: Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source Harness Code repository.
+
+7. **(Code) Match string in a file**
+
+- *Objective*: Matches the pattern in the given file from the branch.
+
+- *Calculation Method*: If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the backstage.io/source-location annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the contents are examined to find the pattern. Returns true/false based on whether the pattern was found or not.
+
+- *Prerequisites*: Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source Harness Code repository.
 
 ## Catalog 
 

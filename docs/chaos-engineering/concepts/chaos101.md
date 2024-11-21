@@ -96,9 +96,9 @@ HCE doesn't just focus on fault injection; it helps you set up a fully operation
 
 - **Native Integration with Harness Continuous Delivery (CD) Pipelines**: [Streamline chaos engineering into your CI/CD workflows](/docs/category/integrate-hce-with-harness-cd).
 
-- **Hypothesis Validation and SLO Management**: Validate hypotheses using [probes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/) and manage SLOs through integration with Harness Continuous Verification (CV).
+- **Hypothesis Validation and SLO Management**: Validate hypotheses using [probes](/docs/chaos-engineering/use-harness-ce/probes/) and manage SLOs through integration with Harness Continuous Verification (CV).
 
-- [**Guided GameDay Execution**](/docs/chaos-engineering/concepts/explore-concepts/GameDay): Detailed analytics and reporting based on experiment execution and application resilience.
+- [**Guided GameDay Execution**](/docs/chaos-engineering/use-harness-ce/GameDay): Detailed analytics and reporting based on experiment execution and application resilience.
 
 - **Chaos Events, Metrics, and Logs**: Instrument APM (Application Performance Monitoring) [dashboards](/docs/chaos-engineering/use-harness-ce/dashboards/) with chaos context to monitor the impact of chaos faults on service/application health.
 

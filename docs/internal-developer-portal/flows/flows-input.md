@@ -459,11 +459,13 @@ For more such references and validate your conditional steps take a look at the 
 
 ## Upload a file using Workflows
 
+Workflow supports a limited form of file types as input, in the sense that it will parse the file contents to Workflow inputs as [data-urls](https://developer.mozilla.org/en-US/docs/Web/URI/Schemes/data).
+
 There are 3 types of file upload.
 
-1. Single File
-2. Multiple Files
-3. Single File with Accept Attribute
+1. Single File: There are two formats available `data-url` and `file`. 
+2. Multiple Files: Multiple files selectors are supported by defining an `array` of strings having `data-url` as a format. 
+3. Single File with Accept Attribute: You can use the `accept` attribute to specify a filter for what file types the user can upload.
 
 <details>
 <summary>Example YAML</summary>
@@ -487,6 +489,10 @@ properties:
     type: string
     format: data-url
     title: Single File with Accept attribute
+    ui:enableMarkdownInDescription: true
+    ui:description: Provide the Json File
+    ui:options:
+      accept: .json
 ```
 
 </details>
@@ -879,7 +885,7 @@ spec:
 
 ```
 
-2. In case the properties Project Identifier is named something else other than `projectId` in that case for the custom action to function as desired we need to add it as a dependency under `projectPickerRef`
+2. In case the properties Project Identifier is named something else other than `projectId` in that case for the Workflow action to function as desired we need to add it as a dependency under `projectPickerRef`
 
 ```YAML
 # Example workflow.yaml file

@@ -148,6 +148,10 @@ You can set any version of your template as the stable version using the **Set a
 
 ![](./static/template-04.png)
 
+:::info note
+Harness emits an Audit Event whenever the stable version of a template is updated. The Audit Event includes a YAML Diff section, allowing users to easily view the differences between the old and new stable versions of the template.
+:::
+
 ## Preview a template
 
 You can view the **Details** and **Activity Log** of your template by selecting **Preview Template**.

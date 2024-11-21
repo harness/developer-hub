@@ -189,7 +189,10 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 4. In **Artifact Details**, in **Region**, select the region for the S3 service you are using. While S3 is regionless, Harness needs a region for the S3 API.
 5. In **Bucket Name**, enter the S3 bucket name.
 6. In **File Path Regex**, enter a regex like `todolist*.zip`. The expression must either contain a `*` or end with `/`.
-7. Select **Continue**.
+   :::note
+   Please use `*` for regex matching and not `.*`. For example - `*.tgz`, `todolist-v*.zip`
+   :::
+8. Select **Continue**.
 
 </TabItem>
 <TabItem value="Artifactory" label="Artifactory">

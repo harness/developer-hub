@@ -155,7 +155,7 @@ spec:
 
 ```
 
-In the above Workflow we have used the [Harness Trigger Custom Action](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend-module-github), which takes the **exact variable name** `github_org` and `github_repo` you created for your pipeline as input and a **token** as `apikey`
+In the above Workflow we have used the [Harness Trigger Workflow Action](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend-module-github), which takes the **exact variable name** `github_org` and `github_repo` you created for your pipeline as input and a **token** as `apikey`
 
 :::info
 

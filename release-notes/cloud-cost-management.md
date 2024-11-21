@@ -18,6 +18,31 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
+## November 2024
+
+### Version 1.34.3
+
+#### New features and enhancements
+
+- **UI for Hibernate Support for EC2 and Azure VM**: We have introduced the "Hibernate" option in the AutoStopping flow for Azure VM and EC2. This allows resources to enter a hibernation state until a request is received. [CCM-19907]
+  <DocImage path={require('./static/Hibernate-1.34.3.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- **UX Enhancements for Rule Sets and Enforcements in Asset Governance**:  
+  [CCM-19861] and [CCM-19860] We’ve improved the creation and update flow for the following:  
+  - **Enforcements** 
+ <DocImage path={require('./static/enforcement_rn.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+  - **Rule Sets**  
+ <DocImage path={require('./static/ruleset_rn.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- **Support for Pasting Comma-Separated Values**: Users can now paste comma-separated values in account, region, project, and subscription input fields across Azure, GCP, and AWS. [CCM-19837]
+
+- **Enhanced Governance Recommendations Details**: Asset Governance dashboards now display both **Account Name** in the Namespace field and **AWS Account ID** in a dedicated field. [CCM-19921]
+
+#### Fixed Issues
+
+- **Improved Schedule Creation in AutoStopping UI**:  
+  Users can now directly input numbers when creating schedules for AutoStopping in the UI, eliminating the need to rely solely on arrow keys. [CCM-19425]
 
 ## October 2024
 

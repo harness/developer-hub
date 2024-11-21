@@ -214,6 +214,12 @@ spec:
 
 ### Using the Workflows Playground
 
+:::caution
+
+The Workflows Playground does not render accurate previews for advanced user inputs, such as conditional fields or complex input formats. It is recommended to use the editor only for lightweight input previews. For accurate validation of advanced inputs, test the Workflow Form Inputs in a real Workflow execution.
+
+:::
+
 Harness IDP also provides a built-in editor to help you build your Workflows Form. It provides a real-time preview of the corresponding UI based on the YAML definition. Here you can work on building a new workflow or trying editing an existing one. **Note that Editor is only for preview, you can not save the changes done there. Once you have tested the changes, you have to copy the changes made to the YAML and add it to the Workflow definition YAML stored in your git provider**.
 
 To access the playground, go to your Workflows page and click on **Open Playground** -> **Edit Template Form**.

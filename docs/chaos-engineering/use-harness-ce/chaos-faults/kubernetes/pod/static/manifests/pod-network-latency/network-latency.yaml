@@ -1,4 +1,4 @@
-# it injects network-latency for the egress traffic
+# it injects network-latency for the ingress/egress traffic
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

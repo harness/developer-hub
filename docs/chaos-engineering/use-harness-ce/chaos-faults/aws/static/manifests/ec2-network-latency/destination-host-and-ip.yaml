@@ -1,4 +1,4 @@
-# it injects the chaos into the egress traffic for specific IPs/hosts
+# it injects the chaos into the ingress/egress traffic for specific IPs/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

@@ -133,7 +133,7 @@ The following YAML snippet illustrates the use of these environment variables:
 
 [embedmd]:# (./static/manifests/node-network-latency/network-latency.yaml yaml)
 ```yaml
-# it injects network-latency for the egress traffic
+# it injects network-latency for the ingress/egress traffic
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -169,7 +169,7 @@ The following YAML snippet illustrates the use of these environment variables:
 
 [embedmd]:# (./static/manifests/node-network-latency/destination-ips-and-hosts.yaml yaml)
 ```yaml
-# it injects the chaos for the egress traffic for specific ips/hosts
+# it injects the chaos for the ingress/egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

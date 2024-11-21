@@ -25,12 +25,16 @@ import TabItem from '@theme/TabItem';
 
 You can override the following manifest types.
 
-<DocImage path={require('./static/f3298b583d8308e026c05f7dd544195756bb080b43438c0a83ab389c97af794a.png')} width="60%" height="60%" title="Click to view full size image" />
+![](./static/manifest-override.png)
 
 - Values YAML
 - OpenShift Param
 - Kustomize
 - Helm Repo
+- ECS Task Definition
+- ECS Service Definition
+- ECS Scalable Target
+- ECS Scaling Policy
 - Tanzu Application Service (TAS) manifest
 - TAS vars
 - TAS AutoScalar
@@ -99,6 +103,48 @@ Variables cannot be partially overridden either. They are completely replaced.
 When you have **Config files** at two or more of the environment **Service Overrides**, **Configuration**, and the service itself, the standard override priority is applied.
 
 When you have **Variables** with the same name at two or more of the environment **Service Overrides**, **Configuration**, and the service itself, the standard override priority is applied.
+
+Here's an example on how you can configure an override variables and referencing it in a pipeline.
+
+**Navigate to Overrides:**
+- Go to Project Settings, Organization Settings, or Account Settings, depending on the scope of the override. Under Resources, click on **Overrides**.
+
+**Create a New Override:**
+- Click **New Override** to create a new configuration under the desired scope.
+- Under the Override Type dropdown, select **Variable**.
+- Provide the following details:
+  - **VARIABLE NAME**: Enter the variable name (e.g., timeout).
+  - **VARIABLE TYPE**: Choose the appropriate type (e.g., String).
+  - **OVERRIDE VALUE**: Enter the desired value (e.g., 3m).
+
+Save the override.
+
+**Reference the Variable in the Pipeline YAML:**
+Navigate to the Pipeline you wish to modify and edit the YAML.
+Locate the section where the variable is defined. Replace the hardcoded value with the variable reference: `variable_identifier: <+serviceVariables.Variable_Name>`
+Save the YAML.
+
+Example: Setting a Timeout Override
+
+If you want to create an override for timeout and set its value to 3 minutes:
+
+Create an override with Override Value set to `3m`.
+
+![](./static/overrides_variable.png)
+
+Reference it in the pipeline YAML as follows:
+
+```yaml
+execution:
+            steps:
+              - step:
+                  name: Stage Deployment
+                  identifier: stageDeployment
+                  type: K8sBlueGreenDeploy
+                  timeout: <+serviceVariables.timeout>
+```
+
+When the pipeline runs, the timeout value resolves to 3m, ensuring consistency with the override configuration.
 
 </TabItem>
 </Tabs>

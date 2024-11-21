@@ -22,7 +22,28 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 
 
-## October 2024
+
+
+## November 2024
+
+:::note
+
+**Network Whitelisting Update for Hosted macOS Infrastructure (M2 Machines)**
+
+Harness Cloud users utilizing hosted macOS infrastructure, who rely on whitelisting for on-premises resource access, are requested to update their configuration:
+
+To ensure uninterrupted connectivity and functionality for your CI builds, please whitelist the following IP range in your network settings by December 15th, 2024:
+
+IP Range: 207.254.53.128/25
+
+This update also includes a transition to M2 machines, offering improved performance and efficiency for your builds.
+
+If you have any questions or need assistance with the whitelisting process, please contact Harness Support.
+
+
+
+:::
+
 
 ### Version 1.53
 <!-- 2024-11-04 -->
@@ -46,7 +67,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 | `plugin/artifactory` | Added support for Secure Connect (CI-14921)| 1.7.0 | 1.7.1
 
 
-
+## October 2024
 
 ### Version 1.51
 

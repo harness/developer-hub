@@ -48,7 +48,7 @@ This serves as the display name or label for the link. It gives users a brief id
 
 ### Icons
 
-An optional attribute, you can select from a category of supported icons (**Admin** -> **Layout** -> **Icons**) that provide a visual representation or hint about the nature or category of the link. These icons are part of [SimpleIcons](https://simpleicons.org/). The name of the icon can be copied from the **Icons** page under **Layout in Admin** by clicking on the icon.
+An optional attribute, you can select from a category of supported icons that provide a visual representation or hint about the nature or category of the link. These icons are part of [SimpleIcons](https://simpleicons.org/). The name of the icon can be copied from the SimpleIcons Website.
 
 ```YAML
 apiVersion: backstage.io/v1alpha1

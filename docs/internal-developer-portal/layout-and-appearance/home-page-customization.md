@@ -55,9 +55,27 @@ The **Platform Admins** can customize the homepage under Layouts for 3 different
 
 Apart from these, there are two more cards that can be added, removed or edited according to your requirements. 
 
+### My Pull Requests Card
+
+#### 1. GitHub
+
+![](./static/github-pr-card.png)
+
+This GitHub PR card provides quick access to the pull requests you have created as well as the PRs you have to review. It shows PRs from all repositories you have access to, including both public and private repositories across multiple organizations.
+
+The numbers displayed at the top, such as "15 Created," "1 Review Requests," and "1 Assigned" only reflect open pull requests, even though the card also contains information on closed pull requests, as seen by the "Closed (525)" tab.
+
+- **How To Set up**: The access is configured thorough [GitHub OAuth](https://developer.harness.io/docs/platform/git-experience/oauth-integration/#configure-oauth-for-git-provider), you'll be redirected to GitHub to sign-in to populate this card. 
+
+- **Value Addition**: It will display data across all repositories you have permissions for, making it easy to track your contributions, review requests, and assigned PRs in one place without switching contexts.
+
+- **Limitation**: The real-time data is fetched in-case of an event(e.g., updating the org filters, re-loading the homepage), and it doesn't periodically update the values. 
+
+Currently, the "My PRs" card only supports GitHub as a data source. Support for Harness Code Repository is coming soon. Other platforms, such as GitLab, Azure, and Bitbucket, are not yet supported. Let us know if you’d like to see support for these platforms in the future!
+
 ### Tool Kit
 
--  This card acts as a necessary bookmark for all the links visited by the developer quite frequently, eg; JIRA Sprint Dashboard, QA Environments
+-  This card acts as a necessary bookmark for all the links visited by the developer quite frequently, e.g; JIRA Sprint Dashboard, QA Environments
 
 -  You can add a new toolkit card with multiple links and the associated `custom icon` **(Recommended Size: 128x128px and file size: 200KB)** along with a name and a link.  
 

@@ -47,6 +47,68 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## November
 
+### Version 1.65.3
+
+#### New features and enhancements
+
+- **Emit Audit Event for Stable Template Version Changes**
+
+Harness now emits an Audit Event whenever the stable version of a template is updated. The Audit Event includes a YAML Diff section, allowing users to easily view the differences between the old and new stable versions of the template. (PIPE-19754)
+
+- **Support for OAuth Configuration with Self-Hosted GitLab Provider**
+
+Harness now supports configuring OAuth for self-hosted GitLab providers. This feature simplifies authentication and authorization by enabling seamless integration with GitLab's OAuth mechanism.  This change is behind FF `CDS_PROVIDERS` and `PIPE_ENABLE_GITLAB_ON_PREM_FLOW`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. This item requires Harness Delegate version 843xx or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+
+#### Fixed Issues
+
+- Previously, approver inputs in multi-approval scenarios displayed only the last approval activity's response, leading to incorrect default values and missing input constraints. The issue is fixed. (CDS-103109)
+- Previously, URLs used to fetch artifacts from Artifactory with artifact filters did not support special characters, such as spaces, in artifact names. This issue is now fixed to automatically encode URLs, allowing support for special characters. This change is behind FF `CDS_ENCODE_API_REQUESTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-103041, ZD-69919)
+- Previously, when a canary pod had no data while the primary pod did, the risk should have been marked as "No Data" per [documentation](/docs/continuous-delivery/verify/cv-results/interpret-metric-results#metrics-summary-section). Instead, it was incorrectly marked as "No Analysis," causing issues when using the "Fail on No Analysis" feature. This issue is now fixed to align with the documentation, distinguishing "No Data" from "No Analysis" in risk assessments.(CDS-102865, ZD-72242)
+
+#### Gitops Version 1.20.2, Gitops Agent Version 0.81.0
+
+#### New Features and Enhancement
+
+- For Harness GitOps Applications that use multiple sources, users can now select which of the source to sync with their Applications during the sync operation. Previously, all sources were always synced. (CDS-103055)
+- With agent version **v0.81.0**, the base image for the GitOps agent has been upgraded from `redhat/ubi8-minimal:8.9-1029` to `redhat/ubi8-minimal:8.10-1086`.
+
+#### Fixed issues
+
+- GitOps hosted agent scale-up was failing with the unclear error message "Failed to Scale the GitOps agent." This issue is resolved, and the error message now provides a detailed reason for the scale-up failure. (CDS-103429)
+- Users experience continuous log window refresh when viewing logs for a Harness GitOps resource. This issue is resolved. (CDS-103016, ZD-72211)
+
+### Version 1.64.6
+
+#### New features and enhancements
+
+- Approval APIs now support Service Account tokens for approving or rejecting Harness Manual Approval steps. For more information, go to Harness [Using Approval API](/docs/platform/approvals/adding-harness-approval-stages#using-the-approvals-api-with-service-account-authentication). (CDS-97580, ZD-64388)
+
+- Harness now supports webhooks configured with **GitLab System Hooks** to trigger pipelines. For more information, go to Harness [GitLab System Hooks](/docs/platform/triggers/triggers-reference/#gitlab-system-hooks). (CDS-95423)
+
+- Harness now supports self-hosted Bitbucket OAuth tokens for the Git Experience. For more information, go to Harness [Bitbucket Configuration](/docs/platform/git-experience/oauth-integration/). (CDS-95417)
+
+- The Harness platform has been updated with the Kubernetes SDK (v18.0 to v21.0) and Helm SDK. (v3.12 to v3.13).
+
+- Harness has introduced native supports for **Canary** and **Blue-Green** Deployment strategies with Helm Chart deployments. For more information, go to Harness [Helm Chart deployments](/docs/category/helm-step-reference/). (CDS-35715)
+
+- Harness now supports for enabling metrics in ASG deployments. For more information, go to Harness [ASG Additional Configuration](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#asg-additional-configuration). (CDS-99276)
+
+- Harness now detects the failure state of CRDs in the Kubernetes Apply step when CRDs behave like jobs. (CDS-98761)
+
+- You can now specify the environment using **Expressions** in the GitOps pipeline. For more information, go to Harness [GitOps documentation](/docs/continuous-delivery/gitops/pr-pipelines/#create-the-pr-pipeline). (CDS-97523)
+
+- Template name suggestions are now available as part of the **ServiceNow Creation** step. For more information, go to [Harness documentation](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages/#create-from-form-template) (CDS-97672, ZD-64772)
+
+- Harness now allows [bulk reconciliation](/docs/platform/templates/reconcile-pipeline-templates#bulk-reconciliation-of-templates) of templates, enabling users to update runtime input changes across multiple entities (like stages or pipelines) in a single action. Currently, this feature is behind the feature flag `PIPE_BULK_RECONCILIATION`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (PIPE-2018,ZD-39998,42766,43260,45380,47467,47517,63038,71628)
+
+#### Fixed issues
+
+- Previously, an error occurred related to the column "actualRunDuration" in the "verify_step_execution_cvng" relation due to missing migrations. This issue is resolved by running the necessary migrations to create the required columns. (CDS-102602)
+- During the native Terraform apply stage within a CD pipeline, users encountered an unclear error due to the default image missing the Terraform binary. This issue is resolved now. The updated message now reads: Please verify if Terraform is properly installed. (CDS-101932)
+- Previously, the rollback process failed due to an incorrect branch reference for the YAML file. This issue is resolved by adding logic to include the Git details when performing post-deployment rollbacks. 
+Currently, this feature is behind the feature flag `CDS_ADD_GIT_INFO_IN_POST_DEPLOYMENT_ROLLBACK`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-101504)
+
 #### Gitops Version 1.19.0, Gitops Agent Version 0.80
 
 #### New features and enhancements
@@ -66,7 +128,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### New features and enhancements
 
-- Harness now supports customer attributes for OIDC with the GCP connector. Currently, this feature is behind the feature flag `PL_GCP_OIDC_AUTHENTICATION`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-96753, ZD-63581,63632)
+- Harness now supports custom attributes for OIDC with the GCP connector. Currently, this feature is behind the feature flag `PL_GCP_OIDC_AUTHENTICATION`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-96753, ZD-63581,63632)
 
 - Harness has introduced EventBridge webhooks that can be configured with Git, Slack, and generic options (for Nexus artifacts) to trigger pipelines in real time. Currently, this feature is behind the feature flag `CDS_EVENT_BRIDGE_WEBHOOK`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. 
 (CDS-98869, ZD-66421)
