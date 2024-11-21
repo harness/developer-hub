@@ -192,22 +192,29 @@ To fix this issue, follow these steps
 
   ```bash
   kubectl get secrets looker-secrets -o yaml -n <namespace>
+  kubectl get secrets harness-looker-secrets -o yaml -n <namespace>
   ```
 
-  2. Copy the value of lookerMasterKey from the secret and decode it using the following command or any base64 decoder. You’ll need to decode it twice.
+  2. Copy the value of lookerMasterKey from the secret looker-secrets and decode it using the following command or any base64 decoder. You’ll need to decode it twice.
   It's required to decode the secret value twice because during creation, first it's encoded by the helm function in the charts and then Kubernetes encodes it again while creating the secret.
 
   ```bash
   echo "<base64-encoded-lookerMasterKey>" | base64 --decode | base64 --decode
   ```
 
-  3. After decoding, update your ArgoCD values override with the decoded key:
+  3. Do the same for secrets in and obtain the secrets for the following as well lookerClientId lookerClientSecret lookerEmbedSecret lookerSignupUrl
+
+  4. After decoding, update your ArgoCD values override with the decoded key:
 
   ```yaml
   platform:
   looker:
     secrets:
       lookerMasterKey: "<your-decoded-key>"
+      lookerClientId: "<your-decoded-key>"
+      lookerClientSecret: "<your-decoded-key>"
+      lookerEmbedSecret: "<your-decoded-key>"
+      lookerSignupUrl: "<your-decoded-key>"
   ```
 
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
