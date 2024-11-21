@@ -12,7 +12,7 @@ For more information on Helm upgrades, go to [Upgrade the Helm chart](/docs/self
 :::info Important
 This is only applicable to storage file systems that support dynamic provisioning and volume expansion. 
 
-This document is a general guide to increase PVC size of harness statefulset. The actual size is managed by kubernetes volume driver provided by your cloud provider.
+This document is a general guide to increase PVC size of harness statefulset. The actual volume is managed by kubernetes volume driver provided by your cloud provider.
 
 For more information, go to [Resizing Persistent Volumes using Kubernetes](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/).
 
