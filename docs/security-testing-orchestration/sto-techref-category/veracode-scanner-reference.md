@@ -123,6 +123,7 @@ Authentication can be configured using one of two methods, **API Key** or **User
 
 #### API Key
 Enter your **Veracode ID** in the **Access Id** field and your **Veracode Secret Key** in the **Access Token** field.
+Ensure that the API credentials you provide have the necessary permissions with the `Security Lead` role in Veracode.
 
 #### Username and Password
 Enter your account username in the **Access Id** field and your password in the **Access Token** field.
