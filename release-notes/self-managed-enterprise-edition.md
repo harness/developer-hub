@@ -202,7 +202,7 @@ To fix this issue, follow these steps
   echo "<base64-encoded-lookerMasterKey>" | base64 --decode | base64 --decode
   ```
 
-  3. Do the same for secrets in and obtain the secrets for the following as well lookerClientId lookerClientSecret lookerEmbedSecret lookerSignupUrl
+  3. Copy the decrypted secrets for the following attributes lookerClientId lookerClientSecret lookerEmbedSecret lookerSignupUrl in harness-looker-secrets.
 
   4. After decoding, update your ArgoCD values override with the decoded key:
 
