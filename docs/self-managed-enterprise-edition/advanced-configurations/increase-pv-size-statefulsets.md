@@ -10,11 +10,47 @@ You can manually update the Persistent Volume (PV) size associated with a Statef
 For more information on Helm upgrades, go to [Upgrade the Helm chart](/docs/self-managed-enterprise-edition/install/upgrade-helm-chart).
 
 :::info Important
-This is only applicable to storage file systems that support dynamic provisioning. For more information, go to [Resizing Persistent Volumes using Kubernetes](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/).
+This is only applicable to storage file systems that support dynamic provisioning and volume expansion. 
+
+This document is a general guide to increase PVC size of harness statefulset. The actual size is managed by kubernetes volume driver provided by your cloud provider.
+
+For more information, go to [Resizing Persistent Volumes using Kubernetes](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/).
 
 :::
 
-## Update the PV size for StatefulSets
+## Prerequisite
+
+1. Make sure your storage class support volume expansion. If you are unsure about this, please don't proceed.
+2. Make sure you have `yq` installed if you are using **Method 1**
+3. Make sure you have access to delete statefulsets and do helm upgrades
+
+## Recommendation
+
+It is recommended to take a backup before proceeding with increasing the pvc size. This will help in restoring data in case of failures.
+
+For a reference on how to take backups, please go to [Back up and restore Harness](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
+
+## Method 1: Using shell script
+
+1. Download the [Shell Script from here](https://github.com/harness/helm-charts/blob/main/src/harness/scripts/update-pvc.sh) 
+
+2. After downloading, change the script permission to execute it
+
+   ```
+   chmod +x update-pvc.sh
+   ```
+3. Run the script with correct arguments
+
+   ```
+   ./pvc-update.sh --namespace <namespace> --overridefile <override-file-path> --newsize <new-size-in-Gi> --database <database> --helmrelease <harness-release-name> --chart <harness-chart>
+   ```
+   Example:
+   ```
+   ./pvc-update.sh --namespace harness --overridefile ./harness-values.yaml --newsize 30Gi --database mongodb --helmrelease harness --chart harness/harness
+   ```
+4. Wait for the script to complete successfully.
+
+## Method 2: Manually Update the PV size for StatefulSets
 
 You can increase the PV size associated with a StatefulSet in your Kubernetes cluster manually.
 
@@ -75,3 +111,14 @@ To increase the PV size, do the following:
 The field `PersistentVolumesTemplates` is immutable in StatefulSet, which means that you must recreate it for any changes to take effect.
 
 :::
+
+## Troubleshoot
+
+There could be scenarios where the database pods do not come up online and restart frequently.
+
+In those scenarios, please try the following
+
+1. Update readiness/liveness probe settings of the statefulset to some higher value.
+2. Scale down database pods to 0 and then scale the pods to 1. Once the master is up, scale the statefulset to 2/3 based on its earlier pods.
+3. Do a restore of the database if a backup was taken.
+4. Raise harness support ticket.
