@@ -1,11 +1,11 @@
 {
-    "label": "Developing in Gitspaces",
+    "label": "Deep Dive into Gitspaces",
     "collapsible": "true",
     "collapsed": "true",
-    "position": 60,
+    "position": 20,
     "link": {
       "type": "generated-index",
-      "title": "Developing in Gitspaces"
+      "title": "Deep Dive into Gitspaces"
     },
     "customProps": {}
   }

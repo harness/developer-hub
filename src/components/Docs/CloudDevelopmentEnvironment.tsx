@@ -36,21 +36,11 @@ export default function CDE() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Harness Cloud Development Environments(CDE) are ready-to-use, secure, cloud-hosted environments that developers can quickly spin up from anywhere and start writing code, debugging, and collaborating with other developers. Each environment, also called a Gitspace<sup>TM</sup>, comes pre-configured with everything you need to start coding, including your dependencies, tools, libraries, your latest source code, and even your favorite IDE!
+            Harness CDE (also known as Gitspaces) are on-demand remote development environments that can be instantly spun up with just a click. These environments come pre-configured with everything you need to start coding, including your dependencies, tools, libraries, and even your favorite IDE, enabling you with an instant ready-to-use development setup. 
             </p>
             <p>
-            CDEs eliminate the toil and friction associated with managing local development environments, leading to happier and more productive developers!   
+            Gitspaces eliminate the toil and friction associated with managing local development environments, leading to happier and more productive developers!   
             </p>
-            <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={
-                  colorMode === "light"
-                    ? `${baseUrl}img/cde_illustration.svg`
-                    : `${baseUrl}img/cde_illustration_dark.svg`
-                }
-              />{" "}
-            </div>
           </div>
         </div>
       </div>
