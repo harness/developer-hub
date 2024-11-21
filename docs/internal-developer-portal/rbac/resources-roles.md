@@ -66,6 +66,16 @@ Workflows being a catalog entity has a corresponding `workflow.yaml` or `templat
 
 You can hide the workflows, suggested using while the workflow is in development phase, by using the same tags used to [hide catalog entities](/docs/internal-developer-portal/rbac/resources-roles#hide-catalog-entities). 
 
+## Managing Pipelines RBAC for Workflows
+
+While creating a Workflow for new service or developer onboarding, that use Harness Pipeline as an orchestrator, you often want everyone added to your account to have the ability to execute the Workflow i.e., run the Harness Pipeline. You also don't want to add every single user individually, especially if you have thousands of users. Using the "Assign Role Bindings" option under **Project Settings → Access Control → User Group** page, you can assign the ****** to everyone by using default user groups such as All Account Users or All Organization Users, without granting elevated permissions like Pipeline Edit or Pipeline Delete.
+
+If you want to give Pipeline Execute permission only to specific pipelines within your project, you can create a Resource Group and assign the role binding only to the Resource Group, rather than all resources.
+
+Here's a video tutorial on the Pipelines RBAC. 
+
+<DocVideo src="https://www.youtube.com/embed/ySVEGtQ2uWU?si=fRL2SeYEP4W4ftqt" />
+
 
 ## Platform Level RBAC 
 
