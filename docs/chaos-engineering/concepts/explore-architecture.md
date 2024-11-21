@@ -45,7 +45,7 @@ Control plane on On-Premise (SMP):
 ![SaaS](./static/architecture/ce-arch-smp.png)
 
 
-## The execution plane
+## Execution plane
 The execution plane consists of a logical group of components that reside in the customer's network responsible for running chaos experiments. Some of these components are long running and others are spawned dynamically at run time (of the chaos experiment). The chaos experiments are executed on the target resources by a chaos agent residing on the target or by the Harness delegate residing in the customer network.
 
 ### Agentless model
@@ -81,7 +81,7 @@ The control plane in HCE consists of various components that helps connect the t
 ### Chaos Services
 Chaos control plane has the concept of services that are used for license tracking as well as for service-oriented chaos experimentation. 
 - A service on the control plane is defined differently for different types of targets. For more details about the chaos services description, go to [license consumption](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/license-consumption/).
-- A service also helps achieve service-oriented chaos. This feature support is available **ONLY** for Kubernetes targets using the agentless deployment model. The Kubernetes services on the target clusters or the execution plane are discovered by the [discovery service](/docs/chaos-engineering/use-harness-ce/service-discovery) of the Harness platform and [application maps](/docs/chaos-engineering/use-harness-ce/application-map) are created around them.
+- A service also helps achieve service-oriented chaos. This feature support is available **ONLY** for Kubernetes targets using the agentless deployment model. The Kubernetes services on the target clusters or the execution plane are discovered by the [discovery service](/docs/chaos-engineering/use-harness-ce/service-discovery/) of the Harness platform and [application maps](/docs/chaos-engineering/use-harness-ce/application-map) are created around them.
 After discovery, chaos experiments are created to target the resources of these services by the control plane itself. This significantly reduces the initial learning required to get started with chaos engineering practices.  
 - Another use of services and application maps is deriving the resilience coverage metric. Since the potential chaos experiments are already created by the control plane, the ratio of the "experiments that are run versus total number of chaos experiments present" can be calculated at a service level or at an application map level. This results in a useful metric of **resilience coverage** for each service and for application map.
 
