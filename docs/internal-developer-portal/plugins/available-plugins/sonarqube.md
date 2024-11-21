@@ -60,11 +60,12 @@ To configure the plugin for a service in the software catalog, set one of the fo
 
 The following configuration is recommended:
 
-```yaml
+```YAML
 metadata:
   annotations:
     sonarqube.org/project-key: <instance-name>/<project-key>
 ```
+The `instance-name` is optional if there is only one SonarQube instance, as the default instance from the plugin configuration will be used.
 
 [Read more](https://github.com/backstage/community-plugins/tree/main/workspaces/sonarqube/plugins/sonarqube#sonarqube-plugin)
 
@@ -77,6 +78,7 @@ metadata:
 
 ### There is no SonarQube project with key 
 
+- We need to use the `project_id`, **not** the project name. The `project_id` can be found in the URL, where it appears as `?id=project-id`
 - Ensure that the user token you have used has the permission to view the project mentioned in the annotation.
 - The `sonarqube.org/project-key` annotation is of the correct format `<instance-name>/<project-key>`. 
 
