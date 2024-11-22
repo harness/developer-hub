@@ -21,9 +21,9 @@ For more information, go to [Resizing Persistent Volumes using Kubernetes](https
 ## Prerequisite
 
 1. Make sure your storage class support volume expansion. If you are unsure about this, please refer the volume driver documentation.
-  a. AWS: `ebs.csi.aws.com` [supports volume expansion](https://github.com/kubernetes-sigs/aws-ebs-csi-driver?tab=readme-ov-file#features)
-  b. GCP: `pd.csi.storage.gke.io` [supports volume expansion](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/gce-pd-csi-driver)
-  c. For other drivers, please refer to their documentation.
+    1. AWS: `ebs.csi.aws.com` [supports volume expansion](https://github.com/kubernetes-sigs/aws-ebs-csi-driver?tab=readme-ov-file#features)
+    2. GCP: `pd.csi.storage.gke.io` [supports volume expansion](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/gce-pd-csi-driver)
+    3. For other drivers, please refer to their documentation.
 3. Make sure you have `yq` installed if you are using **Method 1**.
 4. Make sure you have access to delete statefulsets and do the helm upgrades.
 
