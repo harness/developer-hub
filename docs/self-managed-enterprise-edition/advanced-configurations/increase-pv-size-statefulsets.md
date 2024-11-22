@@ -20,19 +20,22 @@ For more information, go to [Resizing Persistent Volumes using Kubernetes](https
 
 ## Prerequisite
 
-1. Make sure your storage class support volume expansion. If you are unsure about this, please don't proceed.
-2. Make sure you have `yq` installed if you are using **Method 1**
-3. Make sure you have access to delete statefulsets and do helm upgrades
+1. Make sure your storage class support volume expansion. If you are unsure about this, please refer the volume driver documentation.
+  a. AWS: `ebs.csi.aws.com` [supports volume expansion](https://github.com/kubernetes-sigs/aws-ebs-csi-driver?tab=readme-ov-file#features)
+  b. GCP: `pd.csi.storage.gke.io` [supports volume expansion](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/gce-pd-csi-driver)
+  c. For other drivers, please refer to their documentation.
+3. Make sure you have `yq` installed if you are using **Method 1**.
+4. Make sure you have access to delete statefulsets and do the helm upgrades.
 
 ## Recommendation
 
 It is recommended to take a backup before proceeding with increasing the pvc size. This will help in restoring data in case of failures.
 
-For a reference on how to take backups, please go to [Back up and restore Harness](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
+For a reference on how to take backups, please refer [Back up and restore Harness](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
 
 ## Method 1: Using shell script
 
-1. Download the [Shell Script from here](https://github.com/harness/helm-charts/blob/main/src/harness/scripts/update-pvc.sh) 
+1. Download the [Shell Script from here](https://raw.githubusercontent.com/harness/helm-charts/refs/heads/main/src/harness/scripts/update-pvc.sh) 
 
 2. After downloading, change the script permission to execute it
 
@@ -120,11 +123,9 @@ The field `PersistentVolumesTemplates` is immutable in StatefulSet, which means 
 
 ## Troubleshoot
 
-There could be scenarios where the database pods do not come up online and restart frequently.
-
-In those scenarios, please try the following
+In a scenario where the database pods do not come up online and restart frequently, please try the following.
 
 1. Update readiness/liveness probe settings of the statefulset to some higher value.
 2. Scale down database pods to 0 and then scale the pods to 1. Once the master is up, scale the statefulset to 2/3 based on its earlier pods.
 3. Do a restore of the database if a backup was taken.
-4. Raise harness support ticket.
+4. If the above solutions do not work, please contact harness support.
