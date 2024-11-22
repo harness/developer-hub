@@ -126,15 +126,11 @@ To test your pipeline:
 
 Capacity planning is critical for Harness Database DevOps because it ensures that the database infrastructure can handle current workloads while scaling efficiently to meet future demands. 
 
-In a DevOps-driven environment, where rapid deployment and continuous integration are key, under-provisioned resources can lead to performance bottlenecks, failed deployments, or service downtime. 
-
-Effective capacity planning allows teams to predict resource needs, optimize performance, and ensure database systems are resilient, scalable, and cost-efficient—supporting agile development cycles and maintaining a seamless user experience.
-
 During the execution, DB DevOps spins up pods on the specified kubernetes cluster in order to run various tasks, for example git clone, and liquibase commands. 
 
 In your pipeline, you can specify how many resources these pods use. Your cluster will need this many resources available per concurrent execution of the pipeline.
 
-Harness plans to increase the default values to 0.5 CPU, and 1 GB of RAM in the near future. You can configure this setting in the UI of Harness Database DevOps module.
+Harness plans to increase the default values to 0.5 CPU, and 1 GB of RAM in the near future. Harness recommends setting this in the UI of Harness Database DevOps module.
 
 ```
 spec:
