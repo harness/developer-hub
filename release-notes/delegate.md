@@ -90,9 +90,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 ## November 2024
 
 ### Version 24.11.84308 <!-- November 20, 2024 -->
-- In order to use this feature the customer must need to enable the request param named 
-"encryptYamlOutput" currently the UI is not ready for the same so customer have to enter the given input via yaml directly in 
-step param of k8s dry run node (CDS-103383)
+- The existing behaviour does not support returning the full, unredacted manifest in an encrypted format as the dry run output. With this fix, the full manifest is encrypted and returned as output, with no redactions. (CDS-103383)
 
 #### Fixed issues
 
