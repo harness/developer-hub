@@ -217,7 +217,7 @@ These are the essential settings for performing an Extraction scan using the Tra
 ## Traceable step settings
 The following are the details of each field in the Traceable step.
 ### Scan Mode
-The Traceable step in STO supports three scan modes: Orchestration, Ingestion, and Extraction. Refer to the documentation specific to each mode for details and configuration instructions.
+The Traceable step in STO supports three scan modes: [Orchestration](#orchestration-mode-configuration), [Ingestion](#ingestion-mode-configuration), and [Extraction](#extraction-mode-configuration). Refer to the documentation specific to each mode for details and configuration instructions.
 
 ### Scan Configuration
 The predefined configuration used for the scan. The Traceable step currently supports only the default scan configuration.
@@ -227,7 +227,7 @@ The predefined configuration used for the scan. The Traceable step currently sup
 The type is set to **Instance** by default, which is used to scan a running application
 
 #### Target and Variant Detection
-You can configure the details of your scan instance by setting its name and variant. These are the labels assigned to the target you’re scanning. You can choose to set them manually by selecting the **Manual** option or have them configured automatically by selecting Auto. When Auto is chosen, the values are set as follows:
+You can configure the details of your scan instance by setting its name and variant. These are the labels assigned to the target you’re scanning. You can choose to set them manually by selecting the **Manual** option or have them configured automatically by selecting **Auto**. When Auto is chosen, the values are set as follows:
 
 #### Auto
 When selected **Auto**, the step sets these values as:
