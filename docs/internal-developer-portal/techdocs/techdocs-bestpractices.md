@@ -144,10 +144,18 @@ Use Markdown for embedding videos:
 ```
 
 ### Allowed Domains:
-To maintain security and compatibility, only embed videos from the following domains:
+To maintain security and compatibility, only embed videos from the following domains are allowed:
 
-- TBA
-
+- youtube.com
+- www.youtube.com
+- youtu.be
+- www.youtu.be
+- drive.google.com
+- zoom.us
+- loom.com
+- sharepoint.com
+- dropbox.com
+- docs.google.com
 
 ## Working with MkDocs Locally
 
