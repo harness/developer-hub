@@ -20,7 +20,6 @@ For more information, go to [Resizing Persistent Volumes using Kubernetes](https
 
 ## Prerequisite
 
-
 1. Ensure your storage class supports volume expansion. Refer to the documentation for your volume driver:
    - **AWS**: `ebs.csi.aws.com` supports [volume expansion](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#features).
    - **GCP**: `pd.csi.storage.gke.io` supports [volume expansion](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/gce-pd-csi-driver).
