@@ -75,8 +75,13 @@ async function docsPluginEnhanced(context, options) {
             description,
             // },
           } = post;
+          // console.log({ date });
 
-          if (date !== undefined && isNaN(new Date(date).getTime())) {
+          if (
+            date == undefined ||
+            isNaN(new Date(date).getTime()) ||
+            date == null
+          ) {
             console.log(
               `Invalid Date in markdown: ${JSON.stringify(post.frontMatter)}`
             );
