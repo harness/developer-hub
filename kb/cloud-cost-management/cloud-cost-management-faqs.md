@@ -464,6 +464,15 @@ To ensure the Tag Contributor role is effective, verify that it is assigned at t
 
 To check for deny assignments or policies, navigate to the Azure portal, select the relevant subscription/resource group, and review the Access Control (IAM) section. Look for any deny assignments or policies that explicitly prevent the required actions. Remove or adjust these as needed to resolve the authorization issue.
 
+### What does Partial Success for an Evaluation mean?
+
+Partial Success is populated under the following scenarios:
+
+- Keywords in Custodian Logs:
+  - If the logs contain specific keywords from the defined list, such as “ERROR” or “auto-filtered”, the evaluation is marked as Partial Success.
+  - Multi-Policy Evaluations:
+If one policy evaluation is SUCCESSFUL but another is FAILED or PARTIAL_SUCCESS, the overall status will be Partial Success.
+
 ## Autostopping
 
 ### If we configure an autostopping rule with multiple instances, but a single routing rule. does the proxy load balance between the instances?
