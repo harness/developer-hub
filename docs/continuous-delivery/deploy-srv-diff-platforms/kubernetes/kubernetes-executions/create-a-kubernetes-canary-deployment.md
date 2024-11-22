@@ -12,12 +12,6 @@ This topic will walk you through creating a Canary deployment in Harness for a D
 
 Harness Canary and [Blue Green](create-a-kubernetes-blue-green-deployment.md) stage steps only support Kubernetes Deployment workloads. The [Rolling Deployment](create-a-kubernetes-rolling-deployment.md) step supports all other workloads except Jobs. The [Apply step](deploy-manifests-using-apply-step.md) can deploy any workloads or objects.
 
-## Canary deployment strategy video
-
-<!-- Video:
-https://www.youtube.com/watch?v=tM1OaofCpyg-->
-<DocVideo src="https://www.youtube.com/watch?v=tM1OaofCpyg" />
-
 ## What workloads can I deploy?
 
 Stages using Harness Canary and Blue Green steps only support [Kubernetes Deployment workloads](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
@@ -65,16 +59,6 @@ A Harness Kubernetes Canary deployment uses two phases, a Canary and a Primary D
 When you add a Canary Strategy to a stage, Harness automatically generates the steps for Canary and Primary Deployment groups.
 
 If you're new to Kubernetes RollingUpdate deployments, go to [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) from Kubernetes. That guide summaries Rolling Update and provides an interactive online tutorial.Although it isn't covered here, you can also scale your Workloads between the Canary and Rolling steps if you like. You simply add a new Phase and use the Scale step. See [Scale Kubernetes Pods](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas).
-
-## Visual summary
-
-Here's a short video walking through a simple Canary deployment:
-
-<!-- Video:
-https://www.youtube.com/watch?v=UL0ie46c9No-->
-<DocVideo src="https://www.youtube.com/watch?v=UL0ie46c9No" />
-
-This video uses a publicly available manifest on Kubernetes GitHub account: `https://github.com/kubernetes/website/blob/master/content/en/examples/application/nginx-app.yaml`.
 
 ## Define the service and infrastructure
 

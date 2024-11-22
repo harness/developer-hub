@@ -122,14 +122,6 @@ Let's look at the deployment process using two Kubernetes services:
    2. Harness points the stage service at new pod set (with new app version) and verifies that the set reached steady state.
    3. Harness swaps the primary service to new pod set, stage service to old pod set.
 
-## Visual summary
-
-Here's a video walking through a Blue-Green deployment. It's 10 minutes long but it covers set up and two deployments.
-
-<!-- Video:
-https://www.youtube.com/watch?v=0x2eHfpNv_o-->
-<DocVideo src="https://www.youtube.com/watch?v=0x2eHfpNv_o" />
-
 ## Define the service and infrastructure
 
 Create your CD Pipeline stage.
@@ -154,12 +146,6 @@ Additionally, you can add a Blue Green Stage Scale Down step to scale down the l
 ![bg scale down](./static/bg-scale-down-step.png)
 
 This functionality helps you efficiently manage your resources. You can configure the scale down step within the same stage or a different stage, based on your requirement.
-
-Here's a quick video walking through a simple Blue Green Stage Scale Down step:
-
-<!-- Video:
-https://www.loom.com/share/c6fdc714f4234cd093a26d68dbdafdd8?sid=f1980faf-2646-4ea0-852f-a92a9fb1c7c6-->
-<DocVideo src="https://www.loom.com/share/c6fdc714f4234cd093a26d68dbdafdd8?sid=f1980faf-2646-4ea0-852f-a92a9fb1c7c6" />
 
 During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
