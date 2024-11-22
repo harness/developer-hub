@@ -20,33 +20,35 @@ For more information, go to [Resizing Persistent Volumes using Kubernetes](https
 
 ## Prerequisite
 
-1. Make sure your storage class support volume expansion. If you are unsure about this, please refer the volume driver documentation.
-    1. AWS: `ebs.csi.aws.com` [supports volume expansion](https://github.com/kubernetes-sigs/aws-ebs-csi-driver?tab=readme-ov-file#features)
-    2. GCP: `pd.csi.storage.gke.io` [supports volume expansion](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/gce-pd-csi-driver)
-    3. For other drivers, please refer to their documentation.
-3. Make sure you have `yq` installed if you are using **Method 1**.
-4. Make sure you have access to delete statefulsets and do the helm upgrades.
+
+1. Ensure your storage class supports volume expansion. Refer to the documentation for your volume driver:
+   - **AWS**: `ebs.csi.aws.com` supports [volume expansion](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#features).
+   - **GCP**: `pd.csi.storage.gke.io` supports [volume expansion](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/gce-pd-csi-driver).
+   - **Other Drivers**: Check the specific documentation for your storage class.
+
+2. Install `yq` if you plan to use **Method 1**.
+3. Ensure you have the necessary permissions to delete StatefulSets and perform Helm upgrades.
 
 ## Recommendation
 
-It is recommended to take a backup before proceeding with increasing the pvc size. This will help in restoring data in case of failures.
-
-For a reference on how to take backups, please refer [Back up and restore Harness](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
+- **Take a Backup**: Before proceeding, create a backup to ensure data can be restored in case of failures. Refer to [Back up and restore Harness](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-restore-helm) for guidance.
 
 ## Method 1: Using shell script
 
-1. Download the [Shell Script from here](https://raw.githubusercontent.com/harness/helm-charts/refs/heads/main/src/harness/scripts/update-pvc.sh) 
+1. Download the [Shell Script](https://raw.githubusercontent.com/harness/helm-charts/refs/heads/main/src/harness/scripts/update-pvc.sh) 
 
-2. After downloading, change the script permission to execute it
+2. Make the script executable:
 
    ```
    chmod +x update-pvc.sh
    ```
-3. Run the script and enter correct arguments when prompted
+
+3. Run the script and provide the required arguments:
 
    ```
    ./pvc-update.sh
    ```
+
    Example:
    ```
    ./pvc-update.sh
@@ -57,15 +59,14 @@ For a reference on how to take backups, please refer [Back up and restore Harnes
    Enter release name: harness
    Enter chart path/name: harness/harness
    ```
+
 4. Wait for the script to complete successfully.
 
 ## Method 2: Manually Update the PV size for StatefulSets
 
-You can increase the PV size associated with a StatefulSet in your Kubernetes cluster manually.
+Follow these steps to manually increase PV size associated with a StatefulSet in your Kubernetes cluster manually:
 
-To increase the PV size, do the following:
-
-1. Run the following to list all the Persistent Volume Claims (PVCs) in your Kubernetes cluster.
+1. Run the following command to list all the Persistent Volume Claims (PVCs) in your Kubernetes cluster.
 
    ```
    kubectl get pvc
@@ -74,13 +75,13 @@ To increase the PV size, do the following:
 2. Identify the PV that corresponds to the StatefulSet you are currently working with.
 
 
-3. Edit the PV configuration to update the storage size. Replace \<YOUR_PVC_NAME> with the name of your PVC and \<YOUR_UPDATED_SIZE> with the desired storage size.
+3. Edit the PV configuration to update the storage size. Replace `<YOUR_PVC_NAME>` with the name of your PVC and `<YOUR_UPDATED_SIZE>` with the desired storage size.
 
    ```
    kubectl patch pvc <YOUR_PVC_NAME> -p '{"spec":{"resources":{"requests":{"storage":"<YOUR_UPDATED_SIZE>"}}}}' -n <namespace>
    ```
 
-4. Verify that the PV and PVC have been updated with the new size. Replace \<YOUR_PV_NAME> and \<YOUR_PVC_NAME> with your applicable names.
+4. Verify that the PV and PVC have been updated with the new size. Replace `<YOUR_PV_NAME>` and `<YOUR_PVC_NAME>` with your applicable names.
 
    ```
    kubectl get pv <YOUR_PV_NAME> -o=jsonpath='{.spec.capacity.storage}'
@@ -106,7 +107,7 @@ To increase the PV size, do the following:
                   size: 5Gi
    ```
 
-6. Ensure the StatefulSet is recreated to pick up the changes. Replace \<YOUR_STATEFULSET-NAME>, \<YOUR_RELEASE_NAME>, and \<YOUR_CHART_NAME> with your StatefulSet name, Helm release name, and Helm chart name, and change the `override.yaml` file name.
+6. Ensure the StatefulSet is recreated to pick up the changes. Replace `<YOUR_STATEFULSET-NAME>`, `<YOUR_RELEASE_NAME>`, and `<YOUR_CHART_NAME>` with your StatefulSet name, Helm release name, and Helm chart name, and change the `override.yaml` file name.
 
    ```
    kubectl delete statefulset <YOUR_STATEFULSET-NAME>
@@ -116,16 +117,16 @@ To increase the PV size, do the following:
    helm upgrade <YOUR_RELEASE_NAME> <YOUR_CHART_NAME> -f override.yaml
    ```
 
-:::info note
+:::note
 The field `PersistentVolumesTemplates` is immutable in StatefulSet, which means that you must recreate it for any changes to take effect.
 
 :::
 
 ## Troubleshoot
 
-In a scenario where the database pods do not come up online and restart frequently, please try the following.
+If database pods fail to come online or restart frequently, try these steps:
 
-1. Update readiness/liveness probe settings of the statefulset to some higher value.
-2. Scale down database pods to 0 and then scale the pods to 1. Once the master is up, scale the statefulset to 2/3 based on its earlier pods.
-3. Do a restore of the database if a backup was taken.
-4. If the above solutions do not work, please contact harness support.
+1. **Adjust Probes**: Increase the readiness/liveness probe timeout values for the StatefulSet.
+2. **Scale Down and Up**: Scale down the database StatefulSet to zero pods, then scale it back to one pod. After the master pod is stable, scale it further as needed.
+3. **Restore Data**: Restore the database from a backup if taken earlier.
+4. **Contact Support**: If issues persist, reach out to [Harness support](mailto:support@harness.io) for assistance.
