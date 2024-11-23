@@ -470,6 +470,20 @@ Max concurrency changes based on the following:
 * If you select **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of environments or infrastructures.
 * If you select **Deploy services in parallel** and **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of services multiplied by the number of environments.
 
+## Naming Stages Using Matrix Labels
+
+Harness supports naming stages using Matrix Labels, which can improve readability and organization in deployments involving multiple services or environments. This feature allows you to use the names of matrix indices as labels instead of default indices.
+
+To enable this feature:
+
+1. Navigate to your Project Default settings.
+2. Enable the **Enable Matrix Labels By Name** option under Pipeline settings.
+
+
+![](./static/enable_matrix_by_name.png)
+
+By default, Harness uses numerical indices for the matrix naming strategy. Enabling this setting customizes the naming convention for better readability and organization.
+
 ## Limitations
 
 * Reconciliation for Harness services, environments, and infrastructure definitions is not supported for deployments using multiple services, environments, or infrastructures, respectively.
