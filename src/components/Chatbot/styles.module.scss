@@ -90,14 +90,14 @@
       line-height: 32px;
       letter-spacing: 0.2px;
       text-align: left;
-      color: var(headingTop);
+      color: var(--headingTop);
       margin: 0;
     }
 
     .chatbot-heading-top .right i {
       width: 16px;
       height: 8px;
-      color: var(headingIcon);
+      color: var(--headingIcon);
     }
 
     .chatbot-heading-text {
@@ -108,7 +108,7 @@
       font-weight: 400;
       line-height: 20px;
       text-align: left;
-      color: var(headingText);
+      color: var(--headingText);
       width: 100%;
     }
 
@@ -140,7 +140,7 @@
       font-weight: 400;
       line-height: 20px;
       text-align: center;
-      color: var(headingTime);
+      color: var(--headingTime);
       width: 100%;
     }
 
