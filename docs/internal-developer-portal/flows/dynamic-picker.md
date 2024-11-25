@@ -50,7 +50,7 @@ The first step is to declare a new Backend Proxy so that the Workflow forms UI c
 
 Go to IDP Admin -> Plugins. Find the plugin called "Configure Backend Proxies".
 
-![](./static/configure-backend-proxy-plugin.png)
+![](./static/config-backend-proxies-plugin.png)
 
 Inside the plugin, you get three options (like any other [IDP plugin configuration](https://developer.harness.io/docs/internal-developer-portal/plugins/overview)).
 
