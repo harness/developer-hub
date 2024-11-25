@@ -27,7 +27,7 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "HashiCorp Vault Support",
-        description: "Perform static analysis in Github workflows and Harness pipelines to detect risky actions and misconfigurations.",
+        description: "Leverage keys from HashiCorp Vault to attest and verify your artifacts.",
       },
       {
         tag: [],
@@ -47,7 +47,7 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "Artifact Chain of Custody V2",
-        description: "An enhanced audit trail that seamlessly integrates all pipeline events, spanning from source code to deployment. ",
+        description: "An enhanced audit trail that seamlessly integrates all pipeline events, spanning from source code to deployment.",
       },
       {
         tag: [],
@@ -97,7 +97,7 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "Governance Policies for Compliance Standards",
-        description: "View and enforce policies on Code Repo, Artifacts and CI/CD pipelines based on rules defined in supply chain standards.",
+        description: "View and enforce policies on Code Repo, Artifacts, and CI/CD pipelines based on rules defined in supply chain standards.",
       },
     ],
   },
