@@ -37,7 +37,7 @@ export const SscaData: Horizon = {
     ],
   },
   "Now": {
-    description: "Q3 2024, Nov 2024 - Jan 2025",
+    description: "Q4 2024, Nov 2024 - Jan 2025",
     feature: [
       {
         tag: [],
@@ -82,7 +82,7 @@ export const SscaData: Horizon = {
     ],
   },
   "Next": {
-    description: "Q4 2024, Feb - April 2025",
+    description: "Q1 2025, Feb - April 2025",
     feature: [
       {
         tag: [],
@@ -102,7 +102,7 @@ export const SscaData: Horizon = {
     ],
   },
   "Later": {
-    description: "Q1 2025+, May 2025 & beyond",
+    description: "Q2 2025+, May 2025 & beyond",
     feature: [
       {
         tag: [],
