@@ -248,7 +248,7 @@ To maintain security and compatibility, only embed videos from the following dom
 > Iframe-based videos cannot be rendered locally when using tools like techdocs-cli to preview documentation. They will render correctly only when the TechDocs site is hosted and accessed through the Internal Developer Portal (IDP).
 
 ### Embedding Self-Hosted Videos
-For videos hosted in your repository or accessible via a direct URL, use the Markdown <video> tag:
+For videos hosted in your repository or accessible via a direct URL, use the Markdown `<video>` tag:
 
 ```markdown
 <video controls>
