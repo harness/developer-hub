@@ -80,6 +80,7 @@ There are a few behaviors to note when using Barriers within a looping strategy 
 * You can have multiple Barrier steps in a stage/step group. Every Barrier step in the same stage/step group must use a unique **Barrier Reference**.
 * Ensure the Barrier Reference string for each related barrier across the different stages/step groups matches.
 * Please do not use the same **Barrier Reference** in sequential stages. This results in the first stage with the Barrier step never ending and the flow never reaches the next stage with the second Barrier step. 
+* You can use the same Barrier only within a single pipeline. If you attempt to use a Barrier name from one pipeline in the Barrier step of another pipeline, it will not function.
 
  
 
