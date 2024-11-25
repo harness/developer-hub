@@ -123,6 +123,63 @@ And that's it! We now have a Workflow dropdown where results are coming from an 
 
 ![](./static/dynamic-picker-example.png)
 
+### Use Form Data from a Previous page in a New Page
+
+While using Dynamic Workflow UI Pickers, users can now reference the data take as an input in the previous page, using `{{ parameters.properties }}`.
+
+```YAML
+parameters:
+  - title: Select Harness Project
+    type: object
+    properties:
+      projectId:
+        title: Harness Project ID
+        description: Select the Harness Project ID
+        type: string
+        ui:field: HarnessProjectPicker
+        ui:autofocus: true
+      organizationId:
+        title: Harness Organization ID
+        description: Select the Harness Organization ID
+        type: string
+        ui:field: HarnessAutoOrgPicker
+  - title: Select Harness Pipeline
+    type: object
+    properties:
+      pipelineId:
+        type: string
+        ui:field: SelectFieldFromApi
+        ui:options:
+          title: Harness Pipeline ID
+          placeholder: Select the Harness Pipeline ID
+          allowArbitraryValues: true
+          path: proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{
+            parameters.projectId }}/pipelines
+          valueSelector: identifier
+          labelSelector: identifier
+steps:
+  - id: debug
+    name: Debug
+    action: debug:log
+    input:
+      message:
+        "{ parameters.pipelineId }": null
+```
+
+In the above YAML, the API endpoint values under the `path` dynamically insert the `organizationId` and `projectId` from the first set of parameters taken as an input in the previous page, to construct the endpoint URL for fetching the list of pipelines. 
+
+```bash
+proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{ parameters.projectId }}/pipelines
+```
+
+Hence, it will list all the pipelines present under the particular project int org mentioned as displayed below. 
+
+![](./static/parameters-refernce.gif)
+
+:::info
+You cannot reference properties on the same page, and property references only work with values provided through Dynamic UI pickers. 
+:::
+
 ## Reference Docs
 
 ### `SelectFieldFromApi`

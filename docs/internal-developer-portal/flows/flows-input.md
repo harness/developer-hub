@@ -122,11 +122,15 @@ steps:
         "{ parameters.pipelineId }": null
 ```
 
-In the above YAML, the API endpoint values under the path dynamically insert the `organizationId` and `projectId` from the first set of parameters to construct the endpoint URL for fetching the list of pipelines.
+In the above YAML, the API endpoint values under the `path` dynamically insert the `organizationId` and `projectId` from the first set of parameters taken as an input in the previous page, to construct the endpoint URL for fetching the list of pipelines. 
 
 ```bash
 proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{ parameters.projectId }}/pipelines
 ```
+
+Hence, it will list all the pipelines present under the particular project int org mentioned as displayed below. 
+
+![](./static/parameters-refernce.gif)
 
 :::info
 You cannot reference properties on the same page, and property references only work with values provided through Dynamic UI pickers. 
