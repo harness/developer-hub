@@ -29,7 +29,7 @@ HCE is built on open-source CNCF chaos engineering project [LitmusChaos](https:/
 The control plane comprises of microservices that enable the [web-based portal](https://app.harness.io) to perform its functions.
 The control plane helps **create**, **schedule**, and **monitor** chaos experiments.
 
-For more information, go to [Control Plane](/docs/chaos-engineering/concepts/deployment-architecture#control-plane).
+For more information, go to [Control Plane](/docs/chaos-engineering/concepts/explore-architecture#features-of-control-plane).
 
 ### Centralized Chaos Execution Plane
 
@@ -39,7 +39,7 @@ The diagram below briefly describes how the control plane interacts with the exe
 
 ![Architecture](./static/architecture/hce-architecture.png)
 
-For more information, go to [Execution Plane](/docs/chaos-engineering/concepts/deployment-architecture#execution-plane), that also describes how the control plane and the execution plane interact with each other to execute and give results of chaos experiments.
+For more information, go to [Execution Plane](/docs/chaos-engineering/concepts/explore-architecture#execution-plane), that also describes how the control plane and the execution plane interact with each other to execute and give results of chaos experiments.
 
 ### Service Discovery
 It is an entity on the Harness platform (also known as the control plane) that corresponds to a Kubernetes service on your (user) cluster. It includes details about the connections made from and to it.
