@@ -23,7 +23,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Before you begin, review the following
+**Before you begin, review the following**
 
 - [All about chaos engineering](/docs/chaos-engineering/concepts/chaos101)
 
@@ -33,16 +33,11 @@ Irrespective of the model, the architecture is divided into two parts.
 1. **The Control Plane** that is part of the Harness Platform.
 2. **The Execution Plane** that resides in the enterprise's private or public network.
 
+An enterprise typically consists of one chaos control plane and one or more chaos execution planes. The diagrams below describe different deployment models. 
+
 ## Deployment models
-An enterprise consists of one control plane and one or more execution planes. The diagrams below describe different deployment models. 
 
-Control plane on SaaS:
-
-![SaaS](./static/architecture/ce-arch-saas.png)
-
-Control plane on On-Premise (SMP):
-
-![SaaS](./static/architecture/ce-arch-smp.png)
+![SaaS-and-SMP model of deployment of Harness Chaos Engineering](./static/architecture/saas-vs-onprem.png)
 
 
 ## Execution plane
@@ -76,7 +71,7 @@ Agent model is preferred to run chaos experiments on the Linux or Windows hosts.
 
 
 ## Features of Control Plane
-The control plane in HCE consists of various components that helps connect the targets to Harness, create chaos experiments, set up RBACs, set up governance and orchestrate the chaos experiments. Some of the key features of the control plane are described below.
+The control plane in Harness Chaos Engineering consists of various components that helps connect the targets to Harness, create chaos experiments, set up RBACs, set up governance and orchestrate the chaos experiments. Some of the key features of the control plane are described below.
 
 ### Chaos Services
 Chaos control plane has the concept of services that are used for license tracking as well as for service-oriented chaos experimentation. 
@@ -119,7 +114,7 @@ You can expand the orchestration to other pipelines like Jenkins, Google Cloud B
 Harness provides API end points to invoke a chaos experiment and to query the result of a chaos experiment that is already run. For more information, go to [execute using API](/docs/chaos-engineering/getting-started/saas/experiment-using-api).
 
 #### Orchestrate Via Scheduler
-HCE control plane allows you to schedule a chaos experiment using CRON. For more information, go to [run experiments on schedule](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#execute-experiment-on-a-schedule). 
+Harness Chaos Engineering control plane allows you to schedule a chaos experiment using CRON. For more information, go to [run experiments on schedule](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#execute-experiment-on-a-schedule). 
 
 #### Orchestrate Via Portal
 Harness chaos portal (aka the control plane) allows you to run an experiment with the **Run** button. You can stop an experiment execution with the **Stop** button in the [portal](https://app.harness.io).
@@ -132,7 +127,7 @@ HCE-CLI, a command line interface is provided for seamless execution of chaos ex
 #### Orchestrate Via GameDays 
 The chaos control place provides a native [Gameday feature](/docs/chaos-engineering/use-harness-ce/GameDay) using which chaos experiments can be planned and executed. 
 
-## Scaling HCE
-You can incorporate all the chaos capabilities to your new applications using the agentless model. Once the [Harness delegate is deployed and configured](/docs/platform/delegates/delegate-concepts/delegate-overview#install-a-delegate), you can onboard chaos to a new Kubernetes cluster by [adding a connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) and running an [automated chaos onboarding wizard](/docs/chaos-engineering/getting-started/onboarding/) that discovers the resources and creates initial set of chaos experiments. 
+## Scaling Harness Chaos Engineering
+For the Kubernetes targets - it is easier to onboard chaos capabilities to your applications on a new Kubernetes cluster using the agentless model. Once the [Harness delegate is deployed and configured](/docs/platform/delegates/delegate-concepts/delegate-overview#install-a-delegate), you can onboard chaos to a new Kubernetes cluster by [adding a connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) and running an [automated chaos onboarding wizard](/docs/chaos-engineering/getting-started/onboarding/) that discovers the resources and creates initial set of chaos experiments. 
 
 ![Scaling with Harness Chaos Engineering](./static/architecture/scalingchaos.png)
