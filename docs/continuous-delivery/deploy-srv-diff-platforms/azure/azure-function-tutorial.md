@@ -22,7 +22,7 @@ Azure deployments are performed using a CD stage with the deployment type **Azur
 
 ![](static/azure-functions-1.png)
 
-For more information on stages, refer [Add a Stage](/docs/platform/pipelines/add-a-stage) and [CD Pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
+For more information on stages, go to [Add a Stage](/docs/platform/pipelines/add-a-stage) and [CD Pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
 
 ## Azure Function Services
 
@@ -93,12 +93,12 @@ When you're done, infrastructure will look something like this:
 Here is a summary of the process to dynamically provision the target infrastructure for a deployment:
 
 1. **Add dynamic provisioning to the CD stage**:
-   1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
-   2. Select the type of provisioner that you want to use.
 
     ![](static/azure-functions-3.png)
-   
-    Harness automatically adds the provisioner steps for the provisioner type you selected.
+
+   1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+   2. Select the type of provisioner that you want to use.
+      Harness automatically adds the provisioner steps for the provisioner type you selected.
    3. Configure the provisioner steps to run your provisioning scripts.
    4. Select or create a Harness infrastructure in **Environment**.
 2. **Map the provisioner outputs to the Infrastructure Definition**:
@@ -126,7 +126,7 @@ Finally, you set up the provisioner steps to run your provisioning scripts.
 
 For documentation on each of the required steps for the provisioner you selected, go to the following topics:
 
-- **Terraform:**
+- Terraform:
   - [Terraform Plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
   - [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
   - [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step). To see the Terraform Rollback step, toggle the **Rollback** setting.
