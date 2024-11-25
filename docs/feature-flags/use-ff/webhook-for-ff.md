@@ -42,10 +42,11 @@ To set up webhook for Feature Flag implementation:
  post-event (10 attempts, 500ms apart). If unsuccessful, the system will fall back to the 5-minute poller intervals.
  3. **Enabling Webhook**: Once a webhook is set up at any level (account/project/org) it will be set up for any project that has Git sync enabled with the same GitHub 
  connector in the Feature Flags Module.
- 4. **Deleting Webhooks**: A webhook can be used by many entities so deleting the webhook in Harness will not cause it to be deleted in git.
- 5. **Disabling Webhook**: For Feature Flags disabling the webook in Harness is not enough to disable the functionality. You must either:
-   1. Disable/reset Git Sync in the Feature Flags module.
-   2. Delete the webhook in Github.
+ 4. **Webhook Events**: At present the webhook events page does not support yaml validation of FeatureFlag yamls
+ 5. **Deleting Webhooks**: A webhook can be used by many entities so deleting the webhook in Harness will not cause it to be deleted in git.
+ 6. **Disabling Webhook**: For Feature Flags disabling the webook in Harness is not enough to disable the functionality. You do one of the following:
+     - Disable/reset Git Sync in the Feature Flags module.
+     - Delete the webhook in Github.
   
 
 ## Best Practices
