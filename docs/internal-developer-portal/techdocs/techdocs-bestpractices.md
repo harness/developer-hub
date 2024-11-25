@@ -15,40 +15,21 @@ One-page documentation is ideal for quick-start guides, FAQs, or any standalone 
 ### Steps:
 1. **Set Up the Directory:**
 
-- Create a repository with a single index.md file in the root directory.
+- Create a docs folder in your repository and add a single `README.md` file inside it. Add your documentation content directly to `README.md`. GitHub and TechDocs both recognize and render it automatically.
 
-```sh
-/docs
-  |-- index.md
-```
+2. **Serve in IDP:**
 
-2. **Basic `mkdocs.yml` Configuration:**
-
-- Configure MkDocs to use index.md as the sole content file.
-
-```YAML
-site_name: Your Site Name
-nav:
-  - Home: index.md
-```
-
-3. **Publishing:**
-
-Push your documentation to the Git repository and [add it to your `catalog-info.yaml` as annotation](/docs/internal-developer-portal/techdocs/enable-docs) to serve it in IDP. If needed, run `techdocs-cli` locally for testing:
-
-```bash
-techdocs-cli serve
-```
+- Ensure the repository is registered in your catalog-info.yaml file. TechDocs will automatically render the content without additional setup.
 
 ## Working with Multi-Page Sites
 
 For projects requiring detailed documentation, multi-page sites are recommended. These sites can have hierarchical navigation and allow for better content organization.
 
-### Auto-Generated Navigation:
+### Auto-Generated Navigation
 
-MkDocs generates navigation based on folder and file structures
+MkDocs can automatically generate navigation based on folder and file structures.
 
-- Example Structure: 
+- **Example Structure:**
 
 ```sh
 /docs
@@ -60,21 +41,42 @@ MkDocs generates navigation based on folder and file structures
        |-- api.md
 ```
 
-- Resulting NAV
+- **Resulting Navigation (Auto-Generated):**
 
     - Home
     - Guide
         - Getting Started
         - Troubleshooting
     - Reference
-    - API
+        - API
 
-### Manual Navigation Control:
+:::info
 
-For custom navigation, explicitly define the structure in `mkdocs.yml`:
+Even with auto-generated navigation, you can include an `mkdocs.yml` file. In this case, you **cannot** define a `nav` section for custom navigation, but you can still specify other configurations like `site_name` and plugins.
 
-```YAML
+:::
+
+- **Example `mkdocs.yml` for Auto-Generated Navigation:**
+
+```yaml
 site_name: Project Documentation
+plugins:
+  - techdocs-core
+```
+
+> If no `mkdocs.yml` file is present, TechDocs will automatically create a basic configuration during rendering.
+
+
+### Manual Navigation Control
+
+For custom navigation, explicitly define the structure in a `mkdocs.yml` file by adding a `nav` section.
+
+- **Example `mkdocs.yml` for Manual Navigation:**
+
+```yaml
+site_name: Project Documentation
+plugins:
+  - techdocs-core
 nav:
   - Home: index.md
   - Guide:
@@ -83,6 +85,12 @@ nav:
   - Reference:
       - API: reference/api.md
 ```
+
+:::info
+
+Always include the `techdocs-core` plugin for compatibility with TechDocs.  
+
+:::
 
 Here's an [example mkdocs.yml](https://github.com/backstage/backstage/blob/master/mkdocs.yml) following the above structure. 
 
@@ -94,17 +102,39 @@ Here's a video tutorial explaining the same
 
 Visual representations, such as architecture diagrams, improve documentation clarity. Use the installed MkDocs plugins for diagrams.
 
+### Adding an Architecture Diagram (PNG)
+
+1. Store Your Diagram in the same repo as `mkdocs.yml`
+
+Save your architecture diagram in the `docs` folder or a subdirectory, such as `docs/static`. Only images stored in these locations will render correctly in TechDocs.
+
+Example Structure:
+
+```sh
+Copy code
+/docs
+  |-- index.md
+  |-- static/
+       |-- architecture-diagram.png
+```
+2. Reference the Diagram in Markdown
+- Use Markdown syntax to embed the diagram in your documentation:
+
+```markdown
+![Architecture Diagram](static/architecture-diagram.png)
+```
+3. Ensure Proper Rendering
+
+- The relative path (static/architecture-diagram.png) should match the diagram's location within the docs directory. For instance:
+
+If the image is at `/docs/static/architecture-diagram.png`, reference it as `static/architecture-diagram.png`.
+If the image is at `/docs/architecture-diagram.png`, reference it as `architecture-diagram.png`.
+
+## Add Diagrams as code
+
 ### 1. Using Mermaid for Diagrams
 
 Mermaid diagrams are supported out of the box.
-
-#### Prerequisites to use in local environment:
-- Ensure the `mkdocs-mermaid2-plugin` is installed and configured in your `mkdocs.yml`.   
-
-```YAML
-plugins:
-    - mermaid2
-```
 
 ```sh
 ### System Architecture Diagram
@@ -131,20 +161,20 @@ graph TD;
 
 For more syntax options, refer to the [Mermaid documentation](https://mermaid-js.github.io/mermaid/).
 
+#### Instructions to use in local environment:
+
+- Ensure the `mkdocs-mermaid2-plugin` is installed and configured in your `mkdocs.yml`.   
+
+```YAML
+plugins:
+    - mermaid2
+```
+
+For more information refer [here](/docs/internal-developer-portal/techdocs/working-with-techdocs-locally)
+
 ### 2. Using **PlantUML** for Advanced Diagrams
 
 PlantUML is ideal for more detailed and customizable diagrams, such as class diagrams, activity diagrams, and deployment diagrams.
-
-#### Prerequisites to use in local environemnt:
-- Install and configure the `mkdocs-plantuml-plugin` in your project.
-
-#### Adding PlantUML to `mkdocs.yml`:
-
-```yaml
-plugins:
-  - plantuml:
-      server: https://www.plantuml.com/plantuml
-```
 
 #### Example Usage:
 - In your Markdown file:
@@ -168,20 +198,39 @@ FE --> User : Render Data
 @enduml
 ```
 
+#### Instructions to use in local environment:
+- Ensure the `mkdocs-plantuml-plugin` is installed and configured in your `mkdocs.yml`.  
+
+```YAML
+plugins:
+  - plantuml:
+      server: https://www.plantuml.com/plantuml
+```
+For more information refer [here](/docs/internal-developer-portal/techdocs/working-with-techdocs-locally)
+
 ## Embedding Videos in TechDocs
 
 Embedding videos enriches documentation, especially for tutorials or product demonstrations.
 
-### Embedding Syntax:
-Use Markdown for embedding videos:
+### Embedding Videos Using iframe
+
+To embed videos hosted on platforms like YouTube or Vimeo, use the following syntax:
 
 ```markdown
-<video controls>
-  <source src="https://www.example.com/path-to-video.mp4" type="video/mp4">
-</video>
+<iframe 
+  width="560" 
+  height="315" 
+  src="https://www.youtube.com/embed/VIDEO_ID" 
+  title="Video title" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen>
+</iframe>
 ```
+- Replace `VIDEO_ID` with the unique ID of the video from the platform (e.g., dQw4w9WgXcQ for YouTube).
+- Adjust width and height for desired sizing.
 
-### Allowed Domains:
+#### Allowed Domains:
 To maintain security and compatibility, only embed videos from the following domains are allowed:
 
 - youtube.com
@@ -194,6 +243,20 @@ To maintain security and compatibility, only embed videos from the following dom
 - sharepoint.com
 - dropbox.com
 - docs.google.com
+
+**Note:**
+> Iframe-based videos cannot be rendered locally when using tools like techdocs-cli to preview documentation. They will render correctly only when the TechDocs site is hosted and accessed through the Internal Developer Portal (IDP).
+
+### Embedding Self-Hosted Videos
+For videos hosted in your repository or accessible via a direct URL, use the Markdown <video> tag:
+
+```markdown
+<video controls>
+  <source src="https://www.example.com/path-to-video.mp4" type="video/mp4">
+</video>
+```
+- Use this method for `.mp4` or other self-hosted video formats stored in the repository. 
+
 
 ## Create download links for static assets
 

@@ -1,7 +1,7 @@
 ---
-title: How to Work with TechDocs on Local Environment
+title: Working with TechDocs on Local Environment
 description: Learn how to work with TechDocs Locally.
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 Working with MkDocs locally allows you to preview changes and troubleshoot issues before pushing your documentation to the repository.
@@ -17,7 +17,7 @@ pip install mkdocs
 2. Install [Required Plugins](/docs/internal-developer-portal/techdocs/techdocs-plugins-overview): Install the plugins defined in your `mkdocs.yml` file. For example:
 
 ```sh
-pip install mkdocs-material mkdocs-mermaid2-plugin mkdocs-awesome-pages-plugin
+pip install mkdocs-techdocs-core
 ```
 3. Install [techdocs-cli](https://backstage.io/docs/features/techdocs/cli) (optional but recommended): This can help you build the docs without the presence of `mkdocs.yaml`. 
 
@@ -43,7 +43,11 @@ mkdocs serve
 ```
 Access the site at `http://localhost:8000`.
 
-### 3. Preview in TechDocs Format
+:::info
+Make sure you have a `mkdocs.yml` file for the above cli command to work
+:::
+
+OR
 
 To mimic the TechDocs build process, use the techdocs-cli:
 
@@ -51,6 +55,14 @@ To mimic the TechDocs build process, use the techdocs-cli:
 techdocs-cli serve
 ```
 This ensures the documentation will render as it would in Harness IDP.
+
+:::info
+If you don't include a `mkdocs.yml` file, TechDocs will automatically generate a basic `mkdocs.yml` configuration file while building the docs site. This allows your documentation to be rendered without needing a manual configuration file.
+
+However, if you want to customize the build process (e.g., adding extra plugins, modifying site structure), you can still create and modify the `mkdocs.yml` file.
+
+iFrames cannot be rendered locally using the above command. 
+:::
 
 In case you want to view the build logs just use the verbose flag, quite helpful during debugging issues.
 

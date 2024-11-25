@@ -1,7 +1,7 @@
 ---
 title: Overview of TechDocs Plugins
 description: Learn about the MkDocs Plugins installed for TechDocs and how to use them.
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 TechDocs supports a variety of MkDocs plugins. Here's an overview of all the plugins supported in Harness IDP.
