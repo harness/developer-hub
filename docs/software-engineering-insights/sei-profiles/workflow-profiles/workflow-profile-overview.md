@@ -1,17 +1,77 @@
 ---
-title: Workflow profile
+title: Overview
 description: Use Workflow profiles to define stages, events, and measurement criteria for Lead Time reporting.
 sidebar_position: 30
 ---
 
-Workflow profiles in Software Engineering Insights allow you to define the set of developer processes and measurement criteria to measure and assess the efficacy of the entire software development lifecycle in your organization. You can use the workflow profiles, to measure key metrics such as DORA (DevOps Research and Assessment) and Lead Time, which helps you understand and gain valuable insights into the time taken to ship changes or deploy bug fixes to production.
+Workflow profiles in Software Engineering Insights enable you to define developer processes and measurement criteria for evaluating the efficacy of your organization's entire software development lifecycle. These profiles allow you to measure key metrics such as DORA (DevOps Research and Assessment) and Lead Time, providing valuable insights into the time taken to ship changes or deploy bug fixes to production.
 
-Workflow profiles can be set up only by the Account Admin / SEI Admin as it is a account level resource. The ideal persona who should create and manage workflow profiles in your organization should be someone who owns or has proficiency in replicating the software delivery process of your organization and knows it end to end.
+Only Harness Account Admins or SEI Admins can create and manage these profiles. The best person to set them up is someone who knows exactly how software gets developed in your organization and can replicate the end-to-end software delivery process of your organization.
+
+## Types of Workflow profiles
 
 Workflow profiles in Harness are of two types:
 
 1. DORA profile
 2. Velocity Lead Time profile
+
+<DocImage path={require('../static/workflow-profiles-sei.png')} width="100%" height="100%" title="Click to view full size image" />
+
+### DORA profile
+
+DORA metrics are critical for evaluating and improving engineering team performance. The four DORA metrics are:
+
+Lead Time for Changes
+Deployment Frequency
+Mean Time to Restore (MTTR)
+Change Failure Rate
+
+A DORA Profile defines thresholds for these metrics based on your organization’s delivery process. It ensures consistency and alignment with industry best practices while serving as the foundation for measuring these metrics across engineering teams.
+
+* It serves as a single source of truth for these metrics and ensures consistent measurement across tools like SCMs, CI/CD platforms, and issue management systems. 
+* Each DORA Profile must be associated with a Collection (a group of contributors).
+* While multiple collections can use the same DORA Profile, a collection cannot have more than one associated DORA Profile. 
+* SEI provides a default DORA Profile with pre-configured SCM definitions, which can be customized.
+
+<DocImage path={require('../static/dora-association.png')} width="100%" height="100%" title="Click to view full size image" />
+
+#### What's next
+
+* Create a DORA profile
+* Add DORA widgets
+
+### Velocity Lead Time profile
+
+A Velocity Lead Time Profile focuses exclusively on defining and measuring lead time across various stages of your software delivery process. 
+It allows you to configure workflow stages, such as backlog prioritization, development activities (e.g., commit and PR creation), and deployment. 
+
+The overall lead time is calculated by summing the time spent in each stage across tools like issue management systems, SCMs, and CI/CD platforms. Unlike DORA Profiles, Velocity profiles are selected at the widget level and are applicable to all lead time widgets, such as PR Lead Time and Issue Lead Time by Stage.
+
+It is important to maintain proper hygiene across all stages of the workflow to ensure accurate lead time measurement.
+
+#### What's next
+
+* Create a Velocity Lead Time profile
+* Add Lead Time widgets
+
+### DORA vs Velocity profile
+
+The primary difference between the two profiles lies in their scope. DORA profiles define metrics for DORA widgets, while Velocity profiles are used in all other lead time-related widgets.
+
+| **Aspect**               | **DORA Profile**                          | **Velocity Lead Time Profile**               |
+|---------------------------|-------------------------------------------|---------------------------------------------|
+| **Purpose**               | Measures DORA metrics, including Lead Time for Changes. | Measures lead time across various workflows. |
+| **Scope of Lead Time**    | Specific to **Lead Time for Changes widget**. | Used in all other lead time widgets (e.g., PR Lead Time, Issue Lead Time). |
+| **Association**           | Associated with a **Collection**.         | Selected at the widget settings   |
+| **Default Availability**  | A default DORA type workflow profile is provided by the system. | A default Velocity type workflow profile is provided by the system.    |
+
+### See also
+
+* Create DORA profile
+* Create Velocity profile
+* DORA widgets
+* Lead Time widgets (Velocity profile based)
+
 
 You can configure the profile depending on the factors you want to include in your calculations. For example, you can:
 
@@ -20,7 +80,7 @@ You can configure the profile depending on the factors you want to include in yo
 * Track time spent in source code lifecycle stages, such as commit to merge and activities related to pull requests.
 * Track lead time and DORA metrics for your engineering teams through your CI/CD tools.
 
-![](./static/workflow-profile.png)
+![](../static/workflow-profile.png)
 
 ## Workflow Profile Settings
 
@@ -31,7 +91,7 @@ When creating a new workflow profile, you will need to choose the profile type. 
 * **DORA Profile:** Supports the four key DORA metrics - Lead time for changes, Deployment frequency, Mean time to restore, and Change failure rate. 
 * **Velocity Lead Time Profile:** Supports all the pre-defined workflow profile-based Lead Time widgets.
 
-![](./static/workflow-profile-settings.png)
+![](../static/workflow-profile-settings.png)
 
 ## DORA Profile
 
@@ -48,7 +108,7 @@ Lead Time for Changes measures the time it takes for a task to progress from dev
   * Commit Created: This event ensures that lead time tracking starts when the first commit is committed.
   * API Event: This This event triggers the lead time calculation based on a custom API event.
 
-![](./static/lead-time-for-changes.png)
+![](../static/lead-time-for-changes.png)
   
 To learn more about how lead time metrics are calculated, Go to [Lead Time for Changes calculation](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#lead-time-for-changes-calculation).
 
@@ -60,7 +120,7 @@ Deployment Frequency measures how frequently a team successfully deploys code to
 * Select any existing integrations you wish to use for calculating deployment frequency.
 * Defind the settings for how you want to calculate deployment frequency. The additional filters being used to define the deployments will be applicable to all the integrations that you selected.
 
-![](./static/deployment-frequency.png)
+![](../static/deployment-frequency.png)
 
 ### Mean Time to Restore
 
@@ -78,7 +138,7 @@ Change Failure Rate is computed by dividing the total number of deployments caus
 * Select how to configure your integration between SCM (Source Code Management) and CI/CD.
 * Add attributes and filters to identify and define deployments causing failure and total deployments.
 
-![](./static/change-failure-rate.png)
+![](../static/change-failure-rate.png)
 
 Total deployments represent all deployments that have occurred within a specified time range, regardless of whether they resulted in success or failure.
 
@@ -129,7 +189,7 @@ Similarly, the default configuration for a [Ticket-based Workflow profile](#conf
 When calculating lead time, the time spent in each stage depends on the stages that a PR or issue actually goes through. For example, if your Workflow profile includes a *time to comment* stage, but there are no comments on the PR or ticket, then the *time to comment* is zero.
 
 <img
-  src={require('./static/default-lead-time.png').default}
+  src={require('../static/default-lead-time.png').default}
   alt="Example banner" height="50%" width="100%" border="1"
 />
 
@@ -146,7 +206,7 @@ To add or edit Workflow profiles:
 3. Select **Workflow** under **Profiles**.
 4. To create a profile, select **+New Workflow Profile**. To edit a profile, select the profile's name in the profiles list.
 
-![](./static/dora-1.png)
+![](../static/dora-1.png)
 
 :::tip
 
@@ -162,41 +222,41 @@ DORA Profile is a type of Workflow Profile that allows you to define the thresho
 
 * In the **Workflow** tab under **Profiles** select **+New Workflow Profile**
 
-![](./static/dora-1.png)
+![](../static/dora-1.png)
 
 * Select **DORA profile** as the type for the Workflow profile.
 
-![](./static/dora-2.png)
+![](../static/dora-2.png)
 
 * Enter a **Name** for the profile.
 * Add a profile description. (Optional)
 
-![](./static/dora-3.png)
+![](../static/dora-3.png)
 
 #### Step 2: Define the settings for the Lead Time for Changes report
 
 * Select the **Issue Management Platform** that you want to use to track tasks in your team.
 
-![](./static/dora-4.png)
+![](../static/dora-4.png)
    
 * Choose the **Start Event** and configure the stages involved in the workflow based on the selected event.
   * For tracking **Lead Time** only using the **SCM** tool, select the start event as **Commit Created**
   * For measuring **Lead Time** using **Issue Management Platform** and **SCM** both or only using **Issue Management Platform**, select the start event as **Ticket Created**.
    
-![](./static/dora-5.png)
+![](../static/dora-5.png)
 
 * Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#development-stages).
 * To add custom stages, Click on the plus button within the workflow.
    
-![](./static/dora-6.png)
+![](../static/dora-6.png)
 
 * Add the stage name and description.
    
-![](./static/dora-7.png)
+![](../static/dora-7.png)
 
 * Define the **Stage Definition** by selecting the trigger event (options include Issue Management, Other CI/CD tools, Harness CI) and setting the event parameters.
    
-![](./static/dora-8.png)
+![](../static/dora-8.png)
 
 :::info
 SEI currently supports only [HarnessNG integration](/docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd) as the CD tool for configuring stages in the Lead Time workflow.
@@ -204,7 +264,7 @@ SEI currently supports only [HarnessNG integration](/docs/software-engineering-i
 
 * Set acceptable time limits and target times (e.g., IDEAL TIME, ACCEPTABLE TIME) for the custom stage and save it.
    
-![](./static/dora-9.png)
+![](../static/dora-9.png)
 
 :::note
 
@@ -218,48 +278,48 @@ Modify this settings to define how you want to calculate Deployment Frequency fo
 
 * Choose the tool that you want to use to measure deployments in your team.
    
-![](./static/dora-10.png)
+![](../static/dora-10.png)
 
 * Select the existing integrations that you would like to use to calculate the Deployment Frequency.
    
-![](./static/dora-11.png)
+![](../static/dora-11.png)
 
 * Configure the additional Filters to define the criteria for deployments that are to be considered in the Deployment Frequency calculation.
    
-![](./static/dora-12.png)
+![](../static/dora-12.png)
 
 #### Step 4: Define the settings for the Mean Time to Restore report
 
 Define the settings for measuring the time it takes a team to recover from a failure in production. The configuration is similar to the settings for Lead Time.
 
-![](./static/dora-13.png)
+![](../static/dora-13.png)
 
 #### Step 5: Define the settings for the Change Failure Rate report
 
 Define the configuration for measuring the Change Failure Rate for your team.
 * Choose the tool that you want to use to measure deployments in your team.
 
-![](./static/dora-14.png)
+![](../static/dora-14.png)
 
 * Select the existing integrations that you would like to use for the calculation. Configuration details vary by SEI integration type. Default values are pre-populated, and you can change them if desired.
    
-![](./static/dora-15.png)
+![](../static/dora-15.png)
 
 * Select factors to use to calculate failed deployments and total deployments.
    
-![](./static/dora-16.png)
+![](../static/dora-16.png)
 
 * Ensure to select the checkbox in case you want to calculate the Change Failure Rate using only deployments that cause failure.
    
-![](./static/dora-17.png)
+![](../static/dora-17.png)
    
 #### Step 6: Associate the DORA Profile with the Collection
 
 Associate the **DORA profile** with the **Collection** and **Project** under which you have created the **DORA Insight**.
     
-![](./static/dora-18.png)
+![](../static/dora-18.png)
 
-![](./static/dora-19.png)
+![](../static/dora-19.png)
 
 Once you have finished configuring the profile setting click on **Save** to save the profile.
 
@@ -273,15 +333,15 @@ You can also associate Collections to existing DORA profiles from the **Collecti
 
 * To associate a **DORA profile** with the existing **Collections**, click on the **Associate Workflow Profile** option under the **Associated Profiles column**.
 
-![](./static/dora-20.png)
+![](../static/dora-20.png)
 
 * Select the **DORA profile** from the available options. The pop-up dialog box will display the list of all the profiles that can be associated with the current collection.
 
-![](./static/dora-21.png)
+![](../static/dora-21.png)
 
 * Select the **DORA profile** and click on the **Associate Profile** button.
 
-![](./static/dora-22.png)
+![](../static/dora-22.png)
 
 ### Configure the Lead Time Profile
 
@@ -291,28 +351,28 @@ To create a **Velocity Lead Time profile**, you need to follow these key steps:
 
 1. In the **Workflow** tab under **Profiles** select **+New Workflow Profile**
 
-![](./static/dora-1.png)
+![](../static/dora-1.png)
 
 2. Select **Velocity lead time profile** as the type for the Workflow profile.
 
-![](./static/velocity-2.png)
+![](../static/velocity-2.png)
 
 3. Enter a **Name** for the profile.
 4. Add a profile description. (Optional)
 
-![](./static/velocity-3.png)
+![](../static/velocity-3.png)
 
 #### Step 2: Select the Issue Management System
 
 Choose either **JIRA** or **Azure** as your issue management system.
 
-![](./static/velocity-4.png)
+![](../static/velocity-4.png)
 
 #### Step 3: Configure the Workflow Profile Definition
 
 In this section, you'll define the settings for Stages, New Features, Deployment, Hotfix, and Defects.
 
-![](./static/velocity-5.png)
+![](../static/velocity-5.png)
 
 #### Step 4: Configure the  Lead Time Workflow Stages
 
@@ -320,21 +380,21 @@ In this section, you'll define the settings for Stages, New Features, Deployment
   * For tracking Lead Time only using the SCM tool, select the start event as Commit Created
   * For measuring Lead Time using Issue Management Platform and SCM both or only using Issue Management Platform, select the start event as Ticket Created.
    
-![](./static/velocity-6.png)
+![](../static/velocity-6.png)
 
 * Define the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time calculation](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports#development-stages).
 
 * To add custom stages, Click on the plus button within the workflow.
 
-![](./static/velocity-7.png)
+![](../static/velocity-7.png)
 
 * Add the stage name and description.
   
-![](./static/velocity-8.png)
+![](../static/velocity-8.png)
   
 * Define the **Stage Definition** by selecting the trigger event (options include Issue Management, Other CI/CD tools, Harness CI) and set the event parameters.
   
-![](./static/velocity-9.png)
+![](../static/velocity-9.png)
 
 :::info
 SEI currently supports only [HarnessNG integration](/docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd) as the CD tool for configuring stages in the Lead Time workflow.
@@ -342,7 +402,7 @@ SEI currently supports only [HarnessNG integration](/docs/software-engineering-i
   
 * Define the acceptable time limits and target times (e.g., IDEAL TIME, ACCEPTABLE TIME) for the custom stage and save it.
    
-![](./static/velocity-10.png)
+![](../static/velocity-10.png)
 
 #### Step 5: Define the Settings for measuring other Lead Time factors
 
@@ -358,26 +418,26 @@ The following configuration settings apply to all the categories (**New Features
 
 Configure the settings to define the criteria for New Features.
 
-![](./static/velocity-11.png)
+![](../static/velocity-11.png)
 
 #### Deployment
 
 Configure the settings to define the criteria for Deployment.
 
-![](./static/velocity-12.png)
+![](../static/velocity-12.png)
 
 #### Hotfix
 
 Configure the settings to define the criteria for Hotfix.
 
-![](./static/velocity-13.png)
+![](../static/velocity-13.png)
 
 
 #### Defects
 
 Configure the settings to define the criteria for Defects.
 
-![](./static/velocity-14.png)
+![](../static/velocity-14.png)
 
 :::tip
 Separate multiple values with a comma.
@@ -406,7 +466,7 @@ To add custom stages, follow these steps:
 3. Define the Stage Definition by selecting the trigger event (options include Issue Management, Other CI/CD tools, Harness CI) and set event parameters.
 4. Set acceptable time limits and target times (e.g., IDEAL TIME, ACCEPTABLE TIME) for the custom stage and save it.
 
-![](./static/custom-stage.png)
+![](../static/custom-stage.png)
 
 
 ### Measure Lead Time by Jira Statuses
@@ -417,7 +477,7 @@ You can add custom stages to your workflow, each with a name and description. Ad
 
 These custom stages, along with the JIRA release stage, can be used to replicate your software delivery process and measure the overall lead time.
 
-![](./static/velocity-15.png)
+![](../static/velocity-15.png)
 
 At least one stage, apart from the release stage, is mandatory when measuring lead time by JIRA statuses. This ensures that the lead time metric captures the entire workflow process with all the steps involved in bringing an issue to its final state.
 
@@ -434,11 +494,11 @@ For existing profiles already in use, the release stage remains disabled by defa
 
 The **Jira Release Stage** allows you to track the time it takes for features to be rolled out to customers. This helps derive valuable insights into the end-to-end delivery process, beyond just the internal development lifecycle.
 
-![](./static/velocity-16.png)
+![](../static/velocity-16.png)
 
 When you enable the JIRA Release Stage, it measures the lead time from the point where a ticket is resolved (i.e., the Last Stage before the Jira Release Stage) to the actual date when the product or feature is released to the users.
 
-![](./static/velocity-17.png)
+![](../static/velocity-17.png)
 
 By default, the Jira release stage is disabled, so you'll need to enable it to use it. Once enabled, the starting event for the workflow is automatically set to **Ticket Created** and cannot be modified as it will result in incorrect configuration.Similarly, the issue management system is automatically set to Jira by default.
 
@@ -449,7 +509,7 @@ In cases where a single ticket is associated with multiple versions, the user ca
 * **Considering the Earliest Released Version:** This option measures lead time to the first released version linked to the ticket. This approach prioritizes the initial delivery of value to stakeholders, emphasizing the initial completion of the issue and its subsequent release.
 * **Considering the Latest Released Version:** This option measures lead time to the most recently released version associated with the ticket. This approach focuses on the final iteration of the issue, capturing the cumulative development effort and ensuring that the lead time reflects the issue's final state as it reaches users.
 
-![](./static/jira-release.png)
+![](../static/jira-release.png)
 
 ## Configuration examples​
 
