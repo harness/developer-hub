@@ -16,34 +16,29 @@ export const SscaData: Horizon = {
       },
       {
         tag: [],
-        title: "Unified Security View",
-        description: "A unified view on OSS dependencies, vulnerabilities, and deployment details for artifacts all in one place.",
+        title: "CI/CD Security Posture Management for GitHub Workflows & Harness Pipelines",
+        description: "Perform static analysis in Github workflows and Harness pipelines to detect risky actions and misconfigurations.",
       },
       {
         tag: [],
-        title: "ECR & ACR support",
-        description: "Support to connect with ECR and ACR for SBOM generation and management.",
-      },
-      {
-        tag: [],
-        title: "Base Image Detection",
-        description: "The feature helps in prioritizing vulnerability assessment between base images and applications, while also enforcing policies such as identifying newer versions of base images.",
-      },
-    ],
-  },
-  "Now": {
-    description: "Q3 2024, Aug-Oct 2024",
-    feature: [
-      {
-        tag: [],
-        title: "Report Generation",
+        title: "Compliance Report Generation",
         description: "Generate and download reports based on compliance standards such as CIS, and OWASP Top 10 CI/CD Security Risks",
       },
       {
         tag: [],
-        title: "CI/CD Security Posture Management for GitHub Workflows & Harness Pipelines:",
-        description: "Perform static analysis in Github workflows and Harness pipelines to detect risky actions and misconfigurations. ",
+        title: "HashiCorp Vault Support",
+        description: "Perform static analysis in Github workflows and Harness pipelines to detect risky actions and misconfigurations.",
       },
+      {
+        tag: [],
+        title: "STO Events in Artifact Chain of Custody",
+        description: "STO events are now integrated into the chain of custody for all artifacts scanned using STO steps.",
+      },
+    ],
+  },
+  "Now": {
+    description: "Q3 2024, Nov 2024 - Jan 2025",
+    feature: [
       {
         tag: [],
         title: "Repo Security Posture Management for Harness Code",
@@ -51,23 +46,48 @@ export const SscaData: Horizon = {
       },
       {
         tag: [],
-        title: "SBOM & SLSA support with GitHub Actions and Jenkins Plugins",
-        description: "Generate SBOM and achieve SLSA compliance using GitHub Actions and Jenkins Plugins.",
+        title: "Artifact Chain of Custody V2",
+        description: "An enhanced audit trail that seamlessly integrates all pipeline events, spanning from source code to deployment. ",
       },
       {
         tag: [],
-        title: "HashiCorp Vault Support",
-        description: "Leverage keys from HashiCorp Vault to attest and verify your artifacts.",
+        title: "SBOM & SLSA support with GitHub Actions",
+        description: "Generate SBOM and achieve SLSA compliance using GitHub Actions.",
       },
-    ],
-  },
-  "Next": {
-    description: "Q4 2024, Nov 2024-Jan 2025",
-    feature: [
+      {
+        tag: [],
+        title: "CI/CD Security for Jenkins",
+        description: "Perform static analysis in Jenkins pipelines to detect risky plugins and misconfigurations.",
+      },
+      {
+        tag: [],
+        title: "Artifact Signing and Verification",
+        description: "Ensure artifact integrity with built-in capabilities for signing and verifying artifacts.",
+      },
+      {
+        tag: [],
+        title: "Out of the Box Policies for Licensing",
+        description: "Leverage pre-defined policy templates based on license families to seamlessly enforce restrictions and block non-compliant licenses.",
+      },
+      {
+        tag: [],
+        title: "License Report Generation",
+        description: "Generate comprehensive license reports detailing the licenses associated with artifacts, having the ability to filter by individual licenses or license families.",
+      },
       {
         tag: [],
         title: "OpenSSF, OWASP Top 10 OSS, EO14028 & NIST SP800-204D Support",
         description: "Out of the box rules for supporting OpenSSF, OWASP Top 10 OSS, EO14028, & NIST SP800-204D compliance standards.",
+      },
+    ],
+  },
+  "Next": {
+    description: "Q4 2024, Feb - April 2025",
+    feature: [
+      {
+        tag: [],
+        title: "SBOM & SLSA support for Jenkins",
+        description: "Generate SBOMs and achieve SLSA compliance using Jenkins pipelines.",
       },
       {
         tag: [],
@@ -82,17 +102,12 @@ export const SscaData: Horizon = {
     ],
   },
   "Later": {
-    description: "Q1 2025+, Feb 2025 & beyond",
+    description: "Q1 2025+, May 2025 & beyond",
     feature: [
       {
         tag: [],
         title: "Support for Gitlab & CircleCI",
         description: "Complete support for GitLab, allowing users to onboard GitLab repositories and perform configuration checks, SBOM generation, and security scans.",
-      },
-      {
-        tag: [],
-        title: "CI/CD Security for Jenkins",
-        description: "Perform static analysis in Jenkins pipelines to detect risky plugins and misconfigurations.",
       },
       {
         tag: [],
