@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-11-11T14:00
+date: 2024-11-26T14:00
 sidebar_position: 3
 ---
 
@@ -78,6 +78,28 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## November 2024
+
+### Version 1.65.x<!-- November 26, 2024 -->
+
+#### Fixed issues
+
+- Enhanced delegate task logging by including the delegate's name along with the delegate ID. This improvement provides greater clarity and traceability, allowing for quicker issue identification and resolution. (PL-58095)
+
+- Resolved an issue in the List Users in User Group API where filtering by email returned incorrect results. The API now accurately lists only users who are part of the specified user group when using email filters. (PL-58049, ZD-72077)
+
+- Added support for OIDC authentication in the audit log streaming flow for AWS connectors (PL-57718)
+
+#### New features and enhancements
+
+- Upgraded Spring Framework to version `6.1.x`, along with updates to dependencies for improved compatibility and security. This item requires Harness Delegate version 24.11.84304. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-58254)
+
+- Resolved a high-severity vulnerability (CVE-2024-7254) in the Delegate by upgrading `protobuf-java` to version `3.25.5`. This item requires Harness Delegate version 24.11.84304. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-57351, ZD-70765)
+
+- Increased the entity limits for Service Accounts, API Keys, and Tokens to 6000 per account. This update improves scalability and accommodates growing usage needs. For more details, please refer to the documentation. (PL-56430)
+
+- Upgraded the Java version to `17.0.11_9-jre-ubi9-minimal` in the Delegate base image to address security vulnerabilities, including `CVE-2023-22041`. This item requires Harness Delegate version 24.11.84304. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55499)
+
+- Upgraded `com.nimbusds_nimbus-jose-jwt` to version `9.37.2` to address `CVE-2023-52428`. This item requires Harness Delegate version 24.11.84304. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-51347)
 
 ### Version 1.64.x<!-- November 11, 2024 -->
 
