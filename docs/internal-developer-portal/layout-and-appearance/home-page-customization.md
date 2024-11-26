@@ -73,6 +73,48 @@ The numbers displayed at the top, such as "15 Created," "1 Review Requests," and
 
 Currently, the "My PRs" card only supports GitHub as a data source. Support for Harness Code Repository is coming soon. Other platforms, such as GitLab, Azure, and Bitbucket, are not yet supported. Let us know if you’d like to see support for these platforms in the future!
 
+### My Tasks Card
+
+#### 1. JIRA
+
+This JIRA card offers a centralized view of your assigned tasks within your project management system, ensuring easy tracking of work items. It provides a categorized summary of your tickets, including their current status, priority, and associated metadata.
+
+![](./static/my-task-jira.png)
+
+- **Key Features:**
+
+1. Summary Metrics:
+- Total Tickets: The total number of tasks assigned to you.
+- To Do: Tasks that are pending and need to be started.
+- In Progress: Tasks you are actively working on, or any status change has occurred for the ticket
+- New: Tickets recently created(< 1 Week) and awaiting categorization or prioritization.
+
+2. Filters for Better Focus:
+
+- Worked On: Displays all the tickets you've worked on, regardless of their current status. Useful for tracking your progress across projects.
+- Assigned To Me: A focused view of tasks specifically assigned to you.
+- Current Sprint: Highlights tasks that are part of the active sprint.
+
+- Project Filter: You can filter tickets according to the projects you have access to within your organization. 
+
+![](./static/project-filter.png)
+
+2. Each task card displays key details:
+- Ticket ID (e.g., IDP-4205): You can click on this component and this will redirect you to the ticket in JIRA.  
+- Project: The project the task belongs to (e.g., Internal Developer Portal).
+- Title: A short description of the task. You can click on this component and this will redirect you to the ticket in JIRA.
+- Type: Classification such as Question, Story, etc.
+- Priority: Indicates urgency, such as P4 or P3.
+- Created On: The date the ticket was created.
+- Current Status: Clearly indicates if a ticket is in progress or another phase.
+
+- **How to Set Up:**
+Access to this JIRA card is authenticated via [OAuth Configurations in IDP](https://developer.harness.io/docs/internal-developer-portal/plugins/oauth-support-for-plugins). To populate your task list, configure your Atlassian OAuth App under the OAuth Configuration page, now individual users can login from the Homepage. 
+
+![](./static/oauth-plugin-config.png)
+
+![](./static/homepage-jira-card.png)
+
 ### Tool Kit
 
 -  This card acts as a necessary bookmark for all the links visited by the developer quite frequently, e.g; JIRA Sprint Dashboard, QA Environments
