@@ -6,7 +6,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start --host 0.0.0.0",
-    "build": "export NODE_OPTIONS=--max-old-space-size=12000 && DOCUSAURUS_IGNORE_SSG_WARNINGS=true  docusaurus build",
+    "build": "export NODE_OPTIONS=--max-old-space-size=7296 && DOCUSAURUS_IGNORE_SSG_WARNINGS=true  docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
