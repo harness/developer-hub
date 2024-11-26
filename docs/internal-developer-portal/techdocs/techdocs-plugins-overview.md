@@ -6,59 +6,30 @@ sidebar_position: 3
 
 TechDocs supports a variety of MkDocs plugins. Here's an overview of all the plugins supported in Harness IDP.
 
-## Installed Plugins:
+## TechDocs Core PLugins:
 
-### 1. `mkdocs-glightbox`
-A plugin that provides a responsive and lightweight image viewer for Markdown content.
+The `techdocs-core` plugin serves as an all-in-one solution for generating high-quality documentation using MkDocs within Harness IDP. It integrates several key plugins to provide enhanced functionality, eliminating the need to configure them individually.
 
-Features:
-- Adds a modern lightbox effect for images embedded in your documentation.
-- Supports image galleries with thumbnails and fullscreen views.
+### Plugins Included in techdocs-core
+- `mkdocs-material`
+- `markdown_inline_graphviz_extension` 
+- `mkdocs-monorepo-plugin` 
+- `plantuml-markdown`
+- `mdx_truly_sane_lists` 
+- `pymdown-extensions` 
+- `pygments` 
+- `mkdocs-redirects` 
 
-Use Case:
-- Great for showcasing multiple screenshots, design mockups, or visual assets in documentation.
+:::info
 
-To enable a lightbox for images, simply add images with links:
+Using any of the above plugins individually under the `mkdocs.yml` plugins section will result in an error: *plugin not installed* It is recommended to use the `techdocs-core` plugin to access the features of the listed plugins.
 
-```markdown
-### Image Gallery
+:::
 
-![Image 1](https://via.placeholder.com/400 "Click to view larger"){: .glightbox}
-![Image 2](https://via.placeholder.com/400 "Click to view larger"){: .glightbox}
-```
 
-### 2. `mkdocs-git-authors-plugin`
+## Other Plugins Supported
 
-Displays the list of contributors for each page based on Git history.
-
-Features:
-- Uses Git commit history to determine authorship.
-- Shows contributors' names and commit counts.
-
-Use Case:
-
-- Ideal for collaborative documentation to credit contributors or track accountability for changes.
-- The plugin doesn’t require specific Markdown syntax. Once configured, it automatically displays contributors at the bottom of each page.
-
-### 3. `mkdocs-git-revision-date-localized-plugin`
-
-Adds the last revision date of each page to the footer, localized to the user's time zone.
-
-Features:
-- Retrieves the last modification date from Git.
-- Supports localization for different time zones and date formats.
-
-Use Case:
-- Useful for indicating the freshness of content, especially in rapidly changing environments.
-- This plugin also doesn’t need Markdown syntax. It automatically appends a “Last updated” date to the footer of each page.
-
-Example footer display after plugin setup:
-
-```plaintext
-Last updated: November 22, 2024
-```
-
-### 4. `mkdocs-video`
+### 1. `mkdocs-video`
 
 Allows embedding videos directly in Markdown content.
 
@@ -87,82 +58,7 @@ Use Case:
 
 ```
 
-### 5. `mkdocs-material-extensions`
-
-Adds additional Markdown extensions and features to enhance MkDocs Material themes.
-
-Features:
-- Provides better typography, callouts, tabs, and grid layouts.
-- Extends the functionality of mkdocs-material.
-
-Use Case:
-- Improves content formatting and visual appeal, particularly when using the Material theme.
-- Add callouts, tabs, or grids:
-- Callouts:
-
-```markdown
-!!! note
-    This is a note.
-```
-- Tabs:
-
-```markdown
-=== "Python"
-    ```python
-    print("Hello, World!")
-```
-
-- Grid Layout
-
-```markdown
-{{< grid "2" >}}
-**Column 1 Content**
-
-**Column 2 Content**
-{{< /grid >}}
-```
-
-### 6. `mkdocs-redirects`
-
-Helps manage redirects when pages are renamed, moved, or deleted.
-
-Features:
-- Automatically redirects old URLs to new ones.
-- Prevents broken links when restructuring documentation.
-
-Use Case:
-- Critical for maintaining a seamless user experience in large or evolving documentation sites.
-- This plugin manages redirects without requiring Markdown changes. In the `redirects` section of `mkdocs.yml`, specify old-to-new paths:
-
-```YAML
-redirects:
-  old-page.md: new-page.md
-```
-Users visiting `old-page.md` will be redirected to `new-page.md`.
-
-### 7. `mkdocs-awesome-pages-plugin`
-
-Simplifies page ordering and organization in navigation.
-
-Features:
-- Allows automatic generation of navigation structure based on file hierarchy.
-- Provides `.pages` configuration for advanced custom ordering.
-
-Use Case:
-- Streamlines the creation and maintenance of navigation in large documentation projects.
-- Use `.pages` files to organize navigation:
-
-```plaintext
-.pages
----
-- Home: index.md
-- Guide:
-    - Getting Started: guide/start.md
-    - Advanced Topics: guide/advanced.md
-```
-*No changes in Markdown are required.*
-
-### 8. mkdocstrings[crystal,python,vba]:
+### 2. mkdocstrings[crystal,python,vba]:
 
 Auto-generates documentation for code directly from docstrings in your source files.This specifies additional language-specific parsers:
 - Crystal: Supports docstring extraction for Crystal projects.
@@ -197,14 +93,3 @@ The plugin automatically generates documentation for such functions/classes. In 
 ::: my_package.my_module.greet
 ```
 
-### 9. `mkdocs-minify-plugin`
-
-Minifies the output files (HTML, CSS, JS) to reduce size and improve performance.
-
-Features:
-- Optimizes documentation by reducing file sizes.
-- Speeds up loading times for users.
-
-Use Case:
-- Helpful for public-facing documentation where performance and bandwidth savings matter.
-- This plugin works silently during the build process and doesn’t affect Markdown. Once configured, it minimizes your generated HTML, CSS, and JS files.
