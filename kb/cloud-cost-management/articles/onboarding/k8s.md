@@ -131,7 +131,7 @@ After the deployment has completed, check the pods in the `harness-auto stopping
 
 ## Service Account for CCM
 
-If you do not want to install a delegate into the cluster but instead have another delegate running elsewhere that can connect to the cluster API, you can instead use a service account and master URL to connect to the cluster.
+We recommend using one delegate per cluster and Large size delegates for production clusters for optimal performance.
 
 First, we create the service account:
 ```
