@@ -77,7 +77,7 @@ Currently, the "My PRs" card only supports GitHub as a data source. Support for 
 
 #### 1. JIRA
 
-This JIRA card offers a centralized view of your assigned tasks within your project management system, ensuring easy tracking of work items. It provides a categorized summary of your tickets, including their current status, priority, and associated metadata.
+This JIRA card offers a centralized view of your assigned tasks, ensuring easy tracking of work items. It provides a categorized summary of the tickets you're currently working on, tickets assigned for the sprint, including their current status, priority, and associated metadata.
 
 ![](./static/my-task-jira.png)
 
@@ -109,7 +109,7 @@ This JIRA card offers a centralized view of your assigned tasks within your proj
 - Current Status: Clearly indicates if a ticket is in progress or another phase.
 
 - **How to Set Up:**
-Access to this JIRA card is authenticated via [OAuth Configurations in IDP](https://developer.harness.io/docs/internal-developer-portal/plugins/oauth-support-for-plugins). To populate your task list, configure your Atlassian OAuth App under the OAuth Configuration page, now individual users can login from the Homepage. 
+Access to this JIRA card is authenticated via [OAuth Configurations in IDP](https://developer.harness.io/docs/internal-developer-portal/plugins/oauth-support-for-plugins). To populate your task list, you need to add your Atlassian OAuth App client secret and ID in the configurations page, then developers can login from the homepage. 
 
 ![](./static/oauth-plugin-config.png)
 
