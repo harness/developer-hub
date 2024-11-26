@@ -190,14 +190,8 @@ No early access (beta) features are available for the Harness Software Supply Ch
 
 ## STO early access features
 
-The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
-
-#### Default Setting: Users can approve their own exemptions
-* **Release date:** July 2024
-* **Release version:** [Version 1.102.2](/release-notes/security-testing-orchestration#version-11022)
-* **Issue number:** STO-7675
-* **Feature flags:** `STO_EXEMPTION_SETTING`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+<!-- The following early access (beta) feature is available for the Harness Security Testing Orchestration module. -->
+No early access features are available for the Harness Security Testing Orchestration module. Go to [STO Release Notes](/release-notes/security-testing-orchestration) for all the latest updates. 
 
 ## SRM early access features
 
