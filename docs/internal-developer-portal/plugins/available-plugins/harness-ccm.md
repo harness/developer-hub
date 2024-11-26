@@ -49,7 +49,7 @@ This plugin exports a card on the Overview Page and a UI tab that you can use as
 ```YAML
 - name: ccm
   path: /ccm
-  title: Cloud Cost 
+  title: Cloud Costs 
   contents:
     - component: EntityCcmContent
 ```
@@ -59,7 +59,7 @@ Also, you could add a conditional like `isHarnessCcmAvailable` which is met when
 ```YAML
 - name: ccm
   path: /ccm
-  title: Cloud Cost
+  title: Cloud Costs
   contents:
     - component: EntitySwitch
       specs:
