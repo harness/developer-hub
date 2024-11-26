@@ -155,7 +155,7 @@ If you have already executed the **Build and Push** step, navigate to the execut
 
 For performing the attestation, refer to the section [Attest SLSA Provenance](#attest-slsa-provenance)
 
-## SLSA Generation Step Configuration with Run Step
+## SLSA Generation step configuration with Run step
 
 The **SLSA Generation** step requires your container image details along with its digest. If your build process involves a **Run** step to build the image, it’s crucial to expose the digest of the image so it can be referenced in the **Artifact Digest** field of the SLSA Generation step as an expression.  
 
@@ -170,7 +170,7 @@ Here’s how the flow looks
 
 Follow the instructions below to set up this pipeline workflow.
 
-### Build and Push with Run Step
+### Build and Push with Run step
 
 1. **Add a Run Step**: Search for and add a **Run** step to the **Build** stage of your pipeline.
 2. **Container Registry**: Configure your container registry using Harness Connectors.
