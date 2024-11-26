@@ -186,7 +186,7 @@ The scope is tied to URL format `https://gitprovider.com/org-name`, so all the G
 
 ### Onboard Services Post Getting Started
 
-Users can now onboard a service even after completing the onboarding flow. Simply navigate to **Admin**, select **Get Started**, and you’ll find the Onboard Service Wizard available for use.
+You can add new services to the IDP after the initial onboarding flow. Simply navigate to **Admin**, select **Get Started**, and you’ll find the Onboard Service Wizard available for use.
 
 ![](./static/get-started-admin.png)
 
