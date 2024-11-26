@@ -592,48 +592,556 @@ Here's an example configuration of how you could configure Deployment Frequency 
   <TabItem value="harnesscd" label="Using Harness CD" default>
 
 * Choose **Harness CD** as the tool that you use to measure a deployment in your team.
+
+![](../static/df-harness-1.png)
+
 * Select all the integrations that you would like to use to calculate the deployment frequency.
-* Select the category of pipelines ad Continuous Delivery
-* Configure the additional attributes to calculate the deployment frequency. Refine the deployment frequency calculation by specifying detailed filters. By default, all pipelines are included in the calculation, but you can customize the selection as follows:
-  * Pipeline Filters:
+
+![](../static/df-harness-2.png)
+
+* Select the category of pipelines ad **Continuous Delivery**
+
+![](../static/df-harness-3.png)
+
+* Configure the additional attributes to calculate the deployment frequency. By default, all pipelines are included in the calculation, but you can customize the selection by manually selecting the pipelines.
+
+![](../static/df-harness-4.png)
+
+* Refine the deployment frequency calculation by specifying detailed filters. This filters pipelines that should contribute to the deployment frequency calculations.
+  * **Pipeline Filters:**
     * Use filters to include or exclude pipelines based on specific properties, conditions, and values from the Harness CD pipeline configuration.
     * Filters combine using an AND operation, meaning all specified conditions must be met.
-    * Example: Status = Success AND Environment = Production.
-  * Execution Filters:
+    * Example: `Status = Success` AND `Environment = Production`.
+
+![](../static/df-harness-5.png)
+
+  * **Execution Filters:**
     * Narrow down the data to specific pipeline executions by defining key-value pairs.
     * Filters combine using an OR operation, meaning any execution meeting the specified conditions will be included.
-    * Example: Include executions where JAVA_VERSION = 11 OR Branch = main.
-  * Stage Parameter Filters:
+    * Example: Include executions where `JAVA_VERSION = 11` OR `Branch = main`.
+
+![](../static/df-harness-6.png)
+
+  * **Stage Parameter Filters:**
     * Apply filters at the stage level within pipelines to focus on specific steps in the deployment process.
     * Filters combine using an OR operation, allowing flexibility to include stages that meet any of the conditions.
+
+![](../static/df-harness-7.png)
+
 * Define how deployment frequency should be tracked:
-  * Pipelines Started: Tracks deployment frequency based on the initiation of deployment pipelines.
-  * Pipelines Completed: Tracks frequency based on successfully completed deployments.
+  * **Pipelines Started:** Tracks deployment frequency based on the initiation of deployment pipelines.
+  * **Pipelines Completed:** Tracks frequency based on successfully completed deployments.
+
+![](../static/df-harness-8.png)
 
 </TabItem>
 
 <TabItem value="cd-gha" label="Using GitHub Actions">
 
-* Choose Harness CD as the tool that you use to measure a deployment in your team.
+* Choose **GitHub Actions** as the tool that you use to measure a deployment in your team.
+
+![](../static/df-gha-1.png)
+
 * Select all the integrations that you would like to use to calculate the deployment frequency.
-* Select the category of pipelines ad Continuous Delivery
-* Configure the additional attributes to calculate the deployment frequency. Refine the deployment frequency calculation by specifying detailed filters. By default, all pipelines are included in the calculation, but you can customize the selection as follows:
-  * Pipeline Filters:
-    * Use filters to include or exclude pipelines based on specific properties, conditions, and values from the Harness CD pipeline configuration.
+
+![](../static/df-gha-2.png)
+
+* * Configure the additional attributes to calculate the deployment frequency. By default, all jobs are included in the calculation, but you can customize the selection by manually selecting the jobs.
+
+![](../static/df-gha-3.png)
+
+* Refine the deployment frequency calculation by specifying detailed filters. This filters jobs that should contribute to the deployment frequency calculations.
+  * **Filters:**
+    * Use filters to include or exclude jobs based on specific properties, conditions, and values from the GitHub Actions jobs configuration.
     * Filters combine using an AND operation, meaning all specified conditions must be met.
-    * Example: Status = Success AND Environment = Production.
-  * Execution Filters:
-    * Narrow down the data to specific pipeline executions by defining key-value pairs.
+    * Example: `Status = Success` AND `Project = github-org/repository-name`.
+
+![](../static/df-gha-4.png)
+
+  * **Job Run Parameters:**
+    * Narrow down the data to specific job executions by defining key-value pairs.
     * Filters combine using an OR operation, meaning any execution meeting the specified conditions will be included.
-    * Example: Include executions where JAVA_VERSION = 11 OR Branch = main.
-  * Stage Parameter Filters:
-    * Apply filters at the stage level within pipelines to focus on specific steps in the deployment process.
-    * Filters combine using an OR operation, allowing flexibility to include stages that meet any of the conditions.
+    * Example: Include executions where `JAVA_VERSION = 11` OR B`ranch = main`.
+
+![](../static/df-gha-5.png)
+
 * Define how deployment frequency should be tracked:
-  * Pipelines Started: Tracks deployment frequency based on the initiation of deployment pipelines.
-  * Pipelines Completed: Tracks frequency based on successfully completed deployments.
+  * **Jobs Started:** Tracks deployment frequency based on the initiation of deployment jobs.
+  * **Jobs Completed:** Tracks frequency based on successfully completed jobs.
+
+![](../static/df-gha-6.png)
 
 </TabItem>
+
+<TabItem value="cd-github" label="Using GitHub">
+
+* Choose **GitHub** as the tool that you use to measure a deployment in your team.
+
+![](../static/df-gh-1.png)
+
+* Select all the integrations that you would like to use to calculate the deployment frequency.
+
+![](../static/df-gh-2.png)
+
+#### Option 1: Deployment Defined by PRs
+
+This approach considers PR activity to define what qualifies as a deployment.
+
+![](../static/df-gh-3.png)
+
+* You can decide when a PR activity signifies a successful deployment:
+  * **PR Merged:** Deployment occurs when a PR is merged, regardless of whether it’s closed.
+  * **PR Closed:** Deployment occurs when a PR is closed, even if it’s not merged.
+  * **Merged and Closed:** Deployment happens when a merged PR is subsequently closed.
+
+![](../static/df-gh-4.png)
+
+* To refine what PRs are included in the deployment frequency calculation, you can apply filters like:
+  * **Target Branches:** Specify branches where deployments are pushed (e.g., `main`, `release/*`).
+  * **Source Branches:** Include branches where development starts (e.g., `feature/*`, `hotfix/*`).
+  * **Labels:** Use labels associated with PRs to narrow the scope.
+    * **Starts With:** Include PRs with labels starting with a prefix (e.g., release for PRs related to a release).
+    * **Contains:** Include PRs with labels containing specific keywords (e.g., `deploy`, `prod`).
+
+![](../static/df-gh-5.png)
+
+:::note
+Filters combine using an OR operation. For example, a PR qualifies if it:
+
+Targets the main branch, OR originates from a `feature/* branch`, OR has a label containing `deploy`.
+:::
+
+#### Option 2: Deployment Defined by Commits
+
+This approach uses commit activity to define what qualifies as a deployment.
+
+![](../static/df-gh-3.png)
+
+* You can define deployment events based on commits:
+  * **Commit Pushed to Target Branch:** Deployment occurs when a commit is directly pushed to a branch (e.g., `prod`), with or without a tag.
+  * **Tag Added:** Deployment occurs when a tag (e.g., `v1.0`) is added to a commit, with or without pushing to a branch.
+  * **Combined Condition:** Deployment occurs when either a tag is added to a commit OR the commit is pushed to a target branch.
+
+![](../static/df-gh-6.png)
+
+* You can refine commit-based deployments using attributes like:
+  * **Commit Branches:** Specify branches for deployment tracking (e.g., `main`, `prod`).
+  * **Commit Properties:** Use conditions to filter commits:
+    * **Starts With:** Include commits where branch name starts with a prefix (e.g., `fix-`, `deploy-`).
+    * **Contains:** Include commits with specific keywords in the branch names (e.g., `hotfix`, `prod deploy`).
+
+![](../static/df-gh-7.png)
+
+:::note
+When using multiple filters, they will be combined with an OR operation, allowing commits that meet any condition to qualify.
+:::
+
+</TabItem>
+
+<TabItem value="cd-azure-boards" label="Using Azure DevOps">
+
+Azure DevOps can be used to configure deployment frequency definition for DORA profile. The DORA profile can be configured with either of the Azure Devops service as given below:
+
+#### Azure Boards
+
+Deployment Frequency can also be measured based on work items in Azure Boards. This configuration allows tracking deployments by analyzing the lifecycle of work items (e.g., their resolution, creation, or updates).
+
+* Choose **Azure Boards** as the tool that you use to measure a deployment in your team.
+
+![](../static/df-boards-1.png)
+
+* Select the relevant Azure Boards integrations that you wish to use for calculating deployment frequency.
+
+![](../static/df-boards-2.png)
+
+* You can customize the work items included in the deployment frequency calculation using filters. You can add filters using fields from Azure DevOps platform such as:
+  * **Work Item Status Category:** Filter based on the status category of work items (e.g., `Completed`, `Resolved`).
+    * Example: Work Item Status Category equals Completed.
+  * **Project:** Specify the Azure Boards project to include only relevant work items.
+    * Example: Project equals Harness.
+  * **Labels or Custom Fields:** Use labels or custom fields to narrow down work items further.
+    * Example: Labels contain `deploy`.
+
+![](../static/df-boards-3.png)
+
+* Filters are combined using an AND operation, meaning all specified conditions must be met for a work item to qualify.
+* Define how deployment frequency should be calculated:
+  * **Issue Resolved:** Deployment frequency is measured when work items are resolved (e.g., status changes to `Completed`).
+  * **Issue Created:** Deployment frequency is based on the creation of new work items.
+  * **Issue Updated:** Deployment frequency reflects updates to existing work items (e.g., adding tags, updating release fields).
+
+![](../static/df-boards-4.png)
+
+#### Azure Pipelines
+
+* Choose **Azure Pipelines** as the tool that you use to measure a deployment in your team.
+
+![](../static/df-azure-pipelines-1.png)
+
+* Select the relevant Azure DevOps Pipelines integrations that you wish to use for calculating deployment frequency.
+
+![](../static/df-azure-pipelines-2.png)
+
+* Configure the additional attributes to calculate the deployment frequency. By default, all jobs are included in the calculation, but you can customize the selection by manually selecting the jobs.
+
+![](../static/df-azure-pipelines-3.png)
+
+* **Filters:** Refine the deployment frequency calculation by specifying detailed filters. This filters jobs that should contribute to the deployment frequency calculations.
+    * Use filters to include or exclude jobs based on specific properties, conditions, and values from the Azure Pipelines jobs configuration.
+    * Filters combine using an AND operation, meaning all specified conditions must be met.
+    * Example: `STATUS = SUCCEEDED` AND `PROJECT EQUALS <PROJECT_NAME>`.
+
+![](../static/df-azure-pipelines-3.png)
+
+  * **Job Run Parameters:**
+    * Narrow down the data to specific job executions by defining key-value pairs.
+    * Filters combine using an OR operation, meaning any execution meeting the specified conditions will be included.
+    * Example: Include executions where `JAVA_VERSION = 11` OR `BRANCH = main`.
+
+![](../static/df-azure-pipelines-4.png)
+
+* Define how deployment frequency should be tracked:
+  * **Jobs Started:** Tracks deployment frequency based on the initiation of deployment jobs.
+  * **Jobs Completed:** Tracks frequency based on successfully completed jobs.
+
+![](../static/df-azure-pipelines-5.png)
+
+#### Azure Repos
+
+* Choose **Azure Repos** as the tool that you use to measure a deployment in your team.
+
+![](../static/df-azure-repos-1.png)
+
+* Select all the integrations that you would like to use to calculate the deployment frequency.
+
+![](../static/df-azure-repos-2.png)
+
+#### Option 1: Deployment Defined by PRs
+
+This approach considers PR activity to define what qualifies as a deployment.
+
+![](../static/df-azure-repos-3.png)
+
+* You can decide when a PR activity signifies a successful deployment:
+  * **PR Merged:** Deployment occurs when a PR is merged, regardless of whether it’s closed.
+  * **PR Closed:** Deployment occurs when a PR is closed, even if it’s not merged.
+  * **Merged and Closed:** Deployment happens when a merged PR is subsequently closed.
+
+![](../static/df-azure-repos-4.png)
+
+* To refine what PRs are included in the deployment frequency calculation, you can apply filters like:
+  * **Target Branches:** Specify branches where deployments are pushed (e.g., `main`, `release/*`).
+  * **Source Branches:** Include branches where development starts (e.g., `feature/*`, `hotfix/*`).
+  * **Labels:** Use labels associated with PRs to narrow the scope.
+    * **Starts With:** Include PRs with labels starting with a prefix (e.g., release for PRs related to a release).
+    * **Contains:** Include PRs with labels containing specific keywords (e.g., `deploy`, `prod`).
+
+![](../static/df-azure-repos-5.png)
+
+:::note
+Filters combine using an OR operation. For example, a PR qualifies if it:
+
+Targets the main branch, OR originates from a `feature/* branch`, OR has a label containing `deploy`.
+:::
+
+#### Option 2: Deployment Defined by Commits
+
+This approach uses commit activity to define what qualifies as a deployment.
+
+![](../static/df-azure-repos-6.png)
+
+* You can define deployment events based on commits:
+  * **Commit Pushed to Target Branch:** Deployment occurs when a commit is directly pushed to a branch (e.g., `prod`), with or without a tag.
+  * **Tag Added:** Deployment occurs when a tag (e.g., `v1.0`) is added to a commit, with or without pushing to a branch.
+  * **Combined Condition:** Deployment occurs when either a tag is added to a commit OR the commit is pushed to a target branch.
+
+![](../static/df-azure-repos-7.png)
+
+* You can refine commit-based deployments using attributes like:
+  * **Commit Branches:** Specify branches for deployment tracking (e.g., `main`, `prod`).
+  * **Commit Properties:** Use conditions to filter commits:
+    * **Starts With:** Include commits where branch name starts with a prefix (e.g., `fix-`, `deploy-`).
+    * **Contains:** Include commits with specific keywords in the branch names (e.g., `hotfix`, `prod deploy`).
+
+![](../static/df-azure-repos-8.png)
+
+:::note
+When using multiple filters, they will be combined with an OR operation, allowing commits that meet any condition to qualify.
+:::
+
+</TabItem>
+
+<TabItem value="cd-jenkins" label="Using Jenkins">
+
+* Choose **Jenkins** as the tool that you use to measure a deployment in your team.
+
+![](../static/df-jenkins-1.png)
+
+* Select the relevant Jenkins integrations that you wish to use for calculating deployment frequency.
+
+![](../static/df-jenkins-2.png)
+
+* Configure the additional attributes to calculate the deployment frequency. By default, all jobs are included in the calculation, but you can customize the selection by manually selecting the jobs.
+
+![](../static/df-gha-3.png)
+
+* Refine the deployment frequency calculation by specifying detailed filters. This filters jobs that should contribute to the deployment frequency calculations.
+  * **Filters:**
+    * Use filters to include or exclude jobs based on specific properties, conditions, and values from the Jenkins jobs configuration.
+    * Filters combine using an AND operation, meaning all specified conditions must be met.
+    * Example: `Status = Success` AND `Instance Name = <JENKINS_INSTANCE_NAME>`.
+
+![](../static/df-jenkins-3.png)
+
+  * **Job Run Parameters:**
+    * Narrow down the data to specific job executions by defining key-value pairs.
+    * Filters combine using an OR operation, meaning any execution meeting the specified conditions will be included.
+    * Example: Include executions where `JAVA_VERSION = 11` OR `BRANCH = main`.
+
+![](../static/df-jenkins-4.png)
+
+* Define how deployment frequency should be tracked:
+  * **Jobs Started:** Tracks deployment frequency based on the initiation of deployment jobs.
+  * **Jobs Completed:** Tracks frequency based on successfully completed jobs.
+
+![](../static/df-jenkins-5.png)
+
+</TabItem>
+
+<TabItem value="cd-jira" label="Using Jira">
+
+* Choose **Jira** as the tool that you use to measure a deployment in your team.
+
+![](../static/df-jira-1.png)
+
+* Select the relevant Jira integrations that you wish to use for calculating deployment frequency.
+
+![](../static/df-jira-2.png)
+
+#### Option 1: Identify Deployments Using Filters on Jira Tickets
+
+Refine the Jira issues included in the deployment frequency calculation using customizable filters. For example:
+
+* **Status Category:** Filter issues based on their status (e.g., Done, Resolved).
+* **Issue Type:** Include specific issue types such as Bug, Change, Deployment.
+* **Labels or Custom Fields:** Narrow down the scope by applying labels or using custom fields.
+
+![](../static/df-jira-3.png)
+
+Filters are combined using an AND operation, meaning all specified conditions must be met for an issue to qualify.
+
+![](../static/df-jira-4.png)
+
+* Define how deployment frequency should be calculated:
+  * **Issue Resolved:** Measures deployment frequency when work items are resolved (e.g., status changes to Completed).
+  * **Issue Created:** Based on the creation of new Jira tickets.
+  * **Issue Updated:** Tracks frequency when existing issues are updated (e.g., adding tags, updating release fields).
+
+![](../static/df-jira-5.png)
+
+#### Option 2: Identify Deployments by Considering Jira Releases
+
+Deployment frequency is measured based on the release versions in Jira.
+This calculation considers the number of releases within the selected time range in the insight.
+
+![](../static/df-jira-6.png)
+
+</TabItem>
+
+<TabItem value="df-bb" label="Using BitBucket">
+
+* Choose **BitBucket** / **BitBucket Server** as the tool that you use to measure a deployment in your team.
+
+![](../static/df-bb-1.png)
+
+* Select all the integrations that you would like to use to calculate the deployment frequency.
+
+![](../static/df-bb-2.png)
+
+#### Option 1: Deployment Defined by PRs
+
+This approach considers PR activity to define what qualifies as a deployment.
+
+![](../static/df-azure-repos-3.png)
+
+* You can decide when a PR activity signifies a successful deployment:
+  * **PR Merged:** Deployment occurs when a PR is merged, regardless of whether it’s closed.
+  * **PR Closed:** Deployment occurs when a PR is closed, even if it’s not merged.
+  * **Merged and Closed:** Deployment happens when a merged PR is subsequently closed.
+
+![](../static/df-azure-repos-4.png)
+
+* To refine what PRs are included in the deployment frequency calculation, you can apply filters like:
+  * **Target Branches:** Specify branches where deployments are pushed (e.g., `main`, `release/*`).
+  * **Source Branches:** Include branches where development starts (e.g., `feature/*`, `hotfix/*`).
+  * **Labels:** Use labels associated with PRs to narrow the scope.
+    * **Starts With:** Include PRs with labels starting with a prefix (e.g., release for PRs related to a release).
+    * **Contains:** Include PRs with labels containing specific keywords (e.g., `deploy`, `prod`).
+
+![](../static/df-azure-repos-5.png)
+
+:::note
+Filters combine using an OR operation. For example, a PR qualifies if it:
+
+Targets the main branch, OR originates from a `feature/* branch`, OR has a label containing `deploy`.
+:::
+
+#### Option 2: Deployment Defined by Commits
+
+This approach uses commit activity to define what qualifies as a deployment.
+
+![](../static/df-azure-repos-6.png)
+
+* You can define deployment events based on commits:
+  * **Commit Pushed to Target Branch:** Deployment occurs when a commit is directly pushed to a branch (e.g., `prod`), with or without a tag.
+  * **Tag Added:** Deployment occurs when a tag (e.g., `v1.0`) is added to a commit, with or without pushing to a branch.
+  * **Combined Condition:** Deployment occurs when either a tag is added to a commit OR the commit is pushed to a target branch.
+
+![](../static/df-azure-repos-7.png)
+
+* You can refine commit-based deployments using attributes like:
+  * **Commit Branches:** Specify branches for deployment tracking (e.g., `main`, `prod`).
+  * **Commit Properties:** Use conditions to filter commits:
+    * **Starts With:** Include commits where branch name starts with a prefix (e.g., `fix-`, `deploy-`).
+    * **Contains:** Include commits with specific keywords in the branch names (e.g., `hotfix`, `prod deploy`).
+
+![](../static/df-azure-repos-8.png)
+
+:::note
+When using multiple filters, they will be combined with an OR operation, allowing commits that meet any condition to qualify.
+:::
+
+</TabItem>
+
+<TabItem value="df-snow" label="Using ServiceNow">
+
+* Choose **ServiceNow** as the tool that you use to measure a deployment in your team.
+
+![](../static/df-snow-1.png)
+
+* Select the relevant ServiceNow integrations that you wish to use for calculating deployment frequency.
+
+![](../static/df-snow-2.png)
+
+* Select the ticket type for deployment frequency tracking:
+  * **Change Request** is the recommended option for measuring deployment frequency.
+  * You can alternatively select Incident, though this is not recommended for deployment frequency tracking.
+
+![](../static/df-snow-3.png)
+
+* Refine the deployment frequency calculation by specifying filters:
+    * Use filters to include or exclude tickets based on specific fields, conditions, and values in your ServiceNow account.
+    * Filters are combined using an AND operation, meaning all specified conditions must be met.
+    * Example: `STATUS EQUALS CLOSED` AND `IMPACT EQUALS = <IMPACT_VALUES>`.
+
+![](../static/df-snow-3.png)
+
+* Define how deployment frequency should be tracked:
+  * **Change Request Resolved:** Tracks deployment frequency based on when change requests are resolved (e.g., status changes to Closed).
+  * **Change Request Updated:** Tracks deployment frequency whenever change requests are updated (e.g., fields like resolution date or status are modified).
+  * **Change Request Created:** Tracks deployment frequency based on the creation of new change requests.
+
+![](../static/df-snow-5.png)
+
+</TabItem>
+
+<TabItem value="df-gitlab" label="Using GitLab">
+
+* Choose **GitLab** as the tool that you use to measure a deployment in your team.
+
+![](../static/df-gitlab-1.png)
+
+* Select all the integrations that you would like to use to calculate the deployment frequency.
+
+![](../static/df-gitlab-2.png)
+
+* Define the deployment method i.e. specify whether deployment frequency should be based on:
+  * GitLab SCM (Source Code Management)
+  * GitLab CI/CD
+
+![](../static/df-gitlab-3.png)
+
+#### Option 1: Deployment Defined by PRs (SCM)
+
+This approach considers PR activity to define what qualifies as a deployment.
+
+![](../static/df-azure-repos-3.png)
+
+* You can decide when a PR activity signifies a successful deployment:
+  * **PR Merged:** Deployment occurs when a PR is merged, regardless of whether it’s closed.
+  * **PR Closed:** Deployment occurs when a PR is closed, even if it’s not merged.
+  * **Merged and Closed:** Deployment happens when a merged PR is subsequently closed.
+
+![](../static/df-azure-repos-4.png)
+
+* To refine what PRs are included in the deployment frequency calculation, you can apply filters like:
+  * **Target Branches:** Specify branches where deployments are pushed (e.g., `main`, `release/*`).
+  * **Source Branches:** Include branches where development starts (e.g., `feature/*`, `hotfix/*`).
+  * **Labels:** Use labels associated with PRs to narrow the scope.
+    * **Starts With:** Include PRs with labels starting with a prefix (e.g., release for PRs related to a release).
+    * **Contains:** Include PRs with labels containing specific keywords (e.g., `deploy`, `prod`).
+
+![](../static/df-azure-repos-5.png)
+
+:::note
+Filters combine using an OR operation. For example, a PR qualifies if it:
+
+Targets the main branch, OR originates from a `feature/* branch`, OR has a label containing `deploy`.
+:::
+
+#### Option 2: Deployment Defined by Commits (SCM)
+
+This approach uses commit activity to define what qualifies as a deployment.
+
+![](../static/df-azure-repos-6.png)
+
+* You can define deployment events based on commits:
+  * **Commit Pushed to Target Branch:** Deployment occurs when a commit is directly pushed to a branch (e.g., `prod`), with or without a tag.
+  * **Tag Added:** Deployment occurs when a tag (e.g., `v1.0`) is added to a commit, with or without pushing to a branch.
+  * **Combined Condition:** Deployment occurs when either a tag is added to a commit OR the commit is pushed to a target branch.
+
+![](../static/df-azure-repos-7.png)
+
+* You can refine commit-based deployments using attributes like:
+  * **Commit Branches:** Specify branches for deployment tracking (e.g., `main`, `prod`).
+  * **Commit Properties:** Use conditions to filter commits:
+    * **Starts With:** Include commits where branch name starts with a prefix (e.g., `fix-`, `deploy-`).
+    * **Contains:** Include commits with specific keywords in the branch names (e.g., `hotfix`, `prod deploy`).
+
+![](../static/df-azure-repos-8.png)
+
+:::note
+When using multiple filters, they will be combined with an OR operation, allowing commits that meet any condition to qualify.
+:::
+
+#### Option 3: Deployment Defined by GitLab CI/CD
+
+* GitLab CI/CD-based deployment frequency tracks pipeline job activity.
+
+![](../static/df-gitlab-4.png)
+
+* **Filters:** Refine the deployment frequency calculation by specifying detailed filters. This filters jobs that should contribute to the deployment frequency calculations.
+    * Use filters to include or exclude jobs based on specific properties, conditions, and values from the Jenkins jobs configuration.
+    * Filters combine using an AND operation, meaning all specified conditions must be met.
+    * Example: `STATUS EQUALS SUCCESS` AND `STAGE NAME = <NAME_OF_STAGE_NAME_IN_GITLAB>`.
+
+![](../static/df-gitlab-5.png)
+
+  * **Job Run Parameters:**
+    * Narrow down the data to specific job executions by defining key-value pairs.
+    * Filters combine using an OR operation, meaning any execution meeting the specified conditions will be included.
+    * Example: Include executions where `JAVA_VERSION = 11` OR `BRANCH = main`.
+
+![](../static/df-jenkins-4.png)
+
+* Define how deployment frequency should be tracked:
+  * **Jobs Started:** Tracks deployment frequency based on the initiation of deployment jobs.
+  * **Jobs Completed:** Tracks frequency based on successfully completed jobs.
+
+![](../static/df-jenkins-5.png)
+
+</TabItem>
+
 </Tabs>
 
 ### Deployment Frequency
