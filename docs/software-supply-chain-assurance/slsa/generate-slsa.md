@@ -31,8 +31,8 @@ The configuration for SLSA Generation and attestation previously handled in the 
 The **SLSA Generation** step enables you to generate SLSA Provenance and optionally attest it. The generated provenance is saved in the **Artifact** section in SCS, while the attestation file is pushed to the configured container registry. This step should be configured immediately after completing your image-building process, as the image digest is required for provenance generation and attestation.
 
 The **SLSA Generation** step can be used in two workflows depending on how you build your image.
-1. SLSA Generation when you use the Harness CI **Build and Push** step to build your image.
-2. SLSA Generation when you use a **Run** step to build your image.
+1. [SLSA Generation when you use the Harness CI **Build and Push** step to build your image.](#slsa-generation-step-configuration-with-build-and-push-step)
+2. [SLSA Generation when you use a **Run** step to build your image.](#slsa-generation-step-configuration-with-run-step)
 
 Follow the instructions below to configure the **SLSA Generation** step.
 
