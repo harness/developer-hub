@@ -306,3 +306,9 @@ import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
 import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
+
+## Proxy settings
+
+import ProxySettings from './shared/proxy-settings.md';
+
+<ProxySettings />
