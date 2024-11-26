@@ -50,7 +50,7 @@ If you have any questions or need assistance with the whitelisting process, plea
 - Secure Connect is now supported with JFrog Artifactory connector (CI-15004). 
 - Support for Docker Build Secrets in "Build and Push" Steps - You can now configure Docker build secrets in the Build and Push step using YAML. This feature allows specifying secrets via `envDockerSecrets` and/or `fileDockerSecrets` field, applicable when running build-and-push steps using Buildx (not Kaniko). Note that using Buildx in Kubernetes build infrastructure requires privileged access.  
 *Note*: This feature requires the feature flag `CI_USE_BUILDX_ON_K8` to be enabled when running builds in Kubernetes.
-- Added support for increasing execution log size limit from 5mb to 25mb, when running builds in Kubernetes. This feature requires the feature flag `CI_INCREASE_LOG_LIMIT` to be enabled, and is supported on Kubernetes build infrastructure only (PIPE-22885s). 
+- Added support for increasing execution log size limit from 5mb to 25mb, when running builds in Kubernetes. This feature requires the feature flag `CI_INCREASE_LOG_LIMIT` to be enabled, and is supported on Kubernetes build infrastructure only (PIPE-22885). 
 
 To enable feature flags, please contact [Harness Support](mailto:support@harness.io). 
 
