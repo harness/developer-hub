@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ## November 2024
 
-### Version 0.36.0
+### Version 0.37.0
 
 <!-- November 26, 2024 -->
 
