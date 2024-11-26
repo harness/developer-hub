@@ -14,7 +14,7 @@ When triggered, it causes the call to fail and return an error, potentially disr
 
 ![Pod IO Error](./static/images/pod-io-error.png)
 
-[This](https://youtu.be/_EyKwv5UupU) video walks through the execution of the pod IO error experiment.
+For a video tutorial, go to [pod IO error](https://youtu.be/_EyKwv5UupU) that walks through the execution of the experiment.
 
 ## Use cases
 Pod IO error:
