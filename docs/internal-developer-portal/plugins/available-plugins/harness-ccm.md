@@ -82,9 +82,7 @@ kind: Component
 metadata:
   # ...
   annotations:
-    harness.io/perspective-url: |
-      PerspectiveA: https://url-details/perspectives/perspectiveId/name/perspectiveName
-      PerspectiveB: <harness_ccm_perspective_url>
+    harness.io/perspective-url: https://url-details/perspectives/perspectiveId/name/perspectiveName
 spec:
   type: service
   # ...
