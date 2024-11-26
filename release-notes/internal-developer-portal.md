@@ -42,7 +42,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 ```YAML
 ## Example
 customPlugins:  
-  test-plugin:  
+  myPlugin:  
     target: abc.com  
 ```
 
@@ -50,7 +50,7 @@ customPlugins:
 
 #### Bug fixes
 
-- Fixed issue with catalog entities not in sync within IDP.[IDP-3969]
+- Fixed issue with Workflows V2 showing older Workflows when performing Layout customizations. [IDP-3969]
 
 - Fixed an issue where the "Add a New Workflow" navigation button did not direct to the correct group when the group had no workflows.[IDP-3968]
 
