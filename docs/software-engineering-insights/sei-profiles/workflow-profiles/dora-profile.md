@@ -1144,31 +1144,117 @@ When using multiple filters, they will be combined with an OR operation, allowin
 
 </Tabs>
 
-### Deployment Frequency
+### Set up Mean Time to Restore
 
-Deployment Frequency measures how frequently a team successfully deploys code to production. To configure:
+Mean Time to Restore represents the duration it takes a team to recover from a production failure.
 
-* Specify the tool used for measuring deployments in your team.
-* Select any existing integrations you wish to use for calculating deployment frequency.
-* Defind the settings for how you want to calculate deployment frequency. The additional filters being used to define the deployments will be applicable to all the integrations that you selected.
-
-![](../static/deployment-frequency.png)
-
-### Mean Time to Restore
-
-Mean Time to Restore represents the duration it takes a team to recover from a production failure. To configure:
+#### Configuration steps
 
 * Choose the tool used for tracking tasks similar to the Lead Time for Changes metric.
-* Configure the stages involved in your workflow based on the requirements.
+* Configure the stages/filters involved in your workflow based on the requirements.
 
-### Change Failure Rate
+Here's an example configuration of how you could configure Mean Time to Restore across various tools.
 
-Change Failure Rate is computed by dividing the total number of deployments causing failure by the overall number of deployments. To configure:
+<Tabs>
+  <TabItem value="mttr-snow" label="Using ServiceNow" default>
+
+* Choose **ServiceNow** as the tool that you use to measure mean time to restore in your team.
+
+![](../static/mttr-snow-1.png)
+
+* Select the associated **ServiceNow integration**. To learn about how to configure the integration, go to [ServiceNow integration](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow).
+
+![](../static/mttr-snow-2.png)
+
+* Select the ticket type for mean time to restore tracking:
+  * **Incidents** is the recommended option for measuring DORA MTTR.
+  * You can alternatively select Change Requests, though this is not recommended for MTTR tracking.
+
+![](../static/mttr-snow-3.png)
+
+* Define incident criteria for calculating MTTR by selecting various filters that define incidents you want to track or measure for MTTR calculations.
+  * The DORA profile definition supports all the ServiceNow fields including **Priority**, **Urgency**, **Status** etc to be configured as filters. When configuring the filters, the custom fields available dynamically changes based on the selected ticket type.
+  * Filters are combined using an AND operation, meaning all specified conditions must be met.
+  * Example: `STATUS EQUALS CLOSED` AND `CATEGORY EQUALS = <CATEGORY_VALUES>`.
+
+![](../static/mttr-snow-4.png)
+
+* Define how mean time to restore should be tracked:
+  * **Incident Resolved:** Tracks mean time to restore based on when incidents are resolved (e.g., status changes to Closed).
+  * **Incident Updated:** Tracks mean time to restore whenever incidents are updated (e.g., fields like resolution date or status are modified).
+  * **Incident Created:** Tracks mean time to restore based on the creation of new incidents.
+
+![](../static/mttr-snow-5.png)
+
+</TabItem>
+
+<TabItem value="mttr-pagerduty" label="Using PagerDuty">
+
+<DocVideo src="https://www.youtube.com/embed/cKZF4SFxgIE?si=9U7SuECmWTVxxTqz" />
+
+* Choose **PagerDuty** as the tool that you use to measure mean time to restore in your team.
+
+![](../static/mttr-pagerduty-1.png)
+
+* Select the associated **PagerDuty integration**. To learn about how to configure the integration, go to [PagerDuty integration](/docs/software-engineering-insights/sei-integrations/beta-integrations/sei-integration-pagerduty).
+
+![](../static/mttr-pagerduty-2.png)
+
+* Define incident criteria for calculating MTTR by selecting various filters that define incidents you want to track or measure for MTTR calculations.
+  * The DORA profile definition supports all the Pagerduty fields including **PD Service**, **Incident Priority**, **Incident Urgency**, **Incident Severity**, **Status** and **User ID** etc to be configured as filters. 
+  * Filters are combined using an AND operation, meaning all specified conditions must be met.
+  * Example: `INCIDENT PRIORITY EQUALS P0/P1/P2` AND `ALERT SEVERITY EQUALS CRITICAL`.
+
+![](../static/mttr-pagerduty-3.png)
+
+* Define how mean time to restore should be tracked:
+  * **Incident Resolved:** Tracks mean time to restore based on when incidents are resolved (e.g., status changes to Closed).
+  * **Incident Updated:** Tracks mean time to restore whenever incidents are updated (e.g., fields like resolution date or status are modified).
+  * **Incident Created:** Tracks mean time to restore based on the creation of new incidents.
+
+![](../static/mttr-pagerduty-4.png)
+
+</TabItem>
+
+<TabItem value="mttr-others" label="Others">
+
+You can measure DORA Mean Time to Restore (MTTR) using work items or tickets in your issue management system. However, we recommend using an Incident Monitoring tool for accurate results, as issue management systems require very clean and consistent data to work effectively for this purpose.
+
+If you choose to use an issue management system, here’s how you can set it up:
+
+* Replicate your incident management workflow across issue management, source code manager, and CI/CD systems (if needed) in the workflow settings.
+* To get accurate results, your tickets must be consistently labeled and updated.
+* Configure widget-level filters to include only relevant tickets:
+  * **Status:** Tickets marked as resolved or closed.
+  * **Labels:** Tags like incident, failure, or production.
+  * **Priority:** High-priority or critical issues.
+
+Here’s an example of how the workflow might look:
+
+![](../static/mttr-jira.png)
+
+:::tip
+If maintaining ticket hygiene is challenging, consider using an Incident Monitoring tool for better accuracy and simpler setup.
+:::
+
+</TabItem>
+
+</Tabs>
+
+### Set up Change Failure Rate
+
+Change Failure Rate is computed by dividing the total number of deployments causing failure by the overall number of deployments.
+
+#### Configuration settings
 
 * Specify the tool used for measuring deployments in your team.
 * Choose any existing integrations you want to utilize for calculating the change failure rate.
 * Select how to configure your integration between SCM (Source Code Management) and CI/CD.
 * Add attributes and filters to identify and define deployments causing failure and total deployments.
+
+Here's an example configuration of how you could configure Deployment Frequency across various tools.
+
+
 
 ![](../static/change-failure-rate.png)
 
