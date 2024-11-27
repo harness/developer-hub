@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-11-13T10:00
+date: 2024-11-27T10:00
 sidebar_position: 5
 ---
 
@@ -21,6 +21,14 @@ The release notes describe recent changes to Harness Chaos Engineering.
 :::
 
 ## November 2024
+
+### Version 1.49.1
+
+#### Fixed issues
+
+- Fixed the cron experiment execution that was not working with Linux and Windows infrastructure (CHAOS-7044)
+
+- Fixed the issue of **Visual** and **YAML** tabs overlapping while trying to toggle between them in the **Condition Editor** in ChaosGuard. (CHAOS-7026)
 
 ### Version 1.48.0
 
