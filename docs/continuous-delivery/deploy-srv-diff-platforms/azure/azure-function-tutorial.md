@@ -52,10 +52,7 @@ You define the target infrastructure for your deployment in the **Environment** 
 
 ## Azure Functions target infrastructure
 
-There are two methods of specifying the deployment target infrastructure:
-
-- **Pre-existing**: the target infrastructure already exists and you simply need to provide the required settings.
-- **Dynamically provisioned**: the target infrastructure will be dynamically provisioned on-the-fly as part of the deployment process.
+For deploying Azure Functions, you need to specify the pre-existing target infrastructure:
 
 For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
 
@@ -87,72 +84,6 @@ Within the same resource group, you can't mix Windows and Linux apps in the same
 When you're done, infrastructure will look something like this:
 
 ![](static/azure-functions-6.png)
-
-### Dynamically provisioned Azure Function infrastructure
-
-Here is a summary of the process to dynamically provision the target infrastructure for a deployment:
-
-1. **Add dynamic provisioning to the CD stage**:
-
-    ![](static/azure-functions-3.png)
-
-   1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
-   2. Select the type of provisioner that you want to use.
-      Harness automatically adds the provisioner steps for the provisioner type you selected.
-   3. Configure the provisioner steps to run your provisioning scripts.
-   4. Select or create a Harness infrastructure in **Environment**.
-2. **Map the provisioner outputs to the Infrastructure Definition**:
-   1. In the Harness infrastructure, enable the option **Map Dynamically Provisioned Infrastructure**.
-   2. Map the provisioning script/template outputs to the required infrastructure settings.
-
-This process is explained in detail below.
-
-#### Supported provisioners
-
-The following provisioners are supported for Azure Function deployments:
-
-- [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
-- [Azure Resource Manager (ARM)](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
-- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
-- [Shell Script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
-
-#### Adding dynamic provisioning to the stage
-
-To add dynamic provisioning to a Harness pipeline Deploy stage, in **Environment**, you enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
-
-Next, you select the type of provisioner that you want to use. Harness automatically adds the necessary provisioner steps.
-
-Finally, you set up the provisioner steps to run your provisioning scripts.
-
-For documentation on each of the required steps for the provisioner you selected, go to the following topics:
-
-- Terraform:
-  - [Terraform Plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
-  - [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
-  - [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step). To see the Terraform Rollback step, toggle the **Rollback** setting.
-- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
-- [Terraform Cloud](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments)
-- [Azure Resource Management (ARM)](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
-- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
-- [Shell Script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
-
-#### Mapping provisioner output
-
-Once you set up dynamic provisioning in the stage, you must map outputs from your provisioning script/template to specific settings in the Harness Infrastructure Definition used in the stage.
-
-1. In the same CD Deploy stage where you enabled dynamic provisioning, select or create (**New Infrastructure**) a Harness infrastructure.
-2. In the Harness infrastructure, in **Azure Infrastructure details**, enable the option **Map Dynamically Provisioned Infrastructure**.
-   
-   The **Azure Infrastructure details** section adds a **Provisioner** setting and configures it as a runtime input.
-3. Map the provisioning script/template outputs to the required infrastructure settings.
-
-To provision the target deployment infrastructure, Harness needs specific infrastructure information from your provisioning script. You provide this information by mapping specific Infrastructure Definition settings in Harness to outputs from your template/script.
-
-For Azure function, Harness needs the following settings mapped to outputs:
-
-- Subscription Id
-- Resource Group
-- Tags (optional)
 
 ## Azure function Deploy
 
