@@ -233,9 +233,11 @@ Harness configurations are stored in repositories. These configuration files can
 
 
 :::info note
-1. You must have valid Git credentials and a repo within this Git account before you enable Harness Git Experience.
-2. When using Git Experience with GitHub in bidirectional sync mode, merging a commit with 300 or more files may cause some files to not sync properly in the GitEx cache. This is due to GitHub API limitations, which parse up to 300 files between two commits. Additionally, such large merges may contribute to hitting the GitHub API rate limit. It is recommended to keep the number of files in a single commit below 300 to ensure consistency and avoid potential rate limit issues.
-3. If changes are made in Git, metadata such as id and scope parameters are not validated, but the spec is. If errors occur, you will be presented with an invalid YAML view.
+You must have valid Git credentials and a repo within this Git account before you enable Harness Git Experience.
+:::
+
+:::note
+If changes are made in Git, metadata such as id and scope parameters are not validated, but the spec is. If errors occur, you will be presented with an invalid YAML view.
 :::
 
 ### Next steps
