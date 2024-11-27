@@ -401,7 +401,13 @@ You can select one of the following types of expression for user groups:
 
 You can approve requests using a Service Account token.
 
- Configure Manual Approval Stage
+:::note
+
+Currently, Approvals API with Service Account Authentication is behind the feature flag `CDS_SERVICE_ACCOUNT_SUPPORT_IN_HARNESS_APPROVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Configure a Manual Approval Stage.
 
 In the manual approval stage, select whether to use an individual service account or a combination (if more than one approval is needed). Set the input type as **Fixed value**.
 
