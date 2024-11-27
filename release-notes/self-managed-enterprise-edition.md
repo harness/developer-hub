@@ -265,7 +265,7 @@ gsutil -m cp \
 
 ### Cloud Cost Management
 
-- Resolved an issue causing ce-nextgen pods to crash during database migration in SMP version 0.22.2. Improved Timescale migration reliability by enhancing SQL script execution with a full script execution method. (CCM-20381)
+- Improved Timescale migration reliability by enhancing SQL script execution with a full script execution method. (CCM-20381)
 
 #### Harness Platform
 
