@@ -28,7 +28,7 @@ The configuration for SLSA Generation and attestation previously handled in the 
 :::
 
 ## SLSA Generation step configuration
-The **SLSA Generation** step enables you to generate SLSA Provenance and optionally attest it. The generated provenance is saved in the **Artifact** section in SCS, while the attestation file is pushed to the configured container registry. This step should be configured immediately after completing your image-building process, as the image digest is required for provenance generation and attestation.
+The **SLSA Generation** step enables you to generate SLSA Provenance and optionally attest it. The generated provenance is saved in the [Artifact section](../artifact-view.md) in SCS, while the attestation file is pushed to the configured container registry. This step should be configured immediately after completing your image-building process, as the image digest is required for provenance generation and attestation.
 
 The **SLSA Generation** step can be used in two workflows depending on how you build your image.
 1. [SLSA Generation when you use the Harness CI **Build and Push** step to build your image.](#slsa-generation-step-configuration-with-build-and-push-step)
@@ -46,7 +46,7 @@ Follow the instructions below to configure the **SLSA Generation** step.
 
 * **Image:** Enter the name of your image, example `my-docker-org/repo-name`.
 
-* **Artifact Digest:** Enter the digest of your image, example `sha256:d34jlkf2...`.
+* **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using an [Harness Expressions](/docs/platform/variables-and-expressions/harness-variables/). Refer to the workflows described below for detailed guidance.
 
 <!-- <DocImage path={require('../slsa/static/slsa-ver-dockerhub.png')} width="50%" height="50%" title="Click to view full size image" /> -->
 
@@ -58,7 +58,7 @@ Follow the instructions below to configure the **SLSA Generation** step.
 
 * **Image:** Enter the name of your image, example `my-docker-repo/my-artifact`.
 
-* **Artifact Digest:** Enter the digest of your image, example `sha256:d34jlkf2...`.
+* **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
 * **Region:** The geographical location of your ECR repository, example `us-east-1`
 
@@ -77,7 +77,7 @@ Follow the instructions below to configure the **SLSA Generation** step.
 
 * **Image:** Enter the name of your image, example `my-image`.
 
-* **Artifact Digest:** Enter the digest of your image, example `sha256:d34jlkf2...`.
+* **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
 * **Host:** Enter your GCR Host name. The Host name is regional-based. For instance, a common Host name is `gcr.io`, which serves as a multi-regional hostname for the United States. 
 
@@ -95,7 +95,7 @@ Follow the instructions below to configure the **SLSA Generation** step.
 
 * **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where   `<registry-name>` is the name you have given to your container registry instance in Azure. Example input: `automate.azurecr.io/acr`
 
-* **Artifact Digest:** Enter the digest of your image, example `sha256:d34jlkf2...`.
+* **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
 * **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
 
@@ -110,7 +110,7 @@ Follow the instructions below to configure the **SLSA Generation** step.
 
 * **Image:** Enter the name of your image, example `repository-name/image`.
 
-* **Artifact Digest:** Enter the digest of your image, example `sha256:d34jlkf2...`.
+* **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
 * **Host:** Enter your GAR Host name. The Host name is regional-based. For example, `us-east1-docker.pkg.dev`.
 
@@ -143,7 +143,7 @@ Using the **Cosign** option, set your **Private Key** from the key pair along wi
 
 
 ## SLSA Generation step configuration with Build and Push step
-When using the Harness CI **Build and Push** step for the image-building process, you can configure the **SLSA Generation** step to generate and attest to the Provenance. Follow the [SLSA Generation step configuration](#slsa-generation-step-configuration), for the **Artifact Digest** field, you can use pipeline variables to dynamically populate the digest of the image built during the **Build and Push** step.  
+When using the Harness CI **Build and Push** step for the image-building process, you can configure the **SLSA Generation** step to generate and attest to the Provenance. Follow the [SLSA Generation step configuration](#slsa-generation-step-configuration), for the **Artifact Digest** field, you can use [Harness Expressions](/docs/platform/variables-and-expressions/harness-variables/) to dynamically populate the digest of the image built during the **Build and Push** step.  
 
 For example, the expression could look like:  
 `<+pipeline.stages.build.spec.execution.steps.<YOUR_BUILD_AND_PUSH_STEP_NAME>.output.outputVariables.digest>`  
