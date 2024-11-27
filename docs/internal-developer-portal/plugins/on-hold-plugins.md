@@ -9,3 +9,4 @@ This is a list of on-hold plugins, that were previously enabled and available in
 
 1. TODO: This plugin has memory leak issues. <!-- removed broken link - Target page doesn't exist. -->
 2. [GitLab](https://github.com/immobiliare/backstage-plugin-gitlab): This plugin caused the servers to crash and had authentication requests ongoing even when it was disabled.
+3. Confluence
