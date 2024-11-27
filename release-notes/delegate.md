@@ -88,6 +88,13 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 ## November 2024
 
+### Version 24.10.84309 <!-- November 27, 2024 -->
+
+#### New features and enhancements.
+
+- Implemented functionality to support groupByResource for the Datadog Health Source in Continuous Verification, specifically for a single customer (Hopper), as it is urgently needed.
+
+
 ### Version 24.10.84205-ubi9-beta <!-- November 18, 2024 -->
 
 #### Early release (Beta release).
