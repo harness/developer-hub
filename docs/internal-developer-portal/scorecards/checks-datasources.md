@@ -494,7 +494,7 @@ Here's an example of the URL input: `https://app.harness.io/ng/account/account_i
 
 ![](./static/projects-pipelines.png)
 
-- `harness.io/services`: The URL for the Service should be used as an input, and it should only be fetched from under **Projects** and not from specific modules.
+- `harness.io/services`**(Optional)**: The URL for the Service should be used as an input, and it should only be fetched from under **Projects** and not from specific modules.
 
 Here's an example of the URL input: `https://app.harness.io/ng/account/account_id/home/orgs/org_id/projects/project_id/services/service_id`
 
@@ -502,7 +502,7 @@ Here's an example of the URL input: `https://app.harness.io/ng/account/account_i
 
 :::info
 
-In the Harness Data source, the first pipeline URL from `harness.io/pipelines` is considered for score computation and similarly, the first service URL from `harness.io/services` is considered.
+In the Harness Data source, the first pipeline URL from `harness.io/pipelines` is considered for score computation and similarly, the first service URL from `harness.io/services` is considered **if provided**. 
 
 :::
 
@@ -515,7 +515,7 @@ The following **Data Points** are available for Harness Data Source.
 ![](./static/ci-harness.png)
 
 2. **Policy evaluation successful**:
-- *Objective:* This data point can be used for creating a rule that will check if the policy evaluation is successful in pipelines. (This data point is applicable to both CI and CD Pipelines)
+- *Objective:* This data point can be used for creating a rule that will check if the policy evaluation is successful in pipelines. (This data point is applicable to both CI and CD Pipelines but is evaluated based on the annotation provided i.e., in-case only `harness.io/pipelines`is present score will be computed based on that)
 
 ![](./static/p-harness.png)
 
@@ -525,7 +525,7 @@ The following **Data Points** are available for Harness Data Source.
 ![](./static/t-harness.png)
 
 4. **STO stage added in pipeline**:
-- *Objective:* This data point can be used for creating a rule that will check if STO stage is added in the pipelines. (This data point is applicable to both CI and CD Pipelines)
+- *Objective:* This data point can be used for creating a rule that will check if STO stage is added in the pipelines. (This data point is applicable to both CI and CD Pipelines but is evaluated based on the annotation provided i.e., in-case only `harness.io/pipelines`is present score will be computed based on that)
 
 ![](./static/sto-harness.png)
 
@@ -538,7 +538,7 @@ If the rule depends on the execution of the pipeline then the latest execution o
 
 - In the case of CD Pipeline, the latest deployment pipeline using the first service that we provide in the annotation in catalog info YAML is considered for evaluating the rules corresponding to data points.
 
-- If the data point depends on both CI and CD Pipelines, annotations corresponding to both should be present in the catalog YAML
+- If you want the score to be computed based on the data point from both CI and CD Pipelines, annotations corresponding to both should be present in the catalog YAML
 
 :::
 
