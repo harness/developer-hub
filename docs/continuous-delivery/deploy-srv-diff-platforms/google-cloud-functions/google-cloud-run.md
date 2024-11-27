@@ -8,6 +8,12 @@ redirect_from:
 
 # Deploying Artifacts to Google Cloud Run with Harness
 
+:::note
+
+Currently, this feature is behind the feature flag `CDS_GOOGLE_CLOUD_RUN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 This topic explains how to deploy an artifact to Google Cloud Run using Harness.
 
 ## Deployment Summary
