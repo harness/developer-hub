@@ -170,12 +170,6 @@ Multiple users can make commits to multiple branches for the resources that are 
 
 ### Bi-Directional sync
 
-:::note
-
-Currently, Bi-Directional sync is behind the feature flag `PIE_GIT_BI_DIRECTIONAL_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 By default, Harness Git Experience syncs unidirectionally, from Harness to your Git repos. Enable this setting to have Git Experience sync two-way (bidirectionally) between Harness and your Git repo.
 
 Changes made on either the Git repo or Harness are synched automatically.
