@@ -83,13 +83,13 @@ In the `headers` you can add an Authorization header. Ensure you use a unique to
 
 Hit "Save Configuration" and now our backend proxy is ready to use!
 
-You can verify this endpoint by making requests to the `proxy` endpoint at `https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/proxy`. For example in order to test the GitHub example above, you can make a request to
+You can verify this endpoint by making requests to the `proxy` endpoint at `https://idp.harness.io/{ACCOUNT_IDENTIFIER}idp/api/proxy`. For example in order to test the GitHub example above, you can make a request to
 
 ```
-https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/proxy/github-api/user
+https://idp.harness.io/{ACCOUNT_IDENTIFIER}idp/api/proxy/github-api/user
 ```
 
-Here `https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/proxy/github-api/` can be seen exactly as `https://api.github.com/`. So all the endpoint paths on the GitHub API can be used after the proxy endpoint URL. You can learn more about how to consume Harness IDP APIs on our [API Docs](/docs/internal-developer-portal/api-refernces/public-api).
+Here `https://idp.harness.io/{ACCOUNT_IDENTIFIER}idp/api/proxy/github-api/` can be seen exactly as `https://api.github.com/`. So all the endpoint paths on the GitHub API can be used after the proxy endpoint URL. You can learn more about how to consume Harness IDP APIs on our [API Docs](/docs/internal-developer-portal/api-refernces/public-api).
 
 ### Step 2: Create the dropdown picker in Workflows form
 
