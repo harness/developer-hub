@@ -47,6 +47,28 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## November
 
+### Version 1.67.x
+
+#### New Features and enhancements
+
+- You can now deploy your artifacts to Google Cloud Run. This feature is behind a feature flag `CDS_GOOGLE_CLOUD_RUN`.  Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-36357)
+
+- You can now deploy using Azure Functions enabling you to automate and manage serverless function deployments to Azure with ease. (CDS-51900)
+
+- Previously, GitOps steps like UpdateReleaseRepo, MergePR, and RevertPR were delayed due to locking on the tokenRef to prevent GitHub rate limits. A new Disable `Git Restraint` option now allows users to bypass this locking for faster execution. (CDS-101882, ZD-71430,72936)
+
+#### Fixed Issues
+
+- Previously, when configuring Approver Inputs with allowed values using a regex in the Manual Approval step, the regex setting did not appear in the UI after saving and reloading a template. This issue is fixed now. (CDS-99459, ZD-73396)
+- Previously, selecting certain templates in **My Organization Templates**, UI was not rendering properly . This issue is fixed now, and templates now load and display correctly. (CDS-103675, ZD-73250)
+- During Azure web deployments for windows complete logs were not getting shown. It happened due to a library upgrade for Azure which caused issue with some parts of Azure integration. The issue is fixed now. (CDS-103358, ZD-73664)
+- In Azure function deployment instance sync was not reporting instance count. This issue is fixed now. (CDS-103224)
+- Previously, GitOps entries did not appear in custom dashboards when the `cd_stage_execution` view was used in Looker. This issue is fixed now. (CDS-103135)
+- Previously, the Terraform Cloud Run step would get stuck during the **Apply** phase when there were no changes in the Terraform plan. This issue is fixed now. (CDS-103088, ZD-72114)
+- Previously, attempting to delete folders in the file store with names similar to other folders caused errors, even when the folder appeared to have no references. For example, deleting a folder would fail if another folder with a similar prefix contained referenced entities. This issue is fixed now. (CDS-103076, ZD-72658)
+- Previously, the runtime input regex for the version field in the Google Artifact Registry (GAR) artifact source was not working as expected, causing all tags to display instead of filtering based on the regex. This issue is fixed now, and the version field now correctly supports regex patterns, allowing users to filter tags as intended. (CDS-102800, ZD-72658)
+- Previously, when a pipeline had two stages with a runtime environment `(<+input>)` propagated to the next stage, selecting **Deploy to Different Infrastructure** caused the payload to contain a null environment. This prevented users from selecting infrastructure options. This issue is fixed now. (CDS-100718)
+
 ### Version 1.65.3
 
 #### New features and enhancements
