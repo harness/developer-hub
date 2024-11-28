@@ -91,7 +91,7 @@ See [Run Kubernetes jobs](/docs/continuous-delivery/deploy-srv-diff-platforms/k
 
 ### Can I deploy a Kubernetes resources using CRDs?
 
-Yes. Harness supports all Kubernetes default resources, such as pods, deployments, StatefulSets, DaemonSets, etc. For these resources, Harness supports steady state checking, versioning, displays instances on Harness dashboards, performs rollback, and other enterprise features.
+Yes. Harness supports all Kubernetes default resources, such as pods, deployments, DaemonSets, etc. For these resources, Harness supports steady state checking, versioning, displays instances on Harness dashboards, performs rollback, and other enterprise features.
 
 In addition, Harness provides many of the same features for Kubernetes [custom resource](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) deployments using Custom Resource Definitions (CRDs). CRDs are resources you create that extend the Kubernetes API to support your application.
 
@@ -276,7 +276,7 @@ If you are using the default release name format in Harness FirstGen as `release
 In the deployment logs in Harness, you may get an error similar to this:
 
 ```
-6m11s Warning FailedCreate statefulset/release-xxx-xxx create Pod release-xxx-xxx-0 in StatefulSet release-xxx-xxx failed error: Pod "release-xxx-xxx-0" is invalid: metadata.labels: Invalid value: "release-xxx-xxx-xxx": must be no more than 63 characters
+6m11s Warning FailedCreate release-xxx-xxx create Pod release-xxx-xxx-0 in release-xxx-xxx failed error: Pod "release-xxx-xxx-0" is invalid: metadata.labels: Invalid value: "release-xxx-xxx-xxx": must be no more than 63 characters
 ```
 
 This is an error coming from the kubernetes cluster stating that the release name is too long.  This can be adjusted in the Environments section.

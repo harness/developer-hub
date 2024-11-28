@@ -12,7 +12,7 @@ This topic describes how Harness tracks releases and versions for Kubernetes dep
 
 Every Harness deployment creates a new release with an incrementally increasing number. Release history is stored in the Kubernetes cluster in a ConfigMap or Secret. ConfigMap or Secret are essential for release tracking, versioning, and rollback.
 
-By default, all ConfigMaps and Secrets are versioned by Harness. The corresponding references for these ConfigMaps and Secrets in other manifest objects are also updated (for example, managed workloads like Deployment, StatefulSet, and so on).
+By default, all ConfigMaps and Secrets are versioned by Harness. The corresponding references for these ConfigMaps and Secrets in other manifest objects are also updated (for example, managed workloads like Deployment, and so on).
 Versioning does not change how you use ConfigMaps or Secrets. You need not reference the release numbers when using ConfigMaps or Secrets. 
 
 You can see the use of release numbers and versioning in the **Deployments** page details in Harness First Gen,  (`Current release number is`, `Previous Successful Release is 4`):
