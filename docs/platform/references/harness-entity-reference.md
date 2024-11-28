@@ -36,49 +36,6 @@ Identifiers provide a permanent way to refer to an entity, and avoid issues that
 
 See [Entity Identifier Reference](entity-identifier-reference.md).
 
-### Entity Id Scope
-
-Entity Id is scoped at the level where it is created. For example, two Pipelines can have the same Id if they are in different Projects.
-
-Entity Id has the following rules:
-
-* There cannot be 2 or more Orgs with the same Id within the account.
-* There cannot be 2 or more Projects with the same Id within the Org.
-* There cannot be 2 or more Pipelines with the same Id within the Project.
-* There cannot be 2 or more stages with the same Id within the Pipeline.
-* There cannot be 2 or more steps with the same Id within the stage.
-
-### Id Naming
-
-The identifier must start with `a-z`, `A-Z` or `_` and can then be followed by `0-9`, `a-z`, `A-Z`, `_` or `$`.
-
-### Reserved Words
-
-The Id should not be any of the following words:
-
-* or
-* and
-* eq
-* ne
-* lt
-* gt
-* le
-* ge
-* div
-* mod
-* not
-* null
-* true
-* false
-* new
-* var
-* return
-* step
-* parallel
-* stepGroup
-* org
-* account
-
 ### See also
 
 * [Entity Identifier Reference](entity-identifier-reference.md)
