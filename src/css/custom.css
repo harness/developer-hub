@@ -719,7 +719,9 @@ body.DocSearch--active #__docusaurus > div[class*="announcementBar"] {
 aside nav.menu > ul > li > div > a,
 aside nav.menu > ul > li > ul > li > div > a,
 aside nav.menu > ul > li > a,
-aside nav.menu > ul > li > ul > li > a {
+aside nav.menu > ul > li > ul > li > a,
+aside nav.menu > ul > li > ul > li.horizontal-bar ul > li > a,
+aside nav.menu > ul > li > ul > li.horizontal-bar ul > li > div > a {
   font-size: 13px;
   line-height: 20px;
   font-weight: 600;
@@ -753,6 +755,28 @@ a.card .text--truncate {
 
 a.card p.text--truncate {
   min-height: 3em;
+}
+
+/* style horizontal divider for LHS menu items, level 1 */
+
+.horizontal-bar > .menu__list-item-collapsible {
+  border-top: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 15px;
+  background-color: #effbff;
+}
+
+.horizontal-bar > .menu__list-item-collapsible > a {
+  color: #B0B1C1;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
+  height: 20px;
+}
+
+li.horizontal-bar ul.menu__list li.menu__list-item a.menu__link {
+  padding-left: initial;
 }
 
 /* HDH-120: Change 2nd level numbered list style */
