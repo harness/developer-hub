@@ -92,7 +92,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 #### New features and enhancements.
 
-- Implemented functionality to support groupByResource for the Datadog Health Source in Continuous Verification, specifically for a single customer (Hopper), as it is urgently needed.
+- Implemented functionality to support groupByResource for the Datadog Health Source in Continuous Verification(CDS-100367).
 
 
 ### Version 24.10.84205-ubi9-beta <!-- November 18, 2024 -->
