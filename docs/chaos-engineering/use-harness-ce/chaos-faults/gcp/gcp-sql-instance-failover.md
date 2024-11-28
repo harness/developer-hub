@@ -3,21 +3,22 @@ id: gcp-sql-instance-failover
 title: GCP SQL Instance Failover
 ---
 
-GCP SQL Instance Failover disrupts the state of GCP SQL Instance filtered using a Name & Project ID by triggering failover on the SQL instance.
+GCP SQL Instance Failover disrupts the state of GCP SQL instance filtered using a name and project ID by triggering failover on the SQL instance.
 
-![GCP VM Disk Loss By Label](./static/images/gcp-vm-disk-loss-by-label.png)
+![GCP VM Disk Loss By Label](./static/images/gcp-sql-instance-failover.png)
 
 ## Use cases
 
 GCP SQL instance failover fault:
 - Determines the resilience of the GKE infrastructure.
-- Determines how quickly a SQL Instance can recover when a failover on one of the replicas is triggered.
+- Determines how quickly an SQL Instance can recover when a failover on one of the replicas is triggered.
 
 ### Prerequisites
 - Kubernetes > 1.16
 - Service account should have editor access (or owner access) to the GCP project.
 - High Availability should be enabled on target GCP SQL Instance
 - Kubernetes secret should have the GCP service account credentials in the default namespace. Refer [generate the necessary credentials in order to authenticate your identity with the Google Cloud Platform (GCP)](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp) docs for more information.
+
 ```yaml
 apiVersion: v1
 kind: Secret
