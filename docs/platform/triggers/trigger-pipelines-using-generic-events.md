@@ -41,16 +41,16 @@ The webhook is now created, click on the webhook you created earlier and copy th
 
 To link this webhook to trigger your pipeline, navigate to your pipeline for which this webhook is to be used. 
 1. Select **Triggers** present on the top right corner of the page.
-2. Click in **New Trigger** and select the **Event Bridge**.
+2. Click in **New Trigger** and select the **Event Relay**.
 
 ![](./static/generic-webhook-2.png)
 
 3. In the configurations page, provide the **Name** for the webhook.
-4. Under the **Listen on New Webhook**, Event Bridge is selected by default for **Payload Type**. For selecting **Webhooks**, a pop up page will only list all the Generic and Slack webhooks configured will be displayed. 
+4. Under the **Listen on New Webhook**, Event Relay is selected by default for **Payload Type**. For selecting **Webhooks**, a pop up page will only list all the Generic and Slack webhooks configured will be displayed. 
 Select the Generic webhook you created earlier.
 Click on **Continue**.
 
-![](./static/generic-webhook-3.png)
+![](./static/generic-webhook-3.png) 
 
 5. In the **Conditions** page, give the approproate **Header Conditions** and **Payload Conditions**.
 Click on **Continue**.
