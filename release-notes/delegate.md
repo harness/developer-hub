@@ -90,10 +90,9 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ### Version 24.11.84309 <!-- November 27, 2024 -->
 
-#### New features and enhancements.
+#### New features and enhancements
 
-- Implemented functionality to support groupByResource for the Datadog Health Source in Continuous Verification(CDS-100367).
-
+- Implemented functionality to support groupByResource for the Datadog Health Source in Continuous Verification. (CDS-100367)
 
 ### Version 24.10.84205-ubi9-beta <!-- November 18, 2024 -->
 
