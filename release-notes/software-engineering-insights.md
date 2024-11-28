@@ -24,6 +24,42 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## November 2024
 
+### Version 202411.2
+
+<!-- November 26, 2024 -->
+
+#### Generally Available
+
+The new experience for configuring the **GitHub Actions integration** and **GitLab integration** is now **Generally Available**! Find the step-by-step instructions for configuring the integration in the documentation below:
+
+* [Connect with GitHub Actions](/docs/software-engineering-insights/sei-integrations/github%20actions/sei-github-actions)
+* [Connect with GitLab](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab)
+
+#### Early access features
+
+* We have added support for using **ServiceNow queries** for both incidents and change requests to filter data to be ingested into the system while configuring the integration. For more information, go to [SEI ServiceNow integration](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow). This feature is currently in BETA and requires the SEI_SERVICE_NOW_ADVANCE_CONFIGURATION_FIELD feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-9174)
+
+![](.././docs/software-engineering-insights/sei-integrations/static/snow-query.png)
+
+#### New features and enhancements
+
+* Added support for branch selection using regular expressions when configuring the **Merge Time** stage in the DORA profile settings. (SEI-9359) (ZD-72925)
+* Improved the **Harness Code** & **Harness CI/CD integration** to automatically fetch and populate **Account ID**, **Organization** and **Project Name** for the current account. These details can be customized as needed. (SEI-9510)
+* We have introduced sorting functionality for the **Author**, **Committer**, **Lines Added**, and **Total Lines** columns in the drill-down view of the **SCM Rework** widget. (SEI-9539)
+
+#### Fixed issues
+
+* We have updated the collection definition settings by removing the partial match filter for **Status**, **Triggered By**, and **Pipeline**. These filters now support conditions for **Equals** and **Not Equals**, providing more precise filtering options. (SEI-1608)
+* Fixed the issue that caused incorrect data to display for **Hops** and **Bounce** metrics across multiple widgets. (SEI-8930)
+* Resolved an issue where the **Pull Request Activity** widget failed to display data based on the selected intervals. (SEI-9116)
+
+#### Documentation and content
+
+* [Troubleshooting guide for the Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs)
+* [Diagnostics: Monitor & troubleshoot issues in the system](/docs/software-engineering-insights/sei-diagnostics)
+
+
+
 ### Version 202411.1
 
 <!-- November 13, 2024 -->
