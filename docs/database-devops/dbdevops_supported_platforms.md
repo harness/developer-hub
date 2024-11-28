@@ -28,6 +28,10 @@ One of the limitations being:
 Additionally, for sources to read the change log from, Harness Database DevOps supports:
 
 - **Git**
+- **Github**
+- **Bitbucket**
+- **Gitlab**
+- **AzureRepo**
 - **Artifactory**
 
 These platforms allow users to manage database changes effectively within their deployment pipelines, integrating database operations with application code management.
