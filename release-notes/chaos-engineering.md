@@ -28,7 +28,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Extends ChaosGuard conditions for node-level chaos experiments. (CHAOS-6788)
 
-- Adds advanced settings to the UI for "discovery agent" and "edit infrastructure" pages. (CHAOS-6718)
+- Adds advanced settings to the UI for the "edit infrastructure" page. (CHAOS-6718)
 
     <details>
     <summary> View advanced setting screen </summary>
