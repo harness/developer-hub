@@ -6,6 +6,6 @@
 | API Keys                           | 10      | Number of api keys created per env                                                                             |
 | Flag Target Rules                  | 2000    | Number of target rules on a flag (e.g. serve target x true)                                                    |
 | Flag Target Group Rules            | 1000    | Number of groups rules on a flag (e.g. server group beta true)                                                 |
-| Target Group Include/Exclude Rules | 5000    | Number of targets directly included/excluded in a group                                                        |
+| Target Group Include/Exclude Rules | 5000    | Number of targets directly included/excluded in a target group                                                        |
 | Target Group Custom Rules          | 5000    | Number of custom rules in a target group (e.g. if identifier == “foo”)                                                           |
 | Target Group Clause Sizes          | 5000    | Number of clauses in a group rule                                                                              |
