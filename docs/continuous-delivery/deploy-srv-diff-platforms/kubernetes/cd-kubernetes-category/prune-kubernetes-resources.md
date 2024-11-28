@@ -90,7 +90,7 @@ When the **Enable Kubernetes Pruning** setting is enabled, Kubernetes Blue Green
 
 ## Pruning examples
 
-The first time you deploy a resource (Deployment, StatefulSet, ReplicaSet, etc) no pruning will take place.
+The first time you deploy a resource (Deployment, ReplicaSet, etc) no pruning will take place.
 
 In Harness Pipeline execution, you will see a **Prune** section with the following message:
 
