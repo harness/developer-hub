@@ -1,5 +1,3 @@
-The following table lists the server-side Feature Flag SDKs that  Harness supports.
-
 | Resource                           | Limit   | Description                                                                                                    |
 | ---------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------- |
 | Flags                              | 1200    | Number of flags per  project                                                                                   |
