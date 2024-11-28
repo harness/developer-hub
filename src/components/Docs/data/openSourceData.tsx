@@ -54,7 +54,7 @@ import {
             title: "Gitspaces",
             module: MODULES.opensource,
             description:
-              "Create and manage hosted development environments.",
+              "Create and manage on-demand pre-configured cloud development environments.",
             link: "/docs/category/gitspaces",
           },
           {

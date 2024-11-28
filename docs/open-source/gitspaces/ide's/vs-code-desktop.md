@@ -1,6 +1,7 @@
 ---
 title: VS Code Desktop
 sidebar_position: 2
+description: Connect to your Gitspaces within VS Code Desktop.
 sidebar_label: VS Code Desktop
 ---
 
