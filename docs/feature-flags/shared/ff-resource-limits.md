@@ -2,7 +2,7 @@
 | ---------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------- |
 | Flags                              | 1200    | Number of flags per  project                                                                                   |
 | Targets                            | 60 days | Number of targets per environment are retained for up to 60 days. Targets referenced in rules do not get removed |
-| Target Groups                      | 1200    | Number of groups per environment                                                                               |
+| Target Groups                      | 1200    | Number of groups of targets per environment                                                                               |
 | API Keys                           | 10      | Number of api keys created per environment                                                                             |
 | Flag Target Rules                  | 2000    | Number of target rules on a flag (e.g. serve target x true)                                                    |
 | Flag Target Group Rules            | 1000    | Number of target group rules on a flag (e.g. server group beta true)                                                 |
