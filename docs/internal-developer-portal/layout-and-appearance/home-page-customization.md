@@ -65,7 +65,19 @@ This GitHub PR card provides quick access to the pull requests you have created 
 
 The numbers displayed at the top, such as "15 Created," "1 Review Requests," and "1 Assigned" only reflect open pull requests, even though the card also contains information on closed pull requests, as seen by the "Closed (525)" tab.
 
-- **How To Set up**: The access is configured thorough [GitHub OAuth](https://developer.harness.io/docs/platform/git-experience/oauth-integration/#configure-oauth-for-git-provider), you'll be redirected to GitHub to sign-in to populate this card. 
+- **How To Set up**: The access is configured thorough [OAuth Configurations in IDP](https://developer.harness.io/docs/internal-developer-portal/plugins/oauth-support-for-plugins), once the card is enabled on the Developer's Homepage you'll be redirected to GitHub to sign-in to populate this card. 
+
+![](./static/oauth-plugin-config-github.png)
+![](./static/homepage-github-sign-in.png)
+
+- **Access Control Explained**: 
+
+- *IDP Admin Role*:- Set up and manage the organization-wide GitHub OAuth configuration and add the GitHub app credentials in IDP. Enable the My PR card on homepage
+    - Scope: The OAuth App defines the access boundaries for the integration, such as which repositories, pull requests, and organizational resources will be visible.
+
+- *Developers*: Sign-in using the pre-configured OAuth App to access personalized data once the "My PRs card" is available on the homepage. 
+    - Scope: Access is limited to the repositories, pull requests, and issues they have permissions for within GitHub.
+
 
 - **Value Addition**: It will display data across all repositories you have permissions for, making it easy to track your contributions, review requests, and assigned PRs in one place without switching contexts.
 
@@ -114,6 +126,14 @@ Access to this JIRA card is authenticated via [OAuth Configurations in IDP](http
 ![](./static/oauth-plugin-config.png)
 
 ![](./static/homepage-jira-card.png)
+
+- **Access Control Explained**: 
+
+- *IDP Admin Role*: Set up and manage the organization-wide JIRA OAuth configuration. Add the JIRA app credentials in IDP settings. Enable the "My JIRA Tickets" card on the Developer Homepage.
+    - Scope: The OAuth App defines the access boundaries for the integration, such as which JIRA projects, tickets, and associated resources will be visible to developers. Admins configure the integration to ensure organization-wide availability while maintaining security and adherence to permissions.
+
+- *Developer*: Sign in using the pre-configured OAuth App to access personalized data from JIRA. Utilize the "My JIRA Tickets" card on the homepage for real-time updates.
+    - Scope: Access is limited to the JIRA projects, tickets, and associated data they have permissions for within the JIRA system. Developers only see tickets they are assigned to, tickets they created, or those they are mentioned in.
 
 ### Tool Kit
 
