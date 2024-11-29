@@ -103,8 +103,6 @@ The following deprecated API endpoints are longer supported:
 
 - Enhanced AWS Secrets Manager integration to support secret updates using the `secretsmanager:PutResourcePolicy` permission. The appropriate request type (`UpdateSecret` or `PutSecretValue`) is now determined based on the `usePutSecret` flag in the connector configuration. This item requires Harness Delegate version 24.11.84500. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-58652)
 
-- Upgraded `java-jwt` to version `4.4.0` and `sshj` to version `0.39.0` to address a medium-severity issue related to the `org.bouncycastle:bcprov-jdk15on` transitive dependency. This item requires Harness Delegate version 24.11.84500. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-58474)
-
 - Optimized role assignment deletions by replacing the inefficient `findAllAndRemove` method with remove. This improves database performance by avoiding unnecessary data fetching during deletions. (PL-56385)
 
 - Upgraded the `io.netty:netty-common` library to version `4.1.115` to address security vulnerabilities, including `CVE-2024-47535`, ensuring enhanced application security and compliance. (PL-58550)
