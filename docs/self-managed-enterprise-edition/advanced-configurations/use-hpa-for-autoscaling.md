@@ -8,6 +8,11 @@ sidebar_label: Set Up Autoscaling
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::info Note
+This feature is available from Harness Helm Chart version 0.23.0.
+
+:::
+
 You can set up autoscaling for harness workloads using [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/). 
 Harness helm chart supports configuring HPA for either all services at once or for selective services.
 
