@@ -1,16 +1,17 @@
 ---
-title: Set up Autoscaling
-description: Learn how to set up autoscaling for Harness Self-Managed Enterprise Edition installations.
+title: Configure Autoscaling
+description: Learn how to configure autoscaling for Harness Self-Managed Enterprise Edition installations.
 sidebar_position: 3
-sidebar_label: Set Up Autoscaling
+sidebar_label: Configure Autoscaling
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::info Note
-This feature is available from Harness Helm Chart version 0.23.0.
+This feature is available from Harness Helm Chart version 0.23.0. 
 
+By default, autoscaling is enabled for all services in Harness Helm Chart now.
 :::
 
 You can set up autoscaling for harness workloads using [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/). 
@@ -31,28 +32,6 @@ global:
 ```
 
 ## Configure autoscaling for selective services
-
-To configure autoscaling for selective services, you need to set `global.autoscaling.enabled` to `false` so that you can enable autoscaling for the services 
-of your choice.
-
-```
-global:
-  autoscaling:
-    enabled: false     # Disables autoscaling for all services
-
-platform:
-  ng-manager:
-    autoscaling:
-      enabled: true
-      minReplicas: 1     
-      maxReplicas: 5     
-      targetCPU: 80      
-      targetMemory: 80  
-```
-
-Similar to above, you can configure the values of individual services.
-
-## Configure autoscaling spec for selective services
 
 If you want to change the autoscaling spec such as `minReplicas` for selective services, you can configure it like below.
 
