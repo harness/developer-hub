@@ -22,11 +22,13 @@ It, then, performs a test connection using a delegate with a delegate selector o
 
 ### JDBC URLs
 
-URL Examples
+#### URL Examples
 
 | Database | JDBC URL Format |
+|------------------|------------------------------------------------------|
 | `ORACLE` | `jdbc:oracle:thin:@//host:port/FREEPDB1` | 
 | `POSTGRES` | `jdbc:postgresql://host:port/dbName?sslmode=disable` |
 | `SQLSERVER` | `jdbc:sqlserver://host:port;trustServerCertificate=true;databaseName=master` | 
 | `MongoAtlasSQL` | `jdbc:mongodb://host:port%s?ssl=true&authSource=admin` |
 | `MYSQL` | `jdbc:mysql://host:port/db` |
+| `MONGODB` | `mongodb://host:port/dbName/?authSource=admin` |
