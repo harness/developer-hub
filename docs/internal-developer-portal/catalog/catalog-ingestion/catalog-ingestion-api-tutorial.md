@@ -170,18 +170,18 @@ In case you want to display the same information you have ingested on your Overv
 ![](./static/navigate-component.png)
 
 ```YAML
-- component: EntityAdditionalInfoCard
-    specs:
-    props:
-        title: Additional Info Card
-        items:
-        - label: Code Coverage Score
-        value: <+metadata.codeCoverageScore>
-        type: string
-        style:
-        bold: true
-    gridProps:
-        md: 6
+        - component: EntityAdditionalInfoCard
+          specs:
+            props:
+              title: Additional Info Card
+              items:
+                - label: Code Coverage Score
+                  value: <+metadata.additionalInfo.codeCoverageScore>
+                  type: string
+                  style:
+                    bold: true
+            gridProps:
+              md: 6
 ```
 
 ![](./static/add-additional-info-card.png)
@@ -189,7 +189,7 @@ In case you want to display the same information you have ingested on your Overv
 
 2. Now go to the **Warehouse** Software Component in the **Catalog**, and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/custom-card)
 
-![](./static/additional-info-card.png)
+![](./static/additional-info-card-new.png)
 
 </TabItem>
 </Tabs>
