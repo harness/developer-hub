@@ -54,7 +54,7 @@ If you want to change the autoscaling spec such as `minReplicas` for selective s
 ```
 global:
   autoscaling:
-    enabled: false     # Disables autoscaling for all services
+    enabled: true      # Disables autoscaling for all services
     minReplicas: 1     # Set minimum replicas for all services
     maxReplicas: 5     # Set maximum replicas for all services
     targetCPU: 80      # Set target CPU for all services
