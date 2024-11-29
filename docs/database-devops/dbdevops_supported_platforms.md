@@ -34,7 +34,7 @@ Additionally, for sources to read the change log from, Harness Database DevOps s
 - **AzureRepo**
 - **Artifactory**
 
-These platforms allow users to manage database changes effectively within their deployment pipelines, integrating database operations with application code management.
+These platforms allow users to manage database changes effectively within their pipelines, integrating database operations with application code management.
 
 ## Harness DB DevOps features
 
