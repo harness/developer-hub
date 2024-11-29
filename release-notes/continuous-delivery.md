@@ -47,7 +47,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## November
 
-### Version 1.67.x
+### Version 1.67.2
 
 #### New Features and enhancements
 
