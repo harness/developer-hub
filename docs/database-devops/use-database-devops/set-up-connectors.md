@@ -5,7 +5,7 @@ description: Setting Up Connectors
 sidebar_position: 4
 ---
 
-This topic describes how to set up connectors within Harness Database DevOps. 
+This topic describes how to set up connectors within Harness DB DevOps. 
 
 ## Setting Up Connectors for MongoDB
 
