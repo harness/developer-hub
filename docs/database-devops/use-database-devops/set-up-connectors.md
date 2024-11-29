@@ -20,7 +20,9 @@ The JDBC connector accepts the following:
 
 It, then, performs a test connection using a delegate with a delegate selector or any available delegate. You should use a delegate that has network access to the database.
 
-### JDBC URLs
+#### Database URLs
+
+should this be under database URL subfield? As heading is for connectors and JDBC is a type and this property belong to it.
 
 #### URL Examples
 
