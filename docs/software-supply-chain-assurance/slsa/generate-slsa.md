@@ -146,7 +146,7 @@ Using the **Cosign** option, set your **Private Key** from the key pair along wi
 When using the Harness CI **Build and Push** step for the image-building process, you can configure the **SLSA Generation** step to generate and attest to the Provenance. Follow the [SLSA Generation step configuration](#slsa-generation-step-configuration), for the **Artifact Digest** field, you can use [Harness Expressions](/docs/platform/variables-and-expressions/harness-variables/) to dynamically populate the digest of the image built during the **Build and Push** step.  
 
 For example, the expression could look like:  
-`<+pipeline.stages.build.spec.execution.steps.<YOUR_BUILD_AND_PUSH_STEP_NAME>.output.outputVariables.digest>`  
+`<+pipeline.stages.<YOUR_STEP_NAME>.spec.execution.steps.<YOUR_BUILD_AND_PUSH_STEP_NAME>.output.outputVariables.digest>`  
 
 If you have already executed the **Build and Push** step, navigate to the execution details, open the **Output Variables** tab, and copy the expression for the digest from the **Input Name** column.
 
@@ -241,7 +241,7 @@ This step builds the image, pushes it to the configured container registry, and 
   ```
   #!/bin/sh
 
-  IMAGE="<+pipeline.stages.build.spec.execution.steps.<YOUR_STEP_NAME>.output.outputVariables.image>"
+  IMAGE="<+pipeline.stages.<YOUR_STAGE_NAME>.spec.execution.steps.<YOUR_STEP_NAME>.output.outputVariables.image>"
   DIGEST=$(skopeo inspect docker://$IMAGE --format "{{.Digest}}")
 
   digest=$DIGEST
@@ -261,9 +261,9 @@ This step will fetch the digest of the image and exposes it as a variable `diges
 1. Add the **SLSA Generation** to the pipeline
 2. Follow the instructions in the [SLSA Generation Step Configuration](#slsa-generation-step-configuration) section. For the **Artifact Digest** field, use an expression to dynamically populate the digest from the previous step.  
     For example:  
-`<+pipeline.stages.build.spec.execution.steps.<YOUR_RUN_STEP_NAME>.output.outputVariables.digest>`  
+`<+pipeline.stages.<YOUR_STAGE_NAME>.spec.execution.steps.<YOUR_RUN_STEP_NAME>.output.outputVariables.digest>`  
 
-    Replace `<YOUR_RUN_STEP_NAME>` with the name of your Run step in the pipeline.
+    Replace `<YOUR_STAGE_NAME>` and `<YOUR_RUN_STEP_NAME>` with the name of your Stage and Run step in the pipeline.
 
 <DocImage path={require('./static/slsa-gen-run-step.png')} width="50%" height="50%" />  
 
