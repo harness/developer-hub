@@ -51,13 +51,13 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### New Features and enhancements
 
-- You can now deploy your artifacts to Google Cloud Run. This feature is behind a feature flag `CDS_GOOGLE_CLOUD_RUN`.  Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-36357)
+- You can now deploy your artifacts to Google Cloud Run. For more information, go to Harness [Google Cloud Run Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-cloud-run/). This feature is behind a feature flag `CDS_GOOGLE_CLOUD_RUN`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-36357)
 
-- You can now deploy using Azure Functions enabling you to automate and manage serverless function deployments to Azure with ease. (CDS-51900)
+- You can now deploy using Azure Functions enabling you to automate and manage serverless function deployments to Azure with ease. For more information, go to Harness [Azure Functions deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-function-tutorial/).(CDS-51900)
 
 - Previously, GitOps steps like UpdateReleaseRepo, MergePR, and RevertPR were delayed due to locking on the tokenRef to prevent GitHub rate limits. A new Disable `Git Restraint` option now allows users to bypass this locking for faster execution. (CDS-101882, ZD-71430,72936)
 
-Harness now supports Post-Deployment Rollback for services at both the Account and Organisation levels. This feature is behind a feature flag `CDS_SVC_ENV_DASHBOARD_FOR_ACCOUNT_AND_ORG_LEVEL`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-94527)
+- Harness now supports Post-Deployment Rollback for services at both the Account and Organisation levels. This feature is behind a feature flag `CDS_SVC_ENV_DASHBOARD_FOR_ACCOUNT_AND_ORG_LEVEL`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-94527)
 
 #### Fixed Issues
 
@@ -106,17 +106,17 @@ Harness now supports configuring OAuth for self-hosted GitLab providers. This fe
 
 #### New features and enhancements
 
-- Approval APIs now support Service Account tokens for approving or rejecting Harness Manual Approval steps. For more information, go to Harness [Using Approval API](/docs/platform/approvals/adding-harness-approval-stages#using-the-approvals-api-with-service-account-authentication). (CDS-97580, ZD-64388)
+- Approval APIs now support Service Account tokens for approving or rejecting Harness Manual Approval steps. For more information, go to Harness [Using Approval API](/docs/platform/approvals/adding-harness-approval-stages#using-the-approvals-api-with-service-account-authentication). This feature is behind a feature flag `CDS_SERVICE_ACCOUNT_SUPPORT_IN_HARNESS_APPROVAL`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-97580, ZD-64388)
 
 - Harness now supports webhooks configured with **GitLab System Hooks** to trigger pipelines. For more information, go to Harness [GitLab System Hooks](/docs/platform/triggers/triggers-reference/#gitlab-system-hooks). (CDS-95423)
 
-- Harness now supports self-hosted Bitbucket OAuth tokens for the Git Experience. For more information, go to Harness [Bitbucket Configuration](/docs/platform/git-experience/oauth-integration/). (CDS-95417)
+- Harness now supports self-hosted Bitbucket OAuth tokens for the Git Experience. For more information, go to Harness [Bitbucket Configuration](/docs/platform/git-experience/oauth-integration/). This feature is behind a feature flag `CDS_PROVIDERS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-95417)
 
 - The Harness platform has been updated with the Kubernetes SDK (v18.0 to v21.0) and Helm SDK. (v3.12 to v3.13).
 
-- Harness has introduced native supports for **Canary** and **Blue-Green** Deployment strategies with Helm Chart deployments. For more information, go to Harness [Helm Chart deployments](/docs/category/helm-step-reference/). (CDS-35715)
-
-- Harness now supports for enabling metrics in ASG deployments. For more information, go to Harness [ASG Additional Configuration](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#asg-additional-configuration). (CDS-99276)
+- Harness has introduced native supports for **Canary** and **Blue-Green** Deployment strategies with Helm Chart deployments. For more information, go to Harness [Helm Chart deployments](/docs/category/helm-step-reference/). This feature is behind a feature flag `CDS_HELM_BG_STRATEGY`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-35715)
+ 
+- Harness now supports for enabling metrics in ASG deployments. For more information, go to Harness [ASG Additional Configuration](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#asg-additional-configuration). This feature is behind a feature flag `CDS_ASG_ENABLE_METRICS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-99276)
 
 - Harness now detects the failure state of CRDs in the Kubernetes Apply step when CRDs behave like jobs. (CDS-98761)
 
