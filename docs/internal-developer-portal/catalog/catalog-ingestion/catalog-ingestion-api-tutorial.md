@@ -23,7 +23,33 @@ In this tutorial we will be using the catalog metadata ingestion APIs to add add
 
 ## Add a new metadata
 
-1. We use the following Harness Pipeline to add a new metadata `codeCoverageScore` to the `warehouse` component. While using the following pipeline YAML make sure to add the `x-api-key` as pipeline variable of type secret and name `apikey`. 
+### Using cURL Command
+
+- Use the following command to add a new metadata `codeCoverageScore` to the `warehouse` component. 
+
+```cURL
+curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/entity/' \
+--header 'Harness-Account: ACCOUNT_ID' \
+--header 'Content-Type: application/json' \
+--header 'x-api-key: X-API-KEY' \
+--data '{
+    "entity_ref": "warehouse",
+    "property": "metadata.codeCoverageScore",
+    "value": 33
+}'
+```
+
+**OR**
+
+### Using the Python Script
+
+- You can use the [python script](https://github.com/harness-community/idp-samples/blob/main/sample-python-script.py), to auto-update the `<+metadata.codeCoverageScore>`
+
+**OR**
+
+### Using Harness Pipeline
+
+- We recommend the use of following Harness Pipeline to add a new metadata `codeCoverageScore` to the `warehouse` component. While using the following pipeline YAML make sure to add the `x-api-key` as pipeline variable of type secret and name `apikey`. 
 
 <details>
 <summary>Harness Pipeline</summary>
@@ -121,9 +147,11 @@ pipeline:
 
 ![](./static/add-secret.png)
 
-## Update the metadata
+## Schedule a Cron to Update the Catalog Metadata
 
-Use a trigger to update the data ingested using the above pipeline. Create a pipeline trigger of type **Cron** to schedule an hourly trigger.
+- If you use the cURL command or the python script to auto-update the metadata on regular intervals you need to configure a cron job. 
+
+- In case you're using Harness Pipeline use a trigger to update the data ingested on regular intervals. Create a pipeline trigger of type **Cron** to schedule an hourly trigger.
 
 ![](./static/code-coverage-score.gif)
 
