@@ -1,12 +1,12 @@
 ---
-title: Google Cloud Run
+title: Google Cloud Run Deployments
 description:  Run containerized applications on Google Cloud.
 sidebar_position: 1
 redirect_from:
   - /docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/
 ---
 
-# Deploying Artifacts to Google Cloud Run with Harness
+# Google Cloud Run Deployments
 
 :::note
 
