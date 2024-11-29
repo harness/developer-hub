@@ -95,8 +95,6 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Enhanced AWS Secrets Manager integration to support secret updates using the `secretsmanager:PutResourcePolicy` permission. The appropriate request type (`UpdateSecret` or `PutSecretValue`) is now determined based on the `usePutSecret` flag in the connector configuration. (PL-58652)
 
-- Upgraded `java-jwt` to version `4.4.0` and `sshj` to version `0.39.0` to address a medium-severity issue related to the `org.bouncycastle:bcprov-jdk15on` transitive dependency. (PL-58474)
-
 - Upgraded Spring Framework to version `6.1.x`, along with updates to dependencies for improved compatibility and security. (PL-58254)
 
 - Resolved a high-severity vulnerability (CVE-2024-7254) in the Delegate by upgrading `protobuf-java` to version `3.25.5`. (PL-57351, ZD-70765)
