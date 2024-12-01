@@ -496,7 +496,6 @@ async function config() {
         },
       }),
     plugins: [
-      'docusaurus-plugin-sass',
       [
         path.resolve(__dirname, './plugins/docs-rss-plugin'),
         {
@@ -601,6 +600,7 @@ async function config() {
 
       path.join(__dirname, '/plugins/utmcookie-plugin'),
       path.join(__dirname, '/plugins/feedback-plugin'),
+      path.join(__dirname, '/plugins/docs-sass-plugin'),
       path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
     ],
     clientModules: [

@@ -68,7 +68,7 @@ Versioning is not done when declarative rollback is enabled.
 
 Harness also uses a release name for tracking releases.  These release names should be unique for your deployments and pipelines.
 
-:::Important
+:::info
 Do not change the **release name value** between deployments unless absolutely necessary. The release name is used by Harness for tracking releases of app versions and rollback. If you change the release name value between deployments, this will reset the versioning number and will stop rollbacks up to that point (breaking the versioning chain)
 :::
 
