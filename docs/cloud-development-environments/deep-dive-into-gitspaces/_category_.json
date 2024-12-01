@@ -1,0 +1,11 @@
+{
+    "label": "Deep Dive into Gitspaces",
+    "collapsible": "true",
+    "collapsed": "true",
+    "position": 20,
+    "link": {
+      "type": "generated-index",
+      "title": "Deep Dive into Gitspaces"
+    },
+    "customProps": {}
+  }

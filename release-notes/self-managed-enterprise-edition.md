@@ -192,26 +192,137 @@ To fix this issue, follow these steps
 
   ```bash
   kubectl get secrets looker-secrets -o yaml -n <namespace>
+  kubectl get secrets harness-looker-secrets -o yaml -n <namespace>
   ```
 
-  2. Copy the value of lookerMasterKey from the secret and decode it using the following command or any base64 decoder. You’ll need to decode it twice.
+  2. Copy the value of lookerMasterKey from the secret looker-secrets and decode it using the following command or any base64 decoder. You’ll need to decode it twice.
   It's required to decode the secret value twice because during creation, first it's encoded by the helm function in the charts and then Kubernetes encodes it again while creating the secret.
 
   ```bash
   echo "<base64-encoded-lookerMasterKey>" | base64 --decode | base64 --decode
   ```
 
-  3. After decoding, update your ArgoCD values override with the decoded key:
+  3. Copy the decrypted secrets for the following attributes lookerClientId lookerClientSecret lookerEmbedSecret lookerSignupUrl in harness-looker-secrets.
+
+  4. After decoding, update your ArgoCD values override with the decoded key:
 
   ```yaml
   platform:
   looker:
     secrets:
       lookerMasterKey: "<your-decoded-key>"
+      lookerClientId: "<your-decoded-key>"
+      lookerClientSecret: "<your-decoded-key>"
+      lookerEmbedSecret: "<your-decoded-key>"
+      lookerSignupUrl: "<your-decoded-key>"
   ```
 
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
 :::
+
+## November 27, 2024, patch version 0.22.2
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.22.2](https://github.com/harness/helm-charts/releases/tag/harness-0.22.2) |
+| Air Gap Bundle | [0.22.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.22.2) |
+| NG Manager | 1.57.8 |
+| CI Manager | 1.47.5 |
+| Harness Manager | 1.48.8 |
+| Pipeline Service | 1.95.4 |
+| Platform Service | 1.39.1 |
+| Access Control Service | 1.61.2 |
+| Delegate | 24.09.83900 |
+| GitOps Service | 1.18.7 |
+| Change Data Capture | 1.36.0 |
+| STO Core | 1.113.10 |
+| Test Intelligence Service | 1.27.1 |
+| NG UI | 1.43.2 |
+| LE NG | 1.3.1 |
+| Looker | 1.1.1 |
+| Log Service | 1.9.2 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.22.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.2/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+### Cloud Cost Management
+
+- Improved Timescale migration reliability by enhancing SQL script execution with a full script execution method. (CCM-20381)
+
+#### Harness Platform
+
+- Fixed an issue in version 0.22.1 where the Mongo FCV upgrade job could not be disabled for in-cluster MongoDB setups. (PL-58878)
+
+## November 8, 2024, patch version 0.22.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.22.1](https://github.com/harness/helm-charts/releases/tag/harness-0.22.1) |
+| Air Gap Bundle | [0.22.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.22.1) |
+| NG Manager | 1.57.8 |
+| CI Manager | 1.47.5 |
+| Harness Manager | 1.48.8 |
+| Pipeline Service | 1.95.4 |
+| Platform Service | 1.39.1 |
+| Access Control Service | 1.61.2 |
+| Delegate | 24.09.83900 |
+| GitOps Service | 1.18.7 |
+| Change Data Capture | 1.36.0 |
+| STO Core | 1.113.10 |
+| Test Intelligence Service | 1.27.1 |
+| NG UI | 1.43.2 |
+| LE NG | 1.3.1 |
+| Looker | 1.1.1 |
+| Log Service | 1.9.2 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.22.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed an issue in version `0.22.0` causing helmfile diff and dry-run commands to fail due to server version lookups. Introduced a flag `upgrades.versionLookups.enabled` set to `false` to disable this check and enable seamless upgrades and dry runs. (PL-58295, ZD-72635)
+
+### New features and enhancements
+
+#### Harness Platform
+
+- Updated Helm common chart to avoid creating the rewrite object in the virtual service when not specified in the override/values file. This change ensures cleaner and more efficient configuration by excluding unnecessary rewrite rules. (PL-58400)
 
 ## October 28, 2024, version 0.22.0
 
@@ -827,6 +938,12 @@ This feature is currently behind the feature flag, `CI_GIT_CLONE_ENHANCED`. Cont
 
 - Fixed an issue where an experiment in the `Error` state would not finish, and be in a state of infinite run timestamp. (CHAOS-5577)
 
+- Fixed an issue wherein trying to add a pre-defined experiment in Windows infrastructure was unsuccessful. (CHAOS-5863)
+
+- Fixed an issue where the **Edit ChaosHub** action was not working with non-account type connectors. (CHAOS-5820)
+
+- Fixed an issue where the **Linux restart** chaos fault could not parse string values. (CHAOS-5616)
+
 #### Cloud Cost Management
 
 - Jira Operations for On-Premise Jira: We have added support for Jira operations corresponding to CCM recommendations for on-prem Jira installations, ensuring smoother integration and functionality. [CCM-18315]
@@ -1155,8 +1272,6 @@ Refer to following doc for more details on new [repo listing](/docs/platform/git
 ### Fixed issues
 
 #### Chaos Engineering
-
-- Added NIL check for probes in CDC, updated chaosGameDays collection name and `gameday_run_id` field. (CHAOS-5737)
 
 - CPU utilization increased due to continuously executing clean up tasks. This issue has been fixed by adding a sleep operation that runs after every remove operation and optimizes overall CPU performance. (CHAOS-5709)
 
@@ -1499,6 +1614,10 @@ gsutil -m cp \
 
 #### Chaos Engineering
 
+- This release provides support to install chaos infrastructure using Delegates, and this is known as DDCI (Delegate-Driven Chaos Infrastructure). (CHAOS-2017)
+
+- This release introduces the DynamoDB replication pause experiments powered by AWS FIS. These experiments improve the configuration, execution, and monitoring capabilities of the application. (CHAOS-5002)
+
 - This release improves the advanced filter support for "headers", "methods", "queryParams", "destination_IPS", and "destination_Hosts" in the API faults. (CHAOS-5381)
 
 - Adds the unit support (milliseconds, seconds, minutes and hours) for latency parameters in the [pod API latency](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-block) faults. (CHAOS-5378)
@@ -1582,6 +1701,8 @@ gsutil -m cp \
 ### Fixed issues
 
 #### Chaos Engineering
+
+- Fixed an issue where the command probe multiple source probes were overridden. (CHAOS-5308)
 
 - Fixed an issue where the compatibility check was enabled for other infrastructure types too. The overview form now preserves the state while switching between different infrastructures. (CHAOS-5614)
 

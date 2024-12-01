@@ -384,6 +384,12 @@ The following image shows payload conditions that trigger a pipeline if the comm
 
 ![](./static/triggers-reference-15.png)
 
+:::info note
+The `<+eventPayload>` expression may resolve as a list in initial executions, causing issues if [string operations](/docs/platform/variables-and-expressions/expressions-java-methods.md) (e.g., .replace("'", "")) are applied, as these are incompatible with lists. However, on reruns, `<+eventPayload>` usually resolves as a string, allowing such operations to proceed without errors.
+
+**Tip:** Use `<+trigger.eventPayload>` instead to ensure a consistent string format, compatible with string operations in all executions.
+:::
+
 ### JEXL Conditions
 
 You can refer to payload data and headers using [JEXL expressions](https://commons.apache.org/proper/commons-jexl/reference/syntax.html). That includes all constants, methods, and operators in [JexlOperator](https://commons.apache.org/proper/commons-jexl/apidocs/org/apache/commons/jexl3/JexlOperator.html).

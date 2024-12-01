@@ -1,13 +1,12 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-09-18T10:00
+date: 2024-11-28T10:00
 sidebar_position: 5
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/chaos-engineering/rss.xml" />
 
@@ -21,9 +20,84 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## November 2024
+
+### Version 1.49.1
+
+#### New features and enhancements
+
+- Extends ChaosGuard conditions for node-level chaos experiments. (CHAOS-6788)
+
+- Adds advanced settings to the UI for the "edit infrastructure" page. (CHAOS-6718)
+
+    <details>
+    <summary> View advanced setting screen </summary>
+
+        ![advanced feature](./static/chaos-advanced-features.png)
+
+    </details>
+
+- Adds local and UTC times in the cron schedule next run. (CHAOS-6974)
+
+#### Fixed issues
+
+- Fixed the cron experiment execution that was not working with Linux and Windows infrastructure (CHAOS-7044)
+
+- Fixed the issue of **Visual** and **YAML** tabs overlapping while trying to toggle between them in the **Condition Editor** in ChaosGuard. (CHAOS-7026)
+
+### Version 1.48.0
+
+#### New features and enhancements
+
+- Adds a pre-check to the Windows global blackhole experiment to verify if the firewall is enabled for the target Windows VM. If not, the `ENABLE_FIREWALL` tunable is set, which, by default, enables the firewall. (CHAOS-6848)
+
+- Introduces the Windows disk fill chaos experiment, supported by Windows chaos infrastructure. (CHAOS-6842)
+
+#### Fixed issues
+
+- Fixed the input mechanism for specifying multiple zones for CLB AZ down chaos fault, now allowing comma-separated values for multiple inputs. (CHAOS-6909)
+
+- Fixed an issue with the bulk update experiment selection checkbox not de-selecting after updating a cron job. (CHAOS-6856)
+
+- Fixed the error occurring when performing multiple actions on experiments, such as pushing to a custom ChaosHub, adding to GameDay, and executing the experiments consecutively. (CHAOS-6568)
+
+- Fixed the UI issue that prevented a GameDay execution after the stakeholder approval. (CHAOS-6467)
+
+- Fixed the issue where the **Application Maps** drawer was not displayed on the first page due to pagination issues. (CHAOS-6407)
+
+- Fixed the visibility issue of the status display for the Enterprise ChaosHub in dark mode. (CHAOS-5970)
+
+- Fixed the issue where two continuous command probes with a short polling duration could not execute in Linux infrastructure. (CHAOS-5461)
+
+## November 2024
+
+### Version 1.48.0
+
+#### New features and enhancements
+
+- Adds a pre-check to the Windows global blackhole experiment to verify if the firewall is enabled for the target Windows VM. If not, the `ENABLE_FIREWALL` tunable is set, which, by default, enables the firewall. (CHAOS-6848)
+
+- Introduces the Windows disk fill chaos experiment, supported by Windows chaos infrastructure. (CHAOS-6842)
+
+#### Fixed issues
+
+- Fixed the input mechanism for specifying multiple zones for CLB AZ down chaos fault, now allowing comma-separated values for multiple inputs. (CHAOS-6909)
+
+- Fixed an issue with the bulk update experiment selection checkbox not de-selecting after updating a cron job. (CHAOS-6856)
+
+- Fixed the error occurring when performing multiple actions on experiments, such as pushing to a custom ChaosHub, adding to GameDay, and executing the experiments consecutively. (CHAOS-6568)
+
+- Fixed the UI issue that prevented a GameDay execution after the stakeholder approval. (CHAOS-6467)
+
+- Fixed the issue where the **Application Maps** drawer was not displayed on the first page due to pagination issues. (CHAOS-6407)
+
+- Fixed the visibility issue of the status display for the Enterprise ChaosHub in dark mode. (CHAOS-5970)
+
+- Fixed the issue where two continuous command probes with a short polling duration could not execute in Linux infrastructure. (CHAOS-5461)
+
 ## October 2024
 
-## Version 1.47.0
+### Version 1.47.0
 
 #### New features and enhancements
 
@@ -51,7 +125,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## September 2024
 
-## Version 1.45.5
+### Version 1.45.5
 
 #### Fixed issues
 
@@ -68,6 +142,10 @@ The release notes describe recent changes to Harness Chaos Engineering.
 #### New features and enhancements
 
 - Enables the global blackhole chaos to block inbound traffic. (CHAOS-6381)
+
+#### Fixed issues
+
+- CPU utilization increased due to continuously executing clean up tasks. This issue has been fixed by adding a sleep operation that runs after every "remove" operation and optimizes overall CPU performance. (CHAOS-5709)
 
 ## July 2024
 
@@ -140,6 +218,8 @@ The release notes describe recent changes to Harness Chaos Engineering.
 ### Version 1.38.7
 
 #### New features and enhancements
+
+- This release provides support to install chaos infrastructure using Delegates, and this is known as DDCI (Delegate-Driven Chaos Infrastructure). (CHAOS-2017)
 
 - This release improves the advanced filter support for "headers", "methods", "queryParams", "destination_IPS", and "destination_Hosts" in the API faults. (CHAOS-5381)
 
@@ -832,7 +912,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ##### New features and enhancements
 
-* [GameDay](/docs/chaos-engineering/concepts/explore-concepts/GameDay) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
+* [GameDay](/docs/chaos-engineering/use-harness-ce/GameDay) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
 * The CE [integration](/docs/chaos-engineering/integrations/use-chaos-with-srm) with Harness Service Reliability Management (SRM) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
@@ -959,7 +1039,7 @@ To upgrade chaos infrastructures and experiments:
 ##### New features and enhancements
 
 * Introduction of GameDays in HCE Module. (CHAOS-643)
-    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/concepts/explore-concepts/GameDay).
+    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/use-harness-ce/GameDay).
 
 * Allow saving of experiment with inactive infrastructure. (CHAOS-1573)
     * HCE now allows you to save an experiment if the infrastructure is inactive, with the saveExperiment API.

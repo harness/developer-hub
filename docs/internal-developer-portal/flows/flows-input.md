@@ -79,6 +79,63 @@ You can dynamically fetch values in the Workflows fields using UI Pickers, which
 1. [Standard Workflow UI Picker](/docs/internal-developer-portal/flows/flows-input#workflow-ui-pickers)
 2. [API Based Dynamic Workflow UI Picker](/docs/internal-developer-portal/flows/dynamic-picker)
 
+### Use Form Data from a Previous page in a New Page
+
+While using Dynamic Workflow UI Pickers, users can now reference the data take as an input in the previous page, using `{{ parameters.properties }}`.
+
+```YAML
+parameters:
+  - title: Select Harness Project
+    type: object
+    properties:
+      projectId:
+        title: Harness Project ID
+        description: Select the Harness Project ID
+        type: string
+        ui:field: HarnessProjectPicker
+        ui:autofocus: true
+      organizationId:
+        title: Harness Organization ID
+        description: Select the Harness Organization ID
+        type: string
+        ui:field: HarnessAutoOrgPicker
+  - title: Select Harness Pipeline
+    type: object
+    properties:
+      pipelineId:
+        type: string
+        ui:field: SelectFieldFromApi
+        ui:options:
+          title: Harness Pipeline ID
+          placeholder: Select the Harness Pipeline ID
+          allowArbitraryValues: true
+          path: proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{
+            parameters.projectId }}/pipelines
+          valueSelector: identifier
+          labelSelector: identifier
+steps:
+  - id: debug
+    name: Debug
+    action: debug:log
+    input:
+      message:
+        "{ parameters.pipelineId }": null
+```
+
+In the above YAML, the API endpoint values under the `path` dynamically insert the `organizationId` and `projectId` from the first set of parameters taken as an input in the previous page, to construct the endpoint URL for fetching the list of pipelines. 
+
+```bash
+proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{ parameters.projectId }}/pipelines
+```
+
+Hence, it will list all the pipelines present under the particular project int org mentioned as displayed below. 
+
+![](./static/parameters-refernce.gif)
+
+:::info
+You cannot reference properties on the same page, and property references only work with values provided through Dynamic UI pickers. 
+:::
+
 ## Array options
 
 ### Array with strings
@@ -459,11 +516,13 @@ For more such references and validate your conditional steps take a look at the 
 
 ## Upload a file using Workflows
 
+Workflow supports a limited form of file types as input, in the sense that it will parse the file contents to Workflow inputs as [data-urls](https://developer.mozilla.org/en-US/docs/Web/URI/Schemes/data).
+
 There are 3 types of file upload.
 
-1. Single File
-2. Multiple Files
-3. Single File with Accept Attribute
+1. Single File: There are two formats available `data-url` and `file`. 
+2. Multiple Files: Multiple files selectors are supported by defining an `array` of strings having `data-url` as a format. 
+3. Single File with Accept Attribute: You can use the `accept` attribute to specify a filter for what file types the user can upload.
 
 <details>
 <summary>Example YAML</summary>
@@ -487,6 +546,10 @@ properties:
     type: string
     format: data-url
     title: Single File with Accept attribute
+    ui:enableMarkdownInDescription: true
+    ui:description: Provide the Json File
+    ui:options:
+      accept: .json
 ```
 
 </details>
@@ -879,7 +942,7 @@ spec:
 
 ```
 
-2. In case the properties Project Identifier is named something else other than `projectId` in that case for the custom action to function as desired we need to add it as a dependency under `projectPickerRef`
+2. In case the properties Project Identifier is named something else other than `projectId` in that case for the Workflow action to function as desired we need to add it as a dependency under `projectPickerRef`
 
 ```YAML
 # Example workflow.yaml file

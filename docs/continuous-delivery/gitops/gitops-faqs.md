@@ -194,3 +194,59 @@ If you upgrade your Argo CD to version 2.8.0 or later, you must restart the Harn
 ### How does Harness handle naming for Argo CD repositories when they are imported?
 
 Harness automatically generates names for Argo CD repositories during the import process by removing dashes and appending a unique suffix. This ensures each repository has a distinct name within Harness.
+
+### How can I declaratively create a  GitOps Applications using yaml manifest?
+
+In Harness GitOps, you can achieve a similar approach to ArgoCD by using YAML manifests to define the GitOps applications declaratively. In the GitOps model, Harness allows you to manage the infrastructure and applications as code, keeping the boundaries between Harness metadata and the ArgoCD application clear. 
+
+The actual ArgoCD Application resource will reside in the repo that your Harness GitOps application points to. This keeps a clean separation between Harness’ metadata and the ArgoCD application logic.
+
+**Argo Application YAML**
+```
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-argo-app
+  namespace: argo-cd
+  labels:
+    harness.io/envRef: harnessEnvId
+    harness.io/serviceRef: harnessServiceId
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/org/repo
+    path: apps/my-app
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: my-app-namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
+
+**apiVersion & Kind**:
+- apiVersion: argoproj.io/v1alpha1
+- kind: Application These define the resource type as an ArgoCD Application, which ArgoCD uses to track and deploy Kubernetes resources from Git.
+
+**Metadata**:
+- name: my-argo-app - This gives your ArgoCD application a name 
+- namespace: argocd - specifies the namespace in which the application is deployed.
+
+**Spec**:
+- Project: Points to the ArgoCD project (default is commonly used).
+
+**Source**:
+- repoURL: The URL of the Git repository where the app's Kubernetes resources live.
+- path: The directory in the repo that contains the Kubernetes manifests for your application.
+- targetRevision: The Git revision (branch or commit) you want ArgoCD to track.
+
+**Destination**:
+- server: The Kubernetes API server URL.
+- namespace: The namespace in which to deploy the resources.
+
+**SyncPolicy**:
+- automated: Specifies that ArgoCD will automatically sync the app (prune resources and self-heal if necessary).
+
+The project field must be set to an Argo project that is mapped to a Harness project for successful import functionality.

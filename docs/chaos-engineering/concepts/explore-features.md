@@ -29,7 +29,7 @@ HCE is built on open-source CNCF chaos engineering project [LitmusChaos](https:/
 The control plane comprises of microservices that enable the [web-based portal](https://app.harness.io) to perform its functions.
 The control plane helps **create**, **schedule**, and **monitor** chaos experiments.
 
-For more information, go to [Control Plane](/docs/chaos-engineering/concepts/deployment-architecture#control-plane).
+For more information, go to [Control Plane](/docs/chaos-engineering/concepts/explore-architecture#features-of-control-plane).
 
 ### Centralized Chaos Execution Plane
 
@@ -39,7 +39,7 @@ The diagram below briefly describes how the control plane interacts with the exe
 
 ![Architecture](./static/architecture/hce-architecture.png)
 
-For more information, go to [Execution Plane](/docs/chaos-engineering/concepts/deployment-architecture#execution-plane), that also describes how the control plane and the execution plane interact with each other to execute and give results of chaos experiments.
+For more information, go to [Execution Plane](/docs/chaos-engineering/concepts/explore-architecture#execution-plane), that also describes how the control plane and the execution plane interact with each other to execute and give results of chaos experiments.
 
 ### Service Discovery
 It is an entity on the Harness platform (also known as the control plane) that corresponds to a Kubernetes service on your (user) cluster. It includes details about the connections made from and to it.
@@ -47,9 +47,9 @@ Instead of creating a database with the services, you can automatically discover
 
 Below is the control flow to a discovered service.
 
-![](./explore-concepts/service-discovery/static/control-flow-1.png)
+![](../use-harness-ce/service-discovery/static/control-flow-1.png)
 
-For more information on how to create a  discovery agent, go to [Service Discovery](/docs/chaos-engineering/concepts/explore-concepts/service-discovery).
+For more information on how to create a  discovery agent, go to [Service Discovery](/docs/chaos-engineering/use-harness-ce/service-discovery).
 
 ### Resilience Probes
 
@@ -59,7 +59,7 @@ Resilience probes are pluggable health checkers defined within the chaos engine 
 - Help understand the underlying patterns and laws that govern the behavior of these systems, and to use that understanding to predict or control their behavior.
 - Validate the declarative hypothesis set by the user.
 
-For more information on importance and types of probes, go to [Resilience Probes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/).
+For more information on importance and types of probes, go to [Resilience Probes](/docs/chaos-engineering/use-harness-ce/probes/).
 
 ### Experiment Logs
 
@@ -69,7 +69,7 @@ For more information on infrastructure logs, go to [Infrastructure Logs](/docs/c
 
 ### Application Map
 
-It is a resource on the Harness Platform (also known as the control plane) that binds multiple interacting [discovered services](/docs/chaos-engineering/concepts/explore-concepts/service-discovery) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
+It is a resource on the Harness Platform (also known as the control plane) that binds multiple interacting [discovered services](/docs/chaos-engineering/use-harness-ce/service-discovery) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
 
 Application maps help:
 - Test and monitor a group of services.
@@ -109,7 +109,7 @@ For a more detailed demonstration, go to [the ChaosHub overview video](https://y
 
 It is a template/methodology used by teams to practice chaos engineering. These teams execute chaos experiments on the application during a specific period.
 
-For more information, go to [GameDays](/docs/chaos-engineering/concepts/explore-concepts/GameDay).  To get hands-on experience, [Create a GameDay run](/docs/chaos-engineering/concepts/explore-concepts/GameDay#create-a-gameday).
+For more information, go to [GameDays](/docs/chaos-engineering/use-harness-ce/GameDay).  To get hands-on experience, [Create a GameDay run](/docs/chaos-engineering/use-harness-ce/GameDay#create-a-gameday).
 
 ### Auto Create Chaos Experiments
 

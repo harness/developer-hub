@@ -53,27 +53,42 @@ Workload Identity can be enabled for an existing cluster as well as a new cluste
 
 * To enable Workload Identity on a new cluster, run the following command:
 
-```
-gcloud container clusters create CLUSTER_NAME \
---region=COMPUTE_REGION \
---workload-pool=PROJECT_ID.svc.id.goog
-```
-
-Replace the following:
-* **CLUSTER_NAME:** The name of your new cluster.
-* **COMPUTE_REGION:** The compute engine region of your cluster. For zonal clusters, use `--zone=COMPUTE_ZONE`.
-* **PROJECT_ID:** Your Google Cloud project ID.
+    ```
+    gcloud container clusters create CLUSTER_NAME \
+    --region=COMPUTE_REGION \
+    --workload-pool=PROJECT_ID.svc.id.goog
+    ```
 
 * To enable Workload Identity on an existing cluster, run the following command:
 
-```
-gcloud container clusters update CLUSTER_NAME \
---region=COMPUTE_REGION \
---workload-pool=PROJECT_ID.svc.id.goog
-```
+    ```
+    gcloud container clusters update CLUSTER_NAME \
+    --region=COMPUTE_REGION \
+    --workload-pool=PROJECT_ID.svc.id.goog
+    ```
+
+* To enable Workload Identity on a node pool when you have the node pool name:
+
+    ```
+    gcloud container node-pools update NODE_POOL_NAME --cluster=CLUSTER_NAME --zone ZONE --workload-metadata-from-node=GKE_METADATA
+    ```
+    
+        - To list the node pools that would help identify the node pool name in the cluster,
+        
+            ```
+            gcloud container node-pools list --cluster=CLUSTER_NAME --zone ZONE --project PROJECT_ID
+            ```
+    
+        - To verify that Workload Identity is enabled on a node pool, 
+
+            ```
+            gcloud container node-pools describe NODE_POOL_NAME --cluster=CLUSTER_NAME --zone ZONE
+            ```
 
 Replace the following:
-* **CLUSTER_NAME:** The name of your new cluster.
+* **CLUSTER_NAME:** The name of your cluster.
+* **ZONE**: The zone where the cluster is present.
+* **NODE_POOL_NAME**: The name of the node pool in the cluster.
 * **COMPUTE_REGION:** The compute engine region of your cluster. For zonal clusters, use `--zone=COMPUTE_ZONE`.
 * **PROJECT_ID:** Your Google Cloud project ID.
 

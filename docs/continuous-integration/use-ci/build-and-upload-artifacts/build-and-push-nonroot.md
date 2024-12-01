@@ -7,13 +7,22 @@ sidebar_position: 23
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-By default, Harness builds utilizing a Kubernetes cluster infrastructure are completed using [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md) for all **Build and Push** steps. If your team utilizes Kaniko, unfortunately, a Kaniko requirement is to have root access to build the Docker image. It doesn't support non-root users. 
+## Introduction
+Building with non-root users may be necessary for an organization due to the security process or stance that an organization has for its environment.  Below is information on how to build and push with non-root users
 
+### Kaniko Builds
+By default, Harness builds utilizing a Kubernetes cluster infrastructure are completed using [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md) for all **Build and Push** steps. If your team utilizes Kaniko, unfortunately, a Kaniko requirement is to have root access to build the Docker image. It doesn't support non-root users, so users will have to use one of the alternates listed below.
+
+### Build X Builds
 Customers can also utilize BuildX for their builds.  This feature can be enabled by submitting a ticket to Harness Support to enable the flag `CI_USE_BUILDX_ON_K8`.  We recommend [reviewing the notes about this feature on the CI Early Access Features page](https://developer.harness.io/docs/continuous-integration/ci-supported-platforms/#harness-ci-early-access-features).  You must run BuildX on Kubernetes with Privileged mode enabled.
 
-Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md).
+### Drone Docker
+It is also possible to utilize drone docker. Please read the following documentation for a full breakdown of [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md) and how to use it.
 
-If your Kubernetes cluster build infrastructure is configured to run as non-root, you can either [enable root access individual steps](#enable-root-access-for-a-single-step) or [use the Buildah plugin](#use-the-buildah-plugin), which doesn't require root access, but will require priviledged access.
+### Individual Step Root / Buildah plugin
+If your Kubernetes cluster builds infrastructure is configured to run as non-root, you can either [enable root access individual steps](#enable-root-access-for-a-single-step) or [use the Buildah plugin](#use-the-buildah-plugin), which doesn't require root access, but will require privileged access.
+
+For Buildah plugin environments, please keep in mind that settings and requirements will vary.  For example, OpenShift Buildah environments have specific settings and requirements differing from others.
 
 ## Enable root access for a single step
 

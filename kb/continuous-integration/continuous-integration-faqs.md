@@ -609,7 +609,7 @@ This could happen when the PR/push trigger is configured with the 'Auto-abort Pr
 
 ### Can we add the config "topologySpreadConstraints" in the build pod which will help CI pod to spread across different AZs?
 
-Currently, we do not support adding "topologySpreadConstraints" to the build pod
+Harness CI now includes a new property, `podSpecOverlay`, in the Kubernetes infrastructure properties of the CI stage. This allows users to apply additional settings to the build pod. Currently, we support specifying `topologySpreadConstraint` in this field. Please see [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#topology-spread-constraints)
 
 ### Why the docker commands in the run step is failing with the error "Cannot connect to the Docker daemon at unix:///var/run/docker.sock?" even after the dind background step logs shows that the docker daemon has been initialized?
 
@@ -2247,6 +2247,10 @@ FQN is required for images in private repos.
 To run a step only when a certain file changes, you can [define conditional executions](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings) based on a JEXL condition that evaluates to true for the specific file. For example, you might use a [payload expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#git-trigger-and-payload-expressions) to get details from a Git event payload, such as a PR event that triggers a build.
 
 Alternately, you could isolate the step in a stage by itself, configure a [Git webhook trigger](https://developer.harness.io/docs/platform/triggers/triggering-pipelines) with a Changed File [trigger condition](https://developer.harness.io/docs/platform/triggers/triggering-pipelines#set-trigger-conditions) that listens for changes to the target file, and then configure the trigger to run [selective stage execution](https://developer.harness.io/docs/platform/triggers/selective-stage-execution-using-triggers) and run all stages that you want to run when that file changes, including the stage with your isolated step.
+
+### Can I use stage variables in my CI stage Parallism Strategy?
+
+When using variables in your Parallelism Strategy, these variables must be resolved before the stage begins execution. Therefore, you can only use pipeline variables or stage variables from previously executed stages.
 
 ### Can I assert an environment variable within a JEXL conditions?
 

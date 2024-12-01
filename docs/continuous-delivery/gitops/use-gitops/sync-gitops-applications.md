@@ -8,6 +8,8 @@ redirect_from:
 
 Sync is a process that ensures that the live state of a system matches its desired state by applying a declarative description. This process involves synchronizing the desired Git state with the live cluster state. 
 
+## Sync for Single Sources application.
+
 To sync applications from the **Applications** page: 
 
 1. In your GitOps project, go to **Deployments** > **GitOps** > **Applications**, and then select your application.
@@ -52,6 +54,22 @@ To sync applications using the **GitOpsSync** step:
 Here is how the resources would look in Harness after the sync process is complete.
 
 ![](./static/harness-git-ops-application-set-tutorial-40.png)
+
+## Sync for  Multiple Sources application
+
+For more information on creating a multi-source application, refer to the [Support for Multiple Sources](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#step-4-add-a-harness-gitops-application) documentation
+
+Currently, Support for Multiple Sources is behind the feature flag `GITOPS_MULTI_SOURCE_ENABLED`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
+After the application with multiple source is created, you can also choose which source to sync with the application during the sync operation. By default, all applications will be synced.
+
+To sync a specific source:
+
+1. Click the **Sync** button in the top right corner of the **Applications** page.
+2. Under **Synchronizing application manifest from**, select the source tab from which you want to sync your application.
+3. Check the **Sync Source** checkbox. The tab for the selected source, where the checkbox is enabled, will be highlighted in green.
+
+![](./static/gitops-multiple-sources-sync.png)
 
 ## Terminate sync
 

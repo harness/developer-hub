@@ -109,8 +109,8 @@ export default function University() {
   return (
     <div
       className={`${styles.university} ${activePage === ActivePage.SelfPacedTraning
-          ? styles.SelfPacedTrainingBg
-          : ""
+        ? styles.SelfPacedTrainingBg
+        : ""
         } ${activePage === ActivePage.InstructorLedTraining
           ? styles.InstructorLedTrainingBg
           : ""
@@ -127,8 +127,8 @@ export default function University() {
         </div>
         <div
           className={`${styles.right} ${activePage === ActivePage.SelfPacedTraning
-              ? styles.SelfPacedTrainingBg
-              : ""
+            ? styles.SelfPacedTrainingBg
+            : ""
             } ${activePage === ActivePage.InstructorLedTraining
               ? styles.InstructorLedTrainingBg
               : ""
@@ -171,8 +171,8 @@ export default function University() {
         <button
           onClick={handleSelfPacedTrainingClick}
           className={`${colorMode == "light"
-              ? styles.InstLedTrainBtnLight
-              : styles.InstLedTrainBtnDark
+            ? styles.InstLedTrainBtnLight
+            : styles.InstLedTrainBtnDark
             } ${activePage === ActivePage.SelfPacedTraning
               ? colorMode == "light"
                 ? styles.activeLight
@@ -196,8 +196,8 @@ export default function University() {
         <button
           onClick={handleInstLedTrainClick}
           className={`${colorMode == "light"
-              ? styles.InstLedTrainBtnLight
-              : styles.InstLedTrainBtnDark
+            ? styles.InstLedTrainBtnLight
+            : styles.InstLedTrainBtnDark
             } ${activePage === ActivePage.InstructorLedTraining
               ? colorMode == "light"
                 ? styles.activeLight
@@ -436,14 +436,14 @@ export default function University() {
                       alt="Administrator CCM Badge"
                     />
                   </div>
-                  {/* <h5>Coming Soon</h5> 
-                <h5>Coming Soon</h5>
-                <div className={styles.unAvailableCerts}>
-                  <img
-                    src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
-                    alt="Administrator CCM Badge"
-                  /> 
-                </div> */}
+
+                  <h5>Coming Soon</h5>
+                  <div className={styles.unAvailableCerts}>
+                    <img
+                      src={`${baseUrl}img/cert_adm_ce_badge.svg`}
+                      alt="Administrator CE Badge"
+                    />
+                  </div>
                 </div>
               </div>
 

@@ -37,3 +37,9 @@ Wait until the **Health Status** is **Healthy** and the **Connection Status** is
 Additionally, if your destination cluster is behind a firewall you can provide a list of IPs that should be allowed to access the cluster. For more information. go to [Harness hosted GitOps IP addresses](/docs/platform/references/allowlist-harness-domains-and-ips#add-harness-hosted-gitops-ips-to-the-allowlist).
 
 When your agent is ready and authorized to access your clusters, you can start creating GitOps repositories, clusters, and applications. For more information, go to [GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md).
+
+## Limitations
+Applicationsets (Appsets) must be installed in the agent's namespace.
+Harness does not allow creating a cluster type InCluster due to security and operational constraints. As a result, Appsets/PR pipelines are not supported for hosted agents.
+
+Hosted GitOps agents are scaled down every 24 hours. It can be reactivated through the Harness UI.

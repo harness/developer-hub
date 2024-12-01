@@ -21,6 +21,19 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+## November 2024
+
+### Version 1.117.2
+
+<!-- 2024-11-20 -->
+
+#### New features and enhancements
+- Improved SARIF rules processing to handle rules with missing names and descriptions. (STO-8248)
+
+#### Fixed issue
+- Resolved issue where vulnerabilities mitigated in Veracode SCA scans were not properly filtered in STO; mitigated flaws are now correctly handled. (STO-8259, ZD-73220)
+- Fixed issue where occurrence-level code snippets were inadvertently hidden from the issue details panel. (STO-8202)
+
 ## October 2024
 
 ### Version 1.114.3

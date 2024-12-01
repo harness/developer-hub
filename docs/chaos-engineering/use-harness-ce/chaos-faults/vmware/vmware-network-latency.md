@@ -242,7 +242,7 @@ The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/vmware-network-latency/destination-host-and-ip.yaml yaml)
 ```yaml
-## it injects the chaos for the egress traffic for specific ips/hosts
+## it injects the chaos for the ingress/egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -280,7 +280,7 @@ The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/vmware-network-latency/source-and-destination-ports.yaml yaml)
 ```yaml
-# it inject the chaos for the egress traffic for specific ports
+# it inject the chaos for the ingress/egress traffic for specific ports
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -348,7 +348,7 @@ The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/vmware-network-latency/network-interface.yaml yaml)
 ```yaml
-## it injects the chaos for the egress traffic for specific ips/hosts
+## it injects the chaos for the ingress/egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

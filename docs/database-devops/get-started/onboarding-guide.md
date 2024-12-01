@@ -122,6 +122,28 @@ To test your pipeline:
  6. Under **Changed Files**, enter the path to your changelog, and any other files it references. You can leverage regex to reference other changed files. 
  7. Under the pipeline input, change **Tag** to **Expression**. After this step, enter the formula `<+trigger.commitSha>` which will read the `sha` from the triggering git commit.
 
+## Capacity Planning
+
+Capacity planning is critical for Harness Database DevOps because it ensures that the database infrastructure can handle current workloads while scaling efficiently to meet future demands. 
+
+During the execution, DB DevOps spins up pods on the specified kubernetes cluster in order to run various tasks, for example git clone, and liquibase commands. 
+
+In your pipeline, you can specify how many resources these pods use. Your cluster will need this many resources available per concurrent execution of the pipeline.
+
+Harness plans to increase the default values to 0.5 CPU, and 1 GB of RAM in the near future. Harness recommends setting this in the UI of Harness Database DevOps module.
+
+```
+spec:
+   connectorRef: account.harnessImage
+   dbSchema: db_devops_demo
+   dbInstance: ms_sql
+   tag: <+stage.variables.tag>
+   resources:
+      limits:
+         memory: 1Gi
+         cpu: "0.5"
+```
+
 ## Conclusion
 
 This onboarding guide has introduced you to the essential functionalities and initial setup processes of Harness Database DevOps (DB DevOps). Through this guide, you have explored the powerful capabilities of functionalities that streamline and secure your database management tasks, from connecting git connectors to configuring pipelines.

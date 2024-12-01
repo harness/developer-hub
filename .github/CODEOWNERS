@@ -46,6 +46,9 @@ README.md @pratmit
 # Continuous Delivery Docs
 /docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
 
+# Artifact Registry Docs
+/docs/artifact-registry/ @SushrutHarness @shankaranandh @shivagowda
+
 # Continuous Integration Docs
 /docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed
 
@@ -86,7 +89,7 @@ README.md @pratmit
 # IDP Docs
 /docs/internal-developer-portal/ @Debanitrkl @OrkoHunter
 
-# SSCA Docs
+# SCS Docs
 /docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness
 
 # IACMS Docs
@@ -106,6 +109,9 @@ README.md @pratmit
 
 # CDE Docs
 /docs/cloud-development-environments/ @manishas
+
+# AI QA Assistant Docs
+/docs/ai-qa-assistant/ @deba-harness
 
 # FirstGen Docs ###
 
@@ -198,8 +204,8 @@ README.md @pratmit
 # SRM Release Notes
 /release-notes/service-reliability-management.md @sunilgupta-harness @umamukkara
 
-# SSCA Release Notes
-/release-notes/service-reliability-management.md @sunilgupta-harness @tejakummarikuntla @pranay-harness
+# SCS Release Notes
+/release-notes/software-supply-chain-assurance.md @sunilgupta-harness @tejakummarikuntla @pranay-harness
 
 # Knowledge Base ###
 
@@ -286,11 +292,11 @@ src/components/Roadmap/data/seiData.ts @codewdhruv
 #SRM Roadmap
 src/components/Roadmap/data/srmData.ts @sunilgupta-harness
 
-#SSCA Roadmap
-src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla
+#SCS Roadmap
+src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla @pranay-harness
 
 #STO Roadmap
-src/components/Roadmap/data/stoData.ts @tejakummarikuntla
+src/components/Roadmap/data/stoData.ts @tejakummarikuntla @priteshchandaliya
 
 #Reference Architectures
 /kb/reference-architectures @RajiKoppala @rssnyder 

@@ -1,7 +1,7 @@
 ---
 title: How to Add API Docs
 description: Instructions on adding API docs, defined in different formats.
-sidebar_position: 70
+sidebar_position: 6
 sidebar_label: How to Add API Docs
 redirect_from:
   - /docs/internal-developer-portal/get-started/add-api-docs

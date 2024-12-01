@@ -296,7 +296,7 @@ The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-network-chaos/latency-destination-ip-and-hosts.yaml yaml)
 ```yaml
-# it inject the chaos for the egress traffic for specific ips/hosts
+# it inject the chaos for the ingress/egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

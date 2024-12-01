@@ -193,6 +193,7 @@ The Harness ASG service contains the following:
 
 - Launch template.
 - ASG configuration file.
+- ASG Additional Configuration
 - Scaling policies (optional).
 - Scheduled update group action (optional).
 - User Data script file.
@@ -486,6 +487,74 @@ However, the AWS CLI [create-auto-scaling-group](https://docs.aws.amazon.com/cli
 ```
 </details>
 
+
+### ASG Additional Configuration
+
+:::note
+
+Currently, ASG Additional Configuration is behind the feature flag `CDS_ASG_ENABLE_METRICS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
+:::
+
+![](./static/asg-additional-configuration.png)
+
+**Enabling Metrics in ASG**
+
+You can use the **ASG Additional Configuration** to configure your **ASG Metrics**. Store the metrics JSON file in any filestore of your choice and reference the file in the configuration.
+
+Steps to Configure ASG Metrics:
+
+1. Click on **Add ASG Additional Configuration**.
+2. Specify the ASG Additional Configuration Store. You can store your configuration file in the following repositories:
+    - Git
+    - GitHub
+    - GitLab
+    - Bitbucket
+    - Harness Code Repository
+3. In **Manifest Details** tab, provide the name of the manifest in Manifest Identifier and the File/Folder Path of the manifest.
+Click **Submit** to save the configuration.
+
+
+![](./static/asg-additional-configuration-2.png)
+
+
+
+In the Metrics Configuration, there is a boolean variable enableMetrics:
+
+**enableMetrics:** 
+* Set `enableMetrics` to **true** to enable all the metrics defined in the metricsCollection.
+* Set `enableMetrics` to **false** to disable the metrics defined in the metricsCollection.
+
+**metricsCollection**
+The metricsCollection is a collection that specifies the metrics to be included in the manifest.
+
+
+
+<details>
+<summary>ASG metrics configuration file example</summary>
+
+Here is a sample JSON to show the metrics configuration
+```json
+{
+  "metrics": {
+    "enableMetrices": true,
+    "metricsCollection": [
+      {
+        "metric": "GroupDesiredCapacity",
+        "granularity": "1Minute"
+      },
+      .
+      .
+      .
+    ]
+  }
+}
+```
+</details>
+
+Upon successful pipeline execution, the metrics will be retrieved from the specified file. Once the fetch is complete, the metrics will be enabled in your AWS account, along with all configurations defined in the **metricsCollection**.
+
+Additionally, you can configure Metrics in the Overrides to modify the manifest. To override the manifest, navigate to Overrides, select Manifest from the dropdown, and choose ASG Additional Configuration. This allows you to override the manifest specified in the service.
 
 ### User Data
 

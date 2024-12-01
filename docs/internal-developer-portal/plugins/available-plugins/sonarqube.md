@@ -23,6 +23,12 @@ description: Components to display code quality metrics from SonarCloud and Sona
 
 - Go to SonarQube, "eg: `https://sonar.your-comapny-name.io/account/security`", for generating a new token, **Enter Token Name** and choose **User Token** in **Select Token Type**. 
 
+:::info
+
+Ensure that the user creating the token has the necessary permissions to access the specified instance and project mentioned in the [annotations](/docs/internal-developer-portal/plugins/available-plugins/sonarqube#annotations). Additional troubleshooting information can be found [here](/docs/internal-developer-portal/plugins/available-plugins/sonarqube#troubleshooting).
+
+:::
+
 ![](./static/add-secret-sq.png)
 
 - **Create secret in Harness** to store API token, click on “New Secret Text” and enter values as shown below.
@@ -54,13 +60,27 @@ To configure the plugin for a service in the software catalog, set one of the fo
 
 The following configuration is recommended:
 
-```yaml
+```YAML
 metadata:
   annotations:
     sonarqube.org/project-key: <instance-name>/<project-key>
 ```
+The `instance-name` is optional if there is only one SonarQube instance, as the default instance from the plugin configuration will be used.
 
 [Read more](https://github.com/backstage/community-plugins/tree/main/workspaces/sonarqube/plugins/sonarqube#sonarqube-plugin)
+
+## Troubleshooting
+
+### 401 Unauthorized 
+
+- Check for the validity of the user token added as secrets.
+- Ensure that the user token you have used has access permission to the instance mentioned in the annotation.
+
+### There is no SonarQube project with key 
+
+- We need to use the `project_id`, **not** the project name. The `project_id` can be found in the URL, where it appears as `?id=project-id`
+- Ensure that the user token you have used has the permission to view the project mentioned in the annotation.
+- The `sonarqube.org/project-key` annotation is of the correct format `<instance-name>/<project-key>`. 
 
 ## Support
 

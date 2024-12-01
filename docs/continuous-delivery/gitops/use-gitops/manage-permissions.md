@@ -72,15 +72,24 @@ spec:
 
 ### Step 3: Create resource groups in Harness
 
-Resource Groups in Harness allow you to group applications based on their labels. Here's how to create them:
+Resource Groups in Harness allow you to group your applications. Here's how to create them:
 1. Navigate to **Access Control** > **Resource Groups** in your **Project Settings**.
 1. Click **New Resource Group**.
 1. Name your group and click **Save**.
-1. Select your **Resources** on the left. In this case you want **Gitops** > **Applications**
-1. Select **By Label** instead of **All**.
-1. Click **Add**
-1. Add a label. Follow the labeling strategy you established in step 1. For example, a production application would have the label `harness.io/env-type: [prod|staging|dev]`.
-1. Click **Add Application Labels**.
+1. Select your **Resources** on the left. In this case you want **Gitops** > **Applications**.
+1. Select **All** and click on **Save**
+
+:::note
+
+You can also filter by labels by selecting **By Label**
+Click **Add**
+Add a label. Follow the labeling strategy you established in step 1. For example, a production application would have the label `harness.io/env-type: [prod|staging|dev]`.
+Click **Add Application Labels**.
+
+Currently, filtering by labels is behind the feature flag `CDS_GITOPS_LABELS_BASED_ACCESS_TO_APPS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
+:::
+
 
 ## Step 4: Create a role with permissions
 

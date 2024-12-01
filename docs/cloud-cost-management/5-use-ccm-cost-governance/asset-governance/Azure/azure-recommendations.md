@@ -273,6 +273,31 @@ policies:
 
 **Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
+---
+
+### Recommendation: delete-orphaned-azure-appserviceplan
+**Description:** Delete orphaned(numberOfSites=0) application service plan
+
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-orphaned-azure-appserviceplan
+    resource: azure.appserviceplan
+    description: |
+      Delete orphaned(numberOfSites=0) application service plan
+    filters:
+      - type: value
+        key: properties.numberOfSites
+        op: eq
+        value: 0
+    actions:
+      - delete
+```
+
+**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
+
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
+
 ## Custom Policies
 
 1. Find SQL Databases with a monthly long term backup retention period more than one year

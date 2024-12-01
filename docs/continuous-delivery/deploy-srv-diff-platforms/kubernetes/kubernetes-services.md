@@ -2103,9 +2103,6 @@ The following JSON sample creates a custom role with the required permissions. T
           "Microsoft.ContainerService/managedClusters/services/read",
           "Microsoft.ContainerService/managedClusters/services/write",
           "Microsoft.ContainerService/managedClusters/services/delete",
-          "Microsoft.ContainerService/managedClusters/apps/statefulsets/read",
-          "Microsoft.ContainerService/managedClusters/apps/statefulsets/write",
-          "Microsoft.ContainerService/managedClusters/apps/statefulsets/delete",
           "Microsoft.ContainerService/managedClusters/apps/replicasets/read",
           "Microsoft.ContainerService/managedClusters/apps/replicasets/write",
           "Microsoft.ContainerService/managedClusters/apps/replicasets/delete"

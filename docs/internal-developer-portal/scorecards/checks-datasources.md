@@ -73,7 +73,6 @@ Few datasources like **PagerDuty**, **Kubernetes** are dependent on the Plugins 
 
 :::
 
-
 ## GitHub
 
 The following **Data Points** are available for GitHub Data Source. 
@@ -495,7 +494,7 @@ Here's an example of the URL input: `https://app.harness.io/ng/account/account_i
 
 ![](./static/projects-pipelines.png)
 
-- `harness.io/services`: The URL for the Service should be used as an input, and it should only be fetched from under **Projects** and not from specific modules.
+- `harness.io/services`**(Optional)**: The URL for the Service should be used as an input, and it should only be fetched from under **Projects** and not from specific modules.
 
 Here's an example of the URL input: `https://app.harness.io/ng/account/account_id/home/orgs/org_id/projects/project_id/services/service_id`
 
@@ -503,7 +502,7 @@ Here's an example of the URL input: `https://app.harness.io/ng/account/account_i
 
 :::info
 
-In the Harness Data source, the first pipeline URL from `harness.io/pipelines` is considered for score computation and similarly, the first service URL from `harness.io/services` is considered.
+In the Harness Data source, the first pipeline URL from `harness.io/pipelines` is considered for score computation and similarly, the first service URL from `harness.io/services` is considered **if provided**. 
 
 :::
 
@@ -516,7 +515,7 @@ The following **Data Points** are available for Harness Data Source.
 ![](./static/ci-harness.png)
 
 2. **Policy evaluation successful**:
-- *Objective:* This data point can be used for creating a rule that will check if the policy evaluation is successful in pipelines. (This data point is applicable to both CI and CD Pipelines)
+- *Objective:* This data point can be used for creating a rule that will check if the policy evaluation is successful in pipelines. (This data point is applicable to both CI and CD Pipelines but is evaluated based on the annotation provided i.e., in-case only `harness.io/pipelines`is present score will be computed based on that)
 
 ![](./static/p-harness.png)
 
@@ -526,7 +525,7 @@ The following **Data Points** are available for Harness Data Source.
 ![](./static/t-harness.png)
 
 4. **STO stage added in pipeline**:
-- *Objective:* This data point can be used for creating a rule that will check if STO stage is added in the pipelines. (This data point is applicable to both CI and CD Pipelines)
+- *Objective:* This data point can be used for creating a rule that will check if STO stage is added in the pipelines. (This data point is applicable to both CI and CD Pipelines but is evaluated based on the annotation provided i.e., in-case only `harness.io/pipelines`is present score will be computed based on that)
 
 ![](./static/sto-harness.png)
 
@@ -539,7 +538,7 @@ If the rule depends on the execution of the pipeline then the latest execution o
 
 - In the case of CD Pipeline, the latest deployment pipeline using the first service that we provide in the annotation in catalog info YAML is considered for evaluating the rules corresponding to data points.
 
-- If the data point depends on both CI and CD Pipelines, annotations corresponding to both should be present in the catalog YAML
+- If you want the score to be computed based on the data point from both CI and CD Pipelines, annotations corresponding to both should be present in the catalog YAML
 
 :::
 
@@ -552,6 +551,30 @@ If the rule depends on the execution of the pipeline then the latest execution o
 2. In case if annotation is missing the catalog info YAML, we will get the failure summary for the check in order to add the annotation [We can refer to the Pre-Requisite section to add it]
 
 ![](./static/es2-harness.png)
+
+5. **(Code) Extract string from a file**
+
+- *Objective*: Gets the string matching the pattern from given file from the branch.
+
+- *Calculation Method*: If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the backstage.io/source-location annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the designated pattern is then searched within the file contents and its value is extracted and returned
+
+- *Prerequisites*: Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source Harness Code repository.
+
+6. **(Code) Does file exist**
+
+- *Objective*: Checks if the given filename exist or not.
+
+- *Calculation Method*: Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and find if the file is present or not. Make sure to mention the filename with extension or relative path from the root folder (e.g.: README.md or docs/README.md) in the conditional input field.
+
+- *Prerequisites*: Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source Harness Code repository.
+
+7. **(Code) Match string in a file**
+
+- *Objective*: Matches the pattern in the given file from the branch.
+
+- *Calculation Method*: If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the backstage.io/source-location annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the contents are examined to find the pattern. Returns true/false based on whether the pattern was found or not.
+
+- *Prerequisites*: Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source Harness Code repository.
 
 ## Catalog 
 

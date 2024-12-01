@@ -10,12 +10,6 @@ redirect_from:
 
 ## Introduction
 
-:::info
-
-This Feature is currently behind the Feature Flag `IDP_ENABLED FF`, please contach with [Harness Support](mailto:support@harness.io) to enable it in your Account.
-
-:::
-
 Harness provides governance using [Open Policy Agent (OPA)](https://www.openpolicyagent.org/), Policy Management, and Rego policies.
 
 In this tutorial we will look into how you can create the policy and apply it to all Services in your Account. The policy is evaluated on Service-level based on the score fetched from scorecards and the conditions set by users, and applues on pipeline-event like On Save which occurs during Connector Creation and Updates. Go to [Harness Governance Quickstart](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-quickstart).

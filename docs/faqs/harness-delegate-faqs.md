@@ -68,8 +68,7 @@ Depending on the type of delegate, there are additional factors.
 
 ### What data does the delegate send to Harness Manager?
 
-The delegate and Harness Manager (through SaaS) establish a Secure WebSocket channel (WebSocket over TLS) to send new delegate task event notifications (not the tasks themselves) and exchange connection heartbeats. If the WebSocket connection drops, the Harness Delegate falls back to outbound-only, polling-based task fetch.
-
+The delegate and Harness Manager (through SaaS) establish a Secure WebSocket channel (WebSocket over TLS) to send new delegate task event notifications (not the tasks themselves) and exchange connection heartbeats. If the WebSocket connection is unstable, outbound-only, [polling-based](../platform/delegates/delegate-reference/delegate-environment-variables/#poll_for_tasks) task fetch is the alternative approach.
 * **Heartbeat:** The delegate sends a [heartbeat](https://en.wikipedia.org/wiki/Heartbeat_(computing)) to let Harness Manager know that it is running.
 * **Deployment data:** The information from the API executions the delegate performs are sent to Harness Manager for display in pages such as the **Deployments** page.
 * **Time series and log data for Continuous Verification:** The delegate connects to the verification providers you have configured and sends their data to Harness Manager for display in Harness Continuous Verification.
