@@ -354,6 +354,7 @@ You will be asked to run a shell script in your terminal and verify the connecti
 Cluster Orchestrator allows you to choose a **Base On-Demand Capacity**, which can be further split into percentages to determine how much should be used by Spot and On-Demand instances. You can also choose the distribution strategy between **Least-Interrupted** or **Cost-optimized**. Once all the details are filled in, you can see the potential savings and click on the **"Complete Enablement"** button to enable Cluster Orchestrator for the cluster.
 
 <DocImage path={require('./static/stepB.png')} width="110%" height="110%" title="Click to view full size image" />
+After the setup is complete, Cluster Orchestrator supports three screens to show information about your cluster.
 
  <iframe 
      src="https://app.tango.us/app/embed/feb3c2ac-4897-49c7-84fa-e6c36bd1bcd4" 
@@ -367,7 +368,11 @@ Cluster Orchestrator allows you to choose a **Base On-Demand Capacity**, which c
      mozallowfullscreen="mozallowfullscreen" 
      allowfullscreen="allowfullscreen"></iframe>
 
-After the setup is complete, Cluster Orchestrator supports three screens to show information about your cluster:
+:::info
+- From the time you connect a cluster in the UI, it can take up to 24 hours for data to appear in the feature.
+- To ensure a smooth setup, it is important that you have CCM Admin permissions. Additionally, you must have access to create service accounts in the environment.
+
+:::
 
 #### Overview Page for Cluster Orchestrator Enabled Clusters
 
