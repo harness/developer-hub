@@ -2,8 +2,9 @@
 title: Overview
 sidebar_label: Overview
 description: How to make Feature Management & Experimentation work for you
-sidebar_position: 1
-slug: feature-management-experimentation/getting-started/overview
+sidebar_position: 11
+helpdocs_is_private: false
+helpdocs_is_published: true
 ---
 
 Harness Software Engineering Insights (SEI) helps you to increase developer productivity and improve developer experience through data-led insights and workflow automation. Harness SEI connects various DevOps tools to provide a single view of the software factory, enabling users to discover bottlenecks, assess team productivity, and enhance the overall developer experience.

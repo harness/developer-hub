@@ -1,6 +1,5 @@
 {
-    "label": "Getting started",
-    "position": 10,
+    "label": "Release monitoring",
     "collapsible": true,
     "collapsed": true,
     "className": "red"

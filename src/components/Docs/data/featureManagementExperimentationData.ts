@@ -11,14 +11,14 @@ import { MODULES } from "@site/src/constants"
   export const docsCards: CardSections = [
     {
       name: "Getting started",
-      description: "",
+      description: "<Optional description could go here>",
       list: [
         {
           title: "Getting started",
           module: MODULES.fme,
           description:
             "Quickstarts and key concepts",
-          link: "/docs/feature-management-experimentation/getting-started",
+          link: "/docs/feature-management-experimentation/getting-started/docs/onboarding-guide",
         },
         {
           title: "What's supported",
@@ -38,9 +38,9 @@ import { MODULES } from "@site/src/constants"
     },
 
     {
-      name: "FME Fundamentals",
+      name: "FME Features",
       description:
-        "",
+        "<Optional description>",
       list: [
         {
           title: "Feature management",
@@ -80,7 +80,9 @@ import { MODULES } from "@site/src/constants"
         },
       ],
     },
-
+    /* Not sure if we want these because
+     - if docs are well written, they may be mostly unneeded
+     - if they are needed, they should likely be close to the related instructions/topic
     {
       name: "Help and FAQs",
       description:
@@ -109,6 +111,6 @@ import { MODULES } from "@site/src/constants"
         },
       ],
     },
-
+    */
   ];
   /* Define the cards - end */

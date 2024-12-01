@@ -1,6 +1,5 @@
 {
     "label": "Experimentation",
-    "position": 40,
     "collapsible": true,
     "collapsed": true,
     "className": "red"

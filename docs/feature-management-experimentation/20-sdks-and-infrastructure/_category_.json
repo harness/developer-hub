@@ -1,6 +1,5 @@
 {
-    "label": "Release monitoring",
-    "position": 30,
+    "label": "SDKs and infrastructure",
     "collapsible": true,
     "collapsed": true,
     "className": "red"

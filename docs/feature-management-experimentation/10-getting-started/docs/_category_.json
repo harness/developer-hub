@@ -1,6 +1,5 @@
 {
-    "label": "SDKs and infrastructure",
-    "position": 60,
+    "label": "Getting started",
     "collapsible": true,
     "collapsed": true,
     "className": "red"

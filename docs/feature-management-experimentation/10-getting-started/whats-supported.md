@@ -2,7 +2,9 @@
 title: What's supported
 description: Platforms and technologies supported by FME
 sidebar_label: What's supported
-sidebar_position: 10
+sidebar_position: 19
+helpdocs_is_private: false
+helpdocs_is_published: true
 ---
 
 # FME features

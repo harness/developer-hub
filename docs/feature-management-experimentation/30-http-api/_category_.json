@@ -1,6 +1,5 @@
 {
-    "label": "Admin & account settings",
-    "position": 50,
+    "label": "HTTP API",
     "collapsible": true,
     "collapsed": true,
     "className": "red"

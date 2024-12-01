@@ -2,7 +2,7 @@
 title: Onboarding guide
 description: Quickstarts for Split Feature Management & Experimentation
 sidebar_label: Onboarding guide
-sidebar_position: 20
+sidebar_position: 12
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
