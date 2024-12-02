@@ -28,4 +28,4 @@ You can also follow the SDK Setup and Event Ingestion **Quickstart wizard** in S
 
 Gain a more in-depth view of the power of Feature Management & Experimenation, and its benefits for you.
 
-* <Link to="/docs/feature-management-experimentation/getting-started/tutorials/set-up-release-monitoring">Set up feature monitoring for your software release</Link>
+* <Link to="/docs/feature-management-experimentation/getting-started/docs/tutorials/set-up-release-monitoring">Set up feature monitoring for your software release</Link>
