@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 Build Intelligence is part of [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence), a suite of features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. BI works by storing these outputs locally or remotely and retrieving them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency.
 
 :::note
-* Build Intelligence is currently only offered to Harness Cloud, with support for self hosted coming soon. This feature is behind the feature flag `CI_CACHE_ENABLED`. 
+* Build Intelligence is currently only offered to Harness Cloud, self hosted Kubernetes Infra with support for other self hosted Infras coming soon. This feature is behind the feature flag `CI_CACHE_ENABLED` if infra is Harness Cloud. 
 * 'Build intelligence' CI stage property, which enables automatic setup of Build Intelligence on Harness Cloud when using supported build tools in Run and Test steps is behind the feature flag `CI_ENABLE_BUILD_CACHE_HOSTED_VM`.
 
 Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -24,7 +24,7 @@ Build Intelligence in Harness CI is currently available for Gradle and Bazel wit
 
 The Build Intelligence stage property simplifies the setup of Build Intelligence in Harness Cloud. When enabled, it automatically configures Build Intelligence for supported build tools (currently Gradle and Bazel) in Run and Test steps without requiring any additional configuration. This automation is particularly beneficial in CI pipelines, as it eliminates the need for developers to modify project settings in their git repository (such as Gradle’s settings.gradle) to configure the cache.
 
-Build Intelligence setup is fully automated when the `CI_ENABLE_BUILD_CACHE_HOSTED_VM` feature flag is enabled. However, for local development (e.g., on a developer's laptop), manual configuration is necessary to take advantage of caching.
+Build Intelligence setup is fully automated when the `CI_ENABLE_BUILD_CACHE_HOSTED_VM` for (harness cloud) and `CI_ENABLE_BUILD_CACHE_K8` for (self hosted K8) feature flags are enabled. However, for local development (e.g., on a developer's laptop), manual configuration is necessary to take advantage of caching.
 
 ### Enabling Auto-setup 
 * Via Visual editor: To enable Build Intelligence, go to the CI Stage Overview tab and toggle Build Intelligence to true.
@@ -83,20 +83,37 @@ Please follow the instructions below, for either Bazel or Gradle, in case manual
 2. **Cache Operations**: At the start of the build, the plugin registers with Gradle to check for cached build outputs. If available, it retrieves and provides them to Gradle, avoiding the need to regenerate them.
 
 The above operation is transparent to you as a user and happens in the background. 
+(here we have to paste the SS of UI to enable buildIntelligence) 
+Harness Cloud:
+    If you enable buildIntelligence on UI, It will automatically inject the back ground step which is responsible to bring up the proxy-server and autodetect the build tool and inject the configuration. If the run/Tests steps runs in the container there also we will again auto-inject the config.
+Kubernetes:
+    If you enable buildIntelligence on UI, It will automatically inject the back ground step which is responsible to bring up the proxy-server.From every run/test steps we will auto detect and auto-inject the config based on the build tool.
+
+Currently the proxy server is running on port: `8082`
 
 #### Configuration for Gradle
 
-1. Import the build cache plugin in `settings.gradle` file: Customers using **prod1** or **prod2** clusters don't need to configure the `endpoint` parameter in the settings below and it'll be populated by the plugin. The default value for this endpoint for **prod1** or **prod2** is `https://app.harness.io/gateway/cache-service`. For customers not using **prod1** or **prod2** clusters, they'll need to configure the `endpoint` parameter. 
+1. Import the build cache plugin in `settings.gradle` file: Or If you enable BuildInteligence on UI, the below configuration automatically injects in the below directories.
+`$GRADLE_HOME/init.d/init.gradle, $GRADLE_USER_HOME/init.d/init.gradle, $HOME/.gradle/init.d/init.gradle`(If $GRADLE_HOME and $GRADLE_USER_HOME are present in your environments).
+2. If you want to use your own specific maven repository, you should give `MAVEN_URL` as stage variable or else It will pull from mavenCentral() where our HarnessGradlePlugin resides(for reference: https://central.sonatype.com/artifact/io.harness/gradle-cache/overview).
+3. If you want to use your own maven repository, you should download the latest version plugin dependencies from maven central(As of now the latest version is `0.0.4`).
+4. The variables `HARNESS_ACCOUNT_ID` and `HARNESS_CACHE_SERVICE_ENDPOINT` will be automatically set if you enable build Intelligence.
 
 ```groovy
 // import the plugin
 buildscript {
     repositories {
-        mavenCentral()
+		if (System.getenv('MAVEN_URL')) {
+            maven {
+                url System.getenv('MAVEN_URL')
+            }
+        } else {
+			mavenCentral()
+		}       
     }
     dependencies {
         classpath 'io.harness:gradle-cache:0.0.4'
-    }
+    }  
 }
 ...
 
@@ -113,14 +130,12 @@ buildCache {
     }
     remote(io.harness.Cache) {
         accountId = System.getenv('HARNESS_ACCOUNT_ID') 
-        token = System.getenv('HARNESS_PAT') 
         push = "true"
         endpoint = System.getenv('HARNESS_CACHE_SERVICE_ENDPOINT') 
     }
 }
 ```
 
-For Build Intelligence, you'll need to turn on `CI_CACHE_ENABLED` FF.
 
 <!--
 :::note
@@ -169,7 +184,7 @@ pipeline:
                     connectorRef: <+input>
                     image: <+input>
                     shell: Sh
-                    command: gradle --build-cache unitTest -PmaxParallelForks=16 -PignoreFailures=true --profile
+                    command: gradle build unitTest -PmaxParallelForks=16 -PignoreFailures=true --profile
           platform:
             os: <+input>
             arch: Amd64
@@ -190,53 +205,12 @@ pipeline:
 
 [Bazel](https://bazel.build/) is an open-source build and test tool designed for high performance, scalability, and handling large codebases across multiple languages and platforms. Harness CI offers Build Intelligence support for Bazel to optimize build times by reusing outputs from previous builds.
 
+
 #### How it works?
-
-1. Proxy binary: Download the proxy binary from `https://app.harness.io/storage/harness-download/harness-ti/cache-proxy/OS/ARCH/cache-proxy`. Replace **OS/ARCH** in the URL with one of the following options:
-
-- linux/amd64
-- linux/arm
-- mac/amd64
-- mac/arm
-- windows/amd64
-
-The cache proxy facilitates secure uploading and downloading of cache blobs by interacting with the cache service to obtain necessary access URLs.
-
-2. Start the proxy server before the bazel command. You need to set the following environment variables:
-
+If you enable BuildInteligence on UI, the below configuration automatically injects in the `~/.bazelrc` directory.
 ```bash
-HARNESS_CACHE_PROXY_ENABLED=true
-HARNESS_CACHE_SERVER_URL=
-HARNESS_CACHE_SERVER_API_TOKEN=
+fmt.Sprintf(`build --remote_cache=%s/cache/bazel`, cacheProxyEndpoint)
 ```
-
-Use `https://app.harness.io/gateway/cache-service` for `HARNESS_CACHE_SERVER_URL` for prod1 or prod2 clusters.
-
-For `HARNESS_CACHE_SERVER_API_TOKEN`, create a Harness [Personal Access Token or Service Account Token](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys) with `core_account_edit` permission.
-
-Here is a sample script:
-
-```bash
-if [[ ! -z "${ENABLE_CI_CACHE// }" ]] && [[ "$ENABLE_CI_CACHE" == "true" ]]
-then
-    # Start the proxy server
-    mkdir -p /tmp/cachebin
-    curl -L -o /tmp/cachebin/harness-cache https://app.harness.io/storage/harness-download/harness-ti/cache-proxy/OS/ARCH/cache-proxy # Replace **OS/ARCH** in the URL
-    chmod +x /tmp/cachebin/harness-cache
-    echo "Starting cache proxy with account $HARNESS_ACCOUNT_ID"
-    /tmp/cachebin/harness-cache server > /tmp/cachebin/server.log 2>&1 &
-fi    
-```
-
-3. Add the build cache endpoint to the relevant `bazelrc` file: 
-
-```bash
-build --remote_cache=http://localhost:8082/cache/bazel 
-```
-
-You can also use a build command without rc files:
-
-```bash
-bazel build --remote_cache=http://localhost:8082/cache/bazel //...
-```
+cacheProxyEndpoint for steps running in a container: http://harnesscache:8082
+cacheProxyEndpoint for steps running on the host: http://localhost:8082
 
