@@ -755,6 +755,30 @@ a.card p.text--truncate {
   min-height: 3em;
 }
 
+/* style horizontal divider for LHS menu items, level 1 */
+
+.horizontal-bar {
+  margin-top: 15px;
+  padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+html[data-theme="light"] .horizontal-bar {
+  border-top: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  background-color: #effbff;
+  color: #b0b1c1;
+}
+
+html[data-theme="dark"] .horizontal-bar {
+  border-top: 1px solid #45494f;
+  border-right: 1px solid #45494f;
+  background-color: #002531;
+  color: #baeeff;
+}
+
 /* HDH-120: Change 2nd level numbered list style */
 ol ol,
 ul ol {
