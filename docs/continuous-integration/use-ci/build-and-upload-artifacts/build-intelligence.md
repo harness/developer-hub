@@ -24,7 +24,7 @@ Build Intelligence in Harness CI is currently available for Gradle and Bazel wit
 
 The Build Intelligence stage property simplifies the setup of Build Intelligence in Harness Cloud. When enabled, it automatically configures Build Intelligence for supported build tools (currently Gradle and Bazel) in Run and Test steps without requiring any additional configuration. This automation is particularly beneficial in CI pipelines, as it eliminates the need for developers to modify project settings in their git repository (such as Gradle’s settings.gradle) to configure the cache.
 
-Build Intelligence setup is fully automated when the `CI_ENABLE_BUILD_CACHE_HOSTED_VM` for (harness cloud) and `CI_ENABLE_BUILD_CACHE_K8` for (self hosted K8) feature flags are enabled. However, for local development (e.g., on a developer's laptop), manual configuration is necessary to take advantage of caching.
+Build Intelligence setup is fully automated when the `CI_ENABLE_BUILD_CACHE_HOSTED_VM` (for harness cloud) and `CI_ENABLE_BUILD_CACHE_K8` (for self-hosted Kubernetes Infrastructure) feature flags are enabled. However, for local development (e.g., on a developer's laptop), manual configuration is necessary to take advantage of caching.
 
 ### Enabling Auto-setup 
 * Via Visual editor: To enable Build Intelligence, go to the CI Stage Overview tab and toggle Build Intelligence to true.
