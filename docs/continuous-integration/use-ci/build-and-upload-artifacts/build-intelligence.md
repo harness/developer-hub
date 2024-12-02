@@ -83,7 +83,11 @@ Please follow the instructions below, for either Bazel or Gradle, in case manual
 2. **Cache Operations**: At the start of the build, the plugin registers with Gradle to check for cached build outputs. If available, it retrieves and provides them to Gradle, avoiding the need to regenerate them.
 
 The above operation is transparent to you as a user and happens in the background. 
-(here we have to paste the SS of UI to enable buildIntelligence) 
+**Harness Cloud**:
+When you enable Build Intelligence in the UI, it automatically injects a background step responsible for bringing up the proxy server, autodetecting the build tool, and injecting the configuration. If the Run or Tests steps are executed in a container, we will also automatically re-inject the configuration there.
+
+**Kubernetes**:
+When you enable Build Intelligence in the UI, it automatically injects a background step responsible for bringing up the proxy server. For every Run or Test step, we will autodetect the build tool and auto-inject the appropriate configuration based on it.
 
 Currently the proxy server is running on port: `8082`
 
