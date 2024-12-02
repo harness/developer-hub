@@ -45,6 +45,11 @@ Determines the resilience of Redis-dependant application when the Redis server i
     <th> Notes </th>
   </tr>
   <tr>
+    <td> address </td>
+    <td> The address of the Redis server. </td>
+    <td> If a password or certificate is also required alongside the address, please use the <a href="#redis-authentication">secret file approach</a>. </td>
+  </tr>
+  <tr>
     <td> flushConfig </td>
     <td> It flushes the initial configuration before starting the Sentinel server if set to <code>true</code>. </td>
     <td> Default: true. You can set it to <code>true</code> or <code>false</code>.</td>

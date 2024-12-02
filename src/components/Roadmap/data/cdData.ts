@@ -17,7 +17,7 @@ export const CdData: Horizon = {
       {
         tag: [{value: "Pipeline"}],
         title: "Flexible Templates Phase II",
-        description: "Users can reference injected stages/steps in pipeline templates",
+        description: "Users can reference dynamically inserted stages/steps in pipeline templates",
       },
       {
         tag: [{value: "Pipeline"}],
@@ -36,13 +36,13 @@ export const CdData: Horizon = {
       },
       {
         tag: [{value: "GitOps"}],
-        title: "Native AppSet Support",
-        description: "Users can create GitOps Applications or AppSets directly through the UI as part of the creation flow.",
+        title: "Native Application Sets Support",
+        description: "Users can create GitOps Application Sets directly through the UI and Terraform.",
       },
       {
         tag: [{value: "GitOps"}],
         title: "Audit Trail for GitOps events",
-        description: "Users can generate audit trail entries for GitOps entities at multiple levels (Account/Org/Project) ",
+        description: "Users can generate audit trail entries for GitOps entities.",
       },
       {
         tag: [{value: "GitOps"}],
@@ -123,6 +123,11 @@ export const CdData: Horizon = {
         tag: [],
         title: "SFDC deployments ",
         description: "Users can deploy to Salesforce (SFDC) directly through Harness",
+      },
+      {
+        tag: [{value: "GitOps"}],
+        title: "Improved Dashboards and reporting for Gitops",
+        description: "Deployments made using GitOps will be reflected in the Service Dashboards",
       },
       {
         tag: [],

@@ -14,6 +14,10 @@ This can help identify performance bottlenecks, test the system's ability to han
 
 ![Pod IO Latency](./static/images/pod-io-latency.png)
 
+For a video tutorial, go to [pod IO error](https://youtu.be/HI7sk7I13WU) that walks through the execution of the experiment.
+
+[This](https://youtu.be/HI7sk7I13WU) video walks through the execution of the pod IO latency experiment.
+
 ## Use cases
 Pod IO latency:
 - Simulates the slow file system calls, which can be used to test the resilience of an application or system to slow I/O performance.

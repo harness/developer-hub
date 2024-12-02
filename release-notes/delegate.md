@@ -2,13 +2,12 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-11-5T22:00
+date: 2024-12-03T22:00 
 sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/delegate/rss.xml" />
 
@@ -87,13 +86,36 @@ Six months after a delegate image is released, the delegate reaches End of Suppo
 For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
+
+## December 2024
+
+### Version 24.11.84500 <!-- December 3, 2024 -->
+
+#### New features and enhancements
+
+- Enhanced AWS Secrets Manager integration to support secret updates using the `secretsmanager:PutResourcePolicy` permission. The appropriate request type (`UpdateSecret` or `PutSecretValue`) is now determined based on the `usePutSecret` flag in the connector configuration. (PL-58652)
+
+- Upgraded Spring Framework to version `6.1.x`, along with updates to dependencies for improved compatibility and security. (PL-58254)
+
+- Resolved a high-severity vulnerability (CVE-2024-7254) in the Delegate by upgrading `protobuf-java` to version `3.25.5`. (PL-57351, ZD-70765)
+
+- Upgraded the Java version to `17.0.11_9-jre-ubi9-minimal` in the Delegate base image to address security vulnerabilities, including `CVE-2023-22041`. (PL-55499)
+
+- Upgraded `com.nimbusds_nimbus-jose-jwt` to version `9.37.2` to address `CVE-2023-52428`. (PL-51347)
+
 ## November 2024
+
+### Version 24.11.84309 <!-- November 27, 2024 -->
+
+#### New features and enhancements
+
+- Implemented functionality to support groupByResource for the Datadog Health Source in Continuous Verification. (CDS-100367)
 
 ### Version 24.10.84205-ubi9-beta <!-- November 18, 2024 -->
 
-#### Early release (Non-GA'ed release).
+#### Early release (Beta release).
 
-- Upgrading redhat/ubi8-minimal to redhat/ubi9-minimal for testing purpose. **This image can have issues as this is not a GA'ed image.**
+- Upgrading redhat/ubi8-minimal to redhat/ubi9-minimal for testing purpose. **This image can have issues as this is a Beta image and not a GA image.**
 
 ### Version 24.11.84304 <!-- November 11, 2024 -->
 

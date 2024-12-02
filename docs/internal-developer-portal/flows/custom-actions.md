@@ -78,13 +78,11 @@ To obtain these references, simply copy the variable path from the Harness Pipel
  
 ![](./static/pipeline-variable.png)
 
-#### Support for Stage, Step Variables and Pipeline Templates
+#### Support for Stage Variables and Pipeline Templates
 
-In addition to pipeline variables, you can also reference **stage, step group, service, and environment variables** within the `inputset`. Here’s how each type of variable can be referenced:
+In addition to pipeline variables, you can also reference **stage variables** within the `inputset`. Here’s how each type of variable can be referenced:
 
 - Stage variable reference: `pipeline.stages.STAGE_IDENTIFIER.variables.VARIABLE_NAME`
-- Step variable reference: `pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_IDENTIFIER.VARIABLE_NAME`
-- Step group variable reference: `pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_GROUP_IDENTIFIER.steps.STEP_IDENTIFIER.VARIABLE_NAME`
 
 If you need to reference lower-level variables (such as stage, step group, and step variables) from outside their original scope, you must include the relative path to that variable. For instance, if you want to reference a stage variable from a different stage, you should use the format, `pipeline.stages.originalStageID.variables.variableName`
 
@@ -94,7 +92,6 @@ Instead of the simpler `stage.variables.variableName`. This fully qualified path
 inputset:
   pipeline.variables.project_name: ${{ parameters.project_name }}
   pipeline.stages.originalStageID.variables.github_repo: ${{ parameters.github_repo }}
-  pipeline.stages.TempStage.spec.execution.steps.demostepgroup.steps.ShellScript_1.cloud_provider: ${{ parameters.provider }}
 ```
 To obtain these references, simply copy the variable path from the Harness Pipeline Studio UI.
 

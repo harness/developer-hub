@@ -18,6 +18,7 @@ GameDay is a methodology used by teams to practice chaos engineering. These team
 It determines the incident response process, that is, how well your application responds/behaves during an outage, and how quickly and effectively it returns to normalcy.
 
 ### Why is a GameDay important?
+
 In general, GameDays helps apply a fatal scenario to your application in a safe environment, thereby determining the application's resilience and verifying the system at scale.
 
 At every step in implementing a GameDay, you will either find a glitch in the system that you can address or gain confidence in your application.
@@ -29,6 +30,8 @@ A GameDay typically involves the following steps:
 1. Run chaos experiments on your application,
 2. Observe the impact of the failure,
 3. Discuss the technical outcomes.
+
+To watch a video on GameDay, go to [GameDay](https://youtu.be/X-4Ripb4e2c) that describes how you can schedule a GameDay execution.
 
 :::tip
 GameDays help decide the type of failure the system would undergo based on the nature of the chaos experiments present within GameDay. Hence, HCE strongly recommends you begin with easy use cases with minimal blast radius, such as breaking one container, degrading one instance, and making one availability zone unavailable. Later, you can delve into more complex failures, such as failing an entire service or affecting a large percentage of requests.

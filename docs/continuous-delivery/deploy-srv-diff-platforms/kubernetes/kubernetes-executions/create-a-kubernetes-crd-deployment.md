@@ -1,6 +1,6 @@
 ---
 title: Deploy Kubernetes Custom Resources using CRDs
-description: Harness supports all Kubernetes default resources, such as Pods, Deployments, StatefulSets, DaemonSets, etc. For these resources, Harness supports steady state checking, versioning, displays instance…
+description: Harness supports all Kubernetes default resources, such as Pods, Deployments, DaemonSets, etc. For these resources, Harness supports steady state checking, versioning, displays instance…
 sidebar_position: 1000 
 helpdocs_topic_id: pmmfqqo1uh
 helpdocs_category_id: n03qfofd5w
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness supports all Kubernetes default resources, such as Pods, Deployments, StatefulSets, DaemonSets, etc. For these resources, Harness supports steady state checking, versioning, displays instances on Harness dashboards, performs rollback, and other enterprise features.
+Harness supports all Kubernetes default resources, such as Pods, Deployments, DaemonSets, etc. For these resources, Harness supports steady state checking, versioning, displays instances on Harness dashboards, performs rollback, and other enterprise features.
 
 In addition, Harness provides many of the same features for Kubernetes [custom resource](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) deployments using Custom Resource Definitions (CRDs). CRDs are resources you create that extend the Kubernetes API to support your application.
 
@@ -84,6 +84,24 @@ If the `steadyStateCondition` fails, Harness logs the following error message:
 ```
 Status check for resources in namespace [[namespace]] failed.
 ```
+
+#### Custom resource: failureCondition
+
+`harness.io/failureCondition`: This annotation allows you to treat CRDs as jobs and specify custom logic that triggers a failure.
+
+This annotation supports Failure states in Custom Resource Definitions (CRDs) when the Kubernetes Apply step is configured to run as a job. When this annotation is set to true, it will evaluate the condition and trigger a failure if the condition is met.
+
+Here’s an example of how to configure the annotation:
+```yaml
+metadata:
+  annotations:
+    managed-workload: "true"
+    failureCondition: "status.failed == 1"
+```
+
+**Important Note:** This annotation is opt-in and only affects users who explicitly configure it.
+It provides enhanced control over job failure logic, enabling more precise management of CRD failure states.
+
 #### Custom resource: release-name
 
 `harness.io/release-name: <release_name>` in labels: this is required for Harness to track any pods for the custom resource.

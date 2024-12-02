@@ -154,9 +154,21 @@ The ServiceNow integration can set up the authentication either by using Usernam
 * Enter the base URL you use to access ServiceNow. For example: `https://example.service-now.com`.
 * Add the **Username** and **Password**, of the **ServiceNow Service Account**.
 * Set the timezone to UTC by default. If you use a different timezone, specify it here.
-* You can click on **Advanced Configurations** and choose the **Fields** you wish to exclude from ingestion. You might exclude fields containing sensitive information such as **Summary**, **Description**, and **Comments**.
 
 ![](../../static/snow-auth.png)
+
+#### Advanced Configurations (Optional)
+
+If you want to filter the incidents or change requests to be ingested, create a query in your ServiceNow account:
+
+* In the ServiceNow app define a filter query for incidents or change requests.
+* Right-click the query in ServiceNow to copy it.
+
+![](../../static/servicenow-query.png)
+
+* Paste the copied query into the integration configuration settings to apply the filter.
+
+![](../../static/snow-query.png)
 
 * Click on the **Next: Validate Connection**.
   
@@ -212,6 +224,20 @@ The ServiceNow on-prem integration can set up the authentication only using the 
 ![](../../static/snow-auth.png)
 
 * Set the timezone to UTC by default. If you use a different timezone, specify it here.
+
+#### Advanced Configurations (Optional)
+
+If you want to filter the incidents or change requests to be ingested, create a query in your ServiceNow account:
+
+* In the ServiceNow app define a filter query for incidents or change requests.
+* Right-click the query in ServiceNow to copy it.
+
+![](../../static/servicenow-query.png)
+
+* Paste the copied query into the integration configuration settings to apply the filter.
+
+![](../../static/snow-on-prem-query.png)
+
 * Click on **Download YAML File** to download the `satellite.yml` file.
 * Click on the **Done** button and the integration will be successfully saved. Once you have downloaded the `satellite.yml` file update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
@@ -228,6 +254,11 @@ integrations:
     username: <SERVICENOW_USERNAME>
     application: servicenow
     api_key: <SERVICENOW_PASSWORD>
+    metadata:
+      change_request_query: <CHANGE_REQUEST_QUERY>
+      incident_query: '<INCIDENT_QUERY'
+      timezone: <TIMEZONE> # Default value is considered as UTC
+
 ```
 
 ## ServiceNow Use Cases

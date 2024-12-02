@@ -142,3 +142,7 @@ No, If you are using the default monitored service while using the same env and 
 ### Is there any limitations of query size for a custom health source?
 
 Yes, it's set to 16000.
+
+### What is the data collection interval for Sumo Logic in Continuous Verification, and can it be configured?
+
+Data collection occurs once every minute for each metric or log query configured for a health source. The interval is standardized for all verifications and cannot be adjusted.

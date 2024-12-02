@@ -179,3 +179,22 @@ Refer Create YAML and Register YAML for the arg details
 
 </TabItem>
 </Tabs>
+
+## Troubleshooting
+
+- Ensure you are using the correct credentials with the appropriate scope when running the scripts.
+- If you are trying out the scripts with a personal account instead of an organization account, update the GitHub API endpoints as specified below.
+
+### Using Personal GitHub Account 
+
+If you're testing the above scripts on your personal GitHub account, make sure to update the repository listing endpoint to use [users](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user) instead of [org](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-organization-repositories).
+
+Here's the difference between the endpoints:
+
+```sh
+# For organizations
+/orgs/{org}/repos
+
+# For personal accounts
+/users/{username}/repos
+```

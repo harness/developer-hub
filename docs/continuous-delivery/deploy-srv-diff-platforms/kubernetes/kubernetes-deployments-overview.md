@@ -67,19 +67,8 @@ In Harness, a **managed** Kubernetes workload is a Kubernetes object deployed a
             <td><p>Yes</p></td>
             <td><p>Yes</p></td>
             <td><p>Yes</p></td>
-            <td><p>Yes: 1 Deployment or StatefulSet mandatory/allowed</p></td>
-            <td><p>Yes: 1 Deployment or StatefulSet mandatory/allowed</p></td>
-            <td><p>Yes</p></td>
-        </tr>
-        <tr>
-            <td>
-                <p><strong>StatefulSet</strong></p>
-            </td>
-            <td><p>Yes</p></td>
-            <td><p>Yes</p></td>
-            <td><p>Yes</p></td>
-            <td><p>Yes: 1 Deployment or StatefulSet mandatory/allowed</p></td>
-            <td><p>Yes: 1 Deployment or StatefulSet mandatory/allowed</p></td>
+            <td><p>Yes: 1 Deployment allowed</p></td>
+            <td><p>Yes: 1 Deployment allowed</p></td>
             <td><p>Yes</p></td>
         </tr>
         <tr>
@@ -125,7 +114,7 @@ In Harness, a **managed** Kubernetes workload is a Kubernetes object deployed a
 
 To deploy an object outside of the managed workloads in any strategy, you use the Harness [annotation](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-annotations-and-labels.md) to make it unmanaged: `harness.io/direct-apply: "true"|"false"`. Set to `true` to make a manifest an unmanaged workload.
 
-For example, Harness Canary and Blue/Green steps support a single **Deployment** or **StatefulSet** workload as a managed entity, but you can deploy additional workloads as unmanaged using the `harness.io/direct-apply:true` annotation.
+For example, Harness Canary and Blue/Green steps support a single **Deployment**, but you can deploy additional workloads as unmanaged using the `harness.io/direct-apply:true` annotation.
 
 <table>
     <tbody>
@@ -157,8 +146,8 @@ For example, Harness Canary and Blue/Green steps support a single **Deployment**
             <td><p>Yes</p></td>
             <td><p>Yes</p></td>
             <td><p>No</p></td>
-            <td><p>Yes: 1 Deployment or StatefulSet mandatory/allowed</p></td>
-            <td><p>Yes: 1 Deployment or StatefulSet mandatory/allowed</p></td>
+            <td><p>Yes: 1 Deployment allowed</p></td>
+            <td><p>Yes: 1 Deployment allowed</p></td>
             <td><p>No</p></td>
         </tr>
     </tbody>
@@ -166,11 +155,11 @@ For example, Harness Canary and Blue/Green steps support a single **Deployment**
 
 ## Canary and Blue Green Strategies
 
-Harness Canary and Blue Green steps support a single **Deployment** or **StatefulSet** workload as a managed entity. You cannot deploy 0 or more than 1 **Deployment** or **StatefulSet** workload.
+Harness Canary and Blue Green steps support a single **Deployment**. You cannot deploy 0 or more than 1 **Deployment**.
 
 ## Rolling (Rollout) Strategy
 
-Rolling strategy steps support Deployment, StatefulSet, or DaemonSet as **managed** workloads, but not other workloads such as Jobs.
+Rolling strategy steps support Deployment or DaemonSet as **managed** workloads, but not other workloads such as Jobs.
 
 ## Apply Step
 

@@ -2,6 +2,13 @@ import { ExperimentDetails } from "@site/src/components/ChaosEngineering/Experim
 
 export const experiments: ExperimentDetails[] = [
   {
+    name: "GCP SQL instance failover",
+    description:
+      "It disrupts the state of GCP SQL instance filtered using a name and project ID by triggering failover on the SQL instance.",
+    tags: ["instance", "failover"],
+    category: "gcp",
+  },
+  {
     name: "GCP VM disk loss by label",
     description:
       "It disrupts the state of GCP persistent disk volume filtered using a label by detaching the disk volume from its VM instance for a specific duration.",

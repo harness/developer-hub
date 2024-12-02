@@ -17,4 +17,4 @@ To create a GitHub or Google OAuth application, go to **Admin** > **OAuth Config
 
 After you create the application, plugins that depend on OAuth (for example, [GitHub Actions](./available-plugins/github-actions.md)) display a **Login to GitHub** dialog for users who visit the catalog page with the plugin enabled.
 
-![](./static/oauth%20configurations%20page.png)
+![](./static/oauth-plugin-config.png)

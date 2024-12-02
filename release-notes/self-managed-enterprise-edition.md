@@ -192,26 +192,84 @@ To fix this issue, follow these steps
 
   ```bash
   kubectl get secrets looker-secrets -o yaml -n <namespace>
+  kubectl get secrets harness-looker-secrets -o yaml -n <namespace>
   ```
 
-  2. Copy the value of lookerMasterKey from the secret and decode it using the following command or any base64 decoder. You’ll need to decode it twice.
+  2. Copy the value of lookerMasterKey from the secret looker-secrets and decode it using the following command or any base64 decoder. You’ll need to decode it twice.
   It's required to decode the secret value twice because during creation, first it's encoded by the helm function in the charts and then Kubernetes encodes it again while creating the secret.
 
   ```bash
   echo "<base64-encoded-lookerMasterKey>" | base64 --decode | base64 --decode
   ```
 
-  3. After decoding, update your ArgoCD values override with the decoded key:
+  3. Copy the decrypted secrets for the following attributes lookerClientId lookerClientSecret lookerEmbedSecret lookerSignupUrl in harness-looker-secrets.
+
+  4. After decoding, update your ArgoCD values override with the decoded key:
 
   ```yaml
   platform:
   looker:
     secrets:
       lookerMasterKey: "<your-decoded-key>"
+      lookerClientId: "<your-decoded-key>"
+      lookerClientSecret: "<your-decoded-key>"
+      lookerEmbedSecret: "<your-decoded-key>"
+      lookerSignupUrl: "<your-decoded-key>"
   ```
 
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
 :::
+
+## November 27, 2024, patch version 0.22.2
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.22.2](https://github.com/harness/helm-charts/releases/tag/harness-0.22.2) |
+| Air Gap Bundle | [0.22.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.22.2) |
+| NG Manager | 1.57.8 |
+| CI Manager | 1.47.5 |
+| Harness Manager | 1.48.8 |
+| Pipeline Service | 1.95.4 |
+| Platform Service | 1.39.1 |
+| Access Control Service | 1.61.2 |
+| Delegate | 24.09.83900 |
+| GitOps Service | 1.18.7 |
+| Change Data Capture | 1.36.0 |
+| STO Core | 1.113.10 |
+| Test Intelligence Service | 1.27.1 |
+| NG UI | 1.43.2 |
+| LE NG | 1.3.1 |
+| Looker | 1.1.1 |
+| Log Service | 1.9.2 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.22.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.2/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+### Cloud Cost Management
+
+- Improved Timescale migration reliability by enhancing SQL script execution with a full script execution method. (CCM-20381)
+
+#### Harness Platform
+
+- Fixed an issue in version 0.22.1 where the Mongo FCV upgrade job could not be disabled for in-cluster MongoDB setups. (PL-58878)
 
 ## November 8, 2024, patch version 0.22.1
 

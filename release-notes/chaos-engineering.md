@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-11-13T10:00
+date: 2024-11-28T10:00
 sidebar_position: 5
 ---
 
@@ -21,6 +21,29 @@ The release notes describe recent changes to Harness Chaos Engineering.
 :::
 
 ## November 2024
+
+### Version 1.49.1
+
+#### New features and enhancements
+
+- Extends ChaosGuard conditions for node-level chaos experiments. (CHAOS-6788)
+
+- Adds advanced settings to the UI for the "edit infrastructure" page. (CHAOS-6718)
+
+    <details>
+    <summary> View advanced setting screen </summary>
+
+        ![advanced feature](./static/chaos-advanced-features.png)
+
+    </details>
+
+- Adds local and UTC times in the cron schedule next run. (CHAOS-6974)
+
+#### Fixed issues
+
+- Fixed the cron experiment execution that was not working with Linux and Windows infrastructure (CHAOS-7044)
+
+- Fixed the issue of **Visual** and **YAML** tabs overlapping while trying to toggle between them in the **Condition Editor** in ChaosGuard. (CHAOS-7026)
 
 ### Version 1.48.0
 

@@ -2248,6 +2248,10 @@ To run a step only when a certain file changes, you can [define conditional exec
 
 Alternately, you could isolate the step in a stage by itself, configure a [Git webhook trigger](https://developer.harness.io/docs/platform/triggers/triggering-pipelines) with a Changed File [trigger condition](https://developer.harness.io/docs/platform/triggers/triggering-pipelines#set-trigger-conditions) that listens for changes to the target file, and then configure the trigger to run [selective stage execution](https://developer.harness.io/docs/platform/triggers/selective-stage-execution-using-triggers) and run all stages that you want to run when that file changes, including the stage with your isolated step.
 
+### Can I use stage variables in my CI stage Parallism Strategy?
+
+When using variables in your Parallelism Strategy, these variables must be resolved before the stage begins execution. Therefore, you can only use pipeline variables or stage variables from previously executed stages.
+
 ### Can I assert an environment variable within a JEXL conditions?
 
 While we support output variables that can point to an environment variable, we do not support the direct referencing of environment variables in JEXL conditions, even when using the feature flag `CI_OUTPUT_VARIABLES_AS_ENV` (which automatically makes environment variables available for other steps in the same build stage).

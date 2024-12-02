@@ -1,0 +1,8 @@
+{
+  "label": "Manage Artifacts",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link": { "type": "generated-index", "title": "Manage Registries" },
+  "customProps": {},
+  "position": 30
+}

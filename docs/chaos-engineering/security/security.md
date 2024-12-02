@@ -81,7 +81,7 @@ HCE supports fault injection into non-Kubernetes resources such as on-premises V
 
 Additionally, HCE supports custom validation tasks such as retrieving metrics from an APM, making API calls for health status, and running background processes for data integrity.
 
-Both of the aforementioned actions require specific access to the infrastructure or service in question. This information is expected to be fed as Kubernetes secrets to the transient chaos pod resources that are launched during experiment execution. To learn more about how experiments are executed, go to [chaos architecture](/docs/chaos-engineering/concepts/deployment-architecture).
+Both of the aforementioned actions require specific access to the infrastructure or service in question. This information is expected to be fed as Kubernetes secrets to the transient chaos pod resources that are launched during experiment execution. To learn more about how experiments are executed, go to [chaos architecture](/docs/chaos-engineering/concepts/explore-architecture).
 
 :::info
 The experiment artifact that is stored in a chaos hub or supplied when you create an experiment only references the names of secrets. You can fully manage the life cycle of the secrets within their clusters.

@@ -184,6 +184,12 @@ The scope is tied to URL format `https://gitprovider.com/org-name`, so all the G
 
 ![](static/select-onboarding-path.png)
 
+### Onboard Services Post Getting Started
+
+You can add new services to the IDP after the initial onboarding flow. Simply navigate to **Admin**, select **Get Started**, and you’ll find the Onboard Service Wizard available for use.
+
+![](./static/get-started-admin.png)
+
 <Tabs queryString="Import Harness Services">
 <TabItem value="import-harness-services" label="Import Harness Services">
 
