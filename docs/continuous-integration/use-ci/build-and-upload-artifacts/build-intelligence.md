@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 Build Intelligence is part of [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence), a suite of features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. BI works by storing these outputs locally or remotely and retrieving them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency.
 
 :::note
-* Build Intelligence is currently only offered to Harness Cloud, self hosted Kubernetes Infra with support for other self hosted Infras coming soon. This feature is behind the feature flag `CI_CACHE_ENABLED` if infra is Harness Cloud. 
+* Build Intelligence is currently only offered to Harness Cloud, self hosted Kubernetes Infra with support for other self hosted Infras coming soon. This feature is behind the feature flag `CI_CACHE_ENABLED` when the infrastructure is Harness Cloud. 
 * 'Build intelligence' CI stage property, which enables automatic setup of Build Intelligence on Harness Cloud when using supported build tools in Run and Test steps is behind the feature flag `CI_ENABLE_BUILD_CACHE_HOSTED_VM`.
 
 Contact [Harness Support](mailto:support@harness.io) to enable the feature.
