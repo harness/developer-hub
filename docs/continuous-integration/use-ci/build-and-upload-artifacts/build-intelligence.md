@@ -87,7 +87,6 @@ The above operation is transparent to you as a user and happens in the backgroun
 Harness Cloud:
     If you enable buildIntelligence on UI, It will automatically inject the back ground step which is responsible to bring up the proxy-server and autodetect the build tool and inject the configuration. If the run/Tests steps runs in the container there also we will again auto-inject the config.
 Kubernetes:
-    If you enable buildIntelligence on UI, It will automatically inject the back ground step which is responsible to bring up the proxy-server.From every run/test steps we will auto detect and auto-inject the config based on the build tool.
 
 Currently the proxy server is running on port: `8082`
 
