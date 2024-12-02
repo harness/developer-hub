@@ -97,7 +97,7 @@ Currently the proxy server is running on port: `8082`
 `$GRADLE_HOME/init.d/init.gradle, $GRADLE_USER_HOME/init.d/init.gradle, $HOME/.gradle/init.d/init.gradle`(If $GRADLE_HOME and $GRADLE_USER_HOME are present in your environments).
 2. If you want to use your own specific maven repository, you should give `MAVEN_URL` as stage variable or else It will pull from mavenCentral() where our HarnessGradlePlugin resides(for reference: https://central.sonatype.com/artifact/io.harness/gradle-cache/overview).
 3. If you want to use your own maven repository, you should download the latest version plugin dependencies from maven central(As of now the latest version is `0.0.4`).
-4. The variables `HARNESS_ACCOUNT_ID` and `HARNESS_CACHE_SERVICE_ENDPOINT` will be automatically set if you enable build Intelligence.
+4. The variables `HARNESS_ACCOUNT_ID` and `HARNESS_CACHE_SERVICE_ENDPOINT` will be automatically set when you enable Build Intelligence.
 
 ```groovy
 // import the plugin
