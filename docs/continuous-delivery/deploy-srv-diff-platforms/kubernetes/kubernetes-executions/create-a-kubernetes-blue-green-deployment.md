@@ -122,14 +122,6 @@ Let's look at the deployment process using two Kubernetes services:
    2. Harness points the stage service at new pod set (with new app version) and verifies that the set reached steady state.
    3. Harness swaps the primary service to new pod set, stage service to old pod set.
 
-## Visual summary
-
-Here's a video walking through a Blue-Green deployment. It's 10 minutes long but it covers set up and two deployments.
-
-<!-- Video:
-https://www.youtube.com/watch?v=0x2eHfpNv_o-->
-<DocVideo src="https://www.youtube.com/watch?v=0x2eHfpNv_o" />
-
 ## Define the service and infrastructure
 
 Create your CD Pipeline stage.
@@ -155,13 +147,7 @@ Additionally, you can add a Blue Green Stage Scale Down step to scale down the l
 
 This functionality helps you efficiently manage your resources. You can configure the scale down step within the same stage or a different stage, based on your requirement.
 
-Here's a quick video walking through a simple Blue Green Stage Scale Down step:
-
-<!-- Video:
-https://www.loom.com/share/c6fdc714f4234cd093a26d68dbdafdd8?sid=f1980faf-2646-4ea0-852f-a92a9fb1c7c6-->
-<DocVideo src="https://www.loom.com/share/c6fdc714f4234cd093a26d68dbdafdd8?sid=f1980faf-2646-4ea0-852f-a92a9fb1c7c6" />
-
-During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
+During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, DaemonSets, and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
 That's it. Harness will deploy the artifact using the stage service initially, and swap traffic to the primary service.
 
@@ -330,7 +316,7 @@ Done
 A great benefit of a Blue Green deployment is rapid rollback: rolling back to the old version of an app is simple and reliable because network traffic is simply routed back to the previous pods.
 
 :::important Behavior change
-For Blue Green deployments, Harness used to scale down deployments, StatefulSets, DaemonSets, deploymentConfig, and delete HPA and PDB resources. During scale down, Harness updated the field replicas to 0. In Kubernetes, if HPA is configured, it is not mandatory to define replicas. So when another deployment happens and Harness applies the same old deployments manifest, it does not update the replicas field and remains 0. This results in no deployment even though the pipeline is successful. To resolve this, Harness now scale down only DaemonSets and delete deployment, deploymentConfig, HPA, PDB, and StatefulSet resources. 
+For Blue Green deployments, Harness used to scale down deployments, DaemonSets, deploymentConfig, and delete HPA and PDB resources. During scale down, Harness updated the field replicas to 0. In Kubernetes, if HPA is configured, it is not mandatory to define replicas. So when another deployment happens and Harness applies the same old deployments manifest, it does not update the replicas field and remains 0. This results in no deployment even though the pipeline is successful. To resolve this, Harness now scale down only DaemonSets and delete deployment, deploymentConfig, HPA, and PDB resources. 
 :::
 
 You do not need to redeploy previous versions of the app and the pods that comprised their environment.
@@ -366,7 +352,7 @@ Currently, this functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB
 
 :::
 
-The Horizontal Pod Autoscaler (HPA) automatically scales ReplicationControllers, Deployments, ReplicaSets, or StatefulSets based on CPU utilization. Scaling is horizontal, as it affects the number of instances rather than the resources allocated to one container. Upon initial configuration, HPA can make scaling decisions based on custom or external metrics. All you need to do is define the minimum and maximum number of replicas and a trigger limit.
+The Horizontal Pod Autoscaler (HPA) automatically scales ReplicationControllers, Deployments, or ReplicaSets based on CPU utilization. Scaling is horizontal, as it affects the number of instances rather than the resources allocated to one container. Upon initial configuration, HPA can make scaling decisions based on custom or external metrics. All you need to do is define the minimum and maximum number of replicas and a trigger limit.
 
 Here's a sample HPA resource:
 
@@ -510,7 +496,6 @@ PDB can be applied for the following types of controllers:
 - Deployment
 - ReplicationController
 - ReplicaSet
-- StatefulSet
 
 Here's a sample PBD resource:
 

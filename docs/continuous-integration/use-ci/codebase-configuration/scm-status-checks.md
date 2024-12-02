@@ -37,6 +37,7 @@ To get status updates in your PRs, you must:
 
 1. [Configure a default codebase for your pipeline.](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase) Your pipeline must have a Build stage. Build updates are only exported for Build stages.
 2. Make sure you enable API access in your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#code-repo-connectors) settings.
+![](./static/scmstatus-apiauth.png)
 3. Run PR builds. Branch and tag builds don't send PR status updates. You can use [webhook triggers](/docs/platform/triggers/triggering-pipelines) to automatically run builds when PRs are created or updated.
 
 ## Custom SCM status checks

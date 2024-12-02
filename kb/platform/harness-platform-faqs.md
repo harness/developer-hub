@@ -1665,7 +1665,7 @@ No, a delegate can only be connected to one manager instance. Hence the same del
 ### Do proxy settings apply to both HTTP delegate commands and raw socket connects during capability checks?
 
 Proxy settings typically work for HTTP delegate commands, enabling you to route HTTP traffic through a proxy server. However, in the case of capability checks, such as raw socket connects, proxy settings might not apply.
-`CDS_USE_HTTP_CHECK_IGNORE_RESPONSE_INSTEAD_OF_SOCKET_NG` this feature flag should be enabled to solve the issue.
+`Ignore status code for HTTP connections` this account setting (Continuous Deployment) should be enabled to solve the issue.
 
 ### Are automatic upgrades available for ECS delegates?
 
@@ -3364,3 +3364,11 @@ You can use our RBAC and create a resource group and role so it can be used only
 ### If there is a pipeline in progress when we upgrade the delegate. Will the pipeline fail and need to be re-run?
 Delegate upgrades do not affect pipelines unless the shutdown timeout is reached. Before an upgrade is performed, the delegate finishes the underway tasks. The delegate then shuts down. There is a 10-minute timeout by default as part of the shutdown process. You can configure this setting, by updating the terminationgraceperiod in delegate yaml.
 
+### Is user can export the list of all user present in harness?
+Yes, You can use this API to get the whole user list: https://apidocs.harness.io/tag/User#operation/getUsers
+
+### Does Harness have an API that can be used to check the status of the deployment?
+Yes, Harness has an API to check the status of the deployment. You can check here for that: https://apidocs.harness.io/tag/Pipeline-Execution-Details
+
+### How can user restart a delegate?
+User can restart the delegate by deleting the pod itself.

@@ -1,12 +1,24 @@
 import type { Context } from '@netlify/functions';
 
 export default async (req: Request, context: Context): Promise<Response> => {
-  const header = {
-    'Access-Control-Allow-Origin': 'https://www.harness.io',
+  const allowedOrigins = [
+    'https://www.harness.io',
+    'https://staging.marketing.harness.io',
+  ];
+
+  let header: {
+    [key: string]: string;
+  } = {
     'Access-Control-Allow-Methods': 'GET,OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
   };
-
+  if (allowedOrigins.includes(req.headers.get('origin'))) {
+    header = {
+      'Access-Control-Allow-Origin': req.headers.get('origin'),
+      'Access-Control-Allow-Methods': 'GET,OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    };
+  }
 
   if (req.method === 'OPTIONS') {
     return new Response('ok', {

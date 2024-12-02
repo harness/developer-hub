@@ -471,3 +471,19 @@ Unhealthy: Route 53 considers the health check to be unhealthy.
 LastKnownStatus: Route 53 uses the status of the health check from the last time that CloudWatch had sufficient data to determine the alarm state. For new health checks that have no last known status, the default status for the health check is healthy.
 ```
 https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-healthcheck-healthcheckconfig.html﻿
+
+#### Why is the Resource Constraint holding the deployment for two pipelines with different infrastructures but the same service?
+
+The deployment might being held because the infrastructure key is created from the service ID + environment ID + connector ID. Since the connector ID is missing, the infrastructure key remains the same for both pipelines.
+
+To resolve such issues and allow simultaneous deployment, you can:
+
+- Add a Connector: In the "Select Host" field, specify a connector.
+- Change the Secret Identifier: Ensure the secret ID is different for each pipeline.
+
+This approach prevents parallel deployments when a pipeline is triggered both from the API and manually at the same time.
+
+#### How can I configure and use custom runners with specific resource requirements in Harness for specific pipelines?
+You can select infrastructure per pipeline in Harness. For Harness Cloud, you can scale resources as needed. Alternatively, if you run builds on your own EKS cluster, you can define CPU and memory requirements within the pipeline.
+
+For more details on setting up build resources in your Kubernetes cluster for Harness builds, refer to [our documentation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/).

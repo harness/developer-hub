@@ -533,7 +533,7 @@ Entity Refs are case-insensitive.
 
 :::info
 
-We need to add escape character for any field has an additional `DOT` in the path like `metadata.annotation.harness.io/idp-test` , that part needs to be escaped with `\"` like this `metadata.annotations.\"harness.io/idp-test\"`
+We need to add escape character for any field has an additional `DOT` in the path like `metadata.annotation.harness.io/idp-test`, that part needs to be escaped with `\"` like this `metadata.annotations.\"harness.io/idp-test\"`
 
 :::
 
@@ -622,13 +622,13 @@ When you want to update a specific property of a catalog entity, you can use dif
 
 #### Available Modes:
 - **replace** (default): Completely replaces the existing value with the new one provided in the `value` field.
-- **append**: Adds new values to the existing array (or other appendable types like maps or key-value pairs).
+- **append**: Adds new values to the existing array (or other types to be appended like maps or key-value pairs).
 
 > **Note**: `append` only works with data types that can hold multiple values, such as arrays or maps. It does not apply to simple data types like strings.
 
 ---
 
-#### Example 1: Creating the First Entity (No Mode Specified)
+#### Example 1: Add a Property to the Entity (No Mode Specified)
 
 By default, when you add a property to an entity, it uses the `replace` mode to set the value.
 
@@ -647,7 +647,7 @@ POST /catalog/custom-properties/entity
 ```
 This sets the `metadata.tags` for `boutique-service` to `"scala"` replacing the existing values
 
-#### Example 1: Creating the First Entity (No Mode Specified)
+#### Example 2: Add New Values to the Entity
 
 To add new tags without replacing the existing ones, you can use the `append` mode.
 
@@ -668,6 +668,26 @@ POST /catalog/custom-properties/entity
 }
 ```
 Result: The `metadata.tags` property will now be `["scala", "python", "java", "c++"]`, with the new values added to the existing ones.
+
+#### Example 3: Add a new annotation
+
+To add a new `annotation` under, `metadata` we can append the `metadata.annotations` field.
+
+```http
+POST /catalog/custom-properties/entity
+```
+
+```json title="Payload" {4}
+{
+  "entity_ref": "github-pull-request",
+  "property": "metadata.annotations",
+  "value": {
+          "harness.io/pipelines": "CI: https://app.harness.io/ng/account/account_id/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio?storeType=INLINE"
+        },
+  "mode": "append"
+}
+```
+Result: The `metadata.annotations` property will now add `harness.io/pipelines` to the existing annotations. If `harness.io/pipelines` annotations already exists then this will overwrite the same. 
 
 #### When to Use Each Mode:
 

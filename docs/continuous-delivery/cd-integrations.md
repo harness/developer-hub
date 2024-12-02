@@ -22,6 +22,43 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| CDS_SERVICE_ACCOUNT_SUPPORT_IN_HARNESS_APPROVAL | Enables users to approve Harness approval requests using the Approval API with a Service Account token. To learn more, refer [Using the Approvals API with Service Account Authentication](/docs/platform/approvals/adding-harness-approval-stages/#using-the-approvals-api-with-service-account-authentication). <b> This feature is in Limited GA. </b> |
+| CDS_AWS_SESSION_TOKEN_SUPPORT | Enables users to use JET identity tokens for authentication for AWS connectors. <b> This feature is in Limited GA. </b>|
+| CDS_AWS_EKS_CLUSTER_MANUAL_CONFIGURATION | Enables users to manually configure the connection to Amazon EKS clusters by providing the endpoint and optional CA cert. <b> This feature is in Limited GA. </b> |
+| CDS_LIST_BRANCH_V2 | Enables users to search branches in a repository with infinite scroll and add branches manually when needed.<b> This feature is in Limited GA. </b> |
+| CDS_ENABLE_RAW_MODE | This feature requires enabling an Account-level setting after the Feature Flag is enabled. When this setting is disabled, blank fields are treated as Null. Enabling this option will treat blank fields as empty strings. Please be aware that this change may be disruptive to existing Input Sets.<br/> To learn more, refer [Handling empty strings](/docs/platform/pipelines/input-data-preprocessing/). <b> This feature is in Limited GA. </b> |
+| CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE | Enables users to store the Terraform Plan temporarily on Harness Delegate, avoiding Secrets Manager storage or file size limits. <b> This feature is in Limited GA. </b> |
+| CDS_MARK_PIPELINE_AS_FAILURE | Enables users to mark a running pipeline as failed, triggering failure strategies for all executing stages. <b> This feature is in Limited GA. </b> |
+| CDS_AUTH_CHECK_IN_WEBHOOK_DETAILS_ENDPOINTS | Enables users to track deployment status programmatically via REST using the apiUrl from a custom trigger's JSON response. <b> This feature is in Limited GA. </b>|
+| CDS_PIPELINE_ABORT_RBAC_PERMISSION_MIGRATION | Enables users to run RBAC validation before executing inline pipelines to ensure access to required environments and resources. <b> This feature is in Limited GA. </b>|
+| CDS_PIPELINE_ABORT_RBAC_PERMISSION | Enables users to control Abort permission separately from other pipeline execute functions. <b> This Feature is in Beta. </b> |
+| CDS_REMOVE_CONNECTOR_HEARTBEAT | Enables users to set Pre Flight Check as the default for pipeline execution. <b> This feature is in Limited GA. </b>|
+| PL_GCP_OIDC_AUTHENTICATION | Enables user to configure custom attributes for OIDC with the GCP connector. <b> This feature is in Limited GA. </b> |
+| CDS_EVENT_BRIDGE_WEBHOOK | Enables users to trigger pipelines in real time using the newly introduced EventBridge webhooks, which can be configured with Git, Slack, or generic options (such as Nexus artifacts). <b> This feature is in Limited GA. </b> |
+| PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT | Enables users to upload files as a runtime input during execution of a pipeline using **File Upload** step. <b> This feature is in Limited GA. </b>|
+| CDS_ENCODE_API_REQUESTS | Enables users to fetch an artifact version from Nexus during deployment. <b> This feature is in Limited GA. </b>|
+| CDS_EMAIL_USE_DEFAULT_FORMATTING | Enables user to send HTML content in the email body in the **Email Step**. <b> This feature is in Limited GA. </b> |
+| CDS_K8S_SANITIZE_COMPLETE_DRY_RUN_STEP_OUTPUT | Enables users to access Kubernetes service and job names in the exported manifest. <b> This feature is in Limited GA. </b> |
+| CDS_K8S_ASYNC_STEP_STRATEGY | Enables users to view log details in the UI when a pipeline with K8s async steps times out. <b> This feature is in Limited GA. </b>|
+| CDS_ASG_ROLLOUT_ROLLBACK_INSTANCE_REFRESH | Enable this feature to eliminate downtime during the Auto Scaling Group (ASG) rollback instance refresh. <b> This feature is in Limited GA. </b>|
+| CDS_CF_CLI_ENVIRONMENT_VARIABLE_SUPPORT | Enables users to configure CLI environment variables for Tanzu Application Service deployment in the Service and overrides. <b> This feature is in Limited GA. </b>|
+| CDS_ALLOWED_VALUES_DROPDOWN_PDC_HOSTS | Enables users to define allowed values in the Select Hosts settings under infrastructure. In the runtime view, a multi-select dropdown will be displayed, allowing users to choose from the predefined allowed values. <b> This feature is GA. </b>|
+| CDS_OVERRIDES_GITX | Enables users to manage overrides using Git, with options to store them remotely or inline <b> This feature is in Limited GA. </b>|
+| CDS_MULTI_DEPLOYMENT_ON_FAILURE | Enables users to apply failure strategies during multi-service, multi-infrastructure, and matrix deployments. <b> This feature is in Limited GA. </b>|
+| CDS_SERVICE_INFRA_FAILURE_STRATEGY | Enables a failure strategy for the service, where the service step will, by default, inherit the failure strategy from the stage. <b> This feature is in Limited GA. </b>|
+| CDS_SPECIFY_INFRASTRUCTURES | Enables users to select all the infrastructures in the environment by choosing the **All Infrastructures** checkbox. <b> This feature is GA. </b>|
+| PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS | This enables users to view both manual executions and those triggered automatically by Git pull requests (PRs) in the My Executions filter on the listing page. Executions triggered by GitHub PRs, as well as manually triggered pipeline executions, will appear in the My Executions list. <b> This feature is in Limited GA. </b>|
+| CDS_SERVICE_ENV_CLONING | Enables users to clone services across different scopes, such as from one project to another, from a project to an organization, or from an account to a project, as well as across environment scopes. <b> This feature is in Limited GA. </b>|
+| PIPE_MARK_PARENT_PIPELINE_STATUS_WAITING_AS_CHILD | Enables users to see both the parent and child pipeline statuses as "Waiting" when the child pipeline is in a wait step during pipeline chaining, instead of having the parent pipeline show as **Running** while the child shows as **Waiting**. <b> This feature is in Limited GA. </b>|
+| CDS_LIST_REPO_V2 | Enables users to search for repositories with infinite scroll support in a specific connector. By entering any keyword, related repositories will be displayed. If the desired repository is not found, users can also add it manually. <b> This feature is in Limited GA. </b>|
+| ENV_GROUP_DEPLOYMENTS_IN_SERIAL | Enables users to use the serial deployment of environment groups. <b> This feature is in Limited GA. </b>|
+| PIE_SHOW_ALL_EXECUTIONS_FILTER | Enables users to lists all pipeline executions including retired and child executions in the Executions page. <b> This feature is GA. </b>|
+| CDS_DISABLE_FALLBACK_EXPRESSION_ENGINE | Enables users to leverage the updated expression resolution fallback logic, which now calls the fallback more effectively. <b> This feature is in Limited GA. </b> |
+| CDS_K8S_PATCH_STEP_NG | We have introduced a Patch step for Kubernetes deployments to make changes to specific resources or workloads in a Kubernetes cluster without affecting other fields. This step helps Spinnaker users migrate to Harness. Spinnaker has a stage type called Kubernetes Patch. <b>This feature flag is Limited GA.</b> |
+| GITOPS_AGENT_HELM_V2 | Enables you to download a helm-chart file for the Harness GitOps Agent. <b> This feature is GA. </b> |
+| CDS_GITOPS_LABELS_BASED_ACCESS_TO_APPS | Allow users to filter applications based on labels while creating a resource group for Gitops application. <b> This feature is in Limited GA. </b> |
+| GITOPS_MULTI_SOURCE_ENABLED | Enables users to support Multi-Source applications with ArgoCD in Harness GitOps. <b> This feature is in Limited GA. </b> |
+| GITOPS_GET_APP_DETAILS_STEP | Enables users to fetch the details and status of their application. <b> This feature is in Limited GA. </b> |
 | CDS_HELM_STEADY_STATE_CHECK_1_16 | Allow users leveraging Kubernetes version 1.16 or later to perform steady state check for Helm deployments. <b> This feature is in Limited GA. </b> |
 | OPA_PIPELINE_GOVERNANCE | Enables [Policy as code](/docs/platform/governance/policy-as-code/harness-governance-overview) for a Harness account. <b> This feature is GA. </b> |
 | CDS_HELM_VERSION_3_8_0 | Sets the default version of Helm to 3.8 when using the Harness Helm delegate. <b> This feature is in Limited GA. </b> |
@@ -70,4 +107,3 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CV_NEWRELIC_NEW_API | Enable this feature if you want to use the NerdGraph API for the NewRelic Health Source. <b>This is a Beta feature.</b> |
 | CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX | Enable this feature if you want updated logic for permissions inheritance between steps and their step groups. To learn more go to [Step Group Inheritance Logic](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step). <b>This is a Beta feature.</b> |
 | CV_MONITORED_SERVICE_TEMPLATIZATION | Enable this feature if you want to select a monitored service template as a runtime input. To learn more, go to [Select a monitored service template during runtime](/docs/continuous-delivery/verify/cv-getstarted/configure-first-cv#select-a-monitored-service-template-during-runtime). <b>This is a Beta feature.</b> |
-

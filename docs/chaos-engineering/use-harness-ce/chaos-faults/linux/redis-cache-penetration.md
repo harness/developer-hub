@@ -32,6 +32,11 @@ Redis cache penetration fault continuously sends cache requests to the Redis dat
     <th> Notes </th>
   </tr>
   <tr>
+    <td> address </td>
+    <td> The address of the Redis server. </td>
+    <td> If a password or certificate is also required alongside the address, please use the <a href="#redis-authentication">secret file approach</a>. </td>
+  </tr>
+  <tr>
     <td> requestCount </td>
     <td> Number of requests to be sent for accessing the cache. </td>
     <td> Default: 1000. For more information, go to <a href="#number-of-requests"> request count. </a></td>

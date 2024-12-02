@@ -1,11 +1,11 @@
 ---
 title: Dynamic Workflow Picker based on API Response
 description: This page describes how you can create a dynamic workflow picker in IDP and create dropdown fields which show results based on an API response.
-sidebar_position: 100
+sidebar_position: 20
 sidebar_label: Dynamic Workflow picker based on API response
 ---
 
-It is quiet common to create a UI field in [IDP Workflow](http://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#specparameters---formstep--formstep) forms which shows a static list options to the user. For example -
+It is quite common to create a UI field in [IDP Workflow](http://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#specparameters---formstep--formstep) forms which shows a static list options to the user. For example -
 
 ```yaml
 properties:
@@ -50,15 +50,15 @@ The first step is to declare a new Backend Proxy so that the Workflow forms UI c
 
 Go to IDP Admin -> Plugins. Find the plugin called "Configure Backend Proxies".
 
-![](./static/configure-backend-proxy-plugin.png)
+![](./static/config-backend-proxies-plugin.png)
 
 Inside the plugin, you get three options (like any other [IDP plugin configuration](https://developer.harness.io/docs/internal-developer-portal/plugins/overview)).
 
 1. Declare a Backend Proxy endpoint and headers
 2. Configure necessary secrets
-3. Configure Delegate Proxy (in case the API is not publicly accessible or the secret is on your infrastructure)
+3. Configure Delegate Proxy (in case the API is not publicly accessible, or the secret is on your infrastructure)
 
-In order to setup a proxy to connect with GitHub APIs, you can add the following in the configuration YAML
+In order to set up a proxy to connect with GitHub APIs, you can add the following in the configuration YAML
 
 ```yaml
 proxy:
@@ -77,19 +77,19 @@ The `target` should point to the API base URL of your 3rd party provider e.g. `a
 
 The `pathRewrite` is field used by the system to ensure the API requests are correctly rerouted. It needs to be of the format `/api/proxy/<endpoint_name>/?: /` as shown above.
 
-In the `headers` you can add an Authorization header. Ensure you use a unique token name here as variables are `GITHUB_TOKEN` or `BITBUCKET_TOKEN` are system defined. The token name does not matter, as long as a secret is setup for the corresponding variable.
+In the `headers` you can add an Authorization header. Ensure you use a unique token name here as variables are `GITHUB_TOKEN` or `BITBUCKET_TOKEN` are system defined. The token name does not matter, as long as a secret is set up for the corresponding variable.
 
 ![](./static/example-proxy-backend-config.png)
 
 Hit "Save Configuration" and now our backend proxy is ready to use!
 
-You can verify this endpoint by making requests to the `proxy` endpoint at `https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/proxy`. For example in order to test the GitHub example above, you can make a request to
+You can verify this endpoint by making requests to the `proxy` endpoint at `https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/proxy/`. For example in order to test the GitHub example above, you can make a request to
 
 ```
-https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/proxy/github-api/user
+https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/proxy/github-api/user
 ```
 
-Here `https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/proxy/github-api/` can be seen exactly as `https://api.github.com/`. So all the endpoint paths on the GitHub API can be used after the proxy endpoint URL. You can learn more about how to consume Harness IDP APIs on our [API Docs](/docs/internal-developer-portal/api-refernces/public-api).
+Here `https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/proxy/github-api/` can be seen exactly as `https://api.github.com/`. So all the endpoint paths on the GitHub API can be used after the proxy endpoint URL. You can learn more about how to consume Harness IDP APIs on our [API Docs](/docs/internal-developer-portal/api-refernces/public-api).
 
 ### Step 2: Create the dropdown picker in Workflows form
 
@@ -122,6 +122,63 @@ Let us understand these properties in detail -
 And that's it! We now have a Workflow dropdown where results are coming from an external API response.
 
 ![](./static/dynamic-picker-example.png)
+
+### Use Form Data from a Previous page in a New Page
+
+While using Dynamic Workflow UI Pickers, users can now reference the data take as an input in the previous page, using `{{ parameters.properties }}`.
+
+```YAML
+parameters:
+  - title: Select Harness Project
+    type: object
+    properties:
+      projectId:
+        title: Harness Project ID
+        description: Select the Harness Project ID
+        type: string
+        ui:field: HarnessProjectPicker
+        ui:autofocus: true
+      organizationId:
+        title: Harness Organization ID
+        description: Select the Harness Organization ID
+        type: string
+        ui:field: HarnessAutoOrgPicker
+  - title: Select Harness Pipeline
+    type: object
+    properties:
+      pipelineId:
+        type: string
+        ui:field: SelectFieldFromApi
+        ui:options:
+          title: Harness Pipeline ID
+          placeholder: Select the Harness Pipeline ID
+          allowArbitraryValues: true
+          path: proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{
+            parameters.projectId }}/pipelines
+          valueSelector: identifier
+          labelSelector: identifier
+steps:
+  - id: debug
+    name: Debug
+    action: debug:log
+    input:
+      message:
+        "{ parameters.pipelineId }": null
+```
+
+In the above YAML, the API endpoint values under the `path` dynamically insert the `organizationId` and `projectId` from the first set of parameters taken as an input in the previous page, to construct the endpoint URL for fetching the list of pipelines. 
+
+```bash
+proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{ parameters.projectId }}/pipelines
+```
+
+Hence, it will list all the pipelines present under the particular project int org mentioned as displayed below. 
+
+![](./static/parameters-refernce.gif)
+
+:::info
+You cannot reference properties on the same page, and property references only work with values provided through Dynamic UI pickers. 
+:::
 
 ## Reference Docs
 
@@ -161,7 +218,7 @@ You can find the detailed docs on the [project's README](https://github.com/Road
 
 ### Parsing API Response using filters
 
-Let's look at some of the different types of API responses and how to create a picker based on that using the `arraySelector`, `valueSelector` and `labelSelector` filters.
+Let's look at some different types of API responses and how to create a picker based on that using the `arraySelector`, `valueSelector` and `labelSelector` filters.
 
 #### Case 1: The response is an array
 
@@ -169,7 +226,7 @@ Let's look at some of the different types of API responses and how to create a p
 ["item1", "item2"]
 ```
 
-This is the most straightforward case and we do not need any of the additional filters here.
+This is the most straightforward case, and we do not need any of the additional filters here.
 
 ```yaml
 properties:
@@ -264,4 +321,4 @@ properties:
 
 ### Advanced processing the API response
 
-If the filters here are not sufficient for your use case and you require additional data processing of the response, then we recommend you setting up a Lambda function in your cloud provider or a lightweight backend to do this job. You can use your Backend Proxy and Delegate Proxy to communicate to your custom Lambda/Backend.
+If the filters here are not sufficient for your use case, and you require additional data processing of the response, then we recommend you setting up a Lambda function in your cloud provider or a lightweight backend to do this job. You can use your Backend Proxy and Delegate Proxy to communicate to your custom Lambda/Backend.

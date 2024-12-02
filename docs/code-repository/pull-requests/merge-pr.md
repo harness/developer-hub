@@ -15,8 +15,20 @@ After [reviewing a PR](./review-pr.md), you can merge it and commit the changes 
    * **Squash and merge:** All commits from the source branch are combined into one commit in the base branch.
    * **Merge pull request:** All commits from the source branch are added to the base branch via a merge commit.
    * **Rebase and merge:** All commits from the source branch are rebased and added to the base branch.
+   * **Fast-forward merge** Moves the base branch pointer to the latest commit of the source branch without creating a merge commit. 
 
    **Squash and merge** is the default strategy. To select another strategy, select the dropdown next to **Squash and merge**, and then select your preferred strategy. Available strategies depend on your branch history and the repository's [branch rules](../config-repos/rules.md).
+
+### Rebase a PR
+
+If the base branch has diverged from the source branch, you may want to rebase the PR before merging to ensure a clean integration of changes. You can do this by selecting the **Rebase** option in the 'more actions' menu of the PR before proceeding with the merge. Rebase is optional for all merge strategies but may be required for Fast-forward merges when the base branch has diverged from the source branch. 
+
+:::info Note
+
+* Merge conflicts will need to be resolved locally on the client before rebasing.
+* Rebase is not possible if force-push is disabled on the source branch in repository branch rules.
+
+:::
 
 ### Merge strategies
 
@@ -25,6 +37,7 @@ Merge strategies define how changes from the source branch are integrated to the
 * **Squash and merge:** Combine all commits from the source branch into a single commit, or *squash commit*, on the base branch. This strategy is best if you want to maintain a linear project history. From a project standpoint, a squash commit represents a single, meaningful commit on the base branch. The squash commit preserves the context of all changes through PR comments, discussions, and the metadata stored within the commit itself. However, the drawback is that you lose some granular commit-by-commit metadata that you would retain with other merge strategies.
 * **Merge pull request:** Incorporate all commits from the source branch into the base branch through a merge commit. In Harness Code, the merge commit captures a snapshot of the codebase after merging the source branch into the base branch. This strategy preserves a detailed history of changes, and this record remains accessible for future reference through the merge commit.
 * **Rebase and merge:** With the **Rebase and merge** strategy, all commits in the source branch are rebased before being incorporated into the base branch. This strategy alters the commit history in order to provide a linear sequence of commits on the base branch. This strategy provides a chronological and streamlined history of events while retaining individual commit messages and contributions.
+* **Fast-forward merge** Moves the base branch pointer to the latest commit of the source branch without creating a merge commit. This strategy is useful when the base branch has not diverged from the source branch, allowing for a clean and straightforward integration of changes. If the base branch has diverged from the source branch, a fast-forward merge is not possible until the source has been rebased.
 
 ### Revert a merged PR
 

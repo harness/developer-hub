@@ -1,7 +1,7 @@
 ---
 title: Enable documentation for your Component
 description: Learn how you can enable the TechDocs plugin to show your Markdown docs on the **Docs** tab of the catalog page.
-sidebar_position: 40
+sidebar_position: 1
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
@@ -27,7 +27,7 @@ Docs in Harness IDP is powered by [TechDocs Backstage Plugin](https://backstage.
 To add documentation:
 
 1. Create a `docs` directory next to where you have `catalog-info.yaml`.
-2. Inside the `docs` directory, create an `index.md` file with the following contents.
+2. Inside the `docs` directory, create a `index.md` file with the following contents.
 
 ```
 # Welcome!

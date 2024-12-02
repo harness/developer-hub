@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 Pod network latency is a Kubernetes pod-level chaos fault that introduces latency (delay) to a specific container. This fault:
-- Initiates a traffic control (tc) process with netem rules to add egress delays.
+- Initiates a traffic control (tc) process with netem rules to add ingress/egress delays.
 - Degrades the network without marking the pod as unhealthy or unworthy of traffic by kube-proxy (unless there is a liveness probe that measures the latency and restarts (or crashes) the container).
 - Issues with microservice communication across the services can be resolved by using middleware that switches the traffic based on certain SLOs or performance parameters.
   - Such issues can also be resolved by setting up alerts and notifications to highlight a degradation, so that they can be addressed, and rectified. A
@@ -174,7 +174,7 @@ The following YAML snippet illustrates the use of this environment variable:
 [embedmd]: # "./static/manifests/pod-network-latency/network-latency.yaml yaml"
 
 ```yaml
-# it injects network-latency for the egress traffic
+# it injects network-latency for the egress/ingress traffic
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -213,7 +213,7 @@ The following YAML snippet illustrates the use of these environment variables:
 [embedmd]: # "./static/manifests/pod-network-latency/destination-ips-and-hosts.yaml yaml"
 
 ```yaml
-# it injects the chaos for the egress traffic for specific ips/hosts
+# it injects the chaos for the ingress/egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -252,7 +252,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-latency/source-and-destination-ports.yaml yaml)
 ```yaml
-# it inject the chaos for the egress traffic for specific ports
+# it inject the chaos for the ingress/egress traffic for specific ports
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

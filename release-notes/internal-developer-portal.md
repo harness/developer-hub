@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-10-21T20:00
+date: 2024-11-26T20:00
 sidebar_position: 12
 ---
 
@@ -16,6 +16,88 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## November 2024
+
+### Version 0.37.0
+
+<!-- November 26, 2024 -->
+
+- **New Videos:** [5 Things You Didn’t Know Were Possible in Harness IDP](https://youtu.be/S8kjTy5GBuQ), [Introducing New Workflows Homepage in Harness IDP](https://youtu.be/dJgf1ZUOs8s), [Catalog Metadata Ingestion API in Harness IDP](https://youtu.be/MB-IWGoYjOo), [How to let any user in your account Execute your Pipeline using Harness RBAC (IDP)](https://youtu.be/ySVEGtQ2uWU) 
+
+#### New features and enhancements
+
+- You can now view all your Jira tickets under the [My Tasks card](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/home-page-customization#my-tasks-card) on the Developer Home page, organized by sprints, progress, and other key developer information.
+
+![](./static/idp-jira-task.png)
+
+- Users can now onboard new services anytime using the [Get Started option under the Admin section](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#onboard-services-post-getting-started), even after completing the initial onboarding flow. [IDP-3984]
+
+![](./static/idp-re-onboarding.png)
+
+- Enhanced scorecard functionality by making the harness.io/services annotation optional for Policy Evaluation and STO stages based checks, enabling pipelines to use their last policy check results when defined. [IDP-3992]
+
+- Custom plugins now support arbitrary configurations under `customPlugins`, allowing more flexible plugin setups. [IDP-3911]
+
+```YAML
+## Example
+customPlugins:  
+  myPlugin:  
+    target: abc.com  
+```
+
+- Enhanced the URL allow list to now validate URLs before storing them for whitelisting. [IDP-3955] 
+
+#### Bug fixes
+
+- Fixed issue with Workflows V2 showing older Workflows when performing Layout customizations. [IDP-3969]
+
+- Fixed an issue where the "Add a New Workflow" navigation button did not direct to the correct group when the group had no workflows.[IDP-3968]
+
+- Fixed an issue where score computation was being skipped when no matching entities were found for a specific scorecard. The computation now handles such cases, ensuring consistent processing across all scorecards. [IDP-4256]
+
+- Fixed an issue where values entered using the `HarnessProjectPicker` were not maintaining their state between page navigation in the Workflow Forms. The state is now preserved.[IDP-4023]
+
+- Fixed an issue in the Catalog Ingestion API to handle case insensitivity with entity names, ensuring consistent behavior regardless of the case used in entity definitions. [IDP-4004]
+
+- Fixed an issue where pipelines stayed in a "waiting" status despite successful execution and added support to explicitly mark pipeline executions as Success for both "Success" and "IgnoreFailed" status, ensuring accurate status reporting in workflows. [IDP-3999]
+
+- Fixed an issue that allowed users to save a scorecard without adding all the mandatory fields.[IDP-3970]
+
+
+### Version 0.36.0
+
+<!-- November 13, 2024 -->
+
+#### New features and enhancements
+
+- You can now view your pull requests under the [My Pull Requests card](/docs/internal-developer-portal/layout-and-appearance/home-page-customization#my-pull-requests-card) on the Developer Homepage. Currently, only GitHub is supported. [IDP-3458]
+
+![](./static/idp-pull-request-github.png)
+
+- We’ve added support for [pipeline templates, stage variables, and step variables](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#support-for-stage-step-variables-and-pipeline-templates) to be used as inputs for workflows with the `trigger:harness-custom-pipeline` action. [IDP-3927]
+
+- The [Plugins Marketplace](https://developer.harness.io/docs/internal-developer-portal/plugins/plugin-marketplace) now offers a single-pane-of-glass view, showing plugins supported under IDP as well as available Backstage Community Plugins, which can be added based on customer requests. [IDP-4010]
+
+![](./static/idp-plugin-marketplace.png)
+
+- Added Audit trails Support for Workflows v2 and Homepage Layout. [IDP-3849, IDP-3848]
+
+- Added support for Harness Code Repository data points under Harness data source for Scorecards. The following data points are added: [IDP-3640]
+  - Extract string from a file
+  - Does file exist
+  - Match string in a file 
+
+
+#### Bug fixes
+
+- Resolved an issue with the Direct Push step on Harness-hosted infrastructure, where secrets data was not populated due to the Git clone step being skipped by default in the IDP stage. [IDP-4000]
+
+- Resolved the issue with removing old layout from IDP. [IDP-3905]
+
+- Resolved an issue with the Kubernetes plugin’s "View Logs" functionality. This feature now correctly requires the `kubernetes.proxy` permission to be set for proxied calls to work as expected. [IDP-3900]
+
+- Resolved an issue with `HarnessAutoOrgPicker` not displaying organizations for some projects. Increased the maximum number of projects from 500 to 1000 to support customer accounts with more than 500 projects. [IDP-4022]
 
 ## October 2024
 
@@ -166,7 +248,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - Fixed the issue with [pull and run images from private artifactory storage in your pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#pull-images), for developer portal stages. [IDP-3258]
 - Fixed the issue regarding the use of templates in IDP Stage. [IDP-3121]
 - Fixed the issue with "no git integration added banner" showing even when git integration is in place. [IDP-3157]
-- Fixed the issue with max projects fetched by [`HarnessProjectPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#3-harnessprojectpicker) UI Picker [IDP-3331].
+- Fixed the issue with max projects fetched by [`HarnessProjectPicker`](/docs/internal-developer-portal/flows/flows-input#3-harnessprojectpicker) UI Picker [IDP-3331].
 
 ### Version 0.29.0
 
@@ -318,7 +400,7 @@ Welcome to first release of April, and in this release we bring you features lik
 
 - We now support a new [git integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) framework, which will allow users to have multiple connectors, with different host name, for a single git provider at once. For eg., Users can now use connectors for both `github.com` and `github enterprise` to fetch entity yaml from both the sources at the same time. [IDP-2213]
 
-- We have added support for a new Workflow UI Picker, [`EntityFieldPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#entityfieldpicker) using which users can use the data present in catalog as an input for the workflows. [IDP-2441]
+- We have added support for a new Workflow UI Picker, [`EntityFieldPicker`](/docs/internal-developer-portal/flows/flows-input#1-entityfieldpicker) using which users can use the data present in catalog as an input for the workflows. [IDP-2441]
 
 - We have added a new plugin, to support [GitHub Codespaces](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/github-codespaces) integration in the software catalog.[IDP-2469]
 
@@ -837,7 +919,7 @@ contents:
 
 #### What's new
 
-- IDP now includes the Confluence search plugin to include results from Confluence spaces. To learn more, go to the [plugin documentation](/docs/internal-developer-portal/plugins/available-plugins/confluence). (IDP-845)
+- IDP now includes the Confluence search plugin to include results from Confluence spaces. (IDP-845)
 - The `harness:create-secret` and `harness:delete-secret` template actions are now available for use in IDP software templates. You can use these actions to receive a secret from a developer, create a Harness secret, and then use it as a pipeline variable to provide runtime input. For more information, go to the [tutorial](/docs/internal-developer-portal/tutorials/using-secret-as-an-input) (IDP-780)
 - The interval at which IDP polls Git repositories associated with the software catalog has increased from 5 minutes to 15 minutes. (IDP-749)
 

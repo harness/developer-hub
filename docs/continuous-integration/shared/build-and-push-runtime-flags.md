@@ -108,3 +108,60 @@ For example, to set `custom_dns`, add a stage variable named `PLUGIN_CUSTOM_DNS`
 ```
 
 </details>
+
+
+<details>
+<summary>Mounting Docker Secrets</summary>
+
+Harness now allows mounting Docker build secrets securely in 'Build and Push' steps. This feature enables you to pass sensitive data such as credentials or configuration files during Docker builds, either as environment variables or file-based secrets. It ensures secure handling of secrets, reducing the risk of exposing sensitive information.
+
+
+:::note
+- This feature is currently configurable only through YAML.
+- In Kubernetes, unlike other build infrastructures (e.g., Harness Cloud), "Build and Push" steps default to Kaniko rather than Buildx. To enable this feature in Kubernetes, you must enable the feature flag `CI_USE_BUILDX_ON_K8`. Additionally, note that Kubernetes build infrastructure using Buildx requires privileged access.
+:::
+
+
+<details>
+<summary>YAML example: Mounting Docker secrets</summary>
+
+This example demonstrates how to configure a Build and Push step with Docker secrets passed as both environment variables and file-based secrets:
+
+
+```yaml
+- step:
+    identifier: buildAndPush
+    type: BuildAndPushDockerRegistry
+    name: Build and Push Docker Image
+    spec:
+      connectorRef: dockerConnector
+      repo: dockerRepo/imageName
+      tags:
+        - ci-<+pipeline.executionId>
+      envDockerSecrets:
+        a_user: USERNAME # Environment variable in format of key:value
+        a_pass: PASSWORD
+      fileDockerSecrets:
+        docker_user2: <+secrets.getValue("myusername")> # File secret defined in Harness 
+        docker_pass2: <+secrets.getValue("mydockerpass")>
+        docker_user3: /harness/test.txt # path to local file in workspace containing the secret 
+      caching: true
+```
+
+The `envDockerSecrets` field allows you to define environment variables to securely pass sensitive information to the Docker build process.
+
+* Key: The name of the environment variable that will be exposed to the Docker build process.
+* Value: The secret value associated with the key. This can either be a plain text string or a reference to a secret managed securely in Harness.
+
+The `fileDockerSecrets` field allows you to mount secrets as files into the Docker build process. This is useful for passing configuration files, certificates, or other file-based sensitive data.
+
+* Key: The name of the secret as it will be referenced during the Docker build.
+* Value: The path to the file or a dynamic reference to a secret in Harness that will be mounted as a file.
+
+</details>
+
+</details>
+
+
+
+

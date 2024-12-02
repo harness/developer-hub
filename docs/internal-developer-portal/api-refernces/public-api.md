@@ -2,7 +2,7 @@
 title: Backstage API
 description: Lists the public API endpoints supported in IDP.
 sidebar_label: Backstage API
-sidebar_position: 1
+sidebar_position: 2
 redirect_from:
   - /docs/internal-developer-portal/public-api
 ---
@@ -105,9 +105,9 @@ curl 'https://idp.harness.io/{HARNESS_ACCOUNT_IDENTIFIER}/idp/api/catalog/refres
   --data-raw '{"entityRef":"{ENTITY_REF}"}'
 ```
 
-`ENTITY_REF` needs to be replaced with the entity path, for eg., `component:default/idp-service` (kind:namespace/name format)
+`ENTITY_REF` needs to be replaced with the entity path, for e.g., `component:default/idp-service` (kind:namespace/name format)
 
-Here are the steps to get the entityref:
+Here are the steps to get the `entityRef`:
 
 Go to **Inspect Entity** on the component page and under **Identity** in Overview you can find the `entityRef`
 
@@ -117,8 +117,8 @@ Go to **Inspect Entity** on the component page and under **Identity** in Overvie
 
 
 #### Response:
-The response will immediately sync the mentioned component in the entity ref with the `catalog-info.yaml` stored in the git provider
 
+The response will immediately sync the mentioned component in the entity ref with the `catalog-info.yaml` stored in the git provider
 
 ## Catalog Entities Delete API
 
@@ -311,6 +311,40 @@ Example:
       Condition 2: spec.type exists
 ```
 
+- **Example: Filter `components` based on `system` name**
+
+```cURL
+curl --location 'https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/entities?filter=kind=component,relations.partOf=system:default/SYSTEM_NAME' \
+--header 'x-api-key: X_API_KEY' \
+--header 'Harness-Account: ACCOUNT_ID'
+```
+In the above example since the `system` name is mentioned under `relations` in component's definition YAML, hence we have used the filter `relations.partOf=system:default/SYSTEM_NAME`. Here's the mention of `system` in component's YAML. 
+
+```YAML {17, 19}
+## Example IDP YAML
+...
+relations:
+  - type: dependsOn
+    targetRef: component:default/ng-manager
+    target:
+      kind: component
+      namespace: default
+      name: ng-manager
+  - type: ownedBy
+    targetRef: group:default/ccmplayacc
+    target:
+      kind: group
+      namespace: default
+      name: ccmplayacc
+  - type: partOf
+    targetRef: system:default/ccm
+    target:
+      kind: system
+      namespace: default
+      name: ccm
+...
+```
+
 #### Headers
 - `x-api-key`: Your Harness API token.
 - `Harness-Account`: Your Harness account ID.
@@ -322,6 +356,7 @@ curl 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/entities?filte
 --header 'x-api-key: {X_API_KEY}' \
 --header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
 ```
+
 
 #### Response:
 The response will include a list of catalog entities that match the specified filter criteria.

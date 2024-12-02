@@ -18,7 +18,53 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
+## November 2024
+
+### Version 1.34.3
+
+#### New features and enhancements
+
+- **UI for Hibernate Support for EC2 and Azure VM**: We have introduced the "Hibernate" option in the AutoStopping flow for Azure VM and EC2. This allows resources to enter a hibernation state until a request is received. [CCM-19907]
+  <DocImage path={require('./static/Hibernate-1.34.3.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- **UX Enhancements for Rule Sets and Enforcements in Asset Governance**:  
+  [CCM-19861] and [CCM-19860] We’ve improved the creation and update flow for the following:  
+  - **Enforcements** 
+ <DocImage path={require('./static/enforcement_rn.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+  - **Rule Sets**  
+ <DocImage path={require('./static/ruleset_rn.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- **Support for Pasting Comma-Separated Values**: Users can now paste comma-separated values in account, region, project, and subscription input fields across Azure, GCP, and AWS. [CCM-19837]
+
+- **Enhanced Governance Recommendations Details**: Asset Governance dashboards now display both **Account Name** in the Namespace field and **AWS Account ID** in a dedicated field. [CCM-19921]
+
+#### Fixed Issues
+
+- **Improved Schedule Creation in AutoStopping UI**:  
+  Users can now directly input numbers when creating schedules for AutoStopping in the UI, eliminating the need to rely solely on arrow keys. [CCM-19425]
+
 ## October 2024
+
+### Version 1.32.1
+
+#### New features and enhancements
+
+- Ad-Hoc Enforcement Runs: Users can now dry run or execute enforcements directly from the Enforcements list or details page in Asset Governance, improving control over ad-hoc enforcement. [CCM-19438]
+
+- New Resource Name Column in Recommendations View: A new column, Resource Name (No drilldown) has been added to the Governance recommendations view. This allows users to group Governance Recommendations by a specific rule in Dashboards. [CCM-19922]
+
+- AWS Payer Account ID Field Added: We’ve introduced the AWS Payer Account ID in the AWS fields dropdown for Perspectives and Cost Categories Rules. Only account IDs will be shown, excluding account names. [CCM-19843]
+
+- Increased Connector Limit for GCP: We raised the default limit to 6,000 for GCP cross combinations (target account * target region) to prevent unannounced system loads, aligning with the 200 account and 30 region limits in Asset Governance. [CCM-19838]
+
+- ‘Select All’ Option for Filtered Search: We have added a 'Select All' option to the filtered search results in Enforcement creation flow and Testing Terminal in Asset Governance. This option will select the entire filtered list. If the filtered list changes, the 'Select All' option will be deselected. If all filtered options are already selected, the 'Select All' option will be automatically selected. [CCM-19794]
+
+- Date Filter Sync Issue on Evaluation Details Page: Fixed a date filter sync issue displaying "undefined - undefined" on load. Users previously had to manually select a date range, which is now resolved. [CCM-19785]
+
+- Fixed ECS Metrics Chart Issue: CPU recommendations in ECS metrics charts previously displayed incorrect graphs, and CPU usage showed as 0. This has now been corrected. [CCM-19715]
+
+- AutoStopping Controller Update Notification: Outdated AutoStopping Controller versions will now trigger a UI notification, guiding users through the update steps. [CCM-19356]
 
 ### Version 1.32.1
 

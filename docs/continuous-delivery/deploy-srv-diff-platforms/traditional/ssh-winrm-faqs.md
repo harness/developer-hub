@@ -88,3 +88,9 @@ Need to check if the Windows machine is behind proxy and the same needs to be co
 
 ### Do we create the target directory for config file copy or artifact download if they do not exist?
 We do not create the directory if they do not exist, hence we need to ensure the path that we provide do exist on the target host.
+
+### Does Harness support automatic rollback for SSH/WINRM deployment types?
+No, you need to write a custom script where you can get the previous version and create a new forward deployment with the required version of the artifact and the manifest.
+
+### How do I reference privateIp for an EC2 instance while using a ssh type deployment?
+You can make use of ```<+instance.properties.privateIp>``` for all available variables under instance properties. You can print  ```<+instance.properties.*>``` and confirm this list. 

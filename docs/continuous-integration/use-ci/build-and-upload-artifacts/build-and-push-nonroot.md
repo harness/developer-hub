@@ -1,5 +1,5 @@
 ---
-title: Build and push with non-root users
+title: How to Build and push with non-root users
 description: Use the buildah plugin if you can't use the built-in Build and Push steps.
 sidebar_position: 23
 ---
@@ -7,9 +7,22 @@ sidebar_position: 23
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-With a Kubernetes cluster build infrastructure, all **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md).
+## Introduction
+Building with non-root users may be necessary for an organization due to the security process or stance that an organization has for its environment.  Below is information on how to build and push with non-root users
 
-Kaniko requires root access to build the Docker image. It doesn't support non-root users. If your Kubernetes cluster build infrastructure is configured to run as non-root, you can either [enable root access individual steps](#enable-root-access-for-a-single-step) or [use the Buildah plugin](#use-the-buildah-plugin), which doesn't require root access.
+### Kaniko Builds
+By default, Harness builds utilizing a Kubernetes cluster infrastructure are completed using [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md) for all **Build and Push** steps. If your team utilizes Kaniko, unfortunately, a Kaniko requirement is to have root access to build the Docker image. It doesn't support non-root users, so users will have to use one of the alternates listed below.
+
+### Build X Builds
+Customers can also utilize BuildX for their builds.  This feature can be enabled by submitting a ticket to Harness Support to enable the flag `CI_USE_BUILDX_ON_K8`.  We recommend [reviewing the notes about this feature on the CI Early Access Features page](https://developer.harness.io/docs/continuous-integration/ci-supported-platforms/#harness-ci-early-access-features).  You must run BuildX on Kubernetes with Privileged mode enabled.
+
+### Drone Docker
+It is also possible to utilize drone docker. Please read the following documentation for a full breakdown of [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md) and how to use it.
+
+### Individual Step Root / Buildah plugin
+If your Kubernetes cluster builds infrastructure is configured to run as non-root, you can either [enable root access individual steps](#enable-root-access-for-a-single-step) or [use the Buildah plugin](#use-the-buildah-plugin), which doesn't require root access, but will require privileged access.
+
+For Buildah plugin environments, please keep in mind that settings and requirements will vary.  For example, OpenShift Buildah environments have specific settings and requirements differing from others.
 
 ## Enable root access for a single step
 
@@ -21,11 +34,15 @@ If your security policy doesn't allow running as root for any step, you must [us
 
 If your security policy doesn't allow running as root for any step, you must use the [Buildah plugin](https://plugins.drone.io/plugins/buildah) in a **Plugin** step to build and push your image.
 
+:::tip
+buildah requires specific and different settings if the environment is an OpenShift environment.  Please make note about the **privileged** flag.  and defining `anyuid` for **Security Context Constraints**
+:::
+
 To use the Buildah plugin, you must meet the following requirements:
 
 * You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 * The Build stage must use a [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) configured to [run as non-root](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#run-as-non-root-or-a-specific-user).
-* `anyuid` SCC is required. For more information, go to the OpenShift documentation on [Managing Security Context Constraints](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_scc.html).
+* **For OpenShift Buildah users** `anyuid` SCC is required. For more information, go to the OpenShift documentation on [Managing Security Context Constraints](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_scc.html).
 
 ### Add a Plugin step
 
@@ -45,7 +62,7 @@ At the point in your pipeline where you want to build and upload an image, add a
    * ECR: [buildah-ecr](https://hub.docker.com/r/plugins/buildah-ecr/tags)
    * GAR/GCR: [buildah-gcr](https://hub.docker.com/r/plugins/buildah-gcr)
    * Docker Hub: [buildah-docker](https://hub.docker.com/r/plugins/buildah-docker)
-* **Privileged:** Must be enabled for non-OpenShift clusters.
+* **Privileged:** Set to `false` for OpenShift clusters. Set to `true` for non-OpenShift clusters.
 * **Run as User:** Specify the ID of the non-root user to use for this step, such as `1000`.
 * **Settings:** Add the following settings as key-value pairs.
    * `repo`: The name of the repository where you want to store the image, for example, `<hub-user>/<repo-name>`. For private registries, specify a fully qualified repo name.

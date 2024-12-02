@@ -129,3 +129,19 @@ It shuts down a service on GCP VM instances (identifiable by name) for a specifi
 <!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->
 
 </FaultDetailsCard>
+
+<FaultDetailsCard category="gcp">
+
+### GCP SQL Instance Failover
+
+GCP SQL Instance Failover disrupts the state of GCP SQL instance filtered using a name and project ID by triggering failover on the SQL instance.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Determines the resilience of the GKE infrastructure.
+- Determines how quickly an SQL Instance can recover when one of the replicas trigger a failover.
+
+</Accordion>
+
+</FaultDetailsCard>

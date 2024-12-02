@@ -124,6 +124,19 @@ For example, with a Free plan, you can add a maximum of 10 parallel stages in a 
 
 Even if you specify a `maxConcurrency` limit of 5 or 10, the moment you do the looping repeat strategy, Harness will already compute the total number of potential stages, if the list generates more than 256 items we will fail there before even running any of the stages and honoring the `maxconcurrency`. 
 
+### Execution Limits
+
+| Resource | Use-case | Default Limits
+| ---  | ----------- | ------ |
+| Step | Inputs size for a step | <ul><li>Free: 100KB</li><li>Team: 500KB</li><li>Enterprise: 1MB</li></ul> | 
+| Step | Output size for a step | <ul><li>Free: 100KB</li><li>Team: 1MB</li><li>Enterprise: 1MB</li></ul> | 
+| File Store | Size of the file store | <ul><li>Free: 100KB</li><li>Team: 500KB</li><li>Enterprise: 1MB</li></ul> | 
+| Triggers | Size of payload supported by triggers |  <ul><li>Free: 16MB</li><li>Team: 16MB</li><li>Enterprise: 16MB</li></ul> | 
+
+:::note
+If you need limits beyond the default values specified above, please contact [Harness Support](mailto:support@harness.io).
+:::
+
 ### Resolved YAML size limit
 
 **Compiled YAML cannot exceed the Harness-enforced limit of 3 MB.**

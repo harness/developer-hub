@@ -498,6 +498,20 @@ You can also initiate a Sync or Refresh from the main GitOps page.
 - **Refresh** will pull the latest commit from Git and display whether the current Sync State is **Synced** or **Out of Sync**. It does not sync with the live cluster state. You can Refresh, then use App Diff to view the diff between the desired Git state with the live cluster state.
 - **Sync** will sync the desired Git state with the live cluster state.
 
+## Application filters
+
+You can filter applications based on the following criteria:
+
+- **Health Status**
+- **Sync Status**
+- **Agents**
+- **Namespace**
+- **Repository**
+
+Additionally, you can apply further filters for **Cluster**, **App Set** and **Labels** by clicking on **Additional Filters**.
+
+![](./static/gitops-app-filter.png)
+
 ## Cleaning up
 
 ### Delete a Harness GitOps application
@@ -509,7 +523,7 @@ Both **Foreground** and **Background** perform a cascading delete on the applica
 A cascading delete removes both the app and all its resources, rather than only the app and is the recommended way to completely delete an application.
 
 To perform a non-cascade delete, select the **Non-cascading** option.
-Please note that when performing a non-cascading delete, you need to make sure the finalizer is unset/removed and then delete the app. You can check the **Remove any existing finalizer** checkbox for this.
+Please note that when performing a non-cascading delete, you need to make sure the finalizer is unset/removed and then delete the app. You can check the **Remove any existing finalizer** checkbox for this. However, deleting finalizers is not safe and should be used with caution.
 
 ### Deleting a Harness GitOps agent
 

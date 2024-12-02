@@ -24,6 +24,12 @@ export const ReferenceArchitecturesCards: CardSections = [
         link: "/kb/category/cloud-cost-management",
       },
       {
+        title: "Software Engineering Insights",
+        module: MODULES.sei,
+        description: "Get started with Software Engineering Insights reference architectures",
+        link: "/kb/reference-architectures/sei/sei-architecture",
+      },
+      {
         title: "Delegate Architecture Best Practices",
         module: MODULES.platform,
         description: "Design considerations for choosing the right Delegate Architecture",

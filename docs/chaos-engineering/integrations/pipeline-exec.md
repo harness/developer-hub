@@ -26,7 +26,9 @@ For more information, go to [Approvals](/docs/platform/approvals/approvals-tutor
 
 For more information, go to [Notifications](/docs/platform/notifications/notification-settings).
 
-- To execute an experiment in a pipeline, enable the **Execute via Pipeline** permission in your **Project Settings**.
+### Permissions required
+
+To execute an experiment in a pipeline, you need to have the appropriate permissions. Go to **Project Settings** -> **Access Control** -> **Roles** and enable the **Execute via Pipeline** permission. You can otherwise create a new role or ask your project admin to create an appropriate role.
 
     ![enable pipeline](./static/pipeline-exec/fine-grain-control.png)
 

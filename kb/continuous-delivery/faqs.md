@@ -2161,8 +2161,7 @@ The default directory that the Shell Script steps run in is `/tmp` and is remove
 To enable remote environments and infrastructures in your Service Management Platform (SMP), follow these implementation guidelines:
 
 - Make sure your SMP is updated to the latest version. 
-- Activate the feature flag, `CDS_ENV_GITX` on the designated environment.
-Go to [Manage Harness environments and infrastructures from Git](https://developer.harness.io/docs/platform/git-experience/manage-environments-infra-definitions) for more information.
+- Go to [Manage Harness environments and infrastructures from Git](https://developer.harness.io/docs/platform/git-experience/manage-environments-infra-definitions) for more information.
 
 
 #### Does Harness support the use of OpenID Connect(OIDC) for connecting to various systems such as Amazon Web Services(AWS) and Google Cloud Platform (GCP)?
@@ -3292,6 +3291,10 @@ Yes, the skip keywords can be placed anywhere within the commit message, includi
 
 #### Does harness pipeline support triggering GitHub action workflow from the pipeline?
 As per the current design, there's no native step for this but user can write a shell script at the end of execution to trigger the GitHub action workflow.
+
+#### Why I am not able to see rollback options in custom stage?
+
+The rollback option is only available for the deployment stage, So you can only be able to see in the deployment stage.
 
 
 ### Infrastructure provisioning FAQs

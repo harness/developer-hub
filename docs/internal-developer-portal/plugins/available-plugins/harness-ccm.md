@@ -49,17 +49,17 @@ This plugin exports a card on the Overview Page and a UI tab that you can use as
 ```YAML
 - name: ccm
   path: /ccm
-  title: Cloud Cost Management
+  title: Cloud Costs 
   contents:
     - component: EntityCcmContent
 ```
 
-Also you could add a conditional like `isHarnessCcmAvailable` which is met when `harness.io/perspective-url` annotation is present in the software components's `catalog-info.yaml` definition file.
+Also, you could add a conditional like `isHarnessCcmAvailable` which is met when `harness.io/perspective-url` annotation is present in the software component's `catalog-info.yaml` definition file.
 
 ```YAML
 - name: ccm
   path: /ccm
-  title: Cloud Cost Management
+  title: Cloud Costs
   contents:
     - component: EntitySwitch
       specs:
@@ -82,9 +82,7 @@ kind: Component
 metadata:
   # ...
   annotations:
-    harness.io/perspective-url: |
-      PerspectiveA: https://url-details/perspectives/perspectiveId/name/perspectiveName
-      PerspectiveB: <harness_ccm_perspective_url>
+    harness.io/perspective-url: https://url-details/perspectives/perspectiveId/name/perspectiveName
 spec:
   type: service
   # ...

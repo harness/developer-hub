@@ -2,13 +2,12 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-10-07T10:00
+date: 2024-12-03T22:00 
 sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/delegate/rss.xml" />
 
@@ -19,6 +18,25 @@ These release notes describe recent changes to Harness Delegate.
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
+
+:::
+
+### Delegate Base Image Migration
+
+:::info
+
+Harness is planning to update the base image for its Delegate from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4`, as UBI-8 reached end-of-life on May 31st, 2024. No further updates, patches, or fixes will be provided for UBI-8, so this migration ensures continued security and compatibility. This change will take effect starting **January 6, 2025**.
+
+**Key Updates with UBI9 Migration:**
+
+- **Microdnf Command Update**: When installing or removing any tool via the `microdnf` command, the confirmation option `-y` is now required.
+  - **Example**: `microdnf install wget -y`
+
+- **Tool Availability**: `curl` is already included in `ubi9-minimal`, so manual installation is no longer necessary.
+
+**Action Required**: If you use an `init_script` or a custom Dockerfile for your Delegate image, please incorporate these updates to avoid compatibility issues.
+
+For more details on UBI9, please refer to the [UBI9 Release Notes](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/9.0_release_notes/index).
 
 :::
 
@@ -68,9 +86,70 @@ Six months after a delegate image is released, the delegate reaches End of Suppo
 For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
+
+## December 2024
+
+### Version 24.11.84500 <!-- December 3, 2024 -->
+
+#### New features and enhancements
+
+- Enhanced AWS Secrets Manager integration to support secret updates using the `secretsmanager:PutResourcePolicy` permission. The appropriate request type (`UpdateSecret` or `PutSecretValue`) is now determined based on the `usePutSecret` flag in the connector configuration. (PL-58652)
+
+- Upgraded Spring Framework to version `6.1.x`, along with updates to dependencies for improved compatibility and security. (PL-58254)
+
+- Resolved a high-severity vulnerability (CVE-2024-7254) in the Delegate by upgrading `protobuf-java` to version `3.25.5`. (PL-57351, ZD-70765)
+
+- Upgraded the Java version to `17.0.11_9-jre-ubi9-minimal` in the Delegate base image to address security vulnerabilities, including `CVE-2023-22041`. (PL-55499)
+
+- Upgraded `com.nimbusds_nimbus-jose-jwt` to version `9.37.2` to address `CVE-2023-52428`. (PL-51347)
+
+## November 2024
+
+### Version 24.11.84309 <!-- November 27, 2024 -->
+
+#### New features and enhancements
+
+- Implemented functionality to support groupByResource for the Datadog Health Source in Continuous Verification. (CDS-100367)
+
+### Version 24.10.84205-ubi9-beta <!-- November 18, 2024 -->
+
+#### Early release (Beta release).
+
+- Upgrading redhat/ubi8-minimal to redhat/ubi9-minimal for testing purpose. **This image can have issues as this is a Beta image and not a GA image.**
+
+### Version 24.11.84304 <!-- November 11, 2024 -->
+
+#### Fixed issues
+
+- The delegate name is now displayed in the UI whenever a connector test fails, provided the validation task was acquired by a delegate. This enhancement offers better visibility into which delegate handled the task during troubleshooting. (PL-56483, ZD-64425)
+
+#### New features and enhancements
+
+- Added a new scope query parameter to the `listDelegates` endpoint. When set to true, this parameter enables listing delegates across hierarchical scopes (Account, Org, Project). By default, scope is set to false. (PL-57724)
+
+- Upgraded the base image for `delegate`, `delegate-minimal`, `ci-addon`, and `lite-engine` from `redhat/ubi8-minimal:8.8` to `redhat/ubi8-minimal:8.10`. This update enhances security and compatibility with the latest UBI version. (PL-58062)
+
+- Updated the `delegate/rings` API to return the immutable delegate version instead of the legacy delegate version. Additionally, the `connected-ratio-with-primary` and `connected-delegate-ratio` APIs have been removed. (PL-57518)
+
+### Version 24.10.84200 <!-- November 4, 2024 -->
+
+#### Fixed issues
+
+- Removed restrictions on the Delegate metrics API endpoint, allowing requests with any Content-Type header. This update supports improved compatibility with monitoring tools like Dynatrace. (PL-57704, ZD-71319)
+
+#### New features and enhancements
+
+- Set limits on the number of delegates and delegate tokens allowed per account and per scope. The current limit is set to 10,000. (PL-56296)
+
 ## October 2024
 
-### Version 24.09.84100 <!--  October 7, 2024 -->
+### Version 24.10.84105 <!--  October 31, 2024 -->
+
+#### New features and enhancements 
+
+- Add support for k8s sidecar containers
+
+### Version 24.10.84104 <!--  October 7, 2024 -->
 
 #### New features and enhancements
 
@@ -80,23 +159,13 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Improved error messaging for the `<+secrets.getValue(secretlocation)>` expression to provide clearer feedback when a secret is not found. The updated message now states, "The secret has not been found," and includes the full computed path for better troubleshooting. (PL-51900, ZD-65130, ZD-69181)
 
-- Resolved an issue in the `UpdateVersionInfoTask` by adding the missing PLATFORM enum, which eliminated the IllegalArgumentException. (PL-51100) 
-
 ### Version 24.09.83909 <!--  October 11, 2024 -->
 
 #### Hotfixes
 
 - Improved logging, error handling and force shutdown for stuck cases in winrm script for collecting output variables. These changes are behind a delegate environment variable `ENV_VARS_COLLECTOR_EXPLICIT_EXIT`. Also delegate environment variable `WINRM4J_LOG_LEVEL` for `io.cloudsoft.winrm4j` logging level has been added. (CDS-101843)
 
-### Version 24.09.83908 <!--  October 11, 2024 -->
-
-#### Hotfixes
-
 - With this change entire k8s dry manifest output yaml won't be sanitized. Only config map and secrets kind blocks would be sanitised unless `CDS_K8S_SANITIZE_COMPLETE_DRY_RUN_STEP_OUTPUT`` feature flag is switched on. (CDS-101686)
-
-### Version 24.09.83907 <!--  October 10, 2024 -->
-
-#### Hotfixes
 
 - Jira steps will now ignore unsupported fields which reading a jira ticket. (CDS-101162)
 

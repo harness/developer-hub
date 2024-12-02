@@ -129,7 +129,7 @@ SSH connections require an SSH key or a GitHub deploy key.
 
 [GitHub deploy keys](https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys) grant access to a single repo. Using a deploy key ensures that the connector only works with the specific repo you defined in the [Details settings](#details-settings).
 
-SSH keys must be in PEM format. OpenSSH keys are not supported. For details on creating SSH keys and adding them to your GitHub account, go to the GitHub documentation about [adding a new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
+SSH keys must be in PEM format. OpenSSH keys are not supported. For details on creating SSH keys and adding them to your GitHub account, go to the GitHub documentation about [adding a new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`. Always save the ssh key as a file secret.
 
 :::tip
 

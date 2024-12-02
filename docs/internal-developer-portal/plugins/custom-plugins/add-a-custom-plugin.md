@@ -154,7 +154,7 @@ new-plugin/
 5. Now Click Next and start adding the **Plugin Metadata**. You have to fill the following fields 
     
     - **Plugin Name** : Add a name for your Plugin
-    - **Package name** : This will be same as your plugin package present in your plugin's `package.json` file. Make sure the name is exactly similar to what's mentioned in the `package.json` including `@`, eg: `@parsifal-m/plugin-dev-quotes-homepage`
+    - **Package name** : This will be same as your plugin package present in your plugin's `package.json` file. Make sure the name is exactly similar to what's mentioned in the `package.json` including `@`, e.g.: `@parsifal-m/plugin-dev-quotes-homepage`
     - **Description** : Add an apt description for your plugin, especially the function of the plugin.
     - **Category** : Add an functional category for your plugin like `Monitoring`, `Observability`, `CI/CD` etc.
     - **Created By** : Add the [User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups) you belong to from the dropdown. 
@@ -205,6 +205,24 @@ proxy:
             Authorization: "Api-Token ${SECRET_TOKEN}"
 ```
 
+Suppose this is the proxy configuration we define in our frontend proxy plugin:
+
+```YAML
+endpoints:
+    /github-api:
+        target: https://api.github.com
+        pathRewrite:
+            /api/proxy/github-api/?: /
+        headers:
+            Authorization: token ${PROXY_GITHUB_TOKEN}
+```
+This configuration creates a proxy endpoint in IDP.
+- `target` defines the destination server where the request will be proxies.
+- `pathRewrite` is used to remove or replace parts of the path in the request URL.
+When a request is made to `https://idp.harness.io/{ACCOUNT_ID}/idp/api/proxy/github-api/<path>`, the following happens:
+1. The target setting modifies the base URL, transforming `https://idp.harness.io/{ACCOUNT_ID}/idp/api/proxy/github-api/<path>` into `https://api.github.com/api/proxy/github-api/<path>`.
+2. `pathRewrite` replaces `/api/proxy/github-api/` with `/`, so the URL transforms from `https://api.github.com/api/proxy/github-api/<path>` to `https://api.github.com/<path>`.
+
 11. Now in the above proxy authorization is added as a variable `SECRET_TOKEN` and the secret is stored in Harness Secret manager. 
 
 ![](./static/secret-as-variable.png)
@@ -223,7 +241,7 @@ Once you enable the PLugin it will approximately take around 30 minutes for the 
 
 :::
 
-14. Once the plugin is Enabled, to add it in your sidenav as shown in the image go to the **Layout** under **Admin**.
+14. Once the plugin is Enabled, to add it in your Sidenav as shown in the image go to the **Layout** under **Admin**.
 
 ![](./static/to-do-plugin.png)
 

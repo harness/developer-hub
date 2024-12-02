@@ -26,7 +26,7 @@ This topic describes the [prerequisites](#permissions-required) to fulfill befor
 
 - Prepare [network connectivity, firewall rules](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/) (if any), and identify [proxy requirements](/docs/chaos-engineering/getting-started/smp/),.
 
-- Identify application (or infrastructure) steady-state parameters (even if this requires manual effort)- using APMs or logs or other methods: You can use [resilience probes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/) to monitor your application and validate the data.
+- Identify application (or infrastructure) steady-state parameters (even if this requires manual effort)- using APMs or logs or other methods: You can use [resilience probes](/docs/chaos-engineering/use-harness-ce/probes/) to monitor your application and validate the data.
 
 - Identify image registry requirements and steps to set up the registry with secrets: Chaos experiments use Docker images that need to be stored in a repository. In HCE, these images are hosted in [image registry](/docs/chaos-engineering/use-harness-ce/image-registry).
 

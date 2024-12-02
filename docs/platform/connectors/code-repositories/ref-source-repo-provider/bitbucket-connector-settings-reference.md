@@ -143,7 +143,7 @@ In the **Username** field, enter the Bitbucket account username as specified in 
 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
 
-In the **Password** field, provide a Bitbucket account-level [access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html), or [app password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/). Passwords are stored as [Harness encrypted text secrets](/docs/platform/secrets/add-use-text-secrets).
+In the **Password** field, provide a Bitbucket account-level [access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html), or [app password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/). Passwords are stored as [Harness encrypted text secrets](/docs/platform/secrets/add-use-text-secrets). If you use an access token, the **Username** must be `x-token-auth`.
 
 You must provide an account-level app password or token. Repo-level tokens are not supported.
 
@@ -156,7 +156,7 @@ Bitbucket accounts with two-factor authentication must use access tokens.
   <TabItem value="ssh" label="SSH Key">
 
 
-The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
+The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`. Always save the ssh key as a file secret.
 
 For details on creating SSH keys and adding them to your Bitbucket account, go to the Bitbucket documentation about [Configuring SSH and two-step verification](https://support.atlassian.com/bitbucket-cloud/docs/configure-ssh-and-two-step-verification/).
 
@@ -181,11 +181,11 @@ Make sure to follow the prompts to finish creating the key. For more information
 
 You must enable API access to use Git-based triggers, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required. API access requires username and password authentication.
 
-In the **Username** field, enter the Bitbucket account username as specified in your Bitbucket **Account settings**. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
+In the **Username** field, enter the Bitbucket account username as specified in your Bitbucket **Account settings**, please note this might be different from what you entered in the first **Username** field. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
 
-In the **Personal Access Token** field, provide a Bitbucket account-level [App password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/), [Access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), or [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html). Passwords are stored as [Harness Encrypted Text secrets](/docs/platform/secrets/add-use-text-secrets).
+In the **Personal Access Token** field, provide a Bitbucket account-level [App password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/). Please note this will be different from the **Access Token** you may have used. Passwords are stored as [Harness Encrypted Text secrets](/docs/platform/secrets/add-use-text-secrets).
 
 You must provide an account-level app password or token. Repo-level tokens are not supported.
 

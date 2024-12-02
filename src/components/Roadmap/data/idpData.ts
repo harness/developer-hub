@@ -23,13 +23,221 @@ export const IdpData: Horizon = {
    */
 
   Now: {
-    description: "Q3 2024, Aug-Oct 2024",
+    description: "Q4 2024, Nov 2024-Jan 2025",
+    feature: [
+      {
+        tag: [
+          { value: "Catalog" },
+          { value: "Workflows" },
+          { value: "Platform" },
+        ],
+        title: "Granular RBAC at Account Level Resources",
+        description:
+          "Move IDP Catalog entities as well as Workflows to Account scope and support Harness RBAC on those Resources",
+      },
+      {
+        tag: [{ value: "Catalog" }],
+        title: "API based Entity Creation",
+        description:
+          "Allow creating the Core entities (Components, APIs, Resources) directly on the Harness Platform without having to create a YAML. This will allow seamless integration with third party entities for catalog population and updates.",
+      },
+      {
+        tag: [{ value: "Workflows" }],
+        title: "Dynamic Picker: Support Conditional API Request",
+        description:
+          "Add support for Workflow Dynamic Picker to trigger the API request based on user's input in one of the previous Workflow form fields. Today as soon as Dynamic Pickers are rendered, the API requests to fetch the dropdown values are triggered",
+      },
+      {
+        tag: [{ value: "Workflows" }],
+        title:
+          "Fetch additional details and set form fields based on User selection",
+        description:
+          "Add a feature to set values of other fields in the workflow forms based on user selection. For example - user selects their application, an API request is made to CMDB to fetch additional details of the application and populate the rest of the fields.",
+      },
+      {
+        tag: [{ value: "Workflows" }],
+        title:
+          "Use an API Key to trigger Pipelines from an IDP Workflow instead of user token",
+        description:
+          "Today Pipelines are triggered from an IDP Workflow using the user's token. Additionally, it should be possible to use an API key to trigger the pipeline and remove the requirement for the user to have any access to the pipeline.",
+      },
+    ],
+  },
+  /**
+   *
+   * NEXT
+   *
+   */
+
+  Next: {
+    description: "Q1 2025, Feb 2025 - Apr 2025",
+    feature: [
+      {
+        tag: [
+          { value: "Catalog" },
+          { value: "Workflows" },
+          { value: "Platform" },
+        ],
+        title: "Introduce Project/Org Scopes",
+        description:
+          "Introduce Project/Org Hierarchy in the Catalog to allow granular Access Control on IDP Catalog entities as well as Workflows on those levels. Entities can be created at 3 different scopes (Project, Org, Account) and can be shared with other Users and Groups using Harness Platform RBAC.",
+      },
+      {
+        tag: [{ value: "Catalog" }],
+        title: "Catalog Auto-Discovery with Harness CD",
+        description:
+          "Services deployed using Harness CD will auto-magically appear in IDP and will be easier to manage for end-users.",
+      },
+      {
+        tag: [{ value: "Catalog" }],
+        title: "Flexible Catalog Table",
+        description:
+          "Enhance the Catalog table to have user-customizable columns and filters.",
+      },
+      {
+        tag: [{ value: "Workflows" }],
+        title: "Workflows Execution History enhancements",
+        description:
+          "Enhance the workflows execution history page to add support for filters like executions per workflow, my executions, outputs, download as CSV, etc.",
+      },
+      {
+        tag: [{ value: "Workflows" }],
+        title: "Enhanced Single Workflow Execution View",
+        description:
+          "More intuitive UI, easier to see status of the pipeline and see logs.",
+      },
+      {
+        tag: [{ value: "Plugins" }],
+        title: "UI driven plugin configuration for Components",
+        description:
+          "Provide user-friendly UI for developers to configure core plugins for their components easily e.g. CI/CD, JIRA, GitHub, IaCM, CCM, Kubernetes, PagerDuty, Grafana, etc.",
+      },
+      {
+        tag: [{ value: "Scorecards" }],
+        title: "Project/Org Hierarchy in Scorecards",
+        description:
+          "Introduce Project/Org Hierarchy when creating Scorecards and Checks.",
+      },
+      {
+        tag: [{ value: "Catalog" }],
+        title: "Custom Entity Model",
+        description:
+          "Support creation of custom Core Entity Kinds and their Relationships with other Entities.",
+      },
+      {
+        tag: [{ value: "Catalog" }],
+        title: "Persona-based Custom Pages",
+        description:
+          "UI driven capability to create pages for different personas (SRE, Architects, VP of Platform etc.) based on the Catalog data, Scorecards, etc. and share with a specific group of people.",
+      },
+      {
+        tag: [{ value: "Plugins" }],
+        title: "Show metrics from Harness SEI",
+        description:
+          "Integrate with Harness SEI to show developers their team's DORA metrics and Productivity Insights in IDP Homepage.",
+      },
+    ],
+  },
+
+  /**
+   *
+   * LATER
+   *
+   */
+
+  Later: {
+    description: "Q2 2025+, May 2025 & beyond",
+    feature: [
+      {
+        tag: [{ value: "Plugins" }],
+        title: "Re-work Kubernetes plugin",
+        description:
+          "Improving the authentication mode of the Kubernetes plugin to use Delegates. Provide ease of setup for existing Harness customers using Kubernetes connector. Make the plugin performant and scalable for 1000s of pods.",
+      },
+      {
+        tag: [{ value: "Catalog" }],
+        title: "Catalog Auto-Discovery with Kubernetes",
+        description:
+          "Services can be discovered from Kubernetes clusters and be onboarded in the IDP Catalog.",
+      },
+      {
+        tag: [{ value: "Platform" }],
+        title: "Self-Managed Version",
+        description:
+          "Release and support for self-managed version of IDP that can be hosted on customer's infrastructure and environment",
+      },
+      {
+        tag: [{ value: "Platform" }],
+        title: "IDP Free Plan",
+        description:
+          "Create a free plan for IDP for users to use IDP in a self service way.",
+      },
+      {
+        tag: [{ value: "Catalog" }],
+        title: "Auto Dependencies Discovery",
+        description:
+          "Automatically pull in dependencies information from Kubernetes or observability sources and update the Catalog.",
+      },
+      {
+        tag: [{ value: "Software Catalog" }],
+        title: "AIDA powered IDP Search (Beta)",
+        description: "Enable AIDA powered IDP Search",
+      },
+      {
+        tag: [{ value: "Software Catalog" }],
+        title: "Layout Editing",
+        description: "UI based layout editing and creation",
+      },
+      {
+        tag: [{ value: "Scorecards" }],
+        title: "Harness STO as a Scorecards Data Source",
+        description:
+          "Add support to create security checks based on STO scans and active vulnerabilities in the pipelines and projects.",
+      },
+      {
+        tag: [{ value: "Plugins" }, { value: "Customizability" }],
+        title: "Custom Plugins for Sidebar",
+        description: "Add support to use custom plugins in the IDP Sidebar.",
+      },
+      {
+        tag: [{ value: "Catalog" }],
+        title: "Custom Plugins in IDP Homepage",
+        description:
+          "Support user-written Custom Plugins (UI Widgets) in the IDP Homepage.",
+      },
+      {
+        tag: [{ value: "Scorecard" }],
+        title: "Out of the box Scorecard",
+        description:
+          "Provide one out of the box Catalog Readiness scorecard in a new account.",
+      },
+      {
+        tag: [{ value: "Platform" }],
+        title: "iFrame config support in TechDocs",
+        description: "Configure hosts allowed for iFrames used in TechDocs.",
+      },
+      {
+        tag: [{ value: "Scorecards" }],
+        title: "Launch Scorecard Initiatives",
+        description:
+          "Create Scorecard Initiatives with Owners and Deadlines to drive faster change in the software ecosystem.",
+      },
+    ],
+  },
+
+  /**
+   *
+   * RELEASED
+   *
+   */
+  Released: {
+    description: "What has been released recently",
     feature: [
       {
         tag: [{ value: "Workflows" }],
         title: "Workflows UI Enhancements",
         description:
-          "Introducing layout customizability to allow grouping of workflows according to teams and use-cases. Add missing features like refresh, unregister or view YAML definition of workflows",
+          "Introducing layout customizability to allow grouping of workflows according to teams and use-cases. Add missing features like refresh or view YAML definition of workflows.",
       },
       {
         tag: [{ value: "Workflows" }],
@@ -62,57 +270,10 @@ export const IdpData: Horizon = {
           "Add support to update one entity at a time and provide a drone plugin to make usage simpler in a Harness pipeline.",
       },
       {
-        tag: [{ value: "Workflows" }],
-        title: "Enhanced Single Workflow Execution View",
-        description:
-          "More intuitive UI, easier to see status of the pipeline and see logs.",
-      },
-      {
-        tag: [{ value: "Scorecards" }],
-        title: "Harness STO as a Scorecards Data Source",
-        description:
-          "Add support to create security checks based on STO scans and active vulnerabilities in the pipelines and projects.",
-      },
-      {
-        tag: [{ value: "Plugins" }, { value: "Customizability" }],
-        title: "Custom Plugins for Sidebar",
-        description: "Add support to use custom plugins in the IDP Sidebar.",
-      },
-      {
         tag: [{ value: "Onboarding and Adoption" }],
         title: "Out of the box Adoption Dashboard",
         description:
           "Provide an out of the box adoption dashboard to see IDP adoption in real time and get notified on a schedule via Platform Dashboards.",
-      },
-    ],
-  },
-
-  /**
-   *
-   * NEXT
-   *
-   */
-
-  Next: {
-    description: "Q4, Nov 2024 - Jan 2025",
-    feature: [
-      {
-        tag: [{ value: "Catalog" }],
-        title: "Catalog UI Enhancements",
-        description:
-          "Enhance the Catalog homepage with a customizable table and a more personalized improved user experience.",
-      },
-      {
-        tag: [{ value: "Workflows" }],
-        title: "Visibility of Workflows based on pipeline permissions",
-        description:
-          "Users should only see the IDP workflows if they have access to the pipeline(s) configured in the workflow definition. As of today, they can see but won't be able to execute if they don't have access.",
-      },
-      {
-        tag: [{ value: "Scorecard" }],
-        title: "Out of the box Scorecard",
-        description:
-          "Provide one out of the box Catalog Readiness scorecard in a new account.",
       },
       {
         tag: [{ value: "Plugins" }],
@@ -120,92 +281,6 @@ export const IdpData: Horizon = {
         description:
           "Create a Cloud Cost Management plugin to show a cost perspective on the Catalog entity page.",
       },
-      {
-        tag: [{ value: "Platform" }],
-        title: "iFrame config support in TechDocs",
-        description: "Configure hosts allowed for iFrames used in TechDocs.",
-      },
-      {
-        tag: [{ value: "Scorecards" }],
-        title: "Launch Scorecard Initiatives",
-        description:
-          "Create Scorecard Initiatives with Owners and Deadlines to drive faster change in the software ecosystem.",
-      },
-
-      {
-        tag: [{ value: "Workflows" }],
-        title: "Workflows Execution History enhancements",
-        description:
-          "Enhance the workflows execution history page to add support for filters like executions per workflow, my executions, outputs, download as CSV, etc.",
-      },
-      {
-        tag: [{ value: "Software Catalog" }],
-        title: "Network Maps for Auto-Discovery",
-        description:
-          "Support for automated onboarding using network maps for auto-discovery & auto ingestion of entities along with the dependencies into catalog. ",
-      },
-    ],
-  },
-
-  /**
-   *
-   * LATER
-   *
-   */
-
-  Later: {
-    description: "Q1 2025+, Jan 2025 & beyond",
-    feature: [
-      {
-        tag: [{ value: "Platform" }],
-        title: "Self-Managed Version",
-        description:
-          "Release and support for self-managed version of IDP that can be hosted on customer's infrastructure and environment",
-      },
-      {
-        tag: [{ value: "Platform" }],
-        title: "IDP Free Plan",
-        description:
-          "Create a free plan for IDP for users to use IDP in a self service way.",
-      },
-      {
-        tag: [{ value: "Catalog" }],
-        title: "Auto Dependencies Discovery",
-        description:
-          "Automatically pull in dependencies information from Kubernetes or observability sources and update the Catalog.",
-      },
-      {
-        tag: [{ value: "Software Catalog" }],
-        title: "AIDA powered IDP Search (Beta)",
-        description: "Enable AIDA powered IDP Search",
-      },
-      {
-        tag: [{ value: "Software Catalog" }],
-        title: "Layout Editing",
-        description: "UI based layout editing and creation",
-      },
-      {
-        tag: [{ value: "Software Catalog" }],
-        title: "AI based creation of flows",
-        description: "AI based creation of flows and population of catalog",
-      },
-      {
-        tag: [{ value: "Platform" }],
-        title: "Projects and Orgs Hierarchy",
-        description:
-          "Introduce Harness Projects and Orgs hierarchy for Catalog entities.",
-      },
-    ],
-  },
-
-  /**
-   *
-   * RELEASED
-   *
-   */
-  Released: {
-    description: "What has been released recently",
-    feature: [
       {
         tag: [{ value: "Platform" }],
         title: "Customer's Secret Manager",

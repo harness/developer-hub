@@ -59,6 +59,7 @@ variable "cluster" {
     oidc_arn         = string
     subnets          = list(string)
     security_groups  = list(string)
+    ami              = string
     k8s_connector_id = string
   })
 
@@ -67,6 +68,7 @@ variable "cluster" {
     oidc_arn         = "arn:aws:iam::xxx:oidc-provider/oidc.eks.xxx.amazonaws.com/id/xxxx" // Replace with your OIDC Provder ARN for the cluster
     subnets          = ["eksctl-xxx"]                                                      // Replace with the names of subnets used in your EKS cluster
     security_groups  = ["eks-cluster-sg-xxx"]                                              // Replace with the names of security groups used in your EKS cluster
+    ami              = "ami-i0xxxxxxxxx"                                                   // Replace with the id of AMI used in your EKS cluster
     k8s_connector_id = "xxx"                                                               // Replace with the ID of harness ccm kubernetes connector for the cluster
   }
 
@@ -126,6 +128,12 @@ resource "aws_ec2_tag" "cluster_subnet_tag" {
 resource "aws_ec2_tag" "cluster_security_group_tag" {
   for_each    = toset(data.aws_security_groups.cluster_security_groups.ids)
   resource_id = each.value
+  key         = format("harness.io/%s", substr(data.aws_eks_cluster.cluster.name, 0, 40))
+  value       = "owned"
+}
+
+resource "aws_ec2_tag" "cluster_ami_tag" {
+  resource_id = var.cluster.ami
   key         = format("harness.io/%s", substr(data.aws_eks_cluster.cluster.name, 0, 40))
   value       = "owned"
 }
@@ -294,21 +302,22 @@ helm repo update harness-ccm-cluster-orchestrator
 ### Step 4: Install/Upgrade the Cluster Orchestrator
 
 After running the Terraform script and gathering the required output values, use the following Helm command to install or upgrade the Cluster Orchestrator.
+ 
+Please note, after running the Terraform script, the API key will not be printed since it is sensitive data. To retrieve the value, you need to run `terraform output harness_ccm_token`
 
 Replace the placeholders in the command with values from the Terraform outputs and your specific configuration:
 
 ```bash
-helm upgrade -i harness-ccm-cluster-orchestrator --namespace kube-system \
---set harness.accountID="<harness_account_id>" 
---set harness.k8sConnectorID="<k8s_connector_id>" 
---set harness.remoteAPI="https://app.harness.io/gateway" 
---set harness.ccm.token="<harness_ccm_token>" 
---set eksCluster.name="<eks_cluster_name>" 
---set eksCluster.region="<eks_cluster_region>" 
---set eksCluster.controllerRoleARN="<eks_cluster_controller_role_arn>" 
---set eksCluster.endpoint="<eks_cluster_endpoint>" 
---set eksCluster.defaultInstanceProfile.name="<eks_cluster_default_instance_profile>" 
---set eksCluster.nodeRole.arn="<eks_cluster_node_role_arn>" 
+helm upgrade -i harness-ccm-cluster-orchestrator --namespace kube-system harness-ccm-cluster-orchestrator/harness-ccm-cluster-orchestrator \
+--set harness.accountID="<harness_account_id>" \
+--set harness.k8sConnectorID="<k8s_connector_id>" \
+--set harness.ccm.secret.token="<harness_ccm_token>" \
+--set eksCluster.name="<eks_cluster_name>" \
+--set eksCluster.region="<eks_cluster_region>" \
+--set eksCluster.controllerRoleARN="<eks_cluster_controller_role_arn>" \
+--set eksCluster.endpoint="<eks_cluster_endpoint>" \
+--set eksCluster.defaultInstanceProfile.name="<eks_cluster_default_instance_profile>" \
+--set eksCluster.nodeRole.arn="<eks_cluster_node_role_arn>" \
 --set clusterOrchestrator.id="<cluster_orchestrator_id>"
 ```
 

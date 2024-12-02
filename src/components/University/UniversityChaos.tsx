@@ -7,7 +7,8 @@ import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
 import DeveloperCertificationExamDetails from "./data/ce-certification-developer-exam-details.md";
 import DeveloperCertificationReviewGuide from "./data/ce-certification-developer-review-guide.md";
-
+import AdminCertificationExamDetails from "./data/ce-certification-admin-exam-details.md";
+import AdminCertificationReviewDetails from "./data/ce-certification-admin-review-guide.md";
 import IltCard from "./Card";
 import { ilt } from "./data/iltData";
 import { spt } from "./data/sptData";
@@ -349,48 +350,40 @@ export default function CertificationsChaos() {
                 </div>
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
-                    <h2>
-                      Chaos Engineering - Administrator (BETA COMING SOON)
-                    </h2>
+                    <h2>Chaos Engineering - Administrator - Coming Soon</h2>
                     <img
                       src={`${baseUrl}img/cert_adm_ce_badge.svg`}
-                      alt="Harness Certified Expert -Chaos Engineering Administrator"
+                      alt="Harness Certified Expert - CE Administrator"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness Chaos
-                      Engineering Enterprise Plan
+                      <strong>Product version: </strong> Harness CE
+                      Enterprise Plan
                     </span>
                   </div>
                   <div className={styles.right}>
-                    {/* <h3>Review Study Guide</h3>
-                  <div className={styles.desc}>
-                    Assesses the fundamental skills to implement chaos
-                    in your projects and the overall Harness Platform. This
-                    exam builds upon the{" "}
-                    <a href="/university/continuous-delivery?lvl=developer">
-                      Chaos Engineering Developer Certification
-                    </a>
-                    .
-                  </div>
-                  <AdminCertificationReviewDetails />
-                  <div className={styles.btnContainer}>
-                    <Link href="https://university-registration.harness.io/continuous-delivery-gitops-administrator">
-                      <button className={styles.moreDetails}>
-                        Register for Exam
-                      </button>
-                    </Link> */}
-                    {/* <Link href="/docs/continuous-delivery">
+                    <h3>Review Study Guide</h3>
+                    <div className={styles.desc}>
+                      Assesses the fundamental skills to deploy and maintain CE projects and the overall Harness Platform. This
+                      exam builds upon the{" "}
+                      <a href="/university/chaos-engineering?lvl=developer">
+                       Chaos Engineering Developer Certificate
+                      </a>
+                      .
+                    </div>
+                    <AdminCertificationReviewDetails />
+                    <div className={styles.btnContainer}>
+                      <Link href="#">
+                        <button className={styles.moreDetails}>
+                          Register for Exam
+                        </button>
+                      </Link>
+                      {/* <Link href="/docs/continuous-delivery">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
                     </Link>*/}
-                    {/* </div> */}
-                    <h3>Coming Soon...</h3>
-                    <div className={styles.desc}>
-                      Assesses the fundamental skills to deploy and maintain CE
-                      projects and the overall Harness Platform.
                     </div>
                   </div>
                 </div>
@@ -398,12 +391,12 @@ export default function CertificationsChaos() {
             </div>
 
             {/* Admin Exam Details */}
-            {/* <div className={styles.examDetails}>
+            <div className={styles.examDetails}>
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university-registration.harness.io/continuous-delivery-gitops-administrator">
+                <Link href="#">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
@@ -411,7 +404,7 @@ export default function CertificationsChaos() {
             
               </div>
             </div>
-          </div> */}
+          </div>
           </div>
 
           {/* Architect Tab Content */}
@@ -539,7 +532,7 @@ export default function CertificationsChaos() {
           </div>
         </div>
       )}
-      {activePage === ActivePage.SelfPacedTraning && (
+       {activePage === ActivePage.SelfPacedTraning && (
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
           <p>Free self-paced courses that you can consume on your own time.</p>
@@ -552,7 +545,7 @@ export default function CertificationsChaos() {
                 .map((spt) => (
                   <IltCard {...spt} />
                 ))}
-              {ilt
+              {spt
                 .filter((spt) => {
                   return (
                     (spt.module === "ce" && spt.cardType === "FREE") ||

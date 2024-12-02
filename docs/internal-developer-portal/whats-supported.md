@@ -23,7 +23,7 @@ Any software component can be registered in the catalog by using a YAML file sto
 * Bitbucket
 * Azure Repos
 
-We support multiple connectors with different hostname for a single git provider to fetch `catalog-info.yaml` at once. Eg., Users can  use connectors for both `github.com` and `github enterprise` and fetch entity yaml at the same time.
+We support multiple connectors with different hostname for a single git provider to fetch `catalog-info.yaml` at once. E.g., Users can use connectors for both `github.com` and `github enterprise` and fetch entity YAML at the same time.
 
 :::warning
 
@@ -35,7 +35,7 @@ API calls in IDP are used to fetch YAML data, last commit SHA, and detect any ne
 
 ## CI/CD providers that IDP supports
 
-Harness IDP is agnostic to your CI/CD provider and works with tools such as GitLab, CircleCI, and GitHub Actions. You can use Harness CI/CD for a better out-of-the-box experience but it's not required.
+Harness IDP is agnostic to your CI/CD provider and works with tools such as GitLab, CircleCI, and GitHub Actions. You can use Harness CI/CD for a better out-of-the-box experience, but it's not required.
 
 For information about what's supported for other Harness modules and the Harness Platform overall, refer to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
@@ -49,7 +49,7 @@ Harness IDP requires some secrets to be set for plugins and external integration
 
 ### [trigger:harness-custom-pipeline](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline)
 
-- This action currently supports only [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)(**Only Available with Harness CD License or Free Tier usage**) and [codebase disabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) **CI stage (Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
+- This action currently supports [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [Deploy Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage#add-a-stage), [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)(**Available with Harness CD License or Free Tier usage**), Pipelines using [Pipeline Templates](https://developer.harness.io/docs/platform/templates/create-pipeline-template/) and [codebase disabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) **Build Stage(Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
 - All input, except for [pipeline expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be [fixed values](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
 
 ### [trigger:trigger-pipeline-with-webhook](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#2-triggertrigger-pipeline-with-webhook)

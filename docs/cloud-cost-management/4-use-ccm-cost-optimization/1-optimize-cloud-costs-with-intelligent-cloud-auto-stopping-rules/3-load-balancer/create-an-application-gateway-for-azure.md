@@ -16,56 +16,105 @@ Azure Application Gateway is a web traffic load balancer that enables you to man
 * [Connect to an Azure Connector](../1-add-connectors/add-azure-connector.md)
 * [Create AutoStopping Rules for Azure](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
 
-### Create a New Application Gateway
+## Create a New Application Gateway
+
+You can either create a new application gateway when creating a new Autostopping rule or you can do so from Load Balancer Manager page. By using the second option, you can easily import the created gateway into your rule.
+
+### Method 1: Create a new Application Gateway from Load Balancer Manager page.
+
+1. Navigate to the Autostopping rules page and select "Load Balancer" icon on top right.
+![](./static/create-lb-1.png)
+
+2. Click on "+Create new Load Balancer" and from the pop-up, select "Azure". Also select the cloud connector (or create a new one if needed)
+
+![](./static/create-lb-2.png)
+
+3. Select the cloud provider and cloud connector. Click on "Create Application Gateway".
+
+![](./static/create-lb-3.png)
+
+4. Enter a name for the load balance and the domain name to be accessed by the rule. Click on Continue.
+
+![](./static/create-lb-4.png)
+
+5. In the next window, add:
+- Region: The region where your target VM or the cloud resource is hosted.
+- Resource Group: A Resource Group (RG) in Azure is a logical container that holds related resources for a solution. In the context of an Azure Application Gateway, the resource group serves as the container for the various resources associated with the Application Gateway, such as: Virtual Machines (VMs), Storage Accounts, Networking Resources, etc.
+- Certificate (Optional)
+- Virtual Network: Azure Virtual Network is a service that provides the fundamental building block for your private network in Azure. VNet allows you to create and manage virtual private networks (VPNs) in the Azure cloud. 
+- Subnet: AppGateway subnet should only contain AppGateway, no other resources can be placed in this subnet.
+- Frontend IP
+- SKU
+- Azure Function Region
+
+![](./static/create-lb-5.png)
+
+Click on Save.
+This newly created application gateway can be imported in any new Autostopping rule. 
+
+
+### Method 2: Create a new Application Gateway from Autostopping Rule setup UI
 
 Perform the following steps to create a new Application Gateway in Azure.
 
-1. In **Cloud Costs**, click **New AutoStopping Rule**.
+1. In **Cloud Costs**, click **+New AutoStopping Rule**.
+![](./static/create-lb-6.png)
 
-  ![](./static/create-an-application-gateway-for-azure-00.png)
-2. In **AutoStopping Rules**, select **Azure**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
+2. In **AutoStopping Rules**, select **Azure**. 
    
-     ![](./static/create-an-application-gateway-for-azure-02.png)
+![](./static/create-lb-7.png)
+
 3. If you have already linked your Azure account and want to use that account, then select the Azure account from the list.
+
 4. If you have not added your cloud account, click **New Connector**. For the detailed steps, see [Connect to an Azure Connector](../1-add-connectors/add-azure-connector.md).  
 
   ![](./static/create-an-application-gateway-for-azure-04.png)
   
-5. Define an AutoStopping Rule. See [Step 2: Add a New AutoStopping Rule](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md).
+5. On the Configuration page:
+![](./static/create-lb-8.png)
 
-6. Select the resources to be managed by the AutoStopping Rule. See Step: [Select the Resources to be Managed by the AutoStopping Rule](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md#select-the-resources-to-be-managed-by-the-autostopping-rule)
+- Define your Autostopping rule By entering the rule name and ideal time. Idle minutes are the minutes after which the rule should stop the resources.
+- Select the resources to be managed by the AutoStopping Rule. 
+  - If VM is selected, then you need to add instances to be managed by the rule. 
+  ![](./static/create-lb-9.png)
+- You can choose to convert the selected instance(s) to spot or remain on-demand.
+- Advanced configuration like hiding progress, page or dry run can be set up. You can also add dependencies between two or more AutoStopping Rules when you want one Rule to make one or more other Rules active based on the traffic that it receives. You can choose the rules from the drop down menu and add the required delay in seconds.
 
-7. Select the instance fulfillment type. See Step 3: Select the Instance Fulfillment Type.
+6. Setup Access
 
-8. (Optional) Set up advanced configuration. See Step: Set Up Advanced Configuration.
+You can select the network protocol based on the workload type handled by the target VM.
+ ![](./static/create-lb-10.png)
 
-10. In **Setup Access**, select **DNS Link**.
+- **TCP Workload or SSH/RDP:**
 
-11. In **Select Application Gateway**, click **New Application Gateway** to add an application gateway.
+You can either specify an Autostopping proxy from the drop down menu (if an Autostopping proxy already exists). Or choose to create one.
 
-12. In **Create a new Application Gateway**, in **Provide a name for the Load balancer**, enter a name for your application gateway. This name will appear in your application gateway list.
+ ![](./static/create-lb-11.png)
 
-13. In Enter Domain Name, enter a domain name. For example, `autostopping.yourcompany.com`.  
+- **HTTP/HTTPS Workload:**
 
-  ![](./static/create-an-application-gateway-for-azure-06.png)
+Select the connector to which your appGateway or load balancer belongs. Next specify an application gateway (if it has already been created) from the drop down menu or you can create a new one.
+ ![](./static/create-lb-12.png)
 
-14. Click **Continue**.
+Click on +Create new AutoStopping Proxy and select "Create Application Gateway". Provide a name and a domain. 
+ ![](./static/create-lb-13.png)
 
-15.  Select region from the drop-down list to install the Access Point.
+After this is set up. In the next window, add:
+- Region: The region where your target VM or the cloud resource is hosted.
+- Resource Group: A resource group is a container that holds related resources for an Azure solution. For example, virtual machines, storage accounts, etc.
+- Certificate (Optional): The SSL certificate should match the domain selected for the LB. 
+- Virtual Network: VNet allows you to create and manage virtual private networks (VPNs) in the Azure cloud. 
+- Subnet: A range of IP addresses that you define within a VNet and is used to logically segment and isolate resources within the network.
+- Frontend IP
+- SKU
+- Azure Function Region
 
-16. Select a **Resource Group** from the drop-down list.
+Click on Save.
 
-17. (Optional) Upload a **Certificate**.
+7. Click on Next and Review entire information about the new rule and click on save To save the rule. Your application gateway will be listed under the **Application Gateway**. And a new rule has been created.
+ ![](./static/create-lb-14.png)
 
-18. Select **Virtual Network**.
-
-19. Select **Subnet**.
-
-20. Select **Frontend IP**.
-
-21. Select **SKU**.
-
-22. Click **Save**.  
-  
-Your application gateway is listed under the **Application Gateway**.
+:::note
+We’ve recently launched support for Azure WAF Gateways. Currently, only import functionality is available for this gateway type.
+:::
 

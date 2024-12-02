@@ -129,7 +129,7 @@ While setting up a new Enforcement, you can select the following:
   <DocImage path={require('../static/enforcements_gcp.png')} width="95%" height="95%" title="Click to view full size image" />
 
 :::important note
-- Number of Targets in an Enforcement can be upto 200.
+- Number of Targets in an Enforcement can be upto 6000.
 - Number of Rule Sets in Enforcement can be upto 30.
 - Number of Rules in Enforcement can be upto 30.
 :::

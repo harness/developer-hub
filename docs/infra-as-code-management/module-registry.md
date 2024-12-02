@@ -23,6 +23,12 @@ With Harness module registry, you can speed up and simplify your infrastructure 
 Before you begin configuring module registry, ensure that you have:
 - Access to your OpenTofu or Terraform environment via [Harness connectors](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-connectors).
 
+:::tip delegate version
+If you are using Harness to connect to your code repository, you can continue without further action.
+
+However, if you are connecting via a [delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/), ensure the delegate version is `24.10.84200` or later
+:::
+
 ## Register a module
 Follow the steps in the guide below to register a new module.
 

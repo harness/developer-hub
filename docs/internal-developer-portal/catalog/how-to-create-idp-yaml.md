@@ -28,7 +28,7 @@ Begin your YAML file with the basic entity information, this contains the `kind`
 
 and few others.
 
-Out of this `Component` is quite widely used for service, website, library, etc.. which needs to be specified as `spec.type` as discussed below.
+Out of this `Component` is quite widely used for service, website, library, etc. which needs to be specified as `spec.type` as discussed below.
 
 ```yaml
 apiVersion: backstage.io/v1alpha1
@@ -81,9 +81,9 @@ For the relationship graph to get populated, you need to add the dependencies in
 
 The field `spec.owner` is a reference. In this case, the string `group:pet-managers` was given by the user. That means that the kind is `Group`, the namespace is left out, and the name is pet-managers.
 
-The entries in `providesApis` are references. In this case, none of them needs to specify a kind since we know from the context that that's the only kind that's supported here. The second entry specifies a namespace but the other ones don't, and in this context, the default is to refer to the same namespace as the originating entity (external-systems here). So the three references essentially expand to `api:external-systems/petstore`, `api:internal/streetlights`, and `api:external-systems/hello-world`. We expect there to exist three API kind entities in the catalog matching those references.
+The entries in `providesApis` are references. In this case, none of them needs to specify a kind since we know from the context that that's the only kind that's supported here. The second entry specifies a namespace, but the other ones don't, and in this context, the default is to refer to the same namespace as the originating entity (external-systems here). So the three references essentially expand to `api:external-systems/petstore`, `api:internal/streetlights`, and `api:external-systems/hello-world`. We expect there to exist three API kind entities in the catalog matching those references.
 
-[Read More about relations](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#relations), in the system model docs. Also reference once mentioned for a single component `catalog-info.yaml` doesn't need to be included in the dependant components catalog-info.yaml to show up in the relationship graph of both the entities. 
+[Read More about relations](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#relations), in the system model docs. Also reference once mentioned for a single component `catalog-info.yaml` doesn't need to be included in the dependent components catalog-info.yaml to show up in the relationship graph of both the entities. 
 
 
 ```YAML
@@ -158,7 +158,7 @@ The current set of well-known and common values for this field is:
 
 1. `service` - a backend service, typically exposing an API
 2. `website` - a website
-3. `library` - a software library, such as an npm module or a Java library
+3. `library` - a software library, such as a npm module or a Java library
 
 #### Spec owner
 
@@ -204,7 +204,7 @@ The current set of well-known and common values for this field is:
 1. `production` - an established, owned, maintained component
 2. `deprecated` - a component that is at the end of its lifecycle, and may disappear at a later point in time
 
-Example Yaml with all the Spec
+Example YAML with all the Spec
 
 ```yaml
 spec:

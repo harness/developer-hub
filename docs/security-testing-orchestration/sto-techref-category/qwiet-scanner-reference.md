@@ -177,3 +177,9 @@ import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md';
 import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
+
+## Proxy settings
+
+import ProxySettings from './shared/proxy-settings.md';
+
+<ProxySettings />

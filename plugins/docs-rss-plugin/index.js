@@ -1,12 +1,12 @@
-const fs = require("fs-extra");
-const path = require("path");
+const fs = require('fs-extra');
+const path = require('path');
 // import { LoadContext, Plugin } from "@docusaurus/types";
-const docsPluginExports = require("@docusaurus/plugin-content-docs");
+const docsPluginExports = require('@docusaurus/plugin-content-docs');
 
-const { load: cheerioLoad } = require("cheerio");
-const { normalizeUrl, readOutputHTMLFile } = require("@docusaurus/utils");
+const { load: cheerioLoad } = require('cheerio');
+const { normalizeUrl, readOutputHTMLFile } = require('@docusaurus/utils');
 
-const { Feed } = require("feed");
+const { Feed } = require('feed');
 // import feed from "feed"
 const docsPlugin = docsPluginExports.default;
 
@@ -25,7 +25,7 @@ async function docsPluginEnhanced(context, options) {
 
   if (!rssPath) {
     throw new Error(
-      "You specified the `rss` object in `themeConfig` but the `rssPath` field was missing."
+      'You specified the `rss` object in `themeConfig` but the `rssPath` field was missing.'
     );
   }
 
@@ -71,19 +71,27 @@ async function docsPluginEnhanced(context, options) {
             // metadata: {
             title: metadataTitle,
             permalink,
-            frontMatter: { date, authors = "Harness", tags },
+            frontMatter: { date, authors = 'Harness', tags },
             description,
             // },
           } = post;
+          // console.log({ date });
 
-          if (date !== undefined && isNaN(new Date(date).getTime())) {
+          if (
+            date == undefined ||
+            isNaN(new Date(date).getTime()) ||
+            date == null
+          ) {
             console.log(
+              `Invalid Date in markdown: ${JSON.stringify(post.frontMatter)}`
+            );
+            throw new Error(
               `Invalid Date in markdown: ${JSON.stringify(post.frontMatter)}`
             );
           }
 
           const content = await readOutputHTMLFile(
-            permalink.replace(siteConfig.baseUrl, ""),
+            permalink.replace(siteConfig.baseUrl, ''),
             outDir,
             siteConfig.trailingSlash
           );
@@ -107,7 +115,7 @@ async function docsPluginEnhanced(context, options) {
                     : null
                 )
               : null,
-            content: $(".theme-doc-markdown").html() || null,
+            content: $('.theme-doc-markdown').html() || null,
           };
 
           // json1() method takes the first item of authors array
@@ -141,18 +149,18 @@ async function docsPluginEnhanced(context, options) {
           feedModule.addItem(item);
           const rssBasePath = rssPath.substring(
             0,
-            rssPath.lastIndexOf("/") + 1
+            rssPath.lastIndexOf('/') + 1
           );
           // console.log("item", item.id);
-          if (item.id == "index") {
+          if (item.id == 'index') {
             fs.writeFileSync(
-              path.join(outDir, rssBasePath, "rss.xml"),
+              path.join(outDir, rssBasePath, 'rss.xml'),
               feedModule.rss2()
             );
             return;
           } else {
             fs.writeFileSync(
-              path.join(outDir, rssBasePath, item.id, "rss.xml"),
+              path.join(outDir, rssBasePath, item.id, 'rss.xml'),
               feedModule.rss2()
             );
           }

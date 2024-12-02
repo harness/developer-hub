@@ -2,7 +2,7 @@ import { Horizon } from "./roadmapData";
 
 export const SrmData: Horizon = {
   Now: {
-    description: "Q3 2024, Aug-Oct 2024",
+    description: "Q4 2024, Nov 2024 - Jan 2025",
     feature: [
       {
         tag: [{ value: "Reliability platform" }],
@@ -20,14 +20,14 @@ export const SrmData: Horizon = {
         description: "Auto deploy the monitoring agents to provide support for golden signal monitoring.",
       },
       {
-        tag: [{ value: "Reliability integrations" }],
-        title: "SLIs integrations with Chaos Engineering",
-        description: "Resilience probe support for the SLIs that were automatically created upon service discovery.",
+        tag: [{ value: "Reliability platform" }],
+        title: "Incident Management",
+        description: "Create, manage and respond to the incidents in the lower environment as well as in production.",
       },
     ],
   },
   Next: {
-    description: "Q4 2024, Nov 2024 - Jan 2025",
+    description: "Q1 2025, Feb 2025 - Apr 2025",
     feature: [
 {
         tag: [{ value: "Reliability platform" }],
@@ -46,19 +46,19 @@ export const SrmData: Horizon = {
       },
       {
         tag: [{ value: "Reliability integrations" }],
+        title: "SLIs integrations with Chaos Engineering",
+        description: "Resilience probe support for the SLIs that were automatically created upon service discovery.",
+      },
+      {
+        tag: [{ value: "Reliability integrations" }],
         title: "Recommend chaos experiments",
         description: "New chaos experiment runs are recommended when an SLO breach occurs.",
       },
     ],
   },
   Later: {
-    description: "Q1 2025+, Q2 2025 & beyond",
+    description: "Q2 2025+, Q3 2025 & beyond",
     feature: [
-      {
-        tag: [{ value: "Reliability platform" }],
-        title: "Incident Management",
-        description: "Create, manage and respond to the incidents in the lower environment as well as in production.",
-      },
       {
         tag: [{ value: "Reliability platform" }],
         title: "Fast and slow burn configurations",
@@ -68,6 +68,11 @@ export const SrmData: Horizon = {
         tag: [{ value: "Reliability integrations" }],
         title: "Harness AIDA support",
         description: "Add GenAI support for SLO creation and SLO reporting.",
+      },
+      {
+        tag: [{ value: "Reliability platform" }],
+        title: "Integrations with more APMs",
+        description: "Add support for additional APMs such as Open Telemetry .",
       },
     ],
   },

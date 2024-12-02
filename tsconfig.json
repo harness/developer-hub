@@ -5,6 +5,8 @@
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "jsx": "react",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "types": ["docusaurus-plugin-sass"]
+
   }
 }

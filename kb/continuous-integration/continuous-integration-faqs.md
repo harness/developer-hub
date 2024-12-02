@@ -405,6 +405,8 @@ By default, resource requests are always set to the minimum, and additional reso
 
 By default, the namespace's default service account is auto-mounted on the build pod, through which it can communicate with API server. To use a non-default service account, specify the [Service Account Name](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#service-account-name) in the Kubernetes cluster build infrastructure settings.
 
+
+
 ### Do I have to mount a service account on the build pod?
 
 No. Mounting a service account isn't required if the pod doesn't need to communicate with the Kubernetes API server during pipeline execution. To disable service account mounting, deselect [Automount Service Account Token](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#automount-service-account-token) in the Kubernetes cluster build infrastructure settings.
@@ -607,7 +609,7 @@ This could happen when the PR/push trigger is configured with the 'Auto-abort Pr
 
 ### Can we add the config "topologySpreadConstraints" in the build pod which will help CI pod to spread across different AZs?
 
-Currently, we do not support adding "topologySpreadConstraints" to the build pod
+Harness CI now includes a new property, `podSpecOverlay`, in the Kubernetes infrastructure properties of the CI stage. This allows users to apply additional settings to the build pod. Currently, we support specifying `topologySpreadConstraint` in this field. Please see [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#topology-spread-constraints)
 
 ### Why the docker commands in the run step is failing with the error "Cannot connect to the Docker daemon at unix:///var/run/docker.sock?" even after the dind background step logs shows that the docker daemon has been initialized?
 
@@ -1267,6 +1269,11 @@ Make sure to update the [expressions referencing the variables](https://develope
 
 Eight minutes is the default time out limit for the Initialize step. If your build is hitting the timeout limit due to resource constraints, such as pulling large images, you can increase the [Init Timeout](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#init-timeout) in the stage Infrastructure settings.
 
+### Can we run multiple steps in a single container in containerised step group?
+
+No, You can't run all the steps in a single container, but you can run it in a single pod and share the data using `shared-path` config in the step group.
+
+
 ### Problems cloning code repo during initialization.
 
 For codebase issues, go to [Codebases](#codebases).
@@ -1571,6 +1578,11 @@ In this example, the `actions` (pull, push) and the repository name are correctl
 
 To avoid authentication issues, it's recommended to either use a PAT when configuring build and push steps for Docker registries with the V2 API or, if using a username and password, switch to the V1 API.
 
+
+### How can user access the secrets as files in a Docker build without writing them to layers?
+The **build and push** steps used to build Docker images have a context field. Users can use the context field in the build and push steps to mount the current directory at `/harness`. By copying your files to a specific directory and then mounting them, you can avoid writing secrets into the Docker image layers.
+
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
@@ -1632,6 +1644,9 @@ These are derived from your [Artifactory connector](https://developer.harness.io
 Currently, you can't upload files to the root of an S3 bucket due to the glob pattern that Harness uses.
 
 If there are too many nested directories in your uploaded files, you can use a **Run** step to [flatten nested directories](https://www.baeldung.com/linux/flattening-nested-directory) to cache before running the Save Cache or Upload Artifact step. users can have a run step to flatten the directory before uploading.
+
+### How can user resolve S3 bucket permission issue in save cache in S3 step?
+If the AWS connector is configured with the cross-account role ARN, the user needs to configure the `PLUGIN_USER_ROLE_ARN` stage variable as suggested in [this doc](../../docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings/#aws-connector)
 
 ## Test reports
 
@@ -1769,6 +1784,19 @@ Harness doesn't recommend using TI with Ruby projects using dynamically generate
 ### Why is the cache intelligence is not saving the cache from the default yarn location?
 
 This could happen if you have a custom path added in the cache intelligence config. If you want the YARN cache to be picked from the default location, make sure you don’t configure cache intelligence with a custom path
+
+
+### Can user import test results from a generic 'mvn clean deploy' Run step into the test Dashboard? Or must use the Unit Test step to display them on that tab?
+Yes, you can use the Run step to run your maven command and upload the test results. There is a field for this in the run step (like in the run tests step). Please check [the documentation](../../docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/#report-paths) for more information.
+
+The RunTests allow you to not only run your tests, but also to use Test Intelligence to run only unit tests that are relevant to the code changes made, thus cutting down the test cycle time.
+
+### how can user add the exclusion for jacoco code coverage report?
+pom.xml allows using environment variable references with syntax like below:
+
+`${env.VARIABLE_NAME}`
+
+You can not directly use harness expression in pom.xml but you can use harness expression to pass the values to environment variables which then in turn can be used in pom.xml.
 
 ## Script execution
 
@@ -2124,6 +2152,26 @@ Yes. Go to [Cache Intelligence API](https://developer.harness.io/docs/continuous
 
 No, You need to configure the S3 compatible object store in your infra to be used as the cache storage. More details about the same can be referred in the [doc](https://developer.harness.io/docs/platform/settings/default-settings/#continuous-integration)
 
+
+### How can user prevent conflicts with Save Cache steps in parallel stages?
+Skip the **Save Cache** step in all parallel stages except one.
+Use conditional execution in the **Save Cache** step to ensure it runs only in one instance of the parallel stages.
+
+
+### What conditional execution user add to the Save Cache step to handle parallel stages?
+```
+when:
+  stageStatus: Success
+  condition: <+strategy.iteration> == 0
+```
+This ensures the **Save Cache** step runs only if it's the first instance (iteration 0) of the parallel stages and if the current stage execution is successful.
+
+### How does caching work when cloning pipelines with Save/Restore Cache steps?
+When the user clones a pipeline with caching steps, the cache keys generated by the cloned pipeline use the original pipeline's cache key as a prefix. For instance, if the original cache key is `some-cache-key`, the cloned pipeline might use `some-cache-key2`. This prevents accidental interference between cache keys of the original and cloned pipelines.
+
+### How can user ensure correct cache handling when cloning pipelines with Save Cache to GCS?
+Enable separators (/) for GCS cache keys by setting `PLUGIN_ENABLE_SEPARATOR: true` in your pipeline's stage variables.
+
 ## Background steps and service dependencies
 
 ### What is the purpose of Background steps in a CI stage?
@@ -2199,6 +2247,10 @@ FQN is required for images in private repos.
 To run a step only when a certain file changes, you can [define conditional executions](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings) based on a JEXL condition that evaluates to true for the specific file. For example, you might use a [payload expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#git-trigger-and-payload-expressions) to get details from a Git event payload, such as a PR event that triggers a build.
 
 Alternately, you could isolate the step in a stage by itself, configure a [Git webhook trigger](https://developer.harness.io/docs/platform/triggers/triggering-pipelines) with a Changed File [trigger condition](https://developer.harness.io/docs/platform/triggers/triggering-pipelines#set-trigger-conditions) that listens for changes to the target file, and then configure the trigger to run [selective stage execution](https://developer.harness.io/docs/platform/triggers/selective-stage-execution-using-triggers) and run all stages that you want to run when that file changes, including the stage with your isolated step.
+
+### Can I use stage variables in my CI stage Parallism Strategy?
+
+When using variables in your Parallelism Strategy, these variables must be resolved before the stage begins execution. Therefore, you can only use pipeline variables or stage variables from previously executed stages.
 
 ### Can I assert an environment variable within a JEXL conditions?
 
