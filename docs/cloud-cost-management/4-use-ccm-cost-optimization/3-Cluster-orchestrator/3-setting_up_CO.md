@@ -321,6 +321,12 @@ helm upgrade -i harness-ccm-cluster-orchestrator --namespace kube-system harness
 --set clusterOrchestrator.id="<cluster_orchestrator_id>"
 ```
 
+:::info
+If your cluster does not have a OIDC provider arn, use this :-
+```eksctl utils associate-iam-oidc-provider --region <your_cluster_region> --cluster <your_cluster> --approve
+```
+:::
+
 ## Installation via kubectl
 
 ### Step 1: Navigate to Cluster Orchestrator in the Cloud Costs Module
