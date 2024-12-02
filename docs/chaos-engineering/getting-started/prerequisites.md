@@ -10,10 +10,10 @@ redirect_from:
 - /docs/chaos-engineering/onboarding/prerequisites
 ---
 
-This topic describes the prerequisites and checks that should be fulfilled before proceeding to create an environment, an infrastructure and execute chaos experiments.
+This topic describes the prerequisites and checks that should be fulfilled before proceeding to create an environment, an infrastructure and execute chaos experiments using Harness CE SaaS version.
 
 - Access to a Harness account: Sign up [here](https://app.harness.io) in case you don't have an account already. 
-- Your target application: A microservice running on Kubernetes or any cloud platform (AWS, Azure, GCP, and so on).
+- Your target application: A cloud-native microservices application.
 - The prerequisites are listed in the table format that maps every prerequisite with the type and the user persona. For example, your application requires network connectivity (a part of your infrastructure) which is obtained with the help of a cluster administrator or a platform engineer.
 
 
