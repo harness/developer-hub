@@ -5,22 +5,19 @@ sidebar_label: Get Started with Harness CE
 description: Get started
 ---
 
-Before you begin, review the following:
-
-- [All about chaos engineering](/docs/chaos-engineering/concepts/chaos101)
-- [Explore features](/docs/chaos-engineering/concepts/explore-features)
+Before you begin, review the topic [All about chaos engineering](/docs/chaos-engineering/concepts/chaos101).
 
 Harness CE is available in two ways:
-1. SaaS (Software-as-a-Service)
-2. SMP (Self-Managed Platform)
+1. **SaaS (Software-as-a-Service)**
+2. **SMP (Self-Managed Platform)**
 
 :::tip
 Feature availability on HCE SaaS and SMP are on par, with minor timeline changes in the SMP feature releases.
 :::
 
 ## SaaS
-HCE module is provided as service that you can use by either signing up or getting invited to a specific project. HCE provides you the assistance required to manage the cluster.
-You can also create a project if you have the necessary permissions.
+Harness provides the chaos engineering module as a service that you can use by either [signing up](https://app.harness.io) and creating a project or getting an invite to a specific project. Harness CE provides you the assistance required to manage the cluster.
+
 The control plane (set of microservices that help the domain function) is hosted by [Harness](https://app.harness.io).
 For more information on how to use SaaS, go to [SaaS documentation](/docs/chaos-engineering/getting-started/saas/).
 
@@ -1728,3 +1725,7 @@ Go to [Chaos faults for Linux](/docs/chaos-engineering/use-harness-ce/chaos-faul
 ## Onboarding
 
 If you want to get hands-on experience by executing chaos experiments without explicitly fulfilling the prerequisites, [automated](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding) or [guided onboarding](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding) is for you. Go to [Introduction to Onboarding](/docs/chaos-engineering/getting-started/onboarding/) to know more.
+
+
+## Next steps
+- [Explore features](/docs/chaos-engineering/concepts/explore-features)

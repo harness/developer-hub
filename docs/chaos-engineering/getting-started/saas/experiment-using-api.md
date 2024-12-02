@@ -1,7 +1,7 @@
 ---
-title: Execute custom chaos experiments using API
+title: Execute chaos experiments using API
 sidebar_position: 4
-description: Guide to creating and executing custom chaos experiments using API.
+description: Guide to creating and executing chaos experiments using API.
 redirect_from:
 - /tutorials/chaos-experiments/first-chaos-experiment-via-api
 - /docs/chaos-engineering/getting-started/saas/experiment-using-api
@@ -10,25 +10,25 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In this tutorial, you will create and run chaos experiments on Kubernetes using APIs. You can access the chaos API documentation [here](https://apidocs.harness.io/chaos.html). This tutorial uses the publicly available [HCE Postman collection](https://elements.getpostman.com/redirect?entityId=25469526-59b35825-6240-4b45-9974-6bb869741318&entityType=collection) to describe the chaos APIs.
+In this tutorial, you will create and run chaos experiments on Kubernetes using APIs. You can access the chaos API documentation [here](https://apidocs.harness.io/chaos.html). 
+This tutorial uses the publicly available [HCE Postman collection](https://elements.getpostman.com/redirect?entityId=25469526-59b35825-6240-4b45-9974-6bb869741318&entityType=collection) to describe the chaos APIs.
 
 ## Before you begin, review the following:
 
 - [All about chaos engineering](/docs/chaos-engineering/concepts/chaos101)
-- [Prerequisites to execute your experiment](/docs/chaos-engineering/getting-started/saas/)
-- [Execute your first chaos experiment](/docs/chaos-engineering/getting-started/saas/first-experiment)
+- [Prerequisites to execute your experiment](/docs/chaos-engineering/getting-started/prerequisites)
 
 ### Create a project (or be added to a project)
 
-Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for your organization. To get started, create a new project or ask your administrator to add you to an existing project. Once you have access, navigate to the **Chaos** tab that shows an overview of all the experiment runs.
+Harness Chaos Engineering simplifies the chaos engineering practices for your organization. To get started, create a new project or ask your administrator to add you to an existing project. Once you have access, navigate to the **Chaos** tab that shows an overview of all the experiment runs.
 
  ![HCE Overview](./static/first-chaos/hce-overview.png)
 
 ### Get variable inputs
 
-You will need the following inputs for variables in the API requests in this tutorial:
+The following inputs are required for variables in the API requests in this tutorial:
 
-* **url**: HCE server URL that serves the chaos API requests. You can find this URL in the chaos API documentation. For instance, [this](https://app.harness.io/gateway/chaos/manager/api/query) is the HCE server URL for the production environment.
+* **url**: Harness CE server URL that serves the chaos API requests. Find this URL in the [chaos API documentation](https://apidocs.harness.io/chaos.html). For instance, [this](https://app.harness.io/gateway/chaos/manager/api/query) is the Harness CE server URL for the production environment.
 
  If you are using [chaos Postman collection](https://elements.getpostman.com/redirect?entityId=25469526-59b35825-6240-4b45-9974-6bb869741318&entityType=collection), this value will be pre-filled in two Postman variables as shown below:
 
@@ -37,18 +37,26 @@ You will need the following inputs for variables in the API requests in this tut
  chaos_url - {{base_url}}/gateway/chaos/manager/api/query
  ```
 
+:::tip
+Ensure you remove `{` and the placeholder name and replace it with appropriate values throughout this tutorial.
+:::
+
 * **account_id**: Harness account Id or a specific Harness account where you want to run chaos experiments. You can get your account ID from any Harness app URL or the **Account Overview** page in Harness.
 
-* **project_id**: Harness project Id where you want to run chaos experiments. To get a project' Id:
- 1. Go to `Projects` in [Harness](https://app.harness.io/).
- 2. Select the project where you wish to run the chaos experiments or create a new project.
- 3. Click on `Overview`.
- 4. Copy the value of `ID`.
- 5. Ensure that you copy the value of `Organization` since this is required for variable `org_id`.
+* **project_id**: Harness project Id where you want to run chaos experiments. To get a project Id:
+    1. Go to **Projects** in [Harness](https://app.harness.io/).
+    2. Select the project where you wish to run the chaos experiments or create a new project.
+    3. Click **Overview**.
+    4. Copy the value of **ID**.
+    5. Ensure that you copy the value of **Organization** since this is required for variable **org_id**.
+
+The screen below shows where you can find the Id associated with a project.
+
+    ![proj id](./static/using-api/proj-id.png)
 
 * **org_id**: Harness organization Id where you want to run chaos experiments. To get your organization Id, follow the same steps you used to get the project Id.
 
-* **API-KEY-TOKEN**: You can use an existing Harness API key token from the same Harness account that you used in the previous steps.
+* **API-KEY-TOKEN**: You can use an existing Harness API key token from your Harness account or [create one](#create-api-key-token).
 
 ### Create API key token
 
@@ -56,6 +64,13 @@ To create a new API key token, follow the steps below:
  1. Select **MY PROFILE** in [Harness](https://app.harness.io/).
  2. Select **Profile Overview**. Go to **My API Keys** and select **+ API Key** to create a new API Key.
  3. Enter a **Name** for the API Key (optional description/tags) and select **Save**.
+
+:::tip
+To work with the HCE Postman collection, fork it under your Postman account and update the required variables.
+
+![Variables In Harness CE Postman Collection UX](./static/using-api/postman_variables.png)
+:::
+
  4. Under the newly created API Key, select **+ Token** to generate a new token for this API Key.
  5. Enter the **Name** and select the **Expiration** (time for which this token is valid) and click on **Generate Token**.
  6. Copy the value of the token and store it safely (you won't be able to access this later).
@@ -65,22 +80,17 @@ To create a new API key token, follow the steps below:
 Use this token to create an authorization header with the **API-KEY-TOKEN** value that is required to work with chaos APIs.
 
 1. Navigate to [HCE Postman collection](https://elements.getpostman.com/redirect?entityId=25469526-59b35825-6240-4b45-9974-6bb869741318&entityType=collection).
-2. Select **Run Pod Delete Experiment** -> **Authorization** -> **Value**.
-3. Enter the token value and select **Send**.
+2. Select **Run Pod Delete Experiment** -> **Authorization** -> **API Key**.
+3. Specify the value of `{{chaos_url}}` and `{{account_id}}`
+4. Specify the value of token in the place of `{{API-KEY-TOKEN}}` and select **Send**.
 
  ![Authorization Header For API Request](./static/using-api/authorization_header.png)
-
-:::tip
-To work with the HCE Postman collection, fork it under your Postman account and update the required variables.
-
-![Variables In Harness CE Postman Collection UX](./static/using-api/postman_variables.png)
-:::
 
 ### Add a chaos infrastructure using APIs
 
 #### Step 1: Create and register chaos infrastructure using APIs
 
-1. [Create (or register) a chaos infrastructure](/docs/chaos-engineering/getting-started/saas/first-experiment#step-3-create-an-infrastructure) (Kubernetes infrastructure) to inject faults into the application.
+1. [Create (or register) a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#using-dedicated-chaos-infrastructure) (Kubernetes infrastructure) to inject faults into the application.
 
 2. Select **Cluster Wide** installation mode so that you can target resources across all the namespaces in your cluster (**Namespace Mode** installation restricts injecting chaos to a certain namespace where infrastructure is installed).
 
@@ -121,7 +131,8 @@ GraphQL variables: `registerInfra`
  "infraNsExists": false,
  "infraSaExists": false,
  "installationType": "MANIFEST",
- "skipSsl": false
+ "skipSsl": false,
+ "isAutoUpgradeEnabled": false
  }
 }
 ```
@@ -145,7 +156,7 @@ A successful response to an infrastructure registration contains details about t
 }
 ```
 
-You will need the **token** and **infraID** values from the response for subsequent API calls.
+Obtain the **token** and **infraID** values from the response that is required for subsequent API calls.
 
 To retrieve the infrastructure manifest, form the following URL:
 
@@ -153,10 +164,10 @@ To retrieve the infrastructure manifest, form the following URL:
 $chaos_server_url/file/$token.yaml
 ```
 where,
-* **$chaos_server_url** corresponds to `https://app.harness.io/gateway/chaos/manager/api/`
-* **$token** corresponds to the token value retrieved in response to the **registerInfra** API call as shown in the sample response earlier.
+* **$chaos_server_url**: `https://app.harness.io/gateway/chaos/manager/api/`
+* **$token**: The token value retrieved in response to the **registerInfra** API call as shown in the sample response earlier.
 
-- Below is an example URL to retrieve the infrastructure manifest.
+Below is an example URL to retrieve the infrastructure manifest.
 
 ```
 https://app.harness.io/gateway/chaos/manager/api/file/token-abc.yaml
@@ -369,7 +380,6 @@ workflow-controller-metrics ClusterIP 10.106.97.173 <none> 9090/TCP 15m
 
 - To access the target application frontend in your browser, use the `CLUSTER-IP` of the `frontend-external` LoadBalancer service.
 
- ![Online Boutique](./static/first-chaos/online-boutique.png)
 
 - To access the Grafana dashboard:
 
@@ -378,15 +388,12 @@ workflow-controller-metrics ClusterIP 10.106.97.173 <none> 9090/TCP 15m
 
 - Before fault execution, all the metrics indicate normal application behavior.
 
- ![Grafana App Dashboard](./static/first-chaos/grafana-app-dashboard.png)
-
 ### Construct a chaos experiment using APIs
 
 You have successfully created and deployed the target application. You can now target the pods of the cart microservice using the [pod delete](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-delete.md) fault.
 
 Before injecting chaos, the cart page will be accessible from the frontend, as seen at the `/cart` route.
 
-![Online Boutique App Cart](./static/first-chaos/online-boutique-app-cart.png)
 
 #### Create the chaos experiment and workflow using APIs
 
@@ -783,11 +790,7 @@ workflow-controller-6d5d75dc7c-v9vqc 1/1 Running 0 5h41m
 
 Consequently, if you try to access the frontend cart page, it throws an error that indicates that the application is unreachable.
 
- ![Webpage Unavailable](./static/first-chaos/webpage-unavailable.png)
-
 You can validate this behavior using the application metrics dashboard. The probe success percentage for the application availability (200 response code) would steeply decrease along with the 99th percentile (green line), queries per second (QPS) and access duration. Also, the mean QPS (yellow line) steeply increases. This is because no pod is available to serve the query requests.
-
- ![Application Down Dashboard](./static/first-chaos/application-down-dashboard.png)
 
 #### Step 3: Observe chaos execution using an API
 
@@ -891,8 +894,6 @@ When the experiment completes execution, you will see a resilience score of 0 %.
 Before analyzing the experiment results, you can check if the application has come back to the normal state and is accessible.
 
 You can validate this from the Grafana dashboard where you can see visuals that indicate that chaos duration is complete.
-
- ![App Metrics Normalizing](./static/first-chaos/app-metrics-normalizing.png)
 
 You can see the chaos result which indicates that the experiment **Failed**, and the probe success percentage is 0%. This happened because the `http-cart-service` probe failed, which is a consequence of the cart pod being unavailable since you injected chaos (pod delete) into the microservice.
 
