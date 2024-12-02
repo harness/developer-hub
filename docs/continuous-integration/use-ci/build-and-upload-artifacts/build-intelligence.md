@@ -95,7 +95,7 @@ Currently the proxy server is running on port: `8082`
 
 1. Import the build cache plugin in `settings.gradle` file: Or If you enable BuildInteligence on UI, the below configuration automatically injects in the below directories.
 `$GRADLE_HOME/init.d/init.gradle, $GRADLE_USER_HOME/init.d/init.gradle, $HOME/.gradle/init.d/init.gradle`(If $GRADLE_HOME and $GRADLE_USER_HOME are present in your environments).
-2. If you want to use your own specific maven repository, you should give `MAVEN_URL` as stage variable or else It will pull from mavenCentral() where our HarnessGradlePlugin resides(for reference: https://central.sonatype.com/artifact/io.harness/gradle-cache/overview).
+2. If you want to use a custom Maven repository, you should set `MAVEN_URL` as a stage variable. Otherwise, it will pull from mavenCentral(), where the HarnessGradlePlugin is hosted. (For reference: https://central.sonatype.com/artifact/io.harness/gradle-cache/overview).
 3. To use your own Maven repository, download the latest version of the plugin dependencies from Maven Central. (As of now, the latest version is 0.0.4).
 4. The variables `HARNESS_ACCOUNT_ID` and `HARNESS_CACHE_SERVICE_ENDPOINT` will be automatically set when you enable Build Intelligence.
 
