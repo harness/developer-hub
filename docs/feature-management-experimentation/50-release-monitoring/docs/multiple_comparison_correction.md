@@ -8,7 +8,7 @@ helpdocs_is_published: true
 import Link from "@docusaurus/Link";
 
 <p>
-  <button style={{borderRadius:'8px', border: '1px', fontFamily: 'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360037852431-Multiple-comparison-correction </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360037852431-Multiple-comparison-correction </button>
 </p>
 
 Due to unavoidable noise and randomness in the data, there is a chance that a statistically significant metric is a false positive. This means that random variations in the data have made it appear as though your treatment had an impact when it did not. 

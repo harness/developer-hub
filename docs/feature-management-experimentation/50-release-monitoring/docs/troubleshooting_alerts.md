@@ -8,7 +8,7 @@ helpdocs_is_published: true
 import Link from "@docusaurus/Link";
 
 <p>
-  <button style={{borderRadius:'8px', border: '1px', fontFamily: 'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/19832825482637-Troubleshooting-alerts </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/19832825482637-Troubleshooting-alerts </button>
 </p>
 
 In rare cases, you may find that a metric degradation alert or feature flag significance alert did not fire as you expected. The chart below is designed to help you determine the cause and help you make any needed adjustments. It outlines the required conditions for metric and feature flag alerts.

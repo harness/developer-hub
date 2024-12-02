@@ -8,7 +8,7 @@ helpdocs_is_published: true
 import Link from "@docusaurus/Link";
 
 <p>
-  <button style={{borderRadius:'8px', border: '1px', fontFamily: 'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/30098162579853-Monitoring-tab <br /> ✘ images still hosted on help.split.io </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/30098162579853-Monitoring-tab <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 The Monitoring tab provides real-time insights into your feature flag's traffic and a summary of alerts that have fired. This data can be used to identify unexpected trends or issues that require troubleshooting.

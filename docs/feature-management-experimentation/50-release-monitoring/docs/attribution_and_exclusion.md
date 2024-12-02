@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border: '1px', fontFamily: 'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion <br /> ✘ images still hosted on help.split.io </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 Attribution is the process by which Split measures the influence of a feature on a user metric and allows you to run accurate experiments. Attribution correlates events with one of the treatments of the split for which metrics are being calculated. 

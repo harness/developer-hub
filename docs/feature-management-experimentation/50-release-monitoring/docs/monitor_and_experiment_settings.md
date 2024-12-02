@@ -8,7 +8,7 @@ helpdocs_is_published: true
 import Link from "@docusaurus/Link";
 
 <p>
-  <button style={{borderRadius:'8px', border: '1px', fontFamily: 'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings <br /> ✘ images still hosted on help.split.io </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 Whether you are releasing new functionality or running an experiment, Split analyzes the change in your metrics. This allows you to determine whether the impact is positive and statistically significant and not happening by chance. You can ensure the analyses are run in the way which best suits your use cases by configuring your statistical settings. For example, you can adjust parameters such as the significance threshold. This controls your chances of seeing false positive results. You can set it higher for a faster time to significance or lower to filter more reliable results, which reflects your preferred balance between confidence and time.

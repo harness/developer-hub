@@ -8,7 +8,7 @@ helpdocs_is_published: true
 import Link from "@docusaurus/Link";
 
 <p>
-  <button style={{borderRadius:'8px', border: '1px', fontFamily: 'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting <br /> ✘ images still hosted on help.split.io <br /> <span style={{backgroundColor:'#ffae42'}}>✘ outdated info about enabling alerting policies for an account?</span> </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting <br /> ✘ images still hosted on help.split.io <br /> <span style={{backgroundColor:'#ffae42'}}>✘ outdated info about enabling alerting policies for an account?</span> </button>
 </p>
 
 :::info[Get access to alert policies]
