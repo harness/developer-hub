@@ -245,6 +245,13 @@
   /* Module Colors/Feature Flags/100 */
   --mod-ff-100: #fcf4e3;
 
+  /* Module Colors/Feature Management & Experimentation/300 */
+  --mod-fme-300: #6938c0;
+ /* Module Colors/Feature Management & Experimentation/300 */
+  --mod-fme-200: #8b73ce;
+ /* Module Colors/Feature Management & Experimentation/300 */
+  --mod-fme-100: #f6f1ff;
+
   --mod-sto-300: #1947ec;
   /* Module Colors/STO/200 */
   --mod-sto-200: #2660ff;
@@ -587,6 +594,10 @@ details summary::before {
   color: var(--mod-ff-200);
 }
 
+.color-fme {
+  color: var(--mod-fme-200);
+}
+
 .color-ccm {
   color: var(--mod-ccm-200);
 }
@@ -753,6 +764,30 @@ a.card .text--truncate {
 
 a.card p.text--truncate {
   min-height: 3em;
+}
+
+/* style horizontal divider for LHS menu items, level 1 */
+
+.horizontal-bar {
+  margin-top: 15px;
+  padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+html[data-theme="light"] .horizontal-bar {
+  border-top: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  background-color: #effbff;
+  color: #b0b1c1;
+}
+
+html[data-theme="dark"] .horizontal-bar {
+  border-top: 1px solid #45494f;
+  border-right: 1px solid #45494f;
+  background-color: #002531;
+  color: #baeeff;
 }
 
 /* HDH-120: Change 2nd level numbered list style */
@@ -1124,6 +1159,16 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.sidebar-fme > div > a::before,.sidebar-fme > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_fme.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .sidebar-dbdevops > div > a::before,.sidebar-dbdevops > a::before{
   content: " ";
   display: inline-block;
@@ -1419,6 +1464,9 @@ html[data-theme="dark"] .sidebar-opensource > a::before {
   border-color: var(--mod-ar-200) !important;
 }
 .feature-flags:hover {
+  border-color: var(--mod-ff-200) !important;
+}
+.feature-management-experimentation:hover {
   border-color: var(--mod-ff-200) !important;
 }
 .cloud-cost-management:hover {
