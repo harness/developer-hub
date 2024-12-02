@@ -53,7 +53,6 @@ If an issue arises during a deployment, Harness can automatically trigger a roll
 ### Does Harness provide AWS SAM and Serverless.com manifest from Harness Filestore ?
 
 Yes, One can now download their AWS SAM & Serverless.com Manifests from the Harness Filestore and AWS S3.
-This is provided behind the `FF: CDS_CONTAINER_STEP_GROUP_AWS_S3_DOWNLOAD`
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/manifest-sources-for-serverless-lambda)
 
 ### Does Harness support the 'serverless-fintch' plugin in native serverless deployment?
