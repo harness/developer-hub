@@ -245,6 +245,13 @@
   /* Module Colors/Feature Flags/100 */
   --mod-ff-100: #fcf4e3;
 
+  /* Module Colors/Feature Management & Experimentation/300 */
+  --mod-fme-300: #6938c0;
+ /* Module Colors/Feature Management & Experimentation/300 */
+  --mod-fme-200: #8b73ce;
+ /* Module Colors/Feature Management & Experimentation/300 */
+  --mod-fme-100: #f6f1ff;
+
   --mod-sto-300: #1947ec;
   /* Module Colors/STO/200 */
   --mod-sto-200: #2660ff;
@@ -585,6 +592,10 @@ details summary::before {
 
 .color-ff {
   color: var(--mod-ff-200);
+}
+
+.color-fme {
+  color: var(--mod-fme-200);
 }
 
 .color-ccm {
@@ -1453,6 +1464,9 @@ html[data-theme="dark"] .sidebar-opensource > a::before {
   border-color: var(--mod-ar-200) !important;
 }
 .feature-flags:hover {
+  border-color: var(--mod-ff-200) !important;
+}
+.feature-management-experimentation:hover {
   border-color: var(--mod-ff-200) !important;
 }
 .cloud-cost-management:hover {
