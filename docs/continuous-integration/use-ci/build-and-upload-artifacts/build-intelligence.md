@@ -84,7 +84,6 @@ Please follow the instructions below, for either Bazel or Gradle, in case manual
 
 The above operation is transparent to you as a user and happens in the background. 
 (here we have to paste the SS of UI to enable buildIntelligence) 
-Harness Cloud:
 
 Currently the proxy server is running on port: `8082`
 
