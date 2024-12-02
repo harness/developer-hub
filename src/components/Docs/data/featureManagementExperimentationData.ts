@@ -73,7 +73,7 @@ import { MODULES } from "@site/src/constants"
       list: [
         {
           title: "Integrate & Automate",
-          module: MODULES.ff,
+          module: MODULES.fme,
           description:
             "Use your current tech stack + FME",
           link: "/docs/feature-management-experimentation/integrations",
@@ -90,21 +90,21 @@ import { MODULES } from "@site/src/constants"
       list: [
         {
           title: "Troubleshoot FME",
-          module: MODULES.ff,
+          module: MODULES.fme,
           description:
             "Troubleshooting guides for Harness FME",
           link: "/kb/feature-flags/articles/troubleshooting-guide",
         },
         {
           title: "FME FAQs",
-          module: MODULES.ff,
+          module: MODULES.fme,
           description:
             "Frequently asked questions about Harness FME",
           link: "/docs/faqs/harness-feature-flag-faqs",
         },
         {
           title: "FME Knowledge base",
-          module: MODULES.ff,
+          module: MODULES.fme,
           description:
             "In-depth knowledge base articles",
           link: "/kb/feature-flags",
