@@ -387,9 +387,9 @@ gsutil -m cp \
 
 - Account limits have been implemented for PAID and TEAM licenses to ensure optimal performance. For detailed information on the limits, please refer to the [documentation](). (PL-57414)
 
-- The [Create Bulk Role Assignments API]() now enforces a limit of 100 role assignments per request. Requests exceeding this limit will result in an error. (PL-56387)
+- The [Create Bulk Role Assignments API](https://apidocs.harness.io/tag/Role-Assignments/#operation/postRoleAssignments) now enforces a limit of 100 role assignments per request. Requests exceeding this limit will result in an error. (PL-56387)
 
-- The [Bulk Delete Role Assignments API]() now enforces a limit of 100 roleAssignmentIdentifiers per request. Requests exceeding this limit will return a clear error message. Please adjust payloads accordingly. (PL-56386)
+- The [Bulk Delete Role Assignments API](https://apidocs.harness.io/tag/Role-Assignments/#operation/bulkDeleteRoleAssignment) now enforces a limit of 100 roleAssignmentIdentifiers per request. Requests exceeding this limit will return a clear error message. Please adjust payloads accordingly. (PL-56386)
 
 - Prometheus metrics for delegate service caches have been added, providing insights into cache performance, including hit/miss rates. (PL-51821)
 
