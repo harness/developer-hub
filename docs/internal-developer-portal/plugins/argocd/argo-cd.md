@@ -1,6 +1,10 @@
 ---
 title: Argo CD Plugin
 description: View Argo CD status for your projects in Harness IDP.
+sidebar_label: Plugin Configuration
+sidebar_position: 2
+redirect_from:
+  - /docs/internal-developer-portal/plugins/available-plugins/argo-cd
 ---
 
 | Plugin details |                                                                                              |

@@ -3,6 +3,8 @@ title: OAuth support for plugins
 sidebar_label: OAuth support
 description: Some plugins in IDP use OAuth to authenticate the logged in user against the plugin provider.
 sidebar_position: 30
+redirect_from:
+  - /docs/internal-developer-portal/plugins/oauth-support-for-plugins
 ---
 
 Some plugins and other parts of IDP do not use a fixed API key to communicate with providers such as GitHub or Google. These plugins require the user to log in using their GitHub/Google accounts and use the user's credentials to fetch data. This is the recommended approach for building Backstage plugins, for the following reasons:

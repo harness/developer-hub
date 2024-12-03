@@ -3,6 +3,8 @@ title: Architecture of IDP Plugins
 sidebar_label: Architecture of IDP Plugins
 description: This page describes the architecture of Plugins (including Custom Plugins) and talk about Configuration, Backend Proxy and Delegate Proxy.
 sidebar_position: 200
+redirect_from:
+  - /docs/internal-developer-portal/plugins/delegate-proxy
 ---
 
 This page describes the architecture of plugins in IDP, including custom plugins and explains the concepts such as Backend proxy and Delegate proxy.

@@ -1,6 +1,10 @@
 ---
 title: Architecture Decision Records (ADR) 
 description: A plugin that allows you to explore ADRs (Architecture Decision Records) associated with your entities.
+sidebar_label: Plugin Configuration
+sidebar_position: 2
+redirect_from:
+  - /docs/internal-developer-portal/plugins/available-plugins/adr
 ---
 
 | Plugin details |                                                                                |

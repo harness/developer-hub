@@ -1,11 +1,11 @@
 {
-  "label": "Plugins & Integrations",
+  "label": "Azure DevOps",
   "collapsible": "true",
   "collapsed": "true",
-  "position": 50,
+  "position": 5,
   "link": {
     "type": "generated-index",
-    "title": "Integrations in the Internal Developer Portal"
+    "title": "Azure DevOps Integrations"
   },
   "customProps": {}
 }

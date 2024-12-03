@@ -1,6 +1,10 @@
 ---
 title: CircleCI
 description: View CI/CD pipeline executions running in CircleCI.
+sidebar_label: Plugin Configuration
+sidebar_position: 2
+redirect_from:
+  - /docs/internal-developer-portal/plugins/available-plugins/circleci
 ---
 
 | Plugin details |                                                                               |

@@ -1,6 +1,10 @@
 ---
 title: Azure DevOps
 description: Easily view your Azure Pipelines within the Software Catalog.
+sidebar_label: Plugin Configuration
+sidebar_position: 2
+redirect_from:
+  - /docs/internal-developer-portal/plugins/available-plugins/azure-devops
 ---
 
 | Plugin details |                                                                               |

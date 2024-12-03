@@ -1,11 +1,11 @@
 {
-    "label": "Custom Plugins",
+    "label": "Plugins Details",
     "collapsible": "true",
     "collapsed": "true",
-    "position": 2,
+    "position": 1,
     "link": {
       "type": "generated-index",
-      "title": "Custom Plugins"
+      "title": "Detailed info on Plugins in the Internal Developer Portal"
     },
     "customProps": {}
   }

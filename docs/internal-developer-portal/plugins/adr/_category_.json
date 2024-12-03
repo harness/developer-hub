@@ -1,11 +1,11 @@
 {
-  "label": "Plugins & Integrations",
+  "label": "Architecture Decision Records",
   "collapsible": "true",
   "collapsed": "true",
-  "position": 50,
+  "position": 3,
   "link": {
     "type": "generated-index",
-    "title": "Integrations in the Internal Developer Portal"
+    "title": "Architecture Decision Records (ADR)"
   },
   "customProps": {}
 }

@@ -1,11 +1,11 @@
 {
-  "label": "Plugins & Integrations",
+  "label": "CircleCI",
   "collapsible": "true",
   "collapsed": "true",
-  "position": 50,
+  "position": 7,
   "link": {
     "type": "generated-index",
-    "title": "Integrations in the Internal Developer Portal"
+    "title": "CircleCI Integrations"
   },
   "customProps": {}
 }

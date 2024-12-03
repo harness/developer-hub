@@ -3,6 +3,8 @@ title: How to build Frontend Backstage Plugins
 sidebar_label: How to Build Plugins
 description: Step by step tutorial to build a frontend backstage plugin
 sidebar_position: 40
+redirect_from:
+  - /docs/internal-developer-portal/plugins/build-a-frontend-plugin
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
