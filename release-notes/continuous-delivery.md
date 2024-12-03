@@ -53,7 +53,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - You can now deploy your artifacts to Google Cloud Run. For more information, go to Harness [Google Cloud Run Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-cloud-run/). This feature is behind a feature flag `CDS_GOOGLE_CLOUD_RUN`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-36357)
 
-- You can now deploy using Azure Functions enabling you to automate and manage serverless function deployments to Azure with ease. For more information, go to Harness [Azure Functions deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-function-tutorial/).(CDS-51900)
+- You can now deploy using Azure Functions enabling you to automate and manage serverless function deployments to Azure with ease. For more information, go to Harness [Azure Functions deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-function-tutorial/). This feature is behind a feature flag `CDS_AZURE_FUNCTION`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-51900)
 
 - Previously, GitOps steps like UpdateReleaseRepo, MergePR, and RevertPR were delayed due to locking on the tokenRef to prevent GitHub rate limits. A new Disable `Git Restraint` option now allows users to bypass this locking for faster execution. (CDS-101882, ZD-71430,72936)
 

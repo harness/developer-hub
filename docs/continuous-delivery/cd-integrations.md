@@ -22,6 +22,9 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| CDS_GOOGLE_CLOUD_RUN | Allows users to deploy artifacts to Google Cloud Run. <b> This feature is in Limited GA. </b> |
+| CDS_AZURE_FUNCTION | Allows users to deploy Azure Functions through Harness. <b> This feature is in Limited GA. </b> |
+| CDS_SVC_ENV_DASHBOARD_FOR_ACCOUNT_AND_ORG_LEVEL | Allows users to do Post-Deployment Rollback for services at both the Account and Organisation levels. <b> This feature is in Limited GA. </b> |
 | CDS_SERVICE_ACCOUNT_SUPPORT_IN_HARNESS_APPROVAL | Enables users to approve Harness approval requests using the Approval API with a Service Account token. To learn more, refer [Using the Approvals API with Service Account Authentication](/docs/platform/approvals/adding-harness-approval-stages/#using-the-approvals-api-with-service-account-authentication). <b> This feature is in Limited GA. </b> |
 | CDS_AWS_SESSION_TOKEN_SUPPORT | Enables users to use JET identity tokens for authentication for AWS connectors. <b> This feature is in Limited GA. </b>|
 | CDS_AWS_EKS_CLUSTER_MANUAL_CONFIGURATION | Enables users to manually configure the connection to Amazon EKS clusters by providing the endpoint and optional CA cert. <b> This feature is in Limited GA. </b> |
