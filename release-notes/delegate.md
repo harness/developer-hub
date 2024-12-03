@@ -88,6 +88,8 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## December 2024
+### Version 24.11.84501 <!-- December 3, 2024 -->
+- Implemented functionality to expose Custom CF CLI variables while executing any CF CLI commands
 
 ### Version 24.11.84500 <!-- December 3, 2024 -->
 
