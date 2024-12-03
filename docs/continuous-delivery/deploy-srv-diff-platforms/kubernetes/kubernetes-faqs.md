@@ -867,3 +867,24 @@ The artifacts data can be accessed through the execution details API, but only w
 ### Is there a public API available to retrieve the contents of the Tests tabs in a pipeline execution?
 Harness does not have a public API for retrieving the data from the Tests tab yet. One can view the network calls to `/ti-service` in the browser's network tab when loading the Tests page to access this information. However, this is not a public API, and using it requires obtaining a token from the UI, which is not recommended due to its frequent expiration and lack of backward compatibility.
 
+### Wild Characters in file name
+Yes Harness support wild characters in file name. Lets say if you file path in git is TestFolder/testfileabc/newtest#services#account.xml. Harness will work with this. 
+
+### Is Rancher managed k8 cluster deployment suported by Harness?
+Yes, Harness supports the ability to perform Kubernetes deployments into Rancher-managed Kubernetes clusters. 
+
+### How to add dynamic provisioning to the stage?
+You need to enable the option Provision your target infrastructure dynamically during the execution of your Pipeline under environment and then select the type of provisioner that you want to use.
+
+### I was trying to use the expression for namespace <+infrastructure.namespace>, it doesnt work.
+The correct for namespace is <+infra.namespace>. 
+
+### Does the apply step in k8 deployment perform the dry run?
+Yes the apply step performs dry run to show you what resources will be created. 
+
+### Does apply step also have rollback like rolling step?
+No the apply step doesn't have the rollback. for rollback you need to use the rollback deployment step. 
+
+### Blue Green Deployment pod label.
+The label for Blue Green Deployment is harness.io/color and value of blue | green is applied to the pods.
+
