@@ -111,17 +111,28 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Implemented functionality to support groupByResource for the Datadog Health Source in Continuous Verification. (CDS-100367)
 
+### Version 24.11.84308 <!-- November 23, 2024 -->
+- The existing behaviour does not support returning the full, unredacted manifest in an encrypted format as the dry run output. With this fix, the full manifest is encrypted and returned as output, with no redactions. (CDS-103383)
+
+### Version 24.11.84307 <!-- November 21, 2024 -->
+- The customer encountered a pipeline failure when they enabled the CDS_K8S_CUSTOM_YAML_PARSER feature and used a YAML manifest with parameters supported by the 21.x.x version of the Kubernetes Java SDK. The issue arose due to a YAML parsing error. (CDS-104066)
+
+
 ### Version 24.10.84205-ubi9-beta <!-- November 18, 2024 -->
 
 #### Early release (Beta release).
 
 - Upgrading redhat/ubi8-minimal to redhat/ubi9-minimal for testing purpose. **This image can have issues as this is a Beta image and not a GA image.**
 
-### Version 24.11.84304 <!-- November 11, 2024 -->
+### Version 24.11.84306 <!-- November 11, 2024 -->
 
 #### Fixed issues
 
 - The delegate name is now displayed in the UI whenever a connector test fails, provided the validation task was acquired by a delegate. This enhancement offers better visibility into which delegate handled the task during troubleshooting. (PL-56483, ZD-64425)
+  
+- Fixed Azure WebApp deployment pipeline failures for specific connectors configured with ignoreTestConnection. (CDS-103533)
+  
+- Fixed the instance synchronization issue for Azure web applications. (CDS-103224)
 
 #### New features and enhancements
 
