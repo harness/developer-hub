@@ -902,7 +902,7 @@ contents:
 
 #### New features and enhancements
 
-- IDP now includes the [GitHub Catalog Discovery](/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery) plugin. You can use this to automatically discover `catalog-info.yaml` files from your GitHub organizations and repositories. [IDP-887]
+- IDP now includes the [GitHub Catalog Discovery](/docs/internal-developer-portal/plugins/github/available-github-plugins/github-catalog-discovery) plugin. You can use this to automatically discover `catalog-info.yaml` files from your GitHub organizations and repositories. [IDP-887]
 
 - The following UI pickers are now available for use in software templates:
 

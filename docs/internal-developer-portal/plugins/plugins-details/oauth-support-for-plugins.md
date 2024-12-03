@@ -17,6 +17,6 @@ To facilitate OAuth login support for GitHub or Google-based plugins, you, as a 
 
 To create a GitHub or Google OAuth application, go to **Admin** > **OAuth Configurations**, and them follow the instructions on the page.
 
-After you create the application, plugins that depend on OAuth (for example, [GitHub Actions](/docs/internal-developer-portal/plugins/github/available-plugins/github-actions)) display a **Login to GitHub** dialog for users who visit the catalog page with the plugin enabled.
+After you create the application, plugins that depend on OAuth (for example, [GitHub Actions](/docs/internal-developer-portal/plugins/github/available-github-plugins/github-actions)) display a **Login to GitHub** dialog for users who visit the catalog page with the plugin enabled.
 
 ![](./static/oauth-plugin-config.png)
