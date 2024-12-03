@@ -8,6 +8,10 @@ This topic describes how you can configure **ChaosGuard** to enforce security po
 
 To watch a video on configuring the rules and conditions in ChaosGuard, go to [ChaosGuard- rules and conditions](https://youtu.be/cHFiBvQPCLU).
 
+## Prerequisites
+
+[Install a Harness Delegate or a dedicated chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#enable-chaos) before creating a condition because a condition is applied to an infrastructure.
+
 ## Configure a condition
 
 1. In the **Chaos** module, select **ChaosGuard**, and select **Conditions**. The **Conditions** page lists existing conditions (if any).
@@ -55,7 +59,7 @@ This gives you 3 ways to define a condition from the **Condition Editor**:
 
 	![which](./static/exec/condition-which.png)
 
-5. Add the **USING** clause. It blocks specific service account. You can add more than one service account by clicking the field and adding service account name to it.
+5. Add the **USING** clause. It blocks specific service account. You can add more than one service account by clicking the field and adding service account name to it. Click **Save**.
 
 	![using](./static/exec/condition-using.png)
 
