@@ -1,19 +1,21 @@
 ---
-id: windows-network-latency
-title: Windows Network Latency
+id: windows-network-duplication
+title: Windows Network Duplication
 ---
 
-Windows Network Latency causes a network packet delay on Windows VMs for the target hosts by causing network packet delay using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the services running on the Windows VMs.
+Windows network duplication duplicates network packets on Windows VM for the target hosts or IP addresses using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the services running on the Windows VMs.
+
+![Windows Network Duplication](./static/images/windows-network-duplication.png)
 
 :::tip
-When Clumsy is downloaded, the path is exported, that is used while executing the experiment. 
+When Clumsy is downloaded, the path is exported which is used while executing the experiment. 
 :::
 
-![Windows Network Latency](./static/images/windows-network-latency.png)
-
 ## Use cases
-- Determines the resilience of an application when a network delay scenario is simulated on a Windows virtual machine.
-- Simulates the situation of network delay for dependent processes and microservices running on the application, which degrades their performance.
+
+Windows network duplication:
+- Determines the resilience of an application when a network duplication scenario is simulated on a Windows virtual machine.
+- Simulates the situation of network duplication on the application, which degrades their performance.
 - Helps verify the application's ability to handle network failures and its failover mechanisms.
 
 ## Prerequisites
@@ -29,19 +31,19 @@ When Clumsy is downloaded, the path is exported, that is used while executing th
         <th> Notes </th>
       </tr>
       <tr>
-        <td> NETWORK_LATENCY </td>
-        <td> The network latency (or delay) that you want to introduce during chaos, in milliseconds. </td>
-        <td> For example, 2000. For more information, go to <a href="#network-latency"> network latency. </a></td>
+        <td> NETWORK_PACKET_DUPLICATION_PERCENTAGE </td>
+        <td> The percentage of data packets duplicated during transmission. </td>
+        <td> For example, 100. For more information, go to <a href="#network-packet-duplication"> network packet duplication. </a></td>
       </tr>
       <tr>
           <td> DESTINATION_HOSTS </td>
-          <td> DNS or FQDN names of services whose access is affected. </td>
-          <td> You can specify multiple inputs as comma-separated values. <code>DESTINATION_HOSTS</code> and <code>DESTINATION_IPS</code> are mutually exclusive, which means you can specify one of the values at a given time. For example, "abc.com,github.com". For more information, go to <a href="#destination-hosts"> destination hosts. </a></td>
+          <td> DNS or FQDN names of services whose access is affected. You can specify multiple inputs as comma-separated values. </td>
+          <td> For example, "abc.com,github.com". It is mutually exclusive with <code>DESTINATION_IPS</code> variable. For more information, go to <a href="#destination-hosts"> destination hosts. </a></td>
       </tr>
       <tr>
         <td> DESTINATION_IPS </td>
-        <td> IP addresses of target destination services. </td>
-        <td> You can specify multiple inputs as comma-separated values. <code>DESTINATION_HOSTS</code> and <code>DESTINATION_IPS</code> are mutually exclusive, which means you can specify one of the values at a given time. For example, '0.8.0.8,192.168.5.6'. For more information, go to <a href="#destination-ips"> destination IPS. </a></td>
+        <td> IP addresses of the target destination services. You can specify multiple inputs as comma-separated values.</td>
+        <td> It is mutually exclusive with <code>DESTINATION_HOSTS</code> variable. For example, '0.8.0.8,192.168.5.6'. For more information, go to <a href="#destination-ips"> destination IPs. </a></td>
       </tr>
     </table>
 
@@ -64,53 +66,52 @@ When Clumsy is downloaded, the path is exported, that is used while executing th
       </tr>
     </table>
 
+### Network packet duplication
 
-### Network latency
+The `NETWORK_PACKET_DUPLICATION_PERCENTAGE` environment variable specifies the percentage of data packets duplicated during transmission.
 
-The `NETWORK_LATENCY` environment variable specifies the amount of delay to induce (in ms).
+Use the following example to specify network packet duplication:
 
-Use the following example to specify network latency:
-
-[embedmd]:# (./static/manifests/windows-network-latency/network-latency.yaml yaml)
+[embedmd]:# (./static/manifests/windows-network-duplication/network-packet-duplication.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: MachineChaosExperiment
 metadata:
-  name: windows-network-latency
+  name: windows-network-duplication
 spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
     infraType: windows
     steps:
-      - - name: windows-network-latency
+      - - name: windows-network-duplication
     tasks:
     - definition:
         chaos:
           env:
-            - name: NETWORK_LATENCY
-              value: "2000"
+            - name: NETWORK_PACKET_DUPLICATION_PERCENTAGE
+              value: "100"
 ```
 
 ### Destination hosts
-
-The `DESTINATION_HOSTS` environment variable specifies the destination hosts to induce latency on the target Windows VM. You can specify multiple inputs as comma-separated values.
+The `DESTINATION_HOSTS` environment variable specifies the destination hosts to induce network duplication on the target Windows VM. You can provide multiple values using comma-separated list. 
 `DESTINATION_HOSTS` and `DESTINATION_IPS` environment variables are mutually exclusive.
+
 Use the following example to specify destination hosts:
 
-[embedmd]:# (./static/manifests/windows-network-latency/destination-hosts.yaml yaml)
+[embedmd]:# (./static/manifests/windows-network-duplication/destination-hosts.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: MachineChaosExperiment
 metadata:
-  name: windows-network-latency
+  name: windows-network-duplication
 spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
     infraType: windows
     steps:
-      - - name: windows-network-latency
+      - - name: windows-network-duplication
     tasks:
     - definition:
         chaos:
@@ -121,24 +122,24 @@ spec:
 
 ### Destination IPS
 
-The `DESTINATION_IPS` environment variable specifies the IP addresses of target destination services. You can specify multiple inputs as comma-separated values.
+The `DESTINATION_IPS` environment variable specifies the IP addresses of target destination services. You can specify multiple inputs as comma-separated values. 
 `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables are mutually exclusive.
 
 Use the following example to specify destination IPS:
 
-[embedmd]:# (./static/manifests/windows-network-latency/destination-ips.yaml yaml)
+[embedmd]:# (./static/manifests/windows-network-duplication/destination-ips.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: MachineChaosExperiment
 metadata:
-  name: windows-network-latency
+  name: windows-network-duplication
 spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
     infraType: windows
     steps:
-      - - name: windows-network-latency
+      - - name: windows-network-duplication
     tasks:
     - definition:
         chaos:
