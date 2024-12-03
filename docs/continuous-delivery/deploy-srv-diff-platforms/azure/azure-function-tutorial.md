@@ -6,6 +6,12 @@ sidebar_position: 5
 
 Harness now supports the deployment of Azure Functions, enabling you to automate and manage serverless function deployments to Azure with ease. 
 
+:::note
+
+Currently, this feature is behind the feature flag `CDS_AZURE_FUNCTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 This topic walks you through setting up and running an Azure Functions deployment in Harness.
 
 The basic steps are:
