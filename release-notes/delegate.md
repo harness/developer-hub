@@ -89,6 +89,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## December 2024
 
+### Version 24.11.83407 <!--  December 3, 2024 -->
+
+#### Hotfix
+
+- Encoding Nexus 2 URI to support downloading artifacts which contains special characters in artifact version. (CDS-102807)
+
 ### Version 24.11.84500 <!-- December 3, 2024 -->
 
 #### New features and enhancements
