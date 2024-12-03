@@ -1150,8 +1150,8 @@ Mean Time to Restore represents the duration it takes a team to recover from a p
 
 #### Configuration steps
 
-* Choose the tool used for tracking tasks similar to the Lead Time for Changes metric.
-* Configure the stages/filters involved in your workflow based on the requirements.
+* Choose the tool used for measuring the incident recovery time in your team.
+* Configure the stages/filters to identify incident tickets based on the requirements.
 
 Here's an example configuration of how you could configure Mean Time to Restore across various tools.
 
@@ -1245,178 +1245,396 @@ If maintaining ticket hygiene is challenging, consider using an Incident Monitor
 
 Change Failure Rate is computed by dividing the total number of deployments causing failure by the overall number of deployments.
 
+The Change Failure Rate (CFR) is calculated by dividing the total number of deployments that cause a failure by the total number of deployments.
+
+```bash
+Change Failure Rate = Deployments causing failure / Total deployments
+```
+
+You also have the option to calculate CFR by focusing solely on deployments that result in failure.
+
+![](../static/cfr-only-failures.png)
+
 #### Configuration settings
 
-* Specify the tool used for measuring deployments in your team.
+* Specify the tool your team uses to measure Change Failure Rate.
 * Choose any existing integrations you want to utilize for calculating the change failure rate.
-* Select how to configure your integration between SCM (Source Code Management) and CI/CD.
-* Add attributes and filters to identify and define deployments causing failure and total deployments.
+* Add attributes and filters to identify and define both the total deployments and the deployments causing failure.
 
-Here's an example configuration of how you could configure Deployment Frequency across various tools.
+Here's an example of how you could configure CFR across various tools.
 
+<Tabs>
+  <TabItem value="harnesscd" label="Using Harness CD" default>
 
+#### Define the deployments causing failure
 
-![](../static/change-failure-rate.png)
+* Choose **Harness CD** as the tool to identify failed deployments within your team.
+
+![](../static/cfr-harness-1.png)
+
+* Select the integrations you want to use for calculating CFR.
+
+![](../static/cfr-harness-2.png)
+
+* Select the category of pipelines as **Continuous Delivery**
+
+![](../static/cfr-harness-3.png)
+
+* Configure additional attributes to identify deployments that result in failure. By default, all pipelines are included, but you can customize the selection by manually specifying which pipelines should be included.
+
+![](../static/cfr-harness-7.png)
+
+* Refine the calculation by specifying detailed filters. This filters pipelines that should contribute to the change failure rate calculations.
+  * **Pipeline Filters:**
+    * Use filters to include or exclude pipelines based on specific properties, conditions, and values from the Harness CD pipeline configuration.
+    * Filters combine using an AND operation, meaning all specified conditions must be met.
+    * Example: `Status = Failed` AND `Environment = Production`.
+
+![](../static/cfr-harness-4.png)
+
+  * **Execution Filters:**
+    * Narrow down the data to specific pipeline executions by defining key-value pairs.
+    * Filters combine using an OR operation, meaning any execution meeting the specified conditions will be included.
+    * Example: Include executions where `JAVA_VERSION = 11` OR `Branch = main`.
+
+![](../static/cfr-harness-5.png)
+
+  * **Stage Parameter Filters:**
+    * Apply filters at the stage level within pipelines to focus on specific steps in the deployment process.
+    * Filters combine using an OR operation, allowing flexibility to include stages that meet any of the conditions.
+
+![](../static/df-harness-6.png)
+
+* Define how deployment causing failure should be tracked:
+  * **Pipelines Started:** Tracks change failure rate based on the initiation of deployment pipelines.
+  * **Pipelines Completed:** Tracks change failure rate based on completed pipelines.
+
+#### Define the total deployments
 
 Total deployments represent all deployments that have occurred within a specified time range, regardless of whether they resulted in success or failure.
 
-<details>
-<summary>Integration configured with SCM</summary>
+Similar to the deployments causing failure definition, you can configure the definition for measuring total deployments. This definition may align with the [DORA Deployment Frequency definition](#set-up-deployment-frequency).
+However, note that the total deployments are not linked with Deployment Frequency and are tracked separately for Change Failure Rate calculations.
 
-When the integration is configured with SCM, specify whether deployments causing failure and total deployments are defined based on Pull Requests (PR) or Commits. Describe what defines a deployment causing failure based on the following filters:
+![](../static/cfr-harness-8.png)
+
+</TabItem>
+
+<TabItem value="cd-gha" label="Using GitHub Actions">
+
+#### Define the deployments causing failure
+
+* Choose **GitHub Actions** as the tool to identify failed deployments within your team.
+
+![](../static/cfr-gha-1.png)
+
+* Select the integrations you want to use for calculating CFR.
+
+![](../static/cfr-gha-2.png)
+
+* Configure additional attributes to identify deployments that result in failure. By default, all pipelines are included, but you can customize the selection by manually specifying which pipelines should be included.
+
+![](../static/cfr-gha-3.png)
+
+* Refine the calculation by specifying detailed filters. This filters pipelines that should contribute to the change failure rate calculations.
+  * **Filters:**
+    * Use filters to include or exclude jobs based on specific properties, conditions, and values from the GitHub Actions jobs configuration.
+    * Filters combine using an AND operation, meaning all specified conditions must be met.
+    * Example: `Status = Failure` AND `Project = github-org/repository-name`.
+
+![](../static/cfr-gha-4.png)
+
+  * **Job Run Parameters:**
+    * Narrow down the data to specific job executions by defining key-value pairs.
+    * Filters combine using an OR operation, meaning any execution meeting the specified conditions will be included.
+    * Example: Include executions where `JAVA_VERSION = 11` OR `Branch = main`.
+
+* Define how change failure rate should be tracked:
+  * **Jobs Started:** Tracks change failure rate based on the initiation of deployment pipelines.
+  * **Jobs Completed:** Tracks change failure rate based on completed pipelines.
+
+#### Define the total deployments
+
+Total deployments represent all deployments that have occurred within a specified time range, regardless of whether they resulted in success or failure.
+
+Similar to the deployments causing failure definition, you can configure the definition for measuring total deployments. This definition may align with the [DORA Deployment Frequency definition](#set-up-deployment-frequency).
+However, note that the total deployments are not linked with Deployment Frequency and are tracked separately for Change Failure Rate calculations.
+
+![](../static/cfr-gha-5.png)
+
+</TabItem>
+
+<TabItem value="cd-github" label="Using GitHub">
+
+* Choose **GitHub** as the tool that you use to measure change failure rate in your team.
+
+![](../static/cfr-gh-1.png)
+
+* Select the integrations you want to use for calculating CFR.
+
+![](../static/cfr-gh-2.png)
+
+When the integration is configured with GitHub, specify whether deployments causing failure and total deployments are defined based on Pull Requests (PR) or Commits. Describe what defines a deployment causing failure based on the following filters:
 
 * PR merged without closing.
 * PR closed without merging.
 * A merged PR is closed.
 
 Add any extra attributes that help identify PRs for deployments causing failure. Multiple filters are combined using an 'OR' operation.
-</details>
 
-<details>
-<summary>Integration configured with CI/CD</summary>
-
-When the integration is configured with CI/CD, define additional attributes to identify deployments causing failure and total deployments. When using multiple filters, they will be combined with an 'AND' operation.
-
-Define job run parameters in key-value pairs. When using multiple job run parameters, they will be combined with an 'OR' operation. Similarly describe what defines a deployment causing failure based on the jobs completed or jobs started events in the selected time range.
-
-</details>
-
-:::info
-Note: The additional filters being used to define the deployments will be applicable to all the integrations that you have selected.
-:::
-
-## Lead Time Profile
-
-Lead time is based on time spent in stages defined in a Velocity Lead Time type Workflow profile.
-
-For example, the default configuration for a [PR-based Workflow profile](#create-a-profile-to-track-lead-time-in-scm) has four stages:
-
-* PR creation time.
-* Time to Comment.
-* Approval time.
-* Merge time.
-
-Similarly, the default configuration for a [Ticket-based Workflow profile](#configuration-examples) has five stages:
-
-* Lead time to First Commit.
-* PR Creation time.
-* Time to Comment.
-* Approval time.
-* Merge time.
-
-When calculating lead time, the time spent in each stage depends on the stages that a PR or issue actually goes through. For example, if your Workflow profile includes a *time to comment* stage, but there are no comments on the PR or ticket, then the *time to comment* is zero.
-
-<img
-  src={require('../static/default-lead-time.png').default}
-  alt="Example banner" height="50%" width="100%" border="1"
-/>
-
-You can configure grading thresholds (good, acceptable, and slow) for each stage. These thresholds determine grades that appear on your lead time widgets. Grades are reported for each stage as well as a cumulative grade for all stages combined.
-
-You can modify Workflow profile stages and grades according to your team's SDLC process. If your Workflow profile includes stages across issue management, SCM, and CI/CD, make sure the same event is not tracked in multiple tools, such as *Deploy to Production* in Jira and a *CI/CD Deploy* stage.
-
-### Configure the DORA Profile
-
-DORA Profile is a type of Workflow Profile that allows you to define the thresholds for measuring the DORA metrics for your engineering team. Follow the steps below to configure the DORA profile:
-
-#### Step 1: Create a New Workflow Profile
-
-* In the **Workflow** tab under **Profiles** select **+New Workflow Profile**
-
-![](../static/dora-1.png)
-
-* Select **DORA profile** as the type for the Workflow profile.
-
-![](../static/dora-2.png)
-
-* Enter a **Name** for the profile.
-* Add a profile description. (Optional)
-
-![](../static/dora-3.png)
-
-#### Step 2: Define the settings for the Lead Time for Changes report
-
-* Select the **Issue Management Platform** that you want to use to track tasks in your team.
-
-![](../static/dora-4.png)
-   
-* Choose the **Start Event** and configure the stages involved in the workflow based on the selected event.
-  * For tracking **Lead Time** only using the **SCM** tool, select the start event as **Commit Created**
-  * For measuring **Lead Time** using **Issue Management Platform** and **SCM** both or only using **Issue Management Platform**, select the start event as **Ticket Created**.
-   
-![](../static/dora-5.png)
-
-* Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#development-stages).
-* To add custom stages, Click on the plus button within the workflow.
-   
-![](../static/dora-6.png)
-
-* Add the stage name and description.
-   
-![](../static/dora-7.png)
-
-* Define the **Stage Definition** by selecting the trigger event (options include Issue Management, Other CI/CD tools, Harness CI) and setting the event parameters.
-   
-![](../static/dora-8.png)
-
-:::info
-SEI currently supports only [HarnessNG integration](/docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd) as the CD tool for configuring stages in the Lead Time workflow.
-:::
-
-* Set acceptable time limits and target times (e.g., IDEAL TIME, ACCEPTABLE TIME) for the custom stage and save it.
-   
-![](../static/dora-9.png)
+![](../static/cfr-gh3.png)
 
 :::note
-
-When configuring a workflow profile in Jira, you have the option to add a release stage to measure Lead Time. This allows you to schedule how features are rolled out to customers or organize completed work for your project.
-
+When using multiple filters, they will be combined with an OR operation, allowing commits that meet any condition to qualify.
 :::
 
-#### Step 3: Define the settings for the Deployment Frequency report
+</TabItem>
 
-Modify this settings to define how you want to calculate Deployment Frequency for your engineering team.
+<TabItem value="cd-azure-boards" label="Using Azure DevOps">
 
-* Choose the tool that you want to use to measure deployments in your team.
-   
-![](../static/dora-10.png)
+Azure DevOps can be used to configure change failure rate definition for DORA profile. The DORA profile can be configured with either of the Azure Devops service as given below:
 
-* Select the existing integrations that you would like to use to calculate the Deployment Frequency.
-   
-![](../static/dora-11.png)
+#### Azure Boards
 
-* Configure the additional Filters to define the criteria for deployments that are to be considered in the Deployment Frequency calculation.
-   
-![](../static/dora-12.png)
+Change Failure Rate (CFR) can also be calculated based on work items in Azure Boards. 
+By configuring this, you can track deployments that cause failures by analyzing the lifecycle of work items, such as their creation, resolution, or updates.
 
-#### Step 4: Define the settings for the Mean Time to Restore report
+* Choose **Azure Boards** as the tool that you use to measure change failure rate in your team.
 
-Define the settings for measuring the time it takes a team to recover from a failure in production. The configuration is similar to the settings for Lead Time.
+![](../static/cfr-boards-1.png)
 
-![](../static/dora-13.png)
+* Select the relevant Azure Boards integrations that you wish to use for calculating change failure rate.
 
-#### Step 5: Define the settings for the Change Failure Rate report
+![](../static/cfr-boards-2.png)
 
-Define the configuration for measuring the Change Failure Rate for your team.
-* Choose the tool that you want to use to measure deployments in your team.
+* Configure additional attributes to define **deployments that result in failure** or **total deployments**. When applying multiple filters, they will be combined using an 'AND' operation. A failed Deployment can be a hotfix or a deployment that led to failure.
+* Similarly describe what defines a deployment causing failure based on the issues resolved or issues created or issues updated events in the selected time range.
 
-![](../static/dora-14.png)
+![](../static/cfr-boards-3.png)
 
-* Select the existing integrations that you would like to use for the calculation. Configuration details vary by SEI integration type. Default values are pre-populated, and you can change them if desired.
-   
-![](../static/dora-15.png)
+#### Azure Pipelines
 
-* Select factors to use to calculate failed deployments and total deployments.
-   
-![](../static/dora-16.png)
+* Choose **Azure Pipelines** as the tool that you use to measure change failure rate in your team.
 
-* Ensure to select the checkbox in case you want to calculate the Change Failure Rate using only deployments that cause failure.
-   
-![](../static/dora-17.png)
-   
-#### Step 6: Associate the DORA Profile with the Collection
+![](../static/cfr-azure-pipelines-1.png)
 
-Associate the **DORA profile** with the **Collection** and **Project** under which you have created the **DORA Insight**.
+* Select the relevant Azure DevOps Pipelines integrations that you wish to use for calculating change failure rate.
+
+![](../static/cfr-azure-pipelines-2.png)
+
+* Define additional attributes to identify **deployments causing failure** and **total deployments**. When using multiple filters, they will be combined with an 'AND' operation.
+* Define job run parameters in key-value pairs. When using multiple job run parameters, they will be combined with an 'OR' operation. Similarly describe what defines a deployment causing failure based on the jobs completed or jobs started events in the selected time range.
+
+![](../static/cfr-azure-pipelines-3.png)
+
+#### Azure Repos
+
+* Choose **Azure Repos** as the tool that you use to measure change failure rate in your team.
+
+![](../static/cfr-repos-1.png)
+
+* Select the integrations you want to use for calculating CFR.
+
+![](../static/cfr-repos-2.png)
+
+When the integration is configured with Azure Repos, specify whether deployments causing failure and total deployments are defined based on Pull Requests (PR) or Commits. Describe what defines a deployment causing failure based on the following filters:
+
+* PR merged without closing.
+* PR closed without merging.
+* A merged PR is closed.
+
+Add any extra attributes that help identify PRs for deployments causing failure. Multiple filters are combined using an 'OR' operation.
+
+![](../static/cfr-repos-3.png)
+
+:::note
+Filters combine using an OR operation. For example, a PR qualifies if it:
+
+Targets the main branch, OR originates from a `feature/* branch`, OR has a label containing `deploy`.
+:::
+
+</TabItem>
+
+<TabItem value="cd-jenkins" label="Using Jenkins">
+
+#### Define the deployments causing failure
+
+* Choose **Jenkins** as the tool that you use to measure change failure rate in your team.
+
+![](../static/cfr-jenkins-1.png)
+
+* Select the relevant Jenkins integrations that you wish to use for calculating change failure rate.
+
+![](../static/cfr-jenkins-2.png)
+
+* Configure additional attributes to identify deployments that result in failure. By default, all pipelines are included, but you can customize the selection by manually specifying which pipelines should be included.
+* Refine the calculation by specifying detailed filters. This filters pipelines that should contribute to the change failure rate calculations.
+  * **Filters:**
+    * Use filters to include or exclude jobs based on specific properties, conditions, and values from the Jenkins jobs configuration.
+    * Filters combine using an AND operation, meaning all specified conditions must be met.
+    * Example: `Status = Failure` AND `Instance Name = <JENKINS_INSTANCE_NAME>`.
+  * **Job Run Parameters:**
+    * Narrow down the data to specific job executions by defining key-value pairs.
+    * Filters combine using an OR operation, meaning any execution meeting the specified conditions will be included.
+    * Example: Include executions where `JAVA_VERSION = 11` OR `Branch = main`.
+
+* Define how change failure rate should be tracked:
+  * **Jobs Started:** Tracks change failure rate based on the initiation of deployment pipelines.
+  * **Jobs Completed:** Tracks change failure rate based on completed pipelines.
+
+#### Define the total deployments
+
+Total deployments represent all deployments that have occurred within a specified time range, regardless of whether they resulted in success or failure.
+
+Similar to the deployments causing failure definition, you can configure the definition for measuring total deployments. This definition may align with the [DORA Deployment Frequency definition](#set-up-deployment-frequency).
+However, note that the total deployments are not linked with Deployment Frequency and are tracked separately for Change Failure Rate calculations.
+
+![](../static/cfr-jenkins-3.png)
+
+</TabItem>
+
+<TabItem value="cd-jira" label="Using Jira">
+
+Change Failure Rate (CFR) can also be calculated based on tickets in Jira.
+By configuring this, you can track deployments that cause failures by analyzing the lifecycle of issues, such as their creation, resolution, or updates.
+
+* Choose **Jira** as the tool that you use to measure change failure rate in your team.
+
+![](../static/cfr-jira-1.png)
+
+* Select the relevant Jira integrations that you wish to use for calculating change failure rate.
+
+![](../static/cfr-jira-2.png)
+
+* Configure additional attributes to define **deployments that result in failure** or **total deployments**. When applying multiple filters, they will be combined using an 'AND' operation. A failed Deployment can be a hotfix or a deployment that led to failure.
+* Similarly describe what defines a deployment causing failure based on the issues resolved or issues created or issues updated events in the selected time range.
+
+![](../static/cfr-jira-3.png)
+
+</TabItem>
+
+<TabItem value="df-bb" label="Using BitBucket">
+
+* Choose **BitBucket / BitBucker Server** as the tool that you use to measure change failure rate in your team.
+
+![](../static/cfr-bb-1.png)
+
+* Select the integrations you want to use for calculating CFR.
+
+![](../static/cfr-bb-2.png)
+
+When the integration is configured with BitBucket, specify whether deployments causing failure and total deployments are defined based on Pull Requests (PR) or Commits. Describe what defines a deployment causing failure based on the following filters:
+
+* PR merged without closing.
+* PR closed without merging.
+* A merged PR is closed.
+
+Add any extra attributes that help identify PRs for deployments causing failure. Multiple filters are combined using an 'OR' operation.
+
+![](../static/cfr-bb-3.png)
+
+:::note
+When using multiple filters, they will be combined with an OR operation, allowing commits that meet any condition to qualify.
+:::
+
+</TabItem>
+
+<TabItem value="df-snow" label="Using ServiceNow">
+
+#### Define the deployments causing failure
+
+* Choose **ServiceNow** as the tool that you use to measure change failure rate in your team.
+
+![](../static/cfr-snow-1.png)
+
+* Select the relevant ServiceNow integrations that you wish to use for calculating change failure rate.
+
+![](../static/cfr-snow-2.png)
+
+* Select the ticket type for deployment frequency tracking:
+  * **Incidents** is the recommended option for measuring deployment causing failure.
+  * You can alternatively select Change Requests, though this is not recommended for change failure rate tracking.
+
+* Refine the calculation criteria by specifying filters:
+    * Use filters to include or exclude tickets based on specific fields, conditions, and values in your ServiceNow account.
+    * Filters are combined using an AND operation, meaning all specified conditions must be met.
+    * Example: `STATUS EQUALS CLOSED` AND `IMPACT EQUALS = <IMPACT_VALUES>`.
+
+* Define how deployments causing failure should be tracked:
+  * **Incident Resolved:** Tracks failure based on when incident type tickets are resolved (e.g., status changes to Closed).
+  * **Incident Updated:** Tracks failure whenever incident type tickets are updated (e.g., fields like resolution date or status are modified).
+  * **Change Request Created:** Tracks failure based on the creation of new incident type tickets.
+
+![](../static/cfr-snow-3.png)
+
+#### Define total deployments
+
+* Select the ticket type for measuring total deployments:
+  * **Change Request** is the recommended option for measuring total deployments.
+  * You can alternatively select Incident, though this is not recommended for calculating total deployments.
+
+* Identify tickets that reflect count of deployments by using filters:
+    * Use filters to include or exclude tickets based on specific fields, conditions, and values in your ServiceNow account.
+    * Filters are combined using an AND operation, meaning all specified conditions must be met.
+    * Example: `STATUS EQUALS CLOSED` AND `IMPACT EQUALS = <IMPACT_VALUES>`.
+
+* Define how total deployments should be tracked:
+  * **Change Request Resolved:** Tracks total deployments based on when change requests are resolved (e.g., status changes to Closed).
+  * **Change Request Updated:** Tracks total deployments whenever change requests are updated (e.g., fields like resolution date or status are modified).
+  * **Change Request Created:** Tracks total deployments based on the creation of new change requests.
+
+![](../static/cfr-snow-4.png)
+
+</TabItem>
+
+<TabItem value="df-gitlab" label="Using GitLab">
+
+* Choose **GitLab** as the tool that you use to measure change failure rate in your team.
+
+![](../static/cfr-gitlab-1.png)
+
+* Select the integrations you want to use for calculating CFR.
+
+![](../static/cfr-gitlab-2.png)
+
+#### Option 1: Define CFR using GitLab SCM
+
+When the integration is configured with GitLab SCM, specify whether deployments causing failure and total deployments are defined based on Pull Requests (PR) or Commits. 
+
+![](../static/cfr-gitlab-3.png)
+
+Describe what defines a deployment causing failure based on the following filters:
+
+* PR merged without closing.
+* PR closed without merging.
+* A merged PR is closed.
+
+Add any extra attributes that help identify PRs for deployments causing failure. Multiple filters are combined using an 'OR' operation.
+
+![](../static/cfr-gitlab-4.png)
+
+:::note
+When using multiple filters, they will be combined with an OR operation, allowing commits that meet any condition to qualify.
+:::
+
+#### Option 2: CFR Defined by GitLab CI/CD
+
+* GitLab CI/CD-based change failure rate tracks pipeline job activity.
+
+![](../static/cfr-gitlab-5.png)
+
+* Define additional attributes to identify **deployments causing failure** and **total deployments**. When using multiple filters, they will be combined with an 'AND' operation.
+* Define job run parameters in key-value pairs. When using multiple job run parameters, they will be combined with an 'OR' operation. Similarly describe what defines a deployment causing failure based on the jobs completed or jobs started events in the selected time range.
+
+![](../static/cfr-gitlab-6.png)
+
+</TabItem>
+
+</Tabs>
+
+### Associate profile with Collection
+
+Associate the **DORA profile** with the **Collection** and **Project** under which you have set up the **DORA Insight**.
     
 ![](../static/dora-18.png)
 
@@ -1443,3 +1661,48 @@ You can also associate Collections to existing DORA profiles from the **Collecti
 * Select the **DORA profile** and click on the **Associate Profile** button.
 
 ![](../static/dora-22.png)
+
+
+## Common set up issues
+
+While configuring the DORA profile, you may encounter some common issues. Below are the detailed explanations and troubleshooting steps to resolve them:
+
+### Filters not available while configuring the definition
+
+#### Possible Causes
+
+* **Data Ingestion Not Completed:** If the selected integration has not yet completed data ingestion, filters may not appear in the settings.
+* **Field Not Ingested:** The required field might not be included as part of the integration ingestion process.
+
+#### Resolution Steps
+
+* **Check Diagnostics:** Navigate to the Diagnostics section and verify whether data is ingested for the selected integrations. If data is not yet available, wait for the ingestion process to complete.
+* **Request Field Ingestion:** If the field is not ingested, create a Harness Support ticket and request the ingestion of the specific field as part of the integration.
+
+### Values for Selected Filters Don't Populate
+
+#### Possible Cause
+
+* Data ingestion for the selected integration may still be in progress or incomplete.
+
+#### Resolution Steps
+
+* **Verify Data Availability:** Use the Diagnostics section to confirm whether the data has been successfully ingested. If the data is not present, wait until ingestion is complete to configure the filters.
+
+### Projects/Collections Not Available in Association Settings
+
+#### Possible Causes
+
+* **Existing DORA Profile Association:** The collection might already be associated with another DORA profile, as each collection can only be linked to one DORA-type workflow profile. A mismatch between collections and the intended DORA profile can result in the collection not appearing in the association settings.
+
+#### Resolution Steps
+
+* **Verify Collection Settings:** Check the collection settings to ensure the collection is correctly associated with the desired DORA profile. Remember, while a single DORA profile can be associated with multiple collections, each collection can only be linked to one DORA-type workflow profile. Set up the associations accordingly.
+
+
+## What's next
+
+After setting up the DORA profile, proceed to create the DORA Insight using the available DORA widgets. These widgets enable you to visualize and monitor key DORA metrics, providing actionable insights into your team’s performance.
+
+* DORA widgets
+* DORA Insight
