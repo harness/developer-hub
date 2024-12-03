@@ -50,6 +50,9 @@ If a Docker image location is hardcoded in your Kubernetes manifest (for example
 
 When you hardcode the artifact in your manifests, any artifacts added to your Harness service are ignored.
 
+:::note info
+Configuring dependent fields, such as the artifact tag, as runtime inputs when the primary artifact is set as an expression is supported in YAML only and is not supported through the UI.
+:::
 
 ## Docker
 
