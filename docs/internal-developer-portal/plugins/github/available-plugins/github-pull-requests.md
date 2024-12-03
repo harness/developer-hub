@@ -1,6 +1,9 @@
 ---
 title: GitHub Pull Requests
 description: View all open and closed pull requests in a GitHub repository.
+sidebar_position: 5
+redirect_from:
+  - /docs/internal-developer-portal/plugins/available-plugins/github-pull-requests
 ---
 
 | Plugin details |                                                                |

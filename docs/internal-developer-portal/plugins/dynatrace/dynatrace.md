@@ -1,6 +1,10 @@
 ---
 title: Dynatrace
 description: View monitoring info from Dynatrace for services in your Software Catalog.
+sidebar_label: Plugin Configuration
+sidebar_position: 2
+redirect_from:
+  - /docs/internal-developer-portal/plugins/available-plugins/dynatrace
 ---
 
 | Plugin details |                                                                                |

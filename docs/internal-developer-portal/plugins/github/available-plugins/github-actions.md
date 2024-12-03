@@ -1,6 +1,9 @@
 ---
 title: GitHub Actions
 description: View CD/CD pipeline executions from GitHub Actions.
+sidebar_position: 1
+redirect_from:
+  - /docs/internal-developer-portal/plugins/available-plugins/github-actions
 ---
 
 | Plugin details |                                                                                     |
@@ -20,7 +23,7 @@ This plugin does not require you to add application configuration.
 
 ### Secrets
 
-This plugin requires the user to log in using the configured GitHub OAuth application. Make sure that you have a GitHub OAuth application created and configured in IDP. For instructions to configure a GitHub OAuth app, go to [OAuth support for plugins](../oauth-support-for-plugins.md).
+This plugin requires the user to log in using the configured GitHub OAuth application. Make sure that you have a GitHub OAuth application created and configured in IDP. For instructions to configure a GitHub OAuth app, go to [OAuth support for plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/oauth-support-for-plugins).
 
 ### Delegate proxy
 

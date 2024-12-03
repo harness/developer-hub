@@ -1,0 +1,11 @@
+{
+  "label": "Dynatrace",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 9,
+  "link": {
+    "type": "generated-index",
+    "title": "Dynatrace Integrations"
+  },
+  "customProps": {}
+}

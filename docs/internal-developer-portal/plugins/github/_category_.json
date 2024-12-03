@@ -1,0 +1,11 @@
+{
+  "label": "GitHub",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 11,
+  "link": {
+    "type": "generated-index",
+    "title": "GitHub Integrations"
+  },
+  "customProps": {}
+}

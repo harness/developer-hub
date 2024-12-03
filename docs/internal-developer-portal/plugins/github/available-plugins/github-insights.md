@@ -1,6 +1,9 @@
 ---
 title: GitHub Insights
 description: View insights such as top contributors, releases, and READMEs from GitHub.
+sidebar_position: 4
+redirect_from:
+  - /docs/internal-developer-portal/plugins/available-plugins/github-insights
 ---
 
 | Plugin details |                                                                |

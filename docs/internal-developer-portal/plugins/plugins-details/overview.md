@@ -43,7 +43,7 @@ See the [list of curated plugins](/docs/category/available-plugins).
 
 **A plugin is available in the Backstage marketplace but not in Harness IDP. Can we file a request to add the plugin to IDP?**
 
-We’re happy to expand our curated plugin list based on customer requests. [Submit a request in the marketplace](/docs/internal-developer-portal/plugins/plugin-marketplace#request-access-for-plugin) to make a plugin available in your Developer Portal.
+We’re happy to expand our curated plugin list based on customer requests. [Submit a request in the marketplace](/docs/internal-developer-portal/plugins/plugins-details/plugin-marketplace#request-access-for-plugin) to make a plugin available in your Developer Portal.
 
 **We are looking for a plugin that is not present in the Backstage marketplace. What are our options?**
 

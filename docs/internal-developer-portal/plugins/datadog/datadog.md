@@ -1,6 +1,10 @@
 ---
 title: Datadog
 description: A frontend plugin that embeds Datadog graphs and dashboards into Backstage.
+sidebar_label: Plugin Configuration
+sidebar_position: 2
+redirect_from:
+  - /docs/internal-developer-portal/plugins/available-plugins/datadog
 ---
 
 | Plugin details |                                                                                |

@@ -1,6 +1,9 @@
 ---
 title: GitHub Codespaces
 description: Interact with your GitHub Codespaces directly from Backstage platform.
+sidebar_position: 3
+redirect_from:
+  - /docs/internal-developer-portal/plugins/available-plugins/github-codespaces
 ---
 
 | Plugin details |                                                                                     |

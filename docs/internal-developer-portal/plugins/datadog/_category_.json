@@ -1,0 +1,11 @@
+{
+  "label": "Datadog",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "title": "Datadog Integrations"
+  },
+  "customProps": {}
+}
