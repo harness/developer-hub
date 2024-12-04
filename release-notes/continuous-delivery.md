@@ -45,6 +45,16 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## December
+
+### Version 1.68.x
+
+#### Fixed Issues
+
+- User was not able to provide timeout for Service Now approval step as Input. This issue is fixed now. (PIPE-23742, ZD-73247)
+- When using blue green deployment step in a template, AWS load balancer dropdown was not getting populated. This issue is fixed now. (CDS-104478, ZD-73560)
+- Previously, the Shell Script Provisioner step for PDC infrastructure failed when using runtime inputs for `hostAttributes`. This issue is fixed now. (CDS-104659)
+
 ## November
 
 ### Version 1.67.2
