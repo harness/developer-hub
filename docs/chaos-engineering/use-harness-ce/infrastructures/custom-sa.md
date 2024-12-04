@@ -6,7 +6,7 @@ description: Use custom service account with DDCR
 
 This topic describes how to:
 1. Install the Harness Delegate with limited permissions.
-2. Use the infrastructure to run chaos experiments in single or multiple namespaces in a Kubernetes cluster.
+2. Use the infrastructure to run chaos experiments in [single](#case-2-one-infrastructure-one-namespace) or [multiple](#case-1-one-infrastructure-multiple-namespaces) namespaces in a Kubernetes cluster.
 
 ## Before you begin, review the following:
 
@@ -19,7 +19,7 @@ A service account is required in the Delegate YAML when Delegate is installed in
 
 In case the Delegate is deployed in a **centralized infrastructure** (and connected to the target cluster), service account is not required in the Delegate YAML because the Kubernetes connectors already have the role permissions, and Delegate only orchestrates the tasks.
 
-### Attach a service account to the Delegate
+## Attach a service account to the Delegate
 
 By default, Delegate uses the **cluster admin** role. To limit the permissions for the Delegate, follow the steps below.
 
@@ -28,6 +28,7 @@ By default, Delegate uses the **cluster admin** role. To limit the permissions f
   ![](./static/delegate/cluster.png)
 
 2. Create a new service account for the Delegate (to which you can assign a role further).
+Here, `chaos-delegate` refers to the name of the service account in the Delegate.
 
 ```yaml
 apiVersion: v1
@@ -40,6 +41,123 @@ metadata:
 3. Attach the service account to the Delegate YAML, as shown in the diagram.
 
   ![](./static/delegate/attach.png)
+
+
+### Permissions to manage Delegate resources
+
+While using Harness Delegate, transient pods are created. Harness recommends you provide dedicated namespace for the transient resources. Delegte manages the resources, that require specific permissions in the dedicated namespace.
+
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: chaos-delegate
+  namespace: harness-delegate-ng
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: harness-delegate-ng
+  name: chaos-delegate
+rules:
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  - replicasets
+  - daemonsets
+  - statefulsets
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+  - deletecollection
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - secrets
+  - services
+  - configmaps
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+  - deletecollection
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  - cronjobs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+  - deletecollection
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: chaos-delegate
+  namespace: harness-delegate-ng
+subjects:
+- kind: ServiceAccount
+  name: chaos-delegate
+  namespace: harness-delegate-ng
+roleRef:
+  kind: Role
+  name: chaos-delegate
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: chaos-delegate
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  - events
+  verbs:
+  - watch
+  - list
+  - get
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  verbs:
+  - patch
+  resourceNames:
+  - harness-delegate-ng
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: chaos-delegate
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: chaos-delegate
+subjects:
+- kind: ServiceAccount
+  name: chaos-delegate
+  namespace: harness-delegate-ng
+```
 
 ## Enable Chaos in Namespaces
 
@@ -149,7 +267,8 @@ After creating a Kubernetes cluster, follow the steps below:
 
 3. Create Harness infrastructure definition using the same Kubernetes cluster connector.
 
-4. Create a cluster role that you can use later to onboard application namespaces, as shown below.
+4. Create a cluster role and provide cluster-wide access or cluster role binding for selected namespaces using role binding, depending on your usage. You can use this configuration to onboard application namespaces.
+To discover the resources and run chaos, use the permissions (described below) in each namespace.
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -266,7 +385,25 @@ subjects:
 ```
 
 :::info note
-To onboard a new application namespace, create another role binding in the application namespace (Onboarding `app2` namespace, replace the `namepsace` field in the above YAML spec with `app2`.)
+- To onboard a new application namespace, create another role binding in the application namespace (Onboarding `app2` namespace, replace the `namepsace` field in the above YAML spec with `app2`.)
+- To give access to all namespaces, use the following YAML configuration:
+
+  ```yaml
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: CluesterRoleBinding
+  metadata:
+    name: agentless-model-rolebinding
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: agentless-model-rolebinding
+  subjects:
+  - kind: ServiceAccount
+    name: chaos-delegate
+    namespace: harness-delegate-ng
+  ```
+
+- For the above setting to work, ensure you update the namespace and the service account in the Harness portal service discovery agent setting and chaos infrastructure settings.
 :::
 
 ### Case 2: One Infrastructure, One Namespace
