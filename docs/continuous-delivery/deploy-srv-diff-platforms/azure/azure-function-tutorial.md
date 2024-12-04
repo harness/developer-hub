@@ -38,6 +38,12 @@ You define the service for your deployment in the service settings of the pipeli
 
 It is an artifact-based service, where a manifest is not required, and setting up Variables is optional.
 
+:::note Info
+The artifact must contain the Azure function app. For more information on how to create containerized function apps, go to [Azure Documentation](https://learn.microsoft.com/en-us/azure/azure-functions/functions-how-to-custom-container?tabs=core-tools%2Cacr%2Cazure-cli2%2Cazure-cli&pivots=azure-functions).
+
+You can also deploy Azure Function Apps packaged as ZIP Bundles. For more information, refer to [Azure Documentation](https://learn.microsoft.com/en-us/azure/azure-functions/functions-deployment-technologies?tabs=windows#zip-deploy).
+:::
+
 To add an artifact source, click on Add Artifact Source.
 
 Currently, Harness supports Docker Registry, ACR, Nexus3, and Artifactory for artifact repositories. Choose where your artifact is stored, and click Continue.
