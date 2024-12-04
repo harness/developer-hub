@@ -9,6 +9,10 @@ sidebar_position: 11
 
 Harness Database DevOps supports managing database changes using environment-specific branches. This approach allows you to maintain different configurations for development, staging, and production environments within your Git repository.
 
+:::info
+Head over to our YouTube for a tutorial on how to set up [Harness Database DevOps with GitOps](https://youtu.be/5JbTEx2ekWo?si=GFx9uRG0x9o3bIvt). 
+:::
+
 ## Why Use Environment Branches in Harness Database DevOps?
 
 Here are several reasons to use environment branches with Harness Database DevOps:
@@ -22,19 +26,6 @@ Here are several reasons to use environment branches with Harness Database DevOp
 4. **Easier Rollbacks**: Harness Database DevOps can quickly roll back changes by reverting to a previous commit in the environment's branch.
 
 5. **Audit Trail**: Each branch provides a clear history of changes, enhancing traceability in Harness Database DevOps.
-
-### Why Deploy to Database Instance by Environment Branch?
-
-There are several reasons why you might want to deploy to a database instance by environment branch:
-
- 1. **Consistency with Application Deployment**: If you're using a different GitOps tool to deploy your application with a branch per
- environment, managing your database changes the same way ensures consistency across your entire stack.
- 2. **Environment-Specific Configurations**: Each environment (dev, staging, prod) may require different database configurations. Using 
-  separate branches allows you to maintain these configurations independently.
- 3. **Controlled Progression**: Changes can be tested and validated in lower environments (e.g., dev, staging) before being merged into the production branch.
- 4. **Easier Rollbacks**: If an issue occurs in one environment, you can easily roll back by reverting to a previous commit in that 
-  environment's branch.
- 5. **Audit Trail**: Each branch provides a clear history of changes specific to that environment, enhancing traceability and compliance.
 
 ### What are the tradeoffs of Branch Per Environment?
 

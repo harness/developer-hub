@@ -15,27 +15,10 @@ Harness Database DevOps supports trunk-based development for managing database c
 
 Harness Database DevOps enables the use of contexts (similar to Liquibase's context feature) to manage environment-specific deployments effectively:
 
-1. **Configuration Setup**
-   - Configure your schema within Harness Database DevOps.
-   - Define contexts for different environments (e.g., development, QA, production).
-   - Set up context-specific variables to tailor deployments to each environment.
-
-2. **Change Management**
-   ```sql
-   --changeset author:create-table context:dev,qa,prod
-   CREATE TABLE example ([10]
-       id INT PRIMARY KEY,[11]
-       name VARCHAR(255)
-   );
-
-   --changeset author:dev-data context:dev
-   INSERT INTO example (id, name) VALUES (1, 'Sample Data');
-   ```
-
-3. **Deployment Control**
-   - Utilize Harness Database DevOps to filter changes by context.
-   - Apply changes based on the defined environment context.
-   - Monitor context-specific deployments to ensure accuracy and compliance.
+ - **Configuration Setup**
+    - Configure your schema within Harness Database DevOps.
+    - Define contexts for different environments (e.g., development, QA, production).
+    - Set up context-specific variables to tailor deployments to each environment.
 
 ### Pipeline-Managed Environments
 
@@ -45,8 +28,7 @@ Harness Database DevOps offers robust pipeline features for managing deployments
    - Create environment-specific pipelines tailored to the needs of each deployment stage.
    - Configure deployment triggers to automate the deployment process.
    - Set up approval workflows to ensure changes are reviewed before deployment.
-   - Define environment variables to customize behavior based on the deployment context.
-
+   
 2. **Deployment Process**
    - Changes flow from the main branch, ensuring that all modifications are integrated seamlessly.
    - Harness Database DevOps controls deployment targeting, allowing for precise application of changes.
@@ -54,12 +36,10 @@ Harness Database DevOps offers robust pipeline features for managing deployments
 
 ## Setting Up Trunk-Based Development
 
-1. **Repository Configuration**
-   - Establish a single main branch in your repository to serve as the primary source of truth for database changes.
-   - Configure Harness Database DevOps to track this main branch, ensuring all changes are monitored.
+1. **Repository Configuration**:
    - Organize changes with clear naming conventions to facilitate easy identification and management.
 
-2. **Harness Database DevOps Setup**
+2. **Harness Database DevOps Setup**:
    - Create database instances for each environment to support isolated testing and deployment.
    - Configure deployment pipelines that align with your development workflow.
    - Set up environment-specific variables to ensure that deployments are tailored to the needs of each environment.
