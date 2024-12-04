@@ -286,6 +286,38 @@ gsutil -m cp \
 
 - Harness Platform enforces limits at account level to ensure optimal performance and system stability. These limits help manage resources and ensure that accounts operate within defined thresholds. [Platform resource Limits](https://developer.harness.io/docs/platform/account-license-limits/)
 
+-  HPA can now be created using global and service-level overrides and can be enabled for supported services. (PL-58826)
+
+   At the global level, for all supported services
+
+   ```yaml
+   global:
+     autoscaling:
+       enabled: true      # Enables autoscaling for all services
+       minReplicas: 1     # Set minimum replicas for all services
+       maxReplicas: 5     # Set maximum replicas for all services
+       targetCPU: 80      # Set target CPU for all services
+       targetMemory: 80   # Set target Memory for all services
+   ```
+ 
+   At service level, for individual service (eg: ng-manager)
+   ```yaml
+   global:
+    autoscaling:
+     enabled: false     # Disables autoscaling for all services
+ 
+   platform:
+    ng-manager:
+      autoscaling:
+        enabled: true
+        minReplicas: 1     
+        maxReplicas: 5     
+        targetCPU: 80      
+        targetMemory: 80  
+   ```
+
+   Harness helm chart supports configuring HPA for either all services at once or for selective services.
+
 ### Fixed issues
 
 #### Cloud Cost Management
