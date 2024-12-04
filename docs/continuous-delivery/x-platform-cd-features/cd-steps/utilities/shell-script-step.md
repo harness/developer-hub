@@ -383,6 +383,98 @@ You can also use expressions in **Value**. For example, if you have an Output Va
 
 At deployment runtime, Harness evaluates the expression and the variable contains its output.
 
+<details>
+<summary>Example: Resolving Input Variables in Shell Script</summary>
+
+This example demonstrates how to define and resolve input variables in a Harness pipeline.
+
+1. Pipeline Variable:
+  - A pipeline variable named **Environment_name** is defined with the value `Stage_env`.
+2. Script Input Variables:
+  - A variable named **Infrastructure_name** is defined with the value `Kubernetes_infra`.
+  - An edge case variable named **custom_url_with_backslash** is defined with the value `harness.io\`, which includes a backslash.
+
+Resolving Variables in Shell Script
+
+1. Pipeline Variable:
+  - Use the expression `<+pipeline.variables.Environment_name>` to resolve pipeline variables.
+
+2. Script Input Variables:
+  - For Infrastructure_name, use `<+execution.steps.ShellScript_1.spec.environmentVariables.Infrastructure_name>`.
+  - For custom_url_with_backslash, use the expression in single quotes `'<+execution.steps.ShellScript_1.spec.environmentVariables.custom_url_with_backslash>'` to handle the backslash correctly. If single quotes are omitted, the backslash is removed during evaluation.
+
+Example YAML Configuration
+```yaml
+pipeline:
+  name: YOUR_PIPELINE_NAME
+  identifier: YOUR_PIPELINE_IDENTIFIER
+  projectIdentifier: YOUR_PROJECT_IDENTIFIER
+  orgIdentifier: YOUR_ORG_IDENTIFIER
+  tags: {}
+  stages:
+    - stage:
+        name: Resolve input variables
+        identifier: Resolve_input_variables
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |+
+                          echo "Displaying input variables"
+
+                          # Printing the first variable defined as pipeline variable
+                          echo "Environment_name = <+pipeline.variables.Environment_name>"
+
+                          # Printing the second variable defined as Script Input Variables
+                          echo "Infrastructure_name = <+execution.steps.ShellScript_1.spec.environmentVariables.Infrastructure_name>"
+
+                          # Printing the third variable defined as Script Input Variables
+
+                          echo "Use double quotes to safely handle the Harness placeholder and escape the backslash"
+
+                          echo "custom_url_with_backslash = '<+execution.steps.ShellScript_1.spec.environmentVariables.custom_url_with_backslash>'"
+
+                          # Printing the expression without quotes removes the backslash
+                          echo "Removing quotes to remove the backslash"
+                          echo "custom_url_with_backslash = "<+execution.steps.ShellScript_1.spec.environmentVariables.custom_url_with_backslash>
+
+                    environmentVariables:
+                      - name: Infrastructure_name
+                        type: String
+                        value: Kubernetes_infra
+                      - name: custom_url_with_backslash
+                        type: String
+                        value: harness.io\
+                    outputVariables: []
+                    delegateSelectors:
+                      - helm-delegate-2-vishal
+                  timeout: 10m
+        tags: {}
+  variables:
+    - name: Environment_name
+      type: String
+      description: ""
+      required: true
+      value: Stage_env
+```
+
+Here is how the output would look like:
+
+![](./static/resolving_input_variables.png) 
+
+</details>
+
 ### Specify output variables
 
 Shell Script step Output Variables have a maximum size of 512KB. To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.
