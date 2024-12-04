@@ -391,6 +391,8 @@ gsutil -m cp \
 
 - Anomaly Alert Upsert Functionality: When adding a new anomaly alert, the system was updating the existing alert instead of creating a new one when an email address was added. We have now implemented an upsert function for the channel list to ensure a new alert is added correctly, enhancing alert management.
 
+- AWS Dashboards reporting: We have updated the default reporting timeframe for the AWS dashboard to 24 months. Additionally, we’ve introduced new options to extend the reporting timeframe to 36, 48, or 60 months for enhanced flexibility. (CCM-19923)
+
 #### Harness Platform
 
 - Removed the outdated static HTML page (`https://app.harness.io/ng/static/versions.html`) that displayed versions of various NG services. Customers are now advised to check deployed service versions from their Account Settings page in NGUI. (PL-52144)
