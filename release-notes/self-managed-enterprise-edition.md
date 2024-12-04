@@ -251,13 +251,13 @@ Some admins might not have Google account access to download air gap bundles. As
 ```
 gsutil -m cp \
 
-  "gs://smp-airgap-bundles/harness-0.22.2/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.22.2/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.22.2/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.22.2/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.22.2/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.22.2/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.22.2/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.3/sto_images.tgz" \
   .
 ```
 
