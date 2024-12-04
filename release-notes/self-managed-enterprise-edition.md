@@ -284,7 +284,7 @@ gsutil -m cp \
 
 - Improved error messaging for the `<+secrets.getValue(secretlocation)>` expression to provide clearer feedback when a secret is not found. The updated message now states, "The secret has not been found," and includes the full computed path for better troubleshooting. This item requires Harness Delegate version 24.10.84104. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-51900, ZD-65130, ZD-69181)
 
-- Harness Platform enforces limits at account level to ensure optimal performance and system stability. These limits help manage resources and ensure that accounts operate within defined thresholds. [Platform resource Limits](/platform/account-license-limits/)
+- Harness Platform enforces limits at account level to ensure optimal performance and system stability. These limits help manage resources and ensure that accounts operate within defined thresholds. [Platform resource Limits](https://developer.harness.io/docs/platform/account-license-limits/)
 
 ### Fixed issues
 
@@ -394,6 +394,43 @@ gsutil -m cp \
 
 #### Security Testing Orchestration
 - Fixed issue where the option to remove a configured Ticket Provider Connector in the External Tickets settings was unavailable; you can now remove the connector from the Ticket Provider Connector and related fields (STO-8001).
+
+## December 04, 2024, patch version 0.22.3
+This release includes the following Harness module and component versions.
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.22.3](https://github.com/harness/helm-charts/releases/tag/harness-0.22.3) |
+| Air Gap Bundle | [0.22.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.22.3) |
+| NG Manager | 1.57.8 |
+| CI Manager | 1.47.5 |
+| Harness Manager | 1.48.8 |
+| Pipeline Service | 1.95.4 |
+| Platform Service | 1.39.1 |
+| Access Control Service | 1.61.2 |
+| Delegate | 24.09.83900 |
+| GitOps Service | 1.18.7 |
+| Change Data Capture | 1.36.0 |
+| STO Core | 1.113.10 |
+| Test Intelligence Service | 1.27.1 |
+| NG UI | 1.43.2 |
+| LE NG | 1.3.1 |
+| Looker | 1.1.1 |
+| Log Service | 1.9.2 |
+#### Alternative air gap bundle download method
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.22.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.3/sto_images.tgz" \
+  .
+```
+### New features and enhancements
+- Enable mongofcvupgrade job to pull image from private registry. (PL-59000)
 
 ## November 27, 2024, patch version 0.22.2
 
