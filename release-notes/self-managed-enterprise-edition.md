@@ -339,6 +339,14 @@ gsutil -m cp \
 
 - Previously, uninstalling a Helm release would remove CRDs, causing applications to lose their references to projects. This issue is resolved. When installing the agent using Helm, the option to keep ArgoCD CRDs on uninstall is now set to true by default. (CDS-97016)
 
+#### Continuous Integration
+
+- Resolved an issue where excessive logging of the "sanitizeStreamLogs: sanitizing lines" message was flooding the engine and add-on logs. Additionally, a monitoring log line that was previously removed, impacting customer monitoring, has been restored. (CI-14640, ZD-71067)
+
+- Resolved an issue where sessions were initiated without credential information. The update ensures sessions are now created with the correct credentials, enabling cross-account authentication (CI-14134, ZD-69447)
+
+- Fixed an issue in the mac local runner where resource sharing between container and non-container steps was failing. The problem occurred due to the migration to Rancher/Colima, which resulted in two separate directories for container (/tmp) and non-container (/private/tmp) steps, causing symlink-related conflicts. This has been resolved behind the feature flag "CI_MOUNT_PATH_ENABLED_MAC" to ensure proper resource sharing between steps. (CI-13253)
+
 #### Harness Platform
 
 - Resolved an issue where code base cloning steps failed due to class package changes, causing deserialization errors. Aliases have been added to ensure successful deserialization, improving build stability and preventing timeouts in clone code base steps. (PL-57778, ZD-70731, ZD-71581, ZD-71589, ZD-71593, ZD-71596, ZD-71597, ZD-71599, ZD-72110)
@@ -370,6 +378,10 @@ gsutil -m cp \
 - Repository status was incorrectly set to 'Error' upon creation; now we refresh credentials on the agent right after creation or update to ensure accurate status. (CDS-101944)
 
 - Harness GitOps now supports application filtering by cluster, labels, and application/application set. For more information, go to [GitOps documentation](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#application-filters). (CDS-97564)
+
+#### Continuous Integration
+
+- Added support for setting display name, which will appear for URLs published in the Artifacts tab, when using the plugin plugins/artifact-metadata-publisher (CI-12176).
 
 #### Cloud Cost Management
 
