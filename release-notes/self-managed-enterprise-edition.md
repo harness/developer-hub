@@ -323,9 +323,6 @@ gsutil -m cp \
 #### Cloud Cost Management
 - Fixed ECS Metrics Chart Issue: CPU recommendations in ECS metrics charts previously displayed incorrect graphs, and CPU usage showed as 0. This has now been corrected. [CCM-19715]
 
-#### Code Repository
-- Fixed the issue where the branch creation failure message displayed the wrong branch name instead of the branch name provided as input. [CODE-2514]
-
 #### Continuous Delivery
 - Previously, the custom icon for the Step Group Template was not displayed when the template was used in the pipeline. This issue is resolved. (PIPE-22587)
 
@@ -635,10 +632,6 @@ gsutil -m cp \
 #### Cloud Cost Management
 
 - Export Perspective Chart as CSV: We now support exporting the Perspective chart as a CSV, allowing users to easily extract and analyze data from the chart. (CCM-18812)
-
-#### Code Repository
-
-- Resolved issue with branch rule blocking configuration updates via GitX and ignoring bypass list. Now bypass list is always included when sending updates in GitX. (CODE-2311)
 
 #### Continuous Delivery
 
@@ -1146,11 +1139,7 @@ This feature is currently behind the feature flag, `CI_GIT_CLONE_ENHANCED`. Cont
 
 - Implements AWS FIS generic experiment that helps users execute and monitor any AWS FIS template. (CHAOS-5418)
 
-- Converts the default health check probes to `type:inline` from `type:source` for Kubernetes infrastructure to improve the execution speed of chaos experiments. (CHAOS-4348)
-
-#### Code Repository
-
-- Added handlers for more error status code scenarios. (CODE-2113)	
+- Converts the default health check probes to `type:inline` from `type:source` for Kubernetes infrastructure to improve the execution speed of chaos experiments. (CHAOS-4348)	
 
 #### Harness Platform
 
