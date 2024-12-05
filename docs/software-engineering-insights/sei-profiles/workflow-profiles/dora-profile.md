@@ -1705,7 +1705,7 @@ While configuring the DORA profile, you may encounter some common issues. Below 
 
 #### Possible Causes
 
-* **Existing DORA Profile Association:** The collection might already be associated with another [DORA profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overviews/workflow-profile-overview), as each collection can only be linked to one DORA-type workflow profile. A mismatch between collections and the intended DORA profile can result in the collection not appearing in the association settings.
+* **Existing DORA Profile Association:** The collection might already be associated with another [DORA profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview), as each collection can only be linked to one DORA-type workflow profile. A mismatch between collections and the intended DORA profile can result in the collection not appearing in the association settings.
 
 #### Resolution Steps
 
