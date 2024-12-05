@@ -24,7 +24,13 @@ You can also perform the following actions from the AutoStopping dashboard view:
 - Edit or delete an AutoStopping rule
 - Enable or disable an AutoStopping rule
 
-![](./static/autostopping-dashboard-31.png)
+
+:::info
+CCM now allows bulk processing of AutoStopping rules i.e. multiple rules can be selected at once to be disabled, enabled, and dry run.
+
+:::
+
+![](./static/autostopping-dashboard-new.png)
 
 ### Visual summary
 
