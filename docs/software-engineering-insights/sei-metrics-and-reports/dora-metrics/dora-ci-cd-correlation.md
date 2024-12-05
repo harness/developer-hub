@@ -214,7 +214,7 @@ After setting up this custom integration, you'll need to configure Harness CD to
 
 Note that SEI natively supports correlation for container image based artifacts. For other artifact types some changes might be required in the Jenkins shell script to ensure unique creation of artifact names.
 
-In your [SEI workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile), you can then set up separate stages for CI and CD, ensuring correct correlation between the two.
+In your [SEI workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/dora-profile), you can then set up separate stages for CI and CD, ensuring correct correlation between the two.
 
 The primary advantage of this approach is flexibility. It allows for distinct CI and CD stages to be configured in the workflow profile allowing you to measure CI and CD lead time separately. However, it does require more setup and maintenance compared to the plugin approach.
 

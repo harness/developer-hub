@@ -117,7 +117,7 @@ This release does not include any early access features.
 
 * Resolved a bug where PRs from the [Harness Code repository](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#harness-sei-supported-platforms-and-technologies) were not getting displayed in the **Trellis contributor profile**. (SEI-8038)
 
-* Fixed the issue causing the application window to freeze when configuring stages in the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile) settings. (SEI-8347)
+* Fixed the issue causing the application window to freeze when configuring stages in the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview) settings. (SEI-8347)
 
 * Fixed the issue where widget configuration wasn’t updating to the **Default Business Alignment profile** when a previously selected BA profile was deleted. (SEI-8539)
 
