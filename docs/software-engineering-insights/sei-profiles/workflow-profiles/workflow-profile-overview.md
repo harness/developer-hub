@@ -4,7 +4,7 @@ description: Use Workflow profiles to define stages, events, and measurement cri
 sidebar_position: 30
 ---
 
-Workflow profiles in Software Engineering Insights enable you to define developer processes and measurement criteria for evaluating the efficacy of your organization's entire software development lifecycle. These profiles allow you to measure key metrics such as [DORA (DevOps Research and Assessment)](https://dora.dev/) and [Lead Time](/docs/software-engineering-insights/sei-profiles/workflow-profiles/velocity-profile), providing valuable insights into the time taken to ship changes or deploy bug fixes to production.
+Workflow profiles in Software Engineering Insights enable you to define developer processes and measurement criteria for evaluating the efficacy of your organization's entire software development lifecycle. These profiles allow you to measure key metrics such as [DORA (DevOps Research and Assessment)](https://dora.dev/) and [Lead Time](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overviews/velocity-profile), providing valuable insights into the time taken to ship changes or deploy bug fixes to production.
 
 :::note IMPORTANT
 Only **Harness Account Admins** or **SEI Admins** can create and manage these profiles. The best person to set them up is someone who knows exactly how software gets developed in your organization and can replicate the end-to-end software delivery process of your organization.
@@ -39,8 +39,8 @@ A DORA Profile defines thresholds for these metrics based on your organizationâ€
 
 #### What's next
 
-* [Create & manage the DORA profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/dora-profile)
-* [Add & configure the DORA widgets](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/dora-metrics)
+* [Create & manage the DORA profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overviews/dora-profile)
+* [Add & configure the DORA widgets](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/)
 
 ### Velocity Lead Time profile
 
@@ -53,7 +53,7 @@ It is important to maintain proper hygiene across all stages of the workflow to 
 
 #### What's next
 
-* [Create a Velocity Lead Time profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/velocity-profile)
+* [Create a Velocity Lead Time profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overviews/velocity-profile)
 * [Add & configure the lead time widgets](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports)
 
 ### DORA vs Velocity profile
@@ -69,7 +69,7 @@ The primary difference between the two profiles lies in their scope. DORA profil
 
 ### See also
 
-* [Create & manage the DORA profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/dora-profile)
-* [Create & manage the Velocity profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/velocity-profile)
-* [Add & configure the DORA widgets](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/dora-metrics)
+* [Create & manage the DORA profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overviews/dora-profile)
+* [Create & manage the Velocity profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overviews/velocity-profile)
+* [Add & configure the DORA widgets](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/)
 * [Add & configure the Lead Time widgets (Velocity profile based)](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports)

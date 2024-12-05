@@ -135,7 +135,7 @@ To add the **SCM PR Lead Time by Stage Report** widget to Insights:
 1. Select **Settings**, and then select **Add Widget**.
 2. Select the **SCM PR Lead Time by Stage Report** widget.
 3. Configure the **Filters** for the widget, such as `source/destination branch`, `reviewer`, `label`, and so on. This defines the types of commits or PRs that are considered in the lead time calculation.
-4. On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile), and then select **Next: Place Widget**.
+4. On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview), and then select **Next: Place Widget**.
 5. Select where you want to place the widget on the Insight, and then select **Save Layout**.
 
 ### Single Stat Reports
