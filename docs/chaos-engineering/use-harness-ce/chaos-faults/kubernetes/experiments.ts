@@ -200,6 +200,12 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod JVM method exception",
+    description:"Pod JVM method exception injects chaos into a Java application executing in a Kubernetes pod by invoking an exception.",
+    tags: ["pod", "jvm", "exception"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod memory hog exec",
     description:"Pod memory hog exec consumes memory resources on the application container in megabytes.",
     tags: ["pod"],
