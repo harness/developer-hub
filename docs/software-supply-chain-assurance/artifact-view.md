@@ -10,11 +10,11 @@ The **Artifacts** section in the SCS module is a centralized hub for viewing all
 
 * **[Artifact Listing](#view-your-artifacts):** View all container images, including their digests and tags.
 * **[Dependency Visibility](#sbom-tab):** Gain insight into artifact dependencies through SBOM.
+* **[Chain of Custody](#chain-of-custody):** Log the artifact's journey throughout the software supply chain.
 * **[Policy Enforcement](#artifact-overview):** View SBOM policy violations.
 * **[Deployment Tracking](#deployments-tab):** Track artifact deployments across various environments.
 * **[Security Insights](#vulnerabilities-tab):** Access information on security vulnerabilities.
 * **[SLSA Provenance](#artifact-overview):** View the provenance and verification status of artifacts following the SLSA framework.
-* **[Chain of Custody](#artifact-overview):** Log the artifact's journey throughout the software supply chain.
 
 Any artifacts that go through [SBOM Orchestration](/docs/software-supply-chain-assurance/sbom/generate-sbom.md), [SBOM Policy Enforcement](/docs//software-supply-chain-assurance/sbom-policies/enforce-sbom-policies.md), or [SLSA Provenance](/docs/software-supply-chain-assurance/slsa/generate-slsa.md) will be listed here. Additionally, the Artifacts section integrates with the Harness CD (Continuous Deployment) and STO (Security Testing Orchestration) modules, providing details linked to deployments and security scanning results for images.
 
@@ -65,14 +65,23 @@ You can search for a specific digest or apply filters based on dependencies, lic
 When you select an artifact’s digest, you can view a complete overview. This tab provides general information about the artifact and summarizes the following aspects concisely:
 
 
-
-* **Chain of Custody:** A complete record of the artifact's journey through the supply chain. These log items on the chain of custody include events such as SBOM generation, SLSA Provenance generation/verification, SBOM Policy Enforcement, and deployments to environments etc.,
 * **Deployments:** Displays the count of deployments specific to each environment (e.g., prod, pre-prod).
 * **SBOM:** Shows the total number of dependencies along with the SBOM score. You can also download the SBOM from here.
 * **SBOM Policy Violations:** Lists the SBOM policy violations for both allow-list and deny-list categories.
 * **Vulnerabilities:** Provides a summary of vulnerabilities found from the security scan, categorized by severity: critical, high, medium, and low.
 * **SLSA:** Shows the status of SLSA verification (passed/failed). You can also download the SLSA provenance from here.
 
+### Chain of Custody
+The Chain of Custody provides a comprehensive and immutable record of an artifact's lifecycle throughout the software supply chain. It captures every significant event during the artifact's journey, allowing detailed traceability. These logs include events from stages such as **Build** (Harness CI), **Deploy**, and **Security** (actions from the Harness **STO** and **SCS** modules).
+
+Each entry in the Chain of Custody contains relevant details about the artifact's progress, such as the status of the event, any associated downloadable artifacts, or a link to the pipeline execution results for further details. The information recorded varies depending on the specific event and includes:
+
+- **What**: The operation performed on the artifact.  
+- **When**: The timestamp of the action.  
+- **Where**: The stage where the event occurred.  
+- **Why**: The purpose of the action, often linked to pipeline execution data.
+
+<DocImage path={require('./static/artifacts-section/artifact-chain-of-custody.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ## SBOM Tab
 
