@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-11-13T20:00
+date: 2024-11-26T20:00
 sidebar_position: 12
 ---
 
@@ -18,6 +18,52 @@ Review the notes below for details about recent changes to Harness Internal Deve
 :::
 
 ## November 2024
+
+### Version 0.37.0
+
+<!-- November 26, 2024 -->
+
+- **New Videos:** [5 Things You Didn’t Know Were Possible in Harness IDP](https://youtu.be/S8kjTy5GBuQ), [Introducing New Workflows Homepage in Harness IDP](https://youtu.be/dJgf1ZUOs8s), [Catalog Metadata Ingestion API in Harness IDP](https://youtu.be/MB-IWGoYjOo), [How to let any user in your account Execute your Pipeline using Harness RBAC (IDP)](https://youtu.be/ySVEGtQ2uWU) 
+
+#### New features and enhancements
+
+- You can now view all your Jira tickets under the [My Tasks card](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/home-page-customization#my-tasks-card) on the Developer Home page, organized by sprints, progress, and other key developer information.
+
+![](./static/idp-jira-task.png)
+
+- Users can now onboard new services anytime using the [Get Started option under the Admin section](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#onboard-services-post-getting-started), even after completing the initial onboarding flow. [IDP-3984]
+
+![](./static/idp-re-onboarding.png)
+
+- Enhanced scorecard functionality by making the harness.io/services annotation optional for Policy Evaluation and STO stages based checks, enabling pipelines to use their last policy check results when defined. [IDP-3992]
+
+- Custom plugins now support arbitrary configurations under `customPlugins`, allowing more flexible plugin setups. [IDP-3911]
+
+```YAML
+## Example
+customPlugins:  
+  myPlugin:  
+    target: abc.com  
+```
+
+- Enhanced the URL allow list to now validate URLs before storing them for whitelisting. [IDP-3955] 
+
+#### Bug fixes
+
+- Fixed issue with Workflows V2 showing older Workflows when performing Layout customizations. [IDP-3969]
+
+- Fixed an issue where the "Add a New Workflow" navigation button did not direct to the correct group when the group had no workflows.[IDP-3968]
+
+- Fixed an issue where score computation was being skipped when no matching entities were found for a specific scorecard. The computation now handles such cases, ensuring consistent processing across all scorecards. [IDP-4256]
+
+- Fixed an issue where values entered using the `HarnessProjectPicker` were not maintaining their state between page navigation in the Workflow Forms. The state is now preserved.[IDP-4023]
+
+- Fixed an issue in the Catalog Ingestion API to handle case insensitivity with entity names, ensuring consistent behavior regardless of the case used in entity definitions. [IDP-4004]
+
+- Fixed an issue where pipelines stayed in a "waiting" status despite successful execution and added support to explicitly mark pipeline executions as Success for both "Success" and "IgnoreFailed" status, ensuring accurate status reporting in workflows. [IDP-3999]
+
+- Fixed an issue that allowed users to save a scorecard without adding all the mandatory fields.[IDP-3970]
+
 
 ### Version 0.36.0
 
@@ -873,7 +919,7 @@ contents:
 
 #### What's new
 
-- IDP now includes the Confluence search plugin to include results from Confluence spaces. To learn more, go to the [plugin documentation](/docs/internal-developer-portal/plugins/available-plugins/confluence). (IDP-845)
+- IDP now includes the Confluence search plugin to include results from Confluence spaces. (IDP-845)
 - The `harness:create-secret` and `harness:delete-secret` template actions are now available for use in IDP software templates. You can use these actions to receive a secret from a developer, create a Harness secret, and then use it as a pipeline variable to provide runtime input. For more information, go to the [tutorial](/docs/internal-developer-portal/tutorials/using-secret-as-an-input) (IDP-780)
 - The interval at which IDP polls Git repositories associated with the software catalog has increased from 5 minutes to 15 minutes. (IDP-749)
 

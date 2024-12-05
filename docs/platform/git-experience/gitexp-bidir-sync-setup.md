@@ -39,6 +39,11 @@ To enable bidirectional sync, you need to register webhooks for the repository w
 
 To facilitate the setup of entities with bidirectional sync, Harness provides banner notifications if an entity is not synced. Suppose you create a new remote entity in Harness without bidirectional sync enabled. In that case, you will see a banner on the entity creation page prompting you to set up a webhook to sync and track changes from Git to Harness. Below is an example of a remote pipeline without bidirectional sync enabled.
 
+:::info note
+When using Git Experience with GitHub in bidirectional sync mode, merging a commit with 300 or more files may cause some files to not sync properly in the GitEx cache. This is due to GitHub API limitations, which parse up to 300 files between two commits. Additionally, such large merges may contribute to hitting the GitHub API rate limit. It is recommended to keep the number of files in a single commit below 300 to ensure consistency and avoid potential rate limit issues.
+:::
+
+
 ![](./static/webhook_register_pipelinestudio.png)
 
 All you need to do is click on `Setup Webhook`, automatically webhook will be registered for your repository.

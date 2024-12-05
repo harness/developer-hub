@@ -1,6 +1,6 @@
 ---
-title: Entity identifier reference
-description: Many Harness entities and resources include a unique Id (entity Identifier) that's immutable once the entity is created.
+title: Entity Identifier Reference
+description: Harness entities and resources include a unique, immutable ID (entity identifier) once created.
 sidebar_position: 5
 helpdocs_topic_id: li0my8tcz3
 helpdocs_category_id: fb16ljb8lu
@@ -8,103 +8,86 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Many Harness entities and resources include a unique Id (entity Identifier) that's immutable once the entity is created.
+Harness entities and resources include a unique **identifier** (entity ID) that remains immutable once the entity is created. These identifiers provide a consistent way to reference entities, ensuring stability even if the entity's name changes.
 
-Identifiers provide a permanent way to refer to an entity, and avoid issues that can arise when a name is changed.
+---
 
-### Identifier limits and requirements
+## Overview of Entity Identifiers
 
-Identifiers have naming and usage limitations that you should be aware of.
+- **Immutability:** Once created, an identifier cannot be changed, even if the entity name is modified.  
+- **Purpose:** Identifiers ensure consistent referencing across entities, avoiding issues with name-based changes.  
+- **Automatic Generation:** Harness generates identifiers based on the entity name, following specific naming rules.  
 
-#### Identifier creation
+---
 
-When you name an entity, Harness automatically generates its identifier.
+## Identifier Limits and Requirements
 
-You can edit the Identifier when you are creating the entity, but not after the entity is saved.
+### Identifier Creation
 
-If you rename the entity, the Identifier remains the same.
+- **Automatic Generation:** When you name an entity, Harness generates its identifier.  
+- **Editable During Creation:** You can modify the identifier during entity creation but not after saving it.  
+- **Stability on Rename:** Renaming the entity doesn’t affect the identifier.  
+- **Conflict Resolution:** If an identifier is already in use, Harness appends a suffix (e.g., `-1`, `-2`) to ensure uniqueness.
 
-The generated Identifier is based on the entity name and meets the identifier naming restrictions.
+### Usage of Identifiers
 
-If an entity name cannot be used because it's already occupied by another entity, Harness automatically adds a prefix in the form of `-1`, `-2`, etc.
+Harness entities rely on **identifiers** for consistent interaction and referencing. These identifiers are designed to be immutable, ensuring the stability of relationships between entities.
 
-#### Entities use identifiers to interact with each other
+#### Why Identifiers Are Immutable
+- **Preserving Relationships:** Identifiers cannot be changed after creation because they are used by other entities to establish and maintain links.
+- **Impact of Deletion or Duplication:** If you delete an entity or create a duplicate with a new identifier, existing references to the original identifier are not automatically updated.  
 
-The `identifier` field is immutable because Harness Entities use this field to interact with each other. If you delete an Entity, or create a copy with a new identifier, references to that Entity will not get updated. For example, each Trigger has a `pipelineIdentifier` field that specifies the Pipeline for that Trigger. If you create a copy of the original Pipeline (with a new identifier) and then delete the original, any Triggers that reference the original will no longer work.
+#### Example Scenario
+- A Trigger uses the `pipelineIdentifier` field to link to a specific Pipeline.  
+- If the original Pipeline is deleted or replaced by a copy with a new identifier:
+  - The Trigger will lose its link to the Pipeline.
+  - This breaks the Trigger's functionality, as it can no longer reference the deleted Pipeline.
 
-#### Identifier restrictions
+By keeping identifiers immutable, Harness ensures reliable and consistent interactions between entities, avoiding issues caused by changes or deletions.
 
-Identifiers have the following restrictions:
 
-* Identifiers must start with a-z, A-Z, or \_. Identifiers can then be followed by 0-9, a-z, A-Z, \_, $ or -. 
+---
 
-	:::note
-	Custom roles cannot start with an underscore ( _ ) because Harness-managed role identifiers start with an underscore.
-	Hyphens ( - ) are only applicable to secrets.
-	:::
+## Identifier Naming Rules
 
-* Identifiers are case-sensitive. 
-* Identifiers shouldn't be any of the following words:
-	+ or
-	+ and
-	+ eq
-	+ ne
-	+ lt
-	+ gt
-	+ le
-	+ ge
-	+ div
-	+ mod
-	+ not
-	+ null
-	+ true
-	+ false
-	+ new
-	+ var
-	+ return
-	+ step
-	+ parallel
-	+ stepGroup
-	+ org
-	+ account
-    + status
-    + liteEngineTask
+Identifiers must adhere to the following restrictions:  
+- **Characters:**
+  - Must start with `a-z`, `A-Z`, or `_`.
+  - Subsequent characters can include `0-9`, `a-z`, `A-Z`, `_`, `$`, or `-`.  
+    - **Note:** Custom role identifiers cannot start with `_`. Hyphens (`-`) are allowed only in secret identifiers.
+- **Case Sensitivity:** Identifiers are case-sensitive.  
+- **Reserved Words:** The following words cannot be used as identifiers:
+  - `or`, `and`, `eq`, `ne`, `lt`, `gt`, `le`, `ge`, `div`, `mod`, `not`, `null`, `true`, `false`, `new`, `var`, `return`, `step`, `parallel`, `stepGroup`, `org`, `account`, `status`, `liteEngineTask`.
 
-#### Identifier uniqueness
+---
 
-Identifiers are unique for the scope in which they are created.
+## Identifier Uniqueness
 
-When you name an entity or a resource and Harness automatically generates an Identifier, the Identifier will be unique.
+- **Scope-Based Uniqueness:** Identifiers must be unique within their respective scope:
+  - **Account Level:** No two organizations can have the same identifier.
+  - **Organization Level:** No two projects can share an identifier within the same organization.
+  - **Project Level:** Pipelines must have unique identifiers within the project.
+  - **Pipeline Level:** Stages and steps must each have unique identifiers within their parent entity.
 
-If you want to edit the Identifier before you save the new entity or resource, you should know the following restrictions:
+Harness enforces these rules and alerts you if an identifier is invalid or duplicates an existing one.
 
-* There cannot be 2 or more Organizations with the same Identifier within the Account.
-* There cannot be 2 or more Projects with the same Identifier within the Organization.
-* There cannot be 2 or more Pipelines with the same Identifier within the Project.
-* There cannot be 2 or more Stages with the same Identifier within the Pipeline.
-* There cannot be 2 or more steps with the same Identifier within the Stage.
+---
 
-If you edit an identifier so that it is not unique or invalid, Harness will alert you.
+## Identifier Example
 
-### Identifier examples
+Here’s an example of a secret with its identifier in both the Visual and YAML editors.
 
-Here's a secret with its Identifier in both the Visual and YAML editors.
-
+**Visual Editor:**  
 ![](./static/entity-identifier-reference-17.png)
-YAML Editor:
 
-
-```
+**YAML Editor:**  
+```yaml
 secret:  
   type: SecretText  
   name: doc-example-account  
- **identifier: docexampleaccount**  tags: {}  
+  identifier: docexampleaccount
+  tags: {}  
   description: ""  
   spec:  
     secretManagerIdentifier: harnessSecretManager  
     valueType: Inline
-```
-### References
-
-* [Harness Entity Reference](harness-entity-reference.md)
-

@@ -31,6 +31,11 @@ Determines the resilience of Redis-dependant applications on frequent cache miss
     <th> Notes </th>
   </tr>
   <tr>
+    <td> address </td>
+    <td> The address of the Redis server. </td>
+    <td> If a password or certificate is also required alongside the address, please use the <a href="#redis-authentication">secret file approach</a>. </td>
+  </tr>
+  <tr>
     <td> maxMemory </td>
     <td> The percentage of existing Redis maxMemory or an absolute amount (in MB, KB, GB) that should be used by Redis.</td>
     <td> Default: 50 %. For more information, go to <a href="#maximum-memory">maximum memory.</a> </td>

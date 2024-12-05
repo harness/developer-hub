@@ -316,3 +316,9 @@ import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 import WizPolicyFailureResults from '../shared/_wiz-policy-failure-results.md';
 
 <WizPolicyFailureResults />
+
+## Proxy settings
+
+import ProxySettings from '../shared/proxy-settings.md';
+
+<ProxySettings />

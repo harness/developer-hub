@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-11-11T14:00
+date: 2024-12-03T14:00
 sidebar_position: 3
 ---
 
@@ -77,7 +77,59 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## December 2024
+
+### Version 1.67.x<!-- December 3, 2024 -->
+
+#### Fixed issues
+
+- Resolved an issue in the LDAP APIs to ensure proper handling of `Content-Type: application/json`. This fix allows the `Try Now` functionality in the API documentation to work correctly. (PL-58671, ZD-73126)
+
+- Fixed an issue in MS Teams notifications where the `View Details` button generated a malformed URL, causing a 404 error. (PL-58643, ZD-73591)
+
+- Resolved an issue where certain failing connectors were throwing internal errors due to an edge case. (PL-58518)
+
+- Temporarily disabled the `Plans` page in Account Settings behind a feature flag to address a CORS issue that was blocking access to subscription plans. (PL-58059, ZD-72115)
+
+- Fixed an issue where users with appropriate permissions in parent scopes could not view YAML differences in the Audit Trail for accessible resources. (PL-58111, ZD-72001)
+
+- Enhanced access control for listing secrets across all scopes. Users will now only see secrets they have permission to access when performing an `ALL scopes` list operation, ensuring stricter RBAC compliance. This fix is currently behind the feature flag `PL_ADD_RBAC_CHECK_SECRETS.`. Contact [Harness Support](mailto:support@harness.io) to enable it. (PL-57808, ZD-71673)
+
+- Added support for runtime variables with default and allowed values in Custom Secret Manager connectors. (PL-58460, ZD-73094)
+
+- Resolved an issue where multiple accounts, including Wells Fargo and Verint, experienced delegates returning a `DEFAULT_ERROR_CODE` when polling for tasks. This fix ensures delegates can execute tasks without errors. (PL-58573, ZD-73427)
+
+#### New features and enhancements
+
+- Enhanced AWS Secrets Manager integration to support secret updates using the `secretsmanager:PutResourcePolicy` permission. The appropriate request type (`UpdateSecret` or `PutSecretValue`) is now determined based on the `usePutSecret` flag in the connector configuration. This item requires Harness Delegate version 24.11.84500. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-58652)
+
+- Optimized role assignment deletions by replacing the inefficient `findAllAndRemove` method with remove. This improves database performance by avoiding unnecessary data fetching during deletions. (PL-56385)
+
+- Upgraded the `io.netty:netty-common` library to version `4.1.115` to address security vulnerabilities, including `CVE-2024-47535`, ensuring enhanced application security and compliance. (PL-58550)
+
 ## November 2024
+
+### Version 1.65.x<!-- November 26, 2024 -->
+
+#### Fixed issues
+
+- Enhanced delegate task logging by including the delegate's name along with the delegate ID. This improvement provides greater clarity and traceability, allowing for quicker issue identification and resolution. (PL-58095)
+
+- Resolved an issue in the List Users in User Group API where filtering by email returned incorrect results. The API now accurately lists only users who are part of the specified user group when using email filters. (PL-58049, ZD-72077)
+
+- Added support for OIDC authentication in the audit log streaming flow for AWS connectors (PL-57718)
+
+#### New features and enhancements
+
+- Upgraded Spring Framework to version `6.1.x`, along with updates to dependencies for improved compatibility and security. This item requires Harness Delegate version 24.11.84500. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-58254)
+
+- Resolved a high-severity vulnerability (CVE-2024-7254) in the Delegate by upgrading `protobuf-java` to version `3.25.5`. This item requires Harness Delegate version 24.11.84500. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-57351, ZD-70765)
+
+- Increased the entity limits for Service Accounts, API Keys, and Tokens to 6000 per account. This update improves scalability and accommodates growing usage needs. For more details, please refer to the documentation. (PL-56430)
+
+- Upgraded the Java version to `17.0.11_9-jre-ubi9-minimal` in the Delegate base image to address security vulnerabilities, including `CVE-2023-22041`. This item requires Harness Delegate version 24.11.84500. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-55499)
+
+- Upgraded `com.nimbusds_nimbus-jose-jwt` to version `9.37.2` to address `CVE-2023-52428`. This item requires Harness Delegate version 24.11.84500. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-51347)
 
 ### Version 1.64.x<!-- November 11, 2024 -->
 

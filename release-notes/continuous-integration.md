@@ -40,9 +40,30 @@ This update also includes a transition to M2 machines, offering improved perform
 
 If you have any questions or need assistance with the whitelisting process, please contact Harness Support.
 
-
-
 :::
+
+### Version 1.54
+<!-- 2024-11-11 -->
+
+#### New features and enhancements
+- [Build Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence) now supports self-hosted builds in Kubernetes. Customer that run builds on Kubernetes can now configure S3-compatible bucket for Build Intelligence caching. Authentication through AWS/GCP connector is currently supported with OIDC or Access Key/Secret Key.only. *Note*: This feature requires the following feature flags to be enabled: `CI_CACHE_ENABLED`, `CI_ENABLE_BUILD_CACHE_K8` and `PL_GCP_OIDC_AUTHENTICATION` for GCP or  `CDS_AWS_OIDC_AUTHENTICATION` for AWS. 
+- Secure Connect is now supported with JFrog Artifactory connector (CI-15004). 
+- Support for Docker Build Secrets in "Build and Push" Steps - You can now configure Docker build secrets in the Build and Push step using YAML. This feature allows specifying secrets via `envDockerSecrets` and/or `fileDockerSecrets` field, applicable when running build-and-push steps using Buildx (not Kaniko). Note that using Buildx in Kubernetes build infrastructure requires privileged access.  
+*Note*: This feature requires the feature flag `CI_USE_BUILDX_ON_K8` to be enabled when running builds in Kubernetes.
+- Added support for increasing execution log size limit from 5mb to 25mb, when running builds in Kubernetes. This feature requires the feature flag `CI_INCREASE_LOG_LIMIT` to be enabled, and is supported on Kubernetes build infrastructure only (PIPE-22885). 
+
+To enable feature flags, please contact [Harness Support](mailto:support@harness.io). 
+
+#### Fixed issues
+- Improved secret error debugging for pipeline variables - when referencing a non-existent secret in a pipeline variable, the error message now provides actionable details to help debug, rather than a generic exception (CI-15013)
+
+#### Harness images updates
+
+| **Image** | **Change**  | **Previous version** | **New Version** 
+|-------------------------------|-----------------|-------------|------------------|
+| `drone/buildx` | Revert base64 support added to handle secrets with special characters | 1.1.16 | 1.1.19
+| `harness/ci-addon` | Log Service - ability to increase limit for logs in K8S | 1.59 | 1.61
+| `harness/ci-lite-engine` | Log Service - ability to increase limit for logs in K8S | 1.591.59 | 1.611.61
 
 
 ### Version 1.53
@@ -59,6 +80,8 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 - Fixed an issue where bitbucket tag builds with tags containing slashes were causing errors in execution due to `<+codebase.commitSha>` returning null. Harness now correctly supports tags with slashes for bitbucket and git builds, ensuring SHA values are properly referenced. (CI-14706, ZD-70972)
 - Addressed an issue where pipelines failed at the clone codebase step on Windows infrastructure when using the GitHub SSH connector and cloning using LFS. (CI-14592, ZD-70570, ZD-71715)
 - Improved "Copy to Clipboard" functionality for pipeline output logs. Previously, extra new lines were added when pasting the copied output, causing unnecessary spacing between lines. This issue has been fixed to ensure log output is pasted without additional line breaks. (CI-14200, ZD-68902)
+
+#### Harness images updates
 
 | **Image** | **Change**  | **Previous version** | **New Version** 
 |-------------------------------|-----------------|-------------|------------------|

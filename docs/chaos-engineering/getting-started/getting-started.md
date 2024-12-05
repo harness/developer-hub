@@ -22,7 +22,8 @@ Feature availability on HCE SaaS and SMP are on par, with minor timeline changes
 HCE module is provided as service that you can use by either signing up or getting invited to a specific project. HCE provides you the assistance required to manage the cluster.
 You can also create a project if you have the necessary permissions.
 The control plane (set of microservices that help the domain function) is hosted by [Harness](https://app.harness.io).
-For more information on how to use SaaS, go to [SaaS documentation](/docs/chaos-engineering/getting-started/saas/).
+For more information on how to use SaaS, go to [SaaS documentation](/docs/chaos-engineering/getting-started/saas/)
+For a video tutorial, go to [Get started with HCE](https://youtu.be/0Xgwp-s-VpY).
 
 ## SMP
 You will need to create, manage and maintain your clusters. You will be responsible for providing permissions to projects and handling the issues associated with them.

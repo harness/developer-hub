@@ -35,6 +35,8 @@ Depending on the type of probe, probes can:
 - Validate your error budget (SLO probe),
 - Connect with the APM tool and assert metrics (Datadog probe).
 
+For a video tutorial, go to [HCE- Resilience Probes](https://youtu.be/b4ggnJcZrcM).
+
 ### Declarative hypothesis
 
 Declarative hypothesis in a cloud-native chaos engineering environment is a way of specifying the expected outcome of a chaos experiment before it is run. It is a statement that defines the expected result of the experiment and is used to guide the experiment's design and implementation. This can be done as a part of defining the fault specifications in the respective chaos engine which is validated by the chaos operator.

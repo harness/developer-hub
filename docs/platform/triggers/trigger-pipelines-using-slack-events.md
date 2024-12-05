@@ -42,12 +42,12 @@ The webhook is now created, click on the webhook you created earlier and copy th
 To link this webhook to trigger your pipeline, navigate to the pipeline for which this webhook will be used.
 
 1. Select **Triggers** in the top right corner of the page.
-2. Click on **New Trigger** and select **Event Bridge**.
+2. Click on **New Trigger** and select **Event Relay**.
 
 ![](./static/generic-webhook-2.png)
 
 3. On the configurations page, provide a **Name** for the webhook.
-4. Under **Listen on New Webhook**, **Event Bridge** is selected by default for **Payload Type**. When selecting Webhooks, a pop-up page will display all the configured Generic and Slack webhooks.
+4. Under **Listen on New Webhook**, **Event Relay** is selected by default for **Payload Type**. When selecting Webhooks, a pop-up page will display all the configured Generic and Slack webhooks.
 
 Select the Slack webhook you created earlier.
 
@@ -74,4 +74,4 @@ This section explains how to configure Slack with your webhook to enable real-ti
 5. After the URL is verified, configure the webhook under the **Subscribe to Bot Events** section.
 6. Add the desired channel.
 
-Now that Slack is configured, any relevant Slack event in the configured channel will trigger the pipeline.
+Now that Slack is configured, any relevant Slack event in the configured channel will trigger the pipeline. 

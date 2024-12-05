@@ -1,11 +1,11 @@
 {
-    "label": "Google Cloud Functions",
+    "label": "Google Cloud Platform",
     "position": "800",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Google Cloud Functions"
+        "title": "Google Cloud Platform"
     }
   }

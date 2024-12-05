@@ -10,9 +10,9 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This topic describes how you can enable and disable a chaos infrastructure.
+This topic describes how you can enable and disable a Harness Delegate to use with chaos experiments.
 
-## Before you begin, review the following
+## Before you begin, review the following:
 
 - [Chaos infrastructure and different types](/docs/chaos-engineering/concepts/chaos101#chaos-infrastructure).
 - [Why is a chaos infrastructure required?](/docs/chaos-engineering/use-harness-ce/infrastructures/)
@@ -39,11 +39,30 @@ If you want to delete your environment, remove the environment references, that 
 
 #### Using DDCR
 
+Navigate through the demo below to see how to create an environment, a new infrastructure, a new connector and a Delegate. If you have created a connector and a Harness Delegate earlier, you can find the same in the list that is displayed while selecting the connector and Delegate. Select it instead of creating a new one.
+
+<iframe 
+  src="https://app.tango.us/app/embed/9c5307d6-ec41-4706-bacc-6dfdd84cde49"
+  title="Create a Harness Delegate"
+  style={{minHeight:'640px'}}
+  width="100%" 
+  height="100%" 
+  referrerpolicy="strict-origin-when-cross-origin" 
+  frameborder="0" 
+  webkitallowfullscreen="webkitallowfullscreen" 
+  mozallowfullscreen="mozallowfullscreen" 
+  allowfullscreen="allowfullscreen"></iframe>
+
+
 1. Select the **Environment** you created, and choose the **Infrastructure type**. In this example, you can select **Kubernetes** and click **+ New Infrastructure**.
 
 2. To use Harness Delegate, select **Yes**. To use a dedicated chaos infrastructure, select **No**. In this example, select **Yes**, and click **Next**.
 
-3. Provide a **Name**, **Deployment Type**, **Select Infrastructure Type**, and provide **Cluster Details**, such as **Connector**, and **Namespace**. To create a new connector, go to [Create Kubernetes Connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector). While creating a Kubernetes connetor, select or create a new Delegate. Go to [Create new Delegate](https://developer.harness.io/docs/platform/delegates/install-delegates/overview#install-the-helm-chart). Once your Delegate shows up in the list, enter its name in the search bar, and select **Save and Continue**. This will test your connection and describe if it was a success or no. Contact [Harness Support](mailto:support@harness.io) if you encounter issues with the verification.
+3. Provide a **Name**, **Deployment Type**, **Select Infrastructure Type**, and provide **Cluster Details**, such as **Connector**, and **Namespace**. 
+  
+    a. To create a new connector, go to [Create Kubernetes Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector/#add-a-kubernetes-cluster-connector). 
+
+    b. While creating a Kubernetes connector, select or [create a new Delegate](/docs/platform/delegates/install-delegates/overview/#install-the-helm-chart). Once your Delegate shows up in the list, enter its name in the search bar, and select **Save and Continue**. This will test your connection and describe if it was a success or no. Contact [Harness Support](mailto:support@harness.io) if you encounter issues with the verification.
 
 :::tip
 - Ensure your Delegate version is `24.09.83900` or above to support executing chaos experiments using DDCR. 

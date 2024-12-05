@@ -79,6 +79,63 @@ You can dynamically fetch values in the Workflows fields using UI Pickers, which
 1. [Standard Workflow UI Picker](/docs/internal-developer-portal/flows/flows-input#workflow-ui-pickers)
 2. [API Based Dynamic Workflow UI Picker](/docs/internal-developer-portal/flows/dynamic-picker)
 
+### Use Form Data from a Previous page in a New Page
+
+While using Dynamic Workflow UI Pickers, users can now reference the data take as an input in the previous page, using `{{ parameters.properties }}`.
+
+```YAML
+parameters:
+  - title: Select Harness Project
+    type: object
+    properties:
+      projectId:
+        title: Harness Project ID
+        description: Select the Harness Project ID
+        type: string
+        ui:field: HarnessProjectPicker
+        ui:autofocus: true
+      organizationId:
+        title: Harness Organization ID
+        description: Select the Harness Organization ID
+        type: string
+        ui:field: HarnessAutoOrgPicker
+  - title: Select Harness Pipeline
+    type: object
+    properties:
+      pipelineId:
+        type: string
+        ui:field: SelectFieldFromApi
+        ui:options:
+          title: Harness Pipeline ID
+          placeholder: Select the Harness Pipeline ID
+          allowArbitraryValues: true
+          path: proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{
+            parameters.projectId }}/pipelines
+          valueSelector: identifier
+          labelSelector: identifier
+steps:
+  - id: debug
+    name: Debug
+    action: debug:log
+    input:
+      message:
+        "{ parameters.pipelineId }": null
+```
+
+In the above YAML, the API endpoint values under the `path` dynamically insert the `organizationId` and `projectId` from the first set of parameters taken as an input in the previous page, to construct the endpoint URL for fetching the list of pipelines. 
+
+```bash
+proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{ parameters.projectId }}/pipelines
+```
+
+Hence, it will list all the pipelines present under the particular project int org mentioned as displayed below. 
+
+![](./static/parameters-refernce.gif)
+
+:::info
+You cannot reference properties on the same page, and property references only work with values provided through Dynamic UI pickers. 
+:::
+
 ## Array options
 
 ### Array with strings
@@ -224,6 +281,44 @@ parameters:
 </details>
 
 ![](./static/template-arrays-multipleobjects.png)
+
+### Pass an Array of Inputs to a Harness Pipeline 
+
+Harness Pipelines variables can only be 3 types, string, number and secrets, in case you want to add multiple strings and comma separated values you need to [join](https://mozilla.github.io/nunjucks/templating.html#join) them and send as single input parameters. 
+
+In the following Workflow if you want to pick the enum and parse the `exampleVar` as a string and use it as comma separated value in the inputset for pipeline. 
+As you could see in the example below under `inputset`, `exampleVar` takes input as `${{ parameters.exampleVar.join(',') }}`. 
+
+```YAML
+    - title: Pass Variables Here      
+      properties:
+        exampleVar:
+          title: Select an option
+          type: array
+          items:
+            type: string
+            enum:
+              - Option1
+              - Option2
+              - Option3
+          default: 
+            - Option1
+      ui:
+        exampleVar:
+          title: Select Options
+          multi: true
+  steps:
+    - id: trigger
+      name: Call a harness pipeline, and pass the variables from above
+      action: trigger:harness-custom-pipeline
+      input:
+        url: 'https://app.harness.io/ng/account/*********/home/orgs/default/projects/*************/pipelines/*************/pipeline-studio/?storeType=INLINE'
+        inputset:
+          exampleVar: ${{ parameters.exampleVar.join(',') }}
+          owner: ${{ parameters.owner }}
+        apikey: ${{ parameters.token }}
+```
+
 
 ## Boolean options
 

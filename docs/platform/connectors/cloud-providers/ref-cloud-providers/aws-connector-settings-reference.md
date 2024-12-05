@@ -508,6 +508,11 @@ Currently, extra scope information included with the JWT in the **sub** field is
   - **At organization scope**: `account/<account_id>:org/<organization_id>:project/`
   - **At account scope**: `account/<account_id>:org/:project/`
 
+:::info note
+If the feature flag `CDS_ENABLE_PIPELINE_SCOPED_OIDC_SUB` is enabled on top of `PL_OIDC_ENHANCED_SUBJECT_FIELD`, the  `Pipeline ID` will also be included in the sub field. For example:
+`account/<account_id>:org/<organization_id>:project/<project_id>:pipeline/<pipeline_id>`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 #### Examples
 
 - For Project level resources - `"sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/OIDC_Test"`
