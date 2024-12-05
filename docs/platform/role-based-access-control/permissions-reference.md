@@ -118,6 +118,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | AutoStopping Rules | <ul><li>View (`ccm_autoStoppingRule_view`)</li><li>Create/Edit (`ccm_autoStoppingRule_edit`)</li><li>Delete (`ccm_autoStoppingRule_delete`)</li></ul> |
 | Budgets | <ul><li>View (`ccm_budget_view`)</li><li>Create/Edit (`ccm_budget_edit`)</li><li>Delete (`ccm_budget_delete`)</li></ul> |
 | Load Balancer | <ul><li>View (`ccm_loadBalancer_view`)</li><li>Create/Edit (`ccm_loadBalancer_edit`)</li><li>Delete (`ccm_loadBalancer_delete`)</li></ul> |
+| Data Scop (CCM_DATA_SCOPE) | <ul><li>View (`ccm_dataScope_view`)</li></ul> |
 
 ### Code Repository
 
