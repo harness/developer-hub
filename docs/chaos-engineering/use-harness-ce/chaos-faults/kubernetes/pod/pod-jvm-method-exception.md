@@ -130,7 +130,7 @@ metadata:
             - name: JAVA_HOME
               value: ""
             - name: METHOD  #mandatory
-              value: "welcome"
+              value: welcome
             - name: CLASS   #mandatory
               value: org.framework.appName.system.WelcomeController
             - name: EXCEPTION  #mandatory
