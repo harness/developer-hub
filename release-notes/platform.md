@@ -80,13 +80,13 @@ The following deprecated API endpoints are longer supported:
 ## December 2024
 ### Version 1.68.x<!-- December 5, 2024 -->
 
-### Fixed issues
+#### Fixed issues
 
 - Resolved an issue in the pipeline approval stage where Slack notifications were delayed by up to 10 minutes after the approval event. With this fix, Slack notifications are now sent instantly once the pipeline approval stage is issued. 
 (PL-58801, ZD-72930)
 
 
-### New features and enhancements
+#### New features and enhancements
 
 - Introduced enhanced support for the variables in the resource group allowing restriction of access to ```specific variables``` within the scope. Previously, users had access to either all variables or none. This update enables fine-grained access control, enabling users to select specific variables for controlled access across their organisation, account or project scope. 
 (PL-58267)
