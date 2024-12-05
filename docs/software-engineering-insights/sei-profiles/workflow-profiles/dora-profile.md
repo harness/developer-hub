@@ -54,7 +54,7 @@ Lead Time for Changes measures how long it takes for a task to move from develop
 Here's an example configuration of how you could configure Lead Time across various tools.
 
 <Tabs>
-  <TabItem value="jira" label="Using Only Issue Management" default>
+  <TabItem value="jira" label="Using Only Issue Management"default>
 
 This section covers how to set up the Lead Time for Changes metric definition using only an issue management tool like Jira.
 
@@ -184,7 +184,7 @@ This is the time taken to merge the first pull request after it has been created
 
 ![](../static/dora-merge-time.png)
 
-* Select the branch into which the PR will merge (e.g., main or develop). This ensures accurate tracking aligned with your deployment practices. The available branches are based on the data ingested by the SCM integration in your account.
+* Select the branch into which the PR will merge (e.g., main or develop). This ensures accurate tracking aligned with your deployment practices. The available branches are based on the data ingested by all the SCM integrations in your account.
 
 ![](../static/dora-merge-time-2.png)
 
@@ -204,7 +204,7 @@ Here’s how a fully configured SCM-only DORA Lead Time for Changes definition m
 
 <TabItem value="jira-scm" label="Using Issue Management and SCM">
 
-This hybrid configuration involves correlating your Issue Management system (e.g., Jira) with your Source Code Manager (SCM) (e.g., GitHub). It tracks both the planning and coding phases, and requires you to maintain proper hygiene and alignment across both the systems.
+This hybrid configuration involves correlating your **Issue Management system (e.g., Jira)** with your **Source Code Manager (SCM) (e.g., GitHub)**. It tracks both the planning and coding phases, and requires you to maintain proper hygiene and alignment across both the systems.
 
 #### Define the workflow
 
@@ -349,7 +349,7 @@ Here’s how a fully configured SCM and Issue Management System based Lead Time 
 
 <TabItem value="jira-scm-cicd" label="Using Issue Management + SCM + CI/CD">
 
-This configuration extends the hybrid approach of Issue Management and SCM by including Continuous Integration (CI) and Continuous Deployment (CD) stages after the development phases. It requires defining additional stages specific to CI/CD processes and linking workflows across all tools.
+This configuration extends the hybrid approach of **Issue Management** and **SCM** by including **Continuous Integration (CI)** and **Continuous Deployment (CD)** stages after the development phases. It requires defining additional stages specific to CI/CD processes and linking workflows across all tools.
 
 #### Define the workflow
 
@@ -585,6 +585,10 @@ Deployment Frequency measures how frequently a team successfully deploys code to
 * Select the tool your team uses to track and measure deployments.
 * Select any existing integrations you wish to use for calculating deployment frequency.
 * Defind the settings for how you want to calculate deployment frequency. The additional filters being used to define the deployments will be applicable to all the integrations that you selected.
+
+:::tip RECOMMENDATION
+For accurate tracking, use CI/CD tools (e.g., Harness CD, GitHub Actions) or ITSM tools (e.g., ServiceNow) that provide detailed deployment and change request tracking data.
+:::
 
 Here's an example configuration of how you could configure Deployment Frequency across various tools.
 
@@ -1153,6 +1157,10 @@ Mean Time to Restore represents the duration it takes a team to recover from a p
 * Choose the tool used for measuring the incident recovery time in your team.
 * Configure the stages/filters to identify incident tickets based on the requirements.
 
+:::tip RECOMMENDATION
+For accurate tracking, use ITSM tools (i.e. ServiceNow or PagerDuty) that provide detailed incident tracking data.
+:::
+
 Here's an example configuration of how you could configure Mean Time to Restore across various tools.
 
 <Tabs>
@@ -1251,7 +1259,7 @@ The Change Failure Rate (CFR) is calculated by dividing the total number of depl
 Change Failure Rate = Deployments causing failure / Total deployments
 ```
 
-You also have the option to calculate CFR by focusing solely on deployments that result in failure.
+By default, it is recommended to calculate CFR using the total number of deployments as the denominator, aligning with industry standards. However, you also have the flexibility to calculate CFR focusing solely on deployments that result in failure, based on your specific needs.
 
 ![](../static/cfr-only-failures.png)
 
@@ -1260,6 +1268,10 @@ You also have the option to calculate CFR by focusing solely on deployments that
 * Specify the tool your team uses to measure Change Failure Rate.
 * Choose any existing integrations you want to utilize for calculating the change failure rate.
 * Add attributes and filters to identify and define both the total deployments and the deployments causing failure.
+
+:::tip RECOMMENDATION
+For accurate tracking, use CI/CD tools (e.g., Harness CD, GitHub Actions) or ITSM tools (e.g., ServiceNow) that provide detailed deployment and incident tracking data.
+:::
 
 Here's an example of how you could configure CFR across various tools.
 
@@ -1667,7 +1679,7 @@ You can also associate Collections to existing DORA profiles from the **Collecti
 
 While configuring the DORA profile, you may encounter some common issues. Below are the detailed explanations and troubleshooting steps to resolve them:
 
-### Filters not available while configuring the definition
+### Missing or unavailable filters
 
 #### Possible Causes
 
@@ -1676,10 +1688,10 @@ While configuring the DORA profile, you may encounter some common issues. Below 
 
 #### Resolution Steps
 
-* **Check Diagnostics:** Navigate to the Diagnostics section and verify whether data is ingested for the selected integrations. If data is not yet available, wait for the ingestion process to complete.
-* **Request Field Ingestion:** If the field is not ingested, create a Harness Support ticket and request the ingestion of the specific field as part of the integration.
+* **Check Diagnostics:** Navigate to the [Diagnostics](/docs/software-engineering-insights/sei-diagnostics) section and verify whether data is ingested for the selected integrations. If data is not yet available, wait for the ingestion process to complete.
+* **Request Field Ingestion:** If the field is not ingested, create a [Harness Support](/docs/software-engineering-insights/sei-support) ticket and request the ingestion of the specific field as part of the integration.
 
-### Values for Selected Filters Don't Populate
+### Values for selected filters don't populate
 
 #### Possible Cause
 
@@ -1687,22 +1699,21 @@ While configuring the DORA profile, you may encounter some common issues. Below 
 
 #### Resolution Steps
 
-* **Verify Data Availability:** Use the Diagnostics section to confirm whether the data has been successfully ingested. If the data is not present, wait until ingestion is complete to configure the filters.
+* **Verify Data Availability:** Use the [Diagnostics](/docs/software-engineering-insights/sei-diagnostics) section to confirm whether the data has been successfully ingested. If the data is not present, wait until ingestion is complete to configure the filters.
 
-### Projects/Collections Not Available in Association Settings
+### Projects/Collections not available in the association settings
 
 #### Possible Causes
 
-* **Existing DORA Profile Association:** The collection might already be associated with another DORA profile, as each collection can only be linked to one DORA-type workflow profile. A mismatch between collections and the intended DORA profile can result in the collection not appearing in the association settings.
+* **Existing DORA Profile Association:** The collection might already be associated with another [DORA profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview#), as each collection can only be linked to one DORA-type workflow profile. A mismatch between collections and the intended DORA profile can result in the collection not appearing in the association settings.
 
 #### Resolution Steps
 
 * **Verify Collection Settings:** Check the collection settings to ensure the collection is correctly associated with the desired DORA profile. Remember, while a single DORA profile can be associated with multiple collections, each collection can only be linked to one DORA-type workflow profile. Set up the associations accordingly.
 
-
 ## What's next
 
 After setting up the DORA profile, proceed to create the DORA Insight using the available DORA widgets. These widgets enable you to visualize and monitor key DORA metrics, providing actionable insights into your team’s performance.
 
-* DORA widgets
-* DORA Insight
+* [Configure & add the DORA widgets](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/dora-metrics)
+* [Create & manage the DORA Insight](/docs/software-engineering-insights/insights/dora-insight)

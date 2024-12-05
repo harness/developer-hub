@@ -45,13 +45,13 @@ When calculating Lead Time, the time spent in each stage depends on the actual s
 
 Velocity profiles allow you to set grading thresholds (Good, Acceptable, and Slow) for each stage. These thresholds influence grades reported on your Lead Time widgets and provide both per-stage and cumulative grades.
 
-You can customize Workflow profile stages and thresholds to align with your team's Software Development Lifecycle (SDLC) processes. For profiles involving multiple tools like issue management, SCM, and CI/CD, avoid duplicate tracking of the same event (e.g., Deploy to Production in both Jira and CI/CD).
+You can customize [Workflow profile stages](#configure-the-workflow-stages) and thresholds to align with your team's Software Development Lifecycle (SDLC) processes. For profiles involving multiple tools like issue management, SCM, and CI/CD, avoid duplicate tracking of the same event (e.g., Deploy to Production in both Jira and CI/CD).
 
 ![](../static/velocity-1.png)
 
 ### Workflow stages
 
-The Velocity profile represents Lead Time as user-configurable stages that reflect your software delivery process. Stages can be configured by selecting start events, defining thresholds, and adding or editing stages.
+The Velocity profile represents lead time as user-configurable stages that reflect your software delivery process. Stages can be configured by selecting start events, defining thresholds, and adding or editing stages.
 
 You can change the start event that initiates the first stage, and you can add, edit, and remove stages. When editing stages you can customize the fields, define ideal and acceptable time ranges, grades, and more. This refines how you track KPIs.
 
@@ -290,7 +290,7 @@ Here’s how a fully configured SCM-only Velocity lead time definition might loo
 
 <TabItem value="jira-scm" label="Using Issue Management and SCM">
 
-This hybrid configuration involves correlating your Issue Management system (e.g., Jira) with your Source Code Manager (SCM) (e.g., GitHub). It tracks both the planning and coding phases, and requires you to maintain proper hygiene and alignment across both the systems.
+This hybrid configuration involves correlating your **Issue Management system (e.g., Jira)** with your **Source Code Manager (SCM) (e.g., GitHub)**. It tracks both the planning and coding phases, and requires you to maintain proper hygiene and alignment across both the systems.
 
 #### Define the workflow
 
@@ -435,7 +435,7 @@ Here’s how a fully configured SCM and Issue Management System based lead time 
 
 <TabItem value="jira-scm-cicd" label="Using Issue Management + SCM + CI/CD">
 
-This configuration extends the hybrid approach of Issue Management and SCM by including Continuous Integration (CI) and Continuous Deployment (CD) stages after the development phases. It requires defining additional stages specific to CI/CD processes and linking workflows across all tools.
+This configuration extends the hybrid approach of **Issue Management** and **SCM** by including **Continuous Integration (CI)** and **Continuous Deployment (CD)** stages after the development phases. It requires defining additional stages specific to CI/CD processes and linking workflows across all tools.
 
 #### Define the workflow
 
@@ -701,11 +701,11 @@ Configure the settings to define the criteria for Defects.
 Separate multiple values with a comma.
 :::
 
-### Measure Lead Time by Jira Statuses
+### Measure lead time by Jira statuses
 
-Harness SEI allows you to measure lead time exclusively by Jira statuses, providing an ideal solution for teams using Jira as their primary issue management tool. This configuration is mandatory for generating the Jira Releases Report. Since lead time is based solely on Jira statuses, the Ticket Created event is automatically set as the default start event.
+Harness SEI allows you to measure lead time exclusively by Jira statuses, providing an ideal solution for teams using [Jira](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration) as their primary issue management tool. This configuration is mandatory for generating the Jira releases Report. Since lead time is based solely on Jira statuses, the **Ticket Created** event is automatically set as the default start event.
 
-You can enhance your workflow by adding custom stages, each defined with a name, description, and acceptable time limits. These stages, along with the Jira Release Stage, can mirror your software delivery process, providing a detailed measure of overall lead time.
+You can customize the workflow by adding custom stages, each defined with a name, description, and acceptable time limits. These stages, along with the [Jira release stage](#add-the-jira-release-stage), can mirror your software delivery process, providing a detailed measure of overall lead time.
 
 ![](../static/velocity-15.png)
 
@@ -717,14 +717,14 @@ You can enhance your workflow by adding custom stages, each defined with a name,
 
 #### Restrictions
 
-* The Issue Management System is fixed to Jira, and the Start Event is locked as Ticket Created when measuring lead time by Jira statuses.
-* To switch to Azure or another issue management system, you must disable the release stage.
+* The **issue management system** is fixed to [Jira](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration), and the **Start Event** is locked as **Ticket Created** when measuring lead time by Jira statuses.
+* To switch to [Azure](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops) or another issue management system, you must disable the release stage.
 * Modifying the start event is not allowed when the release stage is enabled, as it can lead to incorrect configurations.
 * For profiles already in use, the Jira release stage remains disabled by default unless explicitly enabled.
 
-### Add the Jira Release stage
+### Add the Jira release stage
 
-The Jira Release Stage provides visibility into the time it takes for features to be delivered to customers. It extends the lead time measurement beyond internal development efforts, capturing the time between ticket resolution and product release.
+The Jira release Stage provides visibility into the time it takes for features to be delivered to customers. It extends the lead time measurement beyond internal development efforts, capturing the time between ticket resolution and product release.
 
 ![](../static/velocity-16.png)
 
@@ -735,17 +735,17 @@ The Jira Release Stage provides visibility into the time it takes for features t
 
 ![](../static/velocity-17.png)
 
-By default, the Jira release stage is disabled, so you'll need to enable it to use it. Once enabled, the starting event for the workflow is automatically set to **Ticket Created** and cannot be modified as it will result in incorrect configuration.Similarly, the issue management system is automatically set to Jira by default.
+By default, the Jira release stage is disabled, so you'll need to enable it to use it. Once enabled, the starting event for the workflow is automatically set to **Ticket Created** and cannot be modified as it will result in incorrect configuration. Similarly, the issue management system is automatically set to Jira by default.
 
 If you want to customize the starting event and Issue Management fields, you'll have to disable the release stage first. Once disabled, you'll be able to customize your starting event and Issue Management configuration for your profile.
 
 #### Handling Tickets with Multiple Versions
 
-When a ticket is associated with multiple versions, the Jira Release Stage provides two calculation methods to reflect the appropriate lead time:
+When a ticket is associated with multiple versions, the Jira release stage provides two calculation methods to reflect the appropriate lead time:
 
-* Earliest Released Version: Measures lead time to the first released version linked to the ticket. This option emphasizes the initial value delivery to stakeholders and reflects the time taken for the issue’s first release.
+* **Earliest Released Version:** Measures lead time to the first released version linked to the ticket. This option emphasizes the initial value delivery to stakeholders and reflects the time taken for the issue’s first release.
 
-* Latest Released Version: Measures lead time to the most recent released version associated with the ticket. This method captures the cumulative effort and reflects the time to final delivery as the issue reaches users.
+* **Latest Released Version:** Measures lead time to the most recent released version associated with the ticket. This method captures the cumulative effort and reflects the time to final delivery as the issue reaches users.
 
 ![](../static/jira-release.png)
 
