@@ -3328,7 +3328,7 @@ If the service is configured to use an image with a specific digest, you can acc
 You can fetch and use the latest successfully deployed tag for a service in the **Harness pipeline** using the expression `<+lastSuccessfulDeployed.tag>`.
 
 - When the artifact tag is configured as an expression with `<+lastSuccessfulDeployed.tag>`, the pipeline will deploy the most recent successful artifact tag associated with the service.
-- This functionality is supported for the following artifact types:
+- This functionality is supported for the following container artifact types:
   - Docker Registry
   - GCR (Google Container Registry)
   - ECR (Elastic Container Registry)
