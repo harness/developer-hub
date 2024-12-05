@@ -31,9 +31,9 @@ DORA metrics are critical for evaluating and improving engineering team performa
 A DORA Profile defines thresholds for these metrics based on your organization’s delivery process. It ensures consistency and alignment with industry best practices while serving as the foundation for measuring these metrics across engineering teams.
 
 * It serves as a single source of truth for these metrics and ensures consistent measurement across tools like SCMs, CI/CD platforms, and issue management systems. 
-* Each DORA Profile must be associated with a Collection (a group of contributors).
-* While multiple collections can use the same DORA Profile, a collection cannot have more than one associated DORA Profile. 
-* SEI provides a default DORA Profile with pre-configured SCM definitions, which can be customized.
+* Each DORA profile must be associated with a [Collection (a group of contributors)](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
+* While multiple collections can use the same DORA Profile, a collection cannot have more than one associated DORA profile. 
+* Harness SEI provides a default DORA profile with pre-configured SCM definitions, which can be customized.
 
 <DocImage path={require('../static/dora-association.png')} width="100%" height="100%" title="Click to view full size image" />
 
@@ -65,7 +65,7 @@ The primary difference between the two profiles lies in their scope. DORA profil
 | **Purpose**               | Measures DORA metrics, including Lead Time for Changes. | Measures lead time across various workflows. |
 | **Scope of Lead Time**    | Specific to **Lead Time for Changes widget**. | Used in all other lead time widgets (e.g., PR Lead Time, Issue Lead Time). |
 | **Association**           | Associated with a **Collection**.         | Selected at the widget settings   |
-| **Default Availability**  | A default DORA type workflow profile is provided by the system. | A default Velocity type workflow profile is provided by the system.    |
+| **Default Availability**  | No default profile is available | A default Velocity type workflow profile is provided by the system.    |
 
 ### See also
 
