@@ -413,7 +413,7 @@ async function config() {
                 },
                 {
                   label: 'Partners',
-                  to: 'https://partnertraining.harness.io/',
+                  to: 'https://www.harness.io/partners',
                 },
               ],
             },
