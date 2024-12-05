@@ -45,6 +45,29 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## December
+
+#### GitOps Version 1.21.0, GitOps Agent Version 0.82.0
+
+#### New Features and enhancements
+
+- Harness now supports the `prefixed_identifier` field in the GitOps Agent Terraform resource. This field provides a scope-prefixed agent identifier, such as `account.agentId` for account-level, `org.agentId` for organization-level, and `agentId` for project-level agents, enabling easier referencing in other Terraform resources. (CDS-101503)
+
+- The GitOps Applications landing page is now automatically refreshed, allowing newly created applications to appear in real-time without requiring manual refresh. (CDS-68662)
+
+- We have introduced the `allowEmptyCommit` field in the **GitOps Update Release Repo step**, enabling users to push an empty commit if desired. (CDS-103191)
+
+- Addressed and resolved all known critical vulnerabilities related to the GitOps Agent and GitOps Service. (CDS-102606)
+
+- Harness has upgraded Argo from version 2.10 to 2.12.
+
+#### Fixed Issues
+
+- Previously: The agent_token field in the harness_platform_gitops_agent data source returned null, making it unusable for authentication validation. The issue is fixed. The agent_token field now correctly returns its value, and a new `isAuthenticated` field has been added to indicate the authentication status.(CDS-104468)
+- The User Interface for buttons in the Repository settings of GitOps, such as **New Repository** and **Create Credential Template** lacked proper formatting. This issue is resolved, and the buttons are display properly. (CDS-103032)
+- Previously, GitOps agents were taking an excessive amount of time to reconnect after regenerating and reapplying YAMLs, causing inconsistencies in reconnection timelines. This issue is resolved. (CDS-103262)
+- The Resource Tree API calls were failing because the application name was missing from the query parameters. This issue is resolved. (CDS-104792)
+
 ## November
 
 ### Version 1.67.2
