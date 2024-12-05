@@ -22,4 +22,5 @@ Harness DB DevOps provides a way to:
  - **Increase reliability and stability:** The automation of testing and deployment processes ensures that changes are consistent and less prone to human error. 
  - **Streamline Change Management**: Managing database schema changes becomes more efficient with version control and automated deployments.
  - **Enhanced Security and Compliance**: Automated processes ensure that security policies are consistently applied across all environments, and compliance checks can be integrated into the CI/CD pipeline. 
+ - **Orchestration of Database Changes**: Harness Database DevOps allows for the orchestration of database changes in a manner similar to application code deployments. This means that database changes can be managed through pipelines, ensuring that they are executed in a controlled and automated way. This orchestration helps to eliminate the manual processes that often slow down deployments when database changes are involved.
 
