@@ -98,77 +98,87 @@ Enter **Tags** for your secret manager.
 
 Select **Continue**.
 
-### Step 3: Details
+### Step 3: Credential Details
 
-You can select the following options in **Credential Type** for authenticating with AWS:
+When setting up your AWS Secrets Manager in Harness, you can choose one of the following **Credential Types** for authentication:
 
-* **AWS Access Key.**
-* **Assume IAM Role on Delegate.**
-* **Assume Role Using STS on Delegate.**
+1. **AWS Access Key**  
+2. **Assume IAM Role on Delegate**  
+3. **Assume Role Using STS on Delegate**
 
-### Option: AWS Access Key
+#### Common Settings for All Credential Types
 
-Use your AWS IAM user login credentials.
+1. **Use "PutSecretValue" Action to Update Secret Value**  
+   By default, Harness uses the `UpdateSecret` action to update secret values, which requires the `secretsmanager:UpdateSecret` permission for AWS Secrets Manager. Enable this option to use the `PutSecretValue` action instead, requiring the `secretsmanager:PutSecretValue` permission.
 
-Gather **AWS - Access Key ID** and **AWS - Secret Access Key** from the JSON for the **Key Policy**, or in the AWS **IAM** console, under **Encryption keys**.
+2. **Use as Default Secrets Manager**  
+   Enable this option to make this Secrets Manager the default for all secret operations within your Harness account.
 
-For more information, go to [Finding the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn) from Amazon.
+#### Credential Type: AWS Access Key
 
-#### AWS-Access Key ID
+Use your AWS IAM user login credentials for authentication.
 
-You have two options to provide the AWS Access Key, **Plaintext** or **Encrypted**.
+  ![](../../secrets/static/add-aws-secret-manager-1.png)
 
-- For **Plaintext**, you can directly add the Access Key under the **AWS - Access Key Id** in plaintext format.
+##### Prerequisites
+- **Access Key ID** and **Secret Access Key**: Obtain these from the JSON Key Policy or the AWS **IAM** console under **Encryption Keys**.  
+- For detailed instructions, see [Finding the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn) in the AWS documentation.
 
-- For **Encrypted**:
+##### Providing AWS Access Key ID
 
-  - Select **Create or Select a Secret**.
+You have two options for adding the **Access Key ID**:
 
-  - In the **Create or Select an Existing Secret** dialog, you can create/select a [Secret](/docs/platform/secrets/add-use-text-secrets) and enter your AWS Access Key as its value.
+- **Plaintext**:  
+  Enter the Access Key ID directly into the **AWS Access Key ID** field.
 
-  - The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to connect to the secret manager.
+- **Encrypted**:  
+  1. Click **Create or Select a Secret**.  
+  2. In the dialog, create or select a [Secret](/docs/platform/secrets/add-use-text-secrets) and enter the Access Key ID as the secret value.  
+  3. Save and use the created secret for this configuration.
 
-  ![](../../secrets/static/add_aws_sm_plaintext.png)
+##### Providing AWS Secret Access Key
 
-#### AWS- Secret Access Key
+- Click **Create or Select a Secret**.  
+- Create or select an existing [Secret](/docs/platform/secrets/add-use-text-secrets) with the Secret Access Key as its value.
 
-Select **Create or Select a Secret**.
+##### Additional Fields
 
-You can either create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your Access Key ID's secret key as its **Value** or use an existing secret.
+- **Secret Name Prefix**: Add a prefix to all secrets stored under this Secrets Manager. For example, using `devops` as the prefix results in secrets like `devops/mysecret`. This is not a folder name.  
+- **Region**: Select the appropriate AWS region for your Secrets Manager.
 
-#### Secret Name Prefix
+#### Credential Type: Assume IAM Role on Delegate
 
-Enter **Secret Name Prefix**. All the secrets under this secret manager would have this prefix. For example, `devops` will result in secrets like `devops/mysecret`. The prefix is not a folder name.
+With this option, Harness uses the IAM role assigned to the AWS host running the selected Delegate for authentication.
 
-#### Region
+  ![](../../secrets/static/add-aws-secret-manager-2.png)
 
-Select the AWS **Region** for the secret manager.
+##### Prerequisites
 
-### Option: Assume IAM Role on Delegate
+- Ensure the Delegate host has the appropriate IAM role assigned.
 
-If you select this option, Harness will authenticate using the IAM role assigned to the AWS host running the Delegate you select. You can select a Delegate using a Delegate Selector.
+##### Additional Fields
 
-Refer to [Secret Name Prefix](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md#secret-name-prefix) and [Region](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md#region) explained above to add these details.
+Refer to the **Secret Name Prefix** and **Region** settings described under the AWS Access Key section above.
 
-### Option: Assume Role Using STS on Delegate
+#### Credential Type: Assume Role Using STS on Delegate
 
-This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature. Typically, you use `AssumeRole` within your account or for AWS cross-account access.
+Harness uses AWS Security Token Service (STS) to assume a role. This option is commonly used for cross-account access or assuming roles within the same AWS account.
 
-Refer to [Secret Name Prefix](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md#secret-name-prefix) and [Region](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md#region) explained above to add these details.
+  ![](../../secrets/static/add-aws-secret-manager-3.png)
 
-#### Role ARN
+##### Prerequisites
 
-Enter the Amazon Resource Name (ARN) of the role that you want to assume. This role is an IAM role in the target deployment AWS account.
+- Configure an IAM role in the target AWS account.
 
-#### External ID
+##### Required Fields
 
-If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+- **Role ARN**: Enter the Amazon Resource Name (ARN) of the role you want to assume.  
+- **External ID**: If provided by the account administrator, enter the External ID for additional security. See [AWS External ID documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) for more details.  
+- **Assume Role Duration**: Specify the session duration for the assumed role. For more information, refer to the [AssumeRole API documentation](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html).
 
-For more information, go to [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) in the AWS documentation.
+##### Additional Fields
 
-#### Assume Role Duration
-
-Enter the AssumeRole Session Duration. Go to Session Duration in the [AssumeRole AWS docs](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html).
+Refer to the **Secret Name Prefix** and **Region** settings described under the AWS Access Key section above.
 
 ### Step 4: Setup Delegates
 
