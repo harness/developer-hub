@@ -96,7 +96,7 @@ README.md @pratmit
 /docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez 
 
 # FF Docs
-/docs/feature-flags/ @HarnessTheChaos @jenniferopal
+/docs/feature-flags/ @HarnessTheChaos @jenniferopal @laura-mannus @Kira-Jennings @laura135 
 
 # Cloud Operations Docs
 /docs/harness-cloud-operations/ @ankit-harness @yogi-harness
@@ -105,7 +105,7 @@ README.md @pratmit
 /docs/software-engineering-insights/ @codewdhruv @batraprashant
 
 # DB DevOps Docs
-/docs/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos
+/docs/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
 
 # CDE Docs
 /docs/cloud-development-environments/ @manishas
@@ -155,7 +155,7 @@ README.md @pratmit
 
 # DB DevOps FAQs
 
-/kb/database-devops/index @jenniferopal @stephenatwell @HarnessTheChaos
+/docs/faqs/db-devops-faqs/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
 
 # Release Notes ###
 
@@ -181,7 +181,7 @@ README.md @pratmit
 /release-notes/delegate.md @pratmit
 
 # Database DevOps Release Notes
-/release-notes/database-devops.md @stephenatwell @jenniferopal @HarnessTheChaos
+/release-notes/database-devops.md @stephenatwell @jenniferopal @HarnessTheChaos @archit-harness @anshul-harness
 
 # FF Release Notes
 /release-notes/feature-flags.md @HarnessTheChaos @jenniferopal
@@ -253,6 +253,9 @@ README.md @pratmit
 
 # SEI KB
 /kb/sei/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+
+# DB DevOps
+/kb/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
 
 # Roadmap ###
 
