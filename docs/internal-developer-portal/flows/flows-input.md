@@ -282,6 +282,44 @@ parameters:
 
 ![](./static/template-arrays-multipleobjects.png)
 
+### Pass an Array of Inputs to a Harness Pipeline 
+
+Harness Pipelines variables can only be 3 types, string, number and secrets, in case you want to add multiple strings and comma separated values you need to [join](https://mozilla.github.io/nunjucks/templating.html#join) them and send as single input parameters. 
+
+In the following Workflow if you want to pick the enum and parse the `exampleVar` as a string and use it as comma separated value in the inputset for pipeline. 
+As you could see in the example below under `inputset`, `exampleVar` takes input as `${{ parameters.exampleVar.join(',') }}`. 
+
+```YAML
+    - title: Pass Variables Here      
+      properties:
+        exampleVar:
+          title: Select an option
+          type: array
+          items:
+            type: string
+            enum:
+              - Option1
+              - Option2
+              - Option3
+          default: 
+            - Option1
+      ui:
+        exampleVar:
+          title: Select Options
+          multi: true
+  steps:
+    - id: trigger
+      name: Call a harness pipeline, and pass the variables from above
+      action: trigger:harness-custom-pipeline
+      input:
+        url: 'https://app.harness.io/ng/account/*********/home/orgs/default/projects/*************/pipelines/*************/pipeline-studio/?storeType=INLINE'
+        inputset:
+          exampleVar: ${{ parameters.exampleVar.join(',') }}
+          owner: ${{ parameters.owner }}
+        apikey: ${{ parameters.token }}
+```
+
+
 ## Boolean options
 
 ### Boolean
