@@ -26,15 +26,21 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 1. UI for Governance Custom Savings Percentage: We have added an option to configure and display custom savings percentages in Governance.[CCM-20193]
 
+<DocImage path={require('./static/savings-computation.png')} width="90%" height="90%" title="Click to view full-size image" />
+
 2. Error Dialog for Governance Rule Validation Errors: The error dialog used for AIDA-generated policies during rule validations will now also appear for standard rule validation errors, ensuring consistency and clarity. [CCM-20170]
 
 3. UI for Actioned Resources and Savings: Asset Governance now displays the count of actioned resources along with the associated savings. Users can view the "Actioned Resources" tab in the test terminal output for better visibility. [CCM-20108]
+<DocImage path={require('./static/actioned-resources.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 4. Account Names in Governance Recommendations Dashboards: we have added support for displaying account names in the namespace field for governance recommendations. Also we extract and expose the account ID in the AWS Account ID field, similar to EC2 or ECS recommendations. We have applied similar functionality for Azure Governance Recommendations. [CCM-19921]
 
-5. Ignore All Recommendations feature: Users can now choose to ignore all recommendations associated with a specific rule, simplifying management of rules. [CCM-19917]
+6. Ignore All Recommendations feature: Users can now choose to ignore all recommendations associated with a specific rule, simplifying management of rules. [CCM-19917]
 
-6. Bulk Processing of AutoStopping Rules: We have added support to select multiple AutoStopping rules to enable, disable, or dry-run them simultaneously, streamlining operations. [CCM-19786]
+
+8. Bulk Processing of AutoStopping Rules: We have added support to select multiple AutoStopping rules to enable, disable, or dry-run them simultaneously, streamlining operations. [CCM-19786]
+
+<DocImage path={require('./static/bulkprocessing.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 ## November 2024
 
