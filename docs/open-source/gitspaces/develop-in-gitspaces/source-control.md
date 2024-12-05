@@ -1,6 +1,7 @@
 ---
 title: Using Source Control in your Gitspaces
 sidebar_position: 1
+description: Understand how to use source control in your Gitspaces. 
 sidebar_label: Source Control
 ---
 
@@ -45,3 +46,7 @@ git config --global user.name "Your Name"
 4. Now Sync Changes, it will redirect you to login and authorize to your Source Provider. After authorization, your changes will be committed to your fork.
 
 5. And that’s it! You have successfully used Harness Open Source Gitspaces for development
+
+## How to Open a Pull Request
+
+Follow the instructions on [pushing and pulling remote changes](https://code.visualstudio.com/docs/sourcecontrol/intro-to-git#_pushing-and-pulling-remote-changes). 
