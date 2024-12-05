@@ -37,6 +37,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 6. Ignore All Recommendations feature: Users can now choose to ignore all recommendations associated with a specific rule, simplifying management of rules. [CCM-19917]
 
+<DocImage path={require('./static/ignorelist.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 8. Bulk Processing of AutoStopping Rules: We have added support to select multiple AutoStopping rules to enable, disable, or dry-run them simultaneously, streamlining operations. [CCM-19786]
 
