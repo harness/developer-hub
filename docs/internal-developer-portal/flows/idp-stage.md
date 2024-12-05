@@ -732,6 +732,8 @@ This step is used to update the catalog metadata for your entities. For example,
   - Update single Catalog Entity
   - Update multiple catalog Entities
 
+TBA: How permission works for all these entities
+
 <Tabs>
 <TabItem value="Update a single Catalog Entity" label="Update a single Catalog Entity">
 
@@ -748,7 +750,7 @@ This step is used to update the catalog metadata for your entities. For example,
 
 - To **update multiple Catalog entities**, you need to add the **property** to be updated across the entities followed by `entity-ref` and corresponding values. 
 
-- In case you want to add a default value across all the entities then update the field under Default Value. 
+- In case you want to add a default value across all the entities then update the field under Default Value. (TBA: does default value overrides already provided values).
 
 - The **API Key** field is optional. If left empty, the credentials of the user executing the pipeline will be used to update the catalog entity.
 
