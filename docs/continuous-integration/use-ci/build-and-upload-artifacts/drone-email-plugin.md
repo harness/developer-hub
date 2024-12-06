@@ -39,7 +39,7 @@ You can use the [Drone Email plugin](https://plugins.drone.io/plugins/email) to 
                      identifier: Plugin_1
                      spec:
                        connectorRef: YOUR_DOCKER_CONNECTOR_ID
-                       image: drillster/drone-email ## This is the email plugin image.
+                       image: plugins/email ## This is the email plugin image.
                        settings:
                          from: sender@mysite.com ## The email address to send the notification from. Can be the same as the From Address in your Harness SMTP configuration.
                          recipients: test@mysite.com ## List of recipients to send the email to (besides the commit author).
