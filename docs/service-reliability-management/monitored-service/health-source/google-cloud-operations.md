@@ -6,7 +6,7 @@ sidebar_position: 7
 ---
 
 
-In Harness, a health source is a mapping that connects a Service in Harness to a service running in a deployment environment that is being monitored by an Application Performance Monitoring (APM) or logging tool. This mapping allows Harness to collect metrics and data from the APM or logging tool and use it to determine the health and status of the Service in Harness.
+In Harness, a health source is a mapping that connects a Service in Harness to a service running in a deployment environment that is being monitored by an Application Performance Monitoring (APM) or a logging tool. This mapping allows Harness to collect metrics and data from the APM (or logging tool) and use it to determine the health and status of the Service in Harness.
 
 This topic describes how to set up Google Cloud Operations as a health source in a monitored service.
 
@@ -34,7 +34,14 @@ To add Google Cloud Operations as a health source:
 
 2. In **Health Source Name**, enter a name for the Health Source.
 3. Under **Connect Health Source**, click **Select Connector**.
+
+:::tip
+- Delegate tasks are essential for all SRM operations. It fetches the required metrics and logs for SRM through specific Delegate tasks.
+- While you can create a GCP connector with the **Specify credentials here** option, it won’t work for the SRM module. However, this connector would still work in other Harness modules.
+:::
+
 4. In **Connector** settings, you can either choose an existing connector Gcp connector or click **New Connector.**
+   
    ![](./static/verify-deployments-with-google-cloud-operations-125.png)
 
 5. Click **Apply Selected**. The Connector is added to the Health Source.
