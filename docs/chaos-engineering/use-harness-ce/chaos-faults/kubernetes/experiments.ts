@@ -200,6 +200,12 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod JVM modify return",
+    description:"Pod JVM modify return modifies the return value of a method in a Java application executing on a Kubernetes pod, for a specific duration.",
+    tags: ["pod", "jvm"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod memory hog exec",
     description:"Pod memory hog exec consumes memory resources on the application container in megabytes.",
     tags: ["pod"],

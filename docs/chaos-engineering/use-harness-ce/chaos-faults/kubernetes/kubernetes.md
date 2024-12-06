@@ -399,6 +399,23 @@ Stressing the disk with continuous and heavy I/O can degrade the reads and write
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM modify return
+
+Pod JVM modify return modifies the return value of a method in a Java application executing on a Kubernetes pod, for a specific duration.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Helps test the functionality of snippets of code by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations.
+- Helps obscure or redact personally identifiable information (PII), such as email addresses or phone numbers, before logging or transmitting the data for security and privacy compliance.
+- Determines how efficiently an application recovers and returns to normalcy.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod memory hog exec
 
 Pod memory hog exec is a Kubernetes pod-level chaos fault that consumes memory resources on the application container in megabytes.
