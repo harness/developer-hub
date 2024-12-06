@@ -200,10 +200,15 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod JVM CPU stress",
+    description:"Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kubernetes pod by consuming excessive CPU threads of the JVM.",
+    tags: ["pod", "jvm", "cpu"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod JVM trigger gc",
     description:"Pod JVM trigger gc triggers the garbage collector for a Java process executing in a Kubernetes pod. This causes unused (or out of scope) objects and variables to be garbage collected and recycled, thereby freeing up memory space.",
     tags: ["pod", "jvm"],
-    category: "kubernetes",
   },
   {
     name: "Pod memory hog exec",

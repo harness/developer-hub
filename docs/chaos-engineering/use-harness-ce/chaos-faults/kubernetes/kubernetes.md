@@ -399,6 +399,25 @@ Stressing the disk with continuous and heavy I/O can degrade the reads and write
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM CPU stress
+
+Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kubernetes pod by consuming excessive CPU threads of the JVM.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Tests the system's ability to handle high payloads.
+- Evaluates the application's behavior in high-stress cases.
+- Induces CPU consumption and exhaustion on the target Java process JVM executing in a K8s pod.
+- Simulates a lack of CPU threads for processes running on the application, which degrades their performance.
+- Simulates application slowness due to CPU starvation.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod JVM trigger gc
 
 Pod JVM trigger gc triggers the garbage collector for a Java process executing in a Kubernetes pod. This causes unused (or out of scope) objects and variables to be garbage collected and recycled, thereby freeing up memory space.
@@ -407,6 +426,7 @@ Pod JVM trigger gc triggers the garbage collector for a Java process executing i
 <summary>Use cases</summary>
 - Determines how the application behaves when memory space is freed up randomly for a brief period.
 - Determines how efficiently an application recovers and returns to normalcy.
+
 </Accordion>
 
 </FaultDetailsCard>
