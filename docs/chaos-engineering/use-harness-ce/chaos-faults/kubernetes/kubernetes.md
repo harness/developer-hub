@@ -399,6 +399,20 @@ Stressing the disk with continuous and heavy I/O can degrade the reads and write
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM method exception
+
+Pod JVM method exception injects chaos into a Java application executing in a Kubernetes pod by invoking an exception.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance and resilience of an application (or service) on encountering exceptions.
+- Determines how efficiently an application recovers the services.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod memory hog exec
 
 Pod memory hog exec is a Kubernetes pod-level chaos fault that consumes memory resources on the application container in megabytes.
