@@ -399,7 +399,7 @@ Stressing the disk with continuous and heavy I/O can degrade the reads and write
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod JVM method exception
+### Pod JVM method latency
 
 Pod JVM method latency slows down the Java application executing on Kubernetes pod by introducing delays in executing the method calls.
 
