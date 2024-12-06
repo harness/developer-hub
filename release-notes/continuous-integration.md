@@ -53,7 +53,7 @@ If you have any questions or need assistance with the whitelisting process, plea
 - Updated Alpine image version to address security vulnerabilities in images plugins/gcs:1.6.0 and plugins/artifact-metadata-publisher:2.0 (CI-14897, ZD-71880).
 - Corrected the artifact URL output in the "Build and Push to GAR" step to ensure the published image URL is formatted correctly (CI-14917, ZD-71930).
 - Added support for expressions in the memory and CPU fields under the codebase configuration, enabling dynamic configuration of resource limits (CI-15043).
-- Resolved an issue where Cache Intelligence in self-hosted builds stopped functioning as expected. The fix involved adding source paths to restore steps, ensuring the feature now works properly (CI-15201, ZD-73305).
+- Resolved an issue where Cache Intelligence in self-hosted builds wasn't working properly when 'paths' field was specified. (CI-15201, ZD-73305).
 - Optimized the way environment variables are injected into build pods, reducing the YAML size to address Kubernetes resource configuration limits (CI-15245, ZD-71872).
 
 #### Harness images updates
