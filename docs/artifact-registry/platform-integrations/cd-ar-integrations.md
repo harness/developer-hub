@@ -1,12 +1,12 @@
 ---
 title: Artifact Registry and Continuous Delivery
-description: Deep dive into the native integrations between the Artifact Registry and Continuous Delivery modules.
+description: Deep dive into the native integrations between the Artifact Registry and Continuous Delivery module.
 sidebar_position: 10
 ---
 
 Learn how to use Artifact Registry with the Continuous Delivery (CD) module. 
 
-## Integrated Sources
+## Integrated Artifact Sources
 
 Artifact Registry is a [native artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources) for [CD services](/docs/continuous-delivery/x-platform-cd-features/services/services-overview). 
 
