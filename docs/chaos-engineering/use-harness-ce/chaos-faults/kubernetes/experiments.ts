@@ -200,6 +200,12 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod JVM method latency",
+    description:"Pod JVM method latency slows down the Java application executing on Kubernetes pod by introducing delays in executing the method calls.",
+    tags: ["pod", "latency"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod memory hog exec",
     description:"Pod memory hog exec consumes memory resources on the application container in megabytes.",
     tags: ["pod"],
