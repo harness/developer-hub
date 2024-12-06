@@ -577,3 +577,43 @@ Invalid request: No manifests found in stage Deploy_AMI. AsgRollingDeploy step r
 ```
 
 This means that your Launch Template and ASG Configuration are not setup correctly in your service under AWS ASG Configurations.
+
+### What is the purpose of the ECS Scheduled Task Deployment Pipeline? 
+This pipeline automates building, pushing, scheduling, and running ECS tasks using Harness. It helps dynamically update ECS task definitions and schedule tasks with AWS EventBridge.
+
+### What are the main stages in the ECS Scheduled Task Deployment Pipeline? 
+The pipeline has three main stages:  
+1. ecr push: Builds and pushes a Docker image to Amazon ECR.  
+2. schedule task: Schedules the ECS task using AWS EventBridge.  
+3. deploy ecs: Updates the ECS task definition and optionally runs the ECS task.
+
+### How does the ecr_push stage work?
+The ecr_push stage builds the Docker image, tags it, and pushes it to Amazon ECR. It uses the output variable `tag_value_updated` to dynamically pass the updated image tag to subsequent stages.
+
+### What does the schedule_task stage accomplish?
+The schedule_task stage creates or updates an AWS EventBridge rule and sets the ECS task as its target. It uses AWS CLI commands to define scheduling parameters and associates the updated ECS task definition with the rule.
+
+### How is the deploy_ecs stage used? 
+The deploy_ecs stage updates the ECS task definition with the new Docker image tag and uses the EcsRunTask step to optionally run the ECS task. Rollback options like ECS Canary Delete and Rolling Rollback are included to handle deployment failures.
+
+### What are the IAM role requirements for the ECS Scheduled Task Deployment Pipeline? 
+You need an IAM role (`ecsEventBridgeRole`) with the following permissions:  
+- Trust Policy: Allows EventBridge to assume the role.  
+- Permissions: `ecs:RunTask`, `ecs:DescribeTaskDefinition`, `events:PutRule`, `events:PutTargets`.
+
+### How is the Docker image tag updated dynamically in ECS Scheduled Task Deployment Pipeline? 
+The `tag_value_updated` variable captures the updated image tag during the ecr_push stage. This tag is used to dynamically update the task definition in subsequent stages.
+
+### How can I schedule the ECS task using AWS CLI?
+The schedule_task stage runs the following AWS CLI commands:  
+1. Create or update an EventBridge rule:  
+   ```bash
+   aws events put-rule --schedule-expression "rate(5 minutes)" --name my-scheduled-task
+   ```  
+2. Set the ECS task as the rule's target using updated task definitions.
+
+### How does the rollback mechanism work? 
+The pipeline includes rollback steps like ECS Canary Delete and ECS Rolling Rollback. These steps revert deployments if failures occur during task scheduling or execution.
+
+### Can I run the ECS task immediately after updating the task definition?
+Yes, the deploy_ecs stage includes the EcsRunTask step, which allows running the ECS task immediately using the updated task definition and `task_def_req.yaml` file.
