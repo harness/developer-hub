@@ -51,11 +51,12 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### New Features and enhancements
 
-- Harness now supports the `prefixed_identifier` field in the GitOps Agent Terraform resource. This field provides a scope-prefixed agent identifier, such as `account.agentId` for account-level, `org.agentId` for organization-level, and `agentId` for project-level agents, enabling easier referencing in other Terraform resources. (CDS-101503)
+- Harness now supports the `prefixed_identifier` field in the GitOps Agent Terraform resource. This field provides a scope-prefixed agent identifier, where the scope (account, org, or project) is constant, and the agentId varies based on the specific agent. 
+For example, `account.agentId` for Account-level agents, `org.agentId` for Organisation-level agents, `agentId` (without a prefix) for Project-level agents. (CDS-101503)
 
 - The GitOps Applications landing page is now automatically refreshed, allowing newly created applications to appear in real-time without requiring manual refresh. (CDS-68662)
 
-- We have introduced the `allowEmptyCommit` field in the **GitOps Update Release Repo step**, enabling users to push an empty commit if desired. (CDS-103191)
+- We have introduced the `allowEmptyCommit` field in the **GitOps Update Release Repo step**, enabling users to push an empty commit if desired. For more information, go to Harness [Update Release Repo step](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps/#update-release-repo-step). (CDS-103191)
 
 - Addressed and resolved all known critical vulnerabilities related to the GitOps Agent and GitOps Service. (CDS-102606)
 
