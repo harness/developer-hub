@@ -46,16 +46,14 @@ If you have any questions or need assistance with the whitelisting process, plea
 ### Version 1.56
 <!-- 2024-11-25 -->
 
-#### New features and enhancements
-
 #### Fixed issues
-- Resolved an issue with the AWS connector configured with an External ID, ensuring proper functionality for "Upload Artifact to S3" and "Save/Restore Cache to S3" steps (CI-14214, ZD-69360).
+- Resolved an issue to ensure proper functionality for "Upload Artifact to S3" and "Save/Restore Cache to S3" steps when used with AWS connector configured with an External ID (CI-14214, ZD-69360).
 - Fixed an issue where the DRONE_REPO_OWNER built-in environment variable pointed to the wrong owner when the CI pipeline was triggered by a tag event. A new feature flag (CI_DRONE_REPO_OWNER) has been introduced to ensure DRONE_REPO_OWNER is correctly extracted from the repository URL (CI-14468).
-- The volume size field, in CI stage running on Kubernetes infrastructure, has been updated to support expressions, improving user experience and functionality (CI-14043, ZD-69169).
-- Updated Alpine image version to 3.20 for address security vulnerabilities in images plugins/gcs:1.6.0 and plugins/artifact-metadata-publisher:2.0 (CI-14897, ZD-71880).
+- The volume size field, in CI stage Kubernetes infrastructure settings, has been updated to support expressions, improving user experience and functionality (CI-14043, ZD-69169).
+- Updated Alpine image version to address security vulnerabilities in images plugins/gcs:1.6.0 and plugins/artifact-metadata-publisher:2.0 (CI-14897, ZD-71880).
 - Corrected the artifact URL output in the "Build and Push to GAR" step to ensure the published image URL is formatted correctly (CI-14917, ZD-71930).
 - Added support for expressions in the memory and CPU fields under the codebase configuration, enabling dynamic configuration of resource limits (CI-15043).
-- Resolved an issue where the Cache Intelligence feature in self-hosted builds stopped functioning as expected. The fix involved adding source paths to restore steps, ensuring the feature now works properly (CI-15201, ZD-73305).
+- Resolved an issue where Cache Intelligence in self-hosted builds stopped functioning as expected. The fix involved adding source paths to restore steps, ensuring the feature now works properly (CI-15201, ZD-73305).
 - Optimized the way environment variables are injected into build pods, reducing the YAML size to address Kubernetes resource configuration limits (CI-15245, ZD-71872).
 
 #### Harness images updates
