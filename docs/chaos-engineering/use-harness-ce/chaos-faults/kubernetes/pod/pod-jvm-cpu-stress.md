@@ -48,7 +48,7 @@ Pod JVM CPU stress:
   <tr>
     <td> POD_AFFECTED_PERC </td>
     <td> Percentage of total pods to target. Provide numeric values. </td>
-    <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pods affected percentage </a> </td>
+    <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pods affected percentage </a> </td>
     </tr>
   <tr>
     <td> JAVA_HOME </td>
