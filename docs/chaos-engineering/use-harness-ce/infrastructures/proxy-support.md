@@ -1,6 +1,6 @@
 ---
 title: Configure Proxy Settings
-sidebar_position: 5
+sidebar_position: 9
 description: Configure DDCR and Discovery Agent Proxy settings.
 redirect_from:
 - /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/proxy-support
