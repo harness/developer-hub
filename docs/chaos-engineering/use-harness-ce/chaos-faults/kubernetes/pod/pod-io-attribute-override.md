@@ -161,6 +161,23 @@ permissions:
 
 Modify the properties of files located within the mounted volume of the pod. Tune it by using the `ATTRIBUTES` environment variable. 
 
+The attributes to override is defined below:
+
+| **Parameter** | **Type** | **Description**                                                                        | **Example**                       |
+|---------------|----------|----------------------------------------------------------------------------------------|-----------------------------------|
+| atime         | TimeSpec | Last access time                                                                       |                                   |
+| blocks        | int      | Number of blocks that the file uses                                                    |                                   |
+| ctime         | TimeSpec | Last status change time                                                                |                                   |
+| gid           | int      | Group ID of the owner                                                                  |                                   |
+| ino           | int      | ino number                                                                             |                                   |
+| kind          | string   | File type, see [fuser::FileType](https://docs.rs/fuser/0.7.0/fuser/enum.FileType.html) |                                   |
+| mtime         | TimeSpec | Last modified time                                                                     |                                   |
+| nlink         | int      | Number of hard links                                                                   |                                   |
+| perm          | int      | File permissions in decimal                                                            | 72 (110 in octal) - default value |
+| rdev          | int      | Device ID                                                                              |                                   |
+| size          | int      | File size                                                                              |                                   |
+| uid           | int      | User ID of the owner                                                                   |                                   |
+
 The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/pod-io-attribute-override/attributes.yaml yaml)
