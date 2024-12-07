@@ -20,11 +20,8 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+## December 2024
 
-
-
-
-## November 2024
 
 :::note
 
@@ -42,6 +39,15 @@ If you have any questions or need assistance with the whitelisting process, plea
 
 :::
 
+
+### Version 1.57
+<!-- 2024-12-02 -->
+- Resolved an issue with ECR image links in the artifacts tab for the "Build and Push to ECR" step by adding the missing "/_" separator, ensuring correct functionality. (CI-15089, ZD-72329).
+- Resolved an issue where OPA enforcement in CI stages didn't work properly in the Self-Managed Enterprise Edition (CI-14840, ZD-70943).
+- Added support for configuring security context in Kubernetes when using Windows. This can be now configured via the YAML editor (CI-14868, ZD-72927).
+
+
+## November 2024
 
 ### Version 1.56
 <!-- 2024-11-25 -->
@@ -63,6 +69,8 @@ If you have any questions or need assistance with the whitelisting process, plea
 | `plugins/s3` | Added PLUGIN_USER_ROLE_EXTERNAL_ID to pass external ID for the secondary role when required | 1.4.3 | 1.5.0
 | `plugins/gcs ` | Go and alpine version upgrade to 1.22.7 and 3.20 respectively  | 1.6.0 | 1.6.1
 | `drone-buildx` | Go and docker version upgrade to 1.22.7 and 27.3.1-dind respectively| 1.1.19 | 1.1.20
+
+
 
 
 ### Version 1.54
