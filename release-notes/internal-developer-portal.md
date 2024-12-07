@@ -208,7 +208,7 @@ customPlugins:
 
 - You can now see an out of the box [**Adoption Dashboard**](/docs/internal-developer-portal/get-started/how-to-track-adoption) under the platform Dashboards showing a quick insight into the adoption of IDP across different areas. Executive Buyers can now subscribe to this and get a weekly/monthly report.
 - New plugins added to the marketplace
-  - [Harness Chaos Engineering](/docs/internal-developer-portal/plugins/available-plugins/harness-chaos)
+  - [Harness Chaos Engineering](/docs/internal-developer-portal/plugins/harness/available-harness-plugins/harness-chaos)
   - [Synk](https://github.com/snyk-tech-services/backstage-plugin-snyk/blob/main/README.md)
   - [New Relic](https://github.com/backstage/community-plugins/blob/main/workspaces/newrelic/plugins/newrelic-dashboard/README.md)
 - IDP Pipeline steps now support Harness Code as a git provider. [IDP-3232]
@@ -902,7 +902,7 @@ contents:
 
 #### New features and enhancements
 
-- IDP now includes the [GitHub Catalog Discovery](/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery) plugin. You can use this to automatically discover `catalog-info.yaml` files from your GitHub organizations and repositories. [IDP-887]
+- IDP now includes the [GitHub Catalog Discovery](/docs/internal-developer-portal/plugins/github/available-github-plugins/github-catalog-discovery) plugin. You can use this to automatically discover `catalog-info.yaml` files from your GitHub organizations and repositories. [IDP-887]
 
 - The following UI pickers are now available for use in software templates:
 

@@ -89,7 +89,7 @@ rules:
     verbs: ["get", "list"]
 ```
 
-If you are using GCP credentials to authenticate, you do not have to add a variable. Instead, configure the [Google OAuth provider](../oauth-support-for-plugins.md) on the **OAuth Configurations** page to enable the plugin to use the logged-in user's credentials when making requests.
+If you are using GCP credentials to authenticate, you do not have to add a variable. Instead, configure the [Google OAuth provider](https://developer.harness.io/docs/internal-developer-portal/plugins/oauth-support-for-plugins) on the **OAuth Configurations** page to enable the plugin to use the logged-in user's credentials when making requests.
 
 ### Delegate proxy
 
