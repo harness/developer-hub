@@ -76,13 +76,14 @@ import { MODULES } from "@site/src/constants";
           description:
             "Learn how to configure a Git provider for authentication.",
           link: "/docs/cloud-development-environments/features-of-gitspaces/authentication",
-        },{
-          title: "Auto-Stopping",
+        },
+        {
+          title: "Port Forwarding",
           module: MODULES.cde,
-          description:
-            "Learn more about why Harness auto-stops inactive Gitspaces. ",
-          link: "/docs/cloud-development-environments/features-of-gitspaces/auto-stopping",
-        },{
+          description: "Learn more about how to forward ports in your Gitspaces.",
+          link: "/docs/cloud-development-environments/features-of-gitspaces/port-forwarding",
+        },
+        {
           title: "Environment Variables",
           module: MODULES.cde,
           description:
@@ -90,11 +91,19 @@ import { MODULES } from "@site/src/constants";
           link: "/docs/cloud-development-environments/features-of-gitspaces/env-variables",
         },
         {
+          title: "Auto-Stopping",
+          module: MODULES.cde,
+          description:
+            "Learn more about why Harness auto-stops inactive Gitspaces. ",
+          link: "/docs/cloud-development-environments/features-of-gitspaces/auto-stopping",
+        },
+        {
           title: "Tracking Changes",
           module: MODULES.cde,
           description: "Learn how to track all Gitspace changes from Harness UI.",
           link: "/docs/cloud-development-environments/features-of-gitspaces/tracking-changes",
         },
+      
       ],
     },
     {
@@ -149,12 +158,6 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.cde,
           description: "Learn how to execute various Git functions directly in your Gitspace.",
           link: "/docs/cloud-development-environments/develop-using-cde/source-control",
-        },
-        {
-          title: "Port Forward",
-          module: MODULES.cde,
-          description: "Port Forwarding in CDE",
-          link: "/docs/cloud-development-environments/develop-using-cde/forward-ports",
         },
       ],
     }
