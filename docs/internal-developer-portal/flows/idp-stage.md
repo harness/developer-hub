@@ -720,6 +720,51 @@ The `xApiKey` is the [Harness PAT](https://developer.harness.io/docs/platform/au
 </TabItem>
 </Tabs>
 
+### 9. Update Catalog Property
+
+This step is used to update the catalog metadata for your entities. For example, you want to add the latest build version for your service in your catalog using this step in your CI pipeline and update the data in your catalog. 
+
+- You can select the step **Update Catalog Property** from the **Step Library**. 
+
+![](./static/update-catalog-property.png)
+
+- Now under the **Select the Catalog entity and the properties to be updated** you have two options
+  - Update single Catalog Entity
+  - Update multiple catalog Entities
+
+- **Permission:** For anyone to update catalog property need to have [edit catalog permission](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#catalog-access-policies). 
+
+<Tabs>
+<TabItem value="Update a single Catalog Entity" label="Update a single Catalog Entity">
+
+- To **update a single Catalog Entity**, select the Catalog Entity from the dropdown. You need to type at least the first three characters in the field for the entity options to appear.
+
+![](./static/ucp-demo.gif)
+
+- Now add the **property**, you want to update/add and the **value** against it. e.g., `<+metadata.testCoverage>`, `<+metadata.additionalInfo.onShorelead>`. 
+
+- The **API Key** field is optional. If left empty, the credentials of the user executing the pipeline will be used to update the catalog entity.
+
+</TabItem>
+<TabItem value="Update Multiple Catalog Entities" label="Update Multiple Catalog Entities" default>
+
+- To **update multiple Catalog entities**, you need to add the **property** to be updated across the entities followed by `entity-ref` and corresponding values. 
+
+- In case you want to add a default value across all the entities then update the field under Default Value.
+
+- The **API Key** field is optional. If left empty, the credentials of the user executing the pipeline will be used to update the catalog entity.
+
+- Under Advanced you can select the mode 
+
+  - Available Modes:
+    - replace (default): Completely replaces the existing value with the new one provided in the value field.
+    - append: Adds new values to the existing array (or other types to be appended like maps or key-value pairs).
+  
+> Note: `append` only works with data types that can hold multiple values, such as arrays or maps. It does not apply to simple data types like strings.
+
+</TabItem>
+</Tabs>
+
 ## Final Pipeline using Developer Portal Stage
 
 :::info
