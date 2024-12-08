@@ -732,7 +732,7 @@ This step is used to update the catalog metadata for your entities. For example,
   - Update single Catalog Entity
   - Update multiple catalog Entities
 
-TBA: How permission works for all these entities
+- **Permission:** For anyone to update catalog property need to have [edit catalog permission](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#catalog-access-policies). 
 
 <Tabs>
 <TabItem value="Update a single Catalog Entity" label="Update a single Catalog Entity">
@@ -750,7 +750,7 @@ TBA: How permission works for all these entities
 
 - To **update multiple Catalog entities**, you need to add the **property** to be updated across the entities followed by `entity-ref` and corresponding values. 
 
-- In case you want to add a default value across all the entities then update the field under Default Value. (TBA: does default value overrides already provided values).
+- In case you want to add a default value across all the entities then update the field under Default Value.
 
 - The **API Key** field is optional. If left empty, the credentials of the user executing the pipeline will be used to update the catalog entity.
 
