@@ -44,7 +44,6 @@ If you have any questions or need assistance with the whitelisting process, plea
 <!-- 2024-12-02 -->
 - Resolved an issue with ECR image links in the artifacts tab for the "Build and Push to ECR" step by adding the missing "/_" separator, ensuring correct functionality. (CI-15089, ZD-72329).
 - Resolved an issue where OPA enforcement in CI stages didn't work properly in the Self-Managed Enterprise Edition (CI-14840, ZD-70943).
-- Added support for configuring security context in Kubernetes when using Windows. This can be now configured via the YAML editor (CI-14868, ZD-72927).
 
 
 ## November 2024
