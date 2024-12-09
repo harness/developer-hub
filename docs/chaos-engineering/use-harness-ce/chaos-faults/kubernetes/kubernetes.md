@@ -399,6 +399,25 @@ Stressing the disk with continuous and heavy I/O can degrade the reads and write
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM CPU stress
+
+Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kubernetes pod by consuming excessive CPU threads of the JVM.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Tests the system's ability to handle high payloads.
+- Evaluates the application's behavior in high-stress cases.
+- Induces CPU consumption and exhaustion on the target Java process JVM executing in a K8s pod.
+- Simulates a lack of CPU threads for processes running on the application, which degrades their performance.
+- Simulates application slowness due to CPU starvation.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod JVM method latency
 
 Pod JVM method latency slows down the Java application executing on Kubernetes pod by introducing delays in executing the method calls.
@@ -410,6 +429,7 @@ Pod JVM method latency slows down the Java application executing on Kubernetes p
 - Evaluates the application's behavior in high-stress cases.
 - Determines how quickly an application returns to normalcy after the delay.
 - Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
+  
 </Accordion>
 
 </FaultDetailsCard>

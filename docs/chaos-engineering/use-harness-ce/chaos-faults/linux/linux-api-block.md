@@ -6,7 +6,7 @@ redirect_from:
 ---
 
 import Ossupport from './shared/note-supported-os.md'
-import FaultPermissions from './shared/fault-permissions.md'
+import ApiChaosFaultPermissions from './shared/api-chaos-fault-permissions.md'
 
 Linux API block injects API block fault into a Linux machine for a specific duration through path filtering. This results in the API not being able to send responses for the requests it receives.
 
@@ -20,7 +20,7 @@ Linux API block injects API block fault into a Linux machine for a specific dura
 
 <Ossupport />
 
-<FaultPermissions />
+<ApiChaosFaultPermissions />
 
 ### Optional tunables
 <table>

@@ -45,6 +45,16 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## December
+
+### Version 1.68.4
+
+#### Fixed Issues
+
+- User was not able to provide timeout for Service Now approval step as Input. This issue is fixed now. (PIPE-23742, ZD-73247)
+- When using blue green deployment step in a template, AWS load balancer dropdown was not getting populated. This issue is fixed now. (CDS-104478, ZD-73560)
+- Previously, the Shell Script Provisioner step for PDC infrastructure failed when using runtime inputs for `hostAttributes`. This issue is fixed now. (CDS-104659)
+
 ## November
 
 ### Version 1.67.2
@@ -58,6 +68,8 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Previously, GitOps steps like UpdateReleaseRepo, MergePR, and RevertPR were delayed due to locking on the tokenRef to prevent GitHub rate limits. A new Disable `Git Restraint` option now allows users to bypass this locking for faster execution. (CDS-101882, ZD-71430,72936)
 
 - Harness now supports Post-Deployment Rollback for services at both the Account and Organisation levels. This feature is behind a feature flag `CDS_SVC_ENV_DASHBOARD_FOR_ACCOUNT_AND_ORG_LEVEL`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-94527)
+
+- Harness now supports fetching and using the latest successfully deployed tag for a service in the Harness pipeline using the expression `<+lastSuccessfulDeployed.tag>`. For more information, go to Harness [Runtime Input for the Latest Artifact Tag](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#runtime-input-for-the-latest-artifact-tag). (CDS-101173)
 
 #### Fixed Issues
 
