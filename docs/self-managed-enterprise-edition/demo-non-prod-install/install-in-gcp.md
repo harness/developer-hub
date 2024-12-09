@@ -70,7 +70,7 @@ To reserve an external static IP in GCP, do the following:
 
 5. Open the `values.yaml` file in a file editor.
 
-6. Add your external static IP address in the following fields.
+6. Add your external static IP address or domain url in the following fields.
 
    ```yaml
    loadbalancerURL: http://xx.xx.xx.xx
@@ -182,7 +182,7 @@ To create your test cluster in GKE using the gcloud CLI, do the following:
    | Key                       | Value     |
     | ----------------------------------- | --------------------- |
     | `global.ingress.enabled`| `true`|
-    | `global.loadbalancerURL`| `"https://<YOUR_IP_ADDRESS>"` |
+    | `global.loadbalancerURL`| `"https://<YOUR_IP_ADDRESS_OR_DOMAIN_NAME>"` |
     | `global.ingress.hosts`| `""`|
     |`global.ingress.loadBalancerIP`|`<YOUR_IP_ADDRESS>`|
     |`global.ingress.loadBalancerEnabled`|`true`|
