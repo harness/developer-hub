@@ -13,19 +13,19 @@ import Link from "@docusaurus/Link";
 
 <h2 id="h_01HYDZ3HPXC122KDBBXQE02JD1">Experiment sensitivity</h2>
 <p>
-  <span>When running an experiment it is important to ensure you have a large enough sample to be able to detect impacts of the size that are important to you. If your sample size is too low your experiment will be underpowered and you would be unlikely to detect a reasonably sized impact.</span>
+  When running an experiment it is important to ensure you have a large enough sample to be able to detect impacts of the size that are important to you. If your sample size is too low your experiment will be underpowered and you would be unlikely to detect a reasonably sized impact.
 </p>
 <p>
-  <span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>Experiment sensitivity refers to the ability of your experiment to detect small changes. Each metric in your experiment has a Minimum Likely Detectable Effect (MLDE) - this is the smallest change which, if it exists, is likely to be detected and shown as statistically significant. Impacts smaller than the MLDE may be missed and not reach significance because the sample size was too low to confidently distinguish the impact from random noise.&nbsp;</span>
+ Experiment sensitivity refers to the ability of your experiment to detect small changes. Each metric in your experiment has a Minimum Likely Detectable Effect (MLDE) - this is the smallest change which, if it exists, is likely to be detected and shown as statistically significant. Impacts smaller than the MLDE may be missed and not reach significance because the sample size was too low to confidently distinguish the impact from random noise.
 </p>
 <p>
-  <span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>The larger the sample you have the smaller the impacts your experiment will be able to detect. It is often a trade-off between speed (not having to run the experiment longer to get a larger sample size) and sensitivity (being able to detect smaller changes).</span>
+  The larger the sample you have the smaller the impacts your experiment will be able to detect. It is often a trade-off between speed (not having to run the experiment longer to get a larger sample size) and sensitivity (being able to detect smaller changes).
 </p>
 <p>
-  <span>It is recommended you decide how long your experiment will run up front, and resist the temptation to change your original plans if you do not reach significance after the initial run-time. This is to avoid false-positive results - if left for an infinite time, any experiment will eventually cross over into significance purely by chance.</span>
+  It is recommended you decide how long your experiment will run up front, and resist the temptation to change your original plans if you do not reach significance after the initial run-time. This is to avoid false-positive results - if left for an infinite time, any experiment will eventually cross over into significance purely by chance.
 </p>
 <p>
-  <span>We have created a set of calculators to help you decide how long to run your experiment. If you have a size of impact in mind which you want your experiment to be able to detect, you can use the <a href="#h_96364ca2-928c-46de-a4b7-5ebcf2c4ea52" target="_self">sample size calculators</a> to work out how large a sample you need to ensure your experiment has the sensitivity to detect impacts of that size. Otherwise, you can use the <a href="#h_ac56f9d9-2f8a-4967-a350-5730fe8e87b9" target="_self">sensitivity calculators</a> to see the kinds of impacts you can expect to be able to detect for a range of experiment lengths.</span><span></span>
+  We have created a set of calculators to help you decide how long to run your experiment. If you have a size of impact in mind which you want your experiment to be able to detect, you can use the <a href="#h_96364ca2-928c-46de-a4b7-5ebcf2c4ea52" target="_self">sample size calculators</a> to work out how large a sample you need to ensure your experiment has the sensitivity to detect impacts of that size. Otherwise, you can use the <a href="#h_ac56f9d9-2f8a-4967-a350-5730fe8e87b9" target="_self">sensitivity calculators</a> to see the kinds of impacts you can expect to be able to detect for a range of experiment lengths.
 </p>
 <p>
   Note that these calculators assume a significance threshold of 0.05 and a power
@@ -42,10 +42,10 @@ import Link from "@docusaurus/Link";
   section below for further information on the inputs to these calculators.&nbsp;&nbsp;
 </p>
 <h2 id="h_96364ca2-928c-46de-a4b7-5ebcf2c4ea52">
-  <span>Sample Size Calculators</span>
+  Sample Size Calculators
 </h2>
 <p>
-  <span>By using the calculators below you can see how long you need to run your experiment to have a good chance of detecting a given effect size if it does exist. </span>
+  By using the calculators below you can see how long you need to run your experiment to have a good chance of detecting a given effect size if it does exist. 
 </p>
 <p>
   If your metric is a count, sum, average or ratio metric, use the first
@@ -57,16 +57,16 @@ import Link from "@docusaurus/Link";
 </p>
 <h3 id="h_9859c3c7-1c9c-44d1-980d-416359eebda6">Calculator for mean metrics</h3>
 <p>
-  <iframe style="width: 900px; height: 900px; border: 0; border-radius: 4px; overflow: hidden;" src="https://exp-calculators-means-9ecaf91e3a35.herokuapp.com/" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+  <iframe style={{width: '900px', height: '900px', border: 0, borderRadius: '4px', overflow: 'hidden'}} src="https://exp-calculators-means-9ecaf91e3a35.herokuapp.com/" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 </p>
 <p>&nbsp;</p>
 <h3 id="h_c354a74b-975a-4cb9-9c39-20aa82927294">Calculator for percent unique metrics</h3>
 <p>
-  <iframe style="width: 900px; height: 900px; border: 0; border-radius: 4px; overflow: hidden;" src="https://exp-calculators-proportions-00c422485fac.herokuapp.com/" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+  <iframe style={{width: '900px', height: '900px', border: 0, borderRadius: '4px', overflow: 'hidden'}} src="https://exp-calculators-proportions-00c422485fac.herokuapp.com/" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 </p>
 <h2 id="h_ac56f9d9-2f8a-4967-a350-5730fe8e87b9">Sensitivity Calculators</h2>
 <p>
-  <span>By using the calculators below you can see the kinds of impacts you can expect to detect for a range of experiment lengths.</span>
+  By using the calculators below you can see the kinds of impacts you can expect to detect for a range of experiment lengths.
 </p>
 <p>
   If your metric is a count, sum, average or ratio metric, use the first
@@ -91,13 +91,13 @@ import Link from "@docusaurus/Link";
 <h3 id="h_79194d74-5629-4dde-a770-943c378b35d1">Calculator for mean metrics</h3>
 <h3 id="h_01HYDZ3HPXHDENRX3WT1E4SRNP">&nbsp;</h3>
 <p>
-  <iframe style="width: 1100px; height: 1300px; border: 0; border-radius: 4px; overflow: hidden;" src="https://csb-16kyv-2r8njoik3.now.sh/?codemirror=1" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+  <iframe style={{width: '1100px', height: '1300px', border: 0, borderRadius: '4px', overflow: 'hidden'}} src="https://csb-16kyv-2r8njoik3.now.sh/?codemirror=1" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 </p>
-<p>&nbsp;</p>
+
 <h3 id="h_da37a5a5-5501-4067-9646-20814610c317">Calculator for percent unique metrics</h3>
-<p>&nbsp;</p>
+
 <p>
-  <iframe style="width: 1100px; height: 1300px; border: 0; border-radius: 4px; overflow: hidden;" src="https://csb-5kd7k-42pc8nrsq.now.sh/?codemirror=1" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+  <iframe style={{width: '1100px', height: '1300px', border: 0, borderRadius: '4px', overflow: 'hidden'}} src="https://csb-5kd7k-42pc8nrsq.now.sh/?codemirror=1" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 </p>
 <h2 id="h_57c272cb-1dfd-4085-aa1c-368d89e34096">Using the calculators</h2>
 <p>
@@ -126,7 +126,7 @@ import Link from "@docusaurus/Link";
   daily value of 285 users.&nbsp;
 </p>
 <p>
-  <img src="/guide-media/01GW91D45YKE914DNKW6J1D9QD" alt="Screen_Shot_2019-10-31_at_14.14.37.png">
+  <img src="https://help.split.io/hc/article_attachments/26908355583885" alt="Screen_Shot_2019-10-31_at_14.14.37.png" />
 </p>
 <h3 id="h_01HYDZ3HPXEC4MV4CYWCTHEPX8">Baseline Metric Value</h3>
 <p>
@@ -147,10 +147,10 @@ import Link from "@docusaurus/Link";
 </p>
 <p>&nbsp;</p>
 <p>
-  <img src="/guide-media/01GW90AW66ZB6012VKRB4YFNPD" alt="Screen_Shot_2019-10-31_at_14.13.35.png">
+  <img src="https://help.split.io/hc/article_attachments/26908355596685" alt="Screen_Shot_2019-10-31_at_14.13.35.png" />
 </p>
 <h3 id="h_01HYDZ3HPXHVSKSMFWEV58E1QH">
-  <span>What size (relative%) change do you want to be able to detect?&nbsp;</span>
+  What size (relative%) change do you want to be able to detect?&nbsp;
 </h3>
 <p>
   This is the smallest change which, if it exists, is likely to be detected and
