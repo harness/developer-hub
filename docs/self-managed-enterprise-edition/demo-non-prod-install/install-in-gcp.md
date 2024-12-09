@@ -68,7 +68,7 @@ To reserve an external static IP in GCP, do the following:
 
 4. Extract the `*.tgz` file.
 
-5. Open the `override-demo.yaml` file in a file editor.
+5. Open the `values.yaml` file in a file editor.
 
 6. Add your external static IP address in the following fields.
 
@@ -88,7 +88,7 @@ To reserve an external static IP in GCP, do the following:
        # --- Enable Nginx ingress controller gateway
        enabled: true
        annotations: {}
-       loadBalancerIP: 34.136.145.137
+       loadBalancerIP: xx.xx.xx.xx
        className: "harness"
        loadBalancerEnabled: true
        useSelfSignedCert: false
@@ -116,7 +116,7 @@ To reserve an external static IP in GCP, do the following:
 11. Run the following from your terminal.
 
     ```
-    helm install <YOUR_RELEASE_NAME> <path to Harness directory> -n <YOUR_NAMESPACE_NAME> -f override.demo.yaml
+    helm install <YOUR_RELEASE_NAME> <path to Harness directory> -n <YOUR_NAMESPACE_NAME> -f override-demo.yaml
     ```
 
     for example:
@@ -177,7 +177,7 @@ To create your test cluster in GKE using the gcloud CLI, do the following:
 
 2. Retrieve and extract the latest [Harness Helm charts](https://github.com/harness/helm-charts/releases). The harness charts will look like `harness-<version_number>`.
 
-3. Open the `harness/override-demo.yaml` file in any editor, and modify the following values.
+3. Open the `harness/values.yaml` file in any editor, and modify the following values.
 
    | Key                       | Value     |
     | ----------------------------------- | --------------------- |
