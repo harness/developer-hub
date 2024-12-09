@@ -1,15 +1,15 @@
 ---
 title: What's supported in Harness Open Source Gitspaces
-description: Lists the git providers supported in Gitspaces.
+description: Know more about the various providers supported by Harness Open Source Gitspaces.
 sidebar_label: What's Supported
 sidebar_position: 2
 ---
 
-Gitspaces are pre-configured, ready-to-use development environments that can be created in a few seconds, giving developers enormous flexibility and accelerating their day to day workflows. 
+Gitspaces are on-demand, pre-configured, secure remote development environments (Gitspaces™) that reduce toil in the development inner loop and make developers happy.
 
-We currently support the Git providers and IDEs mentioned below.
+We currently support the following Git providers and IDEs:
 
-## Git providers
+## Git Providers
 
 1. **Harness Open Source** public and private repositories
 2. **GitHub** public repositories
@@ -24,7 +24,7 @@ To create Gitspaces for **private repositories** on GitHub, Bitbucket, or GitLab
 
 ## IDEs
 
-1. **VS Code Desktop** (via VS Code Plugin)
+1. **VS Code Desktop** (via [VS Code Plugin](/docs/open-source/gitspaces/ide's/vs-code-desktop.md))
 2. **VS Code Browser** 
 
 

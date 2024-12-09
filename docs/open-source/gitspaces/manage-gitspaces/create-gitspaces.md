@@ -1,6 +1,7 @@
 ---
 title: How to Create a Gitspace
-sidebar_position: 2
+sidebar_position: 1
+description: Learn more about how to create a new Gitspace.
 sidebar_label: Create Gitspaces
 ---
 
