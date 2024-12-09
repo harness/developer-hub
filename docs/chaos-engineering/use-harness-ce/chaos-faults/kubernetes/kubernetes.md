@@ -689,6 +689,21 @@ It tests the application's resilience to limited or slow network bandwidth.
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Redis cache limit
+
+Redis cache limit fault limits the amount of memory used by a Redis cache and restores it after the chaos duration.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+Redis cache limit determines the resilience of Redis-dependant applications on frequent cache misses that occur due to a low cache size.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod API Block
 
 Pod API block is a Kubernetes pod-level chaos fault that blocks the api requests for the ingress and egress traffic.
