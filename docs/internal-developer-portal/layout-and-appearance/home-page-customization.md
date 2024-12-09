@@ -85,6 +85,14 @@ The numbers displayed at the top, such as "15 Created," "1 Review Requests," and
 
 Currently, the "My PRs" card only supports GitHub as a data source. Support for Harness Code Repository is coming soon. Other platforms, such as GitLab, Azure, and Bitbucket, are not yet supported. Let us know if you’d like to see support for these platforms in the future!
 
+#### 2. Harness Code Repository
+
+![](./static/pull-request-card-hcr.png)
+
+The Harness Code Repo (HCR) Pull Request Card provides a quick overview of pull requests related to your work. It consolidates PRs from all repositories you have access to, whether public or private, across multiple organizations. Unlike other integrations, the HCR Pull Request Card does not require any additional setup. Once enabled on your Developer Homepage, it seamlessly fetches PR data from the Harness Code Repo without any external sign-in or configuration steps.
+
+The numbers displayed at the top, such as "0 Created" and "1 Review Requests," reflect only open pull requests, although the card also includes information about closed pull requests, as shown under the "Closed" tab.
+
 ### My Tasks Card
 
 #### 1. JIRA
