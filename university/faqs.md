@@ -19,6 +19,7 @@ This FAQ page is designed to assist customers who are experiencing common issues
 - [Requesting Accommodations for Exams ](#requesting-accommodations-for-exams)
 - [Retakes for Exams ](#paid-exam-retakes)
 - [Inquires about Instructor-Led Training ](#inquiries-about-instructor-led-training)
+- [Partners ](#partners)
 - [Contact Information](#contact-information)
 
 ---
@@ -132,6 +133,13 @@ Instructor-Led Training has tiers of costs depending on format. All ILTs has acc
 
 You can leverage your [Harness Service Catalog Dollars](https://www.harness.io/legal/service-catalog-dollars) for payment
 of ILTs or purchase via SKU or for virutal online via SkillJar. 
+
+---
+
+## Partners
+If you are a Harness Partner, you should access Harness Educational Material through 
+the [Partner Portal](https://www.harness.io/partners). Can directly [Sign in](https://partners.harness.io/English/)
+or [Sign up](https://partners.harness.io/prm/English/s/applic).
 
 ---
 

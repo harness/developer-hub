@@ -398,6 +398,24 @@ Stressing the disk with continuous and heavy I/O can degrade the reads and write
 </FaultDetailsCard>
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
+  
+### Pod JVM CPU stress
+
+Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kubernetes pod by consuming excessive CPU threads of the JVM.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Tests the system's ability to handle high payloads.
+- Evaluates the application's behavior in high-stress cases.
+- Induces CPU consumption and exhaustion on the target Java process JVM executing in a K8s pod.
+- Simulates a lack of CPU threads for processes running on the application, which degrades their performance.
+- Simulates application slowness due to CPU starvation.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
 
 ### Pod JVM modify return
 
@@ -405,7 +423,7 @@ Pod JVM modify return modifies the return value of a method in a Java applicatio
 
 <Accordion color="green">
 <summary>Use cases</summary>
-
+  
 - Helps test the functionality of snippets of code by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations.
 - Helps obscure or redact personally identifiable information (PII), such as email addresses or phone numbers, before logging or transmitting the data for security and privacy compliance.
 - Determines how efficiently an application recovers and returns to normalcy.

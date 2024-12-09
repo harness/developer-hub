@@ -200,6 +200,12 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod JVM CPU stress",
+    description:"Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kubernetes pod by consuming excessive CPU threads of the JVM.",
+    tags: ["pod", "jvm", "cpu"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod JVM modify return",
     description:"Pod JVM modify return modifies the return value of a method in a Java application executing on a Kubernetes pod, for a specific duration.",
     tags: ["pod", "jvm"],

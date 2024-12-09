@@ -5,7 +5,7 @@ redirect_from:
   - /docs/chaos-engineering/chaos-faults/linux/linux-api-latency
 ---
 import Ossupport from './shared/note-supported-os.md'
-import FaultPermissions from './shared/fault-permissions.md'
+import ApiChaosFaultPermissions from './shared/api-chaos-fault-permissions.md'
 
 Linux API latency injects API request and response latency into a Linux machine by starting proxy server and redirecting the traffic through it. It induces API call latency that adds a time delay before sending a response.
 
@@ -19,7 +19,7 @@ Linux API latency:
 
 <Ossupport />
 
-<FaultPermissions />
+<ApiChaosFaultPermissions />
 
 ### External packages
 This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
