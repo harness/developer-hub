@@ -1,6 +1,6 @@
 ---
-title: MTK usage and comparing counts
-sidebar_label: MTK usage and comparing counts
+title: Naming event types
+sidebar_label: Naming event types
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
