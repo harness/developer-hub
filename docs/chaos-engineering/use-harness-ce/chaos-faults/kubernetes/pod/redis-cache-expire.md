@@ -90,6 +90,6 @@ metadata:
           value: ""
         - name: EXPIRY_OPTION
           value: ""
-        - name: SECRET_FILE_PATH
-          value: ""
+        - name: SECRET_FILE_PATH  #if authentication required
+          value: /tmp/redis-secret.yaml
 ```
