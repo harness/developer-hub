@@ -49,7 +49,7 @@ export const featureList: CardItem[] = [
     module: MODULES.iacm,
     icon: "img/icon_iacm.svg",
     description: <>Manage your infrastructure with ease.</>,
-    link: "docs/category/get-started-with-iacm",
+    link: "docs/infra-as-code-management/get-started-with-iacm",
     type: [docType.Documentation],
   },
   {
