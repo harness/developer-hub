@@ -17,6 +17,35 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 :::
 
+## December 2024
+
+### Version 0.38.0
+
+<!-- December 09, 2024 -->
+
+#### New features and enhancements
+
+1. Added a new step in the IDP stage to update catalog metadata, enabling native support for the [Catalog Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api) within pipelines.[IDP-3603]
+
+![](./static/update-catalog-property.png)
+
+2. The "My Pull Requests card" on the Developer Homepage now supports **Harness Code Repository** in addition to GitHub, with no configuration required for Harness Code Repository. [IDP-4184]
+
+![](./static/harness-code-repository.png)
+
+#### Bug fixes
+
+1. Fixed an issue with the `fetch scores by entity` API to ensure consistent results regardless of entity UID casing. [IDP-4310]
+
+2. Fixed an issue where last names with spaces were misclassified as part of the first name when using `<+last_name>` in the Homepage headers. Names are now correctly parsed using a comma as the delimiter. [IDP-4017]
+
+3. Resolved performance and parsing issues when ingesting multiple `harness.io/pipelines` values through the Catalog Ingestion API by increasing column size to 1023. [IDP-3973]
+
+4. Fixed an issue with scorecard checks failing for certain numeric string values in JEXL expressions by ensuring proper handling of numbers and float values. [IDP-3939]
+
+5. Fixed an issue where navigating to Policies via the UI flow `IDP -> Admin -> Project Settings -> Policies` resulted in a "Page Not Found" error. [IDP-3875]
+
+
 ## November 2024
 
 ### Version 0.37.0
