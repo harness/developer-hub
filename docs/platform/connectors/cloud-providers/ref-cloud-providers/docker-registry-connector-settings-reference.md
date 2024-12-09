@@ -17,7 +17,7 @@ This topic provides settings and permissions for the Docker connector. You can u
 
 * **Docker registry rate limits:** Harness is restricted by the limits of the Docker repo, such as [Docker Hub limits](https://docs.docker.com/docker-hub/download-rate-limit/) for pulling Docker images from Docker repos.
 * **Docker Registries in Cloud Platforms:** The Docker connector is platform-agnostic and can be used to connect to any Docker container registry. Harness also provides first class support for registries in AWS and GAR through [AWS connectors](../add-aws-connector.md) and [Google Cloud Platform (GCP) connectors](../connect-to-google-cloud-platform-gcp.md).
-
+* **Docker base image connection rate limits:** Customers utilizing Docker as a Base Image Connector will need to consider enabling the Feature Flag `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR`, to utilize the defined Docker Connector for the Base Image Pull.
 :::
 
 ## Create a Docker connector
