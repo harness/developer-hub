@@ -74,6 +74,9 @@
       &.ff:hover {
         border-color: var(--mod-ff-200);
       }
+      &.ssca:hover {
+        border-color: var(--mod-ssca-200);
+      }
       &.sto:hover {
         border-color: var(--mod-sto-200);
       }
@@ -97,6 +100,9 @@
       }
       &.iacm:hover {
         border-color: var(--mod-iacm-200);
+      }
+      &.dbdevops:hover {
+        border-color: var(--mod-dbdevops-200);
       }
     }
     ul.docTypes {
