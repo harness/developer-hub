@@ -210,6 +210,18 @@ Policies and Policy Sets are saved at the Harness Account, Organization, or Proj
 
 ![](./static/harness-governance-overview-13.png)
 
+## Limits
+### Harness On Save Policies
+Harness OPA **On Save** changes will flag and advise customers of a conflict with a policy if the changes are made via UI.  However, if changes to the pipeline or environment are performed outside of the UI, for example, utilizing Harness's [remote pipelines through Git Experience](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/), or [Terraform Provisioning](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness/), customers can expect the following behavior
+
+* Changes that are in conflict with a policy will not be prevent a synchronization
+  * Harness implements a sync process so customers have the opportunity to resolve these issues from the Harness UI, where there are clear indicators of the issue
+* Any issues to an existing **On Save** policy can be seen in the UI, with the cautionary flag
+![](./static/policyviolation-flag.png)
+* Clicking on the flag will outline the policies that are in violation, and the direct issues can be further investigated.  Once changes are made, there is also the ability to re-validate the pipeline
+![](./static/policyviolation-policysetissue.png)
+* Administrators should consider creating a set of **On Run** policy sets to check that there are no violations during runtime.
+
 ## See also
 
 * [Harness Policy As Code Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
