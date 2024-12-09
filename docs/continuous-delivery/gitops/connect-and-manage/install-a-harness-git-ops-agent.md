@@ -226,12 +226,6 @@ In your cloud platform Kubernetes cluster you can see the agent workload:
 
 Now that you have the Harness GitOps Agent installed, running, and registered, you can configure the remaining components.
 
-### Default In-Cluster for Account-Level GitOps Agent
-
-When you create a GitOps agent at the account level, a default in-cluster is automatically created. This in-cluster is only visible on the Cluster page at the account level.
-- The default in-cluster is not visible at the organization or project level unless a project mapping is configured.
-- You cannot create another in-cluster at the account level since only one default in-cluster is allowed for an account-level GitOps agent.
-
 ## Argo CD and Harness project mapping
 
 Once you have installed the Agent, when you create Application, Cluster, or Repository in Harness project, Harness will create its own Argo CD project in the cluster and name it with a random string.
@@ -255,6 +249,12 @@ In addition, when you install the Harness GitOps Agent in your existing Argo CD 
 Also, whenever new entities are created in mapped Argo CD projects, they are added to Harness automatically.
 
 For steps on setting up the mapping and import, go to [Map existing Argo projects](/docs/continuous-delivery/gitops/connect-and-manage/multiple-argo-to-single-harness#map-existing-argo-projects).
+
+## Default In-Cluster for Account-Level GitOps Agent
+
+When you create a GitOps agent at the account level, a default in-cluster is automatically created. This in-cluster is only visible on the Cluster page at the account level.
+- The default in-cluster is not visible at the organization or project level unless a project mapping is configured.
+- You cannot create another in-cluster at the account level since only one default in-cluster is allowed for an account-level GitOps agent.
 
 ## Proxy support
 
