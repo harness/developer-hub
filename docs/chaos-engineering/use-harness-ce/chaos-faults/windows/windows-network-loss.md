@@ -47,7 +47,7 @@ Windows network loss:
       <tr>
         <td> DESTINATION_IPS </td>
         <td> IP addresses of the target destination services. You can specify multiple inputs as comma-separated values.</td>
-        <td> It is mutually exclusive with <code>DESTINATION_HOSTS</code> variable. For example, '0.8.0.8,192.168.5.6'. </td>
+        <td> It is mutually exclusive with <code>DESTINATION_HOSTS</code> variable. For example, '0.8.0.8,192.168.5.6'. For more information, go to <a href="#destination-ips"> destination IPs. </a></td>
       </tr>
     </table>
 

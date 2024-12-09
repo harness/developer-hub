@@ -309,7 +309,6 @@ Please read more on this in the following [Documentation](https://developer.harn
 ### Does Harness provide AWS SAM and Serverless.com manifest from Harness File Store?
 
 Yes, One can now download their AWS SAM & Serverless.com Manifests from the Harness File Store and AWS S3.
-This is provided behind the `FF: CDS_CONTAINER_STEP_GROUP_AWS_S3_DOWNLOAD`
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/manifest-sources-for-serverless-lambda).
 
 ### Is there a way to switch aws accounts while using native terraform step?

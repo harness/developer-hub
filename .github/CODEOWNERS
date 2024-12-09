@@ -278,7 +278,7 @@ src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
 src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness
 
 #FME Roadmap
-src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow
+src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
 
 #IDP Roadmap
 src/components/Roadmap/data/idpData.ts @Debanitrkl

@@ -1,6 +1,6 @@
 ---
 title: Deploy Kubernetes Custom Resources using CRDs
-description: Harness supports all Kubernetes default resources, such as Pods, Deployments, StatefulSets, DaemonSets, etc. For these resources, Harness supports steady state checking, versioning, displays instance…
+description: Harness supports all Kubernetes default resources, such as Pods, Deployments, DaemonSets, etc. For these resources, Harness supports steady state checking, versioning, displays instance…
 sidebar_position: 1000 
 helpdocs_topic_id: pmmfqqo1uh
 helpdocs_category_id: n03qfofd5w
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness supports all Kubernetes default resources, such as Pods, Deployments, StatefulSets, DaemonSets, etc. For these resources, Harness supports steady state checking, versioning, displays instances on Harness dashboards, performs rollback, and other enterprise features.
+Harness supports all Kubernetes default resources, such as Pods, Deployments, DaemonSets, etc. For these resources, Harness supports steady state checking, versioning, displays instances on Harness dashboards, performs rollback, and other enterprise features.
 
 In addition, Harness provides many of the same features for Kubernetes [custom resource](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) deployments using Custom Resource Definitions (CRDs). CRDs are resources you create that extend the Kubernetes API to support your application.
 
