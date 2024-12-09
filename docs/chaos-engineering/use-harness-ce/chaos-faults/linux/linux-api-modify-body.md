@@ -6,7 +6,7 @@ redirect_from:
 ---
 
 import Ossupport from './shared/note-supported-os.md'
-import FaultPermissions from './shared/fault-permissions.md'
+import ApiChaosFaultPermissions from './shared/api-chaos-fault-permissions.md'
 
 Linux API modify body modifies the API request and response body by replacing any portions that match a specified regular expression with a provided value. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 
@@ -20,7 +20,7 @@ Linux API modify body:
 
 <Ossupport />
 
-<FaultPermissions />
+<ApiChaosFaultPermissions />
 
 ### Optional tunables
 <table>

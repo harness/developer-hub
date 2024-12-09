@@ -56,7 +56,7 @@ For example, `account.agentId` for Account-level agents, `org.agentId` for Organ
 
 - The GitOps Applications landing page is now automatically refreshed, allowing newly created applications to appear in real-time without requiring manual refresh. (CDS-68662)
 
-- We have introduced the `allowEmptyCommit` field in the **GitOps Update Release Repo step**, enabling users to push an empty commit if desired. For more information, go to Harness [Update Release Repo step](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps/#update-release-repo-step). (CDS-103191)
+- We have introduced the `allowEmptyCommit` field in the **GitOps Update Release Repo step**, enabling users to push an empty commit if desired. Previously, the step failed if there were no changes in the commit. This enhancement is useful for setting up automated periodic PR pipelines. For more information, go to Harness [Update Release Repo step](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps/#update-release-repo-step). (CDS-103191)
 
 - Addressed and resolved all known critical vulnerabilities related to the GitOps Agent and GitOps Service. (CDS-102606)
 
@@ -64,10 +64,18 @@ For example, `account.agentId` for Account-level agents, `org.agentId` for Organ
 
 #### Fixed Issues
 
-- Previously: The agent_token field in the harness_platform_gitops_agent data source returned null, making it unusable for authentication validation. The issue is fixed. The agent_token field now correctly returns its value, and a new `isAuthenticated` field has been added to indicate the authentication status.(CDS-104468)
+- Previously, in the Harness Terraform Provider, the `agent_token` field in the `harness_platform_gitops_agent` data source returned null, making it unusable for authentication validation. The issue is fixed. The `agent_token` field now correctly returns its value, and a new `isAuthenticated` field has been added to indicate the authentication status. (CDS-104468)
 - The User Interface for buttons in the Repository settings of GitOps, such as **New Repository** and **Create Credential Template** lacked proper formatting. This issue is resolved, and the buttons are display properly. (CDS-103032)
 - Previously, GitOps agents were taking an excessive amount of time to reconnect after regenerating and reapplying YAMLs, causing inconsistencies in reconnection timelines. This issue is resolved. (CDS-103262)
 - The Resource Tree API calls were failing because the application name was missing from the query parameters. This issue is resolved. (CDS-104792)
+
+### Version 1.68.4
+
+#### Fixed Issues
+
+- User was not able to provide timeout for Service Now approval step as Input. This issue is fixed now. (PIPE-23742, ZD-73247)
+- When using blue green deployment step in a template, AWS load balancer dropdown was not getting populated. This issue is fixed now. (CDS-104478, ZD-73560)
+- Previously, the Shell Script Provisioner step for PDC infrastructure failed when using runtime inputs for `hostAttributes`. This issue is fixed now. (CDS-104659)
 
 ## November
 
@@ -82,6 +90,8 @@ For example, `account.agentId` for Account-level agents, `org.agentId` for Organ
 - Previously, GitOps steps like UpdateReleaseRepo, MergePR, and RevertPR were delayed due to locking on the tokenRef to prevent GitHub rate limits. A new Disable `Git Restraint` option now allows users to bypass this locking for faster execution. (CDS-101882, ZD-71430,72936)
 
 - Harness now supports Post-Deployment Rollback for services at both the Account and Organisation levels. This feature is behind a feature flag `CDS_SVC_ENV_DASHBOARD_FOR_ACCOUNT_AND_ORG_LEVEL`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-94527)
+
+- Harness now supports fetching and using the latest successfully deployed tag for a service in the Harness pipeline using the expression `<+lastSuccessfulDeployed.tag>`. For more information, go to Harness [Runtime Input for the Latest Artifact Tag](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#runtime-input-for-the-latest-artifact-tag). (CDS-101173)
 
 #### Fixed Issues
 

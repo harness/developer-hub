@@ -21,7 +21,7 @@ Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/ca
 | <a href="/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics">Key Concepts in DORA metrics</a> | Learn about the basic concepts of DORA Metrics on Harness SEI | [Click here](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics) |
 | <a href="#engineering-team-use-cases-for-measuring-dora-metrics">Engineering Team Use Cases for Measuring DORA Metrics</a> | Learn how engineering teams can utilize DORA metrics | [Click here](#engineering-team-use-cases-for-measuring-dora-metrics) |
 | <a href="#dora-under-the-hood">DORA under-the-hood</a> | Learn how Harness SEI correlates data across different tools and services | [Click here](#dora-under-the-hood) |
-| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profile">Create DORA Profile</a> | Learn how you can create a workflow profile to measure the DORA Metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profile) |
+| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview">Create DORA Profile</a> | Learn how you can create a workflow profile to measure the DORA Metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview) |
 | <a href="/docs/software-engineering-insights/insights/dora-insight">Create DORA Insight</a> | Step by Step guide to create a DORA Insight | [Click here](/docs/software-engineering-insights/insights/dora-insight) |
 | <a href="/docs/category/dora-calculations">DORA Metrics Calculation</a> | How are the different DORA metrics calculated on Harness SEI | [Click here](/docs/category/dora-calculations) |
 | <a href="#best-practices--recommendations">Best Practices & Recommendations for measuring DORA Metrics</a> | Recommendations to improve your DORA Metrics reporting | [Click here](#best-practices--recommendations) |
@@ -184,11 +184,11 @@ To learn more, go to [SCM Commits Calculation on Harness SEI](/docs/software-eng
 
 A **DORA Insight** can essentially be defined as a dashboard with a combination of reports i.e. widgets displaying essential information on various DORA metrics such as [DORA Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#lead-time-for-changes), [Deployment Frequency](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#deployment-frequency) etc configured on the profile level related to your developer's activity.
 
-DORA Reports are available for configuration only of you already have an associated profile [DORA profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile) (i.e. DORA type Workflow Profile) configuration associated with the **Collection** under which the **Insight** is created. 
+DORA Reports are available for configuration only of you already have an associated profile [DORA profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/dora-profile) (i.e. DORA type Workflow Profile) configuration associated with the **Collection** under which the **Insight** is created. 
 
 Review the following resources to learn more about defining and managing DORA Profiles and DORA Insight on Harness SEI:
 
-* [Configure and Manage a DORA Profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-type-workflow-profile)
+* [Configure and Manage a DORA Profile]/docs/software-engineering-insights/sei-profiles/workflow-profiles/dora-profile)
 * [Create and Manage a DORA Insight](/docs/software-engineering-insights/insights/dora-insight)
 
 ## Best Practices & Recommendations

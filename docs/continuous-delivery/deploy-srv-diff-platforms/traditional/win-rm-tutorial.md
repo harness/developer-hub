@@ -429,6 +429,132 @@ For Microsoft Azure or AWS:
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
 
+## Troubleshooting
+
+### PowerShell script fail with an "Access is denied" error during execution in a WinRM session?
+
+A PowerShell script that includes commands such as New-Item fails with "Access is denied" when executed during a WinRM session. This typically occurs while writing to a network path due to insufficient permissions or session-related restrictions.
+
+Resolution:
+
+Grant Necessary Permissions: Use Access Control List (ACL) commands to grant full control to the user on the shared folder:
+
+```shell
+$acl = Get-ACL -Path ShareFolderPath
+$AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("USERNAME", "FullControl", "Allow")
+$acl.SetAccessRule($AccessRule)
+$acl | Set-Acl -Path ShareFolderPath
+```
+
+Establish Network Path Connection: Use NET USE to establish a connection to the shared resource:
+
+```
+NET USE "ShareFolderPath" /user:USERNAME PASSWORD
+```
+
+### Shell script step in Harness succeed even though the script reports an error
+
+The shell script step in Harness succeeds despite the script encountering an error and returning a non-zero exit code
+
+Non-Terminating Errors: PowerShell treats some errors as non-terminating by default. These do not trigger failure in the script unless explicitly converted to terminating errors.
+Exit Code Handling: Without proper handling, the script may not propagate the correct exit code to Harness, causing the step to succeed.
+
+Resolution:
+
+- Force Termination on Errors:
+  Add the following line at the beginning of the script to turn non-terminating errors into terminating ones:
+
+  ```shell
+  $ErrorActionPreference = [System.Management.Automation.ActionPreference]::Stop
+  ```
+
+- Use $LASTEXITCODE:
+  Append the following line to propagate the exit code from subcommands:
+
+  ```
+  exit $LASTEXITCODE
+  ```
+
+
+- Invoke Commands with -ErrorAction Stop:
+  Add -ErrorAction Stop to commands that might generate non-terminating errors to ensure they trigger catch 
+  
+  ```
+  Invoke-Command -ScriptBlock { # Your command } -ErrorAction Stop
+  ```
+
+### WinRM setup failing with an "Authorization loop detected" error
+
+A WinRM connection to a remote machine fails with the error:
+`Authorization loop detected on Conduit "{http://schemas.dmtf.org/wbem/wsman/1/wsman.xsd}WinRmPort.http-conduit" on URL "http://<host>:5985/wsman" with realm "WSMAN"`
+
+Resolution:
+
+Validate Group Policy Settings:
+
+1. Open the Group Policy Editor (gpedit.msc).
+2. Navigate to the following path:
+  - Computer Configuration > Administrative Templates > Windows Components > Windows Remote Management > WinRM Service.
+3. Enable Allow remote server management through WinRM.
+4. Set the IPv4/IPv6 filter to *.
+5. Ensure the Windows Remote Management predefined rule is enabled under:
+  - Windows Firewall with Advanced Security > Inbound Rules.
+6. Enable Windows Remote Shell.
+
+Test Connectivity: Run these commands to verify connectivity:
+
+```shell
+Test-WsMan <remote_host>
+Test-NetConnection -ComputerName <remote_host> -Port 5985
+```
+
+### PowerShell Command Does Not Capture Exit Code in Harness
+
+When running a script in Harness using PowerShell, the script executes and completes successfully both manually and locally on the destination server. However, in the Harness pipeline, the script finishes execution, but Harness does not recognize the exit and eventually times out.
+
+Resolution:
+
+Modify the Gradle Command
+
+Disable the Gradle Daemon to ensure the script provides a proper exit code.
+Use `$LASTEXITCODE` in PowerShell to explicitly exit the script with the correct status.
+Updated Script:
+
+```
+$ErrorActionPreference = [System.Management.Automation.ActionPreference]::Stop
+
+cd F:\GetPaidPerf\src\gp-qa-performance\jmeter\
+gradle createDist -PchecksumIgnore --stacktrace --no-daemon
+
+exit $LASTEXITCODE
+```
+- `--no-daemon`: Prevents Gradle from running in daemon mode, ensuring a proper exit code is returned.
+- `exit $LASTEXITCODE`: Propagates the exit code from the gradle command to Harness.
+
+### Output Variables Not Displayed in PowerShell Scripts
+
+Output variables in PowerShell scripts are not being displayed properly, particularly when using the WinRM protocol in a Windows environment. This issue may arise if the environment variables are not correctly set in the PowerShell script.
+
+Resolution:
+To ensure output variables are properly captured and displayed, set environment variables explicitly within your PowerShell script using the following syntax:
+
+```
+$env:var_name = "var_value"
+```
+
+### Curl Command Not Working Due to Carriage Return Characters
+
+The curl command was failing in Shell and Bash scripts with errors such as:
+`sh: : not found` or `bash: $'\r': command not found`.
+
+This was caused by the presence of carriage return (\r) characters in the script, likely introduced by the editor used for copying the script content.
+
+Resolution:
+
+1. Inspect the script in the YAML file for unwanted carriage return characters (`\r`).
+2. Remove the `\r` characters from the script manually.
+3. Re-run the pipeline.
+
 ## FAQs
 
 For frequently asked questions about traditional deployments in Harness, go to [SSH and WinRM deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-winrm-faqs).

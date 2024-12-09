@@ -38,6 +38,13 @@ const sidebars = {
           id: "feature-flags",
           className: "sidebar-ff",
         },
+         //fme
+         {
+          type: "link",
+          label: "Feature Management & Experimentation",
+          href: "https://arcade.split.io/",
+          className: "sidebar-fme",
+        },
         //CCM
         {
           type: "doc",

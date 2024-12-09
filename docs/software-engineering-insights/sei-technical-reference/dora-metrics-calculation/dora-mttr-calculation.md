@@ -9,7 +9,7 @@ sidebar_position: 25
 
 Mean Time to Restore (MTTR) measures the average time it takes to resolve an incident or recover from a service failure and restore the normal operational state. 
 
-To monitor Mean Time to Restore (MTTR) in SEI, you must set up a [DORA type Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile), and then add the **DORA Mean Time to Restore** widget to your Insight.
+To monitor Mean Time to Restore (MTTR) in SEI, you must set up a [DORA type Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/dora-profile), and then add the **DORA Mean Time to Restore** widget to your Insight.
 
 To learn more, go to [DORA Reports](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics)
 
