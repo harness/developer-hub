@@ -101,6 +101,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Previously, when users encountered the **Too many files open** error while running pipelines, insufficient logs made it challenging to debug the issue. Additional logs have been added to help triage and identify the root cause of this issue. (PIPE-23686, ZD-72845,73732)
 
+### Version 24.11.84502 <!--  December 4, 2024 -->
+
+#### Hotfix
+
+- Removed CVE-2024-29857 & CVE-2024-30172 from delegate image. (PL-58901)
+
 ### Version 24.11.84501 <!-- December 3, 2024 -->
 - Implemented functionality to expose Custom CF CLI variables while executing any CF CLI commands
 
