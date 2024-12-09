@@ -418,6 +418,24 @@ Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kube
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM method latency
+
+Pod JVM method latency slows down the Java application executing on Kubernetes pod by introducing delays in executing the method calls.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application.
+- Tests the system's ability to handle heavy payloads.
+- Evaluates the application's behavior in high-stress cases.
+- Determines how quickly an application returns to normalcy after the delay.
+- Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
+  
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod memory hog exec
 
 Pod memory hog exec is a Kubernetes pod-level chaos fault that consumes memory resources on the application container in megabytes.
