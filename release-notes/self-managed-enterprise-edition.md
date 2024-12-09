@@ -629,6 +629,20 @@ gsutil -m cp \
 
 - Adds the functionality to block all inbound rules for Windows global blackhole chaos. (CHAOS-6603)
 
+:::important
+If you are upgrading to SMP version 0.22 from a version earlier than 0.22, update the following overrides before starting the upgrade process. These updates are essential to ensure a smooth and successful upgrade.
+
+```yaml
+chaos-manager:
+    jobs:
+      chaos_db_upgrade:
+        enabled: true
+        slackURLToNotify: 'J25vLXVybAo='
+        previousVersion: "1.30.0"
+        currentVersion: "1.47.0"
+```
+:::
+
 #### Cloud Cost Management
 
 - Export Perspective Chart as CSV: We now support exporting the Perspective chart as a CSV, allowing users to easily extract and analyze data from the chart. (CCM-18812)
