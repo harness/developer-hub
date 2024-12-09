@@ -25,13 +25,13 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 #### New features and enhancements
 
-1. Added a new step in the IDP stage to update catalog metadata, enabling native support for the [Catalog Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api) within pipelines.[IDP-3603]
+1. The "My Pull Requests card" on the Developer Homepage now supports **Harness Code Repository** in addition to GitHub, with no configuration required for Harness Code Repository. [IDP-4184]
+
+![](./static/idp-hcr-card.png)
+
+2. Added a new step in the IDP stage to update catalog metadata, enabling native support for the [Catalog Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api) within pipelines.[IDP-3603]
 
 ![](./static/update-catalog-property.png)
-
-2. The "My Pull Requests card" on the Developer Homepage now supports **Harness Code Repository** in addition to GitHub, with no configuration required for Harness Code Repository. [IDP-4184]
-
-![](./static/harness-code-repository.png)
 
 #### Bug fixes
 
