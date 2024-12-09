@@ -1,0 +1,11 @@
+{
+  "label": "CircleCI",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "title": "CircleCI Integrations"
+  },
+  "customProps": {}
+}

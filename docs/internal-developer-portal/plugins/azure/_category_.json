@@ -1,0 +1,11 @@
+{
+  "label": "Azure DevOps",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "title": "Azure DevOps Integrations"
+  },
+  "customProps": {}
+}

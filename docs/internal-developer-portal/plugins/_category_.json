@@ -1,11 +1,11 @@
 {
-  "label": "Plugins",
+  "label": "Plugins & Integrations",
   "collapsible": "true",
   "collapsed": "true",
   "position": 50,
   "link": {
     "type": "generated-index",
-    "title": "Plugins in the Internal Developer Portal"
+    "title": "Integrations in the Internal Developer Portal"
   },
   "customProps": {}
 }

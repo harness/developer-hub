@@ -1,0 +1,11 @@
+{
+  "label": "GitHub Plugins",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 11,
+  "link": {
+    "type": "generated-index",
+    "title": "Available GitHub Plugins"
+  },
+  "customProps": {}
+}

@@ -1,0 +1,11 @@
+{
+  "label": "FireHydrant",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "title": "FireHydrant Integrations"
+  },
+  "customProps": {}
+}
