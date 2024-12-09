@@ -34,7 +34,7 @@
     "@netlify/functions": "^2.7.0",
     "@segment/analytics-next": "^1.70.0",
     "clsx": "^2.0.0",
-    "docusaurus-plugin-sass": "^0.2.5",
+    "docusaurus-plugin-sass": "^0.2.6",
     "fs-extra": "^11.2.0",
     "jq-web": "^0.5.1",
     "lottie-react": "^2.4.0",
