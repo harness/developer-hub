@@ -21,10 +21,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 
-
-
-
-## November 2024
+## December 2024
 
 :::note
 
@@ -41,6 +38,17 @@ This update also includes a transition to M2 machines, offering improved perform
 If you have any questions or need assistance with the whitelisting process, please contact Harness Support.
 
 :::
+
+
+### Version 1.57
+<!-- 2024-12-02 -->
+- Resolved an issue with ECR image links in the artifacts tab for the "Build and Push to ECR" step by adding the missing "/_" separator, ensuring correct functionality. (CI-15089, ZD-72329).
+- Resolved an issue where OPA enforcement in CI stages didn't work properly in the Self-Managed Enterprise Edition (CI-14840, ZD-70943).
+
+
+
+## November 2024
+
 
 
 ### Version 1.56
