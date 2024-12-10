@@ -358,6 +358,10 @@ spec:
         url: YOUR PIPELINE URL HERE
         inputset:
           owner: ${{ parameters.owner }}
+          instancetype: ${{ parameters.instance_type }}
+          ami: ${{ parameters.ami }}
+          subnet: ${{ parameters.subnet }}
+          vpc: ${{ parameters.vpc }}
         apikey: ${{ parameters.token }}
   output:
     links:
@@ -438,5 +442,5 @@ Use the URL to the `workflow.yaml` created above and register it by using the sa
 
 ## Use the Self Service Workflows
 
-Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization!
+Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the EC2 instance provisioned.
 
