@@ -24,7 +24,7 @@ If your Artifact Repository is hosted on-premises within your infrastructure, we
 After adding the connector, copy its identifier, as it will be required to configure your Gitspace.
 
 ## Configuring Gitspaces
-Once you have successfully added an Artifact Repository connector, you can configure your Gitspace setup. This involves adding the private Docker image and artifact repository details to your ```devcontainer.json``` file. [(Learn more about devcontainer.json file here)](.docs/cloud-development-environments/deep-dive-into-gitspaces/gitspace-configuration.md)
+Once you have successfully added an Artifact Repository connector, you can configure your Gitspace setup. This involves adding the private Docker image and artifact repository details to your ```devcontainer.json``` file. [(Learn more about devcontainer.json file here)](/docs/cloud-development-environments/deep-dive-into-gitspaces/gitspace-configuration.md)
 
 Here’s what you need to add to your ```devcontainer.json``` file:
 - ```image```: Private Docker image URL

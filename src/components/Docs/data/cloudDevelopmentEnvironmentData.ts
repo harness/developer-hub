@@ -81,7 +81,7 @@ import { MODULES } from "@site/src/constants";
           title: "Private Docker Images",
           module: MODULES.cde,
           description: "Learn more about how you can pull and use private docker images for your Gitspaces.",
-          link: "/docs/cloud-development-environments/features-of-gitspaces/private-docker-images.md"
+          link: "/docs/cloud-development-environments/features-of-gitspaces/private-docker-images"
         },
         {
           title: "Auto-Stopping",
@@ -127,19 +127,19 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.cde,
           description:
             "Get started with using the runArgs property to configure your Gitspace.",
-          link: "/docs/cloud-development-environments/develop-using-cde/run-args.md",
+          link: "/docs/cloud-development-environments/develop-using-cde/run-args",
         },
         {
           title: "User Configuration",
           module: MODULES.cde,
           description: "Learn more about how you can configure containerUser and remoteUser in your Gitspace.",
-          link: "/docs/cloud-development-environments/develop-using-cde/container-remote-user.md",
+          link: "/docs/cloud-development-environments/develop-using-cde/container-remote-user",
         },
         {
           title: "Pre-Installed Extensions",
           module: MODULES.cde,
           description: "Learn more about how you can setup pre-installed extensions for your Gitspaces.",
-          link: "/docs/cloud-development-environments/develop-using-cde/extensions.md",
+          link: "/docs/cloud-development-environments/develop-using-cde/extensions",
         }
       ],
     },
