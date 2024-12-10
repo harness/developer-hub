@@ -471,8 +471,18 @@ To get the exact uploaded file name, navigate to the `Output` tab of the upload 
 To download the uploaded file, use the following cURL command:
 
 ```
-curl --location --request GET 'https://app.harness.io/gateway/pipeline/api/input-file/file/PLAN_EXECUTION_ID?accountIdentifier=ACCOUNT_IDENTIFIER&nodeExecutionId=NODE_EXECUTION_ID&fileName=FILE_NAME' \
---header 'x-api-key: PAT_TOKEN'
+curl --location 'https://app.harness.io/gateway/pipeline/api/input-file/download-file?accountIdentifier=ACCOUNT_IDENTIFIER&filePath=accountId&filePath=pipelineExecutionId/nodeExecutionId/fileName.extension'
+
+```
+
+Parameters:
+
+- **accountIdentifier**: Required – Specifies the account ID.
+
+- **filePath**: Required – The file path should follow this format:
+
+```
+accountId/runtimeFileInputData/pipelineExecutionId/nodeExecutionId/fileName.extension
 ```
 
 :::note
@@ -482,6 +492,7 @@ curl --location --request GET 'https://app.harness.io/gateway/pipeline/api/input
 2. Each individual file size must not exceed 50 MB.
 3. File names with spaces are currently not supported.
 4. Supported file types include: `jpg`, `jpeg`, `png`, `pdf`, `xls`, `csv`, `xlsx`, `txt`, `json`, `yaml`, `xml`, and `html`.
+5. The total number of upload steps per pipeline cannot exceed two. This includes using templates, saving directly as YAML, or saving through the UI.
 :::
 
 ### Use the default value instead of failing
