@@ -60,7 +60,7 @@ Static Password: A static password is maintained for the remoteUser in case the 
 :::
 
 :::info
-We assume that the user has a valid home directory. For the root user: /root and For non-root users: /home/<username>
+We assume that the user has a valid home directory. For the root user: /root and For non-root users: /home/username
 :::
 
 ## Verifying the Setup

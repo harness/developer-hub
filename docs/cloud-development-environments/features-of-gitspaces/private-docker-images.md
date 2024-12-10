@@ -68,8 +68,8 @@ Currently, you can pull images from only one artifact repository connector per G
 
 ### Understanding the Image URL
 You can reference your images in the ```devcontainer.json``` file using the URL from the artifact repository connector where the image is hosted:
-- For Docker Registry: <URL format>
-- For JFrog Artifactory: <URL format>
+- For Docker Registry: URL format
+- For JFrog Artifactory: URL format
 
 For more details, [please refer to the documnentation here](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference). 
 
