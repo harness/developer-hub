@@ -22,7 +22,7 @@ To enable port forwarding:
 For instance, in a Node.js project, you'll have to update the host address and port number in your server.js file, as it serves as the entry point for your application.
 
 ### Adding “forwardPorts” to devcontainer.json
-You can specify which ports to forward using the forwardPorts property in the ```devcontainer.json``` file. 
+You can specify which ports to forward using the forwardPorts property in the ```devcontainer.json``` file. ([Read more about the specification here.](https://containers.dev/implementors/json_reference/))
 
 Here's an example configuration:
 ```

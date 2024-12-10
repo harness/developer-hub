@@ -7,19 +7,19 @@ redirect_from:
   - /docs/cloud-development-environments/develop-using-cde/run-args.md
 ---
 
-This guide explains how to use the runArgs property in the devcontainer.json schema to configure your Gitspace.
+This guide explains how to use the **```runArgs```** property in the ```devcontainer.json``` schema to configure your Gitspace.
 
-## What Is runArgs?
+## What is "runArgs"?
 The **```runArgs```** property is used to specify Docker CLI arguments that should be passed to the docker run command when running the Gitspace.
 
-The docker run command is used for pulling the CDE image (as defined in the image property of ```devcontainer.json```), creating and starting the development container from that image, and executing commands within the container. The ```runArgs``` property (defined in ```devcontainer.json```) is an array of arguments for the docker run command, enabling developers to customize the behavior of the development container.
+The docker run command is used for pulling the CDE image (as defined in the image property of ```devcontainer.json```), creating and starting the development container from that image, and executing commands within the container. The ```runArgs``` property (defined in ```devcontainer.json```) is an array of arguments for the ```docker run``` command, enabling developers to customize the behavior of the development container. ([Read more about the specification here.](https://containers.dev/implementors/json_reference/))
 
 ## Adding runArgs to devcontainer.json
 To include the runArgs property in your ```devcontainer.json``` configuration, use the following format:
 ```
 "runArgs": ["--argument", "value", ...]
 ```
-### Examples:
+### Examples
 #### Single Value Argument
  If the argument has a single value, you can use a pair within the same array parameter, separated by an =:
 ``` 
@@ -35,16 +35,16 @@ In this example:
 "runArgs": ["--restart=no", "--security-opt", "seccomp=unconfined"]
 ```
 - --restart has a single value (no).
-- --security-opt uses a definition with multiple options.
+- --security-opt uses a definition with different options.
 
 ## Verifying the runArgs Setup
-After adding the runArgs property, you can verify the setup by reviewing the container logs during the creation of a Gitspace via the Harness UI.
+After adding the runArgs property, you can verify the setup by reviewing the **container logs** during the creation of a Gitspace via the Harness UI.
 
 ![](./static/runargs-1.png)
 ![](./static/runargs-2.png)
 
 ## Supported Docker CLI Arguments
-As of now, the runArgs property supports the following Docker CLI arguments:
+As of now, the runArgs property supports the following [Docker CLI arguments](https://docs.docker.com/reference/cli/docker/container/run/):
 | **Argument** | 
 | :---------------- | 
 | --add-host        |  
@@ -110,14 +110,14 @@ As of now, the runArgs property supports the following Docker CLI arguments:
 | -u, --user
 
 
-### Allowed and Blocked Values:
+### Allowed and Blocked Values
 For some arguments, a predefined list of allowed and blocked values is enforced:
 - **Allowed Values**: Values explicitly supported for a specific argument.
 - **Blocked Values**: Values that are restricted for a specific argument.
 
-#### Current Restrictions:
-- **Network**: Blocked values are host and none.
-- **Label**: Blocked value is gitspace\.remote\.user.
+#### Current Restrictions
+- **Network**: Blocked values are ```host``` and ```none```.
+- **Label**: Blocked value is ```gitspace\.remote\.user```.
 
 
 
