@@ -22,6 +22,26 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 :::
 
+## December 2024
+
+### Version 202412.1
+
+<!-- December 09, 2024 -->
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### New features and enhancements
+
+* Added support for configuring the [Azure DevOps](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops), [Harness CI/CD](/docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd) & [GitLab](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab) integrations using multiple personal access tokens / API Keys for multiple service accounts. This helps prevent rate-limiting issues when ingesting large volumes of data (SEI-9225)
+* We’ve enhanced the [GitLab integration’s](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab) ingestion logic to exclude file content from system storage while accurately calculating the lines of code metric. (SEI-9379)
+* We have improved the error messaging across integration failures to clearly convey the underlying causes of ingestion issues. This update will help in better understanding how and why ingestion failed, making it easier to troubleshoot and resolve the failures. (SEI-9511)
+
+#### Fixed issues
+
+* Fixed the issue in the DORA widgets that caused duplicate data to appear for the same contributor. (SEI-9642) (ZD-74061)
+
 ## November 2024
 
 ### Version 202411.2
