@@ -457,3 +457,22 @@ import Link from "@docusaurus/Link";
 <p>
   We recommend completing this as a starting point to experimentation and using the Split platform.
 </p>
+
+
+[Split Experimentation Resource_ Hypothesis Framework (2023).pdf](https://help.split.io/hc/en-us/article_attachments/20494752648717)
+
+[Split Experimentation Resource_ Metric Building Exercises (2023).pdf](https://help.split.io/hc/en-us/article_attachments/20494752665997)
+
+[Split Experimentation Resource_ Prioritization Framework (2023).xlsx](https://help.split.io/hc/en-us/article_attachments/20494761394701)
+
+[Split Experimentation Resource_ Feature Decision Tree Framework (2023).pdf](https://help.split.io/hc/en-us/article_attachments/20494761412493)
+
+[Split Experimentation Resource_ Goal Tree (2023).pdf](https://help.split.io/hc/en-us/article_attachments/20494765404813)
+
+[Split Experimentation Resource_ Experiment Build Steps for Split (2023).xlsx](https://help.split.io/hc/en-us/article_attachments/20494775144333)
+
+[Split Experimentation Resource_ Experimentation Workflow (2023).pdf](https://help.split.io/hc/en-us/article_attachments/20494775164557)
+
+[Split Experimentation Resource_ Experiment Design Template (2023).pdf](https://help.split.io/hc/en-us/article_attachments/20494775177997)
+
+[Split Experimentation Resource_ Customer Journey Map (2023).pdf](https://help.split.io/hc/en-us/article_attachments/20494790253581)
