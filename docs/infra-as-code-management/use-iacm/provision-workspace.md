@@ -31,7 +31,7 @@ Follow these instructions to provision a workspace within the Harness Visual Edi
 2. Click **+ Create a Pipeline** to set up a new pipeline.
 3. Click **Add Stage** and select **Infrastructure** from the **Select Stage Type** pane.
 
-    ![Add infrastructure stage](./static/select-stage.png)
+    ![Add infrastructure stage](static/select-stage.png)
 
 4. Enter a stage name, optional description, and tag, then select **Set Up Stage**.
 5. On the **Workspace** tab, select an existing workspace or click **+ Create New Workspace** to create one. 
