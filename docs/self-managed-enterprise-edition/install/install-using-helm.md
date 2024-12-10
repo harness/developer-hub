@@ -325,7 +325,7 @@ To verify installation, do the following:
 2. In your browser, type the following instruction:
 
    ```
-   http://localhost/auth/#/signup
+   http://<load-balancer-IP-address>/auth/#/signup
    ```
 
    If the installation was successful, the Harness **Sign up** page appears.
