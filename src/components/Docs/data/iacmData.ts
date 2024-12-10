@@ -43,13 +43,13 @@ export const docsCards: CardSections = [
         title: "Create a Workspace",
         module: MODULES.iacm,
         description: "Learn how to create a workspace",
-        link: "/docs/infra-as-code-management/workspaces/create-workspace",
+        link: "/docs/infra-as-code-management/use-iacm/create-workspace",
       },
       {
         title: "Provision and destroy workspaces",
         description: "Learn how to provision and destroy workspaces.",
         module: MODULES.iacm,
-        link: "/docs/infra-as-code-management/pipelines/operations/provision-workspace",
+        link: "/docs/infra-as-code-management/use-iacm/provision-workspace",
       },
       {
         title: "Review workspace resources, states, and execution history",

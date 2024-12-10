@@ -6,7 +6,7 @@ sidebar_position: 10
 
 Incorporate a Terraform Plugin step in your pipeline to execute specific Terraform commands at designated stages. This topic provides a detailed look at the available commands within the Infrastructure as Code Management (IaCM) module.  
 
-For instance, incorporating a [Terraform Provision operation](docs/infra-as-code-management/pipelines/operations/provision-workspace.md) automatically configures your pipeline with the `terraform init`, `terraform plan`, and `terraform apply` commands by default.
+For instance, incorporating a [Terraform Provision operation](docs/infra-as-code-management/use-iacm/provision-workspace.md) automatically configures your pipeline with the `terraform init`, `terraform plan`, and `terraform apply` commands by default.
 
 ### IaCM Supported Commands
 

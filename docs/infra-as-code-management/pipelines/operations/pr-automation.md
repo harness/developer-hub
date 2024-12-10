@@ -14,7 +14,7 @@ Follow these steps to enable PR automation:
 
 <Tabs>
 <TabItem value="Create a PR pipeline">
-Create a pipeline similar to the way described in the [provision workspace topic](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/provision-workspace), and select "Pull Request" as the operation
+Create a pipeline similar to the way described in the [provision workspace topic](https://developer.harness.io/docs/infra-as-code-management/use-iacm/provision-workspace), and select "Pull Request" as the operation
 
 <iframe 
     src="https://app.tango.us/app/embed/58b67758-f36c-410c-8ea4-99236bb01235" 
@@ -47,7 +47,7 @@ Create a pipeline similar to the way described in the [provision workspace topic
 To add a thing, follow these steps:
 
 1. Sign in to [app.harness.io](https://app.harness.io) and select the **Infrastructure** module from the module pane.
-2. Create a PR pipeline. Create a pipeline similar to the way described in the [provision workspace guide](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/provision-workspace/), and select "Pull Request" as the operation.
+2. Create a PR pipeline. Create a pipeline similar to the way described in the [provision workspace guide](https://developer.harness.io/docs/infra-as-code-management/use-iacm/provision-workspace), and select "Pull Request" as the operation.
 3. Create a trigger on a PR event.
    - After saving the pipeline, select **Trigger**, and then add a new trigger.
    - Select a **Webhook** trigger with the same connector as the workspace it is configured with.

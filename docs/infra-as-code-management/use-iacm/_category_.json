@@ -1,12 +1,13 @@
 {
-    "label":"Workspaces",
-    "position": 30,
+    "label":"Use IaCM",
+    "position": 20,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Workspaces"
+       "title":"Use IaCM",
+       "slug":"/infra-as-code-management/use-iacm"
     },
     "customProps":{
        "helpdocs_category_id":""

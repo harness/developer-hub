@@ -30,7 +30,7 @@ To create a new workspace, follow these steps:
 
 4. Select **Workspaces**, and then select **+New Workspace**.
 
-   ![Create new workspace](./static/create-workspace.png)
+   ![Create new workspace](static/create-workspace.png)
 
 5. Complete the fields as follows:
 
@@ -41,7 +41,7 @@ To create a new workspace, follow these steps:
    * **Terraform Version** - Specify the OpenTofu/Terraform version the configuration supports. This version determines which version of Terraform to use during execution. Currently, Harness IaCM only supports the open-source versions of Terraform (all versions below 1.5.x).
    * **Repository** - Specify the Git configuration for the Terraform configuration files. You should specify the Harness Git connector, repository branch, and file path to the configuration files in the repository.
 
-   ![Add workspace details](./static/new-workspace.png)
+   ![Add workspace details](static/new-workspace.png)
 
 6. Select **Save**.
 
@@ -59,6 +59,6 @@ To create a new workspace, follow these steps:
 
    The values defined in line with the Workspace will take precedence over the git configuration.
 
-   ![Workspace variables](./static/workspace-variables.png)
+   ![Workspace variables](static/workspace-variables.png)
 
-Go to [provision Workspace](docs/infra-as-code-management/pipelines/operations/provision-workspace.md) to learn how to provision Workspace.
+Go to [provision Workspace](docs/infra-as-code-management/use-iacm/provision-workspace.md) to learn how to provision Workspace.

@@ -7,7 +7,7 @@ sidebar_position: 20
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can perform specific operations against your workspace configuration. Similarly to [provisioning a workspace](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/provision-workspace), you can tear down the infrastructure state from a workspace without deleting the workspace itself. This guide walks you through how to create a Destroy pipeline to run the `init`, `plan` and `destroy` commands with OpenTofu or Terraform.
+You can perform specific operations against your workspace configuration. Similarly to [provisioning a workspace](https://developer.harness.io/docs/infra-as-code-management/use-iacm/provision-workspace), you can tear down the infrastructure state from a workspace without deleting the workspace itself. This guide walks you through how to create a Destroy pipeline to run the `init`, `plan` and `destroy` commands with OpenTofu or Terraform.
 
 <Tabs>
 <TabItem value="Interactive" label="Interactive Guide" default>
