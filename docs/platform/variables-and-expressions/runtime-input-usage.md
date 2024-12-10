@@ -468,12 +468,16 @@ For example, if the original file name is `input.txt`, it will be stored as `inp
 To get the exact uploaded file name, navigate to the `Output` tab of the upload step execution, where the full file name can be found.
 
 #### Retrieve Uploaded File Using cURL
-To download the uploaded file, use the following cURL command:
+To download the uploaded file, use the following CURL command:
+
+```
+curl --location --request GET 'https://app.harness.io/gateway/pipeline/api/input-file/file/PLAN_EXECUTION_ID?accountIdentifier=ACCOUNT_IDENTIFIER&nodeExecutionId=NODE_EXECUTION_ID&fileName=FILE_NAME' \
+--header 'x-api-key: PAT_TOKEN'
+```
 
 ```
 curl --location 'https://app.harness.io/gateway/pipeline/api/input-file/download-file?accountIdentifier=ACCOUNT_IDENTIFIER&filePath=accountId&filePath=pipelineExecutionId/nodeExecutionId/fileName.extension' \
 --header 'x-api-key: PAT_TOKEN'
-
 ```
 
 Parameters:
