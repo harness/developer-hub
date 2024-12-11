@@ -2118,6 +2118,12 @@ Currently, you can't upload files to the root of an S3 bucket due to the glob pa
 
 If there are too many nested directories in your cached files, you can use a **Run** step to [flatten nested directories](https://www.baeldung.com/linux/flattening-nested-directory) to cache before running the Save Cache or Upload Artifact step. users can have a run step to flatten the directory before uploading.
 
+### How can I share cache between different OS types (Linux/macOS)?
+
+Cache sharing between Linux and macOS might not work because the home/workspace directories differ between operating systems. On macOS, `/harness` is a protected directory, and the workspace is located at `/private/tmp/harness`.
+
+To ensure compatibility, use a relative path like `./FOLDER` instead of an absolute path such as `/harness/FOLDER`. This resolves the issue and allows cache sharing between Linux and macOS.
+
 ## Cache Intelligence
 
 ### How do I enable Cache Intelligence?
