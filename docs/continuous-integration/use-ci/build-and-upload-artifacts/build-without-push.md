@@ -18,7 +18,7 @@ Use these instructions for build dry runs on Harness Cloud, self-managed VM, or 
 <Tabs>
 <TabItem value="builtin" label="Built-in Build and Push steps" default>
 
-For built-in [Build and Push steps](/docs/category/build-and-push), you need to add a [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables) named `PLUGIN_DRY_RUN`.
+For built-in [Build and Push steps](/docs/category/build-and-push), you need to add a [**STAGE** variable](/docs/platform/pipelines/add-a-stage/#stage-variables) named `PLUGIN_DRY_RUN`.
 
 1. In your CI pipeline, go to the **Build** stage that includes a [Build and Push step](/docs/category/build-and-push).
 2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
