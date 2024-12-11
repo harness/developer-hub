@@ -8,7 +8,7 @@ helpdocs_is_published: true
 import Link from "@docusaurus/Link";
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/9652327065485-Setting-up-and-using-metrics </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/9652327065485-Setting-up-and-using-metrics <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 A metric is a measurement of success for your experiment on your website, application, backend performance, etc. It tells you if your experiments are improving, degrading, or are having no effect on your visitors’ experience, based on their behavior. You can measure customer behavior and customer experience in your application by sending events such as clicks, views, checkout events, page load time, or any other event that measures behavior or experience. This helps you make informed decisions about your product and performance. 
