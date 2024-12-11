@@ -20,12 +20,12 @@ This happens when the same individual is linked to different accounts across int
 
 To identify and manage duplicate profiles:
 
-* Navigate to the Contributors section in the SEI dashboard.
-* Click on Connected User Accounts to view all user profiles linked to your integrations.
+* Navigate to the **Contributors** section in the SEI dashboard.
+* Click on **Connected User Accounts** to view all user profiles linked to your integrations.
 
 ## User profile matching
 
-SEI uses intelligent algorithms to group similar user profiles under two categories: Candidates and Outstanding. The grouping is based on matching criteria that can be customized for specific use cases.
+SEI uses intelligent algorithms to group similar user profiles under two categories: **Candidates** and **Outstanding**. The grouping is based on matching criteria that can be customized for specific use cases.
 
 ### Matching criteria
 
@@ -38,8 +38,8 @@ SEI uses intelligent algorithms to group similar user profiles under two categor
 
 Profile categories define how SEI organizes user profiles based on matching criteria:
 
-* Candidates: Groups of profiles automatically matched by SEI based on the chosen criteria. You can review and fine-tune these groups by adding or removing profiles.
-* Outstanding: Unmatched profiles that the system couldn’t group. Requires manual intervention to add to existing groups or create new ones.
+* **Candidates:** Groups of profiles automatically matched by SEI based on the chosen criteria. You can review and fine-tune these groups by adding or removing profiles.
+* **Outstanding:** Unmatched profiles that the system couldn’t group. Requires manual intervention to add to existing groups or create new ones.
 
 ## Merging contributor profiles
 
@@ -47,25 +47,25 @@ Merging ensures all data associated with multiple user profiles is unified. Foll
 
 ### Step 1: Identify duplicate profiles
 
-* Navigate to Contributors > Connected User Accounts.
-* Review the Candidates section:
+* Navigate to **Contributors > Connected User Accounts**.
+* Review the **Candidates** section:
   * Click on a group to expand and view matched profiles.
   * Verify that profiles belong to the same individual.
   * Adjust groups by adding or removing profiles as needed.
 
 ### Step 2: Choose merge options
 
-* Merge Contributors: Instantly merge profiles into a single contributor record.
-* Identify as Draft: Save proposed matches for later review.
+* **Merge Contributors:** Instantly merge profiles into a single contributor record.
+* **Identify as Draft:** Save proposed matches for later review.
 
 ### Step 3: Finalize and publish changes
 
-* Navigate to the Contributors > Draft tab to review matches saved as drafts.
+* Navigate to the **Contributors > Draft** tab to review matches saved as drafts.
 * Verify details such as:
   * Number of new contributors created.
   * Profiles added or removed from existing contributors.
   * Profiles flagged for deletion.
-* Once satisfied, click Publish All Changes to update the contributor records.
+* Once satisfied, click **Publish All Changes** to update the contributor records.
 
 
 :::info
@@ -76,7 +76,7 @@ Changes made during merging are irreversible. Use the draft mode to ensure accur
 
 To maintain clean and accurate contributor records:
 
-* Regular Reviews: Periodically check for duplicate profiles and merge them.
-* Verify Matches: Ensure the accuracy of automatic matching before merging.
-* Use Draft Mode: Always use the draft feature to review changes in bulk.
-* Customize Matching Criteria: Adjust the criteria based on your organization’s specific needs.
+* **Regular reviews:** Periodically check for duplicate profiles and merge them.
+* **Verify matches:** Ensure the accuracy of automatic matching before merging.
+* **Use draft mode:** Always use the draft feature to review changes in bulk.
+* **Customize matching criteria:** Adjust the criteria based on your organization’s specific needs.
