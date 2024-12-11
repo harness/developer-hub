@@ -1,71 +1,54 @@
 ---
-title: gRPC Playground
-description: A backstage plugin ported from BloomRPC which is an Electron application
+title: gRPC 
+description: A backstage plugin ported from grpc-docs which is like Swagger UI, but for gRPC APIs
 ---
 
 | Plugin details |                                                                                |
 | -------------- | ------------------------------------------------------------------------------ |
-| **Created by** | ZaloPay                                                      |
 | **Category**   | API                                                                        |
-| **Source**     | [GitHub](https://github.com/zalopay-oss/backstage-grpc-playground) |
+| **Source**     | [GitHub](https://github.com/backstage/backstage/tree/master/plugins/api-docs-module-protoc-gen-doc) |
 | **Type**       | Open-source plugin                                                             |
 
+
+## Overview
+
+This plugin contains `ApiDefinitionWidgets` for the grpc-docs project, which renders gRPC API in the following format
+
+![](./static/grpc-definition.png)
 
 ## Configuration
 
 The Plugin is Auto-Enabled now, and you don't need to set any configuration, as the plugin isn't available under Marketplace. 
 
-:::info
-
-The Plugin doesn't work when tried on a Live Server. Read More on this [GitHub Issue](https://github.com/zalopay-oss/backstage-grpc-playground/issues/11)
-
-:::
-
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set one of the following annotations in its `catalog-info.yaml` definition file.
 
-### Unary
+[Example catalog-info.yaml](https://github.com/harness-community/idp-samples/blob/main/demo-prorto-api.yaml)
 
 ```YAML
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: grpc-docs-test
 spec:
-  type: grpc
+  type: grpc-docs
   lifecycle: production
-  owner: zalopay-oss
+  owner: group:engineering
   definition:
-    $text: https://github.com/zalopay-oss/backstage-grpc-playground/blob/main/examples/unary/helloworld.proto
-  files:
-    - file_name: helloworld.proto
-      file_path: examples/unary/helloworld.proto
-      url: https://github.com/zalopay-oss/backstage-grpc-playground/blob/main/examples/unary/helloworld.proto
+    $text: https://github.com/pseudomuto/protoc-gen-doc/blob/master/examples/doc/example.json
 ```
 
-### Stream 
+:::info
 
-```YAML
-spec:
-  type: grpc
-  lifecycle: production
-  owner: zalopay-oss
-  definition:
-    $text: https://github.com/zalopay-oss/backstage-grpc-playground/blob/main/examples/stream/employee.proto
-  files:
-    - file_name: employee.proto
-      file_path: examples/stream/employee.proto
-      url: https://github.com/zalopay-oss/backstage-grpc-playground/blob/main/examples/stream/employee.proto
+The plugin supports rendering gRPC documentation when the `type` is set to `grpc-doc` or `grpc` **and** the `definition` is provided in JSON format. 
 
-      imports:
-        - file_name: common.proto
-          file_path: examples/stream/common.proto
-          url: https://github.com/zalopay-oss/backstage-grpc-playground/blob/main/examples/stream/common.proto
-```
+:::
 
-![](./static/call_stream.gif)
+![](./static/grpc.gif)
 
-![](./static/missing_import_1.gif)
-
-Read More on the [open-source docs](https://github.com/zalopay-oss/backstage-grpc-playground?tab=readme-ov-file#yaml-file-definition) 
+Read More on the [open-source docs](https://github.com/backstage/backstage/tree/master/plugins/api-docs-module-protoc-gen-doc) 
 
 ## Support
 
-The plugin is owned by ZaloPyy and managed in the [GitHub repository](https://github.com/zalopay-oss/backstage-grpc-playground) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
+The plugin is managed in the [GitHub repository](https://github.com/backstage/backstage/tree/master/plugins/api-docs-module-protoc-gen-doc) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
