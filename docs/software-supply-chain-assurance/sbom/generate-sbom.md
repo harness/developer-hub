@@ -11,7 +11,6 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import CosignKeyGeneration from '/docs/software-supply-chain-assurance/shared/generate-cosign-key-pair.md';
 
 A Software Bill of Materials (SBOM) is an exhaustive list of all components, libraries, and other dependencies utilized in a software application. The **SBOM Orchestration** step within Harness SCS facilitates the generation of SBOMs for your software artifacts.
 
@@ -59,17 +58,20 @@ This example **Deploy** stage has two steps:
 </details>
 
 ### Generate the keys for SBOM Attestation - optional
-For enhanced trust and verification of your SBOM's integrity, the SBOM Orchestration step offers optional signing and attestation generation. This functionality requires a private key, password, and corresponding public key. If you choose to skip signing, you can proceed without generating or storing these keys.
+For enhanced trust and verification of your SBOM's integrity, the SBOM Orchestration step offers optional signing and attestation generation feature. This functionality requires a private key, password for attestation and corresponding public key for attestation verification. If you choose to skip the SBOM attestation, you can proceed without generating the and storing these keys.
 
-Here's how to set these keys if you choose to enable signing
+1. **Generate the keys**: Begin by generating the keys using [Cosign](https://docs.sigstore.dev/signing/quickstart).  
+    1. [Install Cosign](https://docs.sigstore.dev/system_config/installation/)
+    2. Run the command `cosign generate-key-pair` to generate the key pairs.
+    3. Make sure to note the password used for generating the key pairs. This password is needed along with the private key for performing the attestation.
+    4. This command will generate a private key as a `.key` file and a public key as a `.pub` file.
 
-- **Generate the keys**: Begin by generating the keys using [Cosign](https://docs.sigstore.dev/signing/quickstart)
-- **Securely store the keys**: Safeguard the generated private key, public key, and password by creating [Harness file secrets](https://developer.harness.io/docs/platform/secrets/add-file-secrets/) for each.
+2. **Securely store the keys**: Safeguard the generated keys by securely storing them as [Harness file secrets](https://developer.harness.io/docs/platform/secrets/add-file-secrets/). The SCS module also supports **HashiCorp Vault**, allowing you to use your keys from the vault.
 
 
-## Add the SBOM Orchestration step
+## SBOM Orchestration step configuration
 
-Use the **SBOM Orchestration** step to generate an SBOM in either the **Build** or **Deploy** stage of a Harness pipeline.
+You can use **SBOM Orchestration** step to generate an SBOM in either the **Build** or **Deploy** stage of a Harness pipeline.
 
 * In a **Build** stage, add the **SBOM Orchestration** step after the artifact (image) has been pushed to an artifact repository.
 * In a **Deploy** stage, add the **SBOM Orchestration** step before the deployment step.
@@ -80,202 +82,62 @@ Use the **SBOM Orchestration** step to generate an SBOM in either the **Build** 
 
 :::
 
-The **SBOM Orchestration** step includes various settings for generating the SBOM for both Containers and Repositories. We will delve into the different fields that need to be configured for each option to support the generation of the SBOM.
+Using SBOM Orchestration step you can generate the SBOM for both Container images and and Repositories. Follow the steps to configure the fields for each supported type.
 
 * **Name:** Enter a name for the step.
 
 * **Step Mode:** Select **Generation**.
 
-* **SBOM Tool:** Select **Syft or cdxgen**, which is the tool Harness uses to generate the SBOM. For other SBOM tools, go to [Ingest SBOM](./ingest-sbom-data.md).
+* **SBOM Tool:** Select **Syft** or **cdxgen**. For other SBOM tools, go to [Ingest SBOM](./ingest-sbom-data.md).
 
 * **SBOM Format:** Select **SPDX** or **CycloneDX**.
 
-If you're using Syft to generate the SBOM and want to ensure it includes all component licenses with high accuracy, you'll need to set specific environment variables based on your project's programming language. Here are the relevant variables:
+  If you're using **Syft** to generate the SBOM and want to ensure it includes all component licenses with high accuracy, you'll need to set specific environment variables based on your project's programming language. Here are the relevant variables:
 
-| Programming Language | Name of Variable | Value         | 
-|----------------------|----------------|-----------------|
-| Go          | `SYFT_GOLANG_SEARCH_REMOTE_LICENSES`             | true
-| Java                 | `SYFT_JAVA_USE_NETWORK`         | true    |
-| JavaScript                  | `SYFT_JAVASCRIPT_SEARCH_REMOTE_LICENSES`           | true     |
+  <details>
+    <summary>Set variables for enhanced SBOM</summary>
 
-To add a new environment variable, go to **Overview** section of your Build stage, and expand the **Advanced** section.
+      | Programming Language | Name of Variable | Value         | 
+      |----------------------|----------------|-----------------|
+      | Go          | `SYFT_GOLANG_SEARCH_REMOTE_LICENSES`             | true
+      | Java                 | `SYFT_JAVA_USE_NETWORK`         | true    |
+      | JavaScript                  | `SYFT_JAVASCRIPT_SEARCH_REMOTE_LICENSES`           | true     |
 
-<DocImage path={require('./static/syft-flags.png')} width="50%" height="50%" title="Click to view full size image" />
+      To add a new environment variable, go to **Overview** section of your Build stage, and expand the **Advanced** section.
 
-By setting these variables, Syft can more effectively fetch and populate the licensing data for the components in your SBOM. This not only enhances the quality of the SBOM but also improves its overall [SBOM score](./sbom-score.md). If your SBOM contains `NOASSERTIONS`, it indicates that Syft was unable to retrieve necessary data.
+      <DocImage path={require('./static/syft-flags.png')} width="50%" height="50%" title="Click to view full size image" />
 
-The **Artifact Source** allows you to specify the source of the artifact. Presently, the SBOM Orchestration step supports both containers and code repositories. Specifically for containers, it offers native support with DockerHub and ECR. Here's how you can configure them accordingly.
+      By setting these variables, Syft can more effectively fetch and populate the licensing data for the components in your SBOM. This not only enhances the quality of the SBOM but also improves its overall [SBOM score](./sbom-score.md). If your SBOM contains `NOASSERTIONS`, it indicates that Syft was unable to retrieve necessary data.
 
-<Tabs>
-  <TabItem value="dockerhub" label="DockerHub" default>
+  </details>
 
-* **Artifact Type:** Select **DockerHub**.
+- **Registry Type**: Select **Harness Artifact Registry** or **Third-Party Artifact Registry**, based on where your artifact is stored.
+- **Source**: Select the **Source** by choosing either a supported container registry from the list or Repository if you are generating the SBOM for source code.
 
-* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
+import ArtifactSource from '/docs/software-supply-chain-assurance/shared/artifact-source.md';
 
-* **Image:** Enter the name of your image with tag, such as `repo-name:tag`.
+<ArtifactSource />
 
-<details>
-<summary>Generate key pairs using Cosign for SBOM Attestation</summary>
+With this configuration, the step generates the SBOM and stores it in the Artifact section of SCS. Optionally, you an attest to the generated SBOM, follow the instructions in the section below.
 
-<CosignKeyGeneration />
 
-</details>
+### Attest the SBOM
+To configure attestation, in addition to the above configuration, you need to enable the SBOM Attestation checkbox in the SBOM Orchestration step. Enabling SBOM Attestation is optional and not required for SBOM generation. 
 
-* **Private Key (optional):** Input your Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
+Attestation process requires a key pair generated using Cosign. You can perform the attestation with **Cosign** or **Cosign with Secret Manager**
 
-* **Password (optional):** Input your Password for the Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
+import CosignAttestationOptions from '/docs/software-supply-chain-assurance/shared/cosign-attestation-options.md';
 
-* **SBOM Drift (optional):** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
+<CosignAttestationOptions />
 
 
-<DocImage path={require('./static/dockerhub-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
+### Configure SBOM Drift
+This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift/). If you prefer not to detect any changes in SBOMs, leave this option unchecked. Also, enabling SBOM Drift is optional and not required for SBOM generation
 
-</TabItem>
+Enabling this feature provides the following capabilities:
 
-<TabItem value="ecr" label="ECR" default>
-
-* **Artifact Type:** Select **ECR**.
-
-* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Elastic container registry where the artifact is stored.
-
-* **Image:** Enter the name of your image with tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
-
-* **Region:** The geographical location of your ECR repository.
-
-* **Account ID:** The unique identifier associated with your AWS account.
-
-<details>
-<summary>Generate key pairs using Cosign for SBOM Attestation</summary>
-
-<CosignKeyGeneration />
-
-</details>
-
-* **Private Key:** Input your Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
-
-* **Password:** Input your Password for the Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
-
-* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
-
-<DocImage path={require('./static/ecr-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
-
-
-</TabItem>
-
-<TabItem value="gcr" label="GCR" default>
-
-* **Artifact Type:** Select **GCR**.
-
-* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
-
-* **Image:** Enter the name of your image with tag for which you're generating the SBOM, example `docker-image:tag`.
-
-* **Host:** Enter your GCR Host name. The Host name is regional-based. For instance, a common Host name is `gcr.io`, which serves as a multi-regional hostname for the United States. 
-
-* **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
-
-<details>
-<summary>Generate key pairs using Cosign for SBOM Attestation</summary>
-
-<CosignKeyGeneration />
-
-</details>
-
-* **Private Key:** Input your Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
-
-* **Password:** Input your Password for the Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
-
-* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
-
-
-<DocImage path={require('./static/gcr-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
-
-</TabItem>
-
-<TabItem value="gar" label="GAR" default>
-
-* **Artifact Type:** Select **GAR**.
-
-* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google artifact registry where the artifact is stored.
-
-* **Image:** Enter the name of your image with tag for which you're generating the SBOM, example `repository-name/image:tag`.
-
-* **Host:** Enter your GAR Host name. The Host name is regional-based. For example, `us-east1-docker.pkg.dev`.
-
-* **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
-
-<details>
-<summary>Generate key pairs using Cosign for SBOM Attestation</summary>
-
-<CosignKeyGeneration />
-
-</details>
-
-* **Private Key:** Input your Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
-
-* **Password:** Input your Password for the Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
-
-* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
-
-
-<DocImage path={require('./static/gar-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
-
-</TabItem>
-
-<TabItem value="acr" label="ACR" default>
-
-* **Artifact Type:** Select **ACR**.
-
-* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Azure container registry where the artifact is stored.
-
-* **Image:** Enter your image details in the format `<registry-login-server>/<repository>:<tag>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where   `<registry-name>` is the name you have given to your container registry instance in Azure. Example input: `automate.azurecr.io/acr:test`
-
-* **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
-
-<details>
-<summary>Generate key pairs using Cosign for SBOM Attestation</summary>
-
-<CosignKeyGeneration />
-
-</details>
-
-* **Private Key:** Input your Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
-
-* **Password:** Input your Password for the Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
-
-* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
-
-<DocImage path={require('./static/acr-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
-
-</TabItem>
-
-  <TabItem value="Repository" label="Repository">
-
-* **Artifact Type:** Select **Repository**.
-
-    :::info
-
-    The **Repository** option requires that your repository is cloned into the stage workspace before the SBOM Orchestration step runs. There are several ways you can do this:
-    * Clone the codebase by default, such as a [Build stage's default codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase).
-    * Add a [Git Clone step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step/) or [Run step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/) to the Deploy stage.
-    * Add a [Git Clone step or Run step to a Build stage](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
-
-    :::
-* **Repository URL:** The Repository URL you've configured for cloning into the workspace.
-* **Source Path:** Leave blank or enter a path (in the repository) for which you want to generate SBOM. Use this setting to generate SBOM for a specific section of your code repo, rather than your entire repo. The path must start with `/`.
-   For example, if your repository URL is `https://github.com/username/repo`, and you want to generate SBOM for `https://github.com/username/repo/service-core/source`, then enter `/service-core/source` for **Source Path**.
-   To generate an SBOM for the entire repository, leave this field empty.
-* **Git Branch:** The branch of the repository for which you want to generate the SBOM.
-* **Workspace:** If you cloned the codebase to a different directory than the root workspace directory (`/harness`), enter the path to the subdirectory using the format `/harness/PATH/TO/SUBDIRECTORY`. Leave this field empty if you cloned your codebase into the default directory (`/harness`). Usually, your codebase is only cloned into a non-default directory if you are [cloning multiple codebases](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline) into a pipeline.
-* **SBOM Drift:** Select this option if you want to [track changes in SBOM](/docs/software-supply-chain-assurance/sbom/sbom-drift). Harness SCS can detect the changes by comparing the generated SBOM against a specified base/primary SBOM.
-
-<DocImage path={require('./static/repo-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
-
-<!-- ![](./static/sbom-deploy-stage.png) -->
-
-</TabItem>
-</Tabs>
+- **Detect drift from the last generated SBOM**: Compare the current SBOM with the most recently generated SBOM to identify changes.
+- **Detect drift from a baseline**: Compare the current SBOM against a predefined baseline SBOM to detect deviations.
 
 
 ## Run the pipeline

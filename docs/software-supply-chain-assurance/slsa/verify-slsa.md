@@ -31,8 +31,6 @@ The SLSA Verification step has the following fields:
 
 * **Tag:** Enter the tag name of your image, example `latest`.
 
-<DocImage path={require('./static/slsa-ver-dockerhub.png')} width="50%" height="50%" title="Click to view full size image" />
-
 </TabItem>
 
 <TabItem value="ecr" label="ECR" default>
@@ -46,8 +44,6 @@ The SLSA Verification step has the following fields:
 * **Account ID:** The unique identifier associated with your AWS account.
 
 * **Tag:** Enter the tag name of your image, example `latest`.
-
-<DocImage path={require('./static/slsa-ver-ecr.png')} width="50%" height="50%" title="Click to view full size image" /> 
 
 
 </TabItem>
@@ -64,8 +60,6 @@ The SLSA Verification step has the following fields:
 
 * **Tag:** Enter the tag name of your image, example `latest`.
 
-<DocImage path={require('./static/slsa-ver-gcr.png')} width="50%" height="50%" title="Click to view full size image" />
-
 
 </TabItem>
 
@@ -81,8 +75,6 @@ The SLSA Verification step has the following fields:
 
 * **Tag:** Enter the tag name of your image, example `latest`.
 
-<DocImage path={require('./static/slsa-ver-gar.png')} width="50%" height="50%" title="Click to view full size image" />
-
 </TabItem>
 
 <TabItem value="acr" label="ACR" default>
@@ -95,13 +87,18 @@ The SLSA Verification step has the following fields:
 
 * **Tag:** Enter the tag name of your image, example `latest`.
 
-<DocImage path={require('./static/slsa-ver-acr.png')} width="50%" height="50%" title="Click to view full size image" />
-
 </TabItem>
 </Tabs>
 
+### Verify SLSA Attestation
 
-* **Public Key**: Choose the [Harness file secret](https://developer.harness.io/docs/platform/secrets/add-file-secrets) that holds the public key, which will be used to verify the attestation's authenticity. This key should correspond to the private key and password utilized during the attestation's generation.
+To verify the SLSA attestation, in addition to the above configuration, you need to enable the Verify SLSA Attestation checkbox in the SLSA Generation step.
+
+The attestation verification process requires the corresponding **public key** of the private key used for SLSA attestation. You can perform the verification by providing the public key through the **Cosign** option or **Cosign with Secret Manager**.
+
+import CosignVerificationOptions from '/docs/software-supply-chain-assurance/shared/cosign-verification-options.md';
+
+<CosignVerificationOptions />
 
 
 ## Enforce Policies on SLSA Provenance
