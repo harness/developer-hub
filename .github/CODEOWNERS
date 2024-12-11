@@ -75,7 +75,7 @@ README.md @pratmit
 /docs/chaos-engineering/ @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9
 
 # Platform Docs
-/docs/platform/ @pratmit @krishi0408 @GokulBansal0
+/docs/platform/ @pratmit @krishi0408 @GokulBansal0 @abhishekharness
 
 # Pipeline Docs
 /docs/platform/pipelines/ @krishi0408 @vishal-av @SudarshanPurohit
@@ -178,7 +178,7 @@ README.md @pratmit
 /release-notes/code-repository.md @pwolf-harness @hitesharinga @dewan-ahmed
 
 # Delegate Release Notes
-/release-notes/delegate.md @pratmit
+/release-notes/delegate.md @pratmit @abhishekharness @anshul-harness
 
 # Database DevOps Release Notes
 /release-notes/database-devops.md @stephenatwell @jenniferopal @HarnessTheChaos @archit-harness @anshul-harness
@@ -190,7 +190,7 @@ README.md @pratmit
 /release-notes/internal-developer-portal.md @Debanitrkl @OrkoHunter
 
 # Platform Release Notes
-/release-notes/platform.md @pratmit @GokulBansal0
+/release-notes/platform.md @pratmit @GokulBansal0 @abhishekharness
 
 # SEI Release Notes
 /release-notes/software-engineering-insights.md @codewdhruv @batraprashant
