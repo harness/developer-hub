@@ -25,6 +25,7 @@ The extracted files have many levels of nested directories. To locate specific l
 * You might encounter the error message `Prefix Key Exceeds Maximum Download Limit` if your execution exceeds the maximum number of log files.
    * Log files are stored in chunks for optimization purposes.
    * There is a hard limit of 2000 log files per execution. Contact [Harness Support](mailto:support@harness.io) if this limitation causes issues for you.
+* Windows users may encounter issues extracting `logs.zip` with the native extraction tool. To avoid this, we recommend using a third-party tool such as 7-Zip or similar.
 
 ## Download pipeline log files
 
