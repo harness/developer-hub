@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-11-26T20:00
+date: 2024-12-11T22:00
 sidebar_position: 12
 ---
 
@@ -32,6 +32,10 @@ Review the notes below for details about recent changes to Harness Internal Deve
 2. Added a new step in the IDP stage to [update catalog properties](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#9-update-catalog-property), enabling native support for the [Catalog Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api) within pipelines.[IDP-3603]
 
 ![](./static/update-catalog-property.png)
+
+3. Added support for a new [markdown card](/docs/internal-developer-portal/layout-and-appearance/home-page-customization#markdown-card) on IDP Homepage
+
+![](./static/idp-markdown-card.png)
 
 #### Bug fixes
 
