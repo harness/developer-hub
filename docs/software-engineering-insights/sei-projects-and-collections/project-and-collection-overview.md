@@ -63,4 +63,4 @@ For information about configuring Collections, go to [Manage Collections](/docs/
 
 Contributors are developers and other team members that complete actions and activities that contribute to your SEI metrics and insights. Contributors are represented by contributor records in SEI. SEI contributor records associate related user accounts across your SDLC tools and can be used to populate contributor-based Collections.
 
-For information about managing contributors, go to [Manage contributors](/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors).
+For information about managing contributors, go to [Manage contributors](/docs/software-engineering-insights/sei-contributors/manage-contributors).

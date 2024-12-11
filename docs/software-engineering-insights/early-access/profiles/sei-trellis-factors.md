@@ -20,7 +20,7 @@ The following permissions are needed to customize the Trellis Factors at the Acc
 
 1. To perform **Admin Level** operations on the **Trellis Factors at the Account Level**, you need to have **Edit & Manage** access to **SEI Configuration Settings**
 2. To configure **Trellis Factors at the Collection Level** i.e. **Collection** specific Trellis settings, one must have **Collection Edit/Create** access to the SEI project
-3. At least one **Contributor** with an associated **Email ID** must be present in the newly created account. For more information, go to [Contributors](/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors).
+3. At least one **Contributor** with an associated **Email ID** must be present in the newly created account. For more information, go to [Contributors](/docs/software-engineering-insights/sei-contributors/manage-contributors).
 
 :::
 

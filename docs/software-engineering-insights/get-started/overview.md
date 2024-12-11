@@ -28,7 +28,7 @@ To start using SEI, configure the following:
 
 * [Collections](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview)
 * [Integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview)
-* [Contributors](/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors)
+* [Contributors](/docs/software-engineering-insights/sei-contributors/manage-contributors)
 * [Projects](/docs/platform/organizations-and-projects/projects-and-organizations)
 * [Collections](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview)
 * [Profiles](/docs/category/profiles)
