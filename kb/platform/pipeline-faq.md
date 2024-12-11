@@ -730,3 +730,15 @@ Discrepancies arise when the YAML file in any Git branch has different values co
 When you make updates to the pipeline via the Harness UI, these changes are saved both to the Harness DB and to the YAML file in the selected Git branch. However, other branches in your repository may still carry outdated YAML files with old values.
 
 To maintain consistency across all branches and interfaces, ensure that any manual changes to the YAML in Git are synchronized with updates made in the Harness UI. It’s also a good practice to regularly update all relevant branches to keep them aligned with the Harness DB.
+
+### Why are some variables not showing up in the Execution Input in Harness? 
+The Execution Input in Harness only displays variables that are marked as runtime input or have their values provided at runtime. Variables with fixed values or those using expressions as input will not appear in the Execution Input.
+
+### Can variables with fixed values be included in the Execution Input?  
+No, variables with fixed values are not displayed in the Execution Input because they are predefined and do not require runtime input.
+
+### Why doesn’t a variable using an expression appear in the Execution Input? 
+Variables which use expressions as input, do not show up in the Execution Input because they are resolved automatically during execution, not requiring runtime input.
+
+### How can I confirm that variables not displayed in the Execution Input are set correctly?  
+You can verify these variables by echoing them in run steps during execution. This confirms that they are set even if they do not appear in the Execution Input.
