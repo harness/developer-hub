@@ -12,7 +12,7 @@ description: A backstage plugin ported from grpc-docs which is like Swagger UI, 
 
 ## Overview
 
-This plugin contains `ApiDefinitionWidgets` for the grpc-docs project, which renders gRPC API in the following format
+This plugin contains `ApiDefinitionWidgets` for the [grpc-docs](https://github.com/gendocu-com/grpc-docs?tab=readme-ov-file#interactive-grpc-api-documentation) project, which renders gRPC API in the following format
 
 ![](./static/grpc-definition.png)
 
