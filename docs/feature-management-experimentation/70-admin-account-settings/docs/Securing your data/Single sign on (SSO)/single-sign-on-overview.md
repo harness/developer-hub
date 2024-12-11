@@ -1,6 +1,6 @@
 ---
 title: Single sign-on overview
-sidebar_label: Environment level audit logs
+sidebar_label: Single sign-on overview
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
