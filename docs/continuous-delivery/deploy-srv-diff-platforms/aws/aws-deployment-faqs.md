@@ -588,10 +588,10 @@ The pipeline has three main stages:
 3. deploy ecs: Updates the ECS task definition and optionally runs the ECS task.
 
 ### How does the ecr_push stage work?
-The ecr_push stage builds the Docker image, tags it, and pushes it to Amazon ECR. It uses the output variable `tag_value_updated` to dynamically pass the updated image tag to subsequent stages.
+The ecr_push stage builds the Docker image, tags it, and pushes it to Amazon ECR. You can create an output variable to dynamically pass the updated image tag to subsequent stage, for example:- deploy stage.
 
 ### What does the schedule_task stage accomplish?
-The schedule_task stage creates or updates an AWS EventBridge rule and sets the ECS task as its target. It uses AWS CLI commands to define scheduling parameters and associates the updated ECS task definition with the rule.
+The schedule_task stage creates or updates an AWS EventBridge rule and sets the ECS task as its target. It uses AWS CLI commands to define scheduling parameters and associates the updated ECS task definition with the rule. You need to run these command via a Shell Script since Harness does not natively support scheduling tasks in ECS.
 
 ### How is the deploy_ecs stage used? 
 The deploy_ecs stage updates the ECS task definition with the new Docker image tag and uses the EcsRunTask step to optionally run the ECS task. Rollback options like ECS Canary Delete and Rolling Rollback are included to handle deployment failures.
@@ -602,7 +602,8 @@ You need an IAM role (`ecsEventBridgeRole`) with the following permissions:
 - Permissions: `ecs:RunTask`, `ecs:DescribeTaskDefinition`, `events:PutRule`, `events:PutTargets`.
 
 ### How is the Docker image tag updated dynamically in ECS Scheduled Task Deployment Pipeline? 
-The `tag_value_updated` variable captures the updated image tag during the ecr_push stage. This tag is used to dynamically update the task definition in subsequent stages.
+You can use output variables in your build stage where you are building your docker image and reference that output variable in your ECS service step where you are defining your artifacts. It will make sure that the image tag is updated dynamically.
+Learn more about [Output variables in Harness](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#input-and-output-variables).
 
 ### How can I schedule the ECS task using AWS CLI?
 The schedule_task stage runs the following AWS CLI commands:  
@@ -616,4 +617,4 @@ The schedule_task stage runs the following AWS CLI commands:
 The pipeline includes rollback steps like ECS Canary Delete and ECS Rolling Rollback. These steps revert deployments if failures occur during task scheduling or execution.
 
 ### Can I run the ECS task immediately after updating the task definition?
-Yes, the deploy_ecs stage includes the EcsRunTask step, which allows running the ECS task immediately using the updated task definition and `task_def_req.yaml` file.
+Yes, the deploy_ecs stage includes the EcsRunTask step, which allows running the ECS task immediately using the updated ECS task definition file.
