@@ -46,6 +46,9 @@ README.md @pratmit
 # Continuous Delivery Docs
 /docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
 
+# Artifact Registry Docs
+/docs/artifact-registry/ @SushrutHarness @shankaranandh @shivagowda @richardblack-Harness
+
 # Continuous Integration Docs
 /docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed
 
@@ -93,7 +96,7 @@ README.md @pratmit
 /docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez 
 
 # FF Docs
-/docs/feature-flags/ @HarnessTheChaos @jenniferopal
+/docs/feature-flags/ @HarnessTheChaos @jenniferopal @laura-mannus @Kira-Jennings @laura135 
 
 # Cloud Operations Docs
 /docs/harness-cloud-operations/ @ankit-harness @yogi-harness
@@ -102,10 +105,13 @@ README.md @pratmit
 /docs/software-engineering-insights/ @codewdhruv @batraprashant
 
 # DB DevOps Docs
-/docs/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos
+/docs/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
 
 # CDE Docs
 /docs/cloud-development-environments/ @manishas
+
+# AI QA Assistant Docs
+/docs/ai-qa-assistant/ @deba-harness
 
 # FirstGen Docs ###
 
@@ -149,7 +155,7 @@ README.md @pratmit
 
 # DB DevOps FAQs
 
-/kb/database-devops/index @jenniferopal @stephenatwell @HarnessTheChaos
+/docs/faqs/db-devops-faqs/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
 
 # Release Notes ###
 
@@ -175,7 +181,7 @@ README.md @pratmit
 /release-notes/delegate.md @pratmit
 
 # Database DevOps Release Notes
-/release-notes/database-devops.md @stephenatwell @jenniferopal @HarnessTheChaos
+/release-notes/database-devops.md @stephenatwell @jenniferopal @HarnessTheChaos @archit-harness @anshul-harness
 
 # FF Release Notes
 /release-notes/feature-flags.md @HarnessTheChaos @jenniferopal
@@ -248,6 +254,9 @@ README.md @pratmit
 # SEI KB
 /kb/sei/ @jimin-harness @deepanshuHarness @guna-harness
 
+# DB DevOps
+/kb/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
+
 # Roadmap ###
 
 #CCM Roadmap
@@ -272,7 +281,7 @@ src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
 src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness
 
 #FME Roadmap
-src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow
+src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
 
 #IDP Roadmap
 src/components/Roadmap/data/idpData.ts @Debanitrkl
@@ -287,10 +296,10 @@ src/components/Roadmap/data/seiData.ts @codewdhruv
 src/components/Roadmap/data/srmData.ts @sunilgupta-harness
 
 #SCS Roadmap
-src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla
+src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla @pranay-harness
 
 #STO Roadmap
-src/components/Roadmap/data/stoData.ts @tejakummarikuntla
+src/components/Roadmap/data/stoData.ts @tejakummarikuntla @priteshchandaliya
 
 #Reference Architectures
 /kb/reference-architectures @RajiKoppala @rssnyder 

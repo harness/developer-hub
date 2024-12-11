@@ -14,6 +14,8 @@ When triggered, it causes the call to fail and return an error, potentially disr
 
 ![Pod IO Error](./static/images/pod-io-error.png)
 
+For a video tutorial, go to [pod IO error](https://youtu.be/_EyKwv5UupU) that walks through the execution of the experiment.
+
 ## Use cases
 Pod IO error:
 - Simulates the error to test whether the application is able to recover gracefully from a failure in that service.

@@ -42,7 +42,7 @@ Deleting a workspace will remove it from Harness along with all associated resou
         ```
         ---
         :::info deactivate workspace
-        If your workspace is still active, deactivate it before calling the above endpoint with a [destroy-workspace pipeline](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/provision-workspace#destroy-a-workspace)
+        If your workspace is still active, deactivate it before calling the above endpoint with a [destroy-workspace pipeline](https://developer.harness.io/docs/infra-as-code-management/use-iacm/provision-workspace#destroy-a-workspace)
         :::
     </TabItem>
 </Tabs>

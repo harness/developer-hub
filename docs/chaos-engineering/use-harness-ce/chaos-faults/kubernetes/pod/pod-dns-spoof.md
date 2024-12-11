@@ -11,6 +11,8 @@ Pod DNS spoof is a Kubernetes pod-level chaos fault that injects chaos into pods
 
 ![Pod DNS Spoof](./static/images/dns-chaos.png)
 
+[This](https://youtu.be/YA97cvgbpTI) video walks through the execution of the pod IO latency experiment.
+
 ## Use cases
 
 Pod DNS spoof:

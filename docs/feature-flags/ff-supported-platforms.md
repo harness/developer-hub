@@ -39,3 +39,11 @@ Harness Feature Flags allows for both completely offline usage as well as hybrid
 There are no limitations for using Feature Flags in any cloud or non-cloud environment as long as the languages needed are supported with an SDK, and connectivity to either Harness or the Relay Proxy can be established.
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
+
+## Resource Limits
+
+
+import FFResourceLimits from '/docs/feature-flags/shared/ff-resource-limits.md';
+
+
+<FFResourceLimits />

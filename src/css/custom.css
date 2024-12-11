@@ -224,6 +224,13 @@
   /* Module Colors/Continuous Integration/100 */
   --mod-ci-100: #e2f5ff;
 
+  /* Module Colors/Continuous Integration/300 */
+  --mod-ar-300: #0672b6;
+  /* Module Colors/Continuous Integration/200 */
+  --mod-ar-200: #2bb1f2;
+  /* Module Colors/Continuous Integration/100 */
+  --mod-ar-100: #e2f5ff;
+
   /* Module Colors/Cloud Cost/300 */
   --mod-ccm-300: #24807f;
   /* Module Colors/Cloud Cost/200 */
@@ -283,10 +290,10 @@
   --mod-code-200: #2bb1f2;
   --mod-code-100: #e2f5ff;
 
-    /* Module Colors/opensource */
-    --mod-opensource-300: #b0b1c4;
-    --mod-opensource-200: #d9dae5;
-    --mod-opensource-100: #f3f3fa;
+  /* Module Colors/opensource */
+  --mod-opensource-300: #b0b1c4;
+  --mod-opensource-200: #d9dae5;
+  --mod-opensource-100: #f3f3fa;
 
   
   /* ----- */
@@ -564,6 +571,10 @@ details summary::before {
   color: var(--mod-ci-200);
 }
 
+.color-ar {
+  color: var(--mod-ar-200);
+}
+
 .color-cd {
   color: var(--mod-cd-200);
 }
@@ -742,6 +753,30 @@ a.card .text--truncate {
 
 a.card p.text--truncate {
   min-height: 3em;
+}
+
+/* style horizontal divider for LHS menu items, level 1 */
+
+.horizontal-bar {
+  margin-top: 15px;
+  padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+html[data-theme="light"] .horizontal-bar {
+  border-top: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  background-color: #effbff;
+  color: #b0b1c1;
+}
+
+html[data-theme="dark"] .horizontal-bar {
+  border-top: 1px solid #45494f;
+  border-right: 1px solid #45494f;
+  background-color: #002531;
+  color: #baeeff;
 }
 
 /* HDH-120: Change 2nd level numbered list style */
@@ -1061,6 +1096,17 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.sidebar-ar > div > a::before,.sidebar-ar > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_artifact_registry.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .sidebar-cd > div > a::before,.sidebar-cd > a::before{
   content: " ";
   display: inline-block;
@@ -1099,6 +1145,16 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_ff.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-fme > div > a::before,.sidebar-fme > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_fme.svg");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1392,6 +1448,9 @@ html[data-theme="dark"] .sidebar-opensource > a::before {
 }
 .continuous-integration:hover {
   border-color: var(--mod-ci-200) !important;
+}
+.artifact-registry:hover {
+  border-color: var(--mod-ar-200) !important;
 }
 .feature-flags:hover {
   border-color: var(--mod-ff-200) !important;

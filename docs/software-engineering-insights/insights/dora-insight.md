@@ -30,7 +30,7 @@ If you're using ServiceNow or PagerDuty as your incident management platform, yo
 
 The DORA metrics - Lead Time for Changes, Deployment Frequency, Mean Time to Restore, and Change Failure Rate - are calculated based on the software delivery process defined in your DORA profile. This profile serves as the single source of truth for your DORA metrics calculations, allowing you to adjust thresholds and definitions for each metric to suit your organization's needs.
 
-To edit an existing DORA profile or create a new one, follow the step-by-step guide for configuring a [DORA type Workflow Profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#dora-profile).
+To edit an existing DORA profile or create a new one, follow the step-by-step guide for configuring a [DORA type Workflow Profile]/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview#dora-profile).
 
 :::info
 To calculate the DORA Metrics, this profile must be associated with the collection under which your DORA Insight is configured.
@@ -102,7 +102,7 @@ You can use a DORA Metrics Insight to examine your organization's DORA metrics. 
 
 Include **DORA metrics reports** to understand how well your team is doing. The **Deployment Frequency report** tells you how often your team successfully releases software.
 
-To keep track of Deployment Frequency, set up a [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile). This helps you pick what to monitor like merged pull requests or CI/CD jobs for the associated Collections. You can adjust Workflow profiles to fit your team's way of working, focusing on specific steps like Source Code Management (SCM) or a combination of issue management, SCM, and CI/CD. For more information, go to Workflow profile.
+To keep track of Deployment Frequency, set up a [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview). This helps you pick what to monitor like merged pull requests or CI/CD jobs for the associated Collections. You can adjust Workflow profiles to fit your team's way of working, focusing on specific steps like Source Code Management (SCM) or a combination of issue management, SCM, and CI/CD. For more information, go to Workflow profile.
 
 ![](./static/deployment-frequency.png)
 
@@ -169,7 +169,7 @@ To add the **DORA Mean Time To Restore** report to the Insight:
 2. Select the **Mean Time To Restore** widget.
 3. Customize the widget by configuring **Filters**. This step allows you to specify conditions (such as `Issue Created In`/`Resolved In`) that contribute to the overall calculations. In this case, we will add the `Issue Resolved In` filter to restrict our calculation only for the last quarter.
 4. Select the metric as `Average Time in Stage` under the **Metrics** tab
-5. On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile).
+5. On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview).
 6. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
 ## Best Practices

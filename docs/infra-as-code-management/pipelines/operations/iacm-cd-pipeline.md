@@ -1,7 +1,7 @@
 ---
 title: Provision resources during deployment
 description: Learn how to create a single pipeline to provision or update resources used during deployment.
-sidebar_position: 30
+sidebar_position: 40
 ---
 
 You may want to have a single pipeline that provisions or updates resources used during deployment. To do this, you need to create a pipeline with the following stages:

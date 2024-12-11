@@ -12,7 +12,7 @@ This section describes the components and their deployment architecture associat
 ## Overview
 
 You can use HCE to test the resilience of your CF-based microservices by executing chaos experiments on various layers of CF, ranging from application processes (supported for JVM-based apps currently) to the underlying host (VMware) infrastructure.
-HCE supports [resilience probes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/) which facilitates:
+HCE supports [resilience probes](/docs/chaos-engineering/use-harness-ce/probes/) which facilitates:
 - Out-of-the-box faults against different target types.
 - Automated validation of:
   - Resilience of the services (known as performance metrics);

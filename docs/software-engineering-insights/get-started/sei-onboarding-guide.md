@@ -68,8 +68,8 @@ If you're migrating to Harness SEI from Propelo standalone application, review t
 | **Step** | **Details** | **Documentation** |
 | - | - | - |
 | <a href="/docs/software-engineering-insights/sei-profiles/business-alignment-profile">Configure Business Alignment Profile</a> | Learn how to create/edit an investment profile | [Click here](/docs/software-engineering-insights/sei-profiles/business-alignment-profile) |
-| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-type-workflow-profile">Configure Workflow profile for DORA</a> | Learn how to create/edit a workflow profile for measuring DORA metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-type-workflow-profile) |
-| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-velocity-lead-time-type-workflow-profile">Configure Workflow profile for Lead Time</a> | Learn how to create/edit a workflow profile to measure Lead Time metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-velocity-lead-time-type-workflow-profile) |
+| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview#configure-the-dora-type-workflow-profile">Configure Workflow profile for DORA</a> | Learn how to create/edit a workflow profile for measuring DORA metrics | [Click here]/docs/software-engineering-insights/sei-profiles/workflow-profiles/dora-profile) |
+| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profiles/velocity-profile">Configure Workflow profile for Lead Time</a> | Learn how to create/edit a workflow profile to measure Lead Time metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profiles/velocity-profile) |
 | <a href="/docs/software-engineering-insights/sei-profiles/trellis-profile">Configure Trellis profile</a> | Learn how to create/edit a Trellis profile | [Click here](/docs/software-engineering-insights/sei-profiles/trellis-profile) |
 
 ### <a href="#phase-6-insights-creation"> Phase 6: Insights Creation </a>
@@ -251,7 +251,7 @@ SEI provides 3 different types of profiles:
 
 * [Investment Profile / Business Alignment Profile](/docs/software-engineering-insights/sei-profiles/business-alignment-profile): Business Alignment profiles help you understand where engineers are allocating their time through effort investment metrics. It is one of the most critical components of engineering metrics by connecting engineering to business value.
 * [Trellis Profile](/docs/software-engineering-insights/sei-profiles/trellis-profile): The Trellis Scores feature on SEI provides a proprietary scoring mechanism to evaluate and understand your engineering team's productivity. The Trellis Profile is the entity that lets you customize the standards and thresholds for calculating the Trellis Score. 
-* [Workflow Profile](/docs/software-engineering-insights/sei-profiles/workflow-profile): Workflow profile is an entity in SEI where users define the stages, events, and measurement criteria to assess the entire development process lifecycle using Lead Time and DORA metrics. You can use these profiles to derive insights on the time taken to ship changes or the time taken for bug fixes to reach production etc.
+* [Workflow Profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview): Workflow profile is an entity in SEI where users define the stages, events, and measurement criteria to assess the entire development process lifecycle using Lead Time and DORA metrics. You can use these profiles to derive insights on the time taken to ship changes or the time taken for bug fixes to reach production etc.
 
 ## Phase 6: Insights Creation
 

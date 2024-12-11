@@ -52,7 +52,7 @@ Various status of chaos faults are described below:
 <details>
 <summary> Fault Status </summary>
 
-	Fault status indicates the current status of the fault executed as a part of the chaos experiment. A fault can have 0, 1, or more associated [probes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/). Other steps in a chaos experiment include resource creation and cleanup.
+	Fault status indicates the current status of the fault executed as a part of the chaos experiment. A fault can have 0, 1, or more associated [probes](/docs/chaos-engineering/use-harness-ce/probes/). Other steps in a chaos experiment include resource creation and cleanup.
 
 	In a chaos experiment, a fault can be in one of six different states. It transitions from **running**, **stopped** or **skipped** to **completed**, **completed with error** or **error** state.
 

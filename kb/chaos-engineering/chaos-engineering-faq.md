@@ -84,7 +84,7 @@ Yes, you can use [SSH chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults
 No, HCE helps identify the failures in your application by injecting failures intentionally. This way, you can identify the failures and use other methods to address the issues identified using HCE.
 
 #### What kind of Reporting is provided by the tool?
-Once you execute your chaos experiments, you can download the reports that describe the experiment details such as runs, infrastructure, resilience score, and so on. For more information, go to [resilience probes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/), [alerts](/docs/chaos-engineering/use-harness-ce/experiments/alert-integration) and [chaos dashboard](/docs/chaos-engineering/use-harness-ce/dashboards/).
+Once you execute your chaos experiments, you can download the reports that describe the experiment details such as runs, infrastructure, resilience score, and so on. For more information, go to [resilience probes](/docs/chaos-engineering/use-harness-ce/probes/), [alerts](/docs/chaos-engineering/use-harness-ce/experiments/alert-integration) and [chaos dashboard](/docs/chaos-engineering/use-harness-ce/dashboards/).
 
 
 #### Can I deploy chaos infrastructure on an Openshift Cluster?
@@ -258,7 +258,7 @@ When the chaos infrastructure is deployed on EKS clusters, the experiments can l
 
 #### How does Harness Chaos access APM platforms to perform hypothesis validation?
 
-Harness Chaos experiments can consume K8s secrets containing authentication information for the desired APM and use it within the command-probe pods that leverage this information to make the right provider-specific API calls to retrieve metrics and other pertinent data. To learn more, go to [command probes](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/cmd-probe).
+Harness Chaos experiments can consume K8s secrets containing authentication information for the desired APM and use it within the command-probe pods that leverage this information to make the right provider-specific API calls to retrieve metrics and other pertinent data. To learn more, go to [command probes](/docs/chaos-engineering/use-harness-ce/probes/command-probe).
 
 #### What are the details about the user and the user's environment accessed and stored by Harness?
 
@@ -323,7 +323,7 @@ Yes, [chaos dedicated infrastructure](/docs/chaos-engineering/use-harness-ce/inf
 Yes, HCE provides integration with many tools, such as [Gitlab pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-gitlab-pipeline), [Jenkins pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-jenkins-pipeline), with [Harness CD](https://developer.harness.io/docs/category/integrate-hce-with-harness-cd), [Harness Feature Flags](https://developer.harness.io/docs/chaos-engineering/integrations/chaos-ff), and [SRM](https://developer.harness.io/docs/chaos-engineering/integrations/use-chaos-with-srm).
 
 #### Does Harness Chaos provide Resilience Probes for [X] APM (Prometheus, Dynatrace, Datadog, NewRelic, Splunk)?
-Yes, you can use resilience probes with [Prometheus](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/prom-probe), [Dynatrace](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/dynatrace-probe), [DataDog](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/datadog-probe), and [NewRelic](/docs/chaos-engineering/use-harness-ce/probes/cmd-probe-newrelic).
+Yes, you can use resilience probes with [Prometheus](/docs/chaos-engineering/use-harness-ce/probes/prom-probe), [Dynatrace](/docs/chaos-engineering/use-harness-ce/probes/dynatrace-probe), [DataDog](/docs/chaos-engineering/use-harness-ce/probes/datadog-probe), and [NewRelic](/docs/chaos-engineering/use-harness-ce/probes/command-probe/cmd-probe-newrelic).
 
 ## License
 

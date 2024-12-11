@@ -65,6 +65,20 @@ In this step, you can do the following:
 
 - If an empty or blank value is provided for a variable, the variable is disregarded, and no updates are made to the JSON or YAML file for that specific variable.
 
+Additionally, in the **Optional Configuration**, you can configure the following:
+
+1. **Allow Empty Commit**: Use the `allowEmptyCommit` field to push an empty commit.
+
+When set to true, the step will proceed with a commit even if no changes are detected, failing only on actual errors.
+
+When set to false, the step will fail if no changes are detected and display the message: `No files were committed. Hence not creating a pull request`.
+
+2. **Disable Git Restraint**: Use the Disable Git Restraint option to allow multiple pipelines to simultaneously modify the same Git repository using a single connector.
+
+When set to true, it disables the Git locking mechanism, removing constraints and enabling concurrent operations on the repository.
+
+![](./static/update-release-repo.png)
+
 ### Merge PR step
 
 :::info Limitation

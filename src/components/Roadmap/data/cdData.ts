@@ -17,7 +17,7 @@ export const CdData: Horizon = {
       {
         tag: [{value: "Pipeline"}],
         title: "Flexible Templates Phase II",
-        description: "Users can reference injected stages/steps in pipeline templates",
+        description: "Users can reference dynamically inserted stages/steps in pipeline templates",
       },
       {
         tag: [{value: "Pipeline"}],
@@ -36,13 +36,13 @@ export const CdData: Horizon = {
       },
       {
         tag: [{value: "GitOps"}],
-        title: "Native AppSet Support",
-        description: "Users can create GitOps Applications or AppSets directly through the UI as part of the creation flow.",
+        title: "Native Application Sets Support",
+        description: "Users can create GitOps Application Sets directly through the UI and Terraform.",
       },
       {
         tag: [{value: "GitOps"}],
         title: "Audit Trail for GitOps events",
-        description: "Users can generate audit trail entries for GitOps entities at multiple levels (Account/Org/Project) ",
+        description: "Users can generate audit trail entries for GitOps entities.",
       },
       {
         tag: [{value: "GitOps"}],
@@ -103,6 +103,16 @@ export const CdData: Horizon = {
         tag: [{value: "Release Management"}],
         title: "Release Management",
         description: "Users can create and orchestrate a release process using a collection of requirements and existing pipelines.",
+      },
+      {
+        tag: [{value: "Continuous Verification"}],
+        title: "Continuous Verification using Manifest",
+        description: "Users can initiate a CV step using a manifest. This allows service owners to define the key metrics to be validated in CV during service definition.",
+      }, 
+      {
+        tag: [{value: "Continuous Verification"}],
+        title: "Support for DQL in Dynatrace Health Source",
+        description: "Support for DQL (Dynatrace Query Language) in the Dynatrace Health Source to enhance data querying and analysis capabilities.",
       }
     ],
   },
@@ -113,6 +123,11 @@ export const CdData: Horizon = {
         tag: [],
         title: "SFDC deployments ",
         description: "Users can deploy to Salesforce (SFDC) directly through Harness",
+      },
+      {
+        tag: [{value: "GitOps"}],
+        title: "Improved Dashboards and reporting for Gitops",
+        description: "Deployments made using GitOps will be reflected in the Service Dashboards",
       },
       {
         tag: [],
@@ -154,11 +169,6 @@ export const CdData: Horizon = {
   "Later": {
     description: "Q2 2025+, May 2025 & Beyond",
     feature: [
-      {
-        tag: [{value: "Continuous Verification"}],
-        title: "Continuous Verification using Manifest",
-        description: "Users can initiate a CV step using a manifest. This allows service owners to define the key metrics to be validated in CV during service definition.",
-      }, 
       {
         tag: [{value: "Continuous Verification"}],
         title: "Prometheus Default Health Source for Continuous Verification",

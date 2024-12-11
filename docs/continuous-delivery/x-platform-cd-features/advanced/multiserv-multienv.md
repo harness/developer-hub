@@ -136,66 +136,32 @@ You can see the two service deployments running in parallel on both infrastructu
 
 The service deployments are grouped by Infrastructure. The first two services are running in parallel on one infrastructure and the second two services are running on the other infrastructure.
 
-## Deploy services to infrastructures using filtered list
-
-You can deploy services to infrastructures in an environment or environment group using filtered list.
-
-Make sure that you have added tags when creating your environment in the **Configuration** tab.
-
-![tag environments](./static/tag-environments.png)
-
-:::note
-
-Make sure that the feature flags  `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-1. In your CD stage, select **Service**.
-2. In **Select Services**, select the services you want to deploy.
-3. Select **Continue**.
-4. In the **Environments** tab, enable **Deploy to multiple Environments or Infrastructures**.
-5. Select **Environment** or **Environment Group**.  
-   You can select one or more environments (or an environment group), and then one or more infrastructures in each environment.
-6. In **Infrastructures**, select **Deploy to filtered list**, and then select **+ Add Filters**.
-7. In **FILTERS ON ENTITIES**, select **Infrastructure**.
-8. In **Type**, select: 
-   * **All** to deploy the selected services to all infrastructures within the environment or environment group.
-   * **Tags**, and then enter the tags in **CONDITION** to deploy the selected service(s) to the infrastructures with these tags. 
-        
-     Select **Any** to deploy the selected services to infrastructures that have any of these tags. 
-     
-     Select **All** to deploy the selected services to infrastructures having all these tags. 
-
-     You can select **CONDITION** as a fixed value, runtime input, or expression. The supported expressions are `<+service.tags>` and `<+pipeline.tags>`.
-
-   ![](./static/deploy-to-infra-filter.png)
-9. Select **Continue**, select an execution strategy, and complete the execution steps.
-10. Select **Save**.
-11. Select **Run**, and then **Run Pipeline**.
-    
-    You can see the infrastructures with the selected tags displayed in the target environment.
-
-## Deploy services to GitOps clusters using filtered list
+## Deploy services to environments using filtered list
 
 You can deploy services to the GitOps clusters in an environment using filtered list.
 
-Make sure that you have added tags when creating your environment in the **Configuration** tab.
+You can add tags to an environment while creating the environment. 
+
+![tag environments](./static/tag-environments.png)
+
+You can also add tags to existing environment by navigating through **Project Settings** -> **Environments** -> **Configuration** tab and add the relevant tags.
 
 :::note
 
 Make sure that the feature flags `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
+Now, lets deploy the service using filtered list in your CD pipeline.
 
-1. In your pipeline, create a **Deploy** stage with the **GitOps** option enabled.
+1. In your pipeline, create a **Deploy** stage.
 2. In your CD stage, select **Service**.
 3. In **Select Services**, select the services you want to deploy.
 4. Select **Continue**.
 5. In the **Environments** tab, enable **Deploy to multiple Environments or Clusters**.
 6. Select **Environment** or **Environment Group**.  
    You can select one or more environments (or an environment group), and then one or more infrastructures in each environment.
-7. In **Clusters**, select **Deploy to filtered list**, and then select **+ Add Filters**.
-8. In **FILTERS ON ENTITIES**, select **Clusters**.
+7. In **Environments**, select **Deploy to filtered list**, and then select **+ Add Filters**.
+8. Under **Identifier**, enter the name of the filter. In **FILTERS ON ENTITIES**, select **Environments**.
 9. In **Type**, select: 
    * **All** to deploy the selected services to all clusters within the environment or environment group.
    * **Tags**, and then enter the tags in **CONDITION** to deploy the selected services to the clusters with these tags. 
@@ -206,7 +172,94 @@ Make sure that the feature flags `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are en
 
      You can select **CONDITION** as a fixed value, runtime input, or expression. The supported expressions are `<+service.tags>` and `<+pipeline.tags>`.
 
-   ![](./static/deploy-to-clusters-filter.png)
+  <DocImage path={require('./static/deploy-to-env-filter.png')} width="100%" height="100%" title="Click to view full size image" />
+
+10. Select **Continue**, select an execution strategy, and complete the execution steps.
+11. Select **Save**.
+12. Select **Run**, and then **Run Pipeline**.
+    
+    You can see the clusters with the selected tags displayed in the target environment.
+
+
+## Deploy services to infrastructures using filtered list
+
+You can deploy services to infrastructures in an environment or environment group using filtered list.
+
+You can add tags to an infrastructure while creating the infrastructure. 
+
+![](./static/tag-infrastructure.png)
+
+You can also add tags to existing infrastructure by navigating through **Project Settings** -> **Environments** -> **Infrastructure Definitions** tab and choose the infrastructure where the tag needs to be added.
+
+:::note
+
+Make sure that the feature flags  `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+Now, lets deploy the service using filtered list in your CD pipeline.
+
+1. In your CD stage, select **Service**.
+2. In **Select Services**, select the services you want to deploy.
+3. Select **Continue**.
+4. In the **Environments** tab, enable **Deploy to multiple Environments or Infrastructures**.
+5. Select **Environment** or **Environment Group**.  
+   You can select one or more environments (or an environment group), and then one or more infrastructures in each environment.
+6. In **Infrastructures**, select **Deploy to filtered list**, and then select **+ Add Filters**.
+7. Under **Identifier**, enter the name of the filter. In **FILTERS ON ENTITIES**, select **Infrastructure**.
+8. In **Type**, select: 
+   * **All** to deploy the selected services to all infrastructures within the environment or environment group.
+   * **Tags**, and then enter the tags in **CONDITION** to deploy the selected service(s) to the infrastructures with these tags. 
+        
+     Select **Any** to deploy the selected services to infrastructures that have any of these tags. 
+     
+     Select **All** to deploy the selected services to infrastructures having all these tags. 
+
+     You can select **CONDITION** as a fixed value, runtime input, or expression. The supported expressions are `<+service.tags>` and `<+pipeline.tags>`.
+
+   <DocImage path={require('./static/deploy-to-infra-filter.png')} width="100%" height="100%" title="Click to view full size image" />
+9. Select **Continue**, select an execution strategy, and complete the execution steps.
+10. Select **Save**.
+11. Select **Run**, and then **Run Pipeline**.
+    
+    You can see the infrastructures with the selected tags displayed in the target environment.
+
+## Deploy services to GitOps clusters using filtered list
+
+You can deploy services to the GitOps clusters in an environment using filtered list.
+
+You can deploy services to the GitOps clusters in an environment using filtered list.
+
+You can add tags to an environment while creating the environment. 
+
+You can also add tags to existing environment by navigating through **Project Settings** -> **Environments** -> **Configuration** tab and add the relevant tags.
+
+:::note
+
+Make sure that the feature flags `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Now, lets deploy the service using filtered list in your CD pipeline.
+1. In your pipeline, create a **Deploy** stage with the **GitOps** option enabled.
+2. In your CD stage, select **Service**.
+3. In **Select Services**, select the services you want to deploy.
+4. Select **Continue**.
+5. In the **Environments** tab, enable **Deploy to multiple Environments or Clusters**.
+6. Select **Environment** or **Environment Group**.  
+   You can select one or more environments (or an environment group), and then one or more infrastructures in each environment.
+7. In **Clusters**, select **Deploy to filtered list**, and then select **+ Add Filters**.
+8. Under **Identifier**, enter the name of the filter. In **FILTERS ON ENTITIES**, select **Clusters**.
+9. In **Type**, select: 
+   * **All** to deploy the selected services to all clusters within the environment or environment group.
+   * **Tags**, and then enter the tags in **CONDITION** to deploy the selected services to the clusters with these tags.
+        
+     Select **Any** to deploy the selected services to clusters that have any of these tags. 
+     
+     Select **All** to deploy the selected services to clusters having all these tags. 
+
+     You can select **CONDITION** as a fixed value, runtime input, or expression. The supported expressions are `<+service.tags>` and `<+pipeline.tags>`.
+
+   <DocImage path={require('./static/deploy-to-clusters-filter.png')} width="100%" height="100%" title="Click to view full size image" />
 10. Select **Continue**, select an execution strategy, and complete the execution steps.
 11. Select **Save**.
 12. Select **Run**, and then **Run Pipeline**.
@@ -416,6 +469,20 @@ Max concurrency changes based on the following:
 * If you select **Deploy services in parallel**, Max concurrency is equal to the number of services.
 * If you select **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of environments or infrastructures.
 * If you select **Deploy services in parallel** and **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of services multiplied by the number of environments.
+
+## Naming Stages Using Matrix Labels
+
+Harness supports naming stages using Matrix Labels, which can improve readability and organization in deployments involving multiple services or environments. This feature allows you to use the names of matrix indices as labels instead of default indices.
+
+To enable this feature:
+
+1. Navigate to your Project Default settings.
+2. Enable the **Enable Matrix Labels By Name** option under Pipeline settings.
+
+
+![](./static/enable_matrix_by_name.png)
+
+By default, Harness uses numerical indices for the matrix naming strategy. Enabling this setting customizes the naming convention for better readability and organization.
 
 ## Limitations
 

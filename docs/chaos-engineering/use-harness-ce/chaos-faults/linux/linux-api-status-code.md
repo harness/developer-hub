@@ -6,7 +6,7 @@ redirect_from:
 ---
 
 import Ossupport from './shared/note-supported-os.md'
-import FaultPermissions from './shared/fault-permissions.md'
+import ApiChaosFaultPermissions from './shared/api-chaos-fault-permissions.md'
 
 Linux API status code changes the API response status code and optionally the API response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 
@@ -20,7 +20,7 @@ Linux API status code:
 
 <Ossupport />
 
-<FaultPermissions />
+<ApiChaosFaultPermissions />
 
 ### Optional tunables
 <table>

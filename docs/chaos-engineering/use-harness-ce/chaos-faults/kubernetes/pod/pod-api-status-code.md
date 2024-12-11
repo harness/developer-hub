@@ -16,6 +16,8 @@ Pod API status code is a Kubernetes pod-level chaos fault that change the API re
 
 ![Pod API Status Code](./static/images/pod-api-status-code.png)
 
+For a video tutorial, go to [pod API status code](https://youtu.be/h_lnNCG-j2o) that walks through the execution of the experiment.
+
 ## Use cases
 Pod API status code:
 - It can be used to test the error handling capabilities of API and client applications. By changing the API response status code to different error codes, such as 400 (Bad Request) or 500 (Internal Server Error), you can evaluate how well your application handles and responds to various error scenarios.
@@ -403,7 +405,7 @@ To enable HTTPS support for both incoming and outgoing traffic between the targe
 ### Advanced fault tunables
 
 - `PROXY_PORT`: Port where the proxy listens for requests and responses.
-- `SERVICE_DIRECTION`: Direction of the flow of control, either ingress or egress. It supports `ingress`, `egress` values.
+- `SERVICE_DIRECTION`: Direction of the flow of control, either `ingress` or `egress`.
 - `DATA_DIRECTION`: API payload type, request, or response. It supports `request`, `response`, and `both` values.
 - `NETWORK_INTERFACE`: Network interface used for the proxy.
 - `RESPONSE_BODY`: It can be used to override the response body. It should be provided in `/<regex>/<replacement>` format. If not provided, it will return the original response body.

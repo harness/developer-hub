@@ -7,7 +7,7 @@ sidebar_label: Secrets Detection scan step reference
 
 You can use this step to add a built-in Gitleaks step to detect passwords and other secrets in your code repositories. Built-in steps enable you to add scans quickly and with minimal configuration. These steps use scanners that are free to STO users and are ready to run as soon as you add them to your pipeline.
 
-![](../static/built-in-scan-steps.png)
+<DocImage path={require('../static/built-in-scan-steps.png')} width="50%" height="50%" title="Click to view full size image" />
 
 ### Important notes
 

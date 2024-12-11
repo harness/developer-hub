@@ -11,11 +11,11 @@ This topic describes application maps, their significance, and how to create, ed
 
 ### Before you begin
 
-- [Service discovery](/docs/chaos-engineering/concepts/explore-concepts/service-discovery)
+- [Service discovery](/docs/chaos-engineering/use-harness-ce/service-discovery)
 
 ### What is an application map?
 
-An application map is a resource on the Harness Platform (also known as the control plane) used to bind multiple interacting [discovered services](/docs/chaos-engineering/concepts/explore-concepts/service-discovery) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
+An application map is a resource on the Harness Platform (also known as the control plane) used to bind multiple interacting [discovered services](/docs/chaos-engineering/use-harness-ce/service-discovery) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
 
 ### Why is an application map required?
 
@@ -38,7 +38,7 @@ You can [create](#create-application-map), [edit](#edit-application-map), and [d
 
     ![](./static/app-maps/create-agent-1.png)
 
-2. Select one of the discovery agents or [create a new discovery agent](/docs/chaos-engineering/concepts/explore-concepts/service-discovery#customize-discovery-agent).
+2. Select one of the discovery agents or [create a new discovery agent](/docs/chaos-engineering/use-harness-ce/service-discovery#customize-discovery-agent).
 
     ![](./static/app-maps/select-agent-2.png)
 

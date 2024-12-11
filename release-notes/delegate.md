@@ -2,13 +2,12 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-11-5T22:00
+date: 2024-12-03T22:00 
 sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/delegate/rss.xml" />
 
@@ -22,7 +21,9 @@ These release notes describe recent changes to Harness Delegate.
 
 :::
 
-:::info **Delegate Base Image Migration**
+### Delegate Base Image Migration
+
+:::info
 
 Harness is planning to update the base image for its Delegate from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4`, as UBI-8 reached end-of-life on May 31st, 2024. No further updates, patches, or fixes will be provided for UBI-8, so this migration ensures continued security and compatibility. This change will take effect starting **January 6, 2025**.
 
@@ -85,9 +86,96 @@ Six months after a delegate image is released, the delegate reaches End of Suppo
 For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
+
+## December 2024
+
+### Version 24.11.84310 <!--  December 4, 2024 -->
+
+#### Hotfix
+
+- Increase Azure Web App Http client ReadTimeout duration to 230 Seconds. (CDS-104813)
+
+### Version 24.10.84106 <!-- December 4, 2024 -->
+
+#### Hotfix
+
+- Previously, when users encountered the **Too many files open** error while running pipelines, insufficient logs made it challenging to debug the issue. Additional logs have been added to help triage and identify the root cause of this issue. (PIPE-23686, ZD-72845,73732)
+
+### Version 24.11.84502 <!--  December 4, 2024 -->
+
+#### Hotfix
+
+- Removed CVE-2024-29857 & CVE-2024-30172 from delegate image. (PL-58901)
+
+### Version 24.11.84501 <!-- December 3, 2024 -->
+- Implemented functionality to expose Custom CF CLI variables while executing any CF CLI commands
+
+### Version 24.07.83407 <!--  December 3, 2024 -->
+
+#### Hotfix
+
+- Encoding Nexus 2 URI to support downloading artifacts which contains special characters in artifact version. (CDS-102807)
+
+### Version 24.11.84500 <!-- December 3, 2024 -->
+
+#### New features and enhancements
+
+- Enhanced AWS Secrets Manager integration to support secret updates using the `secretsmanager:PutResourcePolicy` permission. The appropriate request type (`UpdateSecret` or `PutSecretValue`) is now determined based on the `usePutSecret` flag in the connector configuration. (PL-58652)
+
+- Upgraded Spring Framework to version `6.1.x`, along with updates to dependencies for improved compatibility and security. (PL-58254)
+
+- Resolved a high-severity vulnerability (CVE-2024-7254) in the Delegate by upgrading `protobuf-java` to version `3.25.5`. (PL-57351, ZD-70765)
+
+- Upgraded the Java version to `17.0.11_9-jre-ubi9-minimal` in the Delegate base image to address security vulnerabilities, including `CVE-2023-22041`. (PL-55499)
+
+- Upgraded `com.nimbusds_nimbus-jose-jwt` to version `9.37.2` to address `CVE-2023-52428`. (PL-51347)
+
 ## November 2024
 
+### Version 24.11.84309 <!-- November 27, 2024 -->
+
+#### New features and enhancements
+
+- Implemented functionality to support groupByResource for the Datadog Health Source in Continuous Verification. (CDS-100367)
+
+### Version 24.11.84308 <!-- November 23, 2024 -->
+- The existing behaviour does not support returning the full, unredacted manifest in an encrypted format as the dry run output. With this fix, the full manifest is encrypted and returned as output, with no redactions. (CDS-103383)
+
+### Version 24.11.84307 <!-- November 21, 2024 -->
+- The customer encountered a pipeline failure when they enabled the CDS_K8S_CUSTOM_YAML_PARSER feature and used a YAML manifest with parameters supported by the 21.x.x version of the Kubernetes Java SDK. The issue arose due to a YAML parsing error. (CDS-104066)
+
+
+### Version 24.10.84205-ubi9-beta <!-- November 18, 2024 -->
+
+#### Early release (Beta release).
+
+- Upgrading redhat/ubi8-minimal to redhat/ubi9-minimal for testing purpose. **This image can have issues as this is a Beta image and not a GA image.**
+
+### Version 24.11.84306 <!-- November 11, 2024 -->
+
+#### Fixed issues
+
+- The delegate name is now displayed in the UI whenever a connector test fails, provided the validation task was acquired by a delegate. This enhancement offers better visibility into which delegate handled the task during troubleshooting. (PL-56483, ZD-64425)
+  
+- Fixed Azure WebApp deployment pipeline failures for specific connectors configured with ignoreTestConnection. (CDS-103533)
+  
+- Fixed the instance synchronization issue for Azure web applications. (CDS-103224)
+
+#### New features and enhancements
+
+- Added a new scope query parameter to the `listDelegates` endpoint. When set to true, this parameter enables listing delegates across hierarchical scopes (Account, Org, Project). By default, scope is set to false. (PL-57724)
+
+- Upgraded the base image for `delegate`, `delegate-minimal`, `ci-addon`, and `lite-engine` from `redhat/ubi8-minimal:8.8` to `redhat/ubi8-minimal:8.10`. This update enhances security and compatibility with the latest UBI version. (PL-58062)
+
+- Updated the `delegate/rings` API to return the immutable delegate version instead of the legacy delegate version. Additionally, the `connected-ratio-with-primary` and `connected-delegate-ratio` APIs have been removed. (PL-57518)
+
 ### Version 24.10.84200 <!-- November 4, 2024 -->
+
+#### Fixed issues
+
+- Removed restrictions on the Delegate metrics API endpoint, allowing requests with any Content-Type header. This update supports improved compatibility with monitoring tools like Dynatrace. (PL-57704, ZD-71319)
+
+#### New features and enhancements
 
 - Set limits on the number of delegates and delegate tokens allowed per account and per scope. The current limit is set to 10,000. (PL-56296)
 

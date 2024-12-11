@@ -162,7 +162,7 @@ The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/pod-network-loss/network-loss.yaml yaml)
 ```yaml
-# it injects network-loss for the egress traffic
+# it injects network-loss for the ingress/egress traffic
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -199,7 +199,7 @@ The following YAML snippet illustrates the use of these environment variables:
 
 [embedmd]:# (./static/manifests/pod-network-loss/destination-ips-and-hosts.yaml yaml)
 ```yaml
-# it injects the chaos for the egress traffic for specific ips/hosts
+# it injects the chaos for the ingress/egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -238,7 +238,7 @@ Use the following example to tune this:
 
 [embedmd]:# (./static/manifests/pod-network-loss/source-and-destination-ports.yaml yaml)
 ```yaml
-# it inject the chaos for the egress traffic for specific ports
+# it inject the chaos for the ingress/egress traffic for specific ports
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

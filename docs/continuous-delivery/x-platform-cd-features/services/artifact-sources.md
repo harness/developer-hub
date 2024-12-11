@@ -50,6 +50,9 @@ If a Docker image location is hardcoded in your Kubernetes manifest (for example
 
 When you hardcode the artifact in your manifests, any artifacts added to your Harness service are ignored.
 
+:::note info
+Configuring dependent fields, such as the artifact tag, as runtime inputs when the primary artifact is set as an expression is supported in YAML only and is not supported through the UI.
+:::
 
 ## Docker
 
@@ -3319,3 +3322,49 @@ Here are the expressions for referencing each version:
 If the service is configured to use an image with a specific digest, you can access the digest using 
 `<+pipeline.stages.STAGE_ID.spec.artifacts.primary.digest>`.
 
+
+## Runtime Input for the Latest Artifact Tag
+
+You can fetch and use the latest successfully deployed tag for a service in the **Harness pipeline** using the expression `<+lastSuccessfulDeployed.tag>`.
+
+- When the artifact tag is configured as an expression with `<+lastSuccessfulDeployed.tag>`, the pipeline will deploy the most recent successful artifact tag associated with the service.
+- This functionality is supported for the following container artifact types:
+  - Docker Registry
+  - GCR (Google Container Registry)
+  - ECR (Elastic Container Registry)
+  - ACR (Azure Container Registry)
+  - Nexus3
+  - Artifactory
+  - Google Artifact Registry
+  - GitHub Package Registry
+
+![](static/last_deployed_artifact_tag.png)
+
+### Resolution Scope
+
+**Service, Environment, and Infrastructure Consistency**
+
+  - The expression `<+lastSuccessfulDeployed.tag>` will only resolve when the service, environment, and infrastructure remain the same across deployments.
+
+**Pipeline Neutrality**
+
+  - The resolved tag is consistent across pipelines for the same service:
+   - Example: If a service with artifact-X(image-tag-v1) is used in pipeline-1 and pipeline-2:
+     If pipeline-1 successfully deployed image-tag-v2, deploying pipeline-2 with `<+lastSuccessfulDeployed.tag>` will resolve to image-tag-v2.
+
+**Scope Neutrality (Account-Level Scope)**
+
+  - Example 1: In two organizations with the same Service ID, Environment ID, and Infrastructure ID, `<+lastSuccessfulDeployed.tag>` will retrieve the tag from the organization where the pipeline is running.
+  - Example 2: In two projects within the same organization, the tag will be retrieved from the project and organization where the pipeline is running.
+  - Example 3: If service_id exists across multiple projects and env_id exists across different organizations, `<+lastSuccessfulDeployed.tag>` will resolve the tag within the project and organization where the pipeline is running.
+
+### Limitations
+
+**No Previous Successful Artifact**:
+If no previously successful artifact deployment exists, the pipeline will throw and display an error.
+
+**Artifact Image Change**:
+If the artifact image differs from the one used in the previous successful deployment, but `<+lastSuccessfulDeployed.tag>` is still used, an error will be thrown. This is because the artifact image is tightly linked to the tag.
+
+**Connector Changes**:
+If the connector configuration has changed but the tag remains the same, an error will be thrown to ensure consistency and avoid conflicts.

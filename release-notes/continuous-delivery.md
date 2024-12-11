@@ -45,23 +45,90 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## December
+
+### Version 1.68.4
+
+#### Fixed Issues
+
+- User was not able to provide timeout for Service Now approval step as Input. This issue is fixed now. (PIPE-23742, ZD-73247)
+- When using blue green deployment step in a template, AWS load balancer dropdown was not getting populated. This issue is fixed now. (CDS-104478, ZD-73560)
+- Previously, the Shell Script Provisioner step for PDC infrastructure failed when using runtime inputs for `hostAttributes`. This issue is fixed now. (CDS-104659)
+
 ## November
+
+### Version 1.67.2
+
+#### New Features and enhancements
+
+- You can now deploy your artifacts to Google Cloud Run. For more information, go to Harness [Google Cloud Run Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-cloud-run/). This feature is behind a feature flag `CDS_GOOGLE_CLOUD_RUN`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-36357)
+
+- You can now deploy using Azure Functions enabling you to automate and manage serverless function deployments to Azure with ease. For more information, go to Harness [Azure Functions deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-function-tutorial/). This feature is behind a feature flag `CDS_AZURE_FUNCTION`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-51900)
+
+- Previously, GitOps steps like UpdateReleaseRepo, MergePR, and RevertPR were delayed due to locking on the tokenRef to prevent GitHub rate limits. A new Disable `Git Restraint` option now allows users to bypass this locking for faster execution. (CDS-101882, ZD-71430,72936)
+
+- Harness now supports Post-Deployment Rollback for services at both the Account and Organisation levels. This feature is behind a feature flag `CDS_SVC_ENV_DASHBOARD_FOR_ACCOUNT_AND_ORG_LEVEL`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-94527)
+
+- Harness now supports fetching and using the latest successfully deployed tag for a service in the Harness pipeline using the expression `<+lastSuccessfulDeployed.tag>`. For more information, go to Harness [Runtime Input for the Latest Artifact Tag](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#runtime-input-for-the-latest-artifact-tag). (CDS-101173)
+
+#### Fixed Issues
+
+- Previously, when configuring Approver Inputs with allowed values using a regex in the Manual Approval step, the regex setting did not appear in the UI after saving and reloading a template. This issue is fixed now. (CDS-99459, ZD-73396)
+- Previously, selecting certain templates in **My Organization Templates**, UI was not rendering properly . This issue is fixed now, and templates now load and display correctly. (CDS-103675, ZD-73250)
+- During Azure web deployments for windows complete logs were not getting shown. It happened due to a library upgrade for Azure which caused issue with some parts of Azure integration. The issue is fixed now. (CDS-103358, ZD-73664)
+- In Azure function deployment instance sync was not reporting instance count. This issue is fixed now. (CDS-103224)
+- Previously, GitOps entries did not appear in custom dashboards when the `cd_stage_execution` view was used in Looker. This issue is fixed now. (CDS-103135)
+- Previously, the Terraform Cloud Run step would get stuck during the **Apply** phase when there were no changes in the Terraform plan. This issue is fixed now. (CDS-103088, ZD-72114)
+- Previously, attempting to delete folders in the file store with names similar to other folders caused errors, even when the folder appeared to have no references. For example, deleting a folder would fail if another folder with a similar prefix contained referenced entities. This issue is fixed now. (CDS-103076, ZD-72658)
+- Previously, the runtime input regex for the version field in the Google Artifact Registry (GAR) artifact source was not working as expected, causing all tags to display instead of filtering based on the regex. This issue is fixed now, and the version field now correctly supports regex patterns, allowing users to filter tags as intended. (CDS-102800, ZD-72658)
+- Previously, when a pipeline had two stages with a runtime environment `(<+input>)` propagated to the next stage, selecting **Deploy to Different Infrastructure** caused the payload to contain a null environment. This prevented users from selecting infrastructure options. This issue is fixed now. (CDS-100718)
+
+### Version 1.65.3
+
+#### New features and enhancements
+
+- **Emit Audit Event for Stable Template Version Changes**
+
+Harness now emits an Audit Event whenever the stable version of a template is updated. The Audit Event includes a YAML Diff section, allowing users to easily view the differences between the old and new stable versions of the template. (PIPE-19754)
+
+- **Support for OAuth Configuration with Self-Hosted GitLab Provider**
+
+Harness now supports configuring OAuth for self-hosted GitLab providers. This feature simplifies authentication and authorization by enabling seamless integration with GitLab's OAuth mechanism.  This change is behind FF `CDS_PROVIDERS` and `PIPE_ENABLE_GITLAB_ON_PREM_FLOW`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. This item requires Harness Delegate version 843xx or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+
+#### Fixed Issues
+
+- Previously, approver inputs in multi-approval scenarios displayed only the last approval activity's response, leading to incorrect default values and missing input constraints. The issue is fixed. (CDS-103109)
+- Previously, URLs used to fetch artifacts from Artifactory with artifact filters did not support special characters, such as spaces, in artifact names. This issue is now fixed to automatically encode URLs, allowing support for special characters. This change is behind FF `CDS_ENCODE_API_REQUESTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-103041, ZD-69919)
+- Previously, when a canary pod had no data while the primary pod did, the risk should have been marked as "No Data" per [documentation](/docs/continuous-delivery/verify/cv-results/interpret-metric-results#metrics-summary-section). Instead, it was incorrectly marked as "No Analysis," causing issues when using the "Fail on No Analysis" feature. This issue is now fixed to align with the documentation, distinguishing "No Data" from "No Analysis" in risk assessments.(CDS-102865, ZD-72242)
+
+#### Gitops Version 1.20.2, Gitops Agent Version 0.81.0
+
+#### New Features and Enhancement
+
+- For Harness GitOps Applications that use multiple sources, users can now select which of the source to sync with their Applications during the sync operation. Previously, all sources were always synced. (CDS-103055)
+- With agent version **v0.81.0**, the base image for the GitOps agent has been upgraded from `redhat/ubi8-minimal:8.9-1029` to `redhat/ubi8-minimal:8.10-1086`.
+
+#### Fixed issues
+
+- GitOps hosted agent scale-up was failing with the unclear error message "Failed to Scale the GitOps agent." This issue is resolved, and the error message now provides a detailed reason for the scale-up failure. (CDS-103429)
+- Users experience continuous log window refresh when viewing logs for a Harness GitOps resource. This issue is resolved. (CDS-103016, ZD-72211)
 
 ### Version 1.64.6
 
 #### New features and enhancements
 
-- Approval APIs now support Service Account tokens for approving or rejecting Harness Manual Approval steps. For more information, go to Harness [Using Approval API](/docs/platform/approvals/adding-harness-approval-stages#using-the-approvals-api-with-service-account-authentication). (CDS-97580, ZD-64388)
+- Approval APIs now support Service Account tokens for approving or rejecting Harness Manual Approval steps. For more information, go to Harness [Using Approval API](/docs/platform/approvals/adding-harness-approval-stages#using-the-approvals-api-with-service-account-authentication). This feature is behind a feature flag `CDS_SERVICE_ACCOUNT_SUPPORT_IN_HARNESS_APPROVAL`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-97580, ZD-64388)
 
 - Harness now supports webhooks configured with **GitLab System Hooks** to trigger pipelines. For more information, go to Harness [GitLab System Hooks](/docs/platform/triggers/triggers-reference/#gitlab-system-hooks). (CDS-95423)
 
-- Harness now supports self-hosted Bitbucket OAuth tokens for the Git Experience. For more information, go to Harness [Bitbucket Configuration](/docs/platform/git-experience/oauth-integration/). (CDS-95417)
+- Harness now supports self-hosted Bitbucket OAuth tokens for the Git Experience. For more information, go to Harness [Bitbucket Configuration](/docs/platform/git-experience/oauth-integration/). This feature is behind a feature flag `CDS_PROVIDERS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-95417)
 
 - The Harness platform has been updated with the Kubernetes SDK (v18.0 to v21.0) and Helm SDK. (v3.12 to v3.13).
 
-- Harness has introduced native supports for **Canary** and **Blue-Green** Deployment strategies with Helm Chart deployments. For more information, go to Harness [Helm Chart deployments](/docs/category/helm-step-reference/). (CDS-35715)
-
-- Harness now supports for enabling metrics in ASG deployments. For more information, go to Harness [ASG Additional Configuration](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#asg-additional-configuration). (CDS-99276)
+- Harness has introduced native supports for **Canary** and **Blue-Green** Deployment strategies with Helm Chart deployments. For more information, go to Harness [Helm Chart deployments](/docs/category/helm-step-reference/). This feature is behind a feature flag `CDS_HELM_BG_STRATEGY`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-35715)
+ 
+- Harness now supports for enabling metrics in ASG deployments. For more information, go to Harness [ASG Additional Configuration](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#asg-additional-configuration). This feature is behind a feature flag `CDS_ASG_ENABLE_METRICS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-99276)
 
 - Harness now detects the failure state of CRDs in the Kubernetes Apply step when CRDs behave like jobs. (CDS-98761)
 

@@ -4,7 +4,7 @@ sidebar_position: 2
 sidebar_label: What's Supported
 ---
 
-Gitness Artifact Registries support a variety of registry types, and new ones are often added. We currently support the registry types listed below. 
+Harness Open Source Artifact Registry support a variety of registry types, and new ones are often added. We currently support the registry types listed below. 
 
 ## Supported registry types
 

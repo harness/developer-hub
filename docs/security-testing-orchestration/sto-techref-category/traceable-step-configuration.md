@@ -217,7 +217,7 @@ These are the essential settings for performing an Extraction scan using the Tra
 ## Traceable step settings
 The following are the details of each field in the Traceable step.
 ### Scan Mode
-The Traceable step in STO supports three scan modes: Orchestration, Ingestion, and Extraction. Refer to the documentation specific to each mode for details and configuration instructions.
+The Traceable step in STO supports three scan modes: [Orchestration](#orchestration-mode-configuration), [Ingestion](#ingestion-mode-configuration), and [Extraction](#extraction-mode-configuration). Refer to the documentation specific to each mode for details and configuration instructions.
 
 ### Scan Configuration
 The predefined configuration used for the scan. The Traceable step currently supports only the default scan configuration.
@@ -227,7 +227,7 @@ The predefined configuration used for the scan. The Traceable step currently sup
 The type is set to **Instance** by default, which is used to scan a running application
 
 #### Target and Variant Detection
-You can configure the details of your scan instance by setting its name and variant. These are the labels assigned to the target you’re scanning. You can choose to set them manually by selecting the **Manual** option or have them configured automatically by selecting Auto. When Auto is chosen, the values are set as follows:
+You can configure the details of your scan instance by setting its name and variant. These are the labels assigned to the target you’re scanning. You can choose to set them manually by selecting the **Manual** option or have them configured automatically by selecting **Auto**. When Auto is chosen, the values are set as follows:
 
 #### Auto
 When selected **Auto**, the step sets these values as:
@@ -267,7 +267,7 @@ You should create a Harness text secret with your encrypted token and reference 
 Enter the Traceable Suite  ID, which you can find in the URL when you open your suite in Traceable. For example, in the URL `https://app.traceable.ai/my-suite/44aadeB-782b-8d52-8q12-43kdf33/vulnerabilities?time=1d&env=env`, the suite ID is `44aadeB-782b-8d52-8q12-43kdf33`. You can learn more about Suites in the [Traceable documentation](https://docs.traceable.ai/docs/suites).
 
 #### Runner Selection
-This field appears when the scan mode is set to **Orchestration**. You can allow Traceable to set it automatically by selecting **Auto**, or configure it manually by choosing **Manual**. If you select **Manual**, enter the Traceable [Runner ID][https://docs.traceable.ai/docs/runners] in the **Runner ID** field. Also, make sure you have runners created and active in Traceable, as the step cannot create runners.
+This field appears when the scan mode is set to **Orchestration**. You can allow Traceable to set it automatically by selecting **Auto**, or configure it manually by choosing **Manual**. If you select **Manual**, enter the Traceable [Runner ID](https://docs.traceable.ai/docs/runners#runner-view) in the **Runner ID** field. Also, make sure you have runners created and active in Traceable, as the step cannot create runners.
 
 ### Ingestion File
 
@@ -306,3 +306,9 @@ import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
 import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
+
+## Proxy settings
+
+import ProxySettings from './shared/proxy-settings.md';
+
+<ProxySettings />

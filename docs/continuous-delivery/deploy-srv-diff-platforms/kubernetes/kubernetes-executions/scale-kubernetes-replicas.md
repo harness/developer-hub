@@ -49,7 +49,7 @@ In **Workload**, enter the name of the resource in the format `[namespace/]Kind
 
 `my-namespace/Deployment/harness-example-deployment-canary`
 
-You can scale Deployment, DaemonSet, or StatefulSet.
+You can scale Deployment, or DaemonSet.
 
 You can only enter one resource in **Workload**. To scale another resource, add another **K8s Scale** step.
 

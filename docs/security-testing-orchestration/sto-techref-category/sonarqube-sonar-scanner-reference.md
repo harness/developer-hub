@@ -387,6 +387,8 @@ You can set up your pipeline to generate test coverage reports and then get them
 
 - Carefully review the specific language reference to make sure that you install the required binaries and dependencies, and that you publish your reports in the correct format.
 
+- Note that there may be additional settings for downloads such as PDF reports that are required. For example, because [a Temporary branch is created, administrators will need to enable the `Keep when inactive` setting](https://docs.sonarsource.com/sonarqube-server/10.4/project-administration/pdf-reports/#temporary-branches). Please refer to the SonarQube's documentation regarding these adjustments
+
 :::
 
 #### Example: generate a Python coverage report

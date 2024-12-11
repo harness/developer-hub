@@ -2161,8 +2161,7 @@ The default directory that the Shell Script steps run in is `/tmp` and is remove
 To enable remote environments and infrastructures in your Service Management Platform (SMP), follow these implementation guidelines:
 
 - Make sure your SMP is updated to the latest version. 
-- Activate the feature flag, `CDS_ENV_GITX` on the designated environment.
-Go to [Manage Harness environments and infrastructures from Git](https://developer.harness.io/docs/platform/git-experience/manage-environments-infra-definitions) for more information.
+- Go to [Manage Harness environments and infrastructures from Git](https://developer.harness.io/docs/platform/git-experience/manage-environments-infra-definitions) for more information.
 
 
 #### Does Harness support the use of OpenID Connect(OIDC) for connecting to various systems such as Amazon Web Services(AWS) and Google Cloud Platform (GCP)?

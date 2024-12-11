@@ -12,7 +12,7 @@ This topic describes how you can create chaos experiments that consist of chaos 
 
 - [What is a chaos experiment?](/docs/chaos-engineering/concepts/chaos101)
 - [What are chaos faults?](/docs/chaos-engineering/use-harness-ce/experiments/#chaos-fault)
-- [What are resilience probes?](/docs/chaos-engineering/concepts/explore-concepts/resilience-probes/)
+- [What are resilience probes?](/docs/chaos-engineering/use-harness-ce/probes/)
 - [How to create a resilience probe?](/docs/chaos-engineering/use-harness-ce/probes/use-probe)
 
 ### Create Environment
@@ -182,13 +182,15 @@ You can choose to run the experiment immediately by clicking the **Run** button,
 
 ### Execute Experiment Once
 
-To execute the experiment once, select **Non-Cron(Single run)**, click **Save**, and then click **Run**.
+- To execute the experiment once, select **Non-Cron (Single run)**, click **Set Schedule**, and then select **Run**.
+
+- To run the experiment once, and at a specific time, select the **Run Once at a specific time**, choose the date and time, click apply, and select **Set Schedule**.
 
 	![Schedule experiment](./static/create-experiments/schedule.png)
 
 ### Execute Experiment on a Schedule
 
-1. To schedule the experiment to run periodically, select **Cron(Recurring run)**, and set the schedule using the **Minutes**, **Hourly**, **Daily**, **Monthly** or **Yearly** options. The **Cron Expression** will be automatically generated.
+1. To schedule the experiment to run periodically, select **Cron (Recurring run)**, and set the schedule using the **Minutes**, **Hourly**, **Daily**, **Monthly** or **Yearly** options. The **Cron Expression** will be automatically generated.
 
 2. Click **Set Schedule**.
 

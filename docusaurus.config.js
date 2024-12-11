@@ -47,6 +47,10 @@ async function config() {
       locales: ['en'],
     },
 
+    future: {
+      experimental_faster: true,
+    },
+
     presets: [
       [
         'classic',
@@ -120,6 +124,10 @@ async function config() {
                   to: 'docs/continuous-integration',
                 },
                 {
+                  label: 'Artifact Registry',
+                  to: 'docs/artifact-registry',
+                },
+                {
                   label: 'Continuous Delivery & GitOps',
                   to: 'docs/continuous-delivery',
                 },
@@ -173,7 +181,7 @@ async function config() {
                 },
                 {
                   label: 'Open Source',
-                  to: 'docs/open-source'
+                  to: 'docs/open-source',
                 },
                 {
                   label: 'FirstGen',
@@ -222,6 +230,10 @@ async function config() {
                 {
                   label: 'Feature Flags',
                   to: 'university/feature-flags',
+                },
+                {
+                  label: 'Feature Management & Experimentation',
+                  to: 'https://arcade.split.io/',
                 },
                 {
                   label: 'Cloud Cost Management',
@@ -405,7 +417,7 @@ async function config() {
                 },
                 {
                   label: 'Partners',
-                  to: 'https://partnertraining.harness.io/',
+                  to: 'https://www.harness.io/partners',
                 },
               ],
             },
@@ -488,6 +500,7 @@ async function config() {
         },
       }),
     plugins: [
+      'docusaurus-plugin-sass',
       [
         path.resolve(__dirname, './plugins/docs-rss-plugin'),
         {
@@ -590,7 +603,6 @@ async function config() {
         },
       ],
 
-      'docusaurus-plugin-sass',
       path.join(__dirname, '/plugins/utmcookie-plugin'),
       path.join(__dirname, '/plugins/feedback-plugin'),
       path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
