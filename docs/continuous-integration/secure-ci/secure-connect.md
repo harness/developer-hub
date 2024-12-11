@@ -5,11 +5,13 @@ sidebar_position: 20
 ---
 
 :::note
+Beta Notice for Secure Connect on Harness Cloud
 
-Currently, Secure Connect for Harness Cloud is behind the feature flag `CI_SECURE_TUNNEL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Secure Connect for Harness Cloud is currently in beta and may not yet be fully stable. Its functionality and performance are subject to change, and some issues may occur during use.
 
-If you're using Secure Connect with macOS, the feature flag `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` is required as well. 
+To enable Secure Connect for Harness Cloud, ensure the feature flag CI_SECURE_TUNNEL is active. Please contact Harness Support for assistance with enabling this feature.
 
+For macOS users, the additional feature flag CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED is required for compatibility.
 :::
 
 [Harness CI Cloud (Harness-managed build infrastructure)](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) addresses common challenges you might face when implementing a continuous integration tool in your infrastructure:
