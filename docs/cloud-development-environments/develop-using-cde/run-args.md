@@ -30,6 +30,11 @@ To include the runArgs property in your ```devcontainer.json``` configuration, u
 ```
 "runArgs": ["--env", "var1=abcd", "var2=defg", "var3=1234"]
 ```
+#### No Value Argument
+For arguments with no values, you can use the following format:
+```
+"runArgs": ["--rm"]
+```
 In this example:
 ```
 "runArgs": ["--restart=no", "--security-opt", "seccomp=unconfined"]
@@ -117,7 +122,7 @@ For some arguments, a predefined list of allowed and blocked values is enforced:
 
 #### Current Restrictions
 - **Network**: Blocked values are ```host``` and ```none```.
-- **Label**: Blocked value is ```gitspace\.remote\.user```.
+- **Label**: Labels with prefix ```gitspace.remote.user=``` are blocked.
 
 
 

@@ -59,11 +59,11 @@ Here’s what you need to add to your ```devcontainer.json``` file:
 ```
 - Update the **```image```** property in your ```devcontainer.json``` file with the private Docker image URL.
 - Add the **connector details** under the ```connectors``` property within the ```customizations``` property.
-- The type field should always be **```"Artifactory"```** for artifact repository connectors.
+- The type field should always be **```"Artifactory"```** for Artifact Repository connectors and **```"DockerRegistry"```** for Docker Registry connectors. 
 - The identifier field should include the connector identifier, adjusted based on its scope level.
 
 :::info 
-Currently, you can pull images from only one Artifact Repository connector per Gitspace. 
+Currently, you can use only one connector per Gitspace to pull images from a private Repository.
 :::
 
 ### Understanding the Image URL

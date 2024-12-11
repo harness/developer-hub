@@ -84,6 +84,12 @@ import { MODULES } from "@site/src/constants";
           link: "/docs/cloud-development-environments/features-of-gitspaces/private-docker-images"
         },
         {
+          title: "Secure Connect",
+          module: MODULES.cde,
+          description: "Learn more about how you use the secure connect integration to connect Harness to your privately-owned, on-prem assets.",
+          link: "/docs/cloud-development-environments/features-of-gitspaces/secure-connect"
+        },
+        {
           title: "Auto-Stopping",
           module: MODULES.cde,
           description:
