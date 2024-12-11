@@ -67,13 +67,13 @@ export const docsCards: CardSections = [
         title: "Approval Step",
         module: MODULES.iacm,
         description: "Learn how to use the approval step to review resource changes before applying them.",
-        link: "/docs/infra-as-code-management/pipelines/iacm-plugins/approval-step",
+        link: "/docs/infra-as-code-management/use-iacm/approval-step",
       },
       {
         title: "PR Automation",
         module: MODULES.iacm,
         description: "Learn how to set up a PR pipeline for infrastructure changes.",
-        link: "/docs/infra-as-code-management/pipelines/operations/pr-automation",
+        link: "/docs/infra-as-code-management/use-iacm/pr-automation",
       },
       {
         title: "Cost Estimation",

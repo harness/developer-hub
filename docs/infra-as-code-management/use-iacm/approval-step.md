@@ -1,7 +1,7 @@
 ---
 title: Add an IaCM approval step
 description: Learn how to use the approval step to review resource changes before applying them.
-sidebar_position: 20
+sidebar_position: 30
 ---
 
 import Tabs from '@theme/Tabs';
@@ -44,7 +44,7 @@ The following example adds an **IaCM Approval** step to a provision pipeline, pl
 3. Hover between the **Plan** and **Apply** steps, and then select **Add Step**.
 4. From the **Step Library**, select **IaCM Approval** and add it to the pipeline. 
 
-![Resources](./static/add-approval-step.png)
+![Resources](static/add-approval-step.png)
 </TabItem>
 </Tabs>
 
@@ -62,4 +62,4 @@ The Wiz scan feature is part of the [Harness STO module](https://developer.harne
 
 If you have the right access control, you can select each resource and see which attributes have changed. 
 
-![Resources](./static/approval-runtime.png)
+![Resources](static/approval-runtime.png)
