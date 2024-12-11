@@ -66,7 +66,7 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 
 | Manifest Type                       | Required Tool/SDK     | Certified Version     |
 | ----------------------------------- | --------------------- | --------------------- |
-| Kubernetes                          | kubectl               | v1.28.7              |
+| Kubernetes                          | kubectl               | v1.29.2               |
 |                                     | go-template           | v0.4.1                |
 | Helm                                | kubectl               | v1.27.0               |
 |                                     | helm                  | v3.11.0               |
@@ -74,7 +74,7 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 |                                     | helm                  | v3.11                 |
 |                                     | chartmuseum           | v0.8.2 and v0.12.0    |
 | Kustomize                           | kubectl               | v1.27.0               |
-|                                     | kustomize             | v4.5.4                |
+|                                     | kustomize             | v5.0.4                |
 | OpenShift                           | kubectl               | v1.27.0               |
 |                                     | oc                    | v4                    |
 
