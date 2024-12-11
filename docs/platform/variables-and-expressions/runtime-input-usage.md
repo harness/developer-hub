@@ -471,11 +471,6 @@ To get the exact uploaded file name, navigate to the `Output` tab of the upload 
 To download the uploaded file, use the following CURL command:
 
 ```
-curl --location 'https://app.harness.io/gateway/pipeline/api/input-file/file/PLAN_EXECUTION_ID?accountIdentifier=ACCOUNT_IDENTIFIER&nodeExecutionId=NODE_EXECUTION_ID&fileName=FILE_NAME' \
---header 'x-api-key: PAT_TOKEN'
-```
-
-```
 curl --location 'https://app.harness.io/gateway/pipeline/api/input-file/download-file?accountIdentifier=ACCOUNT_IDENTIFIER&filePath=FILE_PATH' \
 --header 'x-api-key: PAT_TOKEN'
 ```
@@ -489,6 +484,8 @@ Parameters:
 ```
 accountId/runtimeFileInputData/pipelineExecutionId/nodeExecutionId/fileName.extension
 ```
+
+You can extract the file path name from the step execution logs or directly via Output Variable.
 
 :::note
 **Important Notes for Uploading Files as Runtime Input:**
