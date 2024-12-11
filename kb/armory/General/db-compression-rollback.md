@@ -1,5 +1,5 @@
 ---
-title: Execution repository compression rollback
+title: Execution Repository Compression Rollback for Downgrades to Versions Incompatible with Compression
 ---
 
 ## Problem Description
@@ -7,7 +7,7 @@ title: Execution repository compression rollback
 [Spinnaker Orca Pull Request #4620](https://github.com/spinnaker/orca/pull/4620) introduced improvements for handling 
 large payloads by storing compressed bodies in the database. Unfortunately, in the case of a rollback to a version
 which does not support compression - Spinnaker will fail to render executions, because the `body` would effectively be 
-empty, as it would be store in a corresponding entry as `compressed_body` in a table with `_compressed_executions` 
+empty, as it would be stored in a corresponding entry as `compressed_body` in a table with `_compressed_executions` 
 appended.
 
 ## Workaround
