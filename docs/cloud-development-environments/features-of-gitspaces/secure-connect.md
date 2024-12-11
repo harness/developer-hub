@@ -10,7 +10,7 @@ redirect_from:
 This guide explains how to enable and use **Secure Connect** for your Gitspaces. With Secure Connect, you can directly fetch and pull private Docker images from privately-hosted assets, such as internal Artifact Repositories and on-premises repositories.
 
 :::info
-Secure Connect for Harness Gitspaces is currently gated behind the feature flag ```CI_SECURE_TUNNEL```. To enable this feature, please reach out to [Harness Support](support@harness.io).
+Secure Connect for Harness Gitspaces is currently gated behind the feature flag ```CI_SECURE_TUNNEL```. To enable this feature, please reach out to support@harness.io.
 
 For macOS users utilizing Secure Connect, an additional feature flag, ```CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED``` must also be enabled.
 :::
