@@ -62,4 +62,4 @@ The Wiz scan feature is part of the [Harness STO module](https://developer.harne
 
 If you have the right access control, you can select each resource and see which attributes have changed. 
 
-![Resources](../pipelines/iacm-plugins/static/approval-runtime.png)
+![Resources](static/approval-runtime.png)
