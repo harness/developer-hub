@@ -14,7 +14,7 @@ To do so, follow these steps:
 
 1. Navigate to your pipeline, and enter your `Build` stage. 
 2. Create a new `Build and Push an image to Docker Registry` step. 
-3. Select `Harness Artifact Registry` as your registry type. 
+3. `Harness Artifact Registry` is the default registry type. Ensure that it is selected, and move to the next step. 
 4. Select your registry under `Registry`. Clicking the field will show a list of available registries. 
 5. Once your registry is selected, a list of images will populate under `Image Name`. Choose one, or type the name of a new image that you are building the first time. 
 6. Enter any image tags you wish under `Tags`.
