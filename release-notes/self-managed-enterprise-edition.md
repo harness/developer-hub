@@ -264,7 +264,7 @@ gsutil -m cp \
 
 #### Harness Platform
 
-- Updating audit streaming service to 1.13.0 to fix failure for accounts having new Audit action enum types BYPASS and STABLE_VERSION_CHANGED.. (PL-58761)
+- Updating audit streaming service to 1.13.0 to fix failure for accounts having new Audit action enum types BYPASS and STABLE_VERSION_CHANGED. (PL-58761)
 
 ## December 04, 2024, version 0.23.0
 
