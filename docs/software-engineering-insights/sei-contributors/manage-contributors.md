@@ -2,6 +2,7 @@
 title: Manage Contributors
 description: Manage contributor attributes and associations.
 sidebar_position: 50
+sidebar_label: Manage contributors
 ---
 
 Contributors are developers and other team members that complete actions and activities that contribute to your SEI metrics and insights. Contributors are represented by contributor records in SEI. SEI contributor records serve two primary functions: Account association and Collection association.

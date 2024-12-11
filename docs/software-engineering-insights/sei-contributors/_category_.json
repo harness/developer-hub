@@ -1,11 +1,11 @@
 {
-    "label":"Insights",
-    "position": 22,
+    "label":"Contributors",
+    "position": 21,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Insights"
+       "title":"Contributors"
     }
  }
