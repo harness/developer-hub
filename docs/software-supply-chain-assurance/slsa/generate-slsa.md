@@ -48,8 +48,6 @@ Follow the instructions below to configure the **SLSA Generation** step.
 
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using an [Harness Expressions](/docs/platform/variables-and-expressions/harness-variables/). Refer to the workflows described below for detailed guidance.
 
-<!-- <DocImage path={require('../slsa/static/slsa-ver-dockerhub.png')} width="50%" height="50%" title="Click to view full size image" /> -->
-
 </TabItem>
 
 <TabItem value="ecr" label="ECR" default>
@@ -63,10 +61,6 @@ Follow the instructions below to configure the **SLSA Generation** step.
 * **Region:** The geographical location of your ECR repository, example `us-east-1`
 
 * **Account ID:** The unique identifier associated with your AWS account.
-
-
-
-<!-- <DocImage path={require('../slsa/static/slsa-ver-ecr.png')} width="50%" height="50%" title="Click to view full size image" />  -->
 
 
 </TabItem>
@@ -84,9 +78,6 @@ Follow the instructions below to configure the **SLSA Generation** step.
 * **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
 
 
-<!-- <DocImage path={require('../slsa/static/slsa-ver-gcr.png')} width="50%" height="50%" title="Click to view full size image" /> -->
-
-
 </TabItem>
 
 <TabItem value="acr" label="ACR" default>
@@ -98,9 +89,6 @@ Follow the instructions below to configure the **SLSA Generation** step.
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
 * **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
-
-
-<!-- <DocImage path={require('../slsa/static/slsa-ver-acr.png')} width="50%" height="50%" title="Click to view full size image" /> -->
 
 </TabItem>
 
@@ -116,9 +104,6 @@ Follow the instructions below to configure the **SLSA Generation** step.
 
 * **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
 
-
-<!-- <DocImage path={require('../slsa/static/slsa-ver-gar.png')} width="50%" height="50%" title="Click to view full size image" /> -->
-
 </TabItem>
 
 
@@ -126,27 +111,22 @@ Follow the instructions below to configure the **SLSA Generation** step.
 
 With this configuration, the step generates the SLSA Provenance and stores it in the [Artifact section](../artifact-view.md) of SCS. To attest to the generated provenance, follow the instructions in the section below.
 
-#### Attest SLSA Provenance
+### Attest SLSA Provenance
 
 To configure attestation, along with the [above configuration](#slsa-generation-step-configuration) you should enable the **SLSA Attestation** checkbox in the **SLSA Generation** step. This requires a key pair generated using **Cosign**.
 
-<details>
-<summary>Generate key pairs using Cosign for SLSA provenance attestation</summary>
+You can perform the attestation with **Cosign** or **Cosign with Secret Manager**
 
-<CosignKeyGeneration />
+import CosignAttestationOptions from '/docs/software-supply-chain-assurance/shared/cosign-attestation-options.md';
 
-</details>
-
-Using the **Cosign** option, set your **Private Key** from the key pair along with the associated **Password**. Ensure that your **Public Key** is stored securely, as it will be needed for verifying the provenance attestation. For more details, refer to [SLSA Verification](#slsa-verification).
-
-<DocImage path={require('./static/slsa-generation-step.png')} width="50%" height="50%" />
+<CosignAttestationOptions />
 
 
 ## SLSA Generation step configuration with Build and Push step
 When using the Harness CI **Build and Push** step for the image-building process, you can configure the **SLSA Generation** step to generate and attest to the Provenance. Follow the [SLSA Generation step configuration](#slsa-generation-step-configuration), for the **Artifact Digest** field, you can use [Harness Expressions](/docs/platform/variables-and-expressions/harness-variables/) to dynamically populate the digest of the image built during the **Build and Push** step.  
 
 For example, the expression could look like:  
-`<+pipeline.stages.<YOUR_STEP_NAME>.spec.execution.steps.<YOUR_BUILD_AND_PUSH_STEP_NAME>.output.outputVariables.digest>`  
+`<+pipeline.stages.<YOUR_STAGE_NAME>.spec.execution.steps.<YOUR_BUILD_AND_PUSH_STEP_NAME>.output.outputVariables.digest>`  
 
 If you have already executed the **Build and Push** step, navigate to the execution details, open the **Output Variables** tab, and copy the expression for the digest from the **Input Name** column.
 
