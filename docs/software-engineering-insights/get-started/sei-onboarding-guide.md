@@ -61,7 +61,7 @@ If you're migrating to Harness SEI from Propelo standalone application, review t
 | <a href="/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview#collection-categories">Collection Hierarchy</a> | Learn how to use collection-level hierarchies to keep data in SEI organized | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview#collection-categories) |
 | <a href="/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat">Manage Collection Categories</a> | View, add, edit, enable/disable collection categories | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat) |
 | <a href="/docs/software-engineering-insights/sei-projects-and-collections/manage-collections">Manage Collections</a> | View, add, edit and remove collections | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections) |
-| <a href="/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors">Manage Contributors</a> | View, add, edit and remove contributors | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors) |
+| <a href="/docs/software-engineering-insights/sei-contributors/manage-contributors">Manage Contributors</a> | View, add, edit and remove contributors | [Click here](/docs/software-engineering-insights/sei-contributors/manage-contributors) |
 
 ### <a href="#phase-5-profiles-setup"> Phase 5: Profiles Setup </a>
 
@@ -241,7 +241,7 @@ Review the following resources to learn more about **Collection Categories** and
 * [Project and Collection Hierarchy](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview): Learn about how the collection hierarchy is defined on Harness SEI
 * [Manage collection categories](/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat): Learn how you can add, view, edit, and enable/disable Collection categories
 * [Manage collections](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections): Learn how you can add, view, edit, and manage Insight associations with a collection
-* [Manage contributors](/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors): Learn how to add contributors and configure the contributor attributes
+* [Manage contributors](/docs/software-engineering-insights/sei-contributors/manage-contributors): Learn how to add contributors and configure the contributor attributes
 
 ## Phase 5: Profiles Setup
 
