@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
   If you used **HashiCorp Vault** as your Secret Manager for attestation, you can also use it for verifying the attestation.
 
   - **Connector**: Select the same HashiCorp Vault connector that was used during the attestation process.
-  - **Key**: Enter the path to the Transit Secrets Engine in your HashiCorp Vault where your **public key** is stored. This should be the same path used for the attestation process. Note that **HashiCorp Vault** does not allow viewing the public key directly.
+  - **Key**: Enter the path to the Transit Secrets Engine in your HashiCorp Vault where your **public key** is stored. This should be the same path used for the attestation process. Note that **HashiCorp Vault** does not allow viewing the private key directly.
 
   </TabItem>
 
