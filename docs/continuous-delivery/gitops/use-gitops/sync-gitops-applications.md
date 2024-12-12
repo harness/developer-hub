@@ -44,7 +44,13 @@ To sync applications using the **GitOpsSync** step:
 2. Select **Add Step**, and then select the **GitOpsSync** step.
 3. Select the GitOpsSync step to configure step parameters.
 4. Optionally, click on the **Wait until healthy** checkbox, if you would like the step to run until the application reaches it's **Healthy** state.
-5. Optionally, if you enabled **Wait until healthy** you can enable **Fail If Step Times Out**. This will cause the step to fail if it times out while waiting for the health check to pass. For example, enabling this option now means the step could sync successfully but fail if a healthy state isn't reached by the time the time out period runs out. 
+5. Optionally, if you enabled **Wait until healthy** you can enable **Fail If Step Times Out**. 
+   This will cause the step to fail if it times out while waiting for the health check to pass. 
+   
+   :::tip
+   For example, if this option is enabled, the step may sync successfully but fail if a healthy state is not achieved before the timeout period expires. In contrast, with this option disabled, the step will always be marked as successful if the sync is successful, regardless of the healthy state.
+   :::
+
 6. In **Advanced Configuration**, select the application you want to sync and configure the sync options.
       You can either can either choose an application or applications manually, or you can match up to 1000 applications using a regex filter.
 
