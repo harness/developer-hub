@@ -82,7 +82,7 @@ npm run dev
 
 3. Your application will be available at proxy host 3000. You will see a message at the bottom right of your IDE with a link to open the app in browser. 
 
-    If you're unable to see the pop-up, it's because the application is running inside the development container. To access this application, we'll need to set up port forwarding. [Learn more about Port Forwarding by referring these docs.](/docs/cloud-development-environments/features-of-gitspaces/port-forwarding.md)
+    If you're unable to see the pop-up, it's because the application is running inside the development container. To access this application, we'll need to set up port forwarding. [Learn more about Port Forwarding by referring these docs.](/docs/cloud-development-environments/develop-using-cde/port-forwarding.md)
     
     Watch this video to learn more about port forwarding:
     

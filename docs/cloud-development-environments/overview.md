@@ -13,6 +13,9 @@ Harness CDE is now available in public beta. To enable it on your account, conta
 
 :::
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pEianR6PCPY?si=tCJKw0vAsu7yye95" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
 ## What are Gitspaces?
 Harness CDE (also known as Gitspaces) are on-demand remote development environments that can be instantly spun up with just a click. These environments come pre-configured with everything you need to start coding, including your dependencies, tools, libraries, and even your favorite IDE, enabling you with an instant ready-to-use development setup.
 

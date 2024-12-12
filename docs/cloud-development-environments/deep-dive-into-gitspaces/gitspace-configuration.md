@@ -34,10 +34,19 @@ Gitspace configuration lives with your source code in the ```.devcontainer/devco
 The ```devcontainer.json``` specification includes various properties, allowing you to customize the environment. 
 
 Currently, we support the following properties in a  ```devcontainer.json``` file: (additional properties coming soon, read more about the [devcontainer metadata reference](https://containers.dev/implementors/json_reference/) here)
-- ```image```: Image used to create the container
-- ```postCreateCommand```: Command to be executed after the Gitspace is created
-- ```postStartCommand```: Command to be executed after the Gitspace is started
-- ```containerEnv```: Name-value pairs that sets/overrides environment variables for the container
+
+| **Argument**    | **Usage** |
+| -------- | ------- |
+| ```image```  | Image used to create the container    |
+| ```forwardPorts```    | Array of ports to be forwarded from the Gitspace to the local machine (including inside the web)    |
+| ```postCreateCommand``` | Command to be executed after the Gitspace is created |
+| ```postStartCommand```    | Command to be executed after the Gitspace is started    |
+| ```runArgs```    | Array of Docker CLI arguments to be used when running the Gitspace     |
+| ```containerEnv```    | Name-value pairs that sets/overrides environment variables for the container    |
+| ```containerUser```    | Defines the user for all operations run as inside the container    |
+| ```remoteUser```    | Defines the user that devcontainer.json supporting services tools / runs as in the container (including lifecycle scripts and any remote editor/IDE server processes)   |
+| ```extensions```    | Array of extension IDs that specifies which extensions should be installed when the Gitspace is created    |
+
 
 The path for this configuration file is ```.devcontainer/devcontainer.json```
 
@@ -45,13 +54,19 @@ The path for this configuration file is ```.devcontainer/devcontainer.json```
 ```
 {
 	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
+	"forwardPorts": [9000],
 	"postCreateCommand": "yarn install",
 	"postStartCommand": "npm install",
 	"containerEnv": {
     		"MY_CONTAINER_VAR": "abcd",
     		"MY_CONTAINER_VAR2": "efgh"
-	}
-
+	},
+	"vscode": {
+      "extensions": ["streetsidesoftware.code-spell-checker"]
+    },
+	"runArgs": ["--restart=no", "--security-opt", "seccomp=unconfined"],
+	"containerUser": "root",
+	"remoteUser": "vscode"
 }
 ```
 

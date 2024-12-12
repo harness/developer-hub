@@ -11,7 +11,7 @@ This guide walks you through the steps required to set environment variables for
 
 You can define environment variables in your container using the ```containerEnv``` property in the ```devcontainer.json``` specification. (Read more about the [devcontainer.json configuration](https://containers.dev/implementors/json_reference) here.)
 
-### What is containerEnv?
+### What is "containerEnv"?
 ```containerEnv``` is a set of name-value pairs where each pair defines an environment variable and its corresponding value. This property sets these variables directly on the Docker container itself, meaning their scope is limited to all processes running inside the container.
 
 ### Adding containerEnv to devcontainer.json
