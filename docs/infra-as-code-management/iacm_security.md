@@ -1,7 +1,7 @@
 ---
 title: IaCM Security
 description: Learn about security measures applied to Harness IaCM module.
-sidebar_position: 60
+sidebar_position: 90
 sidebar_label: Security
 ---
 
