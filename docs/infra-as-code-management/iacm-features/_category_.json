@@ -1,13 +1,12 @@
 {
-    "label":"Policies & Governance",
-    "position": 50,
+    "label":"IaCM Features",
+    "position": 40,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Policies & Governance",
-       "slug":"/category/iacm-policies"
+       "title":"IaCM Features"
     },
     "customProps":{
        "helpdocs_category_id":""
