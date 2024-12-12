@@ -1,9 +1,9 @@
 {
-  "position": 1,
+  "position": 4,
   "label": "SMP",
   "collapsible": "true",
   "collapsed": "true",
   "customProps": {
-    "description":"Feature availability on HCE SaaS and SMP are on par, with minor timeline changes in the SMP feature releases."
+    "description":"Features of Harness CE SMP."
   }
 }
