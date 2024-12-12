@@ -1,4 +1,4 @@
-To perform the attestation process, you need to input the private key and password. You can use your preferred key generation services or use [Cosign](https://docs.sigstore.dev/key_management/overview/) to generate them. Here's how you can generate keys using Cosign:
+To perform the attestation process, you need to input the private key and password.  Use [Cosign](https://docs.sigstore.dev/key_management/overview/) to generate the keys in the ecdsa-p256 format. Here’s how to generate them:
 
 1. [Install Cosign](https://docs.sigstore.dev/system_config/installation/)
 2. Run the command `cosign generate-key-pair` to generate the key pairs.
