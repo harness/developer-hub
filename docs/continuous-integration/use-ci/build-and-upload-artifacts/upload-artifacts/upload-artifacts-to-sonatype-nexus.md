@@ -38,7 +38,7 @@ You can also [upload artifacts to S3](./upload-artifacts-to-s3.md), [upload arti
 | `filename` | String | The path to the target artifact that you want to upload. | `./target/example-1.0.jar` |
 | `format` | String | The repository format. | <ul><li>`maven2`</li><li>`raw`</li></ul> |
 | `repository` | String | The name of the repository where you want to upload the artifact. | `maven-releases` |
-| `attributes` | String of key-value pairs | Component and asset attributes providing additional artifact metadata. Can be optional. Relevant fields vary by use case. For example, use `-CgroupID` to map group info. | `-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin` |
+| `attributes` | String of key-value pairs | Component and asset attributes providing additional artifact metadata. <br></br> Do not add double quotes (`"`) to this value. | `-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin` |
 
 <!-- ![A Plugin step configured for the Nexus Publisher plugin.](../static/sonatype-nexus-plugin-visual-settings.png) -->
 
@@ -84,7 +84,7 @@ The following YAML example describes a [Plugin step](../../use-drone-plugins/plu
 | `filename` | String | The path to the target artifact that you want to upload. | `./target/example-1.0.jar` |
 | `format` | String | The repository format. | <ul><li>`maven2`</li><li>`raw`</li></ul> |
 | `repository` | String | The name of the repository where you want to upload the artifact. | `maven-releases` |
-| `attributes` | String of key-value pairs | Component and asset attributes providing additional artifact metadata.  `"-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin"` |
+| `attributes` | String of key-value pairs | Component and asset attributes providing additional artifact metadata. | `"-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin"` |
 
 </TabItem>
 </Tabs>
@@ -99,7 +99,11 @@ Create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive
 
 ## View artifacts on the Artifacts tab
 
-You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifact URLs on the [Artifacts tab](../../viewing-builds.md). This makes it easier to find artifacts associated with specific builds. To do this, add another **Plugin** step after the Nexus Publisher plugin step.
+You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifact URLs on the [Artifacts tab](../../viewing-builds.md). 
+
+To learn more on how to publish artifacts to the tab, go to [Publish anything to the artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab).
+
+This makes it easier to find artifacts associated with specific builds. To do this, add another **Plugin** step after the Nexus Publisher plugin step.
 
 <Tabs>
   <TabItem value="Visual" label="Visual">
