@@ -40,8 +40,7 @@ You can define a containerUser in the following ways:
 If multiple definitions exist, the containerUser is set based on the following priority:
 1. ```runArgs``` definition
 2. ```devcontainer.json``` specification
-3. Image Metadata
-4. Image Build
+3. Image Build
 
 ## How to define a remoteUser?
 You can define a remoteUser in the following ways:
