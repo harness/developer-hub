@@ -68,8 +68,10 @@ Currently, you can use only one connector per Gitspace to pull images from a pri
 
 ### Understanding the Image URL
 You can reference your images in the ```devcontainer.json``` file using the URL from the artifact repository connector where the image is hosted:
-- For **Docker Registry**: URL format
-- For **JFrog Artifactory**: URL format
+
+Sample References: 
+- For **Docker Registry**:  namespace1/devcontainer:dev-ubuntu
+- For **JFrog Artifactory**: harness-ken-docker-repo-1.jfrog.io/base:dev-ubuntu
 
 For more details, [please refer to the documentation here](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference). 
 

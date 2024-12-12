@@ -34,8 +34,7 @@ You can define a containerUser in the following ways:
 ```
 "runArgs": ["--user=root"]
 ```
-3. Defining **containerUser** in Image Metadata.
-4. Defining **containerUser** during the Image Build. 
+3. Defining **user** during the Image Build (Image Metadata).
 
 #### Priority Order:
 If multiple definitions exist, the containerUser is set based on the following priority:
