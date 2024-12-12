@@ -210,49 +210,49 @@ README.md @pratmit
 # Knowledge Base ###
 
 # Overall KB
-/kb/ @deepanshuHarness @jimin-harness @td-harness @guna-harness @reconAmit 
+/kb/ @deepanshuHarness @jimin-harness @guna-harness
 
 # Drone KB
-/kb/continuous-integration/drone-faqs.md @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+/kb/continuous-integration/drone-faqs.md @jimin-harness @deepanshuHarness @guna-harness
 
 # CI KB
-/kb/continuous-integration/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+/kb/continuous-integration/ @jimin-harness @deepanshuHarness @guna-harness 
 
 # CD KB
-/kb/continuous-delivery/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+/kb/continuous-delivery/ @jimin-harness @deepanshuHarness @guna-harness
 
 #Platform KB
-/kb/platform/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+/kb/platform/ @jimin-harness @deepanshuHarness @guna-harness
 
 #FF KB
-/kb/feature-flags/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+/kb/feature-flags/ @jimin-harness @deepanshuHarness @guna-harness
 
 #CCM KB
-/kb/cloud-cost-management/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+/kb/cloud-cost-management/ @jimin-harness @deepanshuHarness @guna-harness
 
 #SRM KB
-/kb/service-reliability-management/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+/kb/service-reliability-management/ @jimin-harness @deepanshuHarness @guna-harness
 
 #CE KB
-/kb/chaos-engineering/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+/kb/chaos-engineering/ @jimin-harness @deepanshuHarness @guna-harness
 
 #CET KB
-/kb/continuous-error-tracking/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+/kb/continuous-error-tracking/ @jimin-harness @deepanshuHarness @guna-harness
 
 #STO KB
-/kb/security-testing-orchestration/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+/kb/security-testing-orchestration/ @jimin-harness @deepanshuHarness @guna-harness
 
 #Armory KB
-/kb/armory @okosun-j @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+/kb/armory @okosun-j @jimin-harness @deepanshuHarness @guna-harness
 
 #RA
-/kb/reference-architectures/ @rssnyder @suranc @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+/kb/reference-architectures/ @rssnyder @suranc @jimin-harness @deepanshuHarness @guna-harness
 
 #IACM RA
-/kb/reference-architectures/iacm/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+/kb/reference-architectures/iacm/ @jimin-harness @deepanshuHarness @guna-harness
 
 # SEI KB
-/kb/sei/ @jimin-harness @deepanshuHarness @td-harness @guna-harness @reconAmit 
+/kb/sei/ @jimin-harness @deepanshuHarness @guna-harness
 
 # DB DevOps
 /kb/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
