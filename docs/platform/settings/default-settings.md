@@ -167,7 +167,7 @@ For information about these settings, go to [Notification settings](/docs/platfo
 
 ### Supply Chain Assurance
 
-These settings are for [Harness SSCA](/docs/software-supply-chain-assurance).
+These settings are for [Harness SCS](/docs/software-supply-chain-assurance).
 
 * **Use Base64 encoded secrets for attestation**
 * **Enable SSCA Airgap**

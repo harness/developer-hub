@@ -26,6 +26,14 @@ export const moduleList: CardItem[] = [
     link: "docs/continuous-delivery",
   },
   {
+    title: "Database DevOps",
+    module: MODULES.dbdevops,
+    // icon: "img/icon_dbdevops.svg",
+    description:
+      "Accelerate deployment with an integrated pipeline for all database changes.",
+    link: "docs/database-devops",
+  },
+  {
     title: "Infrastructure as Code Management",
     module: MODULES.iacm,
     // icon: "img/icon_iacm.svg",
@@ -85,6 +93,17 @@ export const moduleList: CardItem[] = [
       </>
     ),
     link: "docs/internal-developer-portal",
+  },
+  {
+    title: "Cloud Development Environments",
+    module: MODULES.cde,
+    icon: "img/cde_icon.svg",
+    description: (
+      <>
+        Accelerate day 1 dev onboarding and day 2 dev productivity.
+      </>
+    ),
+    link: "docs/cloud-development-environments",
   },
   {
     title: "Software Engineering Insights",

@@ -921,7 +921,7 @@ gsutil -m cp \
   *Note: PDB support for log-service will be available from the next release.*
 
 
-- SSCA module has been enabled on Custom Dashboards. This allows users to integrate SSCA functionality within their dashboards. (PL-56177)
+- SCS module has been enabled on Custom Dashboards. This allows users to integrate SCS functionality within their dashboards. (PL-56177)
 
 - Resolved an issue where notification rules were not executed for delegates with selected tags instead of group names. The notification trigger now correctly matches the entity identifiers against those in the notification rules. (PL-51795)
 

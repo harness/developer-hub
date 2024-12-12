@@ -78,7 +78,7 @@ When inviting a new user, you can set a default landing URL to which the user wi
 
 1. In the invitation form, enter the email addresses of the users you want to invite.
 
-2. In the **Default Landing URL** field, specify the URL you want the invited user to be redirected to after they accept the invitation. For example, you can set it to `https://app.harness.io/ng/account/<account-id>/module/ssca/projects` for the SSCA homepage.
+2. In the **Default Landing URL** field, specify the URL you want the invited user to be redirected to after they accept the invitation. For example, you can set it to `https://app.harness.io/ng/account/<account-id>/module/ssca/projects` for the SCS homepage.
 
 3. Send the invitation.
 

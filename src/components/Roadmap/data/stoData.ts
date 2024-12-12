@@ -136,7 +136,7 @@ export const StoData: Horizon = {
     feature: [
       {
         tag: [{ value: "Platform" }, { value: "Cross Module" }],
-        title: "Combine Artifacts with SSCA",
+        title: "Combine Artifacts with SCS",
         description: "Provides granular vulnerability data for an artifact/target, in addition to the current pipeline view.",
       },
       {
@@ -171,7 +171,7 @@ export const StoData: Horizon = {
     feature: [
       {
         tag: [{ value: "Platform" }, { value: "Cross Module" }],
-        title: "Combine Artifacts with SSCA",
+        title: "Combine Artifacts with SCS",
         description: "Provides granular vulnerability data for an artifact/target, in addition to the current pipeline view.",
       },
       {
