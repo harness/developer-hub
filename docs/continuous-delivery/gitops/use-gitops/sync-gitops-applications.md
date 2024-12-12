@@ -44,12 +44,13 @@ To sync applications using the **GitOpsSync** step:
 2. Select **Add Step**, and then select the **GitOpsSync** step.
 3. Select the GitOpsSync step to configure step parameters.
 4. Optionally, click on the **Wait until healthy** checkbox, if you would like the step to run until the application reaches it's **Healthy** state.
-5. In **Advanced Configuration**, select the application you want to sync and configure the sync options.
+5. Optionally, if you enabled **Wait until healthy** you can enable **Fail If Step Times Out**. This will cause the step to fail if it times out while waiting for the health check to pass. For example, enabling this option now means the step could sync successfully but fail if a healthy state isn't reached by the time the time out period runs out. 
+6. In **Advanced Configuration**, select the application you want to sync and configure the sync options.
       You can either can either choose an application or applications manually, or you can match up to 1000 applications using a regex filter.
 
     ![](./static/gitopssync-step-regex.png)    
  
-6. Select **Apply Changes**.
+7. Select **Apply Changes**.
 
 Here is how the resources would look in Harness after the sync process is complete.
 
