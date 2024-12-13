@@ -311,7 +311,7 @@ To generate the API token:
 ![](../static/jenkins-key-harness.png)
 
 * Set the **Application Type** to the environment where you are configuring the **Plugin** i.e. the environment where your Harness Account is hosted on.
-* Add the[ Jenkins Username](#step-1-generate-jenkins-user-credentials) and [Jenkins User Token (Jenkins API Token)](#step-1-generate-jenkins-user-credentials).
+* Add the [Jenkins Username](#step-1-generate-jenkins-user-credentials) and [Jenkins User Token (Jenkins API Token)](#step-1-generate-jenkins-user-credentials).
 * Save the plugin settings.
 
 ![](../static/jenkins-plugin.webp)
