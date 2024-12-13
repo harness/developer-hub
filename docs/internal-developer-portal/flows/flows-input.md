@@ -589,8 +589,30 @@ properties:
     ui:options:
       accept: .json
 ```
-
 </details>
+
+
+### Hide the uploaded file contents in Workflow review page
+
+When you upload a file in Workflows, you can see the base-64 encoded content of the file on the review page, to hide them you can use `ui:backstage`. 
+
+```YAML
+...
+properties:
+  uploaded_file:
+    title: Upload File
+    type: string
+    format: data-url
+    description: Upload a file that will be processed in the workflow
+    ui:backstage:
+      review:
+        show: false
+        mask: true
+...
+```
+[Example workflow.yaml](https://github.com/Debanitrkl/backstage-test/blob/main/upload-file-prod.yaml)
+
+![](./static/file-upload-hide-content.png)
 
 ## Using Secrets
 
