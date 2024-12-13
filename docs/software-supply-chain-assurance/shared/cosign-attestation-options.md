@@ -24,6 +24,10 @@ import CosignKeyGeneration from '/docs/software-supply-chain-assurance/shared/ge
 
 In this mode, you can pass your **Cosign keys** using a **Secret Manager**. Currently, SCS supports only the **HashiCorp Vault** secret manager. You can connect your Vault with Harness using the [Harness HashiCorp Vault connector](/docs/platform/secrets/secrets-management/add-hashicorp-vault/). Here are the key points to consider when connecting your Vault:
 
+:::note
+Ensure your [Harness delegate](/release-notes/delegate/) is version `24.11.84200` or higher. Upgrade if you're using an older version to enable this feature.
+:::
+
 1. **Enable the Transit Secrets Engine** on your HashiCorp Vault. This is essential for key management and cryptographic operations.
 2. Configure your HashiCorp Vault connector using the following authentication methods [**AppRole**](/docs/platform/secrets/secrets-management/add-hashicorp-vault/#option-app-role), [**Token**](/docs/platform/secrets/secrets-management/add-hashicorp-vault/#option-token) or [**Vault Agent**](/docs/platform/secrets/secrets-management/add-hashicorp-vault/#option-vault-agent).  
 3. Create a Cosign key pair of type `ecdsa-p256` in the Transit Secrets Engine. You can do this in two ways:  
