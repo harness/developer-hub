@@ -1,34 +1,28 @@
 ---
 title: Build Intelligence Overview
-description: Learn about the build intelligence feature in Harness CI.
+description: Learn about the Build Intelligence in Harness CI.
 sidebar_position: 7
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Build Intelligence is part of [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence), a suite of features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. BI works by storing these outputs locally or remotely and retrieving them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency.
+Build Intelligence(BI) is part of [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence), a suite of features in Harness CI designed to improve build times. It saves time by reusing outputs from previous builds. BI stores these outputs locally or remotely and retrieves them when inputs haven't changed. This process avoids the need to regenerate outputs, significantly speeding up the build process and enhancing efficiency.
 
-:::note
-* Build Intelligence is currently only offered to Harness Cloud, with support for self hosted coming soon. This feature is behind the feature flag `CI_CACHE_ENABLED`. 
-* 'Build intelligence' CI stage property, which enables automatic setup of Build Intelligence on Harness Cloud when using supported build tools in Run and Test steps is behind the feature flag `CI_ENABLE_BUILD_CACHE_HOSTED_VM`.
+:::info
+* BI is now available for Harness Cloud and self hosted pipelines. This feature is behind the feature flag `CI_CACHE_ENABLED`.
+* For Harness cloud hosted pipelines, in addition to CI_CACHE_ENABLED flag, the following feature flag needs to be enabled: `CI_ENABLE_BUILD_CACHE_HOSTED_VM`
+* For self hosted pipelines, in addition to the CI_CACHE_ENABLED flag, the following feature flags would be required for OIDC  authentication: `PL_GCP_OIDC_AUTHENTICATION` for GCP or `CDS_AWS_OIDC_AUTHENTICATION` for AWS
 
 Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 
-Build Intelligence in Harness CI is currently available for Gradle and Bazel with Maven support coming soon. Regardless of the programming language used in your projects, as long as you're building with a supported build tool, you can take advantage of Build Intelligence to optimize your builds.
+BI is currently available for Gradle and Bazel with Maven support coming soon. Regardless of the programming language used in your projects, as long as you're building with a supported build tool, you can leverage BI to optimize your builds.
 
+## Build Intelligence Enabled
 
-## Auto-setup of Build Intelligence
-
-The Build Intelligence stage property simplifies the setup of Build Intelligence in Harness Cloud. When enabled, it automatically configures Build Intelligence for supported build tools (currently Gradle and Bazel) in Run and Test steps without requiring any additional configuration. This automation is particularly beneficial in CI pipelines, as it eliminates the need for developers to modify project settings in their git repository (such as Gradle’s settings.gradle) to configure the cache.
-
-Build Intelligence setup is fully automated when the `CI_ENABLE_BUILD_CACHE_HOSTED_VM` feature flag is enabled. However, for local development (e.g., on a developer's laptop), manual configuration is necessary to take advantage of caching.
-
-### Enabling Auto-setup 
-* Via Visual editor: To enable Build Intelligence, go to the CI Stage Overview tab and toggle Build Intelligence to true.
-* In yaml, set build intelligence with `buildIntelligence` property, as you can see below
+Once the appropriate feature flags are enabled, the Business Intelligence stage property is automatically toggled ON and the corresponding yaml file is as follows:
 
 ```YAML
     - stage:
@@ -55,7 +49,7 @@ Build Intelligence setup is fully automated when the `CI_ENABLE_BUILD_CACHE_HOST
                   identifier: build
                   spec:
                     shell: Sh
-                    command: ./gradlew build 
+                    command: ./gradlew build
           platform:
             os: Linux
             arch: Amd64
@@ -65,12 +59,143 @@ Build Intelligence setup is fully automated when the `CI_ENABLE_BUILD_CACHE_HOST
 
 ```
 
-## Build Intelligence configuration
+Harness Build Intelligence is available for Harness cloud hosted and self hosted environments (currently available for Kubernetes only)
+
+<Tabs>
+  <TabItem value="Cloud" label="Harness Cloud" default>
+
+Harness auto-detects supported build tools (Gradle and Bazel). It auto injects required configuration to appropriate files on the host machine. Next, we will cover how we configure build cache for Gradle and Bazel
+
+### Build Intelligence for Gradle
+1. Harness creates an init.gradle file in `~/.gradle/init.d` or `$GRADLE_HOME/init.d` or `$GRADLE_USER_HOME/init.d` folder if not found.
+
+2. The Harness Build Cache plugin config is imported into this config file.
+
+3. The config looks as follows:
+```groovy
+
+      initscript {
+          repositories {
+          if (System.getenv('MAVEN_URL')) {
+                  maven {
+                      url System.getenv('MAVEN_URL')
+                  }
+              } else {
+            mavenCentral()
+          }       
+          }
+          dependencies {
+              classpath 'io.harness:gradle-cache:%s'
+          }
+      }
+      // Apply the plugin to the Settings object
+      gradle.settingsEvaluated { settings ->
+          settings.pluginManager.apply(io.harness.HarnessBuildCache)
+          settings.buildCache {
+                  local {
+                      enabled = false
+                  }
+                  remote(io.harness.Cache) {
+                      accountId = System.getenv('HARNESS_ACCOUNT_ID')
+                      push = "true"
+                      endpoint = System.getenv('HARNESS_CACHE_SERVICE_ENDPOINT')
+                  }
+              }
+      }
+  ```
+
+  ### Build Intelligence for Bazel
+  Bazel Config
+1. Harness create a ~/.bazelrc file if not found
+
+2. bazelrc does not support environment variables, hence the endpoint is hardcoded
+
+3. The config looks like:
+
+`build --remote_cache=http://endpoint:port/cache/bazel (endpoint depends on where we are auto-injecting)`
+
+  bazelrc does not support environment variables, hence the endpoint needs to be hardcoded when writing to this file.
+  </TabItem>
+
+  <TabItem value="Self Hosted" label="Self Hosted" default>
+  :::note
+  Build Intelligence is only supported for Kubernetes on self hosted environments
+  :::
+
+  S3 bucket connector configuration can be made on the Project Settings > Default Settings page.
+
+  We rely on the S3 storage configuration which is already used by Cache Intelligence.
+  We use a cache proxy running within the infrastructure (Kubernetes pod or VM). This would be available to all the steps in execution and runs on port 8082 by defailt. 
+
+  Storage Configuration:
+  ![Storage Default Config](./static/s3-connector-config-default-settings-01.png)
+
+  While we support Access Key, Secret key pair for AWS, we recommend using OIDC mechanism. Refer to the following image:
+  ![AWS Connector](./static/aws-connector-mechanism-overview-01.png)
+
+  While we support GCP Json Key, we recommend using OIDC mechanism. Refer to the following image:
+  ![GCP Connector](./static/gcp-connector-mechanism-overview-01.png)
+
+
+### Gradle Config
+1. Harness creates an init.gradle file in `~/.gradle/init.d` or `$GRADLE_HOME/init.d` or `$GRADLE_USER_HOME/init.d` folder if not found.
+
+2. The Harness Build Cache plugin config is imported into this config file.
+
+3. The config looks as follows:
+
+```groovy
+initscript {
+    repositories {
+		if (System.getenv('MAVEN_URL')) {
+            maven {
+                url System.getenv('MAVEN_URL')
+            }
+        } else {
+			mavenCentral()
+		}       
+    }
+    dependencies {
+        classpath 'io.harness:gradle-cache:%s'
+    }
+}
+// Apply the plugin to the Settings object
+gradle.settingsEvaluated { settings ->
+    settings.pluginManager.apply(io.harness.HarnessBuildCache)
+    settings.buildCache {
+            local {
+                enabled = false
+            }
+            remote(io.harness.Cache) {
+                accountId = System.getenv('HARNESS_ACCOUNT_ID')
+                push = "true"
+                endpoint = System.getenv('HARNESS_CACHE_SERVICE_ENDPOINT')
+            }
+        }
+}
+```
+:::note
+To specify custom Maven URL and PORT you need to add [**STAGE** variables](/docs/platform/pipelines/add-a-stage/#stage-variables) named `MAVEN_URL` and `CACHE_SERVICE_HTTPS_BIND` respectively
+Refer to the image below to see how to set custom Maven URL and port:
+![Custom Maven URL and Port config](./static/custom-maven-url-port-config-overview-01.png)
+:::
+
+### Bazel Config
+1. Create a ~/.bazelrc file (if it does not exist)
+
+2. bazelrc does not support environment variables, hence the endpoint needs to be hardcoded when writing to this file.
+
+3. The config looks like:
+`build --remote_cache=http://endpoint:port/cache/bazel (endpoint is localhost:8082)`
+  </TabItem>
+</Tabs>
+
+## Build Intelligence configuration for local development
 
 For local development (e.g., running build commands on a developer's laptop), manual configuration is necessary to take advantage of the remote cache. 
-Manual configuration may also be needed in case you run your build in Harness CI but would not like to use auto-setup.  
+Manual configuration may also be needed in case you run your build in Harness CI bypassing auto-setup.  
 
-Please follow the instructions below, for either Bazel or Gradle, in case manual configuration is needed.
+Following are the instructions to manually configure Gradle and Bazel:
 
 
 ### Build Intelligence Support for Gradle
@@ -79,10 +204,8 @@ Please follow the instructions below, for either Bazel or Gradle, in case manual
 
 #### How it works?
 
-1. **Plugin Integration**: The Build Intelligence plugin for Gradle is imported into your project. This plugin interacts with Gradle to handle cache pull and push operations.
-2. **Cache Operations**: At the start of the build, the plugin registers with Gradle to check for cached build outputs. If available, it retrieves and provides them to Gradle, avoiding the need to regenerate them.
-
-The above operation is transparent to you as a user and happens in the background. 
+1. **Plugin Integration**: The Harness Build Intelligence plugin for Gradle is imported into your project. This plugin interacts with Gradle to handle cache pull and push operations.
+2. **Cache Operations**: As the build initializes, the plugin registers with Gradle to check for cached build outputs. If available, it retrieves and provides them to Gradle, avoiding the need to regenerate them. This background operation is transparent to you the user. 
 
 #### Configuration for Gradle
 
@@ -122,13 +245,10 @@ buildCache {
 
 For Build Intelligence, you'll need to turn on `CI_CACHE_ENABLED` FF.
 
-<!--
+ 
 :::note
-
 The above configuration is only required for local builds. For hosted CI builds, Harness automatically configures the build cache configuration.
-
 :::
--->
 
 2. Enable build cache in `gradle.properties` file:
 
@@ -185,6 +305,8 @@ pipeline:
       required: false
       value: <+input>
 ```
+:::note
+The --profile option in gradle build command is required to 
 
 ### Build Intelligence Support for Bazel
 
