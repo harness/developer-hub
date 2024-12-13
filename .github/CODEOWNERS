@@ -87,8 +87,8 @@ README.md @pratmit
 /docs/platform/connectors/ @krishi0408 @vishal-av
 
 # IDP Docs
-/docs/internal-developer-portal/ @Debanitrkl @OrkoHunter
-/src/components/Roadmap/data/internalDeveloperPortal.ts @Debanitrkl @OrkoHunter
+/docs/internal-developer-portal/ @Debanitrkl @OrkoHunter @manishas
+/src/components/Roadmap/data/internalDeveloperPortal.ts @Debanitrkl @OrkoHunter @manishas
 
 # SCS Docs
 /docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness
@@ -109,8 +109,8 @@ README.md @pratmit
 /docs/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
 
 # CDE Docs
-/docs/cloud-development-environments/ @manishas
-/src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas
+/docs/cloud-development-environments/ @manishas @khushisharmaharness
+/src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas @khushisharmaharness
 
 # AI QA Assistant Docs
 /docs/ai-qa-assistant/ @deba-harness
