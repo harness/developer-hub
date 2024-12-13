@@ -281,15 +281,38 @@ If your Jenkins plugin version is 1.0.30 or higher, follow the instructions belo
 
 Once the migration is complete, you’ll need to uninstall the existing Jenkins plugin and reinstall it:
 
+#### Step 1: Generate Jenkins User Credentials
+
+The SEI plugin requires authentication via a Jenkins API token. Ensure the user account has one of the following roles:
+
+* Admin
+* Overall Read and Job Read.
+
+To generate the API token:
+
+* In the Jenkins banner frame, click your user name to open the user menu.
+* Navigate to **Your Username > Configure > API Token**.
+* Click **Add new Token**.
+* Click **Generate**.
+* Copy the generated API token for use in the plugin configuration.
+
+![](../static/jenkins-api-key.png)
+
+#### Step 2: Re-install the Harness Jenkins plugin
+
 * Sign-in to **Jenkins** and select **Manage Jenkins**
 * Select **Manage Plugins**
 * Select the **Available plugins** tab.
 * In the **Search** field, type **Harness - SEI Jenkins Plugin**.
 * Install the **Harness - SEI Job Reporter Plugin** and click on **Install without restart**
-* Install the plugin called **SEI Job Reporter** by selecting it and clicking **Install without restart**
 * Once the plugin installation is complete, the status will change to **Success**. If it doesn't change to Success, then a restart might be needed
-* Set the **Instance Name** and use the **APIKEY** available in your Jenkins integration instance as the value for the **Manage Jenkins >> Harness - SEI Job Reporter >> SEI APIKEY** field.
-* Set the **Application Type** to the environment where you are configuring the **Plugin**.
+* Set the **Instance Name** and use the **APIKEY** available in the Jenkins integration configuration page in Harness as the value for the **Manage Jenkins >> Harness - SEI Job Reporter >> SEI APIKEY** field.
+
+![](../static/jenkins-key-harness.png)
+
+* Set the **Application Type** to the environment where you are configuring the **Plugin** i.e. the environment where your Harness Account is hosted on.
+* Add the[ Jenkins Username](#step-1-generate-jenkins-user-credentials) and [Jenkins User Token (Jenkins API Token)](#step-1-generate-jenkins-user-credentials).
+* Save the plugin settings.
 
 ![](../static/jenkins-plugin.webp)
 
