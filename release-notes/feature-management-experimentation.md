@@ -33,3 +33,17 @@ Large segments for Enterprise tier.
 #### Version 1.0.0
 
 Google Web Vitals metrics collected automatically.
+
+### Split FME UI
+
+#### SemVer
+
+Full SemVer support.
+
+![SemVer type shown with suggested values in a feature flag targeting rule](./static/fme-semver-targeting.png)
+
+#### Alert table
+
+Guardrail alerts and Key metric alerts shown in Alert table on feature flag Monitoring tab.
+
+![Alert table on feature flag Monitoring tab](./static/fme-alerts-table-nov-2024.png)
