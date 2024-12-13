@@ -255,6 +255,11 @@
   --mod-srm-200: #8b73ce;
   --mod-srm-100: #f6f1ff;
 
+  --mod-fme-300: #6938c0;
+  /* Module Colors/FME/200 */
+  --mod-fme-200: #8b73ce;
+  --mod-fme-100: #f6f1ff;
+
   --mod-ce-300: #cd0056;
   /* Module Colors/Chaos Engineering/200 */
   --mod-ce-200: #ff006a;
@@ -590,6 +595,10 @@ details summary::before {
 
 .color-ff {
   color: var(--mod-ff-200);
+}
+
+.color-fme {
+  color: var(--mod-fme-200);
 }
 
 .color-ccm {
@@ -1459,6 +1468,9 @@ html[data-theme="dark"] .sidebar-opensource > a::before {
 }
 .feature-flags:hover {
   border-color: var(--mod-ff-200) !important;
+}
+.feature-management-experimentation:hover {
+  border-color: var(--mod-fme-200) !important;
 }
 .cloud-cost-management:hover {
   border-color: var(--mod-ccm-200) !important;
