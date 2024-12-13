@@ -201,28 +201,39 @@ This is a step-by-step guide for Platform Engineers to onboard IDP. Your mileage
 
 1. **Core Harness Platform Setup**
    1. SSO, Users and User Groups, RBAC, Hierarchy, Secret Manager, Delegate, etc.
+   - *Docs and Tutorials for Reference:* [Platform access control](https://developer.harness.io/docs/category/platform-access-control), [RBAC in IDP](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles), [Delegates](https://developer.harness.io/docs/category/delegates), [Secrets Management](https://developer.harness.io/docs/category/secrets-management)
 2. **Setup Git Integrations**
+   - *Docs and Tutorials for Reference:* [Setup Git Integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration)
 3. **Your first Self Service Workflow**
    1. Remove TicketOps, focus on quick automation use-cases. Ask your Platform Teams \- what is the most common type of JIRA ticket they receive
+   - *Docs and Tutorials for Reference:* [Getting Started with Workflows](https://developer.harness.io/docs/internal-developer-portal/get-started/workflow-quickstart), [Self Service Workflows Overview](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines)
 4. **Your first Service Onboarding Workflow**
    1. Standardize how a new Backend or Frontend application gets created with CI/CD pipelines and infrastructure included
+   - *Docs and Tutorials for Reference:* [Create a service onboarding pipeline](https://developer.harness.io/docs/internal-developer-portal/flows/workflows-tutorials/create-a-new-service-using-idp-stage) 
 5. **Your first Catalog Components**
    1. Onboard Applications, Services, APIs or Libraries owned by your first users/teams
+   - *Docs and Tutorials for Reference:* [Register a Software Component in Catalog](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component)
 6. **First TechDocs**
    1. Enable TechDocs for one of those applications where documentation is available in markdown.
    2. You can also choose to onboard central documentation such as engineering handbooks if you have those written in Markdown (docs-like-code approach)
+   - *Docs and Tutorials for Reference:* [Enable documentation for your Component](https://developer.harness.io/docs/internal-developer-portal/techdocs/enable-docs)
 7. **First few Catalog Plugins**
    1. Look at the IDP Plugins Marketplace and enable up to 5 plugins which are the most commonly used tools in your organization.
+   - *Docs and Tutorials for Reference:* [List of curated plugins supported in the Internal Developer Portal](https://developer.harness.io/docs/category/available-plugins)
 8. **Your First Scorecard**
    1. Create a “Catalog Readiness” Scorecard which can help you ensure that the Catalog entries are fully updated and all annotations required by the Plugins are set
+   - *Docs and Tutorials for Reference:* [Getting Started with Scorecards](https://developer.harness.io/docs/internal-developer-portal/get-started/scorecard-quickstart)
 9. **Invite your early users ✉️**
    1. Send invites to 10-20 users that you have identified as early adopters. Collect feedback
 10. **Setup Metadata Ingestion**
     1. Use Catalog Ingestion API to auto-fill some of the details that your early users don’t want to provide manually
+    - *Docs and Tutorials for Reference:* [Catalog Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api)
 11. **Your first Custom Plugin (Optional)**
     1. Create a small widget on the Catalog to show some application metadata which is hard to find today for your developers
+    - *Docs and Tutorials for Reference:* [Overview of custom plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview)
 12. **Setup Weekly IDP Adoption Dashboard Updates**
     1. Ensure you are subscribed to receive weekly adoption reports from IDP.
+    - *Docs and Tutorials for Reference:* [Adoption Dashboard](https://developer.harness.io/docs/internal-developer-portal/dashboard/custom-dashboards)
 
 From this point onwards, onboard more teams, solve newer use-cases, onboard their Catalog Components and build more Workflows!
 
