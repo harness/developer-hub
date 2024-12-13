@@ -11,7 +11,7 @@ Port forwarding gives you access to TCP ports running within your Gitspace. For 
 
 When an application running inside a Gitspace prints output to the terminal that contains a localhost URL, such as `http://localhost:PORT` or `http://127.0.0.1:PORT`, the port is automatically forwarded. If you're using Gitspace in the browser or in Visual Studio Code, the URL string in the terminal is converted into a link that you can click to view the web page on your local machine.
 
-## How to use Port Forwarding
+## How to use port forwarding
 
 1. First, you need to have a service you want to forward. If you don't have one yet but do have Node.js installed, you can run this command to start up a server on `port 3000`:
 

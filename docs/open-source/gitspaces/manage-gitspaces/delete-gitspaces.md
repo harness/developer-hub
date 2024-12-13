@@ -5,7 +5,7 @@ description: Learn more about how to delete an existing Gitspace.
 sidebar_label: Delete Gitspaces
 ---
 
-## How to Delete a Gitspace
+## How to delete a Gitspace
 
 1. Deleting a Gitspace is an irreversible action since deleted Gitspaces cannot be restored.  
 

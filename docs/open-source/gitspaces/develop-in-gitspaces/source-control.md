@@ -2,10 +2,11 @@
 title: Using Source Control in your Gitspaces
 sidebar_position: 1
 description: Understand how to use source control in your Gitspaces. 
+redirect_from: /docs/open-source/gitspaces/develop-in-gitspaces/pull-request.md
 sidebar_label: Source Control
 ---
 
-## Using the Supported Source Control Management Tools
+## Using the supported source control management tools
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -35,7 +36,7 @@ git config --global user.name "Your Name"
 </TabItem>
 </Tabs>
 
-## Commit Changes to Upstream
+## Commit changes to upstream
 
 1. Once you've made a few changes, you can use the **integrated termina**l or the **[source view](https://code.visualstudio.com/docs/sourcecontrol/overview#_commit)** to commit your work. Here are the steps to use the Source Control view for this example.
 
@@ -47,6 +48,6 @@ git config --global user.name "Your Name"
 
 5. And that’s it! You have successfully used Harness Open Source Gitspaces for development
 
-## How to Open a Pull Request
+## How to open a pull request
 
 Follow the instructions on [pushing and pulling remote changes](https://code.visualstudio.com/docs/sourcecontrol/intro-to-git#_pushing-and-pulling-remote-changes). 
