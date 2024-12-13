@@ -88,6 +88,7 @@ README.md @pratmit
 
 # IDP Docs
 /docs/internal-developer-portal/ @Debanitrkl @OrkoHunter
+/src/components/Roadmap/data/internalDeveloperPortal.ts @Debanitrkl @OrkoHunter
 
 # SCS Docs
 /docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness
@@ -109,6 +110,7 @@ README.md @pratmit
 
 # CDE Docs
 /docs/cloud-development-environments/ @manishas
+/src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas
 
 # AI QA Assistant Docs
 /docs/ai-qa-assistant/ @deba-harness
