@@ -22,7 +22,7 @@ To enable port forwarding:
 For instance, in a Node.js project, you'll have to update the host address and port number in your server.js file, as it serves as the entry point for your application.
 
 ### Adding “forwardPorts” to devcontainer.json
-You can specify which ports to forward using the forwardPorts property in the ```devcontainer.json``` file. 
+You can specify which ports to forward using the forwardPorts property in the ```devcontainer.json``` file. ([Read more about the specification here.](https://containers.dev/implementors/json_reference/))
 
 Here's an example configuration:
 ```
@@ -45,7 +45,9 @@ Here's an example configuration:
 
 <img width="1434" alt="Screenshot 2024-11-27 at 2 25 38 PM" src="https://github.com/user-attachments/assets/531c9829-8de6-4fea-b6fd-141af0214c0d"/>
 
-4. You can access the forwarded port URL by appending `-port no.` (a hyphen followed by the port number) before the region in the Gitspace URL. Let’s explore the port URL in more detail.
+4. To access the forwarded port URL, go to the **"Ports"** section in your IDE terminal. From there, you can easily open the forwarded port URL.
+
+![](./static/port-forward-latest.png)
 
 ### Understanding Port URLs
 A port URL includes:
@@ -56,11 +58,11 @@ A port URL includes:
 
 A Gitspace URL exists in the following form:
 
-- https://[```Gitspace ID```].[```Region```].gitspace.harness.io[```Token```]
+- https://[```Gitspace ID```].[```Region```].gitspace.harness.io/?token=[```Token```]
 
 Once the port number is added before the region, the port URL exists in the following form:
 
-- https://[```Gitspace ID```]-[```Port Number```].[```Region```].gitspace.harness.io[```Token```]
+- https://[```Gitspace ID```]-[```Port Number```].[```Region```].gitspace.harness.io/?token=[```Token```]
 
 The port URL is public, so you can share it with others to give them access to your application.
 
