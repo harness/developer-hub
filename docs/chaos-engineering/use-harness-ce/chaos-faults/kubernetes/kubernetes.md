@@ -399,6 +399,25 @@ Stressing the disk with continuous and heavy I/O can degrade the reads and write
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM CPU stress
+
+Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kubernetes pod by consuming excessive CPU threads of the JVM.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Tests the system's ability to handle high payloads.
+- Evaluates the application's behavior in high-stress cases.
+- Induces CPU consumption and exhaustion on the target Java process JVM executing in a K8s pod.
+- Simulates a lack of CPU threads for processes running on the application, which degrades their performance.
+- Simulates application slowness due to CPU starvation.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod memory hog exec
 
 Pod memory hog exec is a Kubernetes pod-level chaos fault that consumes memory resources on the application container in megabytes.

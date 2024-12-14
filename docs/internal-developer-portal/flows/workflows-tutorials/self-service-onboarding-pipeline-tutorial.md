@@ -181,7 +181,6 @@ Please update the `connectorRef: <the_connector_name_you_created_under_prerequis
 Now, if you also use Harness CI/CD, you can follow the steps below to create a [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) with Terraform Apply step to provision the Harness deployment pipeline. 
 
 
-
 4. [Add a Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage), after the Developer Portal Stage.
 
 5. [Add the Terraform Apply step](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#step-1-add-the-terraform-plan-step), that could provision Harness Pipeline for the newly created service. 
@@ -432,148 +431,7 @@ Use the URL to the `workflow.yaml` created above and register it by using the sa
 
 ## Use the Self Service Workflows
 
-Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization!
-
-## Additional Information
-
-### Conditional Inputs in Workflows
-
-1. One Of: Helps you create a dropdown in the Workflow where only one of all the options available could be selected. 
-
-```YAML
-dependencies:
-  technology:
-    oneOf:
-      - properties:
-          technology:
-            enum:
-              - java
-          java version:
-            type: "string"
-            enum:
-              - java8
-              - java11
-```
-2. All Of: Helps you create a dropdown in the Workflow, where only all the options available could be selected.
-
-```YAML
-type: object
-allOf:
-- properties:
-    lorem:
-      type:
-      - string
-      - boolean
-      default: true
-- properties:
-    lorem:
-      type: boolean
-    ipsum:
-      type: string
-```
-3. Any Of: Helps you to select from multiple properties where both can't be selected together at once. 
-
-```YAML
-type: object
-properties:
-  age:
-    type: integer
-    title: Age
-  items:
-    type: array
-    items:
-      type: object
-      anyOf:
-      - properties:
-          foo:
-            type: string
-      - properties:
-          bar:
-            type: string
-anyOf:
-- title: First method of identification
-  properties:
-    firstName:
-      type: string
-      title: First name
-      default: Chuck
-    lastName:
-      type: string
-      title: Last name
-- title: Second method of identification
-  properties:
-    idCode:
-      type: string
-      title: ID code
-```
-
-For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
-
-### Upload a File in a Workflow
-
-There are 3 types of file upload. 
-
-1. Single File
-2. Multiple Files
-3. Single File with Accept Attribute 
-
-```YAML
-#Example
-title: Files
-type: object
-properties:
-  file:
-    type: string
-    format: data-url
-    title: Single file
-  files:
-    type: array
-    title: Multiple files
-    items:
-      type: string
-      format: data-url
-  filesAccept:
-    type: string
-    format: data-url
-    title: Single File with Accept attribute
-```
-
-### Pass an Array of Inputs to a Harness Pipeline 
-
-Harness Pipelines variables can only be 3 types, string, number and secrets, in case you want to add multiple strings and comma separated values you need to [join](https://mozilla.github.io/nunjucks/templating.html#join) them and send as single input parameters. 
-
-In the following template I want to pick the enum and parse the `exampleVar` as a string and use it as comma separated value in the inputset for pipeline. 
-As you could see in the example below under `inputset`, `exampleVar` takes input as `${{ parameters.exampleVar.join(',') }}`. 
-
-```YAML
-    - title: Pass Variables Here      
-      properties:
-        exampleVar:
-          title: Select an option
-          type: array
-          items:
-            type: string
-            enum:
-              - Option1
-              - Option2
-              - Option3
-          default: 
-            - Option1
-      ui:
-        exampleVar:
-          title: Select Options
-          multi: true
-  steps:
-    - id: trigger
-      name: Call a harness pipeline, and pass the variables from above
-      action: trigger:harness-custom-pipeline
-      input:
-        url: 'https://app.harness.io/ng/account/*********/home/orgs/default/projects/*************/pipelines/*************/pipeline-studio/?storeType=INLINE'
-        inputset:
-          exampleVar: ${{ parameters.exampleVar.join(',') }}
-          owner: ${{ parameters.owner }}
-        apikey: ${{ parameters.token }}
-```
+Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new service created using the Cookiecutter template added to the Harness IDP software catalog as a software component, with its metadata defined in the `catalog-info.yaml`. Additionally, a Deployment Pipeline for the service will be provisioned and ready for execution, leveraging the capabilities of the Harness Terraform Provider.
 
 ### Unregister/Delete Workflow
 
@@ -591,3 +449,11 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
 ![](./static/Unregister-location.png)
 
 5. This will delete the Workflow.
+
+## Extended Reading
+
+1. [How to add conditional Inputs in Workflow?](https://developer.harness.io/docs/internal-developer-portal/flows/flows-input#conditional-inputs-in-workflows) 
+
+2. [How to upload a file in a Workflow?](https://developer.harness.io/docs/internal-developer-portal/flows/flows-input#upload-a-file-using-workflows)
+
+3. [How to ingest data dynamically into Workflows?](https://developer.harness.io/docs/internal-developer-portal/flows/dynamic-picker)

@@ -13,7 +13,7 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Developer Experience" }],
         title: "User Group Support",
-        description: "Use user groups wherever users are supported: mentions, reviews, code owners. ",
+        description: "Use user groups wherever users are supported: mentions, reviews, code owners, etc.",
       },
       {
         tag: [{ value: "Security" }],
@@ -28,7 +28,7 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Platform" }],
         title: "Self-Managed Enterprise (SMP) Support",
-        description: "Host Harness DevOps platform on your own infrastructure including Harness Code",
+        description: "Host Harness DevOps platform on your own infrastructure, including Harness Code",
       },
       {
         tag: [{ value: "Governance" }],
@@ -47,8 +47,8 @@ export const codeData: Horizon = {
       },
       {
         tag: [{ value: "Developer Experience" }],
-        title: "Projet, Org, and Account Pull Requests",
-        description: "View, search and filter all pull requests in a project, org, or account.",
+        title: "Project, Org, and Account Pull Requests",
+        description: "View, search, and filter all pull requests in a project, org, or account",
       },
     ],
   },
@@ -58,26 +58,26 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Developer Experience" }],
         title: "Archive Repo",
-        description: "Mark a repo as archive to disable all future development",
+        description: "Mark a repo as archived to disable all future development",
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Issue Tracking",
-        description: "Plan and track all developer related work across your projects in Harness Code",
+        description: "Plan and track all developer-related work across your projects in Harness Code",
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Pipeline view",
-        description: "Visualize all CI pipline runs for a reposiory, branch or pull request",
+        description: "Visualize all CI pipeline runs for a repository, branch, or pull request",
       },
       
       {
-        tag: [{ value: "AIDA" }],
+        tag: [{ value: "Harness AI" }],
         title: "Automated Code Suggestions",
         description: "",
       },
       {
-        tag: [{ value: "AIDA" }],
+        tag: [{ value: "Harness AI" }],
         title: "Root cause (RCA) Summary in Checks",
         description: "Summarize status check logs directly in pull requests",
       },
@@ -89,7 +89,7 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Developer Experience" }],
         title: "Commit Graph",
-        description: "Visualize git commit graph within code repository",
+        description: "Visualize git commit-graph within code repository",
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -104,32 +104,32 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Migrations" }],
         title: "Import all Repository Data",
-        description: "Import pull requests, comments, labels and other metadta from SCM providers",
+        description: "Import pull requests, comments, labels, and other metadata from SCM providers",
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Fast-Forward Merges",
-        description: "Fast-forward your target branch without a new merge commit.",
+        description: "Fast-forward target branch without a new merge commit",
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Labels",
-        description: "Apply labels to categorize repositories and pull requests.",
+        description: "Apply labels to categorize repositories and pull requests",
       },
       {
         tag: [{ value: "Governance" }],
         title: "New Branch Protection Rules",
-        description: "Apply new rules to protect branches inlucding: block push, block force pushes, and more.",
+        description: "Apply new rules to protect branches including block push, block force pushes, and more",
       },
       {
         tag: [{ value: "Governance" }],
         title: "Open Policy Agent (OPA) Integration",
-        description: "Store and enforce policies for repositories, commits, and pull requests.",
+        description: "Store and enforce policies for repositories, commits, and pull requests",
       },
       {
         tag: [{ value: "Integrations" }],
         title: "Security Testing Orchestration (STO)",
-        description: "Automatically remediate vulnerabilities in code repositories.",
+        description: "Automatically remediate vulnerabilities in code repositories",
       },
      
     ],

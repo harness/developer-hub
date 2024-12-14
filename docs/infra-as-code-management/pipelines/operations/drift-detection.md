@@ -10,7 +10,7 @@ Harness IaCM helps to detect drift and simplifies the process of reconciling - u
 
 To detect drift, follow these steps:
 
-1. Create a Pipeline with an Infrastructure as Code Management stage, as described [here](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/provision-workspace/)
+1. Create a Pipeline with an Infrastructure as Code Management stage, as described [here](https://developer.harness.io/docs/infra-as-code-management/use-iacm/provision-workspace)
 2. Choose a Workspace or set it as a runtime input
 3. Select "Detect Drift" when prompted to choose operation
 
@@ -37,3 +37,15 @@ Clicking on each resource will highlight which attribute drifted
 Harness IaCM can also detect drift during a provisioning operation. If during execution, IaCM identifies drift, the drift information will be populated in the Approval step and "Resources" Tab
 
 ![Resources](./static/provision-drift.png) 
+
+## Handle drift 
+To promote best practices, use your IaC repository as the central source of truth for your infrastructure. When drift occurs due to external actions, such as manual changes in your cloud provider console, you can run a provision pipeline to realign your infrastructure with the state defined in your code.
+
+:::tip Why use plan-refresh-only instead of plan?
+In scenarios where drift is detected, but there are unreviewed changes pending in your configuration code, the `plan-refresh-only` step is ideal. It refreshes the state to reconcile drift without applying any pending code updates, ensuring only the manual changes are addressed.
+:::
+
+**Example workflow:**
+The following pipeline demonstrates how to handle drift using plan-refresh-only:
+
+![plan-refresh-only](./static/plan-refresh-only.png)

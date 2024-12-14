@@ -22,7 +22,63 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 :::
 
+## December 2024
+
+### Version 202412.1
+
+<!-- December 09, 2024 -->
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### New features and enhancements
+
+* Added support for configuring the [Azure DevOps](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops), [Harness CI/CD](/docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd) & [GitLab](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab) integrations using multiple personal access tokens / API Keys for multiple service accounts. This helps prevent rate-limiting issues when ingesting large volumes of data (SEI-9225)
+* We’ve enhanced the [GitLab integration’s](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab) ingestion logic to exclude file content from system storage while accurately calculating the lines of code metric. (SEI-9379)
+* We have improved the error messaging across integration failures to clearly convey the underlying causes of ingestion issues. This update will help in better understanding how and why ingestion failed, making it easier to troubleshoot and resolve the failures. (SEI-9511)
+
+#### Fixed issues
+
+* Fixed the issue in the DORA widgets that caused duplicate data to appear for the same contributor. (SEI-9642) (ZD-74061)
+
 ## November 2024
+
+### Version 202411.2
+
+<!-- November 26, 2024 -->
+
+#### Generally Available
+
+The new experience for configuring the **GitHub Actions integration** and **GitLab integration** is now **Generally Available**! Find the step-by-step instructions for configuring the integration in the documentation below:
+
+* [Connect with GitHub Actions](/docs/software-engineering-insights/sei-integrations/github%20actions/sei-github-actions)
+* [Connect with GitLab](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab)
+
+#### Early access features
+
+* We have added support for using **ServiceNow queries** for both incidents and change requests to filter data to be ingested into the system while configuring the integration. For more information, go to [SEI ServiceNow integration](/docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow). This feature is currently in BETA and requires the SEI_SERVICE_NOW_ADVANCE_CONFIGURATION_FIELD feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-9174)
+
+![](.././docs/software-engineering-insights/sei-integrations/static/snow-query.png)
+
+#### New features and enhancements
+
+* Added support for branch selection using regular expressions when configuring the **Merge Time** stage in the DORA profile settings. (SEI-9359) (ZD-72925)
+* Improved the **Harness Code** & **Harness CI/CD integration** to automatically fetch and populate **Account ID**, **Organization** and **Project Name** for the current account. These details can be customized as needed. (SEI-9510)
+* We have introduced sorting functionality for the **Author**, **Committer**, **Lines Added**, and **Total Lines** columns in the drill-down view of the **SCM Rework** widget. (SEI-9539)
+
+#### Fixed issues
+
+* We have updated the collection definition settings by removing the partial match filter for **Status**, **Triggered By**, and **Pipeline**. These filters now support conditions for **Equals** and **Not Equals**, providing more precise filtering options. (SEI-1608)
+* Fixed the issue that caused incorrect data to display for **Hops** and **Bounce** metrics across multiple widgets. (SEI-8930)
+* Resolved an issue where the **Pull Request Activity** widget failed to display data based on the selected intervals. (SEI-9116)
+
+#### Documentation and content
+
+* [Troubleshooting guide for the Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs)
+* [Diagnostics: Monitor & troubleshoot issues in the system](/docs/software-engineering-insights/sei-diagnostics)
+
+
 
 ### Version 202411.1
 
@@ -117,7 +173,7 @@ This release does not include any early access features.
 
 * Resolved a bug where PRs from the [Harness Code repository](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#harness-sei-supported-platforms-and-technologies) were not getting displayed in the **Trellis contributor profile**. (SEI-8038)
 
-* Fixed the issue causing the application window to freeze when configuring stages in the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile) settings. (SEI-8347)
+* Fixed the issue causing the application window to freeze when configuring stages in the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview) settings. (SEI-8347)
 
 * Fixed the issue where widget configuration wasn’t updating to the **Default Business Alignment profile** when a previously selected BA profile was deleted. (SEI-8539)
 

@@ -20,7 +20,7 @@ The Rolling Deployment step supports all workloads except Jobs.
 
 The [Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step) can deploy any workloads or objects.
 
-In Harness, a workload is a Deployment, StatefulSet, or DaemonSet object deployed and managed to steady state.
+In Harness, a workload is a Deployment, or DaemonSet object deployed and managed to steady state.
 
 :::warning
 In Canary deployment, only one deployment workload is supported. Having multiple workloads in service manifests will result in deployment failure.
@@ -270,7 +270,7 @@ Currently, this functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB
 
 :::
 
-The Horizontal Pod Autoscaler (HPA) automatically scales ReplicationControllers, Deployments, ReplicaSets, or StatefulSets based on CPU utilization. Scaling is horizontal, as it affects the number of instances rather than the resources allocated to one container. Upon initial configuration, HPA can make scaling decisions based on custom or external metrics. All you need to do is define the minimum and maximum number of replicas and a trigger limit.
+The Horizontal Pod Autoscaler (HPA) automatically scales ReplicationControllers, Deployments, or ReplicaSets based on CPU utilization. Scaling is horizontal, as it affects the number of instances rather than the resources allocated to one container. Upon initial configuration, HPA can make scaling decisions based on custom or external metrics. All you need to do is define the minimum and maximum number of replicas and a trigger limit.
 
 Here's a sample HPA resource:
 
@@ -351,7 +351,6 @@ PDB can be applied for the following types of controllers:
 - Deployment
 - ReplicationController
 - ReplicaSet
-- StatefulSet
 
 Here's a sample PBD resource:
 

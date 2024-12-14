@@ -270,7 +270,7 @@
   --mod-sei-200: #5fb34e;
   --mod-sei-100: #f6fff2;
 
-  /* Module Colors/SSCA */
+  /* Module Colors/SCS */
   --mod-ssca-300: #c01406;
   --mod-ssca-200: #ff5f45;
   --mod-ssca-100: #ffe2dd;
@@ -284,6 +284,11 @@
   --mod-iacm-300: #30841f;
   --mod-iacm-200: #5fb34e;
   --mod-iacm-100: #f6fff2;
+
+  /* Module Colors/Database DevOps */
+  --mod-dbdevops-300: #30841f;
+  --mod-dbdevops-200: #5fb34e;
+  --mod-dbdevops-100: #f6fff2;
 
   /* Module Colors/Code  */
   --mod-code-300: #0672b6;
@@ -755,6 +760,30 @@ a.card p.text--truncate {
   min-height: 3em;
 }
 
+/* style horizontal divider for LHS menu items, level 1 */
+
+.horizontal-bar {
+  margin-top: 15px;
+  padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+html[data-theme="light"] .horizontal-bar {
+  border-top: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  background-color: #effbff;
+  color: #b0b1c1;
+}
+
+html[data-theme="dark"] .horizontal-bar {
+  border-top: 1px solid #45494f;
+  border-right: 1px solid #45494f;
+  background-color: #002531;
+  color: #baeeff;
+}
+
 /* HDH-120: Change 2nd level numbered list style */
 ol ol,
 ul ol {
@@ -1121,6 +1150,16 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_ff.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-fme > div > a::before,.sidebar-fme > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_fme.svg");
   background-size: contain;
   background-repeat: no-repeat;
 }
