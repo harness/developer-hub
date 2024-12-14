@@ -614,6 +614,21 @@ properties:
 
 ![](./static/file-upload-hide-content.png)
 
+### How to use the contents of the file uploaded
+
+Files uploaded to workflows are automatically encoded in **base64** format. To use the contents of an uploaded file, the **base64-encoded data** must first be decoded. This can be achieved using the Run Step in IDP stage.
+
+1. Start with a Run Step in IDP stage, write a script in the step to: 
+  - Extract the base64-encoded content from the uploaded file.
+  - Decode the content back to its original format.
+2. Process or utilize the decoded content as needed in the steps that follow.
+
+**Without decoding, the uploaded file contents cannot be directly used.** 
+
+Here's an [example](https://github.com/Debanitrkl/backstage-test/blob/main/pipeline-to-parse-json.yaml) harness pipeline that uses [PowerShell](https://github.com/Debanitrkl/backstage-test/blob/b420528f309ef2a84e5190689912a929d53bc90a/pipeline-to-parse-json.yaml#L29-L84) in run step to decode the content of the file uploaded to Workflows. 
+
+![](./static/demo-pwsh-process-json.png)
+
 ## Using Secrets
 
 You may want to mark things as secret and make sure that these values are protected and not available through REST endpoints. You can do this by using the built-in `ui:field: Secret` and `ui:widget: password`.
