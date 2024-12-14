@@ -45,8 +45,8 @@ If you have any questions or need assistance with the whitelisting process, plea
 
 #### New features and enhancements
 - Expanded Cache Intelligence functionality to include support for VB and F# with .NET (CI-14396).
-- Added ability to set 'topologySpreadConstraint' in 'Pod Spec Overlay' field for k8s build Pods from the UI editor. This was previously available in yaml editor only(CI-14169). 
-- Tests related output variables are now available when publishing test reports through 'Run' and 'Test' steps, capturing the number of total tests, skipped tests, failed tests, etc. This is currently available when enabling the CI_ENABLE_TEST_SUMMARY_AS_OUTPUTS feature flag. Supported with Kubernetes infrastructure. (CI-15281)
+- Added ability to set `topologySpreadConstraint` in 'Pod Spec Overlay' field for k8s build pods from the UI editor. This was previously available in YAML editor only (CI-14169). 
+- Tests related output variables are now available when publishing test reports through 'Run' and 'Test' steps, capturing the number of total tests, skipped tests, failed tests, etc. This is currently available when enabling the `CI_ENABLE_TEST_SUMMARY_AS_OUTPUTS` feature flag. Supported with Kubernetes infrastructure. (CI-15281)
 
 
 To enable feature flags, please contact [Harness Support](mailto:support@harness.io). 
