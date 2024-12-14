@@ -31,7 +31,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 #### New Features and Enhancements  
 - Veracode step is now available as an SCA scanner (STO-8275).  
 - Improved logic in the Checkmarx scanner to handle empty scan reports (STO-8282).  
-- Updated SonarQube policy support to include Server Version 10 (STO-8251).  
+- Extended support for SonarQube external policies to work with SonarQube server version 10 (STO-8251).
 
 #### Fixed Issues  
 - Fixed an issue where SonarQube step execution failed if the title referenced a null character (STO-8329, ZD-74246, ZD-74368).  
