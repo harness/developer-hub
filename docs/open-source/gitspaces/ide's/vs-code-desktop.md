@@ -1,6 +1,7 @@
 ---
 title: VS Code Desktop
 sidebar_position: 2
+description: Connect to your Gitspaces within VS Code Desktop.
 sidebar_label: VS Code Desktop
 ---
 
@@ -12,7 +13,7 @@ Before starting out, ensure that you have the following:
 - Harness Open Source Gitspaces extension installed (Refer to the steps below)
 - [Remote - SSH extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) must be installed and enabled in VS Code Desktop
 
-### Installing the Harness Open Source Gitspaces Extension
+### Installing the Harness open source Gitspaces extension
 To install the “Harness Open Source Gitspaces” extension, here’s what you need to do:
 1. Open VS Code and go to the Extensions marketplace.
 
@@ -23,7 +24,7 @@ To install the “Harness Open Source Gitspaces” extension, here’s what you 
 3. Once it appears, click “Install”.
     ![](./static/hoss-9'.png)
 
-### Setting up the Extension
+### Setting up the extension
 Here’s what you have to do to setup the extension in your VS Code Desktop:
 1. Once you have installed the extension, you will see the “Harness Open Source Gitspaces” logo in your sidebar.
 

@@ -1,6 +1,7 @@
 {
     "label": "Get Started",
     "position": 3,
+    "description":"Get started with Harness Open Source Gitspaces.",
     "link": {
       "type": "generated-index"
     }
