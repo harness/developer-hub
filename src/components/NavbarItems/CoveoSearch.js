@@ -69,6 +69,7 @@ const CoveoSearch = () => {
           tokenData.orgId,
           tokenData.token
         );
+        // Coveo.SearchEndpoint.endpoints.default.caller.options.queryStringArguments.debug = 1;
         let searchboxRoot = searchBoxEl.current;
         let searchRoot = document.createElement('div');
         searchRoot.setAttribute('class', 'coveo-search-results');
@@ -158,6 +159,17 @@ const CoveoSearch = () => {
       initializeCoveo().then(() => setIsCoveoLoaded(true));
     }
   }, [isCoveoLoaded, pathname]);
+
+  const CoveoErrorReport = document.querySelector('.CoveoErrorReport');
+
+  if (CoveoErrorReport) {
+    console.log(Boolean(CoveoErrorReport.ariaHidden));
+
+    if (CoveoErrorReport.ariaHidden) {
+      localStorage.removeItem('coveo_token');
+      initializeCoveo().then(() => setIsCoveoLoaded(true));
+    }
+  }
 
   return (
     <div>
