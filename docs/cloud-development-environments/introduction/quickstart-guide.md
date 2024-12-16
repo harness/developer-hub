@@ -20,17 +20,17 @@ Please ensure that the CDE module is enabled in your Harness account before you 
 
 ## Create your first Gitspace
 1. Navigate to the **“Cloud Development Environments”** module in the sidebar of your Harness UI. 
-    - If no Gitspaces exist, you'll be redirected to the **“Get Started”** wizard. 
-    - In case there's any existing Gitspace for your project, you can click on **"Create a new Gitspace"**. 
 
-        <img width="550" alt="cde tab" src="https://github.com/user-attachments/assets/c97086df-687e-4914-9894-bf632cc6bd58" />
+    <img width="550" alt="cde tab" src="https://github.com/user-attachments/assets/c97086df-687e-4914-9894-bf632cc6bd58" />
 
-2. Select the project where you want to create the Gitspace and click **“Get Started Now”** to proceed to the **“Create Gitspace”** page.
+2. Select the project where you want to create the Gitspace and click **“Get Started Now”** to proceed to the **“Create Gitspace”** page. (In case there's any existing Gitspace for your project, you can click on **"Create a new Gitspace"**.)
 
     <img width="850" alt="quickstart-1" src="https://github.com/user-attachments/assets/330e89ae-7b2f-420f-8ea6-66f07d9d5893" />
 
 3. Specify your Gitspace details:
-    - Connect your **Git provider** (Harness Code is the default). For providers like **GitHub** or **GitLab**, [configure OAuth](/docs/cloud-development-environments/features-of-gitspaces/authentication.md) to access private repositories. 
+    - Connect your **Git provider** (Harness Code is the default). 
+    
+        For providers like **GitHub** or **GitLab**, [configure OAuth](/docs/cloud-development-environments/features-of-gitspaces/authentication.md) to access private repositories. 
     - Enter your repository’s branch name.
     - Choose your preferred IDE:
         - VS Code Browser

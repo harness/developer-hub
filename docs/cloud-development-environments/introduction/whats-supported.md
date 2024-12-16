@@ -43,6 +43,13 @@ We are working on support for [IntelliJ IDEA](https://www.jetbrains.com/idea/) a
 To use VS Code Desktop, you need to [install and configure](/docs/cloud-development-environments/ide's/vs-code-desktop) the Gitspaces extension.  
 :::
 
+## Artifact Repository Connectors
+To pull your private Docker images, you need to connect Harness to your Artifact Repository by adding a repository connector. Currently, we support the following connectors:
+
+1. [JFrog Artifactory](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference)
+2. [Docker Registry](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
+3. [AWS ECR](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-aws-connector)
+
 ## Regions Available​
 
 1. US West
