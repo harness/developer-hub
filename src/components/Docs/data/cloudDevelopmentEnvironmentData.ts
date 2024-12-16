@@ -34,10 +34,16 @@ import { MODULES } from "@site/src/constants";
           link: "/docs/cloud-development-environments/introduction/whats-supported",
         },
         {
-          title: "Getting Started with Gitspaces",
+          title: "Quickstart Guide",
           module: MODULES.cde,
           description: "Get started by setting up and configuring your Gitspaces.",
-          link: "/docs/cloud-development-environments/introduction/getting-started-with-cde",
+          link: "/docs/cloud-development-environments/introduction/quickstart-guide",
+        },
+        {
+          title: "Quickstart Tutorial",
+          module: MODULES.cde,
+          description: "Get started by setting up and configuring your Gitspaces with a sample demo app. ",
+          link: "/docs/cloud-development-environments/introduction/quickstart-tutorial",
         },
         {
           title: "Beta Plan Usage",
