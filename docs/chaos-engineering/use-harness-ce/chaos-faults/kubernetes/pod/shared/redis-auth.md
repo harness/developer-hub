@@ -35,6 +35,6 @@ spec:
           value: "/tmp/redis-secret.yaml"
       components:
         secrets:   # Kubernetes secret mounted
-          - name: cloud-secret
+          - name: redis-secret
             mountPath: /tmp/
 ```
