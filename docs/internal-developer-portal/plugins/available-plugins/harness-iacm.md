@@ -71,7 +71,7 @@ Also, you could add a conditional like `isHarnessIacmAvailable` which is met whe
 
 ## Annotations
 
-To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file, you can fetch the workspaces URL from the [workspaces](https://developer.harness.io/docs/infra-as-code-management/workspaces/create-workspace) page. Note that the URL should be in the format of `https://app.harness.io/ng/account/<ACCOUNT_ID>/module/iacm/orgs/<ORGANIZATION_ID/projects/<PROJECT_ID/workspaces/<WORKSPACE_ID/resources`
+To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file, you can fetch the workspaces URL from the [workspaces](https://developer.harness.io/docs/infra-as-code-management/use-iacm/create-workspace) page. Note that the URL should be in the format of `https://app.harness.io/ng/account/<ACCOUNT_ID>/module/iacm/orgs/<ORGANIZATION_ID/projects/<PROJECT_ID/workspaces/<WORKSPACE_ID/resources`
 
 ```yaml
 apiVersion: backstage.io/v1alpha1

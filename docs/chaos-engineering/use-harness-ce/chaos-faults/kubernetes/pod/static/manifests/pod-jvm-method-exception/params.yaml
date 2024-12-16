@@ -1,0 +1,36 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: KubernetesChaosExperiment
+metadata:
+  name: pod-jvm-method-exception
+  namespace: hce
+          env:
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
+            - name: POD_AFFECTED_PERCENTAGE
+              value: ""
+            - name: BYTEMAN_PORT
+              value: "9091"
+            - name: JAVA_HOME
+              value: ""
+            - name: METHOD  #mandatory
+              value: "welcome"
+            - name: CLASS   #mandatory
+              value: org.framework.appName.system.WelcomeController
+            - name: EXCEPTION  #mandatory
+              value: "NullPointerException("Something went wrong!")"
+            - name: CONTAINER_RUNTIME
+              value: containerd
+            - name: SOCKET_PATH
+              value: /run/containerd/containerd.sock
+            - name: LIB_IMAGE
+              value: docker.io/harness/chaos-ddcr-faults:1.49.2
+            - name: RAMP_TIME
+              value: ""
+            - name: SEQUENCE
+              value: parallel
+            - name: TARGET_CONTAINER
+              value: ""
+            - name: TARGET_PODS
+              value: ""
+            - name: NODE_LABEL
+              value: ""

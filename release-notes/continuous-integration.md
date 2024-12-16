@@ -21,10 +21,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 
-
-
-
-## November 2024
+## December 2024
 
 :::note
 
@@ -41,6 +38,43 @@ This update also includes a transition to M2 machines, offering improved perform
 If you have any questions or need assistance with the whitelisting process, please contact Harness Support.
 
 :::
+
+### Version 1.58
+<!-- 2024-12-09 -->
+
+
+#### New features and enhancements
+- Expanded Cache Intelligence functionality to include support for VB and F# with .NET (CI-14396).
+- Added ability to set `topologySpreadConstraint` in 'Pod Spec Overlay' field for k8s build pods from the UI editor. This was previously available in YAML editor only (CI-14169). 
+- Tests related output variables are now available when publishing test reports through 'Run' and 'Test' steps, capturing the number of total tests, skipped tests, failed tests, etc. This is currently available when enabling the `CI_ENABLE_TEST_SUMMARY_AS_OUTPUTS` feature flag. Supported with Kubernetes infrastructure. (CI-15281)
+
+
+To enable feature flags, please contact [Harness Support](mailto:support@harness.io). 
+
+#### Fixed issues
+- Resolved an issue where Python script execution in Harness pipelines failed with vague error messages when an output variable was configured but not assigned a value. Updated error messages to explicitly identify the unset variable, improving clarity and user experience. (CI-14053, ZD-69167)
+- Fixed an issue where Docker build arguments defined as comma-separated strings (e.g., a1,a2,a3) were incorrectly parsed (CI-14845).
+- Addressed an issue where Docker Layer Caching in 'Build and Push' steps failed with the error: "error while bootstrapping buildx builder" when running on Kubernetes. (CI-15228, ZD-73397)
+
+#### Harness images updates
+
+| **Image** | **Change**  | **Previous version** | **New Version** 
+|-------------------------------|-----------------|-------------|------------------|
+| `harness/ci-addon` | Add support for exposing test report summary with output variables | 1.16.61 | 1.16.66
+| `harness/ci-lite-engine` | Add support for exposing test report summary with output variables | 1.16.61 | 1.16.66
+| `plugins/buildx` | Update buildx version to include buildkit in image | 1.1.20 | 1.1.24
+| `plugins/cache` | update cache intelligence plugin tags. updated tag fixes windows restore bug and adds support for vb .net and f# .net | 1.8.0 | 1.9.0
+
+
+### Version 1.57
+<!-- 2024-12-02 -->
+- Resolved an issue with ECR image links in the artifacts tab for the "Build and Push to ECR" step by adding the missing "/_" separator, ensuring correct functionality. (CI-15089, ZD-72329).
+- Resolved an issue where OPA enforcement in CI stages didn't work properly in the Self-Managed Enterprise Edition (CI-14840, ZD-70943).
+
+
+
+## November 2024
+
 
 
 ### Version 1.56
