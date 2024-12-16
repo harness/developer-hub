@@ -28,7 +28,7 @@ Pod JVM method latency:
   </tr>
   <tr>
     <td> CLASS </td>
-    <td> Specify as <b>packageName.className</b> that specifies the class in which you define the exception. </td>
+    <td> Specify as <b>packageName.className</b> that specifies the class in which you define the target method. </td>
     <td> Specify it in the format `packageName.className`. For example, <code>org.framework.appName.system.WelcomeController</code>.</td>
   </tr>
   <tr>
@@ -38,7 +38,7 @@ Pod JVM method latency:
   </tr>
   <tr>
     <td> METHOD </td>
-    <td> The method to which exception is applied. </td>
+    <td> The method in which latency is injected. </td>
     <td> For example, <code>Welcome</code>. For more information, go to <a href= "#method ">method name.</a></td>
   </tr>
 </table>
