@@ -399,6 +399,22 @@ Stressing the disk with continuous and heavy I/O can degrade the reads and write
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM method exception
+
+Pod JVM method exception injects chaos into a Java application executing in a Kubernetes pod by invoking an exception.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance and resilience of an application (or service) on encountering exceptions.
+- Determines how efficiently an application recovers the services.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+
 ### Pod JVM CPU stress
 
 Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kubernetes pod by consuming excessive CPU threads of the JVM.

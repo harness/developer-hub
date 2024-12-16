@@ -200,6 +200,12 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod JVM method exception",
+    description:"Pod JVM method exception injects chaos into a Java application executing in a Kubernetes pod by invoking an exception.",
+    tags: ["pod", "jvm", "exception"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod JVM CPU stress",
     description:"Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kubernetes pod by consuming excessive CPU threads of the JVM.",
     tags: ["pod", "jvm", "cpu"],
