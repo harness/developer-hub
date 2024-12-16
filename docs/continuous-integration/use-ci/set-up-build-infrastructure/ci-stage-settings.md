@@ -60,7 +60,7 @@ If you are using self-managed build infrastructure (any build infrastructure oth
 
 ### SLSA Provenance
 
-These settings are for the [Harness SSCA module](/docs/software-supply-chain-assurance).
+These settings are for the [Harness SCS module](/docs/software-supply-chain-assurance).
 
 ### Advanced: Stage Variables
 

@@ -6,20 +6,20 @@ sidebar_position: 10
 
 Incorporate a Terraform Plugin step in your pipeline to execute specific Terraform commands at designated stages. This topic provides a detailed look at the available commands within the Infrastructure as Code Management (IaCM) module.  
 
-For instance, incorporating a [Terraform Provision operation](docs/infra-as-code-management/pipelines/operations/provision-workspace.md) automatically configures your pipeline with the `terraform init`, `terraform plan`, and `terraform apply` commands by default.
+For instance, incorporating a [Terraform Provision operation](docs/infra-as-code-management/use-iacm/provision-workspace.md) automatically configures your pipeline with the `terraform init`, `terraform plan`, and `terraform apply` commands by default.
 
 ### IaCM Supported Commands
 
 The supported commands include:
-- `init`
-- `plan`
-- `apply`
-- `destroy`
-- `plan-destroy`
-- `plan-refresh-only`
-- `apply-refresh-only`
-- `detect-drift`
-- `validate`
+- [init](#initialize)
+- [plan](#plan)
+- [apply](#apply)
+- [destroy](#destroy)
+- [plan-destroy](#plan--destroy)
+- [plan-refresh-only](#plan---refresh-only)
+- [apply-refresh-only](#apply---refresh-only)
+- [detect-drift](#detect-drift)
+- [validate](#validate)
 
 ![Terraform Plugins](./static/tf_plugins.png)
 
@@ -59,6 +59,10 @@ The `terraform plan-destroy` prepares a plan for dismantling infrastructure, out
 ### Plan - Refresh Only
 The `plan-refresh-only` command focuses on updating the state file to mirror real-time data without altering the infrastructure:
 - **State Refresh**: Updates the state file with the current infrastructure status.
+
+:::tip use case
+In scenarios where drift is detected, but there are unreviewed changes pending in your configuration code, the `plan-refresh-only` step is ideal. It refreshes the state to reconcile drift without applying any pending code updates, ensuring only the manual changes are addressed. Go to [Drift Detection](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/drift-detection/#handle-drift) to see a specific example.
+:::
 
 ### Apply - Refresh Only
 The `apply-refresh-only` applies a state update without changing the infrastructure:

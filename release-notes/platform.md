@@ -78,6 +78,19 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## December 2024
+### Version 1.68.x<!-- December 5, 2024 -->
+
+#### Fixed issues
+
+- Resolved an issue in the pipeline approval stage where Slack notifications were delayed by up to 10 minutes after the approval event. With this fix, Slack notifications are now sent instantly once the pipeline approval stage is issued. 
+(PL-58801, ZD-72930)
+
+
+#### New features and enhancements
+
+- Introduced enhanced support for the variables in the resource group allowing restriction of access to ```specific variables``` within the scope. Previously, users had access to either all variables or none. This update enables fine-grained access control, enabling users to select specific variables for controlled access across their organisation, account or project scope. 
+(PL-58267)
+
 
 ### Version 1.67.x<!-- December 3, 2024 -->
 
@@ -106,6 +119,8 @@ The following deprecated API endpoints are longer supported:
 - Optimized role assignment deletions by replacing the inefficient `findAllAndRemove` method with remove. This improves database performance by avoiding unnecessary data fetching during deletions. (PL-56385)
 
 - Upgraded the `io.netty:netty-common` library to version `4.1.115` to address security vulnerabilities, including `CVE-2024-47535`, ensuring enhanced application security and compliance. (PL-58550)
+
+- Cross-module pipeline executions dashboards includes the ability to run ad-hoc queries for pipeline, stage, and step level views and allow cross module analysis. This includes one OOTB dashboard for pipeline executions, one for stage executions and another for step executions. (PL-50496)
 
 ## November 2024
 

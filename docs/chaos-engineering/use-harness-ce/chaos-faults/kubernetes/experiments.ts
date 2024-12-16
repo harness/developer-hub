@@ -210,6 +210,12 @@ export const experiments: ExperimentDetails[] = [
     description:"Pod JVM modify return modifies the return value of a method in a Java application executing on a Kubernetes pod, for a specific duration.",
     tags: ["pod", "jvm"],
     category: "kubernetes",
+   },
+  {
+    name: "Pod JVM trigger gc",
+    description:"Pod JVM trigger gc triggers the garbage collector for a Java process executing in a Kubernetes pod. This causes unused (or out of scope) objects and variables to be garbage collected and recycled, thereby freeing up memory space.",
+    tags: ["pod", "jvm"],
+    category: "kubernetes",  
   },
   {
     name: "Pod memory hog exec",
