@@ -71,5 +71,5 @@ metadata:
         - name: REQUEST_COUNT
           value: "1000"
         - name: SECRET_FILE_PATH
-          value: ""
+          value: "/tmp/redis-secret.yaml"
 ```

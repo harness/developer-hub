@@ -1,23 +1,27 @@
 ## Redis authentication
 :::note
-If your Redis server doesn't require authentication, you may directly provide the `address` tunable. Refer [here](#optional-tunables).
+If your Redis server doesn't require authentication, you can directly provide the `ADDRESS` tunable, that refers to the Redis server address. Refer [here](#optional-tunables).
 :::
 
-The following authentication and connection details reside on the same machine where the chaos infrastructure is executed. These details are provided in the `/etc/chaos-infrastructure/redis.env` file in the following format:
+If your application requires a secret or authentication, provide the `ADDRESS`, `PASSWORD` and the TLS authentication certificate. Create a Kubernetes secret and mount it.
 
+The following authentication and connection details reside on the same machine where the chaos infrastructure is executed.
+
+A sample `redis-secret.yaml` file is shown below:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: redis-secret  # Name of the Secret
+type: Opaque       # Default Secret type
+stringData:
+  redis-secret.yaml: |-
+    address: 34.136.111.6:6379
+    password: mypass
+    tlsCertFile: <cert>
+components:
+  secrets:   # Kubernetes secret mounted
+    - name: cloud-secret
+      mountPath: /tmp/
 ```
-ADDRESS="127.0.0.1:6379"
-PASSWORD=XXXXXXXX
-TLS_AUTH_CERT="/path/to/tls-cert"
-```
-
-:::tip
-`ADDRESS` is a mandatory field. You can also include `PASSWORD` and `TLS_AUTH_CERT` fields. You need them only if you have configured your Redis database to facilitate authentication.
-:::
-
-
-| **ENV name**  | **Description**                                                | **Example**        |
-|---------------|----------------------------------------------------------------|--------------------|
-| ADDRESS       | Location where the Redis server is running.                    | `redis-server.com` |
-| PASSWORD      | Password to connect to the Redis database.                     | `password`         |
-| TLS_AUTH_CERT | File path to the location where the TLS certificate is stored. | `/path/to/file`    |
