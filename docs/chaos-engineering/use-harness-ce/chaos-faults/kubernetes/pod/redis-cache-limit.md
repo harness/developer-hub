@@ -69,6 +69,6 @@ metadata:
           value: ""
         - name: MAX_MEMORY
           value: "50%"
-        - name: SECRET_FILE_PATH
+        - name: SECRET_FILE_PATH # optional- required only for authentication
           value: "/tmp/redis-secret.yaml"
 ```
