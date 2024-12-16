@@ -20,7 +20,9 @@ To pull your private Docker images, you need to connect Harness to your Artifact
 1. [**JFrog Artifactory**](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference): You can integrate **JFrog Artifactory** as a connector at the account, organization, or project level. For detailed instructions, refer to this guide on [adding an artifact repository](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo#add-an-artifactory-repository).  
 2. [**Docker Registry**](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference): You can also configure **Docker Registry** as a connector to access private Docker images. Refer to this guide on [adding a Docker registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo#add-a-docker-registry).
 
-:::info Please note that the Docker Connector is platform-agnostic and can be used to connect to any Docker container registry. :::
+:::info
+Please note that the Docker Connector is platform-agnostic and can be used to connect to any Docker container registry.
+:::
 
 3. [**Amazon ECR**](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference): You can integrate **Amazon ECR** with Harness by adding an Amazon ECR connector. You can easily configure the required roles and policies, create the connector, and  configure your credentials by following the steps in [this guide](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-aws-connector). 
 
