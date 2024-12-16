@@ -143,6 +143,39 @@ Access to this JIRA card is authenticated via [OAuth Configurations in IDP](http
 - *Developer*: Sign in using the pre-configured OAuth App to access personalized data from JIRA. Utilize the "My JIRA Tickets" card on the homepage for real-time updates.
     - Scope: Access is limited to the JIRA projects, tickets, and associated data they have permissions for within the JIRA system. Developers only see tickets they are assigned to, tickets they created, or those they are mentioned in.
 
+### Markdown Card
+
+The Markdown Card is a customizable component that supports full markdown syntax, designed to serve various informational purposes on the IDP Homepage. Here's an example of Engineering Handbook card. 
+
+![](./static/markdown-small.gif)
+
+```markdown
+ **📘 Engineering Handbook**
+- [Frontend Engineering Guide](https://example.com/frontend-guide)  
+- [Backend Best Practices](https://example.com/backend-guide)  
+- [CI/CD Pipelines Handbook](https://example.com/cicd-handbook)  
+
+---
+Need help? [Contact the DevOps Team](mailto:devops@example.com)
+```
+
+Here are some of the use cases: 
+
+1. Welcome Message
+
+![](./static/md-card-eg-1.png)
+
+2. Announcements
+
+```markdown
+**📢 Announcement**
+- The new IaCM plugin is now live! 🚀  
+- [Read the full release notes here](https://example.com/release-notes).
+
+---
+Feedback? Let us know on Slack: #idp-feedback
+```
+
 ### Tool Kit
 
 -  This card acts as a necessary bookmark for all the links visited by the developer quite frequently, e.g; JIRA Sprint Dashboard, QA Environments

@@ -1,12 +1,12 @@
 ---
 title: Export artifacts by email
-description: Use the Drone Email plugin to export reports and other artifacts by email.
+description: Use the Email plugin to export reports and other artifacts by email.
 sidebar_position: 32
 redirect_from:
   - /docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin
 ---
 
-You can use the [Drone Email plugin](https://plugins.drone.io/plugins/email) to export reports, data, and other artifacts by email.
+You can use the [Email plugin](https://github.com/harness-community/drone-email) to export reports, data, and other artifacts by email.
 
 ## Use the Email plugin
 
@@ -50,13 +50,13 @@ You can use the [Drone Email plugin](https://plugins.drone.io/plugins/email) to 
                          body: file:///harness/test.html ## The email body. This can be an inline template or a URL. `file:///` is allowed.
    ```
 
-For information about Email plugin settings, go to the [Drone Email plugin documentation](https://plugins.drone.io/plugins/email).
+For information about Email plugin settings, go to the [Email plugin documentation](https://github.com/harness-community/drone-email).
 
 For information about the Plugin step settings, go to the [Plugin step settings documentation](../use-drone-plugins/plugin-step-settings-reference.md).
 
 ## Send with username and password authentication
 
-You don't need to provide the SMPT `username` and `password`, but you can include these parameters if you want or need to. For information about Email plugin settings, including the `username` and `password`, go to the [Drone Email plugin documentation](https://plugins.drone.io/plugins/email).
+You don't need to provide the SMPT `username` and `password`, but you can include these parameters if you want or need to. For information about Email plugin settings, including the `username` and `password`, go to the [Email plugin documentation](https://github.com/harness-community/drone-email).
 
 ## Send data in the body
 
@@ -71,7 +71,7 @@ Here's an example of a Plugin step where the data is in the email body.
                   identifier: Plugin_1
                   spec:
                     connectorRef: account.harnessImage
-                    image: drillster/drone-email
+                    image: plugins/email
                     settings:
                       from: sender@mysite.com
                       recipients: test@mysite.com
@@ -95,7 +95,7 @@ Here's an example of a Plugin step where the data is sent as an attachment.
                   identifier: Plugin_1
                   spec:
                     connectorRef: account.harnessImage
-                    image: drillster/drone-email
+                    image: plugins/email
                     settings:
                       from: sender@mysite.com
                       recipients: test@mysite.com

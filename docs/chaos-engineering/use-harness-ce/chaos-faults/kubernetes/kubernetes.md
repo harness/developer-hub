@@ -429,7 +429,21 @@ Pod JVM method latency slows down the Java application executing on Kubernetes p
 - Evaluates the application's behavior in high-stress cases.
 - Determines how quickly an application returns to normalcy after the delay.
 - Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
-  
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod JVM trigger gc
+
+Pod JVM trigger gc triggers the garbage collector for a Java process executing in a Kubernetes pod. This causes unused (or out of scope) objects and variables to be garbage collected and recycled, thereby freeing up memory space.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines how the application behaves when memory space is freed up randomly for a brief period.
+- Determines how efficiently an application recovers and returns to normalcy.
+
 </Accordion>
 
 </FaultDetailsCard>
