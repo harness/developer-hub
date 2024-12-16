@@ -1,0 +1,21 @@
+apiVersion: litmuchaos.io/v1alpha1
+kind: K8sFault
+metadata:
+  name: redis-cache-expire
+      env:
+        - name: TOTAL_CHAOS_DURATION
+          value: "60" # in seconds
+        - name: RAMP_TIME
+          value: ""
+        - name: ADDRESS
+          value: ""
+        - name: KEY
+          value: ""
+        - name: DATABASE
+          value: "0"
+        - name: EXPIRATION
+          value: ""
+        - name: EXPIRY_OPTION
+          value: ""
+        - name: SECRET_FILE_PATH
+          value: ""

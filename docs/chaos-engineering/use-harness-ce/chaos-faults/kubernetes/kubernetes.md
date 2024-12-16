@@ -751,6 +751,20 @@ It tests the application's resilience to limited or slow network bandwidth.
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Redis cache expire
+
+Redis cache expire expires a given key (or all keys) for a specified duration. During this period of chaos, you can't access the keys associated with the cache.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+Redis cache expire determines the resilience of Redis-dependant applications against frequent cache expiry.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Redis cache limit
 
 Redis cache limit fault limits the amount of memory used by a Redis cache and restores it after the chaos duration.

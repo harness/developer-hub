@@ -273,8 +273,14 @@ export const experiments: ExperimentDetails[] = [
   },
   {
     name: "Pod network rate limit",
-    description:"Pod network rate limit fault generates Traffic Control (tc) rules with Token Bucket Filter (TBF) to assess Kubernetes pod resilience under limited network bandwidth condition",
+    description:"Pod network rate limit fault generates Traffic Control (tc) rules with Token Bucket Filter (TBF) to assess Kubernetes pod resilience under limited network bandwidth condition. ",
     tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Redis cache expire",
+    description:"Redis cache expire expires a given key (or all keys) for a specified duration. During this period of chaos, you can't access the keys associated with the cache.",
+    tags: ["pod", "redis", "expire"],
     category: "kubernetes",
   },
   {
