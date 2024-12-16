@@ -278,6 +278,12 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Redis cache limit",
+    description:"Redis cache limit fault limits the amount of memory used by a Redis cache and restores it after the chaos duration.",
+    tags: ["pod", "cache", "redis"],
+    category: "kubernetes",
+  },
+  {
     name: "Time chaos",
     description:"Time chaos introduces controlled time offsets to disrupt the system time of the target pod",
     tags: ["pod"],
