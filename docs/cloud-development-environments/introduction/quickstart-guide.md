@@ -20,12 +20,12 @@ Please ensure that the CDE module is enabled in your Harness account before you 
 
 ## Create your first Gitspace
 1. Navigate to the **“Cloud Development Environments”** module in the sidebar of your Harness UI. 
-    - If no Gitspaces exist, you'll be redirected to the **“Getting Started”** wizard. 
+    - If no Gitspaces exist, you'll be redirected to the **“Get Started”** wizard. 
     - In case there's any existing Gitspace for your project, you can click on **"Create a new Gitspace"**. 
 
         <img width="550" alt="cde tab" src="https://github.com/user-attachments/assets/c97086df-687e-4914-9894-bf632cc6bd58" />
 
-2. Select the project where you want to create the Gitspace and click **“Getting Started Now”** to proceed to the **“Create Gitspace”** page.
+2. Select the project where you want to create the Gitspace and click **“Get Started Now”** to proceed to the **“Create Gitspace”** page.
 
     <img width="850" alt="quickstart-1" src="https://github.com/user-attachments/assets/330e89ae-7b2f-420f-8ea6-66f07d9d5893" />
 
@@ -55,12 +55,12 @@ The configuration for your Gitspace is stored in the `.devcontainer/devcontainer
 
 Here are some key features of developing in Gitspaces:
 #### [Private Docker Images](/docs/cloud-development-environments/features-of-gitspaces/private-docker-images.md)
-Harness Gitspaces supports the use of **private Docker images**, allowing you to pull private Docker images for your Gitspaces which further enables you to personalize your Gitspace seamlessly with your private Docker images.
+Harness Gitspaces supports the use of **private Docker images**, allowing you to pull private Docker images using artifact repository connectors like **JFrog Artifactory**, **Docker Registry** and **AWS ECR** for your Gitspaces which further enables you to personalize your Gitspace seamlessly. 
 
 ![](./static/private-docker-images-1.png)
 
 #### [Secure Connect Integration](/docs/cloud-development-environments/features-of-gitspaces/secure-connect.md)
-Harness Gitspaces offers the **Secure Connect** feature, providing a robust and secure proxy solution. This feature allows seamless integration with your on-premises, privately-hosted assets such as **Docker Registries** and **Artifact Repositories**. 
+Harness Gitspaces offers the **Secure Connect** feature, providing a robust and secure proxy solution. This feature allows seamless integration with your on-premises, privately-hosted assets such as Docker Registries and Artifact Repositories. 
 
 #### [Port Forwarding](/docs/cloud-development-environments/develop-using-cde/port-forwarding.md)
 **Port Forwarding** in Gitspaces acts as a bridge between a remote development environment and your local machine. It allows developers to access services running inside Gitspaces as if they were running locally on their system. 
