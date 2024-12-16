@@ -149,19 +149,19 @@ This problem typically surfaces after re-enabling authentication if the agent pr
 
 ## Application Creation Fails Due to Missing "project" Field (ArgoCD 2.12 Change) (previously it was optional)
 
-This is a **backward incompatible change** with **Argo 2.12**. The project field is now mandatory for repository and cluster access.
+This is a **backward incompatible change** with **Argo 2.12**. The project field is now mandatory for repository access.
 
-With the upgrade to **ArgoCD 2.12**, the project field has been made mandatory (previously optional) for checking access to repositories and clusters at the project-level scope.
+With the upgrade to **ArgoCD 2.12**, the project field has been made mandatory (previously optional) for checking access to repositories at the project-level scope.
 As a result, Harness GitOps requests that did not explicitly include the project field began to fail (As it was optional field), leading to issues in the GitOps application creation flow.
 
-Additionally, ArgoCD 2.12 introduced stricter controls on the use of cluster secrets.
+Additionally, ArgoCD 2.12 introduced stricter controls on the use of repository kubernetes secret.
 Previously, an Application or ApplicationSet would use any cluster secret that matched the URL specified in the repoUrl field.
 However, starting from ArgoCD 2.12, the project field of an application must match the project field of the cluster secret for access to be granted.
 
 **Impact**
 
-If a cluster secret is scoped to project-a, an application associated with project-b can no longer access that cluster secret.
-To maintain access to the cluster secret across multiple projects, the project field on the cluster secret must be unset or explicitly scoped for multiple projects.
+If a reposititory is scoped to `project-a`, an application associated with `project-b` can no longer access that repository.
+To maintain access to the cluster secret across multiple projects, the project field on the repository kubernetes secret must be `unset` or explicitly scoped for multiple projects.
 
 **Action Items for Users**
 
