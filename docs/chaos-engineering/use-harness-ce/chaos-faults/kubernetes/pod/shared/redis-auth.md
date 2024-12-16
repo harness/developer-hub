@@ -38,4 +38,3 @@ spec:
           - name: redis-secret
             mountPath: /tmp/
 ```
-

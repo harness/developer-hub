@@ -278,6 +278,12 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Redis cache penetration",
+    description:"Redis cache penetration fault continuously sends cache requests to the Redis database to find the value for a key that does not exist. This continuous request reduces the performance of the application.",
+    tags: ["pod", "redis", "cache"],
+    category: "kubernetes",
+  },
+  {
     name: "Redis cache expire",
     description:"Redis cache expire expires a given key (or all keys) for a specified duration. During this period of chaos, you can't access the keys associated with the cache.",
     tags: ["pod", "redis", "expire"],

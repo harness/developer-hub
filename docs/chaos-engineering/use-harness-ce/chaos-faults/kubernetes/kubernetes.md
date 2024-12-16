@@ -751,6 +751,21 @@ It tests the application's resilience to limited or slow network bandwidth.
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Redis cache penetration
+
+Redis cache penetration fault continuously sends cache requests to the Redis database to find the value for a key that does not exist. This continuous request reduces the performance of the application.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Slows down the database for responses to other requests.
+- Determines the resilience of Redis-dependant application when cache requests are continuously sent to a Redis database and they result in a cache miss.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+  
 ### Redis cache expire
 
 Redis cache expire expires a given key (or all keys) for a specified duration. During this period of chaos, you can't access the keys associated with the cache.
