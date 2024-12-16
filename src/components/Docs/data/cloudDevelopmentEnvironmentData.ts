@@ -42,7 +42,7 @@ import { MODULES } from "@site/src/constants";
         {
           title: "Quickstart Tutorial",
           module: MODULES.cde,
-          description: "Get started by setting up and configuring your Gitspaces with a sample demo app. ",
+          description: "A detailed step-by-step tutorial to get started with Gitspaces. ",
           link: "/docs/cloud-development-environments/introduction/quickstart-tutorial",
         },
         {

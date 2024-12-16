@@ -17,7 +17,7 @@ Harness CDE provides a seamless integration with VS Code, making it easy to conn
 
 Check out this video to get started with the Harness Gitspaces VS Code Extension: 
 
-[![Managing Harness CDE with the Gitspaces VS Code Extension](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2F8rwKZNszOpI%3Fsi%3DKfgXkzRK6A861dOU)](https://youtu.be/8rwKZNszOpI?si=KfgXkzRK6A861dOU)
+<iframe width="500" height="275" src="https://www.youtube.com/embed/8rwKZNszOpI?si=KjREEG_HGN8-YyrD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Pre-requisites 
 Before starting out, ensure that you have the following:
