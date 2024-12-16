@@ -147,3 +147,26 @@ This problem typically surfaces after re-enabling authentication if the agent pr
 - Ensure the agent's YAML file is updated with the correct authentication token, matching the public key in the database. After updating the YAML file, redeploy the agent to authenticate it properly. 
 
 
+## Application Creation Fails Due to Missing "project" Field (ArgoCD 2.12 Change) (previously it was optional)
+
+This is a **backward incompatible change** with **Argo 2.12**. The project field is now mandatory for repository and cluster access.
+
+With the upgrade to **ArgoCD 2.12**, the project field has been made mandatory (previously optional) for checking access to repositories and clusters at the project-level scope.
+As a result, Harness GitOps requests that did not explicitly include the project field began to fail (As it was optional field), leading to issues in the GitOps application creation flow.
+
+Additionally, ArgoCD 2.12 introduced stricter controls on the use of cluster secrets.
+Previously, an Application or ApplicationSet would use any cluster secret that matched the URL specified in the repoUrl field.
+However, starting from ArgoCD 2.12, the project field of an application must match the project field of the cluster secret for access to be granted.
+
+**Impact**
+
+If a cluster secret is scoped to project-a, an application associated with project-b can no longer access that cluster secret.
+To maintain access to the cluster secret across multiple projects, the project field on the cluster secret must be unset or explicitly scoped for multiple projects.
+
+**Action Items for Users**
+
+1. Update Application Configurations to Include the `project` Field
+- When creating new GitOps applications, ensure that the **project field** is explicitly included in the configuration.
+
+2. Update Cluster Secrets to Support Multiple Projects
+- If you have cluster secrets that need to be accessed by applications across multiple projects, you will need to `unset` the **project field** in the cluster secret configuration. This ensures that the cluster secret is accessible by applications in different ArgoCD projects.
