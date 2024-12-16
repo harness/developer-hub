@@ -70,5 +70,5 @@ metadata:
         - name: MAX_MEMORY
           value: "50%"
         - name: SECRET_FILE_PATH
-          value: ""
+          value: "/tmp/redis-secret.yaml"
 ```
