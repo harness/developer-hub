@@ -25,8 +25,10 @@ Here's a high-level summary of the setup steps:
 3. Select the deployment type **Google Cloud Run**, and then select **Set Up Stage**.
    ![](static/google-cloud-run-1.png)
 4. Select **Add Service**.
-   1. Add the **Google Cloud Run Service Manifest Definition** to the new Cloud Run service.
-      Currently, we support only two Artifact Repository types: Google Artifact Repository and Docker Registry.
+   1. Add the **Google Cloud Run Service Manifest Definition** to the new Cloud Run service. Manifest Definition must define stateless, containerized applications that are compatible with Google Cloud Run
+
+   Currently, we support only two Artifact Repository types: Google Artifact Repository and Docker Registry.
+   
    2. Save the new service.
 5. Select **New Environment**, name the new environment, and select **Save**.
 6. In **Infrastructure Definition**, select **New Infrastructure**.
@@ -40,8 +42,32 @@ Here's a high-level summary of the setup steps:
       - Users can provide a project ID to specify which project.
       - Users can provide a region to specify the region they want to deploy the Cloud Run service.
       
-7. Select **Configure** and choose the deployment strategy: basic, canary, or custom strategy.
-8. Harness will automatically add the **Deploy Cloud Run Step Group** step. These are the 4 steps that get added as part of the step group. All the configurations needed for the steps to run are passed as environment variables:
+7. In the **Execution** tab, select the deployment strategy. Currently, Harness supports the **Basic** and **Canary** deployment strategies
+   
+   Harness automatically adds the **Deploy Cloud Run Step Group** based on the strategy you select:
+   - For **Basic Strategy**, the following steps are automatically added:
+      1. Download Manifest
+      2. Google Cloud Run Prepare Rollback
+      3. Google Cloud Run Deploy Step
+
+      ![](static/google-cloud-run-2.png)
+
+      Additionally, you can add Google Cloud Run Traffic Shift Step if required.
+
+   - For **Canary Strategy**, the following steps are automatically added:
+      1. Download Manifest
+      2. Google Cloud Run Prepare Rollback
+      3. Google Cloud Run Deploy Step
+      4. Google Cloud Run Traffic Shift Step
+
+      ![](static/google-cloud-run-3.png)
+   
+   :::note
+   In the deploy steps under Container Configuration, use the public Docker image:
+   [`harness/google-cloud-run-plugin:1.0.0-linux-amd64`](https://hub.docker.com/layers/harness/google-cloud-run-plugin/1.0.0-linux-amd64/images/sha256-2ad0c6d434673e56df47f1014c397d2bbc8248f8e76b5bbd48965f116f4843f2?context=explore). This image is required to perform deployments to Google Cloud Run.
+   :::
+
+   All the configurations needed for the steps to run are passed as environment variables:
    1. **Download Manifest**:
       - Downloads the manifest specified in the service.
    2. **Google Cloud Run Prepare Rollback**:
@@ -69,7 +95,7 @@ Here's a high-level summary of the setup steps:
       - **Limit CPU**: Sets a limit on the CPU usage for the function or container, ensuring the function does not consume excessive resources.
       - **Environment Variables**: Additional environment variables can be configured.
 
-9. Define the rollback step:
+8. Define the rollback step:
    - **Rollback Step**:
      - Reverts services to previous configurations or states.
      - If it’s the first deployment, the service is deleted using the `gcloud run services delete` command.

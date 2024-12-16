@@ -155,21 +155,21 @@ The `credentials` and `credentialsFile` are two options that can't be used simul
    <td>Flag to hold the authentication type </td>
    <td>Optional </td>
    <td><code>string</code> </td>
-   <td>The <code>type</code> encompasses the authentication method, which includes support for both Basic and Bearer authentication types </td>
+   <td>The <code>type</code> encompasses the authentication method, which includes support for both basic and bearer authentication types </td>
   </tr>
   <tr>
    <td>credentials </td>
-   <td>Flag to hold the basic auth credentials in base64 format or bearer token </td>
+   <td>Flag to hold the basic auth credentials in `base64` format or `bearer` token </td>
    <td>Optional </td>
    <td><code>string</code> </td>
-   <td>The <code>credentials</code> consists of the basic authentication credentials, either as username:password encoded in base64 format or as a bearer token, depending on the authentication type </td>
+   <td>The <code>credentials</code> consists of the basic authentication credentials, either as username:password encoded in `base64` format or as a `bearer` token, depending on the authentication type </td>
   </tr>
   <tr>
    <td> credentialsFile </td>
    <td>Flag to hold the basic auth credentials or bearer token file path </td>
    <td>Optional </td>
    <td><code>string</code> </td>
-   <td>The <code>credentials</code> consists of file path for basic authentication credentials or a bearer token, which are then attached to the experiment pod as volume secrets. These secret resources contain either the username:password encoded in base64 format or a bearer token, depending on the authentication type </td>
+   <td>The <code>credentials</code> consists of file path for basic authentication credentials or a bearer token, which are then attached to the experiment pod as volume secrets. These secret resources contain either the username:password encoded in `base64` format or a `bearer` token, depending on the authentication type </td>
   </tr>
 </table>
 
@@ -395,7 +395,7 @@ spec:
 
 ### Authentication
 
-This establishes a fundamental authentication mechanism for the Prometheus server. The "username:password" encoded in base64 or bearer token, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
+This establishes a fundamental authentication mechanism for the Prometheus server. The "username:password" encoded in `base64` or `bearer` token, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
 
 :::tip
 The `credentials` and `credentialsFile` are mutually exclusive, that is, these fields can't be used simultaneously.

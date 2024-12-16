@@ -6,6 +6,12 @@ sidebar_position: 5
 
 Harness now supports the deployment of Azure Functions, enabling you to automate and manage serverless function deployments to Azure with ease. 
 
+:::note
+
+Currently, this feature is behind the feature flag `CDS_AZURE_FUNCTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 This topic walks you through setting up and running an Azure Functions deployment in Harness.
 
 The basic steps are:
@@ -31,6 +37,15 @@ In Harness, the service represents your Azure Function.
 You define the service for your deployment in the service settings of the pipeline stage. You can either define the service separately in your project's service section and select it in the stage, or create the service directly within the stage's service tab.
 
 It is an artifact-based service, where a manifest is not required, and setting up Variables is optional.
+
+:::note Info
+The artifact must contain the Azure function app. For more information on how to create containerized function apps, go to [Azure Documentation](https://learn.microsoft.com/en-us/azure/azure-functions/functions-how-to-custom-container?tabs=core-tools%2Cacr%2Cazure-cli2%2Cazure-cli&pivots=azure-functions).
+
+You can also deploy Azure Function Apps packaged as ZIP Bundles. For more information, refer to [Azure Documentation](https://learn.microsoft.com/en-us/azure/azure-functions/functions-deployment-technologies?tabs=windows#zip-deploy).
+
+**Important:** When creating the Function App in Azure, ensure that you select the Container Apps Environment hosting plan. This is essential for deploying containerized Function Apps
+
+:::
 
 To add an artifact source, click on Add Artifact Source.
 

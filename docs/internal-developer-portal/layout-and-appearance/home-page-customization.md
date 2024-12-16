@@ -85,6 +85,14 @@ The numbers displayed at the top, such as "15 Created," "1 Review Requests," and
 
 Currently, the "My PRs" card only supports GitHub as a data source. Support for Harness Code Repository is coming soon. Other platforms, such as GitLab, Azure, and Bitbucket, are not yet supported. Let us know if you’d like to see support for these platforms in the future!
 
+#### 2. Harness Code Repository
+
+![](./static/pull-request-card-hcr.png)
+
+The Harness Code Repo (HCR) Pull Request Card provides a quick overview of pull requests related to your work. It consolidates PRs from all repositories you have access to, whether public or private, across multiple organizations. Unlike other integrations, the HCR Pull Request Card does not require any additional setup. Once enabled on your Developer Homepage, it seamlessly fetches PR data from the Harness Code Repo without any external sign-in or configuration steps.
+
+The numbers displayed at the top, such as "0 Created" and "1 Review Requests," reflect only open pull requests, although the card also includes information about closed pull requests, as shown under the "Closed" tab.
+
 ### My Tasks Card
 
 #### 1. JIRA
@@ -134,6 +142,39 @@ Access to this JIRA card is authenticated via [OAuth Configurations in IDP](http
 
 - *Developer*: Sign in using the pre-configured OAuth App to access personalized data from JIRA. Utilize the "My JIRA Tickets" card on the homepage for real-time updates.
     - Scope: Access is limited to the JIRA projects, tickets, and associated data they have permissions for within the JIRA system. Developers only see tickets they are assigned to, tickets they created, or those they are mentioned in.
+
+### Markdown Card
+
+The Markdown Card is a customizable component that supports full markdown syntax, designed to serve various informational purposes on the IDP Homepage. Here's an example of Engineering Handbook card. 
+
+![](./static/markdown-small.gif)
+
+```markdown
+ **📘 Engineering Handbook**
+- [Frontend Engineering Guide](https://example.com/frontend-guide)  
+- [Backend Best Practices](https://example.com/backend-guide)  
+- [CI/CD Pipelines Handbook](https://example.com/cicd-handbook)  
+
+---
+Need help? [Contact the DevOps Team](mailto:devops@example.com)
+```
+
+Here are some of the use cases: 
+
+1. Welcome Message
+
+![](./static/md-card-eg-1.png)
+
+2. Announcements
+
+```markdown
+**📢 Announcement**
+- The new IaCM plugin is now live! 🚀  
+- [Read the full release notes here](https://example.com/release-notes).
+
+---
+Feedback? Let us know on Slack: #idp-feedback
+```
 
 ### Tool Kit
 

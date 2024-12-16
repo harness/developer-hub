@@ -15,7 +15,7 @@ Harness CDE is now available in public beta. To enable it on your account, conta
 
 This guide explains the lifecycle of Gitspaces, detailing the different states a Gitspace can exist in and the actions associated with each state.
 
-<img width="550" src="https://github.com/user-attachments/assets/e6a6f759-7165-4d09-9dc9-21cb6d5d3049"/>
+<img width="650" src="https://github.com/user-attachments/assets/e6a6f759-7165-4d09-9dc9-21cb6d5d3049"/>
 
 Watch this video to understand the lifecycle of Gitspaces in action:
 

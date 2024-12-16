@@ -9,7 +9,6 @@ export const featureList: CardItem[] = [
     icon: "img/icon_code.svg",
     description: <>Accelerate development with security at scale.</>,
     link: "docs/category/get-started-with-code",
-    type: [docType.Documentation],
   },
   {
     title: "Set up CI Pipelines",
@@ -17,7 +16,6 @@ export const featureList: CardItem[] = [
     icon: "img/icon_ci.svg",
     description: "Build faster and be more productive.",
     link: "docs/category/get-started-with-ci",
-    type: [docType.Documentation],
   },
   {
     title: "Store Artifacts",
@@ -34,15 +32,13 @@ export const featureList: CardItem[] = [
     description:
       "More efficient and reliable deployments.",
     link: "docs/category/get-started-with-cd",
-    type: [docType.Documentation],
   },
     {
-    title: "Build with Harness Database DevOps",
+    title: "Deploy Database Changes",
     module: MODULES.dbdevops,
     icon: "img/icon_dbdevops.svg",
     description: <>Accelerate deployment with an integrated pipeline for all database changes.</>,
-    link: "docs/database-devops",
-    type: [docType.Documentation],
+    link: "docs/category/get-started-with-database-devops",
   },
   {
     title: "Manage Infrastructure as Code",
@@ -50,7 +46,6 @@ export const featureList: CardItem[] = [
     icon: "img/icon_iacm.svg",
     description: <>Manage your infrastructure with ease.</>,
     link: "docs/category/get-started-with-iacm",
-    type: [docType.Documentation],
   },
   {
     title: "Release Faster with Feature Flags",
@@ -58,7 +53,6 @@ export const featureList: CardItem[] = [
     icon: "img/icon_ff.svg",
     description: <>Roll out new features progressively.</>,
     link: "docs/category/get-started-with-feature-flags",
-    type: [docType.Documentation],
   },
   {
     title: "Feature Management & Experimentation",
@@ -74,7 +68,6 @@ export const featureList: CardItem[] = [
     icon: "img/icon_ccm.svg",
     description: <>Achieve cost transparency and cut costs.</>,
     link: "docs/category/get-started-with-ccm",
-    type: [docType.Documentation],
   },
   {
     title: "Orchestrate Security Tests",
@@ -82,7 +75,6 @@ export const featureList: CardItem[] = [
     icon: "img/icon_sto.svg",
     description: <>Shift left scanning of code, containers, & live apps.</>,
     link: "docs/category/get-started-with-sto",
-    type: [docType.Documentation],
   },
   {
     title: "Secure Supply Chain",
@@ -90,7 +82,6 @@ export const featureList: CardItem[] = [
     icon: "img/icon_ssca.svg",
     description: <>Secure your software supply chain.</>,
     link: "docs/category/get-started-with-scs",
-    type: [docType.Documentation],
   },
   {
     title: "Manage Service Reliability",
@@ -98,7 +89,6 @@ export const featureList: CardItem[] = [
     icon: "img/icon_srm.svg",
     description: <>Monitor SLOs, track error budgets, and analyze impact of changes.</>,
     link: "docs/category/get-started-with-srm",
-    type: [docType.Documentation],
   },
   {
     title: "Run Chaos Experiments",
@@ -106,7 +96,6 @@ export const featureList: CardItem[] = [
     icon: "img/icon_ce.svg",
     description: <>Ensure application and infrastructure resilience.</>,
     link: "docs/chaos-engineering/getting-started/",
-    type: [docType.Documentation],
   },
   {
     title: "Increase Developer Productivity",
@@ -114,7 +103,6 @@ export const featureList: CardItem[] = [
     icon: "img/icon_idp.svg",
     description: <>A home for developers to create, manage, and explore software.</>,
     link: "docs/category/get-started-with-idp",
-    type: [docType.Documentation],
   },
   {
     title: "Set up Cloud Development Environments",
@@ -122,7 +110,6 @@ export const featureList: CardItem[] = [
     icon: "img/cde_icon.svg",
     description: <>Accelerate developer experience with pre-configured, secure and scalable development environments.</>,
     link: "docs/cloud-development-environments",
-    type: [docType.Documentation],
   },
   {
     title: "Measure Software Engineering Processes",
@@ -130,7 +117,6 @@ export const featureList: CardItem[] = [
     icon: "img/icon_sei.svg",
     description: <>Use data-led insights to remove SDLC bottlenecks.</>,
     link: "docs/category/get-started-with-sei",
-    type: [docType.Documentation],
   },
   {
     title: "Administer Harness Platform",
@@ -138,7 +124,6 @@ export const featureList: CardItem[] = [
     icon: "img/logo.svg",
     description: <>Deliver software with the highest velocity, quality, security, reliability, and resilience.</>,
     link: "docs/category/get-started-with-harness",
-    type: [docType.Documentation],
   },
   {
     title: "Administer Harness Self-Managed Enterprise Edition",
@@ -146,6 +131,5 @@ export const featureList: CardItem[] = [
     icon: "img/logo.svg",
     description: <>Install Harness Platform on self-managed Kubernetes cluster.</>,
     link: "docs/category/get-started-with-smp",
-    type: [docType.Documentation],
   },
 ];

@@ -70,6 +70,18 @@ export const platformData: Horizon = {
           "Customers can be onboarded in a new cluster for their test accounts",
       },
       {
+        tag: [],
+        title: "Account Migration",
+        description:
+          "Customers can request to be migrated to a different SaaS cluster",
+      },
+      {
+        tag: [],
+        title: "Multi-tenant SaaS in EU",
+        description:
+          "Customers can request to be onboarded to a multi-tenant Harness SaaS cluster in the EU region",
+      },
+      {
         tag: [{ value: "SMP" }],
         title: "External Database",
         description:
@@ -78,19 +90,13 @@ export const platformData: Horizon = {
     ],
   },
   Now: {
-    description: "Q3 2024, Aug-Oct 2024",
+    description: "Q4 2024, Nov 2024 - Jan 2025",
     feature: [
       {
         title: "List UI Improvements",
         description:
           "Revamping and optimizing the list view feature in our application's user interface across all modules",
         tag: [{ value: "UI" }],
-      },
-      {
-        tag: [],
-        title: "Account Migration",
-        description:
-          "Customers can request to be migrated to a different SaaS cluster",
       },
       {
         tag: [{value: "Pipeline"}],
@@ -124,6 +130,17 @@ export const platformData: Horizon = {
         description: "Display custom banners in the Harness UI",
       },
       {
+        tag: [{ value: "Delegate" }],
+        title: "UBI9 upgrade",
+        description: "Update the Delegate base image from redhat/ubi8-minimal:8.10 to redhat/ubi9-minimal:9.4",
+      },
+      {
+        tag: [{ value: "Secure" }],
+        title: "OIDC Support for secret managers",
+        description:
+          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your cloud provider secret manager without secrets or credentials",
+      },
+      {
         tag: [],
         title: "Console log line limit",
         description: "Ability to increase the console log line limits",
@@ -136,7 +153,7 @@ export const platformData: Horizon = {
     ],
   },
   Later: {
-    description: "Q4 2024+, Oct 2024 & beyond",
+    description: "Q1 2025+, Feb 2025 & beyond",
     feature: [
       {
         tag: [{ value: "Pipeline" }, { value: "Insights" }],
@@ -144,22 +161,10 @@ export const platformData: Horizon = {
         description: "",
       },
       {
-        tag: [],
-        title: "Multi-tenant SaaS in EU",
-        description:
-          "Customers can request to be onboarded to a multi-tenant Harness SaaS cluster in the EU region",
-      },
-      {
         tag: [{ value: "Pipeline" }],
         title: "DAG Support For Pipeline",
         description:
           "Enable complex flows such as parallel execution, stage grouping, etc.",
-      },
-      {
-        tag: [{ value: "Secure" }],
-        title: "OIDC Support for secret managers",
-        description:
-          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your cloud provider secret manager without secrets or credentials",
       },
       {
         tag: [{ value: "Access Control" }],

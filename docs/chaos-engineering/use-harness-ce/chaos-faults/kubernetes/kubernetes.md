@@ -399,6 +399,87 @@ Stressing the disk with continuous and heavy I/O can degrade the reads and write
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM method exception
+
+Pod JVM method exception injects chaos into a Java application executing in a Kubernetes pod by invoking an exception.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance and resilience of an application (or service) on encountering exceptions.
+- Determines how efficiently an application recovers the services.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod JVM CPU stress
+
+Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kubernetes pod by consuming excessive CPU threads of the JVM.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Tests the system's ability to handle high payloads.
+- Evaluates the application's behavior in high-stress cases.
+- Induces CPU consumption and exhaustion on the target Java process JVM executing in a K8s pod.
+- Simulates a lack of CPU threads for processes running on the application, which degrades their performance.
+- Simulates application slowness due to CPU starvation.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod JVM modify return
+
+Pod JVM modify return modifies the return value of a method in a Java application executing on a Kubernetes pod, for a specific duration.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+  
+- Helps test the functionality of snippets of code by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations.
+- Helps obscure or redact personally identifiable information (PII), such as email addresses or phone numbers, before logging or transmitting the data for security and privacy compliance.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod JVM method latency
+
+Pod JVM method latency slows down the Java application executing on Kubernetes pod by introducing delays in executing the method calls.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application.
+- Tests the system's ability to handle heavy payloads.
+- Evaluates the application's behavior in high-stress cases.
+- Determines how quickly an application returns to normalcy after the delay.
+- Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod JVM trigger gc
+
+Pod JVM trigger gc triggers the garbage collector for a Java process executing in a Kubernetes pod. This causes unused (or out of scope) objects and variables to be garbage collected and recycled, thereby freeing up memory space.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines how the application behaves when memory space is freed up randomly for a brief period.
+- Determines how efficiently an application recovers and returns to normalcy.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod memory hog exec
 
 Pod memory hog exec is a Kubernetes pod-level chaos fault that consumes memory resources on the application container in megabytes.

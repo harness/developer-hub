@@ -282,6 +282,44 @@ parameters:
 
 ![](./static/template-arrays-multipleobjects.png)
 
+### Pass an Array of Inputs to a Harness Pipeline 
+
+Harness Pipelines variables can only be 3 types, string, number and secrets, in case you want to add multiple strings and comma separated values you need to [join](https://mozilla.github.io/nunjucks/templating.html#join) them and send as single input parameters. 
+
+In the following Workflow if you want to pick the enum and parse the `exampleVar` as a string and use it as comma separated value in the inputset for pipeline. 
+As you could see in the example below under `inputset`, `exampleVar` takes input as `${{ parameters.exampleVar.join(',') }}`. 
+
+```YAML
+    - title: Pass Variables Here      
+      properties:
+        exampleVar:
+          title: Select an option
+          type: array
+          items:
+            type: string
+            enum:
+              - Option1
+              - Option2
+              - Option3
+          default: 
+            - Option1
+      ui:
+        exampleVar:
+          title: Select Options
+          multi: true
+  steps:
+    - id: trigger
+      name: Call a harness pipeline, and pass the variables from above
+      action: trigger:harness-custom-pipeline
+      input:
+        url: 'https://app.harness.io/ng/account/*********/home/orgs/default/projects/*************/pipelines/*************/pipeline-studio/?storeType=INLINE'
+        inputset:
+          exampleVar: ${{ parameters.exampleVar.join(',') }}
+          owner: ${{ parameters.owner }}
+        apikey: ${{ parameters.token }}
+```
+
+
 ## Boolean options
 
 ### Boolean
@@ -551,8 +589,45 @@ properties:
     ui:options:
       accept: .json
 ```
-
 </details>
+
+
+### Hide the uploaded file contents in Workflow review page
+
+When you upload a file in Workflows, you can see the base-64 encoded content of the file on the review page, to hide them you can use `ui:backstage`. 
+
+```YAML
+...
+properties:
+  uploaded_file:
+    title: Upload File
+    type: string
+    format: data-url
+    description: Upload a file that will be processed in the workflow
+    ui:backstage:
+      review:
+        show: false
+        mask: true
+...
+```
+[Example workflow.yaml](https://github.com/Debanitrkl/backstage-test/blob/main/upload-file-prod.yaml)
+
+![](./static/file-upload-hide-content.png)
+
+### How to use the contents of the file uploaded
+
+Files uploaded to workflows are automatically encoded in **base64** format. To use the contents of an uploaded file, the **base64-encoded data** must first be decoded. This can be achieved using the Run Step in IDP stage.
+
+1. Start with a Run Step in IDP stage, write a script in the step to: 
+  - Extract the base64-encoded content from the uploaded file.
+  - Decode the content back to its original format.
+2. Process or utilize the decoded content as needed in the steps that follow.
+
+**Without decoding, the uploaded file contents cannot be directly used.** 
+
+Here's an [example](https://github.com/Debanitrkl/backstage-test/blob/main/pipeline-to-parse-json.yaml) harness pipeline that uses [PowerShell](https://github.com/Debanitrkl/backstage-test/blob/b420528f309ef2a84e5190689912a929d53bc90a/pipeline-to-parse-json.yaml#L29-L84) in run step to decode the content of the file uploaded to Workflows. 
+
+![](./static/demo-pwsh-process-json.png)
 
 ## Using Secrets
 

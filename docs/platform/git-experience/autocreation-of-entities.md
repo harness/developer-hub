@@ -473,6 +473,10 @@ For example:- `.harness/orgs/test_org/projects/test_project/overrides/pre_produc
 
 ## Creation of Entities
 
+:::info note
+During the autocreation of entities, if a user commits more than 300 files in a single commit, the autocreation of entities for those files will fail. Files received as a response from GitHub (fewer than 300) will be processed correctly. However, commits with more than 300 files will not be handled, potentially leading to discrepancies where users may not see the expected results.
+:::
+
 Since we have discussed the file path conventions for each entities let's see how to create entities with help of autocreation. We are going to discuss creation of Pipeline and Input set in these examples, similar approach can be followed for creating other entities like Services, Environments, Templates and Infrastructure.
 
 You can refer to [YAML schema](/docs/platform/pipelines/harness-yaml-quickstart/#yaml-schema) for creating Harness entities via YAML.

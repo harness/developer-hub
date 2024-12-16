@@ -348,7 +348,7 @@ Select the metric that you want to display on the widget stages. You can select 
 
 #### Step 3: Configure the Settings
 
-* Select the [Workflow Profile](/docs/software-engineering-insights/sei-profiles/workflow-profile) that you want to use for this widget. Available options are based on the configured [Workflow Profiles](/docs/software-engineering-insights/sei-profiles/workflow-profile) in the SEI account.
+* Select the [Workflow Profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview) that you want to use for this widget. Available options are based on the configured [Workflow Profiles](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview) in the SEI account.
 * Select how you want to apply the filters in the widget. You can either choose to **Apply Filters Only For The Initial Node** or **Apply Filters To All Nodes**.
 
 #### Step 4: Save the widget
@@ -380,7 +380,7 @@ This measures the time taken from the creation of a pull request to its first ap
 This is the time taken to merge the first pull request after it has been created. It indicates the speed at which changes are integrated into the main branch.
 
 :::info
-When calculating **Lead Time**, the time spent in each stage depends on the stages that a PR actually goes through. For example: if the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile) includes a **Time to Comment** stage, but there are no comments on the PR, then the **Time to Comment** is zero.
+When calculating **Lead Time**, the time spent in each stage depends on the stages that a PR actually goes through. For example: if the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview) includes a **Time to Comment** stage, but there are no comments on the PR, then the **Time to Comment** is zero.
 :::
 
 <details>

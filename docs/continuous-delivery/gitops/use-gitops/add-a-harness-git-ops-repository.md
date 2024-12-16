@@ -26,7 +26,10 @@ If you are new to Harness GitOps, familiarize yourself with the following topics
 
 ## Supported platforms
 
-* Currently, only Git platforms, HTTP Helm servers, and OCI Helm repositories are supported in a GitOps repository. 
+Currently, the supported GitOps Repository platforms are:
+* Git platforms (any Access Token-related connection [supported by ArgoCD](https://argo-cd.readthedocs.io/en/release-1.8/user-guide/private-repositories/#access-token), including BitBucket)
+* HTTP Helm servers
+* OCI Helm repositories
 
 ## Add a repository
 

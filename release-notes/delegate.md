@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-11-05T22:00
+date: 2024-12-03T22:00 
 sidebar_position: 4
 ---
 
@@ -86,6 +86,50 @@ Six months after a delegate image is released, the delegate reaches End of Suppo
 For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
+
+## December 2024
+
+### Version 24.11.84310 <!--  December 4, 2024 -->
+
+#### Hotfix
+
+- Increase Azure Web App Http client ReadTimeout duration to 230 Seconds. (CDS-104813)
+
+### Version 24.10.84106 <!-- December 4, 2024 -->
+
+#### Hotfix
+
+- Previously, when users encountered the **Too many files open** error while running pipelines, insufficient logs made it challenging to debug the issue. Additional logs have been added to help triage and identify the root cause of this issue. (PIPE-23686, ZD-72845,73732)
+
+### Version 24.11.84502 <!--  December 4, 2024 -->
+
+#### Hotfix
+
+- Removed CVE-2024-29857 & CVE-2024-30172 from delegate image. (PL-58901)
+
+### Version 24.11.84501 <!-- December 3, 2024 -->
+- Implemented functionality to expose Custom CF CLI variables while executing any CF CLI commands
+
+### Version 24.07.83407 <!--  December 3, 2024 -->
+
+#### Hotfix
+
+- Encoding Nexus 2 URI to support downloading artifacts which contains special characters in artifact version. (CDS-102807)
+
+### Version 24.11.84500 <!-- December 3, 2024 -->
+
+#### New features and enhancements
+
+- Enhanced AWS Secrets Manager integration to support secret updates using the `secretsmanager:PutResourcePolicy` permission. The appropriate request type (`UpdateSecret` or `PutSecretValue`) is now determined based on the `usePutSecret` flag in the connector configuration. (PL-58652)
+
+- Upgraded Spring Framework to version `6.1.x`, along with updates to dependencies for improved compatibility and security. (PL-58254)
+
+- Resolved a high-severity vulnerability (CVE-2024-7254) in the Delegate by upgrading `protobuf-java` to version `3.25.5`. (PL-57351, ZD-70765)
+
+- Upgraded the Java version to `17.0.11_9-jre-ubi9-minimal` in the Delegate base image to address security vulnerabilities, including `CVE-2023-22041`. (PL-55499)
+
+- Upgraded `com.nimbusds_nimbus-jose-jwt` to version `9.37.2` to address `CVE-2023-52428`. (PL-51347)
+
 ## November 2024
 
 ### Version 24.11.84309 <!-- November 27, 2024 -->
@@ -94,17 +138,28 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Implemented functionality to support groupByResource for the Datadog Health Source in Continuous Verification. (CDS-100367)
 
+### Version 24.11.84308 <!-- November 23, 2024 -->
+- The existing behaviour does not support returning the full, unredacted manifest in an encrypted format as the dry run output. With this fix, the full manifest is encrypted and returned as output, with no redactions. (CDS-103383)
+
+### Version 24.11.84307 <!-- November 21, 2024 -->
+- The customer encountered a pipeline failure when they enabled the CDS_K8S_CUSTOM_YAML_PARSER feature and used a YAML manifest with parameters supported by the 21.x.x version of the Kubernetes Java SDK. The issue arose due to a YAML parsing error. (CDS-104066)
+
+
 ### Version 24.10.84205-ubi9-beta <!-- November 18, 2024 -->
 
 #### Early release (Beta release).
 
 - Upgrading redhat/ubi8-minimal to redhat/ubi9-minimal for testing purpose. **This image can have issues as this is a Beta image and not a GA image.**
 
-### Version 24.11.84304 <!-- November 11, 2024 -->
+### Version 24.11.84306 <!-- November 11, 2024 -->
 
 #### Fixed issues
 
 - The delegate name is now displayed in the UI whenever a connector test fails, provided the validation task was acquired by a delegate. This enhancement offers better visibility into which delegate handled the task during troubleshooting. (PL-56483, ZD-64425)
+  
+- Fixed Azure WebApp deployment pipeline failures for specific connectors configured with ignoreTestConnection. (CDS-103533)
+  
+- Fixed the instance synchronization issue for Azure web applications. (CDS-103224)
 
 #### New features and enhancements
 
