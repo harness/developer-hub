@@ -26,12 +26,12 @@ Pod JVM modify return:
   </tr>
 <tr>
     <td> CLASS </td>
-    <td> Specify as <b>packageName.className</b> that specifies the class in which you define the exception. </td>
+    <td> Specify as <b>packageName.className</b> that specifies the class in which you define the target method. </td>
     <td> For example, <code>org.framework.appName.system.WelcomeController</code>. </td>
   </tr>
   <tr>
     <td> METHOD </td>
-    <td> The method to which exception is applied. </td>
+    <td> The method whose return value is modified. </td>
     <td> For example, <code>Welcome</code>. </td>
   </tr>
   <tr>
