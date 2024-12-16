@@ -398,7 +398,22 @@ Stressing the disk with continuous and heavy I/O can degrade the reads and write
 </FaultDetailsCard>
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
-  
+
+### Pod JVM method exception
+
+Pod JVM method exception injects chaos into a Java application executing in a Kubernetes pod by invoking an exception.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance and resilience of an application (or service) on encountering exceptions.
+- Determines how efficiently an application recovers the services.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod JVM CPU stress
 
 Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kubernetes pod by consuming excessive CPU threads of the JVM.
@@ -427,6 +442,23 @@ Pod JVM modify return modifies the return value of a method in a Java applicatio
 - Helps test the functionality of snippets of code by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations.
 - Helps obscure or redact personally identifiable information (PII), such as email addresses or phone numbers, before logging or transmitting the data for security and privacy compliance.
 
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod JVM method latency
+
+Pod JVM method latency slows down the Java application executing on Kubernetes pod by introducing delays in executing the method calls.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application.
+- Tests the system's ability to handle heavy payloads.
+- Evaluates the application's behavior in high-stress cases.
+- Determines how quickly an application returns to normalcy after the delay.
+- Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
 </Accordion>
 
 </FaultDetailsCard>

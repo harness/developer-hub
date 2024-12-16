@@ -200,6 +200,12 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod JVM method exception",
+    description:"Pod JVM method exception injects chaos into a Java application executing in a Kubernetes pod by invoking an exception.",
+    tags: ["pod", "jvm", "exception"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod JVM CPU stress",
     description:"Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kubernetes pod by consuming excessive CPU threads of the JVM.",
     tags: ["pod", "jvm", "cpu"],
@@ -209,6 +215,12 @@ export const experiments: ExperimentDetails[] = [
     name: "Pod JVM modify return",
     description:"Pod JVM modify return modifies the return value of a method in a Java application executing on a Kubernetes pod, for a specific duration.",
     tags: ["pod", "jvm"],
+    category: "kubernetes",
+   },
+   {
+    name: "Pod JVM method latency",
+    description:"Pod JVM method latency slows down the Java application executing on Kubernetes pod by introducing delays in executing the method calls.",
+    tags: ["pod", "latency"],
     category: "kubernetes",
    },
   {
