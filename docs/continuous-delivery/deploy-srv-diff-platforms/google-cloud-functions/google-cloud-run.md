@@ -62,6 +62,11 @@ Here's a high-level summary of the setup steps:
 
       ![](static/google-cloud-run-3.png)
    
+   :::note
+   In the deploy steps under Container Configuration, use the public Docker image:
+   [`harness/google-cloud-run-plugin:1.0.0-linux-amd64`](https://hub.docker.com/layers/harness/google-cloud-run-plugin/1.0.0-linux-amd64/images/sha256-2ad0c6d434673e56df47f1014c397d2bbc8248f8e76b5bbd48965f116f4843f2?context=explore). This image is required to perform deployments to Google Cloud Run.
+   :::
+
    All the configurations needed for the steps to run are passed as environment variables:
    1. **Download Manifest**:
       - Downloads the manifest specified in the service.

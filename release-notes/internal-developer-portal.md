@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-11-26T20:00
+date: 2024-12-11T22:00
 sidebar_position: 12
 ---
 
@@ -16,6 +16,39 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## December 2024
+
+### Version 0.38.0
+
+<!-- December 09, 2024 -->
+
+#### New features and enhancements
+
+1. The "My Pull Requests card" on the Developer Homepage now supports **[Harness Code Repository](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/home-page-customization/#2-harness-code-repository)** in addition to GitHub, with no configuration required for Harness Code Repository. [IDP-4184]
+
+![](./static/idp-hcr-card.png)
+
+2. Added a new step in the IDP stage to [update catalog properties](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#9-update-catalog-property), enabling native support for the [Catalog Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api) within pipelines.[IDP-3603]
+
+![](./static/update-catalog-property.png)
+
+3. Added support for a new [markdown card](/docs/internal-developer-portal/layout-and-appearance/home-page-customization#markdown-card) on IDP Homepage
+
+![](./static/idp-markdown-card.png)
+
+#### Bug fixes
+
+1. Fixed an issue with the `fetch scores by entity` API to ensure consistent results regardless of entity UID casing. [IDP-4310]
+
+2. Fixed an issue where last names with spaces were misclassified as part of the first name when using `<+last_name>` in the Homepage headers. Names are now correctly parsed using a comma as the delimiter. [IDP-4017]
+
+3. Resolved performance and parsing issues when ingesting multiple `harness.io/pipelines` values through the Catalog Ingestion API by increasing column size to 1023. [IDP-3973]
+
+4. Fixed an issue with scorecard checks failing for certain numeric string values in JEXL expressions by ensuring proper handling of numbers and float values. [IDP-3939]
+
+5. Fixed an issue where navigating to Policies via the UI flow `IDP -> Admin -> Project Settings -> Policies` resulted in a "Page Not Found" error. [IDP-3875]
+
 
 ## November 2024
 

@@ -6,6 +6,9 @@ redirect_from:
   - /docs/software-supply-chain-assurance/ssca-policies/enforce-ssca-policies
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Enforce SBOM policies in the CI and CD stages of your Harness pipelines to ensure that your artifacts only contain approved components.
 
 ## Requirements
@@ -33,13 +36,28 @@ SBOM Orchestration and Enforcement steps in deploy stage can only be used in the
 The **SBOM Policy Enforcement** step has the following settings:
 
 * **Name:** Enter a name for the step.
-* **Source:** Set the source, which can be DockerHub, ECR, GCR, ACR or Repository. Depending on your selection, a unique set of fields will appear, each specific to the source you've chosen. Address these fields as required, this is similar to configuring the source in **SBOM Orchestration step**. For more details of what each field entails, please refer to the [documentation on SBOM Orchestration](/docs/software-supply-chain-assurance/sbom/generate-sbom#add-the-sbom-orchestration-step). If you are using DockerHub, you can follow along. 
-* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where your artifact is stored. Given that this step is to verify the attestation, read-level permissions should be adequate.
-* **Image:** Enter the name of your image with tag, such as `my-docker-org/repo-name:tag`.
-* **Public Key:** Select the [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key to use to verify the authenticity of the attestation.
-* **Policy Sets:** Select the policy set that you want to use for enforcement. You can select multiple policy sets from Account, Org or Project.
 
-<DocImage path={require('./static/sbom-policy-enforcement-step.png')} width="50%" height="50%" />
+* **Source**: Select the Source by choosing either a supported container registry from the list or Repository.
+
+import ArtifactSource from '/docs/software-supply-chain-assurance/shared/artifact-source.md';
+
+<ArtifactSource />
+
+### Verify the SBOM Attestation
+To verify the SBOM attestation, in addition to the above configuration, you need to enable the Verify SBOM Attestation checkbox in the SBOM Policy Enforcement step. Enabling this is optional and not required for SBOM policy enforcement.
+
+The attestation verification process requires the corresponding **public key** of the private key used for SBOM attestation. You can perform the verification by providing the public key through the **Cosign** option or **Cosign with Secret Manager**.
+
+import CosignVerificationOptions from '/docs/software-supply-chain-assurance/shared/cosign-verification-options.md';
+
+<CosignVerificationOptions />
+
+
+### Policy Configuration
+You can configure the step to enforce policies on the SBOM by selecting the appropriate policy set.
+
+- **Policy Sets:** Choose the policy sets you want to use for enforcement. You can select multiple policy sets from the **Account**, **Org**, or **Project** levels. For more details, refer to [Creating SBOM Policies](/docs/software-supply-chain-assurance/sbom-policies/create-sbom-policies) and [Writing SBOM Policy Definitions](/docs/software-supply-chain-assurance/sbom-policies/define-sbom-policies).
+
 
 ## Run the pipeline
 
