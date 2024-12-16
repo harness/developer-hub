@@ -57,11 +57,11 @@ Harness Gitspaces offers the **Secure Connect** feature, providing a robust and 
 #### [Port Forwarding](/docs/cloud-development-environments/develop-using-cde/port-forwarding.md)
 **Port Forwarding** in Gitspaces acts as a bridge between a remote development environment and your local machine. It allows developers to access services running inside Gitspaces as if they were running locally on their system. 
 
-You can check out more about the different [features of Gitspaces here](/docs/cloud-development-environments/features-of-gitspaces). 
+You can check out more about the different [features of Gitspaces here](https://developer.harness.io/docs/category/features-of-gitspaces). 
 
 ## Personalize and Manage your Gitspace
-You can customize your Gitspace to meet your specific needs by modifying its configuration. Use the `devcontainer.json` properties to set up environment variables, `runArgs`, and configure `containerUser` and `remoteUser` for your Gitspaces. Learn more about how to personalize your Gitspace using the `devcontainer.json` file [here](/docs/cloud-development-environments/develop-using-cde).
+You can customize your Gitspace to meet your specific needs by modifying its configuration. Use the `devcontainer.json` properties to set up environment variables, `runArgs`, and configure `containerUser` and `remoteUser` for your Gitspaces. Learn more about how to personalize your Gitspace using the `devcontainer.json` file [here](https://developer.harness.io/docs/category/developing-in-gitspaces).
 
-Additionally, Gitspaces can be managed directly from the Harness UI. You can easily start, stop, or delete a Gitspace as needed. Find more details about managing your Gitspaces [here](/docs/cloud-development-environments/manage-gitspaces).
+Additionally, Gitspaces can be managed directly from the Harness UI. You can easily start, stop, or delete a Gitspace as needed. Find more details about managing your Gitspaces [here](https://developer.harness.io/docs/category/managing-gitspaces).
 
 
