@@ -270,7 +270,7 @@
   --mod-sei-200: #5fb34e;
   --mod-sei-100: #f6fff2;
 
-  /* Module Colors/SSCA */
+  /* Module Colors/SCS */
   --mod-ssca-300: #c01406;
   --mod-ssca-200: #ff5f45;
   --mod-ssca-100: #ffe2dd;
@@ -284,6 +284,11 @@
   --mod-iacm-300: #30841f;
   --mod-iacm-200: #5fb34e;
   --mod-iacm-100: #f6fff2;
+
+  /* Module Colors/Database DevOps */
+  --mod-dbdevops-300: #30841f;
+  --mod-dbdevops-200: #5fb34e;
+  --mod-dbdevops-100: #f6fff2;
 
   /* Module Colors/Code  */
   --mod-code-300: #0672b6;
@@ -1145,6 +1150,16 @@ figure p {
    min-width: 24px;
   margin-right:16px;
   background-image: url("/img/icon_ff.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-fme > div > a::before,.sidebar-fme > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url("/img/icon_fme.svg");
   background-size: contain;
   background-repeat: no-repeat;
 }

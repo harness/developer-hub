@@ -26,9 +26,9 @@ Harness SEI provides the following reports for DORA metrics reporting:
 
 The Deployment Frequency report represents how often an organization successfully releases software to production.
 
-To monitor Deployment Frequency, you must create a [DORA type Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile) and add the **Deployment Frequency** widget to your Insights.
+To monitor Deployment Frequency, you must create a [DORA type Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/dora-profile) and add the **Deployment Frequency** widget to your Insights.
 
-Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Collections. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile).
+Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Collections. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview).
 
 ![](./static/df-report.png)
 
@@ -132,7 +132,7 @@ Note that for lead time metrics you can define stages based on either of the fol
 * **Commit Created:** This event ensures that lead time tracking starts when the first commit is committed.
 * **API Event:** This This event triggers the lead time calculation based on a custom API event.
 
-The default configuration for a Ticket-based workflow profile has five stages where as PR-based Workflow profile has four stages. To find more information, go to [Workflow profiles for lead time](/docs/software-engineering-insights/sei-profiles/workflow-profile#lead-time-profile).
+The default configuration for a Ticket-based workflow profile has five stages where as PR-based Workflow profile has four stages. To find more information, go to [Workflow profiles for lead time]/docs/software-engineering-insights/sei-profiles/workflow-profiles/velocity-profile).
 
 For information about other Lead Time reports, go to [Lead time reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports).
 
@@ -231,7 +231,7 @@ Note that for Lead Time For Changes Report you can choose to enable or disable t
 
 Overall lead time is the sum of the time spent in each stage in a workflow, such as commit-to-deployment time for a change, open-to-merge time for PRs, or the issue workflow for issues in your issue management system. Lead time can help identify where a team is spending time and if the amount of time spent in each stage falls in an acceptable range.
 
-The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#workflow-profiles-for-lead-time). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the a, then the *time to comment* is zero.
+The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile]/docs/software-engineering-insights/sei-profiles/workflow-profiles/velocity-profile). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the a, then the *time to comment* is zero.
 
 ### Average
 
@@ -303,7 +303,7 @@ Merge Time = Time for the first approval - Time to the PR creation (Default)
 
 Change Failure Rate represents the percentage of deployments that cause a failure in production.
 
-To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile), and then add the **Change Failure Rate** widget to Insights.
+To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/dora-profile), and then add the **Change Failure Rate** widget to Insights.
 
 To measure the Change Failure Rate accurately, define your workflow profile configuration to choose a set of pipelines that are responsible for deploying to Production environments and have specific `Failure` statuses or have specific run parameters configured. It is recommended for the denominator i.e. **Total Deployments** to have an identical configuration as the Deployment Frequency definition.
 
@@ -415,7 +415,7 @@ To add the **DORA Mean Time To Restore** report to the Insight:
 
 * Customize the widget by configuring **Filters**. This step allows you to specify conditions (such as `Issue Created In`/`Resolved In`) that contribute to the overall calculations.
 * Select the metric you want to measure under the **Metrics** tab. For example: `Average Time in the Stage` measures the average time spent in each stage.
-* On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile).
+* On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/dora-profile).
 
 #### Step 3: Save the widget
 

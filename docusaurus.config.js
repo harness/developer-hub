@@ -232,6 +232,10 @@ async function config() {
                   to: 'university/feature-flags',
                 },
                 {
+                  label: 'Feature Management & Experimentation',
+                  to: 'https://arcade.split.io/',
+                },
+                {
                   label: 'Cloud Cost Management',
                   to: 'university/cloud-cost-management',
                 },
@@ -413,7 +417,7 @@ async function config() {
                 },
                 {
                   label: 'Partners',
-                  to: 'https://partnertraining.harness.io/',
+                  to: 'https://www.harness.io/partners',
                 },
               ],
             },

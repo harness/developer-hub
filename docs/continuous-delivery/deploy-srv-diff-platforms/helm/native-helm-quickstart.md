@@ -112,6 +112,10 @@ The following steps take you through a typical Native Helm pipeline stage setup 
 
 Next, we'll add the NGINX Helm chart for the deployment.
 
+:::info note
+In Harness, we have native Helm support for deployment strategies like Blue-Green and Canary. For more information, see the [Helm Step Reference](https://developer.harness.io/docs/category/helm-step-reference).
+:::
+
 ## Add a Helm chart to a Native Helm service
 
 To add a Helm chart in this example, we will add a Harness connector to the HTTP server hosting the chart. This connector uses a Harness Delegate to verify credentials and pull charts. Ensure you have a Harness Delegate installed also. For steps on installing a delegate, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).

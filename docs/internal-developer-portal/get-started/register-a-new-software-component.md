@@ -67,7 +67,11 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 <TabItem value="harness-code-repo-enabled" label="Harness Code Repository">
 
-4. Once you copy the URL for `catalog-info.yaml` from Harness Code Repository make sure to replace vanity URL domain with `accounts.eu.harness.io`
+4. Copy the URL for `catalog-info.yaml` and paste it on the field to Register the component. 
+
+![](./static/register-software-component-hcr.gif)
+
+> Note: In case of vanity URLs, once you copy the URL for `catalog-info.yaml` from Harness Code Repository, make sure to replace vanity URL domain with `accounts.eu.harness.io`
 
 ![](static/replace-vanity-url-register.png)
 

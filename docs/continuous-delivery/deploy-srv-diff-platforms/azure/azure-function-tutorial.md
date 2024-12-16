@@ -42,6 +42,9 @@ It is an artifact-based service, where a manifest is not required, and setting u
 The artifact must contain the Azure function app. For more information on how to create containerized function apps, go to [Azure Documentation](https://learn.microsoft.com/en-us/azure/azure-functions/functions-how-to-custom-container?tabs=core-tools%2Cacr%2Cazure-cli2%2Cazure-cli&pivots=azure-functions).
 
 You can also deploy Azure Function Apps packaged as ZIP Bundles. For more information, refer to [Azure Documentation](https://learn.microsoft.com/en-us/azure/azure-functions/functions-deployment-technologies?tabs=windows#zip-deploy).
+
+**Important:** When creating the Function App in Azure, ensure that you select the Container Apps Environment hosting plan. This is essential for deploying containerized Function Apps
+
 :::
 
 To add an artifact source, click on Add Artifact Source.
