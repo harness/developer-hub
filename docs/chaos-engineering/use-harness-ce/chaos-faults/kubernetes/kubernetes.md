@@ -418,6 +418,21 @@ Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kube
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM trigger gc
+
+Pod JVM trigger gc triggers the garbage collector for a Java process executing in a Kubernetes pod. This causes unused (or out of scope) objects and variables to be garbage collected and recycled, thereby freeing up memory space.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines how the application behaves when memory space is freed up randomly for a brief period.
+- Determines how efficiently an application recovers and returns to normalcy.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod memory hog exec
 
 Pod memory hog exec is a Kubernetes pod-level chaos fault that consumes memory resources on the application container in megabytes.
