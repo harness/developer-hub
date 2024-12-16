@@ -131,16 +131,27 @@ Use the **S3-Compatible Object Store for Self-Managed Build Infrastructure** set
 * **Region:** Geographical region where your storage is hosted. This is optional for some providers.
 * **Bucket Name:** The name of the bucket to use for Harness-managed caches.
 * **Access Key** and **Secret Key:** Access key and secret key to access your S3-compatible storage.
-   Currently, only access key and secret key authentication is supported. If you don't want to use this authentication method, consider other [caching options](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md).
+* **Connector** We now support AWS or GCP connectors (OIDC authentication protocol) to access your S3-compatible storage. We recommend using the AWS or GCP connector over Access key & Secret key approach as it is secure and a widely implemented standard. If you do not want to use this authentication method, consider other [caching options](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md).
+
+The image below displays a sample S3 configuration:
+
+Storage Configuration:
+  ![Storage Default Config](./static/s3-connector-config-default-settings-01.png)
+
+The following images display recommended and available AWS and GCP connector settings:
+
+  While we support Access Key, Secret key pair for AWS, we recommend using OIDC mechanism. Refer to the following image:
+  ![AWS Connector](./static/aws-connector-mechanism-overview-01.png)
+
+  While we support GCP Json Key, we recommend using OIDC mechanism. Refer to the following image:
+  ![GCP Connector](./static/gcp-connector-mechanism-overview-01.png)
+
 
 :::info
 
-This storage is only for Harness-managed caches (such as those created by Cache Intelligence) for builds that run on self-managed build infrastructure.
-
-Self-managed build infrastructure is any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md) other than Harness CI Cloud.
+Self hosted cache requires cache proxy to be running on port 8082 which is available to all steps during an execution. If you would like to specify a custom port, use stage variables to supply this.
 
 This doesn't apply to Harness CI Cloud because, when you use Harness CI Cloud with Harness-managed caches, Harness uses Harness-hosted Harness Cloud storage.
-
 :::
 
 #### Upload Logs Via Harness
