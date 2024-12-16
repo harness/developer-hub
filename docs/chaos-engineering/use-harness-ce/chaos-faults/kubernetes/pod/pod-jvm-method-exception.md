@@ -25,7 +25,7 @@ Pod JVM method exception:
   </tr>
   <tr>
     <td> CLASS </td>
-    <td> Specify as <b>packageName.className</b> that specifies the class in which you define the exception. </td>
+    <td> Specify as <b>packageName.className</b> that specifies the class in which you define the target method. </td>
     <td> For example, <code>org.framework.appName.system.WelcomeController</code>. For more information, go to <a href= "#class-name">class name.</a></td>
   </tr>
   <tr>
