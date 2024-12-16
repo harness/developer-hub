@@ -6,7 +6,7 @@ sidebar_position: 2
 ---
 
 1. In Harness, go to the **Database DevOps** module and select your **Project**. 
- 2. Ensure that the database schema you want to deploy is already set up. You can find the steps about how to create your database schema in the [Deploying Database Schemas documentation](./deploying-database-schema.md).  
+ 2. Ensure that the database schema you want to deploy is already set up. You can find the steps about how to create your database schema in the [Deploying Database Schemas documentation](/docs/database-devops/use-database-devops/deploying-database-schema.md).  
  3. Select **Pipelines** in the left nav bar, then **Create a Pipeline**.  
  4. In the pipeline configuration, add the stage, or multiple stages, that align with the actions you want to perform. The options are:
     1. **Add a Stage for Database Deployment**: a stage that will handle the deployment of your database schema changes. 
@@ -17,5 +17,5 @@ sidebar_position: 2
  9. Once the pipeline is configured to your liking, select **Save pipeline**.
 
 :::info
-To add a Liquibase command step, you can refer to the Harness documentation detailing how to [Add a Liquibase Command Step](./add-liquibase-command-step.md)
+To add a Liquibase command step, you can refer to the Harness documentation detailing how to [Add a Liquibase Command Step](/docs/database-devops/use-database-devops/add-liquibase-command-step.md)
 :::
