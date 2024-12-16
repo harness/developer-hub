@@ -30,7 +30,7 @@ Pod JVM method exception:
   </tr>
   <tr>
     <td> EXCEPTION </td>
-    <td> The exception you want to throw to the Java application. </td>
+    <td> The exception you want to throw from the target method. </td>
     <td> For example, <code>NullPointerException("Something went wrong!")</code>. For more information, go to <a href= "#exception">exception name.</a></td>
   </tr>
   <tr>
