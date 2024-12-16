@@ -44,12 +44,12 @@ export default function FME() {
             <div className={styles.illustrationContainer}>
               <img
                 className={styles.illustration}
-                /* src={
+                src={
                   colorMode === "light"
-                    ? `${baseUrl}img/fme_landing_page_lightmode.svg`
-                    : `${baseUrl}img/fme_landing_page_darkmode.svg`
-                } */
-                src={`${baseUrl}img/fme_landing_page.png`}
+                    ? `${baseUrl}img/fme-docs-main-light-mode.svg`
+                    : `${baseUrl}img/fme-docs-main-dark-mode.svg`
+                }
+                //src={`${baseUrl}img/fme_landing_page.png`}
               />{" "}
             </div>
           </div>
