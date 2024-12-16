@@ -45,6 +45,27 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## December
+
+### Version 1.69.x
+
+#### Fixed Issues
+
+- A null pointer exception was thrown when a pipeline was provided a primary artifact, but no artifact was selected in the service. This issue is fixed now. (CDS-104756)
+-  During Autocreation of entities the name and identifier were incorrectly retrieved from the Infrastructure Definition YAML file pulled from Git. The logic was using the wrong key in the YAML, causing it to always fall back on the file name instead. This issue is fixed now. (CDS-104751)
+-  Previously, when Override V2 was enabled and no `ENV_GLOBAL_OVERRIDE`S or `ENV_SERVICE_OVERRIDES `were present, the system would fall back to reading overrides from the environment configuration YAML. However, the UI did not display information about these YAML-based overrides, causing confusion for users as they were unable to identify or control this behavior. This issue is fixed now and when Override V2 is enabled, overrides from the environment configuration YAML will no longer be considered. This change ensures clarity and aligns the system behavior with customer expectations. This fix is behind the FF `CDS_SERVICE_OVERRIDES_2_0_YAML_V2_SUPPORT`. (CDS-104570, ZD-74034)
+- Previously, when a user selected "Deploy to Multiple Environments" inside a stage template and set it as a runtime input, the value was incorrectly treated as a fixed value during pipeline execution. This issue is fixed now. (CDS-104471, ZD-73843)
+- Previously, GitOps entries did not appear in custom dashboards when the `cd_stage_execution` view was used in Looker. This issue is fixed now. (CDS-103135)
+
+
+### Version 1.68.4
+
+#### Fixed Issues
+
+- User was not able to provide timeout for Service Now approval step as Input. This issue is fixed now. (PIPE-23742, ZD-73247)
+- When using blue green deployment step in a template, AWS load balancer dropdown was not getting populated. This issue is fixed now. (CDS-104478, ZD-73560)
+- Previously, the Shell Script Provisioner step for PDC infrastructure failed when using runtime inputs for `hostAttributes`. This issue is fixed now. (CDS-104659)
+
 ## November
 
 ### Version 1.67.2
@@ -58,6 +79,8 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Previously, GitOps steps like UpdateReleaseRepo, MergePR, and RevertPR were delayed due to locking on the tokenRef to prevent GitHub rate limits. A new Disable `Git Restraint` option now allows users to bypass this locking for faster execution. (CDS-101882, ZD-71430,72936)
 
 - Harness now supports Post-Deployment Rollback for services at both the Account and Organisation levels. This feature is behind a feature flag `CDS_SVC_ENV_DASHBOARD_FOR_ACCOUNT_AND_ORG_LEVEL`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-94527)
+
+- Harness now supports fetching and using the latest successfully deployed tag for a service in the Harness pipeline using the expression `<+lastSuccessfulDeployed.tag>`. For more information, go to Harness [Runtime Input for the Latest Artifact Tag](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#runtime-input-for-the-latest-artifact-tag). (CDS-101173)
 
 #### Fixed Issues
 

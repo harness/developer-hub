@@ -161,6 +161,22 @@ You can add a **Rolling Rollback** step to roll back the workloads deployed by t
 
 Simply add this step where you want to initiate a rollback. Note that this step applies to the deployments of the Rolling Deployment command, and not the [Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step).
 
+
+## Troubleshooting Common errors
+### Rollback Doesn't Occur `Unable to identify any canary deployments for release **********
+Rollbacks for Canaries are dependant on the ability to save resource versions.  Harness has multiple ways to detect the canary resources that were created:
+
+1. Based on task result, whenever task response contains the required information. In the case of some failures, this data will be missing.
+2. If task response doesn’t have any details, as a fallback, Harness tries to look in the release history and find the canary release. 
+
+There are events that result in an ability to save additional counts, which is how Harness deems a "new version" and a "rollback".  For example, delegate logs may indicate:
+
+``` 
+error: Invalid request: Failed to create reservation-service/Secret/harness.test.96. Code: 403, message: Forbidden Response body: {"kind":"Status","apiVersion":"v1","metadata":{},"status":"Failure","message":"secrets \"harness.test.96\" is forbidden: exceeded quota: resource-quota, requested: count/secrets=1, used: count/secrets=25, limited: count/secrets=25","reason":"Forbidden","details":{"name":"harness.test.96","kind":"secrets"},"code":403} 
+```
+
+In this case, Harness was unable to save the release details in cluster.  Since Harness uses the new revision, and we could not save it, then the new version essentially "does not exist" and so Harness cannot roll back the resources, as it never proceeded to the new version.
+
 ## See also
 
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)

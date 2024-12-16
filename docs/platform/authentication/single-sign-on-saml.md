@@ -132,7 +132,7 @@ Sometimes users might have mixed case email addresses in Okta. In these situatio
 	3. Keep this page open. You will come back to it later in this process.
 
 5. In **Audience URI (SP Entity ID)**, enter `app.harness.io`. The SAML application identifier is always `app.harness.io`.
-6. In **Default RelayState**, enter a valid URL. This is the page where users land after a successful sign-in using SAML into the SP.
+6. In **Default RelayState**, leave **blank**.  Harness uses this to exchange addtiional info between IdP SAML provider (OKTA) and Service Provider (Harness), by sending Custom RelayState information.
 7. In **Name ID format**, enter the username format you are sending in the SAML Response. The default format is **Unspecified**.
 8. In **Application username**, enter the default username.
 9.  In **Attribute Statements (optional)**, enter name in the **Name** field, select **Name Format** as **Basic**, and select the **Value** as **user.email**.

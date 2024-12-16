@@ -6,7 +6,7 @@ redirect_from:
 ---
 
 import Ossupport from './shared/note-supported-os.md'
-import FaultPermissions from './shared/fault-permissions.md'
+import ApiChaosFaultPermissions from './shared/api-chaos-fault-permissions.md'
 
 Linux API modify header injects API fault into a Linux machine for a specific duration to override the header values of API requests and responses with the user-provided values for the given keys. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 
@@ -20,7 +20,7 @@ Linux API modify header:
 
 <Ossupport />
 
-<FaultPermissions />
+<ApiChaosFaultPermissions />
 
 ### Mandatory tunables
 

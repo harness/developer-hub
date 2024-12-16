@@ -13,12 +13,9 @@ Alternatively, you can leverage built-in tools in SCS for SBOM generation or ing
 - [Ingest SBOM from any SBOM tool](./ingest-sbom-data.md).
 
 ## Generate the keys for SBOM Attestation - optional
-For enhanced trust and verification of your SBOM's integrity, the SBOM Orchestration step offers optional signing and attestation generation. This functionality requires a private key, password, and corresponding public key. If you choose to skip signing, you can proceed without generating or storing these keys.
+import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shared/generate-consign-keys-prerequisite.md';
 
-Here's how to set these keys if you choose to enable signing
-
-- **Generate the keys**: Begin by generating the keys using [Cosign](https://docs.sigstore.dev/signing/quickstart)
-- **Securely store the keys**: Safeguard the generated private key, public key, and password by creating [Harness file secrets](https://developer.harness.io/docs/platform/secrets/add-file-secrets/) for each.
+<GenerateKeysPrerequisite />
 
 
 ## Configure the STO scan step to generate SBOM

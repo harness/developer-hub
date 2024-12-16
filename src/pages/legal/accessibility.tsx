@@ -188,7 +188,7 @@ export default function AccessibilityPage() {
                   to={`${baseUrl}/doc/Harness_SSCA_VPAT_Report.pdf`}
                   className={styles.link}
                 >
-                  Harness SSCA VPAT Report
+                  Harness SCS VPAT Report
                 </Link>
               </li>
             </ul>

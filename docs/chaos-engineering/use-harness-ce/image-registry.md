@@ -32,6 +32,51 @@ To watch a video on configuring image registry, go to [image registry](https://y
 When the image you need to use for your chaos experiment is private, and the chaos experiments are required to be run for internal consumption, you can configure image registry as **private** and provide custom values to it.
 This way, you will have better control, and security when working with private images.
 
+Depending on whether you use DDCR (Delegate Driven Chaos Runner) or dedicated chaos infrastructure, image registry settings is configured from **account**/**organization**/**project**/**infrastructure** settings or from the UI, respectively.
+
+<Tabs>
+<TabItem value = "Harness Delegate / DDCR">
+
+### Configure Image Registry from Account/Organization/Project/Infrastructure settings
+
+With appropriate permissions, you can configure image registry from the **account** or **organization** or **project** or **infrastructure** settings.
+
+This approach provides flexibility and ensures you can manage image registry settings at different levels.
+
+In this example, you will learn how to configure image registry from **Account Settings**.
+
+1. Go to **Account Settings** -> **Image Registry (For Chaos)**.
+
+    ![account settings](./static/image-registry/account-level.png)
+
+2. Provide registry details:
+  a. Specify the server and account name. 
+  b. Choose the image registry type. 
+  c. Enable **Allow Overrides** option if you want to allow changes to image registry settings at lower levels, such as Organization, Project, or Infrastructure.
+  For example, currently, you are in the **Account** scope. Allowing overrides will allow you to make changes to the image registry settings at the **Organization**, **Project**, and **infrastructure** levels.
+
+    ![override settings](./static/image-registry/override.png)
+
+3. Use Custom Images (Optional):
+
+  a. Enable **Use custom images** if you want to provide custom images for the specified fields.
+  b. Add your custom images in the fields shown in the screenshot.
+
+    ![custom image settings](./static/image-registry/custom-img.png)
+
+:::tip
+If you enable the **Allow Overrides** option, you can configure the image registry for infrastructures that are **Supported by a Harness Delegate**:
+  a. Go to Environments > Infrastructure.
+  b. Click Edit.
+  c. Scroll to the bottom to access the **Image Registry** settings.
+
+  ![ir infra](./static/image-registry/ir-settings.png)
+:::
+
+</TabItem>
+
+<TabItem value = "Dedicated chaos infrastructure">
+
 ## Custom values for image registry
 ### Step 1: Navigate to Image Registry
 
@@ -89,6 +134,8 @@ container:
   args:
     - kubectl apply -f /tmp/ -n {{workflow.parameters.adminModeNamespace}} && sleep 30
 ```
+</TabItem>
+</Tabs>
 
 ## Images required
 
@@ -97,6 +144,15 @@ Listed below are images that you should download to use image registry. The exam
 Go to [Delegate release](https://developer.harness.io/release-notes/delegate/) to get the latest version of Delegate image.
 
 <Tabs>
+<TabItem value = "Harness Delegate / DDCR">
+
+- harness/chaos-ddcr:1.47.0
+- harness/chaos-log-watcher:1.47.0
+- harness/service-discovery-collector:0.27.0
+- docker.io/harness/chaos-ddcr-faults:1.47.0
+
+</TabItem>
+
 <TabItem value = "Dedicated Chaos Infrastructure">
 
 - harness/chaos-log-watcher:1.47.0
@@ -111,12 +167,5 @@ Go to [Delegate release](https://developer.harness.io/release-notes/delegate/) t
 
 </TabItem>
 
-<TabItem value = "Harness Delegate">
 
-- harness/chaos-ddcr:1.47.0
-- harness/chaos-log-watcher:1.47.0
-- harness/service-discovery-collector:0.27.0
-- docker.io/harness/chaos-ddcr-faults:1.47.0
-
-</TabItem>
 </Tabs>

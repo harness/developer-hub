@@ -6,6 +6,7 @@ sidebar_label: Harness IDP Overview
 redirect_from:
   - /docs/internal-developer-portal/get-started/overview
   - /docs/internal-developer-portal/getting-started/overview
+  - /docs/internal-developer-portal/key-concepts
 ---
 
 # Harness IDP Overview
