@@ -31,7 +31,7 @@ For this quickstart, use the public GitHub repository URL: https://github.com/ha
     If you forked the repository, enter the clone URL of your fork (strictly in the format https://git-provider.com/organisation/repository). 
 Including any extra strings in the URL may result in errors.
 
-    <img width="700" height="600" alt="quickstart-tutorial-1" src="https://github.com/user-attachments/assets/233fa2bf-14bd-462f-82ed-d44c43904313" />
+    <img width="700" alt="quickstart-tutorial-1" src="https://github.com/user-attachments/assets/233fa2bf-14bd-462f-82ed-d44c43904313" />
 
 4. Leave the default branch “main” selected for this example.
 5. Choose your preferred IDE:

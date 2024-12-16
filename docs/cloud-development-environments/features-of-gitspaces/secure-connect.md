@@ -11,8 +11,6 @@ This guide explains how to enable and use **Secure Connect** for your Gitspaces.
 
 :::info
 Secure Connect for Harness Gitspaces is currently gated behind the feature flag ```CI_SECURE_TUNNEL```. To enable this feature, please reach out to support@harness.io.
-
-For macOS users utilizing Secure Connect, an additional feature flag, ```CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED``` must also be enabled.
 :::
 
 ## Secure Connect for Gitspaces
