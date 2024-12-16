@@ -48,7 +48,7 @@ To pull your private Docker images, you need to connect Harness to your Artifact
 
 1. [JFrog Artifactory](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference)
 2. [Docker Registry](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
-3. [AWS ECR](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-aws-connector)
+3. [Amazon ECR](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-aws-connector)
 
 ## Regions Available​
 

@@ -55,7 +55,7 @@ The configuration for your Gitspace is stored in the `.devcontainer/devcontainer
 
 Here are some key features of developing in Gitspaces:
 #### [Private Docker Images](/docs/cloud-development-environments/features-of-gitspaces/private-docker-images.md)
-Harness Gitspaces supports the use of **private Docker images**, allowing you to pull private Docker images using artifact repository connectors like **JFrog Artifactory**, **Docker Registry** and **AWS ECR** for your Gitspaces which further enables you to personalize your Gitspace seamlessly. 
+Harness Gitspaces supports the use of **private Docker images**, allowing you to pull private Docker images using artifact repository connectors like **JFrog Artifactory**, **Docker Registry** and **Amazon ECR** for your Gitspaces which further enables you to personalize your Gitspace seamlessly. 
 
 ![](./static/private-docker-images-1.png)
 
