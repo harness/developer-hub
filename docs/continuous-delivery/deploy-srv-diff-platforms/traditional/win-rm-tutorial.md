@@ -429,10 +429,6 @@ For Microsoft Azure or AWS:
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
 
-## Troubleshooting
-
-For troubleshooting issues related to traditional deployments in Harness, go to [SSH and WinRM deployment Troubleshooting](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-winrm-troubleshooting).
-
 ## FAQs
 
 For frequently asked questions about traditional deployments in Harness, go to [SSH and WinRM deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-winrm-faqs).
