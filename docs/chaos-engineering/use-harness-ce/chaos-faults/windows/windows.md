@@ -37,6 +37,20 @@ This fault helps determine how resilient an application is when stress is applie
 
 <FaultDetailsCard category="windows">
 
+### Windows Disk stress
+
+Windows disk stress injects disk stress into a Windows OS based VM, by consuming and exhausting the disk resources on the target Windows machine.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Simulates a lack of disk for processes running on the application, causing performance degradation and system slowdowns.
+- Simulates slow application traffic or resource exhaustion, leading to degradation in the performance of processes on the machine.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="windows">
+
 <!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
 
 ### Windows memory stress
