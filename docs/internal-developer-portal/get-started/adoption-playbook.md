@@ -244,6 +244,70 @@ From this point onwards, onboard more teams, solve newer use-cases, onboard thei
 - No two portals please. Avoiding creating fragmentation for Developers when it comes to their IDP use-cases.
 - Onboarding is not the same as Adoption. Onboarding refers to one or more Platform Engineers setting up the tool with Authentication, Authorization and other configuration. Adoption refers to active usage by Developers. Onboarding is a pre-requisite to Adoption.
 
+### Central vs Distributed Catalog YAML files
+
+Catalog completeness is key to a successful Internal Developer Portal (IDP). Achieving this requires choosing the right approach for managing `catalog-info.yaml` files. Below, we break down **centralized and distributed strategies** and highlight how Harness IDP tools, like the Create Catalog step and automation scripts, can make onboarding faster and easier. 
+
+#### Centralized Catalog Management:
+
+All catalog definition YAML files are stored in a single, central repository or location. This is made possible by using the `backstage.io/source-location` annotation, which links the catalog entry in the central repository to the actual source repository of the service. Most IDP plugins, including tools like Scorecards, use this annotation to reference the source code, ensuring functionality like documentation, scorecard evaluations, and dependency analysis works seamlessly, even when the YAML file is not colocated with the service.
+
+This flexibility allows organizations to maintain a single, centralized IDP repository for catalog files while retaining the ability to inspect and interact with the source code directly.
+
+Here's an example annotation:
+
+```YAML
+## Example catalog-info.yaml
+...
+annotations:
+  backstage.io/source-location: url:https://github.com/org/service-repo
+...
+```
+**Implementation Details:**
+
+1. Repository Setup:
+
+Create a dedicated repository named service-catalog or similar, containing all `catalog-info.yaml` files. Structure the repository with directories representing teams or projects. For example:
+
+```bash
+/service-catalog/
+  team-a/
+    service-a/catalog-info.yaml
+    service-b/catalog-info.yaml
+  team-b/
+    service-c/catalog-info.yaml
+```
+#### Distributed Catalog Management:
+
+Catalog definition YAML files are stored within each service's own repository, allowing teams to manage their own catalog entries. By colocating the `catalog-info.yaml` file with the service's code, the `backstage.io/source-location` annotation becomes redundant for most operations because the source code and metadata are already in the same repository. If necessary, the `backstage.io/source-location` annotation can be made to point to additional repositories or locations related to the service. 
+
+**Implementation Details:**
+
+1. Repository Setup:
+
+Each service repository should include the `catalog-info.yaml` file at the root or within a dedicated `catalog/` directory. Example:
+
+```bash
+/service-repo/
+  catalog/
+    catalog-info.yaml
+```
+#### Harness IDP Tools for Catalog Population
+
+1. **Automation Script for Bulk Onboarding:**
+
+Harness provides a [Python script](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-scripts) that automates the generation and registration of `catalog-info.yaml` files across multiple repositories. This script is particularly useful for organizations aiming to onboard many services simultaneously.
+
+**Key Features of the Script:**
+
+- *Automated YAML Generation:* Scans your repositories to generate catalog-info.yaml files automatically.
+
+- *Batch Registration:* Registers multiple services into the catalog in a single operation.
+
+- *Customization:* Allows filtering repositories using regex patterns to target specific services.
+
+2. Harness IDP’s **[Create Catalog](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#4-create-catalog)**, **[Direct Push](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#5-direct-push)** and **[Register Catalog](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#6-register-catalog)** step allows teams to directly onboard services into the catalog via workflows. 
+
 ## Resources and Support
 
 - [Harness IDP Documentation](https://developer.harness.io/docs/internal-developer-portal)
