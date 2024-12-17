@@ -5,11 +5,13 @@ sidebar_position: 20
 ---
 
 :::note
+Beta Notice for Secure Connect on Harness Cloud
 
-Currently, Secure Connect for Harness Cloud is behind the feature flag `CI_SECURE_TUNNEL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Secure Connect for Harness Cloud is currently in beta and may not yet be fully stable. Its functionality and performance are subject to change, and some issues may occur during use.
 
-If you're using Secure Connect with macOS, the feature flag `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` is required as well. 
+To enable Secure Connect for Harness Cloud, ensure the feature flag `CI_SECURE_TUNNEL` is active. Please contact Harness Support for assistance with enabling this feature.
 
+For macOS users, the additional feature flag `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` is required for compatibility.
 :::
 
 [Harness CI Cloud (Harness-managed build infrastructure)](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) addresses common challenges you might face when implementing a continuous integration tool in your infrastructure:
@@ -24,7 +26,7 @@ With Secure Connect for Harness CI Cloud, you can connect to your sensitive asse
 
 <figure>
 
-![Secure Connect architecture diagram](./static/secure-connect-arch2.png)
+![Secure Connect architecture diagram](./static/secure-connect-arch3.png)
 
 <figcaption>To use Harness CI Cloud in firewalled environments, such as corporate networks, you enable a secure tunnel between the Harness Cloud network and your private network.</figcaption>
 </figure>
@@ -45,14 +47,16 @@ You can [configure Secure Connect](#configure-secure-connect) in minutes. If you
 :::
 
 1. Create a [Harness API key](/docs/platform/automation/api/add-and-manage-api-keys) with at least `RBAC:core_pipeline_view` and `ABAC:All` permissions.
-1. Use the following command to run the Docker client in your firewalled environment. Where you run the client depends on what assets need to securely connect to Harness and your environment's network configuration.
+1. Use the following command to run the Docker client in your firewalled environment. Where you run the client depends on what assets need to securely connect to Harness and your environment's network configuration. The client uses Basic authentication for security. If basic auth details are not provided via the following command,harness generates them using SHA256.
 
    ```
-   docker run -it -e REMOTE_PORT=ANY_PORT_FROM_30000_TO_30099  -e REMOTE_SERVER=sc.harness.io -e API_KEY=YOUR_HARNESS_API_KEY harness/frpc-signed
+   docker run -it -e REMOTE_PORT=ANY_PORT_FROM_30000_TO_30099  -e REMOTE_SERVER=sc.harness.io -e API_KEY=YOUR_HARNESS_API_KEY -e USER_NAME=YOUR_AUTH_USERNAME  -e USER_PASSWORD=YOUR_AUTH_PASSWORD harness/frpc-signed
    ```
 
    * `REMOTE_PORT` is any port from 30000 to 30099.
    * `API_KEY` is a valid Harness API key.
+   * `USER_NAME` is user name used for basic authentication (optional)
+   * `USER_PASSWORD` is password used for basic authentication (optional)
 
 2. Enable **Secure Connect** for each connector you use with Harness Cloud that needs to route through a secure tunnel. This setting is available in each connector's **Connect to Provider** settings.
 
