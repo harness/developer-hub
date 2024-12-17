@@ -26,7 +26,7 @@ With Secure Connect for Harness CI Cloud, you can connect to your sensitive asse
 
 <figure>
 
-![Secure Connect architecture diagram](./static/secure-connect-arch2.png)
+![Secure Connect architecture diagram](./static/secure-connect-arch3.png)
 
 <figcaption>To use Harness CI Cloud in firewalled environments, such as corporate networks, you enable a secure tunnel between the Harness Cloud network and your private network.</figcaption>
 </figure>
