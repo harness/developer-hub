@@ -246,13 +246,15 @@ From this point onwards, onboard more teams, solve newer use-cases, onboard thei
 
 ### Central vs Distributed Catalog definition YAML files
 
-Catalog completeness is key to a successful Internal Developer Portal (IDP). Achieving this requires choosing the right approach for managing `catalog-info.yaml` files. Below, we break down **centralized and distributed strategies** and highlight how Harness IDP tools, like the Create Catalog step and automation scripts, can make onboarding faster and easier. 
+Catalog completeness is key to a successful Internal Developer Portal (IDP). Achieving this requires choosing the right approach for managing `catalog-info.yaml` files. Below, we break down **centralized and distributed strategies** and how both of them works very well with Harness IDP.
 
-#### Centralized Catalog Management:
+Our recommendation for new adopters is to start with all IDP YAML files in one git repository; and after onboarding, move on to a distributed model where team leads can take control of their respective Catalog YAML files.
 
-All catalog definition YAML files are stored in a single, central repository or location. This is made possible by using the `backstage.io/source-location` annotation, which links the catalog entry in the central repository to the actual source repository of the service. Most IDP plugins, including tools like Scorecards, use this annotation to reference the source code, ensuring functionality like documentation, scorecard evaluations, and dependency analysis works seamlessly, even when the YAML file is not colocated with the service.
+#### Centralized Catalog Management
 
-This flexibility allows organizations to maintain a single, centralized IDP repository for catalog files while retaining the ability to inspect and interact with the source code directly.
+In this approach, all catalog definition YAML files are stored in a single centralized repository. This gives the flexibility to manage all YAML files easily without getting stuck at PR approvals from dozens of teams.
+
+Most IDP functionalities such as Scorecards and plugins use an annotation under `metadata` to reference the source code, ensuring documentation, scorecard evaluations, and dependency analysis works seamlessly, even when the YAML file is not colocated with the service. This is made possible by using the `backstage.io/source-location` annotation, which links the catalog entry in the central repository to the actual source repository of the components.
 
 Here's an example annotation:
 
@@ -267,30 +269,30 @@ annotations:
 
 1. Repository Setup:
 
-Create a dedicated repository named service-catalog or similar, containing all `catalog-info.yaml` files. Structure the repository with directories representing teams or projects. For example:
+Create a dedicated repository named idp-catalog or similar, containing all `catalog-info.yaml` files. Structure the repository with directories representing teams or projects. For example:
 
 ```bash
-/service-catalog/
+/catalog/
   team-a/
     service-a/catalog-info.yaml
     service-b/catalog-info.yaml
   team-b/
     service-c/catalog-info.yaml
 ```
-#### Distributed Catalog Management:
+#### Distributed Catalog Management
 
-Catalog definition YAML files are stored within each service's own repository, allowing teams to manage their own catalog entries. By colocating the `catalog-info.yaml` file with the service's code, the `backstage.io/source-location` annotation becomes redundant for most operations because the source code and metadata are already in the same repository. If necessary, the `backstage.io/source-location` annotation can be made to point to additional repositories or locations related to the service. 
+Catalog definition YAML files are stored within each component's own repository, allowing teams to manage their own catalog entries. By colocating the `catalog-info.yaml` file with the service's code, the `backstage.io/source-location` annotation becomes redundant for most operations because the source code and metadata are already in the same repository. If necessary, the `backstage.io/source-location` annotation can be made to point to additional repositories or locations related to the service. 
 
 **Implementation Details:**
 
 1. Repository Setup:
-
-Each service repository should include the `catalog-info.yaml` file at the root or within a dedicated `catalog/` directory. Example:
+Each service repository should include the `catalog-info.yaml` file at the root of the repository.
 
 ```bash
 /service-repo/
-  catalog/
     catalog-info.yaml
+    docs/
+    src/
 ```
 #### Harness IDP Tools for Catalog Population
 
