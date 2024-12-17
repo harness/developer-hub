@@ -93,6 +93,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Previously, attempting to delete folders in the file store with names similar to other folders caused errors, even when the folder appeared to have no references. For example, deleting a folder would fail if another folder with a similar prefix contained referenced entities. This issue is fixed now. (CDS-103076, ZD-72658)
 - Previously, the runtime input regex for the version field in the Google Artifact Registry (GAR) artifact source was not working as expected, causing all tags to display instead of filtering based on the regex. This issue is fixed now, and the version field now correctly supports regex patterns, allowing users to filter tags as intended. (CDS-102800, ZD-72658)
 - Previously, when a pipeline had two stages with a runtime environment `(<+input>)` propagated to the next stage, selecting **Deploy to Different Infrastructure** caused the payload to contain a null environment. This prevented users from selecting infrastructure options. This issue is fixed now. (CDS-100718)
+- Secrets used in container step executions were being checked against the user's permissions at the PROJECT scope, even if the secret was at the ACCOUNT scope, causing the pipeline to fail. This issue is fixed now. (CDS-103047, ZD-71475)
 
 ### Version 1.65.3
 
