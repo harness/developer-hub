@@ -118,27 +118,23 @@ If this setting is enabled **Skip Pre Flight** will be checked by default.
 #### S3-Compatible Object Store for Self-Managed Build Infrastructure
 
 :::note
-
-Currently, Harness-managed caching with self-managed build infrastructures is behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED`. Contact [Harness Support](mailto:support@harness.io) to enable these features.
-
+S3-Compatible Object Store for Self-Managed Build Infrastructure will appear in Default Settings page in case any of the [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) caching features for self-hosted build is enabled in the account.
 :::
 
-To use [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) caching features, such as Cache Intelligence and Harness-managed Docker layer caching, with [self-managed build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), you must provide S3-compatible object storage where Harness can store and manage your caches.
+To use [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) caching features (Build Intelligence,  Docker layer caching, and Build Intelligence) with [self-managed build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), you must provide S3-compatible object store where Harness can store and manage your caches.
 
-Use the **S3-Compatible Object Store for Self-Managed Build Infrastructure** settings to connect your S3-compatible object storage to your Harness account. If you want to define different object storage for individual organizations or projects, you must [allow overrides](#allow-overrides) and then change these settings at the lower scopes.
+Use the **S3-Compatible Object Store for Self-Managed Build Infrastructure** settings to connect your S3-compatible object store to your Harness account. If you want to define different object store for individual organizations or projects, you must [allow overrides](#allow-overrides) and then change these settings at the lower scopes.
 
+  ![GCP Connector](./static/s3-connector-config-default-settings-01.png)
+
+
+* **Cloud Storage Connector:** If you're using AWS/GCP, we recommend that you provide a connector that authenticates via OIDC with your object store. See below for supported authentication methods withing the connectors. 
 * **Endpoint URL:** S3-compatible storage URL.
 * **Region:** Geographical region where your storage is hosted. This is optional for some providers.
 * **Bucket Name:** The name of the bucket to use for Harness-managed caches.
-* **Access Key** and **Secret Key:** Access key and secret key to access your S3-compatible storage.
-* **Connector** We now support AWS or GCP connectors (OIDC authentication protocol) to access your S3-compatible storage. We recommend using the AWS or GCP connector over Access key & Secret key approach as it is secure and a widely implemented standard. If you do not want to use this authentication method, consider other [caching options](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md).
+* **Access Key** and **Secret Key:** Access key and secret key to access your S3-compatible storage. NOTE: If you're using 'Cloud Storage Connector' (recommended) then there is no need to enter values for access/secret key fields.
 
-The image below displays a sample S3 configuration:
-
-Storage Configuration:
-  ![Storage Default Config](./static/s3-connector-config-default-settings-01.png)
-
-The following images display recommended and available AWS and GCP connector settings:
+**The following images highlights the supported AWS and GCP connector settings:**
 
   While we support Access Key, Secret key pair for AWS, we recommend using OIDC mechanism. Refer to the following image:
   ![AWS Connector](./static/aws-connector-mechanism-overview-01.png)
@@ -147,12 +143,7 @@ The following images display recommended and available AWS and GCP connector set
   ![GCP Connector](./static/gcp-connector-mechanism-overview-01.png)
 
 
-:::info
 
-Self hosted cache requires cache proxy to be running on port 8082 which is available to all steps during an execution. If you would like to specify a custom port, use stage variables to supply this.
-
-This doesn't apply to Harness CI Cloud because, when you use Harness CI Cloud with Harness-managed caches, Harness uses Harness-hosted Harness Cloud storage.
-:::
 
 #### Upload Logs Via Harness
 
