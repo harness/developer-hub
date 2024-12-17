@@ -47,14 +47,16 @@ You can [configure Secure Connect](#configure-secure-connect) in minutes. If you
 :::
 
 1. Create a [Harness API key](/docs/platform/automation/api/add-and-manage-api-keys) with at least `RBAC:core_pipeline_view` and `ABAC:All` permissions.
-1. Use the following command to run the Docker client in your firewalled environment. Where you run the client depends on what assets need to securely connect to Harness and your environment's network configuration.
+1. Use the following command to run the Docker client in your firewalled environment. Where you run the client depends on what assets need to securely connect to Harness and your environment's network configuration. The client uses Basic authentication for security. If basic auth details are not provided via the following command,harness generates them using SHA256.
 
    ```
-   docker run -it -e REMOTE_PORT=ANY_PORT_FROM_30000_TO_30099  -e REMOTE_SERVER=sc.harness.io -e API_KEY=YOUR_HARNESS_API_KEY harness/frpc-signed
+   docker run -it -e REMOTE_PORT=ANY_PORT_FROM_30000_TO_30099  -e REMOTE_SERVER=sc.harness.io -e API_KEY=YOUR_HARNESS_API_KEY -e USER_NAME=YOUR_AUTH_USERNAME  -e USER_PASSWORD=YOUR_AUTH_PASSWORD harness/frpc-signed
    ```
 
    * `REMOTE_PORT` is any port from 30000 to 30099.
    * `API_KEY` is a valid Harness API key.
+   * `USER_NAME` is user name used for basic authentication (optional)
+   * `USER_PASSWORD` is password used for basic authentication (optional)
 
 2. Enable **Secure Connect** for each connector you use with Harness Cloud that needs to route through a secure tunnel. This setting is available in each connector's **Connect to Provider** settings.
 
