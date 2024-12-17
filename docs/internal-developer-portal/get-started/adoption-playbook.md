@@ -244,7 +244,7 @@ From this point onwards, onboard more teams, solve newer use-cases, onboard thei
 - No two portals please. Avoiding creating fragmentation for Developers when it comes to their IDP use-cases.
 - Onboarding is not the same as Adoption. Onboarding refers to one or more Platform Engineers setting up the tool with Authentication, Authorization and other configuration. Adoption refers to active usage by Developers. Onboarding is a pre-requisite to Adoption.
 
-### Central vs Distributed Catalog YAML files
+### Central vs Distributed Catalog definition YAML files
 
 Catalog completeness is key to a successful Internal Developer Portal (IDP). Achieving this requires choosing the right approach for managing `catalog-info.yaml` files. Below, we break down **centralized and distributed strategies** and highlight how Harness IDP tools, like the Create Catalog step and automation scripts, can make onboarding faster and easier. 
 
