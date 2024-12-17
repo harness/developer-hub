@@ -9,8 +9,10 @@ The Harness GitHub Action includes multiple sub-actions, each designed for speci
 
 The `harness/github-actions/sbom-policy-enforcement` verifies the SBOM attestation and enforces policies on the SBOM. The policies applied are *Harness SBOM Policies*. For more information on creating and managing SBOM policies, refer to the [Harness SBOM Policies Documentation](https://developer.harness.io/docs/software-supply-chain-assurance/sbom-policies/create-sbom-policies).
 
+import NotesForKeysAndVault from '/docs/software-supply-chain-assurance/shared/note-key-gen-vault-support.md';
+
 :::info
-The signing key must be Cosign generated and stored in HashiCorp Vault. Currently, only HashiCorp Vault is supported, but more Key Management Systems (KMS) will be supported in the near future.
+<NotesForKeysAndVault />
 :::
 
 ### Requirements
@@ -113,4 +115,4 @@ jobs:
           KMS_KEY: 'cosign'
           POLICY_SET_REF: 'github_opa_policy'
 
-```s
+```

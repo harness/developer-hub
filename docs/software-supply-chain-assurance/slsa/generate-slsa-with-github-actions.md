@@ -8,10 +8,12 @@ redirect_from:
 Harness GitHub Actions provide a seamless way to integrate Harness's Software Supply Chain Security (SCS) capabilities directly into GitHub workflows. You can use this GitHub Action to perform various supply chain security tasks. 
 The Harness GitHub Action includes multiple sub-actions, each designed for specific tasks. This document focuses on the `harness/github-actions/slsa-generation` sub-action, which is used to generate an SBOM and attest it if needed.
 
-The `harness/github-actions/slsa-generation` is responsible for generating SLSA provenance and optionally attesting it. If attestation is enabled, the `.att` attestation file will be pushed to the configured container registry. The generated SLSA provenance can be found in the **Artifacts** section of the Harness **SCS (Software Supply Chain Security)** module.
+The `harness/github-actions/slsa-generation` is responsible for generating SLSA provenance and optionally attesting it. If attestation is enabled, the `.att` attestation file will be pushed to the configured container registry. The generated SLSA provenance can be found in the [**Artifact**](/docs/software-supply-chain-assurance/artifact-view) section of the SCS module.
+
+import NotesForKeysAndVault from '/docs/software-supply-chain-assurance/shared/note-key-gen-vault-support.md';
 
 :::info
-The signing key must be Cosign generated and stored in HashiCorp Vault. Currently, only HashiCorp Vault is supported, but more Key Management Systems (KMS) will be supported in the near future.
+<NotesForKeysAndVault />
 :::
 
 ### Requirements
@@ -112,3 +114,5 @@ jobs:
           KMS_KEY: 'cosign'
 
 ```
+
+To verify the generated SLSA Provenance, refer to [Verify SLSA Provenance with GitHub Actions](/docs/software-supply-chain-assurance/slsa/verify-slsa-with-github-actions) documentation.

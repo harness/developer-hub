@@ -8,10 +8,12 @@ sidebar_label: Ingest SBOM with Harness GitHub Actions
 Harness GitHub Actions provide a seamless way to integrate Harness's Software Supply Chain Security (SCS) capabilities directly into GitHub workflows. You can use this GitHub Action to perform various supply chain security tasks. 
 The Harness GitHub Action includes multiple sub-actions, each designed for specific tasks. This document focuses on the `harness/github-actions/sbom-ingestion` sub-action, which is used to ingest an SBOM and attest it if needed.
 
-The `harness/github-actions/sbom-ingestion` is responsible for feeding the Software Bill of Materials (SBOM) data to SCS and optionally attesting it. The SBOM will be saved to Harness and can be found in the Artifacts section. If attestation is enabled, the SBOM attestation will be signed, and the `.att` attestation file will be pushed to the configured container registry.
+The `harness/github-actions/sbom-ingestion` is responsible for feeding the Software Bill of Materials (SBOM) data to SCS and optionally attesting it. The SBOM will be saved to the SCS module and can be found in the [**Artifact**](/docs/software-supply-chain-assurance/artifact-view) section. If attestation is enabled, the SBOM attestation will be signed, and the `.att` attestation file will be pushed to the configured container registry.
+
+import NotesForKeysAndVault from '/docs/software-supply-chain-assurance/shared/note-key-gen-vault-support.md';
 
 :::info
-The signing key must be Cosign generated and stored in HashiCorp Vault. Currently, only HashiCorp Vault is supported, but more Key Management Systems (KMS) will be supported in the near future.
+<NotesForKeysAndVault />
 :::
 
 ### Requirements

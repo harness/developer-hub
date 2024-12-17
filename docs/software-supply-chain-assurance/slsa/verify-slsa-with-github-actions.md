@@ -10,8 +10,10 @@ The Harness GitHub Action includes multiple sub-actions, each designed for speci
 
 The `harness/github-actions/slsa-verification` verifies the SLSA provenance attestation by pulling the `.att` file from the configured container registry. It uses the public key from the key pair that was used for signing the attestation to perform the verification.
 
+import NotesForKeysAndVault from '/docs/software-supply-chain-assurance/shared/note-key-gen-vault-support.md';
+
 :::info
-The signing key must be Cosign generated and stored in HashiCorp Vault. Currently, only HashiCorp Vault is supported, but more Key Management Systems (KMS) will be supported in the near future.
+<NotesForKeysAndVault />
 :::
 
 ### Requirements
