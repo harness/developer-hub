@@ -89,6 +89,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## December 2024
 
+### Version 24.11.84311 <!--  December 16, 2024 -->
+
+#### Hotfix
+
+- Previously, when there was deployment failure in TAS Rolling deployment, secrets were printed in the delgate logs. This issue has now been fixed. (CDS-105208)
+
 ### Version 24.11.84310 <!--  December 4, 2024 -->
 
 #### Hotfix
