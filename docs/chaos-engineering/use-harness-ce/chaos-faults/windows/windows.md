@@ -65,6 +65,36 @@ This fault helps determine how resilient an application is when network access t
 
 <FaultDetailsCard category="windows">
 
+### Windows Network Corruption
+
+Windows Network Corruption corrupts network packets on Windows VMs for the target hosts using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the application running on the Windows VMs when network packets are corrupted during transmission.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the resilience of an application when a network corruption scenario is simulated on a Windows virtual machine.
+- Simulates the situation of network corruption on the application, which degrades their performance.
+- Helps verify the application's ability to handle network failures and its failover mechanisms.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="windows">
+
+### Windows Network Duplication
+
+Windows network duplication duplicates network packets on Windows VM for the target hosts or IP addresses using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the services running on the Windows VMs.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the resilience of an application when a network duplication scenario is simulated on a Windows virtual machine.
+- Simulates the situation of network duplication on the application, which degrades their performance.
+- Helps verify the application's ability to handle network failures and its failover mechanisms.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="windows">
+
 ### Windows Network Latency
 
 Windows Network Latency causes a network packet delay on Windows VMs for the target hosts by causing network packet delay using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the application running on the Windows VMs.
