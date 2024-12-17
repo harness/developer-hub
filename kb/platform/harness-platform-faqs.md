@@ -437,6 +437,21 @@ This error indicates that you've reached the maximum amount of API keys availabl
 
 There's no API to get an api-key value as Harness does not store the API token for future reference.
 
+### Can I provide read-only access to a single pipeline while ensuring least-privilege access? 
+Yes, you can achieve this by creating a **custom role** with read-only access to a specific pipeline. This ensures that the user or user group only has access to the pipeline specified, while other resources remain protected.
+
+### How do I configure read-only access for a specific pipeline? 
+You can create a **new resource group** and specify the exact pipeline that the user or group should have access to. Then, assign a custom role with read-only permissions to this resource group.
+
+### Will the users with read-only access to one pipeline be able to view or access other pipelines?  
+No, users with read-only access to a specific pipeline will **not** be able to access or view any other pipelines. This setup ensures least-privilege access.
+
+### What is the advantage of using custom roles for pipeline access? 
+Custom roles allow you to fine-tune access control by providing **read-only permissions** to a single pipeline without granting unnecessary access to other resources. This approach aligns with least-privilege principles.
+
+### Can I assign read-only pipeline access to a user group instead of an individual user?
+Yes, you can assign the custom role to a **user group** instead of an individual user. This is a scalable way to manage access for multiple users while maintaining strict access control for a single pipeline.
+
 ## Authentication
 
 ### As I migrate from FirstGen to NextGen and use Okta for SCIM, I've noticed our user groups haven't migrated. Is there an additional step I need to take?
