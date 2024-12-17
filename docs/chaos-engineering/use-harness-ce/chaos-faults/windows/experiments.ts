@@ -36,4 +36,11 @@ export const experiments: ExperimentDetails[] = [
     tags: ["network", "loss"],
     category: "windows",
   },
+  {
+    name: "Windows Process Kill",
+    description:
+      "Windows process kill kills the target processes that are running as a part of a Windows OS based VM. The services that are disrupted might be running in the VM, and this fault kills their underlying processes or threads.",
+    tags: ["process", "kill"],
+    category: "windows",
+  },
 ];

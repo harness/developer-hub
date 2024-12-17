@@ -97,4 +97,19 @@ Windows network loss causes network packet loss on Windows VM for the target hos
 
 </FaultDetailsCard>
 
+<FaultDetailsCard category="windows">
+
+### Windows Process Kill
+
+Windows process kill kills the target processes that are running as a part of a Windows OS based VM. The services that are disrupted might be running in the VM, and this fault kills their underlying processes or threads. 
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- It helps determine the resilience of an application (or process) running on the Windows VMs.
+- Induces process kill using the process IDs and process name on the target Windows machines.
+- Simulates loss of processes, leading to degradation in the performance of application on the machine.
+</Accordion>
+
+</FaultDetailsCard>
+
 </div>
