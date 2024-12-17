@@ -67,7 +67,7 @@ Contact [Harness Support](mailto:support@harness.io) to enable the feature.
   :::info
     - Build Intelligence is only supported for Kubernetes on self-hosted build infrastructure. 
   - To use Build Intelligence with self-hosted builds the following feature flags need to be enabled: 
-  `CI_CACHE_ENABLED` and 'CI_ENABLE_BUILD_CACHE_K8' To authenticate to your S3 bucket using OIDC enabled `PL_GCP_OIDC_AUTHENTICATION` for GCP or `CDS_AWS_OIDC_AUTHENTICATION` for AWS.
+  `CI_CACHE_ENABLED` and `CI_ENABLE_BUILD_CACHE_K8` To authenticate to your S3 bucket using OIDC enabled `PL_GCP_OIDC_AUTHENTICATION` for GCP or `CDS_AWS_OIDC_AUTHENTICATION` for AWS.
   
   Contact [Harness Support](mailto:support@harness.io) to enable the feature.
   :::
