@@ -52,7 +52,7 @@ This fault uses [Testlimit](https://learn.microsoft.com/en-us/sysinternals/downl
         <td> Default: 50. </td>
     </tr>
       <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
+        <td> DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
         <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
