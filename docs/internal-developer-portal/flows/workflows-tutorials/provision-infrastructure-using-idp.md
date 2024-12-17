@@ -255,9 +255,9 @@ All inputs, except for [pipeline input as variables](https://developer.harness.i
 
 ## Create a Workflow
 
-Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. 
+Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. Create a `workflow.yaml` file anywhere in your Git repository. 
 
-In the following `template.yaml` we have added few enums to choose from the available list of options like for the `instance_type`, `ami`, `subnet` and `vpc`. Team responsible for infrastructure provisioning is expected to fill this enums with available possibilities for the ease of developers to just select form the available options. 
+In the following `workflow.yaml` we have added few enums to choose from the available list of options like for the `instance_type`, `ami`, `subnet` and `vpc`. Team responsible for infrastructure provisioning is expected to fill this enums with available possibilities for the ease of developers to just select form the available options. 
 
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
