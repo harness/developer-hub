@@ -66,7 +66,9 @@ To delete a Rule Set, click on Delete from the vertical ellipsis menu (⋮).
 
   <DocImage path={require('../static/update_and_delete_aws.png')} width="90%" height="90%" title="Click to view full size image" />
 
-
+:::info 
+We now have Terraform support for Governance Rules. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule) for more details.
+:::
 ## Rule Sets
 
 As mentioned previously, a Rule can have multiple policies. However, when there are multiple rules with multiple policies, it can become hard to manage them all together. This is where **Rule Sets** can be used. Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. By organizing rules into sets, organizations improve accessibility and simplify maintenance, as enforcements can be made against the entire rule set rather than individual rules.
@@ -109,6 +111,11 @@ You can view the Rule Set on the Asset Governance Rules page. Expand the rule se
 To delete a Rule Set, click on Delete from the vertical ellipsis menu (⋮).
 
  <DocImage path={require('../static/update_and_delete_ruleSet_aws.png')} width="90%" height="90%" title="Click to view full size image" />
+
+:::info 
+We now have Terraform support for Governance RuleSets. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule_set) for more details.
+:::
+
 
 ## Enforcements
 
@@ -168,6 +175,12 @@ You can view any Enforcements on Rule Enforcements page. Click on the enforcemen
 To delete an enforcement, simply click on “Delete” from the vertical ellipsis menu (⋮).
 
 <DocImage path={require('../static/update_and_delete_enforcement_aws.png')} width="90%" height="90%" title="Click to view full size image" />
+
+:::info 
+We now have Terraform support for Governance Enforcements. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule_enforcement) for more details.
+:::
+
+
 
 ## Evaluations
 
