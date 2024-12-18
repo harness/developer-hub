@@ -4,8 +4,7 @@ The Chaos Engineering Administrator exam tests your knowledge and skills of the 
 
 - Basic terminal skills
 - Intermediate understanding of on-premise or cloud architecture
-- This exam builds upon the [Chaos Engineering Developer Exam](/university/chaos-engineering)
-
+- This exam builds upon the [Chaos Engineering Developer Exam](/university/chaos-engineering?lvl=developer)
 ## Exam Details
 | Exam Type                               | Duration         |
 | ----------------------------------- | --------------- |
