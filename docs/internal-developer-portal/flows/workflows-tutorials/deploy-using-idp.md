@@ -1,139 +1,30 @@
 ---
-title: Deploy Kubernetes Service Using Workflows
-description: Use workflows for Kubernetes Workflow
+title: Deploy Kubernetes Service Using IDP Workflows
+description: Learn how to Automate Kubernetes Service Deployment using IDP workflows and Harness CD Pipeline
 sidebar_position: 2
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-In this tutorial we will use a IDP Workflow to deploy a Kubernetes Service. We will guide you through deploying a Guestbook application using Workflows powered by Harness CD pipeline. This Guestbook application uses a publicly available Kubernetes manifest and Docker image.
+In this tutorial, we will use an IDP Workflow to deploy a Kubernetes Service. We will guide you through deploying a Guestbook application using IDP Workflows powered by a Harness CD pipeline. This Guestbook application utilizes a publicly available Kubernetes manifest and Docker image.
+
+This tutorial is designed for users who are already CD customers and are new to IDP, looking to automate their CD pipelines using IDP workflows. If you are new to CD, please refer to the [CD onboarding guide](https://developer.harness.io/docs/category/new-users) to set up a CD pipeline before attempting this tutorial.
 
 ## Before you begin 
 
-Kubernetes is required to complete these steps. Run the following to check your system resources and (optionally) install a local cluster.
-
-```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/harness-community/scripts/main/delegate-preflight-checks/cluster-preflight-checks.sh)
-```
-
 Verify that you have the following:
 
-1. **Obtain GitHub personal access token with the repo scope**. See the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
-2. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness Delegates and deploying a sample application in a local development environment.
+1. **GitHub Connector**
+2. **A Kubernetes cluster with Harness Delegate Installed**. Use your own Kubernetes cluster, or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness Delegates and deploying a sample application in a local development environment.
    - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
-3. **Install the [Helm CLI](https://helm.sh/docs/intro/install/)** in order to install the Harness Helm delegate.
-4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
-   - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) for more information on forking a GitHub repository.
+3. **A working CD pipeline** 
 
-## Getting Started with Harness CD 
+### Harness CD Pipeline
 
-1. Log in to [Harness](https://app.harness.io/).
-2. Select **Projects**, and then select **Default Project**.
-
-:::warning
-
-For the pipeline to run successfully, please follow the remaining steps as they are, including the naming conventions.
-
-:::
-
-### Delegate
-
-1.  Under **Project Setup**, select **Delegates**.
-
-    - Select **New Delegate**.
-
-          For this tutorial, let's explore how to install a delegate using Helm.
-
-      - Add the Harness Helm chart repo to your local helm registry using the following commands.
-
-      ```bash
-      helm repo add harness-delegate https://app.harness.io/storage/harness-download/delegate-helm-chart/
-      ```
-
-      - Update the repo:
-
-      ```bash
-      helm repo update harness-delegate
-      ```
-
-      - In the example command provided, `ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the delegate installation wizard.
-      - Copy the command as shown in the installation wizard, which is of the format of the example mentioned below and run in your terminal.
-
-      ```bash
-      helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
-      harness-delegate/harness-delegate-ng \
-       --set delegateName=helm-delegate \
-       --set accountId=ACCOUNT_ID \
-       --set managerEndpoint=MANAGER_ENDPOINT \
-       --set delegateDockerImage=harness/delegate:23.03.78904 \
-       --set replicas=1 --set upgrader.enabled=false \
-       --set delegateToken=DELEGATE_TOKEN
-      ```
-
-      - Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.
-
-:::note
-
-You can also follow the [Install Harness Delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate) steps to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
-
-:::
-
-### Secrets
-
-
-1. Under **Project Setup**, select **Secrets**.
-   - Select **New Secret**, and then select **Text**.
-   - Enter the secret name `harness_gitpat`.
-   - For the secret value, paste the GitHub personal access token you saved earlier.
-   - Select **Save**.
-
-### Connectors
-
-1. Create the **GitHub connector**.
-   - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/github-connector.yml).
-   - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and paste the copied YAML.
-   - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
-   - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
-   - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
-   - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
-2. Create the **Kubernetes connector**.
-   - Copy the contents of [kubernetes-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/kubernetes-connector.yml).
-   - In your Harness project, under **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and and paste the copied YAML.
-   - Replace **DELEGATE_NAME** with the installed Delegate name. To obtain the Delegate name, navigate to **Project Setup**, and then **Delegates**.
-   - Select **Save Changes** and verify that the new connector named **harness_k8sconnector** is successfully created.
-   - Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
-
-### Environment
-
-1. In your Harness project, select **Environments**.
-   - Select **New Environment**, and then select **YAML**.
-   - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/environment.yml), paste it into the YAML editor, and select **Save**.
-   - In your new environment, select the **Infrastructure Definitions** tab.
-   - Select **Infrastructure Definition**, and then select **YAML**.
-   - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/infrastructure-definition.yml) and paste it into the YAML editor.
-   - Select **Save** and verify that the environment and infrastructure definition are created successfully.
-
-### Services
-
-1. In your Harness project, select **Services**.
-   - Select **New Service**.
-   - Enter the name `harnessguestbook`.
-   - Select **Save**, and then **YAML** (on the **Configuration** tab).
-   - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/service.yml), and paste it into the YAML editor.
-   - Select **Save**, and verify that the service **harness_guestbook** is successfully created.
-
-### Pipeline
-
-- In **Default Project**, select **Pipelines**.
-  - Select **New Pipeline**.
-  - Enter the name `guestbook_canary_pipeline`.
-  - Select **Inline** to store the pipeline in Harness.
-  - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
-  - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
+Here we are using a Harness CD pipeline created following this tutorial "**(Deploy using Kubernetes Manifest)[https://developer.harness.io/docs/continuous-delivery/get-started/cd-tutorials/manifest]**"
 
 1. Copy the contents of [canary-pipeline.yml](https://github.com/harness-community/idp-samples/blob/main/idp-pipelines/tutorial-cd-guestbook.yaml).
+
 2. In your Harness pipeline YAML editor, paste the YAML.
 3. Select **Save**.
 
@@ -143,7 +34,7 @@ You can also follow the [Install Harness Delegate on Kubernetes or Docker](/docs
 
 :::info
 
-In the pipeline YAML, we have included `service`, `environment`, and `infrastructure` as variables to be defined using Workflows.
+In the pipeline YAML, we have included `service`, `environment`, and `infrastructure` as variables to be defined using Workflows. 
 
 :::
 
@@ -151,40 +42,93 @@ In the pipeline YAML, we have included `service`, `environment`, and `infrastruc
 
 Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. Create a `workflow.yaml` file anywhere in your Git repository. 
 
-In the following `workflow.yaml` we have added defaults for the `service`, `environment` and `infrastructure`. 
+In the following `workflow.yaml` we have added defaults for the `service`, `environment` and `infrastructure` corresponding to the tutorial we followed to create the pipeline above. We have also used Dynamic Workflow Picker to fetch the Harness Entities you have access to. 
+
+### Configure Dynamic Picker
+
+1. [Create a Backend Proxy](https://developer.harness.io/docs/internal-developer-portal/flows/dynamic-picker#step-1-create-a-backend-proxy)
+2. Add the following under the endpoints
+
+```YAML
+proxy:
+  endpoints:
+    /harness-api-endpoint:
+      target: https://app.harness.io
+      pathRewrite:
+        /api/proxy/harness-api-endpoint/?: /
+      headers:
+        x-api-key: ${PROXY_HARNESS_TOKEN}
+```
+3. Add the [Harness Personal Access Token](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens) as a variable. 
+
+4. Save the configuration
+
+![](./static/dynamic-picker.gif)
 
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: harness_iac
+  name: Deploy k8s service
   title: Deploy a Kubernetes Service
   description: Uses Harness CD to deploy a kubernetes service.
 spec:
   owner: cd_team
   type: environment
   parameters:
-    - title: Project and Repo Details
+    - title: Select Harness Project and Org
+    type: object
+    properties:
+      projectId:
+        title: Harness Project ID
+        description: Select the Harness Project ID
+        type: string
+        ui:field: HarnessProjectPicker
+        ui:autofocus: true
+      organizationId:
+        title: Harness Organization ID
+        description: Select the Harness Organization ID
+        type: string
+        ui:field: HarnessAutoOrgPicker
+    - title: Service, Environment and Infrastructure Details
       required:
         - service
         - environment
         - infrastructure
       properties:
         service:
+          type: string
+          ui:field: SelectFieldFromApi
+          ui:options:
             title: Choose the service
-            description: The service you want to deploy
-            type: string
-            default: "harnessguestbook" # Guestbook service to be used
+            description: Pick one of the service you want to deploy
+            placeholder: "Choose a service"
+            allowArbitraryValues: true
+            path: proxy/harness-api-endpoint/ng/api/servicesV2?page=0&size=100&accountIdentifier=ACCOUNT_ID&orgIdentifier={{parameters.organizationId}}&projectIdentifier={{parameters.projectId}}&includeAllServicesAccessibleAtScope=true
+            valueSelector: 'service.name'
+            arraySelector: 'data.content'
         environment:
+          type: string
+          ui:field: SelectFieldFromApi
+          ui:options:
             title: Choose the environment
-            description: The environment to deploy to (e.g., dev, staging, prod)
-            type: string
-            default: "harnessdevenv" # Environment you created for the pipeline
+            description: Pick the environment where you want to deploy
+            placeholder: "Choose a environment"
+            allowArbitraryValues: true
+            path: proxy/harness-api-endpoint/ng/api/environmentsV2?page=0&size=100&accountIdentifier=ACCOUNT_ID&orgIdentifier={{parameters.organizationId}}&projectIdentifier={{parameters.projectId}}
+            valueSelector: 'environment.name'
+            arraySelector: 'data.content'
         infrastructure:
+          type: string
+          ui:field: SelectFieldFromApi
+          ui:options:
             title: Choose the infrastructure
             description: The infrastructure to deploy to (e.g., AWS, GCP, Azure)
-            type: string
-            default: "AWS" # Default infrastructure value
+            placeholder: "Choose an infrastructure"
+            allowArbitraryValues: true
+            path: proxy/harness-api-endpoint/ng/api/infrastructures?page=0&size=100&environmentIdentifier=ENV_ID&accountIdentifier=ACCOUNT_ID&orgIdentifier={{parameters.organizationId}}&projectIdentifier={{parameters.projectId}}
+            valueSelector: 'infrastructure.name'
+            arraySelector: 'data.content'
         token:
           title: Harness Token
           type: string
@@ -207,11 +151,15 @@ spec:
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
 
-Replace the `YOUR PIPELINE URL HERE` with the pipeline URL that you created.
+Replace the `YOUR PIPELINE URL HERE` with the pipeline URL that you created, along with the `ACCOUNT_ID` and `ENV_ID` placeholder. 
 
 ![](./static/copy-pipeline-url.png)
 
-### Authenticating the Request to the Pipeline
+![](./static/workflow-editor-tutorial.png)
+
+
+<details>
+<summary>Authenticating the Request to the Pipeline</summary>
 
 The Workflow contains a single action which is designed to trigger the pipeline you created via an API call. Since the API call requires authentication, Harness has created a custom component to authenticate based of the logged-in user's credentials.
 
@@ -239,6 +187,7 @@ That token is then used as part of `steps` as `apikey`
           ...
         apikey: ${{ parameters.token }}
 ```
+</details>
 
 ### Register the Workflow in IDP
 
