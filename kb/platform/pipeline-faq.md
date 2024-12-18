@@ -139,6 +139,13 @@ If the test pipeline fails, you can utilize the rollback feature to revert the d
 
 No, currently there is no way to fully integrate a triggered test pipeline within the original deployment pipeline. The test pipeline will always operate as a separate entity.
 
+### What does the ```PIE_INPUTSET_RBAC_PERMISSIONS``` feature flag do?
+
+The ```PIE_INPUTSET_RBAC_PERMISSIONS``` feature flag introduces a new permission in roles specifically for Input Sets. Once enabled, this feature allows you to explicitly grant or revoke permissions for managing Input Sets within roles.
+
+### What changes will I see in the UI after enabling this feature flag?
+After enabling the feature flag, the Roles section in the UI will display a new entry for Input Set permissions. This entry will include corresponding actions such as creating, viewing, editing, or deleting Input Sets, allowing for granular control over Input Set access.
+
 ## API
 
 ### Can I run pipelines through the API or CLI?
