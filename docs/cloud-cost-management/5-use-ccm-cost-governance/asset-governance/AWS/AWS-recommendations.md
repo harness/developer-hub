@@ -473,7 +473,6 @@ The UI displays a detailed error message to assist in resolving the issue quickl
 
 The recommendation process fails due to one of the following reasons:
 - Missing Permissions: The necessary permissions required for Harness to access cloud cost data or governance metrics are not provided.
-- Invalid Region: The region specified in the Governance Rule is either invalid or not supported for recommendations.
 - Harness Internal Error: A system-level issue occurred during processing.
 
 2. **Ignored Status :**
@@ -482,6 +481,7 @@ The recommendation process is skipped for the following reasons:
 - Cost Threshold Not Met:
 - AWS and Azure: Costs are less than $300 for the combination of account or subscription x region.
 - GCP: Costs are less than $300 for the specific project being analyzed.
+- Invalid Region: The region specified in the Governance Rule is either invalid or not supported for recommendations.
 
 3. **Success Status :**
 A successful status indicates one of the following scenarios:
