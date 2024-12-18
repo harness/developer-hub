@@ -89,7 +89,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## December 2024
 
-### Version 24.11.84503 <!-- December 12, 2024 -->
+### Version 24.11.84503 <!-- December 18, 2024 -->
 
 #### Fixed issues
 - Fixed an issue that prevented users from retrieving secrets from the HashiCorp Vault when the path contained special characters. The solution involved enhancing support for **"dots"** in dynamic secret reference expressions, ensuring seamless retrieval of such secrets.
