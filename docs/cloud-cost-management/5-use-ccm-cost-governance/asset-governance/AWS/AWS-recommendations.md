@@ -450,3 +450,43 @@ policies:
     - ```redshift:DescribeClusterSnapshots```
 
 ---
+
+## Governance Recommendation Health
+
+Harness CCM now provides users the ability to monitor Governance Recommendations through the new Optimization tab in the Governance module. 
+
+This enhancement offers clear visibility into the evaluation status of each rule and provides detailed insights about the cloud account (connector) and region involved in generating the recommendations.
+
+This tab is designed to streamline troubleshooting and improve visibility into why recommendations may fail, be ignored, or succeed, enabling users to take immediate corrective actions when necessary.
+
+#### How It Works:
+- Status Tracking: Each Recommendation Rule's status is displayed in the Optimization tab.
+- Cloud Connector (Account ID): The specific cloud account associated with the rule.
+- Region: The region for which the rule is evaluated.
+
+#### Error Notifications:
+If any connector and region combination encounters an issue, the system flags it with a Failed status.
+The UI displays a detailed error message to assist in resolving the issue quickly.
+
+#### Status Breakdown:
+1. **Failed Status :**
+
+The recommendation process fails due to one of the following reasons:
+- Missing Permissions: The necessary permissions required for Harness to access cloud cost data or governance metrics are not provided.
+- Invalid Region: The region specified in the Governance Rule is either invalid or not supported for recommendations.
+- Harness Internal Error: A system-level issue occurred during processing.
+
+2. **Ignored Status :**
+The recommendation process is skipped for the following reasons:
+- No Cost Data Available: The cloud account lacks sufficient cost data for processing.
+- Cost Threshold Not Met:
+- AWS and Azure: Costs are less than $300 for the combination of account or subscription x region.
+- GCP: Costs are less than $300 for the specific project being analyzed.
+
+3. **Success Status :**
+A successful status indicates one of the following scenarios:
+- Recommendation Generated: The system successfully evaluated the rule and created a recommendation.
+- No Resources in Evaluation: The rule was processed, but there were no eligible resources to analyze.
+- Savings Below Threshold: A recommendation was generated, but the potential savings were calculated to be less than $10.
+
+
