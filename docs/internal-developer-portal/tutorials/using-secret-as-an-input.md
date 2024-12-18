@@ -8,7 +8,7 @@ redirect_from:
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-Sometimes, as a platform engineer, you might want your developers to enter their credentials when using a software template in IDP. This is useful when, for example, you want to use developers' GitHub credentials in a pipeline and create a repository on their behalf. This is a good approach because it ensures that developers create repositories that they can access and that you do not have to provide a superuser token for such tasks. This tutorial explains how you can configure such a software template and the corresponding pipeline.
+Sometimes, as a platform engineer, you might want your developers to enter their credentials when using a Workflow in IDP. This is useful when, for example, you want to use developers' GitHub credentials in a pipeline and create a repository on their behalf. This is a good approach because it ensures that developers create repositories that they can access and that you do not have to provide a superuser token for such tasks. This tutorial explains how you can configure such a workflow and the corresponding pipeline.
 
 ## Prerequisites
 
@@ -21,18 +21,18 @@ In your Harness pipeline, create a variable. Set its type to **Secret** and its 
 
 ![](./static/secret-runtime-input.png)
 
-## Template changes
+## Workflow changes
 
-Use the following workflow to update the `template.yaml` file that you registered with IDP. The sections that follow include detailed instructions for each of these steps:
+Use the following workflow to update the `workflow.yaml` file that you registered with IDP. The sections that follow include detailed instructions for each of these steps:
 
 1. Receive a secret input through the UI.
 2. Create a Harness secret by using an action.
 3. Use the secret ID to trigger the Harness pipeline.
 4. Delete the secret after the pipeline is triggered.
 
-### 1. Create an input field in the template
+### 1. Create an input field in the Workflow
 
-Inside the `spec.parameters[0].properties` field of your `template.yaml` file, add the following property. This property generates the input field in which users can enter their credentials:
+Inside the `spec.parameters[0].properties` field of your `workflow.yaml` file, add the following property. This property generates the input field in which users can enter their credentials:
 
 ```yaml {5-8}
 spec:
@@ -49,7 +49,7 @@ spec:
 
 ### 2. Add a step to create the secret
 
-Use the `harness:create-secret` action in a step in the `template.yaml` file to create a Harness secret from the developer's input. The following step creates a secret in the specified project, so make sure that the project contains the service onboarding pipeline in which you plan to reference the secret:
+Use the `harness:create-secret` action in a step in the `workflow.yaml` file to create a Harness secret from the developer's input. The following step creates a secret in the specified project, so make sure that the project contains the service onboarding pipeline in which you plan to reference the secret:
 
 ```yaml
 spec:

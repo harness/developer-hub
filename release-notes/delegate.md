@@ -98,6 +98,11 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 #### New features and improvements
 - Updated ```“org.bouncycastle:bcpkix-jdk18on”``` to version 1.78 and removed ```“org.bouncycastle:bcprov-jdk15on”``` (version 1.70) from the Delegate. (PL-58474)
 
+### Version 24.11.84311 <!--  December 16, 2024 -->
+
+#### Hotfix
+
+- Previously, when there was deployment failure in TAS Rolling deployment, secrets were printed in the delgate logs. This issue has now been fixed. (CDS-105208)
 
 ### Version 24.11.84310 <!--  December 4, 2024 -->
 

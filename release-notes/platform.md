@@ -130,6 +130,8 @@ The following deprecated API endpoints are longer supported:
 
 - Upgraded the `io.netty:netty-common` library to version `4.1.115` to address security vulnerabilities, including `CVE-2024-47535`, ensuring enhanced application security and compliance. (PL-58550)
 
+- Cross-module pipeline executions dashboards includes the ability to run ad-hoc queries for pipeline, stage, and step level views and allow cross module analysis. This includes one OOTB dashboard for pipeline executions, one for stage executions and another for step executions. (PL-50496)
+
 ## November 2024
 
 ### Version 1.65.x<!-- November 26, 2024 -->

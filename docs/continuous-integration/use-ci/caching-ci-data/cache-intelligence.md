@@ -49,7 +49,7 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
 </TabItem>
 <TabItem value="sm" label="Self-managed build infrastructures">
 
-When running builds in self-managed infrastructures, [configure S3-compatible  default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
+When running builds in self-managed infrastructures, [configure S3-compatible default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
 
 We suggest that you consider setting bucket level retention policy for efficient cache management. 
 

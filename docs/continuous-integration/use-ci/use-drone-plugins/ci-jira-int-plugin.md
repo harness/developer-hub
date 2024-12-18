@@ -100,8 +100,12 @@ After the build runs, you can see updates to **Build** and **Deployment** fields
 
 <DocImage path={require('./static/ci-jira-int-ticket-details.png')} />
 
-### How does Harness determine which Jira issue and field to update?
+## FAQs
+
+### How does Harness determine which Jira issue to update?
+
+When the pipeline runs, Harness scans for all Jira issue numbers, such as `[JIRA-1234]`, in the title of the PR or the latest commit message associated with the build. It will then update the field(s) for all such issues it finds. 
+
+### How does Harness determine which Jira field to update?
 
 The presence of the `ENVIRONMENT_NAME` setting in the **Plugin** step determines whether Harness updates the **Deployment** or **Build** field in Jira. If `ENVIRONMENT_NAME` is included, Harness updates the **Deployment** field. If `ENVIRONMENT_NAME` is excluded, Harness updates the **Build** field.
-
-When the pipeline runs, Harness scans for a Jira issue number, such as `[JIRA-1234]`, in the title of the PR or the latest commit message associated with the build.

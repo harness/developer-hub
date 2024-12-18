@@ -47,6 +47,17 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## December
 
+### Version 1.69.7
+
+#### Fixed Issues
+
+- A null pointer exception was thrown when a pipeline was provided a primary artifact, but no artifact was selected in the service. This issue is fixed now. (CDS-104756)
+-  During Autocreation of entities the name and identifier were incorrectly retrieved from the Infrastructure Definition YAML file pulled from Git. The logic was using the wrong key in the YAML, causing it to always fall back on the file name instead. This issue is fixed now. (CDS-104751)
+-  Previously, when Override V2 was enabled and no `ENV_GLOBAL_OVERRIDE`S or `ENV_SERVICE_OVERRIDES `were present, the system would fall back to reading overrides from the environment configuration YAML. However, the UI did not display information about these YAML-based overrides, causing confusion for users as they were unable to identify or control this behavior. This issue is fixed now and when Override V2 is enabled, overrides from the environment configuration YAML will no longer be considered. This change ensures clarity and aligns the system behavior with customer expectations. This fix is behind the FF `CDS_SERVICE_OVERRIDES_2_0_YAML_V2_SUPPORT`. (CDS-104570, ZD-74034)
+- Previously, when a user selected "Deploy to Multiple Environments" inside a stage template and set it as a runtime input, the value was incorrectly treated as a fixed value during pipeline execution. This issue is fixed now. (CDS-104471, ZD-73843)
+- Previously, GitOps entries did not appear in custom dashboards when the `cd_stage_execution` view was used in Looker. This issue is fixed now. (CDS-103135)
+
+
 ### Version 1.68.4
 
 #### Fixed Issues
@@ -82,6 +93,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Previously, attempting to delete folders in the file store with names similar to other folders caused errors, even when the folder appeared to have no references. For example, deleting a folder would fail if another folder with a similar prefix contained referenced entities. This issue is fixed now. (CDS-103076, ZD-72658)
 - Previously, the runtime input regex for the version field in the Google Artifact Registry (GAR) artifact source was not working as expected, causing all tags to display instead of filtering based on the regex. This issue is fixed now, and the version field now correctly supports regex patterns, allowing users to filter tags as intended. (CDS-102800, ZD-72658)
 - Previously, when a pipeline had two stages with a runtime environment `(<+input>)` propagated to the next stage, selecting **Deploy to Different Infrastructure** caused the payload to contain a null environment. This prevented users from selecting infrastructure options. This issue is fixed now. (CDS-100718)
+- Secrets used in container step executions were being checked against the user's permissions at the PROJECT scope, even if the secret was at the ACCOUNT scope, causing the pipeline to fail. This issue is fixed now. (CDS-103047, ZD-71475)
 
 ### Version 1.65.3
 

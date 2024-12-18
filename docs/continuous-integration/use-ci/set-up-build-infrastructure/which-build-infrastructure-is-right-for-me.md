@@ -19,7 +19,7 @@ Learn more about each option below, including recommended use cases, supported p
 
 ## Harness Cloud
 
-<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Paid plans" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
 When you [use Harness Cloud](./use-harness-cloud-build-infrastructure.md), your builds run in isolation on Harness-managed machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
 
@@ -44,7 +44,7 @@ Self-managed build infrastructure options include local machines, Kubernetes clu
 <details>
 <summary>Local runner</summary>
 
-<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Paid plans" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
 When you [use a local runner](./define-a-docker-build-infrastructure.md), also known as a Docker runner, you run builds on a local machine. You can execute build steps in Docker containers or directly on the host machine.
 
@@ -57,7 +57,7 @@ Self-managed local build infrastructure is available with all CI plans.
 <details>
 <summary>Kubernetes cluster</summary>
 
-<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Paid plans" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
 When you [use a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md), you can run ephemeral builds-at-scale in your own self-managed Kubernetes clusters. In this case, each CI stage executes in a pod, and the stage's steps share the pod's resources.
 
@@ -68,7 +68,7 @@ If you are familiar with Kubernetes, this option is relatively easy to set up an
 <details>
 <summary>AWS/GCP/Azure VMs</summary>
 
-<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+<DocsTag  text="Paid plans" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
 You can [run builds on self-managed AWS, GCP, or Azure VMs](/docs/category/set-up-vm-build-infrastructures)
 
