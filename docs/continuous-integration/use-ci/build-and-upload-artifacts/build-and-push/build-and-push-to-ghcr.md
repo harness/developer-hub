@@ -7,7 +7,6 @@ redirect_from:
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
-import Tar from '/docs/continuous-integration/shared/build-and-push-local-tar.md';
 
 This topic explains how to use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-registry.md) to build and push an image to [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
 
@@ -53,10 +52,6 @@ You can also:
 - [Build multi-architecture images](../build-multi-arch.md)
 
 :::
-
-### Using Local Tar Output
-
-<Tar />
 
 ## Build and Push to Docker step settings for GHCR
 

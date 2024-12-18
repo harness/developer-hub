@@ -1,4 +1,6 @@
-In some cases, you may prefer to generate a local tarball of the built Docker image instead of pushing it directly to a registry. This approach is useful for testing locally or when registry access is not available during the build step.
+In scenarios where pushing a Docker image to a registry is not feasible, you can generate a local tarball of the built image instead. This approach is particularly useful for situations like local testing or when registry access is unavailable during the build process.
+
+Once the tarball is generated, you can use a Security Testing Orchestration (STO) step, such as Aqua Trivy, to scan the image for vulnerabilities. This workflow ensures that images are built and scanned effectively, even without access to a remote registry.
 
 Here’s a sample partial pipeline that demonstrates how build the image, generate the tarball, and push it to the registry:
 

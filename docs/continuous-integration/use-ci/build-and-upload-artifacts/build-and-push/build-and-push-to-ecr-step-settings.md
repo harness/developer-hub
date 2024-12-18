@@ -12,7 +12,6 @@ redirect_from:
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
-import Tar from '/docs/continuous-integration/shared/build-and-push-local-tar.md';
 
 [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) is a fully managed service from AWS that you can use to store and manage Docker images securely and reliably. In addition, ECR provides a simple web-based interface for creating, managing, and sharing Docker images and integrating them with other AWS services. For more information, go to the AWS documentation on [Pushing a Docker image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html).
 
@@ -64,10 +63,6 @@ You can also:
 - [Build multi-architecture images](../build-multi-arch.md)
 
 :::
-
-### Using Local Tar Output
-
-<Tar />
 
 ## Handling Immutable ECR Repositories in the "Build and Push to ECR" Step
 

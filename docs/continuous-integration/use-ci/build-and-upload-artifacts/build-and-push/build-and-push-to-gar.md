@@ -8,7 +8,6 @@ redirect_from:
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
-import Tar from '/docs/continuous-integration/shared/build-and-push-local-tar.md';
 
 This topic explains how to configure the **Build and Push to GAR** step in a Harness CI pipeline. This step is used to build and push to [Google Artifact Registry (GAR)](https://cloud.google.com/artifact-registry).
 
@@ -56,10 +55,6 @@ You can also:
 - [Build multi-architecture images](../build-multi-arch.md)
 
 :::
-
-### Using Local Tar Output
-
-<Tar />
 
 ## Build and Push to GAR step settings
 

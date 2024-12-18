@@ -11,7 +11,6 @@ redirect_from:
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
-import Tar from '/docs/continuous-integration/shared/build-and-push-local-tar.md';
 
 :::warning
 
@@ -67,10 +66,6 @@ You can also:
 - [Build multi-architecture images](../build-multi-arch.md)
 
 :::
-
-### Using Local Tar Output
-
-<Tar />
 
 ## Build and Push to GCR step settings
 

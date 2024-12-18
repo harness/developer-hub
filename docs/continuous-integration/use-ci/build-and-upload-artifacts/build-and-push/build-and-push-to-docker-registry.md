@@ -12,7 +12,6 @@ canonical_url: https://www.harness.io/blog/docker-multi-stage-build
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
-import Tar from '/docs/continuous-integration/shared/build-and-push-local-tar.md';
 
 This topic explains how to configure the **Build and Push an image to Docker Registry** step in a Harness CI pipeline. This step creates a Docker image from a [Dockerfile](https://docs.docker.com/engine/reference/builder/) and pushes it to a Docker registry. This is one of several options for [building and pushing artifacts in Harness CI](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
 
@@ -66,10 +65,6 @@ You can also:
 - [Build multi-architecture images](../build-multi-arch.md)
 
 :::
-
-### Using Local Tar Output
-
-<Tar />
 
 ## Build and Push to Docker step settings
 
