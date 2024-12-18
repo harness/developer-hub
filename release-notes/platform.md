@@ -78,6 +78,16 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## December 2024
+### Version 1.69.x<!-- December 12, 2024 -->
+#### Fixed issues
+- Resolved an issue where the secrets created were not appearing in the **“Referenced By”** section of the connector. This was solved by updating the entity setup to support **cross-scope references**. With this fix, newly created secrets are now correctly displayed in the “Referenced By” section as expected.
+(PL-55818, ZD-67675) 
+
+#### New features and enhancements
+- Successfully onboarded **DB-DevOps** (DBOPS) to Custom Dashboards. 
+(PL-58911)
+
+
 ### Version 1.68.x<!-- December 5, 2024 -->
 
 #### Fixed issues
