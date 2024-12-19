@@ -38,14 +38,14 @@ Currently, we support the following properties in a  ```devcontainer.json``` fil
 | **Argument**    | **Usage** |
 | -------- | ------- |
 | ```image```  | Image used to create the container    |
-| ```forwardPorts```    | Array of ports to be forwarded from the Gitspace to the local machine (including inside the web)    |
+| [```forwardPorts``` ](/docs/cloud-development-environments/develop-using-cde/port-forwarding.md)   | Array of ports to be forwarded from the Gitspace to the local machine (including inside the web)    |
 | ```postCreateCommand``` | Command to be executed after the Gitspace is created |
 | ```postStartCommand```    | Command to be executed after the Gitspace is started    |
-| ```runArgs```    | Array of Docker CLI arguments to be used when running the Gitspace     |
-| ```containerEnv```    | Name-value pairs that sets/overrides environment variables for the container    |
-| ```containerUser```    | Defines the user for all operations run as inside the container    |
-| ```remoteUser```    | Defines the user that devcontainer.json supporting services tools / runs as in the container (including lifecycle scripts and any remote editor/IDE server processes)   |
-| ```extensions```    | Array of extension IDs that specifies which extensions should be installed when the Gitspace is created    |
+| [```runArgs```](docs/cloud-development-environments/develop-using-cde/run-args.md)    | Array of Docker CLI arguments to be used when running the Gitspace     |
+| [```containerEnv```](docs/cloud-development-environments/develop-using-cde/env-variables.md)    | Name-value pairs that sets/overrides environment variables for the container    |
+| [```containerUser```](docs/cloud-development-environments/develop-using-cde/container-remote-user.md)    | Defines the user for all operations run as inside the container    |
+| [```remoteUser```](docs/cloud-development-environments/develop-using-cde/container-remote-user.md)    | Defines the user that devcontainer.json supporting services tools / runs as in the container (including lifecycle scripts and any remote editor/IDE server processes)   |
+| [```extensions```](docs/cloud-development-environments/develop-using-cde/extensions.md)    | Array of extension IDs that specifies which extensions should be installed when the Gitspace is created    |
 
 
 The path for this configuration file is ```.devcontainer/devcontainer.json```

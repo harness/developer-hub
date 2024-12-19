@@ -1,6 +1,6 @@
 ---
 title: MS Teams notification setup for pipeline events and approvals
-description: test
+description: Integrate your Harness User Group with Microsoft Teams and receive pipeline status updates and approval notifications in Teams channels.
 sidebar_position: 1
 ---
 

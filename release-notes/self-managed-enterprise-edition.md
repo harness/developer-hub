@@ -220,6 +220,52 @@ To fix this issue, follow these steps
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
 :::
 
+## December 13, 2024, patch version 0.23.2
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.23.2](https://github.com/harness/helm-charts/releases/tag/harness-0.23.2) |
+| Air Gap Bundle | [0.23.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.23.2) |
+| NG Manager | 1.62.12 |
+| CI Manager | 1.51.8 |
+| Pipeline Service | 1.101.11 |
+| Platform Service | 1.42.3 |
+| Access Control Service | 1.64.1 |
+| Delegate | 24.10.84200 |
+| GitOps Service | 1.19.4 |
+| Change Data Capture | 1.37.4 |
+| STO Core | 1.117.2 |
+| Test Intelligence Service | 1.34.1 |
+| NG UI | 1.48.17 |
+| LE NG | 1.5.6 |
+| Looker | 1.5.0 |
+| Log Service | 1.14.5 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.23.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.2/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- ng-manager virtual service routes have been added in chart to support gitx webhooks APIs at org and project level. (PL-58990)
+
 ## December 11, 2024, patch version 0.23.1
 
 This release includes the following Harness module and component versions.
@@ -469,6 +515,53 @@ gsutil -m cp \
 
 #### Security Testing Orchestration
 - Fixed issue where the option to remove a configured Ticket Provider Connector in the External Tickets settings was unavailable; you can now remove the connector from the Ticket Provider Connector and related fields (STO-8001).
+
+## December 13, 2024, patch version 0.22.4
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.22.4](https://github.com/harness/helm-charts/releases/tag/harness-0.22.4) |
+| Air Gap Bundle | [0.22.4](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.22.4) |
+| NG Manager | 1.57.9 |
+| CI Manager | 1.47.5 |
+| Harness Manager | 1.48.8 |
+| Pipeline Service | 1.95.4 |
+| Platform Service | 1.39.1 |
+| Access Control Service | 1.61.2 |
+| Delegate | 24.09.83900 |
+| GitOps Service | 1.18.7 |
+| Change Data Capture | 1.36.0 |
+| STO Core | 1.113.10 |
+| Test Intelligence Service | 1.27.1 |
+| NG UI | 1.43.2 |
+| LE NG | 1.3.1 |
+| Looker | 1.1.1 |
+| Log Service | 1.9.2 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.22.4/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.4/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.4/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.4/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.4/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.4/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.4/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- ng-manager virtual service routes have been added in chart to support gitx webhooks APIs at org and project level. (PL-58990)
 
 ## December 04, 2024, patch version 0.22.3
 
