@@ -3,8 +3,7 @@ id: pod-jvm-sql-latency
 title: Pod JVM SQL Latency
 ---
 
-Pod JVM SQL Latency fault introduces latency in the SQL queries executed by the Java process running inside a Kubernetes pod. This helps simulate delays in database interactions, enabling testing of the application's behavior under slow database response conditions and validating the impact of latency on overall system performance and user experience
-
+Pod JVM SQL Latency fault introduces latency in the SQL queries executed by the Java process running inside a Kubernetes pod.
 :::tip
 JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
 :::
@@ -12,9 +11,9 @@ JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject
 ![Pod JVM SQL Latency](./static/images/pod-jvm-sql-latency.png)
 
 ### Use cases
-Pod JVM sql latency:
+Pod JVM SQL latency:
 - Simulate database latency to evaluate how the application handles slower SQL queries, assess system performance under delayed database responses, and identify potential bottlenecks in handling high volumes of requests.
-- Test the impact of SQL query latency on the end-user experience, ensuring the application behaves gracefully under slower response times. This can include validating timeouts, retries, or fallback mechanisms to maintain a seamless user experience.
+- Test the impact of SQL query latency on the end-user experience, ensuring the application behaves gracefully under slower response times. This includes validating timeouts, retries, and fallback mechanisms to maintain a seamless user experience.
 - Ensure that the application can handle delayed SQL queries without failing. Test timeout configurations, error-handling strategies, and automatic recovery processes to verify that the system can withstand latency-induced delays without causing critical failures.
 
 ### Mandatory tunables
@@ -36,7 +35,7 @@ Pod JVM sql latency:
   </tr>
  <tr>
     <td> SQL_LATENCY </td>
-    <td> The latency to be injected into the SQL queries (in ms)</td>
+    <td> The latency to be injected into the SQL queries (in ms). </td>
     <td> For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
 </table>
@@ -51,17 +50,17 @@ Pod JVM sql latency:
  <tr>
     <td> TOTAL_CHAOS_DURATION </td>
     <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
+    <td> Default: <code>30s</code>. For example: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
   </tr>
   <tr>
     <td> SQL_OPERATION </td>
     <td> The type of SQL query to be targeted. </td>
-    <td> If not provided it will target all sql queries. Examples: <code>select</code>. For more information, go to <a href= "#parameters">Parameters</a></td>
+    <td> If not provided it targets all SQL queries. For example: <code>select</code>. For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
   <tr>
     <td> TRANSACTION_PERCENTAGE </td>
-    <td> The percentage of total sql queries to be targeted. </td>
-    <td> Supports percentage in (0.00,1.00] range. If not provided it will target all sql queries. For more information, go to <a href= "#parameters">Parameters</a></td>
+    <td> The percentage of total SQL queries to be targeted. </td>
+    <td> Supports percentage in (0.00,1.00] range. If not provided, it targets all SQL queries. For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
   <tr>
     <td> POD_AFFECTED_PERCENTAGE </td>
@@ -91,7 +90,7 @@ Pod JVM sql latency:
   <tr>
     <td> RAMP_TIME </td>
     <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href= "/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+    <td> Default: <code>0s</code>. For example: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href= "/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
   </tr>
   <tr>
     <td> SEQUENCE </td>

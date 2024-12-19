@@ -12,7 +12,7 @@ JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject
 ![Pod JVM SQL Exception](./static/images/pod-jvm-sql-exception.png)
 
 ### Use cases
-Pod JVM sql exception:
+Pod JVM SQL exception:
 - Validate the application's resilience by simulating SQL exceptions to ensure it can recover gracefully, retry operations, or switch to backup databases without affecting functionality.
 - Assess if the monitoring systems and alerting mechanisms can accurately detect and report SQL query exceptions in real-time.
 - Trigger exception-handling paths in the application to ensure coverage of edge cases related to SQL query failures during testing.
@@ -62,17 +62,17 @@ Pod JVM sql exception:
   <tr>
     <td> SQL_OPERATION </td>
     <td> The type of SQL query to be targeted. </td>
-    <td> If not provided it will target all sql queries. Examples: <code>select</code>. For more information, go to <a href= "#parameters">Parameters</a></td>
+    <td> If not provided, it targets all SQL queries. For example: <code>select</code>. For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
   <tr>
     <td> TRANSACTION_PERCENTAGE </td>
-    <td> The percentage of total sql queries to be targeted. </td>
-    <td> Supports percentage in (0.00,1.00] range. If not provided it will target all sql queries. For more information, go to <a href= "#parameters">Parameters</a></td>
+    <td> The percentage of total SQL queries to be targeted. </td>
+    <td> Supports percentage in (0.00,1.00] range. If not provided, it targets all SQL queries. For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
   <tr>
     <td> POD_AFFECTED_PERCENTAGE </td>
     <td> Percentage of total pods to target. Provide numeric values. </td>
-    <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/chaos-faults/use-harness-ce/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pods affected percentage </a> </td>
+    <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/chaos-faults/use-harness-ce/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pods affected percentage. </a> </td>
     </tr>
   <tr>
     <td> JAVA_HOME </td>
@@ -86,7 +86,7 @@ Pod JVM sql exception:
   </tr>
   <tr>
     <td> CONTAINER_RUNTIME </td>
-    <td> Container runtime interface for the cluster</td>
+    <td> Container runtime interface for the cluster. </td>
     <td> Default: containerd. Support values: docker, containerd and crio. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-modify-body#container-runtime-and-socket-path">container runtime</a>.</td>
     </tr>
     <tr>
