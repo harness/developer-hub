@@ -71,25 +71,30 @@ The following YAML snippet illustrates the use of these tunables:
 
 [embedmd]:# (./static/manifests/redis-cache-expire/params.yaml yaml)
 ```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: K8sFault
+apiVersion: litmuschaos.io/v1alpha1
+kind: KubernetesChaosExperiment
 metadata:
   name: redis-cache-expire
-      env:
-        - name: TOTAL_CHAOS_DURATION
-          value: "60" # in seconds
-        - name: RAMP_TIME
-          value: ""
-        - name: ADDRESS
-          value: ""
-        - name: KEY
-          value: ""
-        - name: DATABASE
-          value: "0"
-        - name: EXPIRATION
-          value: ""
-        - name: EXPIRY_OPTION
-          value: ""
-        - name: SECRET_FILE_PATH  # optional- required only for authentication
-          value: /tmp/redis-secret.yaml
+  namespace: hce
+spec:
+  tasks:
+     - definition:
+        chaos:
+          env:
+            - name: TOTAL_CHAOS_DURATION
+              value: "60" # in seconds
+            - name: RAMP_TIME
+              value: ""
+            - name: ADDRESS
+              value: ""
+            - name: KEY
+              value: ""
+            - name: DATABASE
+              value: "0"
+            - name: EXPIRATION
+              value: ""
+            - name: EXPIRY_OPTION
+              value: ""
+            - name: SECRET_FILE_PATH  # optional- required only for authentication
+              value: /tmp/redis-secret.yaml
 ```

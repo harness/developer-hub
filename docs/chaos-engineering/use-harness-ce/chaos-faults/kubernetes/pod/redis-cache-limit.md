@@ -55,20 +55,25 @@ The following YAML snippet illustrates the use of these tunables:
 
 [embedmd]:# (./static/manifests/pod-redis-cache-limit/params.yaml yaml)
 ```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: K8sFault
+apiVersion: litmuschaos.io/v1alpha1
+kind: KubernetesChaosExperiment
 metadata:
   name: redis-cache-limit
-      env:
-        - name: TOTAL_CHAOS_DURATION
-          value: "60" # in seconds
-        ## Period to wait before and after injection of chaos in sec
-        - name: RAMP_TIME
-          value: ""
-        - name: ADDRESS
-          value: ""
-        - name: MAX_MEMORY
-          value: "50%"
-        - name: SECRET_FILE_PATH # optional- required only for authentication
-          value: "/tmp/redis-secret.yaml"
+  namespace: hce
+spec:
+  tasks:
+     - definition:
+        chaos:
+          env:
+            - name: TOTAL_CHAOS_DURATION
+              value: "60" # in seconds
+            ## Period to wait before and after injection of chaos in sec
+            - name: RAMP_TIME
+              value: ""
+            - name: ADDRESS
+              value: ""
+            - name: MAX_MEMORY
+              value: "50%"
+            - name: SECRET_FILE_PATH # optional- required only for authentication
+              value: "/tmp/redis-secret.yaml"
 ```

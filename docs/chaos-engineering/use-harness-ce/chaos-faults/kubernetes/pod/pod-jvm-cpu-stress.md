@@ -113,6 +113,10 @@ kind: KubernetesChaosExperiment
 metadata:
   name: pod-jvm-cpu-stress
   namespace: hce
+spec:
+  tasks:
+     - definition:
+        chaos:
           env:
             - name: TOTAL_CHAOS_DURATION
               value: "60"
