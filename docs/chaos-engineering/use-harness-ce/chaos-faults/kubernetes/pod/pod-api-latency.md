@@ -10,7 +10,7 @@ redirect_from:
 import CommonNote from './shared/common-note.md'
 import ConfTLS from './shared/configure-tls.md'
 
-Pod API latency is a Kubernetes pod-level chaos fault that injects api request and response latency by starting proxy server and redirecting the traffic through it.
+Pod API latency is a Kubernetes pod-level chaos fault that injects API request and response latency by starting proxy server and redirecting the traffic through it.
 
 <CommonNote />
 
@@ -108,7 +108,7 @@ permissions:
       </tr>
       <tr>
         <td> TRANSACTION_PERCENTAGE </td>
-        <td> Percentage of the api requests to be affected </td>
+        <td> Percentage of the API requests to be affected. </td>
         <td> It supports values in range (0,100]. It targets all requests if not provided. For more information, go to <a href="#advanced-filters">transaction percentage </a>.</td>
       </tr>
       <tr>
