@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-11-28T10:00
+date: 2024-12-19T10:00
 sidebar_position: 5
 ---
 
@@ -19,6 +19,20 @@ The release notes describe recent changes to Harness Chaos Engineering.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## December 2024
+
+### Version 1.50.3
+
+#### New features and enhancements
+
+- Adds support for [configuring image registries at multiple scopes](/docs/chaos-engineering/use-harness-ce/image-registry#why-use-a-custom-image-registry), such as Project, Account, Organization, and Infrastructure levels. These settings can be automatically inherited by lower levels, but if the "override allowed" option is enabled at the parent level, lower levels can modify or override these configurations. It is behind the feature flag `CHAOS_IMAGEREGISTRY_DEV`. (CHAOS-6570)
+
+#### Fixed issues
+
+- Fixed an issue where ChaosGuard was not evaluating correctly after adding support for environments. (CHAOS-7075)
+
+- Fixed an issue where the Pod API modify header fault failed to function as expected when the header value was set to '/'. (CHAOS-7063)
 
 ## November 2024
 
