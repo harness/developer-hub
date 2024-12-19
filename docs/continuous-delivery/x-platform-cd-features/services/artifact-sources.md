@@ -70,6 +70,10 @@ Additionally, this logic applies when propagating services from previous stages.
 
 Note: This setting applies only to the primary artifact and does not affect sidecar artifacts.
 
+:::warning
+If you enable the Disable Artifact Validation option and any of the steps in the pipeline execution depend on the artifacts specified in the service, those steps are expected to fail. Ensure that no steps rely on the artifact if you choose to enable this setting.
+:::
+
 ## Docker
 
 ### Use artifacts in any Docker registry
