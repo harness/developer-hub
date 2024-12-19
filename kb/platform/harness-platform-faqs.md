@@ -2149,9 +2149,51 @@ Harness Delegates are primarily configured through variables, which can be adjus
 
 These approaches offer flexibility and reliability in ensuring that Harness delegates are configured correctly to meet your needs.
 
-### Upgrader job is up and running but not identified as Upgrade is Turned ON also upgrade is not working
+### The Upgrader job is up and running but not identified as Upgrade is Turned ON also upgrade is not working
 
 The name of the upgrader job workload needs to follow the delegate naming convention, so can you check and confirm if you have changed that manually or using the default name as you get while downloading the manifest.
+
+### Can I set a registry mirror for a Helm-based Delegate during installation?  
+No, the current Helm chart does not support configuring a registry mirror during the installation process. 
+
+### Is there a value I can set for the registry mirror in the Helm chart?
+Unfortunately, the Helm chart does not currently provide an option to set a registry mirror.  
+
+### Can I avoid manually editing the config map to configure the registry mirror?  
+At the moment, manual editing of the config map is required, as there is no automated way to configure the registry mirror during installation. 
+
+### Why is the registry mirror configuration not available in the Helm chart?  
+The Helm chart does not yet have full parity with Kubernetes manifest options, including registry mirror configuration.  
+
+### Will I need a new chart version to configure the registry mirror during installation?
+Yes, a new version of the Helm chart will be required to support registry mirror configuration during installation.  
+
+### What is the purpose of the registry mirror in the Delegate?  
+The registry mirror is used specifically for fetching Delegate images during the automatic upgrade process.  
+
+### Does the registry mirror affect other images the Delegate interacts with? 
+No, the registry mirror is not used for other images that the Delegate interacts with, such as those used in deployment pipelines.  
+
+### Is the registry mirror configuration required for all Delegate functionalities? 
+No, it is only relevant for fetching Delegate images during automatic upgrades.  
+
+### Can I configure the registry mirror after installing the Delegate?  
+Yes, you can manually edit the config map after installation to configure the registry mirror.
+
+### Is automation possible for registry mirror configuration in its current state? 
+Automation is not feasible currently, as manual changes to the config map are required post-installation.
+
+### Are there plans to make the registry mirror configurable in the Helm chart?
+Yes, the team is actively working on adding the registry mirror as a configurable option in the Helm chart. 
+
+### Can I use a workaround to automate registry mirror configuration?  
+While the Helm chart doesn’t support it currently, you can use scripts to automate manual configmap edits post-installation.
+
+### What should I do if I need the registry mirror feature now?  
+You can manually edit the config map after installation to set the registry mirror.
+
+### Why is the registry mirror configuration important?  
+It ensures the Delegate can fetch images efficiently during the automatic upgrade process.  
 
 ## Dashboards
 
