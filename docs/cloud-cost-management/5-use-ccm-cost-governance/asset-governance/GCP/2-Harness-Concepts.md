@@ -39,10 +39,10 @@ Number of Rules per Account[Custom + OOTB] can be 300.
 4. Select **+ New Rule**. 
 
 
-  <DocImage path={require('../static/asset-governance-rule-creation-gcp.png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/asset-governance-rule-creation.png')} width="90%" height="90%" title="Click to view full size image" />
 
 5. Enter a name for the rule.
-6. Select the cloud provider.
+6. Select the cloud provider. Also, enter Savings prediction in percentage (optional). This custom percentage will be honored during savings computation.
 7. Optionally, enter a description of the rule.
 8. Select **Apply**.
 9. Enter the YAML policy in the rule editor.
@@ -69,7 +69,7 @@ To delete a **Rule Set**, click **Delete** from the vertical ellipsis menu (⋮)
   <DocImage path={require('../static/update_and_delete_gcp.png')} width="90%" height="90%" title="Click to view full size image" />
 
 :::info 
-We now have Terraform support for Governance Rules. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule) for more details.
+We now have Terraform support for managing Governance Rules. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule) for more details.
 :::
 
 
@@ -117,7 +117,7 @@ To delete a Rule Set, click on Delete from the vertical ellipsis menu (⋮).
  <DocImage path={require('../static/update_and_delete_ruleSet_gcp.png')} width="90%" height="90%" title="Click to view full size image" />
 
  :::info 
-We now have Terraform support for Governance RuleSets. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule_set) for more details.
+We now have Terraform support for managing Governance RuleSets. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule_set) for more details.
 :::
 
 
@@ -180,7 +180,7 @@ To delete an enforcement, simply click on “Delete” from the vertical ellipsi
 <DocImage path={require('../static/update_and_delete_enforcement_gcp.png')} width="90%" height="90%" title="Click to view full size image" />
 
 :::info 
-We now have Terraform support for Governance Enforcements. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule_enforcement) for more details.
+We now have Terraform support for managing Governance Enforcements. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule_enforcement) for more details.
 :::
 
 ## Evaluations
@@ -257,3 +257,4 @@ The output can be sorted based on the keys present in the JSON output in either 
 
 #### Pick
 If output needs to be streamlined and only a few keys-value pairs are required, 'Pick' functionality can be used. Using this, users can pick only the required keys and see the data associated with them in the output.
+
