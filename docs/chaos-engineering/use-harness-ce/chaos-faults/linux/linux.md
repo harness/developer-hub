@@ -43,23 +43,6 @@ Linux API block injects API block fault into a Linux machine for a specific dura
 
 <FaultDetailsCard category="linux">
 
-### Linux API status code
-
-Linux API status code changes the API response status code and optionally API  response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
-
-<Accordion color="green">
-<summary>Use cases</summary>  
-
-- Tests the error handling capabilities of API and client applications. By changing the API response status code to different error codes, such as 400 (Bad Request) or 500 (Internal Server Error), you can evaluate how well your application handles and responds to various error scenarios.
-- Simulates situations where the API may be temporarily unavailable or rate-limited by returning temporary error codes like 503 (Service Unavailable) or 429 (Too Many Requests).
-- Used for content filtering, by selectively filtering or blocking certain responses. For example, you can change the status code to 404 (Not Found) for specific paths or patterns, indicating that the requested resource does not exist.
-
-  
-</Accordion>
-</FaultDetailsCard>
-
-<FaultDetailsCard category="linux">
-
 ### Linux API latency
 
 Linux API latency injects API request and response latency into a Linux machine by starting proxy server and redirecting the traffic through it. It induces API call latency that adds a time delay before sending a response.
@@ -87,6 +70,38 @@ Linux API modify body modifies the API request and response body by replacing an
 - Simulate error conditions and test the error handling capabilities of API by replacing specific patterns in the response body with error messages or custom error codes to test error handling and reporting mechanisms are in place.
 - Obscure or redact personally identifiable information (PII), such as email addresses or phone numbers, before logging or transmitting the data for security and privacy compliance.
 
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux API modify header
+
+Linux API modify header injects API fault into a Linux machine for a specific duration to override the header values of API requests and responses with the user-provided values for the given keys. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Simulate different authentication states or test the behavior of your application when using invalid or expired credentials.
+- Validates the caching behavior of your API or client applications. By overriding cache-related headers, such as the "Cache-Control" or "ETag" headers, you can simulate cache validation scenarios.
+- Tests content negotiation capabilities. By modifying the "Accept" header in the API request, you can simulate different content types or formats that the client application can accept.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux API status code
+
+Linux API status code changes the API response status code and optionally API  response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
+
+<Accordion color="green">
+<summary>Use cases</summary>  
+
+- Tests the error handling capabilities of API and client applications. By changing the API response status code to different error codes, such as 400 (Bad Request) or 500 (Internal Server Error), you can evaluate how well your application handles and responds to various error scenarios.
+- Simulates situations where the API may be temporarily unavailable or rate-limited by returning temporary error codes like 503 (Service Unavailable) or 429 (Too Many Requests).
+- Used for content filtering, by selectively filtering or blocking certain responses. For example, you can change the status code to 404 (Not Found) for specific paths or patterns, indicating that the requested resource does not exist.
+  
 </Accordion>
 </FaultDetailsCard>
 
@@ -120,23 +135,6 @@ Linux disk fill fills up the available disk space at a given system path for a s
 <summary>Use cases</summary>
 
 - Induces heavy disk usage scenario on the target Linux machines.
-- Simulates a lack of storage space for the underlying applications in the system.
-- Validates application failover and data resiliency in the scenario of low disk space.
-
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="linux">
-
-### Linux fs fill
-
-Linux fs fill fills up the available fs space at a given system path for a specific duration.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Induces heavy fs usage scenario on the target Linux machines.
 - Simulates a lack of storage space for the underlying applications in the system.
 - Validates application failover and data resiliency in the scenario of low disk space.
 
@@ -188,6 +186,23 @@ Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
 
 - Induces DNS spoof on the target Linux machines.
 - Resolves DNS target host names (or domains) to other IPs provided as user input.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux fs fill
+
+Linux fs fill fills up the available fs space at a given system path for a specific duration.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Induces heavy fs usage scenario on the target Linux machines.
+- Simulates a lack of storage space for the underlying applications in the system.
+- Validates application failover and data resiliency in the scenario of low disk space.
 
 </Accordion>
 

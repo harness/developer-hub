@@ -5,6 +5,7 @@ title: Windows EC2 Network Latency
 
 Windows EC2 network latency causes a network packet delay on Windows VM for the target EC2 instance(s) using [Clumsy](https://jagt.github.io/clumsy/).
 
+## Use cases
 - It degrades the network without marking the EC2 instance as unhealthy (or unworthy) of traffic, which is resolved using a middleware that switches traffic based on SLOs (performance parameters).
 - It may stall the EC2 instance or get corrupted waiting endlessly for a packet.
 - It limits the impact (blast radius) to the traffic that you wish to test, by specifying the IP addresses.

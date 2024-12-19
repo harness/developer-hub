@@ -27,6 +27,22 @@ Fault execution is triggered when the chaosengine resource is created. Chaosengi
 
 <FaultDetailsCard category="gcp">
 
+### GCP SQL Instance Failover
+
+GCP SQL Instance Failover disrupts the state of GCP SQL instance filtered using a name and project ID by triggering failover on the SQL instance.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Determines the resilience of the GKE infrastructure.
+- Determines how quickly an SQL Instance can recover when one of the replicas trigger a failover.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="gcp">
+
 ### GCP VM disk loss by label
 
 <!-- Need above heading in markdown ### for it to populate right navigation bar and generate links -->
@@ -130,18 +146,3 @@ It shuts down a service on GCP VM instances (identifiable by name) for a specifi
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="gcp">
-
-### GCP SQL Instance Failover
-
-GCP SQL Instance Failover disrupts the state of GCP SQL instance filtered using a name and project ID by triggering failover on the SQL instance.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Determines the resilience of the GKE infrastructure.
-- Determines how quickly an SQL Instance can recover when one of the replicas trigger a failover.
-
-</Accordion>
-
-</FaultDetailsCard>

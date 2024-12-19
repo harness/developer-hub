@@ -1015,3 +1015,41 @@ Windows EC2 memory hog:
 
 </Accordion>
 </FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### Windows EC2 Network Latency
+
+Windows EC2 network latency causes a network packet delay on Windows VM for the target EC2 instance(s) using [Clumsy](https://jagt.github.io/clumsy/).
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- It degrades the network without marking the EC2 instance as unhealthy (or unworthy) of traffic, which is resolved using a middleware that switches traffic based on SLOs (performance parameters).
+- It may stall the EC2 instance or get corrupted waiting endlessly for a packet.
+- It limits the impact (blast radius) to the traffic that you wish to test, by specifying the IP addresses.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### Windows EC2 Network Loss
+
+Windows EC2 network loss causes network packet loss on Windows VM for the target EC2 instance(s) using [Clumsy](https://jagt.github.io/clumsy/). It results in flaky access to the application. It checks the performance of the services running on the Windows VMs under the disrupted network loss conditions.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Simulates issues within the host network (or microservice) communication across services in different hosts.
+- Determines the impact of degradation while accessing a microservice.
+- Limits the impact (blast radius) to the traffic that you wish to test by specifying the host or IP addresses, if the VM stalls or gets corrupted while waiting endlessly for a packet.
+- Simulates a degraded network with varied percentages of dropped packets between microservices.
+- Simulates loss of access to specific third party (or dependent) services (or components).
+- Simulates network partitions (split-brain) between peer replicas for a stateful application.
+- It may stall the EC2 instance or get corrupted waiting endlessly for a packet.
+- It degrades the network without marking the EC2 instance as unhealthy (or unworthy) of traffic, which is resolved using a middleware that switches traffic based on SLOs (performance parameters).
+
+
+</Accordion>
+</FaultDetailsCard>
