@@ -64,9 +64,11 @@ You can bypass primary artifact validation for a service by selecting the **Disa
 
 This feature works for both single primary artifact and multiple primary artifact services.
 
-If the Disable Artifact Validation option is enabled, and the artifact or artifact tag is configured as runtime inputs, the pipeline will not prompt for the artifact or artifact tag during execution.
+- If the Disable Artifact Validation option is enabled, and the artifact or artifact tag is configured as runtime inputs, the pipeline will not prompt for the artifact or artifact tag during execution.
+- In the case of multiple primary artifacts, this checkbox applies to all primary artifacts associated with the service.
 
-Additionally, this logic applies when propagating services from previous stages. If you enable Disable Artifact Validation in one stage and propagate the service to a subsequent stage, artifact validation will also be skipped in the propagated stage.
+Additionally, this logic applies when propagating services from previous stages.
+- If you enable Disable Artifact Validation in one stage and propagate the service to a subsequent stage, the artifact validation will also be skipped in the propagated stage.
 
 Note: This setting applies only to the primary artifact and does not affect sidecar artifacts.
 
