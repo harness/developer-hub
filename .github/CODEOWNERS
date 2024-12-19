@@ -44,10 +44,10 @@ README.md @pratmit
 # Documentation ###
 
 # All Static files (images etc.)
-static/  @rohanmaharjan100 @dewan-ahmed
+static/  @rohanmaharjan100 @wei-harness
 
-# All Data files - Please add more reviewers who are familiar with js/ts
-data/ @dewan-ahmed
+# All Data files - Please add global reviewers who are familiar with js/ts
+# data/*.ts @global-data-file-owners
 
 # Continuous Delivery Docs
 /docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
