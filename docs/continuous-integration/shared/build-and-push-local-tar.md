@@ -55,6 +55,7 @@ The `PLUGIN_NO_PUSH: "true"` environment variable prevents the image from being 
 
 :::note
 
-The local tar output feature is available only when using Kaniko as the build tool, which is commonly used in Kubernetes environments.
+- The local tar output feature is available only when using Kaniko as the build tool, which is commonly used in Kubernetes environments.
 
-:::
+- While the above examples show a push to a Docker registry, you can easily repurpose it for other registries by updating the step type, connector, and other relevant fields.
+  :::
