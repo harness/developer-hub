@@ -41,7 +41,7 @@ import Infra2 from '/docs/self-managed-enterprise-edition/shared/dev-env-infra.m
 <Infra2 />
 
 ### Ingress
-* Istio supported version: 1-15-3
+* Istio supported version: 1.15.3 to 1.24.2
 * NGINX supported version: v1.3.0
 
 ### RBAC requirements
