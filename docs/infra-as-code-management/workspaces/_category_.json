@@ -1,6 +1,6 @@
 {
     "label":"Workspaces",
-    "position": 30,
+    "position": 50,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
