@@ -5,7 +5,7 @@ sidebar_label: SBOM Drift Detection
 sidebar_position: 34
 ---
 
-Harness SCS's SBOM Drift Detection feature is designed for detectin g changes in Software Bill of Materials (SBOM) over a period of time. It provides a detailed analysis of the addition or removal of components and licenses, facilitating better management and oversight of software artifacts.
+Harness SCS's SBOM Drift Detection feature is designed for detecting changes in Software Bill of Materials (SBOM) over a period of time. It provides a detailed analysis of the addition or removal of components and licenses, facilitating better management and oversight of software artifacts.
 
 ## Key Features of SBOM Drift
 
@@ -22,10 +22,13 @@ SBOM Drift for images can be generated in two ways:
 
 * Select the SBOM Drift option in the SBOM Orchestration step.
 
+!["SBOM Drift from Supply Chain Tab"](../static/SBOM-Drift-Step-Option.png)
+
+
 * Automatically compare the newly generated SBOM with a pre-existing baseline or the latest artifact tag
 
-<docimage path={require('../static/SBOM-Drift-Step-Option.png')} />
 
+!["SBOM Drift from Supply Chain Tab"](../static/SBOM-Drift-Tag.png)
 
 To set any artifact version as baseline, go to artifact view and click on three dots on the artifact version that you want to set as baseline for generating drift.
 
@@ -39,12 +42,13 @@ To set any artifact version as baseline, go to artifact view and click on three 
 
 Click on “Initiate Drift Analysis” in the three dots menu on the artifact version  
 
-<docimage path={require('../static/Initiate-Drift-Analysis.png')} />
+!["Initiate Drift Analysis"](../static/Initiate-Drift-Analysis.png)
 
 
 Select the 2nd tag of the same artifact and confirm to see the drift
 
-<docimage path={require('../static/SBOM-Drift-Select-Second-Tag.png')} />
+!["Initiate Drift Analysis"](../static/SBOM-Drift-Select-Second-Tag.png)
+
 
 
 ### For Repositories
@@ -70,12 +74,14 @@ You can view the generated SBOM Drift on the UI. There are two views
 
 **Component drift view:**
 
-<docimage path={require('../static/Drift-Component-View.png')} />
+!["Initiate Drift Analysis"](../static/Drift-Component-View.png)
+
+
 
 **License drift view:**
 
-<docimage path={require('../static/Drift-License-View.png')} />
- 
+!["Initiate Drift Analysis"](../static/Drift-License-View.png)
+
 
  
 
