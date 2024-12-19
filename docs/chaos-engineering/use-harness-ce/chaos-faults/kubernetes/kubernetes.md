@@ -480,6 +480,38 @@ Pod JVM trigger gc triggers the garbage collector for a Java process executing i
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM sql exception
+
+Pod JVM sql exception injects chaos into a Java application executing in a Kubernetes pod by invoking an SQL exception.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application
+- Simulates SQL exceptions to ensure if application can recover gracefully
+- Assess if the monitoring systems and alerting mechanisms can accurately detect and report SQL query exceptions in real-time.
+- Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod JVM sql latency
+
+Pod JVM sql latency injects chaos into a Java application executing in a Kubernetes pod by invoking latency in sql queries.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application
+- Simulate database latency to evaluate how the application handles slower SQL queries
+- Test the impact of SQL query latency on the end-user experience, ensuring the application behaves gracefully under slower response times.
+- Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod memory hog exec
 
 Pod memory hog exec is a Kubernetes pod-level chaos fault that consumes memory resources on the application container in megabytes.
