@@ -17,7 +17,7 @@ This tab is designed to streamline troubleshooting and improve visibility into w
 
 #### How It Works:
 - Status Tracking: Each Recommendation Rule's status is displayed in the Optimization tab.
-- Cloud Connector (Account ID): The specific cloud account associated with the rule.
+- Cloud Connector (Subscription ID): The specific cloud account associated with the rule.
 - Region: The region for which the rule is evaluated.
 
 #### Error Notifications:
@@ -26,24 +26,18 @@ The UI displays a detailed error message to assist in resolving the issue quickl
 
 #### Status Breakdown:
 
-1. **Failed Status :**
-
-This can be due to one of the following reasons:
+1. **Failed Status :** A failed status indicates one of the following scenarios:
 
 - Missing Permissions: The necessary permissions required for Harness to get or list resources are not provided.
 - Harness Internal Error: A system-level issue occurred during processing.
 
-2. **Ignored Status :**
-The recommendation process is skipped for the following reasons:
+2. **Ignored Status :** An ignored status indicates one of the following scenarios:
 
 - No Cost Data Available: Billing connector setup at Harness is missing cost data for the target cloud account.
-- Cost Threshold Not Met:
-- AWS and Azure: Cost is less than $300 for the combination of account(or subscription) x region.
-- GCP: Cost is less than $300 for the GCP project.
+- Cost Threshold Not Met: Cost is less than $300 for the combination of subscription x region.
 - Invalid Region: The regions found in cost data is not valid to run against Governance Rule.
 
-3. **Success Status :**
-A successful status indicates one of the following scenarios:
+3. **Success Status :** A successful status indicates one of the following scenarios:
 
 - Recommendation Generated: The system successfully evaluated the rule and created a recommendation.
 - No Resources in Evaluation: The rule was evaluated, but there were no resources found.
