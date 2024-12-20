@@ -37,7 +37,7 @@ Below is a list of the default locations cached using Cache Intelligence:
 | `F# .Net` | *.fsproj | .nuget/packages
 
 
-For other build tools or non-default cache locations, you use Cache Intelligence with [custom cache paths](#customize-cache-paths).
+For other build tools or non-default cache locations, use Cache Intelligence with [custom cache paths](#customize-cache-paths).
 
 
 
