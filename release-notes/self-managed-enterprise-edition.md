@@ -700,7 +700,7 @@ gsutil -m cp \
 
 ### Fixed issues
 
-### Cloud Cost Management
+#### Cloud Cost Management
 
 - Improved Timescale migration reliability by enhancing SQL script execution with a full script execution method. (CCM-20381)
 
