@@ -2,8 +2,7 @@
 title: Harness AI Code Assistant - VS Code
 description: Harness AI code assistant for enhanced coding productivity in VS Code.
 sidebar_position: 2
-redirect_from:
-  - /docs/platform/harness-aida/aida-overview/aida-code-gen
+
 ---
 
 Harness AI code assistant consists of a set of tools that enhance coding experience by providing features such as intelligent code generation, real-time code suggestions, automated test generation, contextual code explanations, and a chat assistant for coding queries.
