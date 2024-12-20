@@ -21,9 +21,25 @@ Cache intelligence for self-managed build infrastructure is an early access feat
 
 ## Supported tools and paths
 
-Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, **Node** and **MSBuild/dotnet (only for C#)** build tools, as long as default cache paths are used. 
+Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, **Node**,  **VB** (with .Net), **F#** (with .Net) and **MSBuild/dotnet** (only for C#) build tools, as long as default cache paths are used. 
 
-For other build tools or non-default cache locations, you use Cache Intelligence with [custom cache paths](#customize-cache-paths).
+Below is a list of the default locations cached using Cache Intelligence:
+
+| **Build Tool** | **Dependency Management file**  | **Default Path cached** 
+|----------------|---------------------------------|-------------------------|
+| `Maven` | pom.xml | .m2/repository
+| `Gradle` | build.gradle | .gradle
+| `Bazel` | WORKSPACE | .bazel
+| `Node` | yarn.lock | .yarn
+| `Go` | go.mod | .go
+| `C# .Net` | *.csproj | .nuget/packages
+| `VB .Net` | *.vbproj | .nuget/packages
+| `F# .Net` | *.fsproj | .nuget/packages
+
+
+For other build tools or non-default cache locations, use Cache Intelligence with [custom cache paths](#customize-cache-paths).
+
+
 
 ## Cache storage
 
