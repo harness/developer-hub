@@ -3296,6 +3296,29 @@ As per the current design, there's no native step for this but user can write a 
 
 The rollback option is only available for the deployment stage, So you can only be able to see in the deployment stage.
 
+#### How can I capture the output of a Terraform script in Harness?  
+You can use the Terraform Apply step in Harness to capture outputs from the Terraform script, such as a load balancer ARN.  
+
+#### Can I use Terraform outputs as inputs to AWS CLI commands in subsequent steps?  
+Yes, Terraform outputs, like a load balancer ARN, can be passed as inputs to AWS CLI commands in the next step using a Shell Script step.  
+
+#### How do I pass Terraform outputs to a Shell Script step in Harness?  
+Terraform outputs are captured in the Terraform Apply step and can be referenced in the Shell Script step as variables to pass them to AWS CLI commands.  
+
+#### What is an example use case for this setup?  
+One example is creating a load balancer using Terraform and passing its ARN, captured as a Terraform output, to an AWS CLI command in the next step for further operations.  
+
+#### How do I reference Terraform outputs in a Shell Script step?  
+You can reference Terraform outputs by using their variable names from the Terraform Apply step. These outputs will be available as Harness variables for subsequent steps.  
+
+#### Is it necessary to use Harness to execute AWS CLI commands with Terraform outputs?  
+Using Harness is convenient because it allows you to automate the process of capturing Terraform outputs and passing them to AWS CLI commands seamlessly within a pipeline.  
+
+#### What happens if the Terraform Apply step fails to generate the expected output?  
+If the Terraform Apply step fails, ensure your Terraform script is configured correctly and that the desired output is being exported. Harness will only capture what is explicitly output in the script.  
+
+#### Can this setup be used for resources other than a load balancer?  
+Yes, you can use this approach for any Terraform-managed resource. Simply capture the relevant outputs in Terraform and pass them to AWS CLI commands or other steps as needed.
 
 ### Infrastructure provisioning FAQs
 
