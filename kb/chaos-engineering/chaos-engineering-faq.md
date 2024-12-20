@@ -152,7 +152,7 @@ The agents are:
 
 #### What are the prerequisites to setup/onboard Harness Chaos Engineering?
 
-Go to [prerequisites](/docs/chaos-engineering/getting-started/saas/) to fulfill the requirements before onboarding. Once all the prerequisites are fulfilled, you can explore[sandbox](/docs/chaos-engineering/training/sandbox) or execute [your first chaos experiment](/docs/chaos-engineering/getting-started/saas/first-experiment).
+Go to [prerequisites](/docs/chaos-engineering/getting-started/saas/) to fulfill the requirements before onboarding. Once all the prerequisites are fulfilled, you can explore[sandbox](/docs/chaos-engineering/training/sandbox) or execute [your first chaos experiment](/docs/chaos-engineering/getting-started/saas/).
 **OR**
 If you want a head start to your journey with HCE, you can onboard HCE in two ways:
 - [Automated onboarding](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding); and
@@ -163,8 +163,7 @@ Yes, all chaos operations can be managed using APIs. For more information, go to
 
 #### Are there any tutorials to get started with Chaos?
 Yes, you can start executing chaos engineering experiments in the following ways:
-- [Run chaos experiments](/docs/chaos-engineering/getting-started/saas/first-experiment)
-- [Run chaos experiments from blank canvas](/docs/chaos-engineering/getting-started/saas/chaos-experiment-from-blank-canvas)
+- [Run chaos experiments](/docs/chaos-engineering/getting-started/saas/)
 - [Execute experiments using API](/docs/chaos-engineering/getting-started/saas/experiment-using-api)
 
 #### Do you provide a Sandbox environment for us to play with the tool?
