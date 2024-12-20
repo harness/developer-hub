@@ -139,6 +139,30 @@ If the test pipeline fails, you can utilize the rollback feature to revert the d
 
 No, currently there is no way to fully integrate a triggered test pipeline within the original deployment pipeline. The test pipeline will always operate as a separate entity.
 
+### Can I fetch the name of the input set used during pipeline runtime?
+No, currently, there is no built-in functionality in Harness to retrieve the name of the input set used during the runtime of a pipeline.  
+
+### How can I identify which input set was used when triggering a pipeline? 
+At present, Harness does not provide a way to identify the name of the input set being used in the pipeline during its runtime. You may need to track this information externally or rely on other mechanisms outside the pipeline to document which input set was used.
+
+### How can I improve the visibility of pipeline failures in the dashboard?
+Currently, the dashboard only displays generic exit codes like `exit 1` or `exit 2`.
+
+### Is there a way to customize error messages for specific exit codes in a pipeline?
+Currently, there is no built-in support to directly customize error messages for different exit codes. However, you can enhance your pipeline by implementing custom scripts or steps that generate detailed messages for each exit code.
+
+### Does the behaviour of error handling differ between step types in the pipeline?
+Yes, the behaviour can vary depending on the type of step. For instance, Shell Script steps and Deploy steps may handle errors differently, requiring tailored solutions for each type.
+
+### Are there tools within the pipeline to differentiate exit codes and log appropriate messages?
+This functionality is not natively supported at the moment. Enhancing this requires creating custom solutions, such as appending detailed error logs based on exit codes in the pipeline scripts or configurations.
+
+### What steps can be taken to implement better error visibility for different pipeline steps?
+You can define custom handling for each type of step in your pipeline. For instance:
+- Add error message mapping for exit codes in Shell Script steps.
+- Include custom logging logic in the Deploy steps.
+This approach ensures more detailed information is displayed in your dashboard for various pipeline failures.
+
 ## API
 
 ### Can I run pipelines through the API or CLI?
