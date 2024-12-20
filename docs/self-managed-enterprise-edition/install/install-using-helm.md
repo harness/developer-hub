@@ -273,8 +273,6 @@ enabled: true
 Harness Self-Managed Enterprise Edition needs a license to be provisioned for the Harness NextGen platform. Contact [Harness Support](mailto:support@harness.io) to procure the license and add it to the `override.yaml` file.
 ```
   license:
-    # -- Insert CG License String to enable CG license
-    cg: ''
     # -- Insert NG License String to enable NG license
     ng: ''
 ```
