@@ -89,6 +89,11 @@ permissions:
         <td> If not provided, no host names or domains are spoofed. </td>
       </tr>
       <tr>
+        <td> TRANSACTION_PERCENTAGE </td>
+        <td> Percentage of the dns queries to be affected. </td>
+        <td> It supports values in range (0,100]. It targets all requests if not provided. For more information, go to <a href="#trasaction-percentage">transaction percentage </a>.</td>
+      </tr>
+      <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
         <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage"> pod affected percentage </a></td>
@@ -152,6 +157,40 @@ spec:
               value: '{"abc.com":"spoofabc.com"}'
             - name: TOTAL_CHAOS_DURATION
               value: "60"
+```
+
+### Transaction Percentage
+
+The percentage of dns queries to be affected, with supported values in the range (0, 100]. If not specified, it targets all queries. Tune it by using the `TRANSACTION_PERCENTAGE` environment variable.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/pod-dns-spoof/transaction-percentage.yaml yaml)
+```yaml
+# contains transaction percentage for the dns spoofing
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-dns-spoof
+    spec:
+      components:
+        env:
+        # provide the transaction percentage within (0,100] range
+        # for example, it will affect 50% of the total dns queries
+        - name: TRANSACTION_PERCENTAGE
+          value: '50'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
 ```
 
 ### Container runtime and socket path
