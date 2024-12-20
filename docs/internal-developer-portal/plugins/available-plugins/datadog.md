@@ -50,24 +50,6 @@ This plugin exports the `EntityDatadogGraphCard` that you can show on the **Over
 
 To configure the plugin for a service in the software catalog, you need to add specific annotations to its `catalog-info.yaml` definition file. Below are the steps to configure these annotations.
 
-### Setting the Datadog Domain
-
-By default, the Datadog embedded graph uses `datadoghq.eu` as its top-level domain unless specified otherwise. If you are using a different domain, you must specify it using the `datadoghq.com/site annotation`.
-
-Add the following annotation and corresponding values from Datadog to your component’s metadata file:
-
-```YAML
-## Example catalog-info.yaml
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: sample-service
-  description: |
-    A sample service
-  annotations:
-    datadoghq.com/site: datadoghq.com
-...
-```
 ### Embedding a Datadog Dashboard in Backstage
 
 #### Steps to Get the Dashboard URL
@@ -89,6 +71,7 @@ metadata:
 Add the annotations and the values from Datadog to your component’s metadata file.
 
 ```YAML
+## Example catalog-info.yaml
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
@@ -96,9 +79,22 @@ metadata:
   description: |
     A sample service
   annotations:
+    datadoghq.com/site: datadoghq.com ## non-default top level domain
     datadoghq.com/dashboard-url: <<DATADOGURL>>
+...
 ```
 
+:::info
+### Setting the Datadog Domain
+
+By default, the Datadog embedded graph uses `datadoghq.eu` as its top-level domain unless specified otherwise. If you are using a different domain, you must specify it using the `datadoghq.com/site annotation`.
+
+```YAML
+...
+datadoghq.com/site: datadoghq.com
+...
+```
+:::
 
 ## Support
 
