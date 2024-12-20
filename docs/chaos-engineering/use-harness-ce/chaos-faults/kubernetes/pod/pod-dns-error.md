@@ -100,6 +100,11 @@ permissions:
         <td> If this is not provided, it is set to <code>exact</code>. For more information, go to <a href="#match-scheme">match scheme</a></td>
       </tr>
       <tr>
+        <td> TRANSACTION_PERCENTAGE </td>
+        <td> Percentage of the dns queries to be affected. </td>
+        <td> It supports values in range (0,100]. It targets all requests if not provided. For more information, go to <a href="#trasaction-percentage">transaction percentage </a>.</td>
+      </tr>
+      <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
         <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a> </td>
@@ -222,6 +227,40 @@ spec:
         ## it supports 'exact' and 'substring' values
         - name: MATCH_SCHEME
           value: 'exact'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
+```
+
+### Transaction Percentage
+
+The percentage of dns queries to be affected, with supported values in the range (0, 100]. If not specified, it targets all queries. Tune it by using the `TRANSACTION_PERCENTAGE` environment variable.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/pod-dns-error/transaction-percentage.yaml yaml)
+```yaml
+# contains transaction percentage for the dns error
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-dns-error
+    spec:
+      components:
+        env:
+        # provide the transaction percentage within (0,100] range
+        # for example, it will affect 50% of the total dns queries
+        - name: TRANSACTION_PERCENTAGE
+          value: '50'
         - name: TOTAL_CHAOS_DURATION
           value: '60'
 ```
