@@ -1,6 +1,7 @@
 ---
 title: VS Code Browser
 sidebar_position: 1
+description: Connect to your Gitspaces within VS Code Browser.
 sidebar_label: VS Code Browser
 ---
 
