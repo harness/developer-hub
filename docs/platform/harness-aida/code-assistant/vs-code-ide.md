@@ -1,17 +1,16 @@
 ---
-title: Harness AI Code Assistant
-description: Harness AI code assistant for enhanced coding productivity.
-sidebar_position: 52
+title: Harness AI Code Assistant - VS Code
+description: Harness AI code assistant for enhanced coding productivity in VS Code.
+sidebar_position: 2
 redirect_from:
   - /docs/platform/harness-aida/aida-overview/aida-code-gen
 ---
 
 Harness AI code assistant consists of a set of tools that enhance coding experience by providing features such as intelligent code generation, real-time code suggestions, automated test generation, contextual code explanations, and a chat assistant for coding queries.
 
-Harness AI code assistant is designed to seamlessly integrate with your development workflow and it is available as an extension for popular Integrated Development Environments (IDEs). It exploits th power of Large Language Models to understand the context and generate relevant code/comment
-tailored to your specific needs.
+Harness AI code assistant is designed to seamlessly integrate with your development workflow and it is available as an extension for popular Integrated Development Environments (IDEs). It exploits th power of Large Language Models to understand the context and generate relevant code,comments, tests, and documentation tailored to your specific needs.
 
-For instructions on how to install and configure the Harness AI Code Assistant extension see the installation section below.
+For instructions on how to install and configure the Harness AI Code Assistant extension for VS Code see the installation section below.
 
 ## Installation and Setup
 Harness AI code assistant is currently available as an extension for Visual Studio Code. It can be installed directly from the Visual Studio Code Marketplace.
@@ -41,7 +40,7 @@ Code generation works by showing real-time inline code suggestions. The suggesti
 Once a suggestion is shown to the user, they can accept it fully or word by word, allowing for customization before finalizing the code.
 ![An example of AIDA code autocompletion](./static/code_gen.gif)
 
-### Comment Geeration
+### Comment Generation
 Harness AI code assistant can be used to generate inline comments that explain the purpose and functionality of the user code, making it more understandable for future reference and for other developers who may work on the code. The user can invoke the comment generation feature by selecting the relevant code block and choosing the generate comments option from the right-click menu.
 ![An example of AIDA comment generation](./static/comment_gen.gif)
 

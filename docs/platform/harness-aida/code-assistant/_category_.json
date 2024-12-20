@@ -1,0 +1,14 @@
+{
+    "label": "Harness AI Code Assistant",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "52",
+    "link": {
+        "type": "generated-index",
+        "title": "Harness AI Code Assistant"
+    },
+    "customProps": {
+        
+    }
+}
