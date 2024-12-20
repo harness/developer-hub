@@ -15,4 +15,5 @@ For instructions on how to install and configure the Harness AI Code Assistant e
 
 ## Installation and Setup
 Harness AI code assistant is currently available as an extension for JetBrains IDEs. It can be installed directly from the [JetBrains Marketplace.] (https://plugins.jetbrains.com/)
-![An example of AIDA code autocompletion](./static/install-jetbrains.png)
+
+<!-- ![An example of AIDA code autocompletion](./static/install-jetbrains.png) -->
