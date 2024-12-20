@@ -90,6 +90,11 @@ permissions:
         <td> Defaults to 2000. For more information, go to <a href="#network-latency">network latency</a>.</td>
       </tr>
       <tr>
+        <td> CORRELATION </td>
+        <td> Degree of dependency between consecutive packets </td>
+        <td> It should be in range of (0,100]. For more information, go to <a href="#correlation">correlation</a>.</td>
+      </tr>
+      <tr>
         <td> JITTER </td>
         <td> Network jitter (in milliseconds). Provide numeric values. </td>
         <td> Defaults to 0. For more information, go to <a href="#jitter">jitter</a>.</td>
@@ -197,6 +202,37 @@ spec:
               value: "2000" #in ms
             - name: TOTAL_CHAOS_DURATION
               value: "60"
+```
+
+### Correlation
+
+Degree of dependency between consecutive packets. Tune it by using the `CORRELATION` environment variable.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/pod-network-latency/correlation.yaml yaml)
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-network-latency
+    spec:
+      components:
+        env:
+        - name: CORRELATION
+          value: '100' #in percentage
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
 ```
 
 ### Destination IPs and destination hosts
