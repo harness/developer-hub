@@ -54,6 +54,13 @@ static/  @rohanmaharjan100 @wei-harness
 /release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
 /src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av
 /src/components/Docs/data/continuousDeliveryData*  @krishi0408 @SushrutHarness @vishal-av
+# FirstGen CD Docs
+/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av
+# CD FAQs
+/docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness @vishal-av
+# GitEx FAQs
+/docs/faqs/git-exp-vs-config-as-code/ @krishi0408 @SushrutHarness @vishal-av
+
 
 # Continuous Integration Docs
 /docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed @SushrutHarness
@@ -73,12 +80,18 @@ static/  @rohanmaharjan100 @wei-harness
 /release-notes/security-testing-orchestration.md @tejakummarikuntla @priteshchandaliya
 /src/components/Roadmap/data/stoData.ts @tejakummarikuntla @priteshchandaliya
 /src/components/Docs/data/securityTestingOrchestrationData.ts @tejakummarikuntla @priteshchandaliya
+# STO FAQs
+/docs/faqs/security-testing-orchestration/ @tejakummarikuntla
 
 # CCM Docs
 /docs/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss @nikunj-badjatya @raviyadalam @iamanmolm @sdsingh07 @sandyydk @abhinavsingh-ccm
 /release-notes/cloud-cost-management.md @raviyadalam
 /src/components/Roadmap/data/ccmData.ts @navaneeth @Rohit-Kaliki @joeyouss
 /src/components/Docs/data/cloudCostManagementData.ts @navaneeth @Rohit-Kaliki @joeyouss
+# FirstGen CCM Docs
+/docs/category/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss
+# CCM FAQs
+/docs/faqs/cloud-cost-management-faqs/ @navaneeth @Rohit-Kaliki @joeyouss
 
 # CET Docs
 /docs/continuous-error-tracking/ @M-Tsur
@@ -96,6 +109,8 @@ static/  @rohanmaharjan100 @wei-harness
 /release-notes/chaos-engineering.md @neelanjan00 @SmritiSatya @Jonsy13
 /src/components/Roadmap/data/ceData.ts @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
 /src/components/Docs/data/chaosEngineeringData* @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
+# Chaos FAQs
+/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya @ksatchit
 
 # Platform Docs
 /docs/platform/ @pratmit @krishi0408 @GokulBansal0 @abhishekharness
@@ -104,6 +119,15 @@ static/  @rohanmaharjan100 @wei-harness
 /release-notes/self-managed-enterprise-edition.md @pratmit @abhishekharness
 /src/components/Roadmap/data/platformData.ts @pratmit @abhishekharness
 /src/components/Docs/data/platformData.ts @pratmit @abhishekharness
+# FirtGen Platform Docs
+/docs/category/platform-firstgen/ @pratmit @abhishekharness
+# FirstGen SMP Docs
+/docs/category/self-managed-enterprise-edition-fg/ @pratmit @abhishekharness
+/docs/self-managed-enterprise-edition/ @pratmit @abhishekharness
+# Delegate FAQs
+/docs/faqs/harness-delegate-faqs/ @pratmit @abhishekharness
+# SMP FAQs
+/docs/faqs/self-managed-ee-faq/ @pratmit @abhishekharness
 
 # Pipeline Docs
 /docs/platform/pipelines/ @krishi0408 @vishal-av @SudarshanPurohit
@@ -136,6 +160,8 @@ static/  @rohanmaharjan100 @wei-harness
 /release-notes/feature-flags.md @HarnessTheChaos @jenniferopal
 /src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
 /src/components/Docs/data/featureFlagsData.ts @HarnessTheChaos @jenniferopal
+# FF FAQs
+/docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos @jenniferopal
 
 # SEI Docs
 /docs/software-engineering-insights/ @codewdhruv @batraprashant
@@ -147,6 +173,8 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
 /release-notes/database-devops.md @stephenatwell @jenniferopal @HarnessTheChaos @archit-harness @anshul-harness
 /src/components/Docs/data/databaseDevOpsData.ts @stephenatwell @jenniferopal @HarnessTheChaos @archit-harness @anshul-harness
+# DB DevOps FAQs
+/docs/faqs/db-devops-faqs/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
 
 # CDE Docs
 /docs/cloud-development-environments/ @manishas @khushisharmaharness
@@ -168,50 +196,6 @@ static/  @rohanmaharjan100 @wei-harness
 
 # Cloud Operations Docs
 /docs/harness-cloud-operations/ @ankit-harness @yogi-harness
-
-# FirstGen Docs ###
-
-# CD Docs
-/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av
-
-# Platform Docs
-/docs/category/platform-firstgen/ @pratmit
-
-# SMP Docs
-/docs/category/self-managed-enterprise-edition-fg/ @pratmit
-/docs/self-managed-enterprise-edition/ @pratmit
-
-# CCM Docs
-/docs/category/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss
-
-# FAQ Docs ###
-
-# CD FAQs
-/docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness @vishal-av
-
-# FF FAQs
-/docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos @jenniferopal
-
-# CCM FAQs
-/docs/faqs/cloud-cost-management-faqs/ @navaneeth @Rohit-Kaliki @joeyouss
-
-# STO FAQs
-/docs/faqs/security-testing-orchestration/ @tejakummarikuntla
-
-# Chaos FAQs
-/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya @ksatchit
-
-# Delegate FAQs
-/docs/faqs/harness-delegate-faqs/ @pratmit
-
-# GitEx FAQs
-/docs/faqs/git-exp-vs-config-as-code/ @krishi0408 @SushrutHarness @vishal-av
-
-# SMP FAQs
-/docs/faqs/self-managed-ee-faq/ @pratmit
-
-# DB DevOps FAQs
-/docs/faqs/db-devops-faqs/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
 
 # Knowledge Base ###
 
