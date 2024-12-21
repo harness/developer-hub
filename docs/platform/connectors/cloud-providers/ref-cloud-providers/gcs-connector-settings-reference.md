@@ -122,7 +122,11 @@ Additionally, the OIDC connectivity mode is not compatible with Google Cloud Fun
 
 :::
 
-Select the **Connect through Harness Platform for OIDC** option to allow Harness to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials.
+:::warning
+
+If you are using OIDC for your connection, you will not be able to connect to GCP through the Harness Platform. Please connect through a Harness Delegate.
+
+:::
 
 Select the **Connect through Harness Delegate for OIDC** option to allow Harness Delegate to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials. This option requires Harness Delegate version 24.03.82603 or later.
 
@@ -191,6 +195,12 @@ Select how you want Harness to communicate with GCP. The available options depen
 #### Connect through Harness Platform
 
 With this option, Harness communicates with GCP through a direct, secure communication between Harness and GCP. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
+
+:::warning
+
+If you are using OIDC for your connection, you will not be able to connect to GCP through the Harness Platform. Please connect through a Harness Delegate.
+
+:::
 
 #### Connect through a Harness Delegate
 
