@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Head from '@docusaurus/Head';
 import './CoveoSearch.scss';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
 const CoveoSearch = () => {
   const searchBoxEl = useRef(null);
@@ -69,6 +70,7 @@ const CoveoSearch = () => {
           tokenData.orgId,
           tokenData.token
         );
+        // Coveo.SearchEndpoint.endpoints.default.caller.options.queryStringArguments.debug = 1;
         let searchboxRoot = searchBoxEl.current;
         let searchRoot = document.createElement('div');
         searchRoot.setAttribute('class', 'coveo-search-results');
@@ -160,24 +162,40 @@ const CoveoSearch = () => {
   }, [isCoveoLoaded, pathname]);
 
   return (
-    <div>
-      <Head>
-        <link
-          rel="stylesheet"
-          href="https://static.cloud.coveo.com/searchui/v2.10094/css/CoveoFullSearch.min.css"
-        />
-        <script
-          className="coveo-script"
-          src="https://static.cloud.coveo.com/searchui/v2.10094/js/CoveoJsSearch.min.js"
-        ></script>
+    <BrowserOnly fallback={<div>Loading...</div>}>
+      {() => {
+        const CoveoErrorReport = document.querySelector('.CoveoErrorReport');
 
-        {isCoveoLoaded && (
-          <script src="https://cms.harness.io/js/coveo_template.min.js"></script>
-        )}
-      </Head>
-      <div id="searchBoxCoveo" ref={searchBoxEl}></div>
-      <div id="searchResultsCoveo" ref={searchResultsEl}></div>
-    </div>
+        if (CoveoErrorReport) {
+          console.log(Boolean(CoveoErrorReport.ariaHidden));
+
+          if (CoveoErrorReport.ariaHidden) {
+            localStorage.removeItem('coveo_token');
+            initializeCoveo().then(() => setIsCoveoLoaded(true));
+          }
+        }
+        return (
+          <div>
+            <Head>
+              <link
+                rel="stylesheet"
+                href="https://static.cloud.coveo.com/searchui/v2.10094/css/CoveoFullSearch.min.css"
+              />
+              <script
+                className="coveo-script"
+                src="https://static.cloud.coveo.com/searchui/v2.10094/js/CoveoJsSearch.min.js"
+              ></script>
+
+              {isCoveoLoaded && (
+                <script src="https://cms.harness.io/js/coveo_template.min.js"></script>
+              )}
+            </Head>
+            <div id="searchBoxCoveo" ref={searchBoxEl}></div>
+            <div id="searchResultsCoveo" ref={searchResultsEl}></div>
+          </div>
+        );
+      }}
+    </BrowserOnly>
   );
 };
 

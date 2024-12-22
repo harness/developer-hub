@@ -1,6 +1,7 @@
 {
     "label": "Develop in a Gitspace",
-    "position": 5,
+    "position": 6,
+    "description":"Learn more about how you can develop in your Gitspaces.",
     "link": {
       "type": "generated-index"
     }

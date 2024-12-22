@@ -20,6 +20,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## December 2024
 
+### Version 1.36.1
+
+#### New features and enhancements
+
+- "Hibernate" Option in AutoStopping Flow: We have introduced the "Hibernate" option for Azure VMs and EC2 instances in the AutoStopping flow, enabling enhanced control over resource state management. [CCM-19907]
+- Azure Inventory Metric Data Update: Inventory metric data is now fetched for all Azure VMs that are not in a deleted state, extending beyond just running VMs. [CCM-19960]
+- Budget Amount History in Drilldown Chart: The budget drilldown chart now accurately preserves the history of budget amount changes, improving visibility into budget adjustments. [CCM-19494]
+
+#### Fixed Issues
+
+- Evaluation List Resource Count Checkbox Persistence: The Resource Count checkbox on the Evaluation List page now retains its previous value correctly after a page refresh in Asset Governance. [CCM-20264]
+- GCP Missing Current Daily Costs: We have handled the new `invoice.publisher_type` column in the GCP Billing export to ensure costs now appear correctly in Perspectives. [CCM-20214]
+
 ### Version 1.35.6
 
 #### New features and enhancements

@@ -34,6 +34,10 @@ This way, you will have better control, and security when working with private i
 
 Depending on whether you use DDCR (Delegate Driven Chaos Runner) or dedicated chaos infrastructure, image registry settings is configured from **account**/**organization**/**project**/**infrastructure** settings or from the UI, respectively.
 
+:::info note
+This feature is behind the feature flag `CHAOS_IMAGEREGISTRY_DEV`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 <Tabs>
 <TabItem value = "Harness Delegate / DDCR">
 

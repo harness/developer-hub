@@ -15,11 +15,11 @@ Harness CDE is now available in public beta. To enable it on your account, conta
 
 This guide explains the lifecycle of Gitspaces, detailing the different states a Gitspace can exist in and the actions associated with each state.
 
-<img width="650" src="https://github.com/user-attachments/assets/e6a6f759-7165-4d09-9dc9-21cb6d5d3049"/>
+<img width="800" src="https://github.com/user-attachments/assets/e6a6f759-7165-4d09-9dc9-21cb6d5d3049"/>
 
 Watch this video to understand the lifecycle of Gitspaces in action:
 
-[![Lifecycle of Gitspaces](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FNKyFKUBJdzY%3Fsi%3DhLjUc034BBtyxXZa)](https://youtu.be/NKyFKUBJdzY?si=hLjUc034BBtyxXZa)
+<iframe width="500" height="275" src="https://www.youtube.com/embed/NKyFKUBJdzY?si=amWv4T-FTmYJp5uD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## States of a Gitspace
 A Gitspace can be in one of the following three states:
@@ -32,7 +32,7 @@ The CDE control plane manages the Gitspace lifecycle. Your Gitspace will stay ac
 ## Actions of a Gitspace
 
 ### Creating a Gitspace
-Gitspaces can be created directly from the Harness UI. [Learn more about how you can create a Gitspace here](/docs/cloud-development-environments/introduction/getting-started-with-cde.md). 
+Gitspaces can be created directly from the Harness UI. [Learn more about how you can create a Gitspace here](/docs/cloud-development-environments/introduction/quickstart-guide.md). 
 
 When a user creates a Gitspace, a message is sent to the CDE control plane with all the required details to start the Gitspace. The CDE control plane resolves all the Gitspace details and provisions the VM as per the resource requirements. 
 

@@ -123,6 +123,10 @@ kind: KubernetesChaosExperiment
 metadata:
   name: pod-jvm-method-latency
   namespace: hce
+spec:
+  tasks:
+     - definition:
+        chaos:
           env:
             - name: TOTAL_CHAOS_DURATION
               value: "60"

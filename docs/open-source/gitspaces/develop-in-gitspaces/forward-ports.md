@@ -1,10 +1,9 @@
 ---
 title: Port Forwarding in Gitspaces
-sidebar_position: 3
-sidebar_label: Port Forward
+sidebar_position: 2
+description: Get started with forwarding ports within your Gitspaces.
+sidebar_label: Port Forwarding
 ---
-
-## Explain about the port forwarding principles we are using
 
 You can forward ports in your Gitspaces to test and debug your application. 
 

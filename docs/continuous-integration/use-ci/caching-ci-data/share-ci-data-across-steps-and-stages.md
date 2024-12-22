@@ -59,3 +59,4 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [How can I check if the cache was restored?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-check-if-the-cache-was-restored)
 * [How do I enable Cache Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-enable-cache-intelligence)
 * [What is the Cache Intelligence cache storage limit?](/kb/continuous-integration/continuous-integration-faqs/#what-is-the-cache-intelligence-cache-storage-limit)
+* [How can I share cache between different OS types (Linux/macOS)?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-share-cache-between-different-os-types-linuxmacos)

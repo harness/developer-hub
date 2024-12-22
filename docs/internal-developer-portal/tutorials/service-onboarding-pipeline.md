@@ -209,7 +209,7 @@ Variables such as project name and GitHub repository are runtime inputs. They ar
 
 ### Create a software template definition in IDP
 
-Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your skeleton hello world code. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.  
+Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. Create a `workflow.yaml` file anywhere in your Git repository. Usually, that would be the same place as your skeleton hello world code. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.  
 
 <Tabs>
 <TabItem value="GitHub">
@@ -222,7 +222,7 @@ kind: Template
 metadata:
   name: react-app
   title: Create a react app
-  description: A template to create a new react app
+  description: A workflow to create a new react app
   tags:
     - nextjs
     - react
@@ -583,13 +583,13 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
         apikey: ${{ parameters.token }}
 ```
 
-### Register the template
+### Register the Workflow
 
-Use the URL to the `template.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
 
-Now navigate to the **Create** page in IDP. You will see the newly created template appear. Try it out!
+Now navigate to the **Create** page in IDP. You will see the newly created Workflow appear. Try it out!
 
-### Unregister/Delete Template
+### Unregister/Delete Workflow
 
 1. Navigate to the **Catalog** page, and select **Template** under Kind.
 

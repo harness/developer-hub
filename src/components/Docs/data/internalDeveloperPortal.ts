@@ -17,13 +17,13 @@ export const docsCards: CardSections = [
         title: "Overview",
         module: MODULES.idp,
         description:
-          "Learn how Harness's developer-centric portal helps platform engineering and development teams improve productivity.",
+          "Get started with Harness IDP",
         link: "/docs/internal-developer-portal/get-started/overview",
       },
       {
         title: "Get started with IDP",
         module: MODULES.idp,
-        description: "Set up your software catalog and software templates.",
+        description: "Set up your software catalog and automation Workflows.",
         link: "/docs/category/get-started-with-idp",
       },
     ],
@@ -39,7 +39,7 @@ export const docsCards: CardSections = [
         link: "/docs/internal-developer-portal/catalog/software-catalog",
       },
       {
-        title: "Service onboarding pipelines",
+        title: "Self Service Workflows",
         module: MODULES.idp,
         description: "Learn how to automate service creation.",
         link: "/docs/internal-developer-portal/flows/service-onboarding-pipelines",

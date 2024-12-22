@@ -52,7 +52,7 @@ export const IacmData: Horizon = {
       {
         tag: [{ value: "Developer Experience" }],
         title: "Module Registry",
-        description: "Private module Registry to test and publish approved modules",
+        description: "Private Module Registry to test and publish approved modules",
       },
       {
         tag: [{ value: "Simplify Onboarding" }],
@@ -134,6 +134,11 @@ export const IacmData: Horizon = {
         tag: [],
         title: "Terragrunt support",
         description: "Supporting Terragrunt as an IaC provider",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Provider Registry",
+        description: "Centralized provider repository where users can discover, download, and use providers that enable Terraform to interact with APIs and services",
       },
     ],
   },
