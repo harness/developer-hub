@@ -53,6 +53,24 @@ export const docsCards: CardSections = [
     ],
   },
   {
+    name: "Manage Access Control",
+    description: "",
+    list: [
+      {
+        title: "Role-based access control (RBAC)",
+        module: MODULES.idp,
+        description: "Learn how to use RBAC to manage resource access and actions for users in IDP.",
+        link: "/docs/internal-developer-portal/rbac/resources-roles",
+      },
+      {
+        title: "Audit Trail",
+        module: MODULES.idp,
+        description: "Learn how Audit Trail lets you track changes in IDP.",
+        link: "/docs/internal-developer-portal/governance/audit-trails",
+      },
+    ],
+  },
+  {
     name: "Customize Your IDP",
     description: "",
     list: [
