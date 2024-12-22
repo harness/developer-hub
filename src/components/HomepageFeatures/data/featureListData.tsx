@@ -60,7 +60,6 @@ export const featureList: CardItem[] = [
     icon: "img/icon_fme.svg",
     description: <>Switch on data-driven features and releases.</>,
     link: "docs/feature-management-experimentation",
-    type: [docType.Documentation],
   },
   {
     title: "Optimize Cloud Costs",
