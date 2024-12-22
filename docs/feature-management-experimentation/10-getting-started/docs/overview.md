@@ -45,3 +45,11 @@ Use [Propels](/docs/category/propels-and-tables) to add human-in-the-loop automa
 * [Supported platforms and technologies](/docs/platform/platform-whats-supported.md)
 * [Propelo and Harness](/docs/software-engineering-insights/get-started/propelo-and-harness)
 * [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-troubleshooting-faqs)
+
+## Architecture
+
+Diagram showing FME objects and object relationships.
+
+import FMEArchitectureObjectsImage from './FMEArchitectureObjectsImage.js';
+
+<FMEArchitectureObjectsImage />
