@@ -11,7 +11,7 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/27337626547341-Does-my-SDK-version-support-SemVer <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-# Question
+## Question
 
 I noticed an info banner when adding a Split feature flag targeting rule that uses the **SemVer** (Semantic Version) matcher. How can I confirm that the Split SDK version that I am using in my code base will support the [SemVer matcher](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes#semver-attributes)?
 
@@ -19,7 +19,7 @@ I noticed an info banner when adding a Split feature flag targeting rule that us
   <img src="https://help.split.io/hc/article_attachments/27337626543501" alt="does_my_sdk_support_semver_menu.png" />
 </p>
 
-# Answer
+## Answer
 
 Please refer to the following table to check that your Split SDK version or optional infrastructure version supports SemVer.
 
