@@ -53,7 +53,7 @@ export const docsCards: CardSections = [
     ],
   },
   {
-    name: "Manage Access Control",
+    name: "Access Control and Governance",
     description: "",
     list: [
       {
