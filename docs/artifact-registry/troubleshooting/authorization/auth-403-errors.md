@@ -1,7 +1,7 @@
 ---
 title: 403 Errors in Pipeline Execution
 description: Troubleshooting common 403 errors during pipeline execution in Harness Artifact Registry.
-sidebar_position: 10
+sidebar_position: 20
 ---
 
 This document helps you troubleshoot 403 errors encountered during pipeline execution.
@@ -13,4 +13,4 @@ This document helps you troubleshoot 403 errors encountered during pipeline exec
 Check if any recent changes to account-level flags or permissions may have impacted the pipeline.
 :::
 
-Go to [permission reference](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference/) to find the specific permissions you need.
+Go to the [permission reference](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference/) to review the specific permissions required for your pipeline execution.

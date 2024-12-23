@@ -1,5 +1,5 @@
 ---
-title: Authentication Issues Pulling Images
+title: Issues Pulling Images
 description: Fixing 401 Unauthorized errors when pulling images from Harness Artifact Registry.
 sidebar_position: 10
 ---
@@ -30,25 +30,25 @@ To authenticate your Kubernetes cluster, follow these steps:
    ```
 
 2.	**Update your Kubernetes deployment manifest to reference the secret:**
-```bash
-apiVersion: v1
-kind: Pod
-metadata:
-  name: your-pod-name
-  namespace: default
-spec:
-  containers:
-    - name: your-container-name
-      image: pkg.harness.io/your-image:tag
-  imagePullSecrets:
-    - name: docker-registry-secret1
-```
+  ```bash
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: your-pod-name
+    namespace: default
+  spec:
+    containers:
+      - name: your-container-name
+        image: pkg.harness.io/your-image:tag
+    imagePullSecrets:
+      - name: docker-registry-secret1
+  ```
 
 3.	**Verify the Setup:**
+
 Deploy the updated manifest and monitor the pod status to ensure the image is pulled successfully without authentication errors.
 
-References
+---
 
-	•	Pull an Image from a Private Registry for Kubernetes - https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes/
-	•	Add Container Images as Artifacts for Kubernetes Deployments - https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/
-	
+## Kubernetes-specific guides
+Go to the [Private Registry for Kubernetes guide](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes/) or [Add Container Images as Artifacts](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/) for more details on how to pull an image from a private registry, or to add container images as artifacts for Kubernetes deployments.
