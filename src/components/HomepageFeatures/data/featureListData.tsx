@@ -22,7 +22,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ar,
     icon: "img/icon_artifact_registry.svg",
     description: "Store your binaries natively on Harness.",
-    link: "docs/artifact-registry/get-started",
+    link: "docs/artifact-registry/get-started/overview",
   },
   {
     title: "Set up CD Pipelines",
