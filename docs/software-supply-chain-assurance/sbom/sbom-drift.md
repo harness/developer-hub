@@ -22,13 +22,13 @@ SBOM Drift for images can be generated in two ways:
 
 * Select the SBOM Drift option in the SBOM Orchestration step.
 
-!["SBOM Drift from Supply Chain Tab"](../static/SBOM-Drift-Step-Option.png)
+!["SBOM Drift from Supply Chain Tab"](../static/sbom-drift-step-option.png)
 
 
 * Automatically compare the newly generated SBOM with a pre-existing baseline or the latest artifact tag
 
 
-!["SBOM Drift from Supply Chain Tab"](../static/SBOM-Drift-Tag.png)
+!["SBOM Drift from Supply Chain Tab"](../static/sbom-drift-tag.png)
 
 To set any artifact version as baseline, go to artifact view and click on three dots on the artifact version that you want to set as baseline for generating drift.
 
@@ -42,12 +42,12 @@ To set any artifact version as baseline, go to artifact view and click on three 
 
 Click on “Initiate Drift Analysis” in the three dots menu on the artifact version  
 
-!["Initiate Drift Analysis"](../static/Initiate-Drift-Analysis.png)
+!["Initiate Drift Analysis"](../static/initiate-drift-analysis.png)
 
 
 Select the 2nd tag of the same artifact and confirm to see the drift
 
-!["Initiate Drift Analysis"](../static/SBOM-Drift-Select-Second-Tag.png)
+!["Initiate Drift Analysis"](../static/sbom-drift-select-second-tag.png)
 
 
 
@@ -74,13 +74,13 @@ You can view the generated SBOM Drift on the UI. There are two views
 
 **Component drift view:**
 
-!["Initiate Drift Analysis"](../static/Drift-Component-View.png)
+!["Initiate Drift Analysis"](../static/drift-component-view.png)
 
 
 
 **License drift view:**
 
-!["Initiate Drift Analysis"](../static/Drift-License-View.png)
+!["Initiate Drift Analysis"](../static/drift-license-view.png)
 
 
  
