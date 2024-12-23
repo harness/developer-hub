@@ -10,7 +10,7 @@ import { MODULES } from "@site/src/constants";
 // Docs
 export const docsCards: CardSections = [
   {
-    name: "Learn more",
+    name: "Introduction",
     description: "",
     list: [
       {
@@ -23,7 +23,7 @@ export const docsCards: CardSections = [
       {
         title: "Get started with IDP",
         module: MODULES.idp,
-        description: "Learn how to configure your software catalog and set up automation workflows.",
+        description: "Learn how to configure your IDP and start onboarding.",
         link: "/docs/category/get-started-with-idp",
       },
     ],
@@ -97,6 +97,24 @@ export const docsCards: CardSections = [
         module: MODULES.idp,
         description: "Learn to customize the Workflows Homepage by grouping and highlighting essential workflows for developers day-to-day operations.",
         link: "/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization",
+      },
+    ],
+  },
+  {
+    name: "Dashboard and Metrics",
+    description: "",
+    list: [
+      {
+        title: "Scorecards Checks Overview",
+        module: MODULES.idp,
+        description: "Learn how the checks overview page tracks components and time-sensitive datapoint for migrations and upgrades.",
+        link: "/docs/internal-developer-portal/scorecards/checks-datasources#checks-overview",
+      },
+      {
+        title: "Track Adoption using Dashboard",
+        module: MODULES.idp,
+        description: "Learn how the out-of-the-box adoption dashboard helps track Harness IDP usage in your organization.",
+        link: "/docs/internal-developer-portal/get-started/how-to-track-adoption",
       },
     ],
   },
