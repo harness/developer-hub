@@ -16,9 +16,13 @@ Currently, this feature is behind the feature flag `CDS_GOOGLE_CLOUD_RUN`. Conta
 
 This topic explains how to deploy an artifact to Google Cloud Run using Harness.
 
-## Deployment Summary
+A **Google Cloud Run Service** is a long-running, stateless containerized application that responds to HTTP requests. It runs continuously and scales automatically based on incoming traffic, making it ideal for APIs, websites, and event-driven backends.
 
-Here's a high-level summary of the setup steps:
+A **Google Cloud Run Job**, on the other hand, is a one-off, task-based execution model where the container runs to completion. Jobs are used for batch processing, scheduled tasks, and background workloads that don't require continuous execution. While Services remain active to handle incoming requests, Jobs are designed to start, run a task, and then exit once complete.
+
+## Google CLoud Run Service
+
+Here's a high-level summary of how you can setup a **Google Cloud Run Service**:
 
 1. Create a Harness CD pipeline.
 2. Add a Deploy stage.
@@ -104,6 +108,57 @@ Here's a high-level summary of the setup steps:
      **Note**: Google Cloud Run does not allow you to delete the new revision. Only the traffic is diverted to the previous revisions.
 
 10. Select **Save**, and then run the pipeline.
+
+## Google CLoud Run Job
+
+You can also add a Google Cloud Run Job step in the Execution tab.
+
+![](static/google-cloud-run-job.png)
+
+**Container Configuration**
+
+For Container Configuration, you need to set up a connector to the container registry.
+
+For Container Registry, create or select a Docker connector to access the container registry.
+For Container Configuration, use the following public Docker image:
+- [`harness/google-cloud-run-plugin:1.0.0-linux-amd64`](https://hub.docker.com/layers/harness/google-cloud-run-plugin/1.0.0-linux-amd64/images/sha256-2ad0c6d434673e56df47f1014c397d2bbc8248f8e76b5bbd48965f116f4843f2?context=explore). 
+
+This image is required to perform deployments to Google Cloud Run.
+
+You can define your job using either Job Name or Job Manifest.
+
+1. **Job Name**: Select Job Name when you already have a job defined in your Google Cloud Platform and you only want to execute it.
+- Under **Job Name**, specify the name of the job you want to run.
+- You can also make it a Runtime Input or an Expression.
+
+2. **Job Manifest**: Select Job Manifest when you want to deploy a new job or update an existing job using a manifest file.
+- Click **+ Google Cloud Run Job Manifest**.
+- In the **Specify Google Cloud Run Job Manifest Store**, select the source where the manifest file is stored.
+- In **Manifest Details**, specify the path where the manifest file is stored.
+
+**Deploy and Execute Steps**
+
+The **Deploy Step** uses the `gcloud run jobs replace` command to apply the YAML manifest provided by the user.
+For more information, refer to the [Google Documentation](https://cloud.google.com/sdk/gcloud/reference/run/jobs/replace?hl=en).
+
+The Execute Step uses the gcloud run jobs execute command to run the job specified by the user.
+For more information, refer to the [Google Documentation](https://cloud.google.com/sdk/gcloud/reference/run/jobs/execute?hl=en).
+
+**Optional Configurations**
+
+You can provide additional command options (flags) in the Optional Configuration section:
+
+- **Google Cloud Run Jobs Replace Command Options**: Used for the replace function.
+- **Google Cloud Run Jobs Execute Command Options**: Used for the execute function.
+
+Additionally, you can configure the following options:
+
+- **Pre-Execution Command**: Run commands before deployment.
+- **Image Pull Policy**: Specifies when the container image should be pulled from the registry.
+- **Run as User**: Configures the user identity under which the function or container should run, useful for - security and access control.
+- **Limit Memory**: Defines the maximum memory that can be allocated to the container or function during execution.
+- **Limit CPU**: Sets a limit on the CPU usage for the function or container, ensuring the function does not consume excessive resources.
+- **Environment Variables**: Additional environment variables can be configured.
 
 ## Cloud Run Permission Requirements
 
