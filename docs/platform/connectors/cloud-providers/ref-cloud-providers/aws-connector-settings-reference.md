@@ -476,6 +476,12 @@ Additionally, this option requires Harness Delegate version 24.03.82603 or later
 
 :::
 
+:::warning
+
+If you are using OIDC for your connection, you will not be able to connect to AWS through the Harness Platform. Please connect through a Harness Delegate.
+
+:::
+
 Select **Use OIDC** to connect to AWS with OIDC.
 
 To do this, you need to create an [OIDC identity provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html) in AWS. Then you need to add it in a trust relationship with an IAM role you create that Harness will use to operate in AWS.
