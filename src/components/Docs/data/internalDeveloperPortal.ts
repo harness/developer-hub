@@ -93,7 +93,7 @@ export const docsCards: CardSections = [
         link: "/docs/internal-developer-portal/layout-and-appearance/sidenav",
       },
       {
-        title: "IDP Sidebar Navigation Customization",
+        title: "Workflows Page Customization",
         module: MODULES.idp,
         description: "Learn to customize the Workflows Homepage by grouping and highlighting essential workflows for developers day-to-day operations.",
         link: "/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization",
