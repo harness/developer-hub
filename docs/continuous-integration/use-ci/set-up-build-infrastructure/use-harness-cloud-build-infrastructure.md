@@ -203,7 +203,7 @@ To enable this feature, set the `nestedVirtualization` property to `true` as sho
 
 To allow access from our Mac baremetal CI machines to your on-prem services, please ensure that the following CIDR block is whitelisted:
 
-	•	CIDR: 207.254.53.128/25
+	•CIDR: 207.254.53.128/25
 
 This will enable seamless communication between our Mac-based CI infrastructure and your on-prem services.
 
