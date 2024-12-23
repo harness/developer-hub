@@ -22,7 +22,7 @@ SBOM Drift for images can be generated in two ways:
 
 * Select the SBOM Drift option in the SBOM Orchestration step.
 
-!["SBOM Drift from Supply Chain Tab"](../static/sbom-drift-step-option.png)
+!["SBOM Drift from Supply Chain Tab"](/docs/software-supply-chain-assurance/static/sbom-drift-step-option.png)
 
 
 * Automatically compare the newly generated SBOM with a pre-existing baseline or the latest artifact tag
