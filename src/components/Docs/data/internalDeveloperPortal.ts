@@ -47,7 +47,7 @@ export const docsCards: CardSections = [
       {
         title: "Scorecards",
         module: MODULES.idp,
-        description: "Track and improve your organizational metrics using Scorecards effectively.",
+        description: "Track and improve your organizational metrics using scorecards effectively.",
         link: "/docs/internal-developer-portal/scorecards/scorecard",
       },
     ],
