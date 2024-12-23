@@ -267,11 +267,17 @@ gsutil -m cp \
 - Upgrades Done on Harness Platform
   <details>
   <summary> Show details </summary>
+  
   - Upgraded `io.netty_netty-common` to version 4.1.115. [PL-58550]
+
   - Upgraded `protobuf-java` to version 3.25.5. [PL-57351]
+
   - Upgraded Java to version `17.0.11_9-jre-ubi9-minimal` in the delegate. [PL-55499]
+
   - Upgraded Spring Framework libraries from version 6.0.23 to 6.1.14. [PL-58254]
+
   - Upgraded `com.nimbusds_nimbus-jose-jwt` to version 9.37.3. [PL-51347]
+
   </details>
 
 - Added a feature flag to hide the delegate image update UI banner. [PL-58691]
