@@ -1,6 +1,6 @@
 ---
 title: Enable documentation for your Component
-description: Learn how you can enable the TechDocs plugin to show your Markdown docs on the **Docs** tab of the catalog page.
+description: Learn how you can enable the TechDocs plugin to show your Markdown docs on the Docs tab of the catalog page.
 sidebar_position: 6
 ---
 

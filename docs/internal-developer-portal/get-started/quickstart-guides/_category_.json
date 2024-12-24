@@ -1,0 +1,12 @@
+{
+    "label": "Quickstart Tutorials for Core Features",
+    "collapsible": "true",
+    "collapsed": "true",
+    "position": 5,
+    "link": {
+      "type": "generated-index",
+      "title": "Get started with core features of IDP"
+    },
+    "customProps": {}
+  }
+  

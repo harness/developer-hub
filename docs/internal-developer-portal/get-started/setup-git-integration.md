@@ -1,6 +1,6 @@
 ---
 title: Set Up Git Integration
-description: Once the Internal Developer Portal module is enabled in your account, follow these steps to add a Git integration.
+description: Learn to set up Git integration for adding components to your IDP.
 sidebar_position: 4
 redirect_from:
   - /docs/internal-developer-portal/getting-started/setting-up-idp
