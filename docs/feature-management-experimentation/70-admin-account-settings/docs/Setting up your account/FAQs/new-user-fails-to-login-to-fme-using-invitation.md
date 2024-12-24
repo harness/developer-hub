@@ -1,6 +1,6 @@
 ---
-title: "Feature flags: Build vs. buy"
-sidebar_label: "Feature flags: Build vs. buy"
+title: New user fails to login to FME using invitation
+sidebar_label: New user fails to login to FME using invitation
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
