@@ -49,7 +49,7 @@ For general use cases to reduce unnecessary complexity and to optimize performan
 Some reusable options can be to:
 - Create reusable pipelines and set them as default pipelines to trigger quickly from any workspace within a project.
 - Use [pipeline variables](https://developer.harness.io/docs/infra-as-code-management/project-setup/input-variables) to ensure consistency.
-- Use built-in plugins such as [drift detection](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/drift-detection), [PR automation](https://developer.harness.io/docs/infra-as-code-management/use-iacm/pr-automation) and [IaCM Approval steps](https://developer.harness.io/docs/infra-as-code-management/use-iacm/approval-step).
+- Use built-in plugins such as [drift detection](https://developer.harness.io/docs/infra-as-code-management/use-iacm/drift-detection), [PR automation](https://developer.harness.io/docs/infra-as-code-management/use-iacm/pr-automation) and [IaCM Approval steps](https://developer.harness.io/docs/infra-as-code-management/use-iacm/approval-step).
 - Utilize [built-in OPA policies](https://developer.harness.io/docs/infra-as-code-management/policies/terraform-plan-cost-policy) to add protection and ensure your pipelines warn or fail if certain conditions are not met, e.g. if your total monthly infrastructure costs exceed a specified amount.
 <!-- placeholder for module registry -->
 <!-- placeholder for workspace templates -->
