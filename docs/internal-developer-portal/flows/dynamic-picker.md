@@ -322,3 +322,54 @@ properties:
 ### Advanced processing the API response
 
 If the filters here are not sufficient for your use case, and you require additional data processing of the response, then we recommend you setting up a Lambda function in your cloud provider or a lightweight backend to do this job. You can use your Backend Proxy and Delegate Proxy to communicate to your custom Lambda/Backend.
+
+## Example Usage
+
+### Fetch the list of Services 
+
+1. Configure the [Backend Proxy](#step-1-create-a-backend-proxy)
+
+Set up a backend proxy in the plugin configuration to enable API calls to Harness. 
+
+```YAML
+proxy:
+  endpoints:
+    /harness-api-endpoint:
+      target: https://app.harness.io
+      pathRewrite:
+        /api/proxy/harness-api-endpoint/?: /
+      headers:
+        x-api-key: ${PROXY_HARNESS_TOKEN}
+```
+
+- `/harness-api-endpoint`: Proxy path for the Harness API.
+- `x-api-key`: Add your Harness Personal Access Token as an environment variable(covered in the next step).. 
+
+2. Add the [Harness Personal Access Token](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens) as a variable. Save the token as an environment variable named `PROXY_HARNESS_TOKEN`.
+
+3. Update your Workflow definition YAML to include a dropdown for fetching the list of services.
+
+```YAML
+## Example workflows.yaml
+...
+properties:
+  service:
+    type: string
+    ui:field: SelectFieldFromApi
+    ui:options:
+      title: Choose the service
+      description: Pick one of the service you want to deploy
+      placeholder: "Choose a service"
+      allowArbitraryValues: true
+      path: proxy/harness-api-endpoint/ng/api/servicesV2?page=0&size=100&accountIdentifier=ACCOUNT_ID&orgIdentifier=ORG_ID&projectIdentifier=PROJECT_ID&includeAllServicesAccessibleAtScope=true
+      valueSelector: 'service.name'
+      arraySelector: 'data.content'
+...
+```
+- `ui:field`: Configures the dropdown to fetch data from an API.
+- `path`: API endpoint for fetching the list of services. You need to add the account identifier in place of `ACCOUNT_ID`, organization identifier in place of `ORG_ID` and project identifier in-place of `PROJECT_ID`.
+- `valueSelector`: Extracts the service name for the dropdown values.
+- `arraySelector`: Extracts the array containing the services
+
+For a complete example, refer to the [sample Workflows YAML](https://github.com/harness-community/idp-samples/blob/main/tutorial-dynamic-picker-examples.yaml).
+
