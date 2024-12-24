@@ -114,7 +114,7 @@ export const docsCards: CardSections = [
         title: "Track Adoption using Dashboard",
         module: MODULES.idp,
         description: "Learn how the out-of-the-box adoption dashboard helps track Harness IDP usage in your organization.",
-        link: "docs/internal-developer-portal/get-started/adoption/how-to-track-adoption",
+        link: "/docs/internal-developer-portal/get-started/adoption/how-to-track-adoption",
       },
     ],
   },
