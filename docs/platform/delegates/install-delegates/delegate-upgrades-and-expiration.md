@@ -249,6 +249,8 @@ delegateConfig:
 
 During an upgrade, when `upgrader` seeks to update the delegate to `harness/delegate:verno`, it will utilize the image from `us.gsr.io/gcr-mirror/harness/delegate:verno`.
 
+This option can be enabling by setting `upgrader.registryMirror` Helm value for Delegate Helm chart or by modifying Upgrader Kubernetes manifest.
+
 ## Use automatic upgrade with custom delegate images
 
 You may choose to use a custom delegate image for the following reasons:
