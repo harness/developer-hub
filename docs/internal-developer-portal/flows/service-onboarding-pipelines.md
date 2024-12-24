@@ -19,7 +19,7 @@ The Workflow is defined using a YAML file usually called `workflow.yaml`. The [s
 
 <!-- See it in action: Demo video -->
 
-**To get started, check out the tutorial to [create your first IDP Workflow](/docs/internal-developer-portal/get-started/workflow-quickstart).**
+**To get started, check out the tutorial to [create your first IDP Workflow](/docs/internal-developer-portal/get-started/quickstart-guides/workflow-quickstart).**
 
 ## How to write IDP Workflows
 
@@ -285,7 +285,7 @@ output:
 
 ## Workflow Registration
 
-You can create a `workflow.yaml` file in a Git repository and use its URL to register the Workflow in IDP. For information about adding a Workflow, see [how to register a new entity in catalog](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+You can create a `workflow.yaml` file in a Git repository and use its URL to register the Workflow in IDP. For information about adding a Workflow, see [how to register a new entity in catalog](/docs/internal-developer-portal/get-started/quickstart-guides/register-a-new-software-component).
 
 ## Delete/Unregister Workflows
 

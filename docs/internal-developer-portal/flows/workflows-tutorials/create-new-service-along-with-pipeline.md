@@ -573,7 +573,7 @@ That token is then used as part of `steps` as `apikey`
 
 ### Register the Workflow in IDP
 
-Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/quickstart-guides/register-a-new-software-component).
 
 ## Use the Self Service Workflows
 

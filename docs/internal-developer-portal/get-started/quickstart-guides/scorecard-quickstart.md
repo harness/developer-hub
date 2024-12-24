@@ -11,7 +11,7 @@ redirect_from:
 
 ## Introduction
 
-Now that you have [Catalog populated with Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component) [Plugins enabled](/docs/internal-developer-portal/get-started/enable-a-new-plugin), let's create a scorecard utilizing the [Catalog Datasource](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#catalog) to monitor the existence of root fields and integrations via annotations within `catalog-info.yaml` metadata. Effectively tracking information within the catalog can serve as the initial step towards enforcing organizational engineering standards.
+Now that you have [Catalog populated with Software Components](/docs/internal-developer-portal/get-started/quickstart-guides/register-a-new-software-component) [Plugins enabled](/docs/internal-developer-portal/get-started/enable-a-new-plugin), let's create a scorecard utilizing the [Catalog Datasource](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#catalog) to monitor the existence of root fields and integrations via annotations within `catalog-info.yaml` metadata. Effectively tracking information within the catalog can serve as the initial step towards enforcing organizational engineering standards.
 
 ## Register a Software Component
 
