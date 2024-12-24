@@ -4,7 +4,7 @@ description: Use SCS GitHub Actions to implement SBOM Verification and Policy En
 sidebar_position: 22
 ---
 
-Harness GitHub Actions provide a seamless way to integrate Harness's Software Supply Chain Security (SCS) capabilities directly into GitHub workflows. You can use this GitHub Action to perform various supply chain security tasks. 
+[Harness GitHub Actions](https://github.com/marketplace/actions/harness-github-actions) provide a seamless way to integrate Harness's Software Supply Chain Security (SCS) capabilities directly into GitHub workflows. You can use this GitHub Action to perform various supply chain security tasks. 
 The Harness GitHub Action includes multiple sub-actions, each designed for specific tasks. This document focuses on the `harness/github-actions/sbom-policy-enforcement` sub-action, which is used to generate an SBOM and attest it if needed.
 
 The `harness/github-actions/sbom-policy-enforcement` verifies the SBOM attestation and enforces policies on the SBOM. The policies applied are *Harness SBOM Policies*. For more information on creating and managing SBOM policies, refer to the [Harness SBOM Policies Documentation](https://developer.harness.io/docs/software-supply-chain-assurance/sbom-policies/create-sbom-policies).
