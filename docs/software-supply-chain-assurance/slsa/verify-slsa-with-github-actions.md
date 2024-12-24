@@ -5,7 +5,7 @@ sidebar_position: 21
 redirect_from:
 ---
 
-Harness GitHub Actions provide a seamless way to integrate Harness's Software Supply Chain Security (SCS) capabilities directly into GitHub workflows. You can use this GitHub Action to perform various supply chain security tasks. 
+[Harness GitHub Actions](https://github.com/marketplace/actions/harness-github-actions) provide a seamless way to integrate Harness's Software Supply Chain Security (SCS) capabilities directly into GitHub workflows. You can use this GitHub Action to perform various supply chain security tasks.
 The Harness GitHub Action includes multiple sub-actions, each designed for specific tasks. This document focuses on the `harness/github-actions/slsa-verification` sub-action, which is used to generate an SBOM and attest it if needed.
 
 The `harness/github-actions/slsa-verification` verifies the SLSA provenance attestation by pulling the `.att` file from the configured container registry. It uses the public key from the key pair that was used for signing the attestation to perform the verification.
