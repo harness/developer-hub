@@ -1,6 +1,6 @@
 ---
-title: Logging into the Help Center
-sidebar_label: Logging into the Help Center
+title: Manage API key roles and scopes
+sidebar_label: Manage API key roles and scopes
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
