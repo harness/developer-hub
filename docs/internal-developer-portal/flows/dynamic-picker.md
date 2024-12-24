@@ -54,11 +54,11 @@ Go to IDP Admin -> Plugins. Find the plugin called "Configure Backend Proxies".
 
 Inside the plugin, you get three options (like any other [IDP plugin configuration](https://developer.harness.io/docs/internal-developer-portal/plugins/overview)).
 
-1. Declare a Backend Proxy endpoint and headers
+1. Declare a Backend Proxy (HTTP Proxy) endpoint and headers
 2. Configure necessary secrets
-3. Configure Delegate Proxy (in case the API is not publicly accessible, or the secret is on your infrastructure)
+3. Configure Delegate Proxy (Delegate HTTP Proxy) (in case the API is not publicly accessible, or the secret is on your infrastructure)
 
-In order to set up a proxy to connect with GitHub APIs, you can add the following in the configuration YAML
+In order to set up a HTTP proxy to connect with GitHub APIs, you can add the following in the configuration YAML
 
 ```yaml
 proxy:
@@ -81,10 +81,10 @@ In the `headers` you can add an Authorization header. Ensure you use a unique to
 
 ![](./static/example-proxy-backend-config.png)
 
-Configure a Delegate HTTP Proxy to route traffic through an HTTP proxy server. This is useful when we need to access private endpoints not publicly accessible. 
+Configure a Delegate HTTP Proxy to route traffic through an HTTP proxy using Delegate. This is useful when we need to access private endpoints not publicly accessible. 
 
 :::warning
-Endpoints targeting the `harness.io` domain should **not** be configured behind a delegate proxy. 
+Endpoints targeting the `harness.io` domain should **not** be configured behind a **Delegate HTTP Proxy**, as you are already in the Harness infrastructure. Using a Delegate HTTP Proxy in this case is unnecessary, as direct access is inherently available. 
 :::
 
 ![](./static/delegate-proxy.png)
