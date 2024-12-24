@@ -110,6 +110,8 @@ When setting up your AWS Secrets Manager in Harness, you can choose one of the f
 
 1. **Use "PutSecretValue" Action to Update Secret Value**  
    By default, Harness uses the `UpdateSecret` action to update secret values, which requires the `secretsmanager:UpdateSecret` permission for AWS Secrets Manager. Enable this option to use the `PutSecretValue` action instead, requiring the `secretsmanager:PutSecretValue` permission.
+   
+>This item requires Harness Delegate version 24.11.84500. For more details about the Harness Delegate feature, please refer to the release notes.
 
 2. **Use as Default Secrets Manager**  
    Enable this option to make this Secrets Manager the default for all secret operations within your Harness account.
