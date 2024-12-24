@@ -30,36 +30,36 @@ Let's say you have more than three treatments.  In this case, the `status_quo` w
 
 <table style={{width: '100%', height: '132px'}}>
   <thead>
-    <tr style="height: 22px;">
-      <th style="text-align: center; height: 22px;">Even Distribution</th>
-      <th style="text-align: center; height: 22px;">Buckets</th>
-      <th style="text-align: center; height: 22px;">T2 to status_quo</th>
+    <tr style={{height: '22px'}}>
+      <th style={{textAlign: 'center', height: '22px'}}>Even Distribution</th>
+      <th style={{textAlign: 'center', height: '22px'}}>Buckets</th>
+      <th style={{textAlign: 'center', height: '22px'}}>T2 to status_quo</th>
     </tr>
   </thead>
   <tbody>
-    <tr style="height: 22px;">
-      <td style="text-align: center; height: 22px;">status_quo</td>
-      <td style="text-align: center; height: 22px;">0-19</td>
-      <td style="text-align: center; height: 44px;" rowspan="2">status_quo</td>
+    <tr style={{height: '22px'}}>
+      <td style={{textAlign: 'center', height: '22px'}}>status_quo</td>
+      <td style={{textAlign: 'center', height: '22px'}}>0-19</td>
+      <td style={{textAlign: 'center', height: '44px'}} rowspan="2">status_quo</td>
     </tr>
-    <tr style="height: 22px;">
-      <td style="text-align: center; height: 22px;">treatment1</td>
-      <td style="text-align: center; height: 22px;">20-39</td>
+    <tr style={{height: '22px'}}>
+      <td style={{textAlign: 'center', height: '22px'}}>treatment1</td>
+      <td style={{textAlign: 'center', height: '22px'}}>20-39</td>
     </tr>
-    <tr style="height: 22px;">
-      <td style="text-align: center; height: 22px;">treatment2</td>
-      <td style="text-align: center; height: 22px;">40-59</td>
-      <td style="text-align: center; height: 22px;">treatment1</td>
+    <tr style={{height: '22px'}}>
+      <td style={{textAlign: 'center', height: '22px'}}>treatment2</td>
+      <td style={{textAlign: 'center', height: '22px'}}>40-59</td>
+      <td style={{textAlign: 'center', height: '22px'}}>treatment1</td>
     </tr>
-    <tr style="height: 22px;">
-      <td style="text-align: center; height: 22px;">treatment3</td>
-      <td style="text-align: center; height: 22px;">60-79</td>
-      <td style="text-align: center; height: 22px;">treatment3</td>
+    <tr style={{height: '22px'}}>
+      <td style={{textAlign: 'center', height: '22px'}}>treatment3</td>
+      <td style={{textAlign: 'center', height: '22px'}}>60-79</td>
+      <td style={{textAlign: 'center', height: '22px'}}>treatment3</td>
     </tr>
-    <tr style="height: 22px;">
-      <td style="text-align: center; height: 22px;">treatment4</td>
-      <td style="text-align: center; height: 22px;">80-99</td>
-      <td style="text-align: center; height: 22px;">treatment4</td>
+    <tr style={{height: '22px'}}>
+      <td style={{textAlign: 'center', height: '22px'}}>treatment4</td>
+      <td style={{textAlign: 'center', height: '22px'}}>80-99</td>
+      <td style={{textAlign: 'center', height: '22px'}}>treatment4</td>
     </tr>
   </tbody>
 </table>
