@@ -3348,7 +3348,7 @@ You can fetch and use the latest successfully deployed tag for a service in the 
 
 **Pipeline Neutrality**
 
-  - The resolved tag is consistent across pipelines for the same service:
+  - The resolved tag is consistent across pipelines for the same service, environment and infrastructure:
    - Example: If a service with artifact-X(image-tag-v1) is used in pipeline-1 and pipeline-2:
      If pipeline-1 successfully deployed image-tag-v2, deploying pipeline-2 with `<+lastSuccessfulDeployed.tag>` will resolve to image-tag-v2.
 
