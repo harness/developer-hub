@@ -312,20 +312,19 @@ gsutil -m cp \
 
 - Extends ChaosGuard conditions for node-level chaos experiments. (CHAOS-6788)
 
-- Adds advanced settings to the UI for the "edit infrastructure" page. (CHAOS-6718)
-
-    <details>
-    <summary> View advanced setting screen </summary>
-
-        ![advanced feature](./static/chaos-advanced-features.png)
-
-    </details>
+- Adds [advanced settings](https://developer.harness.io/release-notes/chaos-engineering#version-1491) to the UI for the "edit infrastructure" page. (CHAOS-6718)
 
 - Adds local and UTC times in the cron schedule next run. (CHAOS-6974)
 
 - Adds a pre-check to the Windows global blackhole experiment to verify if the firewall is enabled for the target Windows VM. If not, the `ENABLE_FIREWALL` tunable is set, which, by default, enables the firewall. (CHAOS-6848)
 
 - Introduces the Windows disk fill chaos experiment, supported by Windows chaos infrastructure. (CHAOS-6842)
+
+#### Security Testing Orchestration
+
+- Veracode step is now available as an SCA scanner (STO-8275).
+
+- Added RBAC to prevent users from editing Ticket Settings. Previously, they could attempt to edit and were blocked by the API, the error message is also enhanced. (STO-7567)
 
 #### Cloud Cost Management
 
@@ -369,6 +368,17 @@ gsutil -m cp \
 
 - The delegate name is now shown in the UI when a connector test fails, if the validation task was acquired by a delegate. This improvement provides better visibility into which delegate handled the task during troubleshooting. [PL-56483]
 
+#### Security Testing Orchestration
+
+- Fixed a configuration issue in some Harness production environments that prevented STO steps from running in IaCM stages (STO-8291, ZD-73770).
+
+- Fixed a bug in the External Tickets page where deselecting a connector would succeed, but the UI did not update properly. (STO-8200)
+
+#### Supply Chain Security
+
+- Fixed an issue where attestation with Cosign using a secret manager did not work with account-level and org-level vault connectors; it now works with both. (SSCA-2955)
+
+- Fixed an issue where adding the SLSA verification step in the same stage as the artifact creation using Docker build and push resulted in duplicate artifact entries with the same name and tag in the execution history. (SSCA-2949)
 
 #### Chaos Engineering
 
