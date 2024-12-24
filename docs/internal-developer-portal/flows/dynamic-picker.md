@@ -81,6 +81,16 @@ In the `headers` you can add an Authorization header. Ensure you use a unique to
 
 ![](./static/example-proxy-backend-config.png)
 
+Configure a Delegate HTTP Proxy to route traffic through an HTTP proxy server. This is useful when we need to access private endpoints not publicly accessible. 
+
+:::warning
+
+Endpoints targeting the `harness.io` domain should **not** be configured under this field. 
+
+:::
+
+![](./static/delegate-proxy.png)
+
 Hit "Save Configuration" and now our backend proxy is ready to use!
 
 You can verify this endpoint by making requests to the `proxy` endpoint at `https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/proxy/`. For example in order to test the GitHub example above, you can make a request to
