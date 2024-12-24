@@ -325,7 +325,7 @@ If the filters here are not sufficient for your use case, and you require additi
 
 ## Example Usage
 
-### Fetch the list of Services 
+### Fetch the list of Harness Services in Workflows
 
 1. Configure the [Backend Proxy](#step-1-create-a-backend-proxy)
 
