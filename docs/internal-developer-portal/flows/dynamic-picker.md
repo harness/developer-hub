@@ -84,9 +84,7 @@ In the `headers` you can add an Authorization header. Ensure you use a unique to
 Configure a Delegate HTTP Proxy to route traffic through an HTTP proxy server. This is useful when we need to access private endpoints not publicly accessible. 
 
 :::warning
-
-Endpoints targeting the `harness.io` domain should **not** be configured under this field. 
-
+Endpoints targeting the `harness.io` domain should **not** be configured behind a delegate proxy. 
 :::
 
 ![](./static/delegate-proxy.png)

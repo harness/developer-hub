@@ -29,6 +29,10 @@ There are two scenarios when you need to add a Delegate Proxy when configuring a
 1. A Delegate Proxy is needed when you have a plugin which needs to connect to an internal system of yours which is not accessible directly from the Harness SaaS platform. For example, [the Kubernetes plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/kubernetes/#delegate-proxy).
 2. A Delegate Proxy is also needed if the secrets used in the Plugin's configuration are not stored in Harness built-in secret manager, but are stored on your own infrastructure (e.g. Cloud Provider's secret manager, HashiCorp Vault, etc.)
 
+:::warning
+Endpoints targeting the `harness.io` domain should **not** be configured behind a delegate proxy.
+:::
+
 ## Architecture Diagrams
 
 ### No Proxy used, direct connection
