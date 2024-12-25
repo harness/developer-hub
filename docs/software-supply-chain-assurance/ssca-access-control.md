@@ -20,12 +20,16 @@ Here's a guide to creating a role or managing permissions for the Remediation Tr
 
 
 1. Navigate to **Account Settings** > **Access Control** > **Roles** within your Harness Account.
+
+![SCS RBAC](./static/access-control.png "SCS RBAC")
+
 2. Add a new role or select an existing one to modify.
-3. Within the role, select Supply Chain Security. This action will display the SCS Permissions.
 
+![SCS RBAC](./static/access-control-rbac.png "SCS RBAC")
 
+3. Within the role, select Supply Chain Assurance. This action will display the SCS Permissions.
 
-![SCS RBAC](./static/ssca-rbac.png "SCS RBAC")
+![SCS RBAC](./static/access-control-permissions.png "SCS RBAC")
 
 
 The Remediation Tracker is governed by the following permissions:
@@ -49,6 +53,6 @@ Here's how you can create and manage resource groups for the remediation tracker
 3. Set the "Resource Scope" accordinlgy if you are creating one.
 4. Within the Resources, select Supply Chain Assurance.
 
-![Resource groups](./static/resource-groups-remediation-tracker.png "Resource groups")
+![Resource groups](./static/access-control-remediation.png "Resource groups")
 
 For configuring at both the organization and project levels, the navigation process is similar to what was detailed in the previous section.
