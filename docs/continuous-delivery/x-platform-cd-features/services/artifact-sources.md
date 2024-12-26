@@ -3368,3 +3368,5 @@ If the artifact image differs from the one used in the previous successful deplo
 
 **Connector Changes**:
 If the connector configuration has changed but the tag remains the same, an error will be thrown to ensure consistency and avoid conflicts.
+
+Currently, the expression `<+lastSuccessfulDeployed.tag>` is limited to resolving primary artifact tags and does not support resolving sidecar artifact tags.
