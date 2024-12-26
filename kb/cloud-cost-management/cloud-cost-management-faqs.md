@@ -584,7 +584,7 @@ To clone an autostopping rule, click on the three dots on the rule on the overvi
 This behavior is expected and stems from the nature of AWS's infrastructure. Starting and stopping certain RDS instances is inherently slower compared to EC2 instances, as confirmed in the AWS RDS documentation.
 
 To address this issue:
-- Increase the cooldown duration: This prevents the database from stopping too frequently, ensuring it aligns with actual usage and minimizes disruptions.
+- Increase the idle time duration: This ensures the database does not stop too frequently, allowing it to stay running for longer periods of inactivity, which reduces disruptions.
 - Implement an uptime schedule: For workloads with predictable usage patterns, scheduling instance availability can reduce startup delays while still maintaining cost savings.
 
 While these steps can improve the experience, the startup time itself cannot be reduced as it is dependent on AWS's underlying processes
