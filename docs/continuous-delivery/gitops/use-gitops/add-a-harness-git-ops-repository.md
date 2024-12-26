@@ -148,6 +148,7 @@ import TabItem from '@theme/TabItem';
         Harness will auto-detect the repository credentials template (if any) based on the GitOps repository **URL** and auto-populate it. If Harness auto-populated the GitOps repository, then you cannot edit the repository credentials template setting.
 7. Select **Save & Continue**. Harness validates the connection.
 
+Note: When a repository is created with an anonymous connection type (public - no credentials), Harness automatically uses the repository credentials if they are available, even if you do not select them in the UI.
 
 </TabItem>
 <TabItem value="OCI Helm repository" label="OCI Helm repository">
