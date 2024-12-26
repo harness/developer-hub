@@ -113,7 +113,7 @@ Instructor-Led Trainings [e.g ILTs] are available in the following formats:
 * Shared-Virtual [e.g vILT]. This is per a [shared virtual calendar](https://university-registration.harness.io/calendar). 
 
 ### Minimum Enrollment Requirement
-To ensure a productive and engaging learning environment, we require a minimum number of students to enroll in each shared vILT course. If the minimum enrollment is not met, the following steps will be taken:
+To ensure a productive and engaging learning environment, we require a minimum number of five students to enroll in each shared vILT course. If the minimum enrollment is not met, the following steps will be taken:
 
 * Notification of Cancellation: Registered participants will receive a notification if the course is canceled due to insufficient enrollment.
 * Alternative Session Registration: Participants will be provided with options to register for another session that meets the minimum enrollment criteria.
@@ -131,19 +131,19 @@ Instructor-Led Training has tiers of costs depending on format. All ILTs has acc
 * Dedicated: $12,000 for up to 12 students virtually. On-site will be the $12,000 + travel. 
 * Virtual: $1,000 per student, per module. 
 
-You can leverage your [Harness Service Catalog Dollars](https://www.harness.io/legal/service-catalog-dollars) for payment
-of ILTs or purchase via SKU or for virutal online via SkillJar. 
+You can leverage your Harness Service Catalog Dollars for payment
+of dedicated ILTs or purchase dedicated ILTs via your Harness account rep. Virtual ILTs can be bought online via credit card. 
 
 ---
 
 ## Partners
 If you are a Harness Partner, you should access Harness Educational Material through 
 the [Partner Portal](https://www.harness.io/partners). Can directly [Sign in](https://partners.harness.io/English/)
-or [Sign up](https://partners.harness.io/prm/English/s/applic).
+or [Sign up](https://partners.harness.io/prm/English/s/applic). 
 
 ---
 
 ## Contact Information
 
-For any other queries or technical difficulties, please don't hesitate to contact us at [certifications@harness.io](mailto:certifications@harness.io).
+For any other queries or technical difficulties, please don't hesitate to contact us at [certifications@harness.io](mailto:certifications@harness.io) for Certifications or [training@harness.io](mailto:training@harness.io) for Training inquiries.
 
