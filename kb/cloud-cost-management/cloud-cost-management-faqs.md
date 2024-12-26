@@ -580,6 +580,15 @@ The error is thrown as part of the periodic state sync job from Autostopping. Th
 
 To clone an autostopping rule, click on the three dots on the rule on the overview page, click Clone, select all the required elements to be cloned, and clone the rule.
 
+### Why is an RDS instance taking some time to start after being auto-stopped?
+This behavior is expected and stems from the nature of AWS's infrastructure. Starting and stopping certain RDS instances is inherently slower compared to EC2 instances, as confirmed in the AWS RDS documentation.
+
+To address this issue:
+- Increase the cooldown duration: This prevents the database from stopping too frequently, ensuring it aligns with actual usage and minimizes disruptions.
+- Implement an uptime schedule: For workloads with predictable usage patterns, scheduling instance availability can reduce startup delays while still maintaining cost savings.
+
+While these steps can improve the experience, the startup time itself cannot be reduced as it is dependent on AWS's underlying processes
+
 ## Dashboards
 
 ### When creating a custom field, can I filter the entire dashboard on the custom field?
