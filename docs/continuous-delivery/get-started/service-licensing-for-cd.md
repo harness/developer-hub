@@ -95,7 +95,7 @@ Harness CD consumes 1 Service License for each active custom service.
 Harness allows custom deployments, where no service is associated with the deployment. This can happen when a pipeline execution only runs infrastructure provisioning steps, only performs shell script executions, or runs a custom stage with the environment configured, but no service. In all these scenarios, lack of service config means Harness loses the default license tracking. In these scenarios:
 
 ```TEXT
-Harness CD consumes 1 Service License for every 100 pipeline executions of such custom stages.
+Harness CD consumes 1 Service License for every 2000 pipeline executions of such custom stages.
 ```
 
 ## Subscription Page Walkthrough
