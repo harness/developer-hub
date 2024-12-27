@@ -11,7 +11,7 @@ Harness's RBAC system enables you to precisely manage the user access to specifi
 
 ## RBAC for Remediation Tracker
 
-The configuration of RBAC for the Remediation Tracker is possible at three levels: Account, Organization, and Project.
+The configuration of RBAC for the Remediation Tracker is possible at three levels: Account, [Organization](/docs/software-supply-chain-assurance/ssca-access-control#organization), and [Project](/docs/software-supply-chain-assurance/ssca-access-control#project).
 
 ### Creating and Managing Roles
 
@@ -21,17 +21,19 @@ Here's a guide to creating a role or managing permissions for the Remediation Tr
 
 1. Navigate to **Account Settings** > **Access Control** > **Roles** within your Harness Account.
 
-![SCS RBAC](./static/access-control.png "SCS RBAC")
+
+<DocImage path={require('./static/sca-access-control.png')} width="100%" height="80%" title="Click to view full size image" />
 
 2. Add a new role or select an existing one to modify.
 
-![SCS RBAC](./static/access-control-rbac.png "SCS RBAC")
+
+<DocImage path={require('./static/access-control-rbac.png')} width="100%" height="80%" title="Click to view full size image" />
+
 
 3. Within the role, select Supply Chain Assurance. This action will display the SCS Permissions.
 
-![SCS RBAC](./static/access-control-permissions.png "SCS RBAC")
 
-
+<DocImage path={require('./static/access-control-permissions.png')} width="100%" height="80%" title="Click to view full size image" />
 The Remediation Tracker is governed by the following permissions:
 
 
@@ -40,8 +42,12 @@ The Remediation Tracker is governed by the following permissions:
 * **Create/Edit**: Enables users to create new trackers and edit existing ones.
 * **Close:** Allows users to close any trackers.
 
-For the Organization level, open the same account settings and proceed to **Organizations**. Choose your organization and under **Organization Level Access Control and Audit Trail**, select **Access Control**. Here, configure the roles and permissions at the organization level in a manner similar to the account level process.
 
+#### **Organization**: 
+
+To configure roles and permissions at the organization level, open the Organization Settings. From the module navigation bar, select your desired organization, then choose **Access Control**. Here, you can configure the roles and permissions at the organization level, following a process similar to the one used at the account level
+
+#### **Project**: 
 To set roles and permissions at the Project level, navigate to the **Project** section from the module navigation bar, and select **Access Control**. Follow similar steps as above to establish the roles and permissions for the project level.
 
 ### Creating and Managing Resource Groups
@@ -53,6 +59,7 @@ Here's how you can create and manage resource groups for the remediation tracker
 3. Set the "Resource Scope" accordinlgy if you are creating one.
 4. Within the Resources, select Supply Chain Assurance.
 
-![Resource groups](./static/access-control-remediation.png "Resource groups")
+
+<DocImage path={require('./static/access-control-remediation.png')} width="100%" height="80%" title="Click to view full size image" />
 
 For configuring at both the organization and project levels, the navigation process is similar to what was detailed in the previous section.
