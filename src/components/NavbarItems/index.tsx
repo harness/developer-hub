@@ -7,20 +7,7 @@ import SearchResultBox from './components/SearhResultBox';
 const CoveoSearch = () => {
   const options: SearchBoxOptions = { numberOfSuggestions: 8 };
   const controller = buildSearchBox(buildEngine, { options });
-  const SearchBoxController = buildSearchBox(buildEngine, {
-    options: {
-      highlightOptions: {
-        notMatchDelimiters: {
-          open: '<strong>',
-          close: '</strong>',
-        },
-        correctionDelimiters: {
-          open: '<i>',
-          close: '</i>',
-        },
-      },
-    },
-  });
+  const SearchBoxController = buildSearchBox(buildEngine);
 
   const searchBoxRef = useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = useState(false);
