@@ -19,6 +19,7 @@
     "test": "npm run lint:ci"
   },
   "dependencies": {
+    "@coveo/headless": "^3.12.0",
     "@docusaurus/core": "^3.6.2",
     "@docusaurus/cssnano-preset": "^3.6.2",
     "@docusaurus/faster": "^3.6.2",
