@@ -1,0 +1,16 @@
+import "./_fme-preview-admonition.css"
+
+:::info[FME Preview (Phase One)]
+The FME module accessed within Harness is in preview, currently in phase one of a three-phase integration plan. After phase three, FME will be a fully integrated Harness module.
+
+**In [phase one](https://www.harness.io/split-fme-preview-differences), Harness FME does not yet support:**
+* <span class={props.ApiInfoHighlight}> API HTTP access and FME third-party integrations</span>
+* <span class={props.AdminInfoHighlight}>granular permissions (at the environment/object level and for date export)</span>
+* Harness-defined login users and groups
+
+In (future) phase two, account (formerly called workspace), login users, groups, and permissions will be migrated to the Harness platform.
+
+In (future) phase three, FME will integrate seamlessly with Harness Pipelines and Policies, and other _better together_ features.
+
+Split is renamed to Feature Management & Experimentation (FME) in Harness. If you are using standalone Split you can continue to do so. Our customer success and support teams will be in contact with you to help you ensure a smooth transition into FME when the time is right.
+:::

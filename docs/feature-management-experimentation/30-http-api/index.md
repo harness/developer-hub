@@ -9,11 +9,15 @@ helpdocs_is_published: true
 
 import Link from "@docusaurus/Link";
 
+import FmePreviewAdmonition from "@site/docs/feature-management-experimentation/_templates/_fme-preview-admonition.md";
+
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/12622773861901-Admin-API </button>
 </p>
 
-## FME API
+<FmePreviewAdmonition ApiInfoHighlight="infoHighlight" />
+
+## FME HTTP API
 
 Admin API
 
