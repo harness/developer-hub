@@ -15,7 +15,7 @@ import FmePreviewAdmonition from "@site/docs/feature-management-experimentation/
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360045064852-Integrations </button>
 </p>
 
-<FmePreviewAdmonition AdminInfoHighlight="infoHighlight" />
+<FmePreviewAdmonition ApiInfoHighlight="infoHighlight" />
 
 Split integrates across a number categories including messaging, monitoring, issue management, customer data platforms and analytics. The Split developer community has contributed a number of integrations, bringing data from your feature delivery platform into the tools your team uses to enhance collaboration, making all tools flag aware. If you're not seeing a tool you need to be connected to Split, we encourage you to leverage Split’s API and SDK functionality to connect with the tools your team uses. If you need help leveraging Split’s SDK or API, contact [support@split.io](mailto:support@split.io).
 
