@@ -14,15 +14,17 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
 
   useEffect(() => {
     controller.subscribe(() => setState(controller.state));
-  }, [controller]);
+  }, []);
 
   return (
     <div className={styles.searchBoxMain}>
       <div className={styles.searchBox}>
         <input
-          placeholder="Search ..."
+          placeholder="search ..."
           value={state.value}
           onChange={(e) => {
+            console.log(e.target.value);
+            
             controller.updateText(e.target.value);
             setInputValue(e.target.value);
           }}

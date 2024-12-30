@@ -1,15 +1,12 @@
-import {
-  buildPager,
-  Pager as HeadlessPager,
-  PagerOptions,
-} from '@coveo/headless';
-import React, { useEffect, useState, FunctionComponent } from 'react';
-import buildEngine from '../Engine';
+import { Pager } from '@coveo/headless';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
-const Pager: FunctionComponent = () => {
-  const options: PagerOptions = { numberOfPages: 5 };
-  const controller = buildPager(buildEngine, { options });
+interface PagerProps {
+  controller: Pager;
+}
 
+const Pager: React.FC<PagerProps> = (props) => {
+  const { controller } = props;
   const [state, setState] = useState(controller.state);
   const [activePage, setActivePage] = useState(1);
 

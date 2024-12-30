@@ -1,11 +1,11 @@
 import { Facet as FacetController } from '@coveo/headless';
 import React, { useEffect, useState } from 'react';
+import { moduleIconAndColor } from '../data';
 import styles from './styles.module.scss';
 interface FacetProps {
   controller: FacetController;
   title: string;
 }
-import { moduleIconAndColor, contentTypeData } from '../data';
 const Facet: React.FC<FacetProps> = (props) => {
   const { controller } = props;
   const [state, setState] = useState(controller.state);
@@ -14,15 +14,21 @@ const Facet: React.FC<FacetProps> = (props) => {
     const unsubscribe = controller.subscribe(() => {
       setState(controller.state);
     });
-
-    // Cleanup function
     return () => {
       unsubscribe();
     };
   }, []);
 
   useEffect(() => {
+    if (controller.state.facetId == 'commonsource') {
+      controller.toggleSelect({
+        numberOfResults: 3279,
+        state: 'selected',
+        value: 'Developer Hub',
+      });
+    }
     controller.sortBy('alphanumeric');
+    controller.showMoreValues();
   }, []);
 
   if (!state.values.length) {
@@ -76,8 +82,9 @@ const Facet: React.FC<FacetProps> = (props) => {
                       : 'normal',
                   }}
                 >
-                  {value.value} <span> ({value.numberOfResults})</span>
+                  {value.value}
                 </p>
+                <span> ({value.numberOfResults})</span>
               </div>
             </li>
           ))}

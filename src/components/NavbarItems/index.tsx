@@ -1,17 +1,12 @@
+import { buildSearchBox, SearchBoxState } from '@coveo/headless';
 import React, { useEffect, useRef, useState } from 'react';
-import { buildSearchBox, SearchBoxOptions } from '@coveo/headless';
 import SearchBox from './components/SearchBox';
-import buildEngine from './Engine';
+import InitializeCoveo from './Engine';
 import SearchResultBox from './components/SearhResultBox';
-
 const CoveoSearch = () => {
-  const options: SearchBoxOptions = { numberOfSuggestions: 8 };
-  const controller = buildSearchBox(buildEngine, { options });
-  const SearchBoxController = buildSearchBox(buildEngine);
-
   const searchBoxRef = useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = useState(false);
-
+  const [searchBoxController, setSearchBoxController] = useState<any>(null);
   const handleClickOutside = (event: MouseEvent) => {
     if (
       searchBoxRef.current &&
@@ -33,12 +28,24 @@ const CoveoSearch = () => {
       setOpen(true);
     }
   };
+  const [engine, setEngine] = useState<any>(null);
+  useEffect(() => {
+    async function Initialize() {
+      const engine = await InitializeCoveo();
+      setEngine(engine);
+      const SearchBoxController = buildSearchBox(engine);
+      setSearchBoxController(SearchBoxController);
+    }
+    Initialize();
+  }, []);
 
+  if (!searchBoxController) {
+    return <div>Loading...</div>;
+  }
   return (
     <div>
-      <SearchBox controller={SearchBoxController} onSearch={handleSearch} />
-
-      <SearchResultBox ref={searchBoxRef} open={open} />
+      <SearchBox controller={searchBoxController} onSearch={handleSearch} />
+      <SearchResultBox ref={searchBoxRef} open={open} engine={engine} />
     </div>
   );
 };

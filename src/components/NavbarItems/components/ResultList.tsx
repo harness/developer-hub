@@ -1,21 +1,12 @@
-import { useState, useEffect } from 'react';
-import {
-  buildResultList,
-  ResultList as ResultListController,
-} from '@coveo/headless';
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
-
-import { moduleIconAndColor, contentTypeData } from '../data';
-import buildEngine from '../Engine';
-
-const ResultList: React.FC = () => {
-  const controller = buildResultList(buildEngine, {
-    options: {
-      fieldsToInclude: ['categoryname', 'commonmodule', 'commonsource'],
-    },
-  });
+import { contentTypeData, moduleIconAndColor } from '../data';
+import { ResultList as ResultListController } from '@coveo/headless';
+interface ResultListProps {
+  controller: ResultListController;
+}
+const ResultList: React.FC<ResultListProps> = (props) => {
+  const { controller } = props;
   const [state, setState] = useState(controller.state);
 
   useEffect(

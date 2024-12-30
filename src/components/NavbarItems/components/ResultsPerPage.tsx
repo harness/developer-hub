@@ -1,16 +1,12 @@
-import {
-  buildResultsPerPage,
-  ResultsPerPage as HeadlessResultsPerPage,
-} from '@coveo/headless';
-import React, { FunctionComponent, useEffect, useState } from 'react';
-import buildEngine from '../Engine';
+import { ResultsPerPage } from '@coveo/headless';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
-
-const ResultsPerPage: FunctionComponent = () => {
+interface ResultsPerPageProps {
+  controller: ResultsPerPage;
+}
+const ResultsPerPage: React.FC<ResultsPerPageProps> = (props) => {
+  const { controller } = props;
   const options = [10, 25, 50, 100];
-  const controller = buildResultsPerPage(buildEngine, {
-    initialState: { numberOfResults: options[0] },
-  });
 
   const [state, setState] = useState(options[0]);
 

@@ -1,22 +1,14 @@
+import { BreadcrumbManagerState } from '@coveo/headless';
 import React, { useEffect, useState } from 'react';
-import {
-  BreadcrumbManager as BreadcrumbManagerType,
-  BreadcrumbManagerState,
-  buildBreadcrumbManager,
-} from '@coveo/headless';
-import headlessEngine from '../Engine';
 import styles from './styles.module.scss';
 
-export default function FacetBreadcrumbs() {
-  const breadcrumbManager: BreadcrumbManagerType =
-    buildBreadcrumbManager(headlessEngine);
-  const [state, setState] = useState<BreadcrumbManagerState>(
-    breadcrumbManager.state
-  );
+export default function FacetBreadcrumbs(props) {
+  const { controller } = props;
+  const [state, setState] = useState<BreadcrumbManagerState>(controller.state);
 
   useEffect(() => {
-    const unsubscribe = breadcrumbManager.subscribe(() => {
-      setState(breadcrumbManager.state);
+    const unsubscribe = controller.subscribe(() => {
+      setState(controller.state);
     });
     return () => unsubscribe();
   }, []);
@@ -48,7 +40,7 @@ export default function FacetBreadcrumbs() {
         {state.hasBreadcrumbs && (
           <button
             className={styles.clearButton}
-            onClick={breadcrumbManager.deselectAll}
+            onClick={controller.deselectAll}
           >
             Clear All Filters
           </button>
