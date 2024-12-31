@@ -23,6 +23,7 @@ async function InitializeCoveo() {
       return item;
     } catch (error) {
       console.error('Error fetching Coveo token:', error);
+      return {};
     }
   };
 
@@ -40,9 +41,9 @@ async function InitializeCoveo() {
 
   const engine = buildSearchEngine({
     configuration: {
-      organizationId: tokenData?.orgId,
-      accessToken: tokenData?.token,
-      organizationEndpoints: getOrganizationEndpoints(tokenData.orgId),
+      organizationId: tokenData?.orgId || '',
+      accessToken: tokenData?.token || '',
+      organizationEndpoints: getOrganizationEndpoints(tokenData?.orgId || ''),
     },
   });
 

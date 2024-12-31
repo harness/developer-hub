@@ -23,15 +23,13 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
           placeholder="search ..."
           value={state.value}
           onChange={(e) => {
-            console.log(e.target.value);
-            
             controller.updateText(e.target.value);
             setInputValue(e.target.value);
           }}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              controller.submit(); 
-              props.onSearch(inputValue); 
+              controller.submit();
+              props.onSearch(inputValue);
             }
           }}
           type="search"

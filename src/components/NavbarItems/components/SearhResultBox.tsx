@@ -136,6 +136,7 @@ const SearchResultBox = forwardRef<HTMLDivElement, SearchResultBoxProps>(
               />
               <div className={styles.hrLine}></div>
               <ResultList controller={resultListController} />
+              <div className={styles.hrLine}></div>
               <div className={styles.bottom}>
                 <Pager controller={pagerController} />
                 <ResultsPerPage controller={resultsPerPageController} />

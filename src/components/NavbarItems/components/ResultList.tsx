@@ -19,12 +19,17 @@ const ResultList: React.FC<ResultListProps> = (props) => {
   if (!state.results.length) {
     return <div>No results</div>;
   }
-
+  function handleClick(url: string) {
+    window.location.href = url;
+  }
   return (
     <div className={styles.resultList}>
       <ul>
         {state.results.map((result) => (
-          <li key={result.uniqueId}>
+          <li
+            key={result.uniqueId}
+            onClick={() => handleClick(result.clickUri)}
+          >
             <article>
               {result?.raw?.commonsource ? (
                 <div className={styles.tagTop}>
