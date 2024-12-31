@@ -198,7 +198,7 @@ When setting up an AWS SM connector in Harness, you can now select from two addi
 
 - Recovery Window in Days (Optional):If specified, the deletion request sent to AWS will include the provided recovery window. While the secret is removed from Harness, it remains recoverable in AWS Secrets Manager during the specified recovery period. The recovery window can range from 7 to 30 days and defaults to 30 days if not specified.
 
-> [!NOTE]
+ #### Note:
 
  - If a user attempts to create such a secret (as an inline secret) again in Harness, an exception will be thrown.
 
