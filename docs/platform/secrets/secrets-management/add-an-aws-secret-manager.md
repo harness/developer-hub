@@ -188,6 +188,24 @@ In **Setup Delegates,** enter [**Selectors**](../../delegates/manage-delegates/s
 
 Once the Test Connection succeeds, select **Finish**. You can now see the connector in **Connectors**.
 
+### AWS Secret Manager with Recovery 
+
+When setting up an AWS SM connector in Harness, you can now select from two additional fields:
+
+![](../../secrets/static/aws-secret-manager-with-recovery-window.png)
+
+- Force Delete Without Recovery: This option determines whether a secret in AWS Secrets Manager should be permanently deleted without a recovery window. Selecting this will immediately and irreversibly delete the secret in AWS Secrets Manager, with no possibility of recovery.  
+
+- Recovery Window in Days (Optional):If specified, the deletion request sent to AWS will include the provided recovery window. While the secret is removed from Harness, it remains recoverable in AWS Secrets Manager during the specified recovery period. The recovery window can range from 7 to 30 days and defaults to 30 days if not specified.
+
+> [!NOTE]
+
+ - If a user attempts to create such a secret (as an inline secret) again in Harness, an exception will be thrown.
+
+  ![](../../secrets/static/aws-secret-manager-with-recovery-window-err.png)
+
+ - Force Delete Without Recovery cannot be set to true if a value is provided for the recovery window.
+
 ### Reference JSON secrets
 
 import Refj from '/docs/platform/shared/reference-via-json.md';
