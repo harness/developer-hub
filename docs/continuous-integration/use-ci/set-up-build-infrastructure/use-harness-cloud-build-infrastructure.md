@@ -201,11 +201,14 @@ To enable this feature, set the `nestedVirtualization` property to `true` as sho
 
 ### Whitelisting for Access to On-Prem Services (Mac Platform)
 
-To allow access from our Mac baremetal CI machines to your on-prem services, please ensure that the following CIDR block is whitelisted:
+If you're running builds on Harness Cloud macOS machines, and require access to on-premises resources, please whitelist the following CIDR block:
 
 	• CIDR: 207.254.53.128/25
 
-This will enable seamless communication between our Mac-based CI infrastructure and your on-prem services.
+This will enable seamless communication between Harness Mac-based CI infrastructure and your on-prem services.
+
+Alternatively, you can also use [Secure connector](/docs/continuous-integration/secure-ci/secure-connect) for accessing your on-premises resources.
+
 
 ### Harness Cloud best practices
 
