@@ -7,12 +7,10 @@ const doYourCustomStuff = () => {
   );
   const navbar__inner = document.querySelector('.navbar__inner');
 
-  const searchBoxMain_src = navbar__inner.querySelector(
-    '.searchBoxMain_src-components-NavbarItems-components-styles-module'
-  );
+  const searchBoxMain = navbar__inner.querySelector('#coveo-search-main');
 
-  if (searchBoxMain_src) {
-    searchBoxMain_src.classList.add('main-nav-coveo');
+  if (searchBoxMain) {
+    searchBoxMain.classList.add('main-nav-coveo');
   }
 
   const searchButton = document.createElement('i');

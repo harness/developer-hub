@@ -1,6 +1,8 @@
 .searchBoxMain {
   position: relative;
   margin: 0 10px;
+  max-width: 220px;
+ 
   ul {
     width: 220px;
     position: absolute;
@@ -46,7 +48,6 @@
     align-items: center;
     gap: 8px;
 
-    width: 220px;
     i {
       font-size: 18px;
       cursor: pointer;

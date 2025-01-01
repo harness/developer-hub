@@ -17,7 +17,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
   }, []);
 
   return (
-    <div className={styles.searchBoxMain}>
+    <div className={styles.searchBoxMain} id="coveo-search-main">
       <div className={styles.searchBox}>
         <input
           placeholder="search ..."
