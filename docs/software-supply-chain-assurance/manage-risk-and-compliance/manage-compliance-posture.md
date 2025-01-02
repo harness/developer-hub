@@ -47,7 +47,7 @@ Users can view rules filtered by standards and apply an additional filter specif
 
 ## View Impacted Targets
 
-Upon clicking a rule in the Rules tab, you will see a list of all the targets impacted by the evaluation. This page provides information about the rule, its description, evaluation history and general remediation steps to address any failure
+Upon clicking a rule in the Rules tab, you will see a list of all the targets impacted by the evaluation. This page provides information about the rule, its description, evaluation history and general remediation steps to address any failures.
 
 <DocImage path={require('./static/compliance-rules-impacted-entity.png')} width="100%" height="100%" title="Click to view full size image" />
 
