@@ -47,17 +47,27 @@ Described below is how the control plane interacts with the agent-based model:
 - **Networking Constraints**: Agents must maintain continuous communication with the control plane, often requiring firewall exceptions and network reconfigurations.
 - **Resource Utilization**: Even when no experiments are running, agents consume resources, leading to idle-time resource wastage.
 
-
 ## Agentless Chaos Execution Model
+
+To overcome the challenges in the [agent-based model](#challenges-of-the-agent-model), Harness CE facilitates an agentless model that: 
+
+- Is set up with minimal effort on a centralized jump cluster with dual network access.
+- Initiates chaos against multiple target systems (or clusters) by launching just-in-time, transient chaos runners that reside with the application containers for the period of fault execution. 
+- Can route all external traffic to the chaos control plane through a dedicated network node/jump cluster, so that the application clusters can be opened to the external world. 
 
 **Centralized Execution Plane**
 The agentless model introduces the concept of CEP (Centralized ExecutionPlane). With this, the model performs the following:
 
    - Instead of deploying persistent agents on target clusters, a **Harness Delegate** or **Jump Cluster** is configured as a central orchestrator.
    - **Harness Delegate**: Orchestrates the launch of transient Chaos Runners in the target systems.
-   - The Delegate has access to multiple target clusters and is capable of launching transient **Chaos Runners** in the desired clusters, only for the duration of the chaos experiment.
+   - The Delegate has access to multiple target clusters and is capable of launching just-in-time, transient **Chaos Runners** in the desired clusters, only for the duration of the chaos experiment.
    - **Chaos Runners**: Transient pods that inject faults, collect logs, and send results back to the Delegate.
-   - **Harness Network Proxy (HNP)**: Optional component that aggregates network traffic from multiple Runners and relays it to the control plane.
+   - **Harness Network Proxy (HNP)**: Optional component that aggregates network traffic from multiple runners and relays it to the control plane.
+
+The diagram below describes how the Harness environment (SaaS) and user environment (Centralized Execution Plane) interact with each other.
+
+    ![](./static/how-stuff-works/central-execution-plane.png) 
+
 
 ### Interaction with the Control Plane
 
@@ -68,6 +78,9 @@ Described below is how the control plane interacts with the agent-less model:
     - The Chaos Runners execute the desired faults as specified by the control plane.
     - Chaos Runners stream log data, status, and metrics back to the control plane via the Delegate or **Harness Network Proxy (HNP)**.
    
+The diagram below describes the functional flow of control in the centralized execution plane.
+
+    ![](./static/how-stuff-works/cep.png)
 
 ### Advantages of the Agentless Model
 
@@ -98,11 +111,28 @@ Described below is how the control plane interacts with the agent-less model:
 | **Chaos Runner**          | Cluster-Wide or Namespace-Scoped | Injects faults within its target namespace or across multiple namespaces |
 | **Harness Network Proxy** | Centralized on Delegate          | Relays traffic from Runners to Control Plane                             |
 
+The diagram below describes how Harness Delegate (Centralized Execution Plane) interacts with the transient chaos runner in the target cluster.
+
+    ![](./static/how-stuff-works/cluster-scope.png)
+
+
 :::tip
 To customize permissions for:
 - **Namespace-Scoped Permissions**: You can restrict Delegate and Chaos Runner permissions to specific namespaces by creating custom service accounts.
+
+    ![](./static/how-stuff-works/restrict-scope.png)
+
 - **Role Binding**: You can bind service accounts to specific roles to control the blast radius of chaos execution.
+
+    ![](./static/how-stuff-works/custom-sa.png)
+
 :::
+
+## Harness Network Proxy Configuration Mode
+
+Harness Network Proxy can be deployed in different modes, and they are described in the diagram below.
+
+    ![](./static/how-stuff-works/agent-proxy-deployment-modes.png)
 
 ## Conclusion
 
