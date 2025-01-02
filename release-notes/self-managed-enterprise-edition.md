@@ -249,7 +249,6 @@ Some admins might not have Google account access to download air gap bundles. As
 
 ```
 gsutil -m cp \
-
   "gs://smp-airgap-bundles/harness-0.24.0/ccm_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.24.0/cdng_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.24.0/ce_images.tgz" \
@@ -264,7 +263,7 @@ gsutil -m cp \
 
 #### Harness Platform
 
-- Upgrades Done on Harness Platform
+- Library upgrades done on Harness Platform
   <details>
   <summary> Show details </summary>
   
