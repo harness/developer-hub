@@ -4,10 +4,10 @@ description: Details of the integrations and their permissions required
 sidebar_position: 89
 ---
 
-Harness requires gathering data from all relevant targets to perform security scanning and apply standards across multiple software supply chain targets. The SCS module facilitates this by using Harness-built integration apps that connect with these targets and fetch the necessary data. These targets include code repositories, artifacts, and CI/CD toolchains. 
+Harness requires gathering data from all relevant integrations to perform security scanning and apply standards across multiple software supply chain targets. The SCS module facilitates this by using Harness-built integration apps that connect with these target types and fetch the necessary data. These target types include code repositories, artifacts, and CI/CD toolchains. 
 
 :::note
-Currently, Harness supports only Code Repositories, and specifically GitHub. In the near future, Harness will add support for other targets.
+Currently, Harness supports only Code Repositories, and specifically GitHub. In the near future, Harness will add support for other integrations.
 :::
 <DocImage path={require('./static/integrations-permissions-overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
