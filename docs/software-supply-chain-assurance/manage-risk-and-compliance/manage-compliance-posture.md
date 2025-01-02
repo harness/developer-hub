@@ -14,14 +14,14 @@ The Compliance section within the SCS module serves as a hub for assessing and u
 To learn more about the supported standards and the rules applied to targets, please refer to the documentation on [Standards and Rule Definitions](./manage-compliance-posture).
 
 :::note
-Currently Harness supports Code Repositories, and CI/CD. Please refer to the [Use SCS](../get-started/onboarding-guide#use-scs) section in the onboarding document to see the full list of supported integrations for each feature. In the near future, Harness will add support for other targets and integrations.
+Currently Harness supports Code Repositories, Artifacts and CI/CD. Please refer to the [Use SCS](../get-started/onboarding-guide#use-scs) section in the onboarding document to see the full list of supported integrations for each feature. In the near future, Harness will add support for other target types and integrations.
 :::
 
 ## Compliance Overview
 
 The Summery tab provides comprehensive details of evaluations conducted across all target types of the software supply chain. This tab offers details about:
 
-<DocImage path={require('./static/compliance-summery-tab.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/compliance-summary.png')} width="100%" height="100%" title="Click to view full size image" />
 
 * **Evaluation Breakdown**: A summary of rules passing versus failing. 
 * **Failure by Severity**: Displays the number of failures categorized by severity levels: critical, high, medium, and low. 
@@ -49,7 +49,7 @@ Users can view rules filtered by standards and apply an additional filter specif
 
 Upon clicking a rule in the Evaluations tab, you will see a list of all the targets impacted by the evaluation. This page provides information about the rule, its description, evaluation history and general remediation steps to address any failures.
 
-<DocImage path={require('./static/compliance-rules-impacted-entity.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/compliance-target.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 Clicking on an item will bring up the latest evaluation details. Alternatively, you can click on an icon from the evaluation history to view specific evaluation details. The information includes the time of evaluation, the reason for failure (if failed), and the remediation information to address the issues.
