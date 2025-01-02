@@ -7,7 +7,7 @@ sidebar_position: 2
 
 The **Rule Definitions** section offers a complete list of all the standards and associated rules supported by Harness SCS. These rules are applied to various entity types, and the overall compliance posture is presented in the Compliance section of SCS. To learn more about managing the compliance status, refer to the document [Manage Compliance Posture](./manage-compliance-posture)
 
-<DocImage path={require('./static/rule-definations.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/compliance-ruldefinitons.png')} width="100%" height="100%" title="Click to view full size image" />
 
 The page offers details about the rule, including its description, severity (defined by Harness), the standard with the rule ID to which it belongs, and the entity type to which it applies (e.g., code repository, artifact, CI/CD).
 

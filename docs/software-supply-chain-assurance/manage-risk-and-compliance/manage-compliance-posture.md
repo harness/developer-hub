@@ -36,7 +36,7 @@ Additionally, users can apply filters based on standards to view evaluations and
 
 The Rules tab in the “Compliance” section provides a detailed view of all the rules and their complete execution details applied across all the entities configured. For each rule, along with its name and description, the view provides the following information:
 
-<DocImage path={require('./static/compliance-rules-tab.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/compliance-evaluations.png')} width="100%" height="100%" title="Click to view full size image" />
 
 * **Evaluations**: Displays the total number of evaluations occurred, indicating whether they passed or failed, and the total number of entity types to which the rule is applied (e.g., code repositories, artifacts, CI/CD tools).
 * **Severity**: Presents the severity of each rule, categorized as critical, high, medium, or low.
