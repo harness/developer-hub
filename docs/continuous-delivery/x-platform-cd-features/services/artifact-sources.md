@@ -54,6 +54,28 @@ When you hardcode the artifact in your manifests, any artifacts added to your Ha
 Configuring dependent fields, such as the artifact tag, as runtime inputs when the primary artifact is set as an expression is supported in YAML only and is not supported through the UI.
 :::
 
+### Disable Artifact Validation
+
+:::note
+Currently, the disable artifact validation feature is behind the feature flag `CDS_ARTIFACT_DISABLE_VALIDATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can bypass primary artifact validation for a service by selecting the **Disable Artifact Validation** checkbox. When this option is enabled, the pipeline treats the service as though it does not have an artifact, skipping the artifact validation process entirely.
+
+This feature works for both single primary artifact and multiple primary artifact services.
+
+- If the Disable Artifact Validation option is enabled, and the artifact or artifact tag is configured as runtime inputs, the pipeline will not prompt for the artifact or artifact tag during execution.
+- In the case of multiple primary artifacts, this checkbox applies to all primary artifacts associated with the service.
+
+Additionally, this logic applies when propagating services from previous stages.
+- If you enable Disable Artifact Validation in one stage and propagate the service to a subsequent stage, the artifact validation will also be skipped in the propagated stage.
+
+Note: This setting applies only to the primary artifact and does not affect sidecar artifacts.
+
+:::warning
+If you enable the Disable Artifact Validation option and any of the steps in the pipeline execution depend on the artifacts specified in the service, those steps are expected to fail. Ensure that no steps rely on the artifact if you choose to enable this setting.
+:::
+
 ## Docker
 
 ### Use artifacts in any Docker registry
