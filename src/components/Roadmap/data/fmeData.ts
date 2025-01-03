@@ -15,11 +15,6 @@ export const FmeData: Horizon = {
         description: "Disable the flow of impressions for individual flags.",
       },
       {
-        tag: [{ value: "Monitoring" }],
-        title: "Feature flag alerts on Monitoring tab",
-        description: "Show significance alerts on the monitoring tab, in addition to the threshold-based alerts shown now.",
-      },
-      {
         tag: [{ value: "Measurement" }],
         title: "Rum agents sampling",
         description: "Control the number of events that are auto-captured by the Split Suite and RUM agents.",
@@ -92,6 +87,11 @@ export const FmeData: Horizon = {
         tag: [{ value: "Better Together" }],
         title: "Access Split from within Harness app",
         description: "Allow Harness customers to authenticate and access Split from the Harness application.",
+      },
+      {
+        tag: [{ value: "Monitoring" }],
+        title: "Feature flag alerts on Monitoring tab",
+        description: "Show significance alerts on the monitoring tab, in addition to the threshold-based alerts shown now.",
       },
       {
         tag: [{ value: "Measurement" }],
