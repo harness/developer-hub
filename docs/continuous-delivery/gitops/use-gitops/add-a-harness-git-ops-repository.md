@@ -71,7 +71,7 @@ import TabItem from '@theme/TabItem';
          - If you use Two-Factor Authentication for your Git repo, you connect over **HTTPS** or **SSH**.
          - For **SSH**, ensure that the key is not OpenSSH, but rather PEM format. To generate an SSHv2 key, use: `ssh-keygen -t rsa -m PEM` The `rsa` and `-m PEM` ensure the algorithm and that the key is PEM. Next, follow the prompts to create the PEM key. 
          - For more information, see the [ssh-keygen man page](https://linux.die.net/man/1/ssh-keygen).
-         - **HTTP** also has the **Anonymous** option.
+         - **HTTP** also has the **Anonymous** option. When a repository is configured with an anonymous connection type (public - no credentials), Harness automatically uses the repository credentials if they are available, even if you do not explicitly select them in the UI.
       - For steps on setting up the GitHub App, go to [Use a GitHub App in a GitHub Connector](/docs/platform/connectors/code-repositories/git-hub-app-support).
       - Select **Save & Continue**. Harness validates the connection.
    * **Use a Credentials Template**
