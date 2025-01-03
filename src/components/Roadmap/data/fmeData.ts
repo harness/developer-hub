@@ -82,6 +82,7 @@ export const FmeData: Horizon = {
         tag: [{ value: "Targeting" }],
         title: "SemVer attribute dictionary support",
         description: "Support SemVer type attributes and suggested values in the attribute dictionary to streamline entry & reduce risk of errors.",
+        link:"https://www.split.io/releases/2024-12-06/",
       },
       {
         tag: [{ value: "Better Together" }],
@@ -92,6 +93,7 @@ export const FmeData: Horizon = {
         tag: [{ value: "Monitoring" }],
         title: "Feature flag alerts on Monitoring tab",
         description: "Show significance alerts on the monitoring tab, in addition to the threshold-based alerts shown now.",
+        link:"https://www.split.io/releases/#zzodil-2024-11-27",
       },
       {
         tag: [{ value: "Measurement" }],
