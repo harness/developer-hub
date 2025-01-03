@@ -102,7 +102,7 @@ When you're done, infrastructure will look something like this:
 
 ## Azure function Deploy
 
-In the execution tab of the pipeline stage, select *Add Step** and select **Azure function Deploy**.
+In the execution tab of the pipeline stage, select **Add Step** and select **Azure function Deploy**.
 
 Currently Azure function deployment supports basic and custom deployment strategy.
 

@@ -22,6 +22,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| CDS_SERVICE_OVERRIDES_2_0_YAML_V2_SUPPORT | Ensures that overrides from environment configuration YAML are ignored when Override V2 is enabled. <b> This feature is in Limited GA. </b> |
 | CDS_GOOGLE_CLOUD_RUN | Allows users to deploy artifacts to Google Cloud Run. <b> This feature is in Limited GA. </b> |
 | CDS_AZURE_FUNCTION | Allows users to deploy Azure Functions through Harness. <b> This feature is in Limited GA. </b> |
 | CDS_SVC_ENV_DASHBOARD_FOR_ACCOUNT_AND_ORG_LEVEL | Allows users to do Post-Deployment Rollback for services at both the Account and Organisation levels. <b> This feature is in Limited GA. </b> |
