@@ -39,7 +39,7 @@ These release notes describe recent changes to Harness Software Engineering Insi
   * **Delivered story creep points:** This represents the sum of story points from completed tickets where estimates were increased during the sprint.
   * **Velocity points:** The velocity metric now is calculated as the sum of committed points done, delivered scope creep points, and delivered story creep points. Note that this feature is behind a feature flag. Please contact Harness Support to have it enabled for your account.
 * Added performance improvements to the **Collection settings** page, significantly reducing loading time (SEI-9647)
-* Redesigned the [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/azure-devops/) interface to display separate tiles for Azure Boards, Azure Pipelines, and Azure Repos. This helps identifying the service easily while maintaining unified configuration capabilities. (SEI-9795)
+* Redesigned the [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops) interface to display separate tiles for Azure Boards, Azure Pipelines, and Azure Repos. This helps identifying the service easily while maintaining unified configuration capabilities. (SEI-9795)
 
 #### Fixed issues
 
