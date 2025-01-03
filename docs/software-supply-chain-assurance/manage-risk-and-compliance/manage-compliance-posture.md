@@ -5,23 +5,23 @@ description: Assess and understand the risk posture of your software supply chai
 sidebar_position: 1
 ---
 
-The Compliance section within the SCS module serves as a hub for assessing and understanding the risk posture of your entire supply chain. This section is indispensable for GRC (Governance, Risk, and Compliance) and security teams as it provides detailed evaluation results after applying all relevant rules to various entity types within your supply chain. You can access a thorough summary of these evaluations, including the specific rules applied, their execution statuses, and the entities impacted by each rule.
+The Compliance section within the SCS module serves as a hub for assessing and understanding the risk posture of your entire supply chain. This section is indispensable for GRC (Governance, Risk, and Compliance) and security teams as it provides detailed evaluation results after applying all relevant rules to various target types within your supply chain. You can access a thorough summary of these evaluations, including the specific rules applied, their execution statuses, and the target types impacted by each rule.
 
 
-<DocImage path={require('./static/rac-overview.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/compliance-infographic.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
-To learn more about the supported standards and the rules applied to entities, please refer to the documentation on [Standards and Rule Definitions](./manage-compliance-posture).
+To learn more about the supported standards and the rules applied to targets, please refer to the documentation on [Standards and Rule Definitions](./manage-compliance-posture).
 
 :::note
-Currently Harness supports Code Repositories, and CI/CD. Please refer to the [Use SCS](../get-started/onboarding-guide#use-scs) section in the onboarding document to see the full list of supported integrations for each feature. In the near future, Harness will add support for other entities and integrations.
+Currently Harness supports Code Repositories,and CI/CD. Please refer to the [Use SCS](../get-started/onboarding-guide#use-scs) section in the onboarding document to see the full list of supported integrations for each feature. In the near future, Harness will add support for other target types and integrations.
 :::
 
 ## Compliance Overview
 
-The Summery tab provides comprehensive details of evaluations conducted across all entity types of the software supply chain. This tab offers details about:
+The Summery tab provides comprehensive details of evaluations conducted across all target types of the software supply chain. This tab offers details about:
 
-<DocImage path={require('./static/compliance-summery-tab.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/compliance-summary.png')} width="100%" height="100%" title="Click to view full size image" />
 
 * **Evaluation Breakdown**: A summary of rules passing versus failing. 
 * **Failure by Severity**: Displays the number of failures categorized by severity levels: critical, high, medium, and low. 
@@ -34,22 +34,22 @@ Additionally, users can apply filters based on standards to view evaluations and
 
 ## View Rule Evaluations
 
-The Rules tab in the “Compliance” section provides a detailed view of all the rules and their complete execution details applied across all the entities configured. For each rule, along with its name and description, the view provides the following information:
+The Evaluations tab in the “Compliance” section provides a detailed view of all the rules and their complete execution details applied across all the targets configured. For each rule, along with its name and description, the view provides the following information:
 
-<DocImage path={require('./static/compliance-rules-tab.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/compliance-evaluations-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 
-* **Evaluations**: Displays the total number of evaluations occurred, indicating whether they passed or failed, and the total number of entity types to which the rule is applied (e.g., code repositories, artifacts, CI/CD tools).
+* **Evaluations**: Displays the total number of evaluations occurred, indicating whether they passed or failed, and the total number of targets to which the rule is applied (e.g., code repositories, artifacts, CI/CD tools).
 * **Severity**: Presents the severity of each rule, categorized as critical, high, medium, or low.
 * **Standard:** Indicates the standard to which the rule belongs and the rule's ID according to the official ID convention.
 
 Users can view rules filtered by standards and apply an additional filter specific to severity. Also, users can perform searches within the filtered results. The history of the data can be viewed for the last 24 hours, 7 days, and 30 days.
 
 
-## View Impacted Entities
+## View Impacted Target 
 
-Upon clicking a rule in the Rules tab, you will see a list of all the entities impacted by the evaluation. This page provides information about the rule, its description, evaluation history and general remediation steps to address any failures.
+Upon clicking a rule in the Evaluations tab, you will see a list of all the targets impacted by the evaluation. This page provides information about the rule, its description, evaluation history and general remediation steps to address any failures.
 
-<DocImage path={require('./static/compliance-rules-impacted-entity.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/compliance-target.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 Clicking on an item will bring up the latest evaluation details. Alternatively, you can click on an icon from the evaluation history to view specific evaluation details. The information includes the time of evaluation, the reason for failure (if failed), and the remediation information to address the issues.
