@@ -48,7 +48,7 @@ The Remediation Tracker is governed by the following permissions:
 To configure roles and permissions at the organization level, open the Organization Settings. From the module navigation bar, select your desired organization, then choose **Access Control**. Here, you can configure the roles and permissions at the organization level, following a process similar to the one used at the account level
 
 #### **Project**: 
-To set roles and permissions at the Project level, navigate to the **Project** section from the module navigation bar, and select **Access Control**. Follow similar steps as above to establish the roles and permissions for the project level.
+To set roles and permissions at the Project level, open the Project Settings, and select **Access Control**. Follow similar steps as above to establish the roles and permissions for the project level.
 
 ### Creating and Managing Resource Groups
 
