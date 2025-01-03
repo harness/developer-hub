@@ -1,0 +1,13 @@
+{
+    "label": "Adoption Guide",
+    "collapsible": "true",
+    "collapsed": "true",
+    "position": 2,
+    "link": {
+      "type": "generated-index",
+      "title": "Learn How to adopt IDP in your organization", 
+      "description": "Learn How to adopt IDP in your organization"
+    },
+    "customProps": {}
+  }
+  

@@ -70,7 +70,7 @@ spec:
   system: project-x
 ```
 
-Read more on how to [register a Software Component in the Catalog](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+Read more on how to [register a Software Component in the Catalog](/docs/internal-developer-portal/get-started/quickstart-guides/register-a-new-software-component).
 
 ## Layout YAML Reference
 
