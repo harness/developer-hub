@@ -50,12 +50,12 @@ static/  @rohanmaharjan100 @wei-harness
 # data/*.ts @global-data-file-owners
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
-/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
-/src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av
-/src/components/Docs/data/continuousDeliveryData*  @krishi0408 @SushrutHarness @vishal-av
+/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta
+/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta
+/src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
+/src/components/Docs/data/continuousDeliveryData*  @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
 # FirstGen CD Docs
-/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av
+/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
 # CD FAQs
 /docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness @vishal-av
 # GitEx FAQs
