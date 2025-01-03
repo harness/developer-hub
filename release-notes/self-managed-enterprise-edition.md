@@ -220,7 +220,7 @@ To fix this issue, follow these steps
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
 :::
 
-## Jan 03, 2025, patch version 0.24.0
+## Jan 06, 2025, patch version 0.24.0
 
 This release includes the following Harness module and component versions.
 
