@@ -80,7 +80,7 @@ export const FmeData: Horizon = {
       },
       {
         tag: [{ value: "SDK" }],
-        title: "JavaScript and Mobile SDK thin clients",
+        title: "Thin client SDKs for JavaScript and mobile",
         description: "Thin clients utilize a cloud service for evaluation. Rules are never transmitted to the client.",
       },
       {
