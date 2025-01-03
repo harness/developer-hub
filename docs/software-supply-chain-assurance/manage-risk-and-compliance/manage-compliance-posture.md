@@ -8,13 +8,13 @@ sidebar_position: 1
 The Compliance section within the SCS module serves as a hub for assessing and understanding the risk posture of your entire supply chain. This section is indispensable for GRC (Governance, Risk, and Compliance) and security teams as it provides detailed evaluation results after applying all relevant rules to various target types within your supply chain. You can access a thorough summary of these evaluations, including the specific rules applied, their execution statuses, and the target types impacted by each rule.
 
 
-<DocImage path={require('./static/rac-overview.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/compliance-infographic.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 To learn more about the supported standards and the rules applied to targets, please refer to the documentation on [Standards and Rule Definitions](./manage-compliance-posture).
 
 :::note
-Currently Harness supports Code Repositories, Artifacts and CI/CD. Please refer to the [Use SCS](../get-started/onboarding-guide#use-scs) section in the onboarding document to see the full list of supported integrations for each feature. In the near future, Harness will add support for other target types and integrations.
+Currently Harness supports Code Repositories,and CI/CD. Please refer to the [Use SCS](../get-started/onboarding-guide#use-scs) section in the onboarding document to see the full list of supported integrations for each feature. In the near future, Harness will add support for other target types and integrations.
 :::
 
 ## Compliance Overview
@@ -38,7 +38,7 @@ The Evaluations tab in the “Compliance” section provides a detailed view of 
 
 <DocImage path={require('./static/compliance-evaluations-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 
-* **Evaluations**: Displays the total number of evaluations occurred, indicating whether they passed or failed, and the total number of target types to which the rule is applied (e.g., code repositories, artifacts, CI/CD tools).
+* **Evaluations**: Displays the total number of evaluations occurred, indicating whether they passed or failed, and the total number of targets to which the rule is applied (e.g., code repositories, artifacts, CI/CD tools).
 * **Severity**: Presents the severity of each rule, categorized as critical, high, medium, or low.
 * **Standard:** Indicates the standard to which the rule belongs and the rule's ID according to the official ID convention.
 
