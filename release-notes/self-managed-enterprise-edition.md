@@ -233,13 +233,13 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.107.4 |
 | Platform Service | 1.46.1 |
 | Access Control Service | 1.68.0 |
-| Delegate | 24.10.84200 |
+| Delegate | 24.11.84503 |
 | GitOps Service | 1.20.6 |
 | Change Data Capture | 1.39.2 |
 | STO Core | 1.120.4 |
-| Test Intelligence Service | 1.34.1 |
-| NG UI | 1.48.17 |
-| LE NG | 1.5.6 |
+| Test Intelligence Service | 1.42.1 |
+| NG UI | 1.54.4 |
+| LE NG | 1.5.5 |
 | Looker | 1.6.1 |
 | Log Service | 1.14.6 |
 
