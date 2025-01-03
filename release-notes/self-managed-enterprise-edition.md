@@ -220,7 +220,7 @@ To fix this issue, follow these steps
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
 :::
 
-## December 23, 2024, patch version 0.24.0
+## Jan 03, 2025, patch version 0.24.0
 
 This release includes the following Harness module and component versions.
 
@@ -228,20 +228,20 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.24.0](https://github.com/harness/helm-charts/releases/tag/harness-0.24.0) |
 | Air Gap Bundle | [0.24.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.24.0) |
-| NG Manager | 1.62.11 |
-| CI Manager | 1.51.8 |
-| Pipeline Service | 1.101.11 |
-| Platform Service | 1.42.3 |
-| Access Control Service | 1.64.1 |
+| NG Manager | 1.68.4 |
+| CI Manager | 1.57.5 |
+| Pipeline Service | 1.107.4 |
+| Platform Service | 1.46.1 |
+| Access Control Service | 1.68.0 |
 | Delegate | 24.10.84200 |
-| GitOps Service | 1.19.4 |
-| Change Data Capture | 1.37.4 |
-| STO Core | 1.117.2 |
+| GitOps Service | 1.20.6 |
+| Change Data Capture | 1.39.2 |
+| STO Core | 1.120.4 |
 | Test Intelligence Service | 1.34.1 |
 | NG UI | 1.48.17 |
 | LE NG | 1.5.6 |
-| Looker | 1.5.0 |
-| Log Service | 1.14.5 |
+| Looker | 1.6.1 |
+| Log Service | 1.14.6 |
 
 #### Alternative air gap bundle download method
 
