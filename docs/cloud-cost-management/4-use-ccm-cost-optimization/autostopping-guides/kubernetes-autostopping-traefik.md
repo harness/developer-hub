@@ -71,6 +71,8 @@ spec:
       AutoStoppingRule: default-test-rule
 ```
 
+The `AutoStoppingRule` header should be set to a value following the pattern `<namespace>-<rule>` which can be found from the metadata of the `AutoStoppingRule` you created above.
+
 ## Change IngressRoute
 
 Once the Traefik ingressRoute is supported as a first class entity for AutoStopping, these changes will be automated.
