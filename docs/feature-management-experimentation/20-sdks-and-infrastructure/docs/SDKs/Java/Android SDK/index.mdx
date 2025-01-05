@@ -86,12 +86,14 @@ export const Result = SDKDocsBuilder(
     [
       Track,
       {
-        example: <TrackMetricEvents />,
+        showTitleH2: true,
+        example:     <TrackMetricEvents />,
       },
     ],
     [
       AdvancedFeatureFlagEvaluations,
       {
+        showTitleH2:         true,
         userAttributes:      <UserAttributes />,
         multipleTreatments:  <MultipleTreatments />,
         treatmentWithConfig: <TreatmentWithConfig />,
@@ -100,6 +102,7 @@ export const Result = SDKDocsBuilder(
     [
       Flush,
       {
+        title:     "Flush",
         extraInfo: <FlushInfo />,
         example:   <FlushCache />,
       },

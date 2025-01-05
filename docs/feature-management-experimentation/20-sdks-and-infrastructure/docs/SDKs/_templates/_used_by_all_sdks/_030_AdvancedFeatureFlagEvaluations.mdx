@@ -1,6 +1,27 @@
-## Advanced feature flag evaluations {#advanced-feature-flag-evaluations}
+
+<>
+{ props.showTitleH2 && <div>
+
+<h1>Advanced feature flag evaluations</h1>
+
+</div>
+}
+</>
 
 <>{props.listener}</>
 <>{props.multipleClients}</>
 <>{props.userConsent}</>
 <>{props.certificatePinning}</>
+
+
+
+<>
+{
+  props.shouldSkipStatsigOptions !== true && <div>
+
+The 3rd parameter is optional and allows you to pass in a [StatsigOptions](#statsig-options) to customize the SDK.
+
+  </div>
+}
+
+</>

@@ -1,0 +1,37 @@
+---
+title: Advanced feature flag evaluations
+sidebar_label: Advanced feature flag evaluations
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  AdvancedFeatureFlagEvaluations,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
+
+import UserAttributes        from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_030_UserAttributes.mdx";
+import MultipleTreatments    from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_031_MultipleTreatments.mdx";
+import TreatmentWithConfig   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_032_TreatmentWithConfig.mdx";
+
+import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
+
+export const toc = [];
+
+export const Result = SDKDocsBuilder(
+  [
+    [
+      AdvancedFeatureFlagEvaluations,
+      {
+        showTitleH2:         true,
+        userAttributes:      <UserAttributes />,
+        multipleTreatments:  <MultipleTreatments />,
+        treatmentWithConfig: <TreatmentWithConfig />,
+      },
+    ],
+  ],
+  toc
+);
+
+<>{Result}</>
