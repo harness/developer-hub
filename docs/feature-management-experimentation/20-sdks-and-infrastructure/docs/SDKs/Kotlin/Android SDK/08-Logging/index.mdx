@@ -4,32 +4,6 @@ sidebar_label: Logging
 description: Explore the range of logging levels for transparent development and debugging.
 ---
 
-import {
-  SDKDocsBuilder
-} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+import Logging from '../../../Java/Android SDK/08-Logging/index.mdx';
 
-import {
-  Logging,
-} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
-
-import LoggingDebug                from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_080_LoggingDebug.mdx";
-import LoggingOutput               from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_081_LoggingOutput.mdx";
-
-import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
-
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
-  [
-    [
-      Logging,
-      {
-        example: <LoggingDebug />,
-        output:  <LoggingOutput />,
-      },
-    ],
-  ],
-  toc
-);
-
-<>{Result}</>
+<Logging />

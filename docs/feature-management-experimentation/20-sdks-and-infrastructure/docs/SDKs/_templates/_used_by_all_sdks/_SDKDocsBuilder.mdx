@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Gap from "./_Gap.mdx";
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
 export const SDKDocsBuilder = (
@@ -15,7 +14,6 @@ export const SDKDocsBuilder = (
       { () =>
         <React.Fragment key={"" + index}>
           <Section.default {...props} />
-          <Gap />
         </React.Fragment>
       }
       </BrowserOnly>
