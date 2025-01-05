@@ -1,0 +1,40 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+    String key();
+    String bucketingKey();
+    String split();
+    String treatment();
+    Long time();
+    String appliedRule();
+    Long changeNumber();
+    Map<String, Object> attributes();
+    Long previousTime();
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+    key(): String?
+    bucketingKey(): String?
+    split(): String?
+    treatment(): String?
+    time(): Long?
+    appliedRule(): String?
+    changeNumber(): Long?
+    attributes(): Map<String, Any?>?
+    previousTime(): Long?
+```
+
+  </TabItem>
+</Tabs>

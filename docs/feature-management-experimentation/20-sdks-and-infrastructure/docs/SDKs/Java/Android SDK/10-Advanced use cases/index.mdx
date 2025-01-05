@@ -1,0 +1,42 @@
+---
+title: ""
+sidebar_label: Advanced use cases
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  AdvancedUseCases,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
+
+import Listener           from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_111_Listener.mdx";
+import ListenerImpression from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_111_ListenerImpression.mdx";
+import MultipleSdkClients from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_112_MultipleSdkClients.mdx";
+import UserConsent        from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_113_UserConsent.mdx";
+import CertificatePinning from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_114_CertificatePinning.mdx";
+
+import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
+
+export const toc = [];
+
+export const Result = SDKDocsBuilder(
+  [
+    [
+      AdvancedUseCases,
+      {
+        listener:           <Listener />,
+        listenerImpression: <ListenerImpression />,
+
+        multipleClients:    <MultipleSdkClients />,
+        userConsent:        <UserConsent />,
+        certificatePinning: <CertificatePinning />,
+
+      },
+    ],
+  ],
+  toc
+);
+
+<>{Result}</>

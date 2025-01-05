@@ -1,6 +1,6 @@
 ---
 title: ""
-sidebar_label: Track
+sidebar_label: Subscribe to SDK events
 ---
 
 import {
@@ -8,10 +8,11 @@ import {
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
 
 import {
-  Track,
+  SdkEvents,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
-import TrackMetricEvents   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_020_TrackMetricEvents.mdx";
+import SdkEventsSubscribe          from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_060_SdkEventsSubscribe.mdx";
+import SdkEventsPost               from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_061_SdkEventsPost.mdx";
 
 import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
 
@@ -20,9 +21,10 @@ export const toc = [];
 export const Result = SDKDocsBuilder(
   [
     [
-      Track,
+      SdkEvents,
       {
-        example: <TrackMetricEvents />,
+        example:      <SdkEventsSubscribe />,
+        exPostEvents: <SdkEventsPost />,
       },
     ],
   ],

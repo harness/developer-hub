@@ -1,0 +1,79 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<p />
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+
+// Create factory
+Key key = new Key("anonymous_user");
+SplitClientConfig config = SplitClientConfig.builder().build();
+SplitFactory splitFactory = SplitFactoryBuilder.build("yourAuthKey", key, config, getApplicationContext());
+
+// Now when you call factory.client(), the SDK will create a client
+// using the Key you passed in during the factory creation
+SplitClient anonymousClient = splitFactory.client();
+
+// To create another client for a user instead, just pass in a different Key or id
+SplitClient userClient = splitFactory.client("user_id");
+
+// Add events handler for each client to be notified when SDK is ready
+anonymousClient.on(SplitEvent.SDK_READY, new SplitEventTask() {
+    @Override
+    public void onPostExecutionView(SplitClient client) {
+        // Check treatment for account-permissioning and anonymousClient
+        String accountPermissioningTreatment = anonymousClient.getTreatment("account-permissioning");
+    }
+});
+
+userClient.on(SplitEvent.SDK_READY, new SplitEventTask() {
+    @Override
+    public void onPostExecutionView(SplitClient client) {
+        // Check treatment for user-poll and userClient
+        String userPollTreatment = userClient.getTreatment("user-poll");
+    }
+});
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// Create factory
+val key = Key("anonymous_user")
+val config = SplitClientConfig.builder().build()
+val splitFactory = SplitFactoryBuilder.build("yourAuthKey", key, config, getApplicationContext())
+
+// Now when you call factory.client(), the SDK will create a client
+// using the Key you passed in during the factory creation
+val anonymousClient = splitFactory.client()
+
+// To create another client for a user instead, just pass in a different Key or id
+val userClient = splitFactory.client("user_id")
+
+// Add events handler for each client to be notified when SDK is ready
+anonymousClient.on(SplitEvent.SDK_READY, object : SplitEventTask() {
+    override fun onPostExecutionView(client: SplitClient) {
+        // Check treatment for account-permissioning and anonymousClient
+        val accountPermissioningTreatment = anonymousClient.getTreatment("account-permissioning")
+    }
+})
+
+userClient.on(SplitEvent.SDK_READY, object : SplitEventTask() {
+    override fun onPostExecutionView(client: SplitClient) {
+        // Check treatment for user-poll and userClient
+        val userPollTreatment = userClient.getTreatment("user-poll")
+    }
+})
+```
+
+  </TabItem>
+</Tabs>

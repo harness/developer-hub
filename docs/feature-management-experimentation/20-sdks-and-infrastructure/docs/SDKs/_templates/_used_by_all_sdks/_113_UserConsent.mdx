@@ -1,0 +1,16 @@
+## User consent
+
+The SDK allows you to disable the tracking of events and impressions until user consent is explicitly granted or declined.
+
+The `userConsent` configuration parameter lets you set the initial consent status of the SDK instance, and the factory method `setUserConsent(enabled: Bool)` lets you grant (enable) or decline (disable) dynamic data tracking.
+
+There are three possible initial states:
+ * `'GRANTED'`: The user grants consent for tracking events and impressions. The SDK sends them to Split cloud. This is the default value if `userConsent` param is not defined.
+ * `'DECLINED'`: The user declines consent for tracking events and impressions. The SDK does not send them to Split cloud.
+ * `'UNKNOWN'`: The user neither grants nor declines consent for tracking events and impressions. The SDK tracks them in its internal storage, and eventually either sends them or not if the consent status is updated to `'GRANTED'` or `'DECLINED'` respectively.
+
+The status can be updated at any time with the `setUserConsent` factory method.
+
+Working with user consent is demonstrated below.
+
+<>{props.example}</>

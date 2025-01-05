@@ -1,0 +1,14 @@
+## Certificate pinning
+
+The SDK allows you to constrain the certificates that the SDK trusts, using one of the following techniques:
+
+1. Pin a certificate's `SubjectPublicKeyInfo`, by providing the public key as a ___base64 SHA-256___ hash or a ___base64 SHA-1___ hash.
+2. Pin a certificate's entire certificate chain (the root, all intermediate, and the leaf certificate), by providing the certificate chain as a .der file.
+
+Each pin corresponds to a host. For subdomains, you can optionally use wildcards, where `*` will match one subdomain (e.g. `*.example.com`), and `**` will match any number of subdomains (e.g `**.example.com`).
+
+You can optionally configure a listener to execute on certificate validation failure for a host.
+
+To set the SDK to require pinned certificates for specific hosts, add the `CertificatePinningConfiguration` object to `SplitClientConfig.Builder`, as shown below.
+
+<>{props.example}</>

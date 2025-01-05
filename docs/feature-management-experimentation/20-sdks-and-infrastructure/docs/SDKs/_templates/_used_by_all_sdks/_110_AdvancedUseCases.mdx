@@ -1,8 +1,16 @@
-## Advanced use cases {#advanced-use-cases}
+import Listener           from "./_111_Listener.mdx";
+import MultipleSdkClients from "./_112_MultipleSdkClients.mdx";
+import UserConsent        from "./_113_UserConsent.mdx";
+import CertificatePinning from "./_114_CertificatePinning.mdx";
+
+## Advanced use cases: {#advanced-use-cases}
 
 This section describes advanced use cases and features provided by the SDK.
 
-<>{props.listener}</>
-<>{props.multipleClients}</>
-<>{props.userConsent}</>
-<>{props.certificatePinning}</>
+<Listener 
+  example   ={ props.listener  }
+  impression={ props.listenerImpression } />
+
+<MultipleSdkClients example={ props.multipleClients    } />
+<UserConsent        example={ props.userConsent        } />
+<CertificatePinning example={ props.certificatePinning } />

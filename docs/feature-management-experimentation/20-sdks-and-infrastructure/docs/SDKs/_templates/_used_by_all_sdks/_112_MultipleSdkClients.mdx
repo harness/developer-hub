@@ -1,0 +1,11 @@
+## Instantiate multiple SDK clients
+
+In versions previous to 2.10.0, you had to create more that one SDK instance to evaluate for different users IDs. From 2.10.0 on, Split supports the ability to create multiple clients, one for each user ID. For example, if you need to roll out feature flags for different user IDs, you can instantiate multiple clients, one for each ID. You can then evaluate them using the corresponding client.
+
+You can do this using the example below:
+
+<>{props.example}</>
+
+:::info[Number of SDK instances]
+While the SDK does not put any limitations on the number of instances that can be created, we strongly recommend keeping the number of SDKs down to **one** or **two**.
+:::
