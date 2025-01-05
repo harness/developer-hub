@@ -1,0 +1,20 @@
+## Subscribe to events {#subscribe-to-events}
+
+When the SDK retrieves (or updates the local copy of) a rollout plan (feature flag and segment definitions) from Harness servers, the SDK will fire the following events:
+
+* `SDK_READY_FROM_CACHE`. This event fires once the SDK is ready to evaluate treatments using a locally cached version of your rollout plan from a previous session (which might be stale). If there is data in the cache, this event fires almost immediately, since access to the cache is fast; otherwise, it doesn't fire.
+* `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Split servers.
+* `SDK_READY_TIMED_OUT `. This event fires if there is no cached version of your rollout plan in disk cache, and the SDK could not fully download the data from Split servers within the time specified by the `ready` setting of the `SplitClientConfig` object. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished.  This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in the Harness FME user interface.
+
+An event is an extension of a `SplitEventTask`. Example of listening for the events:
+
+<>{props.example}</>
+
+You can use the `onPostExecution` method to execute some long-running tasks in the background after an event is fired.
+
+The `onPostExecutionView` method is invoked on the UI thread after the `onPostExecution` method completes.
+
+Example using `onPostExecution` and `onPostExecutionView`:
+
+<>{props.exPostEvents}</>

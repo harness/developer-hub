@@ -1,0 +1,25 @@
+"use client";
+
+import React, { useEffect } from "react";
+import Gap from "./_Gap.mdx";
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+export const SDKDocsBuilder = (
+  sections,
+  toc
+) => {
+  const result = sections.map(([Section, props], index) => {
+    toc.push(...Section.toc);
+    return (
+      <BrowserOnly>
+      { () =>
+        <React.Fragment key={"" + index}>
+          <Section.default {...props} />
+          <Gap />
+        </React.Fragment>
+      }
+      </BrowserOnly>
+    );
+  });
+  return [ ...result];
+};

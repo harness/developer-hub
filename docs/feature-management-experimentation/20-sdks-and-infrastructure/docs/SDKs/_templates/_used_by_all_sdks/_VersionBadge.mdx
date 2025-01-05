@@ -1,0 +1,21 @@
+import { useColorMode } from "@docusaurus/theme-common";
+
+export const VersionBadge = ({ version, includeAboveVersion = true }) => {
+  if (!version) {
+    return null; 
+  }
+  const plus = includeAboveVersion? "+":"";
+  return (
+    <span
+      style={{
+        padding: "5px 10px",
+        color: "var(--ifm-color-content)",
+        backgroundColor: "var(--ifm-navbar-background-color)",
+        borderRadius: 30,
+        marginLeft: 10,
+      }}
+    >
+      v{version}{plus}
+    </span>
+  );
+};

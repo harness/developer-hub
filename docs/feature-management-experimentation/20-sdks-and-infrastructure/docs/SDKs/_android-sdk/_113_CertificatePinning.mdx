@@ -1,0 +1,74 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+import io.split.android.client.network.CertificatePinningConfiguration;
+import io.split.android.client.SplitClientConfig;
+import com.yourApp.R; // to reference your res/ folder
+
+// Define pins for certificate pinning
+CertificatePinningConfiguration certPinningConfig = CertificatePinningConfiguration.builder()
+
+    // Provide a base 64 SHA-256 hash
+    .addPin("*.example1.com", "sha256/7HIpactkIAq2Y49orFOOQKurWxmmSFZhBCoQYcRhJ3Y=")
+
+    // Provide a certificate chain as a 'res/raw/cert.der' file
+    .addPin("*.example2.com", context.getResources().openRawResource(R.raw.cert))
+
+    // Provide a listener to log failure
+    .failureListener((host, certificateChain) -> {
+        Log.d("CertPinning", "Certificate pinning failure for " + host);
+    })
+
+    .build();
+
+// Set the CertificatePinningConfiguration property for the Split client configuration
+SplitClientConfig config = SplitClientConfig.builder()
+    .certificatePinningConfiguration(certPinningConfig)
+    // you can add other configuration properties here
+    .build();
+
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+import io.split.android.client.network.CertificatePinningConfiguration
+import io.split.android.client.SplitClientConfig
+import com.yourApp.R // to reference your res/ folder
+
+// Define pins for certificate pinning
+val certPinningConfig = CertificatePinningConfiguration.builder()
+
+    // Provide a base 64 SHA-256 hash
+    .addPin("*.example1.com", "sha256/7HIpactkIAq2Y49orFOOQKurWxmmSFZhBCoQYcRhJ3Y=")
+
+    // Provide a certificate chain as a 'res/raw/cert.der' file
+    .addPin("*.example2.com", context.getResources().openRawResource(R.raw.cert))
+
+    // Provide a listener to log failure
+    .failureListener { host, certificateChain ->
+        Log.d("CertPinning", "Certificate pinning failure for $host")
+    }
+
+    .build()
+
+// Set the CertificatePinningConfiguration property for the Split client configuration
+val config = SplitClientConfig.builder()
+    .certificatePinningConfiguration(certPinningConfig)
+    // you can add other configuration properties here
+    .build()
+
+```
+
+  </TabItem>
+</Tabs>

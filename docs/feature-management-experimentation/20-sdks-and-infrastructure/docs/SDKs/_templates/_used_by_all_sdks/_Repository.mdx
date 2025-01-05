@@ -1,0 +1,40 @@
+import DarkLogo from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/static/github-icons/github-mark.png";
+import LightLogo from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/static/github-icons/github-mark-white.png";
+import ThemedImage from "@theme/ThemedImage";
+
+export default function ({ repo }) {
+
+  return (
+    <div
+      style={{
+        marginTop: -20,
+        display: "flex",
+      }}
+    >
+      <a
+        href={repo}
+        style={{
+          fontSize: 14,
+          fontWeight: "600",
+          color: "var(--ifm-color-content)",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <ThemedImage
+          alt="Docusaurus themed image"
+          sources={{
+            light: DarkLogo,
+            dark: LightLogo,
+          }}
+          style={{
+            height: 18,
+            width: 18,
+            marginRight: 6,
+          }}
+        />
+        {repo && repo.replace("https://github.com/", "")}
+      </a>
+    </div>
+  );
+}

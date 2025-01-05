@@ -1,0 +1,67 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<p />
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Date;
+
+Map<String, Object> attributes = new HashMap<String, Object>();
+attributes.put("plan_type", "growth");
+attributes.put("registered_date", System.currentTimeMillis());
+attributes.put("deal_size", 1000);
+attributes.put("paying_customer", true);
+String[] perms = {"read", "write"};
+attributes.put("permissions",perms);
+
+// See client initialization above
+String treatment = client.getTreatment("FEATURE_FLAG_NAME", attributes);
+
+if (treatment.equals("on")) {
+    // insert on code here
+} else if (treatment.equals("off")) {
+    // insert off code here
+} else {
+    // insert control code here
+}
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+
+val attributes = mapOf(
+    "plan_type" to "growth",
+    "registered_date" to System.currentTimeMillis(),
+    "deal_size" to 1000,
+    "paying_customer" to true,
+    "permissions" to arrayOf("read", "write")
+)
+
+// See client initialization above
+when (client.getTreatment("FEATURE_FLAG_NAME", attributes)) {
+    "on" -> {
+        // insert on code here
+    }
+    "off" -> {
+        // insert off code here
+    }
+    else -> {
+        // insert control code here
+    }
+}
+```
+
+  </TabItem>
+</Tabs>

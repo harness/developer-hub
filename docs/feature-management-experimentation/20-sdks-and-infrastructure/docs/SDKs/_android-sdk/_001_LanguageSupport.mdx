@@ -1,0 +1,15 @@
+This library is designed for Android applications written in Java or Kotlin and is compatible with Android SDK versions 19 and later (4.4 Kit Kat).
+
+:::warning[WorkManager v2.7.1 dependency]
+
+Starting with `Android v3.0.0`, this SDK now relies on `WorkManager v2.7.1`. This requires your application to use at least `compileSdk 31`.
+
+If you haven't upgraded to use API 31, you can force the downgrade of the `WorkManager` dependency.
+```groovy
+implementation("androidx.work:work-runtime") {
+    version {
+        strictly("2.6.0")
+    }
+}
+```
+:::

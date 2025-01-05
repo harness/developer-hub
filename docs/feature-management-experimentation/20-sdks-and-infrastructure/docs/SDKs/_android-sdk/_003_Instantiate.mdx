@@ -1,0 +1,74 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<p />
+
+<!-- span>{ window.location.pathname.includes("Java") ? "java" : "kotlin" }</span -->
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+import io.split.android.client.SplitClient;
+import io.split.android.client.SplitClientConfig;
+import io.split.android.client.SplitFactory;
+import io.split.android.client.SplitFactoryBuilder;
+import io.split.android.client.api.Key;
+
+// Split SDK key
+String sdkKey = "YOUR_SDK_KEY";
+
+// Build SDK configuration by default
+SplitClientConfig config = SplitClientConfig.builder()
+  .build();
+
+// Create a new user key to be evaluated
+// key represents your internal user id, or the account id that 
+// the user belongs to.
+String matchingKey = "key";
+Key key = new Key(matchingKey);
+
+// Create factory
+SplitFactory splitFactory = SplitFactoryBuilder.build(sdkKey, key, config, getApplicationContext());
+
+// Get Split Client instance
+SplitClient client = splitFactory.client();
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+import io.split.android.client.SplitClient
+import io.split.android.client.SplitClientConfig
+import io.split.android.client.SplitFactory
+import io.split.android.client.SplitFactoryBuilder
+import io.split.android.client.api.Key
+
+// Split SDK key
+val sdkKey = "YOUR_SDK_KEY"
+
+// Build default SDK configuration
+val config: SplitClientConfig = SplitClientConfig.builder().build()
+
+// Create a new user key to be evaluated
+// key represents your internal user id, or the account id that 
+// the user belongs to.
+val matchingKey = "key"
+val key: Key = Key(matchingKey)
+
+// Create factory
+val splitFactory: SplitFactory =
+    SplitFactoryBuilder.build(sdkKey, key, config, applicationContext)
+
+// Get Split Client instance
+val client: SplitClient = splitFactory.client()
+```
+
+  </TabItem>
+</Tabs>

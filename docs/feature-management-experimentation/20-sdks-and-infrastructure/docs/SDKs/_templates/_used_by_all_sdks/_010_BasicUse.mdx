@@ -1,0 +1,21 @@
+import Gap from "./_Gap.mdx";
+
+## Using the SDK {#using-the-sdk}
+
+### Basic Use {#basic-use}
+
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process may take up to a few hundred milliseconds depending on the size of the data. If the SDK is asked to evaluate a feature flag while it is still updating its cache, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail. Instead, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+
+To make sure the SDK is fully instantiated before evaluating a feature flag, you should block until the SDK is ready, as shown below. We set the client to listen for the `SDK_READY` event triggered by the SDK before asking for an evaluation.
+
+After the `SDK_READY` event fires, you can use the `getTreatment` method to evaluate the feature flag. (The `getTreatment` method returns the feature flag **treatment** variation that is evaluated for the given user ID.)
+
+Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in the Split user interface. Remember to let the final `else` branch in your code handle the feature flag's `"CONTROL"` treatment.
+
+<>{props.extraInfo}</>
+
+<div>{props.example}</div>
+
+<!--  -->
+
+<Gap />

@@ -1,0 +1,100 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<p />
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+// Event without a value
+boolean trackEvent = client.track("TRAFFIC_TYPE", "EVENT_TYPE");
+// Example
+boolean trackEvent = client.track("user", "page_load_time");
+
+// Associate value to an event
+boolean trackEvent = client.track("TRAFFIC_TYPE", "EVENT_TYPE", VALUE);
+// Example  
+boolean trackEvent = client.track("user", "page_load_time", 83.334);
+
+// If you would like to send an event but you've already defined the traffic type in the config of the client
+boolean trackEvent = client.track("EVENT_TYPE");
+// Example
+boolean trackEvent = client.track("page_load_time");
+
+// If you would like to associate a value to an event and you've already defined the traffic type in the config of the client
+boolean trackEvent = client.track("EVENT_TYPE", VALUE);
+// Example  
+boolean trackEvent = client.track("page_load_time", 83.334);
+
+// If you would like to associate a value and properties to an event
+boolean trackEvent = client.track("key", "TRAFFIC_TYPE", "EVENT_TYPE", VALUE, {PROPERTIES});
+// Example  
+HashMap<String, Object> properties = new HashMap<>();
+properties.put("package", "premium");
+properties.put("admin", true);
+properties.put("discount", 50);
+
+boolean trackEvent = client.track("john@doe.com", "user", "page_load_time", 83.334, properties);
+
+// If you would like to associate just properties to an event
+boolean trackEvent = client.track("key", "TRAFFIC_TYPE", "EVENT_TYPE", null, {PROPERTIES});
+// Example  
+HashMap<String, Object> properties = new HashMap<>();
+properties.put("package", "premium");
+properties.put("admin", true);
+properties.put("discount", 50);
+
+boolean trackEvent = client.track("john@doe.com", "user", "page_load_time", null, properties);
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// Event without a value
+val trackEvent = client.track("user", "page_load_time")
+
+// Associate value to an event
+val trackEvent = client.track("user", "page_load_time", 83.334)
+
+// If you would like to send an event but you've already defined the traffic type in the config of the client
+val trackEvent = client.track("page_load_time")
+
+// If you would like to associate a value to an event and you've already defined the traffic type in the config of the client
+val trackEvent = client.track("page_load_time", 83.334)
+
+// If you would like to associate a value and properties to an event
+val trackEvent = client.track(
+    "john@doe.com",
+    "user",
+    "page_load_time",
+    83.334,
+    mapOf(
+        "package" to "premium",
+        "admin" to true,
+        "discount" to 50
+    )
+)
+
+// If you would like to associate just properties to an event
+val trackEvent = client.track(
+    "john@doe.com",
+    "user",
+    "page_load_time",
+    null,
+    mapOf(
+        "package" to "premium",
+        "admin" to true,
+        "discount" to 50
+    )
+)
+```
+
+  </TabItem>
+</Tabs>

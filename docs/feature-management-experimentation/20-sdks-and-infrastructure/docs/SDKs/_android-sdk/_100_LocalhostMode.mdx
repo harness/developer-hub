@@ -1,0 +1,42 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+import io.split.android.client.SplitClient;
+import io.split.android.client.SplitFactoryBuilder;
+import io.split.android.client.api.Key;
+
+// Create a new user key to be evaluated
+String matching = "key";
+Key k = new Key(matchingKey);
+
+SplitClient client = SplitFactoryBuilder.build("localhost", k, getApplicationContext()).client();
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+import io.split.android.client.SplitFactoryBuilder
+import io.split.android.client.api.Key
+
+// Create a new user key to be evaluated
+val key = Key("key")
+
+val client = SplitFactoryBuilder.build(
+    "localhost",
+    key,
+    applicationContext
+).client()
+```
+
+  </TabItem>
+</Tabs>

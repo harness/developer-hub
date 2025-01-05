@@ -1,0 +1,36 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+public class SplitEventTask {
+    public void onPostExecution(SplitClient client) { }
+    public void onPostExecutionView(SplitClient client) { }
+}
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+open class SplitEventTask {
+
+  open fun onPostExecution(client: SplitClient) {
+
+  }
+
+  open fun onPostExecutionView(client: SplitClient) {
+
+  }
+}
+```
+
+  </TabItem>
+</Tabs>

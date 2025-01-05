@@ -1,0 +1,56 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+SplitClientConfig config = SplitClientConfig.builder()
+                        .impressionListener(new MyImpressionListener())
+                        .build();
+
+class MyImpressionListener implements ImpressionListener {
+    @Override
+    public void log(Impression impression) {
+        // Do something on UI thread
+        new Thread(new Runnable() {
+            public void run() {
+                // Do something in another thread (use this most of the time!)
+            }
+        }).start();
+    }
+
+    @Override
+    public void close() {
+    }
+}
+```
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+class MyImpressionListener : ImpressionListener {
+    override fun log(impression: Impression) {
+        // Do something on UI thread
+        Thread {
+            // Do something in another thread (use this most of the time!)
+        }.start()
+    }
+
+    override fun close() {
+
+    }
+}
+
+val config = SplitClientConfig.builder()
+    .impressionListener(MyImpressionListener())
+    .build()
+```
+
+  </TabItem>
+</Tabs>

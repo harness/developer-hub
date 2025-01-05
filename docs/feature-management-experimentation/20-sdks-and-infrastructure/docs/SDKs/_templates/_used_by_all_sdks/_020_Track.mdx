@@ -1,0 +1,20 @@
+## Track {#track}
+
+Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into FME and allows you to measure the impact of your feature flags on your users’ actions and metrics. Learn more about [using track events](https://help.split.io/hc/en-us/articles/360020585772) in Split.
+
+In the examples below, you can see that the `track` method can take up to four arguments. The expected data type and syntax for each are:
+
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of Split.
+* **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
+    * Contains 63 characters or less.
+    * Starts with a letter or number.
+    * Contains only letters, numbers, hyphen, underscore, or period.
+    * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
+* **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+
+The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Harness's servers on the next event post. The SDK returns `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
+
+Go to [Track events](https://help.split.io/hc/en-us/articles/360020585772-Track-events) to learn more, including expected behavior when invalid input is provided.
+
+<>{props.example}</>

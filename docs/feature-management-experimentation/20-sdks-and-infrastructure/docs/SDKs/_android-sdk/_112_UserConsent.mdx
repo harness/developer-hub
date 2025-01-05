@@ -1,0 +1,90 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+### User consent: Initial config, getter and setter
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+
+// Overwrites the initial consent status of the factory instance, which is 'GRANTED' by default.
+// 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
+// so the SDK locally tracks data but not send it to Split cloud until consent is changed to 'GRANTED'.
+SplitClientConfig config = SplitClientConfig.builder()
+        .userConsent(UserConsent.UNKNOWN)
+        .build();
+
+try {
+    SplitFactory factory = SplitFactoryBuilder.build("YOUR_SDK_KEY",
+            new Key(mUserKey, null),
+            config, context);
+
+    // Changed User Consent status to 'GRANTED'. Data is sent to Split cloud.
+    factory.setUserConsent(true);
+    // Changed User Consent status to 'DECLINED'. Data is not sent to Split cloud.
+    factory.setUserConsent(false);
+
+    // The 'getUserConsent' method returns User Consent status.
+    // We expose the constants for customer checks and tracking.
+    if (factory.getUserConsent() == UserConsent.DECLINED) {
+        Log.i(TAG, "USER CONSENT DECLINED");
+    }
+    if (factory.getUserConsent() == UserConsent.GRANTED) {
+        Log.i(TAG, "USER CONSENT GRANTED");
+    }
+    if (factory.getUserConsent() == UserConsent.UNKNOWN) {
+        Log.i(TAG, "USER CONSENT UNKNOWN");
+    }
+
+} catch (Exception e) {
+}
+
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```java
+
+// Overwrites the initial consent status of the factory instance, which is 'GRANTED' by default.
+// 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
+// so the SDK locally tracks data but not send it to Split cloud until consent is changed to 'GRANTED'.
+SplitClientConfig config = SplitClientConfig.builder()
+        .userConsent(UserConsent.UNKNOWN)
+        .build();
+
+try {
+    SplitFactory factory = SplitFactoryBuilder.build("YOUR_SDK_KEY",
+            new Key(mUserKey, null),
+            config, context);
+
+    // Changed User Consent status to 'GRANTED'. Data is sent to Split cloud.
+    factory.setUserConsent(true);
+    // Changed User Consent status to 'DECLINED'. Data is not sent to Split cloud.
+    factory.setUserConsent(false);
+
+    // The 'getUserConsent' method returns User Consent status.
+    // We expose the constants for customer checks and tracking.
+    if (factory.getUserConsent() == UserConsent.DECLINED) {
+        Log.i(TAG, "USER CONSENT DECLINED");
+    }
+    if (factory.getUserConsent() == UserConsent.GRANTED) {
+        Log.i(TAG, "USER CONSENT GRANTED");
+    }
+    if (factory.getUserConsent() == UserConsent.UNKNOWN) {
+        Log.i(TAG, "USER CONSENT UNKNOWN");
+    }
+
+} catch (Exception e) {
+}
+
+```
+
+  </TabItem>
+</Tabs>

@@ -1,0 +1,11 @@
+## Shutdown {#shutdown}
+
+It is good practice to call the `destroy()` method before your app shuts down or is destroyed. This method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions and events.
+
+<>{props.example}</>
+
+After `destroy()` is called, `client.getTreatment()` will return "CONTROL" and the `manager` methods will return an empty list.
+
+:::warning[Important]
+A call to the `destroy()` method also destroys the SDK factory object. Before creating a new SDK client instance, first create a new factory instance.
+:::

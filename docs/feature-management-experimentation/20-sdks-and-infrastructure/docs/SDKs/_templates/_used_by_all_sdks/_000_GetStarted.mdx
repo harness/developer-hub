@@ -1,0 +1,31 @@
+<>{props.introduction}</>
+
+All of our SDKs are open source. Go to our <a href="{props.repo}">{props.sdkType} GitHub repository</a> to see the source code.
+
+## Language support {#language-support}
+
+<>{props.language}</>
+
+## Create a Harness Account {#create-a-harness-account}
+
+To work with the SDK, you will need a Harness account. If you don't yet have an account, you can [get one for free](https://app.harness.io/auth/#/signup?utm_source=harness_hdh_fme).
+
+You could skip this for now, but you will soon need to create a {props.sdkKeyType} SDK key and some FME feature flags in Harness. Once these are created, you will be able to use the SDK to evaluate your flags and alter your code execution path based on the feature flag evaluations.
+
+## Initialization {#initialization}
+
+To get started, set up Harness FME in your codebase with the following two steps.
+
+### 1. Import the SDK into your project
+
+<div>{props.import}</div>
+
+### 2. Instantiate the SDK and create a new SDK client
+
+<div>{props.instantiate}</div>
+
+We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
+
+Configure the SDK with the {props.sdkKeyType} SDK key for the Split environment that you would like to access.
+
+<>{props.sdkKeyDetails}</>

@@ -1,0 +1,64 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+/**
+ * Retrieves the feature flags that are currently registered with the
+ * SDK.
+ *
+ * @return a List of SplitView or empty.
+ */
+List<SplitView> splits();
+
+/**
+ * Returns the feature flags registered with the SDK of this name.
+ *
+ * @return SplitView or null
+ */
+SplitView split(String SplitName);
+
+/**
+ * Returns the names of feature flags registered with the SDK.
+ *
+ * @return a List of String (Split feature names) or empty
+ */
+List<String> splitNames();
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+/**
+ * Retrieves the feature flags that are currently registered with the
+ * SDK.
+ *
+ * @return a List of SplitView or empty.
+ */
+fun splits(): List<SplitView>
+
+/**
+ * Returns the feature flags registered with the SDK of this name.
+ *
+ * @return SplitView or null
+ */
+fun split(SplitName: String): SplitView?
+
+/**
+ * Returns the names of features flags registered with the SDK.
+ *
+ * @return a List of String (feature flag names) or empty
+ */
+fun splitNames(): List<String>
+```
+
+  </TabItem>
+</Tabs>

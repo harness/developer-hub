@@ -1,0 +1,36 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```swift
+// This setting type is `SplitLogLevel`. 
+// The available values are DEBUG, INFO, WARNING, ERROR, ASSERT and NONE
+SplitClientConfig.Builder builder = SplitClientConfig.builder()
+    .logLevel(Log.VERBOSE)
+SplitClientConfig config = builder.build();
+
+  ...
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```swift
+// This setting type is `SplitLogLevel`. 
+// The available values are DEBUG, INFO, WARNING, ERROR, ASSERT and NONE
+SplitClientConfig.Builder builder = SplitClientConfig.builder()
+    .logLevel(Log.VERBOSE)
+SplitClientConfig config = builder.build();
+
+  ...
+```
+
+  </TabItem>
+</Tabs>
