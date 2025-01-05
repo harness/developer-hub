@@ -87,3 +87,66 @@ client.on(SplitEvent.SDK_READY, object : SplitEventTask() {
 
   </TabItem>
 </Tabs>
+
+Also, a `SDK_READY_FROM_CACHE` event fires when the SDK has loaded data from cache. After this event fires, the SDK is ready to evaluate feature flags using locally cached feature flag and segment definitions.
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+client.on(SplitEvent.SDK_READY_FROM_CACHE, new SplitEventTask() {
+  @Override
+  public void onPostExecution(SplitClient client) {
+    //Background Code in Here
+  }
+
+  @Override
+  public void onPostExecutionView(SplitClient client) {
+    //UI Code in Here
+    String treatment = client.getTreatment("FEATURE_FLAG_NAME");
+
+    if (treatment.equals("on")) {
+        // insert code here to show on treatment
+    } else if (treatment.equals("off")) {
+        // insert code here to show off treatment
+    } else {
+        // insert your control treatment code here
+    }
+  }
+  
+});
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+client.on(SplitEvent.SDK_READY_FROM_CACHE, object : SplitEventTask() {
+    override fun onPostExecution(client: SplitClient) {
+        // Execute background logic here
+    }
+
+    override fun onPostExecutionView(client: SplitClient) {
+        // Execute logic in main thread here
+        when (client.getTreatment("FEATURE_FLAG_NAME")) {
+            "on" -> {
+                // insert code here to show on treatment
+            }
+            "off" -> {
+                // insert code here to show off treatment
+            }
+            else -> {
+                // insert your control treatment code here
+            }
+        }
+    }
+})
+```
+
+  </TabItem>
+</Tabs>

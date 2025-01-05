@@ -1,0 +1,37 @@
+---
+title: ""
+sidebar_label: Manager
+description: Access your rollout plan data (feature flag metadata and targeting rules) using the Manager object.
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Manager,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
+
+import SdkManagerInstantiate from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_090_SdkManagerInstantiate.mdx";
+import SdkManagerMethods     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_091_SdkManagerMethods.mdx";
+import SdkManagerSplitView   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_092_SdkManagerSplitView.mdx";
+
+import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
+
+export const toc = [];
+
+export const Result = SDKDocsBuilder(
+  [
+    [
+      Manager,
+      {
+        instantiate: <SdkManagerInstantiate />,
+        methods:     <SdkManagerMethods />,
+        splitView:   <SdkManagerSplitView />,
+      },
+    ],
+  ],
+  toc
+);
+
+<>{Result}</>

@@ -1,14 +1,10 @@
 ## User Attributes
 
-User attributes are also called Traffic type attributes.
+User attributes are also called Traffic type attributes and custom attributes. If your feature flags [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), then you can pass attributes to the `getTreatment` method or set attributes on the SDK client using the `AttributesManager` methods.
 
 ### Attribute syntax
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `getTreatment` methods need to be passed an attribute map at runtime.
-
-In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the Rollout plan as defined in the Split user interface to decide which treatment is assigned to this key.
-
-The `getTreatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
+The `getTreatment` method supports the following types of attributes:
 
 * **Strings:** Use type String.
 * **Numbers:** Use type `java.lang.Long` or `java.lang.Integer`.
@@ -16,23 +12,25 @@ The `getTreatment` method supports five types of attributes: strings, numbers, d
 * **Booleans:** Use type `java.lang.boolean`.
 * **Sets:** Use type `java.util.Collection`.
 
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the feature flag targeting rules (defined in the FME/Split user interface) to decide which treatment is assigned to this key.
+
 <>{props.create}</>
 
 ### Binding attributes to the client
 
-Attributes can be bound to the client at any time during the SDK lifecycle. These attributes are stored in memory and used in every evaluation to avoid the need for keeping the attribute set accessible through the whole app. These attributes can be cached into the persistent caching mechanism of the SDK making them available for future sessions, as well as part of the SDK_READY_FROM_CACHE flow by setting the `persistentAttributesEnabled` to true. There is no need to wait for your attributes to be loaded at every session before evaluating flags that use them. 
+Attributes can be bound to the client at any time during the SDK lifecycle. These attributes are stored in memory and used in every evaluation to avoid the need for keeping the attribute set accessible throughout the whole app. These attributes can be cached into the persistent memory cache of the SDK making them available for future sessions, as well as part of the `SDK_READY_FROM_CACHE` flow by setting the `persistentAttributesEnabled` to `true`.
 
-When an evaluation is called, the attributes provided (if any) at evaluation time are combined with the ones already loaded into the SDK memory, with the ones provided at function execution time take precedence, enabling for those attributes to be overriden/hidden for specific evaluations. 
+When `getTreatment` is called, the attributes provided (if any) at evaluation time are combined with the ones already loaded into the SDK memory. The attributes passed to `getTreatment` at function execution time take precedence, allowing you to override or hide cached attributes for specific feature flag evaluations.
 
-An attribute is considered valid if it follows one of the types listed below:
+An attribute should be one of the following types:
 - String
 - Number
 - Boolean
 - Array
 
-The SDK validates these before storing them and if there are invalid or missing values, possibly indicating an issue, the methods return the boolean `false` and do not update any value.
+The SDK validates attributes before storing them. If there are invalid or missing values, the methods return `false` and do not update any stored attribute value.
 
-See below the definitions for the API which is exposed on the `client`:
+The SDK `client` uses the `AttributesManager` methods:
 
 <>{props.bind}</>
 

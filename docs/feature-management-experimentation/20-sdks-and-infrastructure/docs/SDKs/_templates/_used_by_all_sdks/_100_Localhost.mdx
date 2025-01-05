@@ -1,10 +1,12 @@
 ## Localhost mode {#localhost-mode}
 
-For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, you can start the Split SDK in **localhost** mode (aka, off-the-grid mode). In this mode, the SDK neither polls or updates Split servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the feature flags. To use the SDK in localhost mode, replace the API Key with `localhost`, as shown in the example below:
+For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, you can start the Split SDK in **localhost** mode (a.k.a. off-the-grid mode). In this mode, the SDK neither polls nor updates Harness servers. Instead, it uses an in-memory data structure to determine what feature flag treatments to return for any given user ID. To use the SDK in localhost mode, replace the API Key with `localhost`, as shown in the example below:
 
-Since version 2.2.0, our SDK supports a new type of localhost feature flag definition file, using the YAML format. This new format allows the user to map different keys to different treatments within a single feature flag, and also add configurations to them. The new format is a list of single-key maps (one per mapping feature_flag-keys-config), defined as follows:
+<>{props.example}</>
 
-```yaml
+Since version 2.2.0, our SDK supports using a YAML file  to define feature flag definitions for localhost mode. This format allows the user to map different keys to different treatments within a single feature flag, and also add configurations to them. The YAML file is a list of single-key maps (one per mapping feature_flag-keys-config), defined as follows:
+
+```yaml title="YAML"
 # - feature_name:
 #     treatment: "treatment_applied_to_this_entry"
 #     keys: "single_key_or_list"
@@ -33,13 +35,11 @@ The above example defines four feature flag **targeting rules** (for three featu
 
 In this mode, the SDK loads the yaml file from a resource bundle file at the assets' project `src/main/assets/splits.yaml`.
 
-<>{props.example}</>
-
 If a split.yaml or split.yml is not found in assets, Split SDK maintains backward compatibility by trying to load the legacy file (split.properties), which is now deprecated.
 
 The format of this file is a properties file as key-value line. The key is the feature flag name, and the value is the treatment name. The following is a sample `split.properties` file:
 
-```
+```bash title="split.properties file"
 # this is a comment
 
 # sdk.getTreatment(*, reporting_v2) will return 'on'
