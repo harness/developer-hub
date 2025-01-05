@@ -45,6 +45,8 @@ For example, a failure strategy set on a step doesn't impact the failure strateg
 
 Both step and stage failure strategies include the **Rollback Stage** action option. There is no rollback step option.
 
+When creating a step template, failure strategies such as Rollback Pipeline and Rollback Stage appear as options. These strategies only work if the stage where this step template is used is a deployment stage.
+
 ## Failure strategy settings
 
 The following table lists the failure strategy actions and how they work at the step, step group, and stage levels.
