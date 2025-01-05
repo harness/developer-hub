@@ -4,6 +4,8 @@ sidebar_label: Android SDK
 description: Android developer reference for working with Split FME
 ---
 
+import DocCardList from '@theme/DocCardList';
+
 import {
   SDKDocsBuilder
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
@@ -11,7 +13,7 @@ import {
 import {
   Repository,
   GetStarted,
-  BasicUse,
+  UseTheSdk,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
 import Introduction    from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_000_Introduction.mdx";
@@ -46,7 +48,7 @@ export const Result = SDKDocsBuilder(
       },
     ],
     [
-      BasicUse,
+      UseTheSdk,
       {
         example: <GetTreatment />,
       },
@@ -56,3 +58,5 @@ export const Result = SDKDocsBuilder(
 );
 
 <>{Result}</>
+
+<DocCardList />
