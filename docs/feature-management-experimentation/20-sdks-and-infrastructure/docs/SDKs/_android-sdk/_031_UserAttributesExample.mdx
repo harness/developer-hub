@@ -1,0 +1,73 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<p />
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Date;
+
+  // Prepare a Map with several attributes
+  Map<String, Object> attributes = new HashMap<String, Object>();
+  attributes.put("plan_type", "growth");
+  attributes.put("registered_date", System.currentTimeMillis());
+  attributes.put("deal_size", 1000);
+  // Now set these on the client
+  client.setAttributes(attributes);
+
+  // Set one attribute
+  boolean result = client.setAttribute("plan_type", "growth");
+
+  // Get an attribute
+  Object planType = client.getAttribute("plan_type");
+
+  // Get all attributes
+  Map<String, Object> allAttributes = client.getAllAttributes();
+
+  // Remove an attribute
+  boolean result = client.removeAttribute("deal_size");
+
+  // Remove all attributes
+  boolean result = client.clearAttributes();
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// Set multiple attributes
+client.setAttributes(
+    mapOf(
+        "plan_type" to "growth",
+        "registered_date" to System.currentTimeMillis(),
+        "deal_size" to 1000
+    )
+)
+
+// Set one attribute
+val result = client.setAttribute("plan_type", "growth")
+
+// Get an attribute
+val planType = client.getAttribute("plan_type")
+
+// Get all attributes
+val allAttributes = client.allAttributes
+
+// Remove an attribute
+val result = client.removeAttribute("deal_size")
+
+// Remove all attributes
+val result = client.clearAttributes()
+```
+
+  </TabItem>
+</Tabs>

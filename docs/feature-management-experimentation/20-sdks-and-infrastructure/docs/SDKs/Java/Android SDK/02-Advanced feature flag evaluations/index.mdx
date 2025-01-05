@@ -1,5 +1,5 @@
 ---
-title: Advanced feature flag evaluations
+title: ""
 sidebar_label: Advanced feature flag evaluations
 ---
 
@@ -11,9 +11,12 @@ import {
   AdvancedFeatureFlagEvaluations,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
-import UserAttributes        from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_030_UserAttributes.mdx";
-import MultipleTreatments    from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_031_MultipleTreatments.mdx";
-import TreatmentWithConfig   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_032_TreatmentWithConfig.mdx";
+import UserAttributesCreate        from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_031_UserAttributesCreate.mdx";
+import UserAttributesBind          from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_031_UserAttributesBind.mdx";
+import UserAttributesExample       from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_031_UserAttributesExample.mdx";
+import MultipleTreatments          from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_032_MultipleTreatments.mdx";
+import TreatmentWithConfigSingle   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_033_TreatmentWithConfigSingle.mdx";
+import TreatmentWithConfigMultiple from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_033_TreatmentWithConfigMultiple.mdx";
 
 import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
 
@@ -24,10 +27,14 @@ export const Result = SDKDocsBuilder(
     [
       AdvancedFeatureFlagEvaluations,
       {
-        showTitleH2:         true,
-        userAttributes:      <UserAttributes />,
-        multipleTreatments:  <MultipleTreatments />,
-        treatmentWithConfig: <TreatmentWithConfig />,
+        userAttributesCreate:  <UserAttributesCreate />,
+        userAttributesBind:    <UserAttributesBind />,
+        userAttributesExample: <UserAttributesExample />,
+
+        multipleTreatments: <MultipleTreatments />,
+
+        treatmentWithConfigSingle:   <TreatmentWithConfigSingle />,
+        treatmentWithConfigMultiple: <TreatmentWithConfigMultiple />,
       },
     ],
   ],

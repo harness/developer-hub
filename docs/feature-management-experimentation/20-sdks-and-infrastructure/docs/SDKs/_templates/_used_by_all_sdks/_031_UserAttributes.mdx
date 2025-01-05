@@ -1,0 +1,41 @@
+## User Attributes
+
+User attributes are also called Traffic type attributes.
+
+### Attribute syntax
+
+To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `getTreatment` methods need to be passed an attribute map at runtime.
+
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the Rollout plan as defined in the Split user interface to decide which treatment is assigned to this key.
+
+The `getTreatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
+
+* **Strings:** Use type String.
+* **Numbers:** Use type `java.lang.Long` or `java.lang.Integer`.
+* **Dates:** Express the value in `milliseconds since epoch`. In Java, `milliseconds since epoch` is of type `java.lang.Long`. For example, the value for the `registered_date` attribute below is `System.currentTimeInMillis()`, which is a long.
+* **Booleans:** Use type `java.lang.boolean`.
+* **Sets:** Use type `java.util.Collection`.
+
+<>{props.create}</>
+
+### Binding attributes to the client
+
+Attributes can be bound to the client at any time during the SDK lifecycle. These attributes are stored in memory and used in every evaluation to avoid the need for keeping the attribute set accessible through the whole app. These attributes can be cached into the persistent caching mechanism of the SDK making them available for future sessions, as well as part of the SDK_READY_FROM_CACHE flow by setting the `persistentAttributesEnabled` to true. There is no need to wait for your attributes to be loaded at every session before evaluating flags that use them. 
+
+When an evaluation is called, the attributes provided (if any) at evaluation time are combined with the ones already loaded into the SDK memory, with the ones provided at function execution time take precedence, enabling for those attributes to be overriden/hidden for specific evaluations. 
+
+An attribute is considered valid if it follows one of the types listed below:
+- String
+- Number
+- Boolean
+- Array
+
+The SDK validates these before storing them and if there are invalid or missing values, possibly indicating an issue, the methods return the boolean `false` and do not update any value.
+
+See below the definitions for the API which is exposed on the `client`:
+
+<>{props.bind}</>
+
+Refer to the example below to see how to use these methods:
+
+<>{props.example}</>

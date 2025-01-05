@@ -1,0 +1,96 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<p />
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+public interface AttributesManager {
+    /**
+    * Set one single attribute and returns true unless there is an issue storing it. 
+    * If `persistentAttributesEnabled` config is enabled, the attribute is also written to the persistent cache.
+    */
+    boolean setAttribute(String attributeName, Object value);
+
+    /**
+    * Retrieves the value of a given attribute stored in cache.
+    */
+    @Nullable
+    Object getAttribute(String attributeName);
+
+    /**
+     * Set multiple attributes and returns true unless there is an issue storing them. 
+     * If `persistentAttributesEnabled` config is enabled, the attributes are also written to the persistent cache.
+     */
+    boolean setAttributes(Map<String, Object> attributes);
+
+    /**
+    * Retrieves a Map with the values of all attributes stored in cache.
+    */
+    @NonNull
+    Map<String, Object> getAllAttributes();
+
+    /**
+     * Remove one single attribute and returns true unless there is an issue deleting it. 
+     * If `persistentAttributesEnabled` config is enabled, the attribute is also deleted from the persistent cache and won't be available in a subsequent session.
+     */
+    boolean removeAttribute(String attributeName);
+    
+    /**
+     * Clear the whole attribute cache and return true unless there is an issue with the operation and some attributes might still be cached. 
+     * If `persistentAttributesEnabled` config is enabled, the attributes are also deleted from the persistent cache and won't be available in a subsequent session.
+     */
+    boolean clearAttributes();
+}
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+interface AttributesManager {
+    /**
+     * Set one single attribute and returns true unless there is an issue storing it.
+     * If `persistentAttributesEnabled` config is enabled, the attribute is also written to the persistent cache.
+     */
+    fun setAttribute(attributeName: String, value: Any): Boolean
+
+    /**
+     * Retrieves the value of a given attribute stored in cache.
+     */
+    fun getAttribute(attributeName: String): Any?
+
+    /**
+     * Set multiple attributes and returns true unless there is an issue storing them.
+     * If `persistentAttributesEnabled` config is enabled, the attributes are also written to the persistent cache.
+     */
+    fun setAttributes(attributes: Map<String, Any>): Boolean
+
+    /**
+     * Retrieves a Map with the values of all attributes stored in cache.
+     */
+    fun getAllAttributes(): Map<String, Any>
+
+    /**
+     * Removes one single attribute and returns true unless there is an issue deleting it.
+     * If `persistentAttributesEnabled` config is enabled, the attribute is also deleted from the persistent cache and won't be available in a subsequent session.
+     */
+    fun removeAttribute(attributeName: String): Boolean
+
+    /**
+     * Clears the whole attribute cache and returns true unless there is an issue with the operation and some attributes might still be cached.
+     * If `persistentAttributesEnabled` config is enabled, the attributes are also deleted from the persistent cache and won't be available in a subsequent session.
+     */
+    fun clearAttributes(): Boolean
+}
+```
+
+  </TabItem>
+</Tabs>

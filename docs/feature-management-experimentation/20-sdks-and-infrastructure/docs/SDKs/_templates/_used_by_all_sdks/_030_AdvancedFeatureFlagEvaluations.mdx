@@ -1,27 +1,16 @@
+import UserAttributes      from "./_031_UserAttributes.mdx";
+import MultipleTreatments  from "./_032_MultipleTreatments.mdx";
+import TreatmentWithConfig from "./_033_TreatmentWithConfig.mdx";
 
-<>
-{ props.showTitleH2 && <div>
+## Advanced feature flag evaluations: {#advanced-feature-flag-evaluations}
 
-<h1>Advanced feature flag evaluations</h1>
+<UserAttributes
+  create ={ props.userAttributesCreate }
+  bind   ={ props.userAttributesBind   }
+  example={ props.userAttributesBind   } />
 
-</div>
-}
-</>
+<MultipleTreatments  example={ props.multipleTreatments  } />
 
-<>{props.listener}</>
-<>{props.multipleClients}</>
-<>{props.userConsent}</>
-<>{props.certificatePinning}</>
-
-
-
-<>
-{
-  props.shouldSkipStatsigOptions !== true && <div>
-
-The 3rd parameter is optional and allows you to pass in a [StatsigOptions](#statsig-options) to customize the SDK.
-
-  </div>
-}
-
-</>
+<TreatmentWithConfig
+  single  ={ props.treatmentWithConfigSingle   }
+  multiple={ props.treatmentWithConfigMultiple } />

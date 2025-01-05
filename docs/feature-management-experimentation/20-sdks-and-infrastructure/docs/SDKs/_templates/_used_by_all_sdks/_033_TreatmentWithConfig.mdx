@@ -1,0 +1,13 @@
+## Get treatments with configurations
+
+To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
+
+The config element is a stringified version of the configuration JSON defined in the Split user interface. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
+
+This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
+
+<>{props.single}</>
+
+If you need to get multiple evaluations at once, you can also use the `getTreatmentsWithConfig` methods. These methods take the exact same arguments as the [getTreatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to SplitResult objects instead of strings. Example usage below.
+
+<>{props.multiple}</>
