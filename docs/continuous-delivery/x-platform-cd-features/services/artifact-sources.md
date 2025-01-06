@@ -3370,3 +3370,9 @@ If the artifact image differs from the one used in the previous successful deplo
 If the connector configuration has changed but the tag remains the same, an error will be thrown to ensure consistency and avoid conflicts.
 
 Currently, the expression `<+lastSuccessfulDeployed.tag>` is limited to resolving primary artifact tags and does not support resolving sidecar artifact tags.
+
+### Latest Artifact Tag Sample 
+
+To see an example of how to use Latest Artifact Tag in Harness pipeline, visit the [Harness Community Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/cd-features/last-successful-artifact-tag).
+
+This repository provides a ready-to-use sample application and the necessary configuration files to help you get started quickly.
