@@ -238,6 +238,16 @@ If you notice any inconsistencies in the migrated data, please create a support 
 Note that all secrets associated with your existing Propelo account will be securely transferred from Propelo's Google KMS infrastructure to Harness's Google KMS infrastructure.
 :::
 
+### Account overview
+
+To get an overview of your Harness account, go to Account Settings. Under General, select Account Details to open the Account Overview page.
+The **Account Details** section enables you to view your account information and set your default experience.
+
+* **Account Name:** Your account name.
+* **Account Id:** Your account ID.
+* **Harness Cluster:** The Harness cluster assigned to your account.
+* **Default Experience:** This setting allows environment administrators to set the default generation landing page for users to ensure the correct Harness experience, Harness First Generation or Harness Next Generation, is provided.
+
 ## Manual steps to be performed
 
 ### SSO Configuration
@@ -267,7 +277,7 @@ If you were using an Ingestion Satellite for on-premise integrations, follow the
 
 ![](../static/MIGRATION-SATELLITE.png)
 
-If you’re unsure which environment to use, contact the Support Executive assigned to your Harness account.
+To determine which Harness cluster is assigned to your account, go to your[account details](#account-overview) page.
 
 After updating the `satellite.yml` file, run the container to schedule the ingestion process for your integrations.
 
@@ -310,7 +320,7 @@ To generate the API token:
 
 ![](../static/jenkins-key-harness.png)
 
-* Set the **Application Type** to the environment where you are configuring the **Plugin** i.e. the environment where your Harness Account is hosted on.
+* Set the **Application Type** to the environment where you are configuring the **Plugin** i.e. the cluster where your Harness Account is hosted on.
 * Add the [Jenkins Username](#step-1-generate-jenkins-user-credentials) and [Jenkins User Token (Jenkins API Token)](#step-1-generate-jenkins-user-credentials).
 * Save the plugin settings.
 
@@ -321,7 +331,7 @@ To generate the API token:
 If your Jenkins plugin version is newer than 1.0.30, follow these steps:
 
 * Go to **Jenkins plugin** settings.
-* Set the **Application Type** to the **Harness SEI environment** where your account is hosted. Contact [Harness Support](mailto:support@harness.io) to confirm where your account is hosted.
+* Set the **Application Type** to the **Harness SEI environment** where your account is hosted. View the [Account details](#account-overview) page to confirm where your account is hosted.
 
 #### Verification
 
