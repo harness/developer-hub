@@ -50,13 +50,13 @@ Once you're viewing an Insight, you can explore the widgets and interact with th
 
 Widgets get data from [integrations](/docs/category/sei-integrations), which are inherited from the [Collections associated with Insights](#manage-insights-associations). In turn, Collections inherit integrations from their associated Harness project, because integrations are configured at the project level. For more information about this hierarchy and configuring Collections, go to [Collections](/docs/category/projects-and-collections).
 
-You can also configure individual metrics and widgets to specify what data is used in calculations, how data is presented, and other criteria. For more information, go to [Metrics and reports](/docs/category/metrics-and-reports).
+You can also configure individual metrics and widgets to specify what data is used in calculations, how data is presented, and other criteria. For more information, go to [Metrics and widgets](/docs/category/metrics-and-reports).
 
 :::
 
 #### Set the Insight time
 
-_Insight time_ is the time range selected by the user viewing an Insight. Widgets and reports must be configured to **Use Insight Time** in order for their data to update when you change the Insight time range.
+_Insight time_ is the time range selected by the user viewing an Insight. Widgets must be configured to **Use Insight Time** in order for their data to update when you change the Insight time range.
 
 If a widget or report uses a specific time range, changing the Insight time has no impact on the data shown by that widget or report.
 
@@ -122,11 +122,11 @@ To add widgets to Insights:
 
 ![](./static/sample-report.png)
 
-:::info Where does the data in reports come from?
+:::info Where does the data in widgets come from?
 
-Reports get data from [integrations](/docs/category/sei-integrations), which are inherited from the [Collections associated with Insights](#manage-insights-associations). In turn, Collections inherit integrations from their associated Harness project, because integrations are mapped at the project level. For more information about this hierarchy and configuring Collections, go to [Collections](/docs/category/projects-and-collections).
+Widgets get data from [integrations](/docs/category/sei-integrations), which are inherited from the [Collections associated with Insights](#manage-insights-associations). In turn, Collections inherit integrations from their associated Harness project, because integrations are mapped at the project level. For more information about this hierarchy and configuring Collections, go to [Collections](/docs/category/projects-and-collections).
 
-You can also configure individual metrics and reports to specify what data is used in calculations, how data is presented, and other criteria. For more information, go to [Metrics and reports](/docs/category/metrics-and-reports).
+You can also configure individual metrics and widgets to specify what data is used in calculations, how data is presented, and other criteria. For more information, go to [Metrics and reports](/docs/category/metrics-and-reports).
 
 :::
 
@@ -168,7 +168,7 @@ Use the DORA Metrics Insight to examine your organization's [DORA (DevOps Resear
 If you want to create a DORA Metrics Insight refer to the below resoures.
 
 * [Tutorial: Create a DORA Metrics Insight](/docs/software-engineering-insights/insights/insight-tutorials/dora-insight)
-* [DORA Metrics Reports](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics)
+* [DORA widgets](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics)
 
 ![](./static/dora-insight.png)
 
@@ -176,12 +176,12 @@ If you want to create a DORA Metrics Insight refer to the below resoures.
 
 Dev Insights examines development efforts, particularly in relation to SCM metrics, such as PR creation, merging, and review collaboration.
 
-For more information about SCM metrics and reports, go to [velocity metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics-overview) and [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
+For more information about SCM metrics and widgets, go to [velocity metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics-overview) and [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
 
 If you want to create a Developer i.e. SCM Metrics Insight refer to the below resources.
 
 * [Tutorial: Create a Developer / SCM Metrics Insight](/docs/software-engineering-insights/insights/insight-tutorials/developer-insight)
-* [SCM Reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports) 
+* [SCM widgets](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports) 
 
 ![](./static/dev-insight.png)
 
@@ -202,7 +202,7 @@ Use the Trellis Insight to examine [Trellis Scores](/docs/category/trellis-score
 If you want to create a Trellis Insight refer to the below resources.
 
 * [Tutorial: Create a Trellis Metrics Insight](/docs/software-engineering-insights/insights/insight-tutorials/trellis-insight)
-* [Trellis Reports](/docs/category/trellis-scores)
+* [Trellis widgets](/docs/category/trellis-scores)
 
 ### Planning Insights
 
@@ -211,4 +211,4 @@ Use the Planning Insight to examine [sprint metrics](/docs/category/sprint-metri
 If you want to create a Sprints Metrics Insight refer to the below resources.
 
 * [Tutorial: Create a Sprint Metrics Insight](/docs/software-engineering-insights/insights/insight-tutorials/agile-insights)
-* [Sprint Metric Reports](/docs/category/sprint-metrics)
+* [Sprint metric widgets](/docs/category/sprint-metrics)
