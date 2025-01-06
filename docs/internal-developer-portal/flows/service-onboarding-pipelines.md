@@ -115,53 +115,11 @@ Read More on [Backstage Software Template](https://backstage.io/docs/features/so
 
 ## Syntax of Workflows YAML
 
-Variables in the Workflow YAML are wrapped in `${{ }}`. These are used for linking different parts of the Workflows together. All the form inputs from the `parameters` section will be available by using this syntax. For example `${{ parameters.project_name }}` inserts the value of `project_name` from the parameters entered by the user in the UI. This is great for passing the values from the form into different steps and reusing these input variables. These strings preserve the type of the parameter.
-
-The `${{ parameters.project_name }}` pattern is used in the Workflows YAML to pass the parameters from the UI to the input of the `trigger:harness-custom-pipeline` step.
-
-:::info
-The syntax `${{ parameters.x }}` is supported exclusively within the `steps` section when configuring the [Workflows Backend](#building-the-workflow-backend). It cannot be used within the `properties` section to reference another parameter.
-
-```YAML {16,24-25}
-## Example workflows.yaml
-...
-spec:
-  parameters:
-    - title: Service Details
-      properties:
-        projectId:
-            title: Project Identifier
-            description: Harness Project Identifier
-            type: string
-            ui:field: HarnessProjectPicker
-        template_type:
-          title: Type of the Template
-          type: string
-          description: Type of the Template
-          ui:readonly: $${{ parameters.another_field}}  ## NOT SUPPORTED
-  steps:
-    - id: trigger
-      name: Creating your react app
-      action: trigger:harness-custom-pipeline
-      input:
-        url: "https://app.harness.io/ng/account/account_id/module/idp/orgs/org_id/projects/project_id/pipelines/pipeline_id/pipeline-studio/?storeType=INLINE"
-        inputset:
-          project_id: ${{ parameters.projectId }}  ## SUPPORTED
-          template_type: ${{ parameters.template_type }} ## SUPPORTED
-...
-```
-
-:::
-
-As you can see above in the `Outputs` section, `actions` and `steps` can also generate outputs. You can grab that output using `steps.$stepId.output.$property`.
-
-It is important to remember that all examples are based on the [react-jsonschema-form](https://rjsf-team.github.io/react-jsonschema-form/) project.
-
 Now let's dive in and pick apart what each of these sections do and what they are.
 
 ![](./static/yaml-syntax-workflow.png)
 
-## Creating the frontend of the Workflow
+### Creating the frontend of the Workflow
 
 The UI of an IDP Workflow can be defined using a `workflows.yaml` file with metadata and `parameters` field. In a Workflow, the **input parameters** are the first interaction point for your users. It defines the structure and types of data needed to initiate the pipeline.
 
@@ -184,7 +142,7 @@ The UI of an IDP Workflow can be defined using a `workflows.yaml` file with meta
 3. **Required Fields**:
    Workflows allow developers to enforce required fields. For example, the field `age` or `owner` could be marked as mandatory, ensuring critical data is not skipped during onboarding.
 
-### Where to add the Workflow forms
+#### Where to add the Workflow forms
 
 The input fields in `parameters` can be modified in a sequence. Note that it accepts an array which means either there can be one page of input fields or it can be broken up into multiple different pages which would be rendered as different steps in the form.
 
@@ -262,9 +220,9 @@ To access the playground, go to your Workflows page and click on **Open Playgrou
 ![](./static/template-editoer-2.png)
 ![](./static/template-editor-3.png)
 
-## Building the Workflow Backend
+### Building the Workflow Backend
 
-### Where to Add the Backend Integration: Action Customization
+#### Where to Add the Backend Integration: Action Customization
 
 **Steps** are the core execution units in a Workflow. This is typically used to trigger a Harness pipeline which orchestrates repo creation, service onboarding in the catalog or provisioning infrastructure resources. The inputs gathered from the user are passed into the action, and the outputs are generated based on the results of each action.
 
@@ -294,6 +252,48 @@ These follow the same standard format:
       - title: Pipeline Details
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
+
+Variables in the Workflow YAML are wrapped in `${{ }}`. These are used for linking different parts of the Workflows together. All the form inputs from the `parameters` section will be available by using this syntax. For example `${{ parameters.project_name }}` inserts the value of `project_name` from the parameters entered by the user in the UI. This is great for passing the values from the form into different steps and reusing these input variables. These strings preserve the type of the parameter.
+
+The `${{ parameters.project_name }}` pattern is used in the Workflows YAML to pass the parameters from the UI to the input of the `trigger:harness-custom-pipeline` step.
+
+:::info
+The syntax `${{ parameters.x }}` is supported exclusively within the `steps` section when configuring the [Workflows Backend](#building-the-workflow-backend). It cannot be used within the `properties` section to reference another parameter.
+
+```YAML {16,24-25}
+## Example workflows.yaml
+...
+spec:
+  parameters:
+    - title: Service Details
+      properties:
+        projectId:
+            title: Project Identifier
+            description: Harness Project Identifier
+            type: string
+            ui:field: HarnessProjectPicker
+        template_type:
+          title: Type of the Template
+          type: string
+          description: Type of the Template
+          ui:readonly: $${{ parameters.another_field}}  ## NOT SUPPORTED
+  steps:
+    - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/account_id/module/idp/orgs/org_id/projects/project_id/pipelines/pipeline_id/pipeline-studio/?storeType=INLINE"
+        inputset:
+          project_id: ${{ parameters.projectId }}  ## SUPPORTED
+          template_type: ${{ parameters.template_type }} ## SUPPORTED
+...
+```
+
+:::
+
+As you can see above in the `Outputs` section, `actions` and `steps` can also generate outputs. You can grab that output using `steps.$stepId.output.$property`.
+
+It is important to remember that all examples are based on the [react-jsonschema-form](https://rjsf-team.github.io/react-jsonschema-form/) project.
 
 [Read More](/docs/internal-developer-portal/flows/custom-actions) about the Available Workflow Actions.
 
