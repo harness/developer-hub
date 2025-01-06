@@ -132,12 +132,13 @@ Sprint velocity is a crucial metric for teams and organizations. By quantifying 
 * Prevent overcommitments in sprint planning.
 * Understand how teams should adapt and strategize in response to changing conditions.
 
-**Sprint velocity**, also called _delivered points_ or _velocity points_, is the sum of story points completed within a sprint.
+**Sprint velocity**, also called _delivered points_ or _velocity points_, is calculated as the sum of [commit done points](#commit-done-points), delivered scope creep points (i.e. [creep done points](#creep-done-points)), and delivered story creep points based on the number of story points assigned to completed tickets when the sprint ends.
 
-Sprint velocity is calculated as the sum of [commit done points](#commit-done-points) and [creep done points](#creep-done-points), based on the number of story points assigned to completed tickets when the sprint ends.
+* **Delivered scope creep points:** This [metric](#creep-done-points) captures the total story points from all completed creep tickets within the sprint, giving you better visibility into scope changes.
+* **Delivered story creep points:** This represents the sum of story points from completed tickets where estimates were increased during the sprint.
 
 ```bash
-Sprint velocity = Commit done points + Creep done points
+Sprint velocity = Commit done points + Creep done points (i.e. Delivered scope creep points) + Delivered story creep points
 ```
 
 The **Velocity Points STDEV** is the standard deviation of sprint velocity points. It represents the variability in a team's productivity over multiple sprints.
