@@ -6,13 +6,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::info[ Banners Permissions - Available at the **[account](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes)** scope only ]
+:::
+
 ## Overview
 
 The Custom banners, lets admins or users with the right permissions share important messages, like maintenance schedules or downtime, with everyone. These custom banners appear at the top of the Harness UI and are visible to all users across different areas when active.
 
 <!-- ![custom-banners-intro](../../path-to-gif) -->
 
-Account administrators can manage the banner type, message and optional call-to-action (CTA)s with the banners buttons. A maximum of 5 active banners can be active at a time. 
+Account administrators can manage the banner type, message and optional call-to-action (CTA)s with the banners buttons. **A maximum of 5 active banners can be active at a time**. 
 
 ## Getting Started with Banners
 
@@ -87,10 +90,3 @@ To enable or disable a banner in Harness, ensure you have a role with banner man
     - ON to enable a disabled banner.
     - OFF to disable an enabled banner.
 
-:::note
- 
- Banners Permissions - Available at the **[account](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes)** scope only
-    - View
-    - Create/Edit
-    - Delete    
-:::
