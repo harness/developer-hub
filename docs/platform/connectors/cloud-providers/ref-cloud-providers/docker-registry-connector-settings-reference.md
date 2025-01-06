@@ -78,6 +78,24 @@ The URL of the Docker registry. This is usually the URL used for your [docker lo
    * For JFrog Artifactory Docker registries, provide your JFrog instance URL, such as `https://mycompany.jfrog.io`. You can get this URL from the `docker-login` command on your repo's **Set Me Up** page.
    * For Sonatype Nexus Docker registries, provide the Nexus instance URL, such as `<nexus-hostname>:<repository-port>` or `<subdomain>.<nexus-hostname>`. For more information, see the Sonatype Nexus [Docker Authentication](https://help.sonatype.com/en/docker-authentication.html) documentation.
 
+## Harness Artifact Registry (HAR) Configuration
+When using the Docker Connector with Harness Artifact Registry (HAR), it's important to configure the registry URL and image names correctly to ensure seamless operation.
+
+### Registry URL Configuration:
+**Correct URL Format:** Set the registry URL to `https://pkg.harness.io/`. Avoid including the registry name in the URL to prevent validation errors.
+Validation: If the registry name is detected in the registry URL, a validation message will prompt you to correct it.
+Image Name Configuration:
+
+**Fully Qualified Image Name:** Provide the fully qualified image name within the step configuration, such as `pkg.qa.harness.io/<account-id>/harness/<registry-name>`.
+Deprecated Source Type: If using a deprecated source type, ensure the configuration is updated to avoid potential issues.
+Troubleshooting Common Issues:
+
+:::tip policy enforcement and authentication
+**SBOM (Software Bill of Materials) Policy Enforcement:** Ensure the registry URL is correctly configured to avoid hard-coded URL issues.
+**SLSA (Supply-chain Levels for Software Artifacts) Verification Authentication:** Double-check the authentication settings if encountering errors.
+:::
+---
+
 ## Authentication
 
 You can authenticate anonymously or by username and password.
