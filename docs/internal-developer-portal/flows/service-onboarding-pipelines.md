@@ -40,7 +40,7 @@ metadata:
     - javascript
 # these are the steps which are rendered in the frontend with the form input
 spec:
-  owner: debabrata.panigrahi@harness.io
+  owner: d.p@harness.io
   type: service
   parameters:
     - title: Service Details
@@ -121,6 +121,36 @@ The `${{ parameters.project_name }}` pattern is used in the Workflows YAML to pa
 
 :::info
 The syntax `${{ parameters.x }}` is supported exclusively within the `steps` section when configuring the [Workflows Backend](#building-the-workflow-backend). It cannot be used within the `properties` section to reference another parameter.
+
+```YAML {16,24-25}
+## Example workflows.yaml
+...
+spec:
+  parameters:
+    - title: Service Details
+      properties:
+        projectId:
+            title: Project Identifier
+            description: Harness Project Identifier
+            type: string
+            ui:field: HarnessProjectPicker
+        template_type:
+          title: Type of the Template
+          type: string
+          description: Type of the Template
+          ui:readonly: $${{ parameters.another_field}}  ## NOT SUPPORTED
+  steps:
+    - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/account_id/module/idp/orgs/org_id/projects/project_id/pipelines/pipeline_id/pipeline-studio/?storeType=INLINE"
+        inputset:
+          project_id: ${{ parameters.projectId }}  ## SUPPORTED
+          template_type: ${{ parameters.template_type }} ## SUPPORTED
+...
+```
+
 :::
 
 As you can see above in the `Outputs` section, `actions` and `steps` can also generate outputs. You can grab that output using `steps.$stepId.output.$property`.

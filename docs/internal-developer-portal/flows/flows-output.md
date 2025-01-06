@@ -90,6 +90,35 @@ The `spec.steps` field contains only one action, and that is to trigger a Harnes
 
 :::info
 The syntax `${{ parameters.x }}` is supported exclusively within the `steps` section when configuring the Workflows Backend. It cannot be used within the `properties` section to reference another parameter.
+
+```YAML {16,24-25}
+## Example workflows.yaml
+...
+spec:
+  parameters:
+    - title: Service Details
+      properties:
+        projectId:
+            title: Project Identifier
+            description: Harness Project Identifier
+            type: string
+            ui:field: HarnessProjectPicker
+        template_type:
+          title: Type of the Template
+          type: string
+          description: Type of the Template
+          ui:readonly: $${{ parameters.another_field}}  ## NOT SUPPORTED
+  steps:
+    - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/account_id/module/idp/orgs/org_id/projects/project_id/pipelines/pipeline_id/pipeline-studio/?storeType=INLINE"
+        inputset:
+          project_id: ${{ parameters.projectId }}  ## SUPPORTED
+          template_type: ${{ parameters.template_type }} ## SUPPORTED
+...
+```
 :::
 
 [Steps](/docs/internal-developer-portal/flows/service-onboarding-pipelines#building-the-workflow-backend) is where you integrate the Harness Pipeline as a Backend and are the core execution units within Workflows. Each step runs an action that might involve triggering a CI/CD pipeline, creating a service in a catalog, or provisioning infrastructure resources.
