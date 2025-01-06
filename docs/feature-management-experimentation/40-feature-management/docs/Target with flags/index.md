@@ -1,6 +1,6 @@
 ---
 title: Define feature flag treatments and targeting
-sidebar_label: Define feature flag treatments and targeting
+sidebar_label: Target with flags
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

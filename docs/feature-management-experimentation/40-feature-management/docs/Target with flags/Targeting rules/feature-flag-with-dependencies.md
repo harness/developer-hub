@@ -1,6 +1,6 @@
 ---
 title: Target with dependencies
-sidebar_label: Target with dependencies
+sidebar_label: Feature flag dependencies
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

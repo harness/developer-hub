@@ -1,6 +1,6 @@
 ---
 title: Using flag sets to boost SDK performance
-sidebar_label: Using flag sets to boost SDK performance
+sidebar_label: Flag sets
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

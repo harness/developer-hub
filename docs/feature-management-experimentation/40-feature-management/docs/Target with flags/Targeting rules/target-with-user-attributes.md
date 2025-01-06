@@ -1,6 +1,6 @@
 ---
-title: Target with custom attributes
-sidebar_label: Target with custom attributes
+title: Target with user attributes
+sidebar_label: Target with user attributes
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

@@ -1,8 +1,9 @@
 ---
-title: Create a feature flag
-sidebar_label: Create a feature flag
+title: "Quickstart: Create a feature flag"
+sidebar_label: "Quickstart: Create a feature flag"
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 1
 ---
 
 import Link from "@docusaurus/Link";

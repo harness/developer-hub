@@ -1,6 +1,6 @@
 ---
-title: Feature flag lifecycle management
-sidebar_label: Feature flag lifecycle management
+title: Manage feature flag lifecycle
+sidebar_label: Manage feature flag lifecycle
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

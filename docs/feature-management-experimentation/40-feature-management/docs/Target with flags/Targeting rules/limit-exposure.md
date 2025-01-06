@@ -1,6 +1,6 @@
 ---
-title: Limiting exposure
-sidebar_label: Limiting exposure
+title: Limit exposure
+sidebar_label: Limit exposure
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
