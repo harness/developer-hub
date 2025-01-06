@@ -1,7 +1,7 @@
 ---
 title: Enable documentation for your Component
 description: Learn how you can enable the TechDocs plugin to show your Markdown docs on the **Docs** tab of the catalog page.
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />

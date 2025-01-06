@@ -3,6 +3,8 @@ title: Harness IDP Adoption Playbook
 sidebar_label: IDP Adoption Playbook
 description: A step-by-step implementation guide for adopting Harness Internal Developer Portal at scale
 sidebar_position: 1
+redirect_from:
+  - docs/internal-developer-portal/get-started/adoption-playbook
 ---
 
 **A step-by-step implementation guide for adopting Harness Internal Developer Portal at scale.**
@@ -119,7 +121,7 @@ This phase has two main goals
 
 Usually the Internal Developer Portal initiative is owned by the Head of Developer Experience or the Head of Platform Engineering. If these organizations do not exist, then it falls back to the DevOps team. Sometimes, IDPs are also owned by SREs.
 
-You should have 1-2 Platform Engineers who understand the product in depth and have some experience with the Software Development Lifecycle at your organization. These Platform Engineers should go through the IDP Getting Started and understand the basics of how the Harness Platform, Catalog, Scorecards and Workflows work. [https://developer.harness.io/docs/internal-developer-portal/get-started/](https://developer.harness.io/docs/internal-developer-portal/get-started/)
+You should have 1-2 Platform Engineers who understand the product in depth and have some experience with the Software Development Lifecycle at your organization. These Platform Engineers should go through the [IDP Getting Started](https://developer.harness.io/docs/internal-developer-portal/get-started/) and understand the basics of how the Harness Platform, Catalog, Scorecards and Workflows work. 
 
 You should also have a Platform Product Manager whose main responsibility is to collect feedback from your Developers, create Roadmap and evangelise solutions that you will launch. In case you do not have a Platform Product Manager, the Engineering Manager/Director can also take up this as a part time responsibility. The key is to ensure there is someone who can create the feedback loop with Developers and other Stakeholders. And it should not be the Platform Engineers implementing IDP.
 

@@ -1,7 +1,7 @@
 ---
 title: Add a new software component to the catalog
 description: Learn how you can add a new software component to the IDP software catalog.
-sidebar_position: 5
+sidebar_position: 3
 redirect_from:
   - /docs/internal-developer-portal/getting-started/register-a-new-software-component
 ---

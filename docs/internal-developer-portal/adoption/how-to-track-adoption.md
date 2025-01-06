@@ -1,8 +1,10 @@
 ---
-title: Track Adoption
+title: Track your IDP Adoption 
 description: How to Track Adoption using Custom Dashboards
 sidebar_position: 500
 sidebar_label: Track Adoption
+redirect_from:
+  - docs/internal-developer-portal/get-started/how-to-track-adoption
 ---
 
 We provide an out-of-the-box adoption dashboard to help you with tracking Harness IDP adoption inside your organization. You can find this Dashboard under [Custom Dashboards](https://developer.harness.io/docs/category/harness-dashboards). 
@@ -11,11 +13,6 @@ We provide an out-of-the-box adoption dashboard to help you with tracking Harnes
 
 To view and access dashboards, select **DASHBOARDS** from the left navigation in your Harness account. You can filter the data on the dashboards for IDP module by selecting the module name from the top of the page. 
 
-#### Old Left Nav
-
-![](./static/old-nav.png)
-
-#### New Left Nav
 
 ![](./static/new-nav.png)
 

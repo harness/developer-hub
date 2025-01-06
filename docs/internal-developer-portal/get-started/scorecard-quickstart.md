@@ -1,7 +1,7 @@
 ---
 title: Getting Started with Scorecards
 description: Create a Scorecards to track the readiness of your catalog-info.yaml 
-sidebar_position: 50
+sidebar_position: 5
 redirect_from:
   - /docs/internal-developer-portal/scorecards/scorecard-quickstart
 ---
