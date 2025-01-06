@@ -45,11 +45,29 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## January
+
+### GitOps Version 1.23.0, GitOps Agent Version 0.84.0
+
+#### New features and enhancements
+
+- The GitOps Agent Argo version has been upgraded from 2.10 to 2.13. (CDS-104976)
+- With GitOps agent version 0.83.x if the agent is at project scope in Harness it will reconcile argo clusters and repos that don't have the "project" field as well ("project" refers to the argoproject). (CDS-105211)
+- The version of SOPS used by Argo has been upgraded from 3.9.0 to 3.9.2. (CDS-105323)
+- Filtering has been greatly improved for GitOps Applications. Here is what you can expect:
+  - You can now create and save your own custom filters for repeated use.
+  - Navigate a new filters UI/UX to create and manage your filters easily.
+  - Added a search box to filter parameter dropdowns. (CDS-101484)
+
+#### Fixed issues
+
+- Previously a `duplicate argo project mapping found` error was being thrown incorrectly when using the API endpoint `/api/v1/appprojectsmapping`. This is now fixed. (CDS-105291)
+- Improved logging for the service and agent to include versions. (CDS-97354)
+- Improved agent deployment via terraform. This includes fixing a health check, fetching an agent token, and adding a hash value in manifests to enforce reloading. (CDS-102304)
+
 ## December
 
 ### Gitops Version 1.22.0, Gitops Agent Version 0.83.0
-
-#### Fixed Issues
 
 #### New Features and enhancements
 
