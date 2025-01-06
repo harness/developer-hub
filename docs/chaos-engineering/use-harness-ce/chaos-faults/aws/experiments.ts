@@ -310,6 +310,13 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "Lambda function layer detach",
+    description:
+      "Lambda function layer detach is an AWS fault that detaches the Lambda layer associated with the function, thereby causing dependency-related issues or breaking the Lambda function that relies on the layer's content.",
+    tags: ['lambda', 'detach', 'function'],
+    category: "aws",
+  },
+  {
     name: "Lambda toggle event mapping state",
     description:
       "Lambda toggle event mapping state toggles (or sets) the event source mapping state to `disable` for a Lambda function during a specific duration.",
