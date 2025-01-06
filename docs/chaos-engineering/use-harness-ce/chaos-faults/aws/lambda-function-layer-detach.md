@@ -81,7 +81,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> LAMBDA_FUNCTION_LAYER_ARN </td>
         <td> Layer version that is identified by the unique ARN. </td>
-        <td> Default: <code>$LATEST</code>. </td>
+        <td> Default: <code>arn:aws:lambda:us-east-2:99999999999:layer:l-2:1,arn:aws:lambda:us-east-2:99999999999:layer:chaos_layer:1</code>. </td>
       </tr>
       <tr>
         <td> REGION </td>
