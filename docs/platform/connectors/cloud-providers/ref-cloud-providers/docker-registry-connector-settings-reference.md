@@ -92,6 +92,7 @@ Troubleshooting Common Issues:
 
 :::tip policy enforcement and authentication
 **SBOM (Software Bill of Materials) Policy Enforcement:** Ensure the registry URL is correctly configured to avoid hard-coded URL issues.
+
 **SLSA (Supply-chain Levels for Software Artifacts) Verification Authentication:** Double-check the authentication settings if encountering errors.
 :::
 ---
@@ -109,11 +110,9 @@ You can authenticate anonymously or by username and password.
   * For JFrog Docker registries, provide a password.
 
 :::info Docker registry permissions
-
 Make sure the connected user account has *read permission for all repositories* as well as access and permissions to *pull images* and *list images and tags*.
 
 For more information, go to the Docker documentation on [Docker Permissions](https://docs.docker.com/datacenter/dtr/2.0/user-management/permission-levels/).
-
 :::
 
 </TabItem>
