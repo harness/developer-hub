@@ -43,7 +43,7 @@ Sprint metrics can help you plan and deliver on sprints more effectively, includ
     <tr>
         <td>Create a Sprints Insight</td>
         <td>Step by step guide to create a Sprint Insight</td>
-        <td>[Click Here](/docs/software-engineering-insights/insights/sprint-metrics-insight)</td>
+        <td>[Click Here](/docs/software-engineering-insights/insights/insight-tutorials/agile-insights)</td>
     </tr>
     <tr>
         <td>Best Practices and Recommendations</td>
@@ -147,7 +147,7 @@ Find the complete list of [Sprint Metrics ratios here](/docs/software-engineerin
 
 Having a Sprint Insight can help address issues related to the sprint success and enhance the overall sprint planning and delivery process. Refer to the below tutorial to learn how to create an Insight (i.e. Dashboard) configured with the most frequently used Sprint metrics reports to measure your team's contribution and activity across various sprint cycles.
 
-* [**Tutorial: Create a Sprint Metrics Insight**](/docs/software-engineering-insights/insights/sprint-metrics-insight)
+* [**Tutorial: Create a Sprint Metrics Insight**](/docs/software-engineering-insights/insights/insight-tutorials/agile-insights)
 
 ## Best Practices and Recommendations
 
