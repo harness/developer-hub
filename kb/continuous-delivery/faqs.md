@@ -32,6 +32,10 @@ Yes, Harness supports the migration of entities such as overrides, pipelines, te
 
 See [Service-based licensing and usage for CD](/docs/continuous-delivery/get-started/service-licensing-for-cd/)
 
+#### How does Harness CD consume Service Licenses for pipelines with custom stages?
+
+Harness CD consumes 1 Service License for every 2000 pipeline executions of custom stages.
+
 #### My definition of a service differs from the above standard definition. How will pricing work in my case?
 
 Harness allows deployment of various custom technologies such as Terraform scripts, background jobs, and other non-specified deployments. These require custom evaluation to assess the correct Licensing model. Please contact the Harness Sales team to discuss your specific technologies and deployment use cases.
@@ -3203,7 +3207,7 @@ No, pull request events do not occur on the forked repository.
 
 You can create a custom trigger to initiate a pipeline for a fork event. First, enable the Webhook setting to capture the event logs for the fork. Once enabled, you will be able to capture the event logs for every fork on the repository, and based on the payload, trigger conditions can be set.
 
-### How to create a file in Harness File Store via Shell Script?
+#### How to create a file in Harness File Store via Shell Script?
 
 To create a File Store from a Shell Script, you can use the [Harness API](https://apidocs.harness.io/tag/File-Store#operation/create).
 
