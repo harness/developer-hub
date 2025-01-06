@@ -46,6 +46,7 @@ Lead Time for Changes measures how long it takes for a task to move from develop
 * **Select the Starting event:** Define when Lead Time tracking begins:
   * **Ticket Created:** Starts tracking when a ticket is created in the issue management system.
   * **Commit Created:** Starts tracking when the first commit is made.
+  * **Use First Stage (Recommended):** Use the first stage configuration to trigger the lead time calculations.
   * **API Event:** Uses a custom API event to trigger Lead Time calculation.
 * **Define Workflow Stages:**
   * Add stages that represent key phases in your delivery process, such as issue management and CI/CD activities.
@@ -62,7 +63,15 @@ This section covers how to set up the Lead Time for Changes metric definition us
 
 ![](../static/dora-4.png)
    
-* Select **Ticket Created** as the start event. This triggers Lead Time tracking whenever a new ticket is created.
+Choose the appropriate start event to define when Lead Time tracking begins in your workflow.
+
+* **Ticket Created**
+  * Tracking starts when a new ticket (e.g., story, task, or bug) is created in your issue management system.
+  * This option is ideal if you want to include the planning phase before development in the Lead Time calculation.
+
+* **First Stage**
+  * Tracking begins when the conditions specified in the first workflow stage are met.
+  * Use this option if you prefer to calculate Lead Time based on a specific status or phase in your delivery process.
    
 ![](../static/dora-5.png)
 
@@ -208,8 +217,15 @@ This hybrid configuration involves correlating your **Issue Management system (e
 
 #### Define the workflow
 
-Choose **Ticket Created** as the starting event. This begins Lead Time tracking when a new ticket (e.g., story, task, or bug) is created in your Issue Management system.
-Why? This ensures that planning efforts before development are accounted for.
+Choose the appropriate start event to define when Lead Time tracking begins in your workflow.
+
+* **Ticket Created**
+  * Tracking starts when a new ticket (e.g., story, task, or bug) is created in your issue management system.
+  * This option is ideal if you want to include the planning phase before development in the Lead Time calculation.
+
+* **First Stage**
+  * Tracking begins when the conditions specified in the first workflow stage are met.
+  * Use this option if you prefer to calculate Lead Time based on a specific status or phase in your delivery process.
 
 #### Add custom stages for tracking issue management statuses
 
@@ -353,8 +369,15 @@ This configuration extends the hybrid approach of **Issue Management** and **SCM
 
 #### Define the workflow
 
-Choose **Ticket Created** as the starting event. This begins Lead Time tracking when a new ticket (e.g., story, task, or bug) is created in your Issue Management system.
-Why? This ensures that planning efforts before development are accounted for.
+Choose the appropriate start event to define when Lead Time tracking begins in your workflow.
+
+* **Ticket Created**
+  * Tracking starts when a new ticket (e.g., story, task, or bug) is created in your issue management system.
+  * This option is ideal if you want to include the planning phase before development in the Lead Time calculation.
+
+* **First Stage**
+  * Tracking begins when the conditions specified in the first workflow stage are met.
+  * Use this option if you prefer to calculate Lead Time based on a specific status or phase in your delivery process.
 
 #### Add custom stages for tracking issue management statuses
 
