@@ -72,7 +72,7 @@ You can also create new integrations and associate the integration with the curr
 2. Go the **Project** scope and select your **Project**.
 3. If you don't have any existing Insight, then click on the **Create Insight** button on the landing page to create a new Insight.
 
-![](./static/create-insight.png)
+![](../static/create-insight.png)
 
 4. If you already have existing Insights in your selected Project, then go to any Insight. For instructions, go to [View Insights](#view-insights).
 5. In the header, select **All Insights**, and then select **Manage Insights**.
@@ -101,7 +101,7 @@ The Trellis Score Report calculates and displays the Trellis Scores by individua
 
 The factors and weight associated with the Trellis Score are essentially defined at the profile level. To learn more, go to [Trellis Profile](/docs/software-engineering-insights/sei-profiles/trellis-profile).
 
-![](./static/trellis-score-report.png)
+![](../static/trellis-score-report.png)
 
 To add the **Trellis Score Report** widget to Insights:
 
@@ -116,7 +116,7 @@ This report calculates and displays the Trellis Scores organized by Collection.
 
 The factors and associated metrics used while calculating the values are identical to how the Trellis Score is calculated in general with the differentiation on calculating the score for each collection i.e. average of the Trellis score calculated for all users that are part of the collection.
 
-![](./static/trellis-score-by-collection.png)
+![](../static/trellis-score-by-collection.png)
 
 To add the **Trellis Scores by Collection Report** widget to Insights:
 
@@ -134,7 +134,7 @@ You can choose to display the scores of the immediate child Collections only.
 
 This report displays a table of base values that contribute to Trellis Scores at the contributor level i.e. it calculates and displays the breakdown of the Trellis Scores by individual developers. You can edit the widget to show different values (add/remove columns) or apply filtering.
 
-![](./static/individual-raw-stats.png)
+![](../static/individual-raw-stats.png)
 
 To add the **Individual Raw Stats Report** widget to Insights:
 
@@ -148,7 +148,7 @@ To add the **Individual Raw Stats Report** widget to Insights:
 
 This report displays a table of base values that contribute to Trellis Scores at the collection level i.e. it calculates and displays the breakdown of the Trellis Scores (Base values) organized by Collection. You can edit the widget to show different values (add/remove columns) or apply filtering.
 
-![](./static/raw-stats-by-collection.png)
+![](../static/raw-stats-by-collection.png)
 
 To add the **Raw Stats by Collection Report** widget to Insights:
 

@@ -34,7 +34,7 @@ sidebar_label: Overview
     <tr>
         <td>Trellis Insight</td>
         <td>Step by step guide to create a Trellis Insight</td>
-        <td>[Click Here](/docs/software-engineering-insights/insights/trellis-insight)</td>    
+        <td>[Click Here](/docs/software-engineering-insights/insights/insight-tutorials/trellis-insight)</td>    
         </tr>
     <tr>
         <td>Trellis Calculations</td>

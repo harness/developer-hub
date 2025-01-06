@@ -54,7 +54,7 @@ You can also create new integrations and associate the integration with the curr
 2. Go the **Project** scope and select your **Project**.
 3. If you don't have any existing Insight, then click on the **Create Insight** button on the landing page to create a new Insight.
 
-![](./static/create-insight.png)
+![](../static/create-insight.png)
 
 4. If you already have existing Insights in your selected Project, then go to any Insight. For instructions, go to [View Insights](#view-insights).
 5. In the header, select **All Insights**, and then select **Manage Insights**.
@@ -86,9 +86,9 @@ The SCM PRs Report shows a high-level view of PRs moving through your SCM tool. 
 * Analyze PR comments and categorize them based on a threshold.
 * Better understanding of the overall contribution of the team.
 
-![](./static/scm-prs-report-one.png)
+![](../static/scm-prs-report-one.png)
 
-![](./static/scm-prs-report-two.png)
+![](../static/scm-prs-report-two.png)
 
 To add the **SCM PRs Report** widget to Insights:
 
@@ -109,7 +109,7 @@ For information, go to [SCM PRs Report](/docs/software-engineering-insights/sei-
 
 The SCM Coding Days Report displays the number of days in a given time period that a user or team has committed code to their SCM repository. This report can be used to track how active a user or team is in terms of code development and to identify trends in coding activity over time.
 
-![](./static/coding-days.png)
+![](../static/coding-days.png)
 
 To add the **SCM Coding Days Report** widget to Insights:
 
@@ -128,7 +128,7 @@ For information, go to SCM [Coding Days Report](/docs/software-engineering-insig
 
 Use the SCM PR Lead Time by Stage Report to examine PR velocity based on time spent in various PR lifecycle stages. By default, this report shows the average time for all PRs. You can drill down to explore data for individual PRs. You can also configure this report to show the median, 90th percentile, or 95th percentile, instead of the average time.
 
-![](./static/pr-leadtime-by-stage.png)
+![](../static/pr-leadtime-by-stage.png)
 
 To add the **SCM PR Lead Time by Stage Report** widget to Insights:
 
@@ -147,7 +147,7 @@ You can use the Single Stats reports to calculate various SCM related metrics su
 * SCM PRs Merge Single Stat
 * SCM PRs Single Stat
 
-![](./static/scm-single-stat.png)
+![](../static/scm-single-stat.png)
 
 To add the **SCM Coding Days Single Stat Report** widget to Insights:
 
