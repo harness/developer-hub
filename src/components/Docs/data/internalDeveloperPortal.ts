@@ -18,7 +18,7 @@ export const docsCards: CardSections = [
         module: MODULES.idp,
         description:
           "Learn more about the features and capabilities of Harness IDP.",
-        link: "/docs/internal-developer-portal/get-started/overview",
+        link: "/docs/internal-developer-portal/overview",
       },
       {
         title: "Get started with IDP",
@@ -114,7 +114,7 @@ export const docsCards: CardSections = [
         title: "Track Adoption using Dashboard",
         module: MODULES.idp,
         description: "Learn how the out-of-the-box adoption dashboard helps track Harness IDP usage in your organization.",
-        link: "/docs/internal-developer-portal/get-started/how-to-track-adoption",
+        link: "/docs/internal-developer-portal/adoption/how-to-track-adoption",
       },
     ],
   },
