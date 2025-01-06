@@ -240,13 +240,15 @@ Note that all secrets associated with your existing Propelo account will be secu
 
 ### Account overview
 
-To get an overview of your Harness account, go to Account Settings. Under General, select Account Details to open the Account Overview page.
+To get an overview of your **Harness account**, go to **Account Settings**. Under General, select **Account Details** to open the Account Overview page.
 The **Account Details** section enables you to view your account information and set your default experience.
 
 * **Account Name:** Your account name.
 * **Account Id:** Your account ID.
 * **Harness Cluster:** The Harness cluster assigned to your account.
 * **Default Experience:** This setting allows environment administrators to set the default generation landing page for users to ensure the correct Harness experience, Harness First Generation or Harness Next Generation, is provided.
+
+![](../static/account-environment.png)
 
 ## Manual steps to be performed
 
