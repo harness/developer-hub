@@ -88,6 +88,10 @@ Let's take a look at the inputs that the Workflow expects from a developer. The 
 
 The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. It takes the pipeline `url`,`inputset` containing all the runtime input variables that the pipeline needs and the `apikey` as input.
 
+:::info
+The syntax `${{ parameters.x }}` is supported exclusively within the `steps` section when configuring the [Workflows Backend](#building-the-workflow-backend). It cannot be used within the `properties` section to reference another parameter.
+:::
+
 [Steps](/docs/internal-developer-portal/flows/service-onboarding-pipelines#building-the-workflow-backend) is where you integrate the Harness Pipeline as a Backend and are the core execution units within Workflows. Each step runs an action that might involve triggering a CI/CD pipeline, creating a service in a catalog, or provisioning infrastructure resources.
 
 ### Manage variables in the pipeline

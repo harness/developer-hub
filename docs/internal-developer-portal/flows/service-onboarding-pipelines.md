@@ -119,6 +119,10 @@ Variables in the Workflow YAML are wrapped in `${{ }}`. These are used for linki
 
 The `${{ parameters.project_name }}` pattern is used in the Workflows YAML to pass the parameters from the UI to the input of the `trigger:harness-custom-pipeline` step.
 
+:::info
+The syntax `${{ parameters.x }}` is supported exclusively within the `steps` section when configuring the [Workflows Backend](#building-the-workflow-backend). It cannot be used within the `properties` section to reference another parameter.
+:::
+
 As you can see above in the `Outputs` section, `actions` and `steps` can also generate outputs. You can grab that output using `steps.$stepId.output.$property`.
 
 It is important to remember that all examples are based on the [react-jsonschema-form](https://rjsf-team.github.io/react-jsonschema-form/) project.
