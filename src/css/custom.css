@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
-@import "fontawesome/css/fontawesome.min.css";
-@import "fontawesome/css/solid.min.css";
-@import "fontawesome/css/regular.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import 'fontawesome/css/fontawesome.min.css';
+@import 'fontawesome/css/solid.min.css';
+@import 'fontawesome/css/regular.min.css';
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -300,7 +300,6 @@
   --mod-opensource-200: #d9dae5;
   --mod-opensource-100: #f3f3fa;
 
-  
   /* ----- */
   --ifm-link-decoration: none;
 
@@ -321,8 +320,8 @@
   --ifm-navbar-height: 4.25rem;
 
   --harness-font-family: Inter, sans-serif, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   /* here */
   --ifm-color-content-light: var(--gray-800);
@@ -340,11 +339,13 @@
   --hover: var(--gray-200);
   --platform-card-bg: var(--white);
   --homepageFeatureCard: white;
-  
+  --coveo-card-bg: rgba(255, 255, 255);
+  --link-color: #0278d5;
+  --link-color-hover: #0059b3;
 }
 
 /* darkmode css */
-html[data-theme="dark"] .tabs__item--active {
+html[data-theme='dark'] .tabs__item--active {
   color: black;
   background-color: var(--primary-1);
   border-bottom-color: var(--primary);
@@ -363,19 +364,19 @@ summary {
   color: var(--ifm-heading-color);
 }
 /* logo-hdh-dark-theme.svg */
-html[data-theme="dark"] .navbar .navbar__logo {
-  content: url("/img/logo-hdh-dark-theme.svg");
+html[data-theme='dark'] .navbar .navbar__logo {
+  content: url('/img/logo-hdh-dark-theme.svg');
 }
 /* logo_dlp.svg */
-html[data-theme="light"] .navbar .navbar__logo {
-  content: url("/img/logo_dlp.svg");
+html[data-theme='light'] .navbar .navbar__logo {
+  content: url('/img/logo_dlp.svg');
 }
 
-html[data-theme="dark"] .CoveoSearchbox .magic-box {
+html[data-theme='dark'] .CoveoSearchbox .magic-box {
   border: none !important;
 }
 
-html[data-theme="dark"] .navbar {
+html[data-theme='dark'] .navbar {
   box-shadow: 0 2px 4px 0 rgba(255, 255, 255, 0.2);
 }
 /* html[data-theme="dark"] code {
@@ -383,7 +384,7 @@ html[data-theme="dark"] .navbar {
   color: #000000;
 } */
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme="dark"] {
+[data-theme='dark'] {
   --platform-card-bg: var(--gray-200);
   --ifm-color-primary: var(--primary-5);
   --ifm-color-primary-dark: var(--primary-6);
@@ -397,8 +398,14 @@ html[data-theme="dark"] .navbar {
   --ifm-link-color: var(--ifm-color-primary);
 
   --black: #070707;
-  /* --white: #070707; */
-  --gray-900:var(--gray-200)
+
+  --gray-900: var(--gray-200);
+  --gray-300: var(--gray-800);
+  --gray-100: var(--gray-1000);
+  --gray-400: var(--gray-700);
+  --gray-600: var(--gray-500);
+  --gray-500: var(--gray-600);
+
   --ifm-navbar-shadow: white !important;
   --ifm-navbar-background-color: var(--black) !important;
   --ifm-background-color: var(--black) !important;
@@ -410,11 +417,13 @@ html[data-theme="dark"] .navbar {
   --ifm-color-content-light: var(--gray-200) !important;
   --card-border: 2px solid var(--gray-200);
   --img-border: 1px solid var(--gray-200);
-  --gray-500: #d9dae5;
-
+  --coveo-card-bg: rgba(255, 255, 255, 0.07);
   --hover: var(--gray-800);
   --homepageFeatureCard: var(--black);
+  --link-color: #0059b3;
+  --link-color-hover: #296896;
 }
+
 /* darkmode css  end*/
 html {
   font-size: 16px;
@@ -437,7 +446,7 @@ html *:after {
 
 body {
   font-family: var(--harness-font-family) !important;
-  background-color: var( --background-color);
+  background-color: var(--background-color);
 }
 
 a:hover {
@@ -499,7 +508,7 @@ h2 {
   display: none;
 }
 
-.navbar__item img[alt="BETA"] {
+.navbar__item img[alt='BETA'] {
   margin-left: -0.25rem;
   margin-top: 10px;
   width: 24px;
@@ -514,7 +523,7 @@ h2 {
   margin-right: 0.2em;
 }
 
-.theme-doc-markdown img[class^="img_"] {
+.theme-doc-markdown img[class^='img_'] {
   border: 1px solid #d9dae5;
   /* var(--gray-400); */
   border-radius: 8px;
@@ -628,7 +637,7 @@ details summary::before {
   color: var(--mod-opensource-200);
 }
 
-.table-of-contents ul li span[class*="color-"] {
+.table-of-contents ul li span[class*='color-'] {
   color: unset;
 }
 
@@ -665,7 +674,7 @@ a[aria-label="Search by Algolia"] {
   display: none !important;
 }
 
-button[title="Copy"] {
+button[title='Copy'] {
   opacity: 0.6 !important;
 }
 
@@ -697,7 +706,7 @@ button[title="Copy"] {
   align-items: center;
 }
 
-body.DocSearch--active #__docusaurus > div[class*="announcementBar"] {
+body.DocSearch--active #__docusaurus > div[class*='announcementBar'] {
   /* hide the announcement bar while the search bar called out */
   display: none;
 }
@@ -764,20 +773,21 @@ a.card p.text--truncate {
 
 .horizontal-bar {
   margin-top: 15px;
-  padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
-  font-family: "Open Sans", sans-serif;
+  padding: var(--ifm-menu-link-padding-vertical)
+    var(--ifm-menu-link-padding-horizontal);
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   font-weight: 600;
 }
 
-html[data-theme="light"] .horizontal-bar {
+html[data-theme='light'] .horizontal-bar {
   border-top: 1px solid #e0e0e0;
   border-right: 1px solid #e0e0e0;
   background-color: #effbff;
   color: #b0b1c1;
 }
 
-html[data-theme="dark"] .horizontal-bar {
+html[data-theme='dark'] .horizontal-bar {
   border-top: 1px solid #45494f;
   border-right: 1px solid #45494f;
   background-color: #002531;
@@ -853,7 +863,6 @@ figure p {
   .searchBar .DocSearch-Button {
     width: 100%;
   }
- 
 }
 
 @media screen and (max-width: 1199px) {
@@ -864,14 +873,14 @@ figure p {
     align-items: center;
   }
   /* for tablet */
-  .navbar__item img[alt="BETA"] {
+  .navbar__item img[alt='BETA'] {
     display: none;
   }
   .searchBar {
     display: none;
   }
-  
-  .navbar__logo{
+
+  .navbar__logo {
     width: 200px;
   }
 }
@@ -899,6 +908,10 @@ figure p {
   cursor: pointer;
 
   display: none;
+}
+
+.main-nav-coveo {
+  display: block;
 }
 
 /*== start of code for tooltips ==*/
@@ -935,7 +948,7 @@ figure p {
 }
 
 [hover-tooltip]:hover::after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   left: 50%;
@@ -950,12 +963,12 @@ figure p {
   z-index: 1;
 }
 
-[hover-tooltip][tooltip-position="bottom"]:hover::before {
+[hover-tooltip][tooltip-position='bottom']:hover::before {
   bottom: auto;
   top: calc(100% + var(--distance));
 }
 
-[hover-tooltip][tooltip-position="bottom"]:hover::after {
+[hover-tooltip][tooltip-position='bottom']:hover::after {
   bottom: auto;
   top: calc(100% + calc(var(--distance) - var(--caret-height)));
   border-color: transparent transparent var(--tooltip-bg-color);
@@ -973,6 +986,9 @@ figure p {
 /*== end of code for tooltips ==*/
 
 @media screen and (max-width: 996px) {
+  .main-nav-coveo {
+    display: none;
+  }
   #search-button {
     display: block;
   }
@@ -983,7 +999,7 @@ figure p {
 
 /******************* chatbot css variables *************/
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --main-background-color: #333137;
 
   --chatbot-input-background-color: #35343b;
@@ -1020,13 +1036,13 @@ figure p {
     rgba(51, 49, 55, 0.7) 85.94%
   );
   --input-focus: 1px solid white;
-  --option-img: url("https://developer.harness.io/img/BarsDark.svg") no-repeat;
-  --send-img: url("https://developer.harness.io/img/SendIconDark.svg") no-repeat;
+  --option-img: url('https://developer.harness.io/img/BarsDark.svg') no-repeat;
+  --send-img: url('https://developer.harness.io/img/SendIconDark.svg') no-repeat;
 
   --dropdown-bg: #ede8fb;
 }
 
-[data-theme="light"] {
+[data-theme='light'] {
   --main-background-color: #faf8ff;
   --chatbot-input-background-color: #ede8fb;
 
@@ -1053,312 +1069,342 @@ figure p {
   --aida-btn-border: 1px solid #9681a7;
 
   --input-focus: 1px solid #7e5be0;
-  --dropdown-bg: #7E5BE0;
-  --option-img: url("https://developer.harness.io/img/Bars.svg") no-repeat;
-  --send-img: url("https://developer.harness.io/img/SendIcon.svg") no-repeat;
+  --dropdown-bg: #7e5be0;
+  --option-img: url('https://developer.harness.io/img/Bars.svg') no-repeat;
+  --send-img: url('https://developer.harness.io/img/SendIcon.svg') no-repeat;
 }
 
 /******************* chatbot css variables end *************/
 
 /*******************sidebar logo css start*******************/
 
- .menu__list-item-collapsible > a,.menu__link{
+.menu__list-item-collapsible > a,
+.menu__link {
   height: 52px;
- }
- .menu {
+}
+.menu {
   margin-bottom: 0px !important;
- }
-.collapseSidebarButton_PEFL{
+}
+.collapseSidebarButton_PEFL {
   width: 100% !important;
 }
-.sidebar-platform > div > a::before,.sidebar-platform > a::before{
-  content: " ";
+.sidebar-platform > div > a::before,
+.sidebar-platform > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
-   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/logo.svg");
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-cr > div > a::before,.sidebar-cr > a::before{
-  content: " ";
+.sidebar-cr > div > a::before,
+.sidebar-cr > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
-   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/icon_code.svg");
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/icon_code.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-ci > div > a::before,.sidebar-ci > a::before{
-  content: " ";
+.sidebar-ci > div > a::before,
+.sidebar-ci > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
-   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/icon_ci.svg");
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/icon_ci.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-ar > div > a::before,.sidebar-ar > a::before{
-  content: " ";
+.sidebar-ar > div > a::before,
+.sidebar-ar > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
-   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/icon_artifact_registry.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.sidebar-cd > div > a::before,.sidebar-cd > a::before{
-  content: " ";
-  display: inline-block;
-  height: 24px;
-   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/icon_cd.svg");
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/icon_artifact_registry.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.sidebar-cde > div > a::before,.sidebar-cde > a::before{
-  content: " ";
+.sidebar-cd > div > a::before,
+.sidebar-cd > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
-   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/cde_icon.svg");
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/icon_cd.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-iacm > div > a::before,.sidebar-iacm > a::before{
-  content: " ";
+
+.sidebar-cde > div > a::before,
+.sidebar-cde > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/cde_icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-iacm > div > a::before,
+.sidebar-iacm > a::before {
+  content: ' ';
   display: inline-block;
   min-height: 24px;
-   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/icon_iacm.svg");
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/icon_iacm.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-ff > div > a::before,.sidebar-ff > a::before{
-  content: " ";
+.sidebar-ff > div > a::before,
+.sidebar-ff > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
-   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/icon_ff.svg");
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/icon_ff.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-fme > div > a::before,.sidebar-fme > a::before{
-  content: " ";
+.sidebar-fme > div > a::before,
+.sidebar-fme > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
-   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/icon_fme.svg");
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/icon_fme.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-dbdevops > div > a::before,.sidebar-dbdevops > a::before{
-  content: " ";
+.sidebar-dbdevops > div > a::before,
+.sidebar-dbdevops > a::before {
+  content: ' ';
   display: inline-block;
   min-height: 24px;
-   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/icon_dbdevops.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-ccm > div > a::before,.sidebar-ccm > a::before{
-  content: " ";
-  display: inline-block;
-  height: 24px;
   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/icon_ccm.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-sto > div > a::before,.sidebar-sto > a::before{
-  content: " ";
-  display: inline-block;
-  height: 24px;
-   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/icon_sto.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-ssca > div > a::before,.sidebar-ssca > a::before{
-  content: " ";
-  display: inline-block;
-  height: 24px;
-   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/icon_ssca.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-ce > div > a::before,.sidebar-ce > a::before{
-  content: " ";
-  display: inline-block;
-  height: 24px;
-   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/icon_ce.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-srm > div > a::before,.sidebar-srm > a::before{
-  content: " ";
-  display: inline-block;
-  height: 24px;
-   min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/icon_srm.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-cet > div > a::before,.sidebar-cet > a::before{
-  content: " ";
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right:16px;
-  background-image: url("/img/icon_cet.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-idp > div > a::before,.sidebar-idp > a::before{
-  content: " ";
-  display: inline-block;
-  height: 24px;
- min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/icon_idp.svg");
+  background-image: url('/img/icon_dbdevops.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-sei > div > a::before,.sidebar-sei > a::before{
-  content: " ";
+.sidebar-ccm > div > a::before,
+.sidebar-ccm > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/icon_sei.svg");
+  background-image: url('/img/icon_ccm.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-smp > div > a::before,.sidebar-smp> a::before{
-  content: " ";
+.sidebar-sto > div > a::before,
+.sidebar-sto > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/logo.svg");
+  background-image: url('/img/icon_sto.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-harness-firstGen > div > a::before,.sidebar-harness-firstGen> a::before{
-  content: " ";
+.sidebar-ssca > div > a::before,
+.sidebar-ssca > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/Harness_FirstGen_Logo.svg");
+  background-image: url('/img/icon_ssca.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-troubleshooting > div > a::before,.sidebar-troubleshooting> a::before{
-  content: " ";
+.sidebar-ce > div > a::before,
+.sidebar-ce > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/Troubleshooting_Logo.svg");
+  background-image: url('/img/icon_ce.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-API_Reference > div > a::before,.sidebar-API_Reference> a::before{
-  content: " ";
+.sidebar-srm > div > a::before,
+.sidebar-srm > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/API_Reference_Logo.svg");
+  background-image: url('/img/icon_srm.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-Release_Notes > div > a::before,.sidebar-Release_Notes> a::before{
-  content: " ";
+.sidebar-cet > div > a::before,
+.sidebar-cet > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/Release_Notes_Logo.svg");
+  background-image: url('/img/icon_cet.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-Cloud_Operations > div > a::before,.sidebar-Cloud_Operations> a::before{
-  content: " ";
+.sidebar-idp > div > a::before,
+.sidebar-idp > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/Cloud_Operations_Logo.svg");
+  background-image: url('/img/icon_idp.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-faqs > div > a::before,.sidebar-faqs> a::before{
-  content: " ";
+.sidebar-sei > div > a::before,
+.sidebar-sei > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/faqs_Logo.svg");
+  background-image: url('/img/icon_sei.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-smp > div > a::before,
+.sidebar-smp > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-harness-firstGen > div > a::before,
+.sidebar-harness-firstGen > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/Harness_FirstGen_Logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-troubleshooting > div > a::before,
+.sidebar-troubleshooting > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/Troubleshooting_Logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-API_Reference > div > a::before,
+.sidebar-API_Reference > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/API_Reference_Logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-Release_Notes > div > a::before,
+.sidebar-Release_Notes > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/Release_Notes_Logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-Cloud_Operations > div > a::before,
+.sidebar-Cloud_Operations > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/Cloud_Operations_Logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-faqs > div > a::before,
+.sidebar-faqs > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/faqs_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.sidebar-all_docs > div > a::before,.sidebar-all_docs> a::before{
-  content: " ";
+.sidebar-all_docs > div > a::before,
+.sidebar-all_docs > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/All_Docs_Logo.svg");
+  background-image: url('/img/All_Docs_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.sidebar-armory > div > a::before,.sidebar-armory> a::before{
-  content: " ";
+.sidebar-armory > div > a::before,
+.sidebar-armory > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/armory.png");
+  background-image: url('/img/armory.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.sidebar-reference-arch > div > a::before,.sidebar-reference-arch> a::before{
-  content: " ";
+.sidebar-reference-arch > div > a::before,
+.sidebar-reference-arch > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/reference_architectures_icon.svg");
+  background-image: url('/img/reference_architectures_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.sidebar-opensource > div > a::before,.sidebar-opensource> a::before{
-  content: " ";
+.sidebar-opensource > div > a::before,
+.sidebar-opensource > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
@@ -1366,84 +1412,89 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
-html[data-theme="light"] .sidebar-opensource > div > a::before,
-html[data-theme="light"] .sidebar-opensource > a::before {
-  background-image: url("/img/icon_platform.svg");
+html[data-theme='light'] .sidebar-opensource > div > a::before,
+html[data-theme='light'] .sidebar-opensource > a::before {
+  background-image: url('/img/icon_platform.svg');
 }
 
-html[data-theme="dark"] .sidebar-opensource > div > a::before,
-html[data-theme="dark"] .sidebar-opensource > a::before {
-  background-image: url("/img/icon_platform.svg");
+html[data-theme='dark'] .sidebar-opensource > div > a::before,
+html[data-theme='dark'] .sidebar-opensource > a::before {
+  background-image: url('/img/icon_platform.svg');
 }
 
-.sidebar-roadmap > div > a::before,.sidebar-roadmap> a::before{
-  content: " ";
+.sidebar-roadmap > div > a::before,
+.sidebar-roadmap > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/roadmap_icon.svg");
+  background-image: url('/img/roadmap_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.sidebar-ilt-instructions > div > a::before,.sidebar-ilt-instructions> a::before{
-  content: " ";
+.sidebar-ilt-instructions > div > a::before,
+.sidebar-ilt-instructions > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/ilt_instructions_icon.svg");
+  background-image: url('/img/ilt_instructions_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.sidebar-vilt-cal > div > a::before,.sidebar-vilt-cal> a::before{
-  content: " ";
+.sidebar-vilt-cal > div > a::before,
+.sidebar-vilt-cal > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/virtual_instructor_led_calendar_icon.svg");
+  background-image: url('/img/virtual_instructor_led_calendar_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.sidebar-back > div > a::before,.sidebar-back> a::before{
-  content: " ";
+.sidebar-back > div > a::before,
+.sidebar-back > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/back_icon.svg");
+  background-image: url('/img/back_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.sidebar-allkb > div > a::before,.sidebar-allkb> a::before{
-  content: " ";
+.sidebar-allkb > div > a::before,
+.sidebar-allkb > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/show_all_kb_icon.svg");
+  background-image: url('/img/show_all_kb_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.sidebar-univ > div > a::before,.sidebar-univ> a::before{
-  content: " ";
+.sidebar-univ > div > a::before,
+.sidebar-univ > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
   min-width: 24px;
   margin-right: 16px;
-  background-image: url("/img/university_icon.svg");
+  background-image: url('/img/university_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 /*******************sidebar logo css end*******************/
-
 
 .continuous-delivery--gitops:hover {
   border-color: var(--mod-cd-200) !important;
@@ -1494,21 +1545,17 @@ html[data-theme="dark"] .sidebar-opensource > a::before {
   border-color: var(--mod-opensource-200) !important;
 }
 
-
-
-
 /***********************   navbar css ***********/
 
-
-.navbar__items{
+.navbar__items {
   font-size: 16px;
 }
-.navbar__item{
+.navbar__item {
   padding: 0 8px;
 }
 
 @media screen and (max-width: 1299px) {
-  .navbar__items{
+  .navbar__items {
     font-size: 15px;
   }
 }
