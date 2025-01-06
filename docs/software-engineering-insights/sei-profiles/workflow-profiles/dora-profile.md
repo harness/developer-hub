@@ -227,6 +227,8 @@ Choose the appropriate start event to define when Lead Time tracking begins in y
   * Tracking begins when the conditions specified in the first workflow stage are met.
   * Use this option if you prefer to calculate Lead Time based on a specific status or phase in your delivery process.
 
+![](../static/dora-5.png)
+
 #### Add custom stages for tracking issue management statuses
 
 Define stages for key milestones in your Issue Management workflow. For example:
@@ -378,6 +380,8 @@ Choose the appropriate start event to define when Lead Time tracking begins in y
 * **First Stage**
   * Tracking begins when the conditions specified in the first workflow stage are met.
   * Use this option if you prefer to calculate Lead Time based on a specific status or phase in your delivery process.
+
+![](../static/dora-5.png)
 
 #### Add custom stages for tracking issue management statuses
 
