@@ -36,7 +36,7 @@ You can verify the payload received by the trigger in the Activity History secti
     "private": false,
     "owner": {
       "name": "krishi0408",
-      "email": "krishika.singh@harness.io",
+      "email": "user@harness.io",
       "login": "krishi0408",
       "id": 109092049,
       "node_id": "U_kgDOBoCc0Q",
