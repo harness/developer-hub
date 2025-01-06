@@ -46,12 +46,12 @@ Windows process kill:
       <tr>
         <td> PROCESS_IDS </td>
         <td> Process IDs of the target processes provided as comma-separated values. </td>
-        <td> For example, 183,253,857. </td>
+        <td> For example, <code>18375,25323,85657</code>. </td>
       </tr>
       <tr>
         <td> PROCESS_NAMES </td>
         <td> Comma separated list of process names to kill. </td>
-        <td> For example, <code>chrome,firefox</code>. </td>
+        <td> For example, <code>chrome.exe,firefox.exe</code>. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
@@ -64,7 +64,7 @@ Windows process kill:
 
 Following YAML snippet illustrates the use of these input variables.
 
-[embedmd]:# (./static/manifests/windows-process-stress/params.yaml yaml)
+[embedmd]:# (./static/manifests/windows-process-kill/params.yaml yaml)
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: MachineFault
