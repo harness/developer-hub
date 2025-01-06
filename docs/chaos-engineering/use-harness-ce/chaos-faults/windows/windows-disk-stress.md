@@ -16,7 +16,7 @@ Windows disk stress:
 - Ensure that the [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/prerequisites) are fulfilled before executing the experiment.
 
 ### External packages
-This fault uses [Testlimit](https://learn.microsoft.com/en-us/sysinternals/downloads/testlimit), which is installed as part of the infrastructure installation.
+This fault uses [Diskspd](https://learn.microsoft.com/en-us/azure/azure-local/manage/diskspd-overview), which is installed as part of the infrastructure installation.
 
 ### Mandatory tunables
 
@@ -30,6 +30,15 @@ This fault uses [Testlimit](https://learn.microsoft.com/en-us/sysinternals/downl
         <td> MEMORY_CONSUMPTION </td>
         <td> Amount of stress applied on target Windows VM (in MB). </td>
         <td> Default: 1024.</td>
+      </tr>
+</table>
+
+### Optional tunables
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
       </tr>
       <tr>
         <td> BLOCK_SIZE_IN_KILOBYTES </td>
@@ -48,22 +57,13 @@ This fault uses [Testlimit](https://learn.microsoft.com/en-us/sysinternals/downl
     </tr>
     <tr>
         <td> DISK_PATH </td>
-        <td> Path of disk to apply stress. </td>
-        <td> Default: 50. </td>
+        <td> Path in the Windows VM to apply stress. </td>
+        <td> Default: C:\\. </td>
     </tr>
-      <tr>
+    <tr>
         <td> DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
         <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-      </tr>
-</table>
-
-### Optional tunables
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
