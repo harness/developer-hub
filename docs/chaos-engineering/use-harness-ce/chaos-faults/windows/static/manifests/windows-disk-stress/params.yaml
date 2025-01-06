@@ -1,0 +1,23 @@
+apiVersion: litmuchaos.io/v1alpha1
+kind: MachineFault
+metadata:
+  name: windows-disk-stress
+  labels:
+    name: disk-stress
+spec:
+  infraType: windows
+  env:
+    - name: MEMORY_CONSUMPTION
+      value: "1024"
+    - name: BLOCK_SIZE_IN_KILOBYTES
+      value: "128"
+    - name: WRITE_PERCENTAGE
+      value: "100"
+    - name: NUMBER_OF_WORKERS
+      value: "2"
+    - name: DISK_PATH
+      value: "C:\\"
+    - name: DURATION
+      value: "30s"
+    - name: RAMP_TIME  # optional tunable
+      value: ""

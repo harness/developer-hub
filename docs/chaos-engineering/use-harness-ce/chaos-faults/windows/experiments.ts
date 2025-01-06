@@ -9,6 +9,13 @@ export const experiments: ExperimentDetails[] = [
     category: "windows",
   },
   {
+    name: "Windows Disk stress",
+    description:
+      "Windows disk stress injects disk stress into a Windows OS based VM, by consuming and exhausting the disk resources on the target Windows machine.",
+    tags: ["disk"],
+    category: "windows",
+  },
+  {
     name: "Windows Memory stress",
     description:
       "Windows memory stress applies stress on the memory resources of a Windows OS based VM.",
