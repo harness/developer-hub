@@ -44,12 +44,8 @@ Below is an example AWS policy to execute the fault.
         {
             "Effect": "Allow",
             "Action": [
-                "lambda:GetFunctionConcurrency",
                 "lambda:GetFunction",
-                "lambda:DeleteFunctionConcurrency",
-                "lambda:PutFunctionConcurrency"
                 "lambda:UpdateFunctionConfiguration",
-                "lambda:GetFunction",
                 "lambda:DeleteLayerVersion",
                 "lambda:GetLayerVersion",
                 "lambda:ListLayerVersions",
