@@ -41,7 +41,7 @@ For example:
 
 * An un-estimated task at the beginning of a sprint: Adds 0 commit points.
 * A task estimated as 2 story points: Adds 2 commit points.
-* A task estimated as 2 points at the beginning of the sprint and later revised to 5 points during the sprint: Adds 2 commit points.
+* A task estimated as 2 points at the beginning of the sprint and later revised to 5 points during the sprint: Adds 5 delivered story creep points.
 * A task estimated at 1 point is removed from the sprint while the sprint is in progress: Adds 1 commit point.
 * A task estimated at 2 points is completed before the sprint start time and then added to the sprint: Adds 2 commit points and 2 [commit done points](#commit-done-points).
 
