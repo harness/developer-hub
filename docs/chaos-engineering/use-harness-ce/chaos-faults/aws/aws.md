@@ -793,9 +793,8 @@ Lambda function layer detach is an AWS fault that detaches the Lambda layer asso
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Tests how the Lambda function behaves without the dependencies provided by the layer, thereby identifying the unnecessary dependencies and reduce the layer's footprint.
 - Debug runtime errors caused by a specific library in the layer.
-- Detach a layer that adds unneeded dependencies or complexity to streamline the Lambda function's runtime.
+- Tests how the Lambda function behaves without the dependencies provided by the layer, thereby identifying the unnecessary dependencies and reduce the layer's footprint.
 
 </Accordion>
 </FaultDetailsCard>

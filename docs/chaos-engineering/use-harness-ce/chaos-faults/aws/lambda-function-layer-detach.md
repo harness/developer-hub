@@ -9,9 +9,8 @@ Lambda function layer detach is an AWS fault that detaches the Lambda layer asso
 
 ## Use cases
 Lambda function layer detach:
-- Tests how the Lambda function behaves without the dependencies provided by the layer, thereby identifying the unnecessary dependencies and reduce the layer's footprint.
 - Debug runtime errors caused by a specific library in the layer.
-- Detach a layer that adds unneeded dependencies or complexity to streamline the Lambda function's runtime.
+- Tests how the Lambda function behaves without the dependencies provided by the layer, thereby identifying the unnecessary dependencies and reduce the layer's footprint.
 
 ### Prerequisites
 - Kubernetes >= 1.17
@@ -45,6 +44,10 @@ Below is an example AWS policy to execute the fault.
         {
             "Effect": "Allow",
             "Action": [
+                "lambda:GetFunctionConcurrency",
+                "lambda:GetFunction",
+                "lambda:DeleteFunctionConcurrency",
+                "lambda:PutFunctionConcurrency"
                 "lambda:UpdateFunctionConfiguration",
                 "lambda:GetFunction",
                 "lambda:DeleteLayerVersion",
@@ -56,7 +59,7 @@ Below is an example AWS policy to execute the fault.
     ]
 }
 ```
-
+                
 :::info note
 - Go to [AWS named profile for chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults.
 - Go to the [superset permission/policy](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
