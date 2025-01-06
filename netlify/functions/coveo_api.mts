@@ -53,7 +53,7 @@ export default async (req: Request, context: Context): Promise<Response> => {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          Authorization: 'Bearer ' + process.env.COVEO_API_KEY,
+          Authorization: 'Bearer ' + 'xx13de1f61-633c-400f-ac4f-86aff30ffa5c',
         },
         body: JSON.stringify(postData),
       }

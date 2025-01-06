@@ -1,6 +1,8 @@
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
 const doYourCustomStuff = () => {
+  console.log('running');
+
   const navbar__items = document.querySelector('.navbar__items');
   const navbar__sidebar__close = document.querySelector(
     '.navbar-sidebar__close'
@@ -69,10 +71,10 @@ const doYourCustomStuff = () => {
 
 if (ExecutionEnvironment.canUseDOM) {
   window.addEventListener('load', () => {
-    let interval = setInterval(doYourCustomStuff, 500);
-    setTimeout(() => {
-      clearInterval(interval);
-      interval = 0;
-    }, 2000);
+    setInterval(doYourCustomStuff, 500);
+    // setTimeout(() => {
+    //   clearInterval(interval);
+    //   interval = 0;
+    // }, 2000);
   });
 }
