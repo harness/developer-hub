@@ -149,3 +149,9 @@ Additionally you can have optional configurations such as
 * **Limit CPU:** Sets a limit on the CPU usage for the function or container, ensuring the function does not consume excessive resources.
 
 ![](static/azure-functions-7.png)
+
+## Azure Function Deployment Sample 
+
+To see an example of how to deploy Azure Functions using Harness, visit the [Harness Community Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/azure-function-deployment).
+
+This repository provides a ready-to-use sample application and the necessary configuration files to help you get started quickly.
