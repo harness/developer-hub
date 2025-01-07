@@ -29,5 +29,4 @@ Each Gitspace is a docker container that is spun up on the same machine where Ha
 
 The user can then interact with the container via an IDE. Any changes made to the code are automatically synced to the container. The user can run commands in the container via the IDE, and/or commit changes to the code and push them to the remote repository.
 
-### Multiple Gitspace
 The user can also create multiple Gitspace for the same repository and branch. Each Gitspace is independent of the other and you will not see changes from one Gitspace in another. This is useful when you want to work on multiple features or bug fixes in parallel. 
