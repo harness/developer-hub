@@ -220,7 +220,7 @@ To fix this issue, follow these steps
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
 :::
 
-## Jan 06, 2025, Version 0.24.0
+## Jan 07, 2025, Version 0.24.0
 
 This release includes the following Harness module and component versions.
 
@@ -252,6 +252,7 @@ gsutil -m cp \
   "gs://smp-airgap-bundles/harness-0.24.0/ccm_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.24.0/cdng_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.24.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.0/code_images.tgz"
   "gs://smp-airgap-bundles/harness-0.24.0/ci_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.24.0/ff_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.24.0/platform_images.tgz" \
