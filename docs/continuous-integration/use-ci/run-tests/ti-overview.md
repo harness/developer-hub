@@ -63,7 +63,7 @@ Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **T
 
 :::tip
 
-We recommend using [ **Test**](./tests-v2.md) Step (Test Intelligence v2) to run your tests. This is a newer, simplified version of Test Intelligence, where you do not need to change your test commands - Test Intelligence will be automatically configured for you in runtime, making it easier to use.
+We recommend using [**Test**](./tests-v2.md) Step (Test Intelligence v2) to run your tests. This is a newer, simplified version of Test Intelligence, where you do not need to change your test commands - Test Intelligence will be automatically configured for you in runtime, making it easier to use.
 
 :::
 
