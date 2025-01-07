@@ -155,7 +155,6 @@ If, after registering an entity, you're unable to find the same in your catalog,
 
 ![](./static/devtools.png)
 
-
 #### Missing required fields/Invalid YAML schema.
 
 In case of a `InputError`, check for `missingProperty` details and add the required property to your `catalog-info.yaml`.
