@@ -14,7 +14,7 @@ Let's start with adding your software components to IDP. You can do so by creati
 
 ## Create a new catalog-info.yaml
 
-1. If you want to register an existing software component, navigate to its repository. If it is a mono-repo, navigate to its directory and create a `catalog-info.yaml` at the root of the directory. The file can technically live anywhere (for example, `.harness/catalog-info.yaml`). You can use the following YAML code:
+1. If you want to register an existing software component, navigate to its repository and create a `catalog-info.yaml`. In-case of a mono-repo, the `catalog-info.yaml` needs to created at the root of the directory. The file can technically live anywhere (for example, `.harness/catalog-info.yaml`). You can use the following YAML code:
 
 ```YAML
 apiVersion: backstage.io/v1alpha1
@@ -22,8 +22,6 @@ kind: Component
 metadata:
   name: my-new-service
   description: Description of my new service
-  annotations:
-    pagerduty.com/integration-key: <sample-service-integration-key>
   tags:
     - java
   links:
@@ -71,13 +69,8 @@ import TabItem from '@theme/TabItem';
 
 ![](./static/register-software-component-hcr.gif)
 
-> Note: In case of vanity URLs, once you copy the URL for `catalog-info.yaml` from Harness Code Repository, make sure to replace vanity URL domain with `accounts.eu.harness.io`
-
-![](static/replace-vanity-url-register.png)
-
 </TabItem>
 </Tabs>
-
 
 5. Select **Import**.
 
@@ -87,41 +80,55 @@ The new component will be available in your catalog.
 
 ![](static/imported-entity.png)
 
+## Enable a Plugin
 
-## Register multiple software components together
+Now that you've added a software component(service) to your catalog, let's [enable a plugin](https://developer.harness.io/docs/internal-developer-portal/get-started/enable-a-new-plugin) to fetch your services related information like CI/CD pipelines information. To get started with let's enable the [PagerDuty plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/pagerduty). 
 
-We can register multiple `catalog-info.yaml` in the following ways.
+### Updating the catalog definition file
 
-1. If all your `catalog-info.yaml` are in the root of the same repo you can add the extensions in the target, as shown in the example below, and it will register all the components.
-
-```YAML
-apiVersion: backstage.io/v1alpha1
-kind: Location
-metadata:
-  name: example-all
-  description: A collection of all Backstage example entities, except users, groups, and templates
-spec:
-  targets:
-    - ./all-apis.yaml
-    - ./all-components.yaml
-```
-
-2. If the `catalog -info.yaml` is scattered across repos, and you want to register them together then mention the absolute path in the git provider. Please make sure the **connector** you have created has **account level permissions** and all the repos mentioned under targets are under that **same account**.
+Once you've enabled the plugin, you need to add the corresponding annotation in your `catalog-info.yaml` file.
 
 ```YAML
-apiVersion: backstage.io/v1alpha1
-kind: Location
-metadata:
-  name: food-delivery
-  description: A collection of all example entities, except users, groups, and templates
-spec:
-  targets:
-    - https://github.com/account-name/location-service/blob/main/catalog-info.yaml
-    - https://github.com/account-name/member-service/blob/main/catalog-info.yaml
-    - https://github.com/account-name/delivery-service/blob/main/catalog-info.yaml
-    - https://github.com/account-name/order-service/blob/main/catalog-info.yaml
-    - https://github.com/account-name/menu-service/blob/main/catalog-info.yaml
+...
+  annotations:
+    pagerduty.com/integration-key: <sample-service-integration-key>
+...
 ```
+
+<details>
+<summary>Example YAML</summary>
+
+```YAML {7}
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-new-service
+  description: Description of my new service
+  annotations:
+    pagerduty.com/integration-key: <sample-service-integration-key>
+  tags:
+    - java
+  links:
+    - url: https://admin.example-org.com
+      title: Admin Dashboard
+      icon: dashboard
+      type: admin-dashboard
+spec:
+  type: service
+  lifecycle: production
+  owner: owner@harness.io
+  system: project-x
+```
+</details>
+
+- Once the annotation is added, you can commit the changes to your `catalog-info.yaml` and refresh the software component to sync with the latest changes and view the PagerDuty plugin on your component overview page. 
+
+![](./static/refresh-component.png)
+
+## Add a Scorecard to Track Catalog Readiness
+
+Since, you've added the component and the plugin, let's create a [scorecard to track catalog readiness](https://developer.harness.io/docs/internal-developer-portal/get-started/scorecard-quickstart) for the component registered. 
+
 
 ## Delete/Unregister Software Components
 
@@ -140,8 +147,58 @@ spec:
 
 5. This will delete the Workflow.
 
-## Troubleshooting: Failed to register
+## Troubleshooting 
+
+#### Failed to register
 
 If, after registering an entity, you're unable to find the same in your catalog, check the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab, wait a few minutes for registration to complete. If it's under the **Failed** tab. Try re-registering the entity.
 
 ![](./static/devtools.png)
+
+
+#### Missing required fields/Invalid YAML schema.
+
+In case of an `InputError`, check for `missingProperty` details and add the required property to your `catalog-info.yaml`.
+
+![](./static/invalid-schema.png)
+
+## Extended Reading
+
+### Register multiple software components together
+
+We can register multiple `catalog-info.yaml` in the following ways.
+
+1. Use the [service onboarding scripts](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-scripts), to onboard multiple software components together. 
+
+**We recommend using only the service onboarding scripts if you want to register multiple components together, as the methods suggested below cannot register multiple components at scale.**
+
+2. If all your `catalog-info.yaml` are in the root of the same repo you can add the extensions in the target, as shown in the example below, and it will register all the components.
+
+```YAML
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: example-all
+  description: A collection of all Backstage example entities, except users, groups, and templates
+spec:
+  targets:
+    - ./all-apis.yaml
+    - ./all-components.yaml
+```
+
+3. If the `catalog-info.yaml` is scattered across repos, and you want to register them together then mention the absolute path in the git provider. Please make sure the **connector** you have created has **account level permissions** and all the repos mentioned under targets are under that **same account**.
+
+```YAML
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: food-delivery
+  description: A collection of all example entities, except users, groups, and templates
+spec:
+  targets:
+    - https://github.com/account-name/location-service/blob/main/catalog-info.yaml
+    - https://github.com/account-name/member-service/blob/main/catalog-info.yaml
+    - https://github.com/account-name/delivery-service/blob/main/catalog-info.yaml
+    - https://github.com/account-name/order-service/blob/main/catalog-info.yaml
+    - https://github.com/account-name/menu-service/blob/main/catalog-info.yaml
+```
