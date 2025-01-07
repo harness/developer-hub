@@ -246,8 +246,8 @@ Validate the permission and the `catalog-info.yaml` files would be created in yo
 - **Repo** - Enter the full path to your repo. Example
 
 ```
-https://github.com/sathish-soundarapandian/onboarding-test.git
-https://github.com/sathish-soundarapandian/onboarding-test
+https://github.com/user-name/onboarding-test.git
+https://github.com/user-name/onboarding-test
 ```
 
 - The provided repo in the repo URL should belong to the same organization / project for which the connector has been setup. Ex -
@@ -333,7 +333,7 @@ https://github.com/user-name/onboarding-test
 
 ## Create and Register Entities
 
-- Once the required details are entered and submitted for importing, we will push the generated entity YAML files to the repo and path provided. You will be seeing two commits - One is done during the sync flow and other commit which will consist of remaining entities will be pushed in an asynchronous manner. Time frame for asynchronous operation will depend on how big the repo size is and how many revisions the provided repo has.
+- Once the required details are entered and submitted for importing, we will push the generated entity YAML files to the repo and path provided. You will be seeing two commits - one during the sync process and another asynchronously, which will consist of remaining entities will be pushed in an asynchronous manner. The time frame for asynchronous operation(second commit) will depend on the repo size is and number of revisions the provided repo has.
 
 - In the background, the catalog are also imported into IDP along with their associated configs.
 
