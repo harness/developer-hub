@@ -115,3 +115,8 @@ spec:
 ![](./static/refresh-component.png)
 
 You should now be able to view the enabled plugins in the catalog section of Harness IDP. 
+
+## What's Next
+
+1. Take a look at [Plugins Overview](https://developer.harness.io/docs/internal-developer-portal/plugins/overview)
+2. Enable [Available Plugins](https://developer.harness.io/docs/category/available-plugins) based on your use case from the [Harness Plugin Marketplace](https://developer.harness.io/docs/internal-developer-portal/plugins/plugin-marketplace).

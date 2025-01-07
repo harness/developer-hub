@@ -55,15 +55,36 @@ spec:
   owner: idp-dev
 ```
 
-## Create a Custom Check
-
-You can skip this step if you want to use the default checks available and can start with creating a scorecard.  
+## Create a catalog readiness Scorecard
 
 ### Pre-requisite
 
-1. Make sure you have the [IDP Admin](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin) or [IDP Platform Engineer](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#2-idp-platform-engineer) role assigned to you with permissions to view, create and edit [scorecards](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-scorecards)
+Make sure you have the [IDP Admin](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin) or [IDP Platform Engineer](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#2-idp-platform-engineer) role assigned to you with permissions to view, create and edit [scorecards](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-scorecards)
 
-### Create a Check
+### Create Scorecard
+
+1. Go to **Scorecards** under **Admin** and **Create a New Scorecard**.
+
+![](./static/go-to-scorecards.png)
+
+2. Now add the following available checks
+    - Spec owner exists
+    - Tech Docs exists
+    - Pagerduty is setup
+
+![](./static/default-check-catalog-readiness.png)
+
+3. For **Filter catalog entities for which the scorecard is evaluated** select the kind as **Component** and type **all**
+
+4. Now Publish the **Scorecard**. 
+
+![](./static/catalog-readiness.png)
+
+5. Go to your catalog and check for your software component you'll find the scores for catalog readiness. 
+
+![](./static/catalog-readiness-applied.png)
+
+## Create a Custom Check  
 
 1. Go to **Scorecards** under **Admin**.
 2. Select **Create Custom Check** under **Checks**. 
@@ -79,35 +100,29 @@ You can skip this step if you want to use the default checks available and can s
 
 ![](./static/jira-custom-check.png)
 
-### Create a Scorecard
+### Create a Scorecard with Custom Check
 
 Let's create a scorecard for catalog using the custom check we created above and some default checks available. 
 
-9. Go to Scorecards and **Create a New Scorecard**.
+1. Go to Scorecards and **Create a New Scorecard**.
 
 ![](./static/go-to-scorecards.png)
 
-10. Now add the following default checks
-    - Spec owner exists
-    - Tech Docs exists
-    - Pagerduty is setup
-
-![](./static/default-check-catalog-readiness.png)
-
-11. Followed by the Custom Check **Jira Check** you created above, ignore this step if you have skipped creating a custom check. 
+2.  Now add the Custom Check **Jira Check** you created above, ignore this step if you have skipped creating a custom check. 
 
 ![](./static/custom-check-jira.png)
 
-12. For **Filter catalog entities for which the scorecard is evaluated** select the kind as **Component** and type **all**
+3. For **Filter catalog entities for which the scorecard is evaluated** select the kind as **Component** and type **all**
 
-13. Now Publish the **Scorecard**. 
+4. Now Publish the **Scorecard**. 
 
 ![](./static/catalog-readiness.png)
 
-14. Go to your catalog and check for your software component you'll find the scores for catalog readinesss. 
+5. Go to your catalog and check for your software component you'll find the scores for catalog readinesss. 
 
 ![](./static/catalog-readiness-applied.png)
 
 ## Next Steps
 
-If you want to learn more on scorecards and track migrations using scorecards follow this [tutorial](https://developer.harness.io/docs/internal-developer-portal/scorecards/track-migrations). 
+1. Learn more on [Scorecards](https://developer.harness.io/docs/category/scorecards).  
+2. Follow this [tutorial](https://developer.harness.io/docs/internal-developer-portal/scorecards/track-migrations) to track migrations using scorecards 
