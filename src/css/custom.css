@@ -901,7 +901,7 @@ figure p {
 
 #search-button {
   color: var(--ifm-heading-color);
-  font-size: 24px;
+  font-size: 16px;
   position: absolute;
   right: 0;
   margin-right: 20px;
