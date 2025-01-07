@@ -80,11 +80,9 @@ Here’s what you need to add to your ```devcontainer.json``` file:
   | [**Docker Registry**](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) | "DockerRegistry" |
   | [**Amazon ECR**](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-aws-connector) | "Aws" |
 
-:::info
-We also provide **Nexus** support for private Docker images using the Docker Registry connector.
-:::
-
 - The `identifier` field should include the connector identifier, adjusted based on its scope level.
+- We also provide **Nexus** support for private Docker images using the same Docker Registry connector.
+
 
 :::info 
 Currently, you can use only one connector per Gitspace to pull images from a private Repository.
