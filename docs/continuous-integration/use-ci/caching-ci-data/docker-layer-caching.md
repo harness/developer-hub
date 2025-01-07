@@ -20,8 +20,11 @@ With **Docker Layer Caching (DLC)** , a [Harness CI Intelligence](/docs/continuo
 
 You can use DLC with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md). When you use DLC with Harness CI Cloud, the cache is stored in the Harness-managed environment.
 
-:::note
-Docker Layer Caching for self-managed build infrastructure is an early access feature and is behind the feature flag `CI_ENABLE_DLC_SELF_HOSTED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::info
+
+Docker Layer Caching is now Generally Available (GA). 
+
+If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
 :::
 
 
@@ -37,11 +40,7 @@ When you use Docker Layer Caching with [Harness CI Cloud](/docs/continuous-integ
 
 All pipelines in the account use the same cache storage, and each build tool has a unique cache key that is used to restore the appropriate cache data at runtime.
 
-The cache storage limit depends on your subscription plan type:
-
-* Free: 2 GB
-* Team: 5 GB
-* Enterprise: 10 GB
+The cache storage limit depends on your subscription plan type. Please visit [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#usage-limits) page to learn more about usage limits.
 
 Harness doesn't limit the number of caches you can store, but, once you reach your storage limit, Harness continues to save new caches by automatically evicting old caches.
 
@@ -56,6 +55,11 @@ When running builds in self-managed infrastructures, [configure S3-compatible  d
 If your storage isn't S3-compatible or your don't want to use access key and secret key for authentication, consider using [remote cache image](#remote-cache-image) instead.
 
 We suggest that you consider setting bucket level retention policy for efficient cache management. 
+
+:::info
+Enabling DLC when running on Kubernetes requires *privileged mode* on the cluster where the builds run. 
+:::
+
 
 </TabItem>
 </Tabs>
@@ -84,9 +88,6 @@ Here is a YAML example of a  **Build and Push an image to Docker Registry** step
             - <+pipeline.sequenceId>
 ```
 
-:::info
-Enabling DLC when running on Kubernetes requires *privileged mode* on the cluster where the builds run. 
-:::
 
 
 ## Remote cache image
