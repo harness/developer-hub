@@ -118,10 +118,12 @@ We do not use the Google Run Deploy command here as this command takes every fie
   - Allows users to specify the percentage of traffic each revision should handle.
   - For more information, see the [Google Cloud Run Documentation](https://cloud.google.com/sdk/gcloud/reference/run/services/update-traffic).
 
-**Container Configuration**
+### Container Configuration
 
 For Container Registry, create or select a Docker connector to access the container registry. Use the following public Docker image:
 - [`harness/google-cloud-run-plugin:1.0.1-linux-amd64`](https://hub.docker.com/layers/harness/google-cloud-run-plugin/1.0.1-linux-amd64/images/sha256-bfb25c236e59041452ca81c7370a5d1ca924b361acb5309de3424ccc0645d074).  
+
+This image is required to perform deployments to Google Cloud Run
 
 #### Optional Configurations
 Harness allows for several optional configurations to customize deployment behavior:
