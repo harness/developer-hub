@@ -19,6 +19,9 @@ import TabItem from '@theme/TabItem';
  
 With Harness module registry, you can speed up and simplify your infrastructure management by reusing pre-built modules. This helps you avoid reinventing the wheel every time you need to set up common components, such as virtual machines, databases, or networks.
 
+## What is module registry?
+A Module Registry is a centralized repository designed for storing, managing, and sharing reusable infrastructure components, known as modules. These modules are pre-packaged pieces of infrastructure code that can be easily imported and deployed across various projects. By leveraging a module registry, teams can ensure consistency, reduce duplication of effort, and accelerate the deployment process across different environments. This enables more efficient collaboration and innovation within your infrastructure management practices.
+
 ### Prerequisites
 Before you begin configuring module registry, ensure that you have:
 - Access to your OpenTofu or Terraform environment via [Harness connectors](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-connectors).
