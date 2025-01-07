@@ -158,7 +158,7 @@ If, after registering an entity, you're unable to find the same in your catalog,
 
 #### Missing required fields/Invalid YAML schema.
 
-In case of an `InputError`, check for `missingProperty` details and add the required property to your `catalog-info.yaml`.
+In case of a `InputError`, check for `missingProperty` details and add the required property to your `catalog-info.yaml`.
 
 ![](./static/invalid-schema.png)
 
