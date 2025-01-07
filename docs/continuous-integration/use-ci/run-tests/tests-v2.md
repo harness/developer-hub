@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 You can use this **Test Intelligence** step, also known as the **Test** step, to run unit tests with **Python**, **Ruby**, **Java** , **C#** , **Scala** and **Kotlin** programming languages.
 
 :::info
-Cache Intelligence is now Generally Available (GA). 
+Test Intelligence is now Generally Available (GA). 
 If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
 :::
 
