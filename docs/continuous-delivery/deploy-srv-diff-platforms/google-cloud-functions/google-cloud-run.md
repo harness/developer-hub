@@ -8,11 +8,11 @@ redirect_from:
 
 # Google Cloud Run Deployments
 
-This guide explains how to deploy artifacts to Google Cloud Run using Harness.
-
 :::note
 Currently, this feature is behind the feature flag `CDS_GOOGLE_CLOUD_RUN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
+
+This guide explains how to deploy artifacts to Google Cloud Run using Harness.
 
 ## Overview
 
@@ -33,12 +33,11 @@ Follow these steps to set up a **Google Cloud Run Service** in Harness:
 
 ## Configure the Service
 
-1. Select **Add Service** and add the **Google Cloud Run Service Manifest Definition**. This defines the containerized application compatible with Google Cloud Run.  
-
 :::note 
 Only Google Artifact Repository and Docker Registry are supported as artifact repositories.
 :::
 
+1. Select **Add Service** and add the **Google Cloud Run Service Manifest Definition**. This defines the containerized application compatible with Google Cloud Run.
 2. Save the new service.
 
 ## Configure the Environment and Infrastructure
@@ -250,7 +249,7 @@ Alternatively, the following roles can also be used:
 
 </details>
 
-## Google CLoud Run Sample 
+## Google Cloud Run Sample 
 
 To see an example of how to deploy Google CLoud Run Service using Harness, visit the [Harness Community Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/google-cloud-run).
 
