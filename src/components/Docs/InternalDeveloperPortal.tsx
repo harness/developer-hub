@@ -60,6 +60,7 @@ export default function IDP() {
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
+      <div className={styles.subSection}></div>
     </div>
     // </Layout>
   );
