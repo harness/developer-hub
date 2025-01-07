@@ -309,13 +309,13 @@ Validate the permission and the catalog-info.yaml files would be created in your
 - **Repo** - Enter the full path to your repo. Example
 
 ```
-https://github.com/sathish-soundarapandian/onboarding-test.git
-https://github.com/sathish-soundarapandian/onboarding-test
+https://github.com/user-name/onboarding-test.git
+https://github.com/user-name/onboarding-test
 ```
 
 - The provided repo in the repo URL should belong to the same organization / project for which the connector has been setup. Ex -
 
-**In connector** - The account path is `https://github.com/sathish-soundarapandian`. So the repo URL in IDP onboarding flow should be `https://github.com/sathish-soundarapandian/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
+**In connector** - The account path is `https://github.com/user-name`. So the repo URL in IDP onboarding flow should be `https://github.com/{USER_NAME}/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
 
 - Provided repo should exist with a valid default HEAD branch. Ideally this will be case when the repo is initialized with README file
 
