@@ -94,7 +94,6 @@ Once you've enabled the plugin, you need to add the corresponding annotation in 
     pagerduty.com/integration-key: <sample-service-integration-key>
 ...
 ```
-
 <details>
 <summary>Example YAML</summary>
 
@@ -128,7 +127,6 @@ spec:
 ## Add a Scorecard to Track Catalog Readiness
 
 Since, you've added the component and the plugin, let's create a [scorecard to track catalog readiness](https://developer.harness.io/docs/internal-developer-portal/get-started/scorecard-quickstart) for the component registered. 
-
 
 ## Delete/Unregister Software Components
 

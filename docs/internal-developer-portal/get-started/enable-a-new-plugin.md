@@ -8,16 +8,18 @@ redirect_from:
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-Now that you have [populated your Catalog with Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component), you can use plugins to extend the functionality of Harness IDP and to customize IDP to suit your needs. This article provides step-by-step instructions on how to enable a plugin in Harness IDP.
+## Introduction
 
-**Prerequisites**
+Now that you have [populated your Catalog with Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component), you can use plugins to extend the functionality of Harness IDP and to customize IDP to suit your needs. This document provides step-by-step instructions on how to enable a plugin in Harness IDP.
+
+## Prerequisites
 
 Before you enable a new plugin, ensure that the following prerequisites are met:
 
 - Harness IDP is provisioned and accessible.
 - Onboarding for your Harness account is completed.
 
-**Plugin types**
+## Plugin types
 
 Harness IDP offers a set of curated plugins that you can enable. Here are some plugin types that you can consider:
 
@@ -32,16 +34,16 @@ These are just a few examples of plugin types available in Harness IDP. Dependin
 
 Once you have selected the desired plugin type, follow the documented instructions for enabling the plugin. The process might involve configuration, activation, and layout update steps that vary by plugin.
 
-**Enable a plugin**
+## Enable a plugin
 
 To enable a plugin, follow these steps:
 
 1. Log on to Harness, and then select **Developer Portal** > **Admin** > **Plugins**. 
-All administrative configurations, such as plugins, layouts, connectors, configurations, and access control are provided on the **Admin** page, and require administrative permissions. The **Plugins** page showcases a collection of curated plugins categorized as enabled and disabled plugins.
+All administrative configurations, such as plugins, layouts, connectors, configurations, and access control are provided on the **Admin** page, and require the users to have the **Harness Account Admin** role or the **IDP Admin** role. The **Plugins** page showcases a collection of curated plugins categorized as enabled and disabled plugins.
 
 ![](static/plugin-page-nav.png)
 
-2. The **Plugins** navigation option directs the user to the plugins list page, which showcases a collection of curated plugins. On this page, there are distinct sections dedicated to both enabled and disabled plugins, providing a clear differentiation between the two categories.
+2. The **Plugins** navigation option directs the user to the plugins list page, which showcases a collection of curated plugins. On this page, there are distinct sections dedicated to enabled plugins, custom plugins and other plugins available in the marketplace, providing a clear differentiation between the three categories.
 
 ![](static/plugins-screenshot.png)
 
@@ -52,7 +54,7 @@ The **Plugin details** page is displayed. The page provides information such as 
 
 ![](static/att_3_for_21398290667.png)
 
-  The plugin's layout section is read-only and displays the exported cards, tabs, or pages provided by the plugin.
+The plugin's layout section is read-only and displays the exported cards, tabs, or pages provided by the plugin.
 
 4. (Optional) If you want to customize the plugin's configuration, in the **Configurations** section, edit the default configuration YAML. 
 
@@ -66,14 +68,50 @@ The plugin is moved to the **Enabled Plugins** section on the **Plugins** page.
 
 8. To return to the **Plugins** page, select **Back**.
 
-9. Ingest the layout by using plugin layout management. The layout should be modified according to the elements that are exported from the plugin. The elements might include cards, tabs, and pages.
+9. (Optional) The layout management is handled by-default once you enable the plugin. In-case you want to modify the elements that are exported from the plugin according to your need you can update the layout. The elements might include cards, tabs, and pages.
 
-For instance, if the Jenkins plugin exports one card and one tab, in order to display them in your catalog entity, you must update the layout accordingly. To add a dedicated tab for the Jenkins plugin, follow these steps:
-
-- From the dropdown menu, select the domain option.
-- Search for the "ci-cd" component within the domain.
-- Inside the **Entity Switch** case, insert the following code snippet:
+For instance, if the Jenkins plugin exports one card and one tab, in order to be displayed in your catalog entity, the layout is updated with elements as displayed below.
 
 ![](static/layout-snippet.png)
 
-You should now be able to view the enabled plugins in the catalog section of Harness IDP. To see the enabled plugins, register the plugin catalog info YAML.
+10. Once you've enabled the plugin, you need to add the corresponding annotation in your `catalog-info.yaml` file.
+
+```YAML
+...
+metadata:
+  ...
+  annotations:
+    jenkins.io/github-folder: "folder-name/project-name"
+...
+```
+<details>
+<summary>Example YAML</summary>
+
+```YAML {7}
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-new-service
+  description: Description of my new service
+  annotations:
+    jenkins.io/github-folder: "folder-name/project-name"
+  tags:
+    - java
+  links:
+    - url: https://admin.example-org.com
+      title: Admin Dashboard
+      icon: dashboard
+      type: admin-dashboard
+spec:
+  type: service
+  lifecycle: production
+  owner: owner@harness.io
+  system: project-x
+```
+</details>
+
+- Once the annotation is added, you can commit the changes to your `catalog-info.yaml` and refresh the software component to sync with the latest changes and view the Jenkins plugin card component overview page and the tab on top of the page. 
+
+![](./static/refresh-component.png)
+
+You should now be able to view the enabled plugins in the catalog section of Harness IDP. 
