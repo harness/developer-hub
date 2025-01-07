@@ -10,29 +10,14 @@ export const FmeData: Horizon = {
         description: "New segment type enabling large-scale audience targeting up to 1M keys.",
       },
       {
-        tag: [{ value: "Better Together" }],
-        title: "Access Split from within Harness app",
-        description: "Allow Harness customers to authenticate and access Split from the Harness application.",
-      },
-      {
         tag: [{ value: "Targeting" }],
         title: "Flag impressions toggle",
         description: "Disable the flow of impressions for individual flags.",
       },
       {
-        tag: [{ value: "Monitoring" }],
-        title: "Feature flag alerts on Monitoring tab",
-        description: "Show significance alerts on the monitoring tab, in addition to the threshold-based alerts shown now.",
-      },
-      {
         tag: [{ value: "Measurement" }],
         title: "Rum agents sampling",
         description: "Control the number of events that are auto-captured by the Split Suite and RUM agents.",
-      },
-      {
-        tag: [{ value: "Targeting" }],
-        title: "SemVer attribute dictionary support",
-        description: "Support SemVer type attributes and suggested values in the attribute dictionary to streamline entry & reduce risk of errors.",
       },
     ],
   },
@@ -80,6 +65,11 @@ export const FmeData: Horizon = {
       },
       {
         tag: [{ value: "SDK" }],
+        title: "Thin client SDKs for JavaScript and mobile",
+        description: "No rules are stored client-side. Instead, these thin clients utilize a cloud service for evaluation.",
+      },
+      {
+        tag: [{ value: "SDK" }],
         title: "Extend SDK support",
         description: "Support additional SDKs like Erlang.",
       },
@@ -88,6 +78,23 @@ export const FmeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Targeting" }],
+        title: "SemVer attribute dictionary support",
+        description: "Support SemVer type attributes and suggested values in the attribute dictionary to streamline entry & reduce risk of errors.",
+        link:"https://www.split.io/releases/2024-12-06/",
+      },
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Access Split from within Harness app",
+        description: "Allow Harness customers to authenticate and access Split from the Harness application.",
+      },
+      {
+        tag: [{ value: "Monitoring" }],
+        title: "Feature flag alerts on Monitoring tab",
+        description: "Show significance alerts on the monitoring tab, in addition to the threshold-based alerts shown now.",
+        link:"https://www.split.io/releases/#zzodil-2024-11-27",
+      },
       {
         tag: [{ value: "Measurement" }],
         title: "Monitoring tab: feature traffic insights",

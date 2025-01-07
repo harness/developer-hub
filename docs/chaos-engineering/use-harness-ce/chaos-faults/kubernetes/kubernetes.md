@@ -207,6 +207,85 @@ FS fill is a Kubernetes pod-level chaos fault that applies fs stress by filling 
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod API Block
+
+Pod API block is a Kubernetes pod-level chaos fault that blocks the api requests for the ingress and egress traffic.
+
+- It blocks the apis of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+This fault evaluates the application's resilience to lossy (or flaky) API requests and responses.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod API latency
+
+Pod API latency is a Kubernetes pod-level chaos fault that injects api request and response latency by starting proxy server and redirecting the traffic through it.
+
+- It injects the latency into the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It evaluates the application's resilience to lossy (or flaky) API requests and responses.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+This fault evaluates the application's resilience to lossy (or flaky) API requests and response.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod API modify body
+
+Pod API modify body is a Kubernetes pod-level chaos fault that modifies the api request and response body by replacing any portions that match a specified regular expression with a provided value.
+
+- It modifies the body of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It evaluates the application's resilience to lossy (or flaky) requests and responses.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+This fault evaluates the application's resilience to lossy (or flaky) API requests and responses.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod API modify header
+
+Pod API modify header is a Kubernetes pod-level chaos fault that overrides the header values of API requests and responses with the user-provided values for the given keys.
+
+- It modifies the headers of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It evaluates the application's resilience to lossy (or flaky) requests and responses.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+This fault evaluates the application's resilience to lossy (or flaky) API requests and responses.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod API Status Code
+
+Pod API status code is a Kubernetes pod-level chaos fault that change the API response status code and optionally api response body through path filtering.
+
+- It overrides the api status code of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It evaluates the application's resilience to lossy (or flaky) responses.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+This fault evaluates the application's resilience to lossy (or flaky) API responses.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod autoscaler
 
 Pod autoscaler is a Kubernetes pod-level chaos fault that determines whether nodes can accomodate multiple replicas of a given application pod.
@@ -230,10 +309,12 @@ Pod CPU hog exec is a Kubernetes pod-level chaos fault that consumes excess CPU 
 
 <Accordion color="green">
 <summary>Use cases</summary>
-Disk pressure or CPU hog affects Kubernetes applications which result in the eviction of the application replica and impacts its delivery. These issues are referred to as "noisy neighbour" problems.
-The fault causes CPU stress on the target pod(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
-Injecting a rogue process into a target container starves the main microservice (typically pid 1) of the resources allocated to it (where limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all pods. These faults helps build immunity to such stress cases.
-It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
+- The fault causes CPU stress on the target pod(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
+- It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. 
+- It helps scalability of nodes based on growth beyond budgeted pods. 
+- It verifies the autopilot functionality of (cloud) managed clusters. 
+- Injecting a rogue process into a target container starves the main microservice (typically pid 1) of the resources allocated to it (where limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all pods. These faults helps build immunity to such stress cases.
+- Its benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
 </Accordion>
 
 </FaultDetailsCard>
@@ -248,10 +329,12 @@ Pod CPU hog is a Kubernetes pod-level chaos fault that excessively consumes CPU 
 
 <Accordion color="green">
 <summary>Use cases</summary>
-Disk pressure or CPU hog affects Kubernetes applications which result in the eviction of the application replica and impacts its delivery. These issues are referred to as "noisy neighbour" problems.
-The fault causes CPU stress on the target pod(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
-Injecting a rogue process into a target container starves the main microservice (typically pid 1) of the resources allocated to it (where limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all pods. These faults helps build immunity to such stress cases.
-It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers).
+- The fault causes CPU stress on the target pod(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
+- It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. 
+- It helps scalability of nodes based on growth beyond budgeted pods. 
+- It verifies the autopilot functionality of (cloud) managed clusters. 
+- Injecting a rogue process into a target container starves the main microservice (typically pid 1) of the resources allocated to it (where limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all pods. These faults helps build immunity to such stress cases.
+- Its benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers).
 </Accordion>
 
 </FaultDetailsCard>
@@ -287,6 +370,7 @@ This fault determines the resilience of an application to DNS errors. It determi
 </Accordion>
 
 </FaultDetailsCard>
+
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
 ### Pod DNS spoof
@@ -383,31 +467,75 @@ It tests the application's resilience to error code HTTP responses from the prov
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod IO stress
+### Pod IO Attribute Override
 
-Pod I/O stress is a Kubernetes pod-level chaos fault that causes IO stress on the application pod by spiking the number of input and output requests.
+Pod IO attribute override is a Kubernetes pod-level fault that modify the properties of files located within the mounted volume of the pod.
 
-- Aims to verify the resiliency of applications that share this disk resource for ephemeral (or persistent) storage.
+- It can test the application's resilience for the different values of file properties.
 
 <Accordion color="green">
-<summary>Use cases</summary>
-Disk pressure or CPU hog affects Kubernetes applications that results in the eviction of the application replica and impacts its delivery. These issues are referred to as "noisy neighbour" problems.
-Stressing the disk with continuous and heavy I/O can degrade the reads and writes with respect to the microservices. Scratch space consumed on a node may lead to lack of memory for new containers to be scheduled. These faults helps build immunity to such stress cases.
+<summary>View fault usage</summary>
+It can test the application's resilience for the different values of file properties.
 </Accordion>
 
 </FaultDetailsCard>
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod JVM method exception
+### Pod IO Error
 
-Pod JVM method exception injects chaos into a Java application executing in a Kubernetes pod by invoking an exception.
+Pod IO error is a Kubernetes pod-level fault that returns an error on the system calls of files located within the mounted volume of the pod.
+
+- It can test the application's resilience for the errors in i/o operations.
+
+<Accordion color="green">
+<summary>View fault usage</summary>
+It can test the application's resilience for the errors in i/o operations.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod IO Latency
+
+Pod IO latency is a Kubernetes pod-level fault that delays the system calls of files located within the mounted volume of the pod.
+
+- It can test the application's resilience for the latency in i/o operations.
+
+<Accordion color="green">
+<summary>View fault usage</summary>
+It can test the application's resilience for the latency in i/o operations.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod IO mistake
+
+Pod IO mistake is a Kubernetes pod-level fault that causes the file to read or write an incorrect value within the mounted volume of the pod.
+
+- It can test the application's resilience to mistakenly writing or reading invalid data from files.
+
+<Accordion color="green">
+<summary>View fault usage</summary>
+It can test the application's resilience to mistakenly writing or reading invalid data from files..
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod IO stress
+
+Pod I/O stress is a Kubernetes pod-level chaos fault that causes IO stress on the application pod by spiking the number of input and output requests.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-- Determines the performance and resilience of an application (or service) on encountering exceptions.
-- Determines how efficiently an application recovers the services.
-
+- Aims to verify the resiliency of applications that share this disk resource for ephemeral (or persistent) storage.
+- Stressing the disk with continuous and heavy I/O can degrade the reads and writes with respect to the microservices. Scratch space consumed on a node may lead to lack of memory for new containers to be scheduled. 
+- These faults helps build immunity to such stress cases.
 </Accordion>
 
 </FaultDetailsCard>
@@ -432,15 +560,14 @@ Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kube
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod JVM modify return
+### Pod JVM method exception
 
-Pod JVM modify return modifies the return value of a method in a Java application executing on a Kubernetes pod, for a specific duration.
+Pod JVM method exception injects chaos into a Java application executing in a Kubernetes pod by invoking an exception.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-  
-- Helps test the functionality of snippets of code by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations.
-- Helps obscure or redact personally identifiable information (PII), such as email addresses or phone numbers, before logging or transmitting the data for security and privacy compliance.
+- Determines the performance and resilience of an application (or service) on encountering exceptions.
+- Determines how efficiently an application recovers the services.
 
 </Accordion>
 
@@ -454,11 +581,29 @@ Pod JVM method latency slows down the Java application executing on Kubernetes p
 
 <Accordion color="green">
 <summary>Use cases</summary>
+
 - Determines the performance bottlenecks of the application.
 - Tests the system's ability to handle heavy payloads.
 - Evaluates the application's behavior in high-stress cases.
 - Determines how quickly an application returns to normalcy after the delay.
 - Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod JVM modify return
+
+Pod JVM modify return modifies the return value of a method in a Java application executing on a Kubernetes pod, for a specific duration.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+  
+- Helps test the functionality of snippets of code by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations.
+- Helps obscure or redact personally identifiable information (PII), such as email addresses or phone numbers, before logging or transmitting the data for security and privacy compliance.
+
 </Accordion>
 
 </FaultDetailsCard>
@@ -597,145 +742,6 @@ It can test the application's resilience to lossy (or flaky) network.
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod IO Latency
-
-Pod IO latency is a Kubernetes pod-level fault that delays the system calls of files located within the mounted volume of the pod.
-
-- It can test the application's resilience for the latency in i/o operations.
-
-<Accordion color="green">
-<summary>View fault usage</summary>
-It can test the application's resilience for the latency in i/o operations.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="kubernetes" subCategory="pod">
-
-### Pod IO Error
-
-Pod IO error is a Kubernetes pod-level fault that returns an error on the system calls of files located within the mounted volume of the pod.
-
-- It can test the application's resilience for the errors in i/o operations.
-
-<Accordion color="green">
-<summary>View fault usage</summary>
-It can test the application's resilience for the errors in i/o operations.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="kubernetes" subCategory="pod">
-
-### Pod IO Attribute Override
-
-Pod IO attribute override is a Kubernetes pod-level fault that modify the properties of files located within the mounted volume of the pod.
-
-- It can test the application's resilience for the different values of file properties.
-
-<Accordion color="green">
-<summary>View fault usage</summary>
-It can test the application's resilience for the different values of file properties.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="kubernetes" subCategory="pod">
-
-### Pod IO mistake
-
-Pod IO mistake is a Kubernetes pod-level fault that causes the file to read or write an incorrect value within the mounted volume of the pod.
-
-- It can test the application's resilience to mistakenly writing or reading invalid data from files.
-
-<Accordion color="green">
-<summary>View fault usage</summary>
-It can test the application's resilience to mistakenly writing or reading invalid data from files..
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="kubernetes" subCategory="pod">
-
-### Time Chaos
-
-Time Chaos is a Kubernetes pod-level fault that introduces controlled time offsets to disrupt the system time of the target pod
-
-- It can test the application's resilience for invalid system time.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-It can test the application's resilience for invalid system time.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="kubernetes" subCategory="pod">
-
-### Pod API latency
-
-Pod API latency is a Kubernetes pod-level chaos fault that injects api request and response latency by starting proxy server and redirecting the traffic through it.
-
-- It injects the latency into the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
-- It evaluates the application's resilience to lossy (or flaky) API requests and responses.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-This fault evaluates the application's resilience to lossy (or flaky) API requests and response.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="kubernetes" subCategory="pod">
-
-### Pod API Status Code
-
-Pod API status code is a Kubernetes pod-level chaos fault that change the API response status code and optionally api response body through path filtering.
-
-- It overrides the api status code of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
-- It evaluates the application's resilience to lossy (or flaky) responses.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-This fault evaluates the application's resilience to lossy (or flaky) API responses.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="kubernetes" subCategory="pod">
-
-### Pod API modify header
-
-Pod API modify header is a Kubernetes pod-level chaos fault that overrides the header values of API requests and responses with the user-provided values for the given keys.
-
-- It modifies the headers of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
-- It evaluates the application's resilience to lossy (or flaky) requests and responses.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-This fault evaluates the application's resilience to lossy (or flaky) API requests and responses.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="kubernetes" subCategory="pod">
-
-### Pod API modify body
-
-Pod API modify body is a Kubernetes pod-level chaos fault that modifies the api request and response body by replacing any portions that match a specified regular expression with a provided value.
-
-- It modifies the body of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
-- It evaluates the application's resilience to lossy (or flaky) requests and responses.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-This fault evaluates the application's resilience to lossy (or flaky) API requests and responses.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="kubernetes" subCategory="pod">
-
 ### Pod network rate limit
 
 Pod network rate limit is a Kubernetes pod-level chaos fault that generates Traffic Control (tc) rules with Token Bucket Filter (TBF) to assess Kubernetes pod resilience under limited network bandwidth condition.
@@ -745,21 +751,6 @@ Pod network rate limit is a Kubernetes pod-level chaos fault that generates Traf
 <Accordion color="green">
 <summary>Use cases</summary>
 It tests the application's resilience to limited or slow network bandwidth.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="kubernetes" subCategory="pod">
-
-### Redis cache penetration
-
-Redis cache penetration fault continuously sends cache requests to the Redis database to find the value for a key that does not exist. This continuous request reduces the performance of the application.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Slows down the database for responses to other requests.
-- Determines the resilience of Redis-dependant application when cache requests are continuously sent to a Redis database and they result in a cache miss.
 </Accordion>
 
 </FaultDetailsCard>
@@ -795,15 +786,30 @@ Redis cache limit determines the resilience of Redis-dependant applications on f
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod API Block
+### Redis cache penetration
 
-Pod API block is a Kubernetes pod-level chaos fault that blocks the api requests for the ingress and egress traffic.
-
-- It blocks the apis of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+Redis cache penetration fault continuously sends cache requests to the Redis database to find the value for a key that does not exist. This continuous request reduces the performance of the application.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault evaluates the application's resilience to lossy (or flaky) API requests and responses.
+
+- Slows down the database for responses to other requests.
+- Determines the resilience of Redis-dependant application when cache requests are continuously sent to a Redis database and they result in a cache miss.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Time Chaos
+
+Time Chaos is a Kubernetes pod-level fault that introduces controlled time offsets to disrupt the system time of the target pod
+
+- It can test the application's resilience for invalid system time.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+It can test the application's resilience for invalid system time.
 </Accordion>
 
 </FaultDetailsCard>

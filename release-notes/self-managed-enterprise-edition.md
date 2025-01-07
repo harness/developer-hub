@@ -220,6 +220,101 @@ To fix this issue, follow these steps
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
 :::
 
+## December 19, 2024, patch version 0.23.3
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.23.3](https://github.com/harness/helm-charts/releases/tag/harness-0.23.3) |
+| Air Gap Bundle | [0.23.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.23.3) |
+| NG Manager | 1.62.12 |
+| CI Manager | 1.51.8 |
+| Pipeline Service | 1.101.11 |
+| Platform Service | 1.42.3 |
+| Access Control Service | 1.64.1 |
+| Delegate | 24.10.84200 |
+| GitOps Service | 1.19.4 |
+| Change Data Capture | 1.37.4 |
+| STO Core | 1.117.2 |
+| Test Intelligence Service | 1.34.1 |
+| NG UI | 1.48.17 |
+| LE NG | 1.5.6 |
+| Looker | 1.6.1 |
+| Log Service | 1.14.5 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.23.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.3/sto_images.tgz" \
+  .
+```
+
+### New features and enhancements
+
+#### Cloud Cost Management
+
+- Added support for cost category dimension in Unified Explore [CCM-20238]
+- Added support for cost category stamping against cluster data as well [CCM-20238]
+- Cluster Billing data will wait for 2 days for AWS CUR to be present before generation. Earlier it waited for 4 days for AWS CUR [CCM-20600]
+
+
+## December 13, 2024, patch version 0.23.2
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.23.2](https://github.com/harness/helm-charts/releases/tag/harness-0.23.2) |
+| Air Gap Bundle | [0.23.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.23.2) |
+| NG Manager | 1.62.12 |
+| CI Manager | 1.51.8 |
+| Pipeline Service | 1.101.11 |
+| Platform Service | 1.42.3 |
+| Access Control Service | 1.64.1 |
+| Delegate | 24.10.84200 |
+| GitOps Service | 1.19.4 |
+| Change Data Capture | 1.37.4 |
+| STO Core | 1.117.2 |
+| Test Intelligence Service | 1.34.1 |
+| NG UI | 1.48.17 |
+| LE NG | 1.5.6 |
+| Looker | 1.5.0 |
+| Log Service | 1.14.5 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.23.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.23.2/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- ng-manager virtual service routes have been added in chart to support gitx webhooks APIs at org and project level. (PL-58990)
+
 ## December 11, 2024, patch version 0.23.1
 
 This release includes the following Harness module and component versions.
@@ -308,6 +403,20 @@ gsutil -m cp \
 
 ### New features and enhancements
 
+#### Chaos Engineering
+
+- Adds support to explicitly define the log watcher sidecar for chaos experiment manifest that use Harness Delegate. (CHAOS-6703)
+
+- Adds support to explicitly define the log watcher sidecar for chaos experiment manifest that use a dedicated chaos infrastructure. (CHAOS-6657)
+
+- Adds an updated UI for ChaosGuard to show dedicated chaos infrastructure, Harness Delegate, Linux and Windows chaos infrastructure. It also provides a modal each for application map and service discovery, respectively. (CHAOS-6646)
+
+- Adds support for live log streams for helper pods when executing an experiment that uses Harness Delegate. (CHAOS-5931)
+
+- Adds self-signed and trusted CA certificates for API chaos experiments. (CHAOS-6834)
+
+- Adds the functionality to block all inbound rules for Windows global blackhole chaos. (CHAOS-6603)
+
 #### Cloud Cost Management
 - AWS Payer Account ID Field Added: We’ve introduced the AWS Payer Account ID in the AWS fields dropdown for Perspectives and Cost Categories Rules. Only account IDs will be shown, excluding account names. [CCM-19843]
 
@@ -365,6 +474,16 @@ gsutil -m cp \
    Harness helm chart supports configuring HPA for either all services at once or for selective services.
 
 ### Fixed issues
+
+#### Chaos Engineering
+
+- Fixed an issue where the list of infrastructure supported by Harness Delegate showed deleted infrastructure. (CHAOS-6742)
+
+- Fixed an issue where the image registry was unable to automatically reload the experiment manifest when creating a chaos experiment. (CHAOS-6727)
+
+- Fixed an issue in the image registry where selecting the ignore option from the UI would override values from backend. (CHAOS-6724)
+
+- Fixed the issue where the experiment schedule type was not being updated when it was changed from non-cron to cron type. (CHAOS-6822)
 
 #### Cloud Cost Management
 - Fixed ECS Metrics Chart Issue: CPU recommendations in ECS metrics charts previously displayed incorrect graphs, and CPU usage showed as 0. This has now been corrected. [CCM-19715]
@@ -470,6 +589,53 @@ gsutil -m cp \
 #### Security Testing Orchestration
 - Fixed issue where the option to remove a configured Ticket Provider Connector in the External Tickets settings was unavailable; you can now remove the connector from the Ticket Provider Connector and related fields (STO-8001).
 
+## December 13, 2024, patch version 0.22.4
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.22.4](https://github.com/harness/helm-charts/releases/tag/harness-0.22.4) |
+| Air Gap Bundle | [0.22.4](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.22.4) |
+| NG Manager | 1.57.9 |
+| CI Manager | 1.47.5 |
+| Harness Manager | 1.48.8 |
+| Pipeline Service | 1.95.4 |
+| Platform Service | 1.39.1 |
+| Access Control Service | 1.61.2 |
+| Delegate | 24.09.83900 |
+| GitOps Service | 1.18.7 |
+| Change Data Capture | 1.36.0 |
+| STO Core | 1.113.10 |
+| Test Intelligence Service | 1.27.1 |
+| NG UI | 1.43.2 |
+| LE NG | 1.3.1 |
+| Looker | 1.1.1 |
+| Log Service | 1.9.2 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+
+  "gs://smp-airgap-bundles/harness-0.22.4/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.4/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.4/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.4/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.4/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.4/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.22.4/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- ng-manager virtual service routes have been added in chart to support gitx webhooks APIs at org and project level. (PL-58990)
+
 ## December 04, 2024, patch version 0.22.3
 
 This release includes the following Harness module and component versions.
@@ -558,7 +724,7 @@ gsutil -m cp \
 
 ### Fixed issues
 
-### Cloud Cost Management
+#### Cloud Cost Management
 
 - Improved Timescale migration reliability by enhancing SQL script execution with a full script execution method. (CCM-20381)
 
@@ -663,17 +829,7 @@ gsutil -m cp \
 
 #### Chaos Engineering
 
-- Adds support to explicitly define the log watcher sidecar for chaos experiment manifest that use Harness Delegate. (CHAOS-6703)
-
-- Adds support to explicitly define the log watcher sidecar for chaos experiment manifest that use a dedicated chaos infrastructure. (CHAOS-6657)
-
-- Adds an updated UI for ChaosGuard to show dedicated chaos infrastructure, Harness Delegate, Linux and Windows chaos infrastructure. It also provides a modal each for application map and service discovery, respectively. (CHAOS-6646)
-
-- Adds support for live log streams for helper pods when executing an experiment that uses Harness Delegate. (CHAOS-5931)
-
-- Adds self-signed and trusted CA certificates for API chaos experiments. (CHAOS-6834)
-
-- Adds the functionality to block all inbound rules for Windows global blackhole chaos. (CHAOS-6603)
+- Enables the global blackhole chaos to block inbound traffic. (CHAOS-6381)
 
 :::important
 If you are upgrading to SMP version 0.22 from a version earlier than 0.22, update the following overrides before starting the upgrade process. These updates are essential to ensure a smooth and successful upgrade.
@@ -743,13 +899,13 @@ chaos-manager:
 
 #### Chaos Engineering
 
-- Fixed an issue where the list of infrastructure supported by Harness Delegate showed deleted infrastructure. (CHAOS-6742)
+- CPU utilization increased due to continuously executing clean up tasks. This issue has been fixed by adding a sleep operation that runs after every "remove" operation and optimizes overall CPU performance. (CHAOS-5709)
 
-- Fixed an issue where the image registry was unable to automatically reload the experiment manifest when creating a chaos experiment. (CHAOS-6727)
+- Fixed the issue where chaos infrastructure created with the help of a sandbox showed "Supported by a Harness Delegate". (CHAOS-6501)
 
-- Fixed an issue in the image registry where selecting the **ignore** option from the UI would override values from backend. (CHAOS-6724)
+- Fixed the issue where selecting an infrastructure to create ChaosGuard crashed. Now, the page lists the chaos infrastructure based on the type of infrastructure you select (Delegate-enabled or dedicated infrastructure enabled). (CHAOS-6680)
 
-- Fixed the issue where the experiment schedule type was not being updated when it was changed from non-cron to cron type. (CHAOS-6822)
+- Fixed the issue of discrepancy between the number of probes in the UI and backend. (CHAOS-6528)
 
 #### Cloud Cost Management
 
@@ -879,6 +1035,16 @@ gsutil -m cp \
 
 ### New features and enhancements
 
+#### Chaos Engineering
+
+- Crictl binary is upgraded from 1.29.0 to 1.31.0 to fix 3 vulnerabilities. (CHAOS-6357)
+
+- Updated the status code in the `experiment-stats` page to return status code 403 instead of 401 due to the changes around support groups. 401 status code indicates that a user logged out whereas to display an error, status code 403 is used. (CHAOS-6322)
+
+- Adds support for live logs for Linux and Windows. (CHAOS-6137)
+
+- Adds Probe Properties tab on the UI in ChaosHub to show details about the probe selected. (CHAOS-6132)
+
 #### Continuous Integration
 
 - Cache Intelligence was enhanced with support for C# . Customers using C# applications can now leverage automatic dependencies caching with Cache Intelligence. (CI-12672)
@@ -938,6 +1104,20 @@ gsutil -m cp \
 #### Chaos Engineering
 
 - Fixed the error associated with upgrading a chaos infrastructure by providing relevant permissions for the upgrade agent in the execution plane (user host/cluster). (CHAOS-5980)
+
+- Fixed issue where GameDay was not available to users at the project level but was available at the account/organization level who had administrator access. (CHAOS-6349)
+
+- Fixed the Windows memory hog experiment when installed using the offline installer. (CHAOS-6363)
+
+- Fixed an issue where the Resilience Probes page showed internal system error in prod1. (CHAOS-6360)
+
+- Fixed an issue where the Resilience Probe index was out of bound for GameDay experiments that did not have any probes. (CHAOS-6330)
+
+- Fixed the issue where Cloud Foundry app JVM CPU stress fault didn't have YAML validation in Linux. (CHAOS-6312)
+
+- Fixed an issue where the documents were being updated even though no changes were needed. (CHAOS-6296)
+
+- Fixed an incorrect syntax in the `kubectl watch` command in the UI. (CHAOS-5968)
 
 #### Cloud Cost Management
 
@@ -1238,12 +1418,6 @@ This feature is currently behind the feature flag, `CI_GIT_CLONE_ENHANCED`. Cont
 #### Chaos Engineering
 
 - Fixed an issue where an experiment in the `Error` state would not finish, and be in a state of infinite run timestamp. (CHAOS-5577)
-
-- Fixed an issue wherein trying to add a pre-defined experiment in Windows infrastructure was unsuccessful. (CHAOS-5863)
-
-- Fixed an issue where the **Edit ChaosHub** action was not working with non-account type connectors. (CHAOS-5820)
-
-- Fixed an issue where the **Linux restart** chaos fault could not parse string values. (CHAOS-5616)
 
 #### Cloud Cost Management
 
@@ -1575,6 +1749,12 @@ Refer to following doc for more details on new [repo listing](/docs/platform/git
 #### Chaos Engineering
 
 - CPU utilization increased due to continuously executing clean up tasks. This issue has been fixed by adding a sleep operation that runs after every remove operation and optimizes overall CPU performance. (CHAOS-5709)
+
+- Fixed an issue wherein trying to add a pre-defined experiment in Windows infrastructure was unsuccessful. (CHAOS-5863)
+
+- Fixed an issue where the Edit ChaosHub action was not working with non-account type connectors. (CHAOS-5820)
+
+- Fixed an issue where the Linux restart chaos fault could not parse string values. (CHAOS-5616)
 
 #### Continuous Integration
 

@@ -59,7 +59,7 @@ You can also create new integrations and associate the integration with the curr
 2. Go the **Project** scope and select your **Project**.
 3. If you don't have any existing Insight, then click on the **Create Insight** button on the landing page to create a new Insight.
 
-![](./static/create-insight.png)
+![](../static/create-insight.png)
 
 4. If you already have existing Insights in your selected Project, then go to any Insight. For instructions, go to [View Insights](#view-insights).
 5. In the header, select **All Insights**, and then select **Manage Insights**.
@@ -85,7 +85,7 @@ Engineering managers usually use these three key sprint metrics to get a holisti
 
 The **Sprint Metrics Trend Report** is recommended for visualizing a time series trend of these metrics to help engineering managers understand how the respective sprint metrics has evolved throughout various sprint cycles.
 
-![](./static/sprint-trend.png)
+![](../static/sprint-trend.png)
 
 To add the **Sprint Metrics Trend Report** widget to Insights:
 
@@ -112,7 +112,7 @@ But what happens when there are issues with the issues? That's where the hygiene
 
 You can use this report to measure and track the hygiene score for the previous sprint or the active sprints.
 
-![](./static/active-sprint-hygiene.png)
+![](../static/active-sprint-hygiene.png)
 
 To add the **Issue Hygiene Report** widget to Insights:
 
@@ -130,7 +130,7 @@ To add the **Issue Hygiene Report** widget to Insights:
 
 The Issues Report is used to examine metrics related to issues in your issue management system. The report aggregates data based on selected attributes, such as priority, status, labels, components, or any other field. This report helps you create comparisons based on various fields and draw conclusions to make decisions.
 
-![](./static/issues-report.png)
+![](../static/issues-report.png)
 
 To add the **Issues Report** widget to Insights:
 
@@ -159,7 +159,7 @@ To configure the widget for various other use cases, go to [Issues Report Use Ca
 
 The Issue Resolution Time Report is a customizable bar graph that displays the number of tickets that were closed and the average time it took to close them based on their creation time.
 
-![](./static/issue-resolution-time-report.png)
+![](../static/issue-resolution-time-report.png)
 
 To add the **Issue Resolution Time Report** widget to Insights:
 
@@ -178,7 +178,7 @@ The **Sprint Metrics Single Stat** widget presents a single sprint metric averag
 
 For example, the Sprint Metrics Single Stat widget can help you use historical metrics for sprint prediction and performance assessment.
 
-![](./static/sprint-single-stat.png)
+![](../static/sprint-single-stat.png)
 
 To add the **Sprint Metrics Single Stat Report** widget to Insights:
 

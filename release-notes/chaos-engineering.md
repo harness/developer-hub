@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-11-28T10:00
+date: 2024-12-19T10:00
 sidebar_position: 5
 ---
 
@@ -19,6 +19,20 @@ The release notes describe recent changes to Harness Chaos Engineering.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## December 2024
+
+### Version 1.50.3
+
+#### New features and enhancements
+
+- Adds support for [configuring image registries at multiple scopes](/docs/chaos-engineering/use-harness-ce/image-registry#why-use-a-custom-image-registry), such as Project, Account, Organization, and Infrastructure levels. These settings can be automatically inherited by lower levels, but if the "override allowed" option is enabled at the parent level, lower levels can modify or override these configurations. It is behind the feature flag `CHAOS_IMAGEREGISTRY_DEV`. (CHAOS-6570)
+
+#### Fixed issues
+
+- Fixed an issue where ChaosGuard was not evaluating correctly after adding support for environments. (CHAOS-7075)
+
+- Fixed an issue where the Pod API modify header fault failed to function as expected when the header value was set to '/'. (CHAOS-7063)
 
 ## November 2024
 
@@ -44,32 +58,6 @@ The release notes describe recent changes to Harness Chaos Engineering.
 - Fixed the cron experiment execution that was not working with Linux and Windows infrastructure (CHAOS-7044)
 
 - Fixed the issue of **Visual** and **YAML** tabs overlapping while trying to toggle between them in the **Condition Editor** in ChaosGuard. (CHAOS-7026)
-
-### Version 1.48.0
-
-#### New features and enhancements
-
-- Adds a pre-check to the Windows global blackhole experiment to verify if the firewall is enabled for the target Windows VM. If not, the `ENABLE_FIREWALL` tunable is set, which, by default, enables the firewall. (CHAOS-6848)
-
-- Introduces the Windows disk fill chaos experiment, supported by Windows chaos infrastructure. (CHAOS-6842)
-
-#### Fixed issues
-
-- Fixed the input mechanism for specifying multiple zones for CLB AZ down chaos fault, now allowing comma-separated values for multiple inputs. (CHAOS-6909)
-
-- Fixed an issue with the bulk update experiment selection checkbox not de-selecting after updating a cron job. (CHAOS-6856)
-
-- Fixed the error occurring when performing multiple actions on experiments, such as pushing to a custom ChaosHub, adding to GameDay, and executing the experiments consecutively. (CHAOS-6568)
-
-- Fixed the UI issue that prevented a GameDay execution after the stakeholder approval. (CHAOS-6467)
-
-- Fixed the issue where the **Application Maps** drawer was not displayed on the first page due to pagination issues. (CHAOS-6407)
-
-- Fixed the visibility issue of the status display for the Enterprise ChaosHub in dark mode. (CHAOS-5970)
-
-- Fixed the issue where two continuous command probes with a short polling duration could not execute in Linux infrastructure. (CHAOS-5461)
-
-## November 2024
 
 ### Version 1.48.0
 

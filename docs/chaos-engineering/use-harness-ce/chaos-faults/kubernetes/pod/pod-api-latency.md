@@ -10,7 +10,7 @@ redirect_from:
 import CommonNote from './shared/common-note.md'
 import ConfTLS from './shared/configure-tls.md'
 
-Pod API latency is a Kubernetes pod-level chaos fault that injects api request and response latency by starting proxy server and redirecting the traffic through it.
+Pod API latency is a Kubernetes pod-level chaos fault that injects API request and response latency by starting proxy server and redirecting the traffic through it.
 
 <CommonNote />
 
@@ -105,6 +105,11 @@ permissions:
         <td> PATH_FILTER </td>
         <td> API path or route used for the filtering. </td>
         <td> Targets all paths if not provided. For more information, go to <a href="#path-filter">path filter </a>.</td>
+      </tr>
+      <tr>
+        <td> TRANSACTION_PERCENTAGE </td>
+        <td> Percentage of the API requests to be affected. </td>
+        <td> It supports values in range (0,100]. It targets all requests if not provided. For more information, go to <a href="#advanced-filters">transaction percentage </a>.</td>
       </tr>
       <tr>
         <td> HEADERS_FILTERS </td>
@@ -445,6 +450,7 @@ spec:
 - `SOURCE_IPS`: Comma-separated source IPs filters, indicating the origin of the HTTP request. This is specifically relevant to the `ingress` type, specified by `SERVICE_DIRECTION` environment variable.
 - `DESTINATION_HOSTS`: Comma-separated destination host names filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `SERVICE_DIRECTION` environment variable.
 - `DESTINATION_IPS`: Comma-separated destination IPs filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `SERVICE_DIRECTION` environment variable.
+- `TRANSACTION_PERCENTAGE`: The percentage of API requests to be affected, with supported values in the range (0, 100]. If not specified, it targets all requests.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -483,6 +489,10 @@ spec:
             # provide the source ips filters
             - name: SOURCE_IPS
               value: 'ip1,ip2'
+            # provide the transaction percentage within (0,100] range
+            # for example, it will affect 50% of the total requests
+            - name: TRANSACTION_PERCENTAGE
+              value: '50'
             # provide the connection type
             - name: SERVICE_DIRECTION
               value: 'ingress'

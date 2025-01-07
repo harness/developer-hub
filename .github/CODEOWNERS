@@ -43,52 +43,91 @@ README.md @pratmit
 
 # Documentation ###
 
+# All Static files (images etc.)
+static/  @rohanmaharjan100 @wei-harness
+
+# All Data files - Please add global reviewers who are familiar with js/ts
+# data/*.ts @global-data-file-owners
+
 # Continuous Delivery Docs
-/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
-/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
-src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av
+/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta
+/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta
+/src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
+/src/components/Docs/data/continuousDeliveryData*  @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
+# FirstGen CD Docs
+/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
+# CD FAQs
+/docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness @vishal-av
+# GitEx FAQs
+/docs/faqs/git-exp-vs-config-as-code/ @krishi0408 @SushrutHarness @vishal-av
+
 
 # Continuous Integration Docs
 /docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed @SushrutHarness
 /release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed
-src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed
+/src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed
+/src/components/Docs/data/continuousIntegrationData.ts @nofarblue @rustd @dewan-ahmed
 
 # CODE Docs
 /docs/code-repository/ @pwolf-harness @hitesharinga @dewan-ahmed
 /release-notes/code-repository.md @pwolf-harness @hitesharinga @dewan-ahmed
-src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga @dewan-ahmed
+/src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga @dewan-ahmed
+/src/components/Docs/data/codeRepositoryData.tsx @pwolf-harness @hitesharinga @dewan-ahmed
 
 # STO Docs
 /docs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
 /docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
 /release-notes/security-testing-orchestration.md @tejakummarikuntla @priteshchandaliya
-src/components/Roadmap/data/stoData.ts @tejakummarikuntla @priteshchandaliya
+/src/components/Roadmap/data/stoData.ts @tejakummarikuntla @priteshchandaliya
+/src/components/Docs/data/securityTestingOrchestrationData.ts @tejakummarikuntla @priteshchandaliya
+# STO FAQs
+/docs/faqs/security-testing-orchestration/ @tejakummarikuntla
 
 # CCM Docs
 /docs/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss @nikunj-badjatya @raviyadalam @iamanmolm @sdsingh07 @sandyydk @abhinavsingh-ccm
 /release-notes/cloud-cost-management.md @raviyadalam
-src/components/Roadmap/data/ccmData.ts @navaneeth @Rohit-Kaliki @joeyouss
+/src/components/Roadmap/data/ccmData.ts @navaneeth @Rohit-Kaliki @joeyouss
+/src/components/Docs/data/cloudCostManagementData.ts @navaneeth @Rohit-Kaliki @joeyouss
+# FirstGen CCM Docs
+/docs/category/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss
+# CCM FAQs
+/docs/faqs/cloud-cost-management-faqs/ @navaneeth @Rohit-Kaliki @joeyouss
 
 # CET Docs
 /docs/continuous-error-tracking/ @M-Tsur
 /release-notes/continuous-error-tracking.md @M-Tsur
+/src/components/Docs/data/cloudCostManagementData.ts @M-Tsur
 
 # SRM Docs
 /docs/service-reliability-management/ @sunilgupta-harness @umamukkara
 /release-notes/service-reliability-management.md @sunilgupta-harness @umamukkara
-src/components/Roadmap/data/srmData.ts @sunilgupta-harness
+/src/components/Roadmap/data/srmData.ts @sunilgupta-harness
+/src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness
 
 # Chaos Docs
 /docs/chaos-engineering/ @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9
 /release-notes/chaos-engineering.md @neelanjan00 @SmritiSatya @Jonsy13
-src/components/Roadmap/data/cdData.ts @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
+/src/components/Roadmap/data/ceData.ts @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
+/src/components/Docs/data/chaosEngineeringData* @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
+# Chaos FAQs
+/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya @ksatchit
 
 # Platform Docs
-/docs/platform/ @pratmit @krishi0408 @GokulBansal0 @abhishekharness
-/release-notes/delegate.md @pratmit @abhishekharness @anshul-harness
-/release-notes/platform.md @pratmit @GokulBansal0 @abhishekharness
-/release-notes/self-managed-enterprise-edition.md @pratmit @abhishekharness
-src/components/Roadmap/data/platformData.ts @pratmit @abhishekharness
+/docs/platform/ @pratmit @krishi0408 @GokulBansal0 @abhishekharness @ivikramsahu
+/release-notes/delegate.md @pratmit @abhishekharness @anshul-harness @ivikramsahu
+/release-notes/platform.md @pratmit @GokulBansal0 @abhishekharness @ivikramsahu
+/release-notes/self-managed-enterprise-edition.md @pratmit @abhishekharness @ivikramsahu
+/src/components/Roadmap/data/platformData.ts @pratmit @abhishekharness @ivikramsahu
+/src/components/Docs/data/platformData.ts @pratmit @abhishekharness @ivikramsahu
+# FirtGen Platform Docs
+/docs/category/platform-firstgen/ @pratmit @abhishekharness @ivikramsahu
+# FirstGen SMP Docs
+/docs/category/self-managed-enterprise-edition-fg/ @pratmit @abhishekharness @ivikramsahu
+/docs/self-managed-enterprise-edition/ @pratmit @abhishekharness @ivikramsahu
+# Delegate FAQs
+/docs/faqs/harness-delegate-faqs/ @pratmit @abhishekharness @ivikramsahu
+# SMP FAQs
+/docs/faqs/self-managed-ee-faq/ @pratmit @abhishekharness @ivikramsahu
 
 # Pipeline Docs
 /docs/platform/pipelines/ @krishi0408 @vishal-av @SudarshanPurohit
@@ -102,30 +141,40 @@ src/components/Roadmap/data/platformData.ts @pratmit @abhishekharness
 # IDP Docs
 /docs/internal-developer-portal/ @Debanitrkl @OrkoHunter @manishas
 /release-notes/internal-developer-portal.md @Debanitrkl @OrkoHunter @manishas
-src/components/Roadmap/data/idpData.ts @Debanitrkl @OrkoHunter @manishas
+/src/components/Roadmap/data/idpData.ts @Debanitrkl @OrkoHunter @manishas
+/src/components/Docs/data/internalDeveloperPortal.ts @Debanitrkl @OrkoHunter @manishas
 
 # SCS Docs
 /docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness
 /release-notes/software-supply-chain-assurance.md @sunilgupta-harness @tejakummarikuntla @pranay-harness
-src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla @pranay-harness
+/src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla @pranay-harness
+/src/components/Docs/data/softwareSupplyChainAssuranceData.tsx @sunilgupta-harness @tejakummarikuntla @pranay-harness
 
 # IACM Docs
 /docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez
-src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness
+/src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness
+/src/components/Docs/data/iacmData.ts @RickCraig @richardblack-Harness
 
 # FF Docs
 /docs/feature-flags/ @HarnessTheChaos @jenniferopal @laura-mannus @Kira-Jennings @laura135
 /release-notes/feature-flags.md @HarnessTheChaos @jenniferopal
-src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
+/src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
+/src/components/Docs/data/featureFlagsData.ts @HarnessTheChaos @jenniferopal
+# FF FAQs
+/docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos @jenniferopal
 
 # SEI Docs
 /docs/software-engineering-insights/ @codewdhruv @batraprashant
 /release-notes/software-engineering-insights.md @codewdhruv @batraprashant
-src/components/Roadmap/data/seiData.ts @codewdhruv
+/src/components/Roadmap/data/seiData.ts @codewdhruv
+/src/components/Docs/data/softwareEngineeringInsightsData.ts @codewdhruv
 
 # DB DevOps Docs
 /docs/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
 /release-notes/database-devops.md @stephenatwell @jenniferopal @HarnessTheChaos @archit-harness @anshul-harness
+/src/components/Docs/data/databaseDevOpsData.ts @stephenatwell @jenniferopal @HarnessTheChaos @archit-harness @anshul-harness
+# DB DevOps FAQs
+/docs/faqs/db-devops-faqs/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
 
 # CDE Docs
 /docs/cloud-development-environments/ @manishas @khushisharmaharness
@@ -136,63 +185,23 @@ src/components/Roadmap/data/seiData.ts @codewdhruv
 
 # Artifact Registry Docs
 /docs/artifact-registry/ @SushrutHarness @shankaranandh @shivagowda @richardblack-Harness
+/src/components/Docs/data/artifactRegistryData.ts @SushrutHarness @shankaranandh @shivagowda @richardblack-Harness
 
 #FME Docs
-src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
+/src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
 
 # Open Source Docs
 /docs/open-source/ @dewan-ahmed @rustd @SushrutHarness
+/src/components/Docs/data/openSourceData.tsx @dewan-ahmed @rustd @SushrutHarness
 
 # Cloud Operations Docs
 /docs/harness-cloud-operations/ @ankit-harness @yogi-harness
-
-# FirstGen Docs ###
-
-# CD Docs
-/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av
-
-# Platform Docs
-/docs/category/platform-firstgen/ @pratmit
-
-# SMP Docs
-/docs/category/self-managed-enterprise-edition-fg/ @pratmit
-
-# CCM Docs
-/docs/category/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss
-
-# FAQ Docs ###
-
-# CD FAQs
-/docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness @vishal-av
-
-# FF FAQs
-/docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos @jenniferopal
-
-# CCM FAQs
-/docs/faqs/cloud-cost-management-faqs/ @navaneeth @Rohit-Kaliki @joeyouss
-
-# STO FAQs
-/docs/faqs/security-testing-orchestration/ @tejakummarikuntla
-
-# Chaos FAQs
-/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya @ksatchit
-
-# Delegate FAQs
-/docs/faqs/harness-delegate-faqs/ @pratmit
-
-# GitEx FAQs
-/docs/faqs/git-exp-vs-config-as-code/ @krishi0408 @SushrutHarness @vishal-av
-
-# SMP FAQs
-/docs/faqs/self-managed-ee-faq/ @pratmit
-
-# DB DevOps FAQs
-/docs/faqs/db-devops-faqs/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
 
 # Knowledge Base ###
 
 # Overall KB
 /kb/ @deepanshuHarness @jimin-harness @guna-harness
+/src/components/KnowledgeBase/data/ @deepanshuHarness @jimin-harness @guna-harness
 
 #Armory KB
 /kb/armory @okosun-j @jimin-harness @deepanshuHarness @guna-harness

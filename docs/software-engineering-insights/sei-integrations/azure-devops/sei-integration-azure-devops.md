@@ -133,7 +133,6 @@ Note: Different integrations will be automatically created for all the Azure Dev
    * CICD Pipeline Jobs Duration Report
    * CICD Pipeline Jobs Duration Trend Report
 4. The integration does not accurately reflect the pipeline stage status across the widgets.
-5. Lead time widgets are not fully supported for this integration
 
 :::note
 

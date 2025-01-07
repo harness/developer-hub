@@ -24,6 +24,29 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## December 2024
 
+### Version 202412.2
+
+<!-- December 22, 2024 -->
+
+#### Early access features
+
+* We have improved the integrations landing page by introducing categorized sections, simplifying navigation and making it easier for users to quickly discover and configure the integrations. (SEI-9804)
+
+#### New features and enhancements
+
+* We have implemented improved logic for calculating key sprint metrics. The updates includes the following:
+  * **Delivered scope creep points:** This metric captures the total story points from all completed creep tickets within the sprint, giving you better visibility into scope changes.
+  * **Delivered story creep points:** This represents the sum of story points from completed tickets where estimates were increased during the sprint.
+  * **Velocity points:** The velocity metric now is calculated as the sum of committed points done, delivered scope creep points, and delivered story creep points. Note that this feature is behind a feature flag. Please contact Harness Support to have it enabled for your account.
+* Added performance improvements to the **Collection settings** page, significantly reducing loading time (SEI-9647)
+* Redesigned the [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops) interface to display separate tiles for Azure Boards, Azure Pipelines, and Azure Repos. This helps identifying the service easily while maintaining unified configuration capabilities. (SEI-9795)
+
+#### Fixed issues
+
+* The [GitLab integration](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab) now ignores merge commits while ingesting data to prevent duplicate contributions (SEI-9385) (ZD-73141)
+* Fixed the issue where incorrect insight was loading when selected from the **Manage Insights** view (SEI-9855)
+* Fixed the bug in the Trellis Score report drill down where *Time spent* column incorrectly included resolution state time (SEI-9733) (ZD-74405) (ZD-75651)
+
 ### Version 202412.1
 
 <!-- December 09, 2024 -->

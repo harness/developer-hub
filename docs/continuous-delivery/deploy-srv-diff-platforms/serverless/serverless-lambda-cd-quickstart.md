@@ -259,6 +259,7 @@ There are two flavours of images available first with serverless installed and o
 | python 3.12 | harness/serverless-plugin:python3.12-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:python3.12-1.0.1-beta-linux-amd64 |
 | ruby 3.2 | harness/serverless-plugin:ruby3.2-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:ruby3.2-1.0.1-beta-linux-amd64 |
 
+For ECR users, you can access these images via the [ECR Image Repository for Serverless Plugin](https://gallery.ecr.aws/harness/harness/serverless-plugin).
 
 Now, let's understand the runtime image one with serverless installed and one without serverless installed. 
 

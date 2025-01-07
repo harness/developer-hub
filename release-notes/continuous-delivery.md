@@ -47,13 +47,38 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## December
 
+### Gitops Version 1.22.0, Gitops Agent Version 0.83.0
+
+#### Fixed Issues
+
+#### New Features and enhancements
+
+- Harness now supports the `prefixed_identifier` field in the GitOps Agent Terraform resource. This field provides a scope-prefixed agent identifier, where the scope (account, org, or project) is constant, and the agentId varies based on the specific agent. 
+For example, `account.agentId` for Account-level agents, `org.agentId` for Organisation-level agents, `agentId` (without a prefix) for Project-level agents. (CDS-101503)
+- The GitOps Applications landing page is now automatically refreshed, allowing newly created applications to appear in real-time without requiring manual refresh. (CDS-68662)
+- We have introduced the `allowEmptyCommit` field in the **GitOps Update Release Repo step**, enabling users to push an empty commit if desired. Previously, the step failed if there were no changes in the commit. This enhancement is useful for setting up automated periodic PR pipelines. For more information, go to Harness [Update Release Repo step](/docs/continuous-delivery/gitops/pr-pipelines/gitops-pipeline-steps/#update-release-repo-step). (CDS-103191)
+- Addressed and resolved all known critical vulnerabilities related to the GitOps Agent and GitOps Service. (CDS-102606)
+- If the GitOps agent is at project scope in Harness it will now reconcile argo clusters and repos that don't have the "project" field as well ("project" in this context refers to the argoproject). (CDS-105211)
+- Timeouts have increased for the Stream APIs: Watch, Logs, and ResourceTree. (CDS-102770, ZDS-72211, ZDS-73868)
+
+#### Fixed Issues
+
+- Previously, in the Harness Terraform Provider, the `agent_token` field in the `harness_platform_gitops_agent` data source returned null, making it unusable for authentication validation. The issue is fixed. The `agent_token` field now correctly returns its value, and a new `isAuthenticated` field has been added to indicate the authentication status. (CDS-104468)
+- The User Interface for buttons in the Repository settings of GitOps, such as **New Repository** and **Create Credential Template** lacked proper formatting. This issue is resolved, and the buttons are display properly. (CDS-103032)
+- Previously, GitOps agents were taking an excessive amount of time to reconnect after regenerating and reapplying YAMLs, causing inconsistencies in reconnection timelines. This issue is resolved. (CDS-103262)
+- The Resource Tree API calls were failing because the application name was missing from the query parameters. This issue is resolved. (CDS-104792)
+- Fixed security vulnerabilities found in the GitOps Agent. (CDS-104150, ZD-73983)
+- Previously, updating the GitOps Agent secret and re-applying or upgrading the deployment/Helm chart did not trigger new pod creation, causing the old token to be reused. This issue has been resolved—GitOps Agent pods now track the secret checksum, and any changes will initiate a new deployment revision. (CDS-103262)
+- When viewing the helm source for a multisource app, you could see sometimes see data such as a values file set that would not appear in the UI. This was due to the utilization of ArgoCD outside of control of GitOps. This issue has been fixed. (CDS-104910)
+- Previously, Resource Tree API calls were failing due to a missing application name in the query. This issue has now been fixed. (CDS-104792)
+
 ### Version 1.69.7
 
 #### Fixed Issues
 
 - A null pointer exception was thrown when a pipeline was provided a primary artifact, but no artifact was selected in the service. This issue is fixed now. (CDS-104756)
 -  During Autocreation of entities the name and identifier were incorrectly retrieved from the Infrastructure Definition YAML file pulled from Git. The logic was using the wrong key in the YAML, causing it to always fall back on the file name instead. This issue is fixed now. (CDS-104751)
--  Previously, when Override V2 was enabled and no `ENV_GLOBAL_OVERRIDE`S or `ENV_SERVICE_OVERRIDES `were present, the system would fall back to reading overrides from the environment configuration YAML. However, the UI did not display information about these YAML-based overrides, causing confusion for users as they were unable to identify or control this behavior. This issue is fixed now and when Override V2 is enabled, overrides from the environment configuration YAML will no longer be considered. This change ensures clarity and aligns the system behavior with customer expectations. This fix is behind the FF `CDS_SERVICE_OVERRIDES_2_0_YAML_V2_SUPPORT`. (CDS-104570, ZD-74034)
+-  Previously, when Override V2 was enabled and no `ENV_GLOBAL_OVERRIDES` or `ENV_SERVICE_OVERRIDES` were present, the system would fall back to reading overrides from the environment configuration YAML. However, the UI did not display information about these YAML-based overrides, causing confusion for users as they were unable to identify or control this behavior. This issue is fixed now and when Override V2 is enabled, overrides from the environment configuration YAML will no longer be considered. This change ensures clarity and aligns the system behavior with customer expectations. This fix is behind the FF `CDS_SERVICE_OVERRIDES_2_0_YAML_V2_SUPPORT`. (CDS-104570, ZD-74034)
 - Previously, when a user selected "Deploy to Multiple Environments" inside a stage template and set it as a runtime input, the value was incorrectly treated as a fixed value during pipeline execution. This issue is fixed now. (CDS-104471, ZD-73843)
 - Previously, GitOps entries did not appear in custom dashboards when the `cd_stage_execution` view was used in Looker. This issue is fixed now. (CDS-103135)
 

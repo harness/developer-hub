@@ -250,3 +250,33 @@ spec:
 - automated: Specifies that ArgoCD will automatically sync the app (prune resources and self-heal if necessary).
 
 The project field must be set to an Argo project that is mapped to a Harness project for successful import functionality.
+
+### Where are repository and cluster details stored in ArgoCD or the agent?  
+Repository and cluster details are stored as secrets in the namespace where ArgoCD or the agent is installed. ConfigMaps and secrets are used to manage cluster information and repository details, and these are directly saved on the cluster where the agent is deployed.  
+
+### What could cause a 403 Forbidden error when fetching an anonymous token for a repository?  
+A 403 Forbidden error typically occurs due to insufficient permissions or incorrect repository configuration. This might mean the credentials used lack the required access or the repository details are misconfigured.  
+
+### How can I verify if the credentials used for a repository are correct?  
+To verify credentials:
+   - Ensure the correct username and token/SSH key are being used.
+   - Check the secret storing the repository credentials in the namespace where ArgoCD or the agent is deployed.
+   - Confirm that the repository permissions align with the required access levels.  
+
+### What happens if repository or cluster credentials are incorrect?  
+If the credentials are incorrect, operations like fetching repository details, deploying to clusters, or synchronizing changes will fail, often resulting in errors such as 403 Forbidden or authentication failures.  
+
+### How can I fix a 403 Forbidden error for a repository in ArgoCD or the agent?  
+To resolve the error:
+   - Verify that the repository credentials stored in the secret are correct.
+   - Ensure the user or token has the appropriate access permissions for the repository.
+   - Check if the repository URL is configured correctly in the repository secret or ConfigMap.
+
+### Why are no clusters available in the Cluster selection menu, even though some are listed in the GUI?  
+This typically happens when the clusters are not linked to the environment in your GitOps setup. Ensure the cluster is correctly linked by navigating to Environment > dev > GitOps > Link Clusters Available, then retry the process.  
+
+### How can I resolve the issue of clusters not appearing in the CD pipeline?  
+Verify that the agent, cluster, and service are set up correctly. After linking the clusters to your environment in the GitOps section, re-test the pipeline to confirm if the issue is resolved.  
+
+### What steps should I take if the problem persists after linking the clusters?  
+Double-check the cluster, agent, and service configurations in both Harness and your GitOps setup. If the issue persists, reach out to your Harness support team with detailed logs or screenshots for further assistance.

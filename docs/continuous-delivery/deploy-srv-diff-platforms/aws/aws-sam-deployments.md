@@ -103,6 +103,8 @@ Unlike old images, in new images a single image has the capabiliity of handling 
 Now, let's understand the runtime image:-
 ![](./static/multiple-runtime-sam.png)
 
+For ECR users, you can access these images via the [ECR Image Repository for SAM Plugin](https://gallery.ecr.aws/harness/harness/aws-sam-plugin).
+
 :::important note
 These images can only be used in containerized step.
 :::

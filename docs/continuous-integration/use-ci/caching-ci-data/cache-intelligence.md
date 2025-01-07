@@ -21,9 +21,25 @@ Cache intelligence for self-managed build infrastructure is an early access feat
 
 ## Supported tools and paths
 
-Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, **Node** and **MSBuild/dotnet (only for C#)** build tools, as long as default cache paths are used. 
+Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, **Node**,  **VB** (with .Net), **F#** (with .Net) and **MSBuild/dotnet** (only for C#) build tools, as long as default cache paths are used. 
 
-For other build tools or non-default cache locations, you use Cache Intelligence with [custom cache paths](#customize-cache-paths).
+Below is a list of the default locations cached using Cache Intelligence:
+
+| **Build Tool** | **Dependency Management file**  | **Default Path cached** 
+|----------------|---------------------------------|-------------------------|
+| `Maven` | pom.xml | .m2/repository
+| `Gradle` | build.gradle | .gradle
+| `Bazel` | WORKSPACE | .bazel
+| `Node` | yarn.lock | .yarn
+| `Go` | go.mod | .go
+| `C# .Net` | *.csproj | .nuget/packages
+| `VB .Net` | *.vbproj | .nuget/packages
+| `F# .Net` | *.fsproj | .nuget/packages
+
+
+For other build tools or non-default cache locations, use Cache Intelligence with [custom cache paths](#customize-cache-paths).
+
+
 
 ## Cache storage
 
@@ -49,7 +65,7 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
 </TabItem>
 <TabItem value="sm" label="Self-managed build infrastructures">
 
-When running builds in self-managed infrastructures, [configure S3-compatible  default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
+When running builds in self-managed infrastructures, [configure S3-compatible default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
 
 We suggest that you consider setting bucket level retention policy for efficient cache management. 
 
@@ -312,3 +328,5 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [How can I use an artifact in a different stage from where it was created?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
 * [How can I check if the cache was restored?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-check-if-the-cache-was-restored)
 * [What is the Cache Intelligence cache storage limit?](/kb/continuous-integration/continuous-integration-faqs/#what-is-the-cache-intelligence-cache-storage-limit)
+
+* [How can I share cache between different OS types (Linux/macOS)?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-share-cache-between-different-os-types-linuxmacos)
