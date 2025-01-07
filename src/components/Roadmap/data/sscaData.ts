@@ -131,7 +131,7 @@ export const SscaData: Horizon = {
       },
       {
         tag: [],
-        title: "NIST SP800-204D Support,
+        title: "NIST SP800-204D Support",
         description: "Out of the box rules for supporting NIST SP800-204D compliance standards.",
       },
       {
