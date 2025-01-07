@@ -248,7 +248,7 @@ Alternatively, the following roles can also be used:
 
 </details>
 
-## Google CLoud Run Sample 
+## Google Cloud Run Sample 
 
 To see an example of how to deploy Google CLoud Run Service using Harness, visit the [Harness Community Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/google-cloud-run).
 
