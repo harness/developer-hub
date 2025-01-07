@@ -220,7 +220,7 @@ To fix this issue, follow these steps
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
 :::
 
-## Jan 06, 2025, patch version 0.24.0
+## Jan 06, 2025, Version 0.24.0
 
 This release includes the following Harness module and component versions.
 
@@ -233,14 +233,14 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.107.4 |
 | Platform Service | 1.46.1 |
 | Access Control Service | 1.68.0 |
-| Delegate | 24.11.84503 |
+| Delegate | 24.11.84503 | 
 | GitOps Service | 1.20.6 |
 | Change Data Capture | 1.39.2 |
 | STO Core | 1.120.4 |
 | Test Intelligence Service | 1.42.1 |
 | NG UI | 1.54.4 |
-| LE NG | 1.5.5 |
-| Looker | 1.6.1 |
+| LE NG | 1.5.6 |
+| Looker | 1.7.0 |
 | Log Service | 1.14.6 |
 
 #### Alternative air gap bundle download method
