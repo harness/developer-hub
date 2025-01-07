@@ -12,13 +12,11 @@ import TabItem from '@theme/TabItem';
 
 You can use this **Test Intelligence** step, also known as the **Test** step, to run unit tests with **Python**, **Ruby**, **Java** , **C#** , **Scala** and **Kotlin** programming languages.
 
-:::note
-
-Currently, the Test step is behind the feature flag `CIE_ENABLE_RUNTEST_V2`. If the **Test** step is not available in your account, contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-C# (.Net Core 6.0+) support is also in early access and would require a specific environment variable to be used. If you wish to use the .Net test selection, please contact [Harness Support](mailto:support@harness.io) to enable it within your pipeline.
-
+:::info
+Cache Intelligence is now Generally Available (GA). 
+If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
 :::
+
 
 :::info
 
@@ -53,7 +51,7 @@ Add the **Test** step to the [Build stage](/docs/continuous-integration/use-ci/s
 
 ### Metadata
 
-* **Name:** Enter a name summarizing the step's purpose. Harness automatically assigns an [ID](/docs/platform/references/entity-identifier-reference.md) based on the **Name**.
+* **Name:** Enter a name summarizing the step's purpose. Harness automatically assigns an ID based on the **Name**.
 * **Description:** Optional text string describing the step's purpose.
 
 ### Container Registry and Image
