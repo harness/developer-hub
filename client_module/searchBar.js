@@ -1,8 +1,6 @@
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
 const doYourCustomStuff = () => {
-  console.log('running');
-
   const navbar__items = document.querySelector('.navbar__items');
   const navbar__sidebar__close = document.querySelector(
     '.navbar-sidebar__close'

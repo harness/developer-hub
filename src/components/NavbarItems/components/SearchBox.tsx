@@ -11,9 +11,19 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
   const { controller } = props;
   const [state, setState] = useState(controller.state);
   const [inputValue, setInputValue] = useState(controller.state.value);
+  const [searchPresent, setSearchPresent] = useState(false);
 
   useEffect(() => {
     controller.subscribe(() => setState(controller.state));
+    const urlParams = new URLSearchParams(window.location.search);
+    const search = urlParams.get('search');
+
+    if (search) {
+      setSearchPresent(true);
+      controller.updateText(search);
+      controller.submit();
+      props.onSearch(search);
+    }
   }, []);
 
   return (
@@ -36,7 +46,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
         />
         <i className="fa-solid fa-magnifying-glass"></i>
       </div>
-      {state.suggestions.length > 0 && (
+      {!searchPresent && state.suggestions.length > 0 && (
         <ul>
           {state.suggestions.map((suggestion) => {
             const value = suggestion.rawValue;
