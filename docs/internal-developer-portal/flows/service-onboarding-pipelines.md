@@ -11,9 +11,9 @@ redirect_from:
 
 IDP Self Service Workflows enable Platform Engineers, Infrastructure teams and DevOps Engineers to automate New Service Onboarding, New Infrastructure Onboarding and Day 2 Operations for Developers within your organization. As a Platform Engineer, you can create a Workflow that prompts developers for necessary details and then executes a Harness Pipeline to orchestrate what is needed. This can be generating a new code repository with the initial code, CI/CD pipelines and necessary infrastructure.
 
-The Workflow is defined using a YAML file usually called `workflow.yaml`. The [syntax](https://backstage.io/docs/features/software-templates/input-examples) of the Workflow definition is managed by Backstage.io. IDP Workflows are also known as Backstage Software Template since they are usually used to standardize how a new Software is created in an organization.
+The Workflow is defined using a YAML file usually called `workflow.yaml`. The [syntax](https://backstage.io/docs/features/software-templates/writing-templates) of the Workflow definition is managed by Backstage.io. IDP Workflows are also known as Backstage Software Template since they are usually used to standardize how a new Software is created in an organization.
 
-**Workflows** are also **Catalog** entities of **`kind: Template`**.
+**Workflows** are also **catalog entities** of `kind: Template`. It consists of a frontend that collects input from users and a backend configured to perform specific tasks based on the user's input taken in frontend and the [workflow actions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions) used.
 
 ![](./static/workflows-mindmap.png)
 
@@ -204,7 +204,7 @@ spec:
 
 </details>
 
-### Using the Workflows Playground
+#### Using the Workflows Playground
 
 :::caution
 
@@ -226,7 +226,9 @@ To access the playground, go to your Workflows page and click on **Open Playgrou
 
 **Steps** are the core execution units in a Workflow. This is typically used to trigger a Harness pipeline which orchestrates repo creation, service onboarding in the catalog or provisioning infrastructure resources. The inputs gathered from the user are passed into the action, and the outputs are generated based on the results of each action.
 
-The most common actions used in a Workflow are -
+**Workflow Actions** in IDP are integration points with third-party tools, used to take inputs from workflows frontend and execute specific tasks based on users input. 
+
+These are some examples used in a Workflow -
 
 - **Triggering Pipelines**: Using [`trigger:harness-custom-pipeline`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline) to trigger pipelines in Harness for various actions like creating repository, [onboarding new service](https://developer.harness.io/docs/internal-developer-portal/flows/create-a-new-service-using-idp-stage), etc.
 - **Creating Repositories**: Using [`trigger:harness-custom-pipeline`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline) and execute a pipeline with [create-repo stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#3-create-repo) to generate a new repository based on the provided input.
