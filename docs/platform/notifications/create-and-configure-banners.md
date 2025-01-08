@@ -1,6 +1,6 @@
 ---
 title: Create and configure Banners
-description: This topic explains how to set,customize,publish,edit and delete banners on your Harness Account
+description: This topic explains how to set, customize, publish, edit and delete banners on your Harness Account
 sidebar_position: 6
 helpdocs_is_private: false
 helpdocs_is_published: true
@@ -8,19 +8,18 @@ helpdocs_is_published: true
 
 :::note[ The Banners feature is currently gated by the feature flag `PL_CUSTOM_BANNERS`, which must be enabled to access this functionality.]
 :::
-:::info[ Banners Permissions - Available at the **[account](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes)** scope only ]
-:::
+
 ## Overview
 
-The Custom banners, lets admins or users with the right permissions share important messages, like maintenance schedules or downtime, with everyone. These custom banners appear at the top of the Harness UI and are visible to all users across different areas when active.
+The banners, lets admins or users with the right permissions share important messages, like maintenance schedules or downtime, with everyone. These banners appear at the top of the Harness UI and are visible to all users across different areas when active.
 
 ![custom-banners-intro](static/custom-banners-overview.gif)
 
-Account administrators can manage the banner type, message and optional call-to-action (CTA)s with the banners buttons. **A maximum of 5 active banners can be active at a time**. 
+Account administrators, who have appropriate access can manage the banner type, message and optional call-to-action (CTA)s. **A maximum of 5 banners can be active at a time**. 
 
 ## Getting Started with Banners
 
-To get started with banners in Harness, create and customize banners to communicate important messages to users. You can choose from different banner types—informational, high, medium, and low severity—and add a title, message, and optional CTAs. Additionally, you can manage their visibility and status as needed.
+To get started with banners in Harness, you can choose from different banner types—informational, high, medium, and low severity—and add a title, message, and optional CTAs (maximum 2). Additionally, you can enable, disable and customize as needed.
 
 ***Reference to Create, Customize, Publish Banners.***
 
@@ -28,7 +27,7 @@ To get started with banners in Harness, create and customize banners to communic
 
 ### Create a banner
 
-To create a banner in Harness, you need a role with banner management [permissions](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference), such as Account Administrator.
+To create a banner in Harness, you need a role with create banner [permissions](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference).
 
  1. Go to **Accounts Settings** in Harness.
  2. Under **General**, select **Banners**.
@@ -64,7 +63,7 @@ Manage banners in Harness with ease. Edit, delete, or enable/disable banners dir
 
 ### Edit a Banner
 
-To edit a banner in Harness, ensure you have a role with banner management permissions, like Account aAdministrator.
+To edit a banner in Harness, ensure you have a role with edit banner [permissions](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference).
 
  1. Go to **Accounts Settings** in Harness.
  2. Under **General**, select **Banners**.
@@ -76,7 +75,7 @@ To edit a banner in Harness, ensure you have a role with banner management permi
 
  ### Delete a banner
 
-To delete a banner in Harness, ensure you have a role with banner management permissions, like Account aAdministrator.
+To delete a banner in Harness, ensure you have a role with delete banner [permissions](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference).
 
  1. Go to **Accounts Settings** in Harness.
  2. Under **General**, select **Banners**.
@@ -90,7 +89,7 @@ To delete a banner in Harness, ensure you have a role with banner management per
 
 ### Enable or Disable a Banner
 
-To enable or disable a banner in Harness, ensure you have a role with banner management permissions, like Account aAdministrator. 
+To enable or disable a banner in Harness, ensure you have a role with proper banner [permissions](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference). 
 
  1. Go to **Accounts Settings** in Harness.
  2. Under **General**, select **Banners**.
