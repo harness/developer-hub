@@ -26,9 +26,9 @@ export const moduleIconAndColor = {
   'Continuous Error Tracking': {
     iconUrl: 'https://developer.harness.io/img/icon_cet_s.svg',
     colors: {
-      border: '--mod-ce-200',
-      backgroundColor: '--mod-ce-100',
-      color: '--mod-ce-300',
+      border: '--mod-cet-200',
+      backgroundColor: '--mod-cet-100',
+      color: '--mod-cet-300',
     },
   },
   'Open Source': {
@@ -47,10 +47,7 @@ export const moduleIconAndColor = {
       color: '--mod-sto-300',
     },
   },
-  Platform: {
-    iconUrl: 'https://developer.harness.io/img/icon_ci_s.svg',
-    colors: { color: '--mod-platform-300' },
-  },
+
   'Internal Developer Portal': {
     iconUrl: 'https://developer.harness.io/img/icon_idp_s.svg',
     colors: {
@@ -78,9 +75,9 @@ export const moduleIconAndColor = {
   'Database DevOps': {
     iconUrl: 'https://developer.harness.io/img/icon_dbdevops_s.svg',
     colors: {
-      border: '--mod-cde-200',
-      backgroundColor: '--mod-cde-100',
-      color: '--mod-cde-300',
+      border: '--mod-dbdevops-200',
+      backgroundColor: '--mod-dbdevops-100',
+      color: '--mod-dbdevops-300',
     },
   },
   'Continuous Delivery': {
@@ -102,9 +99,9 @@ export const moduleIconAndColor = {
   'Harness Platform': {
     iconUrl: 'https://developer.harness.io/img/icon_harness_s.svg',
     colors: {
-      border: '--mod-iacm-200',
-      backgroundColor: '--mod-iacm-100',
-      color: '--mod-iacm-300',
+      border: '',
+      backgroundColor: '',
+      color: '',
     },
   },
   Armory: {
@@ -194,7 +191,7 @@ export const moduleIconAndColor = {
   'Artifact Registry': {
     iconUrl:
       'https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/66df6931514873567c9cdc3c_artifact-registry-logo-icon.svg',
-    colors: { color: '--mod-artifact-300' },
+    colors: { color: '' },
   },
 };
 
