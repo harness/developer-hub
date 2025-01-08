@@ -165,7 +165,7 @@ For information about MLOps plugins, go to [MLOps in Harness](/docs/continuous-i
 
 ## Plugins for notifications and chat
 
-Harness offers built-in support for [notifications](/docs/category/notifications), in addition to these plugins.
+Harness offers built-in support for [notifications](/docs/category/notifications-and-banners), in addition to these plugins.
 
 | Plugin | Use | Source | Image |
 | ------ | --- | ------ | ----- |

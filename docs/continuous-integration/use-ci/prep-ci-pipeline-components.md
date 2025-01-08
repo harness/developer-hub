@@ -40,7 +40,7 @@ In addition to a [default codebase](#codebases), you can configure the following
 * [Input sets and overlays](/docs/platform/pipelines/input-sets)
 * [Triggers](/docs/category/triggers)
 * [Variables](/docs/category/variables-and-expressions)
-* [Notifications](/docs/category/notifications)
+* [Notifications](/docs/category/notifications-and-banners)
 * [Flow Control: Synchronization barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers)
 * [Policy Sets](/docs/platform/governance/policy-as-code/harness-governance-overview)
 * Advanced Options: Pipeline [Timeout Settings](/docs/platform/pipelines/failure-handling/timeout-settings.md), [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
@@ -193,7 +193,7 @@ There are many ways you can incorporate third party tools and services in your C
 
 * [Plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins.md)
 * [Secrets Managers](/docs/platform/get-started/tutorials/add-secrets-manager)
-* [Notifications](/docs/category/notifications)
+* [Notifications](/docs/category/notifications-and-banners)
 * [Branch protection and status checks](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks.md)
 
 ### Resource consumption
