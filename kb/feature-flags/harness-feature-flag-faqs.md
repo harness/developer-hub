@@ -95,7 +95,7 @@ The SDK is initialized for a specific target, enabling personalized flag evaluat
 
 You can find a detailed overview of how Harness Feature Flags' SDKs behave after a flag change in the following table: [Communication loop between Harness and the SDKs](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags#polling).
 
-### CanI call initialize more than once to update attributes?
+### Can I call initialize more than once to update attributes?
 
 Currently, FF doesn't have an option to update attributes without closing the SDK. You need to close and reinitialize the SDK to update attributes.
 
