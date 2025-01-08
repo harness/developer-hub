@@ -92,3 +92,4 @@ This topic lists resource types relevant to [RBAC in Harness](./rbac-in-harness.
 | `CCM_RECOMMENDATIONS`  |  recommendations|
 | `CCM_COMMITMENT_ORCHESTRATOR` |commitmentOrchestrator|
 | `INPUT_SET` |  inputset|
+| `BANNER` | banner |
