@@ -12,6 +12,10 @@ All delegates include proxy settings you can use to change how the delegate conn
 
 By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme settings.
 
+:::warning
+When using a HTTP Helm repositories, the [default setting](/docs/platform/settings/default-settings/) `Ignore status code for HTTP connections` must be set to `true` as socket connection tests conducted by Harness from the delegate do not account for proxy details.
+:::
+
 ### Kubernetes delegate proxy settings
 
 The proxy settings are in the `harness-delegate.yaml` file:
