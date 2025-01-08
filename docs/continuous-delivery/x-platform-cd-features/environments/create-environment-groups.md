@@ -59,8 +59,6 @@ Once the Environment group is created, you can see all the environments along wi
 
 ![Cross Scope Environment Groups](./static/cross_scoped_env_groups-2.png)
 
-### Environment Group YAML Example
-
 Below is an example of the YAML for an environment group:
 
 ```yaml
