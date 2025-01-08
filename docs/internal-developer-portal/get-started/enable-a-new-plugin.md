@@ -10,6 +10,8 @@ redirect_from:
 
 ## Introduction
 
+Plugins are often used to show additional metadata about a software component on the software catalog. For example, plugins show information about CI/CD pipelines, alerts, incidents, and project status. [Read More](https://developer.harness.io/docs/internal-developer-portal/plugins/overview)
+
 Now that you have [populated your Catalog with Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component), you can use plugins to extend the functionality of Harness IDP and to customize IDP to suit your needs. This document provides step-by-step instructions on how to enable a plugin in Harness IDP.
 
 ## Prerequisites
@@ -60,55 +62,31 @@ The plugin's layout section is read-only and displays the exported cards, tabs, 
 
 5. Update the plugin secret token value as specified in the configuration YAML. Make sure that the secret token name is the same as given in the configuration YAML.
 
-6. After verifying all the configurations and secret details, save the configuration. 
-If the configuration YAML is valid, the plugin configuration is saved. Otherwise, appropriate messages are displayed.
+6. After verifying all the configurations and secret details, **save the configuration**. If the configuration YAML is valid, the plugin configuration is saved. Otherwise, appropriate messages are displayed.
 
-7. To enable the plugin, select **Enable Plugin**. 
-The plugin is moved to the **Enabled Plugins** section on the **Plugins** page.
+7. To enable the plugin, select **Enable Plugin**. The plugin is moved to the **Enabled Plugins** section on the **Plugins** page.
 
 8. To return to the **Plugins** page, select **Back**.
 
-9. (Optional) The layout management is handled by-default once you enable the plugin. In-case you want to modify the elements that are exported from the plugin according to your need you can update the layout. The elements might include cards, tabs, and pages.
+9. (Optional) The layout management is handled by-default once you enable the plugin. In-case you want to modify the elements that are exported from the plugin according to your need you can **edit the layout** for **Service** by going to **Admin** -> **Layout** -> **Catalog Entities**. The elements might include cards, tabs, and pages.
 
-For instance, if the Jenkins plugin exports one card and one tab, in order to be displayed in your catalog entity, the layout is updated with elements as displayed below.
+For instance, if the [PagerDuty](http://localhost:3001/docs/internal-developer-portal/plugins/available-plugins/pagerduty) plugin exports one tab, in order to be displayed in your catalog entity, the layout is updated with elements as displayed below.
 
 ![](static/layout-snippet.png)
 
-10. Once you've enabled the plugin, you need to add the corresponding annotation in your `catalog-info.yaml` file.
+10. Once you've enabled the plugin, you need to add the corresponding `annotations` in your `catalog-info.yaml` file.
 
 ```YAML
-...
-metadata:
-  ...
-  annotations:
-    jenkins.io/github-folder: "folder-name/project-name"
-...
-```
-<details>
-<summary>Example YAML</summary>
-
-```YAML {7}
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: my-new-service
-  description: Description of my new service
+  # ...
   annotations:
-    jenkins.io/github-folder: "folder-name/project-name"
-  tags:
-    - java
-  links:
-    - url: https://admin.example-org.com
-      title: Admin Dashboard
-      icon: dashboard
-      type: admin-dashboard
+    pagerduty.com/integration-key: [INTEGRATION_KEY]
 spec:
   type: service
-  lifecycle: production
-  owner: owner@harness.io
-  system: project-x
+  # ...
 ```
-</details>
 
 - Once the annotation is added, you can commit the changes to your `catalog-info.yaml` and refresh the software component to sync with the latest changes and view the Jenkins plugin card component overview page and the tab on top of the page. 
 

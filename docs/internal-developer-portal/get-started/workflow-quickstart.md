@@ -7,9 +7,9 @@ sidebar_label: Getting Started with Workflows
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-## Goal
+## Introduction
 
-This will help you setup a Workflow in IDP which automates GitHub Repo Onboarding for users.
+This quickstart tutorial will guide you through setting up a Workflow in IDP to automate GitHub repository onboarding for users. While this tutorial uses GitHub as the git provider, the same steps can be applied to other git providers as well.
 
 :::info
 
@@ -20,6 +20,8 @@ We now have a [new Workflows homepage](/docs/internal-developer-portal/layout-an
 ## Pre-requisite
 
 ### Add Connector
+
+A connector with Git credentials that has appropriate write permissions is required to create a repository in your GitHub organization.
 
 1. Go to **Admin -> Git Integrations**.
 2. Add a **New Git Integration** with type as **GitHub**.
@@ -32,6 +34,8 @@ Make sure the Connector URL used here is pointed towards the org where you want 
 :::
 
 ### Create Harness Pipeline with IDP Stage
+
+A Harness Pipeline serves as an orchestrator for IDP Workflows. 
 
 1. Go to **Admin -> Pipelines**.
 2. Now start with **Create a Pipeline**.
@@ -91,8 +95,6 @@ curl -L \
 
 
 ## Create Workflow
-
-**If you want to use our sample Workflows you can skip this step and go to register Workflow step**
 
 The Workflow is defined in a YAML file named `workflow.yaml`. The [syntax](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates) of the template definition is owned by [backstage.io](https://backstage.io/docs/features/software-templates/writing-templates) while the workflow runs on a Harness pipeline of your choice.
 
@@ -189,7 +191,7 @@ parameters:
 ```
 :::
 
-11. Copy the above Workflow file in your git provider, and save it as `workflow.yaml`. 
+11. Copy the above Workflow file in your git provider, replace the value of `input.url` under `steps` with the Harness pipeline URL you created and save it as `workflow.yaml`. 
 
 ## Register Workflow in IDP
 

@@ -12,9 +12,9 @@ redirect_from:
 
 Now that you have [Catalog populated with Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component) [Plugins enabled](/docs/internal-developer-portal/get-started/enable-a-new-plugin), let's create a scorecard utilizing the [Catalog Datasource](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#catalog) to monitor the existence of root fields and integrations via annotations within `catalog-info.yaml` metadata. Effectively tracking information within the catalog can serve as the initial step towards enforcing organizational engineering standards.
 
-## Register a Software Component
+#### Register a Software Component
 
-1. Register a software component following the steps mentioned [here](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component), if you already have software components registered in your catalog you can move directly to create custom checks. Here's an example of `catalog-info.yaml` we will be using for this tutorial.
+1. Register a software component following the steps mentioned [here](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component), if you already have software components registered in your catalog you can move directly to creating a Scorecard. Here's an example of `catalog-info.yaml` we will be using for this tutorial.
 
 ```YAML
 #Example
@@ -78,11 +78,11 @@ Make sure you have the [IDP Admin](https://developer.harness.io/docs/internal-de
 
 4. Now Publish the **Scorecard**. 
 
-![](./static/catalog-readiness.png)
+![](./static/catalog-readiness-0.png)
 
 5. Go to your catalog and check for your software component you'll find the scores for catalog readiness. 
 
-![](./static/catalog-readiness-applied.png)
+![](./static/readiness-applied-0.png)
 
 ## Create a Custom Check  
 
@@ -100,15 +100,15 @@ Make sure you have the [IDP Admin](https://developer.harness.io/docs/internal-de
 
 ![](./static/jira-custom-check.png)
 
-### Create a Scorecard with Custom Check
+### Edit the Scorecard with Custom Check
 
-Let's create a scorecard for catalog using the custom check we created above and some default checks available. 
+Let's edit the previously created catalog readiness scorecard to add the custom check we created above along with the already added default checks. 
 
-1. Go to Scorecards and **Create a New Scorecard**.
+1. Go to Scorecards and select **Edit**.
 
-![](./static/go-to-scorecards.png)
+![](./static/edit-scorecard.png)
 
-2.  Now add the Custom Check **Jira Check** you created above, ignore this step if you have skipped creating a custom check. 
+2.  Now add the Custom Check **Jira Check** you created above. 
 
 ![](./static/custom-check-jira.png)
 
