@@ -83,5 +83,8 @@
 /docs/internal-developer-portal/roadmap/harness-vs-backstage /docs/internal-developer-portal/harness-vs-backstage
 /docs/category/self-service-flows/ /docs/category/self-service-workflows/
 
+# Added by ivikramsahu on 08-01-2025 for renaming notifications to notification-and-banners
+
+/docs/category/notifications /docs/category/notifications-and-banners
 
 # Redirects generated from Front Matter [sytem generated goes below here]:
