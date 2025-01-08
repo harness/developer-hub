@@ -76,7 +76,7 @@ topics outlined in this example table:
 
 TechDocs uses MkDocs as the static site generator. Visit https://www.mkdocs.org for more information about MkDocs.
 ```
-3. Now add an `mkdocs.yaml` next to where you have the `catalog-info.yaml`, `mkdocs.yml` file is a sibling of `catalog-info.yaml`
+3. Now add a `mkdocs.yaml` next to where you have the `catalog-info.yaml`, `mkdocs.yml` file is a sibling of `catalog-info.yaml`
 
 Here's the content for `mkdocs.yaml`:
 
