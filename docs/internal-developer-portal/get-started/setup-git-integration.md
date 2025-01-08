@@ -1,6 +1,6 @@
 ---
 title: Configure IDP 
-description: Once the Internal Developer Portal module is enabled in your account, follow these steps to configure it on your account.
+description: After enabling the Internal Developer Portal module, follow these steps to set it up in your account.
 sidebar_position: 2
 redirect_from:
   - /docs/internal-developer-portal/getting-started/setting-up-idp
