@@ -220,6 +220,53 @@ To fix this issue, follow these steps
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
 :::
 
+:::info Signed Helm Charts
+
+
+Harness Helm charts are now signed to ensure they are secure and trustworthy.
+
+You can verify the integrity and origin of the charts using GPG keys with Helm's provenance feature.
+
+### How to Verify Signed Helm Charts
+  
+  Follow these steps to verify the signed Helm charts:
+ 
+  1. **Install GnuPG**: First, ensure you have GnuPG installed to handle the GPG keys.
+
+     ```bash
+     apk add --no-cache gnupg
+     ```
+
+  2. **Import the GPG Public Key**: Import the Harness Public key used to sign the charts. This key will be used to verify the signature.
+
+     ```bash
+     gpg --keyserver hkps://keys.openpgp.org --receive-keys '6117ED4CA5F4605DBF4353F41F6E943934E6D138'
+     ```
+
+  3. **Convert Keyring to Legacy Format**: Convert the GPG keyring to legacy format to be able to recognise for Helm provenance verification. 
+
+     ```bash
+     gpg --export >~/.gnupg/pubring.gpg
+     gpg --export-secret-keys >~/.gnupg/secring.gpg
+     ```
+
+  4. **Download the Helm Chart and Provenance File**: Download the Helm chart and its corresponding provenance file from the GitHub releases page.
+      
+      eg: https://github.com/harness/helm-charts/releases/tag/harness-0.24.0 (*.tgz and *.tgz.prov under Assets)
+
+  5. **Verify the Helm Chart**: Use the helm verify command to ensure the chart is signed correctly and its integrity is intact.
+
+      ```bash 
+     helm verify harness-0.24.0.tgz
+     ```
+
+### Additional Information
+
+  For more details on Helm chart signing and verification, please refer to the official [Helm documentation](https://helm.sh/docs/topics/provenance/).
+
+
+:::
+
 ## Jan 07, 2025, Version 0.24.0
 
 This release includes the following Harness module and component versions.
