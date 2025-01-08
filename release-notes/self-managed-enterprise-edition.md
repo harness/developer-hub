@@ -1,3 +1,4 @@
+
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
@@ -220,6 +221,276 @@ To fix this issue, follow these steps
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
 :::
 
+## Jan 07, 2025, Version 0.24.0
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.24.0](https://github.com/harness/helm-charts/releases/tag/harness-0.24.0) |
+| Air Gap Bundle | [0.24.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.24.0) |
+| NG Manager | 1.68.4 |
+| CI Manager | 1.57.5 |
+| Pipeline Service | 1.107.4 |
+| Platform Service | 1.46.1 |
+| Access Control Service | 1.68.0 |
+| Delegate | 24.11.84503 | 
+| GitOps Service | 1.20.6 |
+| Change Data Capture | 1.39.2 |
+| STO Core | 1.120.4 |
+| Test Intelligence Service | 1.42.1 |
+| NG UI | 1.54.4 |
+| LE NG | 1.5.6 |
+| Looker | 1.7.0 |
+| Log Service | 1.14.6 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.24.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.0/code_images.tgz"
+  "gs://smp-airgap-bundles/harness-0.24.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.0/sto_images.tgz" \
+  .
+```
+
+### New features and enhancements
+
+#### Harness Platform
+
+- Library upgrades done on Harness Platform
+  <details>
+  <summary> Show details </summary>
+  
+  - Upgraded `io.netty_netty-common` to version 4.1.115. [PL-58550]
+
+  - Upgraded `protobuf-java` to version 3.25.5. [PL-57351]
+
+  - Upgraded Java to version `17.0.11_9-jre-ubi9-minimal` in the delegate. [PL-55499]
+
+  - Upgraded Spring Framework libraries from version 6.0.23 to 6.1.14. [PL-58254]
+
+  - Upgraded `com.nimbusds_nimbus-jose-jwt` to version 9.37.3. [PL-51347]
+
+  </details>
+
+- Added a feature flag to hide the delegate image update UI banner. [PL-58691]
+
+- Removed the `connected-ratio-with-primary` and `connected-delegate-ratio` APIs, and updated the `delegate/rings` API response to return the immutable delegate version instead of the legacy delegate version. [PL-57518]
+
+- We now support updating AWS secrets via the "secretsmanager:PutResourcePolicy" permission. [PL-58652]
+
+- Users can now be granted access to specific variables, instead of only having access to all or no variables. By adding specific variables to a resource group, we can use role assignments to control access to those variables. [PL-58269] 
+
+- We’ve added the ability to restrict access to specific variables. Users can now be granted access to only certain variables by adding them to a resource group and using role assignments. [PL-58267] 
+
+- OIDC connections are now supported for AWS Secret Manager via Platform. [PL-58133]
+
+- Changed the base image from `redhat/ubi8-minimal:8.8` to `redhat/ubi8-minimal:8.10` [PL-58062]
+
+  <details>
+  <summary> Image update details</summary>
+  1. delegate  
+  2. delegate-minimal  
+  3. ci-addon  
+  4. lite-engine  
+  </details>
+
+- Removed delegate & watcher JARs and client tools from the delegate proxy. [PL-58052]
+
+- Added a new query parameter `scope` to the existing `listDelegates` endpoint. [PL-57724]
+  - If `scope` is set to true, it will list all delegates, including those in hierarchical scope.  
+  - By default, `scope` is false.
+
+#### Chaos Engineering
+
+- Extends ChaosGuard conditions for node-level chaos experiments. (CHAOS-6788)
+
+- Adds [advanced settings](https://developer.harness.io/release-notes/chaos-engineering#version-1491) to the UI for the "edit infrastructure" page. (CHAOS-6718)
+
+- Adds local and UTC times in the cron schedule next run. (CHAOS-6974)
+
+- Adds a pre-check to the Windows global blackhole experiment to verify if the firewall is enabled for the target Windows VM. If not, the `ENABLE_FIREWALL` tunable is set, which, by default, enables the firewall. (CHAOS-6848)
+
+- Introduces the Windows disk fill chaos experiment, supported by Windows chaos infrastructure. (CHAOS-6842)
+
+#### Security Testing Orchestration
+
+- Veracode step is now available as an SCA scanner (STO-8275).
+
+- Added RBAC to prevent users from editing Ticket Settings. Previously, they could attempt to edit and were blocked by the API, the error message is also enhanced. (STO-7567)
+
+#### Cloud Cost Management
+
+- Budget Amount History in Drilldown Chart: The budget drilldown chart now accurately preserves the history of budget amount changes, improving visibility into budget adjustments. [CCM-19494]
+
+- AWS Payer Account ID Field Added: We’ve introduced the AWS Payer Account ID in the AWS fields dropdown for Perspectives and Cost Categories Rules. Only account IDs will be shown, excluding account names. [CCM-19843]
+
+- Fixed ECS Metrics Chart Issue: CPU recommendations in ECS metrics charts previously displayed incorrect graphs, and CPU usage showed as 0. This has now been corrected. [CCM-19715]
+
+### Fixed issues
+
+#### Harness Platform 
+
+- Dynamic secret references now support dots in the secret name, not just for specifying scope like `account.<rest_of_the_expression>`. The limitation has been removed. [PL-58771]
+
+- Fixed a bug in the Harness API docs to allow "application/json" as the ContentType for LDAP APIs. [PL-58671]
+
+- Fixed an issue where the 'View Details' button in MS Teams notifications created a broken URL, causing a 404 error. [PL-58643]
+
+- Fixed a Null Pointer Exception (NPE) when acquiring delegate tasks in polling mode with the FF - RECOMPUTE_ELIGIBLE_DELEGATES_LIST enabled. [PL-58573]
+
+- Added support for runtime and default/allowed values in the Custom Secret Manager connector. [PL-58460]
+
+- Individual audit events now follow the access policy of the entire audit trail. This means that if a user can view the audit trail, they can also view the details of individual audit events within it. [PL-58111]
+
+- In the Resource Group Details page, selecting "All" hides the radio button sets (All, By `{Tag, Type}`, Specified) and the `+` Add button from the resource card of every type. [PL-58108]
+
+- Enhanced delegate task logging by adding the delegate's hostname for better traceability and clarity in task response logs. [PL-58095]
+
+- Disabled the Plans page UI behind a feature flag. [PL-58059]
+
+- Fixed a bug in the List Users in User Group API to correctly filter and list only users belonging to the user group when using user email filters. [PL-58049]
+
+- The "/.wellknown/jwks" endpoint for OIDC now exposes the "alg" value as "RS256" instead of "RSA256". [PL-58029]
+
+- Fixed an issue on the EventSummary link under AuditLogs where a new, unhandled action caused the page to break. It now displays "N/A," similar to the AuditLogs page. [PL-57850]
+
+- In the latest update, we've improved access control for listing secrets across scopes. Users can now list secrets at PROJECT, ACCOUNT, ORG, or ALL scopes. Previously, listing secrets across ALL scopes included inaccessible ones. This has been fixed, so users will only see secrets they have permission to access. [PL-57808]
+
+- The OIDC auth method has been added to the AWS connector. Support for it was previously missing in the audit streaming flow, but it is now included, allowing AWS connectors with OIDC to stream audits. [PL-57718]
+
+- The delegate name is now shown in the UI when a connector test fails, if the validation task was acquired by a delegate. This improvement provides better visibility into which delegate handled the task during troubleshooting. [PL-56483]
+
+#### Security Testing Orchestration
+
+- Fixed a configuration issue in some Harness production environments that prevented STO steps from running in IaCM stages (STO-8291, ZD-73770).
+
+- Fixed a bug in the External Tickets page where deselecting a connector would succeed, but the UI did not update properly. (STO-8200)
+
+#### Supply Chain Security
+
+- Fixed an issue where attestation with Cosign using a secret manager did not work with account-level and org-level vault connectors; it now works with both. (SSCA-2955)
+
+- Fixed an issue where adding the SLSA verification step in the same stage as the artifact creation using Docker build and push resulted in duplicate artifact entries with the same name and tag in the execution history. (SSCA-2949)
+
+#### Chaos Engineering
+
+- Fixed the cron experiment execution that was not working with Linux and Windows infrastructure (CHAOS-7044)
+
+- Fixed the issue of **Visual** and **YAML** tabs overlapping while trying to toggle between them in the **Condition Editor** in ChaosGuard. (CHAOS-7026)
+
+- Fixed the input mechanism for specifying multiple zones for CLB AZ down chaos fault, now allowing comma-separated values for multiple inputs. (CHAOS-6909)
+
+- Fixed an issue with the bulk update experiment selection checkbox not de-selecting after updating a cron job. (CHAOS-6856)
+
+- Fixed the error occurring when performing multiple actions on experiments, such as pushing to a custom ChaosHub, adding to GameDay, and executing the experiments consecutively. (CHAOS-6568)
+
+- Fixed the UI issue that prevented a GameDay execution after the stakeholder approval. (CHAOS-6467)
+
+- Fixed the issue where the **Application Maps** drawer was not displayed on the first page due to pagination issues. (CHAOS-6407)
+
+- Fixed the visibility issue of the status display for the Enterprise ChaosHub in dark mode. (CHAOS-5970)
+
+- Fixed the issue where two continuous command probes with a short polling duration could not execute in Linux infrastructure. (CHAOS-5461)
+
+#### Continuous Delivery
+
+- User was not able to provide timeout for Service Now approval step as Input. This issue is fixed now. (PIPE-23742, ZD-73247)
+
+- Previously, the Shell Script Provisioner step for PDC infrastructure failed when using runtime inputs for `hostAttributes`. This issue is fixed now. (CDS-104659)
+
+- When using blue green deployment step in a template, AWS load balancer dropdown was not getting populated. This issue is fixed now. (CDS-104478, ZD-73560)
+
+- Previously, selecting certain templates in My Organization Templates, UI was not rendering properly . This issue is fixed now, and templates now load and display correctly. (CDS-103675, ZD-73250)
+
+- During Azure web deployments for windows complete logs were not getting shown. It happened due to a library upgrade for Azure which caused issue with some parts of Azure integration. The issue is fixed now. (CDS-103358, ZD-73664)
+
+- Previously, approver inputs in multi-approval scenarios displayed only the last approval activity's response, leading to incorrect default values and missing input constraints. The issue is fixed. (CDS-103109)
+
+- Previously, attempting to delete folders in the file store with names similar to other folders caused errors, even when the folder appeared to have no references. For example, deleting a folder would fail if another folder with a similar prefix contained referenced entities. This issue is fixed now. (CDS-103076, ZD-72658)
+
+- Previously, URLs used to fetch artifacts from Artifactory with artifact filters did not support special characters, such as spaces, in artifact names. This issue is now fixed to automatically encode URLs, allowing support for special characters. This change is behind FF `CDS_ENCODE_API_REQUESTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-103041, ZD-69919)
+
+- Previously, when a canary pod had no data while the primary pod did, the risk should have been marked as "No Data" per [documentation](/docs/continuous-delivery/verify/cv-results/interpret-metric-results#metrics-summary-section). Instead, it was incorrectly marked as "No Analysis," causing issues when using the "Fail on No Analysis" feature. This issue is now fixed to align with the documentation, distinguishing "No Data" from "No Analysis" in risk assessments.(CDS-102865, ZD-72242)
+
+- Previously, the runtime input regex for the version field in the Google Artifact Registry (GAR) artifact source was not working as expected, causing all tags to display instead of filtering based on the regex. This issue is fixed now, and the version field now correctly supports regex patterns, allowing users to filter tags as intended. (CDS-102800, ZD-72658)
+
+- Previously, GitOps steps like UpdateReleaseRepo, MergePR, and RevertPR were delayed due to locking on the tokenRef to prevent GitHub rate limits. A new Disable `Git Restraint` option now allows users to bypass this locking for faster execution. (CDS-101882, ZD-71430,72936)
+
+- Custom approval step was taking long to get complated. The issue is fixed now. (CDS-104513, ZD-73810,74226,74360)
+
+- User encountered a pipeline failure after enabling the CDS_K8S_CUSTOM_YAML_PARSER feature and using a YAML manifest compatible with Kubernetes Java SDK version 21.x.x, due to a YAML parsing error. The issue is fixed now. (CDS-104066)
+
+- Fixed an issue in the Approver Allowed modal where changes to parent Formik values caused unintended reference changes in the nested Formik due to shallow spreading of form data. The issue was resolved by ensuring stable references for Formik data. (CDS-103728, ZD-73396)
+
+- In Azure function deployment instance sync was not reporting instance count. This issue is fixed now. (CDS-103224)
+
+- During service propogation, failure startegy was nit getting reflected. The issue is fixed now. (CDS-103157)
+
+- Fixed an issue where the Approval Input Validation Error displayed the placeholder value instead of the actual value. (CDS-103110)
+
+- Fixed an issue in TerraformCloudRun where the pipeline would get stuck on "Apply" when there were no changes in the plan. The Apply section now correctly identifies that no changes are present and skips execution accordingly, improving the customer experience. (CDS-103088, ZD-72114)
+
+- Fixed an issue where GitOps Cluster information was not being populated in the YAML, causing failures during pipeline execution. The GitOps Cluster details now sync correctly between the UI and YAML, ensuring seamless pipeline runs. (CDS-102910, ZD-72196)
+
+- Fixed an issue where artifact versions containing special characters, such as +, could not be fetched from Nexus during deployment. The issue occurred because these characters were not properly encoded in the URI. The implementation now ensures correct encoding, enabling successful artifact retrieval. (CDS-102807, ZD-70660)
+
+- Fixed an issue in the "Allowed Values" dropdown menu of the manual approval step where the dropdown for the last variable in the list did not fully expand, preventing users from viewing or selecting values. The dropdown menu now adjusts its position based on available space and is fully visible to users. (CDS-102638)
+
+- Enhanced logging and error messaging for the Terraform Apply stage in CD pipelines. If the Terraform binary is missing, the error message now clearly states: "Terraform binary not found. Please ensure Terraform is properly installed on the delegate." This improvement provides better guidance and visibility throughout the Terraform Apply process, enabling faster troubleshooting. (CDS-101932)
+
+- Fixed an issue where adding nodeName for Matrix in a Run step within a step group caused the pipeline to fail with a "NullPointerException." This issue occurred when using a strategy configured with node names inside a containerized step group. The fix allows users to successfully apply matrix and other strategy features within containerized step groups. (CDS-101511, ZD-70531,70626,71052)
+
+- Fixed an issue where the rollback process failed due to an incorrect branch reference for the YAML file. The system previously defaulted to the main branch when retrieving the YAML file during rollback, even if the file was stored in a different branch. The issue has been fixed by adding the necessary logic to include Git details during post-deployment rollbacks, ensuring that the correct branch is referenced. This fix is behind the feature flag `CDS_ADD_GIT_INFO_IN_POST_DEPLOYMENT_ROLLBACK`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-101504, ZD-70935)
+
+- Fixed an issue with the DockerHub connector where the URL field caused confusion for users. The tooltip suggested two different URLs, but only https://index.docker.io/v2/ worked for pushing images. The connector now defaults to https://index.docker.io/v2/ for new connections, allowing customers to override it only if they are using a private repository. This improves usability and eliminates errors during image push attempts. (CDS-99997)
+
+- Fixed an issue where the "Blue" environment was deleted before the "Green" environment was fully verified in a Blue/Green deployment. More validations have been added for active applications during the deployment process for TAS Blue/Green, ensuring that the active instance is not deleted until the Green environment is fully deployed and ready to take traffic. This enhancement prevents deployment failures and ensures reliable, downtime-free Blue/Green deployments. (CDS-101399, ZD-70706)
+
+#### Continuous Integration
+
+- Optimized the way environment variables are injected into build pods, reducing the YAML size to address Kubernetes resource configuration limits. (CI-15245, ZD-71872)
+
+- Fixed an issue where CI build credits were not getting published for aborted pipelines. (CI-15215)
+
+- Resolved an issue where Cache Intelligence in self-hosted builds wasn't working properly when 'paths' field was specified. (CI-15201, ZD-73305)
+
+- Resolved an issue with ECR image links in the artifacts tab for the "Build and Push to ECR" step by adding the missing "/_" separator, ensuring correct functionality. (CI-15089, ZD-72329)
+
+- Improved secret error debugging for pipeline variables - when referencing a non-existent secret in a pipeline variable, the error message now provides actionable details to help debug, rather than a generic exception. (CI-15013)
+
+- Resolved an issue where `EnvToSecretMap` was being overwritten by OIDC parameters, causing failures in the VM flow for GCP uploads. (CI-14952)
+
+- Corrected the artifact URL output in the "Build and Push to GAR" step to ensure the published image URL is formatted correctly. (CI-14917, ZD-71930)
+
+- Updated Alpine image version to address security vulnerabilities in images `plugins/gcs:1.6.0` and `plugins/artifact-metadata-publisher:2.0`. (CI-14897, ZD-71880)
+
+- Resolved an issue where OPA enforcement in CI stages didn't work properly in the Self-Managed Enterprise Edition. (CI-14840, ZD-70943)
+
+- Fixed an issue where bitbucket tag builds with tags containing slashes were causing errors in execution due to `<+codebase.commitSha>` returning null. Harness now correctly supports tags with slashes for bitbucket and git builds, ensuring SHA values are properly referenced. (CI-14706, ZD-70972)
+
+- Addressed an issue where pipelines failed at the clone codebase step on Windows infrastructure when using the GitHub SSH connector and cloning using LFS. (CI-14592, ZD-70570, ZD-71715)
+
+- Fixed an issue where the `DRONE_REPO_OWNER` built-in environment variable pointed to the wrong owner when the CI pipeline was triggered by a tag event. A new feature flag (`CI_DRONE_REPO_OWNER`) has been introduced to ensure `DRONE_REPO_OWNER` is correctly extracted from the repository URL. (CI-14468)
+
+- Resolved an issue to ensure proper functionality for "Upload Artifact to S3" and "Save/Restore Cache to S3" steps when used with AWS connector configured with an External ID. (CI-14214, ZD-69360)
+
+- Improved "Copy to Clipboard" functionality for pipeline output logs. Previously, extra new lines were added when pasting the copied output, causing unnecessary spacing between lines. This issue has been fixed to ensure log output is pasted without additional line breaks. (CI-14200, ZD-68902)
+
+- Support for Docker Build Secrets in "Build and Push" Steps - You can now configure Docker build secrets in the Build and Push step using YAML. This feature allows specifying secrets via envDockerSecrets and/or fileDockerSecrets field, applicable when running build-and-push steps using Buildx (not Kaniko). Note that using Buildx in Kubernetes build infrastructure requires privileged access.
+
+#### Cloud Cost Management
+
+- GCP Missing Current Daily Costs: We have handled the new invoice.publisher_type column in the GCP Billing export to ensure costs now appear correctly in Perspectives. [CCM-20214]
+  
 ## December 19, 2024, patch version 0.23.3
 
 This release includes the following Harness module and component versions.
