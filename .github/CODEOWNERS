@@ -105,7 +105,7 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness
 
 # Chaos Docs
-/docs/chaos-engineering/ @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9
+/docs/chaos-engineering/ @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit
 /release-notes/chaos-engineering.md @neelanjan00 @SmritiSatya @Jonsy13
 /src/components/Roadmap/data/ceData.ts @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
 /src/components/Docs/data/chaosEngineeringData* @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
