@@ -6,11 +6,9 @@ sidebar_position: 7
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-Now that you have [added your Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component) in the Catalog, we need to add the documentation. By default, the **Docs** tab in your catalog does not include documentation for a new software component. However, you can quickly publish Markdown documentation to the **Docs** tab.
-
+Now that you have [added your Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component) to the catalog, it's time to include documentation. By default, the **Docs** tab in the catalog does not display documentation for new components. This tutorial will show you how to quickly publish Markdown documentation to the **Docs** tab.
 
 ![](static/docs-empty.png)
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -33,8 +31,7 @@ To add documentation:
 ```
 # Welcome!
 
-This is a basic example of documentation. It is intended to showcase some of the
-features that TechDocs provides out of the box.
+This is a basic example of documentation. It is intended to showcase some of the features that TechDocs provides out of the box.
 
 ## Basic Markdown
 
