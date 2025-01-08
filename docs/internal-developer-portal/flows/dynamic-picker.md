@@ -54,11 +54,11 @@ Go to IDP Admin -> Plugins. Find the plugin called "Configure Backend Proxies".
 
 Inside the plugin, you get three options (like any other [IDP plugin configuration](https://developer.harness.io/docs/internal-developer-portal/plugins/overview)).
 
-1. Declare a Backend Proxy endpoint and headers
+1. Declare a Backend Proxy (HTTP Proxy) endpoint and headers
 2. Configure necessary secrets
-3. Configure Delegate Proxy (in case the API is not publicly accessible, or the secret is on your infrastructure)
+3. Configure Delegate Proxy (Delegate HTTP Proxy) (in case the API is not publicly accessible, or the secret is on your infrastructure)
 
-In order to set up a proxy to connect with GitHub APIs, you can add the following in the configuration YAML
+In order to set up a HTTP proxy to connect with GitHub APIs, you can add the following in the configuration YAML
 
 ```yaml
 proxy:
@@ -80,6 +80,14 @@ The `pathRewrite` is field used by the system to ensure the API requests are cor
 In the `headers` you can add an Authorization header. Ensure you use a unique token name here as variables are `GITHUB_TOKEN` or `BITBUCKET_TOKEN` are system defined. The token name does not matter, as long as a secret is set up for the corresponding variable.
 
 ![](./static/example-proxy-backend-config.png)
+
+Configure a Delegate HTTP Proxy to route traffic through an HTTP proxy using Delegate. This is useful when we need to access private endpoints not publicly accessible. 
+
+:::warning
+Endpoints targeting the `harness.io` domain should **not** be configured behind a **Delegate HTTP Proxy**, as you are already in the Harness infrastructure. Using a Delegate HTTP Proxy in this case is unnecessary, as direct access is inherently available. 
+:::
+
+![](./static/delegate-proxy.png)
 
 Hit "Save Configuration" and now our backend proxy is ready to use!
 
@@ -322,3 +330,54 @@ properties:
 ### Advanced processing the API response
 
 If the filters here are not sufficient for your use case, and you require additional data processing of the response, then we recommend you setting up a Lambda function in your cloud provider or a lightweight backend to do this job. You can use your Backend Proxy and Delegate Proxy to communicate to your custom Lambda/Backend.
+
+## Example Usage
+
+### Fetch the list of Harness Services in Workflows
+
+1. Configure the [Backend Proxy](#step-1-create-a-backend-proxy)
+
+Set up a backend proxy in the plugin configuration to enable API calls to Harness. 
+
+```YAML
+proxy:
+  endpoints:
+    /harness-api-endpoint:
+      target: https://app.harness.io
+      pathRewrite:
+        /api/proxy/harness-api-endpoint/?: /
+      headers:
+        x-api-key: ${PROXY_HARNESS_TOKEN}
+```
+
+- `/harness-api-endpoint`: Proxy path for the Harness API.
+- `x-api-key`: Add your Harness Personal Access Token as an environment variable(covered in the next step).. 
+
+2. Add the [Harness Personal Access Token](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens) as a variable. Save the token as an environment variable named `PROXY_HARNESS_TOKEN`.
+
+3. Update your Workflow definition YAML to include a dropdown for fetching the list of services.
+
+```YAML
+## Example workflows.yaml
+...
+properties:
+  service:
+    type: string
+    ui:field: SelectFieldFromApi
+    ui:options:
+      title: Choose the service
+      description: Pick one of the service you want to deploy
+      placeholder: "Choose a service"
+      allowArbitraryValues: true
+      path: proxy/harness-api-endpoint/ng/api/servicesV2?page=0&size=100&accountIdentifier=ACCOUNT_ID&orgIdentifier=ORG_ID&projectIdentifier=PROJECT_ID&includeAllServicesAccessibleAtScope=true
+      valueSelector: 'service.name'
+      arraySelector: 'data.content'
+...
+```
+- `ui:field`: Configures the dropdown to fetch data from an API.
+- `path`: API endpoint for fetching the list of services. You need to add the account identifier in place of `ACCOUNT_ID`, organization identifier in place of `ORG_ID` and project identifier in-place of `PROJECT_ID`.
+- `valueSelector`: Extracts the service name for the dropdown values.
+- `arraySelector`: Extracts the array containing the services
+
+For a complete example, refer to the [sample Workflows YAML](https://github.com/harness-community/idp-samples/blob/main/tutorial-dynamic-picker-examples.yaml).
+

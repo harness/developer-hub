@@ -52,7 +52,7 @@ By clicking on a specific evaluation status, you can access detailed information
 <DocImage path={require('./static/cicdspm-rac-details.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ## Plugins Tab​
-The Plugin tab provides a list of all plugins used in the pipeline. The tab name may vary based on the integration type. For instance, with GitHub, it will be labeled Actions.
+The Plugin tab provides a list of all plugins used in the pipeline. The tab name may vary based on the integration. For instance, with GitHub, it will be labeled Actions.
 
 <DocImage path={require('./static/cicdspm-plugins-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 

@@ -50,12 +50,12 @@ static/  @rohanmaharjan100 @wei-harness
 # data/*.ts @global-data-file-owners
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
-/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
-/src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av
-/src/components/Docs/data/continuousDeliveryData*  @krishi0408 @SushrutHarness @vishal-av
+/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta
+/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta
+/src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
+/src/components/Docs/data/continuousDeliveryData*  @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
 # FirstGen CD Docs
-/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av
+/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
 # CD FAQs
 /docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness @vishal-av
 # GitEx FAQs
@@ -113,21 +113,21 @@ static/  @rohanmaharjan100 @wei-harness
 /kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya @ksatchit
 
 # Platform Docs
-/docs/platform/ @pratmit @krishi0408 @GokulBansal0 @abhishekharness
-/release-notes/delegate.md @pratmit @abhishekharness @anshul-harness
-/release-notes/platform.md @pratmit @GokulBansal0 @abhishekharness
-/release-notes/self-managed-enterprise-edition.md @pratmit @abhishekharness
-/src/components/Roadmap/data/platformData.ts @pratmit @abhishekharness
-/src/components/Docs/data/platformData.ts @pratmit @abhishekharness
+/docs/platform/ @pratmit @krishi0408 @GokulBansal0 @abhishekharness @ivikramsahu
+/release-notes/delegate.md @pratmit @abhishekharness @anshul-harness @ivikramsahu
+/release-notes/platform.md @pratmit @GokulBansal0 @abhishekharness @ivikramsahu
+/release-notes/self-managed-enterprise-edition.md @pratmit @abhishekharness @ivikramsahu
+/src/components/Roadmap/data/platformData.ts @pratmit @abhishekharness @ivikramsahu
+/src/components/Docs/data/platformData.ts @pratmit @abhishekharness @ivikramsahu
 # FirtGen Platform Docs
-/docs/category/platform-firstgen/ @pratmit @abhishekharness
+/docs/category/platform-firstgen/ @pratmit @abhishekharness @ivikramsahu
 # FirstGen SMP Docs
-/docs/category/self-managed-enterprise-edition-fg/ @pratmit @abhishekharness
-/docs/self-managed-enterprise-edition/ @pratmit @abhishekharness
+/docs/category/self-managed-enterprise-edition-fg/ @pratmit @abhishekharness @ivikramsahu
+/docs/self-managed-enterprise-edition/ @pratmit @abhishekharness @ivikramsahu
 # Delegate FAQs
-/docs/faqs/harness-delegate-faqs/ @pratmit @abhishekharness
+/docs/faqs/harness-delegate-faqs/ @pratmit @abhishekharness @ivikramsahu
 # SMP FAQs
-/docs/faqs/self-managed-ee-faq/ @pratmit @abhishekharness
+/docs/faqs/self-managed-ee-faq/ @pratmit @abhishekharness @ivikramsahu
 
 # Pipeline Docs
 /docs/platform/pipelines/ @krishi0408 @vishal-av @SudarshanPurohit

@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## Introduction
 
-The Workflows come with several built-in actions for fetching content, registering in the catalog and of course actions for creating and publishing a git repository.
+**Workflow Actions** in IDP are integration points with third-party tools, used to take inputs from workflows frontend and execute specific tasks based on users input. The Workflows come with several built-in actions for fetching content, registering in the catalog and of course actions for creating and publishing a git repository.
 
 There are several repository providers supported out of the box such as **GitHub**, **Azure**, **GitLab** and **Bitbucket**.
 

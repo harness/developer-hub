@@ -82,7 +82,7 @@ For more information on configuring stages for the lead time workflow, refer to 
 2. Go the **Project** scope and select your **Project**.
 3. If you don't have any existing Insight, then click on the **Create Insight** button on the landing page to create a new Insight.
 
-![](./static/create-insight.png)
+![](../static/create-insight.png)
 
 4. If you already have existing Insights in your selected Project, then go to any Insight. For instructions, go to [View Insights](#view-insights).
 5. In the header, select **All Insights**, and then select **Manage Insights**.
@@ -104,7 +104,7 @@ Include **DORA metrics reports** to understand how well your team is doing. The 
 
 To keep track of Deployment Frequency, set up a [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview). This helps you pick what to monitor like merged pull requests or CI/CD jobs for the associated Collections. You can adjust Workflow profiles to fit your team's way of working, focusing on specific steps like Source Code Management (SCM) or a combination of issue management, SCM, and CI/CD. For more information, go to Workflow profile.
 
-![](./static/deployment-frequency.png)
+![](../static/deployment-frequency.png)
 
 To add the **Deployment Frequency** widget to Insights:
 
@@ -126,7 +126,7 @@ DORA calculation for Lead Time is similar to how lead time, in general, is calcu
 
 This report represents the amount of time it takes for a commit to get into production.
 
-![](./static/leadtime-for-changes.png)
+![](../static/leadtime-for-changes.png)
 
 To add the **Lead Time for Changes** widget to Insights:
 
@@ -144,7 +144,7 @@ For information about other Lead Time reports, go to [Lead time reports](/docs/s
 Change Failure Rate represents the percentage of deployments that cause a failure in production.
 To monitor Change Failure Rate in SEI, you will again need to associate the widget with an existing workflow profile.
 
-![](./static/change-failure-rate.png)
+![](../static/change-failure-rate.png)
 
 To add the **Change Failure Rate** Report widget to Insights:
 
@@ -161,7 +161,7 @@ The Mean Time To Restore (MTTR), also known as Time to Recover, represents the d
 
 The overall time can be analyzed stage by stage over the organization's failure recovery workflow.
 
-![](./static/mttr.png)
+![](../static/mttr.png)
 
 To add the **DORA Mean Time To Restore** report to the Insight:
 

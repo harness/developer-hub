@@ -1,6 +1,6 @@
 ---
-title: Slack Webhook triggers
-description: This topic provides settings information to setup a slack webhook trigger
+title: EventRelay Slack Webhook triggers
+description: This topic provides information on configuring EventRelay slack webhook triggers
 ---
 Trigger Pipelines Using Slack Events
 
