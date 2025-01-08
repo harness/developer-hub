@@ -1,5 +1,5 @@
 ---
-title: Getting Started with Workflows
+title: Get Started with Workflows
 description: Learn about creating new workflows to facilitate the GitHub Onboarding.
 sidebar_position: 7
 sidebar_label: Getting Started with Workflows
@@ -231,12 +231,3 @@ parameters:
 
 If you want to unregister or delete the Workflow follow the steps mentioned [here](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#deleteunregister-template). 
 
-## Further Reading
-
-Self Service Onboarding in IDP is powered by Workflows and Harness Pipeline([IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)). Follow the tutorials to learn more about it. 
-
-1. [Create a service onboarding pipeline (using IDP Stage)](https://developer.harness.io/docs/internal-developer-portal/flows/create-a-new-service-using-idp-stage)
-
-2. [Getting started with service onboarding pipeline (using Custom Stage)](https://developer.harness.io/docs/internal-developer-portal/flows/create-a-service)
-
-3. [Use Harness IDP for self serviced Harness CI/CD onboarding](https://developer.harness.io/docs/internal-developer-portal/flows/self-service-onboarding-pipeline-tutorial)

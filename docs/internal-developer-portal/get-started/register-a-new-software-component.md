@@ -79,54 +79,7 @@ import TabItem from '@theme/TabItem';
 The new component will be available in your catalog.
 
 ![](static/imported-entity.png)
-
-## Enable a Plugin
-
-Now that you've added a software component(service) to your catalog, let's [enable a plugin](https://developer.harness.io/docs/internal-developer-portal/get-started/enable-a-new-plugin) to fetch your services related information like CI/CD pipelines information. To get started with let's enable the [PagerDuty plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/pagerduty). 
-
-### Updating the catalog definition file
-
-Once you've enabled the plugin, you need to add the corresponding annotation in your `catalog-info.yaml` file.
-
-```YAML
-...
-  annotations:
-    pagerduty.com/integration-key: <sample-service-integration-key>
-...
-```
-<details>
-<summary>Example YAML</summary>
-
-```YAML {7}
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: my-new-service
-  description: Description of my new service
-  annotations:
-    pagerduty.com/integration-key: <sample-service-integration-key>
-  tags:
-    - java
-  links:
-    - url: https://admin.example-org.com
-      title: Admin Dashboard
-      icon: dashboard
-      type: admin-dashboard
-spec:
-  type: service
-  lifecycle: production
-  owner: owner@harness.io
-  system: project-x
-```
-</details>
-
-- Once the annotation is added, you can commit the changes to your `catalog-info.yaml` and refresh the software component to sync with the latest changes and view the PagerDuty plugin on your component overview page. 
-
-![](./static/refresh-component.png)
-
-## Add a Scorecard to Track Catalog Readiness
-
-Since, you've added the component and the plugin, let's create a [scorecard to track catalog readiness](https://developer.harness.io/docs/internal-developer-portal/get-started/scorecard-quickstart) for the component registered. 
+ 
 
 ## Delete/Unregister Software Components
 

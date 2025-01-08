@@ -1,5 +1,5 @@
 ---
-title: Getting Started with Scorecards
+title: Get Started with Scorecards
 description: Learn how to create Scorecards to assess and track the readiness of your software components in the catalog. 
 sidebar_position: 5
 redirect_from:
@@ -122,7 +122,3 @@ Let's edit the previously created catalog readiness scorecard to add the custom 
 
 ![](./static/catalog-readiness-applied.png)
 
-## Next Steps
-
-1. Learn more on [Scorecards](https://developer.harness.io/docs/category/scorecards).  
-2. Follow this [tutorial](https://developer.harness.io/docs/internal-developer-portal/scorecards/track-migrations) to track migrations using scorecards 
