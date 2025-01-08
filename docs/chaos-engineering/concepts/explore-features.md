@@ -1,7 +1,7 @@
 ---
 title: Harness Chaos Engineering Features
 sidebar_label: Explore Features
-sidebar_position: 6
+sidebar_position: 8
 description: Explore all the capabilities of Harness Chaos Engineering
 ---
 
