@@ -1,6 +1,6 @@
 ---
 title: Getting Started with Scorecards
-description: Create a Scorecards to track the readiness of your catalog-info.yaml 
+description: Learn how to create Scorecards to assess and track the readiness of your software components in the catalog. 
 sidebar_position: 5
 redirect_from:
   - /docs/internal-developer-portal/scorecards/scorecard-quickstart
