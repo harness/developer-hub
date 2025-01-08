@@ -3,7 +3,7 @@ title: Enable documentation for your Component
 description: Learn how you can enable the TechDocs plugin to show your Markdown docs on the Docs tab of the catalog page.
 sidebar_position: 7
 ---
-
+e
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
 Now that you have [added your Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component) to the catalog, it's time to include documentation. By default, the **Docs** tab in the catalog does not display documentation for new components. This tutorial will show you how to quickly publish Markdown documentation to the **Docs** tab.
@@ -153,7 +153,6 @@ metadata:
   annotations:
     backstage.io/techdocs-ref: url:https://github.com/backstage/backstage/tree/master/plugins/techdocs-backend/examples/documented-component
 ```
-
 
 </TabItem>
 </Tabs>
