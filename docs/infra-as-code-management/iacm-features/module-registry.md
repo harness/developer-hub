@@ -21,7 +21,7 @@ The Harness IaCM Module Registry is a centralized repository where you can publi
 
 ### Prerequisites
 Before you begin configuring module registry, ensure that you have:
-- Access to your OpenTofu or Terraform environment via [Harness connectors](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-connectors).
+- Access to your OpenTofu or Legacy Terraform environment via [Harness connectors](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-connectors).
 
 :::tip delegate version
 If you are using Harness to connect to your code repository, you can continue without further action.
