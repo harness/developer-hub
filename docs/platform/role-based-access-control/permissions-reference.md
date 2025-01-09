@@ -187,3 +187,11 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Tokens | <ul><li>View (`cet_token_view`)</li><li>Create/Edit (`cet_token_create`)</li><li>Revoke (`cet_token_revoke`)</li></ul> |
 | Critical Events | <ul><li>View (`cet_criticalevent_view`)</li><li>Create/Edit (`cet_criticalevent_create`)</li><li>Delete (`cet_criticalevent_delete`)</li></ul> |
 | Agents | <ul><li>View (`cet_agents_view`)</li></ul> |
+
+### Database DevOps
+
+| Resource  | Permissions |
+|-----------| ----------- |
+| Schemas   | <ul><li>View (`dbops_schema_view`)</li><li>Create/Edit (`dbops_schema_edit`)</li><li>Delete (`dbops_schema_delete`)</li></ul> |
+| Instances | <ul><li>View (`dbops_instance_view`)</li><li>Create/Edit (`dbops_instance_edit`)</li><li>Delete (`dbops_instance_delete`)</li></ul> |
+
