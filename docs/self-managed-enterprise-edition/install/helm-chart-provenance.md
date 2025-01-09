@@ -2,7 +2,7 @@
 title: Harness Helm Charts Provenance
 sidebar_label: Harness Helm Charts Provenance
 date: 2025-01-09T23:00
-sidebar_position: 2
+sidebar_position: 12
 ---
 
 # Harness Helm Charts Provenance
