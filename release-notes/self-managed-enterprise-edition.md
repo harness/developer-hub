@@ -59,20 +59,25 @@ upgrades:
 
 ### Breaking change - Ingress
 
-:::danger important upgrade instructions for versions 0.17.x, 0.18.x, 0.19.x and above
+:::danger important upgrade instructions for versions 0.17.x, 0.18.x, 0.19.x, 0.20.x, 0.21.x, 0.22.x, 0.23.x and 0.24.x
 
 When upgrading to SMP versions 0.17.x and above, the installation may fail if you have any admission webhooks configured for Ingress that do not permit Ingress objects with different names but identical paths. To prevent installation issues, please follow these steps before proceeding with the upgrade:
-	
-  1.	Run the `update-ingress-objects.sh` script from this URL: [update-ingress-objects.sh](https://raw.githubusercontent.com/harness/helm-charts/main/src/harness/scripts/update-ingress-objects.sh).
-	
-  2.	The script will prompt you to enter the namespace where Harness is installed.
-	
-  3.	You will then be asked to provide the version you are upgrading to.   
-        For instance, if you are upgrading to Harness 0.21.0, you should input 0.21.0.
-	
-  4.	The script will automatically update the Ingress objects as needed.
 
-You can find the script in the release charts eg: Harness 0.21.0 as well at `scripts/update-ingress-objects.sh`
+  1.	Download the `update-ingress-objects.sh` script from this URL: [update-ingress-objects.sh](https://raw.githubusercontent.com/harness/helm-charts/main/src/harness/scripts/update-ingress-objects.sh).
+  ```
+  # Using curl
+  curl -s https://raw.githubusercontent.com/harness/helm-charts/main/src/harness/scripts/update-ingress-objects.sh -o update-ingress-objects.sh
+  chmod +x update-ingress-objects.sh
+  ./update-ingress-objects.sh
+  ```
+
+  2. The script will prompt you to enter the namespace where Harness is installed.
+
+  3.	You will then be asked to provide the version you are upgrading to.
+        For instance, if you are upgrading to Harness 0.21.0, you should input 0.21.0.
+  4. For versions 0.21.x and above, you will be asked to enter the release name as well. You can check release name by running 'helm ls -n $NAMESPACE'
+
+  5. The script will automatically update the Ingress objects as needed.
 
 Note: Ensure you have access to the Kubernetes cluster where Harness is running and have the necessary permissions to GET, DELETE, and APPLY Ingress objects.
 :::
