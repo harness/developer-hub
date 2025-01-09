@@ -237,6 +237,31 @@ If you run into any errors, it is typically because the cluster does meet the re
 
 Next, try using Harness [Continuous Integration](/docs/continuous-integration/get-started/tutorials) to build a codebase, upload it to a repo, and run unit and integrations tests.
 
+## Detailed diagnostics for K8s Deployment
+
+Harness now provides detailed log information for pods and container during the Wait For Steady State step in Kubernetes deployments, helping you troubleshoot deployment issues by providing real-time insights into pod statuses.
+
+:::note
+
+Currently, this feature is behind the feature flag `CDS_K8S_DETAILED_POD_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+These logs include detailed information from status.condition, status.containerStatuses, and status.initContainerStatuses during the Wait For Steady State step.
+
+**Key Details**:
+- Logs are polled every 30 seconds. If the task completes in less than 30 seconds, no logs will be displayed.
+- The log output visually represents the status of the pods and container using color codes. Below is an example of how the container statuses appear in the logs.
+
+   - Red: Terminated
+   ![](./static/kubernetes-logs-3.png)
+
+   - Yellow: Waiting
+   ![](./static/kubernetes-logs.png)
+
+   - White: Running
+   ![](./static/kubernetes-logs-2.png)
+
 ## Clean up the deployment
 
 For steps on deleting the Delgate, go to [delete a delegate](/docs/platform/delegates/manage-delegates/delete-a-delegate).
