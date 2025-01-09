@@ -11,9 +11,20 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
   const { controller } = props;
   const [state, setState] = useState(controller.state);
   const [inputValue, setInputValue] = useState(controller.state.value);
+  const [isUrlParamsLoaded, setIsUrlParamsLoaded] = useState(false);
 
   useEffect(() => {
     controller.subscribe(() => setState(controller.state));
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    const query = params.get('q');
+    if (query) {
+      console.log(query);
+      controller.updateText(query);
+      controller.submit();
+      props.onSearch(query);
+      setIsUrlParamsLoaded(true);
+    }
   }, []);
 
   return (
@@ -25,6 +36,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
           onChange={(e) => {
             controller.updateText(e.target.value);
             setInputValue(e.target.value);
+            setIsUrlParamsLoaded(false);
           }}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
@@ -36,7 +48,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
         />
         <i className="fa-solid fa-magnifying-glass"></i>
       </div>
-      {state.suggestions.length > 0 && (
+      {!isUrlParamsLoaded && state.suggestions.length > 0 && (
         <ul>
           {state.suggestions.map((suggestion) => {
             const value = suggestion.rawValue;

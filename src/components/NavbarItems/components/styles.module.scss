@@ -274,6 +274,10 @@
     align-items: flex-start;
   }
   .summary {
+    gap: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     p {
       display: inline;
       color: var(--gray-600);
@@ -282,6 +286,17 @@
       padding: 0;
       @media (max-width: 640px) {
         display: block;
+      }
+    }
+    button {
+      margin: 0;
+      padding: 0;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      i {
+        font-size: 24px;
+        color: var(--gray-600);
       }
     }
   }
