@@ -8,75 +8,44 @@ redirect_from:
 
 This topic describes how you can create chaos experiments that consist of chaos faults and execute them to build and improve the resilience of your application.
 
-## Before you begin
+## Before you begin, review the following:
 
 - [What is a chaos experiment?](/docs/chaos-engineering/concepts/chaos101)
 - [What are chaos faults?](/docs/chaos-engineering/use-harness-ce/experiments/#chaos-fault)
 - [What are resilience probes?](/docs/chaos-engineering/use-harness-ce/probes/)
 - [How to create a resilience probe?](/docs/chaos-engineering/use-harness-ce/probes/use-probe)
 
+## Steps to create an experiment
+
 ### Create Environment
 
-Before you create an experiment, you need to create an environment where you have to [enable a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable).
+Before you create an experiment, you need an environment where you have to [enable a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable).
+Therefore, [create an environment](/docs/chaos-engineering/getting-started/saas/#step-3-create-an-environment).
 
-1. To create an environment, go to **Chaos** module, and click **Environments**. Select **New Environment**.
-
-	![](./static/create-experiments/create-env-1.png)
-
-2. Provide a name, and click **Create**. This creates an environment.
-
-	![](./static/create-experiments/name-2.png)
 
 :::info note
 To edit or delete the environment, select the **`⋮`** icon against the name of the environment.
 
 	![](./static/create-experiments/edit-3.png)
 :::
+
+### Create an Infrastructure
+
+After creating your environment, [create an infrastructure](/docs/chaos-engineering/getting-started/saas/#step-4-create-an-infrastructure) within it. The chaos experiment is executed within this infrastructure. 
+
 ### Create a Chaos Experiment
 
-You can add one or more chaos faults to a chaos experiment and execute it. Follow the interactive guide or the [step-by-step](#step-by-step-guide) guide below create a chaos experiment with one chaos fault, namely, pod delete, which has one resilience probe associated with it.
+You can add one or more chaos faults to a chaos experiment and execute it. [Create an experiment using the interactive guide or step-by-step](/docs/chaos-engineering/getting-started/saas/#step-7-construct-a-chaos-experiment) with one chaos fault, namely, pod delete, which has one resilience probe associated with it.
 
-<iframe
-  src="https://app.tango.us/app/embed/898a3ef8-968d-4882-a465-6376479f752e"
-  title="Creating a Chaos Experiment Using Harness.io"
-  style={{minHeight:'640px'}}
-  width="100%"
-  height="100%"
-  referrerpolicy="strict-origin-when-cross-origin"
-  frameborder="0"
-  webkitallowfullscreen="webkitallowfullscreen"
-  mozallowfullscreen="mozallowfullscreen"
-  allowfullscreen="allowfullscreen"></iframe>
+Different ways of building a chaos experiment are described below.
 
-#### Step-by-step guide
+* **[Blank Canvas](#using-blank-canvas)** - Lets you build the experiment from scratch, adding the specific faults you want.
+* **[Templates from ChaosHubs](#using-templates-from-chaoshubs)** - Lets you preview and select and experiment from pre-curated experiment templates available in [ChaosHubs](/docs/chaos-engineering/use-harness-ce/chaoshubs/).
+* **[Upload YAML](#upload-yaml)** - Lets you upload an experiment manifest YAML file.
 
-To add a chaos experiment:
+These options are explained below.
 
-1. In Harness, navigate to **Chaos > Chaos Experiments**. Click **+ New Experiment**.
-
-	![Chaos Experiments page](./static/create-experiments/chaos-experiments.png)
-
-2. 	In the **Experiment Overview**, enter the experiment **Name** and optional **Description** and **Tags**. In **Select a Chaos Infrastructure**, select the infrastructure where the target resources reside, then click **Next**.
-
-	![Experiment Overview](./static/create-experiments/experiment-overview.png)
-
-:::tip
-For more information on infrastructure, see [Connect chaos infrastructures](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable).
-:::
-
-3. This takes you to the **Experiment Builder** tab, where you can start building your experiment.
-
-	![Experiment Builder](./static/create-experiments/experiment-builder.png)
-
-4. Choose how you want to build the experiment. The options, explained later, are:
-
-	* **[Blank Canvas](#using-blank-canvas)** - Lets you build the experiment from scratch, adding the specific faults you want.
-	* **[Templates from ChaosHubs](#using-templates-from-chaoshubs)** - Lets you preview and select and experiment from pre-curated experiment templates available in [ChaosHubs](/docs/chaos-engineering/use-harness-ce/chaoshubs/).
-	* **[Upload YAML](#upload-yaml)** - Lets you upload an experiment manifest YAML file.
-
-	These options are explained below.
-
-### Using Blank Canvas
+#### Using Blank Canvas
 
 1. On the **Experiment Builder** tab, click **Add** to add a fault to the experiment.
 
@@ -96,13 +65,17 @@ For more information on infrastructure, see [Connect chaos infrastructures](/doc
 
 		* **Tune fault parameters:** Each fault has a set of common parameters, like **chaos duration** and **ramp time**, and unique parameters that you can customize as needed.
 
-		* **Add chaos probes:** (Optional) On the **Probes** tab, add [resilience probes](/docs/chaos-engineering/use-harness-ce/probes/use-probe) to automate the chaos hypothesis checks for a fault during the experiment execution. Probes are declarative checks that validate specific criteria, that help determine if an experiment **passed**.
-
-    * **Tune Fault Weightage**: Set the weight for the fault, which determines its importance relative to other faults in the experiment. This weight is used to calculate the experiment's resilience score.
+		* **Tune Fault Weightage**: Set the weight for the fault, which determines its importance relative to other faults in the experiment. This weight is used to calculate the experiment's resilience score.
 
 			![Tune Fault](./static/create-experiments/tune-fault.png)
 
-### Using Templates from ChaosHubs
+		* **Add chaos probes:** (Optional) On the **Probes** tab, add [resilience probes](/docs/chaos-engineering/use-harness-ce/probes/use-probe) to automate the chaos hypothesis checks for a fault during the experiment execution. Probes are declarative checks that validate specific criteria, that help determine if an experiment **passed**.
+
+			![resilience probe](./static/create-experiments/res-probe.png)
+
+    
+
+#### Using Templates from ChaosHubs
 
 1. Select an experiment template from a [ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub).
 
@@ -115,7 +88,7 @@ For more information on infrastructure, see [Connect chaos infrastructures](/doc
 You can edit the template to add more faults or update the existing faults.
 :::
 
-### Upload YAML
+#### Upload YAML
 
 1. Upload an experiment manifest YAML file to create the experiment.
 
@@ -248,7 +221,7 @@ This option allows privileged or restricted access for experiment pods.
 
 
 ## Add serial and parallel faults
-You can add multiple faults in a single chaos experiment that is scaled efficiently by HCE during execution.
+You can add multiple faults in a single chaos experiment that is scaled efficiently by Harness CE during execution.
 
 :::tip
 Consider the overall impact that these faults have on the application. Your experience in production environments may differ due to lack of resources when a number of parallel faults are being executed.

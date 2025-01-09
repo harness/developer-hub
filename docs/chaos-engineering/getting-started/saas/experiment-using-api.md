@@ -22,8 +22,6 @@ This tutorial uses the publicly available [HCE Postman collection](https://eleme
 
 Harness Chaos Engineering simplifies the chaos engineering practices for your organization. To get started, create a new project or ask your administrator to add you to an existing project. Once you have access, navigate to the **Chaos** tab that shows an overview of all the experiment runs.
 
- ![HCE Overview](./static/first-chaos/hce-overview.png)
-
 ### Get variable inputs
 
 The following inputs are required for variables in the API requests in this tutorial:
